@@ -2292,12 +2292,41 @@ export const BooleanScoreDefinitionConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "BooleanScoreDefinitionConfig",
 }) as any as S.Schema<BooleanScoreDefinitionConfig>;
 
-export type ScoreDefinitionConfig =
-  | CategoricalScoreDefinitionConfig
-  | NumericScoreDefinitionConfig
-  | BooleanScoreDefinitionConfig;
-export const ScoreDefinitionConfig =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<ScoreDefinitionConfig>;
+export interface ScoreDefinitionConfig {
+  /** Ordered categorical options available to the scorer. */
+  options?: CategoricalScoreDefinitionConfigOptionsList;
+  /** Whether reviewers can select one option or multiple options. Defaults to `single`. * `single` - single * `multiple` - multiple */
+  selection_mode?: SelectionModeEnum;
+  /** Optional minimum number of options that can be selected when `selection_mode` is `multiple`. */
+  min_selections?: number | null;
+  /** Optional maximum number of options that can be selected when `selection_mode` is `multiple`. */
+  max_selections?: number | null;
+  /** Optional inclusive minimum score. */
+  min?: number | null;
+  /** Optional inclusive maximum score. */
+  max?: number | null;
+  /** Optional increment step for numeric input, for example 1 or 0.5. */
+  step?: number | null;
+  /** Optional label for a true value. */
+  true_label?: string;
+  /** Optional label for a false value. */
+  false_label?: string;
+}
+export const ScoreDefinitionConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    options: S.optional(CategoricalScoreDefinitionConfigOptionsList),
+    selection_mode: S.optional(SelectionModeEnum),
+    min_selections: S.optional(S.NullOr(S.Number)),
+    max_selections: S.optional(S.NullOr(S.Number)),
+    min: S.optional(S.NullOr(S.Number)),
+    max: S.optional(S.NullOr(S.Number)),
+    step: S.optional(S.NullOr(S.Number)),
+    true_label: S.optional(S.String),
+    false_label: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ScoreDefinitionConfig",
+}) as any as S.Schema<ScoreDefinitionConfig>;
 
 export interface LlmAnalyticsScoreDefinitionsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

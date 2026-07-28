@@ -801,22 +801,40 @@
       "type": "structure",
       "members": {
         "id": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "name": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "account_id": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "scheduling_policy": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "instances": {
-          "target": "smithy.api#Integer"
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "max_instances": {
-          "target": "smithy.api#Integer"
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "constraints": {
           "target": "smithy.api#Document"
@@ -825,16 +843,25 @@
           "target": "smithy.api#Document"
         },
         "configuration": {
-          "target": "com.cloudflare.containers#ContainerConfiguration"
+          "target": "com.cloudflare.containers#ContainerConfiguration",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "durable_objects": {
           "target": "com.cloudflare.containers#DurableObjectsRef"
         },
         "created_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "version": {
-          "target": "smithy.api#Integer"
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
         }
       }
     },

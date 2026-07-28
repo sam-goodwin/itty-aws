@@ -201,35 +201,35 @@ export const CreateContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateContainerApplicationRequest>;
 
 export interface ContainerApplicationItem {
-  id?: string;
-  name?: string;
-  accountId?: string;
-  schedulingPolicy?: string;
-  instances?: number;
-  maxInstances?: number;
+  id: string;
+  name: string;
+  accountId: string;
+  schedulingPolicy: string;
+  instances: number;
+  maxInstances: number;
   constraints?: unknown;
   affinities?: unknown;
-  configuration?: ContainerConfiguration;
+  configuration: ContainerConfiguration;
   durableObjects?: DurableObjectsRef;
-  createdAt?: string;
-  version?: number;
+  createdAt: string;
+  version: number;
 }
 export const ContainerApplicationItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
-    schedulingPolicy: S.optional(S.String.pipe(T.Body("scheduling_policy"))),
-    instances: S.optional(S.Number),
-    maxInstances: S.optional(S.Number.pipe(T.Body("max_instances"))),
+    id: S.String,
+    name: S.String,
+    accountId: S.String.pipe(T.Body("account_id")),
+    schedulingPolicy: S.String.pipe(T.Body("scheduling_policy")),
+    instances: S.Number,
+    maxInstances: S.Number.pipe(T.Body("max_instances")),
     constraints: S.optional(S.Unknown),
     affinities: S.optional(S.Unknown),
-    configuration: S.optional(ContainerConfiguration),
+    configuration: ContainerConfiguration,
     durableObjects: S.optional(
       DurableObjectsRef.pipe(T.Body("durable_objects")),
     ),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    version: S.optional(S.Number),
+    createdAt: S.String.pipe(T.Body("created_at")),
+    version: S.Number,
   }),
 ).annotate({
   identifier: "ContainerApplicationItem",

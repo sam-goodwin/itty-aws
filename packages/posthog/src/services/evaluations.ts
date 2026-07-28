@@ -61,12 +61,26 @@ export const EvaluationsCreateRequestEvaluationConfigCase2 =
   }) as any as S.Schema<EvaluationsCreateRequestEvaluationConfigCase2>;
 
 /** Configuration dict. For 'llm_judge': {prompt}; for 'hog': {source}; for 'sentiment': {source: 'user_messages'}. */
-export type EvaluationsCreateRequestEvaluationConfig =
-  | EvaluationsCreateRequestEvaluationConfigCase0
-  | EvaluationsCreateRequestEvaluationConfigCase1
-  | EvaluationsCreateRequestEvaluationConfigCase2;
-export const EvaluationsCreateRequestEvaluationConfig =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<EvaluationsCreateRequestEvaluationConfig>;
+export interface EvaluationsCreateRequestEvaluationConfig {
+  /** Evaluation criteria for the LLM judge. Describe what makes a good vs bad response. */
+  prompt?: string;
+  /** Hog source code. Must return true (pass), false (fail), or null for N/A. */
+  source?:
+    | string
+    | EvaluationsCreateRequestEvaluationConfigCase2Source
+    | (string & {});
+}
+export const EvaluationsCreateRequestEvaluationConfig = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      prompt: S.optional(S.String),
+      source: S.optional(
+        S.Union(S.String, EvaluationsCreateRequestEvaluationConfigCase2Source),
+      ),
+    }),
+).annotate({
+  identifier: "EvaluationsCreateRequestEvaluationConfig",
+}) as any as S.Schema<EvaluationsCreateRequestEvaluationConfig>;
 
 /** * `boolean` - Boolean (Pass/Fail) * `sentiment` - Sentiment */
 export type OutputTypeEnum = "boolean" | "sentiment";
@@ -631,12 +645,29 @@ export const EvaluationsPartialUpdateRequestEvaluationConfigCase2 =
   }) as any as S.Schema<EvaluationsPartialUpdateRequestEvaluationConfigCase2>;
 
 /** Configuration dict. For 'llm_judge': {prompt}; for 'hog': {source}; for 'sentiment': {source: 'user_messages'}. */
-export type EvaluationsPartialUpdateRequestEvaluationConfig =
-  | EvaluationsPartialUpdateRequestEvaluationConfigCase0
-  | EvaluationsPartialUpdateRequestEvaluationConfigCase1
-  | EvaluationsPartialUpdateRequestEvaluationConfigCase2;
+export interface EvaluationsPartialUpdateRequestEvaluationConfig {
+  /** Evaluation criteria for the LLM judge. Describe what makes a good vs bad response. */
+  prompt?: string;
+  /** Hog source code. Must return true (pass), false (fail), or null for N/A. */
+  source?:
+    | string
+    | EvaluationsPartialUpdateRequestEvaluationConfigCase2Source
+    | (string & {});
+}
 export const EvaluationsPartialUpdateRequestEvaluationConfig =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<EvaluationsPartialUpdateRequestEvaluationConfig>;
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      prompt: S.optional(S.String),
+      source: S.optional(
+        S.Union(
+          S.String,
+          EvaluationsPartialUpdateRequestEvaluationConfigCase2Source,
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "EvaluationsPartialUpdateRequestEvaluationConfig",
+  }) as any as S.Schema<EvaluationsPartialUpdateRequestEvaluationConfig>;
 
 /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results. */
 export interface EvaluationsPartialUpdateRequestOutputConfig {
@@ -896,12 +927,26 @@ export const EvaluationsUpdateRequestEvaluationConfigCase2 =
   }) as any as S.Schema<EvaluationsUpdateRequestEvaluationConfigCase2>;
 
 /** Configuration dict. For 'llm_judge': {prompt}; for 'hog': {source}; for 'sentiment': {source: 'user_messages'}. */
-export type EvaluationsUpdateRequestEvaluationConfig =
-  | EvaluationsUpdateRequestEvaluationConfigCase0
-  | EvaluationsUpdateRequestEvaluationConfigCase1
-  | EvaluationsUpdateRequestEvaluationConfigCase2;
-export const EvaluationsUpdateRequestEvaluationConfig =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<EvaluationsUpdateRequestEvaluationConfig>;
+export interface EvaluationsUpdateRequestEvaluationConfig {
+  /** Evaluation criteria for the LLM judge. Describe what makes a good vs bad response. */
+  prompt?: string;
+  /** Hog source code. Must return true (pass), false (fail), or null for N/A. */
+  source?:
+    | string
+    | EvaluationsUpdateRequestEvaluationConfigCase2Source
+    | (string & {});
+}
+export const EvaluationsUpdateRequestEvaluationConfig = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      prompt: S.optional(S.String),
+      source: S.optional(
+        S.Union(S.String, EvaluationsUpdateRequestEvaluationConfigCase2Source),
+      ),
+    }),
+).annotate({
+  identifier: "EvaluationsUpdateRequestEvaluationConfig",
+}) as any as S.Schema<EvaluationsUpdateRequestEvaluationConfig>;
 
 /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results. */
 export interface EvaluationsUpdateRequestOutputConfig {

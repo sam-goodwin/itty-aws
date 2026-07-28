@@ -662,11 +662,20 @@ export const TimeSeriesNativeMplQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "TimeSeriesNativeMplQuery",
 }) as any as S.Schema<TimeSeriesNativeMplQuery>;
 
-export type TimeSeriesChartQuery =
-  | TimeSeriesNonMetricsAplQuery
-  | TimeSeriesNativeMplQuery;
-export const TimeSeriesChartQuery =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<TimeSeriesChartQuery>;
+export interface TimeSeriesChartQuery {
+  apl?: string;
+  queryOptions?: TimeSeriesQueryOptions;
+  mpl?: string;
+}
+export const TimeSeriesChartQuery = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apl: S.optional(S.String),
+    queryOptions: S.optional(TimeSeriesQueryOptions),
+    mpl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TimeSeriesChartQuery",
+}) as any as S.Schema<TimeSeriesChartQuery>;
 
 export interface TimeSeriesChart {
   id: string;
@@ -732,11 +741,20 @@ export const HeatmapNativeMplQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "HeatmapNativeMplQuery",
 }) as any as S.Schema<HeatmapNativeMplQuery>;
 
-export type HeatmapChartQuery =
-  | HeatmapNonMetricsAplQuery
-  | HeatmapNativeMplQuery;
-export const HeatmapChartQuery =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<HeatmapChartQuery>;
+export interface HeatmapChartQuery {
+  apl?: string;
+  queryOptions?: HeatmapQueryOptions;
+  mpl?: string;
+}
+export const HeatmapChartQuery = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apl: S.optional(S.String),
+    queryOptions: S.optional(HeatmapQueryOptions),
+    mpl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HeatmapChartQuery",
+}) as any as S.Schema<HeatmapChartQuery>;
 
 export interface HeatmapChart {
   id: string;
@@ -778,9 +796,18 @@ export const SimpleNativeMplQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "SimpleNativeMplQuery",
 }) as any as S.Schema<SimpleNativeMplQuery>;
 
-export type SimpleChartQuery = SimpleNonMetricsAplQuery | SimpleNativeMplQuery;
-export const SimpleChartQuery =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<SimpleChartQuery>;
+export interface SimpleChartQuery {
+  apl?: string;
+  mpl?: string;
+}
+export const SimpleChartQuery = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apl: S.optional(S.String),
+    mpl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SimpleChartQuery",
+}) as any as S.Schema<SimpleChartQuery>;
 
 export interface AdvancedColumnSetting {
   name: string;
@@ -1230,9 +1257,20 @@ export const SmartFilterNativeMplQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "SmartFilterNativeMplQuery",
 }) as any as S.Schema<SmartFilterNativeMplQuery>;
 
-export type SmartFilterQuery = SmartFilterAplQuery | SmartFilterNativeMplQuery;
-export const SmartFilterQuery =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<SmartFilterQuery>;
+export interface SmartFilterQuery {
+  /** APL query that returns the list of options for the filter dropdown. The result must contain a `key` column and a `value` column — Axiom interprets each row as a `{ key, value }` pair for an option. Use `distinct` to collapse the source field to unique values, then `project` to expose the `key` and `value` columns. Example: ``` ['dataset-name'] | distinct field_name | project key=field_name, value=field_name ``` */
+  apl?: string;
+  /** MPL query that returns the list of options for the filter dropdown. The query must group by exactly one tag — Axiom uses each distinct value of that tag as both the key and the value of an option. Use `align using last` to simplify the query. Example: ``` dataset:metric | align using last | group by tag using count ``` */
+  mpl?: string;
+}
+export const SmartFilterQuery = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apl: S.optional(S.String),
+    mpl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SmartFilterQuery",
+}) as any as S.Schema<SmartFilterQuery>;
 
 export interface SmartFilterSelectQuery {
   id: string;
@@ -1258,9 +1296,36 @@ export const SmartFilterSelectQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "SmartFilterSelectQuery",
 }) as any as S.Schema<SmartFilterSelectQuery>;
 
-export type SmartFilterSelect = SmartFilterSelectList | SmartFilterSelectQuery;
-export const SmartFilterSelect =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<SmartFilterSelect>;
+export interface SmartFilterSelect {
+  id: string;
+  name: string;
+  active?: boolean;
+  /** Pre-defined options merged with the dynamic options returned by `query` at runtime. Typically used to seed a default option (for example an "All" entry with `unset: true`) so the filter has a sensible initial selection before — or independent of — query results. */
+  options?: SmartFilterOptions | SmartFilterSelectQueryOptions | null;
+  type: SmartFilterSelectListType | SmartFilterSelectQueryType;
+  selectType:
+    | SmartFilterSelectListSelectType
+    | SmartFilterSelectQuerySelectType;
+  query?: SmartFilterQuery;
+}
+export const SmartFilterSelect = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    active: S.optional(S.Boolean),
+    options: S.optional(
+      S.NullOr(S.Union(SmartFilterOptions, SmartFilterSelectQueryOptions)),
+    ),
+    type: S.Union(SmartFilterSelectListType, SmartFilterSelectQueryType),
+    selectType: S.Union(
+      SmartFilterSelectListSelectType,
+      SmartFilterSelectQuerySelectType,
+    ),
+    query: S.optional(SmartFilterQuery),
+  }),
+).annotate({
+  identifier: "SmartFilterSelect",
+}) as any as S.Schema<SmartFilterSelect>;
 
 export type SmartFilterConfig = SmartFilterSearch | SmartFilterSelect;
 export const SmartFilterConfig =
@@ -1308,20 +1373,97 @@ export const SpacerChart = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SpacerChart" }) as any as S.Schema<SpacerChart>;
 
-export type Chart =
-  | TimeSeriesChart
-  | HeatmapChart
-  | LogStreamChart
-  | PieChart
-  | ScatterChart
-  | TableChart
-  | TopKChart
-  | StatisticChart
-  | NoteChart
-  | MonitorListChart
-  | SmartFilterChart
-  | SpacerChart;
-export const Chart = /*@__PURE__*/ S.Unknown as any as S.Schema<Chart>;
+export interface Chart {
+  id: string;
+  type:
+    | TimeSeriesChartType
+    | HeatmapChartType
+    | LogStreamChartType
+    | PieChartType
+    | ScatterChartType
+    | TableChartType
+    | TopKChartType
+    | StatisticChartType
+    | NoteChartType
+    | MonitorListChartType
+    | SmartFilterChartType
+    | SpacerChartType;
+  name?: string;
+  query?: TimeSeriesChartQuery | HeatmapChartQuery | SimpleChartQuery;
+  tableSettings?: TableSettings;
+  colorScheme?: StatisticChartColorScheme;
+  customUnits?: string;
+  showChart?: StatisticChartShowChart;
+  hideValue?: boolean;
+  chartHeight?: StatisticChartChartHeight;
+  errorThreshold?: StatisticChartErrorThreshold;
+  errorThresholdValue?: string;
+  warningThreshold?: StatisticChartWarningThreshold;
+  warningThresholdValue?: string;
+  invertTheme?: boolean;
+  background?: string;
+  textColor?: string;
+  labelColor?: string;
+  chartFillColor?: string;
+  okColorProps?: StatisticChartColorProps;
+  warningColorProps?: StatisticChartColorProps;
+  errorColorProps?: StatisticChartColorProps;
+  text?: string;
+  variant?: NoteChartVariant;
+  selectedMonitors?: MonitorListChartSelectedMonitorsList;
+  columns?: MonitorListColumns;
+  filters?: SmartFilterChartFiltersList;
+  logo?: string;
+  logoDark?: string;
+}
+export const Chart = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    type: S.Union(
+      TimeSeriesChartType,
+      HeatmapChartType,
+      LogStreamChartType,
+      PieChartType,
+      ScatterChartType,
+      TableChartType,
+      TopKChartType,
+      StatisticChartType,
+      NoteChartType,
+      MonitorListChartType,
+      SmartFilterChartType,
+      SpacerChartType,
+    ),
+    name: S.optional(S.String),
+    query: S.optional(
+      S.Union(TimeSeriesChartQuery, HeatmapChartQuery, SimpleChartQuery),
+    ),
+    tableSettings: S.optional(TableSettings),
+    colorScheme: S.optional(StatisticChartColorScheme),
+    customUnits: S.optional(S.String),
+    showChart: S.optional(StatisticChartShowChart),
+    hideValue: S.optional(S.Boolean),
+    chartHeight: S.optional(StatisticChartChartHeight),
+    errorThreshold: S.optional(StatisticChartErrorThreshold),
+    errorThresholdValue: S.optional(S.String),
+    warningThreshold: S.optional(StatisticChartWarningThreshold),
+    warningThresholdValue: S.optional(S.String),
+    invertTheme: S.optional(S.Boolean),
+    background: S.optional(S.String),
+    textColor: S.optional(S.String),
+    labelColor: S.optional(S.String),
+    chartFillColor: S.optional(S.String),
+    okColorProps: S.optional(StatisticChartColorProps),
+    warningColorProps: S.optional(StatisticChartColorProps),
+    errorColorProps: S.optional(StatisticChartColorProps),
+    text: S.optional(S.String),
+    variant: S.optional(NoteChartVariant),
+    selectedMonitors: S.optional(MonitorListChartSelectedMonitorsList),
+    columns: S.optional(MonitorListColumns),
+    filters: S.optional(SmartFilterChartFiltersList),
+    logo: S.optional(S.String),
+    logoDark: S.optional(S.String),
+  }),
+).annotate({ identifier: "Chart" }) as any as S.Schema<Chart>;
 
 export type DashboardChartsList = ReadonlyArray<Chart>;
 export const DashboardChartsList = /*@__PURE__*/ S.Array(

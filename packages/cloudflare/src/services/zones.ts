@@ -309,13 +309,13 @@ export const CreateHoldRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateHoldResponse {
   hold?: boolean;
   holdAfter?: string;
-  includeSubdomains?: string;
+  includeSubdomains?: boolean;
 }
 export const CreateHoldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hold: S.optional(S.Boolean),
     holdAfter: S.optional(S.String.pipe(T.Body("hold_after"))),
-    includeSubdomains: S.optional(S.String.pipe(T.Body("include_subdomains"))),
+    includeSubdomains: S.optional(S.Boolean.pipe(T.Body("include_subdomains"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateHoldResponse",
@@ -888,13 +888,13 @@ export const DeleteHoldRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteHoldResponse {
   hold?: boolean;
   holdAfter?: string;
-  includeSubdomains?: string;
+  includeSubdomains?: boolean;
 }
 export const DeleteHoldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hold: S.optional(S.Boolean),
     holdAfter: S.optional(S.String.pipe(T.Body("hold_after"))),
-    includeSubdomains: S.optional(S.String.pipe(T.Body("include_subdomains"))),
+    includeSubdomains: S.optional(S.Boolean.pipe(T.Body("include_subdomains"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteHoldResponse",
@@ -1012,13 +1012,13 @@ export const GetHoldRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetHoldResponse {
   hold?: boolean;
   holdAfter?: string;
-  includeSubdomains?: string;
+  includeSubdomains?: boolean;
 }
 export const GetHoldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hold: S.optional(S.Boolean),
     holdAfter: S.optional(S.String.pipe(T.Body("hold_after"))),
-    includeSubdomains: S.optional(S.String.pipe(T.Body("include_subdomains"))),
+    includeSubdomains: S.optional(S.Boolean.pipe(T.Body("include_subdomains"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHoldResponse",
@@ -4528,13 +4528,13 @@ export const PatchHoldRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PatchHoldResponse {
   hold?: boolean;
   holdAfter?: string;
-  includeSubdomains?: string;
+  includeSubdomains?: boolean;
 }
 export const PatchHoldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hold: S.optional(S.Boolean),
     holdAfter: S.optional(S.String.pipe(T.Body("hold_after"))),
-    includeSubdomains: S.optional(S.String.pipe(T.Body("include_subdomains"))),
+    includeSubdomains: S.optional(S.Boolean.pipe(T.Body("include_subdomains"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchHoldResponse",
@@ -9296,131 +9296,383 @@ export const SettingsBulkEditRequestBodyItemWebsocket = /*@__PURE__*/ S.suspend(
   identifier: "SettingsBulkEditRequestBodyItemWebsocket",
 }) as any as S.Schema<SettingsBulkEditRequestBodyItemWebsocket>;
 
-export type SettingsBulkEditRequestBodyItem =
-  | SettingsBulkEditRequestBodyItemZeroRTT
-  | SettingsBulkEditRequestBodyItemAdvancedDDoS
-  | SettingsBulkEditRequestBodyItemZonesCacheRulesAegis
-  | SettingsBulkEditRequestBodyItemAlwaysOnline
-  | SettingsBulkEditRequestBodyItemZonesSchemasAlwaysUseHTTPS
-  | SettingsBulkEditRequestBodyItemZonesSchemasAutomaticHTTPSRewrites
-  | SettingsBulkEditRequestBodyItemBrotli
-  | SettingsBulkEditRequestBodyItemZonesSchemasBrowserCacheTTL
-  | SettingsBulkEditRequestBodyItemZonesSchemasBrowserCheck
-  | SettingsBulkEditRequestBodyItemZonesSchemasCacheLevel
-  | SettingsBulkEditRequestBodyItemChallengeTTL
-  | SettingsBulkEditRequestBodyItemZonesChinaNetworkEnabled
-  | SettingsBulkEditRequestBodyItemZonesContentConverter
-  | SettingsBulkEditRequestBodyItemCiphers
-  | SettingsBulkEditRequestBodyItemZonesCNAMEFlattening
-  | SettingsBulkEditRequestBodyItemDevelopmentMode
-  | SettingsBulkEditRequestBodyItemEarlyHints
-  | SettingsBulkEditRequestBodyItemZonesSchemasEdgeCacheTTL
-  | SettingsBulkEditRequestBodyItemZonesSchemasEmailObfuscation
-  | SettingsBulkEditRequestBodyItemH2Prioritization
-  | SettingsBulkEditRequestBodyItemHotlinkProtection
-  | SettingsBulkEditRequestBodyItemHTTP2
-  | SettingsBulkEditRequestBodyItemHTTP3
-  | SettingsBulkEditRequestBodyItemZonesSchemasIPGeolocation
-  | SettingsBulkEditRequestBodyItemIPV6
-  | SettingsBulkEditRequestBodyItemZonesMaxUpload
-  | SettingsBulkEditRequestBodyItemMinTLSVersion
-  | SettingsBulkEditRequestBodyItemZonesSchemasMirage
-  | SettingsBulkEditRequestBodyItemNEL
-  | SettingsBulkEditRequestBodyItemZonesSchemasOpportunisticEncryption
-  | SettingsBulkEditRequestBodyItemOpportunisticOnion
-  | SettingsBulkEditRequestBodyItemOrangeToOrange
-  | SettingsBulkEditRequestBodyItemZonesSchemasOriginErrorPagePassThru
-  | SettingsBulkEditRequestBodyItemZonesCacheRulesOriginH2MaxStreams
-  | SettingsBulkEditRequestBodyItemZonesCacheRulesOriginMaxHTTPVersion
-  | SettingsBulkEditRequestBodyItemZonesSchemasPolish
-  | SettingsBulkEditRequestBodyItemPrefetchPreload
-  | SettingsBulkEditRequestBodyItemZonesPrivacyPass
-  | SettingsBulkEditRequestBodyItemProxyReadTimeout
-  | SettingsBulkEditRequestBodyItemPseudoIPV4
-  | SettingsBulkEditRequestBodyItemZonesRedirectsForAITraining
-  | SettingsBulkEditRequestBodyItemZonesReplaceInsecureJS
-  | SettingsBulkEditRequestBodyItemZonesSchemasResponseBuffering
-  | SettingsBulkEditRequestBodyItemZonesSchemasRocketLoader
-  | SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimization
-  | SettingsBulkEditRequestBodyItemZonesSearchForAgents
-  | SettingsBulkEditRequestBodyItemSecurityHeaders
-  | SettingsBulkEditRequestBodyItemZonesSchemasSecurityLevel
-  | SettingsBulkEditRequestBodyItemServerSideExcludes
-  | SettingsBulkEditRequestBodyItemZonesSha1Support
-  | SettingsBulkEditRequestBodyItemZonesSchemasSortQueryStringForCache
-  | SettingsBulkEditRequestBodyItemZonesSchemasSSL
-  | SettingsBulkEditRequestBodyItemSSLRecommender
-  | SettingsBulkEditRequestBodyItemZonesTLS12Only
-  | SettingsBulkEditRequestBodyItemTLS13
-  | SettingsBulkEditRequestBodyItemTLSClientAuth
-  | SettingsBulkEditRequestBodyItemZonesSchemasTrueClientIPHeader
-  | SettingsBulkEditRequestBodyItemZonesSchemasWAF
-  | SettingsBulkEditRequestBodyItemWebP
-  | SettingsBulkEditRequestBodyItemWebsocket;
-export const SettingsBulkEditRequestBodyItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "modifiedOn", "value"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn", "timeRemaining"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "modifiedOn", "value"],
-    ["id", "modifiedOn", "value"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "enabled"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-    ["id", "value", "editable", "modifiedOn"],
-  ]),
-);
+export interface SettingsBulkEditRequestBodyItem {
+  /** ID of the zone setting. */
+  id?:
+    | SettingsBulkEditRequestBodyItemZeroRTTId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemAdvancedDDoSId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesCacheRulesAegisId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemAlwaysOnlineId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasAlwaysUseHTTPSId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasAutomaticHTTPSRewritesId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemBrotliId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasBrowserCacheTTLId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasBrowserCheckId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasCacheLevelId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemChallengeTTLId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesChinaNetworkEnabledId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesContentConverterId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemCiphersId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesCNAMEFlatteningId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemDevelopmentModeId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemEarlyHintsId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasEdgeCacheTTLId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasEmailObfuscationId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemH2PrioritizationId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemHotlinkProtectionId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemHTTP2Id
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemHTTP3Id
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasIPGeolocationId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemIPV6Id
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesMaxUploadId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemMinTLSVersionId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasMirageId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemNELId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasOpportunisticEncryptionId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemOpportunisticOnionId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemOrangeToOrangeId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasOriginErrorPagePassThruId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesCacheRulesOriginH2MaxStreamsId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesCacheRulesOriginMaxHTTPVersionId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasPolishId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemPrefetchPreloadId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesPrivacyPassId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemProxyReadTimeoutId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemPseudoIPV4Id
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesRedirectsForAITrainingId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesReplaceInsecureJSId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasResponseBufferingId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasRocketLoaderId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimizationId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSearchForAgentsId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemSecurityHeadersId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasSecurityLevelId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemServerSideExcludesId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSha1SupportId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasSortQueryStringForCacheId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasSSLId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemSSLRecommenderId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesTLS12OnlyId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemTLS13Id
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemTLSClientAuthId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasTrueClientIPHeaderId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasWAFId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemWebPId
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemWebsocketId
+    | (string & {});
+  /** Current value of the zone setting. */
+  value?:
+    | SettingsBulkEditRequestBodyItemZeroRTTValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemAdvancedDDoSValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesCacheRulesAegisValue
+    | SettingsBulkEditRequestBodyItemAlwaysOnlineValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasAlwaysUseHTTPSValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasAutomaticHTTPSRewritesValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemBrotliValue
+    | (string & {})
+    | number
+    | SettingsBulkEditRequestBodyItemZonesSchemasBrowserCheckValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasCacheLevelValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemChallengeTTLValue
+    | (number & {})
+    | SettingsBulkEditRequestBodyItemZonesChinaNetworkEnabledValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesContentConverterValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemCiphersValueList
+    | SettingsBulkEditRequestBodyItemZonesCNAMEFlatteningValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemDevelopmentModeValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemEarlyHintsValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasEdgeCacheTTLValue
+    | (number & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasEmailObfuscationValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemH2PrioritizationValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemHotlinkProtectionValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemHTTP2Value
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemHTTP3Value
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasIPGeolocationValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemIPV6Value
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesMaxUploadValue
+    | (number & {})
+    | SettingsBulkEditRequestBodyItemMinTLSVersionValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasMirageValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemNELValue
+    | SettingsBulkEditRequestBodyItemZonesSchemasOpportunisticEncryptionValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemOpportunisticOnionValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemOrangeToOrangeValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasOriginErrorPagePassThruValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesCacheRulesOriginMaxHTTPVersionValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasPolishValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemPrefetchPreloadValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesPrivacyPassValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemPseudoIPV4Value
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesRedirectsForAITrainingValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesReplaceInsecureJSValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasResponseBufferingValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasRocketLoaderValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimizationValue
+    | SettingsBulkEditRequestBodyItemZonesSearchForAgentsValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemSecurityHeadersValue
+    | SettingsBulkEditRequestBodyItemZonesSchemasSecurityLevelValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemServerSideExcludesValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSha1SupportValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasSortQueryStringForCacheValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasSSLValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesTLS12OnlyValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemTLS13Value
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemTLSClientAuthValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasTrueClientIPHeaderValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemZonesSchemasWAFValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemWebPValue
+    | (string & {})
+    | SettingsBulkEditRequestBodyItemWebsocketValue
+    | (string & {});
+  /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
+  editable?: boolean;
+  /** last time this setting was modified. */
+  modifiedOn?: string;
+  /** Value of the zone setting. */
+  timeRemaining?: number;
+  /** ssl-recommender enrollment setting. */
+  enabled?: boolean;
+}
+export const SettingsBulkEditRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(
+      S.Union(
+        SettingsBulkEditRequestBodyItemZeroRTTId,
+        SettingsBulkEditRequestBodyItemAdvancedDDoSId,
+        SettingsBulkEditRequestBodyItemZonesCacheRulesAegisId,
+        SettingsBulkEditRequestBodyItemAlwaysOnlineId,
+        SettingsBulkEditRequestBodyItemZonesSchemasAlwaysUseHTTPSId,
+        SettingsBulkEditRequestBodyItemZonesSchemasAutomaticHTTPSRewritesId,
+        SettingsBulkEditRequestBodyItemBrotliId,
+        SettingsBulkEditRequestBodyItemZonesSchemasBrowserCacheTTLId,
+        SettingsBulkEditRequestBodyItemZonesSchemasBrowserCheckId,
+        SettingsBulkEditRequestBodyItemZonesSchemasCacheLevelId,
+        SettingsBulkEditRequestBodyItemChallengeTTLId,
+        SettingsBulkEditRequestBodyItemZonesChinaNetworkEnabledId,
+        SettingsBulkEditRequestBodyItemZonesContentConverterId,
+        SettingsBulkEditRequestBodyItemCiphersId,
+        SettingsBulkEditRequestBodyItemZonesCNAMEFlatteningId,
+        SettingsBulkEditRequestBodyItemDevelopmentModeId,
+        SettingsBulkEditRequestBodyItemEarlyHintsId,
+        SettingsBulkEditRequestBodyItemZonesSchemasEdgeCacheTTLId,
+        SettingsBulkEditRequestBodyItemZonesSchemasEmailObfuscationId,
+        SettingsBulkEditRequestBodyItemH2PrioritizationId,
+        SettingsBulkEditRequestBodyItemHotlinkProtectionId,
+        SettingsBulkEditRequestBodyItemHTTP2Id,
+        SettingsBulkEditRequestBodyItemHTTP3Id,
+        SettingsBulkEditRequestBodyItemZonesSchemasIPGeolocationId,
+        SettingsBulkEditRequestBodyItemIPV6Id,
+        SettingsBulkEditRequestBodyItemZonesMaxUploadId,
+        SettingsBulkEditRequestBodyItemMinTLSVersionId,
+        SettingsBulkEditRequestBodyItemZonesSchemasMirageId,
+        SettingsBulkEditRequestBodyItemNELId,
+        SettingsBulkEditRequestBodyItemZonesSchemasOpportunisticEncryptionId,
+        SettingsBulkEditRequestBodyItemOpportunisticOnionId,
+        SettingsBulkEditRequestBodyItemOrangeToOrangeId,
+        SettingsBulkEditRequestBodyItemZonesSchemasOriginErrorPagePassThruId,
+        SettingsBulkEditRequestBodyItemZonesCacheRulesOriginH2MaxStreamsId,
+        SettingsBulkEditRequestBodyItemZonesCacheRulesOriginMaxHTTPVersionId,
+        SettingsBulkEditRequestBodyItemZonesSchemasPolishId,
+        SettingsBulkEditRequestBodyItemPrefetchPreloadId,
+        SettingsBulkEditRequestBodyItemZonesPrivacyPassId,
+        SettingsBulkEditRequestBodyItemProxyReadTimeoutId,
+        SettingsBulkEditRequestBodyItemPseudoIPV4Id,
+        SettingsBulkEditRequestBodyItemZonesRedirectsForAITrainingId,
+        SettingsBulkEditRequestBodyItemZonesReplaceInsecureJSId,
+        SettingsBulkEditRequestBodyItemZonesSchemasResponseBufferingId,
+        SettingsBulkEditRequestBodyItemZonesSchemasRocketLoaderId,
+        SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimizationId,
+        SettingsBulkEditRequestBodyItemZonesSearchForAgentsId,
+        SettingsBulkEditRequestBodyItemSecurityHeadersId,
+        SettingsBulkEditRequestBodyItemZonesSchemasSecurityLevelId,
+        SettingsBulkEditRequestBodyItemServerSideExcludesId,
+        SettingsBulkEditRequestBodyItemZonesSha1SupportId,
+        SettingsBulkEditRequestBodyItemZonesSchemasSortQueryStringForCacheId,
+        SettingsBulkEditRequestBodyItemZonesSchemasSSLId,
+        SettingsBulkEditRequestBodyItemSSLRecommenderId,
+        SettingsBulkEditRequestBodyItemZonesTLS12OnlyId,
+        SettingsBulkEditRequestBodyItemTLS13Id,
+        SettingsBulkEditRequestBodyItemTLSClientAuthId,
+        SettingsBulkEditRequestBodyItemZonesSchemasTrueClientIPHeaderId,
+        SettingsBulkEditRequestBodyItemZonesSchemasWAFId,
+        SettingsBulkEditRequestBodyItemWebPId,
+        SettingsBulkEditRequestBodyItemWebsocketId,
+      ),
+    ),
+    value: S.optional(
+      S.Union(
+        SettingsBulkEditRequestBodyItemZeroRTTValue,
+        SettingsBulkEditRequestBodyItemAdvancedDDoSValue,
+        SettingsBulkEditRequestBodyItemZonesCacheRulesAegisValue,
+        SettingsBulkEditRequestBodyItemAlwaysOnlineValue,
+        SettingsBulkEditRequestBodyItemZonesSchemasAlwaysUseHTTPSValue,
+        SettingsBulkEditRequestBodyItemZonesSchemasAutomaticHTTPSRewritesValue,
+        SettingsBulkEditRequestBodyItemBrotliValue,
+        S.Number,
+        SettingsBulkEditRequestBodyItemZonesSchemasBrowserCheckValue,
+        SettingsBulkEditRequestBodyItemZonesSchemasCacheLevelValue,
+        SettingsBulkEditRequestBodyItemChallengeTTLValue,
+        SettingsBulkEditRequestBodyItemZonesChinaNetworkEnabledValue,
+        SettingsBulkEditRequestBodyItemZonesContentConverterValue,
+        SettingsBulkEditRequestBodyItemCiphersValueList,
+        SettingsBulkEditRequestBodyItemZonesCNAMEFlatteningValue,
+        SettingsBulkEditRequestBodyItemDevelopmentModeValue,
+        SettingsBulkEditRequestBodyItemEarlyHintsValue,
+        SettingsBulkEditRequestBodyItemZonesSchemasEdgeCacheTTLValue,
+        SettingsBulkEditRequestBodyItemZonesSchemasEmailObfuscationValue,
+        SettingsBulkEditRequestBodyItemH2PrioritizationValue,
+        SettingsBulkEditRequestBodyItemHotlinkProtectionValue,
+        SettingsBulkEditRequestBodyItemHTTP2Value,
+        SettingsBulkEditRequestBodyItemHTTP3Value,
+        SettingsBulkEditRequestBodyItemZonesSchemasIPGeolocationValue,
+        SettingsBulkEditRequestBodyItemIPV6Value,
+        SettingsBulkEditRequestBodyItemZonesMaxUploadValue,
+        SettingsBulkEditRequestBodyItemMinTLSVersionValue,
+        SettingsBulkEditRequestBodyItemZonesSchemasMirageValue,
+        SettingsBulkEditRequestBodyItemNELValue,
+        SettingsBulkEditRequestBodyItemZonesSchemasOpportunisticEncryptionValue,
+        SettingsBulkEditRequestBodyItemOpportunisticOnionValue,
+        SettingsBulkEditRequestBodyItemOrangeToOrangeValue,
+        SettingsBulkEditRequestBodyItemZonesSchemasOriginErrorPagePassThruValue,
+        SettingsBulkEditRequestBodyItemZonesCacheRulesOriginMaxHTTPVersionValue,
+        SettingsBulkEditRequestBodyItemZonesSchemasPolishValue,
+        SettingsBulkEditRequestBodyItemPrefetchPreloadValue,
+        SettingsBulkEditRequestBodyItemZonesPrivacyPassValue,
+        SettingsBulkEditRequestBodyItemPseudoIPV4Value,
+        SettingsBulkEditRequestBodyItemZonesRedirectsForAITrainingValue,
+        SettingsBulkEditRequestBodyItemZonesReplaceInsecureJSValue,
+        SettingsBulkEditRequestBodyItemZonesSchemasResponseBufferingValue,
+        SettingsBulkEditRequestBodyItemZonesSchemasRocketLoaderValue,
+        SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimizationValue,
+        SettingsBulkEditRequestBodyItemZonesSearchForAgentsValue,
+        SettingsBulkEditRequestBodyItemSecurityHeadersValue,
+        SettingsBulkEditRequestBodyItemZonesSchemasSecurityLevelValue,
+        SettingsBulkEditRequestBodyItemServerSideExcludesValue,
+        SettingsBulkEditRequestBodyItemZonesSha1SupportValue,
+        SettingsBulkEditRequestBodyItemZonesSchemasSortQueryStringForCacheValue,
+        SettingsBulkEditRequestBodyItemZonesSchemasSSLValue,
+        SettingsBulkEditRequestBodyItemZonesTLS12OnlyValue,
+        SettingsBulkEditRequestBodyItemTLS13Value,
+        SettingsBulkEditRequestBodyItemTLSClientAuthValue,
+        SettingsBulkEditRequestBodyItemZonesSchemasTrueClientIPHeaderValue,
+        SettingsBulkEditRequestBodyItemZonesSchemasWAFValue,
+        SettingsBulkEditRequestBodyItemWebPValue,
+        SettingsBulkEditRequestBodyItemWebsocketValue,
+      ),
+    ),
+    editable: S.optional(S.Boolean),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    timeRemaining: S.optional(S.Number.pipe(T.Body("time_remaining"))),
+    enabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SettingsBulkEditRequestBodyItem",
+}) as any as S.Schema<SettingsBulkEditRequestBodyItem>;
 
 export type SettingsBulkEditRequestBodyList =
   ReadonlyArray<SettingsBulkEditRequestBodyItem>;

@@ -836,15 +836,29 @@ export const RunRequestToolsItemFunction = /*@__PURE__*/ S.suspend(() =>
   identifier: "RunRequestToolsItemFunction",
 }) as any as S.Schema<RunRequestToolsItemFunction>;
 
-export type RunRequestToolsItem =
-  | RunRequestToolsItemCase0
-  | RunRequestToolsItemFunction;
-export const RunRequestToolsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["description", "name", "parameters"],
-    ["function", "type"],
-  ]),
-);
+export interface RunRequestToolsItem {
+  /** A brief description of what the tool does. */
+  description?: string;
+  /** The name of the tool. More descriptive the better. */
+  name?: string;
+  /** Schema defining the parameters accepted by the tool. */
+  parameters?: RunRequestToolsItemCase0Parameters;
+  /** Details of the function tool. */
+  function?: RunRequestToolsItemFunctionFunction;
+  /** Specifies the type of tool (e.g., 'function'). */
+  type?: string;
+}
+export const RunRequestToolsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    name: S.optional(S.String),
+    parameters: S.optional(RunRequestToolsItemCase0Parameters),
+    function: S.optional(RunRequestToolsItemFunctionFunction),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RunRequestToolsItem",
+}) as any as S.Schema<RunRequestToolsItem>;
 
 export type RunRequestToolsList = ReadonlyArray<RunRequestToolsItem>;
 export const RunRequestToolsList = /*@__PURE__*/ S.Array(

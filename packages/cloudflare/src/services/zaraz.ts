@@ -5373,44 +5373,96 @@ export const ConfigUpdateRequestToolsWorker = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigUpdateRequestToolsWorker",
 }) as any as S.Schema<ConfigUpdateRequestToolsWorker>;
 
-export type ConfigUpdateRequestTools =
-  | ConfigUpdateRequestToolsZarazManagedComponent
-  | ConfigUpdateRequestToolsWorker;
-export const ConfigUpdateRequestTools = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "blockingTriggers",
-      "component",
-      "defaultFields",
-      "enabled",
-      "name",
-      "permissions",
-      "settings",
-      "type",
-      "actions",
-      "defaultPurpose",
-      "neoEvents",
-      "vendorName",
-      "vendorPolicyUrl",
-    ],
-    [
-      "blockingTriggers",
-      "component",
-      "defaultFields",
-      "enabled",
-      "name",
-      "permissions",
-      "settings",
-      "type",
-      "worker",
-      "actions",
-      "defaultPurpose",
-      "neoEvents",
-      "vendorName",
-      "vendorPolicyUrl",
-    ],
-  ]),
-);
+export interface ConfigUpdateRequestTools {
+  /** List of blocking trigger IDs. */
+  blockingTriggers:
+    | ConfigUpdateRequestToolsZarazManagedComponentBlockingTriggersList
+    | ConfigUpdateRequestToolsWorkerBlockingTriggersList;
+  /** Tool's internal name. */
+  component: string;
+  /** Default fields for tool's actions. */
+  defaultFields:
+    | ConfigUpdateRequestToolsZarazManagedComponentDefaultFields
+    | ConfigUpdateRequestToolsWorkerDefaultFields;
+  /** Whether tool is enabled. */
+  enabled: boolean;
+  /** Tool's name defined by the user. */
+  name: string;
+  /** List of permissions granted to the component. */
+  permissions:
+    | ConfigUpdateRequestToolsZarazManagedComponentPermissionsList
+    | ConfigUpdateRequestToolsWorkerPermissionsList;
+  /** Tool's settings. */
+  settings:
+    | ConfigUpdateRequestToolsZarazManagedComponentSettings
+    | ConfigUpdateRequestToolsWorkerSettings;
+  type:
+    | ConfigUpdateRequestToolsZarazManagedComponentType
+    | (string & {})
+    | ConfigUpdateRequestToolsWorkerType
+    | (string & {});
+  /** Actions configured on a tool. Either this or neoEvents field is required. */
+  actions?:
+    | ConfigUpdateRequestToolsZarazManagedComponentActionsMap
+    | ConfigUpdateRequestToolsWorkerActionsMap;
+  /** Default consent purpose ID. */
+  defaultPurpose?: string;
+  /** DEPRECATED - List of actions configured on a tool. Either this or actions field is required. If both are present, actions field will take precedence. */
+  neoEvents?:
+    | ConfigUpdateRequestToolsZarazManagedComponentNeoEventsList
+    | ConfigUpdateRequestToolsWorkerNeoEventsList;
+  /** Vendor name for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned. */
+  vendorName?: string;
+  /** Vendor's Privacy Policy URL for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned. */
+  vendorPolicyUrl?: string;
+  /** Cloudflare worker that acts as a managed component. */
+  worker?: ConfigUpdateRequestToolsWorkerWorker;
+}
+export const ConfigUpdateRequestTools = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    blockingTriggers: S.Union(
+      ConfigUpdateRequestToolsZarazManagedComponentBlockingTriggersList,
+      ConfigUpdateRequestToolsWorkerBlockingTriggersList,
+    ),
+    component: S.String,
+    defaultFields: S.Union(
+      ConfigUpdateRequestToolsZarazManagedComponentDefaultFields,
+      ConfigUpdateRequestToolsWorkerDefaultFields,
+    ),
+    enabled: S.Boolean,
+    name: S.String,
+    permissions: S.Union(
+      ConfigUpdateRequestToolsZarazManagedComponentPermissionsList,
+      ConfigUpdateRequestToolsWorkerPermissionsList,
+    ),
+    settings: S.Union(
+      ConfigUpdateRequestToolsZarazManagedComponentSettings,
+      ConfigUpdateRequestToolsWorkerSettings,
+    ),
+    type: S.Union(
+      ConfigUpdateRequestToolsZarazManagedComponentType,
+      ConfigUpdateRequestToolsWorkerType,
+    ),
+    actions: S.optional(
+      S.Union(
+        ConfigUpdateRequestToolsZarazManagedComponentActionsMap,
+        ConfigUpdateRequestToolsWorkerActionsMap,
+      ),
+    ),
+    defaultPurpose: S.optional(S.String),
+    neoEvents: S.optional(
+      S.Union(
+        ConfigUpdateRequestToolsZarazManagedComponentNeoEventsList,
+        ConfigUpdateRequestToolsWorkerNeoEventsList,
+      ),
+    ),
+    vendorName: S.optional(S.String),
+    vendorPolicyUrl: S.optional(S.String),
+    worker: S.optional(ConfigUpdateRequestToolsWorkerWorker),
+  }),
+).annotate({
+  identifier: "ConfigUpdateRequestTools",
+}) as any as S.Schema<ConfigUpdateRequestTools>;
 
 export type ConfigUpdateRequestTriggersValueExcludeRulesItemZarazLoadRuleOp =
   | "CONTAINS"
@@ -5697,26 +5749,67 @@ export const ConfigUpdateRequestTriggersValueExcludeRulesItemZarazElementVisibil
       "ConfigUpdateRequestTriggersValueExcludeRulesItemZarazElementVisibilityRule",
   }) as any as S.Schema<ConfigUpdateRequestTriggersValueExcludeRulesItemZarazElementVisibilityRule>;
 
-export type ConfigUpdateRequestTriggersValueExcludeRulesItem =
-  | ConfigUpdateRequestTriggersValueExcludeRulesItemZarazLoadRule
-  | ConfigUpdateRequestTriggersValueExcludeRulesItemZarazClickListenerRule
-  | ConfigUpdateRequestTriggersValueExcludeRulesItemZarazTimerRule
-  | ConfigUpdateRequestTriggersValueExcludeRulesItemZarazFormSubmissionRule
-  | ConfigUpdateRequestTriggersValueExcludeRulesItemZarazVariableMatchRule
-  | ConfigUpdateRequestTriggersValueExcludeRulesItemZarazScrollDepthRule
-  | ConfigUpdateRequestTriggersValueExcludeRulesItemZarazElementVisibilityRule;
+export interface ConfigUpdateRequestTriggersValueExcludeRulesItem {
+  id: string;
+  match?: string;
+  op?:
+    | ConfigUpdateRequestTriggersValueExcludeRulesItemZarazLoadRuleOp
+    | (string & {});
+  value?: string;
+  action?:
+    | ConfigUpdateRequestTriggersValueExcludeRulesItemZarazClickListenerRuleAction
+    | (string & {})
+    | ConfigUpdateRequestTriggersValueExcludeRulesItemZarazTimerRuleAction
+    | (string & {})
+    | ConfigUpdateRequestTriggersValueExcludeRulesItemZarazFormSubmissionRuleAction
+    | (string & {})
+    | ConfigUpdateRequestTriggersValueExcludeRulesItemZarazVariableMatchRuleAction
+    | (string & {})
+    | ConfigUpdateRequestTriggersValueExcludeRulesItemZarazScrollDepthRuleAction
+    | (string & {})
+    | ConfigUpdateRequestTriggersValueExcludeRulesItemZarazElementVisibilityRuleAction
+    | (string & {});
+  settings?:
+    | ConfigUpdateRequestTriggersValueExcludeRulesItemZarazClickListenerRuleSettings
+    | ConfigUpdateRequestTriggersValueExcludeRulesItemZarazTimerRuleSettings
+    | ConfigUpdateRequestTriggersValueExcludeRulesItemZarazFormSubmissionRuleSettings
+    | ConfigUpdateRequestTriggersValueExcludeRulesItemZarazVariableMatchRuleSettings
+    | ConfigUpdateRequestTriggersValueExcludeRulesItemZarazScrollDepthRuleSettings
+    | ConfigUpdateRequestTriggersValueExcludeRulesItemZarazElementVisibilityRuleSettings;
+}
 export const ConfigUpdateRequestTriggersValueExcludeRulesItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["id", "match", "op", "value"],
-      ["id", "action", "settings"],
-      ["id", "action", "settings"],
-      ["id", "action", "settings"],
-      ["id", "action", "settings"],
-      ["id", "action", "settings"],
-      ["id", "action", "settings"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      match: S.optional(S.String),
+      op: S.optional(
+        ConfigUpdateRequestTriggersValueExcludeRulesItemZarazLoadRuleOp,
+      ),
+      value: S.optional(S.String),
+      action: S.optional(
+        S.Union(
+          ConfigUpdateRequestTriggersValueExcludeRulesItemZarazClickListenerRuleAction,
+          ConfigUpdateRequestTriggersValueExcludeRulesItemZarazTimerRuleAction,
+          ConfigUpdateRequestTriggersValueExcludeRulesItemZarazFormSubmissionRuleAction,
+          ConfigUpdateRequestTriggersValueExcludeRulesItemZarazVariableMatchRuleAction,
+          ConfigUpdateRequestTriggersValueExcludeRulesItemZarazScrollDepthRuleAction,
+          ConfigUpdateRequestTriggersValueExcludeRulesItemZarazElementVisibilityRuleAction,
+        ),
+      ),
+      settings: S.optional(
+        S.Union(
+          ConfigUpdateRequestTriggersValueExcludeRulesItemZarazClickListenerRuleSettings,
+          ConfigUpdateRequestTriggersValueExcludeRulesItemZarazTimerRuleSettings,
+          ConfigUpdateRequestTriggersValueExcludeRulesItemZarazFormSubmissionRuleSettings,
+          ConfigUpdateRequestTriggersValueExcludeRulesItemZarazVariableMatchRuleSettings,
+          ConfigUpdateRequestTriggersValueExcludeRulesItemZarazScrollDepthRuleSettings,
+          ConfigUpdateRequestTriggersValueExcludeRulesItemZarazElementVisibilityRuleSettings,
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "ConfigUpdateRequestTriggersValueExcludeRulesItem",
+  }) as any as S.Schema<ConfigUpdateRequestTriggersValueExcludeRulesItem>;
 
 export type ConfigUpdateRequestTriggersValueExcludeRulesList =
   ReadonlyArray<ConfigUpdateRequestTriggersValueExcludeRulesItem>;
@@ -6008,26 +6101,67 @@ export const ConfigUpdateRequestTriggersValueLoadRulesItemZarazElementVisibility
       "ConfigUpdateRequestTriggersValueLoadRulesItemZarazElementVisibilityRule",
   }) as any as S.Schema<ConfigUpdateRequestTriggersValueLoadRulesItemZarazElementVisibilityRule>;
 
-export type ConfigUpdateRequestTriggersValueLoadRulesItem =
-  | ConfigUpdateRequestTriggersValueLoadRulesItemZarazLoadRule
-  | ConfigUpdateRequestTriggersValueLoadRulesItemZarazClickListenerRule
-  | ConfigUpdateRequestTriggersValueLoadRulesItemZarazTimerRule
-  | ConfigUpdateRequestTriggersValueLoadRulesItemZarazFormSubmissionRule
-  | ConfigUpdateRequestTriggersValueLoadRulesItemZarazVariableMatchRule
-  | ConfigUpdateRequestTriggersValueLoadRulesItemZarazScrollDepthRule
-  | ConfigUpdateRequestTriggersValueLoadRulesItemZarazElementVisibilityRule;
+export interface ConfigUpdateRequestTriggersValueLoadRulesItem {
+  id: string;
+  match?: string;
+  op?:
+    | ConfigUpdateRequestTriggersValueLoadRulesItemZarazLoadRuleOp
+    | (string & {});
+  value?: string;
+  action?:
+    | ConfigUpdateRequestTriggersValueLoadRulesItemZarazClickListenerRuleAction
+    | (string & {})
+    | ConfigUpdateRequestTriggersValueLoadRulesItemZarazTimerRuleAction
+    | (string & {})
+    | ConfigUpdateRequestTriggersValueLoadRulesItemZarazFormSubmissionRuleAction
+    | (string & {})
+    | ConfigUpdateRequestTriggersValueLoadRulesItemZarazVariableMatchRuleAction
+    | (string & {})
+    | ConfigUpdateRequestTriggersValueLoadRulesItemZarazScrollDepthRuleAction
+    | (string & {})
+    | ConfigUpdateRequestTriggersValueLoadRulesItemZarazElementVisibilityRuleAction
+    | (string & {});
+  settings?:
+    | ConfigUpdateRequestTriggersValueLoadRulesItemZarazClickListenerRuleSettings
+    | ConfigUpdateRequestTriggersValueLoadRulesItemZarazTimerRuleSettings
+    | ConfigUpdateRequestTriggersValueLoadRulesItemZarazFormSubmissionRuleSettings
+    | ConfigUpdateRequestTriggersValueLoadRulesItemZarazVariableMatchRuleSettings
+    | ConfigUpdateRequestTriggersValueLoadRulesItemZarazScrollDepthRuleSettings
+    | ConfigUpdateRequestTriggersValueLoadRulesItemZarazElementVisibilityRuleSettings;
+}
 export const ConfigUpdateRequestTriggersValueLoadRulesItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["id", "match", "op", "value"],
-      ["id", "action", "settings"],
-      ["id", "action", "settings"],
-      ["id", "action", "settings"],
-      ["id", "action", "settings"],
-      ["id", "action", "settings"],
-      ["id", "action", "settings"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      match: S.optional(S.String),
+      op: S.optional(
+        ConfigUpdateRequestTriggersValueLoadRulesItemZarazLoadRuleOp,
+      ),
+      value: S.optional(S.String),
+      action: S.optional(
+        S.Union(
+          ConfigUpdateRequestTriggersValueLoadRulesItemZarazClickListenerRuleAction,
+          ConfigUpdateRequestTriggersValueLoadRulesItemZarazTimerRuleAction,
+          ConfigUpdateRequestTriggersValueLoadRulesItemZarazFormSubmissionRuleAction,
+          ConfigUpdateRequestTriggersValueLoadRulesItemZarazVariableMatchRuleAction,
+          ConfigUpdateRequestTriggersValueLoadRulesItemZarazScrollDepthRuleAction,
+          ConfigUpdateRequestTriggersValueLoadRulesItemZarazElementVisibilityRuleAction,
+        ),
+      ),
+      settings: S.optional(
+        S.Union(
+          ConfigUpdateRequestTriggersValueLoadRulesItemZarazClickListenerRuleSettings,
+          ConfigUpdateRequestTriggersValueLoadRulesItemZarazTimerRuleSettings,
+          ConfigUpdateRequestTriggersValueLoadRulesItemZarazFormSubmissionRuleSettings,
+          ConfigUpdateRequestTriggersValueLoadRulesItemZarazVariableMatchRuleSettings,
+          ConfigUpdateRequestTriggersValueLoadRulesItemZarazScrollDepthRuleSettings,
+          ConfigUpdateRequestTriggersValueLoadRulesItemZarazElementVisibilityRuleSettings,
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "ConfigUpdateRequestTriggersValueLoadRulesItem",
+  }) as any as S.Schema<ConfigUpdateRequestTriggersValueLoadRulesItem>;
 
 export type ConfigUpdateRequestTriggersValueLoadRulesList =
   ReadonlyArray<ConfigUpdateRequestTriggersValueLoadRulesItem>;
@@ -6138,17 +6272,30 @@ export const ConfigUpdateRequestVariablesWorker = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigUpdateRequestVariablesWorker",
 }) as any as S.Schema<ConfigUpdateRequestVariablesWorker>;
 
-export type ConfigUpdateRequestVariables =
-  | ConfigUpdateRequestVariablesString
-  | ConfigUpdateRequestVariablesSecret
-  | ConfigUpdateRequestVariablesWorker;
-export const ConfigUpdateRequestVariables = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["name", "type", "value"],
-    ["name", "type", "value"],
-    ["name", "type", "value"],
-  ]),
-);
+export interface ConfigUpdateRequestVariables {
+  name: string;
+  type:
+    | ConfigUpdateRequestVariablesStringType
+    | (string & {})
+    | ConfigUpdateRequestVariablesSecretType
+    | (string & {})
+    | ConfigUpdateRequestVariablesWorkerType
+    | (string & {});
+  value: string | ConfigUpdateRequestVariablesWorkerValue;
+}
+export const ConfigUpdateRequestVariables = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    type: S.Union(
+      ConfigUpdateRequestVariablesStringType,
+      ConfigUpdateRequestVariablesSecretType,
+      ConfigUpdateRequestVariablesWorkerType,
+    ),
+    value: S.Union(S.String, ConfigUpdateRequestVariablesWorkerValue),
+  }),
+).annotate({
+  identifier: "ConfigUpdateRequestVariables",
+}) as any as S.Schema<ConfigUpdateRequestVariables>;
 
 export interface ConfigUpdateRequestAnalytics {
   /** Consent purpose assigned to Monitoring. */

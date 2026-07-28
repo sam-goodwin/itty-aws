@@ -187,8 +187,6 @@ export interface JobsCreateRequestOutputOptions {
   batchPrefix?: string;
   /** String to be appended after each batch. */
   batchSuffix?: string;
-  /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228?: boolean;
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
@@ -211,12 +209,13 @@ export interface JobsCreateRequestOutputOptions {
   timestampFormat?:
     | JobsCreateRequestOutputOptionsTimestampFormat
     | (string & {});
+  /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
+  "cve-2021-44228"?: boolean;
 }
 export const JobsCreateRequestOutputOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
     batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-    CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
     fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
     fieldNames: S.optional(
       JobsCreateRequestOutputOptionsFieldNamesList.pipe(T.Body("field_names")),
@@ -235,6 +234,7 @@ export const JobsCreateRequestOutputOptions = /*@__PURE__*/ S.suspend(() =>
         T.Body("timestamp_format"),
       ),
     ),
+    "cve-2021-44228": S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
   }),
 ).annotate({
   identifier: "JobsCreateRequestOutputOptions",
@@ -373,8 +373,6 @@ export interface JobsCreateResponseOutputOptions {
   batchPrefix?: string;
   /** String to be appended after each batch. */
   batchSuffix?: string;
-  /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228?: boolean;
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
@@ -395,12 +393,13 @@ export interface JobsCreateResponseOutputOptions {
   sampleRate?: number;
   /** String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`. */
   timestampFormat?: JobsCreateResponseOutputOptionsTimestampFormat;
+  /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
+  "cve-2021-44228"?: boolean;
 }
 export const JobsCreateResponseOutputOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
     batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-    CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
     fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
     fieldNames: S.optional(
       JobsCreateResponseOutputOptionsFieldNamesList.pipe(T.Body("field_names")),
@@ -419,6 +418,7 @@ export const JobsCreateResponseOutputOptions = /*@__PURE__*/ S.suspend(() =>
         T.Body("timestamp_format"),
       ),
     ),
+    "cve-2021-44228": S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
   }),
 ).annotate({
   identifier: "JobsCreateResponseOutputOptions",
@@ -1011,8 +1011,6 @@ export interface DatasetsJobsGetResultItemOutputOptions {
   batchPrefix?: string;
   /** String to be appended after each batch. */
   batchSuffix?: string;
-  /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228?: boolean;
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
@@ -1033,13 +1031,14 @@ export interface DatasetsJobsGetResultItemOutputOptions {
   sampleRate?: number;
   /** String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`. */
   timestampFormat?: DatasetsJobsGetResultItemOutputOptionsTimestampFormat;
+  /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
+  "cve-2021-44228"?: boolean;
 }
 export const DatasetsJobsGetResultItemOutputOptions = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
       batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
       fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
       fieldNames: S.optional(
         DatasetsJobsGetResultItemOutputOptionsFieldNamesList.pipe(
@@ -1062,6 +1061,7 @@ export const DatasetsJobsGetResultItemOutputOptions = /*@__PURE__*/ S.suspend(
           T.Body("timestamp_format"),
         ),
       ),
+      "cve-2021-44228": S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
     }),
 ).annotate({
   identifier: "DatasetsJobsGetResultItemOutputOptions",
@@ -1320,8 +1320,6 @@ export interface JobsGetResponseOutputOptions {
   batchPrefix?: string;
   /** String to be appended after each batch. */
   batchSuffix?: string;
-  /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228?: boolean;
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
@@ -1342,12 +1340,13 @@ export interface JobsGetResponseOutputOptions {
   sampleRate?: number;
   /** String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`. */
   timestampFormat?: JobsGetResponseOutputOptionsTimestampFormat;
+  /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
+  "cve-2021-44228"?: boolean;
 }
 export const JobsGetResponseOutputOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
     batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-    CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
     fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
     fieldNames: S.optional(
       JobsGetResponseOutputOptionsFieldNamesList.pipe(T.Body("field_names")),
@@ -1366,6 +1365,7 @@ export const JobsGetResponseOutputOptions = /*@__PURE__*/ S.suspend(() =>
         T.Body("timestamp_format"),
       ),
     ),
+    "cve-2021-44228": S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
   }),
 ).annotate({
   identifier: "JobsGetResponseOutputOptions",
@@ -1539,8 +1539,6 @@ export interface JobsListResultItemOutputOptions {
   batchPrefix?: string;
   /** String to be appended after each batch. */
   batchSuffix?: string;
-  /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228?: boolean;
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
@@ -1561,12 +1559,13 @@ export interface JobsListResultItemOutputOptions {
   sampleRate?: number;
   /** String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`. */
   timestampFormat?: JobsListResultItemOutputOptionsTimestampFormat;
+  /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
+  "cve-2021-44228"?: boolean;
 }
 export const JobsListResultItemOutputOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
     batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-    CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
     fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
     fieldNames: S.optional(
       JobsListResultItemOutputOptionsFieldNamesList.pipe(T.Body("field_names")),
@@ -1585,6 +1584,7 @@ export const JobsListResultItemOutputOptions = /*@__PURE__*/ S.suspend(() =>
         T.Body("timestamp_format"),
       ),
     ),
+    "cve-2021-44228": S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
   }),
 ).annotate({
   identifier: "JobsListResultItemOutputOptions",
@@ -1778,8 +1778,6 @@ export interface JobsUpdateRequestOutputOptions {
   batchPrefix?: string;
   /** String to be appended after each batch. */
   batchSuffix?: string;
-  /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228?: boolean;
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
@@ -1802,12 +1800,13 @@ export interface JobsUpdateRequestOutputOptions {
   timestampFormat?:
     | JobsUpdateRequestOutputOptionsTimestampFormat
     | (string & {});
+  /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
+  "cve-2021-44228"?: boolean;
 }
 export const JobsUpdateRequestOutputOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
     batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-    CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
     fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
     fieldNames: S.optional(
       JobsUpdateRequestOutputOptionsFieldNamesList.pipe(T.Body("field_names")),
@@ -1826,6 +1825,7 @@ export const JobsUpdateRequestOutputOptions = /*@__PURE__*/ S.suspend(() =>
         T.Body("timestamp_format"),
       ),
     ),
+    "cve-2021-44228": S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
   }),
 ).annotate({
   identifier: "JobsUpdateRequestOutputOptions",
@@ -1964,8 +1964,6 @@ export interface JobsUpdateResponseOutputOptions {
   batchPrefix?: string;
   /** String to be appended after each batch. */
   batchSuffix?: string;
-  /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228?: boolean;
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
@@ -1986,12 +1984,13 @@ export interface JobsUpdateResponseOutputOptions {
   sampleRate?: number;
   /** String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`. */
   timestampFormat?: JobsUpdateResponseOutputOptionsTimestampFormat;
+  /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
+  "cve-2021-44228"?: boolean;
 }
 export const JobsUpdateResponseOutputOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
     batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-    CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
     fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
     fieldNames: S.optional(
       JobsUpdateResponseOutputOptionsFieldNamesList.pipe(T.Body("field_names")),
@@ -2010,6 +2009,7 @@ export const JobsUpdateResponseOutputOptions = /*@__PURE__*/ S.suspend(() =>
         T.Body("timestamp_format"),
       ),
     ),
+    "cve-2021-44228": S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
   }),
 ).annotate({
   identifier: "JobsUpdateResponseOutputOptions",

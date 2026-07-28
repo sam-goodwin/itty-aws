@@ -524,63 +524,43 @@ export const RecordsBatchRequestPatchesItemURIRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPatchesItemURIRecord",
 }) as any as S.Schema<RecordsBatchRequestPatchesItemURIRecord>;
 
-export type RecordsBatchRequestPatchesItem =
-  | RecordsBatchRequestPatchesItemARecord
-  | RecordsBatchRequestPatchesItemAAAARecord
-  | RecordsBatchRequestPatchesItemCNAMERecord
-  | RecordsBatchRequestPatchesItemMXRecord
-  | RecordsBatchRequestPatchesItemNSRecord
-  | RecordsBatchRequestPatchesItemOpenpgpkeyRecord
-  | RecordsBatchRequestPatchesItemPTRRecord
-  | RecordsBatchRequestPatchesItemTXTRecord
-  | RecordsBatchRequestPatchesItemCAARecord
-  | RecordsBatchRequestPatchesItemCERTRecord
-  | RecordsBatchRequestPatchesItemDNSKEYRecord
-  | RecordsBatchRequestPatchesItemDSRecord
-  | RecordsBatchRequestPatchesItemHTTPSRecord
-  | RecordsBatchRequestPatchesItemLOCRecord
-  | RecordsBatchRequestPatchesItemNAPTRRecord
-  | RecordsBatchRequestPatchesItemSMIMEARecord
-  | RecordsBatchRequestPatchesItemSRVRecord
-  | RecordsBatchRequestPatchesItemSSHFPRecord
-  | RecordsBatchRequestPatchesItemSVCBRecord
-  | RecordsBatchRequestPatchesItemTLSARecord
-  | RecordsBatchRequestPatchesItemURIRecord;
-export const RecordsBatchRequestPatchesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    [
-      "id",
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-  ]),
-);
+export interface RecordsBatchRequestPatchesItem {
+  /** Identifier. */
+  id: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name?: string;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: number;
+  /** Record type. */
+  type?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordType | (string & {});
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
+  content?: string;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList;
+}
+export const RecordsBatchRequestPatchesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.optional(S.String),
+    ttl: S.optional(S.Number),
+    type: S.optional(RecordsBatchRequestPatchesItemOpenpgpkeyRecordType),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(
+      RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+    ),
+    tags: S.optional(RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList),
+  }),
+).annotate({
+  identifier: "RecordsBatchRequestPatchesItem",
+}) as any as S.Schema<RecordsBatchRequestPatchesItem>;
 
 export type RecordsBatchRequestPatchesList =
   ReadonlyArray<RecordsBatchRequestPatchesItem>;
@@ -2238,259 +2218,230 @@ export const RecordsBatchRequestPostsItemURIRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemURIRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemURIRecord>;
 
-export type RecordsBatchRequestPostsItem =
-  | RecordsBatchRequestPostsItemARecord
-  | RecordsBatchRequestPostsItemAAAARecord
-  | RecordsBatchRequestPostsItemCNAMERecord
-  | RecordsBatchRequestPostsItemMXRecord
-  | RecordsBatchRequestPostsItemNSRecord
-  | RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecord
-  | RecordsBatchRequestPostsItemPTRRecord
-  | RecordsBatchRequestPostsItemTXTRecord
-  | RecordsBatchRequestPostsItemCAARecord
-  | RecordsBatchRequestPostsItemCERTRecord
-  | RecordsBatchRequestPostsItemDNSKEYRecord
-  | RecordsBatchRequestPostsItemDSRecord
-  | RecordsBatchRequestPostsItemHTTPSRecord
-  | RecordsBatchRequestPostsItemLOCRecord
-  | RecordsBatchRequestPostsItemNAPTRRecord
-  | RecordsBatchRequestPostsItemSMIMEARecord
-  | RecordsBatchRequestPostsItemSRVRecord
-  | RecordsBatchRequestPostsItemSSHFPRecord
-  | RecordsBatchRequestPostsItemSVCBRecord
-  | RecordsBatchRequestPostsItemTLSARecord
-  | RecordsBatchRequestPostsItemURIRecord;
-export const RecordsBatchRequestPostsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "privateRouting",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "privateRouting",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "priority",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "priority",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-  ]),
-);
+export interface RecordsBatchRequestPostsItem {
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl: number;
+  /** Record type. */
+  type:
+    | RecordsBatchRequestPostsItemARecordType
+    | (string & {})
+    | RecordsBatchRequestPostsItemAAAARecordType
+    | (string & {})
+    | RecordsBatchRequestPostsItemCNAMERecordType
+    | (string & {})
+    | RecordsBatchRequestPostsItemMXRecordType
+    | (string & {})
+    | RecordsBatchRequestPostsItemNSRecordType
+    | (string & {})
+    | RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordType
+    | (string & {})
+    | RecordsBatchRequestPostsItemPTRRecordType
+    | (string & {})
+    | RecordsBatchRequestPostsItemTXTRecordType
+    | (string & {})
+    | RecordsBatchRequestPostsItemCAARecordType
+    | (string & {})
+    | RecordsBatchRequestPostsItemCERTRecordType
+    | (string & {})
+    | RecordsBatchRequestPostsItemDNSKEYRecordType
+    | (string & {})
+    | RecordsBatchRequestPostsItemDSRecordType
+    | (string & {})
+    | RecordsBatchRequestPostsItemHTTPSRecordType
+    | (string & {})
+    | RecordsBatchRequestPostsItemLOCRecordType
+    | (string & {})
+    | RecordsBatchRequestPostsItemNAPTRRecordType
+    | (string & {})
+    | RecordsBatchRequestPostsItemSMIMEARecordType
+    | (string & {})
+    | RecordsBatchRequestPostsItemSRVRecordType
+    | (string & {})
+    | RecordsBatchRequestPostsItemSSHFPRecordType
+    | (string & {})
+    | RecordsBatchRequestPostsItemSVCBRecordType
+    | (string & {})
+    | RecordsBatchRequestPostsItemTLSARecordType
+    | (string & {})
+    | RecordsBatchRequestPostsItemURIRecordType
+    | (string & {});
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A valid IPv4 address. */
+  content?: string;
+  /** Enables private network routing to the origin. */
+  privateRouting?: boolean;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?:
+    | RecordsBatchRequestPostsItemARecordSettings
+    | RecordsBatchRequestPostsItemAAAARecordSettings
+    | RecordsBatchRequestPostsItemCNAMERecordSettings
+    | RecordsBatchRequestPostsItemMXRecordSettings
+    | RecordsBatchRequestPostsItemNSRecordSettings
+    | RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordSettings
+    | RecordsBatchRequestPostsItemPTRRecordSettings
+    | RecordsBatchRequestPostsItemTXTRecordSettings
+    | RecordsBatchRequestPostsItemCAARecordSettings
+    | RecordsBatchRequestPostsItemCERTRecordSettings
+    | RecordsBatchRequestPostsItemDNSKEYRecordSettings
+    | RecordsBatchRequestPostsItemDSRecordSettings
+    | RecordsBatchRequestPostsItemHTTPSRecordSettings
+    | RecordsBatchRequestPostsItemLOCRecordSettings
+    | RecordsBatchRequestPostsItemNAPTRRecordSettings
+    | RecordsBatchRequestPostsItemSMIMEARecordSettings
+    | RecordsBatchRequestPostsItemSRVRecordSettings
+    | RecordsBatchRequestPostsItemSSHFPRecordSettings
+    | RecordsBatchRequestPostsItemSVCBRecordSettings
+    | RecordsBatchRequestPostsItemTLSARecordSettings
+    | RecordsBatchRequestPostsItemURIRecordSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?:
+    | RecordsBatchRequestPostsItemARecordTagsList
+    | RecordsBatchRequestPostsItemAAAARecordTagsList
+    | RecordsBatchRequestPostsItemCNAMERecordTagsList
+    | RecordsBatchRequestPostsItemMXRecordTagsList
+    | RecordsBatchRequestPostsItemNSRecordTagsList
+    | RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordTagsList
+    | RecordsBatchRequestPostsItemPTRRecordTagsList
+    | RecordsBatchRequestPostsItemTXTRecordTagsList
+    | RecordsBatchRequestPostsItemCAARecordTagsList
+    | RecordsBatchRequestPostsItemCERTRecordTagsList
+    | RecordsBatchRequestPostsItemDNSKEYRecordTagsList
+    | RecordsBatchRequestPostsItemDSRecordTagsList
+    | RecordsBatchRequestPostsItemHTTPSRecordTagsList
+    | RecordsBatchRequestPostsItemLOCRecordTagsList
+    | RecordsBatchRequestPostsItemNAPTRRecordTagsList
+    | RecordsBatchRequestPostsItemSMIMEARecordTagsList
+    | RecordsBatchRequestPostsItemSRVRecordTagsList
+    | RecordsBatchRequestPostsItemSSHFPRecordTagsList
+    | RecordsBatchRequestPostsItemSVCBRecordTagsList
+    | RecordsBatchRequestPostsItemTLSARecordTagsList
+    | RecordsBatchRequestPostsItemURIRecordTagsList;
+  /** Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map. */
+  priority?: number;
+  /** Components of a CAA record. */
+  data?:
+    | RecordsBatchRequestPostsItemCAARecordData
+    | RecordsBatchRequestPostsItemCERTRecordData
+    | RecordsBatchRequestPostsItemDNSKEYRecordData
+    | RecordsBatchRequestPostsItemDSRecordData
+    | RecordsBatchRequestPostsItemHTTPSRecordData
+    | RecordsBatchRequestPostsItemLOCRecordData
+    | RecordsBatchRequestPostsItemNAPTRRecordData
+    | RecordsBatchRequestPostsItemSMIMEARecordData
+    | RecordsBatchRequestPostsItemSRVRecordData
+    | RecordsBatchRequestPostsItemSSHFPRecordData
+    | RecordsBatchRequestPostsItemSVCBRecordData
+    | RecordsBatchRequestPostsItemTLSARecordData
+    | RecordsBatchRequestPostsItemURIRecordData;
+}
+export const RecordsBatchRequestPostsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    ttl: S.Number,
+    type: S.Union(
+      RecordsBatchRequestPostsItemARecordType,
+      RecordsBatchRequestPostsItemAAAARecordType,
+      RecordsBatchRequestPostsItemCNAMERecordType,
+      RecordsBatchRequestPostsItemMXRecordType,
+      RecordsBatchRequestPostsItemNSRecordType,
+      RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordType,
+      RecordsBatchRequestPostsItemPTRRecordType,
+      RecordsBatchRequestPostsItemTXTRecordType,
+      RecordsBatchRequestPostsItemCAARecordType,
+      RecordsBatchRequestPostsItemCERTRecordType,
+      RecordsBatchRequestPostsItemDNSKEYRecordType,
+      RecordsBatchRequestPostsItemDSRecordType,
+      RecordsBatchRequestPostsItemHTTPSRecordType,
+      RecordsBatchRequestPostsItemLOCRecordType,
+      RecordsBatchRequestPostsItemNAPTRRecordType,
+      RecordsBatchRequestPostsItemSMIMEARecordType,
+      RecordsBatchRequestPostsItemSRVRecordType,
+      RecordsBatchRequestPostsItemSSHFPRecordType,
+      RecordsBatchRequestPostsItemSVCBRecordType,
+      RecordsBatchRequestPostsItemTLSARecordType,
+      RecordsBatchRequestPostsItemURIRecordType,
+    ),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(
+      S.Union(
+        RecordsBatchRequestPostsItemARecordSettings,
+        RecordsBatchRequestPostsItemAAAARecordSettings,
+        RecordsBatchRequestPostsItemCNAMERecordSettings,
+        RecordsBatchRequestPostsItemMXRecordSettings,
+        RecordsBatchRequestPostsItemNSRecordSettings,
+        RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordSettings,
+        RecordsBatchRequestPostsItemPTRRecordSettings,
+        RecordsBatchRequestPostsItemTXTRecordSettings,
+        RecordsBatchRequestPostsItemCAARecordSettings,
+        RecordsBatchRequestPostsItemCERTRecordSettings,
+        RecordsBatchRequestPostsItemDNSKEYRecordSettings,
+        RecordsBatchRequestPostsItemDSRecordSettings,
+        RecordsBatchRequestPostsItemHTTPSRecordSettings,
+        RecordsBatchRequestPostsItemLOCRecordSettings,
+        RecordsBatchRequestPostsItemNAPTRRecordSettings,
+        RecordsBatchRequestPostsItemSMIMEARecordSettings,
+        RecordsBatchRequestPostsItemSRVRecordSettings,
+        RecordsBatchRequestPostsItemSSHFPRecordSettings,
+        RecordsBatchRequestPostsItemSVCBRecordSettings,
+        RecordsBatchRequestPostsItemTLSARecordSettings,
+        RecordsBatchRequestPostsItemURIRecordSettings,
+      ),
+    ),
+    tags: S.optional(
+      S.Union(
+        RecordsBatchRequestPostsItemARecordTagsList,
+        RecordsBatchRequestPostsItemAAAARecordTagsList,
+        RecordsBatchRequestPostsItemCNAMERecordTagsList,
+        RecordsBatchRequestPostsItemMXRecordTagsList,
+        RecordsBatchRequestPostsItemNSRecordTagsList,
+        RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordTagsList,
+        RecordsBatchRequestPostsItemPTRRecordTagsList,
+        RecordsBatchRequestPostsItemTXTRecordTagsList,
+        RecordsBatchRequestPostsItemCAARecordTagsList,
+        RecordsBatchRequestPostsItemCERTRecordTagsList,
+        RecordsBatchRequestPostsItemDNSKEYRecordTagsList,
+        RecordsBatchRequestPostsItemDSRecordTagsList,
+        RecordsBatchRequestPostsItemHTTPSRecordTagsList,
+        RecordsBatchRequestPostsItemLOCRecordTagsList,
+        RecordsBatchRequestPostsItemNAPTRRecordTagsList,
+        RecordsBatchRequestPostsItemSMIMEARecordTagsList,
+        RecordsBatchRequestPostsItemSRVRecordTagsList,
+        RecordsBatchRequestPostsItemSSHFPRecordTagsList,
+        RecordsBatchRequestPostsItemSVCBRecordTagsList,
+        RecordsBatchRequestPostsItemTLSARecordTagsList,
+        RecordsBatchRequestPostsItemURIRecordTagsList,
+      ),
+    ),
+    priority: S.optional(S.Number),
+    data: S.optional(
+      S.Union(
+        RecordsBatchRequestPostsItemCAARecordData,
+        RecordsBatchRequestPostsItemCERTRecordData,
+        RecordsBatchRequestPostsItemDNSKEYRecordData,
+        RecordsBatchRequestPostsItemDSRecordData,
+        RecordsBatchRequestPostsItemHTTPSRecordData,
+        RecordsBatchRequestPostsItemLOCRecordData,
+        RecordsBatchRequestPostsItemNAPTRRecordData,
+        RecordsBatchRequestPostsItemSMIMEARecordData,
+        RecordsBatchRequestPostsItemSRVRecordData,
+        RecordsBatchRequestPostsItemSSHFPRecordData,
+        RecordsBatchRequestPostsItemSVCBRecordData,
+        RecordsBatchRequestPostsItemTLSARecordData,
+        RecordsBatchRequestPostsItemURIRecordData,
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsBatchRequestPostsItem",
+}) as any as S.Schema<RecordsBatchRequestPostsItem>;
 
 export type RecordsBatchRequestPostsList =
   ReadonlyArray<RecordsBatchRequestPostsItem>;
@@ -2818,63 +2769,41 @@ export const RecordsBatchRequestPutsItemURIRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPutsItemURIRecord",
 }) as any as S.Schema<RecordsBatchRequestPutsItemURIRecord>;
 
-export type RecordsBatchRequestPutsItem =
-  | RecordsBatchRequestPutsItemARecord
-  | RecordsBatchRequestPutsItemAAAARecord
-  | RecordsBatchRequestPutsItemCNAMERecord
-  | RecordsBatchRequestPutsItemMXRecord
-  | RecordsBatchRequestPutsItemNSRecord
-  | RecordsBatchRequestPutsItemOpenpgpkeyRecord
-  | RecordsBatchRequestPutsItemPTRRecord
-  | RecordsBatchRequestPutsItemTXTRecord
-  | RecordsBatchRequestPutsItemCAARecord
-  | RecordsBatchRequestPutsItemCERTRecord
-  | RecordsBatchRequestPutsItemDNSKEYRecord
-  | RecordsBatchRequestPutsItemDSRecord
-  | RecordsBatchRequestPutsItemHTTPSRecord
-  | RecordsBatchRequestPutsItemLOCRecord
-  | RecordsBatchRequestPutsItemNAPTRRecord
-  | RecordsBatchRequestPutsItemSMIMEARecord
-  | RecordsBatchRequestPutsItemSRVRecord
-  | RecordsBatchRequestPutsItemSSHFPRecord
-  | RecordsBatchRequestPutsItemSVCBRecord
-  | RecordsBatchRequestPutsItemTLSARecord
-  | RecordsBatchRequestPutsItemURIRecord;
-export const RecordsBatchRequestPutsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    [
-      "id",
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-  ]),
-);
+export interface RecordsBatchRequestPutsItem {
+  /** Identifier. */
+  id: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name?: string;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: number;
+  /** Record type. */
+  type?: RecordsBatchRequestPutsItemOpenpgpkeyRecordType | (string & {});
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
+  content?: string;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsBatchRequestPutsItemOpenpgpkeyRecordSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsBatchRequestPutsItemOpenpgpkeyRecordTagsList;
+}
+export const RecordsBatchRequestPutsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.optional(S.String),
+    ttl: S.optional(S.Number),
+    type: S.optional(RecordsBatchRequestPutsItemOpenpgpkeyRecordType),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(RecordsBatchRequestPutsItemOpenpgpkeyRecordSettings),
+    tags: S.optional(RecordsBatchRequestPutsItemOpenpgpkeyRecordTagsList),
+  }),
+).annotate({
+  identifier: "RecordsBatchRequestPutsItem",
+}) as any as S.Schema<RecordsBatchRequestPutsItem>;
 
 export type RecordsBatchRequestPutsList =
   ReadonlyArray<RecordsBatchRequestPutsItem>;
@@ -4830,15 +4759,23 @@ export const RecordsCreateRequestSettingsCNAMERecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsCreateRequestSettingsCNAMERecord",
 }) as any as S.Schema<RecordsCreateRequestSettingsCNAMERecord>;
 
-export type RecordsCreateRequestSettings =
-  | RecordsCreateRequestSettingsARecord
-  | RecordsCreateRequestSettingsCNAMERecord;
-export const RecordsCreateRequestSettings = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["ipv4Only", "ipv6Only"],
-    ["flattenCname", "ipv4Only", "ipv6Only"],
-  ]),
-);
+export interface RecordsCreateRequestSettings {
+  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv4Only?: boolean;
+  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv6Only?: boolean;
+  /** If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened. */
+  flattenCname?: boolean;
+}
+export const RecordsCreateRequestSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
+    ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
+    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
+  }),
+).annotate({
+  identifier: "RecordsCreateRequestSettings",
+}) as any as S.Schema<RecordsCreateRequestSettings>;
 
 export type RecordsCreateRequestTagsList = ReadonlyArray<unknown>;
 export const RecordsCreateRequestTagsList = /*@__PURE__*/ S.Array(
@@ -5111,46 +5048,132 @@ export const RecordsCreateRequestDataURIRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateRequestDataURIRecord",
 }) as any as S.Schema<RecordsCreateRequestDataURIRecord>;
 
-export type RecordsCreateRequestData =
-  | RecordsCreateRequestDataCAARecord
-  | RecordsCreateRequestDataCERTRecord
-  | RecordsCreateRequestDataDNSKEYRecord
-  | RecordsCreateRequestDataDSRecord
-  | RecordsCreateRequestDataHTTPSRecord
-  | RecordsCreateRequestDataLOCRecord
-  | RecordsCreateRequestDataNAPTRRecord
-  | RecordsCreateRequestDataSMIMEARecord
-  | RecordsCreateRequestDataSRVRecord
-  | RecordsCreateRequestDataSSHFPRecord
-  | RecordsCreateRequestDataURIRecord;
-export const RecordsCreateRequestData = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["flags", "tag", "value"],
-    ["algorithm", "certificate", "keyTag", "type"],
-    ["algorithm", "flags", "protocol", "publicKey"],
-    ["algorithm", "digest", "digestType", "keyTag"],
-    ["priority", "target", "value"],
-    [
-      "altitude",
-      "latDegrees",
-      "latDirection",
-      "latMinutes",
-      "latSeconds",
-      "longDegrees",
-      "longDirection",
-      "longMinutes",
-      "longSeconds",
-      "precisionHorz",
-      "precisionVert",
-      "size",
-    ],
-    ["flags", "order", "preference", "regex", "replacement", "service"],
-    ["certificate", "matchingType", "selector", "usage"],
-    ["port", "priority", "target", "weight"],
-    ["algorithm", "fingerprint", "type"],
-    ["target", "weight"],
-  ]),
-);
+export interface RecordsCreateRequestData {
+  /** Flags for the CAA record. */
+  flags?: number | string;
+  /** Name of the property controlled by this record (e.g.: issue, issuewild, iodef). */
+  tag?: string;
+  /** Value of the record. This field's semantics depend on the chosen tag. */
+  value?: string;
+  /** Algorithm. */
+  algorithm?: number;
+  /** Certificate. */
+  certificate?: string;
+  /** Key Tag. */
+  keyTag?: number;
+  /** Type. */
+  type?: number;
+  /** Protocol. */
+  protocol?: number;
+  /** Public Key. */
+  publicKey?: string;
+  /** Digest. */
+  digest?: string;
+  /** Digest Type. */
+  digestType?: number;
+  /** Priority. */
+  priority?: number;
+  /** Target. */
+  target?: string;
+  /** Altitude of location in meters. */
+  altitude?: number;
+  /** Degrees of latitude. */
+  latDegrees?: number;
+  /** Latitude direction. */
+  latDirection?: RecordsCreateRequestDataLOCRecordLatDirection | (string & {});
+  /** Minutes of latitude. */
+  latMinutes?: number;
+  /** Seconds of latitude. */
+  latSeconds?: number;
+  /** Degrees of longitude. */
+  longDegrees?: number;
+  /** Longitude direction. */
+  longDirection?:
+    | RecordsCreateRequestDataLOCRecordLongDirection
+    | (string & {});
+  /** Minutes of longitude. */
+  longMinutes?: number;
+  /** Seconds of longitude. */
+  longSeconds?: number;
+  /** Horizontal precision of location. */
+  precisionHorz?: number;
+  /** Vertical precision of location. */
+  precisionVert?: number;
+  /** Size of location in meters. */
+  size?: number;
+  /** Order. */
+  order?: number;
+  /** Preference. */
+  preference?: number;
+  /** Regex. */
+  regex?: string;
+  /** Replacement. */
+  replacement?: string;
+  /** Service. */
+  service?: string;
+  /** Matching Type. */
+  matchingType?: number;
+  /** Selector. */
+  selector?: number;
+  /** Usage. */
+  usage?: number;
+  /** The port of the service. */
+  port?: number;
+  /** The record weight. */
+  weight?: number;
+  /** Fingerprint. */
+  fingerprint?: string;
+}
+export const RecordsCreateRequestData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    flags: S.optional(S.Union(S.Number, S.String)),
+    tag: S.optional(S.String),
+    value: S.optional(S.String),
+    algorithm: S.optional(S.Number),
+    certificate: S.optional(S.String),
+    keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
+    type: S.optional(S.Number),
+    protocol: S.optional(S.Number),
+    publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
+    digest: S.optional(S.String),
+    digestType: S.optional(S.Number.pipe(T.Body("digest_type"))),
+    priority: S.optional(S.Number),
+    target: S.optional(S.String),
+    altitude: S.optional(S.Number),
+    latDegrees: S.optional(S.Number.pipe(T.Body("lat_degrees"))),
+    latDirection: S.optional(
+      RecordsCreateRequestDataLOCRecordLatDirection.pipe(
+        T.Body("lat_direction"),
+      ),
+    ),
+    latMinutes: S.optional(S.Number.pipe(T.Body("lat_minutes"))),
+    latSeconds: S.optional(S.Number.pipe(T.Body("lat_seconds"))),
+    longDegrees: S.optional(S.Number.pipe(T.Body("long_degrees"))),
+    longDirection: S.optional(
+      RecordsCreateRequestDataLOCRecordLongDirection.pipe(
+        T.Body("long_direction"),
+      ),
+    ),
+    longMinutes: S.optional(S.Number.pipe(T.Body("long_minutes"))),
+    longSeconds: S.optional(S.Number.pipe(T.Body("long_seconds"))),
+    precisionHorz: S.optional(S.Number.pipe(T.Body("precision_horz"))),
+    precisionVert: S.optional(S.Number.pipe(T.Body("precision_vert"))),
+    size: S.optional(S.Number),
+    order: S.optional(S.Number),
+    preference: S.optional(S.Number),
+    regex: S.optional(S.String),
+    replacement: S.optional(S.String),
+    service: S.optional(S.String),
+    matchingType: S.optional(S.Number.pipe(T.Body("matching_type"))),
+    selector: S.optional(S.Number),
+    usage: S.optional(S.Number),
+    port: S.optional(S.Number),
+    weight: S.optional(S.Number),
+    fingerprint: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RecordsCreateRequestData",
+}) as any as S.Schema<RecordsCreateRequestData>;
 
 export interface CreateRecordRequest {
   /** Identifier. */
@@ -12496,15 +12519,23 @@ export const RecordsEditRequestSettingsCNAMERecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsEditRequestSettingsCNAMERecord",
 }) as any as S.Schema<RecordsEditRequestSettingsCNAMERecord>;
 
-export type RecordsEditRequestSettings =
-  | RecordsEditRequestSettingsARecord
-  | RecordsEditRequestSettingsCNAMERecord;
-export const RecordsEditRequestSettings = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["ipv4Only", "ipv6Only"],
-    ["flattenCname", "ipv4Only", "ipv6Only"],
-  ]),
-);
+export interface RecordsEditRequestSettings {
+  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv4Only?: boolean;
+  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv6Only?: boolean;
+  /** If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened. */
+  flattenCname?: boolean;
+}
+export const RecordsEditRequestSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
+    ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
+    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
+  }),
+).annotate({
+  identifier: "RecordsEditRequestSettings",
+}) as any as S.Schema<RecordsEditRequestSettings>;
 
 export type RecordsEditRequestTagsList = ReadonlyArray<unknown>;
 export const RecordsEditRequestTagsList = /*@__PURE__*/ S.Array(
@@ -12771,46 +12802,128 @@ export const RecordsEditRequestDataURIRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditRequestDataURIRecord",
 }) as any as S.Schema<RecordsEditRequestDataURIRecord>;
 
-export type RecordsEditRequestData =
-  | RecordsEditRequestDataCAARecord
-  | RecordsEditRequestDataCERTRecord
-  | RecordsEditRequestDataDNSKEYRecord
-  | RecordsEditRequestDataDSRecord
-  | RecordsEditRequestDataHTTPSRecord
-  | RecordsEditRequestDataLOCRecord
-  | RecordsEditRequestDataNAPTRRecord
-  | RecordsEditRequestDataSMIMEARecord
-  | RecordsEditRequestDataSRVRecord
-  | RecordsEditRequestDataSSHFPRecord
-  | RecordsEditRequestDataURIRecord;
-export const RecordsEditRequestData = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["flags", "tag", "value"],
-    ["algorithm", "certificate", "keyTag", "type"],
-    ["algorithm", "flags", "protocol", "publicKey"],
-    ["algorithm", "digest", "digestType", "keyTag"],
-    ["priority", "target", "value"],
-    [
-      "altitude",
-      "latDegrees",
-      "latDirection",
-      "latMinutes",
-      "latSeconds",
-      "longDegrees",
-      "longDirection",
-      "longMinutes",
-      "longSeconds",
-      "precisionHorz",
-      "precisionVert",
-      "size",
-    ],
-    ["flags", "order", "preference", "regex", "replacement", "service"],
-    ["certificate", "matchingType", "selector", "usage"],
-    ["port", "priority", "target", "weight"],
-    ["algorithm", "fingerprint", "type"],
-    ["target", "weight"],
-  ]),
-);
+export interface RecordsEditRequestData {
+  /** Flags for the CAA record. */
+  flags?: number | string;
+  /** Name of the property controlled by this record (e.g.: issue, issuewild, iodef). */
+  tag?: string;
+  /** Value of the record. This field's semantics depend on the chosen tag. */
+  value?: string;
+  /** Algorithm. */
+  algorithm?: number;
+  /** Certificate. */
+  certificate?: string;
+  /** Key Tag. */
+  keyTag?: number;
+  /** Type. */
+  type?: number;
+  /** Protocol. */
+  protocol?: number;
+  /** Public Key. */
+  publicKey?: string;
+  /** Digest. */
+  digest?: string;
+  /** Digest Type. */
+  digestType?: number;
+  /** Priority. */
+  priority?: number;
+  /** Target. */
+  target?: string;
+  /** Altitude of location in meters. */
+  altitude?: number;
+  /** Degrees of latitude. */
+  latDegrees?: number;
+  /** Latitude direction. */
+  latDirection?: RecordsEditRequestDataLOCRecordLatDirection | (string & {});
+  /** Minutes of latitude. */
+  latMinutes?: number;
+  /** Seconds of latitude. */
+  latSeconds?: number;
+  /** Degrees of longitude. */
+  longDegrees?: number;
+  /** Longitude direction. */
+  longDirection?: RecordsEditRequestDataLOCRecordLongDirection | (string & {});
+  /** Minutes of longitude. */
+  longMinutes?: number;
+  /** Seconds of longitude. */
+  longSeconds?: number;
+  /** Horizontal precision of location. */
+  precisionHorz?: number;
+  /** Vertical precision of location. */
+  precisionVert?: number;
+  /** Size of location in meters. */
+  size?: number;
+  /** Order. */
+  order?: number;
+  /** Preference. */
+  preference?: number;
+  /** Regex. */
+  regex?: string;
+  /** Replacement. */
+  replacement?: string;
+  /** Service. */
+  service?: string;
+  /** Matching Type. */
+  matchingType?: number;
+  /** Selector. */
+  selector?: number;
+  /** Usage. */
+  usage?: number;
+  /** The port of the service. */
+  port?: number;
+  /** The record weight. */
+  weight?: number;
+  /** Fingerprint. */
+  fingerprint?: string;
+}
+export const RecordsEditRequestData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    flags: S.optional(S.Union(S.Number, S.String)),
+    tag: S.optional(S.String),
+    value: S.optional(S.String),
+    algorithm: S.optional(S.Number),
+    certificate: S.optional(S.String),
+    keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
+    type: S.optional(S.Number),
+    protocol: S.optional(S.Number),
+    publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
+    digest: S.optional(S.String),
+    digestType: S.optional(S.Number.pipe(T.Body("digest_type"))),
+    priority: S.optional(S.Number),
+    target: S.optional(S.String),
+    altitude: S.optional(S.Number),
+    latDegrees: S.optional(S.Number.pipe(T.Body("lat_degrees"))),
+    latDirection: S.optional(
+      RecordsEditRequestDataLOCRecordLatDirection.pipe(T.Body("lat_direction")),
+    ),
+    latMinutes: S.optional(S.Number.pipe(T.Body("lat_minutes"))),
+    latSeconds: S.optional(S.Number.pipe(T.Body("lat_seconds"))),
+    longDegrees: S.optional(S.Number.pipe(T.Body("long_degrees"))),
+    longDirection: S.optional(
+      RecordsEditRequestDataLOCRecordLongDirection.pipe(
+        T.Body("long_direction"),
+      ),
+    ),
+    longMinutes: S.optional(S.Number.pipe(T.Body("long_minutes"))),
+    longSeconds: S.optional(S.Number.pipe(T.Body("long_seconds"))),
+    precisionHorz: S.optional(S.Number.pipe(T.Body("precision_horz"))),
+    precisionVert: S.optional(S.Number.pipe(T.Body("precision_vert"))),
+    size: S.optional(S.Number),
+    order: S.optional(S.Number),
+    preference: S.optional(S.Number),
+    regex: S.optional(S.String),
+    replacement: S.optional(S.String),
+    service: S.optional(S.String),
+    matchingType: S.optional(S.Number.pipe(T.Body("matching_type"))),
+    selector: S.optional(S.Number),
+    usage: S.optional(S.Number),
+    port: S.optional(S.Number),
+    weight: S.optional(S.Number),
+    fingerprint: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RecordsEditRequestData",
+}) as any as S.Schema<RecordsEditRequestData>;
 
 export interface PatchRecordRequest {
   /** Identifier. */
@@ -18223,259 +18336,230 @@ export const RecordsScanReviewRequestAcceptsItemURIRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemURIRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemURIRecord>;
 
-export type RecordsScanReviewRequestAcceptsItem =
-  | RecordsScanReviewRequestAcceptsItemARecord
-  | RecordsScanReviewRequestAcceptsItemAAAARecord
-  | RecordsScanReviewRequestAcceptsItemCNAMERecord
-  | RecordsScanReviewRequestAcceptsItemMXRecord
-  | RecordsScanReviewRequestAcceptsItemNSRecord
-  | RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecord
-  | RecordsScanReviewRequestAcceptsItemPTRRecord
-  | RecordsScanReviewRequestAcceptsItemTXTRecord
-  | RecordsScanReviewRequestAcceptsItemCAARecord
-  | RecordsScanReviewRequestAcceptsItemCERTRecord
-  | RecordsScanReviewRequestAcceptsItemDNSKEYRecord
-  | RecordsScanReviewRequestAcceptsItemDSRecord
-  | RecordsScanReviewRequestAcceptsItemHTTPSRecord
-  | RecordsScanReviewRequestAcceptsItemLOCRecord
-  | RecordsScanReviewRequestAcceptsItemNAPTRRecord
-  | RecordsScanReviewRequestAcceptsItemSMIMEARecord
-  | RecordsScanReviewRequestAcceptsItemSRVRecord
-  | RecordsScanReviewRequestAcceptsItemSSHFPRecord
-  | RecordsScanReviewRequestAcceptsItemSVCBRecord
-  | RecordsScanReviewRequestAcceptsItemTLSARecord
-  | RecordsScanReviewRequestAcceptsItemURIRecord;
-export const RecordsScanReviewRequestAcceptsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "privateRouting",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "privateRouting",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "priority",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "priority",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-  ]),
-);
+export interface RecordsScanReviewRequestAcceptsItem {
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl: number;
+  /** Record type. */
+  type:
+    | RecordsScanReviewRequestAcceptsItemARecordType
+    | (string & {})
+    | RecordsScanReviewRequestAcceptsItemAAAARecordType
+    | (string & {})
+    | RecordsScanReviewRequestAcceptsItemCNAMERecordType
+    | (string & {})
+    | RecordsScanReviewRequestAcceptsItemMXRecordType
+    | (string & {})
+    | RecordsScanReviewRequestAcceptsItemNSRecordType
+    | (string & {})
+    | RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordType
+    | (string & {})
+    | RecordsScanReviewRequestAcceptsItemPTRRecordType
+    | (string & {})
+    | RecordsScanReviewRequestAcceptsItemTXTRecordType
+    | (string & {})
+    | RecordsScanReviewRequestAcceptsItemCAARecordType
+    | (string & {})
+    | RecordsScanReviewRequestAcceptsItemCERTRecordType
+    | (string & {})
+    | RecordsScanReviewRequestAcceptsItemDNSKEYRecordType
+    | (string & {})
+    | RecordsScanReviewRequestAcceptsItemDSRecordType
+    | (string & {})
+    | RecordsScanReviewRequestAcceptsItemHTTPSRecordType
+    | (string & {})
+    | RecordsScanReviewRequestAcceptsItemLOCRecordType
+    | (string & {})
+    | RecordsScanReviewRequestAcceptsItemNAPTRRecordType
+    | (string & {})
+    | RecordsScanReviewRequestAcceptsItemSMIMEARecordType
+    | (string & {})
+    | RecordsScanReviewRequestAcceptsItemSRVRecordType
+    | (string & {})
+    | RecordsScanReviewRequestAcceptsItemSSHFPRecordType
+    | (string & {})
+    | RecordsScanReviewRequestAcceptsItemSVCBRecordType
+    | (string & {})
+    | RecordsScanReviewRequestAcceptsItemTLSARecordType
+    | (string & {})
+    | RecordsScanReviewRequestAcceptsItemURIRecordType
+    | (string & {});
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A valid IPv4 address. */
+  content?: string;
+  /** Enables private network routing to the origin. */
+  privateRouting?: boolean;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?:
+    | RecordsScanReviewRequestAcceptsItemARecordSettings
+    | RecordsScanReviewRequestAcceptsItemAAAARecordSettings
+    | RecordsScanReviewRequestAcceptsItemCNAMERecordSettings
+    | RecordsScanReviewRequestAcceptsItemMXRecordSettings
+    | RecordsScanReviewRequestAcceptsItemNSRecordSettings
+    | RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordSettings
+    | RecordsScanReviewRequestAcceptsItemPTRRecordSettings
+    | RecordsScanReviewRequestAcceptsItemTXTRecordSettings
+    | RecordsScanReviewRequestAcceptsItemCAARecordSettings
+    | RecordsScanReviewRequestAcceptsItemCERTRecordSettings
+    | RecordsScanReviewRequestAcceptsItemDNSKEYRecordSettings
+    | RecordsScanReviewRequestAcceptsItemDSRecordSettings
+    | RecordsScanReviewRequestAcceptsItemHTTPSRecordSettings
+    | RecordsScanReviewRequestAcceptsItemLOCRecordSettings
+    | RecordsScanReviewRequestAcceptsItemNAPTRRecordSettings
+    | RecordsScanReviewRequestAcceptsItemSMIMEARecordSettings
+    | RecordsScanReviewRequestAcceptsItemSRVRecordSettings
+    | RecordsScanReviewRequestAcceptsItemSSHFPRecordSettings
+    | RecordsScanReviewRequestAcceptsItemSVCBRecordSettings
+    | RecordsScanReviewRequestAcceptsItemTLSARecordSettings
+    | RecordsScanReviewRequestAcceptsItemURIRecordSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?:
+    | RecordsScanReviewRequestAcceptsItemARecordTagsList
+    | RecordsScanReviewRequestAcceptsItemAAAARecordTagsList
+    | RecordsScanReviewRequestAcceptsItemCNAMERecordTagsList
+    | RecordsScanReviewRequestAcceptsItemMXRecordTagsList
+    | RecordsScanReviewRequestAcceptsItemNSRecordTagsList
+    | RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordTagsList
+    | RecordsScanReviewRequestAcceptsItemPTRRecordTagsList
+    | RecordsScanReviewRequestAcceptsItemTXTRecordTagsList
+    | RecordsScanReviewRequestAcceptsItemCAARecordTagsList
+    | RecordsScanReviewRequestAcceptsItemCERTRecordTagsList
+    | RecordsScanReviewRequestAcceptsItemDNSKEYRecordTagsList
+    | RecordsScanReviewRequestAcceptsItemDSRecordTagsList
+    | RecordsScanReviewRequestAcceptsItemHTTPSRecordTagsList
+    | RecordsScanReviewRequestAcceptsItemLOCRecordTagsList
+    | RecordsScanReviewRequestAcceptsItemNAPTRRecordTagsList
+    | RecordsScanReviewRequestAcceptsItemSMIMEARecordTagsList
+    | RecordsScanReviewRequestAcceptsItemSRVRecordTagsList
+    | RecordsScanReviewRequestAcceptsItemSSHFPRecordTagsList
+    | RecordsScanReviewRequestAcceptsItemSVCBRecordTagsList
+    | RecordsScanReviewRequestAcceptsItemTLSARecordTagsList
+    | RecordsScanReviewRequestAcceptsItemURIRecordTagsList;
+  /** Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map. */
+  priority?: number;
+  /** Components of a CAA record. */
+  data?:
+    | RecordsScanReviewRequestAcceptsItemCAARecordData
+    | RecordsScanReviewRequestAcceptsItemCERTRecordData
+    | RecordsScanReviewRequestAcceptsItemDNSKEYRecordData
+    | RecordsScanReviewRequestAcceptsItemDSRecordData
+    | RecordsScanReviewRequestAcceptsItemHTTPSRecordData
+    | RecordsScanReviewRequestAcceptsItemLOCRecordData
+    | RecordsScanReviewRequestAcceptsItemNAPTRRecordData
+    | RecordsScanReviewRequestAcceptsItemSMIMEARecordData
+    | RecordsScanReviewRequestAcceptsItemSRVRecordData
+    | RecordsScanReviewRequestAcceptsItemSSHFPRecordData
+    | RecordsScanReviewRequestAcceptsItemSVCBRecordData
+    | RecordsScanReviewRequestAcceptsItemTLSARecordData
+    | RecordsScanReviewRequestAcceptsItemURIRecordData;
+}
+export const RecordsScanReviewRequestAcceptsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    ttl: S.Number,
+    type: S.Union(
+      RecordsScanReviewRequestAcceptsItemARecordType,
+      RecordsScanReviewRequestAcceptsItemAAAARecordType,
+      RecordsScanReviewRequestAcceptsItemCNAMERecordType,
+      RecordsScanReviewRequestAcceptsItemMXRecordType,
+      RecordsScanReviewRequestAcceptsItemNSRecordType,
+      RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordType,
+      RecordsScanReviewRequestAcceptsItemPTRRecordType,
+      RecordsScanReviewRequestAcceptsItemTXTRecordType,
+      RecordsScanReviewRequestAcceptsItemCAARecordType,
+      RecordsScanReviewRequestAcceptsItemCERTRecordType,
+      RecordsScanReviewRequestAcceptsItemDNSKEYRecordType,
+      RecordsScanReviewRequestAcceptsItemDSRecordType,
+      RecordsScanReviewRequestAcceptsItemHTTPSRecordType,
+      RecordsScanReviewRequestAcceptsItemLOCRecordType,
+      RecordsScanReviewRequestAcceptsItemNAPTRRecordType,
+      RecordsScanReviewRequestAcceptsItemSMIMEARecordType,
+      RecordsScanReviewRequestAcceptsItemSRVRecordType,
+      RecordsScanReviewRequestAcceptsItemSSHFPRecordType,
+      RecordsScanReviewRequestAcceptsItemSVCBRecordType,
+      RecordsScanReviewRequestAcceptsItemTLSARecordType,
+      RecordsScanReviewRequestAcceptsItemURIRecordType,
+    ),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(
+      S.Union(
+        RecordsScanReviewRequestAcceptsItemARecordSettings,
+        RecordsScanReviewRequestAcceptsItemAAAARecordSettings,
+        RecordsScanReviewRequestAcceptsItemCNAMERecordSettings,
+        RecordsScanReviewRequestAcceptsItemMXRecordSettings,
+        RecordsScanReviewRequestAcceptsItemNSRecordSettings,
+        RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordSettings,
+        RecordsScanReviewRequestAcceptsItemPTRRecordSettings,
+        RecordsScanReviewRequestAcceptsItemTXTRecordSettings,
+        RecordsScanReviewRequestAcceptsItemCAARecordSettings,
+        RecordsScanReviewRequestAcceptsItemCERTRecordSettings,
+        RecordsScanReviewRequestAcceptsItemDNSKEYRecordSettings,
+        RecordsScanReviewRequestAcceptsItemDSRecordSettings,
+        RecordsScanReviewRequestAcceptsItemHTTPSRecordSettings,
+        RecordsScanReviewRequestAcceptsItemLOCRecordSettings,
+        RecordsScanReviewRequestAcceptsItemNAPTRRecordSettings,
+        RecordsScanReviewRequestAcceptsItemSMIMEARecordSettings,
+        RecordsScanReviewRequestAcceptsItemSRVRecordSettings,
+        RecordsScanReviewRequestAcceptsItemSSHFPRecordSettings,
+        RecordsScanReviewRequestAcceptsItemSVCBRecordSettings,
+        RecordsScanReviewRequestAcceptsItemTLSARecordSettings,
+        RecordsScanReviewRequestAcceptsItemURIRecordSettings,
+      ),
+    ),
+    tags: S.optional(
+      S.Union(
+        RecordsScanReviewRequestAcceptsItemARecordTagsList,
+        RecordsScanReviewRequestAcceptsItemAAAARecordTagsList,
+        RecordsScanReviewRequestAcceptsItemCNAMERecordTagsList,
+        RecordsScanReviewRequestAcceptsItemMXRecordTagsList,
+        RecordsScanReviewRequestAcceptsItemNSRecordTagsList,
+        RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordTagsList,
+        RecordsScanReviewRequestAcceptsItemPTRRecordTagsList,
+        RecordsScanReviewRequestAcceptsItemTXTRecordTagsList,
+        RecordsScanReviewRequestAcceptsItemCAARecordTagsList,
+        RecordsScanReviewRequestAcceptsItemCERTRecordTagsList,
+        RecordsScanReviewRequestAcceptsItemDNSKEYRecordTagsList,
+        RecordsScanReviewRequestAcceptsItemDSRecordTagsList,
+        RecordsScanReviewRequestAcceptsItemHTTPSRecordTagsList,
+        RecordsScanReviewRequestAcceptsItemLOCRecordTagsList,
+        RecordsScanReviewRequestAcceptsItemNAPTRRecordTagsList,
+        RecordsScanReviewRequestAcceptsItemSMIMEARecordTagsList,
+        RecordsScanReviewRequestAcceptsItemSRVRecordTagsList,
+        RecordsScanReviewRequestAcceptsItemSSHFPRecordTagsList,
+        RecordsScanReviewRequestAcceptsItemSVCBRecordTagsList,
+        RecordsScanReviewRequestAcceptsItemTLSARecordTagsList,
+        RecordsScanReviewRequestAcceptsItemURIRecordTagsList,
+      ),
+    ),
+    priority: S.optional(S.Number),
+    data: S.optional(
+      S.Union(
+        RecordsScanReviewRequestAcceptsItemCAARecordData,
+        RecordsScanReviewRequestAcceptsItemCERTRecordData,
+        RecordsScanReviewRequestAcceptsItemDNSKEYRecordData,
+        RecordsScanReviewRequestAcceptsItemDSRecordData,
+        RecordsScanReviewRequestAcceptsItemHTTPSRecordData,
+        RecordsScanReviewRequestAcceptsItemLOCRecordData,
+        RecordsScanReviewRequestAcceptsItemNAPTRRecordData,
+        RecordsScanReviewRequestAcceptsItemSMIMEARecordData,
+        RecordsScanReviewRequestAcceptsItemSRVRecordData,
+        RecordsScanReviewRequestAcceptsItemSSHFPRecordData,
+        RecordsScanReviewRequestAcceptsItemSVCBRecordData,
+        RecordsScanReviewRequestAcceptsItemTLSARecordData,
+        RecordsScanReviewRequestAcceptsItemURIRecordData,
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsScanReviewRequestAcceptsItem",
+}) as any as S.Schema<RecordsScanReviewRequestAcceptsItem>;
 
 export type RecordsScanReviewRequestAcceptsList =
   ReadonlyArray<RecordsScanReviewRequestAcceptsItem>;
@@ -20221,15 +20305,23 @@ export const RecordsUpdateRequestSettingsCNAMERecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsUpdateRequestSettingsCNAMERecord",
 }) as any as S.Schema<RecordsUpdateRequestSettingsCNAMERecord>;
 
-export type RecordsUpdateRequestSettings =
-  | RecordsUpdateRequestSettingsARecord
-  | RecordsUpdateRequestSettingsCNAMERecord;
-export const RecordsUpdateRequestSettings = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["ipv4Only", "ipv6Only"],
-    ["flattenCname", "ipv4Only", "ipv6Only"],
-  ]),
-);
+export interface RecordsUpdateRequestSettings {
+  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv4Only?: boolean;
+  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv6Only?: boolean;
+  /** If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened. */
+  flattenCname?: boolean;
+}
+export const RecordsUpdateRequestSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
+    ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
+    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
+  }),
+).annotate({
+  identifier: "RecordsUpdateRequestSettings",
+}) as any as S.Schema<RecordsUpdateRequestSettings>;
 
 export type RecordsUpdateRequestTagsList = ReadonlyArray<unknown>;
 export const RecordsUpdateRequestTagsList = /*@__PURE__*/ S.Array(
@@ -20502,46 +20594,132 @@ export const RecordsUpdateRequestDataURIRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateRequestDataURIRecord",
 }) as any as S.Schema<RecordsUpdateRequestDataURIRecord>;
 
-export type RecordsUpdateRequestData =
-  | RecordsUpdateRequestDataCAARecord
-  | RecordsUpdateRequestDataCERTRecord
-  | RecordsUpdateRequestDataDNSKEYRecord
-  | RecordsUpdateRequestDataDSRecord
-  | RecordsUpdateRequestDataHTTPSRecord
-  | RecordsUpdateRequestDataLOCRecord
-  | RecordsUpdateRequestDataNAPTRRecord
-  | RecordsUpdateRequestDataSMIMEARecord
-  | RecordsUpdateRequestDataSRVRecord
-  | RecordsUpdateRequestDataSSHFPRecord
-  | RecordsUpdateRequestDataURIRecord;
-export const RecordsUpdateRequestData = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["flags", "tag", "value"],
-    ["algorithm", "certificate", "keyTag", "type"],
-    ["algorithm", "flags", "protocol", "publicKey"],
-    ["algorithm", "digest", "digestType", "keyTag"],
-    ["priority", "target", "value"],
-    [
-      "altitude",
-      "latDegrees",
-      "latDirection",
-      "latMinutes",
-      "latSeconds",
-      "longDegrees",
-      "longDirection",
-      "longMinutes",
-      "longSeconds",
-      "precisionHorz",
-      "precisionVert",
-      "size",
-    ],
-    ["flags", "order", "preference", "regex", "replacement", "service"],
-    ["certificate", "matchingType", "selector", "usage"],
-    ["port", "priority", "target", "weight"],
-    ["algorithm", "fingerprint", "type"],
-    ["target", "weight"],
-  ]),
-);
+export interface RecordsUpdateRequestData {
+  /** Flags for the CAA record. */
+  flags?: number | string;
+  /** Name of the property controlled by this record (e.g.: issue, issuewild, iodef). */
+  tag?: string;
+  /** Value of the record. This field's semantics depend on the chosen tag. */
+  value?: string;
+  /** Algorithm. */
+  algorithm?: number;
+  /** Certificate. */
+  certificate?: string;
+  /** Key Tag. */
+  keyTag?: number;
+  /** Type. */
+  type?: number;
+  /** Protocol. */
+  protocol?: number;
+  /** Public Key. */
+  publicKey?: string;
+  /** Digest. */
+  digest?: string;
+  /** Digest Type. */
+  digestType?: number;
+  /** Priority. */
+  priority?: number;
+  /** Target. */
+  target?: string;
+  /** Altitude of location in meters. */
+  altitude?: number;
+  /** Degrees of latitude. */
+  latDegrees?: number;
+  /** Latitude direction. */
+  latDirection?: RecordsUpdateRequestDataLOCRecordLatDirection | (string & {});
+  /** Minutes of latitude. */
+  latMinutes?: number;
+  /** Seconds of latitude. */
+  latSeconds?: number;
+  /** Degrees of longitude. */
+  longDegrees?: number;
+  /** Longitude direction. */
+  longDirection?:
+    | RecordsUpdateRequestDataLOCRecordLongDirection
+    | (string & {});
+  /** Minutes of longitude. */
+  longMinutes?: number;
+  /** Seconds of longitude. */
+  longSeconds?: number;
+  /** Horizontal precision of location. */
+  precisionHorz?: number;
+  /** Vertical precision of location. */
+  precisionVert?: number;
+  /** Size of location in meters. */
+  size?: number;
+  /** Order. */
+  order?: number;
+  /** Preference. */
+  preference?: number;
+  /** Regex. */
+  regex?: string;
+  /** Replacement. */
+  replacement?: string;
+  /** Service. */
+  service?: string;
+  /** Matching Type. */
+  matchingType?: number;
+  /** Selector. */
+  selector?: number;
+  /** Usage. */
+  usage?: number;
+  /** The port of the service. */
+  port?: number;
+  /** The record weight. */
+  weight?: number;
+  /** Fingerprint. */
+  fingerprint?: string;
+}
+export const RecordsUpdateRequestData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    flags: S.optional(S.Union(S.Number, S.String)),
+    tag: S.optional(S.String),
+    value: S.optional(S.String),
+    algorithm: S.optional(S.Number),
+    certificate: S.optional(S.String),
+    keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
+    type: S.optional(S.Number),
+    protocol: S.optional(S.Number),
+    publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
+    digest: S.optional(S.String),
+    digestType: S.optional(S.Number.pipe(T.Body("digest_type"))),
+    priority: S.optional(S.Number),
+    target: S.optional(S.String),
+    altitude: S.optional(S.Number),
+    latDegrees: S.optional(S.Number.pipe(T.Body("lat_degrees"))),
+    latDirection: S.optional(
+      RecordsUpdateRequestDataLOCRecordLatDirection.pipe(
+        T.Body("lat_direction"),
+      ),
+    ),
+    latMinutes: S.optional(S.Number.pipe(T.Body("lat_minutes"))),
+    latSeconds: S.optional(S.Number.pipe(T.Body("lat_seconds"))),
+    longDegrees: S.optional(S.Number.pipe(T.Body("long_degrees"))),
+    longDirection: S.optional(
+      RecordsUpdateRequestDataLOCRecordLongDirection.pipe(
+        T.Body("long_direction"),
+      ),
+    ),
+    longMinutes: S.optional(S.Number.pipe(T.Body("long_minutes"))),
+    longSeconds: S.optional(S.Number.pipe(T.Body("long_seconds"))),
+    precisionHorz: S.optional(S.Number.pipe(T.Body("precision_horz"))),
+    precisionVert: S.optional(S.Number.pipe(T.Body("precision_vert"))),
+    size: S.optional(S.Number),
+    order: S.optional(S.Number),
+    preference: S.optional(S.Number),
+    regex: S.optional(S.String),
+    replacement: S.optional(S.String),
+    service: S.optional(S.String),
+    matchingType: S.optional(S.Number.pipe(T.Body("matching_type"))),
+    selector: S.optional(S.Number),
+    usage: S.optional(S.Number),
+    port: S.optional(S.Number),
+    weight: S.optional(S.Number),
+    fingerprint: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RecordsUpdateRequestData",
+}) as any as S.Schema<RecordsUpdateRequestData>;
 
 export interface UpdateRecordRequest {
   /** Identifier. */

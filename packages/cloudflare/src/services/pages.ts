@@ -336,16 +336,27 @@ export const ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretText =
       "ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretText",
   }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretText>;
 
-export type ProjectsCreateRequestDeploymentConfigsPreviewEnvVars =
-  | ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsPlainText
-  | ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretText;
+export interface ProjectsCreateRequestDeploymentConfigsPreviewEnvVars {
+  type:
+    | ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsPlainTextType
+    | (string & {})
+    | ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretTextType
+    | (string & {});
+  /** Environment variable value. */
+  value: string;
+}
 export const ProjectsCreateRequestDeploymentConfigsPreviewEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.Union(
+        ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsPlainTextType,
+        ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretTextType,
+      ),
+      value: S.String,
+    }),
+  ).annotate({
+    identifier: "ProjectsCreateRequestDeploymentConfigsPreviewEnvVars",
+  }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewEnvVars>;
 
 export interface ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue {
   id: string;
@@ -868,16 +879,27 @@ export const ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretText =
       "ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretText",
   }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretText>;
 
-export type ProjectsCreateRequestDeploymentConfigsProductionEnvVars =
-  | ProjectsCreateRequestDeploymentConfigsProductionEnvVarsPlainText
-  | ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretText;
+export interface ProjectsCreateRequestDeploymentConfigsProductionEnvVars {
+  type:
+    | ProjectsCreateRequestDeploymentConfigsProductionEnvVarsPlainTextType
+    | (string & {})
+    | ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretTextType
+    | (string & {});
+  /** Environment variable value. */
+  value: string;
+}
 export const ProjectsCreateRequestDeploymentConfigsProductionEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.Union(
+        ProjectsCreateRequestDeploymentConfigsProductionEnvVarsPlainTextType,
+        ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretTextType,
+      ),
+      value: S.String,
+    }),
+  ).annotate({
+    identifier: "ProjectsCreateRequestDeploymentConfigsProductionEnvVars",
+  }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionEnvVars>;
 
 export interface ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsValue {
   id: string;
@@ -8672,16 +8694,27 @@ export const ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretText =
     identifier: "ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretText",
   }) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretText>;
 
-export type ProjectsEditRequestDeploymentConfigsPreviewEnvVars =
-  | ProjectsEditRequestDeploymentConfigsPreviewEnvVarsPlainText
-  | ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretText;
+export interface ProjectsEditRequestDeploymentConfigsPreviewEnvVars {
+  type:
+    | ProjectsEditRequestDeploymentConfigsPreviewEnvVarsPlainTextType
+    | (string & {})
+    | ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretTextType
+    | (string & {});
+  /** Environment variable value. */
+  value: string;
+}
 export const ProjectsEditRequestDeploymentConfigsPreviewEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.Union(
+        ProjectsEditRequestDeploymentConfigsPreviewEnvVarsPlainTextType,
+        ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretTextType,
+      ),
+      value: S.String,
+    }),
+  ).annotate({
+    identifier: "ProjectsEditRequestDeploymentConfigsPreviewEnvVars",
+  }) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewEnvVars>;
 
 export interface ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsValue {
   id: string;
@@ -9200,16 +9233,27 @@ export const ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretText =
       "ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretText",
   }) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretText>;
 
-export type ProjectsEditRequestDeploymentConfigsProductionEnvVars =
-  | ProjectsEditRequestDeploymentConfigsProductionEnvVarsPlainText
-  | ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretText;
+export interface ProjectsEditRequestDeploymentConfigsProductionEnvVars {
+  type:
+    | ProjectsEditRequestDeploymentConfigsProductionEnvVarsPlainTextType
+    | (string & {})
+    | ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretTextType
+    | (string & {});
+  /** Environment variable value. */
+  value: string;
+}
 export const ProjectsEditRequestDeploymentConfigsProductionEnvVars =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.Union(
+        ProjectsEditRequestDeploymentConfigsProductionEnvVarsPlainTextType,
+        ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretTextType,
+      ),
+      value: S.String,
+    }),
+  ).annotate({
+    identifier: "ProjectsEditRequestDeploymentConfigsProductionEnvVars",
+  }) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionEnvVars>;
 
 export interface ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsValue {
   id: string;

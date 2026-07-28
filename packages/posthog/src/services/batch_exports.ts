@@ -619,16 +619,58 @@ export const SnowflakeDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SnowflakeDestinationRequest",
 }) as any as S.Schema<SnowflakeDestinationRequest>;
 
-export type BatchExportDestinationRequest =
-  | DatabricksDestinationRequest
-  | AzureBlobDestinationRequest
-  | BigQueryDestinationRequest
-  | PostgresDestinationRequest
-  | AwsS3DestinationRequest
-  | S3CompatibleDestinationRequest
-  | SnowflakeDestinationRequest;
-export const BatchExportDestinationRequest =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<BatchExportDestinationRequest>;
+export interface BatchExportDestinationRequest {
+  type:
+    | DatabricksDestinationRequestTypeEnum
+    | (string & {})
+    | AzureBlobDestinationRequestTypeEnum
+    | (string & {})
+    | BigQueryDestinationRequestTypeEnum
+    | (string & {})
+    | PostgresDestinationRequestTypeEnum
+    | (string & {})
+    | AwsS3DestinationRequestTypeEnum
+    | (string & {})
+    | S3CompatibleDestinationRequestTypeEnum
+    | (string & {})
+    | SnowflakeDestinationRequestTypeEnum
+    | (string & {});
+  /** ID of a databricks-kind Integration. Use the integrations-list MCP tool to find one. */
+  integration_id?: number;
+  config:
+    | DatabricksDestinationConfig
+    | AzureBlobDestinationConfig
+    | BigQueryDestinationConfig
+    | PostgresDestinationConfig
+    | AwsS3DestinationConfig
+    | S3CompatibleDestinationConfig
+    | SnowflakeDestinationConfig;
+}
+export const BatchExportDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.Union(
+      DatabricksDestinationRequestTypeEnum,
+      AzureBlobDestinationRequestTypeEnum,
+      BigQueryDestinationRequestTypeEnum,
+      PostgresDestinationRequestTypeEnum,
+      AwsS3DestinationRequestTypeEnum,
+      S3CompatibleDestinationRequestTypeEnum,
+      SnowflakeDestinationRequestTypeEnum,
+    ),
+    integration_id: S.optional(S.Number),
+    config: S.Union(
+      DatabricksDestinationConfig,
+      AzureBlobDestinationConfig,
+      BigQueryDestinationConfig,
+      PostgresDestinationConfig,
+      AwsS3DestinationConfig,
+      S3CompatibleDestinationConfig,
+      SnowflakeDestinationConfig,
+    ),
+  }),
+).annotate({
+  identifier: "BatchExportDestinationRequest",
+}) as any as S.Schema<BatchExportDestinationRequest>;
 
 /** * `hour` - hour * `day` - day * `week` - week * `every 5 minutes` - every 5 minutes * `every 15 minutes` - every 15 minutes */
 export type BatchExportIntervalEnum =
@@ -712,16 +754,83 @@ export type BatchExportDestinationTypeEnum =
   | "FileDownload";
 export const BatchExportDestinationTypeEnum = /*@__PURE__*/ S.String;
 
-export type BatchExportDestinationConfig =
-  | DatabricksDestinationConfig
-  | AzureBlobDestinationConfig
-  | BigQueryDestinationConfig
-  | PostgresDestinationConfig
-  | AwsS3DestinationConfig
-  | S3CompatibleDestinationConfig
-  | SnowflakeDestinationConfig;
-export const BatchExportDestinationConfig =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<BatchExportDestinationConfig>;
+export interface BatchExportDestinationConfig {
+  /** Databricks SQL warehouse HTTP path. */
+  http_path?: string;
+  /** Unity Catalog name. */
+  catalog?: string;
+  /** Schema (database) name inside the catalog. */
+  schema?: string;
+  /** Destination table name. */
+  table_name?: string;
+  /** Whether to use the Databricks VARIANT type for JSON-like columns. */
+  use_variant_type?: boolean;
+  /** Whether to let Databricks evolve the destination table schema automatically. */
+  use_automatic_schema_evolution?: boolean;
+  /** Azure Blob Storage container name. */
+  container_name?: string;
+  /** Object key prefix applied to every exported file. */
+  prefix?: string;
+  /** Optional compression codec applied to exported files. Valid codecs depend on file_format. * `brotli` - brotli * `gzip` - gzip * `lz4` - lz4 * `snappy` - snappy * `zstd` - zstd */
+  compression?: CompressionEnum | null;
+  /** File format used for exported objects. * `JSONLines` - JSONLines * `Parquet` - Parquet */
+  file_format?: FileFormatEnum;
+  /** If set, rolls to a new file once the current file exceeds this size in MB. */
+  max_file_size_mb?: number | null;
+  /** BigQuery dataset ID to write to. */
+  dataset_id?: string;
+  /** BigQuery table ID inside the dataset. */
+  table_id?: string;
+  /** Whether to export 'properties', 'set', and 'set_once' fields as the BigQuery JSON type rather than STRING. Cannot be changed after the export is created. */
+  use_json_type?: boolean;
+  /** PostgreSQL database name to connect to. */
+  database?: string;
+  /** Legacy SSL option for direct credential configuration. Ignored when using a PostgreSQL integration. */
+  has_self_signed_cert?: boolean;
+  /** Name of the destination bucket. */
+  bucket_name?: string;
+  /** Region the bucket is in (e.g. 'us-east-1'). */
+  region?: string;
+  /** Optional S3 server-side encryption algorithm (e.g. 'AES256' or 'aws:kms'). */
+  encryption?: string | null;
+  /** KMS key ID to use when encryption is 'aws:kms'. */
+  kms_key_id?: string | null;
+  /** Use virtual-hosted-style addressing rather than path-style. */
+  use_virtual_style_addressing?: boolean;
+  /** Snowflake compute warehouse to use. */
+  warehouse?: string;
+  /** Optional Snowflake role to assume for the session. */
+  role?: string | null;
+}
+export const BatchExportDestinationConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    http_path: S.optional(S.String),
+    catalog: S.optional(S.String),
+    schema: S.optional(S.String),
+    table_name: S.optional(S.String),
+    use_variant_type: S.optional(S.Boolean),
+    use_automatic_schema_evolution: S.optional(S.Boolean),
+    container_name: S.optional(S.String),
+    prefix: S.optional(S.String),
+    compression: S.optional(S.NullOr(CompressionEnum)),
+    file_format: S.optional(FileFormatEnum),
+    max_file_size_mb: S.optional(S.NullOr(S.Number)),
+    dataset_id: S.optional(S.String),
+    table_id: S.optional(S.String),
+    use_json_type: S.optional(S.Boolean),
+    database: S.optional(S.String),
+    has_self_signed_cert: S.optional(S.Boolean),
+    bucket_name: S.optional(S.String),
+    region: S.optional(S.String),
+    encryption: S.optional(S.NullOr(S.String)),
+    kms_key_id: S.optional(S.NullOr(S.String)),
+    use_virtual_style_addressing: S.optional(S.Boolean),
+    warehouse: S.optional(S.String),
+    role: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "BatchExportDestinationConfig",
+}) as any as S.Schema<BatchExportDestinationConfig>;
 
 /** Serializer for an BatchExportDestination model. The `config` field is polymorphic and typed only for destinations that keep credentials in the linked Integration (currently Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible, Snowflake). Other destination types accept the same JSON shape but without a typed OpenAPI schema. Secret fields are stripped from `config` on read. */
 export interface BatchExportDestinationOutput {
@@ -2472,12 +2581,36 @@ export const FileDownloadSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileDownloadSessionsRequest",
 }) as any as S.Schema<FileDownloadSessionsRequest>;
 
-export type CreateFileDownloadRequest =
-  | FileDownloadEventsRequest
-  | FileDownloadPersonsRequest
-  | FileDownloadSessionsRequest;
-export const CreateFileDownloadRequest =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<CreateFileDownloadRequest>;
+export interface CreateFileDownloadRequest {
+  file: FileDownloadDestinationFileConfig;
+  model:
+    | FileDownloadEventsRequestModelEnum
+    | (string & {})
+    | FileDownloadPersonsRequestModelEnum
+    | (string & {})
+    | FileDownloadSessionsRequestModelEnum
+    | (string & {});
+  include?: FileDownloadEventsRequestIncludeList;
+  exclude?: FileDownloadEventsRequestExcludeList;
+  data_interval_start: string;
+  data_interval_end: string;
+}
+export const CreateFileDownloadRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    file: FileDownloadDestinationFileConfig,
+    model: S.Union(
+      FileDownloadEventsRequestModelEnum,
+      FileDownloadPersonsRequestModelEnum,
+      FileDownloadSessionsRequestModelEnum,
+    ),
+    include: S.optional(FileDownloadEventsRequestIncludeList),
+    exclude: S.optional(FileDownloadEventsRequestExcludeList),
+    data_interval_start: S.String,
+    data_interval_end: S.String,
+  }),
+).annotate({
+  identifier: "CreateFileDownloadRequest",
+}) as any as S.Schema<CreateFileDownloadRequest>;
 
 export interface FileDownloadBatchExportsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

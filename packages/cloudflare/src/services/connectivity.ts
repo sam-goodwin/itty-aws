@@ -191,19 +191,37 @@ export const DirectoryServicesCreateRequestHostInfraHostnameHost =
     identifier: "DirectoryServicesCreateRequestHostInfraHostnameHost",
   }) as any as S.Schema<DirectoryServicesCreateRequestHostInfraHostnameHost>;
 
-export type DirectoryServicesCreateRequestHost =
-  | DirectoryServicesCreateRequestHostInfraIPv4Host
-  | DirectoryServicesCreateRequestHostInfraIPv6Host
-  | DirectoryServicesCreateRequestHostInfraDualStackHost
-  | DirectoryServicesCreateRequestHostInfraHostnameHost;
-export const DirectoryServicesCreateRequestHost = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["ipv4", "network"],
-    ["ipv6", "network"],
-    ["ipv4", "ipv6", "network"],
-    ["hostname", "resolverNetwork"],
-  ]),
-);
+export interface DirectoryServicesCreateRequestHost {
+  ipv4?: string;
+  network?:
+    | DirectoryServicesCreateRequestHostInfraIPv4HostNetwork
+    | DirectoryServicesCreateRequestHostInfraIPv6HostNetwork
+    | DirectoryServicesCreateRequestHostInfraDualStackHostNetwork;
+  ipv6?: string;
+  hostname?: string;
+  resolverNetwork?: DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetwork;
+}
+export const DirectoryServicesCreateRequestHost = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipv4: S.optional(S.String),
+    network: S.optional(
+      S.Union(
+        DirectoryServicesCreateRequestHostInfraIPv4HostNetwork,
+        DirectoryServicesCreateRequestHostInfraIPv6HostNetwork,
+        DirectoryServicesCreateRequestHostInfraDualStackHostNetwork,
+      ),
+    ),
+    ipv6: S.optional(S.String),
+    hostname: S.optional(S.String),
+    resolverNetwork: S.optional(
+      DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetwork.pipe(
+        T.Body("resolver_network"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "DirectoryServicesCreateRequestHost",
+}) as any as S.Schema<DirectoryServicesCreateRequestHost>;
 
 export type DirectoryServicesCreateRequestType = "tcp" | "http";
 export const DirectoryServicesCreateRequestType = /*@__PURE__*/ S.String;
@@ -2009,19 +2027,37 @@ export const DirectoryServicesUpdateRequestHostInfraHostnameHost =
     identifier: "DirectoryServicesUpdateRequestHostInfraHostnameHost",
   }) as any as S.Schema<DirectoryServicesUpdateRequestHostInfraHostnameHost>;
 
-export type DirectoryServicesUpdateRequestHost =
-  | DirectoryServicesUpdateRequestHostInfraIPv4Host
-  | DirectoryServicesUpdateRequestHostInfraIPv6Host
-  | DirectoryServicesUpdateRequestHostInfraDualStackHost
-  | DirectoryServicesUpdateRequestHostInfraHostnameHost;
-export const DirectoryServicesUpdateRequestHost = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["ipv4", "network"],
-    ["ipv6", "network"],
-    ["ipv4", "ipv6", "network"],
-    ["hostname", "resolverNetwork"],
-  ]),
-);
+export interface DirectoryServicesUpdateRequestHost {
+  ipv4?: string;
+  network?:
+    | DirectoryServicesUpdateRequestHostInfraIPv4HostNetwork
+    | DirectoryServicesUpdateRequestHostInfraIPv6HostNetwork
+    | DirectoryServicesUpdateRequestHostInfraDualStackHostNetwork;
+  ipv6?: string;
+  hostname?: string;
+  resolverNetwork?: DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetwork;
+}
+export const DirectoryServicesUpdateRequestHost = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipv4: S.optional(S.String),
+    network: S.optional(
+      S.Union(
+        DirectoryServicesUpdateRequestHostInfraIPv4HostNetwork,
+        DirectoryServicesUpdateRequestHostInfraIPv6HostNetwork,
+        DirectoryServicesUpdateRequestHostInfraDualStackHostNetwork,
+      ),
+    ),
+    ipv6: S.optional(S.String),
+    hostname: S.optional(S.String),
+    resolverNetwork: S.optional(
+      DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetwork.pipe(
+        T.Body("resolver_network"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "DirectoryServicesUpdateRequestHost",
+}) as any as S.Schema<DirectoryServicesUpdateRequestHost>;
 
 export type DirectoryServicesUpdateRequestType = "tcp" | "http";
 export const DirectoryServicesUpdateRequestType = /*@__PURE__*/ S.String;

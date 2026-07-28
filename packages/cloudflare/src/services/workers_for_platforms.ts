@@ -306,16 +306,52 @@ export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKey =
       "DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKey",
   }) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKey>;
 
-export type DispatchNamespacesScriptsSecretsBulkUpdateRequestSecrets =
-  | DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretText
-  | DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKey;
+export interface DispatchNamespacesScriptsSecretsBulkUpdateRequestSecrets {
+  /** A JavaScript variable name for the binding. */
+  name: string;
+  /** The secret value to use. */
+  text?: string;
+  /** The kind of resource that the binding provides. */
+  type:
+    | DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretTextType
+    | (string & {})
+    | DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyType
+    | (string & {});
+  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
+  algorithm?: unknown;
+  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
+  format?:
+    | DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyFormat
+    | (string & {});
+  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
+  usages?: DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesList;
+  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
+  keyBase64?: string;
+  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
+  keyJwk?: unknown;
+}
 export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecrets =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["name", "text", "type"],
-      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      text: S.optional(S.String),
+      type: S.Union(
+        DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretTextType,
+        DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyType,
+      ),
+      algorithm: S.optional(S.Unknown),
+      format: S.optional(
+        DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyFormat,
+      ),
+      usages: S.optional(
+        DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesList,
+      ),
+      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
+      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsSecretsBulkUpdateRequestSecrets",
+  }) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateRequestSecrets>;
 
 export type DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap = {
   [key: string]: unknown | undefined;

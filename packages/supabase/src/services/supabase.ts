@@ -1202,16 +1202,34 @@ export const V1CreateAProjectRequestRegionSelectionCase1 =
   }) as any as S.Schema<V1CreateAProjectRequestRegionSelectionCase1>;
 
 /** Region selection. Only one of region or region_selection can be specified. */
-export type V1CreateAProjectRequestRegionSelection =
-  | V1CreateAProjectRequestRegionSelectionCase0
-  | V1CreateAProjectRequestRegionSelectionCase1;
-export const V1CreateAProjectRequestRegionSelection =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "code"],
-      ["type", "code"],
-    ]),
-  );
+export interface V1CreateAProjectRequestRegionSelection {
+  type:
+    | V1CreateAProjectRequestRegionSelectionCase0Type
+    | (string & {})
+    | V1CreateAProjectRequestRegionSelectionCase1Type
+    | (string & {});
+  /** Specific region code. The codes supported are not a stable API, and should be retrieved from the /available-regions endpoint. */
+  code:
+    | V1CreateAProjectRequestRegionSelectionCase0Code
+    | (string & {})
+    | V1CreateAProjectRequestRegionSelectionCase1Code
+    | (string & {});
+}
+export const V1CreateAProjectRequestRegionSelection = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: S.Union(
+        V1CreateAProjectRequestRegionSelectionCase0Type,
+        V1CreateAProjectRequestRegionSelectionCase1Type,
+      ),
+      code: S.Union(
+        V1CreateAProjectRequestRegionSelectionCase0Code,
+        V1CreateAProjectRequestRegionSelectionCase1Code,
+      ),
+    }),
+).annotate({
+  identifier: "V1CreateAProjectRequestRegionSelection",
+}) as any as S.Schema<V1CreateAProjectRequestRegionSelection>;
 
 /** Desired instance size. Omit this field to always default to the smallest possible size. */
 export type V1CreateAProjectRequestDesiredInstanceSize =
@@ -2024,35 +2042,114 @@ export const V1CreateProjectSigningKeyRequestPrivateJwkCase3 =
     identifier: "V1CreateProjectSigningKeyRequestPrivateJwkCase3",
   }) as any as S.Schema<V1CreateProjectSigningKeyRequestPrivateJwkCase3>;
 
-export type V1CreateProjectSigningKeyRequestPrivateJwk =
-  | V1CreateProjectSigningKeyRequestPrivateJwkCase0
-  | V1CreateProjectSigningKeyRequestPrivateJwkCase1
-  | V1CreateProjectSigningKeyRequestPrivateJwkCase2
-  | V1CreateProjectSigningKeyRequestPrivateJwkCase3;
+export interface V1CreateProjectSigningKeyRequestPrivateJwk {
+  kid?: string;
+  use?:
+    | V1CreateProjectSigningKeyRequestPrivateJwkCase0Use
+    | (string & {})
+    | V1CreateProjectSigningKeyRequestPrivateJwkCase1Use
+    | (string & {})
+    | V1CreateProjectSigningKeyRequestPrivateJwkCase2Use
+    | (string & {})
+    | V1CreateProjectSigningKeyRequestPrivateJwkCase3Use
+    | (string & {});
+  key_ops?:
+    | V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsList
+    | V1CreateProjectSigningKeyRequestPrivateJwkCase1KeyOpsList
+    | V1CreateProjectSigningKeyRequestPrivateJwkCase2KeyOpsList
+    | V1CreateProjectSigningKeyRequestPrivateJwkCase3KeyOpsList;
+  ext?: boolean;
+  kty:
+    | V1CreateProjectSigningKeyRequestPrivateJwkCase0Kty
+    | (string & {})
+    | V1CreateProjectSigningKeyRequestPrivateJwkCase1Kty
+    | (string & {})
+    | V1CreateProjectSigningKeyRequestPrivateJwkCase2Kty
+    | (string & {})
+    | V1CreateProjectSigningKeyRequestPrivateJwkCase3Kty
+    | (string & {});
+  alg?:
+    | V1CreateProjectSigningKeyRequestPrivateJwkCase0Alg
+    | (string & {})
+    | V1CreateProjectSigningKeyRequestPrivateJwkCase1Alg
+    | (string & {})
+    | V1CreateProjectSigningKeyRequestPrivateJwkCase2Alg
+    | (string & {})
+    | V1CreateProjectSigningKeyRequestPrivateJwkCase3Alg
+    | (string & {});
+  n?: string;
+  e?: V1CreateProjectSigningKeyRequestPrivateJwkCase0E | (string & {});
+  d?: string;
+  p?: string;
+  q?: string;
+  dp?: string;
+  dq?: string;
+  qi?: string;
+  crv?:
+    | V1CreateProjectSigningKeyRequestPrivateJwkCase1Crv
+    | (string & {})
+    | V1CreateProjectSigningKeyRequestPrivateJwkCase2Crv
+    | (string & {});
+  x?: string;
+  y?: string;
+  k?: string;
+}
 export const V1CreateProjectSigningKeyRequestPrivateJwk =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [
-        "kid",
-        "use",
-        "key_ops",
-        "ext",
-        "kty",
-        "alg",
-        "n",
-        "e",
-        "d",
-        "p",
-        "q",
-        "dp",
-        "dq",
-        "qi",
-      ],
-      ["kid", "use", "key_ops", "ext", "kty", "alg", "crv", "x", "y", "d"],
-      ["kid", "use", "key_ops", "ext", "kty", "alg", "crv", "x", "d"],
-      ["kid", "use", "key_ops", "ext", "kty", "alg", "k"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kid: S.optional(S.String),
+      use: S.optional(
+        S.Union(
+          V1CreateProjectSigningKeyRequestPrivateJwkCase0Use,
+          V1CreateProjectSigningKeyRequestPrivateJwkCase1Use,
+          V1CreateProjectSigningKeyRequestPrivateJwkCase2Use,
+          V1CreateProjectSigningKeyRequestPrivateJwkCase3Use,
+        ),
+      ),
+      key_ops: S.optional(
+        S.Union(
+          V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsList,
+          V1CreateProjectSigningKeyRequestPrivateJwkCase1KeyOpsList,
+          V1CreateProjectSigningKeyRequestPrivateJwkCase2KeyOpsList,
+          V1CreateProjectSigningKeyRequestPrivateJwkCase3KeyOpsList,
+        ),
+      ),
+      ext: S.optional(S.Boolean),
+      kty: S.Union(
+        V1CreateProjectSigningKeyRequestPrivateJwkCase0Kty,
+        V1CreateProjectSigningKeyRequestPrivateJwkCase1Kty,
+        V1CreateProjectSigningKeyRequestPrivateJwkCase2Kty,
+        V1CreateProjectSigningKeyRequestPrivateJwkCase3Kty,
+      ),
+      alg: S.optional(
+        S.Union(
+          V1CreateProjectSigningKeyRequestPrivateJwkCase0Alg,
+          V1CreateProjectSigningKeyRequestPrivateJwkCase1Alg,
+          V1CreateProjectSigningKeyRequestPrivateJwkCase2Alg,
+          V1CreateProjectSigningKeyRequestPrivateJwkCase3Alg,
+        ),
+      ),
+      n: S.optional(S.String),
+      e: S.optional(V1CreateProjectSigningKeyRequestPrivateJwkCase0E),
+      d: S.optional(S.String),
+      p: S.optional(S.String),
+      q: S.optional(S.String),
+      dp: S.optional(S.String),
+      dq: S.optional(S.String),
+      qi: S.optional(S.String),
+      crv: S.optional(
+        S.Union(
+          V1CreateProjectSigningKeyRequestPrivateJwkCase1Crv,
+          V1CreateProjectSigningKeyRequestPrivateJwkCase2Crv,
+        ),
+      ),
+      x: S.optional(S.String),
+      y: S.optional(S.String),
+      k: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "V1CreateProjectSigningKeyRequestPrivateJwk",
+  }) as any as S.Schema<V1CreateProjectSigningKeyRequestPrivateJwk>;
 
 export interface V1CreateProjectSigningKeyRequest {
   /** Project ref */
@@ -9461,16 +9558,30 @@ export const V1ModifyDatabaseDiskRequestAttributesCase1 =
     identifier: "V1ModifyDatabaseDiskRequestAttributesCase1",
   }) as any as S.Schema<V1ModifyDatabaseDiskRequestAttributesCase1>;
 
-export type V1ModifyDatabaseDiskRequestAttributes =
-  | V1ModifyDatabaseDiskRequestAttributesCase0
-  | V1ModifyDatabaseDiskRequestAttributesCase1;
-export const V1ModifyDatabaseDiskRequestAttributes =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["iops", "size_gb", "throughput_mibps", "type"],
-      ["iops", "size_gb", "type"],
-    ]),
-  );
+export interface V1ModifyDatabaseDiskRequestAttributes {
+  iops: number;
+  size_gb: number;
+  throughput_mibps?: number;
+  type:
+    | V1ModifyDatabaseDiskRequestAttributesCase0Type
+    | (string & {})
+    | V1ModifyDatabaseDiskRequestAttributesCase1Type
+    | (string & {});
+}
+export const V1ModifyDatabaseDiskRequestAttributes = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      iops: S.Number,
+      size_gb: S.Number,
+      throughput_mibps: S.optional(S.Number),
+      type: S.Union(
+        V1ModifyDatabaseDiskRequestAttributesCase0Type,
+        V1ModifyDatabaseDiskRequestAttributesCase1Type,
+      ),
+    }),
+).annotate({
+  identifier: "V1ModifyDatabaseDiskRequestAttributes",
+}) as any as S.Schema<V1ModifyDatabaseDiskRequestAttributes>;
 
 export interface V1ModifyDatabaseDiskRequest {
   /** Project ref */

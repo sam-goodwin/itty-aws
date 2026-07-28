@@ -1002,33 +1002,43 @@ export const UpdateRequestStaleZoneConfigurationSubscriptionConfiguration =
     identifier: "UpdateRequestStaleZoneConfigurationSubscriptionConfiguration",
   }) as any as S.Schema<UpdateRequestStaleZoneConfigurationSubscriptionConfiguration>;
 
-export type UpdateRequestStaleZoneConfiguration =
-  | UpdateRequestStaleZoneConfigurationBotFightModeConfiguration
-  | UpdateRequestStaleZoneConfigurationSuperBotFightModeDefinitelyConfiguration
-  | UpdateRequestStaleZoneConfigurationSuperBotFightModeLikelyConfiguration
-  | UpdateRequestStaleZoneConfigurationSubscriptionConfiguration;
-export const UpdateRequestStaleZoneConfiguration = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "optimizeWordpress",
-      "sbfmDefinitelyAutomated",
-      "sbfmLikelyAutomated",
-      "sbfmStaticResourceProtection",
-      "sbfmVerifiedBots",
-      "suppressSessionScore",
-    ],
-    ["fightMode", "sbfmLikelyAutomated"],
-    ["fightMode"],
-    [
-      "fightMode",
-      "optimizeWordpress",
-      "sbfmDefinitelyAutomated",
-      "sbfmLikelyAutomated",
-      "sbfmStaticResourceProtection",
-      "sbfmVerifiedBots",
-    ],
-  ]),
-);
+export interface UpdateRequestStaleZoneConfiguration {
+  /** Indicates that the zone's wordpress optimization for SBFM is turned on. */
+  optimizeWordpress?: boolean;
+  /** Indicates that the zone's definitely automated requests are being blocked or challenged. */
+  sbfmDefinitelyAutomated?: string;
+  /** Indicates that the zone's likely automated requests are being blocked or challenged. */
+  sbfmLikelyAutomated?: string;
+  /** Indicates that the zone's static resource protection is turned on. */
+  sbfmStaticResourceProtection?: string;
+  /** Indicates that the zone's verified bot requests are being blocked. */
+  sbfmVerifiedBots?: string;
+  /** Indicates that the zone's session score tracking is disabled. */
+  suppressSessionScore?: boolean;
+  /** Indicates that the zone's Bot Fight Mode is turned on. */
+  fightMode?: boolean;
+}
+export const UpdateRequestStaleZoneConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    optimizeWordpress: S.optional(S.Boolean.pipe(T.Body("optimize_wordpress"))),
+    sbfmDefinitelyAutomated: S.optional(
+      S.String.pipe(T.Body("sbfm_definitely_automated")),
+    ),
+    sbfmLikelyAutomated: S.optional(
+      S.String.pipe(T.Body("sbfm_likely_automated")),
+    ),
+    sbfmStaticResourceProtection: S.optional(
+      S.String.pipe(T.Body("sbfm_static_resource_protection")),
+    ),
+    sbfmVerifiedBots: S.optional(S.String.pipe(T.Body("sbfm_verified_bots"))),
+    suppressSessionScore: S.optional(
+      S.Boolean.pipe(T.Body("suppress_session_score")),
+    ),
+    fightMode: S.optional(S.Boolean.pipe(T.Body("fight_mode"))),
+  }),
+).annotate({
+  identifier: "UpdateRequestStaleZoneConfiguration",
+}) as any as S.Schema<UpdateRequestStaleZoneConfiguration>;
 
 export type UpdateRequestSbfmDefinitelyAutomated =
   | "allow"

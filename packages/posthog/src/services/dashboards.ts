@@ -25448,16 +25448,113 @@ export const LogsListWidgetConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsListWidgetConfig",
 }) as any as S.Schema<LogsListWidgetConfig>;
 
-export type DashboardWidgetConfig =
-  | ActivityEventsListWidgetConfig
-  | ErrorTrackingListWidgetConfig
-  | SessionReplayListWidgetConfig
-  | ExperimentsListWidgetConfig
-  | ExperimentResultsWidgetConfig
-  | SurveyResultsWidgetConfig
-  | LogsListWidgetConfig;
-export const DashboardWidgetConfig =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<DashboardWidgetConfig>;
+export interface DashboardWidgetConfig {
+  /** Null or omitted means all time (the survey's full lifetime). */
+  dateRange?: WidgetDateRange | null;
+  filterTestAccounts?: boolean | null;
+  widgetFilters?:
+    | ActivityEventsListWidgetConfigWidgetFiltersMap
+    | ErrorTrackingListWidgetConfigWidgetFiltersMap
+    | SessionReplayListWidgetConfigWidgetFiltersMap
+    | null;
+  /** Maximum number of events to return. */
+  limit?: number;
+  /** Limit the feed to a single event name. Omit or null for all events. */
+  eventName?: string | null;
+  /** Event and person property filters, matching Activity > Explore events. */
+  properties?: ActivityEventsListWidgetConfigPropertiesList | null;
+  /** Issue ranking column. */
+  orderBy?:
+    | ErrorTrackingListWidgetConfigOrderBy
+    | SessionReplayListWidgetConfigOrderBy
+    | ExperimentsListWidgetConfigOrderBy
+    | LogsListWidgetConfigOrderBy;
+  /** Sort direction for orderBy. */
+  orderDirection?:
+    | ErrorTrackingListWidgetConfigOrderDirection
+    | SessionReplayListWidgetConfigOrderDirection
+    | ExperimentsListWidgetConfigOrderDirection;
+  /** Issue status filter. */
+  status?:
+    | ErrorTrackingListWidgetConfigStatus
+    | ExperimentsListWidgetConfigStatus;
+  /** Filter by assignee ({type: user|role, id}). Omit for any assignee. */
+  assignee?: WidgetAssigneeFilter | null;
+  /** short_id of a saved session replay filter to refine the recordings shown. When set, the saved filter owns the date range and property filters; only orderBy, orderDirection, and limit still apply. Combine with collectionId to filter within a collection. */
+  savedFilterId?: string | null;
+  /** short_id of a session replay collection to scope the widget to its pinned recordings. Combine with savedFilterId or property filters to narrow within the collection; orderBy, orderDirection, and limit still apply. */
+  collectionId?: string | null;
+  /** Filter by creator (user id). Omit for any creator. */
+  createdBy?: number | null;
+  /** Experiment to show results for. Null until the user picks one in the widget settings. */
+  experimentId?: number | null;
+  /** Survey to show performance stats and recent responses for. Null until the user picks one. */
+  surveyId?: string | null;
+  /** Only show logs at these severity levels. Empty shows all levels. */
+  severityLevels?: LogsListWidgetConfigSeverityLevelsList;
+  /** Only show logs from these services. Empty shows all services. */
+  serviceNames?: LogsListWidgetConfigServiceNamesList;
+  /** Wrap long log lines instead of truncating them to a single row. */
+  wrapLines?: boolean;
+  /** Render log timestamps in UTC or in each viewer's local timezone. */
+  timezone?: LogsListWidgetConfigTimezone;
+  /** short_id of a saved logs view to use as the source. When set, the saved view owns the date range, severity, service, and property filters; only orderBy and limit still apply. */
+  savedViewId?: string | null;
+}
+export const DashboardWidgetConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dateRange: S.optional(S.NullOr(WidgetDateRange)),
+    filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
+    widgetFilters: S.optional(
+      S.NullOr(
+        S.Union(
+          ActivityEventsListWidgetConfigWidgetFiltersMap,
+          ErrorTrackingListWidgetConfigWidgetFiltersMap,
+          SessionReplayListWidgetConfigWidgetFiltersMap,
+        ),
+      ),
+    ),
+    limit: S.optional(S.Number),
+    eventName: S.optional(S.NullOr(S.String)),
+    properties: S.optional(
+      S.NullOr(ActivityEventsListWidgetConfigPropertiesList),
+    ),
+    orderBy: S.optional(
+      S.Union(
+        ErrorTrackingListWidgetConfigOrderBy,
+        SessionReplayListWidgetConfigOrderBy,
+        ExperimentsListWidgetConfigOrderBy,
+        LogsListWidgetConfigOrderBy,
+      ),
+    ),
+    orderDirection: S.optional(
+      S.Union(
+        ErrorTrackingListWidgetConfigOrderDirection,
+        SessionReplayListWidgetConfigOrderDirection,
+        ExperimentsListWidgetConfigOrderDirection,
+      ),
+    ),
+    status: S.optional(
+      S.Union(
+        ErrorTrackingListWidgetConfigStatus,
+        ExperimentsListWidgetConfigStatus,
+      ),
+    ),
+    assignee: S.optional(S.NullOr(WidgetAssigneeFilter)),
+    savedFilterId: S.optional(S.NullOr(S.String)),
+    collectionId: S.optional(S.NullOr(S.String)),
+    createdBy: S.optional(S.NullOr(S.Number)),
+    experimentId: S.optional(S.NullOr(S.Number)),
+    surveyId: S.optional(S.NullOr(S.String)),
+    severityLevels: S.optional(LogsListWidgetConfigSeverityLevelsList),
+    serviceNames: S.optional(LogsListWidgetConfigServiceNamesList),
+    wrapLines: S.optional(S.Boolean),
+    timezone: S.optional(LogsListWidgetConfigTimezone),
+    savedViewId: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "DashboardWidgetConfig",
+}) as any as S.Schema<DashboardWidgetConfig>;
 
 export type DashboardWidgetDashboardTilesList =
   ReadonlyArray<DashboardTileBasic>;
@@ -26752,16 +26849,67 @@ export const LogsListWidgetUpdateRequestOpenApi = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsListWidgetUpdateRequestOpenApi",
 }) as any as S.Schema<LogsListWidgetUpdateRequestOpenApi>;
 
-export type UpdateDashboardWidgetRequest =
-  | ActivityEventsListWidgetUpdateRequestOpenApi
-  | ErrorTrackingListWidgetUpdateRequestOpenApi
-  | SessionReplayListWidgetUpdateRequestOpenApi
-  | ExperimentsListWidgetUpdateRequestOpenApi
-  | ExperimentResultsWidgetUpdateRequestOpenApi
-  | SurveyResultsWidgetUpdateRequestOpenApi
-  | LogsListWidgetUpdateRequestOpenApi;
-export const UpdateDashboardWidgetRequest =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UpdateDashboardWidgetRequest>;
+export interface UpdateDashboardWidgetRequest {
+  /** ID of the widget tile to update. Use dashboard-get to look up widget tile IDs. */
+  tile_id: number;
+  /** New display name for the widget. Empty string or null clears it; omit to leave unchanged. */
+  name?: string | null;
+  /** New markdown description for the widget. Omit to leave unchanged. */
+  description?: string;
+  widget_type:
+    | ActivityEventsListWidgetTypeEnum
+    | (string & {})
+    | ErrorTrackingListWidgetTypeEnum
+    | (string & {})
+    | SessionReplayListWidgetTypeEnum
+    | (string & {})
+    | ExperimentsListWidgetTypeEnum
+    | (string & {})
+    | ExperimentResultsWidgetTypeEnum
+    | (string & {})
+    | SurveyResultsWidgetTypeEnum
+    | (string & {})
+    | LogsListWidgetTypeEnum
+    | (string & {});
+  /** New configuration for the recent events widget. Omit to leave unchanged. */
+  config?:
+    | ActivityEventsListWidgetConfig
+    | ErrorTrackingListWidgetConfig
+    | SessionReplayListWidgetConfig
+    | ExperimentsListWidgetConfig
+    | ExperimentResultsWidgetConfig
+    | SurveyResultsWidgetConfig
+    | LogsListWidgetConfig;
+}
+export const UpdateDashboardWidgetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tile_id: S.Number,
+    name: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    widget_type: S.Union(
+      ActivityEventsListWidgetTypeEnum,
+      ErrorTrackingListWidgetTypeEnum,
+      SessionReplayListWidgetTypeEnum,
+      ExperimentsListWidgetTypeEnum,
+      ExperimentResultsWidgetTypeEnum,
+      SurveyResultsWidgetTypeEnum,
+      LogsListWidgetTypeEnum,
+    ),
+    config: S.optional(
+      S.Union(
+        ActivityEventsListWidgetConfig,
+        ErrorTrackingListWidgetConfig,
+        SessionReplayListWidgetConfig,
+        ExperimentsListWidgetConfig,
+        ExperimentResultsWidgetConfig,
+        SurveyResultsWidgetConfig,
+        LogsListWidgetConfig,
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "UpdateDashboardWidgetRequest",
+}) as any as S.Schema<UpdateDashboardWidgetRequest>;
 
 /** Widget tiles to update atomically, each identified by its tile_id. config shape is per widget_type; see dashboard-widget-catalog-list for per-type config_schema (1–10 per request). */
 export type DashboardsUpdateWidgetsBatchRequestWidgetsList =
@@ -27321,16 +27469,68 @@ export const LogsListWidgetAddRequestOpenApi = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsListWidgetAddRequestOpenApi",
 }) as any as S.Schema<LogsListWidgetAddRequestOpenApi>;
 
-export type AddDashboardWidgetRequest =
-  | ActivityEventsListWidgetAddRequestOpenApi
-  | ErrorTrackingListWidgetAddRequestOpenApi
-  | SessionReplayListWidgetAddRequestOpenApi
-  | ExperimentsListWidgetAddRequestOpenApi
-  | ExperimentResultsWidgetAddRequestOpenApi
-  | SurveyResultsWidgetAddRequestOpenApi
-  | LogsListWidgetAddRequestOpenApi;
-export const AddDashboardWidgetRequest =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<AddDashboardWidgetRequest>;
+export interface AddDashboardWidgetRequest {
+  /** Optional custom display name for the widget tile. */
+  name?: string | null;
+  /** Optional markdown description shown when show_description is enabled. */
+  description?: string;
+  /** Optional react-grid-layout positions keyed by breakpoint (sm, xs). */
+  layouts?: WidgetTileLayoutsOpenApi;
+  /** Whether to show the description on the dashboard tile. */
+  show_description?: boolean;
+  widget_type:
+    | ActivityEventsListWidgetTypeEnum
+    | (string & {})
+    | ErrorTrackingListWidgetTypeEnum
+    | (string & {})
+    | SessionReplayListWidgetTypeEnum
+    | (string & {})
+    | ExperimentsListWidgetTypeEnum
+    | (string & {})
+    | ExperimentResultsWidgetTypeEnum
+    | (string & {})
+    | SurveyResultsWidgetTypeEnum
+    | (string & {})
+    | LogsListWidgetTypeEnum
+    | (string & {});
+  /** Configuration for the recent events widget. */
+  config:
+    | ActivityEventsListWidgetConfig
+    | ErrorTrackingListWidgetConfig
+    | SessionReplayListWidgetConfig
+    | ExperimentsListWidgetConfig
+    | ExperimentResultsWidgetConfig
+    | SurveyResultsWidgetConfig
+    | LogsListWidgetConfig;
+}
+export const AddDashboardWidgetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    layouts: S.optional(WidgetTileLayoutsOpenApi),
+    show_description: S.optional(S.Boolean),
+    widget_type: S.Union(
+      ActivityEventsListWidgetTypeEnum,
+      ErrorTrackingListWidgetTypeEnum,
+      SessionReplayListWidgetTypeEnum,
+      ExperimentsListWidgetTypeEnum,
+      ExperimentResultsWidgetTypeEnum,
+      SurveyResultsWidgetTypeEnum,
+      LogsListWidgetTypeEnum,
+    ),
+    config: S.Union(
+      ActivityEventsListWidgetConfig,
+      ErrorTrackingListWidgetConfig,
+      SessionReplayListWidgetConfig,
+      ExperimentsListWidgetConfig,
+      ExperimentResultsWidgetConfig,
+      SurveyResultsWidgetConfig,
+      LogsListWidgetConfig,
+    ),
+  }),
+).annotate({
+  identifier: "AddDashboardWidgetRequest",
+}) as any as S.Schema<AddDashboardWidgetRequest>;
 
 /** Widget tiles to add atomically. Supported widget_type values: activity_events_list, error_tracking_list, experiment_results, experiments_list, logs_list, session_replay_list, survey_results. Use dashboard-widget-catalog-list for per-type config_schema documentation. (1–10 per request). */
 export type DashboardsWidgetsBatchCreateRequestWidgetsList =

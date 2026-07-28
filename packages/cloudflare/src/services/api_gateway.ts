@@ -5431,16 +5431,28 @@ export const ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthID
       "ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim",
   }) as any as S.Schema<ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim>;
 
-export type ConfigurationsUpdateRequestAuthIdCharacteristicsItem =
-  | ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic
-  | ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim;
+export interface ConfigurationsUpdateRequestAuthIdCharacteristicsItem {
+  /** The name of the characteristic field, i.e., the header or cookie name. */
+  name: string;
+  /** The type of characteristic. */
+  type:
+    | ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType
+    | (string & {})
+    | ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType
+    | (string & {});
+}
 export const ConfigurationsUpdateRequestAuthIdCharacteristicsItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["name", "type"],
-      ["name", "type"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      type: S.Union(
+        ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType,
+        ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType,
+      ),
+    }),
+  ).annotate({
+    identifier: "ConfigurationsUpdateRequestAuthIdCharacteristicsItem",
+  }) as any as S.Schema<ConfigurationsUpdateRequestAuthIdCharacteristicsItem>;
 
 export type ConfigurationsUpdateRequestAuthIdCharacteristicsList =
   ReadonlyArray<ConfigurationsUpdateRequestAuthIdCharacteristicsItem>;

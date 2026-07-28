@@ -139798,11 +139798,32 @@ export const PostPaymentMethodsRequestCardCase1 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostPaymentMethodsRequestCardCase1>;
 
 /** If this is a `card` PaymentMethod, this hash contains the user's card details. For backwards compatibility, you can alternatively provide a Stripe token (e.g., for Apple Pay, Amex Express Checkout, or legacy Checkout) into the card hash with format `card: {token: "tok_visa"}`. When providing a card number, you must meet the requirements for [PCI compliance](https://stripe.com/docs/security#validating-pci-compliance). We strongly recommend using Stripe.js instead of interacting with this API directly. */
-export type PostPaymentMethodsRequestCard =
-  | PostPaymentMethodsRequestCardCase0
-  | PostPaymentMethodsRequestCardCase1;
-export const PostPaymentMethodsRequestCard =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<PostPaymentMethodsRequestCard>;
+export interface PostPaymentMethodsRequestCard {
+  /** The card's CVC. It is highly recommended to always include this value. */
+  cvc?: string;
+  /** Two-digit number representing the card's expiration month. */
+  exp_month?: number;
+  /** Four-digit number representing the card's expiration year. */
+  exp_year?: number;
+  /** Contains information about card networks used to process the payment. */
+  networks?: PostPaymentMethodsRequestCardCase0Networks;
+  /** The card number, as a string without any separators. */
+  number?: string;
+  /** For backwards compatibility, you can alternatively provide a Stripe token (e.g., for Apple Pay, Amex Express Checkout, or legacy Checkout) into the card hash with format card: {token: "tok_visa"}. */
+  token?: string;
+}
+export const PostPaymentMethodsRequestCard = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cvc: S.optional(S.String),
+    exp_month: S.optional(S.Number),
+    exp_year: S.optional(S.Number),
+    networks: S.optional(PostPaymentMethodsRequestCardCase0Networks),
+    number: S.optional(S.String),
+    token: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PostPaymentMethodsRequestCard",
+}) as any as S.Schema<PostPaymentMethodsRequestCard>;
 
 /** If this is a `custom` PaymentMethod, this hash contains details about the Custom payment method. */
 export interface PostPaymentMethodsRequestCustom {

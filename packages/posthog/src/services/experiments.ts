@@ -1611,32 +1611,89 @@ export const WorkflowVariablePropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkflowVariablePropertyFilter",
 }) as any as S.Schema<WorkflowVariablePropertyFilter>;
 
-export type ExperimentApiExposureConfigPropertiesItem =
-  | EventPropertyFilter
-  | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
-  | ElementPropertyFilter
-  | EventMetadataPropertyFilter
-  | SessionPropertyFilter
-  | CohortPropertyFilter
-  | RecordingPropertyFilter
-  | LogEntryPropertyFilter
-  | GroupPropertyFilter
-  | FeaturePropertyFilter
-  | FlagPropertyFilter
-  | HogQLPropertyFilter
-  | EmptyPropertyFilter
-  | DataWarehousePropertyFilter
-  | DataWarehousePersonPropertyFilter
-  | ErrorTrackingIssueFilter
-  | LogPropertyFilter
-  | MetricPropertyFilter
-  | SpanPropertyFilter
-  | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
-  | WorkflowVariablePropertyFilter;
+export interface ExperimentApiExposureConfigPropertiesItem {
+  /** The key should be the flag ID */
+  key?: string | Key10 | RecordingPropertyFilterKey;
+  label?: string | null;
+  /** Only flag_evaluates_to operator is allowed for flag dependencies */
+  operator?: PropertyOperator | string | null;
+  /** Event properties */
+  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
+  /** The value can be true, false, or a variant name */
+  value?:
+    | EventPropertyFilterValue
+    | PersonPropertyFilterValue
+    | PersonMetadataPropertyFilterValue
+    | ElementPropertyFilterValue
+    | EventMetadataPropertyFilterValue
+    | SessionPropertyFilterValue
+    | number
+    | RecordingPropertyFilterValue
+    | LogEntryPropertyFilterValue
+    | GroupPropertyFilterValue
+    | FeaturePropertyFilterValue
+    | FlagPropertyFilterValue
+    | HogQLPropertyFilterValue
+    | DataWarehousePropertyFilterValue
+    | DataWarehousePersonPropertyFilterValue
+    | ErrorTrackingIssueFilterValue
+    | LogPropertyFilterValue
+    | MetricPropertyFilterValue
+    | SpanPropertyFilterValue
+    | RevenueAnalyticsPropertyFilterValue
+    | AccountCustomPropertyFilterValue
+    | WorkflowVariablePropertyFilterValue
+    | null;
+  cohort_name?: string | null;
+  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
+  group_type_index?: number | null;
+}
 export const ExperimentApiExposureConfigPropertiesItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentApiExposureConfigPropertiesItem>;
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
+      label: S.optional(S.NullOr(S.String)),
+      operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
+      type: S.optional(
+        S.Union(S.String, LogPropertyFilterType, SpanPropertyFilterType),
+      ),
+      value: S.optional(
+        S.NullOr(
+          S.Union(
+            EventPropertyFilterValue,
+            PersonPropertyFilterValue,
+            PersonMetadataPropertyFilterValue,
+            ElementPropertyFilterValue,
+            EventMetadataPropertyFilterValue,
+            SessionPropertyFilterValue,
+            S.Number,
+            RecordingPropertyFilterValue,
+            LogEntryPropertyFilterValue,
+            GroupPropertyFilterValue,
+            FeaturePropertyFilterValue,
+            FlagPropertyFilterValue,
+            HogQLPropertyFilterValue,
+            DataWarehousePropertyFilterValue,
+            DataWarehousePersonPropertyFilterValue,
+            ErrorTrackingIssueFilterValue,
+            LogPropertyFilterValue,
+            MetricPropertyFilterValue,
+            SpanPropertyFilterValue,
+            RevenueAnalyticsPropertyFilterValue,
+            AccountCustomPropertyFilterValue,
+            WorkflowVariablePropertyFilterValue,
+          ),
+        ),
+      ),
+      cohort_name: S.optional(S.NullOr(S.String)),
+      group_key_names: S.optional(
+        S.NullOr(GroupPropertyFilterGroupKeyNamesMap),
+      ),
+      group_type_index: S.optional(S.NullOr(S.Number)),
+    }),
+  ).annotate({
+    identifier: "ExperimentApiExposureConfigPropertiesItem",
+  }) as any as S.Schema<ExperimentApiExposureConfigPropertiesItem>;
 
 /** Property filters (event, person, and other supported types). Pass an empty array if no filters needed. */
 export type ExperimentApiExposureConfigPropertiesList =

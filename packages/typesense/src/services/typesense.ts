@@ -5630,88 +5630,234 @@ export const UpsertCurationSetItemResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpsertCurationSetItemResponse",
 }) as any as S.Schema<UpsertCurationSetItemResponse>;
 
-export type UpsertPresetRequestValue =
-  | SearchParameters
-  | MultiSearchSearchesParameter;
-export const UpsertPresetRequestValue = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "q",
-      "query_by",
-      "validate_field_names",
-      "nl_query",
-      "nl_model_id",
-      "query_by_weights",
-      "text_match_type",
-      "prefix",
-      "infix",
-      "max_extra_prefix",
-      "max_extra_suffix",
-      "filter_by",
-      "max_filter_by_candidates",
-      "sort_by",
-      "facet_by",
-      "max_facet_values",
-      "facet_query",
-      "num_typos",
-      "page",
-      "per_page",
-      "limit",
-      "offset",
-      "group_by",
-      "group_limit",
-      "group_missing_values",
-      "include_fields",
-      "exclude_fields",
-      "highlight_full_fields",
-      "highlight_affix_num_tokens",
-      "highlight_start_tag",
-      "highlight_end_tag",
-      "enable_highlight_v1",
-      "enable_analytics",
-      "snippet_threshold",
-      "synonym_sets",
-      "drop_tokens_threshold",
-      "drop_tokens_mode",
-      "typo_tokens_threshold",
-      "enable_typos_for_alpha_numerical_tokens",
-      "filter_curated_hits",
-      "enable_synonyms",
-      "synonym_prefix",
-      "synonym_num_typos",
-      "pinned_hits",
-      "hidden_hits",
-      "curation_tags",
-      "highlight_fields",
-      "split_join_tokens",
-      "pre_segmented_query",
-      "preset",
-      "enable_curations",
-      "prioritize_exact_match",
-      "max_candidates",
-      "prioritize_token_position",
-      "prioritize_num_matching_fields",
-      "enable_typos_for_numerical_tokens",
-      "exhaustive_search",
-      "search_cutoff_ms",
-      "use_cache",
-      "cache_ttl",
-      "min_len_1typo",
-      "min_len_2typo",
-      "vector_query",
-      "remote_embedding_timeout_ms",
-      "remote_embedding_num_tries",
-      "facet_strategy",
-      "stopwords",
-      "facet_return_parent",
-      "voice_query",
-      "conversation",
-      "conversation_model_id",
-      "conversation_id",
-    ],
-    ["union", "searches"],
-  ]),
-);
+export interface UpsertPresetRequestValue {
+  /** The query text to search for in the collection. Use * as the search string to return all documents. This is typically useful when used in conjunction with filter_by. */
+  q?: string;
+  /** A list of `string` fields that should be queried against. Multiple fields are separated with a comma. */
+  query_by?: string;
+  /** Controls whether Typesense should validate if the fields exist in the schema. When set to false, Typesense will not throw an error if a field is missing. This is useful for programmatic grouping where not all fields may exist. */
+  validate_field_names?: boolean;
+  /** Whether to use natural language processing to parse the query. */
+  nl_query?: boolean;
+  /** The ID of the natural language model to use. */
+  nl_model_id?: string;
+  /** The relative weight to give each `query_by` field when ranking results. This can be used to boost fields in priority, when looking for matches. Multiple fields are separated with a comma. */
+  query_by_weights?: string;
+  /** In a multi-field matching context, this parameter determines how the representative text match score of a record is calculated. Possible values are max_score (default) or max_weight. */
+  text_match_type?: string;
+  /** Boolean field to indicate that the last word in the query should be treated as a prefix, and not as a whole word. This is used for building autocomplete and instant search interfaces. Defaults to true. */
+  prefix?: string;
+  /** If infix index is enabled for this field, infix searching can be done on a per-field basis by sending a comma separated string parameter called infix to the search query. This parameter can have 3 values; `off` infix search is disabled, which is default `always` infix search is performed along with regular search `fallback` infix search is performed if regular search does not produce results */
+  infix?: string;
+  /** There are also 2 parameters that allow you to control the extent of infix searching max_extra_prefix and max_extra_suffix which specify the maximum number of symbols before or after the query that can be present in the token. For example query "K2100" has 2 extra symbols in "6PK2100". By default, any number of prefixes/suffixes can be present for a match. */
+  max_extra_prefix?: number;
+  /** There are also 2 parameters that allow you to control the extent of infix searching max_extra_prefix and max_extra_suffix which specify the maximum number of symbols before or after the query that can be present in the token. For example query "K2100" has 2 extra symbols in "6PK2100". By default, any number of prefixes/suffixes can be present for a match. */
+  max_extra_suffix?: number;
+  /** Filter conditions for refining your open api validator search results. Separate multiple conditions with &&. */
+  filter_by?: string;
+  /** Controls the number of similar words that Typesense considers during fuzzy search on filter_by values. Useful for controlling prefix matches like company_name:Acm*. */
+  max_filter_by_candidates?: number;
+  /** A list of numerical fields and their corresponding sort orders that will be used for ordering your results. Up to 3 sort fields can be specified. The text similarity score is exposed as a special `_text_match` field that you can use in the list of sorting fields. If no `sort_by` parameter is specified, results are sorted by `_text_match:desc,default_sorting_field:desc` */
+  sort_by?: string;
+  /** A list of fields that will be used for faceting your results on. Separate multiple fields with a comma. */
+  facet_by?: string;
+  /** Maximum number of facet values to be returned. */
+  max_facet_values?: number;
+  /** Facet values that are returned can now be filtered via this parameter. The matching facet text is also highlighted. For example, when faceting by `category`, you can set `facet_query=category:shoe` to return only facet values that contain the prefix "shoe". */
+  facet_query?: string;
+  /** The number of typographical errors (1 or 2) that would be tolerated. Default: 2 */
+  num_typos?: string;
+  /** Results from this specific page number would be fetched. */
+  page?: number;
+  /** Number of results to fetch per page. Default: 10 */
+  per_page?: number;
+  /** Number of hits to fetch. Can be used as an alternative to the per_page parameter. Default: 10. */
+  limit?: number;
+  /** Identifies the starting point to return hits from a result set. Can be used as an alternative to the page parameter. */
+  offset?: number;
+  /** You can aggregate search results into groups or buckets by specify one or more `group_by` fields. Separate multiple fields with a comma. To group on a particular field, it must be a faceted field. */
+  group_by?: string;
+  /** Maximum number of hits to be returned for every group. If the `group_limit` is set as `K` then only the top K hits in each group are returned in the response. Default: 3 */
+  group_limit?: number;
+  /** Setting this parameter to true will place all documents that have a null value in the group_by field, into a single group. Setting this parameter to false, will cause each document with a null value in the group_by field to not be grouped with other documents. Default: true */
+  group_missing_values?: boolean;
+  /** List of fields from the document to include in the search result */
+  include_fields?: string;
+  /** List of fields from the document to exclude in the search result */
+  exclude_fields?: string;
+  /** List of fields which should be highlighted fully without snippeting */
+  highlight_full_fields?: string;
+  /** The number of tokens that should surround the highlighted text on each side. Default: 4 */
+  highlight_affix_num_tokens?: number;
+  /** The start tag used for the highlighted snippets. Default: `<mark>` */
+  highlight_start_tag?: string;
+  /** The end tag used for the highlighted snippets. Default: `</mark>` */
+  highlight_end_tag?: string;
+  /** Flag for enabling/disabling the deprecated, old highlight structure in the response. Default: true */
+  enable_highlight_v1?: boolean;
+  /** Flag for enabling/disabling analytics aggregation for specific search queries (for e.g. those originating from a test script). */
+  enable_analytics?: boolean;
+  /** Field values under this length will be fully highlighted, instead of showing a snippet of relevant portion. Default: 30 */
+  snippet_threshold?: number;
+  /** List of synonym set names to associate with this search query */
+  synonym_sets?: string;
+  /** If the number of results found for a specific query is less than this number, Typesense will attempt to drop the tokens in the query until enough results are found. Tokens that have the least individual hits are dropped first. Set to 0 to disable. Default: 10 */
+  drop_tokens_threshold?: number;
+  drop_tokens_mode?: DropTokensMode | (string & {});
+  /** If the number of results found for a specific query is less than this number, Typesense will attempt to look for tokens with more typos until enough results are found. Default: 100 */
+  typo_tokens_threshold?: number;
+  /** Set this parameter to false to disable typos on alphanumerical query tokens. Default: true. */
+  enable_typos_for_alpha_numerical_tokens?: boolean;
+  /** Whether the filter_by condition of the search query should be applicable to curated results (curation definitions, pinned hits, hidden hits, etc.). Default: false */
+  filter_curated_hits?: boolean;
+  /** If you have some synonyms defined but want to disable all of them for a particular search query, set enable_synonyms to false. Default: true */
+  enable_synonyms?: boolean;
+  /** Allow synonym resolution on word prefixes in the query. Default: false */
+  synonym_prefix?: boolean;
+  /** Allow synonym resolution on typo-corrected words in the query. Default: 0 */
+  synonym_num_typos?: number;
+  /** A list of records to unconditionally include in the search results at specific positions. An example use case would be to feature or promote certain items on the top of search results. A list of `record_id:hit_position`. Eg: to include a record with ID 123 at Position 1 and another record with ID 456 at Position 5, you'd specify `123:1,456:5`. You could also use the Curation feature to override search results based on rules. Curations are applied first, followed by `pinned_hits` and finally `hidden_hits`. */
+  pinned_hits?: string;
+  /** A list of records to unconditionally hide from search results. A list of `record_id`s to hide. Eg: to hide records with IDs 123 and 456, you'd specify `123,456`. You could also use the Curation feature to override search results based on rules. Curations are applied first, followed by `pinned_hits` and finally `hidden_hits`. */
+  hidden_hits?: string;
+  /** Comma separated list of tags to trigger the curations rules that match the tags. */
+  curation_tags?: string;
+  /** A list of custom fields that must be highlighted even if you don't query for them */
+  highlight_fields?: string;
+  /** Treat space as typo: search for q=basket ball if q=basketball is not found or vice-versa. Splitting/joining of tokens will only be attempted if the original query produces no results. To always trigger this behavior, set value to `always``. To disable, set value to `off`. Default is `fallback`. */
+  split_join_tokens?: string;
+  /** You can index content from any logographic language into Typesense if you are able to segment / split the text into space-separated words yourself before indexing and querying. Set this parameter to true to do the same */
+  pre_segmented_query?: boolean;
+  /** Search using a bunch of search parameters by setting this parameter to the name of the existing Preset. */
+  preset?: string;
+  /** If you have some curation sets defined but want to disable all of them during query time, you can do that by setting this parameter to false */
+  enable_curations?: boolean;
+  /** Set this parameter to true to ensure that an exact match is ranked above the others */
+  prioritize_exact_match?: boolean;
+  /** Control the number of words that Typesense considers for typo and prefix searching. */
+  max_candidates?: number;
+  /** Make Typesense prioritize documents where the query words appear earlier in the text. */
+  prioritize_token_position?: boolean;
+  /** Make Typesense prioritize documents where the query words appear in more number of fields. */
+  prioritize_num_matching_fields?: boolean;
+  /** Make Typesense disable typos for numerical tokens. */
+  enable_typos_for_numerical_tokens?: boolean;
+  /** Setting this to true will make Typesense consider all prefixes and typo corrections of the words in the query without stopping early when enough results are found (drop_tokens_threshold and typo_tokens_threshold configurations are ignored). */
+  exhaustive_search?: boolean;
+  /** Typesense will attempt to return results early if the cutoff time has elapsed. This is not a strict guarantee and facet computation is not bound by this parameter. */
+  search_cutoff_ms?: number;
+  /** Enable server side caching of search query results. By default, caching is disabled. */
+  use_cache?: boolean;
+  /** The duration (in seconds) that determines how long the search query is cached. This value can be set on a per-query basis. Default: 60. */
+  cache_ttl?: number;
+  /** Minimum word length for 1-typo correction to be applied. The value of num_typos is still treated as the maximum allowed typos. */
+  min_len_1typo?: number;
+  /** Minimum word length for 2-typo correction to be applied. The value of num_typos is still treated as the maximum allowed typos. */
+  min_len_2typo?: number;
+  /** Vector query expression for fetching documents "closest" to a given query/document vector. */
+  vector_query?: string;
+  /** Timeout (in milliseconds) for fetching remote embeddings. */
+  remote_embedding_timeout_ms?: number;
+  /** Number of times to retry fetching remote embeddings. */
+  remote_embedding_num_tries?: number;
+  /** Choose the underlying faceting strategy used. Comma separated string of allows values: exhaustive, top_values or automatic (default). */
+  facet_strategy?: string;
+  /** Name of the stopwords set to apply for this search, the keywords present in the set will be removed from the search query. */
+  stopwords?: string;
+  /** Comma separated string of nested facet fields whose parent object should be returned in facet response. */
+  facet_return_parent?: string;
+  /** The base64 encoded audio file in 16 khz 16-bit WAV format. */
+  voice_query?: string;
+  /** Enable conversational search. */
+  conversation?: boolean;
+  /** The Id of Conversation Model to be used. */
+  conversation_model_id?: string;
+  /** The Id of a previous conversation to continue, this tells Typesense to include prior context when communicating with the LLM. */
+  conversation_id?: string;
+  /** When true, merges the search results from each search query into a single ordered set of hits. */
+  union?: boolean;
+  searches?: MultiSearchSearchesParameterSearchesList;
+}
+export const UpsertPresetRequestValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    q: S.optional(S.String),
+    query_by: S.optional(S.String),
+    validate_field_names: S.optional(S.Boolean),
+    nl_query: S.optional(S.Boolean),
+    nl_model_id: S.optional(S.String),
+    query_by_weights: S.optional(S.String),
+    text_match_type: S.optional(S.String),
+    prefix: S.optional(S.String),
+    infix: S.optional(S.String),
+    max_extra_prefix: S.optional(S.Number),
+    max_extra_suffix: S.optional(S.Number),
+    filter_by: S.optional(S.String),
+    max_filter_by_candidates: S.optional(S.Number),
+    sort_by: S.optional(S.String),
+    facet_by: S.optional(S.String),
+    max_facet_values: S.optional(S.Number),
+    facet_query: S.optional(S.String),
+    num_typos: S.optional(S.String),
+    page: S.optional(S.Number),
+    per_page: S.optional(S.Number),
+    limit: S.optional(S.Number),
+    offset: S.optional(S.Number),
+    group_by: S.optional(S.String),
+    group_limit: S.optional(S.Number),
+    group_missing_values: S.optional(S.Boolean),
+    include_fields: S.optional(S.String),
+    exclude_fields: S.optional(S.String),
+    highlight_full_fields: S.optional(S.String),
+    highlight_affix_num_tokens: S.optional(S.Number),
+    highlight_start_tag: S.optional(S.String),
+    highlight_end_tag: S.optional(S.String),
+    enable_highlight_v1: S.optional(S.Boolean),
+    enable_analytics: S.optional(S.Boolean),
+    snippet_threshold: S.optional(S.Number),
+    synonym_sets: S.optional(S.String),
+    drop_tokens_threshold: S.optional(S.Number),
+    drop_tokens_mode: S.optional(DropTokensMode),
+    typo_tokens_threshold: S.optional(S.Number),
+    enable_typos_for_alpha_numerical_tokens: S.optional(S.Boolean),
+    filter_curated_hits: S.optional(S.Boolean),
+    enable_synonyms: S.optional(S.Boolean),
+    synonym_prefix: S.optional(S.Boolean),
+    synonym_num_typos: S.optional(S.Number),
+    pinned_hits: S.optional(S.String),
+    hidden_hits: S.optional(S.String),
+    curation_tags: S.optional(S.String),
+    highlight_fields: S.optional(S.String),
+    split_join_tokens: S.optional(S.String),
+    pre_segmented_query: S.optional(S.Boolean),
+    preset: S.optional(S.String),
+    enable_curations: S.optional(S.Boolean),
+    prioritize_exact_match: S.optional(S.Boolean),
+    max_candidates: S.optional(S.Number),
+    prioritize_token_position: S.optional(S.Boolean),
+    prioritize_num_matching_fields: S.optional(S.Boolean),
+    enable_typos_for_numerical_tokens: S.optional(S.Boolean),
+    exhaustive_search: S.optional(S.Boolean),
+    search_cutoff_ms: S.optional(S.Number),
+    use_cache: S.optional(S.Boolean),
+    cache_ttl: S.optional(S.Number),
+    min_len_1typo: S.optional(S.Number),
+    min_len_2typo: S.optional(S.Number),
+    vector_query: S.optional(S.String),
+    remote_embedding_timeout_ms: S.optional(S.Number),
+    remote_embedding_num_tries: S.optional(S.Number),
+    facet_strategy: S.optional(S.String),
+    stopwords: S.optional(S.String),
+    facet_return_parent: S.optional(S.String),
+    voice_query: S.optional(S.String),
+    conversation: S.optional(S.Boolean),
+    conversation_model_id: S.optional(S.String),
+    conversation_id: S.optional(S.String),
+    union: S.optional(S.Boolean),
+    searches: S.optional(MultiSearchSearchesParameterSearchesList),
+  }),
+).annotate({
+  identifier: "UpsertPresetRequestValue",
+}) as any as S.Schema<UpsertPresetRequestValue>;
 
 export interface UpsertPresetRequest {
   /** The name of the preset set to upsert. */

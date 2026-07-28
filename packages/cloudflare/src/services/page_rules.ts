@@ -1021,79 +1021,198 @@ export const CreateRequestActionsItemWAF = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestActionsItemWAF",
 }) as any as S.Schema<CreateRequestActionsItemWAF>;
 
-export type CreateRequestActionsItem =
-  | CreateRequestActionsItemAlwaysUseHTTPS
-  | CreateRequestActionsItemAutomaticHTTPSRewrites
-  | CreateRequestActionsItemBrowserCacheTTL
-  | CreateRequestActionsItemBrowserCheck
-  | CreateRequestActionsItemBypassCacheOnCookie
-  | CreateRequestActionsItemCacheByDeviceType
-  | CreateRequestActionsItemCacheDeceptionArmor
-  | CreateRequestActionsItemCacheKeyFields
-  | CreateRequestActionsItemCacheLevel
-  | CreateRequestActionsItemCacheOnCookie
-  | CreateRequestActionsItemCacheTTLByStatus
-  | CreateRequestActionsItemDisableApps
-  | CreateRequestActionsItemDisablePerformance
-  | CreateRequestActionsItemDisableSecurity
-  | CreateRequestActionsItemDisableZaraz
-  | CreateRequestActionsItemEdgeCacheTTL
-  | CreateRequestActionsItemEmailObfuscation
-  | CreateRequestActionsItemExplicitCacheControl
-  | CreateRequestActionsItemForwardingURL
-  | CreateRequestActionsItemHostHeaderOverride
-  | CreateRequestActionsItemIPGeolocation
-  | CreateRequestActionsItemMirage
-  | CreateRequestActionsItemOpportunisticEncryption
-  | CreateRequestActionsItemOriginErrorPagePassThru
-  | CreateRequestActionsItemPolish
-  | CreateRequestActionsItemResolveOverride
-  | CreateRequestActionsItemRespectStrongEtag
-  | CreateRequestActionsItemResponseBuffering
-  | CreateRequestActionsItemRocketLoader
-  | CreateRequestActionsItemSecurityLevel
-  | CreateRequestActionsItemSortQueryStringForCache
-  | CreateRequestActionsItemSSL
-  | CreateRequestActionsItemTrueClientIPHeader
-  | CreateRequestActionsItemWAF;
-export const CreateRequestActionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["id"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-  ]),
-);
+export interface CreateRequestActionsItem {
+  /** If enabled, any `http://`` URL is converted to`https://` through a */
+  id?:
+    | CreateRequestActionsItemAlwaysUseHTTPSId
+    | (string & {})
+    | CreateRequestActionsItemAutomaticHTTPSRewritesId
+    | (string & {})
+    | CreateRequestActionsItemBrowserCacheTTLId
+    | (string & {})
+    | CreateRequestActionsItemBrowserCheckId
+    | (string & {})
+    | CreateRequestActionsItemBypassCacheOnCookieId
+    | (string & {})
+    | CreateRequestActionsItemCacheByDeviceTypeId
+    | (string & {})
+    | CreateRequestActionsItemCacheDeceptionArmorId
+    | (string & {})
+    | CreateRequestActionsItemCacheKeyFieldsId
+    | (string & {})
+    | CreateRequestActionsItemCacheLevelId
+    | (string & {})
+    | CreateRequestActionsItemCacheOnCookieId
+    | (string & {})
+    | CreateRequestActionsItemCacheTTLByStatusId
+    | (string & {})
+    | CreateRequestActionsItemDisableAppsId
+    | (string & {})
+    | CreateRequestActionsItemDisablePerformanceId
+    | (string & {})
+    | CreateRequestActionsItemDisableSecurityId
+    | (string & {})
+    | CreateRequestActionsItemDisableZarazId
+    | (string & {})
+    | CreateRequestActionsItemEdgeCacheTTLId
+    | (string & {})
+    | CreateRequestActionsItemEmailObfuscationId
+    | (string & {})
+    | CreateRequestActionsItemExplicitCacheControlId
+    | (string & {})
+    | CreateRequestActionsItemForwardingURLId
+    | (string & {})
+    | CreateRequestActionsItemHostHeaderOverrideId
+    | (string & {})
+    | CreateRequestActionsItemIPGeolocationId
+    | (string & {})
+    | CreateRequestActionsItemMirageId
+    | (string & {})
+    | CreateRequestActionsItemOpportunisticEncryptionId
+    | (string & {})
+    | CreateRequestActionsItemOriginErrorPagePassThruId
+    | (string & {})
+    | CreateRequestActionsItemPolishId
+    | (string & {})
+    | CreateRequestActionsItemResolveOverrideId
+    | (string & {})
+    | CreateRequestActionsItemRespectStrongEtagId
+    | (string & {})
+    | CreateRequestActionsItemResponseBufferingId
+    | (string & {})
+    | CreateRequestActionsItemRocketLoaderId
+    | (string & {})
+    | CreateRequestActionsItemSecurityLevelId
+    | (string & {})
+    | CreateRequestActionsItemSortQueryStringForCacheId
+    | (string & {})
+    | CreateRequestActionsItemSSLId
+    | (string & {})
+    | CreateRequestActionsItemTrueClientIPHeaderId
+    | (string & {})
+    | CreateRequestActionsItemWAFId
+    | (string & {});
+  /** The status of Automatic HTTPS Rewrites. */
+  value?:
+    | CreateRequestActionsItemAutomaticHTTPSRewritesValue
+    | (string & {})
+    | number
+    | CreateRequestActionsItemBrowserCheckValue
+    | (string & {})
+    | string
+    | CreateRequestActionsItemCacheByDeviceTypeValue
+    | (string & {})
+    | CreateRequestActionsItemCacheDeceptionArmorValue
+    | (string & {})
+    | CreateRequestActionsItemCacheKeyFieldsValue
+    | CreateRequestActionsItemCacheLevelValue
+    | (string & {})
+    | CreateRequestActionsItemCacheTTLByStatusValue
+    | CreateRequestActionsItemEmailObfuscationValue
+    | (string & {})
+    | CreateRequestActionsItemExplicitCacheControlValue
+    | (string & {})
+    | CreateRequestActionsItemForwardingURLValue
+    | CreateRequestActionsItemIPGeolocationValue
+    | (string & {})
+    | CreateRequestActionsItemMirageValue
+    | (string & {})
+    | CreateRequestActionsItemOpportunisticEncryptionValue
+    | (string & {})
+    | CreateRequestActionsItemOriginErrorPagePassThruValue
+    | (string & {})
+    | CreateRequestActionsItemPolishValue
+    | (string & {})
+    | CreateRequestActionsItemRespectStrongEtagValue
+    | (string & {})
+    | CreateRequestActionsItemResponseBufferingValue
+    | (string & {})
+    | CreateRequestActionsItemRocketLoaderValue
+    | (string & {})
+    | CreateRequestActionsItemSecurityLevelValue
+    | (string & {})
+    | CreateRequestActionsItemSortQueryStringForCacheValue
+    | (string & {})
+    | CreateRequestActionsItemSSLValue
+    | (string & {})
+    | CreateRequestActionsItemTrueClientIPHeaderValue
+    | (string & {})
+    | CreateRequestActionsItemWAFValue
+    | (string & {});
+}
+export const CreateRequestActionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(
+      S.Union(
+        CreateRequestActionsItemAlwaysUseHTTPSId,
+        CreateRequestActionsItemAutomaticHTTPSRewritesId,
+        CreateRequestActionsItemBrowserCacheTTLId,
+        CreateRequestActionsItemBrowserCheckId,
+        CreateRequestActionsItemBypassCacheOnCookieId,
+        CreateRequestActionsItemCacheByDeviceTypeId,
+        CreateRequestActionsItemCacheDeceptionArmorId,
+        CreateRequestActionsItemCacheKeyFieldsId,
+        CreateRequestActionsItemCacheLevelId,
+        CreateRequestActionsItemCacheOnCookieId,
+        CreateRequestActionsItemCacheTTLByStatusId,
+        CreateRequestActionsItemDisableAppsId,
+        CreateRequestActionsItemDisablePerformanceId,
+        CreateRequestActionsItemDisableSecurityId,
+        CreateRequestActionsItemDisableZarazId,
+        CreateRequestActionsItemEdgeCacheTTLId,
+        CreateRequestActionsItemEmailObfuscationId,
+        CreateRequestActionsItemExplicitCacheControlId,
+        CreateRequestActionsItemForwardingURLId,
+        CreateRequestActionsItemHostHeaderOverrideId,
+        CreateRequestActionsItemIPGeolocationId,
+        CreateRequestActionsItemMirageId,
+        CreateRequestActionsItemOpportunisticEncryptionId,
+        CreateRequestActionsItemOriginErrorPagePassThruId,
+        CreateRequestActionsItemPolishId,
+        CreateRequestActionsItemResolveOverrideId,
+        CreateRequestActionsItemRespectStrongEtagId,
+        CreateRequestActionsItemResponseBufferingId,
+        CreateRequestActionsItemRocketLoaderId,
+        CreateRequestActionsItemSecurityLevelId,
+        CreateRequestActionsItemSortQueryStringForCacheId,
+        CreateRequestActionsItemSSLId,
+        CreateRequestActionsItemTrueClientIPHeaderId,
+        CreateRequestActionsItemWAFId,
+      ),
+    ),
+    value: S.optional(
+      S.Union(
+        CreateRequestActionsItemAutomaticHTTPSRewritesValue,
+        S.Number,
+        CreateRequestActionsItemBrowserCheckValue,
+        S.String,
+        CreateRequestActionsItemCacheByDeviceTypeValue,
+        CreateRequestActionsItemCacheDeceptionArmorValue,
+        CreateRequestActionsItemCacheKeyFieldsValue,
+        CreateRequestActionsItemCacheLevelValue,
+        CreateRequestActionsItemCacheTTLByStatusValue,
+        CreateRequestActionsItemEmailObfuscationValue,
+        CreateRequestActionsItemExplicitCacheControlValue,
+        CreateRequestActionsItemForwardingURLValue,
+        CreateRequestActionsItemIPGeolocationValue,
+        CreateRequestActionsItemMirageValue,
+        CreateRequestActionsItemOpportunisticEncryptionValue,
+        CreateRequestActionsItemOriginErrorPagePassThruValue,
+        CreateRequestActionsItemPolishValue,
+        CreateRequestActionsItemRespectStrongEtagValue,
+        CreateRequestActionsItemResponseBufferingValue,
+        CreateRequestActionsItemRocketLoaderValue,
+        CreateRequestActionsItemSecurityLevelValue,
+        CreateRequestActionsItemSortQueryStringForCacheValue,
+        CreateRequestActionsItemSSLValue,
+        CreateRequestActionsItemTrueClientIPHeaderValue,
+        CreateRequestActionsItemWAFValue,
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "CreateRequestActionsItem",
+}) as any as S.Schema<CreateRequestActionsItem>;
 
 export type CreateRequestActionsList = ReadonlyArray<CreateRequestActionsItem>;
 export const CreateRequestActionsList = /*@__PURE__*/ S.Array(
@@ -5848,79 +5967,198 @@ export const EditRequestActionsItemWAF = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestActionsItemWAF",
 }) as any as S.Schema<EditRequestActionsItemWAF>;
 
-export type EditRequestActionsItem =
-  | EditRequestActionsItemAlwaysUseHTTPS
-  | EditRequestActionsItemAutomaticHTTPSRewrites
-  | EditRequestActionsItemBrowserCacheTTL
-  | EditRequestActionsItemBrowserCheck
-  | EditRequestActionsItemBypassCacheOnCookie
-  | EditRequestActionsItemCacheByDeviceType
-  | EditRequestActionsItemCacheDeceptionArmor
-  | EditRequestActionsItemCacheKeyFields
-  | EditRequestActionsItemCacheLevel
-  | EditRequestActionsItemCacheOnCookie
-  | EditRequestActionsItemCacheTTLByStatus
-  | EditRequestActionsItemDisableApps
-  | EditRequestActionsItemDisablePerformance
-  | EditRequestActionsItemDisableSecurity
-  | EditRequestActionsItemDisableZaraz
-  | EditRequestActionsItemEdgeCacheTTL
-  | EditRequestActionsItemEmailObfuscation
-  | EditRequestActionsItemExplicitCacheControl
-  | EditRequestActionsItemForwardingURL
-  | EditRequestActionsItemHostHeaderOverride
-  | EditRequestActionsItemIPGeolocation
-  | EditRequestActionsItemMirage
-  | EditRequestActionsItemOpportunisticEncryption
-  | EditRequestActionsItemOriginErrorPagePassThru
-  | EditRequestActionsItemPolish
-  | EditRequestActionsItemResolveOverride
-  | EditRequestActionsItemRespectStrongEtag
-  | EditRequestActionsItemResponseBuffering
-  | EditRequestActionsItemRocketLoader
-  | EditRequestActionsItemSecurityLevel
-  | EditRequestActionsItemSortQueryStringForCache
-  | EditRequestActionsItemSSL
-  | EditRequestActionsItemTrueClientIPHeader
-  | EditRequestActionsItemWAF;
-export const EditRequestActionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["id"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-  ]),
-);
+export interface EditRequestActionsItem {
+  /** If enabled, any `http://`` URL is converted to`https://` through a */
+  id?:
+    | EditRequestActionsItemAlwaysUseHTTPSId
+    | (string & {})
+    | EditRequestActionsItemAutomaticHTTPSRewritesId
+    | (string & {})
+    | EditRequestActionsItemBrowserCacheTTLId
+    | (string & {})
+    | EditRequestActionsItemBrowserCheckId
+    | (string & {})
+    | EditRequestActionsItemBypassCacheOnCookieId
+    | (string & {})
+    | EditRequestActionsItemCacheByDeviceTypeId
+    | (string & {})
+    | EditRequestActionsItemCacheDeceptionArmorId
+    | (string & {})
+    | EditRequestActionsItemCacheKeyFieldsId
+    | (string & {})
+    | EditRequestActionsItemCacheLevelId
+    | (string & {})
+    | EditRequestActionsItemCacheOnCookieId
+    | (string & {})
+    | EditRequestActionsItemCacheTTLByStatusId
+    | (string & {})
+    | EditRequestActionsItemDisableAppsId
+    | (string & {})
+    | EditRequestActionsItemDisablePerformanceId
+    | (string & {})
+    | EditRequestActionsItemDisableSecurityId
+    | (string & {})
+    | EditRequestActionsItemDisableZarazId
+    | (string & {})
+    | EditRequestActionsItemEdgeCacheTTLId
+    | (string & {})
+    | EditRequestActionsItemEmailObfuscationId
+    | (string & {})
+    | EditRequestActionsItemExplicitCacheControlId
+    | (string & {})
+    | EditRequestActionsItemForwardingURLId
+    | (string & {})
+    | EditRequestActionsItemHostHeaderOverrideId
+    | (string & {})
+    | EditRequestActionsItemIPGeolocationId
+    | (string & {})
+    | EditRequestActionsItemMirageId
+    | (string & {})
+    | EditRequestActionsItemOpportunisticEncryptionId
+    | (string & {})
+    | EditRequestActionsItemOriginErrorPagePassThruId
+    | (string & {})
+    | EditRequestActionsItemPolishId
+    | (string & {})
+    | EditRequestActionsItemResolveOverrideId
+    | (string & {})
+    | EditRequestActionsItemRespectStrongEtagId
+    | (string & {})
+    | EditRequestActionsItemResponseBufferingId
+    | (string & {})
+    | EditRequestActionsItemRocketLoaderId
+    | (string & {})
+    | EditRequestActionsItemSecurityLevelId
+    | (string & {})
+    | EditRequestActionsItemSortQueryStringForCacheId
+    | (string & {})
+    | EditRequestActionsItemSSLId
+    | (string & {})
+    | EditRequestActionsItemTrueClientIPHeaderId
+    | (string & {})
+    | EditRequestActionsItemWAFId
+    | (string & {});
+  /** The status of Automatic HTTPS Rewrites. */
+  value?:
+    | EditRequestActionsItemAutomaticHTTPSRewritesValue
+    | (string & {})
+    | number
+    | EditRequestActionsItemBrowserCheckValue
+    | (string & {})
+    | string
+    | EditRequestActionsItemCacheByDeviceTypeValue
+    | (string & {})
+    | EditRequestActionsItemCacheDeceptionArmorValue
+    | (string & {})
+    | EditRequestActionsItemCacheKeyFieldsValue
+    | EditRequestActionsItemCacheLevelValue
+    | (string & {})
+    | EditRequestActionsItemCacheTTLByStatusValue
+    | EditRequestActionsItemEmailObfuscationValue
+    | (string & {})
+    | EditRequestActionsItemExplicitCacheControlValue
+    | (string & {})
+    | EditRequestActionsItemForwardingURLValue
+    | EditRequestActionsItemIPGeolocationValue
+    | (string & {})
+    | EditRequestActionsItemMirageValue
+    | (string & {})
+    | EditRequestActionsItemOpportunisticEncryptionValue
+    | (string & {})
+    | EditRequestActionsItemOriginErrorPagePassThruValue
+    | (string & {})
+    | EditRequestActionsItemPolishValue
+    | (string & {})
+    | EditRequestActionsItemRespectStrongEtagValue
+    | (string & {})
+    | EditRequestActionsItemResponseBufferingValue
+    | (string & {})
+    | EditRequestActionsItemRocketLoaderValue
+    | (string & {})
+    | EditRequestActionsItemSecurityLevelValue
+    | (string & {})
+    | EditRequestActionsItemSortQueryStringForCacheValue
+    | (string & {})
+    | EditRequestActionsItemSSLValue
+    | (string & {})
+    | EditRequestActionsItemTrueClientIPHeaderValue
+    | (string & {})
+    | EditRequestActionsItemWAFValue
+    | (string & {});
+}
+export const EditRequestActionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(
+      S.Union(
+        EditRequestActionsItemAlwaysUseHTTPSId,
+        EditRequestActionsItemAutomaticHTTPSRewritesId,
+        EditRequestActionsItemBrowserCacheTTLId,
+        EditRequestActionsItemBrowserCheckId,
+        EditRequestActionsItemBypassCacheOnCookieId,
+        EditRequestActionsItemCacheByDeviceTypeId,
+        EditRequestActionsItemCacheDeceptionArmorId,
+        EditRequestActionsItemCacheKeyFieldsId,
+        EditRequestActionsItemCacheLevelId,
+        EditRequestActionsItemCacheOnCookieId,
+        EditRequestActionsItemCacheTTLByStatusId,
+        EditRequestActionsItemDisableAppsId,
+        EditRequestActionsItemDisablePerformanceId,
+        EditRequestActionsItemDisableSecurityId,
+        EditRequestActionsItemDisableZarazId,
+        EditRequestActionsItemEdgeCacheTTLId,
+        EditRequestActionsItemEmailObfuscationId,
+        EditRequestActionsItemExplicitCacheControlId,
+        EditRequestActionsItemForwardingURLId,
+        EditRequestActionsItemHostHeaderOverrideId,
+        EditRequestActionsItemIPGeolocationId,
+        EditRequestActionsItemMirageId,
+        EditRequestActionsItemOpportunisticEncryptionId,
+        EditRequestActionsItemOriginErrorPagePassThruId,
+        EditRequestActionsItemPolishId,
+        EditRequestActionsItemResolveOverrideId,
+        EditRequestActionsItemRespectStrongEtagId,
+        EditRequestActionsItemResponseBufferingId,
+        EditRequestActionsItemRocketLoaderId,
+        EditRequestActionsItemSecurityLevelId,
+        EditRequestActionsItemSortQueryStringForCacheId,
+        EditRequestActionsItemSSLId,
+        EditRequestActionsItemTrueClientIPHeaderId,
+        EditRequestActionsItemWAFId,
+      ),
+    ),
+    value: S.optional(
+      S.Union(
+        EditRequestActionsItemAutomaticHTTPSRewritesValue,
+        S.Number,
+        EditRequestActionsItemBrowserCheckValue,
+        S.String,
+        EditRequestActionsItemCacheByDeviceTypeValue,
+        EditRequestActionsItemCacheDeceptionArmorValue,
+        EditRequestActionsItemCacheKeyFieldsValue,
+        EditRequestActionsItemCacheLevelValue,
+        EditRequestActionsItemCacheTTLByStatusValue,
+        EditRequestActionsItemEmailObfuscationValue,
+        EditRequestActionsItemExplicitCacheControlValue,
+        EditRequestActionsItemForwardingURLValue,
+        EditRequestActionsItemIPGeolocationValue,
+        EditRequestActionsItemMirageValue,
+        EditRequestActionsItemOpportunisticEncryptionValue,
+        EditRequestActionsItemOriginErrorPagePassThruValue,
+        EditRequestActionsItemPolishValue,
+        EditRequestActionsItemRespectStrongEtagValue,
+        EditRequestActionsItemResponseBufferingValue,
+        EditRequestActionsItemRocketLoaderValue,
+        EditRequestActionsItemSecurityLevelValue,
+        EditRequestActionsItemSortQueryStringForCacheValue,
+        EditRequestActionsItemSSLValue,
+        EditRequestActionsItemTrueClientIPHeaderValue,
+        EditRequestActionsItemWAFValue,
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "EditRequestActionsItem",
+}) as any as S.Schema<EditRequestActionsItem>;
 
 export type EditRequestActionsList = ReadonlyArray<EditRequestActionsItem>;
 export const EditRequestActionsList = /*@__PURE__*/ S.Array(
@@ -8173,79 +8411,198 @@ export const UpdateRequestActionsItemWAF = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestActionsItemWAF",
 }) as any as S.Schema<UpdateRequestActionsItemWAF>;
 
-export type UpdateRequestActionsItem =
-  | UpdateRequestActionsItemAlwaysUseHTTPS
-  | UpdateRequestActionsItemAutomaticHTTPSRewrites
-  | UpdateRequestActionsItemBrowserCacheTTL
-  | UpdateRequestActionsItemBrowserCheck
-  | UpdateRequestActionsItemBypassCacheOnCookie
-  | UpdateRequestActionsItemCacheByDeviceType
-  | UpdateRequestActionsItemCacheDeceptionArmor
-  | UpdateRequestActionsItemCacheKeyFields
-  | UpdateRequestActionsItemCacheLevel
-  | UpdateRequestActionsItemCacheOnCookie
-  | UpdateRequestActionsItemCacheTTLByStatus
-  | UpdateRequestActionsItemDisableApps
-  | UpdateRequestActionsItemDisablePerformance
-  | UpdateRequestActionsItemDisableSecurity
-  | UpdateRequestActionsItemDisableZaraz
-  | UpdateRequestActionsItemEdgeCacheTTL
-  | UpdateRequestActionsItemEmailObfuscation
-  | UpdateRequestActionsItemExplicitCacheControl
-  | UpdateRequestActionsItemForwardingURL
-  | UpdateRequestActionsItemHostHeaderOverride
-  | UpdateRequestActionsItemIPGeolocation
-  | UpdateRequestActionsItemMirage
-  | UpdateRequestActionsItemOpportunisticEncryption
-  | UpdateRequestActionsItemOriginErrorPagePassThru
-  | UpdateRequestActionsItemPolish
-  | UpdateRequestActionsItemResolveOverride
-  | UpdateRequestActionsItemRespectStrongEtag
-  | UpdateRequestActionsItemResponseBuffering
-  | UpdateRequestActionsItemRocketLoader
-  | UpdateRequestActionsItemSecurityLevel
-  | UpdateRequestActionsItemSortQueryStringForCache
-  | UpdateRequestActionsItemSSL
-  | UpdateRequestActionsItemTrueClientIPHeader
-  | UpdateRequestActionsItemWAF;
-export const UpdateRequestActionsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["id"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-    ["id", "value"],
-  ]),
-);
+export interface UpdateRequestActionsItem {
+  /** If enabled, any `http://`` URL is converted to`https://` through a */
+  id?:
+    | UpdateRequestActionsItemAlwaysUseHTTPSId
+    | (string & {})
+    | UpdateRequestActionsItemAutomaticHTTPSRewritesId
+    | (string & {})
+    | UpdateRequestActionsItemBrowserCacheTTLId
+    | (string & {})
+    | UpdateRequestActionsItemBrowserCheckId
+    | (string & {})
+    | UpdateRequestActionsItemBypassCacheOnCookieId
+    | (string & {})
+    | UpdateRequestActionsItemCacheByDeviceTypeId
+    | (string & {})
+    | UpdateRequestActionsItemCacheDeceptionArmorId
+    | (string & {})
+    | UpdateRequestActionsItemCacheKeyFieldsId
+    | (string & {})
+    | UpdateRequestActionsItemCacheLevelId
+    | (string & {})
+    | UpdateRequestActionsItemCacheOnCookieId
+    | (string & {})
+    | UpdateRequestActionsItemCacheTTLByStatusId
+    | (string & {})
+    | UpdateRequestActionsItemDisableAppsId
+    | (string & {})
+    | UpdateRequestActionsItemDisablePerformanceId
+    | (string & {})
+    | UpdateRequestActionsItemDisableSecurityId
+    | (string & {})
+    | UpdateRequestActionsItemDisableZarazId
+    | (string & {})
+    | UpdateRequestActionsItemEdgeCacheTTLId
+    | (string & {})
+    | UpdateRequestActionsItemEmailObfuscationId
+    | (string & {})
+    | UpdateRequestActionsItemExplicitCacheControlId
+    | (string & {})
+    | UpdateRequestActionsItemForwardingURLId
+    | (string & {})
+    | UpdateRequestActionsItemHostHeaderOverrideId
+    | (string & {})
+    | UpdateRequestActionsItemIPGeolocationId
+    | (string & {})
+    | UpdateRequestActionsItemMirageId
+    | (string & {})
+    | UpdateRequestActionsItemOpportunisticEncryptionId
+    | (string & {})
+    | UpdateRequestActionsItemOriginErrorPagePassThruId
+    | (string & {})
+    | UpdateRequestActionsItemPolishId
+    | (string & {})
+    | UpdateRequestActionsItemResolveOverrideId
+    | (string & {})
+    | UpdateRequestActionsItemRespectStrongEtagId
+    | (string & {})
+    | UpdateRequestActionsItemResponseBufferingId
+    | (string & {})
+    | UpdateRequestActionsItemRocketLoaderId
+    | (string & {})
+    | UpdateRequestActionsItemSecurityLevelId
+    | (string & {})
+    | UpdateRequestActionsItemSortQueryStringForCacheId
+    | (string & {})
+    | UpdateRequestActionsItemSSLId
+    | (string & {})
+    | UpdateRequestActionsItemTrueClientIPHeaderId
+    | (string & {})
+    | UpdateRequestActionsItemWAFId
+    | (string & {});
+  /** The status of Automatic HTTPS Rewrites. */
+  value?:
+    | UpdateRequestActionsItemAutomaticHTTPSRewritesValue
+    | (string & {})
+    | number
+    | UpdateRequestActionsItemBrowserCheckValue
+    | (string & {})
+    | string
+    | UpdateRequestActionsItemCacheByDeviceTypeValue
+    | (string & {})
+    | UpdateRequestActionsItemCacheDeceptionArmorValue
+    | (string & {})
+    | UpdateRequestActionsItemCacheKeyFieldsValue
+    | UpdateRequestActionsItemCacheLevelValue
+    | (string & {})
+    | UpdateRequestActionsItemCacheTTLByStatusValue
+    | UpdateRequestActionsItemEmailObfuscationValue
+    | (string & {})
+    | UpdateRequestActionsItemExplicitCacheControlValue
+    | (string & {})
+    | UpdateRequestActionsItemForwardingURLValue
+    | UpdateRequestActionsItemIPGeolocationValue
+    | (string & {})
+    | UpdateRequestActionsItemMirageValue
+    | (string & {})
+    | UpdateRequestActionsItemOpportunisticEncryptionValue
+    | (string & {})
+    | UpdateRequestActionsItemOriginErrorPagePassThruValue
+    | (string & {})
+    | UpdateRequestActionsItemPolishValue
+    | (string & {})
+    | UpdateRequestActionsItemRespectStrongEtagValue
+    | (string & {})
+    | UpdateRequestActionsItemResponseBufferingValue
+    | (string & {})
+    | UpdateRequestActionsItemRocketLoaderValue
+    | (string & {})
+    | UpdateRequestActionsItemSecurityLevelValue
+    | (string & {})
+    | UpdateRequestActionsItemSortQueryStringForCacheValue
+    | (string & {})
+    | UpdateRequestActionsItemSSLValue
+    | (string & {})
+    | UpdateRequestActionsItemTrueClientIPHeaderValue
+    | (string & {})
+    | UpdateRequestActionsItemWAFValue
+    | (string & {});
+}
+export const UpdateRequestActionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(
+      S.Union(
+        UpdateRequestActionsItemAlwaysUseHTTPSId,
+        UpdateRequestActionsItemAutomaticHTTPSRewritesId,
+        UpdateRequestActionsItemBrowserCacheTTLId,
+        UpdateRequestActionsItemBrowserCheckId,
+        UpdateRequestActionsItemBypassCacheOnCookieId,
+        UpdateRequestActionsItemCacheByDeviceTypeId,
+        UpdateRequestActionsItemCacheDeceptionArmorId,
+        UpdateRequestActionsItemCacheKeyFieldsId,
+        UpdateRequestActionsItemCacheLevelId,
+        UpdateRequestActionsItemCacheOnCookieId,
+        UpdateRequestActionsItemCacheTTLByStatusId,
+        UpdateRequestActionsItemDisableAppsId,
+        UpdateRequestActionsItemDisablePerformanceId,
+        UpdateRequestActionsItemDisableSecurityId,
+        UpdateRequestActionsItemDisableZarazId,
+        UpdateRequestActionsItemEdgeCacheTTLId,
+        UpdateRequestActionsItemEmailObfuscationId,
+        UpdateRequestActionsItemExplicitCacheControlId,
+        UpdateRequestActionsItemForwardingURLId,
+        UpdateRequestActionsItemHostHeaderOverrideId,
+        UpdateRequestActionsItemIPGeolocationId,
+        UpdateRequestActionsItemMirageId,
+        UpdateRequestActionsItemOpportunisticEncryptionId,
+        UpdateRequestActionsItemOriginErrorPagePassThruId,
+        UpdateRequestActionsItemPolishId,
+        UpdateRequestActionsItemResolveOverrideId,
+        UpdateRequestActionsItemRespectStrongEtagId,
+        UpdateRequestActionsItemResponseBufferingId,
+        UpdateRequestActionsItemRocketLoaderId,
+        UpdateRequestActionsItemSecurityLevelId,
+        UpdateRequestActionsItemSortQueryStringForCacheId,
+        UpdateRequestActionsItemSSLId,
+        UpdateRequestActionsItemTrueClientIPHeaderId,
+        UpdateRequestActionsItemWAFId,
+      ),
+    ),
+    value: S.optional(
+      S.Union(
+        UpdateRequestActionsItemAutomaticHTTPSRewritesValue,
+        S.Number,
+        UpdateRequestActionsItemBrowserCheckValue,
+        S.String,
+        UpdateRequestActionsItemCacheByDeviceTypeValue,
+        UpdateRequestActionsItemCacheDeceptionArmorValue,
+        UpdateRequestActionsItemCacheKeyFieldsValue,
+        UpdateRequestActionsItemCacheLevelValue,
+        UpdateRequestActionsItemCacheTTLByStatusValue,
+        UpdateRequestActionsItemEmailObfuscationValue,
+        UpdateRequestActionsItemExplicitCacheControlValue,
+        UpdateRequestActionsItemForwardingURLValue,
+        UpdateRequestActionsItemIPGeolocationValue,
+        UpdateRequestActionsItemMirageValue,
+        UpdateRequestActionsItemOpportunisticEncryptionValue,
+        UpdateRequestActionsItemOriginErrorPagePassThruValue,
+        UpdateRequestActionsItemPolishValue,
+        UpdateRequestActionsItemRespectStrongEtagValue,
+        UpdateRequestActionsItemResponseBufferingValue,
+        UpdateRequestActionsItemRocketLoaderValue,
+        UpdateRequestActionsItemSecurityLevelValue,
+        UpdateRequestActionsItemSortQueryStringForCacheValue,
+        UpdateRequestActionsItemSSLValue,
+        UpdateRequestActionsItemTrueClientIPHeaderValue,
+        UpdateRequestActionsItemWAFValue,
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "UpdateRequestActionsItem",
+}) as any as S.Schema<UpdateRequestActionsItem>;
 
 export type UpdateRequestActionsList = ReadonlyArray<UpdateRequestActionsItem>;
 export const UpdateRequestActionsList = /*@__PURE__*/ S.Array(

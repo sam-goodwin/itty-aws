@@ -726,22 +726,39 @@ export const AccessRulesCreateRequestConfigurationCountryConfiguration =
     identifier: "AccessRulesCreateRequestConfigurationCountryConfiguration",
   }) as any as S.Schema<AccessRulesCreateRequestConfigurationCountryConfiguration>;
 
-export type AccessRulesCreateRequestConfiguration =
-  | AccessRulesCreateRequestConfigurationAccessRuleIPConfiguration
-  | AccessRulesCreateRequestConfigurationIPV6Configuration
-  | AccessRulesCreateRequestConfigurationAccessRuleCIDRConfiguration
-  | AccessRulesCreateRequestConfigurationASNConfiguration
-  | AccessRulesCreateRequestConfigurationCountryConfiguration;
-export const AccessRulesCreateRequestConfiguration =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["target", "value"],
-      ["target", "value"],
-      ["target", "value"],
-      ["target", "value"],
-      ["target", "value"],
-    ]),
-  );
+export interface AccessRulesCreateRequestConfiguration {
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the rule. */
+  target?:
+    | AccessRulesCreateRequestConfigurationAccessRuleIPConfigurationTarget
+    | (string & {})
+    | AccessRulesCreateRequestConfigurationIPV6ConfigurationTarget
+    | (string & {})
+    | AccessRulesCreateRequestConfigurationAccessRuleCIDRConfigurationTarget
+    | (string & {})
+    | AccessRulesCreateRequestConfigurationASNConfigurationTarget
+    | (string & {})
+    | AccessRulesCreateRequestConfigurationCountryConfigurationTarget
+    | (string & {});
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
+}
+export const AccessRulesCreateRequestConfiguration = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      target: S.optional(
+        S.Union(
+          AccessRulesCreateRequestConfigurationAccessRuleIPConfigurationTarget,
+          AccessRulesCreateRequestConfigurationIPV6ConfigurationTarget,
+          AccessRulesCreateRequestConfigurationAccessRuleCIDRConfigurationTarget,
+          AccessRulesCreateRequestConfigurationASNConfigurationTarget,
+          AccessRulesCreateRequestConfigurationCountryConfigurationTarget,
+        ),
+      ),
+      value: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "AccessRulesCreateRequestConfiguration",
+}) as any as S.Schema<AccessRulesCreateRequestConfiguration>;
 
 export type AccessRulesCreateRequestMode =
   | "block"
@@ -1041,9 +1058,7 @@ export const LockdownsCreateRequestConfigurationsLockdownIPConfigurationTarget =
 
 export interface LockdownsCreateRequestConfigurationsLockdownIPConfiguration {
   /** The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule. */
-  target?:
-    | LockdownsCreateRequestConfigurationsLockdownIPConfigurationTarget
-    | (string & {});
+  target?: LockdownsCreateRequestConfigurationsLockdownIPConfigurationTarget;
   /** The IP address to match. This address will be compared to the IP address of incoming requests. */
   value?: string;
 }
@@ -1066,9 +1081,7 @@ export const LockdownsCreateRequestConfigurationsLockdownCIDRConfigurationTarget
 
 export interface LockdownsCreateRequestConfigurationsLockdownCIDRConfiguration {
   /** The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule. */
-  target?:
-    | LockdownsCreateRequestConfigurationsLockdownCIDRConfigurationTarget
-    | (string & {});
+  target?: LockdownsCreateRequestConfigurationsLockdownCIDRConfigurationTarget;
   /** The IP address range to match. You can only use prefix lengths `/16` and `/24`. */
   value?: string;
 }
@@ -1084,16 +1097,34 @@ export const LockdownsCreateRequestConfigurationsLockdownCIDRConfiguration =
     identifier: "LockdownsCreateRequestConfigurationsLockdownCIDRConfiguration",
   }) as any as S.Schema<LockdownsCreateRequestConfigurationsLockdownCIDRConfiguration>;
 
-export type LockdownsCreateRequestConfigurations =
-  | LockdownsCreateRequestConfigurationsLockdownIPConfiguration
-  | LockdownsCreateRequestConfigurationsLockdownCIDRConfiguration;
-export const LockdownsCreateRequestConfigurations =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["target", "value"],
-      ["target", "value"],
-    ]),
-  );
+export interface LockdownsCreateRequestConfigurations {
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule. */
+  target?:
+    | LockdownsCreateRequestConfigurationsLockdownIPConfigurationTarget
+    | LockdownsCreateRequestConfigurationsLockdownCIDRConfigurationTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
+}
+export const LockdownsCreateRequestConfigurations = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      target: S.optional(
+        S.Union(
+          LockdownsCreateRequestConfigurationsLockdownIPConfigurationTarget,
+          LockdownsCreateRequestConfigurationsLockdownCIDRConfigurationTarget,
+        ),
+      ),
+      value: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "LockdownsCreateRequestConfigurations",
+}) as any as S.Schema<LockdownsCreateRequestConfigurations>;
+
+export type LockdownConfigurationsList =
+  ReadonlyArray<LockdownsCreateRequestConfigurations>;
+export const LockdownConfigurationsList = /*@__PURE__*/ S.Array(
+  LockdownsCreateRequestConfigurations,
+) as any as S.Schema<LockdownConfigurationsList>;
 
 export type LockdownsCreateRequestUrlsList = ReadonlyArray<string>;
 export const LockdownsCreateRequestUrlsList = /*@__PURE__*/ S.Array(
@@ -1104,7 +1135,7 @@ export interface CreateLockdownRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations. */
-  configurations: LockdownsCreateRequestConfigurations;
+  configurations: LockdownConfigurationsList;
   /** The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
   urls: LockdownsCreateRequestUrlsList;
   /** An informative summary of the rule. This value is sanitized and any tags will be removed. */
@@ -1117,7 +1148,7 @@ export interface CreateLockdownRequest {
 export const CreateLockdownRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    configurations: LockdownsCreateRequestConfigurations,
+    configurations: LockdownConfigurationsList,
     urls: LockdownsCreateRequestUrlsList,
     description: S.optional(S.String),
     paused: S.optional(S.Boolean),
@@ -1135,76 +1166,6 @@ export const CreateLockdownRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateLockdownRequest",
 }) as any as S.Schema<CreateLockdownRequest>;
 
-export type LockdownsCreateResponseConfigurationsLockdownIPConfigurationTarget =
-  "ip";
-export const LockdownsCreateResponseConfigurationsLockdownIPConfigurationTarget =
-  /*@__PURE__*/ S.String;
-
-export interface LockdownsCreateResponseConfigurationsLockdownIPConfiguration {
-  /** The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule. */
-  target?: LockdownsCreateResponseConfigurationsLockdownIPConfigurationTarget;
-  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
-  value?: string;
-}
-export const LockdownsCreateResponseConfigurationsLockdownIPConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: S.optional(
-        LockdownsCreateResponseConfigurationsLockdownIPConfigurationTarget,
-      ),
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "LockdownsCreateResponseConfigurationsLockdownIPConfiguration",
-  }) as any as S.Schema<LockdownsCreateResponseConfigurationsLockdownIPConfiguration>;
-
-export type LockdownsCreateResponseConfigurationsLockdownCIDRConfigurationTarget =
-  "ip_range";
-export const LockdownsCreateResponseConfigurationsLockdownCIDRConfigurationTarget =
-  /*@__PURE__*/ S.String;
-
-export interface LockdownsCreateResponseConfigurationsLockdownCIDRConfiguration {
-  /** The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule. */
-  target?: LockdownsCreateResponseConfigurationsLockdownCIDRConfigurationTarget;
-  /** The IP address range to match. You can only use prefix lengths `/16` and `/24`. */
-  value?: string;
-}
-export const LockdownsCreateResponseConfigurationsLockdownCIDRConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: S.optional(
-        LockdownsCreateResponseConfigurationsLockdownCIDRConfigurationTarget,
-      ),
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "LockdownsCreateResponseConfigurationsLockdownCIDRConfiguration",
-  }) as any as S.Schema<LockdownsCreateResponseConfigurationsLockdownCIDRConfiguration>;
-
-export interface LockdownsCreateResponseConfigurations {
-  /** The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule. */
-  target?:
-    | LockdownsCreateResponseConfigurationsLockdownIPConfigurationTarget
-    | LockdownsCreateResponseConfigurationsLockdownCIDRConfigurationTarget;
-  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
-  value?: string;
-}
-export const LockdownsCreateResponseConfigurations = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      target: S.optional(
-        S.Union(
-          LockdownsCreateResponseConfigurationsLockdownIPConfigurationTarget,
-          LockdownsCreateResponseConfigurationsLockdownCIDRConfigurationTarget,
-        ),
-      ),
-      value: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "LockdownsCreateResponseConfigurations",
-}) as any as S.Schema<LockdownsCreateResponseConfigurations>;
-
 export type LockdownsCreateResponseUrlsList = ReadonlyArray<string>;
 export const LockdownsCreateResponseUrlsList = /*@__PURE__*/ S.Array(
   S.String,
@@ -1215,7 +1176,7 @@ export interface CreateLockdownResponse {
   /** The unique identifier of the Zone Lockdown rule. */
   id: string;
   /** A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations. */
-  configurations: LockdownsCreateResponseConfigurations;
+  configurations: LockdownConfigurationsList;
   /** The timestamp of when the rule was created. */
   createdOn: string;
   /** An informative summary of the rule. */
@@ -1226,16 +1187,19 @@ export interface CreateLockdownResponse {
   paused: boolean;
   /** The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
   urls: LockdownsCreateResponseUrlsList;
+  /** The priority of the Zone Lockdown rule, echoed on reads. */
+  priority?: number;
 }
 export const CreateLockdownResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    configurations: LockdownsCreateResponseConfigurations,
+    configurations: LockdownConfigurationsList,
     createdOn: S.String.pipe(T.Body("created_on")),
     description: S.String,
     modifiedOn: S.String.pipe(T.Body("modified_on")),
     paused: S.Boolean,
     urls: LockdownsCreateResponseUrlsList,
+    priority: S.optional(S.Number),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateLockdownResponse",
@@ -2375,74 +2339,6 @@ export const GetLockdownRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetLockdownRequest",
 }) as any as S.Schema<GetLockdownRequest>;
 
-export type LockdownsGetResponseConfigurationsLockdownIPConfigurationTarget =
-  "ip";
-export const LockdownsGetResponseConfigurationsLockdownIPConfigurationTarget =
-  /*@__PURE__*/ S.String;
-
-export interface LockdownsGetResponseConfigurationsLockdownIPConfiguration {
-  /** The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule. */
-  target?: LockdownsGetResponseConfigurationsLockdownIPConfigurationTarget;
-  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
-  value?: string;
-}
-export const LockdownsGetResponseConfigurationsLockdownIPConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: S.optional(
-        LockdownsGetResponseConfigurationsLockdownIPConfigurationTarget,
-      ),
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "LockdownsGetResponseConfigurationsLockdownIPConfiguration",
-  }) as any as S.Schema<LockdownsGetResponseConfigurationsLockdownIPConfiguration>;
-
-export type LockdownsGetResponseConfigurationsLockdownCIDRConfigurationTarget =
-  "ip_range";
-export const LockdownsGetResponseConfigurationsLockdownCIDRConfigurationTarget =
-  /*@__PURE__*/ S.String;
-
-export interface LockdownsGetResponseConfigurationsLockdownCIDRConfiguration {
-  /** The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule. */
-  target?: LockdownsGetResponseConfigurationsLockdownCIDRConfigurationTarget;
-  /** The IP address range to match. You can only use prefix lengths `/16` and `/24`. */
-  value?: string;
-}
-export const LockdownsGetResponseConfigurationsLockdownCIDRConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: S.optional(
-        LockdownsGetResponseConfigurationsLockdownCIDRConfigurationTarget,
-      ),
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "LockdownsGetResponseConfigurationsLockdownCIDRConfiguration",
-  }) as any as S.Schema<LockdownsGetResponseConfigurationsLockdownCIDRConfiguration>;
-
-export interface LockdownsGetResponseConfigurations {
-  /** The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule. */
-  target?:
-    | LockdownsGetResponseConfigurationsLockdownIPConfigurationTarget
-    | LockdownsGetResponseConfigurationsLockdownCIDRConfigurationTarget;
-  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
-  value?: string;
-}
-export const LockdownsGetResponseConfigurations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(
-      S.Union(
-        LockdownsGetResponseConfigurationsLockdownIPConfigurationTarget,
-        LockdownsGetResponseConfigurationsLockdownCIDRConfigurationTarget,
-      ),
-    ),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LockdownsGetResponseConfigurations",
-}) as any as S.Schema<LockdownsGetResponseConfigurations>;
-
 export type LockdownsGetResponseUrlsList = ReadonlyArray<string>;
 export const LockdownsGetResponseUrlsList = /*@__PURE__*/ S.Array(
   S.String,
@@ -2453,7 +2349,7 @@ export interface GetLockdownResponse {
   /** The unique identifier of the Zone Lockdown rule. */
   id: string;
   /** A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations. */
-  configurations: LockdownsGetResponseConfigurations;
+  configurations: LockdownConfigurationsList;
   /** The timestamp of when the rule was created. */
   createdOn: string;
   /** An informative summary of the rule. */
@@ -2464,16 +2360,19 @@ export interface GetLockdownResponse {
   paused: boolean;
   /** The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
   urls: LockdownsGetResponseUrlsList;
+  /** The priority of the Zone Lockdown rule, echoed on reads. */
+  priority?: number;
 }
 export const GetLockdownResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    configurations: LockdownsGetResponseConfigurations,
+    configurations: LockdownConfigurationsList,
     createdOn: S.String.pipe(T.Body("created_on")),
     description: S.String,
     modifiedOn: S.String.pipe(T.Body("modified_on")),
     paused: S.Boolean,
     urls: LockdownsGetResponseUrlsList,
+    priority: S.optional(S.Number),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetLockdownResponse",
@@ -3371,76 +3270,6 @@ export const ListLockdownsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLockdownsRequest",
 }) as any as S.Schema<ListLockdownsRequest>;
 
-export type LockdownsListResultItemConfigurationsLockdownIPConfigurationTarget =
-  "ip";
-export const LockdownsListResultItemConfigurationsLockdownIPConfigurationTarget =
-  /*@__PURE__*/ S.String;
-
-export interface LockdownsListResultItemConfigurationsLockdownIPConfiguration {
-  /** The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule. */
-  target?: LockdownsListResultItemConfigurationsLockdownIPConfigurationTarget;
-  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
-  value?: string;
-}
-export const LockdownsListResultItemConfigurationsLockdownIPConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: S.optional(
-        LockdownsListResultItemConfigurationsLockdownIPConfigurationTarget,
-      ),
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "LockdownsListResultItemConfigurationsLockdownIPConfiguration",
-  }) as any as S.Schema<LockdownsListResultItemConfigurationsLockdownIPConfiguration>;
-
-export type LockdownsListResultItemConfigurationsLockdownCIDRConfigurationTarget =
-  "ip_range";
-export const LockdownsListResultItemConfigurationsLockdownCIDRConfigurationTarget =
-  /*@__PURE__*/ S.String;
-
-export interface LockdownsListResultItemConfigurationsLockdownCIDRConfiguration {
-  /** The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule. */
-  target?: LockdownsListResultItemConfigurationsLockdownCIDRConfigurationTarget;
-  /** The IP address range to match. You can only use prefix lengths `/16` and `/24`. */
-  value?: string;
-}
-export const LockdownsListResultItemConfigurationsLockdownCIDRConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: S.optional(
-        LockdownsListResultItemConfigurationsLockdownCIDRConfigurationTarget,
-      ),
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "LockdownsListResultItemConfigurationsLockdownCIDRConfiguration",
-  }) as any as S.Schema<LockdownsListResultItemConfigurationsLockdownCIDRConfiguration>;
-
-export interface LockdownsListResultItemConfigurations {
-  /** The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule. */
-  target?:
-    | LockdownsListResultItemConfigurationsLockdownIPConfigurationTarget
-    | LockdownsListResultItemConfigurationsLockdownCIDRConfigurationTarget;
-  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
-  value?: string;
-}
-export const LockdownsListResultItemConfigurations = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      target: S.optional(
-        S.Union(
-          LockdownsListResultItemConfigurationsLockdownIPConfigurationTarget,
-          LockdownsListResultItemConfigurationsLockdownCIDRConfigurationTarget,
-        ),
-      ),
-      value: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "LockdownsListResultItemConfigurations",
-}) as any as S.Schema<LockdownsListResultItemConfigurations>;
-
 export type LockdownsListResultItemUrlsList = ReadonlyArray<string>;
 export const LockdownsListResultItemUrlsList = /*@__PURE__*/ S.Array(
   S.String,
@@ -3450,7 +3279,7 @@ export interface LockdownsListResultItem {
   /** The unique identifier of the Zone Lockdown rule. */
   id: string;
   /** A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations. */
-  configurations: LockdownsListResultItemConfigurations;
+  configurations: LockdownConfigurationsList;
   /** The timestamp of when the rule was created. */
   createdOn: string;
   /** An informative summary of the rule. */
@@ -3461,16 +3290,19 @@ export interface LockdownsListResultItem {
   paused: boolean;
   /** The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
   urls: LockdownsListResultItemUrlsList;
+  /** The priority of the Zone Lockdown rule, echoed on reads. */
+  priority?: number;
 }
 export const LockdownsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    configurations: LockdownsListResultItemConfigurations,
+    configurations: LockdownConfigurationsList,
     createdOn: S.String.pipe(T.Body("created_on")),
     description: S.String,
     modifiedOn: S.String.pipe(T.Body("modified_on")),
     paused: S.Boolean,
     urls: LockdownsListResultItemUrlsList,
+    priority: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "LockdownsListResultItem",
@@ -4587,21 +4419,38 @@ export const AccessRulesEditRequestConfigurationCountryConfiguration =
     identifier: "AccessRulesEditRequestConfigurationCountryConfiguration",
   }) as any as S.Schema<AccessRulesEditRequestConfigurationCountryConfiguration>;
 
-export type AccessRulesEditRequestConfiguration =
-  | AccessRulesEditRequestConfigurationAccessRuleIPConfiguration
-  | AccessRulesEditRequestConfigurationIPV6Configuration
-  | AccessRulesEditRequestConfigurationAccessRuleCIDRConfiguration
-  | AccessRulesEditRequestConfigurationASNConfiguration
-  | AccessRulesEditRequestConfigurationCountryConfiguration;
-export const AccessRulesEditRequestConfiguration = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["target", "value"],
-    ["target", "value"],
-    ["target", "value"],
-    ["target", "value"],
-    ["target", "value"],
-  ]),
-);
+export interface AccessRulesEditRequestConfiguration {
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the rule. */
+  target?:
+    | AccessRulesEditRequestConfigurationAccessRuleIPConfigurationTarget
+    | (string & {})
+    | AccessRulesEditRequestConfigurationIPV6ConfigurationTarget
+    | (string & {})
+    | AccessRulesEditRequestConfigurationAccessRuleCIDRConfigurationTarget
+    | (string & {})
+    | AccessRulesEditRequestConfigurationASNConfigurationTarget
+    | (string & {})
+    | AccessRulesEditRequestConfigurationCountryConfigurationTarget
+    | (string & {});
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
+}
+export const AccessRulesEditRequestConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    target: S.optional(
+      S.Union(
+        AccessRulesEditRequestConfigurationAccessRuleIPConfigurationTarget,
+        AccessRulesEditRequestConfigurationIPV6ConfigurationTarget,
+        AccessRulesEditRequestConfigurationAccessRuleCIDRConfigurationTarget,
+        AccessRulesEditRequestConfigurationASNConfigurationTarget,
+        AccessRulesEditRequestConfigurationCountryConfigurationTarget,
+      ),
+    ),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AccessRulesEditRequestConfiguration",
+}) as any as S.Schema<AccessRulesEditRequestConfiguration>;
 
 export type AccessRulesEditRequestMode =
   | "block"
@@ -5387,67 +5236,6 @@ export const PatchWafPackageRuleResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchWafPackageRuleResponse",
 }) as any as S.Schema<PatchWafPackageRuleResponse>;
 
-export type LockdownsUpdateRequestConfigurationsLockdownIPConfigurationTarget =
-  "ip";
-export const LockdownsUpdateRequestConfigurationsLockdownIPConfigurationTarget =
-  /*@__PURE__*/ S.String;
-
-export interface LockdownsUpdateRequestConfigurationsLockdownIPConfiguration {
-  /** The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule. */
-  target?:
-    | LockdownsUpdateRequestConfigurationsLockdownIPConfigurationTarget
-    | (string & {});
-  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
-  value?: string;
-}
-export const LockdownsUpdateRequestConfigurationsLockdownIPConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: S.optional(
-        LockdownsUpdateRequestConfigurationsLockdownIPConfigurationTarget,
-      ),
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "LockdownsUpdateRequestConfigurationsLockdownIPConfiguration",
-  }) as any as S.Schema<LockdownsUpdateRequestConfigurationsLockdownIPConfiguration>;
-
-export type LockdownsUpdateRequestConfigurationsLockdownCIDRConfigurationTarget =
-  "ip_range";
-export const LockdownsUpdateRequestConfigurationsLockdownCIDRConfigurationTarget =
-  /*@__PURE__*/ S.String;
-
-export interface LockdownsUpdateRequestConfigurationsLockdownCIDRConfiguration {
-  /** The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule. */
-  target?:
-    | LockdownsUpdateRequestConfigurationsLockdownCIDRConfigurationTarget
-    | (string & {});
-  /** The IP address range to match. You can only use prefix lengths `/16` and `/24`. */
-  value?: string;
-}
-export const LockdownsUpdateRequestConfigurationsLockdownCIDRConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: S.optional(
-        LockdownsUpdateRequestConfigurationsLockdownCIDRConfigurationTarget,
-      ),
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "LockdownsUpdateRequestConfigurationsLockdownCIDRConfiguration",
-  }) as any as S.Schema<LockdownsUpdateRequestConfigurationsLockdownCIDRConfiguration>;
-
-export type LockdownsUpdateRequestConfigurations =
-  | LockdownsUpdateRequestConfigurationsLockdownIPConfiguration
-  | LockdownsUpdateRequestConfigurationsLockdownCIDRConfiguration;
-export const LockdownsUpdateRequestConfigurations =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["target", "value"],
-      ["target", "value"],
-    ]),
-  );
-
 export type LockdownsUpdateRequestUrlsList = ReadonlyArray<string>;
 export const LockdownsUpdateRequestUrlsList = /*@__PURE__*/ S.Array(
   S.String,
@@ -5459,7 +5247,7 @@ export interface UpdateLockdownRequest {
   /** The unique identifier of the Zone Lockdown rule. */
   lockDownsId: string;
   /** A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations. */
-  configurations: LockdownsUpdateRequestConfigurations;
+  configurations: LockdownConfigurationsList;
   /** The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
   urls: LockdownsUpdateRequestUrlsList;
   /** An informative summary of the rule. This value is sanitized and any tags will be removed. */
@@ -5473,7 +5261,7 @@ export const UpdateLockdownRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     lockDownsId: S.String.pipe(T.Label("lock_downs_id")),
-    configurations: LockdownsUpdateRequestConfigurations,
+    configurations: LockdownConfigurationsList,
     urls: LockdownsUpdateRequestUrlsList,
     description: S.optional(S.String),
     paused: S.optional(S.Boolean),
@@ -5491,76 +5279,6 @@ export const UpdateLockdownRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateLockdownRequest",
 }) as any as S.Schema<UpdateLockdownRequest>;
 
-export type LockdownsUpdateResponseConfigurationsLockdownIPConfigurationTarget =
-  "ip";
-export const LockdownsUpdateResponseConfigurationsLockdownIPConfigurationTarget =
-  /*@__PURE__*/ S.String;
-
-export interface LockdownsUpdateResponseConfigurationsLockdownIPConfiguration {
-  /** The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule. */
-  target?: LockdownsUpdateResponseConfigurationsLockdownIPConfigurationTarget;
-  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
-  value?: string;
-}
-export const LockdownsUpdateResponseConfigurationsLockdownIPConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: S.optional(
-        LockdownsUpdateResponseConfigurationsLockdownIPConfigurationTarget,
-      ),
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "LockdownsUpdateResponseConfigurationsLockdownIPConfiguration",
-  }) as any as S.Schema<LockdownsUpdateResponseConfigurationsLockdownIPConfiguration>;
-
-export type LockdownsUpdateResponseConfigurationsLockdownCIDRConfigurationTarget =
-  "ip_range";
-export const LockdownsUpdateResponseConfigurationsLockdownCIDRConfigurationTarget =
-  /*@__PURE__*/ S.String;
-
-export interface LockdownsUpdateResponseConfigurationsLockdownCIDRConfiguration {
-  /** The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule. */
-  target?: LockdownsUpdateResponseConfigurationsLockdownCIDRConfigurationTarget;
-  /** The IP address range to match. You can only use prefix lengths `/16` and `/24`. */
-  value?: string;
-}
-export const LockdownsUpdateResponseConfigurationsLockdownCIDRConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: S.optional(
-        LockdownsUpdateResponseConfigurationsLockdownCIDRConfigurationTarget,
-      ),
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "LockdownsUpdateResponseConfigurationsLockdownCIDRConfiguration",
-  }) as any as S.Schema<LockdownsUpdateResponseConfigurationsLockdownCIDRConfiguration>;
-
-export interface LockdownsUpdateResponseConfigurations {
-  /** The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule. */
-  target?:
-    | LockdownsUpdateResponseConfigurationsLockdownIPConfigurationTarget
-    | LockdownsUpdateResponseConfigurationsLockdownCIDRConfigurationTarget;
-  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
-  value?: string;
-}
-export const LockdownsUpdateResponseConfigurations = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      target: S.optional(
-        S.Union(
-          LockdownsUpdateResponseConfigurationsLockdownIPConfigurationTarget,
-          LockdownsUpdateResponseConfigurationsLockdownCIDRConfigurationTarget,
-        ),
-      ),
-      value: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "LockdownsUpdateResponseConfigurations",
-}) as any as S.Schema<LockdownsUpdateResponseConfigurations>;
-
 export type LockdownsUpdateResponseUrlsList = ReadonlyArray<string>;
 export const LockdownsUpdateResponseUrlsList = /*@__PURE__*/ S.Array(
   S.String,
@@ -5571,7 +5289,7 @@ export interface UpdateLockdownResponse {
   /** The unique identifier of the Zone Lockdown rule. */
   id: string;
   /** A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations. */
-  configurations: LockdownsUpdateResponseConfigurations;
+  configurations: LockdownConfigurationsList;
   /** The timestamp of when the rule was created. */
   createdOn: string;
   /** An informative summary of the rule. */
@@ -5582,16 +5300,19 @@ export interface UpdateLockdownResponse {
   paused: boolean;
   /** The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
   urls: LockdownsUpdateResponseUrlsList;
+  /** The priority of the Zone Lockdown rule, echoed on reads. */
+  priority?: number;
 }
 export const UpdateLockdownResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    configurations: LockdownsUpdateResponseConfigurations,
+    configurations: LockdownConfigurationsList,
     createdOn: S.String.pipe(T.Body("created_on")),
     description: S.String,
     modifiedOn: S.String.pipe(T.Body("modified_on")),
     paused: S.Boolean,
     urls: LockdownsUpdateResponseUrlsList,
+    priority: S.optional(S.Number),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateLockdownResponse",
@@ -5939,21 +5660,38 @@ export const UaRulesUpdateRequestConfigurationCountryConfiguration =
     identifier: "UaRulesUpdateRequestConfigurationCountryConfiguration",
   }) as any as S.Schema<UaRulesUpdateRequestConfigurationCountryConfiguration>;
 
-export type UaRulesUpdateRequestConfiguration =
-  | UaRulesUpdateRequestConfigurationAccessRuleIPConfiguration
-  | UaRulesUpdateRequestConfigurationIPV6Configuration
-  | UaRulesUpdateRequestConfigurationAccessRuleCIDRConfiguration
-  | UaRulesUpdateRequestConfigurationASNConfiguration
-  | UaRulesUpdateRequestConfigurationCountryConfiguration;
-export const UaRulesUpdateRequestConfiguration = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["target", "value"],
-    ["target", "value"],
-    ["target", "value"],
-    ["target", "value"],
-    ["target", "value"],
-  ]),
-);
+export interface UaRulesUpdateRequestConfiguration {
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the rule. */
+  target?:
+    | UaRulesUpdateRequestConfigurationAccessRuleIPConfigurationTarget
+    | (string & {})
+    | UaRulesUpdateRequestConfigurationIPV6ConfigurationTarget
+    | (string & {})
+    | UaRulesUpdateRequestConfigurationAccessRuleCIDRConfigurationTarget
+    | (string & {})
+    | UaRulesUpdateRequestConfigurationASNConfigurationTarget
+    | (string & {})
+    | UaRulesUpdateRequestConfigurationCountryConfigurationTarget
+    | (string & {});
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
+}
+export const UaRulesUpdateRequestConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    target: S.optional(
+      S.Union(
+        UaRulesUpdateRequestConfigurationAccessRuleIPConfigurationTarget,
+        UaRulesUpdateRequestConfigurationIPV6ConfigurationTarget,
+        UaRulesUpdateRequestConfigurationAccessRuleCIDRConfigurationTarget,
+        UaRulesUpdateRequestConfigurationASNConfigurationTarget,
+        UaRulesUpdateRequestConfigurationCountryConfigurationTarget,
+      ),
+    ),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UaRulesUpdateRequestConfiguration",
+}) as any as S.Schema<UaRulesUpdateRequestConfiguration>;
 
 export type UaRulesUpdateRequestMode =
   | "block"

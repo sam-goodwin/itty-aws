@@ -316,16 +316,67 @@ export const FeatureFlagFilterPropertyFlagEvaluatesSchema =
     identifier: "FeatureFlagFilterPropertyFlagEvaluatesSchema",
   }) as any as S.Schema<FeatureFlagFilterPropertyFlagEvaluatesSchema>;
 
-export type FeatureFlagFilterPropertySchema =
-  | FeatureFlagFilterPropertyGenericSchema
-  | FeatureFlagFilterPropertyExistsSchema
-  | FeatureFlagFilterPropertyDateSchema
-  | FeatureFlagFilterPropertySemverSchema
-  | FeatureFlagFilterPropertyMultiContainsSchema
-  | FeatureFlagFilterPropertyCohortInSchema
-  | FeatureFlagFilterPropertyFlagEvaluatesSchema;
-export const FeatureFlagFilterPropertySchema =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<FeatureFlagFilterPropertySchema>;
+export interface FeatureFlagFilterPropertySchema {
+  /** Property key used in this feature flag condition. */
+  key?: string;
+  /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
+  type?:
+    | PropertyGroupTypeEnum
+    | FeatureFlagFilterPropertyCohortInSchemaTypeEnum
+    | FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum;
+  /** Resolved cohort name for cohort-type filters. */
+  cohort_name?: string | null;
+  /** Group type index when using group-based filters. */
+  group_type_index?: number | null;
+  /** Comparison value for the property filter. Supports strings, numbers, booleans, and arrays. */
+  value?:
+    | unknown
+    | string
+    | FeatureFlagFilterPropertyMultiContainsSchemaValueList;
+  /** Operator used to compare the property value. * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
+  operator?:
+    | FeatureFlagFilterPropertyGenericSchemaOperatorEnum
+    | ExistenceOperatorEnum
+    | DateOperatorEnum
+    | FeatureFlagFilterPropertySemverSchemaOperatorEnum
+    | FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum
+    | FeatureFlagFilterPropertyCohortInSchemaOperatorEnum
+    | FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum;
+}
+export const FeatureFlagFilterPropertySchema = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.optional(S.String),
+    type: S.optional(
+      S.Union(
+        PropertyGroupTypeEnum,
+        FeatureFlagFilterPropertyCohortInSchemaTypeEnum,
+        FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum,
+      ),
+    ),
+    cohort_name: S.optional(S.NullOr(S.String)),
+    group_type_index: S.optional(S.NullOr(S.Number)),
+    value: S.optional(
+      S.Union(
+        S.Unknown,
+        S.String,
+        FeatureFlagFilterPropertyMultiContainsSchemaValueList,
+      ),
+    ),
+    operator: S.optional(
+      S.Union(
+        FeatureFlagFilterPropertyGenericSchemaOperatorEnum,
+        ExistenceOperatorEnum,
+        DateOperatorEnum,
+        FeatureFlagFilterPropertySemverSchemaOperatorEnum,
+        FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum,
+        FeatureFlagFilterPropertyCohortInSchemaOperatorEnum,
+        FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum,
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "FeatureFlagFilterPropertySchema",
+}) as any as S.Schema<FeatureFlagFilterPropertySchema>;
 
 /** Property conditions for this release condition group. */
 export type FeatureFlagConditionGroupSchemaPropertiesList =

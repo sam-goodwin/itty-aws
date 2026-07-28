@@ -134,15 +134,32 @@ export const AppsCreateRequestEdgeIpsStatic = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppsCreateRequestEdgeIpsStatic",
 }) as any as S.Schema<AppsCreateRequestEdgeIpsStatic>;
 
-export type AppsCreateRequestEdgeIps =
-  | AppsCreateRequestEdgeIpsDynamic
-  | AppsCreateRequestEdgeIpsStatic;
-export const AppsCreateRequestEdgeIps = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["connectivity", "type"],
-    ["ips", "type"],
-  ]),
-);
+export interface AppsCreateRequestEdgeIps {
+  /** The IP versions supported for inbound connections on Spectrum anycast IPs. */
+  connectivity?: AppsCreateRequestEdgeIpsDynamicConnectivity | (string & {});
+  /** The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names. */
+  type?:
+    | AppsCreateRequestEdgeIpsDynamicType
+    | (string & {})
+    | AppsCreateRequestEdgeIpsStaticType
+    | (string & {});
+  /** The array of customer owned IPs we broadcast via anycast for this hostname and application. */
+  ips?: AppsCreateRequestEdgeIpsStaticIpsList;
+}
+export const AppsCreateRequestEdgeIps = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectivity: S.optional(AppsCreateRequestEdgeIpsDynamicConnectivity),
+    type: S.optional(
+      S.Union(
+        AppsCreateRequestEdgeIpsDynamicType,
+        AppsCreateRequestEdgeIpsStaticType,
+      ),
+    ),
+    ips: S.optional(AppsCreateRequestEdgeIpsStaticIpsList),
+  }),
+).annotate({
+  identifier: "AppsCreateRequestEdgeIps",
+}) as any as S.Schema<AppsCreateRequestEdgeIps>;
 
 export type AppsCreateRequestOriginDirectList = ReadonlyArray<string>;
 export const AppsCreateRequestOriginDirectList = /*@__PURE__*/ S.Array(
@@ -184,14 +201,8 @@ export const AppsCreateRequestTls = /*@__PURE__*/ S.String;
 export interface CreateAppRequest {
   /** Zone identifier. */
   zoneId: string;
-  /** App identifier. */
-  id: string;
-  /** When the Application was created. */
-  createdOn: string;
   /** The name and type of DNS record for the Spectrum application. */
   dns: AppsCreateRequestDnsSpectrumConfigAppConfig;
-  /** When the Application was last modified. */
-  modifiedOn: string;
   /** The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`. */
   protocol: string;
   /** Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. */
@@ -218,10 +229,7 @@ export interface CreateAppRequest {
 export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
     dns: AppsCreateRequestDnsSpectrumConfigAppConfig,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
     protocol: S.String,
     trafficType: S.optional(
       AppsCreateRequestTrafficType.pipe(T.Body("traffic_type")),
@@ -2075,15 +2083,32 @@ export const AppsUpdateRequestEdgeIpsStatic = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppsUpdateRequestEdgeIpsStatic",
 }) as any as S.Schema<AppsUpdateRequestEdgeIpsStatic>;
 
-export type AppsUpdateRequestEdgeIps =
-  | AppsUpdateRequestEdgeIpsDynamic
-  | AppsUpdateRequestEdgeIpsStatic;
-export const AppsUpdateRequestEdgeIps = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["connectivity", "type"],
-    ["ips", "type"],
-  ]),
-);
+export interface AppsUpdateRequestEdgeIps {
+  /** The IP versions supported for inbound connections on Spectrum anycast IPs. */
+  connectivity?: AppsUpdateRequestEdgeIpsDynamicConnectivity | (string & {});
+  /** The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names. */
+  type?:
+    | AppsUpdateRequestEdgeIpsDynamicType
+    | (string & {})
+    | AppsUpdateRequestEdgeIpsStaticType
+    | (string & {});
+  /** The array of customer owned IPs we broadcast via anycast for this hostname and application. */
+  ips?: AppsUpdateRequestEdgeIpsStaticIpsList;
+}
+export const AppsUpdateRequestEdgeIps = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectivity: S.optional(AppsUpdateRequestEdgeIpsDynamicConnectivity),
+    type: S.optional(
+      S.Union(
+        AppsUpdateRequestEdgeIpsDynamicType,
+        AppsUpdateRequestEdgeIpsStaticType,
+      ),
+    ),
+    ips: S.optional(AppsUpdateRequestEdgeIpsStaticIpsList),
+  }),
+).annotate({
+  identifier: "AppsUpdateRequestEdgeIps",
+}) as any as S.Schema<AppsUpdateRequestEdgeIps>;
 
 export type AppsUpdateRequestOriginDirectList = ReadonlyArray<string>;
 export const AppsUpdateRequestOriginDirectList = /*@__PURE__*/ S.Array(

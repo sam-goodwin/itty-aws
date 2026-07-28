@@ -252,19 +252,33 @@ export const ListsItemsCreateRequestBodyItemListsListItemASNComment =
     identifier: "ListsItemsCreateRequestBodyItemListsListItemASNComment",
   }) as any as S.Schema<ListsItemsCreateRequestBodyItemListsListItemASNComment>;
 
-export type ListsItemsCreateRequestBodyItem =
-  | ListsItemsCreateRequestBodyItemListsListItemIPComment
-  | ListsItemsCreateRequestBodyItemListsListItemRedirectComment
-  | ListsItemsCreateRequestBodyItemListsListItemHostnameComment
-  | ListsItemsCreateRequestBodyItemListsListItemASNComment;
-export const ListsItemsCreateRequestBodyItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["ip", "comment"],
-    ["redirect", "comment"],
-    ["hostname", "comment"],
-    ["asn", "comment"],
-  ]),
-);
+export interface ListsItemsCreateRequestBodyItem {
+  /** An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR. */
+  ip?: string;
+  /** Defines an informative summary of the list item. */
+  comment?: string;
+  /** The definition of the redirect. */
+  redirect?: ListsItemsCreateRequestBodyItemListsListItemRedirectCommentRedirect;
+  /** Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-). */
+  hostname?: ListsItemsCreateRequestBodyItemListsListItemHostnameCommentHostname;
+  /** Defines a non-negative 32 bit integer. */
+  asn?: number;
+}
+export const ListsItemsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ip: S.optional(S.String),
+    comment: S.optional(S.String),
+    redirect: S.optional(
+      ListsItemsCreateRequestBodyItemListsListItemRedirectCommentRedirect,
+    ),
+    hostname: S.optional(
+      ListsItemsCreateRequestBodyItemListsListItemHostnameCommentHostname,
+    ),
+    asn: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ListsItemsCreateRequestBodyItem",
+}) as any as S.Schema<ListsItemsCreateRequestBodyItem>;
 
 export type ListsItemsCreateRequestBodyList =
   ReadonlyArray<ListsItemsCreateRequestBodyItem>;
@@ -1327,19 +1341,33 @@ export const ListsItemsUpdateRequestBodyItemListsListItemASNComment =
     identifier: "ListsItemsUpdateRequestBodyItemListsListItemASNComment",
   }) as any as S.Schema<ListsItemsUpdateRequestBodyItemListsListItemASNComment>;
 
-export type ListsItemsUpdateRequestBodyItem =
-  | ListsItemsUpdateRequestBodyItemListsListItemIPComment
-  | ListsItemsUpdateRequestBodyItemListsListItemRedirectComment
-  | ListsItemsUpdateRequestBodyItemListsListItemHostnameComment
-  | ListsItemsUpdateRequestBodyItemListsListItemASNComment;
-export const ListsItemsUpdateRequestBodyItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["ip", "comment"],
-    ["redirect", "comment"],
-    ["hostname", "comment"],
-    ["asn", "comment"],
-  ]),
-);
+export interface ListsItemsUpdateRequestBodyItem {
+  /** An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR. */
+  ip?: string;
+  /** Defines an informative summary of the list item. */
+  comment?: string;
+  /** The definition of the redirect. */
+  redirect?: ListsItemsUpdateRequestBodyItemListsListItemRedirectCommentRedirect;
+  /** Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-). */
+  hostname?: ListsItemsUpdateRequestBodyItemListsListItemHostnameCommentHostname;
+  /** Defines a non-negative 32 bit integer. */
+  asn?: number;
+}
+export const ListsItemsUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ip: S.optional(S.String),
+    comment: S.optional(S.String),
+    redirect: S.optional(
+      ListsItemsUpdateRequestBodyItemListsListItemRedirectCommentRedirect,
+    ),
+    hostname: S.optional(
+      ListsItemsUpdateRequestBodyItemListsListItemHostnameCommentHostname,
+    ),
+    asn: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ListsItemsUpdateRequestBodyItem",
+}) as any as S.Schema<ListsItemsUpdateRequestBodyItem>;
 
 export type ListsItemsUpdateRequestBodyList =
   ReadonlyArray<ListsItemsUpdateRequestBodyItem>;

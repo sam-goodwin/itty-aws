@@ -180,13 +180,36 @@ export const MetricsAlertConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricsAlertConfig>;
 
 /** Per-insight-kind alert config, discriminated by ``type`` — keeps the OpenAPI (and the generated frontend types and MCP tool schemas) in sync with every kind alerts support. */
-export type AlertConfigUnion =
-  | TrendsAlertConfig
-  | HogQLAlertConfig
-  | FunnelsAlertConfig
-  | MetricsAlertConfig;
-export const AlertConfigUnion =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<AlertConfigUnion>;
+export interface AlertConfigUnion {
+  /** When true, evaluate the current (still incomplete) time interval in addition to completed ones. */
+  check_ongoing_interval?: boolean | null;
+  /** Zero-based index of the series in the insight's query to monitor. */
+  series_index?: number;
+  type?: string;
+  /** Name of the result column to evaluate. When unset, the single numeric column is used (an error if the result has more than one numeric column). */
+  column?: string | null;
+  /** How to read the result rows — an explicit choice, no implicit default. */
+  evaluation?: HogQLAlertEvaluation;
+  /** Column whose value labels the evaluated row(s) in breach messages: every row in `any_row` mode, or the single evaluated row in `last_row`/`first_row`. When unset, the first non-evaluated column is used, falling back to the row number (any_row) or the value column name (last_row/first_row). */
+  label_column?: string | null;
+  /** Zero-based step index to evaluate. Null = the last step (overall conversion). */
+  funnel_step?: number | null;
+  metric?: FunnelConversionMetric;
+}
+export const AlertConfigUnion = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    check_ongoing_interval: S.optional(S.NullOr(S.Boolean)),
+    series_index: S.optional(S.Number),
+    type: S.optional(S.String),
+    column: S.optional(S.NullOr(S.String)),
+    evaluation: S.optional(HogQLAlertEvaluation),
+    label_column: S.optional(S.NullOr(S.String)),
+    funnel_step: S.optional(S.NullOr(S.Number)),
+    metric: S.optional(FunnelConversionMetric),
+  }),
+).annotate({
+  identifier: "AlertConfigUnion",
+}) as any as S.Schema<AlertConfigUnion>;
 
 export interface PreprocessingConfig {
   /** Order of differencing. 0 = raw values, 1 = first-order diffs (default: 0) */
@@ -470,21 +493,52 @@ export const PCADetectorConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "PCADetectorConfig",
 }) as any as S.Schema<PCADetectorConfig>;
 
-export type EnsembleDetectorConfigDetectorsItem =
-  | ZScoreDetectorConfig
-  | MADDetectorConfig
-  | IQRDetectorConfig
-  | ThresholdDetectorConfig
-  | ECODDetectorConfig
-  | COPODDetectorConfig
-  | IsolationForestDetectorConfig
-  | KNNDetectorConfig
-  | HBOSDetectorConfig
-  | LOFDetectorConfig
-  | OCSVMDetectorConfig
-  | PCADetectorConfig;
-export const EnsembleDetectorConfigDetectorsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<EnsembleDetectorConfigDetectorsItem>;
+export interface EnsembleDetectorConfigDetectorsItem {
+  /** Preprocessing transforms applied before detection */
+  preprocessing?: PreprocessingConfig | null;
+  /** Anomaly probability threshold [0-1]. Points above this probability are flagged (default: 0.9) */
+  threshold?: number | null;
+  type?: string;
+  /** Rolling window size for calculating mean/std (default: 30) */
+  window?: number | null;
+  /** IQR multiplier for fence calculation (default: 1.5, use 3.0 for far outliers) */
+  multiplier?: number | null;
+  /** Lower bound - values below this are anomalies */
+  lower_bound?: number | null;
+  /** Upper bound - values above this are anomalies */
+  upper_bound?: number | null;
+  /** Number of trees in the forest (default: 100) */
+  n_estimators?: number | null;
+  /** Distance method: 'largest', 'mean', 'median' (default: 'largest') */
+  method?: Method | null;
+  /** Number of neighbors to consider (default: 5) */
+  n_neighbors?: number | null;
+  /** Number of histogram bins (default: 10) */
+  n_bins?: number | null;
+  /** SVM kernel type (default: "rbf") */
+  kernel?: string | null;
+  /** Upper bound on training errors fraction (default: 0.1) */
+  nu?: number | null;
+}
+export const EnsembleDetectorConfigDetectorsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    preprocessing: S.optional(S.NullOr(PreprocessingConfig)),
+    threshold: S.optional(S.NullOr(S.Number)),
+    type: S.optional(S.String),
+    window: S.optional(S.NullOr(S.Number)),
+    multiplier: S.optional(S.NullOr(S.Number)),
+    lower_bound: S.optional(S.NullOr(S.Number)),
+    upper_bound: S.optional(S.NullOr(S.Number)),
+    n_estimators: S.optional(S.NullOr(S.Number)),
+    method: S.optional(S.NullOr(Method)),
+    n_neighbors: S.optional(S.NullOr(S.Number)),
+    n_bins: S.optional(S.NullOr(S.Number)),
+    kernel: S.optional(S.NullOr(S.String)),
+    nu: S.optional(S.NullOr(S.Number)),
+  }),
+).annotate({
+  identifier: "EnsembleDetectorConfigDetectorsItem",
+}) as any as S.Schema<EnsembleDetectorConfigDetectorsItem>;
 
 /** Sub-detector configurations (minimum 2) */
 export type EnsembleDetectorConfigDetectorsList =
@@ -514,22 +568,56 @@ export const EnsembleDetectorConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnsembleDetectorConfig>;
 
 /** Detector configuration types */
-export type DetectorConfig =
-  | EnsembleDetectorConfig
-  | ZScoreDetectorConfig
-  | MADDetectorConfig
-  | IQRDetectorConfig
-  | ThresholdDetectorConfig
-  | ECODDetectorConfig
-  | COPODDetectorConfig
-  | IsolationForestDetectorConfig
-  | KNNDetectorConfig
-  | HBOSDetectorConfig
-  | LOFDetectorConfig
-  | OCSVMDetectorConfig
-  | PCADetectorConfig;
-export const DetectorConfig =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<DetectorConfig>;
+export interface DetectorConfig {
+  /** Sub-detector configurations (minimum 2) */
+  detectors?: EnsembleDetectorConfigDetectorsList;
+  /** How to combine sub-detector results */
+  operator?: EnsembleOperator;
+  type?: string;
+  /** Preprocessing transforms applied before detection */
+  preprocessing?: PreprocessingConfig | null;
+  /** Anomaly probability threshold [0-1]. Points above this probability are flagged (default: 0.9) */
+  threshold?: number | null;
+  /** Rolling window size for calculating mean/std (default: 30) */
+  window?: number | null;
+  /** IQR multiplier for fence calculation (default: 1.5, use 3.0 for far outliers) */
+  multiplier?: number | null;
+  /** Lower bound - values below this are anomalies */
+  lower_bound?: number | null;
+  /** Upper bound - values above this are anomalies */
+  upper_bound?: number | null;
+  /** Number of trees in the forest (default: 100) */
+  n_estimators?: number | null;
+  /** Distance method: 'largest', 'mean', 'median' (default: 'largest') */
+  method?: Method | null;
+  /** Number of neighbors to consider (default: 5) */
+  n_neighbors?: number | null;
+  /** Number of histogram bins (default: 10) */
+  n_bins?: number | null;
+  /** SVM kernel type (default: "rbf") */
+  kernel?: string | null;
+  /** Upper bound on training errors fraction (default: 0.1) */
+  nu?: number | null;
+}
+export const DetectorConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    detectors: S.optional(EnsembleDetectorConfigDetectorsList),
+    operator: S.optional(EnsembleOperator),
+    type: S.optional(S.String),
+    preprocessing: S.optional(S.NullOr(PreprocessingConfig)),
+    threshold: S.optional(S.NullOr(S.Number)),
+    window: S.optional(S.NullOr(S.Number)),
+    multiplier: S.optional(S.NullOr(S.Number)),
+    lower_bound: S.optional(S.NullOr(S.Number)),
+    upper_bound: S.optional(S.NullOr(S.Number)),
+    n_estimators: S.optional(S.NullOr(S.Number)),
+    method: S.optional(S.NullOr(Method)),
+    n_neighbors: S.optional(S.NullOr(S.Number)),
+    n_bins: S.optional(S.NullOr(S.Number)),
+    kernel: S.optional(S.NullOr(S.String)),
+    nu: S.optional(S.NullOr(S.Number)),
+  }),
+).annotate({ identifier: "DetectorConfig" }) as any as S.Schema<DetectorConfig>;
 
 /** * `real_time` - real_time * `every_15_minutes` - every_15_minutes * `hourly` - hourly * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
 export type CalculationIntervalEnum =

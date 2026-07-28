@@ -357,16 +357,39 @@ export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1C
       "AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1",
   }) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1>;
 
-export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
-    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0
-    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
+export interface AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem {
+  attribute?: string;
+  operator?:
+    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator
+    | (string & {});
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1Clauses;
+  logicalOperator?:
+    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator
+    | (string & {});
+}
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["attribute", "operator", "value"],
-      ["clauses", "logicalOperator"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1Clauses,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem",
+  }) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   ReadonlyArray<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
@@ -401,16 +424,39 @@ export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1C
       "AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1",
   }) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1>;
 
-export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
-    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0
-    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
+export interface AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem {
+  attribute?: string;
+  operator?:
+    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator
+    | (string & {});
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList;
+  logicalOperator?:
+    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator
+    | (string & {});
+}
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["attribute", "operator", "value"],
-      ["clauses", "logicalOperator"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem",
+  }) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   ReadonlyArray<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
@@ -445,16 +491,39 @@ export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1C
       "AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1",
   }) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1>;
 
-export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
-    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0
-    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
+export interface AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem {
+  attribute?: string;
+  operator?:
+    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator
+    | (string & {});
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList;
+  logicalOperator?:
+    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator
+    | (string & {});
+}
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["attribute", "operator", "value"],
-      ["clauses", "logicalOperator"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem",
+  }) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   ReadonlyArray<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
@@ -489,16 +558,39 @@ export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1C
       "AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1",
   }) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1>;
 
-export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItem =
-    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0
-    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1;
+export interface AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItem {
+  attribute?: string;
+  operator?:
+    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Operator
+    | (string & {});
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList;
+  logicalOperator?:
+    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator
+    | (string & {});
+}
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["attribute", "operator", "value"],
-      ["clauses", "logicalOperator"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Operator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItem",
+  }) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesList =
   ReadonlyArray<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
@@ -533,16 +625,38 @@ export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1 
       "AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1",
   }) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1>;
 
-export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItem =
-  | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase0
-  | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1;
+export interface AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItem {
+  attribute?: string;
+  operator?:
+    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase0Operator
+    | (string & {});
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesList;
+  logicalOperator?:
+    | AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator
+    | (string & {});
+}
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["attribute", "operator", "value"],
-      ["clauses", "logicalOperator"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase0Operator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItem",
+  }) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItem>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesList =
   ReadonlyArray<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItem>;
@@ -576,16 +690,38 @@ export const AppsFlagsCreateRequestRulesItemConditionsItemCase1 =
     identifier: "AppsFlagsCreateRequestRulesItemConditionsItemCase1",
   }) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1>;
 
-export type AppsFlagsCreateRequestRulesItemConditionsItem =
-  | AppsFlagsCreateRequestRulesItemConditionsItemCase0
-  | AppsFlagsCreateRequestRulesItemConditionsItemCase1;
+export interface AppsFlagsCreateRequestRulesItemConditionsItem {
+  attribute?: string;
+  operator?:
+    | AppsFlagsCreateRequestRulesItemConditionsItemCase0Operator
+    | (string & {});
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesList;
+  logicalOperator?:
+    | AppsFlagsCreateRequestRulesItemConditionsItemCase1LogicalOperator
+    | (string & {});
+}
 export const AppsFlagsCreateRequestRulesItemConditionsItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["attribute", "operator", "value"],
-      ["clauses", "logicalOperator"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemCase0Operator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemCase1LogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "AppsFlagsCreateRequestRulesItemConditionsItem",
+  }) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItem>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsList =
   ReadonlyArray<AppsFlagsCreateRequestRulesItemConditionsItem>;
@@ -5767,16 +5903,39 @@ export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1C
       "AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1",
   }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1>;
 
-export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
-    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0
-    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
+export interface AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem {
+  attribute?: string;
+  operator?:
+    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator
+    | (string & {});
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1Clauses;
+  logicalOperator?:
+    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator
+    | (string & {});
+}
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["attribute", "operator", "value"],
-      ["clauses", "logicalOperator"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1Clauses,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem",
+  }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   ReadonlyArray<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
@@ -5811,16 +5970,39 @@ export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1C
       "AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1",
   }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1>;
 
-export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
-    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0
-    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
+export interface AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem {
+  attribute?: string;
+  operator?:
+    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator
+    | (string & {});
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList;
+  logicalOperator?:
+    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator
+    | (string & {});
+}
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["attribute", "operator", "value"],
-      ["clauses", "logicalOperator"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem",
+  }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   ReadonlyArray<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
@@ -5855,16 +6037,39 @@ export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1C
       "AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1",
   }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1>;
 
-export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
-    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0
-    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1;
+export interface AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem {
+  attribute?: string;
+  operator?:
+    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator
+    | (string & {});
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList;
+  logicalOperator?:
+    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator
+    | (string & {});
+}
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["attribute", "operator", "value"],
-      ["clauses", "logicalOperator"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase0Operator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem",
+  }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   ReadonlyArray<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
@@ -5899,16 +6104,39 @@ export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1C
       "AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1",
   }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1>;
 
-export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItem =
-    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0
-    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1;
+export interface AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItem {
+  attribute?: string;
+  operator?:
+    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Operator
+    | (string & {});
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList;
+  logicalOperator?:
+    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator
+    | (string & {});
+}
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["attribute", "operator", "value"],
-      ["clauses", "logicalOperator"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase0Operator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1LogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItem",
+  }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesList =
   ReadonlyArray<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
@@ -5943,16 +6171,38 @@ export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1 
       "AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1",
   }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1>;
 
-export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItem =
-  | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase0
-  | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1;
+export interface AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItem {
+  attribute?: string;
+  operator?:
+    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase0Operator
+    | (string & {});
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesList;
+  logicalOperator?:
+    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator
+    | (string & {});
+}
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["attribute", "operator", "value"],
-      ["clauses", "logicalOperator"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase0Operator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1LogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItem",
+  }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItem>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesList =
   ReadonlyArray<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItem>;
@@ -5986,16 +6236,38 @@ export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1 =
     identifier: "AppsFlagsUpdateRequestRulesItemConditionsItemCase1",
   }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1>;
 
-export type AppsFlagsUpdateRequestRulesItemConditionsItem =
-  | AppsFlagsUpdateRequestRulesItemConditionsItemCase0
-  | AppsFlagsUpdateRequestRulesItemConditionsItemCase1;
+export interface AppsFlagsUpdateRequestRulesItemConditionsItem {
+  attribute?: string;
+  operator?:
+    | AppsFlagsUpdateRequestRulesItemConditionsItemCase0Operator
+    | (string & {});
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesList;
+  logicalOperator?:
+    | AppsFlagsUpdateRequestRulesItemConditionsItemCase1LogicalOperator
+    | (string & {});
+}
 export const AppsFlagsUpdateRequestRulesItemConditionsItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["attribute", "operator", "value"],
-      ["clauses", "logicalOperator"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemCase0Operator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemCase1LogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "AppsFlagsUpdateRequestRulesItemConditionsItem",
+  }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItem>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsList =
   ReadonlyArray<AppsFlagsUpdateRequestRulesItemConditionsItem>;

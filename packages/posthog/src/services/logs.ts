@@ -936,33 +936,97 @@ export const WorkflowVariablePropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkflowVariablePropertyFilter",
 }) as any as S.Schema<WorkflowVariablePropertyFilter>;
 
-export type PropertyGroupFilterValueValuesItem =
-  | PropertyGroupFilterValue
-  | EventPropertyFilter
-  | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
-  | ElementPropertyFilter
-  | EventMetadataPropertyFilter
-  | SessionPropertyFilter
-  | CohortPropertyFilter
-  | RecordingPropertyFilter
-  | LogEntryPropertyFilter
-  | GroupPropertyFilter
-  | FeaturePropertyFilter
-  | FlagPropertyFilter
-  | HogQLPropertyFilter
-  | EmptyPropertyFilter
-  | DataWarehousePropertyFilter
-  | DataWarehousePersonPropertyFilter
-  | ErrorTrackingIssueFilter
-  | LogPropertyFilter
-  | MetricPropertyFilter
-  | SpanPropertyFilter
-  | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
-  | WorkflowVariablePropertyFilter;
-export const PropertyGroupFilterValueValuesItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<PropertyGroupFilterValueValuesItem>;
+export interface PropertyGroupFilterValueValuesItem {
+  /** Event properties */
+  type?:
+    | FilterLogicalOperator
+    | string
+    | LogPropertyFilterType
+    | SpanPropertyFilterType;
+  values?: PropertyGroupFilterValueValuesList;
+  /** The key should be the flag ID */
+  key?: string | Key10 | RecordingPropertyFilterKey;
+  label?: string | null;
+  /** Only flag_evaluates_to operator is allowed for flag dependencies */
+  operator?: PropertyOperator | string | null;
+  /** The value can be true, false, or a variant name */
+  value?:
+    | EventPropertyFilterValue
+    | PersonPropertyFilterValue
+    | PersonMetadataPropertyFilterValue
+    | ElementPropertyFilterValue
+    | EventMetadataPropertyFilterValue
+    | SessionPropertyFilterValue
+    | number
+    | RecordingPropertyFilterValue
+    | LogEntryPropertyFilterValue
+    | GroupPropertyFilterValue
+    | FeaturePropertyFilterValue
+    | FlagPropertyFilterValue
+    | HogQLPropertyFilterValue
+    | DataWarehousePropertyFilterValue
+    | DataWarehousePersonPropertyFilterValue
+    | ErrorTrackingIssueFilterValue
+    | LogPropertyFilterValue
+    | MetricPropertyFilterValue
+    | SpanPropertyFilterValue
+    | RevenueAnalyticsPropertyFilterValue
+    | AccountCustomPropertyFilterValue
+    | WorkflowVariablePropertyFilterValue
+    | null;
+  cohort_name?: string | null;
+  group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
+  group_type_index?: number | null;
+}
+export const PropertyGroupFilterValueValuesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(
+      S.Union(
+        FilterLogicalOperator,
+        S.String,
+        LogPropertyFilterType,
+        SpanPropertyFilterType,
+      ),
+    ),
+    values: S.optional(S.suspend(() => PropertyGroupFilterValueValuesList)),
+    key: S.optional(S.Union(S.String, Key10, RecordingPropertyFilterKey)),
+    label: S.optional(S.NullOr(S.String)),
+    operator: S.optional(S.NullOr(S.Union(PropertyOperator, S.String))),
+    value: S.optional(
+      S.NullOr(
+        S.Union(
+          EventPropertyFilterValue,
+          PersonPropertyFilterValue,
+          PersonMetadataPropertyFilterValue,
+          ElementPropertyFilterValue,
+          EventMetadataPropertyFilterValue,
+          SessionPropertyFilterValue,
+          S.Number,
+          RecordingPropertyFilterValue,
+          LogEntryPropertyFilterValue,
+          GroupPropertyFilterValue,
+          FeaturePropertyFilterValue,
+          FlagPropertyFilterValue,
+          HogQLPropertyFilterValue,
+          DataWarehousePropertyFilterValue,
+          DataWarehousePersonPropertyFilterValue,
+          ErrorTrackingIssueFilterValue,
+          LogPropertyFilterValue,
+          MetricPropertyFilterValue,
+          SpanPropertyFilterValue,
+          RevenueAnalyticsPropertyFilterValue,
+          AccountCustomPropertyFilterValue,
+          WorkflowVariablePropertyFilterValue,
+        ),
+      ),
+    ),
+    cohort_name: S.optional(S.NullOr(S.String)),
+    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
+    group_type_index: S.optional(S.NullOr(S.Number)),
+  }),
+).annotate({
+  identifier: "PropertyGroupFilterValueValuesItem",
+}) as any as S.Schema<PropertyGroupFilterValueValuesItem>;
 
 export type PropertyGroupFilterValueValuesList =
   ReadonlyArray<PropertyGroupFilterValueValuesItem>;

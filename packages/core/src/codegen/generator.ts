@@ -576,17 +576,16 @@ export const generateService = (
   }
 
   /**
-   * RESPONSE-side object-variant union → ONE merged struct (v0 parity).
+   * Object-variant union → ONE merged struct (v0 parity), both directions.
    *
-   * Responses are for consuming: a union of object variants forces an
-   * `in`-guard on every member access. When a union is reachable ONLY from
-   * outputs (never sent) and EVERY arm is a structure, emit the union of
-   * all arms' members instead — a member keeps its exact type when all
-   * arms agree, becomes a union of the arms' types when they differ, and
-   * is optional unless required in EVERY arm. Wire names are preserved.
-   * True mixed-kind unions (any scalar/array/enum arm) and request-
-   * reachable unions stay real unions. Returns undefined when the union
-   * doesn't qualify.
+   * A union of object variants forces an `in`-guard on every member access
+   * (reads) and exact-arm construction (writes). When EVERY arm is a
+   * structure, emit the union of all arms' members instead — a member
+   * keeps its exact type when all arms agree, becomes a union of the
+   * arms' types when they differ, and is optional unless required in
+   * EVERY arm. Wire names are preserved. True mixed-kind unions (any
+   * scalar/array/enum arm) stay real unions. Returns undefined when the
+   * union doesn't qualify.
    */
   const mergedResponseUnion = (
     id: string,
@@ -594,7 +593,6 @@ export const generateService = (
     selfIdx: number,
     name: string,
   ): string[] | undefined => {
-    if (requestReachable.has(id)) return undefined;
     const caseTargets: string[] = Object.values(d.members ?? {}).map(
       (m: any) => m.target,
     );

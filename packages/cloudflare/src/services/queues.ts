@@ -348,15 +348,30 @@ export const MessagesBulkPushRequestMessagesItemMqQueueMessageJson =
     identifier: "MessagesBulkPushRequestMessagesItemMqQueueMessageJson",
   }) as any as S.Schema<MessagesBulkPushRequestMessagesItemMqQueueMessageJson>;
 
-export type MessagesBulkPushRequestMessagesItem =
-  | MessagesBulkPushRequestMessagesItemMqQueueMessageText
-  | MessagesBulkPushRequestMessagesItemMqQueueMessageJson;
-export const MessagesBulkPushRequestMessagesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["body", "contentType", "delaySeconds"],
-    ["body", "contentType", "delaySeconds"],
-  ]),
-);
+export interface MessagesBulkPushRequestMessagesItem {
+  body?: string | unknown;
+  contentType?:
+    | MessagesBulkPushRequestMessagesItemMqQueueMessageTextContentType
+    | (string & {})
+    | MessagesBulkPushRequestMessagesItemMqQueueMessageJsonContentType
+    | (string & {});
+  /** The number of seconds to wait for attempting to deliver this message to consumers */
+  delaySeconds?: number;
+}
+export const MessagesBulkPushRequestMessagesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    body: S.optional(S.Union(S.String, S.Unknown)),
+    contentType: S.optional(
+      S.Union(
+        MessagesBulkPushRequestMessagesItemMqQueueMessageTextContentType,
+        MessagesBulkPushRequestMessagesItemMqQueueMessageJsonContentType,
+      ).pipe(T.Body("content_type")),
+    ),
+    delaySeconds: S.optional(S.Number.pipe(T.Body("delay_seconds"))),
+  }),
+).annotate({
+  identifier: "MessagesBulkPushRequestMessagesItem",
+}) as any as S.Schema<MessagesBulkPushRequestMessagesItem>;
 
 export type MessagesBulkPushRequestMessagesList =
   ReadonlyArray<MessagesBulkPushRequestMessagesItem>;
@@ -489,21 +504,34 @@ export const ConsumersCreateRequestSettingsHTTPPull = /*@__PURE__*/ S.suspend(
   identifier: "ConsumersCreateRequestSettingsHTTPPull",
 }) as any as S.Schema<ConsumersCreateRequestSettingsHTTPPull>;
 
-export type ConsumersCreateRequestSettings =
-  | ConsumersCreateRequestSettingsWorker
-  | ConsumersCreateRequestSettingsHTTPPull;
-export const ConsumersCreateRequestSettings = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "batchSize",
-      "maxConcurrency",
-      "maxRetries",
-      "maxWaitTimeMs",
-      "retryDelay",
-    ],
-    ["batchSize", "maxRetries", "retryDelay", "visibilityTimeoutMs"],
-  ]),
-);
+export interface ConsumersCreateRequestSettings {
+  /** The maximum number of messages to include in a batch. */
+  batchSize?: number;
+  /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
+  maxConcurrency?: number;
+  /** The maximum number of retries */
+  maxRetries?: number;
+  /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
+  maxWaitTimeMs?: number;
+  /** The number of seconds to delay before making the message available for another attempt. */
+  retryDelay?: number;
+  /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
+  visibilityTimeoutMs?: number;
+}
+export const ConsumersCreateRequestSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
+    maxConcurrency: S.optional(S.Number.pipe(T.Body("max_concurrency"))),
+    maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
+    maxWaitTimeMs: S.optional(S.Number.pipe(T.Body("max_wait_time_ms"))),
+    retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+    visibilityTimeoutMs: S.optional(
+      S.Number.pipe(T.Body("visibility_timeout_ms")),
+    ),
+  }),
+).annotate({
+  identifier: "ConsumersCreateRequestSettings",
+}) as any as S.Schema<ConsumersCreateRequestSettings>;
 
 export interface CreateConsumerRequest {
   /** A Resource identifier. */
@@ -1171,27 +1199,53 @@ export const SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflow =
       "SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflow",
   }) as any as S.Schema<SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflow>;
 
-export type SubscriptionsCreateRequestSource =
-  | SubscriptionsCreateRequestSourceMqEventSourceImages
-  | SubscriptionsCreateRequestSourceMqEventSourceKV
-  | SubscriptionsCreateRequestSourceMqEventSourceR2
-  | SubscriptionsCreateRequestSourceMqEventSourceSuperSlurper
-  | SubscriptionsCreateRequestSourceMqEventSourceVectorize
-  | SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModel
-  | SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorker
-  | SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflow;
-export const SubscriptionsCreateRequestSource = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["type"],
-    ["type"],
-    ["type"],
-    ["type"],
-    ["type"],
-    ["modelName", "type"],
-    ["type", "workerName"],
-    ["type", "workflowName"],
-  ]),
-);
+export interface SubscriptionsCreateRequestSource {
+  /** Type of source */
+  type?:
+    | SubscriptionsCreateRequestSourceMqEventSourceImagesType
+    | (string & {})
+    | SubscriptionsCreateRequestSourceMqEventSourceKVType
+    | (string & {})
+    | SubscriptionsCreateRequestSourceMqEventSourceR2Type
+    | (string & {})
+    | SubscriptionsCreateRequestSourceMqEventSourceSuperSlurperType
+    | (string & {})
+    | SubscriptionsCreateRequestSourceMqEventSourceVectorizeType
+    | (string & {})
+    | SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModelType
+    | (string & {})
+    | SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorkerType
+    | (string & {})
+    | SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflowType
+    | (string & {});
+  /** Name of the Workers AI model */
+  modelName?: string;
+  /** Name of the worker */
+  workerName?: string;
+  /** Name of the workflow */
+  workflowName?: string;
+}
+export const SubscriptionsCreateRequestSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(
+      S.Union(
+        SubscriptionsCreateRequestSourceMqEventSourceImagesType,
+        SubscriptionsCreateRequestSourceMqEventSourceKVType,
+        SubscriptionsCreateRequestSourceMqEventSourceR2Type,
+        SubscriptionsCreateRequestSourceMqEventSourceSuperSlurperType,
+        SubscriptionsCreateRequestSourceMqEventSourceVectorizeType,
+        SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModelType,
+        SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorkerType,
+        SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflowType,
+      ),
+    ),
+    modelName: S.optional(S.String.pipe(T.Body("model_name"))),
+    workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
+    workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
+  }),
+).annotate({
+  identifier: "SubscriptionsCreateRequestSource",
+}) as any as S.Schema<SubscriptionsCreateRequestSource>;
 
 export interface CreateSubscriptionRequest {
   /** A Resource identifier. */
@@ -4647,21 +4701,34 @@ export const ConsumersUpdateRequestSettingsHTTPPull = /*@__PURE__*/ S.suspend(
   identifier: "ConsumersUpdateRequestSettingsHTTPPull",
 }) as any as S.Schema<ConsumersUpdateRequestSettingsHTTPPull>;
 
-export type ConsumersUpdateRequestSettings =
-  | ConsumersUpdateRequestSettingsWorker
-  | ConsumersUpdateRequestSettingsHTTPPull;
-export const ConsumersUpdateRequestSettings = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "batchSize",
-      "maxConcurrency",
-      "maxRetries",
-      "maxWaitTimeMs",
-      "retryDelay",
-    ],
-    ["batchSize", "maxRetries", "retryDelay", "visibilityTimeoutMs"],
-  ]),
-);
+export interface ConsumersUpdateRequestSettings {
+  /** The maximum number of messages to include in a batch. */
+  batchSize?: number;
+  /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
+  maxConcurrency?: number;
+  /** The maximum number of retries */
+  maxRetries?: number;
+  /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
+  maxWaitTimeMs?: number;
+  /** The number of seconds to delay before making the message available for another attempt. */
+  retryDelay?: number;
+  /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
+  visibilityTimeoutMs?: number;
+}
+export const ConsumersUpdateRequestSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
+    maxConcurrency: S.optional(S.Number.pipe(T.Body("max_concurrency"))),
+    maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
+    maxWaitTimeMs: S.optional(S.Number.pipe(T.Body("max_wait_time_ms"))),
+    retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+    visibilityTimeoutMs: S.optional(
+      S.Number.pipe(T.Body("visibility_timeout_ms")),
+    ),
+  }),
+).annotate({
+  identifier: "ConsumersUpdateRequestSettings",
+}) as any as S.Schema<ConsumersUpdateRequestSettings>;
 
 export interface UpdateConsumerRequest {
   /** A Resource identifier. */

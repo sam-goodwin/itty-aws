@@ -5871,17 +5871,22 @@ export const PostV1DatabasesRequestSourceCase2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostV1DatabasesRequestSourceCase2>;
 
 /** Source to create the database from. Omit to create an empty database. */
-export type PostV1DatabasesRequestSource =
-  | PostV1DatabasesRequestSourceCase0
-  | PostV1DatabasesRequestSourceCase1
-  | PostV1DatabasesRequestSourceCase2;
+export interface PostV1DatabasesRequestSource {
+  type: string;
+  /** ID of the database the backup belongs to */
+  databaseId?: string;
+  /** ID of the backup to restore from */
+  backupId?: string;
+}
 export const PostV1DatabasesRequestSource = /*@__PURE__*/ S.suspend(() =>
-  S.Union([
-    PostV1DatabasesRequestSourceCase0,
-    PostV1DatabasesRequestSourceCase1,
-    PostV1DatabasesRequestSourceCase2,
-  ]),
-) as any as S.Schema<PostV1DatabasesRequestSource>;
+  S.Struct({
+    type: S.String,
+    databaseId: S.optional(S.String),
+    backupId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PostV1DatabasesRequestSource",
+}) as any as S.Schema<PostV1DatabasesRequestSource>;
 
 export interface PostV1DatabasesRequest {
   /** ID of the project to create the database in */
@@ -7604,18 +7609,23 @@ export const PostV1ProjectsByProjectIdDatabasesRequestSourceCase2 =
     identifier: "PostV1ProjectsByProjectIdDatabasesRequestSourceCase2",
   }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesRequestSourceCase2>;
 
-export type PostV1ProjectsByProjectIdDatabasesRequestSource =
-  | PostV1ProjectsByProjectIdDatabasesRequestSourceCase0
-  | PostV1ProjectsByProjectIdDatabasesRequestSourceCase1
-  | PostV1ProjectsByProjectIdDatabasesRequestSourceCase2;
+export interface PostV1ProjectsByProjectIdDatabasesRequestSource {
+  type: string;
+  /** ID of the database the backup belongs to */
+  databaseId?: string;
+  /** ID of the backup to restore from */
+  backupId?: string;
+}
 export const PostV1ProjectsByProjectIdDatabasesRequestSource =
   /*@__PURE__*/ S.suspend(() =>
-    S.Union([
-      PostV1ProjectsByProjectIdDatabasesRequestSourceCase0,
-      PostV1ProjectsByProjectIdDatabasesRequestSourceCase1,
-      PostV1ProjectsByProjectIdDatabasesRequestSourceCase2,
-    ]),
-  ) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesRequestSource>;
+    S.Struct({
+      type: S.String,
+      databaseId: S.optional(S.String),
+      backupId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "PostV1ProjectsByProjectIdDatabasesRequestSource",
+  }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesRequestSource>;
 
 export interface PostV1ProjectsByProjectIdDatabasesRequest {
   projectId: string;

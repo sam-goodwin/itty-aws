@@ -375,14 +375,24 @@ export const RulesBulkEditRequestBodyItemPositionAPIShieldAfter =
     identifier: "RulesBulkEditRequestBodyItemPositionAPIShieldAfter",
   }) as any as S.Schema<RulesBulkEditRequestBodyItemPositionAPIShieldAfter>;
 
-export type RulesBulkEditRequestBodyItemPosition =
-  | RulesBulkEditRequestBodyItemPositionAPIShieldIndex
-  | RulesBulkEditRequestBodyItemPositionAPIShieldBefore
-  | RulesBulkEditRequestBodyItemPositionAPIShieldAfter;
-export const RulesBulkEditRequestBodyItemPosition =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([["index"], ["before"], ["after"]]),
-  );
+export interface RulesBulkEditRequestBodyItemPosition {
+  /** Move rule to this position */
+  index?: number;
+  /** Move rule to before rule with this ID. */
+  before?: string;
+  /** Move rule to after rule with this ID. */
+  after?: string;
+}
+export const RulesBulkEditRequestBodyItemPosition = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      index: S.optional(S.Number),
+      before: S.optional(S.String),
+      after: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "RulesBulkEditRequestBodyItemPosition",
+}) as any as S.Schema<RulesBulkEditRequestBodyItemPosition>;
 
 export type RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList =
   ReadonlyArray<string>;
@@ -787,18 +797,68 @@ export const ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJW
       "ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384",
   }) as any as S.Schema<ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
 
-export type ConfigurationCreateRequestCredentialsKeysItem =
-  | ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA
-  | ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256
-  | ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384;
+export interface ConfigurationCreateRequestCredentialsKeysItem {
+  /** Algorithm */
+  alg:
+    | ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg
+    | (string & {})
+    | ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg
+    | (string & {})
+    | ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg
+    | (string & {});
+  /** RSA exponent */
+  e?: string;
+  /** Key ID */
+  kid: string;
+  /** Key Type */
+  kty:
+    | ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAKty
+    | (string & {})
+    | ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty
+    | (string & {})
+    | ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty
+    | (string & {});
+  /** RSA modulus */
+  n?: string;
+  /** Curve */
+  crv?:
+    | ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv
+    | (string & {})
+    | ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv
+    | (string & {});
+  /** X EC coordinate */
+  x?: string;
+  /** Y EC coordinate */
+  y?: string;
+}
 export const ConfigurationCreateRequestCredentialsKeysItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["alg", "e", "kid", "kty", "n"],
-      ["alg", "crv", "kid", "kty", "x", "y"],
-      ["alg", "crv", "kid", "kty", "x", "y"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      alg: S.Union(
+        ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg,
+        ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg,
+        ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg,
+      ),
+      e: S.optional(S.String),
+      kid: S.String,
+      kty: S.Union(
+        ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAKty,
+        ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty,
+        ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty,
+      ),
+      n: S.optional(S.String),
+      crv: S.optional(
+        S.Union(
+          ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv,
+          ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv,
+        ),
+      ),
+      x: S.optional(S.String),
+      y: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ConfigurationCreateRequestCredentialsKeysItem",
+  }) as any as S.Schema<ConfigurationCreateRequestCredentialsKeysItem>;
 
 export type ConfigurationCreateRequestCredentialsKeysList =
   ReadonlyArray<ConfigurationCreateRequestCredentialsKeysItem>;
@@ -2339,13 +2399,23 @@ export const RulesEditRequestPositionAPIShieldAfter = /*@__PURE__*/ S.suspend(
   identifier: "RulesEditRequestPositionAPIShieldAfter",
 }) as any as S.Schema<RulesEditRequestPositionAPIShieldAfter>;
 
-export type RulesEditRequestPosition =
-  | RulesEditRequestPositionAPIShieldIndex
-  | RulesEditRequestPositionAPIShieldBefore
-  | RulesEditRequestPositionAPIShieldAfter;
-export const RulesEditRequestPosition = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["index"], ["before"], ["after"]]),
-);
+export interface RulesEditRequestPosition {
+  /** Move rule to this position */
+  index?: number;
+  /** Move rule to before rule with this ID. */
+  before?: string;
+  /** Move rule to after rule with this ID. */
+  after?: string;
+}
+export const RulesEditRequestPosition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    index: S.optional(S.Number),
+    before: S.optional(S.String),
+    after: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RulesEditRequestPosition",
+}) as any as S.Schema<RulesEditRequestPosition>;
 
 export type RulesEditRequestSelectorExcludeItemOperationIdsList =
   ReadonlyArray<string>;
@@ -2708,18 +2778,68 @@ export const ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJW
       "ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384",
   }) as any as S.Schema<ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
 
-export type ConfigurationCredentialsUpdateRequestKeysItem =
-  | ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyRSA
-  | ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256
-  | ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384;
+export interface ConfigurationCredentialsUpdateRequestKeysItem {
+  /** Algorithm */
+  alg:
+    | ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyRSAAlg
+    | (string & {})
+    | ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg
+    | (string & {})
+    | ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg
+    | (string & {});
+  /** RSA exponent */
+  e?: string;
+  /** Key ID */
+  kid: string;
+  /** Key Type */
+  kty:
+    | ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyRSAKty
+    | (string & {})
+    | ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty
+    | (string & {})
+    | ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty
+    | (string & {});
+  /** RSA modulus */
+  n?: string;
+  /** Curve */
+  crv?:
+    | ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv
+    | (string & {})
+    | ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv
+    | (string & {});
+  /** X EC coordinate */
+  x?: string;
+  /** Y EC coordinate */
+  y?: string;
+}
 export const ConfigurationCredentialsUpdateRequestKeysItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["alg", "e", "kid", "kty", "n"],
-      ["alg", "crv", "kid", "kty", "x", "y"],
-      ["alg", "crv", "kid", "kty", "x", "y"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      alg: S.Union(
+        ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyRSAAlg,
+        ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg,
+        ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg,
+      ),
+      e: S.optional(S.String),
+      kid: S.String,
+      kty: S.Union(
+        ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyRSAKty,
+        ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty,
+        ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty,
+      ),
+      n: S.optional(S.String),
+      crv: S.optional(
+        S.Union(
+          ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv,
+          ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv,
+        ),
+      ),
+      x: S.optional(S.String),
+      y: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ConfigurationCredentialsUpdateRequestKeysItem",
+  }) as any as S.Schema<ConfigurationCredentialsUpdateRequestKeysItem>;
 
 export type ConfigurationCredentialsUpdateRequestKeysList =
   ReadonlyArray<ConfigurationCredentialsUpdateRequestKeysItem>;

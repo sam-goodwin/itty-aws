@@ -436,15 +436,36 @@ export const SendRequestAttachmentsItemAttachment = /*@__PURE__*/ S.suspend(
   identifier: "SendRequestAttachmentsItemAttachment",
 }) as any as S.Schema<SendRequestAttachmentsItemAttachment>;
 
-export type SendRequestAttachmentsItem =
-  | SendRequestAttachmentsItemInline
-  | SendRequestAttachmentsItemAttachment;
-export const SendRequestAttachmentsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["content", "contentId", "disposition", "filename", "type"],
-    ["content", "disposition", "filename", "type"],
-  ]),
-);
+export interface SendRequestAttachmentsItem {
+  /** Base64-encoded content of the attachment. */
+  content: string;
+  /** Content ID used to reference this attachment in HTML via cid: URI (e.g., <img src="cid:logo">). */
+  contentId?: string;
+  /** Must be 'inline'. Indicates the attachment is embedded in the email body. */
+  disposition:
+    | SendRequestAttachmentsItemInlineDisposition
+    | (string & {})
+    | SendRequestAttachmentsItemAttachmentDisposition
+    | (string & {});
+  /** Filename for the attachment. */
+  filename: string;
+  /** MIME type of the attachment (e.g., 'image/png', 'text/plain'). */
+  type: string;
+}
+export const SendRequestAttachmentsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    content: S.String,
+    contentId: S.optional(S.String.pipe(T.Body("content_id"))),
+    disposition: S.Union(
+      SendRequestAttachmentsItemInlineDisposition,
+      SendRequestAttachmentsItemAttachmentDisposition,
+    ),
+    filename: S.String,
+    type: S.String,
+  }),
+).annotate({
+  identifier: "SendRequestAttachmentsItem",
+}) as any as S.Schema<SendRequestAttachmentsItem>;
 
 export type SendRequestAttachmentsList =
   ReadonlyArray<SendRequestAttachmentsItem>;

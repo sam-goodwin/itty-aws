@@ -179,25 +179,53 @@ export const ConfigsCreateRequestOriginDatabaseReachableThroughAWorkersVPC =
     identifier: "ConfigsCreateRequestOriginDatabaseReachableThroughAWorkersVPC",
   }) as any as S.Schema<ConfigsCreateRequestOriginDatabaseReachableThroughAWorkersVPC>;
 
-export type ConfigsCreateRequestOrigin =
-  | ConfigsCreateRequestOriginPublicDatabase
-  | ConfigsCreateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnel
-  | ConfigsCreateRequestOriginDatabaseReachableThroughAWorkersVPC;
-export const ConfigsCreateRequestOrigin = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["database", "host", "password", "port", "scheme", "user"],
-    [
-      "accessClientId",
-      "accessClientSecret",
-      "database",
-      "host",
-      "password",
-      "scheme",
-      "user",
-    ],
-    ["database", "password", "scheme", "serviceId", "user"],
-  ]),
-);
+export interface ConfigsCreateRequestOrigin {
+  /** Set the name of your origin database. */
+  database: string;
+  /** Defines the host (hostname or IP) of your origin database. */
+  host?: string;
+  /** Set the password needed to access your origin database. The API never returns this write-only value. */
+  password: string;
+  /** Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified. */
+  port?: number;
+  /** Specifies the URL scheme used to connect to your origin database. */
+  scheme:
+    | ConfigsCreateRequestOriginPublicDatabaseScheme
+    | (string & {})
+    | ConfigsCreateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme
+    | (string & {})
+    | ConfigsCreateRequestOriginDatabaseReachableThroughAWorkersVPCScheme
+    | (string & {});
+  /** Set the user of your origin database. */
+  user: string;
+  /** Defines the Client ID of the Access token to use when connecting to the origin database. */
+  accessClientId?: string;
+  /** Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value. */
+  accessClientSecret?: string;
+  /** The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database. */
+  serviceId?: string;
+}
+export const ConfigsCreateRequestOrigin = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    database: S.String,
+    host: S.optional(S.String),
+    password: S.String,
+    port: S.optional(S.Number),
+    scheme: S.Union(
+      ConfigsCreateRequestOriginPublicDatabaseScheme,
+      ConfigsCreateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme,
+      ConfigsCreateRequestOriginDatabaseReachableThroughAWorkersVPCScheme,
+    ),
+    user: S.String,
+    accessClientId: S.optional(S.String.pipe(T.Body("access_client_id"))),
+    accessClientSecret: S.optional(
+      S.String.pipe(T.Body("access_client_secret")),
+    ),
+    serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
+  }),
+).annotate({
+  identifier: "ConfigsCreateRequestOrigin",
+}) as any as S.Schema<ConfigsCreateRequestOrigin>;
 
 export interface ConfigsCreateRequestCachingHyperdriveHyperdriveCachingCommon {
   /** Set to true to disable caching of SQL responses. Default is false. */
@@ -233,12 +261,25 @@ export const ConfigsCreateRequestCachingHyperdriveHyperdriveCachingEnabled =
     identifier: "ConfigsCreateRequestCachingHyperdriveHyperdriveCachingEnabled",
   }) as any as S.Schema<ConfigsCreateRequestCachingHyperdriveHyperdriveCachingEnabled>;
 
-export type ConfigsCreateRequestCaching =
-  | ConfigsCreateRequestCachingHyperdriveHyperdriveCachingCommon
-  | ConfigsCreateRequestCachingHyperdriveHyperdriveCachingEnabled;
-export const ConfigsCreateRequestCaching = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["disabled"], ["disabled", "maxAge", "staleWhileRevalidate"]]),
-);
+export interface ConfigsCreateRequestCaching {
+  /** Set to true to disable caching of SQL responses. Default is false. */
+  disabled?: boolean;
+  /** Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified. */
+  maxAge?: number;
+  /** Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified. */
+  staleWhileRevalidate?: number;
+}
+export const ConfigsCreateRequestCaching = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    disabled: S.optional(S.Boolean),
+    maxAge: S.optional(S.Number.pipe(T.Body("max_age"))),
+    staleWhileRevalidate: S.optional(
+      S.Number.pipe(T.Body("stale_while_revalidate")),
+    ),
+  }),
+).annotate({
+  identifier: "ConfigsCreateRequestCaching",
+}) as any as S.Schema<ConfigsCreateRequestCaching>;
 
 export interface ConfigsCreateRequestMtls {
   /** Define CA certificate ID obtained after uploading CA cert. */
@@ -1189,12 +1230,25 @@ export const ConfigsEditRequestCachingHyperdriveHyperdriveCachingEnabled =
     identifier: "ConfigsEditRequestCachingHyperdriveHyperdriveCachingEnabled",
   }) as any as S.Schema<ConfigsEditRequestCachingHyperdriveHyperdriveCachingEnabled>;
 
-export type ConfigsEditRequestCaching =
-  | ConfigsEditRequestCachingHyperdriveHyperdriveCachingCommon
-  | ConfigsEditRequestCachingHyperdriveHyperdriveCachingEnabled;
-export const ConfigsEditRequestCaching = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["disabled"], ["disabled", "maxAge", "staleWhileRevalidate"]]),
-);
+export interface ConfigsEditRequestCaching {
+  /** Set to true to disable caching of SQL responses. Default is false. */
+  disabled?: boolean;
+  /** Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified. */
+  maxAge?: number;
+  /** Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified. */
+  staleWhileRevalidate?: number;
+}
+export const ConfigsEditRequestCaching = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    disabled: S.optional(S.Boolean),
+    maxAge: S.optional(S.Number.pipe(T.Body("max_age"))),
+    staleWhileRevalidate: S.optional(
+      S.Number.pipe(T.Body("stale_while_revalidate")),
+    ),
+  }),
+).annotate({
+  identifier: "ConfigsEditRequestCaching",
+}) as any as S.Schema<ConfigsEditRequestCaching>;
 
 export interface ConfigsEditRequestMtls {
   /** Define CA certificate ID obtained after uploading CA cert. */
@@ -1295,19 +1349,47 @@ export const ConfigsEditRequestOriginHyperdriveVPCServiceOrigin =
     identifier: "ConfigsEditRequestOriginHyperdriveVPCServiceOrigin",
   }) as any as S.Schema<ConfigsEditRequestOriginHyperdriveVPCServiceOrigin>;
 
-export type ConfigsEditRequestOrigin =
-  | ConfigsEditRequestOriginHyperdriveHyperdriveDatabase
-  | ConfigsEditRequestOriginHyperdriveInternetOrigin
-  | ConfigsEditRequestOriginHyperdriveOverAccessOrigin
-  | ConfigsEditRequestOriginHyperdriveVPCServiceOrigin;
-export const ConfigsEditRequestOrigin = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["database", "password", "scheme", "user"],
-    ["host", "port"],
-    ["accessClientId", "accessClientSecret", "host"],
-    ["serviceId"],
-  ]),
-);
+export interface ConfigsEditRequestOrigin {
+  /** Set the name of your origin database. */
+  database?: string;
+  /** Set the password needed to access your origin database. The API never returns this write-only value. */
+  password?: string;
+  /** Specifies the URL scheme used to connect to your origin database. */
+  scheme?:
+    | ConfigsEditRequestOriginHyperdriveHyperdriveDatabaseScheme
+    | (string & {});
+  /** Set the user of your origin database. */
+  user?: string;
+  /** Defines the host (hostname or IP) of your origin database. */
+  host?: string;
+  /** Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified. */
+  port?: number;
+  /** Defines the Client ID of the Access token to use when connecting to the origin database. */
+  accessClientId?: string;
+  /** Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value. */
+  accessClientSecret?: string;
+  /** The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database. */
+  serviceId?: string;
+}
+export const ConfigsEditRequestOrigin = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    database: S.optional(S.String),
+    password: S.optional(S.String),
+    scheme: S.optional(
+      ConfigsEditRequestOriginHyperdriveHyperdriveDatabaseScheme,
+    ),
+    user: S.optional(S.String),
+    host: S.optional(S.String),
+    port: S.optional(S.Number),
+    accessClientId: S.optional(S.String.pipe(T.Body("access_client_id"))),
+    accessClientSecret: S.optional(
+      S.String.pipe(T.Body("access_client_secret")),
+    ),
+    serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
+  }),
+).annotate({
+  identifier: "ConfigsEditRequestOrigin",
+}) as any as S.Schema<ConfigsEditRequestOrigin>;
 
 export interface PatchConfigRequest {
   /** Define configurations using a unique string identifier. */
@@ -1711,25 +1793,53 @@ export const ConfigsUpdateRequestOriginDatabaseReachableThroughAWorkersVPC =
     identifier: "ConfigsUpdateRequestOriginDatabaseReachableThroughAWorkersVPC",
   }) as any as S.Schema<ConfigsUpdateRequestOriginDatabaseReachableThroughAWorkersVPC>;
 
-export type ConfigsUpdateRequestOrigin =
-  | ConfigsUpdateRequestOriginPublicDatabase
-  | ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnel
-  | ConfigsUpdateRequestOriginDatabaseReachableThroughAWorkersVPC;
-export const ConfigsUpdateRequestOrigin = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["database", "host", "password", "port", "scheme", "user"],
-    [
-      "accessClientId",
-      "accessClientSecret",
-      "database",
-      "host",
-      "password",
-      "scheme",
-      "user",
-    ],
-    ["database", "password", "scheme", "serviceId", "user"],
-  ]),
-);
+export interface ConfigsUpdateRequestOrigin {
+  /** Set the name of your origin database. */
+  database: string;
+  /** Defines the host (hostname or IP) of your origin database. */
+  host?: string;
+  /** Set the password needed to access your origin database. The API never returns this write-only value. */
+  password: string;
+  /** Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified. */
+  port?: number;
+  /** Specifies the URL scheme used to connect to your origin database. */
+  scheme:
+    | ConfigsUpdateRequestOriginPublicDatabaseScheme
+    | (string & {})
+    | ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme
+    | (string & {})
+    | ConfigsUpdateRequestOriginDatabaseReachableThroughAWorkersVPCScheme
+    | (string & {});
+  /** Set the user of your origin database. */
+  user: string;
+  /** Defines the Client ID of the Access token to use when connecting to the origin database. */
+  accessClientId?: string;
+  /** Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value. */
+  accessClientSecret?: string;
+  /** The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database. */
+  serviceId?: string;
+}
+export const ConfigsUpdateRequestOrigin = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    database: S.String,
+    host: S.optional(S.String),
+    password: S.String,
+    port: S.optional(S.Number),
+    scheme: S.Union(
+      ConfigsUpdateRequestOriginPublicDatabaseScheme,
+      ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme,
+      ConfigsUpdateRequestOriginDatabaseReachableThroughAWorkersVPCScheme,
+    ),
+    user: S.String,
+    accessClientId: S.optional(S.String.pipe(T.Body("access_client_id"))),
+    accessClientSecret: S.optional(
+      S.String.pipe(T.Body("access_client_secret")),
+    ),
+    serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
+  }),
+).annotate({
+  identifier: "ConfigsUpdateRequestOrigin",
+}) as any as S.Schema<ConfigsUpdateRequestOrigin>;
 
 export interface ConfigsUpdateRequestCachingHyperdriveHyperdriveCachingCommon {
   /** Set to true to disable caching of SQL responses. Default is false. */
@@ -1765,12 +1875,25 @@ export const ConfigsUpdateRequestCachingHyperdriveHyperdriveCachingEnabled =
     identifier: "ConfigsUpdateRequestCachingHyperdriveHyperdriveCachingEnabled",
   }) as any as S.Schema<ConfigsUpdateRequestCachingHyperdriveHyperdriveCachingEnabled>;
 
-export type ConfigsUpdateRequestCaching =
-  | ConfigsUpdateRequestCachingHyperdriveHyperdriveCachingCommon
-  | ConfigsUpdateRequestCachingHyperdriveHyperdriveCachingEnabled;
-export const ConfigsUpdateRequestCaching = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["disabled"], ["disabled", "maxAge", "staleWhileRevalidate"]]),
-);
+export interface ConfigsUpdateRequestCaching {
+  /** Set to true to disable caching of SQL responses. Default is false. */
+  disabled?: boolean;
+  /** Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified. */
+  maxAge?: number;
+  /** Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified. */
+  staleWhileRevalidate?: number;
+}
+export const ConfigsUpdateRequestCaching = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    disabled: S.optional(S.Boolean),
+    maxAge: S.optional(S.Number.pipe(T.Body("max_age"))),
+    staleWhileRevalidate: S.optional(
+      S.Number.pipe(T.Body("stale_while_revalidate")),
+    ),
+  }),
+).annotate({
+  identifier: "ConfigsUpdateRequestCaching",
+}) as any as S.Schema<ConfigsUpdateRequestCaching>;
 
 export interface ConfigsUpdateRequestMtls {
   /** Define CA certificate ID obtained after uploading CA cert. */

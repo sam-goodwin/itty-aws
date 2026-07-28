@@ -527,16 +527,50 @@ export const ScriptsSecretsBulkUpdateRequestSecretsSecretKey =
     identifier: "ScriptsSecretsBulkUpdateRequestSecretsSecretKey",
   }) as any as S.Schema<ScriptsSecretsBulkUpdateRequestSecretsSecretKey>;
 
-export type ScriptsSecretsBulkUpdateRequestSecrets =
-  | ScriptsSecretsBulkUpdateRequestSecretsSecretText
-  | ScriptsSecretsBulkUpdateRequestSecretsSecretKey;
-export const ScriptsSecretsBulkUpdateRequestSecrets =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["name", "text", "type"],
-      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
-    ]),
-  );
+export interface ScriptsSecretsBulkUpdateRequestSecrets {
+  /** A JavaScript variable name for the binding. */
+  name: string;
+  /** The secret value to use. */
+  text?: string;
+  /** The kind of resource that the binding provides. */
+  type:
+    | ScriptsSecretsBulkUpdateRequestSecretsSecretTextType
+    | (string & {})
+    | ScriptsSecretsBulkUpdateRequestSecretsSecretKeyType
+    | (string & {});
+  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
+  algorithm?: unknown;
+  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
+  format?:
+    | ScriptsSecretsBulkUpdateRequestSecretsSecretKeyFormat
+    | (string & {});
+  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
+  usages?: ScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesList;
+  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
+  keyBase64?: string;
+  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
+  keyJwk?: unknown;
+}
+export const ScriptsSecretsBulkUpdateRequestSecrets = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      text: S.optional(S.String),
+      type: S.Union(
+        ScriptsSecretsBulkUpdateRequestSecretsSecretTextType,
+        ScriptsSecretsBulkUpdateRequestSecretsSecretKeyType,
+      ),
+      algorithm: S.optional(S.Unknown),
+      format: S.optional(ScriptsSecretsBulkUpdateRequestSecretsSecretKeyFormat),
+      usages: S.optional(
+        ScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesList,
+      ),
+      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
+      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
+    }),
+).annotate({
+  identifier: "ScriptsSecretsBulkUpdateRequestSecrets",
+}) as any as S.Schema<ScriptsSecretsBulkUpdateRequestSecrets>;
 
 export type ScriptsSecretsBulkUpdateRequestVersionTagsMap = {
   [key: string]: unknown | undefined;
@@ -2477,96 +2511,273 @@ export const BetaWorkersVersionsCreateRequestBindingsItemVPCNetwork =
     identifier: "BetaWorkersVersionsCreateRequestBindingsItemVPCNetwork",
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemVPCNetwork>;
 
-export type BetaWorkersVersionsCreateRequestBindingsItem =
-  | BetaWorkersVersionsCreateRequestBindingsItemAI
-  | BetaWorkersVersionsCreateRequestBindingsItemAISearch
-  | BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespace
-  | BetaWorkersVersionsCreateRequestBindingsItemAnalyticsEngine
-  | BetaWorkersVersionsCreateRequestBindingsItemAssets
-  | BetaWorkersVersionsCreateRequestBindingsItemBrowser
-  | BetaWorkersVersionsCreateRequestBindingsItemD1
-  | BetaWorkersVersionsCreateRequestBindingsItemDataBlob
-  | BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespace
-  | BetaWorkersVersionsCreateRequestBindingsItemDurableObjectNamespace
-  | BetaWorkersVersionsCreateRequestBindingsItemHyperdrive
-  | BetaWorkersVersionsCreateRequestBindingsItemInherit
-  | BetaWorkersVersionsCreateRequestBindingsItemImages
-  | BetaWorkersVersionsCreateRequestBindingsItemJson
-  | BetaWorkersVersionsCreateRequestBindingsItemKVNamespace
-  | BetaWorkersVersionsCreateRequestBindingsItemMedia
-  | BetaWorkersVersionsCreateRequestBindingsItemMTLSCertificate
-  | BetaWorkersVersionsCreateRequestBindingsItemPlainText
-  | BetaWorkersVersionsCreateRequestBindingsItemPipelines
-  | BetaWorkersVersionsCreateRequestBindingsItemQueue
-  | BetaWorkersVersionsCreateRequestBindingsItemRatelimit
-  | BetaWorkersVersionsCreateRequestBindingsItemR2Bucket
-  | BetaWorkersVersionsCreateRequestBindingsItemSecretText
-  | BetaWorkersVersionsCreateRequestBindingsItemSendEmail
-  | BetaWorkersVersionsCreateRequestBindingsItemService
-  | BetaWorkersVersionsCreateRequestBindingsItemTextBlob
-  | BetaWorkersVersionsCreateRequestBindingsItemVectorize
-  | BetaWorkersVersionsCreateRequestBindingsItemVersionMetadata
-  | BetaWorkersVersionsCreateRequestBindingsItemSecretsStoreSecret
-  | BetaWorkersVersionsCreateRequestBindingsItemFlagship
-  | BetaWorkersVersionsCreateRequestBindingsItemSecretKey
-  | BetaWorkersVersionsCreateRequestBindingsItemWorkflow
-  | BetaWorkersVersionsCreateRequestBindingsItemWasmModule
-  | BetaWorkersVersionsCreateRequestBindingsItemVPCService
-  | BetaWorkersVersionsCreateRequestBindingsItemVPCNetwork;
+export interface BetaWorkersVersionsCreateRequestBindingsItem {
+  /** A JavaScript variable name for the binding. */
+  name: string;
+  /** The kind of resource that the binding provides. */
+  type:
+    | BetaWorkersVersionsCreateRequestBindingsItemAIType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemAISearchType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespaceType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemAnalyticsEngineType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemAssetsType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemBrowserType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemD1Type
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemDataBlobType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemDurableObjectNamespaceType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemHyperdriveType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemInheritType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemImagesType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemJsonType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemKVNamespaceType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemMediaType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemMTLSCertificateType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemPlainTextType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemPipelinesType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemQueueType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemRatelimitType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemR2BucketType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemSecretTextType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemSendEmailType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemServiceType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemTextBlobType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemVectorizeType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemVersionMetadataType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemSecretsStoreSecretType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemFlagshipType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemSecretKeyType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemWorkflowType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemWasmModuleType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemVPCServiceType
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestBindingsItemVPCNetworkType
+    | (string & {});
+  /** The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance. */
+  instanceName?: string;
+  /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
+  namespace?: string;
+  /** The name of the dataset to bind to. */
+  dataset?: string;
+  /** Identifier of the D1 database to bind to. */
+  databaseId?: string;
+  /** Identifier of the D1 database to bind to. */
+  id?: string;
+  /** The name of the file containing the data content. Only accepted for `service worker syntax` Workers. */
+  part?: string;
+  /** Outbound worker. */
+  outbound?: BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutbound;
+  /** The exported class name of the Durable Object. */
+  className?: string;
+  /** The dispatch namespace the Durable Object script belongs to. */
+  dispatchNamespace?: string;
+  /** The environment of the script_name to bind to. */
+  environment?: string;
+  /** Namespace identifier tag. */
+  namespaceId?: string;
+  /** The script where the Durable Object is defined, if it is external to this Worker. */
+  scriptName?: string;
+  /** The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions. */
+  oldName?: string;
+  /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
+  versionId?: string;
+  /** JSON data to use. */
+  json?: unknown;
+  /** Identifier of the certificate to bind to. */
+  certificateId?: string;
+  /** The text value to use. */
+  text?: string;
+  /** Name of the Pipeline to bind to. */
+  pipeline?: string;
+  /** Name of the Queue to bind to. */
+  queueName?: string;
+  /** The rate limit configuration. */
+  simple?: BetaWorkersVersionsCreateRequestBindingsItemRatelimitSimple;
+  /** R2 bucket to bind to. */
+  bucketName?: string;
+  /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
+  jurisdiction?:
+    | BetaWorkersVersionsCreateRequestBindingsItemR2BucketJurisdiction
+    | (string & {});
+  /** List of allowed destination addresses. */
+  allowedDestinationAddresses?: BetaWorkersVersionsCreateRequestBindingsItemSendEmailAllowedDestinationAddressesList;
+  /** List of allowed sender addresses. */
+  allowedSenderAddresses?: BetaWorkersVersionsCreateRequestBindingsItemSendEmailAllowedSenderAddressesList;
+  /** Destination address for the email. */
+  destinationAddress?: string;
+  /** Name of Worker to bind to. */
+  service?: string;
+  /** Entrypoint to invoke on the target Worker. */
+  entrypoint?: string;
+  /** Name of the Vectorize index to bind to. */
+  indexName?: string;
+  /** Name of the secret in the store. */
+  secretName?: string;
+  /** ID of the store containing the secret. */
+  storeId?: string;
+  /** ID of the Flagship app to bind to for feature flag evaluation. */
+  appId?: string;
+  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
+  algorithm?: unknown;
+  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
+  format?:
+    | BetaWorkersVersionsCreateRequestBindingsItemSecretKeyFormat
+    | (string & {});
+  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
+  usages?: BetaWorkersVersionsCreateRequestBindingsItemSecretKeyUsagesList;
+  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
+  keyBase64?: string;
+  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
+  keyJwk?: unknown;
+  /** Name of the Workflow to bind to. */
+  workflowName?: string;
+  /** Identifier of the VPC service to bind to. */
+  serviceId?: string;
+  /** Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id. */
+  networkId?: string;
+  /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
+  tunnelId?: string;
+}
 export const BetaWorkersVersionsCreateRequestBindingsItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["name", "type"],
-      ["instanceName", "name", "type", "namespace"],
-      ["name", "namespace", "type"],
-      ["dataset", "name", "type"],
-      ["name", "type"],
-      ["name", "type"],
-      ["databaseId", "name", "type", "id"],
-      ["name", "part", "type"],
-      ["name", "namespace", "type", "outbound"],
-      [
-        "name",
-        "type",
-        "className",
-        "dispatchNamespace",
-        "environment",
-        "namespaceId",
-        "scriptName",
-      ],
-      ["id", "name", "type"],
-      ["name", "type", "oldName", "versionId"],
-      ["name", "type"],
-      ["json", "name", "type"],
-      ["name", "namespaceId", "type"],
-      ["name", "type"],
-      ["certificateId", "name", "type"],
-      ["name", "text", "type"],
-      ["name", "pipeline", "type"],
-      ["name", "queueName", "type"],
-      ["name", "namespaceId", "simple", "type"],
-      ["bucketName", "name", "type", "jurisdiction"],
-      ["name", "text", "type"],
-      [
-        "name",
-        "type",
-        "allowedDestinationAddresses",
-        "allowedSenderAddresses",
-        "destinationAddress",
-      ],
-      ["name", "service", "type", "entrypoint", "environment"],
-      ["name", "part", "type"],
-      ["indexName", "name", "type"],
-      ["name", "type"],
-      ["name", "secretName", "storeId", "type"],
-      ["appId", "name", "type"],
-      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
-      ["name", "type", "workflowName", "className", "scriptName"],
-      ["name", "part", "type"],
-      ["name", "serviceId", "type"],
-      ["name", "type", "networkId", "tunnelId"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      type: S.Union(
+        BetaWorkersVersionsCreateRequestBindingsItemAIType,
+        BetaWorkersVersionsCreateRequestBindingsItemAISearchType,
+        BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespaceType,
+        BetaWorkersVersionsCreateRequestBindingsItemAnalyticsEngineType,
+        BetaWorkersVersionsCreateRequestBindingsItemAssetsType,
+        BetaWorkersVersionsCreateRequestBindingsItemBrowserType,
+        BetaWorkersVersionsCreateRequestBindingsItemD1Type,
+        BetaWorkersVersionsCreateRequestBindingsItemDataBlobType,
+        BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceType,
+        BetaWorkersVersionsCreateRequestBindingsItemDurableObjectNamespaceType,
+        BetaWorkersVersionsCreateRequestBindingsItemHyperdriveType,
+        BetaWorkersVersionsCreateRequestBindingsItemInheritType,
+        BetaWorkersVersionsCreateRequestBindingsItemImagesType,
+        BetaWorkersVersionsCreateRequestBindingsItemJsonType,
+        BetaWorkersVersionsCreateRequestBindingsItemKVNamespaceType,
+        BetaWorkersVersionsCreateRequestBindingsItemMediaType,
+        BetaWorkersVersionsCreateRequestBindingsItemMTLSCertificateType,
+        BetaWorkersVersionsCreateRequestBindingsItemPlainTextType,
+        BetaWorkersVersionsCreateRequestBindingsItemPipelinesType,
+        BetaWorkersVersionsCreateRequestBindingsItemQueueType,
+        BetaWorkersVersionsCreateRequestBindingsItemRatelimitType,
+        BetaWorkersVersionsCreateRequestBindingsItemR2BucketType,
+        BetaWorkersVersionsCreateRequestBindingsItemSecretTextType,
+        BetaWorkersVersionsCreateRequestBindingsItemSendEmailType,
+        BetaWorkersVersionsCreateRequestBindingsItemServiceType,
+        BetaWorkersVersionsCreateRequestBindingsItemTextBlobType,
+        BetaWorkersVersionsCreateRequestBindingsItemVectorizeType,
+        BetaWorkersVersionsCreateRequestBindingsItemVersionMetadataType,
+        BetaWorkersVersionsCreateRequestBindingsItemSecretsStoreSecretType,
+        BetaWorkersVersionsCreateRequestBindingsItemFlagshipType,
+        BetaWorkersVersionsCreateRequestBindingsItemSecretKeyType,
+        BetaWorkersVersionsCreateRequestBindingsItemWorkflowType,
+        BetaWorkersVersionsCreateRequestBindingsItemWasmModuleType,
+        BetaWorkersVersionsCreateRequestBindingsItemVPCServiceType,
+        BetaWorkersVersionsCreateRequestBindingsItemVPCNetworkType,
+      ),
+      instanceName: S.optional(S.String.pipe(T.Body("instance_name"))),
+      namespace: S.optional(S.String),
+      dataset: S.optional(S.String),
+      databaseId: S.optional(S.String.pipe(T.Body("database_id"))),
+      id: S.optional(S.String),
+      part: S.optional(S.String),
+      outbound: S.optional(
+        BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutbound,
+      ),
+      className: S.optional(S.String.pipe(T.Body("class_name"))),
+      dispatchNamespace: S.optional(
+        S.String.pipe(T.Body("dispatch_namespace")),
+      ),
+      environment: S.optional(S.String),
+      namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
+      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
+      oldName: S.optional(S.String.pipe(T.Body("old_name"))),
+      versionId: S.optional(S.String.pipe(T.Body("version_id"))),
+      json: S.optional(S.Unknown),
+      certificateId: S.optional(S.String.pipe(T.Body("certificate_id"))),
+      text: S.optional(S.String),
+      pipeline: S.optional(S.String),
+      queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
+      simple: S.optional(
+        BetaWorkersVersionsCreateRequestBindingsItemRatelimitSimple,
+      ),
+      bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
+      jurisdiction: S.optional(
+        BetaWorkersVersionsCreateRequestBindingsItemR2BucketJurisdiction,
+      ),
+      allowedDestinationAddresses: S.optional(
+        BetaWorkersVersionsCreateRequestBindingsItemSendEmailAllowedDestinationAddressesList.pipe(
+          T.Body("allowed_destination_addresses"),
+        ),
+      ),
+      allowedSenderAddresses: S.optional(
+        BetaWorkersVersionsCreateRequestBindingsItemSendEmailAllowedSenderAddressesList.pipe(
+          T.Body("allowed_sender_addresses"),
+        ),
+      ),
+      destinationAddress: S.optional(
+        S.String.pipe(T.Body("destination_address")),
+      ),
+      service: S.optional(S.String),
+      entrypoint: S.optional(S.String),
+      indexName: S.optional(S.String.pipe(T.Body("index_name"))),
+      secretName: S.optional(S.String.pipe(T.Body("secret_name"))),
+      storeId: S.optional(S.String.pipe(T.Body("store_id"))),
+      appId: S.optional(S.String.pipe(T.Body("app_id"))),
+      algorithm: S.optional(S.Unknown),
+      format: S.optional(
+        BetaWorkersVersionsCreateRequestBindingsItemSecretKeyFormat,
+      ),
+      usages: S.optional(
+        BetaWorkersVersionsCreateRequestBindingsItemSecretKeyUsagesList,
+      ),
+      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
+      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
+      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
+      serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
+      networkId: S.optional(S.String.pipe(T.Body("network_id"))),
+      tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsCreateRequestBindingsItem",
+  }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItem>;
 
 export type BetaWorkersVersionsCreateRequestBindingsList =
   ReadonlyArray<BetaWorkersVersionsCreateRequestBindingsItem>;
@@ -2896,24 +3107,61 @@ export const BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrat
       "BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrations",
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrations>;
 
-export type BetaWorkersVersionsCreateRequestMigrations =
-  | BetaWorkersVersionsCreateRequestMigrationsSingleStepMigration
-  | BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrations;
+export interface BetaWorkersVersionsCreateRequestMigrations {
+  /** A list of classes to delete Durable Object namespaces from. */
+  deletedClasses?: BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationDeletedClassesList;
+  /** A list of classes to create Durable Object namespaces from. */
+  newClasses?: BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationNewClassesList;
+  /** A list of classes to create Durable Object namespaces with SQLite from. */
+  newSqliteClasses?: BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationNewSqliteClassesList;
+  /** Tag to set as the latest migration tag. */
+  newTag?: string;
+  /** Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected. */
+  oldTag?: string;
+  /** A list of classes with Durable Object namespaces that were renamed. */
+  renamedClasses?: BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesList;
+  /** A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker. */
+  transferredClasses?: BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationTransferredClassesList;
+  /** Migrations to apply in order. */
+  steps?: BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsList;
+}
 export const BetaWorkersVersionsCreateRequestMigrations =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [
-        "deletedClasses",
-        "newClasses",
-        "newSqliteClasses",
-        "newTag",
-        "oldTag",
-        "renamedClasses",
-        "transferredClasses",
-      ],
-      ["newTag", "oldTag", "steps"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deletedClasses: S.optional(
+        BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationDeletedClassesList.pipe(
+          T.Body("deleted_classes"),
+        ),
+      ),
+      newClasses: S.optional(
+        BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationNewClassesList.pipe(
+          T.Body("new_classes"),
+        ),
+      ),
+      newSqliteClasses: S.optional(
+        BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationNewSqliteClassesList.pipe(
+          T.Body("new_sqlite_classes"),
+        ),
+      ),
+      newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
+      oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
+      renamedClasses: S.optional(
+        BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesList.pipe(
+          T.Body("renamed_classes"),
+        ),
+      ),
+      transferredClasses: S.optional(
+        BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationTransferredClassesList.pipe(
+          T.Body("transferred_classes"),
+        ),
+      ),
+      steps: S.optional(
+        BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsList,
+      ),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsCreateRequestMigrations",
+  }) as any as S.Schema<BetaWorkersVersionsCreateRequestMigrations>;
 
 export interface BetaWorkersVersionsCreateRequestModulesItem {
   /** The base64-encoded module content. */
@@ -3128,14 +3376,24 @@ export const BetaWorkersVersionsCreateRequestPlacementCase7TargetItemHost =
     identifier: "BetaWorkersVersionsCreateRequestPlacementCase7TargetItemHost",
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestPlacementCase7TargetItemHost>;
 
-export type BetaWorkersVersionsCreateRequestPlacementCase7TargetItem =
-  | BetaWorkersVersionsCreateRequestPlacementCase7TargetItemRegion
-  | BetaWorkersVersionsCreateRequestPlacementCase7TargetItemHostname
-  | BetaWorkersVersionsCreateRequestPlacementCase7TargetItemHost;
+export interface BetaWorkersVersionsCreateRequestPlacementCase7TargetItem {
+  /** Cloud region in format 'provider:region'. */
+  region?: string;
+  /** HTTP hostname for targeted placement. */
+  hostname?: string;
+  /** TCP host:port for targeted placement. */
+  host?: string;
+}
 export const BetaWorkersVersionsCreateRequestPlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([["region"], ["hostname"], ["host"]]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      region: S.optional(S.String),
+      hostname: S.optional(S.String),
+      host: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsCreateRequestPlacementCase7TargetItem",
+  }) as any as S.Schema<BetaWorkersVersionsCreateRequestPlacementCase7TargetItem>;
 
 export type BetaWorkersVersionsCreateRequestPlacementCase7TargetList =
   ReadonlyArray<BetaWorkersVersionsCreateRequestPlacementCase7TargetItem>;
@@ -3160,28 +3418,50 @@ export const BetaWorkersVersionsCreateRequestPlacementCase7 =
     identifier: "BetaWorkersVersionsCreateRequestPlacementCase7",
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestPlacementCase7>;
 
-export type BetaWorkersVersionsCreateRequestPlacement =
-  | BetaWorkersVersionsCreateRequestPlacementMode
-  | BetaWorkersVersionsCreateRequestPlacementRegion
-  | BetaWorkersVersionsCreateRequestPlacementHostname
-  | BetaWorkersVersionsCreateRequestPlacementHost
-  | BetaWorkersVersionsCreateRequestPlacementCase4
-  | BetaWorkersVersionsCreateRequestPlacementCase5
-  | BetaWorkersVersionsCreateRequestPlacementCase6
-  | BetaWorkersVersionsCreateRequestPlacementCase7;
+export interface BetaWorkersVersionsCreateRequestPlacement {
+  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  mode?:
+    | BetaWorkersVersionsCreateRequestPlacementModeMode
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestPlacementCase4Mode
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestPlacementCase5Mode
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestPlacementCase6Mode
+    | (string & {})
+    | BetaWorkersVersionsCreateRequestPlacementCase7Mode
+    | (string & {});
+  /** Cloud region for targeted placement in format 'provider:region'. */
+  region?: string;
+  /** HTTP hostname for targeted placement. */
+  hostname?: string;
+  /** TCP host and port for targeted placement. */
+  host?: string;
+  /** Array of placement targets (currently limited to single target). */
+  target?: BetaWorkersVersionsCreateRequestPlacementCase7TargetList;
+}
 export const BetaWorkersVersionsCreateRequestPlacement =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["mode"],
-      ["region"],
-      ["hostname"],
-      ["host"],
-      ["mode", "region"],
-      ["hostname", "mode"],
-      ["host", "mode"],
-      ["mode", "target"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.optional(
+        S.Union(
+          BetaWorkersVersionsCreateRequestPlacementModeMode,
+          BetaWorkersVersionsCreateRequestPlacementCase4Mode,
+          BetaWorkersVersionsCreateRequestPlacementCase5Mode,
+          BetaWorkersVersionsCreateRequestPlacementCase6Mode,
+          BetaWorkersVersionsCreateRequestPlacementCase7Mode,
+        ),
+      ),
+      region: S.optional(S.String),
+      hostname: S.optional(S.String),
+      host: S.optional(S.String),
+      target: S.optional(
+        BetaWorkersVersionsCreateRequestPlacementCase7TargetList,
+      ),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsCreateRequestPlacement",
+  }) as any as S.Schema<BetaWorkersVersionsCreateRequestPlacement>;
 
 export type BetaWorkersVersionsCreateRequestUsageModel =
   | "standard"
@@ -5755,16 +6035,59 @@ export const ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObserv
       "ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeaf>;
 
-export type ObservabilityQueriesCreateRequestParametersFiltersItem =
-  | ObservabilityQueriesCreateRequestParametersFiltersItemCase0
-  | ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeaf;
+export interface ObservabilityQueriesCreateRequestParametersFiltersItem {
+  filterCombination?:
+    | ObservabilityQueriesCreateRequestParametersFiltersItemCase0FilterCombination
+    | (string & {});
+  filters?: ObservabilityQueriesCreateRequestParametersFiltersItemCase0FiltersList;
+  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
+  kind?:
+    | ObservabilityQueriesCreateRequestParametersFiltersItemCase0Kind
+    | (string & {})
+    | ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
+  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
+  key?: string;
+  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
+  operation?:
+    | ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation
+    | (string & {});
+  /** Data type of the filter field. Must match the actual type of the key being filtered. */
+  type?:
+    | ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafType
+    | (string & {});
+  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  value?: ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafValue;
+}
 export const ObservabilityQueriesCreateRequestParametersFiltersItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["filterCombination", "filters", "kind"],
-      ["key", "operation", "type", "kind", "value"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filterCombination: S.optional(
+        ObservabilityQueriesCreateRequestParametersFiltersItemCase0FilterCombination,
+      ),
+      filters: S.optional(
+        ObservabilityQueriesCreateRequestParametersFiltersItemCase0FiltersList,
+      ),
+      kind: S.optional(
+        S.Union(
+          ObservabilityQueriesCreateRequestParametersFiltersItemCase0Kind,
+          ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind,
+        ),
+      ),
+      key: S.optional(S.String),
+      operation: S.optional(
+        ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation,
+      ),
+      type: S.optional(
+        ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafType,
+      ),
+      value: S.optional(
+        ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafValue,
+      ),
+    }),
+  ).annotate({
+    identifier: "ObservabilityQueriesCreateRequestParametersFiltersItem",
+  }) as any as S.Schema<ObservabilityQueriesCreateRequestParametersFiltersItem>;
 
 export type ObservabilityQueriesCreateRequestParametersFiltersList =
   ReadonlyArray<ObservabilityQueriesCreateRequestParametersFiltersItem>;
@@ -6654,16 +6977,60 @@ export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0Fi
       "ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf>;
 
-export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItem =
-    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0
-    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf;
+export interface ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItem {
+  filterCombination?:
+    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0FilterCombination
+    | (string & {});
+  filters?: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0FiltersList;
+  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
+  kind?:
+    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0Kind
+    | (string & {})
+    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
+  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
+  key?: string;
+  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
+  operation?:
+    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation
+    | (string & {});
+  /** Data type of the filter field. Must match the actual type of the key being filtered. */
+  type?:
+    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
+    | (string & {});
+  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  value?: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
+}
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["filterCombination", "filters", "kind"],
-      ["key", "operation", "type", "kind", "value"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filterCombination: S.optional(
+        ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0FilterCombination,
+      ),
+      filters: S.optional(
+        ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0FiltersList,
+      ),
+      kind: S.optional(
+        S.Union(
+          ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0Kind,
+          ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind,
+        ),
+      ),
+      key: S.optional(S.String),
+      operation: S.optional(
+        ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation,
+      ),
+      type: S.optional(
+        ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType,
+      ),
+      value: S.optional(
+        ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItem",
+  }) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItem>;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersList =
   ReadonlyArray<ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItem>;
@@ -6786,16 +7153,59 @@ export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkers
       "ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeaf>;
 
-export type ObservabilitySharedQueriesCreateRequestParametersFiltersItem =
-  | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0
-  | ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeaf;
+export interface ObservabilitySharedQueriesCreateRequestParametersFiltersItem {
+  filterCombination?:
+    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FilterCombination
+    | (string & {});
+  filters?: ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersList;
+  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
+  kind?:
+    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0Kind
+    | (string & {})
+    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
+  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
+  key?: string;
+  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
+  operation?:
+    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation
+    | (string & {});
+  /** Data type of the filter field. Must match the actual type of the key being filtered. */
+  type?:
+    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafType
+    | (string & {});
+  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  value?: ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafValue;
+}
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["filterCombination", "filters", "kind"],
-      ["key", "operation", "type", "kind", "value"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filterCombination: S.optional(
+        ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FilterCombination,
+      ),
+      filters: S.optional(
+        ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersList,
+      ),
+      kind: S.optional(
+        S.Union(
+          ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0Kind,
+          ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafKind,
+        ),
+      ),
+      key: S.optional(S.String),
+      operation: S.optional(
+        ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation,
+      ),
+      type: S.optional(
+        ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafType,
+      ),
+      value: S.optional(
+        ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafValue,
+      ),
+    }),
+  ).annotate({
+    identifier: "ObservabilitySharedQueriesCreateRequestParametersFiltersItem",
+  }) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersFiltersItem>;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersList =
   ReadonlyArray<ObservabilitySharedQueriesCreateRequestParametersFiltersItem>;
@@ -8471,16 +8881,25 @@ export const CreateScriptEdgePreviewWranglerSessionConfigRoutes =
     identifier: "CreateScriptEdgePreviewWranglerSessionConfigRoutes",
   }) as any as S.Schema<CreateScriptEdgePreviewWranglerSessionConfigRoutes>;
 
-export type CreateScriptEdgePreviewWranglerSessionConfig =
-  | CreateScriptEdgePreviewWranglerSessionConfigWorkersDev
-  | CreateScriptEdgePreviewWranglerSessionConfigRoutes;
+export interface CreateScriptEdgePreviewWranglerSessionConfig {
+  /** Route the preview through workers.dev. */
+  workersDev?: boolean;
+  minimalMode?: boolean;
+  /** Routes to serve the preview on. */
+  routes?: CreateScriptEdgePreviewWranglerSessionConfigRoutesList;
+}
 export const CreateScriptEdgePreviewWranglerSessionConfig =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["workersDev", "minimalMode"],
-      ["routes", "minimalMode"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      workersDev: S.optional(S.Boolean.pipe(T.Body("workers_dev"))),
+      minimalMode: S.optional(S.Boolean.pipe(T.Body("minimal_mode"))),
+      routes: S.optional(
+        CreateScriptEdgePreviewWranglerSessionConfigRoutesList,
+      ),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewWranglerSessionConfig",
+  }) as any as S.Schema<CreateScriptEdgePreviewWranglerSessionConfig>;
 
 export interface CreateScriptEdgePreviewRequest {
   /** Identifier. */
@@ -19975,16 +20394,59 @@ export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkers
       "ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf>;
 
-export type ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItem =
-  | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0
-  | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf;
+export interface ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItem {
+  filterCombination?:
+    | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0FilterCombination
+    | (string & {});
+  filters?: ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0FiltersList;
+  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
+  kind?:
+    | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0Kind
+    | (string & {})
+    | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
+  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
+  key?: string;
+  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
+  operation?:
+    | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation
+    | (string & {});
+  /** Data type of the filter field. Must match the actual type of the key being filtered. */
+  type?:
+    | ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
+    | (string & {});
+  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  value?: ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
+}
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["filterCombination", "filters", "kind"],
-      ["key", "operation", "type", "kind", "value"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filterCombination: S.optional(
+        ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0FilterCombination,
+      ),
+      filters: S.optional(
+        ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0FiltersList,
+      ),
+      kind: S.optional(
+        S.Union(
+          ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0Kind,
+          ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind,
+        ),
+      ),
+      key: S.optional(S.String),
+      operation: S.optional(
+        ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation,
+      ),
+      type: S.optional(
+        ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType,
+      ),
+      value: S.optional(
+        ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue,
+      ),
+    }),
+  ).annotate({
+    identifier: "ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItem",
+  }) as any as S.Schema<ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItem>;
 
 export type ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersList =
   ReadonlyArray<ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItem>;
@@ -20102,16 +20564,59 @@ export const ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFil
       "ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeaf>;
 
-export type ObservabilityTelemetryKeysRequestFiltersItem =
-  | ObservabilityTelemetryKeysRequestFiltersItemCase0
-  | ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeaf;
+export interface ObservabilityTelemetryKeysRequestFiltersItem {
+  filterCombination?:
+    | ObservabilityTelemetryKeysRequestFiltersItemCase0FilterCombination
+    | (string & {});
+  filters?: ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersList;
+  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
+  kind?:
+    | ObservabilityTelemetryKeysRequestFiltersItemCase0Kind
+    | (string & {})
+    | ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
+  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
+  key?: string;
+  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
+  operation?:
+    | ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafOperation
+    | (string & {});
+  /** Data type of the filter field. Must match the actual type of the key being filtered. */
+  type?:
+    | ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafType
+    | (string & {});
+  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  value?: ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafValue;
+}
 export const ObservabilityTelemetryKeysRequestFiltersItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["filterCombination", "filters", "kind"],
-      ["key", "operation", "type", "kind", "value"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filterCombination: S.optional(
+        ObservabilityTelemetryKeysRequestFiltersItemCase0FilterCombination,
+      ),
+      filters: S.optional(
+        ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersList,
+      ),
+      kind: S.optional(
+        S.Union(
+          ObservabilityTelemetryKeysRequestFiltersItemCase0Kind,
+          ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafKind,
+        ),
+      ),
+      key: S.optional(S.String),
+      operation: S.optional(
+        ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafOperation,
+      ),
+      type: S.optional(
+        ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafType,
+      ),
+      value: S.optional(
+        ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafValue,
+      ),
+    }),
+  ).annotate({
+    identifier: "ObservabilityTelemetryKeysRequestFiltersItem",
+  }) as any as S.Schema<ObservabilityTelemetryKeysRequestFiltersItem>;
 
 export type ObservabilityTelemetryKeysRequestFiltersList =
   ReadonlyArray<ObservabilityTelemetryKeysRequestFiltersItem>;
@@ -24907,16 +25412,60 @@ export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWor
       "ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf>;
 
-export type ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItem =
-  | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0
-  | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf;
+export interface ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItem {
+  filterCombination?:
+    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0FilterCombination
+    | (string & {});
+  filters?: ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0FiltersList;
+  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
+  kind?:
+    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0Kind
+    | (string & {})
+    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
+  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
+  key?: string;
+  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
+  operation?:
+    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation
+    | (string & {});
+  /** Data type of the filter field. Must match the actual type of the key being filtered. */
+  type?:
+    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
+    | (string & {});
+  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  value?: ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
+}
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["filterCombination", "filters", "kind"],
-      ["key", "operation", "type", "kind", "value"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filterCombination: S.optional(
+        ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0FilterCombination,
+      ),
+      filters: S.optional(
+        ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0FiltersList,
+      ),
+      kind: S.optional(
+        S.Union(
+          ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0Kind,
+          ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind,
+        ),
+      ),
+      key: S.optional(S.String),
+      operation: S.optional(
+        ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation,
+      ),
+      type: S.optional(
+        ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType,
+      ),
+      value: S.optional(
+        ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItem",
+  }) as any as S.Schema<ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItem>;
 
 export type ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersList =
   ReadonlyArray<ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItem>;
@@ -25036,16 +25585,59 @@ export const ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilit
       "ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeaf>;
 
-export type ObservabilityTelemetryLiveTailRequestFiltersItem =
-  | ObservabilityTelemetryLiveTailRequestFiltersItemCase0
-  | ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeaf;
+export interface ObservabilityTelemetryLiveTailRequestFiltersItem {
+  filterCombination?:
+    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0FilterCombination
+    | (string & {});
+  filters?: ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersList;
+  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
+  kind?:
+    | ObservabilityTelemetryLiveTailRequestFiltersItemCase0Kind
+    | (string & {})
+    | ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
+  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
+  key?: string;
+  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
+  operation?:
+    | ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafOperation
+    | (string & {});
+  /** Data type of the filter field. Must match the actual type of the key being filtered. */
+  type?:
+    | ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafType
+    | (string & {});
+  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  value?: ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafValue;
+}
 export const ObservabilityTelemetryLiveTailRequestFiltersItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["filterCombination", "filters", "kind"],
-      ["key", "operation", "type", "kind", "value"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filterCombination: S.optional(
+        ObservabilityTelemetryLiveTailRequestFiltersItemCase0FilterCombination,
+      ),
+      filters: S.optional(
+        ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersList,
+      ),
+      kind: S.optional(
+        S.Union(
+          ObservabilityTelemetryLiveTailRequestFiltersItemCase0Kind,
+          ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafKind,
+        ),
+      ),
+      key: S.optional(S.String),
+      operation: S.optional(
+        ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafOperation,
+      ),
+      type: S.optional(
+        ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafType,
+      ),
+      value: S.optional(
+        ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafValue,
+      ),
+    }),
+  ).annotate({
+    identifier: "ObservabilityTelemetryLiveTailRequestFiltersItem",
+  }) as any as S.Schema<ObservabilityTelemetryLiveTailRequestFiltersItem>;
 
 export type ObservabilityTelemetryLiveTailRequestFiltersList =
   ReadonlyArray<ObservabilityTelemetryLiveTailRequestFiltersItem>;
@@ -30464,16 +31056,60 @@ export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Filters
       "ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf>;
 
-export type ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItem =
-    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0
-    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf;
+export interface ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItem {
+  filterCombination?:
+    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0FilterCombination
+    | (string & {});
+  filters?: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0FiltersList;
+  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
+  kind?:
+    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0Kind
+    | (string & {})
+    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
+  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
+  key?: string;
+  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
+  operation?:
+    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation
+    | (string & {});
+  /** Data type of the filter field. Must match the actual type of the key being filtered. */
+  type?:
+    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
+    | (string & {});
+  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  value?: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
+}
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["filterCombination", "filters", "kind"],
-      ["key", "operation", "type", "kind", "value"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filterCombination: S.optional(
+        ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0FilterCombination,
+      ),
+      filters: S.optional(
+        ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0FiltersList,
+      ),
+      kind: S.optional(
+        S.Union(
+          ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0Kind,
+          ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind,
+        ),
+      ),
+      key: S.optional(S.String),
+      operation: S.optional(
+        ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation,
+      ),
+      type: S.optional(
+        ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType,
+      ),
+      value: S.optional(
+        ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItem",
+  }) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItem>;
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersList =
   ReadonlyArray<ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItem>;
@@ -30595,16 +31231,59 @@ export const ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObser
       "ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeaf>;
 
-export type ObservabilityTelemetryQueryRequestParametersFiltersItem =
-  | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0
-  | ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeaf;
+export interface ObservabilityTelemetryQueryRequestParametersFiltersItem {
+  filterCombination?:
+    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FilterCombination
+    | (string & {});
+  filters?: ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersList;
+  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
+  kind?:
+    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Kind
+    | (string & {})
+    | ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
+  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
+  key?: string;
+  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
+  operation?:
+    | ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation
+    | (string & {});
+  /** Data type of the filter field. Must match the actual type of the key being filtered. */
+  type?:
+    | ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafType
+    | (string & {});
+  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  value?: ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafValue;
+}
 export const ObservabilityTelemetryQueryRequestParametersFiltersItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["filterCombination", "filters", "kind"],
-      ["key", "operation", "type", "kind", "value"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filterCombination: S.optional(
+        ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FilterCombination,
+      ),
+      filters: S.optional(
+        ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersList,
+      ),
+      kind: S.optional(
+        S.Union(
+          ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Kind,
+          ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafKind,
+        ),
+      ),
+      key: S.optional(S.String),
+      operation: S.optional(
+        ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation,
+      ),
+      type: S.optional(
+        ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafType,
+      ),
+      value: S.optional(
+        ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafValue,
+      ),
+    }),
+  ).annotate({
+    identifier: "ObservabilityTelemetryQueryRequestParametersFiltersItem",
+  }) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersFiltersItem>;
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersList =
   ReadonlyArray<ObservabilityTelemetryQueryRequestParametersFiltersItem>;
@@ -33848,16 +34527,60 @@ export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorke
       "ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf>;
 
-export type ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItem =
-  | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0
-  | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf;
+export interface ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItem {
+  filterCombination?:
+    | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0FilterCombination
+    | (string & {});
+  filters?: ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0FiltersList;
+  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
+  kind?:
+    | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0Kind
+    | (string & {})
+    | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
+  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
+  key?: string;
+  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
+  operation?:
+    | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation
+    | (string & {});
+  /** Data type of the filter field. Must match the actual type of the key being filtered. */
+  type?:
+    | ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType
+    | (string & {});
+  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  value?: ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue;
+}
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["filterCombination", "filters", "kind"],
-      ["key", "operation", "type", "kind", "value"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filterCombination: S.optional(
+        ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0FilterCombination,
+      ),
+      filters: S.optional(
+        ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0FiltersList,
+      ),
+      kind: S.optional(
+        S.Union(
+          ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0Kind,
+          ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafKind,
+        ),
+      ),
+      key: S.optional(S.String),
+      operation: S.optional(
+        ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation,
+      ),
+      type: S.optional(
+        ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType,
+      ),
+      value: S.optional(
+        ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItem",
+  }) as any as S.Schema<ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItem>;
 
 export type ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersList =
   ReadonlyArray<ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItem>;
@@ -33975,16 +34698,59 @@ export const ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityF
       "ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeaf",
   }) as any as S.Schema<ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeaf>;
 
-export type ObservabilityTelemetryValuesRequestFiltersItem =
-  | ObservabilityTelemetryValuesRequestFiltersItemCase0
-  | ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeaf;
+export interface ObservabilityTelemetryValuesRequestFiltersItem {
+  filterCombination?:
+    | ObservabilityTelemetryValuesRequestFiltersItemCase0FilterCombination
+    | (string & {});
+  filters?: ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersList;
+  /** Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted. */
+  kind?:
+    | ObservabilityTelemetryValuesRequestFiltersItemCase0Kind
+    | (string & {})
+    | ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafKind
+    | (string & {});
+  /** Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error. */
+  key?: string;
+  /** Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte. */
+  operation?:
+    | ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafOperation
+    | (string & {});
+  /** Data type of the filter field. Must match the actual type of the key being filtered. */
+  type?:
+    | ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafType
+    | (string & {});
+  /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds). */
+  value?: ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafValue;
+}
 export const ObservabilityTelemetryValuesRequestFiltersItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["filterCombination", "filters", "kind"],
-      ["key", "operation", "type", "kind", "value"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filterCombination: S.optional(
+        ObservabilityTelemetryValuesRequestFiltersItemCase0FilterCombination,
+      ),
+      filters: S.optional(
+        ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersList,
+      ),
+      kind: S.optional(
+        S.Union(
+          ObservabilityTelemetryValuesRequestFiltersItemCase0Kind,
+          ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafKind,
+        ),
+      ),
+      key: S.optional(S.String),
+      operation: S.optional(
+        ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafOperation,
+      ),
+      type: S.optional(
+        ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafType,
+      ),
+      value: S.optional(
+        ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafValue,
+      ),
+    }),
+  ).annotate({
+    identifier: "ObservabilityTelemetryValuesRequestFiltersItem",
+  }) as any as S.Schema<ObservabilityTelemetryValuesRequestFiltersItem>;
 
 export type ObservabilityTelemetryValuesRequestFiltersList =
   ReadonlyArray<ObservabilityTelemetryValuesRequestFiltersItem>;

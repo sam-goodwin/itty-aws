@@ -1845,7 +1845,7 @@ export const DynamicRoutingCreateRequestElementsItemCase0Type =
 export interface DynamicRoutingCreateRequestElementsItemCase0 {
   id: string;
   outputs: DynamicRoutingCreateRequestElementsItemCase0Outputs;
-  type: DynamicRoutingCreateRequestElementsItemCase0Type | (string & {});
+  type: DynamicRoutingCreateRequestElementsItemCase0Type;
 }
 export const DynamicRoutingCreateRequestElementsItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -1916,7 +1916,7 @@ export interface DynamicRoutingCreateRequestElementsItemCase1 {
   id: string;
   outputs: DynamicRoutingCreateRequestElementsItemCase1Outputs;
   properties: DynamicRoutingCreateRequestElementsItemCase1Properties;
-  type: DynamicRoutingCreateRequestElementsItemCase1Type | (string & {});
+  type: DynamicRoutingCreateRequestElementsItemCase1Type;
 }
 export const DynamicRoutingCreateRequestElementsItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -1960,7 +1960,7 @@ export const DynamicRoutingCreateRequestElementsItemCase2Type =
 export interface DynamicRoutingCreateRequestElementsItemCase2 {
   id: string;
   outputs: DynamicRoutingCreateRequestElementsItemCase2OutputsMap;
-  type: DynamicRoutingCreateRequestElementsItemCase2Type | (string & {});
+  type: DynamicRoutingCreateRequestElementsItemCase2Type;
 }
 export const DynamicRoutingCreateRequestElementsItemCase2 =
   /*@__PURE__*/ S.suspend(() =>
@@ -2020,9 +2020,7 @@ export const DynamicRoutingCreateRequestElementsItemCase3PropertiesLimitType =
 export interface DynamicRoutingCreateRequestElementsItemCase3Properties {
   key: string;
   limit: number;
-  limitType:
-    | DynamicRoutingCreateRequestElementsItemCase3PropertiesLimitType
-    | (string & {});
+  limitType: DynamicRoutingCreateRequestElementsItemCase3PropertiesLimitType;
   window: number;
 }
 export const DynamicRoutingCreateRequestElementsItemCase3Properties =
@@ -2046,7 +2044,7 @@ export interface DynamicRoutingCreateRequestElementsItemCase3 {
   id: string;
   outputs: DynamicRoutingCreateRequestElementsItemCase3Outputs;
   properties: DynamicRoutingCreateRequestElementsItemCase3Properties;
-  type: DynamicRoutingCreateRequestElementsItemCase3Type | (string & {});
+  type: DynamicRoutingCreateRequestElementsItemCase3Type;
 }
 export const DynamicRoutingCreateRequestElementsItemCase3 =
   /*@__PURE__*/ S.suspend(() =>
@@ -2124,7 +2122,7 @@ export interface DynamicRoutingCreateRequestElementsItemCase4 {
   id: string;
   outputs: DynamicRoutingCreateRequestElementsItemCase4Outputs;
   properties: DynamicRoutingCreateRequestElementsItemCase4Properties;
-  type: DynamicRoutingCreateRequestElementsItemCase4Type | (string & {});
+  type: DynamicRoutingCreateRequestElementsItemCase4Type;
 }
 export const DynamicRoutingCreateRequestElementsItemCase4 =
   /*@__PURE__*/ S.suspend(() =>
@@ -2168,7 +2166,7 @@ export const DynamicRoutingCreateRequestElementsItemCase5Type =
 export interface DynamicRoutingCreateRequestElementsItemCase5 {
   id: string;
   outputs: DynamicRoutingCreateRequestElementsItemCase5OutputsMap;
-  type: DynamicRoutingCreateRequestElementsItemCase5Type | (string & {});
+  type: DynamicRoutingCreateRequestElementsItemCase5Type;
 }
 export const DynamicRoutingCreateRequestElementsItemCase5 =
   /*@__PURE__*/ S.suspend(() =>
@@ -2181,24 +2179,58 @@ export const DynamicRoutingCreateRequestElementsItemCase5 =
     identifier: "DynamicRoutingCreateRequestElementsItemCase5",
   }) as any as S.Schema<DynamicRoutingCreateRequestElementsItemCase5>;
 
-export type DynamicRoutingCreateRequestElementsItem =
-  | DynamicRoutingCreateRequestElementsItemCase0
-  | DynamicRoutingCreateRequestElementsItemCase1
-  | DynamicRoutingCreateRequestElementsItemCase2
-  | DynamicRoutingCreateRequestElementsItemCase3
-  | DynamicRoutingCreateRequestElementsItemCase4
-  | DynamicRoutingCreateRequestElementsItemCase5;
-export const DynamicRoutingCreateRequestElementsItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["id", "outputs", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "type"],
-    ]),
-  );
+export interface DynamicRoutingCreateRequestElementsItem {
+  id: string;
+  outputs:
+    | DynamicRoutingCreateRequestElementsItemCase0Outputs
+    | DynamicRoutingCreateRequestElementsItemCase1Outputs
+    | DynamicRoutingCreateRequestElementsItemCase2OutputsMap
+    | DynamicRoutingCreateRequestElementsItemCase3Outputs
+    | DynamicRoutingCreateRequestElementsItemCase4Outputs
+    | DynamicRoutingCreateRequestElementsItemCase5OutputsMap;
+  type:
+    | DynamicRoutingCreateRequestElementsItemCase0Type
+    | DynamicRoutingCreateRequestElementsItemCase1Type
+    | DynamicRoutingCreateRequestElementsItemCase2Type
+    | DynamicRoutingCreateRequestElementsItemCase3Type
+    | DynamicRoutingCreateRequestElementsItemCase4Type
+    | DynamicRoutingCreateRequestElementsItemCase5Type;
+  properties?:
+    | DynamicRoutingCreateRequestElementsItemCase1Properties
+    | DynamicRoutingCreateRequestElementsItemCase3Properties
+    | DynamicRoutingCreateRequestElementsItemCase4Properties;
+}
+export const DynamicRoutingCreateRequestElementsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      outputs: S.Union(
+        DynamicRoutingCreateRequestElementsItemCase0Outputs,
+        DynamicRoutingCreateRequestElementsItemCase1Outputs,
+        DynamicRoutingCreateRequestElementsItemCase2OutputsMap,
+        DynamicRoutingCreateRequestElementsItemCase3Outputs,
+        DynamicRoutingCreateRequestElementsItemCase4Outputs,
+        DynamicRoutingCreateRequestElementsItemCase5OutputsMap,
+      ),
+      type: S.Union(
+        DynamicRoutingCreateRequestElementsItemCase0Type,
+        DynamicRoutingCreateRequestElementsItemCase1Type,
+        DynamicRoutingCreateRequestElementsItemCase2Type,
+        DynamicRoutingCreateRequestElementsItemCase3Type,
+        DynamicRoutingCreateRequestElementsItemCase4Type,
+        DynamicRoutingCreateRequestElementsItemCase5Type,
+      ),
+      properties: S.optional(
+        S.Union(
+          DynamicRoutingCreateRequestElementsItemCase1Properties,
+          DynamicRoutingCreateRequestElementsItemCase3Properties,
+          DynamicRoutingCreateRequestElementsItemCase4Properties,
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "DynamicRoutingCreateRequestElementsItem",
+}) as any as S.Schema<DynamicRoutingCreateRequestElementsItem>;
 
 export type DynamicRoutingCreateRequestElementsList =
   ReadonlyArray<DynamicRoutingCreateRequestElementsItem>;
@@ -2677,7 +2709,7 @@ export const DynamicRoutingCreateResponseVersionActive = /*@__PURE__*/ S.String;
 export interface DynamicRoutingCreateResponseVersion {
   active: DynamicRoutingCreateResponseVersionActive;
   createdAt: string;
-  data: string;
+  data: DynamicRoutingCreateRequestElementsList;
   versionId: string;
   isValid?: boolean;
 }
@@ -2685,7 +2717,7 @@ export const DynamicRoutingCreateResponseVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: DynamicRoutingCreateResponseVersionActive,
     createdAt: S.String.pipe(T.Body("created_at")),
-    data: S.String,
+    data: DynamicRoutingCreateRequestElementsList,
     versionId: S.String.pipe(T.Body("version_id")),
     isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
   }),
@@ -3371,24 +3403,64 @@ export const DynamicRoutingCreateVersionRequestElementsItemCase5 =
     identifier: "DynamicRoutingCreateVersionRequestElementsItemCase5",
   }) as any as S.Schema<DynamicRoutingCreateVersionRequestElementsItemCase5>;
 
-export type DynamicRoutingCreateVersionRequestElementsItem =
-  | DynamicRoutingCreateVersionRequestElementsItemCase0
-  | DynamicRoutingCreateVersionRequestElementsItemCase1
-  | DynamicRoutingCreateVersionRequestElementsItemCase2
-  | DynamicRoutingCreateVersionRequestElementsItemCase3
-  | DynamicRoutingCreateVersionRequestElementsItemCase4
-  | DynamicRoutingCreateVersionRequestElementsItemCase5;
+export interface DynamicRoutingCreateVersionRequestElementsItem {
+  id: string;
+  outputs:
+    | DynamicRoutingCreateVersionRequestElementsItemCase0Outputs
+    | DynamicRoutingCreateVersionRequestElementsItemCase1Outputs
+    | DynamicRoutingCreateVersionRequestElementsItemCase2OutputsMap
+    | DynamicRoutingCreateVersionRequestElementsItemCase3Outputs
+    | DynamicRoutingCreateVersionRequestElementsItemCase4Outputs
+    | DynamicRoutingCreateVersionRequestElementsItemCase5OutputsMap;
+  type:
+    | DynamicRoutingCreateVersionRequestElementsItemCase0Type
+    | (string & {})
+    | DynamicRoutingCreateVersionRequestElementsItemCase1Type
+    | (string & {})
+    | DynamicRoutingCreateVersionRequestElementsItemCase2Type
+    | (string & {})
+    | DynamicRoutingCreateVersionRequestElementsItemCase3Type
+    | (string & {})
+    | DynamicRoutingCreateVersionRequestElementsItemCase4Type
+    | (string & {})
+    | DynamicRoutingCreateVersionRequestElementsItemCase5Type
+    | (string & {});
+  properties?:
+    | DynamicRoutingCreateVersionRequestElementsItemCase1Properties
+    | DynamicRoutingCreateVersionRequestElementsItemCase3Properties
+    | DynamicRoutingCreateVersionRequestElementsItemCase4Properties;
+}
 export const DynamicRoutingCreateVersionRequestElementsItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["id", "outputs", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "type"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      outputs: S.Union(
+        DynamicRoutingCreateVersionRequestElementsItemCase0Outputs,
+        DynamicRoutingCreateVersionRequestElementsItemCase1Outputs,
+        DynamicRoutingCreateVersionRequestElementsItemCase2OutputsMap,
+        DynamicRoutingCreateVersionRequestElementsItemCase3Outputs,
+        DynamicRoutingCreateVersionRequestElementsItemCase4Outputs,
+        DynamicRoutingCreateVersionRequestElementsItemCase5OutputsMap,
+      ),
+      type: S.Union(
+        DynamicRoutingCreateVersionRequestElementsItemCase0Type,
+        DynamicRoutingCreateVersionRequestElementsItemCase1Type,
+        DynamicRoutingCreateVersionRequestElementsItemCase2Type,
+        DynamicRoutingCreateVersionRequestElementsItemCase3Type,
+        DynamicRoutingCreateVersionRequestElementsItemCase4Type,
+        DynamicRoutingCreateVersionRequestElementsItemCase5Type,
+      ),
+      properties: S.optional(
+        S.Union(
+          DynamicRoutingCreateVersionRequestElementsItemCase1Properties,
+          DynamicRoutingCreateVersionRequestElementsItemCase3Properties,
+          DynamicRoutingCreateVersionRequestElementsItemCase4Properties,
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingCreateVersionRequestElementsItem",
+  }) as any as S.Schema<DynamicRoutingCreateVersionRequestElementsItem>;
 
 export type DynamicRoutingCreateVersionRequestElementsList =
   ReadonlyArray<DynamicRoutingCreateVersionRequestElementsItem>;
@@ -6890,7 +6962,7 @@ export const DynamicRoutingGetResponseVersionActive = /*@__PURE__*/ S.String;
 export interface DynamicRoutingGetResponseVersion {
   active: DynamicRoutingGetResponseVersionActive;
   createdAt: string;
-  data: string;
+  data: DynamicRoutingCreateRequestElementsList;
   versionId: string;
   isValid?: boolean;
 }
@@ -6898,7 +6970,7 @@ export const DynamicRoutingGetResponseVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: DynamicRoutingGetResponseVersionActive,
     createdAt: S.String.pipe(T.Body("created_at")),
-    data: S.String,
+    data: DynamicRoutingCreateRequestElementsList,
     versionId: S.String.pipe(T.Body("version_id")),
     isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
   }),
@@ -7694,7 +7766,7 @@ export interface GetVersionDynamicRoutingResponse {
   id: string;
   active: DynamicRoutingGetVersionResponseActive;
   createdAt: string;
-  data: string;
+  data: DynamicRoutingCreateRequestElementsList;
   elements: DynamicRoutingGetVersionResponseElementsList;
   gatewayId: string;
   modifiedAt: string;
@@ -7707,7 +7779,7 @@ export const GetVersionDynamicRoutingResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     active: DynamicRoutingGetVersionResponseActive,
     createdAt: S.String.pipe(T.Body("created_at")),
-    data: S.String,
+    data: DynamicRoutingCreateRequestElementsList,
     elements: DynamicRoutingGetVersionResponseElementsList,
     gatewayId: S.String.pipe(T.Body("gateway_id")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
@@ -9427,7 +9499,7 @@ export const DynamicRoutingListResponseDataRoutesItemVersionActive =
 export interface DynamicRoutingListResponseDataRoutesItemVersion {
   active: DynamicRoutingListResponseDataRoutesItemVersionActive;
   createdAt: string;
-  data: string;
+  data: DynamicRoutingCreateRequestElementsList;
   versionId: string;
   isValid?: boolean;
 }
@@ -9436,7 +9508,7 @@ export const DynamicRoutingListResponseDataRoutesItemVersion =
     S.Struct({
       active: DynamicRoutingListResponseDataRoutesItemVersionActive,
       createdAt: S.String.pipe(T.Body("created_at")),
-      data: S.String,
+      data: DynamicRoutingCreateRequestElementsList,
       versionId: S.String.pipe(T.Body("version_id")),
       isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
     }),
@@ -10087,7 +10159,7 @@ export const DynamicRoutingListVersionsResponseDataVersionsItemActive =
 export interface DynamicRoutingListVersionsResponseDataVersionsItem {
   active: DynamicRoutingListVersionsResponseDataVersionsItemActive;
   createdAt: string;
-  data: string;
+  data: DynamicRoutingCreateRequestElementsList;
   versionId: string;
   isValid?: boolean;
 }
@@ -10096,7 +10168,7 @@ export const DynamicRoutingListVersionsResponseDataVersionsItem =
     S.Struct({
       active: DynamicRoutingListVersionsResponseDataVersionsItemActive,
       createdAt: S.String.pipe(T.Body("created_at")),
-      data: S.String,
+      data: DynamicRoutingCreateRequestElementsList,
       versionId: S.String.pipe(T.Body("version_id")),
       isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
     }),
@@ -10626,7 +10698,7 @@ export const DynamicRoutingUpdateResponseRouteVersionActive =
 export interface DynamicRoutingUpdateResponseRouteVersion {
   active: DynamicRoutingUpdateResponseRouteVersionActive;
   createdAt: string;
-  data: string;
+  data: DynamicRoutingCreateRequestElementsList;
   versionId: string;
   isValid?: boolean;
 }
@@ -10635,7 +10707,7 @@ export const DynamicRoutingUpdateResponseRouteVersion = /*@__PURE__*/ S.suspend(
     S.Struct({
       active: DynamicRoutingUpdateResponseRouteVersionActive,
       createdAt: S.String.pipe(T.Body("created_at")),
-      data: S.String,
+      data: DynamicRoutingCreateRequestElementsList,
       versionId: S.String.pipe(T.Body("version_id")),
       isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
     }),
@@ -10907,13 +10979,22 @@ export const UpdateRequestDlpCase1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestDlpCase1",
 }) as any as S.Schema<UpdateRequestDlpCase1>;
 
-export type UpdateRequestDlp = UpdateRequestDlpCase0 | UpdateRequestDlpCase1;
-export const UpdateRequestDlp = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["action", "enabled", "profiles"],
-    ["enabled", "policies"],
-  ]),
-);
+export interface UpdateRequestDlp {
+  action?: UpdateRequestDlpCase0Action | (string & {});
+  enabled: boolean;
+  profiles?: UpdateRequestDlpCase0ProfilesList;
+  policies?: UpdateRequestDlpCase1PoliciesList;
+}
+export const UpdateRequestDlp = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    action: S.optional(UpdateRequestDlpCase0Action),
+    enabled: S.Boolean,
+    profiles: S.optional(UpdateRequestDlpCase0ProfilesList),
+    policies: S.optional(UpdateRequestDlpCase1PoliciesList),
+  }),
+).annotate({
+  identifier: "UpdateRequestDlp",
+}) as any as S.Schema<UpdateRequestDlp>;
 
 export type UpdateRequestGuardrailsPromptP1 = "FLAG" | "BLOCK";
 export const UpdateRequestGuardrailsPromptP1 = /*@__PURE__*/ S.String;
@@ -11177,11 +11258,28 @@ export const UpdateRequestSpendLimitsRulesItemMetadataCase1 =
     identifier: "UpdateRequestSpendLimitsRulesItemMetadataCase1",
   }) as any as S.Schema<UpdateRequestSpendLimitsRulesItemMetadataCase1>;
 
-export type UpdateRequestSpendLimitsRulesItemMetadata =
-  | UpdateRequestSpendLimitsRulesItemMetadataMode
-  | UpdateRequestSpendLimitsRulesItemMetadataCase1;
+export interface UpdateRequestSpendLimitsRulesItemMetadata {
+  mode:
+    | UpdateRequestSpendLimitsRulesItemMetadataModeMode
+    | (string & {})
+    | UpdateRequestSpendLimitsRulesItemMetadataCase1Mode
+    | (string & {});
+  values?: UpdateRequestSpendLimitsRulesItemMetadataCase1ValuesList;
+}
 export const UpdateRequestSpendLimitsRulesItemMetadata =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["mode"], ["mode", "values"]]));
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.Union(
+        UpdateRequestSpendLimitsRulesItemMetadataModeMode,
+        UpdateRequestSpendLimitsRulesItemMetadataCase1Mode,
+      ),
+      values: S.optional(
+        UpdateRequestSpendLimitsRulesItemMetadataCase1ValuesList,
+      ),
+    }),
+  ).annotate({
+    identifier: "UpdateRequestSpendLimitsRulesItemMetadata",
+  }) as any as S.Schema<UpdateRequestSpendLimitsRulesItemMetadata>;
 
 export type UpdateRequestSpendLimitsRulesItemModelMode = "filter";
 export const UpdateRequestSpendLimitsRulesItemModelMode =

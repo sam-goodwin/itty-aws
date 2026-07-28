@@ -30,7 +30,9 @@ const makeCfSpec = (
   opAliases?: Array<{ alias: string; target: string }>,
 ): SdkSpec => ({
   // Docs wire names are snake_case; the TS surface is camelCase.
-  memberName: camel,
+  // Dashed member names stay verbatim (emitted quoted) — v0 surface for
+  // keys like "cve-2021-44228"; everything else camelizes.
+  memberName: (n: string) => (n.includes("-") ? n : camel(n)),
   nullableTrait: NULLABLE_TRAIT,
   errorMatchersTrait: ERROR_MATCHERS_TRAIT,
 

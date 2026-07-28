@@ -221,9 +221,9 @@ export type CertificatePacksCreateRequestCertificateAuthority =
 export const CertificatePacksCreateRequestCertificateAuthority =
   /*@__PURE__*/ S.String;
 
-export type CertificatePacksCreateRequestHostsList = ReadonlyArray<unknown>;
+export type CertificatePacksCreateRequestHostsList = ReadonlyArray<string>;
 export const CertificatePacksCreateRequestHostsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<CertificatePacksCreateRequestHostsList>;
 
 export type CertificatePacksCreateRequestType = "advanced";
@@ -373,9 +373,9 @@ export const CertificatePacksCreateResponseCertificatesList =
     CertificatePacksCreateResponseCertificatesItem,
   ) as any as S.Schema<CertificatePacksCreateResponseCertificatesList>;
 
-export type CertificatePacksCreateResponseHostsList = ReadonlyArray<unknown>;
+export type CertificatePacksCreateResponseHostsList = ReadonlyArray<string>;
 export const CertificatePacksCreateResponseHostsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<CertificatePacksCreateResponseHostsList>;
 
 export type CertificatePacksCreateResponseStatus =
@@ -807,9 +807,9 @@ export const CertificatePacksGetResponseCertificatesList =
     CertificatePacksGetResponseCertificatesItem,
   ) as any as S.Schema<CertificatePacksGetResponseCertificatesList>;
 
-export type CertificatePacksGetResponseHostsList = ReadonlyArray<unknown>;
+export type CertificatePacksGetResponseHostsList = ReadonlyArray<string>;
 export const CertificatePacksGetResponseHostsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<CertificatePacksGetResponseHostsList>;
 
 export type CertificatePacksGetResponseStatus =
@@ -1412,9 +1412,9 @@ export const CertificatePacksListResultItemCertificatesList =
     CertificatePacksListResultItemCertificatesItem,
   ) as any as S.Schema<CertificatePacksListResultItemCertificatesList>;
 
-export type CertificatePacksListResultItemHostsList = ReadonlyArray<unknown>;
+export type CertificatePacksListResultItemHostsList = ReadonlyArray<string>;
 export const CertificatePacksListResultItemHostsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<CertificatePacksListResultItemHostsList>;
 
 export type CertificatePacksListResultItemStatus =
@@ -1838,9 +1838,9 @@ export const CertificatePacksEditResponseCertificatesList =
     CertificatePacksEditResponseCertificatesItem,
   ) as any as S.Schema<CertificatePacksEditResponseCertificatesList>;
 
-export type CertificatePacksEditResponseHostsList = ReadonlyArray<unknown>;
+export type CertificatePacksEditResponseHostsList = ReadonlyArray<string>;
 export const CertificatePacksEditResponseHostsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<CertificatePacksEditResponseHostsList>;
 
 export type CertificatePacksEditResponseStatus =

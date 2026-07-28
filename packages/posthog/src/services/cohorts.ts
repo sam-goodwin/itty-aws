@@ -206,9 +206,22 @@ export const HogQLFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HogQLFilter" }) as any as S.Schema<HogQLFilter>;
 
-export type BehavioralFilterEventFiltersItem = EventPropFilter | HogQLFilter;
-export const BehavioralFilterEventFiltersItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<BehavioralFilterEventFiltersItem>;
+export interface BehavioralFilterEventFiltersItem {
+  type?: EventPropFilterTypeEnum | string;
+  key?: string;
+  value?: unknown;
+  operator?: string | null;
+}
+export const BehavioralFilterEventFiltersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(S.Union(EventPropFilterTypeEnum, S.String)),
+    key: S.optional(S.String),
+    value: S.optional(S.Unknown),
+    operator: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "BehavioralFilterEventFiltersItem",
+}) as any as S.Schema<BehavioralFilterEventFiltersItem>;
 
 export type BehavioralFilterEventFiltersList =
   ReadonlyArray<BehavioralFilterEventFiltersItem>;
@@ -352,14 +365,72 @@ export const PersonMetadataFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonMetadataFilter",
 }) as any as S.Schema<PersonMetadataFilter>;
 
-export type CohortFilterGroupValuesItem =
-  | BehavioralFilter
-  | CohortFilter
-  | PersonFilter
-  | PersonMetadataFilter
-  | CohortFilterGroup;
-export const CohortFilterGroupValuesItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<CohortFilterGroupValuesItem>;
+export interface CohortFilterGroupValuesItem {
+  bytecode?:
+    | BehavioralFilterBytecodeList
+    | CohortFilterBytecodeList
+    | PersonFilterBytecodeList
+    | PersonMetadataFilterBytecodeList
+    | null;
+  bytecode_error?: string | null;
+  conditionHash?: string | null;
+  type?: string | PropertyGroupOperator;
+  key?: BehavioralFilterKey | string;
+  value?: string | number | unknown;
+  event_type?: string;
+  time_value?: number | null;
+  time_interval?: string | null;
+  negation?: boolean;
+  operator?: string | null;
+  operator_value?: number | null;
+  seq_time_interval?: string | null;
+  seq_time_value?: number | null;
+  seq_event?: BehavioralFilterSeqEvent | null;
+  seq_event_type?: string | null;
+  total_periods?: number | null;
+  min_periods?: number | null;
+  event_filters?: BehavioralFilterEventFiltersList | null;
+  explicit_datetime?: string | null;
+  explicit_datetime_to?: string | null;
+  values?: CohortFilterGroupValuesList;
+}
+export const CohortFilterGroupValuesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bytecode: S.optional(
+      S.NullOr(
+        S.Union(
+          BehavioralFilterBytecodeList,
+          CohortFilterBytecodeList,
+          PersonFilterBytecodeList,
+          PersonMetadataFilterBytecodeList,
+        ),
+      ),
+    ),
+    bytecode_error: S.optional(S.NullOr(S.String)),
+    conditionHash: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.Union(S.String, PropertyGroupOperator)),
+    key: S.optional(S.Union(BehavioralFilterKey, S.String)),
+    value: S.optional(S.Union(S.String, S.Number, S.Unknown)),
+    event_type: S.optional(S.String),
+    time_value: S.optional(S.NullOr(S.Number)),
+    time_interval: S.optional(S.NullOr(S.String)),
+    negation: S.optional(S.Boolean),
+    operator: S.optional(S.NullOr(S.String)),
+    operator_value: S.optional(S.NullOr(S.Number)),
+    seq_time_interval: S.optional(S.NullOr(S.String)),
+    seq_time_value: S.optional(S.NullOr(S.Number)),
+    seq_event: S.optional(S.NullOr(BehavioralFilterSeqEvent)),
+    seq_event_type: S.optional(S.NullOr(S.String)),
+    total_periods: S.optional(S.NullOr(S.Number)),
+    min_periods: S.optional(S.NullOr(S.Number)),
+    event_filters: S.optional(S.NullOr(BehavioralFilterEventFiltersList)),
+    explicit_datetime: S.optional(S.NullOr(S.String)),
+    explicit_datetime_to: S.optional(S.NullOr(S.String)),
+    values: S.optional(S.suspend(() => CohortFilterGroupValuesList)),
+  }),
+).annotate({
+  identifier: "CohortFilterGroupValuesItem",
+}) as any as S.Schema<CohortFilterGroupValuesItem>;
 
 export type CohortFilterGroupValuesList =
   ReadonlyArray<CohortFilterGroupValuesItem>;

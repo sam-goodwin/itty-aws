@@ -4290,26 +4290,71 @@ export const AccessApplicationsCreateRequestDestinationsItemAllPreviewWorkersDes
       "AccessApplicationsCreateRequestDestinationsItemAllPreviewWorkersDestination",
   }) as any as S.Schema<AccessApplicationsCreateRequestDestinationsItemAllPreviewWorkersDestination>;
 
-export type AccessApplicationsCreateRequestDestinationsItem =
-  | AccessApplicationsCreateRequestDestinationsItemPublicDestination
-  | AccessApplicationsCreateRequestDestinationsItemPrivateDestination
-  | AccessApplicationsCreateRequestDestinationsItemViaMcpServerPortalDestination
-  | AccessApplicationsCreateRequestDestinationsItemWorkerDestination
-  | AccessApplicationsCreateRequestDestinationsItemPreviewWorkerDestination
-  | AccessApplicationsCreateRequestDestinationsItemAllWorkersDestination
-  | AccessApplicationsCreateRequestDestinationsItemAllPreviewWorkersDestination;
+export interface AccessApplicationsCreateRequestDestinationsItem {
+  type?:
+    | AccessApplicationsCreateRequestDestinationsItemPublicDestinationType
+    | (string & {})
+    | AccessApplicationsCreateRequestDestinationsItemPrivateDestinationType
+    | (string & {})
+    | AccessApplicationsCreateRequestDestinationsItemViaMcpServerPortalDestinationType
+    | (string & {})
+    | AccessApplicationsCreateRequestDestinationsItemWorkerDestinationType
+    | (string & {})
+    | AccessApplicationsCreateRequestDestinationsItemPreviewWorkerDestinationType
+    | (string & {})
+    | AccessApplicationsCreateRequestDestinationsItemAllWorkersDestinationType
+    | (string & {})
+    | AccessApplicationsCreateRequestDestinationsItemAllPreviewWorkersDestinationType
+    | (string & {});
+  /** The URI of the destination. Public destinations' URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/). */
+  uri?: string;
+  /** The CIDR range of the destination. Single IPs will be computed as /32. */
+  cidr?: string;
+  /** The hostname of the destination. Matches a valid SNI served by an HTTPS origin. */
+  hostname?: string;
+  /** The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match. */
+  l4Protocol?:
+    | AccessApplicationsCreateRequestDestinationsItemPrivateDestinationL4Protocol
+    | (string & {});
+  /** The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match. */
+  portRange?: string;
+  /** The VNET ID to match the destination. When omitted, all VNETs will match. */
+  vnetId?: string;
+  /** The MCP server id configured in ai-controls. */
+  mcpServerId?: string;
+  /** The ID of the Cloudflare Worker to protect with Access. */
+  workerId?: string;
+}
 export const AccessApplicationsCreateRequestDestinationsItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "uri"],
-      ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
-      ["mcpServerId", "type"],
-      ["type", "workerId"],
-      ["type", "workerId"],
-      ["type"],
-      ["type"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        S.Union(
+          AccessApplicationsCreateRequestDestinationsItemPublicDestinationType,
+          AccessApplicationsCreateRequestDestinationsItemPrivateDestinationType,
+          AccessApplicationsCreateRequestDestinationsItemViaMcpServerPortalDestinationType,
+          AccessApplicationsCreateRequestDestinationsItemWorkerDestinationType,
+          AccessApplicationsCreateRequestDestinationsItemPreviewWorkerDestinationType,
+          AccessApplicationsCreateRequestDestinationsItemAllWorkersDestinationType,
+          AccessApplicationsCreateRequestDestinationsItemAllPreviewWorkersDestinationType,
+        ),
+      ),
+      uri: S.optional(S.String),
+      cidr: S.optional(S.String),
+      hostname: S.optional(S.String),
+      l4Protocol: S.optional(
+        AccessApplicationsCreateRequestDestinationsItemPrivateDestinationL4Protocol.pipe(
+          T.Body("l4_protocol"),
+        ),
+      ),
+      portRange: S.optional(S.String.pipe(T.Body("port_range"))),
+      vnetId: S.optional(S.String.pipe(T.Body("vnet_id"))),
+      mcpServerId: S.optional(S.String.pipe(T.Body("mcp_server_id"))),
+      workerId: S.optional(S.String.pipe(T.Body("worker_id"))),
+    }),
+  ).annotate({
+    identifier: "AccessApplicationsCreateRequestDestinationsItem",
+  }) as any as S.Schema<AccessApplicationsCreateRequestDestinationsItem>;
 
 export type AccessApplicationsCreateRequestDestinationsList =
   ReadonlyArray<AccessApplicationsCreateRequestDestinationsItem>;
@@ -5459,64 +5504,146 @@ export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationIte
       "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule",
   }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule>;
 
-export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItem =
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessUserRiskScoreRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule;
+export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItem {
+  group?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  /** An empty object which matches on all service tokens. */
+  anyValidServiceToken?: unknown;
+  authContext?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  authMethod?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  azureAD?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  certificate?: unknown;
+  commonName?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  geo?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  devicePosture?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  emailDomain?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  emailList?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  email?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  /** An empty object which matches on all users. */
+  everyone?: unknown;
+  externalEvaluation?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  githubOrganization?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization;
+  gsuite?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  loginMethod?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  ipList?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  ip?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  okta?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  saml?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  oidc?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  serviceToken?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  linkedAppToken?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  userRiskScore?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessUserRiskScoreRuleUserRiskScore;
+  cloudflareAccountMember?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
+}
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["group"],
-      ["anyValidServiceToken"],
-      ["authContext"],
-      ["authMethod"],
-      ["azureAD"],
-      ["certificate"],
-      ["commonName"],
-      ["geo"],
-      ["devicePosture"],
-      ["emailDomain"],
-      ["emailList"],
-      ["email"],
-      ["everyone"],
-      ["externalEvaluation"],
-      ["githubOrganization"],
-      ["gsuite"],
-      ["loginMethod"],
-      ["ipList"],
-      ["ip"],
-      ["okta"],
-      ["saml"],
-      ["oidc"],
-      ["serviceToken"],
-      ["linkedAppToken"],
-      ["userRiskScore"],
-      ["cloudflareAccountMember"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      group: S.optional(
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup,
+      ),
+      anyValidServiceToken: S.optional(
+        S.Unknown.pipe(T.Body("any_valid_service_token")),
+      ),
+      authContext: S.optional(
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext.pipe(
+          T.Body("auth_context"),
+        ),
+      ),
+      authMethod: S.optional(
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod.pipe(
+          T.Body("auth_method"),
+        ),
+      ),
+      azureAD: S.optional(
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD,
+      ),
+      certificate: S.optional(S.Unknown),
+      commonName: S.optional(
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName.pipe(
+          T.Body("common_name"),
+        ),
+      ),
+      geo: S.optional(
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo,
+      ),
+      devicePosture: S.optional(
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture.pipe(
+          T.Body("device_posture"),
+        ),
+      ),
+      emailDomain: S.optional(
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain.pipe(
+          T.Body("email_domain"),
+        ),
+      ),
+      emailList: S.optional(
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList.pipe(
+          T.Body("email_list"),
+        ),
+      ),
+      email: S.optional(
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail,
+      ),
+      everyone: S.optional(S.Unknown),
+      externalEvaluation: S.optional(
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation.pipe(
+          T.Body("external_evaluation"),
+        ),
+      ),
+      githubOrganization: S.optional(
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization.pipe(
+          T.Body("github-organization"),
+        ),
+      ),
+      gsuite: S.optional(
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite,
+      ),
+      loginMethod: S.optional(
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod.pipe(
+          T.Body("login_method"),
+        ),
+      ),
+      ipList: S.optional(
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList.pipe(
+          T.Body("ip_list"),
+        ),
+      ),
+      ip: S.optional(
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp,
+      ),
+      okta: S.optional(
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta,
+      ),
+      saml: S.optional(
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml,
+      ),
+      oidc: S.optional(
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc,
+      ),
+      serviceToken: S.optional(
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken.pipe(
+          T.Body("service_token"),
+        ),
+      ),
+      linkedAppToken: S.optional(
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken.pipe(
+          T.Body("linked_app_token"),
+        ),
+      ),
+      userRiskScore: S.optional(
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessUserRiskScoreRuleUserRiskScore.pipe(
+          T.Body("user_risk_score"),
+        ),
+      ),
+      cloudflareAccountMember: S.optional(
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember.pipe(
+          T.Body("cloudflare_account_member"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItem",
+  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItem>;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeList =
   ReadonlyArray<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItem>;
@@ -5748,64 +5875,12 @@ export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationIte
       "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule",
   }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule>;
 
-export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItem =
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule;
+export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItem {}
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier:
+      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItem",
+  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItem>;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeList =
   ReadonlyArray<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItem>;
@@ -6035,64 +6110,12 @@ export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationIte
       "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessCloudflareAccountMemberRule",
   }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessCloudflareAccountMemberRule>;
 
-export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItem =
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAnyValidServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessAuthContextRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAuthenticationMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAzureGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemCertificateRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessCommonNameRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemCountryRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessDevicePostureRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemDomainRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemEmailListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemEmailRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemEveryoneRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemExternalEvaluationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemGitHubOrganizationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemGSuiteGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessLoginMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemIPListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemIPRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemOktaGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemSAMLGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessOIDCClaimRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessLinkedAppTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessUserRiskScoreRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessCloudflareAccountMemberRule;
+export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItem {}
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier:
+      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItem",
+  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItem>;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireList =
   ReadonlyArray<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItem>;
@@ -6338,15 +6361,29 @@ export const AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthe
       "AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken",
   }) as any as S.Schema<AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken>;
 
-export type AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItem =
-    | AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemSCIMConfigAuthenticationHTTPBasic
-    | AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemSCIMConfigAuthenticationOAuthBearerToken
-    | AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemSCIMConfigAuthenticationOauth2
-    | AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
+export interface AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItem {
+  /** Client ID of the Access service token used to authenticate with the remote service. */
+  clientId?: string;
+  /** Client secret of the Access service token used to authenticate with the remote service. */
+  clientSecret?: string;
+  /** The authentication scheme to use when making SCIM requests to this application. */
+  scheme?:
+    | AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceTokenScheme
+    | (string & {});
+}
 export const AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([[], [], [], ["clientId", "clientSecret", "scheme"]]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+      scheme: S.optional(
+        AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceTokenScheme,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItem",
+  }) as any as S.Schema<AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItem>;
 
 export type AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationList =
   ReadonlyArray<AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItem>;
@@ -6579,15 +6616,29 @@ export const AccessApplicationsCreateRequestScimConfigSaaSApplicationAuthenticat
       "AccessApplicationsCreateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken",
   }) as any as S.Schema<AccessApplicationsCreateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken>;
 
-export type AccessApplicationsCreateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItem =
-    | AccessApplicationsCreateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemSCIMConfigAuthenticationHTTPBasic
-    | AccessApplicationsCreateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemSCIMConfigAuthenticationOAuthBearerToken
-    | AccessApplicationsCreateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemSCIMConfigAuthenticationOauth2
-    | AccessApplicationsCreateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
+export interface AccessApplicationsCreateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItem {
+  /** Client ID of the Access service token used to authenticate with the remote service. */
+  clientId?: string;
+  /** Client secret of the Access service token used to authenticate with the remote service. */
+  clientSecret?: string;
+  /** The authentication scheme to use when making SCIM requests to this application. */
+  scheme?:
+    | AccessApplicationsCreateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceTokenScheme
+    | (string & {});
+}
 export const AccessApplicationsCreateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([[], [], [], ["clientId", "clientSecret", "scheme"]]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+      scheme: S.optional(
+        AccessApplicationsCreateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceTokenScheme,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AccessApplicationsCreateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItem",
+  }) as any as S.Schema<AccessApplicationsCreateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItem>;
 
 export type AccessApplicationsCreateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationList =
   ReadonlyArray<AccessApplicationsCreateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItem>;
@@ -6686,30 +6737,49 @@ export const AccessApplicationsCreateRequestScimConfigSaaSApplication =
     identifier: "AccessApplicationsCreateRequestScimConfigSaaSApplication",
   }) as any as S.Schema<AccessApplicationsCreateRequestScimConfigSaaSApplication>;
 
-export type AccessApplicationsCreateRequestScimConfig =
-  | AccessApplicationsCreateRequestScimConfigSelfHostedApplication
-  | AccessApplicationsCreateRequestScimConfigSaaSApplication;
+export interface AccessApplicationsCreateRequestScimConfig {
+  /** The UID of the IdP to use as the source for SCIM resources to provision to this application. */
+  idpUid: string;
+  /** The base URI for the application's SCIM-compatible API. */
+  remoteUri: string;
+  /** Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application. */
+  authentication?:
+    | AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthentication
+    | AccessApplicationsCreateRequestScimConfigSaaSApplicationAuthentication;
+  /** If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations. */
+  deactivateOnDelete?: boolean;
+  /** Whether SCIM provisioning is turned on for this application. */
+  enabled?: boolean;
+  /** A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned. */
+  mappings?:
+    | AccessApplicationsCreateRequestScimConfigSelfHostedApplicationMappingsList
+    | AccessApplicationsCreateRequestScimConfigSaaSApplicationMappingsList;
+}
 export const AccessApplicationsCreateRequestScimConfig =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [
-        "idpUid",
-        "remoteUri",
-        "authentication",
-        "deactivateOnDelete",
-        "enabled",
-        "mappings",
-      ],
-      [
-        "idpUid",
-        "remoteUri",
-        "authentication",
-        "deactivateOnDelete",
-        "enabled",
-        "mappings",
-      ],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      idpUid: S.String.pipe(T.Body("idp_uid")),
+      remoteUri: S.String.pipe(T.Body("remote_uri")),
+      authentication: S.optional(
+        S.Union(
+          AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthentication,
+          AccessApplicationsCreateRequestScimConfigSaaSApplicationAuthentication,
+        ),
+      ),
+      deactivateOnDelete: S.optional(
+        S.Boolean.pipe(T.Body("deactivate_on_delete")),
+      ),
+      enabled: S.optional(S.Boolean),
+      mappings: S.optional(
+        S.Union(
+          AccessApplicationsCreateRequestScimConfigSelfHostedApplicationMappingsList,
+          AccessApplicationsCreateRequestScimConfigSaaSApplicationMappingsList,
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "AccessApplicationsCreateRequestScimConfig",
+  }) as any as S.Schema<AccessApplicationsCreateRequestScimConfig>;
 
 export type AccessApplicationsCreateRequestSelfHostedDomainsList =
   ReadonlyArray<unknown>;
@@ -7129,43 +7199,133 @@ export const AccessApplicationsCreateRequestSaasAppOIDCSaaSApp =
     identifier: "AccessApplicationsCreateRequestSaasAppOIDCSaaSApp",
   }) as any as S.Schema<AccessApplicationsCreateRequestSaasAppOIDCSaaSApp>;
 
-export type AccessApplicationsCreateRequestSaasApp =
-  | AccessApplicationsCreateRequestSaasAppSAMLSaaSApp
-  | AccessApplicationsCreateRequestSaasAppOIDCSaaSApp;
-export const AccessApplicationsCreateRequestSaasApp =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [
-        "authType",
-        "consumerServiceUrl",
-        "customAttributes",
-        "defaultRelayState",
-        "idpEntityId",
-        "nameIdFormat",
-        "nameIdTransformJsonata",
-        "publicKey",
-        "samlAttributeTransformJsonata",
-        "spEntityId",
-        "ssoEndpoint",
-      ],
-      [
-        "accessTokenLifetime",
-        "allowPkceWithoutClientSecret",
-        "appLauncherUrl",
-        "authType",
-        "clientId",
-        "clientSecret",
-        "customClaims",
-        "grantTypes",
-        "groupFilterRegex",
-        "hybridAndImplicitOptions",
-        "publicKey",
-        "redirectUris",
-        "refreshTokenOptions",
-        "scopes",
-      ],
-    ]),
-  );
+export interface AccessApplicationsCreateRequestSaasApp {
+  /** Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is "saml" */
+  authType?:
+    | AccessApplicationsCreateRequestSaasAppSAMLSaaSAppAuthType
+    | (string & {})
+    | AccessApplicationsCreateRequestSaasAppOIDCSaaSAppAuthType
+    | (string & {});
+  /** The service provider's endpoint that is responsible for receiving and parsing a SAML assertion. */
+  consumerServiceUrl?: string;
+  customAttributes?: AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesList;
+  /** The URL that the user will be redirected to after a successful login for IDP initiated logins. */
+  defaultRelayState?: string;
+  /** The unique identifier for your SaaS application. */
+  idpEntityId?: string;
+  /** The format of the name identifier sent to the SaaS application. */
+  nameIdFormat?:
+    | AccessApplicationsCreateRequestSaasAppSAMLSaaSAppNameIdFormat
+    | (string & {});
+  /** A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting. */
+  nameIdTransformJsonata?: string;
+  /** The Access public certificate that will be used to verify your identity. */
+  publicKey?: string;
+  /** A [JSONata] (https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml_attributes or oidc_fields of the identity provider used to authenticate. The output of this expression must be a JSON object. */
+  samlAttributeTransformJsonata?: string;
+  /** A globally unique name for an identity or service provider. */
+  spEntityId?: string;
+  /** The endpoint where your SaaS application will send login requests. */
+  ssoEndpoint?: string;
+  /** The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h. */
+  accessTokenLifetime?: string;
+  /** If client secret should be required on the token endpoint when authorization_code_with_pkce grant is used. */
+  allowPkceWithoutClientSecret?: boolean;
+  /** The URL where this applications tile redirects users */
+  appLauncherUrl?: string;
+  /** The application client id */
+  clientId?: string;
+  /** The application client secret, only returned on POST request. */
+  clientSecret?: string;
+  customClaims?: AccessApplicationsCreateRequestSaasAppOIDCSaaSAppCustomClaimsList;
+  /** The OIDC flows supported by this application */
+  grantTypes?: AccessApplicationsCreateRequestSaasAppOIDCSaaSAppGrantTypesList;
+  /** A regex to filter Cloudflare groups returned in ID token and userinfo endpoint */
+  groupFilterRegex?: string;
+  hybridAndImplicitOptions?: AccessApplicationsCreateRequestSaasAppOIDCSaaSAppHybridAndImplicitOptions;
+  /** The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens */
+  redirectUris?: AccessApplicationsCreateRequestSaasAppOIDCSaaSAppRedirectUrisList;
+  refreshTokenOptions?: AccessApplicationsCreateRequestSaasAppOIDCSaaSAppRefreshTokenOptions;
+  /** Define the user information shared with access, "offline_access" scope will be automatically enabled if refresh tokens are enabled */
+  scopes?: AccessApplicationsCreateRequestSaasAppOIDCSaaSAppScopesList;
+}
+export const AccessApplicationsCreateRequestSaasApp = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      authType: S.optional(
+        S.Union(
+          AccessApplicationsCreateRequestSaasAppSAMLSaaSAppAuthType,
+          AccessApplicationsCreateRequestSaasAppOIDCSaaSAppAuthType,
+        ).pipe(T.Body("auth_type")),
+      ),
+      consumerServiceUrl: S.optional(
+        S.String.pipe(T.Body("consumer_service_url")),
+      ),
+      customAttributes: S.optional(
+        AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesList.pipe(
+          T.Body("custom_attributes"),
+        ),
+      ),
+      defaultRelayState: S.optional(
+        S.String.pipe(T.Body("default_relay_state")),
+      ),
+      idpEntityId: S.optional(S.String.pipe(T.Body("idp_entity_id"))),
+      nameIdFormat: S.optional(
+        AccessApplicationsCreateRequestSaasAppSAMLSaaSAppNameIdFormat.pipe(
+          T.Body("name_id_format"),
+        ),
+      ),
+      nameIdTransformJsonata: S.optional(
+        S.String.pipe(T.Body("name_id_transform_jsonata")),
+      ),
+      publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
+      samlAttributeTransformJsonata: S.optional(
+        S.String.pipe(T.Body("saml_attribute_transform_jsonata")),
+      ),
+      spEntityId: S.optional(S.String.pipe(T.Body("sp_entity_id"))),
+      ssoEndpoint: S.optional(S.String.pipe(T.Body("sso_endpoint"))),
+      accessTokenLifetime: S.optional(
+        S.String.pipe(T.Body("access_token_lifetime")),
+      ),
+      allowPkceWithoutClientSecret: S.optional(
+        S.Boolean.pipe(T.Body("allow_pkce_without_client_secret")),
+      ),
+      appLauncherUrl: S.optional(S.String.pipe(T.Body("app_launcher_url"))),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+      customClaims: S.optional(
+        AccessApplicationsCreateRequestSaasAppOIDCSaaSAppCustomClaimsList.pipe(
+          T.Body("custom_claims"),
+        ),
+      ),
+      grantTypes: S.optional(
+        AccessApplicationsCreateRequestSaasAppOIDCSaaSAppGrantTypesList.pipe(
+          T.Body("grant_types"),
+        ),
+      ),
+      groupFilterRegex: S.optional(S.String.pipe(T.Body("group_filter_regex"))),
+      hybridAndImplicitOptions: S.optional(
+        AccessApplicationsCreateRequestSaasAppOIDCSaaSAppHybridAndImplicitOptions.pipe(
+          T.Body("hybrid_and_implicit_options"),
+        ),
+      ),
+      redirectUris: S.optional(
+        AccessApplicationsCreateRequestSaasAppOIDCSaaSAppRedirectUrisList.pipe(
+          T.Body("redirect_uris"),
+        ),
+      ),
+      refreshTokenOptions: S.optional(
+        AccessApplicationsCreateRequestSaasAppOIDCSaaSAppRefreshTokenOptions.pipe(
+          T.Body("refresh_token_options"),
+        ),
+      ),
+      scopes: S.optional(
+        AccessApplicationsCreateRequestSaasAppOIDCSaaSAppScopesList,
+      ),
+    }),
+).annotate({
+  identifier: "AccessApplicationsCreateRequestSaasApp",
+}) as any as S.Schema<AccessApplicationsCreateRequestSaasApp>;
 
 export interface AccessApplicationsCreateRequestFooterLinksItem {
   /** The hypertext in the footer link. */
@@ -27992,64 +28152,146 @@ export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeI
       "AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessCloudflareAccountMemberRule",
   }) as any as S.Schema<AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessCloudflareAccountMemberRule>;
 
-export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItem =
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemGroupRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAnyValidServiceTokenRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessAuthContextRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAuthenticationMethodRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAzureGroupRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemCertificateRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessCommonNameRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemCountryRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessDevicePostureRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemDomainRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemEmailListRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemEmailRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemEveryoneRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemExternalEvaluationRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemGitHubOrganizationRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemGSuiteGroupRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessLoginMethodRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemIPListRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemIPRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemOktaGroupRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemSAMLGroupRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessOIDCClaimRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemServiceTokenRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessLinkedAppTokenRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessUserRiskScoreRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessCloudflareAccountMemberRule;
+export interface AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItem {
+  group?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemGroupRuleGroup;
+  /** An empty object which matches on all service tokens. */
+  anyValidServiceToken?: unknown;
+  authContext?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessAuthContextRuleAuthContext;
+  authMethod?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAuthenticationMethodRuleAuthMethod;
+  azureAD?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAzureGroupRuleAzureAD;
+  certificate?: unknown;
+  commonName?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessCommonNameRuleCommonName;
+  geo?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemCountryRuleGeo;
+  devicePosture?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessDevicePostureRuleDevicePosture;
+  emailDomain?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemDomainRuleEmailDomain;
+  emailList?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemEmailListRuleEmailList;
+  email?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemEmailRuleEmail;
+  /** An empty object which matches on all users. */
+  everyone?: unknown;
+  externalEvaluation?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemExternalEvaluationRuleExternalEvaluation;
+  githubOrganization?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemGitHubOrganizationRuleGithubOrganization;
+  gsuite?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemGSuiteGroupRuleGsuite;
+  loginMethod?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessLoginMethodRuleLoginMethod;
+  ipList?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemIPListRuleIpList;
+  ip?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemIPRuleIp;
+  okta?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemOktaGroupRuleOkta;
+  saml?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemSAMLGroupRuleSaml;
+  oidc?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessOIDCClaimRuleOidc;
+  serviceToken?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemServiceTokenRuleServiceToken;
+  linkedAppToken?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  userRiskScore?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessUserRiskScoreRuleUserRiskScore;
+  cloudflareAccountMember?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
+}
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["group"],
-      ["anyValidServiceToken"],
-      ["authContext"],
-      ["authMethod"],
-      ["azureAD"],
-      ["certificate"],
-      ["commonName"],
-      ["geo"],
-      ["devicePosture"],
-      ["emailDomain"],
-      ["emailList"],
-      ["email"],
-      ["everyone"],
-      ["externalEvaluation"],
-      ["githubOrganization"],
-      ["gsuite"],
-      ["loginMethod"],
-      ["ipList"],
-      ["ip"],
-      ["okta"],
-      ["saml"],
-      ["oidc"],
-      ["serviceToken"],
-      ["linkedAppToken"],
-      ["userRiskScore"],
-      ["cloudflareAccountMember"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      group: S.optional(
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemGroupRuleGroup,
+      ),
+      anyValidServiceToken: S.optional(
+        S.Unknown.pipe(T.Body("any_valid_service_token")),
+      ),
+      authContext: S.optional(
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessAuthContextRuleAuthContext.pipe(
+          T.Body("auth_context"),
+        ),
+      ),
+      authMethod: S.optional(
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAuthenticationMethodRuleAuthMethod.pipe(
+          T.Body("auth_method"),
+        ),
+      ),
+      azureAD: S.optional(
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAzureGroupRuleAzureAD,
+      ),
+      certificate: S.optional(S.Unknown),
+      commonName: S.optional(
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessCommonNameRuleCommonName.pipe(
+          T.Body("common_name"),
+        ),
+      ),
+      geo: S.optional(
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemCountryRuleGeo,
+      ),
+      devicePosture: S.optional(
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessDevicePostureRuleDevicePosture.pipe(
+          T.Body("device_posture"),
+        ),
+      ),
+      emailDomain: S.optional(
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemDomainRuleEmailDomain.pipe(
+          T.Body("email_domain"),
+        ),
+      ),
+      emailList: S.optional(
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemEmailListRuleEmailList.pipe(
+          T.Body("email_list"),
+        ),
+      ),
+      email: S.optional(
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemEmailRuleEmail,
+      ),
+      everyone: S.optional(S.Unknown),
+      externalEvaluation: S.optional(
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemExternalEvaluationRuleExternalEvaluation.pipe(
+          T.Body("external_evaluation"),
+        ),
+      ),
+      githubOrganization: S.optional(
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemGitHubOrganizationRuleGithubOrganization.pipe(
+          T.Body("github-organization"),
+        ),
+      ),
+      gsuite: S.optional(
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemGSuiteGroupRuleGsuite,
+      ),
+      loginMethod: S.optional(
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessLoginMethodRuleLoginMethod.pipe(
+          T.Body("login_method"),
+        ),
+      ),
+      ipList: S.optional(
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemIPListRuleIpList.pipe(
+          T.Body("ip_list"),
+        ),
+      ),
+      ip: S.optional(
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemIPRuleIp,
+      ),
+      okta: S.optional(
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemOktaGroupRuleOkta,
+      ),
+      saml: S.optional(
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemSAMLGroupRuleSaml,
+      ),
+      oidc: S.optional(
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessOIDCClaimRuleOidc,
+      ),
+      serviceToken: S.optional(
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemServiceTokenRuleServiceToken.pipe(
+          T.Body("service_token"),
+        ),
+      ),
+      linkedAppToken: S.optional(
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessLinkedAppTokenRuleLinkedAppToken.pipe(
+          T.Body("linked_app_token"),
+        ),
+      ),
+      userRiskScore: S.optional(
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessUserRiskScoreRuleUserRiskScore.pipe(
+          T.Body("user_risk_score"),
+        ),
+      ),
+      cloudflareAccountMember: S.optional(
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember.pipe(
+          T.Body("cloudflare_account_member"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItem",
+  }) as any as S.Schema<AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItem>;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeList =
   ReadonlyArray<AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItem>;
@@ -28349,64 +28591,12 @@ export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeI
       "AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessCloudflareAccountMemberRule",
   }) as any as S.Schema<AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessCloudflareAccountMemberRule>;
 
-export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItem =
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemGroupRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAnyValidServiceTokenRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessAuthContextRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAuthenticationMethodRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAzureGroupRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemCertificateRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessCommonNameRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemCountryRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessDevicePostureRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemDomainRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemEmailListRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemEmailRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemEveryoneRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemExternalEvaluationRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemGitHubOrganizationRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemGSuiteGroupRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessLoginMethodRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemIPListRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemIPRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemOktaGroupRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemSAMLGroupRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessOIDCClaimRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemServiceTokenRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessLinkedAppTokenRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessUserRiskScoreRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessCloudflareAccountMemberRule;
+export interface AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItem {}
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier:
+      "AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItem",
+  }) as any as S.Schema<AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItem>;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeList =
   ReadonlyArray<AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItem>;
@@ -28636,64 +28826,12 @@ export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireI
       "AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessCloudflareAccountMemberRule",
   }) as any as S.Schema<AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessCloudflareAccountMemberRule>;
 
-export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItem =
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemGroupRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAnyValidServiceTokenRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessAuthContextRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAuthenticationMethodRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAzureGroupRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemCertificateRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessCommonNameRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemCountryRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessDevicePostureRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemDomainRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemEmailListRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemEmailRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemEveryoneRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemExternalEvaluationRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemGitHubOrganizationRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemGSuiteGroupRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessLoginMethodRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemIPListRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemIPRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemOktaGroupRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemSAMLGroupRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessOIDCClaimRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemServiceTokenRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessLinkedAppTokenRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessUserRiskScoreRule
-    | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessCloudflareAccountMemberRule;
+export interface AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItem {}
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier:
+      "AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItem",
+  }) as any as S.Schema<AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItem>;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireList =
   ReadonlyArray<AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItem>;
@@ -29842,64 +29980,133 @@ export const AccessGroupsCreateRequestIncludeItemAccessCloudflareAccountMemberRu
       "AccessGroupsCreateRequestIncludeItemAccessCloudflareAccountMemberRule",
   }) as any as S.Schema<AccessGroupsCreateRequestIncludeItemAccessCloudflareAccountMemberRule>;
 
-export type AccessGroupsCreateRequestIncludeItem =
-  | AccessGroupsCreateRequestIncludeItemGroupRule
-  | AccessGroupsCreateRequestIncludeItemAnyValidServiceTokenRule
-  | AccessGroupsCreateRequestIncludeItemAccessAuthContextRule
-  | AccessGroupsCreateRequestIncludeItemAuthenticationMethodRule
-  | AccessGroupsCreateRequestIncludeItemAzureGroupRule
-  | AccessGroupsCreateRequestIncludeItemCertificateRule
-  | AccessGroupsCreateRequestIncludeItemAccessCommonNameRule
-  | AccessGroupsCreateRequestIncludeItemCountryRule
-  | AccessGroupsCreateRequestIncludeItemAccessDevicePostureRule
-  | AccessGroupsCreateRequestIncludeItemDomainRule
-  | AccessGroupsCreateRequestIncludeItemEmailListRule
-  | AccessGroupsCreateRequestIncludeItemEmailRule
-  | AccessGroupsCreateRequestIncludeItemEveryoneRule
-  | AccessGroupsCreateRequestIncludeItemExternalEvaluationRule
-  | AccessGroupsCreateRequestIncludeItemGitHubOrganizationRule
-  | AccessGroupsCreateRequestIncludeItemGSuiteGroupRule
-  | AccessGroupsCreateRequestIncludeItemAccessLoginMethodRule
-  | AccessGroupsCreateRequestIncludeItemIPListRule
-  | AccessGroupsCreateRequestIncludeItemIPRule
-  | AccessGroupsCreateRequestIncludeItemOktaGroupRule
-  | AccessGroupsCreateRequestIncludeItemSAMLGroupRule
-  | AccessGroupsCreateRequestIncludeItemAccessOIDCClaimRule
-  | AccessGroupsCreateRequestIncludeItemServiceTokenRule
-  | AccessGroupsCreateRequestIncludeItemAccessLinkedAppTokenRule
-  | AccessGroupsCreateRequestIncludeItemAccessUserRiskScoreRule
-  | AccessGroupsCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
-export const AccessGroupsCreateRequestIncludeItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["group"],
-      ["anyValidServiceToken"],
-      ["authContext"],
-      ["authMethod"],
-      ["azureAD"],
-      ["certificate"],
-      ["commonName"],
-      ["geo"],
-      ["devicePosture"],
-      ["emailDomain"],
-      ["emailList"],
-      ["email"],
-      ["everyone"],
-      ["externalEvaluation"],
-      ["githubOrganization"],
-      ["gsuite"],
-      ["loginMethod"],
-      ["ipList"],
-      ["ip"],
-      ["okta"],
-      ["saml"],
-      ["oidc"],
-      ["serviceToken"],
-      ["linkedAppToken"],
-      ["userRiskScore"],
-      ["cloudflareAccountMember"],
-    ]),
-  );
+export interface AccessGroupsCreateRequestIncludeItem {
+  group?: AccessGroupsCreateRequestIncludeItemGroupRuleGroup;
+  /** An empty object which matches on all service tokens. */
+  anyValidServiceToken?: unknown;
+  authContext?: AccessGroupsCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
+  authMethod?: AccessGroupsCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
+  azureAD?: AccessGroupsCreateRequestIncludeItemAzureGroupRuleAzureAD;
+  certificate?: unknown;
+  commonName?: AccessGroupsCreateRequestIncludeItemAccessCommonNameRuleCommonName;
+  geo?: AccessGroupsCreateRequestIncludeItemCountryRuleGeo;
+  devicePosture?: AccessGroupsCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
+  emailDomain?: AccessGroupsCreateRequestIncludeItemDomainRuleEmailDomain;
+  emailList?: AccessGroupsCreateRequestIncludeItemEmailListRuleEmailList;
+  email?: AccessGroupsCreateRequestIncludeItemEmailRuleEmail;
+  /** An empty object which matches on all users. */
+  everyone?: unknown;
+  externalEvaluation?: AccessGroupsCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
+  githubOrganization?: AccessGroupsCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization;
+  gsuite?: AccessGroupsCreateRequestIncludeItemGSuiteGroupRuleGsuite;
+  loginMethod?: AccessGroupsCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
+  ipList?: AccessGroupsCreateRequestIncludeItemIPListRuleIpList;
+  ip?: AccessGroupsCreateRequestIncludeItemIPRuleIp;
+  okta?: AccessGroupsCreateRequestIncludeItemOktaGroupRuleOkta;
+  saml?: AccessGroupsCreateRequestIncludeItemSAMLGroupRuleSaml;
+  oidc?: AccessGroupsCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
+  serviceToken?: AccessGroupsCreateRequestIncludeItemServiceTokenRuleServiceToken;
+  linkedAppToken?: AccessGroupsCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  userRiskScore?: AccessGroupsCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScore;
+  cloudflareAccountMember?: AccessGroupsCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
+}
+export const AccessGroupsCreateRequestIncludeItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      group: S.optional(AccessGroupsCreateRequestIncludeItemGroupRuleGroup),
+      anyValidServiceToken: S.optional(
+        S.Unknown.pipe(T.Body("any_valid_service_token")),
+      ),
+      authContext: S.optional(
+        AccessGroupsCreateRequestIncludeItemAccessAuthContextRuleAuthContext.pipe(
+          T.Body("auth_context"),
+        ),
+      ),
+      authMethod: S.optional(
+        AccessGroupsCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod.pipe(
+          T.Body("auth_method"),
+        ),
+      ),
+      azureAD: S.optional(
+        AccessGroupsCreateRequestIncludeItemAzureGroupRuleAzureAD,
+      ),
+      certificate: S.optional(S.Unknown),
+      commonName: S.optional(
+        AccessGroupsCreateRequestIncludeItemAccessCommonNameRuleCommonName.pipe(
+          T.Body("common_name"),
+        ),
+      ),
+      geo: S.optional(AccessGroupsCreateRequestIncludeItemCountryRuleGeo),
+      devicePosture: S.optional(
+        AccessGroupsCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture.pipe(
+          T.Body("device_posture"),
+        ),
+      ),
+      emailDomain: S.optional(
+        AccessGroupsCreateRequestIncludeItemDomainRuleEmailDomain.pipe(
+          T.Body("email_domain"),
+        ),
+      ),
+      emailList: S.optional(
+        AccessGroupsCreateRequestIncludeItemEmailListRuleEmailList.pipe(
+          T.Body("email_list"),
+        ),
+      ),
+      email: S.optional(AccessGroupsCreateRequestIncludeItemEmailRuleEmail),
+      everyone: S.optional(S.Unknown),
+      externalEvaluation: S.optional(
+        AccessGroupsCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation.pipe(
+          T.Body("external_evaluation"),
+        ),
+      ),
+      githubOrganization: S.optional(
+        AccessGroupsCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization.pipe(
+          T.Body("github-organization"),
+        ),
+      ),
+      gsuite: S.optional(
+        AccessGroupsCreateRequestIncludeItemGSuiteGroupRuleGsuite,
+      ),
+      loginMethod: S.optional(
+        AccessGroupsCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod.pipe(
+          T.Body("login_method"),
+        ),
+      ),
+      ipList: S.optional(
+        AccessGroupsCreateRequestIncludeItemIPListRuleIpList.pipe(
+          T.Body("ip_list"),
+        ),
+      ),
+      ip: S.optional(AccessGroupsCreateRequestIncludeItemIPRuleIp),
+      okta: S.optional(AccessGroupsCreateRequestIncludeItemOktaGroupRuleOkta),
+      saml: S.optional(AccessGroupsCreateRequestIncludeItemSAMLGroupRuleSaml),
+      oidc: S.optional(
+        AccessGroupsCreateRequestIncludeItemAccessOIDCClaimRuleOidc,
+      ),
+      serviceToken: S.optional(
+        AccessGroupsCreateRequestIncludeItemServiceTokenRuleServiceToken.pipe(
+          T.Body("service_token"),
+        ),
+      ),
+      linkedAppToken: S.optional(
+        AccessGroupsCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken.pipe(
+          T.Body("linked_app_token"),
+        ),
+      ),
+      userRiskScore: S.optional(
+        AccessGroupsCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScore.pipe(
+          T.Body("user_risk_score"),
+        ),
+      ),
+      cloudflareAccountMember: S.optional(
+        AccessGroupsCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember.pipe(
+          T.Body("cloudflare_account_member"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "AccessGroupsCreateRequestIncludeItem",
+}) as any as S.Schema<AccessGroupsCreateRequestIncludeItem>;
 
 export type AccessGroupsCreateRequestIncludeList =
   ReadonlyArray<AccessGroupsCreateRequestIncludeItem>;
@@ -30064,64 +30271,12 @@ export const AccessGroupsCreateRequestExcludeItemAccessCloudflareAccountMemberRu
       "AccessGroupsCreateRequestExcludeItemAccessCloudflareAccountMemberRule",
   }) as any as S.Schema<AccessGroupsCreateRequestExcludeItemAccessCloudflareAccountMemberRule>;
 
-export type AccessGroupsCreateRequestExcludeItem =
-  | AccessGroupsCreateRequestExcludeItemGroupRule
-  | AccessGroupsCreateRequestExcludeItemAnyValidServiceTokenRule
-  | AccessGroupsCreateRequestExcludeItemAccessAuthContextRule
-  | AccessGroupsCreateRequestExcludeItemAuthenticationMethodRule
-  | AccessGroupsCreateRequestExcludeItemAzureGroupRule
-  | AccessGroupsCreateRequestExcludeItemCertificateRule
-  | AccessGroupsCreateRequestExcludeItemAccessCommonNameRule
-  | AccessGroupsCreateRequestExcludeItemCountryRule
-  | AccessGroupsCreateRequestExcludeItemAccessDevicePostureRule
-  | AccessGroupsCreateRequestExcludeItemDomainRule
-  | AccessGroupsCreateRequestExcludeItemEmailListRule
-  | AccessGroupsCreateRequestExcludeItemEmailRule
-  | AccessGroupsCreateRequestExcludeItemEveryoneRule
-  | AccessGroupsCreateRequestExcludeItemExternalEvaluationRule
-  | AccessGroupsCreateRequestExcludeItemGitHubOrganizationRule
-  | AccessGroupsCreateRequestExcludeItemGSuiteGroupRule
-  | AccessGroupsCreateRequestExcludeItemAccessLoginMethodRule
-  | AccessGroupsCreateRequestExcludeItemIPListRule
-  | AccessGroupsCreateRequestExcludeItemIPRule
-  | AccessGroupsCreateRequestExcludeItemOktaGroupRule
-  | AccessGroupsCreateRequestExcludeItemSAMLGroupRule
-  | AccessGroupsCreateRequestExcludeItemAccessOIDCClaimRule
-  | AccessGroupsCreateRequestExcludeItemServiceTokenRule
-  | AccessGroupsCreateRequestExcludeItemAccessLinkedAppTokenRule
-  | AccessGroupsCreateRequestExcludeItemAccessUserRiskScoreRule
-  | AccessGroupsCreateRequestExcludeItemAccessCloudflareAccountMemberRule;
-export const AccessGroupsCreateRequestExcludeItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-    ]),
-  );
+export interface AccessGroupsCreateRequestExcludeItem {}
+export const AccessGroupsCreateRequestExcludeItem = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "AccessGroupsCreateRequestExcludeItem",
+}) as any as S.Schema<AccessGroupsCreateRequestExcludeItem>;
 
 export type AccessGroupsCreateRequestExcludeList =
   ReadonlyArray<AccessGroupsCreateRequestExcludeItem>;
@@ -30286,64 +30441,12 @@ export const AccessGroupsCreateRequestRequireItemAccessCloudflareAccountMemberRu
       "AccessGroupsCreateRequestRequireItemAccessCloudflareAccountMemberRule",
   }) as any as S.Schema<AccessGroupsCreateRequestRequireItemAccessCloudflareAccountMemberRule>;
 
-export type AccessGroupsCreateRequestRequireItem =
-  | AccessGroupsCreateRequestRequireItemGroupRule
-  | AccessGroupsCreateRequestRequireItemAnyValidServiceTokenRule
-  | AccessGroupsCreateRequestRequireItemAccessAuthContextRule
-  | AccessGroupsCreateRequestRequireItemAuthenticationMethodRule
-  | AccessGroupsCreateRequestRequireItemAzureGroupRule
-  | AccessGroupsCreateRequestRequireItemCertificateRule
-  | AccessGroupsCreateRequestRequireItemAccessCommonNameRule
-  | AccessGroupsCreateRequestRequireItemCountryRule
-  | AccessGroupsCreateRequestRequireItemAccessDevicePostureRule
-  | AccessGroupsCreateRequestRequireItemDomainRule
-  | AccessGroupsCreateRequestRequireItemEmailListRule
-  | AccessGroupsCreateRequestRequireItemEmailRule
-  | AccessGroupsCreateRequestRequireItemEveryoneRule
-  | AccessGroupsCreateRequestRequireItemExternalEvaluationRule
-  | AccessGroupsCreateRequestRequireItemGitHubOrganizationRule
-  | AccessGroupsCreateRequestRequireItemGSuiteGroupRule
-  | AccessGroupsCreateRequestRequireItemAccessLoginMethodRule
-  | AccessGroupsCreateRequestRequireItemIPListRule
-  | AccessGroupsCreateRequestRequireItemIPRule
-  | AccessGroupsCreateRequestRequireItemOktaGroupRule
-  | AccessGroupsCreateRequestRequireItemSAMLGroupRule
-  | AccessGroupsCreateRequestRequireItemAccessOIDCClaimRule
-  | AccessGroupsCreateRequestRequireItemServiceTokenRule
-  | AccessGroupsCreateRequestRequireItemAccessLinkedAppTokenRule
-  | AccessGroupsCreateRequestRequireItemAccessUserRiskScoreRule
-  | AccessGroupsCreateRequestRequireItemAccessCloudflareAccountMemberRule;
-export const AccessGroupsCreateRequestRequireItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-    ]),
-  );
+export interface AccessGroupsCreateRequestRequireItem {}
+export const AccessGroupsCreateRequestRequireItem = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "AccessGroupsCreateRequestRequireItem",
+}) as any as S.Schema<AccessGroupsCreateRequestRequireItem>;
 
 export type AccessGroupsCreateRequestRequireList =
   ReadonlyArray<AccessGroupsCreateRequestRequireItem>;
@@ -32560,64 +32663,133 @@ export const AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMember
       "AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule",
   }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule>;
 
-export type AccessPoliciesCreateRequestIncludeItem =
-  | AccessPoliciesCreateRequestIncludeItemGroupRule
-  | AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule
-  | AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule
-  | AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule
-  | AccessPoliciesCreateRequestIncludeItemAzureGroupRule
-  | AccessPoliciesCreateRequestIncludeItemCertificateRule
-  | AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule
-  | AccessPoliciesCreateRequestIncludeItemCountryRule
-  | AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule
-  | AccessPoliciesCreateRequestIncludeItemDomainRule
-  | AccessPoliciesCreateRequestIncludeItemEmailListRule
-  | AccessPoliciesCreateRequestIncludeItemEmailRule
-  | AccessPoliciesCreateRequestIncludeItemEveryoneRule
-  | AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule
-  | AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule
-  | AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule
-  | AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule
-  | AccessPoliciesCreateRequestIncludeItemIPListRule
-  | AccessPoliciesCreateRequestIncludeItemIPRule
-  | AccessPoliciesCreateRequestIncludeItemOktaGroupRule
-  | AccessPoliciesCreateRequestIncludeItemSAMLGroupRule
-  | AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule
-  | AccessPoliciesCreateRequestIncludeItemServiceTokenRule
-  | AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule
-  | AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRule
-  | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
-export const AccessPoliciesCreateRequestIncludeItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["group"],
-      ["anyValidServiceToken"],
-      ["authContext"],
-      ["authMethod"],
-      ["azureAD"],
-      ["certificate"],
-      ["commonName"],
-      ["geo"],
-      ["devicePosture"],
-      ["emailDomain"],
-      ["emailList"],
-      ["email"],
-      ["everyone"],
-      ["externalEvaluation"],
-      ["githubOrganization"],
-      ["gsuite"],
-      ["loginMethod"],
-      ["ipList"],
-      ["ip"],
-      ["okta"],
-      ["saml"],
-      ["oidc"],
-      ["serviceToken"],
-      ["linkedAppToken"],
-      ["userRiskScore"],
-      ["cloudflareAccountMember"],
-    ]),
-  );
+export interface AccessPoliciesCreateRequestIncludeItem {
+  group?: AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
+  /** An empty object which matches on all service tokens. */
+  anyValidServiceToken?: unknown;
+  authContext?: AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
+  authMethod?: AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
+  azureAD?: AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
+  certificate?: unknown;
+  commonName?: AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
+  geo?: AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
+  devicePosture?: AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
+  emailDomain?: AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
+  emailList?: AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
+  email?: AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
+  /** An empty object which matches on all users. */
+  everyone?: unknown;
+  externalEvaluation?: AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
+  githubOrganization?: AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization;
+  gsuite?: AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
+  loginMethod?: AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
+  ipList?: AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
+  ip?: AccessPoliciesCreateRequestIncludeItemIPRuleIp;
+  okta?: AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
+  saml?: AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
+  oidc?: AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
+  serviceToken?: AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
+  linkedAppToken?: AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  userRiskScore?: AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScore;
+  cloudflareAccountMember?: AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
+}
+export const AccessPoliciesCreateRequestIncludeItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      group: S.optional(AccessPoliciesCreateRequestIncludeItemGroupRuleGroup),
+      anyValidServiceToken: S.optional(
+        S.Unknown.pipe(T.Body("any_valid_service_token")),
+      ),
+      authContext: S.optional(
+        AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext.pipe(
+          T.Body("auth_context"),
+        ),
+      ),
+      authMethod: S.optional(
+        AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod.pipe(
+          T.Body("auth_method"),
+        ),
+      ),
+      azureAD: S.optional(
+        AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD,
+      ),
+      certificate: S.optional(S.Unknown),
+      commonName: S.optional(
+        AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName.pipe(
+          T.Body("common_name"),
+        ),
+      ),
+      geo: S.optional(AccessPoliciesCreateRequestIncludeItemCountryRuleGeo),
+      devicePosture: S.optional(
+        AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture.pipe(
+          T.Body("device_posture"),
+        ),
+      ),
+      emailDomain: S.optional(
+        AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain.pipe(
+          T.Body("email_domain"),
+        ),
+      ),
+      emailList: S.optional(
+        AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList.pipe(
+          T.Body("email_list"),
+        ),
+      ),
+      email: S.optional(AccessPoliciesCreateRequestIncludeItemEmailRuleEmail),
+      everyone: S.optional(S.Unknown),
+      externalEvaluation: S.optional(
+        AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation.pipe(
+          T.Body("external_evaluation"),
+        ),
+      ),
+      githubOrganization: S.optional(
+        AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization.pipe(
+          T.Body("github-organization"),
+        ),
+      ),
+      gsuite: S.optional(
+        AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite,
+      ),
+      loginMethod: S.optional(
+        AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod.pipe(
+          T.Body("login_method"),
+        ),
+      ),
+      ipList: S.optional(
+        AccessPoliciesCreateRequestIncludeItemIPListRuleIpList.pipe(
+          T.Body("ip_list"),
+        ),
+      ),
+      ip: S.optional(AccessPoliciesCreateRequestIncludeItemIPRuleIp),
+      okta: S.optional(AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta),
+      saml: S.optional(AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml),
+      oidc: S.optional(
+        AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc,
+      ),
+      serviceToken: S.optional(
+        AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken.pipe(
+          T.Body("service_token"),
+        ),
+      ),
+      linkedAppToken: S.optional(
+        AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken.pipe(
+          T.Body("linked_app_token"),
+        ),
+      ),
+      userRiskScore: S.optional(
+        AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScore.pipe(
+          T.Body("user_risk_score"),
+        ),
+      ),
+      cloudflareAccountMember: S.optional(
+        AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember.pipe(
+          T.Body("cloudflare_account_member"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "AccessPoliciesCreateRequestIncludeItem",
+}) as any as S.Schema<AccessPoliciesCreateRequestIncludeItem>;
 
 export type AccessPoliciesCreateRequestIncludeList =
   ReadonlyArray<AccessPoliciesCreateRequestIncludeItem>;
@@ -32889,64 +33061,12 @@ export const AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMember
       "AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule",
   }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule>;
 
-export type AccessPoliciesCreateRequestExcludeItem =
-  | AccessPoliciesCreateRequestExcludeItemGroupRule
-  | AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule
-  | AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule
-  | AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule
-  | AccessPoliciesCreateRequestExcludeItemAzureGroupRule
-  | AccessPoliciesCreateRequestExcludeItemCertificateRule
-  | AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule
-  | AccessPoliciesCreateRequestExcludeItemCountryRule
-  | AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule
-  | AccessPoliciesCreateRequestExcludeItemDomainRule
-  | AccessPoliciesCreateRequestExcludeItemEmailListRule
-  | AccessPoliciesCreateRequestExcludeItemEmailRule
-  | AccessPoliciesCreateRequestExcludeItemEveryoneRule
-  | AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule
-  | AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule
-  | AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule
-  | AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule
-  | AccessPoliciesCreateRequestExcludeItemIPListRule
-  | AccessPoliciesCreateRequestExcludeItemIPRule
-  | AccessPoliciesCreateRequestExcludeItemOktaGroupRule
-  | AccessPoliciesCreateRequestExcludeItemSAMLGroupRule
-  | AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule
-  | AccessPoliciesCreateRequestExcludeItemServiceTokenRule
-  | AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule
-  | AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule
-  | AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule;
-export const AccessPoliciesCreateRequestExcludeItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-    ]),
-  );
+export interface AccessPoliciesCreateRequestExcludeItem {}
+export const AccessPoliciesCreateRequestExcludeItem = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "AccessPoliciesCreateRequestExcludeItem",
+}) as any as S.Schema<AccessPoliciesCreateRequestExcludeItem>;
 
 export type AccessPoliciesCreateRequestExcludeList =
   ReadonlyArray<AccessPoliciesCreateRequestExcludeItem>;
@@ -33154,64 +33274,12 @@ export const AccessPoliciesCreateRequestRequireItemAccessCloudflareAccountMember
       "AccessPoliciesCreateRequestRequireItemAccessCloudflareAccountMemberRule",
   }) as any as S.Schema<AccessPoliciesCreateRequestRequireItemAccessCloudflareAccountMemberRule>;
 
-export type AccessPoliciesCreateRequestRequireItem =
-  | AccessPoliciesCreateRequestRequireItemGroupRule
-  | AccessPoliciesCreateRequestRequireItemAnyValidServiceTokenRule
-  | AccessPoliciesCreateRequestRequireItemAccessAuthContextRule
-  | AccessPoliciesCreateRequestRequireItemAuthenticationMethodRule
-  | AccessPoliciesCreateRequestRequireItemAzureGroupRule
-  | AccessPoliciesCreateRequestRequireItemCertificateRule
-  | AccessPoliciesCreateRequestRequireItemAccessCommonNameRule
-  | AccessPoliciesCreateRequestRequireItemCountryRule
-  | AccessPoliciesCreateRequestRequireItemAccessDevicePostureRule
-  | AccessPoliciesCreateRequestRequireItemDomainRule
-  | AccessPoliciesCreateRequestRequireItemEmailListRule
-  | AccessPoliciesCreateRequestRequireItemEmailRule
-  | AccessPoliciesCreateRequestRequireItemEveryoneRule
-  | AccessPoliciesCreateRequestRequireItemExternalEvaluationRule
-  | AccessPoliciesCreateRequestRequireItemGitHubOrganizationRule
-  | AccessPoliciesCreateRequestRequireItemGSuiteGroupRule
-  | AccessPoliciesCreateRequestRequireItemAccessLoginMethodRule
-  | AccessPoliciesCreateRequestRequireItemIPListRule
-  | AccessPoliciesCreateRequestRequireItemIPRule
-  | AccessPoliciesCreateRequestRequireItemOktaGroupRule
-  | AccessPoliciesCreateRequestRequireItemSAMLGroupRule
-  | AccessPoliciesCreateRequestRequireItemAccessOIDCClaimRule
-  | AccessPoliciesCreateRequestRequireItemServiceTokenRule
-  | AccessPoliciesCreateRequestRequireItemAccessLinkedAppTokenRule
-  | AccessPoliciesCreateRequestRequireItemAccessUserRiskScoreRule
-  | AccessPoliciesCreateRequestRequireItemAccessCloudflareAccountMemberRule;
-export const AccessPoliciesCreateRequestRequireItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-    ]),
-  );
+export interface AccessPoliciesCreateRequestRequireItem {}
+export const AccessPoliciesCreateRequestRequireItem = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "AccessPoliciesCreateRequestRequireItem",
+}) as any as S.Schema<AccessPoliciesCreateRequestRequireItem>;
 
 export type AccessPoliciesCreateRequestRequireList =
   ReadonlyArray<AccessPoliciesCreateRequestRequireItem>;
@@ -35450,16 +35518,24 @@ export const DevicesPoliciesCustomCreateRequestExcludeItemTeamsDevicesExcludeSpl
       "DevicesPoliciesCustomCreateRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithHost",
   }) as any as S.Schema<DevicesPoliciesCustomCreateRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithHost>;
 
-export type DevicesPoliciesCustomCreateRequestExcludeItem =
-  | DevicesPoliciesCustomCreateRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithAddress
-  | DevicesPoliciesCustomCreateRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithHost;
+export interface DevicesPoliciesCustomCreateRequestExcludeItem {
+  /** The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present. */
+  address?: string;
+  /** A description of the Split Tunnel item, displayed in the client UI. */
+  description?: string;
+  /** The domain name to exclude from the tunnel. If `host` is present, `address` must not be present. */
+  host?: string;
+}
 export const DevicesPoliciesCustomCreateRequestExcludeItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["address", "description"],
-      ["host", "description"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      address: S.optional(S.String),
+      description: S.optional(S.String),
+      host: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DevicesPoliciesCustomCreateRequestExcludeItem",
+  }) as any as S.Schema<DevicesPoliciesCustomCreateRequestExcludeItem>;
 
 export type DevicesPoliciesCustomCreateRequestExcludeList =
   ReadonlyArray<DevicesPoliciesCustomCreateRequestExcludeItem>;
@@ -35554,16 +35630,24 @@ export const DevicesPoliciesCustomCreateRequestIncludeItemTeamsDevicesIncludeSpl
       "DevicesPoliciesCustomCreateRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithHost",
   }) as any as S.Schema<DevicesPoliciesCustomCreateRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithHost>;
 
-export type DevicesPoliciesCustomCreateRequestIncludeItem =
-  | DevicesPoliciesCustomCreateRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithAddress
-  | DevicesPoliciesCustomCreateRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithHost;
+export interface DevicesPoliciesCustomCreateRequestIncludeItem {
+  /** The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present. */
+  address?: string;
+  /** A description of the Split Tunnel item, displayed in the client UI. */
+  description?: string;
+  /** The domain name to include in the tunnel. If `host` is present, `address` must not be present. */
+  host?: string;
+}
 export const DevicesPoliciesCustomCreateRequestIncludeItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["address", "description"],
-      ["host", "description"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      address: S.optional(S.String),
+      description: S.optional(S.String),
+      host: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DevicesPoliciesCustomCreateRequestIncludeItem",
+  }) as any as S.Schema<DevicesPoliciesCustomCreateRequestIncludeItem>;
 
 export type DevicesPoliciesCustomCreateRequestIncludeList =
   ReadonlyArray<DevicesPoliciesCustomCreateRequestIncludeItem>;
@@ -36981,91 +37065,245 @@ export const DevicesPostureCreateRequestInputTeamsDevicesCustomS2sInputRequest =
       "DevicesPostureCreateRequestInputTeamsDevicesCustomS2sInputRequest",
   }) as any as S.Schema<DevicesPostureCreateRequestInputTeamsDevicesCustomS2sInputRequest>;
 
-export type DevicesPostureCreateRequestInput =
-  | DevicesPostureCreateRequestInputFileInput
-  | DevicesPostureCreateRequestInputUniqueClientIDInput
-  | DevicesPostureCreateRequestInputDomainJoinedInput
-  | DevicesPostureCreateRequestInputOSVersionInput
-  | DevicesPostureCreateRequestInputFirewallInput
-  | DevicesPostureCreateRequestInputSentineloneInput
-  | DevicesPostureCreateRequestInputTeamsDevicesCarbonblackInputRequest
-  | DevicesPostureCreateRequestInputTeamsDevicesAccessSerialNumberListInputRequest
-  | DevicesPostureCreateRequestInputDiskEncryptionInput
-  | DevicesPostureCreateRequestInputTeamsDevicesApplicationInputRequest
-  | DevicesPostureCreateRequestInputClientCertificateInput
-  | DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequest
-  | DevicesPostureCreateRequestInputTeamsDevicesAntivirusInputRequest
-  | DevicesPostureCreateRequestInputWorkspaceOneInput
-  | DevicesPostureCreateRequestInputCrowdstrikeInput
-  | DevicesPostureCreateRequestInputIntuneInput
-  | DevicesPostureCreateRequestInputKolideInput
-  | DevicesPostureCreateRequestInputTaniumInput
-  | DevicesPostureCreateRequestInputSentineloneS2sInput
-  | DevicesPostureCreateRequestInputTeamsDevicesCustomS2sInputRequest;
-export const DevicesPostureCreateRequestInput = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["operatingSystem", "path", "exists", "sha256", "thumbprint"],
-    ["id", "operatingSystem"],
-    ["operatingSystem", "domain"],
-    [
-      "operatingSystem",
-      "operator",
-      "version",
-      "osDistroName",
-      "osDistroRevision",
-      "osVersionExtra",
-    ],
-    ["enabled", "operatingSystem"],
-    ["operatingSystem", "path", "sha256", "thumbprint"],
-    ["operatingSystem", "path", "sha256", "thumbprint"],
-    ["id"],
-    ["checkDisks", "requireAll"],
-    ["operatingSystem", "path", "sha256", "thumbprint"],
-    ["certificateId", "cn"],
-    [
-      "certificateId",
-      "checkPrivateKey",
-      "operatingSystem",
-      "cn",
-      "extendedKeyUsage",
-      "locations",
-      "subjectAlternativeNames",
-    ],
-    ["updateWindowDays"],
-    ["complianceStatus", "connectionId"],
-    [
-      "connectionId",
-      "lastSeen",
-      "operator",
-      "os",
-      "overall",
-      "sensorConfig",
-      "state",
-      "version",
-      "versionOperator",
-    ],
-    ["complianceStatus", "connectionId"],
-    ["connectionId", "authState", "countOperator", "issueCount"],
-    [
-      "connectionId",
-      "eidLastSeen",
-      "operator",
-      "riskLevel",
-      "scoreOperator",
-      "totalScore",
-    ],
-    [
-      "connectionId",
-      "activeThreats",
-      "infected",
-      "isActive",
-      "networkStatus",
-      "operationalState",
-      "operator",
-    ],
-    ["connectionId", "operator", "score"],
-  ]),
-);
+export interface DevicesPostureCreateRequestInput {
+  /** Operating system. */
+  operatingSystem?:
+    | DevicesPostureCreateRequestInputFileInputOperatingSystem
+    | (string & {})
+    | DevicesPostureCreateRequestInputUniqueClientIDInputOperatingSystem
+    | (string & {})
+    | DevicesPostureCreateRequestInputDomainJoinedInputOperatingSystem
+    | (string & {})
+    | DevicesPostureCreateRequestInputOSVersionInputOperatingSystem
+    | (string & {})
+    | DevicesPostureCreateRequestInputFirewallInputOperatingSystem
+    | (string & {})
+    | DevicesPostureCreateRequestInputSentineloneInputOperatingSystem
+    | (string & {})
+    | DevicesPostureCreateRequestInputTeamsDevicesCarbonblackInputRequestOperatingSystem
+    | (string & {})
+    | DevicesPostureCreateRequestInputTeamsDevicesApplicationInputRequestOperatingSystem
+    | (string & {})
+    | DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestOperatingSystem
+    | (string & {});
+  /** File path. */
+  path?: string;
+  /** Whether or not file exists. */
+  exists?: boolean;
+  /** SHA-256. */
+  sha256?: string;
+  /** Signing certificate thumbprint. */
+  thumbprint?: string;
+  /** List ID. */
+  id?: string;
+  /** Domain. */
+  domain?: string;
+  /** Operator. */
+  operator?:
+    | DevicesPostureCreateRequestInputOSVersionInputOperator
+    | (string & {})
+    | DevicesPostureCreateRequestInputCrowdstrikeInputOperator
+    | (string & {})
+    | DevicesPostureCreateRequestInputTaniumInputOperator
+    | (string & {})
+    | DevicesPostureCreateRequestInputSentineloneS2sInputOperator
+    | (string & {})
+    | DevicesPostureCreateRequestInputTeamsDevicesCustomS2sInputRequestOperator
+    | (string & {});
+  /** Version of OS. */
+  version?: string;
+  /** Operating System Distribution Name (linux only). */
+  osDistroName?: string;
+  /** Version of OS Distribution (linux only). */
+  osDistroRevision?: string;
+  /** Additional operating system version details. For Windows, the UBR (Update Build Revision). For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. */
+  osVersionExtra?: string;
+  /** Enabled. */
+  enabled?: boolean;
+  /** List of volume names to be checked for encryption. */
+  checkDisks?: DevicesPostureCreateRequestInputDiskEncryptionInputCheckDisksList;
+  /** Whether to check all disks for encryption. */
+  requireAll?: boolean;
+  /** UUID of Cloudflare managed certificate. */
+  certificateId?: string;
+  /** Common Name that is protected by the certificate. */
+  cn?: string;
+  /** Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key. */
+  checkPrivateKey?: boolean;
+  /** List of values indicating purposes for which the certificate public key can be used. */
+  extendedKeyUsage?: DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestExtendedKeyUsageList;
+  locations?: DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestLocations;
+  /** List of certificate Subject Alternative Names. */
+  subjectAlternativeNames?: DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestSubjectAlternativeNamesList;
+  /** Number of days that the antivirus should be updated within. */
+  updateWindowDays?: number;
+  /** Compliance Status. */
+  complianceStatus?:
+    | DevicesPostureCreateRequestInputWorkspaceOneInputComplianceStatus
+    | (string & {})
+    | DevicesPostureCreateRequestInputIntuneInputComplianceStatus
+    | (string & {});
+  /** Posture Integration ID. */
+  connectionId?: string;
+  /** For more details on last seen, please refer to the Crowdstrike documentation. */
+  lastSeen?: string;
+  /** Os Version. */
+  os?: string;
+  /** Overall. */
+  overall?: string;
+  /** SensorConfig. */
+  sensorConfig?: string;
+  /** For more details on state, please refer to the Crowdstrike documentation. */
+  state?: DevicesPostureCreateRequestInputCrowdstrikeInputState | (string & {});
+  /** Version Operator. */
+  versionOperator?:
+    | DevicesPostureCreateRequestInputCrowdstrikeInputVersionOperator
+    | (string & {});
+  /** The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states. */
+  authState?: DevicesPostureCreateRequestInputKolideInputAuthStateList;
+  /** Count Operator. */
+  countOperator?:
+    | DevicesPostureCreateRequestInputKolideInputCountOperator
+    | (string & {});
+  /** The Number of Issues. */
+  issueCount?: string;
+  /** For more details on eid last seen, refer to the Tanium documentation. */
+  eidLastSeen?: string;
+  /** For more details on risk level, refer to the Tanium documentation. */
+  riskLevel?:
+    | DevicesPostureCreateRequestInputTaniumInputRiskLevel
+    | (string & {});
+  /** Score Operator. */
+  scoreOperator?:
+    | DevicesPostureCreateRequestInputTaniumInputScoreOperator
+    | (string & {});
+  /** For more details on total score, refer to the Tanium documentation. */
+  totalScore?: number;
+  /** The Number of active threats. */
+  activeThreats?: number;
+  /** Whether device is infected. */
+  infected?: boolean;
+  /** Whether device is active. */
+  isActive?: boolean;
+  /** Network status of device. */
+  networkStatus?:
+    | DevicesPostureCreateRequestInputSentineloneS2sInputNetworkStatus
+    | (string & {});
+  /** Agent operational state. */
+  operationalState?:
+    | DevicesPostureCreateRequestInputSentineloneS2sInputOperationalState
+    | (string & {});
+  /** A value between 0-100 assigned to devices set by the 3rd party posture provider. */
+  score?: number;
+}
+export const DevicesPostureCreateRequestInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    operatingSystem: S.optional(
+      S.Union(
+        DevicesPostureCreateRequestInputFileInputOperatingSystem,
+        DevicesPostureCreateRequestInputUniqueClientIDInputOperatingSystem,
+        DevicesPostureCreateRequestInputDomainJoinedInputOperatingSystem,
+        DevicesPostureCreateRequestInputOSVersionInputOperatingSystem,
+        DevicesPostureCreateRequestInputFirewallInputOperatingSystem,
+        DevicesPostureCreateRequestInputSentineloneInputOperatingSystem,
+        DevicesPostureCreateRequestInputTeamsDevicesCarbonblackInputRequestOperatingSystem,
+        DevicesPostureCreateRequestInputTeamsDevicesApplicationInputRequestOperatingSystem,
+        DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestOperatingSystem,
+      ).pipe(T.Body("operating_system")),
+    ),
+    path: S.optional(S.String),
+    exists: S.optional(S.Boolean),
+    sha256: S.optional(S.String),
+    thumbprint: S.optional(S.String),
+    id: S.optional(S.String),
+    domain: S.optional(S.String),
+    operator: S.optional(
+      S.Union(
+        DevicesPostureCreateRequestInputOSVersionInputOperator,
+        DevicesPostureCreateRequestInputCrowdstrikeInputOperator,
+        DevicesPostureCreateRequestInputTaniumInputOperator,
+        DevicesPostureCreateRequestInputSentineloneS2sInputOperator,
+        DevicesPostureCreateRequestInputTeamsDevicesCustomS2sInputRequestOperator,
+      ),
+    ),
+    version: S.optional(S.String),
+    osDistroName: S.optional(S.String.pipe(T.Body("os_distro_name"))),
+    osDistroRevision: S.optional(S.String.pipe(T.Body("os_distro_revision"))),
+    osVersionExtra: S.optional(S.String.pipe(T.Body("os_version_extra"))),
+    enabled: S.optional(S.Boolean),
+    checkDisks: S.optional(
+      DevicesPostureCreateRequestInputDiskEncryptionInputCheckDisksList,
+    ),
+    requireAll: S.optional(S.Boolean),
+    certificateId: S.optional(S.String.pipe(T.Body("certificate_id"))),
+    cn: S.optional(S.String),
+    checkPrivateKey: S.optional(S.Boolean.pipe(T.Body("check_private_key"))),
+    extendedKeyUsage: S.optional(
+      DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestExtendedKeyUsageList.pipe(
+        T.Body("extended_key_usage"),
+      ),
+    ),
+    locations: S.optional(
+      DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestLocations,
+    ),
+    subjectAlternativeNames: S.optional(
+      DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestSubjectAlternativeNamesList.pipe(
+        T.Body("subject_alternative_names"),
+      ),
+    ),
+    updateWindowDays: S.optional(S.Number.pipe(T.Body("update_window_days"))),
+    complianceStatus: S.optional(
+      S.Union(
+        DevicesPostureCreateRequestInputWorkspaceOneInputComplianceStatus,
+        DevicesPostureCreateRequestInputIntuneInputComplianceStatus,
+      ).pipe(T.Body("compliance_status")),
+    ),
+    connectionId: S.optional(S.String.pipe(T.Body("connection_id"))),
+    lastSeen: S.optional(S.String.pipe(T.Body("last_seen"))),
+    os: S.optional(S.String),
+    overall: S.optional(S.String),
+    sensorConfig: S.optional(S.String.pipe(T.Body("sensor_config"))),
+    state: S.optional(DevicesPostureCreateRequestInputCrowdstrikeInputState),
+    versionOperator: S.optional(
+      DevicesPostureCreateRequestInputCrowdstrikeInputVersionOperator,
+    ),
+    authState: S.optional(
+      DevicesPostureCreateRequestInputKolideInputAuthStateList.pipe(
+        T.Body("auth_state"),
+      ),
+    ),
+    countOperator: S.optional(
+      DevicesPostureCreateRequestInputKolideInputCountOperator,
+    ),
+    issueCount: S.optional(S.String.pipe(T.Body("issue_count"))),
+    eidLastSeen: S.optional(S.String.pipe(T.Body("eid_last_seen"))),
+    riskLevel: S.optional(
+      DevicesPostureCreateRequestInputTaniumInputRiskLevel.pipe(
+        T.Body("risk_level"),
+      ),
+    ),
+    scoreOperator: S.optional(
+      DevicesPostureCreateRequestInputTaniumInputScoreOperator,
+    ),
+    totalScore: S.optional(S.Number.pipe(T.Body("total_score"))),
+    activeThreats: S.optional(S.Number.pipe(T.Body("active_threats"))),
+    infected: S.optional(S.Boolean),
+    isActive: S.optional(S.Boolean.pipe(T.Body("is_active"))),
+    networkStatus: S.optional(
+      DevicesPostureCreateRequestInputSentineloneS2sInputNetworkStatus.pipe(
+        T.Body("network_status"),
+      ),
+    ),
+    operationalState: S.optional(
+      DevicesPostureCreateRequestInputSentineloneS2sInputOperationalState.pipe(
+        T.Body("operational_state"),
+      ),
+    ),
+    score: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DevicesPostureCreateRequestInput",
+}) as any as S.Schema<DevicesPostureCreateRequestInput>;
 
 export type DevicesPostureCreateRequestMatchItemPlatform =
   | "windows"
@@ -38357,28 +38595,41 @@ export const DevicesPostureIntegrationsCreateRequestConfigTeamsDevicesCustomS2sC
       "DevicesPostureIntegrationsCreateRequestConfigTeamsDevicesCustomS2sConfigRequest",
   }) as any as S.Schema<DevicesPostureIntegrationsCreateRequestConfigTeamsDevicesCustomS2sConfigRequest>;
 
-export type DevicesPostureIntegrationsCreateRequestConfig =
-  | DevicesPostureIntegrationsCreateRequestConfigTeamsDevicesWorkspaceOneConfigRequest
-  | DevicesPostureIntegrationsCreateRequestConfigTeamsDevicesCrowdstrikeConfigRequest
-  | DevicesPostureIntegrationsCreateRequestConfigTeamsDevicesUptycsConfigRequest
-  | DevicesPostureIntegrationsCreateRequestConfigTeamsDevicesIntuneConfigRequest
-  | DevicesPostureIntegrationsCreateRequestConfigTeamsDevicesKolideConfigRequest
-  | DevicesPostureIntegrationsCreateRequestConfigTeamsDevicesTaniumConfigRequest
-  | DevicesPostureIntegrationsCreateRequestConfigTeamsDevicesSentineloneS2sConfigRequest
-  | DevicesPostureIntegrationsCreateRequestConfigTeamsDevicesCustomS2sConfigRequest;
+export interface DevicesPostureIntegrationsCreateRequestConfig {
+  /** The Workspace One API URL provided in the Workspace One Admin Dashboard. */
+  apiUrl?: string;
+  /** The Workspace One Authorization URL depending on your region. */
+  authUrl?: string;
+  /** The Workspace One client ID provided in the Workspace One Admin Dashboard. */
+  clientId?: string;
+  /** The Workspace One client secret provided in the Workspace One Admin Dashboard. */
+  clientSecret?: string;
+  /** The Crowdstrike customer ID. */
+  customerId?: string;
+  /** The Uptycs client secret. */
+  clientKey?: string;
+  /** If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`. */
+  accessClientId?: string;
+  /** If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`. */
+  accessClientSecret?: string;
+}
 export const DevicesPostureIntegrationsCreateRequestConfig =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["apiUrl", "authUrl", "clientId", "clientSecret"],
-      ["apiUrl", "clientId", "clientSecret", "customerId"],
-      ["apiUrl", "clientKey", "clientSecret", "customerId"],
-      ["clientId", "clientSecret", "customerId"],
-      ["clientId", "clientSecret"],
-      ["apiUrl", "clientSecret", "accessClientId", "accessClientSecret"],
-      ["apiUrl", "clientSecret"],
-      ["accessClientId", "accessClientSecret", "apiUrl"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      apiUrl: S.optional(S.String.pipe(T.Body("api_url"))),
+      authUrl: S.optional(S.String.pipe(T.Body("auth_url"))),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+      customerId: S.optional(S.String.pipe(T.Body("customer_id"))),
+      clientKey: S.optional(S.String.pipe(T.Body("client_key"))),
+      accessClientId: S.optional(S.String.pipe(T.Body("access_client_id"))),
+      accessClientSecret: S.optional(
+        S.String.pipe(T.Body("access_client_secret")),
+      ),
+    }),
+  ).annotate({
+    identifier: "DevicesPostureIntegrationsCreateRequestConfig",
+  }) as any as S.Schema<DevicesPostureIntegrationsCreateRequestConfig>;
 
 export type DevicesPostureIntegrationsCreateRequestType =
   | "workspace_one"
@@ -38660,18 +38911,32 @@ export const DexCommandsCreateRequestCommandsItemArgsSpeedTestArgs =
     identifier: "DexCommandsCreateRequestCommandsItemArgsSpeedTestArgs",
   }) as any as S.Schema<DexCommandsCreateRequestCommandsItemArgsSpeedTestArgs>;
 
-export type DexCommandsCreateRequestCommandsItemArgs =
-  | DexCommandsCreateRequestCommandsItemArgsWARPDiagArgs
-  | DexCommandsCreateRequestCommandsItemArgsPCAPArgs
-  | DexCommandsCreateRequestCommandsItemArgsSpeedTestArgs;
-export const DexCommandsCreateRequestCommandsItemArgs =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["testAllRoutes"],
-      ["maxFileSizeMb", "packetSizeBytes", "timeLimitMin"],
-      ["interfaces"],
-    ]),
-  );
+export interface DexCommandsCreateRequestCommandsItemArgs {
+  /** Test an IP address from all included or excluded ranges. Essentially the same as running 'route get <ip>' and collecting the results. This option may increase the time taken to collect the warp-diag. */
+  testAllRoutes?: boolean;
+  /** Maximum file size (in MB) for the capture file. If the capture artifact exceeds the specified max file size, it will NOT be uploaded. */
+  maxFileSizeMb?: number;
+  /** Maximum number of bytes to save for each packet */
+  packetSizeBytes?: number;
+  /** Limit on capture duration (in minutes) */
+  timeLimitMin?: number;
+  /** List of interfaces to run the speed test on */
+  interfaces?: DexCommandsCreateRequestCommandsItemArgsSpeedTestArgsInterfacesList;
+}
+export const DexCommandsCreateRequestCommandsItemArgs = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      testAllRoutes: S.optional(S.Boolean.pipe(T.Body("test-all-routes"))),
+      maxFileSizeMb: S.optional(S.Number.pipe(T.Body("max-file-size-mb"))),
+      packetSizeBytes: S.optional(S.Number.pipe(T.Body("packet-size-bytes"))),
+      timeLimitMin: S.optional(S.Number.pipe(T.Body("time-limit-min"))),
+      interfaces: S.optional(
+        DexCommandsCreateRequestCommandsItemArgsSpeedTestArgsInterfacesList,
+      ),
+    }),
+).annotate({
+  identifier: "DexCommandsCreateRequestCommandsItemArgs",
+}) as any as S.Schema<DexCommandsCreateRequestCommandsItemArgs>;
 
 export interface DexCommandsCreateRequestCommandsItem {
   /** Unique identifier for the physical device */
@@ -39350,16 +39615,23 @@ export const DlpDatasetsVersionsCreateRequestBodyItemNewColumn =
     identifier: "DlpDatasetsVersionsCreateRequestBodyItemNewColumn",
   }) as any as S.Schema<DlpDatasetsVersionsCreateRequestBodyItemNewColumn>;
 
-export type DlpDatasetsVersionsCreateRequestBodyItem =
-  | DlpDatasetsVersionsCreateRequestBodyItemExistingColumn
-  | DlpDatasetsVersionsCreateRequestBodyItemNewColumn;
-export const DlpDatasetsVersionsCreateRequestBodyItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["entryId", "headerName", "numCells"],
-      ["entryName", "headerName", "numCells"],
-    ]),
-  );
+export interface DlpDatasetsVersionsCreateRequestBodyItem {
+  entryId?: string;
+  headerName?: string;
+  numCells?: number;
+  entryName?: string;
+}
+export const DlpDatasetsVersionsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      entryId: S.optional(S.String.pipe(T.Body("entry_id"))),
+      headerName: S.optional(S.String.pipe(T.Body("header_name"))),
+      numCells: S.optional(S.Number.pipe(T.Body("num_cells"))),
+      entryName: S.optional(S.String.pipe(T.Body("entry_name"))),
+    }),
+).annotate({
+  identifier: "DlpDatasetsVersionsCreateRequestBodyItem",
+}) as any as S.Schema<DlpDatasetsVersionsCreateRequestBodyItem>;
 
 export type DlpDatasetsVersionsCreateRequestBodyList =
   ReadonlyArray<DlpDatasetsVersionsCreateRequestBodyItem>;
@@ -39693,13 +39965,30 @@ export const DlpEmailAccountMappingCreateRequestAuthRequirementsType =
     identifier: "DlpEmailAccountMappingCreateRequestAuthRequirementsType",
   }) as any as S.Schema<DlpEmailAccountMappingCreateRequestAuthRequirementsType>;
 
-export type DlpEmailAccountMappingCreateRequestAuthRequirements =
-  | DlpEmailAccountMappingCreateRequestAuthRequirementsCase0
-  | DlpEmailAccountMappingCreateRequestAuthRequirementsType;
+export interface DlpEmailAccountMappingCreateRequestAuthRequirements {
+  allowedMicrosoftOrganizations?: DlpEmailAccountMappingCreateRequestAuthRequirementsCase0AllowedMicrosoftOrganizationsList;
+  type:
+    | DlpEmailAccountMappingCreateRequestAuthRequirementsCase0Type
+    | (string & {})
+    | DlpEmailAccountMappingCreateRequestAuthRequirementsTypeType
+    | (string & {});
+}
 export const DlpEmailAccountMappingCreateRequestAuthRequirements =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([["allowedMicrosoftOrganizations", "type"], ["type"]]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      allowedMicrosoftOrganizations: S.optional(
+        DlpEmailAccountMappingCreateRequestAuthRequirementsCase0AllowedMicrosoftOrganizationsList.pipe(
+          T.Body("allowed_microsoft_organizations"),
+        ),
+      ),
+      type: S.Union(
+        DlpEmailAccountMappingCreateRequestAuthRequirementsCase0Type,
+        DlpEmailAccountMappingCreateRequestAuthRequirementsTypeType,
+      ),
+    }),
+  ).annotate({
+    identifier: "DlpEmailAccountMappingCreateRequestAuthRequirements",
+  }) as any as S.Schema<DlpEmailAccountMappingCreateRequestAuthRequirements>;
 
 export interface CreateDlpEmailAccountMappingRequest {
   accountId: string;
@@ -40384,16 +40673,29 @@ export const DlpProfilesCustomCreateRequestEntriesItemDLPNewWordListEntry =
     identifier: "DlpProfilesCustomCreateRequestEntriesItemDLPNewWordListEntry",
   }) as any as S.Schema<DlpProfilesCustomCreateRequestEntriesItemDLPNewWordListEntry>;
 
-export type DlpProfilesCustomCreateRequestEntriesItem =
-  | DlpProfilesCustomCreateRequestEntriesItemDLPNewCustomEntry
-  | DlpProfilesCustomCreateRequestEntriesItemDLPNewWordListEntry;
+export interface DlpProfilesCustomCreateRequestEntriesItem {
+  enabled: boolean;
+  name: string;
+  pattern?: DlpProfilesCustomCreateRequestEntriesItemDLPNewCustomEntryPattern;
+  description?: string;
+  words?: DlpProfilesCustomCreateRequestEntriesItemDLPNewWordListEntryWordsList;
+}
 export const DlpProfilesCustomCreateRequestEntriesItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["enabled", "name", "pattern", "description"],
-      ["enabled", "name", "words"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      name: S.String,
+      pattern: S.optional(
+        DlpProfilesCustomCreateRequestEntriesItemDLPNewCustomEntryPattern,
+      ),
+      description: S.optional(S.String),
+      words: S.optional(
+        DlpProfilesCustomCreateRequestEntriesItemDLPNewWordListEntryWordsList,
+      ),
+    }),
+  ).annotate({
+    identifier: "DlpProfilesCustomCreateRequestEntriesItem",
+  }) as any as S.Schema<DlpProfilesCustomCreateRequestEntriesItem>;
 
 export type DlpProfilesCustomCreateRequestEntriesList =
   ReadonlyArray<DlpProfilesCustomCreateRequestEntriesItem>;
@@ -45900,84 +46202,143 @@ export const IdentityProvidersCreateRequestConfigAccessCloudflare =
     identifier: "IdentityProvidersCreateRequestConfigAccessCloudflare",
   }) as any as S.Schema<IdentityProvidersCreateRequestConfigAccessCloudflare>;
 
-export type IdentityProvidersCreateRequestConfig =
-  | IdentityProvidersCreateRequestConfigAzureAD
-  | IdentityProvidersCreateRequestConfigAccessCentrify
-  | IdentityProvidersCreateRequestConfigAccessFacebook
-  | IdentityProvidersCreateRequestConfigAccessGoogle
-  | IdentityProvidersCreateRequestConfigAccessGoogleApps
-  | IdentityProvidersCreateRequestConfigAccessOIDC
-  | IdentityProvidersCreateRequestConfigAccessOkta
-  | IdentityProvidersCreateRequestConfigAccessOnelogin
-  | IdentityProvidersCreateRequestConfigAccessPingone
-  | IdentityProvidersCreateRequestConfigAccessSAML
-  | IdentityProvidersCreateRequestConfigAccessOnetimepin
-  | IdentityProvidersCreateRequestConfigAccessCloudflare;
-export const IdentityProvidersCreateRequestConfig =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [
-        "claims",
-        "clientId",
-        "clientSecret",
-        "conditionalAccessEnabled",
-        "directoryId",
-        "emailClaimName",
-        "prompt",
-        "supportGroups",
-      ],
-      [
-        "centrifyAccount",
-        "centrifyAppId",
-        "claims",
-        "clientId",
-        "clientSecret",
-        "emailClaimName",
-      ],
-      ["clientId", "clientSecret"],
-      ["claims", "clientId", "clientSecret", "emailClaimName"],
-      ["appsDomain", "claims", "clientId", "clientSecret", "emailClaimName"],
-      [
-        "authUrl",
-        "certsUrl",
-        "claims",
-        "clientId",
-        "clientSecret",
-        "emailClaimName",
-        "pkceEnabled",
-        "scopes",
-        "tokenUrl",
-      ],
-      [
-        "authorizationServerId",
-        "claims",
-        "clientId",
-        "clientSecret",
-        "emailClaimName",
-        "oktaAccount",
-      ],
-      [
-        "claims",
-        "clientId",
-        "clientSecret",
-        "emailClaimName",
-        "oneloginAccount",
-      ],
-      ["claims", "clientId", "clientSecret", "emailClaimName", "pingEnvId"],
-      [
-        "attributes",
-        "emailAttributeName",
-        "enableEncryption",
-        "headerAttributes",
-        "idpPublicCerts",
-        "issuerUrl",
-        "signRequest",
-        "ssoTargetUrl",
-      ],
-      ["redirectUrl"],
-      ["redirectUrl", "restrictToAccountMembers"],
-    ]),
-  );
+export interface IdentityProvidersCreateRequestConfig {
+  /** Custom claims */
+  claims?:
+    | IdentityProvidersCreateRequestConfigAzureADClaimsList
+    | IdentityProvidersCreateRequestConfigAccessCentrifyClaimsList
+    | IdentityProvidersCreateRequestConfigAccessGoogleClaimsList
+    | IdentityProvidersCreateRequestConfigAccessGoogleAppsClaimsList
+    | IdentityProvidersCreateRequestConfigAccessOIDCClaimsList
+    | IdentityProvidersCreateRequestConfigAccessOktaClaimsList
+    | IdentityProvidersCreateRequestConfigAccessOneloginClaimsList
+    | IdentityProvidersCreateRequestConfigAccessPingoneClaimsList;
+  /** Your OAuth Client ID */
+  clientId?: string;
+  /** Your OAuth Client Secret */
+  clientSecret?: string;
+  /** Should Cloudflare try to load authentication contexts from your account */
+  conditionalAccessEnabled?: boolean;
+  /** Your Azure directory uuid */
+  directoryId?: string;
+  /** The claim name for email in the id_token response. */
+  emailClaimName?: string;
+  /** Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction_required error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether. */
+  prompt?: IdentityProvidersCreateRequestConfigAzureADPrompt | (string & {});
+  /** Should Cloudflare try to load groups from your account */
+  supportGroups?: boolean;
+  /** Your centrify account url */
+  centrifyAccount?: string;
+  /** Your centrify app id */
+  centrifyAppId?: string;
+  /** Your companies TLD */
+  appsDomain?: string;
+  /** The authorization_endpoint URL of your IdP */
+  authUrl?: string;
+  /** The jwks_uri endpoint of your IdP to allow the IdP keys to sign the tokens */
+  certsUrl?: string;
+  /** Enable Proof Key for Code Exchange (PKCE) */
+  pkceEnabled?: boolean;
+  /** OAuth scopes */
+  scopes?: IdentityProvidersCreateRequestConfigAccessOIDCScopesList;
+  /** The token_endpoint URL of your IdP */
+  tokenUrl?: string;
+  /** Your okta authorization server id */
+  authorizationServerId?: string;
+  /** Your okta account url */
+  oktaAccount?: string;
+  /** Your OneLogin account url */
+  oneloginAccount?: string;
+  /** Your PingOne environment identifier */
+  pingEnvId?: string;
+  /** A list of SAML attribute names that will be added to your signed JWT token and can be used in SAML policy rules. */
+  attributes?: IdentityProvidersCreateRequestConfigAccessSAMLAttributesList;
+  /** The attribute name for email in the SAML response. */
+  emailAttributeName?: string;
+  /** Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt */
+  enableEncryption?: boolean;
+  /** Add a list of attribute names that will be returned in the response header from the Access callback. */
+  headerAttributes?: IdentityProvidersCreateRequestConfigAccessSAMLHeaderAttributesList;
+  /** X509 certificate to verify the signature in the SAML authentication response */
+  idpPublicCerts?: IdentityProvidersCreateRequestConfigAccessSAMLIdpPublicCertsList;
+  /** IdP Entity ID or Issuer URL */
+  issuerUrl?: string;
+  /** Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints. */
+  signRequest?: boolean;
+  /** URL to send the SAML authentication requests to */
+  ssoTargetUrl?: string;
+  redirectUrl?: string;
+  /** When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies. */
+  restrictToAccountMembers?: boolean;
+}
+export const IdentityProvidersCreateRequestConfig = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      claims: S.optional(
+        S.Union(
+          IdentityProvidersCreateRequestConfigAzureADClaimsList,
+          IdentityProvidersCreateRequestConfigAccessCentrifyClaimsList,
+          IdentityProvidersCreateRequestConfigAccessGoogleClaimsList,
+          IdentityProvidersCreateRequestConfigAccessGoogleAppsClaimsList,
+          IdentityProvidersCreateRequestConfigAccessOIDCClaimsList,
+          IdentityProvidersCreateRequestConfigAccessOktaClaimsList,
+          IdentityProvidersCreateRequestConfigAccessOneloginClaimsList,
+          IdentityProvidersCreateRequestConfigAccessPingoneClaimsList,
+        ),
+      ),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+      conditionalAccessEnabled: S.optional(
+        S.Boolean.pipe(T.Body("conditional_access_enabled")),
+      ),
+      directoryId: S.optional(S.String.pipe(T.Body("directory_id"))),
+      emailClaimName: S.optional(S.String.pipe(T.Body("email_claim_name"))),
+      prompt: S.optional(IdentityProvidersCreateRequestConfigAzureADPrompt),
+      supportGroups: S.optional(S.Boolean.pipe(T.Body("support_groups"))),
+      centrifyAccount: S.optional(S.String.pipe(T.Body("centrify_account"))),
+      centrifyAppId: S.optional(S.String.pipe(T.Body("centrify_app_id"))),
+      appsDomain: S.optional(S.String.pipe(T.Body("apps_domain"))),
+      authUrl: S.optional(S.String.pipe(T.Body("auth_url"))),
+      certsUrl: S.optional(S.String.pipe(T.Body("certs_url"))),
+      pkceEnabled: S.optional(S.Boolean.pipe(T.Body("pkce_enabled"))),
+      scopes: S.optional(
+        IdentityProvidersCreateRequestConfigAccessOIDCScopesList,
+      ),
+      tokenUrl: S.optional(S.String.pipe(T.Body("token_url"))),
+      authorizationServerId: S.optional(
+        S.String.pipe(T.Body("authorization_server_id")),
+      ),
+      oktaAccount: S.optional(S.String.pipe(T.Body("okta_account"))),
+      oneloginAccount: S.optional(S.String.pipe(T.Body("onelogin_account"))),
+      pingEnvId: S.optional(S.String.pipe(T.Body("ping_env_id"))),
+      attributes: S.optional(
+        IdentityProvidersCreateRequestConfigAccessSAMLAttributesList,
+      ),
+      emailAttributeName: S.optional(
+        S.String.pipe(T.Body("email_attribute_name")),
+      ),
+      enableEncryption: S.optional(S.Boolean.pipe(T.Body("enable_encryption"))),
+      headerAttributes: S.optional(
+        IdentityProvidersCreateRequestConfigAccessSAMLHeaderAttributesList.pipe(
+          T.Body("header_attributes"),
+        ),
+      ),
+      idpPublicCerts: S.optional(
+        IdentityProvidersCreateRequestConfigAccessSAMLIdpPublicCertsList.pipe(
+          T.Body("idp_public_certs"),
+        ),
+      ),
+      issuerUrl: S.optional(S.String.pipe(T.Body("issuer_url"))),
+      signRequest: S.optional(S.Boolean.pipe(T.Body("sign_request"))),
+      ssoTargetUrl: S.optional(S.String.pipe(T.Body("sso_target_url"))),
+      redirectUrl: S.optional(S.String.pipe(T.Body("redirect_url"))),
+      restrictToAccountMembers: S.optional(
+        S.Boolean.pipe(T.Body("restrict_to_account_members")),
+      ),
+    }),
+).annotate({
+  identifier: "IdentityProvidersCreateRequestConfig",
+}) as any as S.Schema<IdentityProvidersCreateRequestConfig>;
 
 export type IdentityProvidersCreateRequestTypeAzureAD =
   | "onetimepin"
@@ -139474,16 +139835,24 @@ export const DevicesPoliciesCustomEditRequestExcludeItemTeamsDevicesExcludeSplit
       "DevicesPoliciesCustomEditRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithHost",
   }) as any as S.Schema<DevicesPoliciesCustomEditRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithHost>;
 
-export type DevicesPoliciesCustomEditRequestExcludeItem =
-  | DevicesPoliciesCustomEditRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithAddress
-  | DevicesPoliciesCustomEditRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithHost;
+export interface DevicesPoliciesCustomEditRequestExcludeItem {
+  /** The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present. */
+  address?: string;
+  /** A description of the Split Tunnel item, displayed in the client UI. */
+  description?: string;
+  /** The domain name to exclude from the tunnel. If `host` is present, `address` must not be present. */
+  host?: string;
+}
 export const DevicesPoliciesCustomEditRequestExcludeItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["address", "description"],
-      ["host", "description"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      address: S.optional(S.String),
+      description: S.optional(S.String),
+      host: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DevicesPoliciesCustomEditRequestExcludeItem",
+  }) as any as S.Schema<DevicesPoliciesCustomEditRequestExcludeItem>;
 
 export type DevicesPoliciesCustomEditRequestExcludeList =
   ReadonlyArray<DevicesPoliciesCustomEditRequestExcludeItem>;
@@ -139578,16 +139947,24 @@ export const DevicesPoliciesCustomEditRequestIncludeItemTeamsDevicesIncludeSplit
       "DevicesPoliciesCustomEditRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithHost",
   }) as any as S.Schema<DevicesPoliciesCustomEditRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithHost>;
 
-export type DevicesPoliciesCustomEditRequestIncludeItem =
-  | DevicesPoliciesCustomEditRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithAddress
-  | DevicesPoliciesCustomEditRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithHost;
+export interface DevicesPoliciesCustomEditRequestIncludeItem {
+  /** The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present. */
+  address?: string;
+  /** A description of the Split Tunnel item, displayed in the client UI. */
+  description?: string;
+  /** The domain name to include in the tunnel. If `host` is present, `address` must not be present. */
+  host?: string;
+}
 export const DevicesPoliciesCustomEditRequestIncludeItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["address", "description"],
-      ["host", "description"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      address: S.optional(S.String),
+      description: S.optional(S.String),
+      host: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DevicesPoliciesCustomEditRequestIncludeItem",
+  }) as any as S.Schema<DevicesPoliciesCustomEditRequestIncludeItem>;
 
 export type DevicesPoliciesCustomEditRequestIncludeList =
   ReadonlyArray<DevicesPoliciesCustomEditRequestIncludeItem>;
@@ -140232,16 +140609,24 @@ export const DevicesPoliciesDefaultEditRequestExcludeItemTeamsDevicesExcludeSpli
       "DevicesPoliciesDefaultEditRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithHost",
   }) as any as S.Schema<DevicesPoliciesDefaultEditRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithHost>;
 
-export type DevicesPoliciesDefaultEditRequestExcludeItem =
-  | DevicesPoliciesDefaultEditRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithAddress
-  | DevicesPoliciesDefaultEditRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithHost;
+export interface DevicesPoliciesDefaultEditRequestExcludeItem {
+  /** The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present. */
+  address?: string;
+  /** A description of the Split Tunnel item, displayed in the client UI. */
+  description?: string;
+  /** The domain name to exclude from the tunnel. If `host` is present, `address` must not be present. */
+  host?: string;
+}
 export const DevicesPoliciesDefaultEditRequestExcludeItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["address", "description"],
-      ["host", "description"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      address: S.optional(S.String),
+      description: S.optional(S.String),
+      host: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DevicesPoliciesDefaultEditRequestExcludeItem",
+  }) as any as S.Schema<DevicesPoliciesDefaultEditRequestExcludeItem>;
 
 export type DevicesPoliciesDefaultEditRequestExcludeList =
   ReadonlyArray<DevicesPoliciesDefaultEditRequestExcludeItem>;
@@ -140336,16 +140721,24 @@ export const DevicesPoliciesDefaultEditRequestIncludeItemTeamsDevicesIncludeSpli
       "DevicesPoliciesDefaultEditRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithHost",
   }) as any as S.Schema<DevicesPoliciesDefaultEditRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithHost>;
 
-export type DevicesPoliciesDefaultEditRequestIncludeItem =
-  | DevicesPoliciesDefaultEditRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithAddress
-  | DevicesPoliciesDefaultEditRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithHost;
+export interface DevicesPoliciesDefaultEditRequestIncludeItem {
+  /** The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present. */
+  address?: string;
+  /** A description of the Split Tunnel item, displayed in the client UI. */
+  description?: string;
+  /** The domain name to include in the tunnel. If `host` is present, `address` must not be present. */
+  host?: string;
+}
 export const DevicesPoliciesDefaultEditRequestIncludeItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["address", "description"],
-      ["host", "description"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      address: S.optional(S.String),
+      description: S.optional(S.String),
+      host: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DevicesPoliciesDefaultEditRequestIncludeItem",
+  }) as any as S.Schema<DevicesPoliciesDefaultEditRequestIncludeItem>;
 
 export type DevicesPoliciesDefaultEditRequestIncludeList =
   ReadonlyArray<DevicesPoliciesDefaultEditRequestIncludeItem>;
@@ -141072,28 +141465,41 @@ export const DevicesPostureIntegrationsEditRequestConfigTeamsDevicesCustomS2sCon
       "DevicesPostureIntegrationsEditRequestConfigTeamsDevicesCustomS2sConfigRequest",
   }) as any as S.Schema<DevicesPostureIntegrationsEditRequestConfigTeamsDevicesCustomS2sConfigRequest>;
 
-export type DevicesPostureIntegrationsEditRequestConfig =
-  | DevicesPostureIntegrationsEditRequestConfigTeamsDevicesWorkspaceOneConfigRequest
-  | DevicesPostureIntegrationsEditRequestConfigTeamsDevicesCrowdstrikeConfigRequest
-  | DevicesPostureIntegrationsEditRequestConfigTeamsDevicesUptycsConfigRequest
-  | DevicesPostureIntegrationsEditRequestConfigTeamsDevicesIntuneConfigRequest
-  | DevicesPostureIntegrationsEditRequestConfigTeamsDevicesKolideConfigRequest
-  | DevicesPostureIntegrationsEditRequestConfigTeamsDevicesTaniumConfigRequest
-  | DevicesPostureIntegrationsEditRequestConfigTeamsDevicesSentineloneS2sConfigRequest
-  | DevicesPostureIntegrationsEditRequestConfigTeamsDevicesCustomS2sConfigRequest;
+export interface DevicesPostureIntegrationsEditRequestConfig {
+  /** The Workspace One API URL provided in the Workspace One Admin Dashboard. */
+  apiUrl?: string;
+  /** The Workspace One Authorization URL depending on your region. */
+  authUrl?: string;
+  /** The Workspace One client ID provided in the Workspace One Admin Dashboard. */
+  clientId?: string;
+  /** The Workspace One client secret provided in the Workspace One Admin Dashboard. */
+  clientSecret?: string;
+  /** The Crowdstrike customer ID. */
+  customerId?: string;
+  /** The Uptycs client secret. */
+  clientKey?: string;
+  /** If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`. */
+  accessClientId?: string;
+  /** If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`. */
+  accessClientSecret?: string;
+}
 export const DevicesPostureIntegrationsEditRequestConfig =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["apiUrl", "authUrl", "clientId", "clientSecret"],
-      ["apiUrl", "clientId", "clientSecret", "customerId"],
-      ["apiUrl", "clientKey", "clientSecret", "customerId"],
-      ["clientId", "clientSecret", "customerId"],
-      ["clientId", "clientSecret"],
-      ["apiUrl", "clientSecret", "accessClientId", "accessClientSecret"],
-      ["apiUrl", "clientSecret"],
-      ["accessClientId", "accessClientSecret", "apiUrl"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      apiUrl: S.optional(S.String.pipe(T.Body("api_url"))),
+      authUrl: S.optional(S.String.pipe(T.Body("auth_url"))),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+      customerId: S.optional(S.String.pipe(T.Body("customer_id"))),
+      clientKey: S.optional(S.String.pipe(T.Body("client_key"))),
+      accessClientId: S.optional(S.String.pipe(T.Body("access_client_id"))),
+      accessClientSecret: S.optional(
+        S.String.pipe(T.Body("access_client_secret")),
+      ),
+    }),
+  ).annotate({
+    identifier: "DevicesPostureIntegrationsEditRequestConfig",
+  }) as any as S.Schema<DevicesPostureIntegrationsEditRequestConfig>;
 
 export type DevicesPostureIntegrationsEditRequestType =
   | "workspace_one"
@@ -143825,16 +144231,24 @@ export const DevicesPoliciesCustomExcludesUpdateRequestBodyItemTeamsDevicesExclu
       "DevicesPoliciesCustomExcludesUpdateRequestBodyItemTeamsDevicesExcludeSplitTunnelWithHost",
   }) as any as S.Schema<DevicesPoliciesCustomExcludesUpdateRequestBodyItemTeamsDevicesExcludeSplitTunnelWithHost>;
 
-export type DevicesPoliciesCustomExcludesUpdateRequestBodyItem =
-  | DevicesPoliciesCustomExcludesUpdateRequestBodyItemTeamsDevicesExcludeSplitTunnelWithAddress
-  | DevicesPoliciesCustomExcludesUpdateRequestBodyItemTeamsDevicesExcludeSplitTunnelWithHost;
+export interface DevicesPoliciesCustomExcludesUpdateRequestBodyItem {
+  /** The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present. */
+  address?: string;
+  /** A description of the Split Tunnel item, displayed in the client UI. */
+  description?: string;
+  /** The domain name to exclude from the tunnel. If `host` is present, `address` must not be present. */
+  host?: string;
+}
 export const DevicesPoliciesCustomExcludesUpdateRequestBodyItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["address", "description"],
-      ["host", "description"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      address: S.optional(S.String),
+      description: S.optional(S.String),
+      host: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DevicesPoliciesCustomExcludesUpdateRequestBodyItem",
+  }) as any as S.Schema<DevicesPoliciesCustomExcludesUpdateRequestBodyItem>;
 
 export type DevicesPoliciesCustomExcludesUpdateRequestBodyList =
   ReadonlyArray<DevicesPoliciesCustomExcludesUpdateRequestBodyItem>;
@@ -144094,16 +144508,24 @@ export const DevicesPoliciesCustomIncludesUpdateRequestBodyItemTeamsDevicesInclu
       "DevicesPoliciesCustomIncludesUpdateRequestBodyItemTeamsDevicesIncludeSplitTunnelWithHost",
   }) as any as S.Schema<DevicesPoliciesCustomIncludesUpdateRequestBodyItemTeamsDevicesIncludeSplitTunnelWithHost>;
 
-export type DevicesPoliciesCustomIncludesUpdateRequestBodyItem =
-  | DevicesPoliciesCustomIncludesUpdateRequestBodyItemTeamsDevicesIncludeSplitTunnelWithAddress
-  | DevicesPoliciesCustomIncludesUpdateRequestBodyItemTeamsDevicesIncludeSplitTunnelWithHost;
+export interface DevicesPoliciesCustomIncludesUpdateRequestBodyItem {
+  /** The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present. */
+  address?: string;
+  /** A description of the Split Tunnel item, displayed in the client UI. */
+  description?: string;
+  /** The domain name to include in the tunnel. If `host` is present, `address` must not be present. */
+  host?: string;
+}
 export const DevicesPoliciesCustomIncludesUpdateRequestBodyItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["address", "description"],
-      ["host", "description"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      address: S.optional(S.String),
+      description: S.optional(S.String),
+      host: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DevicesPoliciesCustomIncludesUpdateRequestBodyItem",
+  }) as any as S.Schema<DevicesPoliciesCustomIncludesUpdateRequestBodyItem>;
 
 export type DevicesPoliciesCustomIncludesUpdateRequestBodyList =
   ReadonlyArray<DevicesPoliciesCustomIncludesUpdateRequestBodyItem>;
@@ -144247,16 +144669,24 @@ export const DevicesPoliciesDefaultExcludesUpdateRequestBodyItemTeamsDevicesExcl
       "DevicesPoliciesDefaultExcludesUpdateRequestBodyItemTeamsDevicesExcludeSplitTunnelWithHost",
   }) as any as S.Schema<DevicesPoliciesDefaultExcludesUpdateRequestBodyItemTeamsDevicesExcludeSplitTunnelWithHost>;
 
-export type DevicesPoliciesDefaultExcludesUpdateRequestBodyItem =
-  | DevicesPoliciesDefaultExcludesUpdateRequestBodyItemTeamsDevicesExcludeSplitTunnelWithAddress
-  | DevicesPoliciesDefaultExcludesUpdateRequestBodyItemTeamsDevicesExcludeSplitTunnelWithHost;
+export interface DevicesPoliciesDefaultExcludesUpdateRequestBodyItem {
+  /** The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present. */
+  address?: string;
+  /** A description of the Split Tunnel item, displayed in the client UI. */
+  description?: string;
+  /** The domain name to exclude from the tunnel. If `host` is present, `address` must not be present. */
+  host?: string;
+}
 export const DevicesPoliciesDefaultExcludesUpdateRequestBodyItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["address", "description"],
-      ["host", "description"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      address: S.optional(S.String),
+      description: S.optional(S.String),
+      host: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DevicesPoliciesDefaultExcludesUpdateRequestBodyItem",
+  }) as any as S.Schema<DevicesPoliciesDefaultExcludesUpdateRequestBodyItem>;
 
 export type DevicesPoliciesDefaultExcludesUpdateRequestBodyList =
   ReadonlyArray<DevicesPoliciesDefaultExcludesUpdateRequestBodyItem>;
@@ -144515,16 +144945,24 @@ export const DevicesPoliciesDefaultIncludesUpdateRequestBodyItemTeamsDevicesIncl
       "DevicesPoliciesDefaultIncludesUpdateRequestBodyItemTeamsDevicesIncludeSplitTunnelWithHost",
   }) as any as S.Schema<DevicesPoliciesDefaultIncludesUpdateRequestBodyItemTeamsDevicesIncludeSplitTunnelWithHost>;
 
-export type DevicesPoliciesDefaultIncludesUpdateRequestBodyItem =
-  | DevicesPoliciesDefaultIncludesUpdateRequestBodyItemTeamsDevicesIncludeSplitTunnelWithAddress
-  | DevicesPoliciesDefaultIncludesUpdateRequestBodyItemTeamsDevicesIncludeSplitTunnelWithHost;
+export interface DevicesPoliciesDefaultIncludesUpdateRequestBodyItem {
+  /** The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present. */
+  address?: string;
+  /** A description of the Split Tunnel item, displayed in the client UI. */
+  description?: string;
+  /** The domain name to include in the tunnel. If `host` is present, `address` must not be present. */
+  host?: string;
+}
 export const DevicesPoliciesDefaultIncludesUpdateRequestBodyItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["address", "description"],
-      ["host", "description"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      address: S.optional(S.String),
+      description: S.optional(S.String),
+      host: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DevicesPoliciesDefaultIncludesUpdateRequestBodyItem",
+  }) as any as S.Schema<DevicesPoliciesDefaultIncludesUpdateRequestBodyItem>;
 
 export type DevicesPoliciesDefaultIncludesUpdateRequestBodyList =
   ReadonlyArray<DevicesPoliciesDefaultIncludesUpdateRequestBodyItem>;
@@ -150345,26 +150783,71 @@ export const AccessApplicationsUpdateRequestDestinationsItemAllPreviewWorkersDes
       "AccessApplicationsUpdateRequestDestinationsItemAllPreviewWorkersDestination",
   }) as any as S.Schema<AccessApplicationsUpdateRequestDestinationsItemAllPreviewWorkersDestination>;
 
-export type AccessApplicationsUpdateRequestDestinationsItem =
-  | AccessApplicationsUpdateRequestDestinationsItemPublicDestination
-  | AccessApplicationsUpdateRequestDestinationsItemPrivateDestination
-  | AccessApplicationsUpdateRequestDestinationsItemViaMcpServerPortalDestination
-  | AccessApplicationsUpdateRequestDestinationsItemWorkerDestination
-  | AccessApplicationsUpdateRequestDestinationsItemPreviewWorkerDestination
-  | AccessApplicationsUpdateRequestDestinationsItemAllWorkersDestination
-  | AccessApplicationsUpdateRequestDestinationsItemAllPreviewWorkersDestination;
+export interface AccessApplicationsUpdateRequestDestinationsItem {
+  type?:
+    | AccessApplicationsUpdateRequestDestinationsItemPublicDestinationType
+    | (string & {})
+    | AccessApplicationsUpdateRequestDestinationsItemPrivateDestinationType
+    | (string & {})
+    | AccessApplicationsUpdateRequestDestinationsItemViaMcpServerPortalDestinationType
+    | (string & {})
+    | AccessApplicationsUpdateRequestDestinationsItemWorkerDestinationType
+    | (string & {})
+    | AccessApplicationsUpdateRequestDestinationsItemPreviewWorkerDestinationType
+    | (string & {})
+    | AccessApplicationsUpdateRequestDestinationsItemAllWorkersDestinationType
+    | (string & {})
+    | AccessApplicationsUpdateRequestDestinationsItemAllPreviewWorkersDestinationType
+    | (string & {});
+  /** The URI of the destination. Public destinations' URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/). */
+  uri?: string;
+  /** The CIDR range of the destination. Single IPs will be computed as /32. */
+  cidr?: string;
+  /** The hostname of the destination. Matches a valid SNI served by an HTTPS origin. */
+  hostname?: string;
+  /** The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match. */
+  l4Protocol?:
+    | AccessApplicationsUpdateRequestDestinationsItemPrivateDestinationL4Protocol
+    | (string & {});
+  /** The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match. */
+  portRange?: string;
+  /** The VNET ID to match the destination. When omitted, all VNETs will match. */
+  vnetId?: string;
+  /** The MCP server id configured in ai-controls. */
+  mcpServerId?: string;
+  /** The ID of the Cloudflare Worker to protect with Access. */
+  workerId?: string;
+}
 export const AccessApplicationsUpdateRequestDestinationsItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "uri"],
-      ["cidr", "hostname", "l4Protocol", "portRange", "type", "vnetId"],
-      ["mcpServerId", "type"],
-      ["type", "workerId"],
-      ["type", "workerId"],
-      ["type"],
-      ["type"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        S.Union(
+          AccessApplicationsUpdateRequestDestinationsItemPublicDestinationType,
+          AccessApplicationsUpdateRequestDestinationsItemPrivateDestinationType,
+          AccessApplicationsUpdateRequestDestinationsItemViaMcpServerPortalDestinationType,
+          AccessApplicationsUpdateRequestDestinationsItemWorkerDestinationType,
+          AccessApplicationsUpdateRequestDestinationsItemPreviewWorkerDestinationType,
+          AccessApplicationsUpdateRequestDestinationsItemAllWorkersDestinationType,
+          AccessApplicationsUpdateRequestDestinationsItemAllPreviewWorkersDestinationType,
+        ),
+      ),
+      uri: S.optional(S.String),
+      cidr: S.optional(S.String),
+      hostname: S.optional(S.String),
+      l4Protocol: S.optional(
+        AccessApplicationsUpdateRequestDestinationsItemPrivateDestinationL4Protocol.pipe(
+          T.Body("l4_protocol"),
+        ),
+      ),
+      portRange: S.optional(S.String.pipe(T.Body("port_range"))),
+      vnetId: S.optional(S.String.pipe(T.Body("vnet_id"))),
+      mcpServerId: S.optional(S.String.pipe(T.Body("mcp_server_id"))),
+      workerId: S.optional(S.String.pipe(T.Body("worker_id"))),
+    }),
+  ).annotate({
+    identifier: "AccessApplicationsUpdateRequestDestinationsItem",
+  }) as any as S.Schema<AccessApplicationsUpdateRequestDestinationsItem>;
 
 export type AccessApplicationsUpdateRequestDestinationsList =
   ReadonlyArray<AccessApplicationsUpdateRequestDestinationsItem>;
@@ -151514,64 +151997,146 @@ export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationIte
       "AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule",
   }) as any as S.Schema<AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule>;
 
-export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItem =
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessUserRiskScoreRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule;
+export interface AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItem {
+  group?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  /** An empty object which matches on all service tokens. */
+  anyValidServiceToken?: unknown;
+  authContext?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  authMethod?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  azureAD?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  certificate?: unknown;
+  commonName?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  geo?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  devicePosture?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  emailDomain?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  emailList?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  email?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  /** An empty object which matches on all users. */
+  everyone?: unknown;
+  externalEvaluation?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  githubOrganization?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization;
+  gsuite?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  loginMethod?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  ipList?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  ip?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  okta?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  saml?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  oidc?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  serviceToken?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  linkedAppToken?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  userRiskScore?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessUserRiskScoreRuleUserRiskScore;
+  cloudflareAccountMember?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
+}
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["group"],
-      ["anyValidServiceToken"],
-      ["authContext"],
-      ["authMethod"],
-      ["azureAD"],
-      ["certificate"],
-      ["commonName"],
-      ["geo"],
-      ["devicePosture"],
-      ["emailDomain"],
-      ["emailList"],
-      ["email"],
-      ["everyone"],
-      ["externalEvaluation"],
-      ["githubOrganization"],
-      ["gsuite"],
-      ["loginMethod"],
-      ["ipList"],
-      ["ip"],
-      ["okta"],
-      ["saml"],
-      ["oidc"],
-      ["serviceToken"],
-      ["linkedAppToken"],
-      ["userRiskScore"],
-      ["cloudflareAccountMember"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      group: S.optional(
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup,
+      ),
+      anyValidServiceToken: S.optional(
+        S.Unknown.pipe(T.Body("any_valid_service_token")),
+      ),
+      authContext: S.optional(
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext.pipe(
+          T.Body("auth_context"),
+        ),
+      ),
+      authMethod: S.optional(
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod.pipe(
+          T.Body("auth_method"),
+        ),
+      ),
+      azureAD: S.optional(
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD,
+      ),
+      certificate: S.optional(S.Unknown),
+      commonName: S.optional(
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName.pipe(
+          T.Body("common_name"),
+        ),
+      ),
+      geo: S.optional(
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo,
+      ),
+      devicePosture: S.optional(
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture.pipe(
+          T.Body("device_posture"),
+        ),
+      ),
+      emailDomain: S.optional(
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain.pipe(
+          T.Body("email_domain"),
+        ),
+      ),
+      emailList: S.optional(
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList.pipe(
+          T.Body("email_list"),
+        ),
+      ),
+      email: S.optional(
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail,
+      ),
+      everyone: S.optional(S.Unknown),
+      externalEvaluation: S.optional(
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation.pipe(
+          T.Body("external_evaluation"),
+        ),
+      ),
+      githubOrganization: S.optional(
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization.pipe(
+          T.Body("github-organization"),
+        ),
+      ),
+      gsuite: S.optional(
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite,
+      ),
+      loginMethod: S.optional(
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod.pipe(
+          T.Body("login_method"),
+        ),
+      ),
+      ipList: S.optional(
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList.pipe(
+          T.Body("ip_list"),
+        ),
+      ),
+      ip: S.optional(
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp,
+      ),
+      okta: S.optional(
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta,
+      ),
+      saml: S.optional(
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml,
+      ),
+      oidc: S.optional(
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc,
+      ),
+      serviceToken: S.optional(
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken.pipe(
+          T.Body("service_token"),
+        ),
+      ),
+      linkedAppToken: S.optional(
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken.pipe(
+          T.Body("linked_app_token"),
+        ),
+      ),
+      userRiskScore: S.optional(
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessUserRiskScoreRuleUserRiskScore.pipe(
+          T.Body("user_risk_score"),
+        ),
+      ),
+      cloudflareAccountMember: S.optional(
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember.pipe(
+          T.Body("cloudflare_account_member"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItem",
+  }) as any as S.Schema<AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItem>;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeList =
   ReadonlyArray<AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItem>;
@@ -151803,64 +152368,12 @@ export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationIte
       "AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule",
   }) as any as S.Schema<AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule>;
 
-export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItem =
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule;
+export interface AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItem {}
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier:
+      "AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItem",
+  }) as any as S.Schema<AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItem>;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeList =
   ReadonlyArray<AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItem>;
@@ -152090,64 +152603,12 @@ export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationIte
       "AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessCloudflareAccountMemberRule",
   }) as any as S.Schema<AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessCloudflareAccountMemberRule>;
 
-export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItem =
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemGroupRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAnyValidServiceTokenRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessAuthContextRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAuthenticationMethodRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAzureGroupRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemCertificateRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessCommonNameRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemCountryRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessDevicePostureRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemDomainRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemEmailListRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemEmailRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemEveryoneRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemExternalEvaluationRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemGitHubOrganizationRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemGSuiteGroupRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessLoginMethodRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemIPListRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemIPRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemOktaGroupRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemSAMLGroupRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessOIDCClaimRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemServiceTokenRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessLinkedAppTokenRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessUserRiskScoreRule
-    | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessCloudflareAccountMemberRule;
+export interface AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItem {}
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier:
+      "AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItem",
+  }) as any as S.Schema<AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItem>;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireList =
   ReadonlyArray<AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItem>;
@@ -152393,15 +152854,29 @@ export const AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthe
       "AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken",
   }) as any as S.Schema<AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken>;
 
-export type AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItem =
-    | AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemSCIMConfigAuthenticationHTTPBasic
-    | AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemSCIMConfigAuthenticationOAuthBearerToken
-    | AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemSCIMConfigAuthenticationOauth2
-    | AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
+export interface AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItem {
+  /** Client ID of the Access service token used to authenticate with the remote service. */
+  clientId?: string;
+  /** Client secret of the Access service token used to authenticate with the remote service. */
+  clientSecret?: string;
+  /** The authentication scheme to use when making SCIM requests to this application. */
+  scheme?:
+    | AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceTokenScheme
+    | (string & {});
+}
 export const AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([[], [], [], ["clientId", "clientSecret", "scheme"]]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+      scheme: S.optional(
+        AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceTokenScheme,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItem",
+  }) as any as S.Schema<AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItem>;
 
 export type AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationList =
   ReadonlyArray<AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItem>;
@@ -152634,15 +153109,29 @@ export const AccessApplicationsUpdateRequestScimConfigSaaSApplicationAuthenticat
       "AccessApplicationsUpdateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken",
   }) as any as S.Schema<AccessApplicationsUpdateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken>;
 
-export type AccessApplicationsUpdateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItem =
-    | AccessApplicationsUpdateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemSCIMConfigAuthenticationHTTPBasic
-    | AccessApplicationsUpdateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemSCIMConfigAuthenticationOAuthBearerToken
-    | AccessApplicationsUpdateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemSCIMConfigAuthenticationOauth2
-    | AccessApplicationsUpdateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceToken;
+export interface AccessApplicationsUpdateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItem {
+  /** Client ID of the Access service token used to authenticate with the remote service. */
+  clientId?: string;
+  /** Client secret of the Access service token used to authenticate with the remote service. */
+  clientSecret?: string;
+  /** The authentication scheme to use when making SCIM requests to this application. */
+  scheme?:
+    | AccessApplicationsUpdateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceTokenScheme
+    | (string & {});
+}
 export const AccessApplicationsUpdateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([[], [], [], ["clientId", "clientSecret", "scheme"]]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+      scheme: S.optional(
+        AccessApplicationsUpdateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItemAccessSCIMConfigAuthenticationAccessServiceTokenScheme,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AccessApplicationsUpdateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItem",
+  }) as any as S.Schema<AccessApplicationsUpdateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItem>;
 
 export type AccessApplicationsUpdateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationList =
   ReadonlyArray<AccessApplicationsUpdateRequestScimConfigSaaSApplicationAuthenticationAccessSCIMConfigMultiAuthenticationItem>;
@@ -152741,30 +153230,49 @@ export const AccessApplicationsUpdateRequestScimConfigSaaSApplication =
     identifier: "AccessApplicationsUpdateRequestScimConfigSaaSApplication",
   }) as any as S.Schema<AccessApplicationsUpdateRequestScimConfigSaaSApplication>;
 
-export type AccessApplicationsUpdateRequestScimConfig =
-  | AccessApplicationsUpdateRequestScimConfigSelfHostedApplication
-  | AccessApplicationsUpdateRequestScimConfigSaaSApplication;
+export interface AccessApplicationsUpdateRequestScimConfig {
+  /** The UID of the IdP to use as the source for SCIM resources to provision to this application. */
+  idpUid: string;
+  /** The base URI for the application's SCIM-compatible API. */
+  remoteUri: string;
+  /** Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application. */
+  authentication?:
+    | AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthentication
+    | AccessApplicationsUpdateRequestScimConfigSaaSApplicationAuthentication;
+  /** If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations. */
+  deactivateOnDelete?: boolean;
+  /** Whether SCIM provisioning is turned on for this application. */
+  enabled?: boolean;
+  /** A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned. */
+  mappings?:
+    | AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationMappingsList
+    | AccessApplicationsUpdateRequestScimConfigSaaSApplicationMappingsList;
+}
 export const AccessApplicationsUpdateRequestScimConfig =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [
-        "idpUid",
-        "remoteUri",
-        "authentication",
-        "deactivateOnDelete",
-        "enabled",
-        "mappings",
-      ],
-      [
-        "idpUid",
-        "remoteUri",
-        "authentication",
-        "deactivateOnDelete",
-        "enabled",
-        "mappings",
-      ],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      idpUid: S.String.pipe(T.Body("idp_uid")),
+      remoteUri: S.String.pipe(T.Body("remote_uri")),
+      authentication: S.optional(
+        S.Union(
+          AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthentication,
+          AccessApplicationsUpdateRequestScimConfigSaaSApplicationAuthentication,
+        ),
+      ),
+      deactivateOnDelete: S.optional(
+        S.Boolean.pipe(T.Body("deactivate_on_delete")),
+      ),
+      enabled: S.optional(S.Boolean),
+      mappings: S.optional(
+        S.Union(
+          AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationMappingsList,
+          AccessApplicationsUpdateRequestScimConfigSaaSApplicationMappingsList,
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "AccessApplicationsUpdateRequestScimConfig",
+  }) as any as S.Schema<AccessApplicationsUpdateRequestScimConfig>;
 
 export type AccessApplicationsUpdateRequestSelfHostedDomainsList =
   ReadonlyArray<unknown>;
@@ -153184,43 +153692,133 @@ export const AccessApplicationsUpdateRequestSaasAppOIDCSaaSApp =
     identifier: "AccessApplicationsUpdateRequestSaasAppOIDCSaaSApp",
   }) as any as S.Schema<AccessApplicationsUpdateRequestSaasAppOIDCSaaSApp>;
 
-export type AccessApplicationsUpdateRequestSaasApp =
-  | AccessApplicationsUpdateRequestSaasAppSAMLSaaSApp
-  | AccessApplicationsUpdateRequestSaasAppOIDCSaaSApp;
-export const AccessApplicationsUpdateRequestSaasApp =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [
-        "authType",
-        "consumerServiceUrl",
-        "customAttributes",
-        "defaultRelayState",
-        "idpEntityId",
-        "nameIdFormat",
-        "nameIdTransformJsonata",
-        "publicKey",
-        "samlAttributeTransformJsonata",
-        "spEntityId",
-        "ssoEndpoint",
-      ],
-      [
-        "accessTokenLifetime",
-        "allowPkceWithoutClientSecret",
-        "appLauncherUrl",
-        "authType",
-        "clientId",
-        "clientSecret",
-        "customClaims",
-        "grantTypes",
-        "groupFilterRegex",
-        "hybridAndImplicitOptions",
-        "publicKey",
-        "redirectUris",
-        "refreshTokenOptions",
-        "scopes",
-      ],
-    ]),
-  );
+export interface AccessApplicationsUpdateRequestSaasApp {
+  /** Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is "saml" */
+  authType?:
+    | AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppAuthType
+    | (string & {})
+    | AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppAuthType
+    | (string & {});
+  /** The service provider's endpoint that is responsible for receiving and parsing a SAML assertion. */
+  consumerServiceUrl?: string;
+  customAttributes?: AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesList;
+  /** The URL that the user will be redirected to after a successful login for IDP initiated logins. */
+  defaultRelayState?: string;
+  /** The unique identifier for your SaaS application. */
+  idpEntityId?: string;
+  /** The format of the name identifier sent to the SaaS application. */
+  nameIdFormat?:
+    | AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppNameIdFormat
+    | (string & {});
+  /** A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting. */
+  nameIdTransformJsonata?: string;
+  /** The Access public certificate that will be used to verify your identity. */
+  publicKey?: string;
+  /** A [JSONata] (https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml_attributes or oidc_fields of the identity provider used to authenticate. The output of this expression must be a JSON object. */
+  samlAttributeTransformJsonata?: string;
+  /** A globally unique name for an identity or service provider. */
+  spEntityId?: string;
+  /** The endpoint where your SaaS application will send login requests. */
+  ssoEndpoint?: string;
+  /** The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h. */
+  accessTokenLifetime?: string;
+  /** If client secret should be required on the token endpoint when authorization_code_with_pkce grant is used. */
+  allowPkceWithoutClientSecret?: boolean;
+  /** The URL where this applications tile redirects users */
+  appLauncherUrl?: string;
+  /** The application client id */
+  clientId?: string;
+  /** The application client secret, only returned on POST request. */
+  clientSecret?: string;
+  customClaims?: AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppCustomClaimsList;
+  /** The OIDC flows supported by this application */
+  grantTypes?: AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppGrantTypesList;
+  /** A regex to filter Cloudflare groups returned in ID token and userinfo endpoint */
+  groupFilterRegex?: string;
+  hybridAndImplicitOptions?: AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppHybridAndImplicitOptions;
+  /** The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens */
+  redirectUris?: AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppRedirectUrisList;
+  refreshTokenOptions?: AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppRefreshTokenOptions;
+  /** Define the user information shared with access, "offline_access" scope will be automatically enabled if refresh tokens are enabled */
+  scopes?: AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppScopesList;
+}
+export const AccessApplicationsUpdateRequestSaasApp = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      authType: S.optional(
+        S.Union(
+          AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppAuthType,
+          AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppAuthType,
+        ).pipe(T.Body("auth_type")),
+      ),
+      consumerServiceUrl: S.optional(
+        S.String.pipe(T.Body("consumer_service_url")),
+      ),
+      customAttributes: S.optional(
+        AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesList.pipe(
+          T.Body("custom_attributes"),
+        ),
+      ),
+      defaultRelayState: S.optional(
+        S.String.pipe(T.Body("default_relay_state")),
+      ),
+      idpEntityId: S.optional(S.String.pipe(T.Body("idp_entity_id"))),
+      nameIdFormat: S.optional(
+        AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppNameIdFormat.pipe(
+          T.Body("name_id_format"),
+        ),
+      ),
+      nameIdTransformJsonata: S.optional(
+        S.String.pipe(T.Body("name_id_transform_jsonata")),
+      ),
+      publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
+      samlAttributeTransformJsonata: S.optional(
+        S.String.pipe(T.Body("saml_attribute_transform_jsonata")),
+      ),
+      spEntityId: S.optional(S.String.pipe(T.Body("sp_entity_id"))),
+      ssoEndpoint: S.optional(S.String.pipe(T.Body("sso_endpoint"))),
+      accessTokenLifetime: S.optional(
+        S.String.pipe(T.Body("access_token_lifetime")),
+      ),
+      allowPkceWithoutClientSecret: S.optional(
+        S.Boolean.pipe(T.Body("allow_pkce_without_client_secret")),
+      ),
+      appLauncherUrl: S.optional(S.String.pipe(T.Body("app_launcher_url"))),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+      customClaims: S.optional(
+        AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppCustomClaimsList.pipe(
+          T.Body("custom_claims"),
+        ),
+      ),
+      grantTypes: S.optional(
+        AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppGrantTypesList.pipe(
+          T.Body("grant_types"),
+        ),
+      ),
+      groupFilterRegex: S.optional(S.String.pipe(T.Body("group_filter_regex"))),
+      hybridAndImplicitOptions: S.optional(
+        AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppHybridAndImplicitOptions.pipe(
+          T.Body("hybrid_and_implicit_options"),
+        ),
+      ),
+      redirectUris: S.optional(
+        AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppRedirectUrisList.pipe(
+          T.Body("redirect_uris"),
+        ),
+      ),
+      refreshTokenOptions: S.optional(
+        AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppRefreshTokenOptions.pipe(
+          T.Body("refresh_token_options"),
+        ),
+      ),
+      scopes: S.optional(
+        AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppScopesList,
+      ),
+    }),
+).annotate({
+  identifier: "AccessApplicationsUpdateRequestSaasApp",
+}) as any as S.Schema<AccessApplicationsUpdateRequestSaasApp>;
 
 export interface AccessApplicationsUpdateRequestFooterLinksItem {
   /** The hypertext in the footer link. */
@@ -174244,64 +174842,133 @@ export const AccessGroupsUpdateRequestIncludeItemAccessCloudflareAccountMemberRu
       "AccessGroupsUpdateRequestIncludeItemAccessCloudflareAccountMemberRule",
   }) as any as S.Schema<AccessGroupsUpdateRequestIncludeItemAccessCloudflareAccountMemberRule>;
 
-export type AccessGroupsUpdateRequestIncludeItem =
-  | AccessGroupsUpdateRequestIncludeItemGroupRule
-  | AccessGroupsUpdateRequestIncludeItemAnyValidServiceTokenRule
-  | AccessGroupsUpdateRequestIncludeItemAccessAuthContextRule
-  | AccessGroupsUpdateRequestIncludeItemAuthenticationMethodRule
-  | AccessGroupsUpdateRequestIncludeItemAzureGroupRule
-  | AccessGroupsUpdateRequestIncludeItemCertificateRule
-  | AccessGroupsUpdateRequestIncludeItemAccessCommonNameRule
-  | AccessGroupsUpdateRequestIncludeItemCountryRule
-  | AccessGroupsUpdateRequestIncludeItemAccessDevicePostureRule
-  | AccessGroupsUpdateRequestIncludeItemDomainRule
-  | AccessGroupsUpdateRequestIncludeItemEmailListRule
-  | AccessGroupsUpdateRequestIncludeItemEmailRule
-  | AccessGroupsUpdateRequestIncludeItemEveryoneRule
-  | AccessGroupsUpdateRequestIncludeItemExternalEvaluationRule
-  | AccessGroupsUpdateRequestIncludeItemGitHubOrganizationRule
-  | AccessGroupsUpdateRequestIncludeItemGSuiteGroupRule
-  | AccessGroupsUpdateRequestIncludeItemAccessLoginMethodRule
-  | AccessGroupsUpdateRequestIncludeItemIPListRule
-  | AccessGroupsUpdateRequestIncludeItemIPRule
-  | AccessGroupsUpdateRequestIncludeItemOktaGroupRule
-  | AccessGroupsUpdateRequestIncludeItemSAMLGroupRule
-  | AccessGroupsUpdateRequestIncludeItemAccessOIDCClaimRule
-  | AccessGroupsUpdateRequestIncludeItemServiceTokenRule
-  | AccessGroupsUpdateRequestIncludeItemAccessLinkedAppTokenRule
-  | AccessGroupsUpdateRequestIncludeItemAccessUserRiskScoreRule
-  | AccessGroupsUpdateRequestIncludeItemAccessCloudflareAccountMemberRule;
-export const AccessGroupsUpdateRequestIncludeItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["group"],
-      ["anyValidServiceToken"],
-      ["authContext"],
-      ["authMethod"],
-      ["azureAD"],
-      ["certificate"],
-      ["commonName"],
-      ["geo"],
-      ["devicePosture"],
-      ["emailDomain"],
-      ["emailList"],
-      ["email"],
-      ["everyone"],
-      ["externalEvaluation"],
-      ["githubOrganization"],
-      ["gsuite"],
-      ["loginMethod"],
-      ["ipList"],
-      ["ip"],
-      ["okta"],
-      ["saml"],
-      ["oidc"],
-      ["serviceToken"],
-      ["linkedAppToken"],
-      ["userRiskScore"],
-      ["cloudflareAccountMember"],
-    ]),
-  );
+export interface AccessGroupsUpdateRequestIncludeItem {
+  group?: AccessGroupsUpdateRequestIncludeItemGroupRuleGroup;
+  /** An empty object which matches on all service tokens. */
+  anyValidServiceToken?: unknown;
+  authContext?: AccessGroupsUpdateRequestIncludeItemAccessAuthContextRuleAuthContext;
+  authMethod?: AccessGroupsUpdateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
+  azureAD?: AccessGroupsUpdateRequestIncludeItemAzureGroupRuleAzureAD;
+  certificate?: unknown;
+  commonName?: AccessGroupsUpdateRequestIncludeItemAccessCommonNameRuleCommonName;
+  geo?: AccessGroupsUpdateRequestIncludeItemCountryRuleGeo;
+  devicePosture?: AccessGroupsUpdateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
+  emailDomain?: AccessGroupsUpdateRequestIncludeItemDomainRuleEmailDomain;
+  emailList?: AccessGroupsUpdateRequestIncludeItemEmailListRuleEmailList;
+  email?: AccessGroupsUpdateRequestIncludeItemEmailRuleEmail;
+  /** An empty object which matches on all users. */
+  everyone?: unknown;
+  externalEvaluation?: AccessGroupsUpdateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
+  githubOrganization?: AccessGroupsUpdateRequestIncludeItemGitHubOrganizationRuleGithubOrganization;
+  gsuite?: AccessGroupsUpdateRequestIncludeItemGSuiteGroupRuleGsuite;
+  loginMethod?: AccessGroupsUpdateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
+  ipList?: AccessGroupsUpdateRequestIncludeItemIPListRuleIpList;
+  ip?: AccessGroupsUpdateRequestIncludeItemIPRuleIp;
+  okta?: AccessGroupsUpdateRequestIncludeItemOktaGroupRuleOkta;
+  saml?: AccessGroupsUpdateRequestIncludeItemSAMLGroupRuleSaml;
+  oidc?: AccessGroupsUpdateRequestIncludeItemAccessOIDCClaimRuleOidc;
+  serviceToken?: AccessGroupsUpdateRequestIncludeItemServiceTokenRuleServiceToken;
+  linkedAppToken?: AccessGroupsUpdateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  userRiskScore?: AccessGroupsUpdateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScore;
+  cloudflareAccountMember?: AccessGroupsUpdateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
+}
+export const AccessGroupsUpdateRequestIncludeItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      group: S.optional(AccessGroupsUpdateRequestIncludeItemGroupRuleGroup),
+      anyValidServiceToken: S.optional(
+        S.Unknown.pipe(T.Body("any_valid_service_token")),
+      ),
+      authContext: S.optional(
+        AccessGroupsUpdateRequestIncludeItemAccessAuthContextRuleAuthContext.pipe(
+          T.Body("auth_context"),
+        ),
+      ),
+      authMethod: S.optional(
+        AccessGroupsUpdateRequestIncludeItemAuthenticationMethodRuleAuthMethod.pipe(
+          T.Body("auth_method"),
+        ),
+      ),
+      azureAD: S.optional(
+        AccessGroupsUpdateRequestIncludeItemAzureGroupRuleAzureAD,
+      ),
+      certificate: S.optional(S.Unknown),
+      commonName: S.optional(
+        AccessGroupsUpdateRequestIncludeItemAccessCommonNameRuleCommonName.pipe(
+          T.Body("common_name"),
+        ),
+      ),
+      geo: S.optional(AccessGroupsUpdateRequestIncludeItemCountryRuleGeo),
+      devicePosture: S.optional(
+        AccessGroupsUpdateRequestIncludeItemAccessDevicePostureRuleDevicePosture.pipe(
+          T.Body("device_posture"),
+        ),
+      ),
+      emailDomain: S.optional(
+        AccessGroupsUpdateRequestIncludeItemDomainRuleEmailDomain.pipe(
+          T.Body("email_domain"),
+        ),
+      ),
+      emailList: S.optional(
+        AccessGroupsUpdateRequestIncludeItemEmailListRuleEmailList.pipe(
+          T.Body("email_list"),
+        ),
+      ),
+      email: S.optional(AccessGroupsUpdateRequestIncludeItemEmailRuleEmail),
+      everyone: S.optional(S.Unknown),
+      externalEvaluation: S.optional(
+        AccessGroupsUpdateRequestIncludeItemExternalEvaluationRuleExternalEvaluation.pipe(
+          T.Body("external_evaluation"),
+        ),
+      ),
+      githubOrganization: S.optional(
+        AccessGroupsUpdateRequestIncludeItemGitHubOrganizationRuleGithubOrganization.pipe(
+          T.Body("github-organization"),
+        ),
+      ),
+      gsuite: S.optional(
+        AccessGroupsUpdateRequestIncludeItemGSuiteGroupRuleGsuite,
+      ),
+      loginMethod: S.optional(
+        AccessGroupsUpdateRequestIncludeItemAccessLoginMethodRuleLoginMethod.pipe(
+          T.Body("login_method"),
+        ),
+      ),
+      ipList: S.optional(
+        AccessGroupsUpdateRequestIncludeItemIPListRuleIpList.pipe(
+          T.Body("ip_list"),
+        ),
+      ),
+      ip: S.optional(AccessGroupsUpdateRequestIncludeItemIPRuleIp),
+      okta: S.optional(AccessGroupsUpdateRequestIncludeItemOktaGroupRuleOkta),
+      saml: S.optional(AccessGroupsUpdateRequestIncludeItemSAMLGroupRuleSaml),
+      oidc: S.optional(
+        AccessGroupsUpdateRequestIncludeItemAccessOIDCClaimRuleOidc,
+      ),
+      serviceToken: S.optional(
+        AccessGroupsUpdateRequestIncludeItemServiceTokenRuleServiceToken.pipe(
+          T.Body("service_token"),
+        ),
+      ),
+      linkedAppToken: S.optional(
+        AccessGroupsUpdateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken.pipe(
+          T.Body("linked_app_token"),
+        ),
+      ),
+      userRiskScore: S.optional(
+        AccessGroupsUpdateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScore.pipe(
+          T.Body("user_risk_score"),
+        ),
+      ),
+      cloudflareAccountMember: S.optional(
+        AccessGroupsUpdateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember.pipe(
+          T.Body("cloudflare_account_member"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "AccessGroupsUpdateRequestIncludeItem",
+}) as any as S.Schema<AccessGroupsUpdateRequestIncludeItem>;
 
 export type AccessGroupsUpdateRequestIncludeList =
   ReadonlyArray<AccessGroupsUpdateRequestIncludeItem>;
@@ -174466,64 +175133,12 @@ export const AccessGroupsUpdateRequestExcludeItemAccessCloudflareAccountMemberRu
       "AccessGroupsUpdateRequestExcludeItemAccessCloudflareAccountMemberRule",
   }) as any as S.Schema<AccessGroupsUpdateRequestExcludeItemAccessCloudflareAccountMemberRule>;
 
-export type AccessGroupsUpdateRequestExcludeItem =
-  | AccessGroupsUpdateRequestExcludeItemGroupRule
-  | AccessGroupsUpdateRequestExcludeItemAnyValidServiceTokenRule
-  | AccessGroupsUpdateRequestExcludeItemAccessAuthContextRule
-  | AccessGroupsUpdateRequestExcludeItemAuthenticationMethodRule
-  | AccessGroupsUpdateRequestExcludeItemAzureGroupRule
-  | AccessGroupsUpdateRequestExcludeItemCertificateRule
-  | AccessGroupsUpdateRequestExcludeItemAccessCommonNameRule
-  | AccessGroupsUpdateRequestExcludeItemCountryRule
-  | AccessGroupsUpdateRequestExcludeItemAccessDevicePostureRule
-  | AccessGroupsUpdateRequestExcludeItemDomainRule
-  | AccessGroupsUpdateRequestExcludeItemEmailListRule
-  | AccessGroupsUpdateRequestExcludeItemEmailRule
-  | AccessGroupsUpdateRequestExcludeItemEveryoneRule
-  | AccessGroupsUpdateRequestExcludeItemExternalEvaluationRule
-  | AccessGroupsUpdateRequestExcludeItemGitHubOrganizationRule
-  | AccessGroupsUpdateRequestExcludeItemGSuiteGroupRule
-  | AccessGroupsUpdateRequestExcludeItemAccessLoginMethodRule
-  | AccessGroupsUpdateRequestExcludeItemIPListRule
-  | AccessGroupsUpdateRequestExcludeItemIPRule
-  | AccessGroupsUpdateRequestExcludeItemOktaGroupRule
-  | AccessGroupsUpdateRequestExcludeItemSAMLGroupRule
-  | AccessGroupsUpdateRequestExcludeItemAccessOIDCClaimRule
-  | AccessGroupsUpdateRequestExcludeItemServiceTokenRule
-  | AccessGroupsUpdateRequestExcludeItemAccessLinkedAppTokenRule
-  | AccessGroupsUpdateRequestExcludeItemAccessUserRiskScoreRule
-  | AccessGroupsUpdateRequestExcludeItemAccessCloudflareAccountMemberRule;
-export const AccessGroupsUpdateRequestExcludeItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-    ]),
-  );
+export interface AccessGroupsUpdateRequestExcludeItem {}
+export const AccessGroupsUpdateRequestExcludeItem = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "AccessGroupsUpdateRequestExcludeItem",
+}) as any as S.Schema<AccessGroupsUpdateRequestExcludeItem>;
 
 export type AccessGroupsUpdateRequestExcludeList =
   ReadonlyArray<AccessGroupsUpdateRequestExcludeItem>;
@@ -174688,64 +175303,12 @@ export const AccessGroupsUpdateRequestRequireItemAccessCloudflareAccountMemberRu
       "AccessGroupsUpdateRequestRequireItemAccessCloudflareAccountMemberRule",
   }) as any as S.Schema<AccessGroupsUpdateRequestRequireItemAccessCloudflareAccountMemberRule>;
 
-export type AccessGroupsUpdateRequestRequireItem =
-  | AccessGroupsUpdateRequestRequireItemGroupRule
-  | AccessGroupsUpdateRequestRequireItemAnyValidServiceTokenRule
-  | AccessGroupsUpdateRequestRequireItemAccessAuthContextRule
-  | AccessGroupsUpdateRequestRequireItemAuthenticationMethodRule
-  | AccessGroupsUpdateRequestRequireItemAzureGroupRule
-  | AccessGroupsUpdateRequestRequireItemCertificateRule
-  | AccessGroupsUpdateRequestRequireItemAccessCommonNameRule
-  | AccessGroupsUpdateRequestRequireItemCountryRule
-  | AccessGroupsUpdateRequestRequireItemAccessDevicePostureRule
-  | AccessGroupsUpdateRequestRequireItemDomainRule
-  | AccessGroupsUpdateRequestRequireItemEmailListRule
-  | AccessGroupsUpdateRequestRequireItemEmailRule
-  | AccessGroupsUpdateRequestRequireItemEveryoneRule
-  | AccessGroupsUpdateRequestRequireItemExternalEvaluationRule
-  | AccessGroupsUpdateRequestRequireItemGitHubOrganizationRule
-  | AccessGroupsUpdateRequestRequireItemGSuiteGroupRule
-  | AccessGroupsUpdateRequestRequireItemAccessLoginMethodRule
-  | AccessGroupsUpdateRequestRequireItemIPListRule
-  | AccessGroupsUpdateRequestRequireItemIPRule
-  | AccessGroupsUpdateRequestRequireItemOktaGroupRule
-  | AccessGroupsUpdateRequestRequireItemSAMLGroupRule
-  | AccessGroupsUpdateRequestRequireItemAccessOIDCClaimRule
-  | AccessGroupsUpdateRequestRequireItemServiceTokenRule
-  | AccessGroupsUpdateRequestRequireItemAccessLinkedAppTokenRule
-  | AccessGroupsUpdateRequestRequireItemAccessUserRiskScoreRule
-  | AccessGroupsUpdateRequestRequireItemAccessCloudflareAccountMemberRule;
-export const AccessGroupsUpdateRequestRequireItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-    ]),
-  );
+export interface AccessGroupsUpdateRequestRequireItem {}
+export const AccessGroupsUpdateRequestRequireItem = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "AccessGroupsUpdateRequestRequireItem",
+}) as any as S.Schema<AccessGroupsUpdateRequestRequireItem>;
 
 export type AccessGroupsUpdateRequestRequireList =
   ReadonlyArray<AccessGroupsUpdateRequestRequireItem>;
@@ -176930,64 +177493,133 @@ export const AccessPoliciesUpdateRequestIncludeItemAccessCloudflareAccountMember
       "AccessPoliciesUpdateRequestIncludeItemAccessCloudflareAccountMemberRule",
   }) as any as S.Schema<AccessPoliciesUpdateRequestIncludeItemAccessCloudflareAccountMemberRule>;
 
-export type AccessPoliciesUpdateRequestIncludeItem =
-  | AccessPoliciesUpdateRequestIncludeItemGroupRule
-  | AccessPoliciesUpdateRequestIncludeItemAnyValidServiceTokenRule
-  | AccessPoliciesUpdateRequestIncludeItemAccessAuthContextRule
-  | AccessPoliciesUpdateRequestIncludeItemAuthenticationMethodRule
-  | AccessPoliciesUpdateRequestIncludeItemAzureGroupRule
-  | AccessPoliciesUpdateRequestIncludeItemCertificateRule
-  | AccessPoliciesUpdateRequestIncludeItemAccessCommonNameRule
-  | AccessPoliciesUpdateRequestIncludeItemCountryRule
-  | AccessPoliciesUpdateRequestIncludeItemAccessDevicePostureRule
-  | AccessPoliciesUpdateRequestIncludeItemDomainRule
-  | AccessPoliciesUpdateRequestIncludeItemEmailListRule
-  | AccessPoliciesUpdateRequestIncludeItemEmailRule
-  | AccessPoliciesUpdateRequestIncludeItemEveryoneRule
-  | AccessPoliciesUpdateRequestIncludeItemExternalEvaluationRule
-  | AccessPoliciesUpdateRequestIncludeItemGitHubOrganizationRule
-  | AccessPoliciesUpdateRequestIncludeItemGSuiteGroupRule
-  | AccessPoliciesUpdateRequestIncludeItemAccessLoginMethodRule
-  | AccessPoliciesUpdateRequestIncludeItemIPListRule
-  | AccessPoliciesUpdateRequestIncludeItemIPRule
-  | AccessPoliciesUpdateRequestIncludeItemOktaGroupRule
-  | AccessPoliciesUpdateRequestIncludeItemSAMLGroupRule
-  | AccessPoliciesUpdateRequestIncludeItemAccessOIDCClaimRule
-  | AccessPoliciesUpdateRequestIncludeItemServiceTokenRule
-  | AccessPoliciesUpdateRequestIncludeItemAccessLinkedAppTokenRule
-  | AccessPoliciesUpdateRequestIncludeItemAccessUserRiskScoreRule
-  | AccessPoliciesUpdateRequestIncludeItemAccessCloudflareAccountMemberRule;
-export const AccessPoliciesUpdateRequestIncludeItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["group"],
-      ["anyValidServiceToken"],
-      ["authContext"],
-      ["authMethod"],
-      ["azureAD"],
-      ["certificate"],
-      ["commonName"],
-      ["geo"],
-      ["devicePosture"],
-      ["emailDomain"],
-      ["emailList"],
-      ["email"],
-      ["everyone"],
-      ["externalEvaluation"],
-      ["githubOrganization"],
-      ["gsuite"],
-      ["loginMethod"],
-      ["ipList"],
-      ["ip"],
-      ["okta"],
-      ["saml"],
-      ["oidc"],
-      ["serviceToken"],
-      ["linkedAppToken"],
-      ["userRiskScore"],
-      ["cloudflareAccountMember"],
-    ]),
-  );
+export interface AccessPoliciesUpdateRequestIncludeItem {
+  group?: AccessPoliciesUpdateRequestIncludeItemGroupRuleGroup;
+  /** An empty object which matches on all service tokens. */
+  anyValidServiceToken?: unknown;
+  authContext?: AccessPoliciesUpdateRequestIncludeItemAccessAuthContextRuleAuthContext;
+  authMethod?: AccessPoliciesUpdateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
+  azureAD?: AccessPoliciesUpdateRequestIncludeItemAzureGroupRuleAzureAD;
+  certificate?: unknown;
+  commonName?: AccessPoliciesUpdateRequestIncludeItemAccessCommonNameRuleCommonName;
+  geo?: AccessPoliciesUpdateRequestIncludeItemCountryRuleGeo;
+  devicePosture?: AccessPoliciesUpdateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
+  emailDomain?: AccessPoliciesUpdateRequestIncludeItemDomainRuleEmailDomain;
+  emailList?: AccessPoliciesUpdateRequestIncludeItemEmailListRuleEmailList;
+  email?: AccessPoliciesUpdateRequestIncludeItemEmailRuleEmail;
+  /** An empty object which matches on all users. */
+  everyone?: unknown;
+  externalEvaluation?: AccessPoliciesUpdateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
+  githubOrganization?: AccessPoliciesUpdateRequestIncludeItemGitHubOrganizationRuleGithubOrganization;
+  gsuite?: AccessPoliciesUpdateRequestIncludeItemGSuiteGroupRuleGsuite;
+  loginMethod?: AccessPoliciesUpdateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
+  ipList?: AccessPoliciesUpdateRequestIncludeItemIPListRuleIpList;
+  ip?: AccessPoliciesUpdateRequestIncludeItemIPRuleIp;
+  okta?: AccessPoliciesUpdateRequestIncludeItemOktaGroupRuleOkta;
+  saml?: AccessPoliciesUpdateRequestIncludeItemSAMLGroupRuleSaml;
+  oidc?: AccessPoliciesUpdateRequestIncludeItemAccessOIDCClaimRuleOidc;
+  serviceToken?: AccessPoliciesUpdateRequestIncludeItemServiceTokenRuleServiceToken;
+  linkedAppToken?: AccessPoliciesUpdateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  userRiskScore?: AccessPoliciesUpdateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScore;
+  cloudflareAccountMember?: AccessPoliciesUpdateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
+}
+export const AccessPoliciesUpdateRequestIncludeItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      group: S.optional(AccessPoliciesUpdateRequestIncludeItemGroupRuleGroup),
+      anyValidServiceToken: S.optional(
+        S.Unknown.pipe(T.Body("any_valid_service_token")),
+      ),
+      authContext: S.optional(
+        AccessPoliciesUpdateRequestIncludeItemAccessAuthContextRuleAuthContext.pipe(
+          T.Body("auth_context"),
+        ),
+      ),
+      authMethod: S.optional(
+        AccessPoliciesUpdateRequestIncludeItemAuthenticationMethodRuleAuthMethod.pipe(
+          T.Body("auth_method"),
+        ),
+      ),
+      azureAD: S.optional(
+        AccessPoliciesUpdateRequestIncludeItemAzureGroupRuleAzureAD,
+      ),
+      certificate: S.optional(S.Unknown),
+      commonName: S.optional(
+        AccessPoliciesUpdateRequestIncludeItemAccessCommonNameRuleCommonName.pipe(
+          T.Body("common_name"),
+        ),
+      ),
+      geo: S.optional(AccessPoliciesUpdateRequestIncludeItemCountryRuleGeo),
+      devicePosture: S.optional(
+        AccessPoliciesUpdateRequestIncludeItemAccessDevicePostureRuleDevicePosture.pipe(
+          T.Body("device_posture"),
+        ),
+      ),
+      emailDomain: S.optional(
+        AccessPoliciesUpdateRequestIncludeItemDomainRuleEmailDomain.pipe(
+          T.Body("email_domain"),
+        ),
+      ),
+      emailList: S.optional(
+        AccessPoliciesUpdateRequestIncludeItemEmailListRuleEmailList.pipe(
+          T.Body("email_list"),
+        ),
+      ),
+      email: S.optional(AccessPoliciesUpdateRequestIncludeItemEmailRuleEmail),
+      everyone: S.optional(S.Unknown),
+      externalEvaluation: S.optional(
+        AccessPoliciesUpdateRequestIncludeItemExternalEvaluationRuleExternalEvaluation.pipe(
+          T.Body("external_evaluation"),
+        ),
+      ),
+      githubOrganization: S.optional(
+        AccessPoliciesUpdateRequestIncludeItemGitHubOrganizationRuleGithubOrganization.pipe(
+          T.Body("github-organization"),
+        ),
+      ),
+      gsuite: S.optional(
+        AccessPoliciesUpdateRequestIncludeItemGSuiteGroupRuleGsuite,
+      ),
+      loginMethod: S.optional(
+        AccessPoliciesUpdateRequestIncludeItemAccessLoginMethodRuleLoginMethod.pipe(
+          T.Body("login_method"),
+        ),
+      ),
+      ipList: S.optional(
+        AccessPoliciesUpdateRequestIncludeItemIPListRuleIpList.pipe(
+          T.Body("ip_list"),
+        ),
+      ),
+      ip: S.optional(AccessPoliciesUpdateRequestIncludeItemIPRuleIp),
+      okta: S.optional(AccessPoliciesUpdateRequestIncludeItemOktaGroupRuleOkta),
+      saml: S.optional(AccessPoliciesUpdateRequestIncludeItemSAMLGroupRuleSaml),
+      oidc: S.optional(
+        AccessPoliciesUpdateRequestIncludeItemAccessOIDCClaimRuleOidc,
+      ),
+      serviceToken: S.optional(
+        AccessPoliciesUpdateRequestIncludeItemServiceTokenRuleServiceToken.pipe(
+          T.Body("service_token"),
+        ),
+      ),
+      linkedAppToken: S.optional(
+        AccessPoliciesUpdateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken.pipe(
+          T.Body("linked_app_token"),
+        ),
+      ),
+      userRiskScore: S.optional(
+        AccessPoliciesUpdateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScore.pipe(
+          T.Body("user_risk_score"),
+        ),
+      ),
+      cloudflareAccountMember: S.optional(
+        AccessPoliciesUpdateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember.pipe(
+          T.Body("cloudflare_account_member"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "AccessPoliciesUpdateRequestIncludeItem",
+}) as any as S.Schema<AccessPoliciesUpdateRequestIncludeItem>;
 
 export type AccessPoliciesUpdateRequestIncludeList =
   ReadonlyArray<AccessPoliciesUpdateRequestIncludeItem>;
@@ -177259,64 +177891,12 @@ export const AccessPoliciesUpdateRequestExcludeItemAccessCloudflareAccountMember
       "AccessPoliciesUpdateRequestExcludeItemAccessCloudflareAccountMemberRule",
   }) as any as S.Schema<AccessPoliciesUpdateRequestExcludeItemAccessCloudflareAccountMemberRule>;
 
-export type AccessPoliciesUpdateRequestExcludeItem =
-  | AccessPoliciesUpdateRequestExcludeItemGroupRule
-  | AccessPoliciesUpdateRequestExcludeItemAnyValidServiceTokenRule
-  | AccessPoliciesUpdateRequestExcludeItemAccessAuthContextRule
-  | AccessPoliciesUpdateRequestExcludeItemAuthenticationMethodRule
-  | AccessPoliciesUpdateRequestExcludeItemAzureGroupRule
-  | AccessPoliciesUpdateRequestExcludeItemCertificateRule
-  | AccessPoliciesUpdateRequestExcludeItemAccessCommonNameRule
-  | AccessPoliciesUpdateRequestExcludeItemCountryRule
-  | AccessPoliciesUpdateRequestExcludeItemAccessDevicePostureRule
-  | AccessPoliciesUpdateRequestExcludeItemDomainRule
-  | AccessPoliciesUpdateRequestExcludeItemEmailListRule
-  | AccessPoliciesUpdateRequestExcludeItemEmailRule
-  | AccessPoliciesUpdateRequestExcludeItemEveryoneRule
-  | AccessPoliciesUpdateRequestExcludeItemExternalEvaluationRule
-  | AccessPoliciesUpdateRequestExcludeItemGitHubOrganizationRule
-  | AccessPoliciesUpdateRequestExcludeItemGSuiteGroupRule
-  | AccessPoliciesUpdateRequestExcludeItemAccessLoginMethodRule
-  | AccessPoliciesUpdateRequestExcludeItemIPListRule
-  | AccessPoliciesUpdateRequestExcludeItemIPRule
-  | AccessPoliciesUpdateRequestExcludeItemOktaGroupRule
-  | AccessPoliciesUpdateRequestExcludeItemSAMLGroupRule
-  | AccessPoliciesUpdateRequestExcludeItemAccessOIDCClaimRule
-  | AccessPoliciesUpdateRequestExcludeItemServiceTokenRule
-  | AccessPoliciesUpdateRequestExcludeItemAccessLinkedAppTokenRule
-  | AccessPoliciesUpdateRequestExcludeItemAccessUserRiskScoreRule
-  | AccessPoliciesUpdateRequestExcludeItemAccessCloudflareAccountMemberRule;
-export const AccessPoliciesUpdateRequestExcludeItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-    ]),
-  );
+export interface AccessPoliciesUpdateRequestExcludeItem {}
+export const AccessPoliciesUpdateRequestExcludeItem = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "AccessPoliciesUpdateRequestExcludeItem",
+}) as any as S.Schema<AccessPoliciesUpdateRequestExcludeItem>;
 
 export type AccessPoliciesUpdateRequestExcludeList =
   ReadonlyArray<AccessPoliciesUpdateRequestExcludeItem>;
@@ -177524,64 +178104,12 @@ export const AccessPoliciesUpdateRequestRequireItemAccessCloudflareAccountMember
       "AccessPoliciesUpdateRequestRequireItemAccessCloudflareAccountMemberRule",
   }) as any as S.Schema<AccessPoliciesUpdateRequestRequireItemAccessCloudflareAccountMemberRule>;
 
-export type AccessPoliciesUpdateRequestRequireItem =
-  | AccessPoliciesUpdateRequestRequireItemGroupRule
-  | AccessPoliciesUpdateRequestRequireItemAnyValidServiceTokenRule
-  | AccessPoliciesUpdateRequestRequireItemAccessAuthContextRule
-  | AccessPoliciesUpdateRequestRequireItemAuthenticationMethodRule
-  | AccessPoliciesUpdateRequestRequireItemAzureGroupRule
-  | AccessPoliciesUpdateRequestRequireItemCertificateRule
-  | AccessPoliciesUpdateRequestRequireItemAccessCommonNameRule
-  | AccessPoliciesUpdateRequestRequireItemCountryRule
-  | AccessPoliciesUpdateRequestRequireItemAccessDevicePostureRule
-  | AccessPoliciesUpdateRequestRequireItemDomainRule
-  | AccessPoliciesUpdateRequestRequireItemEmailListRule
-  | AccessPoliciesUpdateRequestRequireItemEmailRule
-  | AccessPoliciesUpdateRequestRequireItemEveryoneRule
-  | AccessPoliciesUpdateRequestRequireItemExternalEvaluationRule
-  | AccessPoliciesUpdateRequestRequireItemGitHubOrganizationRule
-  | AccessPoliciesUpdateRequestRequireItemGSuiteGroupRule
-  | AccessPoliciesUpdateRequestRequireItemAccessLoginMethodRule
-  | AccessPoliciesUpdateRequestRequireItemIPListRule
-  | AccessPoliciesUpdateRequestRequireItemIPRule
-  | AccessPoliciesUpdateRequestRequireItemOktaGroupRule
-  | AccessPoliciesUpdateRequestRequireItemSAMLGroupRule
-  | AccessPoliciesUpdateRequestRequireItemAccessOIDCClaimRule
-  | AccessPoliciesUpdateRequestRequireItemServiceTokenRule
-  | AccessPoliciesUpdateRequestRequireItemAccessLinkedAppTokenRule
-  | AccessPoliciesUpdateRequestRequireItemAccessUserRiskScoreRule
-  | AccessPoliciesUpdateRequestRequireItemAccessCloudflareAccountMemberRule;
-export const AccessPoliciesUpdateRequestRequireItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-    ]),
-  );
+export interface AccessPoliciesUpdateRequestRequireItem {}
+export const AccessPoliciesUpdateRequestRequireItem = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "AccessPoliciesUpdateRequestRequireItem",
+}) as any as S.Schema<AccessPoliciesUpdateRequestRequireItem>;
 
 export type AccessPoliciesUpdateRequestRequireList =
   ReadonlyArray<AccessPoliciesUpdateRequestRequireItem>;
@@ -180413,91 +180941,245 @@ export const DevicesPostureUpdateRequestInputTeamsDevicesCustomS2sInputRequest =
       "DevicesPostureUpdateRequestInputTeamsDevicesCustomS2sInputRequest",
   }) as any as S.Schema<DevicesPostureUpdateRequestInputTeamsDevicesCustomS2sInputRequest>;
 
-export type DevicesPostureUpdateRequestInput =
-  | DevicesPostureUpdateRequestInputFileInput
-  | DevicesPostureUpdateRequestInputUniqueClientIDInput
-  | DevicesPostureUpdateRequestInputDomainJoinedInput
-  | DevicesPostureUpdateRequestInputOSVersionInput
-  | DevicesPostureUpdateRequestInputFirewallInput
-  | DevicesPostureUpdateRequestInputSentineloneInput
-  | DevicesPostureUpdateRequestInputTeamsDevicesCarbonblackInputRequest
-  | DevicesPostureUpdateRequestInputTeamsDevicesAccessSerialNumberListInputRequest
-  | DevicesPostureUpdateRequestInputDiskEncryptionInput
-  | DevicesPostureUpdateRequestInputTeamsDevicesApplicationInputRequest
-  | DevicesPostureUpdateRequestInputClientCertificateInput
-  | DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequest
-  | DevicesPostureUpdateRequestInputTeamsDevicesAntivirusInputRequest
-  | DevicesPostureUpdateRequestInputWorkspaceOneInput
-  | DevicesPostureUpdateRequestInputCrowdstrikeInput
-  | DevicesPostureUpdateRequestInputIntuneInput
-  | DevicesPostureUpdateRequestInputKolideInput
-  | DevicesPostureUpdateRequestInputTaniumInput
-  | DevicesPostureUpdateRequestInputSentineloneS2sInput
-  | DevicesPostureUpdateRequestInputTeamsDevicesCustomS2sInputRequest;
-export const DevicesPostureUpdateRequestInput = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["operatingSystem", "path", "exists", "sha256", "thumbprint"],
-    ["id", "operatingSystem"],
-    ["operatingSystem", "domain"],
-    [
-      "operatingSystem",
-      "operator",
-      "version",
-      "osDistroName",
-      "osDistroRevision",
-      "osVersionExtra",
-    ],
-    ["enabled", "operatingSystem"],
-    ["operatingSystem", "path", "sha256", "thumbprint"],
-    ["operatingSystem", "path", "sha256", "thumbprint"],
-    ["id"],
-    ["checkDisks", "requireAll"],
-    ["operatingSystem", "path", "sha256", "thumbprint"],
-    ["certificateId", "cn"],
-    [
-      "certificateId",
-      "checkPrivateKey",
-      "operatingSystem",
-      "cn",
-      "extendedKeyUsage",
-      "locations",
-      "subjectAlternativeNames",
-    ],
-    ["updateWindowDays"],
-    ["complianceStatus", "connectionId"],
-    [
-      "connectionId",
-      "lastSeen",
-      "operator",
-      "os",
-      "overall",
-      "sensorConfig",
-      "state",
-      "version",
-      "versionOperator",
-    ],
-    ["complianceStatus", "connectionId"],
-    ["connectionId", "authState", "countOperator", "issueCount"],
-    [
-      "connectionId",
-      "eidLastSeen",
-      "operator",
-      "riskLevel",
-      "scoreOperator",
-      "totalScore",
-    ],
-    [
-      "connectionId",
-      "activeThreats",
-      "infected",
-      "isActive",
-      "networkStatus",
-      "operationalState",
-      "operator",
-    ],
-    ["connectionId", "operator", "score"],
-  ]),
-);
+export interface DevicesPostureUpdateRequestInput {
+  /** Operating system. */
+  operatingSystem?:
+    | DevicesPostureUpdateRequestInputFileInputOperatingSystem
+    | (string & {})
+    | DevicesPostureUpdateRequestInputUniqueClientIDInputOperatingSystem
+    | (string & {})
+    | DevicesPostureUpdateRequestInputDomainJoinedInputOperatingSystem
+    | (string & {})
+    | DevicesPostureUpdateRequestInputOSVersionInputOperatingSystem
+    | (string & {})
+    | DevicesPostureUpdateRequestInputFirewallInputOperatingSystem
+    | (string & {})
+    | DevicesPostureUpdateRequestInputSentineloneInputOperatingSystem
+    | (string & {})
+    | DevicesPostureUpdateRequestInputTeamsDevicesCarbonblackInputRequestOperatingSystem
+    | (string & {})
+    | DevicesPostureUpdateRequestInputTeamsDevicesApplicationInputRequestOperatingSystem
+    | (string & {})
+    | DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestOperatingSystem
+    | (string & {});
+  /** File path. */
+  path?: string;
+  /** Whether or not file exists. */
+  exists?: boolean;
+  /** SHA-256. */
+  sha256?: string;
+  /** Signing certificate thumbprint. */
+  thumbprint?: string;
+  /** List ID. */
+  id?: string;
+  /** Domain. */
+  domain?: string;
+  /** Operator. */
+  operator?:
+    | DevicesPostureUpdateRequestInputOSVersionInputOperator
+    | (string & {})
+    | DevicesPostureUpdateRequestInputCrowdstrikeInputOperator
+    | (string & {})
+    | DevicesPostureUpdateRequestInputTaniumInputOperator
+    | (string & {})
+    | DevicesPostureUpdateRequestInputSentineloneS2sInputOperator
+    | (string & {})
+    | DevicesPostureUpdateRequestInputTeamsDevicesCustomS2sInputRequestOperator
+    | (string & {});
+  /** Version of OS. */
+  version?: string;
+  /** Operating System Distribution Name (linux only). */
+  osDistroName?: string;
+  /** Version of OS Distribution (linux only). */
+  osDistroRevision?: string;
+  /** Additional operating system version details. For Windows, the UBR (Update Build Revision). For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. */
+  osVersionExtra?: string;
+  /** Enabled. */
+  enabled?: boolean;
+  /** List of volume names to be checked for encryption. */
+  checkDisks?: DevicesPostureUpdateRequestInputDiskEncryptionInputCheckDisksList;
+  /** Whether to check all disks for encryption. */
+  requireAll?: boolean;
+  /** UUID of Cloudflare managed certificate. */
+  certificateId?: string;
+  /** Common Name that is protected by the certificate. */
+  cn?: string;
+  /** Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key. */
+  checkPrivateKey?: boolean;
+  /** List of values indicating purposes for which the certificate public key can be used. */
+  extendedKeyUsage?: DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestExtendedKeyUsageList;
+  locations?: DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestLocations;
+  /** List of certificate Subject Alternative Names. */
+  subjectAlternativeNames?: DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestSubjectAlternativeNamesList;
+  /** Number of days that the antivirus should be updated within. */
+  updateWindowDays?: number;
+  /** Compliance Status. */
+  complianceStatus?:
+    | DevicesPostureUpdateRequestInputWorkspaceOneInputComplianceStatus
+    | (string & {})
+    | DevicesPostureUpdateRequestInputIntuneInputComplianceStatus
+    | (string & {});
+  /** Posture Integration ID. */
+  connectionId?: string;
+  /** For more details on last seen, please refer to the Crowdstrike documentation. */
+  lastSeen?: string;
+  /** Os Version. */
+  os?: string;
+  /** Overall. */
+  overall?: string;
+  /** SensorConfig. */
+  sensorConfig?: string;
+  /** For more details on state, please refer to the Crowdstrike documentation. */
+  state?: DevicesPostureUpdateRequestInputCrowdstrikeInputState | (string & {});
+  /** Version Operator. */
+  versionOperator?:
+    | DevicesPostureUpdateRequestInputCrowdstrikeInputVersionOperator
+    | (string & {});
+  /** The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states. */
+  authState?: DevicesPostureUpdateRequestInputKolideInputAuthStateList;
+  /** Count Operator. */
+  countOperator?:
+    | DevicesPostureUpdateRequestInputKolideInputCountOperator
+    | (string & {});
+  /** The Number of Issues. */
+  issueCount?: string;
+  /** For more details on eid last seen, refer to the Tanium documentation. */
+  eidLastSeen?: string;
+  /** For more details on risk level, refer to the Tanium documentation. */
+  riskLevel?:
+    | DevicesPostureUpdateRequestInputTaniumInputRiskLevel
+    | (string & {});
+  /** Score Operator. */
+  scoreOperator?:
+    | DevicesPostureUpdateRequestInputTaniumInputScoreOperator
+    | (string & {});
+  /** For more details on total score, refer to the Tanium documentation. */
+  totalScore?: number;
+  /** The Number of active threats. */
+  activeThreats?: number;
+  /** Whether device is infected. */
+  infected?: boolean;
+  /** Whether device is active. */
+  isActive?: boolean;
+  /** Network status of device. */
+  networkStatus?:
+    | DevicesPostureUpdateRequestInputSentineloneS2sInputNetworkStatus
+    | (string & {});
+  /** Agent operational state. */
+  operationalState?:
+    | DevicesPostureUpdateRequestInputSentineloneS2sInputOperationalState
+    | (string & {});
+  /** A value between 0-100 assigned to devices set by the 3rd party posture provider. */
+  score?: number;
+}
+export const DevicesPostureUpdateRequestInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    operatingSystem: S.optional(
+      S.Union(
+        DevicesPostureUpdateRequestInputFileInputOperatingSystem,
+        DevicesPostureUpdateRequestInputUniqueClientIDInputOperatingSystem,
+        DevicesPostureUpdateRequestInputDomainJoinedInputOperatingSystem,
+        DevicesPostureUpdateRequestInputOSVersionInputOperatingSystem,
+        DevicesPostureUpdateRequestInputFirewallInputOperatingSystem,
+        DevicesPostureUpdateRequestInputSentineloneInputOperatingSystem,
+        DevicesPostureUpdateRequestInputTeamsDevicesCarbonblackInputRequestOperatingSystem,
+        DevicesPostureUpdateRequestInputTeamsDevicesApplicationInputRequestOperatingSystem,
+        DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestOperatingSystem,
+      ).pipe(T.Body("operating_system")),
+    ),
+    path: S.optional(S.String),
+    exists: S.optional(S.Boolean),
+    sha256: S.optional(S.String),
+    thumbprint: S.optional(S.String),
+    id: S.optional(S.String),
+    domain: S.optional(S.String),
+    operator: S.optional(
+      S.Union(
+        DevicesPostureUpdateRequestInputOSVersionInputOperator,
+        DevicesPostureUpdateRequestInputCrowdstrikeInputOperator,
+        DevicesPostureUpdateRequestInputTaniumInputOperator,
+        DevicesPostureUpdateRequestInputSentineloneS2sInputOperator,
+        DevicesPostureUpdateRequestInputTeamsDevicesCustomS2sInputRequestOperator,
+      ),
+    ),
+    version: S.optional(S.String),
+    osDistroName: S.optional(S.String.pipe(T.Body("os_distro_name"))),
+    osDistroRevision: S.optional(S.String.pipe(T.Body("os_distro_revision"))),
+    osVersionExtra: S.optional(S.String.pipe(T.Body("os_version_extra"))),
+    enabled: S.optional(S.Boolean),
+    checkDisks: S.optional(
+      DevicesPostureUpdateRequestInputDiskEncryptionInputCheckDisksList,
+    ),
+    requireAll: S.optional(S.Boolean),
+    certificateId: S.optional(S.String.pipe(T.Body("certificate_id"))),
+    cn: S.optional(S.String),
+    checkPrivateKey: S.optional(S.Boolean.pipe(T.Body("check_private_key"))),
+    extendedKeyUsage: S.optional(
+      DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestExtendedKeyUsageList.pipe(
+        T.Body("extended_key_usage"),
+      ),
+    ),
+    locations: S.optional(
+      DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestLocations,
+    ),
+    subjectAlternativeNames: S.optional(
+      DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestSubjectAlternativeNamesList.pipe(
+        T.Body("subject_alternative_names"),
+      ),
+    ),
+    updateWindowDays: S.optional(S.Number.pipe(T.Body("update_window_days"))),
+    complianceStatus: S.optional(
+      S.Union(
+        DevicesPostureUpdateRequestInputWorkspaceOneInputComplianceStatus,
+        DevicesPostureUpdateRequestInputIntuneInputComplianceStatus,
+      ).pipe(T.Body("compliance_status")),
+    ),
+    connectionId: S.optional(S.String.pipe(T.Body("connection_id"))),
+    lastSeen: S.optional(S.String.pipe(T.Body("last_seen"))),
+    os: S.optional(S.String),
+    overall: S.optional(S.String),
+    sensorConfig: S.optional(S.String.pipe(T.Body("sensor_config"))),
+    state: S.optional(DevicesPostureUpdateRequestInputCrowdstrikeInputState),
+    versionOperator: S.optional(
+      DevicesPostureUpdateRequestInputCrowdstrikeInputVersionOperator,
+    ),
+    authState: S.optional(
+      DevicesPostureUpdateRequestInputKolideInputAuthStateList.pipe(
+        T.Body("auth_state"),
+      ),
+    ),
+    countOperator: S.optional(
+      DevicesPostureUpdateRequestInputKolideInputCountOperator,
+    ),
+    issueCount: S.optional(S.String.pipe(T.Body("issue_count"))),
+    eidLastSeen: S.optional(S.String.pipe(T.Body("eid_last_seen"))),
+    riskLevel: S.optional(
+      DevicesPostureUpdateRequestInputTaniumInputRiskLevel.pipe(
+        T.Body("risk_level"),
+      ),
+    ),
+    scoreOperator: S.optional(
+      DevicesPostureUpdateRequestInputTaniumInputScoreOperator,
+    ),
+    totalScore: S.optional(S.Number.pipe(T.Body("total_score"))),
+    activeThreats: S.optional(S.Number.pipe(T.Body("active_threats"))),
+    infected: S.optional(S.Boolean),
+    isActive: S.optional(S.Boolean.pipe(T.Body("is_active"))),
+    networkStatus: S.optional(
+      DevicesPostureUpdateRequestInputSentineloneS2sInputNetworkStatus.pipe(
+        T.Body("network_status"),
+      ),
+    ),
+    operationalState: S.optional(
+      DevicesPostureUpdateRequestInputSentineloneS2sInputOperationalState.pipe(
+        T.Body("operational_state"),
+      ),
+    ),
+    score: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DevicesPostureUpdateRequestInput",
+}) as any as S.Schema<DevicesPostureUpdateRequestInput>;
 
 export type DevicesPostureUpdateRequestMatchItemPlatform =
   | "windows"
@@ -183096,16 +183778,26 @@ export const DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntry =
     identifier: "DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntry",
   }) as any as S.Schema<DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntry>;
 
-export type DlpProfilesCustomUpdateRequestEntriesItem =
-  | DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntryWithID
-  | DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntry;
+export interface DlpProfilesCustomUpdateRequestEntriesItem {
+  enabled: boolean;
+  entryId?: string;
+  name: string;
+  pattern: DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntryWithIDPattern;
+  description?: string;
+}
 export const DlpProfilesCustomUpdateRequestEntriesItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["enabled", "entryId", "name", "pattern", "description"],
-      ["enabled", "name", "pattern", "description"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      entryId: S.optional(S.String.pipe(T.Body("entry_id"))),
+      name: S.String,
+      pattern:
+        DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntryWithIDPattern,
+      description: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DlpProfilesCustomUpdateRequestEntriesItem",
+  }) as any as S.Schema<DlpProfilesCustomUpdateRequestEntriesItem>;
 
 export type DlpProfilesCustomUpdateRequestEntriesList =
   ReadonlyArray<DlpProfilesCustomUpdateRequestEntriesItem>;
@@ -188351,84 +189043,143 @@ export const IdentityProvidersUpdateRequestConfigAccessCloudflare =
     identifier: "IdentityProvidersUpdateRequestConfigAccessCloudflare",
   }) as any as S.Schema<IdentityProvidersUpdateRequestConfigAccessCloudflare>;
 
-export type IdentityProvidersUpdateRequestConfig =
-  | IdentityProvidersUpdateRequestConfigAzureAD
-  | IdentityProvidersUpdateRequestConfigAccessCentrify
-  | IdentityProvidersUpdateRequestConfigAccessFacebook
-  | IdentityProvidersUpdateRequestConfigAccessGoogle
-  | IdentityProvidersUpdateRequestConfigAccessGoogleApps
-  | IdentityProvidersUpdateRequestConfigAccessOIDC
-  | IdentityProvidersUpdateRequestConfigAccessOkta
-  | IdentityProvidersUpdateRequestConfigAccessOnelogin
-  | IdentityProvidersUpdateRequestConfigAccessPingone
-  | IdentityProvidersUpdateRequestConfigAccessSAML
-  | IdentityProvidersUpdateRequestConfigAccessOnetimepin
-  | IdentityProvidersUpdateRequestConfigAccessCloudflare;
-export const IdentityProvidersUpdateRequestConfig =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [
-        "claims",
-        "clientId",
-        "clientSecret",
-        "conditionalAccessEnabled",
-        "directoryId",
-        "emailClaimName",
-        "prompt",
-        "supportGroups",
-      ],
-      [
-        "centrifyAccount",
-        "centrifyAppId",
-        "claims",
-        "clientId",
-        "clientSecret",
-        "emailClaimName",
-      ],
-      ["clientId", "clientSecret"],
-      ["claims", "clientId", "clientSecret", "emailClaimName"],
-      ["appsDomain", "claims", "clientId", "clientSecret", "emailClaimName"],
-      [
-        "authUrl",
-        "certsUrl",
-        "claims",
-        "clientId",
-        "clientSecret",
-        "emailClaimName",
-        "pkceEnabled",
-        "scopes",
-        "tokenUrl",
-      ],
-      [
-        "authorizationServerId",
-        "claims",
-        "clientId",
-        "clientSecret",
-        "emailClaimName",
-        "oktaAccount",
-      ],
-      [
-        "claims",
-        "clientId",
-        "clientSecret",
-        "emailClaimName",
-        "oneloginAccount",
-      ],
-      ["claims", "clientId", "clientSecret", "emailClaimName", "pingEnvId"],
-      [
-        "attributes",
-        "emailAttributeName",
-        "enableEncryption",
-        "headerAttributes",
-        "idpPublicCerts",
-        "issuerUrl",
-        "signRequest",
-        "ssoTargetUrl",
-      ],
-      ["redirectUrl"],
-      ["redirectUrl", "restrictToAccountMembers"],
-    ]),
-  );
+export interface IdentityProvidersUpdateRequestConfig {
+  /** Custom claims */
+  claims?:
+    | IdentityProvidersUpdateRequestConfigAzureADClaimsList
+    | IdentityProvidersUpdateRequestConfigAccessCentrifyClaimsList
+    | IdentityProvidersUpdateRequestConfigAccessGoogleClaimsList
+    | IdentityProvidersUpdateRequestConfigAccessGoogleAppsClaimsList
+    | IdentityProvidersUpdateRequestConfigAccessOIDCClaimsList
+    | IdentityProvidersUpdateRequestConfigAccessOktaClaimsList
+    | IdentityProvidersUpdateRequestConfigAccessOneloginClaimsList
+    | IdentityProvidersUpdateRequestConfigAccessPingoneClaimsList;
+  /** Your OAuth Client ID */
+  clientId?: string;
+  /** Your OAuth Client Secret */
+  clientSecret?: string;
+  /** Should Cloudflare try to load authentication contexts from your account */
+  conditionalAccessEnabled?: boolean;
+  /** Your Azure directory uuid */
+  directoryId?: string;
+  /** The claim name for email in the id_token response. */
+  emailClaimName?: string;
+  /** Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction_required error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether. */
+  prompt?: IdentityProvidersUpdateRequestConfigAzureADPrompt | (string & {});
+  /** Should Cloudflare try to load groups from your account */
+  supportGroups?: boolean;
+  /** Your centrify account url */
+  centrifyAccount?: string;
+  /** Your centrify app id */
+  centrifyAppId?: string;
+  /** Your companies TLD */
+  appsDomain?: string;
+  /** The authorization_endpoint URL of your IdP */
+  authUrl?: string;
+  /** The jwks_uri endpoint of your IdP to allow the IdP keys to sign the tokens */
+  certsUrl?: string;
+  /** Enable Proof Key for Code Exchange (PKCE) */
+  pkceEnabled?: boolean;
+  /** OAuth scopes */
+  scopes?: IdentityProvidersUpdateRequestConfigAccessOIDCScopesList;
+  /** The token_endpoint URL of your IdP */
+  tokenUrl?: string;
+  /** Your okta authorization server id */
+  authorizationServerId?: string;
+  /** Your okta account url */
+  oktaAccount?: string;
+  /** Your OneLogin account url */
+  oneloginAccount?: string;
+  /** Your PingOne environment identifier */
+  pingEnvId?: string;
+  /** A list of SAML attribute names that will be added to your signed JWT token and can be used in SAML policy rules. */
+  attributes?: IdentityProvidersUpdateRequestConfigAccessSAMLAttributesList;
+  /** The attribute name for email in the SAML response. */
+  emailAttributeName?: string;
+  /** Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt */
+  enableEncryption?: boolean;
+  /** Add a list of attribute names that will be returned in the response header from the Access callback. */
+  headerAttributes?: IdentityProvidersUpdateRequestConfigAccessSAMLHeaderAttributesList;
+  /** X509 certificate to verify the signature in the SAML authentication response */
+  idpPublicCerts?: IdentityProvidersUpdateRequestConfigAccessSAMLIdpPublicCertsList;
+  /** IdP Entity ID or Issuer URL */
+  issuerUrl?: string;
+  /** Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints. */
+  signRequest?: boolean;
+  /** URL to send the SAML authentication requests to */
+  ssoTargetUrl?: string;
+  redirectUrl?: string;
+  /** When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies. */
+  restrictToAccountMembers?: boolean;
+}
+export const IdentityProvidersUpdateRequestConfig = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      claims: S.optional(
+        S.Union(
+          IdentityProvidersUpdateRequestConfigAzureADClaimsList,
+          IdentityProvidersUpdateRequestConfigAccessCentrifyClaimsList,
+          IdentityProvidersUpdateRequestConfigAccessGoogleClaimsList,
+          IdentityProvidersUpdateRequestConfigAccessGoogleAppsClaimsList,
+          IdentityProvidersUpdateRequestConfigAccessOIDCClaimsList,
+          IdentityProvidersUpdateRequestConfigAccessOktaClaimsList,
+          IdentityProvidersUpdateRequestConfigAccessOneloginClaimsList,
+          IdentityProvidersUpdateRequestConfigAccessPingoneClaimsList,
+        ),
+      ),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+      conditionalAccessEnabled: S.optional(
+        S.Boolean.pipe(T.Body("conditional_access_enabled")),
+      ),
+      directoryId: S.optional(S.String.pipe(T.Body("directory_id"))),
+      emailClaimName: S.optional(S.String.pipe(T.Body("email_claim_name"))),
+      prompt: S.optional(IdentityProvidersUpdateRequestConfigAzureADPrompt),
+      supportGroups: S.optional(S.Boolean.pipe(T.Body("support_groups"))),
+      centrifyAccount: S.optional(S.String.pipe(T.Body("centrify_account"))),
+      centrifyAppId: S.optional(S.String.pipe(T.Body("centrify_app_id"))),
+      appsDomain: S.optional(S.String.pipe(T.Body("apps_domain"))),
+      authUrl: S.optional(S.String.pipe(T.Body("auth_url"))),
+      certsUrl: S.optional(S.String.pipe(T.Body("certs_url"))),
+      pkceEnabled: S.optional(S.Boolean.pipe(T.Body("pkce_enabled"))),
+      scopes: S.optional(
+        IdentityProvidersUpdateRequestConfigAccessOIDCScopesList,
+      ),
+      tokenUrl: S.optional(S.String.pipe(T.Body("token_url"))),
+      authorizationServerId: S.optional(
+        S.String.pipe(T.Body("authorization_server_id")),
+      ),
+      oktaAccount: S.optional(S.String.pipe(T.Body("okta_account"))),
+      oneloginAccount: S.optional(S.String.pipe(T.Body("onelogin_account"))),
+      pingEnvId: S.optional(S.String.pipe(T.Body("ping_env_id"))),
+      attributes: S.optional(
+        IdentityProvidersUpdateRequestConfigAccessSAMLAttributesList,
+      ),
+      emailAttributeName: S.optional(
+        S.String.pipe(T.Body("email_attribute_name")),
+      ),
+      enableEncryption: S.optional(S.Boolean.pipe(T.Body("enable_encryption"))),
+      headerAttributes: S.optional(
+        IdentityProvidersUpdateRequestConfigAccessSAMLHeaderAttributesList.pipe(
+          T.Body("header_attributes"),
+        ),
+      ),
+      idpPublicCerts: S.optional(
+        IdentityProvidersUpdateRequestConfigAccessSAMLIdpPublicCertsList.pipe(
+          T.Body("idp_public_certs"),
+        ),
+      ),
+      issuerUrl: S.optional(S.String.pipe(T.Body("issuer_url"))),
+      signRequest: S.optional(S.Boolean.pipe(T.Body("sign_request"))),
+      ssoTargetUrl: S.optional(S.String.pipe(T.Body("sso_target_url"))),
+      redirectUrl: S.optional(S.String.pipe(T.Body("redirect_url"))),
+      restrictToAccountMembers: S.optional(
+        S.Boolean.pipe(T.Body("restrict_to_account_members")),
+      ),
+    }),
+).annotate({
+  identifier: "IdentityProvidersUpdateRequestConfig",
+}) as any as S.Schema<IdentityProvidersUpdateRequestConfig>;
 
 export type IdentityProvidersUpdateRequestTypeAzureAD =
   | "onetimepin"
