@@ -73,8 +73,6 @@ export interface CreateRecipientRequest {
   accountId: string;
   /** Share identifier tag. */
   shareId: string;
-  /** Deprecated alias for `recipient_account_id`. Use `recipient_account_id` instead. */
-  accountId2?: string;
   /** Organization identifier. */
   organizationId?: string;
   /** The account that will receive the share. */
@@ -84,7 +82,6 @@ export const CreateRecipientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     shareId: S.String.pipe(T.Label("share_id")),
-    accountId2: S.optional(S.String.pipe(T.Body("account_id"))),
     organizationId: S.optional(S.String.pipe(T.Body("organization_id"))),
     recipientAccountId: S.optional(
       S.String.pipe(T.Body("recipient_account_id")),

@@ -1889,7 +1889,6 @@ export interface UpdateDirectoryServiceRequest {
   createdAt?: string;
   httpPort?: number;
   httpsPort?: number;
-  serviceId2?: string;
   /** TLS settings for a connectivity service. */
   tlsSettings?: DirectoryServicesUpdateRequestTlsSettings;
   updatedAt?: string;
@@ -1906,7 +1905,6 @@ export const UpdateDirectoryServiceRequest = /*@__PURE__*/ S.suspend(() =>
     createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
     httpPort: S.optional(S.Number.pipe(T.Body("http_port"))),
     httpsPort: S.optional(S.Number.pipe(T.Body("https_port"))),
-    serviceId2: S.optional(S.String.pipe(T.Body("service_id"))),
     tlsSettings: S.optional(
       DirectoryServicesUpdateRequestTlsSettings.pipe(T.Body("tls_settings")),
     ),

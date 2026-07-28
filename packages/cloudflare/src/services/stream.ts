@@ -3118,16 +3118,13 @@ export interface GetWebhookResponse {
   modified?: string;
   /** The URL where webhooks will be sent. */
   notificationUrl?: string;
-  /** The URL where webhooks will be sent. */
-  notificationUrl2?: string;
   /** The secret used to verify webhook signatures. */
   secret?: string;
 }
 export const GetWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modified: S.optional(S.String),
-    notificationUrl: S.optional(S.String.pipe(T.Body("notification_url"))),
-    notificationUrl2: S.optional(S.String.pipe(T.Body("notificationUrl"))),
+    notificationUrl: S.optional(S.String),
     secret: S.optional(S.String),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -3728,14 +3725,11 @@ export interface PutWebhookRequest {
   accountId: string;
   /** The URL where webhooks will be sent. */
   notificationUrl?: string;
-  /** The URL where webhooks will be sent. */
-  notificationUrl2?: string;
 }
 export const PutWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    notificationUrl: S.optional(S.String.pipe(T.Body("notification_url"))),
-    notificationUrl2: S.optional(S.String.pipe(T.Body("notificationUrl"))),
+    notificationUrl: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -3755,16 +3749,13 @@ export interface PutWebhookResponse {
   modified?: string;
   /** The URL where webhooks will be sent. */
   notificationUrl?: string;
-  /** The URL where webhooks will be sent. */
-  notificationUrl2?: string;
   /** The secret used to verify webhook signatures. */
   secret?: string;
 }
 export const PutWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modified: S.optional(S.String),
-    notificationUrl: S.optional(S.String.pipe(T.Body("notification_url"))),
-    notificationUrl2: S.optional(S.String.pipe(T.Body("notificationUrl"))),
+    notificationUrl: S.optional(S.String),
     secret: S.optional(S.String),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({

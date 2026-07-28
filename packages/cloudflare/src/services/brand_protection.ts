@@ -135,9 +135,9 @@ export interface CreateQueryRequest {
   tag?: string;
   maxTime?: string;
   minTime?: string;
-  scan2?: boolean;
   stringMatches?: unknown;
-  tag2?: string;
+  bodyScan?: boolean;
+  bodyTag?: string;
 }
 export const CreateQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -147,9 +147,9 @@ export const CreateQueryRequest = /*@__PURE__*/ S.suspend(() =>
     tag: S.optional(S.String.pipe(T.Query())),
     maxTime: S.optional(S.String.pipe(T.Body("max_time"))),
     minTime: S.optional(S.String.pipe(T.Body("min_time"))),
-    scan2: S.optional(S.Boolean.pipe(T.Body("scan"))),
     stringMatches: S.optional(S.Unknown.pipe(T.Body("string_matches"))),
-    tag2: S.optional(S.String.pipe(T.Body("tag"))),
+    bodyScan: S.optional(S.Boolean.pipe(T.Body("scan"))),
+    bodyTag: S.optional(S.String.pipe(T.Body("tag"))),
   })
     .pipe(
       T.Http({

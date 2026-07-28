@@ -335,13 +335,15 @@ export const InstancesChatCompletionsRequestMessagesItemRole =
   /*@__PURE__*/ S.String;
 
 export interface InstancesChatCompletionsRequestMessagesItem {
-  content: InstancesChatCompletionsRequestMessagesItemContent;
+  content?: InstancesChatCompletionsRequestMessagesItemContent | null;
   role: InstancesChatCompletionsRequestMessagesItemRole;
 }
 export const InstancesChatCompletionsRequestMessagesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      content: InstancesChatCompletionsRequestMessagesItemContent,
+      content: S.optional(
+        S.NullOr(InstancesChatCompletionsRequestMessagesItemContent),
+      ),
       role: InstancesChatCompletionsRequestMessagesItemRole,
     }),
   ).annotate({
@@ -1227,13 +1229,15 @@ export const NamespacesChatCompletionsRequestMessagesItemRole =
   /*@__PURE__*/ S.String;
 
 export interface NamespacesChatCompletionsRequestMessagesItem {
-  content: NamespacesChatCompletionsRequestMessagesItemContent;
+  content?: NamespacesChatCompletionsRequestMessagesItemContent | null;
   role: NamespacesChatCompletionsRequestMessagesItemRole;
 }
 export const NamespacesChatCompletionsRequestMessagesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      content: NamespacesChatCompletionsRequestMessagesItemContent,
+      content: S.optional(
+        S.NullOr(NamespacesChatCompletionsRequestMessagesItemContent),
+      ),
       role: NamespacesChatCompletionsRequestMessagesItemRole,
     }),
   ).annotate({
@@ -1641,13 +1645,15 @@ export const NamespacesInstancesChatCompletionsRequestMessagesItemRole =
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesChatCompletionsRequestMessagesItem {
-  content: NamespacesInstancesChatCompletionsRequestMessagesItemContent;
+  content?: NamespacesInstancesChatCompletionsRequestMessagesItemContent | null;
   role: NamespacesInstancesChatCompletionsRequestMessagesItemRole;
 }
 export const NamespacesInstancesChatCompletionsRequestMessagesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      content: NamespacesInstancesChatCompletionsRequestMessagesItemContent,
+      content: S.optional(
+        S.NullOr(NamespacesInstancesChatCompletionsRequestMessagesItemContent),
+      ),
       role: NamespacesInstancesChatCompletionsRequestMessagesItemRole,
     }),
   ).annotate({

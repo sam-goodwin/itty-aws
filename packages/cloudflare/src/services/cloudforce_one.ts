@@ -725,7 +725,6 @@ export interface CreateThreatEventRequest {
   event: string;
   raw: ThreatEventsCreateRequestRaw;
   tlp: string;
-  accountId2?: number;
   attacker?: string;
   attackerCountry?: string;
   datasetId?: string;
@@ -746,7 +745,6 @@ export const CreateThreatEventRequest = /*@__PURE__*/ S.suspend(() =>
     event: S.String,
     raw: ThreatEventsCreateRequestRaw,
     tlp: S.String,
-    accountId2: S.optional(S.Number.pipe(T.Body("accountId"))),
     attacker: S.optional(S.String),
     attackerCountry: S.optional(S.String),
     datasetId: S.optional(S.String),

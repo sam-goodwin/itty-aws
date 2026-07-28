@@ -232601,8 +232601,6 @@ export interface RevokeUsersOrganizationForAccountRequest {
   devices?: boolean;
   /** The email of the user to revoke. */
   email: string;
-  /** When set to `true`, all devices associated with the user will be revoked. */
-  devices2?: boolean;
   /** The uuid of the user to revoke. */
   userUid?: string;
   /** When set to `true`, the user will be required to re-authenticate to WARP for all Gateway policies that enforce a WARP client session duration. When `false`, the user’s WARP session will remain active */
@@ -232614,7 +232612,6 @@ export const RevokeUsersOrganizationForAccountRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       devices: S.optional(S.Boolean.pipe(T.Query())),
       email: S.String,
-      devices2: S.optional(S.Boolean.pipe(T.Body("devices"))),
       userUid: S.optional(S.String.pipe(T.Body("user_uid"))),
       warpSessionReauth: S.optional(
         S.Boolean.pipe(T.Body("warp_session_reauth")),
@@ -232647,8 +232644,6 @@ export interface RevokeUsersOrganizationForZoneRequest {
   devices?: boolean;
   /** The email of the user to revoke. */
   email: string;
-  /** When set to `true`, all devices associated with the user will be revoked. */
-  devices2?: boolean;
   /** The uuid of the user to revoke. */
   userUid?: string;
   /** When set to `true`, the user will be required to re-authenticate to WARP for all Gateway policies that enforce a WARP client session duration. When `false`, the user’s WARP session will remain active */
@@ -232660,7 +232655,6 @@ export const RevokeUsersOrganizationForZoneRequest = /*@__PURE__*/ S.suspend(
       zoneId: S.String.pipe(T.Label("zone_id")),
       devices: S.optional(S.Boolean.pipe(T.Query())),
       email: S.String,
-      devices2: S.optional(S.Boolean.pipe(T.Body("devices"))),
       userUid: S.optional(S.String.pipe(T.Body("user_uid"))),
       warpSessionReauth: S.optional(
         S.Boolean.pipe(T.Body("warp_session_reauth")),

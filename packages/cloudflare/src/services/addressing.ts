@@ -867,19 +867,19 @@ export interface DeleteAddressMapAccountRequest {
   accountId: string;
   /** Identifier of an Address Map. */
   addressMapId: string;
-  /** Identifier of a Cloudflare account. */
-  accountId2: string;
+  /** Identifier of the Cloudflare account to remove from the address map. */
+  memberAccountId: string;
 }
 export const DeleteAddressMapAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     addressMapId: S.String.pipe(T.Label("address_map_id")),
-    accountId2: S.String.pipe(T.Label("account_id_2")),
+    memberAccountId: S.String.pipe(T.Label("member_account_id")),
   })
     .pipe(
       T.Http({
         method: "DELETE",
-        uri: "/accounts/{account_id}/addressing/address_maps/{address_map_id}/accounts/{account_id}",
+        uri: "/accounts/{account_id}/addressing/address_maps/{address_map_id}/accounts/{member_account_id}",
         code: 200,
       }),
     )
@@ -2638,19 +2638,19 @@ export interface PutAddressMapAccountRequest {
   accountId: string;
   /** Identifier of an Address Map. */
   addressMapId: string;
-  /** Identifier of a Cloudflare account. */
-  accountId2: string;
+  /** Identifier of the Cloudflare account to add as a member of the address map. */
+  memberAccountId: string;
 }
 export const PutAddressMapAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     addressMapId: S.String.pipe(T.Label("address_map_id")),
-    accountId2: S.String.pipe(T.Label("account_id_2")),
+    memberAccountId: S.String.pipe(T.Label("member_account_id")),
   })
     .pipe(
       T.Http({
         method: "PUT",
-        uri: "/accounts/{account_id}/addressing/address_maps/{address_map_id}/accounts/{account_id}",
+        uri: "/accounts/{account_id}/addressing/address_maps/{address_map_id}/accounts/{member_account_id}",
         code: 200,
       }),
     )
