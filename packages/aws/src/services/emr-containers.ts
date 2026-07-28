@@ -294,7 +294,7 @@ export const JobDriver = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "JobDriver" }) as any as S.Schema<JobDriver>;
 export type TemplateParameterName = string;
-export type TemplateParameterDataType = "NUMBER" | "STRING";
+export type TemplateParameterDataType = "NUMBER" | "STRING" | (string & {});
 export const TemplateParameterDataType = /*@__PURE__*/ S.String;
 
 export interface TemplateParameterConfiguration {
@@ -396,7 +396,7 @@ export type EndpointType = string;
 export type ReleaseLabel = string;
 export type IAMRoleArn = string;
 export type ACMCertArn = string;
-export type AllowAWSToRetainLogs = "ENABLED" | "DISABLED";
+export type AllowAWSToRetainLogs = "ENABLED" | "DISABLED" | (string & {});
 export const AllowAWSToRetainLogs = /*@__PURE__*/ S.String;
 
 export interface ManagedLogs {
@@ -409,7 +409,7 @@ export const ManagedLogs = /*@__PURE__*/ S.suspend(() =>
     encryptionKeyArn: S.optional(S.String),
   }),
 ).annotate({ identifier: "ManagedLogs" }) as any as S.Schema<ManagedLogs>;
-export type PersistentAppUI = "ENABLED" | "DISABLED";
+export type PersistentAppUI = "ENABLED" | "DISABLED" | (string & {});
 export const PersistentAppUI = /*@__PURE__*/ S.String;
 
 export type LogGroupName = string;
@@ -533,7 +533,7 @@ export const CreateManagedEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateManagedEndpointResponse",
 }) as any as S.Schema<CreateManagedEndpointResponse>;
-export type ContainerProviderType = "EKS";
+export type ContainerProviderType = "EKS" | (string & {});
 export const ContainerProviderType = /*@__PURE__*/ S.String;
 
 export type ClusterId = string;
@@ -593,7 +593,7 @@ export const LakeFormationConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LakeFormationConfiguration",
 }) as any as S.Schema<LakeFormationConfiguration>;
-export type CertificateProviderType = "PEM";
+export type CertificateProviderType = "PEM" | (string & {});
 export const CertificateProviderType = /*@__PURE__*/ S.String;
 
 export type SecretsManagerArn = string;
@@ -857,7 +857,8 @@ export type JobRunState =
   | "FAILED"
   | "CANCELLED"
   | "CANCEL_PENDING"
-  | "COMPLETED";
+  | "COMPLETED"
+  | (string & {});
 export const JobRunState = /*@__PURE__*/ S.String;
 
 export type RequestIdentityUserArn = string;
@@ -865,7 +866,8 @@ export type FailureReason =
   | "INTERNAL_ERROR"
   | "USER_ERROR"
   | "VALIDATION_ERROR"
-  | "CLUSTER_UNAVAILABLE";
+  | "CLUSTER_UNAVAILABLE"
+  | (string & {});
 export const FailureReason = /*@__PURE__*/ S.String;
 
 export type JavaInteger = number;
@@ -1020,7 +1022,8 @@ export type EndpointState =
   | "ACTIVE"
   | "TERMINATING"
   | "TERMINATED"
-  | "TERMINATED_WITH_ERRORS";
+  | "TERMINATED_WITH_ERRORS"
+  | (string & {});
 export const EndpointState = /*@__PURE__*/ S.String;
 
 export type Base64Encoded = string;
@@ -1159,7 +1162,8 @@ export type VirtualClusterState =
   | "RUNNING"
   | "TERMINATING"
   | "TERMINATED"
-  | "ARRESTED";
+  | "ARRESTED"
+  | (string & {});
 export const VirtualClusterState = /*@__PURE__*/ S.String;
 
 export interface VirtualCluster {

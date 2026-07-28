@@ -108,7 +108,8 @@ export type SymptomSymptomTypeEnum =
   | "EXECUTE_TIMED_OUT"
   | "MESH_BUILD_FAIL"
   | "HBM_OUT_OF_MEMORY"
-  | "PROJECT_ABUSE";
+  | "PROJECT_ABUSE"
+  | (string & {});
 export const SymptomSymptomTypeEnum = /*@__PURE__*/ S.String;
 
 /** DEPRECATED: Please use TPU API v2alpha1 instead. A Symptom instance. */
@@ -167,7 +168,8 @@ export type NodeApiVersionEnum =
   | "API_VERSION_UNSPECIFIED"
   | "V1_ALPHA1"
   | "V1"
-  | "V2_ALPHA1";
+  | "V2_ALPHA1"
+  | (string & {});
 export const NodeApiVersionEnum = /*@__PURE__*/ S.String;
 
 export type NodeStateEnum =
@@ -186,7 +188,8 @@ export type NodeStateEnum =
   | "HIDING"
   | "HIDDEN"
   | "UNHIDING"
-  | "UNKNOWN";
+  | "UNKNOWN"
+  | (string & {});
 export const NodeStateEnum = /*@__PURE__*/ S.String;
 
 export type NodeHealthEnum =
@@ -195,7 +198,8 @@ export type NodeHealthEnum =
   | "DEPRECATED_UNHEALTHY"
   | "TIMEOUT"
   | "UNHEALTHY_TENSORFLOW"
-  | "UNHEALTHY_MAINTENANCE";
+  | "UNHEALTHY_MAINTENANCE"
+  | (string & {});
 export const NodeHealthEnum = /*@__PURE__*/ S.String;
 
 /** DEPRECATED: Please use TPU API v2alpha1 instead. A TPU instance. */

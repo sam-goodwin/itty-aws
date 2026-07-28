@@ -18,7 +18,8 @@ export type CustomerProfileConfigScopeEnum =
   | "group_1"
   | "group_2"
   | "group_3"
-  | "group_4";
+  | "group_4"
+  | (string & {});
 export const CustomerProfileConfigScopeEnum = /*@__PURE__*/ S.String;
 
 export interface CustomerProfileConfigsCreateRequest {

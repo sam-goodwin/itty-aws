@@ -319,7 +319,12 @@ export const AssociateSoftwareToImageBuilderResult = /*@__PURE__*/ S.suspend(
   identifier: "AssociateSoftwareToImageBuilderResult",
 }) as any as S.Schema<AssociateSoftwareToImageBuilderResult>;
 export type Username = string | redacted.Redacted<string>;
-export type AuthenticationType = "API" | "SAML" | "USERPOOL" | "AWS_AD";
+export type AuthenticationType =
+  | "API"
+  | "SAML"
+  | "USERPOOL"
+  | "AWS_AD"
+  | (string & {});
 export const AuthenticationType = /*@__PURE__*/ S.String;
 
 export interface UserStackAssociation {
@@ -357,7 +362,8 @@ export type UserStackAssociationErrorCode =
   | "STACK_NOT_FOUND"
   | "USER_NAME_NOT_FOUND"
   | "DIRECTORY_NOT_FOUND"
-  | "INTERNAL_ERROR";
+  | "INTERNAL_ERROR"
+  | (string & {});
 export const UserStackAssociationErrorCode = /*@__PURE__*/ S.String;
 
 export interface UserStackAssociationError {
@@ -474,7 +480,7 @@ export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
-export type PackagingType = "CUSTOM" | "APPSTREAM2";
+export type PackagingType = "CUSTOM" | "APPSTREAM2" | (string & {});
 export const PackagingType = /*@__PURE__*/ S.String;
 
 export interface CreateAppBlockRequest {
@@ -503,7 +509,7 @@ export const CreateAppBlockRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAppBlockRequest",
 }) as any as S.Schema<CreateAppBlockRequest>;
-export type AppBlockState = "INACTIVE" | "ACTIVE";
+export type AppBlockState = "INACTIVE" | "ACTIVE" | (string & {});
 export const AppBlockState = /*@__PURE__*/ S.String;
 
 export interface ErrorDetails {
@@ -568,7 +574,7 @@ export const CreateAppBlockResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAppBlockResult",
 }) as any as S.Schema<CreateAppBlockResult>;
-export type AppBlockBuilderPlatformType = "WINDOWS_SERVER_2019";
+export type AppBlockBuilderPlatformType = "WINDOWS_SERVER_2019" | (string & {});
 export const AppBlockBuilderPlatformType = /*@__PURE__*/ S.String;
 
 export type SubnetIdList = string[];
@@ -585,7 +591,7 @@ export const VpcConfig = /*@__PURE__*/ S.suspend(() =>
     SecurityGroupIds: S.optional(SecurityGroupIdList),
   }),
 ).annotate({ identifier: "VpcConfig" }) as any as S.Schema<VpcConfig>;
-export type AccessEndpointType = "STREAMING";
+export type AccessEndpointType = "STREAMING" | (string & {});
 export const AccessEndpointType = /*@__PURE__*/ S.String;
 
 export interface AccessEndpoint {
@@ -636,7 +642,8 @@ export type AppBlockBuilderState =
   | "STARTING"
   | "RUNNING"
   | "STOPPING"
-  | "STOPPED";
+  | "STOPPED"
+  | (string & {});
 export const AppBlockBuilderState = /*@__PURE__*/ S.String;
 
 export type FleetErrorCode =
@@ -670,7 +677,8 @@ export type FleetErrorCode =
   | "DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"
   | "DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"
   | "DOMAIN_JOIN_INTERNAL_SERVICE_ERROR"
-  | "VALIDATION_ERROR";
+  | "VALIDATION_ERROR"
+  | (string & {});
 export const FleetErrorCode = /*@__PURE__*/ S.String;
 
 export interface ResourceError {
@@ -687,7 +695,9 @@ export const ResourceError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceError" }) as any as S.Schema<ResourceError>;
 export type ResourceErrors = ResourceError[];
 export const ResourceErrors = /*@__PURE__*/ S.Array(ResourceError);
-export type AppBlockBuilderStateChangeReasonCode = "INTERNAL_ERROR";
+export type AppBlockBuilderStateChangeReasonCode =
+  | "INTERNAL_ERROR"
+  | (string & {});
 export const AppBlockBuilderStateChangeReasonCode = /*@__PURE__*/ S.String;
 
 export interface AppBlockBuilderStateChangeReason {
@@ -793,7 +803,8 @@ export type PlatformType =
   | "AMAZON_LINUX2"
   | "RHEL8"
   | "ROCKY_LINUX8"
-  | "UBUNTU_PRO_2404";
+  | "UBUNTU_PRO_2404"
+  | (string & {});
 export const PlatformType = /*@__PURE__*/ S.String;
 
 export type Platforms = PlatformType[];
@@ -904,7 +915,8 @@ export const ServiceAccountCredentials = /*@__PURE__*/ S.suspend(() =>
 export type CertificateBasedAuthStatus =
   | "DISABLED"
   | "ENABLED"
-  | "ENABLED_NO_DIRECTORY_LOGIN_FALLBACK";
+  | "ENABLED_NO_DIRECTORY_LOGIN_FALLBACK"
+  | (string & {});
 export const CertificateBasedAuthStatus = /*@__PURE__*/ S.String;
 
 export interface CertificateBasedAuthProperties {
@@ -973,7 +985,7 @@ export const CreateDirectoryConfigResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDirectoryConfigResult",
 }) as any as S.Schema<CreateDirectoryConfigResult>;
-export type AppVisibility = "ALL" | "ASSOCIATED";
+export type AppVisibility = "ALL" | "ASSOCIATED" | (string & {});
 export const AppVisibility = /*@__PURE__*/ S.String;
 
 export interface EntitlementAttribute {
@@ -1069,7 +1081,8 @@ export type ExportImageTaskState =
   | "EXPORTING"
   | "COMPLETED"
   | "FAILED"
-  | "TIMED_OUT";
+  | "TIMED_OUT"
+  | (string & {});
 export const ExportImageTaskState = /*@__PURE__*/ S.String;
 
 export type PhotonAmiId = string;
@@ -1112,7 +1125,7 @@ export const CreateExportImageTaskResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateExportImageTaskResult",
 }) as any as S.Schema<CreateExportImageTaskResult>;
-export type FleetType = "ALWAYS_ON" | "ON_DEMAND" | "ELASTIC";
+export type FleetType = "ALWAYS_ON" | "ON_DEMAND" | "ELASTIC" | (string & {});
 export const FleetType = /*@__PURE__*/ S.String;
 
 export interface ComputeCapacity {
@@ -1137,7 +1150,7 @@ export const DomainJoinInfo = /*@__PURE__*/ S.suspend(() =>
     OrganizationalUnitDistinguishedName: S.optional(S.String),
   }),
 ).annotate({ identifier: "DomainJoinInfo" }) as any as S.Schema<DomainJoinInfo>;
-export type StreamView = "APP" | "DESKTOP";
+export type StreamView = "APP" | "DESKTOP" | (string & {});
 export const StreamView = /*@__PURE__*/ S.String;
 
 export type UsbDeviceFilterString = string;
@@ -1237,7 +1250,12 @@ export const ComputeCapacityStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ComputeCapacityStatus",
 }) as any as S.Schema<ComputeCapacityStatus>;
-export type FleetState = "STARTING" | "RUNNING" | "STOPPING" | "STOPPED";
+export type FleetState =
+  | "STARTING"
+  | "RUNNING"
+  | "STOPPING"
+  | "STOPPED"
+  | (string & {});
 export const FleetState = /*@__PURE__*/ S.String;
 
 export interface FleetError {
@@ -1386,12 +1404,14 @@ export type ImageBuilderState =
   | "PENDING_QUALIFICATION"
   | "PENDING_SYNCING_APPS"
   | "SYNCING_APPS"
-  | "PENDING_IMAGE_IMPORT";
+  | "PENDING_IMAGE_IMPORT"
+  | (string & {});
 export const ImageBuilderState = /*@__PURE__*/ S.String;
 
 export type ImageBuilderStateChangeReasonCode =
   | "INTERNAL_ERROR"
-  | "IMAGE_UNAVAILABLE";
+  | "IMAGE_UNAVAILABLE"
+  | (string & {});
 export const ImageBuilderStateChangeReasonCode = /*@__PURE__*/ S.String;
 
 export interface ImageBuilderStateChangeReason {
@@ -1420,7 +1440,7 @@ export const NetworkAccessConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NetworkAccessConfiguration",
 }) as any as S.Schema<NetworkAccessConfiguration>;
-export type LatestAppstreamAgentVersion = "TRUE" | "FALSE";
+export type LatestAppstreamAgentVersion = "TRUE" | "FALSE" | (string & {});
 export const LatestAppstreamAgentVersion = /*@__PURE__*/ S.String;
 
 export interface ImageBuilder {
@@ -1522,7 +1542,10 @@ export const RuntimeValidationConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RuntimeValidationConfig",
 }) as any as S.Schema<RuntimeValidationConfig>;
-export type AgentSoftwareVersion = "CURRENT_LATEST" | "ALWAYS_LATEST";
+export type AgentSoftwareVersion =
+  | "CURRENT_LATEST"
+  | "ALWAYS_LATEST"
+  | (string & {});
 export const AgentSoftwareVersion = /*@__PURE__*/ S.String;
 
 export type AppName = string;
@@ -1593,10 +1616,11 @@ export type ImageState =
   | "DELETING"
   | "CREATING"
   | "IMPORTING"
-  | "VALIDATING";
+  | "VALIDATING"
+  | (string & {});
 export const ImageState = /*@__PURE__*/ S.String;
 
-export type VisibilityType = "PUBLIC" | "PRIVATE" | "SHARED";
+export type VisibilityType = "PUBLIC" | "PRIVATE" | "SHARED" | (string & {});
 export const VisibilityType = /*@__PURE__*/ S.String;
 
 export type ImageStateChangeReasonCode =
@@ -1604,7 +1628,8 @@ export type ImageStateChangeReasonCode =
   | "IMAGE_BUILDER_NOT_AVAILABLE"
   | "IMAGE_COPY_FAILURE"
   | "IMAGE_UPDATE_FAILURE"
-  | "IMAGE_IMPORT_FAILURE";
+  | "IMAGE_IMPORT_FAILURE"
+  | (string & {});
 export const ImageStateChangeReasonCode = /*@__PURE__*/ S.String;
 
 export interface ImageStateChangeReason {
@@ -1633,13 +1658,13 @@ export const ImagePermissions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImagePermissions",
 }) as any as S.Schema<ImagePermissions>;
-export type DynamicAppProvidersEnabled = "ENABLED" | "DISABLED";
+export type DynamicAppProvidersEnabled = "ENABLED" | "DISABLED" | (string & {});
 export const DynamicAppProvidersEnabled = /*@__PURE__*/ S.String;
 
-export type ImageSharedWithOthers = "TRUE" | "FALSE";
+export type ImageSharedWithOthers = "TRUE" | "FALSE" | (string & {});
 export const ImageSharedWithOthers = /*@__PURE__*/ S.String;
 
-export type ImageType = "CUSTOM" | "NATIVE" | "BYOL";
+export type ImageType = "CUSTOM" | "NATIVE" | "BYOL" | (string & {});
 export const ImageType = /*@__PURE__*/ S.String;
 
 export interface Image {
@@ -1709,7 +1734,11 @@ export const CreateImportedImageResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateImportedImageResult",
 }) as any as S.Schema<CreateImportedImageResult>;
-export type StorageConnectorType = "HOMEFOLDERS" | "GOOGLE_DRIVE" | "ONE_DRIVE";
+export type StorageConnectorType =
+  | "HOMEFOLDERS"
+  | "GOOGLE_DRIVE"
+  | "ONE_DRIVE"
+  | (string & {});
 export const StorageConnectorType = /*@__PURE__*/ S.String;
 
 export type ResourceIdentifier = string;
@@ -1744,10 +1773,11 @@ export type Action =
   | "PRINTING_TO_LOCAL_DEVICE"
   | "DOMAIN_PASSWORD_SIGNIN"
   | "DOMAIN_SMART_CARD_SIGNIN"
-  | "AUTO_TIME_ZONE_REDIRECTION";
+  | "AUTO_TIME_ZONE_REDIRECTION"
+  | (string & {});
 export const Action = /*@__PURE__*/ S.String;
 
-export type Permission = "ENABLED" | "DISABLED";
+export type Permission = "ENABLED" | "DISABLED" | (string & {});
 export const Permission = /*@__PURE__*/ S.String;
 
 export interface UserSetting {
@@ -1780,7 +1810,7 @@ export const ApplicationSettings = /*@__PURE__*/ S.suspend(() =>
 export type EmbedHostDomain = string;
 export type EmbedHostDomains = string[];
 export const EmbedHostDomains = /*@__PURE__*/ S.Array(S.String);
-export type PreferredProtocol = "TCP" | "UDP";
+export type PreferredProtocol = "TCP" | "UDP" | (string & {});
 export const PreferredProtocol = /*@__PURE__*/ S.String;
 
 export interface StreamingExperienceSettings {
@@ -1819,7 +1849,8 @@ export const ContentRedirection = /*@__PURE__*/ S.suspend(() =>
 export type AgentAction =
   | "COMPUTER_VISION"
   | "COMPUTER_INPUT"
-  | "FORWARD_MCP_TOOLS";
+  | "FORWARD_MCP_TOOLS"
+  | (string & {});
 export const AgentAction = /*@__PURE__*/ S.String;
 
 export interface AgentAccessSetting {
@@ -1837,13 +1868,17 @@ export const AgentAccessSetting = /*@__PURE__*/ S.suspend(() =>
 export type AgentAccessSettingList = AgentAccessSetting[];
 export const AgentAccessSettingList = /*@__PURE__*/ S.Array(AgentAccessSetting);
 export type S3BucketArn = string;
-export type ScreenResolution = "W_1280xH_720";
+export type ScreenResolution = "W_1280xH_720" | (string & {});
 export const ScreenResolution = /*@__PURE__*/ S.String;
 
-export type ScreenImageFormat = "PNG" | "JPEG";
+export type ScreenImageFormat = "PNG" | "JPEG" | (string & {});
 export const ScreenImageFormat = /*@__PURE__*/ S.String;
 
-export type UserControlMode = "VIEW_ONLY" | "VIEW_STOP" | "DISABLED";
+export type UserControlMode =
+  | "VIEW_ONLY"
+  | "VIEW_STOP"
+  | "DISABLED"
+  | (string & {});
 export const UserControlMode = /*@__PURE__*/ S.String;
 
 export interface AgentAccessConfig {
@@ -1906,7 +1941,8 @@ export const CreateStackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateStackRequest>;
 export type StackErrorCode =
   | "STORAGE_CONNECTOR_ERROR"
-  | "INTERNAL_SERVICE_ERROR";
+  | "INTERNAL_SERVICE_ERROR"
+  | (string & {});
 export const StackErrorCode = /*@__PURE__*/ S.String;
 
 export interface StackError {
@@ -2051,7 +2087,12 @@ export const ThemeFooterLink = /*@__PURE__*/ S.suspend(() =>
 export type ThemeFooterLinks = ThemeFooterLink[];
 export const ThemeFooterLinks = /*@__PURE__*/ S.Array(ThemeFooterLink);
 export type ThemeTitleText = string;
-export type ThemeStyling = "LIGHT_BLUE" | "BLUE" | "PINK" | "RED";
+export type ThemeStyling =
+  | "LIGHT_BLUE"
+  | "BLUE"
+  | "PINK"
+  | "RED"
+  | (string & {});
 export const ThemeStyling = /*@__PURE__*/ S.String;
 
 export interface CreateThemeForStackRequest {
@@ -2076,7 +2117,7 @@ export const CreateThemeForStackRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateThemeForStackRequest",
 }) as any as S.Schema<CreateThemeForStackRequest>;
-export type ThemeState = "ENABLED" | "DISABLED";
+export type ThemeState = "ENABLED" | "DISABLED" | (string & {});
 export const ThemeState = /*@__PURE__*/ S.String;
 
 export interface Theme {
@@ -2154,7 +2195,7 @@ export const CreateUsageReportSubscriptionRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateUsageReportSubscriptionRequest",
 }) as any as S.Schema<CreateUsageReportSubscriptionRequest>;
-export type UsageReportSchedule = "DAILY";
+export type UsageReportSchedule = "DAILY" | (string & {});
 export const UsageReportSchedule = /*@__PURE__*/ S.String;
 
 export interface CreateUsageReportSubscriptionResult {
@@ -2169,7 +2210,7 @@ export const CreateUsageReportSubscriptionResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateUsageReportSubscriptionResult",
 }) as any as S.Schema<CreateUsageReportSubscriptionResult>;
-export type MessageAction = "SUPPRESS" | "RESEND";
+export type MessageAction = "SUPPRESS" | "RESEND" | (string & {});
 export const MessageAction = /*@__PURE__*/ S.String;
 
 export type UserAttributeValue = string | redacted.Redacted<string>;
@@ -2948,13 +2989,20 @@ export const DescribeSessionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSessionsRequest",
 }) as any as S.Schema<DescribeSessionsRequest>;
-export type SessionState = "ACTIVE" | "PENDING" | "EXPIRED";
+export type SessionState = "ACTIVE" | "PENDING" | "EXPIRED" | (string & {});
 export const SessionState = /*@__PURE__*/ S.String;
 
-export type SessionConnectionState = "CONNECTED" | "NOT_CONNECTED";
+export type SessionConnectionState =
+  | "CONNECTED"
+  | "NOT_CONNECTED"
+  | (string & {});
 export const SessionConnectionState = /*@__PURE__*/ S.String;
 
-export type InstanceDrainStatus = "ACTIVE" | "DRAINING" | "NOT_APPLICABLE";
+export type InstanceDrainStatus =
+  | "ACTIVE"
+  | "DRAINING"
+  | "NOT_APPLICABLE"
+  | (string & {});
 export const InstanceDrainStatus = /*@__PURE__*/ S.String;
 
 export interface Session {
@@ -3032,7 +3080,8 @@ export type SoftwareDeploymentStatus =
   | "STAGED_FOR_UNINSTALLATION"
   | "PENDING_UNINSTALLATION"
   | "FAILED_TO_INSTALL"
-  | "FAILED_TO_UNINSTALL";
+  | "FAILED_TO_UNINSTALL"
+  | (string & {});
 export const SoftwareDeploymentStatus = /*@__PURE__*/ S.String;
 
 export interface SoftwareAssociations {
@@ -3145,7 +3194,8 @@ export const DescribeUsageReportSubscriptionsRequest = /*@__PURE__*/ S.suspend(
 export type UsageReportExecutionErrorCode =
   | "RESOURCE_NOT_FOUND"
   | "ACCESS_DENIED"
-  | "INTERNAL_SERVICE_ERROR";
+  | "INTERNAL_SERVICE_ERROR"
+  | (string & {});
 export const UsageReportExecutionErrorCode = /*@__PURE__*/ S.String;
 
 export interface LastReportGenerationExecutionError {
@@ -3830,7 +3880,8 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 export type AppBlockBuilderAttribute =
   | "IAM_ROLE_ARN"
   | "ACCESS_ENDPOINTS"
-  | "VPC_CONFIGURATION_SECURITY_GROUP_IDS";
+  | "VPC_CONFIGURATION_SECURITY_GROUP_IDS"
+  | (string & {});
 export const AppBlockBuilderAttribute = /*@__PURE__*/ S.String;
 
 export type AppBlockBuilderAttributes = AppBlockBuilderAttribute[];
@@ -3885,7 +3936,10 @@ export const UpdateAppBlockBuilderResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateAppBlockBuilderResult",
 }) as any as S.Schema<UpdateAppBlockBuilderResult>;
-export type ApplicationAttribute = "LAUNCH_PARAMETERS" | "WORKING_DIRECTORY";
+export type ApplicationAttribute =
+  | "LAUNCH_PARAMETERS"
+  | "WORKING_DIRECTORY"
+  | (string & {});
 export const ApplicationAttribute = /*@__PURE__*/ S.String;
 
 export type ApplicationAttributes = ApplicationAttribute[];
@@ -4004,7 +4058,8 @@ export type FleetAttribute =
   | "USB_DEVICE_FILTER_STRINGS"
   | "SESSION_SCRIPT_S3_LOCATION"
   | "MAX_SESSIONS_PER_INSTANCE"
-  | "VOLUME_CONFIGURATION";
+  | "VOLUME_CONFIGURATION"
+  | (string & {});
 export const FleetAttribute = /*@__PURE__*/ S.String;
 
 export type FleetAttributes = FleetAttribute[];
@@ -4118,7 +4173,8 @@ export type StackAttribute =
   | "ACCESS_ENDPOINTS"
   | "STREAMING_EXPERIENCE_SETTINGS"
   | "CONTENT_REDIRECTION"
-  | "AGENT_ACCESS_CONFIG";
+  | "AGENT_ACCESS_CONFIG"
+  | (string & {});
 export const StackAttribute = /*@__PURE__*/ S.String;
 
 export type StackAttributes = StackAttribute[];
@@ -4209,7 +4265,7 @@ export const UpdateStackResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateStackResult",
 }) as any as S.Schema<UpdateStackResult>;
-export type ThemeAttribute = "FOOTER_LINKS";
+export type ThemeAttribute = "FOOTER_LINKS" | (string & {});
 export const ThemeAttribute = /*@__PURE__*/ S.String;
 
 export type ThemeAttributes = ThemeAttribute[];

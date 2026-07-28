@@ -281,14 +281,16 @@ export type VulnerabilityScanningConfigEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "SCANNING_UNSUPPORTED"
   | "SCANNING_DISABLED"
-  | "SCANNING_ACTIVE";
+  | "SCANNING_ACTIVE"
+  | (string & {});
 export const VulnerabilityScanningConfigEnablementStateEnum =
   /*@__PURE__*/ S.String;
 
 export type VulnerabilityScanningConfigEnablementConfigEnum =
   | "ENABLEMENT_CONFIG_UNSPECIFIED"
   | "INHERITED"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const VulnerabilityScanningConfigEnablementConfigEnum =
   /*@__PURE__*/ S.String;
 
@@ -322,12 +324,14 @@ export type RepositoryModeEnum =
   | "VIRTUAL_REPOSITORY"
   | "REMOTE_REPOSITORY"
   | "AOSS_REPOSITORY"
-  | "ASSURED_OSS_REPOSITORY";
+  | "ASSURED_OSS_REPOSITORY"
+  | (string & {});
 export const RepositoryModeEnum = /*@__PURE__*/ S.String;
 
 export type NpmRepositoryPublicRepositoryEnum =
   | "PUBLIC_REPOSITORY_UNSPECIFIED"
-  | "NPMJS";
+  | "NPMJS"
+  | (string & {});
 export const NpmRepositoryPublicRepositoryEnum = /*@__PURE__*/ S.String;
 
 /** Customer-specified publicly available remote repository. */
@@ -371,7 +375,8 @@ export const NoCacheFetching = /*@__PURE__*/ S.suspend(() =>
 
 export type DockerRepositoryPublicRepositoryEnum =
   | "PUBLIC_REPOSITORY_UNSPECIFIED"
-  | "DOCKER_HUB";
+  | "DOCKER_HUB"
+  | (string & {});
 export const DockerRepositoryPublicRepositoryEnum = /*@__PURE__*/ S.String;
 
 /** Customer-specified publicly available remote repository. */
@@ -408,7 +413,11 @@ export const DockerRepository = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DockerRepository>;
 
 export type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseEnum =
-  "REPOSITORY_BASE_UNSPECIFIED" | "DEBIAN" | "UBUNTU" | "DEBIAN_SNAPSHOT";
+    | "REPOSITORY_BASE_UNSPECIFIED"
+    | "DEBIAN"
+    | "UBUNTU"
+    | "DEBIAN_SNAPSHOT"
+    | (string & {});
 export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseEnum =
   /*@__PURE__*/ S.String;
 
@@ -467,7 +476,8 @@ export const AptRepository = /*@__PURE__*/ S.suspend(() =>
 
 export type PythonRepositoryPublicRepositoryEnum =
   | "PUBLIC_REPOSITORY_UNSPECIFIED"
-  | "PYPI";
+  | "PYPI"
+  | (string & {});
 export const PythonRepositoryPublicRepositoryEnum = /*@__PURE__*/ S.String;
 
 /** Customer-specified publicly available remote repository. */
@@ -510,7 +520,8 @@ export type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryP
     | "CENTOS_VAULT"
     | "CENTOS_STREAM"
     | "ROCKY"
-    | "EPEL";
+    | "EPEL"
+    | (string & {});
 export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseEnum =
   /*@__PURE__*/ S.String;
 
@@ -582,7 +593,8 @@ export const CommonRemoteRepository = /*@__PURE__*/ S.suspend(() =>
 
 export type MavenRepositoryPublicRepositoryEnum =
   | "PUBLIC_REPOSITORY_UNSPECIFIED"
-  | "MAVEN_CENTRAL";
+  | "MAVEN_CENTRAL"
+  | (string & {});
 export const MavenRepositoryPublicRepositoryEnum = /*@__PURE__*/ S.String;
 
 /** Customer-specified publicly available remote repository. */
@@ -693,7 +705,8 @@ export const RemoteRepositoryConfig = /*@__PURE__*/ S.suspend(() =>
 export type MavenRepositoryConfigVersionPolicyEnum =
   | "VERSION_POLICY_UNSPECIFIED"
   | "RELEASE"
-  | "SNAPSHOT";
+  | "SNAPSHOT"
+  | (string & {});
 export const MavenRepositoryConfigVersionPolicyEnum = /*@__PURE__*/ S.String;
 
 /** MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type. */
@@ -721,7 +734,8 @@ export const StringMap = /*@__PURE__*/ S.Record(
 export type PlatformLogsConfigLoggingStateEnum =
   | "LOGGING_STATE_UNSPECIFIED"
   | "ENABLED"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const PlatformLogsConfigLoggingStateEnum = /*@__PURE__*/ S.String;
 
 export type PlatformLogsConfigSeverityLevelEnum =
@@ -733,7 +747,8 @@ export type PlatformLogsConfigSeverityLevelEnum =
   | "ERROR"
   | "CRITICAL"
   | "ALERT"
-  | "EMERGENCY";
+  | "EMERGENCY"
+  | (string & {});
 export const PlatformLogsConfigSeverityLevelEnum = /*@__PURE__*/ S.String;
 
 /** The platform logs config for a project or a repository. */
@@ -764,7 +779,8 @@ export type RepositoryFormatEnum =
   | "KFP"
   | "GO"
   | "GENERIC"
-  | "RUBY";
+  | "RUBY"
+  | (string & {});
 export const RepositoryFormatEnum = /*@__PURE__*/ S.String;
 
 /** Artifact policy configuration for the repository contents. */
@@ -806,7 +822,8 @@ export type CleanupPolicyConditionTagStateEnum =
   | "TAG_STATE_UNSPECIFIED"
   | "TAGGED"
   | "UNTAGGED"
-  | "ANY";
+  | "ANY"
+  | (string & {});
 export const CleanupPolicyConditionTagStateEnum = /*@__PURE__*/ S.String;
 
 /** CleanupPolicyCondition is a set of conditions attached to a CleanupPolicy. If multiple entries are set, all must be satisfied for the condition to be satisfied. */
@@ -853,7 +870,11 @@ export const CleanupPolicyMostRecentVersions = /*@__PURE__*/ S.suspend(() =>
   identifier: "CleanupPolicyMostRecentVersions",
 }) as any as S.Schema<CleanupPolicyMostRecentVersions>;
 
-export type CleanupPolicyActionEnum = "ACTION_UNSPECIFIED" | "DELETE" | "KEEP";
+export type CleanupPolicyActionEnum =
+  | "ACTION_UNSPECIFIED"
+  | "DELETE"
+  | "KEEP"
+  | (string & {});
 export const CleanupPolicyActionEnum = /*@__PURE__*/ S.String;
 
 /** Artifact policy configuration for repository cleanup policies. */
@@ -1080,7 +1101,8 @@ export const CreateProjectsLocationsRepositoriesPackagesTagsRequest =
 export type GoogleDevtoolsArtifactregistryV1RuleActionEnum =
   | "ACTION_UNSPECIFIED"
   | "ALLOW"
-  | "DENY";
+  | "DENY"
+  | (string & {});
 export const GoogleDevtoolsArtifactregistryV1RuleActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1106,7 +1128,8 @@ export const Expr = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleDevtoolsArtifactregistryV1RuleOperationEnum =
   | "OPERATION_UNSPECIFIED"
-  | "DOWNLOAD";
+  | "DOWNLOAD"
+  | (string & {});
 export const GoogleDevtoolsArtifactregistryV1RuleOperationEnum =
   /*@__PURE__*/ S.String;
 
@@ -1482,7 +1505,8 @@ export type ProjectSettingsLegacyRedirectionStateEnum =
   | "REDIRECTION_FROM_GCR_IO_ENABLED"
   | "REDIRECTION_FROM_GCR_IO_FINALIZED"
   | "REDIRECTION_FROM_GCR_IO_ENABLED_AND_COPYING"
-  | "REDIRECTION_FROM_GCR_IO_PARTIAL_AND_COPYING";
+  | "REDIRECTION_FROM_GCR_IO_PARTIAL_AND_COPYING"
+  | (string & {});
 export const ProjectSettingsLegacyRedirectionStateEnum = /*@__PURE__*/ S.String;
 
 /** The Artifact Registry settings that apply to a Project. */
@@ -1718,7 +1742,8 @@ export type HashTypeEnum =
   | "HASH_TYPE_UNSPECIFIED"
   | "SHA256"
   | "MD5"
-  | "DIRSUM_SHA256";
+  | "DIRSUM_SHA256"
+  | (string & {});
 export const HashTypeEnum = /*@__PURE__*/ S.String;
 
 /** A hash of file content. */
@@ -1932,7 +1957,8 @@ export const GetProjectsLocationsRepositoriesPackagesTagsRequest =
 export type GetProjectsLocationsRepositoriesPackagesVersionsViewEnum =
   | "VERSION_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetProjectsLocationsRepositoriesPackagesVersionsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -2083,7 +2109,8 @@ export const GetVpcscConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
 export type VPCSCConfigVpcscPolicyEnum =
   | "VPCSC_POLICY_UNSPECIFIED"
   | "DENY"
-  | "ALLOW";
+  | "ALLOW"
+  | (string & {});
 export const VPCSCConfigVpcscPolicyEnum = /*@__PURE__*/ S.String;
 
 /** The Artifact Registry VPC SC config that apply to a Project. */
@@ -2698,7 +2725,8 @@ export const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsRepositoriesPackagesVersionsViewEnum =
   | "VERSION_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListProjectsLocationsRepositoriesPackagesVersionsViewEnum =
   /*@__PURE__*/ S.String;
 

@@ -67,7 +67,10 @@ export const StringMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StringMap>;
 
 export type GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationEnum =
-  "WORKER_IP_UNSPECIFIED" | "WORKER_IP_PUBLIC" | "WORKER_IP_PRIVATE";
+    | "WORKER_IP_UNSPECIFIED"
+    | "WORKER_IP_PUBLIC"
+    | "WORKER_IP_PRIVATE"
+    | (string & {});
 export const GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationEnum =
   /*@__PURE__*/ S.String;
 
@@ -77,7 +80,10 @@ export const StringList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<StringList>;
 
 export type GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalEnum =
-  "FLEXRS_UNSPECIFIED" | "FLEXRS_SPEED_OPTIMIZED" | "FLEXRS_COST_OPTIMIZED";
+    | "FLEXRS_UNSPECIFIED"
+    | "FLEXRS_SPEED_OPTIMIZED"
+    | "FLEXRS_COST_OPTIMIZED"
+    | (string & {});
 export const GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalEnum =
   /*@__PURE__*/ S.String;
 
@@ -206,7 +212,8 @@ export const GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest =
 export type GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationEnum =
   | "WORKER_IP_UNSPECIFIED"
   | "WORKER_IP_PUBLIC"
-  | "WORKER_IP_PRIVATE";
+  | "WORKER_IP_PRIVATE"
+  | (string & {});
 export const GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationEnum =
   /*@__PURE__*/ S.String;
 
@@ -371,14 +378,16 @@ export type GoogleCloudDatapipelinesV1PipelineStateEnum =
   | "STATE_ACTIVE"
   | "STATE_STOPPING"
   | "STATE_ARCHIVED"
-  | "STATE_PAUSED";
+  | "STATE_PAUSED"
+  | (string & {});
 export const GoogleCloudDatapipelinesV1PipelineStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDatapipelinesV1PipelineTypeEnum =
   | "PIPELINE_TYPE_UNSPECIFIED"
   | "PIPELINE_TYPE_BATCH"
-  | "PIPELINE_TYPE_STREAMING";
+  | "PIPELINE_TYPE_STREAMING"
+  | (string & {});
 export const GoogleCloudDatapipelinesV1PipelineTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -605,7 +614,8 @@ export type GoogleCloudDatapipelinesV1JobStateEnum =
   | "STATE_RUNNING"
   | "STATE_DONE"
   | "STATE_FAILED"
-  | "STATE_CANCELLED";
+  | "STATE_CANCELLED"
+  | (string & {});
 export const GoogleCloudDatapipelinesV1JobStateEnum = /*@__PURE__*/ S.String;
 
 export type DoubleMap = { [key: string]: number | undefined };
@@ -619,7 +629,8 @@ export type GoogleCloudDatapipelinesV1SdkVersionSdkSupportStatusEnum =
   | "SUPPORTED"
   | "STALE"
   | "DEPRECATED"
-  | "UNSUPPORTED";
+  | "UNSUPPORTED"
+  | (string & {});
 export const GoogleCloudDatapipelinesV1SdkVersionSdkSupportStatusEnum =
   /*@__PURE__*/ S.String;
 

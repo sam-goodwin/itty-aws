@@ -81,7 +81,8 @@ export type GoogleCloudDocumentaiV1beta3RevisionRefRevisionCaseEnum =
   | "REVISION_CASE_UNSPECIFIED"
   | "LATEST_HUMAN_REVIEW"
   | "LATEST_TIMESTAMP"
-  | "BASE_OCR_REVISION";
+  | "BASE_OCR_REVISION"
+  | (string & {});
 export const GoogleCloudDocumentaiV1beta3RevisionRefRevisionCaseEnum =
   /*@__PURE__*/ S.String;
 
@@ -495,12 +496,17 @@ export type GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypePropertyOccurren
     | "OPTIONAL_ONCE"
     | "OPTIONAL_MULTIPLE"
     | "REQUIRED_ONCE"
-    | "REQUIRED_MULTIPLE";
+    | "REQUIRED_MULTIPLE"
+    | (string & {});
 export const GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypePropertyOccurrenceTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypePropertyMethodEnum =
-  "METHOD_UNSPECIFIED" | "EXTRACT" | "DERIVE" | "RELAXED_EXTRACT";
+    | "METHOD_UNSPECIFIED"
+    | "EXTRACT"
+    | "DERIVE"
+    | "RELAXED_EXTRACT"
+    | (string & {});
 export const GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypePropertyMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -508,14 +514,16 @@ export type GoogleCloudDocumentaiV1beta3SummaryOptionsLengthEnum =
   | "LENGTH_UNSPECIFIED"
   | "BRIEF"
   | "MODERATE"
-  | "COMPREHENSIVE";
+  | "COMPREHENSIVE"
+  | (string & {});
 export const GoogleCloudDocumentaiV1beta3SummaryOptionsLengthEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDocumentaiV1beta3SummaryOptionsFormatEnum =
   | "FORMAT_UNSPECIFIED"
   | "PARAGRAPH"
-  | "BULLETS";
+  | "BULLETS"
+  | (string & {});
 export const GoogleCloudDocumentaiV1beta3SummaryOptionsFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -1016,7 +1024,8 @@ export type GoogleCloudDocumentaiV1beta3ProcessorStateEnum =
   | "DISABLING"
   | "CREATING"
   | "FAILED"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const GoogleCloudDocumentaiV1beta3ProcessorStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1482,7 +1491,8 @@ export type GoogleCloudDocumentaiV1beta3ProcessorTypeLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED";
+  | "DEPRECATED"
+  | (string & {});
 export const GoogleCloudDocumentaiV1beta3ProcessorTypeLaunchStageEnum =
   /*@__PURE__*/ S.String;
 
@@ -1832,7 +1842,8 @@ export type GoogleCloudDocumentaiV1beta3DocumentProvenanceTypeEnum =
   | "REPLACE"
   | "EVAL_REQUESTED"
   | "EVAL_APPROVED"
-  | "EVAL_SKIPPED";
+  | "EVAL_SKIPPED"
+  | (string & {});
 export const GoogleCloudDocumentaiV1beta3DocumentProvenanceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1891,7 +1902,8 @@ export const GoogleCloudDocumentaiV1beta3DocumentProvenance =
 export type GoogleCloudDocumentaiV1beta3DocumentEntityMethodEnum =
   | "METHOD_UNSPECIFIED"
   | "EXTRACT"
-  | "DERIVE";
+  | "DERIVE"
+  | (string & {});
 export const GoogleCloudDocumentaiV1beta3DocumentEntityMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -1903,7 +1915,8 @@ export type GoogleCloudDocumentaiV1beta3DocumentPageAnchorPageRefLayoutTypeEnum 
     | "TOKEN"
     | "VISUAL_ELEMENT"
     | "TABLE"
-    | "FORM_FIELD";
+    | "FORM_FIELD"
+    | (string & {});
 export const GoogleCloudDocumentaiV1beta3DocumentPageAnchorPageRefLayoutTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2109,7 +2122,8 @@ export type GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutputValidation
     | "VALIDATION_RESULT_TYPE_VALID"
     | "VALIDATION_RESULT_TYPE_INVALID"
     | "VALIDATION_RESULT_TYPE_SKIPPED"
-    | "VALIDATION_RESULT_TYPE_NOT_APPLICABLE";
+    | "VALIDATION_RESULT_TYPE_NOT_APPLICABLE"
+    | (string & {});
 export const GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutputValidationResultValidationResultTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2919,7 +2933,8 @@ export type GoogleCloudDocumentaiV1beta3DocumentPageLayoutOrientationEnum =
   | "PAGE_UP"
   | "PAGE_RIGHT"
   | "PAGE_DOWN"
-  | "PAGE_LEFT";
+  | "PAGE_LEFT"
+  | (string & {});
 export const GoogleCloudDocumentaiV1beta3DocumentPageLayoutOrientationEnum =
   /*@__PURE__*/ S.String;
 
@@ -3159,7 +3174,7 @@ export const GoogleCloudDocumentaiV1beta3DocumentPageTokenStyleInfo =
   }) as any as S.Schema<GoogleCloudDocumentaiV1beta3DocumentPageTokenStyleInfo>;
 
 export type GoogleCloudDocumentaiV1beta3DocumentPageTokenDetectedBreakTypeEnum =
-  "TYPE_UNSPECIFIED" | "SPACE" | "WIDE_SPACE" | "HYPHEN";
+  "TYPE_UNSPECIFIED" | "SPACE" | "WIDE_SPACE" | "HYPHEN" | (string & {});
 export const GoogleCloudDocumentaiV1beta3DocumentPageTokenDetectedBreakTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3874,7 +3889,8 @@ export type GetDocumentProjectsLocationsProcessorsDatasetDocumentId_revisionRef_
     | "REVISION_CASE_UNSPECIFIED"
     | "LATEST_HUMAN_REVIEW"
     | "LATEST_TIMESTAMP"
-    | "BASE_OCR_REVISION";
+    | "BASE_OCR_REVISION"
+    | (string & {});
 export const GetDocumentProjectsLocationsProcessorsDatasetDocumentId_revisionRef_revisionCaseEnum =
   /*@__PURE__*/ S.String;
 
@@ -4116,7 +4132,10 @@ export const GoogleCloudDocumentaiV1beta3EvaluationReference =
   }) as any as S.Schema<GoogleCloudDocumentaiV1beta3EvaluationReference>;
 
 export type GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfoCustomModelTypeEnum =
-  "CUSTOM_MODEL_TYPE_UNSPECIFIED" | "VERSIONED_FOUNDATION" | "FINE_TUNED";
+    | "CUSTOM_MODEL_TYPE_UNSPECIFIED"
+    | "VERSIONED_FOUNDATION"
+    | "FINE_TUNED"
+    | (string & {});
 export const GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfoCustomModelTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4188,7 +4207,8 @@ export type GoogleCloudDocumentaiV1beta3ProcessorVersionStateEnum =
   | "CREATING"
   | "DELETING"
   | "FAILED"
-  | "IMPORTING";
+  | "IMPORTING"
+  | (string & {});
 export const GoogleCloudDocumentaiV1beta3ProcessorVersionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -4212,7 +4232,8 @@ export const GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo =
 export type GoogleCloudDocumentaiV1beta3ProcessorVersionModelTypeEnum =
   | "MODEL_TYPE_UNSPECIFIED"
   | "MODEL_TYPE_GENERATIVE"
-  | "MODEL_TYPE_CUSTOM";
+  | "MODEL_TYPE_CUSTOM"
+  | (string & {});
 export const GoogleCloudDocumentaiV1beta3ProcessorVersionModelTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4298,7 +4319,7 @@ export const GetProjectsLocationsProcessorsProcessorVersionsEvaluationsRequest =
   }) as any as S.Schema<GetProjectsLocationsProcessorsProcessorVersionsEvaluationsRequest>;
 
 export type GoogleCloudDocumentaiV1beta3EvaluationMultiConfidenceMetricsMetricsTypeEnum =
-  "METRICS_TYPE_UNSPECIFIED" | "AGGREGATE";
+  "METRICS_TYPE_UNSPECIFIED" | "AGGREGATE" | (string & {});
 export const GoogleCloudDocumentaiV1beta3EvaluationMultiConfidenceMetricsMetricsTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4537,7 +4558,8 @@ export type GoogleCloudDocumentaiV1beta3ImportDocumentsRequestBatchDocumentsImpo
     | "DATASET_SPLIT_TYPE_UNSPECIFIED"
     | "DATASET_SPLIT_TRAIN"
     | "DATASET_SPLIT_TEST"
-    | "DATASET_SPLIT_UNASSIGNED";
+    | "DATASET_SPLIT_UNASSIGNED"
+    | (string & {});
 export const GoogleCloudDocumentaiV1beta3ImportDocumentsRequestBatchDocumentsImportConfigDatasetSplitEnum =
   /*@__PURE__*/ S.String;
 
@@ -4749,7 +4771,8 @@ export type GoogleCloudDocumentaiV1beta3DocumentMetadataDatasetTypeEnum =
   | "DATASET_SPLIT_TYPE_UNSPECIFIED"
   | "DATASET_SPLIT_TRAIN"
   | "DATASET_SPLIT_TEST"
-  | "DATASET_SPLIT_UNASSIGNED";
+  | "DATASET_SPLIT_UNASSIGNED"
+  | (string & {});
 export const GoogleCloudDocumentaiV1beta3DocumentMetadataDatasetTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4757,7 +4780,8 @@ export type GoogleCloudDocumentaiV1beta3DocumentMetadataLabelingStateEnum =
   | "DOCUMENT_LABELING_STATE_UNSPECIFIED"
   | "DOCUMENT_LABELED"
   | "DOCUMENT_UNLABELED"
-  | "DOCUMENT_AUTO_LABELED";
+  | "DOCUMENT_AUTO_LABELED"
+  | (string & {});
 export const GoogleCloudDocumentaiV1beta3DocumentMetadataLabelingStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -5336,7 +5360,8 @@ export type GoogleCloudDocumentaiV1beta3HumanReviewStatusStateEnum =
   | "SKIPPED"
   | "VALIDATION_PASSED"
   | "IN_PROGRESS"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const GoogleCloudDocumentaiV1beta3HumanReviewStatusStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -5408,7 +5433,8 @@ export const ProcessProjectsLocationsProcessorsProcessorVersionsRequest =
 
 export type GoogleCloudDocumentaiV1beta3ReviewDocumentRequestPriorityEnum =
   | "DEFAULT"
-  | "URGENT";
+  | "URGENT"
+  | (string & {});
 export const GoogleCloudDocumentaiV1beta3ReviewDocumentRequestPriorityEnum =
   /*@__PURE__*/ S.String;
 
@@ -5528,7 +5554,10 @@ export const GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestInputData =
   }) as any as S.Schema<GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestInputData>;
 
 export type GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestCustomDocumentExtractionOptionsTrainingMethodEnum =
-  "TRAINING_METHOD_UNSPECIFIED" | "MODEL_BASED" | "TEMPLATE_BASED";
+    | "TRAINING_METHOD_UNSPECIFIED"
+    | "MODEL_BASED"
+    | "TEMPLATE_BASED"
+    | (string & {});
 export const GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestCustomDocumentExtractionOptionsTrainingMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -5708,7 +5737,8 @@ export type GoogleCloudDocumentaiV1beta3DatasetStateEnum =
   | "STATE_UNSPECIFIED"
   | "UNINITIALIZED"
   | "INITIALIZING"
-  | "INITIALIZED";
+  | "INITIALIZED"
+  | (string & {});
 export const GoogleCloudDocumentaiV1beta3DatasetStateEnum =
   /*@__PURE__*/ S.String;
 

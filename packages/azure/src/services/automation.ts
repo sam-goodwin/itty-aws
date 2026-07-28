@@ -317,7 +317,7 @@ export const AgentRegistration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentRegistration>;
 
 /** Gets or sets the agent registration key name - primary or secondary. */
-export type AgentRegistrationKeyName = "primary" | "secondary";
+export type AgentRegistrationKeyName = "primary" | "secondary" | (string & {});
 export const AgentRegistrationKeyName = /*@__PURE__*/ S.String;
 
 export interface AgentRegistrationInformationRegenerateKeyRequest {
@@ -350,7 +350,7 @@ export const AgentRegistrationInformationRegenerateKeyRequest =
   }) as any as S.Schema<AgentRegistrationInformationRegenerateKeyRequest>;
 
 /** Gets or sets the SKU name of the account. */
-export type SkuNameEnum = "Free" | "Basic";
+export type SkuNameEnum = "Free" | "Basic" | (string & {});
 export const SkuNameEnum = /*@__PURE__*/ S.String;
 
 /** The account SKU. */
@@ -392,7 +392,8 @@ export const KeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
 /** Encryption Key Source */
 export type EncryptionKeySourceType =
   | "Microsoft.Automation"
-  | "Microsoft.Keyvault";
+  | "Microsoft.Keyvault"
+  | (string & {});
 export const EncryptionKeySourceType = /*@__PURE__*/ S.String;
 
 /** User identity used for CMK. */
@@ -455,7 +456,8 @@ export type ResourceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
-  | "None";
+  | "None"
+  | (string & {});
 export const ResourceIdentityType = /*@__PURE__*/ S.String;
 
 export interface UserAssignedIdentitiesPropertiesInput {}
@@ -544,7 +546,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -552,7 +555,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -592,7 +596,11 @@ export const AutomationAccountCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<AutomationAccountCreateOrUpdateResponseTagsMap>;
 
 /** Gets status of account. */
-export type AutomationAccountState = "Ok" | "Unavailable" | "Suspended";
+export type AutomationAccountState =
+  | "Ok"
+  | "Unavailable"
+  | "Suspended"
+  | (string & {});
 export const AutomationAccountState = /*@__PURE__*/ S.String;
 
 /** Private endpoint which the connection belongs to. */
@@ -2259,7 +2267,10 @@ export const ConnectionUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectionUpdateResponse>;
 
 /** Runbook Type */
-export type GraphRunbookType = "GraphPowerShell" | "GraphPowerShellWorkflow";
+export type GraphRunbookType =
+  | "GraphPowerShell"
+  | "GraphPowerShellWorkflow"
+  | (string & {});
 export const GraphRunbookType = /*@__PURE__*/ S.String;
 
 /** Raw Graphical Runbook content */
@@ -2765,7 +2776,7 @@ export const ContentHash = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContentHash" }) as any as S.Schema<ContentHash>;
 
 /** Gets or sets the content source type. */
-export type ContentSourceType = "embeddedContent" | "uri";
+export type ContentSourceType = "embeddedContent" | "uri" | (string & {});
 export const ContentSourceType = /*@__PURE__*/ S.String;
 
 /** Definition of the content source. */
@@ -2910,7 +2921,9 @@ export const DscConfigurationCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<DscConfigurationCreateOrUpdateResponseTagsMap>;
 
 /** Gets or sets the provisioning state of the configuration. */
-export type DscConfigurationPropertiesProvisioningState = "Succeeded";
+export type DscConfigurationPropertiesProvisioningState =
+  | "Succeeded"
+  | (string & {});
 export const DscConfigurationPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -2924,7 +2937,11 @@ export const DscConfigurationPropertiesParametersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DscConfigurationPropertiesParametersMap>;
 
 /** Gets or sets the state of the configuration. */
-export type DscConfigurationState = "New" | "Edit" | "Published";
+export type DscConfigurationState =
+  | "New"
+  | "Edit"
+  | "Published"
+  | (string & {});
 export const DscConfigurationState = /*@__PURE__*/ S.String;
 
 /** Definition of the configuration property type. */
@@ -4085,7 +4102,7 @@ export const HybridRunbookWorkerGroupCreateResponseTagsMap =
   ) as any as S.Schema<HybridRunbookWorkerGroupCreateResponseTagsMap>;
 
 /** Type of the HybridWorkerGroup. */
-export type GroupTypeEnum = "User" | "System";
+export type GroupTypeEnum = "User" | "System" | (string & {});
 export const GroupTypeEnum = /*@__PURE__*/ S.String;
 
 /** Definition of hybrid runbook worker group property. */
@@ -4466,7 +4483,7 @@ export const HybridRunbookWorkersCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<HybridRunbookWorkersCreateResponseTagsMap>;
 
 /** Type of the HybridWorker. */
-export type WorkerType = "HybridV1" | "HybridV2";
+export type WorkerType = "HybridV1" | "HybridV2" | (string & {});
 export const WorkerType = /*@__PURE__*/ S.String;
 
 /** Definition of hybrid runbook worker property. */
@@ -4937,7 +4954,8 @@ export type JobStatus =
   | "Suspending"
   | "Stopping"
   | "Resuming"
-  | "Removing";
+  | "Removing"
+  | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
 
 /** Gets or sets the parameters of the job. */
@@ -4952,7 +4970,8 @@ export type JobProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Suspended"
-  | "Processing";
+  | "Processing"
+  | (string & {});
 export const JobProvisioningState = /*@__PURE__*/ S.String;
 
 /** Definition of job properties. */
@@ -5669,7 +5688,8 @@ export type JobStreamType =
   | "Error"
   | "Debug"
   | "Verbose"
-  | "Any";
+  | "Any"
+  | (string & {});
 export const JobStreamType = /*@__PURE__*/ S.String;
 
 /** Gets or sets the values of the job stream. */
@@ -5837,11 +5857,11 @@ export const KeysListByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KeysListByAutomationAccountRequest>;
 
 /** Automation key name. */
-export type AutomationKeyName = "Primary" | "Secondary";
+export type AutomationKeyName = "Primary" | "Secondary" | (string & {});
 export const AutomationKeyName = /*@__PURE__*/ S.String;
 
 /** Automation key permissions. */
-export type AutomationKeyPermissions = "Read" | "Full";
+export type AutomationKeyPermissions = "Read" | "Full" | (string & {});
 export const AutomationKeyPermissions = /*@__PURE__*/ S.String;
 
 /** Automation key which is used to register a DSC Node */
@@ -6020,7 +6040,8 @@ export type ModuleProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled"
-  | "Updating";
+  | "Updating"
+  | (string & {});
 export const ModuleProvisioningState = /*@__PURE__*/ S.String;
 
 /** Definition of the module error info type. */
@@ -6401,7 +6422,8 @@ export const ModuleUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type NodeCountInformationGetRequestCountType =
   | "status"
-  | "nodeconfiguration";
+  | "nodeconfiguration"
+  | (string & {});
 export const NodeCountInformationGetRequestCountType = /*@__PURE__*/ S.String;
 
 export interface NodeCountInformationGetRequest {
@@ -7164,7 +7186,8 @@ export type PackageProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled"
-  | "Updating";
+  | "Updating"
+  | (string & {});
 export const PackageProvisioningState = /*@__PURE__*/ S.String;
 
 /** Definition of the package error info type. */
@@ -7188,7 +7211,8 @@ export type PackagePropertiesAllOfCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const PackagePropertiesAllOfCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -7196,7 +7220,8 @@ export type PackagePropertiesAllOfLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const PackagePropertiesAllOfLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -8565,7 +8590,8 @@ export type RunbookTypeEnum =
   | "Python2"
   | "Python3"
   | "Python"
-  | "PowerShell72";
+  | "PowerShell72"
+  | (string & {});
 export const RunbookTypeEnum = /*@__PURE__*/ S.String;
 
 /** Definition of the runbook parameter type. */
@@ -8723,7 +8749,7 @@ export const RunbookCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RunbookCreateOrUpdateResponseTagsMap>;
 
 /** Gets or sets the state of the runbook. */
-export type RunbookState = "New" | "Edit" | "Published";
+export type RunbookState = "New" | "Edit" | "Published" | (string & {});
 export const RunbookState = /*@__PURE__*/ S.String;
 
 /** Gets or sets the runbook parameters. */
@@ -8742,7 +8768,7 @@ export const RunbookPropertiesOutputTypesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RunbookPropertiesOutputTypesList>;
 
 /** Gets or sets the provisioning state of the runbook. */
-export type RunbookPropertiesProvisioningState = "Succeeded";
+export type RunbookPropertiesProvisioningState = "Succeeded" | (string & {});
 export const RunbookPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Definition of the runbook property type. */
@@ -9046,7 +9072,8 @@ export type HttpStatusCode =
   | "BadGateway"
   | "ServiceUnavailable"
   | "GatewayTimeout"
-  | "HttpVersionNotSupported";
+  | "HttpVersionNotSupported"
+  | (string & {});
 export const HttpStatusCode = /*@__PURE__*/ S.String;
 
 /** The response model for the undo edit runbook operation. */
@@ -9820,7 +9847,8 @@ export type ScheduleFrequency =
   | "Hour"
   | "Week"
   | "Month"
-  | "Minute";
+  | "Minute"
+  | (string & {});
 export const ScheduleFrequency = /*@__PURE__*/ S.String;
 
 /** Days of the week that the job should execute on. */
@@ -9843,7 +9871,8 @@ export type ScheduleDay =
   | "Thursday"
   | "Friday"
   | "Saturday"
-  | "Sunday";
+  | "Sunday"
+  | (string & {});
 export const ScheduleDay = /*@__PURE__*/ S.String;
 
 /** The properties of the create advanced schedule monthly occurrence. */
@@ -10664,7 +10693,7 @@ export const SoftwareUpdateConfigurationRunListResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SoftwareUpdateConfigurationRunListResult>;
 
 /** Target operating system for the software update configuration. */
-export type OperatingSystemType = "Windows" | "Linux";
+export type OperatingSystemType = "Windows" | "Linux" | (string & {});
 export const OperatingSystemType = /*@__PURE__*/ S.String;
 
 /** Update classification included in the software update configuration. A comma separated string with required values */
@@ -10677,7 +10706,8 @@ export type WindowsUpdateClasses =
   | "ServicePack"
   | "Definition"
   | "Tools"
-  | "Updates";
+  | "Updates"
+  | (string & {});
 export const WindowsUpdateClasses = /*@__PURE__*/ S.String;
 
 /** KB numbers excluded from the software update configuration. */
@@ -10719,7 +10749,8 @@ export type LinuxUpdateClasses =
   | "Unclassified"
   | "Critical"
   | "Security"
-  | "Other";
+  | "Other"
+  | (string & {});
 export const LinuxUpdateClasses = /*@__PURE__*/ S.String;
 
 /** packages excluded from the software update configuration. */
@@ -10804,7 +10835,7 @@ export const TagSettingsPropertiesTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<TagSettingsPropertiesTagsMap>;
 
 /** Filter VMs by Any or All specified tags. */
-export type TagOperators = "All" | "Any";
+export type TagOperators = "All" | "Any" | (string & {});
 export const TagOperators = /*@__PURE__*/ S.String;
 
 /** Tag filter information for the VM. */
@@ -11375,11 +11406,11 @@ export const SoftwareUpdateConfigurationListResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SoftwareUpdateConfigurationListResult>;
 
 /** The source type. Must be one of VsoGit, VsoTfvc, GitHub. */
-export type SourceType = "VsoGit" | "VsoTfvc" | "GitHub";
+export type SourceType = "VsoGit" | "VsoTfvc" | "GitHub" | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
 
 /** The token type. Must be either PersonalAccessToken or Oauth. */
-export type TokenType = "PersonalAccessToken" | "Oauth";
+export type TokenType = "PersonalAccessToken" | "Oauth" | (string & {});
 export const TokenType = /*@__PURE__*/ S.String;
 
 export interface SourceControlSecurityTokenProperties {
@@ -11738,11 +11769,15 @@ export const SourceControlSyncJobCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SourceControlSyncJobCreateRequest>;
 
 /** The provisioning state of the job. */
-export type ProvisioningState = "Completed" | "Failed" | "Running";
+export type ProvisioningState =
+  | "Completed"
+  | "Failed"
+  | "Running"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The sync type. */
-export type SyncType = "PartialSync" | "FullSync";
+export type SyncType = "PartialSync" | "FullSync" | (string & {});
 export const SyncType = /*@__PURE__*/ S.String;
 
 /** Definition of source control sync job properties. */
@@ -11964,7 +11999,7 @@ export const SourceControlSyncJobStreamsGetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SourceControlSyncJobStreamsGetRequest>;
 
 /** The type of the sync job stream. */
-export type StreamType = "Error" | "Output";
+export type StreamType = "Error" | "Output" | (string & {});
 export const StreamType = /*@__PURE__*/ S.String;
 
 /** The values of the job stream. */

@@ -67,7 +67,7 @@ export const GetSmartRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSmartRoutingRequest",
 }) as any as S.Schema<GetSmartRoutingRequest>;
 
-export type SmartRoutingGetResponseValue = "on" | "off";
+export type SmartRoutingGetResponseValue = "on" | "off" | (string & {});
 export const SmartRoutingGetResponseValue = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -112,10 +112,10 @@ export const GetTieredCachingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTieredCachingRequest",
 }) as any as S.Schema<GetTieredCachingRequest>;
 
-export type TieredCachingGetResponseId = "tiered_caching";
+export type TieredCachingGetResponseId = "tiered_caching" | (string & {});
 export const TieredCachingGetResponseId = /*@__PURE__*/ S.String;
 
-export type TieredCachingGetResponseValue = "on" | "off";
+export type TieredCachingGetResponseValue = "on" | "off" | (string & {});
 export const TieredCachingGetResponseValue = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -140,7 +140,7 @@ export const GetTieredCachingResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTieredCachingResponse",
 }) as any as S.Schema<GetTieredCachingResponse>;
 
-export type SmartRoutingEditRequestValue = "on" | "off";
+export type SmartRoutingEditRequestValue = "on" | "off" | (string & {});
 export const SmartRoutingEditRequestValue = /*@__PURE__*/ S.String;
 
 export interface PatchSmartRoutingRequest {
@@ -166,7 +166,7 @@ export const PatchSmartRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchSmartRoutingRequest",
 }) as any as S.Schema<PatchSmartRoutingRequest>;
 
-export type SmartRoutingEditResponseValue = "on" | "off";
+export type SmartRoutingEditResponseValue = "on" | "off" | (string & {});
 export const SmartRoutingEditResponseValue = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -191,7 +191,7 @@ export const PatchSmartRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchSmartRoutingResponse",
 }) as any as S.Schema<PatchSmartRoutingResponse>;
 
-export type TieredCachingEditRequestValue = "on" | "off";
+export type TieredCachingEditRequestValue = "on" | "off" | (string & {});
 export const TieredCachingEditRequestValue = /*@__PURE__*/ S.String;
 
 export interface PatchTieredCachingRequest {
@@ -217,10 +217,10 @@ export const PatchTieredCachingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchTieredCachingRequest",
 }) as any as S.Schema<PatchTieredCachingRequest>;
 
-export type TieredCachingEditResponseId = "tiered_caching";
+export type TieredCachingEditResponseId = "tiered_caching" | (string & {});
 export const TieredCachingEditResponseId = /*@__PURE__*/ S.String;
 
-export type TieredCachingEditResponseValue = "on" | "off";
+export type TieredCachingEditResponseValue = "on" | "off" | (string & {});
 export const TieredCachingEditResponseValue = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

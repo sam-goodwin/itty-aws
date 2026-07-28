@@ -60,7 +60,11 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type TagActionActionEnum = "ACTION_UNSPECIFIED" | "ADD" | "REMOVE";
+export type TagActionActionEnum =
+  | "ACTION_UNSPECIFIED"
+  | "ADD"
+  | "REMOVE"
+  | (string & {});
 export const TagActionActionEnum = /*@__PURE__*/ S.String;
 
 /** Message for edit tag action */
@@ -149,7 +153,8 @@ export type ApiObservationStyleEnum =
   | "STYLE_UNSPECIFIED"
   | "REST"
   | "GRPC"
-  | "GRAPHQL";
+  | "GRAPHQL"
+  | (string & {});
 export const ApiObservationStyleEnum = /*@__PURE__*/ S.String;
 
 /** Message describing ApiObservation object */
@@ -253,7 +258,8 @@ export type ObservationJobStateEnum =
   | "DISABLING"
   | "DISABLED"
   | "DELETING"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const ObservationJobStateEnum = /*@__PURE__*/ S.String;
 
 /** Message describing ObservationJob object */
@@ -363,7 +369,8 @@ export type ObservationSourceStateEnum =
   | "CREATING"
   | "CREATED"
   | "DELETING"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const ObservationSourceStateEnum = /*@__PURE__*/ S.String;
 
 /** Network information for setting up a PSC connection. */
@@ -729,7 +736,8 @@ export type HttpOperationMethodEnum =
   | "DELETE"
   | "TRACE"
   | "OPTIONS"
-  | "CONNECT";
+  | "CONNECT"
+  | (string & {});
 export const HttpOperationMethodEnum = /*@__PURE__*/ S.String;
 
 export type HttpOperationQueryParamDataTypeEnum =
@@ -738,7 +746,8 @@ export type HttpOperationQueryParamDataTypeEnum =
   | "INTEGER"
   | "FLOAT"
   | "STRING"
-  | "UUID";
+  | "UUID"
+  | (string & {});
 export const HttpOperationQueryParamDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** An aggregation of HTTP query parameter occurrences. */
@@ -774,7 +783,8 @@ export type HttpOperationHeaderDataTypeEnum =
   | "INTEGER"
   | "FLOAT"
   | "STRING"
-  | "UUID";
+  | "UUID"
+  | (string & {});
 export const HttpOperationHeaderDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** An aggregation of HTTP header occurrences. */
@@ -823,7 +833,8 @@ export type HttpOperationPathParamDataTypeEnum =
   | "INTEGER"
   | "FLOAT"
   | "STRING"
-  | "UUID";
+  | "UUID"
+  | (string & {});
 export const HttpOperationPathParamDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** HTTP Path parameter. */

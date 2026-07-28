@@ -261,7 +261,8 @@ export type RewriteObjectStorageClassEnum =
   | "STANDARD"
   | "NEARLINE"
   | "COLDLINE"
-  | "ARCHIVE";
+  | "ARCHIVE"
+  | (string & {});
 export const RewriteObjectStorageClassEnum = /*@__PURE__*/ S.String;
 
 /** Describes options for object rewrite. */
@@ -280,7 +281,8 @@ export const RewriteObject = /*@__PURE__*/ S.suspend(() =>
 
 export type LoggingConfigLogActionsItemEnum =
   | "LOGGABLE_ACTION_UNSPECIFIED"
-  | "TRANSFORM";
+  | "TRANSFORM"
+  | (string & {});
 export const LoggingConfigLogActionsItemEnum = /*@__PURE__*/ S.String;
 
 export type LoggingConfigLogActionsItemEnumList =
@@ -292,7 +294,8 @@ export const LoggingConfigLogActionsItemEnumList = /*@__PURE__*/ S.Array(
 export type LoggingConfigLogActionStatesItemEnum =
   | "LOGGABLE_ACTION_STATE_UNSPECIFIED"
   | "SUCCEEDED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const LoggingConfigLogActionStatesItemEnum = /*@__PURE__*/ S.String;
 
 export type LoggingConfigLogActionStatesItemEnumList =
@@ -350,13 +353,15 @@ export const Counters = /*@__PURE__*/ S.suspend(() =>
 export type PutObjectHoldEventBasedHoldEnum =
   | "HOLD_STATUS_UNSPECIFIED"
   | "SET"
-  | "UNSET";
+  | "UNSET"
+  | (string & {});
 export const PutObjectHoldEventBasedHoldEnum = /*@__PURE__*/ S.String;
 
 export type PutObjectHoldTemporaryHoldEnum =
   | "HOLD_STATUS_UNSPECIFIED"
   | "SET"
-  | "UNSET";
+  | "UNSET"
+  | (string & {});
 export const PutObjectHoldTemporaryHoldEnum = /*@__PURE__*/ S.String;
 
 /** Describes options to update object hold. */
@@ -393,7 +398,8 @@ export const StringMap = /*@__PURE__*/ S.Record(
 export type ObjectRetentionRetentionModeEnum =
   | "RETENTION_MODE_UNSPECIFIED"
   | "LOCKED"
-  | "UNLOCKED";
+  | "UNLOCKED"
+  | (string & {});
 export const ObjectRetentionRetentionModeEnum = /*@__PURE__*/ S.String;
 
 /** Describes options for object retention update. */
@@ -503,7 +509,8 @@ export type JobStateEnum =
   | "SUCCEEDED"
   | "CANCELED"
   | "FAILED"
-  | "QUEUED";
+  | "QUEUED"
+  | (string & {});
 export const JobStateEnum = /*@__PURE__*/ S.String;
 
 /** Describes list of objects to be transformed. */
@@ -578,7 +585,8 @@ export type ErrorSummaryErrorCodeEnum =
   | "UNIMPLEMENTED"
   | "INTERNAL"
   | "UNAVAILABLE"
-  | "DATA_LOSS";
+  | "DATA_LOSS"
+  | (string & {});
 export const ErrorSummaryErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** An entry describing an error that has occurred. */
@@ -892,7 +900,8 @@ export type BucketOperationStateEnum =
   | "RUNNING"
   | "SUCCEEDED"
   | "CANCELED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const BucketOperationStateEnum = /*@__PURE__*/ S.String;
 
 /** BucketOperation represents a bucket-level breakdown of a Job. */

@@ -72,7 +72,8 @@ export type ExportFormatEnum =
   | "video/webm"
   | "video/mp4"
   | "image/gif"
-  | "application/json";
+  | "application/json"
+  | (string & {});
 export const ExportFormatEnum = /*@__PURE__*/ S.String;
 
 export interface ExportsCreateRequest {

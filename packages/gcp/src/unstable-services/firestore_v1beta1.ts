@@ -90,7 +90,8 @@ export const ReadOnly = /*@__PURE__*/ S.suspend(() =>
 export type ReadWriteConcurrencyModeEnum =
   | "CONCURRENCY_MODE_UNSPECIFIED"
   | "OPTIMISTIC"
-  | "PESSIMISTIC";
+  | "PESSIMISTIC"
+  | (string & {});
 export const ReadWriteConcurrencyModeEnum = /*@__PURE__*/ S.String;
 
 /** Options for a transaction that can be used to read and write documents. */
@@ -252,7 +253,7 @@ export const Firestore_Function = /*@__PURE__*/ S.suspend(() =>
   identifier: "Firestore_Function",
 }) as any as S.Schema<Firestore_Function>;
 
-export type ValueNullValueEnum = "NULL_VALUE";
+export type ValueNullValueEnum = "NULL_VALUE" | (string & {});
 export const ValueNullValueEnum = /*@__PURE__*/ S.String;
 
 /** A map value. */
@@ -383,7 +384,8 @@ export const Precondition = /*@__PURE__*/ S.suspend(() =>
 
 export type FieldTransformSetToServerValueEnum =
   | "SERVER_VALUE_UNSPECIFIED"
-  | "REQUEST_TIME";
+  | "REQUEST_TIME"
+  | (string & {});
 export const FieldTransformSetToServerValueEnum = /*@__PURE__*/ S.String;
 
 /** A transformation of a field of the document. */
@@ -712,7 +714,8 @@ export type GoogleFirestoreAdminV1beta1IndexFieldModeEnum =
   | "MODE_UNSPECIFIED"
   | "ASCENDING"
   | "DESCENDING"
-  | "ARRAY_CONTAINS";
+  | "ARRAY_CONTAINS"
+  | (string & {});
 export const GoogleFirestoreAdminV1beta1IndexFieldModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -743,7 +746,8 @@ export type GoogleFirestoreAdminV1beta1IndexStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "READY"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const GoogleFirestoreAdminV1beta1IndexStateEnum = /*@__PURE__*/ S.String;
 
 /** An index definition. */
@@ -1230,7 +1234,8 @@ export type FindNearestDistanceMeasureEnum =
   | "DISTANCE_MEASURE_UNSPECIFIED"
   | "EUCLIDEAN"
   | "COSINE"
-  | "DOT_PRODUCT";
+  | "DOT_PRODUCT"
+  | (string & {});
 export const FindNearestDistanceMeasureEnum = /*@__PURE__*/ S.String;
 
 /** A reference to a field in a document, ex: `stats.operations`. */
@@ -1321,7 +1326,11 @@ export const Projection = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Projection" }) as any as S.Schema<Projection>;
 
-export type CompositeFilterOpEnum = "OPERATOR_UNSPECIFIED" | "AND" | "OR";
+export type CompositeFilterOpEnum =
+  | "OPERATOR_UNSPECIFIED"
+  | "AND"
+  | "OR"
+  | (string & {});
 export const CompositeFilterOpEnum = /*@__PURE__*/ S.String;
 
 export type FilterList = ReadonlyArray<Filter>;
@@ -1356,7 +1365,8 @@ export type FieldFilterOpEnum =
   | "ARRAY_CONTAINS"
   | "IN"
   | "ARRAY_CONTAINS_ANY"
-  | "NOT_IN";
+  | "NOT_IN"
+  | (string & {});
 export const FieldFilterOpEnum = /*@__PURE__*/ S.String;
 
 /** A filter on a specific field. */
@@ -1381,7 +1391,8 @@ export type UnaryFilterOpEnum =
   | "IS_NAN"
   | "IS_NULL"
   | "IS_NOT_NAN"
-  | "IS_NOT_NULL";
+  | "IS_NOT_NULL"
+  | (string & {});
 export const UnaryFilterOpEnum = /*@__PURE__*/ S.String;
 
 /** A filter with a single operand. */
@@ -1418,7 +1429,8 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 export type OrderDirectionEnum =
   | "DIRECTION_UNSPECIFIED"
   | "ASCENDING"
-  | "DESCENDING";
+  | "DESCENDING"
+  | (string & {});
 export const OrderDirectionEnum = /*@__PURE__*/ S.String;
 
 /** An order on a field. */
@@ -1620,7 +1632,8 @@ export type TargetChangeTargetChangeTypeEnum =
   | "ADD"
   | "REMOVE"
   | "CURRENT"
-  | "RESET";
+  | "RESET"
+  | (string & {});
 export const TargetChangeTargetChangeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Targets being watched have changed. */

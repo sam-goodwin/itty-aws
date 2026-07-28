@@ -227,7 +227,10 @@ export const AddressMapsCreateRequestIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AddressMapsCreateRequestIpsList>;
 
-export type AddressMapsCreateRequestMembershipsItemKind = "zone" | "account";
+export type AddressMapsCreateRequestMembershipsItemKind =
+  | "zone"
+  | "account"
+  | (string & {});
 export const AddressMapsCreateRequestMembershipsItemKind =
   /*@__PURE__*/ S.String;
 
@@ -304,7 +307,10 @@ export const AddressMapsCreateResponseIpsList = /*@__PURE__*/ S.Array(
   AddressMapsCreateResponseIps,
 ) as any as S.Schema<AddressMapsCreateResponseIpsList>;
 
-export type AddressMapsCreateResponseMembershipsItemKind = "zone" | "account";
+export type AddressMapsCreateResponseMembershipsItemKind =
+  | "zone"
+  | "account"
+  | (string & {});
 export const AddressMapsCreateResponseMembershipsItemKind =
   /*@__PURE__*/ S.String;
 
@@ -732,7 +738,8 @@ export const CreatePrefixServiceBindingRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PrefixesServiceBindingsCreateResponseProvisioningState =
   | "provisioning"
-  | "active";
+  | "active"
+  | (string & {});
 export const PrefixesServiceBindingsCreateResponseProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1129,7 +1136,10 @@ export const AddressMapsGetResponseIpsList = /*@__PURE__*/ S.Array(
   AddressMapsGetResponseIps,
 ) as any as S.Schema<AddressMapsGetResponseIpsList>;
 
-export type AddressMapsGetResponseMembershipsItemKind = "zone" | "account";
+export type AddressMapsGetResponseMembershipsItemKind =
+  | "zone"
+  | "account"
+  | (string & {});
 export const AddressMapsGetResponseMembershipsItemKind = /*@__PURE__*/ S.String;
 
 export interface AddressMapsGetResponseMembershipsItem {
@@ -1501,7 +1511,8 @@ export const GetPrefixServiceBindingRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PrefixesServiceBindingsGetResponseProvisioningState =
   | "provisioning"
-  | "active";
+  | "active"
+  | (string & {});
 export const PrefixesServiceBindingsGetResponseProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1993,7 +2004,8 @@ export const ListPrefixServiceBindingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PrefixesServiceBindingsListResultItemProvisioningState =
   | "provisioning"
-  | "active";
+  | "active"
+  | (string & {});
 export const PrefixesServiceBindingsListResultItemProvisioningState =
   /*@__PURE__*/ S.String;
 

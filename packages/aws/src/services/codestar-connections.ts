@@ -175,7 +175,8 @@ export type ProviderType =
   | "GitHub"
   | "GitHubEnterpriseServer"
   | "GitLab"
-  | "GitLabSelfManaged";
+  | "GitLabSelfManaged"
+  | (string & {});
 export const ProviderType = /*@__PURE__*/ S.String;
 
 export type ConnectionName = string;
@@ -333,13 +334,16 @@ export type BranchName = string;
 export type DeploymentFilePath = string;
 export type ResourceName = string;
 export type IamRoleArn = string;
-export type SyncConfigurationType = "CFN_STACK_SYNC";
+export type SyncConfigurationType = "CFN_STACK_SYNC" | (string & {});
 export const SyncConfigurationType = /*@__PURE__*/ S.String;
 
-export type PublishDeploymentStatus = "ENABLED" | "DISABLED";
+export type PublishDeploymentStatus = "ENABLED" | "DISABLED" | (string & {});
 export const PublishDeploymentStatus = /*@__PURE__*/ S.String;
 
-export type TriggerResourceUpdateOn = "ANY_CHANGE" | "FILE_CHANGE";
+export type TriggerResourceUpdateOn =
+  | "ANY_CHANGE"
+  | "FILE_CHANGE"
+  | (string & {});
 export const TriggerResourceUpdateOn = /*@__PURE__*/ S.String;
 
 export interface CreateSyncConfigurationInput {
@@ -482,7 +486,11 @@ export const GetConnectionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetConnectionInput",
 }) as any as S.Schema<GetConnectionInput>;
 export type AccountId = string;
-export type ConnectionStatus = "PENDING" | "AVAILABLE" | "ERROR";
+export type ConnectionStatus =
+  | "PENDING"
+  | "AVAILABLE"
+  | "ERROR"
+  | (string & {});
 export const ConnectionStatus = /*@__PURE__*/ S.String;
 
 export interface Connection {
@@ -575,7 +583,8 @@ export type RepositorySyncStatus =
   | "INITIATED"
   | "IN_PROGRESS"
   | "SUCCEEDED"
-  | "QUEUED";
+  | "QUEUED"
+  | (string & {});
 export const RepositorySyncStatus = /*@__PURE__*/ S.String;
 
 export type Event = string;
@@ -675,7 +684,8 @@ export type ResourceSyncStatus =
   | "FAILED"
   | "INITIATED"
   | "IN_PROGRESS"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const ResourceSyncStatus = /*@__PURE__*/ S.String;
 
 export type Target = string;
@@ -725,10 +735,10 @@ export const GetSyncBlockerSummaryInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSyncBlockerSummaryInput",
 }) as any as S.Schema<GetSyncBlockerSummaryInput>;
 export type Id = string;
-export type BlockerType = "AUTOMATED";
+export type BlockerType = "AUTOMATED" | (string & {});
 export const BlockerType = /*@__PURE__*/ S.String;
 
-export type BlockerStatus = "ACTIVE" | "RESOLVED";
+export type BlockerStatus = "ACTIVE" | "RESOLVED" | (string & {});
 export const BlockerStatus = /*@__PURE__*/ S.String;
 
 export type CreatedReason = string;

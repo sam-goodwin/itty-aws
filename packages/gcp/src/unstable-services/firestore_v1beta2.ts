@@ -64,26 +64,30 @@ export type GoogleFirestoreAdminV1beta2IndexStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "READY"
-  | "NEEDS_REPAIR";
+  | "NEEDS_REPAIR"
+  | (string & {});
 export const GoogleFirestoreAdminV1beta2IndexStateEnum = /*@__PURE__*/ S.String;
 
 export type GoogleFirestoreAdminV1beta2IndexQueryScopeEnum =
   | "QUERY_SCOPE_UNSPECIFIED"
   | "COLLECTION"
-  | "COLLECTION_GROUP";
+  | "COLLECTION_GROUP"
+  | (string & {});
 export const GoogleFirestoreAdminV1beta2IndexQueryScopeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleFirestoreAdminV1beta2IndexFieldArrayConfigEnum =
   | "ARRAY_CONFIG_UNSPECIFIED"
-  | "CONTAINS";
+  | "CONTAINS"
+  | (string & {});
 export const GoogleFirestoreAdminV1beta2IndexFieldArrayConfigEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleFirestoreAdminV1beta2IndexFieldOrderEnum =
   | "ORDER_UNSPECIFIED"
   | "ASCENDING"
-  | "DESCENDING";
+  | "DESCENDING"
+  | (string & {});
 export const GoogleFirestoreAdminV1beta2IndexFieldOrderEnum =
   /*@__PURE__*/ S.String;
 

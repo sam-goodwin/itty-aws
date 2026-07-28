@@ -77,14 +77,18 @@ export class ZoneNotEntitled extends T.applyErrorMatchers(
   [{ code: 1034 }],
 ) {}
 
-export type EventsCreateRequestTurnstileAction = "log" | "infinite_queue";
+export type EventsCreateRequestTurnstileAction =
+  | "log"
+  | "infinite_queue"
+  | (string & {});
 export const EventsCreateRequestTurnstileAction = /*@__PURE__*/ S.String;
 
 export type EventsCreateRequestTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed";
+  | "visible_managed"
+  | (string & {});
 export const EventsCreateRequestTurnstileMode = /*@__PURE__*/ S.String;
 
 export interface CreateEventRequest {
@@ -164,14 +168,18 @@ export const CreateEventRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateEventRequest",
 }) as any as S.Schema<CreateEventRequest>;
 
-export type EventsCreateResponseTurnstileAction = "log" | "infinite_queue";
+export type EventsCreateResponseTurnstileAction =
+  | "log"
+  | "infinite_queue"
+  | (string & {});
 export const EventsCreateResponseTurnstileAction = /*@__PURE__*/ S.String;
 
 export type EventsCreateResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed";
+  | "visible_managed"
+  | (string & {});
 export const EventsCreateResponseTurnstileMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -245,7 +253,9 @@ export const CreateEventResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateEventResponse",
 }) as any as S.Schema<CreateEventResponse>;
 
-export type RulesCreateRequestRulesAction = "bypass_waiting_room";
+export type RulesCreateRequestRulesAction =
+  | "bypass_waiting_room"
+  | (string & {});
 export const RulesCreateRequestRulesAction = /*@__PURE__*/ S.String;
 
 export interface RulesCreateRequestRules {
@@ -293,7 +303,7 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRuleRequest",
 }) as any as S.Schema<CreateRuleRequest>;
 
-export type RulesCreateResultItemAction = "bypass_waiting_room";
+export type RulesCreateResultItemAction = "bypass_waiting_room" | (string & {});
 export const RulesCreateResultItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesCreateResultItem {
@@ -370,10 +380,15 @@ export type CreateRequestCookieAttributesSamesite =
   | "auto"
   | "lax"
   | "none"
-  | "strict";
+  | "strict"
+  | (string & {});
 export const CreateRequestCookieAttributesSamesite = /*@__PURE__*/ S.String;
 
-export type CreateRequestCookieAttributesSecure = "auto" | "always" | "never";
+export type CreateRequestCookieAttributesSecure =
+  | "auto"
+  | "always"
+  | "never"
+  | (string & {});
 export const CreateRequestCookieAttributesSecure = /*@__PURE__*/ S.String;
 
 export interface CreateRequestCookieAttributes {
@@ -429,10 +444,11 @@ export type CreateRequestDefaultTemplateLanguage =
   | "tl-PH"
   | "th-TH"
   | "uk-UA"
-  | "vi-VN";
+  | "vi-VN"
+  | (string & {});
 export const CreateRequestDefaultTemplateLanguage = /*@__PURE__*/ S.String;
 
-export type CreateRequestEnabledOriginCommandsItem = "revoke";
+export type CreateRequestEnabledOriginCommandsItem = "revoke" | (string & {});
 export const CreateRequestEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
 export type CreateRequestEnabledOriginCommandsList =
@@ -445,20 +461,25 @@ export type CreateRequestQueueingMethod =
   | "fifo"
   | "random"
   | "passthrough"
-  | "reject";
+  | "reject"
+  | (string & {});
 export const CreateRequestQueueingMethod = /*@__PURE__*/ S.String;
 
-export type CreateRequestQueueingStatusCode = 200 | 202 | 429;
+export type CreateRequestQueueingStatusCode = 200 | 202 | 429 | (number & {});
 export const CreateRequestQueueingStatusCode = /*@__PURE__*/ S.Number;
 
-export type CreateRequestTurnstileAction = "log" | "infinite_queue";
+export type CreateRequestTurnstileAction =
+  | "log"
+  | "infinite_queue"
+  | (string & {});
 export const CreateRequestTurnstileAction = /*@__PURE__*/ S.String;
 
 export type CreateRequestTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed";
+  | "visible_managed"
+  | (string & {});
 export const CreateRequestTurnstileMode = /*@__PURE__*/ S.String;
 
 export interface CreateWaitingRoomRequest {
@@ -593,10 +614,15 @@ export type CreateResponseCookieAttributesSamesite =
   | "auto"
   | "lax"
   | "none"
-  | "strict";
+  | "strict"
+  | (string & {});
 export const CreateResponseCookieAttributesSamesite = /*@__PURE__*/ S.String;
 
-export type CreateResponseCookieAttributesSecure = "auto" | "always" | "never";
+export type CreateResponseCookieAttributesSecure =
+  | "auto"
+  | "always"
+  | "never"
+  | (string & {});
 export const CreateResponseCookieAttributesSecure = /*@__PURE__*/ S.String;
 
 export interface CreateResponseCookieAttributes {
@@ -652,10 +678,11 @@ export type CreateResponseDefaultTemplateLanguage =
   | "tl-PH"
   | "th-TH"
   | "uk-UA"
-  | "vi-VN";
+  | "vi-VN"
+  | (string & {});
 export const CreateResponseDefaultTemplateLanguage = /*@__PURE__*/ S.String;
 
-export type CreateResponseEnabledOriginCommandsItem = "revoke";
+export type CreateResponseEnabledOriginCommandsItem = "revoke" | (string & {});
 export const CreateResponseEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
 export type CreateResponseEnabledOriginCommandsList =
@@ -668,20 +695,25 @@ export type CreateResponseQueueingMethod =
   | "fifo"
   | "random"
   | "passthrough"
-  | "reject";
+  | "reject"
+  | (string & {});
 export const CreateResponseQueueingMethod = /*@__PURE__*/ S.String;
 
-export type CreateResponseQueueingStatusCode = 200 | 202 | 429;
+export type CreateResponseQueueingStatusCode = 200 | 202 | 429 | (number & {});
 export const CreateResponseQueueingStatusCode = /*@__PURE__*/ S.Number;
 
-export type CreateResponseTurnstileAction = "log" | "infinite_queue";
+export type CreateResponseTurnstileAction =
+  | "log"
+  | "infinite_queue"
+  | (string & {});
 export const CreateResponseTurnstileAction = /*@__PURE__*/ S.String;
 
 export type CreateResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed";
+  | "visible_managed"
+  | (string & {});
 export const CreateResponseTurnstileMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -860,7 +892,7 @@ export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRuleRequest",
 }) as any as S.Schema<DeleteRuleRequest>;
 
-export type RulesDeleteResultItemAction = "bypass_waiting_room";
+export type RulesDeleteResultItemAction = "bypass_waiting_room" | (string & {});
 export const RulesDeleteResultItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesDeleteResultItem {
@@ -970,14 +1002,18 @@ export const GetEventRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEventRequest",
 }) as any as S.Schema<GetEventRequest>;
 
-export type EventsGetResponseTurnstileAction = "log" | "infinite_queue";
+export type EventsGetResponseTurnstileAction =
+  | "log"
+  | "infinite_queue"
+  | (string & {});
 export const EventsGetResponseTurnstileAction = /*@__PURE__*/ S.String;
 
 export type EventsGetResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed";
+  | "visible_managed"
+  | (string & {});
 export const EventsGetResponseTurnstileMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1150,7 +1186,7 @@ export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetRuleRequest" }) as any as S.Schema<GetRuleRequest>;
 
-export type RulesGetResultItemAction = "bypass_waiting_room";
+export type RulesGetResultItemAction = "bypass_waiting_room" | (string & {});
 export const RulesGetResultItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesGetResultItem {
@@ -1263,7 +1299,8 @@ export type StatusesGetResponseStatus =
   | "event_prequeueing"
   | "not_queueing"
   | "queueing"
-  | "suspended";
+  | "suspended"
+  | (string & {});
 export const StatusesGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1339,10 +1376,15 @@ export type GetResponseCookieAttributesSamesite =
   | "auto"
   | "lax"
   | "none"
-  | "strict";
+  | "strict"
+  | (string & {});
 export const GetResponseCookieAttributesSamesite = /*@__PURE__*/ S.String;
 
-export type GetResponseCookieAttributesSecure = "auto" | "always" | "never";
+export type GetResponseCookieAttributesSecure =
+  | "auto"
+  | "always"
+  | "never"
+  | (string & {});
 export const GetResponseCookieAttributesSecure = /*@__PURE__*/ S.String;
 
 export interface GetResponseCookieAttributes {
@@ -1398,10 +1440,11 @@ export type GetResponseDefaultTemplateLanguage =
   | "tl-PH"
   | "th-TH"
   | "uk-UA"
-  | "vi-VN";
+  | "vi-VN"
+  | (string & {});
 export const GetResponseDefaultTemplateLanguage = /*@__PURE__*/ S.String;
 
-export type GetResponseEnabledOriginCommandsItem = "revoke";
+export type GetResponseEnabledOriginCommandsItem = "revoke" | (string & {});
 export const GetResponseEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
 export type GetResponseEnabledOriginCommandsList =
@@ -1414,20 +1457,25 @@ export type GetResponseQueueingMethod =
   | "fifo"
   | "random"
   | "passthrough"
-  | "reject";
+  | "reject"
+  | (string & {});
 export const GetResponseQueueingMethod = /*@__PURE__*/ S.String;
 
-export type GetResponseQueueingStatusCode = 200 | 202 | 429;
+export type GetResponseQueueingStatusCode = 200 | 202 | 429 | (number & {});
 export const GetResponseQueueingStatusCode = /*@__PURE__*/ S.Number;
 
-export type GetResponseTurnstileAction = "log" | "infinite_queue";
+export type GetResponseTurnstileAction =
+  | "log"
+  | "infinite_queue"
+  | (string & {});
 export const GetResponseTurnstileAction = /*@__PURE__*/ S.String;
 
 export type GetResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed";
+  | "visible_managed"
+  | (string & {});
 export const GetResponseTurnstileMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1573,14 +1621,18 @@ export const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEventsRequest",
 }) as any as S.Schema<ListEventsRequest>;
 
-export type EventsListResultItemTurnstileAction = "log" | "infinite_queue";
+export type EventsListResultItemTurnstileAction =
+  | "log"
+  | "infinite_queue"
+  | (string & {});
 export const EventsListResultItemTurnstileAction = /*@__PURE__*/ S.String;
 
 export type EventsListResultItemTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed";
+  | "visible_managed"
+  | (string & {});
 export const EventsListResultItemTurnstileMode = /*@__PURE__*/ S.String;
 
 export interface EventsListResultItem {
@@ -1726,14 +1778,16 @@ export type ListForAccountResultItemCookieAttributesSamesite =
   | "auto"
   | "lax"
   | "none"
-  | "strict";
+  | "strict"
+  | (string & {});
 export const ListForAccountResultItemCookieAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type ListForAccountResultItemCookieAttributesSecure =
   | "auto"
   | "always"
-  | "never";
+  | "never"
+  | (string & {});
 export const ListForAccountResultItemCookieAttributesSecure =
   /*@__PURE__*/ S.String;
 
@@ -1791,11 +1845,14 @@ export type ListForAccountResultItemDefaultTemplateLanguage =
   | "tl-PH"
   | "th-TH"
   | "uk-UA"
-  | "vi-VN";
+  | "vi-VN"
+  | (string & {});
 export const ListForAccountResultItemDefaultTemplateLanguage =
   /*@__PURE__*/ S.String;
 
-export type ListForAccountResultItemEnabledOriginCommandsItem = "revoke";
+export type ListForAccountResultItemEnabledOriginCommandsItem =
+  | "revoke"
+  | (string & {});
 export const ListForAccountResultItemEnabledOriginCommandsItem =
   /*@__PURE__*/ S.String;
 
@@ -1810,21 +1867,30 @@ export type ListForAccountResultItemQueueingMethod =
   | "fifo"
   | "random"
   | "passthrough"
-  | "reject";
+  | "reject"
+  | (string & {});
 export const ListForAccountResultItemQueueingMethod = /*@__PURE__*/ S.String;
 
-export type ListForAccountResultItemQueueingStatusCode = 200 | 202 | 429;
+export type ListForAccountResultItemQueueingStatusCode =
+  | 200
+  | 202
+  | 429
+  | (number & {});
 export const ListForAccountResultItemQueueingStatusCode =
   /*@__PURE__*/ S.Number;
 
-export type ListForAccountResultItemTurnstileAction = "log" | "infinite_queue";
+export type ListForAccountResultItemTurnstileAction =
+  | "log"
+  | "infinite_queue"
+  | (string & {});
 export const ListForAccountResultItemTurnstileAction = /*@__PURE__*/ S.String;
 
 export type ListForAccountResultItemTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed";
+  | "visible_managed"
+  | (string & {});
 export const ListForAccountResultItemTurnstileMode = /*@__PURE__*/ S.String;
 
 export interface ListForAccountResultItem {
@@ -2019,14 +2085,16 @@ export type ListForZoneResultItemCookieAttributesSamesite =
   | "auto"
   | "lax"
   | "none"
-  | "strict";
+  | "strict"
+  | (string & {});
 export const ListForZoneResultItemCookieAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type ListForZoneResultItemCookieAttributesSecure =
   | "auto"
   | "always"
-  | "never";
+  | "never"
+  | (string & {});
 export const ListForZoneResultItemCookieAttributesSecure =
   /*@__PURE__*/ S.String;
 
@@ -2084,11 +2152,14 @@ export type ListForZoneResultItemDefaultTemplateLanguage =
   | "tl-PH"
   | "th-TH"
   | "uk-UA"
-  | "vi-VN";
+  | "vi-VN"
+  | (string & {});
 export const ListForZoneResultItemDefaultTemplateLanguage =
   /*@__PURE__*/ S.String;
 
-export type ListForZoneResultItemEnabledOriginCommandsItem = "revoke";
+export type ListForZoneResultItemEnabledOriginCommandsItem =
+  | "revoke"
+  | (string & {});
 export const ListForZoneResultItemEnabledOriginCommandsItem =
   /*@__PURE__*/ S.String;
 
@@ -2103,20 +2174,29 @@ export type ListForZoneResultItemQueueingMethod =
   | "fifo"
   | "random"
   | "passthrough"
-  | "reject";
+  | "reject"
+  | (string & {});
 export const ListForZoneResultItemQueueingMethod = /*@__PURE__*/ S.String;
 
-export type ListForZoneResultItemQueueingStatusCode = 200 | 202 | 429;
+export type ListForZoneResultItemQueueingStatusCode =
+  | 200
+  | 202
+  | 429
+  | (number & {});
 export const ListForZoneResultItemQueueingStatusCode = /*@__PURE__*/ S.Number;
 
-export type ListForZoneResultItemTurnstileAction = "log" | "infinite_queue";
+export type ListForZoneResultItemTurnstileAction =
+  | "log"
+  | "infinite_queue"
+  | (string & {});
 export const ListForZoneResultItemTurnstileAction = /*@__PURE__*/ S.String;
 
 export type ListForZoneResultItemTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed";
+  | "visible_managed"
+  | (string & {});
 export const ListForZoneResultItemTurnstileMode = /*@__PURE__*/ S.String;
 
 export interface ListForZoneResultItem {
@@ -2257,14 +2337,18 @@ export const ListWaitingRoomsForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListWaitingRoomsForZoneResponse",
 }) as any as S.Schema<ListWaitingRoomsForZoneResponse>;
 
-export type EventsEditRequestTurnstileAction = "log" | "infinite_queue";
+export type EventsEditRequestTurnstileAction =
+  | "log"
+  | "infinite_queue"
+  | (string & {});
 export const EventsEditRequestTurnstileAction = /*@__PURE__*/ S.String;
 
 export type EventsEditRequestTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed";
+  | "visible_managed"
+  | (string & {});
 export const EventsEditRequestTurnstileMode = /*@__PURE__*/ S.String;
 
 export interface PatchEventRequest {
@@ -2346,14 +2430,18 @@ export const PatchEventRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchEventRequest",
 }) as any as S.Schema<PatchEventRequest>;
 
-export type EventsEditResponseTurnstileAction = "log" | "infinite_queue";
+export type EventsEditResponseTurnstileAction =
+  | "log"
+  | "infinite_queue"
+  | (string & {});
 export const EventsEditResponseTurnstileAction = /*@__PURE__*/ S.String;
 
 export type EventsEditResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed";
+  | "visible_managed"
+  | (string & {});
 export const EventsEditResponseTurnstileMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2427,7 +2515,7 @@ export const PatchEventResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchEventResponse",
 }) as any as S.Schema<PatchEventResponse>;
 
-export type RulesEditRequestAction = "bypass_waiting_room";
+export type RulesEditRequestAction = "bypass_waiting_room" | (string & {});
 export const RulesEditRequestAction = /*@__PURE__*/ S.String;
 
 export interface RulesEditRequestPositionIndex {
@@ -2514,7 +2602,7 @@ export const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchRuleRequest",
 }) as any as S.Schema<PatchRuleRequest>;
 
-export type RulesEditResultItemAction = "bypass_waiting_room";
+export type RulesEditResultItemAction = "bypass_waiting_room" | (string & {});
 export const RulesEditResultItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesEditResultItem {
@@ -2631,10 +2719,15 @@ export type EditRequestCookieAttributesSamesite =
   | "auto"
   | "lax"
   | "none"
-  | "strict";
+  | "strict"
+  | (string & {});
 export const EditRequestCookieAttributesSamesite = /*@__PURE__*/ S.String;
 
-export type EditRequestCookieAttributesSecure = "auto" | "always" | "never";
+export type EditRequestCookieAttributesSecure =
+  | "auto"
+  | "always"
+  | "never"
+  | (string & {});
 export const EditRequestCookieAttributesSecure = /*@__PURE__*/ S.String;
 
 export interface EditRequestCookieAttributes {
@@ -2690,10 +2783,11 @@ export type EditRequestDefaultTemplateLanguage =
   | "tl-PH"
   | "th-TH"
   | "uk-UA"
-  | "vi-VN";
+  | "vi-VN"
+  | (string & {});
 export const EditRequestDefaultTemplateLanguage = /*@__PURE__*/ S.String;
 
-export type EditRequestEnabledOriginCommandsItem = "revoke";
+export type EditRequestEnabledOriginCommandsItem = "revoke" | (string & {});
 export const EditRequestEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
 export type EditRequestEnabledOriginCommandsList =
@@ -2706,20 +2800,25 @@ export type EditRequestQueueingMethod =
   | "fifo"
   | "random"
   | "passthrough"
-  | "reject";
+  | "reject"
+  | (string & {});
 export const EditRequestQueueingMethod = /*@__PURE__*/ S.String;
 
-export type EditRequestQueueingStatusCode = 200 | 202 | 429;
+export type EditRequestQueueingStatusCode = 200 | 202 | 429 | (number & {});
 export const EditRequestQueueingStatusCode = /*@__PURE__*/ S.Number;
 
-export type EditRequestTurnstileAction = "log" | "infinite_queue";
+export type EditRequestTurnstileAction =
+  | "log"
+  | "infinite_queue"
+  | (string & {});
 export const EditRequestTurnstileAction = /*@__PURE__*/ S.String;
 
 export type EditRequestTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed";
+  | "visible_managed"
+  | (string & {});
 export const EditRequestTurnstileMode = /*@__PURE__*/ S.String;
 
 export interface PatchWaitingRoomRequest {
@@ -2856,10 +2955,15 @@ export type EditResponseCookieAttributesSamesite =
   | "auto"
   | "lax"
   | "none"
-  | "strict";
+  | "strict"
+  | (string & {});
 export const EditResponseCookieAttributesSamesite = /*@__PURE__*/ S.String;
 
-export type EditResponseCookieAttributesSecure = "auto" | "always" | "never";
+export type EditResponseCookieAttributesSecure =
+  | "auto"
+  | "always"
+  | "never"
+  | (string & {});
 export const EditResponseCookieAttributesSecure = /*@__PURE__*/ S.String;
 
 export interface EditResponseCookieAttributes {
@@ -2915,10 +3019,11 @@ export type EditResponseDefaultTemplateLanguage =
   | "tl-PH"
   | "th-TH"
   | "uk-UA"
-  | "vi-VN";
+  | "vi-VN"
+  | (string & {});
 export const EditResponseDefaultTemplateLanguage = /*@__PURE__*/ S.String;
 
-export type EditResponseEnabledOriginCommandsItem = "revoke";
+export type EditResponseEnabledOriginCommandsItem = "revoke" | (string & {});
 export const EditResponseEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
 export type EditResponseEnabledOriginCommandsList =
@@ -2931,20 +3036,25 @@ export type EditResponseQueueingMethod =
   | "fifo"
   | "random"
   | "passthrough"
-  | "reject";
+  | "reject"
+  | (string & {});
 export const EditResponseQueueingMethod = /*@__PURE__*/ S.String;
 
-export type EditResponseQueueingStatusCode = 200 | 202 | 429;
+export type EditResponseQueueingStatusCode = 200 | 202 | 429 | (number & {});
 export const EditResponseQueueingStatusCode = /*@__PURE__*/ S.Number;
 
-export type EditResponseTurnstileAction = "log" | "infinite_queue";
+export type EditResponseTurnstileAction =
+  | "log"
+  | "infinite_queue"
+  | (string & {});
 export const EditResponseTurnstileAction = /*@__PURE__*/ S.String;
 
 export type EditResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed";
+  | "visible_managed"
+  | (string & {});
 export const EditResponseTurnstileMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3138,14 +3248,18 @@ export const PutSettingResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutSettingResponse",
 }) as any as S.Schema<PutSettingResponse>;
 
-export type EventsUpdateRequestTurnstileAction = "log" | "infinite_queue";
+export type EventsUpdateRequestTurnstileAction =
+  | "log"
+  | "infinite_queue"
+  | (string & {});
 export const EventsUpdateRequestTurnstileAction = /*@__PURE__*/ S.String;
 
 export type EventsUpdateRequestTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed";
+  | "visible_managed"
+  | (string & {});
 export const EventsUpdateRequestTurnstileMode = /*@__PURE__*/ S.String;
 
 export interface UpdateEventRequest {
@@ -3227,14 +3341,18 @@ export const UpdateEventRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateEventRequest",
 }) as any as S.Schema<UpdateEventRequest>;
 
-export type EventsUpdateResponseTurnstileAction = "log" | "infinite_queue";
+export type EventsUpdateResponseTurnstileAction =
+  | "log"
+  | "infinite_queue"
+  | (string & {});
 export const EventsUpdateResponseTurnstileAction = /*@__PURE__*/ S.String;
 
 export type EventsUpdateResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed";
+  | "visible_managed"
+  | (string & {});
 export const EventsUpdateResponseTurnstileMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3308,7 +3426,9 @@ export const UpdateEventResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateEventResponse",
 }) as any as S.Schema<UpdateEventResponse>;
 
-export type RulesUpdateRequestRulesItemAction = "bypass_waiting_room";
+export type RulesUpdateRequestRulesItemAction =
+  | "bypass_waiting_room"
+  | (string & {});
 export const RulesUpdateRequestRulesItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesUpdateRequestRulesItem {
@@ -3362,7 +3482,7 @@ export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRuleRequest",
 }) as any as S.Schema<UpdateRuleRequest>;
 
-export type RulesUpdateResultItemAction = "bypass_waiting_room";
+export type RulesUpdateResultItemAction = "bypass_waiting_room" | (string & {});
 export const RulesUpdateResultItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesUpdateResultItem {
@@ -3439,10 +3559,15 @@ export type UpdateRequestCookieAttributesSamesite =
   | "auto"
   | "lax"
   | "none"
-  | "strict";
+  | "strict"
+  | (string & {});
 export const UpdateRequestCookieAttributesSamesite = /*@__PURE__*/ S.String;
 
-export type UpdateRequestCookieAttributesSecure = "auto" | "always" | "never";
+export type UpdateRequestCookieAttributesSecure =
+  | "auto"
+  | "always"
+  | "never"
+  | (string & {});
 export const UpdateRequestCookieAttributesSecure = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestCookieAttributes {
@@ -3498,10 +3623,11 @@ export type UpdateRequestDefaultTemplateLanguage =
   | "tl-PH"
   | "th-TH"
   | "uk-UA"
-  | "vi-VN";
+  | "vi-VN"
+  | (string & {});
 export const UpdateRequestDefaultTemplateLanguage = /*@__PURE__*/ S.String;
 
-export type UpdateRequestEnabledOriginCommandsItem = "revoke";
+export type UpdateRequestEnabledOriginCommandsItem = "revoke" | (string & {});
 export const UpdateRequestEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
 export type UpdateRequestEnabledOriginCommandsList =
@@ -3514,20 +3640,25 @@ export type UpdateRequestQueueingMethod =
   | "fifo"
   | "random"
   | "passthrough"
-  | "reject";
+  | "reject"
+  | (string & {});
 export const UpdateRequestQueueingMethod = /*@__PURE__*/ S.String;
 
-export type UpdateRequestQueueingStatusCode = 200 | 202 | 429;
+export type UpdateRequestQueueingStatusCode = 200 | 202 | 429 | (number & {});
 export const UpdateRequestQueueingStatusCode = /*@__PURE__*/ S.Number;
 
-export type UpdateRequestTurnstileAction = "log" | "infinite_queue";
+export type UpdateRequestTurnstileAction =
+  | "log"
+  | "infinite_queue"
+  | (string & {});
 export const UpdateRequestTurnstileAction = /*@__PURE__*/ S.String;
 
 export type UpdateRequestTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed";
+  | "visible_managed"
+  | (string & {});
 export const UpdateRequestTurnstileMode = /*@__PURE__*/ S.String;
 
 export interface UpdateWaitingRoomRequest {
@@ -3664,10 +3795,15 @@ export type UpdateResponseCookieAttributesSamesite =
   | "auto"
   | "lax"
   | "none"
-  | "strict";
+  | "strict"
+  | (string & {});
 export const UpdateResponseCookieAttributesSamesite = /*@__PURE__*/ S.String;
 
-export type UpdateResponseCookieAttributesSecure = "auto" | "always" | "never";
+export type UpdateResponseCookieAttributesSecure =
+  | "auto"
+  | "always"
+  | "never"
+  | (string & {});
 export const UpdateResponseCookieAttributesSecure = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseCookieAttributes {
@@ -3723,10 +3859,11 @@ export type UpdateResponseDefaultTemplateLanguage =
   | "tl-PH"
   | "th-TH"
   | "uk-UA"
-  | "vi-VN";
+  | "vi-VN"
+  | (string & {});
 export const UpdateResponseDefaultTemplateLanguage = /*@__PURE__*/ S.String;
 
-export type UpdateResponseEnabledOriginCommandsItem = "revoke";
+export type UpdateResponseEnabledOriginCommandsItem = "revoke" | (string & {});
 export const UpdateResponseEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
 export type UpdateResponseEnabledOriginCommandsList =
@@ -3739,20 +3876,25 @@ export type UpdateResponseQueueingMethod =
   | "fifo"
   | "random"
   | "passthrough"
-  | "reject";
+  | "reject"
+  | (string & {});
 export const UpdateResponseQueueingMethod = /*@__PURE__*/ S.String;
 
-export type UpdateResponseQueueingStatusCode = 200 | 202 | 429;
+export type UpdateResponseQueueingStatusCode = 200 | 202 | 429 | (number & {});
 export const UpdateResponseQueueingStatusCode = /*@__PURE__*/ S.Number;
 
-export type UpdateResponseTurnstileAction = "log" | "infinite_queue";
+export type UpdateResponseTurnstileAction =
+  | "log"
+  | "infinite_queue"
+  | (string & {});
 export const UpdateResponseTurnstileAction = /*@__PURE__*/ S.String;
 
 export type UpdateResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
-  | "visible_managed";
+  | "visible_managed"
+  | (string & {});
 export const UpdateResponseTurnstileMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

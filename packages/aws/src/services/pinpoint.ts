@@ -221,7 +221,8 @@ export type __EndpointTypesElement =
   | "EMAIL"
   | "BAIDU"
   | "CUSTOM"
-  | "IN_APP";
+  | "IN_APP"
+  | (string & {});
 export const __EndpointTypesElement = /*@__PURE__*/ S.String;
 
 export type ListOf__EndpointTypesElement = __EndpointTypesElement[];
@@ -240,7 +241,7 @@ export const CustomDeliveryConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CustomDeliveryConfiguration",
 }) as any as S.Schema<CustomDeliveryConfiguration>;
-export type Action = "OPEN_APP" | "DEEP_LINK" | "URL";
+export type Action = "OPEN_APP" | "DEEP_LINK" | "URL" | (string & {});
 export const Action = /*@__PURE__*/ S.String;
 
 export interface Message {
@@ -308,7 +309,7 @@ export const CampaignEmailMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CampaignEmailMessage",
 }) as any as S.Schema<CampaignEmailMessage>;
-export type MessageType = "TRANSACTIONAL" | "PROMOTIONAL";
+export type MessageType = "TRANSACTIONAL" | "PROMOTIONAL" | (string & {});
 export const MessageType = /*@__PURE__*/ S.String;
 
 export interface CampaignSmsMessage {
@@ -331,7 +332,7 @@ export const CampaignSmsMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CampaignSmsMessage",
 }) as any as S.Schema<CampaignSmsMessage>;
-export type Alignment = "LEFT" | "CENTER" | "RIGHT";
+export type Alignment = "LEFT" | "CENTER" | "RIGHT" | (string & {});
 export const Alignment = /*@__PURE__*/ S.String;
 
 export interface InAppMessageBodyConfig {
@@ -362,7 +363,7 @@ export const InAppMessageHeaderConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InAppMessageHeaderConfig",
 }) as any as S.Schema<InAppMessageHeaderConfig>;
-export type ButtonAction = "LINK" | "DEEP_LINK" | "CLOSE";
+export type ButtonAction = "LINK" | "DEEP_LINK" | "CLOSE" | (string & {});
 export const ButtonAction = /*@__PURE__*/ S.String;
 
 export interface OverrideButtonConfiguration {
@@ -442,7 +443,8 @@ export type Layout =
   | "OVERLAYS"
   | "MOBILE_FEED"
   | "MIDDLE_BANNER"
-  | "CAROUSEL";
+  | "CAROUSEL"
+  | (string & {});
 export const Layout = /*@__PURE__*/ S.String;
 
 export interface CampaignInAppMessage {
@@ -494,7 +496,8 @@ export type AttributeType =
   | "BEFORE"
   | "AFTER"
   | "ON"
-  | "BETWEEN";
+  | "BETWEEN"
+  | (string & {});
 export const AttributeType = /*@__PURE__*/ S.String;
 
 export type ListOf__string = string[];
@@ -518,7 +521,7 @@ export const MapOfAttributeDimension = /*@__PURE__*/ S.Record(
   S.String,
   AttributeDimension.pipe(S.optional),
 );
-export type DimensionType = "INCLUSIVE" | "EXCLUSIVE";
+export type DimensionType = "INCLUSIVE" | "EXCLUSIVE" | (string & {});
 export const DimensionType = /*@__PURE__*/ S.String;
 
 export interface SetDimension {
@@ -564,7 +567,7 @@ export const EventDimensions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EventDimensions",
 }) as any as S.Schema<EventDimensions>;
-export type FilterType = "SYSTEM" | "ENDPOINT";
+export type FilterType = "SYSTEM" | "ENDPOINT" | (string & {});
 export const FilterType = /*@__PURE__*/ S.String;
 
 export interface CampaignEventFilter {
@@ -586,7 +589,8 @@ export type Frequency =
   | "WEEKLY"
   | "MONTHLY"
   | "EVENT"
-  | "IN_APP_EVENT";
+  | "IN_APP_EVENT"
+  | (string & {});
 export const Frequency = /*@__PURE__*/ S.String;
 
 export interface QuietTime {
@@ -667,7 +671,7 @@ export type ListOfWriteTreatmentResource = WriteTreatmentResource[];
 export const ListOfWriteTreatmentResource = /*@__PURE__*/ S.Array(
   WriteTreatmentResource,
 );
-export type Mode = "DELIVERY" | "FILTER";
+export type Mode = "DELIVERY" | "FILTER" | (string & {});
 export const Mode = /*@__PURE__*/ S.String;
 
 export interface CampaignHook {
@@ -770,7 +774,8 @@ export type CampaignStatus =
   | "COMPLETED"
   | "PAUSED"
   | "DELETED"
-  | "INVALID";
+  | "INVALID"
+  | (string & {});
 export const CampaignStatus = /*@__PURE__*/ S.String;
 
 export interface CampaignState {
@@ -1152,7 +1157,8 @@ export type JobStatus =
   | "COMPLETING"
   | "COMPLETED"
   | "FAILING"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
 
 export interface ExportJobResponse {
@@ -1208,7 +1214,7 @@ export const CreateExportJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateExportJobResponse",
 }) as any as S.Schema<CreateExportJobResponse>;
-export type Format = "CSV" | "JSON";
+export type Format = "CSV" | "JSON" | (string & {});
 export const Format = /*@__PURE__*/ S.String;
 
 export interface ImportJobRequest {
@@ -1452,10 +1458,10 @@ export const SegmentCondition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SegmentCondition",
 }) as any as S.Schema<SegmentCondition>;
-export type Duration = "HR_24" | "DAY_7" | "DAY_14" | "DAY_30";
+export type Duration = "HR_24" | "DAY_7" | "DAY_14" | "DAY_30" | (string & {});
 export const Duration = /*@__PURE__*/ S.String;
 
-export type RecencyType = "ACTIVE" | "INACTIVE";
+export type RecencyType = "ACTIVE" | "INACTIVE" | (string & {});
 export const RecencyType = /*@__PURE__*/ S.String;
 
 export interface RecencyDimension {
@@ -1565,7 +1571,7 @@ export const SimpleCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SimpleCondition>;
 export type ListOfSimpleCondition = SimpleCondition[];
 export const ListOfSimpleCondition = /*@__PURE__*/ S.Array(SimpleCondition);
-export type Operator = "ALL" | "ANY";
+export type Operator = "ALL" | "ANY" | (string & {});
 export const Operator = /*@__PURE__*/ S.String;
 
 export interface Condition {
@@ -1882,7 +1888,8 @@ export type State =
   | "COMPLETED"
   | "CANCELLED"
   | "CLOSED"
-  | "PAUSED";
+  | "PAUSED"
+  | (string & {});
 export const State = /*@__PURE__*/ S.String;
 
 export interface JourneyChannelSettings {
@@ -1904,7 +1911,8 @@ export type DayOfWeek =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const DayOfWeek = /*@__PURE__*/ S.String;
 
 export interface OpenHoursRule {
@@ -1969,7 +1977,10 @@ export const ClosedDays = /*@__PURE__*/ S.suspend(() =>
     CUSTOM: S.optional(ListOfClosedDaysRules),
   }),
 ).annotate({ identifier: "ClosedDays" }) as any as S.Schema<ClosedDays>;
-export type __TimezoneEstimationMethodsElement = "PHONE_NUMBER" | "POSTAL_CODE";
+export type __TimezoneEstimationMethodsElement =
+  | "PHONE_NUMBER"
+  | "POSTAL_CODE"
+  | (string & {});
 export const __TimezoneEstimationMethodsElement = /*@__PURE__*/ S.String;
 
 export type ListOf__TimezoneEstimationMethodsElement =
@@ -2528,10 +2539,10 @@ export const SegmentReference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SegmentReference>;
 export type ListOfSegmentReference = SegmentReference[];
 export const ListOfSegmentReference = /*@__PURE__*/ S.Array(SegmentReference);
-export type SourceType = "ALL" | "ANY" | "NONE";
+export type SourceType = "ALL" | "ANY" | "NONE" | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
 
-export type Type = "ALL" | "ANY" | "NONE";
+export type Type = "ALL" | "ANY" | "NONE" | (string & {});
 export const Type = /*@__PURE__*/ S.String;
 
 export interface SegmentGroup {
@@ -2550,7 +2561,7 @@ export const SegmentGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SegmentGroup" }) as any as S.Schema<SegmentGroup>;
 export type ListOfSegmentGroup = SegmentGroup[];
 export const ListOfSegmentGroup = /*@__PURE__*/ S.Array(SegmentGroup);
-export type Include = "ALL" | "ANY" | "NONE";
+export type Include = "ALL" | "ANY" | "NONE" | (string & {});
 export const Include = /*@__PURE__*/ S.String;
 
 export interface SegmentGroupList {
@@ -2629,7 +2640,7 @@ export const SegmentImportResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SegmentImportResource",
 }) as any as S.Schema<SegmentImportResource>;
-export type SegmentType = "DIMENSIONAL" | "IMPORT";
+export type SegmentType = "DIMENSIONAL" | "IMPORT" | (string & {});
 export const SegmentType = /*@__PURE__*/ S.String;
 
 export interface SegmentResponse {
@@ -3627,7 +3638,8 @@ export type ChannelType =
   | "EMAIL"
   | "BAIDU"
   | "CUSTOM"
-  | "IN_APP";
+  | "IN_APP"
+  | (string & {});
 export const ChannelType = /*@__PURE__*/ S.String;
 
 export interface EndpointDemographic {
@@ -6040,7 +6052,13 @@ export const GetEmailTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEmailTemplateRequest",
 }) as any as S.Schema<GetEmailTemplateRequest>;
-export type TemplateType = "EMAIL" | "SMS" | "VOICE" | "PUSH" | "INAPP";
+export type TemplateType =
+  | "EMAIL"
+  | "SMS"
+  | "VOICE"
+  | "PUSH"
+  | "INAPP"
+  | (string & {});
 export const TemplateType = /*@__PURE__*/ S.String;
 
 export interface EmailTemplateResponse {
@@ -7276,7 +7294,8 @@ export type JourneyRunStatus =
   | "SCHEDULED"
   | "RUNNING"
   | "COMPLETED"
-  | "CANCELLED";
+  | "CANCELLED"
+  | (string & {});
 export const JourneyRunStatus = /*@__PURE__*/ S.String;
 
 export interface JourneyRunResponse {
@@ -9608,7 +9627,8 @@ export type DeliveryStatus =
   | "PERMANENT_FAILURE"
   | "UNKNOWN_FAILURE"
   | "OPT_OUT"
-  | "DUPLICATE";
+  | "DUPLICATE"
+  | (string & {});
 export const DeliveryStatus = /*@__PURE__*/ S.String;
 
 export interface EndpointMessageResult {

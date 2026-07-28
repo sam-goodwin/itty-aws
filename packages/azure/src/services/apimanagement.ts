@@ -42,7 +42,8 @@ export const AllPoliciesListByServiceRequest = /*@__PURE__*/ S.suspend(() =>
 export type AllPoliciesContractPropertiesComplianceState =
   | "Pending"
   | "NonCompliant"
-  | "Compliant";
+  | "Compliant"
+  | (string & {});
 export const AllPoliciesContractPropertiesComplianceState =
   /*@__PURE__*/ S.String;
 
@@ -124,7 +125,10 @@ export const OAuth2AuthenticationSettingsContract = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OAuth2AuthenticationSettingsContract>;
 
 /** Form of an authorization grant, which the client uses to request the access token. */
-export type BearerTokenSendingMethodsContract = "authorizationHeader" | "query";
+export type BearerTokenSendingMethodsContract =
+  | "authorizationHeader"
+  | "query"
+  | (string & {});
 export const BearerTokenSendingMethodsContract = /*@__PURE__*/ S.String;
 
 /** How to send token to the server. */
@@ -220,7 +224,8 @@ export type ApiCreateOrUpdatePropertiesInputType =
   | "websocket"
   | "graphql"
   | "odata"
-  | "grpc";
+  | "grpc"
+  | (string & {});
 export const ApiCreateOrUpdatePropertiesInputType = /*@__PURE__*/ S.String;
 
 /** API contact information */
@@ -262,7 +267,8 @@ export type ApiCreateOrUpdatePropertiesInputProtocolsItem =
   | "http"
   | "https"
   | "ws"
-  | "wss";
+  | "wss"
+  | (string & {});
 export const ApiCreateOrUpdatePropertiesInputProtocolsItem =
   /*@__PURE__*/ S.String;
 
@@ -278,7 +284,8 @@ export const ApiCreateOrUpdatePropertiesInputProtocolsList =
 export type ApiVersionSetContractDetailsVersioningScheme =
   | "Segment"
   | "Query"
-  | "Header";
+  | "Header"
+  | (string & {});
 export const ApiVersionSetContractDetailsVersioningScheme =
   /*@__PURE__*/ S.String;
 
@@ -326,7 +333,8 @@ export type ApiCreateOrUpdatePropertiesInputFormat =
   | "odata"
   | "odata-link"
   | "grpc"
-  | "grpc-link";
+  | "grpc-link"
+  | (string & {});
 export const ApiCreateOrUpdatePropertiesInputFormat = /*@__PURE__*/ S.String;
 
 /** Criteria to limit import of WSDL to a subset of the document. */
@@ -353,13 +361,15 @@ export type ApiCreateOrUpdatePropertiesInputApiType =
   | "websocket"
   | "graphql"
   | "odata"
-  | "grpc";
+  | "grpc"
+  | (string & {});
 export const ApiCreateOrUpdatePropertiesInputApiType = /*@__PURE__*/ S.String;
 
 /** Strategy of translating required query parameters to template ones. By default has value 'template'. Possible values: 'template', 'query' */
 export type ApiCreateOrUpdatePropertiesInputTranslateRequiredQueryParameters =
   | "template"
-  | "query";
+  | "query"
+  | (string & {});
 export const ApiCreateOrUpdatePropertiesInputTranslateRequiredQueryParameters =
   /*@__PURE__*/ S.String;
 
@@ -490,14 +500,16 @@ export type ApiContractPropertiesType =
   | "websocket"
   | "graphql"
   | "odata"
-  | "grpc";
+  | "grpc"
+  | (string & {});
 export const ApiContractPropertiesType = /*@__PURE__*/ S.String;
 
 export type ApiContractPropertiesProtocolsItem =
   | "http"
   | "https"
   | "ws"
-  | "wss";
+  | "wss"
+  | (string & {});
 export const ApiContractPropertiesProtocolsItem = /*@__PURE__*/ S.String;
 
 /** Describes on which protocols the operations in this API can be invoked. */
@@ -645,11 +657,11 @@ export const ApiDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApiDeleteResponse>;
 
 /** Specifies for what type of messages sampling settings should not apply. */
-export type DiagnosticContractPropertiesAlwaysLog = "allErrors";
+export type DiagnosticContractPropertiesAlwaysLog = "allErrors" | (string & {});
 export const DiagnosticContractPropertiesAlwaysLog = /*@__PURE__*/ S.String;
 
 /** Sampling type. */
-export type SamplingSettingsSamplingType = "fixed";
+export type SamplingSettingsSamplingType = "fixed" | (string & {});
 export const SamplingSettingsSamplingType = /*@__PURE__*/ S.String;
 
 /** Sampling settings for Diagnostic. */
@@ -688,7 +700,7 @@ export const BodyDiagnosticSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BodyDiagnosticSettings>;
 
 /** Data masking mode. */
-export type DataMaskingEntityMode = "Mask" | "Hide";
+export type DataMaskingEntityMode = "Mask" | "Hide" | (string & {});
 export const DataMaskingEntityMode = /*@__PURE__*/ S.String;
 
 export interface DataMaskingEntity {
@@ -770,7 +782,8 @@ export const PipelineDiagnosticSettings = /*@__PURE__*/ S.suspend(() =>
 export type DiagnosticContractPropertiesHttpCorrelationProtocol =
   | "None"
   | "Legacy"
-  | "W3C";
+  | "W3C"
+  | (string & {});
 export const DiagnosticContractPropertiesHttpCorrelationProtocol =
   /*@__PURE__*/ S.String;
 
@@ -778,11 +791,15 @@ export const DiagnosticContractPropertiesHttpCorrelationProtocol =
 export type DiagnosticContractPropertiesVerbosity =
   | "verbose"
   | "information"
-  | "error";
+  | "error"
+  | (string & {});
 export const DiagnosticContractPropertiesVerbosity = /*@__PURE__*/ S.String;
 
 /** The format of the Operation Name for Application Insights telemetries. Default is Name. */
-export type DiagnosticContractPropertiesOperationNameFormat = "Name" | "Url";
+export type DiagnosticContractPropertiesOperationNameFormat =
+  | "Name"
+  | "Url"
+  | (string & {});
 export const DiagnosticContractPropertiesOperationNameFormat =
   /*@__PURE__*/ S.String;
 
@@ -1450,7 +1467,8 @@ export const GatewayConfigurationApiInput = /*@__PURE__*/ S.suspend(() =>
 export type ApiManagementGatewayPropertiesInputVirtualNetworkType =
   | "None"
   | "External"
-  | "Internal";
+  | "Internal"
+  | (string & {});
 export const ApiManagementGatewayPropertiesInputVirtualNetworkType =
   /*@__PURE__*/ S.String;
 
@@ -1482,7 +1500,8 @@ export const ApiManagementGatewayPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 export type ApiManagementGatewaySkuPropertiesName =
   | "Standard"
   | "WorkspaceGatewayStandard"
-  | "WorkspaceGatewayPremium";
+  | "WorkspaceGatewayPremium"
+  | (string & {});
 export const ApiManagementGatewaySkuPropertiesName = /*@__PURE__*/ S.String;
 
 /** API Management gateway resource SKU properties. */
@@ -1577,7 +1596,8 @@ export const GatewayConfigurationApi = /*@__PURE__*/ S.suspend(() =>
 export type ApiManagementGatewayPropertiesVirtualNetworkType =
   | "None"
   | "External"
-  | "Internal";
+  | "Internal"
+  | (string & {});
 export const ApiManagementGatewayPropertiesVirtualNetworkType =
   /*@__PURE__*/ S.String;
 
@@ -1619,7 +1639,8 @@ export type ApiGatewayCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApiGatewayCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1628,7 +1649,8 @@ export type ApiGatewayCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApiGatewayCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1772,7 +1794,8 @@ export type ApiGatewayGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApiGatewayGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1781,7 +1804,8 @@ export type ApiGatewayGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApiGatewayGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1884,7 +1908,8 @@ export type ApiManagementGatewayResourceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApiManagementGatewayResourceSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1893,7 +1918,8 @@ export type ApiManagementGatewayResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApiManagementGatewayResourceSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2026,7 +2052,8 @@ export const ApiGatewayUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 export type ApiManagementGatewayUpdatePropertiesInputVirtualNetworkType =
   | "None"
   | "External"
-  | "Internal";
+  | "Internal"
+  | (string & {});
 export const ApiManagementGatewayUpdatePropertiesInputVirtualNetworkType =
   /*@__PURE__*/ S.String;
 
@@ -2059,7 +2086,8 @@ export const ApiManagementGatewayUpdatePropertiesInput =
 export type ApiManagementGatewaySkuPropertiesForPatchName =
   | "Standard"
   | "WorkspaceGatewayStandard"
-  | "WorkspaceGatewayPremium";
+  | "WorkspaceGatewayPremium"
+  | (string & {});
 export const ApiManagementGatewaySkuPropertiesForPatchName =
   /*@__PURE__*/ S.String;
 
@@ -2128,7 +2156,8 @@ export type ApiGatewayUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApiGatewayUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2137,7 +2166,8 @@ export type ApiGatewayUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApiGatewayUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2787,7 +2817,8 @@ export type IssueContractPropertiesState =
   | "open"
   | "removed"
   | "resolved"
-  | "closed";
+  | "closed"
+  | (string & {});
 export const IssueContractPropertiesState = /*@__PURE__*/ S.String;
 
 /** Issue contract Properties. */
@@ -3057,7 +3088,8 @@ export type IssueUpdateContractPropertiesState =
   | "open"
   | "removed"
   | "resolved"
-  | "closed";
+  | "closed"
+  | (string & {});
 export const IssueUpdateContractPropertiesState = /*@__PURE__*/ S.String;
 
 /** Issue contract Update Properties. */
@@ -3287,14 +3319,16 @@ export type ApiTagResourceContractPropertiesType =
   | "websocket"
   | "graphql"
   | "odata"
-  | "grpc";
+  | "grpc"
+  | (string & {});
 export const ApiTagResourceContractPropertiesType = /*@__PURE__*/ S.String;
 
 export type ApiTagResourceContractPropertiesProtocolsItem =
   | "http"
   | "https"
   | "ws"
-  | "wss";
+  | "wss"
+  | (string & {});
 export const ApiTagResourceContractPropertiesProtocolsItem =
   /*@__PURE__*/ S.String;
 
@@ -3416,7 +3450,8 @@ export const OperationTagResourceContractProperties = /*@__PURE__*/ S.suspend(
 /** whether product is published or not. Published products are discoverable by users of developer portal. Non published products are visible only to administrators. Default state of Product is notPublished. */
 export type ProductTagResourceContractPropertiesState =
   | "notPublished"
-  | "published";
+  | "published"
+  | (string & {});
 export const ProductTagResourceContractPropertiesState = /*@__PURE__*/ S.String;
 
 /** Product profile. */
@@ -3530,7 +3565,8 @@ export const ApiManagementGatewaySkusListAvailableSkusRequest =
 export type GatewaySkuName =
   | "Standard"
   | "WorkspaceGatewayStandard"
-  | "WorkspaceGatewayPremium";
+  | "WorkspaceGatewayPremium"
+  | (string & {});
 export const GatewaySkuName = /*@__PURE__*/ S.String;
 
 /** Describes an available API Management SKU for gateways. */
@@ -3545,7 +3581,11 @@ export const GatewaySku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GatewaySku" }) as any as S.Schema<GatewaySku>;
 
 /** The scale type applicable to the sku. */
-export type GatewaySkuCapacityScaleType = "Automatic" | "Manual" | "None";
+export type GatewaySkuCapacityScaleType =
+  | "Automatic"
+  | "Manual"
+  | "None"
+  | (string & {});
 export const GatewaySkuCapacityScaleType = /*@__PURE__*/ S.String;
 
 /** Describes scaling information of a SKU. */
@@ -3735,7 +3775,8 @@ export type HostnameConfigurationType =
   | "Management"
   | "Scm"
   | "DeveloperPortal"
-  | "ConfigurationApi";
+  | "ConfigurationApi"
+  | (string & {});
 export const HostnameConfigurationType = /*@__PURE__*/ S.String;
 
 /** SSL certificate information. */
@@ -3762,14 +3803,16 @@ export type HostnameConfigurationCertificateSource =
   | "Managed"
   | "KeyVault"
   | "Custom"
-  | "BuiltIn";
+  | "BuiltIn"
+  | (string & {});
 export const HostnameConfigurationCertificateSource = /*@__PURE__*/ S.String;
 
 /** Certificate Status. */
 export type HostnameConfigurationCertificateStatus =
   | "Completed"
   | "Failed"
-  | "InProgress";
+  | "InProgress"
+  | (string & {});
 export const HostnameConfigurationCertificateStatus = /*@__PURE__*/ S.String;
 
 /** Custom hostname configuration. */
@@ -3842,12 +3885,13 @@ export const ApiManagementServicePropertiesPrivateIPAddressesList =
 /** Whether or not public endpoint access is allowed for this API Management service. Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled' */
 export type ApiManagementServicePropertiesPublicNetworkAccess =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ApiManagementServicePropertiesPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
 /** Indication whether or not the legacy Configuration API (v1) should be exposed on the API Management service. Value is optional but must be 'Enabled' or 'Disabled'. If 'Disabled', legacy Configuration API (v1) will not be available for self-hosted gateways. Default value is 'Enabled' */
-export type ConfigurationApiLegacyApi = "Enabled" | "Disabled";
+export type ConfigurationApiLegacyApi = "Enabled" | "Disabled" | (string & {});
 export const ConfigurationApiLegacyApi = /*@__PURE__*/ S.String;
 
 /** Information regarding the Configuration API of the API Management service. */
@@ -3891,7 +3935,8 @@ export type ApiManagementServiceSkuPropertiesName =
   | "Consumption"
   | "Isolated"
   | "BasicV2"
-  | "StandardV2";
+  | "StandardV2"
+  | (string & {});
 export const ApiManagementServiceSkuPropertiesName = /*@__PURE__*/ S.String;
 
 /** API Management service resource SKU properties. */
@@ -3929,7 +3974,10 @@ export const AdditionalLocationPrivateIPAddressesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AdditionalLocationPrivateIPAddressesList>;
 
 /** Property can be used to enable NAT Gateway for this API Management service. */
-export type AdditionalLocationNatGatewayState = "Enabled" | "Disabled";
+export type AdditionalLocationNatGatewayState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const AdditionalLocationNatGatewayState = /*@__PURE__*/ S.String;
 
 /** Outbound public IPV4 address prefixes associated with NAT Gateway deployed service. Available only for Premium SKU on stv2 platform. */
@@ -3946,7 +3994,8 @@ export type AdditionalLocationPlatformVersion =
   | "stv1"
   | "stv2"
   | "mtv1"
-  | "stv2.1";
+  | "stv2.1"
+  | (string & {});
 export const AdditionalLocationPlatformVersion = /*@__PURE__*/ S.String;
 
 /** Description of an additional API Management resource location. */
@@ -4016,7 +4065,10 @@ export const ApiManagementServicePropertiesCustomPropertiesMap =
   ) as any as S.Schema<ApiManagementServicePropertiesCustomPropertiesMap>;
 
 /** The System.Security.Cryptography.x509certificates.StoreName certificate store location. Only Root and CertificateAuthority are valid locations. */
-export type CertificateConfigurationStoreName = "CertificateAuthority" | "Root";
+export type CertificateConfigurationStoreName =
+  | "CertificateAuthority"
+  | "Root"
+  | (string & {});
 export const CertificateConfigurationStoreName = /*@__PURE__*/ S.String;
 
 /** Certificate configuration which consist of non-trusted intermediates and root certificates. */
@@ -4052,7 +4104,8 @@ export const ApiManagementServicePropertiesCertificatesList =
 /** Property can be used to enable NAT Gateway for this API Management service. */
 export type ApiManagementServicePropertiesNatGatewayState =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ApiManagementServicePropertiesNatGatewayState =
   /*@__PURE__*/ S.String;
 
@@ -4068,7 +4121,8 @@ export const ApiManagementServicePropertiesOutboundPublicIPAddressesList =
 export type ApiManagementServicePropertiesVirtualNetworkType =
   | "None"
   | "External"
-  | "Internal";
+  | "Internal"
+  | (string & {});
 export const ApiManagementServicePropertiesVirtualNetworkType =
   /*@__PURE__*/ S.String;
 
@@ -4099,7 +4153,8 @@ export const ArmIdWrapper = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected";
+  | "Rejected"
+  | (string & {});
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -4194,21 +4249,24 @@ export type ApiManagementServicePropertiesPlatformVersion =
   | "stv1"
   | "stv2"
   | "mtv1"
-  | "stv2.1";
+  | "stv2.1"
+  | (string & {});
 export const ApiManagementServicePropertiesPlatformVersion =
   /*@__PURE__*/ S.String;
 
 /** Status of legacy portal in the API Management service. */
 export type ApiManagementServicePropertiesLegacyPortalStatus =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ApiManagementServicePropertiesLegacyPortalStatus =
   /*@__PURE__*/ S.String;
 
 /** Status of developer portal in this API Management service. */
 export type ApiManagementServicePropertiesDeveloperPortalStatus =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ApiManagementServicePropertiesDeveloperPortalStatus =
   /*@__PURE__*/ S.String;
 
@@ -4348,7 +4406,8 @@ export type ApiManagementServiceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
-  | "None";
+  | "None"
+  | (string & {});
 export const ApiManagementServiceIdentityType = /*@__PURE__*/ S.String;
 
 export interface UserIdentityProperties {
@@ -4402,13 +4461,13 @@ export const ApiManagementServiceIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type ApiManagementServiceApplyNetworkConfigurationUpdatesResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
 export const ApiManagementServiceApplyNetworkConfigurationUpdatesResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ApiManagementServiceApplyNetworkConfigurationUpdatesResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
 export const ApiManagementServiceApplyNetworkConfigurationUpdatesResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -4507,7 +4566,8 @@ export const ApiManagementServiceApplyNetworkConfigurationUpdatesResponse =
 export type ApiManagementServiceBackupRequestAccessType =
   | "AccessKey"
   | "SystemAssignedManagedIdentity"
-  | "UserAssignedManagedIdentity";
+  | "UserAssignedManagedIdentity"
+  | (string & {});
 export const ApiManagementServiceBackupRequestAccessType =
   /*@__PURE__*/ S.String;
 
@@ -4568,7 +4628,8 @@ export type ApiManagementServiceBackupResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApiManagementServiceBackupResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -4577,7 +4638,8 @@ export type ApiManagementServiceBackupResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApiManagementServiceBackupResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -4690,7 +4752,8 @@ export const ApiManagementServiceCheckNameAvailabilityRequest =
 export type ApiManagementServiceNameAvailabilityResultReason =
   | "Valid"
   | "Invalid"
-  | "AlreadyExists";
+  | "AlreadyExists"
+  | (string & {});
 export const ApiManagementServiceNameAvailabilityResultReason =
   /*@__PURE__*/ S.String;
 
@@ -4735,7 +4798,8 @@ export const ApiManagementServicePropertiesInputHostnameConfigurationsList =
 /** Whether or not public endpoint access is allowed for this API Management service. Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled' */
 export type ApiManagementServicePropertiesInputPublicNetworkAccess =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ApiManagementServicePropertiesInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -4759,7 +4823,10 @@ export const AdditionalLocationInputZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AdditionalLocationInputZonesList>;
 
 /** Property can be used to enable NAT Gateway for this API Management service. */
-export type AdditionalLocationInputNatGatewayState = "Enabled" | "Disabled";
+export type AdditionalLocationInputNatGatewayState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const AdditionalLocationInputNatGatewayState = /*@__PURE__*/ S.String;
 
 /** Description of an additional API Management resource location. */
@@ -4822,7 +4889,8 @@ export const ApiManagementServicePropertiesInputCertificatesList =
 /** Property can be used to enable NAT Gateway for this API Management service. */
 export type ApiManagementServicePropertiesInputNatGatewayState =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ApiManagementServicePropertiesInputNatGatewayState =
   /*@__PURE__*/ S.String;
 
@@ -4830,7 +4898,8 @@ export const ApiManagementServicePropertiesInputNatGatewayState =
 export type ApiManagementServicePropertiesInputVirtualNetworkType =
   | "None"
   | "External"
-  | "Internal";
+  | "Internal"
+  | (string & {});
 export const ApiManagementServicePropertiesInputVirtualNetworkType =
   /*@__PURE__*/ S.String;
 
@@ -4916,14 +4985,16 @@ export const ApiManagementServicePropertiesInputPrivateEndpointConnectionsList =
 /** Status of legacy portal in the API Management service. */
 export type ApiManagementServicePropertiesInputLegacyPortalStatus =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ApiManagementServicePropertiesInputLegacyPortalStatus =
   /*@__PURE__*/ S.String;
 
 /** Status of developer portal in this API Management service. */
 export type ApiManagementServicePropertiesInputDeveloperPortalStatus =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ApiManagementServicePropertiesInputDeveloperPortalStatus =
   /*@__PURE__*/ S.String;
 
@@ -5022,7 +5093,8 @@ export type ApiManagementServiceIdentityInputType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
-  | "None";
+  | "None"
+  | (string & {});
 export const ApiManagementServiceIdentityInputType = /*@__PURE__*/ S.String;
 
 /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/ providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
@@ -5120,13 +5192,14 @@ export type ApiManagementServiceCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApiManagementServiceCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ApiManagementServiceCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
 export const ApiManagementServiceCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -5287,7 +5360,8 @@ export type ApiManagementServiceGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApiManagementServiceGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -5296,7 +5370,8 @@ export type ApiManagementServiceGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApiManagementServiceGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -5488,7 +5563,8 @@ export type ApiManagementServiceResourceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApiManagementServiceResourceSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -5497,7 +5573,8 @@ export type ApiManagementServiceResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApiManagementServiceResourceSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -5632,7 +5709,8 @@ export const ApiManagementServiceListByResourceGroupRequest =
 /** Mode of Migration to stv2. Default is PreserveIp. */
 export type ApiManagementServiceMigrateToStv2RequestMode =
   | "PreserveIp"
-  | "NewIP";
+  | "NewIP"
+  | (string & {});
 export const ApiManagementServiceMigrateToStv2RequestMode =
   /*@__PURE__*/ S.String;
 
@@ -5680,13 +5758,14 @@ export type ApiManagementServiceMigrateToStv2ResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApiManagementServiceMigrateToStv2ResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ApiManagementServiceMigrateToStv2ResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
 export const ApiManagementServiceMigrateToStv2ResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -5780,7 +5859,8 @@ export const ApiManagementServiceMigrateToStv2Response =
 export type ApiManagementServiceRestoreRequestAccessType =
   | "AccessKey"
   | "SystemAssignedManagedIdentity"
-  | "UserAssignedManagedIdentity";
+  | "UserAssignedManagedIdentity"
+  | (string & {});
 export const ApiManagementServiceRestoreRequestAccessType =
   /*@__PURE__*/ S.String;
 
@@ -5842,7 +5922,8 @@ export type ApiManagementServiceRestoreResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApiManagementServiceRestoreResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -5851,7 +5932,8 @@ export type ApiManagementServiceRestoreResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApiManagementServiceRestoreResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -5973,7 +6055,8 @@ export type ResourceSkuName =
   | "Consumption"
   | "Isolated"
   | "BasicV2"
-  | "StandardV2";
+  | "StandardV2"
+  | (string & {});
 export const ResourceSkuName = /*@__PURE__*/ S.String;
 
 /** Describes an available API Management SKU. */
@@ -5988,7 +6071,11 @@ export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceSku" }) as any as S.Schema<ResourceSku>;
 
 /** The scale type applicable to the sku. */
-export type ResourceSkuCapacityScaleType = "automatic" | "manual" | "none";
+export type ResourceSkuCapacityScaleType =
+  | "automatic"
+  | "manual"
+  | "none"
+  | (string & {});
 export const ResourceSkuCapacityScaleType = /*@__PURE__*/ S.String;
 
 /** Describes scaling information of a SKU. */
@@ -6074,7 +6161,8 @@ export const ApiManagementServiceUpdatePropertiesInputHostnameConfigurationsList
 /** Whether or not public endpoint access is allowed for this API Management service. Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled' */
 export type ApiManagementServiceUpdatePropertiesInputPublicNetworkAccess =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ApiManagementServiceUpdatePropertiesInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -6107,7 +6195,8 @@ export const ApiManagementServiceUpdatePropertiesInputCertificatesList =
 /** Property can be used to enable NAT Gateway for this API Management service. */
 export type ApiManagementServiceUpdatePropertiesInputNatGatewayState =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ApiManagementServiceUpdatePropertiesInputNatGatewayState =
   /*@__PURE__*/ S.String;
 
@@ -6115,7 +6204,8 @@ export const ApiManagementServiceUpdatePropertiesInputNatGatewayState =
 export type ApiManagementServiceUpdatePropertiesInputVirtualNetworkType =
   | "None"
   | "External"
-  | "Internal";
+  | "Internal"
+  | (string & {});
 export const ApiManagementServiceUpdatePropertiesInputVirtualNetworkType =
   /*@__PURE__*/ S.String;
 
@@ -6154,14 +6244,16 @@ export const ApiManagementServiceUpdatePropertiesInputPrivateEndpointConnections
 /** Status of legacy portal in the API Management service. */
 export type ApiManagementServiceUpdatePropertiesInputLegacyPortalStatus =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ApiManagementServiceUpdatePropertiesInputLegacyPortalStatus =
   /*@__PURE__*/ S.String;
 
 /** Status of developer portal in this API Management service. */
 export type ApiManagementServiceUpdatePropertiesInputDeveloperPortalStatus =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ApiManagementServiceUpdatePropertiesInputDeveloperPortalStatus =
   /*@__PURE__*/ S.String;
 
@@ -6316,7 +6408,8 @@ export type ApiManagementServiceUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApiManagementServiceUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -6325,7 +6418,8 @@ export type ApiManagementServiceUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApiManagementServiceUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -6431,7 +6525,11 @@ export const ApiManagementSkusListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApiManagementSkusListRequest>;
 
 /** The scale type applicable to the sku. */
-export type ApiManagementSkuCapacityScaleType = "Automatic" | "Manual" | "None";
+export type ApiManagementSkuCapacityScaleType =
+  | "Automatic"
+  | "Manual"
+  | "None"
+  | (string & {});
 export const ApiManagementSkuCapacityScaleType = /*@__PURE__*/ S.String;
 
 /** Describes scaling information of a SKU. */
@@ -6586,7 +6684,10 @@ export const ApiManagementSkuCapabilitiesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ApiManagementSkuCapabilitiesList>;
 
 /** The type of restrictions. */
-export type ApiManagementSkuRestrictionsType = "Location" | "Zone";
+export type ApiManagementSkuRestrictionsType =
+  | "Location"
+  | "Zone"
+  | (string & {});
 export const ApiManagementSkuRestrictionsType = /*@__PURE__*/ S.String;
 
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
@@ -6627,7 +6728,8 @@ export const ApiManagementSkuRestrictionInfo = /*@__PURE__*/ S.suspend(() =>
 /** The reason for restriction. */
 export type ApiManagementSkuRestrictionsReasonCode =
   | "QuotaId"
-  | "NotAvailableForSubscription";
+  | "NotAvailableForSubscription"
+  | (string & {});
 export const ApiManagementSkuRestrictionsReasonCode = /*@__PURE__*/ S.String;
 
 /** Describes scaling information of a SKU. */
@@ -7362,7 +7464,9 @@ export const ApiOperationListByApiResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApiOperationListByApiResponse",
 }) as any as S.Schema<ApiOperationListByApiResponse>;
 
-export type ApiOperationPolicyCreateOrUpdateRequestPolicyId = "policy";
+export type ApiOperationPolicyCreateOrUpdateRequestPolicyId =
+  | "policy"
+  | (string & {});
 export const ApiOperationPolicyCreateOrUpdateRequestPolicyId =
   /*@__PURE__*/ S.String;
 
@@ -7371,7 +7475,8 @@ export type PolicyContractPropertiesFormat =
   | "xml"
   | "xml-link"
   | "rawxml"
-  | "rawxml-link";
+  | "rawxml-link"
+  | (string & {});
 export const PolicyContractPropertiesFormat = /*@__PURE__*/ S.String;
 
 /** Policy contract Properties. */
@@ -7450,7 +7555,7 @@ export const ApiOperationPolicyCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "ApiOperationPolicyCreateOrUpdateResponse",
 }) as any as S.Schema<ApiOperationPolicyCreateOrUpdateResponse>;
 
-export type ApiOperationPolicyDeleteRequestPolicyId = "policy";
+export type ApiOperationPolicyDeleteRequestPolicyId = "policy" | (string & {});
 export const ApiOperationPolicyDeleteRequestPolicyId = /*@__PURE__*/ S.String;
 
 export interface ApiOperationPolicyDeleteRequest {
@@ -7494,10 +7599,13 @@ export const ApiOperationPolicyDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApiOperationPolicyDeleteResponse",
 }) as any as S.Schema<ApiOperationPolicyDeleteResponse>;
 
-export type ApiOperationPolicyGetRequestPolicyId = "policy";
+export type ApiOperationPolicyGetRequestPolicyId = "policy" | (string & {});
 export const ApiOperationPolicyGetRequestPolicyId = /*@__PURE__*/ S.String;
 
-export type ApiOperationPolicyGetRequestFormat = "xml" | "rawxml";
+export type ApiOperationPolicyGetRequestFormat =
+  | "xml"
+  | "rawxml"
+  | (string & {});
 export const ApiOperationPolicyGetRequestFormat = /*@__PURE__*/ S.String;
 
 export interface ApiOperationPolicyGetRequest {
@@ -7744,7 +7852,7 @@ export const ApiOperationUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApiOperationUpdateResponse",
 }) as any as S.Schema<ApiOperationUpdateResponse>;
 
-export type ApiPolicyCreateOrUpdateRequestPolicyId = "policy";
+export type ApiPolicyCreateOrUpdateRequestPolicyId = "policy" | (string & {});
 export const ApiPolicyCreateOrUpdateRequestPolicyId = /*@__PURE__*/ S.String;
 
 export interface ApiPolicyCreateOrUpdateRequest {
@@ -7802,7 +7910,7 @@ export const ApiPolicyCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApiPolicyCreateOrUpdateResponse",
 }) as any as S.Schema<ApiPolicyCreateOrUpdateResponse>;
 
-export type ApiPolicyDeleteRequestPolicyId = "policy";
+export type ApiPolicyDeleteRequestPolicyId = "policy" | (string & {});
 export const ApiPolicyDeleteRequestPolicyId = /*@__PURE__*/ S.String;
 
 export interface ApiPolicyDeleteRequest {
@@ -7843,10 +7951,10 @@ export const ApiPolicyDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApiPolicyDeleteResponse",
 }) as any as S.Schema<ApiPolicyDeleteResponse>;
 
-export type ApiPolicyGetRequestPolicyId = "policy";
+export type ApiPolicyGetRequestPolicyId = "policy" | (string & {});
 export const ApiPolicyGetRequestPolicyId = /*@__PURE__*/ S.String;
 
-export type ApiPolicyGetRequestFormat = "xml" | "rawxml";
+export type ApiPolicyGetRequestFormat = "xml" | "rawxml" | (string & {});
 export const ApiPolicyGetRequestFormat = /*@__PURE__*/ S.String;
 
 export interface ApiPolicyGetRequest {
@@ -7994,7 +8102,10 @@ export const ApiProductListByApisRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApiProductListByApisRequest>;
 
 /** whether product is published or not. Published products are discoverable by users of developer portal. Non published products are visible only to administrators. Default state of Product is notPublished. */
-export type ProductContractPropertiesState = "notPublished" | "published";
+export type ProductContractPropertiesState =
+  | "notPublished"
+  | "published"
+  | (string & {});
 export const ProductContractPropertiesState = /*@__PURE__*/ S.String;
 
 /** Product profile. */
@@ -9061,14 +9172,16 @@ export type ApiContractUpdatePropertiesInputType =
   | "websocket"
   | "graphql"
   | "odata"
-  | "grpc";
+  | "grpc"
+  | (string & {});
 export const ApiContractUpdatePropertiesInputType = /*@__PURE__*/ S.String;
 
 export type ApiContractUpdatePropertiesInputProtocolsItem =
   | "http"
   | "https"
   | "ws"
-  | "wss";
+  | "wss"
+  | (string & {});
 export const ApiContractUpdatePropertiesInputProtocolsItem =
   /*@__PURE__*/ S.String;
 
@@ -9202,7 +9315,8 @@ export const ApiUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 export type ApiVersionSetContractPropertiesVersioningScheme =
   | "Segment"
   | "Query"
-  | "Header";
+  | "Header"
+  | (string & {});
 export const ApiVersionSetContractPropertiesVersioningScheme =
   /*@__PURE__*/ S.String;
 
@@ -9453,7 +9567,8 @@ export const ApiVersionSetListByServiceResponse = /*@__PURE__*/ S.suspend(() =>
 export type ApiVersionSetUpdateParametersPropertiesVersioningScheme =
   | "Segment"
   | "Query"
-  | "Header";
+  | "Header"
+  | (string & {});
 export const ApiVersionSetUpdateParametersPropertiesVersioningScheme =
   /*@__PURE__*/ S.String;
 
@@ -10157,14 +10272,17 @@ export const AuthorizationConfirmConsentCodeResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AuthorizationConfirmConsentCodeResponse>;
 
 /** Authorization type options */
-export type AuthorizationContractPropertiesAuthorizationType = "OAuth2";
+export type AuthorizationContractPropertiesAuthorizationType =
+  | "OAuth2"
+  | (string & {});
 export const AuthorizationContractPropertiesAuthorizationType =
   /*@__PURE__*/ S.String;
 
 /** OAuth2 grant type options */
 export type AuthorizationContractPropertiesOauth2grantType =
   | "AuthorizationCode"
-  | "ClientCredentials";
+  | "ClientCredentials"
+  | (string & {});
 export const AuthorizationContractPropertiesOauth2grantType =
   /*@__PURE__*/ S.String;
 
@@ -10804,7 +10922,8 @@ export type AuthorizationServerContractPropertiesAuthorizationMethodsItem =
   | "POST"
   | "PUT"
   | "PATCH"
-  | "DELETE";
+  | "DELETE"
+  | (string & {});
 export const AuthorizationServerContractPropertiesAuthorizationMethodsItem =
   /*@__PURE__*/ S.String;
 
@@ -10817,7 +10936,7 @@ export const AuthorizationServerContractPropertiesAuthorizationMethodsList =
   ) as any as S.Schema<AuthorizationServerContractPropertiesAuthorizationMethodsList>;
 
 export type AuthorizationServerContractPropertiesClientAuthenticationMethodItem =
-  "Basic" | "Body";
+  "Basic" | "Body" | (string & {});
 export const AuthorizationServerContractPropertiesClientAuthenticationMethodItem =
   /*@__PURE__*/ S.String;
 
@@ -10854,7 +10973,7 @@ export const AuthorizationServerContractPropertiesTokenBodyParametersList =
   ) as any as S.Schema<AuthorizationServerContractPropertiesTokenBodyParametersList>;
 
 export type AuthorizationServerContractPropertiesBearerTokenSendingMethodsItem =
-  "authorizationHeader" | "query";
+  "authorizationHeader" | "query" | (string & {});
 export const AuthorizationServerContractPropertiesBearerTokenSendingMethodsItem =
   /*@__PURE__*/ S.String;
 
@@ -10870,7 +10989,8 @@ export type AuthorizationServerContractPropertiesGrantTypesItem =
   | "authorizationCode"
   | "implicit"
   | "resourceOwnerPassword"
-  | "clientCredentials";
+  | "clientCredentials"
+  | (string & {});
 export const AuthorizationServerContractPropertiesGrantTypesItem =
   /*@__PURE__*/ S.String;
 
@@ -11226,7 +11346,15 @@ export const AuthorizationServerListSecretsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AuthorizationServerListSecretsResponse>;
 
 export type AuthorizationServerUpdateContractPropertiesAuthorizationMethodsItem =
-  "HEAD" | "OPTIONS" | "TRACE" | "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
+    | "HEAD"
+    | "OPTIONS"
+    | "TRACE"
+    | "GET"
+    | "POST"
+    | "PUT"
+    | "PATCH"
+    | "DELETE"
+    | (string & {});
 export const AuthorizationServerUpdateContractPropertiesAuthorizationMethodsItem =
   /*@__PURE__*/ S.String;
 
@@ -11239,7 +11367,7 @@ export const AuthorizationServerUpdateContractPropertiesAuthorizationMethodsList
   ) as any as S.Schema<AuthorizationServerUpdateContractPropertiesAuthorizationMethodsList>;
 
 export type AuthorizationServerUpdateContractPropertiesClientAuthenticationMethodItem =
-  "Basic" | "Body";
+  "Basic" | "Body" | (string & {});
 export const AuthorizationServerUpdateContractPropertiesClientAuthenticationMethodItem =
   /*@__PURE__*/ S.String;
 
@@ -11260,7 +11388,7 @@ export const AuthorizationServerUpdateContractPropertiesTokenBodyParametersList 
   ) as any as S.Schema<AuthorizationServerUpdateContractPropertiesTokenBodyParametersList>;
 
 export type AuthorizationServerUpdateContractPropertiesBearerTokenSendingMethodsItem =
-  "authorizationHeader" | "query";
+  "authorizationHeader" | "query" | (string & {});
 export const AuthorizationServerUpdateContractPropertiesBearerTokenSendingMethodsItem =
   /*@__PURE__*/ S.String;
 
@@ -11276,7 +11404,8 @@ export type AuthorizationServerUpdateContractPropertiesGrantTypesItem =
   | "authorizationCode"
   | "implicit"
   | "resourceOwnerPassword"
-  | "clientCredentials";
+  | "clientCredentials"
+  | (string & {});
 export const AuthorizationServerUpdateContractPropertiesGrantTypesItem =
   /*@__PURE__*/ S.String;
 
@@ -11760,11 +11889,11 @@ export const BackendContractPropertiesPool = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackendContractPropertiesPool>;
 
 /** Type of the backend. A backend can be either Single or Pool. */
-export type BackendContractPropertiesType = "Single" | "Pool";
+export type BackendContractPropertiesType = "Single" | "Pool" | (string & {});
 export const BackendContractPropertiesType = /*@__PURE__*/ S.String;
 
 /** Backend communication protocol. Required when backend type is 'Single'. */
-export type BackendContractPropertiesProtocol = "http" | "soap";
+export type BackendContractPropertiesProtocol = "http" | "soap" | (string & {});
 export const BackendContractPropertiesProtocol = /*@__PURE__*/ S.String;
 
 /** Parameters supplied to the Create Backend operation. */
@@ -12102,11 +12231,17 @@ export const BackendUpdateParameterPropertiesPool = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BackendUpdateParameterPropertiesPool>;
 
 /** Type of the backend. A backend can be either Single or Pool. */
-export type BackendUpdateParameterPropertiesType = "Single" | "Pool";
+export type BackendUpdateParameterPropertiesType =
+  | "Single"
+  | "Pool"
+  | (string & {});
 export const BackendUpdateParameterPropertiesType = /*@__PURE__*/ S.String;
 
 /** Backend communication protocol. Required when backend type is 'Single'. */
-export type BackendUpdateParameterPropertiesProtocol = "http" | "soap";
+export type BackendUpdateParameterPropertiesProtocol =
+  | "http"
+  | "soap"
+  | (string & {});
 export const BackendUpdateParameterPropertiesProtocol = /*@__PURE__*/ S.String;
 
 /** Parameters supplied to the Update Backend operation. */
@@ -14044,7 +14179,8 @@ export type EmailTemplateCreateOrUpdateRequestTemplateName =
   | "passwordResetIdentityDefault"
   | "passwordResetByAdminNotificationMessage"
   | "rejectDeveloperNotificationMessage"
-  | "requestDeveloperNotificationMessage";
+  | "requestDeveloperNotificationMessage"
+  | (string & {});
 export const EmailTemplateCreateOrUpdateRequestTemplateName =
   /*@__PURE__*/ S.String;
 
@@ -14208,7 +14344,8 @@ export type EmailTemplateDeleteRequestTemplateName =
   | "passwordResetIdentityDefault"
   | "passwordResetByAdminNotificationMessage"
   | "rejectDeveloperNotificationMessage"
-  | "requestDeveloperNotificationMessage";
+  | "requestDeveloperNotificationMessage"
+  | (string & {});
 export const EmailTemplateDeleteRequestTemplateName = /*@__PURE__*/ S.String;
 
 export interface EmailTemplateDeleteRequest {
@@ -14260,7 +14397,8 @@ export type EmailTemplateGetRequestTemplateName =
   | "passwordResetIdentityDefault"
   | "passwordResetByAdminNotificationMessage"
   | "rejectDeveloperNotificationMessage"
-  | "requestDeveloperNotificationMessage";
+  | "requestDeveloperNotificationMessage"
+  | (string & {});
 export const EmailTemplateGetRequestTemplateName = /*@__PURE__*/ S.String;
 
 export interface EmailTemplateGetRequest {
@@ -14408,7 +14546,8 @@ export type EmailTemplateUpdateRequestTemplateName =
   | "passwordResetIdentityDefault"
   | "passwordResetByAdminNotificationMessage"
   | "rejectDeveloperNotificationMessage"
-  | "requestDeveloperNotificationMessage";
+  | "requestDeveloperNotificationMessage"
+  | (string & {});
 export const EmailTemplateUpdateRequestTemplateName = /*@__PURE__*/ S.String;
 
 export interface EmailTemplateUpdateRequest {
@@ -14465,7 +14604,8 @@ export const EmailTemplateUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Provisioning state. */
 export type GatewayApiCreateOrUpdateRequestPropertiesProvisioningState =
-  "created";
+  | "created"
+  | (string & {});
 export const GatewayApiCreateOrUpdateRequestPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -15015,7 +15155,10 @@ export const GatewayDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GatewayDeleteResponse>;
 
 /** The Key to be used to generate gateway token. */
-export type GatewayGenerateTokenRequestKeyType = "primary" | "secondary";
+export type GatewayGenerateTokenRequestKeyType =
+  | "primary"
+  | "secondary"
+  | (string & {});
 export const GatewayGenerateTokenRequestKeyType = /*@__PURE__*/ S.String;
 
 export interface GatewayGenerateTokenRequest {
@@ -15495,7 +15638,9 @@ export const GatewayListByServiceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GatewayListByServiceResponse>;
 
 /** Purpose of debug credential. */
-export type GatewayListDebugCredentialsRequestPurposesItem = "tracing";
+export type GatewayListDebugCredentialsRequestPurposesItem =
+  | "tracing"
+  | (string & {});
 export const GatewayListDebugCredentialsRequestPurposesItem =
   /*@__PURE__*/ S.String;
 
@@ -15647,7 +15792,10 @@ export const GatewayListTraceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GatewayListTraceResponse>;
 
 /** The Key being regenerated. */
-export type GatewayRegenerateKeyRequestKeyType = "primary" | "secondary";
+export type GatewayRegenerateKeyRequestKeyType =
+  | "primary"
+  | "secondary"
+  | (string & {});
 export const GatewayRegenerateKeyRequestKeyType = /*@__PURE__*/ S.String;
 
 export interface GatewayRegenerateKeyRequest {
@@ -15741,7 +15889,10 @@ export const GatewayUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GatewayUpdateResponse>;
 
 /** Schema Type. Immutable. */
-export type GlobalSchemaContractPropertiesInputSchemaType = "xml" | "json";
+export type GlobalSchemaContractPropertiesInputSchemaType =
+  | "xml"
+  | "json"
+  | (string & {});
 export const GlobalSchemaContractPropertiesInputSchemaType =
   /*@__PURE__*/ S.String;
 
@@ -15799,7 +15950,10 @@ export const GlobalSchemaCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GlobalSchemaCreateOrUpdateRequest>;
 
 /** Schema Type. Immutable. */
-export type GlobalSchemaContractPropertiesSchemaType = "xml" | "json";
+export type GlobalSchemaContractPropertiesSchemaType =
+  | "xml"
+  | "json"
+  | (string & {});
 export const GlobalSchemaContractPropertiesSchemaType = /*@__PURE__*/ S.String;
 
 /** Schema create or update contract Properties. */
@@ -16264,7 +16418,9 @@ export const GraphQLApiResolverListByApiResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GraphQLApiResolverListByApiResponse",
 }) as any as S.Schema<GraphQLApiResolverListByApiResponse>;
 
-export type GraphQLApiResolverPolicyCreateOrUpdateRequestPolicyId = "policy";
+export type GraphQLApiResolverPolicyCreateOrUpdateRequestPolicyId =
+  | "policy"
+  | (string & {});
 export const GraphQLApiResolverPolicyCreateOrUpdateRequestPolicyId =
   /*@__PURE__*/ S.String;
 
@@ -16330,7 +16486,9 @@ export const GraphQLApiResolverPolicyCreateOrUpdateResponse =
     identifier: "GraphQLApiResolverPolicyCreateOrUpdateResponse",
   }) as any as S.Schema<GraphQLApiResolverPolicyCreateOrUpdateResponse>;
 
-export type GraphQLApiResolverPolicyDeleteRequestPolicyId = "policy";
+export type GraphQLApiResolverPolicyDeleteRequestPolicyId =
+  | "policy"
+  | (string & {});
 export const GraphQLApiResolverPolicyDeleteRequestPolicyId =
   /*@__PURE__*/ S.String;
 
@@ -16376,11 +16534,16 @@ export const GraphQLApiResolverPolicyDeleteResponse = /*@__PURE__*/ S.suspend(
   identifier: "GraphQLApiResolverPolicyDeleteResponse",
 }) as any as S.Schema<GraphQLApiResolverPolicyDeleteResponse>;
 
-export type GraphQLApiResolverPolicyGetRequestPolicyId = "policy";
+export type GraphQLApiResolverPolicyGetRequestPolicyId =
+  | "policy"
+  | (string & {});
 export const GraphQLApiResolverPolicyGetRequestPolicyId =
   /*@__PURE__*/ S.String;
 
-export type GraphQLApiResolverPolicyGetRequestFormat = "xml" | "rawxml";
+export type GraphQLApiResolverPolicyGetRequestFormat =
+  | "xml"
+  | "rawxml"
+  | (string & {});
 export const GraphQLApiResolverPolicyGetRequestFormat = /*@__PURE__*/ S.String;
 
 export interface GraphQLApiResolverPolicyGetRequest {
@@ -16582,7 +16745,8 @@ export const GraphQLApiResolverUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 export type GroupCreateParametersPropertiesType =
   | "custom"
   | "system"
-  | "external";
+  | "external"
+  | (string & {});
 export const GroupCreateParametersPropertiesType = /*@__PURE__*/ S.String;
 
 /** Parameters supplied to the Create Group operation. */
@@ -16639,7 +16803,11 @@ export const GroupCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupCreateOrUpdateRequest>;
 
 /** Group type. */
-export type GroupContractPropertiesType = "custom" | "system" | "external";
+export type GroupContractPropertiesType =
+  | "custom"
+  | "system"
+  | "external"
+  | (string & {});
 export const GroupContractPropertiesType = /*@__PURE__*/ S.String;
 
 /** Group contract Properties. */
@@ -16854,7 +17022,8 @@ export const GroupListByServiceResponse = /*@__PURE__*/ S.suspend(() =>
 export type GroupUpdateParametersPropertiesType =
   | "custom"
   | "system"
-  | "external";
+  | "external"
+  | (string & {});
 export const GroupUpdateParametersPropertiesType = /*@__PURE__*/ S.String;
 
 /** Parameters supplied to the Update Group operation. */
@@ -16967,7 +17136,8 @@ export type UserContractPropertiesState =
   | "active"
   | "blocked"
   | "pending"
-  | "deleted";
+  | "deleted"
+  | (string & {});
 export const UserContractPropertiesState = /*@__PURE__*/ S.String;
 
 /** User identity details. */
@@ -16997,7 +17167,8 @@ export const UserContractPropertiesIdentitiesList = /*@__PURE__*/ S.Array(
 export type UserContractPropertiesGroupsItemType =
   | "custom"
   | "system"
-  | "external";
+  | "external"
+  | (string & {});
 export const UserContractPropertiesGroupsItemType = /*@__PURE__*/ S.String;
 
 /** Group contract Properties. */
@@ -17212,7 +17383,8 @@ export type IdentityProviderCreateOrUpdateRequestIdentityProviderName =
   | "microsoft"
   | "twitter"
   | "aad"
-  | "aadB2C";
+  | "aadB2C"
+  | (string & {});
 export const IdentityProviderCreateOrUpdateRequestIdentityProviderName =
   /*@__PURE__*/ S.String;
 
@@ -17223,7 +17395,8 @@ export type IdentityProviderCreateContractPropertiesType =
   | "microsoft"
   | "twitter"
   | "aad"
-  | "aadB2C";
+  | "aadB2C"
+  | (string & {});
 export const IdentityProviderCreateContractPropertiesType =
   /*@__PURE__*/ S.String;
 
@@ -17323,7 +17496,8 @@ export type IdentityProviderContractPropertiesType =
   | "microsoft"
   | "twitter"
   | "aad"
-  | "aadB2C";
+  | "aadB2C"
+  | (string & {});
 export const IdentityProviderContractPropertiesType = /*@__PURE__*/ S.String;
 
 /** List of Allowed Tenants when configuring Azure Active Directory login. */
@@ -17407,7 +17581,8 @@ export type IdentityProviderDeleteRequestIdentityProviderName =
   | "microsoft"
   | "twitter"
   | "aad"
-  | "aadB2C";
+  | "aadB2C"
+  | (string & {});
 export const IdentityProviderDeleteRequestIdentityProviderName =
   /*@__PURE__*/ S.String;
 
@@ -17453,7 +17628,8 @@ export type IdentityProviderGetRequestIdentityProviderName =
   | "microsoft"
   | "twitter"
   | "aad"
-  | "aadB2C";
+  | "aadB2C"
+  | (string & {});
 export const IdentityProviderGetRequestIdentityProviderName =
   /*@__PURE__*/ S.String;
 
@@ -17589,7 +17765,8 @@ export type IdentityProviderListSecretsRequestIdentityProviderName =
   | "microsoft"
   | "twitter"
   | "aad"
-  | "aadB2C";
+  | "aadB2C"
+  | (string & {});
 export const IdentityProviderListSecretsRequestIdentityProviderName =
   /*@__PURE__*/ S.String;
 
@@ -17640,7 +17817,8 @@ export type IdentityProviderUpdateRequestIdentityProviderName =
   | "microsoft"
   | "twitter"
   | "aad"
-  | "aadB2C";
+  | "aadB2C"
+  | (string & {});
 export const IdentityProviderUpdateRequestIdentityProviderName =
   /*@__PURE__*/ S.String;
 
@@ -17651,7 +17829,8 @@ export type IdentityProviderUpdatePropertiesType =
   | "microsoft"
   | "twitter"
   | "aad"
-  | "aadB2C";
+  | "aadB2C"
+  | (string & {});
 export const IdentityProviderUpdatePropertiesType = /*@__PURE__*/ S.String;
 
 /** List of Allowed Tenants when configuring Azure Active Directory login. */
@@ -17871,7 +18050,8 @@ export const IssueListByServiceResponse = /*@__PURE__*/ S.suspend(() =>
 export type LoggerContractPropertiesLoggerType =
   | "azureEventHub"
   | "applicationInsights"
-  | "azureMonitor";
+  | "azureMonitor"
+  | (string & {});
 export const LoggerContractPropertiesLoggerType = /*@__PURE__*/ S.String;
 
 /** The name and SendRule connection string of the event hub for azureEventHub logger. Instrumentation key for applicationInsights logger. */
@@ -18127,7 +18307,8 @@ export const LoggerListByServiceResponse = /*@__PURE__*/ S.suspend(() =>
 export type LoggerUpdateParametersLoggerType =
   | "azureEventHub"
   | "applicationInsights"
-  | "azureMonitor";
+  | "azureMonitor"
+  | (string & {});
 export const LoggerUpdateParametersLoggerType = /*@__PURE__*/ S.String;
 
 /** Logger credentials. */
@@ -18709,7 +18890,8 @@ export const NetworkStatusContractDnsServersList = /*@__PURE__*/ S.Array(
 export type ConnectivityStatusContractStatus =
   | "initializing"
   | "success"
-  | "failure";
+  | "failure"
+  | (string & {});
 export const ConnectivityStatusContractStatus = /*@__PURE__*/ S.String;
 
 /** Details about connectivity to a resource. */
@@ -18830,7 +19012,8 @@ export type NotificationCreateOrUpdateRequestNotificationName =
   | "BCC"
   | "NewIssuePublisherNotificationMessage"
   | "AccountClosedPublisher"
-  | "QuotaLimitApproachingPublisherNotificationMessage";
+  | "QuotaLimitApproachingPublisherNotificationMessage"
+  | (string & {});
 export const NotificationCreateOrUpdateRequestNotificationName =
   /*@__PURE__*/ S.String;
 
@@ -18939,7 +19122,8 @@ export type NotificationGetRequestNotificationName =
   | "BCC"
   | "NewIssuePublisherNotificationMessage"
   | "AccountClosedPublisher"
-  | "QuotaLimitApproachingPublisherNotificationMessage";
+  | "QuotaLimitApproachingPublisherNotificationMessage"
+  | (string & {});
 export const NotificationGetRequestNotificationName = /*@__PURE__*/ S.String;
 
 export interface NotificationGetRequest {
@@ -19076,7 +19260,8 @@ export type NotificationRecipientEmailCreateOrUpdateRequestNotificationName =
   | "BCC"
   | "NewIssuePublisherNotificationMessage"
   | "AccountClosedPublisher"
-  | "QuotaLimitApproachingPublisherNotificationMessage";
+  | "QuotaLimitApproachingPublisherNotificationMessage"
+  | (string & {});
 export const NotificationRecipientEmailCreateOrUpdateRequestNotificationName =
   /*@__PURE__*/ S.String;
 
@@ -19157,7 +19342,8 @@ export type NotificationRecipientEmailDeleteRequestNotificationName =
   | "BCC"
   | "NewIssuePublisherNotificationMessage"
   | "AccountClosedPublisher"
-  | "QuotaLimitApproachingPublisherNotificationMessage";
+  | "QuotaLimitApproachingPublisherNotificationMessage"
+  | (string & {});
 export const NotificationRecipientEmailDeleteRequestNotificationName =
   /*@__PURE__*/ S.String;
 
@@ -19208,7 +19394,8 @@ export type NotificationRecipientEmailListByNotificationRequestNotificationName 
     | "BCC"
     | "NewIssuePublisherNotificationMessage"
     | "AccountClosedPublisher"
-    | "QuotaLimitApproachingPublisherNotificationMessage";
+    | "QuotaLimitApproachingPublisherNotificationMessage"
+    | (string & {});
 export const NotificationRecipientEmailListByNotificationRequestNotificationName =
   /*@__PURE__*/ S.String;
 
@@ -19302,7 +19489,8 @@ export type NotificationRecipientUserCreateOrUpdateRequestNotificationName =
   | "BCC"
   | "NewIssuePublisherNotificationMessage"
   | "AccountClosedPublisher"
-  | "QuotaLimitApproachingPublisherNotificationMessage";
+  | "QuotaLimitApproachingPublisherNotificationMessage"
+  | (string & {});
 export const NotificationRecipientUserCreateOrUpdateRequestNotificationName =
   /*@__PURE__*/ S.String;
 
@@ -19383,7 +19571,8 @@ export type NotificationRecipientUserDeleteRequestNotificationName =
   | "BCC"
   | "NewIssuePublisherNotificationMessage"
   | "AccountClosedPublisher"
-  | "QuotaLimitApproachingPublisherNotificationMessage";
+  | "QuotaLimitApproachingPublisherNotificationMessage"
+  | (string & {});
 export const NotificationRecipientUserDeleteRequestNotificationName =
   /*@__PURE__*/ S.String;
 
@@ -19434,7 +19623,8 @@ export type NotificationRecipientUserListByNotificationRequestNotificationName =
     | "BCC"
     | "NewIssuePublisherNotificationMessage"
     | "AccountClosedPublisher"
-    | "QuotaLimitApproachingPublisherNotificationMessage";
+    | "QuotaLimitApproachingPublisherNotificationMessage"
+    | (string & {});
 export const NotificationRecipientUserListByNotificationRequestNotificationName =
   /*@__PURE__*/ S.String;
 
@@ -20305,7 +20495,9 @@ export const PerformConnectivityCheckAsyncRequestDestination =
   }) as any as S.Schema<PerformConnectivityCheckAsyncRequestDestination>;
 
 /** The IP version to be used. Only IPv4 is supported for now. */
-export type PerformConnectivityCheckAsyncRequestPreferredIPVersion = "IPv4";
+export type PerformConnectivityCheckAsyncRequestPreferredIPVersion =
+  | "IPv4"
+  | (string & {});
 export const PerformConnectivityCheckAsyncRequestPreferredIPVersion =
   /*@__PURE__*/ S.String;
 
@@ -20313,13 +20505,14 @@ export const PerformConnectivityCheckAsyncRequestPreferredIPVersion =
 export type PerformConnectivityCheckAsyncRequestProtocol =
   | "TCP"
   | "HTTP"
-  | "HTTPS";
+  | "HTTPS"
+  | (string & {});
 export const PerformConnectivityCheckAsyncRequestProtocol =
   /*@__PURE__*/ S.String;
 
 /** The HTTP method to be used. */
 export type PerformConnectivityCheckAsyncRequestProtocolConfigurationHTTPConfigurationMethod =
-  "GET" | "POST";
+  "GET" | "POST" | (string & {});
 export const PerformConnectivityCheckAsyncRequestProtocolConfigurationHTTPConfigurationMethod =
   /*@__PURE__*/ S.String;
 
@@ -20448,11 +20641,15 @@ export const ConnectivityHopNextHopIdsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ConnectivityHopNextHopIdsList>;
 
 /** The origin of the issue. */
-export type ConnectivityIssueOrigin = "Local" | "Inbound" | "Outbound";
+export type ConnectivityIssueOrigin =
+  | "Local"
+  | "Inbound"
+  | "Outbound"
+  | (string & {});
 export const ConnectivityIssueOrigin = /*@__PURE__*/ S.String;
 
 /** The severity of the issue. */
-export type ConnectivityIssueSeverity = "Error" | "Warning";
+export type ConnectivityIssueSeverity = "Error" | "Warning" | (string & {});
 export const ConnectivityIssueSeverity = /*@__PURE__*/ S.String;
 
 /** The type of issue. */
@@ -20465,7 +20662,8 @@ export type ConnectivityIssueType =
   | "NetworkSecurityRule"
   | "UserDefinedRoute"
   | "PortThrottled"
-  | "Platform";
+  | "Platform"
+  | (string & {});
 export const ConnectivityIssueType = /*@__PURE__*/ S.String;
 
 /** A key-value pair that provides additional context on the issue. */
@@ -20550,7 +20748,8 @@ export type PerformConnectivityCheckAsyncResponseConnectionStatus =
   | "Unknown"
   | "Connected"
   | "Disconnected"
-  | "Degraded";
+  | "Degraded"
+  | (string & {});
 export const PerformConnectivityCheckAsyncResponseConnectionStatus =
   /*@__PURE__*/ S.String;
 
@@ -20587,7 +20786,7 @@ export const PerformConnectivityCheckAsyncResponse = /*@__PURE__*/ S.suspend(
   identifier: "PerformConnectivityCheckAsyncResponse",
 }) as any as S.Schema<PerformConnectivityCheckAsyncResponse>;
 
-export type PolicyCreateOrUpdateRequestPolicyId = "policy";
+export type PolicyCreateOrUpdateRequestPolicyId = "policy" | (string & {});
 export const PolicyCreateOrUpdateRequestPolicyId = /*@__PURE__*/ S.String;
 
 export interface PolicyCreateOrUpdateRequest {
@@ -20642,7 +20841,7 @@ export const PolicyCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PolicyCreateOrUpdateResponse",
 }) as any as S.Schema<PolicyCreateOrUpdateResponse>;
 
-export type PolicyDeleteRequestPolicyId = "policy";
+export type PolicyDeleteRequestPolicyId = "policy" | (string & {});
 export const PolicyDeleteRequestPolicyId = /*@__PURE__*/ S.String;
 
 export interface PolicyDeleteRequest {
@@ -20685,7 +20884,8 @@ export type PolicyDescriptionListByServiceRequestScope =
   | "Product"
   | "Api"
   | "Operation"
-  | "All";
+  | "All"
+  | (string & {});
 export const PolicyDescriptionListByServiceRequestScope =
   /*@__PURE__*/ S.String;
 
@@ -20783,7 +20983,10 @@ export const PolicyDescriptionListByServiceResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PolicyDescriptionListByServiceResponse>;
 
 /** Format of the policy fragment content. */
-export type PolicyFragmentContractPropertiesInputFormat = "xml" | "rawxml";
+export type PolicyFragmentContractPropertiesInputFormat =
+  | "xml"
+  | "rawxml"
+  | (string & {});
 export const PolicyFragmentContractPropertiesInputFormat =
   /*@__PURE__*/ S.String;
 
@@ -20839,7 +21042,10 @@ export const PolicyFragmentCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyFragmentCreateOrUpdateRequest>;
 
 /** Format of the policy fragment content. */
-export type PolicyFragmentContractPropertiesFormat = "xml" | "rawxml";
+export type PolicyFragmentContractPropertiesFormat =
+  | "xml"
+  | "rawxml"
+  | (string & {});
 export const PolicyFragmentContractPropertiesFormat = /*@__PURE__*/ S.String;
 
 /** Policy fragment contract properties. */
@@ -20921,7 +21127,7 @@ export const PolicyFragmentDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PolicyFragmentDeleteResponse",
 }) as any as S.Schema<PolicyFragmentDeleteResponse>;
 
-export type PolicyFragmentGetRequestFormat = "xml" | "rawxml";
+export type PolicyFragmentGetRequestFormat = "xml" | "rawxml" | (string & {});
 export const PolicyFragmentGetRequestFormat = /*@__PURE__*/ S.String;
 
 export interface PolicyFragmentGetRequest {
@@ -21139,10 +21345,10 @@ export const PolicyFragmentListReferencesResponse = /*@__PURE__*/ S.suspend(
   identifier: "PolicyFragmentListReferencesResponse",
 }) as any as S.Schema<PolicyFragmentListReferencesResponse>;
 
-export type PolicyGetRequestPolicyId = "policy";
+export type PolicyGetRequestPolicyId = "policy" | (string & {});
 export const PolicyGetRequestPolicyId = /*@__PURE__*/ S.String;
 
-export type PolicyGetRequestFormat = "xml" | "rawxml";
+export type PolicyGetRequestFormat = "xml" | "rawxml" | (string & {});
 export const PolicyGetRequestFormat = /*@__PURE__*/ S.String;
 
 export interface PolicyGetRequest {
@@ -21248,7 +21454,10 @@ export const PolicyListByServiceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyListByServiceResponse>;
 
 /** Indicates if base policy should be enforced for the policy document. */
-export type PolicyRestrictionContractPropertiesRequireBase = "true" | "false";
+export type PolicyRestrictionContractPropertiesRequireBase =
+  | "true"
+  | "false"
+  | (string & {});
 export const PolicyRestrictionContractPropertiesRequireBase =
   /*@__PURE__*/ S.String;
 
@@ -21559,7 +21768,8 @@ export type OperationResultContractPropertiesStatus =
   | "Started"
   | "InProgress"
   | "Succeeded"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const OperationResultContractPropertiesStatus = /*@__PURE__*/ S.String;
 
 /** Error Field contract. */
@@ -21776,7 +21986,8 @@ export const PortalConfigCorsProperties = /*@__PURE__*/ S.suspend(() =>
 export type PortalConfigCspPropertiesMode =
   | "enabled"
   | "disabled"
-  | "reportOnly";
+  | "reportOnly"
+  | (string & {});
 export const PortalConfigCspPropertiesMode = /*@__PURE__*/ S.String;
 
 /** The URLs used by the browser to report CSP violations. */
@@ -22111,7 +22322,8 @@ export type PortalRevisionContractPropertiesStatus =
   | "pending"
   | "publishing"
   | "completed"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const PortalRevisionContractPropertiesStatus = /*@__PURE__*/ S.String;
 
 export interface PortalRevisionContractProperties {
@@ -22457,7 +22669,8 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -23882,7 +24095,9 @@ export const ProductListByTagsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductListByTagsResponse",
 }) as any as S.Schema<ProductListByTagsResponse>;
 
-export type ProductPolicyCreateOrUpdateRequestPolicyId = "policy";
+export type ProductPolicyCreateOrUpdateRequestPolicyId =
+  | "policy"
+  | (string & {});
 export const ProductPolicyCreateOrUpdateRequestPolicyId =
   /*@__PURE__*/ S.String;
 
@@ -23941,7 +24156,7 @@ export const ProductPolicyCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductPolicyCreateOrUpdateResponse",
 }) as any as S.Schema<ProductPolicyCreateOrUpdateResponse>;
 
-export type ProductPolicyDeleteRequestPolicyId = "policy";
+export type ProductPolicyDeleteRequestPolicyId = "policy" | (string & {});
 export const ProductPolicyDeleteRequestPolicyId = /*@__PURE__*/ S.String;
 
 export interface ProductPolicyDeleteRequest {
@@ -23982,10 +24197,10 @@ export const ProductPolicyDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductPolicyDeleteResponse",
 }) as any as S.Schema<ProductPolicyDeleteResponse>;
 
-export type ProductPolicyGetRequestPolicyId = "policy";
+export type ProductPolicyGetRequestPolicyId = "policy" | (string & {});
 export const ProductPolicyGetRequestPolicyId = /*@__PURE__*/ S.String;
 
-export type ProductPolicyGetRequestFormat = "xml" | "rawxml";
+export type ProductPolicyGetRequestFormat = "xml" | "rawxml" | (string & {});
 export const ProductPolicyGetRequestFormat = /*@__PURE__*/ S.String;
 
 export interface ProductPolicyGetRequest {
@@ -24141,7 +24356,8 @@ export type SubscriptionContractPropertiesState =
   | "expired"
   | "submitted"
   | "rejected"
-  | "cancelled";
+  | "cancelled"
+  | (string & {});
 export const SubscriptionContractPropertiesState = /*@__PURE__*/ S.String;
 
 /** Subscription details. */
@@ -24241,7 +24457,10 @@ export const ProductSubscriptionsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductSubscriptionsListResponse>;
 
 /** whether product is published or not. Published products are discoverable by users of developer portal. Non published products are visible only to administrators. Default state of Product is notPublished. */
-export type ProductUpdatePropertiesState = "notPublished" | "published";
+export type ProductUpdatePropertiesState =
+  | "notPublished"
+  | "published"
+  | (string & {});
 export const ProductUpdatePropertiesState = /*@__PURE__*/ S.String;
 
 /** Parameters supplied to the Update Product operation. */
@@ -25550,7 +25769,8 @@ export const ReportsListByUserResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type SubscriptionCreateOrUpdateRequestAppType =
   | "portal"
-  | "developerPortal";
+  | "developerPortal"
+  | (string & {});
 export const SubscriptionCreateOrUpdateRequestAppType = /*@__PURE__*/ S.String;
 
 /** Initial subscription state. If no value is specified, subscription is created with Submitted state. Possible states are * active – the subscription is active, * suspended – the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted – the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected – the subscription request has been denied by an administrator, * cancelled – the subscription has been cancelled by the developer or administrator, * expired – the subscription reached its expiration date and was deactivated. */
@@ -25560,7 +25780,8 @@ export type SubscriptionCreateParameterPropertiesState =
   | "expired"
   | "submitted"
   | "rejected"
-  | "cancelled";
+  | "cancelled"
+  | (string & {});
 export const SubscriptionCreateParameterPropertiesState =
   /*@__PURE__*/ S.String;
 
@@ -25913,7 +26134,10 @@ export const SubscriptionRegenerateSecondaryKeyResponse =
     identifier: "SubscriptionRegenerateSecondaryKeyResponse",
   }) as any as S.Schema<SubscriptionRegenerateSecondaryKeyResponse>;
 
-export type SubscriptionUpdateRequestAppType = "portal" | "developerPortal";
+export type SubscriptionUpdateRequestAppType =
+  | "portal"
+  | "developerPortal"
+  | (string & {});
 export const SubscriptionUpdateRequestAppType = /*@__PURE__*/ S.String;
 
 /** Subscription state. Possible states are * active – the subscription is active, * suspended – the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted – the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected – the subscription request has been denied by an administrator, * cancelled – the subscription has been cancelled by the developer or administrator, * expired – the subscription reached its expiration date and was deactivated. */
@@ -25923,7 +26147,8 @@ export type SubscriptionUpdateParameterPropertiesState =
   | "expired"
   | "submitted"
   | "rejected"
-  | "cancelled";
+  | "cancelled"
+  | (string & {});
 export const SubscriptionUpdateParameterPropertiesState =
   /*@__PURE__*/ S.String;
 
@@ -27714,7 +27939,10 @@ export const TagUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TagUpdateResponse",
 }) as any as S.Schema<TagUpdateResponse>;
 
-export type TenantAccessCreateRequestAccessName = "access" | "gitAccess";
+export type TenantAccessCreateRequestAccessName =
+  | "access"
+  | "gitAccess"
+  | (string & {});
 export const TenantAccessCreateRequestAccessName = /*@__PURE__*/ S.String;
 
 /** Tenant access information update parameters of the API Management service */
@@ -27811,7 +28039,10 @@ export const TenantAccessCreateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TenantAccessCreateResponse",
 }) as any as S.Schema<TenantAccessCreateResponse>;
 
-export type TenantAccessGetRequestAccessName = "access" | "gitAccess";
+export type TenantAccessGetRequestAccessName =
+  | "access"
+  | "gitAccess"
+  | (string & {});
 export const TenantAccessGetRequestAccessName = /*@__PURE__*/ S.String;
 
 export interface TenantAccessGetRequest {
@@ -27865,7 +28096,8 @@ export const TenantAccessGetResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type TenantAccessGitRegeneratePrimaryKeyRequestAccessName =
   | "access"
-  | "gitAccess";
+  | "gitAccess"
+  | (string & {});
 export const TenantAccessGitRegeneratePrimaryKeyRequestAccessName =
   /*@__PURE__*/ S.String;
 
@@ -27908,7 +28140,8 @@ export const TenantAccessGitRegeneratePrimaryKeyResponse =
 
 export type TenantAccessGitRegenerateSecondaryKeyRequestAccessName =
   | "access"
-  | "gitAccess";
+  | "gitAccess"
+  | (string & {});
 export const TenantAccessGitRegenerateSecondaryKeyRequestAccessName =
   /*@__PURE__*/ S.String;
 
@@ -28024,7 +28257,10 @@ export const TenantAccessListByServiceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TenantAccessListByServiceResponse",
 }) as any as S.Schema<TenantAccessListByServiceResponse>;
 
-export type TenantAccessListSecretsRequestAccessName = "access" | "gitAccess";
+export type TenantAccessListSecretsRequestAccessName =
+  | "access"
+  | "gitAccess"
+  | (string & {});
 export const TenantAccessListSecretsRequestAccessName = /*@__PURE__*/ S.String;
 
 export interface TenantAccessListSecretsRequest {
@@ -28081,7 +28317,8 @@ export const TenantAccessListSecretsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type TenantAccessRegeneratePrimaryKeyRequestAccessName =
   | "access"
-  | "gitAccess";
+  | "gitAccess"
+  | (string & {});
 export const TenantAccessRegeneratePrimaryKeyRequestAccessName =
   /*@__PURE__*/ S.String;
 
@@ -28125,7 +28362,8 @@ export const TenantAccessRegeneratePrimaryKeyResponse = /*@__PURE__*/ S.suspend(
 
 export type TenantAccessRegenerateSecondaryKeyRequestAccessName =
   | "access"
-  | "gitAccess";
+  | "gitAccess"
+  | (string & {});
 export const TenantAccessRegenerateSecondaryKeyRequestAccessName =
   /*@__PURE__*/ S.String;
 
@@ -28166,7 +28404,10 @@ export const TenantAccessRegenerateSecondaryKeyResponse =
     identifier: "TenantAccessRegenerateSecondaryKeyResponse",
   }) as any as S.Schema<TenantAccessRegenerateSecondaryKeyResponse>;
 
-export type TenantAccessUpdateRequestAccessName = "access" | "gitAccess";
+export type TenantAccessUpdateRequestAccessName =
+  | "access"
+  | "gitAccess"
+  | (string & {});
 export const TenantAccessUpdateRequestAccessName = /*@__PURE__*/ S.String;
 
 /** Tenant access information update parameters of the API Management service */
@@ -28235,7 +28476,9 @@ export const TenantAccessUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TenantAccessUpdateResponse",
 }) as any as S.Schema<TenantAccessUpdateResponse>;
 
-export type TenantConfigurationDeployRequestConfigurationName = "configuration";
+export type TenantConfigurationDeployRequestConfigurationName =
+  | "configuration"
+  | (string & {});
 export const TenantConfigurationDeployRequestConfigurationName =
   /*@__PURE__*/ S.String;
 
@@ -28311,7 +28554,8 @@ export const TenantConfigurationDeployResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TenantConfigurationDeployResponse>;
 
 export type TenantConfigurationGetSyncStateRequestConfigurationName =
-  "configuration";
+  | "configuration"
+  | (string & {});
 export const TenantConfigurationGetSyncStateRequestConfigurationName =
   /*@__PURE__*/ S.String;
 
@@ -28402,7 +28646,9 @@ export const TenantConfigurationGetSyncStateResponse = /*@__PURE__*/ S.suspend(
   identifier: "TenantConfigurationGetSyncStateResponse",
 }) as any as S.Schema<TenantConfigurationGetSyncStateResponse>;
 
-export type TenantConfigurationSaveRequestConfigurationName = "configuration";
+export type TenantConfigurationSaveRequestConfigurationName =
+  | "configuration"
+  | (string & {});
 export const TenantConfigurationSaveRequestConfigurationName =
   /*@__PURE__*/ S.String;
 
@@ -28478,7 +28724,8 @@ export const TenantConfigurationSaveResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TenantConfigurationSaveResponse>;
 
 export type TenantConfigurationValidateRequestConfigurationName =
-  "configuration";
+  | "configuration"
+  | (string & {});
 export const TenantConfigurationValidateRequestConfigurationName =
   /*@__PURE__*/ S.String;
 
@@ -28538,7 +28785,8 @@ export const TenantConfigurationValidateResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type UserConfirmationPasswordSendRequestAppType =
   | "portal"
-  | "developerPortal";
+  | "developerPortal"
+  | (string & {});
 export const UserConfirmationPasswordSendRequestAppType =
   /*@__PURE__*/ S.String;
 
@@ -28587,7 +28835,8 @@ export type UserCreateParameterPropertiesState =
   | "active"
   | "blocked"
   | "pending"
-  | "deleted";
+  | "deleted"
+  | (string & {});
 export const UserCreateParameterPropertiesState = /*@__PURE__*/ S.String;
 
 /** Collection of user identities. */
@@ -28599,11 +28848,17 @@ export const UserCreateParameterPropertiesIdentitiesList =
   ) as any as S.Schema<UserCreateParameterPropertiesIdentitiesList>;
 
 /** Determines the type of application which send the create user request. Default is legacy portal. */
-export type UserCreateParameterPropertiesAppType = "portal" | "developerPortal";
+export type UserCreateParameterPropertiesAppType =
+  | "portal"
+  | "developerPortal"
+  | (string & {});
 export const UserCreateParameterPropertiesAppType = /*@__PURE__*/ S.String;
 
 /** Determines the type of confirmation e-mail that will be sent to the newly created user. */
-export type UserCreateParameterPropertiesConfirmation = "signup" | "invite";
+export type UserCreateParameterPropertiesConfirmation =
+  | "signup"
+  | "invite"
+  | (string & {});
 export const UserCreateParameterPropertiesConfirmation = /*@__PURE__*/ S.String;
 
 /** Parameters supplied to the Create User operation. */
@@ -28698,7 +28953,10 @@ export const UserCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UserCreateOrUpdateResponse",
 }) as any as S.Schema<UserCreateOrUpdateResponse>;
 
-export type UserDeleteRequestAppType = "portal" | "developerPortal";
+export type UserDeleteRequestAppType =
+  | "portal"
+  | "developerPortal"
+  | (string & {});
 export const UserDeleteRequestAppType = /*@__PURE__*/ S.String;
 
 export interface UserDeleteRequest {
@@ -28833,7 +29091,10 @@ export const UserGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserGetResponse>;
 
 /** The Key to be used to generate token for user. */
-export type UserTokenParameterPropertiesKeyType = "primary" | "secondary";
+export type UserTokenParameterPropertiesKeyType =
+  | "primary"
+  | "secondary"
+  | (string & {});
 export const UserTokenParameterPropertiesKeyType = /*@__PURE__*/ S.String;
 
 /** Parameters supplied to the Get User Token operation. */
@@ -29189,7 +29450,8 @@ export type UserUpdateParametersPropertiesState =
   | "active"
   | "blocked"
   | "pending"
-  | "deleted";
+  | "deleted"
+  | (string & {});
 export const UserUpdateParametersPropertiesState = /*@__PURE__*/ S.String;
 
 /** Collection of user identities. */
@@ -29604,7 +29866,9 @@ export const WorkspaceApiDiagnosticListByWorkspaceResponse =
   }) as any as S.Schema<WorkspaceApiDiagnosticListByWorkspaceResponse>;
 
 /** Specifies for what type of messages sampling settings should not apply. */
-export type DiagnosticContractUpdatePropertiesAlwaysLog = "allErrors";
+export type DiagnosticContractUpdatePropertiesAlwaysLog =
+  | "allErrors"
+  | (string & {});
 export const DiagnosticContractUpdatePropertiesAlwaysLog =
   /*@__PURE__*/ S.String;
 
@@ -29612,7 +29876,8 @@ export const DiagnosticContractUpdatePropertiesAlwaysLog =
 export type DiagnosticContractUpdatePropertiesHttpCorrelationProtocol =
   | "None"
   | "Legacy"
-  | "W3C";
+  | "W3C"
+  | (string & {});
 export const DiagnosticContractUpdatePropertiesHttpCorrelationProtocol =
   /*@__PURE__*/ S.String;
 
@@ -29620,14 +29885,16 @@ export const DiagnosticContractUpdatePropertiesHttpCorrelationProtocol =
 export type DiagnosticContractUpdatePropertiesVerbosity =
   | "verbose"
   | "information"
-  | "error";
+  | "error"
+  | (string & {});
 export const DiagnosticContractUpdatePropertiesVerbosity =
   /*@__PURE__*/ S.String;
 
 /** The format of the Operation Name for Application Insights telemetries. Default is Name. */
 export type DiagnosticContractUpdatePropertiesOperationNameFormat =
   | "Name"
-  | "Url";
+  | "Url"
+  | (string & {});
 export const DiagnosticContractUpdatePropertiesOperationNameFormat =
   /*@__PURE__*/ S.String;
 
@@ -30081,7 +30348,9 @@ export const WorkspaceApiOperationListByApiResponse = /*@__PURE__*/ S.suspend(
   identifier: "WorkspaceApiOperationListByApiResponse",
 }) as any as S.Schema<WorkspaceApiOperationListByApiResponse>;
 
-export type WorkspaceApiOperationPolicyCreateOrUpdateRequestPolicyId = "policy";
+export type WorkspaceApiOperationPolicyCreateOrUpdateRequestPolicyId =
+  | "policy"
+  | (string & {});
 export const WorkspaceApiOperationPolicyCreateOrUpdateRequestPolicyId =
   /*@__PURE__*/ S.String;
 
@@ -30150,7 +30419,9 @@ export const WorkspaceApiOperationPolicyCreateOrUpdateResponse =
     identifier: "WorkspaceApiOperationPolicyCreateOrUpdateResponse",
   }) as any as S.Schema<WorkspaceApiOperationPolicyCreateOrUpdateResponse>;
 
-export type WorkspaceApiOperationPolicyDeleteRequestPolicyId = "policy";
+export type WorkspaceApiOperationPolicyDeleteRequestPolicyId =
+  | "policy"
+  | (string & {});
 export const WorkspaceApiOperationPolicyDeleteRequestPolicyId =
   /*@__PURE__*/ S.String;
 
@@ -30200,11 +30471,16 @@ export const WorkspaceApiOperationPolicyDeleteResponse =
     identifier: "WorkspaceApiOperationPolicyDeleteResponse",
   }) as any as S.Schema<WorkspaceApiOperationPolicyDeleteResponse>;
 
-export type WorkspaceApiOperationPolicyGetRequestPolicyId = "policy";
+export type WorkspaceApiOperationPolicyGetRequestPolicyId =
+  | "policy"
+  | (string & {});
 export const WorkspaceApiOperationPolicyGetRequestPolicyId =
   /*@__PURE__*/ S.String;
 
-export type WorkspaceApiOperationPolicyGetRequestFormat = "xml" | "rawxml";
+export type WorkspaceApiOperationPolicyGetRequestFormat =
+  | "xml"
+  | "rawxml"
+  | (string & {});
 export const WorkspaceApiOperationPolicyGetRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -30395,7 +30671,9 @@ export const WorkspaceApiOperationUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkspaceApiOperationUpdateResponse",
 }) as any as S.Schema<WorkspaceApiOperationUpdateResponse>;
 
-export type WorkspaceApiPolicyCreateOrUpdateRequestPolicyId = "policy";
+export type WorkspaceApiPolicyCreateOrUpdateRequestPolicyId =
+  | "policy"
+  | (string & {});
 export const WorkspaceApiPolicyCreateOrUpdateRequestPolicyId =
   /*@__PURE__*/ S.String;
 
@@ -30459,7 +30737,7 @@ export const WorkspaceApiPolicyCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "WorkspaceApiPolicyCreateOrUpdateResponse",
 }) as any as S.Schema<WorkspaceApiPolicyCreateOrUpdateResponse>;
 
-export type WorkspaceApiPolicyDeleteRequestPolicyId = "policy";
+export type WorkspaceApiPolicyDeleteRequestPolicyId = "policy" | (string & {});
 export const WorkspaceApiPolicyDeleteRequestPolicyId = /*@__PURE__*/ S.String;
 
 export interface WorkspaceApiPolicyDeleteRequest {
@@ -30503,10 +30781,13 @@ export const WorkspaceApiPolicyDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkspaceApiPolicyDeleteResponse",
 }) as any as S.Schema<WorkspaceApiPolicyDeleteResponse>;
 
-export type WorkspaceApiPolicyGetRequestPolicyId = "policy";
+export type WorkspaceApiPolicyGetRequestPolicyId = "policy" | (string & {});
 export const WorkspaceApiPolicyGetRequestPolicyId = /*@__PURE__*/ S.String;
 
-export type WorkspaceApiPolicyGetRequestFormat = "xml" | "rawxml";
+export type WorkspaceApiPolicyGetRequestFormat =
+  | "xml"
+  | "rawxml"
+  | (string & {});
 export const WorkspaceApiPolicyGetRequestFormat = /*@__PURE__*/ S.String;
 
 export interface WorkspaceApiPolicyGetRequest {
@@ -33611,7 +33892,8 @@ export const WorkspaceNamedValueGetResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type WorkspaceNamedValueListByServiceRequestIsKeyVaultRefreshFailed =
   | "true"
-  | "false";
+  | "false"
+  | (string & {});
 export const WorkspaceNamedValueListByServiceRequestIsKeyVaultRefreshFailed =
   /*@__PURE__*/ S.String;
 
@@ -33847,7 +34129,8 @@ export type WorkspaceNotificationCreateOrUpdateRequestNotificationName =
   | "BCC"
   | "NewIssuePublisherNotificationMessage"
   | "AccountClosedPublisher"
-  | "QuotaLimitApproachingPublisherNotificationMessage";
+  | "QuotaLimitApproachingPublisherNotificationMessage"
+  | (string & {});
 export const WorkspaceNotificationCreateOrUpdateRequestNotificationName =
   /*@__PURE__*/ S.String;
 
@@ -33915,7 +34198,8 @@ export type WorkspaceNotificationGetRequestNotificationName =
   | "BCC"
   | "NewIssuePublisherNotificationMessage"
   | "AccountClosedPublisher"
-  | "QuotaLimitApproachingPublisherNotificationMessage";
+  | "QuotaLimitApproachingPublisherNotificationMessage"
+  | (string & {});
 export const WorkspaceNotificationGetRequestNotificationName =
   /*@__PURE__*/ S.String;
 
@@ -34042,7 +34326,8 @@ export type WorkspaceNotificationRecipientEmailCreateOrUpdateRequestNotification
     | "BCC"
     | "NewIssuePublisherNotificationMessage"
     | "AccountClosedPublisher"
-    | "QuotaLimitApproachingPublisherNotificationMessage";
+    | "QuotaLimitApproachingPublisherNotificationMessage"
+    | (string & {});
 export const WorkspaceNotificationRecipientEmailCreateOrUpdateRequestNotificationName =
   /*@__PURE__*/ S.String;
 
@@ -34113,7 +34398,8 @@ export type WorkspaceNotificationRecipientEmailDeleteRequestNotificationName =
   | "BCC"
   | "NewIssuePublisherNotificationMessage"
   | "AccountClosedPublisher"
-  | "QuotaLimitApproachingPublisherNotificationMessage";
+  | "QuotaLimitApproachingPublisherNotificationMessage"
+  | (string & {});
 export const WorkspaceNotificationRecipientEmailDeleteRequestNotificationName =
   /*@__PURE__*/ S.String;
 
@@ -34168,7 +34454,8 @@ export type WorkspaceNotificationRecipientEmailListByNotificationRequestNotifica
     | "BCC"
     | "NewIssuePublisherNotificationMessage"
     | "AccountClosedPublisher"
-    | "QuotaLimitApproachingPublisherNotificationMessage";
+    | "QuotaLimitApproachingPublisherNotificationMessage"
+    | (string & {});
 export const WorkspaceNotificationRecipientEmailListByNotificationRequestNotificationName =
   /*@__PURE__*/ S.String;
 
@@ -34243,7 +34530,8 @@ export type WorkspaceNotificationRecipientUserCreateOrUpdateRequestNotificationN
     | "BCC"
     | "NewIssuePublisherNotificationMessage"
     | "AccountClosedPublisher"
-    | "QuotaLimitApproachingPublisherNotificationMessage";
+    | "QuotaLimitApproachingPublisherNotificationMessage"
+    | (string & {});
 export const WorkspaceNotificationRecipientUserCreateOrUpdateRequestNotificationName =
   /*@__PURE__*/ S.String;
 
@@ -34314,7 +34602,8 @@ export type WorkspaceNotificationRecipientUserDeleteRequestNotificationName =
   | "BCC"
   | "NewIssuePublisherNotificationMessage"
   | "AccountClosedPublisher"
-  | "QuotaLimitApproachingPublisherNotificationMessage";
+  | "QuotaLimitApproachingPublisherNotificationMessage"
+  | (string & {});
 export const WorkspaceNotificationRecipientUserDeleteRequestNotificationName =
   /*@__PURE__*/ S.String;
 
@@ -34369,7 +34658,8 @@ export type WorkspaceNotificationRecipientUserListByNotificationRequestNotificat
     | "BCC"
     | "NewIssuePublisherNotificationMessage"
     | "AccountClosedPublisher"
-    | "QuotaLimitApproachingPublisherNotificationMessage";
+    | "QuotaLimitApproachingPublisherNotificationMessage"
+    | (string & {});
 export const WorkspaceNotificationRecipientUserListByNotificationRequestNotificationName =
   /*@__PURE__*/ S.String;
 
@@ -34437,7 +34727,9 @@ export const WorkspaceNotificationRecipientUserListByNotificationResponse =
     identifier: "WorkspaceNotificationRecipientUserListByNotificationResponse",
   }) as any as S.Schema<WorkspaceNotificationRecipientUserListByNotificationResponse>;
 
-export type WorkspacePolicyCreateOrUpdateRequestPolicyId = "policy";
+export type WorkspacePolicyCreateOrUpdateRequestPolicyId =
+  | "policy"
+  | (string & {});
 export const WorkspacePolicyCreateOrUpdateRequestPolicyId =
   /*@__PURE__*/ S.String;
 
@@ -34498,7 +34790,7 @@ export const WorkspacePolicyCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "WorkspacePolicyCreateOrUpdateResponse",
 }) as any as S.Schema<WorkspacePolicyCreateOrUpdateResponse>;
 
-export type WorkspacePolicyDeleteRequestPolicyId = "policy";
+export type WorkspacePolicyDeleteRequestPolicyId = "policy" | (string & {});
 export const WorkspacePolicyDeleteRequestPolicyId = /*@__PURE__*/ S.String;
 
 export interface WorkspacePolicyDeleteRequest {
@@ -34635,7 +34927,10 @@ export const WorkspacePolicyFragmentDeleteResponse = /*@__PURE__*/ S.suspend(
   identifier: "WorkspacePolicyFragmentDeleteResponse",
 }) as any as S.Schema<WorkspacePolicyFragmentDeleteResponse>;
 
-export type WorkspacePolicyFragmentGetRequestFormat = "xml" | "rawxml";
+export type WorkspacePolicyFragmentGetRequestFormat =
+  | "xml"
+  | "rawxml"
+  | (string & {});
 export const WorkspacePolicyFragmentGetRequestFormat = /*@__PURE__*/ S.String;
 
 export interface WorkspacePolicyFragmentGetRequest {
@@ -34826,10 +35121,10 @@ export const WorkspacePolicyFragmentListReferencesResponse =
     identifier: "WorkspacePolicyFragmentListReferencesResponse",
   }) as any as S.Schema<WorkspacePolicyFragmentListReferencesResponse>;
 
-export type WorkspacePolicyGetRequestPolicyId = "policy";
+export type WorkspacePolicyGetRequestPolicyId = "policy" | (string & {});
 export const WorkspacePolicyGetRequestPolicyId = /*@__PURE__*/ S.String;
 
-export type WorkspacePolicyGetRequestFormat = "xml" | "rawxml";
+export type WorkspacePolicyGetRequestFormat = "xml" | "rawxml" | (string & {});
 export const WorkspacePolicyGetRequestFormat = /*@__PURE__*/ S.String;
 
 export interface WorkspacePolicyGetRequest {
@@ -35614,7 +35909,9 @@ export const WorkspaceProductListByServiceResponse = /*@__PURE__*/ S.suspend(
   identifier: "WorkspaceProductListByServiceResponse",
 }) as any as S.Schema<WorkspaceProductListByServiceResponse>;
 
-export type WorkspaceProductPolicyCreateOrUpdateRequestPolicyId = "policy";
+export type WorkspaceProductPolicyCreateOrUpdateRequestPolicyId =
+  | "policy"
+  | (string & {});
 export const WorkspaceProductPolicyCreateOrUpdateRequestPolicyId =
   /*@__PURE__*/ S.String;
 
@@ -35680,7 +35977,9 @@ export const WorkspaceProductPolicyCreateOrUpdateResponse =
     identifier: "WorkspaceProductPolicyCreateOrUpdateResponse",
   }) as any as S.Schema<WorkspaceProductPolicyCreateOrUpdateResponse>;
 
-export type WorkspaceProductPolicyDeleteRequestPolicyId = "policy";
+export type WorkspaceProductPolicyDeleteRequestPolicyId =
+  | "policy"
+  | (string & {});
 export const WorkspaceProductPolicyDeleteRequestPolicyId =
   /*@__PURE__*/ S.String;
 
@@ -35725,10 +36024,13 @@ export const WorkspaceProductPolicyDeleteResponse = /*@__PURE__*/ S.suspend(
   identifier: "WorkspaceProductPolicyDeleteResponse",
 }) as any as S.Schema<WorkspaceProductPolicyDeleteResponse>;
 
-export type WorkspaceProductPolicyGetRequestPolicyId = "policy";
+export type WorkspaceProductPolicyGetRequestPolicyId = "policy" | (string & {});
 export const WorkspaceProductPolicyGetRequestPolicyId = /*@__PURE__*/ S.String;
 
-export type WorkspaceProductPolicyGetRequestFormat = "xml" | "rawxml";
+export type WorkspaceProductPolicyGetRequestFormat =
+  | "xml"
+  | "rawxml"
+  | (string & {});
 export const WorkspaceProductPolicyGetRequestFormat = /*@__PURE__*/ S.String;
 
 export interface WorkspaceProductPolicyGetRequest {
@@ -35905,7 +36207,8 @@ export const WorkspaceProductUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type WorkspaceSubscriptionCreateOrUpdateRequestAppType =
   | "portal"
-  | "developerPortal";
+  | "developerPortal"
+  | (string & {});
 export const WorkspaceSubscriptionCreateOrUpdateRequestAppType =
   /*@__PURE__*/ S.String;
 
@@ -36252,7 +36555,8 @@ export const WorkspaceSubscriptionRegenerateSecondaryKeyResponse =
 
 export type WorkspaceSubscriptionUpdateRequestAppType =
   | "portal"
-  | "developerPortal";
+  | "developerPortal"
+  | (string & {});
 export const WorkspaceSubscriptionUpdateRequestAppType = /*@__PURE__*/ S.String;
 
 export interface WorkspaceSubscriptionUpdateRequest {

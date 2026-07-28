@@ -35,7 +35,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type FilterLogicalOperator = "AND" | "OR";
+export type FilterLogicalOperator = "AND" | "OR" | (string & {});
 export const FilterLogicalOperator = /*@__PURE__*/ S.String;
 
 export type PropertyOperator =
@@ -72,7 +72,8 @@ export type PropertyOperator =
   | "semver_caret"
   | "semver_wildcard"
   | "icontains_multi"
-  | "not_icontains_multi";
+  | "not_icontains_multi"
+  | (string & {});
 export const PropertyOperator = /*@__PURE__*/ S.String;
 
 export type EventPropertyFilterValueCase0Item = string | number | boolean;
@@ -192,7 +193,7 @@ export const PersonMetadataPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonMetadataPropertyFilter",
 }) as any as S.Schema<PersonMetadataPropertyFilter>;
 
-export type Key10 = "tag_name" | "text" | "href" | "selector";
+export type Key10 = "tag_name" | "text" | "href" | "selector" | (string & {});
 export const Key10 = /*@__PURE__*/ S.String;
 
 export type ElementPropertyFilterValueCase0Item = string | number | boolean;
@@ -330,7 +331,11 @@ export const CohortPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "CohortPropertyFilter",
 }) as any as S.Schema<CohortPropertyFilter>;
 
-export type DurationType = "duration" | "active_seconds" | "inactive_seconds";
+export type DurationType =
+  | "duration"
+  | "active_seconds"
+  | "inactive_seconds"
+  | (string & {});
 export const DurationType = /*@__PURE__*/ S.String;
 
 export type RecordingPropertyFilterKey = DurationType | string;
@@ -693,7 +698,8 @@ export const ErrorTrackingIssueFilter = /*@__PURE__*/ S.suspend(() =>
 export type LogPropertyFilterType =
   | "log"
   | "log_attribute"
-  | "log_resource_attribute";
+  | "log_resource_attribute"
+  | (string & {});
 export const LogPropertyFilterType = /*@__PURE__*/ S.String;
 
 export type LogPropertyFilterValueCase0Item = string | number | boolean;
@@ -773,7 +779,8 @@ export const MetricPropertyFilter = /*@__PURE__*/ S.suspend(() =>
 export type SpanPropertyFilterType =
   | "span"
   | "span_attribute"
-  | "span_resource_attribute";
+  | "span_resource_attribute"
+  | (string & {});
 export const SpanPropertyFilterType = /*@__PURE__*/ S.String;
 
 export type SpanPropertyFilterValueCase0Item = string | number | boolean;
@@ -984,7 +991,7 @@ export const PropertyGroupFilterValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PropertyGroupFilterValue>;
 
 /** * `user` - user * `role` - role */
-export type AssigneeTypeEnum = "user" | "role";
+export type AssigneeTypeEnum = "user" | "role" | (string & {});
 export const AssigneeTypeEnum = /*@__PURE__*/ S.String;
 
 /** User ID when `type` is `user`, or role UUID when `type` is `role`. */
@@ -1036,7 +1043,10 @@ export const ErrorTrackingAssignmentRulesCreateRequest =
     identifier: "ErrorTrackingAssignmentRulesCreateRequest",
   }) as any as S.Schema<ErrorTrackingAssignmentRulesCreateRequest>;
 
-export type ErrorTrackingAssignmentRuleAssigneeType = "user" | "role";
+export type ErrorTrackingAssignmentRuleAssigneeType =
+  | "user"
+  | "role"
+  | (string & {});
 export const ErrorTrackingAssignmentRuleAssigneeType = /*@__PURE__*/ S.String;
 
 export type ErrorTrackingAssignmentRuleAssigneeId = number | string;
@@ -1967,7 +1977,10 @@ export const ErrorTrackingGroupingRulesCreateRequest = /*@__PURE__*/ S.suspend(
   identifier: "ErrorTrackingGroupingRulesCreateRequest",
 }) as any as S.Schema<ErrorTrackingGroupingRulesCreateRequest>;
 
-export type ErrorTrackingGroupingRuleAssigneeType = "user" | "role";
+export type ErrorTrackingGroupingRuleAssigneeType =
+  | "user"
+  | "role"
+  | (string & {});
 export const ErrorTrackingGroupingRuleAssigneeType = /*@__PURE__*/ S.String;
 
 export type ErrorTrackingGroupingRuleAssigneeId = number | string;
@@ -2656,7 +2669,8 @@ export const ErrorTrackingIssueMergeResponse = /*@__PURE__*/ S.suspend(() =>
 export type ErrorTrackingIssueWriteStatusEnum =
   | "active"
   | "resolved"
-  | "suppressed";
+  | "suppressed"
+  | (string & {});
 export const ErrorTrackingIssueWriteStatusEnum = /*@__PURE__*/ S.String;
 
 export interface ErrorTrackingIssuesPartialUpdateRequest {
@@ -3125,10 +3139,11 @@ export type PropertyItemOperatorEnum =
   | "is_date_after"
   | "is_date_before"
   | "in"
-  | "not_in";
+  | "not_in"
+  | (string & {});
 export const PropertyItemOperatorEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type PropertyItemOperator = PropertyItemOperatorEnum | BlankEnum;
@@ -3166,7 +3181,8 @@ export type PropertyFilterTypeEnum =
   | "revenue_analytics"
   | "account_custom_property"
   | "flag"
-  | "workflow_variable";
+  | "workflow_variable"
+  | (string & {});
 export const PropertyFilterTypeEnum = /*@__PURE__*/ S.String;
 
 export type PropertyItemType = PropertyFilterTypeEnum | BlankEnum;
@@ -3199,7 +3215,7 @@ export const ErrorTrackingQueryIssueEventsCreateRequestFilterGroupList =
   ) as any as S.Schema<ErrorTrackingQueryIssueEventsCreateRequestFilterGroupList>;
 
 /** * `ASC` - ASC * `DESC` - DESC */
-export type OrderDirectionEnum = "ASC" | "DESC";
+export type OrderDirectionEnum = "ASC" | "DESC" | (string & {});
 export const OrderDirectionEnum = /*@__PURE__*/ S.String;
 
 /** * `exception` - exception * `stacktrace` - stacktrace * `code_variables` - code_variables * `environment` - environment * `release` - release * `navigation` - navigation * `correlation` - correlation * `diagnostics` - diagnostics */
@@ -3211,7 +3227,8 @@ export type IncludeEnum =
   | "release"
   | "navigation"
   | "correlation"
-  | "diagnostics";
+  | "diagnostics"
+  | (string & {});
 export const IncludeEnum = /*@__PURE__*/ S.String;
 
 /** Context groups to return. Defaults to exception, environment, navigation, and correlation. Request stacktrace for frames, code_variables for captured and SDK-masked frame variables, release for release metadata, or diagnostics for ingestion errors. code_variables implies stacktrace. */
@@ -3344,7 +3361,8 @@ export type ErrorTrackingIssueStatusEnum =
   | "resolved"
   | "pending_release"
   | "suppressed"
-  | "all";
+  | "all"
+  | (string & {});
 export const ErrorTrackingIssueStatusEnum = /*@__PURE__*/ S.String;
 
 /** User ID or role UUID to filter by. */
@@ -3381,7 +3399,8 @@ export type ErrorTrackingIssueOrderByEnum =
   | "first_seen"
   | "occurrences"
   | "users"
-  | "sessions";
+  | "sessions"
+  | (string & {});
 export const ErrorTrackingIssueOrderByEnum = /*@__PURE__*/ S.String;
 
 export type ErrorTrackingQueryIssuesListCreateRequestLibraryCase1List =
@@ -4931,13 +4950,15 @@ export type ErrorTrackingSymbolSetsListRequestOrderBy =
   | "ref"
   | "-ref"
   | "last_used"
-  | "-last_used";
+  | "-last_used"
+  | (string & {});
 export const ErrorTrackingSymbolSetsListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export type ErrorTrackingSymbolSetsListRequestStatus =
   | "all"
   | "valid"
-  | "invalid";
+  | "invalid"
+  | (string & {});
 export const ErrorTrackingSymbolSetsListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ErrorTrackingSymbolSetsListRequest {

@@ -149,7 +149,8 @@ export const GoogleCloudSecuritycenterV1beta1SecurityMarks =
 export type GoogleCloudSecuritycenterV1beta1FindingStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "INACTIVE";
+  | "INACTIVE"
+  | (string & {});
 export const GoogleCloudSecuritycenterV1beta1FindingStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -284,7 +285,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 export interface AuditLogConfig {
@@ -388,7 +390,8 @@ export const GetOrganizationSettingsOrganizationsRequest =
 export type AssetDiscoveryConfigInclusionModeEnum =
   | "INCLUSION_MODE_UNSPECIFIED"
   | "INCLUDE_ONLY"
-  | "EXCLUDE";
+  | "EXCLUDE"
+  | (string & {});
 export const AssetDiscoveryConfigInclusionModeEnum = /*@__PURE__*/ S.String;
 
 export interface AssetDiscoveryConfig {
@@ -689,7 +692,8 @@ export type ListAssetsResultStateEnum =
   | "UNUSED"
   | "ADDED"
   | "REMOVED"
-  | "ACTIVE";
+  | "ACTIVE"
+  | (string & {});
 export const ListAssetsResultStateEnum = /*@__PURE__*/ S.String;
 
 export interface ListAssetsResult {
@@ -977,7 +981,8 @@ export const SetIamPolicyOrganizationsSourcesRequest = /*@__PURE__*/ S.suspend(
 export type SetFindingStateRequestStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "INACTIVE";
+  | "INACTIVE"
+  | (string & {});
 export const SetFindingStateRequestStateEnum = /*@__PURE__*/ S.String;
 
 export interface SetFindingStateRequest {

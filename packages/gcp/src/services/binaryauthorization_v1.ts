@@ -80,7 +80,8 @@ export type PkixPublicKeySignatureAlgorithmEnum =
   | "EC_SIGN_P384_SHA384"
   | "ECDSA_P521_SHA512"
   | "EC_SIGN_P521_SHA512"
-  | "ML_DSA_65";
+  | "ML_DSA_65"
+  | (string & {});
 export const PkixPublicKeySignatureAlgorithmEnum = /*@__PURE__*/ S.String;
 
 /** A public key in the PkixPublicKey [format](https://tools.ietf.org/html/rfc5280#section-4.1.2.7). Public keys of this type are typically textually encoded using the PEM format. */
@@ -359,7 +360,8 @@ export const TrustedDirectoryCheck = /*@__PURE__*/ S.suspend(() =>
 
 export type VerificationRuleTrustedBuilderEnum =
   | "BUILDER_UNSPECIFIED"
-  | "GOOGLE_CLOUD_BUILD";
+  | "GOOGLE_CLOUD_BUILD"
+  | (string & {});
 export const VerificationRuleTrustedBuilderEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the locations for fetching the provenance attestations. */
@@ -437,7 +439,8 @@ export type VulnerabilityCheckMaximumUnfixableSeverityEnum =
   | "MEDIUM"
   | "HIGH"
   | "CRITICAL"
-  | "ALLOW_ALL";
+  | "ALLOW_ALL"
+  | (string & {});
 export const VulnerabilityCheckMaximumUnfixableSeverityEnum =
   /*@__PURE__*/ S.String;
 
@@ -449,7 +452,8 @@ export type VulnerabilityCheckMaximumFixableSeverityEnum =
   | "MEDIUM"
   | "HIGH"
   | "CRITICAL"
-  | "ALLOW_ALL";
+  | "ALLOW_ALL"
+  | (string & {});
 export const VulnerabilityCheckMaximumFixableSeverityEnum =
   /*@__PURE__*/ S.String;
 
@@ -700,14 +704,16 @@ export type EvaluateGkePolicyResponseVerdictEnum =
   | "VERDICT_UNSPECIFIED"
   | "CONFORMANT"
   | "NON_CONFORMANT"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const EvaluateGkePolicyResponseVerdictEnum = /*@__PURE__*/ S.String;
 
 export type PodResultVerdictEnum =
   | "POD_VERDICT_UNSPECIFIED"
   | "CONFORMANT"
   | "NON_CONFORMANT"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const PodResultVerdictEnum = /*@__PURE__*/ S.String;
 
 /** Result of evaluating an image name allowlist. */
@@ -727,7 +733,8 @@ export type EvaluationResultVerdictEnum =
   | "CHECK_VERDICT_UNSPECIFIED"
   | "CONFORMANT"
   | "NON_CONFORMANT"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const EvaluationResultVerdictEnum = /*@__PURE__*/ S.String;
 
 /** Result of evaluating one check. */
@@ -815,7 +822,8 @@ export type ImageResultVerdictEnum =
   | "IMAGE_VERDICT_UNSPECIFIED"
   | "CONFORMANT"
   | "NON_CONFORMANT"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const ImageResultVerdictEnum = /*@__PURE__*/ S.String;
 
 /** Result of evaluating one image. */
@@ -1013,20 +1021,23 @@ export const GetPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 export type PolicyGlobalPolicyEvaluationModeEnum =
   | "GLOBAL_POLICY_EVALUATION_MODE_UNSPECIFIED"
   | "ENABLE"
-  | "DISABLE";
+  | "DISABLE"
+  | (string & {});
 export const PolicyGlobalPolicyEvaluationModeEnum = /*@__PURE__*/ S.String;
 
 export type AdmissionRuleEvaluationModeEnum =
   | "EVALUATION_MODE_UNSPECIFIED"
   | "ALWAYS_ALLOW"
   | "REQUIRE_ATTESTATION"
-  | "ALWAYS_DENY";
+  | "ALWAYS_DENY"
+  | (string & {});
 export const AdmissionRuleEvaluationModeEnum = /*@__PURE__*/ S.String;
 
 export type AdmissionRuleEnforcementModeEnum =
   | "ENFORCEMENT_MODE_UNSPECIFIED"
   | "ENFORCED_BLOCK_AND_AUDIT_LOG"
-  | "DRYRUN_AUDIT_LOG_ONLY";
+  | "DRYRUN_AUDIT_LOG_ONLY"
+  | (string & {});
 export const AdmissionRuleEnforcementModeEnum = /*@__PURE__*/ S.String;
 
 /** An admission rule specifies either that all container images used in a pod creation request must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be denied. Images matching an admission allowlist pattern are exempted from admission rules and will never block a pod creation. */
@@ -1545,7 +1556,8 @@ export const ValidateAttestationOccurrenceProjectsAttestorsRequest =
 export type ValidateAttestationOccurrenceResponseResultEnum =
   | "RESULT_UNSPECIFIED"
   | "VERIFIED"
-  | "ATTESTATION_NOT_VERIFIABLE";
+  | "ATTESTATION_NOT_VERIFIABLE"
+  | (string & {});
 export const ValidateAttestationOccurrenceResponseResultEnum =
   /*@__PURE__*/ S.String;
 

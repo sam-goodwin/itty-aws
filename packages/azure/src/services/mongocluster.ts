@@ -65,7 +65,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -73,7 +74,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -109,7 +111,8 @@ export type ProvisioningState =
   | "Canceled"
   | "InProgress"
   | "Updating"
-  | "Dropping";
+  | "Dropping"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The properties of a mongo cluster firewall rule. */
@@ -345,7 +348,8 @@ export const MongoClustersCheckNameAvailabilityRequest =
 /** The reason why the given name is not available. */
 export type MongoClustersCheckNameAvailabilityResponseReason =
   | "Invalid"
-  | "AlreadyExists";
+  | "AlreadyExists"
+  | (string & {});
 export const MongoClustersCheckNameAvailabilityResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -382,7 +386,8 @@ export type CreateMode =
   | "Default"
   | "PointInTimeRestore"
   | "GeoReplica"
-  | "Replica";
+  | "Replica"
+  | (string & {});
 export const CreateMode = /*@__PURE__*/ S.String;
 
 /** Parameters used for restore operations */
@@ -434,14 +439,15 @@ export const AdministratorProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdministratorProperties>;
 
 /** Whether or not public endpoint access is allowed for this Mongo cluster. Value is optional and default value is 'Enabled' */
-export type PublicNetworkAccess = "Enabled" | "Disabled";
+export type PublicNetworkAccess = "Enabled" | "Disabled" | (string & {});
 export const PublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** The high availability modes for a cluster. */
 export type HighAvailabilityMode =
   | "Disabled"
   | "SameZone"
-  | "ZoneRedundantPreferred";
+  | "ZoneRedundantPreferred"
+  | (string & {});
 export const HighAvailabilityMode = /*@__PURE__*/ S.String;
 
 /** The high availability properties of the cluster. */
@@ -458,7 +464,7 @@ export const HighAvailabilityProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HighAvailabilityProperties>;
 
 /** The type of storage that a mongo cluster can be provisioned with. */
-export type StorageType = "PremiumSSD" | "PremiumSSDv2";
+export type StorageType = "PremiumSSD" | "PremiumSSDv2" | (string & {});
 export const StorageType = /*@__PURE__*/ S.String;
 
 /** The storage properties of the cluster. This includes the data storage size and scaling applied to servers in the cluster. */
@@ -512,7 +518,7 @@ export const BackupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackupPropertiesInput>;
 
 /** The mode to apply to the Mongo Data API. */
-export type DataApiMode = "Enabled" | "Disabled";
+export type DataApiMode = "Enabled" | "Disabled" | (string & {});
 export const DataApiMode = /*@__PURE__*/ S.String;
 
 /** Data API properties. */
@@ -529,7 +535,7 @@ export const DataApiProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataApiProperties>;
 
 /** Preview features that can be enabled on a mongo cluster. */
-export type PreviewFeature = "GeoReplicas";
+export type PreviewFeature = "GeoReplicas" | (string & {});
 export const PreviewFeature = /*@__PURE__*/ S.String;
 
 /** List of private endpoint connections. */
@@ -541,7 +547,10 @@ export const MongoClusterPropertiesInputPreviewFeaturesList =
   ) as any as S.Schema<MongoClusterPropertiesInputPreviewFeaturesList>;
 
 /** The authentication modes supporting on the Mongo cluster. */
-export type AuthenticationMode = "NativeAuth" | "MicrosoftEntraID";
+export type AuthenticationMode =
+  | "NativeAuth"
+  | "MicrosoftEntraID"
+  | (string & {});
 export const AuthenticationMode = /*@__PURE__*/ S.String;
 
 /** Allowed authentication modes for data access on the cluster. */
@@ -565,7 +574,9 @@ export const AuthConfigProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthConfigProperties>;
 
 /** The type of identity for key encryption key. */
-export type KeyEncryptionKeyIdentityType = "UserAssignedIdentity";
+export type KeyEncryptionKeyIdentityType =
+  | "UserAssignedIdentity"
+  | (string & {});
 export const KeyEncryptionKeyIdentityType = /*@__PURE__*/ S.String;
 
 /** The identity used for key encryption key. */
@@ -617,7 +628,7 @@ export const EncryptionProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionProperties>;
 
 /** The network bypass mode for the Mongo cluster. */
-export type NetworkBypassMode = "None" | "AzureCosmosDB";
+export type NetworkBypassMode = "None" | "AzureCosmosDB" | (string & {});
 export const NetworkBypassMode = /*@__PURE__*/ S.String;
 
 /** The properties of a mongo cluster. */
@@ -683,7 +694,8 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned";
+  | "SystemAssigned,UserAssigned"
+  | (string & {});
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -773,7 +785,8 @@ export type MongoClusterStatus =
   | "Starting"
   | "Stopping"
   | "Stopped"
-  | "Dropping";
+  | "Dropping"
+  | (string & {});
 export const MongoClusterStatus = /*@__PURE__*/ S.String;
 
 /** The backup properties of the cluster. This includes the earliest restore time and retention settings. */
@@ -814,7 +827,8 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected";
+  | "Rejected"
+  | (string & {});
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -841,7 +855,8 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -909,7 +924,11 @@ export const MongoClusterPropertiesPreviewFeaturesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MongoClusterPropertiesPreviewFeaturesList>;
 
 /** Replication role of the mongo cluster. */
-export type ReplicationRole = "Primary" | "AsyncReplica" | "GeoAsyncReplica";
+export type ReplicationRole =
+  | "Primary"
+  | "AsyncReplica"
+  | "GeoAsyncReplica"
+  | (string & {});
 export const ReplicationRole = /*@__PURE__*/ S.String;
 
 /** The state of the replication link between the replica and source cluster. */
@@ -919,7 +938,8 @@ export type ReplicationState =
   | "Provisioning"
   | "Updating"
   | "Broken"
-  | "Reconfiguring";
+  | "Reconfiguring"
+  | (string & {});
 export const ReplicationState = /*@__PURE__*/ S.String;
 
 /** Replica properties of the mongo cluster. */
@@ -1409,11 +1429,11 @@ export const ListConnectionStringsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListConnectionStringsResult>;
 
 /** The option to apply to a promote operation. */
-export type PromoteOption = "Forced";
+export type PromoteOption = "Forced" | (string & {});
 export const PromoteOption = /*@__PURE__*/ S.String;
 
 /** The mode to apply to a promote operation. */
-export type PromoteMode = "Switchover";
+export type PromoteMode = "Switchover" | (string & {});
 export const PromoteMode = /*@__PURE__*/ S.String;
 
 export interface MongoClustersPromoteRequest {
@@ -1669,11 +1689,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -2253,7 +2273,7 @@ export const ReplicaListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicaListResult>;
 
 /** Identity provider types that a a user identity can belong to. */
-export type IdentityProviderType = "MicrosoftEntraID";
+export type IdentityProviderType = "MicrosoftEntraID" | (string & {});
 export const IdentityProviderType = /*@__PURE__*/ S.String;
 
 /** Defines a user's identity provider definition. */
@@ -2270,7 +2290,7 @@ export const IdentityProvider = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IdentityProvider>;
 
 /** Built-in database role that can be assigned to a user. */
-export type UserRole = "root";
+export type UserRole = "root" | (string & {});
 export const UserRole = /*@__PURE__*/ S.String;
 
 /** Database role definition that is assigned to a user. */

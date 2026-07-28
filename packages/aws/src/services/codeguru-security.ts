@@ -176,7 +176,7 @@ export const BatchGetFindingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetFindingsRequest",
 }) as any as S.Schema<BatchGetFindingsRequest>;
-export type Status = "Closed" | "Open" | "All";
+export type Status = "Closed" | "Open" | "All" | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 
 export interface Resource {
@@ -231,7 +231,13 @@ export const Vulnerability = /*@__PURE__*/ S.suspend(() =>
     itemCount: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Vulnerability" }) as any as S.Schema<Vulnerability>;
-export type Severity = "Critical" | "High" | "Medium" | "Low" | "Info";
+export type Severity =
+  | "Critical"
+  | "High"
+  | "Medium"
+  | "Low"
+  | "Info"
+  | (string & {});
 export const Severity = /*@__PURE__*/ S.String;
 
 export interface Recommendation {
@@ -308,7 +314,8 @@ export type ErrorCode =
   | "ITEM_DOES_NOT_EXIST"
   | "INTERNAL_ERROR"
   | "INVALID_FINDING_ID"
-  | "INVALID_SCAN_NAME";
+  | "INVALID_SCAN_NAME"
+  | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
 
 export interface BatchGetFindingsError_ {
@@ -346,10 +353,10 @@ export type ResourceId = { codeArtifactId: string };
 export const ResourceId = /*@__PURE__*/ S.Union([
   S.Struct({ codeArtifactId: S.String }),
 ]);
-export type ScanType = "Standard" | "Express";
+export type ScanType = "Standard" | "Express" | (string & {});
 export const ScanType = /*@__PURE__*/ S.String;
 
-export type AnalysisType = "Security" | "All";
+export type AnalysisType = "Security" | "All" | (string & {});
 export const AnalysisType = /*@__PURE__*/ S.String;
 
 export type TagKey = string;
@@ -388,7 +395,7 @@ export const CreateScanRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateScanRequest",
 }) as any as S.Schema<CreateScanRequest>;
-export type ScanState = "InProgress" | "Successful" | "Failed";
+export type ScanState = "InProgress" | "Successful" | "Failed" | (string & {});
 export const ScanState = /*@__PURE__*/ S.String;
 
 export type ScanNameArn = string;
@@ -888,7 +895,8 @@ export type ValidationExceptionReason =
   | "cannotParse"
   | "fieldValidationFailed"
   | "other"
-  | "lambdaCodeShaMisMatch";
+  | "lambdaCodeShaMisMatch"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

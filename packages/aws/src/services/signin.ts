@@ -798,7 +798,8 @@ export type OAuth2ErrorCode =
   | "INVALID_REQUEST"
   | "RESOURCE_NOT_FOUND"
   | "CONFLICT"
-  | "SERVICE_QUOTA_EXCEEDED";
+  | "SERVICE_QUOTA_EXCEEDED"
+  | (string & {});
 export const OAuth2ErrorCode = /*@__PURE__*/ S.String;
 
 export type CreateOAuth2TokenError =

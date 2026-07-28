@@ -228,10 +228,15 @@ export const BatchGetGraphMemberDatasourcesRequest = /*@__PURE__*/ S.suspend(
 export type DatasourcePackage =
   | "DETECTIVE_CORE"
   | "EKS_AUDIT"
-  | "ASFF_SECURITYHUB_FINDING";
+  | "ASFF_SECURITYHUB_FINDING"
+  | (string & {});
 export const DatasourcePackage = /*@__PURE__*/ S.String;
 
-export type DatasourcePackageIngestState = "STARTED" | "STOPPED" | "DISABLED";
+export type DatasourcePackageIngestState =
+  | "STARTED"
+  | "STOPPED"
+  | "DISABLED"
+  | (string & {});
 export const DatasourcePackageIngestState = /*@__PURE__*/ S.String;
 
 export interface TimestampForCollection {
@@ -426,15 +431,19 @@ export type MemberStatus =
   | "VERIFICATION_IN_PROGRESS"
   | "VERIFICATION_FAILED"
   | "ENABLED"
-  | "ACCEPTED_BUT_DISABLED";
+  | "ACCEPTED_BUT_DISABLED"
+  | (string & {});
 export const MemberStatus = /*@__PURE__*/ S.String;
 
-export type MemberDisabledReason = "VOLUME_TOO_HIGH" | "VOLUME_UNKNOWN";
+export type MemberDisabledReason =
+  | "VOLUME_TOO_HIGH"
+  | "VOLUME_UNKNOWN"
+  | (string & {});
 export const MemberDisabledReason = /*@__PURE__*/ S.String;
 
 export type ByteValue = number;
 export type Percentage = number;
-export type InvitationType = "INVITATION" | "ORGANIZATION";
+export type InvitationType = "INVITATION" | "ORGANIZATION" | (string & {});
 export const InvitationType = /*@__PURE__*/ S.String;
 
 export interface DatasourcePackageUsageInfo {
@@ -703,16 +712,22 @@ export const GetInvestigationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInvestigationRequest",
 }) as any as S.Schema<GetInvestigationRequest>;
 export type EntityArn = string;
-export type EntityType = "IAM_ROLE" | "IAM_USER";
+export type EntityType = "IAM_ROLE" | "IAM_USER" | (string & {});
 export const EntityType = /*@__PURE__*/ S.String;
 
-export type Status = "RUNNING" | "FAILED" | "SUCCESSFUL";
+export type Status = "RUNNING" | "FAILED" | "SUCCESSFUL" | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 
-export type Severity = "INFORMATIONAL" | "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
+export type Severity =
+  | "INFORMATIONAL"
+  | "LOW"
+  | "MEDIUM"
+  | "HIGH"
+  | "CRITICAL"
+  | (string & {});
 export const Severity = /*@__PURE__*/ S.String;
 
-export type State = "ACTIVE" | "ARCHIVED";
+export type State = "ACTIVE" | "ARCHIVED" | (string & {});
 export const State = /*@__PURE__*/ S.String;
 
 export interface GetInvestigationResponse {
@@ -892,7 +907,8 @@ export type IndicatorType =
   | "NEW_ASO"
   | "NEW_USER_AGENT"
   | "RELATED_FINDING"
-  | "RELATED_FINDING_GROUP";
+  | "RELATED_FINDING_GROUP"
+  | (string & {});
 export const IndicatorType = /*@__PURE__*/ S.String;
 
 export type AiPaginationToken = string;
@@ -973,7 +989,7 @@ export const ImpossibleTravelDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImpossibleTravelDetail",
 }) as any as S.Schema<ImpossibleTravelDetail>;
-export type Reason = "AWS_THREAT_INTELLIGENCE";
+export type Reason = "AWS_THREAT_INTELLIGENCE" | (string & {});
 export const Reason = /*@__PURE__*/ S.String;
 
 export interface FlaggedIpAddressDetail {
@@ -1133,10 +1149,10 @@ export const FilterCriteria = /*@__PURE__*/ S.suspend(() =>
     CreatedTime: S.optional(DateFilter),
   }),
 ).annotate({ identifier: "FilterCriteria" }) as any as S.Schema<FilterCriteria>;
-export type Field = "SEVERITY" | "STATUS" | "CREATED_TIME";
+export type Field = "SEVERITY" | "STATUS" | "CREATED_TIME" | (string & {});
 export const Field = /*@__PURE__*/ S.String;
 
-export type SortOrder = "ASC" | "DESC";
+export type SortOrder = "ASC" | "DESC" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
 
 export interface SortCriteria {
@@ -1584,7 +1600,8 @@ export type ErrorMessage = string;
 export type ErrorCode =
   | "INVALID_GRAPH_ARN"
   | "INVALID_REQUEST_BODY"
-  | "INTERNAL_ERROR";
+  | "INTERNAL_ERROR"
+  | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
 
 export type ErrorCodeReason = string;

@@ -138,7 +138,8 @@ export type NoteKindEnum =
   | "VULNERABILITY_ASSESSMENT"
   | "SBOM_REFERENCE"
   | "SECRET"
-  | "AI_SKILL_ANALYSIS";
+  | "AI_SKILL_ANALYSIS"
+  | (string & {});
 export const NoteKindEnum = /*@__PURE__*/ S.String;
 
 /** Metadata for any related URL information. */
@@ -164,7 +165,8 @@ export type VersionKindEnum =
   | "VERSION_KIND_UNSPECIFIED"
   | "NORMAL"
   | "MINIMUM"
-  | "MAXIMUM";
+  | "MAXIMUM"
+  | (string & {});
 export const VersionKindEnum = /*@__PURE__*/ S.String;
 
 /** Version contains structured information about the version of a package. */
@@ -251,7 +253,8 @@ export const DetailList = /*@__PURE__*/ S.Array(
 export type CVSSAttackRequirementsEnum =
   | "ATTACK_REQUIREMENTS_UNSPECIFIED"
   | "ATTACK_REQUIREMENTS_NONE"
-  | "ATTACK_REQUIREMENTS_PRESENT";
+  | "ATTACK_REQUIREMENTS_PRESENT"
+  | (string & {});
 export const CVSSAttackRequirementsEnum = /*@__PURE__*/ S.String;
 
 export type CVSSVulnerableSystemIntegrityImpactEnum =
@@ -260,7 +263,8 @@ export type CVSSVulnerableSystemIntegrityImpactEnum =
   | "IMPACT_LOW"
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
-  | "IMPACT_COMPLETE";
+  | "IMPACT_COMPLETE"
+  | (string & {});
 export const CVSSVulnerableSystemIntegrityImpactEnum = /*@__PURE__*/ S.String;
 
 export type CVSSConfidentialityImpactEnum =
@@ -269,7 +273,8 @@ export type CVSSConfidentialityImpactEnum =
   | "IMPACT_LOW"
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
-  | "IMPACT_COMPLETE";
+  | "IMPACT_COMPLETE"
+  | (string & {});
 export const CVSSConfidentialityImpactEnum = /*@__PURE__*/ S.String;
 
 export type CVSSVulnerableSystemConfidentialityImpactEnum =
@@ -278,7 +283,8 @@ export type CVSSVulnerableSystemConfidentialityImpactEnum =
   | "IMPACT_LOW"
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
-  | "IMPACT_COMPLETE";
+  | "IMPACT_COMPLETE"
+  | (string & {});
 export const CVSSVulnerableSystemConfidentialityImpactEnum =
   /*@__PURE__*/ S.String;
 
@@ -287,7 +293,8 @@ export type CVSSUserInteractionEnum =
   | "USER_INTERACTION_NONE"
   | "USER_INTERACTION_REQUIRED"
   | "USER_INTERACTION_PASSIVE"
-  | "USER_INTERACTION_ACTIVE";
+  | "USER_INTERACTION_ACTIVE"
+  | (string & {});
 export const CVSSUserInteractionEnum = /*@__PURE__*/ S.String;
 
 export type CVSSIntegrityImpactEnum =
@@ -296,7 +303,8 @@ export type CVSSIntegrityImpactEnum =
   | "IMPACT_LOW"
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
-  | "IMPACT_COMPLETE";
+  | "IMPACT_COMPLETE"
+  | (string & {});
 export const CVSSIntegrityImpactEnum = /*@__PURE__*/ S.String;
 
 export type CVSSSubsequentSystemConfidentialityImpactEnum =
@@ -305,7 +313,8 @@ export type CVSSSubsequentSystemConfidentialityImpactEnum =
   | "IMPACT_LOW"
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
-  | "IMPACT_COMPLETE";
+  | "IMPACT_COMPLETE"
+  | (string & {});
 export const CVSSSubsequentSystemConfidentialityImpactEnum =
   /*@__PURE__*/ S.String;
 
@@ -314,7 +323,8 @@ export type CVSSExploitMaturityEnum =
   | "EXPLOIT_MATURITY_NOT_DEFINED"
   | "EXPLOIT_MATURITY_ATTACKED"
   | "EXPLOIT_MATURITY_POC"
-  | "EXPLOIT_MATURITY_UNREPORTED";
+  | "EXPLOIT_MATURITY_UNREPORTED"
+  | (string & {});
 export const CVSSExploitMaturityEnum = /*@__PURE__*/ S.String;
 
 export type CVSSAttackVectorEnum =
@@ -322,7 +332,8 @@ export type CVSSAttackVectorEnum =
   | "ATTACK_VECTOR_NETWORK"
   | "ATTACK_VECTOR_ADJACENT"
   | "ATTACK_VECTOR_LOCAL"
-  | "ATTACK_VECTOR_PHYSICAL";
+  | "ATTACK_VECTOR_PHYSICAL"
+  | (string & {});
 export const CVSSAttackVectorEnum = /*@__PURE__*/ S.String;
 
 export type CVSSVulnerableSystemAvailabilityImpactEnum =
@@ -331,14 +342,16 @@ export type CVSSVulnerableSystemAvailabilityImpactEnum =
   | "IMPACT_LOW"
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
-  | "IMPACT_COMPLETE";
+  | "IMPACT_COMPLETE"
+  | (string & {});
 export const CVSSVulnerableSystemAvailabilityImpactEnum =
   /*@__PURE__*/ S.String;
 
 export type CVSSScopeEnum =
   | "SCOPE_UNSPECIFIED"
   | "SCOPE_UNCHANGED"
-  | "SCOPE_CHANGED";
+  | "SCOPE_CHANGED"
+  | (string & {});
 export const CVSSScopeEnum = /*@__PURE__*/ S.String;
 
 export type CVSSAvailabilityImpactEnum =
@@ -347,7 +360,8 @@ export type CVSSAvailabilityImpactEnum =
   | "IMPACT_LOW"
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
-  | "IMPACT_COMPLETE";
+  | "IMPACT_COMPLETE"
+  | (string & {});
 export const CVSSAvailabilityImpactEnum = /*@__PURE__*/ S.String;
 
 export type CVSSSubsequentSystemIntegrityImpactEnum =
@@ -356,7 +370,8 @@ export type CVSSSubsequentSystemIntegrityImpactEnum =
   | "IMPACT_LOW"
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
-  | "IMPACT_COMPLETE";
+  | "IMPACT_COMPLETE"
+  | (string & {});
 export const CVSSSubsequentSystemIntegrityImpactEnum = /*@__PURE__*/ S.String;
 
 export type CVSSSubsequentSystemAvailabilityImpactEnum =
@@ -365,7 +380,8 @@ export type CVSSSubsequentSystemAvailabilityImpactEnum =
   | "IMPACT_LOW"
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
-  | "IMPACT_COMPLETE";
+  | "IMPACT_COMPLETE"
+  | (string & {});
 export const CVSSSubsequentSystemAvailabilityImpactEnum =
   /*@__PURE__*/ S.String;
 
@@ -373,21 +389,24 @@ export type CVSSPrivilegesRequiredEnum =
   | "PRIVILEGES_REQUIRED_UNSPECIFIED"
   | "PRIVILEGES_REQUIRED_NONE"
   | "PRIVILEGES_REQUIRED_LOW"
-  | "PRIVILEGES_REQUIRED_HIGH";
+  | "PRIVILEGES_REQUIRED_HIGH"
+  | (string & {});
 export const CVSSPrivilegesRequiredEnum = /*@__PURE__*/ S.String;
 
 export type CVSSAttackComplexityEnum =
   | "ATTACK_COMPLEXITY_UNSPECIFIED"
   | "ATTACK_COMPLEXITY_LOW"
   | "ATTACK_COMPLEXITY_HIGH"
-  | "ATTACK_COMPLEXITY_MEDIUM";
+  | "ATTACK_COMPLEXITY_MEDIUM"
+  | (string & {});
 export const CVSSAttackComplexityEnum = /*@__PURE__*/ S.String;
 
 export type CVSSAuthenticationEnum =
   | "AUTHENTICATION_UNSPECIFIED"
   | "AUTHENTICATION_MULTIPLE"
   | "AUTHENTICATION_SINGLE"
-  | "AUTHENTICATION_NONE";
+  | "AUTHENTICATION_NONE"
+  | (string & {});
 export const CVSSAuthenticationEnum = /*@__PURE__*/ S.String;
 
 /** Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing various versions of CVSS rather than making a separate proto for storing a specific version. */
@@ -474,40 +493,46 @@ export type VulnerabilityNoteSeverityEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "CRITICAL";
+  | "CRITICAL"
+  | (string & {});
 export const VulnerabilityNoteSeverityEnum = /*@__PURE__*/ S.String;
 
 export type CVSSv3PrivilegesRequiredEnum =
   | "PRIVILEGES_REQUIRED_UNSPECIFIED"
   | "PRIVILEGES_REQUIRED_NONE"
   | "PRIVILEGES_REQUIRED_LOW"
-  | "PRIVILEGES_REQUIRED_HIGH";
+  | "PRIVILEGES_REQUIRED_HIGH"
+  | (string & {});
 export const CVSSv3PrivilegesRequiredEnum = /*@__PURE__*/ S.String;
 
 export type CVSSv3UserInteractionEnum =
   | "USER_INTERACTION_UNSPECIFIED"
   | "USER_INTERACTION_NONE"
-  | "USER_INTERACTION_REQUIRED";
+  | "USER_INTERACTION_REQUIRED"
+  | (string & {});
 export const CVSSv3UserInteractionEnum = /*@__PURE__*/ S.String;
 
 export type CVSSv3IntegrityImpactEnum =
   | "IMPACT_UNSPECIFIED"
   | "IMPACT_HIGH"
   | "IMPACT_LOW"
-  | "IMPACT_NONE";
+  | "IMPACT_NONE"
+  | (string & {});
 export const CVSSv3IntegrityImpactEnum = /*@__PURE__*/ S.String;
 
 export type CVSSv3ConfidentialityImpactEnum =
   | "IMPACT_UNSPECIFIED"
   | "IMPACT_HIGH"
   | "IMPACT_LOW"
-  | "IMPACT_NONE";
+  | "IMPACT_NONE"
+  | (string & {});
 export const CVSSv3ConfidentialityImpactEnum = /*@__PURE__*/ S.String;
 
 export type CVSSv3AttackComplexityEnum =
   | "ATTACK_COMPLEXITY_UNSPECIFIED"
   | "ATTACK_COMPLEXITY_LOW"
-  | "ATTACK_COMPLEXITY_HIGH";
+  | "ATTACK_COMPLEXITY_HIGH"
+  | (string & {});
 export const CVSSv3AttackComplexityEnum = /*@__PURE__*/ S.String;
 
 export type CVSSv3AttackVectorEnum =
@@ -515,20 +540,23 @@ export type CVSSv3AttackVectorEnum =
   | "ATTACK_VECTOR_NETWORK"
   | "ATTACK_VECTOR_ADJACENT"
   | "ATTACK_VECTOR_LOCAL"
-  | "ATTACK_VECTOR_PHYSICAL";
+  | "ATTACK_VECTOR_PHYSICAL"
+  | (string & {});
 export const CVSSv3AttackVectorEnum = /*@__PURE__*/ S.String;
 
 export type CVSSv3AvailabilityImpactEnum =
   | "IMPACT_UNSPECIFIED"
   | "IMPACT_HIGH"
   | "IMPACT_LOW"
-  | "IMPACT_NONE";
+  | "IMPACT_NONE"
+  | (string & {});
 export const CVSSv3AvailabilityImpactEnum = /*@__PURE__*/ S.String;
 
 export type CVSSv3ScopeEnum =
   | "SCOPE_UNSPECIFIED"
   | "SCOPE_UNCHANGED"
-  | "SCOPE_CHANGED";
+  | "SCOPE_CHANGED"
+  | (string & {});
 export const CVSSv3ScopeEnum = /*@__PURE__*/ S.String;
 
 /** Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document */
@@ -567,7 +595,8 @@ export type VulnerabilityNoteCvssVersionEnum =
   | "CVSS_VERSION_UNSPECIFIED"
   | "CVSS_VERSION_2"
   | "CVSS_VERSION_3"
-  | "CVSS_VERSION_4";
+  | "CVSS_VERSION_4"
+  | (string & {});
 export const VulnerabilityNoteCvssVersionEnum = /*@__PURE__*/ S.String;
 
 export interface KnowledgeBase {
@@ -680,13 +709,15 @@ export const License = /*@__PURE__*/ S.suspend(() =>
 export type PackageNoteArchitectureEnum =
   | "ARCHITECTURE_UNSPECIFIED"
   | "X86"
-  | "X64";
+  | "X64"
+  | (string & {});
 export const PackageNoteArchitectureEnum = /*@__PURE__*/ S.String;
 
 export type DistributionArchitectureEnum =
   | "ARCHITECTURE_UNSPECIFIED"
   | "X86"
-  | "X64";
+  | "X64"
+  | (string & {});
 export const DistributionArchitectureEnum = /*@__PURE__*/ S.String;
 
 /** This represents a particular channel of distribution for a given package. E.g., Debian's jessie-backports dpkg mirror. */
@@ -844,7 +875,8 @@ export type JustificationJustificationTypeEnum =
   | "VULNERABLE_CODE_NOT_PRESENT"
   | "VULNERABLE_CODE_NOT_IN_EXECUTE_PATH"
   | "VULNERABLE_CODE_CANNOT_BE_CONTROLLED_BY_ADVERSARY"
-  | "INLINE_MITIGATIONS_ALREADY_EXIST";
+  | "INLINE_MITIGATIONS_ALREADY_EXIST"
+  | (string & {});
 export const JustificationJustificationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Justification provides the justification when the state of the assessment if NOT_AFFECTED. */
@@ -866,7 +898,8 @@ export type AssessmentStateEnum =
   | "AFFECTED"
   | "NOT_AFFECTED"
   | "FIXED"
-  | "UNDER_INVESTIGATION";
+  | "UNDER_INVESTIGATION"
+  | (string & {});
 export const AssessmentStateEnum = /*@__PURE__*/ S.String;
 
 export type RemediationRemediationTypeEnum =
@@ -875,7 +908,8 @@ export type RemediationRemediationTypeEnum =
   | "NO_FIX_PLANNED"
   | "NONE_AVAILABLE"
   | "VENDOR_FIX"
-  | "WORKAROUND";
+  | "WORKAROUND"
+  | (string & {});
 export const RemediationRemediationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies details on how to handle (and presumably, fix) a vulnerability. */
@@ -980,7 +1014,8 @@ export type CisBenchmarkSeverityEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "CRITICAL";
+  | "CRITICAL"
+  | (string & {});
 export const CisBenchmarkSeverityEnum = /*@__PURE__*/ S.String;
 
 /** A compliance check that is a CIS benchmark. */
@@ -1063,7 +1098,8 @@ export type DiscoveryNoteAnalysisKindEnum =
   | "VULNERABILITY_ASSESSMENT"
   | "SBOM_REFERENCE"
   | "SECRET"
-  | "AI_SKILL_ANALYSIS";
+  | "AI_SKILL_ANALYSIS"
+  | (string & {});
 export const DiscoveryNoteAnalysisKindEnum = /*@__PURE__*/ S.String;
 
 /** A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis. */
@@ -1351,7 +1387,11 @@ export const BatchCreateNotesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchCreateNotesResponse",
 }) as any as S.Schema<BatchCreateNotesResponse>;
 
-export type FindingSeverityEnum = "SEVERITY_UNSPECIFIED" | "CRITICAL" | "HIGH";
+export type FindingSeverityEnum =
+  | "SEVERITY_UNSPECIFIED"
+  | "CRITICAL"
+  | "HIGH"
+  | (string & {});
 export const FindingSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Location details with file path and line number. */
@@ -1375,7 +1415,8 @@ export type FindingScannerEnum =
   | "STATIC"
   | "LLM"
   | "WS_POLICY"
-  | "GOOGLE_ANTIVIRUS";
+  | "GOOGLE_ANTIVIRUS"
+  | (string & {});
 export const FindingScannerEnum = /*@__PURE__*/ S.String;
 
 /** Finding provides details for a single finding within an AISkillAnalysisOccurrence. */
@@ -1409,7 +1450,8 @@ export const FindingList = /*@__PURE__*/ S.Array(
 export type AISkillAnalysisOccurrenceMaxSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "CRITICAL"
-  | "HIGH";
+  | "HIGH"
+  | (string & {});
 export const AISkillAnalysisOccurrenceMaxSeverityEnum = /*@__PURE__*/ S.String;
 
 /** AISkillAnalysisOccurrence provides the results of an AI-based skill analysis. */
@@ -1438,7 +1480,8 @@ export type DiscoveryOccurrenceAnalysisStatusEnum =
   | "FINISHED_SUCCESS"
   | "COMPLETE"
   | "FINISHED_FAILED"
-  | "FINISHED_UNSUPPORTED";
+  | "FINISHED_UNSUPPORTED"
+  | (string & {});
 export const DiscoveryOccurrenceAnalysisStatusEnum = /*@__PURE__*/ S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
@@ -1477,7 +1520,8 @@ export const StatusList = /*@__PURE__*/ S.Array(
 export type SBOMStatusSbomStateEnum =
   | "SBOM_STATE_UNSPECIFIED"
   | "PENDING"
-  | "COMPLETE";
+  | "COMPLETE"
+  | (string & {});
 export const SBOMStatusSbomStateEnum = /*@__PURE__*/ S.String;
 
 /** The status of an SBOM generation. */
@@ -1519,7 +1563,8 @@ export const FileList = /*@__PURE__*/ S.Array(
 export type DiscoveryOccurrenceContinuousAnalysisEnum =
   | "CONTINUOUS_ANALYSIS_UNSPECIFIED"
   | "ACTIVE"
-  | "INACTIVE";
+  | "INACTIVE"
+  | (string & {});
 export const DiscoveryOccurrenceContinuousAnalysisEnum = /*@__PURE__*/ S.String;
 
 /** Indicates which analysis completed successfully. Multiple types of analysis can be performed on a single resource. */
@@ -1672,14 +1717,16 @@ export type SecretOccurrenceKindEnum =
   | "SECRET_KIND_PERPLEXITY_API_KEY"
   | "SECRET_KIND_STRIPE_SECRET_KEY"
   | "SECRET_KIND_STRIPE_RESTRICTED_KEY"
-  | "SECRET_KIND_STRIPE_WEBHOOK_SECRET";
+  | "SECRET_KIND_STRIPE_WEBHOOK_SECRET"
+  | (string & {});
 export const SecretOccurrenceKindEnum = /*@__PURE__*/ S.String;
 
 export type SecretStatusStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "UNKNOWN"
   | "VALID"
-  | "INVALID";
+  | "INVALID"
+  | (string & {});
 export const SecretStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** The status of the secret with a timestamp. */
@@ -2332,7 +2379,8 @@ export type OccurrenceKindEnum =
   | "VULNERABILITY_ASSESSMENT"
   | "SBOM_REFERENCE"
   | "SECRET"
-  | "AI_SKILL_ANALYSIS";
+  | "AI_SKILL_ANALYSIS"
+  | (string & {});
 export const OccurrenceKindEnum = /*@__PURE__*/ S.String;
 
 export type VulnerabilityOccurrenceSeverityEnum =
@@ -2341,7 +2389,8 @@ export type VulnerabilityOccurrenceSeverityEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "CRITICAL";
+  | "CRITICAL"
+  | (string & {});
 export const VulnerabilityOccurrenceSeverityEnum = /*@__PURE__*/ S.String;
 
 export type VulnerabilityOccurrenceEffectiveSeverityEnum =
@@ -2350,7 +2399,8 @@ export type VulnerabilityOccurrenceEffectiveSeverityEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "CRITICAL";
+  | "CRITICAL"
+  | (string & {});
 export const VulnerabilityOccurrenceEffectiveSeverityEnum =
   /*@__PURE__*/ S.String;
 
@@ -2358,7 +2408,8 @@ export type VulnerabilityOccurrenceCvssVersionEnum =
   | "CVSS_VERSION_UNSPECIFIED"
   | "CVSS_VERSION_2"
   | "CVSS_VERSION_3"
-  | "CVSS_VERSION_4";
+  | "CVSS_VERSION_4"
+  | (string & {});
 export const VulnerabilityOccurrenceCvssVersionEnum = /*@__PURE__*/ S.String;
 
 export type VexAssessmentStateEnum =
@@ -2366,7 +2417,8 @@ export type VexAssessmentStateEnum =
   | "AFFECTED"
   | "NOT_AFFECTED"
   | "FIXED"
-  | "UNDER_INVESTIGATION";
+  | "UNDER_INVESTIGATION"
+  | (string & {});
 export const VexAssessmentStateEnum = /*@__PURE__*/ S.String;
 
 /** VexAssessment provides all publisher provided Vex information that is related to this vulnerability. */
@@ -2452,7 +2504,8 @@ export type PackageIssueEffectiveSeverityEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "CRITICAL";
+  | "CRITICAL"
+  | (string & {});
 export const PackageIssueEffectiveSeverityEnum = /*@__PURE__*/ S.String;
 
 /** A detail for a distro and package this vulnerability occurrence was found in and its associated fix (if one is available). */
@@ -2634,7 +2687,8 @@ export type AliasContextKindEnum =
   | "KIND_UNSPECIFIED"
   | "FIXED"
   | "MOVABLE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const AliasContextKindEnum = /*@__PURE__*/ S.String;
 
 /** An alias to a repo revision. */
@@ -3012,7 +3066,8 @@ export const LocationList = /*@__PURE__*/ S.Array(
 export type PackageOccurrenceArchitectureEnum =
   | "ARCHITECTURE_UNSPECIFIED"
   | "X86"
-  | "X64";
+  | "X64"
+  | (string & {});
 export const PackageOccurrenceArchitectureEnum = /*@__PURE__*/ S.String;
 
 /** Details on how a particular software package was installed on a system. */
@@ -3101,7 +3156,8 @@ export type DeploymentOccurrencePlatformEnum =
   | "PLATFORM_UNSPECIFIED"
   | "GKE"
   | "FLEX"
-  | "CUSTOM";
+  | "CUSTOM"
+  | (string & {});
 export const DeploymentOccurrencePlatformEnum = /*@__PURE__*/ S.String;
 
 /** The period during which some deployable was active in a runtime. */
@@ -3865,7 +3921,8 @@ export type FixableTotalByDigestSeverityEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "CRITICAL";
+  | "CRITICAL"
+  | (string & {});
 export const FixableTotalByDigestSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Per resource and severity counts of fixable and total vulnerabilities. */

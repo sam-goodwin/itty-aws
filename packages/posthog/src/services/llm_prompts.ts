@@ -53,10 +53,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -158,7 +159,11 @@ export const LLMPrompt = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LLMPrompt" }) as any as S.Schema<LLMPrompt>;
 
-export type LlmPromptsListRequestContent = "full" | "preview" | "none";
+export type LlmPromptsListRequestContent =
+  | "full"
+  | "preview"
+  | "none"
+  | (string & {});
 export const LlmPromptsListRequestContent = /*@__PURE__*/ S.String;
 
 export interface LlmPromptsListRequest {
@@ -483,7 +488,11 @@ export const LlmPromptsNamePartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LlmPromptsNamePartialUpdateRequest",
 }) as any as S.Schema<LlmPromptsNamePartialUpdateRequest>;
 
-export type LlmPromptsNameRetrieveRequestContent = "full" | "preview" | "none";
+export type LlmPromptsNameRetrieveRequestContent =
+  | "full"
+  | "preview"
+  | "none"
+  | (string & {});
 export const LlmPromptsNameRetrieveRequestContent = /*@__PURE__*/ S.String;
 
 export interface LlmPromptsNameRetrieveRequest {

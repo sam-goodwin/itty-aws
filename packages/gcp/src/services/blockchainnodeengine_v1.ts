@@ -113,7 +113,8 @@ export type BlockchainNodeStateEnum =
   | "UPDATING"
   | "REPAIRING"
   | "RECONCILING"
-  | "SYNCING";
+  | "SYNCING"
+  | (string & {});
 export const BlockchainNodeStateEnum = /*@__PURE__*/ S.String;
 
 /** Contains endpoint information through which to interact with a blockchain node. */
@@ -146,13 +147,15 @@ export const ConnectionInfo = /*@__PURE__*/ S.suspend(() =>
 
 export type BlockchainNodeBlockchainTypeEnum =
   | "BLOCKCHAIN_TYPE_UNSPECIFIED"
-  | "ETHEREUM";
+  | "ETHEREUM"
+  | (string & {});
 export const BlockchainNodeBlockchainTypeEnum = /*@__PURE__*/ S.String;
 
 export type EthereumDetailsConsensusClientEnum =
   | "CONSENSUS_CLIENT_UNSPECIFIED"
   | "LIGHTHOUSE"
-  | "ERIGON_EMBEDDED_CONSENSUS_LAYER";
+  | "ERIGON_EMBEDDED_CONSENSUS_LAYER"
+  | (string & {});
 export const EthereumDetailsConsensusClientEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -183,19 +186,22 @@ export type EthereumDetailsNodeTypeEnum =
   | "NODE_TYPE_UNSPECIFIED"
   | "LIGHT"
   | "FULL"
-  | "ARCHIVE";
+  | "ARCHIVE"
+  | (string & {});
 export const EthereumDetailsNodeTypeEnum = /*@__PURE__*/ S.String;
 
 export type EthereumDetailsExecutionClientEnum =
   | "EXECUTION_CLIENT_UNSPECIFIED"
   | "GETH"
-  | "ERIGON";
+  | "ERIGON"
+  | (string & {});
 export const EthereumDetailsExecutionClientEnum = /*@__PURE__*/ S.String;
 
 export type GethDetailsGarbageCollectionModeEnum =
   | "GARBAGE_COLLECTION_MODE_UNSPECIFIED"
   | "FULL"
-  | "ARCHIVE";
+  | "ARCHIVE"
+  | (string & {});
 export const GethDetailsGarbageCollectionModeEnum = /*@__PURE__*/ S.String;
 
 /** Options for the Geth execution client. See [Command-line Options](https://geth.ethereum.org/docs/fundamentals/command-line-options) for more details. */
@@ -214,7 +220,8 @@ export type EthereumDetailsNetworkEnum =
   | "MAINNET"
   | "TESTNET_GOERLI_PRATER"
   | "TESTNET_SEPOLIA"
-  | "TESTNET_HOLESKY";
+  | "TESTNET_HOLESKY"
+  | (string & {});
 export const EthereumDetailsNetworkEnum = /*@__PURE__*/ S.String;
 
 /** Contains endpoint information specific to Ethereum nodes. */

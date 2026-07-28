@@ -99,7 +99,8 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
 export type BinaryAuthorizationEvaluationModeEnum =
   | "EVALUATION_MODE_UNSPECIFIED"
   | "DISABLED"
-  | "PROJECT_SINGLETON_POLICY_ENFORCE";
+  | "PROJECT_SINGLETON_POLICY_ENFORCE"
+  | (string & {});
 export const BinaryAuthorizationEvaluationModeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for Binary Authorization. */
@@ -198,7 +199,8 @@ export const BareMetalKubeletConfig = /*@__PURE__*/ S.suspend(() =>
 
 export type BareMetalNodePoolConfigOperatingSystemEnum =
   | "OPERATING_SYSTEM_UNSPECIFIED"
-  | "LINUX";
+  | "LINUX"
+  | (string & {});
 export const BareMetalNodePoolConfigOperatingSystemEnum =
   /*@__PURE__*/ S.String;
 
@@ -206,7 +208,8 @@ export type NodeTaintEffectEnum =
   | "EFFECT_UNSPECIFIED"
   | "NO_SCHEDULE"
   | "PREFER_NO_SCHEDULE"
-  | "NO_EXECUTE";
+  | "NO_EXECUTE"
+  | (string & {});
 export const NodeTaintEffectEnum = /*@__PURE__*/ S.String;
 
 /** NodeTaint applied to every Kubernetes node in a node pool. Kubernetes taints can be used together with tolerations to control how workloads are scheduled to your nodes. Node taints are permanent. */
@@ -675,7 +678,8 @@ export type ResourceConditionStateEnum =
   | "STATE_UNSPECIFIED"
   | "STATE_TRUE"
   | "STATE_FALSE"
-  | "STATE_UNKNOWN";
+  | "STATE_UNKNOWN"
+  | (string & {});
 export const ResourceConditionStateEnum = /*@__PURE__*/ S.String;
 
 /** ResourceCondition provides a standard mechanism for higher-level status reporting from controller. */
@@ -735,7 +739,8 @@ export type BareMetalAdminClusterStateEnum =
   | "RECONCILING"
   | "STOPPING"
   | "ERROR"
-  | "DEGRADED";
+  | "DEGRADED"
+  | (string & {});
 export const BareMetalAdminClusterStateEnum = /*@__PURE__*/ S.String;
 
 /** BareMetalAdminClusterOperationsConfig specifies the admin cluster's observability infrastructure. */
@@ -795,7 +800,8 @@ export const BareMetalAdminWorkloadNodeConfig = /*@__PURE__*/ S.suspend(() =>
 export type ValidationCheckOptionEnum =
   | "OPTIONS_UNSPECIFIED"
   | "SKIP_VALIDATION_CHECK_BLOCKING"
-  | "SKIP_VALIDATION_ALL";
+  | "SKIP_VALIDATION_ALL"
+  | (string & {});
 export const ValidationCheckOptionEnum = /*@__PURE__*/ S.String;
 
 export type ValidationCheckResultStateEnum =
@@ -803,7 +809,8 @@ export type ValidationCheckResultStateEnum =
   | "STATE_FAILURE"
   | "STATE_SKIPPED"
   | "STATE_FATAL"
-  | "STATE_WARNING";
+  | "STATE_WARNING"
+  | (string & {});
 export const ValidationCheckResultStateEnum = /*@__PURE__*/ S.String;
 
 /** ValidationCheckResult defines the details about the validation check. */
@@ -852,7 +859,8 @@ export const ValidationCheckStatus = /*@__PURE__*/ S.suspend(() =>
 export type ValidationCheckScenarioEnum =
   | "SCENARIO_UNSPECIFIED"
   | "CREATE"
-  | "UPDATE";
+  | "UPDATE"
+  | (string & {});
 export const ValidationCheckScenarioEnum = /*@__PURE__*/ S.String;
 
 /** ValidationCheck represents the result of preflight check. */
@@ -1129,12 +1137,14 @@ export type BareMetalClusterStateEnum =
   | "RECONCILING"
   | "STOPPING"
   | "ERROR"
-  | "DEGRADED";
+  | "DEGRADED"
+  | (string & {});
 export const BareMetalClusterStateEnum = /*@__PURE__*/ S.String;
 
 export type BareMetalWorkloadNodeConfigContainerRuntimeEnum =
   | "CONTAINER_RUNTIME_UNSPECIFIED"
-  | "CONTAINERD";
+  | "CONTAINERD"
+  | (string & {});
 export const BareMetalWorkloadNodeConfigContainerRuntimeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1172,7 +1182,8 @@ export const BareMetalSecurityConfig = /*@__PURE__*/ S.suspend(() =>
 export type BareMetalClusterUpgradePolicyPolicyEnum =
   | "NODE_POOL_POLICY_UNSPECIFIED"
   | "SERIAL"
-  | "CONCURRENT";
+  | "CONCURRENT"
+  | (string & {});
 export const BareMetalClusterUpgradePolicyPolicyEnum = /*@__PURE__*/ S.String;
 
 /** BareMetalClusterUpgradePolicy defines the cluster upgrade policy. */
@@ -1780,7 +1791,8 @@ export type BareMetalNodePoolStateEnum =
   | "RECONCILING"
   | "STOPPING"
   | "ERROR"
-  | "DEGRADED";
+  | "DEGRADED"
+  | (string & {});
 export const BareMetalNodePoolStateEnum = /*@__PURE__*/ S.String;
 
 /** Resource that represents a bare metal node pool. */
@@ -2319,7 +2331,8 @@ export type VmwareAdminClusterStateEnum =
   | "RECONCILING"
   | "STOPPING"
   | "ERROR"
-  | "DEGRADED";
+  | "DEGRADED"
+  | (string & {});
 export const VmwareAdminClusterStateEnum = /*@__PURE__*/ S.String;
 
 /** VmwareAdminAuthorizationConfig represents configuration for admin cluster authorization. */
@@ -2793,7 +2806,8 @@ export type VmwareClusterStateEnum =
   | "RECONCILING"
   | "STOPPING"
   | "ERROR"
-  | "DEGRADED";
+  | "DEGRADED"
+  | (string & {});
 export const VmwareClusterStateEnum = /*@__PURE__*/ S.String;
 
 /** Resource that represents a VMware user cluster. ## */
@@ -2944,7 +2958,8 @@ export type VmwareNodePoolStateEnum =
   | "RECONCILING"
   | "STOPPING"
   | "ERROR"
-  | "DEGRADED";
+  | "DEGRADED"
+  | (string & {});
 export const VmwareNodePoolStateEnum = /*@__PURE__*/ S.String;
 
 /** NodePoolAutoscaling config for the NodePool to allow for the kubernetes to scale NodePool. */
@@ -3746,7 +3761,8 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsBareMetalAdminClustersViewEnum =
   | "CLUSTER_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetProjectsLocationsBareMetalAdminClustersViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3799,7 +3815,8 @@ export const GetProjectsLocationsBareMetalAdminClustersOperationsRequest =
 export type GetProjectsLocationsBareMetalClustersViewEnum =
   | "CLUSTER_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetProjectsLocationsBareMetalClustersViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3833,7 +3850,8 @@ export const GetProjectsLocationsBareMetalClustersRequest =
 export type GetProjectsLocationsBareMetalClustersBareMetalNodePoolsViewEnum =
   | "NODE_POOL_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetProjectsLocationsBareMetalClustersBareMetalNodePoolsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3925,7 +3943,8 @@ export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 export type GetProjectsLocationsVmwareAdminClustersViewEnum =
   | "CLUSTER_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetProjectsLocationsVmwareAdminClustersViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3978,7 +3997,8 @@ export const GetProjectsLocationsVmwareAdminClustersOperationsRequest =
 export type GetProjectsLocationsVmwareClustersViewEnum =
   | "CLUSTER_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetProjectsLocationsVmwareClustersViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4031,7 +4051,8 @@ export const GetProjectsLocationsVmwareClustersOperationsRequest =
 export type GetProjectsLocationsVmwareClustersVmwareNodePoolsViewEnum =
   | "NODE_POOL_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetProjectsLocationsVmwareClustersVmwareNodePoolsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4135,7 +4156,8 @@ export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsBareMetalAdminClustersViewEnum =
   | "CLUSTER_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListProjectsLocationsBareMetalAdminClustersViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4254,7 +4276,8 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsBareMetalClustersViewEnum =
   | "CLUSTER_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListProjectsLocationsBareMetalClustersViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4321,7 +4344,8 @@ export const ListBareMetalClustersResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsBareMetalClustersBareMetalNodePoolsViewEnum =
   | "NODE_POOL_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListProjectsLocationsBareMetalClustersBareMetalNodePoolsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4479,7 +4503,8 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 export type ListProjectsLocationsVmwareAdminClustersViewEnum =
   | "CLUSTER_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListProjectsLocationsVmwareAdminClustersViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4574,7 +4599,8 @@ export const ListProjectsLocationsVmwareAdminClustersOperationsRequest =
 export type ListProjectsLocationsVmwareClustersViewEnum =
   | "CLUSTER_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListProjectsLocationsVmwareClustersViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4672,7 +4698,8 @@ export const ListProjectsLocationsVmwareClustersOperationsRequest =
 export type ListProjectsLocationsVmwareClustersVmwareNodePoolsViewEnum =
   | "NODE_POOL_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListProjectsLocationsVmwareClustersVmwareNodePoolsViewEnum =
   /*@__PURE__*/ S.String;
 

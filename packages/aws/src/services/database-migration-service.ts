@@ -632,7 +632,11 @@ export const CancelReplicationTaskAssessmentRunResponse =
   ).annotate({
     identifier: "CancelReplicationTaskAssessmentRunResponse",
   }) as any as S.Schema<CancelReplicationTaskAssessmentRunResponse>;
-export type MigrationTypeValue = "full-load" | "cdc" | "full-load-and-cdc";
+export type MigrationTypeValue =
+  | "full-load"
+  | "cdc"
+  | "full-load-and-cdc"
+  | (string & {});
 export const MigrationTypeValue = /*@__PURE__*/ S.String;
 
 export type Iso8601DateTime = Date;
@@ -661,7 +665,8 @@ export const SourceDataSettings = /*@__PURE__*/ S.Array(SourceDataSetting);
 export type TablePreparationMode =
   | "do-nothing"
   | "truncate"
-  | "drop-tables-on-target";
+  | "drop-tables-on-target"
+  | (string & {});
 export const TablePreparationMode = /*@__PURE__*/ S.String;
 
 export interface TargetDataSetting {
@@ -831,7 +836,12 @@ export const RedshiftDataProviderSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RedshiftDataProviderSettings",
 }) as any as S.Schema<RedshiftDataProviderSettings>;
-export type DmsSslModeValue = "none" | "require" | "verify-ca" | "verify-full";
+export type DmsSslModeValue =
+  | "none"
+  | "require"
+  | "verify-ca"
+  | "verify-full"
+  | (string & {});
 export const DmsSslModeValue = /*@__PURE__*/ S.String;
 
 export interface PostgreSqlDataProviderSettings {
@@ -1037,10 +1047,14 @@ export const IbmDb2zOsDataProviderSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IbmDb2zOsDataProviderSettings",
 }) as any as S.Schema<IbmDb2zOsDataProviderSettings>;
-export type AuthTypeValue = "no" | "password";
+export type AuthTypeValue = "no" | "password" | (string & {});
 export const AuthTypeValue = /*@__PURE__*/ S.String;
 
-export type AuthMechanismValue = "default" | "mongodb_cr" | "scram_sha_1";
+export type AuthMechanismValue =
+  | "default"
+  | "mongodb_cr"
+  | "scram_sha_1"
+  | (string & {});
 export const AuthMechanismValue = /*@__PURE__*/ S.String;
 
 export interface MongoDbDataProviderSettings {
@@ -1286,7 +1300,7 @@ export const CreateDataProviderResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDataProviderResponse",
 }) as any as S.Schema<CreateDataProviderResponse>;
-export type ReplicationEndpointTypeValue = "source" | "target";
+export type ReplicationEndpointTypeValue = "source" | "target" | (string & {});
 export const ReplicationEndpointTypeValue = /*@__PURE__*/ S.String;
 
 export interface DynamoDbSettings {
@@ -1297,19 +1311,23 @@ export const DynamoDbSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DynamoDbSettings",
 }) as any as S.Schema<DynamoDbSettings>;
-export type CompressionTypeValue = "none" | "gzip";
+export type CompressionTypeValue = "none" | "gzip" | (string & {});
 export const CompressionTypeValue = /*@__PURE__*/ S.String;
 
-export type EncryptionModeValue = "sse-s3" | "sse-kms";
+export type EncryptionModeValue = "sse-s3" | "sse-kms" | (string & {});
 export const EncryptionModeValue = /*@__PURE__*/ S.String;
 
-export type DataFormatValue = "csv" | "parquet";
+export type DataFormatValue = "csv" | "parquet" | (string & {});
 export const DataFormatValue = /*@__PURE__*/ S.String;
 
-export type EncodingTypeValue = "plain" | "plain-dictionary" | "rle-dictionary";
+export type EncodingTypeValue =
+  | "plain"
+  | "plain-dictionary"
+  | "rle-dictionary"
+  | (string & {});
 export const EncodingTypeValue = /*@__PURE__*/ S.String;
 
-export type ParquetVersionValue = "parquet-1-0" | "parquet-2-0";
+export type ParquetVersionValue = "parquet-1-0" | "parquet-2-0" | (string & {});
 export const ParquetVersionValue = /*@__PURE__*/ S.String;
 
 export type DatePartitionSequenceValue =
@@ -1317,14 +1335,16 @@ export type DatePartitionSequenceValue =
   | "YYYYMMDDHH"
   | "YYYYMM"
   | "MMYYYYDD"
-  | "DDMMYYYY";
+  | "DDMMYYYY"
+  | (string & {});
 export const DatePartitionSequenceValue = /*@__PURE__*/ S.String;
 
 export type DatePartitionDelimiterValue =
   | "SLASH"
   | "UNDERSCORE"
   | "DASH"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const DatePartitionDelimiterValue = /*@__PURE__*/ S.String;
 
 export type CannedAclForObjectsValue =
@@ -1335,7 +1355,8 @@ export type CannedAclForObjectsValue =
   | "authenticated-read"
   | "aws-exec-read"
   | "bucket-owner-read"
-  | "bucket-owner-full-control";
+  | "bucket-owner-full-control"
+  | (string & {});
 export const CannedAclForObjectsValue = /*@__PURE__*/ S.String;
 
 export interface S3Settings {
@@ -1438,7 +1459,7 @@ export const DmsTransferSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DmsTransferSettings",
 }) as any as S.Schema<DmsTransferSettings>;
-export type NestingLevelValue = "none" | "one";
+export type NestingLevelValue = "none" | "one" | (string & {});
 export const NestingLevelValue = /*@__PURE__*/ S.String;
 
 export interface MongoDbSettings {
@@ -1481,7 +1502,7 @@ export const MongoDbSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MongoDbSettings",
 }) as any as S.Schema<MongoDbSettings>;
-export type MessageFormatValue = "json" | "json-unformatted";
+export type MessageFormatValue = "json" | "json-unformatted" | (string & {});
 export const MessageFormatValue = /*@__PURE__*/ S.String;
 
 export interface KinesisSettings {
@@ -1518,13 +1539,17 @@ export type KafkaSecurityProtocol =
   | "plaintext"
   | "ssl-authentication"
   | "ssl-encryption"
-  | "sasl-ssl";
+  | "sasl-ssl"
+  | (string & {});
 export const KafkaSecurityProtocol = /*@__PURE__*/ S.String;
 
-export type KafkaSaslMechanism = "scram-sha-512" | "plain";
+export type KafkaSaslMechanism = "scram-sha-512" | "plain" | (string & {});
 export const KafkaSaslMechanism = /*@__PURE__*/ S.String;
 
-export type KafkaSslEndpointIdentificationAlgorithm = "none" | "https";
+export type KafkaSslEndpointIdentificationAlgorithm =
+  | "none"
+  | "https"
+  | (string & {});
 export const KafkaSslEndpointIdentificationAlgorithm = /*@__PURE__*/ S.String;
 
 export interface KafkaSettings {
@@ -1687,16 +1712,24 @@ export const RedshiftSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RedshiftSettings",
 }) as any as S.Schema<RedshiftSettings>;
-export type PluginNameValue = "no-preference" | "test-decoding" | "pglogical";
+export type PluginNameValue =
+  | "no-preference"
+  | "test-decoding"
+  | "pglogical"
+  | (string & {});
 export const PluginNameValue = /*@__PURE__*/ S.String;
 
-export type LongVarcharMappingType = "wstring" | "clob" | "nclob";
+export type LongVarcharMappingType =
+  | "wstring"
+  | "clob"
+  | "nclob"
+  | (string & {});
 export const LongVarcharMappingType = /*@__PURE__*/ S.String;
 
-export type DatabaseMode = "default" | "babelfish";
+export type DatabaseMode = "default" | "babelfish" | (string & {});
 export const DatabaseMode = /*@__PURE__*/ S.String;
 
-export type PostgreSQLAuthenticationMethod = "password" | "iam";
+export type PostgreSQLAuthenticationMethod = "password" | "iam" | (string & {});
 export const PostgreSQLAuthenticationMethod = /*@__PURE__*/ S.String;
 
 export interface PostgreSQLSettings {
@@ -1761,10 +1794,13 @@ export const PostgreSQLSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PostgreSQLSettings",
 }) as any as S.Schema<PostgreSQLSettings>;
-export type TargetDbType = "specific-database" | "multiple-databases";
+export type TargetDbType =
+  | "specific-database"
+  | "multiple-databases"
+  | (string & {});
 export const TargetDbType = /*@__PURE__*/ S.String;
 
-export type MySQLAuthenticationMethod = "password" | "iam";
+export type MySQLAuthenticationMethod = "password" | "iam" | (string & {});
 export const MySQLAuthenticationMethod = /*@__PURE__*/ S.String;
 
 export interface MySQLSettings {
@@ -1809,10 +1845,13 @@ export const MySQLSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MySQLSettings" }) as any as S.Schema<MySQLSettings>;
 export type IntegerList = number[];
 export const IntegerList = /*@__PURE__*/ S.Array(S.Number);
-export type CharLengthSemantics = "default" | "char" | "byte";
+export type CharLengthSemantics = "default" | "char" | "byte" | (string & {});
 export const CharLengthSemantics = /*@__PURE__*/ S.String;
 
-export type OracleAuthenticationMethod = "password" | "kerberos";
+export type OracleAuthenticationMethod =
+  | "password"
+  | "kerberos"
+  | (string & {});
 export const OracleAuthenticationMethod = /*@__PURE__*/ S.String;
 
 export interface OracleSettings {
@@ -1932,17 +1971,22 @@ export const SybaseSettings = /*@__PURE__*/ S.suspend(() =>
 export type SafeguardPolicy =
   | "rely-on-sql-server-replication-agent"
   | "exclusive-automatic-truncation"
-  | "shared-automatic-truncation";
+  | "shared-automatic-truncation"
+  | (string & {});
 export const SafeguardPolicy = /*@__PURE__*/ S.String;
 
 export type TlogAccessMode =
   | "BackupOnly"
   | "PreferBackup"
   | "PreferTlog"
-  | "TlogOnly";
+  | "TlogOnly"
+  | (string & {});
 export const TlogAccessMode = /*@__PURE__*/ S.String;
 
-export type SqlServerAuthenticationMethod = "password" | "kerberos";
+export type SqlServerAuthenticationMethod =
+  | "password"
+  | "kerberos"
+  | (string & {});
 export const SqlServerAuthenticationMethod = /*@__PURE__*/ S.String;
 
 export interface MicrosoftSQLServerSettings {
@@ -2055,10 +2099,17 @@ export const DocDbSettings = /*@__PURE__*/ S.suspend(() =>
     ReplicateShardCollections: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "DocDbSettings" }) as any as S.Schema<DocDbSettings>;
-export type SslSecurityProtocolValue = "plaintext" | "ssl-encryption";
+export type SslSecurityProtocolValue =
+  | "plaintext"
+  | "ssl-encryption"
+  | (string & {});
 export const SslSecurityProtocolValue = /*@__PURE__*/ S.String;
 
-export type RedisAuthTypeValue = "none" | "auth-role" | "auth-token";
+export type RedisAuthTypeValue =
+  | "none"
+  | "auth-role"
+  | "auth-token"
+  | (string & {});
 export const RedisAuthTypeValue = /*@__PURE__*/ S.String;
 
 export interface RedisSettings {
@@ -3982,7 +4033,8 @@ export type EndpointSettingTypeValue =
   | "string"
   | "boolean"
   | "integer"
-  | "enum";
+  | "enum"
+  | (string & {});
 export const EndpointSettingTypeValue = /*@__PURE__*/ S.String;
 
 export type EndpointSettingEnumValues = string[];
@@ -4109,7 +4161,7 @@ export const DescribeEngineVersionsMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEngineVersionsMessage",
 }) as any as S.Schema<DescribeEngineVersionsMessage>;
-export type ReleaseStatusValues = "beta" | "prod";
+export type ReleaseStatusValues = "beta" | "prod" | (string & {});
 export const ReleaseStatusValues = /*@__PURE__*/ S.String;
 
 export type AvailableUpgradesList = string[];
@@ -4210,7 +4262,7 @@ export const DescribeEventCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEventCategoriesResponse",
 }) as any as S.Schema<DescribeEventCategoriesResponse>;
-export type SourceType = "replication-instance";
+export type SourceType = "replication-instance" | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
 
 export interface DescribeEventsMessage {
@@ -4394,10 +4446,14 @@ export const DescribeFleetAdvisorCollectorsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeFleetAdvisorCollectorsRequest",
 }) as any as S.Schema<DescribeFleetAdvisorCollectorsRequest>;
-export type VersionStatus = "UP_TO_DATE" | "OUTDATED" | "UNSUPPORTED";
+export type VersionStatus =
+  | "UP_TO_DATE"
+  | "OUTDATED"
+  | "UNSUPPORTED"
+  | (string & {});
 export const VersionStatus = /*@__PURE__*/ S.String;
 
-export type CollectorStatus = "UNREGISTERED" | "ACTIVE";
+export type CollectorStatus = "UNREGISTERED" | "ACTIVE" | (string & {});
 export const CollectorStatus = /*@__PURE__*/ S.String;
 
 export interface CollectorHealthCheck {
@@ -4839,7 +4895,7 @@ export const DescribeInstanceProfilesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeInstanceProfilesResponse",
 }) as any as S.Schema<DescribeInstanceProfilesResponse>;
-export type OriginTypeValue = "SOURCE" | "TARGET";
+export type OriginTypeValue = "SOURCE" | "TARGET" | (string & {});
 export const OriginTypeValue = /*@__PURE__*/ S.String;
 
 export interface DescribeMetadataModelMessage {
@@ -5544,7 +5600,8 @@ export const DescribeRefreshSchemasStatusMessage = /*@__PURE__*/ S.suspend(() =>
 export type RefreshSchemasStatusTypeValue =
   | "successful"
   | "failed"
-  | "refreshing";
+  | "refreshing"
+  | (string & {});
 export const RefreshSchemasStatusTypeValue = /*@__PURE__*/ S.String;
 
 export interface RefreshSchemasStatus {
@@ -6376,7 +6433,7 @@ export const DescribeTableStatisticsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTableStatisticsResponse",
 }) as any as S.Schema<DescribeTableStatisticsResponse>;
-export type AssessmentReportType = "pdf" | "csv";
+export type AssessmentReportType = "pdf" | "csv" | (string & {});
 export const AssessmentReportType = /*@__PURE__*/ S.String;
 
 export type AssessmentReportTypesList = AssessmentReportType[];
@@ -7141,7 +7198,7 @@ export const TableToReload = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TableToReload" }) as any as S.Schema<TableToReload>;
 export type TableListToReload = TableToReload[];
 export const TableListToReload = /*@__PURE__*/ S.Array(TableToReload);
-export type ReloadOptionValue = "data-reload" | "validate-only";
+export type ReloadOptionValue = "data-reload" | "validate-only" | (string & {});
 export const ReloadOptionValue = /*@__PURE__*/ S.String;
 
 export interface ReloadReplicationTablesMessage {
@@ -7266,7 +7323,8 @@ export const RunFleetAdvisorLsaAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
 export type StartReplicationMigrationTypeValue =
   | "reload-target"
   | "resume-processing"
-  | "start-replication";
+  | "start-replication"
+  | (string & {});
 export const StartReplicationMigrationTypeValue = /*@__PURE__*/ S.String;
 
 export interface StartDataMigrationMessage {
@@ -7602,7 +7660,8 @@ export const StartReplicationResponse = /*@__PURE__*/ S.suspend(() =>
 export type StartReplicationTaskTypeValue =
   | "start-replication"
   | "resume-processing"
-  | "reload-target";
+  | "reload-target"
+  | (string & {});
 export const StartReplicationTaskTypeValue = /*@__PURE__*/ S.String;
 
 export interface StartReplicationTaskMessage {

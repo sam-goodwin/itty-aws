@@ -99,7 +99,8 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
 export type SslConfigTypeEnum =
   | "SSL_TYPE_UNSPECIFIED"
   | "SERVER_ONLY"
-  | "SERVER_CLIENT";
+  | "SERVER_CLIENT"
+  | (string & {});
 export const SslConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** SSL configuration information. */
@@ -161,13 +162,15 @@ export type ConnectionProfileStateEnum =
   | "UPDATING"
   | "DELETING"
   | "DELETED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ConnectionProfileStateEnum = /*@__PURE__*/ S.String;
 
 export type CloudSqlSettingsDataDiskTypeEnum =
   | "SQL_DATA_DISK_TYPE_UNSPECIFIED"
   | "PD_SSD"
-  | "PD_HDD";
+  | "PD_HDD"
+  | (string & {});
 export const CloudSqlSettingsDataDiskTypeEnum = /*@__PURE__*/ S.String;
 
 /** An entry for an Access Control list. */
@@ -224,14 +227,16 @@ export const StringMap = /*@__PURE__*/ S.Record(
 export type CloudSqlSettingsActivationPolicyEnum =
   | "SQL_ACTIVATION_POLICY_UNSPECIFIED"
   | "ALWAYS"
-  | "NEVER";
+  | "NEVER"
+  | (string & {});
 export const CloudSqlSettingsActivationPolicyEnum = /*@__PURE__*/ S.String;
 
 export type CloudSqlSettingsDatabaseVersionEnum =
   | "SQL_DATABASE_VERSION_UNSPECIFIED"
   | "MYSQL_5_6"
   | "MYSQL_5_7"
-  | "MYSQL_8_0";
+  | "MYSQL_8_0"
+  | (string & {});
 export const CloudSqlSettingsDatabaseVersionEnum = /*@__PURE__*/ S.String;
 
 /** Settings for creating a Cloud SQL database instance. */
@@ -311,7 +316,8 @@ export const CloudSqlConnectionProfile = /*@__PURE__*/ S.suspend(() =>
 export type ConnectionProfileProviderEnum =
   | "DATABASE_PROVIDER_UNSPECIFIED"
   | "CLOUDSQL"
-  | "RDS";
+  | "RDS"
+  | (string & {});
 export const ConnectionProfileProviderEnum = /*@__PURE__*/ S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
@@ -470,22 +476,28 @@ export type MigrationJobStateEnum =
   | "UPDATING"
   | "STARTING"
   | "RESTARTING"
-  | "RESUMING";
+  | "RESUMING"
+  | (string & {});
 export const MigrationJobStateEnum = /*@__PURE__*/ S.String;
 
 export type MigrationJobTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "ONE_TIME"
-  | "CONTINUOUS";
+  | "CONTINUOUS"
+  | (string & {});
 export const MigrationJobTypeEnum = /*@__PURE__*/ S.String;
 
 export type DatabaseTypeProviderEnum =
   | "DATABASE_PROVIDER_UNSPECIFIED"
   | "CLOUDSQL"
-  | "RDS";
+  | "RDS"
+  | (string & {});
 export const DatabaseTypeProviderEnum = /*@__PURE__*/ S.String;
 
-export type DatabaseTypeEngineEnum = "DATABASE_ENGINE_UNSPECIFIED" | "MYSQL";
+export type DatabaseTypeEngineEnum =
+  | "DATABASE_ENGINE_UNSPECIFIED"
+  | "MYSQL"
+  | (string & {});
 export const DatabaseTypeEngineEnum = /*@__PURE__*/ S.String;
 
 /** A message defining the database engine and provider. */
@@ -508,7 +520,8 @@ export type MigrationJobPhaseEnum =
   | "CDC"
   | "PROMOTE_IN_PROGRESS"
   | "WAITING_FOR_SOURCE_WRITES_TO_STOP"
-  | "PREPARING_THE_DUMP";
+  | "PREPARING_THE_DUMP"
+  | (string & {});
 export const MigrationJobPhaseEnum = /*@__PURE__*/ S.String;
 
 /** The details needed to configure a reverse SSH tunnel between the source and destination databases. These details will be used when calling the generateSshScript method (see https://cloud.google.com/database-migration/docs/reference/rest/v1beta1/projects.locations.migrationJobs/generateSshScript) to produce the script that will help set up the reverse SSH tunnel, and to set up the VPC peering between the Cloud SQL private network and the VPC. */
@@ -808,7 +821,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;

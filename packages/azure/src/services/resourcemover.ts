@@ -21,7 +21,10 @@ export const MoveCollectionsBulkRemoveRequestMoveResourcesList =
   ) as any as S.Schema<MoveCollectionsBulkRemoveRequestMoveResourcesList>;
 
 /** Defines the move resource input type. */
-export type MoveResourceInputType = "MoveResourceId" | "MoveResourceSourceId";
+export type MoveResourceInputType =
+  | "MoveResourceId"
+  | "MoveResourceSourceId"
+  | (string & {});
 export const MoveResourceInputType = /*@__PURE__*/ S.String;
 
 export interface MoveCollectionsBulkRemoveRequest {
@@ -235,7 +238,11 @@ export const MoveCollectionsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MoveCollectionsCreateRequestTagsMap>;
 
 /** The type of identity used for the resource mover service. */
-export type ResourceIdentityType = "None" | "SystemAssigned" | "UserAssigned";
+export type ResourceIdentityType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | (string & {});
 export const ResourceIdentityType = /*@__PURE__*/ S.String;
 
 /** Defines the MSI properties of the Move Collection. */
@@ -255,7 +262,7 @@ export const Identity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Identity" }) as any as S.Schema<Identity>;
 
 /** Defines the MoveType. */
-export type MoveType = "RegionToRegion" | "RegionToZone";
+export type MoveType = "RegionToRegion" | "RegionToZone" | (string & {});
 export const MoveType = /*@__PURE__*/ S.String;
 
 /** Defines the move collection properties. */
@@ -329,7 +336,8 @@ export type ProvisioningState =
   | "Succeeded"
   | "Updating"
   | "Creating"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** A list of additional details about the error. */
@@ -408,7 +416,8 @@ export type MoveCollectionSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const MoveCollectionSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -416,7 +425,8 @@ export type MoveCollectionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const MoveCollectionSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -946,11 +956,12 @@ export type MoveState =
   | "CommitFailed"
   | "Committed"
   | "DeleteSourcePending"
-  | "ResourceMoveCompleted";
+  | "ResourceMoveCompleted"
+  | (string & {});
 export const MoveState = /*@__PURE__*/ S.String;
 
 /** Defines the job name. */
-export type JobName = "InitialSync";
+export type JobName = "InitialSync" | (string & {});
 export const JobName = /*@__PURE__*/ S.String;
 
 /** Defines the job status. */
@@ -983,11 +994,14 @@ export const MoveResourceStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MoveResourceStatus>;
 
 /** Defines the resolution type. */
-export type ResolutionType = "Manual" | "Automatic";
+export type ResolutionType = "Manual" | "Automatic" | (string & {});
 export const ResolutionType = /*@__PURE__*/ S.String;
 
 /** Defines the dependency type. */
-export type DependencyType = "RequiredForPrepare" | "RequiredForMove";
+export type DependencyType =
+  | "RequiredForPrepare"
+  | "RequiredForMove"
+  | (string & {});
 export const DependencyType = /*@__PURE__*/ S.String;
 
 /** Defines the properties for manual resolution. */
@@ -1107,7 +1121,8 @@ export type MoveResourceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const MoveResourceSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -1115,7 +1130,8 @@ export type MoveResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const MoveResourceSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -1398,7 +1414,8 @@ export const OperationsDiscoveryCollection = /*@__PURE__*/ S.suspend(() =>
 
 export type UnresolvedDependenciesGetRequestDependencyLevel =
   | "Direct"
-  | "Descendant";
+  | "Descendant"
+  | (string & {});
 export const UnresolvedDependenciesGetRequestDependencyLevel =
   /*@__PURE__*/ S.String;
 

@@ -152,7 +152,8 @@ export type ResourceType =
   | "AWS::ApplicationInsights::Application"
   | "AWS::InternetMonitor::Monitor"
   | "AWS::ApplicationSignals::Service"
-  | "AWS::ApplicationSignals::ServiceLevelObjective";
+  | "AWS::ApplicationSignals::ServiceLevelObjective"
+  | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export type ResourceTypesInput = ResourceType[];

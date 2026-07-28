@@ -297,14 +297,15 @@ export class UnresolvableUsageUnitException extends S.TaggedErrorClass<Unresolva
   { Message: S.optional(S.String) },
 ) {}
 export type YearMonthDay = string;
-export type MonitorType = "DIMENSIONAL" | "CUSTOM";
+export type MonitorType = "DIMENSIONAL" | "CUSTOM" | (string & {});
 export const MonitorType = /*@__PURE__*/ S.String;
 
 export type MonitorDimension =
   | "SERVICE"
   | "LINKED_ACCOUNT"
   | "TAG"
-  | "COST_CATEGORY";
+  | "COST_CATEGORY"
+  | (string & {});
 export const MonitorDimension = /*@__PURE__*/ S.String;
 
 export type Expressions = Expression[];
@@ -348,7 +349,8 @@ export type Dimension =
   | "AGREEMENT_END_DATE_TIME_BEFORE"
   | "INVOICING_ENTITY"
   | "ANOMALY_TOTAL_IMPACT_ABSOLUTE"
-  | "ANOMALY_TOTAL_IMPACT_PERCENTAGE";
+  | "ANOMALY_TOTAL_IMPACT_PERCENTAGE"
+  | (string & {});
 export const Dimension = /*@__PURE__*/ S.String;
 
 export type Value = string;
@@ -362,7 +364,8 @@ export type MatchOption =
   | "CONTAINS"
   | "CASE_SENSITIVE"
   | "CASE_INSENSITIVE"
-  | "GREATER_THAN_OR_EQUAL";
+  | "GREATER_THAN_OR_EQUAL"
+  | (string & {});
 export const MatchOption = /*@__PURE__*/ S.String;
 
 export type MatchOptions = MatchOption[];
@@ -497,10 +500,10 @@ export type Arn = string;
 export type MonitorArnList = string[];
 export const MonitorArnList = /*@__PURE__*/ S.Array(S.String);
 export type SubscriberAddress = string;
-export type SubscriberType = "EMAIL" | "SNS";
+export type SubscriberType = "EMAIL" | "SNS" | (string & {});
 export const SubscriberType = /*@__PURE__*/ S.String;
 
-export type SubscriberStatus = "CONFIRMED" | "DECLINED";
+export type SubscriberStatus = "CONFIRMED" | "DECLINED" | (string & {});
 export const SubscriberStatus = /*@__PURE__*/ S.String;
 
 export interface Subscriber {
@@ -518,7 +521,11 @@ export const Subscriber = /*@__PURE__*/ S.suspend(() =>
 export type Subscribers = Subscriber[];
 export const Subscribers = /*@__PURE__*/ S.Array(Subscriber);
 export type NullableNonNegativeDouble = number;
-export type AnomalySubscriptionFrequency = "DAILY" | "IMMEDIATE" | "WEEKLY";
+export type AnomalySubscriptionFrequency =
+  | "DAILY"
+  | "IMMEDIATE"
+  | "WEEKLY"
+  | (string & {});
 export const AnomalySubscriptionFrequency = /*@__PURE__*/ S.String;
 
 export interface AnomalySubscription {
@@ -568,13 +575,16 @@ export const CreateAnomalySubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAnomalySubscriptionResponse",
 }) as any as S.Schema<CreateAnomalySubscriptionResponse>;
 export type ZonedDateTime = string;
-export type CostCategoryRuleVersion = "CostCategoryExpression.v1";
+export type CostCategoryRuleVersion =
+  | "CostCategoryExpression.v1"
+  | (string & {});
 export const CostCategoryRuleVersion = /*@__PURE__*/ S.String;
 
 export type CostCategoryValue = string;
 export type CostCategoryInheritedValueDimensionName =
   | "LINKED_ACCOUNT_NAME"
-  | "TAG";
+  | "TAG"
+  | (string & {});
 export const CostCategoryInheritedValueDimensionName = /*@__PURE__*/ S.String;
 
 export interface CostCategoryInheritedValueDimension {
@@ -589,7 +599,10 @@ export const CostCategoryInheritedValueDimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CostCategoryInheritedValueDimension",
 }) as any as S.Schema<CostCategoryInheritedValueDimension>;
-export type CostCategoryRuleType = "REGULAR" | "INHERITED_VALUE";
+export type CostCategoryRuleType =
+  | "REGULAR"
+  | "INHERITED_VALUE"
+  | (string & {});
 export const CostCategoryRuleType = /*@__PURE__*/ S.String;
 
 export interface CostCategoryRule {
@@ -614,10 +627,16 @@ export type CostCategorySplitChargeRuleTargetsList = string[];
 export const CostCategorySplitChargeRuleTargetsList = /*@__PURE__*/ S.Array(
   S.String,
 );
-export type CostCategorySplitChargeMethod = "FIXED" | "PROPORTIONAL" | "EVEN";
+export type CostCategorySplitChargeMethod =
+  | "FIXED"
+  | "PROPORTIONAL"
+  | "EVEN"
+  | (string & {});
 export const CostCategorySplitChargeMethod = /*@__PURE__*/ S.String;
 
-export type CostCategorySplitChargeRuleParameterType = "ALLOCATION_PERCENTAGES";
+export type CostCategorySplitChargeRuleParameterType =
+  | "ALLOCATION_PERCENTAGES"
+  | (string & {});
 export const CostCategorySplitChargeRuleParameterType = /*@__PURE__*/ S.String;
 
 export type CostCategorySplitChargeRuleParameterValuesList = string[];
@@ -768,10 +787,10 @@ export const DescribeCostCategoryDefinitionRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeCostCategoryDefinitionRequest",
 }) as any as S.Schema<DescribeCostCategoryDefinitionRequest>;
-export type CostCategoryStatusComponent = "COST_EXPLORER";
+export type CostCategoryStatusComponent = "COST_EXPLORER" | (string & {});
 export const CostCategoryStatusComponent = /*@__PURE__*/ S.String;
 
-export type CostCategoryStatus = "PROCESSING" | "APPLIED";
+export type CostCategoryStatus = "PROCESSING" | "APPLIED" | (string & {});
 export const CostCategoryStatus = /*@__PURE__*/ S.String;
 
 export interface CostCategoryProcessingStatus {
@@ -831,7 +850,11 @@ export const AnomalyDateInterval = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AnomalyDateInterval",
 }) as any as S.Schema<AnomalyDateInterval>;
-export type AnomalyFeedbackType = "YES" | "NO" | "PLANNED_ACTIVITY";
+export type AnomalyFeedbackType =
+  | "YES"
+  | "NO"
+  | "PLANNED_ACTIVITY"
+  | (string & {});
 export const AnomalyFeedbackType = /*@__PURE__*/ S.String;
 
 export type NumericOperator =
@@ -840,7 +863,8 @@ export type NumericOperator =
   | "LESS_THAN_OR_EQUAL"
   | "GREATER_THAN"
   | "LESS_THAN"
-  | "BETWEEN";
+  | "BETWEEN"
+  | (string & {});
 export const NumericOperator = /*@__PURE__*/ S.String;
 
 export interface TotalImpactFilter {
@@ -1029,12 +1053,12 @@ export const GetAnomalySubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAnomalySubscriptionsResponse",
 }) as any as S.Schema<GetAnomalySubscriptionsResponse>;
-export type Granularity = "DAILY" | "MONTHLY" | "HOURLY";
+export type Granularity = "DAILY" | "MONTHLY" | "HOURLY" | (string & {});
 export const Granularity = /*@__PURE__*/ S.String;
 
 export type UsageServices = string[];
 export const UsageServices = /*@__PURE__*/ S.Array(S.String);
-export type ApproximationDimension = "SERVICE" | "RESOURCE";
+export type ApproximationDimension = "SERVICE" | "RESOURCE" | (string & {});
 export const ApproximationDimension = /*@__PURE__*/ S.String;
 
 export interface GetApproximateUsageRecordsRequest {
@@ -1094,7 +1118,11 @@ export const GetCommitmentPurchaseAnalysisRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetCommitmentPurchaseAnalysisRequest",
 }) as any as S.Schema<GetCommitmentPurchaseAnalysisRequest>;
-export type AnalysisStatus = "SUCCEEDED" | "PROCESSING" | "FAILED";
+export type AnalysisStatus =
+  | "SUCCEEDED"
+  | "PROCESSING"
+  | "FAILED"
+  | (string & {});
 export const AnalysisStatus = /*@__PURE__*/ S.String;
 
 export type ErrorCode =
@@ -1102,7 +1130,8 @@ export type ErrorCode =
   | "INTERNAL_FAILURE"
   | "INVALID_SAVINGS_PLANS_TO_ADD"
   | "INVALID_SAVINGS_PLANS_TO_EXCLUDE"
-  | "INVALID_ACCOUNT_ID";
+  | "INVALID_ACCOUNT_ID"
+  | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
 
 export interface RecommendationDetailHourlyMetrics {
@@ -1191,14 +1220,15 @@ export const AnalysisDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AnalysisDetails",
 }) as any as S.Schema<AnalysisDetails>;
-export type AccountScope = "PAYER" | "LINKED";
+export type AccountScope = "PAYER" | "LINKED" | (string & {});
 export const AccountScope = /*@__PURE__*/ S.String;
 
 export type AccountId = string;
 export type AnalysisType =
   | "MAX_SAVINGS"
   | "CUSTOM_COMMITMENT"
-  | "TARGET_AVERAGE_COVERAGE";
+  | "TARGET_AVERAGE_COVERAGE"
+  | (string & {});
 export const AnalysisType = /*@__PURE__*/ S.String;
 
 export type PaymentOption =
@@ -1207,17 +1237,19 @@ export type PaymentOption =
   | "ALL_UPFRONT"
   | "LIGHT_UTILIZATION"
   | "MEDIUM_UTILIZATION"
-  | "HEAVY_UTILIZATION";
+  | "HEAVY_UTILIZATION"
+  | (string & {});
 export const PaymentOption = /*@__PURE__*/ S.String;
 
 export type SupportedSavingsPlansType =
   | "COMPUTE_SP"
   | "EC2_INSTANCE_SP"
   | "SAGEMAKER_SP"
-  | "DATABASE_SP";
+  | "DATABASE_SP"
+  | (string & {});
 export const SupportedSavingsPlansType = /*@__PURE__*/ S.String;
 
-export type TermInYears = "ONE_YEAR" | "THREE_YEARS";
+export type TermInYears = "ONE_YEAR" | "THREE_YEARS" | (string & {});
 export const TermInYears = /*@__PURE__*/ S.String;
 
 export type SavingsPlansCommitment = number;
@@ -1312,7 +1344,11 @@ export const GetCommitmentPurchaseAnalysisResponse = /*@__PURE__*/ S.suspend(
 export type MetricName = string;
 export type MetricNames = string[];
 export const MetricNames = /*@__PURE__*/ S.Array(S.String);
-export type GroupDefinitionType = "DIMENSION" | "TAG" | "COST_CATEGORY";
+export type GroupDefinitionType =
+  | "DIMENSION"
+  | "TAG"
+  | "COST_CATEGORY"
+  | (string & {});
 export const GroupDefinitionType = /*@__PURE__*/ S.String;
 
 export type GroupDefinitionKey = string;
@@ -1557,7 +1593,7 @@ export const GetCostAndUsageWithResourcesResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetCostAndUsageWithResourcesResponse>;
 export type SearchString = string;
 export type SortDefinitionKey = string;
-export type SortOrder = "ASCENDING" | "DESCENDING";
+export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
 
 export interface SortDefinition {
@@ -1695,7 +1731,8 @@ export type Metric =
   | "NET_UNBLENDED_COST"
   | "NET_AMORTIZED_COST"
   | "USAGE_QUANTITY"
-  | "NORMALIZED_USAGE_AMOUNT";
+  | "NORMALIZED_USAGE_AMOUNT"
+  | (string & {});
 export const Metric = /*@__PURE__*/ S.String;
 
 export type PredictionIntervalLevel = number;
@@ -1749,7 +1786,11 @@ export const GetCostForecastResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCostForecastResponse",
 }) as any as S.Schema<GetCostForecastResponse>;
-export type Context = "COST_AND_USAGE" | "RESERVATIONS" | "SAVINGS_PLANS";
+export type Context =
+  | "COST_AND_USAGE"
+  | "RESERVATIONS"
+  | "SAVINGS_PLANS"
+  | (string & {});
 export const Context = /*@__PURE__*/ S.String;
 
 export interface GetDimensionValuesRequest {
@@ -1923,10 +1964,14 @@ export const GetReservationCoverageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetReservationCoverageResponse",
 }) as any as S.Schema<GetReservationCoverageResponse>;
-export type LookbackPeriodInDays = "SEVEN_DAYS" | "THIRTY_DAYS" | "SIXTY_DAYS";
+export type LookbackPeriodInDays =
+  | "SEVEN_DAYS"
+  | "THIRTY_DAYS"
+  | "SIXTY_DAYS"
+  | (string & {});
 export const LookbackPeriodInDays = /*@__PURE__*/ S.String;
 
-export type OfferingClass = "STANDARD" | "CONVERTIBLE";
+export type OfferingClass = "STANDARD" | "CONVERTIBLE" | (string & {});
 export const OfferingClass = /*@__PURE__*/ S.String;
 
 export interface EC2Specification {
@@ -2414,7 +2459,8 @@ export const GetReservationUtilizationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetReservationUtilizationResponse>;
 export type RecommendationTarget =
   | "SAME_INSTANCE_FAMILY"
-  | "CROSS_INSTANCE_FAMILY";
+  | "CROSS_INSTANCE_FAMILY"
+  | (string & {});
 export const RecommendationTarget = /*@__PURE__*/ S.String;
 
 export interface RightsizingRecommendationConfiguration {
@@ -2624,7 +2670,7 @@ export const CurrentInstance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CurrentInstance",
 }) as any as S.Schema<CurrentInstance>;
-export type RightsizingType = "TERMINATE" | "MODIFY";
+export type RightsizingType = "TERMINATE" | "MODIFY" | (string & {});
 export const RightsizingType = /*@__PURE__*/ S.String;
 
 export type PlatformDifference =
@@ -2632,7 +2678,8 @@ export type PlatformDifference =
   | "NETWORK_INTERFACE"
   | "STORAGE_INTERFACE"
   | "INSTANCE_STORE_AVAILABILITY"
-  | "VIRTUALIZATION_TYPE";
+  | "VIRTUALIZATION_TYPE"
+  | (string & {});
 export const PlatformDifference = /*@__PURE__*/ S.String;
 
 export type PlatformDifferences = PlatformDifference[];
@@ -2695,7 +2742,8 @@ export type FindingReasonCode =
   | "DISK_IOPS_OVER_PROVISIONED"
   | "DISK_IOPS_UNDER_PROVISIONED"
   | "DISK_THROUGHPUT_OVER_PROVISIONED"
-  | "DISK_THROUGHPUT_UNDER_PROVISIONED";
+  | "DISK_THROUGHPUT_UNDER_PROVISIONED"
+  | (string & {});
 export const FindingReasonCode = /*@__PURE__*/ S.String;
 
 export type FindingReasonCodes = FindingReasonCode[];
@@ -3192,7 +3240,8 @@ export type SavingsPlansDataType =
   | "ATTRIBUTES"
   | "UTILIZATION"
   | "AMORTIZED_COMMITMENT"
-  | "SAVINGS";
+  | "SAVINGS"
+  | (string & {});
 export const SavingsPlansDataType = /*@__PURE__*/ S.String;
 
 export type SavingsPlansDataTypes = SavingsPlansDataType[];
@@ -3418,7 +3467,8 @@ export const ListCostAllocationTagBackfillHistoryRequest =
 export type CostAllocationTagBackfillStatus =
   | "SUCCEEDED"
   | "PROCESSING"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const CostAllocationTagBackfillStatus = /*@__PURE__*/ S.String;
 
 export interface CostAllocationTagBackfillRequest {
@@ -3457,12 +3507,15 @@ export const ListCostAllocationTagBackfillHistoryResponse =
   ).annotate({
     identifier: "ListCostAllocationTagBackfillHistoryResponse",
   }) as any as S.Schema<ListCostAllocationTagBackfillHistoryResponse>;
-export type CostAllocationTagStatus = "Active" | "Inactive";
+export type CostAllocationTagStatus = "Active" | "Inactive" | (string & {});
 export const CostAllocationTagStatus = /*@__PURE__*/ S.String;
 
 export type CostAllocationTagKeyList = string[];
 export const CostAllocationTagKeyList = /*@__PURE__*/ S.Array(S.String);
-export type CostAllocationTagType = "AWSGenerated" | "UserDefined";
+export type CostAllocationTagType =
+  | "AWSGenerated"
+  | "UserDefined"
+  | (string & {});
 export const CostAllocationTagType = /*@__PURE__*/ S.String;
 
 export interface ListCostAllocationTagsRequest {
@@ -3635,7 +3688,11 @@ export const ListCostCategoryResourceAssociationsResponse =
   ).annotate({
     identifier: "ListCostCategoryResourceAssociationsResponse",
   }) as any as S.Schema<ListCostCategoryResourceAssociationsResponse>;
-export type GenerationStatus = "SUCCEEDED" | "PROCESSING" | "FAILED";
+export type GenerationStatus =
+  | "SUCCEEDED"
+  | "PROCESSING"
+  | "FAILED"
+  | (string & {});
 export const GenerationStatus = /*@__PURE__*/ S.String;
 
 export type RecommendationId = string;

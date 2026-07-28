@@ -155,7 +155,8 @@ export type AppEngineHttpTargetHttpMethodEnum =
   | "PUT"
   | "DELETE"
   | "PATCH"
-  | "OPTIONS";
+  | "OPTIONS"
+  | (string & {});
 export const AppEngineHttpTargetHttpMethodEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -219,7 +220,8 @@ export type HttpTargetHttpMethodEnum =
   | "PUT"
   | "DELETE"
   | "PATCH"
-  | "OPTIONS";
+  | "OPTIONS"
+  | (string & {});
 export const HttpTargetHttpMethodEnum = /*@__PURE__*/ S.String;
 
 /** Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself. */
@@ -298,7 +300,8 @@ export type JobStateEnum =
   | "ENABLED"
   | "PAUSED"
   | "DISABLED"
-  | "UPDATE_FAILED";
+  | "UPDATE_FAILED"
+  | (string & {});
 export const JobStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for a job. The maximum allowed size for a job is 1MB. */

@@ -120,7 +120,8 @@ export type CustomDomainStateEnum =
   | "MODIFYING"
   | "AVAILABLE"
   | "UNAVAILABLE"
-  | "UNKNOWN";
+  | "UNKNOWN"
+  | (string & {});
 export const CustomDomainStateEnum = /*@__PURE__*/ S.String;
 
 /** Custom domain information. */
@@ -149,7 +150,8 @@ export type InstancePlatformEditionEnum =
   | "LOOKER_CORE_NONPROD_EMBED_ANNUAL"
   | "LOOKER_CORE_TRIAL_STANDARD"
   | "LOOKER_CORE_TRIAL_ENTERPRISE"
-  | "LOOKER_CORE_TRIAL_EMBED";
+  | "LOOKER_CORE_TRIAL_EMBED"
+  | (string & {});
 export const InstancePlatformEditionEnum = /*@__PURE__*/ S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -217,10 +219,15 @@ export type InstanceStateEnum =
   | "UPDATING"
   | "DELETING"
   | "EXPORTING"
-  | "IMPORTING";
+  | "IMPORTING"
+  | (string & {});
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
-export type InstanceClassTypeEnum = "CLASS_TYPE_UNSPECIFIED" | "R1" | "P1";
+export type InstanceClassTypeEnum =
+  | "CLASS_TYPE_UNSPECIFIED"
+  | "R1"
+  | "P1"
+  | (string & {});
 export const InstanceClassTypeEnum = /*@__PURE__*/ S.String;
 
 /** Ingress IP allowlist rule. */
@@ -266,7 +273,8 @@ export const IngressIpAllowlistConfig = /*@__PURE__*/ S.suspend(() =>
 export type EncryptionConfigKmsKeyStateEnum =
   | "KMS_KEY_STATE_UNSPECIFIED"
   | "VALID"
-  | "REVOKED";
+  | "REVOKED"
+  | (string & {});
 export const EncryptionConfigKmsKeyStateEnum = /*@__PURE__*/ S.String;
 
 /** Encryption configuration (i.e. CMEK). */
@@ -292,14 +300,16 @@ export type InstanceSoftDeleteReasonEnum =
   | "SOFT_DELETE_REASON_UNSPECIFIED"
   | "BILLING_ACCOUNT_ISSUE"
   | "TRIAL_EXPIRED"
-  | "CUSTOMER_REQUEST";
+  | "CUSTOMER_REQUEST"
+  | (string & {});
 export const InstanceSoftDeleteReasonEnum = /*@__PURE__*/ S.String;
 
 export type InstanceReleaseChannelEnum =
   | "RELEASE_CHANNEL_UNSPECIFIED"
   | "RAPID"
   | "REGULAR"
-  | "STABLE";
+  | "STABLE"
+  | (string & {});
 export const InstanceReleaseChannelEnum = /*@__PURE__*/ S.String;
 
 /** Published upcoming future maintenance schedule. */
@@ -329,7 +339,8 @@ export type ServiceAttachmentConnectionStatusEnum =
   | "PENDING"
   | "REJECTED"
   | "NEEDS_ATTENTION"
-  | "CLOSED";
+  | "CLOSED"
+  | (string & {});
 export const ServiceAttachmentConnectionStatusEnum = /*@__PURE__*/ S.String;
 
 /** Service attachment configuration. */
@@ -398,7 +409,8 @@ export type MaintenanceWindowDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const MaintenanceWindowDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the recurring maintenance window. */
@@ -681,7 +693,8 @@ export type InstanceBackupStateEnum =
   | "CREATING"
   | "DELETING"
   | "ACTIVE"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const InstanceBackupStateEnum = /*@__PURE__*/ S.String;
 
 /** The details of a backup resource. */

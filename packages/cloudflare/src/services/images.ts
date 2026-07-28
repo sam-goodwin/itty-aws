@@ -145,13 +145,15 @@ export type V1VariantsCreateRequestOptionsFit =
   | "contain"
   | "cover"
   | "crop"
-  | "pad";
+  | "pad"
+  | (string & {});
 export const V1VariantsCreateRequestOptionsFit = /*@__PURE__*/ S.String;
 
 export type V1VariantsCreateRequestOptionsMetadata =
   | "keep"
   | "copyright"
-  | "none";
+  | "none"
+  | (string & {});
 export const V1VariantsCreateRequestOptionsMetadata = /*@__PURE__*/ S.String;
 
 export interface V1VariantsCreateRequestOptions {
@@ -208,13 +210,15 @@ export type V1VariantsCreateResponseVariantOptionsFit =
   | "contain"
   | "cover"
   | "crop"
-  | "pad";
+  | "pad"
+  | (string & {});
 export const V1VariantsCreateResponseVariantOptionsFit = /*@__PURE__*/ S.String;
 
 export type V1VariantsCreateResponseVariantOptionsMetadata =
   | "keep"
   | "copyright"
-  | "none";
+  | "none"
+  | (string & {});
 export const V1VariantsCreateResponseVariantOptionsMetadata =
   /*@__PURE__*/ S.String;
 
@@ -578,13 +582,15 @@ export type V1VariantsGetResponseVariantOptionsFit =
   | "contain"
   | "cover"
   | "crop"
-  | "pad";
+  | "pad"
+  | (string & {});
 export const V1VariantsGetResponseVariantOptionsFit = /*@__PURE__*/ S.String;
 
 export type V1VariantsGetResponseVariantOptionsMetadata =
   | "keep"
   | "copyright"
-  | "none";
+  | "none"
+  | (string & {});
 export const V1VariantsGetResponseVariantOptionsMetadata =
   /*@__PURE__*/ S.String;
 
@@ -795,14 +801,16 @@ export type V1VariantsListResponseVariantsHeroOptionsFit =
   | "contain"
   | "cover"
   | "crop"
-  | "pad";
+  | "pad"
+  | (string & {});
 export const V1VariantsListResponseVariantsHeroOptionsFit =
   /*@__PURE__*/ S.String;
 
 export type V1VariantsListResponseVariantsHeroOptionsMetadata =
   | "keep"
   | "copyright"
-  | "none";
+  | "none"
+  | (string & {});
 export const V1VariantsListResponseVariantsHeroOptionsMetadata =
   /*@__PURE__*/ S.String;
 
@@ -868,7 +876,7 @@ export const ListV1VariantsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListV1VariantsResponse",
 }) as any as S.Schema<ListV1VariantsResponse>;
 
-export type V2ListRequestSortOrder = "asc" | "desc";
+export type V2ListRequestSortOrder = "asc" | "desc" | (string & {});
 export const V2ListRequestSortOrder = /*@__PURE__*/ S.String;
 
 export interface ListV2sRequest {
@@ -1032,13 +1040,15 @@ export type V1VariantsEditRequestOptionsFit =
   | "contain"
   | "cover"
   | "crop"
-  | "pad";
+  | "pad"
+  | (string & {});
 export const V1VariantsEditRequestOptionsFit = /*@__PURE__*/ S.String;
 
 export type V1VariantsEditRequestOptionsMetadata =
   | "keep"
   | "copyright"
-  | "none";
+  | "none"
+  | (string & {});
 export const V1VariantsEditRequestOptionsMetadata = /*@__PURE__*/ S.String;
 
 export interface V1VariantsEditRequestOptions {
@@ -1095,13 +1105,15 @@ export type V1VariantsEditResponseVariantOptionsFit =
   | "contain"
   | "cover"
   | "crop"
-  | "pad";
+  | "pad"
+  | (string & {});
 export const V1VariantsEditResponseVariantOptionsFit = /*@__PURE__*/ S.String;
 
 export type V1VariantsEditResponseVariantOptionsMetadata =
   | "keep"
   | "copyright"
-  | "none";
+  | "none"
+  | (string & {});
 export const V1VariantsEditResponseVariantOptionsMetadata =
   /*@__PURE__*/ S.String;
 

@@ -118,7 +118,10 @@ export class UnknownError extends T.applyErrorMatchers(
   [{ code: 0 }],
 ) {}
 
-export type DatabaseCreateRequestJurisdiction = "eu" | "fedramp";
+export type DatabaseCreateRequestJurisdiction =
+  | "eu"
+  | "fedramp"
+  | (string & {});
 export const DatabaseCreateRequestJurisdiction = /*@__PURE__*/ S.String;
 
 export type DatabaseCreateRequestPrimaryLocationHint =
@@ -127,10 +130,14 @@ export type DatabaseCreateRequestPrimaryLocationHint =
   | "weur"
   | "eeur"
   | "apac"
-  | "oc";
+  | "oc"
+  | (string & {});
 export const DatabaseCreateRequestPrimaryLocationHint = /*@__PURE__*/ S.String;
 
-export type DatabaseCreateRequestReadReplicationMode = "auto" | "disabled";
+export type DatabaseCreateRequestReadReplicationMode =
+  | "auto"
+  | "disabled"
+  | (string & {});
 export const DatabaseCreateRequestReadReplicationMode = /*@__PURE__*/ S.String;
 
 export interface DatabaseCreateRequestReadReplication {
@@ -184,10 +191,16 @@ export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDatabaseRequest",
 }) as any as S.Schema<CreateDatabaseRequest>;
 
-export type DatabaseCreateResponseJurisdiction = "eu" | "fedramp";
+export type DatabaseCreateResponseJurisdiction =
+  | "eu"
+  | "fedramp"
+  | (string & {});
 export const DatabaseCreateResponseJurisdiction = /*@__PURE__*/ S.String;
 
-export type DatabaseCreateResponseReadReplicationMode = "auto" | "disabled";
+export type DatabaseCreateResponseReadReplicationMode =
+  | "auto"
+  | "disabled"
+  | (string & {});
 export const DatabaseCreateResponseReadReplicationMode = /*@__PURE__*/ S.String;
 
 export interface DatabaseCreateResponseReadReplication {
@@ -267,7 +280,7 @@ export const DeleteDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDatabaseResponse",
 }) as any as S.Schema<DeleteDatabaseResponse>;
 
-export type DatabaseExportRequestOutputFormat = "polling";
+export type DatabaseExportRequestOutputFormat = "polling" | (string & {});
 export const DatabaseExportRequestOutputFormat = /*@__PURE__*/ S.String;
 
 export type DatabaseExportRequestDumpOptionsTablesList = ReadonlyArray<string>;
@@ -348,10 +361,10 @@ export const DatabaseExportResponseResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseExportResponseResult",
 }) as any as S.Schema<DatabaseExportResponseResult>;
 
-export type DatabaseExportResponseStatus = "complete" | "error";
+export type DatabaseExportResponseStatus = "complete" | "error" | (string & {});
 export const DatabaseExportResponseStatus = /*@__PURE__*/ S.String;
 
-export type DatabaseExportResponseType = "export";
+export type DatabaseExportResponseType = "export" | (string & {});
 export const DatabaseExportResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -432,7 +445,8 @@ export type DatabaseGetRequestFields =
   | "num_tables"
   | "file_size"
   | "running_in_region"
-  | "read_replication";
+  | "read_replication"
+  | (string & {});
 export const DatabaseGetRequestFields = /*@__PURE__*/ S.String;
 
 export type DatabaseGetRequestFieldsList =
@@ -467,10 +481,13 @@ export const GetDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDatabaseRequest",
 }) as any as S.Schema<GetDatabaseRequest>;
 
-export type DatabaseGetResponseJurisdiction = "eu" | "fedramp";
+export type DatabaseGetResponseJurisdiction = "eu" | "fedramp" | (string & {});
 export const DatabaseGetResponseJurisdiction = /*@__PURE__*/ S.String;
 
-export type DatabaseGetResponseReadReplicationMode = "auto" | "disabled";
+export type DatabaseGetResponseReadReplicationMode =
+  | "auto"
+  | "disabled"
+  | (string & {});
 export const DatabaseGetResponseReadReplicationMode = /*@__PURE__*/ S.String;
 
 export interface DatabaseGetResponseReadReplication {
@@ -519,7 +536,11 @@ export const GetDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDatabaseResponse",
 }) as any as S.Schema<GetDatabaseResponse>;
 
-export type DatabaseImportRequestAction = "init" | "ingest" | "poll";
+export type DatabaseImportRequestAction =
+  | "init"
+  | "ingest"
+  | "poll"
+  | (string & {});
 export const DatabaseImportRequestAction = /*@__PURE__*/ S.String;
 
 export interface ImportDatabaseRequest {
@@ -568,7 +589,8 @@ export type DatabaseImportResponseResultMetaServedByRegion =
   | "WEUR"
   | "EEUR"
   | "APAC"
-  | "OC";
+  | "OC"
+  | (string & {});
 export const DatabaseImportResponseResultMetaServedByRegion =
   /*@__PURE__*/ S.String;
 
@@ -648,10 +670,10 @@ export const DatabaseImportResponseResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseImportResponseResult",
 }) as any as S.Schema<DatabaseImportResponseResult>;
 
-export type DatabaseImportResponseStatus = "complete" | "error";
+export type DatabaseImportResponseStatus = "complete" | "error" | (string & {});
 export const DatabaseImportResponseStatus = /*@__PURE__*/ S.String;
 
-export type DatabaseImportResponseType = "import";
+export type DatabaseImportResponseType = "import" | (string & {});
 export const DatabaseImportResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -717,7 +739,10 @@ export const ListDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDatabasesRequest",
 }) as any as S.Schema<ListDatabasesRequest>;
 
-export type DatabaseListResultItemJurisdiction = "eu" | "fedramp";
+export type DatabaseListResultItemJurisdiction =
+  | "eu"
+  | "fedramp"
+  | (string & {});
 export const DatabaseListResultItemJurisdiction = /*@__PURE__*/ S.String;
 
 export interface DatabaseListResultItem {
@@ -763,7 +788,10 @@ export const ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDatabasesResponse",
 }) as any as S.Schema<ListDatabasesResponse>;
 
-export type DatabaseEditRequestReadReplicationMode = "auto" | "disabled";
+export type DatabaseEditRequestReadReplicationMode =
+  | "auto"
+  | "disabled"
+  | (string & {});
 export const DatabaseEditRequestReadReplicationMode = /*@__PURE__*/ S.String;
 
 export interface DatabaseEditRequestReadReplication {
@@ -806,10 +834,13 @@ export const PatchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchDatabaseRequest",
 }) as any as S.Schema<PatchDatabaseRequest>;
 
-export type DatabaseEditResponseJurisdiction = "eu" | "fedramp";
+export type DatabaseEditResponseJurisdiction = "eu" | "fedramp" | (string & {});
 export const DatabaseEditResponseJurisdiction = /*@__PURE__*/ S.String;
 
-export type DatabaseEditResponseReadReplicationMode = "auto" | "disabled";
+export type DatabaseEditResponseReadReplicationMode =
+  | "auto"
+  | "disabled"
+  | (string & {});
 export const DatabaseEditResponseReadReplicationMode = /*@__PURE__*/ S.String;
 
 export interface DatabaseEditResponseReadReplication {
@@ -924,7 +955,8 @@ export type DatabaseQueryResultItemMetaServedByRegion =
   | "WEUR"
   | "EEUR"
   | "APAC"
-  | "OC";
+  | "OC"
+  | (string & {});
 export const DatabaseQueryResultItemMetaServedByRegion = /*@__PURE__*/ S.String;
 
 export interface DatabaseQueryResultItemMetaTimings {
@@ -1091,7 +1123,8 @@ export type DatabaseRawResultItemMetaServedByRegion =
   | "WEUR"
   | "EEUR"
   | "APAC"
-  | "OC";
+  | "OC"
+  | (string & {});
 export const DatabaseRawResultItemMetaServedByRegion = /*@__PURE__*/ S.String;
 
 export interface DatabaseRawResultItemMetaTimings {
@@ -1256,7 +1289,10 @@ export const RestoreDatabaseTimeTravelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RestoreDatabaseTimeTravelResponse",
 }) as any as S.Schema<RestoreDatabaseTimeTravelResponse>;
 
-export type DatabaseUpdateRequestReadReplicationMode = "auto" | "disabled";
+export type DatabaseUpdateRequestReadReplicationMode =
+  | "auto"
+  | "disabled"
+  | (string & {});
 export const DatabaseUpdateRequestReadReplicationMode = /*@__PURE__*/ S.String;
 
 export interface DatabaseUpdateRequestReadReplication {
@@ -1300,10 +1336,16 @@ export const UpdateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateDatabaseRequest",
 }) as any as S.Schema<UpdateDatabaseRequest>;
 
-export type DatabaseUpdateResponseJurisdiction = "eu" | "fedramp";
+export type DatabaseUpdateResponseJurisdiction =
+  | "eu"
+  | "fedramp"
+  | (string & {});
 export const DatabaseUpdateResponseJurisdiction = /*@__PURE__*/ S.String;
 
-export type DatabaseUpdateResponseReadReplicationMode = "auto" | "disabled";
+export type DatabaseUpdateResponseReadReplicationMode =
+  | "auto"
+  | "disabled"
+  | (string & {});
 export const DatabaseUpdateResponseReadReplicationMode = /*@__PURE__*/ S.String;
 
 export interface DatabaseUpdateResponseReadReplication {

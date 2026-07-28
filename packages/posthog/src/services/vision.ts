@@ -59,14 +59,18 @@ export const VisionQuota = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VisionQuota" }) as any as S.Schema<VisionQuota>;
 
 /** * `schedule` - Schedule * `threshold` - Threshold */
-export type VisionActionTriggerTypeEnum = "schedule" | "threshold";
+export type VisionActionTriggerTypeEnum =
+  | "schedule"
+  | "threshold"
+  | (string & {});
 export const VisionActionTriggerTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `group_summary` - Group summary * `alert` - Alert * `per_observation` - Per observation */
 export type VisionActionModeEnum =
   | "group_summary"
   | "alert"
-  | "per_observation";
+  | "per_observation"
+  | (string & {});
 export const VisionActionModeEnum = /*@__PURE__*/ S.String;
 
 /** Schedule trigger parameters. Threshold triggers are reserved and rejected at the API for now. */
@@ -90,7 +94,7 @@ export const SelectionScannerIdsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SelectionScannerIdsList>;
 
 /** * `yes` - yes * `no` - no * `inconclusive` - inconclusive */
-export type VerdictEnum = "yes" | "no" | "inconclusive";
+export type VerdictEnum = "yes" | "no" | "inconclusive" | (string & {});
 export const VerdictEnum = /*@__PURE__*/ S.String;
 
 /** Only run on monitor observations with one of these verdicts (yes/no/inconclusive). */
@@ -142,19 +146,22 @@ export const SynthesisConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SynthesisConfig>;
 
 /** * `every_match` - Every new match * `on_breach` - When a threshold is crossed */
-export type AlertConfigFrequencyEnum = "every_match" | "on_breach";
+export type AlertConfigFrequencyEnum =
+  | "every_match"
+  | "on_breach"
+  | (string & {});
 export const AlertConfigFrequencyEnum = /*@__PURE__*/ S.String;
 
 /** * `count` - Count of matching observations * `avg_score` - Average score */
-export type VisionAlertMetricEnum = "count" | "avg_score";
+export type VisionAlertMetricEnum = "count" | "avg_score" | (string & {});
 export const VisionAlertMetricEnum = /*@__PURE__*/ S.String;
 
 /** * `above` - At or above * `below` - At or below */
-export type VisionAlertDirectionEnum = "above" | "below";
+export type VisionAlertDirectionEnum = "above" | "below" | (string & {});
 export const VisionAlertDirectionEnum = /*@__PURE__*/ S.String;
 
 /** * `1` - 1 day * `3` - 3 days * `7` - 7 days * `14` - 14 days * `30` - 30 days */
-export type WindowDaysEnum = 1 | 3 | 7 | 14 | 30;
+export type WindowDaysEnum = 1 | 3 | 7 | 14 | 30 | (number & {});
 export const WindowDaysEnum = /*@__PURE__*/ S.Number;
 
 /** The alert condition for mode='alert', applied after `selection` targeting. 'every_match' notifies about each new match since the previous check; 'on_breach' compares a metric to a threshold over a rolling window and notifies on the transition into breach. */
@@ -181,7 +188,7 @@ export const AlertConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AlertConfig" }) as any as S.Schema<AlertConfig>;
 
 /** * `slack` - Slack */
-export type DeliveryTargetTypeEnum = "slack";
+export type DeliveryTargetTypeEnum = "slack" | (string & {});
 export const DeliveryTargetTypeEnum = /*@__PURE__*/ S.String;
 
 /** A single delivery destination. MVP supports Slack only. */
@@ -281,10 +288,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -596,7 +604,8 @@ export type VisionActionRunStatusEnum =
   | "running"
   | "completed"
   | "failed"
-  | "skipped";
+  | "skipped"
+  | (string & {});
 export const VisionActionRunStatusEnum = /*@__PURE__*/ S.String;
 
 /** Lightweight run row for the per-action run list (no report body — that's fetched on retrieve). */
@@ -874,7 +883,8 @@ export type VisionObservationsListRequestOrderBy =
   | "result_verdict"
   | "scanner_version"
   | "started_at"
-  | "status";
+  | "status"
+  | (string & {});
 export const VisionObservationsListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface VisionObservationsListRequest {
@@ -913,7 +923,8 @@ export type ObservationStatusEnum =
   | "running"
   | "succeeded"
   | "failed"
-  | "ineligible";
+  | "ineligible"
+  | (string & {});
 export const ObservationStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `monitor` - Monitor * `classifier` - Classifier * `scorer` - Scorer * `summarizer` - Summarizer */
@@ -921,7 +932,8 @@ export type ScannerTypeEnum =
   | "monitor"
   | "classifier"
   | "scorer"
-  | "summarizer";
+  | "summarizer"
+  | (string & {});
 export const ScannerTypeEnum = /*@__PURE__*/ S.String;
 
 /** Mirrors `temporal.types.ScannerSnapshot` for OpenAPI generation. */
@@ -970,7 +982,11 @@ export const ScannerResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScannerResult" }) as any as S.Schema<ScannerResult>;
 
 /** * `schedule` - Schedule * `on_demand` - On demand * `retry` - Retry */
-export type ObservationTriggerEnum = "schedule" | "on_demand" | "retry";
+export type ObservationTriggerEnum =
+  | "schedule"
+  | "on_demand"
+  | "retry"
+  | (string & {});
 export const ObservationTriggerEnum = /*@__PURE__*/ S.String;
 
 export interface ReplayObservation {
@@ -1075,7 +1091,8 @@ export type VisionObservationsRetrieveRequestOrderBy =
   | "result_verdict"
   | "scanner_version"
   | "started_at"
-  | "status";
+  | "status"
+  | (string & {});
 export const VisionObservationsRetrieveRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface VisionObservationsRetrieveRequest {
@@ -1257,18 +1274,23 @@ export const VisionScannersBulkObserveCreateResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VisionScannersBulkObserveCreateResponse>;
 
 /** * `focused` - Focused * `balanced` - Balanced * `comprehensive` - Comprehensive */
-export type SamplingModeEnum = "focused" | "balanced" | "comprehensive";
+export type SamplingModeEnum =
+  | "focused"
+  | "balanced"
+  | "comprehensive"
+  | (string & {});
 export const SamplingModeEnum = /*@__PURE__*/ S.String;
 
 /** * `google` - Google */
-export type ScannerProviderEnum = "google";
+export type ScannerProviderEnum = "google" | (string & {});
 export const ScannerProviderEnum = /*@__PURE__*/ S.String;
 
 /** * `gemini-3.5-flash-lite` - Gemini 3.5 Flash Lite * `gemini-3-flash-preview` - Gemini 3 Flash (preview) * `gemini-3.6-flash` - Gemini 3.6 Flash */
 export type ScannerModelEnum =
   | "gemini-3.5-flash-lite"
   | "gemini-3-flash-preview"
-  | "gemini-3.6-flash";
+  | "gemini-3.6-flash"
+  | (string & {});
 export const ScannerModelEnum = /*@__PURE__*/ S.String;
 
 export interface VisionScannersCreateRequest {
@@ -1663,7 +1685,8 @@ export type VisionScannersListRequestOrderBy =
   | "name"
   | "sampling_rate"
   | "scanner_type"
-  | "updated_at";
+  | "updated_at"
+  | (string & {});
 export const VisionScannersListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface VisionScannersListRequest {
@@ -1835,7 +1858,8 @@ export type VisionScannersObservationsListRequestOrderBy =
   | "result_verdict"
   | "scanner_version"
   | "started_at"
-  | "status";
+  | "status"
+  | (string & {});
 export const VisionScannersObservationsListRequestOrderBy =
   /*@__PURE__*/ S.String;
 
@@ -1918,7 +1942,8 @@ export type VisionScannersObservationsRetrieveRequestOrderBy =
   | "result_verdict"
   | "scanner_version"
   | "started_at"
-  | "status";
+  | "status"
+  | (string & {});
 export const VisionScannersObservationsRetrieveRequestOrderBy =
   /*@__PURE__*/ S.String;
 
@@ -2476,7 +2501,8 @@ export type ReplayScannerPromptSuggestionStatusEnum =
   | "applied"
   | "dismissed"
   | "superseded"
-  | "no_change";
+  | "no_change"
+  | (string & {});
 export const ReplayScannerPromptSuggestionStatusEnum = /*@__PURE__*/ S.String;
 
 export interface PromptEvaluationResult {
@@ -2928,7 +2954,11 @@ export const VisionScannersSuggestTagsCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VisionScannersSuggestTagsCreateRequest>;
 
 /** * `observed` - observed * `product` - product * `prompt` - prompt */
-export type TagSuggestionSourceEnum = "observed" | "product" | "prompt";
+export type TagSuggestionSourceEnum =
+  | "observed"
+  | "product"
+  | "prompt"
+  | (string & {});
 export const TagSuggestionSourceEnum = /*@__PURE__*/ S.String;
 
 /** One grounded tag suggestion. */

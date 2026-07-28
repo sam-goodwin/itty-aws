@@ -49,7 +49,8 @@ export type ResolutionSourceEnum =
   | "manual"
   | "slack_name_match"
   | "stamphog_config"
-  | "owners_contact";
+  | "owners_contact"
+  | (string & {});
 export const ResolutionSourceEnum = /*@__PURE__*/ S.String;
 
 export interface DigestChannel {
@@ -284,7 +285,11 @@ export const StamphogDigestRunsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StamphogDigestRunsListRequest>;
 
 /** * `pending` - PENDING * `completed` - COMPLETED * `failed` - FAILED */
-export type DigestRunStatusEnum = "pending" | "completed" | "failed";
+export type DigestRunStatusEnum =
+  | "pending"
+  | "completed"
+  | "failed"
+  | (string & {});
 export const DigestRunStatusEnum = /*@__PURE__*/ S.String;
 
 export interface DigestRun {
@@ -495,7 +500,7 @@ export const StamphogPullRequestsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StamphogPullRequestsRetrieveRequest>;
 
 /** * `all` - all * `label` - label */
-export type ReviewModeEnum = "all" | "label";
+export type ReviewModeEnum = "all" | "label" | (string & {});
 export const ReviewModeEnum = /*@__PURE__*/ S.String;
 
 export interface StamphogRepoConfigsCreateRequest {
@@ -911,7 +916,8 @@ export type ReviewRunStatusEnum =
   | "reviewing"
   | "completed"
   | "failed"
-  | "superseded";
+  | "superseded"
+  | (string & {});
 export const ReviewRunStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `none` - NONE * `approved` - APPROVED * `refused` - REFUSED * `escalate` - ESCALATE * `wait` - WAIT * `error` - ERROR */
@@ -921,7 +927,8 @@ export type ReviewRunVerdictEnum =
   | "refused"
   | "escalate"
   | "wait"
-  | "error";
+  | "error"
+  | (string & {});
 export const ReviewRunVerdictEnum = /*@__PURE__*/ S.String;
 
 /** Allowlisted, content-free slice of ``ReviewRun.gate_result``. The raw gate blob nests ``gates``, ``classification``, and ``policy`` sub-objects that carry repository content — changed-file paths (``safe_migration_files``, ``invalid_folder_files``), manifest gate messages, and declared ``policy.scopes`` — which a project member without repo access must not read. Only the terminal decision is exposed. */

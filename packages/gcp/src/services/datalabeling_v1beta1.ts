@@ -193,7 +193,8 @@ export type GoogleCloudDatalabelingV1beta1InputConfigDataTypeEnum =
   | "IMAGE"
   | "VIDEO"
   | "TEXT"
-  | "GENERAL_DATA";
+  | "GENERAL_DATA"
+  | (string & {});
 export const GoogleCloudDatalabelingV1beta1InputConfigDataTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -270,7 +271,8 @@ export type GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeEnum =
   | "VIDEO_EVENT_ANNOTATION"
   | "TEXT_CLASSIFICATION_ANNOTATION"
   | "TEXT_ENTITY_EXTRACTION_ANNOTATION"
-  | "GENERAL_CLASSIFICATION_ANNOTATION";
+  | "GENERAL_CLASSIFICATION_ANNOTATION"
+  | (string & {});
 export const GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -518,7 +520,8 @@ export type GoogleCloudDatalabelingV1beta1EvaluationJobStateEnum =
   | "SCHEDULED"
   | "RUNNING"
   | "PAUSED"
-  | "STOPPED";
+  | "STOPPED"
+  | (string & {});
 export const GoogleCloudDatalabelingV1beta1EvaluationJobStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -667,7 +670,8 @@ export type GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggrega
     | "STRING_AGGREGATION_TYPE_UNSPECIFIED"
     | "MAJORITY_VOTE"
     | "UNANIMOUS_VOTE"
-    | "NO_AGGREGATION";
+    | "NO_AGGREGATION"
+    | (string & {});
 export const GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -877,7 +881,8 @@ export type GoogleCloudDatalabelingV1beta1InstructionDataTypeEnum =
   | "IMAGE"
   | "VIDEO"
   | "TEXT"
-  | "GENERAL_DATA";
+  | "GENERAL_DATA"
+  | (string & {});
 export const GoogleCloudDatalabelingV1beta1InstructionDataTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1484,7 +1489,7 @@ export const GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata =
   }) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata>;
 
 export type GoogleCloudDatalabelingV1beta1AnnotatedDatasetAnnotationSourceEnum =
-  "ANNOTATION_SOURCE_UNSPECIFIED" | "OPERATOR";
+  "ANNOTATION_SOURCE_UNSPECIFIED" | "OPERATOR" | (string & {});
 export const GoogleCloudDatalabelingV1beta1AnnotatedDatasetAnnotationSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1516,7 +1521,8 @@ export type GoogleCloudDatalabelingV1beta1AnnotatedDatasetAnnotationTypeEnum =
   | "VIDEO_EVENT_ANNOTATION"
   | "TEXT_CLASSIFICATION_ANNOTATION"
   | "TEXT_ENTITY_EXTRACTION_ANNOTATION"
-  | "GENERAL_CLASSIFICATION_ANNOTATION";
+  | "GENERAL_CLASSIFICATION_ANNOTATION"
+  | (string & {});
 export const GoogleCloudDatalabelingV1beta1AnnotatedDatasetAnnotationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1725,14 +1731,16 @@ export const GetProjectsDatasetsAnnotatedDatasetsExamplesRequest =
 
 export type GoogleCloudDatalabelingV1beta1AnnotationAnnotationSourceEnum =
   | "ANNOTATION_SOURCE_UNSPECIFIED"
-  | "OPERATOR";
+  | "OPERATOR"
+  | (string & {});
 export const GoogleCloudDatalabelingV1beta1AnnotationAnnotationSourceEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDatalabelingV1beta1AnnotationAnnotationSentimentEnum =
   | "ANNOTATION_SENTIMENT_UNSPECIFIED"
   | "NEGATIVE"
-  | "POSITIVE";
+  | "POSITIVE"
+  | (string & {});
 export const GoogleCloudDatalabelingV1beta1AnnotationAnnotationSentimentEnum =
   /*@__PURE__*/ S.String;
 
@@ -2262,7 +2270,8 @@ export const GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest =
 export type GoogleCloudDatalabelingV1beta1FeedbackThreadMetadataStatusEnum =
   | "FEEDBACK_THREAD_STATUS_UNSPECIFIED"
   | "NEW"
-  | "REPLIED";
+  | "REPLIED"
+  | (string & {});
 export const GoogleCloudDatalabelingV1beta1FeedbackThreadMetadataStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -2379,7 +2388,8 @@ export type GoogleCloudDatalabelingV1beta1EvaluationAnnotationTypeEnum =
   | "VIDEO_EVENT_ANNOTATION"
   | "TEXT_CLASSIFICATION_ANNOTATION"
   | "TEXT_ENTITY_EXTRACTION_ANNOTATION"
-  | "GENERAL_CLASSIFICATION_ANNOTATION";
+  | "GENERAL_CLASSIFICATION_ANNOTATION"
+  | (string & {});
 export const GoogleCloudDatalabelingV1beta1EvaluationAnnotationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2700,7 +2710,8 @@ export type GoogleCloudDatalabelingV1beta1LabelImageRequestFeatureEnum =
   | "ORIENTED_BOUNDING_BOX"
   | "BOUNDING_POLY"
   | "POLYLINE"
-  | "SEGMENTATION";
+  | "SEGMENTATION"
+  | (string & {});
 export const GoogleCloudDatalabelingV1beta1LabelImageRequestFeatureEnum =
   /*@__PURE__*/ S.String;
 
@@ -2769,7 +2780,8 @@ export const LabelProjectsDatasetsImageRequest = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudDatalabelingV1beta1LabelTextRequestFeatureEnum =
   | "FEATURE_UNSPECIFIED"
   | "TEXT_CLASSIFICATION"
-  | "TEXT_ENTITY_EXTRACTION";
+  | "TEXT_ENTITY_EXTRACTION"
+  | (string & {});
 export const GoogleCloudDatalabelingV1beta1LabelTextRequestFeatureEnum =
   /*@__PURE__*/ S.String;
 
@@ -2832,7 +2844,8 @@ export type GoogleCloudDatalabelingV1beta1LabelVideoRequestFeatureEnum =
   | "CLASSIFICATION"
   | "OBJECT_DETECTION"
   | "OBJECT_TRACKING"
-  | "EVENT";
+  | "EVENT"
+  | (string & {});
 export const GoogleCloudDatalabelingV1beta1LabelVideoRequestFeatureEnum =
   /*@__PURE__*/ S.String;
 

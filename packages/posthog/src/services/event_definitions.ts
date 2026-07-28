@@ -63,7 +63,7 @@ export const EventDefinitionRecordTagsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EventDefinitionRecordTagsList>;
 
 /** * `allow` - Allow * `reject` - Reject */
-export type EnforcementModeEnum = "allow" | "reject";
+export type EnforcementModeEnum = "allow" | "reject" | (string & {});
 export const EnforcementModeEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
@@ -81,10 +81,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;

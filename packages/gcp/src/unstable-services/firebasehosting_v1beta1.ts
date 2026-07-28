@@ -196,7 +196,11 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
-export type SiteTypeEnum = "TYPE_UNSPECIFIED" | "DEFAULT_SITE" | "USER_SITE";
+export type SiteTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "DEFAULT_SITE"
+  | "USER_SITE"
+  | (string & {});
 export const SiteTypeEnum = /*@__PURE__*/ S.String;
 
 /** A `Site` represents a Firebase Hosting site. */
@@ -267,7 +271,8 @@ export type ReleaseTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "DEPLOY"
   | "ROLLBACK"
-  | "SITE_DISABLE";
+  | "SITE_DISABLE"
+  | (string & {});
 export const ReleaseTypeEnum = /*@__PURE__*/ S.String;
 
 /** A [`Header`](https://firebase.google.com/docs/hosting/full-config#headers) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers. */
@@ -348,10 +353,11 @@ export const RewriteList = /*@__PURE__*/ S.Array(
 export type ServingConfigTrailingSlashBehaviorEnum =
   | "TRAILING_SLASH_BEHAVIOR_UNSPECIFIED"
   | "ADD"
-  | "REMOVE";
+  | "REMOVE"
+  | (string & {});
 export const ServingConfigTrailingSlashBehaviorEnum = /*@__PURE__*/ S.String;
 
-export type ServingConfigAppAssociationEnum = "AUTO" | "NONE";
+export type ServingConfigAppAssociationEnum = "AUTO" | "NONE" | (string & {});
 export const ServingConfigAppAssociationEnum = /*@__PURE__*/ S.String;
 
 /** If provided, i18n rewrites are enabled. */
@@ -426,7 +432,8 @@ export type VersionStatusEnum =
   | "DELETED"
   | "ABANDONED"
   | "EXPIRED"
-  | "CLONING";
+  | "CLONING"
+  | (string & {});
 export const VersionStatusEnum = /*@__PURE__*/ S.String;
 
 /** A `Version` is a configuration and a collection of static files which determine how a site is displayed. */
@@ -593,7 +600,8 @@ export type CertificateTypeEnum =
   | "TEMPORARY"
   | "GROUPED"
   | "PROJECT_GROUPED"
-  | "DEDICATED";
+  | "DEDICATED"
+  | (string & {});
 export const CertificateTypeEnum = /*@__PURE__*/ S.String;
 
 /** A file you can add to your existing, non-Hosting hosting service that confirms your intent to allow Hosting's Certificate Authorities to create an SSL certificate for your domain. */
@@ -625,10 +633,15 @@ export type DnsRecordTypeEnum =
   | "CNAME"
   | "TXT"
   | "AAAA"
-  | "CAA";
+  | "CAA"
+  | (string & {});
 export const DnsRecordTypeEnum = /*@__PURE__*/ S.String;
 
-export type DnsRecordRequiredActionEnum = "NONE" | "ADD" | "REMOVE";
+export type DnsRecordRequiredActionEnum =
+  | "NONE"
+  | "ADD"
+  | "REMOVE"
+  | (string & {});
 export const DnsRecordRequiredActionEnum = /*@__PURE__*/ S.String;
 
 /** DNS records are resource records that define how systems and services should behave when handling requests for a domain name. For example, when you add `A` records to your domain name's DNS records, you're informing other systems (such as your users' web browsers) to contact those IPv4 addresses to retrieve resources relevant to your domain name (such as your Hosting site files). */
@@ -718,7 +731,8 @@ export type CertificateStateEnum =
   | "CERT_PROPAGATING"
   | "CERT_ACTIVE"
   | "CERT_EXPIRING_SOON"
-  | "CERT_EXPIRED";
+  | "CERT_EXPIRED"
+  | (string & {});
 export const CertificateStateEnum = /*@__PURE__*/ S.String;
 
 /** An SSL certificate used to provide end-to-end encryption for requests against your domain name. A `Certificate` can be an actual SSL certificate or, for newly-created custom domains, Hosting's intent to create one. */
@@ -752,7 +766,8 @@ export type CustomDomainCertPreferenceEnum =
   | "TEMPORARY"
   | "GROUPED"
   | "PROJECT_GROUPED"
-  | "DEDICATED";
+  | "DEDICATED"
+  | (string & {});
 export const CustomDomainCertPreferenceEnum = /*@__PURE__*/ S.String;
 
 export type CustomDomainHostStateEnum =
@@ -761,7 +776,8 @@ export type CustomDomainHostStateEnum =
   | "HOST_UNREACHABLE"
   | "HOST_MISMATCH"
   | "HOST_CONFLICT"
-  | "HOST_ACTIVE";
+  | "HOST_ACTIVE"
+  | (string & {});
 export const CustomDomainHostStateEnum = /*@__PURE__*/ S.String;
 
 export type CustomDomainOwnershipStateEnum =
@@ -771,7 +787,8 @@ export type CustomDomainOwnershipStateEnum =
   | "OWNERSHIP_MISMATCH"
   | "OWNERSHIP_CONFLICT"
   | "OWNERSHIP_PENDING"
-  | "OWNERSHIP_ACTIVE";
+  | "OWNERSHIP_ACTIVE"
+  | (string & {});
 export const CustomDomainOwnershipStateEnum = /*@__PURE__*/ S.String;
 
 /** A `CustomDomain` is an entity that links a domain name to a Firebase Hosting site. Add a `CustomDomain` to your site to allow Hosting to serve the site's content in response to requests against your domain name. */
@@ -860,7 +877,8 @@ export const CreateProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(
 
 export type DomainRedirectTypeEnum =
   | "REDIRECT_TYPE_UNSPECIFIED"
-  | "MOVED_PERMANENTLY";
+  | "MOVED_PERMANENTLY"
+  | (string & {});
 export const DomainRedirectTypeEnum = /*@__PURE__*/ S.String;
 
 /** Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration. */
@@ -884,7 +902,8 @@ export type DomainProvisioningCertStatusEnum =
   | "CERT_PROCESSING"
   | "CERT_PROPAGATING"
   | "CERT_ACTIVE"
-  | "CERT_ERROR";
+  | "CERT_ERROR"
+  | (string & {});
 export const DomainProvisioningCertStatusEnum = /*@__PURE__*/ S.String;
 
 /** Represents a DNS certificate challenge. */
@@ -925,7 +944,8 @@ export type DomainProvisioningDnsStatusEnum =
   | "DNS_MISSING"
   | "DNS_PARTIAL_MATCH"
   | "DNS_MATCH"
-  | "DNS_EXTRANEOUS_MATCH";
+  | "DNS_EXTRANEOUS_MATCH"
+  | (string & {});
 export const DomainProvisioningDnsStatusEnum = /*@__PURE__*/ S.String;
 
 /** The current certificate provisioning status information for a domain. */
@@ -967,7 +987,8 @@ export type DomainStatusEnum =
   | "DOMAIN_CHANGE_PENDING"
   | "DOMAIN_ACTIVE"
   | "DOMAIN_VERIFICATION_REQUIRED"
-  | "DOMAIN_VERIFICATION_LOST";
+  | "DOMAIN_VERIFICATION_LOST"
+  | (string & {});
 export const DomainStatusEnum = /*@__PURE__*/ S.String;
 
 /** The intended behavior and status information of a domain. */
@@ -2009,7 +2030,8 @@ export const ListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsSitesVersionsFilesStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "EXPECTED"
-  | "ACTIVE";
+  | "ACTIVE"
+  | (string & {});
 export const ListProjectsSitesVersionsFilesStatusEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsSitesVersionsFilesRequest {
@@ -2045,7 +2067,8 @@ export const ListProjectsSitesVersionsFilesRequest = /*@__PURE__*/ S.suspend(
 export type VersionFileStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "EXPECTED"
-  | "ACTIVE";
+  | "ACTIVE"
+  | (string & {});
 export const VersionFileStatusEnum = /*@__PURE__*/ S.String;
 
 /** A static content file that is part of a version. */
@@ -2211,7 +2234,8 @@ export const ListSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListSitesVersionsFilesStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "EXPECTED"
-  | "ACTIVE";
+  | "ACTIVE"
+  | (string & {});
 export const ListSitesVersionsFilesStatusEnum = /*@__PURE__*/ S.String;
 
 export interface ListSitesVersionsFilesRequest {

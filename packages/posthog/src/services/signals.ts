@@ -329,7 +329,8 @@ export type SignalReportArtefactTypeEnum =
   | "title_change"
   | "summary_change"
   | "code_review"
-  | "related_to";
+  | "related_to"
+  | (string & {});
 export const SignalReportArtefactTypeEnum = /*@__PURE__*/ S.String;
 
 export type SignalReportArtefactContentCase0Map = {
@@ -471,7 +472,11 @@ export const SignalsReportArtefactsRetrieveRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SignalsReportArtefactsRetrieveRequest>;
 
 /** * `suppressed` - suppressed * `potential` - potential * `resolved` - resolved */
-export type SignalReportStateEnum = "suppressed" | "potential" | "resolved";
+export type SignalReportStateEnum =
+  | "suppressed"
+  | "potential"
+  | "resolved"
+  | (string & {});
 export const SignalReportStateEnum = /*@__PURE__*/ S.String;
 
 /** * `already_fixed` - Already fixed * `report_unclear` - Report is unclear to me * `analysis_wrong` - Agent's analysis is wrong * `wontfix_intentional` - Won't fix - intentional behavior * `wontfix_irrelevant` - Won't fix - issue is real but insignificant * `other` - Something else… */
@@ -481,7 +486,8 @@ export type DismissalReasonEnum =
   | "analysis_wrong"
   | "wontfix_intentional"
   | "wontfix_irrelevant"
-  | "other";
+  | "other"
+  | (string & {});
 export const DismissalReasonEnum = /*@__PURE__*/ S.String;
 
 /** Report ids to transition to `state` in one call (1–100). Duplicates are de-duplicated; each id is processed independently so one disallowed transition does not block the rest. `dismissal_reason`, `dismissal_note` and `snooze_for` apply to every id. */
@@ -641,7 +647,8 @@ export type SignalReportStatusEnum =
   | "resolved"
   | "failed"
   | "deleted"
-  | "suppressed";
+  | "suppressed"
+  | (string & {});
 export const SignalReportStatusEnum = /*@__PURE__*/ S.String;
 
 /** Distinct source products contributing signals to this report (from ClickHouse). */
@@ -655,11 +662,12 @@ export type SignalReportRefundReasonEnum =
   | "pr_incorrect"
   | "pr_not_useful"
   | "duplicate"
-  | "other";
+  | "other"
+  | (string & {});
 export const SignalReportRefundReasonEnum = /*@__PURE__*/ S.String;
 
 /** * `excluded` - Excluded * `credited` - Credited */
-export type BillingPathEnum = "excluded" | "credited";
+export type BillingPathEnum = "excluded" | "credited" | (string & {});
 export const BillingPathEnum = /*@__PURE__*/ S.String;
 
 export interface SignalReportRefund {
@@ -704,14 +712,16 @@ export type RefundIneligibilityReasonEnum =
   | "already_refunded"
   | "billing_exempt"
   | "no_billable_pr"
-  | "out_of_period";
+  | "out_of_period"
+  | (string & {});
 export const RefundIneligibilityReasonEnum = /*@__PURE__*/ S.String;
 
 /** * `posthog_health_check` - PostHog health check * `posthog_onboarding` - PostHog onboarding * `posthog_system` - PostHog system */
 export type BillingExemptReasonEnum =
   | "posthog_health_check"
   | "posthog_onboarding"
-  | "posthog_system";
+  | "posthog_system"
+  | (string & {});
 export const BillingExemptReasonEnum = /*@__PURE__*/ S.String;
 
 export interface SignalReport {
@@ -1025,7 +1035,8 @@ export type SignalSourceProduct =
   | "judgeme_reviews"
   | "intercom"
   | "hubspot"
-  | "engineering_analytics";
+  | "engineering_analytics"
+  | (string & {});
 export const SignalSourceProduct = /*@__PURE__*/ S.String;
 
 /** * `session_analysis_cluster` - session_analysis_cluster * `session_problem` - session_problem * `evaluation` - evaluation * `evaluation_report` - evaluation_report * `issue` - issue * `ticket` - ticket * `issue_created` - issue_created * `issue_reopened` - issue_reopened * `issue_spiking` - issue_spiking * `endpoint_execution_failed` - endpoint_execution_failed * `endpoint_breakdown_limit_exceeded` - endpoint_breakdown_limit_exceeded * `cross_source_issue` - cross_source_issue * `alert_state_change` - alert_state_change * `health_issue` - health_issue * `scanner_finding` - scanner_finding * `anomaly_investigation` - anomaly_investigation * `feedback` - feedback * `review` - review * `ci_flaky_check` - ci_flaky_check * `ci_broken_default_branch` - ci_broken_default_branch * `ci_duration_regression` - ci_duration_regression */
@@ -1050,7 +1061,8 @@ export type SignalSourceType =
   | "review"
   | "ci_flaky_check"
   | "ci_broken_default_branch"
-  | "ci_duration_regression";
+  | "ci_duration_regression"
+  | (string & {});
 export const SignalSourceType = /*@__PURE__*/ S.String;
 
 export type ProblemTypeEnum =
@@ -1058,7 +1070,8 @@ export type ProblemTypeEnum =
   | "abandonment"
   | "blocking_exception"
   | "non_blocking_exception"
-  | "failure";
+  | "failure"
+  | (string & {});
 export const ProblemTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SessionProblemEventEntry {
@@ -1398,7 +1411,7 @@ export const EndpointBreakdownLimitExceededSignalExtra =
     identifier: "EndpointBreakdownLimitExceededSignalExtra",
   }) as any as S.Schema<EndpointBreakdownLimitExceededSignalExtra>;
 
-export type ReportPriority = "P0" | "P1" | "P2" | "P3" | "P4";
+export type ReportPriority = "P0" | "P1" | "P2" | "P3" | "P4" | (string & {});
 export const ReportPriority = /*@__PURE__*/ S.String;
 
 export interface SignalsScoutEvidenceEntry {
@@ -1482,12 +1495,16 @@ export const SignalsScoutSignalExtra = /*@__PURE__*/ S.suspend(() =>
   identifier: "SignalsScoutSignalExtra",
 }) as any as S.Schema<SignalsScoutSignalExtra>;
 
-export type LogsAlertStateChangeSignalExtraActionEnum = "firing" | "broken";
+export type LogsAlertStateChangeSignalExtraActionEnum =
+  | "firing"
+  | "broken"
+  | (string & {});
 export const LogsAlertStateChangeSignalExtraActionEnum = /*@__PURE__*/ S.String;
 
 export type LogsAlertStateChangeSignalExtraThresholdOperatorEnum =
   | "above"
-  | "below";
+  | "below"
+  | (string & {});
 export const LogsAlertStateChangeSignalExtraThresholdOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -1574,7 +1591,8 @@ export const ReplayVisionScannerFindingSignalExtra = /*@__PURE__*/ S.suspend(
 export type InvestigationVerdictEnum =
   | "true_positive"
   | "false_positive"
-  | "inconclusive";
+  | "inconclusive"
+  | (string & {});
 export const InvestigationVerdictEnum = /*@__PURE__*/ S.String;
 
 export type AnalyticsAnomalyInvestigationSignalExtraTriggeredDatesList =
@@ -1621,7 +1639,8 @@ export const AnalyticsAnomalyInvestigationSignalExtra = /*@__PURE__*/ S.suspend(
 export type HealthCheckSignalExtraSeverityEnum =
   | "critical"
   | "warning"
-  | "info";
+  | "info"
+  | (string & {});
 export const HealthCheckSignalExtraSeverityEnum = /*@__PURE__*/ S.String;
 
 export type HealthCheckSignalExtraPayloadMap = {
@@ -2680,7 +2699,7 @@ export const SignalsScoutConfigCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SignalsScoutConfigCreateRequest",
 }) as any as S.Schema<SignalsScoutConfigCreateRequest>;
 
-export type ScoutOriginEnum = "canonical" | "custom";
+export type ScoutOriginEnum = "canonical" | "custom" | (string & {});
 export const ScoutOriginEnum = /*@__PURE__*/ S.String;
 
 /** Read shape for a per-(team, skill) scout config. One row per `signals-scout-*` skill on the team. The coordinator auto-creates a row when it discovers a scout skill; this serializer lets agents tune the row. */
@@ -3000,11 +3019,18 @@ export const SignalsScoutEmitReportRequestEvidenceList = /*@__PURE__*/ S.Array(
 export type ActionabilityEnum =
   | "immediately_actionable"
   | "requires_human_input"
-  | "not_actionable";
+  | "not_actionable"
+  | (string & {});
 export const ActionabilityEnum = /*@__PURE__*/ S.String;
 
 /** * `P0` - P0 * `P1` - P1 * `P2` - P2 * `P3` - P3 * `P4` - P4 */
-export type AutonomyPriorityEnum = "P0" | "P1" | "P2" | "P3" | "P4";
+export type AutonomyPriorityEnum =
+  | "P0"
+  | "P1"
+  | "P2"
+  | "P3"
+  | "P4"
+  | (string & {});
 export const AutonomyPriorityEnum = /*@__PURE__*/ S.String;
 
 /** Optional reviewers to route the report to (each a `github_login` and/or `user_uuid`). This is the primary way a report reaches a human — the inbox floats a reviewer's own reports to the top of their inbox even when no PR is involved — so set it whenever you can name a plausible owner. It also gates autostart: a PR opens only if at least one reviewer clears their autonomy threshold. */
@@ -4754,7 +4780,8 @@ export type RunStatusEnum =
   | "in_progress"
   | "completed"
   | "failed"
-  | "cancelled";
+  | "cancelled"
+  | (string & {});
 export const RunStatusEnum = /*@__PURE__*/ S.String;
 
 /** The `finding_id`s behind `emitted_count`, in emit order. Each maps to a `Signal` with `source_id = run:<run_id>:finding:<finding_id>`. Empty for non-emitting runs. */
@@ -5213,7 +5240,8 @@ export type SignalSourceConfigSourceProductEnum =
   | "judgeme_reviews"
   | "intercom"
   | "hubspot"
-  | "engineering_analytics";
+  | "engineering_analytics"
+  | (string & {});
 export const SignalSourceConfigSourceProductEnum = /*@__PURE__*/ S.String;
 
 /** * `session_analysis_cluster` - Session analysis cluster * `evaluation` - Evaluation * `evaluation_report` - Evaluation report * `issue` - Issue * `ticket` - Ticket * `issue_created` - Issue created * `issue_reopened` - Issue reopened * `issue_spiking` - Issue spiking * `cross_source_issue` - Cross source issue * `alert_state_change` - Alert state change * `health_issue` - Health issue * `endpoint_execution_failed` - Endpoint execution failed * `endpoint_breakdown_limit_exceeded` - Endpoint breakdown limit exceeded * `scanner_finding` - Scanner finding * `anomaly_investigation` - Anomaly investigation * `ci_flaky_check` - CI flaky check * `ci_broken_default_branch` - CI broken default branch * `ci_duration_regression` - CI duration regression */
@@ -5235,7 +5263,8 @@ export type SignalSourceConfigSourceTypeEnum =
   | "anomaly_investigation"
   | "ci_flaky_check"
   | "ci_broken_default_branch"
-  | "ci_duration_regression";
+  | "ci_duration_regression"
+  | (string & {});
 export const SignalSourceConfigSourceTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SignalsSourceConfigsCreateRequest {

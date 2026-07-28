@@ -42,7 +42,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -50,7 +51,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -92,7 +94,8 @@ export const AzureLargeInstanceGetResponseTagsMap = /*@__PURE__*/ S.Record(
 export type AzureLargeInstanceHardwareTypeNamesEnum =
   | "Cisco_UCS"
   | "HPE"
-  | "SDFLEX";
+  | "SDFLEX"
+  | (string & {});
 export const AzureLargeInstanceHardwareTypeNamesEnum = /*@__PURE__*/ S.String;
 
 /** Enum of available model types (each of which have their own storage / memory sizes) for an Azure Large Instance type. See https://learn.microsoft.com/azure/sap/large-instances/hana-available-skus */
@@ -141,7 +144,8 @@ export type AzureLargeInstanceSizeNamesEnum =
   | "S896oo"
   | "S896oom"
   | "S896ooo"
-  | "S960m";
+  | "S960m"
+  | (string & {});
 export const AzureLargeInstanceSizeNamesEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the hardware settings for the Azure Large Instance. */
@@ -255,7 +259,8 @@ export type AzureLargeInstancePowerStateEnum =
   | "stopping"
   | "stopped"
   | "restarting"
-  | "unknown";
+  | "unknown"
+  | (string & {});
 export const AzureLargeInstancePowerStateEnum = /*@__PURE__*/ S.String;
 
 /** Provisioning states that an Azure Large Instance can be in */
@@ -267,7 +272,8 @@ export type AzureLargeInstanceProvisioningStatesEnum =
   | "Succeeded"
   | "Deleting"
   | "Migrating"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const AzureLargeInstanceProvisioningStatesEnum = /*@__PURE__*/ S.String;
 
 /** Describes the properties of an Azure Large Instance. */
@@ -442,7 +448,10 @@ export const AzureLargeInstanceListBySubscriptionRequest =
   }) as any as S.Schema<AzureLargeInstanceListBySubscriptionRequest>;
 
 /** Enum of two possible values to determine if the ALI instance restart operation should forcefully terminate and halt any existing processes that may be running on the server or not. */
-export type AzureLargeInstanceForcePowerState = "active" | "inactive";
+export type AzureLargeInstanceForcePowerState =
+  | "active"
+  | "inactive"
+  | (string & {});
 export const AzureLargeInstanceForcePowerState = /*@__PURE__*/ S.String;
 
 export interface AzureLargeInstanceRestartRequest {
@@ -870,7 +879,8 @@ export type ProvisioningState =
   | "Succeeded"
   | "Deleting"
   | "Canceled"
-  | "Migrating";
+  | "Migrating"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Describes the billing related details of the AzureLargeStorageInstance. */
@@ -1191,11 +1201,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */

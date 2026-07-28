@@ -117,7 +117,8 @@ export type ActiveDirectoryStateEnum =
   | "IN_USE"
   | "DELETING"
   | "ERROR"
-  | "DIAGNOSING";
+  | "DIAGNOSING"
+  | (string & {});
 export const ActiveDirectoryStateEnum = /*@__PURE__*/ S.String;
 
 /** ActiveDirectory is the public representation of the active directory config. */
@@ -278,7 +279,8 @@ export type BackupPolicyStateEnum =
   | "READY"
   | "DELETING"
   | "ERROR"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const BackupPolicyStateEnum = /*@__PURE__*/ S.String;
 
 /** Backup Policy. */
@@ -347,7 +349,8 @@ export const CreateProjectsLocationsBackupPoliciesRequest =
 export type BackupVaultBackupVaultTypeEnum =
   | "BACKUP_VAULT_TYPE_UNSPECIFIED"
   | "IN_REGION"
-  | "CROSS_REGION";
+  | "CROSS_REGION"
+  | (string & {});
 export const BackupVaultBackupVaultTypeEnum = /*@__PURE__*/ S.String;
 
 /** Retention policy for backups in the backup vault */
@@ -381,7 +384,8 @@ export type BackupVaultStateEnum =
   | "READY"
   | "DELETING"
   | "ERROR"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const BackupVaultStateEnum = /*@__PURE__*/ S.String;
 
 export type BackupVaultEncryptionStateEnum =
@@ -389,7 +393,8 @@ export type BackupVaultEncryptionStateEnum =
   | "ENCRYPTION_STATE_PENDING"
   | "ENCRYPTION_STATE_COMPLETED"
   | "ENCRYPTION_STATE_IN_PROGRESS"
-  | "ENCRYPTION_STATE_FAILED";
+  | "ENCRYPTION_STATE_FAILED"
+  | (string & {});
 export const BackupVaultEncryptionStateEnum = /*@__PURE__*/ S.String;
 
 /** A NetApp BackupVault. */
@@ -484,7 +489,11 @@ export const OntapSource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OntapSource" }) as any as S.Schema<OntapSource>;
 
-export type BackupBackupTypeEnum = "TYPE_UNSPECIFIED" | "MANUAL" | "SCHEDULED";
+export type BackupBackupTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "MANUAL"
+  | "SCHEDULED"
+  | (string & {});
 export const BackupBackupTypeEnum = /*@__PURE__*/ S.String;
 
 export type BackupStateEnum =
@@ -494,7 +503,8 @@ export type BackupStateEnum =
   | "READY"
   | "DELETING"
   | "ERROR"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
 /** A NetApp Backup. */
@@ -578,14 +588,18 @@ export const CreateProjectsLocationsBackupVaultsBackupsRequest =
     identifier: "CreateProjectsLocationsBackupVaultsBackupsRequest",
   }) as any as S.Schema<CreateProjectsLocationsBackupVaultsBackupsRequest>;
 
-export type HostGroupTypeEnum = "TYPE_UNSPECIFIED" | "ISCSI_INITIATOR";
+export type HostGroupTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "ISCSI_INITIATOR"
+  | (string & {});
 export const HostGroupTypeEnum = /*@__PURE__*/ S.String;
 
 export type HostGroupOsTypeEnum =
   | "OS_TYPE_UNSPECIFIED"
   | "LINUX"
   | "WINDOWS"
-  | "ESXI";
+  | "ESXI"
+  | (string & {});
 export const HostGroupOsTypeEnum = /*@__PURE__*/ S.String;
 
 export type HostGroupStateEnum =
@@ -594,7 +608,8 @@ export type HostGroupStateEnum =
   | "READY"
   | "UPDATING"
   | "DELETING"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const HostGroupStateEnum = /*@__PURE__*/ S.String;
 
 /** Host group is a collection of hosts that can be used for accessing a Block Volume. */
@@ -666,7 +681,8 @@ export type KmsConfigStateEnum =
   | "KEY_NOT_REACHABLE"
   | "DISABLING"
   | "DISABLED"
-  | "MIGRATING";
+  | "MIGRATING"
+  | (string & {});
 export const KmsConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** KmsConfig is the customer-managed encryption key(CMEK) configuration. */
@@ -737,13 +753,15 @@ export type StoragePoolStateEnum =
   | "UPDATING"
   | "RESTORING"
   | "DISABLED"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const StoragePoolStateEnum = /*@__PURE__*/ S.String;
 
 export type StoragePoolEncryptionTypeEnum =
   | "ENCRYPTION_TYPE_UNSPECIFIED"
   | "SERVICE_MANAGED"
-  | "CLOUD_KMS";
+  | "CLOUD_KMS"
+  | (string & {});
 export const StoragePoolEncryptionTypeEnum = /*@__PURE__*/ S.String;
 
 export type StoragePoolServiceLevelEnum =
@@ -751,25 +769,36 @@ export type StoragePoolServiceLevelEnum =
   | "PREMIUM"
   | "EXTREME"
   | "STANDARD"
-  | "FLEX";
+  | "FLEX"
+  | (string & {});
 export const StoragePoolServiceLevelEnum = /*@__PURE__*/ S.String;
 
-export type StoragePoolModeEnum = "MODE_UNSPECIFIED" | "DEFAULT" | "ONTAP";
+export type StoragePoolModeEnum =
+  | "MODE_UNSPECIFIED"
+  | "DEFAULT"
+  | "ONTAP"
+  | (string & {});
 export const StoragePoolModeEnum = /*@__PURE__*/ S.String;
 
-export type StoragePoolQosTypeEnum = "QOS_TYPE_UNSPECIFIED" | "AUTO" | "MANUAL";
+export type StoragePoolQosTypeEnum =
+  | "QOS_TYPE_UNSPECIFIED"
+  | "AUTO"
+  | "MANUAL"
+  | (string & {});
 export const StoragePoolQosTypeEnum = /*@__PURE__*/ S.String;
 
 export type StoragePoolTypeEnum =
   | "STORAGE_POOL_TYPE_UNSPECIFIED"
   | "FILE"
-  | "UNIFIED";
+  | "UNIFIED"
+  | (string & {});
 export const StoragePoolTypeEnum = /*@__PURE__*/ S.String;
 
 export type StoragePoolScaleTypeEnum =
   | "SCALE_TYPE_UNSPECIFIED"
   | "SCALE_TYPE_DEFAULT"
-  | "SCALE_TYPE_SCALEOUT";
+  | "SCALE_TYPE_SCALEOUT"
+  | (string & {});
 export const StoragePoolScaleTypeEnum = /*@__PURE__*/ S.String;
 
 /** StoragePool is a container for volumes with a service level and capacity. Volumes can be created in a pool of sufficient available capacity. StoragePool capacity is what you are billed for. */
@@ -917,7 +946,8 @@ export type VolumeSmbSettingsItemEnum =
   | "SHOW_SNAPSHOT"
   | "SHOW_PREVIOUS_VERSIONS"
   | "ACCESS_BASED_ENUMERATION"
-  | "CONTINUOUSLY_AVAILABLE";
+  | "CONTINUOUSLY_AVAILABLE"
+  | (string & {});
 export const VolumeSmbSettingsItemEnum = /*@__PURE__*/ S.String;
 
 export type VolumeSmbSettingsItemEnumList =
@@ -932,7 +962,8 @@ export type MountOptionProtocolEnum =
   | "NFSV4"
   | "SMB"
   | "ISCSI"
-  | "NVME";
+  | "NVME"
+  | (string & {});
 export const MountOptionProtocolEnum = /*@__PURE__*/ S.String;
 
 /** View only mount options for a volume. */
@@ -967,7 +998,8 @@ export type BlockDeviceOsTypeEnum =
   | "OS_TYPE_UNSPECIFIED"
   | "LINUX"
   | "WINDOWS"
-  | "ESXI";
+  | "ESXI"
+  | (string & {});
 export const BlockDeviceOsTypeEnum = /*@__PURE__*/ S.String;
 
 /** Block device represents the device(s) which are stored in the block volume. */
@@ -1008,13 +1040,15 @@ export type VolumeStateEnum =
   | "DISABLED"
   | "ERROR"
   | "PREPARING"
-  | "READ_ONLY";
+  | "READ_ONLY"
+  | (string & {});
 export const VolumeStateEnum = /*@__PURE__*/ S.String;
 
 export type VolumeSecurityStyleEnum =
   | "SECURITY_STYLE_UNSPECIFIED"
   | "NTFS"
-  | "UNIX";
+  | "UNIX"
+  | (string & {});
 export const VolumeSecurityStyleEnum = /*@__PURE__*/ S.String;
 
 /** BackupConfig contains backup related config on a volume. */
@@ -1039,7 +1073,8 @@ export const BackupConfig = /*@__PURE__*/ S.suspend(() =>
 
 export type VolumeRestrictedActionsItemEnum =
   | "RESTRICTED_ACTION_UNSPECIFIED"
-  | "DELETE";
+  | "DELETE"
+  | (string & {});
 export const VolumeRestrictedActionsItemEnum = /*@__PURE__*/ S.String;
 
 export type VolumeRestrictedActionsItemEnumList =
@@ -1064,7 +1099,8 @@ export const LargeCapacityConfig = /*@__PURE__*/ S.suspend(() =>
 export type VolumeEncryptionTypeEnum =
   | "ENCRYPTION_TYPE_UNSPECIFIED"
   | "SERVICE_MANAGED"
-  | "CLOUD_KMS";
+  | "CLOUD_KMS"
+  | (string & {});
 export const VolumeEncryptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Details about a clone volume. */
@@ -1105,7 +1141,8 @@ export type VolumeServiceLevelEnum =
   | "PREMIUM"
   | "EXTREME"
   | "STANDARD"
-  | "FLEX";
+  | "FLEX"
+  | (string & {});
 export const VolumeServiceLevelEnum = /*@__PURE__*/ S.String;
 
 /** Pre-populate cache volume with data from the origin volume. */
@@ -1132,7 +1169,8 @@ export type CacheConfigCachePrePopulateStateEnum =
   | "NOT_NEEDED"
   | "IN_PROGRESS"
   | "COMPLETE"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const CacheConfigCachePrePopulateStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration of the cache volume. */
@@ -1160,7 +1198,8 @@ export type CacheParametersCacheStateEnum =
   | "PENDING_CLUSTER_PEERING"
   | "PENDING_SVM_PEERING"
   | "PEERED"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const CacheParametersCacheStateEnum = /*@__PURE__*/ S.String;
 
 /** Cache Parameters for the volume. */
@@ -1212,7 +1251,8 @@ export type VolumeProtocolsItemEnum =
   | "NFSV4"
   | "SMB"
   | "ISCSI"
-  | "NVME";
+  | "NVME"
+  | (string & {});
 export const VolumeProtocolsItemEnum = /*@__PURE__*/ S.String;
 
 export type VolumeProtocolsItemEnumList =
@@ -1320,7 +1360,8 @@ export const SnapshotPolicy = /*@__PURE__*/ S.suspend(() =>
 export type TieringPolicyTierActionEnum =
   | "TIER_ACTION_UNSPECIFIED"
   | "ENABLED"
-  | "PAUSED";
+  | "PAUSED"
+  | (string & {});
 export const TieringPolicyTierActionEnum = /*@__PURE__*/ S.String;
 
 /** Defines tiering policy for the volume. */
@@ -1344,14 +1385,16 @@ export type SimpleExportPolicyRuleAccessTypeEnum =
   | "ACCESS_TYPE_UNSPECIFIED"
   | "READ_ONLY"
   | "READ_WRITE"
-  | "READ_NONE";
+  | "READ_NONE"
+  | (string & {});
 export const SimpleExportPolicyRuleAccessTypeEnum = /*@__PURE__*/ S.String;
 
 export type SimpleExportPolicyRuleSquashModeEnum =
   | "SQUASH_MODE_UNSPECIFIED"
   | "NO_ROOT_SQUASH"
   | "ROOT_SQUASH"
-  | "ALL_SQUASH";
+  | "ALL_SQUASH"
+  | (string & {});
 export const SimpleExportPolicyRuleSquashModeEnum = /*@__PURE__*/ S.String;
 
 /** An export policy rule describing various export options. */
@@ -1424,7 +1467,8 @@ export type HybridReplicationParametersHybridReplicationTypeEnum =
   | "MIGRATION"
   | "CONTINUOUS_REPLICATION"
   | "ONPREM_REPLICATION"
-  | "REVERSE_ONPREM_REPLICATION";
+  | "REVERSE_ONPREM_REPLICATION"
+  | (string & {});
 export const HybridReplicationParametersHybridReplicationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1432,7 +1476,8 @@ export type HybridReplicationParametersReplicationScheduleEnum =
   | "HYBRID_REPLICATION_SCHEDULE_UNSPECIFIED"
   | "EVERY_10_MINUTES"
   | "HOURLY"
-  | "DAILY";
+  | "DAILY"
+  | (string & {});
 export const HybridReplicationParametersReplicationScheduleEnum =
   /*@__PURE__*/ S.String;
 
@@ -1653,7 +1698,8 @@ export type QuotaRuleTypeEnum =
   | "INDIVIDUAL_USER_QUOTA"
   | "INDIVIDUAL_GROUP_QUOTA"
   | "DEFAULT_USER_QUOTA"
-  | "DEFAULT_GROUP_QUOTA";
+  | "DEFAULT_GROUP_QUOTA"
+  | (string & {});
 export const QuotaRuleTypeEnum = /*@__PURE__*/ S.String;
 
 export type QuotaRuleStateEnum =
@@ -1662,7 +1708,8 @@ export type QuotaRuleStateEnum =
   | "UPDATING"
   | "DELETING"
   | "READY"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const QuotaRuleStateEnum = /*@__PURE__*/ S.String;
 
 /** QuotaRule specifies the maximum disk space a user or group can use within a volume. They can be used for creating default and individual quota rules. */
@@ -1730,7 +1777,8 @@ export type ReplicationHybridReplicationTypeEnum =
   | "MIGRATION"
   | "CONTINUOUS_REPLICATION"
   | "ONPREM_REPLICATION"
-  | "REVERSE_ONPREM_REPLICATION";
+  | "REVERSE_ONPREM_REPLICATION"
+  | (string & {});
 export const ReplicationHybridReplicationTypeEnum = /*@__PURE__*/ S.String;
 
 /** UserCommands contains the commands to be executed by the customer. */
@@ -1754,14 +1802,16 @@ export type ReplicationStateEnum =
   | "PENDING_CLUSTER_PEERING"
   | "PENDING_SVM_PEERING"
   | "PENDING_REMOTE_RESYNC"
-  | "EXTERNALLY_MANAGED_REPLICATION";
+  | "EXTERNALLY_MANAGED_REPLICATION"
+  | (string & {});
 export const ReplicationStateEnum = /*@__PURE__*/ S.String;
 
 export type ReplicationReplicationScheduleEnum =
   | "REPLICATION_SCHEDULE_UNSPECIFIED"
   | "EVERY_10_MINUTES"
   | "HOURLY"
-  | "DAILY";
+  | "DAILY"
+  | (string & {});
 export const ReplicationReplicationScheduleEnum = /*@__PURE__*/ S.String;
 
 /** TransferStats reports all statistics related to replication transfer. */
@@ -1805,7 +1855,8 @@ export type ReplicationMirrorStateEnum =
   | "BASELINE_TRANSFERRING"
   | "ABORTED"
   | "EXTERNALLY_MANAGED"
-  | "PENDING_PEERING";
+  | "PENDING_PEERING"
+  | (string & {});
 export const ReplicationMirrorStateEnum = /*@__PURE__*/ S.String;
 
 /** HybridPeeringDetails contains details about the hybrid peering. */
@@ -1842,7 +1893,8 @@ export const HybridPeeringDetails = /*@__PURE__*/ S.suspend(() =>
 export type ReplicationRoleEnum =
   | "REPLICATION_ROLE_UNSPECIFIED"
   | "SOURCE"
-  | "DESTINATION";
+  | "DESTINATION"
+  | (string & {});
 export const ReplicationRoleEnum = /*@__PURE__*/ S.String;
 
 /** DestinationVolumeParameters specify input parameters used for creating destination volume. */
@@ -1964,7 +2016,8 @@ export type SnapshotStateEnum =
   | "DELETING"
   | "UPDATING"
   | "DISABLED"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const SnapshotStateEnum = /*@__PURE__*/ S.String;
 
 /** Snapshot is a point-in-time version of a Volume's content. */
@@ -4196,7 +4249,8 @@ export const UpdateBackupConfigProjectsLocationsStoragePoolsRequest =
 
 export type ValidateDirectoryServiceRequestDirectoryServiceTypeEnum =
   | "DIRECTORY_SERVICE_TYPE_UNSPECIFIED"
-  | "ACTIVE_DIRECTORY";
+  | "ACTIVE_DIRECTORY"
+  | (string & {});
 export const ValidateDirectoryServiceRequestDirectoryServiceTypeEnum =
   /*@__PURE__*/ S.String;
 

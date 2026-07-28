@@ -12,7 +12,7 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `FeatureFlag` - feature flag */
-export type ModelNameEnum = "FeatureFlag";
+export type ModelNameEnum = "FeatureFlag" | (string & {});
 export const ModelNameEnum = /*@__PURE__*/ S.String;
 
 /** * `daily` - daily * `weekly` - weekly * `monthly` - monthly * `yearly` - yearly */
@@ -20,7 +20,8 @@ export type ScheduledChangeRecurrenceIntervalEnum =
   | "daily"
   | "weekly"
   | "monthly"
-  | "yearly";
+  | "yearly"
+  | (string & {});
 export const ScheduledChangeRecurrenceIntervalEnum = /*@__PURE__*/ S.String;
 
 export interface ScheduledChangesCreateRequest {
@@ -81,10 +82,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;

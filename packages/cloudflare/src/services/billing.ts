@@ -226,13 +226,13 @@ export const GetUsageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUsageRequest",
 }) as any as S.Schema<GetUsageRequest>;
 
-export type UsageGetResultItemChargeCategory = "Usage";
+export type UsageGetResultItemChargeCategory = "Usage" | (string & {});
 export const UsageGetResultItemChargeCategory = /*@__PURE__*/ S.String;
 
-export type UsageGetResultItemChargeFrequency = "Usage-Based";
+export type UsageGetResultItemChargeFrequency = "Usage-Based" | (string & {});
 export const UsageGetResultItemChargeFrequency = /*@__PURE__*/ S.String;
 
-export type UsageGetResultItemChargeClass = "Correction";
+export type UsageGetResultItemChargeClass = "Correction" | (string & {});
 export const UsageGetResultItemChargeClass = /*@__PURE__*/ S.String;
 
 export interface UsageGetResultItem {

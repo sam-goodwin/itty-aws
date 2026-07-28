@@ -1007,7 +1007,7 @@ export const MarketingAnalyticsUtmAuditRetrieveRequest =
   }) as any as S.Schema<MarketingAnalyticsUtmAuditRetrieveRequest>;
 
 /** * `error` - error * `warning` - warning */
-export type UtmIssueSeverityEnum = "error" | "warning";
+export type UtmIssueSeverityEnum = "error" | "warning" | (string & {});
 export const UtmIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 export interface UtmIssue {
@@ -1075,7 +1075,7 @@ export const UtmAuditResponseResultsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UtmAuditResponseResultsList>;
 
 /** * `none` - none * `auto` - auto * `mapped` - mapped */
-export type SourceMatchEnum = "none" | "auto" | "mapped";
+export type SourceMatchEnum = "none" | "auto" | "mapped" | (string & {});
 export const SourceMatchEnum = /*@__PURE__*/ S.String;
 
 export interface UtmEvent {

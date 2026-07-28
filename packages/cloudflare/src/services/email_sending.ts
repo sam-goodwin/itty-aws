@@ -238,7 +238,8 @@ export type SubdomainsDnsGetResultItemType =
   | "SSHFP"
   | "SVCB"
   | "TLSA"
-  | "URI";
+  | "URI"
+  | (string & {});
 export const SubdomainsDnsGetResultItemType = /*@__PURE__*/ S.String;
 
 export interface SubdomainsDnsGetResultItem {
@@ -382,7 +383,9 @@ export const SendRequestFrom = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([[], ["address", "name"]]),
 );
 
-export type SendRequestAttachmentsItemInlineDisposition = "inline";
+export type SendRequestAttachmentsItemInlineDisposition =
+  | "inline"
+  | (string & {});
 export const SendRequestAttachmentsItemInlineDisposition =
   /*@__PURE__*/ S.String;
 
@@ -410,7 +413,9 @@ export const SendRequestAttachmentsItemInline = /*@__PURE__*/ S.suspend(() =>
   identifier: "SendRequestAttachmentsItemInline",
 }) as any as S.Schema<SendRequestAttachmentsItemInline>;
 
-export type SendRequestAttachmentsItemAttachmentDisposition = "attachment";
+export type SendRequestAttachmentsItemAttachmentDisposition =
+  | "attachment"
+  | (string & {});
 export const SendRequestAttachmentsItemAttachmentDisposition =
   /*@__PURE__*/ S.String;
 

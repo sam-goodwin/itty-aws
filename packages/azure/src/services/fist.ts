@@ -47,7 +47,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -55,7 +56,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -110,7 +112,7 @@ export const BinaryHardeningFeatures = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BinaryHardeningFeatures>;
 
 /** String to indicate if the executable is 32 or 64 bit. */
-export type ExecutableClass = "x86" | "x64";
+export type ExecutableClass = "x86" | "x64" | (string & {});
 export const ExecutableClass = /*@__PURE__*/ S.String;
 
 /** The status of a firmware analysis job. */
@@ -120,7 +122,8 @@ export type ProvisioningState =
   | "Canceled"
   | "Pending"
   | "Extracting"
-  | "Analyzing";
+  | "Analyzing"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Binary hardening of a firmware. */
@@ -276,7 +279,8 @@ export type CertificateUsage =
   | "codeSigning"
   | "emailProtection"
   | "timeStamping"
-  | "ocspSigning";
+  | "ocspSigning"
+  | (string & {});
 export const CertificateUsage = /*@__PURE__*/ S.String;
 
 /** List of functions the certificate can fulfill. */
@@ -457,7 +461,7 @@ export const CryptoKeysListByFirmwareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CryptoKeysListByFirmwareRequest>;
 
 /** Different types of cryptographic keys. */
-export type CryptoKeyType = "Public" | "Private";
+export type CryptoKeyType = "Public" | "Private" | (string & {});
 export const CryptoKeyType = /*@__PURE__*/ S.String;
 
 /** Functions the key can fulfill. */
@@ -745,7 +749,13 @@ export const CveResourceListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CveResourceListResult>;
 
 /** The status of a firmware analysis job. */
-export type Status = "Pending" | "Extracting" | "Analyzing" | "Ready" | "Error";
+export type Status =
+  | "Pending"
+  | "Extracting"
+  | "Analyzing"
+  | "Ready"
+  | "Error"
+  | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 
 /** Error and status message */
@@ -1150,11 +1160,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -1422,7 +1432,8 @@ export type SummariesGetRequestSummaryType =
   | "CommonVulnerabilitiesAndExposures"
   | "BinaryHardening"
   | "CryptoCertificate"
-  | "CryptoKey";
+  | "CryptoKey"
+  | (string & {});
 export const SummariesGetRequestSummaryType = /*@__PURE__*/ S.String;
 
 export interface SummariesGetRequest {
@@ -1462,7 +1473,8 @@ export type SummaryType =
   | "CommonVulnerabilitiesAndExposures"
   | "BinaryHardening"
   | "CryptoCertificate"
-  | "CryptoKey";
+  | "CryptoKey"
+  | (string & {});
 export const SummaryType = /*@__PURE__*/ S.String;
 
 /** Properties of an analysis summary. */
@@ -1739,7 +1751,7 @@ export const WorkspacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspacePropertiesInput>;
 
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
-export type SkuTier = "Free" | "Basic" | "Standard" | "Premium";
+export type SkuTier = "Free" | "Basic" | "Standard" | "Premium" | (string & {});
 export const SkuTier = /*@__PURE__*/ S.String;
 
 /** The resource model definition representing SKU */
@@ -2174,7 +2186,8 @@ export type AzureResourceManagerCommonTypesSkuUpdateTier =
   | "Free"
   | "Basic"
   | "Standard"
-  | "Premium";
+  | "Premium"
+  | (string & {});
 export const AzureResourceManagerCommonTypesSkuUpdateTier =
   /*@__PURE__*/ S.String;
 

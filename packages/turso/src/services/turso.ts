@@ -111,7 +111,11 @@ export const AddLocationToGroupResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddLocationToGroupResponse>;
 
 /** The role given to the user. */
-export type AddOrganizationMemberRequestRole = "admin" | "member" | "viewer";
+export type AddOrganizationMemberRequestRole =
+  | "admin"
+  | "member"
+  | "viewer"
+  | (string & {});
 export const AddOrganizationMemberRequestRole = /*@__PURE__*/ S.String;
 
 export interface AddOrganizationMemberRequest {
@@ -139,7 +143,7 @@ export const AddOrganizationMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddOrganizationMemberRequest>;
 
 /** The role assigned to the member. */
-export type Role = "owner" | "admin" | "member" | "viewer";
+export type Role = "owner" | "admin" | "member" | "viewer" | (string & {});
 export const Role = /*@__PURE__*/ S.String;
 
 export interface AddOrganizationMemberResponse {
@@ -166,7 +170,8 @@ export type CreateAPITokenRequestScopesItem =
   | "group:mint-token"
   | "group:rotate-creds"
   | "read-only"
-  | "full-access";
+  | "full-access"
+  | (string & {});
 export const CreateAPITokenRequestScopesItem = /*@__PURE__*/ S.String;
 
 /** Permissions to grant a group-scoped token. Each entry is either an individual scope or one of the presets `read-only` (expands to `read`) and `full-access` (expands to every scope). Required and must be non-empty when `group` is set. `db:mint-token` lets the token issue new SQL credentials; `db:rotate-creds` invalidates every existing SQL token for the database — they are deliberately separate because rotation is destructive. */
@@ -220,7 +225,10 @@ export const CreateAPITokenResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAPITokenResponse>;
 
 /** The type of seed to be used to create a new database. Use `database` to copy from an existing database, or `database_upload` to [upload a SQLite database file](/api-reference/databases/upload). */
-export type CreateDatabaseRequestSeedType = "database" | "database_upload";
+export type CreateDatabaseRequestSeedType =
+  | "database"
+  | "database_upload"
+  | (string & {});
 export const CreateDatabaseRequestSeedType = /*@__PURE__*/ S.String;
 
 export interface CreateDatabaseRequestSeed {
@@ -251,7 +259,8 @@ export type CreateDatabaseRequestRemoteEncryptionEncryptionCipher =
   | "aegis128x4"
   | "aegis256"
   | "aegis256x2"
-  | "aegis256x4";
+  | "aegis256x4"
+  | (string & {});
 export const CreateDatabaseRequestRemoteEncryptionEncryptionCipher =
   /*@__PURE__*/ S.String;
 
@@ -335,7 +344,8 @@ export const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateDatabaseTokenRequestAuthorization =
   | "full-access"
-  | "read-only";
+  | "read-only"
+  | (string & {});
 export const CreateDatabaseTokenRequestAuthorization = /*@__PURE__*/ S.String;
 
 export type CreateDatabaseTokenRequestPermissionsReadAttachDatabasesList =
@@ -419,7 +429,7 @@ export const CreateDatabaseTokenResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatabaseTokenResponse>;
 
 /** Set to `all` to enable all extensions. */
-export type ExtensionsCase0 = "all";
+export type ExtensionsCase0 = "all" | (string & {});
 export const ExtensionsCase0 = /*@__PURE__*/ S.String;
 
 export type ExtensionsCase1Item =
@@ -432,7 +442,8 @@ export type ExtensionsCase1Item =
   | "unicode"
   | "uuid"
   | "regexp"
-  | "vec";
+  | "vec"
+  | (string & {});
 export const ExtensionsCase1Item = /*@__PURE__*/ S.String;
 
 /** Array of extensions to enable. */
@@ -484,7 +495,10 @@ export const CreateGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateGroupResponse",
 }) as any as S.Schema<CreateGroupResponse>;
 
-export type CreateGroupTokenRequestAuthorization = "full-access" | "read-only";
+export type CreateGroupTokenRequestAuthorization =
+  | "full-access"
+  | "read-only"
+  | (string & {});
 export const CreateGroupTokenRequestAuthorization = /*@__PURE__*/ S.String;
 
 export type CreateGroupTokenRequestPermissionsReadAttachDatabasesList =
@@ -889,7 +903,7 @@ export const GetDatabaseInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatabaseInstanceRequest>;
 
 /** The type of database instance this, will be `primary` or `replica`. */
-export type InstanceType = "primary" | "replica";
+export type InstanceType = "primary" | "replica" | (string & {});
 export const InstanceType = /*@__PURE__*/ S.String;
 
 export interface Instance {
@@ -1166,7 +1180,7 @@ export const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationRequest>;
 
 /** The type of account this organization is. Will always be `personal` or `team`. */
-export type OrganizationType = "personal" | "team";
+export type OrganizationType = "personal" | "team" | (string & {});
 export const OrganizationType = /*@__PURE__*/ S.String;
 
 export interface Organization {
@@ -1239,7 +1253,12 @@ export const GetOrganizationMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationMemberRequest>;
 
 /** The role assigned to the member. */
-export type MemberRole = "owner" | "admin" | "member" | "viewer";
+export type MemberRole =
+  | "owner"
+  | "admin"
+  | "member"
+  | "viewer"
+  | (string & {});
 export const MemberRole = /*@__PURE__*/ S.String;
 
 export interface Member {
@@ -1472,7 +1491,8 @@ export const InvalidateGroupTokensResponse = /*@__PURE__*/ S.suspend(() =>
 export type InviteOrganizationMemberV2RequestRole =
   | "admin"
   | "member"
-  | "viewer";
+  | "viewer"
+  | (string & {});
 export const InviteOrganizationMemberV2RequestRole = /*@__PURE__*/ S.String;
 
 export interface InviteOrganizationMemberV2Request {
@@ -1503,7 +1523,7 @@ export const InviteOrganizationMemberV2Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InviteOrganizationMemberV2Request>;
 
 /** The assigned role for the invited user. */
-export type InviteCreatedV2Role = "admin" | "member" | "viewer";
+export type InviteCreatedV2Role = "admin" | "member" | "viewer" | (string & {});
 export const InviteCreatedV2Role = /*@__PURE__*/ S.String;
 
 export interface InviteCreatedV2 {
@@ -1873,7 +1893,8 @@ export type AuditLogCode =
   | "group-protect"
   | "group-unprotect"
   | "db-aunrchive"
-  | "user-delete";
+  | "user-delete"
+  | (string & {});
 export const AuditLogCode = /*@__PURE__*/ S.String;
 
 export interface AuditLog {
@@ -1962,7 +1983,7 @@ export const ListOrganizationInvitesV2Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationInvitesV2Request>;
 
 /** The assigned role for the invited user. */
-export type InviteV2Role = "admin" | "member" | "viewer";
+export type InviteV2Role = "admin" | "member" | "viewer" | (string & {});
 export const InviteV2Role = /*@__PURE__*/ S.String;
 
 export interface InviteV2 {
@@ -2002,7 +2023,11 @@ export const ListOrganizationInvitesV2Response = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationInvitesV2Response",
 }) as any as S.Schema<ListOrganizationInvitesV2Response>;
 
-export type ListOrganizationInvoicesRequestType = "all" | "upcoming" | "issued";
+export type ListOrganizationInvoicesRequestType =
+  | "all"
+  | "upcoming"
+  | "issued"
+  | (string & {});
 export const ListOrganizationInvoicesRequestType = /*@__PURE__*/ S.String;
 
 export interface ListOrganizationInvoicesRequest {
@@ -2565,7 +2590,11 @@ export const UpdateGroupDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateGroupDatabasesResponse>;
 
 /** The new role to assign to the member. */
-export type UpdateMemberRoleRequestRole = "admin" | "member" | "viewer";
+export type UpdateMemberRoleRequestRole =
+  | "admin"
+  | "member"
+  | "viewer"
+  | (string & {});
 export const UpdateMemberRoleRequestRole = /*@__PURE__*/ S.String;
 
 export interface UpdateMemberRoleRequest {
@@ -2593,7 +2622,11 @@ export const UpdateMemberRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateMemberRoleRequest>;
 
 /** The new role of the updated member. */
-export type UpdateMemberRoleResponseMemberRole = "admin" | "member" | "viewer";
+export type UpdateMemberRoleResponseMemberRole =
+  | "admin"
+  | "member"
+  | "viewer"
+  | (string & {});
 export const UpdateMemberRoleResponseMemberRole = /*@__PURE__*/ S.String;
 
 export interface UpdateMemberRoleResponseMember {

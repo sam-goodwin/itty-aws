@@ -449,7 +449,8 @@ export type GoogleFirebaseAppdistroV1alphaDeviceExecutionInconclusiveReasonEnum 
     | "FORBIDDEN_PERMISSIONS"
     | "DEVICE_ADMIN_RECEIVER"
     | "NO_CODE_APK"
-    | "INVALID_APK_PREVIEW_SDK";
+    | "INVALID_APK_PREVIEW_SDK"
+    | (string & {});
 export const GoogleFirebaseAppdistroV1alphaDeviceExecutionInconclusiveReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -475,7 +476,8 @@ export type GoogleFirebaseAppdistroV1alphaDeviceExecutionStateEnum =
   | "IN_PROGRESS"
   | "PASSED"
   | "FAILED"
-  | "INCONCLUSIVE";
+  | "INCONCLUSIVE"
+  | (string & {});
 export const GoogleFirebaseAppdistroV1alphaDeviceExecutionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -484,7 +486,8 @@ export type GoogleFirebaseAppdistroV1alphaDeviceExecutionExecutionTypeEnum =
   | "AI"
   | "ACTION_BASED_REPLAY"
   | "AI_REPLAY"
-  | "RANDOM_CRAWL";
+  | "RANDOM_CRAWL"
+  | (string & {});
 export const GoogleFirebaseAppdistroV1alphaDeviceExecutionExecutionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -495,7 +498,8 @@ export type GoogleFirebaseAppdistroV1alphaDeviceExecutionFailedReasonEnum =
   | "UNABLE_TO_CRAWL"
   | "DEVICE_OUT_OF_MEMORY"
   | "FAILED_AI_STEP"
-  | "TIMED_OUT";
+  | "TIMED_OUT"
+  | (string & {});
 export const GoogleFirebaseAppdistroV1alphaDeviceExecutionFailedReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -528,7 +532,8 @@ export type GoogleFirebaseAppdistroV1alphaAiStepResultStateEnum =
   | "PASSED"
   | "FAILED"
   | "TIMED_OUT"
-  | "GOAL_ACTION_LIMIT_REACHED";
+  | "GOAL_ACTION_LIMIT_REACHED"
+  | (string & {});
 export const GoogleFirebaseAppdistroV1alphaAiStepResultStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -601,7 +606,7 @@ export const AndroidxCrawlerOutputPoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AndroidxCrawlerOutputPoint>;
 
 export type GoogleFirebaseAppdistroV1alphaDeviceInteractionTargetOrientationEnum =
-  "ORIENTATION_UNSPECIFIED" | "PORTRAIT" | "LANDSCAPE";
+  "ORIENTATION_UNSPECIFIED" | "PORTRAIT" | "LANDSCAPE" | (string & {});
 export const GoogleFirebaseAppdistroV1alphaDeviceInteractionTargetOrientationEnum =
   /*@__PURE__*/ S.String;
 
@@ -765,7 +770,8 @@ export const GoogleFirebaseAppdistroV1alphaDeviceAction =
 export type GoogleFirebaseAppdistroV1alphaTerminalActionReasonEnum =
   | "REASON_UNSPECIFIED"
   | "GOAL_IMPOSSIBLE"
-  | "GOAL_COMPLETE";
+  | "GOAL_COMPLETE"
+  | (string & {});
 export const GoogleFirebaseAppdistroV1alphaTerminalActionReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -792,7 +798,8 @@ export type GoogleFirebaseAppdistroV1alphaGoalActionCachingTypeEnum =
   | "CACHING_TYPE_UNSPECIFIED"
   | "NO_CACHING"
   | "CACHE_AND_MODEL"
-  | "CACHE_ONLY";
+  | "CACHE_ONLY"
+  | (string & {});
 export const GoogleFirebaseAppdistroV1alphaGoalActionCachingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -974,7 +981,8 @@ export type GoogleFirebaseAppdistroV1alphaReleaseTestTestStateEnum =
   | "IN_PROGRESS"
   | "PASSED"
   | "FAILED"
-  | "INCONCLUSIVE";
+  | "INCONCLUSIVE"
+  | (string & {});
 export const GoogleFirebaseAppdistroV1alphaReleaseTestTestStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1191,7 +1199,11 @@ export const GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse =
     identifier: "GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse",
   }) as any as S.Schema<GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse>;
 
-export type GetAppsAppViewEnum = "APP_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export type GetAppsAppViewEnum =
+  | "APP_VIEW_UNSPECIFIED"
+  | "BASIC"
+  | "FULL"
+  | (string & {});
 export const GetAppsAppViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetAppsRequest {
@@ -1220,7 +1232,8 @@ export type GoogleFirebaseAppdistroV1alphaAppAabStateEnum =
   | "NO_APP_WITH_GIVEN_BUNDLE_ID_IN_PLAY_ACCOUNT"
   | "APP_NOT_PUBLISHED"
   | "AAB_STATE_UNAVAILABLE"
-  | "PLAY_IAS_TERMS_NOT_ACCEPTED";
+  | "PLAY_IAS_TERMS_NOT_ACCEPTED"
+  | (string & {});
 export const GoogleFirebaseAppdistroV1alphaAppAabStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1380,7 +1393,8 @@ export type GoogleFirebaseAppdistroV1alphaGetUploadStatusResponseStatusEnum =
   | "IN_PROGRESS"
   | "ALREADY_UPLOADED"
   | "SUCCESS"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const GoogleFirebaseAppdistroV1alphaGetUploadStatusResponseStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -1409,7 +1423,8 @@ export type GoogleFirebaseAppdistroV1alphaGetUploadStatusResponseErrorCodeEnum =
     | "AAB_UPLOAD_ERROR"
     | "APP_NOT_FOUND"
     | "AAB_ADHOC_SHARING_KEY_NOT_REGISTERED"
-    | "AAB_ANDROID_DEVELOPER_CONSOLE_ACCOUNT_NOT_FOUND";
+    | "AAB_ANDROID_DEVELOPER_CONSOLE_ACCOUNT_NOT_FOUND"
+    | (string & {});
 export const GoogleFirebaseAppdistroV1alphaGetUploadStatusResponseErrorCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1694,7 +1709,8 @@ export const GetUdidsProjectsTestersRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsAppsReleasesTestsViewEnum =
   | "RELEASE_TEST_VIEW_UNSPECIFIED"
   | "RELEASE_TEST_VIEW_BASIC"
-  | "RELEASE_TEST_VIEW_FULL";
+  | "RELEASE_TEST_VIEW_FULL"
+  | (string & {});
 export const ListProjectsAppsReleasesTestsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsAppsReleasesTestsRequest {

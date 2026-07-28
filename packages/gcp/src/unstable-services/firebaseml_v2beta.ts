@@ -82,7 +82,8 @@ export const GoogleCloudAiplatformV1beta1FileData = /*@__PURE__*/ S.suspend(
 
 export type GoogleCloudAiplatformV1beta1ExecutableCodeLanguageEnum =
   | "LANGUAGE_UNSPECIFIED"
-  | "PYTHON";
+  | "PYTHON"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1ExecutableCodeLanguageEnum =
   /*@__PURE__*/ S.String;
 
@@ -110,7 +111,8 @@ export type GoogleCloudAiplatformV1beta1PartMediaResolutionLevelEnum =
   | "MEDIA_RESOLUTION_LOW"
   | "MEDIA_RESOLUTION_MEDIUM"
   | "MEDIA_RESOLUTION_HIGH"
-  | "MEDIA_RESOLUTION_ULTRA_HIGH";
+  | "MEDIA_RESOLUTION_ULTRA_HIGH"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1PartMediaResolutionLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -134,7 +136,8 @@ export type GoogleCloudAiplatformV1beta1CodeExecutionResultOutcomeEnum =
   | "OUTCOME_UNSPECIFIED"
   | "OUTCOME_OK"
   | "OUTCOME_FAILED"
-  | "OUTCOME_DEADLINE_EXCEEDED";
+  | "OUTCOME_DEADLINE_EXCEEDED"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1CodeExecutionResultOutcomeEnum =
   /*@__PURE__*/ S.String;
 
@@ -161,7 +164,8 @@ export type GoogleCloudAiplatformV1beta1FunctionResponseSchedulingEnum =
   | "SCHEDULING_UNSPECIFIED"
   | "SILENT"
   | "WHEN_IDLE"
-  | "INTERRUPT";
+  | "INTERRUPT"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1FunctionResponseSchedulingEnum =
   /*@__PURE__*/ S.String;
 
@@ -304,7 +308,9 @@ export const GoogleCloudAiplatformV1beta1Blob = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudAiplatformV1beta1Blob",
 }) as any as S.Schema<GoogleCloudAiplatformV1beta1Blob>;
 
-export type GoogleCloudAiplatformV1beta1PartialArgNullValueEnum = "NULL_VALUE";
+export type GoogleCloudAiplatformV1beta1PartialArgNullValueEnum =
+  | "NULL_VALUE"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1PartialArgNullValueEnum =
   /*@__PURE__*/ S.String;
 
@@ -477,7 +483,8 @@ export type GoogleCloudAiplatformV1beta1ToolGoogleSearchBlockingConfidenceEnum =
     | "BLOCK_HIGH_AND_ABOVE"
     | "BLOCK_HIGHER_AND_ABOVE"
     | "BLOCK_VERY_HIGH_AND_ABOVE"
-    | "BLOCK_ONLY_EXTREMELY_HIGH";
+    | "BLOCK_ONLY_EXTREMELY_HIGH"
+    | (string & {});
 export const GoogleCloudAiplatformV1beta1ToolGoogleSearchBlockingConfidenceEnum =
   /*@__PURE__*/ S.String;
 
@@ -566,7 +573,8 @@ export type GoogleCloudAiplatformV1beta1EnterpriseWebSearchBlockingConfidenceEnu
     | "BLOCK_HIGH_AND_ABOVE"
     | "BLOCK_HIGHER_AND_ABOVE"
     | "BLOCK_VERY_HIGH_AND_ABOVE"
-    | "BLOCK_ONLY_EXTREMELY_HIGH";
+    | "BLOCK_ONLY_EXTREMELY_HIGH"
+    | (string & {});
 export const GoogleCloudAiplatformV1beta1EnterpriseWebSearchBlockingConfidenceEnum =
   /*@__PURE__*/ S.String;
 
@@ -827,7 +835,8 @@ export const GoogleCloudAiplatformV1beta1ExternalApiSimpleSearchParams =
 export type GoogleCloudAiplatformV1beta1ExternalApiApiSpecEnum =
   | "API_SPEC_UNSPECIFIED"
   | "SIMPLE_SEARCH"
-  | "ELASTIC_SEARCH";
+  | "ELASTIC_SEARCH"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1ExternalApiApiSpecEnum =
   /*@__PURE__*/ S.String;
 
@@ -889,7 +898,8 @@ export type GoogleCloudAiplatformV1beta1AuthConfigApiKeyConfigHttpElementLocatio
     | "HTTP_IN_HEADER"
     | "HTTP_IN_PATH"
     | "HTTP_IN_BODY"
-    | "HTTP_IN_COOKIE";
+    | "HTTP_IN_COOKIE"
+    | (string & {});
 export const GoogleCloudAiplatformV1beta1AuthConfigApiKeyConfigHttpElementLocationEnum =
   /*@__PURE__*/ S.String;
 
@@ -939,7 +949,8 @@ export type GoogleCloudAiplatformV1beta1AuthConfigAuthTypeEnum =
   | "HTTP_BASIC_AUTH"
   | "GOOGLE_SERVICE_ACCOUNT_AUTH"
   | "OAUTH"
-  | "OIDC_AUTH";
+  | "OIDC_AUTH"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1AuthConfigAuthTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1087,7 +1098,8 @@ export type GoogleCloudAiplatformV1beta1ToolComputerUseEnvironmentEnum =
   | "ENVIRONMENT_UNSPECIFIED"
   | "ENVIRONMENT_BROWSER"
   | "ENVIRONMENT_MOBILE"
-  | "ENVIRONMENT_DESKTOP";
+  | "ENVIRONMENT_DESKTOP"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1ToolComputerUseEnvironmentEnum =
   /*@__PURE__*/ S.String;
 
@@ -1129,7 +1141,8 @@ export type GoogleCloudAiplatformV1beta1SchemaTypeEnum =
   | "BOOLEAN"
   | "ARRAY"
   | "OBJECT"
-  | "NULL";
+  | "NULL"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1SchemaTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1227,7 +1240,8 @@ export const GoogleCloudAiplatformV1beta1Schema = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudAiplatformV1beta1FunctionDeclarationBehaviorEnum =
   | "UNSPECIFIED"
   | "BLOCKING"
-  | "NON_BLOCKING";
+  | "NON_BLOCKING"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1FunctionDeclarationBehaviorEnum =
   /*@__PURE__*/ S.String;
 
@@ -1274,7 +1288,8 @@ export const GoogleCloudAiplatformV1beta1FunctionDeclarationList =
 
 export type GoogleCloudAiplatformV1beta1DynamicRetrievalConfigModeEnum =
   | "MODE_UNSPECIFIED"
-  | "MODE_DYNAMIC";
+  | "MODE_DYNAMIC"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1DynamicRetrievalConfigModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1403,7 +1418,8 @@ export type GoogleCloudAiplatformV1beta1GenerationConfigModelConfigFeatureSelect
     | "FEATURE_SELECTION_PREFERENCE_UNSPECIFIED"
     | "PRIORITIZE_QUALITY"
     | "BALANCED"
-    | "PRIORITIZE_COST";
+    | "PRIORITIZE_COST"
+    | (string & {});
 export const GoogleCloudAiplatformV1beta1GenerationConfigModelConfigFeatureSelectionPreferenceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1538,7 +1554,11 @@ export const GoogleCloudAiplatformV1beta1SpeechConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1beta1SpeechConfig>;
 
 export type GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigAutoRoutingModeModelRoutingPreferenceEnum =
-  "UNKNOWN" | "PRIORITIZE_QUALITY" | "BALANCED" | "PRIORITIZE_COST";
+    | "UNKNOWN"
+    | "PRIORITIZE_QUALITY"
+    | "BALANCED"
+    | "PRIORITIZE_COST"
+    | (string & {});
 export const GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigAutoRoutingModeModelRoutingPreferenceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1599,7 +1619,8 @@ export type GoogleCloudAiplatformV1beta1GenerationConfigMediaResolutionEnum =
   | "MEDIA_RESOLUTION_UNSPECIFIED"
   | "MEDIA_RESOLUTION_LOW"
   | "MEDIA_RESOLUTION_MEDIUM"
-  | "MEDIA_RESOLUTION_HIGH";
+  | "MEDIA_RESOLUTION_HIGH"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1GenerationConfigMediaResolutionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1607,14 +1628,16 @@ export type GoogleCloudAiplatformV1beta1ImageConfigPersonGenerationEnum =
   | "PERSON_GENERATION_UNSPECIFIED"
   | "ALLOW_ALL"
   | "ALLOW_ADULT"
-  | "ALLOW_NONE";
+  | "ALLOW_NONE"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1ImageConfigPersonGenerationEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1beta1ImageConfigProminentPeopleEnum =
   | "PROMINENT_PEOPLE_UNSPECIFIED"
   | "ALLOW_PROMINENT_PEOPLE"
-  | "BLOCK_PROMINENT_PEOPLE";
+  | "BLOCK_PROMINENT_PEOPLE"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1ImageConfigProminentPeopleEnum =
   /*@__PURE__*/ S.String;
 
@@ -1668,7 +1691,12 @@ export const GoogleCloudAiplatformV1beta1ImageConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1beta1ImageConfig>;
 
 export type GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfigThinkingLevelEnum =
-  "THINKING_LEVEL_UNSPECIFIED" | "LOW" | "MEDIUM" | "HIGH" | "MINIMAL";
+    | "THINKING_LEVEL_UNSPECIFIED"
+    | "LOW"
+    | "MEDIUM"
+    | "HIGH"
+    | "MINIMAL"
+    | (string & {});
 export const GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfigThinkingLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -1701,14 +1729,16 @@ export type GoogleCloudAiplatformV1beta1AudioResponseFormatMimeTypeEnum =
   | "AUDIO_L16"
   | "AUDIO_WAV"
   | "AUDIO_ALAW"
-  | "AUDIO_MULAW";
+  | "AUDIO_MULAW"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1AudioResponseFormatMimeTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1beta1AudioResponseFormatDeliveryEnum =
   | "DELIVERY_UNSPECIFIED"
   | "INLINE"
-  | "URI";
+  | "URI"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1AudioResponseFormatDeliveryEnum =
   /*@__PURE__*/ S.String;
 
@@ -1742,13 +1772,15 @@ export const GoogleCloudAiplatformV1beta1AudioResponseFormat =
 export type GoogleCloudAiplatformV1beta1ImageResponseFormatDeliveryEnum =
   | "DELIVERY_UNSPECIFIED"
   | "INLINE"
-  | "URI";
+  | "URI"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1ImageResponseFormatDeliveryEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1beta1ImageResponseFormatMimeTypeEnum =
   | "MIME_TYPE_UNSPECIFIED"
-  | "IMAGE_JPEG";
+  | "IMAGE_JPEG"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1ImageResponseFormatMimeTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1767,7 +1799,8 @@ export type GoogleCloudAiplatformV1beta1ImageResponseFormatAspectRatioEnum =
   | "ASPECT_RATIO_ONE_BY_EIGHT"
   | "ASPECT_RATIO_EIGHT_BY_ONE"
   | "ASPECT_RATIO_ONE_BY_FOUR"
-  | "ASPECT_RATIO_FOUR_BY_ONE";
+  | "ASPECT_RATIO_FOUR_BY_ONE"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1ImageResponseFormatAspectRatioEnum =
   /*@__PURE__*/ S.String;
 
@@ -1776,7 +1809,8 @@ export type GoogleCloudAiplatformV1beta1ImageResponseFormatImageSizeEnum =
   | "IMAGE_SIZE_FIVE_TWELVE"
   | "IMAGE_SIZE_ONE_K"
   | "IMAGE_SIZE_TWO_K"
-  | "IMAGE_SIZE_FOUR_K";
+  | "IMAGE_SIZE_FOUR_K"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1ImageResponseFormatImageSizeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1814,14 +1848,16 @@ export const GoogleCloudAiplatformV1beta1ImageResponseFormat =
 export type GoogleCloudAiplatformV1beta1VideoResponseFormatAspectRatioEnum =
   | "ASPECT_RATIO_UNSPECIFIED"
   | "ASPECT_RATIO_SIXTEEN_BY_NINE"
-  | "ASPECT_RATIO_NINE_BY_SIXTEEN";
+  | "ASPECT_RATIO_NINE_BY_SIXTEEN"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1VideoResponseFormatAspectRatioEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1beta1VideoResponseFormatDeliveryEnum =
   | "DELIVERY_UNSPECIFIED"
   | "INLINE"
-  | "URI";
+  | "URI"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1VideoResponseFormatDeliveryEnum =
   /*@__PURE__*/ S.String;
 
@@ -1855,7 +1891,8 @@ export const GoogleCloudAiplatformV1beta1VideoResponseFormat =
 export type GoogleCloudAiplatformV1beta1TextResponseFormatMimeTypeEnum =
   | "MIME_TYPE_UNSPECIFIED"
   | "APPLICATION_JSON"
-  | "TEXT_PLAIN";
+  | "TEXT_PLAIN"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1TextResponseFormatMimeTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1909,7 +1946,7 @@ export const GoogleCloudAiplatformV1beta1ResponseFormatList =
   ) as any as S.Schema<GoogleCloudAiplatformV1beta1ResponseFormatList>;
 
 export type GoogleCloudAiplatformV1beta1GenerationConfigResponseModalitiesItemEnum =
-  "MODALITY_UNSPECIFIED" | "TEXT" | "IMAGE" | "AUDIO" | "VIDEO";
+  "MODALITY_UNSPECIFIED" | "TEXT" | "IMAGE" | "AUDIO" | "VIDEO" | (string & {});
 export const GoogleCloudAiplatformV1beta1GenerationConfigResponseModalitiesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -2076,7 +2113,8 @@ export type GoogleCloudAiplatformV1beta1ModalityTokenCountModalityEnum =
   | "IMAGE"
   | "VIDEO"
   | "AUDIO"
-  | "DOCUMENT";
+  | "DOCUMENT"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1ModalityTokenCountModalityEnum =
   /*@__PURE__*/ S.String;
 
@@ -2156,7 +2194,8 @@ export type GoogleCloudAiplatformV1beta1FunctionCallingConfigModeEnum =
   | "AUTO"
   | "ANY"
   | "NONE"
-  | "VALIDATED";
+  | "VALIDATED"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1FunctionCallingConfigModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2235,7 +2274,8 @@ export const GoogleCloudAiplatformV1beta1ToolConfig = /*@__PURE__*/ S.suspend(
 export type GoogleCloudAiplatformV1beta1SafetySettingMethodEnum =
   | "HARM_BLOCK_METHOD_UNSPECIFIED"
   | "SEVERITY"
-  | "PROBABILITY";
+  | "PROBABILITY"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1SafetySettingMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -2250,7 +2290,8 @@ export type GoogleCloudAiplatformV1beta1SafetySettingCategoryEnum =
   | "HARM_CATEGORY_IMAGE_DANGEROUS_CONTENT"
   | "HARM_CATEGORY_IMAGE_HARASSMENT"
   | "HARM_CATEGORY_IMAGE_SEXUALLY_EXPLICIT"
-  | "HARM_CATEGORY_JAILBREAK";
+  | "HARM_CATEGORY_JAILBREAK"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1SafetySettingCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -2260,7 +2301,8 @@ export type GoogleCloudAiplatformV1beta1SafetySettingThresholdEnum =
   | "BLOCK_MEDIUM_AND_ABOVE"
   | "BLOCK_ONLY_HIGH"
   | "BLOCK_NONE"
-  | "OFF";
+  | "OFF"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1SafetySettingThresholdEnum =
   /*@__PURE__*/ S.String;
 
@@ -2366,7 +2408,8 @@ export type GoogleCloudAiplatformV1beta1SafetyRatingProbabilityEnum =
   | "NEGLIGIBLE"
   | "LOW"
   | "MEDIUM"
-  | "HIGH";
+  | "HIGH"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1SafetyRatingProbabilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -2375,7 +2418,8 @@ export type GoogleCloudAiplatformV1beta1SafetyRatingSeverityEnum =
   | "HARM_SEVERITY_NEGLIGIBLE"
   | "HARM_SEVERITY_LOW"
   | "HARM_SEVERITY_MEDIUM"
-  | "HARM_SEVERITY_HIGH";
+  | "HARM_SEVERITY_HIGH"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1SafetyRatingSeverityEnum =
   /*@__PURE__*/ S.String;
 
@@ -2385,7 +2429,8 @@ export type GoogleCloudAiplatformV1beta1SafetyRatingOverwrittenThresholdEnum =
   | "BLOCK_MEDIUM_AND_ABOVE"
   | "BLOCK_ONLY_HIGH"
   | "BLOCK_NONE"
-  | "OFF";
+  | "OFF"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1SafetyRatingOverwrittenThresholdEnum =
   /*@__PURE__*/ S.String;
 
@@ -2400,7 +2445,8 @@ export type GoogleCloudAiplatformV1beta1SafetyRatingCategoryEnum =
   | "HARM_CATEGORY_IMAGE_DANGEROUS_CONTENT"
   | "HARM_CATEGORY_IMAGE_HARASSMENT"
   | "HARM_CATEGORY_IMAGE_SEXUALLY_EXPLICIT"
-  | "HARM_CATEGORY_JAILBREAK";
+  | "HARM_CATEGORY_JAILBREAK"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1SafetyRatingCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -2459,7 +2505,8 @@ export type GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedbackBlo
     | "PROHIBITED_CONTENT"
     | "MODEL_ARMOR"
     | "IMAGE_SAFETY"
-    | "JAILBREAK";
+    | "JAILBREAK"
+    | (string & {});
 export const GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedbackBlockReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -2491,7 +2538,8 @@ export type GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadataTraf
     | "ON_DEMAND"
     | "ON_DEMAND_PRIORITY"
     | "ON_DEMAND_FLEX"
-    | "PROVISIONED_THROUGHPUT";
+    | "PROVISIONED_THROUGHPUT"
+    | (string & {});
 export const GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadataTrafficTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2692,7 +2740,8 @@ export const GoogleCloudAiplatformV1beta1LogprobsResult =
 export type GoogleCloudAiplatformV1beta1UrlMetadataUrlRetrievalStatusEnum =
   | "URL_RETRIEVAL_STATUS_UNSPECIFIED"
   | "URL_RETRIEVAL_STATUS_SUCCESS"
-  | "URL_RETRIEVAL_STATUS_ERROR";
+  | "URL_RETRIEVAL_STATUS_ERROR"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1UrlMetadataUrlRetrievalStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -3156,7 +3205,8 @@ export type GoogleCloudAiplatformV1beta1CandidateFinishReasonEnum =
   | "IMAGE_RECITATION"
   | "IMAGE_OTHER"
   | "UNEXPECTED_TOOL_CALL"
-  | "NO_IMAGE";
+  | "NO_IMAGE"
+  | (string & {});
 export const GoogleCloudAiplatformV1beta1CandidateFinishReasonEnum =
   /*@__PURE__*/ S.String;
 

@@ -88,13 +88,15 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
 export type UpcomingMaintenanceTypeEnum =
   | "UNKNOWN_TYPE"
   | "SCHEDULED"
-  | "UNSCHEDULED";
+  | "UNSCHEDULED"
+  | (string & {});
 export const UpcomingMaintenanceTypeEnum = /*@__PURE__*/ S.String;
 
 export type UpcomingMaintenanceMaintenanceStatusEnum =
   | "UNKNOWN"
   | "PENDING"
-  | "ONGOING";
+  | "ONGOING"
+  | (string & {});
 export const UpcomingMaintenanceMaintenanceStatusEnum = /*@__PURE__*/ S.String;
 
 /** Upcoming Maintenance notification information. */
@@ -129,14 +131,16 @@ export type NodeApiVersionEnum =
   | "API_VERSION_UNSPECIFIED"
   | "V1_ALPHA1"
   | "V1"
-  | "V2_ALPHA1";
+  | "V2_ALPHA1"
+  | (string & {});
 export const NodeApiVersionEnum = /*@__PURE__*/ S.String;
 
 export type SchedulingConfigProvisioningModelEnum =
   | "PROVISIONING_MODEL_UNSPECIFIED"
   | "STANDARD"
   | "SPOT"
-  | "RESERVATION_BOUND";
+  | "RESERVATION_BOUND"
+  | (string & {});
 export const SchedulingConfigProvisioningModelEnum = /*@__PURE__*/ S.String;
 
 /** Sets the scheduling options for this node. */
@@ -174,7 +178,8 @@ export type AcceleratorConfigTypeEnum =
   | "V4"
   | "V5LITE_POD"
   | "V5P"
-  | "V6E";
+  | "V6E"
+  | (string & {});
 export const AcceleratorConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** A TPU accelerator configuration. */
@@ -294,7 +299,8 @@ export type NodeHealthEnum =
   | "HEALTHY"
   | "TIMEOUT"
   | "UNHEALTHY_TENSORFLOW"
-  | "UNHEALTHY_MAINTENANCE";
+  | "UNHEALTHY_MAINTENANCE"
+  | (string & {});
 export const NodeHealthEnum = /*@__PURE__*/ S.String;
 
 /** A set of Shielded Instance options. */
@@ -360,7 +366,8 @@ export type NodeStateEnum =
   | "HIDING"
   | "HIDDEN"
   | "UNHIDING"
-  | "UNKNOWN";
+  | "UNKNOWN"
+  | (string & {});
 export const NodeStateEnum = /*@__PURE__*/ S.String;
 
 export type SymptomSymptomTypeEnum =
@@ -370,7 +377,8 @@ export type SymptomSymptomTypeEnum =
   | "EXECUTE_TIMED_OUT"
   | "MESH_BUILD_FAIL"
   | "HBM_OUT_OF_MEMORY"
-  | "PROJECT_ABUSE";
+  | "PROJECT_ABUSE"
+  | (string & {});
 export const SymptomSymptomTypeEnum = /*@__PURE__*/ S.String;
 
 /** A Symptom instance. */
@@ -401,7 +409,8 @@ export const SymptomList = /*@__PURE__*/ S.Array(
 export type AttachedDiskModeEnum =
   | "DISK_MODE_UNSPECIFIED"
   | "READ_WRITE"
-  | "READ_ONLY";
+  | "READ_ONLY"
+  | (string & {});
 export const AttachedDiskModeEnum = /*@__PURE__*/ S.String;
 
 /** A node-attached disk resource. */
@@ -599,7 +608,8 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 export type MultiNodeParamsWorkloadTypeEnum =
   | "WORKLOAD_TYPE_UNSPECIFIED"
   | "THROUGHPUT_OPTIMIZED"
-  | "AVAILABILITY_OPTIMIZED";
+  | "AVAILABILITY_OPTIMIZED"
+  | (string & {});
 export const MultiNodeParamsWorkloadTypeEnum = /*@__PURE__*/ S.String;
 
 /** Parameters to specify for multi-node QueuedResource requests. This field must be populated in case of multi-node requests instead of node_id. It's an error to specify both node_id and multi_node_params. */
@@ -668,7 +678,8 @@ export type QueuedResourceProvisioningModelEnum =
   | "STANDARD"
   | "SPOT"
   | "RESERVATION_BOUND"
-  | "FLEX_START";
+  | "FLEX_START"
+  | (string & {});
 export const QueuedResourceProvisioningModelEnum = /*@__PURE__*/ S.String;
 
 /** Guaranteed tier definition. */
@@ -772,7 +783,8 @@ export type QueuedResourceStateStateEnum =
   | "ACTIVE"
   | "SUSPENDING"
   | "SUSPENDED"
-  | "WAITING_FOR_RESOURCES";
+  | "WAITING_FOR_RESOURCES"
+  | (string & {});
 export const QueuedResourceStateStateEnum = /*@__PURE__*/ S.String;
 
 /** Further data for the deleting state. */
@@ -807,7 +819,8 @@ export const FailedData = /*@__PURE__*/ S.suspend(() =>
 export type QueuedResourceStateStateInitiatorEnum =
   | "STATE_INITIATOR_UNSPECIFIED"
   | "USER"
-  | "SERVICE";
+  | "SERVICE"
+  | (string & {});
 export const QueuedResourceStateStateInitiatorEnum = /*@__PURE__*/ S.String;
 
 /** QueuedResourceState defines the details of the QueuedResource request. */
@@ -1671,7 +1684,8 @@ export const ListProjectsLocationsReservationsRequest = /*@__PURE__*/ S.suspend(
 export type StandardCapacityUnitsEnum =
   | "CAPACITY_UNITS_UNSPECIFIED"
   | "CORES"
-  | "CHIPS";
+  | "CHIPS"
+  | (string & {});
 export const StandardCapacityUnitsEnum = /*@__PURE__*/ S.String;
 
 /** Usage details of a reservation. */
@@ -1715,7 +1729,8 @@ export type ReservationStateEnum =
   | "ACTIVE"
   | "DEPROVISIONING"
   | "EXPIRED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ReservationStateEnum = /*@__PURE__*/ S.String;
 
 /** A reservation describes the amount of a resource 'allotted' for a defined period of time. */

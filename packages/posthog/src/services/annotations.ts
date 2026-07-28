@@ -36,7 +36,7 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 /** * `USR` - user * `GIT` - GitHub */
-export type CreationTypeEnum = "USR" | "GIT";
+export type CreationTypeEnum = "USR" | "GIT" | (string & {});
 export const CreationTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `dashboard_item` - insight * `dashboard` - dashboard * `project` - project * `organization` - organization * `recording` - recording */
@@ -45,7 +45,8 @@ export type AnnotationScopeEnum =
   | "dashboard"
   | "project"
   | "organization"
-  | "recording";
+  | "recording"
+  | (string & {});
 export const AnnotationScopeEnum = /*@__PURE__*/ S.String;
 
 export interface AnnotationsCreateRequest {
@@ -106,10 +107,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;

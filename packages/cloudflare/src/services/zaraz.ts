@@ -178,7 +178,9 @@ export type ConfigGetResponseToolsZarazManagedComponentSettings =
 export const ConfigGetResponseToolsZarazManagedComponentSettings =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
-export type ConfigGetResponseToolsZarazManagedComponentType = "component";
+export type ConfigGetResponseToolsZarazManagedComponentType =
+  | "component"
+  | (string & {});
 export const ConfigGetResponseToolsZarazManagedComponentType =
   /*@__PURE__*/ S.String;
 
@@ -350,7 +352,7 @@ export type ConfigGetResponseToolsWorkerSettings = string | boolean;
 export const ConfigGetResponseToolsWorkerSettings =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
-export type ConfigGetResponseToolsWorkerType = "custom-mc";
+export type ConfigGetResponseToolsWorkerType = "custom-mc" | (string & {});
 export const ConfigGetResponseToolsWorkerType = /*@__PURE__*/ S.String;
 
 export interface ConfigGetResponseToolsWorkerWorker {
@@ -555,7 +557,8 @@ export type ConfigGetResponseTriggersValueExcludeRulesItemZarazLoadRuleOp =
   | "GREATER_THAN"
   | "GREATER_THAN_OR_EQUAL"
   | "LESS_THAN"
-  | "LESS_THAN_OR_EQUAL";
+  | "LESS_THAN_OR_EQUAL"
+  | (string & {});
 export const ConfigGetResponseTriggersValueExcludeRulesItemZarazLoadRuleOp =
   /*@__PURE__*/ S.String;
 
@@ -578,12 +581,12 @@ export const ConfigGetResponseTriggersValueExcludeRulesItemZarazLoadRule =
   }) as any as S.Schema<ConfigGetResponseTriggersValueExcludeRulesItemZarazLoadRule>;
 
 export type ConfigGetResponseTriggersValueExcludeRulesItemZarazClickListenerRuleAction =
-  "clickListener";
+  "clickListener" | (string & {});
 export const ConfigGetResponseTriggersValueExcludeRulesItemZarazClickListenerRuleAction =
   /*@__PURE__*/ S.String;
 
 export type ConfigGetResponseTriggersValueExcludeRulesItemZarazClickListenerRuleSettingsType =
-  "xpath" | "css";
+  "xpath" | "css" | (string & {});
 export const ConfigGetResponseTriggersValueExcludeRulesItemZarazClickListenerRuleSettingsType =
   /*@__PURE__*/ S.String;
 
@@ -624,7 +627,7 @@ export const ConfigGetResponseTriggersValueExcludeRulesItemZarazClickListenerRul
   }) as any as S.Schema<ConfigGetResponseTriggersValueExcludeRulesItemZarazClickListenerRule>;
 
 export type ConfigGetResponseTriggersValueExcludeRulesItemZarazTimerRuleAction =
-  "timer";
+  "timer" | (string & {});
 export const ConfigGetResponseTriggersValueExcludeRulesItemZarazTimerRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -662,7 +665,7 @@ export const ConfigGetResponseTriggersValueExcludeRulesItemZarazTimerRule =
   }) as any as S.Schema<ConfigGetResponseTriggersValueExcludeRulesItemZarazTimerRule>;
 
 export type ConfigGetResponseTriggersValueExcludeRulesItemZarazFormSubmissionRuleAction =
-  "formSubmission";
+  "formSubmission" | (string & {});
 export const ConfigGetResponseTriggersValueExcludeRulesItemZarazFormSubmissionRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -701,7 +704,7 @@ export const ConfigGetResponseTriggersValueExcludeRulesItemZarazFormSubmissionRu
   }) as any as S.Schema<ConfigGetResponseTriggersValueExcludeRulesItemZarazFormSubmissionRule>;
 
 export type ConfigGetResponseTriggersValueExcludeRulesItemZarazVariableMatchRuleAction =
-  "variableMatch";
+  "variableMatch" | (string & {});
 export const ConfigGetResponseTriggersValueExcludeRulesItemZarazVariableMatchRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -740,7 +743,7 @@ export const ConfigGetResponseTriggersValueExcludeRulesItemZarazVariableMatchRul
   }) as any as S.Schema<ConfigGetResponseTriggersValueExcludeRulesItemZarazVariableMatchRule>;
 
 export type ConfigGetResponseTriggersValueExcludeRulesItemZarazScrollDepthRuleAction =
-  "scrollDepth";
+  "scrollDepth" | (string & {});
 export const ConfigGetResponseTriggersValueExcludeRulesItemZarazScrollDepthRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -777,7 +780,7 @@ export const ConfigGetResponseTriggersValueExcludeRulesItemZarazScrollDepthRule 
   }) as any as S.Schema<ConfigGetResponseTriggersValueExcludeRulesItemZarazScrollDepthRule>;
 
 export type ConfigGetResponseTriggersValueExcludeRulesItemZarazElementVisibilityRuleAction =
-  "elementVisibility";
+  "elementVisibility" | (string & {});
 export const ConfigGetResponseTriggersValueExcludeRulesItemZarazElementVisibilityRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -851,7 +854,8 @@ export type ConfigGetResponseTriggersValueLoadRulesItemZarazLoadRuleOp =
   | "GREATER_THAN"
   | "GREATER_THAN_OR_EQUAL"
   | "LESS_THAN"
-  | "LESS_THAN_OR_EQUAL";
+  | "LESS_THAN_OR_EQUAL"
+  | (string & {});
 export const ConfigGetResponseTriggersValueLoadRulesItemZarazLoadRuleOp =
   /*@__PURE__*/ S.String;
 
@@ -874,12 +878,12 @@ export const ConfigGetResponseTriggersValueLoadRulesItemZarazLoadRule =
   }) as any as S.Schema<ConfigGetResponseTriggersValueLoadRulesItemZarazLoadRule>;
 
 export type ConfigGetResponseTriggersValueLoadRulesItemZarazClickListenerRuleAction =
-  "clickListener";
+  "clickListener" | (string & {});
 export const ConfigGetResponseTriggersValueLoadRulesItemZarazClickListenerRuleAction =
   /*@__PURE__*/ S.String;
 
 export type ConfigGetResponseTriggersValueLoadRulesItemZarazClickListenerRuleSettingsType =
-  "xpath" | "css";
+  "xpath" | "css" | (string & {});
 export const ConfigGetResponseTriggersValueLoadRulesItemZarazClickListenerRuleSettingsType =
   /*@__PURE__*/ S.String;
 
@@ -920,7 +924,8 @@ export const ConfigGetResponseTriggersValueLoadRulesItemZarazClickListenerRule =
   }) as any as S.Schema<ConfigGetResponseTriggersValueLoadRulesItemZarazClickListenerRule>;
 
 export type ConfigGetResponseTriggersValueLoadRulesItemZarazTimerRuleAction =
-  "timer";
+  | "timer"
+  | (string & {});
 export const ConfigGetResponseTriggersValueLoadRulesItemZarazTimerRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -957,7 +962,7 @@ export const ConfigGetResponseTriggersValueLoadRulesItemZarazTimerRule =
   }) as any as S.Schema<ConfigGetResponseTriggersValueLoadRulesItemZarazTimerRule>;
 
 export type ConfigGetResponseTriggersValueLoadRulesItemZarazFormSubmissionRuleAction =
-  "formSubmission";
+  "formSubmission" | (string & {});
 export const ConfigGetResponseTriggersValueLoadRulesItemZarazFormSubmissionRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -996,7 +1001,7 @@ export const ConfigGetResponseTriggersValueLoadRulesItemZarazFormSubmissionRule 
   }) as any as S.Schema<ConfigGetResponseTriggersValueLoadRulesItemZarazFormSubmissionRule>;
 
 export type ConfigGetResponseTriggersValueLoadRulesItemZarazVariableMatchRuleAction =
-  "variableMatch";
+  "variableMatch" | (string & {});
 export const ConfigGetResponseTriggersValueLoadRulesItemZarazVariableMatchRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -1035,7 +1040,7 @@ export const ConfigGetResponseTriggersValueLoadRulesItemZarazVariableMatchRule =
   }) as any as S.Schema<ConfigGetResponseTriggersValueLoadRulesItemZarazVariableMatchRule>;
 
 export type ConfigGetResponseTriggersValueLoadRulesItemZarazScrollDepthRuleAction =
-  "scrollDepth";
+  "scrollDepth" | (string & {});
 export const ConfigGetResponseTriggersValueLoadRulesItemZarazScrollDepthRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -1072,7 +1077,7 @@ export const ConfigGetResponseTriggersValueLoadRulesItemZarazScrollDepthRule =
   }) as any as S.Schema<ConfigGetResponseTriggersValueLoadRulesItemZarazScrollDepthRule>;
 
 export type ConfigGetResponseTriggersValueLoadRulesItemZarazElementVisibilityRuleAction =
-  "elementVisibility";
+  "elementVisibility" | (string & {});
 export const ConfigGetResponseTriggersValueLoadRulesItemZarazElementVisibilityRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -1136,7 +1141,7 @@ export const ConfigGetResponseTriggersValueLoadRulesList =
     ConfigGetResponseTriggersValueLoadRulesItem,
   ) as any as S.Schema<ConfigGetResponseTriggersValueLoadRulesList>;
 
-export type ConfigGetResponseTriggersValueSystem = "pageload";
+export type ConfigGetResponseTriggersValueSystem = "pageload" | (string & {});
 export const ConfigGetResponseTriggersValueSystem = /*@__PURE__*/ S.String;
 
 export interface ConfigGetResponseTriggersValue {
@@ -1170,7 +1175,7 @@ export const ConfigGetResponseTriggersMap = /*@__PURE__*/ S.Record(
   ConfigGetResponseTriggersValue,
 ) as any as S.Schema<ConfigGetResponseTriggersMap>;
 
-export type ConfigGetResponseVariablesStringType = "string";
+export type ConfigGetResponseVariablesStringType = "string" | (string & {});
 export const ConfigGetResponseVariablesStringType = /*@__PURE__*/ S.String;
 
 export interface ConfigGetResponseVariablesString {
@@ -1188,7 +1193,7 @@ export const ConfigGetResponseVariablesString = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigGetResponseVariablesString",
 }) as any as S.Schema<ConfigGetResponseVariablesString>;
 
-export type ConfigGetResponseVariablesSecretType = "secret";
+export type ConfigGetResponseVariablesSecretType = "secret" | (string & {});
 export const ConfigGetResponseVariablesSecretType = /*@__PURE__*/ S.String;
 
 export interface ConfigGetResponseVariablesSecret {
@@ -1206,7 +1211,7 @@ export const ConfigGetResponseVariablesSecret = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigGetResponseVariablesSecret",
 }) as any as S.Schema<ConfigGetResponseVariablesSecret>;
 
-export type ConfigGetResponseVariablesWorkerType = "worker";
+export type ConfigGetResponseVariablesWorkerType = "worker" | (string & {});
 export const ConfigGetResponseVariablesWorkerType = /*@__PURE__*/ S.String;
 
 export interface ConfigGetResponseVariablesWorkerValue {
@@ -1599,7 +1604,9 @@ export type DefaultGetResponseToolsZarazManagedComponentSettings =
 export const DefaultGetResponseToolsZarazManagedComponentSettings =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
-export type DefaultGetResponseToolsZarazManagedComponentType = "component";
+export type DefaultGetResponseToolsZarazManagedComponentType =
+  | "component"
+  | (string & {});
 export const DefaultGetResponseToolsZarazManagedComponentType =
   /*@__PURE__*/ S.String;
 
@@ -1772,7 +1779,7 @@ export type DefaultGetResponseToolsWorkerSettings = string | boolean;
 export const DefaultGetResponseToolsWorkerSettings =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
-export type DefaultGetResponseToolsWorkerType = "custom-mc";
+export type DefaultGetResponseToolsWorkerType = "custom-mc" | (string & {});
 export const DefaultGetResponseToolsWorkerType = /*@__PURE__*/ S.String;
 
 export interface DefaultGetResponseToolsWorkerWorker {
@@ -1977,7 +1984,8 @@ export type DefaultGetResponseTriggersValueExcludeRulesItemZarazLoadRuleOp =
   | "GREATER_THAN"
   | "GREATER_THAN_OR_EQUAL"
   | "LESS_THAN"
-  | "LESS_THAN_OR_EQUAL";
+  | "LESS_THAN_OR_EQUAL"
+  | (string & {});
 export const DefaultGetResponseTriggersValueExcludeRulesItemZarazLoadRuleOp =
   /*@__PURE__*/ S.String;
 
@@ -2000,12 +2008,12 @@ export const DefaultGetResponseTriggersValueExcludeRulesItemZarazLoadRule =
   }) as any as S.Schema<DefaultGetResponseTriggersValueExcludeRulesItemZarazLoadRule>;
 
 export type DefaultGetResponseTriggersValueExcludeRulesItemZarazClickListenerRuleAction =
-  "clickListener";
+  "clickListener" | (string & {});
 export const DefaultGetResponseTriggersValueExcludeRulesItemZarazClickListenerRuleAction =
   /*@__PURE__*/ S.String;
 
 export type DefaultGetResponseTriggersValueExcludeRulesItemZarazClickListenerRuleSettingsType =
-  "xpath" | "css";
+  "xpath" | "css" | (string & {});
 export const DefaultGetResponseTriggersValueExcludeRulesItemZarazClickListenerRuleSettingsType =
   /*@__PURE__*/ S.String;
 
@@ -2046,7 +2054,7 @@ export const DefaultGetResponseTriggersValueExcludeRulesItemZarazClickListenerRu
   }) as any as S.Schema<DefaultGetResponseTriggersValueExcludeRulesItemZarazClickListenerRule>;
 
 export type DefaultGetResponseTriggersValueExcludeRulesItemZarazTimerRuleAction =
-  "timer";
+  "timer" | (string & {});
 export const DefaultGetResponseTriggersValueExcludeRulesItemZarazTimerRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -2084,7 +2092,7 @@ export const DefaultGetResponseTriggersValueExcludeRulesItemZarazTimerRule =
   }) as any as S.Schema<DefaultGetResponseTriggersValueExcludeRulesItemZarazTimerRule>;
 
 export type DefaultGetResponseTriggersValueExcludeRulesItemZarazFormSubmissionRuleAction =
-  "formSubmission";
+  "formSubmission" | (string & {});
 export const DefaultGetResponseTriggersValueExcludeRulesItemZarazFormSubmissionRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -2123,7 +2131,7 @@ export const DefaultGetResponseTriggersValueExcludeRulesItemZarazFormSubmissionR
   }) as any as S.Schema<DefaultGetResponseTriggersValueExcludeRulesItemZarazFormSubmissionRule>;
 
 export type DefaultGetResponseTriggersValueExcludeRulesItemZarazVariableMatchRuleAction =
-  "variableMatch";
+  "variableMatch" | (string & {});
 export const DefaultGetResponseTriggersValueExcludeRulesItemZarazVariableMatchRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -2162,7 +2170,7 @@ export const DefaultGetResponseTriggersValueExcludeRulesItemZarazVariableMatchRu
   }) as any as S.Schema<DefaultGetResponseTriggersValueExcludeRulesItemZarazVariableMatchRule>;
 
 export type DefaultGetResponseTriggersValueExcludeRulesItemZarazScrollDepthRuleAction =
-  "scrollDepth";
+  "scrollDepth" | (string & {});
 export const DefaultGetResponseTriggersValueExcludeRulesItemZarazScrollDepthRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -2199,7 +2207,7 @@ export const DefaultGetResponseTriggersValueExcludeRulesItemZarazScrollDepthRule
   }) as any as S.Schema<DefaultGetResponseTriggersValueExcludeRulesItemZarazScrollDepthRule>;
 
 export type DefaultGetResponseTriggersValueExcludeRulesItemZarazElementVisibilityRuleAction =
-  "elementVisibility";
+  "elementVisibility" | (string & {});
 export const DefaultGetResponseTriggersValueExcludeRulesItemZarazElementVisibilityRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -2273,7 +2281,8 @@ export type DefaultGetResponseTriggersValueLoadRulesItemZarazLoadRuleOp =
   | "GREATER_THAN"
   | "GREATER_THAN_OR_EQUAL"
   | "LESS_THAN"
-  | "LESS_THAN_OR_EQUAL";
+  | "LESS_THAN_OR_EQUAL"
+  | (string & {});
 export const DefaultGetResponseTriggersValueLoadRulesItemZarazLoadRuleOp =
   /*@__PURE__*/ S.String;
 
@@ -2296,12 +2305,12 @@ export const DefaultGetResponseTriggersValueLoadRulesItemZarazLoadRule =
   }) as any as S.Schema<DefaultGetResponseTriggersValueLoadRulesItemZarazLoadRule>;
 
 export type DefaultGetResponseTriggersValueLoadRulesItemZarazClickListenerRuleAction =
-  "clickListener";
+  "clickListener" | (string & {});
 export const DefaultGetResponseTriggersValueLoadRulesItemZarazClickListenerRuleAction =
   /*@__PURE__*/ S.String;
 
 export type DefaultGetResponseTriggersValueLoadRulesItemZarazClickListenerRuleSettingsType =
-  "xpath" | "css";
+  "xpath" | "css" | (string & {});
 export const DefaultGetResponseTriggersValueLoadRulesItemZarazClickListenerRuleSettingsType =
   /*@__PURE__*/ S.String;
 
@@ -2342,7 +2351,8 @@ export const DefaultGetResponseTriggersValueLoadRulesItemZarazClickListenerRule 
   }) as any as S.Schema<DefaultGetResponseTriggersValueLoadRulesItemZarazClickListenerRule>;
 
 export type DefaultGetResponseTriggersValueLoadRulesItemZarazTimerRuleAction =
-  "timer";
+  | "timer"
+  | (string & {});
 export const DefaultGetResponseTriggersValueLoadRulesItemZarazTimerRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -2379,7 +2389,7 @@ export const DefaultGetResponseTriggersValueLoadRulesItemZarazTimerRule =
   }) as any as S.Schema<DefaultGetResponseTriggersValueLoadRulesItemZarazTimerRule>;
 
 export type DefaultGetResponseTriggersValueLoadRulesItemZarazFormSubmissionRuleAction =
-  "formSubmission";
+  "formSubmission" | (string & {});
 export const DefaultGetResponseTriggersValueLoadRulesItemZarazFormSubmissionRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -2418,7 +2428,7 @@ export const DefaultGetResponseTriggersValueLoadRulesItemZarazFormSubmissionRule
   }) as any as S.Schema<DefaultGetResponseTriggersValueLoadRulesItemZarazFormSubmissionRule>;
 
 export type DefaultGetResponseTriggersValueLoadRulesItemZarazVariableMatchRuleAction =
-  "variableMatch";
+  "variableMatch" | (string & {});
 export const DefaultGetResponseTriggersValueLoadRulesItemZarazVariableMatchRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -2457,7 +2467,7 @@ export const DefaultGetResponseTriggersValueLoadRulesItemZarazVariableMatchRule 
   }) as any as S.Schema<DefaultGetResponseTriggersValueLoadRulesItemZarazVariableMatchRule>;
 
 export type DefaultGetResponseTriggersValueLoadRulesItemZarazScrollDepthRuleAction =
-  "scrollDepth";
+  "scrollDepth" | (string & {});
 export const DefaultGetResponseTriggersValueLoadRulesItemZarazScrollDepthRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -2494,7 +2504,7 @@ export const DefaultGetResponseTriggersValueLoadRulesItemZarazScrollDepthRule =
   }) as any as S.Schema<DefaultGetResponseTriggersValueLoadRulesItemZarazScrollDepthRule>;
 
 export type DefaultGetResponseTriggersValueLoadRulesItemZarazElementVisibilityRuleAction =
-  "elementVisibility";
+  "elementVisibility" | (string & {});
 export const DefaultGetResponseTriggersValueLoadRulesItemZarazElementVisibilityRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -2558,7 +2568,7 @@ export const DefaultGetResponseTriggersValueLoadRulesList =
     DefaultGetResponseTriggersValueLoadRulesItem,
   ) as any as S.Schema<DefaultGetResponseTriggersValueLoadRulesList>;
 
-export type DefaultGetResponseTriggersValueSystem = "pageload";
+export type DefaultGetResponseTriggersValueSystem = "pageload" | (string & {});
 export const DefaultGetResponseTriggersValueSystem = /*@__PURE__*/ S.String;
 
 export interface DefaultGetResponseTriggersValue {
@@ -2592,7 +2602,7 @@ export const DefaultGetResponseTriggersMap = /*@__PURE__*/ S.Record(
   DefaultGetResponseTriggersValue,
 ) as any as S.Schema<DefaultGetResponseTriggersMap>;
 
-export type DefaultGetResponseVariablesStringType = "string";
+export type DefaultGetResponseVariablesStringType = "string" | (string & {});
 export const DefaultGetResponseVariablesStringType = /*@__PURE__*/ S.String;
 
 export interface DefaultGetResponseVariablesString {
@@ -2610,7 +2620,7 @@ export const DefaultGetResponseVariablesString = /*@__PURE__*/ S.suspend(() =>
   identifier: "DefaultGetResponseVariablesString",
 }) as any as S.Schema<DefaultGetResponseVariablesString>;
 
-export type DefaultGetResponseVariablesSecretType = "secret";
+export type DefaultGetResponseVariablesSecretType = "secret" | (string & {});
 export const DefaultGetResponseVariablesSecretType = /*@__PURE__*/ S.String;
 
 export interface DefaultGetResponseVariablesSecret {
@@ -2628,7 +2638,7 @@ export const DefaultGetResponseVariablesSecret = /*@__PURE__*/ S.suspend(() =>
   identifier: "DefaultGetResponseVariablesSecret",
 }) as any as S.Schema<DefaultGetResponseVariablesSecret>;
 
-export type DefaultGetResponseVariablesWorkerType = "worker";
+export type DefaultGetResponseVariablesWorkerType = "worker" | (string & {});
 export const DefaultGetResponseVariablesWorkerType = /*@__PURE__*/ S.String;
 
 export interface DefaultGetResponseVariablesWorkerValue {
@@ -3058,7 +3068,8 @@ export const HistoryConfigsGetResultValueConfigToolsZarazManagedComponentSetting
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export type HistoryConfigsGetResultValueConfigToolsZarazManagedComponentType =
-  "component";
+  | "component"
+  | (string & {});
 export const HistoryConfigsGetResultValueConfigToolsZarazManagedComponentType =
   /*@__PURE__*/ S.String;
 
@@ -3241,7 +3252,9 @@ export type HistoryConfigsGetResultValueConfigToolsWorkerSettings =
 export const HistoryConfigsGetResultValueConfigToolsWorkerSettings =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
-export type HistoryConfigsGetResultValueConfigToolsWorkerType = "custom-mc";
+export type HistoryConfigsGetResultValueConfigToolsWorkerType =
+  | "custom-mc"
+  | (string & {});
 export const HistoryConfigsGetResultValueConfigToolsWorkerType =
   /*@__PURE__*/ S.String;
 
@@ -3459,7 +3472,8 @@ export type HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZaraz
     | "GREATER_THAN"
     | "GREATER_THAN_OR_EQUAL"
     | "LESS_THAN"
-    | "LESS_THAN_OR_EQUAL";
+    | "LESS_THAN_OR_EQUAL"
+    | (string & {});
 export const HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZarazLoadRuleOp =
   /*@__PURE__*/ S.String;
 
@@ -3483,12 +3497,12 @@ export const HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZara
   }) as any as S.Schema<HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZarazLoadRule>;
 
 export type HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZarazClickListenerRuleAction =
-  "clickListener";
+  "clickListener" | (string & {});
 export const HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZarazClickListenerRuleAction =
   /*@__PURE__*/ S.String;
 
 export type HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZarazClickListenerRuleSettingsType =
-  "xpath" | "css";
+  "xpath" | "css" | (string & {});
 export const HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZarazClickListenerRuleSettingsType =
   /*@__PURE__*/ S.String;
 
@@ -3529,7 +3543,7 @@ export const HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZara
   }) as any as S.Schema<HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZarazClickListenerRule>;
 
 export type HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZarazTimerRuleAction =
-  "timer";
+  "timer" | (string & {});
 export const HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZarazTimerRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -3568,7 +3582,7 @@ export const HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZara
   }) as any as S.Schema<HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZarazTimerRule>;
 
 export type HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZarazFormSubmissionRuleAction =
-  "formSubmission";
+  "formSubmission" | (string & {});
 export const HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZarazFormSubmissionRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -3607,7 +3621,7 @@ export const HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZara
   }) as any as S.Schema<HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZarazFormSubmissionRule>;
 
 export type HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZarazVariableMatchRuleAction =
-  "variableMatch";
+  "variableMatch" | (string & {});
 export const HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZarazVariableMatchRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -3646,7 +3660,7 @@ export const HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZara
   }) as any as S.Schema<HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZarazVariableMatchRule>;
 
 export type HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZarazScrollDepthRuleAction =
-  "scrollDepth";
+  "scrollDepth" | (string & {});
 export const HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZarazScrollDepthRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -3683,7 +3697,7 @@ export const HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZara
   }) as any as S.Schema<HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZarazScrollDepthRule>;
 
 export type HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZarazElementVisibilityRuleAction =
-  "elementVisibility";
+  "elementVisibility" | (string & {});
 export const HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItemZarazElementVisibilityRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -3757,7 +3771,8 @@ export type HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazLoa
     | "GREATER_THAN"
     | "GREATER_THAN_OR_EQUAL"
     | "LESS_THAN"
-    | "LESS_THAN_OR_EQUAL";
+    | "LESS_THAN_OR_EQUAL"
+    | (string & {});
 export const HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazLoadRuleOp =
   /*@__PURE__*/ S.String;
 
@@ -3781,12 +3796,12 @@ export const HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazLo
   }) as any as S.Schema<HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazLoadRule>;
 
 export type HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazClickListenerRuleAction =
-  "clickListener";
+  "clickListener" | (string & {});
 export const HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazClickListenerRuleAction =
   /*@__PURE__*/ S.String;
 
 export type HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazClickListenerRuleSettingsType =
-  "xpath" | "css";
+  "xpath" | "css" | (string & {});
 export const HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazClickListenerRuleSettingsType =
   /*@__PURE__*/ S.String;
 
@@ -3827,7 +3842,7 @@ export const HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazCl
   }) as any as S.Schema<HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazClickListenerRule>;
 
 export type HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazTimerRuleAction =
-  "timer";
+  "timer" | (string & {});
 export const HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazTimerRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -3866,7 +3881,7 @@ export const HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazTi
   }) as any as S.Schema<HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazTimerRule>;
 
 export type HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazFormSubmissionRuleAction =
-  "formSubmission";
+  "formSubmission" | (string & {});
 export const HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazFormSubmissionRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -3905,7 +3920,7 @@ export const HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazFo
   }) as any as S.Schema<HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazFormSubmissionRule>;
 
 export type HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazVariableMatchRuleAction =
-  "variableMatch";
+  "variableMatch" | (string & {});
 export const HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazVariableMatchRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -3944,7 +3959,7 @@ export const HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazVa
   }) as any as S.Schema<HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazVariableMatchRule>;
 
 export type HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazScrollDepthRuleAction =
-  "scrollDepth";
+  "scrollDepth" | (string & {});
 export const HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazScrollDepthRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -3981,7 +3996,7 @@ export const HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazSc
   }) as any as S.Schema<HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazScrollDepthRule>;
 
 export type HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazElementVisibilityRuleAction =
-  "elementVisibility";
+  "elementVisibility" | (string & {});
 export const HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItemZarazElementVisibilityRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -4045,7 +4060,9 @@ export const HistoryConfigsGetResultValueConfigTriggersValueLoadRulesList =
     HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItem,
   ) as any as S.Schema<HistoryConfigsGetResultValueConfigTriggersValueLoadRulesList>;
 
-export type HistoryConfigsGetResultValueConfigTriggersValueSystem = "pageload";
+export type HistoryConfigsGetResultValueConfigTriggersValueSystem =
+  | "pageload"
+  | (string & {});
 export const HistoryConfigsGetResultValueConfigTriggersValueSystem =
   /*@__PURE__*/ S.String;
 
@@ -4083,7 +4100,9 @@ export const HistoryConfigsGetResultValueConfigTriggersMap =
     HistoryConfigsGetResultValueConfigTriggersValue,
   ) as any as S.Schema<HistoryConfigsGetResultValueConfigTriggersMap>;
 
-export type HistoryConfigsGetResultValueConfigVariablesStringType = "string";
+export type HistoryConfigsGetResultValueConfigVariablesStringType =
+  | "string"
+  | (string & {});
 export const HistoryConfigsGetResultValueConfigVariablesStringType =
   /*@__PURE__*/ S.String;
 
@@ -4103,7 +4122,9 @@ export const HistoryConfigsGetResultValueConfigVariablesString =
     identifier: "HistoryConfigsGetResultValueConfigVariablesString",
   }) as any as S.Schema<HistoryConfigsGetResultValueConfigVariablesString>;
 
-export type HistoryConfigsGetResultValueConfigVariablesSecretType = "secret";
+export type HistoryConfigsGetResultValueConfigVariablesSecretType =
+  | "secret"
+  | (string & {});
 export const HistoryConfigsGetResultValueConfigVariablesSecretType =
   /*@__PURE__*/ S.String;
 
@@ -4123,7 +4144,9 @@ export const HistoryConfigsGetResultValueConfigVariablesSecret =
     identifier: "HistoryConfigsGetResultValueConfigVariablesSecret",
   }) as any as S.Schema<HistoryConfigsGetResultValueConfigVariablesSecret>;
 
-export type HistoryConfigsGetResultValueConfigVariablesWorkerType = "worker";
+export type HistoryConfigsGetResultValueConfigVariablesWorkerType =
+  | "worker"
+  | (string & {});
 export const HistoryConfigsGetResultValueConfigVariablesWorkerType =
   /*@__PURE__*/ S.String;
 
@@ -4472,7 +4495,7 @@ export const GetWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetWorkflowRequest",
 }) as any as S.Schema<GetWorkflowRequest>;
 
-export type WorkflowGetResult = "realtime" | "preview";
+export type WorkflowGetResult = "realtime" | "preview" | (string & {});
 export const WorkflowGetResult = /*@__PURE__*/ S.String;
 
 export type GetWorkflowResponse = WorkflowGetResult;
@@ -4487,10 +4510,11 @@ export type HistoryListRequestSortField =
   | "user_id"
   | "description"
   | "created_at"
-  | "updated_at";
+  | "updated_at"
+  | (string & {});
 export const HistoryListRequestSortField = /*@__PURE__*/ S.String;
 
-export type HistoryListRequestSortOrder = "DESC" | "ASC";
+export type HistoryListRequestSortOrder = "DESC" | "ASC" | (string & {});
 export const HistoryListRequestSortOrder = /*@__PURE__*/ S.String;
 
 export interface ListHistoriesRequest {
@@ -4660,7 +4684,9 @@ export type ConfigUpdateRequestToolsZarazManagedComponentSettings =
 export const ConfigUpdateRequestToolsZarazManagedComponentSettings =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
-export type ConfigUpdateRequestToolsZarazManagedComponentType = "component";
+export type ConfigUpdateRequestToolsZarazManagedComponentType =
+  | "component"
+  | (string & {});
 export const ConfigUpdateRequestToolsZarazManagedComponentType =
   /*@__PURE__*/ S.String;
 
@@ -4833,7 +4859,7 @@ export type ConfigUpdateRequestToolsWorkerSettings = string | boolean;
 export const ConfigUpdateRequestToolsWorkerSettings =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
-export type ConfigUpdateRequestToolsWorkerType = "custom-mc";
+export type ConfigUpdateRequestToolsWorkerType = "custom-mc" | (string & {});
 export const ConfigUpdateRequestToolsWorkerType = /*@__PURE__*/ S.String;
 
 export interface ConfigUpdateRequestToolsWorkerWorker {
@@ -5040,7 +5066,8 @@ export type ConfigUpdateRequestTriggersValueExcludeRulesItemZarazLoadRuleOp =
   | "GREATER_THAN"
   | "GREATER_THAN_OR_EQUAL"
   | "LESS_THAN"
-  | "LESS_THAN_OR_EQUAL";
+  | "LESS_THAN_OR_EQUAL"
+  | (string & {});
 export const ConfigUpdateRequestTriggersValueExcludeRulesItemZarazLoadRuleOp =
   /*@__PURE__*/ S.String;
 
@@ -5063,12 +5090,12 @@ export const ConfigUpdateRequestTriggersValueExcludeRulesItemZarazLoadRule =
   }) as any as S.Schema<ConfigUpdateRequestTriggersValueExcludeRulesItemZarazLoadRule>;
 
 export type ConfigUpdateRequestTriggersValueExcludeRulesItemZarazClickListenerRuleAction =
-  "clickListener";
+  "clickListener" | (string & {});
 export const ConfigUpdateRequestTriggersValueExcludeRulesItemZarazClickListenerRuleAction =
   /*@__PURE__*/ S.String;
 
 export type ConfigUpdateRequestTriggersValueExcludeRulesItemZarazClickListenerRuleSettingsType =
-  "xpath" | "css";
+  "xpath" | "css" | (string & {});
 export const ConfigUpdateRequestTriggersValueExcludeRulesItemZarazClickListenerRuleSettingsType =
   /*@__PURE__*/ S.String;
 
@@ -5109,7 +5136,7 @@ export const ConfigUpdateRequestTriggersValueExcludeRulesItemZarazClickListenerR
   }) as any as S.Schema<ConfigUpdateRequestTriggersValueExcludeRulesItemZarazClickListenerRule>;
 
 export type ConfigUpdateRequestTriggersValueExcludeRulesItemZarazTimerRuleAction =
-  "timer";
+  "timer" | (string & {});
 export const ConfigUpdateRequestTriggersValueExcludeRulesItemZarazTimerRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -5148,7 +5175,7 @@ export const ConfigUpdateRequestTriggersValueExcludeRulesItemZarazTimerRule =
   }) as any as S.Schema<ConfigUpdateRequestTriggersValueExcludeRulesItemZarazTimerRule>;
 
 export type ConfigUpdateRequestTriggersValueExcludeRulesItemZarazFormSubmissionRuleAction =
-  "formSubmission";
+  "formSubmission" | (string & {});
 export const ConfigUpdateRequestTriggersValueExcludeRulesItemZarazFormSubmissionRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -5187,7 +5214,7 @@ export const ConfigUpdateRequestTriggersValueExcludeRulesItemZarazFormSubmission
   }) as any as S.Schema<ConfigUpdateRequestTriggersValueExcludeRulesItemZarazFormSubmissionRule>;
 
 export type ConfigUpdateRequestTriggersValueExcludeRulesItemZarazVariableMatchRuleAction =
-  "variableMatch";
+  "variableMatch" | (string & {});
 export const ConfigUpdateRequestTriggersValueExcludeRulesItemZarazVariableMatchRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -5226,7 +5253,7 @@ export const ConfigUpdateRequestTriggersValueExcludeRulesItemZarazVariableMatchR
   }) as any as S.Schema<ConfigUpdateRequestTriggersValueExcludeRulesItemZarazVariableMatchRule>;
 
 export type ConfigUpdateRequestTriggersValueExcludeRulesItemZarazScrollDepthRuleAction =
-  "scrollDepth";
+  "scrollDepth" | (string & {});
 export const ConfigUpdateRequestTriggersValueExcludeRulesItemZarazScrollDepthRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -5263,7 +5290,7 @@ export const ConfigUpdateRequestTriggersValueExcludeRulesItemZarazScrollDepthRul
   }) as any as S.Schema<ConfigUpdateRequestTriggersValueExcludeRulesItemZarazScrollDepthRule>;
 
 export type ConfigUpdateRequestTriggersValueExcludeRulesItemZarazElementVisibilityRuleAction =
-  "elementVisibility";
+  "elementVisibility" | (string & {});
 export const ConfigUpdateRequestTriggersValueExcludeRulesItemZarazElementVisibilityRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -5337,7 +5364,8 @@ export type ConfigUpdateRequestTriggersValueLoadRulesItemZarazLoadRuleOp =
   | "GREATER_THAN"
   | "GREATER_THAN_OR_EQUAL"
   | "LESS_THAN"
-  | "LESS_THAN_OR_EQUAL";
+  | "LESS_THAN_OR_EQUAL"
+  | (string & {});
 export const ConfigUpdateRequestTriggersValueLoadRulesItemZarazLoadRuleOp =
   /*@__PURE__*/ S.String;
 
@@ -5360,12 +5388,12 @@ export const ConfigUpdateRequestTriggersValueLoadRulesItemZarazLoadRule =
   }) as any as S.Schema<ConfigUpdateRequestTriggersValueLoadRulesItemZarazLoadRule>;
 
 export type ConfigUpdateRequestTriggersValueLoadRulesItemZarazClickListenerRuleAction =
-  "clickListener";
+  "clickListener" | (string & {});
 export const ConfigUpdateRequestTriggersValueLoadRulesItemZarazClickListenerRuleAction =
   /*@__PURE__*/ S.String;
 
 export type ConfigUpdateRequestTriggersValueLoadRulesItemZarazClickListenerRuleSettingsType =
-  "xpath" | "css";
+  "xpath" | "css" | (string & {});
 export const ConfigUpdateRequestTriggersValueLoadRulesItemZarazClickListenerRuleSettingsType =
   /*@__PURE__*/ S.String;
 
@@ -5406,7 +5434,8 @@ export const ConfigUpdateRequestTriggersValueLoadRulesItemZarazClickListenerRule
   }) as any as S.Schema<ConfigUpdateRequestTriggersValueLoadRulesItemZarazClickListenerRule>;
 
 export type ConfigUpdateRequestTriggersValueLoadRulesItemZarazTimerRuleAction =
-  "timer";
+  | "timer"
+  | (string & {});
 export const ConfigUpdateRequestTriggersValueLoadRulesItemZarazTimerRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -5443,7 +5472,7 @@ export const ConfigUpdateRequestTriggersValueLoadRulesItemZarazTimerRule =
   }) as any as S.Schema<ConfigUpdateRequestTriggersValueLoadRulesItemZarazTimerRule>;
 
 export type ConfigUpdateRequestTriggersValueLoadRulesItemZarazFormSubmissionRuleAction =
-  "formSubmission";
+  "formSubmission" | (string & {});
 export const ConfigUpdateRequestTriggersValueLoadRulesItemZarazFormSubmissionRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -5482,7 +5511,7 @@ export const ConfigUpdateRequestTriggersValueLoadRulesItemZarazFormSubmissionRul
   }) as any as S.Schema<ConfigUpdateRequestTriggersValueLoadRulesItemZarazFormSubmissionRule>;
 
 export type ConfigUpdateRequestTriggersValueLoadRulesItemZarazVariableMatchRuleAction =
-  "variableMatch";
+  "variableMatch" | (string & {});
 export const ConfigUpdateRequestTriggersValueLoadRulesItemZarazVariableMatchRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -5521,7 +5550,7 @@ export const ConfigUpdateRequestTriggersValueLoadRulesItemZarazVariableMatchRule
   }) as any as S.Schema<ConfigUpdateRequestTriggersValueLoadRulesItemZarazVariableMatchRule>;
 
 export type ConfigUpdateRequestTriggersValueLoadRulesItemZarazScrollDepthRuleAction =
-  "scrollDepth";
+  "scrollDepth" | (string & {});
 export const ConfigUpdateRequestTriggersValueLoadRulesItemZarazScrollDepthRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -5558,7 +5587,7 @@ export const ConfigUpdateRequestTriggersValueLoadRulesItemZarazScrollDepthRule =
   }) as any as S.Schema<ConfigUpdateRequestTriggersValueLoadRulesItemZarazScrollDepthRule>;
 
 export type ConfigUpdateRequestTriggersValueLoadRulesItemZarazElementVisibilityRuleAction =
-  "elementVisibility";
+  "elementVisibility" | (string & {});
 export const ConfigUpdateRequestTriggersValueLoadRulesItemZarazElementVisibilityRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -5622,7 +5651,7 @@ export const ConfigUpdateRequestTriggersValueLoadRulesList =
     ConfigUpdateRequestTriggersValueLoadRulesItem,
   ) as any as S.Schema<ConfigUpdateRequestTriggersValueLoadRulesList>;
 
-export type ConfigUpdateRequestTriggersValueSystem = "pageload";
+export type ConfigUpdateRequestTriggersValueSystem = "pageload" | (string & {});
 export const ConfigUpdateRequestTriggersValueSystem = /*@__PURE__*/ S.String;
 
 export interface ConfigUpdateRequestTriggersValue {
@@ -5656,7 +5685,7 @@ export const ConfigUpdateRequestTriggersMap = /*@__PURE__*/ S.Record(
   ConfigUpdateRequestTriggersValue,
 ) as any as S.Schema<ConfigUpdateRequestTriggersMap>;
 
-export type ConfigUpdateRequestVariablesStringType = "string";
+export type ConfigUpdateRequestVariablesStringType = "string" | (string & {});
 export const ConfigUpdateRequestVariablesStringType = /*@__PURE__*/ S.String;
 
 export interface ConfigUpdateRequestVariablesString {
@@ -5674,7 +5703,7 @@ export const ConfigUpdateRequestVariablesString = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigUpdateRequestVariablesString",
 }) as any as S.Schema<ConfigUpdateRequestVariablesString>;
 
-export type ConfigUpdateRequestVariablesSecretType = "secret";
+export type ConfigUpdateRequestVariablesSecretType = "secret" | (string & {});
 export const ConfigUpdateRequestVariablesSecretType = /*@__PURE__*/ S.String;
 
 export interface ConfigUpdateRequestVariablesSecret {
@@ -5692,7 +5721,7 @@ export const ConfigUpdateRequestVariablesSecret = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigUpdateRequestVariablesSecret",
 }) as any as S.Schema<ConfigUpdateRequestVariablesSecret>;
 
-export type ConfigUpdateRequestVariablesWorkerType = "worker";
+export type ConfigUpdateRequestVariablesWorkerType = "worker" | (string & {});
 export const ConfigUpdateRequestVariablesWorkerType = /*@__PURE__*/ S.String;
 
 export interface ConfigUpdateRequestVariablesWorkerValue {
@@ -6074,7 +6103,9 @@ export type ConfigUpdateResponseToolsZarazManagedComponentSettings =
 export const ConfigUpdateResponseToolsZarazManagedComponentSettings =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
-export type ConfigUpdateResponseToolsZarazManagedComponentType = "component";
+export type ConfigUpdateResponseToolsZarazManagedComponentType =
+  | "component"
+  | (string & {});
 export const ConfigUpdateResponseToolsZarazManagedComponentType =
   /*@__PURE__*/ S.String;
 
@@ -6249,7 +6280,7 @@ export type ConfigUpdateResponseToolsWorkerSettings = string | boolean;
 export const ConfigUpdateResponseToolsWorkerSettings =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
-export type ConfigUpdateResponseToolsWorkerType = "custom-mc";
+export type ConfigUpdateResponseToolsWorkerType = "custom-mc" | (string & {});
 export const ConfigUpdateResponseToolsWorkerType = /*@__PURE__*/ S.String;
 
 export interface ConfigUpdateResponseToolsWorkerWorker {
@@ -6456,7 +6487,8 @@ export type ConfigUpdateResponseTriggersValueExcludeRulesItemZarazLoadRuleOp =
   | "GREATER_THAN"
   | "GREATER_THAN_OR_EQUAL"
   | "LESS_THAN"
-  | "LESS_THAN_OR_EQUAL";
+  | "LESS_THAN_OR_EQUAL"
+  | (string & {});
 export const ConfigUpdateResponseTriggersValueExcludeRulesItemZarazLoadRuleOp =
   /*@__PURE__*/ S.String;
 
@@ -6480,12 +6512,12 @@ export const ConfigUpdateResponseTriggersValueExcludeRulesItemZarazLoadRule =
   }) as any as S.Schema<ConfigUpdateResponseTriggersValueExcludeRulesItemZarazLoadRule>;
 
 export type ConfigUpdateResponseTriggersValueExcludeRulesItemZarazClickListenerRuleAction =
-  "clickListener";
+  "clickListener" | (string & {});
 export const ConfigUpdateResponseTriggersValueExcludeRulesItemZarazClickListenerRuleAction =
   /*@__PURE__*/ S.String;
 
 export type ConfigUpdateResponseTriggersValueExcludeRulesItemZarazClickListenerRuleSettingsType =
-  "xpath" | "css";
+  "xpath" | "css" | (string & {});
 export const ConfigUpdateResponseTriggersValueExcludeRulesItemZarazClickListenerRuleSettingsType =
   /*@__PURE__*/ S.String;
 
@@ -6526,7 +6558,7 @@ export const ConfigUpdateResponseTriggersValueExcludeRulesItemZarazClickListener
   }) as any as S.Schema<ConfigUpdateResponseTriggersValueExcludeRulesItemZarazClickListenerRule>;
 
 export type ConfigUpdateResponseTriggersValueExcludeRulesItemZarazTimerRuleAction =
-  "timer";
+  "timer" | (string & {});
 export const ConfigUpdateResponseTriggersValueExcludeRulesItemZarazTimerRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -6565,7 +6597,7 @@ export const ConfigUpdateResponseTriggersValueExcludeRulesItemZarazTimerRule =
   }) as any as S.Schema<ConfigUpdateResponseTriggersValueExcludeRulesItemZarazTimerRule>;
 
 export type ConfigUpdateResponseTriggersValueExcludeRulesItemZarazFormSubmissionRuleAction =
-  "formSubmission";
+  "formSubmission" | (string & {});
 export const ConfigUpdateResponseTriggersValueExcludeRulesItemZarazFormSubmissionRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -6604,7 +6636,7 @@ export const ConfigUpdateResponseTriggersValueExcludeRulesItemZarazFormSubmissio
   }) as any as S.Schema<ConfigUpdateResponseTriggersValueExcludeRulesItemZarazFormSubmissionRule>;
 
 export type ConfigUpdateResponseTriggersValueExcludeRulesItemZarazVariableMatchRuleAction =
-  "variableMatch";
+  "variableMatch" | (string & {});
 export const ConfigUpdateResponseTriggersValueExcludeRulesItemZarazVariableMatchRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -6643,7 +6675,7 @@ export const ConfigUpdateResponseTriggersValueExcludeRulesItemZarazVariableMatch
   }) as any as S.Schema<ConfigUpdateResponseTriggersValueExcludeRulesItemZarazVariableMatchRule>;
 
 export type ConfigUpdateResponseTriggersValueExcludeRulesItemZarazScrollDepthRuleAction =
-  "scrollDepth";
+  "scrollDepth" | (string & {});
 export const ConfigUpdateResponseTriggersValueExcludeRulesItemZarazScrollDepthRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -6680,7 +6712,7 @@ export const ConfigUpdateResponseTriggersValueExcludeRulesItemZarazScrollDepthRu
   }) as any as S.Schema<ConfigUpdateResponseTriggersValueExcludeRulesItemZarazScrollDepthRule>;
 
 export type ConfigUpdateResponseTriggersValueExcludeRulesItemZarazElementVisibilityRuleAction =
-  "elementVisibility";
+  "elementVisibility" | (string & {});
 export const ConfigUpdateResponseTriggersValueExcludeRulesItemZarazElementVisibilityRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -6754,7 +6786,8 @@ export type ConfigUpdateResponseTriggersValueLoadRulesItemZarazLoadRuleOp =
   | "GREATER_THAN"
   | "GREATER_THAN_OR_EQUAL"
   | "LESS_THAN"
-  | "LESS_THAN_OR_EQUAL";
+  | "LESS_THAN_OR_EQUAL"
+  | (string & {});
 export const ConfigUpdateResponseTriggersValueLoadRulesItemZarazLoadRuleOp =
   /*@__PURE__*/ S.String;
 
@@ -6777,12 +6810,12 @@ export const ConfigUpdateResponseTriggersValueLoadRulesItemZarazLoadRule =
   }) as any as S.Schema<ConfigUpdateResponseTriggersValueLoadRulesItemZarazLoadRule>;
 
 export type ConfigUpdateResponseTriggersValueLoadRulesItemZarazClickListenerRuleAction =
-  "clickListener";
+  "clickListener" | (string & {});
 export const ConfigUpdateResponseTriggersValueLoadRulesItemZarazClickListenerRuleAction =
   /*@__PURE__*/ S.String;
 
 export type ConfigUpdateResponseTriggersValueLoadRulesItemZarazClickListenerRuleSettingsType =
-  "xpath" | "css";
+  "xpath" | "css" | (string & {});
 export const ConfigUpdateResponseTriggersValueLoadRulesItemZarazClickListenerRuleSettingsType =
   /*@__PURE__*/ S.String;
 
@@ -6823,7 +6856,7 @@ export const ConfigUpdateResponseTriggersValueLoadRulesItemZarazClickListenerRul
   }) as any as S.Schema<ConfigUpdateResponseTriggersValueLoadRulesItemZarazClickListenerRule>;
 
 export type ConfigUpdateResponseTriggersValueLoadRulesItemZarazTimerRuleAction =
-  "timer";
+  "timer" | (string & {});
 export const ConfigUpdateResponseTriggersValueLoadRulesItemZarazTimerRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -6861,7 +6894,7 @@ export const ConfigUpdateResponseTriggersValueLoadRulesItemZarazTimerRule =
   }) as any as S.Schema<ConfigUpdateResponseTriggersValueLoadRulesItemZarazTimerRule>;
 
 export type ConfigUpdateResponseTriggersValueLoadRulesItemZarazFormSubmissionRuleAction =
-  "formSubmission";
+  "formSubmission" | (string & {});
 export const ConfigUpdateResponseTriggersValueLoadRulesItemZarazFormSubmissionRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -6900,7 +6933,7 @@ export const ConfigUpdateResponseTriggersValueLoadRulesItemZarazFormSubmissionRu
   }) as any as S.Schema<ConfigUpdateResponseTriggersValueLoadRulesItemZarazFormSubmissionRule>;
 
 export type ConfigUpdateResponseTriggersValueLoadRulesItemZarazVariableMatchRuleAction =
-  "variableMatch";
+  "variableMatch" | (string & {});
 export const ConfigUpdateResponseTriggersValueLoadRulesItemZarazVariableMatchRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -6939,7 +6972,7 @@ export const ConfigUpdateResponseTriggersValueLoadRulesItemZarazVariableMatchRul
   }) as any as S.Schema<ConfigUpdateResponseTriggersValueLoadRulesItemZarazVariableMatchRule>;
 
 export type ConfigUpdateResponseTriggersValueLoadRulesItemZarazScrollDepthRuleAction =
-  "scrollDepth";
+  "scrollDepth" | (string & {});
 export const ConfigUpdateResponseTriggersValueLoadRulesItemZarazScrollDepthRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -6976,7 +7009,7 @@ export const ConfigUpdateResponseTriggersValueLoadRulesItemZarazScrollDepthRule 
   }) as any as S.Schema<ConfigUpdateResponseTriggersValueLoadRulesItemZarazScrollDepthRule>;
 
 export type ConfigUpdateResponseTriggersValueLoadRulesItemZarazElementVisibilityRuleAction =
-  "elementVisibility";
+  "elementVisibility" | (string & {});
 export const ConfigUpdateResponseTriggersValueLoadRulesItemZarazElementVisibilityRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -7040,7 +7073,9 @@ export const ConfigUpdateResponseTriggersValueLoadRulesList =
     ConfigUpdateResponseTriggersValueLoadRulesItem,
   ) as any as S.Schema<ConfigUpdateResponseTriggersValueLoadRulesList>;
 
-export type ConfigUpdateResponseTriggersValueSystem = "pageload";
+export type ConfigUpdateResponseTriggersValueSystem =
+  | "pageload"
+  | (string & {});
 export const ConfigUpdateResponseTriggersValueSystem = /*@__PURE__*/ S.String;
 
 export interface ConfigUpdateResponseTriggersValue {
@@ -7074,7 +7109,7 @@ export const ConfigUpdateResponseTriggersMap = /*@__PURE__*/ S.Record(
   ConfigUpdateResponseTriggersValue,
 ) as any as S.Schema<ConfigUpdateResponseTriggersMap>;
 
-export type ConfigUpdateResponseVariablesStringType = "string";
+export type ConfigUpdateResponseVariablesStringType = "string" | (string & {});
 export const ConfigUpdateResponseVariablesStringType = /*@__PURE__*/ S.String;
 
 export interface ConfigUpdateResponseVariablesString {
@@ -7092,7 +7127,7 @@ export const ConfigUpdateResponseVariablesString = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigUpdateResponseVariablesString",
 }) as any as S.Schema<ConfigUpdateResponseVariablesString>;
 
-export type ConfigUpdateResponseVariablesSecretType = "secret";
+export type ConfigUpdateResponseVariablesSecretType = "secret" | (string & {});
 export const ConfigUpdateResponseVariablesSecretType = /*@__PURE__*/ S.String;
 
 export interface ConfigUpdateResponseVariablesSecret {
@@ -7110,7 +7145,7 @@ export const ConfigUpdateResponseVariablesSecret = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigUpdateResponseVariablesSecret",
 }) as any as S.Schema<ConfigUpdateResponseVariablesSecret>;
 
-export type ConfigUpdateResponseVariablesWorkerType = "worker";
+export type ConfigUpdateResponseVariablesWorkerType = "worker" | (string & {});
 export const ConfigUpdateResponseVariablesWorkerType = /*@__PURE__*/ S.String;
 
 export interface ConfigUpdateResponseVariablesWorkerValue {
@@ -7505,7 +7540,9 @@ export type HistoryUpdateResponseToolsZarazManagedComponentSettings =
 export const HistoryUpdateResponseToolsZarazManagedComponentSettings =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
-export type HistoryUpdateResponseToolsZarazManagedComponentType = "component";
+export type HistoryUpdateResponseToolsZarazManagedComponentType =
+  | "component"
+  | (string & {});
 export const HistoryUpdateResponseToolsZarazManagedComponentType =
   /*@__PURE__*/ S.String;
 
@@ -7680,7 +7717,7 @@ export type HistoryUpdateResponseToolsWorkerSettings = string | boolean;
 export const HistoryUpdateResponseToolsWorkerSettings =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
-export type HistoryUpdateResponseToolsWorkerType = "custom-mc";
+export type HistoryUpdateResponseToolsWorkerType = "custom-mc" | (string & {});
 export const HistoryUpdateResponseToolsWorkerType = /*@__PURE__*/ S.String;
 
 export interface HistoryUpdateResponseToolsWorkerWorker {
@@ -7888,7 +7925,8 @@ export type HistoryUpdateResponseTriggersValueExcludeRulesItemZarazLoadRuleOp =
   | "GREATER_THAN"
   | "GREATER_THAN_OR_EQUAL"
   | "LESS_THAN"
-  | "LESS_THAN_OR_EQUAL";
+  | "LESS_THAN_OR_EQUAL"
+  | (string & {});
 export const HistoryUpdateResponseTriggersValueExcludeRulesItemZarazLoadRuleOp =
   /*@__PURE__*/ S.String;
 
@@ -7912,12 +7950,12 @@ export const HistoryUpdateResponseTriggersValueExcludeRulesItemZarazLoadRule =
   }) as any as S.Schema<HistoryUpdateResponseTriggersValueExcludeRulesItemZarazLoadRule>;
 
 export type HistoryUpdateResponseTriggersValueExcludeRulesItemZarazClickListenerRuleAction =
-  "clickListener";
+  "clickListener" | (string & {});
 export const HistoryUpdateResponseTriggersValueExcludeRulesItemZarazClickListenerRuleAction =
   /*@__PURE__*/ S.String;
 
 export type HistoryUpdateResponseTriggersValueExcludeRulesItemZarazClickListenerRuleSettingsType =
-  "xpath" | "css";
+  "xpath" | "css" | (string & {});
 export const HistoryUpdateResponseTriggersValueExcludeRulesItemZarazClickListenerRuleSettingsType =
   /*@__PURE__*/ S.String;
 
@@ -7958,7 +7996,7 @@ export const HistoryUpdateResponseTriggersValueExcludeRulesItemZarazClickListene
   }) as any as S.Schema<HistoryUpdateResponseTriggersValueExcludeRulesItemZarazClickListenerRule>;
 
 export type HistoryUpdateResponseTriggersValueExcludeRulesItemZarazTimerRuleAction =
-  "timer";
+  "timer" | (string & {});
 export const HistoryUpdateResponseTriggersValueExcludeRulesItemZarazTimerRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -7997,7 +8035,7 @@ export const HistoryUpdateResponseTriggersValueExcludeRulesItemZarazTimerRule =
   }) as any as S.Schema<HistoryUpdateResponseTriggersValueExcludeRulesItemZarazTimerRule>;
 
 export type HistoryUpdateResponseTriggersValueExcludeRulesItemZarazFormSubmissionRuleAction =
-  "formSubmission";
+  "formSubmission" | (string & {});
 export const HistoryUpdateResponseTriggersValueExcludeRulesItemZarazFormSubmissionRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -8036,7 +8074,7 @@ export const HistoryUpdateResponseTriggersValueExcludeRulesItemZarazFormSubmissi
   }) as any as S.Schema<HistoryUpdateResponseTriggersValueExcludeRulesItemZarazFormSubmissionRule>;
 
 export type HistoryUpdateResponseTriggersValueExcludeRulesItemZarazVariableMatchRuleAction =
-  "variableMatch";
+  "variableMatch" | (string & {});
 export const HistoryUpdateResponseTriggersValueExcludeRulesItemZarazVariableMatchRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -8075,7 +8113,7 @@ export const HistoryUpdateResponseTriggersValueExcludeRulesItemZarazVariableMatc
   }) as any as S.Schema<HistoryUpdateResponseTriggersValueExcludeRulesItemZarazVariableMatchRule>;
 
 export type HistoryUpdateResponseTriggersValueExcludeRulesItemZarazScrollDepthRuleAction =
-  "scrollDepth";
+  "scrollDepth" | (string & {});
 export const HistoryUpdateResponseTriggersValueExcludeRulesItemZarazScrollDepthRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -8112,7 +8150,7 @@ export const HistoryUpdateResponseTriggersValueExcludeRulesItemZarazScrollDepthR
   }) as any as S.Schema<HistoryUpdateResponseTriggersValueExcludeRulesItemZarazScrollDepthRule>;
 
 export type HistoryUpdateResponseTriggersValueExcludeRulesItemZarazElementVisibilityRuleAction =
-  "elementVisibility";
+  "elementVisibility" | (string & {});
 export const HistoryUpdateResponseTriggersValueExcludeRulesItemZarazElementVisibilityRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -8186,7 +8224,8 @@ export type HistoryUpdateResponseTriggersValueLoadRulesItemZarazLoadRuleOp =
   | "GREATER_THAN"
   | "GREATER_THAN_OR_EQUAL"
   | "LESS_THAN"
-  | "LESS_THAN_OR_EQUAL";
+  | "LESS_THAN_OR_EQUAL"
+  | (string & {});
 export const HistoryUpdateResponseTriggersValueLoadRulesItemZarazLoadRuleOp =
   /*@__PURE__*/ S.String;
 
@@ -8209,12 +8248,12 @@ export const HistoryUpdateResponseTriggersValueLoadRulesItemZarazLoadRule =
   }) as any as S.Schema<HistoryUpdateResponseTriggersValueLoadRulesItemZarazLoadRule>;
 
 export type HistoryUpdateResponseTriggersValueLoadRulesItemZarazClickListenerRuleAction =
-  "clickListener";
+  "clickListener" | (string & {});
 export const HistoryUpdateResponseTriggersValueLoadRulesItemZarazClickListenerRuleAction =
   /*@__PURE__*/ S.String;
 
 export type HistoryUpdateResponseTriggersValueLoadRulesItemZarazClickListenerRuleSettingsType =
-  "xpath" | "css";
+  "xpath" | "css" | (string & {});
 export const HistoryUpdateResponseTriggersValueLoadRulesItemZarazClickListenerRuleSettingsType =
   /*@__PURE__*/ S.String;
 
@@ -8255,7 +8294,7 @@ export const HistoryUpdateResponseTriggersValueLoadRulesItemZarazClickListenerRu
   }) as any as S.Schema<HistoryUpdateResponseTriggersValueLoadRulesItemZarazClickListenerRule>;
 
 export type HistoryUpdateResponseTriggersValueLoadRulesItemZarazTimerRuleAction =
-  "timer";
+  "timer" | (string & {});
 export const HistoryUpdateResponseTriggersValueLoadRulesItemZarazTimerRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -8293,7 +8332,7 @@ export const HistoryUpdateResponseTriggersValueLoadRulesItemZarazTimerRule =
   }) as any as S.Schema<HistoryUpdateResponseTriggersValueLoadRulesItemZarazTimerRule>;
 
 export type HistoryUpdateResponseTriggersValueLoadRulesItemZarazFormSubmissionRuleAction =
-  "formSubmission";
+  "formSubmission" | (string & {});
 export const HistoryUpdateResponseTriggersValueLoadRulesItemZarazFormSubmissionRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -8332,7 +8371,7 @@ export const HistoryUpdateResponseTriggersValueLoadRulesItemZarazFormSubmissionR
   }) as any as S.Schema<HistoryUpdateResponseTriggersValueLoadRulesItemZarazFormSubmissionRule>;
 
 export type HistoryUpdateResponseTriggersValueLoadRulesItemZarazVariableMatchRuleAction =
-  "variableMatch";
+  "variableMatch" | (string & {});
 export const HistoryUpdateResponseTriggersValueLoadRulesItemZarazVariableMatchRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -8371,7 +8410,7 @@ export const HistoryUpdateResponseTriggersValueLoadRulesItemZarazVariableMatchRu
   }) as any as S.Schema<HistoryUpdateResponseTriggersValueLoadRulesItemZarazVariableMatchRule>;
 
 export type HistoryUpdateResponseTriggersValueLoadRulesItemZarazScrollDepthRuleAction =
-  "scrollDepth";
+  "scrollDepth" | (string & {});
 export const HistoryUpdateResponseTriggersValueLoadRulesItemZarazScrollDepthRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -8408,7 +8447,7 @@ export const HistoryUpdateResponseTriggersValueLoadRulesItemZarazScrollDepthRule
   }) as any as S.Schema<HistoryUpdateResponseTriggersValueLoadRulesItemZarazScrollDepthRule>;
 
 export type HistoryUpdateResponseTriggersValueLoadRulesItemZarazElementVisibilityRuleAction =
-  "elementVisibility";
+  "elementVisibility" | (string & {});
 export const HistoryUpdateResponseTriggersValueLoadRulesItemZarazElementVisibilityRuleAction =
   /*@__PURE__*/ S.String;
 
@@ -8472,7 +8511,9 @@ export const HistoryUpdateResponseTriggersValueLoadRulesList =
     HistoryUpdateResponseTriggersValueLoadRulesItem,
   ) as any as S.Schema<HistoryUpdateResponseTriggersValueLoadRulesList>;
 
-export type HistoryUpdateResponseTriggersValueSystem = "pageload";
+export type HistoryUpdateResponseTriggersValueSystem =
+  | "pageload"
+  | (string & {});
 export const HistoryUpdateResponseTriggersValueSystem = /*@__PURE__*/ S.String;
 
 export interface HistoryUpdateResponseTriggersValue {
@@ -8506,7 +8547,7 @@ export const HistoryUpdateResponseTriggersMap = /*@__PURE__*/ S.Record(
   HistoryUpdateResponseTriggersValue,
 ) as any as S.Schema<HistoryUpdateResponseTriggersMap>;
 
-export type HistoryUpdateResponseVariablesStringType = "string";
+export type HistoryUpdateResponseVariablesStringType = "string" | (string & {});
 export const HistoryUpdateResponseVariablesStringType = /*@__PURE__*/ S.String;
 
 export interface HistoryUpdateResponseVariablesString {
@@ -8525,7 +8566,7 @@ export const HistoryUpdateResponseVariablesString = /*@__PURE__*/ S.suspend(
   identifier: "HistoryUpdateResponseVariablesString",
 }) as any as S.Schema<HistoryUpdateResponseVariablesString>;
 
-export type HistoryUpdateResponseVariablesSecretType = "secret";
+export type HistoryUpdateResponseVariablesSecretType = "secret" | (string & {});
 export const HistoryUpdateResponseVariablesSecretType = /*@__PURE__*/ S.String;
 
 export interface HistoryUpdateResponseVariablesSecret {
@@ -8544,7 +8585,7 @@ export const HistoryUpdateResponseVariablesSecret = /*@__PURE__*/ S.suspend(
   identifier: "HistoryUpdateResponseVariablesSecret",
 }) as any as S.Schema<HistoryUpdateResponseVariablesSecret>;
 
-export type HistoryUpdateResponseVariablesWorkerType = "worker";
+export type HistoryUpdateResponseVariablesWorkerType = "worker" | (string & {});
 export const HistoryUpdateResponseVariablesWorkerType = /*@__PURE__*/ S.String;
 
 export interface HistoryUpdateResponseVariablesWorkerValue {
@@ -8826,7 +8867,7 @@ export const PutHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutHistoryResponse",
 }) as any as S.Schema<PutHistoryResponse>;
 
-export type UpdateRequestWorkflow = "realtime" | "preview";
+export type UpdateRequestWorkflow = "realtime" | "preview" | (string & {});
 export const UpdateRequestWorkflow = /*@__PURE__*/ S.String;
 
 export interface PutZarazRequest {
@@ -8852,7 +8893,7 @@ export const PutZarazRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutZarazRequest",
 }) as any as S.Schema<PutZarazRequest>;
 
-export type UpdateResult = "realtime" | "preview";
+export type UpdateResult = "realtime" | "preview" | (string & {});
 export const UpdateResult = /*@__PURE__*/ S.String;
 
 export type PutZarazResponse = UpdateResult;

@@ -201,7 +201,8 @@ export type InstancesBulkResultItemStatus =
   | "complete"
   | "waitingForPause"
   | "waiting"
-  | "rollingBack";
+  | "rollingBack"
+  | (string & {});
 export const InstancesBulkResultItemStatus = /*@__PURE__*/ S.String;
 
 export type InstancesBulkResultItemTriggerSource =
@@ -209,7 +210,8 @@ export type InstancesBulkResultItemTriggerSource =
   | "api"
   | "binding"
   | "event"
-  | "cron";
+  | "cron"
+  | (string & {});
 export const InstancesBulkResultItemTriggerSource = /*@__PURE__*/ S.String;
 
 export interface InstancesBulkResultItem {
@@ -329,7 +331,8 @@ export type InstancesCreateResponseStatus =
   | "complete"
   | "waitingForPause"
   | "waiting"
-  | "rollingBack";
+  | "rollingBack"
+  | (string & {});
 export const InstancesCreateResponseStatus = /*@__PURE__*/ S.String;
 
 export type InstancesCreateResponseTriggerSource =
@@ -337,7 +340,8 @@ export type InstancesCreateResponseTriggerSource =
   | "api"
   | "binding"
   | "event"
-  | "cron";
+  | "cron"
+  | (string & {});
 export const InstancesCreateResponseTriggerSource = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -416,7 +420,7 @@ export const DeleteWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWorkflowRequest",
 }) as any as S.Schema<DeleteWorkflowRequest>;
 
-export type DeleteResponseStatus = "ok";
+export type DeleteResponseStatus = "ok" | (string & {});
 export const DeleteResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -433,10 +437,10 @@ export const DeleteWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWorkflowResponse",
 }) as any as S.Schema<DeleteWorkflowResponse>;
 
-export type InstancesGetRequestOrder = "asc" | "desc";
+export type InstancesGetRequestOrder = "asc" | "desc" | (string & {});
 export const InstancesGetRequestOrder = /*@__PURE__*/ S.String;
 
-export type InstancesGetRequestSimple = "true" | "false";
+export type InstancesGetRequestSimple = "true" | "false" | (string & {});
 export const InstancesGetRequestSimple = /*@__PURE__*/ S.String;
 
 export interface GetInstanceRequest {
@@ -500,7 +504,10 @@ export const InstancesGetResponseRollbackError = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstancesGetResponseRollbackError",
 }) as any as S.Schema<InstancesGetResponseRollbackError>;
 
-export type InstancesGetResponseRollbackOutcome = "complete" | "failed";
+export type InstancesGetResponseRollbackOutcome =
+  | "complete"
+  | "failed"
+  | (string & {});
 export const InstancesGetResponseRollbackOutcome = /*@__PURE__*/ S.String;
 
 export interface InstancesGetResponseRollback {
@@ -525,7 +532,8 @@ export type InstancesGetResponseStatus =
   | "complete"
   | "waitingForPause"
   | "waiting"
-  | "rollingBack";
+  | "rollingBack"
+  | (string & {});
 export const InstancesGetResponseStatus = /*@__PURE__*/ S.String;
 
 export interface InstancesGetResponseStepsItemCase0AttemptsItemError {
@@ -576,7 +584,8 @@ export const InstancesGetResponseStepsItemCase0ConfigRetriesDelay =
 export type InstancesGetResponseStepsItemCase0ConfigRetriesBackoff =
   | "constant"
   | "linear"
-  | "exponential";
+  | "exponential"
+  | (string & {});
 export const InstancesGetResponseStepsItemCase0ConfigRetriesBackoff =
   /*@__PURE__*/ S.String;
 
@@ -603,7 +612,9 @@ export type InstancesGetResponseStepsItemCase0ConfigTimeout = string | number;
 export const InstancesGetResponseStepsItemCase0ConfigTimeout =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
-export type InstancesGetResponseStepsItemCase0ConfigSensitive = "output";
+export type InstancesGetResponseStepsItemCase0ConfigSensitive =
+  | "output"
+  | (string & {});
 export const InstancesGetResponseStepsItemCase0ConfigSensitive =
   /*@__PURE__*/ S.String;
 
@@ -625,7 +636,10 @@ export const InstancesGetResponseStepsItemCase0Config = /*@__PURE__*/ S.suspend(
   identifier: "InstancesGetResponseStepsItemCase0Config",
 }) as any as S.Schema<InstancesGetResponseStepsItemCase0Config>;
 
-export type InstancesGetResponseStepsItemCase0Type = "step" | "rollback";
+export type InstancesGetResponseStepsItemCase0Type =
+  | "step"
+  | "rollback"
+  | (string & {});
 export const InstancesGetResponseStepsItemCase0Type = /*@__PURE__*/ S.String;
 
 export interface InstancesGetResponseStepsItemCase0 {
@@ -667,7 +681,7 @@ export const InstancesGetResponseStepsItemCase1Error = /*@__PURE__*/ S.suspend(
   identifier: "InstancesGetResponseStepsItemCase1Error",
 }) as any as S.Schema<InstancesGetResponseStepsItemCase1Error>;
 
-export type InstancesGetResponseStepsItemCase1Type = "sleep";
+export type InstancesGetResponseStepsItemCase1Type = "sleep" | (string & {});
 export const InstancesGetResponseStepsItemCase1Type = /*@__PURE__*/ S.String;
 
 export interface InstancesGetResponseStepsItemCase1 {
@@ -703,7 +717,9 @@ export const InstancesGetResponseStepsItemCase2Trigger =
     identifier: "InstancesGetResponseStepsItemCase2Trigger",
   }) as any as S.Schema<InstancesGetResponseStepsItemCase2Trigger>;
 
-export type InstancesGetResponseStepsItemCase2Type = "termination";
+export type InstancesGetResponseStepsItemCase2Type =
+  | "termination"
+  | (string & {});
 export const InstancesGetResponseStepsItemCase2Type = /*@__PURE__*/ S.String;
 
 export interface InstancesGetResponseStepsItemCase2 {
@@ -733,7 +749,9 @@ export const InstancesGetResponseStepsItemCase3Error = /*@__PURE__*/ S.suspend(
   identifier: "InstancesGetResponseStepsItemCase3Error",
 }) as any as S.Schema<InstancesGetResponseStepsItemCase3Error>;
 
-export type InstancesGetResponseStepsItemCase3Type = "waitForEvent";
+export type InstancesGetResponseStepsItemCase3Type =
+  | "waitForEvent"
+  | (string & {});
 export const InstancesGetResponseStepsItemCase3Type = /*@__PURE__*/ S.String;
 
 export interface InstancesGetResponseStepsItemCase3 {
@@ -784,7 +802,8 @@ export type InstancesGetResponseTriggerSource =
   | "api"
   | "binding"
   | "event"
-  | "cron";
+  | "cron"
+  | (string & {});
 export const InstancesGetResponseTriggerSource = /*@__PURE__*/ S.String;
 
 export interface InstancesGetResponseTrigger {
@@ -872,7 +891,10 @@ export const GetVersionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetVersionRequest",
 }) as any as S.Schema<GetVersionRequest>;
 
-export type VersionsGetResponseLanguage = "javascript" | "python";
+export type VersionsGetResponseLanguage =
+  | "javascript"
+  | "python"
+  | (string & {});
 export const VersionsGetResponseLanguage = /*@__PURE__*/ S.String;
 
 export interface VersionsGetResponseLimits {
@@ -1038,7 +1060,8 @@ export const VersionsGraphResponseGraphWorkflowFunctionsValueNodesList =
   ) as any as S.Schema<VersionsGraphResponseGraphWorkflowFunctionsValueNodesList>;
 
 export type VersionsGraphResponseGraphWorkflowFunctionsValueType =
-  "function_def";
+  | "function_def"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowFunctionsValueType =
   /*@__PURE__*/ S.String;
 
@@ -1074,7 +1097,9 @@ export type VersionsGraphResponseGraphWorkflowNodesItemCase0Duration =
 export const VersionsGraphResponseGraphWorkflowNodesItemCase0Duration =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
-export type VersionsGraphResponseGraphWorkflowNodesItemCase0Type = "step_sleep";
+export type VersionsGraphResponseGraphWorkflowNodesItemCase0Type =
+  | "step_sleep"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase0Type =
   /*@__PURE__*/ S.String;
 
@@ -1100,7 +1125,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase0 =
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase0>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetriesBackoff =
-  "constant" | "linear" | "exponential";
+  "constant" | "linear" | "exponential" | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetriesBackoff =
   /*@__PURE__*/ S.String;
 
@@ -1157,7 +1182,9 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase1NodesList =
     S.Unknown,
   ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase1NodesList>;
 
-export type VersionsGraphResponseGraphWorkflowNodesItemCase1Type = "step_do";
+export type VersionsGraphResponseGraphWorkflowNodesItemCase1Type =
+  | "step_do"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase1Type =
   /*@__PURE__*/ S.String;
 
@@ -1207,12 +1234,14 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase2Options =
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase2Options>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase2Type =
-  "step_wait_for_event";
+  | "step_wait_for_event"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase2Type =
   /*@__PURE__*/ S.String;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadTypeType =
-  "unknown";
+  | "unknown"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadTypeType =
   /*@__PURE__*/ S.String;
 
@@ -1237,7 +1266,8 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1FieldsM
   ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1FieldsMap>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1Type =
-  "object";
+  | "object"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1Type =
   /*@__PURE__*/ S.String;
 
@@ -1290,7 +1320,8 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase2 =
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase2>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase3Type =
-  "step_sleep_until";
+  | "step_sleep_until"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase3Type =
   /*@__PURE__*/ S.String;
 
@@ -1321,7 +1352,9 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase4NodesList =
     S.Unknown,
   ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase4NodesList>;
 
-export type VersionsGraphResponseGraphWorkflowNodesItemCase4Type = "loop";
+export type VersionsGraphResponseGraphWorkflowNodesItemCase4Type =
+  | "loop"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase4Type =
   /*@__PURE__*/ S.String;
 
@@ -1344,7 +1377,8 @@ export type VersionsGraphResponseGraphWorkflowNodesItemCase5Kind =
   | "all"
   | "any"
   | "all_settled"
-  | "race";
+  | "race"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase5Kind =
   /*@__PURE__*/ S.String;
 
@@ -1355,7 +1389,9 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase5NodesList =
     S.Unknown,
   ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase5NodesList>;
 
-export type VersionsGraphResponseGraphWorkflowNodesItemCase5Type = "parallel";
+export type VersionsGraphResponseGraphWorkflowNodesItemCase5Type =
+  | "parallel"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase5Type =
   /*@__PURE__*/ S.String;
 
@@ -1385,7 +1421,8 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockNodesList
   ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockNodesList>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockType =
-  "block";
+  | "block"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockType =
   /*@__PURE__*/ S.String;
 
@@ -1413,7 +1450,8 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlockNodesLi
   ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlockNodesList>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlockType =
-  "block";
+  | "block"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlockType =
   /*@__PURE__*/ S.String;
 
@@ -1441,7 +1479,8 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlockNodesList =
   ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlockNodesList>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlockType =
-  "block";
+  | "block"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlockType =
   /*@__PURE__*/ S.String;
 
@@ -1460,7 +1499,9 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlock =
     identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlock",
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlock>;
 
-export type VersionsGraphResponseGraphWorkflowNodesItemCase6Type = "try";
+export type VersionsGraphResponseGraphWorkflowNodesItemCase6Type =
+  | "try"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase6Type =
   /*@__PURE__*/ S.String;
 
@@ -1497,7 +1538,9 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase7NodesList =
     S.Unknown,
   ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase7NodesList>;
 
-export type VersionsGraphResponseGraphWorkflowNodesItemCase7Type = "block";
+export type VersionsGraphResponseGraphWorkflowNodesItemCase7Type =
+  | "block"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase7Type =
   /*@__PURE__*/ S.String;
 
@@ -1546,7 +1589,9 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesList =
     VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItem,
   ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesList>;
 
-export type VersionsGraphResponseGraphWorkflowNodesItemCase8Type = "if";
+export type VersionsGraphResponseGraphWorkflowNodesItemCase8Type =
+  | "if"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase8Type =
   /*@__PURE__*/ S.String;
 
@@ -1594,7 +1639,9 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesList =
     VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItem,
   ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesList>;
 
-export type VersionsGraphResponseGraphWorkflowNodesItemCase9Type = "switch";
+export type VersionsGraphResponseGraphWorkflowNodesItemCase9Type =
+  | "switch"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase9Type =
   /*@__PURE__*/ S.String;
 
@@ -1622,7 +1669,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValueNode
   ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValueNodesList>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValueType =
-  "function_def";
+  "function_def" | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValueType =
   /*@__PURE__*/ S.String;
 
@@ -1663,12 +1710,15 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase10NodesList =
     S.Unknown,
   ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase10NodesList>;
 
-export type VersionsGraphResponseGraphWorkflowNodesItemCase10Type = "start";
+export type VersionsGraphResponseGraphWorkflowNodesItemCase10Type =
+  | "start"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase10Type =
   /*@__PURE__*/ S.String;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadTypeType =
-  "unknown";
+  | "unknown"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadTypeType =
   /*@__PURE__*/ S.String;
 
@@ -1693,7 +1743,8 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1Fields
   ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1FieldsMap>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1Type =
-  "object";
+  | "object"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1Type =
   /*@__PURE__*/ S.String;
 
@@ -1744,7 +1795,8 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase10 =
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase10>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase11Type =
-  "function_call";
+  | "function_call"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase11Type =
   /*@__PURE__*/ S.String;
 
@@ -1774,7 +1826,8 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase12NodesList =
   ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase12NodesList>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase12Type =
-  "function_def";
+  | "function_def"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase12Type =
   /*@__PURE__*/ S.String;
 
@@ -1797,11 +1850,14 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase12 =
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase13Kind =
   | "break"
-  | "return";
+  | "return"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase13Kind =
   /*@__PURE__*/ S.String;
 
-export type VersionsGraphResponseGraphWorkflowNodesItemCase13Type = "break";
+export type VersionsGraphResponseGraphWorkflowNodesItemCase13Type =
+  | "break"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowNodesItemCase13Type =
   /*@__PURE__*/ S.String;
 
@@ -1862,7 +1918,9 @@ export const VersionsGraphResponseGraphWorkflowNodesList =
     VersionsGraphResponseGraphWorkflowNodesItem,
   ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesList>;
 
-export type VersionsGraphResponseGraphWorkflowPayloadTypeType = "unknown";
+export type VersionsGraphResponseGraphWorkflowPayloadTypeType =
+  | "unknown"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowPayloadTypeType =
   /*@__PURE__*/ S.String;
 
@@ -1887,7 +1945,9 @@ export const VersionsGraphResponseGraphWorkflowPayloadCase1FieldsMap =
     S.Unknown,
   ) as any as S.Schema<VersionsGraphResponseGraphWorkflowPayloadCase1FieldsMap>;
 
-export type VersionsGraphResponseGraphWorkflowPayloadCase1Type = "object";
+export type VersionsGraphResponseGraphWorkflowPayloadCase1Type =
+  | "object"
+  | (string & {});
 export const VersionsGraphResponseGraphWorkflowPayloadCase1Type =
   /*@__PURE__*/ S.String;
 
@@ -1967,7 +2027,7 @@ export const GraphVersionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GraphVersionResponse",
 }) as any as S.Schema<GraphVersionResponse>;
 
-export type InstancesListRequestDirection = "asc" | "desc";
+export type InstancesListRequestDirection = "asc" | "desc" | (string & {});
 export const InstancesListRequestDirection = /*@__PURE__*/ S.String;
 
 export type InstancesListRequestStatus =
@@ -1979,7 +2039,8 @@ export type InstancesListRequestStatus =
   | "complete"
   | "waitingForPause"
   | "waiting"
-  | "rollingBack";
+  | "rollingBack"
+  | (string & {});
 export const InstancesListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ListInstancesRequest {
@@ -2031,7 +2092,8 @@ export type InstancesListResultItemStatus =
   | "complete"
   | "waitingForPause"
   | "waiting"
-  | "rollingBack";
+  | "rollingBack"
+  | (string & {});
 export const InstancesListResultItemStatus = /*@__PURE__*/ S.String;
 
 export type InstancesListResultItemTriggerSource =
@@ -2039,7 +2101,8 @@ export type InstancesListResultItemTriggerSource =
   | "api"
   | "binding"
   | "event"
-  | "cron";
+  | "cron"
+  | (string & {});
 export const InstancesListResultItemTriggerSource = /*@__PURE__*/ S.String;
 
 export interface InstancesListResultItem {
@@ -2116,7 +2179,10 @@ export const ListVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListVersionsRequest",
 }) as any as S.Schema<ListVersionsRequest>;
 
-export type VersionsListResultItemLanguage = "javascript" | "python";
+export type VersionsListResultItemLanguage =
+  | "javascript"
+  | "python"
+  | (string & {});
 export const VersionsListResultItemLanguage = /*@__PURE__*/ S.String;
 
 export interface VersionsListResultItemLimits {
@@ -2297,13 +2363,15 @@ export type InstancesStatusEditRequestStatus =
   | "pause"
   | "resume"
   | "terminate"
-  | "restart";
+  | "restart"
+  | (string & {});
 export const InstancesStatusEditRequestStatus = /*@__PURE__*/ S.String;
 
 export type InstancesStatusEditRequestFromType =
   | "do"
   | "sleep"
-  | "waitForEvent";
+  | "waitForEvent"
+  | (string & {});
 export const InstancesStatusEditRequestFromType = /*@__PURE__*/ S.String;
 
 export interface InstancesStatusEditRequestFrom {
@@ -2362,7 +2430,8 @@ export type InstancesStatusEditResponseStatus =
   | "complete"
   | "waitingForPause"
   | "waiting"
-  | "rollingBack";
+  | "rollingBack"
+  | (string & {});
 export const InstancesStatusEditResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2467,7 +2536,7 @@ export const PutWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutWorkflowResponse",
 }) as any as S.Schema<PutWorkflowResponse>;
 
-export type InstancesStepRequestType = "step" | "waitForEvent";
+export type InstancesStepRequestType = "step" | "waitForEvent" | (string & {});
 export const InstancesStepRequestType = /*@__PURE__*/ S.String;
 
 export interface StepInstanceRequest {
@@ -2525,7 +2594,8 @@ export type InstancesStepResponseStatus =
   | "complete"
   | "waitingForPause"
   | "waiting"
-  | "rollingBack";
+  | "rollingBack"
+  | (string & {});
 export const InstancesStepResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

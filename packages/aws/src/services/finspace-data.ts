@@ -163,7 +163,7 @@ export const AssociateUserToPermissionGroupResponse = /*@__PURE__*/ S.suspend(
   identifier: "AssociateUserToPermissionGroupResponse",
 }) as any as S.Schema<AssociateUserToPermissionGroupResponse>;
 export type DatasetId = string;
-export type ChangeType = "REPLACE" | "APPEND" | "MODIFY";
+export type ChangeType = "REPLACE" | "APPEND" | "MODIFY" | (string & {});
 export const ChangeType = /*@__PURE__*/ S.String;
 
 export type StringMapKey = string;
@@ -219,7 +219,7 @@ export const CreateChangesetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateChangesetResponse",
 }) as any as S.Schema<CreateChangesetResponse>;
 export type DatasetTitle = string;
-export type DatasetKind = "TABULAR" | "NON_TABULAR";
+export type DatasetKind = "TABULAR" | "NON_TABULAR" | (string & {});
 export const DatasetKind = /*@__PURE__*/ S.String;
 
 export type DatasetDescription = string;
@@ -277,7 +277,8 @@ export type ColumnDataType =
   | "DATE"
   | "DATETIME"
   | "BOOLEAN"
-  | "BINARY";
+  | "BINARY"
+  | (string & {});
 export const ColumnDataType = /*@__PURE__*/ S.String;
 
 export type ColumnName = string;
@@ -366,7 +367,7 @@ export type PartitionColumnList = string[];
 export const PartitionColumnList = /*@__PURE__*/ S.Array(S.String);
 export type TimestampEpoch = number;
 export type DataViewDestinationType = string;
-export type ExportFileFormat = "PARQUET" | "DELIMITED_TEXT";
+export type ExportFileFormat = "PARQUET" | "DELIMITED_TEXT" | (string & {});
 export const ExportFileFormat = /*@__PURE__*/ S.String;
 
 export type S3DestinationFormatOptions = { [key: string]: string | undefined };
@@ -443,7 +444,8 @@ export type ApplicationPermission =
   | "ManageAttributeSets"
   | "ViewAuditData"
   | "AccessNotebooks"
-  | "GetTemporaryCredentials";
+  | "GetTemporaryCredentials"
+  | (string & {});
 export const ApplicationPermission = /*@__PURE__*/ S.String;
 
 export type ApplicationPermissionList = ApplicationPermission[];
@@ -483,12 +485,12 @@ export const CreatePermissionGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePermissionGroupResponse",
 }) as any as S.Schema<CreatePermissionGroupResponse>;
-export type UserType = "SUPER_USER" | "APP_USER";
+export type UserType = "SUPER_USER" | "APP_USER" | (string & {});
 export const UserType = /*@__PURE__*/ S.String;
 
 export type FirstName = string | redacted.Redacted<string>;
 export type LastName = string | redacted.Redacted<string>;
-export type ApiAccess = "ENABLED" | "DISABLED";
+export type ApiAccess = "ENABLED" | "DISABLED" | (string & {});
 export const ApiAccess = /*@__PURE__*/ S.String;
 
 export type RoleArn = string;
@@ -725,7 +727,8 @@ export type IngestionStatus =
   | "FAILED"
   | "SUCCESS"
   | "RUNNING"
-  | "STOP_REQUESTED";
+  | "STOP_REQUESTED"
+  | (string & {});
 export const IngestionStatus = /*@__PURE__*/ S.String;
 
 export type ErrorMessage = string;
@@ -737,7 +740,8 @@ export type ErrorCategory =
   | "THROTTLING"
   | "INTERNAL_SERVICE_EXCEPTION"
   | "CANCELLED"
-  | "USER_RECOVERABLE";
+  | "USER_RECOVERABLE"
+  | (string & {});
 export const ErrorCategory = /*@__PURE__*/ S.String;
 
 export interface ChangesetErrorInfo {
@@ -804,7 +808,12 @@ export const GetDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDatasetRequest",
 }) as any as S.Schema<GetDatasetRequest>;
 export type DatasetArn = string;
-export type DatasetStatus = "PENDING" | "FAILED" | "SUCCESS" | "RUNNING";
+export type DatasetStatus =
+  | "PENDING"
+  | "FAILED"
+  | "SUCCESS"
+  | "RUNNING"
+  | (string & {});
 export const DatasetStatus = /*@__PURE__*/ S.String;
 
 export interface GetDatasetResponse {
@@ -880,7 +889,8 @@ export type DataViewStatus =
   | "TIMEOUT"
   | "SUCCESS"
   | "PENDING"
-  | "FAILED_CLEANUP_FAILED";
+  | "FAILED_CLEANUP_FAILED"
+  | (string & {});
 export const DataViewStatus = /*@__PURE__*/ S.String;
 
 export interface GetDataViewResponse {
@@ -1001,7 +1011,8 @@ export const GetPermissionGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export type PermissionGroupMembershipStatus =
   | "ADDITION_IN_PROGRESS"
   | "ADDITION_SUCCESS"
-  | "REMOVAL_IN_PROGRESS";
+  | "REMOVAL_IN_PROGRESS"
+  | (string & {});
 export const PermissionGroupMembershipStatus = /*@__PURE__*/ S.String;
 
 export interface PermissionGroup {
@@ -1102,7 +1113,7 @@ export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "GetUserRequest" }) as any as S.Schema<GetUserRequest>;
-export type UserStatus = "CREATING" | "ENABLED" | "DISABLED";
+export type UserStatus = "CREATING" | "ENABLED" | "DISABLED" | (string & {});
 export const UserStatus = /*@__PURE__*/ S.String;
 
 export interface GetUserResponse {
@@ -1139,7 +1150,7 @@ export const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetUserResponse",
 }) as any as S.Schema<GetUserResponse>;
-export type LocationType = "INGESTION" | "SAGEMAKER";
+export type LocationType = "INGESTION" | "SAGEMAKER" | (string & {});
 export const LocationType = /*@__PURE__*/ S.String;
 
 export interface GetWorkingLocationRequest {

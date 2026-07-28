@@ -42,7 +42,7 @@ export const SavedCreateRequestWidthsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SavedCreateRequestWidthsList>;
 
 /** * `screenshot` - Screenshot * `iframe` - Iframe * `recording` - Recording */
-export type HeatmapType = "screenshot" | "iframe" | "recording";
+export type HeatmapType = "screenshot" | "iframe" | "recording" | (string & {});
 export const HeatmapType = /*@__PURE__*/ S.String;
 
 export interface SavedCreateRequest {
@@ -88,7 +88,8 @@ export const SavedCreateRequest = /*@__PURE__*/ S.suspend(() =>
 export type HeatmapScreenshotResponseStatusEnum =
   | "processing"
   | "completed"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const HeatmapScreenshotResponseStatusEnum = /*@__PURE__*/ S.String;
 
 export interface HeatmapSnapshotMetadata {
@@ -128,10 +129,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;

@@ -67,7 +67,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;

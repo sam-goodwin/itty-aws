@@ -331,7 +331,8 @@ export type ComputeRepositoryAccessTokenStatusResponseTokenStatusEnum =
   | "NOT_FOUND"
   | "INVALID"
   | "VALID"
-  | "PERMISSION_DENIED";
+  | "PERMISSION_DENIED"
+  | (string & {});
 export const ComputeRepositoryAccessTokenStatusResponseTokenStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -466,7 +467,8 @@ export type GitRemoteSettingsTokenStatusEnum =
   | "TOKEN_STATUS_UNSPECIFIED"
   | "NOT_FOUND"
   | "INVALID"
-  | "VALID";
+  | "VALID"
+  | (string & {});
 export const GitRemoteSettingsTokenStatusEnum = /*@__PURE__*/ S.String;
 
 /** Controls Git remote configuration for a repository. */
@@ -896,7 +898,8 @@ export const ScheduledExecutionRecordList = /*@__PURE__*/ S.Array(
 export type WorkflowTriggerConfigConditionEnum =
   | "CONDITION_UNSPECIFIED"
   | "ALL"
-  | "ANY";
+  | "ANY"
+  | (string & {});
 export const WorkflowTriggerConfigConditionEnum = /*@__PURE__*/ S.String;
 
 /** A record of an attempt to evaluate trigger conditions. */
@@ -986,7 +989,8 @@ export const WorkflowTriggerConfig = /*@__PURE__*/ S.suspend(() =>
 export type InvocationConfigQueryPriorityEnum =
   | "QUERY_PRIORITY_UNSPECIFIED"
   | "INTERACTIVE"
-  | "BATCH";
+  | "BATCH"
+  | (string & {});
 export const InvocationConfigQueryPriorityEnum = /*@__PURE__*/ S.String;
 
 export type TargetList = ReadonlyArray<Target>;
@@ -1111,7 +1115,8 @@ export type WorkflowInvocationStateEnum =
   | "SUCCEEDED"
   | "CANCELLED"
   | "FAILED"
-  | "CANCELING";
+  | "CANCELING"
+  | (string & {});
 export const WorkflowInvocationStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a single invocation of a compilation result. */
@@ -1621,7 +1626,8 @@ export type UncommittedFileChangeStateEnum =
   | "ADDED"
   | "DELETED"
   | "MODIFIED"
-  | "HAS_CONFLICTS";
+  | "HAS_CONFLICTS"
+  | (string & {});
 export const UncommittedFileChangeStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents the Git state of a file with uncommitted changes. */
@@ -3227,7 +3233,8 @@ export const QueryRepositoryDirectoryContentsResponse = /*@__PURE__*/ S.suspend(
 export type QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesViewEnum =
     | "DIRECTORY_CONTENTS_VIEW_UNSPECIFIED"
     | "DIRECTORY_CONTENTS_VIEW_BASIC"
-    | "DIRECTORY_CONTENTS_VIEW_METADATA";
+    | "DIRECTORY_CONTENTS_VIEW_METADATA"
+    | (string & {});
 export const QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3455,13 +3462,20 @@ export type RelationRelationTypeEnum =
   | "TABLE"
   | "VIEW"
   | "INCREMENTAL_TABLE"
-  | "MATERIALIZED_VIEW";
+  | "MATERIALIZED_VIEW"
+  | (string & {});
 export const RelationRelationTypeEnum = /*@__PURE__*/ S.String;
 
-export type RelationFileFormatEnum = "FILE_FORMAT_UNSPECIFIED" | "PARQUET";
+export type RelationFileFormatEnum =
+  | "FILE_FORMAT_UNSPECIFIED"
+  | "PARQUET"
+  | (string & {});
 export const RelationFileFormatEnum = /*@__PURE__*/ S.String;
 
-export type RelationTableFormatEnum = "TABLE_FORMAT_UNSPECIFIED" | "ICEBERG";
+export type RelationTableFormatEnum =
+  | "TABLE_FORMAT_UNSPECIFIED"
+  | "ICEBERG"
+  | (string & {});
 export const RelationTableFormatEnum = /*@__PURE__*/ S.String;
 
 /** Represents a database relation. */
@@ -3813,7 +3827,8 @@ export type WorkflowInvocationActionStateEnum =
   | "DISABLED"
   | "SUCCEEDED"
   | "CANCELLED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const WorkflowInvocationActionStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a workflow action that will run against BigQuery. */

@@ -291,7 +291,7 @@ export const AssociateSigninDelegateGroupsWithAccountResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "AssociateSigninDelegateGroupsWithAccountResponse",
   }) as any as S.Schema<AssociateSigninDelegateGroupsWithAccountResponse>;
-export type RoomMembershipRole = "Administrator" | "Member";
+export type RoomMembershipRole = "Administrator" | "Member" | (string & {});
 export const RoomMembershipRole = /*@__PURE__*/ S.String;
 
 export interface MembershipItem {
@@ -347,7 +347,8 @@ export type ErrorCode =
   | "Unauthorized"
   | "Unprocessable"
   | "VoiceConnectorGroupAssociationsExist"
-  | "PhoneNumberAssociationsExist";
+  | "PhoneNumberAssociationsExist"
+  | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
 
 export interface MemberError {
@@ -498,7 +499,8 @@ export const BatchUnsuspendUserResponse = /*@__PURE__*/ S.suspend(() =>
 export type PhoneNumberProductType =
   | "BusinessCalling"
   | "VoiceConnector"
-  | "SipMediaApplicationDialIn";
+  | "SipMediaApplicationDialIn"
+  | (string & {});
 export const PhoneNumberProductType = /*@__PURE__*/ S.String;
 
 export type CallingName = string | redacted.Redacted<string>;
@@ -547,10 +549,10 @@ export const BatchUpdatePhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchUpdatePhoneNumberResponse",
 }) as any as S.Schema<BatchUpdatePhoneNumberResponse>;
-export type License = "Basic" | "Plus" | "Pro" | "ProTrial";
+export type License = "Basic" | "Plus" | "Pro" | "ProTrial" | (string & {});
 export const License = /*@__PURE__*/ S.String;
 
-export type UserType = "PrivateUser" | "SharedDevice";
+export type UserType = "PrivateUser" | "SharedDevice" | (string & {});
 export const UserType = /*@__PURE__*/ S.String;
 
 export type SensitiveString = string | redacted.Redacted<string>;
@@ -637,13 +639,14 @@ export type AccountType =
   | "Team"
   | "EnterpriseDirectory"
   | "EnterpriseLWA"
-  | "EnterpriseOIDC";
+  | "EnterpriseOIDC"
+  | (string & {});
 export const AccountType = /*@__PURE__*/ S.String;
 
 export type Iso8601Timestamp = Date;
 export type LicenseList = License[];
 export const LicenseList = /*@__PURE__*/ S.Array(License);
-export type AccountStatus = "Suspended" | "Active";
+export type AccountStatus = "Suspended" | "Active" | (string & {});
 export const AccountStatus = /*@__PURE__*/ S.String;
 
 export interface Account {
@@ -703,7 +706,7 @@ export const CreateBotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBotRequest",
 }) as any as S.Schema<CreateBotRequest>;
-export type BotType = "ChatBot";
+export type BotType = "ChatBot" | (string & {});
 export const BotType = /*@__PURE__*/ S.String;
 
 export interface Bot {
@@ -804,10 +807,15 @@ export type PhoneNumberOrderStatus =
   | "Processing"
   | "Successful"
   | "Failed"
-  | "Partial";
+  | "Partial"
+  | (string & {});
 export const PhoneNumberOrderStatus = /*@__PURE__*/ S.String;
 
-export type OrderedPhoneNumberStatus = "Processing" | "Acquired" | "Failed";
+export type OrderedPhoneNumberStatus =
+  | "Processing"
+  | "Acquired"
+  | "Failed"
+  | (string & {});
 export const OrderedPhoneNumberStatus = /*@__PURE__*/ S.String;
 
 export interface OrderedPhoneNumber {
@@ -938,7 +946,7 @@ export const CreateRoomMembershipRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRoomMembershipRequest",
 }) as any as S.Schema<CreateRoomMembershipRequest>;
-export type MemberType = "User" | "Bot" | "Webhook";
+export type MemberType = "User" | "Bot" | "Webhook" | (string & {});
 export const MemberType = /*@__PURE__*/ S.String;
 
 export interface Member {
@@ -1012,10 +1020,14 @@ export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateUserRequest",
 }) as any as S.Schema<CreateUserRequest>;
-export type RegistrationStatus = "Unregistered" | "Registered" | "Suspended";
+export type RegistrationStatus =
+  | "Unregistered"
+  | "Registered"
+  | "Suspended"
+  | (string & {});
 export const RegistrationStatus = /*@__PURE__*/ S.String;
 
-export type InviteStatus = "Pending" | "Accepted" | "Failed";
+export type InviteStatus = "Pending" | "Accepted" | "Failed" | (string & {});
 export const InviteStatus = /*@__PURE__*/ S.String;
 
 export interface User {
@@ -1452,7 +1464,7 @@ export const GetPhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPhoneNumberRequest",
 }) as any as S.Schema<GetPhoneNumberRequest>;
 export type Alpha2CountryCode = string;
-export type PhoneNumberType = "Local" | "TollFree";
+export type PhoneNumberType = "Local" | "TollFree" | (string & {});
 export const PhoneNumberType = /*@__PURE__*/ S.String;
 
 export type PhoneNumberStatus =
@@ -1463,7 +1475,8 @@ export type PhoneNumberStatus =
   | "ReleaseInProgress"
   | "DeleteInProgress"
   | "ReleaseFailed"
-  | "DeleteFailed";
+  | "DeleteFailed"
+  | (string & {});
 export const PhoneNumberStatus = /*@__PURE__*/ S.String;
 
 export interface PhoneNumberCapabilities {
@@ -1491,7 +1504,8 @@ export type PhoneNumberAssociationName =
   | "UserId"
   | "VoiceConnectorId"
   | "VoiceConnectorGroupId"
-  | "SipRuleId";
+  | "SipRuleId"
+  | (string & {});
 export const PhoneNumberAssociationName = /*@__PURE__*/ S.String;
 
 export interface PhoneNumberAssociation {
@@ -1518,7 +1532,8 @@ export type CallingNameStatus =
   | "Unassigned"
   | "UpdateInProgress"
   | "UpdateSucceeded"
-  | "UpdateFailed";
+  | "UpdateFailed"
+  | (string & {});
 export const CallingNameStatus = /*@__PURE__*/ S.String;
 
 export interface PhoneNumber {
@@ -1823,7 +1838,7 @@ export const InviteUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InviteUsersRequest",
 }) as any as S.Schema<InviteUsersRequest>;
-export type EmailStatus = "NotSent" | "Sent" | "Failed";
+export type EmailStatus = "NotSent" | "Sent" | "Failed" | (string & {});
 export const EmailStatus = /*@__PURE__*/ S.String;
 
 export interface Invite {

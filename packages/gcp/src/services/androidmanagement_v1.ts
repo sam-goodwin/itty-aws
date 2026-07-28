@@ -92,7 +92,8 @@ export type EnterpriseEnabledNotificationTypesItemEnum =
   | "STATUS_REPORT"
   | "COMMAND"
   | "USAGE_LOGS"
-  | "ENTERPRISE_UPGRADE";
+  | "ENTERPRISE_UPGRADE"
+  | (string & {});
 export const EnterpriseEnabledNotificationTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -120,7 +121,8 @@ export const ExternalData = /*@__PURE__*/ S.suspend(() =>
 export type GoogleAuthenticationSettingsGoogleAuthenticationRequiredEnum =
   | "GOOGLE_AUTHENTICATION_REQUIRED_UNSPECIFIED"
   | "NOT_REQUIRED"
-  | "REQUIRED";
+  | "REQUIRED"
+  | (string & {});
 export const GoogleAuthenticationSettingsGoogleAuthenticationRequiredEnum =
   /*@__PURE__*/ S.String;
 
@@ -185,13 +187,15 @@ export const TermsAndConditionsList = /*@__PURE__*/ S.Array(
 export type EnterpriseEnterpriseTypeEnum =
   | "ENTERPRISE_TYPE_UNSPECIFIED"
   | "MANAGED_GOOGLE_DOMAIN"
-  | "MANAGED_GOOGLE_PLAY_ACCOUNTS_ENTERPRISE";
+  | "MANAGED_GOOGLE_PLAY_ACCOUNTS_ENTERPRISE"
+  | (string & {});
 export const EnterpriseEnterpriseTypeEnum = /*@__PURE__*/ S.String;
 
 export type EnterpriseManagedGooglePlayAccountsEnterpriseTypeEnum =
   | "MANAGED_GOOGLE_PLAY_ACCOUNTS_ENTERPRISE_TYPE_UNSPECIFIED"
   | "CUSTOMER_MANAGED"
-  | "EMM_MANAGED";
+  | "EMM_MANAGED"
+  | (string & {});
 export const EnterpriseManagedGooglePlayAccountsEnterpriseTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -227,18 +231,23 @@ export const ContactInfo = /*@__PURE__*/ S.suspend(() =>
 export type EnterpriseManagedGoogleDomainTypeEnum =
   | "MANAGED_GOOGLE_DOMAIN_TYPE_UNSPECIFIED"
   | "TYPE_TEAM"
-  | "TYPE_DOMAIN";
+  | "TYPE_DOMAIN"
+  | (string & {});
 export const EnterpriseManagedGoogleDomainTypeEnum = /*@__PURE__*/ S.String;
 
 export type SigninDetailAllowPersonalUsageEnum =
   | "ALLOW_PERSONAL_USAGE_UNSPECIFIED"
   | "PERSONAL_USAGE_ALLOWED"
   | "PERSONAL_USAGE_DISALLOWED"
-  | "PERSONAL_USAGE_DISALLOWED_USERLESS";
+  | "PERSONAL_USAGE_DISALLOWED_USERLESS"
+  | (string & {});
 export const SigninDetailAllowPersonalUsageEnum = /*@__PURE__*/ S.String;
 
 export type SigninDetailGoogleAuthenticationOptionsAuthenticationRequirementEnum =
-  "AUTHENTICATION_REQUIREMENT_UNSPECIFIED" | "OPTIONAL" | "REQUIRED";
+    | "AUTHENTICATION_REQUIREMENT_UNSPECIFIED"
+    | "OPTIONAL"
+    | "REQUIRED"
+    | (string & {});
 export const SigninDetailGoogleAuthenticationOptionsAuthenticationRequirementEnum =
   /*@__PURE__*/ S.String;
 
@@ -261,7 +270,8 @@ export const SigninDetailGoogleAuthenticationOptions = /*@__PURE__*/ S.suspend(
 export type SigninDetailDefaultStatusEnum =
   | "SIGNIN_DETAIL_DEFAULT_STATUS_UNSPECIFIED"
   | "SIGNIN_DETAIL_IS_DEFAULT"
-  | "SIGNIN_DETAIL_IS_NOT_DEFAULT";
+  | "SIGNIN_DETAIL_IS_NOT_DEFAULT"
+  | (string & {});
 export const SigninDetailDefaultStatusEnum = /*@__PURE__*/ S.String;
 
 /** A resource containing sign in details for an enterprise. Use enterprises to manage SigninDetails for a given enterprise.For an enterprise, we can have any number of SigninDetails that is uniquely identified by combination of the following three fields (signin_url, allow_personal_usage, token_tag). One cannot create two SigninDetails with the same (signin_url, allow_personal_usage, token_tag). (token_tag is an optional field).Patch: The operation updates the current list of SigninDetails with the new list of SigninDetails. If the stored SigninDetail configuration is passed, it returns the same signin_enrollment_token and qr_code. If we pass multiple identical SigninDetail configurations that are not stored, it will store the first one amongst those SigninDetail configurations. if the configuration already exists we cannot request it more than once in a particular patch API call, otherwise it will give a duplicate key error and the whole operation will fail. If we remove certain SigninDetail configuration from the request then it will get removed from the storage. We can then request another signin_enrollment_token and qr_code for the same SigninDetail configuration. */
@@ -399,13 +409,15 @@ export type EnrollmentTokenAllowPersonalUsageEnum =
   | "ALLOW_PERSONAL_USAGE_UNSPECIFIED"
   | "PERSONAL_USAGE_ALLOWED"
   | "PERSONAL_USAGE_DISALLOWED"
-  | "PERSONAL_USAGE_DISALLOWED_USERLESS";
+  | "PERSONAL_USAGE_DISALLOWED_USERLESS"
+  | (string & {});
 export const EnrollmentTokenAllowPersonalUsageEnum = /*@__PURE__*/ S.String;
 
 export type GoogleAuthenticationOptionsAuthenticationRequirementEnum =
   | "AUTHENTICATION_REQUIREMENT_UNSPECIFIED"
   | "OPTIONAL"
-  | "REQUIRED";
+  | "REQUIRED"
+  | (string & {});
 export const GoogleAuthenticationOptionsAuthenticationRequirementEnum =
   /*@__PURE__*/ S.String;
 
@@ -496,7 +508,8 @@ export type MigrationTokenManagementModeEnum =
   | "MANAGEMENT_MODE_UNSPECIFIED"
   | "WORK_PROFILE_PERSONALLY_OWNED"
   | "WORK_PROFILE_COMPANY_OWNED"
-  | "FULLY_MANAGED";
+  | "FULLY_MANAGED"
+  | (string & {});
 export const MigrationTokenManagementModeEnum = /*@__PURE__*/ S.String;
 
 /** A token to initiate the migration of a device from being managed by a third-party DPC to being managed by Android Management API. A migration token is valid only for a single device. See the guide (https://developers.google.com/android/management/dpc-migration) for more details. */
@@ -582,7 +595,8 @@ export type WebAppDisplayModeEnum =
   | "DISPLAY_MODE_UNSPECIFIED"
   | "MINIMAL_UI"
   | "STANDALONE"
-  | "FULL_SCREEN";
+  | "FULL_SCREEN"
+  | (string & {});
 export const WebAppDisplayModeEnum = /*@__PURE__*/ S.String;
 
 /** A web app. */
@@ -634,7 +648,8 @@ export const CreateEnterprisesWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type WebTokenPermissionsItemEnum =
   | "WEB_TOKEN_PERMISSION_UNSPECIFIED"
-  | "APPROVE_APPS";
+  | "APPROVE_APPS"
+  | (string & {});
 export const WebTokenPermissionsItemEnum = /*@__PURE__*/ S.String;
 
 export type WebTokenPermissionsItemEnumList =
@@ -650,7 +665,8 @@ export type WebTokenEnabledFeaturesItemEnum =
   | "WEB_APPS"
   | "STORE_BUILDER"
   | "MANAGED_CONFIGURATIONS"
-  | "ZERO_TOUCH_CUSTOMER_MANAGEMENT";
+  | "ZERO_TOUCH_CUSTOMER_MANAGEMENT"
+  | (string & {});
 export const WebTokenEnabledFeaturesItemEnum = /*@__PURE__*/ S.String;
 
 export type WebTokenEnabledFeaturesItemEnumList =
@@ -771,7 +787,8 @@ export type DeleteEnterprisesDevicesWipeDataFlagsEnum =
   | "WIPE_DATA_FLAG_UNSPECIFIED"
   | "PRESERVE_RESET_PROTECTION_DATA"
   | "WIPE_EXTERNAL_STORAGE"
-  | "WIPE_ESIMS";
+  | "WIPE_ESIMS"
+  | (string & {});
 export const DeleteEnterprisesDevicesWipeDataFlagsEnum = /*@__PURE__*/ S.String;
 
 export type DeleteEnterprisesDevicesWipeDataFlagsEnumList =
@@ -959,14 +976,16 @@ export type ApplicationContentRatingEnum =
   | "SEVEN_YEARS"
   | "TWELVE_YEARS"
   | "SIXTEEN_YEARS"
-  | "EIGHTEEN_YEARS";
+  | "EIGHTEEN_YEARS"
+  | (string & {});
 export const ApplicationContentRatingEnum = /*@__PURE__*/ S.String;
 
 export type ApplicationAppPricingEnum =
   | "APP_PRICING_UNSPECIFIED"
   | "FREE"
   | "FREE_WITH_IN_APP_PURCHASE"
-  | "PAID";
+  | "PAID"
+  | (string & {});
 export const ApplicationAppPricingEnum = /*@__PURE__*/ S.String;
 
 export type ManagedPropertyTypeEnum =
@@ -978,7 +997,8 @@ export type ManagedPropertyTypeEnum =
   | "MULTISELECT"
   | "HIDDEN"
   | "BUNDLE"
-  | "BUNDLE_ARRAY";
+  | "BUNDLE_ARRAY"
+  | (string & {});
 export const ManagedPropertyTypeEnum = /*@__PURE__*/ S.String;
 
 /** An entry of a managed property. */
@@ -1106,7 +1126,10 @@ export const AppVersionList = /*@__PURE__*/ S.Array(
   AppVersion,
 ) as any as S.Schema<AppVersionList>;
 
-export type ApplicationFeaturesItemEnum = "APP_FEATURE_UNSPECIFIED" | "VPN_APP";
+export type ApplicationFeaturesItemEnum =
+  | "APP_FEATURE_UNSPECIFIED"
+  | "VPN_APP"
+  | (string & {});
 export const ApplicationFeaturesItemEnum = /*@__PURE__*/ S.String;
 
 export type ApplicationFeaturesItemEnumList =
@@ -1119,7 +1142,8 @@ export type ApplicationDistributionChannelEnum =
   | "DISTRIBUTION_CHANNEL_UNSPECIFIED"
   | "PUBLIC_GOOGLE_HOSTED"
   | "PRIVATE_GOOGLE_HOSTED"
-  | "PRIVATE_SELF_HOSTED";
+  | "PRIVATE_SELF_HOSTED"
+  | (string & {});
 export const ApplicationDistributionChannelEnum = /*@__PURE__*/ S.String;
 
 /** Information about an app. */
@@ -1228,14 +1252,16 @@ export type NonComplianceDetailNonComplianceReasonEnum =
   | "APP_NOT_UPDATED"
   | "DEVICE_INCOMPATIBLE"
   | "APP_SIGNING_CERT_MISMATCH"
-  | "PROJECT_NOT_PERMITTED";
+  | "PROJECT_NOT_PERMITTED"
+  | (string & {});
 export const NonComplianceDetailNonComplianceReasonEnum =
   /*@__PURE__*/ S.String;
 
 export type PasswordPoliciesContextPasswordPolicyScopeEnum =
   | "SCOPE_UNSPECIFIED"
   | "SCOPE_DEVICE"
-  | "SCOPE_PROFILE";
+  | "SCOPE_PROFILE"
+  | (string & {});
 export const PasswordPoliciesContextPasswordPolicyScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1258,7 +1284,8 @@ export type DefaultApplicationContextDefaultApplicationScopeEnum =
   | "DEFAULT_APPLICATION_SCOPE_UNSPECIFIED"
   | "SCOPE_FULLY_MANAGED"
   | "SCOPE_WORK_PROFILE"
-  | "SCOPE_PERSONAL_PROFILE";
+  | "SCOPE_PERSONAL_PROFILE"
+  | (string & {});
 export const DefaultApplicationContextDefaultApplicationScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1322,7 +1349,8 @@ export type NonComplianceDetailSpecificNonComplianceReasonEnum =
   | "NEW_ACCOUNT_NOT_IN_ENTERPRISE"
   | "DEFAULT_APPLICATION_SETTING_UNSUPPORTED_SCOPES"
   | "DEFAULT_APPLICATION_SETTING_FAILED_FOR_SCOPE"
-  | "PRIVATE_DNS_HOST_NOT_SERVING";
+  | "PRIVATE_DNS_HOST_NOT_SERVING"
+  | (string & {});
 export const NonComplianceDetailSpecificNonComplianceReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -1339,7 +1367,8 @@ export type NonComplianceDetailInstallationFailureReasonEnum =
   | "NOT_ENROLLED"
   | "USER_INVALID"
   | "NETWORK_ERROR_UNRELIABLE_CONNECTION"
-  | "INSUFFICIENT_STORAGE";
+  | "INSUFFICIENT_STORAGE"
+  | (string & {});
 export const NonComplianceDetailInstallationFailureReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -1389,19 +1418,22 @@ export const NonComplianceDetailList = /*@__PURE__*/ S.Array(
 export type DeviceManagementModeEnum =
   | "MANAGEMENT_MODE_UNSPECIFIED"
   | "DEVICE_OWNER"
-  | "PROFILE_OWNER";
+  | "PROFILE_OWNER"
+  | (string & {});
 export const DeviceManagementModeEnum = /*@__PURE__*/ S.String;
 
 export type TelephonyInfoConfigModeEnum =
   | "CONFIG_MODE_UNSPECIFIED"
   | "ADMIN_CONFIGURED"
-  | "USER_CONFIGURED";
+  | "USER_CONFIGURED"
+  | (string & {});
 export const TelephonyInfoConfigModeEnum = /*@__PURE__*/ S.String;
 
 export type TelephonyInfoActivationStateEnum =
   | "ACTIVATION_STATE_UNSPECIFIED"
   | "ACTIVATED"
-  | "NOT_ACTIVATED";
+  | "NOT_ACTIVATED"
+  | (string & {});
 export const TelephonyInfoActivationStateEnum = /*@__PURE__*/ S.String;
 
 /** Telephony information associated with a given SIM card on the device. This is supported for all SIM cards on fully managed devices on Android 6 and above. In addition, this is supported for admin-added eSIMs on all devices for Android 15 and above. */
@@ -1460,7 +1492,8 @@ export type SystemUpdateInfoUpdateStatusEnum =
   | "UP_TO_DATE"
   | "UNKNOWN_UPDATE_AVAILABLE"
   | "SECURITY_UPDATE_AVAILABLE"
-  | "OS_UPDATE_AVAILABLE";
+  | "OS_UPDATE_AVAILABLE"
+  | (string & {});
 export const SystemUpdateInfoUpdateStatusEnum = /*@__PURE__*/ S.String;
 
 /** Information about a potential pending system update. */
@@ -1528,7 +1561,8 @@ export type PowerManagementEventEventTypeEnum =
   | "BATTERY_LOW"
   | "BATTERY_OKAY"
   | "BOOT_COMPLETED"
-  | "SHUTDOWN";
+  | "SHUTDOWN"
+  | (string & {});
 export const PowerManagementEventEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** A power management event. */
@@ -1580,7 +1614,8 @@ export type DefaultApplicationInfoDefaultApplicationTypeEnum =
   | "DEFAULT_DIALER"
   | "DEFAULT_HOME"
   | "DEFAULT_SMS"
-  | "DEFAULT_WALLET";
+  | "DEFAULT_WALLET"
+  | (string & {});
 export const DefaultApplicationInfoDefaultApplicationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1589,7 +1624,8 @@ export type DefaultApplicationSettingAttemptAttemptOutcomeEnum =
   | "SUCCESS"
   | "APP_NOT_INSTALLED"
   | "APP_SIGNING_CERT_MISMATCH"
-  | "OTHER_FAILURE";
+  | "OTHER_FAILURE"
+  | (string & {});
 export const DefaultApplicationSettingAttemptAttemptOutcomeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1654,7 +1690,8 @@ export type ApplicationEventEventTypeEnum =
   | "REPLACED"
   | "RESTARTED"
   | "PINNED"
-  | "UNPINNED";
+  | "UNPINNED"
+  | (string & {});
 export const ApplicationEventEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** An app-related event. */
@@ -1683,19 +1720,22 @@ export type ApplicationReportApplicationSourceEnum =
   | "SYSTEM_APP_FACTORY_VERSION"
   | "SYSTEM_APP_UPDATED_VERSION"
   | "INSTALLED_FROM_PLAY_STORE"
-  | "CUSTOM";
+  | "CUSTOM"
+  | (string & {});
 export const ApplicationReportApplicationSourceEnum = /*@__PURE__*/ S.String;
 
 export type ApplicationReportStateEnum =
   | "APPLICATION_STATE_UNSPECIFIED"
   | "REMOVED"
-  | "INSTALLED";
+  | "INSTALLED"
+  | (string & {});
 export const ApplicationReportStateEnum = /*@__PURE__*/ S.String;
 
 export type KeyedAppStateSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "INFO"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const KeyedAppStateSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Keyed app state reported by the app. */
@@ -1732,7 +1772,8 @@ export const KeyedAppStateList = /*@__PURE__*/ S.Array(
 export type ApplicationReportUserFacingTypeEnum =
   | "USER_FACING_TYPE_UNSPECIFIED"
   | "NOT_USER_FACING"
-  | "USER_FACING";
+  | "USER_FACING"
+  | (string & {});
 export const ApplicationReportUserFacingTypeEnum = /*@__PURE__*/ S.String;
 
 /** The application signing key certificate. */
@@ -1812,7 +1853,8 @@ export type PostureDetailSecurityRiskEnum =
   | "SECURITY_RISK_UNSPECIFIED"
   | "UNKNOWN_OS"
   | "COMPROMISED_OS"
-  | "HARDWARE_BACKED_EVALUATION_FAILED";
+  | "HARDWARE_BACKED_EVALUATION_FAILED"
+  | (string & {});
 export const PostureDetailSecurityRiskEnum = /*@__PURE__*/ S.String;
 
 export type UserFacingMessageList = ReadonlyArray<UserFacingMessage>;
@@ -1843,7 +1885,8 @@ export type SecurityPostureDevicePostureEnum =
   | "POSTURE_UNSPECIFIED"
   | "SECURE"
   | "AT_RISK"
-  | "POTENTIALLY_COMPROMISED";
+  | "POTENTIALLY_COMPROMISED"
+  | (string & {});
 export const SecurityPostureDevicePostureEnum = /*@__PURE__*/ S.String;
 
 /** The security posture of the device, as determined by the current device state and the policies applied. */
@@ -1870,7 +1913,8 @@ export type DeviceStateEnum =
   | "PROVISIONING"
   | "LOST"
   | "PREPARING_FOR_MIGRATION"
-  | "DEACTIVATED_BY_DEVICE_FINANCE";
+  | "DEACTIVATED_BY_DEVICE_FINANCE"
+  | (string & {});
 export const DeviceStateEnum = /*@__PURE__*/ S.String;
 
 export type DisplayStateEnum =
@@ -1878,7 +1922,8 @@ export type DisplayStateEnum =
   | "OFF"
   | "ON"
   | "DOZE"
-  | "SUSPENDED";
+  | "SUSPENDED"
+  | (string & {});
 export const DisplayStateEnum = /*@__PURE__*/ S.String;
 
 /** Device display information. */
@@ -1918,7 +1963,8 @@ export const DisplayList = /*@__PURE__*/ S.Array(
 export type DeviceOwnershipEnum =
   | "OWNERSHIP_UNSPECIFIED"
   | "COMPANY_OWNED"
-  | "PERSONALLY_OWNED";
+  | "PERSONALLY_OWNED"
+  | (string & {});
 export const DeviceOwnershipEnum = /*@__PURE__*/ S.String;
 
 export type DoubleList = ReadonlyArray<number>;
@@ -2039,7 +2085,8 @@ export type DeviceSettingsEncryptionStatusEnum =
   | "ACTIVATING"
   | "ACTIVE"
   | "ACTIVE_DEFAULT_KEY"
-  | "ACTIVE_PER_USER";
+  | "ACTIVE_PER_USER"
+  | (string & {});
 export const DeviceSettingsEncryptionStatusEnum = /*@__PURE__*/ S.String;
 
 /** Information about security related device settings on device. */
@@ -2079,7 +2126,8 @@ export type DeviceAppliedStateEnum =
   | "PROVISIONING"
   | "LOST"
   | "PREPARING_FOR_MIGRATION"
-  | "DEACTIVATED_BY_DEVICE_FINANCE";
+  | "DEACTIVATED_BY_DEVICE_FINANCE"
+  | (string & {});
 export const DeviceAppliedStateEnum = /*@__PURE__*/ S.String;
 
 export type MemoryEventEventTypeEnum =
@@ -2088,7 +2136,8 @@ export type MemoryEventEventTypeEnum =
   | "INTERNAL_STORAGE_MEASURED"
   | "EXTERNAL_STORAGE_DETECTED"
   | "EXTERNAL_STORAGE_REMOVED"
-  | "EXTERNAL_STORAGE_MEASURED";
+  | "EXTERNAL_STORAGE_MEASURED"
+  | (string & {});
 export const MemoryEventEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** An event related to memory and storage measurements.To distinguish between new and old events, we recommend using the createTime field. */
@@ -2130,7 +2179,8 @@ export const MemoryInfo = /*@__PURE__*/ S.suspend(() =>
 export type CommonCriteriaModeInfoCommonCriteriaModeStatusEnum =
   | "COMMON_CRITERIA_MODE_STATUS_UNKNOWN"
   | "COMMON_CRITERIA_MODE_DISABLED"
-  | "COMMON_CRITERIA_MODE_ENABLED";
+  | "COMMON_CRITERIA_MODE_ENABLED"
+  | (string & {});
 export const CommonCriteriaModeInfoCommonCriteriaModeStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -2139,7 +2189,8 @@ export type CommonCriteriaModeInfoPolicySignatureVerificationStatusEnum =
   | "POLICY_SIGNATURE_VERIFICATION_DISABLED"
   | "POLICY_SIGNATURE_VERIFICATION_SUCCEEDED"
   | "POLICY_SIGNATURE_VERIFICATION_NOT_SUPPORTED"
-  | "POLICY_SIGNATURE_VERIFICATION_FAILED";
+  | "POLICY_SIGNATURE_VERIFICATION_FAILED"
+  | (string & {});
 export const CommonCriteriaModeInfoPolicySignatureVerificationStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -2174,26 +2225,30 @@ export type PasswordRequirementsPasswordQualityEnum =
   | "COMPLEX"
   | "COMPLEXITY_LOW"
   | "COMPLEXITY_MEDIUM"
-  | "COMPLEXITY_HIGH";
+  | "COMPLEXITY_HIGH"
+  | (string & {});
 export const PasswordRequirementsPasswordQualityEnum = /*@__PURE__*/ S.String;
 
 export type PasswordRequirementsPasswordScopeEnum =
   | "SCOPE_UNSPECIFIED"
   | "SCOPE_DEVICE"
-  | "SCOPE_PROFILE";
+  | "SCOPE_PROFILE"
+  | (string & {});
 export const PasswordRequirementsPasswordScopeEnum = /*@__PURE__*/ S.String;
 
 export type PasswordRequirementsRequirePasswordUnlockEnum =
   | "REQUIRE_PASSWORD_UNLOCK_UNSPECIFIED"
   | "USE_DEFAULT_DEVICE_TIMEOUT"
-  | "REQUIRE_EVERY_DAY";
+  | "REQUIRE_EVERY_DAY"
+  | (string & {});
 export const PasswordRequirementsRequirePasswordUnlockEnum =
   /*@__PURE__*/ S.String;
 
 export type PasswordRequirementsUnifiedLockSettingsEnum =
   | "UNIFIED_LOCK_SETTINGS_UNSPECIFIED"
   | "ALLOW_UNIFIED_WORK_AND_PERSONAL_LOCK"
-  | "REQUIRE_SEPARATE_WORK_LOCK";
+  | "REQUIRE_SEPARATE_WORK_LOCK"
+  | (string & {});
 export const PasswordRequirementsUnifiedLockSettingsEnum =
   /*@__PURE__*/ S.String;
 
@@ -2546,7 +2601,8 @@ export const OncCertificateProviderList = /*@__PURE__*/ S.Array(
 export type PolicyPlayStoreModeEnum =
   | "PLAY_STORE_MODE_UNSPECIFIED"
   | "WHITELIST"
-  | "BLACKLIST";
+  | "BLACKLIST"
+  | (string & {});
 export const PolicyPlayStoreModeEnum = /*@__PURE__*/ S.String;
 
 /** A list of package names. */
@@ -2566,39 +2622,45 @@ export type PolicyCameraAccessEnum =
   | "CAMERA_ACCESS_UNSPECIFIED"
   | "CAMERA_ACCESS_USER_CHOICE"
   | "CAMERA_ACCESS_DISABLED"
-  | "CAMERA_ACCESS_ENFORCED";
+  | "CAMERA_ACCESS_ENFORCED"
+  | (string & {});
 export const PolicyCameraAccessEnum = /*@__PURE__*/ S.String;
 
 export type KioskCustomizationSystemErrorWarningsEnum =
   | "SYSTEM_ERROR_WARNINGS_UNSPECIFIED"
   | "ERROR_AND_WARNINGS_ENABLED"
-  | "ERROR_AND_WARNINGS_MUTED";
+  | "ERROR_AND_WARNINGS_MUTED"
+  | (string & {});
 export const KioskCustomizationSystemErrorWarningsEnum = /*@__PURE__*/ S.String;
 
 export type KioskCustomizationSystemNavigationEnum =
   | "SYSTEM_NAVIGATION_UNSPECIFIED"
   | "NAVIGATION_ENABLED"
   | "NAVIGATION_DISABLED"
-  | "HOME_BUTTON_ONLY";
+  | "HOME_BUTTON_ONLY"
+  | (string & {});
 export const KioskCustomizationSystemNavigationEnum = /*@__PURE__*/ S.String;
 
 export type KioskCustomizationStatusBarEnum =
   | "STATUS_BAR_UNSPECIFIED"
   | "NOTIFICATIONS_AND_SYSTEM_INFO_ENABLED"
   | "NOTIFICATIONS_AND_SYSTEM_INFO_DISABLED"
-  | "SYSTEM_INFO_ONLY";
+  | "SYSTEM_INFO_ONLY"
+  | (string & {});
 export const KioskCustomizationStatusBarEnum = /*@__PURE__*/ S.String;
 
 export type KioskCustomizationPowerButtonActionsEnum =
   | "POWER_BUTTON_ACTIONS_UNSPECIFIED"
   | "POWER_BUTTON_AVAILABLE"
-  | "POWER_BUTTON_BLOCKED";
+  | "POWER_BUTTON_BLOCKED"
+  | (string & {});
 export const KioskCustomizationPowerButtonActionsEnum = /*@__PURE__*/ S.String;
 
 export type KioskCustomizationDeviceSettingsEnum =
   | "DEVICE_SETTINGS_UNSPECIFIED"
   | "SETTINGS_ACCESS_ALLOWED"
-  | "SETTINGS_ACCESS_BLOCKED";
+  | "SETTINGS_ACCESS_BLOCKED"
+  | (string & {});
 export const KioskCustomizationDeviceSettingsEnum = /*@__PURE__*/ S.String;
 
 /** Settings controlling the behavior of a device in kiosk mode. To enable kiosk mode, set kioskCustomLauncherEnabled to true or specify an app in the policy with installType KIOSK. */
@@ -2629,14 +2691,16 @@ export const KioskCustomization = /*@__PURE__*/ S.suspend(() =>
 export type PersonalUsagePoliciesPrivateSpacePolicyEnum =
   | "PRIVATE_SPACE_POLICY_UNSPECIFIED"
   | "PRIVATE_SPACE_ALLOWED"
-  | "PRIVATE_SPACE_DISALLOWED";
+  | "PRIVATE_SPACE_DISALLOWED"
+  | (string & {});
 export const PersonalUsagePoliciesPrivateSpacePolicyEnum =
   /*@__PURE__*/ S.String;
 
 export type PersonalApplicationPolicyInstallTypeEnum =
   | "INSTALL_TYPE_UNSPECIFIED"
   | "BLOCKED"
-  | "AVAILABLE";
+  | "AVAILABLE"
+  | (string & {});
 export const PersonalApplicationPolicyInstallTypeEnum = /*@__PURE__*/ S.String;
 
 /** Policies for apps in the personal profile of a company-owned device with a work profile. */
@@ -2664,14 +2728,16 @@ export const PersonalApplicationPolicyList = /*@__PURE__*/ S.Array(
 export type PersonalUsagePoliciesBluetoothSharingEnum =
   | "BLUETOOTH_SHARING_UNSPECIFIED"
   | "BLUETOOTH_SHARING_ALLOWED"
-  | "BLUETOOTH_SHARING_DISALLOWED";
+  | "BLUETOOTH_SHARING_DISALLOWED"
+  | (string & {});
 export const PersonalUsagePoliciesBluetoothSharingEnum = /*@__PURE__*/ S.String;
 
 export type PersonalUsagePoliciesPersonalPlayStoreModeEnum =
   | "PLAY_STORE_MODE_UNSPECIFIED"
   | "BLACKLIST"
   | "BLOCKLIST"
-  | "ALLOWLIST";
+  | "ALLOWLIST"
+  | (string & {});
 export const PersonalUsagePoliciesPersonalPlayStoreModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2714,7 +2780,8 @@ export const PersonalUsagePolicies = /*@__PURE__*/ S.suspend(() =>
 export type BlockActionBlockScopeEnum =
   | "BLOCK_SCOPE_UNSPECIFIED"
   | "BLOCK_SCOPE_WORK_PROFILE"
-  | "BLOCK_SCOPE_DEVICE";
+  | "BLOCK_SCOPE_DEVICE"
+  | (string & {});
 export const BlockActionBlockScopeEnum = /*@__PURE__*/ S.String;
 
 /** An action to block access to apps and data on a fully managed device or in a work profile. This action also triggers a device or work profile to displays a user-facing notification with information (where possible) on how to correct the compliance issue. Note: wipeAction must also be specified. */
@@ -2821,7 +2888,8 @@ export type NonComplianceDetailConditionNonComplianceReasonEnum =
   | "APP_NOT_UPDATED"
   | "DEVICE_INCOMPATIBLE"
   | "APP_SIGNING_CERT_MISMATCH"
-  | "PROJECT_NOT_PERMITTED";
+  | "PROJECT_NOT_PERMITTED"
+  | (string & {});
 export const NonComplianceDetailConditionNonComplianceReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -2898,7 +2966,8 @@ export const ChoosePrivateKeyRuleList = /*@__PURE__*/ S.Array(
 export type ScreenTimeoutSettingsScreenTimeoutModeEnum =
   | "SCREEN_TIMEOUT_MODE_UNSPECIFIED"
   | "SCREEN_TIMEOUT_USER_CHOICE"
-  | "SCREEN_TIMEOUT_ENFORCED";
+  | "SCREEN_TIMEOUT_ENFORCED"
+  | (string & {});
 export const ScreenTimeoutSettingsScreenTimeoutModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2922,7 +2991,8 @@ export type ScreenBrightnessSettingsScreenBrightnessModeEnum =
   | "SCREEN_BRIGHTNESS_MODE_UNSPECIFIED"
   | "BRIGHTNESS_USER_CHOICE"
   | "BRIGHTNESS_AUTOMATIC"
-  | "BRIGHTNESS_FIXED";
+  | "BRIGHTNESS_FIXED"
+  | (string & {});
 export const ScreenBrightnessSettingsScreenBrightnessModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2963,13 +3033,15 @@ export const DisplaySettings = /*@__PURE__*/ S.suspend(() =>
 export type PolicyAssistContentPolicyEnum =
   | "ASSIST_CONTENT_POLICY_UNSPECIFIED"
   | "ASSIST_CONTENT_DISALLOWED"
-  | "ASSIST_CONTENT_ALLOWED";
+  | "ASSIST_CONTENT_ALLOWED"
+  | (string & {});
 export const PolicyAssistContentPolicyEnum = /*@__PURE__*/ S.String;
 
 export type DeviceRadioStateUltraWidebandStateEnum =
   | "ULTRA_WIDEBAND_STATE_UNSPECIFIED"
   | "ULTRA_WIDEBAND_USER_CHOICE"
-  | "ULTRA_WIDEBAND_DISABLED";
+  | "ULTRA_WIDEBAND_DISABLED"
+  | (string & {});
 export const DeviceRadioStateUltraWidebandStateEnum = /*@__PURE__*/ S.String;
 
 export type DeviceRadioStateMinimumWifiSecurityLevelEnum =
@@ -2977,33 +3049,38 @@ export type DeviceRadioStateMinimumWifiSecurityLevelEnum =
   | "OPEN_NETWORK_SECURITY"
   | "PERSONAL_NETWORK_SECURITY"
   | "ENTERPRISE_NETWORK_SECURITY"
-  | "ENTERPRISE_BIT192_NETWORK_SECURITY";
+  | "ENTERPRISE_BIT192_NETWORK_SECURITY"
+  | (string & {});
 export const DeviceRadioStateMinimumWifiSecurityLevelEnum =
   /*@__PURE__*/ S.String;
 
 export type DeviceRadioStateCellularTwoGStateEnum =
   | "CELLULAR_TWO_G_STATE_UNSPECIFIED"
   | "CELLULAR_TWO_G_USER_CHOICE"
-  | "CELLULAR_TWO_G_DISABLED";
+  | "CELLULAR_TWO_G_DISABLED"
+  | (string & {});
 export const DeviceRadioStateCellularTwoGStateEnum = /*@__PURE__*/ S.String;
 
 export type DeviceRadioStateWifiStateEnum =
   | "WIFI_STATE_UNSPECIFIED"
   | "WIFI_STATE_USER_CHOICE"
   | "WIFI_ENABLED"
-  | "WIFI_DISABLED";
+  | "WIFI_DISABLED"
+  | (string & {});
 export const DeviceRadioStateWifiStateEnum = /*@__PURE__*/ S.String;
 
 export type DeviceRadioStateAirplaneModeStateEnum =
   | "AIRPLANE_MODE_STATE_UNSPECIFIED"
   | "AIRPLANE_MODE_USER_CHOICE"
-  | "AIRPLANE_MODE_DISABLED";
+  | "AIRPLANE_MODE_DISABLED"
+  | (string & {});
 export const DeviceRadioStateAirplaneModeStateEnum = /*@__PURE__*/ S.String;
 
 export type DeviceRadioStateUserInitiatedAddEsimSettingsEnum =
   | "USER_INITIATED_ADD_ESIM_SETTINGS_UNSPECIFIED"
   | "USER_INITIATED_ADD_ESIM_ALLOWED"
-  | "USER_INITIATED_ADD_ESIM_DISALLOWED";
+  | "USER_INITIATED_ADD_ESIM_DISALLOWED"
+  | (string & {});
 export const DeviceRadioStateUserInitiatedAddEsimSettingsEnum =
   /*@__PURE__*/ S.String;
 
@@ -3042,7 +3119,8 @@ export const DeviceRadioState = /*@__PURE__*/ S.suspend(() =>
 export type PolicyAndroidDevicePolicyTracksItemEnum =
   | "APP_TRACK_UNSPECIFIED"
   | "PRODUCTION"
-  | "BETA";
+  | "BETA"
+  | (string & {});
 export const PolicyAndroidDevicePolicyTracksItemEnum = /*@__PURE__*/ S.String;
 
 export type PolicyAndroidDevicePolicyTracksItemEnumList =
@@ -3056,21 +3134,24 @@ export type PolicyDefaultPermissionPolicyEnum =
   | "PERMISSION_POLICY_UNSPECIFIED"
   | "PROMPT"
   | "GRANT"
-  | "DENY";
+  | "DENY"
+  | (string & {});
 export const PolicyDefaultPermissionPolicyEnum = /*@__PURE__*/ S.String;
 
 export type AdvancedSecurityOverridesContentProtectionPolicyEnum =
   | "CONTENT_PROTECTION_POLICY_UNSPECIFIED"
   | "CONTENT_PROTECTION_DISABLED"
   | "CONTENT_PROTECTION_ENFORCED"
-  | "CONTENT_PROTECTION_USER_CHOICE";
+  | "CONTENT_PROTECTION_USER_CHOICE"
+  | (string & {});
 export const AdvancedSecurityOverridesContentProtectionPolicyEnum =
   /*@__PURE__*/ S.String;
 
 export type AdvancedSecurityOverridesGooglePlayProtectVerifyAppsEnum =
   | "GOOGLE_PLAY_PROTECT_VERIFY_APPS_UNSPECIFIED"
   | "VERIFY_APPS_ENFORCED"
-  | "VERIFY_APPS_USER_CHOICE";
+  | "VERIFY_APPS_USER_CHOICE"
+  | (string & {});
 export const AdvancedSecurityOverridesGooglePlayProtectVerifyAppsEnum =
   /*@__PURE__*/ S.String;
 
@@ -3078,13 +3159,15 @@ export type AdvancedSecurityOverridesMtePolicyEnum =
   | "MTE_POLICY_UNSPECIFIED"
   | "MTE_USER_CHOICE"
   | "MTE_ENFORCED"
-  | "MTE_DISABLED";
+  | "MTE_DISABLED"
+  | (string & {});
 export const AdvancedSecurityOverridesMtePolicyEnum = /*@__PURE__*/ S.String;
 
 export type AdvancedSecurityOverridesCommonCriteriaModeEnum =
   | "COMMON_CRITERIA_MODE_UNSPECIFIED"
   | "COMMON_CRITERIA_MODE_DISABLED"
-  | "COMMON_CRITERIA_MODE_ENABLED";
+  | "COMMON_CRITERIA_MODE_ENABLED"
+  | (string & {});
 export const AdvancedSecurityOverridesCommonCriteriaModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3092,14 +3175,16 @@ export type AdvancedSecurityOverridesUntrustedAppsPolicyEnum =
   | "UNTRUSTED_APPS_POLICY_UNSPECIFIED"
   | "DISALLOW_INSTALL"
   | "ALLOW_INSTALL_IN_PERSONAL_PROFILE_ONLY"
-  | "ALLOW_INSTALL_DEVICE_WIDE";
+  | "ALLOW_INSTALL_DEVICE_WIDE"
+  | (string & {});
 export const AdvancedSecurityOverridesUntrustedAppsPolicyEnum =
   /*@__PURE__*/ S.String;
 
 export type AdvancedSecurityOverridesDeveloperSettingsEnum =
   | "DEVELOPER_SETTINGS_UNSPECIFIED"
   | "DEVELOPER_SETTINGS_DISABLED"
-  | "DEVELOPER_SETTINGS_ALLOWED";
+  | "DEVELOPER_SETTINGS_ALLOWED"
+  | (string & {});
 export const AdvancedSecurityOverridesDeveloperSettingsEnum =
   /*@__PURE__*/ S.String;
 
@@ -3156,7 +3241,8 @@ export type PolicyKeyguardDisabledFeaturesItemEnum =
   | "IRIS"
   | "BIOMETRICS"
   | "SHORTCUTS"
-  | "ALL_FEATURES";
+  | "ALL_FEATURES"
+  | (string & {});
 export const PolicyKeyguardDisabledFeaturesItemEnum = /*@__PURE__*/ S.String;
 
 export type PolicyKeyguardDisabledFeaturesItemEnumList =
@@ -3184,7 +3270,8 @@ export const WifiSsidList = /*@__PURE__*/ S.Array(
 export type WifiSsidPolicyWifiSsidPolicyTypeEnum =
   | "WIFI_SSID_POLICY_TYPE_UNSPECIFIED"
   | "WIFI_SSID_DENYLIST"
-  | "WIFI_SSID_ALLOWLIST";
+  | "WIFI_SSID_ALLOWLIST"
+  | (string & {});
 export const WifiSsidPolicyWifiSsidPolicyTypeEnum = /*@__PURE__*/ S.String;
 
 /** Restrictions on which Wi-Fi SSIDs the device can connect to. Note that this does not affect which networks can be configured on the device. Supported on company-owned devices running Android 13 and above. */
@@ -3205,14 +3292,16 @@ export type DeviceConnectivityManagementConfigureWifiEnum =
   | "CONFIGURE_WIFI_UNSPECIFIED"
   | "ALLOW_CONFIGURING_WIFI"
   | "DISALLOW_ADD_WIFI_CONFIG"
-  | "DISALLOW_CONFIGURING_WIFI";
+  | "DISALLOW_CONFIGURING_WIFI"
+  | (string & {});
 export const DeviceConnectivityManagementConfigureWifiEnum =
   /*@__PURE__*/ S.String;
 
 export type ApnPolicyOverrideApnsEnum =
   | "OVERRIDE_APNS_UNSPECIFIED"
   | "OVERRIDE_APNS_DISABLED"
-  | "OVERRIDE_APNS_ENABLED";
+  | "OVERRIDE_APNS_ENABLED"
+  | (string & {});
 export const ApnPolicyOverrideApnsEnum = /*@__PURE__*/ S.String;
 
 export type ApnSettingMvnoTypeEnum =
@@ -3220,7 +3309,8 @@ export type ApnSettingMvnoTypeEnum =
   | "GID"
   | "ICCID"
   | "IMSI"
-  | "SPN";
+  | "SPN"
+  | (string & {});
 export const ApnSettingMvnoTypeEnum = /*@__PURE__*/ S.String;
 
 export type ApnSettingNetworkTypesItemEnum =
@@ -3236,7 +3326,8 @@ export type ApnSettingNetworkTypesItemEnum =
   | "LTE"
   | "NR"
   | "TD_SCDMA"
-  | "UMTS";
+  | "UMTS"
+  | (string & {});
 export const ApnSettingNetworkTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type ApnSettingNetworkTypesItemEnumList =
@@ -3252,7 +3343,8 @@ export type ApnSettingRoamingProtocolEnum =
   | "IPV6"
   | "NON_IP"
   | "PPP"
-  | "UNSTRUCTURED";
+  | "UNSTRUCTURED"
+  | (string & {});
 export const ApnSettingRoamingProtocolEnum = /*@__PURE__*/ S.String;
 
 export type ApnSettingAuthTypeEnum =
@@ -3260,7 +3352,8 @@ export type ApnSettingAuthTypeEnum =
   | "NONE"
   | "PAP"
   | "CHAP"
-  | "PAP_OR_CHAP";
+  | "PAP_OR_CHAP"
+  | (string & {});
 export const ApnSettingAuthTypeEnum = /*@__PURE__*/ S.String;
 
 export type ApnSettingProtocolEnum =
@@ -3270,13 +3363,15 @@ export type ApnSettingProtocolEnum =
   | "IPV6"
   | "NON_IP"
   | "PPP"
-  | "UNSTRUCTURED";
+  | "UNSTRUCTURED"
+  | (string & {});
 export const ApnSettingProtocolEnum = /*@__PURE__*/ S.String;
 
 export type ApnSettingAlwaysOnSettingEnum =
   | "ALWAYS_ON_SETTING_UNSPECIFIED"
   | "NOT_ALWAYS_ON"
-  | "ALWAYS_ON";
+  | "ALWAYS_ON"
+  | (string & {});
 export const ApnSettingAlwaysOnSettingEnum = /*@__PURE__*/ S.String;
 
 export type ApnSettingApnTypesItemEnum =
@@ -3296,7 +3391,8 @@ export type ApnSettingApnTypesItemEnum =
   | "RCS"
   | "SUPL"
   | "VSIM"
-  | "XCAP";
+  | "XCAP"
+  | (string & {});
 export const ApnSettingApnTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type ApnSettingApnTypesItemEnumList =
@@ -3395,7 +3491,8 @@ export const ApnPolicy = /*@__PURE__*/ S.suspend(() =>
 export type DeviceConnectivityManagementBluetoothSharingEnum =
   | "BLUETOOTH_SHARING_UNSPECIFIED"
   | "BLUETOOTH_SHARING_ALLOWED"
-  | "BLUETOOTH_SHARING_DISALLOWED";
+  | "BLUETOOTH_SHARING_DISALLOWED"
+  | (string & {});
 export const DeviceConnectivityManagementBluetoothSharingEnum =
   /*@__PURE__*/ S.String;
 
@@ -3403,7 +3500,8 @@ export type DeviceConnectivityManagementUsbDataAccessEnum =
   | "USB_DATA_ACCESS_UNSPECIFIED"
   | "ALLOW_USB_DATA_TRANSFER"
   | "DISALLOW_USB_FILE_TRANSFER"
-  | "DISALLOW_USB_DATA_TRANSFER";
+  | "DISALLOW_USB_DATA_TRANSFER"
+  | (string & {});
 export const DeviceConnectivityManagementUsbDataAccessEnum =
   /*@__PURE__*/ S.String;
 
@@ -3411,7 +3509,8 @@ export type PrivateDnsSettingsPrivateDnsModeEnum =
   | "PRIVATE_DNS_MODE_UNSPECIFIED"
   | "PRIVATE_DNS_USER_CHOICE"
   | "PRIVATE_DNS_AUTOMATIC"
-  | "PRIVATE_DNS_SPECIFIED_HOST";
+  | "PRIVATE_DNS_SPECIFIED_HOST"
+  | (string & {});
 export const PrivateDnsSettingsPrivateDnsModeEnum = /*@__PURE__*/ S.String;
 
 /** Controls the device's private DNS settings. */
@@ -3434,7 +3533,8 @@ export type DeviceConnectivityManagementTetheringSettingsEnum =
   | "TETHERING_SETTINGS_UNSPECIFIED"
   | "ALLOW_ALL_TETHERING"
   | "DISALLOW_WIFI_TETHERING"
-  | "DISALLOW_ALL_TETHERING";
+  | "DISALLOW_ALL_TETHERING"
+  | (string & {});
 export const DeviceConnectivityManagementTetheringSettingsEnum =
   /*@__PURE__*/ S.String;
 
@@ -3442,7 +3542,8 @@ export type WifiRoamingSettingWifiRoamingModeEnum =
   | "WIFI_ROAMING_MODE_UNSPECIFIED"
   | "WIFI_ROAMING_DISABLED"
   | "WIFI_ROAMING_DEFAULT"
-  | "WIFI_ROAMING_AGGRESSIVE";
+  | "WIFI_ROAMING_AGGRESSIVE"
+  | (string & {});
 export const WifiRoamingSettingWifiRoamingModeEnum = /*@__PURE__*/ S.String;
 
 /** Wi-Fi roaming setting. */
@@ -3486,21 +3587,24 @@ export type PreferentialNetworkServiceSettingsDefaultPreferentialNetworkIdEnum =
     | "PREFERENTIAL_NETWORK_ID_TWO"
     | "PREFERENTIAL_NETWORK_ID_THREE"
     | "PREFERENTIAL_NETWORK_ID_FOUR"
-    | "PREFERENTIAL_NETWORK_ID_FIVE";
+    | "PREFERENTIAL_NETWORK_ID_FIVE"
+    | (string & {});
 export const PreferentialNetworkServiceSettingsDefaultPreferentialNetworkIdEnum =
   /*@__PURE__*/ S.String;
 
 export type PreferentialNetworkServiceConfigFallbackToDefaultConnectionEnum =
   | "FALLBACK_TO_DEFAULT_CONNECTION_UNSPECIFIED"
   | "FALLBACK_TO_DEFAULT_CONNECTION_ALLOWED"
-  | "FALLBACK_TO_DEFAULT_CONNECTION_DISALLOWED";
+  | "FALLBACK_TO_DEFAULT_CONNECTION_DISALLOWED"
+  | (string & {});
 export const PreferentialNetworkServiceConfigFallbackToDefaultConnectionEnum =
   /*@__PURE__*/ S.String;
 
 export type PreferentialNetworkServiceConfigNonMatchingNetworksEnum =
   | "NON_MATCHING_NETWORKS_UNSPECIFIED"
   | "NON_MATCHING_NETWORKS_ALLOWED"
-  | "NON_MATCHING_NETWORKS_DISALLOWED";
+  | "NON_MATCHING_NETWORKS_DISALLOWED"
+  | (string & {});
 export const PreferentialNetworkServiceConfigNonMatchingNetworksEnum =
   /*@__PURE__*/ S.String;
 
@@ -3511,7 +3615,8 @@ export type PreferentialNetworkServiceConfigPreferentialNetworkIdEnum =
   | "PREFERENTIAL_NETWORK_ID_TWO"
   | "PREFERENTIAL_NETWORK_ID_THREE"
   | "PREFERENTIAL_NETWORK_ID_FOUR"
-  | "PREFERENTIAL_NETWORK_ID_FIVE";
+  | "PREFERENTIAL_NETWORK_ID_FIVE"
+  | (string & {});
 export const PreferentialNetworkServiceConfigPreferentialNetworkIdEnum =
   /*@__PURE__*/ S.String;
 
@@ -3569,7 +3674,8 @@ export const PreferentialNetworkServiceSettings = /*@__PURE__*/ S.suspend(() =>
 export type DeviceConnectivityManagementWifiDirectSettingsEnum =
   | "WIFI_DIRECT_SETTINGS_UNSPECIFIED"
   | "ALLOW_WIFI_DIRECT"
-  | "DISALLOW_WIFI_DIRECT";
+  | "DISALLOW_WIFI_DIRECT"
+  | (string & {});
 export const DeviceConnectivityManagementWifiDirectSettingsEnum =
   /*@__PURE__*/ S.String;
 
@@ -3630,7 +3736,8 @@ export type DefaultApplicationSettingDefaultApplicationTypeEnum =
   | "DEFAULT_DIALER"
   | "DEFAULT_HOME"
   | "DEFAULT_SMS"
-  | "DEFAULT_WALLET";
+  | "DEFAULT_WALLET"
+  | (string & {});
 export const DefaultApplicationSettingDefaultApplicationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3656,7 +3763,8 @@ export type DefaultApplicationSettingDefaultApplicationScopesItemEnum =
   | "DEFAULT_APPLICATION_SCOPE_UNSPECIFIED"
   | "SCOPE_FULLY_MANAGED"
   | "SCOPE_WORK_PROFILE"
-  | "SCOPE_PERSONAL_PROFILE";
+  | "SCOPE_PERSONAL_PROFILE"
+  | (string & {});
 export const DefaultApplicationSettingDefaultApplicationScopesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -3749,7 +3857,8 @@ export const AlwaysOnVpnPackage = /*@__PURE__*/ S.suspend(() =>
 
 export type PolicyWipeDataFlagsItemEnum =
   | "WIPE_DATA_FLAG_UNSPECIFIED"
-  | "WIPE_ESIMS";
+  | "WIPE_ESIMS"
+  | (string & {});
 export const PolicyWipeDataFlagsItemEnum = /*@__PURE__*/ S.String;
 
 export type PolicyWipeDataFlagsItemEnumList =
@@ -3761,19 +3870,22 @@ export const PolicyWipeDataFlagsItemEnumList = /*@__PURE__*/ S.Array(
 export type PolicyAutoDateAndTimeZoneEnum =
   | "AUTO_DATE_AND_TIME_ZONE_UNSPECIFIED"
   | "AUTO_DATE_AND_TIME_ZONE_USER_CHOICE"
-  | "AUTO_DATE_AND_TIME_ZONE_ENFORCED";
+  | "AUTO_DATE_AND_TIME_ZONE_ENFORCED"
+  | (string & {});
 export const PolicyAutoDateAndTimeZoneEnum = /*@__PURE__*/ S.String;
 
 export type PolicyEncryptionPolicyEnum =
   | "ENCRYPTION_POLICY_UNSPECIFIED"
   | "ENABLED_WITHOUT_PASSWORD"
-  | "ENABLED_WITH_PASSWORD";
+  | "ENABLED_WITH_PASSWORD"
+  | (string & {});
 export const PolicyEncryptionPolicyEnum = /*@__PURE__*/ S.String;
 
 export type WorkAccountSetupConfigAuthenticationTypeEnum =
   | "AUTHENTICATION_TYPE_UNSPECIFIED"
   | "AUTHENTICATION_TYPE_NOT_ENFORCED"
-  | "GOOGLE_AUTHENTICATED";
+  | "GOOGLE_AUTHENTICATED"
+  | (string & {});
 export const WorkAccountSetupConfigAuthenticationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3800,25 +3912,29 @@ export type PolicyAppAutoUpdatePolicyEnum =
   | "CHOICE_TO_THE_USER"
   | "NEVER"
   | "WIFI_ONLY"
-  | "ALWAYS";
+  | "ALWAYS"
+  | (string & {});
 export const PolicyAppAutoUpdatePolicyEnum = /*@__PURE__*/ S.String;
 
 export type PolicyAppFunctionsEnum =
   | "APP_FUNCTIONS_UNSPECIFIED"
   | "APP_FUNCTIONS_DISALLOWED"
-  | "APP_FUNCTIONS_ALLOWED";
+  | "APP_FUNCTIONS_ALLOWED"
+  | (string & {});
 export const PolicyAppFunctionsEnum = /*@__PURE__*/ S.String;
 
 export type PolicyAutofillPolicyEnum =
   | "AUTOFILL_POLICY_UNSPECIFIED"
   | "AUTOFILL_USER_CHOICE"
-  | "AUTOFILL_DISABLED";
+  | "AUTOFILL_DISABLED"
+  | (string & {});
 export const PolicyAutofillPolicyEnum = /*@__PURE__*/ S.String;
 
 export type CrossProfilePoliciesCrossProfileCopyPasteEnum =
   | "CROSS_PROFILE_COPY_PASTE_UNSPECIFIED"
   | "COPY_FROM_WORK_TO_PERSONAL_DISALLOWED"
-  | "CROSS_PROFILE_COPY_PASTE_ALLOWED";
+  | "CROSS_PROFILE_COPY_PASTE_ALLOWED"
+  | (string & {});
 export const CrossProfilePoliciesCrossProfileCopyPasteEnum =
   /*@__PURE__*/ S.String;
 
@@ -3826,21 +3942,24 @@ export type CrossProfilePoliciesCrossProfileDataSharingEnum =
   | "CROSS_PROFILE_DATA_SHARING_UNSPECIFIED"
   | "CROSS_PROFILE_DATA_SHARING_DISALLOWED"
   | "DATA_SHARING_FROM_WORK_TO_PERSONAL_DISALLOWED"
-  | "CROSS_PROFILE_DATA_SHARING_ALLOWED";
+  | "CROSS_PROFILE_DATA_SHARING_ALLOWED"
+  | (string & {});
 export const CrossProfilePoliciesCrossProfileDataSharingEnum =
   /*@__PURE__*/ S.String;
 
 export type CrossProfilePoliciesCrossProfileAppFunctionsEnum =
   | "CROSS_PROFILE_APP_FUNCTIONS_UNSPECIFIED"
   | "CROSS_PROFILE_APP_FUNCTIONS_DISALLOWED"
-  | "CROSS_PROFILE_APP_FUNCTIONS_ALLOWED";
+  | "CROSS_PROFILE_APP_FUNCTIONS_ALLOWED"
+  | (string & {});
 export const CrossProfilePoliciesCrossProfileAppFunctionsEnum =
   /*@__PURE__*/ S.String;
 
 export type CrossProfilePoliciesWorkProfileWidgetsDefaultEnum =
   | "WORK_PROFILE_WIDGETS_DEFAULT_UNSPECIFIED"
   | "WORK_PROFILE_WIDGETS_DEFAULT_ALLOWED"
-  | "WORK_PROFILE_WIDGETS_DEFAULT_DISALLOWED";
+  | "WORK_PROFILE_WIDGETS_DEFAULT_DISALLOWED"
+  | (string & {});
 export const CrossProfilePoliciesWorkProfileWidgetsDefaultEnum =
   /*@__PURE__*/ S.String;
 
@@ -3848,7 +3967,8 @@ export type CrossProfilePoliciesShowWorkContactsInPersonalProfileEnum =
   | "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_UNSPECIFIED"
   | "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED"
   | "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_ALLOWED"
-  | "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED_EXCEPT_SYSTEM";
+  | "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED_EXCEPT_SYSTEM"
+  | (string & {});
 export const CrossProfilePoliciesShowWorkContactsInPersonalProfileEnum =
   /*@__PURE__*/ S.String;
 
@@ -3893,13 +4013,15 @@ export const CrossProfilePolicies = /*@__PURE__*/ S.suspend(() =>
 export type PolicyCredentialProviderPolicyDefaultEnum =
   | "CREDENTIAL_PROVIDER_POLICY_DEFAULT_UNSPECIFIED"
   | "CREDENTIAL_PROVIDER_DEFAULT_DISALLOWED"
-  | "CREDENTIAL_PROVIDER_DEFAULT_DISALLOWED_EXCEPT_SYSTEM";
+  | "CREDENTIAL_PROVIDER_DEFAULT_DISALLOWED_EXCEPT_SYSTEM"
+  | (string & {});
 export const PolicyCredentialProviderPolicyDefaultEnum = /*@__PURE__*/ S.String;
 
 export type PolicyPreferentialNetworkServiceEnum =
   | "PREFERENTIAL_NETWORK_SERVICE_UNSPECIFIED"
   | "PREFERENTIAL_NETWORK_SERVICE_DISABLED"
-  | "PREFERENTIAL_NETWORK_SERVICE_ENABLED";
+  | "PREFERENTIAL_NETWORK_SERVICE_ENABLED"
+  | (string & {});
 export const PolicyPreferentialNetworkServiceEnum = /*@__PURE__*/ S.String;
 
 /** Settings controlling the behavior of application reports. */
@@ -3964,7 +4086,8 @@ export const StatusReportingSettings = /*@__PURE__*/ S.suspend(() =>
 export type UsageLogEnabledLogTypesItemEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "SECURITY_LOGS"
-  | "NETWORK_ACTIVITY_LOGS";
+  | "NETWORK_ACTIVITY_LOGS"
+  | (string & {});
 export const UsageLogEnabledLogTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type UsageLogEnabledLogTypesItemEnumList =
@@ -3976,7 +4099,8 @@ export const UsageLogEnabledLogTypesItemEnumList = /*@__PURE__*/ S.Array(
 export type UsageLogUploadOnCellularAllowedItemEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "SECURITY_LOGS"
-  | "NETWORK_ACTIVITY_LOGS";
+  | "NETWORK_ACTIVITY_LOGS"
+  | (string & {});
 export const UsageLogUploadOnCellularAllowedItemEnum = /*@__PURE__*/ S.String;
 
 export type UsageLogUploadOnCellularAllowedItemEnumList =
@@ -4026,14 +4150,16 @@ export type PolicyMicrophoneAccessEnum =
   | "MICROPHONE_ACCESS_UNSPECIFIED"
   | "MICROPHONE_ACCESS_USER_CHOICE"
   | "MICROPHONE_ACCESS_DISABLED"
-  | "MICROPHONE_ACCESS_ENFORCED";
+  | "MICROPHONE_ACCESS_ENFORCED"
+  | (string & {});
 export const PolicyMicrophoneAccessEnum = /*@__PURE__*/ S.String;
 
 export type PolicyStayOnPluggedModesItemEnum =
   | "BATTERY_PLUGGED_MODE_UNSPECIFIED"
   | "AC"
   | "USB"
-  | "WIRELESS";
+  | "WIRELESS"
+  | (string & {});
 export const PolicyStayOnPluggedModesItemEnum = /*@__PURE__*/ S.String;
 
 export type PolicyStayOnPluggedModesItemEnumList =
@@ -4050,20 +4176,23 @@ export type PolicyLocationModeEnum =
   | "OFF"
   | "LOCATION_USER_CHOICE"
   | "LOCATION_ENFORCED"
-  | "LOCATION_DISABLED";
+  | "LOCATION_DISABLED"
+  | (string & {});
 export const PolicyLocationModeEnum = /*@__PURE__*/ S.String;
 
 export type PolicyPrintingPolicyEnum =
   | "PRINTING_POLICY_UNSPECIFIED"
   | "PRINTING_DISALLOWED"
-  | "PRINTING_ALLOWED";
+  | "PRINTING_ALLOWED"
+  | (string & {});
 export const PolicyPrintingPolicyEnum = /*@__PURE__*/ S.String;
 
 export type SystemUpdateTypeEnum =
   | "SYSTEM_UPDATE_TYPE_UNSPECIFIED"
   | "AUTOMATIC"
   | "WINDOWED"
-  | "POSTPONE";
+  | "POSTPONE"
+  | (string & {});
 export const SystemUpdateTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: A full date, with non-zero year, month, and day values. A month and day, with a zero year (for example, an anniversary). A year on its own, with a zero month and a zero day. A year and month, with a zero day (for example, a credit card expiration date).Related types: google.type.TimeOfDay google.type.DateTime google.protobuf.Timestamp */
@@ -4128,7 +4257,8 @@ export type PermissionGrantPolicyEnum =
   | "PERMISSION_POLICY_UNSPECIFIED"
   | "PROMPT"
   | "GRANT"
-  | "DENY";
+  | "DENY"
+  | (string & {});
 export const PermissionGrantPolicyEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for an Android permission and its grant state. */
@@ -4156,14 +4286,16 @@ export type ApplicationPolicyDefaultPermissionPolicyEnum =
   | "PERMISSION_POLICY_UNSPECIFIED"
   | "PROMPT"
   | "GRANT"
-  | "DENY";
+  | "DENY"
+  | (string & {});
 export const ApplicationPolicyDefaultPermissionPolicyEnum =
   /*@__PURE__*/ S.String;
 
 export type ApplicationPolicyAlwaysOnVpnLockdownExemptionEnum =
   | "ALWAYS_ON_VPN_LOCKDOWN_EXEMPTION_UNSPECIFIED"
   | "VPN_LOCKDOWN_ENFORCED"
-  | "VPN_LOCKDOWN_EXEMPTION";
+  | "VPN_LOCKDOWN_EXEMPTION"
+  | (string & {});
 export const ApplicationPolicyAlwaysOnVpnLockdownExemptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -4193,7 +4325,8 @@ export type ApplicationPolicyDelegatedScopesItemEnum =
   | "ENABLE_SYSTEM_APP"
   | "NETWORK_ACTIVITY_LOGS"
   | "SECURITY_LOGS"
-  | "CERT_SELECTION";
+  | "CERT_SELECTION"
+  | (string & {});
 export const ApplicationPolicyDelegatedScopesItemEnum = /*@__PURE__*/ S.String;
 
 export type ApplicationPolicyDelegatedScopesItemEnumList =
@@ -4206,19 +4339,22 @@ export const ApplicationPolicyDelegatedScopesItemEnumList =
 export type InstallConstraintChargingConstraintEnum =
   | "CHARGING_CONSTRAINT_UNSPECIFIED"
   | "CHARGING_NOT_REQUIRED"
-  | "INSTALL_ONLY_WHEN_CHARGING";
+  | "INSTALL_ONLY_WHEN_CHARGING"
+  | (string & {});
 export const InstallConstraintChargingConstraintEnum = /*@__PURE__*/ S.String;
 
 export type InstallConstraintDeviceIdleConstraintEnum =
   | "DEVICE_IDLE_CONSTRAINT_UNSPECIFIED"
   | "DEVICE_IDLE_NOT_REQUIRED"
-  | "INSTALL_ONLY_WHEN_DEVICE_IDLE";
+  | "INSTALL_ONLY_WHEN_DEVICE_IDLE"
+  | (string & {});
 export const InstallConstraintDeviceIdleConstraintEnum = /*@__PURE__*/ S.String;
 
 export type InstallConstraintNetworkTypeConstraintEnum =
   | "NETWORK_TYPE_CONSTRAINT_UNSPECIFIED"
   | "INSTALL_ON_ANY_NETWORK"
-  | "INSTALL_ONLY_ON_UNMETERED_NETWORK";
+  | "INSTALL_ONLY_ON_UNMETERED_NETWORK"
+  | (string & {});
 export const InstallConstraintNetworkTypeConstraintEnum =
   /*@__PURE__*/ S.String;
 
@@ -4251,7 +4387,8 @@ export const InstallConstraintList = /*@__PURE__*/ S.Array(
 export type ApplicationPolicyWorkProfileWidgetsEnum =
   | "WORK_PROFILE_WIDGETS_UNSPECIFIED"
   | "WORK_PROFILE_WIDGETS_ALLOWED"
-  | "WORK_PROFILE_WIDGETS_DISALLOWED";
+  | "WORK_PROFILE_WIDGETS_DISALLOWED"
+  | (string & {});
 export const ApplicationPolicyWorkProfileWidgetsEnum = /*@__PURE__*/ S.String;
 
 export type ApplicationPolicyPreferentialNetworkIdEnum =
@@ -4261,7 +4398,8 @@ export type ApplicationPolicyPreferentialNetworkIdEnum =
   | "PREFERENTIAL_NETWORK_ID_TWO"
   | "PREFERENTIAL_NETWORK_ID_THREE"
   | "PREFERENTIAL_NETWORK_ID_FOUR"
-  | "PREFERENTIAL_NETWORK_ID_FIVE";
+  | "PREFERENTIAL_NETWORK_ID_FIVE"
+  | (string & {});
 export const ApplicationPolicyPreferentialNetworkIdEnum =
   /*@__PURE__*/ S.String;
 
@@ -4270,7 +4408,8 @@ export type RoleRoleTypeEnum =
   | "COMPANION_APP"
   | "KIOSK"
   | "MOBILE_THREAT_DEFENSE_ENDPOINT_DETECTION_RESPONSE"
-  | "SYSTEM_HEALTH_MONITORING";
+  | "SYSTEM_HEALTH_MONITORING"
+  | (string & {});
 export const RoleRoleTypeEnum = /*@__PURE__*/ S.String;
 
 /** Role an app can have. */
@@ -4292,13 +4431,15 @@ export const RoleList = /*@__PURE__*/ S.Array(
 export type ApplicationPolicyUserControlSettingsEnum =
   | "USER_CONTROL_SETTINGS_UNSPECIFIED"
   | "USER_CONTROL_ALLOWED"
-  | "USER_CONTROL_DISALLOWED";
+  | "USER_CONTROL_DISALLOWED"
+  | (string & {});
 export const ApplicationPolicyUserControlSettingsEnum = /*@__PURE__*/ S.String;
 
 export type CustomAppConfigUserUninstallSettingsEnum =
   | "USER_UNINSTALL_SETTINGS_UNSPECIFIED"
   | "DISALLOW_UNINSTALL_BY_USER"
-  | "ALLOW_UNINSTALL_BY_USER";
+  | "ALLOW_UNINSTALL_BY_USER"
+  | (string & {});
 export const CustomAppConfigUserUninstallSettingsEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for a custom app. */
@@ -4322,7 +4463,8 @@ export type ApplicationPolicyInstallTypeEnum =
   | "AVAILABLE"
   | "REQUIRED_FOR_SETUP"
   | "KIOSK"
-  | "CUSTOM";
+  | "CUSTOM"
+  | (string & {});
 export const ApplicationPolicyInstallTypeEnum = /*@__PURE__*/ S.String;
 
 /** The managed configurations template for the app, saved from the managed configurations iframe. */
@@ -4343,14 +4485,16 @@ export const ManagedConfigurationTemplate = /*@__PURE__*/ S.suspend(() =>
 
 export type ApplicationPolicyCredentialProviderPolicyEnum =
   | "CREDENTIAL_PROVIDER_POLICY_UNSPECIFIED"
-  | "CREDENTIAL_PROVIDER_ALLOWED";
+  | "CREDENTIAL_PROVIDER_ALLOWED"
+  | (string & {});
 export const ApplicationPolicyCredentialProviderPolicyEnum =
   /*@__PURE__*/ S.String;
 
 export type ApplicationPolicyConnectedWorkAndPersonalAppEnum =
   | "CONNECTED_WORK_AND_PERSONAL_APP_UNSPECIFIED"
   | "CONNECTED_WORK_AND_PERSONAL_APP_DISALLOWED"
-  | "CONNECTED_WORK_AND_PERSONAL_APP_ALLOWED";
+  | "CONNECTED_WORK_AND_PERSONAL_APP_ALLOWED"
+  | (string & {});
 export const ApplicationPolicyConnectedWorkAndPersonalAppEnum =
   /*@__PURE__*/ S.String;
 
@@ -4358,7 +4502,8 @@ export type ApplicationPolicyAutoUpdateModeEnum =
   | "AUTO_UPDATE_MODE_UNSPECIFIED"
   | "AUTO_UPDATE_DEFAULT"
   | "AUTO_UPDATE_POSTPONED"
-  | "AUTO_UPDATE_HIGH_PRIORITY";
+  | "AUTO_UPDATE_HIGH_PRIORITY"
+  | (string & {});
 export const ApplicationPolicyAutoUpdateModeEnum = /*@__PURE__*/ S.String;
 
 /** Policy for an individual app. Note: Application availability on a given device cannot be changed using this policy if installAppsDisabled is enabled. The maximum number of applications that you can specify per policy is 3,000. */
@@ -4461,7 +4606,8 @@ export const ApplicationPolicyList = /*@__PURE__*/ S.Array(
 export type PolicyEnterpriseDisplayNameVisibilityEnum =
   | "ENTERPRISE_DISPLAY_NAME_VISIBILITY_UNSPECIFIED"
   | "ENTERPRISE_DISPLAY_NAME_VISIBLE"
-  | "ENTERPRISE_DISPLAY_NAME_HIDDEN";
+  | "ENTERPRISE_DISPLAY_NAME_HIDDEN"
+  | (string & {});
 export const PolicyEnterpriseDisplayNameVisibilityEnum = /*@__PURE__*/ S.String;
 
 /** A policy resource represents a group of settings that govern the behavior of a managed device and the apps installed on it. */
@@ -4821,13 +4967,15 @@ export const GetProvisioningInfoRequest = /*@__PURE__*/ S.suspend(() =>
 export type ProvisioningInfoOwnershipEnum =
   | "OWNERSHIP_UNSPECIFIED"
   | "COMPANY_OWNED"
-  | "PERSONALLY_OWNED";
+  | "PERSONALLY_OWNED"
+  | (string & {});
 export const ProvisioningInfoOwnershipEnum = /*@__PURE__*/ S.String;
 
 export type ProvisioningInfoManagementModeEnum =
   | "MANAGEMENT_MODE_UNSPECIFIED"
   | "DEVICE_OWNER"
-  | "PROFILE_OWNER";
+  | "PROFILE_OWNER"
+  | (string & {});
 export const ProvisioningInfoManagementModeEnum = /*@__PURE__*/ S.String;
 
 /** Information about a device that is available during setup. */
@@ -4878,7 +5026,8 @@ export type RequestDeviceInfoStatusStatusEnum =
   | "SUCCEEDED"
   | "PENDING_USER_ACTION"
   | "USER_DECLINED"
-  | "UNSUPPORTED";
+  | "UNSUPPORTED"
+  | (string & {});
 export const RequestDeviceInfoStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** EID information for each eUICC chip. */
@@ -4924,7 +5073,8 @@ export const RequestDeviceInfoStatus = /*@__PURE__*/ S.suspend(() =>
 
 export type RequestDeviceInfoParamsDeviceInfoEnum =
   | "DEVICE_INFO_UNSPECIFIED"
-  | "EID";
+  | "EID"
+  | (string & {});
 export const RequestDeviceInfoParamsDeviceInfoEnum = /*@__PURE__*/ S.String;
 
 /** Parameters associated with the REQUEST_DEVICE_INFO command to get device related information. */
@@ -4943,7 +5093,8 @@ export const RequestDeviceInfoParams = /*@__PURE__*/ S.suspend(() =>
 export type StopLostModeStatusStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "SUCCESS"
-  | "NOT_IN_LOST_MODE";
+  | "NOT_IN_LOST_MODE"
+  | (string & {});
 export const StopLostModeStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** Status of the STOP_LOST_MODE command to take the device out of lost mode. */
@@ -4964,7 +5115,8 @@ export type PerAppResultClearingResultEnum =
   | "SUCCESS"
   | "APP_NOT_FOUND"
   | "APP_PROTECTED"
-  | "API_LEVEL";
+  | "API_LEVEL"
+  | (string & {});
 export const PerAppResultClearingResultEnum = /*@__PURE__*/ S.String;
 
 /** The result of an attempt to clear the data of a single app. */
@@ -5015,7 +5167,8 @@ export type StartLostModeStatusStatusEnum =
   | "SUCCESS"
   | "RESET_PASSWORD_RECENTLY"
   | "USER_EXIT_LOST_MODE_RECENTLY"
-  | "ALREADY_IN_LOST_MODE";
+  | "ALREADY_IN_LOST_MODE"
+  | (string & {});
 export const StartLostModeStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** Status of the START_LOST_MODE command to put the device into lost mode. */
@@ -5035,7 +5188,8 @@ export type WipeParamsWipeDataFlagsItemEnum =
   | "WIPE_DATA_FLAG_UNSPECIFIED"
   | "PRESERVE_RESET_PROTECTION_DATA"
   | "WIPE_EXTERNAL_STORAGE"
-  | "WIPE_ESIMS";
+  | "WIPE_ESIMS"
+  | (string & {});
 export const WipeParamsWipeDataFlagsItemEnum = /*@__PURE__*/ S.String;
 
 export type WipeParamsWipeDataFlagsItemEnumList =
@@ -5083,14 +5237,16 @@ export type CommandTypeEnum =
   | "ADD_ESIM"
   | "REMOVE_ESIM"
   | "REQUEST_DEVICE_INFO"
-  | "WIPE";
+  | "WIPE"
+  | (string & {});
 export const CommandTypeEnum = /*@__PURE__*/ S.String;
 
 export type CommandResetPasswordFlagsItemEnum =
   | "RESET_PASSWORD_FLAG_UNSPECIFIED"
   | "REQUIRE_ENTRY"
   | "DO_NOT_ASK_CREDENTIALS_ON_BOOT"
-  | "LOCK_NOW";
+  | "LOCK_NOW"
+  | (string & {});
 export const CommandResetPasswordFlagsItemEnum = /*@__PURE__*/ S.String;
 
 export type CommandResetPasswordFlagsItemEnumList =
@@ -5105,7 +5261,8 @@ export type CommandErrorCodeEnum =
   | "API_LEVEL"
   | "MANAGEMENT_MODE"
   | "INVALID_VALUE"
-  | "UNSUPPORTED";
+  | "UNSUPPORTED"
+  | (string & {});
 export const CommandErrorCodeEnum = /*@__PURE__*/ S.String;
 
 export type EsimCommandStatusStatusEnum =
@@ -5117,7 +5274,8 @@ export type EsimCommandStatusStatusEnum =
   | "ERROR_USER_DENIED"
   | "INTERNAL_ERROR"
   | "ERROR_ICC_ID_NOT_FOUND"
-  | "ERROR_MULTIPLE_ACTIVE_ESIMS_NO_AVAILABLE_SLOT";
+  | "ERROR_MULTIPLE_ACTIVE_ESIMS_NO_AVAILABLE_SLOT"
+  | (string & {});
 export const EsimCommandStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** Details of the eSIM added or removed. */
@@ -5150,7 +5308,8 @@ export type InternalErrorDetailsErrorCodeDetailEnum =
   | "ERROR_INSTALL_PROFILE"
   | "ERROR_EUICC_INSUFFICIENT_MEMORY"
   | "ERROR_INVALID_PORT"
-  | "ERROR_SIM_MISSING";
+  | "ERROR_SIM_MISSING"
+  | (string & {});
 export const InternalErrorDetailsErrorCodeDetailEnum = /*@__PURE__*/ S.String;
 
 export type InternalErrorDetailsOperationCodeDetailEnum =
@@ -5165,7 +5324,8 @@ export type InternalErrorDetailsOperationCodeDetailEnum =
   | "OPERATION_EUICC_GSMA"
   | "OPERATION_APDU"
   | "OPERATION_SMDX_SUBJECT_REASON_CODE"
-  | "OPERATION_HTTP";
+  | "OPERATION_HTTP"
+  | (string & {});
 export const InternalErrorDetailsOperationCodeDetailEnum =
   /*@__PURE__*/ S.String;
 
@@ -5248,7 +5408,8 @@ export const StartLostModeParams = /*@__PURE__*/ S.suspend(() =>
 export type AddEsimParamsActivationStateEnum =
   | "ACTIVATION_STATE_UNSPECIFIED"
   | "ACTIVATED"
-  | "NOT_ACTIVATED";
+  | "NOT_ACTIVATED"
+  | (string & {});
 export const AddEsimParamsActivationStateEnum = /*@__PURE__*/ S.String;
 
 /** Parameters associated with the ADD_ESIM command to add an eSIM profile to the device. */
@@ -5352,7 +5513,10 @@ export const IssueCommandEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(
   identifier: "IssueCommandEnterprisesDevicesRequest",
 }) as any as S.Schema<IssueCommandEnterprisesDevicesRequest>;
 
-export type ListEnterprisesViewEnum = "ENTERPRISE_VIEW_UNSPECIFIED" | "BASIC";
+export type ListEnterprisesViewEnum =
+  | "ENTERPRISE_VIEW_UNSPECIFIED"
+  | "BASIC"
+  | (string & {});
 export const ListEnterprisesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListEnterprisesRequest {

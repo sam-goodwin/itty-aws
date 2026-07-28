@@ -39,7 +39,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -47,7 +48,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -103,7 +105,11 @@ export const ScoreEntity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScoreEntity" }) as any as S.Schema<ScoreEntity>;
 
 /** The aggregation level of the score. */
-export type TimeSeriesEntityItemAggregationLevel = "week" | "day" | "month";
+export type TimeSeriesEntityItemAggregationLevel =
+  | "week"
+  | "day"
+  | "month"
+  | (string & {});
 export const TimeSeriesEntityItemAggregationLevel = /*@__PURE__*/ S.String;
 
 /** The past score data */
@@ -253,12 +259,18 @@ export const AdvisorScoreResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdvisorScoreResponse>;
 
 export type ConfigurationsCreateInResourceGroupRequestConfigurationName =
-  "default";
+  | "default"
+  | (string & {});
 export const ConfigurationsCreateInResourceGroupRequestConfigurationName =
   /*@__PURE__*/ S.String;
 
 /** Minimum percentage threshold for Advisor low CPU utilization evaluation. Valid only for subscriptions. Valid values: 5 (default), 10, 15 or 20. */
-export type ConfigDataPropertiesLowCpuThreshold = "5" | "10" | "15" | "20";
+export type ConfigDataPropertiesLowCpuThreshold =
+  | "5"
+  | "10"
+  | "15"
+  | "20"
+  | (string & {});
 export const ConfigDataPropertiesLowCpuThreshold = /*@__PURE__*/ S.String;
 
 /** Minimum duration for Advisor low CPU utilization evaluation. Valid only for subscriptions. Valid values: 7 (default), 14, 21, 30, 60 or 90. */
@@ -268,7 +280,8 @@ export type ConfigDataPropertiesDuration =
   | "21"
   | "30"
   | "60"
-  | "90";
+  | "90"
+  | (string & {});
 export const ConfigDataPropertiesDuration = /*@__PURE__*/ S.String;
 
 export type DigestConfigCategoriesItem =
@@ -276,7 +289,8 @@ export type DigestConfigCategoriesItem =
   | "Security"
   | "Performance"
   | "Cost"
-  | "OperationalExcellence";
+  | "OperationalExcellence"
+  | (string & {});
 export const DigestConfigCategoriesItem = /*@__PURE__*/ S.String;
 
 /** Categories to send digest for. If categories are not provided, then digest will be sent for all categories. */
@@ -287,7 +301,7 @@ export const DigestConfigCategoriesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DigestConfigCategoriesList>;
 
 /** State of digest configuration. */
-export type DigestConfigState = "Active" | "Disabled";
+export type DigestConfigState = "Active" | "Disabled" | (string & {});
 export const DigestConfigState = /*@__PURE__*/ S.String;
 
 /** Advisor Digest configuration entity */
@@ -402,7 +416,8 @@ export const ConfigurationsCreateInResourceGroupResponse =
   }) as any as S.Schema<ConfigurationsCreateInResourceGroupResponse>;
 
 export type ConfigurationsCreateInSubscriptionRequestConfigurationName =
-  "default";
+  | "default"
+  | (string & {});
 export const ConfigurationsCreateInSubscriptionRequestConfigurationName =
   /*@__PURE__*/ S.String;
 
@@ -623,7 +638,9 @@ export const OperationEntityListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationEntityListResult>;
 
 /** Type of the prediction. */
-export type PredictionRequestPropertiesPredictionType = "PredictiveRightsizing";
+export type PredictionRequestPropertiesPredictionType =
+  | "PredictiveRightsizing"
+  | (string & {});
 export const PredictionRequestPropertiesPredictionType = /*@__PURE__*/ S.String;
 
 /** Properties given for the predictor. */
@@ -664,7 +681,8 @@ export const PredictRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the prediction. */
 export type PredictionResponsePropertiesPredictionType =
-  "PredictiveRightsizing";
+  | "PredictiveRightsizing"
+  | (string & {});
 export const PredictionResponsePropertiesPredictionType =
   /*@__PURE__*/ S.String;
 
@@ -674,11 +692,16 @@ export type PredictionResponsePropertiesCategory =
   | "Security"
   | "Performance"
   | "Cost"
-  | "OperationalExcellence";
+  | "OperationalExcellence"
+  | (string & {});
 export const PredictionResponsePropertiesCategory = /*@__PURE__*/ S.String;
 
 /** The business impact of the recommendation. */
-export type PredictionResponsePropertiesImpact = "High" | "Medium" | "Low";
+export type PredictionResponsePropertiesImpact =
+  | "High"
+  | "Medium"
+  | "Low"
+  | (string & {});
 export const PredictionResponsePropertiesImpact = /*@__PURE__*/ S.String;
 
 /** A summary of the recommendation. */
@@ -766,7 +789,9 @@ export const MetadataEntityPropertiesDependsOnList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MetadataEntityPropertiesDependsOnList>;
 
-export type MetadataEntityPropertiesApplicableScenariosItem = "Alerts";
+export type MetadataEntityPropertiesApplicableScenariosItem =
+  | "Alerts"
+  | (string & {});
 export const MetadataEntityPropertiesApplicableScenariosItem =
   /*@__PURE__*/ S.String;
 
@@ -941,7 +966,8 @@ export type RecommendationPropertiesCategory =
   | "Security"
   | "Performance"
   | "Cost"
-  | "OperationalExcellence";
+  | "OperationalExcellence"
+  | (string & {});
 export const RecommendationPropertiesCategory = /*@__PURE__*/ S.String;
 
 /** The sub-category of the recommendation. */
@@ -954,11 +980,16 @@ export type RecommendationPropertiesControl =
   | "ServiceUpgradeAndRetirement"
   | "Other"
   | "PrioritizedRecommendations"
-  | "Personalized";
+  | "Personalized"
+  | (string & {});
 export const RecommendationPropertiesControl = /*@__PURE__*/ S.String;
 
 /** The business impact of the recommendation. */
-export type RecommendationPropertiesImpact = "High" | "Medium" | "Low";
+export type RecommendationPropertiesImpact =
+  | "High"
+  | "Medium"
+  | "Low"
+  | (string & {});
 export const RecommendationPropertiesImpact = /*@__PURE__*/ S.String;
 
 /** The recommendation metadata. */
@@ -971,7 +1002,11 @@ export const RecommendationPropertiesMetadataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RecommendationPropertiesMetadataMap>;
 
 /** The potential risk of not implementing the recommendation. */
-export type RecommendationPropertiesRisk = "Error" | "Warning" | "None";
+export type RecommendationPropertiesRisk =
+  | "Error"
+  | "Warning"
+  | "None"
+  | (string & {});
 export const RecommendationPropertiesRisk = /*@__PURE__*/ S.String;
 
 /** The list of snoozed and dismissed rules for the recommendation. */

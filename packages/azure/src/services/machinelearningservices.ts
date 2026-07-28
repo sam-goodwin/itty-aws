@@ -59,7 +59,10 @@ export const BatchDeploymentPropertiesPropertiesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BatchDeploymentPropertiesPropertiesMap>;
 
 /** The enumerated property types for batch deployments. */
-export type BatchDeploymentConfigurationType = "Model" | "PipelineComponent";
+export type BatchDeploymentConfigurationType =
+  | "Model"
+  | "PipelineComponent"
+  | (string & {});
 export const BatchDeploymentConfigurationType = /*@__PURE__*/ S.String;
 
 /** Properties relevant to different deployment types. */
@@ -79,11 +82,12 @@ export const BatchDeploymentConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type BatchDeploymentPropertiesLoggingLevel =
   | "Info"
   | "Warning"
-  | "Debug";
+  | "Debug"
+  | (string & {});
 export const BatchDeploymentPropertiesLoggingLevel = /*@__PURE__*/ S.String;
 
 /** Enum to determine which reference method to use for an asset. */
-export type ReferenceType = "Id" | "DataPath" | "OutputPath";
+export type ReferenceType = "Id" | "DataPath" | "OutputPath" | (string & {});
 export const ReferenceType = /*@__PURE__*/ S.String;
 
 /** Base definition for asset references. */
@@ -100,7 +104,10 @@ export const AssetReferenceBase = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssetReferenceBase>;
 
 /** Enum to determine how batch inferencing will handle output */
-export type BatchDeploymentPropertiesOutputAction = "SummaryOnly" | "AppendRow";
+export type BatchDeploymentPropertiesOutputAction =
+  | "SummaryOnly"
+  | "AppendRow"
+  | (string & {});
 export const BatchDeploymentPropertiesOutputAction = /*@__PURE__*/ S.String;
 
 /** Possible values for DeploymentProvisioningState. */
@@ -111,7 +118,8 @@ export type DeploymentProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const DeploymentProvisioningState = /*@__PURE__*/ S.String;
 
 /** Additional properties bag. */
@@ -225,7 +233,8 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned";
+  | "SystemAssigned,UserAssigned"
+  | (string & {});
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -261,7 +270,7 @@ export const BatchDeploymentsCreateOrUpdateRequestIdentity =
   }) as any as S.Schema<BatchDeploymentsCreateOrUpdateRequestIdentity>;
 
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
-export type SkuTier = "Free" | "Basic" | "Standard" | "Premium";
+export type SkuTier = "Free" | "Basic" | "Standard" | "Premium" | (string & {});
 export const SkuTier = /*@__PURE__*/ S.String;
 
 /** The resource model definition representing SKU */
@@ -344,7 +353,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -352,7 +362,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -979,7 +990,7 @@ export const BatchEndpointsCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<BatchEndpointsCreateOrUpdateRequestTagsMap>;
 
 /** Enum to determine endpoint authentication mode. */
-export type EndpointAuthMode = "AMLToken" | "Key" | "AADToken";
+export type EndpointAuthMode = "AMLToken" | "Key" | "AADToken" | (string & {});
 export const EndpointAuthMode = /*@__PURE__*/ S.String;
 
 /** Keys for endpoint authentication. */
@@ -1157,7 +1168,8 @@ export type EndpointProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Updating"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const EndpointProvisioningState = /*@__PURE__*/ S.String;
 
 /** Batch endpoint configuration. */
@@ -1622,7 +1634,8 @@ export type PartialManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned";
+  | "SystemAssigned,UserAssigned"
+  | (string & {});
 export const PartialManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -1816,7 +1829,9 @@ export const CapabilityHostPropertiesInputAiServicesConnectionsList =
   ) as any as S.Schema<CapabilityHostPropertiesInputAiServicesConnectionsList>;
 
 /** Kind of this capability host. */
-export type CapabilityHostPropertiesInputCapabilityHostKind = "Agents";
+export type CapabilityHostPropertiesInputCapabilityHostKind =
+  | "Agents"
+  | (string & {});
 export const CapabilityHostPropertiesInputCapabilityHostKind =
   /*@__PURE__*/ S.String;
 
@@ -1964,7 +1979,9 @@ export const CapabilityHostPropertiesAiServicesConnectionsList =
   ) as any as S.Schema<CapabilityHostPropertiesAiServicesConnectionsList>;
 
 /** Kind of this capability host. */
-export type CapabilityHostPropertiesCapabilityHostKind = "Agents";
+export type CapabilityHostPropertiesCapabilityHostKind =
+  | "Agents"
+  | (string & {});
 export const CapabilityHostPropertiesCapabilityHostKind =
   /*@__PURE__*/ S.String;
 
@@ -1975,7 +1992,8 @@ export type CapabilityHostProvisioningState =
   | "Canceled"
   | "Creating"
   | "Updating"
-  | "Deleting";
+  | "Deleting"
+  | (string & {});
 export const CapabilityHostProvisioningState = /*@__PURE__*/ S.String;
 
 /** List of Storage connections. */
@@ -2271,7 +2289,8 @@ export type AssetProvisioningState =
   | "Canceled"
   | "Creating"
   | "Updating"
-  | "Deleting";
+  | "Deleting"
+  | (string & {});
 export const AssetProvisioningState = /*@__PURE__*/ S.String;
 
 /** Container for code asset versions. */
@@ -2496,7 +2515,8 @@ export const CodeContainerResourceArmPaginatedResult = /*@__PURE__*/ S.suspend(
 /** Type of storage to use for the pending upload location */
 export type CodeVersionsCreateOrGetStartPendingUploadRequestPendingUploadType =
   | "None"
-  | "TemporaryBlobReference";
+  | "TemporaryBlobReference"
+  | (string & {});
 export const CodeVersionsCreateOrGetStartPendingUploadRequestPendingUploadType =
   /*@__PURE__*/ S.String;
 
@@ -2541,7 +2561,7 @@ export const CodeVersionsCreateOrGetStartPendingUploadRequest =
   }) as any as S.Schema<CodeVersionsCreateOrGetStartPendingUploadRequest>;
 
 /** Enum to determine the PendingUpload credentials type. */
-export type PendingUploadCredentialType = "SAS";
+export type PendingUploadCredentialType = "SAS" | (string & {});
 export const PendingUploadCredentialType = /*@__PURE__*/ S.String;
 
 export interface PendingUploadCredentialDto {
@@ -2577,7 +2597,8 @@ export const BlobReferenceForConsumptionDto = /*@__PURE__*/ S.suspend(() =>
 /** Type of storage to use for the pending upload location */
 export type PendingUploadResponseDtoPendingUploadType =
   | "None"
-  | "TemporaryBlobReference";
+  | "TemporaryBlobReference"
+  | (string & {});
 export const PendingUploadResponseDtoPendingUploadType = /*@__PURE__*/ S.String;
 
 export interface PendingUploadResponseDto {
@@ -3177,7 +3198,8 @@ export const ComponentContainersGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type ComponentContainersListRequestListViewType =
   | "ActiveOnly"
   | "ArchivedOnly"
-  | "All";
+  | "All"
+  | (string & {});
 export const ComponentContainersListRequestListViewType =
   /*@__PURE__*/ S.String;
 
@@ -3469,7 +3491,8 @@ export const ComponentVersionsGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type ComponentVersionsListRequestListViewType =
   | "ActiveOnly"
   | "ArchivedOnly"
-  | "All";
+  | "All"
+  | (string & {});
 export const ComponentVersionsListRequestListViewType = /*@__PURE__*/ S.String;
 
 export interface ComponentVersionsListRequest {
@@ -3622,7 +3645,8 @@ export type ComputeType =
   | "HDInsight"
   | "Databricks"
   | "DataLakeAnalytics"
-  | "SynapseSpark";
+  | "SynapseSpark"
+  | (string & {});
 export const ComputeType = /*@__PURE__*/ S.String;
 
 /** Machine Learning compute object. */
@@ -3747,7 +3771,8 @@ export type ProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The error details. */
@@ -3949,7 +3974,10 @@ export const ComputeCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComputeCreateOrUpdateResponse",
 }) as any as S.Schema<ComputeCreateOrUpdateResponse>;
 
-export type ComputeDeleteRequestUnderlyingResourceAction = "Delete" | "Detach";
+export type ComputeDeleteRequestUnderlyingResourceAction =
+  | "Delete"
+  | "Detach"
+  | (string & {});
 export const ComputeDeleteRequestUnderlyingResourceAction =
   /*@__PURE__*/ S.String;
 
@@ -4321,7 +4349,8 @@ export type NodeState =
   | "preparing"
   | "unusable"
   | "leaving"
-  | "preempted";
+  | "preempted"
+  | (string & {});
 export const NodeState = /*@__PURE__*/ S.String;
 
 /** Compute node information related to a AmlCompute. */
@@ -4661,7 +4690,7 @@ export const DataContainerPropertiesInputTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DataContainerPropertiesInputTagsMap>;
 
 /** Enum to determine the type of data. */
-export type DataType = "uri_file" | "uri_folder" | "mltable";
+export type DataType = "uri_file" | "uri_folder" | "mltable" | (string & {});
 export const DataType = /*@__PURE__*/ S.String;
 
 /** Container for data asset versions. */
@@ -4884,7 +4913,8 @@ export const DataContainersGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type DataContainersListRequestListViewType =
   | "ActiveOnly"
   | "ArchivedOnly"
-  | "All";
+  | "All"
+  | (string & {});
 export const DataContainersListRequestListViewType = /*@__PURE__*/ S.String;
 
 export interface DataContainersListRequest {
@@ -4992,7 +5022,8 @@ export type CredentialsType =
   | "Certificate"
   | "None"
   | "Sas"
-  | "ServicePrincipal";
+  | "ServicePrincipal"
+  | (string & {});
 export const CredentialsType = /*@__PURE__*/ S.String;
 
 /** Base definition for datastore credentials. */
@@ -5014,7 +5045,8 @@ export type DatastoreType =
   | "AzureDataLakeGen1"
   | "AzureDataLakeGen2"
   | "AzureFile"
-  | "OneLake";
+  | "OneLake"
+  | (string & {});
 export const DatastoreType = /*@__PURE__*/ S.String;
 
 /** Base definition for datastore contents configuration. */
@@ -5368,7 +5400,8 @@ export type SecretsType =
   | "AccountKey"
   | "Certificate"
   | "Sas"
-  | "ServicePrincipal";
+  | "ServicePrincipal"
+  | (string & {});
 export const SecretsType = /*@__PURE__*/ S.String;
 
 /** Base definition for datastore secrets. */
@@ -5587,7 +5620,8 @@ export const DataVersionsGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type DataVersionsListRequestListViewType =
   | "ActiveOnly"
   | "ArchivedOnly"
-  | "All";
+  | "All"
+  | (string & {});
 export const DataVersionsListRequestListViewType = /*@__PURE__*/ S.String;
 
 export interface DataVersionsListRequest {
@@ -5975,7 +6009,8 @@ export const EnvironmentContainersGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type EnvironmentContainersListRequestListViewType =
   | "ActiveOnly"
   | "ArchivedOnly"
-  | "All";
+  | "All"
+  | (string & {});
 export const EnvironmentContainersListRequestListViewType =
   /*@__PURE__*/ S.String;
 
@@ -6083,7 +6118,8 @@ export const EnvironmentVersionPropertiesTagsMap = /*@__PURE__*/ S.Record(
 /** AutoRebuild setting for the derived image */
 export type EnvironmentVersionPropertiesAutoRebuild =
   | "Disabled"
-  | "OnBaseImageUpdate";
+  | "OnBaseImageUpdate"
+  | (string & {});
 export const EnvironmentVersionPropertiesAutoRebuild = /*@__PURE__*/ S.String;
 
 /** Configuration settings for Docker build context */
@@ -6101,7 +6137,7 @@ export const BuildContext = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BuildContext" }) as any as S.Schema<BuildContext>;
 
 /** Environment type is either user created or curated by Azure ML service */
-export type EnvironmentType = "Curated" | "UserCreated";
+export type EnvironmentType = "Curated" | "UserCreated" | (string & {});
 export const EnvironmentType = /*@__PURE__*/ S.String;
 
 export interface Route {
@@ -6139,7 +6175,10 @@ export const InferenceContainerProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InferenceContainerProperties>;
 
 /** The type of operating system. */
-export type EnvironmentVersionPropertiesOsType = "Linux" | "Windows";
+export type EnvironmentVersionPropertiesOsType =
+  | "Linux"
+  | "Windows"
+  | (string & {});
 export const EnvironmentVersionPropertiesOsType = /*@__PURE__*/ S.String;
 
 /** Environment version details. */
@@ -6350,7 +6389,8 @@ export const EnvironmentVersionsGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type EnvironmentVersionsListRequestListViewType =
   | "ActiveOnly"
   | "ArchivedOnly"
-  | "All";
+  | "All"
+  | (string & {});
 export const EnvironmentVersionsListRequestListViewType =
   /*@__PURE__*/ S.String;
 
@@ -6737,7 +6777,8 @@ export const FeaturesetContainersGetEntityResponse = /*@__PURE__*/ S.suspend(
 export type FeaturesetContainersListRequestListViewType =
   | "ActiveOnly"
   | "ArchivedOnly"
-  | "All";
+  | "All"
+  | (string & {});
 export const FeaturesetContainersListRequestListViewType =
   /*@__PURE__*/ S.String;
 
@@ -6843,7 +6884,8 @@ export type DataAvailabilityStatus =
   | "None"
   | "Pending"
   | "Incomplete"
-  | "Complete";
+  | "Complete"
+  | (string & {});
 export const DataAvailabilityStatus = /*@__PURE__*/ S.String;
 
 /** Specified the data availability status that you want to backfill */
@@ -7020,7 +7062,8 @@ export const FeaturesetVersionPropertiesEntitiesList = /*@__PURE__*/ S.Array(
 export type EmailNotificationEnableType =
   | "JobCompleted"
   | "JobFailed"
-  | "JobCancelled";
+  | "JobCancelled"
+  | (string & {});
 export const EmailNotificationEnableType = /*@__PURE__*/ S.String;
 
 /** Send email notification to user on specified notification type */
@@ -7037,7 +7080,7 @@ export const NotificationSettingEmailsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<NotificationSettingEmailsList>;
 
 /** Enum to determine the webhook callback service type. */
-export type WebhookType = "AzureDevOps";
+export type WebhookType = "AzureDevOps" | (string & {});
 export const WebhookType = /*@__PURE__*/ S.String;
 
 /** Webhook base */
@@ -7082,11 +7125,17 @@ export const NotificationSetting = /*@__PURE__*/ S.suspend(() =>
   identifier: "NotificationSetting",
 }) as any as S.Schema<NotificationSetting>;
 
-export type TriggerType = "Recurrence" | "Cron";
+export type TriggerType = "Recurrence" | "Cron" | (string & {});
 export const TriggerType = /*@__PURE__*/ S.String;
 
 /** Enum to describe the frequency of a recurrence schedule */
-export type RecurrenceFrequency = "Minute" | "Hour" | "Day" | "Week" | "Month";
+export type RecurrenceFrequency =
+  | "Minute"
+  | "Hour"
+  | "Day"
+  | "Week"
+  | "Month"
+  | (string & {});
 export const RecurrenceFrequency = /*@__PURE__*/ S.String;
 
 /** [Required] List of hours for the schedule. */
@@ -7115,7 +7164,8 @@ export type WeekDay =
   | "Thursday"
   | "Friday"
   | "Saturday"
-  | "Sunday";
+  | "Sunday"
+  | (string & {});
 export const WeekDay = /*@__PURE__*/ S.String;
 
 /** List of days for the schedule. */
@@ -7190,7 +7240,8 @@ export type MaterializationSettingsStoreType =
   | "None"
   | "Online"
   | "Offline"
-  | "OnlineAndOffline";
+  | "OnlineAndOffline"
+  | (string & {});
 export const MaterializationSettingsStoreType = /*@__PURE__*/ S.String;
 
 export interface MaterializationSettings {
@@ -7428,7 +7479,8 @@ export const FeaturesetVersionsGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type FeaturesetVersionsListRequestListViewType =
   | "ActiveOnly"
   | "ArchivedOnly"
-  | "All";
+  | "All"
+  | (string & {});
 export const FeaturesetVersionsListRequestListViewType = /*@__PURE__*/ S.String;
 
 export interface FeaturesetVersionsListRequest {
@@ -7597,7 +7649,8 @@ export type FeaturePropertiesDataType =
   | "Double"
   | "Binary"
   | "Datetime"
-  | "Boolean";
+  | "Boolean"
+  | (string & {});
 export const FeaturePropertiesDataType = /*@__PURE__*/ S.String;
 
 /** DTO object representing feature */
@@ -7652,7 +7705,8 @@ export const FeaturesGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type FeaturesListRequestListViewType =
   | "ActiveOnly"
   | "ArchivedOnly"
-  | "All";
+  | "All"
+  | (string & {});
 export const FeaturesListRequestListViewType = /*@__PURE__*/ S.String;
 
 export interface FeaturesListRequest {
@@ -7999,7 +8053,8 @@ export const FeaturestoreEntityContainersGetEntityResponse =
 export type FeaturestoreEntityContainersListRequestListViewType =
   | "ActiveOnly"
   | "ArchivedOnly"
-  | "All";
+  | "All"
+  | (string & {});
 export const FeaturestoreEntityContainersListRequestListViewType =
   /*@__PURE__*/ S.String;
 
@@ -8131,7 +8186,8 @@ export type IndexColumnDataType =
   | "Double"
   | "Binary"
   | "Datetime"
-  | "Boolean";
+  | "Boolean"
+  | (string & {});
 export const IndexColumnDataType = /*@__PURE__*/ S.String;
 
 /** DTO object representing index column */
@@ -8353,7 +8409,8 @@ export const FeaturestoreEntityVersionsGetResponse = /*@__PURE__*/ S.suspend(
 export type FeaturestoreEntityVersionsListRequestListViewType =
   | "ActiveOnly"
   | "ArchivedOnly"
-  | "All";
+  | "All"
+  | (string & {});
 export const FeaturestoreEntityVersionsListRequestListViewType =
   /*@__PURE__*/ S.String;
 
@@ -8519,7 +8576,11 @@ export const JobBasePropertiesInputTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<JobBasePropertiesInputTagsMap>;
 
 /** Enum to determine identity framework. */
-export type IdentityConfigurationType = "Managed" | "AMLToken" | "UserIdentity";
+export type IdentityConfigurationType =
+  | "Managed"
+  | "AMLToken"
+  | "UserIdentity"
+  | (string & {});
 export const IdentityConfigurationType = /*@__PURE__*/ S.String;
 
 /** Base definition for identity configuration. */
@@ -8536,11 +8597,17 @@ export const IdentityConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IdentityConfiguration>;
 
 /** Enum to determine the type of job. */
-export type JobType = "AutoML" | "Command" | "Sweep" | "Pipeline" | "Spark";
+export type JobType =
+  | "AutoML"
+  | "Command"
+  | "Sweep"
+  | "Pipeline"
+  | "Spark"
+  | (string & {});
 export const JobType = /*@__PURE__*/ S.String;
 
 /** The enumerated types for the nodes value */
-export type NodesValueType = "All";
+export type NodesValueType = "All" | (string & {});
 export const NodesValueType = /*@__PURE__*/ S.String;
 
 /** Abstract Nodes definition */
@@ -8750,7 +8817,8 @@ export type JobStatus =
   | "Canceled"
   | "NotResponding"
   | "Paused"
-  | "Unknown";
+  | "Unknown"
+  | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
 
 /** Base definition for a job. */
@@ -8911,7 +8979,11 @@ export const JobsGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "JobsGetResponse",
 }) as any as S.Schema<JobsGetResponse>;
 
-export type JobsListRequestListViewType = "ActiveOnly" | "ArchivedOnly" | "All";
+export type JobsListRequestListViewType =
+  | "ActiveOnly"
+  | "ArchivedOnly"
+  | "All"
+  | (string & {});
 export const JobsListRequestListViewType = /*@__PURE__*/ S.String;
 
 export interface JobsListRequest {
@@ -9028,7 +9100,7 @@ export const ManagedNetworkProvisionsProvisionManagedNetworkRequest =
   }) as any as S.Schema<ManagedNetworkProvisionsProvisionManagedNetworkRequest>;
 
 /** Status for the managed network of a machine learning workspace. */
-export type ManagedNetworkStatus = "Inactive" | "Active";
+export type ManagedNetworkStatus = "Inactive" | "Active" | (string & {});
 export const ManagedNetworkStatus = /*@__PURE__*/ S.String;
 
 /** Status of the Provisioning for the managed network of a machine learning workspace. */
@@ -9051,7 +9123,8 @@ export type RuleCategory =
   | "Required"
   | "Recommended"
   | "UserDefined"
-  | "Dependency";
+  | "Dependency"
+  | (string & {});
 export const RuleCategory = /*@__PURE__*/ S.String;
 
 /** Type of a managed network Outbound Rule of a machine learning workspace. */
@@ -9060,11 +9133,16 @@ export type RuleStatus =
   | "Active"
   | "Provisioning"
   | "Deleting"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const RuleStatus = /*@__PURE__*/ S.String;
 
 /** Type of a managed network Outbound Rule of a machine learning workspace. */
-export type RuleType = "FQDN" | "PrivateEndpoint" | "ServiceTag";
+export type RuleType =
+  | "FQDN"
+  | "PrivateEndpoint"
+  | "ServiceTag"
+  | (string & {});
 export const RuleType = /*@__PURE__*/ S.String;
 
 /** Outbound Rule for the managed network of a machine learning workspace. */
@@ -9400,7 +9478,8 @@ export const MarketplacePlan = /*@__PURE__*/ S.suspend(() =>
 export type MarketplaceSubscriptionStatus =
   | "Subscribed"
   | "Suspended"
-  | "Unsubscribed";
+  | "Unsubscribed"
+  | (string & {});
 export const MarketplaceSubscriptionStatus = /*@__PURE__*/ S.String;
 
 export type MarketplaceSubscriptionProvisioningState =
@@ -9409,7 +9488,8 @@ export type MarketplaceSubscriptionProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Updating"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const MarketplaceSubscriptionProvisioningState = /*@__PURE__*/ S.String;
 
 export interface MarketplaceSubscriptionProperties {
@@ -9861,7 +9941,8 @@ export const ModelContainersGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type ModelContainersListRequestListViewType =
   | "ActiveOnly"
   | "ArchivedOnly"
-  | "All";
+  | "All"
+  | (string & {});
 export const ModelContainersListRequestListViewType = /*@__PURE__*/ S.String;
 
 export interface ModelContainersListRequest {
@@ -10215,7 +10296,8 @@ export const ModelVersionsGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type ModelVersionsListRequestListViewType =
   | "ActiveOnly"
   | "ArchivedOnly"
-  | "All";
+  | "All"
+  | (string & {});
 export const ModelVersionsListRequestListViewType = /*@__PURE__*/ S.String;
 
 export interface ModelVersionsListRequest {
@@ -10403,7 +10485,10 @@ export const OnlineDeploymentPropertiesPropertiesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<OnlineDeploymentPropertiesPropertiesMap>;
 
 /** Enable or disable data collection. */
-export type CollectionDataCollectionMode = "Enabled" | "Disabled";
+export type CollectionDataCollectionMode =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const CollectionDataCollectionMode = /*@__PURE__*/ S.String;
 
 export interface Collection {
@@ -10456,7 +10541,8 @@ export type DataCollectorRollingRate =
   | "Month"
   | "Day"
   | "Hour"
-  | "Minute";
+  | "Minute"
+  | (string & {});
 export const DataCollectorRollingRate = /*@__PURE__*/ S.String;
 
 export interface DataCollector {
@@ -10478,12 +10564,17 @@ export const DataCollector = /*@__PURE__*/ S.suspend(() =>
 /** Enum to determine whether PublicNetworkAccess is Enabled or Disabled for egress of a deployment. */
 export type OnlineDeploymentPropertiesEgressPublicNetworkAccess =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const OnlineDeploymentPropertiesEgressPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
 /** Enum to determine endpoint compute type. */
-export type EndpointComputeType = "Managed" | "Kubernetes" | "AzureMLCompute";
+export type EndpointComputeType =
+  | "Managed"
+  | "Kubernetes"
+  | "AzureMLCompute"
+  | (string & {});
 export const EndpointComputeType = /*@__PURE__*/ S.String;
 
 /** Deployment container liveness/readiness probe configuration. */
@@ -10528,7 +10619,7 @@ export const OnlineRequestSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "OnlineRequestSettings",
 }) as any as S.Schema<OnlineRequestSettings>;
 
-export type ScaleType = "Default" | "TargetUtilization";
+export type ScaleType = "Default" | "TargetUtilization" | (string & {});
 export const ScaleType = /*@__PURE__*/ S.String;
 
 /** Online deployment scaling configuration. */
@@ -10962,7 +11053,8 @@ export const OnlineDeploymentsGetResponse = /*@__PURE__*/ S.suspend(() =>
 /** The type of container to retrieve logs from. */
 export type OnlineDeploymentsGetLogsRequestContainerType =
   | "StorageInitializer"
-  | "InferenceServer";
+  | "InferenceServer"
+  | (string & {});
 export const OnlineDeploymentsGetLogsRequestContainerType =
   /*@__PURE__*/ S.String;
 
@@ -11204,7 +11296,11 @@ export const OnlineDeploymentsListSkusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OnlineDeploymentsListSkusRequest>;
 
 /** Node scaling setting for the compute sku. */
-export type SkuCapacityScaleType = "Automatic" | "Manual" | "None";
+export type SkuCapacityScaleType =
+  | "Automatic"
+  | "Manual"
+  | "None"
+  | (string & {});
 export const SkuCapacityScaleType = /*@__PURE__*/ S.String;
 
 /** SKU capacity information */
@@ -11228,7 +11324,12 @@ export const SkuCapacity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuCapacity" }) as any as S.Schema<SkuCapacity>;
 
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
-export type SkuSettingTier = "Free" | "Basic" | "Standard" | "Premium";
+export type SkuSettingTier =
+  | "Free"
+  | "Basic"
+  | "Standard"
+  | "Premium"
+  | (string & {});
 export const SkuSettingTier = /*@__PURE__*/ S.String;
 
 /** SkuSetting fulfills the need for stripped down SKU info in ARM contract. */
@@ -11294,7 +11395,12 @@ export const OnlineDeploymentsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<OnlineDeploymentsUpdateRequestTagsMap>;
 
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
-export type PartialSkuTier = "Free" | "Basic" | "Standard" | "Premium";
+export type PartialSkuTier =
+  | "Free"
+  | "Basic"
+  | "Standard"
+  | "Premium"
+  | (string & {});
 export const PartialSkuTier = /*@__PURE__*/ S.String;
 
 /** Common SKU definition. */
@@ -11483,7 +11589,8 @@ export const OnlineEndpointPropertiesInputMirrorTrafficMap =
 /** Enum to determine whether PublicNetworkAccess is Enabled or Disabled. */
 export type OnlineEndpointPropertiesInputPublicNetworkAccess =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const OnlineEndpointPropertiesInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -11654,7 +11761,8 @@ export const OnlineEndpointPropertiesMirrorTrafficMap = /*@__PURE__*/ S.Record(
 /** Enum to determine whether PublicNetworkAccess is Enabled or Disabled. */
 export type OnlineEndpointPropertiesPublicNetworkAccess =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const OnlineEndpointPropertiesPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -12008,14 +12116,16 @@ export const EndpointAuthToken = /*@__PURE__*/ S.suspend(() =>
 export type OnlineEndpointsListRequestComputeType =
   | "Managed"
   | "Kubernetes"
-  | "AzureMLCompute";
+  | "AzureMLCompute"
+  | (string & {});
 export const OnlineEndpointsListRequestComputeType = /*@__PURE__*/ S.String;
 
 export type OnlineEndpointsListRequestOrderBy =
   | "CreatedAtDesc"
   | "CreatedAtAsc"
   | "UpdatedAtDesc"
-  | "UpdatedAtAsc";
+  | "UpdatedAtAsc"
+  | (string & {});
 export const OnlineEndpointsListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface OnlineEndpointsListRequest {
@@ -12208,7 +12318,7 @@ export const OnlineEndpointsListKeysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "OnlineEndpointsListKeysRequest",
 }) as any as S.Schema<OnlineEndpointsListKeysRequest>;
 
-export type KeyType = "Primary" | "Secondary";
+export type KeyType = "Primary" | "Secondary" | (string & {});
 export const KeyType = /*@__PURE__*/ S.String;
 
 export interface OnlineEndpointsRegenerateKeysRequest {
@@ -12426,11 +12536,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -12491,7 +12601,8 @@ export type EndpointServiceConnectionStatus =
   | "Pending"
   | "Rejected"
   | "Disconnected"
-  | "Timeout";
+  | "Timeout"
+  | (string & {});
 export const EndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -12646,7 +12757,8 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -13265,7 +13377,7 @@ export const ResourceName = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceName" }) as any as S.Schema<ResourceName>;
 
 /** An enum describing the unit of quota measurement. */
-export type QuotaUnit = "Count";
+export type QuotaUnit = "Count" | (string & {});
 export const QuotaUnit = /*@__PURE__*/ S.String;
 
 /** The quota assigned to a resource. */
@@ -13378,7 +13490,8 @@ export type Status =
   | "InvalidQuotaExceedsSubscriptionLimit"
   | "InvalidVMFamilyName"
   | "OperationNotSupportedForSku"
-  | "OperationNotEnabledForRegion";
+  | "OperationNotEnabledForRegion"
+  | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 
 /** The properties for update Quota response. */
@@ -14844,7 +14957,7 @@ export const RegistryCodeContainersListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of storage to use for the pending upload location */
 export type RegistryCodeVersionsCreateOrGetStartPendingUploadRequestPendingUploadType =
-  "None" | "TemporaryBlobReference";
+  "None" | "TemporaryBlobReference" | (string & {});
 export const RegistryCodeVersionsCreateOrGetStartPendingUploadRequestPendingUploadType =
   /*@__PURE__*/ S.String;
 
@@ -15593,7 +15706,8 @@ export const RegistryDataContainersGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type RegistryDataContainersListRequestListViewType =
   | "ActiveOnly"
   | "ArchivedOnly"
-  | "All";
+  | "All"
+  | (string & {});
 export const RegistryDataContainersListRequestListViewType =
   /*@__PURE__*/ S.String;
 
@@ -15673,7 +15787,8 @@ export type DataReferenceCredentialType =
   | "SAS"
   | "DockerCredentials"
   | "ManagedIdentity"
-  | "NoCredentials";
+  | "NoCredentials"
+  | (string & {});
 export const DataReferenceCredentialType = /*@__PURE__*/ S.String;
 
 /** DataReferenceCredential base class */
@@ -15724,7 +15839,7 @@ export const GetBlobReferenceSASResponseDto = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of storage to use for the pending upload location */
 export type RegistryDataVersionsCreateOrGetStartPendingUploadRequestPendingUploadType =
-  "None" | "TemporaryBlobReference";
+  "None" | "TemporaryBlobReference" | (string & {});
 export const RegistryDataVersionsCreateOrGetStartPendingUploadRequestPendingUploadType =
   /*@__PURE__*/ S.String;
 
@@ -15924,7 +16039,8 @@ export const RegistryDataVersionsGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type RegistryDataVersionsListRequestListViewType =
   | "ActiveOnly"
   | "ArchivedOnly"
-  | "All";
+  | "All"
+  | (string & {});
 export const RegistryDataVersionsListRequestListViewType =
   /*@__PURE__*/ S.String;
 
@@ -16122,7 +16238,8 @@ export const RegistryEnvironmentContainersGetResponse = /*@__PURE__*/ S.suspend(
 export type RegistryEnvironmentContainersListRequestListViewType =
   | "ActiveOnly"
   | "ArchivedOnly"
-  | "All";
+  | "All"
+  | (string & {});
 export const RegistryEnvironmentContainersListRequestListViewType =
   /*@__PURE__*/ S.String;
 
@@ -16318,7 +16435,8 @@ export const RegistryEnvironmentVersionsGetResponse = /*@__PURE__*/ S.suspend(
 export type RegistryEnvironmentVersionsListRequestListViewType =
   | "ActiveOnly"
   | "ArchivedOnly"
-  | "All";
+  | "All"
+  | (string & {});
 export const RegistryEnvironmentVersionsListRequestListViewType =
   /*@__PURE__*/ S.String;
 
@@ -16513,7 +16631,8 @@ export const RegistryModelContainersGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type RegistryModelContainersListRequestListViewType =
   | "ActiveOnly"
   | "ArchivedOnly"
-  | "All";
+  | "All"
+  | (string & {});
 export const RegistryModelContainersListRequestListViewType =
   /*@__PURE__*/ S.String;
 
@@ -16552,7 +16671,7 @@ export const RegistryModelContainersListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of storage to use for the pending upload location */
 export type RegistryModelVersionsCreateOrGetStartPendingUploadRequestPendingUploadType =
-  "None" | "TemporaryBlobReference";
+  "None" | "TemporaryBlobReference" | (string & {});
 export const RegistryModelVersionsCreateOrGetStartPendingUploadRequestPendingUploadType =
   /*@__PURE__*/ S.String;
 
@@ -16752,7 +16871,8 @@ export const RegistryModelVersionsGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type RegistryModelVersionsListRequestListViewType =
   | "ActiveOnly"
   | "ArchivedOnly"
-  | "All";
+  | "All"
+  | (string & {});
 export const RegistryModelVersionsListRequestListViewType =
   /*@__PURE__*/ S.String;
 
@@ -16829,7 +16949,8 @@ export const SchedulePropertiesTagsMap = /*@__PURE__*/ S.Record(
 export type ScheduleActionType =
   | "CreateJob"
   | "InvokeBatchEndpoint"
-  | "CreateMonitor";
+  | "CreateMonitor"
+  | (string & {});
 export const ScheduleActionType = /*@__PURE__*/ S.String;
 
 export interface ScheduleActionBase {
@@ -16850,7 +16971,8 @@ export type ScheduleProvisioningStatus =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const ScheduleProvisioningStatus = /*@__PURE__*/ S.String;
 
 export interface TriggerBase {
@@ -17051,7 +17173,8 @@ export const SchedulesGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type SchedulesListRequestListViewType =
   | "EnabledOnly"
   | "DisabledOnly"
-  | "All";
+  | "All"
+  | (string & {});
 export const SchedulesListRequestListViewType = /*@__PURE__*/ S.String;
 
 export interface SchedulesListRequest {
@@ -17142,11 +17265,15 @@ export const ServerlessEndpointsCreateOrUpdateRequestTagsMap =
     S.String,
   ) as any as S.Schema<ServerlessEndpointsCreateOrUpdateRequestTagsMap>;
 
-export type ServerlessInferenceEndpointAuthMode = "Key" | "AAD" | "KeyAndAAD";
+export type ServerlessInferenceEndpointAuthMode =
+  | "Key"
+  | "AAD"
+  | "KeyAndAAD"
+  | (string & {});
 export const ServerlessInferenceEndpointAuthMode = /*@__PURE__*/ S.String;
 
 /** Specifies the status of content safety. */
-export type ContentSafetyStatus = "Enabled" | "Disabled";
+export type ContentSafetyStatus = "Enabled" | "Disabled" | (string & {});
 export const ContentSafetyStatus = /*@__PURE__*/ S.String;
 
 export interface ContentSafety {
@@ -17294,7 +17421,8 @@ export type ServerlessEndpointState =
   | "Online"
   | "Suspended"
   | "CreationFailed"
-  | "DeletionFailed";
+  | "DeletionFailed"
+  | (string & {});
 export const ServerlessEndpointState = /*@__PURE__*/ S.String;
 
 /** Specifies any required headers to target this serverless endpoint. */
@@ -17963,7 +18091,7 @@ export const UsagesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsagesListRequest>;
 
 /** An enum describing the unit of usage measurement. */
-export type UsageUnit = "Count";
+export type UsageUnit = "Count" | (string & {});
 export const UsageUnit = /*@__PURE__*/ S.String;
 
 /** The Usage Names. */
@@ -18054,19 +18182,19 @@ export const VirtualMachineSizesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualMachineSizesListRequest>;
 
 /** Three lettered code specifying the currency of the VM price. Example: USD */
-export type BillingCurrency = "USD";
+export type BillingCurrency = "USD" | (string & {});
 export const BillingCurrency = /*@__PURE__*/ S.String;
 
 /** The unit of time measurement for the specified VM price. Example: OneHour */
-export type UnitOfMeasure = "OneHour";
+export type UnitOfMeasure = "OneHour" | (string & {});
 export const UnitOfMeasure = /*@__PURE__*/ S.String;
 
 /** Operating system type used by the VM. */
-export type VMPriceOSType = "Linux" | "Windows";
+export type VMPriceOSType = "Linux" | "Windows" | (string & {});
 export const VMPriceOSType = /*@__PURE__*/ S.String;
 
 /** The type of the VM. */
-export type VMTier = "Standard" | "LowPriority" | "Spot";
+export type VMTier = "Standard" | "LowPriority" | "Spot" | (string & {});
 export const VMTier = /*@__PURE__*/ S.String;
 
 /** The estimated price info for using a VM of a particular OS type, tier, etc. */
@@ -18205,7 +18333,8 @@ export type ConnectionAuthType =
   | "UserEntraToken"
   | "AgentUserImpersonation"
   | "AgenticIdentityToken"
-  | "AgenticUser";
+  | "AgenticUser"
+  | (string & {});
 export const ConnectionAuthType = /*@__PURE__*/ S.String;
 
 /** Category of the connection */
@@ -18329,7 +18458,8 @@ export type ConnectionCategory =
   | "Sharepoint"
   | "MicrosoftFabric"
   | "PowerPlatformEnvironment"
-  | "RemoteA2A";
+  | "RemoteA2A"
+  | (string & {});
 export const ConnectionCategory = /*@__PURE__*/ S.String;
 
 /** Store user metadata for this connection */
@@ -18342,10 +18472,18 @@ export const WorkspaceConnectionPropertiesV2InputMetadataMap =
     S.String,
   ) as any as S.Schema<WorkspaceConnectionPropertiesV2InputMetadataMap>;
 
-export type ManagedPERequirement = "Required" | "NotRequired" | "NotApplicable";
+export type ManagedPERequirement =
+  | "Required"
+  | "NotRequired"
+  | "NotApplicable"
+  | (string & {});
 export const ManagedPERequirement = /*@__PURE__*/ S.String;
 
-export type ManagedPEStatus = "Inactive" | "Active" | "NotApplicable";
+export type ManagedPEStatus =
+  | "Inactive"
+  | "Active"
+  | "NotApplicable"
+  | (string & {});
 export const ManagedPEStatus = /*@__PURE__*/ S.String;
 
 export type WorkspaceConnectionPropertiesV2InputSharedUserListList =
@@ -18430,7 +18568,8 @@ export type ConnectionGroup =
   | "NoSQL"
   | "File"
   | "GenericProtocol"
-  | "ServicesAndApps";
+  | "ServicesAndApps"
+  | (string & {});
 export const ConnectionGroup = /*@__PURE__*/ S.String;
 
 /** Store user metadata for this connection */
@@ -18896,7 +19035,7 @@ export const KeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KeyVaultProperties>;
 
 /** Indicates whether or not the encryption is enabled for the workspace. */
-export type EncryptionStatus = "Enabled" | "Disabled";
+export type EncryptionStatus = "Enabled" | "Disabled" | (string & {});
 export const EncryptionStatus = /*@__PURE__*/ S.String;
 
 export interface EncryptionProperty {
@@ -18956,7 +19095,8 @@ export const FeatureStoreSettings = /*@__PURE__*/ S.suspend(() =>
 export type IsolationMode =
   | "Disabled"
   | "AllowInternetOutbound"
-  | "AllowOnlyApprovedOutbound";
+  | "AllowOnlyApprovedOutbound"
+  | (string & {});
 export const IsolationMode = /*@__PURE__*/ S.String;
 
 /** Dictionary of <OutboundRule> */
@@ -18970,11 +19110,11 @@ export const ManagedNetworkSettingsInputOutboundRulesMap =
   ) as any as S.Schema<ManagedNetworkSettingsInputOutboundRulesMap>;
 
 /** Firewall Sku used for FQDN Rules */
-export type FirewallSku = "Standard" | "Basic";
+export type FirewallSku = "Standard" | "Basic" | (string & {});
 export const FirewallSku = /*@__PURE__*/ S.String;
 
 /** The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled. */
-export type ManagedNetworkKind = "V1" | "V2";
+export type ManagedNetworkKind = "V1" | "V2" | (string & {});
 export const ManagedNetworkKind = /*@__PURE__*/ S.String;
 
 /** Managed Network settings for a machine learning workspace. */
@@ -19008,7 +19148,7 @@ export const ManagedNetworkSettingsInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedNetworkSettingsInput>;
 
 /** Enum to determine whether PublicNetworkAccess is Enabled or Disabled. */
-export type PublicNetworkAccessType = "Enabled" | "Disabled";
+export type PublicNetworkAccessType = "Enabled" | "Disabled" | (string & {});
 export const PublicNetworkAccessType = /*@__PURE__*/ S.String;
 
 export interface ServerlessComputeSettings {
@@ -19097,7 +19237,8 @@ export const WorkspacePropertiesInputSharedPrivateLinkResourcesList =
 export type SystemDatastoresAuthMode =
   | "AccessKey"
   | "Identity"
-  | "UserDelegationSAS";
+  | "UserDelegationSAS"
+  | (string & {});
 export const SystemDatastoresAuthMode = /*@__PURE__*/ S.String;
 
 export type WorkspaceHubConfigAdditionalWorkspaceStorageAccountsList =
@@ -19802,7 +19943,11 @@ export const WorkspacesDiagnoseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspacesDiagnoseRequest>;
 
 /** Level of workspace setup error */
-export type DiagnoseResultLevel = "Warning" | "Error" | "Information";
+export type DiagnoseResultLevel =
+  | "Warning"
+  | "Error"
+  | "Information"
+  | (string & {});
 export const DiagnoseResultLevel = /*@__PURE__*/ S.String;
 
 /** Result of Diagnose */

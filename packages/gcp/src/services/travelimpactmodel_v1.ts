@@ -184,14 +184,16 @@ export type FlightEmissionsDetailsContrailsImpactBucketEnum =
   | "CONTRAILS_IMPACT_UNSPECIFIED"
   | "CONTRAILS_IMPACT_NEGLIGIBLE"
   | "CONTRAILS_IMPACT_MODERATE"
-  | "CONTRAILS_IMPACT_SEVERE";
+  | "CONTRAILS_IMPACT_SEVERE"
+  | (string & {});
 export const FlightEmissionsDetailsContrailsImpactBucketEnum =
   /*@__PURE__*/ S.String;
 
 export type FlightEmissionsDetailsSourceEnum =
   | "SOURCE_UNSPECIFIED"
   | "TIM"
-  | "EASA";
+  | "EASA"
+  | (string & {});
 export const FlightEmissionsDetailsSourceEnum = /*@__PURE__*/ S.String;
 
 /** Details about the specific flight's emissions. */
@@ -222,7 +224,8 @@ export type EmissionsProvenanceEntryFuelBurnEeaStrategyEnum =
   | "STRATEGY_UNSPECIFIED"
   | "AIRCRAFT_MAPPING_FALLBACK_WITH_CORRECTION_FACTOR"
   | "AIRCRAFT_MAPPING_EXACT"
-  | "AIRCRAFT_MAPPING_FALLBACK";
+  | "AIRCRAFT_MAPPING_FALLBACK"
+  | (string & {});
 export const EmissionsProvenanceEntryFuelBurnEeaStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -236,14 +239,16 @@ export type EmissionsProvenanceEntrySourceEnum =
   | "AIRCRAFT_MODEL_TYPICAL"
   | "GLOBAL_DEFAULT"
   | "IATA"
-  | "ICL";
+  | "ICL"
+  | (string & {});
 export const EmissionsProvenanceEntrySourceEnum = /*@__PURE__*/ S.String;
 
 export type EmissionsProvenanceEntryLoadFactorsT100StrategyEnum =
   | "STRATEGY_UNSPECIFIED"
   | "CARRIER_ROUTE_MONTH"
   | "CARRIER_MONTH"
-  | "ACTUAL_CARRIER_ROUTE_YEAR_MONTH";
+  | "ACTUAL_CARRIER_ROUTE_YEAR_MONTH"
+  | (string & {});
 export const EmissionsProvenanceEntryLoadFactorsT100StrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -251,7 +256,8 @@ export type EmissionsProvenanceEntryDistanceAdjustmentStrategyEnum =
   | "STRATEGY_UNSPECIFIED"
   | "ORIGIN_DESTINATION"
   | "COUNTRY_PAIR"
-  | "DEFAULT";
+  | "DEFAULT"
+  | (string & {});
 export const EmissionsProvenanceEntryDistanceAdjustmentStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -259,7 +265,8 @@ export type EmissionsProvenanceEntryDataCategoryEnum =
   | "DATA_CATEGORY_UNSPECIFIED"
   | "PRIMARY"
   | "MODELED"
-  | "DEFAULT";
+  | "DEFAULT"
+  | (string & {});
 export const EmissionsProvenanceEntryDataCategoryEnum = /*@__PURE__*/ S.String;
 
 export type EmissionsProvenanceEntryCargoMassFractionT100StrategyEnum =
@@ -267,7 +274,8 @@ export type EmissionsProvenanceEntryCargoMassFractionT100StrategyEnum =
   | "CARRIER_ROUTE_AIRCRAFT_CLASS"
   | "ROUTE_AIRCRAFT_CLASS"
   | "DISTANCE_AIRCRAFT_CLASS"
-  | "ACTUAL_CARRIER_ROUTE_YEAR_MONTH_AIRCRAFT_CLASS";
+  | "ACTUAL_CARRIER_ROUTE_YEAR_MONTH_AIRCRAFT_CLASS"
+  | (string & {});
 export const EmissionsProvenanceEntryCargoMassFractionT100StrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -278,21 +286,24 @@ export type EmissionsProvenanceEntryProvenanceEntryTypeEnum =
   | "CARGO_MASS_FRACTION"
   | "SEATING_CONFIG"
   | "SEAT_AREA_RATIOS"
-  | "DISTANCE_ADJUSTMENT";
+  | "DISTANCE_ADJUSTMENT"
+  | (string & {});
 export const EmissionsProvenanceEntryProvenanceEntryTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type EmissionsProvenanceEntryLoadFactorsChAviationStrategyEnum =
   | "STRATEGY_UNSPECIFIED"
   | "CARRIER_MONTH"
-  | "ACTUAL_CARRIER_YEAR_MONTH";
+  | "ACTUAL_CARRIER_YEAR_MONTH"
+  | (string & {});
 export const EmissionsProvenanceEntryLoadFactorsChAviationStrategyEnum =
   /*@__PURE__*/ S.String;
 
 export type EmissionsProvenanceEntrySeatAreaRatioIataStrategyEnum =
   | "STRATEGY_UNSPECIFIED"
   | "NARROW_AIRCRAFT_BODY"
-  | "WIDE_AIRCRAFT_BODY";
+  | "WIDE_AIRCRAFT_BODY"
+  | (string & {});
 export const EmissionsProvenanceEntrySeatAreaRatioIataStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -516,14 +527,16 @@ export const ComputeFlightEmissionsFlightsRequest = /*@__PURE__*/ S.suspend(
 export type FlightWithEmissionsSourceEnum =
   | "SOURCE_UNSPECIFIED"
   | "TIM"
-  | "EASA";
+  | "EASA"
+  | (string & {});
 export const FlightWithEmissionsSourceEnum = /*@__PURE__*/ S.String;
 
 export type FlightWithEmissionsContrailsImpactBucketEnum =
   | "CONTRAILS_IMPACT_UNSPECIFIED"
   | "CONTRAILS_IMPACT_NEGLIGIBLE"
   | "CONTRAILS_IMPACT_MODERATE"
-  | "CONTRAILS_IMPACT_SEVERE";
+  | "CONTRAILS_IMPACT_SEVERE"
+  | (string & {});
 export const FlightWithEmissionsContrailsImpactBucketEnum =
   /*@__PURE__*/ S.String;
 
@@ -580,7 +593,8 @@ export type Scope3FlightSegmentCabinClassEnum =
   | "ECONOMY"
   | "PREMIUM_ECONOMY"
   | "BUSINESS"
-  | "FIRST";
+  | "FIRST"
+  | (string & {});
 export const Scope3FlightSegmentCabinClassEnum = /*@__PURE__*/ S.String;
 
 /** Flight parameters with which the Scope 3 emissions are fetched. */
@@ -658,7 +672,8 @@ export type Scope3FlightEmissionsSourceEnum =
   | "SCOPE3_DATA_TYPE_UNSPECIFIED"
   | "TIM_EMISSIONS"
   | "TYPICAL_FLIGHT_EMISSIONS"
-  | "DISTANCE_BASED_EMISSIONS";
+  | "DISTANCE_BASED_EMISSIONS"
+  | (string & {});
 export const Scope3FlightEmissionsSourceEnum = /*@__PURE__*/ S.String;
 
 /** Scope 3 flight with emission estimates. */

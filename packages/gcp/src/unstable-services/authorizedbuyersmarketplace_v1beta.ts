@@ -128,13 +128,15 @@ export const Money = /*@__PURE__*/ S.suspend(() =>
 export type CuratedPackageStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "INACTIVE";
+  | "INACTIVE"
+  | (string & {});
 export const CuratedPackageStateEnum = /*@__PURE__*/ S.String;
 
 export type CuratedPackageCurationFeeVisibilityEnum =
   | "CURATION_FEE_VISIBILITY_UNSPECIFIED"
   | "DISCLOSED"
-  | "NON_DISCLOSED";
+  | "NON_DISCLOSED"
+  | (string & {});
 export const CuratedPackageCurationFeeVisibilityEnum = /*@__PURE__*/ S.String;
 
 export type PackageTargetingIncludedDeviceTypesItemEnum =
@@ -142,7 +144,8 @@ export type PackageTargetingIncludedDeviceTypesItemEnum =
   | "DEVICE_TYPE_PERSONAL_COMPUTER"
   | "DEVICE_TYPE_CONNECTED_TV"
   | "DEVICE_TYPE_PHONE"
-  | "DEVICE_TYPE_TABLET";
+  | "DEVICE_TYPE_TABLET"
+  | (string & {});
 export const PackageTargetingIncludedDeviceTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -156,7 +159,8 @@ export const PackageTargetingIncludedDeviceTypesItemEnumList =
 export type StringTargetingDimensionSelectionTypeEnum =
   | "SELECTION_TYPE_UNSPECIFIED"
   | "SELECTION_TYPE_INCLUDE"
-  | "SELECTION_TYPE_EXCLUDE";
+  | "SELECTION_TYPE_EXCLUDE"
+  | (string & {});
 export const StringTargetingDimensionSelectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Generic targeting with string values. */
@@ -214,7 +218,8 @@ export const PackagePublisherProvidedSignalsTargeting = /*@__PURE__*/ S.suspend(
 export type VideoPlcmtTargetingSelectionTypeEnum =
   | "SELECTION_TYPE_UNSPECIFIED"
   | "SELECTION_TYPE_INCLUDE"
-  | "SELECTION_TYPE_EXCLUDE";
+  | "SELECTION_TYPE_EXCLUDE"
+  | (string & {});
 export const VideoPlcmtTargetingSelectionTypeEnum = /*@__PURE__*/ S.String;
 
 export type VideoPlcmtTargetingVideoPlcmtTypesItemEnum =
@@ -222,7 +227,8 @@ export type VideoPlcmtTargetingVideoPlcmtTypesItemEnum =
   | "INSTREAM"
   | "ACCOMPANYING_CONTENT"
   | "INTERSTITIAL"
-  | "NO_CONTENT";
+  | "NO_CONTENT"
+  | (string & {});
 export const VideoPlcmtTargetingVideoPlcmtTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -272,7 +278,8 @@ export type PackageVideoTargetingIncludedMaximumAdDurationTargetingEnum =
   | "MAXIMUM_VIDEO_AD_DURATION_THIRTY_SECONDS"
   | "MAXIMUM_VIDEO_AD_DURATION_SIXTY_SECONDS"
   | "MAXIMUM_VIDEO_AD_DURATION_NINETY_SECONDS"
-  | "MAXIMUM_VIDEO_AD_DURATION_ONE_HUNDRED_TWENTY_SECONDS";
+  | "MAXIMUM_VIDEO_AD_DURATION_ONE_HUNDRED_TWENTY_SECONDS"
+  | (string & {});
 export const PackageVideoTargetingIncludedMaximumAdDurationTargetingEnum =
   /*@__PURE__*/ S.String;
 
@@ -280,7 +287,8 @@ export type PackageVideoTargetingIncludedPositionTypesItemEnum =
   | "POSITION_TYPE_UNSPECIFIED"
   | "POSITION_TYPE_MIDROLL"
   | "POSITION_TYPE_POSTROLL"
-  | "POSITION_TYPE_PREROLL";
+  | "POSITION_TYPE_PREROLL"
+  | (string & {});
 export const PackageVideoTargetingIncludedPositionTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -295,7 +303,8 @@ export type PackageVideoTargetingIncludedPlaybackMethodsItemEnum =
   | "PLAYBACK_METHOD_UNSPECIFIED"
   | "PLAYBACK_METHOD_AUTO_PLAY_SOUND_ON"
   | "PLAYBACK_METHOD_AUTO_PLAY_SOUND_OFF"
-  | "PLAYBACK_METHOD_CLICK_TO_PLAY";
+  | "PLAYBACK_METHOD_CLICK_TO_PLAY"
+  | (string & {});
 export const PackageVideoTargetingIncludedPlaybackMethodsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -313,7 +322,8 @@ export type PackageVideoTargetingIncludedMimeTypesItemEnum =
   | "VIDEO_MIME_TYPE_MP4"
   | "VIDEO_MIME_TYPE_APPLICATION_MPEGDASH"
   | "VIDEO_MIME_TYPE_APPLICATION_JAVASCRIPT"
-  | "VIDEO_MIME_TYPE_WEBM";
+  | "VIDEO_MIME_TYPE_WEBM"
+  | (string & {});
 export const PackageVideoTargetingIncludedMimeTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -327,7 +337,8 @@ export const PackageVideoTargetingIncludedMimeTypesItemEnumList =
 export type PackageVideoTargetingIncludedContentDeliveryMethodEnum =
   | "CONTENT_DELIVERY_METHOD_UNSPECIFIED"
   | "CONTENT_DELIVERY_METHOD_STREAMING"
-  | "CONTENT_DELIVERY_METHOD_PROGRESSIVE";
+  | "CONTENT_DELIVERY_METHOD_PROGRESSIVE"
+  | (string & {});
 export const PackageVideoTargetingIncludedContentDeliveryMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -413,13 +424,15 @@ export const CriteriaTargeting = /*@__PURE__*/ S.suspend(() =>
 export type PackageTargetingIncludedEnvironmentEnum =
   | "ENVIRONMENT_UNSPECIFIED"
   | "ENVIRONMENT_SITE"
-  | "ENVIRONMENT_APP";
+  | "ENVIRONMENT_APP"
+  | (string & {});
 export const PackageTargetingIncludedEnvironmentEnum = /*@__PURE__*/ S.String;
 
 export type PackageTargetingIncludedNativeInventoryTypesItemEnum =
   | "NATIVE_INVENTORY_TYPE_UNSPECIFIED"
   | "NATIVE_INVENTORY_TYPE_NATIVE_ONLY"
-  | "NATIVE_INVENTORY_TYPE_NATIVE_OR_BANNER";
+  | "NATIVE_INVENTORY_TYPE_NATIVE_OR_BANNER"
+  | (string & {});
 export const PackageTargetingIncludedNativeInventoryTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -434,14 +447,16 @@ export type PackageTargetingIncludedCreativeFormatEnum =
   | "CREATIVE_FORMAT_UNSPECIFIED"
   | "CREATIVE_FORMAT_DISPLAY"
   | "CREATIVE_FORMAT_VIDEO"
-  | "CREATIVE_FORMAT_AUDIO";
+  | "CREATIVE_FORMAT_AUDIO"
+  | (string & {});
 export const PackageTargetingIncludedCreativeFormatEnum =
   /*@__PURE__*/ S.String;
 
 export type PackageTargetingIncludedRestrictedCategoriesItemEnum =
   | "RESTRICTED_CATEGORY_UNSPECIFIED"
   | "RESTRICTED_CATEGORY_ALCOHOL"
-  | "RESTRICTED_CATEGORY_GAMBLING";
+  | "RESTRICTED_CATEGORY_GAMBLING"
+  | (string & {});
 export const PackageTargetingIncludedRestrictedCategoriesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -456,13 +471,15 @@ export type PackageTargetingIncludedAcceleratedMobilePageTypeEnum =
   | "ACCELERATED_MOBILE_PAGE_TYPE_UNSPECIFIED"
   | "ACCELERATED_MOBILE_PAGE_TYPE_NON_AMP"
   | "ACCELERATED_MOBILE_PAGE_TYPE_AMP"
-  | "ACCELERATED_MOBILE_PAGE_TYPE_AMP_STORY";
+  | "ACCELERATED_MOBILE_PAGE_TYPE_AMP_STORY"
+  | (string & {});
 export const PackageTargetingIncludedAcceleratedMobilePageTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type PackageTargetingIncludedOpenMeasurementTypesItemEnum =
   | "OPEN_MEASUREMENT_TYPE_UNSPECIFIED"
-  | "OPEN_MEASUREMENT_TYPE_OMID_V1";
+  | "OPEN_MEASUREMENT_TYPE_OMID_V1"
+  | (string & {});
 export const PackageTargetingIncludedOpenMeasurementTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -478,7 +495,8 @@ export type AdSizeTypeEnum =
   | "PIXEL"
   | "INTERSTITIAL"
   | "NATIVE"
-  | "FLUID";
+  | "FLUID"
+  | (string & {});
 export const AdSizeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents size of a single ad slot, or a creative. */
@@ -506,7 +524,8 @@ export const AdSizeList = /*@__PURE__*/ S.Array(
 export type PackageTargetingIncludedAuthorizedSellerStatusesItemEnum =
   | "AUTHORIZED_SELLER_STATUS_UNSPECIFIED"
   | "AUTHORIZED_SELLER_STATUS_DIRECT"
-  | "AUTHORIZED_SELLER_STATUS_RESELLER";
+  | "AUTHORIZED_SELLER_STATUS_RESELLER"
+  | (string & {});
 export const PackageTargetingIncludedAuthorizedSellerStatusesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -520,7 +539,8 @@ export const PackageTargetingIncludedAuthorizedSellerStatusesItemEnumList =
 export type PackageTargetingIncludedRewardedTypeEnum =
   | "REWARDED_TYPE_UNSPECIFIED"
   | "REWARDED_TYPE_NON_REWARDED"
-  | "REWARDED_TYPE_REWARDED";
+  | "REWARDED_TYPE_REWARDED"
+  | (string & {});
 export const PackageTargetingIncludedRewardedTypeEnum = /*@__PURE__*/ S.String;
 
 /** Targeting criteria for curated and auction packages. */
@@ -686,7 +706,8 @@ export type DataSegmentStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "INACTIVE"
-  | "SUSPENDED";
+  | "SUSPENDED"
+  | (string & {});
 export const DataSegmentStateEnum = /*@__PURE__*/ S.String;
 
 /** Defines an identifier for a segment of inventory that can be targeted by curators or media planners in the deals or auction packages UI. Curation of inventory is done by curators on external platforms. -- Next ID: 9 -- */

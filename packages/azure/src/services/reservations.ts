@@ -49,19 +49,24 @@ export type ReservedResourceType =
   | "NetAppStorage"
   | "AzureFiles"
   | "SqlEdge"
-  | "VirtualMachineSoftware";
+  | "VirtualMachineSoftware"
+  | (string & {});
 export const ReservedResourceType = /*@__PURE__*/ S.String;
 
 /** Represent the term of reservation. */
-export type ReservationTerm = "P1Y" | "P3Y" | "P5Y";
+export type ReservationTerm = "P1Y" | "P3Y" | "P5Y" | (string & {});
 export const ReservationTerm = /*@__PURE__*/ S.String;
 
 /** Represent the billing plans. */
-export type ReservationBillingPlan = "Upfront" | "Monthly";
+export type ReservationBillingPlan = "Upfront" | "Monthly" | (string & {});
 export const ReservationBillingPlan = /*@__PURE__*/ S.String;
 
 /** Type of the Applied Scope. */
-export type AppliedScopeType = "Single" | "Shared" | "ManagementGroup";
+export type AppliedScopeType =
+  | "Single"
+  | "Shared"
+  | "ManagementGroup"
+  | (string & {});
 export const AppliedScopeType = /*@__PURE__*/ S.String;
 
 /** List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType. */
@@ -96,7 +101,7 @@ export const AppliedScopeProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppliedScopeProperties>;
 
 /** Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type. */
-export type InstanceFlexibility = "On" | "Off";
+export type InstanceFlexibility = "On" | "Off" | (string & {});
 export const InstanceFlexibility = /*@__PURE__*/ S.String;
 
 /** Properties specific to each reserved resource type. Not required if not applicable. */
@@ -189,15 +194,15 @@ export const CalculateExchangeRequestPropertiesReservationsToPurchaseList =
   ) as any as S.Schema<CalculateExchangeRequestPropertiesReservationsToPurchaseList>;
 
 /** Represent savings plan term in ISO 8601 format. */
-export type SavingsPlanTerm = "P1Y" | "P3Y";
+export type SavingsPlanTerm = "P1Y" | "P3Y" | (string & {});
 export const SavingsPlanTerm = /*@__PURE__*/ S.String;
 
 /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
-export type BillingPlan = "P1M";
+export type BillingPlan = "P1M" | (string & {});
 export const BillingPlan = /*@__PURE__*/ S.String;
 
 /** Commitment grain. */
-export type CommitmentGrain = "Hourly";
+export type CommitmentGrain = "Hourly" | (string & {});
 export const CommitmentGrain = /*@__PURE__*/ S.String;
 
 /** Commitment towards the benefit. */
@@ -345,7 +350,8 @@ export type CalculateExchangeOperationResultStatus =
   | "Succeeded"
   | "Failed"
   | "Cancelled"
-  | "Pending";
+  | "Pending"
+  | (string & {});
 export const CalculateExchangeOperationResultStatus = /*@__PURE__*/ S.String;
 
 /** Pricing information containing the amount and the currency code */
@@ -676,7 +682,8 @@ export type ErrorResponseCode =
   | "CalculatePriceFailed"
   | "AppliedScopesSameAsExisting"
   | "SelfServiceRefundNotSupported"
-  | "RefundLimitExceeded";
+  | "RefundLimitExceeded"
+  | (string & {});
 export const ErrorResponseCode = /*@__PURE__*/ S.String;
 
 /** error details */
@@ -843,11 +850,17 @@ export type ExchangeOperationResultStatus =
   | "Failed"
   | "Cancelled"
   | "PendingRefunds"
-  | "PendingPurchases";
+  | "PendingPurchases"
+  | (string & {});
 export const ExchangeOperationResultStatus = /*@__PURE__*/ S.String;
 
 /** Status of the individual operation. */
-export type OperationStatus = "Succeeded" | "Failed" | "Cancelled" | "Pending";
+export type OperationStatus =
+  | "Succeeded"
+  | "Failed"
+  | "Cancelled"
+  | "Pending"
+  | (string & {});
 export const OperationStatus = /*@__PURE__*/ S.String;
 
 /** Reservation purchase details */
@@ -1522,7 +1535,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -1530,7 +1544,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -1579,7 +1594,8 @@ export type ProvisioningState =
   | "BillingFailed"
   | "Failed"
   | "Split"
-  | "Merged";
+  | "Merged"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 export type ReservationStatusCode =
@@ -1592,7 +1608,8 @@ export type ReservationStatusCode =
   | "Split"
   | "Merged"
   | "Expired"
-  | "Succeeded";
+  | "Succeeded"
+  | (string & {});
 export const ReservationStatusCode = /*@__PURE__*/ S.String;
 
 export interface ExtendedStatusInfo {
@@ -1890,7 +1907,7 @@ export const ReservationsProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationsProperties>;
 
 /** Resource Provider type to be reserved. */
-export type ReservationGetResponseKind = "Microsoft.Compute";
+export type ReservationGetResponseKind = "Microsoft.Compute" | (string & {});
 export const ReservationGetResponseKind = /*@__PURE__*/ S.String;
 
 export interface ReservationGetResponse {
@@ -1948,7 +1965,7 @@ export const ReservationListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationListRequest>;
 
 /** Resource Provider type to be reserved. */
-export type ReservationResponseKind = "Microsoft.Compute";
+export type ReservationResponseKind = "Microsoft.Compute" | (string & {});
 export const ReservationResponseKind = /*@__PURE__*/ S.String;
 
 /** The definition of the reservation. */
@@ -2241,7 +2258,12 @@ export const CalculatePriceResponsePropertiesPricingCurrencyTotal =
   }) as any as S.Schema<CalculatePriceResponsePropertiesPricingCurrencyTotal>;
 
 /** Describes whether the payment is completed, failed, cancelled or scheduled in the future. */
-export type PaymentStatus = "Succeeded" | "Failed" | "Scheduled" | "Cancelled";
+export type PaymentStatus =
+  | "Succeeded"
+  | "Failed"
+  | "Scheduled"
+  | "Cancelled"
+  | (string & {});
 export const PaymentStatus = /*@__PURE__*/ S.String;
 
 /** Information about payment related to a reservation order. */
@@ -2820,7 +2842,7 @@ export const ReservationUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationUpdateRequest>;
 
 /** Resource Provider type to be reserved. */
-export type ReservationUpdateResponseKind = "Microsoft.Compute";
+export type ReservationUpdateResponseKind = "Microsoft.Compute" | (string & {});
 export const ReservationUpdateResponseKind = /*@__PURE__*/ S.String;
 
 export interface ReservationUpdateResponse {

@@ -102,7 +102,8 @@ export type MembershipStateCodeEnum =
   | "READY"
   | "DELETING"
   | "UPDATING"
-  | "SERVICE_UPDATING";
+  | "SERVICE_UPDATING"
+  | (string & {});
 export const MembershipStateCodeEnum = /*@__PURE__*/ S.String;
 
 /** State of the Membership resource. */
@@ -151,7 +152,8 @@ export const MonitoringConfig = /*@__PURE__*/ S.suspend(() =>
 
 export type MembershipMembershipTypeEnum =
   | "MEMBERSHIP_TYPE_UNSPECIFIED"
-  | "LIGHTWEIGHT";
+  | "LIGHTWEIGHT"
+  | (string & {});
 export const MembershipMembershipTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -268,7 +270,8 @@ export type OnPremClusterClusterTypeEnum =
   | "BOOTSTRAP"
   | "HYBRID"
   | "STANDALONE"
-  | "USER";
+  | "USER"
+  | (string & {});
 export const OnPremClusterClusterTypeEnum = /*@__PURE__*/ S.String;
 
 /** OnPremCluster contains information specific to GKE On-Prem clusters. */
@@ -395,7 +398,8 @@ export const Authority = /*@__PURE__*/ S.suspend(() =>
 export type MembershipInfrastructureTypeEnum =
   | "INFRASTRUCTURE_TYPE_UNSPECIFIED"
   | "ON_PREM"
-  | "MULTI_CLOUD";
+  | "MULTI_CLOUD"
+  | (string & {});
 export const MembershipInfrastructureTypeEnum = /*@__PURE__*/ S.String;
 
 /** Membership contains information about a member cluster. */
@@ -779,7 +783,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */

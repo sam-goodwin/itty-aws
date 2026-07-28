@@ -356,7 +356,8 @@ export type WindowsSpecificDeviceAttributesSecureBootModeEnum =
   | "SECURE_BOOT_MODE_UNSPECIFIED"
   | "SECURE_BOOT_MODE_UNKNOWN"
   | "SECURE_BOOT_MODE_ENABLED"
-  | "SECURE_BOOT_MODE_DISABLED";
+  | "SECURE_BOOT_MODE_DISABLED"
+  | (string & {});
 export const WindowsSpecificDeviceAttributesSecureBootModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -389,7 +390,8 @@ export type AntivirusInfoProductStateEnum =
   | "PRODUCT_STATE_ON"
   | "PRODUCT_STATE_OFF"
   | "PRODUCT_STATE_SNOOZED"
-  | "PRODUCT_STATE_EXPIRED";
+  | "PRODUCT_STATE_EXPIRED"
+  | (string & {});
 export const AntivirusInfoProductStateEnum = /*@__PURE__*/ S.String;
 
 /** Resource representing the anti-virus information of a Device. */
@@ -422,20 +424,23 @@ export type DeviceDeviceTypeEnum =
   | "WINDOWS"
   | "MAC_OS"
   | "LINUX"
-  | "CHROME_OS";
+  | "CHROME_OS"
+  | (string & {});
 export const DeviceDeviceTypeEnum = /*@__PURE__*/ S.String;
 
 export type DeviceEncryptionStateEnum =
   | "ENCRYPTION_STATE_UNSPECIFIED"
   | "UNSUPPORTED_BY_DEVICE"
   | "ENCRYPTED"
-  | "NOT_ENCRYPTED";
+  | "NOT_ENCRYPTED"
+  | (string & {});
 export const DeviceEncryptionStateEnum = /*@__PURE__*/ S.String;
 
 export type CertificateAttributesValidationStateEnum =
   | "CERTIFICATE_VALIDATION_STATE_UNSPECIFIED"
   | "VALIDATION_SUCCESSFUL"
-  | "VALIDATION_FAILED";
+  | "VALIDATION_FAILED"
+  | (string & {});
 export const CertificateAttributesValidationStateEnum = /*@__PURE__*/ S.String;
 
 /** CertificateTemplate (v3 Extension in X.509). */
@@ -504,14 +509,16 @@ export type BrowserInfoBrowserManagementStateEnum =
   | "UNMANAGED"
   | "MANAGED_BY_OTHER_DOMAIN"
   | "PROFILE_MANAGED"
-  | "BROWSER_MANAGED";
+  | "BROWSER_MANAGED"
+  | (string & {});
 export const BrowserInfoBrowserManagementStateEnum = /*@__PURE__*/ S.String;
 
 export type BrowserInfoPasswordProtectionWarningTriggerEnum =
   | "PASSWORD_PROTECTION_TRIGGER_UNSPECIFIED"
   | "PROTECTION_OFF"
   | "PASSWORD_REUSE"
-  | "PHISHING_REUSE";
+  | "PHISHING_REUSE"
+  | (string & {});
 export const BrowserInfoPasswordProtectionWarningTriggerEnum =
   /*@__PURE__*/ S.String;
 
@@ -519,11 +526,16 @@ export type BrowserInfoSafeBrowsingProtectionLevelEnum =
   | "SAFE_BROWSING_LEVEL_UNSPECIFIED"
   | "DISABLED"
   | "STANDARD"
-  | "ENHANCED";
+  | "ENHANCED"
+  | (string & {});
 export const BrowserInfoSafeBrowsingProtectionLevelEnum =
   /*@__PURE__*/ S.String;
 
-export type ChromePolicyScopeEnum = "SCOPE_UNKNOWN" | "USER" | "MACHINE";
+export type ChromePolicyScopeEnum =
+  | "SCOPE_UNKNOWN"
+  | "USER"
+  | "MACHINE"
+  | (string & {});
 export const ChromePolicyScopeEnum = /*@__PURE__*/ S.String;
 
 export type ChromePolicySourceEnum =
@@ -537,10 +549,15 @@ export type ChromePolicySourceEnum =
   | "MERGED"
   | "COMMAND_LINE"
   | "CLOUD_FROM_ASH"
-  | "RESTRICTED_MANAGED_GUEST_SESSION_OVERRIDE";
+  | "RESTRICTED_MANAGED_GUEST_SESSION_OVERRIDE"
+  | (string & {});
 export const ChromePolicySourceEnum = /*@__PURE__*/ S.String;
 
-export type PolicyConflictScopeEnum = "SCOPE_UNKNOWN" | "USER" | "MACHINE";
+export type PolicyConflictScopeEnum =
+  | "SCOPE_UNKNOWN"
+  | "USER"
+  | "MACHINE"
+  | (string & {});
 export const PolicyConflictScopeEnum = /*@__PURE__*/ S.String;
 
 export type PolicyConflictSourceEnum =
@@ -554,7 +571,8 @@ export type PolicyConflictSourceEnum =
   | "MERGED"
   | "COMMAND_LINE"
   | "CLOUD_FROM_ASH"
-  | "RESTRICTED_MANAGED_GUEST_SESSION_OVERRIDE";
+  | "RESTRICTED_MANAGED_GUEST_SESSION_OVERRIDE"
+  | (string & {});
 export const PolicyConflictSourceEnum = /*@__PURE__*/ S.String;
 
 /** Represents a policy value from a source that was not applied because a higher-priority source took precedence. */
@@ -712,14 +730,16 @@ export type DeviceOsFirewallStatusEnum =
   | "OS_FIREWALL_STATUS_UNSPECIFIED"
   | "OS_FIREWALL_STATUS_UNKNOWN"
   | "OS_FIREWALL_STATUS_ENABLED"
-  | "OS_FIREWALL_STATUS_DISABLED";
+  | "OS_FIREWALL_STATUS_DISABLED"
+  | (string & {});
 export const DeviceOsFirewallStatusEnum = /*@__PURE__*/ S.String;
 
 export type AndroidAttributesOwnershipPrivilegeEnum =
   | "OWNERSHIP_PRIVILEGE_UNSPECIFIED"
   | "DEVICE_ADMINISTRATOR"
   | "PROFILE_OWNER"
-  | "DEVICE_OWNER";
+  | "DEVICE_OWNER"
+  | (string & {});
 export const AndroidAttributesOwnershipPrivilegeEnum = /*@__PURE__*/ S.String;
 
 /** Resource representing the Android specific attributes of a Device. */
@@ -759,7 +779,8 @@ export const AndroidAttributes = /*@__PURE__*/ S.suspend(() =>
 export type DeviceOwnerTypeEnum =
   | "DEVICE_OWNERSHIP_UNSPECIFIED"
   | "COMPANY"
-  | "BYOD";
+  | "BYOD"
+  | (string & {});
 export const DeviceOwnerTypeEnum = /*@__PURE__*/ S.String;
 
 export type DeviceManagementStateEnum =
@@ -769,13 +790,15 @@ export type DeviceManagementStateEnum =
   | "PENDING"
   | "UNPROVISIONED"
   | "WIPING"
-  | "WIPED";
+  | "WIPED"
+  | (string & {});
 export const DeviceManagementStateEnum = /*@__PURE__*/ S.String;
 
 export type DeviceCompromisedStateEnum =
   | "COMPROMISED_STATE_UNSPECIFIED"
   | "COMPROMISED"
-  | "UNCOMPROMISED";
+  | "UNCOMPROMISED"
+  | (string & {});
 export const DeviceCompromisedStateEnum = /*@__PURE__*/ S.String;
 
 export type DeviceClientTypesItemEnum =
@@ -784,7 +807,8 @@ export type DeviceClientTypesItemEnum =
   | "FUNDAMENTAL"
   | "ENDPOINT_VERIFICATION"
   | "WINDOWS_ADVANCED"
-  | "GOOGLE_CREDENTIALS_PROVIDER_FOR_WINDOWS";
+  | "GOOGLE_CREDENTIALS_PROVIDER_FOR_WINDOWS"
+  | (string & {});
 export const DeviceClientTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type DeviceClientTypesItemEnumList =
@@ -953,12 +977,14 @@ export const CreateDevicesRequest = /*@__PURE__*/ S.suspend(() =>
 export type CreateGroupsInitialGroupConfigEnum =
   | "INITIAL_GROUP_CONFIG_UNSPECIFIED"
   | "WITH_INITIAL_OWNER"
-  | "EMPTY";
+  | "EMPTY"
+  | (string & {});
 export const CreateGroupsInitialGroupConfigEnum = /*@__PURE__*/ S.String;
 
 export type DynamicGroupQueryResourceTypeEnum =
   | "RESOURCE_TYPE_UNSPECIFIED"
-  | "USER";
+  | "USER"
+  | (string & {});
 export const DynamicGroupQueryResourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Defines a query on a resource. */
@@ -985,7 +1011,8 @@ export type DynamicGroupStatusStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "UP_TO_DATE"
   | "UPDATING_MEMBERSHIPS"
-  | "INVALID_QUERY";
+  | "INVALID_QUERY"
+  | (string & {});
 export const DynamicGroupStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** The current status of a dynamic group along with timestamp. */
@@ -1161,7 +1188,8 @@ export type MembershipTypeEnum =
   | "SHARED_DRIVE"
   | "CBCM_BROWSER"
   | "CHROME_OS_DEVICE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const MembershipTypeEnum = /*@__PURE__*/ S.String;
 
 export type MembershipRoleRestrictionEvaluationStateEnum =
@@ -1169,7 +1197,8 @@ export type MembershipRoleRestrictionEvaluationStateEnum =
   | "COMPLIANT"
   | "FORWARD_COMPLIANT"
   | "NON_COMPLIANT"
-  | "EVALUATING";
+  | "EVALUATING"
+  | (string & {});
 export const MembershipRoleRestrictionEvaluationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1240,7 +1269,8 @@ export type MembershipDeliverySettingEnum =
   | "DIGEST"
   | "DAILY"
   | "NONE"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const MembershipDeliverySettingEnum = /*@__PURE__*/ S.String;
 
 /** A membership within the Cloud Identity Groups API. A `Membership` defines a relationship between a `Group` and an entity belonging to that `Group`, referred to as a "member". */
@@ -1452,12 +1482,14 @@ export type InboundSsoAssignmentSsoModeEnum =
   | "SSO_OFF"
   | "SAML_SSO"
   | "OIDC_SSO"
-  | "DOMAIN_WIDE_SAML_IF_ENABLED";
+  | "DOMAIN_WIDE_SAML_IF_ENABLED"
+  | (string & {});
 export const InboundSsoAssignmentSsoModeEnum = /*@__PURE__*/ S.String;
 
 export type SignInBehaviorRedirectConditionEnum =
   | "REDIRECT_CONDITION_UNSPECIFIED"
-  | "NEVER";
+  | "NEVER"
+  | (string & {});
 export const SignInBehaviorRedirectConditionEnum = /*@__PURE__*/ S.String;
 
 /** Controls sign-in behavior. */
@@ -1582,7 +1614,11 @@ export const Setting = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Setting" }) as any as S.Schema<Setting>;
 
-export type PolicyTypeEnum = "POLICY_TYPE_UNSPECIFIED" | "SYSTEM" | "ADMIN";
+export type PolicyTypeEnum =
+  | "POLICY_TYPE_UNSPECIFIED"
+  | "SYSTEM"
+  | "ADMIN"
+  | (string & {});
 export const PolicyTypeEnum = /*@__PURE__*/ S.String;
 
 /** A Policy resource binds an instance of a single Setting with the scope of a PolicyQuery. The Setting instance will be applied to all entities that satisfy the query. */
@@ -1818,7 +1854,8 @@ export type UserInvitationStateEnum =
   | "NOT_YET_SENT"
   | "INVITED"
   | "ACCEPTED"
-  | "DECLINED";
+  | "DECLINED"
+  | (string & {});
 export const UserInvitationStateEnum = /*@__PURE__*/ S.String;
 
 /** The `UserInvitation` resource represents an email that can be sent to an unmanaged user account inviting them to join the customer's Google Workspace or Cloud Identity account. An unmanaged account shares an email address domain with the Google Workspace or Cloud Identity account but is not managed by it yet. If the user accepts the `UserInvitation`, the user account will become managed. */
@@ -1886,13 +1923,15 @@ export const GetDevicesDeviceUsersRequest = /*@__PURE__*/ S.suspend(() =>
 export type DeviceUserPasswordStateEnum =
   | "PASSWORD_STATE_UNSPECIFIED"
   | "PASSWORD_SET"
-  | "PASSWORD_NOT_SET";
+  | "PASSWORD_NOT_SET"
+  | (string & {});
 export const DeviceUserPasswordStateEnum = /*@__PURE__*/ S.String;
 
 export type DeviceUserCompromisedStateEnum =
   | "COMPROMISED_STATE_UNSPECIFIED"
   | "COMPROMISED"
-  | "NOT_COMPROMISED";
+  | "NOT_COMPROMISED"
+  | (string & {});
 export const DeviceUserCompromisedStateEnum = /*@__PURE__*/ S.String;
 
 export type DeviceUserManagementStateEnum =
@@ -1902,7 +1941,8 @@ export type DeviceUserManagementStateEnum =
   | "APPROVED"
   | "BLOCKED"
   | "PENDING_APPROVAL"
-  | "UNENROLLED";
+  | "UNENROLLED"
+  | (string & {});
 export const DeviceUserManagementStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a user's use of a Device in the Cloud Identity Devices API. A DeviceUser is a resource representing a user's use of a Device */
@@ -1968,7 +2008,8 @@ export const GetDevicesDeviceUsersClientStatesRequest = /*@__PURE__*/ S.suspend(
 export type ClientStateOwnerTypeEnum =
   | "OWNER_TYPE_UNSPECIFIED"
   | "OWNER_TYPE_CUSTOMER"
-  | "OWNER_TYPE_PARTNER";
+  | "OWNER_TYPE_PARTNER"
+  | (string & {});
 export const ClientStateOwnerTypeEnum = /*@__PURE__*/ S.String;
 
 export type ClientStateHealthScoreEnum =
@@ -1977,7 +2018,8 @@ export type ClientStateHealthScoreEnum =
   | "POOR"
   | "NEUTRAL"
   | "GOOD"
-  | "VERY_GOOD";
+  | "VERY_GOOD"
+  | (string & {});
 export const ClientStateHealthScoreEnum = /*@__PURE__*/ S.String;
 
 /** Additional custom attribute values may be one of these types */
@@ -2010,13 +2052,15 @@ export const CustomAttributeValueMap = /*@__PURE__*/ S.Record(
 export type ClientStateManagedEnum =
   | "MANAGED_STATE_UNSPECIFIED"
   | "MANAGED"
-  | "UNMANAGED";
+  | "UNMANAGED"
+  | (string & {});
 export const ClientStateManagedEnum = /*@__PURE__*/ S.String;
 
 export type ClientStateComplianceStateEnum =
   | "COMPLIANCE_STATE_UNSPECIFIED"
   | "COMPLIANT"
-  | "NON_COMPLIANT";
+  | "NON_COMPLIANT"
+  | (string & {});
 export const ClientStateComplianceStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents the state associated with an API client calling the Devices API. Resource representing ClientState and supports updates from API users */
@@ -2284,7 +2328,8 @@ export type RestrictionEvaluationStateEnum =
   | "EVALUATING"
   | "COMPLIANT"
   | "FORWARD_COMPLIANT"
-  | "NON_COMPLIANT";
+  | "NON_COMPLIANT"
+  | (string & {});
 export const RestrictionEvaluationStateEnum = /*@__PURE__*/ S.String;
 
 /** The evaluated state of this restriction. */
@@ -2418,7 +2463,8 @@ export const ListUserInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListDevicesViewEnum =
   | "VIEW_UNSPECIFIED"
   | "COMPANY_INVENTORY"
-  | "USER_ASSIGNED_DEVICES";
+  | "USER_ASSIGNED_DEVICES"
+  | (string & {});
 export const ListDevicesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListDevicesRequest {
@@ -2529,7 +2575,11 @@ export const ListDeviceUsersResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDeviceUsersResponse",
 }) as any as S.Schema<ListDeviceUsersResponse>;
 
-export type ListGroupsViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export type ListGroupsViewEnum =
+  | "VIEW_UNSPECIFIED"
+  | "BASIC"
+  | "FULL"
+  | (string & {});
 export const ListGroupsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListGroupsRequest {
@@ -2580,7 +2630,7 @@ export const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGroupsResponse",
 }) as any as S.Schema<ListGroupsResponse>;
 
-export type ListGroupsMembershipsViewEnum = "BASIC" | "FULL";
+export type ListGroupsMembershipsViewEnum = "BASIC" | "FULL" | (string & {});
 export const ListGroupsMembershipsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListGroupsMembershipsRequest {
@@ -2842,7 +2892,10 @@ export const ListOrgUnitsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrgUnitsMembershipsRequest",
 }) as any as S.Schema<ListOrgUnitsMembershipsRequest>;
 
-export type OrgMembershipTypeEnum = "ENTITY_TYPE_UNSPECIFIED" | "SHARED_DRIVE";
+export type OrgMembershipTypeEnum =
+  | "ENTITY_TYPE_UNSPECIFIED"
+  | "SHARED_DRIVE"
+  | (string & {});
 export const OrgMembershipTypeEnum = /*@__PURE__*/ S.String;
 
 /** A membership in an OrgUnit. An `OrgMembership` defines a relationship between an `OrgUnit` and an entity belonging to that `OrgUnit`, referred to as a "member". */
@@ -3401,7 +3454,7 @@ export const SearchDirectGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchDirectGroupsResponse",
 }) as any as S.Schema<SearchDirectGroupsResponse>;
 
-export type SearchGroupsViewEnum = "BASIC" | "FULL";
+export type SearchGroupsViewEnum = "BASIC" | "FULL" | (string & {});
 export const SearchGroupsViewEnum = /*@__PURE__*/ S.String;
 
 export interface SearchGroupsRequest {
@@ -3482,7 +3535,8 @@ export type GroupRelationRelationTypeEnum =
   | "RELATION_TYPE_UNSPECIFIED"
   | "DIRECT"
   | "INDIRECT"
-  | "DIRECT_AND_INDIRECT";
+  | "DIRECT_AND_INDIRECT"
+  | (string & {});
 export const GroupRelationRelationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message representing the role of a TransitiveMembership. */
@@ -3580,7 +3634,8 @@ export type MemberRelationRelationTypeEnum =
   | "RELATION_TYPE_UNSPECIFIED"
   | "DIRECT"
   | "INDIRECT"
-  | "DIRECT_AND_INDIRECT";
+  | "DIRECT_AND_INDIRECT"
+  | (string & {});
 export const MemberRelationRelationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message representing a transitive membership of a group. */

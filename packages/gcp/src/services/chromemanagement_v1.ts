@@ -122,7 +122,8 @@ export const CheckEnablementStatusCustomersEnterpriseSecurityInsightsRequest =
 export type GoogleChromeManagementVersionsV1CheckEnablementStatusResponseInsightsStateEnum =
     | "INSIGHTS_ENABLEMENT_STATE_UNSPECIFIED"
     | "INSIGHTS_ENABLED"
-    | "INSIGHTS_DISABLED";
+    | "INSIGHTS_DISABLED"
+    | (string & {});
 export const GoogleChromeManagementVersionsV1CheckEnablementStatusResponseInsightsStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -500,7 +501,8 @@ export type GoogleChromeManagementV1DeviceAueCountReportAueMonthEnum =
   | "SEPTEMBER"
   | "OCTOBER"
   | "NOVEMBER"
-  | "DECEMBER";
+  | "DECEMBER"
+  | (string & {});
 export const GoogleChromeManagementV1DeviceAueCountReportAueMonthEnum =
   /*@__PURE__*/ S.String;
 
@@ -725,7 +727,8 @@ export type GoogleChromeManagementV1BrowserVersionChannelEnum =
   | "CANARY"
   | "DEV"
   | "BETA"
-  | "STABLE";
+  | "STABLE"
+  | (string & {});
 export const GoogleChromeManagementV1BrowserVersionChannelEnum =
   /*@__PURE__*/ S.String;
 
@@ -737,7 +740,8 @@ export type GoogleChromeManagementV1BrowserVersionSystemEnum =
   | "SYSTEM_CROS"
   | "SYSTEM_WINDOWS"
   | "SYSTEM_MAC"
-  | "SYSTEM_LINUX";
+  | "SYSTEM_LINUX"
+  | (string & {});
 export const GoogleChromeManagementV1BrowserVersionSystemEnum =
   /*@__PURE__*/ S.String;
 
@@ -994,7 +998,8 @@ export const CountInstalledAppsCustomersReportsRequest =
 export type GoogleChromeManagementV1InstalledAppAppSourceEnum =
   | "APP_SOURCE_UNSPECIFIED"
   | "CHROME_WEBSTORE"
-  | "PLAY_STORE";
+  | "PLAY_STORE"
+  | (string & {});
 export const GoogleChromeManagementV1InstalledAppAppSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1004,7 +1009,8 @@ export type GoogleChromeManagementV1InstalledAppAppTypeEnum =
   | "APP"
   | "THEME"
   | "HOSTED_APP"
-  | "ANDROID_APP";
+  | "ANDROID_APP"
+  | (string & {});
 export const GoogleChromeManagementV1InstalledAppAppTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1020,7 +1026,8 @@ export type GoogleChromeManagementV1InstalledAppAppInstallTypeEnum =
   | "ADMIN"
   | "DEVELOPMENT"
   | "SIDELOAD"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const GoogleChromeManagementV1InstalledAppAppInstallTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1029,7 +1036,8 @@ export type GoogleChromeManagementV1RiskAssessmentEntryProviderEnum =
   | "RISK_ASSESSMENT_PROVIDER_CRXCAVATOR"
   | "RISK_ASSESSMENT_PROVIDER_SPIN_AI"
   | "RISK_ASSESSMENT_PROVIDER_LAYERX"
-  | "RISK_ASSESSMENT_PROVIDER_SPIN_AI_V2";
+  | "RISK_ASSESSMENT_PROVIDER_SPIN_AI_V2"
+  | (string & {});
 export const GoogleChromeManagementV1RiskAssessmentEntryProviderEnum =
   /*@__PURE__*/ S.String;
 
@@ -1037,7 +1045,8 @@ export type GoogleChromeManagementV1RiskAssessmentEntryRiskLevelEnum =
   | "RISK_LEVEL_UNSPECIFIED"
   | "RISK_LEVEL_LOW"
   | "RISK_LEVEL_MEDIUM"
-  | "RISK_LEVEL_HIGH";
+  | "RISK_LEVEL_HIGH"
+  | (string & {});
 export const GoogleChromeManagementV1RiskAssessmentEntryRiskLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -1096,7 +1105,8 @@ export type GoogleChromeManagementV1RiskAssessmentDataOverallRiskLevelEnum =
   | "RISK_LEVEL_UNSPECIFIED"
   | "RISK_LEVEL_LOW"
   | "RISK_LEVEL_MEDIUM"
-  | "RISK_LEVEL_HIGH";
+  | "RISK_LEVEL_HIGH"
+  | (string & {});
 export const GoogleChromeManagementV1RiskAssessmentDataOverallRiskLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -1381,14 +1391,16 @@ export type GoogleChromeManagementVersionsV1ConnectorConfigTypeEnum =
   | "IDENTITY_BASED_ENROLLMENT"
   | "CERTIFICATE_AUTHORITY"
   | "ROOT_STORE"
-  | "CONTENT_ANALYSIS";
+  | "CONTENT_ANALYSIS"
+  | (string & {});
 export const GoogleChromeManagementVersionsV1ConnectorConfigTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleChromeManagementVersionsV1ConnectorConfigStatusStateEnum =
   | "CONFIG_STATE_UNKNOWN"
   | "ENABLED"
-  | "DISABLED_BY_FAILURES";
+  | "DISABLED_BY_FAILURES"
+  | (string & {});
 export const GoogleChromeManagementVersionsV1ConnectorConfigStatusStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1428,7 +1440,8 @@ export type GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEvent
     | "SENSITIVE_DATA_TRANSFER_EVENT"
     | "SUSPICIOUS_URL_EVENT"
     | "UNSAFE_SITE_VISIT_EVENT"
-    | "URL_FILTERING_INTERSTITIAL_EVENT";
+    | "URL_FILTERING_INTERSTITIAL_EVENT"
+    | (string & {});
 export const GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEventsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1445,7 +1458,8 @@ export type GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsI
     | "LOGIN_EVENT"
     | "PASSWORD_BREACH_EVENT"
     | "URL_NAVIGATION_EVENT"
-    | "EXTENSION_TELEMETRY_EVENT";
+    | "EXTENSION_TELEMETRY_EVENT"
+    | (string & {});
 export const GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1462,7 +1476,8 @@ export type GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEvents
     | "ADD_REMOVE_USER_EVENT"
     | "LOGIN_LOGOUT_EVENT"
     | "CRD_EVENT"
-    | "PERIPHERAL_EVENT";
+    | "PERIPHERAL_EVENT"
+    | (string & {});
 export const GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEventsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1525,7 +1540,8 @@ export type GoogleChromeManagementVersionsV1DeviceTrustConfigScopeEnum =
   | "BROWSER_ENFORCEMENT_SCOPE_UNSPECIFIED"
   | "BROWSERS_ONLY"
   | "PROFILES_ONLY"
-  | "BROWSERS_AND_PROFILES";
+  | "BROWSERS_AND_PROFILES"
+  | (string & {});
 export const GoogleChromeManagementVersionsV1DeviceTrustConfigScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1538,7 +1554,8 @@ export type GoogleChromeManagementVersionsV1DeviceTrustConfigServiceProviderEnum
     | "DUO"
     | "ZSCALER"
     | "OMNISSA"
-    | "JUMPCLOUD";
+    | "JUMPCLOUD"
+    | (string & {});
 export const GoogleChromeManagementVersionsV1DeviceTrustConfigServiceProviderEnum =
   /*@__PURE__*/ S.String;
 
@@ -1873,7 +1890,11 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DocumentMap>;
 
 export type GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResultResultTypeEnum =
-  "COMMAND_RESULT_TYPE_UNSPECIFIED" | "IGNORED" | "FAILURE" | "SUCCESS";
+    | "COMMAND_RESULT_TYPE_UNSPECIFIED"
+    | "IGNORED"
+    | "FAILURE"
+    | "SUCCESS"
+    | (string & {});
 export const GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResultResultTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1901,7 +1922,11 @@ export const GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandR
   }) as any as S.Schema<GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult>;
 
 export type GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandStateEnum =
-  "COMMAND_STATE_UNSPECIFIED" | "PENDING" | "EXPIRED" | "EXECUTED_BY_CLIENT";
+    | "COMMAND_STATE_UNSPECIFIED"
+    | "PENDING"
+    | "EXPIRED"
+    | "EXECUTED_BY_CLIENT"
+    | (string & {});
 export const GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1982,7 +2007,8 @@ export type GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesIt
     | "APP_LAUNCHED"
     | "OS_CRASH"
     | "EXTERNAL_DISPLAY_CONNECTED"
-    | "EXTERNAL_DISPLAY_DISCONNECTED";
+    | "EXTERNAL_DISPLAY_DISCONNECTED"
+    | (string & {});
 export const GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -2194,7 +2220,8 @@ export const DisableCustomersEnterpriseSecurityInsightsRequest =
 export type GoogleChromeManagementVersionsV1DisableInsightsResponseInsightsStateEnum =
     | "INSIGHTS_ENABLEMENT_STATE_UNSPECIFIED"
     | "INSIGHTS_ENABLED"
-    | "INSIGHTS_DISABLED";
+    | "INSIGHTS_DISABLED"
+    | (string & {});
 export const GoogleChromeManagementVersionsV1DisableInsightsResponseInsightsStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2257,7 +2284,8 @@ export const EnableCustomersEnterpriseSecurityInsightsRequest =
 export type GoogleChromeManagementVersionsV1EnableInsightsResponseInsightsStateEnum =
     | "INSIGHTS_ENABLEMENT_STATE_UNSPECIFIED"
     | "INSIGHTS_ENABLED"
-    | "INSIGHTS_DISABLED";
+    | "INSIGHTS_DISABLED"
+    | (string & {});
 export const GoogleChromeManagementVersionsV1EnableInsightsResponseInsightsStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2315,13 +2343,15 @@ export type GoogleChromeManagementV1PrintJobStateEnum =
   | "STATE_UNSPECIFIED"
   | "PRINTED"
   | "CANCELLED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const GoogleChromeManagementV1PrintJobStateEnum = /*@__PURE__*/ S.String;
 
 export type GoogleChromeManagementV1PrintJobColorModeEnum =
   | "COLOR_MODE_UNSPECIFIED"
   | "BLACK_AND_WHITE"
-  | "COLOR";
+  | "COLOR"
+  | (string & {});
 export const GoogleChromeManagementV1PrintJobColorModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2329,7 +2359,8 @@ export type GoogleChromeManagementV1PrintJobDuplexModeEnum =
   | "DUPLEX_MODE_UNSPECIFIED"
   | "ONE_SIDED"
   | "TWO_SIDED_LONG_EDGE"
-  | "TWO_SIDED_SHORT_EDGE";
+  | "TWO_SIDED_SHORT_EDGE"
+  | (string & {});
 export const GoogleChromeManagementV1PrintJobDuplexModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2569,7 +2600,8 @@ export type FindInstalledAppDevicesCustomersReportsAppTypeEnum =
   | "APP"
   | "THEME"
   | "HOSTED_APP"
-  | "ANDROID_APP";
+  | "ANDROID_APP"
+  | (string & {});
 export const FindInstalledAppDevicesCustomersReportsAppTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2663,7 +2695,8 @@ export type FindInstalledAppProfilesCustomersReportsAppTypeEnum =
   | "APP"
   | "THEME"
   | "HOSTED_APP"
-  | "ANDROID_APP";
+  | "ANDROID_APP"
+  | (string & {});
 export const FindInstalledAppProfilesCustomersReportsAppTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2830,7 +2863,8 @@ export const GoogleChromeManagementV1ChromeAppSiteAccessList =
 export type GoogleChromeManagementV1ChromeAppInfoTypeEnum =
   | "ITEM_TYPE_UNSPECIFIED"
   | "EXTENSION"
-  | "OTHERS";
+  | "OTHERS"
+  | (string & {});
 export const GoogleChromeManagementV1ChromeAppInfoTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2885,7 +2919,8 @@ export type GoogleChromeManagementV1AppDetailsTypeEnum =
   | "APP_ITEM_TYPE_UNSPECIFIED"
   | "CHROME"
   | "ANDROID"
-  | "WEB";
+  | "WEB"
+  | (string & {});
 export const GoogleChromeManagementV1AppDetailsTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3143,7 +3178,8 @@ export const GoogleChromeManagementVersionsV1GenericCaConnection =
 export type GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnum =
   | "KEY_USAGE_UNSPECIFIED"
   | "KEY_USAGE_SIGNING"
-  | "KEY_USAGE_KEY_ENCIPHERMENT";
+  | "KEY_USAGE_KEY_ENCIPHERMENT"
+  | (string & {});
 export const GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -3159,7 +3195,8 @@ export type GoogleChromeManagementVersionsV1SubjectAltNameTypeEnum =
   | "RFC822_NAME"
   | "DNS_NAME"
   | "OTHER_NAME_USER_PRINCIPAL_NAME"
-  | "UNIFORM_RESOURCE_IDENTIFIER";
+  | "UNIFORM_RESOURCE_IDENTIFIER"
+  | (string & {});
 export const GoogleChromeManagementVersionsV1SubjectAltNameTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3246,7 +3283,8 @@ export const GoogleChromeManagementVersionsV1GenericProfile =
 export type GoogleChromeManagementVersionsV1CertificateProvisioningProcessSignatureAlgorithmEnum =
     | "SIGNATURE_ALGORITHM_UNSPECIFIED"
     | "SIGNATURE_ALGORITHM_RSA_PKCS1_V1_5_SHA256"
-    | "SIGNATURE_ALGORITHM_ECDSA_SHA256";
+    | "SIGNATURE_ALGORITHM_ECDSA_SHA256"
+    | (string & {});
 export const GoogleChromeManagementVersionsV1CertificateProvisioningProcessSignatureAlgorithmEnum =
   /*@__PURE__*/ S.String;
 
@@ -3401,7 +3439,8 @@ export const GetCustomersProfilesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleChromeManagementVersionsV1DeviceInfoDeviceTypeEnum =
   | "DEVICE_TYPE_UNSPECIFIED"
-  | "CHROME_BROWSER";
+  | "CHROME_BROWSER"
+  | (string & {});
 export const GoogleChromeManagementVersionsV1DeviceInfoDeviceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3437,12 +3476,18 @@ export type GoogleChromeManagementVersionsV1ReportingDataExtensionDataInstallati
     | "ADMIN"
     | "DEVELOPMENT"
     | "SIDELOAD"
-    | "OTHER";
+    | "OTHER"
+    | (string & {});
 export const GoogleChromeManagementVersionsV1ReportingDataExtensionDataInstallationTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleChromeManagementVersionsV1ReportingDataExtensionDataExtensionTypeEnum =
-  "EXTENSION_TYPE_UNSPECIFIED" | "EXTENSION" | "APP" | "THEME" | "HOSTED_APP";
+    | "EXTENSION_TYPE_UNSPECIFIED"
+    | "EXTENSION"
+    | "APP"
+    | "THEME"
+    | "HOSTED_APP"
+    | (string & {});
 export const GoogleChromeManagementVersionsV1ReportingDataExtensionDataExtensionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3507,7 +3552,8 @@ export type GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyDataSo
     | "USER_PLATFORM"
     | "MACHINE_LEVEL_USER_CLOUD"
     | "USER_CLOUD"
-    | "MACHINE_MERGED";
+    | "MACHINE_MERGED"
+    | (string & {});
 export const GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyDataSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -3541,7 +3587,8 @@ export type GoogleChromeManagementVersionsV1ReportingDataPolicyDataSourceEnum =
   | "USER_PLATFORM"
   | "MACHINE_LEVEL_USER_CLOUD"
   | "USER_CLOUD"
-  | "MACHINE_MERGED";
+  | "MACHINE_MERGED"
+  | (string & {});
 export const GoogleChromeManagementVersionsV1ReportingDataPolicyDataSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -3650,14 +3697,16 @@ export const GoogleChromeManagementVersionsV1ReportingData =
 export type GoogleChromeManagementVersionsV1AttestationCredentialKeyTrustLevelEnum =
     | "KEY_TRUST_LEVEL_UNSPECIFIED"
     | "CHROME_BROWSER_HW_KEY"
-    | "CHROME_BROWSER_OS_KEY";
+    | "CHROME_BROWSER_OS_KEY"
+    | (string & {});
 export const GoogleChromeManagementVersionsV1AttestationCredentialKeyTrustLevelEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleChromeManagementVersionsV1AttestationCredentialKeyTypeEnum =
   | "KEY_TYPE_UNSPECIFIED"
   | "RSA_KEY"
-  | "EC_KEY";
+  | "EC_KEY"
+  | (string & {});
 export const GoogleChromeManagementVersionsV1AttestationCredentialKeyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3691,7 +3740,8 @@ export const GoogleChromeManagementVersionsV1AttestationCredential =
 export type GoogleChromeManagementVersionsV1ChromeBrowserProfileIdentityProviderEnum =
     | "IDENTITY_PROVIDER_UNSPECIFIED"
     | "GOOGLE_IDENTITY_PROVIDER"
-    | "EXTERNAL_IDENTITY_PROVIDER";
+    | "EXTERNAL_IDENTITY_PROVIDER"
+    | (string & {});
 export const GoogleChromeManagementVersionsV1ChromeBrowserProfileIdentityProviderEnum =
   /*@__PURE__*/ S.String;
 
@@ -3701,7 +3751,8 @@ export type GoogleChromeManagementVersionsV1ChromeBrowserProfileAffiliationState
     | "PROFILE_ONLY"
     | "UNAFFILIATED_LOCAL_MACHINE"
     | "UNAFFILIATED_CLOUD_MACHINE"
-    | "AFFILIATED_CLOUD_MANAGED";
+    | "AFFILIATED_CLOUD_MANAGED"
+    | (string & {});
 export const GoogleChromeManagementVersionsV1ChromeBrowserProfileAffiliationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -4148,7 +4199,8 @@ export type GoogleChromeManagementV1TotalMemoryEncryptionInfoEncryptionStateEnum
     | "MEMORY_ENCRYPTION_STATE_UNKNOWN"
     | "MEMORY_ENCRYPTION_STATE_DISABLED"
     | "MEMORY_ENCRYPTION_STATE_TME"
-    | "MEMORY_ENCRYPTION_STATE_MKTME";
+    | "MEMORY_ENCRYPTION_STATE_MKTME"
+    | (string & {});
 export const GoogleChromeManagementV1TotalMemoryEncryptionInfoEncryptionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -4156,7 +4208,8 @@ export type GoogleChromeManagementV1TotalMemoryEncryptionInfoEncryptionAlgorithm
     | "MEMORY_ENCRYPTION_ALGORITHM_UNSPECIFIED"
     | "MEMORY_ENCRYPTION_ALGORITHM_UNKNOWN"
     | "MEMORY_ENCRYPTION_ALGORITHM_AES_XTS_128"
-    | "MEMORY_ENCRYPTION_ALGORITHM_AES_XTS_256";
+    | "MEMORY_ENCRYPTION_ALGORITHM_AES_XTS_256"
+    | (string & {});
 export const GoogleChromeManagementV1TotalMemoryEncryptionInfoEncryptionAlgorithmEnum =
   /*@__PURE__*/ S.String;
 
@@ -4363,7 +4416,8 @@ export type GoogleChromeManagementV1BatteryStatusReportBatteryHealthEnum =
   | "BATTERY_HEALTH_UNSPECIFIED"
   | "BATTERY_HEALTH_NORMAL"
   | "BATTERY_REPLACE_SOON"
-  | "BATTERY_REPLACE_NOW";
+  | "BATTERY_REPLACE_NOW"
+  | (string & {});
 export const GoogleChromeManagementV1BatteryStatusReportBatteryHealthEnum =
   /*@__PURE__*/ S.String;
 
@@ -4410,7 +4464,8 @@ export type GoogleChromeManagementV1HttpsLatencyRoutineDataProblemEnum =
   | "FAILED_DNS_RESOLUTIONS"
   | "FAILED_HTTPS_REQUESTS"
   | "HIGH_LATENCY"
-  | "VERY_HIGH_LATENCY";
+  | "VERY_HIGH_LATENCY"
+  | (string & {});
 export const GoogleChromeManagementV1HttpsLatencyRoutineDataProblemEnum =
   /*@__PURE__*/ S.String;
 
@@ -4463,7 +4518,8 @@ export type GoogleChromeManagementV1NetworkDeviceTypeEnum =
   | "NETWORK_DEVICE_TYPE_UNSPECIFIED"
   | "CELLULAR_DEVICE"
   | "ETHERNET_DEVICE"
-  | "WIFI_DEVICE";
+  | "WIFI_DEVICE"
+  | (string & {});
 export const GoogleChromeManagementV1NetworkDeviceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4544,7 +4600,8 @@ export type GoogleChromeManagementV1BootPerformanceReportShutdownReasonEnum =
   | "USER_REQUEST"
   | "SYSTEM_UPDATE"
   | "LOW_BATTERY"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const GoogleChromeManagementV1BootPerformanceReportShutdownReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -4629,7 +4686,8 @@ export type GoogleChromeManagementV1OsUpdateStatusUpdateStateEnum =
   | "UPDATE_STATE_UNSPECIFIED"
   | "OS_IMAGE_DOWNLOAD_NOT_STARTED"
   | "OS_IMAGE_DOWNLOAD_IN_PROGRESS"
-  | "OS_UPDATE_NEED_REBOOT";
+  | "OS_UPDATE_NEED_REBOOT"
+  | (string & {});
 export const GoogleChromeManagementV1OsUpdateStatusUpdateStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -4686,7 +4744,8 @@ export type GoogleChromeManagementV1AppUsageDataAppTypeEnum =
   | "APPLICATION_TYPE_STANDALONE_BROWSER_CHROME_APP"
   | "APPLICATION_TYPE_EXTENSION"
   | "APPLICATION_TYPE_STANDALONE_BROWSER_EXTENSION"
-  | "APPLICATION_TYPE_BRUSCHETTA";
+  | "APPLICATION_TYPE_BRUSCHETTA"
+  | (string & {});
 export const GoogleChromeManagementV1AppUsageDataAppTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4747,7 +4806,8 @@ export type GoogleChromeManagementV1NetworkStatusReportConnectionTypeEnum =
   | "ETHERNET"
   | "TETHER"
   | "VPN"
-  | "WIFI";
+  | "WIFI"
+  | (string & {});
 export const GoogleChromeManagementV1NetworkStatusReportConnectionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4757,7 +4817,8 @@ export type GoogleChromeManagementV1NetworkStatusReportConnectionStateEnum =
   | "CONNECTED"
   | "PORTAL"
   | "CONNECTING"
-  | "NOT_CONNECTED";
+  | "NOT_CONNECTED"
+  | (string & {});
 export const GoogleChromeManagementV1NetworkStatusReportConnectionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -4871,7 +4932,8 @@ export type GoogleChromeManagementV1ThunderboltInfoSecurityLevelEnum =
   | "THUNDERBOLT_SECURITY_SECURE_LEVEL"
   | "THUNDERBOLT_SECURITY_DP_ONLY_LEVEL"
   | "THUNDERBOLT_SECURITY_USB_ONLY_LEVEL"
-  | "THUNDERBOLT_SECURITY_NO_PCIE_LEVEL";
+  | "THUNDERBOLT_SECURITY_NO_PCIE_LEVEL"
+  | (string & {});
 export const GoogleChromeManagementV1ThunderboltInfoSecurityLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -5031,7 +5093,8 @@ export const GoogleChromeManagementV1GraphicsInfo = /*@__PURE__*/ S.suspend(
 
 export type GoogleChromeManagementV1CpuInfoArchitectureEnum =
   | "ARCHITECTURE_UNSPECIFIED"
-  | "X64";
+  | "X64"
+  | (string & {});
 export const GoogleChromeManagementV1CpuInfoArchitectureEnum =
   /*@__PURE__*/ S.String;
 
@@ -5071,7 +5134,8 @@ export type GoogleChromeManagementV1HeartbeatStatusReportStateEnum =
   | "UNKNOWN"
   | "ONLINE"
   | "OFFLINE"
-  | "DEVICE_OUTDATED";
+  | "DEVICE_OUTDATED"
+  | (string & {});
 export const GoogleChromeManagementV1HeartbeatStatusReportStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -5242,7 +5306,11 @@ export const GetCustomersTelemetryUsersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCustomersTelemetryUsersRequest>;
 
 export type GoogleChromeManagementV1DeviceActivityReportDeviceActivityStateEnum =
-  "DEVICE_ACTIVITY_STATE_UNSPECIFIED" | "ACTIVE" | "IDLE" | "LOCKED";
+    | "DEVICE_ACTIVITY_STATE_UNSPECIFIED"
+    | "ACTIVE"
+    | "IDLE"
+    | "LOCKED"
+    | (string & {});
 export const GoogleChromeManagementV1DeviceActivityReportDeviceActivityStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -5596,7 +5664,7 @@ export const ListCustomersTelemetryEventsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomersTelemetryEventsRequest>;
 
 export type GoogleChromeManagementV1TelemetryHttpsLatencyChangeEventHttpsLatencyStateEnum =
-  "HTTPS_LATENCY_STATE_UNSPECIFIED" | "RECOVERY" | "PROBLEM";
+  "HTTPS_LATENCY_STATE_UNSPECIFIED" | "RECOVERY" | "PROBLEM" | (string & {});
 export const GoogleChromeManagementV1TelemetryHttpsLatencyChangeEventHttpsLatencyStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -5686,7 +5754,8 @@ export type GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEventCo
     | "CONNECTED"
     | "PORTAL"
     | "CONNECTING"
-    | "NOT_CONNECTED";
+    | "NOT_CONNECTED"
+    | (string & {});
 export const GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEventConnectionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -5775,7 +5844,8 @@ export type GoogleChromeManagementV1TelemetryEventEventTypeEnum =
   | "APP_LAUNCHED"
   | "OS_CRASH"
   | "EXTERNAL_DISPLAY_CONNECTED"
-  | "EXTERNAL_DISPLAY_DISCONNECTED";
+  | "EXTERNAL_DISPLAY_DISCONNECTED"
+  | (string & {});
 export const GoogleChromeManagementV1TelemetryEventEventTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5802,7 +5872,8 @@ export type GoogleChromeManagementV1TelemetryAppInstallEventAppInstallSourceEnum
     | "APPLICATION_INSTALL_SOURCE_SYNC"
     | "APPLICATION_INSTALL_SOURCE_PLAY_STORE"
     | "APPLICATION_INSTALL_SOURCE_CHROME_WEB_STORE"
-    | "APPLICATION_INSTALL_SOURCE_BROWSER";
+    | "APPLICATION_INSTALL_SOURCE_BROWSER"
+    | (string & {});
 export const GoogleChromeManagementV1TelemetryAppInstallEventAppInstallSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -5816,7 +5887,8 @@ export type GoogleChromeManagementV1TelemetryAppInstallEventAppInstallReasonEnum
     | "APPLICATION_INSTALL_REASON_USER"
     | "APPLICATION_INSTALL_REASON_SUB_APP"
     | "APPLICATION_INSTALL_REASON_KIOSK"
-    | "APPLICATION_INSTALL_REASON_COMMAND_LINE";
+    | "APPLICATION_INSTALL_REASON_COMMAND_LINE"
+    | (string & {});
 export const GoogleChromeManagementV1TelemetryAppInstallEventAppInstallReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -5836,14 +5908,16 @@ export type GoogleChromeManagementV1TelemetryAppInstallEventAppTypeEnum =
   | "APPLICATION_TYPE_STANDALONE_BROWSER_CHROME_APP"
   | "APPLICATION_TYPE_EXTENSION"
   | "APPLICATION_TYPE_STANDALONE_BROWSER_EXTENSION"
-  | "APPLICATION_TYPE_BRUSCHETTA";
+  | "APPLICATION_TYPE_BRUSCHETTA"
+  | (string & {});
 export const GoogleChromeManagementV1TelemetryAppInstallEventAppTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleChromeManagementV1TelemetryAppInstallEventAppInstallTimeEnum =
     | "APPLICATION_INSTALL_TIME_UNSPECIFIED"
     | "APPLICATION_INSTALL_TIME_INIT"
-    | "APPLICATION_INSTALL_TIME_RUNNING";
+    | "APPLICATION_INSTALL_TIME_RUNNING"
+    | (string & {});
 export const GoogleChromeManagementV1TelemetryAppInstallEventAppInstallTimeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5886,7 +5960,8 @@ export type GoogleChromeManagementV1TelemetryAppUninstallEventAppUninstallSource
     | "APPLICATION_UNINSTALL_SOURCE_APP_LIST"
     | "APPLICATION_UNINSTALL_SOURCE_APP_MANAGEMENT"
     | "APPLICATION_UNINSTALL_SOURCE_SHELF"
-    | "APPLICATION_UNINSTALL_SOURCE_MIGRATION";
+    | "APPLICATION_UNINSTALL_SOURCE_MIGRATION"
+    | (string & {});
 export const GoogleChromeManagementV1TelemetryAppUninstallEventAppUninstallSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -5906,7 +5981,8 @@ export type GoogleChromeManagementV1TelemetryAppUninstallEventAppTypeEnum =
   | "APPLICATION_TYPE_STANDALONE_BROWSER_CHROME_APP"
   | "APPLICATION_TYPE_EXTENSION"
   | "APPLICATION_TYPE_STANDALONE_BROWSER_EXTENSION"
-  | "APPLICATION_TYPE_BRUSCHETTA";
+  | "APPLICATION_TYPE_BRUSCHETTA"
+  | (string & {});
 export const GoogleChromeManagementV1TelemetryAppUninstallEventAppTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5978,7 +6054,8 @@ export type GoogleChromeManagementV1TelemetryAppLaunchEventAppLaunchSourceEnum =
     | "APPLICATION_LAUNCH_SOURCE_FOCUS_MODE"
     | "APPLICATION_LAUNCH_SOURCE_SPARKY"
     | "APPLICATION_LAUNCH_SOURCE_NAVIGATION_CAPTURING"
-    | "APPLICATION_LAUNCH_SOURCE_WEB_INSTALL_API";
+    | "APPLICATION_LAUNCH_SOURCE_WEB_INSTALL_API"
+    | (string & {});
 export const GoogleChromeManagementV1TelemetryAppLaunchEventAppLaunchSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -5998,7 +6075,8 @@ export type GoogleChromeManagementV1TelemetryAppLaunchEventAppTypeEnum =
   | "APPLICATION_TYPE_STANDALONE_BROWSER_CHROME_APP"
   | "APPLICATION_TYPE_EXTENSION"
   | "APPLICATION_TYPE_STANDALONE_BROWSER_EXTENSION"
-  | "APPLICATION_TYPE_BRUSCHETTA";
+  | "APPLICATION_TYPE_BRUSCHETTA"
+  | (string & {});
 export const GoogleChromeManagementV1TelemetryAppLaunchEventAppTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6029,7 +6107,8 @@ export const GoogleChromeManagementV1TelemetryAppLaunchEvent =
 export type GoogleChromeManagementV1TelemetryOsCrashEventCrashTypeEnum =
   | "CRASH_TYPE_UNSPECIFIED"
   | "CRASH_TYPE_KERNEL"
-  | "CRASH_TYPE_EMBEDDED_CONTROLLER";
+  | "CRASH_TYPE_EMBEDDED_CONTROLLER"
+  | (string & {});
 export const GoogleChromeManagementV1TelemetryOsCrashEventCrashTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6038,7 +6117,8 @@ export type GoogleChromeManagementV1TelemetryOsCrashEventSessionTypeEnum =
   | "SESSION_TYPE_SIGNED_IN_USER"
   | "SESSION_TYPE_KIOSK"
   | "SESSION_TYPE_MANAGED_GUEST"
-  | "SESSION_TYPE_ACTIVE_DIRECTORY";
+  | "SESSION_TYPE_ACTIVE_DIRECTORY"
+  | (string & {});
 export const GoogleChromeManagementV1TelemetryOsCrashEventSessionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6438,7 +6518,8 @@ export type QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsFi
     | "FIXED_TIME_RANGE_FOUR_HOURS"
     | "FIXED_TIME_RANGE_ONE_DAY"
     | "FIXED_TIME_RANGE_ONE_WEEK"
-    | "FIXED_TIME_RANGE_FOUR_WEEKS";
+    | "FIXED_TIME_RANGE_FOUR_WEEKS"
+    | (string & {});
 export const QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsFixedTimeRangeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6451,7 +6532,8 @@ export type QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsMe
     | "CONTENT_TRANSFERS_METRIC_TOTAL_SENSITIVE_TRANSFERS"
     | "CONTENT_TRANSFERS_METRIC_SENSITIVE_UPLOADS"
     | "CONTENT_TRANSFERS_METRIC_SENSITIVE_DOWNLOADS"
-    | "CONTENT_TRANSFERS_METRIC_SENSITIVE_PRINTS";
+    | "CONTENT_TRANSFERS_METRIC_SENSITIVE_PRINTS"
+    | (string & {});
 export const QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsMetricEnum =
   /*@__PURE__*/ S.String;
 
@@ -6459,7 +6541,8 @@ export type QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsBr
     | "CONTENT_TRANSFERS_BREAKDOWN_DIMENSION_UNSPECIFIED"
     | "USER"
     | "EVENT_DOMAIN"
-    | "CONTENT_CATEGORY";
+    | "CONTENT_CATEGORY"
+    | (string & {});
 export const QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsBreakdownEnum =
   /*@__PURE__*/ S.String;
 
@@ -6522,7 +6605,8 @@ export type GoogleChromeManagementVersionsV1ContentTransfersSummaryMetricEnum =
   | "CONTENT_TRANSFERS_METRIC_TOTAL_SENSITIVE_TRANSFERS"
   | "CONTENT_TRANSFERS_METRIC_SENSITIVE_UPLOADS"
   | "CONTENT_TRANSFERS_METRIC_SENSITIVE_DOWNLOADS"
-  | "CONTENT_TRANSFERS_METRIC_SENSITIVE_PRINTS";
+  | "CONTENT_TRANSFERS_METRIC_SENSITIVE_PRINTS"
+  | (string & {});
 export const GoogleChromeManagementVersionsV1ContentTransfersSummaryMetricEnum =
   /*@__PURE__*/ S.String;
 
@@ -6648,7 +6732,8 @@ export type QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsFixedTime
     | "FIXED_TIME_RANGE_FOUR_HOURS"
     | "FIXED_TIME_RANGE_ONE_DAY"
     | "FIXED_TIME_RANGE_ONE_WEEK"
-    | "FIXED_TIME_RANGE_FOUR_WEEKS";
+    | "FIXED_TIME_RANGE_FOUR_WEEKS"
+    | (string & {});
 export const QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsFixedTimeRangeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6657,12 +6742,16 @@ export type QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsMetricEnu
     | "URL_VISITS_METRIC_TOTAL_SUSPICIOUS_URL_VISITS"
     | "URL_VISITS_METRIC_HIGH_RISK_URL_VISITS"
     | "URL_VISITS_METRIC_MEDIUM_RISK_URL_VISITS"
-    | "URL_VISITS_METRIC_LOW_RISK_URL_VISITS";
+    | "URL_VISITS_METRIC_LOW_RISK_URL_VISITS"
+    | (string & {});
 export const QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsMetricEnum =
   /*@__PURE__*/ S.String;
 
 export type QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsBreakdownEnum =
-  "URL_VISITS_BREAKDOWN_DIMENSION_UNSPECIFIED" | "USER" | "EVENT_DOMAIN";
+    | "URL_VISITS_BREAKDOWN_DIMENSION_UNSPECIFIED"
+    | "USER"
+    | "EVENT_DOMAIN"
+    | (string & {});
 export const QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsBreakdownEnum =
   /*@__PURE__*/ S.String;
 
@@ -6721,7 +6810,8 @@ export type GoogleChromeManagementVersionsV1UrlVisitsSummaryMetricEnum =
   | "URL_VISITS_METRIC_TOTAL_SUSPICIOUS_URL_VISITS"
   | "URL_VISITS_METRIC_HIGH_RISK_URL_VISITS"
   | "URL_VISITS_METRIC_MEDIUM_RISK_URL_VISITS"
-  | "URL_VISITS_METRIC_LOW_RISK_URL_VISITS";
+  | "URL_VISITS_METRIC_LOW_RISK_URL_VISITS"
+  | (string & {});
 export const GoogleChromeManagementVersionsV1UrlVisitsSummaryMetricEnum =
   /*@__PURE__*/ S.String;
 
@@ -6884,7 +6974,8 @@ export const GoogleChromeManagementVersionsV1SetFailureResponse =
 export type GoogleChromeManagementVersionsV1SignDataRequestSignatureAlgorithmEnum =
     | "SIGNATURE_ALGORITHM_UNSPECIFIED"
     | "SIGNATURE_ALGORITHM_RSA_PKCS1_V1_5_SHA256"
-    | "SIGNATURE_ALGORITHM_ECDSA_SHA256";
+    | "SIGNATURE_ALGORITHM_ECDSA_SHA256"
+    | (string & {});
 export const GoogleChromeManagementVersionsV1SignDataRequestSignatureAlgorithmEnum =
   /*@__PURE__*/ S.String;
 

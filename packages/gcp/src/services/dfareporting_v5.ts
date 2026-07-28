@@ -160,7 +160,8 @@ export type CustomFloodlightVariableTypeEnum =
   | "U97"
   | "U98"
   | "U99"
-  | "U100";
+  | "U100"
+  | (string & {});
 export const CustomFloodlightVariableTypeEnum = /*@__PURE__*/ S.String;
 
 /** A custom floodlight variable. Can be used in both batchinsert and batchupdate. Adding this in batchupdate will update or append the variable to the existing list. */
@@ -188,7 +189,10 @@ export const CustomFloodlightVariableList = /*@__PURE__*/ S.Array(
   CustomFloodlightVariable,
 ) as any as S.Schema<CustomFloodlightVariableList>;
 
-export type ConversionAdUserDataConsentEnum = "GRANTED" | "DENIED";
+export type ConversionAdUserDataConsentEnum =
+  | "GRANTED"
+  | "DENIED"
+  | (string & {});
 export const ConversionAdUserDataConsentEnum = /*@__PURE__*/ S.String;
 
 /** Identify a user by name and address. */
@@ -380,13 +384,15 @@ export type EncryptionInfoEncryptionEntityTypeEnum =
   | "DBM_PARTNER"
   | "DBM_ADVERTISER"
   | "ADWORDS_CUSTOMER"
-  | "DFP_NETWORK_CODE";
+  | "DFP_NETWORK_CODE"
+  | (string & {});
 export const EncryptionInfoEncryptionEntityTypeEnum = /*@__PURE__*/ S.String;
 
 export type EncryptionInfoEncryptionSourceEnum =
   | "ENCRYPTION_SCOPE_UNKNOWN"
   | "AD_SERVING"
-  | "DATA_TRANSFER";
+  | "DATA_TRANSFER"
+  | (string & {});
 export const EncryptionInfoEncryptionSourceEnum = /*@__PURE__*/ S.String;
 
 /** A description of how user IDs are encrypted. */
@@ -453,7 +459,8 @@ export type ConversionErrorCodeEnum =
   | "INVALID_ARGUMENT"
   | "INTERNAL"
   | "PERMISSION_DENIED"
-  | "NOT_FOUND";
+  | "NOT_FOUND"
+  | (string & {});
 export const ConversionErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** The error code and description for a conversion that failed to insert or update. */
@@ -701,7 +708,8 @@ export type DeleteDynamicTargetingKeysObjectTypeEnum =
   | "OBJECT_ADVERTISER"
   | "OBJECT_AD"
   | "OBJECT_CREATIVE"
-  | "OBJECT_PLACEMENT";
+  | "OBJECT_PLACEMENT"
+  | (string & {});
 export const DeleteDynamicTargetingKeysObjectTypeEnum = /*@__PURE__*/ S.String;
 
 export interface DeleteDynamicTargetingKeysRequest {
@@ -971,7 +979,8 @@ export type GeneratetagsPlacementsTagFormatsEnum =
   | "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY"
   | "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY"
   | "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4"
-  | "PLACEMENT_TAG_TRACKING_THIRD_PARTY_MEASUREMENT";
+  | "PLACEMENT_TAG_TRACKING_THIRD_PARTY_MEASUREMENT"
+  | (string & {});
 export const GeneratetagsPlacementsTagFormatsEnum = /*@__PURE__*/ S.String;
 
 export type GeneratetagsPlacementsTagFormatsEnumList =
@@ -1040,7 +1049,8 @@ export type TagDataFormatEnum =
   | "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY"
   | "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY"
   | "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4"
-  | "PLACEMENT_TAG_TRACKING_THIRD_PARTY_MEASUREMENT";
+  | "PLACEMENT_TAG_TRACKING_THIRD_PARTY_MEASUREMENT"
+  | (string & {});
 export const TagDataFormatEnum = /*@__PURE__*/ S.String;
 
 /** Placement Tag Data */
@@ -1135,7 +1145,8 @@ export type AccountActiveAdSummaryActiveAdsLimitTierEnum =
   | "ACTIVE_ADS_TIER_300K"
   | "ACTIVE_ADS_TIER_500K"
   | "ACTIVE_ADS_TIER_750K"
-  | "ACTIVE_ADS_TIER_1M";
+  | "ACTIVE_ADS_TIER_1M"
+  | (string & {});
 export const AccountActiveAdSummaryActiveAdsLimitTierEnum =
   /*@__PURE__*/ S.String;
 
@@ -1229,7 +1240,8 @@ export const GetAccountPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type AccountPermissionAccountProfilesItemEnum =
   | "ACCOUNT_PROFILE_BASIC"
-  | "ACCOUNT_PROFILE_STANDARD";
+  | "ACCOUNT_PROFILE_STANDARD"
+  | (string & {});
 export const AccountPermissionAccountProfilesItemEnum = /*@__PURE__*/ S.String;
 
 export type AccountPermissionAccountProfilesItemEnumList =
@@ -1239,7 +1251,10 @@ export const AccountPermissionAccountProfilesItemEnumList =
     AccountPermissionAccountProfilesItemEnum,
   ) as any as S.Schema<AccountPermissionAccountProfilesItemEnumList>;
 
-export type AccountPermissionLevelEnum = "USER" | "ADMINISTRATOR";
+export type AccountPermissionLevelEnum =
+  | "USER"
+  | "ADMINISTRATOR"
+  | (string & {});
 export const AccountPermissionLevelEnum = /*@__PURE__*/ S.String;
 
 /** AccountPermissions contains information about a particular account permission. Some features of Campaign Manager require an account permission to be present in the account. */
@@ -1299,12 +1314,14 @@ export type AccountActiveAdsLimitTierEnum =
   | "ACTIVE_ADS_TIER_300K"
   | "ACTIVE_ADS_TIER_500K"
   | "ACTIVE_ADS_TIER_750K"
-  | "ACTIVE_ADS_TIER_1M";
+  | "ACTIVE_ADS_TIER_1M"
+  | (string & {});
 export const AccountActiveAdsLimitTierEnum = /*@__PURE__*/ S.String;
 
 export type AccountAccountProfileEnum =
   | "ACCOUNT_PROFILE_BASIC"
-  | "ACCOUNT_PROFILE_STANDARD";
+  | "ACCOUNT_PROFILE_STANDARD"
+  | (string & {});
 export const AccountAccountProfileEnum = /*@__PURE__*/ S.String;
 
 /** Lookback configuration settings. */
@@ -1431,10 +1448,15 @@ export const GetAccountUserProfilesRequest = /*@__PURE__*/ S.suspend(() =>
 export type AccountUserProfileTraffickerTypeEnum =
   | "INTERNAL_NON_TRAFFICKER"
   | "INTERNAL_TRAFFICKER"
-  | "EXTERNAL_TRAFFICKER";
+  | "EXTERNAL_TRAFFICKER"
+  | (string & {});
 export const AccountUserProfileTraffickerTypeEnum = /*@__PURE__*/ S.String;
 
-export type ObjectFilterStatusEnum = "NONE" | "ASSIGNED" | "ALL";
+export type ObjectFilterStatusEnum =
+  | "NONE"
+  | "ASSIGNED"
+  | "ALL"
+  | (string & {});
 export const ObjectFilterStatusEnum = /*@__PURE__*/ S.String;
 
 /** Object Filter. */
@@ -1458,7 +1480,8 @@ export type AccountUserProfileUserAccessTypeEnum =
   | "NORMAL_USER"
   | "SUPER_USER"
   | "INTERNAL_ADMINISTRATOR"
-  | "READ_ONLY_SUPER_USER";
+  | "READ_ONLY_SUPER_USER"
+  | (string & {});
 export const AccountUserProfileUserAccessTypeEnum = /*@__PURE__*/ S.String;
 
 /** AccountUserProfiles contains properties of a Campaign Manager user profile. This resource is specifically for managing user profiles, whereas UserProfiles is for accessing the API. */
@@ -1563,7 +1586,8 @@ export type DimensionValueMatchTypeEnum =
   | "EXACT"
   | "BEGINS_WITH"
   | "CONTAINS"
-  | "WILDCARD_EXPRESSION";
+  | "WILDCARD_EXPRESSION"
+  | (string & {});
 export const DimensionValueMatchTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a DimensionValue resource. */
@@ -1649,7 +1673,8 @@ export type DeliverySchedulePriorityEnum =
   | "AD_PRIORITY_13"
   | "AD_PRIORITY_14"
   | "AD_PRIORITY_15"
-  | "AD_PRIORITY_16";
+  | "AD_PRIORITY_16"
+  | (string & {});
 export const DeliverySchedulePriorityEnum = /*@__PURE__*/ S.String;
 
 /** Delivery Schedule. */
@@ -1781,12 +1806,14 @@ export const ClickThroughUrlSuffixProperties = /*@__PURE__*/ S.suspend(() =>
 
 export type CreativeRotationTypeEnum =
   | "CREATIVE_ROTATION_TYPE_SEQUENTIAL"
-  | "CREATIVE_ROTATION_TYPE_RANDOM";
+  | "CREATIVE_ROTATION_TYPE_RANDOM"
+  | (string & {});
 export const CreativeRotationTypeEnum = /*@__PURE__*/ S.String;
 
 export type CreativeGroupAssignmentCreativeGroupNumberEnum =
   | "CREATIVE_GROUP_ONE"
-  | "CREATIVE_GROUP_TWO";
+  | "CREATIVE_GROUP_TWO"
+  | (string & {});
 export const CreativeGroupAssignmentCreativeGroupNumberEnum =
   /*@__PURE__*/ S.String;
 
@@ -1916,7 +1943,8 @@ export type CreativeRotationWeightCalculationStrategyEnum =
   | "WEIGHT_STRATEGY_EQUAL"
   | "WEIGHT_STRATEGY_CUSTOM"
   | "WEIGHT_STRATEGY_HIGHEST_CTR"
-  | "WEIGHT_STRATEGY_OPTIMIZED";
+  | "WEIGHT_STRATEGY_OPTIMIZED"
+  | (string & {});
 export const CreativeRotationWeightCalculationStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -1951,7 +1979,8 @@ export type DayPartTargetingDaysOfWeekItemEnum =
   | "WEDNESDAY"
   | "THURSDAY"
   | "FRIDAY"
-  | "SATURDAY";
+  | "SATURDAY"
+  | (string & {});
 export const DayPartTargetingDaysOfWeekItemEnum = /*@__PURE__*/ S.String;
 
 export type DayPartTargetingDaysOfWeekItemEnumList =
@@ -1989,7 +2018,8 @@ export type AdTypeEnum =
   | "AD_SERVING_DEFAULT_AD"
   | "AD_SERVING_CLICK_TRACKER"
   | "AD_SERVING_TRACKING"
-  | "AD_SERVING_BRAND_SAFE_AD";
+  | "AD_SERVING_BRAND_SAFE_AD"
+  | (string & {});
 export const AdTypeEnum = /*@__PURE__*/ S.String;
 
 /** Key Value Targeting Expression. */
@@ -2015,7 +2045,8 @@ export type CountryTvDataProvidersItemEnum =
   | "TNS_VN"
   | "COMSCORE_NATIONAL_US"
   | "COMSCORE_CA"
-  | "SAMBA_AU";
+  | "SAMBA_AU"
+  | (string & {});
 export const CountryTvDataProvidersItemEnum = /*@__PURE__*/ S.String;
 
 export type CountryTvDataProvidersItemEnumList =
@@ -2250,7 +2281,8 @@ export type AdCompatibilityEnum =
   | "APP"
   | "APP_INTERSTITIAL"
   | "IN_STREAM_VIDEO"
-  | "IN_STREAM_AUDIO";
+  | "IN_STREAM_AUDIO"
+  | (string & {});
 export const AdCompatibilityEnum = /*@__PURE__*/ S.String;
 
 /** Contains information about a language that can be targeted by ads. */
@@ -2690,7 +2722,8 @@ export type MobileAppDirectoryEnum =
   | "XBOX_APP_STORE"
   | "SAMSUNG_TV_APP_STORE"
   | "ANDROID_TV_APP_STORE"
-  | "GENERIC_CTV_APP_STORE";
+  | "GENERIC_CTV_APP_STORE"
+  | (string & {});
 export const MobileAppDirectoryEnum = /*@__PURE__*/ S.String;
 
 /** Contains information about a mobile app. Used as a landing page deep link. */
@@ -2796,16 +2829,18 @@ export const GetAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type AdvertiserEuPoliticalAdsDeclarationEnum =
   | "ADVERTISER_PLANS_TO_SERVE_EU_POLITICAL_ADS"
-  | "ADVERTISER_DOES_NOT_PLAN_TO_SERVE_EU_POLITICAL_ADS";
+  | "ADVERTISER_DOES_NOT_PLAN_TO_SERVE_EU_POLITICAL_ADS"
+  | (string & {});
 export const AdvertiserEuPoliticalAdsDeclarationEnum = /*@__PURE__*/ S.String;
 
-export type AdvertiserStatusEnum = "APPROVED" | "ON_HOLD";
+export type AdvertiserStatusEnum = "APPROVED" | "ON_HOLD" | (string & {});
 export const AdvertiserStatusEnum = /*@__PURE__*/ S.String;
 
 export type MeasurementPartnerAdvertiserLinkMeasurementPartnerEnum =
   | "NONE"
   | "INTEGRAL_AD_SCIENCE"
-  | "DOUBLE_VERIFY";
+  | "DOUBLE_VERIFY"
+  | (string & {});
 export const MeasurementPartnerAdvertiserLinkMeasurementPartnerEnum =
   /*@__PURE__*/ S.String;
 
@@ -2818,7 +2853,8 @@ export type MeasurementPartnerAdvertiserLinkLinkStatusEnum =
   | "MEASUREMENT_PARTNER_LINK_OPT_OUT_PENDING"
   | "MEASUREMENT_PARTNER_LINK_WRAPPING_PENDING"
   | "MEASUREMENT_PARTNER_MODE_CHANGE_PENDING"
-  | "MEASUREMENT_PARTNER_UNLINK_PENDING";
+  | "MEASUREMENT_PARTNER_UNLINK_PENDING"
+  | (string & {});
 export const MeasurementPartnerAdvertiserLinkLinkStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -2924,13 +2960,18 @@ export const GetBillingProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBillingProfilesRequest",
 }) as any as S.Schema<GetBillingProfilesRequest>;
 
-export type BillingProfileStatusEnum = "UNDER_REVIEW" | "ACTIVE" | "ARCHIVED";
+export type BillingProfileStatusEnum =
+  | "UNDER_REVIEW"
+  | "ACTIVE"
+  | "ARCHIVED"
+  | (string & {});
 export const BillingProfileStatusEnum = /*@__PURE__*/ S.String;
 
 export type BillingProfileInvoiceLevelEnum =
   | "ACCOUNT_LEVEL"
   | "ADVERTISER_LEVEL"
-  | "CAMPAIGN_LEVEL";
+  | "CAMPAIGN_LEVEL"
+  | (string & {});
 export const BillingProfileInvoiceLevelEnum = /*@__PURE__*/ S.String;
 
 /** Contains properties of a Campaign Manager Billing Profile. */
@@ -3006,7 +3047,8 @@ export type CreativeOptimizationConfigurationOptimizationModelEnum =
   | "POST_CLICK"
   | "POST_IMPRESSION"
   | "POST_CLICK_AND_IMPRESSION"
-  | "VIDEO_COMPLETION";
+  | "VIDEO_COMPLETION"
+  | (string & {});
 export const CreativeOptimizationConfigurationOptimizationModelEnum =
   /*@__PURE__*/ S.String;
 
@@ -3073,13 +3115,15 @@ export const AdBlockingConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 export type CampaignEuPoliticalAdsDeclarationEnum =
   | "CONTAINS_EU_POLITICAL_ADS"
-  | "DOES_NOT_CONTAIN_EU_POLITICAL_ADS";
+  | "DOES_NOT_CONTAIN_EU_POLITICAL_ADS"
+  | (string & {});
 export const CampaignEuPoliticalAdsDeclarationEnum = /*@__PURE__*/ S.String;
 
 export type MeasurementPartnerCampaignLinkMeasurementPartnerEnum =
   | "NONE"
   | "INTEGRAL_AD_SCIENCE"
-  | "DOUBLE_VERIFY";
+  | "DOUBLE_VERIFY"
+  | (string & {});
 export const MeasurementPartnerCampaignLinkMeasurementPartnerEnum =
   /*@__PURE__*/ S.String;
 
@@ -3092,7 +3136,8 @@ export type MeasurementPartnerCampaignLinkLinkStatusEnum =
   | "MEASUREMENT_PARTNER_LINK_OPT_OUT_PENDING"
   | "MEASUREMENT_PARTNER_LINK_WRAPPING_PENDING"
   | "MEASUREMENT_PARTNER_MODE_CHANGE_PENDING"
-  | "MEASUREMENT_PARTNER_UNLINK_PENDING";
+  | "MEASUREMENT_PARTNER_UNLINK_PENDING"
+  | (string & {});
 export const MeasurementPartnerCampaignLinkLinkStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -3610,7 +3655,8 @@ export type ThirdPartyTrackingUrlThirdPartyUrlTypeEnum =
   | "RICH_MEDIA_RM_IMPRESSION"
   | "RICH_MEDIA_BACKUP_IMPRESSION"
   | "VIDEO_SKIP"
-  | "VIDEO_PROGRESS";
+  | "VIDEO_PROGRESS"
+  | (string & {});
 export const ThirdPartyTrackingUrlThirdPartyUrlTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3635,7 +3681,7 @@ export const ThirdPartyTrackingUrlList = /*@__PURE__*/ S.Array(
   ThirdPartyTrackingUrl,
 ) as any as S.Schema<ThirdPartyTrackingUrlList>;
 
-export type CreativeAuthoringToolEnum = "NINJA" | "SWIFFY";
+export type CreativeAuthoringToolEnum = "NINJA" | "SWIFFY" | (string & {});
 export const CreativeAuthoringToolEnum = /*@__PURE__*/ S.String;
 
 /** Click-through URL */
@@ -3660,7 +3706,8 @@ export const CreativeClickThroughUrl = /*@__PURE__*/ S.suspend(() =>
 export type TargetWindowTargetWindowOptionEnum =
   | "NEW_WINDOW"
   | "CURRENT_WINDOW"
-  | "CUSTOM";
+  | "CUSTOM"
+  | (string & {});
 export const TargetWindowTargetWindowOptionEnum = /*@__PURE__*/ S.String;
 
 /** Target Window. */
@@ -3715,7 +3762,8 @@ export const VideoOffset = /*@__PURE__*/ S.suspend(() =>
 
 export type FsCommandPositionOptionEnum =
   | "CENTERED"
-  | "DISTANCE_FROM_TOP_LEFT_CORNER";
+  | "DISTANCE_FROM_TOP_LEFT_CORNER"
+  | (string & {});
 export const FsCommandPositionOptionEnum = /*@__PURE__*/ S.String;
 
 /** FsCommand. */
@@ -3744,7 +3792,8 @@ export const FsCommand = /*@__PURE__*/ S.suspend(() =>
 export type CreativeCustomEventAdvertiserCustomEventTypeEnum =
   | "ADVERTISER_EVENT_TIMER"
   | "ADVERTISER_EVENT_EXIT"
-  | "ADVERTISER_EVENT_COUNTER";
+  | "ADVERTISER_EVENT_COUNTER"
+  | (string & {});
 export const CreativeCustomEventAdvertiserCustomEventTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3762,7 +3811,10 @@ export const OffsetPosition = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OffsetPosition" }) as any as S.Schema<OffsetPosition>;
 
-export type PopupWindowPropertiesPositionTypeEnum = "CENTER" | "COORDINATES";
+export type PopupWindowPropertiesPositionTypeEnum =
+  | "CENTER"
+  | "COORDINATES"
+  | (string & {});
 export const PopupWindowPropertiesPositionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Popup Window Properties. */
@@ -3806,7 +3858,8 @@ export type CreativeCustomEventArtworkTypeEnum =
   | "ARTWORK_TYPE_FLASH"
   | "ARTWORK_TYPE_HTML5"
   | "ARTWORK_TYPE_MIXED"
-  | "ARTWORK_TYPE_IMAGE";
+  | "ARTWORK_TYPE_IMAGE"
+  | (string & {});
 export const CreativeCustomEventArtworkTypeEnum = /*@__PURE__*/ S.String;
 
 export type CreativeCustomEventTargetTypeEnum =
@@ -3814,7 +3867,8 @@ export type CreativeCustomEventTargetTypeEnum =
   | "TARGET_TOP"
   | "TARGET_SELF"
   | "TARGET_PARENT"
-  | "TARGET_POPUP";
+  | "TARGET_POPUP"
+  | (string & {});
 export const CreativeCustomEventTargetTypeEnum = /*@__PURE__*/ S.String;
 
 /** Creative Custom Event. */
@@ -3889,7 +3943,8 @@ export const CreativeFieldAssignmentList = /*@__PURE__*/ S.Array(
 export type CreativeSyntheticContentAttestationStatusEnum =
   | "SYNTHETIC_CONTENT_ATTESTATION_STATUS_UNSPECIFIED"
   | "IS_SYNTHETIC"
-  | "NOT_SYNTHETIC";
+  | "NOT_SYNTHETIC"
+  | (string & {});
 export const CreativeSyntheticContentAttestationStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -3931,7 +3986,8 @@ export type UniversalAdIdRegistryEnum =
   | "CLEARCAST"
   | "DCM"
   | "ARPP"
-  | "CUSV";
+  | "CUSV"
+  | (string & {});
 export const UniversalAdIdRegistryEnum = /*@__PURE__*/ S.String;
 
 /** A Universal Ad ID as per the VAST 4.0 spec. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and VPAID. */
@@ -3973,7 +4029,8 @@ export type CreativeTypeEnum =
   | "DISPLAY"
   | "DISPLAY_IMAGE_GALLERY"
   | "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO"
-  | "INSTREAM_AUDIO";
+  | "INSTREAM_AUDIO"
+  | (string & {});
 export const CreativeTypeEnum = /*@__PURE__*/ S.String;
 
 export type CreativeBackupImageFeaturesItemEnum =
@@ -4042,7 +4099,8 @@ export type CreativeBackupImageFeaturesItemEnum =
   | "TOUCH"
   | "WEBGL"
   | "SVG_FILTERS"
-  | "SVG_FE_IMAGE";
+  | "SVG_FE_IMAGE"
+  | (string & {});
 export const CreativeBackupImageFeaturesItemEnum = /*@__PURE__*/ S.String;
 
 export type CreativeBackupImageFeaturesItemEnumList =
@@ -4057,7 +4115,8 @@ export type CreativeCompatibilityItemEnum =
   | "APP"
   | "APP_INTERSTITIAL"
   | "IN_STREAM_VIDEO"
-  | "IN_STREAM_AUDIO";
+  | "IN_STREAM_AUDIO"
+  | (string & {});
 export const CreativeCompatibilityItemEnum = /*@__PURE__*/ S.String;
 
 export type CreativeCompatibilityItemEnumList =
@@ -4077,14 +4136,16 @@ export type CreativeAuthoringSourceEnum =
   | "CREATIVE_AUTHORING_SOURCE_REMBRAND"
   | "CREATIVE_AUTHORING_SOURCE_TRACKTO_STUDIO"
   | "CREATIVE_AUTHORING_SOURCE_BORNLOGIC"
-  | "CREATIVE_AUTHORING_SOURCE_BEGEN_AI";
+  | "CREATIVE_AUTHORING_SOURCE_BEGEN_AI"
+  | (string & {});
 export const CreativeAuthoringSourceEnum = /*@__PURE__*/ S.String;
 
 export type CreativeArtworkTypeEnum =
   | "ARTWORK_TYPE_FLASH"
   | "ARTWORK_TYPE_HTML5"
   | "ARTWORK_TYPE_MIXED"
-  | "ARTWORK_TYPE_IMAGE";
+  | "ARTWORK_TYPE_IMAGE"
+  | (string & {});
 export const CreativeArtworkTypeEnum = /*@__PURE__*/ S.String;
 
 export type SizeList = ReadonlyArray<Size>;
@@ -4094,20 +4155,23 @@ export const SizeList = /*@__PURE__*/ S.Array(
 
 export type CreativeAssetStartTimeTypeEnum =
   | "ASSET_START_TIME_TYPE_NONE"
-  | "ASSET_START_TIME_TYPE_CUSTOM";
+  | "ASSET_START_TIME_TYPE_CUSTOM"
+  | (string & {});
 export const CreativeAssetStartTimeTypeEnum = /*@__PURE__*/ S.String;
 
 export type CreativeAssetArtworkTypeEnum =
   | "ARTWORK_TYPE_FLASH"
   | "ARTWORK_TYPE_HTML5"
   | "ARTWORK_TYPE_MIXED"
-  | "ARTWORK_TYPE_IMAGE";
+  | "ARTWORK_TYPE_IMAGE"
+  | (string & {});
 export const CreativeAssetArtworkTypeEnum = /*@__PURE__*/ S.String;
 
 export type CreativeAssetPositionLeftUnitEnum =
   | "OFFSET_UNIT_PIXEL"
   | "OFFSET_UNIT_PERCENT"
-  | "OFFSET_UNIT_PIXEL_FROM_CENTER";
+  | "OFFSET_UNIT_PIXEL_FROM_CENTER"
+  | (string & {});
 export const CreativeAssetPositionLeftUnitEnum = /*@__PURE__*/ S.String;
 
 export type CreativeAssetDetectedFeaturesItemEnum =
@@ -4176,7 +4240,8 @@ export type CreativeAssetDetectedFeaturesItemEnum =
   | "TOUCH"
   | "WEBGL"
   | "SVG_FILTERS"
-  | "SVG_FE_IMAGE";
+  | "SVG_FE_IMAGE"
+  | (string & {});
 export const CreativeAssetDetectedFeaturesItemEnum = /*@__PURE__*/ S.String;
 
 export type CreativeAssetDetectedFeaturesItemEnumList =
@@ -4189,13 +4254,15 @@ export type CreativeAssetChildAssetTypeEnum =
   | "CHILD_ASSET_TYPE_FLASH"
   | "CHILD_ASSET_TYPE_VIDEO"
   | "CHILD_ASSET_TYPE_IMAGE"
-  | "CHILD_ASSET_TYPE_DATA";
+  | "CHILD_ASSET_TYPE_DATA"
+  | (string & {});
 export const CreativeAssetChildAssetTypeEnum = /*@__PURE__*/ S.String;
 
 export type CreativeAssetPositionTopUnitEnum =
   | "OFFSET_UNIT_PIXEL"
   | "OFFSET_UNIT_PERCENT"
-  | "OFFSET_UNIT_PIXEL_FROM_CENTER";
+  | "OFFSET_UNIT_PIXEL_FROM_CENTER"
+  | (string & {});
 export const CreativeAssetPositionTopUnitEnum = /*@__PURE__*/ S.String;
 
 export type CreativeAssetRoleEnum =
@@ -4208,14 +4275,16 @@ export type CreativeAssetRoleEnum =
   | "OTHER"
   | "ALTERNATE_VIDEO"
   | "PARENT_AUDIO"
-  | "TRANSCODED_AUDIO";
+  | "TRANSCODED_AUDIO"
+  | (string & {});
 export const CreativeAssetRoleEnum = /*@__PURE__*/ S.String;
 
 export type CreativeAssetAlignmentEnum =
   | "ALIGNMENT_TOP"
   | "ALIGNMENT_RIGHT"
   | "ALIGNMENT_BOTTOM"
-  | "ALIGNMENT_LEFT";
+  | "ALIGNMENT_LEFT"
+  | (string & {});
 export const CreativeAssetAlignmentEnum = /*@__PURE__*/ S.String;
 
 export type CreativeAssetIdTypeEnum =
@@ -4224,7 +4293,8 @@ export type CreativeAssetIdTypeEnum =
   | "VIDEO"
   | "HTML"
   | "HTML_IMAGE"
-  | "AUDIO";
+  | "AUDIO"
+  | (string & {});
 export const CreativeAssetIdTypeEnum = /*@__PURE__*/ S.String;
 
 /** Creative Asset ID. */
@@ -4253,19 +4323,29 @@ export type CreativeAssetDisplayTypeEnum =
   | "ASSET_DISPLAY_TYPE_PEEL_DOWN"
   | "ASSET_DISPLAY_TYPE_VPAID_LINEAR"
   | "ASSET_DISPLAY_TYPE_VPAID_NON_LINEAR"
-  | "ASSET_DISPLAY_TYPE_BACKDROP";
+  | "ASSET_DISPLAY_TYPE_BACKDROP"
+  | (string & {});
 export const CreativeAssetDisplayTypeEnum = /*@__PURE__*/ S.String;
 
-export type CreativeAssetOrientationEnum = "LANDSCAPE" | "PORTRAIT" | "SQUARE";
+export type CreativeAssetOrientationEnum =
+  | "LANDSCAPE"
+  | "PORTRAIT"
+  | "SQUARE"
+  | (string & {});
 export const CreativeAssetOrientationEnum = /*@__PURE__*/ S.String;
 
 export type CreativeAssetDurationTypeEnum =
   | "ASSET_DURATION_TYPE_AUTO"
   | "ASSET_DURATION_TYPE_NONE"
-  | "ASSET_DURATION_TYPE_CUSTOM";
+  | "ASSET_DURATION_TYPE_CUSTOM"
+  | (string & {});
 export const CreativeAssetDurationTypeEnum = /*@__PURE__*/ S.String;
 
-export type CreativeAssetWindowModeEnum = "OPAQUE" | "WINDOW" | "TRANSPARENT";
+export type CreativeAssetWindowModeEnum =
+  | "OPAQUE"
+  | "WINDOW"
+  | "TRANSPARENT"
+  | (string & {});
 export const CreativeAssetWindowModeEnum = /*@__PURE__*/ S.String;
 
 /** Creative Asset. */
@@ -4658,7 +4738,8 @@ export type DirectorySiteInpageTagFormatsItemEnum =
   | "STANDARD"
   | "IFRAME_JAVASCRIPT_INPAGE"
   | "INTERNAL_REDIRECT_INPAGE"
-  | "JAVASCRIPT_INPAGE";
+  | "JAVASCRIPT_INPAGE"
+  | (string & {});
 export const DirectorySiteInpageTagFormatsItemEnum = /*@__PURE__*/ S.String;
 
 export type DirectorySiteInpageTagFormatsItemEnumList =
@@ -4715,7 +4796,8 @@ export const DirectorySiteSettings = /*@__PURE__*/ S.suspend(() =>
 export type DirectorySiteInterstitialTagFormatsItemEnum =
   | "IFRAME_JAVASCRIPT_INTERSTITIAL"
   | "INTERNAL_REDIRECT_INTERSTITIAL"
-  | "JAVASCRIPT_INTERSTITIAL";
+  | "JAVASCRIPT_INTERSTITIAL"
+  | (string & {});
 export const DirectorySiteInterstitialTagFormatsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -4838,7 +4920,8 @@ export type FeedFieldTypeEnum =
   | "ASSET_LIBRARY_HANDLE"
   | "THIRD_PARTY_SERVED_URL"
   | "CM360_DYNAMIC_TARGETING_KEY"
-  | "DV360_LINE_ITEM_ID";
+  | "DV360_LINE_ITEM_ID"
+  | (string & {});
 export const FeedFieldTypeEnum = /*@__PURE__*/ S.String;
 
 /** Each field of the element. This is a required field. */
@@ -4929,7 +5012,8 @@ export type FeedIngestionStatusStateEnum =
   | "REQUEST_TO_PUBLISH"
   | "PUBLISHING"
   | "PUBLISHED_SUCCESS"
-  | "PUBLISHED_FAILURE";
+  | "PUBLISHED_FAILURE"
+  | (string & {});
 export const FeedIngestionStatusStateEnum = /*@__PURE__*/ S.String;
 
 export type FieldErrorIngestionErrorEnum =
@@ -4974,7 +5058,8 @@ export type FieldErrorIngestionErrorEnum =
   | "NO_DEFAULT_ROW_IN_DATE_RANGE"
   | "NO_ACTIVE_DEFAULT_ROW_IN_DATE_RANGE"
   | "PAYLOAD_LIMIT_EXCEEDED"
-  | "SSL_NOT_COMPLIANT";
+  | "SSL_NOT_COMPLIANT"
+  | (string & {});
 export const FieldErrorIngestionErrorEnum = /*@__PURE__*/ S.String;
 
 /** Contains the field error of the dynamic feed. */
@@ -5074,7 +5159,8 @@ export type DynamicFeedStatusEnum =
   | "STATUS_UNKNOWN"
   | "ACTIVE"
   | "INACTIVE"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const DynamicFeedStatusEnum = /*@__PURE__*/ S.String;
 
 /** Contains the meta data of the content source. This is a read-only field. */
@@ -5102,7 +5188,8 @@ export const ContentSourceMetaData = /*@__PURE__*/ S.suspend(() =>
 export type ContentSourceResourceTypeEnum =
   | "RESOURCE_TYPE_UNSPECIFIED"
   | "RESOURCE_TYPE_GOOGLE_SPREADSHEET"
-  | "RESOURCE_TYPE_REMOTE_FILE";
+  | "RESOURCE_TYPE_REMOTE_FILE"
+  | (string & {});
 export const ContentSourceResourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains the content source of the dynamic feed. */
@@ -5193,7 +5280,8 @@ export const GetDynamicProfilesRequest = /*@__PURE__*/ S.suspend(() =>
 export type DynamicProfileArchiveStatusEnum =
   | "ARCHIVE_STATUS_UNKNOWN"
   | "UNARCHIVED"
-  | "ARCHIVED";
+  | "ARCHIVED"
+  | (string & {});
 export const DynamicProfileArchiveStatusEnum = /*@__PURE__*/ S.String;
 
 export type DynamicRulesRuleTypeEnum =
@@ -5201,7 +5289,8 @@ export type DynamicRulesRuleTypeEnum =
   | "OPEN"
   | "AUTO"
   | "CUSTOM"
-  | "PROXIMITY_TARGETING";
+  | "PROXIMITY_TARGETING"
+  | (string & {});
 export const DynamicRulesRuleTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains request value information. */
@@ -5226,7 +5315,8 @@ export type FieldFilterMatchTypeEnum =
   | "EQUALS_OR_UNRESTRICTED"
   | "EQUALS"
   | "UNRESTRICTED"
-  | "NOT_EQUALS";
+  | "NOT_EQUALS"
+  | (string & {});
 export const FieldFilterMatchTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains dependent field value information. */
@@ -5253,7 +5343,8 @@ export type FieldFilterValueTypeEnum =
   | "STRING"
   | "REQUEST"
   | "BOOL"
-  | "DEPENDENT";
+  | "DEPENDENT"
+  | (string & {});
 export const FieldFilterValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains field filter information. */
@@ -5354,7 +5445,8 @@ export type DynamicRulesRotationTypeEnum =
   | "ROTATION_TYPE_UNKNOWN"
   | "RANDOM"
   | "OPTIMIZED"
-  | "WEIGHTED";
+  | "WEIGHTED"
+  | (string & {});
 export const DynamicRulesRotationTypeEnum = /*@__PURE__*/ S.String;
 
 export type ProximityFilterRadiusBucketTypeEnum =
@@ -5363,13 +5455,15 @@ export type ProximityFilterRadiusBucketTypeEnum =
   | "MEDIUM"
   | "LARGE"
   | "MULTI_REGIONAL"
-  | "NATIONAL";
+  | "NATIONAL"
+  | (string & {});
 export const ProximityFilterRadiusBucketTypeEnum = /*@__PURE__*/ S.String;
 
 export type ProximityFilterRadiusUnitTypeEnum =
   | "RADIUS_UNIT_TYPE_UNKNOWN"
   | "KILOMETERS"
-  | "MILES";
+  | "MILES"
+  | (string & {});
 export const ProximityFilterRadiusUnitTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains proximity filter information. */
@@ -5492,7 +5586,8 @@ export type DynamicProfileStatusEnum =
   | "STATUS_UNKNOWN"
   | "ACTIVE"
   | "INACTIVE"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const DynamicProfileStatusEnum = /*@__PURE__*/ S.String;
 
 /** *Beta:* This API resource is available only to a very limited number of customers. If you'd like to use this resource, please reach out to your Google sales representative. Contains dynamic profile information. */
@@ -5560,13 +5655,17 @@ export const GetEventTagsRequest = /*@__PURE__*/ S.suspend(() =>
 export type EventTagTypeEnum =
   | "IMPRESSION_IMAGE_EVENT_TAG"
   | "IMPRESSION_JAVASCRIPT_EVENT_TAG"
-  | "CLICK_THROUGH_EVENT_TAG";
+  | "CLICK_THROUGH_EVENT_TAG"
+  | (string & {});
 export const EventTagTypeEnum = /*@__PURE__*/ S.String;
 
-export type EventTagStatusEnum = "ENABLED" | "DISABLED";
+export type EventTagStatusEnum = "ENABLED" | "DISABLED" | (string & {});
 export const EventTagStatusEnum = /*@__PURE__*/ S.String;
 
-export type EventTagSiteFilterTypeEnum = "ALLOWLIST" | "BLOCKLIST";
+export type EventTagSiteFilterTypeEnum =
+  | "ALLOWLIST"
+  | "BLOCKLIST"
+  | (string & {});
 export const EventTagSiteFilterTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains properties of an event tag. */
@@ -5657,10 +5756,11 @@ export type FileStatusEnum =
   | "REPORT_AVAILABLE"
   | "FAILED"
   | "CANCELLED"
-  | "QUEUED";
+  | "QUEUED"
+  | (string & {});
 export const FileStatusEnum = /*@__PURE__*/ S.String;
 
-export type FileFormatEnum = "CSV" | "EXCEL";
+export type FileFormatEnum = "CSV" | "EXCEL" | (string & {});
 export const FileFormatEnum = /*@__PURE__*/ S.String;
 
 export type DateRangeRelativeDateRangeEnum =
@@ -5680,7 +5780,8 @@ export type DateRangeRelativeDateRangeEnum =
   | "LAST_365_DAYS"
   | "LAST_24_MONTHS"
   | "LAST_14_DAYS"
-  | "LAST_60_DAYS";
+  | "LAST_60_DAYS"
+  | (string & {});
 export const DateRangeRelativeDateRangeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a date range. */
@@ -5873,7 +5974,8 @@ export type FloodlightActivityUserDefinedVariableTypesItemEnum =
   | "U97"
   | "U98"
   | "U99"
-  | "U100";
+  | "U100"
+  | (string & {});
 export const FloodlightActivityUserDefinedVariableTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -5887,7 +5989,8 @@ export const FloodlightActivityUserDefinedVariableTypesItemEnumList =
 export type FloodlightActivityFloodlightTagTypeEnum =
   | "IFRAME"
   | "IMAGE"
-  | "GLOBAL_SITE_TAG";
+  | "GLOBAL_SITE_TAG"
+  | (string & {});
 export const FloodlightActivityFloodlightTagTypeEnum = /*@__PURE__*/ S.String;
 
 /** Dynamic Tag */
@@ -5920,7 +6023,8 @@ export type FloodlightActivityCacheBustingTypeEnum =
   | "ACTIVE_SERVER_PAGE"
   | "JSP"
   | "PHP"
-  | "COLD_FUSION";
+  | "COLD_FUSION"
+  | (string & {});
 export const FloodlightActivityCacheBustingTypeEnum = /*@__PURE__*/ S.String;
 
 export type FloodlightActivityConversionCategoryEnum =
@@ -5940,7 +6044,8 @@ export type FloodlightActivityConversionCategoryEnum =
   | "CONVERSION_CATEGORY_CONTACT"
   | "CONVERSION_CATEGORY_QUALIFIED_LEAD"
   | "CONVERSION_CATEGORY_CONVERTED_LEAD"
-  | "CONVERSION_CATEGORY_IN_APP_AD_REVENUE";
+  | "CONVERSION_CATEGORY_IN_APP_AD_REVENUE"
+  | (string & {});
 export const FloodlightActivityConversionCategoryEnum = /*@__PURE__*/ S.String;
 
 /** Publisher Dynamic Tag */
@@ -5983,12 +6088,14 @@ export type FloodlightActivityCountingMethodEnum =
   | "UNIQUE_COUNTING"
   | "SESSION_COUNTING"
   | "TRANSACTIONS_COUNTING"
-  | "ITEMS_SOLD_COUNTING";
+  | "ITEMS_SOLD_COUNTING"
+  | (string & {});
 export const FloodlightActivityCountingMethodEnum = /*@__PURE__*/ S.String;
 
 export type FloodlightActivityFloodlightActivityGroupTypeEnum =
   | "COUNTER"
-  | "SALE";
+  | "SALE"
+  | (string & {});
 export const FloodlightActivityFloodlightActivityGroupTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5996,10 +6103,11 @@ export type FloodlightActivityStatusEnum =
   | "ACTIVE"
   | "ARCHIVED_AND_DISABLED"
   | "ARCHIVED"
-  | "DISABLED_POLICY";
+  | "DISABLED_POLICY"
+  | (string & {});
 export const FloodlightActivityStatusEnum = /*@__PURE__*/ S.String;
 
-export type FloodlightActivityTagFormatEnum = "HTML" | "XHTML";
+export type FloodlightActivityTagFormatEnum = "HTML" | "XHTML" | (string & {});
 export const FloodlightActivityTagFormatEnum = /*@__PURE__*/ S.String;
 
 /** Contains properties of a Floodlight activity. */
@@ -6127,7 +6235,10 @@ export const GetFloodlightActivityGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetFloodlightActivityGroupsRequest",
 }) as any as S.Schema<GetFloodlightActivityGroupsRequest>;
 
-export type FloodlightActivityGroupTypeEnum = "COUNTER" | "SALE";
+export type FloodlightActivityGroupTypeEnum =
+  | "COUNTER"
+  | "SALE"
+  | (string & {});
 export const FloodlightActivityGroupTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains properties of a Floodlight activity group. */
@@ -6197,7 +6308,10 @@ export const GetFloodlightConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetFloodlightConfigurationsRequest",
 }) as any as S.Schema<GetFloodlightConfigurationsRequest>;
 
-export type UserDefinedVariableConfigurationDataTypeEnum = "STRING" | "NUMBER";
+export type UserDefinedVariableConfigurationDataTypeEnum =
+  | "STRING"
+  | "NUMBER"
+  | (string & {});
 export const UserDefinedVariableConfigurationDataTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6301,7 +6415,8 @@ export type UserDefinedVariableConfigurationVariableTypeEnum =
   | "U97"
   | "U98"
   | "U99"
-  | "U100";
+  | "U100"
+  | (string & {});
 export const UserDefinedVariableConfigurationVariableTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6333,7 +6448,8 @@ export const UserDefinedVariableConfigurationList = /*@__PURE__*/ S.Array(
 export type FloodlightConfigurationNaturalSearchConversionAttributionOptionEnum =
     | "EXCLUDE_NATURAL_SEARCH_CONVERSION_ATTRIBUTION"
     | "INCLUDE_NATURAL_SEARCH_CONVERSION_ATTRIBUTION"
-    | "INCLUDE_NATURAL_SEARCH_TIERED_CONVERSION_ATTRIBUTION";
+    | "INCLUDE_NATURAL_SEARCH_TIERED_CONVERSION_ATTRIBUTION"
+    | (string & {});
 export const FloodlightConfigurationNaturalSearchConversionAttributionOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -6415,7 +6531,10 @@ export const ThirdPartyAuthenticationTokenList = /*@__PURE__*/ S.Array(
   ThirdPartyAuthenticationToken,
 ) as any as S.Schema<ThirdPartyAuthenticationTokenList>;
 
-export type FloodlightConfigurationFirstDayOfWeekEnum = "SUNDAY" | "MONDAY";
+export type FloodlightConfigurationFirstDayOfWeekEnum =
+  | "SUNDAY"
+  | "MONDAY"
+  | (string & {});
 export const FloodlightConfigurationFirstDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Omniture Integration Settings. */
@@ -6610,13 +6729,15 @@ export const GetPlacementGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PlacementGroupPlacementGroupTypeEnum =
   | "PLACEMENT_PACKAGE"
-  | "PLACEMENT_ROADBLOCK";
+  | "PLACEMENT_ROADBLOCK"
+  | (string & {});
 export const PlacementGroupPlacementGroupTypeEnum = /*@__PURE__*/ S.String;
 
 export type PricingScheduleCapCostOptionEnum =
   | "CAP_COST_NONE"
   | "CAP_COST_MONTHLY"
-  | "CAP_COST_CUMULATIVE";
+  | "CAP_COST_CUMULATIVE"
+  | (string & {});
 export const PricingScheduleCapCostOptionEnum = /*@__PURE__*/ S.String;
 
 /** Pricing Period */
@@ -6654,7 +6775,8 @@ export type PricingSchedulePricingTypeEnum =
   | "PRICING_TYPE_CPA"
   | "PRICING_TYPE_FLAT_RATE_IMPRESSIONS"
   | "PRICING_TYPE_FLAT_RATE_CLICKS"
-  | "PRICING_TYPE_CPM_ACTIVEVIEW";
+  | "PRICING_TYPE_CPM_ACTIVEVIEW"
+  | (string & {});
 export const PricingSchedulePricingTypeEnum = /*@__PURE__*/ S.String;
 
 /** Pricing Schedule */
@@ -6693,7 +6815,8 @@ export type PlacementGroupActiveStatusEnum =
   | "PLACEMENT_STATUS_ACTIVE"
   | "PLACEMENT_STATUS_INACTIVE"
   | "PLACEMENT_STATUS_ARCHIVED"
-  | "PLACEMENT_STATUS_PERMANENTLY_ARCHIVED";
+  | "PLACEMENT_STATUS_PERMANENTLY_ARCHIVED"
+  | (string & {});
 export const PlacementGroupActiveStatusEnum = /*@__PURE__*/ S.String;
 
 /** Contains properties of a package or roadblock. */
@@ -6807,7 +6930,8 @@ export type PlacementVpaidAdapterChoiceEnum =
   | "DEFAULT"
   | "FLASH"
   | "HTML5"
-  | "BOTH";
+  | "BOTH"
+  | (string & {});
 export const PlacementVpaidAdapterChoiceEnum = /*@__PURE__*/ S.String;
 
 export type PlacementTagFormatsItemEnum =
@@ -6830,7 +6954,8 @@ export type PlacementTagFormatsItemEnum =
   | "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY"
   | "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY"
   | "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4"
-  | "PLACEMENT_TAG_TRACKING_THIRD_PARTY_MEASUREMENT";
+  | "PLACEMENT_TAG_TRACKING_THIRD_PARTY_MEASUREMENT"
+  | (string & {});
 export const PlacementTagFormatsItemEnum = /*@__PURE__*/ S.String;
 
 export type PlacementTagFormatsItemEnumList =
@@ -6841,13 +6966,15 @@ export const PlacementTagFormatsItemEnumList = /*@__PURE__*/ S.Array(
 
 export type PlacementPaymentSourceEnum =
   | "PLACEMENT_AGENCY_PAID"
-  | "PLACEMENT_PUBLISHER_PAID";
+  | "PLACEMENT_PUBLISHER_PAID"
+  | (string & {});
 export const PlacementPaymentSourceEnum = /*@__PURE__*/ S.String;
 
 export type TagSettingKeywordOptionEnum =
   | "PLACEHOLDER_WITH_LIST_OF_KEYWORDS"
   | "IGNORE"
-  | "GENERATE_SEPARATE_TAG_FOR_EACH_KEYWORD";
+  | "GENERATE_SEPARATE_TAG_FOR_EACH_KEYWORD"
+  | (string & {});
 export const TagSettingKeywordOptionEnum = /*@__PURE__*/ S.String;
 
 /** Tag Settings */
@@ -6879,7 +7006,8 @@ export type PlacementCompatibilityEnum =
   | "APP"
   | "APP_INTERSTITIAL"
   | "IN_STREAM_VIDEO"
-  | "IN_STREAM_AUDIO";
+  | "IN_STREAM_AUDIO"
+  | (string & {});
 export const PlacementCompatibilityEnum = /*@__PURE__*/ S.String;
 
 export type YoutubeSettingsCallToActionsItemEnum =
@@ -6906,7 +7034,8 @@ export type YoutubeSettingsCallToActionsItemEnum =
   | "CALL_TO_ACTION_SEE_MORE"
   | "CALL_TO_ACTION_START_NOW"
   | "CALL_TO_ACTION_VISIT_SITE"
-  | "CALL_TO_ACTION_WATCH_NOW";
+  | "CALL_TO_ACTION_WATCH_NOW"
+  | (string & {});
 export const YoutubeSettingsCallToActionsItemEnum = /*@__PURE__*/ S.String;
 
 export type YoutubeSettingsCallToActionsItemEnumList =
@@ -6948,7 +7077,8 @@ export type PlacementActiveStatusEnum =
   | "PLACEMENT_STATUS_ACTIVE"
   | "PLACEMENT_STATUS_INACTIVE"
   | "PLACEMENT_STATUS_ARCHIVED"
-  | "PLACEMENT_STATUS_PERMANENTLY_ARCHIVED";
+  | "PLACEMENT_STATUS_PERMANENTLY_ARCHIVED"
+  | (string & {});
 export const PlacementActiveStatusEnum = /*@__PURE__*/ S.String;
 
 /** Skippable Settings */
@@ -6973,7 +7103,11 @@ export const SkippableSetting = /*@__PURE__*/ S.suspend(() =>
   identifier: "SkippableSetting",
 }) as any as S.Schema<SkippableSetting>;
 
-export type VideoSettingsOrientationEnum = "ANY" | "LANDSCAPE" | "PORTRAIT";
+export type VideoSettingsOrientationEnum =
+  | "ANY"
+  | "LANDSCAPE"
+  | "PORTRAIT"
+  | (string & {});
 export const VideoSettingsOrientationEnum = /*@__PURE__*/ S.String;
 
 /** Transcode Settings */
@@ -7065,14 +7199,16 @@ export type MeasurementPartnerWrappingDataTagWrappingModeEnum =
   | "VPAID_FILTERING"
   | "NON_VPAID_FILTERING"
   | "BLOCKING_FILTERING_VPAID"
-  | "BLOCKING_FILTERING_VPAID_ONLY";
+  | "BLOCKING_FILTERING_VPAID_ONLY"
+  | (string & {});
 export const MeasurementPartnerWrappingDataTagWrappingModeEnum =
   /*@__PURE__*/ S.String;
 
 export type MeasurementPartnerWrappingDataMeasurementPartnerEnum =
   | "NONE"
   | "INTEGRAL_AD_SCIENCE"
-  | "DOUBLE_VERIFY";
+  | "DOUBLE_VERIFY"
+  | (string & {});
 export const MeasurementPartnerWrappingDataMeasurementPartnerEnum =
   /*@__PURE__*/ S.String;
 
@@ -7085,7 +7221,8 @@ export type MeasurementPartnerWrappingDataLinkStatusEnum =
   | "MEASUREMENT_PARTNER_LINK_OPT_OUT_PENDING"
   | "MEASUREMENT_PARTNER_LINK_WRAPPING_PENDING"
   | "MEASUREMENT_PARTNER_MODE_CHANGE_PENDING"
-  | "MEASUREMENT_PARTNER_UNLINK_PENDING";
+  | "MEASUREMENT_PARTNER_UNLINK_PENDING"
+  | (string & {});
 export const MeasurementPartnerWrappingDataLinkStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -7121,7 +7258,8 @@ export type PlacementStatusEnum =
   | "PAYMENT_REJECTED"
   | "ACKNOWLEDGE_REJECTION"
   | "ACKNOWLEDGE_ACCEPTANCE"
-  | "DRAFT";
+  | "DRAFT"
+  | (string & {});
 export const PlacementStatusEnum = /*@__PURE__*/ S.String;
 
 export interface PlacementSingleConversionDomain {
@@ -7419,13 +7557,15 @@ export type ListPopulationTermOperatorEnum =
   | "NUM_GREATER_THAN"
   | "NUM_GREATER_THAN_EQUAL"
   | "STRING_EQUALS"
-  | "STRING_CONTAINS";
+  | "STRING_CONTAINS"
+  | (string & {});
 export const ListPopulationTermOperatorEnum = /*@__PURE__*/ S.String;
 
 export type ListPopulationTermTypeEnum =
   | "CUSTOM_VARIABLE_TERM"
   | "LIST_MEMBERSHIP_TERM"
-  | "REFERRER_TERM";
+  | "REFERRER_TERM"
+  | (string & {});
 export const ListPopulationTermTypeEnum = /*@__PURE__*/ S.String;
 
 /** Remarketing List Population Rule Term. */
@@ -7515,7 +7655,8 @@ export type RemarketingListListSourceEnum =
   | "REMARKETING_LIST_SOURCE_DBM"
   | "REMARKETING_LIST_SOURCE_GPLUS"
   | "REMARKETING_LIST_SOURCE_DMP"
-  | "REMARKETING_LIST_SOURCE_PLAY_STORE";
+  | "REMARKETING_LIST_SOURCE_PLAY_STORE"
+  | (string & {});
 export const RemarketingListListSourceEnum = /*@__PURE__*/ S.String;
 
 /** Contains properties of a remarketing list. Remarketing enables you to create lists of users who have performed specific actions on a site, then target ads to members of those lists. This resource can be used to manage remarketing lists that are owned by your advertisers. To see all remarketing lists that are visible to your advertisers, including those that are shared to your advertiser or account, use the TargetableRemarketingLists resource. */
@@ -7631,7 +7772,10 @@ export const GetReportsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetReportsRequest",
 }) as any as S.Schema<GetReportsRequest>;
 
-export type SortedDimensionSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type SortedDimensionSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const SortedDimensionSortOrderEnum = /*@__PURE__*/ S.String;
 
 /** Represents a sorted dimension. */
@@ -7723,7 +7867,8 @@ export const ReportCriteria = /*@__PURE__*/ S.suspend(() =>
 
 export type ReportScheduleRunsOnDayOfMonthEnum =
   | "DAY_OF_MONTH"
-  | "WEEK_OF_MONTH";
+  | "WEEK_OF_MONTH"
+  | (string & {});
 export const ReportScheduleRunsOnDayOfMonthEnum = /*@__PURE__*/ S.String;
 
 export type ReportScheduleRepeatsOnWeekDaysItemEnum =
@@ -7733,7 +7878,8 @@ export type ReportScheduleRepeatsOnWeekDaysItemEnum =
   | "WEDNESDAY"
   | "THURSDAY"
   | "FRIDAY"
-  | "SATURDAY";
+  | "SATURDAY"
+  | (string & {});
 export const ReportScheduleRepeatsOnWeekDaysItemEnum = /*@__PURE__*/ S.String;
 
 export type ReportScheduleRepeatsOnWeekDaysItemEnumList =
@@ -7828,7 +7974,8 @@ export type ReportTypeEnum =
   | "REACH"
   | "PATH_TO_CONVERSION"
   | "FLOODLIGHT"
-  | "CROSS_MEDIA_REACH";
+  | "CROSS_MEDIA_REACH"
+  | (string & {});
 export const ReportTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ReportPathToConversionCriteriaReportProperties {
@@ -7906,7 +8053,7 @@ export const ReportPathToConversionCriteria = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReportPathToConversionCriteria",
 }) as any as S.Schema<ReportPathToConversionCriteria>;
 
-export type ReportFormatEnum = "CSV" | "EXCEL";
+export type ReportFormatEnum = "CSV" | "EXCEL" | (string & {});
 export const ReportFormatEnum = /*@__PURE__*/ S.String;
 
 export interface ReportFloodlightCriteriaReportProperties {
@@ -7958,10 +8105,13 @@ export const ReportFloodlightCriteria = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReportFloodlightCriteria",
 }) as any as S.Schema<ReportFloodlightCriteria>;
 
-export type ReportDeliveryEmailOwnerDeliveryTypeEnum = "LINK" | "ATTACHMENT";
+export type ReportDeliveryEmailOwnerDeliveryTypeEnum =
+  | "LINK"
+  | "ATTACHMENT"
+  | (string & {});
 export const ReportDeliveryEmailOwnerDeliveryTypeEnum = /*@__PURE__*/ S.String;
 
-export type RecipientDeliveryTypeEnum = "LINK" | "ATTACHMENT";
+export type RecipientDeliveryTypeEnum = "LINK" | "ATTACHMENT" | (string & {});
 export const RecipientDeliveryTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a recipient. */
@@ -8114,7 +8264,10 @@ export const GetSitesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSitesRequest",
 }) as any as S.Schema<GetSitesRequest>;
 
-export type SiteContactContactTypeEnum = "SALES_PERSON" | "TRAFFICKER";
+export type SiteContactContactTypeEnum =
+  | "SALES_PERSON"
+  | "TRAFFICKER"
+  | (string & {});
 export const SiteContactContactTypeEnum = /*@__PURE__*/ S.String;
 
 /** Site Contact */
@@ -8154,7 +8307,11 @@ export const SiteContactList = /*@__PURE__*/ S.Array(
   SiteContact,
 ) as any as S.Schema<SiteContactList>;
 
-export type SiteVideoSettingsOrientationEnum = "ANY" | "LANDSCAPE" | "PORTRAIT";
+export type SiteVideoSettingsOrientationEnum =
+  | "ANY"
+  | "LANDSCAPE"
+  | "PORTRAIT"
+  | (string & {});
 export const SiteVideoSettingsOrientationEnum = /*@__PURE__*/ S.String;
 
 /** Companion Settings */
@@ -8255,7 +8412,8 @@ export type SiteSettingsVpaidAdapterChoiceTemplateEnum =
   | "DEFAULT"
   | "FLASH"
   | "HTML5"
-  | "BOTH";
+  | "BOTH"
+  | (string & {});
 export const SiteSettingsVpaidAdapterChoiceTemplateEnum =
   /*@__PURE__*/ S.String;
 
@@ -8398,7 +8556,8 @@ export type StudioCreativeStatusEnum =
   | "PUBLISHED"
   | "QA_REJECTED"
   | "QA_APPROVED"
-  | "TRAFFICKED";
+  | "TRAFFICKED"
+  | (string & {});
 export const StudioCreativeStatusEnum = /*@__PURE__*/ S.String;
 
 export type StudioCreativeFormatEnum =
@@ -8406,7 +8565,8 @@ export type StudioCreativeFormatEnum =
   | "BANNER"
   | "EXPANDING"
   | "INTERSTITIAL"
-  | "VPAID_LINEAR_VIDEO";
+  | "VPAID_LINEAR_VIDEO"
+  | (string & {});
 export const StudioCreativeFormatEnum = /*@__PURE__*/ S.String;
 
 /** *Beta:* This API resource is available only to a very limited number of customers. If you'd like to use this resource, please reach out to your Google sales representative. Contains studio creative information. */
@@ -8533,7 +8693,8 @@ export type TargetableRemarketingListListSourceEnum =
   | "REMARKETING_LIST_SOURCE_DBM"
   | "REMARKETING_LIST_SOURCE_GPLUS"
   | "REMARKETING_LIST_SOURCE_DMP"
-  | "REMARKETING_LIST_SOURCE_PLAY_STORE";
+  | "REMARKETING_LIST_SOURCE_PLAY_STORE"
+  | (string & {});
 export const TargetableRemarketingListListSourceEnum = /*@__PURE__*/ S.String;
 
 /** Contains properties of a targetable remarketing list. Remarketing enables you to create lists of users who have performed specific actions on a site, then target ads to members of those lists. This resource is a read-only view of a remarketing list to be used to facilitate targeting ads to specific lists. Remarketing lists that are owned by your advertisers and those that are shared to your advertisers or account are accessible via this resource. To manage remarketing lists that are owned by your advertisers, use the RemarketingLists resource. */
@@ -8665,7 +8826,8 @@ export type GetTvCampaignDetailsTvDataProviderEnum =
   | "TNS_VN"
   | "COMSCORE_NATIONAL_US"
   | "COMSCORE_CA"
-  | "SAMBA_AU";
+  | "SAMBA_AU"
+  | (string & {});
 export const GetTvCampaignDetailsTvDataProviderEnum = /*@__PURE__*/ S.String;
 
 export interface GetTvCampaignDetailsRequest {
@@ -8706,7 +8868,8 @@ export type TvCampaignTimepointDateWindowEnum =
   | "WEEKS_ONE"
   | "WEEKS_FOUR"
   | "WEEKS_EIGHT"
-  | "WEEKS_TWELVE";
+  | "WEEKS_TWELVE"
+  | (string & {});
 export const TvCampaignTimepointDateWindowEnum = /*@__PURE__*/ S.String;
 
 /** A single data point for TvCampaignDetail, which holds information about the TV campaign for a specific start date and date window. */
@@ -8869,7 +9032,8 @@ export type UserRolePermissionAvailabilityEnum =
   | "SUBACCOUNT_AND_ACCOUNT_BY_DEFAULT"
   | "ACCOUNT_ALWAYS"
   | "SUBACCOUNT_AND_ACCOUNT_ALWAYS"
-  | "USER_PROFILE_ONLY";
+  | "USER_PROFILE_ONLY"
+  | (string & {});
 export const UserRolePermissionAvailabilityEnum = /*@__PURE__*/ S.String;
 
 /** Contains properties of a user role permission. */
@@ -8981,7 +9145,8 @@ export type VideoFormatFileTypeEnum =
   | "THREEGPP"
   | "MP4"
   | "WEBM"
-  | "M3U8";
+  | "M3U8"
+  | (string & {});
 export const VideoFormatFileTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains information about supported video formats. */
@@ -9310,7 +9475,8 @@ export type CreativeAssetMetadataDetectedFeaturesItemEnum =
   | "TOUCH"
   | "WEBGL"
   | "SVG_FILTERS"
-  | "SVG_FE_IMAGE";
+  | "SVG_FE_IMAGE"
+  | (string & {});
 export const CreativeAssetMetadataDetectedFeaturesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -9347,7 +9513,8 @@ export type CreativeAssetMetadataWarnedValidationRulesItemEnum =
   | "CLICK_TAG_HARD_CODED"
   | "SVG_INVALID"
   | "CLICK_TAG_IN_RICH_MEDIA"
-  | "MISSING_ENABLER_REFERENCE";
+  | "MISSING_ENABLER_REFERENCE"
+  | (string & {});
 export const CreativeAssetMetadataWarnedValidationRulesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -9593,7 +9760,8 @@ export type DynamicTargetingKeyObjectTypeEnum =
   | "OBJECT_ADVERTISER"
   | "OBJECT_AD"
   | "OBJECT_CREATIVE"
-  | "OBJECT_PLACEMENT";
+  | "OBJECT_PLACEMENT"
+  | (string & {});
 export const DynamicTargetingKeyObjectTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains properties of a dynamic targeting key. Dynamic targeting keys are unique, user-friendly labels, created at the advertiser level in DCM, that can be assigned to ads, creatives, and placements and used for targeting with Studio dynamic creatives. Use these labels instead of numeric Campaign Manager IDs (such as placement IDs) to save time and avoid errors in your dynamic feeds. */
@@ -9895,14 +10063,16 @@ export type StudioCreativeAssetTypeEnum =
   | "HTML"
   | "VIDEO"
   | "IMAGE"
-  | "FONT";
+  | "FONT"
+  | (string & {});
 export const StudioCreativeAssetTypeEnum = /*@__PURE__*/ S.String;
 
 export type VideoProcessingDataProcessingStateEnum =
   | "UNKNOWN"
   | "PROCESSING"
   | "SUCCEEDED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const VideoProcessingDataProcessingStateEnum = /*@__PURE__*/ S.String;
 
 /** Contains processing data for a video asset. */
@@ -10138,10 +10308,13 @@ export const AccountPermissionsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountPermissionsListResponse",
 }) as any as S.Schema<AccountPermissionsListResponse>;
 
-export type ListAccountsSortFieldEnum = "ID" | "NAME";
+export type ListAccountsSortFieldEnum = "ID" | "NAME" | (string & {});
 export const ListAccountsSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListAccountsSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListAccountsSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListAccountsSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListAccountsRequest {
@@ -10207,10 +10380,16 @@ export const AccountsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsListResponse",
 }) as any as S.Schema<AccountsListResponse>;
 
-export type ListAccountUserProfilesSortFieldEnum = "ID" | "NAME";
+export type ListAccountUserProfilesSortFieldEnum =
+  | "ID"
+  | "NAME"
+  | (string & {});
 export const ListAccountUserProfilesSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListAccountUserProfilesSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListAccountUserProfilesSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListAccountUserProfilesSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListAccountUserProfilesRequest {
@@ -10287,7 +10466,8 @@ export type ListAdsTypeEnum =
   | "AD_SERVING_DEFAULT_AD"
   | "AD_SERVING_CLICK_TRACKER"
   | "AD_SERVING_TRACKING"
-  | "AD_SERVING_BRAND_SAFE_AD";
+  | "AD_SERVING_BRAND_SAFE_AD"
+  | (string & {});
 export const ListAdsTypeEnum = /*@__PURE__*/ S.String;
 
 export type ListAdsTypeEnumList = ReadonlyArray<ListAdsTypeEnum>;
@@ -10295,7 +10475,7 @@ export const ListAdsTypeEnumList = /*@__PURE__*/ S.Array(
   ListAdsTypeEnum,
 ) as any as S.Schema<ListAdsTypeEnumList>;
 
-export type ListAdsSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListAdsSortOrderEnum = "ASCENDING" | "DESCENDING" | (string & {});
 export const ListAdsSortOrderEnum = /*@__PURE__*/ S.String;
 
 export type ListAdsCompatibilityEnum =
@@ -10304,10 +10484,11 @@ export type ListAdsCompatibilityEnum =
   | "APP"
   | "APP_INTERSTITIAL"
   | "IN_STREAM_VIDEO"
-  | "IN_STREAM_AUDIO";
+  | "IN_STREAM_AUDIO"
+  | (string & {});
 export const ListAdsCompatibilityEnum = /*@__PURE__*/ S.String;
 
-export type ListAdsSortFieldEnum = "ID" | "NAME";
+export type ListAdsSortFieldEnum = "ID" | "NAME" | (string & {});
 export const ListAdsSortFieldEnum = /*@__PURE__*/ S.String;
 
 export interface ListAdsRequest {
@@ -10419,10 +10600,13 @@ export const AdsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdsListResponse",
 }) as any as S.Schema<AdsListResponse>;
 
-export type ListAdvertiserGroupsSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListAdvertiserGroupsSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListAdvertiserGroupsSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListAdvertiserGroupsSortFieldEnum = "ID" | "NAME";
+export type ListAdvertiserGroupsSortFieldEnum = "ID" | "NAME" | (string & {});
 export const ListAdvertiserGroupsSortFieldEnum = /*@__PURE__*/ S.String;
 
 export interface ListAdvertiserGroupsRequest {
@@ -10548,7 +10732,8 @@ export const CampaignSummaryList = /*@__PURE__*/ S.Array(
 export type InvoiceInvoiceTypeEnum =
   | "INVOICE_TYPE_UNSPECIFIED"
   | "INVOICE_TYPE_CREDIT"
-  | "INVOICE_TYPE_INVOICE";
+  | "INVOICE_TYPE_INVOICE"
+  | (string & {});
 export const InvoiceInvoiceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains information about a single invoice */
@@ -10639,10 +10824,14 @@ export const AdvertiserInvoicesListResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type ListAdvertiserLandingPagesSortOrderEnum =
   | "ASCENDING"
-  | "DESCENDING";
+  | "DESCENDING"
+  | (string & {});
 export const ListAdvertiserLandingPagesSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListAdvertiserLandingPagesSortFieldEnum = "ID" | "NAME";
+export type ListAdvertiserLandingPagesSortFieldEnum =
+  | "ID"
+  | "NAME"
+  | (string & {});
 export const ListAdvertiserLandingPagesSortFieldEnum = /*@__PURE__*/ S.String;
 
 export interface ListAdvertiserLandingPagesRequest {
@@ -10721,13 +10910,16 @@ export const AdvertiserLandingPagesListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdvertiserLandingPagesListResponse",
 }) as any as S.Schema<AdvertiserLandingPagesListResponse>;
 
-export type ListAdvertisersSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListAdvertisersSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListAdvertisersSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListAdvertisersSortFieldEnum = "ID" | "NAME";
+export type ListAdvertisersSortFieldEnum = "ID" | "NAME" | (string & {});
 export const ListAdvertisersSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListAdvertisersStatusEnum = "APPROVED" | "ON_HOLD";
+export type ListAdvertisersStatusEnum = "APPROVED" | "ON_HOLD" | (string & {});
 export const ListAdvertisersStatusEnum = /*@__PURE__*/ S.String;
 
 export interface ListAdvertisersRequest {
@@ -10850,13 +11042,17 @@ export const BillingAssignmentsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BillingAssignmentsListResponse",
 }) as any as S.Schema<BillingAssignmentsListResponse>;
 
-export type ListBillingProfilesSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListBillingProfilesSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListBillingProfilesSortOrderEnum = /*@__PURE__*/ S.String;
 
 export type ListBillingProfilesStatusEnum =
   | "UNDER_REVIEW"
   | "ACTIVE"
-  | "ARCHIVED";
+  | "ARCHIVED"
+  | (string & {});
 export const ListBillingProfilesStatusEnum = /*@__PURE__*/ S.String;
 
 export type ListBillingProfilesStatusEnumList =
@@ -10865,7 +11061,7 @@ export const ListBillingProfilesStatusEnumList = /*@__PURE__*/ S.Array(
   ListBillingProfilesStatusEnum,
 ) as any as S.Schema<ListBillingProfilesStatusEnumList>;
 
-export type ListBillingProfilesSortFieldEnum = "ID" | "NAME";
+export type ListBillingProfilesSortFieldEnum = "ID" | "NAME" | (string & {});
 export const ListBillingProfilesSortFieldEnum = /*@__PURE__*/ S.String;
 
 export interface ListBillingProfilesRequest {
@@ -10961,7 +11157,12 @@ export const ListBillingRatesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBillingRatesRequest",
 }) as any as S.Schema<ListBillingRatesRequest>;
 
-export type BillingRateUnitOfMeasureEnum = "CPM" | "CPC" | "EA" | "P2C";
+export type BillingRateUnitOfMeasureEnum =
+  | "CPM"
+  | "CPC"
+  | "EA"
+  | "P2C"
+  | (string & {});
 export const BillingRateUnitOfMeasureEnum = /*@__PURE__*/ S.String;
 
 export interface BillingRateTieredRate {
@@ -11019,7 +11220,8 @@ export type BillingRateTypeEnum =
   | "DISPLAY_AD_SERVING"
   | "VIDEO_AD_SERVING"
   | "AUDIO_AD_SERVING"
-  | "ADVANCED_DISPLAY_AD_SERVING";
+  | "ADVANCED_DISPLAY_AD_SERVING"
+  | (string & {});
 export const BillingRateTypeEnum = /*@__PURE__*/ S.String;
 
 export interface BillingRate {
@@ -11116,7 +11318,8 @@ export const BrowsersListResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type ListCampaignCreativeAssociationsSortOrderEnum =
   | "ASCENDING"
-  | "DESCENDING";
+  | "DESCENDING"
+  | (string & {});
 export const ListCampaignCreativeAssociationsSortOrderEnum =
   /*@__PURE__*/ S.String;
 
@@ -11179,10 +11382,13 @@ export const CampaignCreativeAssociationsListResponse = /*@__PURE__*/ S.suspend(
   identifier: "CampaignCreativeAssociationsListResponse",
 }) as any as S.Schema<CampaignCreativeAssociationsListResponse>;
 
-export type ListCampaignsSortFieldEnum = "ID" | "NAME";
+export type ListCampaignsSortFieldEnum = "ID" | "NAME" | (string & {});
 export const ListCampaignsSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListCampaignsSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListCampaignsSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListCampaignsSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListCampaignsRequest {
@@ -11309,7 +11515,8 @@ export type ListChangeLogsObjectTypeEnum =
   | "OBJECT_FLOODLIGHT_DV360_LINK"
   | "OBJECT_ADVERTISER_CUSTOMER_LINK"
   | "OBJECT_CONVERSION_DOMAIN"
-  | "OBJECT_ACCOUNT_CONVERSION_DOMAIN";
+  | "OBJECT_ACCOUNT_CONVERSION_DOMAIN"
+  | (string & {});
 export const ListChangeLogsObjectTypeEnum = /*@__PURE__*/ S.String;
 
 export type ListChangeLogsActionEnum =
@@ -11329,7 +11536,8 @@ export type ListChangeLogsActionEnum =
   | "ACTION_UNLINK"
   | "ACTION_PUSH"
   | "ACTION_EMAIL_TAGS"
-  | "ACTION_SHARE";
+  | "ACTION_SHARE"
+  | (string & {});
 export const ListChangeLogsActionEnum = /*@__PURE__*/ S.String;
 
 export interface ListChangeLogsRequest {
@@ -11484,10 +11692,13 @@ export const ConnectionTypesListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectionTypesListResponse",
 }) as any as S.Schema<ConnectionTypesListResponse>;
 
-export type ListContentCategoriesSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListContentCategoriesSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListContentCategoriesSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListContentCategoriesSortFieldEnum = "ID" | "NAME";
+export type ListContentCategoriesSortFieldEnum = "ID" | "NAME" | (string & {});
 export const ListContentCategoriesSortFieldEnum = /*@__PURE__*/ S.String;
 
 export interface ListContentCategoriesRequest {
@@ -11584,10 +11795,13 @@ export const CountriesListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CountriesListResponse",
 }) as any as S.Schema<CountriesListResponse>;
 
-export type ListCreativeFieldsSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListCreativeFieldsSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListCreativeFieldsSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListCreativeFieldsSortFieldEnum = "ID" | "NAME";
+export type ListCreativeFieldsSortFieldEnum = "ID" | "NAME" | (string & {});
 export const ListCreativeFieldsSortFieldEnum = /*@__PURE__*/ S.String;
 
 export interface ListCreativeFieldsRequest {
@@ -11653,10 +11867,16 @@ export const CreativeFieldsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreativeFieldsListResponse",
 }) as any as S.Schema<CreativeFieldsListResponse>;
 
-export type ListCreativeFieldValuesSortFieldEnum = "ID" | "VALUE";
+export type ListCreativeFieldValuesSortFieldEnum =
+  | "ID"
+  | "VALUE"
+  | (string & {});
 export const ListCreativeFieldValuesSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListCreativeFieldValuesSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListCreativeFieldValuesSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListCreativeFieldValuesSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListCreativeFieldValuesRequest {
@@ -11722,10 +11942,13 @@ export const CreativeFieldValuesListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreativeFieldValuesListResponse",
 }) as any as S.Schema<CreativeFieldValuesListResponse>;
 
-export type ListCreativeGroupsSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListCreativeGroupsSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListCreativeGroupsSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListCreativeGroupsSortFieldEnum = "ID" | "NAME";
+export type ListCreativeGroupsSortFieldEnum = "ID" | "NAME" | (string & {});
 export const ListCreativeGroupsSortFieldEnum = /*@__PURE__*/ S.String;
 
 export interface ListCreativeGroupsRequest {
@@ -11794,7 +12017,10 @@ export const CreativeGroupsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreativeGroupsListResponse",
 }) as any as S.Schema<CreativeGroupsListResponse>;
 
-export type ListCreativesSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListCreativesSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListCreativesSortOrderEnum = /*@__PURE__*/ S.String;
 
 export type ListCreativesTypesEnum =
@@ -11822,7 +12048,8 @@ export type ListCreativesTypesEnum =
   | "DISPLAY"
   | "DISPLAY_IMAGE_GALLERY"
   | "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO"
-  | "INSTREAM_AUDIO";
+  | "INSTREAM_AUDIO"
+  | (string & {});
 export const ListCreativesTypesEnum = /*@__PURE__*/ S.String;
 
 export type ListCreativesTypesEnumList = ReadonlyArray<ListCreativesTypesEnum>;
@@ -11830,7 +12057,7 @@ export const ListCreativesTypesEnumList = /*@__PURE__*/ S.Array(
   ListCreativesTypesEnum,
 ) as any as S.Schema<ListCreativesTypesEnumList>;
 
-export type ListCreativesSortFieldEnum = "ID" | "NAME";
+export type ListCreativesSortFieldEnum = "ID" | "NAME" | (string & {});
 export const ListCreativesSortFieldEnum = /*@__PURE__*/ S.String;
 
 export interface ListCreativesRequest {
@@ -11923,10 +12150,13 @@ export const CreativesListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreativesListResponse",
 }) as any as S.Schema<CreativesListResponse>;
 
-export type ListDirectorySitesSortFieldEnum = "ID" | "NAME";
+export type ListDirectorySitesSortFieldEnum = "ID" | "NAME" | (string & {});
 export const ListDirectorySitesSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListDirectorySitesSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListDirectorySitesSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListDirectorySitesSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListDirectorySitesRequest {
@@ -12008,7 +12238,8 @@ export type ListDynamicTargetingKeysObjectTypeEnum =
   | "OBJECT_ADVERTISER"
   | "OBJECT_AD"
   | "OBJECT_CREATIVE"
-  | "OBJECT_PLACEMENT";
+  | "OBJECT_PLACEMENT"
+  | (string & {});
 export const ListDynamicTargetingKeysObjectTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ListDynamicTargetingKeysRequest {
@@ -12064,16 +12295,20 @@ export const DynamicTargetingKeysListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicTargetingKeysListResponse",
 }) as any as S.Schema<DynamicTargetingKeysListResponse>;
 
-export type ListEventTagsSortFieldEnum = "ID" | "NAME";
+export type ListEventTagsSortFieldEnum = "ID" | "NAME" | (string & {});
 export const ListEventTagsSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListEventTagsSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListEventTagsSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListEventTagsSortOrderEnum = /*@__PURE__*/ S.String;
 
 export type ListEventTagsEventTagTypesEnum =
   | "IMPRESSION_IMAGE_EVENT_TAG"
   | "IMPRESSION_JAVASCRIPT_EVENT_TAG"
-  | "CLICK_THROUGH_EVENT_TAG";
+  | "CLICK_THROUGH_EVENT_TAG"
+  | (string & {});
 export const ListEventTagsEventTagTypesEnum = /*@__PURE__*/ S.String;
 
 export type ListEventTagsEventTagTypesEnumList =
@@ -12153,13 +12388,20 @@ export const EventTagsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventTagsListResponse",
 }) as any as S.Schema<EventTagsListResponse>;
 
-export type ListFilesSortFieldEnum = "ID" | "LAST_MODIFIED_TIME";
+export type ListFilesSortFieldEnum =
+  | "ID"
+  | "LAST_MODIFIED_TIME"
+  | (string & {});
 export const ListFilesSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListFilesSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListFilesSortOrderEnum = "ASCENDING" | "DESCENDING" | (string & {});
 export const ListFilesSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListFilesScopeEnum = "ALL" | "MINE" | "SHARED_WITH_ME";
+export type ListFilesScopeEnum =
+  | "ALL"
+  | "MINE"
+  | "SHARED_WITH_ME"
+  | (string & {});
 export const ListFilesScopeEnum = /*@__PURE__*/ S.String;
 
 export interface ListFilesRequest {
@@ -12222,14 +12464,21 @@ export const FileList = /*@__PURE__*/ S.suspend(() =>
 
 export type ListFloodlightActivitiesFloodlightActivityGroupTypeEnum =
   | "COUNTER"
-  | "SALE";
+  | "SALE"
+  | (string & {});
 export const ListFloodlightActivitiesFloodlightActivityGroupTypeEnum =
   /*@__PURE__*/ S.String;
 
-export type ListFloodlightActivitiesSortFieldEnum = "ID" | "NAME";
+export type ListFloodlightActivitiesSortFieldEnum =
+  | "ID"
+  | "NAME"
+  | (string & {});
 export const ListFloodlightActivitiesSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListFloodlightActivitiesSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListFloodlightActivitiesSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListFloodlightActivitiesSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListFloodlightActivitiesRequest {
@@ -12319,15 +12568,22 @@ export const FloodlightActivitiesListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FloodlightActivitiesListResponse",
 }) as any as S.Schema<FloodlightActivitiesListResponse>;
 
-export type ListFloodlightActivityGroupsTypeEnum = "COUNTER" | "SALE";
+export type ListFloodlightActivityGroupsTypeEnum =
+  | "COUNTER"
+  | "SALE"
+  | (string & {});
 export const ListFloodlightActivityGroupsTypeEnum = /*@__PURE__*/ S.String;
 
-export type ListFloodlightActivityGroupsSortFieldEnum = "ID" | "NAME";
+export type ListFloodlightActivityGroupsSortFieldEnum =
+  | "ID"
+  | "NAME"
+  | (string & {});
 export const ListFloodlightActivityGroupsSortFieldEnum = /*@__PURE__*/ S.String;
 
 export type ListFloodlightActivityGroupsSortOrderEnum =
   | "ASCENDING"
-  | "DESCENDING";
+  | "DESCENDING"
+  | (string & {});
 export const ListFloodlightActivityGroupsSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListFloodlightActivityGroupsRequest {
@@ -12528,7 +12784,8 @@ export type ListMobileAppsDirectoriesEnum =
   | "XBOX_APP_STORE"
   | "SAMSUNG_TV_APP_STORE"
   | "ANDROID_TV_APP_STORE"
-  | "GENERIC_CTV_APP_STORE";
+  | "GENERIC_CTV_APP_STORE"
+  | (string & {});
 export const ListMobileAppsDirectoriesEnum = /*@__PURE__*/ S.String;
 
 export type ListMobileAppsDirectoriesEnumList =
@@ -12701,7 +12958,8 @@ export type ListPlacementGroupsActiveStatusEnum =
   | "PLACEMENT_STATUS_ACTIVE"
   | "PLACEMENT_STATUS_INACTIVE"
   | "PLACEMENT_STATUS_ARCHIVED"
-  | "PLACEMENT_STATUS_PERMANENTLY_ARCHIVED";
+  | "PLACEMENT_STATUS_PERMANENTLY_ARCHIVED"
+  | (string & {});
 export const ListPlacementGroupsActiveStatusEnum = /*@__PURE__*/ S.String;
 
 export type ListPlacementGroupsActiveStatusEnumList =
@@ -12710,10 +12968,13 @@ export const ListPlacementGroupsActiveStatusEnumList = /*@__PURE__*/ S.Array(
   ListPlacementGroupsActiveStatusEnum,
 ) as any as S.Schema<ListPlacementGroupsActiveStatusEnumList>;
 
-export type ListPlacementGroupsSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListPlacementGroupsSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListPlacementGroupsSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListPlacementGroupsSortFieldEnum = "ID" | "NAME";
+export type ListPlacementGroupsSortFieldEnum = "ID" | "NAME" | (string & {});
 export const ListPlacementGroupsSortFieldEnum = /*@__PURE__*/ S.String;
 
 export type ListPlacementGroupsPricingTypesEnum =
@@ -12722,7 +12983,8 @@ export type ListPlacementGroupsPricingTypesEnum =
   | "PRICING_TYPE_CPA"
   | "PRICING_TYPE_FLAT_RATE_IMPRESSIONS"
   | "PRICING_TYPE_FLAT_RATE_CLICKS"
-  | "PRICING_TYPE_CPM_ACTIVEVIEW";
+  | "PRICING_TYPE_CPM_ACTIVEVIEW"
+  | (string & {});
 export const ListPlacementGroupsPricingTypesEnum = /*@__PURE__*/ S.String;
 
 export type ListPlacementGroupsPricingTypesEnumList =
@@ -12733,7 +12995,8 @@ export const ListPlacementGroupsPricingTypesEnumList = /*@__PURE__*/ S.Array(
 
 export type ListPlacementGroupsPlacementGroupTypeEnum =
   | "PLACEMENT_PACKAGE"
-  | "PLACEMENT_ROADBLOCK";
+  | "PLACEMENT_ROADBLOCK"
+  | (string & {});
 export const ListPlacementGroupsPlacementGroupTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ListPlacementGroupsRequest {
@@ -12847,7 +13110,8 @@ export type ListPlacementsCompatibilitiesEnum =
   | "APP"
   | "APP_INTERSTITIAL"
   | "IN_STREAM_VIDEO"
-  | "IN_STREAM_AUDIO";
+  | "IN_STREAM_AUDIO"
+  | (string & {});
 export const ListPlacementsCompatibilitiesEnum = /*@__PURE__*/ S.String;
 
 export type ListPlacementsCompatibilitiesEnumList =
@@ -12862,7 +13126,8 @@ export type ListPlacementsPricingTypesEnum =
   | "PRICING_TYPE_CPA"
   | "PRICING_TYPE_FLAT_RATE_IMPRESSIONS"
   | "PRICING_TYPE_FLAT_RATE_CLICKS"
-  | "PRICING_TYPE_CPM_ACTIVEVIEW";
+  | "PRICING_TYPE_CPM_ACTIVEVIEW"
+  | (string & {});
 export const ListPlacementsPricingTypesEnum = /*@__PURE__*/ S.String;
 
 export type ListPlacementsPricingTypesEnumList =
@@ -12873,13 +13138,17 @@ export const ListPlacementsPricingTypesEnumList = /*@__PURE__*/ S.Array(
 
 export type ListPlacementsPaymentSourceEnum =
   | "PLACEMENT_AGENCY_PAID"
-  | "PLACEMENT_PUBLISHER_PAID";
+  | "PLACEMENT_PUBLISHER_PAID"
+  | (string & {});
 export const ListPlacementsPaymentSourceEnum = /*@__PURE__*/ S.String;
 
-export type ListPlacementsSortFieldEnum = "ID" | "NAME";
+export type ListPlacementsSortFieldEnum = "ID" | "NAME" | (string & {});
 export const ListPlacementsSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListPlacementsSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListPlacementsSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListPlacementsSortOrderEnum = /*@__PURE__*/ S.String;
 
 export type ListPlacementsActiveStatusEnum =
@@ -12887,7 +13156,8 @@ export type ListPlacementsActiveStatusEnum =
   | "PLACEMENT_STATUS_ACTIVE"
   | "PLACEMENT_STATUS_INACTIVE"
   | "PLACEMENT_STATUS_ARCHIVED"
-  | "PLACEMENT_STATUS_PERMANENTLY_ARCHIVED";
+  | "PLACEMENT_STATUS_PERMANENTLY_ARCHIVED"
+  | (string & {});
 export const ListPlacementsActiveStatusEnum = /*@__PURE__*/ S.String;
 
 export type ListPlacementsActiveStatusEnumList =
@@ -13010,10 +13280,16 @@ export const PlacementsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PlacementsListResponse",
 }) as any as S.Schema<PlacementsListResponse>;
 
-export type ListPlacementStrategiesSortFieldEnum = "ID" | "NAME";
+export type ListPlacementStrategiesSortFieldEnum =
+  | "ID"
+  | "NAME"
+  | (string & {});
 export const ListPlacementStrategiesSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListPlacementStrategiesSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListPlacementStrategiesSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListPlacementStrategiesSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListPlacementStrategiesRequest {
@@ -13178,10 +13454,13 @@ export const RegionsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegionsListResponse",
 }) as any as S.Schema<RegionsListResponse>;
 
-export type ListRemarketingListsSortFieldEnum = "ID" | "NAME";
+export type ListRemarketingListsSortFieldEnum = "ID" | "NAME" | (string & {});
 export const ListRemarketingListsSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListRemarketingListsSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListRemarketingListsSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListRemarketingListsSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListRemarketingListsRequest {
@@ -13250,13 +13529,20 @@ export const RemarketingListsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemarketingListsListResponse",
 }) as any as S.Schema<RemarketingListsListResponse>;
 
-export type ListReportsSortFieldEnum = "ID" | "LAST_MODIFIED_TIME" | "NAME";
+export type ListReportsSortFieldEnum =
+  | "ID"
+  | "LAST_MODIFIED_TIME"
+  | "NAME"
+  | (string & {});
 export const ListReportsSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListReportsSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListReportsSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListReportsSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListReportsScopeEnum = "ALL" | "MINE";
+export type ListReportsScopeEnum = "ALL" | "MINE" | (string & {});
 export const ListReportsScopeEnum = /*@__PURE__*/ S.String;
 
 export interface ListReportsRequest {
@@ -13317,10 +13603,16 @@ export const ReportList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReportList" }) as any as S.Schema<ReportList>;
 
-export type ListReportsFilesSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListReportsFilesSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListReportsFilesSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListReportsFilesSortFieldEnum = "ID" | "LAST_MODIFIED_TIME";
+export type ListReportsFilesSortFieldEnum =
+  | "ID"
+  | "LAST_MODIFIED_TIME"
+  | (string & {});
 export const ListReportsFilesSortFieldEnum = /*@__PURE__*/ S.String;
 
 export interface ListReportsFilesRequest {
@@ -13356,10 +13648,10 @@ export const ListReportsFilesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListReportsFilesRequest",
 }) as any as S.Schema<ListReportsFilesRequest>;
 
-export type ListSitesSortFieldEnum = "ID" | "NAME";
+export type ListSitesSortFieldEnum = "ID" | "NAME" | (string & {});
 export const ListSitesSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListSitesSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListSitesSortOrderEnum = "ASCENDING" | "DESCENDING" | (string & {});
 export const ListSitesSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListSitesRequest {
@@ -13495,10 +13787,13 @@ export const SizesListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SizesListResponse",
 }) as any as S.Schema<SizesListResponse>;
 
-export type ListSubaccountsSortFieldEnum = "ID" | "NAME";
+export type ListSubaccountsSortFieldEnum = "ID" | "NAME" | (string & {});
 export const ListSubaccountsSortFieldEnum = /*@__PURE__*/ S.String;
 
-export type ListSubaccountsSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListSubaccountsSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListSubaccountsSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListSubaccountsRequest {
@@ -13561,13 +13856,17 @@ export const SubaccountsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubaccountsListResponse",
 }) as any as S.Schema<SubaccountsListResponse>;
 
-export type ListTargetableRemarketingListsSortFieldEnum = "ID" | "NAME";
+export type ListTargetableRemarketingListsSortFieldEnum =
+  | "ID"
+  | "NAME"
+  | (string & {});
 export const ListTargetableRemarketingListsSortFieldEnum =
   /*@__PURE__*/ S.String;
 
 export type ListTargetableRemarketingListsSortOrderEnum =
   | "ASCENDING"
-  | "DESCENDING";
+  | "DESCENDING"
+  | (string & {});
 export const ListTargetableRemarketingListsSortOrderEnum =
   /*@__PURE__*/ S.String;
 
@@ -13641,10 +13940,13 @@ export const TargetableRemarketingListsListResponse = /*@__PURE__*/ S.suspend(
   identifier: "TargetableRemarketingListsListResponse",
 }) as any as S.Schema<TargetableRemarketingListsListResponse>;
 
-export type ListTargetingTemplatesSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListTargetingTemplatesSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListTargetingTemplatesSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListTargetingTemplatesSortFieldEnum = "ID" | "NAME";
+export type ListTargetingTemplatesSortFieldEnum = "ID" | "NAME" | (string & {});
 export const ListTargetingTemplatesSortFieldEnum = /*@__PURE__*/ S.String;
 
 export interface ListTargetingTemplatesRequest {
@@ -13720,7 +14022,8 @@ export type ListTvCampaignSummariesTvDataProviderEnum =
   | "TNS_VN"
   | "COMSCORE_NATIONAL_US"
   | "COMSCORE_CA"
-  | "SAMBA_AU";
+  | "SAMBA_AU"
+  | (string & {});
 export const ListTvCampaignSummariesTvDataProviderEnum = /*@__PURE__*/ S.String;
 
 export interface ListTvCampaignSummariesRequest {
@@ -13760,7 +14063,8 @@ export type TvCampaignSummaryTypeEnum =
   | "COMPANY"
   | "BRAND"
   | "PRODUCT"
-  | "CAMPAIGN";
+  | "CAMPAIGN"
+  | (string & {});
 export const TvCampaignSummaryTypeEnum = /*@__PURE__*/ S.String;
 
 /** TvCampaignSummary contains aggregate data from a TV campaign. */
@@ -13936,10 +14240,13 @@ export const UserRolePermissionsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UserRolePermissionsListResponse",
 }) as any as S.Schema<UserRolePermissionsListResponse>;
 
-export type ListUserRolesSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListUserRolesSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListUserRolesSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListUserRolesSortFieldEnum = "ID" | "NAME";
+export type ListUserRolesSortFieldEnum = "ID" | "NAME" | (string & {});
 export const ListUserRolesSortFieldEnum = /*@__PURE__*/ S.String;
 
 export interface ListUserRolesRequest {
@@ -14798,7 +15105,7 @@ export const DimensionValueList = /*@__PURE__*/ S.suspend(() =>
   identifier: "DimensionValueList",
 }) as any as S.Schema<DimensionValueList>;
 
-export type SortBySortOrderEnum = "ASCENDING" | "DESCENDING";
+export type SortBySortOrderEnum = "ASCENDING" | "DESCENDING" | (string & {});
 export const SortBySortOrderEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the sort configuration for a specific field in the report. */
@@ -14891,7 +15198,8 @@ export const ReportDataRowList = /*@__PURE__*/ S.Array(
 export type ColumnHeaderTypeEnum =
   | "COLUMN_TYPE_UNSPECIFIED"
   | "DIMENSION"
-  | "METRIC";
+  | "METRIC"
+  | (string & {});
 export const ColumnHeaderTypeEnum = /*@__PURE__*/ S.String;
 
 /** A column header in the report. */

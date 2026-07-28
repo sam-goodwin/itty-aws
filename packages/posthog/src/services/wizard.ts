@@ -20,7 +20,12 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 /** * `idle` - IDLE * `running` - RUNNING * `completed` - COMPLETED * `error` - ERROR */
-export type RunPhaseEnum = "idle" | "running" | "completed" | "error";
+export type RunPhaseEnum =
+  | "idle"
+  | "running"
+  | "completed"
+  | "error"
+  | (string & {});
 export const RunPhaseEnum = /*@__PURE__*/ S.String;
 
 /** * `pending` - PENDING * `in_progress` - IN_PROGRESS * `completed` - COMPLETED * `failed` - FAILED * `canceled` - CANCELED */
@@ -29,7 +34,8 @@ export type WizardTaskDTOStatusEnum =
   | "in_progress"
   | "completed"
   | "failed"
-  | "canceled";
+  | "canceled"
+  | (string & {});
 export const WizardTaskDTOStatusEnum = /*@__PURE__*/ S.String;
 
 export interface WizardTaskDTO {

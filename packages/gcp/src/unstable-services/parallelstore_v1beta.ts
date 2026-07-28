@@ -90,14 +90,16 @@ export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() =>
 export type InstanceDeploymentTypeEnum =
   | "DEPLOYMENT_TYPE_UNSPECIFIED"
   | "SCRATCH"
-  | "PERSISTENT";
+  | "PERSISTENT"
+  | (string & {});
 export const InstanceDeploymentTypeEnum = /*@__PURE__*/ S.String;
 
 export type InstanceFileStripeLevelEnum =
   | "FILE_STRIPE_LEVEL_UNSPECIFIED"
   | "FILE_STRIPE_LEVEL_MIN"
   | "FILE_STRIPE_LEVEL_BALANCED"
-  | "FILE_STRIPE_LEVEL_MAX";
+  | "FILE_STRIPE_LEVEL_MAX"
+  | (string & {});
 export const InstanceFileStripeLevelEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -110,7 +112,8 @@ export type InstanceDirectoryStripeLevelEnum =
   | "DIRECTORY_STRIPE_LEVEL_UNSPECIFIED"
   | "DIRECTORY_STRIPE_LEVEL_MIN"
   | "DIRECTORY_STRIPE_LEVEL_BALANCED"
-  | "DIRECTORY_STRIPE_LEVEL_MAX";
+  | "DIRECTORY_STRIPE_LEVEL_MAX"
+  | (string & {});
 export const InstanceDirectoryStripeLevelEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -125,7 +128,8 @@ export type InstanceStateEnum =
   | "DELETING"
   | "FAILED"
   | "UPGRADING"
-  | "REPAIRING";
+  | "REPAIRING"
+  | (string & {});
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 /** A Parallelstore instance. */
@@ -330,19 +334,22 @@ export const DestinationGcsBucket = /*@__PURE__*/ S.suspend(() =>
 export type TransferMetadataOptionsGidEnum =
   | "GID_UNSPECIFIED"
   | "GID_SKIP"
-  | "GID_NUMBER_PRESERVE";
+  | "GID_NUMBER_PRESERVE"
+  | (string & {});
 export const TransferMetadataOptionsGidEnum = /*@__PURE__*/ S.String;
 
 export type TransferMetadataOptionsUidEnum =
   | "UID_UNSPECIFIED"
   | "UID_SKIP"
-  | "UID_NUMBER_PRESERVE";
+  | "UID_NUMBER_PRESERVE"
+  | (string & {});
 export const TransferMetadataOptionsUidEnum = /*@__PURE__*/ S.String;
 
 export type TransferMetadataOptionsModeEnum =
   | "MODE_UNSPECIFIED"
   | "MODE_SKIP"
-  | "MODE_PRESERVE";
+  | "MODE_PRESERVE"
+  | (string & {});
 export const TransferMetadataOptionsModeEnum = /*@__PURE__*/ S.String;
 
 /** Transfer metadata options for the instance. */

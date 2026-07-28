@@ -104,10 +104,15 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
 export type CreateTaskRequestResponseViewEnum =
   | "VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const CreateTaskRequestResponseViewEnum = /*@__PURE__*/ S.String;
 
-export type TaskViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export type TaskViewEnum =
+  | "VIEW_UNSPECIFIED"
+  | "BASIC"
+  | "FULL"
+  | (string & {});
 export const TaskViewEnum = /*@__PURE__*/ S.String;
 
 /** Retry config. These settings determine how a failed task attempt is retried. */
@@ -186,7 +191,8 @@ export type AppEngineHttpRequestHttpMethodEnum =
   | "PUT"
   | "DELETE"
   | "PATCH"
-  | "OPTIONS";
+  | "OPTIONS"
+  | (string & {});
 export const AppEngineHttpRequestHttpMethodEnum = /*@__PURE__*/ S.String;
 
 /** App Engine HTTP request. The message defines the HTTP request that is sent to an App Engine app when the task is dispatched. This proto can only be used for tasks in a queue which has app_engine_http_target set. Using AppEngineHttpRequest requires [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control) Google IAM permission for the project and the following scope: `https://www.googleapis.com/auth/cloud-platform` The task will be delivered to the App Engine app which belongs to the same project as the queue. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed) and how routing is affected by [dispatch files](https://cloud.google.com/appengine/docs/python/config/dispatchref). Traffic is encrypted during transport and never leaves Google datacenters. Because this traffic is carried over a communication mechanism internal to Google, you cannot explicitly set the protocol (for example, HTTP or HTTPS). The request to the handler, however, will appear to have used the HTTP protocol. The AppEngineRouting used to construct the URL that the task is delivered to can be set at the queue-level or task-level: * If set, app_engine_routing_override is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing. The `url` that the task will be sent to is: * `url =` host `+` relative_url Tasks can be dispatched to secure app handlers, unsecure app handlers, and URIs restricted with [`login: admin`](https://cloud.google.com/appengine/docs/standard/python/config/appref). Because tasks are not run as any user, they cannot be dispatched to URIs restricted with [`login: required`](https://cloud.google.com/appengine/docs/standard/python/config/appref) Task dispatches also do not follow redirects. The task attempt has succeeded if the app's request handler returns an HTTP response code in the range [`200` - `299`]. The task attempt has failed if the app's handler returns a non-2xx response code or Cloud Tasks does not receive response before the deadline. Failed tasks will be retried according to the retry configuration. `503` (Service Unavailable) is considered an App Engine system error instead of an application error and will cause Cloud Tasks' traffic congestion control to temporarily throttle the queue's dispatches. Unlike other types of task targets, a `429` (Too Many Requests) response from an app handler does not cause traffic congestion control to throttle the queue. */
@@ -318,7 +324,8 @@ export type HttpRequestHttpMethodEnum =
   | "PUT"
   | "DELETE"
   | "PATCH"
-  | "OPTIONS";
+  | "OPTIONS"
+  | (string & {});
 export const HttpRequestHttpMethodEnum = /*@__PURE__*/ S.String;
 
 /** HTTP request. The task will be pushed to the worker as an HTTP request. An HTTP request embodies a url, an http method, headers, body and authorization for the http task. */
@@ -581,7 +588,8 @@ export const BufferTaskResponse = /*@__PURE__*/ S.suspend(() =>
 export type CancelLeaseRequestResponseViewEnum =
   | "VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const CancelLeaseRequestResponseViewEnum = /*@__PURE__*/ S.String;
 
 /** Request message for canceling a lease using CancelLease. */
@@ -672,7 +680,8 @@ export type QueueStateEnum =
   | "STATE_UNSPECIFIED"
   | "RUNNING"
   | "PAUSED"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const QueueStateEnum = /*@__PURE__*/ S.String;
 
 /** App Engine HTTP target. The task will be delivered to the App Engine application hostname specified by its AppEngineHttpTarget and AppEngineHttpRequest. The documentation for AppEngineHttpRequest explains how the task's host URL is constructed. Using AppEngineHttpTarget requires [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control) Google IAM permission for the project and the following scope: `https://www.googleapis.com/auth/cloud-platform` */
@@ -699,7 +708,11 @@ export const QueryOverride = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QueryOverride" }) as any as S.Schema<QueryOverride>;
 
-export type UriOverrideSchemeEnum = "SCHEME_UNSPECIFIED" | "HTTP" | "HTTPS";
+export type UriOverrideSchemeEnum =
+  | "SCHEME_UNSPECIFIED"
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const UriOverrideSchemeEnum = /*@__PURE__*/ S.String;
 
 /** PathOverride. Path message defines path override for HTTP targets. */
@@ -716,7 +729,8 @@ export const PathOverride = /*@__PURE__*/ S.suspend(() =>
 export type UriOverrideUriOverrideEnforceModeEnum =
   | "URI_OVERRIDE_ENFORCE_MODE_UNSPECIFIED"
   | "IF_NOT_EXISTS"
-  | "ALWAYS";
+  | "ALWAYS"
+  | (string & {});
 export const UriOverrideUriOverrideEnforceModeEnum = /*@__PURE__*/ S.String;
 
 /** Uri Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values. */
@@ -753,7 +767,8 @@ export type HttpTargetHttpMethodEnum =
   | "PUT"
   | "DELETE"
   | "PATCH"
-  | "OPTIONS";
+  | "OPTIONS"
+  | (string & {});
 export const HttpTargetHttpMethodEnum = /*@__PURE__*/ S.String;
 
 /** Defines a header message. A header can have a key and a value. */
@@ -1156,7 +1171,8 @@ export const GetProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsQueuesTasksResponseViewEnum =
   | "VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetProjectsLocationsQueuesTasksResponseViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -1187,7 +1203,8 @@ export const GetProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(
 export type LeaseTasksRequestResponseViewEnum =
   | "VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const LeaseTasksRequestResponseViewEnum = /*@__PURE__*/ S.String;
 
 /** Request message for leasing tasks using LeaseTasks. */
@@ -1357,7 +1374,8 @@ export const ListQueuesResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsQueuesTasksResponseViewEnum =
   | "VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListProjectsLocationsQueuesTasksResponseViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -1492,7 +1510,8 @@ export const PurgeProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
 export type RenewLeaseRequestResponseViewEnum =
   | "VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const RenewLeaseRequestResponseViewEnum = /*@__PURE__*/ S.String;
 
 /** Request message for renewing a lease using RenewLease. */
@@ -1569,7 +1588,8 @@ export const ResumeProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(
 export type RunTaskRequestResponseViewEnum =
   | "VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const RunTaskRequestResponseViewEnum = /*@__PURE__*/ S.String;
 
 /** Request message for forcing a task to run now using RunTask. */

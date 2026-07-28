@@ -124,7 +124,8 @@ export type ExecutionCallLogLevelEnum =
   | "CALL_LOG_LEVEL_UNSPECIFIED"
   | "LOG_ALL_CALLS"
   | "LOG_ERRORS_ONLY"
-  | "LOG_NONE";
+  | "LOG_NONE"
+  | (string & {});
 export const ExecutionCallLogLevelEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -211,16 +212,21 @@ export type ExecutionStateEnum =
   | "FAILED"
   | "CANCELLED"
   | "UNAVAILABLE"
-  | "QUEUED";
+  | "QUEUED"
+  | (string & {});
 export const ExecutionStateEnum = /*@__PURE__*/ S.String;
 
 export type ExecutionExecutionHistoryLevelEnum =
   | "EXECUTION_HISTORY_LEVEL_UNSPECIFIED"
   | "EXECUTION_HISTORY_BASIC"
-  | "EXECUTION_HISTORY_DETAILED";
+  | "EXECUTION_HISTORY_DETAILED"
+  | (string & {});
 export const ExecutionExecutionHistoryLevelEnum = /*@__PURE__*/ S.String;
 
-export type StateErrorTypeEnum = "TYPE_UNSPECIFIED" | "KMS_ERROR";
+export type StateErrorTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "KMS_ERROR"
+  | (string & {});
 export const StateErrorTypeEnum = /*@__PURE__*/ S.String;
 
 /** Describes an error related to the current state of the Execution resource. */
@@ -387,7 +393,8 @@ export const ExportDataResponse = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsWorkflowsExecutionsViewEnum =
   | "EXECUTION_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetProjectsLocationsWorkflowsExecutionsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -418,7 +425,8 @@ export const GetProjectsLocationsWorkflowsExecutionsRequest =
 export type GetProjectsLocationsWorkflowsExecutionsStepEntriesViewEnum =
   | "EXECUTION_ENTRY_VIEW_UNSPECIFIED"
   | "EXECUTION_ENTRY_VIEW_BASIC"
-  | "EXECUTION_ENTRY_VIEW_DETAILED";
+  | "EXECUTION_ENTRY_VIEW_DETAILED"
+  | (string & {});
 export const GetProjectsLocationsWorkflowsExecutionsStepEntriesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -496,7 +504,8 @@ export type StepEntryStepTypeEnum =
   | "STEP_EXCEPT"
   | "STEP_RETURN"
   | "STEP_RAISE"
-  | "STEP_GOTO";
+  | "STEP_GOTO"
+  | (string & {});
 export const StepEntryStepTypeEnum = /*@__PURE__*/ S.String;
 
 export type StepEntryMetadataProgressTypeEnum =
@@ -505,7 +514,8 @@ export type StepEntryMetadataProgressTypeEnum =
   | "PROGRESS_TYPE_SWITCH"
   | "PROGRESS_TYPE_RETRY"
   | "PROGRESS_TYPE_PARALLEL_FOR"
-  | "PROGRESS_TYPE_PARALLEL_BRANCH";
+  | "PROGRESS_TYPE_PARALLEL_BRANCH"
+  | (string & {});
 export const StepEntryMetadataProgressTypeEnum = /*@__PURE__*/ S.String;
 
 /** StepEntryMetadata contains metadata information about this step. */
@@ -535,7 +545,8 @@ export type StepEntryStateEnum =
   | "STATE_IN_PROGRESS"
   | "STATE_SUCCEEDED"
   | "STATE_FAILED"
-  | "STATE_CANCELLED";
+  | "STATE_CANCELLED"
+  | (string & {});
 export const StepEntryStateEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -610,7 +621,8 @@ export const StepEntry = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsWorkflowsExecutionsViewEnum =
   | "EXECUTION_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListProjectsLocationsWorkflowsExecutionsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -740,7 +752,8 @@ export const ListCallbacksResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsWorkflowsExecutionsStepEntriesViewEnum =
   | "EXECUTION_ENTRY_VIEW_UNSPECIFIED"
   | "EXECUTION_ENTRY_VIEW_BASIC"
-  | "EXECUTION_ENTRY_VIEW_DETAILED";
+  | "EXECUTION_ENTRY_VIEW_DETAILED"
+  | (string & {});
 export const ListProjectsLocationsWorkflowsExecutionsStepEntriesViewEnum =
   /*@__PURE__*/ S.String;
 

@@ -272,7 +272,8 @@ export type PerXdsConfigStatusEnum =
   | "SYNCED"
   | "NOT_SENT"
   | "STALE"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const PerXdsConfigStatusEnum = /*@__PURE__*/ S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
@@ -624,7 +625,7 @@ export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-export type SocketAddressProtocolEnum = "TCP" | "UDP";
+export type SocketAddressProtocolEnum = "TCP" | "UDP" | (string & {});
 export const SocketAddressProtocolEnum = /*@__PURE__*/ S.String;
 
 /** [#next-free-field: 7] */

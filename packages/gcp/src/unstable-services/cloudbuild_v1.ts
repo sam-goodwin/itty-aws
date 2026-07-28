@@ -63,7 +63,8 @@ export class NotFound extends T.applyErrorMatchers(
 export type ApprovalResultDecisionEnum =
   | "DECISION_UNSPECIFIED"
   | "APPROVED"
-  | "REJECTED";
+  | "REJECTED"
+  | (string & {});
 export const ApprovalResultDecisionEnum = /*@__PURE__*/ S.String;
 
 /** ApprovalResult describes the decision and associated metadata of a manual approval of a build. */
@@ -483,7 +484,8 @@ export type BuildOptionsMachineTypeEnum =
   | "E2_HIGHCPU_8"
   | "E2_HIGHCPU_32"
   | "E2_MEDIUM"
-  | "E2_STANDARD_2";
+  | "E2_STANDARD_2"
+  | (string & {});
 export const BuildOptionsMachineTypeEnum = /*@__PURE__*/ S.String;
 
 export type BuildOptionsSourceProvenanceHashItemEnum =
@@ -492,7 +494,8 @@ export type BuildOptionsSourceProvenanceHashItemEnum =
   | "MD5"
   | "GO_MODULE_H1"
   | "SHA512"
-  | "DIRSUM_SHA256";
+  | "DIRSUM_SHA256"
+  | (string & {});
 export const BuildOptionsSourceProvenanceHashItemEnum = /*@__PURE__*/ S.String;
 
 export type BuildOptionsSourceProvenanceHashItemEnumList =
@@ -505,7 +508,8 @@ export const BuildOptionsSourceProvenanceHashItemEnumList =
 export type BuildOptionsDefaultLogsBucketBehaviorEnum =
   | "DEFAULT_LOGS_BUCKET_BEHAVIOR_UNSPECIFIED"
   | "REGIONAL_USER_OWNED_BUCKET"
-  | "LEGACY_BUCKET";
+  | "LEGACY_BUCKET"
+  | (string & {});
 export const BuildOptionsDefaultLogsBucketBehaviorEnum = /*@__PURE__*/ S.String;
 
 export type BuildOptionsLoggingEnum =
@@ -514,10 +518,14 @@ export type BuildOptionsLoggingEnum =
   | "GCS_ONLY"
   | "STACKDRIVER_ONLY"
   | "CLOUD_LOGGING_ONLY"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const BuildOptionsLoggingEnum = /*@__PURE__*/ S.String;
 
-export type BuildOptionsRequestedVerifyOptionEnum = "NOT_VERIFIED" | "VERIFIED";
+export type BuildOptionsRequestedVerifyOptionEnum =
+  | "NOT_VERIFIED"
+  | "VERIFIED"
+  | (string & {});
 export const BuildOptionsRequestedVerifyOptionEnum = /*@__PURE__*/ S.String;
 
 /** Details about how a build should be executed on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information. */
@@ -531,7 +539,10 @@ export const PoolOption = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PoolOption" }) as any as S.Schema<PoolOption>;
 
-export type BuildOptionsSubstitutionOptionEnum = "MUST_MATCH" | "ALLOW_LOOSE";
+export type BuildOptionsSubstitutionOptionEnum =
+  | "MUST_MATCH"
+  | "ALLOW_LOOSE"
+  | (string & {});
 export const BuildOptionsSubstitutionOptionEnum = /*@__PURE__*/ S.String;
 
 /** Volume describes a Docker container volume which is mounted into build steps in order to persist files across build step execution. */
@@ -561,7 +572,8 @@ export const StringList = /*@__PURE__*/ S.Array(
 export type BuildOptionsLogStreamingOptionEnum =
   | "STREAM_DEFAULT"
   | "STREAM_ON"
-  | "STREAM_OFF";
+  | "STREAM_OFF"
+  | (string & {});
 export const BuildOptionsLogStreamingOptionEnum = /*@__PURE__*/ S.String;
 
 /** Optional arguments to enable specific features of builds. */
@@ -632,7 +644,8 @@ export type BuildApprovalStateEnum =
   | "PENDING"
   | "APPROVED"
   | "REJECTED"
-  | "CANCELLED";
+  | "CANCELLED"
+  | (string & {});
 export const BuildApprovalStateEnum = /*@__PURE__*/ S.String;
 
 /** ApprovalConfig describes configuration for manual approval of a build. */
@@ -768,7 +781,8 @@ export type HashTypeEnum =
   | "MD5"
   | "GO_MODULE_H1"
   | "SHA512"
-  | "DIRSUM_SHA256";
+  | "DIRSUM_SHA256"
+  | (string & {});
 export const HashTypeEnum = /*@__PURE__*/ S.String;
 
 /** Container message for hash values. */
@@ -916,7 +930,8 @@ export const UploadedNpmPackageList = /*@__PURE__*/ S.Array(
 export type BuiltImageOciMediaTypeEnum =
   | "OCI_MEDIA_TYPE_UNSPECIFIED"
   | "IMAGE_MANIFEST"
-  | "IMAGE_INDEX";
+  | "IMAGE_INDEX"
+  | (string & {});
 export const BuiltImageOciMediaTypeEnum = /*@__PURE__*/ S.String;
 
 /** An image built by the pipeline. */
@@ -1070,7 +1085,8 @@ export const GitConfig = /*@__PURE__*/ S.suspend(() =>
 export type StorageSourceSourceFetcherEnum =
   | "SOURCE_FETCHER_UNSPECIFIED"
   | "GSUTIL"
-  | "GCS_FETCHER";
+  | "GCS_FETCHER"
+  | (string & {});
 export const StorageSourceSourceFetcherEnum = /*@__PURE__*/ S.String;
 
 /** Location of the source in an archive file in Cloud Storage. */
@@ -1218,7 +1234,8 @@ export type BuildStatusEnum =
   | "INTERNAL_ERROR"
   | "TIMEOUT"
   | "CANCELLED"
-  | "EXPIRED";
+  | "EXPIRED"
+  | (string & {});
 export const BuildStatusEnum = /*@__PURE__*/ S.String;
 
 /** StepResult is the declaration of a result for a build step. */
@@ -1258,7 +1275,8 @@ export type BuildStepStatusEnum =
   | "INTERNAL_ERROR"
   | "TIMEOUT"
   | "CANCELLED"
-  | "EXPIRED";
+  | "EXPIRED"
+  | (string & {});
 export const BuildStepStatusEnum = /*@__PURE__*/ S.String;
 
 /** A step in the build pipeline. */
@@ -1338,7 +1356,8 @@ export type FailureInfoTypeEnum =
   | "PUSH_NOT_AUTHORIZED"
   | "LOGGING_FAILURE"
   | "USER_BUILD_STEP"
-  | "FETCH_SOURCE_FAILED";
+  | "FETCH_SOURCE_FAILED"
+  | (string & {});
 export const FailureInfoTypeEnum = /*@__PURE__*/ S.String;
 
 /** A fatal problem encountered during the execution of the build. */
@@ -1675,7 +1694,8 @@ export type WarningPriorityEnum =
   | "PRIORITY_UNSPECIFIED"
   | "INFO"
   | "WARNING"
-  | "ALERT";
+  | "ALERT"
+  | (string & {});
 export const WarningPriorityEnum = /*@__PURE__*/ S.String;
 
 /** A non-fatal problem encountered during the execution of the build. */
@@ -2224,7 +2244,8 @@ export const CreateProjectsLocationsGitLabConfigsRequest =
 
 export type BuildTriggerIncludeBuildLogsEnum =
   | "INCLUDE_BUILD_LOGS_UNSPECIFIED"
-  | "INCLUDE_BUILD_LOGS_WITH_STATUS";
+  | "INCLUDE_BUILD_LOGS_WITH_STATUS"
+  | (string & {});
 export const BuildTriggerIncludeBuildLogsEnum = /*@__PURE__*/ S.String;
 
 export type GitRepoSourceRepoTypeEnum =
@@ -2233,7 +2254,8 @@ export type GitRepoSourceRepoTypeEnum =
   | "GITHUB"
   | "BITBUCKET_SERVER"
   | "GITLAB"
-  | "BITBUCKET_CLOUD";
+  | "BITBUCKET_CLOUD"
+  | (string & {});
 export const GitRepoSourceRepoTypeEnum = /*@__PURE__*/ S.String;
 
 /** GitRepoSource describes a repo and ref of a code repository. */
@@ -2265,7 +2287,8 @@ export const GitRepoSource = /*@__PURE__*/ S.suspend(() =>
 export type WebhookConfigStateEnum =
   | "STATE_UNSPECIFIED"
   | "OK"
-  | "SECRET_DELETED";
+  | "SECRET_DELETED"
+  | (string & {});
 export const WebhookConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL. */
@@ -2285,7 +2308,8 @@ export const WebhookConfig = /*@__PURE__*/ S.suspend(() =>
 export type PullRequestFilterCommentControlEnum =
   | "COMMENTS_DISABLED"
   | "COMMENTS_ENABLED"
-  | "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY";
+  | "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"
+  | (string & {});
 export const PullRequestFilterCommentControlEnum = /*@__PURE__*/ S.String;
 
 /** PullRequestFilter contains filter properties for matching GitHub Pull Requests. */
@@ -2330,7 +2354,8 @@ export type RepositoryEventConfigRepositoryTypeEnum =
   | "GITHUB_ENTERPRISE"
   | "GITLAB_ENTERPRISE"
   | "BITBUCKET_DATA_CENTER"
-  | "BITBUCKET_CLOUD";
+  | "BITBUCKET_CLOUD"
+  | (string & {});
 export const RepositoryEventConfigRepositoryTypeEnum = /*@__PURE__*/ S.String;
 
 /** The configuration of a trigger that creates a build whenever an event from Repo API is received. */
@@ -2360,7 +2385,8 @@ export type PubsubConfigStateEnum =
   | "OK"
   | "SUBSCRIPTION_DELETED"
   | "TOPIC_DELETED"
-  | "SUBSCRIPTION_MISCONFIGURED";
+  | "SUBSCRIPTION_MISCONFIGURED"
+  | (string & {});
 export const PubsubConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published. */
@@ -2390,7 +2416,8 @@ export type DeveloperConnectEventConfigGitRepositoryLinkTypeEnum =
   | "GITLAB"
   | "GITLAB_ENTERPRISE"
   | "BITBUCKET_DATA_CENTER"
-  | "BITBUCKET_CLOUD";
+  | "BITBUCKET_CLOUD"
+  | (string & {});
 export const DeveloperConnectEventConfigGitRepositoryLinkTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2424,7 +2451,8 @@ export type GitFileSourceRepoTypeEnum =
   | "GITHUB"
   | "BITBUCKET_SERVER"
   | "GITLAB"
-  | "BITBUCKET_CLOUD";
+  | "BITBUCKET_CLOUD"
+  | (string & {});
 export const GitFileSourceRepoTypeEnum = /*@__PURE__*/ S.String;
 
 /** GitFileSource describes a file within a (possibly remote) code repository. */
@@ -2461,7 +2489,8 @@ export type BuildTriggerEventTypeEnum =
   | "REPO"
   | "WEBHOOK"
   | "PUBSUB"
-  | "MANUAL";
+  | "MANUAL"
+  | (string & {});
 export const BuildTriggerEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received. */
@@ -2682,7 +2711,8 @@ export const WorkerConfig = /*@__PURE__*/ S.suspend(() =>
 export type NetworkConfigEgressOptionEnum =
   | "EGRESS_OPTION_UNSPECIFIED"
   | "NO_PUBLIC_EGRESS"
-  | "PUBLIC_EGRESS";
+  | "PUBLIC_EGRESS"
+  | (string & {});
 export const NetworkConfigEgressOptionEnum = /*@__PURE__*/ S.String;
 
 /** Defines the network configuration for the pool. */
@@ -2746,7 +2776,8 @@ export type WorkerPoolStateEnum =
   | "RUNNING"
   | "DELETING"
   | "DELETED"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const WorkerPoolStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for a `WorkerPool`. Cloud Build owns and maintains a pool of workers for general use and have no access to a project's private network. By default, builds submitted to Cloud Build will use a worker from this pool. If your build needs access to resources on a private network, create and use a `WorkerPool` to run your builds. Private `WorkerPool`s give your builds access to any single VPC network that you administer, including any on-prem resources connected to that VPC network. For an overview of private pools, see [Private pools overview](https://cloud.google.com/build/docs/private-pools/private-pools-overview). */

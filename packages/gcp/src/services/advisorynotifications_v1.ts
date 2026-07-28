@@ -86,7 +86,8 @@ export type GoogleCloudAdvisorynotificationsV1TextLocalizationStateEnum =
   | "LOCALIZATION_STATE_UNSPECIFIED"
   | "LOCALIZATION_STATE_NOT_APPLICABLE"
   | "LOCALIZATION_STATE_PENDING"
-  | "LOCALIZATION_STATE_COMPLETED";
+  | "LOCALIZATION_STATE_COMPLETED"
+  | (string & {});
 export const GoogleCloudAdvisorynotificationsV1TextLocalizationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -242,7 +243,8 @@ export type GoogleCloudAdvisorynotificationsV1NotificationNotificationTypeEnum =
     | "NOTIFICATION_TYPE_SECURITY_PRIVACY_ADVISORY"
     | "NOTIFICATION_TYPE_SENSITIVE_ACTIONS"
     | "NOTIFICATION_TYPE_SECURITY_MSA"
-    | "NOTIFICATION_TYPE_THREAT_HORIZONS";
+    | "NOTIFICATION_TYPE_THREAT_HORIZONS"
+    | (string & {});
 export const GoogleCloudAdvisorynotificationsV1NotificationNotificationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -383,7 +385,8 @@ export const GetSettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListOrganizationsLocationsNotificationsViewEnum =
   | "NOTIFICATION_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListOrganizationsLocationsNotificationsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -452,7 +455,8 @@ export const GoogleCloudAdvisorynotificationsV1ListNotificationsResponse =
 export type ListProjectsLocationsNotificationsViewEnum =
   | "NOTIFICATION_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListProjectsLocationsNotificationsViewEnum =
   /*@__PURE__*/ S.String;
 

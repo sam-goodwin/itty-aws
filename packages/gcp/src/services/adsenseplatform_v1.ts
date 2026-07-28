@@ -115,7 +115,8 @@ export type AccountStateEnum =
   | "STATE_UNSPECIFIED"
   | "UNCHECKED"
   | "APPROVED"
-  | "DISAPPROVED";
+  | "DISAPPROVED"
+  | (string & {});
 export const AccountStateEnum = /*@__PURE__*/ S.String;
 
 /** Representation of an Account. */
@@ -223,7 +224,8 @@ export const EventInfo = /*@__PURE__*/ S.suspend(() =>
 export type EventEventTypeEnum =
   | "EVENT_TYPE_UNSPECIFIED"
   | "LOG_IN_VIA_PLATFORM"
-  | "SIGN_UP_VIA_PLATFORM";
+  | "SIGN_UP_VIA_PLATFORM"
+  | (string & {});
 export const EventEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** A platform sub-account event to record spam signals. */
@@ -270,7 +272,8 @@ export type SiteStateEnum =
   | "REQUIRES_REVIEW"
   | "GETTING_READY"
   | "READY"
-  | "NEEDS_ATTENTION";
+  | "NEEDS_ATTENTION"
+  | (string & {});
 export const SiteStateEnum = /*@__PURE__*/ S.String;
 
 /** Representation of a Site. */

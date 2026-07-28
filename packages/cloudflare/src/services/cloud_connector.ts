@@ -67,7 +67,8 @@ export type RulesListResultItemProvider =
   | "aws_s3"
   | "cloudflare_r2"
   | "gcp_storage"
-  | "azure_storage";
+  | "azure_storage"
+  | (string & {});
 export const RulesListResultItemProvider = /*@__PURE__*/ S.String;
 
 export interface RulesListResultItem {
@@ -130,7 +131,8 @@ export type RulesUpdateRequestRulesItemProvider =
   | "aws_s3"
   | "cloudflare_r2"
   | "gcp_storage"
-  | "azure_storage";
+  | "azure_storage"
+  | (string & {});
 export const RulesUpdateRequestRulesItemProvider = /*@__PURE__*/ S.String;
 
 export interface RulesUpdateRequestRulesItem {
@@ -196,7 +198,8 @@ export type RulesUpdateResultItemProvider =
   | "aws_s3"
   | "cloudflare_r2"
   | "gcp_storage"
-  | "azure_storage";
+  | "azure_storage"
+  | (string & {});
 export const RulesUpdateResultItemProvider = /*@__PURE__*/ S.String;
 
 export interface RulesUpdateResultItem {

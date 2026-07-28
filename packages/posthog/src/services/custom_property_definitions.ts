@@ -20,14 +20,16 @@ export type CustomPropertyDisplayTypeEnum =
   | "date"
   | "datetime"
   | "boolean"
-  | "select";
+  | "select"
+  | (string & {});
 export const CustomPropertyDisplayTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `account` - account * `person` - person * `group` - group */
 export type CustomPropertyDefinitionTargetTypeEnum =
   | "account"
   | "person"
-  | "group";
+  | "group"
+  | (string & {});
 export const CustomPropertyDefinitionTargetTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `preset-1` - preset-1 * `preset-2` - preset-2 * `preset-3` - preset-3 * `preset-4` - preset-4 * `preset-5` - preset-5 * `preset-6` - preset-6 * `preset-7` - preset-7 * `preset-8` - preset-8 * `preset-9` - preset-9 * `preset-10` - preset-10 */
@@ -41,7 +43,8 @@ export type CustomPropertyOptionColorEnum =
   | "preset-7"
   | "preset-8"
   | "preset-9"
-  | "preset-10";
+  | "preset-10"
+  | (string & {});
 export const CustomPropertyOptionColorEnum = /*@__PURE__*/ S.String;
 
 /** An allowed value of a select custom property. */

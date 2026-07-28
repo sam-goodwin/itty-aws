@@ -107,7 +107,8 @@ export type ConsentStateEnum =
   | "ARCHIVED"
   | "REVOKED"
   | "DRAFT"
-  | "REJECTED";
+  | "REJECTED"
+  | (string & {});
 export const ConsentStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -224,14 +225,16 @@ export const Consent = /*@__PURE__*/ S.suspend(() =>
 
 export type AnalyzeEntitiesRequestAlternativeOutputFormatEnum =
   | "ALTERNATIVE_OUTPUT_FORMAT_UNSPECIFIED"
-  | "FHIR_BUNDLE";
+  | "FHIR_BUNDLE"
+  | (string & {});
 export const AnalyzeEntitiesRequestAlternativeOutputFormatEnum =
   /*@__PURE__*/ S.String;
 
 export type AnalyzeEntitiesRequestLicensedVocabulariesItemEnum =
   | "LICENSED_VOCABULARY_UNSPECIFIED"
   | "ICD10CM"
-  | "SNOMEDCT_US";
+  | "SNOMEDCT_US"
+  | (string & {});
 export const AnalyzeEntitiesRequestLicensedVocabulariesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -656,7 +659,8 @@ export type BatchGetProjectsLocationsDatasetsHl7V2StoresMessagesViewEnum =
   | "PARSED_ONLY"
   | "FULL"
   | "SCHEMATIZED_ONLY"
-  | "BASIC";
+  | "BASIC"
+  | (string & {});
 export const BatchGetProjectsLocationsDatasetsHl7V2StoresMessagesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -974,7 +978,8 @@ export type BulkDeleteResourcesRequestVersionConfigEnum =
   | "VERSION_CONFIG_UNSPECIFIED"
   | "ALL"
   | "CURRENT_ONLY"
-  | "HISTORY_ONLY";
+  | "HISTORY_ONLY"
+  | (string & {});
 export const BulkDeleteResourcesRequestVersionConfigEnum =
   /*@__PURE__*/ S.String;
 
@@ -1108,7 +1113,8 @@ export const ConsentList = /*@__PURE__*/ S.suspend(() =>
 export type CheckDataAccessRequestResponseViewEnum =
   | "RESPONSE_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const CheckDataAccessRequestResponseViewEnum = /*@__PURE__*/ S.String;
 
 /** Checks if a particular data_id of a User data mapping in the given consent store is consented for a given use. */
@@ -1160,7 +1166,8 @@ export type ConsentEvaluationEvaluationResultEnum =
   | "NOT_APPLICABLE"
   | "NO_MATCHING_POLICY"
   | "NO_SATISFIED_POLICY"
-  | "HAS_SATISFIED_POLICY";
+  | "HAS_SATISFIED_POLICY"
+  | (string & {});
 export const ConsentEvaluationEvaluationResultEnum = /*@__PURE__*/ S.String;
 
 /** The detailed evaluation of a particular Consent. */
@@ -1507,7 +1514,8 @@ export const CreateProjectsLocationsDatasetsConsentStoresRequest =
 export type AttributeDefinitionCategoryEnum =
   | "CATEGORY_UNSPECIFIED"
   | "RESOURCE"
-  | "REQUEST";
+  | "REQUEST"
+  | (string & {});
 export const AttributeDefinitionCategoryEnum = /*@__PURE__*/ S.String;
 
 /** A client-defined consent attribute. */
@@ -1761,7 +1769,8 @@ export type GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDisposition
     | "WRITE_DISPOSITION_UNSPECIFIED"
     | "WRITE_EMPTY"
     | "WRITE_TRUNCATE"
-    | "WRITE_APPEND";
+    | "WRITE_APPEND"
+    | (string & {});
 export const GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDispositionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1911,13 +1920,15 @@ export type FhirStoreVersionEnum =
   | "DSTU2"
   | "STU3"
   | "R4"
-  | "R5";
+  | "R5"
+  | (string & {});
 export const FhirStoreVersionEnum = /*@__PURE__*/ S.String;
 
 export type FhirStoreComplexDataTypeReferenceParsingEnum =
   | "COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED"
   | "DISABLED"
-  | "ENABLED";
+  | "ENABLED"
+  | (string & {});
 export const FhirStoreComplexDataTypeReferenceParsingEnum =
   /*@__PURE__*/ S.String;
 
@@ -1962,7 +1973,8 @@ export type AccessDeterminationLogConfigLogLevelEnum =
   | "LOG_LEVEL_UNSPECIFIED"
   | "DISABLED"
   | "MINIMUM"
-  | "VERBOSE";
+  | "VERBOSE"
+  | (string & {});
 export const AccessDeterminationLogConfigLogLevelEnum = /*@__PURE__*/ S.String;
 
 /** Configures consent audit log config for FHIR create, read, update, and delete (CRUD) operations. Cloud audit log for healthcare API must be [enabled](https://cloud.google.com/logging/docs/audit/configure-data-access#config-console-enable). The consent-related logs are included as part of `protoPayload.metadata`. */
@@ -1980,13 +1992,15 @@ export const AccessDeterminationLogConfig = /*@__PURE__*/ S.suspend(() =>
 
 export type ConsentConfigVersionEnum =
   | "CONSENT_ENFORCEMENT_VERSION_UNSPECIFIED"
-  | "V1";
+  | "V1"
+  | (string & {});
 export const ConsentConfigVersionEnum = /*@__PURE__*/ S.String;
 
 export type ConsentHeaderHandlingProfileEnum =
   | "SCOPE_PROFILE_UNSPECIFIED"
   | "PERMIT_EMPTY_SCOPE"
-  | "REQUIRED_ON_READ";
+  | "REQUIRED_ON_READ"
+  | (string & {});
 export const ConsentHeaderHandlingProfileEnum = /*@__PURE__*/ S.String;
 
 /** How the server handles the consent header. */
@@ -2062,7 +2076,8 @@ export type TimePartitioningTypeEnum =
   | "HOUR"
   | "DAY"
   | "MONTH"
-  | "YEAR";
+  | "YEAR"
+  | (string & {});
 export const TimePartitioningTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for FHIR BigQuery time-partitioned tables. */
@@ -2085,7 +2100,8 @@ export type SchemaConfigSchemaTypeEnum =
   | "SCHEMA_TYPE_UNSPECIFIED"
   | "LOSSLESS"
   | "ANALYTICS"
-  | "ANALYTICS_V2";
+  | "ANALYTICS_V2"
+  | (string & {});
 export const SchemaConfigSchemaTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for the FHIR BigQuery schema. Determines how the server generates the schema. */
@@ -2109,12 +2125,16 @@ export type GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDispositionE
     | "WRITE_DISPOSITION_UNSPECIFIED"
     | "WRITE_EMPTY"
     | "WRITE_TRUNCATE"
-    | "WRITE_APPEND";
+    | "WRITE_APPEND"
+    | (string & {});
 export const GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDispositionEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudHealthcareV1beta1FhirChangeDataCaptureConfigHistoryModeEnum =
-  "HISTORY_MODE_UNSPECIFIED" | "KEEP_LATEST_VERSION" | "KEEP_ALL_VERSIONS";
+    | "HISTORY_MODE_UNSPECIFIED"
+    | "KEEP_LATEST_VERSION"
+    | "KEEP_ALL_VERSIONS"
+    | (string & {});
 export const GoogleCloudHealthcareV1beta1FhirChangeDataCaptureConfigHistoryModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2247,7 +2267,8 @@ export type FhirFieldConfigProfileTypeEnum =
   | "PROFILE_TYPE_UNSPECIFIED"
   | "KEEP_ALL"
   | "BASIC"
-  | "CLEAN_ALL";
+  | "CLEAN_ALL"
+  | (string & {});
 export const FhirFieldConfigProfileTypeEnum = /*@__PURE__*/ S.String;
 
 /** Mask a string by replacing its characters with a fixed character. */
@@ -2414,7 +2435,8 @@ export type DicomConfigFilterProfileEnum =
   | "MINIMAL_KEEP_LIST_PROFILE"
   | "ATTRIBUTE_CONFIDENTIALITY_BASIC_PROFILE"
   | "KEEP_ALL_PROFILE"
-  | "DEIDENTIFY_TAG_CONTENTS";
+  | "DEIDENTIFY_TAG_CONTENTS"
+  | (string & {});
 export const DicomConfigFilterProfileEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the parameters needed for de-identification of DICOM stores. */
@@ -2487,7 +2509,8 @@ export const InfoTypeTransformationList = /*@__PURE__*/ S.Array(
 export type TextConfigProfileTypeEnum =
   | "PROFILE_TYPE_UNSPECIFIED"
   | "EMPTY"
-  | "BASIC";
+  | "BASIC"
+  | (string & {});
 export const TextConfigProfileTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configures how to transform sensitive text `InfoTypes`. */
@@ -2515,7 +2538,8 @@ export type ImageConfigTextRedactionModeEnum =
   | "REDACT_ALL_TEXT"
   | "REDACT_SENSITIVE_TEXT"
   | "REDACT_NO_TEXT"
-  | "REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS";
+  | "REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS"
+  | (string & {});
 export const ImageConfigTextRedactionModeEnum = /*@__PURE__*/ S.String;
 
 export type IntegerList = ReadonlyArray<number>;
@@ -2565,7 +2589,8 @@ export const ImageConfig = /*@__PURE__*/ S.suspend(() =>
 export type OptionsPrimaryIdsEnum =
   | "PRIMARY_IDS_OPTION_UNSPECIFIED"
   | "KEEP"
-  | "REGEN";
+  | "REGEN"
+  | (string & {});
 export const OptionsPrimaryIdsEnum = /*@__PURE__*/ S.String;
 
 /** This option is based on the DICOM Standard's [Clean Descriptors Option](https://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and the `CleanText` `Action` is applied to all the specified fields. When cleaning text, the process attempts to transform phrases matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic Profile](https://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases are replaced with the token "[CTX]". This option uses an additional infoType during inspection. */
@@ -2680,7 +2705,8 @@ export type DicomTagConfigProfileTypeEnum =
   | "MINIMAL_KEEP_LIST_PROFILE"
   | "ATTRIBUTE_CONFIDENTIALITY_BASIC_PROFILE"
   | "KEEP_ALL_PROFILE"
-  | "DEIDENTIFY_TAG_CONTENTS";
+  | "DEIDENTIFY_TAG_CONTENTS"
+  | (string & {});
 export const DicomTagConfigProfileTypeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the parameters needed for the de-identification of DICOM stores. */
@@ -2704,7 +2730,8 @@ export type FieldMetadataActionEnum =
   | "ACTION_UNSPECIFIED"
   | "TRANSFORM"
   | "INSPECT_AND_TRANSFORM"
-  | "DO_NOT_TRANSFORM";
+  | "DO_NOT_TRANSFORM"
+  | (string & {});
 export const FieldMetadataActionEnum = /*@__PURE__*/ S.String;
 
 /** Specifies FHIR paths to match, and how to handle de-identification of matching fields. */
@@ -2975,7 +3002,8 @@ export const Hl7V2NotificationConfigList = /*@__PURE__*/ S.Array(
 export type SchemaPackageSchematizedParsingTypeEnum =
   | "SCHEMATIZED_PARSING_TYPE_UNSPECIFIED"
   | "SOFT_FAIL"
-  | "HARD_FAIL";
+  | "HARD_FAIL"
+  | (string & {});
 export const SchemaPackageSchematizedParsingTypeEnum = /*@__PURE__*/ S.String;
 
 /** An HL7v2 Segment. */
@@ -3085,7 +3113,8 @@ export type TypePrimitiveEnum =
   | "PRIMITIVE_UNSPECIFIED"
   | "STRING"
   | "VARIES"
-  | "UNESCAPED_STRING";
+  | "UNESCAPED_STRING"
+  | (string & {});
 export const TypePrimitiveEnum = /*@__PURE__*/ S.String;
 
 /** A (sub) field of a type. */
@@ -3161,7 +3190,8 @@ export type SchemaPackageUnexpectedSegmentHandlingEnum =
   | "UNEXPECTED_SEGMENT_HANDLING_MODE_UNSPECIFIED"
   | "FAIL"
   | "SKIP"
-  | "PARSE";
+  | "PARSE"
+  | (string & {});
 export const SchemaPackageUnexpectedSegmentHandlingEnum =
   /*@__PURE__*/ S.String;
 
@@ -3194,7 +3224,8 @@ export type ParserConfigVersionEnum =
   | "PARSER_VERSION_UNSPECIFIED"
   | "V1"
   | "V2"
-  | "V3";
+  | "V3"
+  | (string & {});
 export const ParserConfigVersionEnum = /*@__PURE__*/ S.String;
 
 /** The configuration for the parser. It determines how the server parses the messages. */
@@ -3824,7 +3855,8 @@ export const Encounter_everythingProjectsLocationsDatasetsFhirStoresFhirRequest 
 export type EvaluateUserConsentsRequestResponseViewEnum =
   | "RESPONSE_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const EvaluateUserConsentsRequestResponseViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3985,13 +4017,15 @@ export const ConsentAccessorScope = /*@__PURE__*/ S.suspend(() =>
 export type ExplainDataAccessConsentScopeDecisionEnum =
   | "CONSENT_DECISION_TYPE_UNSPECIFIED"
   | "CONSENT_DECISION_TYPE_PERMIT"
-  | "CONSENT_DECISION_TYPE_DENY";
+  | "CONSENT_DECISION_TYPE_DENY"
+  | (string & {});
 export const ExplainDataAccessConsentScopeDecisionEnum = /*@__PURE__*/ S.String;
 
 export type ExplainDataAccessConsentInfoTypeEnum =
   | "CONSENT_POLICY_TYPE_UNSPECIFIED"
   | "CONSENT_POLICY_TYPE_PATIENT"
-  | "CONSENT_POLICY_TYPE_ADMIN";
+  | "CONSENT_POLICY_TYPE_ADMIN"
+  | (string & {});
 export const ExplainDataAccessConsentInfoTypeEnum = /*@__PURE__*/ S.String;
 
 export type ConsentAccessorScopeList = ReadonlyArray<ConsentAccessorScope>;
@@ -4002,7 +4036,8 @@ export const ConsentAccessorScopeList = /*@__PURE__*/ S.Array(
 export type ExplainDataAccessConsentInfoVariantsItemEnum =
   | "CONSENT_VARIANT_UNSPECIFIED"
   | "CONSENT_VARIANT_STANDARD"
-  | "CONSENT_VARIANT_CASCADE";
+  | "CONSENT_VARIANT_CASCADE"
+  | (string & {});
 export const ExplainDataAccessConsentInfoVariantsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -4263,12 +4298,14 @@ export type GcsDestinationMessageViewEnum =
   | "PARSED_ONLY"
   | "FULL"
   | "SCHEMATIZED_ONLY"
-  | "BASIC";
+  | "BASIC"
+  | (string & {});
 export const GcsDestinationMessageViewEnum = /*@__PURE__*/ S.String;
 
 export type GcsDestinationContentStructureEnum =
   | "CONTENT_STRUCTURE_UNSPECIFIED"
-  | "MESSAGE_JSON";
+  | "MESSAGE_JSON"
+  | (string & {});
 export const GcsDestinationContentStructureEnum = /*@__PURE__*/ S.String;
 
 /** The Cloud Storage output destination. The Cloud Healthcare Service Agent requires the `roles/storage.objectAdmin` Cloud IAM roles on the Cloud Storage location. */
@@ -4551,7 +4588,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -4965,7 +5003,8 @@ export type GetProjectsLocationsDatasetsHl7V2StoresMessagesViewEnum =
   | "PARSED_ONLY"
   | "FULL"
   | "SCHEMATIZED_ONLY"
-  | "BASIC";
+  | "BASIC"
+  | (string & {});
 export const GetProjectsLocationsDatasetsHl7V2StoresMessagesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -5090,7 +5129,8 @@ export type BlobStorageInfoStorageClassEnum =
   | "STANDARD"
   | "NEARLINE"
   | "COLDLINE"
-  | "ARCHIVE";
+  | "ARCHIVE"
+  | (string & {});
 export const BlobStorageInfoStorageClassEnum = /*@__PURE__*/ S.String;
 
 /** BlobStorageInfo contains details about the data stored in Blob Storage for the referenced resource. Note: Storage class is only valid for DICOM and hence will only be populated for DICOM resources. */
@@ -5208,7 +5248,8 @@ export type ImportResourcesHistoryRequestContentStructureEnum =
   | "BUNDLE"
   | "RESOURCE"
   | "BUNDLE_PRETTY"
-  | "RESOURCE_PRETTY";
+  | "RESOURCE_PRETTY"
+  | (string & {});
 export const ImportResourcesHistoryRequestContentStructureEnum =
   /*@__PURE__*/ S.String;
 
@@ -5288,7 +5329,8 @@ export type BlobStorageSettingsBlobStorageClassEnum =
   | "STANDARD"
   | "NEARLINE"
   | "COLDLINE"
-  | "ARCHIVE";
+  | "ARCHIVE"
+  | (string & {});
 export const BlobStorageSettingsBlobStorageClassEnum = /*@__PURE__*/ S.String;
 
 /** Settings for data stored in Blob storage. */
@@ -5347,7 +5389,8 @@ export type ImportResourcesRequestContentStructureEnum =
   | "BUNDLE"
   | "RESOURCE"
   | "BUNDLE_PRETTY"
-  | "RESOURCE_PRETTY";
+  | "RESOURCE_PRETTY"
+  | (string & {});
 export const ImportResourcesRequestContentStructureEnum =
   /*@__PURE__*/ S.String;
 
@@ -5979,7 +6022,8 @@ export type ListProjectsLocationsDatasetsHl7V2StoresMessagesViewEnum =
   | "PARSED_ONLY"
   | "FULL"
   | "SCHEMATIZED_ONLY"
-  | "BASIC";
+  | "BASIC"
+  | (string & {});
 export const ListProjectsLocationsDatasetsHl7V2StoresMessagesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -6940,7 +6984,8 @@ export type RollbackFhirResourcesRequestChangeTypeEnum =
   | "ALL"
   | "CREATE"
   | "UPDATE"
-  | "DELETE";
+  | "DELETE"
+  | (string & {});
 export const RollbackFhirResourcesRequestChangeTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7021,7 +7066,8 @@ export type RollbackHl7V2MessagesRequestChangeTypeEnum =
   | "ALL"
   | "CREATE"
   | "UPDATE"
-  | "DELETE";
+  | "DELETE"
+  | (string & {});
 export const RollbackHl7V2MessagesRequestChangeTypeEnum =
   /*@__PURE__*/ S.String;
 

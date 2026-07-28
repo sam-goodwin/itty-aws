@@ -42,7 +42,8 @@ export type NotificationGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const NotificationGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -51,7 +52,8 @@ export type NotificationGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const NotificationGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -240,7 +242,8 @@ export type NotificationSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const NotificationSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -248,7 +251,8 @@ export type NotificationSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const NotificationSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */

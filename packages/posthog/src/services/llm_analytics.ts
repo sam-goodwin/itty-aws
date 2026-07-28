@@ -102,7 +102,11 @@ export const LlmAnalyticsClusteringConfigSetEventFiltersCreateRequest =
   }) as any as S.Schema<LlmAnalyticsClusteringConfigSetEventFiltersCreateRequest>;
 
 /** * `trace` - trace * `generation` - generation * `evaluation` - evaluation */
-export type AnalysisLevelEnum = "trace" | "generation" | "evaluation";
+export type AnalysisLevelEnum =
+  | "trace"
+  | "generation"
+  | "evaluation"
+  | (string & {});
 export const AnalysisLevelEnum = /*@__PURE__*/ S.String;
 
 export interface LlmAnalyticsClusteringJobsCreateRequest {
@@ -312,19 +316,23 @@ export const LlmAnalyticsClusteringJobsUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LlmAnalyticsClusteringJobsUpdateRequest>;
 
 /** * `none` - none * `l2` - l2 */
-export type EmbeddingNormalizationEnum = "none" | "l2";
+export type EmbeddingNormalizationEnum = "none" | "l2" | (string & {});
 export const EmbeddingNormalizationEnum = /*@__PURE__*/ S.String;
 
 /** * `none` - none * `umap` - umap * `pca` - pca */
-export type DimensionalityReductionMethodEnum = "none" | "umap" | "pca";
+export type DimensionalityReductionMethodEnum =
+  | "none"
+  | "umap"
+  | "pca"
+  | (string & {});
 export const DimensionalityReductionMethodEnum = /*@__PURE__*/ S.String;
 
 /** * `hdbscan` - hdbscan * `kmeans` - kmeans */
-export type ClusteringMethodEnum = "hdbscan" | "kmeans";
+export type ClusteringMethodEnum = "hdbscan" | "kmeans" | (string & {});
 export const ClusteringMethodEnum = /*@__PURE__*/ S.String;
 
 /** * `umap` - umap * `pca` - pca * `tsne` - tsne */
-export type VisualizationMethodEnum = "umap" | "pca" | "tsne";
+export type VisualizationMethodEnum = "umap" | "pca" | "tsne" | (string & {});
 export const VisualizationMethodEnum = /*@__PURE__*/ S.String;
 
 export type LlmAnalyticsClusteringRunsCreateRequestEventFiltersItemMap = {
@@ -507,11 +515,17 @@ export type LLMProviderEnum =
   | "azure_openai"
   | "together_ai"
   | "minimax"
-  | "zeabur";
+  | "zeabur"
+  | (string & {});
 export const LLMProviderEnum = /*@__PURE__*/ S.String;
 
 /** * `unknown` - Unknown * `ok` - Ok * `invalid` - Invalid * `error` - Error */
-export type LLMProviderKeyStateEnum = "unknown" | "ok" | "invalid" | "error";
+export type LLMProviderKeyStateEnum =
+  | "unknown"
+  | "ok"
+  | "invalid"
+  | "error"
+  | (string & {});
 export const LLMProviderKeyStateEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
@@ -529,10 +543,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -638,7 +653,10 @@ export const LlmAnalyticsEvaluationConfigSetActiveKeyCreateRequest =
   }) as any as S.Schema<LlmAnalyticsEvaluationConfigSetActiveKeyCreateRequest>;
 
 /** * `scheduled` - Scheduled * `every_n` - Every N */
-export type EvaluationReportFrequencyEnum = "scheduled" | "every_n";
+export type EvaluationReportFrequencyEnum =
+  | "scheduled"
+  | "every_n"
+  | (string & {});
 export const EvaluationReportFrequencyEnum = /*@__PURE__*/ S.String;
 
 export interface LlmAnalyticsEvaluationReportsCreateRequest {
@@ -1013,7 +1031,7 @@ export const LlmAnalyticsEvaluationReportsRunsListRequest =
   }) as any as S.Schema<LlmAnalyticsEvaluationReportsRunsListRequest>;
 
 /** * `generation` - Generation * `trace` - Trace */
-export type EvaluationTargetEnum = "generation" | "trace";
+export type EvaluationTargetEnum = "generation" | "trace" | (string & {});
 export const EvaluationTargetEnum = /*@__PURE__*/ S.String;
 
 export interface EvaluationReportSection {
@@ -1064,7 +1082,7 @@ export const EvaluationReportRunContentCitationsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EvaluationReportRunContentCitationsList>;
 
 /** * `boolean` - Boolean (Pass/Fail) * `sentiment` - Sentiment */
-export type OutputTypeEnum = "boolean" | "sentiment";
+export type OutputTypeEnum = "boolean" | "sentiment" | (string & {});
 export const OutputTypeEnum = /*@__PURE__*/ S.String;
 
 /** Count by output-specific result label, such as pass/fail/N/A or positive/neutral/negative. */
@@ -1181,7 +1199,8 @@ export type DeliveryStatusEnum =
   | "generated"
   | "delivered"
   | "partial_failure"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const DeliveryStatusEnum = /*@__PURE__*/ S.String;
 
 /** Delivery error messages. Empty when all configured deliveries succeeded. */
@@ -1308,7 +1327,8 @@ export type LlmAnalyticsModelsRetrieveRequestProvider =
   | "openai"
   | "openrouter"
   | "together_ai"
-  | "zeabur";
+  | "zeabur"
+  | (string & {});
 export const LlmAnalyticsModelsRetrieveRequestProvider = /*@__PURE__*/ S.String;
 
 export interface LlmAnalyticsModelsRetrieveRequest {
@@ -2206,7 +2226,11 @@ export const LlmAnalyticsReviewQueuesRetrieveRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LlmAnalyticsReviewQueuesRetrieveRequest>;
 
 /** * `categorical` - categorical * `numeric` - numeric * `boolean` - boolean */
-export type ExperimentMetricKindEnum = "categorical" | "numeric" | "boolean";
+export type ExperimentMetricKindEnum =
+  | "categorical"
+  | "numeric"
+  | "boolean"
+  | (string & {});
 export const ExperimentMetricKindEnum = /*@__PURE__*/ S.String;
 
 export interface CategoricalScoreOption {
@@ -2233,7 +2257,7 @@ export const CategoricalScoreDefinitionConfigOptionsList =
   ) as any as S.Schema<CategoricalScoreDefinitionConfigOptionsList>;
 
 /** * `single` - single * `multiple` - multiple */
-export type SelectionModeEnum = "single" | "multiple";
+export type SelectionModeEnum = "single" | "multiple" | (string & {});
 export const SelectionModeEnum = /*@__PURE__*/ S.String;
 
 export interface CategoricalScoreDefinitionConfig {

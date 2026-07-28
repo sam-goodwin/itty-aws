@@ -238,7 +238,7 @@ export const InputParallelism = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InputParallelism",
 }) as any as S.Schema<InputParallelism>;
-export type RecordFormatType = "JSON" | "CSV";
+export type RecordFormatType = "JSON" | "CSV" | (string & {});
 export const RecordFormatType = /*@__PURE__*/ S.String;
 
 export type RecordRowPath = string;
@@ -593,7 +593,8 @@ export type ApplicationStatus =
   | "STOPPING"
   | "READY"
   | "RUNNING"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const ApplicationStatus = /*@__PURE__*/ S.String;
 
 export interface ApplicationSummary {
@@ -838,7 +839,8 @@ export const KinesisFirehoseInputDescription = /*@__PURE__*/ S.suspend(() =>
 export type InputStartingPosition =
   | "NOW"
   | "TRIM_HORIZON"
-  | "LAST_STOPPED_POINT";
+  | "LAST_STOPPED_POINT"
+  | (string & {});
 export const InputStartingPosition = /*@__PURE__*/ S.String;
 
 export interface InputStartingPositionConfiguration {

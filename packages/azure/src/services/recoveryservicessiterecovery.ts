@@ -53,7 +53,8 @@ export const ClusterRecoveryPointGetRequest = /*@__PURE__*/ S.suspend(() =>
 export type ClusterRecoveryPointType =
   | "NotSpecified"
   | "ApplicationConsistent"
-  | "CrashConsistent";
+  | "CrashConsistent"
+  | (string & {});
 export const ClusterRecoveryPointType = /*@__PURE__*/ S.String;
 
 /** Replication provider specific cluster recovery point details. */
@@ -214,7 +215,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -222,7 +224,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -255,7 +258,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 export type MigrationRecoveryPointType =
   | "NotSpecified"
   | "ApplicationConsistent"
-  | "CrashConsistent";
+  | "CrashConsistent"
+  | (string & {});
 export const MigrationRecoveryPointType = /*@__PURE__*/ S.String;
 
 /** Migration item recovery point properties. */
@@ -1215,7 +1219,10 @@ export const EventSpecificDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventSpecificDetails>;
 
 /** Value indicating whether the health error is customer resolvable. */
-export type HealthErrorCustomerResolvability = "Allowed" | "NotAllowed";
+export type HealthErrorCustomerResolvability =
+  | "Allowed"
+  | "NotAllowed"
+  | (string & {});
 export const HealthErrorCustomerResolvability = /*@__PURE__*/ S.String;
 
 /** Implements InnerHealthError class. HealthError object has a list of InnerHealthErrors as child errors. InnerHealthError is used because this will prevent an infinite loop of structures when Hydra tries to auto-generate the contract. We are exposing the related health errors as inner health errors and all API consumers can utilize this in the same fashion as Exception -&gt; InnerException. */
@@ -2445,7 +2452,11 @@ export const ReplicationJobsCancelResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationJobsCancelResponse>;
 
 /** The output type of the jobs. */
-export type ExportJobOutputSerializationType = "Json" | "Xml" | "Excel";
+export type ExportJobOutputSerializationType =
+  | "Json"
+  | "Xml"
+  | "Excel"
+  | (string & {});
 export const ExportJobOutputSerializationType = /*@__PURE__*/ S.String;
 
 export interface ReplicationJobsExportRequest {
@@ -3024,7 +3035,8 @@ export type MigrationState =
   | "SuspendingProtection"
   | "ProtectionSuspended"
   | "MigrationCompletedWithInformation"
-  | "MigrationPartiallySucceeded";
+  | "MigrationPartiallySucceeded"
+  | (string & {});
 export const MigrationState = /*@__PURE__*/ S.String;
 
 /** The test migrate state. */
@@ -3035,11 +3047,17 @@ export type TestMigrationState =
   | "TestMigrationFailed"
   | "TestMigrationCleanupInProgress"
   | "TestMigrationCompletedWithInformation"
-  | "TestMigrationPartiallySucceeded";
+  | "TestMigrationPartiallySucceeded"
+  | (string & {});
 export const TestMigrationState = /*@__PURE__*/ S.String;
 
 /** The health. */
-export type ProtectionHealth = "None" | "Normal" | "Warning" | "Critical";
+export type ProtectionHealth =
+  | "None"
+  | "Normal"
+  | "Warning"
+  | "Critical"
+  | (string & {});
 export const ProtectionHealth = /*@__PURE__*/ S.String;
 
 /** The list of health errors. */
@@ -3057,7 +3075,8 @@ export type MigrationItemOperation =
   | "Migrate"
   | "StartResync"
   | "PauseReplication"
-  | "ResumeReplication";
+  | "ResumeReplication"
+  | (string & {});
 export const MigrationItemOperation = /*@__PURE__*/ S.String;
 
 /** The allowed operations on the migration item based on the current migration state of the item. */
@@ -5759,7 +5778,10 @@ export const ReplicationProtectedItemsCreateResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ReplicationProtectedItemsCreateResponse>;
 
 /** Disable protection reason. It can have values NotSpecified/MigrationComplete. */
-export type DisableProtectionReason = "NotSpecified" | "MigrationComplete";
+export type DisableProtectionReason =
+  | "NotSpecified"
+  | "MigrationComplete"
+  | (string & {});
 export const DisableProtectionReason = /*@__PURE__*/ S.String;
 
 /** Disable protection provider specific input. */
@@ -7208,7 +7230,11 @@ export const UpdateReplicationProtectedItemInputPropertiesVmNicsList =
   ) as any as S.Schema<UpdateReplicationProtectedItemInputPropertiesVmNicsList>;
 
 /** License type. */
-export type LicenseType = "NotSpecified" | "NoLicenseType" | "WindowsServer";
+export type LicenseType =
+  | "NotSpecified"
+  | "NoLicenseType"
+  | "WindowsServer"
+  | (string & {});
 export const LicenseType = /*@__PURE__*/ S.String;
 
 /** Update replication protected item provider specific input. */
@@ -8494,7 +8520,10 @@ export const ReplicationProtectionClustersRepairReplicationResponse =
   }) as any as S.Schema<ReplicationProtectionClustersRepairReplicationResponse>;
 
 /** Failover direction. */
-export type FailoverDirection = "PrimaryToRecovery" | "RecoveryToPrimary";
+export type FailoverDirection =
+  | "PrimaryToRecovery"
+  | "RecoveryToPrimary"
+  | (string & {});
 export const FailoverDirection = /*@__PURE__*/ S.String;
 
 /** Provider specific test cluster failover input. */
@@ -10237,11 +10266,16 @@ export const ReplicationProtectionIntentCollection = /*@__PURE__*/ S.suspend(
 export type FailoverDeploymentModel =
   | "NotApplicable"
   | "Classic"
-  | "ResourceManager";
+  | "ResourceManager"
+  | (string & {});
 export const FailoverDeploymentModel = /*@__PURE__*/ S.String;
 
 /** The group type. */
-export type RecoveryPlanGroupType = "Shutdown" | "Boot" | "Failover";
+export type RecoveryPlanGroupType =
+  | "Shutdown"
+  | "Boot"
+  | "Failover"
+  | (string & {});
 export const RecoveryPlanGroupType = /*@__PURE__*/ S.String;
 
 /** Recovery plan protected item. */
@@ -10283,7 +10317,8 @@ export type ReplicationProtectedItemOperation =
   | "ChangePit"
   | "RepairReplication"
   | "SwitchProtection"
-  | "CompleteMigration";
+  | "CompleteMigration"
+  | (string & {});
 export const ReplicationProtectedItemOperation = /*@__PURE__*/ S.String;
 
 /** The list of failover types. */
@@ -10296,7 +10331,8 @@ export const RecoveryPlanActionFailoverTypesList = /*@__PURE__*/ S.Array(
 /** The failover direction. */
 export type PossibleOperationsDirections =
   | "PrimaryToRecovery"
-  | "RecoveryToPrimary";
+  | "RecoveryToPrimary"
+  | (string & {});
 export const PossibleOperationsDirections = /*@__PURE__*/ S.String;
 
 /** The list of failover directions. */
@@ -11203,7 +11239,7 @@ export const ReplicationRecoveryPlansTestFailoverCleanupResponse =
   }) as any as S.Schema<ReplicationRecoveryPlansTestFailoverCleanupResponse>;
 
 /** A value indicating whether source site operations are required. */
-export type SourceSiteOperations = "Required" | "NotRequired";
+export type SourceSiteOperations = "Required" | "NotRequired" | (string & {});
 export const SourceSiteOperations = /*@__PURE__*/ S.String;
 
 /** The provider specific properties. */
@@ -11513,7 +11549,8 @@ export type AgentVersionStatus =
   | "NotSupported"
   | "Deprecated"
   | "UpdateRequired"
-  | "SecurityUpdateRequired";
+  | "SecurityUpdateRequired"
+  | (string & {});
 export const AgentVersionStatus = /*@__PURE__*/ S.String;
 
 /** Version related details. */
@@ -12471,11 +12508,12 @@ export type HealthErrorCategory =
   | "AgentAutoUpdateArtifactDeleted"
   | "AgentAutoUpdateRunAsAccount"
   | "AgentAutoUpdateRunAsAccountExpiry"
-  | "AgentAutoUpdateRunAsAccountExpired";
+  | "AgentAutoUpdateRunAsAccountExpired"
+  | (string & {});
 export const HealthErrorCategory = /*@__PURE__*/ S.String;
 
 /** Severity of error. */
-export type Severity = "NONE" | "Warning" | "Error" | "Info";
+export type Severity = "NONE" | "Warning" | "Error" | "Info" | (string & {});
 export const Severity = /*@__PURE__*/ S.String;
 
 /** The list of affected resource correlation Ids. This can be used to uniquely identify the count of items affected by a specific category and severity as well as count of item affected by an specific issue. */

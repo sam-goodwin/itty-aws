@@ -351,7 +351,8 @@ export const HttpGraphql = /*@__PURE__*/ S.suspend(() =>
 
 export type PostgreSqlSchemaMigrationEnum =
   | "SQL_SCHEMA_MIGRATION_UNSPECIFIED"
-  | "MIGRATE_COMPATIBLE";
+  | "MIGRATE_COMPATIBLE"
+  | (string & {});
 export const PostgreSqlSchemaMigrationEnum = /*@__PURE__*/ S.String;
 
 /** Settings for CloudSQL instance configuration. */
@@ -371,7 +372,8 @@ export type PostgreSqlSchemaValidationEnum =
   | "SQL_SCHEMA_VALIDATION_UNSPECIFIED"
   | "NONE"
   | "STRICT"
-  | "COMPATIBLE";
+  | "COMPATIBLE"
+  | (string & {});
 export const PostgreSqlSchemaValidationEnum = /*@__PURE__*/ S.String;
 
 /** Settings for PostgreSQL data source. */
@@ -706,7 +708,8 @@ export type GraphqlErrorExtensionsCodeEnum =
   | "UNIMPLEMENTED"
   | "INTERNAL"
   | "UNAVAILABLE"
-  | "DATA_LOSS";
+  | "DATA_LOSS"
+  | (string & {});
 export const GraphqlErrorExtensionsCodeEnum = /*@__PURE__*/ S.String;
 
 export type GraphqlErrorExtensionsWarningLevelEnum =
@@ -714,7 +717,8 @@ export type GraphqlErrorExtensionsWarningLevelEnum =
   | "LOG_ONLY"
   | "INTERACTIVE_ACK"
   | "REQUIRE_ACK"
-  | "REQUIRE_FORCE";
+  | "REQUIRE_FORCE"
+  | (string & {});
 export const GraphqlErrorExtensionsWarningLevelEnum = /*@__PURE__*/ S.String;
 
 /** Workaround provides suggestions to address errors and warnings. */
@@ -1061,7 +1065,8 @@ export type GenerationStatusStateEnum =
   | "STATE_UNSPECIFIED"
   | "ANALYZING_CODE"
   | "GENERATING_CODE"
-  | "COMPLETED";
+  | "COMPLETED"
+  | (string & {});
 export const GenerationStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents the progress of the server side generation request. */

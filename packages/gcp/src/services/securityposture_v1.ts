@@ -201,7 +201,8 @@ export type PostureDeploymentStateEnum =
   | "ACTIVE"
   | "CREATE_FAILED"
   | "UPDATE_FAILED"
-  | "DELETE_FAILED";
+  | "DELETE_FAILED"
+  | (string & {});
 export const PostureDeploymentStateEnum = /*@__PURE__*/ S.String;
 
 export type PostureDeploymentCategoriesItemEnum =
@@ -209,7 +210,8 @@ export type PostureDeploymentCategoriesItemEnum =
   | "AI"
   | "AWS"
   | "GCP"
-  | "AZURE";
+  | "AZURE"
+  | (string & {});
 export const PostureDeploymentCategoriesItemEnum = /*@__PURE__*/ S.String;
 
 export type PostureDeploymentCategoriesItemEnumList =
@@ -308,7 +310,8 @@ export type PostureStateEnum =
   | "STATE_UNSPECIFIED"
   | "DEPRECATED"
   | "DRAFT"
-  | "ACTIVE";
+  | "ACTIVE"
+  | (string & {});
 export const PostureStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
@@ -386,7 +389,8 @@ export type CustomConfigSeverityEnum =
   | "CRITICAL"
   | "HIGH"
   | "MEDIUM"
-  | "LOW";
+  | "LOW"
+  | (string & {});
 export const CustomConfigSeverityEnum = /*@__PURE__*/ S.String;
 
 /** A custom module configuration for Security Health Analytics. Use `CustomConfig` to create custom detectors that generate custom findings for resources that you specify. */
@@ -418,7 +422,8 @@ export const CustomConfig = /*@__PURE__*/ S.suspend(() =>
 export type SecurityHealthAnalyticsCustomModuleModuleEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "ENABLED"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const SecurityHealthAnalyticsCustomModuleModuleEnablementStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -449,7 +454,8 @@ export const SecurityHealthAnalyticsCustomModule = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudSecuritypostureV1CustomConstraintActionTypeEnum =
   | "ACTION_TYPE_UNSPECIFIED"
   | "ALLOW"
-  | "DENY";
+  | "DENY"
+  | (string & {});
 export const GoogleCloudSecuritypostureV1CustomConstraintActionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -457,7 +463,8 @@ export type GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnum =
   | "METHOD_TYPE_UNSPECIFIED"
   | "CREATE"
   | "UPDATE"
-  | "DELETE";
+  | "DELETE"
+  | (string & {});
 export const GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -592,7 +599,8 @@ export const OrgPolicyConstraintCustom = /*@__PURE__*/ S.suspend(() =>
 export type SecurityHealthAnalyticsModuleModuleEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "ENABLED"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const SecurityHealthAnalyticsModuleModuleEnablementStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -725,7 +733,8 @@ export type PostureCategoriesItemEnum =
   | "AI"
   | "AWS"
   | "GCP"
-  | "AZURE";
+  | "AZURE"
+  | (string & {});
 export const PostureCategoriesItemEnum = /*@__PURE__*/ S.String;
 
 export type PostureCategoriesItemEnumList =
@@ -988,7 +997,8 @@ export type PostureTemplateCategoriesItemEnum =
   | "AI"
   | "AWS"
   | "GCP"
-  | "AZURE";
+  | "AZURE"
+  | (string & {});
 export const PostureTemplateCategoriesItemEnum = /*@__PURE__*/ S.String;
 
 export type PostureTemplateCategoriesItemEnumList =
@@ -1000,7 +1010,8 @@ export const PostureTemplateCategoriesItemEnumList = /*@__PURE__*/ S.Array(
 export type PostureTemplateStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "DEPRECATED";
+  | "DEPRECATED"
+  | (string & {});
 export const PostureTemplateStateEnum = /*@__PURE__*/ S.String;
 
 /** The details of a posture template. */
@@ -1055,7 +1066,8 @@ export type ViolationSeverityEnum =
   | "CRITICAL"
   | "HIGH"
   | "MEDIUM"
-  | "LOW";
+  | "LOW"
+  | (string & {});
 export const ViolationSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Details of a posture deployment. */
@@ -1087,7 +1099,8 @@ export type PolicyDetailsConstraintTypeEnum =
   | "ORG_POLICY_CUSTOM"
   | "SECURITY_HEALTH_ANALYTICS_MODULE"
   | "ORG_POLICY"
-  | "REGO_POLICY";
+  | "REGO_POLICY"
+  | (string & {});
 export const PolicyDetailsConstraintTypeEnum = /*@__PURE__*/ S.String;
 
 /** Details of a policy that was violated. */

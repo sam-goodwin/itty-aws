@@ -115,7 +115,8 @@ export type CheckStatusResponseStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "ERROR"
-  | "AUTH_ERROR";
+  | "AUTH_ERROR"
+  | (string & {});
 export const CheckStatusResponseStateEnum = /*@__PURE__*/ S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
@@ -380,7 +381,8 @@ export type ExecuteHttpRequestRequestHttpMethodEnum =
   | "HTTP_METHOD_PATCH"
   | "HTTP_METHOD_DELETE"
   | "HTTP_METHOD_HEAD"
-  | "HTTP_METHOD_OPTIONS";
+  | "HTTP_METHOD_OPTIONS"
+  | (string & {});
 export const ExecuteHttpRequestRequestHttpMethodEnum = /*@__PURE__*/ S.String;
 
 /** A single HTTP header. Keys are case-insensitive. Multiple headers with the same key may be present. */
@@ -630,7 +632,8 @@ export type QueryParameterDataTypeEnum =
   | "SQLXML"
   | "REF_CURSOR"
   | "TIME_WITH_TIMEZONE"
-  | "TIMESTAMP_WITH_TIMEZONE";
+  | "TIMESTAMP_WITH_TIMEZONE"
+  | (string & {});
 export const QueryParameterDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** Query parameter definition */
@@ -724,7 +727,8 @@ export type ToolNameOperationEnum =
   | "GET"
   | "CREATE"
   | "UPDATE"
-  | "DELETE";
+  | "DELETE"
+  | (string & {});
 export const ToolNameOperationEnum = /*@__PURE__*/ S.String;
 
 export interface ToolName {
@@ -811,7 +815,8 @@ export const GenerateCustomToolspecResponse = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsConnectionsActionsViewEnum =
   | "ACTION_SCHEMA_VIEW_UNSPECIFIED"
   | "ACTION_SCHEMA_VIEW_BASIC"
-  | "ACTION_SCHEMA_VIEW_ENRICHED";
+  | "ACTION_SCHEMA_VIEW_ENRICHED"
+  | (string & {});
 export const GetProjectsLocationsConnectionsActionsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -887,7 +892,8 @@ export type InputParameterDataTypeEnum =
   | "SQLXML"
   | "REF_CURSOR"
   | "TIME_WITH_TIMEZONE"
-  | "TIMESTAMP_WITH_TIMEZONE";
+  | "TIMESTAMP_WITH_TIMEZONE"
+  | (string & {});
 export const InputParameterDataTypeEnum = /*@__PURE__*/ S.String;
 
 export type DocumentList = ReadonlyArray<unknown>;
@@ -951,7 +957,8 @@ export type JsonSchemaJdbcTypeEnum =
   | "SQLXML"
   | "REF_CURSOR"
   | "TIME_WITH_TIMEZONE"
-  | "TIMESTAMP_WITH_TIMEZONE";
+  | "TIMESTAMP_WITH_TIMEZONE"
+  | (string & {});
 export const JsonSchemaJdbcTypeEnum = /*@__PURE__*/ S.String;
 
 /** JsonSchema representation of schema metadata */
@@ -1188,7 +1195,8 @@ export type ResultMetadataDataTypeEnum =
   | "SQLXML"
   | "REF_CURSOR"
   | "TIME_WITH_TIMEZONE"
-  | "TIMESTAMP_WITH_TIMEZONE";
+  | "TIMESTAMP_WITH_TIMEZONE"
+  | (string & {});
 export const ResultMetadataDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** Result Metadata message contains metadata about the result returned after executing an Action. */
@@ -1257,7 +1265,8 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsConnectionsEntityTypesViewEnum =
   | "ENTITY_TYPE_SCHEMA_VIEW_UNSPECIFIED"
   | "ENTITY_TYPE_SCHEMA_VIEW_BASIC"
-  | "ENTITY_TYPE_SCHEMA_VIEW_ENRICHED";
+  | "ENTITY_TYPE_SCHEMA_VIEW_ENRICHED"
+  | (string & {});
 export const GetProjectsLocationsConnectionsEntityTypesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -1349,7 +1358,8 @@ export type FieldDataTypeEnum =
   | "SQLXML"
   | "REF_CURSOR"
   | "TIME_WITH_TIMEZONE"
-  | "TIMESTAMP_WITH_TIMEZONE";
+  | "TIMESTAMP_WITH_TIMEZONE"
+  | (string & {});
 export const FieldDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message contains EntityType's Field metadata. */
@@ -1398,7 +1408,8 @@ export type EntityTypeOperationsItemEnum =
   | "GET"
   | "CREATE"
   | "UPDATE"
-  | "DELETE";
+  | "DELETE"
+  | (string & {});
 export const EntityTypeOperationsItemEnum = /*@__PURE__*/ S.String;
 
 export type EntityTypeOperationsItemEnumList =
@@ -1568,7 +1579,8 @@ export const ListCustomToolNamesResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsConnectionsActionsViewEnum =
   | "ACTION_VIEW_UNSPECIFIED"
   | "ACTION_VIEW_BASIC"
-  | "ACTION_VIEW_FULL";
+  | "ACTION_VIEW_FULL"
+  | (string & {});
 export const ListProjectsLocationsConnectionsActionsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -1635,7 +1647,8 @@ export const ListActionsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsConnectionsEntityTypesViewEnum =
   | "ENTITY_TYPE_VIEW_UNSPECIFIED"
   | "ENTITY_TYPE_VIEW_BASIC"
-  | "ENTITY_TYPE_VIEW_FULL";
+  | "ENTITY_TYPE_VIEW_FULL"
+  | (string & {});
 export const ListProjectsLocationsConnectionsEntityTypesViewEnum =
   /*@__PURE__*/ S.String;
 

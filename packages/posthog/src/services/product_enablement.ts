@@ -15,7 +15,8 @@ export type { PosthogOpError, PosthogOpContext };
 export type ProductsEnum =
   | "conversations"
   | "error_tracking"
-  | "session_replay";
+  | "session_replay"
+  | (string & {});
 export const ProductsEnum = /*@__PURE__*/ S.String;
 
 /** Products to turn on for this project, each enabled with server-owned conservative defaults. */

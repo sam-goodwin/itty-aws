@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type WorkflowStateEnum = "STATE_UNSPECIFIED" | "ACTIVE";
+export type WorkflowStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | (string & {});
 export const WorkflowStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };

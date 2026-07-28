@@ -109,7 +109,8 @@ export type LocalInventoryAttributesAvailabilityEnum =
   | "IN_STOCK"
   | "LIMITED_AVAILABILITY"
   | "ON_DISPLAY_TO_ORDER"
-  | "OUT_OF_STOCK";
+  | "OUT_OF_STOCK"
+  | (string & {});
 export const LocalInventoryAttributesAvailabilityEnum = /*@__PURE__*/ S.String;
 
 /** The price represented as a number and currency. */
@@ -211,7 +212,8 @@ export type LocalInventoryAttributesPickupSlaEnum =
   | "FIVE_DAY"
   | "SIX_DAY"
   | "SEVEN_DAY"
-  | "MULTI_WEEK";
+  | "MULTI_WEEK"
+  | (string & {});
 export const LocalInventoryAttributesPickupSlaEnum = /*@__PURE__*/ S.String;
 
 export type LocalInventoryAttributesPickupMethodEnum =
@@ -219,7 +221,8 @@ export type LocalInventoryAttributesPickupMethodEnum =
   | "BUY"
   | "RESERVE"
   | "SHIP_TO_STORE"
-  | "NOT_SUPPORTED";
+  | "NOT_SUPPORTED"
+  | (string & {});
 export const LocalInventoryAttributesPickupMethodEnum = /*@__PURE__*/ S.String;
 
 /** Local inventory attributes. */
@@ -313,7 +316,8 @@ export const InsertAccountsProductsLocalInventoriesRequest =
 export type RegionalInventoryAttributesAvailabilityEnum =
   | "REGIONAL_INVENTORY_AVAILABILITY_UNSPECIFIED"
   | "IN_STOCK"
-  | "OUT_OF_STOCK";
+  | "OUT_OF_STOCK"
+  | (string & {});
 export const RegionalInventoryAttributesAvailabilityEnum =
   /*@__PURE__*/ S.String;
 

@@ -150,7 +150,8 @@ export type GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateEn
     | "IN_STOCK"
     | "OUT_OF_STOCK"
     | "PREORDER"
-    | "BACKORDER";
+    | "BACKORDER"
+    | (string & {});
 export const GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -677,7 +678,8 @@ export type GoogleCloudRecommendationengineV1beta1ProductDetailStockStateEnum =
   | "IN_STOCK"
   | "OUT_OF_STOCK"
   | "PREORDER"
-  | "BACKORDER";
+  | "BACKORDER"
+  | (string & {});
 export const GoogleCloudRecommendationengineV1beta1ProductDetailStockStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -766,7 +768,8 @@ export type GoogleCloudRecommendationengineV1beta1UserEventEventSourceEnum =
   | "EVENT_SOURCE_UNSPECIFIED"
   | "AUTOML"
   | "ECOMMERCE"
-  | "BATCH_UPLOAD";
+  | "BATCH_UPLOAD"
+  | (string & {});
 export const GoogleCloudRecommendationengineV1beta1UserEventEventSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1093,12 +1096,12 @@ export const ListProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsCatalogsRequest>;
 
 export type GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfigPredictItemLevelEnum =
-  "CATALOG_ITEM_LEVEL_UNSPECIFIED" | "VARIANT" | "MASTER";
+  "CATALOG_ITEM_LEVEL_UNSPECIFIED" | "VARIANT" | "MASTER" | (string & {});
 export const GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfigPredictItemLevelEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfigEventItemLevelEnum =
-  "CATALOG_ITEM_LEVEL_UNSPECIFIED" | "VARIANT" | "MASTER";
+  "CATALOG_ITEM_LEVEL_UNSPECIFIED" | "VARIANT" | "MASTER" | (string & {});
 export const GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfigEventItemLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -1623,7 +1626,10 @@ export const PurgeProjectsLocationsCatalogsEventStoresUserEventsRequest =
   }) as any as S.Schema<PurgeProjectsLocationsCatalogsEventStoresUserEventsRequest>;
 
 export type GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequestUserEventRejoinScopeEnum =
-  "USER_EVENT_REJOIN_SCOPE_UNSPECIFIED" | "JOINED_EVENTS" | "UNJOINED_EVENTS";
+    | "USER_EVENT_REJOIN_SCOPE_UNSPECIFIED"
+    | "JOINED_EVENTS"
+    | "UNJOINED_EVENTS"
+    | (string & {});
 export const GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequestUserEventRejoinScopeEnum =
   /*@__PURE__*/ S.String;
 

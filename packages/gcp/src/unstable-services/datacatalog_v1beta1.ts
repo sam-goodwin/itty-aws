@@ -137,14 +137,16 @@ export type GoogleCloudDatacatalogV1beta1EntryTypeEnum =
   | "TABLE"
   | "MODEL"
   | "DATA_STREAM"
-  | "FILESET";
+  | "FILESET"
+  | (string & {});
 export const GoogleCloudDatacatalogV1beta1EntryTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDatacatalogV1beta1EntryIntegratedSystemEnum =
   | "INTEGRATED_SYSTEM_UNSPECIFIED"
   | "BIGQUERY"
-  | "CLOUD_PUBSUB";
+  | "CLOUD_PUBSUB"
+  | (string & {});
 export const GoogleCloudDatacatalogV1beta1EntryIntegratedSystemEnum =
   /*@__PURE__*/ S.String;
 
@@ -203,7 +205,8 @@ export type GoogleCloudDatacatalogV1beta1BigQueryTableSpecTableSourceTypeEnum =
   | "TABLE_SOURCE_TYPE_UNSPECIFIED"
   | "BIGQUERY_VIEW"
   | "BIGQUERY_TABLE"
-  | "BIGQUERY_MATERIALIZED_VIEW";
+  | "BIGQUERY_MATERIALIZED_VIEW"
+  | (string & {});
 export const GoogleCloudDatacatalogV1beta1BigQueryTableSpecTableSourceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -589,7 +592,8 @@ export type GoogleCloudDatacatalogV1beta1FieldTypePrimitiveTypeEnum =
   | "DOUBLE"
   | "STRING"
   | "BOOL"
-  | "TIMESTAMP";
+  | "TIMESTAMP"
+  | (string & {});
 export const GoogleCloudDatacatalogV1beta1FieldTypePrimitiveTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -684,7 +688,7 @@ export const GoogleCloudDatacatalogV1beta1TagTemplateFieldMap =
   ) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplateFieldMap>;
 
 export type GoogleCloudDatacatalogV1beta1TagTemplateDataplexTransferStatusEnum =
-  "DATAPLEX_TRANSFER_STATUS_UNSPECIFIED" | "MIGRATED";
+  "DATAPLEX_TRANSFER_STATUS_UNSPECIFIED" | "MIGRATED" | (string & {});
 export const GoogleCloudDatacatalogV1beta1TagTemplateDataplexTransferStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -769,7 +773,8 @@ export const CreateProjectsLocationsTagTemplatesFieldsRequest =
 
 export type GoogleCloudDatacatalogV1beta1TaxonomyActivatedPolicyTypesItemEnum =
   | "POLICY_TYPE_UNSPECIFIED"
-  | "FINE_GRAINED_ACCESS_CONTROL";
+  | "FINE_GRAINED_ACCESS_CONTROL"
+  | (string & {});
 export const GoogleCloudDatacatalogV1beta1TaxonomyActivatedPolicyTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -783,7 +788,8 @@ export const GoogleCloudDatacatalogV1beta1TaxonomyActivatedPolicyTypesItemEnumLi
 export type GoogleCloudDatacatalogV1beta1TaxonomyServiceNameEnum =
   | "MANAGING_SYSTEM_UNSPECIFIED"
   | "MANAGING_SYSTEM_DATAPLEX"
-  | "MANAGING_SYSTEM_OTHER";
+  | "MANAGING_SYSTEM_OTHER"
+  | (string & {});
 export const GoogleCloudDatacatalogV1beta1TaxonomyServiceNameEnum =
   /*@__PURE__*/ S.String;
 
@@ -1139,7 +1145,7 @@ export const GoogleCloudDatacatalogV1beta1SerializedPolicyTagList =
   ) as any as S.Schema<GoogleCloudDatacatalogV1beta1SerializedPolicyTagList>;
 
 export type GoogleCloudDatacatalogV1beta1SerializedTaxonomyActivatedPolicyTypesItemEnum =
-  "POLICY_TYPE_UNSPECIFIED" | "FINE_GRAINED_ACCESS_CONTROL";
+  "POLICY_TYPE_UNSPECIFIED" | "FINE_GRAINED_ACCESS_CONTROL" | (string & {});
 export const GoogleCloudDatacatalogV1beta1SerializedTaxonomyActivatedPolicyTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -2215,7 +2221,11 @@ export const SearchCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchCatalogRequest>;
 
 export type GoogleCloudDatacatalogV1beta1SearchCatalogResultSearchResultTypeEnum =
-  "SEARCH_RESULT_TYPE_UNSPECIFIED" | "ENTRY" | "TAG_TEMPLATE" | "ENTRY_GROUP";
+    | "SEARCH_RESULT_TYPE_UNSPECIFIED"
+    | "ENTRY"
+    | "TAG_TEMPLATE"
+    | "ENTRY_GROUP"
+    | (string & {});
 export const GoogleCloudDatacatalogV1beta1SearchCatalogResultSearchResultTypeEnum =
   /*@__PURE__*/ S.String;
 

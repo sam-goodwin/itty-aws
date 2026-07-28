@@ -528,7 +528,10 @@ export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSubscriptionsResponse>;
 export type Retain = boolean;
 export type SynthesizedJsonUserProperties = string;
-export type PayloadFormatIndicator = "UNSPECIFIED_BYTES" | "UTF8_DATA";
+export type PayloadFormatIndicator =
+  | "UNSPECIFIED_BYTES"
+  | "UTF8_DATA"
+  | (string & {});
 export const PayloadFormatIndicator = /*@__PURE__*/ S.String;
 
 export type ContentType = string;

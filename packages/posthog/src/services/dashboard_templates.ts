@@ -77,10 +77,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -117,7 +118,8 @@ export type DashboardTemplateScopeEnum =
   | "team"
   | "organization"
   | "global"
-  | "feature_flag";
+  | "feature_flag"
+  | (string & {});
 export const DashboardTemplateScopeEnum = /*@__PURE__*/ S.String;
 
 export type DashboardTemplateScope = DashboardTemplateScopeEnum | BlankEnum;
@@ -291,14 +293,16 @@ export type DashboardTemplatesListRequestOrdering =
   | "-created_at"
   | "-template_name"
   | "created_at"
-  | "template_name";
+  | "template_name"
+  | (string & {});
 export const DashboardTemplatesListRequestOrdering = /*@__PURE__*/ S.String;
 
 export type DashboardTemplatesListRequestScope =
   | "feature_flag"
   | "global"
   | "organization"
-  | "team";
+  | "team"
+  | (string & {});
 export const DashboardTemplatesListRequestScope = /*@__PURE__*/ S.String;
 
 export interface DashboardTemplatesListRequest {

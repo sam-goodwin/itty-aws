@@ -50,7 +50,8 @@ export const TracingAggregationQueryBodyServiceNamesList =
 export type SpanPropertyTypeEnum =
   | "span"
   | "span_attribute"
-  | "span_resource_attribute";
+  | "span_resource_attribute"
+  | (string & {});
 export const SpanPropertyTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `lt` - lt * `is_set` - is_set * `is_not_set` - is_not_set */
@@ -64,7 +65,8 @@ export type SpanPropertyFilterOperatorEnum =
   | "gt"
   | "lt"
   | "is_set"
-  | "is_not_set";
+  | "is_not_set"
+  | (string & {});
 export const SpanPropertyFilterOperatorEnum = /*@__PURE__*/ S.String;
 
 export interface SpanPropertyFilter {
@@ -220,7 +222,8 @@ export const TracingAggregationResponse = /*@__PURE__*/ S.suspend(() =>
 /** * `count` - count * `error_count` - error_count */
 export type TracingAttributeBreakdownQueryBodyOrderByEnum =
   | "count"
-  | "error_count";
+  | "error_count"
+  | (string & {});
 export const TracingAttributeBreakdownQueryBodyOrderByEnum =
   /*@__PURE__*/ S.String;
 
@@ -357,7 +360,8 @@ export const TracingAttributeBreakdownResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type TracingSpansAttributesRetrieveRequestAttributeType =
   | "span_attribute"
-  | "span_resource_attribute";
+  | "span_resource_attribute"
+  | (string & {});
 export const TracingSpansAttributesRetrieveRequestAttributeType =
   /*@__PURE__*/ S.String;
 
@@ -398,7 +402,7 @@ export const TracingSpansAttributesRetrieveRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TracingSpansAttributesRetrieveRequest>;
 
 /** * `key` - key * `value` - value */
-export type MatchedOnEnum = "key" | "value";
+export type MatchedOnEnum = "key" | "value" | (string & {});
 export const MatchedOnEnum = /*@__PURE__*/ S.String;
 
 export interface TracingAttributeEntry {
@@ -697,11 +701,14 @@ export const TracingQueryBodyStatusCodesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<TracingQueryBodyStatusCodesList>;
 
 /** * `timestamp` - timestamp * `duration` - duration */
-export type TracingQueryBodyOrderByEnum = "timestamp" | "duration";
+export type TracingQueryBodyOrderByEnum =
+  | "timestamp"
+  | "duration"
+  | (string & {});
 export const TracingQueryBodyOrderByEnum = /*@__PURE__*/ S.String;
 
 /** * `ASC` - ASC * `DESC` - DESC */
-export type OrderDirectionEnum = "ASC" | "DESC";
+export type OrderDirectionEnum = "ASC" | "DESC" | (string & {});
 export const OrderDirectionEnum = /*@__PURE__*/ S.String;
 
 /** Property filters for the query. */
@@ -1057,7 +1064,7 @@ export const SymbolStatsResponseResultsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SymbolStatsResponseResultsList>;
 
 /** * `line` - line * `symbol` - symbol */
-export type GranularityEnum = "line" | "symbol";
+export type GranularityEnum = "line" | "symbol" | (string & {});
 export const GranularityEnum = /*@__PURE__*/ S.String;
 
 export interface SymbolStatsResponse {
@@ -1182,7 +1189,8 @@ export const TracingSpansTreeCreateResponse = /*@__PURE__*/ S.suspend(() =>
 export type TracingSpansValuesRetrieveRequestAttributeType =
   | "span"
   | "span_attribute"
-  | "span_resource_attribute";
+  | "span_resource_attribute"
+  | (string & {});
 export const TracingSpansValuesRetrieveRequestAttributeType =
   /*@__PURE__*/ S.String;
 
@@ -1286,10 +1294,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;

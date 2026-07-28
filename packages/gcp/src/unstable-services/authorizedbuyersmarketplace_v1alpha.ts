@@ -97,7 +97,8 @@ export const AcceptBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
 export type NoteCreatorRoleEnum =
   | "BUYER_SELLER_ROLE_UNSPECIFIED"
   | "BUYER"
-  | "SELLER";
+  | "SELLER"
+  | (string & {});
 export const NoteCreatorRoleEnum = /*@__PURE__*/ S.String;
 
 /** A text note attached to the proposal to facilitate the communication between buyers and sellers. */
@@ -125,7 +126,8 @@ export const NoteList = /*@__PURE__*/ S.Array(
 export type ProposalLastUpdaterOrCommentorRoleEnum =
   | "BUYER_SELLER_ROLE_UNSPECIFIED"
   | "BUYER"
-  | "SELLER";
+  | "SELLER"
+  | (string & {});
 export const ProposalLastUpdaterOrCommentorRoleEnum = /*@__PURE__*/ S.String;
 
 /** Contains information on how a buyer or seller can be reached. */
@@ -153,14 +155,16 @@ export type ProposalStateEnum =
   | "SELLER_REVIEW_REQUESTED"
   | "BUYER_ACCEPTANCE_REQUESTED"
   | "FINALIZED"
-  | "TERMINATED";
+  | "TERMINATED"
+  | (string & {});
 export const ProposalStateEnum = /*@__PURE__*/ S.String;
 
 export type ProposalDealTypeEnum =
   | "DEAL_TYPE_UNSPECIFIED"
   | "PREFERRED_DEAL"
   | "PRIVATE_AUCTION"
-  | "PROGRAMMATIC_GUARANTEED";
+  | "PROGRAMMATIC_GUARANTEED"
+  | (string & {});
 export const ProposalDealTypeEnum = /*@__PURE__*/ S.String;
 
 /** Buyers are allowed to store certain types of private data in a proposal. */
@@ -177,7 +181,8 @@ export const PrivateData = /*@__PURE__*/ S.suspend(() =>
 export type ProposalOriginatorRoleEnum =
   | "BUYER_SELLER_ROLE_UNSPECIFIED"
   | "BUYER"
-  | "SELLER";
+  | "SELLER"
+  | (string & {});
 export const ProposalOriginatorRoleEnum = /*@__PURE__*/ S.String;
 
 /** Represents a proposal in the Marketplace. A proposal is the unit of negotiation between a seller and a buyer. */
@@ -280,10 +285,15 @@ export type ClientRoleEnum =
   | "CLIENT_ROLE_UNSPECIFIED"
   | "CLIENT_DEAL_VIEWER"
   | "CLIENT_DEAL_NEGOTIATOR"
-  | "CLIENT_DEAL_APPROVER";
+  | "CLIENT_DEAL_APPROVER"
+  | (string & {});
 export const ClientRoleEnum = /*@__PURE__*/ S.String;
 
-export type ClientStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "INACTIVE";
+export type ClientStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "INACTIVE"
+  | (string & {});
 export const ClientStateEnum = /*@__PURE__*/ S.String;
 
 /** A client represents an agency, a brand, or an advertiser customer of the buyer. Based on the client's role, its client users will have varying levels of restricted access to the Marketplace and certain other sections of the Authorized Buyers UI. */
@@ -345,7 +355,8 @@ export type ClientUserStateEnum =
   | "STATE_UNSPECIFIED"
   | "INVITED"
   | "ACTIVE"
-  | "INACTIVE";
+  | "INACTIVE"
+  | (string & {});
 export const ClientUserStateEnum = /*@__PURE__*/ S.String;
 
 /** A user of a client who has restricted access to the Marketplace and certain other sections of the Authorized Buyers UI based on the role granted to the associated client. */
@@ -415,7 +426,8 @@ export type DataSegmentStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "INACTIVE"
-  | "SUSPENDED";
+  | "SUSPENDED"
+  | (string & {});
 export const DataSegmentStateEnum = /*@__PURE__*/ S.String;
 
 /** Defines an identifier for a segment of inventory that can be targeted by curators or media planners in the deals or auction packages UI. Curation of inventory is done by curators on external platforms. -- Next ID: 9 -- */
@@ -482,13 +494,15 @@ export const StringList = /*@__PURE__*/ S.Array(
 export type PackageTargetingIncludedRewardedTypeEnum =
   | "REWARDED_TYPE_UNSPECIFIED"
   | "REWARDED_TYPE_NON_REWARDED"
-  | "REWARDED_TYPE_REWARDED";
+  | "REWARDED_TYPE_REWARDED"
+  | (string & {});
 export const PackageTargetingIncludedRewardedTypeEnum = /*@__PURE__*/ S.String;
 
 export type PackageTargetingIncludedAuthorizedSellerStatusesItemEnum =
   | "AUTHORIZED_SELLER_STATUS_UNSPECIFIED"
   | "AUTHORIZED_SELLER_STATUS_DIRECT"
-  | "AUTHORIZED_SELLER_STATUS_RESELLER";
+  | "AUTHORIZED_SELLER_STATUS_RESELLER"
+  | (string & {});
 export const PackageTargetingIncludedAuthorizedSellerStatusesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -504,7 +518,8 @@ export type AdSizeTypeEnum =
   | "PIXEL"
   | "INTERSTITIAL"
   | "NATIVE"
-  | "FLUID";
+  | "FLUID"
+  | (string & {});
 export const AdSizeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents size of a single ad slot, or a creative. */
@@ -531,7 +546,8 @@ export const AdSizeList = /*@__PURE__*/ S.Array(
 
 export type PackageTargetingIncludedOpenMeasurementTypesItemEnum =
   | "OPEN_MEASUREMENT_TYPE_UNSPECIFIED"
-  | "OPEN_MEASUREMENT_TYPE_OMID_V1";
+  | "OPEN_MEASUREMENT_TYPE_OMID_V1"
+  | (string & {});
 export const PackageTargetingIncludedOpenMeasurementTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -546,7 +562,8 @@ export type PackageTargetingIncludedAcceleratedMobilePageTypeEnum =
   | "ACCELERATED_MOBILE_PAGE_TYPE_UNSPECIFIED"
   | "ACCELERATED_MOBILE_PAGE_TYPE_NON_AMP"
   | "ACCELERATED_MOBILE_PAGE_TYPE_AMP"
-  | "ACCELERATED_MOBILE_PAGE_TYPE_AMP_STORY";
+  | "ACCELERATED_MOBILE_PAGE_TYPE_AMP_STORY"
+  | (string & {});
 export const PackageTargetingIncludedAcceleratedMobilePageTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -554,14 +571,16 @@ export type PackageTargetingIncludedCreativeFormatEnum =
   | "CREATIVE_FORMAT_UNSPECIFIED"
   | "CREATIVE_FORMAT_DISPLAY"
   | "CREATIVE_FORMAT_VIDEO"
-  | "CREATIVE_FORMAT_AUDIO";
+  | "CREATIVE_FORMAT_AUDIO"
+  | (string & {});
 export const PackageTargetingIncludedCreativeFormatEnum =
   /*@__PURE__*/ S.String;
 
 export type PackageTargetingIncludedRestrictedCategoriesItemEnum =
   | "RESTRICTED_CATEGORY_UNSPECIFIED"
   | "RESTRICTED_CATEGORY_ALCOHOL"
-  | "RESTRICTED_CATEGORY_GAMBLING";
+  | "RESTRICTED_CATEGORY_GAMBLING"
+  | (string & {});
 export const PackageTargetingIncludedRestrictedCategoriesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -575,7 +594,8 @@ export const PackageTargetingIncludedRestrictedCategoriesItemEnumList =
 export type PackageTargetingIncludedNativeInventoryTypesItemEnum =
   | "NATIVE_INVENTORY_TYPE_UNSPECIFIED"
   | "NATIVE_INVENTORY_TYPE_NATIVE_ONLY"
-  | "NATIVE_INVENTORY_TYPE_NATIVE_OR_BANNER";
+  | "NATIVE_INVENTORY_TYPE_NATIVE_OR_BANNER"
+  | (string & {});
 export const PackageTargetingIncludedNativeInventoryTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -605,13 +625,15 @@ export const CriteriaTargeting = /*@__PURE__*/ S.suspend(() =>
 export type PackageTargetingIncludedEnvironmentEnum =
   | "ENVIRONMENT_UNSPECIFIED"
   | "ENVIRONMENT_SITE"
-  | "ENVIRONMENT_APP";
+  | "ENVIRONMENT_APP"
+  | (string & {});
 export const PackageTargetingIncludedEnvironmentEnum = /*@__PURE__*/ S.String;
 
 export type StringTargetingDimensionSelectionTypeEnum =
   | "SELECTION_TYPE_UNSPECIFIED"
   | "SELECTION_TYPE_INCLUDE"
-  | "SELECTION_TYPE_EXCLUDE";
+  | "SELECTION_TYPE_EXCLUDE"
+  | (string & {});
 export const StringTargetingDimensionSelectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Generic targeting with string values. */
@@ -670,7 +692,8 @@ export type PackageVideoTargetingIncludedPositionTypesItemEnum =
   | "POSITION_TYPE_UNSPECIFIED"
   | "POSITION_TYPE_MIDROLL"
   | "POSITION_TYPE_POSTROLL"
-  | "POSITION_TYPE_PREROLL";
+  | "POSITION_TYPE_PREROLL"
+  | (string & {});
 export const PackageVideoTargetingIncludedPositionTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -685,7 +708,8 @@ export type PackageVideoTargetingIncludedPlaybackMethodsItemEnum =
   | "PLAYBACK_METHOD_UNSPECIFIED"
   | "PLAYBACK_METHOD_AUTO_PLAY_SOUND_ON"
   | "PLAYBACK_METHOD_AUTO_PLAY_SOUND_OFF"
-  | "PLAYBACK_METHOD_CLICK_TO_PLAY";
+  | "PLAYBACK_METHOD_CLICK_TO_PLAY"
+  | (string & {});
 export const PackageVideoTargetingIncludedPlaybackMethodsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -699,7 +723,8 @@ export const PackageVideoTargetingIncludedPlaybackMethodsItemEnumList =
 export type PackageVideoTargetingIncludedContentDeliveryMethodEnum =
   | "CONTENT_DELIVERY_METHOD_UNSPECIFIED"
   | "CONTENT_DELIVERY_METHOD_STREAMING"
-  | "CONTENT_DELIVERY_METHOD_PROGRESSIVE";
+  | "CONTENT_DELIVERY_METHOD_PROGRESSIVE"
+  | (string & {});
 export const PackageVideoTargetingIncludedContentDeliveryMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -710,7 +735,8 @@ export type PackageVideoTargetingIncludedMimeTypesItemEnum =
   | "VIDEO_MIME_TYPE_MP4"
   | "VIDEO_MIME_TYPE_APPLICATION_MPEGDASH"
   | "VIDEO_MIME_TYPE_APPLICATION_JAVASCRIPT"
-  | "VIDEO_MIME_TYPE_WEBM";
+  | "VIDEO_MIME_TYPE_WEBM"
+  | (string & {});
 export const PackageVideoTargetingIncludedMimeTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -724,7 +750,8 @@ export const PackageVideoTargetingIncludedMimeTypesItemEnumList =
 export type VideoPlcmtTargetingSelectionTypeEnum =
   | "SELECTION_TYPE_UNSPECIFIED"
   | "SELECTION_TYPE_INCLUDE"
-  | "SELECTION_TYPE_EXCLUDE";
+  | "SELECTION_TYPE_EXCLUDE"
+  | (string & {});
 export const VideoPlcmtTargetingSelectionTypeEnum = /*@__PURE__*/ S.String;
 
 export type VideoPlcmtTargetingVideoPlcmtTypesItemEnum =
@@ -732,7 +759,8 @@ export type VideoPlcmtTargetingVideoPlcmtTypesItemEnum =
   | "INSTREAM"
   | "ACCOMPANYING_CONTENT"
   | "INTERSTITIAL"
-  | "NO_CONTENT";
+  | "NO_CONTENT"
+  | (string & {});
 export const VideoPlcmtTargetingVideoPlcmtTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -782,7 +810,8 @@ export type PackageVideoTargetingIncludedMaximumAdDurationTargetingEnum =
   | "MAXIMUM_VIDEO_AD_DURATION_THIRTY_SECONDS"
   | "MAXIMUM_VIDEO_AD_DURATION_SIXTY_SECONDS"
   | "MAXIMUM_VIDEO_AD_DURATION_NINETY_SECONDS"
-  | "MAXIMUM_VIDEO_AD_DURATION_ONE_HUNDRED_TWENTY_SECONDS";
+  | "MAXIMUM_VIDEO_AD_DURATION_ONE_HUNDRED_TWENTY_SECONDS"
+  | (string & {});
 export const PackageVideoTargetingIncludedMaximumAdDurationTargetingEnum =
   /*@__PURE__*/ S.String;
 
@@ -854,7 +883,8 @@ export type PackageTargetingIncludedDeviceTypesItemEnum =
   | "DEVICE_TYPE_PERSONAL_COMPUTER"
   | "DEVICE_TYPE_CONNECTED_TV"
   | "DEVICE_TYPE_PHONE"
-  | "DEVICE_TYPE_TABLET";
+  | "DEVICE_TYPE_TABLET"
+  | (string & {});
 export const PackageTargetingIncludedDeviceTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -954,13 +984,15 @@ export const PackageTargeting = /*@__PURE__*/ S.suspend(() =>
 export type CuratedPackageStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "INACTIVE";
+  | "INACTIVE"
+  | (string & {});
 export const CuratedPackageStateEnum = /*@__PURE__*/ S.String;
 
 export type CuratedPackageCurationFeeVisibilityEnum =
   | "CURATION_FEE_VISIBILITY_UNSPECIFIED"
   | "DISCLOSED"
-  | "NON_DISCLOSED";
+  | "NON_DISCLOSED"
+  | (string & {});
 export const CuratedPackageCurationFeeVisibilityEnum = /*@__PURE__*/ S.String;
 
 /** Settings for controlling access to a curated package. */
@@ -1058,7 +1090,8 @@ export const AddCreativeBuyersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(
 export type DealPausingInfoPauseRoleEnum =
   | "BUYER_SELLER_ROLE_UNSPECIFIED"
   | "BUYER"
-  | "SELLER";
+  | "SELLER"
+  | (string & {});
 export const DealPausingInfoPauseRoleEnum = /*@__PURE__*/ S.String;
 
 /** Information related to deal pausing. */
@@ -1084,10 +1117,11 @@ export type DealDealTypeEnum =
   | "DEAL_TYPE_UNSPECIFIED"
   | "PREFERRED_DEAL"
   | "PRIVATE_AUCTION"
-  | "PROGRAMMATIC_GUARANTEED";
+  | "PROGRAMMATIC_GUARANTEED"
+  | (string & {});
 export const DealDealTypeEnum = /*@__PURE__*/ S.String;
 
-export type PriceTypeEnum = "TYPE_UNSPECIFIED" | "CPM" | "CPD";
+export type PriceTypeEnum = "TYPE_UNSPECIFIED" | "CPM" | "CPD" | (string & {});
 export const PriceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a price and a pricing type for a deal. */
@@ -1155,7 +1189,8 @@ export type DeliveryControlCompanionDeliveryTypeEnum =
   | "COMPANION_DELIVERY_TYPE_UNSPECIFIED"
   | "DELIVERY_OPTIONAL"
   | "DELIVERY_AT_LEAST_ONE"
-  | "DELIVERY_ALL";
+  | "DELIVERY_ALL"
+  | (string & {});
 export const DeliveryControlCompanionDeliveryTypeEnum = /*@__PURE__*/ S.String;
 
 export type DeliveryControlRoadblockingTypeEnum =
@@ -1164,14 +1199,16 @@ export type DeliveryControlRoadblockingTypeEnum =
   | "ONE_OR_MORE"
   | "AS_MANY_AS_POSSIBLE"
   | "ALL_ROADBLOCK"
-  | "CREATIVE_SET";
+  | "CREATIVE_SET"
+  | (string & {});
 export const DeliveryControlRoadblockingTypeEnum = /*@__PURE__*/ S.String;
 
 export type DeliveryControlDeliveryRateTypeEnum =
   | "DELIVERY_RATE_TYPE_UNSPECIFIED"
   | "EVENLY"
   | "FRONT_LOADED"
-  | "AS_FAST_AS_POSSIBLE";
+  | "AS_FAST_AS_POSSIBLE"
+  | (string & {});
 export const DeliveryControlDeliveryRateTypeEnum = /*@__PURE__*/ S.String;
 
 export type DeliveryControlCreativeRotationTypeEnum =
@@ -1179,7 +1216,8 @@ export type DeliveryControlCreativeRotationTypeEnum =
   | "ROTATION_EVEN"
   | "ROTATION_OPTIMIZED"
   | "ROTATION_MANUAL"
-  | "ROTATION_SEQUENTIAL";
+  | "ROTATION_SEQUENTIAL"
+  | (string & {});
 export const DeliveryControlCreativeRotationTypeEnum = /*@__PURE__*/ S.String;
 
 export type FrequencyCapTimeUnitTypeEnum =
@@ -1191,7 +1229,8 @@ export type FrequencyCapTimeUnitTypeEnum =
   | "MONTH"
   | "LIFETIME"
   | "POD"
-  | "STREAM";
+  | "STREAM"
+  | (string & {});
 export const FrequencyCapTimeUnitTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message contains details about publisher-set frequency caps of the delivery. */
@@ -1279,7 +1318,8 @@ export const TechnologyTargeting = /*@__PURE__*/ S.suspend(() =>
 export type DayPartTargetingTimeZoneTypeEnum =
   | "TIME_ZONE_TYPE_UNSPECIFIED"
   | "SELLER"
-  | "USER";
+  | "USER"
+  | (string & {});
 export const DayPartTargetingTimeZoneTypeEnum = /*@__PURE__*/ S.String;
 
 export type DayPartDayOfWeekEnum =
@@ -1290,7 +1330,8 @@ export type DayPartDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const DayPartDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -1415,7 +1456,8 @@ export type VideoTargetingExcludedPositionTypesItemEnum =
   | "POSITION_TYPE_UNSPECIFIED"
   | "PREROLL"
   | "MIDROLL"
-  | "POSTROLL";
+  | "POSTROLL"
+  | (string & {});
 export const VideoTargetingExcludedPositionTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1430,7 +1472,8 @@ export type VideoTargetingTargetedPositionTypesItemEnum =
   | "POSITION_TYPE_UNSPECIFIED"
   | "PREROLL"
   | "MIDROLL"
-  | "POSTROLL";
+  | "POSTROLL"
+  | (string & {});
 export const VideoTargetingTargetedPositionTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1463,7 +1506,8 @@ export type InventoryTypeTargetingInventoryTypesItemEnum =
   | "INVENTORY_TYPE_UNSPECIFIED"
   | "BROWSER"
   | "MOBILE_APP"
-  | "VIDEO_PLAYER";
+  | "VIDEO_PLAYER"
+  | (string & {});
 export const InventoryTypeTargetingInventoryTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1548,7 +1592,8 @@ export const MarketplaceTargeting = /*@__PURE__*/ S.suspend(() =>
 export type ProgrammaticGuaranteedTermsReservationTypeEnum =
   | "RESERVATION_TYPE_UNSPECIFIED"
   | "STANDARD"
-  | "SPONSORSHIP";
+  | "SPONSORSHIP"
+  | (string & {});
 export const ProgrammaticGuaranteedTermsReservationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1583,7 +1628,8 @@ export const ProgrammaticGuaranteedTerms = /*@__PURE__*/ S.suspend(() =>
 export type DealBuyerPermissionTypeEnum =
   | "BUYER_PERMISSION_TYPE_UNSPECIFIED"
   | "NEGOTIATOR_ONLY"
-  | "BIDDER";
+  | "BIDDER"
+  | (string & {});
 export const DealBuyerPermissionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Pricing terms for Private Auctions. */
@@ -1605,7 +1651,8 @@ export const PrivateAuctionTerms = /*@__PURE__*/ S.suspend(() =>
 export type CreativeRequirementsProgrammaticCreativeSourceEnum =
   | "PROGRAMMATIC_CREATIVE_SOURCE_UNSPECIFIED"
   | "ADVERTISER"
-  | "PUBLISHER";
+  | "PUBLISHER"
+  | (string & {});
 export const CreativeRequirementsProgrammaticCreativeSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1613,20 +1660,23 @@ export type CreativeRequirementsCreativeFormatEnum =
   | "CREATIVE_FORMAT_UNSPECIFIED"
   | "DISPLAY"
   | "VIDEO"
-  | "AUDIO";
+  | "AUDIO"
+  | (string & {});
 export const CreativeRequirementsCreativeFormatEnum = /*@__PURE__*/ S.String;
 
 export type CreativeRequirementsCreativePreApprovalPolicyEnum =
   | "CREATIVE_PRE_APPROVAL_POLICY_UNSPECIFIED"
   | "SELLER_PRE_APPROVAL_REQUIRED"
-  | "SELLER_PRE_APPROVAL_NOT_REQUIRED";
+  | "SELLER_PRE_APPROVAL_NOT_REQUIRED"
+  | (string & {});
 export const CreativeRequirementsCreativePreApprovalPolicyEnum =
   /*@__PURE__*/ S.String;
 
 export type CreativeRequirementsCreativeSafeFrameCompatibilityEnum =
   | "CREATIVE_SAFE_FRAME_COMPATIBILITY_UNSPECIFIED"
   | "COMPATIBLE"
-  | "INCOMPATIBLE";
+  | "INCOMPATIBLE"
+  | (string & {});
 export const CreativeRequirementsCreativeSafeFrameCompatibilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -1635,7 +1685,8 @@ export type CreativeRequirementsSkippableAdTypeEnum =
   | "SKIPPABLE"
   | "INSTREAM_SELECT"
   | "NOT_SKIPPABLE"
-  | "ANY";
+  | "ANY"
+  | (string & {});
 export const CreativeRequirementsSkippableAdTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message captures data about the creatives in the deal. */
@@ -1757,7 +1808,8 @@ export type FinalizedDealDealServingStatusEnum =
   | "ACTIVE"
   | "ENDED"
   | "PAUSED_BY_BUYER"
-  | "PAUSED_BY_SELLER";
+  | "PAUSED_BY_SELLER"
+  | (string & {});
 export const FinalizedDealDealServingStatusEnum = /*@__PURE__*/ S.String;
 
 /** Real-time bidding metrics. For what each metric means refer to [Report metrics](https://support.google.com/adxbuyer/answer/6115195#report-metrics) */
@@ -2381,7 +2433,8 @@ export type PublisherProfileMobileApplicationAppStoreEnum =
   | "SAMSUNG"
   | "VIVO"
   | "XIAOMI"
-  | "LG_TV";
+  | "LG_TV"
+  | (string & {});
 export const PublisherProfileMobileApplicationAppStoreEnum =
   /*@__PURE__*/ S.String;
 

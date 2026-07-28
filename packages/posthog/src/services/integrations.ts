@@ -351,7 +351,8 @@ export type IntegrationKindEnum =
   | "stripe"
   | "tiktok-ads"
   | "twilio"
-  | "vercel";
+  | "vercel"
+  | (string & {});
 export const IntegrationKindEnum = /*@__PURE__*/ S.String;
 
 export interface IntegrationsCreateRequest {
@@ -391,10 +392,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -675,7 +677,7 @@ export const IntegrationsGithubLinkExistingCreateRequest =
   }) as any as S.Schema<IntegrationsGithubLinkExistingCreateRequest>;
 
 /** * `posthog_code` - posthog_code */
-export type ConnectFromEnum = "posthog_code";
+export type ConnectFromEnum = "posthog_code" | (string & {});
 export const ConnectFromEnum = /*@__PURE__*/ S.String;
 
 export interface IntegrationsGithubOauthAuthorizeCreateRequest {
@@ -1204,7 +1206,8 @@ export type IntegrationsListRequestKind =
   | "stripe"
   | "tiktok-ads"
   | "twilio"
-  | "vercel";
+  | "vercel"
+  | (string & {});
 export const IntegrationsListRequestKind = /*@__PURE__*/ S.String;
 
 export interface IntegrationsListRequest {

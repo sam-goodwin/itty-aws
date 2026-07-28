@@ -107,14 +107,16 @@ export type BackupStateEnum =
   | "READY"
   | "CREATING"
   | "FAILED"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
 export type BackupTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "ON_DEMAND"
   | "AUTOMATED"
-  | "CONTINUOUS";
+  | "CONTINUOUS"
+  | (string & {});
 export const BackupTypeEnum = /*@__PURE__*/ S.String;
 
 /** A backup's position in a quantity-based retention queue, of backups with the same source cluster and type, with length, retention, specified by the backup's retention policy. Once the position is greater than the retention, the backup is eligible to be garbage collected. Example: 5 backups from the same source cluster and type with a quantity-based retention of 3 and denoted by backup_id (position, retention). Safe: backup_5 (1, 3), backup_4, (2, 3), backup_3 (3, 3). Awaiting garbage collection: backup_2 (4, 3), backup_1 (5, 3) */
@@ -149,7 +151,8 @@ export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
 export type EncryptionInfoEncryptionTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "GOOGLE_DEFAULT_ENCRYPTION"
-  | "CUSTOMER_MANAGED_ENCRYPTION";
+  | "CUSTOMER_MANAGED_ENCRYPTION"
+  | (string & {});
 export const EncryptionInfoEncryptionTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -178,7 +181,8 @@ export type BackupDatabaseVersionEnum =
   | "POSTGRES_15"
   | "POSTGRES_16"
   | "POSTGRES_17"
-  | "POSTGRES_18";
+  | "POSTGRES_18"
+  | (string & {});
 export const BackupDatabaseVersionEnum = /*@__PURE__*/ S.String;
 
 /** Message describing Backup object */
@@ -350,7 +354,8 @@ export type ClusterDatabaseVersionEnum =
   | "POSTGRES_15"
   | "POSTGRES_16"
   | "POSTGRES_17"
-  | "POSTGRES_18";
+  | "POSTGRES_18"
+  | (string & {});
 export const ClusterDatabaseVersionEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for the primary cluster. It has the list of clusters that are replicating from this cluster. This should be set if and only if the cluster is of type PRIMARY. */
@@ -372,7 +377,8 @@ export type MaintenanceWindowDayEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const MaintenanceWindowDayEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -528,7 +534,8 @@ export type WeeklyScheduleDaysOfWeekItemEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const WeeklyScheduleDaysOfWeekItemEnum = /*@__PURE__*/ S.String;
 
 export type WeeklyScheduleDaysOfWeekItemEnumList =
@@ -672,12 +679,14 @@ export type ClusterStateEnum =
   | "BOOTSTRAPPING"
   | "MAINTENANCE"
   | "PROMOTING"
-  | "SWITCHOVER";
+  | "SWITCHOVER"
+  | (string & {});
 export const ClusterStateEnum = /*@__PURE__*/ S.String;
 
 export type SslConfigCaSourceEnum =
   | "CA_SOURCE_UNSPECIFIED"
-  | "CA_SOURCE_MANAGED";
+  | "CA_SOURCE_MANAGED"
+  | (string & {});
 export const SslConfigCaSourceEnum = /*@__PURE__*/ S.String;
 
 export type SslConfigSslModeEnum =
@@ -686,7 +695,8 @@ export type SslConfigSslModeEnum =
   | "SSL_MODE_REQUIRE"
   | "SSL_MODE_VERIFY_CA"
   | "ALLOW_UNENCRYPTED_AND_ENCRYPTED"
-  | "ENCRYPTED_ONLY";
+  | "ENCRYPTED_ONLY"
+  | (string & {});
 export const SslConfigSslModeEnum = /*@__PURE__*/ S.String;
 
 /** SSL configuration. */
@@ -781,7 +791,8 @@ export type ContinuousBackupInfoScheduleItemEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const ContinuousBackupInfoScheduleItemEnum = /*@__PURE__*/ S.String;
 
 export type ContinuousBackupInfoScheduleItemEnumList =
@@ -815,7 +826,8 @@ export const ContinuousBackupInfo = /*@__PURE__*/ S.suspend(() =>
 export type ClusterMaintenanceVersionSelectionPolicyEnum =
   | "MAINTENANCE_VERSION_SELECTION_POLICY_UNSPECIFIED"
   | "MAINTENANCE_VERSION_SELECTION_POLICY_LATEST"
-  | "MAINTENANCE_VERSION_SELECTION_POLICY_DEFAULT";
+  | "MAINTENANCE_VERSION_SELECTION_POLICY_DEFAULT"
+  | (string & {});
 export const ClusterMaintenanceVersionSelectionPolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -836,7 +848,8 @@ export const BackupSource = /*@__PURE__*/ S.suspend(() =>
 export type ClusterClusterTypeEnum =
   | "CLUSTER_TYPE_UNSPECIFIED"
   | "PRIMARY"
-  | "SECONDARY";
+  | "SECONDARY"
+  | (string & {});
 export const ClusterClusterTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration information for the secondary cluster. This should be set if and only if the cluster is of type SECONDARY. */
@@ -869,7 +882,8 @@ export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
 export type ClusterSubscriptionTypeEnum =
   | "SUBSCRIPTION_TYPE_UNSPECIFIED"
   | "STANDARD"
-  | "TRIAL";
+  | "TRIAL"
+  | (string & {});
 export const ClusterSubscriptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** ContinuousBackupConfig describes the continuous backups recovery configurations of a cluster. */
@@ -893,7 +907,8 @@ export const ContinuousBackupConfig = /*@__PURE__*/ S.suspend(() =>
 
 export type MigrationSourceSourceTypeEnum =
   | "MIGRATION_SOURCE_TYPE_UNSPECIFIED"
-  | "DMS";
+  | "DMS"
+  | (string & {});
 export const MigrationSourceSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Subset of the source instance configuration that is available when reading the cluster resource. */
@@ -1104,7 +1119,8 @@ export type InstanceStateEnum =
   | "PROMOTING"
   | "SWITCHOVER"
   | "STOPPING"
-  | "STARTING";
+  | "STARTING"
+  | (string & {});
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for a read pool instance. */
@@ -1122,14 +1138,16 @@ export type ConnectionPoolConfigPoolerScalingTypeEnum =
   | "POOLER_SCALING_TYPE_UNSPECIFIED"
   | "POOLER_NONE"
   | "POOLER_MACHINE_SIZED"
-  | "POOLER_MANUAL_OVERRIDE";
+  | "POOLER_MANUAL_OVERRIDE"
+  | (string & {});
 export const ConnectionPoolConfigPoolerScalingTypeEnum = /*@__PURE__*/ S.String;
 
 export type ConnectionPoolConfigAuthproxyPoolerScalingTypeEnum =
   | "POOLER_SCALING_TYPE_UNSPECIFIED"
   | "POOLER_NONE"
   | "POOLER_MACHINE_SIZED"
-  | "POOLER_MANUAL_OVERRIDE";
+  | "POOLER_MANUAL_OVERRIDE"
+  | (string & {});
 export const ConnectionPoolConfigAuthproxyPoolerScalingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1166,7 +1184,8 @@ export const ConnectionPoolConfig = /*@__PURE__*/ S.suspend(() =>
 export type InstanceActivationPolicyEnum =
   | "ACTIVATION_POLICY_UNSPECIFIED"
   | "ALWAYS"
-  | "NEVER";
+  | "NEVER"
+  | (string & {});
 export const InstanceActivationPolicyEnum = /*@__PURE__*/ S.String;
 
 export type NodeList = ReadonlyArray<Node>;
@@ -1177,14 +1196,16 @@ export const NodeList = /*@__PURE__*/ S.Array(
 export type InstanceDataApiAccessEnum =
   | "DEFAULT_DATA_API_ENABLED_FOR_GOOGLE_CLOUD_SERVICES"
   | "DISABLED"
-  | "ENABLED";
+  | "ENABLED"
+  | (string & {});
 export const InstanceDataApiAccessEnum = /*@__PURE__*/ S.String;
 
 export type InstanceInstanceTypeEnum =
   | "INSTANCE_TYPE_UNSPECIFIED"
   | "PRIMARY"
   | "READ_POOL"
-  | "SECONDARY";
+  | "SECONDARY"
+  | (string & {});
 export const InstanceInstanceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for setting up a PSC interface to enable outbound connectivity. */
@@ -1393,7 +1414,8 @@ export const ClientConnectionConfig = /*@__PURE__*/ S.suspend(() =>
 export type InstanceAvailabilityTypeEnum =
   | "AVAILABILITY_TYPE_UNSPECIFIED"
   | "ZONAL"
-  | "REGIONAL";
+  | "REGIONAL"
+  | (string & {});
 export const InstanceAvailabilityTypeEnum = /*@__PURE__*/ S.String;
 
 /** An Instance is a computing unit that an end customer can connect to. It's the main unit of computing resources in AlloyDB. */
@@ -1534,7 +1556,8 @@ export const CreateProjectsLocationsClustersInstancesRequest =
 export type UserUserTypeEnum =
   | "USER_TYPE_UNSPECIFIED"
   | "ALLOYDB_BUILT_IN"
-  | "ALLOYDB_IAM_USER";
+  | "ALLOYDB_IAM_USER"
+  | (string & {});
 export const UserUserTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message describing User object. */
@@ -2009,7 +2032,8 @@ export const GoogleCloudLocationLocation = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsBackupsViewEnum =
   | "BACKUP_VIEW_UNSPECIFIED"
   | "BACKUP_VIEW_BASIC"
-  | "BACKUP_VIEW_CLUSTER_DELETED";
+  | "BACKUP_VIEW_CLUSTER_DELETED"
+  | (string & {});
 export const GetProjectsLocationsBackupsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsBackupsRequest {
@@ -2036,7 +2060,8 @@ export const GetProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsClustersViewEnum =
   | "CLUSTER_VIEW_UNSPECIFIED"
   | "CLUSTER_VIEW_BASIC"
-  | "CLUSTER_VIEW_CONTINUOUS_BACKUP";
+  | "CLUSTER_VIEW_CONTINUOUS_BACKUP"
+  | (string & {});
 export const GetProjectsLocationsClustersViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsClustersRequest {
@@ -2063,7 +2088,8 @@ export const GetProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsClustersInstancesViewEnum =
   | "INSTANCE_VIEW_UNSPECIFIED"
   | "INSTANCE_VIEW_BASIC"
-  | "INSTANCE_VIEW_FULL";
+  | "INSTANCE_VIEW_FULL"
+  | (string & {});
 export const GetProjectsLocationsClustersInstancesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -2211,7 +2237,8 @@ export const ImportProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
 
 export type InjectFaultRequestFaultTypeEnum =
   | "FAULT_TYPE_UNSPECIFIED"
-  | "STOP_VM";
+  | "STOP_VM"
+  | (string & {});
 export const InjectFaultRequestFaultTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message for triggering fault injection on an instance */
@@ -2311,7 +2338,8 @@ export const GoogleCloudLocationListLocationsResponse = /*@__PURE__*/ S.suspend(
 export type ListProjectsLocationsBackupsViewEnum =
   | "BACKUP_VIEW_UNSPECIFIED"
   | "BACKUP_VIEW_BASIC"
-  | "BACKUP_VIEW_CLUSTER_DELETED";
+  | "BACKUP_VIEW_CLUSTER_DELETED"
+  | (string & {});
 export const ListProjectsLocationsBackupsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsBackupsRequest {
@@ -2594,7 +2622,8 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsSupportedDatabaseFlagsScopeEnum =
   | "SCOPE_UNSPECIFIED"
   | "DATABASE"
-  | "CONNECTION_POOL";
+  | "CONNECTION_POOL"
+  | (string & {});
 export const ListProjectsLocationsSupportedDatabaseFlagsScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2648,7 +2677,8 @@ export type SupportedDatabaseFlagSupportedDbVersionsItemEnum =
   | "POSTGRES_15"
   | "POSTGRES_16"
   | "POSTGRES_17"
-  | "POSTGRES_18";
+  | "POSTGRES_18"
+  | (string & {});
 export const SupportedDatabaseFlagSupportedDbVersionsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -2664,7 +2694,8 @@ export type SupportedDatabaseFlagValueTypeEnum =
   | "STRING"
   | "INTEGER"
   | "FLOAT"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const SupportedDatabaseFlagValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** Restrictions on INTEGER type values. */
@@ -2686,7 +2717,8 @@ export const IntegerRestrictions = /*@__PURE__*/ S.suspend(() =>
 export type SupportedDatabaseFlagScopeEnum =
   | "SCOPE_UNSPECIFIED"
   | "DATABASE"
-  | "CONNECTION_POOL";
+  | "CONNECTION_POOL"
+  | (string & {});
 export const SupportedDatabaseFlagScopeEnum = /*@__PURE__*/ S.String;
 
 /** SupportedDatabaseFlag gives general information about a database flag, like type and allowed values. This is a static value that is defined on the server side, and it cannot be modified by callers. To set the Database flags on a particular Instance, a caller should modify the Instance.database_flags field. */
@@ -3145,7 +3177,8 @@ export type UpgradeClusterRequestVersionEnum =
   | "POSTGRES_15"
   | "POSTGRES_16"
   | "POSTGRES_17"
-  | "POSTGRES_18";
+  | "POSTGRES_18"
+  | (string & {});
 export const UpgradeClusterRequestVersionEnum = /*@__PURE__*/ S.String;
 
 /** Upgrades a cluster. */

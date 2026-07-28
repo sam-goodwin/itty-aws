@@ -62,7 +62,11 @@ export const PluginConfigsLogsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PluginConfigsLogsListRequest>;
 
 /** * `SYSTEM` - SYSTEM * `PLUGIN` - PLUGIN * `CONSOLE` - CONSOLE */
-export type PluginLogEntrySourceEnum = "SYSTEM" | "PLUGIN" | "CONSOLE";
+export type PluginLogEntrySourceEnum =
+  | "SYSTEM"
+  | "PLUGIN"
+  | "CONSOLE"
+  | (string & {});
 export const PluginLogEntrySourceEnum = /*@__PURE__*/ S.String;
 
 /** * `DEBUG` - DEBUG * `LOG` - LOG * `INFO` - INFO * `WARN` - WARN * `ERROR` - ERROR */
@@ -71,7 +75,8 @@ export type PluginLogEntryTypeEnum =
   | "LOG"
   | "INFO"
   | "WARN"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const PluginLogEntryTypeEnum = /*@__PURE__*/ S.String;
 
 export interface PluginLogEntry {

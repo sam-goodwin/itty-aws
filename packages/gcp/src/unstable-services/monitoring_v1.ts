@@ -186,7 +186,8 @@ export type EventAnnotationEventTypeEnum =
   | "INTERCONNECT_MAINTENANCE_STARTED"
   | "INTERCONNECT_MAINTENANCE_COMPLETED"
   | "VPN_TRAFFIC_SELECTOR_NARROWING"
-  | "VPN_MAINTENANCE";
+  | "VPN_MAINTENANCE"
+  | (string & {});
 export const EventAnnotationEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** Annotation configuration for one event type on a dashboard */
@@ -237,7 +238,8 @@ export const DashboardAnnotations = /*@__PURE__*/ S.suspend(() =>
 
 export type StatisticalTimeSeriesFilterRankingMethodEnum =
   | "METHOD_UNSPECIFIED"
-  | "METHOD_CLUSTER_OUTLIER";
+  | "METHOD_CLUSTER_OUTLIER"
+  | (string & {});
 export const StatisticalTimeSeriesFilterRankingMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -271,7 +273,8 @@ export type AggregationCrossSeriesReducerEnum =
   | "REDUCE_PERCENTILE_99"
   | "REDUCE_PERCENTILE_95"
   | "REDUCE_PERCENTILE_50"
-  | "REDUCE_PERCENTILE_05";
+  | "REDUCE_PERCENTILE_05"
+  | (string & {});
 export const AggregationCrossSeriesReducerEnum = /*@__PURE__*/ S.String;
 
 export type AggregationPerSeriesAlignerEnum =
@@ -293,7 +296,8 @@ export type AggregationPerSeriesAlignerEnum =
   | "ALIGN_PERCENTILE_95"
   | "ALIGN_PERCENTILE_50"
   | "ALIGN_PERCENTILE_05"
-  | "ALIGN_PERCENT_CHANGE";
+  | "ALIGN_PERCENT_CHANGE"
+  | (string & {});
 export const AggregationPerSeriesAlignerEnum = /*@__PURE__*/ S.String;
 
 /** Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/aggregation). */
@@ -322,13 +326,15 @@ export type PickTimeSeriesFilterRankingMethodEnum =
   | "METHOD_MAX"
   | "METHOD_MIN"
   | "METHOD_SUM"
-  | "METHOD_LATEST";
+  | "METHOD_LATEST"
+  | (string & {});
 export const PickTimeSeriesFilterRankingMethodEnum = /*@__PURE__*/ S.String;
 
 export type PickTimeSeriesFilterDirectionEnum =
   | "DIRECTION_UNSPECIFIED"
   | "TOP"
-  | "BOTTOM";
+  | "BOTTOM"
+  | (string & {});
 export const PickTimeSeriesFilterDirectionEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive).The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
@@ -396,7 +402,8 @@ export type TraceQuerySpanDataValueEnum =
   | "SPAN_DATA_VALUE_UNSPECIFIED"
   | "SPAN_COUNT"
   | "SPAN_DURATION"
-  | "SPAN_DURATION_PERCENTILES";
+  | "SPAN_DURATION_PERCENTILES"
+  | (string & {});
 export const TraceQuerySpanDataValueEnum = /*@__PURE__*/ S.String;
 
 /** Span attribute key and list of values to be used for filtering. */
@@ -568,7 +575,8 @@ export type DimensionSortOrderEnum =
   | "SORT_ORDER_UNSPECIFIED"
   | "SORT_ORDER_NONE"
   | "SORT_ORDER_ASCENDING"
-  | "SORT_ORDER_DESCENDING";
+  | "SORT_ORDER_DESCENDING"
+  | (string & {});
 export const DimensionSortOrderEnum = /*@__PURE__*/ S.String;
 
 /** A chart dimension. Dimensions are a structured label, class, or category for a set of measurements in your data. */
@@ -671,7 +679,8 @@ export const MeasureList = /*@__PURE__*/ S.Array(
 export type SparkChartViewSparkChartTypeEnum =
   | "SPARK_CHART_TYPE_UNSPECIFIED"
   | "SPARK_LINE"
-  | "SPARK_BAR";
+  | "SPARK_BAR"
+  | (string & {});
 export const SparkChartViewSparkChartTypeEnum = /*@__PURE__*/ S.String;
 
 /** A sparkChart is a small chart suitable for inclusion in a table-cell or inline in text. This message contains the configuration for a sparkChart to show up on a Scorecard, showing recent trends of the scorecard's timeseries. */
@@ -691,13 +700,22 @@ export const SparkChartView = /*@__PURE__*/ S.suspend(() =>
 export type ThresholdDirectionEnum =
   | "DIRECTION_UNSPECIFIED"
   | "ABOVE"
-  | "BELOW";
+  | "BELOW"
+  | (string & {});
 export const ThresholdDirectionEnum = /*@__PURE__*/ S.String;
 
-export type ThresholdTargetAxisEnum = "TARGET_AXIS_UNSPECIFIED" | "Y1" | "Y2";
+export type ThresholdTargetAxisEnum =
+  | "TARGET_AXIS_UNSPECIFIED"
+  | "Y1"
+  | "Y2"
+  | (string & {});
 export const ThresholdTargetAxisEnum = /*@__PURE__*/ S.String;
 
-export type ThresholdColorEnum = "COLOR_UNSPECIFIED" | "YELLOW" | "RED";
+export type ThresholdColorEnum =
+  | "COLOR_UNSPECIFIED"
+  | "YELLOW"
+  | "RED"
+  | (string & {});
 export const ThresholdColorEnum = /*@__PURE__*/ S.String;
 
 /** Defines a threshold for categorizing time series values. */
@@ -752,7 +770,8 @@ export type BreakdownSortOrderEnum =
   | "SORT_ORDER_UNSPECIFIED"
   | "SORT_ORDER_NONE"
   | "SORT_ORDER_ASCENDING"
-  | "SORT_ORDER_DESCENDING";
+  | "SORT_ORDER_DESCENDING"
+  | (string & {});
 export const BreakdownSortOrderEnum = /*@__PURE__*/ S.String;
 
 /** Preview: A breakdown is an aggregation applied to the measures over a specified column. A breakdown can result in multiple series across a category for the provided measure. This is a preview feature and may be subject to change before final release. */
@@ -829,7 +848,8 @@ export const SectionHeader = /*@__PURE__*/ S.suspend(() =>
 export type PieChartChartTypeEnum =
   | "PIE_CHART_TYPE_UNSPECIFIED"
   | "PIE"
-  | "DONUT";
+  | "DONUT"
+  | (string & {});
 export const PieChartChartTypeEnum = /*@__PURE__*/ S.String;
 
 /** Groups a time series query definition. */
@@ -879,7 +899,11 @@ export const PieChart = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PieChart" }) as any as S.Schema<PieChart>;
 
-export type AxisScaleEnum = "SCALE_UNSPECIFIED" | "LINEAR" | "LOG10";
+export type AxisScaleEnum =
+  | "SCALE_UNSPECIFIED"
+  | "LINEAR"
+  | "LOG10"
+  | (string & {});
 export const AxisScaleEnum = /*@__PURE__*/ S.String;
 
 /** A chart axis. */
@@ -900,7 +924,8 @@ export type ColumnSortingOptionsDirectionEnum =
   | "SORT_ORDER_UNSPECIFIED"
   | "SORT_ORDER_NONE"
   | "SORT_ORDER_ASCENDING"
-  | "SORT_ORDER_DESCENDING";
+  | "SORT_ORDER_DESCENDING"
+  | (string & {});
 export const ColumnSortingOptionsDirectionEnum = /*@__PURE__*/ S.String;
 
 /** Data structure to storing column's sort strategy */
@@ -929,10 +954,15 @@ export type DataSetPlotTypeEnum =
   | "LINE"
   | "STACKED_AREA"
   | "STACKED_BAR"
-  | "HEATMAP";
+  | "HEATMAP"
+  | (string & {});
 export const DataSetPlotTypeEnum = /*@__PURE__*/ S.String;
 
-export type DataSetTargetAxisEnum = "TARGET_AXIS_UNSPECIFIED" | "Y1" | "Y2";
+export type DataSetTargetAxisEnum =
+  | "TARGET_AXIS_UNSPECIFIED"
+  | "Y1"
+  | "Y2"
+  | (string & {});
 export const DataSetTargetAxisEnum = /*@__PURE__*/ S.String;
 
 /** Groups a time series query definition with charting options. */
@@ -979,7 +1009,8 @@ export type ChartOptionsModeEnum =
   | "MODE_UNSPECIFIED"
   | "COLOR"
   | "X_RAY"
-  | "STATS";
+  | "STATS"
+  | (string & {});
 export const ChartOptionsModeEnum = /*@__PURE__*/ S.String;
 
 /** Options to control visual rendering of a chart. */
@@ -1058,7 +1089,8 @@ export const ErrorReportingPanel = /*@__PURE__*/ S.suspend(() =>
 export type SingleViewGroupDisplayTypeEnum =
   | "DISPLAY_TYPE_UNSPECIFIED"
   | "DROPDOWN"
-  | "TAB";
+  | "TAB"
+  | (string & {});
 export const SingleViewGroupDisplayTypeEnum = /*@__PURE__*/ S.String;
 
 /** A widget that groups the other widgets by using a dropdown menu. All widgets that are within the area spanned by the grouping widget are considered member widgets. */
@@ -1129,14 +1161,16 @@ export const TableDataSetList = /*@__PURE__*/ S.Array(
 export type TimeSeriesTableMetricVisualizationEnum =
   | "METRIC_VISUALIZATION_UNSPECIFIED"
   | "NUMBER"
-  | "BAR";
+  | "BAR"
+  | (string & {});
 export const TimeSeriesTableMetricVisualizationEnum = /*@__PURE__*/ S.String;
 
 export type ColumnSettingsAlignmentEnum =
   | "CELL_ALIGNMENT_UNSPECIFIED"
   | "LEFT"
   | "CENTER"
-  | "RIGHT";
+  | "RIGHT"
+  | (string & {});
 export const ColumnSettingsAlignmentEnum = /*@__PURE__*/ S.String;
 
 /** The persistent settings for a table's columns. */
@@ -1274,7 +1308,11 @@ export const IncidentList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IncidentList" }) as any as S.Schema<IncidentList>;
 
-export type TextFormatEnum = "FORMAT_UNSPECIFIED" | "MARKDOWN" | "RAW";
+export type TextFormatEnum =
+  | "FORMAT_UNSPECIFIED"
+  | "MARKDOWN"
+  | "RAW"
+  | (string & {});
 export const TextFormatEnum = /*@__PURE__*/ S.String;
 
 export type TextStylePointerLocationEnum =
@@ -1290,7 +1328,8 @@ export type TextStylePointerLocationEnum =
   | "PL_BOTTOM_RIGHT"
   | "PL_BOTTOM_LEFT"
   | "PL_LEFT_BOTTOM"
-  | "PL_LEFT_TOP";
+  | "PL_LEFT_TOP"
+  | (string & {});
 export const TextStylePointerLocationEnum = /*@__PURE__*/ S.String;
 
 export type TextStylePaddingEnum =
@@ -1299,14 +1338,16 @@ export type TextStylePaddingEnum =
   | "P_SMALL"
   | "P_MEDIUM"
   | "P_LARGE"
-  | "P_EXTRA_LARGE";
+  | "P_EXTRA_LARGE"
+  | (string & {});
 export const TextStylePaddingEnum = /*@__PURE__*/ S.String;
 
 export type TextStyleHorizontalAlignmentEnum =
   | "HORIZONTAL_ALIGNMENT_UNSPECIFIED"
   | "H_LEFT"
   | "H_CENTER"
-  | "H_RIGHT";
+  | "H_RIGHT"
+  | (string & {});
 export const TextStyleHorizontalAlignmentEnum = /*@__PURE__*/ S.String;
 
 export type TextStyleFontSizeEnum =
@@ -1315,14 +1356,16 @@ export type TextStyleFontSizeEnum =
   | "FS_SMALL"
   | "FS_MEDIUM"
   | "FS_LARGE"
-  | "FS_EXTRA_LARGE";
+  | "FS_EXTRA_LARGE"
+  | (string & {});
 export const TextStyleFontSizeEnum = /*@__PURE__*/ S.String;
 
 export type TextStyleVerticalAlignmentEnum =
   | "VERTICAL_ALIGNMENT_UNSPECIFIED"
   | "V_TOP"
   | "V_CENTER"
-  | "V_BOTTOM";
+  | "V_BOTTOM"
+  | (string & {});
 export const TextStyleVerticalAlignmentEnum = /*@__PURE__*/ S.String;
 
 /** Properties that determine how the title and content are styled */
@@ -1373,7 +1416,8 @@ export const Text = /*@__PURE__*/ S.suspend(() =>
 
 export type TemplateVariableConditionComparatorEnum =
   | "COMPARATOR_UNSPECIFIED"
-  | "REGEX_FULL_MATCH";
+  | "REGEX_FULL_MATCH"
+  | (string & {});
 export const TemplateVariableConditionComparatorEnum = /*@__PURE__*/ S.String;
 
 /** A condition whose evaluation is based on the value of a template variable. */
@@ -1533,7 +1577,8 @@ export const RowLayout = /*@__PURE__*/ S.suspend(() =>
 export type DashboardFilterValueTypeEnum =
   | "VALUE_TYPE_UNSPECIFIED"
   | "STRING"
-  | "STRING_ARRAY";
+  | "STRING_ARRAY"
+  | (string & {});
 export const DashboardFilterValueTypeEnum = /*@__PURE__*/ S.String;
 
 export type DashboardFilterFilterTypeEnum =
@@ -1543,7 +1588,8 @@ export type DashboardFilterFilterTypeEnum =
   | "USER_METADATA_LABEL"
   | "SYSTEM_METADATA_LABEL"
   | "GROUP"
-  | "VALUE_ONLY";
+  | "VALUE_ONLY"
+  | (string & {});
 export const DashboardFilterFilterTypeEnum = /*@__PURE__*/ S.String;
 
 /** An array of strings */

@@ -73,7 +73,8 @@ export type GoogleSecuritySafebrowsingV5HashListMetadataThreatTypesItemEnum =
   | "MALWARE"
   | "SOCIAL_ENGINEERING"
   | "UNWANTED_SOFTWARE"
-  | "POTENTIALLY_HARMFUL_APPLICATION";
+  | "POTENTIALLY_HARMFUL_APPLICATION"
+  | (string & {});
 export const GoogleSecuritySafebrowsingV5HashListMetadataThreatTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -89,12 +90,17 @@ export type GoogleSecuritySafebrowsingV5HashListMetadataHashLengthEnum =
   | "FOUR_BYTES"
   | "EIGHT_BYTES"
   | "SIXTEEN_BYTES"
-  | "THIRTY_TWO_BYTES";
+  | "THIRTY_TWO_BYTES"
+  | (string & {});
 export const GoogleSecuritySafebrowsingV5HashListMetadataHashLengthEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnum =
-  "LIKELY_SAFE_TYPE_UNSPECIFIED" | "GENERAL_BROWSING" | "CSD" | "DOWNLOAD";
+    | "LIKELY_SAFE_TYPE_UNSPECIFIED"
+    | "GENERAL_BROWSING"
+    | "CSD"
+    | "DOWNLOAD"
+    | (string & {});
 export const GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -400,12 +406,13 @@ export type GoogleSecuritySafebrowsingV5FullHashFullHashDetailThreatTypeEnum =
   | "MALWARE"
   | "SOCIAL_ENGINEERING"
   | "UNWANTED_SOFTWARE"
-  | "POTENTIALLY_HARMFUL_APPLICATION";
+  | "POTENTIALLY_HARMFUL_APPLICATION"
+  | (string & {});
 export const GoogleSecuritySafebrowsingV5FullHashFullHashDetailThreatTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleSecuritySafebrowsingV5FullHashFullHashDetailAttributesItemEnum =
-  "THREAT_ATTRIBUTE_UNSPECIFIED" | "CANARY" | "FRAME_ONLY";
+  "THREAT_ATTRIBUTE_UNSPECIFIED" | "CANARY" | "FRAME_ONLY" | (string & {});
 export const GoogleSecuritySafebrowsingV5FullHashFullHashDetailAttributesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -509,7 +516,8 @@ export type GoogleSecuritySafebrowsingV5ThreatUrlThreatTypesItemEnum =
   | "MALWARE"
   | "SOCIAL_ENGINEERING"
   | "UNWANTED_SOFTWARE"
-  | "POTENTIALLY_HARMFUL_APPLICATION";
+  | "POTENTIALLY_HARMFUL_APPLICATION"
+  | (string & {});
 export const GoogleSecuritySafebrowsingV5ThreatUrlThreatTypesItemEnum =
   /*@__PURE__*/ S.String;
 

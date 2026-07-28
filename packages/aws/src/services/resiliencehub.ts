@@ -203,10 +203,11 @@ export type ResourceMappingType =
   | "AppRegistryApp"
   | "ResourceGroup"
   | "Terraform"
-  | "EKS";
+  | "EKS"
+  | (string & {});
 export const ResourceMappingType = /*@__PURE__*/ S.String;
 
-export type PhysicalIdentifierType = "Arn" | "Native";
+export type PhysicalIdentifierType = "Arn" | "Native" | (string & {});
 export const PhysicalIdentifierType = /*@__PURE__*/ S.String;
 
 export type AwsRegion = string;
@@ -311,7 +312,8 @@ export type EntityName255 = string;
 export type ExcludeRecommendationReason =
   | "AlreadyImplemented"
   | "NotRelevant"
-  | "ComplexityOfImplementation";
+  | "ComplexityOfImplementation"
+  | (string & {});
 export const ExcludeRecommendationReason = /*@__PURE__*/ S.String;
 
 export interface UpdateRecommendationStatusRequestEntry {
@@ -425,10 +427,10 @@ export const TagMap = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export type ClientToken = string;
-export type AppAssessmentScheduleType = "Disabled" | "Daily";
+export type AppAssessmentScheduleType = "Disabled" | "Daily" | (string & {});
 export const AppAssessmentScheduleType = /*@__PURE__*/ S.String;
 
-export type PermissionModelType = "LegacyIAMUser" | "RoleBased";
+export type PermissionModelType = "LegacyIAMUser" | "RoleBased" | (string & {});
 export const PermissionModelType = /*@__PURE__*/ S.String;
 
 export type IamRoleName = string;
@@ -449,7 +451,10 @@ export const PermissionModel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PermissionModel",
 }) as any as S.Schema<PermissionModel>;
-export type EventType = "ScheduledAssessmentFailure" | "DriftDetected";
+export type EventType =
+  | "ScheduledAssessmentFailure"
+  | "DriftDetected"
+  | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
 
 export interface EventSubscription {
@@ -503,7 +508,7 @@ export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAppRequest",
 }) as any as S.Schema<CreateAppRequest>;
-export type AppStatusType = "Active" | "Deleting";
+export type AppStatusType = "Active" | "Deleting" | (string & {});
 export const AppStatusType = /*@__PURE__*/ S.String;
 
 export type AppComplianceStatusType =
@@ -512,10 +517,15 @@ export type AppComplianceStatusType =
   | "NotAssessed"
   | "ChangesDetected"
   | "NotApplicable"
-  | "MissingPolicy";
+  | "MissingPolicy"
+  | (string & {});
 export const AppComplianceStatusType = /*@__PURE__*/ S.String;
 
-export type AppDriftStatusType = "NotChecked" | "NotDetected" | "Detected";
+export type AppDriftStatusType =
+  | "NotChecked"
+  | "NotDetected"
+  | "Detected"
+  | (string & {});
 export const AppDriftStatusType = /*@__PURE__*/ S.String;
 
 export interface App {
@@ -703,7 +713,7 @@ export const CreateAppVersionResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAppVersionResourceRequest>;
 export type AppComponentList = AppComponent[];
 export const AppComponentList = /*@__PURE__*/ S.Array(AppComponent);
-export type ResourceSourceType = "AppTemplate" | "Discovered";
+export type ResourceSourceType = "AppTemplate" | "Discovered" | (string & {});
 export const ResourceSourceType = /*@__PURE__*/ S.String;
 
 export interface PhysicalResource {
@@ -749,10 +759,10 @@ export const CreateAppVersionResourceResponse = /*@__PURE__*/ S.suspend(() =>
 export type Uuid = string;
 export type RecommendationIdList = string[];
 export const RecommendationIdList = /*@__PURE__*/ S.Array(S.String);
-export type TemplateFormat = "CfnYaml" | "CfnJson";
+export type TemplateFormat = "CfnYaml" | "CfnJson" | (string & {});
 export const TemplateFormat = /*@__PURE__*/ S.String;
 
-export type RenderRecommendationType = "Alarm" | "Sop" | "Test";
+export type RenderRecommendationType = "Alarm" | "Sop" | "Test" | (string & {});
 export const RenderRecommendationType = /*@__PURE__*/ S.String;
 
 export type RenderRecommendationTypeList = RenderRecommendationType[];
@@ -803,7 +813,8 @@ export type RecommendationTemplateStatus =
   | "Pending"
   | "InProgress"
   | "Failed"
-  | "Success";
+  | "Success"
+  | (string & {});
 export const RecommendationTemplateStatus = /*@__PURE__*/ S.String;
 
 export interface RecommendationTemplate {
@@ -854,7 +865,8 @@ export const CreateRecommendationTemplateResponse = /*@__PURE__*/ S.suspend(
 export type DataLocationConstraint =
   | "AnyLocation"
   | "SameContinent"
-  | "SameCountry";
+  | "SameCountry"
+  | (string & {});
 export const DataLocationConstraint = /*@__PURE__*/ S.String;
 
 export type ResiliencyPolicyTier =
@@ -863,10 +875,16 @@ export type ResiliencyPolicyTier =
   | "Important"
   | "CoreServices"
   | "NonCritical"
-  | "NotApplicable";
+  | "NotApplicable"
+  | (string & {});
 export const ResiliencyPolicyTier = /*@__PURE__*/ S.String;
 
-export type DisruptionType = "Software" | "Hardware" | "AZ" | "Region";
+export type DisruptionType =
+  | "Software"
+  | "Hardware"
+  | "AZ"
+  | "Region"
+  | (string & {});
 export const DisruptionType = /*@__PURE__*/ S.String;
 
 export type Seconds = number;
@@ -913,7 +931,7 @@ export const CreateResiliencyPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateResiliencyPolicyRequest",
 }) as any as S.Schema<CreateResiliencyPolicyRequest>;
-export type EstimatedCostTier = "L1" | "L2" | "L3" | "L4";
+export type EstimatedCostTier = "L1" | "L2" | "L3" | "L4" | (string & {});
 export const EstimatedCostTier = /*@__PURE__*/ S.String;
 
 export interface ResiliencyPolicy {
@@ -1002,7 +1020,12 @@ export const DeleteAppAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteAppAssessmentRequest",
 }) as any as S.Schema<DeleteAppAssessmentRequest>;
-export type AssessmentStatus = "Pending" | "InProgress" | "Failed" | "Success";
+export type AssessmentStatus =
+  | "Pending"
+  | "InProgress"
+  | "Failed"
+  | "Success"
+  | (string & {});
 export const AssessmentStatus = /*@__PURE__*/ S.String;
 
 export interface DeleteAppAssessmentResponse {
@@ -1278,11 +1301,16 @@ export const DescribeAppAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAppAssessmentRequest",
 }) as any as S.Schema<DescribeAppAssessmentRequest>;
-export type AssessmentInvoker = "User" | "System";
+export type AssessmentInvoker = "User" | "System" | (string & {});
 export const AssessmentInvoker = /*@__PURE__*/ S.String;
 
 export type CurrencyCode = string;
-export type CostFrequency = "Hourly" | "Daily" | "Monthly" | "Yearly";
+export type CostFrequency =
+  | "Hourly"
+  | "Daily"
+  | "Monthly"
+  | "Yearly"
+  | (string & {});
 export const CostFrequency = /*@__PURE__*/ S.String;
 
 export interface Cost {
@@ -1298,7 +1326,12 @@ export const DisruptionResiliencyScore = /*@__PURE__*/ S.Record(
   DisruptionType,
   S.Number.pipe(S.optional),
 );
-export type ResiliencyScoreType = "Compliance" | "Test" | "Alarm" | "Sop";
+export type ResiliencyScoreType =
+  | "Compliance"
+  | "Test"
+  | "Alarm"
+  | "Sop"
+  | (string & {});
 export const ResiliencyScoreType = /*@__PURE__*/ S.String;
 
 export interface ScoringComponentResiliencyScore {
@@ -1344,7 +1377,8 @@ export type ComplianceStatus =
   | "PolicyBreached"
   | "PolicyMet"
   | "NotApplicable"
-  | "MissingPolicy";
+  | "MissingPolicy"
+  | (string & {});
 export const ComplianceStatus = /*@__PURE__*/ S.String;
 
 export interface DisruptionCompliance {
@@ -1408,7 +1442,11 @@ export const ResourceErrorsDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResourceErrorsDetails",
 }) as any as S.Schema<ResourceErrorsDetails>;
-export type DriftStatus = "NotChecked" | "NotDetected" | "Detected";
+export type DriftStatus =
+  | "NotChecked"
+  | "NotDetected"
+  | "Detected"
+  | (string & {});
 export const DriftStatus = /*@__PURE__*/ S.String;
 
 export interface AssessmentRiskRecommendation {
@@ -1636,7 +1674,8 @@ export type ResourceResolutionStatusType =
   | "Pending"
   | "InProgress"
   | "Failed"
-  | "Success";
+  | "Success"
+  | (string & {});
 export const ResourceResolutionStatusType = /*@__PURE__*/ S.String;
 
 export interface DescribeAppVersionResourcesResolutionStatusResponse {
@@ -1716,7 +1755,8 @@ export type ResourceImportStatusType =
   | "Pending"
   | "InProgress"
   | "Failed"
-  | "Success";
+  | "Success"
+  | (string & {});
 export const ResourceImportStatusType = /*@__PURE__*/ S.String;
 
 export interface ErrorDetail {
@@ -1769,7 +1809,8 @@ export type MetricsExportStatusType =
   | "Pending"
   | "InProgress"
   | "Failed"
-  | "Success";
+  | "Success"
+  | (string & {});
 export const MetricsExportStatusType = /*@__PURE__*/ S.String;
 
 export interface DescribeMetricsExportResponse {
@@ -1839,7 +1880,8 @@ export type ResourcesGroupingRecGenStatusType =
   | "Pending"
   | "InProgress"
   | "Failed"
-  | "Success";
+  | "Success"
+  | (string & {});
 export const ResourcesGroupingRecGenStatusType = /*@__PURE__*/ S.String;
 
 export interface DescribeResourceGroupingRecommendationTaskResponse {
@@ -1861,7 +1903,10 @@ export type ArnList = string[];
 export const ArnList = /*@__PURE__*/ S.Array(S.String);
 export type TerraformSourceList = TerraformSource[];
 export const TerraformSourceList = /*@__PURE__*/ S.Array(TerraformSource);
-export type ResourceImportStrategyType = "AddOnly" | "ReplaceAll";
+export type ResourceImportStrategyType =
+  | "AddOnly"
+  | "ReplaceAll"
+  | (string & {});
 export const ResourceImportStrategyType = /*@__PURE__*/ S.String;
 
 export type EksNamespaceList = string[];
@@ -1952,7 +1997,13 @@ export const ListAlarmRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAlarmRecommendationsRequest",
 }) as any as S.Schema<ListAlarmRecommendationsRequest>;
-export type AlarmType = "Metric" | "Composite" | "Canary" | "Logs" | "Event";
+export type AlarmType =
+  | "Metric"
+  | "Composite"
+  | "Canary"
+  | "Logs"
+  | "Event"
+  | (string & {});
 export const AlarmType = /*@__PURE__*/ S.String;
 
 export type EntityId = string;
@@ -2003,7 +2054,8 @@ export type RecommendationStatus =
   | "Implemented"
   | "Inactive"
   | "NotImplemented"
-  | "Excluded";
+  | "Excluded"
+  | (string & {});
 export const RecommendationStatus = /*@__PURE__*/ S.String;
 
 export interface AlarmRecommendation {
@@ -2078,10 +2130,11 @@ export const ListAppAssessmentComplianceDriftsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListAppAssessmentComplianceDriftsRequest>;
 export type DriftType =
   | "ApplicationCompliance"
-  | "AppComponentResiliencyComplianceStatus";
+  | "AppComponentResiliencyComplianceStatus"
+  | (string & {});
 export const DriftType = /*@__PURE__*/ S.String;
 
-export type DifferenceType = "NotEqual" | "Added" | "Removed";
+export type DifferenceType = "NotEqual" | "Added" | "Removed" | (string & {});
 export const DifferenceType = /*@__PURE__*/ S.String;
 
 export interface ComplianceDrift {
@@ -2371,7 +2424,8 @@ export type RecommendationComplianceStatus =
   | "BreachedUnattainable"
   | "BreachedCanMeet"
   | "MetCanImprove"
-  | "MissingPolicy";
+  | "MissingPolicy"
+  | (string & {});
 export const RecommendationComplianceStatus = /*@__PURE__*/ S.String;
 
 export interface RecommendationDisruptionCompliance {
@@ -2405,7 +2459,8 @@ export type ConfigRecommendationOptimizationType =
   | "BestAZRecovery"
   | "LeastErrors"
   | "BestAttainable"
-  | "BestRegionRecovery";
+  | "BestRegionRecovery"
+  | (string & {});
 export const ConfigRecommendationOptimizationType = /*@__PURE__*/ S.String;
 
 export type SuggestedChangesList = string[];
@@ -2415,7 +2470,8 @@ export type HaArchitecture =
   | "WarmStandby"
   | "PilotLight"
   | "BackupAndRestore"
-  | "NoRecoveryPlan";
+  | "NoRecoveryPlan"
+  | (string & {});
 export const HaArchitecture = /*@__PURE__*/ S.String;
 
 export interface ConfigRecommendation {
@@ -2782,7 +2838,13 @@ export const ListAppVersionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAppVersionsResponse",
 }) as any as S.Schema<ListAppVersionsResponse>;
-export type FieldAggregationType = "Min" | "Max" | "Sum" | "Avg" | "Count";
+export type FieldAggregationType =
+  | "Min"
+  | "Max"
+  | "Sum"
+  | "Avg"
+  | "Count"
+  | (string & {});
 export const FieldAggregationType = /*@__PURE__*/ S.String;
 
 export interface Field {
@@ -2800,7 +2862,8 @@ export type ConditionOperatorType =
   | "GreaterThen"
   | "GreaterOrEquals"
   | "LessThen"
-  | "LessOrEquals";
+  | "LessOrEquals"
+  | (string & {});
 export const ConditionOperatorType = /*@__PURE__*/ S.String;
 
 export interface Condition {
@@ -3026,17 +3089,22 @@ export const GroupingResourceList = /*@__PURE__*/ S.Array(GroupingResource);
 export type GroupingRecommendationStatusType =
   | "Accepted"
   | "Rejected"
-  | "PendingDecision";
+  | "PendingDecision"
+  | (string & {});
 export const GroupingRecommendationStatusType = /*@__PURE__*/ S.String;
 
-export type GroupingRecommendationConfidenceLevel = "High" | "Medium";
+export type GroupingRecommendationConfidenceLevel =
+  | "High"
+  | "Medium"
+  | (string & {});
 export const GroupingRecommendationConfidenceLevel = /*@__PURE__*/ S.String;
 
 export type GroupingRecommendationRejectionReason =
   | "DistinctBusinessPurpose"
   | "SeparateDataConcern"
   | "DistinctUserGroupHandling"
-  | "Other";
+  | "Other"
+  | (string & {});
 export const GroupingRecommendationRejectionReason = /*@__PURE__*/ S.String;
 
 export interface GroupingRecommendation {
@@ -3105,7 +3173,7 @@ export const ListSopRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSopRecommendationsRequest",
 }) as any as S.Schema<ListSopRecommendationsRequest>;
-export type SopServiceType = "SSM";
+export type SopServiceType = "SSM" | (string & {});
 export const SopServiceType = /*@__PURE__*/ S.String;
 
 export type DocumentName = string;
@@ -3232,10 +3300,15 @@ export const ListTestRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTestRecommendationsRequest",
 }) as any as S.Schema<ListTestRecommendationsRequest>;
-export type TestRisk = "Small" | "Medium" | "High";
+export type TestRisk = "Small" | "Medium" | "High" | (string & {});
 export const TestRisk = /*@__PURE__*/ S.String;
 
-export type TestType = "Software" | "Hardware" | "AZ" | "Region";
+export type TestType =
+  | "Software"
+  | "Hardware"
+  | "AZ"
+  | "Region"
+  | (string & {});
 export const TestType = /*@__PURE__*/ S.String;
 
 export type AlarmReferenceIdList = string[];

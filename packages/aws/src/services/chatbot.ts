@@ -393,7 +393,10 @@ export const CustomActionDefinition = /*@__PURE__*/ S.suspend(() =>
 export type CustomActionAliasName = string;
 export type CustomActionAttachmentNotificationType = string;
 export type CustomActionButtonText = string;
-export type CustomActionAttachmentCriteriaOperator = "HAS_VALUE" | "EQUALS";
+export type CustomActionAttachmentCriteriaOperator =
+  | "HAS_VALUE"
+  | "EQUALS"
+  | (string & {});
 export const CustomActionAttachmentCriteriaOperator = /*@__PURE__*/ S.String;
 
 export interface CustomActionAttachmentCriteria {

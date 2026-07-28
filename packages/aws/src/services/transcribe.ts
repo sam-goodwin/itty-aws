@@ -173,7 +173,7 @@ export const NonTalkTimeFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NonTalkTimeFilter",
 }) as any as S.Schema<NonTalkTimeFilter>;
-export type ParticipantRole = "AGENT" | "CUSTOMER";
+export type ParticipantRole = "AGENT" | "CUSTOMER" | (string & {});
 export const ParticipantRole = /*@__PURE__*/ S.String;
 
 export interface InterruptionFilter {
@@ -194,7 +194,7 @@ export const InterruptionFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InterruptionFilter",
 }) as any as S.Schema<InterruptionFilter>;
-export type TranscriptFilterType = "EXACT";
+export type TranscriptFilterType = "EXACT" | (string & {});
 export const TranscriptFilterType = /*@__PURE__*/ S.String;
 
 export type NonEmptyString = string;
@@ -220,7 +220,12 @@ export const TranscriptFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TranscriptFilter",
 }) as any as S.Schema<TranscriptFilter>;
-export type SentimentValue = "POSITIVE" | "NEGATIVE" | "NEUTRAL" | "MIXED";
+export type SentimentValue =
+  | "POSITIVE"
+  | "NEGATIVE"
+  | "NEUTRAL"
+  | "MIXED"
+  | (string & {});
 export const SentimentValue = /*@__PURE__*/ S.String;
 
 export type SentimentValueList = SentimentValue[];
@@ -287,7 +292,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
-export type InputType = "REAL_TIME" | "POST_CALL";
+export type InputType = "REAL_TIME" | "POST_CALL" | (string & {});
 export const InputType = /*@__PURE__*/ S.String;
 
 export interface CreateCallAnalyticsCategoryRequest {
@@ -350,10 +355,11 @@ export type CLMLanguageCode =
   | "en-GB"
   | "en-AU"
   | "de-DE"
-  | "ja-JP";
+  | "ja-JP"
+  | (string & {});
 export const CLMLanguageCode = /*@__PURE__*/ S.String;
 
-export type BaseModelName = "NarrowBand" | "WideBand";
+export type BaseModelName = "NarrowBand" | "WideBand" | (string & {});
 export const BaseModelName = /*@__PURE__*/ S.String;
 
 export type ModelName = string;
@@ -400,7 +406,11 @@ export const CreateLanguageModelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLanguageModelRequest",
 }) as any as S.Schema<CreateLanguageModelRequest>;
-export type ModelStatus = "IN_PROGRESS" | "FAILED" | "COMPLETED";
+export type ModelStatus =
+  | "IN_PROGRESS"
+  | "FAILED"
+  | "COMPLETED"
+  | (string & {});
 export const ModelStatus = /*@__PURE__*/ S.String;
 
 export interface CreateLanguageModelResponse {
@@ -539,7 +549,8 @@ export type LanguageCode =
   | "uz-UZ"
   | "wo-SN"
   | "zh-HK"
-  | "zu-ZA";
+  | "zu-ZA"
+  | (string & {});
 export const LanguageCode = /*@__PURE__*/ S.String;
 
 export interface CreateMedicalVocabularyRequest {
@@ -567,7 +578,7 @@ export const CreateMedicalVocabularyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMedicalVocabularyRequest",
 }) as any as S.Schema<CreateMedicalVocabularyRequest>;
-export type VocabularyState = "PENDING" | "READY" | "FAILED";
+export type VocabularyState = "PENDING" | "READY" | "FAILED" | (string & {});
 export const VocabularyState = /*@__PURE__*/ S.String;
 
 export type FailureReason = string;
@@ -1044,15 +1055,17 @@ export type CallAnalyticsJobStatus =
   | "QUEUED"
   | "IN_PROGRESS"
   | "FAILED"
-  | "COMPLETED";
+  | "COMPLETED"
+  | (string & {});
 export const CallAnalyticsJobStatus = /*@__PURE__*/ S.String;
 
-export type CallAnalyticsFeature = "GENERATIVE_SUMMARIZATION";
+export type CallAnalyticsFeature = "GENERATIVE_SUMMARIZATION" | (string & {});
 export const CallAnalyticsFeature = /*@__PURE__*/ S.String;
 
 export type CallAnalyticsSkippedReasonCode =
   | "INSUFFICIENT_CONVERSATION_CONTENT"
-  | "FAILED_SAFETY_GUIDELINES";
+  | "FAILED_SAFETY_GUIDELINES"
+  | (string & {});
 export const CallAnalyticsSkippedReasonCode = /*@__PURE__*/ S.String;
 
 export interface CallAnalyticsSkippedFeature {
@@ -1090,7 +1103,8 @@ export type MediaFormat =
   | "ogg"
   | "amr"
   | "webm"
-  | "m4a";
+  | "m4a"
+  | (string & {});
 export const MediaFormat = /*@__PURE__*/ S.String;
 
 export interface Media {
@@ -1114,13 +1128,16 @@ export const Transcript = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Transcript" }) as any as S.Schema<Transcript>;
 export type IdentifiedLanguageScore = number;
-export type VocabularyFilterMethod = "remove" | "mask" | "tag";
+export type VocabularyFilterMethod = "remove" | "mask" | "tag" | (string & {});
 export const VocabularyFilterMethod = /*@__PURE__*/ S.String;
 
-export type RedactionType = "PII";
+export type RedactionType = "PII" | (string & {});
 export const RedactionType = /*@__PURE__*/ S.String;
 
-export type RedactionOutput = "redacted" | "redacted_and_unredacted";
+export type RedactionOutput =
+  | "redacted"
+  | "redacted_and_unredacted"
+  | (string & {});
 export const RedactionOutput = /*@__PURE__*/ S.String;
 
 export type PiiEntityType =
@@ -1135,7 +1152,8 @@ export type PiiEntityType =
   | "NAME"
   | "PHONE"
   | "SSN"
-  | "ALL";
+  | "ALL"
+  | (string & {});
 export const PiiEntityType = /*@__PURE__*/ S.String;
 
 export type PiiEntityTypes = PiiEntityType[];
@@ -1298,10 +1316,11 @@ export type MedicalScribeJobStatus =
   | "QUEUED"
   | "IN_PROGRESS"
   | "FAILED"
-  | "COMPLETED";
+  | "COMPLETED"
+  | (string & {});
 export const MedicalScribeJobStatus = /*@__PURE__*/ S.String;
 
-export type MedicalScribeLanguageCode = "en-US";
+export type MedicalScribeLanguageCode = "en-US" | (string & {});
 export const MedicalScribeLanguageCode = /*@__PURE__*/ S.String;
 
 export interface MedicalScribeOutput {
@@ -1321,7 +1340,8 @@ export type MedicalScribeNoteTemplate =
   | "SIRP"
   | "DAP"
   | "BEHAVIORAL_SOAP"
-  | "PHYSICAL_SOAP";
+  | "PHYSICAL_SOAP"
+  | (string & {});
 export const MedicalScribeNoteTemplate = /*@__PURE__*/ S.String;
 
 export interface ClinicalNoteGenerationSettings {
@@ -1355,7 +1375,10 @@ export const MedicalScribeSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "MedicalScribeSettings",
 }) as any as S.Schema<MedicalScribeSettings>;
 export type MedicalScribeChannelId = number;
-export type MedicalScribeParticipantRole = "PATIENT" | "CLINICIAN";
+export type MedicalScribeParticipantRole =
+  | "PATIENT"
+  | "CLINICIAN"
+  | (string & {});
 export const MedicalScribeParticipantRole = /*@__PURE__*/ S.String;
 
 export interface MedicalScribeChannelDefinition {
@@ -1446,7 +1469,8 @@ export type TranscriptionJobStatus =
   | "QUEUED"
   | "IN_PROGRESS"
   | "FAILED"
-  | "COMPLETED";
+  | "COMPLETED"
+  | (string & {});
 export const TranscriptionJobStatus = /*@__PURE__*/ S.String;
 
 export type MedicalMediaSampleRateHertz = number;
@@ -1479,13 +1503,13 @@ export const MedicalTranscriptionSetting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MedicalTranscriptionSetting",
 }) as any as S.Schema<MedicalTranscriptionSetting>;
-export type MedicalContentIdentificationType = "PHI";
+export type MedicalContentIdentificationType = "PHI" | (string & {});
 export const MedicalContentIdentificationType = /*@__PURE__*/ S.String;
 
-export type Specialty = "PRIMARYCARE";
+export type Specialty = "PRIMARYCARE" | (string & {});
 export const Specialty = /*@__PURE__*/ S.String;
 
-export type Type = "CONVERSATION" | "DICTATION";
+export type Type = "CONVERSATION" | "DICTATION" | (string & {});
 export const Type = /*@__PURE__*/ S.String;
 
 export interface MedicalTranscriptionJob {
@@ -1654,7 +1678,7 @@ export const LanguageCodeItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LanguageCodeItem>;
 export type LanguageCodeList = LanguageCodeItem[];
 export const LanguageCodeList = /*@__PURE__*/ S.Array(LanguageCodeItem);
-export type SubtitleFormat = "vtt" | "srt";
+export type SubtitleFormat = "vtt" | "srt" | (string & {});
 export const SubtitleFormat = /*@__PURE__*/ S.String;
 
 export type SubtitleFormats = SubtitleFormat[];
@@ -1676,7 +1700,7 @@ export const SubtitlesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SubtitlesOutput",
 }) as any as S.Schema<SubtitlesOutput>;
-export type ToxicityCategory = "ALL";
+export type ToxicityCategory = "ALL" | (string & {});
 export const ToxicityCategory = /*@__PURE__*/ S.String;
 
 export type ToxicityCategories = ToxicityCategory[];
@@ -2070,7 +2094,10 @@ export const ListMedicalTranscriptionJobsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListMedicalTranscriptionJobsRequest",
 }) as any as S.Schema<ListMedicalTranscriptionJobsRequest>;
-export type OutputLocationType = "CUSTOMER_BUCKET" | "SERVICE_BUCKET";
+export type OutputLocationType =
+  | "CUSTOMER_BUCKET"
+  | "SERVICE_BUCKET"
+  | (string & {});
 export const OutputLocationType = /*@__PURE__*/ S.String;
 
 export interface MedicalTranscriptionJobSummary {
@@ -2432,7 +2459,7 @@ export const KMSEncryptionContextMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export type Pronouns = "HE_HIM" | "SHE_HER" | "THEY_THEM";
+export type Pronouns = "HE_HIM" | "SHE_HER" | "THEY_THEM" | (string & {});
 export const Pronouns = /*@__PURE__*/ S.String;
 
 export interface MedicalScribePatientContext {

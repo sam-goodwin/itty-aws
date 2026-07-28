@@ -107,7 +107,8 @@ export type UnitVariableTypeEnum =
   | "INT"
   | "BOOL"
   | "STRUCT"
-  | "LIST";
+  | "LIST"
+  | (string & {});
 export const UnitVariableTypeEnum = /*@__PURE__*/ S.String;
 
 /** UnitVariable describes a parameter for a Unit. */
@@ -254,7 +255,8 @@ export const UnitUpdatePacing = /*@__PURE__*/ S.suspend(() =>
 export type RolloutKindUpdateUnitKindStrategyEnum =
   | "UPDATE_UNIT_KIND_STRATEGY_UNSPECIFIED"
   | "UPDATE_UNIT_KIND_STRATEGY_ON_START"
-  | "UPDATE_UNIT_KIND_STRATEGY_NEVER";
+  | "UPDATE_UNIT_KIND_STRATEGY_NEVER"
+  | (string & {});
 export const RolloutKindUpdateUnitKindStrategyEnum = /*@__PURE__*/ S.String;
 
 /** An object that describes various settings of Rollout execution. Includes built-in and customizable policies. */
@@ -378,7 +380,8 @@ export type RolloutStateEnum =
   | "ROLLOUT_STATE_WAITING"
   | "ROLLOUT_STATE_CANCELLING"
   | "ROLLOUT_STATE_RESUMING"
-  | "ROLLOUT_STATE_PAUSING";
+  | "ROLLOUT_STATE_PAUSING"
+  | (string & {});
 export const RolloutStateEnum = /*@__PURE__*/ S.String;
 
 /** Parameters for the RUN action controlling the behavior of the rollout when it is resumed from a PAUSED state. */
@@ -398,7 +401,8 @@ export type RolloutControlActionEnum =
   | "ROLLOUT_ACTION_UNSPECIFIED"
   | "ROLLOUT_ACTION_RUN"
   | "ROLLOUT_ACTION_PAUSE"
-  | "ROLLOUT_ACTION_CANCEL";
+  | "ROLLOUT_ACTION_CANCEL"
+  | (string & {});
 export const RolloutControlActionEnum = /*@__PURE__*/ S.String;
 
 /** RolloutControl provides a way to request a change to the execution of a Rollout by pausing or canceling it. */
@@ -526,14 +530,16 @@ export const CreateProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(
 export type SaasConditionTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TYPE_READY"
-  | "TYPE_SYNCHRONIZED";
+  | "TYPE_SYNCHRONIZED"
+  | (string & {});
 export const SaasConditionTypeEnum = /*@__PURE__*/ S.String;
 
 export type SaasConditionStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "STATUS_UNKNOWN"
   | "STATUS_TRUE"
-  | "STATUS_FALSE";
+  | "STATUS_FALSE"
+  | (string & {});
 export const SaasConditionStatusEnum = /*@__PURE__*/ S.String;
 
 /** SaasCondition describes the status of a Saas. */
@@ -568,7 +574,8 @@ export type SaasStateEnum =
   | "STATE_TYPE_UNSPECIFIED"
   | "STATE_ACTIVE"
   | "STATE_RUNNING"
-  | "STATE_FAILED";
+  | "STATE_FAILED"
+  | (string & {});
 export const SaasStateEnum = /*@__PURE__*/ S.String;
 
 /** Location information that the service is available in. */
@@ -755,7 +762,8 @@ export const CreateProjectsLocationsTenantsRequest = /*@__PURE__*/ S.suspend(
 export type UnitKindBoundaryTypeEnum =
   | "BOUNDARY_TYPE_UNSPECIFIED"
   | "BOUNDARY_TYPE_TENANT_PROJECT"
-  | "BOUNDARY_TYPE_MANAGED_PROJECT";
+  | "BOUNDARY_TYPE_MANAGED_PROJECT"
+  | (string & {});
 export const UnitKindBoundaryTypeEnum = /*@__PURE__*/ S.String;
 
 /** Output variables whose values will be passed on to dependencies */
@@ -917,7 +925,8 @@ export type UnitOperationConditionStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "STATUS_UNKNOWN"
   | "STATUS_TRUE"
-  | "STATUS_FALSE";
+  | "STATUS_FALSE"
+  | (string & {});
 export const UnitOperationConditionStatusEnum = /*@__PURE__*/ S.String;
 
 export type UnitOperationConditionTypeEnum =
@@ -928,7 +937,8 @@ export type UnitOperationConditionTypeEnum =
   | "TYPE_CANCELLED"
   | "TYPE_APP_CREATED"
   | "TYPE_APP_COMPONENTS_REGISTERED"
-  | "TYPE_WORKLOAD_SUCCEEDED";
+  | "TYPE_WORKLOAD_SUCCEEDED"
+  | (string & {});
 export const UnitOperationConditionTypeEnum = /*@__PURE__*/ S.String;
 
 /** UnitOperationCondition describes the status of an Unit Operation. UnitOperationCondition is individual components that contribute to an overall state. */
@@ -1003,7 +1013,8 @@ export type UnitOperationErrorCategoryEnum =
   | "FATAL"
   | "RETRIABLE"
   | "IGNORABLE"
-  | "STANDARD";
+  | "STANDARD"
+  | (string & {});
 export const UnitOperationErrorCategoryEnum = /*@__PURE__*/ S.String;
 
 /** Provision is the unit operation that provision the underlying resources represented by a Unit. Can only execute if the Unit is not currently provisioned. */
@@ -1027,7 +1038,8 @@ export type UnitOperationStateEnum =
   | "UNIT_OPERATION_STATE_RUNNING"
   | "UNIT_OPERATION_STATE_SUCCEEDED"
   | "UNIT_OPERATION_STATE_FAILED"
-  | "UNIT_OPERATION_STATE_CANCELLED";
+  | "UNIT_OPERATION_STATE_CANCELLED"
+  | (string & {});
 export const UnitOperationStateEnum = /*@__PURE__*/ S.String;
 
 /** Deprovision is the unit operation that deprovision the underlying resources represented by a Unit. Can only execute if the Unit is currently provisioned. */
@@ -1177,14 +1189,16 @@ export type UnitStateEnum =
   | "UNIT_STATE_UPDATING"
   | "UNIT_STATE_DEPROVISIONING"
   | "UNIT_STATE_READY"
-  | "UNIT_STATE_ERROR";
+  | "UNIT_STATE_ERROR"
+  | (string & {});
 export const UnitStateEnum = /*@__PURE__*/ S.String;
 
 export type UnitConditionStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "STATUS_UNKNOWN"
   | "STATUS_TRUE"
-  | "STATUS_FALSE";
+  | "STATUS_FALSE"
+  | (string & {});
 export const UnitConditionStatusEnum = /*@__PURE__*/ S.String;
 
 export type UnitConditionTypeEnum =
@@ -1195,7 +1209,8 @@ export type UnitConditionTypeEnum =
   | "TYPE_OPERATION_ERROR"
   | "TYPE_FLAGS_CONFIG_INITIALIZED"
   | "TYPE_APP_CREATED_OR_ALREADY_EXISTS"
-  | "TYPE_APP_COMPONENTS_REGISTERED";
+  | "TYPE_APP_COMPONENTS_REGISTERED"
+  | (string & {});
 export const UnitConditionTypeEnum = /*@__PURE__*/ S.String;
 
 /** UnitCondition describes the status of an Unit. UnitCondition is individual components that contribute to an overall state. */
@@ -1230,13 +1245,15 @@ export type UnitSystemManagedStateEnum =
   | "SYSTEM_MANAGED_STATE_UNSPECIFIED"
   | "SYSTEM_MANAGED_STATE_ACTIVE"
   | "SYSTEM_MANAGED_STATE_INACTIVE"
-  | "SYSTEM_MANAGED_STATE_DECOMMISSIONED";
+  | "SYSTEM_MANAGED_STATE_DECOMMISSIONED"
+  | (string & {});
 export const UnitSystemManagedStateEnum = /*@__PURE__*/ S.String;
 
 export type UnitManagementModeEnum =
   | "MANAGEMENT_MODE_UNSPECIFIED"
   | "MANAGEMENT_MODE_USER"
-  | "MANAGEMENT_MODE_SYSTEM";
+  | "MANAGEMENT_MODE_SYSTEM"
+  | (string & {});
 export const UnitManagementModeEnum = /*@__PURE__*/ S.String;
 
 /** A unit of deployment that has its lifecycle via a CRUD API using an actuation engine under the hood (e.g. based on Terraform, Helm or a custom implementation provided by a service producer). A building block of a SaaS Tenant. */

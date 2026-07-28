@@ -237,7 +237,8 @@ export type Mode =
   | "API_KEY"
   | "AWS_IAM"
   | "AMAZON_COGNITO_USER_POOLS"
-  | "OPENID_CONNECT";
+  | "OPENID_CONNECT"
+  | (string & {});
 export const Mode = /*@__PURE__*/ S.String;
 
 export interface BackendAPIAppSyncAuthSettings {
@@ -294,7 +295,8 @@ export type ResolutionStrategy =
   | "OPTIMISTIC_CONCURRENCY"
   | "LAMBDA"
   | "AUTOMERGE"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const ResolutionStrategy = /*@__PURE__*/ S.String;
 
 export interface BackendAPIConflictResolution {
@@ -398,7 +400,10 @@ export const CreateBackendAPIResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBackendAPIResponse",
 }) as any as S.Schema<CreateBackendAPIResponse>;
-export type AuthResources = "USER_POOL_ONLY" | "IDENTITY_POOL_AND_USER_POOL";
+export type AuthResources =
+  | "USER_POOL_ONLY"
+  | "IDENTITY_POOL_AND_USER_POOL"
+  | (string & {});
 export const AuthResources = /*@__PURE__*/ S.String;
 
 export interface CreateBackendAuthIdentityPoolConfig {
@@ -418,10 +423,10 @@ export const CreateBackendAuthIdentityPoolConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBackendAuthIdentityPoolConfig",
 }) as any as S.Schema<CreateBackendAuthIdentityPoolConfig>;
-export type Service = "COGNITO";
+export type Service = "COGNITO" | (string & {});
 export const Service = /*@__PURE__*/ S.String;
 
-export type DeliveryMethod = "EMAIL" | "SMS";
+export type DeliveryMethod = "EMAIL" | "SMS" | (string & {});
 export const DeliveryMethod = /*@__PURE__*/ S.String;
 
 export interface EmailSettings {
@@ -468,10 +473,10 @@ export const CreateBackendAuthForgotPasswordConfig = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateBackendAuthForgotPasswordConfig",
 }) as any as S.Schema<CreateBackendAuthForgotPasswordConfig>;
-export type MFAMode = "ON" | "OFF" | "OPTIONAL";
+export type MFAMode = "ON" | "OFF" | "OPTIONAL" | (string & {});
 export const MFAMode = /*@__PURE__*/ S.String;
 
-export type MfaTypesElement = "SMS" | "TOTP";
+export type MfaTypesElement = "SMS" | "TOTP" | (string & {});
 export const MfaTypesElement = /*@__PURE__*/ S.String;
 
 export type ListOfMfaTypesElement = MfaTypesElement[];
@@ -498,7 +503,7 @@ export const CreateBackendAuthMFAConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBackendAuthMFAConfig",
 }) as any as S.Schema<CreateBackendAuthMFAConfig>;
-export type OAuthGrantType = "CODE" | "IMPLICIT";
+export type OAuthGrantType = "CODE" | "IMPLICIT" | (string & {});
 export const OAuthGrantType = /*@__PURE__*/ S.String;
 
 export type OAuthScopesElement =
@@ -506,7 +511,8 @@ export type OAuthScopesElement =
   | "EMAIL"
   | "OPENID"
   | "PROFILE"
-  | "AWS_COGNITO_SIGNIN_USER_ADMIN";
+  | "AWS_COGNITO_SIGNIN_USER_ADMIN"
+  | (string & {});
 export const OAuthScopesElement = /*@__PURE__*/ S.String;
 
 export type ListOfOAuthScopesElement = OAuthScopesElement[];
@@ -600,7 +606,8 @@ export type AdditionalConstraintsElement =
   | "REQUIRE_DIGIT"
   | "REQUIRE_LOWERCASE"
   | "REQUIRE_SYMBOL"
-  | "REQUIRE_UPPERCASE";
+  | "REQUIRE_UPPERCASE"
+  | (string & {});
 export const AdditionalConstraintsElement = /*@__PURE__*/ S.String;
 
 export type ListOfAdditionalConstraintsElement = AdditionalConstraintsElement[];
@@ -642,7 +649,8 @@ export type RequiredSignUpAttributesElement =
   | "PROFILE"
   | "UPDATED_AT"
   | "WEBSITE"
-  | "ZONE_INFO";
+  | "ZONE_INFO"
+  | (string & {});
 export const RequiredSignUpAttributesElement = /*@__PURE__*/ S.String;
 
 export type ListOfRequiredSignUpAttributesElement =
@@ -654,7 +662,8 @@ export type SignInMethod =
   | "EMAIL"
   | "EMAIL_AND_PHONE_NUMBER"
   | "PHONE_NUMBER"
-  | "USERNAME";
+  | "USERNAME"
+  | (string & {});
 export const SignInMethod = /*@__PURE__*/ S.String;
 
 export interface CreateBackendAuthVerificationMessageConfig {
@@ -844,13 +853,21 @@ export const CreateBackendConfigResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBackendConfigResponse",
 }) as any as S.Schema<CreateBackendConfigResponse>;
-export type AuthenticatedElement = "READ" | "CREATE_AND_UPDATE" | "DELETE";
+export type AuthenticatedElement =
+  | "READ"
+  | "CREATE_AND_UPDATE"
+  | "DELETE"
+  | (string & {});
 export const AuthenticatedElement = /*@__PURE__*/ S.String;
 
 export type ListOfAuthenticatedElement = AuthenticatedElement[];
 export const ListOfAuthenticatedElement =
   /*@__PURE__*/ S.Array(AuthenticatedElement);
-export type UnAuthenticatedElement = "READ" | "CREATE_AND_UPDATE" | "DELETE";
+export type UnAuthenticatedElement =
+  | "READ"
+  | "CREATE_AND_UPDATE"
+  | "DELETE"
+  | (string & {});
 export const UnAuthenticatedElement = /*@__PURE__*/ S.String;
 
 export type ListOfUnAuthenticatedElement = UnAuthenticatedElement[];
@@ -874,7 +891,7 @@ export const BackendStoragePermissions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BackendStoragePermissions",
 }) as any as S.Schema<BackendStoragePermissions>;
-export type ServiceName = "S3";
+export type ServiceName = "S3" | (string & {});
 export const ServiceName = /*@__PURE__*/ S.String;
 
 export interface CreateBackendStorageResourceConfig {
@@ -1474,7 +1491,7 @@ export const GetBackendAPIModelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBackendAPIModelsRequest",
 }) as any as S.Schema<GetBackendAPIModelsRequest>;
-export type Status = "LATEST" | "STALE";
+export type Status = "LATEST" | "STALE" | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 
 export interface GetBackendAPIModelsResponse {

@@ -114,7 +114,8 @@ export type ItemLevelIssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "NOT_IMPACTED"
   | "DEMOTED"
-  | "DISAPPROVED";
+  | "DISAPPROVED"
+  | (string & {});
 export const ItemLevelIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 export type ItemLevelIssueReportingContextEnum =
@@ -137,7 +138,8 @@ export type ItemLevelIssueReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT";
+  | "YOUTUBE_CHECKOUT"
+  | (string & {});
 export const ItemLevelIssueReportingContextEnum = /*@__PURE__*/ S.String;
 
 /** The ItemLevelIssue of the product status. */
@@ -200,7 +202,8 @@ export type DestinationStatusReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT";
+  | "YOUTUBE_CHECKOUT"
+  | (string & {});
 export const DestinationStatusReportingContextEnum = /*@__PURE__*/ S.String;
 
 /** The destination status of the product status. Equivalent to `StatusPerReportingContext` in Reports API. */
@@ -289,7 +292,8 @@ export const AutomatedDiscounts = /*@__PURE__*/ S.suspend(() =>
 export type ProductSustainabilityIncentiveTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "EV_TAX_CREDIT"
-  | "EV_PRICE_DISCOUNT";
+  | "EV_PRICE_DISCOUNT"
+  | (string & {});
 export const ProductSustainabilityIncentiveTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information regarding sustainability-related incentive programs such as rebates or tax relief. */
@@ -317,7 +321,10 @@ export const ProductSustainabilityIncentiveList = /*@__PURE__*/ S.Array(
   ProductSustainabilityIncentive,
 ) as any as S.Schema<ProductSustainabilityIncentiveList>;
 
-export type Co2EmissionsUnitEnum = "UNIT_UNSPECIFIED" | "GPERKM";
+export type Co2EmissionsUnitEnum =
+  | "UNIT_UNSPECIFIED"
+  | "GPERKM"
+  | (string & {});
 export const Co2EmissionsUnitEnum = /*@__PURE__*/ S.String;
 
 /** The co2 emission of the vehicle. */
@@ -337,14 +344,16 @@ export const Co2Emissions = /*@__PURE__*/ S.suspend(() =>
 export type ReturnsShippingFeeTypeEnum =
   | "RETURN_SHIPPING_FEE_TYPE_UNSPECIFIED"
   | "CUSTOMER_RESPONSIBILITY"
-  | "DEDUCTED_FROM_REFUND";
+  | "DEDUCTED_FROM_REFUND"
+  | (string & {});
 export const ReturnsShippingFeeTypeEnum = /*@__PURE__*/ S.String;
 
 export type ReturnsWindowTypeEnum =
   | "RETURN_WINDOW_TYPE_UNSPECIFIED"
   | "FINITE_RETURN_WINDOW"
   | "NO_RETURNS"
-  | "LIFETIME";
+  | "LIFETIME"
+  | (string & {});
 export const ReturnsWindowTypeEnum = /*@__PURE__*/ S.String;
 
 export type ReturnsItemConditionsItemEnum =
@@ -352,7 +361,8 @@ export type ReturnsItemConditionsItemEnum =
   | "NEW"
   | "LIKE_NEW"
   | "USED"
-  | "DEFECTIVE_ONLY";
+  | "DEFECTIVE_ONLY"
+  | (string & {});
 export const ReturnsItemConditionsItemEnum = /*@__PURE__*/ S.String;
 
 export type ReturnsItemConditionsItemEnumList =
@@ -365,7 +375,8 @@ export type ReturnsOutcomesItemEnum =
   | "RETURN_OUTCOME_UNSPECIFIED"
   | "REFUND"
   | "EXCHANGE"
-  | "STORE_CREDIT";
+  | "STORE_CREDIT"
+  | (string & {});
 export const ReturnsOutcomesItemEnum = /*@__PURE__*/ S.String;
 
 export type ReturnsOutcomesItemEnumList =
@@ -379,7 +390,8 @@ export type ReturnsMethodsItemEnum =
   | "BY_MAIL"
   | "IN_STORE"
   | "AT_A_KIOSK"
-  | "DROP_OFF_LOCATION";
+  | "DROP_OFF_LOCATION"
+  | (string & {});
 export const ReturnsMethodsItemEnum = /*@__PURE__*/ S.String;
 
 export type ReturnsMethodsItemEnumList = ReadonlyArray<ReturnsMethodsItemEnum>;
@@ -461,7 +473,8 @@ export type ProductAttributesMinEnergyEfficiencyClassEnum =
   | "D"
   | "E"
   | "F"
-  | "G";
+  | "G"
+  | (string & {});
 export const ProductAttributesMinEnergyEfficiencyClassEnum =
   /*@__PURE__*/ S.String;
 
@@ -490,7 +503,8 @@ export const ShippingBusinessDaysConfigList = /*@__PURE__*/ S.Array(
 export type FuelConsumptionUnitEnum =
   | "UNIT_UNSPECIFIED"
   | "LPER100KM"
-  | "KGPER100KM";
+  | "KGPER100KM"
+  | (string & {});
 export const FuelConsumptionUnitEnum = /*@__PURE__*/ S.String;
 
 /** The fuel consumption of the vehicle. */
@@ -509,7 +523,11 @@ export const FuelConsumption = /*@__PURE__*/ S.suspend(() =>
   identifier: "FuelConsumption",
 }) as any as S.Schema<FuelConsumption>;
 
-export type MileageUnitEnum = "UNIT_UNSPECIFIED" | "MILES" | "KM";
+export type MileageUnitEnum =
+  | "UNIT_UNSPECIFIED"
+  | "MILES"
+  | "KM"
+  | (string & {});
 export const MileageUnitEnum = /*@__PURE__*/ S.String;
 
 /** The mileage of the vehicle. */
@@ -533,10 +551,15 @@ export type RelatedProductRelationshipTypeEnum =
   | "OFTEN_BOUGHT_WITH"
   | "SUBSTITUTE"
   | "DIFFERENT_BRAND"
-  | "ACCESSORY";
+  | "ACCESSORY"
+  | (string & {});
 export const RelatedProductRelationshipTypeEnum = /*@__PURE__*/ S.String;
 
-export type RelatedProductIdTypeEnum = "ID_TYPE_UNSPECIFIED" | "GTIN" | "ID";
+export type RelatedProductIdTypeEnum =
+  | "ID_TYPE_UNSPECIFIED"
+  | "GTIN"
+  | "ID"
+  | (string & {});
 export const RelatedProductIdTypeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies how other products are related to this product. */
@@ -574,7 +597,8 @@ export type ProductAttributesEmissionsStandardEnum =
   | "EURO6C"
   | "EURO6D"
   | "EURO6D_TEMP"
-  | "EURO6E";
+  | "EURO6E"
+  | (string & {});
 export const ProductAttributesEmissionsStandardEnum = /*@__PURE__*/ S.String;
 
 export type ProductAttributesPickupMethodEnum =
@@ -582,10 +606,15 @@ export type ProductAttributesPickupMethodEnum =
   | "NOT_SUPPORTED"
   | "BUY"
   | "RESERVE"
-  | "SHIP_TO_STORE";
+  | "SHIP_TO_STORE"
+  | (string & {});
 export const ProductAttributesPickupMethodEnum = /*@__PURE__*/ S.String;
 
-export type UnitAreaUnitEnum = "UNIT_UNSPECIFIED" | "SQM" | "SQFT";
+export type UnitAreaUnitEnum =
+  | "UNIT_UNSPECIFIED"
+  | "SQM"
+  | "SQFT"
+  | (string & {});
 export const UnitAreaUnitEnum = /*@__PURE__*/ S.String;
 
 /** The unit area of the property. */
@@ -606,7 +635,8 @@ export type ProductFeeTypeEnum =
   | "FEE_TYPE_UNSPECIFIED"
   | "ADMIN_FEE"
   | "APPLICATION_FEE"
-  | "SECURITY_DEPOSIT";
+  | "SECURITY_DEPOSIT"
+  | (string & {});
 export const ProductFeeTypeEnum = /*@__PURE__*/ S.String;
 
 /** The product fee attribute containing type and amount. */
@@ -633,7 +663,8 @@ export type ProductCertificationCertificationAuthorityEnum =
   | "ADEME"
   | "BMWK"
   | "EPA"
-  | "EC";
+  | "EC"
+  | (string & {});
 export const ProductCertificationCertificationAuthorityEnum =
   /*@__PURE__*/ S.String;
 
@@ -644,7 +675,8 @@ export type ProductCertificationCertificationNameEnum =
   | "EPREL"
   | "EU_ECOLABEL"
   | "VEHICLE_ENERGY_EFFICIENCY"
-  | "VEHICLE_ENERGY_EFFICIENCY_DISCHARGED_BATTERY";
+  | "VEHICLE_ENERGY_EFFICIENCY_DISCHARGED_BATTERY"
+  | (string & {});
 export const ProductCertificationCertificationNameEnum = /*@__PURE__*/ S.String;
 
 /** Product [certification](https://support.google.com/merchants/answer/13528839), initially introduced for EU energy efficiency labeling compliance using the EU EPREL database. */
@@ -741,13 +773,15 @@ export type ProductAttributesSpecialtyHousingTypeEnum =
   | "MILITARY"
   | "SENIOR"
   | "SHORT_TERM"
-  | "STUDENT";
+  | "STUDENT"
+  | (string & {});
 export const ProductAttributesSpecialtyHousingTypeEnum = /*@__PURE__*/ S.String;
 
 export type StructuredDescriptionDigitalSourceTypeEnum =
   | "DIGITAL_SOURCE_TYPE_UNSPECIFIED"
   | "TRAINED_ALGORITHMIC_MEDIA"
-  | "DEFAULT";
+  | "DEFAULT"
+  | (string & {});
 export const StructuredDescriptionDigitalSourceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -793,13 +827,15 @@ export type ProductAttributesEngineEnum =
   | "NATURAL_GAS"
   | "LPG"
   | "METHANE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const ProductAttributesEngineEnum = /*@__PURE__*/ S.String;
 
 export type ProductInstallmentCreditTypeEnum =
   | "CREDIT_TYPE_UNSPECIFIED"
   | "FINANCE"
-  | "LEASE";
+  | "LEASE"
+  | (string & {});
 export const ProductInstallmentCreditTypeEnum = /*@__PURE__*/ S.String;
 
 /** A message that represents installment. */
@@ -917,7 +953,8 @@ export type ProductAttributesIncludedDestinationsItemEnum =
   | "FREE_VEHICLE_LISTINGS"
   | "VEHICLE_ADS"
   | "CLOUD_RETAIL"
-  | "LOCAL_CLOUD_RETAIL";
+  | "LOCAL_CLOUD_RETAIL"
+  | (string & {});
 export const ProductAttributesIncludedDestinationsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -975,7 +1012,8 @@ export type ProductAttributesEnergyEfficiencyClassEnum =
   | "D"
   | "E"
   | "F"
-  | "G";
+  | "G"
+  | (string & {});
 export const ProductAttributesEnergyEfficiencyClassEnum =
   /*@__PURE__*/ S.String;
 
@@ -983,7 +1021,8 @@ export type SubscriptionCostPeriodEnum =
   | "SUBSCRIPTION_PERIOD_UNSPECIFIED"
   | "MONTH"
   | "YEAR"
-  | "WEEK";
+  | "WEEK"
+  | (string & {});
 export const SubscriptionCostPeriodEnum = /*@__PURE__*/ S.String;
 
 /** The SubscriptionCost of the product. */
@@ -1097,7 +1136,8 @@ export type ProductAttributesAmenityFeatureItemEnum =
   | "SOCCER_FIELD"
   | "TENNIS_COURT"
   | "WALK_IN_CLOSETS"
-  | "WHEELCHAIR_ACCESS";
+  | "WHEELCHAIR_ACCESS"
+  | (string & {});
 export const ProductAttributesAmenityFeatureItemEnum = /*@__PURE__*/ S.String;
 
 export type ProductAttributesAmenityFeatureItemEnumList =
@@ -1152,7 +1192,11 @@ export const CloudExportAdditionalPropertiesList = /*@__PURE__*/ S.Array(
   CloudExportAdditionalProperties,
 ) as any as S.Schema<CloudExportAdditionalPropertiesList>;
 
-export type ProductAttributesPauseEnum = "PAUSE_UNSPECIFIED" | "ADS" | "ALL";
+export type ProductAttributesPauseEnum =
+  | "PAUSE_UNSPECIFIED"
+  | "ADS"
+  | "ALL"
+  | (string & {});
 export const ProductAttributesPauseEnum = /*@__PURE__*/ S.String;
 
 export type ProductAttributesMaxEnergyEfficiencyClassEnum =
@@ -1166,11 +1210,15 @@ export type ProductAttributesMaxEnergyEfficiencyClassEnum =
   | "D"
   | "E"
   | "F"
-  | "G";
+  | "G"
+  | (string & {});
 export const ProductAttributesMaxEnergyEfficiencyClassEnum =
   /*@__PURE__*/ S.String;
 
-export type EnergyConsumptionUnitEnum = "UNIT_UNSPECIFIED" | "KWHPER100KM";
+export type EnergyConsumptionUnitEnum =
+  | "UNIT_UNSPECIFIED"
+  | "KWHPER100KM"
+  | (string & {});
 export const EnergyConsumptionUnitEnum = /*@__PURE__*/ S.String;
 
 /** The energy consumption of the vehicle. */
@@ -1251,7 +1299,8 @@ export type ProductAttributesSizeTypesItemEnum =
   | "MATERNITY"
   | "BIG"
   | "TALL"
-  | "PLUS";
+  | "PLUS"
+  | (string & {});
 export const ProductAttributesSizeTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type ProductAttributesSizeTypesItemEnumList =
@@ -1266,7 +1315,8 @@ export type ProductAttributesAgeGroupEnum =
   | "KIDS"
   | "TODDLER"
   | "INFANT"
-  | "NEWBORN";
+  | "NEWBORN"
+  | (string & {});
 export const ProductAttributesAgeGroupEnum = /*@__PURE__*/ S.String;
 
 /** The ShippingWeight of the product. */
@@ -1323,7 +1373,8 @@ export type CarrierShippingCarrierTransitTimeEnum =
   | "USPS_GROUND_ADVANTAGE_RETAIL"
   | "USPS_PRIORITY_MAIL"
   | "USPS_GROUND_ADVANTAGE_COMMERCIAL"
-  | "USPS_FIRST_CLASS_MAIL";
+  | "USPS_FIRST_CLASS_MAIL"
+  | (string & {});
 export const CarrierShippingCarrierTransitTimeEnum = /*@__PURE__*/ S.String;
 
 export type CarrierShippingCarrierPriceEnum =
@@ -1388,7 +1439,8 @@ export type CarrierShippingCarrierPriceEnum =
   | "USPS_MEDIA_MAIL"
   | "USPS_GROUND_ADVANTAGE_RETAIL"
   | "USPS_PRIORITY_MAIL"
-  | "USPS_GROUND_ADVANTAGE_COMMERCIAL";
+  | "USPS_GROUND_ADVANTAGE_COMMERCIAL"
+  | (string & {});
 export const CarrierShippingCarrierPriceEnum = /*@__PURE__*/ S.String;
 
 /** Carrier-based shipping configuration. Allows for setting shipping speed or shipping cost based on a carrier's provided info. */
@@ -1457,14 +1509,16 @@ export type ProductAttributesSizeSystemEnum =
   | "JP"
   | "MEX"
   | "UK"
-  | "US";
+  | "US"
+  | (string & {});
 export const ProductAttributesSizeSystemEnum = /*@__PURE__*/ S.String;
 
 export type ProductAttributesGenderEnum =
   | "GENDER_UNSPECIFIED"
   | "MALE"
   | "FEMALE"
-  | "UNISEX";
+  | "UNISEX"
+  | (string & {});
 export const ProductAttributesGenderEnum = /*@__PURE__*/ S.String;
 
 /** The dimension of the product. */
@@ -1486,7 +1540,8 @@ export const ProductDimension = /*@__PURE__*/ S.suspend(() =>
 export type StructuredTitleDigitalSourceTypeEnum =
   | "DIGITAL_SOURCE_TYPE_UNSPECIFIED"
   | "TRAINED_ALGORITHMIC_MEDIA"
-  | "DEFAULT";
+  | "DEFAULT"
+  | (string & {});
 export const StructuredTitleDigitalSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Structured title, for algorithmically (AI)-generated titles. */
@@ -1511,7 +1566,8 @@ export type ProductAttributesUtilitiesIncludedItemEnum =
   | "GAS"
   | "INTERNET"
   | "TRASH"
-  | "WATER";
+  | "WATER"
+  | (string & {});
 export const ProductAttributesUtilitiesIncludedItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1535,7 +1591,8 @@ export type ProductAttributesExcludedDestinationsItemEnum =
   | "FREE_VEHICLE_LISTINGS"
   | "VEHICLE_ADS"
   | "CLOUD_RETAIL"
-  | "LOCAL_CLOUD_RETAIL";
+  | "LOCAL_CLOUD_RETAIL"
+  | (string & {});
 export const ProductAttributesExcludedDestinationsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1555,7 +1612,8 @@ export type ProductAttributesPickupSlaEnum =
   | "FOUR_DAY"
   | "FIVE_DAY"
   | "SIX_DAY"
-  | "MULTI_WEEK";
+  | "MULTI_WEEK"
+  | (string & {});
 export const ProductAttributesPickupSlaEnum = /*@__PURE__*/ S.String;
 
 export type ProductAttributesPropertyTypeEnum =
@@ -1568,14 +1626,16 @@ export type ProductAttributesPropertyTypeEnum =
   | "ROOM"
   | "SINGLE_FAMILY_HOME"
   | "STUDIO"
-  | "TOWNHOUSE";
+  | "TOWNHOUSE"
+  | (string & {});
 export const ProductAttributesPropertyTypeEnum = /*@__PURE__*/ S.String;
 
 export type ProductAttributesConditionEnum =
   | "CONDITION_UNSPECIFIED"
   | "NEW"
   | "USED"
-  | "REFURBISHED";
+  | "REFURBISHED"
+  | (string & {});
 export const ProductAttributesConditionEnum = /*@__PURE__*/ S.String;
 
 export type ProductAttributesVehiclePriceTypeEnum =
@@ -1584,7 +1644,8 @@ export type ProductAttributesVehiclePriceTypeEnum =
   | "DRIVE_AWAY_PRICE"
   | "ESTIMATED_DRIVE_AWAY_PRICE"
   | "EXCLUDING_GOVERNMENT_CHARGES_PRICE"
-  | "VEHICLE_BASE_PRICE";
+  | "VEHICLE_BASE_PRICE"
+  | (string & {});
 export const ProductAttributesVehiclePriceTypeEnum = /*@__PURE__*/ S.String;
 
 /** The warranty of the vehicle. */
@@ -1624,7 +1685,8 @@ export type PetPolicyPetTypesItemEnum =
   | "PET_TYPE_UNSPECIFIED"
   | "CATS"
   | "LARGE_DOGS"
-  | "SMALL_DOGS";
+  | "SMALL_DOGS"
+  | (string & {});
 export const PetPolicyPetTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type PetPolicyPetTypesItemEnumList =
@@ -1651,7 +1713,8 @@ export type ProductMinimumOrderValueSurfaceEnum =
   | "SURFACE_UNSPECIFIED"
   | "ONLINE"
   | "LOCAL"
-  | "ONLINE_LOCAL";
+  | "ONLINE_LOCAL"
+  | (string & {});
 export const ProductMinimumOrderValueSurfaceEnum = /*@__PURE__*/ S.String;
 
 /** The minimum order value in the cart before the checkout is permitted. */
@@ -1688,7 +1751,8 @@ export type ProductAttributesAvailabilityEnum =
   | "OUT_OF_STOCK"
   | "PREORDER"
   | "LIMITED_AVAILABILITY"
-  | "BACKORDER";
+  | "BACKORDER"
+  | (string & {});
 export const ProductAttributesAvailabilityEnum = /*@__PURE__*/ S.String;
 
 export type ProductAttributesBodyStyleEnum =
@@ -1723,7 +1787,8 @@ export type ProductAttributesBodyStyleEnum =
   | "UTV_RECREATIONAL_UTILITY"
   | "UTV_SPORT"
   | "UTV_UTILITY"
-  | "UTV_YOUTH";
+  | "UTV_YOUTH"
+  | (string & {});
 export const ProductAttributesBodyStyleEnum = /*@__PURE__*/ S.String;
 
 /** Product attributes. */

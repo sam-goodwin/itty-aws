@@ -41,7 +41,8 @@ export type InsightVariableTypeEnum =
   | "Number"
   | "Boolean"
   | "List"
-  | "Date";
+  | "Date"
+  | (string & {});
 export const InsightVariableTypeEnum = /*@__PURE__*/ S.String;
 
 export interface InsightVariablesCreateRequest {

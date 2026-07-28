@@ -158,7 +158,8 @@ export type EnvironmentStateEnum =
   | "RUNNING"
   | "UPDATING"
   | "DELETING"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const EnvironmentStateEnum = /*@__PURE__*/ S.String;
 
 /** The configuration for data storage in the environment. */
@@ -208,7 +209,8 @@ export const RecoveryConfig = /*@__PURE__*/ S.suspend(() =>
 export type TaskLogsRetentionConfigStorageModeEnum =
   | "TASK_LOGS_STORAGE_MODE_UNSPECIFIED"
   | "CLOUD_LOGGING_AND_CLOUD_STORAGE"
-  | "CLOUD_LOGGING_ONLY";
+  | "CLOUD_LOGGING_ONLY"
+  | (string & {});
 export const TaskLogsRetentionConfigStorageModeEnum = /*@__PURE__*/ S.String;
 
 /** The configuration setting for Task Logs. */
@@ -227,7 +229,8 @@ export const TaskLogsRetentionConfig = /*@__PURE__*/ S.suspend(() =>
 export type AirflowMetadataRetentionPolicyConfigRetentionModeEnum =
   | "RETENTION_MODE_UNSPECIFIED"
   | "RETENTION_MODE_ENABLED"
-  | "RETENTION_MODE_DISABLED";
+  | "RETENTION_MODE_DISABLED"
+  | (string & {});
 export const AirflowMetadataRetentionPolicyConfigRetentionModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -284,14 +287,16 @@ export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEnvironmentConfigNetworkingTypeEnum =
   | "NETWORKING_TYPE_UNSPECIFIED"
   | "PRIVATE"
-  | "PUBLIC";
+  | "PUBLIC"
+  | (string & {});
 export const PrivateEnvironmentConfigNetworkingTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkingConfigConnectionTypeEnum =
   | "CONNECTION_TYPE_UNSPECIFIED"
   | "VPC_PEERING"
-  | "PRIVATE_SERVICE_CONNECT";
+  | "PRIVATE_SERVICE_CONNECT"
+  | (string & {});
 export const NetworkingConfigConnectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration options for networking connections in the Composer 2 environment. */
@@ -393,7 +398,8 @@ export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
 
 export type EnvironmentConfigResilienceModeEnum =
   | "RESILIENCE_MODE_UNSPECIFIED"
-  | "HIGH_RESILIENCE";
+  | "HIGH_RESILIENCE"
+  | (string & {});
 export const EnvironmentConfigResilienceModeEnum = /*@__PURE__*/ S.String;
 
 /** The configuration settings for the Airflow web server App Engine instance. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.* */
@@ -662,13 +668,15 @@ export const WebServerNetworkAccessControl = /*@__PURE__*/ S.suspend(() =>
 export type SoftwareConfigWebServerPluginsModeEnum =
   | "WEB_SERVER_PLUGINS_MODE_UNSPECIFIED"
   | "PLUGINS_DISABLED"
-  | "PLUGINS_ENABLED";
+  | "PLUGINS_ENABLED"
+  | (string & {});
 export const SoftwareConfigWebServerPluginsModeEnum = /*@__PURE__*/ S.String;
 
 export type SoftwareConfigAuditLogsReplicationModeEnum =
   | "AUDIT_LOGS_REPLICATION_MODE_UNSPECIFIED"
   | "AUDIT_LOGS_REPLICATION_DISABLED"
-  | "AUDIT_LOGS_REPLICATION_ENABLED";
+  | "AUDIT_LOGS_REPLICATION_ENABLED"
+  | (string & {});
 export const SoftwareConfigAuditLogsReplicationModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -762,7 +770,8 @@ export type EnvironmentConfigEnvironmentSizeEnum =
   | "ENVIRONMENT_SIZE_SMALL"
   | "ENVIRONMENT_SIZE_MEDIUM"
   | "ENVIRONMENT_SIZE_LARGE"
-  | "ENVIRONMENT_SIZE_EXTRA_LARGE";
+  | "ENVIRONMENT_SIZE_EXTRA_LARGE"
+  | (string & {});
 export const EnvironmentConfigEnvironmentSizeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration information for an environment. */
@@ -1438,7 +1447,8 @@ export type ComposerWorkloadTypeEnum =
   | "DAG_PROCESSOR"
   | "TRIGGERER"
   | "WEB_SERVER"
-  | "REDIS";
+  | "REDIS"
+  | (string & {});
 export const ComposerWorkloadTypeEnum = /*@__PURE__*/ S.String;
 
 export type ComposerWorkloadStatusStateEnum =
@@ -1448,7 +1458,8 @@ export type ComposerWorkloadStatusStateEnum =
   | "WARNING"
   | "ERROR"
   | "SUCCEEDED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ComposerWorkloadStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** Workload status. */

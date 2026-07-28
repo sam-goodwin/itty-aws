@@ -36,7 +36,10 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type InsightsActivityRetrieveRequestFormat = "csv" | "json";
+export type InsightsActivityRetrieveRequestFormat =
+  | "csv"
+  | "json"
+  | (string & {});
 export const InsightsActivityRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface InsightsActivityRetrieveRequest {
@@ -184,7 +187,10 @@ export const ActivityLogPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActivityLogPaginatedResponse",
 }) as any as S.Schema<ActivityLogPaginatedResponse>;
 
-export type InsightsAllActivityRetrieveRequestFormat = "csv" | "json";
+export type InsightsAllActivityRetrieveRequestFormat =
+  | "csv"
+  | "json"
+  | (string & {});
 export const InsightsAllActivityRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface InsightsAllActivityRetrieveRequest {
@@ -215,7 +221,10 @@ export const InsightsAllActivityRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsAllActivityRetrieveRequest",
 }) as any as S.Schema<InsightsAllActivityRetrieveRequest>;
 
-export type InsightsAnalyzeRetrieveRequestFormat = "csv" | "json";
+export type InsightsAnalyzeRetrieveRequestFormat =
+  | "csv"
+  | "json"
+  | (string & {});
 export const InsightsAnalyzeRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface InsightsAnalyzeRetrieveRequest {
@@ -248,7 +257,10 @@ export const InsightsAnalyzeRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsAnalyzeRetrieveResponse",
 }) as any as S.Schema<InsightsAnalyzeRetrieveResponse>;
 
-export type InsightsBulkDeleteCreateRequestFormat = "csv" | "json";
+export type InsightsBulkDeleteCreateRequestFormat =
+  | "csv"
+  | "json"
+  | (string & {});
 export const InsightsBulkDeleteCreateRequestFormat = /*@__PURE__*/ S.String;
 
 /** Insight IDs to soft-delete (or restore). At most 1000 ids per request. Soft-deleted insights can be brought back via the bulk_restore endpoint. */
@@ -339,7 +351,10 @@ export const InsightBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightBulkDeleteResponse",
 }) as any as S.Schema<InsightBulkDeleteResponse>;
 
-export type InsightsBulkRestoreCreateRequestFormat = "csv" | "json";
+export type InsightsBulkRestoreCreateRequestFormat =
+  | "csv"
+  | "json"
+  | (string & {});
 export const InsightsBulkRestoreCreateRequestFormat = /*@__PURE__*/ S.String;
 
 /** Insight IDs to soft-delete (or restore). At most 1000 ids per request. Soft-deleted insights can be brought back via the bulk_restore endpoint. */
@@ -400,7 +415,10 @@ export const InsightBulkRestoreResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightBulkRestoreResponse",
 }) as any as S.Schema<InsightBulkRestoreResponse>;
 
-export type InsightsBulkUpdateTagsCreateRequestFormat = "csv" | "json";
+export type InsightsBulkUpdateTagsCreateRequestFormat =
+  | "csv"
+  | "json"
+  | (string & {});
 export const InsightsBulkUpdateTagsCreateRequestFormat = /*@__PURE__*/ S.String;
 
 /** List of object IDs to update tags on. */
@@ -410,7 +428,7 @@ export const InsightsBulkUpdateTagsCreateRequestIdsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<InsightsBulkUpdateTagsCreateRequestIdsList>;
 
 /** * `add` - add * `remove` - remove * `set` - set */
-export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
+export type BulkUpdateTagsActionEnum = "add" | "remove" | "set" | (string & {});
 export const BulkUpdateTagsActionEnum = /*@__PURE__*/ S.String;
 
 /** Tag names to add, remove, or set. */
@@ -507,7 +525,7 @@ export const BulkUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkUpdateTagsResponse",
 }) as any as S.Schema<BulkUpdateTagsResponse>;
 
-export type InsightsCancelCreateRequestFormat = "csv" | "json";
+export type InsightsCancelCreateRequestFormat = "csv" | "json" | (string & {});
 export const InsightsCancelCreateRequestFormat = /*@__PURE__*/ S.String;
 
 export type BreakdownFilterBreakdownCase1Item = string | number;
@@ -537,7 +555,8 @@ export type BreakdownType =
   | "hogql"
   | "data_warehouse"
   | "data_warehouse_person_property"
-  | "revenue_analytics";
+  | "revenue_analytics"
+  | (string & {});
 export const BreakdownType = /*@__PURE__*/ S.String;
 
 export type BreakdownProperty = string | number;
@@ -554,7 +573,8 @@ export type MultipleBreakdownType =
   | "cohort"
   | "revenue_analytics"
   | "data_warehouse"
-  | "data_warehouse_person_property";
+  | "data_warehouse_person_property"
+  | (string & {});
 export const MultipleBreakdownType = /*@__PURE__*/ S.String;
 
 export interface Breakdown {
@@ -660,7 +680,7 @@ export type TrendsQueryConversionGoal =
 export const TrendsQueryConversionGoal =
   /*@__PURE__*/ S.Unknown as any as S.Schema<TrendsQueryConversionGoal>;
 
-export type DaysOfWeekEnum = 1 | 2 | 3 | 4 | 5 | 6 | 7;
+export type DaysOfWeekEnum = 1 | 2 | 3 | 4 | 5 | 6 | 7 | (number & {});
 export const DaysOfWeekEnum = /*@__PURE__*/ S.Number;
 
 export type DateRangeDaysOfWeekList = ReadonlyArray<DaysOfWeekEnum>;
@@ -698,16 +718,18 @@ export type IntervalType =
   | "week"
   | "month"
   | "quarter"
-  | "year";
+  | "year"
+  | (string & {});
 export const IntervalType = /*@__PURE__*/ S.String;
 
 export type BounceRatePageViewMode =
   | "count_pageviews"
   | "uniq_urls"
-  | "uniq_page_screen_autocaptures";
+  | "uniq_page_screen_autocaptures"
+  | (string & {});
 export const BounceRatePageViewMode = /*@__PURE__*/ S.String;
 
-export type FilterLogicalOperator = "AND" | "OR";
+export type FilterLogicalOperator = "AND" | "OR" | (string & {});
 export const FilterLogicalOperator = /*@__PURE__*/ S.String;
 
 export type CustomChannelField =
@@ -717,7 +739,8 @@ export type CustomChannelField =
   | "referring_domain"
   | "url"
   | "pathname"
-  | "hostname";
+  | "hostname"
+  | (string & {});
 export const CustomChannelField = /*@__PURE__*/ S.String;
 
 export type CustomChannelOperator =
@@ -728,7 +751,8 @@ export type CustomChannelOperator =
   | "icontains"
   | "not_icontains"
   | "regex"
-  | "not_regex";
+  | "not_regex"
+  | (string & {});
 export const CustomChannelOperator = /*@__PURE__*/ S.String;
 
 export type CustomChannelConditionValueCase1List = ReadonlyArray<string>;
@@ -823,20 +847,25 @@ export type InCohortVia =
   | "auto"
   | "leftjoin"
   | "subquery"
-  | "leftjoin_conjoined";
+  | "leftjoin_conjoined"
+  | (string & {});
 export const InCohortVia = /*@__PURE__*/ S.String;
 
-export type InlineCohortCalculation = "off" | "auto" | "always";
+export type InlineCohortCalculation = "off" | "auto" | "always" | (string & {});
 export const InlineCohortCalculation = /*@__PURE__*/ S.String;
 
 export type MaterializationMode =
   | "auto"
   | "legacy_null_as_string"
   | "legacy_null_as_null"
-  | "disabled";
+  | "disabled"
+  | (string & {});
 export const MaterializationMode = /*@__PURE__*/ S.String;
 
-export type MaterializedColumnsOptimizationMode = "disabled" | "optimized";
+export type MaterializedColumnsOptimizationMode =
+  | "disabled"
+  | "optimized"
+  | (string & {});
 export const MaterializedColumnsOptimizationMode = /*@__PURE__*/ S.String;
 
 export type ParserMode =
@@ -846,29 +875,35 @@ export type ParserMode =
   | "rust_with_cpp_shadow"
   | "rust_only"
   | "rust_py_only"
-  | "rust_py_with_cpp_shadow";
+  | "rust_py_with_cpp_shadow"
+  | (string & {});
 export const ParserMode = /*@__PURE__*/ S.String;
 
-export type PersonsArgMaxVersion = "auto" | "v1" | "v2";
+export type PersonsArgMaxVersion = "auto" | "v1" | "v2" | (string & {});
 export const PersonsArgMaxVersion = /*@__PURE__*/ S.String;
 
-export type PersonsJoinMode = "inner" | "left";
+export type PersonsJoinMode = "inner" | "left" | (string & {});
 export const PersonsJoinMode = /*@__PURE__*/ S.String;
 
 export type PersonsOnEventsMode =
   | "disabled"
   | "person_id_no_override_properties_on_events"
   | "person_id_override_properties_on_events"
-  | "person_id_override_properties_joined";
+  | "person_id_override_properties_joined"
+  | (string & {});
 export const PersonsOnEventsMode = /*@__PURE__*/ S.String;
 
-export type PropertyGroupsMode = "enabled" | "disabled" | "optimized";
+export type PropertyGroupsMode =
+  | "enabled"
+  | "disabled"
+  | "optimized"
+  | (string & {});
 export const PropertyGroupsMode = /*@__PURE__*/ S.String;
 
-export type SessionTableVersion = "auto" | "v1" | "v2" | "v3";
+export type SessionTableVersion = "auto" | "v1" | "v2" | "v3" | (string & {});
 export const SessionTableVersion = /*@__PURE__*/ S.String;
 
-export type SessionsV2JoinMode = "string" | "uuid";
+export type SessionsV2JoinMode = "string" | "uuid" | (string & {});
 export const SessionsV2JoinMode = /*@__PURE__*/ S.String;
 
 export interface HogQLQueryModifiers {
@@ -987,7 +1022,8 @@ export type PropertyOperator =
   | "semver_caret"
   | "semver_wildcard"
   | "icontains_multi"
-  | "not_icontains_multi";
+  | "not_icontains_multi"
+  | (string & {});
 export const PropertyOperator = /*@__PURE__*/ S.String;
 
 export type EventPropertyFilterValueCase0Item = string | number | boolean;
@@ -1107,7 +1143,7 @@ export const PersonMetadataPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonMetadataPropertyFilter",
 }) as any as S.Schema<PersonMetadataPropertyFilter>;
 
-export type Key10 = "tag_name" | "text" | "href" | "selector";
+export type Key10 = "tag_name" | "text" | "href" | "selector" | (string & {});
 export const Key10 = /*@__PURE__*/ S.String;
 
 export type ElementPropertyFilterValueCase0Item = string | number | boolean;
@@ -1245,7 +1281,11 @@ export const CohortPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "CohortPropertyFilter",
 }) as any as S.Schema<CohortPropertyFilter>;
 
-export type DurationType = "duration" | "active_seconds" | "inactive_seconds";
+export type DurationType =
+  | "duration"
+  | "active_seconds"
+  | "inactive_seconds"
+  | (string & {});
 export const DurationType = /*@__PURE__*/ S.String;
 
 export type RecordingPropertyFilterKey = DurationType | string;
@@ -1608,7 +1648,8 @@ export const ErrorTrackingIssueFilter = /*@__PURE__*/ S.suspend(() =>
 export type LogPropertyFilterType =
   | "log"
   | "log_attribute"
-  | "log_resource_attribute";
+  | "log_resource_attribute"
+  | (string & {});
 export const LogPropertyFilterType = /*@__PURE__*/ S.String;
 
 export type LogPropertyFilterValueCase0Item = string | number | boolean;
@@ -1688,7 +1729,8 @@ export const MetricPropertyFilter = /*@__PURE__*/ S.suspend(() =>
 export type SpanPropertyFilterType =
   | "span"
   | "span_attribute"
-  | "span_resource_attribute";
+  | "span_resource_attribute"
+  | (string & {});
 export const SpanPropertyFilterType = /*@__PURE__*/ S.String;
 
 export type SpanPropertyFilterValueCase0Item = string | number | boolean;
@@ -2284,13 +2326,15 @@ export type BaseMathType =
   | "monthly_active"
   | "unique_session"
   | "first_time_for_user"
-  | "first_matching_event_for_user";
+  | "first_matching_event_for_user"
+  | (string & {});
 export const BaseMathType = /*@__PURE__*/ S.String;
 
 export type FunnelMathType =
   | "total"
   | "first_time_for_user"
-  | "first_time_for_user_with_filters";
+  | "first_time_for_user_with_filters"
+  | (string & {});
 export const FunnelMathType = /*@__PURE__*/ S.String;
 
 export type PropertyMathType =
@@ -2302,7 +2346,8 @@ export type PropertyMathType =
   | "p75"
   | "p90"
   | "p95"
-  | "p99";
+  | "p99"
+  | (string & {});
 export const PropertyMathType = /*@__PURE__*/ S.String;
 
 export type CountPerActorMathType =
@@ -2313,7 +2358,8 @@ export type CountPerActorMathType =
   | "p75_count_per_actor"
   | "p90_count_per_actor"
   | "p95_count_per_actor"
-  | "p99_count_per_actor";
+  | "p99_count_per_actor"
+  | (string & {});
 export const CountPerActorMathType = /*@__PURE__*/ S.String;
 
 export type ExperimentMetricMathType =
@@ -2325,10 +2371,11 @@ export type ExperimentMetricMathType =
   | "avg"
   | "dau"
   | "unique_group"
-  | "hogql";
+  | "hogql"
+  | (string & {});
 export const ExperimentMetricMathType = /*@__PURE__*/ S.String;
 
-export type CalendarHeatmapMathType = "total" | "dau";
+export type CalendarHeatmapMathType = "total" | "dau" | (string & {});
 export const CalendarHeatmapMathType = /*@__PURE__*/ S.String;
 
 export type EventsNodeMath =
@@ -2342,7 +2389,7 @@ export type EventsNodeMath =
 export const EventsNodeMath =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventsNodeMath>;
 
-export type MathGroupTypeIndex = 0 | 1 | 2 | 3 | 4;
+export type MathGroupTypeIndex = 0 | 1 | 2 | 3 | 4 | (number & {});
 export const MathGroupTypeIndex = /*@__PURE__*/ S.Number;
 
 export type CurrencyCode =
@@ -2497,7 +2544,8 @@ export type CurrencyCode =
   | "XPF"
   | "YER"
   | "ZAR"
-  | "ZMW";
+  | "ZMW"
+  | (string & {});
 export const CurrencyCode = /*@__PURE__*/ S.String;
 
 export interface RevenueCurrencyPropertyConfig {
@@ -3062,10 +3110,11 @@ export type AggregationAxisFormat =
   | "percentage"
   | "percentage_scaled"
   | "currency"
-  | "short";
+  | "short"
+  | (string & {});
 export const AggregationAxisFormat = /*@__PURE__*/ S.String;
 
-export type Curve = "linear" | "smooth";
+export type Curve = "linear" | "smooth" | (string & {});
 export const Curve = /*@__PURE__*/ S.String;
 
 export interface ChartStyle {
@@ -3078,7 +3127,11 @@ export const ChartStyle = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChartStyle" }) as any as S.Schema<ChartStyle>;
 
-export type DetailedResultsAggregationType = "total" | "average" | "median";
+export type DetailedResultsAggregationType =
+  | "total"
+  | "average"
+  | "median"
+  | (string & {});
 export const DetailedResultsAggregationType = /*@__PURE__*/ S.String;
 
 export type ChartDisplayType =
@@ -3098,7 +3151,8 @@ export type ChartDisplayType =
   | "CalendarHeatmap"
   | "TwoDimensionalHeatmap"
   | "BoxPlot"
-  | "SlopeGraph";
+  | "SlopeGraph"
+  | (string & {});
 export const ChartDisplayType = /*@__PURE__*/ S.String;
 
 export interface TrendsFormulaNode {
@@ -3125,7 +3179,7 @@ export const TrendsFilterFormulasList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TrendsFilterFormulasList>;
 
-export type Position = "start" | "end";
+export type Position = "start" | "end" | (string & {});
 export const Position = /*@__PURE__*/ S.String;
 
 export interface GoalLine {
@@ -3157,13 +3211,18 @@ export const TrendsFilterHiddenLegendIndexesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<TrendsFilterHiddenLegendIndexesList>;
 
-export type LegendPosition = "top" | "bottom" | "left" | "right";
+export type LegendPosition =
+  | "top"
+  | "bottom"
+  | "left"
+  | "right"
+  | (string & {});
 export const LegendPosition = /*@__PURE__*/ S.String;
 
-export type MetricSummary = "total" | "average" | "latest";
+export type MetricSummary = "total" | "average" | "latest" | (string & {});
 export const MetricSummary = /*@__PURE__*/ S.String;
 
-export type ResultCustomizationBy = "value" | "position";
+export type ResultCustomizationBy = "value" | "position" | (string & {});
 export const ResultCustomizationBy = /*@__PURE__*/ S.String;
 
 export type DataColorToken =
@@ -3181,7 +3240,8 @@ export type DataColorToken =
   | "preset-12"
   | "preset-13"
   | "preset-14"
-  | "preset-15";
+  | "preset-15"
+  | (string & {});
 export const DataColorToken = /*@__PURE__*/ S.String;
 
 export interface ResultCustomizationByValue {
@@ -3237,7 +3297,7 @@ export type TrendsFilterResultCustomizations =
 export const TrendsFilterResultCustomizations =
   /*@__PURE__*/ S.Unknown as any as S.Schema<TrendsFilterResultCustomizations>;
 
-export type YAxisScaleType = "log10" | "linear";
+export type YAxisScaleType = "log10" | "linear" | (string & {});
 export const YAxisScaleType = /*@__PURE__*/ S.String;
 
 export interface TrendsFilter {
@@ -3423,7 +3483,8 @@ export type BreakdownAttributionType =
   | "first_touch"
   | "last_touch"
   | "all_events"
-  | "step";
+  | "step"
+  | (string & {});
 export const BreakdownAttributionType = /*@__PURE__*/ S.String;
 
 export type FunnelExclusionEventsNodeFixedPropertiesItem =
@@ -3725,13 +3786,18 @@ export const FunnelsFilterExclusionsList = /*@__PURE__*/ S.Array(
   FunnelsFilterExclusionsItem,
 ) as any as S.Schema<FunnelsFilterExclusionsList>;
 
-export type StepOrderValue = "strict" | "unordered" | "ordered";
+export type StepOrderValue = "strict" | "unordered" | "ordered" | (string & {});
 export const StepOrderValue = /*@__PURE__*/ S.String;
 
-export type FunnelStepReference = "total" | "previous";
+export type FunnelStepReference = "total" | "previous" | (string & {});
 export const FunnelStepReference = /*@__PURE__*/ S.String;
 
-export type FunnelVizType = "steps" | "time_to_convert" | "trends" | "flow";
+export type FunnelVizType =
+  | "steps"
+  | "time_to_convert"
+  | "trends"
+  | "flow"
+  | (string & {});
 export const FunnelVizType = /*@__PURE__*/ S.String;
 
 export type FunnelConversionWindowTimeUnit =
@@ -3740,7 +3806,8 @@ export type FunnelConversionWindowTimeUnit =
   | "hour"
   | "day"
   | "week"
-  | "month";
+  | "month"
+  | (string & {});
 export const FunnelConversionWindowTimeUnit = /*@__PURE__*/ S.String;
 
 export type FunnelsFilterGoalLinesList = ReadonlyArray<GoalLine>;
@@ -3753,7 +3820,7 @@ export const FunnelsFilterHiddenLegendBreakdownsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FunnelsFilterHiddenLegendBreakdownsList>;
 
-export type FunnelLayout = "horizontal" | "vertical";
+export type FunnelLayout = "horizontal" | "vertical" | (string & {});
 export const FunnelLayout = /*@__PURE__*/ S.String;
 
 export type FunnelsFilterResultCustomizationsMap = {
@@ -4312,13 +4379,21 @@ export const RetentionQueryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RetentionQueryResponse",
 }) as any as S.Schema<RetentionQueryResponse>;
 
-export type AggregationPropertyType = "event" | "person" | "data_warehouse";
+export type AggregationPropertyType =
+  | "event"
+  | "person"
+  | "data_warehouse"
+  | (string & {});
 export const AggregationPropertyType = /*@__PURE__*/ S.String;
 
-export type AggregationType = "count" | "sum" | "avg";
+export type AggregationType = "count" | "sum" | "avg" | (string & {});
 export const AggregationType = /*@__PURE__*/ S.String;
 
-export type RetentionDashboardDisplayType = "table_only" | "graph_only" | "all";
+export type RetentionDashboardDisplayType =
+  | "table_only"
+  | "graph_only"
+  | "all"
+  | (string & {});
 export const RetentionDashboardDisplayType = /*@__PURE__*/ S.String;
 
 export type RetentionFilterGoalLinesList = ReadonlyArray<GoalLine>;
@@ -4326,10 +4401,14 @@ export const RetentionFilterGoalLinesList = /*@__PURE__*/ S.Array(
   GoalLine,
 ) as any as S.Schema<RetentionFilterGoalLinesList>;
 
-export type MeanRetentionCalculation = "simple" | "weighted" | "none";
+export type MeanRetentionCalculation =
+  | "simple"
+  | "weighted"
+  | "none"
+  | (string & {});
 export const MeanRetentionCalculation = /*@__PURE__*/ S.String;
 
-export type RetentionPeriod = "Hour" | "Day" | "Week" | "Month";
+export type RetentionPeriod = "Hour" | "Day" | "Week" | "Month" | (string & {});
 export const RetentionPeriod = /*@__PURE__*/ S.String;
 
 export type RetentionFilterRetentionCustomBracketsList = ReadonlyArray<number>;
@@ -4337,20 +4416,21 @@ export const RetentionFilterRetentionCustomBracketsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<RetentionFilterRetentionCustomBracketsList>;
 
-export type RetentionReference = "total" | "previous";
+export type RetentionReference = "total" | "previous" | (string & {});
 export const RetentionReference = /*@__PURE__*/ S.String;
 
 export type RetentionType =
   | "retention_recurring"
   | "retention_first_time"
-  | "retention_first_ever_occurrence";
+  | "retention_first_ever_occurrence"
+  | (string & {});
 export const RetentionType = /*@__PURE__*/ S.String;
 
 export type RetentionEntityId = string | number;
 export const RetentionEntityId =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RetentionEntityId>;
 
-export type RetentionEntityKind = "ActionsNode" | "EventsNode";
+export type RetentionEntityKind = "ActionsNode" | "EventsNode" | (string & {});
 export const RetentionEntityKind = /*@__PURE__*/ S.String;
 
 export type RetentionEntityPropertiesItem =
@@ -4391,7 +4471,8 @@ export type EntityType =
   | "events"
   | "data_warehouse"
   | "new_entity"
-  | "groups";
+  | "groups"
+  | (string & {});
 export const EntityType = /*@__PURE__*/ S.String;
 
 export interface RetentionEntity {
@@ -4429,7 +4510,10 @@ export const RetentionEntity = /*@__PURE__*/ S.suspend(() =>
   identifier: "RetentionEntity",
 }) as any as S.Schema<RetentionEntity>;
 
-export type TimeWindowMode = "strict_calendar_dates" | "24_hour_windows";
+export type TimeWindowMode =
+  | "strict_calendar_dates"
+  | "24_hour_windows"
+  | (string & {});
 export const TimeWindowMode = /*@__PURE__*/ S.String;
 
 export interface RetentionFilter {
@@ -4545,7 +4629,8 @@ export const RetentionQuery = /*@__PURE__*/ S.suspend(() =>
 export type FunnelPathType =
   | "funnel_path_before_step"
   | "funnel_path_between_steps"
-  | "funnel_path_after_step";
+  | "funnel_path_after_step"
+  | (string & {});
 export const FunnelPathType = /*@__PURE__*/ S.String;
 
 export interface FunnelPathsFilter {
@@ -4568,7 +4653,12 @@ export const PathsFilterExcludeEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PathsFilterExcludeEventsList>;
 
-export type PathType = "$pageview" | "$screen" | "custom_event" | "hogql";
+export type PathType =
+  | "$pageview"
+  | "$screen"
+  | "custom_event"
+  | "hogql"
+  | (string & {});
 export const PathType = /*@__PURE__*/ S.String;
 
 export type PathsFilterIncludeEventTypesList = ReadonlyArray<PathType>;
@@ -4950,7 +5040,10 @@ export const StickinessQuerySeriesList = /*@__PURE__*/ S.Array(
   StickinessQuerySeriesItem,
 ) as any as S.Schema<StickinessQuerySeriesList>;
 
-export type StickinessComputationMode = "non_cumulative" | "cumulative";
+export type StickinessComputationMode =
+  | "non_cumulative"
+  | "cumulative"
+  | (string & {});
 export const StickinessComputationMode = /*@__PURE__*/ S.String;
 
 export type StickinessFilterHiddenLegendIndexesList = ReadonlyArray<number>;
@@ -4983,7 +5076,7 @@ export type StickinessFilterResultCustomizations =
 export const StickinessFilterResultCustomizations =
   /*@__PURE__*/ S.Unknown as any as S.Schema<StickinessFilterResultCustomizations>;
 
-export type StickinessOperator = "gte" | "lte" | "exact";
+export type StickinessOperator = "gte" | "lte" | "exact" | (string & {});
 export const StickinessOperator = /*@__PURE__*/ S.String;
 
 export interface StickinessCriteria {
@@ -5090,7 +5183,12 @@ export const StickinessQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "StickinessQuery",
 }) as any as S.Schema<StickinessQuery>;
 
-export type LifecycleToggle = "new" | "resurrecting" | "returning" | "dormant";
+export type LifecycleToggle =
+  | "new"
+  | "resurrecting"
+  | "returning"
+  | "dormant"
+  | (string & {});
 export const LifecycleToggle = /*@__PURE__*/ S.String;
 
 export type LifecycleFilterToggledLifecyclesList =
@@ -5474,7 +5572,8 @@ export type WebStatsBreakdown =
   | "City"
   | "Timezone"
   | "Language"
-  | "FrustrationMetrics";
+  | "FrustrationMetrics"
+  | (string & {});
 export const WebStatsBreakdown = /*@__PURE__*/ S.String;
 
 export type WebStatsTableQueryConversionGoal =
@@ -5497,10 +5596,11 @@ export type WebAnalyticsOrderByFields =
   | "ConvertingUsers"
   | "RageClicks"
   | "DeadClicks"
-  | "Errors";
+  | "Errors"
+  | (string & {});
 export const WebAnalyticsOrderByFields = /*@__PURE__*/ S.String;
 
-export type WebAnalyticsOrderByDirection = "ASC" | "DESC";
+export type WebAnalyticsOrderByDirection = "ASC" | "DESC" | (string & {});
 export const WebAnalyticsOrderByDirection = /*@__PURE__*/ S.String;
 
 export type WebStatsTableQueryOrderByItem =
@@ -5537,7 +5637,8 @@ export const WebStatsTableQueryResponseColumnsList = /*@__PURE__*/ S.Array(
 export type WebAnalyticsPreComputeStrategy =
   | "pre_aggregated"
   | "lazy_precompute"
-  | "live";
+  | "live"
+  | (string & {});
 export const WebAnalyticsPreComputeStrategy = /*@__PURE__*/ S.String;
 
 export type WebStatsTableQueryResponseResultsList = ReadonlyArray<unknown>;
@@ -5763,7 +5864,8 @@ export type WebAnalyticsItemKind =
   | "unit"
   | "duration_s"
   | "percentage"
-  | "currency";
+  | "currency"
+  | (string & {});
 export const WebAnalyticsItemKind = /*@__PURE__*/ S.String;
 
 export interface WebOverviewItem {
@@ -6021,7 +6123,8 @@ export const DataTableNodeColumnsList = /*@__PURE__*/ S.Array(
 
 export type DataTableNodeViewPropsContextType =
   | "event_definition"
-  | "team_columns";
+  | "team_columns"
+  | (string & {});
 export const DataTableNodeViewPropsContextType = /*@__PURE__*/ S.String;
 
 export interface DataTableNodeViewPropsContext {
@@ -6378,7 +6481,12 @@ export const HogQLMetadataResponseErrorsList = /*@__PURE__*/ S.Array(
   HogQLNotice,
 ) as any as S.Schema<HogQLMetadataResponseErrorsList>;
 
-export type QueryIndexUsage = "undecisive" | "no" | "partial" | "yes";
+export type QueryIndexUsage =
+  | "undecisive"
+  | "no"
+  | "partial"
+  | "yes"
+  | (string & {});
 export const QueryIndexUsage = /*@__PURE__*/ S.String;
 
 export type HogQLMetadataResponseNoticesList = ReadonlyArray<HogQLNotice>;
@@ -7398,7 +7506,8 @@ export const Response13 = /*@__PURE__*/ S.suspend(() =>
 export type RevenueAnalyticsOverviewItemKey =
   | "revenue"
   | "paying_customer_count"
-  | "avg_revenue_per_customer";
+  | "avg_revenue_per_customer"
+  | (string & {});
 export const RevenueAnalyticsOverviewItemKey = /*@__PURE__*/ S.String;
 
 export interface RevenueAnalyticsOverviewItem {
@@ -7978,7 +8087,7 @@ export type ErrorTrackingIssueAssigneeId = string | number;
 export const ErrorTrackingIssueAssigneeId =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ErrorTrackingIssueAssigneeId>;
 
-export type ErrorTrackingIssueAssigneeType = "user" | "role";
+export type ErrorTrackingIssueAssigneeType = "user" | "role" | (string & {});
 export const ErrorTrackingIssueAssigneeType = /*@__PURE__*/ S.String;
 
 export interface ErrorTrackingIssueAssignee {
@@ -8045,7 +8154,8 @@ export type IntegrationKind =
   | "postgresql"
   | "aws-s3"
   | "s3-compatible"
-  | "snowflake";
+  | "snowflake"
+  | (string & {});
 export const IntegrationKind = /*@__PURE__*/ S.String;
 
 export interface ErrorTrackingExternalReferenceIntegration {
@@ -8120,7 +8230,8 @@ export type ErrorTrackingIssueStatus =
   | "active"
   | "resolved"
   | "pending_release"
-  | "suppressed";
+  | "suppressed"
+  | (string & {});
 export const ErrorTrackingIssueStatus = /*@__PURE__*/ S.String;
 
 export interface ErrorTrackingIssue {
@@ -8419,7 +8530,8 @@ export type ExperimentSignificanceCode =
   | "not_enough_exposure"
   | "low_win_probability"
   | "high_loss"
-  | "high_p_value";
+  | "high_p_value"
+  | (string & {});
 export const ExperimentSignificanceCode = /*@__PURE__*/ S.String;
 
 export interface ExperimentVariantFunnelsBaseStats {
@@ -8585,7 +8697,8 @@ export type AIEventType =
   | "$ai_trace_summary"
   | "$ai_generation_summary"
   | "$ai_trace_clusters"
-  | "$ai_generation_clusters";
+  | "$ai_generation_clusters"
+  | (string & {});
 export const AIEventType = /*@__PURE__*/ S.String;
 
 export type LLMTraceEventEvent = AIEventType | string;
@@ -9109,7 +9222,8 @@ export type TaxonomicFilterGroupType =
   | "suggested_filters"
   | "recent_filters"
   | "pinned_filters"
-  | "empty";
+  | "empty"
+  | (string & {});
 export const TaxonomicFilterGroupType = /*@__PURE__*/ S.String;
 
 export type DataTableNodeShowPropertyFilterCase1List =
@@ -9125,7 +9239,7 @@ export type DataTableNodeShowPropertyFilter =
 export const DataTableNodeShowPropertyFilter =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DataTableNodeShowPropertyFilter>;
 
-export type HrefMatching = "contains" | "exact" | "regex";
+export type HrefMatching = "contains" | "exact" | "regex" | (string & {});
 export const HrefMatching = /*@__PURE__*/ S.String;
 
 export type EventsQueryActionStepPropertiesItem =
@@ -9161,10 +9275,10 @@ export const EventsQueryActionStepPropertiesList = /*@__PURE__*/ S.Array(
   EventsQueryActionStepPropertiesItem,
 ) as any as S.Schema<EventsQueryActionStepPropertiesList>;
 
-export type TextMatching = "contains" | "exact" | "regex";
+export type TextMatching = "contains" | "exact" | "regex" | (string & {});
 export const TextMatching = /*@__PURE__*/ S.String;
 
-export type UrlMatching = "contains" | "exact" | "regex";
+export type UrlMatching = "contains" | "exact" | "regex" | (string & {});
 export const UrlMatching = /*@__PURE__*/ S.String;
 
 export interface EventsQueryActionStep {
@@ -9402,7 +9516,7 @@ export type InsightActorsQueryBreakdown =
 export const InsightActorsQueryBreakdown =
   /*@__PURE__*/ S.Unknown as any as S.Schema<InsightActorsQueryBreakdown>;
 
-export type Compare = "current" | "previous";
+export type Compare = "current" | "previous" | (string & {});
 export const Compare = /*@__PURE__*/ S.String;
 
 export type InsightActorsQueryDay = string | number;
@@ -9927,7 +10041,8 @@ export const FunnelCorrelationQueryFunnelCorrelationNamesList =
 export type FunnelCorrelationResultsType =
   | "events"
   | "properties"
-  | "event_with_properties";
+  | "event_with_properties"
+  | (string & {});
 export const FunnelCorrelationResultsType = /*@__PURE__*/ S.String;
 
 export type FunnelCorrelationResponseColumnsList = ReadonlyArray<unknown>;
@@ -9935,7 +10050,7 @@ export const FunnelCorrelationResponseColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<FunnelCorrelationResponseColumnsList>;
 
-export type CorrelationType = "success" | "failure";
+export type CorrelationType = "success" | "failure" | (string & {});
 export const CorrelationType = /*@__PURE__*/ S.String;
 
 export type EventDefinitionElementsList = ReadonlyArray<unknown>;
@@ -10254,10 +10369,10 @@ export type ExperimentActorsQueryFunnelStepBreakdown =
 export const ExperimentActorsQueryFunnelStepBreakdown =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentActorsQueryFunnelStepBreakdown>;
 
-export type MultipleVariantHandling = "exclude" | "first_seen";
+export type MultipleVariantHandling = "exclude" | "first_seen" | (string & {});
 export const MultipleVariantHandling = /*@__PURE__*/ S.String;
 
-export type ExperimentMetricGoal = "increase" | "decrease";
+export type ExperimentMetricGoal = "increase" | "decrease" | (string & {});
 export const ExperimentMetricGoal = /*@__PURE__*/ S.String;
 
 export type ExperimentMeanMetricResponseMap = {
@@ -10640,7 +10755,7 @@ export type ExperimentRetentionMetricStartEvent =
 export const ExperimentRetentionMetricStartEvent =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentRetentionMetricStartEvent>;
 
-export type StartHandling = "first_seen" | "last_seen";
+export type StartHandling = "first_seen" | "last_seen" | (string & {});
 export const StartHandling = /*@__PURE__*/ S.String;
 
 export interface ExperimentRetentionMetric {
@@ -10701,7 +10816,7 @@ export type ExperimentQueryMetric =
 export const ExperimentQueryMetric =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentQueryMetric>;
 
-export type PrecomputationMode = "precomputed" | "direct";
+export type PrecomputationMode = "precomputed" | "direct" | (string & {});
 export const PrecomputationMode = /*@__PURE__*/ S.String;
 
 export type ExperimentStatsBaseValidatedStepCountsList = ReadonlyArray<number>;
@@ -10741,7 +10856,8 @@ export const ExperimentStatsBaseValidatedStepSessionsList =
 export type ExperimentStatsValidationFailure =
   | "not-enough-exposures"
   | "baseline-mean-is-zero"
-  | "not-enough-metric-data";
+  | "not-enough-metric-data"
+  | (string & {});
 export const ExperimentStatsValidationFailure = /*@__PURE__*/ S.String;
 
 export type ExperimentStatsBaseValidatedValidationFailuresList =
@@ -12183,7 +12299,7 @@ export type WebVitalsPathBreakdownQueryConversionGoal =
 export const WebVitalsPathBreakdownQueryConversionGoal =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebVitalsPathBreakdownQueryConversionGoal>;
 
-export type WebVitalsMetric = "INP" | "LCP" | "CLS" | "FCP";
+export type WebVitalsMetric = "INP" | "LCP" | "CLS" | "FCP" | (string & {});
 export const WebVitalsMetric = /*@__PURE__*/ S.String;
 
 export type WebVitalsPathBreakdownQueryOrderByItem =
@@ -12198,7 +12314,7 @@ export const WebVitalsPathBreakdownQueryOrderByList = /*@__PURE__*/ S.Array(
   WebVitalsPathBreakdownQueryOrderByItem,
 ) as any as S.Schema<WebVitalsPathBreakdownQueryOrderByList>;
 
-export type WebVitalsPercentile = "p75" | "p90" | "p99";
+export type WebVitalsPercentile = "p75" | "p90" | "p99" | (string & {});
 export const WebVitalsPercentile = /*@__PURE__*/ S.String;
 
 export type WebVitalsPathBreakdownQueryPropertiesItem =
@@ -12389,7 +12505,8 @@ export type SessionAttributionGroupBy =
   | "Campaign"
   | "AdIds"
   | "ReferringDomain"
-  | "InitialURL";
+  | "InitialURL"
+  | (string & {});
 export const SessionAttributionGroupBy = /*@__PURE__*/ S.String;
 
 export type SessionAttributionExplorerQueryGroupByList =
@@ -12831,7 +12948,7 @@ export const RevenueAnalyticsGrossRevenueQueryBreakdownList =
     RevenueAnalyticsBreakdown,
   ) as any as S.Schema<RevenueAnalyticsGrossRevenueQueryBreakdownList>;
 
-export type SimpleIntervalType = "day" | "month";
+export type SimpleIntervalType = "day" | "month" | (string & {});
 export const SimpleIntervalType = /*@__PURE__*/ S.String;
 
 export type RevenueAnalyticsGrossRevenueQueryPropertiesList =
@@ -13334,7 +13451,10 @@ export const RevenueAnalyticsOverviewQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevenueAnalyticsOverviewQuery",
 }) as any as S.Schema<RevenueAnalyticsOverviewQuery>;
 
-export type RevenueAnalyticsTopCustomersGroupBy = "month" | "all";
+export type RevenueAnalyticsTopCustomersGroupBy =
+  | "month"
+  | "all"
+  | (string & {});
 export const RevenueAnalyticsTopCustomersGroupBy = /*@__PURE__*/ S.String;
 
 export type RevenueAnalyticsTopCustomersQueryPropertiesList =
@@ -14204,7 +14324,8 @@ export type MarketingAnalyticsDrillDownLevel =
   | "ad"
   | "medium"
   | "content"
-  | "term";
+  | "term"
+  | (string & {});
 export const MarketingAnalyticsDrillDownLevel = /*@__PURE__*/ S.String;
 
 export type IntegrationFilterIntegrationSourceIdsList = ReadonlyArray<string>;
@@ -14226,7 +14347,7 @@ export const IntegrationFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "IntegrationFilter",
 }) as any as S.Schema<IntegrationFilter>;
 
-export type MarketingAnalyticsOrderByEnum = "ASC" | "DESC";
+export type MarketingAnalyticsOrderByEnum = "ASC" | "DESC" | (string & {});
 export const MarketingAnalyticsOrderByEnum = /*@__PURE__*/ S.String;
 
 export type MarketingAnalyticsTableQueryOrderByItemItem =
@@ -14911,10 +15032,11 @@ export type ErrorTrackingOrderBy =
   | "first_seen"
   | "occurrences"
   | "users"
-  | "sessions";
+  | "sessions"
+  | (string & {});
 export const ErrorTrackingOrderBy = /*@__PURE__*/ S.String;
 
-export type OrderDirection2 = "ASC" | "DESC";
+export type OrderDirection2 = "ASC" | "DESC" | (string & {});
 export const OrderDirection2 = /*@__PURE__*/ S.String;
 
 export interface ErrorTrackingPendingFingerprintIssueStateUpdate {
@@ -15929,7 +16051,8 @@ export type EndpointsUsageBreakdown =
   | "Endpoint"
   | "MaterializationType"
   | "ApiKey"
-  | "Status";
+  | "Status"
+  | (string & {});
 export const EndpointsUsageBreakdown = /*@__PURE__*/ S.String;
 
 export type EndpointsUsageTableQueryEndpointNamesList = ReadonlyArray<string>;
@@ -15937,7 +16060,7 @@ export const EndpointsUsageTableQueryEndpointNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EndpointsUsageTableQueryEndpointNamesList>;
 
-export type MaterializationType = "materialized" | "inline";
+export type MaterializationType = "materialized" | "inline" | (string & {});
 export const MaterializationType = /*@__PURE__*/ S.String;
 
 export type EndpointsUsageOrderByField =
@@ -15945,10 +16068,11 @@ export type EndpointsUsageOrderByField =
   | "bytes_read"
   | "cpu_seconds"
   | "avg_query_duration_ms"
-  | "error_rate";
+  | "error_rate"
+  | (string & {});
 export const EndpointsUsageOrderByField = /*@__PURE__*/ S.String;
 
-export type EndpointsUsageOrderByDirection = "ASC" | "DESC";
+export type EndpointsUsageOrderByDirection = "ASC" | "DESC" | (string & {});
 export const EndpointsUsageOrderByDirection = /*@__PURE__*/ S.String;
 
 export type EndpointsUsageTableQueryOrderByItem =
@@ -16461,10 +16585,10 @@ export const HeatmapSettingsGradientList = /*@__PURE__*/ S.Array(
   HeatmapGradientStop,
 ) as any as S.Schema<HeatmapSettingsGradientList>;
 
-export type GradientScaleMode = "absolute" | "relative";
+export type GradientScaleMode = "absolute" | "relative" | (string & {});
 export const GradientScaleMode = /*@__PURE__*/ S.String;
 
-export type HeatmapSortOrder = "asc" | "desc";
+export type HeatmapSortOrder = "asc" | "desc" | (string & {});
 export const HeatmapSortOrder = /*@__PURE__*/ S.String;
 
 export interface HeatmapSettings {
@@ -16500,7 +16624,7 @@ export const HeatmapSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "HeatmapSettings",
 }) as any as S.Schema<HeatmapSettings>;
 
-export type Scale = "linear" | "logarithmic";
+export type Scale = "linear" | "logarithmic" | (string & {});
 export const Scale = /*@__PURE__*/ S.String;
 
 export interface YAxisSettings {
@@ -16521,10 +16645,10 @@ export const YAxisSettings = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "YAxisSettings" }) as any as S.Schema<YAxisSettings>;
 
-export type SliceContent = "labels" | "values" | "none";
+export type SliceContent = "labels" | "values" | "none" | (string & {});
 export const SliceContent = /*@__PURE__*/ S.String;
 
-export type ValueDisplay = "absolute" | "percentage";
+export type ValueDisplay = "absolute" | "percentage" | (string & {});
 export const ValueDisplay = /*@__PURE__*/ S.String;
 
 export interface PieChartSettings {
@@ -16553,10 +16677,10 @@ export const ChartSettingsResultCustomizationsMap = /*@__PURE__*/ S.Record(
   ResultCustomizationByValue,
 ) as any as S.Schema<ChartSettingsResultCustomizationsMap>;
 
-export type DisplayType = "auto" | "line" | "bar" | "area";
+export type DisplayType = "auto" | "line" | "bar" | "area" | (string & {});
 export const DisplayType = /*@__PURE__*/ S.String;
 
-export type YAxisPosition = "left" | "right";
+export type YAxisPosition = "left" | "right" | (string & {});
 export const YAxisPosition = /*@__PURE__*/ S.String;
 
 export interface ChartSettingsDisplay {
@@ -16578,7 +16702,7 @@ export const ChartSettingsDisplay = /*@__PURE__*/ S.suspend(() =>
   identifier: "ChartSettingsDisplay",
 }) as any as S.Schema<ChartSettingsDisplay>;
 
-export type Style = "none" | "number" | "short" | "percent";
+export type Style = "none" | "number" | "short" | "percent" | (string & {});
 export const Style = /*@__PURE__*/ S.String;
 
 export interface ChartSettingsFormatting {
@@ -16687,7 +16811,7 @@ export const ConditionalFormattingRuleBytecodeList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ConditionalFormattingRuleBytecodeList>;
 
-export type ColorMode = "light" | "dark";
+export type ColorMode = "light" | "dark" | (string & {});
 export const ColorMode = /*@__PURE__*/ S.String;
 
 export interface ConditionalFormattingRule {
@@ -16879,7 +17003,7 @@ export const InsightsCancelCreateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsCancelCreateResponse",
 }) as any as S.Schema<InsightsCancelCreateResponse>;
 
-export type InsightsCreateRequestFormat = "csv" | "json";
+export type InsightsCreateRequestFormat = "csv" | "json" | (string & {});
 export const InsightsCreateRequestFormat = /*@__PURE__*/ S.String;
 
 /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
@@ -16984,10 +17108,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -17024,7 +17149,7 @@ export const InsightOutputTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<InsightOutputTagsList>;
 
-export type EffectivePrivilegeLevelEnum = 21 | 37;
+export type EffectivePrivilegeLevelEnum = 21 | 37 | (number & {});
 export const EffectivePrivilegeLevelEnum = /*@__PURE__*/ S.Number;
 
 export type InsightOutputTypesList = ReadonlyArray<unknown>;
@@ -17183,7 +17308,7 @@ export const InsightFilterOverrideContext = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightFilterOverrideContext",
 }) as any as S.Schema<InsightFilterOverrideContext>;
 
-export type SearchMatchTypeEnum = "exact" | "similar";
+export type SearchMatchTypeEnum = "exact" | "similar" | (string & {});
 export const SearchMatchTypeEnum = /*@__PURE__*/ S.String;
 
 /** Simplified serializer to speed response times when loading large amounts of objects. */
@@ -17277,7 +17402,7 @@ export const InsightOutput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InsightOutput" }) as any as S.Schema<InsightOutput>;
 
-export type InsightsDestroyRequestFormat = "csv" | "json";
+export type InsightsDestroyRequestFormat = "csv" | "json" | (string & {});
 export const InsightsDestroyRequestFormat = /*@__PURE__*/ S.String;
 
 export interface InsightsDestroyRequest {
@@ -17310,7 +17435,10 @@ export const InsightsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsDestroyResponse",
 }) as any as S.Schema<InsightsDestroyResponse>;
 
-export type InsightsGenerateMetadataCreateRequestFormat = "csv" | "json";
+export type InsightsGenerateMetadataCreateRequestFormat =
+  | "csv"
+  | "json"
+  | (string & {});
 export const InsightsGenerateMetadataCreateRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -17382,7 +17510,7 @@ export const InsightsGenerateMetadataCreateResponse = /*@__PURE__*/ S.suspend(
   identifier: "InsightsGenerateMetadataCreateResponse",
 }) as any as S.Schema<InsightsGenerateMetadataCreateResponse>;
 
-export type InsightsListRequestFormat = "csv" | "json";
+export type InsightsListRequestFormat = "csv" | "json" | (string & {});
 export const InsightsListRequestFormat = /*@__PURE__*/ S.String;
 
 export type InsightsListRequestInsight =
@@ -17393,7 +17521,8 @@ export type InsightsListRequestInsight =
   | "RETENTION"
   | "SQL"
   | "STICKINESS"
-  | "TRENDS";
+  | "TRENDS"
+  | (string & {});
 export const InsightsListRequestInsight = /*@__PURE__*/ S.String;
 
 export type InsightsListRequestRefresh =
@@ -17403,7 +17532,8 @@ export type InsightsListRequestRefresh =
   | "force_async"
   | "force_blocking"
   | "force_cache"
-  | "lazy_async";
+  | "lazy_async"
+  | (string & {});
 export const InsightsListRequestRefresh = /*@__PURE__*/ S.String;
 
 export interface InsightsListRequest {
@@ -17508,7 +17638,10 @@ export const PaginatedInsightListOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedInsightListOutput",
 }) as any as S.Schema<PaginatedInsightListOutput>;
 
-export type InsightsMyLastViewedRetrieveRequestFormat = "csv" | "json";
+export type InsightsMyLastViewedRetrieveRequestFormat =
+  | "csv"
+  | "json"
+  | (string & {});
 export const InsightsMyLastViewedRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface InsightsMyLastViewedRetrieveRequest {
@@ -17540,7 +17673,7 @@ export const InsightsMyLastViewedRetrieveResponse = /*@__PURE__*/ S.suspend(
   identifier: "InsightsMyLastViewedRetrieveResponse",
 }) as any as S.Schema<InsightsMyLastViewedRetrieveResponse>;
 
-export type InsightsPartialUpdateRequestFormat = "csv" | "json";
+export type InsightsPartialUpdateRequestFormat = "csv" | "json" | (string & {});
 export const InsightsPartialUpdateRequestFormat = /*@__PURE__*/ S.String;
 
 /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
@@ -17601,7 +17734,7 @@ export const InsightsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsPartialUpdateRequest",
 }) as any as S.Schema<InsightsPartialUpdateRequest>;
 
-export type InsightsRetrieveRequestFormat = "csv" | "json";
+export type InsightsRetrieveRequestFormat = "csv" | "json" | (string & {});
 export const InsightsRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export type InsightsRetrieveRequestRefresh =
@@ -17611,7 +17744,8 @@ export type InsightsRetrieveRequestRefresh =
   | "force_async"
   | "force_blocking"
   | "force_cache"
-  | "lazy_async";
+  | "lazy_async"
+  | (string & {});
 export const InsightsRetrieveRequestRefresh = /*@__PURE__*/ S.String;
 
 export interface InsightsRetrieveRequest {
@@ -17816,7 +17950,10 @@ export const InsightsSharingRefreshCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsSharingRefreshCreateRequest",
 }) as any as S.Schema<InsightsSharingRefreshCreateRequest>;
 
-export type InsightsSuggestionsCreateRequestFormat = "csv" | "json";
+export type InsightsSuggestionsCreateRequestFormat =
+  | "csv"
+  | "json"
+  | (string & {});
 export const InsightsSuggestionsCreateRequestFormat = /*@__PURE__*/ S.String;
 
 /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
@@ -17883,7 +18020,10 @@ export const InsightsSuggestionsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsSuggestionsCreateResponse",
 }) as any as S.Schema<InsightsSuggestionsCreateResponse>;
 
-export type InsightsSuggestionsRetrieveRequestFormat = "csv" | "json";
+export type InsightsSuggestionsRetrieveRequestFormat =
+  | "csv"
+  | "json"
+  | (string & {});
 export const InsightsSuggestionsRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface InsightsSuggestionsRetrieveRequest {
@@ -17959,7 +18099,7 @@ export const InsightsThresholdBounds = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsThresholdBounds",
 }) as any as S.Schema<InsightsThresholdBounds>;
 
-export type InsightThresholdType = "absolute" | "percentage";
+export type InsightThresholdType = "absolute" | "percentage" | (string & {});
 export const InsightThresholdType = /*@__PURE__*/ S.String;
 
 export interface InsightThreshold {
@@ -18002,7 +18142,8 @@ export const Threshold = /*@__PURE__*/ S.suspend(() =>
 export type AlertConditionType =
   | "absolute_value"
   | "relative_increase"
-  | "relative_decrease";
+  | "relative_decrease"
+  | (string & {});
 export const AlertConditionType = /*@__PURE__*/ S.String;
 
 export interface AlertCondition {
@@ -18019,7 +18160,8 @@ export type AlertCheckStateEnum =
   | "Firing"
   | "Not firing"
   | "Errored"
-  | "Snoozed";
+  | "Snoozed"
+  | (string & {});
 export const AlertCheckStateEnum = /*@__PURE__*/ S.String;
 
 /** * `pending` - pending * `running` - running * `done` - done * `failed` - failed * `skipped` - skipped */
@@ -18028,14 +18170,16 @@ export type InvestigationStatusEnum =
   | "running"
   | "done"
   | "failed"
-  | "skipped";
+  | "skipped"
+  | (string & {});
 export const InvestigationStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `true_positive` - true_positive * `false_positive` - false_positive * `inconclusive` - inconclusive */
 export type InvestigationVerdictEnum =
   | "true_positive"
   | "false_positive"
-  | "inconclusive";
+  | "inconclusive"
+  | (string & {});
 export const InvestigationVerdictEnum = /*@__PURE__*/ S.String;
 
 export interface AlertCheck {
@@ -18101,7 +18245,11 @@ export const TrendsAlertConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrendsAlertConfig",
 }) as any as S.Schema<TrendsAlertConfig>;
 
-export type HogQLAlertEvaluation = "last_row" | "first_row" | "any_row";
+export type HogQLAlertEvaluation =
+  | "last_row"
+  | "first_row"
+  | "any_row"
+  | (string & {});
 export const HogQLAlertEvaluation = /*@__PURE__*/ S.String;
 
 export interface HogQLAlertConfig {
@@ -18126,7 +18274,8 @@ export const HogQLAlertConfig = /*@__PURE__*/ S.suspend(() =>
 
 export type FunnelConversionMetric =
   | "conversion_from_start"
-  | "conversion_from_previous";
+  | "conversion_from_previous"
+  | (string & {});
 export const FunnelConversionMetric = /*@__PURE__*/ S.String;
 
 export interface FunnelsAlertConfig {
@@ -18332,7 +18481,7 @@ export const IsolationForestDetectorConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "IsolationForestDetectorConfig",
 }) as any as S.Schema<IsolationForestDetectorConfig>;
 
-export type Method = "largest" | "mean" | "median";
+export type Method = "largest" | "mean" | "median" | (string & {});
 export const Method = /*@__PURE__*/ S.String;
 
 export interface KNNDetectorConfig {
@@ -18476,7 +18625,7 @@ export const EnsembleDetectorConfigDetectorsList = /*@__PURE__*/ S.Array(
   EnsembleDetectorConfigDetectorsItem,
 ) as any as S.Schema<EnsembleDetectorConfigDetectorsList>;
 
-export type EnsembleOperator = "and" | "or";
+export type EnsembleOperator = "and" | "or" | (string & {});
 export const EnsembleOperator = /*@__PURE__*/ S.String;
 
 export interface EnsembleDetectorConfig {
@@ -18521,7 +18670,8 @@ export type CalculationIntervalEnum =
   | "hourly"
   | "daily"
   | "weekly"
-  | "monthly";
+  | "monthly"
+  | (string & {});
 export const CalculationIntervalEnum = /*@__PURE__*/ S.String;
 
 export interface AlertScheduleRestrictionWindow {
@@ -18559,7 +18709,10 @@ export const AlertScheduleRestriction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AlertScheduleRestriction>;
 
 /** * `notify` - Notify * `suppress` - Suppress */
-export type InvestigationInconclusiveActionEnum = "notify" | "suppress";
+export type InvestigationInconclusiveActionEnum =
+  | "notify"
+  | "suppress"
+  | (string & {});
 export const InvestigationInconclusiveActionEnum = /*@__PURE__*/ S.String;
 
 export interface Alert {
@@ -18714,7 +18867,10 @@ export const InsightsThresholdsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsThresholdsRetrieveRequest",
 }) as any as S.Schema<InsightsThresholdsRetrieveRequest>;
 
-export type InsightsTrendingRetrieveRequestFormat = "csv" | "json";
+export type InsightsTrendingRetrieveRequestFormat =
+  | "csv"
+  | "json"
+  | (string & {});
 export const InsightsTrendingRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface InsightsTrendingRetrieveRequest {
@@ -18853,7 +19009,7 @@ export const PaginatedTrendingInsightList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedTrendingInsightList",
 }) as any as S.Schema<PaginatedTrendingInsightList>;
 
-export type InsightsUpdateRequestFormat = "csv" | "json";
+export type InsightsUpdateRequestFormat = "csv" | "json" | (string & {});
 export const InsightsUpdateRequestFormat = /*@__PURE__*/ S.String;
 
 /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
@@ -18914,7 +19070,7 @@ export const InsightsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsUpdateRequest",
 }) as any as S.Schema<InsightsUpdateRequest>;
 
-export type InsightsViewedCreateRequestFormat = "csv" | "json";
+export type InsightsViewedCreateRequestFormat = "csv" | "json" | (string & {});
 export const InsightsViewedCreateRequestFormat = /*@__PURE__*/ S.String;
 
 /** Insight IDs that were just viewed by the current user. At most 2500 ids per request. */

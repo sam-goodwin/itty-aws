@@ -752,7 +752,7 @@ export const AddTagsToStreamResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddTagsToStreamResponse",
 }) as any as S.Schema<AddTagsToStreamResponse>;
 export type PositiveIntegerObject = number;
-export type StreamMode = "PROVISIONED" | "ON_DEMAND";
+export type StreamMode = "PROVISIONED" | "ON_DEMAND" | (string & {});
 export const StreamMode = /*@__PURE__*/ S.String;
 
 export interface StreamModeDetails {
@@ -952,7 +952,8 @@ export const DescribeAccountSettingsInput = /*@__PURE__*/ S.suspend(() =>
 export type MinimumThroughputBillingCommitmentOutputStatus =
   | "ENABLED"
   | "DISABLED"
-  | "ENABLED_UNTIL_EARLIEST_ALLOWED_END";
+  | "ENABLED_UNTIL_EARLIEST_ALLOWED_END"
+  | (string & {});
 export const MinimumThroughputBillingCommitmentOutputStatus =
   /*@__PURE__*/ S.String;
 
@@ -1053,7 +1054,12 @@ export const DescribeStreamInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeStreamInput",
 }) as any as S.Schema<DescribeStreamInput>;
-export type StreamStatus = "CREATING" | "DELETING" | "ACTIVE" | "UPDATING";
+export type StreamStatus =
+  | "CREATING"
+  | "DELETING"
+  | "ACTIVE"
+  | "UPDATING"
+  | (string & {});
 export const StreamStatus = /*@__PURE__*/ S.String;
 
 export type HashKey = string;
@@ -1103,7 +1109,8 @@ export type MetricsName =
   | "WriteProvisionedThroughputExceeded"
   | "ReadProvisionedThroughputExceeded"
   | "IteratorAgeMilliseconds"
-  | "ALL";
+  | "ALL"
+  | (string & {});
 export const MetricsName = /*@__PURE__*/ S.String;
 
 export type MetricsNameList = MetricsName[];
@@ -1118,7 +1125,7 @@ export const EnhancedMetrics = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnhancedMetrics>;
 export type EnhancedMonitoringList = EnhancedMetrics[];
 export const EnhancedMonitoringList = /*@__PURE__*/ S.Array(EnhancedMetrics);
-export type EncryptionType = "NONE" | "KMS";
+export type EncryptionType = "NONE" | "KMS" | (string & {});
 export const EncryptionType = /*@__PURE__*/ S.String;
 
 export type KeyId = string;
@@ -1187,7 +1194,7 @@ export const DescribeStreamConsumerInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeStreamConsumerInput",
 }) as any as S.Schema<DescribeStreamConsumerInput>;
-export type ConsumerStatus = "CREATING" | "DELETING" | "ACTIVE";
+export type ConsumerStatus = "CREATING" | "DELETING" | "ACTIVE" | (string & {});
 export const ConsumerStatus = /*@__PURE__*/ S.String;
 
 export interface ConsumerDescription {
@@ -1489,7 +1496,8 @@ export type ShardIteratorType =
   | "AFTER_SEQUENCE_NUMBER"
   | "TRIM_HORIZON"
   | "LATEST"
-  | "AT_TIMESTAMP";
+  | "AT_TIMESTAMP"
+  | (string & {});
 export const ShardIteratorType = /*@__PURE__*/ S.String;
 
 export interface GetShardIteratorInput {
@@ -1574,7 +1582,8 @@ export type ShardFilterType =
   | "FROM_TRIM_HORIZON"
   | "AT_LATEST"
   | "AT_TIMESTAMP"
-  | "FROM_TIMESTAMP";
+  | "FROM_TIMESTAMP"
+  | (string & {});
 export const ShardFilterType = /*@__PURE__*/ S.String;
 
 export interface ShardFilter {
@@ -2507,7 +2516,8 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UntagResourceResponse>;
 export type MinimumThroughputBillingCommitmentInputStatus =
   | "ENABLED"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const MinimumThroughputBillingCommitmentInputStatus =
   /*@__PURE__*/ S.String;
 
@@ -2582,7 +2592,7 @@ export const UpdateMaxRecordSizeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateMaxRecordSizeResponse",
 }) as any as S.Schema<UpdateMaxRecordSizeResponse>;
-export type ScalingType = "UNIFORM_SCALING";
+export type ScalingType = "UNIFORM_SCALING" | (string & {});
 export const ScalingType = /*@__PURE__*/ S.String;
 
 export interface UpdateShardCountInput {

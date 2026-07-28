@@ -87,7 +87,8 @@ export type QueryScheduleFrequencyEnum =
   | "SEMI_MONTHLY"
   | "MONTHLY"
   | "QUARTERLY"
-  | "YEARLY";
+  | "YEARLY"
+  | (string & {});
 export const QueryScheduleFrequencyEnum = /*@__PURE__*/ S.String;
 
 /** Settings on when and how frequently to run a query. */
@@ -127,7 +128,8 @@ export type ParametersTypeEnum =
   | "REACH"
   | "UNIQUE_REACH_AUDIENCE"
   | "FULL_PATH"
-  | "PATH_ATTRIBUTION";
+  | "PATH_ATTRIBUTION"
+  | (string & {});
 export const ParametersTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a single filter rule. */
@@ -202,7 +204,8 @@ export type DataRangeRangeEnum =
   | "LAST_365_DAYS"
   | "ALL_TIME"
   | "LAST_14_DAYS"
-  | "LAST_60_DAYS";
+  | "LAST_60_DAYS"
+  | (string & {});
 export const DataRangeRangeEnum = /*@__PURE__*/ S.String;
 
 /** The date range to be reported on. */
@@ -222,7 +225,11 @@ export const DataRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DataRange" }) as any as S.Schema<DataRange>;
 
-export type QueryMetadataFormatEnum = "FORMAT_UNSPECIFIED" | "CSV" | "XLSX";
+export type QueryMetadataFormatEnum =
+  | "FORMAT_UNSPECIFIED"
+  | "CSV"
+  | "XLSX"
+  | (string & {});
 export const QueryMetadataFormatEnum = /*@__PURE__*/ S.String;
 
 /** The metadata of the query. */
@@ -369,10 +376,15 @@ export type ReportStatusStateEnum =
   | "QUEUED"
   | "RUNNING"
   | "DONE"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ReportStatusStateEnum = /*@__PURE__*/ S.String;
 
-export type ReportStatusFormatEnum = "FORMAT_UNSPECIFIED" | "CSV" | "XLSX";
+export type ReportStatusFormatEnum =
+  | "FORMAT_UNSPECIFIED"
+  | "CSV"
+  | "XLSX"
+  | (string & {});
 export const ReportStatusFormatEnum = /*@__PURE__*/ S.String;
 
 /** The status of a report. */

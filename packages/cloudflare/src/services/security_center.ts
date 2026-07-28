@@ -1139,13 +1139,15 @@ export const GetInsightTypeForZoneResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type InsightsAuditLogsListByInsightForAccountRequestFieldChanged =
   | "status"
-  | "user_classification";
+  | "user_classification"
+  | (string & {});
 export const InsightsAuditLogsListByInsightForAccountRequestFieldChanged =
   /*@__PURE__*/ S.String;
 
 export type InsightsAuditLogsListByInsightForAccountRequestOrder =
   | "asc"
-  | "desc";
+  | "desc"
+  | (string & {});
 export const InsightsAuditLogsListByInsightForAccountRequestOrder =
   /*@__PURE__*/ S.String;
 
@@ -1201,7 +1203,8 @@ export const ListByInsightInsightAuditLogForAccountRequest =
 
 export type InsightsAuditLogsListByInsightForAccountResultItemFieldChanged =
   | "status"
-  | "user_classification";
+  | "user_classification"
+  | (string & {});
 export const InsightsAuditLogsListByInsightForAccountResultItemFieldChanged =
   /*@__PURE__*/ S.String;
 
@@ -1273,11 +1276,15 @@ export const ListByInsightInsightAuditLogForAccountResponse =
 
 export type InsightsAuditLogsListByInsightForZoneRequestFieldChanged =
   | "status"
-  | "user_classification";
+  | "user_classification"
+  | (string & {});
 export const InsightsAuditLogsListByInsightForZoneRequestFieldChanged =
   /*@__PURE__*/ S.String;
 
-export type InsightsAuditLogsListByInsightForZoneRequestOrder = "asc" | "desc";
+export type InsightsAuditLogsListByInsightForZoneRequestOrder =
+  | "asc"
+  | "desc"
+  | (string & {});
 export const InsightsAuditLogsListByInsightForZoneRequestOrder =
   /*@__PURE__*/ S.String;
 
@@ -1333,7 +1340,8 @@ export const ListByInsightInsightAuditLogForZoneRequest =
 
 export type InsightsAuditLogsListByInsightForZoneResultItemFieldChanged =
   | "status"
-  | "user_classification";
+  | "user_classification"
+  | (string & {});
 export const InsightsAuditLogsListByInsightForZoneResultItemFieldChanged =
   /*@__PURE__*/ S.String;
 
@@ -1405,11 +1413,15 @@ export const ListByInsightInsightAuditLogForZoneResponse =
 
 export type InsightsAuditLogsListForAccountRequestFieldChanged =
   | "status"
-  | "user_classification";
+  | "user_classification"
+  | (string & {});
 export const InsightsAuditLogsListForAccountRequestFieldChanged =
   /*@__PURE__*/ S.String;
 
-export type InsightsAuditLogsListForAccountRequestOrder = "asc" | "desc";
+export type InsightsAuditLogsListForAccountRequestOrder =
+  | "asc"
+  | "desc"
+  | (string & {});
 export const InsightsAuditLogsListForAccountRequestOrder =
   /*@__PURE__*/ S.String;
 
@@ -1463,7 +1475,8 @@ export const ListInsightAuditLogsForAccountRequest = /*@__PURE__*/ S.suspend(
 
 export type InsightsAuditLogsListForAccountResultItemFieldChanged =
   | "status"
-  | "user_classification";
+  | "user_classification"
+  | (string & {});
 export const InsightsAuditLogsListForAccountResultItemFieldChanged =
   /*@__PURE__*/ S.String;
 
@@ -1534,11 +1547,15 @@ export const ListInsightAuditLogsForAccountResponse = /*@__PURE__*/ S.suspend(
 
 export type InsightsAuditLogsListForZoneRequestFieldChanged =
   | "status"
-  | "user_classification";
+  | "user_classification"
+  | (string & {});
 export const InsightsAuditLogsListForZoneRequestFieldChanged =
   /*@__PURE__*/ S.String;
 
-export type InsightsAuditLogsListForZoneRequestOrder = "asc" | "desc";
+export type InsightsAuditLogsListForZoneRequestOrder =
+  | "asc"
+  | "desc"
+  | (string & {});
 export const InsightsAuditLogsListForZoneRequestOrder = /*@__PURE__*/ S.String;
 
 export interface ListInsightAuditLogsForZoneRequest {
@@ -1588,7 +1605,8 @@ export const ListInsightAuditLogsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type InsightsAuditLogsListForZoneResultItemFieldChanged =
   | "status"
-  | "user_classification";
+  | "user_classification"
+  | (string & {});
 export const InsightsAuditLogsListForZoneResultItemFieldChanged =
   /*@__PURE__*/ S.String;
 
@@ -1793,7 +1811,8 @@ export type InsightsListForAccountResponseIssuesItemIssueType =
   | "exposed_infrastructure"
   | "insecure_configuration"
   | "weak_authentication"
-  | "configuration_suggestion";
+  | "configuration_suggestion"
+  | (string & {});
 export const InsightsListForAccountResponseIssuesItemIssueType =
   /*@__PURE__*/ S.String;
 
@@ -1815,20 +1834,23 @@ export const InsightsListForAccountResponseIssuesItemPayload =
 export type InsightsListForAccountResponseIssuesItemSeverity =
   | "Low"
   | "Moderate"
-  | "Critical";
+  | "Critical"
+  | (string & {});
 export const InsightsListForAccountResponseIssuesItemSeverity =
   /*@__PURE__*/ S.String;
 
 export type InsightsListForAccountResponseIssuesItemStatus =
   | "active"
-  | "resolved";
+  | "resolved"
+  | (string & {});
 export const InsightsListForAccountResponseIssuesItemStatus =
   /*@__PURE__*/ S.String;
 
 export type InsightsListForAccountResponseIssuesItemUserClassification =
   | "false_positive"
   | "accept_risk"
-  | "other";
+  | "other"
+  | (string & {});
 export const InsightsListForAccountResponseIssuesItemUserClassification =
   /*@__PURE__*/ S.String;
 
@@ -2035,7 +2057,8 @@ export type InsightsListForZoneResponseIssuesItemIssueType =
   | "exposed_infrastructure"
   | "insecure_configuration"
   | "weak_authentication"
-  | "configuration_suggestion";
+  | "configuration_suggestion"
+  | (string & {});
 export const InsightsListForZoneResponseIssuesItemIssueType =
   /*@__PURE__*/ S.String;
 
@@ -2057,18 +2080,23 @@ export const InsightsListForZoneResponseIssuesItemPayload =
 export type InsightsListForZoneResponseIssuesItemSeverity =
   | "Low"
   | "Moderate"
-  | "Critical";
+  | "Critical"
+  | (string & {});
 export const InsightsListForZoneResponseIssuesItemSeverity =
   /*@__PURE__*/ S.String;
 
-export type InsightsListForZoneResponseIssuesItemStatus = "active" | "resolved";
+export type InsightsListForZoneResponseIssuesItemStatus =
+  | "active"
+  | "resolved"
+  | (string & {});
 export const InsightsListForZoneResponseIssuesItemStatus =
   /*@__PURE__*/ S.String;
 
 export type InsightsListForZoneResponseIssuesItemUserClassification =
   | "false_positive"
   | "accept_risk"
-  | "other";
+  | "other"
+  | (string & {});
 export const InsightsListForZoneResponseIssuesItemUserClassification =
   /*@__PURE__*/ S.String;
 
@@ -2153,7 +2181,8 @@ export const ListInsightsForZoneResponse = /*@__PURE__*/ S.suspend(() =>
 export type InsightsClassificationUpdateForAccountRequestClassification =
   | "false_positive"
   | "accept_risk"
-  | "other";
+  | "other"
+  | (string & {});
 export const InsightsClassificationUpdateForAccountRequestClassification =
   /*@__PURE__*/ S.String;
 
@@ -2199,7 +2228,8 @@ export const PatchInsightClassificationForAccountResponse =
 export type InsightsClassificationUpdateForZoneRequestClassification =
   | "false_positive"
   | "accept_risk"
-  | "other";
+  | "other"
+  | (string & {});
 export const InsightsClassificationUpdateForZoneRequestClassification =
   /*@__PURE__*/ S.String;
 

@@ -63,7 +63,8 @@ export class NotFound extends T.applyErrorMatchers(
 export type NotificationSubscriptionRegisteredEventEnum =
   | "NOTIFICATION_EVENT_TYPE_UNSPECIFIED"
   | "PRODUCT_STATUS_CHANGE"
-  | "ACCOUNT_SERVICE_CHANGE";
+  | "ACCOUNT_SERVICE_CHANGE"
+  | (string & {});
 export const NotificationSubscriptionRegisteredEventEnum =
   /*@__PURE__*/ S.String;
 

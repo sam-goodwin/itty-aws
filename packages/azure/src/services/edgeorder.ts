@@ -22,11 +22,11 @@ export const AddressesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AddressesCreateRequestTagsMap>;
 
 /** Type of address based on its usage context. */
-export type AddressClassification = "Shipping" | "Site";
+export type AddressClassification = "Shipping" | "Site" | (string & {});
 export const AddressClassification = /*@__PURE__*/ S.String;
 
 /** Type of address. */
-export type AddressType = "None" | "Residential" | "Commercial";
+export type AddressType = "None" | "Residential" | "Commercial" | (string & {});
 export const AddressType = /*@__PURE__*/ S.String;
 
 /** Shipping address where customer wishes to receive the device. */
@@ -156,7 +156,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -164,7 +165,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -203,7 +205,11 @@ export const AddressesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AddressesCreateResponseTagsMap>;
 
 /** Status of address validation. */
-export type AddressValidationStatus = "Valid" | "Invalid" | "Ambiguous";
+export type AddressValidationStatus =
+  | "Valid"
+  | "Invalid"
+  | "Ambiguous"
+  | (string & {});
 export const AddressValidationStatus = /*@__PURE__*/ S.String;
 
 /** Provisioning state */
@@ -211,7 +217,8 @@ export type ProvisioningState =
   | "Creating"
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Address Properties. */
@@ -614,11 +621,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -743,7 +750,7 @@ export const HierarchyInformation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HierarchyInformation>;
 
 /** Auto Provisioning Details. */
-export type AutoProvisioningStatus = "Enabled" | "Disabled";
+export type AutoProvisioningStatus = "Enabled" | "Disabled" | (string & {});
 export const AutoProvisioningStatus = /*@__PURE__*/ S.String;
 
 /** Proof of possession details. */
@@ -855,11 +862,11 @@ export const ProductDetailsInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductDetailsInput>;
 
 /** Order item type. */
-export type OrderItemType = "Purchase" | "Rental" | "External";
+export type OrderItemType = "Purchase" | "Rental" | "External" | (string & {});
 export const OrderItemType = /*@__PURE__*/ S.String;
 
 /** Defines the mode of the Order item. */
-export type OrderMode = "Default" | "DoNotFulfill";
+export type OrderMode = "Default" | "DoNotFulfill" | (string & {});
 export const OrderMode = /*@__PURE__*/ S.String;
 
 /** Represents Site Related Details. */
@@ -874,7 +881,7 @@ export const SiteDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SiteDetails" }) as any as S.Schema<SiteDetails>;
 
 /** Name of the stage. */
-export type NotificationStageName = "Shipped" | "Delivered";
+export type NotificationStageName = "Shipped" | "Delivered" | (string & {});
 export const NotificationStageName = /*@__PURE__*/ S.String;
 
 /** Notification preference for a job stage. */
@@ -901,7 +908,10 @@ export const PreferencesNotificationPreferencesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PreferencesNotificationPreferencesList>;
 
 /** Indicates Shipment Logistics type that the customer preferred. */
-export type TransportShipmentTypes = "CustomerManaged" | "MicrosoftManaged";
+export type TransportShipmentTypes =
+  | "CustomerManaged"
+  | "MicrosoftManaged"
+  | (string & {});
 export const TransportShipmentTypes = /*@__PURE__*/ S.String;
 
 /** Preferences related to the shipment logistics of the sku. */
@@ -918,7 +928,7 @@ export const TransportPreferences = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TransportPreferences>;
 
 /** Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured. */
-export type DoubleEncryptionStatus = "Disabled" | "Enabled";
+export type DoubleEncryptionStatus = "Disabled" | "Enabled" | (string & {});
 export const DoubleEncryptionStatus = /*@__PURE__*/ S.String;
 
 /** Preferences related to the double encryption. */
@@ -948,7 +958,7 @@ export const ManagementResourcePreferences = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagementResourcePreferences>;
 
 /** Term Commitment Type */
-export type TermCommitmentType = "None" | "Trial" | "Timed";
+export type TermCommitmentType = "None" | "Trial" | "Timed" | (string & {});
 export const TermCommitmentType = /*@__PURE__*/ S.String;
 
 /** Term Commitment preference received from customer. */
@@ -1167,15 +1177,21 @@ export const DisplayInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DisplayInfo" }) as any as S.Schema<DisplayInfo>;
 
 /** Identification type of the configuration. */
-export type IdentificationType = "NotSupported" | "SerialNumber";
+export type IdentificationType =
+  | "NotSupported"
+  | "SerialNumber"
+  | (string & {});
 export const IdentificationType = /*@__PURE__*/ S.String;
 
 /** Determining nature of provisioning that the configuration supports. */
-export type ProvisioningSupport = "CloudBased" | "Manual";
+export type ProvisioningSupport = "CloudBased" | "Manual" | (string & {});
 export const ProvisioningSupport = /*@__PURE__*/ S.String;
 
 /** Proof of possession status. */
-export type DevicePresenceVerificationStatus = "NotInitiated" | "Completed";
+export type DevicePresenceVerificationStatus =
+  | "NotInitiated"
+  | "Completed"
+  | (string & {});
 export const DevicePresenceVerificationStatus = /*@__PURE__*/ S.String;
 
 /** Proof of possession details. */
@@ -1406,7 +1422,8 @@ export type StageStatus =
   | "Succeeded"
   | "Failed"
   | "Cancelled"
-  | "Cancelling";
+  | "Cancelling"
+  | (string & {});
 export const StageStatus = /*@__PURE__*/ S.String;
 
 /** Stage name. */
@@ -1423,7 +1440,8 @@ export type StageName =
   | "ReturnPickedUp"
   | "ReturnedToMicrosoft"
   | "ReturnCompleted"
-  | "Cancelled";
+  | "Cancelled"
+  | (string & {});
 export const StageName = /*@__PURE__*/ S.String;
 
 /** Resource stage details. */
@@ -1510,18 +1528,20 @@ export const OrderItemDetailsNotificationEmailListList = /*@__PURE__*/ S.Array(
 export type OrderItemCancellationEnum =
   | "Cancellable"
   | "CancellableWithFee"
-  | "NotCancellable";
+  | "NotCancellable"
+  | (string & {});
 export const OrderItemCancellationEnum = /*@__PURE__*/ S.String;
 
 /** Describes whether the order item is deletable or not. */
-export type ActionStatusEnum = "Allowed" | "NotAllowed";
+export type ActionStatusEnum = "Allowed" | "NotAllowed" | (string & {});
 export const ActionStatusEnum = /*@__PURE__*/ S.String;
 
 /** Describes whether the order item is returnable or not. */
 export type OrderItemReturnEnum =
   | "Returnable"
   | "ReturnableWithFee"
-  | "NotReturnable";
+  | "NotReturnable"
+  | (string & {});
 export const OrderItemReturnEnum = /*@__PURE__*/ S.String;
 
 /** Management RP details. */
@@ -2430,7 +2450,10 @@ export const OrdersListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrdersListBySubscriptionRequest>;
 
 /** Type of product filter. */
-export type SupportedFilterTypes = "ShipToCountries" | "DoubleEncryptionStatus";
+export type SupportedFilterTypes =
+  | "ShipToCountries"
+  | "DoubleEncryptionStatus"
+  | (string & {});
 export const SupportedFilterTypes = /*@__PURE__*/ S.String;
 
 /** Values to be filtered. */
@@ -2472,7 +2495,8 @@ export const ChildConfigurationFilterHierarchyInformationsList =
 
 export type ChildConfigurationType =
   | "DeviceConfiguration"
-  | "AdditionalConfiguration";
+  | "AdditionalConfiguration"
+  | (string & {});
 export const ChildConfigurationType = /*@__PURE__*/ S.String;
 
 /** Filter to fetch all child configurations belonging to the given list of configuration types. */
@@ -2598,7 +2622,7 @@ export const ProductsAndConfigurationsListConfigurationsRequest =
   }) as any as S.Schema<ProductsAndConfigurationsListConfigurationsRequest>;
 
 /** Type of description. */
-export type DescriptionType = "Base";
+export type DescriptionType = "Base" | (string & {});
 export const DescriptionType = /*@__PURE__*/ S.String;
 
 /** Keywords for the product system. */
@@ -2621,7 +2645,8 @@ export type LinkType =
   | "Documentation"
   | "KnowMore"
   | "SignUp"
-  | "Discoverable";
+  | "Discoverable"
+  | (string & {});
 export const LinkType = /*@__PURE__*/ S.String;
 
 /** Returns link related to the product. */
@@ -2671,7 +2696,11 @@ export const Description = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Description" }) as any as S.Schema<Description>;
 
 /** Type of the image. */
-export type ImageType = "MainImage" | "BulletImage" | "GenericImage";
+export type ImageType =
+  | "MainImage"
+  | "BulletImage"
+  | "GenericImage"
+  | (string & {});
 export const ImageType = /*@__PURE__*/ S.String;
 
 /** Image for the product. */
@@ -2699,11 +2728,11 @@ export const ConfigurationPropertiesImageInformationList =
   ) as any as S.Schema<ConfigurationPropertiesImageInformationList>;
 
 /** Represents billing type. */
-export type BillingType = "Pav2" | "Purchase";
+export type BillingType = "Pav2" | "Purchase" | (string & {});
 export const BillingType = /*@__PURE__*/ S.String;
 
 /** Charging type. */
-export type ChargingType = "PerOrder" | "PerDevice";
+export type ChargingType = "PerOrder" | "PerDevice" | (string & {});
 export const ChargingType = /*@__PURE__*/ S.String;
 
 /** Holds details about billing type and its meter guids. */
@@ -2724,7 +2753,7 @@ export const MeterDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MeterDetails" }) as any as S.Schema<MeterDetails>;
 
 /** Represents Metering type (eg one-time or recurrent). */
-export type MeteringType = "OneTime" | "Recurring" | "Adhoc";
+export type MeteringType = "OneTime" | "Recurring" | "Adhoc" | (string & {});
 export const MeteringType = /*@__PURE__*/ S.String;
 
 /** Holds details about term type and duration. */
@@ -2799,7 +2828,8 @@ export type AvailabilityStage =
   | "Discoverable"
   | "ComingSoon"
   | "Unavailable"
-  | "Deprecated";
+  | "Deprecated"
+  | (string & {});
 export const AvailabilityStage = /*@__PURE__*/ S.String;
 
 /** Reason why the product is disabled. */
@@ -2811,7 +2841,8 @@ export type DisabledReason =
   | "OfferType"
   | "NoSubscriptionInfo"
   | "NotAvailable"
-  | "OutOfStock";
+  | "OutOfStock"
+  | (string & {});
 export const DisabledReason = /*@__PURE__*/ S.String;
 
 /** Availability information of a product system. */
@@ -2834,7 +2865,7 @@ export const AvailabilityInformation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvailabilityInformation>;
 
 /** The entity responsible for fulfillment of the item at the given hierarchy level. */
-export type FulfillmentType = "Microsoft" | "External";
+export type FulfillmentType = "Microsoft" | "External" | (string & {});
 export const FulfillmentType = /*@__PURE__*/ S.String;
 
 /** List of filters supported for a product. */
@@ -2867,11 +2898,11 @@ export const ConfigurationPropertiesSpecificationsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ConfigurationPropertiesSpecificationsList>;
 
 /** Unit for the dimensions of length, height and width. */
-export type LengthHeightUnit = "IN" | "CM";
+export type LengthHeightUnit = "IN" | "CM" | (string & {});
 export const LengthHeightUnit = /*@__PURE__*/ S.String;
 
 /** Unit for the dimensions of weight. */
-export type WeightMeasurementUnit = "LBS" | "KGS";
+export type WeightMeasurementUnit = "LBS" | "KGS" | (string & {});
 export const WeightMeasurementUnit = /*@__PURE__*/ S.String;
 
 /** Dimensions of a configuration. */

@@ -175,7 +175,8 @@ export type AggregationCrossSeriesReducerEnum =
   | "REDUCE_PERCENTILE_99"
   | "REDUCE_PERCENTILE_95"
   | "REDUCE_PERCENTILE_50"
-  | "REDUCE_PERCENTILE_05";
+  | "REDUCE_PERCENTILE_05"
+  | (string & {});
 export const AggregationCrossSeriesReducerEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -202,7 +203,8 @@ export type AggregationPerSeriesAlignerEnum =
   | "ALIGN_PERCENTILE_95"
   | "ALIGN_PERCENTILE_50"
   | "ALIGN_PERCENTILE_05"
-  | "ALIGN_PERCENT_CHANGE";
+  | "ALIGN_PERCENT_CHANGE"
+  | (string & {});
 export const AggregationPerSeriesAlignerEnum = /*@__PURE__*/ S.String;
 
 /** Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/aggregation). */
@@ -268,7 +270,8 @@ export type MonitoringQueryLanguageConditionEvaluationMissingDataEnum =
   | "EVALUATION_MISSING_DATA_UNSPECIFIED"
   | "EVALUATION_MISSING_DATA_INACTIVE"
   | "EVALUATION_MISSING_DATA_ACTIVE"
-  | "EVALUATION_MISSING_DATA_NO_OP";
+  | "EVALUATION_MISSING_DATA_NO_OP"
+  | (string & {});
 export const MonitoringQueryLanguageConditionEvaluationMissingDataEnum =
   /*@__PURE__*/ S.String;
 
@@ -373,7 +376,8 @@ export type RowCountTestComparisonEnum =
   | "COMPARISON_LT"
   | "COMPARISON_LE"
   | "COMPARISON_EQ"
-  | "COMPARISON_NE";
+  | "COMPARISON_NE"
+  | (string & {});
 export const RowCountTestComparisonEnum = /*@__PURE__*/ S.String;
 
 /** A test that checks if the number of rows in the result set violates some threshold. */
@@ -433,7 +437,8 @@ export type MetricThresholdEvaluationMissingDataEnum =
   | "EVALUATION_MISSING_DATA_UNSPECIFIED"
   | "EVALUATION_MISSING_DATA_INACTIVE"
   | "EVALUATION_MISSING_DATA_ACTIVE"
-  | "EVALUATION_MISSING_DATA_NO_OP";
+  | "EVALUATION_MISSING_DATA_NO_OP"
+  | (string & {});
 export const MetricThresholdEvaluationMissingDataEnum = /*@__PURE__*/ S.String;
 
 export type MetricThresholdComparisonEnum =
@@ -443,7 +448,8 @@ export type MetricThresholdComparisonEnum =
   | "COMPARISON_LT"
   | "COMPARISON_LE"
   | "COMPARISON_EQ"
-  | "COMPARISON_NE";
+  | "COMPARISON_NE"
+  | (string & {});
 export const MetricThresholdComparisonEnum = /*@__PURE__*/ S.String;
 
 /** A condition type that compares a collection of time series against a threshold. */
@@ -574,7 +580,8 @@ export const NotificationRateLimit = /*@__PURE__*/ S.suspend(() =>
 export type AlertStrategyNotificationPromptsItemEnum =
   | "NOTIFICATION_PROMPT_UNSPECIFIED"
   | "OPENED"
-  | "CLOSED";
+  | "CLOSED"
+  | (string & {});
 export const AlertStrategyNotificationPromptsItemEnum = /*@__PURE__*/ S.String;
 
 export type AlertStrategyNotificationPromptsItemEnumList =
@@ -632,14 +639,16 @@ export type AlertPolicySeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "CRITICAL"
   | "ERROR"
-  | "WARNING";
+  | "WARNING"
+  | (string & {});
 export const AlertPolicySeverityEnum = /*@__PURE__*/ S.String;
 
 export type AlertPolicyCombinerEnum =
   | "COMBINE_UNSPECIFIED"
   | "AND"
   | "OR"
-  | "AND_WITH_MATCHING_RESOURCE";
+  | "AND_WITH_MATCHING_RESOURCE"
+  | (string & {});
 export const AlertPolicyCombinerEnum = /*@__PURE__*/ S.String;
 
 /** A description of the conditions under which some aspect of your system is considered to be "unhealthy" and the ways to notify people or services about this state. For an overview of alerting policies, see Introduction to Alerting (https://cloud.google.com/monitoring/alerts/). */
@@ -731,7 +740,8 @@ export type CollectdValueDataSourceTypeEnum =
   | "GAUGE"
   | "COUNTER"
   | "DERIVE"
-  | "ABSOLUTE";
+  | "ABSOLUTE"
+  | (string & {});
 export const CollectdValueDataSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** The range of the population values. */
@@ -1145,7 +1155,11 @@ export const CreateProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateProjectsGroupsRequest",
 }) as any as S.Schema<CreateProjectsGroupsRequest>;
 
-export type LabelDescriptorValueTypeEnum = "STRING" | "BOOL" | "INT64";
+export type LabelDescriptorValueTypeEnum =
+  | "STRING"
+  | "BOOL"
+  | "INT64"
+  | (string & {});
 export const LabelDescriptorValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** A description of a label. */
@@ -1180,14 +1194,16 @@ export type MetricDescriptorLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED";
+  | "DEPRECATED"
+  | (string & {});
 export const MetricDescriptorLaunchStageEnum = /*@__PURE__*/ S.String;
 
 export type MetricDescriptorMetricKindEnum =
   | "METRIC_KIND_UNSPECIFIED"
   | "GAUGE"
   | "DELTA"
-  | "CUMULATIVE";
+  | "CUMULATIVE"
+  | (string & {});
 export const MetricDescriptorMetricKindEnum = /*@__PURE__*/ S.String;
 
 export type MetricDescriptorMetadataLaunchStageEnum =
@@ -1198,14 +1214,16 @@ export type MetricDescriptorMetadataLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED";
+  | "DEPRECATED"
+  | (string & {});
 export const MetricDescriptorMetadataLaunchStageEnum = /*@__PURE__*/ S.String;
 
 export type MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum =
   | "TIME_SERIES_RESOURCE_HIERARCHY_LEVEL_UNSPECIFIED"
   | "PROJECT"
   | "ORGANIZATION"
-  | "FOLDER";
+  | "FOLDER"
+  | (string & {});
 export const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1247,7 +1265,8 @@ export type MetricDescriptorValueTypeEnum =
   | "DOUBLE"
   | "STRING"
   | "DISTRIBUTION"
-  | "MONEY";
+  | "MONEY"
+  | (string & {});
 export const MetricDescriptorValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable. */
@@ -1323,7 +1342,8 @@ export const MutationRecordList = /*@__PURE__*/ S.Array(
 export type NotificationChannelVerificationStatusEnum =
   | "VERIFICATION_STATUS_UNSPECIFIED"
   | "UNVERIFIED"
-  | "VERIFIED";
+  | "VERIFIED"
+  | (string & {});
 export const NotificationChannelVerificationStatusEnum = /*@__PURE__*/ S.String;
 
 /** A NotificationChannel is a medium through which an alert is delivered when a policy violation is detected. Examples of channels include email, SMS, and third-party messaging applications. Fields containing sensitive information like authentication tokens or contact info are only partially populated on retrieval. */
@@ -1480,14 +1500,16 @@ export type TimeSeriesValueTypeEnum =
   | "DOUBLE"
   | "STRING"
   | "DISTRIBUTION"
-  | "MONEY";
+  | "MONEY"
+  | (string & {});
 export const TimeSeriesValueTypeEnum = /*@__PURE__*/ S.String;
 
 export type TimeSeriesMetricKindEnum =
   | "METRIC_KIND_UNSPECIFIED"
   | "GAUGE"
   | "DELTA"
-  | "CUMULATIVE";
+  | "CUMULATIVE"
+  | (string & {});
 export const TimeSeriesMetricKindEnum = /*@__PURE__*/ S.String;
 
 /** A single data point in a time series. */
@@ -1600,7 +1622,11 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
-export type InternalCheckerStateEnum = "UNSPECIFIED" | "CREATING" | "RUNNING";
+export type InternalCheckerStateEnum =
+  | "UNSPECIFIED"
+  | "CREATING"
+  | "RUNNING"
+  | (string & {});
 export const InternalCheckerStateEnum = /*@__PURE__*/ S.String;
 
 /** An internal checker allows Uptime checks to run on private/internal GCP resources. */
@@ -1639,7 +1665,8 @@ export const InternalCheckerList = /*@__PURE__*/ S.Array(
 export type HttpCheckContentTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "URL_ENCODED"
-  | "USER_PROVIDED";
+  | "USER_PROVIDED"
+  | (string & {});
 export const HttpCheckContentTypeEnum = /*@__PURE__*/ S.String;
 
 export type ResponseStatusCodeStatusClassEnum =
@@ -1649,7 +1676,8 @@ export type ResponseStatusCodeStatusClassEnum =
   | "STATUS_CLASS_3XX"
   | "STATUS_CLASS_4XX"
   | "STATUS_CLASS_5XX"
-  | "STATUS_CLASS_ANY";
+  | "STATUS_CLASS_ANY"
+  | (string & {});
 export const ResponseStatusCodeStatusClassEnum = /*@__PURE__*/ S.String;
 
 /** A status to accept. Either a status code class like "2xx", or an integer status code like "200". */
@@ -1675,7 +1703,8 @@ export const ResponseStatusCodeList = /*@__PURE__*/ S.Array(
 
 export type ServiceAgentAuthenticationTypeEnum =
   | "SERVICE_AGENT_AUTHENTICATION_TYPE_UNSPECIFIED"
-  | "OIDC_TOKEN";
+  | "OIDC_TOKEN"
+  | (string & {});
 export const ServiceAgentAuthenticationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains information needed for generating either an OpenID Connect token (https://developers.google.com/identity/protocols/OpenIDConnect) or OAuth token (https://developers.google.com/identity/protocols/oauth2). The token will be generated for the Monitoring service agent service account. */
@@ -1707,7 +1736,11 @@ export const BasicAuthentication = /*@__PURE__*/ S.suspend(() =>
   identifier: "BasicAuthentication",
 }) as any as S.Schema<BasicAuthentication>;
 
-export type HttpCheckRequestMethodEnum = "METHOD_UNSPECIFIED" | "GET" | "POST";
+export type HttpCheckRequestMethodEnum =
+  | "METHOD_UNSPECIFIED"
+  | "GET"
+  | "POST"
+  | (string & {});
 export const HttpCheckRequestMethodEnum = /*@__PURE__*/ S.String;
 
 /** Information involved in sending ICMP pings alongside public HTTP/TCP checks. For HTTP, the pings are performed for each part of the redirect chain. */
@@ -1774,7 +1807,8 @@ export const HttpCheck = /*@__PURE__*/ S.suspend(() =>
 export type UptimeCheckConfigCheckerTypeEnum =
   | "CHECKER_TYPE_UNSPECIFIED"
   | "STATIC_IP_CHECKERS"
-  | "VPC_CHECKERS";
+  | "VPC_CHECKERS"
+  | (string & {});
 export const UptimeCheckConfigCheckerTypeEnum = /*@__PURE__*/ S.String;
 
 /** A Synthetic Monitor deployed to a Cloud Functions V2 instance. */
@@ -1828,7 +1862,8 @@ export type UptimeCheckConfigSelectedRegionsItemEnum =
   | "ASIA_PACIFIC"
   | "USA_OREGON"
   | "USA_IOWA"
-  | "USA_VIRGINIA";
+  | "USA_VIRGINIA"
+  | (string & {});
 export const UptimeCheckConfigSelectedRegionsItemEnum = /*@__PURE__*/ S.String;
 
 export type UptimeCheckConfigSelectedRegionsItemEnumList =
@@ -1845,13 +1880,15 @@ export type ContentMatcherMatcherEnum =
   | "MATCHES_REGEX"
   | "NOT_MATCHES_REGEX"
   | "MATCHES_JSON_PATH"
-  | "NOT_MATCHES_JSON_PATH";
+  | "NOT_MATCHES_JSON_PATH"
+  | (string & {});
 export const ContentMatcherMatcherEnum = /*@__PURE__*/ S.String;
 
 export type JsonPathMatcherJsonMatcherEnum =
   | "JSON_PATH_MATCHER_OPTION_UNSPECIFIED"
   | "EXACT_MATCH"
-  | "REGEX_MATCH";
+  | "REGEX_MATCH"
+  | (string & {});
 export const JsonPathMatcherJsonMatcherEnum = /*@__PURE__*/ S.String;
 
 /** Information needed to perform a JSONPath content match. Used for ContentMatcherOption::MATCHES_JSON_PATH and ContentMatcherOption::NOT_MATCHES_JSON_PATH. */
@@ -1895,7 +1932,8 @@ export const ContentMatcherList = /*@__PURE__*/ S.Array(
 export type ResourceGroupResourceTypeEnum =
   | "RESOURCE_TYPE_UNSPECIFIED"
   | "INSTANCE"
-  | "AWS_ELB_LOAD_BALANCER";
+  | "AWS_ELB_LOAD_BALANCER"
+  | (string & {});
 export const ResourceGroupResourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** The resource submessage for group checks. It can be used instead of a monitored resource, when multiple resources are being monitored. */
@@ -2482,7 +2520,8 @@ export type ServiceLevelObjectiveCalendarPeriodEnum =
   | "MONTH"
   | "QUARTER"
   | "HALF"
-  | "YEAR";
+  | "YEAR"
+  | (string & {});
 export const ServiceLevelObjectiveCalendarPeriodEnum = /*@__PURE__*/ S.String;
 
 /** A Service-Level Objective (SLO) describes a level of desired good service. It consists of a service-level indicator (SLI), a performance goal, and a period over which the objective is to be evaluated against that goal. The SLO can use SLIs defined in a number of different manners. Typical SLOs might include "99% of requests in each rolling week have latency below 200 milliseconds" or "99.5% of requests in each calendar month return successfully." */
@@ -2724,14 +2763,19 @@ export const LogMetadata = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LogMetadata" }) as any as S.Schema<LogMetadata>;
 
-export type AlertStateEnum = "STATE_UNSPECIFIED" | "OPEN" | "CLOSED";
+export type AlertStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "OPEN"
+  | "CLOSED"
+  | (string & {});
 export const AlertStateEnum = /*@__PURE__*/ S.String;
 
 export type PolicySnapshotSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "CRITICAL"
   | "ERROR"
-  | "WARNING";
+  | "WARNING"
+  | (string & {});
 export const PolicySnapshotSeverityEnum = /*@__PURE__*/ S.String;
 
 /** The state of the policy at the time the alert was generated. */
@@ -2852,7 +2896,8 @@ export type MonitoredResourceDescriptorLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED";
+  | "DEPRECATED"
+  | (string & {});
 export const MonitoredResourceDescriptorLaunchStageEnum =
   /*@__PURE__*/ S.String;
 
@@ -2911,14 +2956,16 @@ export type NotificationChannelDescriptorLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED";
+  | "DEPRECATED"
+  | (string & {});
 export const NotificationChannelDescriptorLaunchStageEnum =
   /*@__PURE__*/ S.String;
 
 export type NotificationChannelDescriptorSupportedTiersItemEnum =
   | "SERVICE_TIER_UNSPECIFIED"
   | "SERVICE_TIER_BASIC"
-  | "SERVICE_TIER_PREMIUM";
+  | "SERVICE_TIER_PREMIUM"
+  | (string & {});
 export const NotificationChannelDescriptorSupportedTiersItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -3039,7 +3086,8 @@ export const GetServicesRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetServicesServiceLevelObjectivesViewEnum =
   | "VIEW_UNSPECIFIED"
   | "FULL"
-  | "EXPLICIT";
+  | "EXPLICIT"
+  | (string & {});
 export const GetServicesServiceLevelObjectivesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetServicesServiceLevelObjectivesRequest {
@@ -3135,11 +3183,12 @@ export type ListFoldersTimeSeriesSecondaryAggregation_crossSeriesReducerEnum =
   | "REDUCE_PERCENTILE_99"
   | "REDUCE_PERCENTILE_95"
   | "REDUCE_PERCENTILE_50"
-  | "REDUCE_PERCENTILE_05";
+  | "REDUCE_PERCENTILE_05"
+  | (string & {});
 export const ListFoldersTimeSeriesSecondaryAggregation_crossSeriesReducerEnum =
   /*@__PURE__*/ S.String;
 
-export type ListFoldersTimeSeriesViewEnum = "FULL" | "HEADERS";
+export type ListFoldersTimeSeriesViewEnum = "FULL" | "HEADERS" | (string & {});
 export const ListFoldersTimeSeriesViewEnum = /*@__PURE__*/ S.String;
 
 export type ListFoldersTimeSeriesAggregation_crossSeriesReducerEnum =
@@ -3156,7 +3205,8 @@ export type ListFoldersTimeSeriesAggregation_crossSeriesReducerEnum =
   | "REDUCE_PERCENTILE_99"
   | "REDUCE_PERCENTILE_95"
   | "REDUCE_PERCENTILE_50"
-  | "REDUCE_PERCENTILE_05";
+  | "REDUCE_PERCENTILE_05"
+  | (string & {});
 export const ListFoldersTimeSeriesAggregation_crossSeriesReducerEnum =
   /*@__PURE__*/ S.String;
 
@@ -3179,7 +3229,8 @@ export type ListFoldersTimeSeriesSecondaryAggregation_perSeriesAlignerEnum =
   | "ALIGN_PERCENTILE_95"
   | "ALIGN_PERCENTILE_50"
   | "ALIGN_PERCENTILE_05"
-  | "ALIGN_PERCENT_CHANGE";
+  | "ALIGN_PERCENT_CHANGE"
+  | (string & {});
 export const ListFoldersTimeSeriesSecondaryAggregation_perSeriesAlignerEnum =
   /*@__PURE__*/ S.String;
 
@@ -3202,7 +3253,8 @@ export type ListFoldersTimeSeriesAggregation_perSeriesAlignerEnum =
   | "ALIGN_PERCENTILE_95"
   | "ALIGN_PERCENTILE_50"
   | "ALIGN_PERCENTILE_05"
-  | "ALIGN_PERCENT_CHANGE";
+  | "ALIGN_PERCENT_CHANGE"
+  | (string & {});
 export const ListFoldersTimeSeriesAggregation_perSeriesAlignerEnum =
   /*@__PURE__*/ S.String;
 
@@ -3329,7 +3381,8 @@ export type ListOrganizationsTimeSeriesSecondaryAggregation_crossSeriesReducerEn
     | "REDUCE_PERCENTILE_99"
     | "REDUCE_PERCENTILE_95"
     | "REDUCE_PERCENTILE_50"
-    | "REDUCE_PERCENTILE_05";
+    | "REDUCE_PERCENTILE_05"
+    | (string & {});
 export const ListOrganizationsTimeSeriesSecondaryAggregation_crossSeriesReducerEnum =
   /*@__PURE__*/ S.String;
 
@@ -3347,11 +3400,15 @@ export type ListOrganizationsTimeSeriesAggregation_crossSeriesReducerEnum =
   | "REDUCE_PERCENTILE_99"
   | "REDUCE_PERCENTILE_95"
   | "REDUCE_PERCENTILE_50"
-  | "REDUCE_PERCENTILE_05";
+  | "REDUCE_PERCENTILE_05"
+  | (string & {});
 export const ListOrganizationsTimeSeriesAggregation_crossSeriesReducerEnum =
   /*@__PURE__*/ S.String;
 
-export type ListOrganizationsTimeSeriesViewEnum = "FULL" | "HEADERS";
+export type ListOrganizationsTimeSeriesViewEnum =
+  | "FULL"
+  | "HEADERS"
+  | (string & {});
 export const ListOrganizationsTimeSeriesViewEnum = /*@__PURE__*/ S.String;
 
 export type ListOrganizationsTimeSeriesAggregation_perSeriesAlignerEnum =
@@ -3373,7 +3430,8 @@ export type ListOrganizationsTimeSeriesAggregation_perSeriesAlignerEnum =
   | "ALIGN_PERCENTILE_95"
   | "ALIGN_PERCENTILE_50"
   | "ALIGN_PERCENTILE_05"
-  | "ALIGN_PERCENT_CHANGE";
+  | "ALIGN_PERCENT_CHANGE"
+  | (string & {});
 export const ListOrganizationsTimeSeriesAggregation_perSeriesAlignerEnum =
   /*@__PURE__*/ S.String;
 
@@ -3396,7 +3454,8 @@ export type ListOrganizationsTimeSeriesSecondaryAggregation_perSeriesAlignerEnum
     | "ALIGN_PERCENTILE_95"
     | "ALIGN_PERCENTILE_50"
     | "ALIGN_PERCENTILE_05"
-    | "ALIGN_PERCENT_CHANGE";
+    | "ALIGN_PERCENT_CHANGE"
+    | (string & {});
 export const ListOrganizationsTimeSeriesSecondaryAggregation_perSeriesAlignerEnum =
   /*@__PURE__*/ S.String;
 
@@ -3970,11 +4029,12 @@ export type ListProjectsTimeSeriesSecondaryAggregation_crossSeriesReducerEnum =
   | "REDUCE_PERCENTILE_99"
   | "REDUCE_PERCENTILE_95"
   | "REDUCE_PERCENTILE_50"
-  | "REDUCE_PERCENTILE_05";
+  | "REDUCE_PERCENTILE_05"
+  | (string & {});
 export const ListProjectsTimeSeriesSecondaryAggregation_crossSeriesReducerEnum =
   /*@__PURE__*/ S.String;
 
-export type ListProjectsTimeSeriesViewEnum = "FULL" | "HEADERS";
+export type ListProjectsTimeSeriesViewEnum = "FULL" | "HEADERS" | (string & {});
 export const ListProjectsTimeSeriesViewEnum = /*@__PURE__*/ S.String;
 
 export type ListProjectsTimeSeriesAggregation_crossSeriesReducerEnum =
@@ -3991,7 +4051,8 @@ export type ListProjectsTimeSeriesAggregation_crossSeriesReducerEnum =
   | "REDUCE_PERCENTILE_99"
   | "REDUCE_PERCENTILE_95"
   | "REDUCE_PERCENTILE_50"
-  | "REDUCE_PERCENTILE_05";
+  | "REDUCE_PERCENTILE_05"
+  | (string & {});
 export const ListProjectsTimeSeriesAggregation_crossSeriesReducerEnum =
   /*@__PURE__*/ S.String;
 
@@ -4014,7 +4075,8 @@ export type ListProjectsTimeSeriesSecondaryAggregation_perSeriesAlignerEnum =
   | "ALIGN_PERCENTILE_95"
   | "ALIGN_PERCENTILE_50"
   | "ALIGN_PERCENTILE_05"
-  | "ALIGN_PERCENT_CHANGE";
+  | "ALIGN_PERCENT_CHANGE"
+  | (string & {});
 export const ListProjectsTimeSeriesSecondaryAggregation_perSeriesAlignerEnum =
   /*@__PURE__*/ S.String;
 
@@ -4037,7 +4099,8 @@ export type ListProjectsTimeSeriesAggregation_perSeriesAlignerEnum =
   | "ALIGN_PERCENTILE_95"
   | "ALIGN_PERCENTILE_50"
   | "ALIGN_PERCENTILE_05"
-  | "ALIGN_PERCENT_CHANGE";
+  | "ALIGN_PERCENT_CHANGE"
+  | (string & {});
 export const ListProjectsTimeSeriesAggregation_perSeriesAlignerEnum =
   /*@__PURE__*/ S.String;
 
@@ -4223,7 +4286,8 @@ export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListServicesServiceLevelObjectivesViewEnum =
   | "VIEW_UNSPECIFIED"
   | "FULL"
-  | "EXPLICIT";
+  | "EXPLICIT"
+  | (string & {});
 export const ListServicesServiceLevelObjectivesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4310,7 +4374,8 @@ export type UptimeCheckIpRegionEnum =
   | "ASIA_PACIFIC"
   | "USA_OREGON"
   | "USA_IOWA"
-  | "USA_VIRGINIA";
+  | "USA_VIRGINIA"
+  | (string & {});
 export const UptimeCheckIpRegionEnum = /*@__PURE__*/ S.String;
 
 /** Contains the region, location, and list of IP addresses where checkers in the location run from. */
@@ -4545,14 +4610,16 @@ export type ValueDescriptorValueTypeEnum =
   | "DOUBLE"
   | "STRING"
   | "DISTRIBUTION"
-  | "MONEY";
+  | "MONEY"
+  | (string & {});
 export const ValueDescriptorValueTypeEnum = /*@__PURE__*/ S.String;
 
 export type ValueDescriptorMetricKindEnum =
   | "METRIC_KIND_UNSPECIFIED"
   | "GAUGE"
   | "DELTA"
-  | "CUMULATIVE";
+  | "CUMULATIVE"
+  | (string & {});
 export const ValueDescriptorMetricKindEnum = /*@__PURE__*/ S.String;
 
 /** A descriptor for the value columns in a data point. */

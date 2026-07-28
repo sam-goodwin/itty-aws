@@ -23,7 +23,7 @@ export const NamespacesCheckAvailabilityRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NamespacesCheckAvailabilityRequestTagsMap>;
 
 /** Namespace SKU name. */
-export type SkuName = "Free" | "Basic" | "Standard";
+export type SkuName = "Free" | "Basic" | "Standard" | (string & {});
 export const SkuName = /*@__PURE__*/ S.String;
 
 /** The Sku description for a namespace */
@@ -86,7 +86,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -94,7 +95,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -182,15 +184,21 @@ export type OperationProvisioningState =
   | "Failed"
   | "Canceled"
   | "Pending"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const OperationProvisioningState = /*@__PURE__*/ S.String;
 
 /** Namespace status. */
-export type NamespaceStatus = "Created" | "Creating" | "Suspended" | "Deleting";
+export type NamespaceStatus =
+  | "Created"
+  | "Creating"
+  | "Suspended"
+  | "Deleting"
+  | (string & {});
 export const NamespaceStatus = /*@__PURE__*/ S.String;
 
 /** Defines values for NamespaceType. */
-export type NamespaceType = "Messaging" | "NotificationHub";
+export type NamespaceType = "Messaging" | "NotificationHub" | (string & {});
 export const NamespaceType = /*@__PURE__*/ S.String;
 
 /** Allowed replication region */
@@ -202,15 +210,16 @@ export type ReplicationRegion =
   | "BrazilSouth"
   | "SouthEastAsia"
   | "SouthAfricaNorth"
-  | "None";
+  | "None"
+  | (string & {});
 export const ReplicationRegion = /*@__PURE__*/ S.String;
 
 /** Namespace SKU name. */
-export type ZoneRedundancyPreference = "Disabled" | "Enabled";
+export type ZoneRedundancyPreference = "Disabled" | "Enabled" | (string & {});
 export const ZoneRedundancyPreference = /*@__PURE__*/ S.String;
 
 /** Defines values for AccessRights. */
-export type AccessRights = "Manage" | "Send" | "Listen";
+export type AccessRights = "Manage" | "Send" | "Listen" | (string & {});
 export const AccessRights = /*@__PURE__*/ S.String;
 
 /** List of access rights. */
@@ -550,7 +559,7 @@ export const PnsCredentials = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PnsCredentials" }) as any as S.Schema<PnsCredentials>;
 
 /** Type of public network access. */
-export type PublicNetworkAccess = "Enabled" | "Disabled";
+export type PublicNetworkAccess = "Enabled" | "Disabled" | (string & {});
 export const PublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** Represents namespace properties. */
@@ -638,7 +647,8 @@ export type PrivateEndpointConnectionProvisioningState =
   | "UpdatingByProxy"
   | "Deleting"
   | "DeletingByProxy"
-  | "Deleted";
+  | "Deleted"
+  | (string & {});
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -668,7 +678,8 @@ export type PrivateLinkConnectionStatus =
   | "Disconnected"
   | "Pending"
   | "Approved"
-  | "Rejected";
+  | "Rejected"
+  | (string & {});
 export const PrivateLinkConnectionStatus = /*@__PURE__*/ S.String;
 
 /** State of the Private Link Service connection. */
@@ -1526,7 +1537,7 @@ export const ResourceListKeys = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceListKeys>;
 
 /** Type of Shared Access Policy Key (primary or secondary). */
-export type PolicyKeyType = "PrimaryKey" | "SecondaryKey";
+export type PolicyKeyType = "PrimaryKey" | "SecondaryKey" | (string & {});
 export const PolicyKeyType = /*@__PURE__*/ S.String;
 
 export interface NamespacesRegenerateKeysRequest {

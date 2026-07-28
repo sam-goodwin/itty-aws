@@ -60,7 +60,11 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type DocumentTypeEnum = "TYPE_UNSPECIFIED" | "PLAIN_TEXT" | "HTML";
+export type DocumentTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "PLAIN_TEXT"
+  | "HTML"
+  | (string & {});
 export const DocumentTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents the input to API methods. */
@@ -87,7 +91,8 @@ export type AnalyzeEntitiesRequestEncodingTypeEnum =
   | "NONE"
   | "UTF8"
   | "UTF16"
-  | "UTF32";
+  | "UTF32"
+  | (string & {});
 export const AnalyzeEntitiesRequestEncodingTypeEnum = /*@__PURE__*/ S.String;
 
 /** The entity analysis request message. */
@@ -138,7 +143,11 @@ export const TextSpan = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TextSpan" }) as any as S.Schema<TextSpan>;
 
-export type EntityMentionTypeEnum = "TYPE_UNKNOWN" | "PROPER" | "COMMON";
+export type EntityMentionTypeEnum =
+  | "TYPE_UNKNOWN"
+  | "PROPER"
+  | "COMMON"
+  | (string & {});
 export const EntityMentionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents the feeling associated with the entire text or entities in the text. */
@@ -199,7 +208,8 @@ export type EntityTypeEnum =
   | "ADDRESS"
   | "DATE"
   | "NUMBER"
-  | "PRICE";
+  | "PRICE"
+  | (string & {});
 export const EntityTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a phrase in the text that is a known entity, such as a person, an organization, or location. The API associates information, such as probability and mentions, with entities. */
@@ -253,7 +263,8 @@ export type AnalyzeSentimentRequestEncodingTypeEnum =
   | "NONE"
   | "UTF8"
   | "UTF16"
-  | "UTF32";
+  | "UTF32"
+  | (string & {});
 export const AnalyzeSentimentRequestEncodingTypeEnum = /*@__PURE__*/ S.String;
 
 /** The sentiment analysis request message. */
@@ -335,7 +346,8 @@ export type AnnotateTextRequestEncodingTypeEnum =
   | "NONE"
   | "UTF8"
   | "UTF16"
-  | "UTF32";
+  | "UTF32"
+  | (string & {});
 export const AnnotateTextRequestEncodingTypeEnum = /*@__PURE__*/ S.String;
 
 /** All available features. Setting each one to true will enable that specific analysis for the input. */
@@ -505,7 +517,8 @@ export const ClassifyTextResponse = /*@__PURE__*/ S.suspend(() =>
 export type ModerateTextRequestModelVersionEnum =
   | "MODEL_VERSION_UNSPECIFIED"
   | "MODEL_VERSION_1"
-  | "MODEL_VERSION_2";
+  | "MODEL_VERSION_2"
+  | (string & {});
 export const ModerateTextRequestModelVersionEnum = /*@__PURE__*/ S.String;
 
 /** The document moderation request message. */

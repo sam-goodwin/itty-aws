@@ -80,7 +80,8 @@ export type PkixPublicKeySignatureAlgorithmEnum =
   | "EC_SIGN_P384_SHA384"
   | "ECDSA_P521_SHA512"
   | "EC_SIGN_P521_SHA512"
-  | "ML_DSA_65";
+  | "ML_DSA_65"
+  | (string & {});
 export const PkixPublicKeySignatureAlgorithmEnum = /*@__PURE__*/ S.String;
 
 /** A public key in the PkixPublicKey format (see https://tools.ietf.org/html/rfc5280#section-4.1.2.7 for details). Public keys of this type are typically textually encoded using the PEM format. */
@@ -362,13 +363,15 @@ export type AdmissionRuleEvaluationModeEnum =
   | "EVALUATION_MODE_UNSPECIFIED"
   | "ALWAYS_ALLOW"
   | "REQUIRE_ATTESTATION"
-  | "ALWAYS_DENY";
+  | "ALWAYS_DENY"
+  | (string & {});
 export const AdmissionRuleEvaluationModeEnum = /*@__PURE__*/ S.String;
 
 export type AdmissionRuleEnforcementModeEnum =
   | "ENFORCEMENT_MODE_UNSPECIFIED"
   | "ENFORCED_BLOCK_AND_AUDIT_LOG"
-  | "DRYRUN_AUDIT_LOG_ONLY";
+  | "DRYRUN_AUDIT_LOG_ONLY"
+  | (string & {});
 export const AdmissionRuleEnforcementModeEnum = /*@__PURE__*/ S.String;
 
 /** An admission rule specifies either that all container images used in a pod creation request must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be denied. Images matching an admission allowlist pattern are exempted from admission rules and will never block a pod creation. */
@@ -396,7 +399,8 @@ export const AdmissionRuleMap = /*@__PURE__*/ S.Record(
 export type PolicyGlobalPolicyEvaluationModeEnum =
   | "GLOBAL_POLICY_EVALUATION_MODE_UNSPECIFIED"
   | "ENABLE"
-  | "DISABLE";
+  | "DISABLE"
+  | (string & {});
 export const PolicyGlobalPolicyEvaluationModeEnum = /*@__PURE__*/ S.String;
 
 /** A policy for Binary Authorization. */
@@ -787,7 +791,8 @@ export const ValidateAttestationOccurrenceProjectsAttestorsRequest =
 export type ValidateAttestationOccurrenceResponseResultEnum =
   | "RESULT_UNSPECIFIED"
   | "VERIFIED"
-  | "ATTESTATION_NOT_VERIFIABLE";
+  | "ATTESTATION_NOT_VERIFIABLE"
+  | (string & {});
 export const ValidateAttestationOccurrenceResponseResultEnum =
   /*@__PURE__*/ S.String;
 

@@ -1622,7 +1622,8 @@ export type ManagedWorkgroupStatus =
   | "DELETING"
   | "MODIFYING"
   | "AVAILABLE"
-  | "NOT_AVAILABLE";
+  | "NOT_AVAILABLE"
+  | (string & {});
 export const ManagedWorkgroupStatus = /*@__PURE__*/ S.String;
 
 export interface ManagedWorkgroupListItem {

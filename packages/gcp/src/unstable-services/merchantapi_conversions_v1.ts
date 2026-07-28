@@ -64,13 +64,15 @@ export type ConversionSourceStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "ARCHIVED"
-  | "PENDING";
+  | "PENDING"
+  | (string & {});
 export const ConversionSourceStateEnum = /*@__PURE__*/ S.String;
 
 export type ConversionSourceControllerEnum =
   | "CONTROLLER_UNSPECIFIED"
   | "MERCHANT"
-  | "YOUTUBE_AFFILIATES";
+  | "YOUTUBE_AFFILIATES"
+  | (string & {});
 export const ConversionSourceControllerEnum = /*@__PURE__*/ S.String;
 
 export type AttributionSettingsAttributionModelEnum =
@@ -81,7 +83,8 @@ export type AttributionSettingsAttributionModelEnum =
   | "CROSS_CHANNEL_FIRST_CLICK"
   | "CROSS_CHANNEL_LINEAR"
   | "CROSS_CHANNEL_POSITION_BASED"
-  | "CROSS_CHANNEL_TIME_DECAY";
+  | "CROSS_CHANNEL_TIME_DECAY"
+  | (string & {});
 export const AttributionSettingsAttributionModelEnum = /*@__PURE__*/ S.String;
 
 /** Message representing the type of a conversion event. */

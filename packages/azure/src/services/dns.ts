@@ -139,7 +139,8 @@ export type RecordSetsCreateOrUpdateRequestRecordType =
   | "PTR"
   | "SOA"
   | "SRV"
-  | "TXT";
+  | "TXT"
+  | (string & {});
 export const RecordSetsCreateOrUpdateRequestRecordType = /*@__PURE__*/ S.String;
 
 /** The metadata attached to the record set. */
@@ -582,7 +583,8 @@ export type RecordSetsDeleteRequestRecordType =
   | "PTR"
   | "SOA"
   | "SRV"
-  | "TXT";
+  | "TXT"
+  | (string & {});
 export const RecordSetsDeleteRequestRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordSetsDeleteRequest {
@@ -633,7 +635,8 @@ export type RecordSetsGetRequestRecordType =
   | "PTR"
   | "SOA"
   | "SRV"
-  | "TXT";
+  | "TXT"
+  | (string & {});
 export const RecordSetsGetRequestRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordSetsGetRequest {
@@ -765,7 +768,8 @@ export type RecordSetsListByTypeRequestRecordType =
   | "PTR"
   | "SOA"
   | "SRV"
-  | "TXT";
+  | "TXT"
+  | (string & {});
 export const RecordSetsListByTypeRequestRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordSetsListByTypeRequest {
@@ -814,7 +818,8 @@ export type RecordSetsUpdateRequestRecordType =
   | "PTR"
   | "SOA"
   | "SRV"
-  | "TXT";
+  | "TXT"
+  | (string & {});
 export const RecordSetsUpdateRequestRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordSetsUpdateRequest {
@@ -864,7 +869,7 @@ export const ZonesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ZonesCreateOrUpdateRequestTagsMap>;
 
 /** The type of this DNS zone (Public or Private). */
-export type ZonePropertiesInputZoneType = "Public" | "Private";
+export type ZonePropertiesInputZoneType = "Public" | "Private" | (string & {});
 export const ZonePropertiesInputZoneType = /*@__PURE__*/ S.String;
 
 /** A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private. */
@@ -959,7 +964,7 @@ export const ZonePropertiesNameServersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ZonePropertiesNameServersList>;
 
 /** The type of this DNS zone (Public or Private). */
-export type ZonePropertiesZoneType = "Public" | "Private";
+export type ZonePropertiesZoneType = "Public" | "Private" | (string & {});
 export const ZonePropertiesZoneType = /*@__PURE__*/ S.String;
 
 /** A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private. */

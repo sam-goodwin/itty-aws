@@ -65,7 +65,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -73,7 +74,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -155,7 +157,7 @@ export const HybridConnectionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "HybridConnectionsCreateOrUpdateResponse",
 }) as any as S.Schema<HybridConnectionsCreateOrUpdateResponse>;
 
-export type AccessRights = "Manage" | "Send" | "Listen";
+export type AccessRights = "Manage" | "Send" | "Listen" | (string & {});
 export const AccessRights = /*@__PURE__*/ S.String;
 
 /** The rights associated with the rule. */
@@ -640,7 +642,7 @@ export const AccessKeys = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccessKeys" }) as any as S.Schema<AccessKeys>;
 
 /** The access key to regenerate. */
-export type KeyType = "PrimaryKey" | "SecondaryKey";
+export type KeyType = "PrimaryKey" | "SecondaryKey" | (string & {});
 export const KeyType = /*@__PURE__*/ S.String;
 
 export interface HybridConnectionsRegenerateKeysRequest {
@@ -711,7 +713,8 @@ export type UnavailableReason =
   | "SubscriptionIsDisabled"
   | "NameInUse"
   | "NameInLockdown"
-  | "TooManyNamespaceInCurrentSubscription";
+  | "TooManyNamespaceInCurrentSubscription"
+  | (string & {});
 export const UnavailableReason = /*@__PURE__*/ S.String;
 
 /** Description of the check name availability request properties. */
@@ -760,7 +763,8 @@ export type PrivateLinkConnectionStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
-  | "Disconnected";
+  | "Disconnected"
+  | (string & {});
 export const PrivateLinkConnectionStatus = /*@__PURE__*/ S.String;
 
 /** ConnectionState information. */
@@ -786,7 +790,8 @@ export type EndPointProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Canceled"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const EndPointProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of the private endpoint connection resource. */
@@ -833,7 +838,8 @@ export const RelayNamespacePropertiesInputPrivateEndpointConnectionsList =
 export type RelayNamespacePropertiesInputPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter";
+  | "SecuredByPerimeter"
+  | (string & {});
 export const RelayNamespacePropertiesInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -858,11 +864,11 @@ export const RelayNamespacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RelayNamespacePropertiesInput>;
 
 /** Name of this SKU. */
-export type SkuName = "Standard";
+export type SkuName = "Standard" | (string & {});
 export const SkuName = /*@__PURE__*/ S.String;
 
 /** The tier of this SKU. */
-export type SkuTier = "Standard";
+export type SkuTier = "Standard" | (string & {});
 export const SkuTier = /*@__PURE__*/ S.String;
 
 /** SKU of the namespace. */
@@ -965,7 +971,8 @@ export const RelayNamespacePropertiesPrivateEndpointConnectionsList =
 export type RelayNamespacePropertiesPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter";
+  | "SecuredByPerimeter"
+  | (string & {});
 export const RelayNamespacePropertiesPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -1101,15 +1108,19 @@ export const NamespacesCreateOrUpdateAuthorizationRuleResponse =
   }) as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleResponse>;
 
 /** Default Action for Network Rule Set */
-export type DefaultAction = "Allow" | "Deny";
+export type DefaultAction = "Allow" | "Deny" | (string & {});
 export const DefaultAction = /*@__PURE__*/ S.String;
 
 /** This determines if traffic is allowed over public network. By default it is enabled. */
-export type PublicNetworkAccess = "Enabled" | "Disabled" | "SecuredByPerimeter";
+export type PublicNetworkAccess =
+  | "Enabled"
+  | "Disabled"
+  | "SecuredByPerimeter"
+  | (string & {});
 export const PublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** The IP Filter Action */
-export type NetworkRuleIPAction = "Allow";
+export type NetworkRuleIPAction = "Allow" | (string & {});
 export const NetworkRuleIPAction = /*@__PURE__*/ S.String;
 
 /** The response from the List namespace operation. */
@@ -1764,11 +1775,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -2183,7 +2194,7 @@ export const PrivateLinkResourcesListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesListResult>;
 
 /** WCF relay type. */
-export type Relaytype = "NetTcp" | "Http";
+export type Relaytype = "NetTcp" | "Http" | (string & {});
 export const Relaytype = /*@__PURE__*/ S.String;
 
 /** Properties of the WCF relay. */

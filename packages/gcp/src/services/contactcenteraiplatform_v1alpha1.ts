@@ -113,7 +113,8 @@ export type InstanceConfigInstanceSizeEnum =
   | "DEV_SMALL"
   | "SANDBOX_SMALL"
   | "TRIAL_SMALL"
-  | "TIME_LIMITED_TRIAL_SMALL";
+  | "TIME_LIMITED_TRIAL_SMALL"
+  | (string & {});
 export const InstanceConfigInstanceSizeEnum = /*@__PURE__*/ S.String;
 
 /** Message storing the instance configuration. */
@@ -240,7 +241,8 @@ export type WeeklyScheduleDaysItemEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const WeeklyScheduleDaysItemEnum = /*@__PURE__*/ S.String;
 
 export type WeeklyScheduleDaysItemEnumList =
@@ -323,7 +325,8 @@ export type ContactCenterStateEnum =
   | "STATE_FAILING_OVER"
   | "STATE_DEGRADED"
   | "STATE_REPAIRING"
-  | "STATE_EXPIRING";
+  | "STATE_EXPIRING"
+  | (string & {});
 export const ContactCenterStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -357,7 +360,8 @@ export type SAMLParamsAuthenticationContextsItemEnum =
   | "TELEPHONY_AUTHENTICATED"
   | "SECURE_REMOTE_PASSWORD"
   | "SSL_TLS_CERTIFICATE_BASED"
-  | "TIME_SYNC_TOKEN";
+  | "TIME_SYNC_TOKEN"
+  | (string & {});
 export const SAMLParamsAuthenticationContextsItemEnum = /*@__PURE__*/ S.String;
 
 export type SAMLParamsAuthenticationContextsItemEnumList =
@@ -602,7 +606,8 @@ export type SolverConfigScheduleTypeEnum =
   | "SCHEDULE_TYPE_UNSPECIFIED"
   | "SINGLE_SHIFT"
   | "WEEKLY_WITH_FIXED_EVENTS"
-  | "WEEKLY_WITH_VARIABLE_EVENTS";
+  | "WEEKLY_WITH_VARIABLE_EVENTS"
+  | (string & {});
 export const SolverConfigScheduleTypeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies additional parameters for the solver generating shifts. */
@@ -1225,7 +1230,8 @@ export type QuotaContactCenterInstanceSizeEnum =
   | "DEV_SMALL"
   | "SANDBOX_SMALL"
   | "TRIAL_SMALL"
-  | "TIME_LIMITED_TRIAL_SMALL";
+  | "TIME_LIMITED_TRIAL_SMALL"
+  | (string & {});
 export const QuotaContactCenterInstanceSizeEnum = /*@__PURE__*/ S.String;
 
 /** Quota details. */

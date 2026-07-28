@@ -64,7 +64,8 @@ export type TrustTrustDirectionEnum =
   | "TRUST_DIRECTION_UNSPECIFIED"
   | "INBOUND"
   | "OUTBOUND"
-  | "BIDIRECTIONAL";
+  | "BIDIRECTIONAL"
+  | (string & {});
 export const TrustTrustDirectionEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -78,13 +79,15 @@ export type TrustStateEnum =
   | "UPDATING"
   | "DELETING"
   | "CONNECTED"
-  | "DISCONNECTED";
+  | "DISCONNECTED"
+  | (string & {});
 export const TrustStateEnum = /*@__PURE__*/ S.String;
 
 export type TrustTrustTypeEnum =
   | "TRUST_TYPE_UNSPECIFIED"
   | "FOREST"
-  | "EXTERNAL";
+  | "EXTERNAL"
+  | (string & {});
 export const TrustTrustTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a relationship between two domains which makes it possible for users in one domain to be authenticated by a dc in another domain. Refer https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731335(v%3dws.10) If the trust is being changed, it will be placed into the UPDATING state, which indicates that the resource is being reconciled. At this point, Get will reflect an intermediate state. */
@@ -282,7 +285,8 @@ export const CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest =
 export type OnPremDomainSIDDetailsSidFilteringStateEnum =
   | "SID_FILTERING_STATE_UNSPECIFIED"
   | "ENABLED"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const OnPremDomainSIDDetailsSidFilteringStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -311,7 +315,8 @@ export type CheckMigrationPermissionResponseStateEnum =
   | "STATE_UNSPECIFIED"
   | "DISABLED"
   | "ENABLED"
-  | "NEEDS_MAINTENANCE";
+  | "NEEDS_MAINTENANCE"
+  | (string & {});
 export const CheckMigrationPermissionResponseStateEnum = /*@__PURE__*/ S.String;
 
 /** CheckMigrationPermissionResponse is the response message for CheckMigrationPermission method. */
@@ -338,7 +343,8 @@ export type DomainStateEnum =
   | "DELETING"
   | "REPAIRING"
   | "PERFORMING_MAINTENANCE"
-  | "DOWN";
+  | "DOWN"
+  | (string & {});
 export const DomainStateEnum = /*@__PURE__*/ S.String;
 
 export type TrustList = ReadonlyArray<Trust>;
@@ -428,7 +434,8 @@ export type BackupTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "ON_DEMAND"
   | "SCHEDULED"
-  | "SCHEMA_EXTENSION";
+  | "SCHEMA_EXTENSION"
+  | (string & {});
 export const BackupTypeEnum = /*@__PURE__*/ S.String;
 
 export type BackupStateEnum =
@@ -436,7 +443,8 @@ export type BackupStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "FAILED"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Managed Microsoft Identities backup. */
@@ -501,7 +509,8 @@ export type PeeringStateEnum =
   | "CREATING"
   | "CONNECTED"
   | "DISCONNECTED"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const PeeringStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Managed Microsoft Identities Peering. */
@@ -1026,7 +1035,8 @@ export type LDAPSSettingsStateEnum =
   | "STATE_UNSPECIFIED"
   | "UPDATING"
   | "ACTIVE"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const LDAPSSettingsStateEnum = /*@__PURE__*/ S.String;
 
 /** LDAPSSettings represents the ldaps settings for domain resource. LDAP is the Lightweight Directory Access Protocol, defined in https://tools.ietf.org/html/rfc4511. The settings object configures LDAP over SSL/TLS, whether it is over port 636 or the StartTLS operation. If LDAPSSettings is being changed, it will be placed into the UPDATING state, which indicates that the resource is being reconciled. At this point, Get will reflect an intermediate state. */
@@ -1157,7 +1167,8 @@ export type SQLIntegrationStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "DELETING"
-  | "READY";
+  | "READY"
+  | (string & {});
 export const SQLIntegrationStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents the SQL instance integrated with AD. */

@@ -71,7 +71,8 @@ export type ConnectorStateEnum =
   | "CREATING"
   | "DELETING"
   | "ERROR"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const ConnectorStateEnum = /*@__PURE__*/ S.String;
 
 /** The subnet in which to house the connector */

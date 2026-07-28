@@ -69,7 +69,11 @@ export const ExtensionsCreateRequestPropertiesConfigurationProtectedSettingsMap 
   ) as any as S.Schema<ExtensionsCreateRequestPropertiesConfigurationProtectedSettingsMap>;
 
 /** Level of the status. */
-export type ExtensionStatusInputLevel = "Error" | "Warning" | "Information";
+export type ExtensionStatusInputLevel =
+  | "Error"
+  | "Warning"
+  | "Information"
+  | (string & {});
 export const ExtensionStatusInputLevel = /*@__PURE__*/ S.String;
 
 /** Status from the extension. */
@@ -115,7 +119,8 @@ export const ExtensionsCreateRequestPropertiesErrorInfo =
 /** The identity type. */
 export type ExtensionsCreateRequestPropertiesAksAssignedIdentityType =
   | "SystemAssigned"
-  | "UserAssigned";
+  | "UserAssigned"
+  | (string & {});
 export const ExtensionsCreateRequestPropertiesAksAssignedIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -186,7 +191,9 @@ export const ExtensionsCreateRequestProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExtensionsCreateRequestProperties>;
 
 /** The identity type. */
-export type ExtensionsCreateRequestIdentityType = "SystemAssigned";
+export type ExtensionsCreateRequestIdentityType =
+  | "SystemAssigned"
+  | (string & {});
 export const ExtensionsCreateRequestIdentityType = /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
@@ -296,12 +303,17 @@ export type ExtensionsCreateResponsePropertiesProvisioningState =
   | "Canceled"
   | "Creating"
   | "Updating"
-  | "Deleting";
+  | "Deleting"
+  | (string & {});
 export const ExtensionsCreateResponsePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** Level of the status. */
-export type ExtensionStatusLevel = "Error" | "Warning" | "Information";
+export type ExtensionStatusLevel =
+  | "Error"
+  | "Warning"
+  | "Information"
+  | (string & {});
 export const ExtensionStatusLevel = /*@__PURE__*/ S.String;
 
 /** Status from the extension. */
@@ -447,7 +459,8 @@ export const ExtensionsCreateResponsePropertiesCustomLocationSettingsMap =
 /** The identity type. */
 export type ExtensionsCreateResponsePropertiesAksAssignedIdentityType =
   | "SystemAssigned"
-  | "UserAssigned";
+  | "UserAssigned"
+  | (string & {});
 export const ExtensionsCreateResponsePropertiesAksAssignedIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -543,7 +556,9 @@ export const ExtensionsCreateResponseProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExtensionsCreateResponseProperties>;
 
 /** The identity type. */
-export type ExtensionsCreateResponseIdentityType = "SystemAssigned";
+export type ExtensionsCreateResponseIdentityType =
+  | "SystemAssigned"
+  | (string & {});
 export const ExtensionsCreateResponseIdentityType = /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
@@ -570,7 +585,8 @@ export type ExtensionsCreateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ExtensionsCreateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -579,7 +595,8 @@ export type ExtensionsCreateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ExtensionsCreateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -773,7 +790,8 @@ export type ExtensionsGetResponsePropertiesProvisioningState =
   | "Canceled"
   | "Creating"
   | "Updating"
-  | "Deleting";
+  | "Deleting"
+  | (string & {});
 export const ExtensionsGetResponsePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -842,7 +860,8 @@ export const ExtensionsGetResponsePropertiesCustomLocationSettingsMap =
 /** The identity type. */
 export type ExtensionsGetResponsePropertiesAksAssignedIdentityType =
   | "SystemAssigned"
-  | "UserAssigned";
+  | "UserAssigned"
+  | (string & {});
 export const ExtensionsGetResponsePropertiesAksAssignedIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -934,7 +953,9 @@ export const ExtensionsGetResponseProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExtensionsGetResponseProperties>;
 
 /** The identity type. */
-export type ExtensionsGetResponseIdentityType = "SystemAssigned";
+export type ExtensionsGetResponseIdentityType =
+  | "SystemAssigned"
+  | (string & {});
 export const ExtensionsGetResponseIdentityType = /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
@@ -961,7 +982,8 @@ export type ExtensionsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ExtensionsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -970,7 +992,8 @@ export type ExtensionsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ExtensionsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1117,7 +1140,8 @@ export type ExtensionPropertiesProvisioningState =
   | "Canceled"
   | "Creating"
   | "Updating"
-  | "Deleting";
+  | "Deleting"
+  | (string & {});
 export const ExtensionPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Status from this extension. */
@@ -1179,7 +1203,8 @@ export const ExtensionPropertiesCustomLocationSettingsMap =
 /** The identity type. */
 export type ExtensionPropertiesAksAssignedIdentityType =
   | "SystemAssigned"
-  | "UserAssigned";
+  | "UserAssigned"
+  | (string & {});
 export const ExtensionPropertiesAksAssignedIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -1267,7 +1292,7 @@ export const ExtensionProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExtensionProperties>;
 
 /** The identity type. */
-export type ExtensionIdentityType = "SystemAssigned";
+export type ExtensionIdentityType = "SystemAssigned" | (string & {});
 export const ExtensionIdentityType = /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
@@ -1294,7 +1319,8 @@ export type ExtensionSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ExtensionSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -1302,7 +1328,8 @@ export type ExtensionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ExtensionSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -1518,7 +1545,8 @@ export type ExtensionsUpdateResponsePropertiesProvisioningState =
   | "Canceled"
   | "Creating"
   | "Updating"
-  | "Deleting";
+  | "Deleting"
+  | (string & {});
 export const ExtensionsUpdateResponsePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1589,7 +1617,8 @@ export const ExtensionsUpdateResponsePropertiesCustomLocationSettingsMap =
 /** The identity type. */
 export type ExtensionsUpdateResponsePropertiesAksAssignedIdentityType =
   | "SystemAssigned"
-  | "UserAssigned";
+  | "UserAssigned"
+  | (string & {});
 export const ExtensionsUpdateResponsePropertiesAksAssignedIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -1685,7 +1714,9 @@ export const ExtensionsUpdateResponseProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExtensionsUpdateResponseProperties>;
 
 /** The identity type. */
-export type ExtensionsUpdateResponseIdentityType = "SystemAssigned";
+export type ExtensionsUpdateResponseIdentityType =
+  | "SystemAssigned"
+  | (string & {});
 export const ExtensionsUpdateResponseIdentityType = /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
@@ -1712,7 +1743,8 @@ export type ExtensionsUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ExtensionsUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1721,7 +1753,8 @@ export type ExtensionsUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ExtensionsUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1929,11 +1962,15 @@ export const FluxConfigOperationStatusGetResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FluxConfigOperationStatusGetResponse>;
 
 /** Scope at which the configuration will be installed. */
-export type ScopeDefinition = "cluster" | "namespace";
+export type ScopeDefinition = "cluster" | "namespace" | (string & {});
 export const ScopeDefinition = /*@__PURE__*/ S.String;
 
 /** Source Kind to pull the configuration data from. */
-export type SourceKindDefinition = "GitRepository" | "Bucket" | "AzureBlob";
+export type SourceKindDefinition =
+  | "GitRepository"
+  | "Bucket"
+  | "AzureBlob"
+  | (string & {});
 export const SourceKindDefinition = /*@__PURE__*/ S.String;
 
 /** The source reference for the GitRepository object. */
@@ -2375,7 +2412,8 @@ export type FluxComplianceStateDefinition =
   | "Non-Compliant"
   | "Pending"
   | "Suspended"
-  | "Unknown";
+  | "Unknown"
+  | (string & {});
 export const FluxComplianceStateDefinition = /*@__PURE__*/ S.String;
 
 /** Object reference to a Kubernetes object on a cluster */
@@ -2496,7 +2534,13 @@ export const FluxConfigurationsCreateOrUpdateResponsePropertiesStatusesList =
 
 /** The provisioning state of the resource. */
 export type FluxConfigurationsCreateOrUpdateResponsePropertiesProvisioningState =
-  "Succeeded" | "Failed" | "Canceled" | "Creating" | "Updating" | "Deleting";
+    | "Succeeded"
+    | "Failed"
+    | "Canceled"
+    | "Creating"
+    | "Updating"
+    | "Deleting"
+    | (string & {});
 export const FluxConfigurationsCreateOrUpdateResponsePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -2587,13 +2631,14 @@ export type FluxConfigurationsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const FluxConfigurationsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type FluxConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
 export const FluxConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2771,7 +2816,8 @@ export type FluxConfigurationsGetResponsePropertiesProvisioningState =
   | "Canceled"
   | "Creating"
   | "Updating"
-  | "Deleting";
+  | "Deleting"
+  | (string & {});
 export const FluxConfigurationsGetResponsePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -2858,7 +2904,8 @@ export type FluxConfigurationsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const FluxConfigurationsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2867,7 +2914,8 @@ export type FluxConfigurationsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const FluxConfigurationsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2993,7 +3041,8 @@ export type FluxConfigurationPropertiesProvisioningState =
   | "Canceled"
   | "Creating"
   | "Updating"
-  | "Deleting";
+  | "Deleting"
+  | (string & {});
 export const FluxConfigurationPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -3073,7 +3122,8 @@ export type FluxConfigurationSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const FluxConfigurationSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -3081,7 +3131,8 @@ export type FluxConfigurationSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const FluxConfigurationSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -3478,7 +3529,8 @@ export type FluxConfigurationsUpdateResponsePropertiesProvisioningState =
   | "Canceled"
   | "Creating"
   | "Updating"
-  | "Deleting";
+  | "Deleting"
+  | (string & {});
 export const FluxConfigurationsUpdateResponsePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -3565,7 +3617,8 @@ export type FluxConfigurationsUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const FluxConfigurationsUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -3574,7 +3627,8 @@ export type FluxConfigurationsUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const FluxConfigurationsUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -4007,7 +4061,7 @@ export const OperationStatusList_2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationStatusList_2>;
 
 /** Type of the operator */
-export type OperatorTypeDefinition = "Flux";
+export type OperatorTypeDefinition = "Flux" | (string & {});
 export const OperatorTypeDefinition = /*@__PURE__*/ S.String;
 
 /** Name-value pairs of protected configuration settings for the configuration */
@@ -4020,7 +4074,7 @@ export const ConfigurationProtectedSettings = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ConfigurationProtectedSettings>;
 
 /** Scope at which the operator will be installed. */
-export type OperatorScopeDefinition = "cluster" | "namespace";
+export type OperatorScopeDefinition = "cluster" | "namespace" | (string & {});
 export const OperatorScopeDefinition = /*@__PURE__*/ S.String;
 
 /** Properties for Helm operator. */
@@ -4124,7 +4178,7 @@ export const SourceControlConfigurationsCreateOrUpdateRequest =
 
 /** The provisioning state of the resource provider. */
 export type SourceControlConfigurationsCreateOrUpdateResponsePropertiesProvisioningState =
-  "Accepted" | "Deleting" | "Running" | "Succeeded" | "Failed";
+  "Accepted" | "Deleting" | "Running" | "Succeeded" | "Failed" | (string & {});
 export const SourceControlConfigurationsCreateOrUpdateResponsePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -4134,11 +4188,16 @@ export type ComplianceStatusComplianceState =
   | "Compliant"
   | "Noncompliant"
   | "Installed"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const ComplianceStatusComplianceState = /*@__PURE__*/ S.String;
 
 /** Level of the message. */
-export type ComplianceStatusMessageLevel = "Error" | "Warning" | "Information";
+export type ComplianceStatusMessageLevel =
+  | "Error"
+  | "Warning"
+  | "Information"
+  | (string & {});
 export const ComplianceStatusMessageLevel = /*@__PURE__*/ S.String;
 
 /** Compliance Status details */
@@ -4219,13 +4278,13 @@ export const SourceControlConfigurationsCreateOrUpdateResponseProperties =
 
 /** The type of identity that created the resource. */
 export type SourceControlConfigurationsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
 export const SourceControlConfigurationsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type SourceControlConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
 export const SourceControlConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -4373,7 +4432,8 @@ export type SourceControlConfigurationsGetResponsePropertiesProvisioningState =
   | "Deleting"
   | "Running"
   | "Succeeded"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const SourceControlConfigurationsGetResponsePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -4436,13 +4496,14 @@ export type SourceControlConfigurationsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SourceControlConfigurationsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type SourceControlConfigurationsGetResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
 export const SourceControlConfigurationsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -4542,7 +4603,8 @@ export type SourceControlConfigurationPropertiesProvisioningState =
   | "Deleting"
   | "Running"
   | "Succeeded"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const SourceControlConfigurationPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -4605,7 +4667,8 @@ export type SourceControlConfigurationSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SourceControlConfigurationSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -4614,7 +4677,8 @@ export type SourceControlConfigurationSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SourceControlConfigurationSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

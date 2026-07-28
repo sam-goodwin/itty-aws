@@ -146,7 +146,8 @@ export const DeleteUsersSshPublicKeysRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetLoginProfileUsersViewEnum =
   | "LOGIN_PROFILE_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "SECURITY_KEY";
+  | "SECURITY_KEY"
+  | (string & {});
 export const GetLoginProfileUsersViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetLoginProfileUsersRequest {
@@ -179,7 +180,8 @@ export const GetLoginProfileUsersRequest = /*@__PURE__*/ S.suspend(() =>
 export type PosixAccountOperatingSystemTypeEnum =
   | "OPERATING_SYSTEM_TYPE_UNSPECIFIED"
   | "LINUX"
-  | "WINDOWS";
+  | "WINDOWS"
+  | (string & {});
 export const PosixAccountOperatingSystemTypeEnum = /*@__PURE__*/ S.String;
 
 /** The POSIX account information associated with a Google account. */
@@ -327,7 +329,8 @@ export const GetUsersSshPublicKeysRequest = /*@__PURE__*/ S.suspend(() =>
 export type ImportSshPublicKeyUsersViewEnum =
   | "LOGIN_PROFILE_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "SECURITY_KEY";
+  | "SECURITY_KEY"
+  | (string & {});
 export const ImportSshPublicKeyUsersViewEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;

@@ -292,10 +292,16 @@ export type AnalysisSchemeLanguage =
   | "th"
   | "tr"
   | "zh-Hans"
-  | "zh-Hant";
+  | "zh-Hant"
+  | (string & {});
 export const AnalysisSchemeLanguage = /*@__PURE__*/ S.String;
 
-export type AlgorithmicStemming = "none" | "minimal" | "light" | "full";
+export type AlgorithmicStemming =
+  | "none"
+  | "minimal"
+  | "light"
+  | "full"
+  | (string & {});
 export const AlgorithmicStemming = /*@__PURE__*/ S.String;
 
 export interface AnalysisOptions {
@@ -353,7 +359,8 @@ export type OptionState =
   | "RequiresIndexDocuments"
   | "Processing"
   | "Active"
-  | "FailedToValidate";
+  | "FailedToValidate"
+  | (string & {});
 export const OptionState = /*@__PURE__*/ S.String;
 
 export interface OptionStatus {
@@ -445,7 +452,8 @@ export type IndexFieldType =
   | "double-array"
   | "literal-array"
   | "text-array"
-  | "date-array";
+  | "date-array"
+  | (string & {});
 export const IndexFieldType = /*@__PURE__*/ S.String;
 
 export interface IntOptions {
@@ -717,7 +725,7 @@ export const DefineIndexFieldResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DefineIndexFieldResponse",
 }) as any as S.Schema<DefineIndexFieldResponse>;
-export type SuggesterFuzzyMatching = "none" | "low" | "high";
+export type SuggesterFuzzyMatching = "none" | "low" | "high" | (string & {});
 export const SuggesterFuzzyMatching = /*@__PURE__*/ S.String;
 
 export interface DocumentSuggesterOptions {
@@ -1012,7 +1020,8 @@ export const DescribeDomainEndpointOptionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeDomainEndpointOptionsRequest>;
 export type TLSSecurityPolicy =
   | "Policy-Min-TLS-1-0-2019-07"
-  | "Policy-Min-TLS-1-2-2019-07";
+  | "Policy-Min-TLS-1-2-2019-07"
+  | (string & {});
 export const TLSSecurityPolicy = /*@__PURE__*/ S.String;
 
 export interface DomainEndpointOptions {
@@ -1182,7 +1191,8 @@ export type PartitionInstanceType =
   | "search.previousgeneration.small"
   | "search.previousgeneration.large"
   | "search.previousgeneration.xlarge"
-  | "search.previousgeneration.2xlarge";
+  | "search.previousgeneration.2xlarge"
+  | (string & {});
 export const PartitionInstanceType = /*@__PURE__*/ S.String;
 
 export interface ScalingParameters {

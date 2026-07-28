@@ -210,7 +210,7 @@ export class VectorizeIndexNotFound extends T.applyErrorMatchers(
 ) {}
 
 export type DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretTextType =
-  "secret_text";
+  "secret_text" | (string & {});
 export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -235,12 +235,12 @@ export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretText 
   }) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretText>;
 
 export type DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyFormat =
-  "raw" | "pkcs8" | "spki" | "jwk";
+  "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
 export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyFormat =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyType =
-  "secret_key";
+  "secret_key" | (string & {});
 export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyType =
   /*@__PURE__*/ S.String;
 
@@ -252,7 +252,8 @@ export type DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsa
     | "deriveKey"
     | "deriveBits"
     | "wrapKey"
-    | "unwrapKey";
+    | "unwrapKey"
+    | (string & {});
 export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -357,7 +358,8 @@ export const BulkUpdateDispatchNamespaceScriptSecretsRequest =
   }) as any as S.Schema<BulkUpdateDispatchNamespaceScriptSecretsRequest>;
 
 export type DispatchNamespacesScriptsSecretsBulkUpdateResultSecretTextType =
-  "secret_text";
+  | "secret_text"
+  | (string & {});
 export const DispatchNamespacesScriptsSecretsBulkUpdateResultSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -384,12 +386,14 @@ export type DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
-  | "jwk";
+  | "jwk"
+  | (string & {});
 export const DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKeyFormat =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKeyType =
-  "secret_key";
+  | "secret_key"
+  | (string & {});
 export const DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKeyType =
   /*@__PURE__*/ S.String;
 
@@ -401,7 +405,8 @@ export type DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKeyUsagesItem 
     | "deriveKey"
     | "deriveBits"
     | "wrapKey"
-    | "unwrapKey";
+    | "unwrapKey"
+    | (string & {});
 export const DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -947,7 +952,7 @@ export const DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestin
   ) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList>;
 
 export type DispatchNamespacesScriptsGetResponseScriptObservabilityTracesPropagationPolicy =
-  "authenticated" | "accept";
+  "authenticated" | "accept" | (string & {});
 export const DispatchNamespacesScriptsGetResponseScriptObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -1009,14 +1014,16 @@ export const DispatchNamespacesScriptsGetResponseScriptObservability =
   }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservability>;
 
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase0Mode =
-  "smart";
+  | "smart"
+  | (string & {});
 export const DispatchNamespacesScriptsGetResponseScriptPlacementCase0Mode =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase0Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS";
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
 export const DispatchNamespacesScriptsGetResponseScriptPlacementCase0Status =
   /*@__PURE__*/ S.String;
 
@@ -1044,7 +1051,8 @@ export const DispatchNamespacesScriptsGetResponseScriptPlacementCase0 =
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase1Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS";
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
 export const DispatchNamespacesScriptsGetResponseScriptPlacementCase1Status =
   /*@__PURE__*/ S.String;
 
@@ -1072,7 +1080,8 @@ export const DispatchNamespacesScriptsGetResponseScriptPlacementCase1 =
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase2Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS";
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
 export const DispatchNamespacesScriptsGetResponseScriptPlacementCase2Status =
   /*@__PURE__*/ S.String;
 
@@ -1100,7 +1109,8 @@ export const DispatchNamespacesScriptsGetResponseScriptPlacementCase2 =
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase3Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS";
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
 export const DispatchNamespacesScriptsGetResponseScriptPlacementCase3Status =
   /*@__PURE__*/ S.String;
 
@@ -1126,14 +1136,16 @@ export const DispatchNamespacesScriptsGetResponseScriptPlacementCase3 =
   }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementCase3>;
 
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase4Mode =
-  "targeted";
+  | "targeted"
+  | (string & {});
 export const DispatchNamespacesScriptsGetResponseScriptPlacementCase4Mode =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase4Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS";
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
 export const DispatchNamespacesScriptsGetResponseScriptPlacementCase4Status =
   /*@__PURE__*/ S.String;
 
@@ -1162,14 +1174,16 @@ export const DispatchNamespacesScriptsGetResponseScriptPlacementCase4 =
   }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementCase4>;
 
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase5Mode =
-  "targeted";
+  | "targeted"
+  | (string & {});
 export const DispatchNamespacesScriptsGetResponseScriptPlacementCase5Mode =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase5Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS";
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
 export const DispatchNamespacesScriptsGetResponseScriptPlacementCase5Status =
   /*@__PURE__*/ S.String;
 
@@ -1198,14 +1212,16 @@ export const DispatchNamespacesScriptsGetResponseScriptPlacementCase5 =
   }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementCase5>;
 
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase6Mode =
-  "targeted";
+  | "targeted"
+  | (string & {});
 export const DispatchNamespacesScriptsGetResponseScriptPlacementCase6Mode =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase6Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS";
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
 export const DispatchNamespacesScriptsGetResponseScriptPlacementCase6Status =
   /*@__PURE__*/ S.String;
 
@@ -1234,7 +1250,8 @@ export const DispatchNamespacesScriptsGetResponseScriptPlacementCase6 =
   }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementCase6>;
 
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase7Mode =
-  "targeted";
+  | "targeted"
+  | (string & {});
 export const DispatchNamespacesScriptsGetResponseScriptPlacementCase7Mode =
   /*@__PURE__*/ S.String;
 
@@ -1299,7 +1316,8 @@ export const DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetList 
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase7Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS";
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
 export const DispatchNamespacesScriptsGetResponseScriptPlacementCase7Status =
   /*@__PURE__*/ S.String;
 
@@ -1353,14 +1371,16 @@ export const DispatchNamespacesScriptsGetResponseScriptPlacement =
 
 export type DispatchNamespacesScriptsGetResponseScriptPlacementMode =
   | "smart"
-  | "targeted";
+  | "targeted"
+  | (string & {});
 export const DispatchNamespacesScriptsGetResponseScriptPlacementMode =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsGetResponseScriptPlacementStatus =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS";
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
 export const DispatchNamespacesScriptsGetResponseScriptPlacementStatus =
   /*@__PURE__*/ S.String;
 
@@ -1400,7 +1420,8 @@ export const DispatchNamespacesScriptsGetResponseScriptTailConsumersList =
 export type DispatchNamespacesScriptsGetResponseScriptUsageModel =
   | "standard"
   | "bundled"
-  | "unbound";
+  | "unbound"
+  | (string & {});
 export const DispatchNamespacesScriptsGetResponseScriptUsageModel =
   /*@__PURE__*/ S.String;
 
@@ -1564,7 +1585,9 @@ export const GetDispatchNamespaceScriptBindingRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetDispatchNamespaceScriptBindingRequest",
 }) as any as S.Schema<GetDispatchNamespaceScriptBindingRequest>;
 
-export type DispatchNamespacesScriptsBindingsGetResultItemAIType = "ai";
+export type DispatchNamespacesScriptsBindingsGetResultItemAIType =
+  | "ai"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemAIType =
   /*@__PURE__*/ S.String;
 
@@ -1585,7 +1608,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemAI =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemAI>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemAISearchType =
-  "ai_search";
+  | "ai_search"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemAISearchType =
   /*@__PURE__*/ S.String;
 
@@ -1612,7 +1636,7 @@ export const DispatchNamespacesScriptsBindingsGetResultItemAISearch =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemAISearch>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespaceType =
-  "ai_search_namespace";
+  "ai_search_namespace" | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -1637,7 +1661,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemAnalyticsEngineType =
-  "analytics_engine";
+  | "analytics_engine"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemAnalyticsEngineType =
   /*@__PURE__*/ S.String;
 
@@ -1660,7 +1685,9 @@ export const DispatchNamespacesScriptsBindingsGetResultItemAnalyticsEngine =
     identifier: "DispatchNamespacesScriptsBindingsGetResultItemAnalyticsEngine",
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemAnalyticsEngine>;
 
-export type DispatchNamespacesScriptsBindingsGetResultItemAssetsType = "assets";
+export type DispatchNamespacesScriptsBindingsGetResultItemAssetsType =
+  | "assets"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemAssetsType =
   /*@__PURE__*/ S.String;
 
@@ -1681,7 +1708,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemAssets =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemAssets>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemBrowserType =
-  "browser";
+  | "browser"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemBrowserType =
   /*@__PURE__*/ S.String;
 
@@ -1701,7 +1729,9 @@ export const DispatchNamespacesScriptsBindingsGetResultItemBrowser =
     identifier: "DispatchNamespacesScriptsBindingsGetResultItemBrowser",
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemBrowser>;
 
-export type DispatchNamespacesScriptsBindingsGetResultItemD1Type = "d1";
+export type DispatchNamespacesScriptsBindingsGetResultItemD1Type =
+  | "d1"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemD1Type =
   /*@__PURE__*/ S.String;
 
@@ -1728,7 +1758,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemD1 =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemD1>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemDataBlobType =
-  "data_blob";
+  | "data_blob"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemDataBlobType =
   /*@__PURE__*/ S.String;
 
@@ -1752,7 +1783,7 @@ export const DispatchNamespacesScriptsBindingsGetResultItemDataBlob =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemDataBlob>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceType =
-  "dispatch_namespace";
+  "dispatch_namespace" | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -1844,7 +1875,7 @@ export const DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespace =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespace>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemDurableObjectNamespaceType =
-  "durable_object_namespace";
+  "durable_object_namespace" | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemDurableObjectNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -1883,7 +1914,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemDurableObjectNamespac
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemDurableObjectNamespace>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemHyperdriveType =
-  "hyperdrive";
+  | "hyperdrive"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemHyperdriveType =
   /*@__PURE__*/ S.String;
 
@@ -1907,7 +1939,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemHyperdrive =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemHyperdrive>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemInheritType =
-  "inherit";
+  | "inherit"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemInheritType =
   /*@__PURE__*/ S.String;
 
@@ -1933,7 +1966,9 @@ export const DispatchNamespacesScriptsBindingsGetResultItemInherit =
     identifier: "DispatchNamespacesScriptsBindingsGetResultItemInherit",
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemInherit>;
 
-export type DispatchNamespacesScriptsBindingsGetResultItemImagesType = "images";
+export type DispatchNamespacesScriptsBindingsGetResultItemImagesType =
+  | "images"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemImagesType =
   /*@__PURE__*/ S.String;
 
@@ -1953,7 +1988,9 @@ export const DispatchNamespacesScriptsBindingsGetResultItemImages =
     identifier: "DispatchNamespacesScriptsBindingsGetResultItemImages",
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemImages>;
 
-export type DispatchNamespacesScriptsBindingsGetResultItemJsonType = "json";
+export type DispatchNamespacesScriptsBindingsGetResultItemJsonType =
+  | "json"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemJsonType =
   /*@__PURE__*/ S.String;
 
@@ -1977,7 +2014,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemJson =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemJson>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemKVNamespaceType =
-  "kv_namespace";
+  | "kv_namespace"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemKVNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -2000,7 +2038,9 @@ export const DispatchNamespacesScriptsBindingsGetResultItemKVNamespace =
     identifier: "DispatchNamespacesScriptsBindingsGetResultItemKVNamespace",
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemKVNamespace>;
 
-export type DispatchNamespacesScriptsBindingsGetResultItemMediaType = "media";
+export type DispatchNamespacesScriptsBindingsGetResultItemMediaType =
+  | "media"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemMediaType =
   /*@__PURE__*/ S.String;
 
@@ -2021,7 +2061,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemMedia =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemMedia>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemMTLSCertificateType =
-  "mtls_certificate";
+  | "mtls_certificate"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemMTLSCertificateType =
   /*@__PURE__*/ S.String;
 
@@ -2045,7 +2086,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemMTLSCertificate =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemMTLSCertificate>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemPlainTextType =
-  "plain_text";
+  | "plain_text"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -2069,7 +2111,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemPlainText =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemPlainText>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemPipelinesType =
-  "pipelines";
+  | "pipelines"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemPipelinesType =
   /*@__PURE__*/ S.String;
 
@@ -2092,7 +2135,9 @@ export const DispatchNamespacesScriptsBindingsGetResultItemPipelines =
     identifier: "DispatchNamespacesScriptsBindingsGetResultItemPipelines",
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemPipelines>;
 
-export type DispatchNamespacesScriptsBindingsGetResultItemQueueType = "queue";
+export type DispatchNamespacesScriptsBindingsGetResultItemQueueType =
+  | "queue"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemQueueType =
   /*@__PURE__*/ S.String;
 
@@ -2137,7 +2182,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemRatelimitSimple =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemRatelimitSimple>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemRatelimitType =
-  "ratelimit";
+  | "ratelimit"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemRatelimitType =
   /*@__PURE__*/ S.String;
 
@@ -2164,12 +2210,13 @@ export const DispatchNamespacesScriptsBindingsGetResultItemRatelimit =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemRatelimit>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemR2BucketType =
-  "r2_bucket";
+  | "r2_bucket"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemR2BucketType =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemR2BucketJurisdiction =
-  "eu" | "fedramp" | "fedramp-high";
+  "eu" | "fedramp" | "fedramp-high" | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemR2BucketJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -2198,7 +2245,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemR2Bucket =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemR2Bucket>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemSecretTextType =
-  "secret_text";
+  | "secret_text"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -2222,7 +2270,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemSecretText =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemSecretText>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemSendEmailType =
-  "send_email";
+  | "send_email"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemSendEmailType =
   /*@__PURE__*/ S.String;
 
@@ -2276,7 +2325,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemSendEmail =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemSendEmail>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemServiceType =
-  "service";
+  | "service"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemServiceType =
   /*@__PURE__*/ S.String;
 
@@ -2306,7 +2356,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemService =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemService>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemTextBlobType =
-  "text_blob";
+  | "text_blob"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemTextBlobType =
   /*@__PURE__*/ S.String;
 
@@ -2330,7 +2381,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemTextBlob =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemTextBlob>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemVectorizeType =
-  "vectorize";
+  | "vectorize"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemVectorizeType =
   /*@__PURE__*/ S.String;
 
@@ -2354,7 +2406,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemVectorize =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemVectorize>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemVersionMetadataType =
-  "version_metadata";
+  | "version_metadata"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemVersionMetadataType =
   /*@__PURE__*/ S.String;
 
@@ -2375,7 +2428,7 @@ export const DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemSecretsStoreSecretType =
-  "secrets_store_secret";
+  "secrets_store_secret" | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemSecretsStoreSecretType =
   /*@__PURE__*/ S.String;
 
@@ -2403,7 +2456,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemSecretsStoreSecret =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemSecretsStoreSecret>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemFlagshipType =
-  "flagship";
+  | "flagship"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemFlagshipType =
   /*@__PURE__*/ S.String;
 
@@ -2430,12 +2484,14 @@ export type DispatchNamespacesScriptsBindingsGetResultItemSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
-  | "jwk";
+  | "jwk"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemSecretKeyFormat =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemSecretKeyType =
-  "secret_key";
+  | "secret_key"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemSecretKeyType =
   /*@__PURE__*/ S.String;
 
@@ -2447,7 +2503,8 @@ export type DispatchNamespacesScriptsBindingsGetResultItemSecretKeyUsagesItem =
   | "deriveKey"
   | "deriveBits"
   | "wrapKey"
-  | "unwrapKey";
+  | "unwrapKey"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -2490,7 +2547,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemSecretKey =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemSecretKey>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemWorkflowType =
-  "workflow";
+  | "workflow"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemWorkflowType =
   /*@__PURE__*/ S.String;
 
@@ -2520,7 +2578,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemWorkflow =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemWorkflow>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemWasmModuleType =
-  "wasm_module";
+  | "wasm_module"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemWasmModuleType =
   /*@__PURE__*/ S.String;
 
@@ -2544,7 +2603,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemWasmModule =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemWasmModule>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemVPCServiceType =
-  "vpc_service";
+  | "vpc_service"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemVPCServiceType =
   /*@__PURE__*/ S.String;
 
@@ -2568,7 +2628,8 @@ export const DispatchNamespacesScriptsBindingsGetResultItemVPCService =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemVPCService>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemVPCNetworkType =
-  "vpc_network";
+  | "vpc_network"
+  | (string & {});
 export const DispatchNamespacesScriptsBindingsGetResultItemVPCNetworkType =
   /*@__PURE__*/ S.String;
 
@@ -2779,7 +2840,8 @@ export const GetDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetDispatchNamespaceScriptSecretRequest>;
 
 export type DispatchNamespacesScriptsSecretsGetResultSecretTextType =
-  "secret_text";
+  | "secret_text"
+  | (string & {});
 export const DispatchNamespacesScriptsSecretsGetResultSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -2806,12 +2868,14 @@ export type DispatchNamespacesScriptsSecretsGetResultSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
-  | "jwk";
+  | "jwk"
+  | (string & {});
 export const DispatchNamespacesScriptsSecretsGetResultSecretKeyFormat =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsSecretsGetResultSecretKeyType =
-  "secret_key";
+  | "secret_key"
+  | (string & {});
 export const DispatchNamespacesScriptsSecretsGetResultSecretKeyType =
   /*@__PURE__*/ S.String;
 
@@ -2823,7 +2887,8 @@ export type DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesItem =
   | "deriveKey"
   | "deriveBits"
   | "wrapKey"
-  | "unwrapKey";
+  | "unwrapKey"
+  | (string & {});
 export const DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -2912,7 +2977,8 @@ export const GetDispatchNamespaceScriptSettingRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetDispatchNamespaceScriptSettingRequest>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemAIType =
-  "ai";
+  | "ai"
+  | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAIType =
   /*@__PURE__*/ S.String;
 
@@ -2933,7 +2999,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAI =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemAI>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchType =
-  "ai_search";
+  "ai_search" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchType =
   /*@__PURE__*/ S.String;
 
@@ -2961,7 +3027,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearch =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearch>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchNamespaceType =
-  "ai_search_namespace";
+  "ai_search_namespace" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -2986,7 +3052,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchNam
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchNamespace>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemAnalyticsEngineType =
-  "analytics_engine";
+  "analytics_engine" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAnalyticsEngineType =
   /*@__PURE__*/ S.String;
 
@@ -3011,7 +3077,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAnalyticsEn
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemAnalyticsEngine>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemAssetsType =
-  "assets";
+  "assets" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAssetsType =
   /*@__PURE__*/ S.String;
 
@@ -3033,7 +3099,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAssets =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemAssets>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemBrowserType =
-  "browser";
+  "browser" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemBrowserType =
   /*@__PURE__*/ S.String;
 
@@ -3055,7 +3121,8 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemBrowser =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemBrowser>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1Type =
-  "d1";
+  | "d1"
+  | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1Type =
   /*@__PURE__*/ S.String;
 
@@ -3082,7 +3149,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1 =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlobType =
-  "data_blob";
+  "data_blob" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlobType =
   /*@__PURE__*/ S.String;
 
@@ -3107,7 +3174,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlob =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlob>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceType =
-  "dispatch_namespace";
+  "dispatch_namespace" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -3199,7 +3266,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNam
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespace>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemDurableObjectNamespaceType =
-  "durable_object_namespace";
+  "durable_object_namespace" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDurableObjectNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -3238,7 +3305,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDurableObje
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemDurableObjectNamespace>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemHyperdriveType =
-  "hyperdrive";
+  "hyperdrive" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemHyperdriveType =
   /*@__PURE__*/ S.String;
 
@@ -3263,7 +3330,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemHyperdrive 
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemHyperdrive>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemInheritType =
-  "inherit";
+  "inherit" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemInheritType =
   /*@__PURE__*/ S.String;
 
@@ -3291,7 +3358,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemInherit =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemInherit>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemImagesType =
-  "images";
+  "images" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemImagesType =
   /*@__PURE__*/ S.String;
 
@@ -3313,7 +3380,8 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemImages =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemImages>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemJsonType =
-  "json";
+  | "json"
+  | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemJsonType =
   /*@__PURE__*/ S.String;
 
@@ -3337,7 +3405,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemJson =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemJson>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemKVNamespaceType =
-  "kv_namespace";
+  "kv_namespace" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemKVNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -3362,7 +3430,8 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemKVNamespace
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemKVNamespace>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemMediaType =
-  "media";
+  | "media"
+  | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemMediaType =
   /*@__PURE__*/ S.String;
 
@@ -3383,7 +3452,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemMedia =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemMedia>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemMTLSCertificateType =
-  "mtls_certificate";
+  "mtls_certificate" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemMTLSCertificateType =
   /*@__PURE__*/ S.String;
 
@@ -3408,7 +3477,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemMTLSCertifi
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemMTLSCertificate>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemPlainTextType =
-  "plain_text";
+  "plain_text" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -3433,7 +3502,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemPlainText =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemPlainText>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemPipelinesType =
-  "pipelines";
+  "pipelines" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemPipelinesType =
   /*@__PURE__*/ S.String;
 
@@ -3458,7 +3527,8 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemPipelines =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemPipelines>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemQueueType =
-  "queue";
+  | "queue"
+  | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemQueueType =
   /*@__PURE__*/ S.String;
 
@@ -3504,7 +3574,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimitSi
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimitSimple>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimitType =
-  "ratelimit";
+  "ratelimit" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimitType =
   /*@__PURE__*/ S.String;
 
@@ -3533,12 +3603,12 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimit =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimit>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2BucketType =
-  "r2_bucket";
+  "r2_bucket" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2BucketType =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2BucketJurisdiction =
-  "eu" | "fedramp" | "fedramp-high";
+  "eu" | "fedramp" | "fedramp-high" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2BucketJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -3568,7 +3638,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2Bucket =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2Bucket>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretTextType =
-  "secret_text";
+  "secret_text" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -3593,7 +3663,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretText 
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretText>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailType =
-  "send_email";
+  "send_email" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailType =
   /*@__PURE__*/ S.String;
 
@@ -3648,7 +3718,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmail =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmail>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemServiceType =
-  "service";
+  "service" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemServiceType =
   /*@__PURE__*/ S.String;
 
@@ -3679,7 +3749,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemService =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemService>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemTextBlobType =
-  "text_blob";
+  "text_blob" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemTextBlobType =
   /*@__PURE__*/ S.String;
 
@@ -3704,7 +3774,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemTextBlob =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemTextBlob>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemVectorizeType =
-  "vectorize";
+  "vectorize" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemVectorizeType =
   /*@__PURE__*/ S.String;
 
@@ -3729,7 +3799,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemVectorize =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemVectorize>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemVersionMetadataType =
-  "version_metadata";
+  "version_metadata" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemVersionMetadataType =
   /*@__PURE__*/ S.String;
 
@@ -3751,7 +3821,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemVersionMeta
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemVersionMetadata>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretsStoreSecretType =
-  "secrets_store_secret";
+  "secrets_store_secret" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretsStoreSecretType =
   /*@__PURE__*/ S.String;
 
@@ -3779,7 +3849,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretsStor
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretsStoreSecret>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemFlagshipType =
-  "flagship";
+  "flagship" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemFlagshipType =
   /*@__PURE__*/ S.String;
 
@@ -3804,12 +3874,12 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemFlagship =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemFlagship>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyFormat =
-  "raw" | "pkcs8" | "spki" | "jwk";
+  "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyFormat =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyType =
-  "secret_key";
+  "secret_key" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyType =
   /*@__PURE__*/ S.String;
 
@@ -3821,7 +3891,8 @@ export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyUsa
     | "deriveKey"
     | "deriveBits"
     | "wrapKey"
-    | "unwrapKey";
+    | "unwrapKey"
+    | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -3867,7 +3938,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKey =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKey>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemWorkflowType =
-  "workflow";
+  "workflow" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemWorkflowType =
   /*@__PURE__*/ S.String;
 
@@ -3898,7 +3969,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemWorkflow =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemWorkflow>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemWasmModuleType =
-  "wasm_module";
+  "wasm_module" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemWasmModuleType =
   /*@__PURE__*/ S.String;
 
@@ -3923,7 +3994,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemWasmModule 
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemWasmModule>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCServiceType =
-  "vpc_service";
+  "vpc_service" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCServiceType =
   /*@__PURE__*/ S.String;
 
@@ -3948,7 +4019,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCService 
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCService>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetworkType =
-  "vpc_network";
+  "vpc_network" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetworkType =
   /*@__PURE__*/ S.String;
 
@@ -4100,7 +4171,8 @@ export const DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList 
 
 export type DispatchNamespacesScriptsSettingsGetResponseExportsValueType =
   | "worker"
-  | "durable-object";
+  | "durable-object"
+  | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseExportsValueType =
   /*@__PURE__*/ S.String;
 
@@ -4484,7 +4556,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesDest
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesDestinationsList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesPropagationPolicy =
-  "authenticated" | "accept";
+  "authenticated" | "accept" | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -4547,7 +4619,8 @@ export const DispatchNamespacesScriptsSettingsGetResponseObservability =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseObservability>;
 
 export type DispatchNamespacesScriptsSettingsGetResponsePlacementModeMode =
-  "smart";
+  | "smart"
+  | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponsePlacementModeMode =
   /*@__PURE__*/ S.String;
 
@@ -4604,7 +4677,8 @@ export const DispatchNamespacesScriptsSettingsGetResponsePlacementHost =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementHost>;
 
 export type DispatchNamespacesScriptsSettingsGetResponsePlacementCase4Mode =
-  "targeted";
+  | "targeted"
+  | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase4Mode =
   /*@__PURE__*/ S.String;
 
@@ -4625,7 +4699,8 @@ export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase4 =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementCase4>;
 
 export type DispatchNamespacesScriptsSettingsGetResponsePlacementCase5Mode =
-  "targeted";
+  | "targeted"
+  | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase5Mode =
   /*@__PURE__*/ S.String;
 
@@ -4646,7 +4721,8 @@ export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase5 =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementCase5>;
 
 export type DispatchNamespacesScriptsSettingsGetResponsePlacementCase6Mode =
-  "targeted";
+  | "targeted"
+  | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase6Mode =
   /*@__PURE__*/ S.String;
 
@@ -4667,7 +4743,8 @@ export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase6 =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementCase6>;
 
 export type DispatchNamespacesScriptsSettingsGetResponsePlacementCase7Mode =
-  "targeted";
+  | "targeted"
+  | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase7Mode =
   /*@__PURE__*/ S.String;
 
@@ -4805,7 +4882,8 @@ export const DispatchNamespacesScriptsSettingsGetResponseTailConsumersList =
 export type DispatchNamespacesScriptsSettingsGetResponseUsageModel =
   | "standard"
   | "bundled"
-  | "unbound";
+  | "unbound"
+  | (string & {});
 export const DispatchNamespacesScriptsSettingsGetResponseUsageModel =
   /*@__PURE__*/ S.String;
 
@@ -4989,7 +5067,8 @@ export const ListDispatchNamespaceScriptSecretsRequest =
   }) as any as S.Schema<ListDispatchNamespaceScriptSecretsRequest>;
 
 export type DispatchNamespacesScriptsSecretsListResultItemSecretTextType =
-  "secret_text";
+  | "secret_text"
+  | (string & {});
 export const DispatchNamespacesScriptsSecretsListResultItemSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -5016,12 +5095,14 @@ export type DispatchNamespacesScriptsSecretsListResultItemSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
-  | "jwk";
+  | "jwk"
+  | (string & {});
 export const DispatchNamespacesScriptsSecretsListResultItemSecretKeyFormat =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsSecretsListResultItemSecretKeyType =
-  "secret_key";
+  | "secret_key"
+  | (string & {});
 export const DispatchNamespacesScriptsSecretsListResultItemSecretKeyType =
   /*@__PURE__*/ S.String;
 
@@ -5033,7 +5114,8 @@ export type DispatchNamespacesScriptsSecretsListResultItemSecretKeyUsagesItem =
   | "deriveKey"
   | "deriveBits"
   | "wrapKey"
-  | "unwrapKey";
+  | "unwrapKey"
+  | (string & {});
 export const DispatchNamespacesScriptsSecretsListResultItemSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -5190,7 +5272,8 @@ export const PatchDispatchNamespaceScriptSettingRequest =
   }) as any as S.Schema<PatchDispatchNamespaceScriptSettingRequest>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemAIType =
-  "ai";
+  | "ai"
+  | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAIType =
   /*@__PURE__*/ S.String;
 
@@ -5211,7 +5294,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAI =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemAI>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchType =
-  "ai_search";
+  "ai_search" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchType =
   /*@__PURE__*/ S.String;
 
@@ -5239,7 +5322,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearch =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearch>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchNamespaceType =
-  "ai_search_namespace";
+  "ai_search_namespace" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -5264,7 +5347,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchNa
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchNamespace>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemAnalyticsEngineType =
-  "analytics_engine";
+  "analytics_engine" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAnalyticsEngineType =
   /*@__PURE__*/ S.String;
 
@@ -5289,7 +5372,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAnalyticsE
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemAnalyticsEngine>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemAssetsType =
-  "assets";
+  "assets" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAssetsType =
   /*@__PURE__*/ S.String;
 
@@ -5311,7 +5394,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAssets =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemAssets>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemBrowserType =
-  "browser";
+  "browser" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemBrowserType =
   /*@__PURE__*/ S.String;
 
@@ -5333,7 +5416,8 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemBrowser =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemBrowser>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1Type =
-  "d1";
+  | "d1"
+  | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1Type =
   /*@__PURE__*/ S.String;
 
@@ -5360,7 +5444,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1 =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemDataBlobType =
-  "data_blob";
+  "data_blob" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDataBlobType =
   /*@__PURE__*/ S.String;
 
@@ -5385,7 +5469,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDataBlob =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemDataBlob>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceType =
-  "dispatch_namespace";
+  "dispatch_namespace" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -5477,7 +5561,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNa
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespace>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemDurableObjectNamespaceType =
-  "durable_object_namespace";
+  "durable_object_namespace" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDurableObjectNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -5516,7 +5600,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDurableObj
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemDurableObjectNamespace>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemHyperdriveType =
-  "hyperdrive";
+  "hyperdrive" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemHyperdriveType =
   /*@__PURE__*/ S.String;
 
@@ -5541,7 +5625,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemHyperdrive
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemHyperdrive>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemInheritType =
-  "inherit";
+  "inherit" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemInheritType =
   /*@__PURE__*/ S.String;
 
@@ -5569,7 +5653,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemInherit =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemInherit>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemImagesType =
-  "images";
+  "images" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemImagesType =
   /*@__PURE__*/ S.String;
 
@@ -5591,7 +5675,8 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemImages =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemImages>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemJsonType =
-  "json";
+  | "json"
+  | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemJsonType =
   /*@__PURE__*/ S.String;
 
@@ -5615,7 +5700,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemJson =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemJson>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemKVNamespaceType =
-  "kv_namespace";
+  "kv_namespace" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemKVNamespaceType =
   /*@__PURE__*/ S.String;
 
@@ -5640,7 +5725,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemKVNamespac
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemKVNamespace>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemMediaType =
-  "media";
+  "media" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemMediaType =
   /*@__PURE__*/ S.String;
 
@@ -5662,7 +5747,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemMedia =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemMedia>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemMTLSCertificateType =
-  "mtls_certificate";
+  "mtls_certificate" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemMTLSCertificateType =
   /*@__PURE__*/ S.String;
 
@@ -5687,7 +5772,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemMTLSCertif
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemMTLSCertificate>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemPlainTextType =
-  "plain_text";
+  "plain_text" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -5712,7 +5797,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemPlainText 
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemPlainText>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemPipelinesType =
-  "pipelines";
+  "pipelines" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemPipelinesType =
   /*@__PURE__*/ S.String;
 
@@ -5737,7 +5822,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemPipelines 
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemPipelines>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemQueueType =
-  "queue";
+  "queue" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemQueueType =
   /*@__PURE__*/ S.String;
 
@@ -5784,7 +5869,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimitS
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimitSimple>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimitType =
-  "ratelimit";
+  "ratelimit" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimitType =
   /*@__PURE__*/ S.String;
 
@@ -5813,12 +5898,12 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimit 
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimit>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketType =
-  "r2_bucket";
+  "r2_bucket" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketType =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketJurisdiction =
-  "eu" | "fedramp" | "fedramp-high";
+  "eu" | "fedramp" | "fedramp-high" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -5848,7 +5933,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2Bucket =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2Bucket>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretTextType =
-  "secret_text";
+  "secret_text" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -5873,7 +5958,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretText
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretText>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailType =
-  "send_email";
+  "send_email" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailType =
   /*@__PURE__*/ S.String;
 
@@ -5928,7 +6013,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmail 
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmail>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemServiceType =
-  "service";
+  "service" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemServiceType =
   /*@__PURE__*/ S.String;
 
@@ -5959,7 +6044,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemService =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemService>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemTextBlobType =
-  "text_blob";
+  "text_blob" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemTextBlobType =
   /*@__PURE__*/ S.String;
 
@@ -5984,7 +6069,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemTextBlob =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemTextBlob>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemVectorizeType =
-  "vectorize";
+  "vectorize" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVectorizeType =
   /*@__PURE__*/ S.String;
 
@@ -6009,7 +6094,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVectorize 
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemVectorize>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemVersionMetadataType =
-  "version_metadata";
+  "version_metadata" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVersionMetadataType =
   /*@__PURE__*/ S.String;
 
@@ -6031,7 +6116,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVersionMet
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemVersionMetadata>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretsStoreSecretType =
-  "secrets_store_secret";
+  "secrets_store_secret" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretsStoreSecretType =
   /*@__PURE__*/ S.String;
 
@@ -6059,7 +6144,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretsSto
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretsStoreSecret>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagshipType =
-  "flagship";
+  "flagship" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagshipType =
   /*@__PURE__*/ S.String;
 
@@ -6084,12 +6169,12 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagship =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagship>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyFormat =
-  "raw" | "pkcs8" | "spki" | "jwk";
+  "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyFormat =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyType =
-  "secret_key";
+  "secret_key" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyType =
   /*@__PURE__*/ S.String;
 
@@ -6101,7 +6186,8 @@ export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyUs
     | "deriveKey"
     | "deriveBits"
     | "wrapKey"
-    | "unwrapKey";
+    | "unwrapKey"
+    | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -6147,7 +6233,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKey 
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKey>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkflowType =
-  "workflow";
+  "workflow" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkflowType =
   /*@__PURE__*/ S.String;
 
@@ -6178,7 +6264,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkflow =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkflow>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmModuleType =
-  "wasm_module";
+  "wasm_module" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmModuleType =
   /*@__PURE__*/ S.String;
 
@@ -6203,7 +6289,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmModule
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmModule>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCServiceType =
-  "vpc_service";
+  "vpc_service" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCServiceType =
   /*@__PURE__*/ S.String;
 
@@ -6228,7 +6314,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCService
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCService>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetworkType =
-  "vpc_network";
+  "vpc_network" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetworkType =
   /*@__PURE__*/ S.String;
 
@@ -6380,7 +6466,8 @@ export const DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValueType =
   | "worker"
-  | "durable-object";
+  | "durable-object"
+  | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseExportsValueType =
   /*@__PURE__*/ S.String;
 
@@ -6766,7 +6853,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesDes
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesDestinationsList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesPropagationPolicy =
-  "authenticated" | "accept";
+  "authenticated" | "accept" | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -6829,7 +6916,8 @@ export const DispatchNamespacesScriptsSettingsEditResponseObservability =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseObservability>;
 
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementModeMode =
-  "smart";
+  | "smart"
+  | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponsePlacementModeMode =
   /*@__PURE__*/ S.String;
 
@@ -6887,7 +6975,8 @@ export const DispatchNamespacesScriptsSettingsEditResponsePlacementHost =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementHost>;
 
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementCase4Mode =
-  "targeted";
+  | "targeted"
+  | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase4Mode =
   /*@__PURE__*/ S.String;
 
@@ -6908,7 +6997,8 @@ export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase4 =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementCase4>;
 
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementCase5Mode =
-  "targeted";
+  | "targeted"
+  | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase5Mode =
   /*@__PURE__*/ S.String;
 
@@ -6929,7 +7019,8 @@ export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase5 =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementCase5>;
 
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementCase6Mode =
-  "targeted";
+  | "targeted"
+  | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase6Mode =
   /*@__PURE__*/ S.String;
 
@@ -6950,7 +7041,8 @@ export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase6 =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementCase6>;
 
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementCase7Mode =
-  "targeted";
+  | "targeted"
+  | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase7Mode =
   /*@__PURE__*/ S.String;
 
@@ -7089,7 +7181,8 @@ export const DispatchNamespacesScriptsSettingsEditResponseTailConsumersList =
 export type DispatchNamespacesScriptsSettingsEditResponseUsageModel =
   | "standard"
   | "bundled"
-  | "unbound";
+  | "unbound"
+  | (string & {});
 export const DispatchNamespacesScriptsSettingsEditResponseUsageModel =
   /*@__PURE__*/ S.String;
 
@@ -7171,7 +7264,9 @@ export const PatchDispatchNamespaceScriptSettingResponse =
     identifier: "PatchDispatchNamespaceScriptSettingResponse",
   }) as any as S.Schema<PatchDispatchNamespaceScriptSettingResponse>;
 
-export type DispatchNamespacesScriptsUpdateRequestBindingsInherit = "strict";
+export type DispatchNamespacesScriptsUpdateRequestBindingsInherit =
+  | "strict"
+  | (string & {});
 export const DispatchNamespacesScriptsUpdateRequestBindingsInherit =
   /*@__PURE__*/ S.String;
 
@@ -8537,7 +8632,7 @@ export const DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinati
   ) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinationsList>;
 
 export type DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagationPolicy =
-  "authenticated" | "accept";
+  "authenticated" | "accept" | (string & {});
 export const DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -8598,14 +8693,17 @@ export const DispatchNamespacesScriptsUpdateResponseObservability =
     identifier: "DispatchNamespacesScriptsUpdateResponseObservability",
   }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseObservability>;
 
-export type DispatchNamespacesScriptsUpdateResponsePlacementCase0Mode = "smart";
+export type DispatchNamespacesScriptsUpdateResponsePlacementCase0Mode =
+  | "smart"
+  | (string & {});
 export const DispatchNamespacesScriptsUpdateResponsePlacementCase0Mode =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase0Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS";
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
 export const DispatchNamespacesScriptsUpdateResponsePlacementCase0Status =
   /*@__PURE__*/ S.String;
 
@@ -8633,7 +8731,8 @@ export const DispatchNamespacesScriptsUpdateResponsePlacementCase0 =
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase1Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS";
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
 export const DispatchNamespacesScriptsUpdateResponsePlacementCase1Status =
   /*@__PURE__*/ S.String;
 
@@ -8661,7 +8760,8 @@ export const DispatchNamespacesScriptsUpdateResponsePlacementCase1 =
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase2Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS";
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
 export const DispatchNamespacesScriptsUpdateResponsePlacementCase2Status =
   /*@__PURE__*/ S.String;
 
@@ -8689,7 +8789,8 @@ export const DispatchNamespacesScriptsUpdateResponsePlacementCase2 =
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase3Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS";
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
 export const DispatchNamespacesScriptsUpdateResponsePlacementCase3Status =
   /*@__PURE__*/ S.String;
 
@@ -8715,14 +8816,16 @@ export const DispatchNamespacesScriptsUpdateResponsePlacementCase3 =
   }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementCase3>;
 
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase4Mode =
-  "targeted";
+  | "targeted"
+  | (string & {});
 export const DispatchNamespacesScriptsUpdateResponsePlacementCase4Mode =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase4Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS";
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
 export const DispatchNamespacesScriptsUpdateResponsePlacementCase4Status =
   /*@__PURE__*/ S.String;
 
@@ -8751,14 +8854,16 @@ export const DispatchNamespacesScriptsUpdateResponsePlacementCase4 =
   }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementCase4>;
 
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase5Mode =
-  "targeted";
+  | "targeted"
+  | (string & {});
 export const DispatchNamespacesScriptsUpdateResponsePlacementCase5Mode =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase5Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS";
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
 export const DispatchNamespacesScriptsUpdateResponsePlacementCase5Status =
   /*@__PURE__*/ S.String;
 
@@ -8787,14 +8892,16 @@ export const DispatchNamespacesScriptsUpdateResponsePlacementCase5 =
   }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementCase5>;
 
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase6Mode =
-  "targeted";
+  | "targeted"
+  | (string & {});
 export const DispatchNamespacesScriptsUpdateResponsePlacementCase6Mode =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase6Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS";
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
 export const DispatchNamespacesScriptsUpdateResponsePlacementCase6Status =
   /*@__PURE__*/ S.String;
 
@@ -8823,7 +8930,8 @@ export const DispatchNamespacesScriptsUpdateResponsePlacementCase6 =
   }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementCase6>;
 
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase7Mode =
-  "targeted";
+  | "targeted"
+  | (string & {});
 export const DispatchNamespacesScriptsUpdateResponsePlacementCase7Mode =
   /*@__PURE__*/ S.String;
 
@@ -8888,7 +8996,8 @@ export const DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetList =
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase7Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS";
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
 export const DispatchNamespacesScriptsUpdateResponsePlacementCase7Status =
   /*@__PURE__*/ S.String;
 
@@ -8941,14 +9050,16 @@ export const DispatchNamespacesScriptsUpdateResponsePlacement =
 
 export type DispatchNamespacesScriptsUpdateResponsePlacementMode =
   | "smart"
-  | "targeted";
+  | "targeted"
+  | (string & {});
 export const DispatchNamespacesScriptsUpdateResponsePlacementMode =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsUpdateResponsePlacementStatus =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS";
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
 export const DispatchNamespacesScriptsUpdateResponsePlacementStatus =
   /*@__PURE__*/ S.String;
 
@@ -8988,7 +9099,8 @@ export const DispatchNamespacesScriptsUpdateResponseTailConsumersList =
 export type DispatchNamespacesScriptsUpdateResponseUsageModel =
   | "standard"
   | "bundled"
-  | "unbound";
+  | "unbound"
+  | (string & {});
 export const DispatchNamespacesScriptsUpdateResponseUsageModel =
   /*@__PURE__*/ S.String;
 
@@ -9244,7 +9356,7 @@ export const DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDe
   ) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList>;
 
 export type DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesPropagationPolicy =
-  "authenticated" | "accept";
+  "authenticated" | "accept" | (string & {});
 export const DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -9307,12 +9419,16 @@ export const DispatchNamespacesScriptsContentUpdateResponseObservability =
   }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservability>;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Mode =
-  "smart";
+  | "smart"
+  | (string & {});
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Mode =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Status =
-  "SUCCESS" | "UNSUPPORTED_APPLICATION" | "INSUFFICIENT_INVOCATIONS";
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Status =
   /*@__PURE__*/ S.String;
 
@@ -9338,7 +9454,10 @@ export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase0 =
   }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementCase0>;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase1Status =
-  "SUCCESS" | "UNSUPPORTED_APPLICATION" | "INSUFFICIENT_INVOCATIONS";
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase1Status =
   /*@__PURE__*/ S.String;
 
@@ -9364,7 +9483,10 @@ export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase1 =
   }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementCase1>;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase2Status =
-  "SUCCESS" | "UNSUPPORTED_APPLICATION" | "INSUFFICIENT_INVOCATIONS";
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase2Status =
   /*@__PURE__*/ S.String;
 
@@ -9390,7 +9512,10 @@ export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase2 =
   }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementCase2>;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase3Status =
-  "SUCCESS" | "UNSUPPORTED_APPLICATION" | "INSUFFICIENT_INVOCATIONS";
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase3Status =
   /*@__PURE__*/ S.String;
 
@@ -9416,12 +9541,16 @@ export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase3 =
   }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementCase3>;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase4Mode =
-  "targeted";
+  | "targeted"
+  | (string & {});
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase4Mode =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase4Status =
-  "SUCCESS" | "UNSUPPORTED_APPLICATION" | "INSUFFICIENT_INVOCATIONS";
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase4Status =
   /*@__PURE__*/ S.String;
 
@@ -9450,12 +9579,16 @@ export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase4 =
   }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementCase4>;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase5Mode =
-  "targeted";
+  | "targeted"
+  | (string & {});
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase5Mode =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase5Status =
-  "SUCCESS" | "UNSUPPORTED_APPLICATION" | "INSUFFICIENT_INVOCATIONS";
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase5Status =
   /*@__PURE__*/ S.String;
 
@@ -9484,12 +9617,16 @@ export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase5 =
   }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementCase5>;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase6Mode =
-  "targeted";
+  | "targeted"
+  | (string & {});
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase6Mode =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase6Status =
-  "SUCCESS" | "UNSUPPORTED_APPLICATION" | "INSUFFICIENT_INVOCATIONS";
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase6Status =
   /*@__PURE__*/ S.String;
 
@@ -9518,7 +9655,8 @@ export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase6 =
   }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementCase6>;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase7Mode =
-  "targeted";
+  | "targeted"
+  | (string & {});
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase7Mode =
   /*@__PURE__*/ S.String;
 
@@ -9581,7 +9719,10 @@ export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetL
   ) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetList>;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase7Status =
-  "SUCCESS" | "UNSUPPORTED_APPLICATION" | "INSUFFICIENT_INVOCATIONS";
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase7Status =
   /*@__PURE__*/ S.String;
 
@@ -9635,14 +9776,16 @@ export const DispatchNamespacesScriptsContentUpdateResponsePlacement =
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementMode =
   | "smart"
-  | "targeted";
+  | "targeted"
+  | (string & {});
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementMode =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementStatus =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS";
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementStatus =
   /*@__PURE__*/ S.String;
 
@@ -9683,7 +9826,8 @@ export const DispatchNamespacesScriptsContentUpdateResponseTailConsumersList =
 export type DispatchNamespacesScriptsContentUpdateResponseUsageModel =
   | "standard"
   | "bundled"
-  | "unbound";
+  | "unbound"
+  | (string & {});
 export const DispatchNamespacesScriptsContentUpdateResponseUsageModel =
   /*@__PURE__*/ S.String;
 
@@ -9802,7 +9946,8 @@ export const PutDispatchNamespaceScriptContentResponse =
 
 export type DispatchNamespacesScriptsSecretsUpdateRequestType =
   | "secret_text"
-  | "secret_key";
+  | "secret_key"
+  | (string & {});
 export const DispatchNamespacesScriptsSecretsUpdateRequestType =
   /*@__PURE__*/ S.String;
 
@@ -9810,7 +9955,8 @@ export type DispatchNamespacesScriptsSecretsUpdateRequestFormat =
   | "raw"
   | "pkcs8"
   | "spki"
-  | "jwk";
+  | "jwk"
+  | (string & {});
 export const DispatchNamespacesScriptsSecretsUpdateRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -9822,7 +9968,8 @@ export type DispatchNamespacesScriptsSecretsUpdateRequestUsagesItem =
   | "deriveKey"
   | "deriveBits"
   | "wrapKey"
-  | "unwrapKey";
+  | "unwrapKey"
+  | (string & {});
 export const DispatchNamespacesScriptsSecretsUpdateRequestUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -9887,7 +10034,8 @@ export const PutDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PutDispatchNamespaceScriptSecretRequest>;
 
 export type DispatchNamespacesScriptsSecretsUpdateResultSecretTextType =
-  "secret_text";
+  | "secret_text"
+  | (string & {});
 export const DispatchNamespacesScriptsSecretsUpdateResultSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -9914,12 +10062,14 @@ export type DispatchNamespacesScriptsSecretsUpdateResultSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
-  | "jwk";
+  | "jwk"
+  | (string & {});
 export const DispatchNamespacesScriptsSecretsUpdateResultSecretKeyFormat =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsSecretsUpdateResultSecretKeyType =
-  "secret_key";
+  | "secret_key"
+  | (string & {});
 export const DispatchNamespacesScriptsSecretsUpdateResultSecretKeyType =
   /*@__PURE__*/ S.String;
 
@@ -9931,7 +10081,8 @@ export type DispatchNamespacesScriptsSecretsUpdateResultSecretKeyUsagesItem =
   | "deriveKey"
   | "deriveBits"
   | "wrapKey"
-  | "unwrapKey";
+  | "unwrapKey"
+  | (string & {});
 export const DispatchNamespacesScriptsSecretsUpdateResultSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 

@@ -85,7 +85,8 @@ export const CreateMtlsCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 export type CreateResponseType =
   | "custom"
   | "gateway_managed"
-  | "access_managed";
+  | "access_managed"
+  | (string & {});
 export const CreateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -157,7 +158,8 @@ export const DeleteMtlsCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 export type DeleteResponseType =
   | "custom"
   | "gateway_managed"
-  | "access_managed";
+  | "access_managed"
+  | (string & {});
 export const DeleteResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -282,7 +284,11 @@ export const GetMtlsCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetMtlsCertificateRequest",
 }) as any as S.Schema<GetMtlsCertificateRequest>;
 
-export type GetResponseType = "custom" | "gateway_managed" | "access_managed";
+export type GetResponseType =
+  | "custom"
+  | "gateway_managed"
+  | "access_managed"
+  | (string & {});
 export const GetResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -325,7 +331,11 @@ export const GetMtlsCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetMtlsCertificateResponse",
 }) as any as S.Schema<GetMtlsCertificateResponse>;
 
-export type ListRequestType = "custom" | "gateway_managed" | "access_managed";
+export type ListRequestType =
+  | "custom"
+  | "gateway_managed"
+  | "access_managed"
+  | (string & {});
 export const ListRequestType = /*@__PURE__*/ S.String;
 
 export type ListRequestTypeList = ReadonlyArray<ListRequestType>;
@@ -359,7 +369,8 @@ export const ListMtlsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListResultItemType =
   | "custom"
   | "gateway_managed"
-  | "access_managed";
+  | "access_managed"
+  | (string & {});
 export const ListResultItemType = /*@__PURE__*/ S.String;
 
 export interface ListResultItem {

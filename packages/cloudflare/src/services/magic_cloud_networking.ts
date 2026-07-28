@@ -187,10 +187,14 @@ export const ApplyOnRampResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type CatalogSyncsCreateRequestDestinationType =
   | "NONE"
-  | "ZERO_TRUST_LIST";
+  | "ZERO_TRUST_LIST"
+  | (string & {});
 export const CatalogSyncsCreateRequestDestinationType = /*@__PURE__*/ S.String;
 
-export type CatalogSyncsCreateRequestUpdateMode = "AUTO" | "MANUAL";
+export type CatalogSyncsCreateRequestUpdateMode =
+  | "AUTO"
+  | "MANUAL"
+  | (string & {});
 export const CatalogSyncsCreateRequestUpdateMode = /*@__PURE__*/ S.String;
 
 export interface CreateCatalogSyncRequest {
@@ -228,10 +232,14 @@ export const CreateCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CatalogSyncsCreateResponseDestinationType =
   | "NONE"
-  | "ZERO_TRUST_LIST";
+  | "ZERO_TRUST_LIST"
+  | (string & {});
 export const CatalogSyncsCreateResponseDestinationType = /*@__PURE__*/ S.String;
 
-export type CatalogSyncsCreateResponseUpdateMode = "AUTO" | "MANUAL";
+export type CatalogSyncsCreateResponseUpdateMode =
+  | "AUTO"
+  | "MANUAL"
+  | (string & {});
 export const CatalogSyncsCreateResponseUpdateMode = /*@__PURE__*/ S.String;
 
 export type CatalogSyncsCreateResponseErrorsValueCode =
@@ -389,7 +397,8 @@ export type CatalogSyncsCreateResponseErrorsValueCode =
   | 103005
   | 103006
   | 103007
-  | 103008;
+  | 103008
+  | (number & {});
 export const CatalogSyncsCreateResponseErrorsValueCode = /*@__PURE__*/ S.Number;
 
 export interface CatalogSyncsCreateResponseErrorsValueMeta {
@@ -504,7 +513,8 @@ export type CloudIntegrationsCreateRequestCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
-  | "CLOUDFLARE";
+  | "CLOUDFLARE"
+  | (string & {});
 export const CloudIntegrationsCreateRequestCloudType = /*@__PURE__*/ S.String;
 
 export interface CreateCloudIntegrationRequest {
@@ -540,13 +550,15 @@ export type CloudIntegrationsCreateResponseCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
-  | "CLOUDFLARE";
+  | "CLOUDFLARE"
+  | (string & {});
 export const CloudIntegrationsCreateResponseCloudType = /*@__PURE__*/ S.String;
 
 export type CloudIntegrationsCreateResponseLifecycleState =
   | "ACTIVE"
   | "PENDING_SETUP"
-  | "RETIRED";
+  | "RETIRED"
+  | (string & {});
 export const CloudIntegrationsCreateResponseLifecycleState =
   /*@__PURE__*/ S.String;
 
@@ -555,7 +567,8 @@ export type CloudIntegrationsCreateResponseState =
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const CloudIntegrationsCreateResponseState = /*@__PURE__*/ S.String;
 
 export type CloudIntegrationsCreateResponseStateV2 =
@@ -563,7 +576,8 @@ export type CloudIntegrationsCreateResponseStateV2 =
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const CloudIntegrationsCreateResponseStateV2 = /*@__PURE__*/ S.String;
 
 export interface CloudIntegrationsCreateResponseStatusDiscoveryProgress {
@@ -603,7 +617,8 @@ export type CloudIntegrationsCreateResponseStatusLastDiscoveryStatus =
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const CloudIntegrationsCreateResponseStatusLastDiscoveryStatus =
   /*@__PURE__*/ S.String;
 
@@ -612,7 +627,8 @@ export type CloudIntegrationsCreateResponseStatusLastDiscoveryStatusV2 =
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const CloudIntegrationsCreateResponseStatusLastDiscoveryStatusV2 =
   /*@__PURE__*/ S.String;
 
@@ -624,7 +640,8 @@ export const CloudIntegrationsCreateResponseStatusRegionsList =
   ) as any as S.Schema<CloudIntegrationsCreateResponseStatusRegionsList>;
 
 export type CloudIntegrationsCreateResponseStatusInUseByItemClientType =
-  "MAGIC_WAN_CLOUD_ONRAMP";
+  | "MAGIC_WAN_CLOUD_ONRAMP"
+  | (string & {});
 export const CloudIntegrationsCreateResponseStatusInUseByItemClientType =
   /*@__PURE__*/ S.String;
 
@@ -774,10 +791,17 @@ export const CreateCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCloudIntegrationResponse",
 }) as any as S.Schema<CreateCloudIntegrationResponse>;
 
-export type OnRampsCreateRequestCloudType = "AWS" | "AZURE" | "GOOGLE";
+export type OnRampsCreateRequestCloudType =
+  | "AWS"
+  | "AZURE"
+  | "GOOGLE"
+  | (string & {});
 export const OnRampsCreateRequestCloudType = /*@__PURE__*/ S.String;
 
-export type OnRampsCreateRequestType = "OnrampTypeSingle" | "OnrampTypeHub";
+export type OnRampsCreateRequestType =
+  | "OnrampTypeSingle"
+  | "OnrampTypeHub"
+  | (string & {});
 export const OnRampsCreateRequestType = /*@__PURE__*/ S.String;
 
 export type OnRampsCreateRequestAttachedHubsList = ReadonlyArray<string>;
@@ -855,10 +879,17 @@ export const CreateOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateOnRampRequest",
 }) as any as S.Schema<CreateOnRampRequest>;
 
-export type OnRampsCreateResponseCloudType = "AWS" | "AZURE" | "GOOGLE";
+export type OnRampsCreateResponseCloudType =
+  | "AWS"
+  | "AZURE"
+  | "GOOGLE"
+  | (string & {});
 export const OnRampsCreateResponseCloudType = /*@__PURE__*/ S.String;
 
-export type OnRampsCreateResponseType = "OnrampTypeSingle" | "OnrampTypeHub";
+export type OnRampsCreateResponseType =
+  | "OnrampTypeSingle"
+  | "OnrampTypeHub"
+  | (string & {});
 export const OnRampsCreateResponseType = /*@__PURE__*/ S.String;
 
 export type OnRampsCreateResponseAttachedHubsList = ReadonlyArray<string>;
@@ -940,7 +971,8 @@ export type OnRampsCreateResponsePlannedResourcesItemPlannedAction =
   | "create"
   | "update"
   | "replace"
-  | "destroy";
+  | "destroy"
+  | (string & {});
 export const OnRampsCreateResponsePlannedResourcesItemPlannedAction =
   /*@__PURE__*/ S.String;
 
@@ -948,7 +980,8 @@ export type OnRampsCreateResponsePlannedResourcesItemResourceCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
-  | "CLOUDFLARE";
+  | "CLOUDFLARE"
+  | (string & {});
 export const OnRampsCreateResponsePlannedResourcesItemResourceCloudType =
   /*@__PURE__*/ S.String;
 
@@ -1009,7 +1042,8 @@ export type OnRampsCreateResponsePlannedResourcesItemResourceResourceType =
   | "google_compute_network_firewall_policy"
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
+  | "cloudflare_ipsec_tunnel"
+  | (string & {});
 export const OnRampsCreateResponsePlannedResourcesItemResourceResourceType =
   /*@__PURE__*/ S.String;
 
@@ -1094,7 +1128,8 @@ export type OnRampsCreateResponsePostApplyResourcesValueCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
-  | "CLOUDFLARE";
+  | "CLOUDFLARE"
+  | (string & {});
 export const OnRampsCreateResponsePostApplyResourcesValueCloudType =
   /*@__PURE__*/ S.String;
 
@@ -1224,7 +1259,8 @@ export type OnRampsCreateResponsePostApplyResourcesValueResourceType =
   | "google_compute_network_firewall_policy"
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
+  | "cloudflare_ipsec_tunnel"
+  | (string & {});
 export const OnRampsCreateResponsePostApplyResourcesValueResourceType =
   /*@__PURE__*/ S.String;
 
@@ -1298,7 +1334,7 @@ export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItems
   }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -1359,7 +1395,8 @@ export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsI
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -1426,7 +1463,7 @@ export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItems
   }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -1487,7 +1524,8 @@ export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsI
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -1684,7 +1722,7 @@ export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItem
   }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -1745,7 +1783,8 @@ export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItems
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -1812,7 +1851,7 @@ export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItem
   }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -1873,7 +1912,8 @@ export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItems
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -2050,7 +2090,7 @@ export const OnRampsCreateResponsePostApplyResourcesValueTagsMap =
   ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueTagsMap>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueManagedByItemClientType =
-  "MAGIC_WAN_CLOUD_ONRAMP";
+  "MAGIC_WAN_CLOUD_ONRAMP" | (string & {});
 export const OnRampsCreateResponsePostApplyResourcesValueManagedByItemClientType =
   /*@__PURE__*/ S.String;
 
@@ -2185,7 +2225,8 @@ export type OnRampsCreateResponseStatusLifecycleState =
   | "OnrampActive"
   | "OnrampPendingDestroy"
   | "OnrampDestroying"
-  | "OnrampDestroyFailed";
+  | "OnrampDestroyFailed"
+  | (string & {});
 export const OnRampsCreateResponseStatusLifecycleState = /*@__PURE__*/ S.String;
 
 export interface OnRampsCreateResponseStatusPlanProgress {
@@ -2367,7 +2408,8 @@ export type OnRampsCreateResponseStatusLifecycleErrorsValueCode =
   | 103005
   | 103006
   | 103007
-  | 103008;
+  | 103008
+  | (number & {});
 export const OnRampsCreateResponseStatusLifecycleErrorsValueCode =
   /*@__PURE__*/ S.Number;
 
@@ -2471,7 +2513,8 @@ export type OnRampsCreateResponseVpcsByIdValueCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
-  | "CLOUDFLARE";
+  | "CLOUDFLARE"
+  | (string & {});
 export const OnRampsCreateResponseVpcsByIdValueCloudType =
   /*@__PURE__*/ S.String;
 
@@ -2600,7 +2643,8 @@ export type OnRampsCreateResponseVpcsByIdValueResourceType =
   | "google_compute_network_firewall_policy"
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
+  | "cloudflare_ipsec_tunnel"
+  | (string & {});
 export const OnRampsCreateResponseVpcsByIdValueResourceType =
   /*@__PURE__*/ S.String;
 
@@ -2674,7 +2718,7 @@ export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueM
   }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem>;
 
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -2735,7 +2779,8 @@ export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMc
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -2802,7 +2847,7 @@ export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueM
   }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem>;
 
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -2863,7 +2908,8 @@ export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMc
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -3059,7 +3105,7 @@ export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue
   }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem>;
 
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -3120,7 +3166,8 @@ export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueM
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -3187,7 +3234,7 @@ export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue
   }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem>;
 
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -3248,7 +3295,8 @@ export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueM
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -3424,7 +3472,8 @@ export const OnRampsCreateResponseVpcsByIdValueTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueTagsMap>;
 
 export type OnRampsCreateResponseVpcsByIdValueManagedByItemClientType =
-  "MAGIC_WAN_CLOUD_ONRAMP";
+  | "MAGIC_WAN_CLOUD_ONRAMP"
+  | (string & {});
 export const OnRampsCreateResponseVpcsByIdValueManagedByItemClientType =
   /*@__PURE__*/ S.String;
 
@@ -3894,7 +3943,8 @@ export type ResourcesExportRequestResourceType =
   | "google_compute_network_firewall_policy"
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
+  | "cloudflare_ipsec_tunnel"
+  | (string & {});
 export const ResourcesExportRequestResourceType = /*@__PURE__*/ S.String;
 
 export type ResourcesExportRequestResourceTypeList =
@@ -3978,10 +4028,16 @@ export const GetCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCatalogSyncRequest",
 }) as any as S.Schema<GetCatalogSyncRequest>;
 
-export type CatalogSyncsGetResponseDestinationType = "NONE" | "ZERO_TRUST_LIST";
+export type CatalogSyncsGetResponseDestinationType =
+  | "NONE"
+  | "ZERO_TRUST_LIST"
+  | (string & {});
 export const CatalogSyncsGetResponseDestinationType = /*@__PURE__*/ S.String;
 
-export type CatalogSyncsGetResponseUpdateMode = "AUTO" | "MANUAL";
+export type CatalogSyncsGetResponseUpdateMode =
+  | "AUTO"
+  | "MANUAL"
+  | (string & {});
 export const CatalogSyncsGetResponseUpdateMode = /*@__PURE__*/ S.String;
 
 export type CatalogSyncsGetResponseErrorsValueCode =
@@ -4139,7 +4195,8 @@ export type CatalogSyncsGetResponseErrorsValueCode =
   | 103005
   | 103006
   | 103007
-  | 103008;
+  | 103008
+  | (number & {});
 export const CatalogSyncsGetResponseErrorsValueCode = /*@__PURE__*/ S.Number;
 
 export interface CatalogSyncsGetResponseErrorsValueMeta {
@@ -4274,13 +4331,15 @@ export type CloudIntegrationsGetResponseCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
-  | "CLOUDFLARE";
+  | "CLOUDFLARE"
+  | (string & {});
 export const CloudIntegrationsGetResponseCloudType = /*@__PURE__*/ S.String;
 
 export type CloudIntegrationsGetResponseLifecycleState =
   | "ACTIVE"
   | "PENDING_SETUP"
-  | "RETIRED";
+  | "RETIRED"
+  | (string & {});
 export const CloudIntegrationsGetResponseLifecycleState =
   /*@__PURE__*/ S.String;
 
@@ -4289,7 +4348,8 @@ export type CloudIntegrationsGetResponseState =
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const CloudIntegrationsGetResponseState = /*@__PURE__*/ S.String;
 
 export type CloudIntegrationsGetResponseStateV2 =
@@ -4297,7 +4357,8 @@ export type CloudIntegrationsGetResponseStateV2 =
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const CloudIntegrationsGetResponseStateV2 = /*@__PURE__*/ S.String;
 
 export interface CloudIntegrationsGetResponseStatusDiscoveryProgress {
@@ -4337,7 +4398,8 @@ export type CloudIntegrationsGetResponseStatusLastDiscoveryStatus =
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const CloudIntegrationsGetResponseStatusLastDiscoveryStatus =
   /*@__PURE__*/ S.String;
 
@@ -4346,7 +4408,8 @@ export type CloudIntegrationsGetResponseStatusLastDiscoveryStatusV2 =
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const CloudIntegrationsGetResponseStatusLastDiscoveryStatusV2 =
   /*@__PURE__*/ S.String;
 
@@ -4358,7 +4421,8 @@ export const CloudIntegrationsGetResponseStatusRegionsList =
   ) as any as S.Schema<CloudIntegrationsGetResponseStatusRegionsList>;
 
 export type CloudIntegrationsGetResponseStatusInUseByItemClientType =
-  "MAGIC_WAN_CLOUD_ONRAMP";
+  | "MAGIC_WAN_CLOUD_ONRAMP"
+  | (string & {});
 export const CloudIntegrationsGetResponseStatusInUseByItemClientType =
   /*@__PURE__*/ S.String;
 
@@ -4532,10 +4596,17 @@ export const GetOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetOnRampRequest",
 }) as any as S.Schema<GetOnRampRequest>;
 
-export type OnRampsGetResponseCloudType = "AWS" | "AZURE" | "GOOGLE";
+export type OnRampsGetResponseCloudType =
+  | "AWS"
+  | "AZURE"
+  | "GOOGLE"
+  | (string & {});
 export const OnRampsGetResponseCloudType = /*@__PURE__*/ S.String;
 
-export type OnRampsGetResponseType = "OnrampTypeSingle" | "OnrampTypeHub";
+export type OnRampsGetResponseType =
+  | "OnrampTypeSingle"
+  | "OnrampTypeHub"
+  | (string & {});
 export const OnRampsGetResponseType = /*@__PURE__*/ S.String;
 
 export type OnRampsGetResponseAttachedHubsList = ReadonlyArray<string>;
@@ -4616,7 +4687,8 @@ export type OnRampsGetResponsePlannedResourcesItemPlannedAction =
   | "create"
   | "update"
   | "replace"
-  | "destroy";
+  | "destroy"
+  | (string & {});
 export const OnRampsGetResponsePlannedResourcesItemPlannedAction =
   /*@__PURE__*/ S.String;
 
@@ -4624,7 +4696,8 @@ export type OnRampsGetResponsePlannedResourcesItemResourceCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
-  | "CLOUDFLARE";
+  | "CLOUDFLARE"
+  | (string & {});
 export const OnRampsGetResponsePlannedResourcesItemResourceCloudType =
   /*@__PURE__*/ S.String;
 
@@ -4685,7 +4758,8 @@ export type OnRampsGetResponsePlannedResourcesItemResourceResourceType =
   | "google_compute_network_firewall_policy"
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
+  | "cloudflare_ipsec_tunnel"
+  | (string & {});
 export const OnRampsGetResponsePlannedResourcesItemResourceResourceType =
   /*@__PURE__*/ S.String;
 
@@ -4768,7 +4842,8 @@ export type OnRampsGetResponsePostApplyResourcesValueCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
-  | "CLOUDFLARE";
+  | "CLOUDFLARE"
+  | (string & {});
 export const OnRampsGetResponsePostApplyResourcesValueCloudType =
   /*@__PURE__*/ S.String;
 
@@ -4897,7 +4972,8 @@ export type OnRampsGetResponsePostApplyResourcesValueResourceType =
   | "google_compute_network_firewall_policy"
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
+  | "cloudflare_ipsec_tunnel"
+  | (string & {});
 export const OnRampsGetResponsePostApplyResourcesValueResourceType =
   /*@__PURE__*/ S.String;
 
@@ -4971,7 +5047,7 @@ export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsIte
   }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem>;
 
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -5032,7 +5108,8 @@ export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -5099,7 +5176,7 @@ export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsIte
   }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem>;
 
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -5160,7 +5237,8 @@ export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -5357,7 +5435,7 @@ export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsIt
   }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem>;
 
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -5418,7 +5496,8 @@ export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsIte
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -5485,7 +5564,7 @@ export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsIt
   }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem>;
 
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -5546,7 +5625,8 @@ export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsIte
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -5723,7 +5803,8 @@ export const OnRampsGetResponsePostApplyResourcesValueTagsMap =
   ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueTagsMap>;
 
 export type OnRampsGetResponsePostApplyResourcesValueManagedByItemClientType =
-  "MAGIC_WAN_CLOUD_ONRAMP";
+  | "MAGIC_WAN_CLOUD_ONRAMP"
+  | (string & {});
 export const OnRampsGetResponsePostApplyResourcesValueManagedByItemClientType =
   /*@__PURE__*/ S.String;
 
@@ -5856,7 +5937,8 @@ export type OnRampsGetResponseStatusLifecycleState =
   | "OnrampActive"
   | "OnrampPendingDestroy"
   | "OnrampDestroying"
-  | "OnrampDestroyFailed";
+  | "OnrampDestroyFailed"
+  | (string & {});
 export const OnRampsGetResponseStatusLifecycleState = /*@__PURE__*/ S.String;
 
 export interface OnRampsGetResponseStatusPlanProgress {
@@ -6038,7 +6120,8 @@ export type OnRampsGetResponseStatusLifecycleErrorsValueCode =
   | 103005
   | 103006
   | 103007
-  | 103008;
+  | 103008
+  | (number & {});
 export const OnRampsGetResponseStatusLifecycleErrorsValueCode =
   /*@__PURE__*/ S.Number;
 
@@ -6142,7 +6225,8 @@ export type OnRampsGetResponseVpcsByIdValueCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
-  | "CLOUDFLARE";
+  | "CLOUDFLARE"
+  | (string & {});
 export const OnRampsGetResponseVpcsByIdValueCloudType = /*@__PURE__*/ S.String;
 
 export type OnRampsGetResponseVpcsByIdValueConfigMap = {
@@ -6267,7 +6351,8 @@ export type OnRampsGetResponseVpcsByIdValueResourceType =
   | "google_compute_network_firewall_policy"
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
+  | "cloudflare_ipsec_tunnel"
+  | (string & {});
 export const OnRampsGetResponseVpcsByIdValueResourceType =
   /*@__PURE__*/ S.String;
 
@@ -6341,7 +6426,7 @@ export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnY
   }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem>;
 
 export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -6402,7 +6487,8 @@ export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnRe
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -6469,7 +6555,7 @@ export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnL
   }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem>;
 
 export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -6530,7 +6616,8 @@ export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnLi
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -6726,7 +6813,7 @@ export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcn
   }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem>;
 
 export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -6787,7 +6874,8 @@ export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnR
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -6854,7 +6942,7 @@ export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcn
   }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem>;
 
 export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -6915,7 +7003,8 @@ export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnL
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -7089,7 +7178,8 @@ export const OnRampsGetResponseVpcsByIdValueTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<OnRampsGetResponseVpcsByIdValueTagsMap>;
 
 export type OnRampsGetResponseVpcsByIdValueManagedByItemClientType =
-  "MAGIC_WAN_CLOUD_ONRAMP";
+  | "MAGIC_WAN_CLOUD_ONRAMP"
+  | (string & {});
 export const OnRampsGetResponseVpcsByIdValueManagedByItemClientType =
   /*@__PURE__*/ S.String;
 
@@ -7325,7 +7415,8 @@ export type ResourcesGetResponseCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
-  | "CLOUDFLARE";
+  | "CLOUDFLARE"
+  | (string & {});
 export const ResourcesGetResponseCloudType = /*@__PURE__*/ S.String;
 
 export type ResourcesGetResponseConfigMap = {
@@ -7446,7 +7537,8 @@ export type ResourcesGetResponseResourceType =
   | "google_compute_network_firewall_policy"
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
+  | "cloudflare_ipsec_tunnel"
+  | (string & {});
 export const ResourcesGetResponseResourceType = /*@__PURE__*/ S.String;
 
 export interface ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnStringItem {
@@ -7519,7 +7611,7 @@ export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnYamlDiffItem>;
 
 export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -7580,7 +7672,8 @@ export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePrevi
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -7647,7 +7740,7 @@ export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemList
   }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem>;
 
 export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -7708,7 +7801,8 @@ export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListI
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -7902,7 +7996,7 @@ export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnYamlDiffIte
   }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnYamlDiffItem>;
 
 export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -7963,7 +8057,8 @@ export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePrev
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -8030,7 +8125,7 @@ export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemLis
   }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem>;
 
 export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -8091,7 +8186,8 @@ export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemList
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -8257,7 +8353,8 @@ export const ResourcesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ResourcesGetResponseTagsMap>;
 
 export type ResourcesGetResponseManagedByItemClientType =
-  "MAGIC_WAN_CLOUD_ONRAMP";
+  | "MAGIC_WAN_CLOUD_ONRAMP"
+  | (string & {});
 export const ResourcesGetResponseManagedByItemClientType =
   /*@__PURE__*/ S.String;
 
@@ -8437,7 +8534,8 @@ export const InitialSetupCloudIntegrationResponse = /*@__PURE__*/ S.suspend(
 
 export type CatalogSyncsPrebuiltPoliciesListRequestDestinationType =
   | "NONE"
-  | "ZERO_TRUST_LIST";
+  | "ZERO_TRUST_LIST"
+  | (string & {});
 export const CatalogSyncsPrebuiltPoliciesListRequestDestinationType =
   /*@__PURE__*/ S.String;
 
@@ -8469,7 +8567,7 @@ export const ListCatalogSyncPrebuiltPoliciesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListCatalogSyncPrebuiltPoliciesRequest>;
 
 export type CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsItem =
-  "NONE" | "ZERO_TRUST_LIST";
+  "NONE" | "ZERO_TRUST_LIST" | (string & {});
 export const CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsItem =
   /*@__PURE__*/ S.String;
 
@@ -8546,10 +8644,14 @@ export const ListCatalogSyncsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CatalogSyncsListResultItemDestinationType =
   | "NONE"
-  | "ZERO_TRUST_LIST";
+  | "ZERO_TRUST_LIST"
+  | (string & {});
 export const CatalogSyncsListResultItemDestinationType = /*@__PURE__*/ S.String;
 
-export type CatalogSyncsListResultItemUpdateMode = "AUTO" | "MANUAL";
+export type CatalogSyncsListResultItemUpdateMode =
+  | "AUTO"
+  | "MANUAL"
+  | (string & {});
 export const CatalogSyncsListResultItemUpdateMode = /*@__PURE__*/ S.String;
 
 export type CatalogSyncsListResultItemErrorsValueCode =
@@ -8707,7 +8809,8 @@ export type CatalogSyncsListResultItemErrorsValueCode =
   | 103005
   | 103006
   | 103007
-  | 103008;
+  | 103008
+  | (number & {});
 export const CatalogSyncsListResultItemErrorsValueCode = /*@__PURE__*/ S.Number;
 
 export interface CatalogSyncsListResultItemErrorsValueMeta {
@@ -8870,13 +8973,15 @@ export type CloudIntegrationsListResultItemCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
-  | "CLOUDFLARE";
+  | "CLOUDFLARE"
+  | (string & {});
 export const CloudIntegrationsListResultItemCloudType = /*@__PURE__*/ S.String;
 
 export type CloudIntegrationsListResultItemLifecycleState =
   | "ACTIVE"
   | "PENDING_SETUP"
-  | "RETIRED";
+  | "RETIRED"
+  | (string & {});
 export const CloudIntegrationsListResultItemLifecycleState =
   /*@__PURE__*/ S.String;
 
@@ -8885,7 +8990,8 @@ export type CloudIntegrationsListResultItemState =
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const CloudIntegrationsListResultItemState = /*@__PURE__*/ S.String;
 
 export type CloudIntegrationsListResultItemStateV2 =
@@ -8893,7 +8999,8 @@ export type CloudIntegrationsListResultItemStateV2 =
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const CloudIntegrationsListResultItemStateV2 = /*@__PURE__*/ S.String;
 
 export interface CloudIntegrationsListResultItemStatusDiscoveryProgress {
@@ -8933,7 +9040,8 @@ export type CloudIntegrationsListResultItemStatusLastDiscoveryStatus =
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const CloudIntegrationsListResultItemStatusLastDiscoveryStatus =
   /*@__PURE__*/ S.String;
 
@@ -8942,7 +9050,8 @@ export type CloudIntegrationsListResultItemStatusLastDiscoveryStatusV2 =
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const CloudIntegrationsListResultItemStatusLastDiscoveryStatusV2 =
   /*@__PURE__*/ S.String;
 
@@ -8954,7 +9063,8 @@ export const CloudIntegrationsListResultItemStatusRegionsList =
   ) as any as S.Schema<CloudIntegrationsListResultItemStatusRegionsList>;
 
 export type CloudIntegrationsListResultItemStatusInUseByItemClientType =
-  "MAGIC_WAN_CLOUD_ONRAMP";
+  | "MAGIC_WAN_CLOUD_ONRAMP"
+  | (string & {});
 export const CloudIntegrationsListResultItemStatusInUseByItemClientType =
   /*@__PURE__*/ S.String;
 
@@ -9190,10 +9300,17 @@ export const ListOnRampsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOnRampsRequest",
 }) as any as S.Schema<ListOnRampsRequest>;
 
-export type OnRampsListResultItemCloudType = "AWS" | "AZURE" | "GOOGLE";
+export type OnRampsListResultItemCloudType =
+  | "AWS"
+  | "AZURE"
+  | "GOOGLE"
+  | (string & {});
 export const OnRampsListResultItemCloudType = /*@__PURE__*/ S.String;
 
-export type OnRampsListResultItemType = "OnrampTypeSingle" | "OnrampTypeHub";
+export type OnRampsListResultItemType =
+  | "OnrampTypeSingle"
+  | "OnrampTypeHub"
+  | (string & {});
 export const OnRampsListResultItemType = /*@__PURE__*/ S.String;
 
 export type OnRampsListResultItemAttachedHubsList = ReadonlyArray<string>;
@@ -9275,7 +9392,8 @@ export type OnRampsListResultItemPlannedResourcesItemPlannedAction =
   | "create"
   | "update"
   | "replace"
-  | "destroy";
+  | "destroy"
+  | (string & {});
 export const OnRampsListResultItemPlannedResourcesItemPlannedAction =
   /*@__PURE__*/ S.String;
 
@@ -9283,7 +9401,8 @@ export type OnRampsListResultItemPlannedResourcesItemResourceCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
-  | "CLOUDFLARE";
+  | "CLOUDFLARE"
+  | (string & {});
 export const OnRampsListResultItemPlannedResourcesItemResourceCloudType =
   /*@__PURE__*/ S.String;
 
@@ -9344,7 +9463,8 @@ export type OnRampsListResultItemPlannedResourcesItemResourceResourceType =
   | "google_compute_network_firewall_policy"
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
+  | "cloudflare_ipsec_tunnel"
+  | (string & {});
 export const OnRampsListResultItemPlannedResourcesItemResourceResourceType =
   /*@__PURE__*/ S.String;
 
@@ -9429,7 +9549,8 @@ export type OnRampsListResultItemPostApplyResourcesValueCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
-  | "CLOUDFLARE";
+  | "CLOUDFLARE"
+  | (string & {});
 export const OnRampsListResultItemPostApplyResourcesValueCloudType =
   /*@__PURE__*/ S.String;
 
@@ -9559,7 +9680,8 @@ export type OnRampsListResultItemPostApplyResourcesValueResourceType =
   | "google_compute_network_firewall_policy"
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
+  | "cloudflare_ipsec_tunnel"
+  | (string & {});
 export const OnRampsListResultItemPostApplyResourcesValueResourceType =
   /*@__PURE__*/ S.String;
 
@@ -9633,7 +9755,7 @@ export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItems
   }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem>;
 
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -9694,7 +9816,8 @@ export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsI
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -9761,7 +9884,7 @@ export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItems
   }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem>;
 
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -9822,7 +9945,8 @@ export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsI
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -10019,7 +10143,7 @@ export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItem
   }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem>;
 
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -10080,7 +10204,8 @@ export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItems
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -10147,7 +10272,7 @@ export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItem
   }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem>;
 
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -10208,7 +10333,8 @@ export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItems
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -10385,7 +10511,7 @@ export const OnRampsListResultItemPostApplyResourcesValueTagsMap =
   ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueTagsMap>;
 
 export type OnRampsListResultItemPostApplyResourcesValueManagedByItemClientType =
-  "MAGIC_WAN_CLOUD_ONRAMP";
+  "MAGIC_WAN_CLOUD_ONRAMP" | (string & {});
 export const OnRampsListResultItemPostApplyResourcesValueManagedByItemClientType =
   /*@__PURE__*/ S.String;
 
@@ -10520,7 +10646,8 @@ export type OnRampsListResultItemStatusLifecycleState =
   | "OnrampActive"
   | "OnrampPendingDestroy"
   | "OnrampDestroying"
-  | "OnrampDestroyFailed";
+  | "OnrampDestroyFailed"
+  | (string & {});
 export const OnRampsListResultItemStatusLifecycleState = /*@__PURE__*/ S.String;
 
 export interface OnRampsListResultItemStatusPlanProgress {
@@ -10702,7 +10829,8 @@ export type OnRampsListResultItemStatusLifecycleErrorsValueCode =
   | 103005
   | 103006
   | 103007
-  | 103008;
+  | 103008
+  | (number & {});
 export const OnRampsListResultItemStatusLifecycleErrorsValueCode =
   /*@__PURE__*/ S.Number;
 
@@ -10806,7 +10934,8 @@ export type OnRampsListResultItemVpcsByIdValueCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
-  | "CLOUDFLARE";
+  | "CLOUDFLARE"
+  | (string & {});
 export const OnRampsListResultItemVpcsByIdValueCloudType =
   /*@__PURE__*/ S.String;
 
@@ -10935,7 +11064,8 @@ export type OnRampsListResultItemVpcsByIdValueResourceType =
   | "google_compute_network_firewall_policy"
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
+  | "cloudflare_ipsec_tunnel"
+  | (string & {});
 export const OnRampsListResultItemVpcsByIdValueResourceType =
   /*@__PURE__*/ S.String;
 
@@ -11009,7 +11139,7 @@ export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueM
   }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem>;
 
 export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -11070,7 +11200,8 @@ export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMc
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -11137,7 +11268,7 @@ export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueM
   }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem>;
 
 export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -11198,7 +11329,8 @@ export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMc
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -11394,7 +11526,7 @@ export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue
   }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem>;
 
 export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -11455,7 +11587,8 @@ export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueM
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -11522,7 +11655,7 @@ export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue
   }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem>;
 
 export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -11583,7 +11716,8 @@ export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueM
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -11759,7 +11893,8 @@ export const OnRampsListResultItemVpcsByIdValueTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<OnRampsListResultItemVpcsByIdValueTagsMap>;
 
 export type OnRampsListResultItemVpcsByIdValueManagedByItemClientType =
-  "MAGIC_WAN_CLOUD_ONRAMP";
+  | "MAGIC_WAN_CLOUD_ONRAMP"
+  | (string & {});
 export const OnRampsListResultItemVpcsByIdValueManagedByItemClientType =
   /*@__PURE__*/ S.String;
 
@@ -12057,7 +12192,8 @@ export type ResourcesListRequestResourceType =
   | "google_compute_network_firewall_policy"
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
+  | "cloudflare_ipsec_tunnel"
+  | (string & {});
 export const ResourcesListRequestResourceType = /*@__PURE__*/ S.String;
 
 export type ResourcesListRequestResourceTypeList =
@@ -12125,7 +12261,8 @@ export type ResourcesListResultItemCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
-  | "CLOUDFLARE";
+  | "CLOUDFLARE"
+  | (string & {});
 export const ResourcesListResultItemCloudType = /*@__PURE__*/ S.String;
 
 export type ResourcesListResultItemConfigMap = {
@@ -12247,7 +12384,8 @@ export type ResourcesListResultItemResourceType =
   | "google_compute_network_firewall_policy"
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
+  | "cloudflare_ipsec_tunnel"
+  | (string & {});
 export const ResourcesListResultItemResourceType = /*@__PURE__*/ S.String;
 
 export interface ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnStringItem {
@@ -12320,7 +12458,7 @@ export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnYamlDiffI
   }) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnYamlDiffItem>;
 
 export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -12381,7 +12519,8 @@ export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePr
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -12448,7 +12587,7 @@ export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemL
   }) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem>;
 
 export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -12509,7 +12648,8 @@ export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemLi
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -12705,7 +12845,7 @@ export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnYamlDiff
   }) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnYamlDiffItem>;
 
 export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -12766,7 +12906,8 @@ export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourceP
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -12833,7 +12974,7 @@ export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItem
   }) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem>;
 
 export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -12894,7 +13035,8 @@ export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemL
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -13064,7 +13206,8 @@ export const ResourcesListResultItemTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ResourcesListResultItemTagsMap>;
 
 export type ResourcesListResultItemManagedByItemClientType =
-  "MAGIC_WAN_CLOUD_ONRAMP";
+  | "MAGIC_WAN_CLOUD_ONRAMP"
+  | (string & {});
 export const ResourcesListResultItemManagedByItemClientType =
   /*@__PURE__*/ S.String;
 
@@ -13173,7 +13316,10 @@ export const ListResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResourcesResponse",
 }) as any as S.Schema<ListResourcesResponse>;
 
-export type CatalogSyncsEditRequestUpdateMode = "AUTO" | "MANUAL";
+export type CatalogSyncsEditRequestUpdateMode =
+  | "AUTO"
+  | "MANUAL"
+  | (string & {});
 export const CatalogSyncsEditRequestUpdateMode = /*@__PURE__*/ S.String;
 
 export interface PatchCatalogSyncRequest {
@@ -13209,10 +13355,14 @@ export const PatchCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CatalogSyncsEditResponseDestinationType =
   | "NONE"
-  | "ZERO_TRUST_LIST";
+  | "ZERO_TRUST_LIST"
+  | (string & {});
 export const CatalogSyncsEditResponseDestinationType = /*@__PURE__*/ S.String;
 
-export type CatalogSyncsEditResponseUpdateMode = "AUTO" | "MANUAL";
+export type CatalogSyncsEditResponseUpdateMode =
+  | "AUTO"
+  | "MANUAL"
+  | (string & {});
 export const CatalogSyncsEditResponseUpdateMode = /*@__PURE__*/ S.String;
 
 export type CatalogSyncsEditResponseErrorsValueCode =
@@ -13370,7 +13520,8 @@ export type CatalogSyncsEditResponseErrorsValueCode =
   | 103005
   | 103006
   | 103007
-  | 103008;
+  | 103008
+  | (number & {});
 export const CatalogSyncsEditResponseErrorsValueCode = /*@__PURE__*/ S.Number;
 
 export interface CatalogSyncsEditResponseErrorsValueMeta {
@@ -13521,13 +13672,15 @@ export type CloudIntegrationsEditResponseCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
-  | "CLOUDFLARE";
+  | "CLOUDFLARE"
+  | (string & {});
 export const CloudIntegrationsEditResponseCloudType = /*@__PURE__*/ S.String;
 
 export type CloudIntegrationsEditResponseLifecycleState =
   | "ACTIVE"
   | "PENDING_SETUP"
-  | "RETIRED";
+  | "RETIRED"
+  | (string & {});
 export const CloudIntegrationsEditResponseLifecycleState =
   /*@__PURE__*/ S.String;
 
@@ -13536,7 +13689,8 @@ export type CloudIntegrationsEditResponseState =
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const CloudIntegrationsEditResponseState = /*@__PURE__*/ S.String;
 
 export type CloudIntegrationsEditResponseStateV2 =
@@ -13544,7 +13698,8 @@ export type CloudIntegrationsEditResponseStateV2 =
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const CloudIntegrationsEditResponseStateV2 = /*@__PURE__*/ S.String;
 
 export interface CloudIntegrationsEditResponseStatusDiscoveryProgress {
@@ -13584,7 +13739,8 @@ export type CloudIntegrationsEditResponseStatusLastDiscoveryStatus =
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const CloudIntegrationsEditResponseStatusLastDiscoveryStatus =
   /*@__PURE__*/ S.String;
 
@@ -13593,7 +13749,8 @@ export type CloudIntegrationsEditResponseStatusLastDiscoveryStatusV2 =
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const CloudIntegrationsEditResponseStatusLastDiscoveryStatusV2 =
   /*@__PURE__*/ S.String;
 
@@ -13605,7 +13762,8 @@ export const CloudIntegrationsEditResponseStatusRegionsList =
   ) as any as S.Schema<CloudIntegrationsEditResponseStatusRegionsList>;
 
 export type CloudIntegrationsEditResponseStatusInUseByItemClientType =
-  "MAGIC_WAN_CLOUD_ONRAMP";
+  | "MAGIC_WAN_CLOUD_ONRAMP"
+  | (string & {});
 export const CloudIntegrationsEditResponseStatusInUseByItemClientType =
   /*@__PURE__*/ S.String;
 
@@ -13812,10 +13970,17 @@ export const PatchOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchOnRampRequest",
 }) as any as S.Schema<PatchOnRampRequest>;
 
-export type OnRampsEditResponseCloudType = "AWS" | "AZURE" | "GOOGLE";
+export type OnRampsEditResponseCloudType =
+  | "AWS"
+  | "AZURE"
+  | "GOOGLE"
+  | (string & {});
 export const OnRampsEditResponseCloudType = /*@__PURE__*/ S.String;
 
-export type OnRampsEditResponseType = "OnrampTypeSingle" | "OnrampTypeHub";
+export type OnRampsEditResponseType =
+  | "OnrampTypeSingle"
+  | "OnrampTypeHub"
+  | (string & {});
 export const OnRampsEditResponseType = /*@__PURE__*/ S.String;
 
 export type OnRampsEditResponseAttachedHubsList = ReadonlyArray<string>;
@@ -13897,7 +14062,8 @@ export type OnRampsEditResponsePlannedResourcesItemPlannedAction =
   | "create"
   | "update"
   | "replace"
-  | "destroy";
+  | "destroy"
+  | (string & {});
 export const OnRampsEditResponsePlannedResourcesItemPlannedAction =
   /*@__PURE__*/ S.String;
 
@@ -13905,7 +14071,8 @@ export type OnRampsEditResponsePlannedResourcesItemResourceCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
-  | "CLOUDFLARE";
+  | "CLOUDFLARE"
+  | (string & {});
 export const OnRampsEditResponsePlannedResourcesItemResourceCloudType =
   /*@__PURE__*/ S.String;
 
@@ -13966,7 +14133,8 @@ export type OnRampsEditResponsePlannedResourcesItemResourceResourceType =
   | "google_compute_network_firewall_policy"
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
+  | "cloudflare_ipsec_tunnel"
+  | (string & {});
 export const OnRampsEditResponsePlannedResourcesItemResourceResourceType =
   /*@__PURE__*/ S.String;
 
@@ -14049,7 +14217,8 @@ export type OnRampsEditResponsePostApplyResourcesValueCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
-  | "CLOUDFLARE";
+  | "CLOUDFLARE"
+  | (string & {});
 export const OnRampsEditResponsePostApplyResourcesValueCloudType =
   /*@__PURE__*/ S.String;
 
@@ -14178,7 +14347,8 @@ export type OnRampsEditResponsePostApplyResourcesValueResourceType =
   | "google_compute_network_firewall_policy"
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
+  | "cloudflare_ipsec_tunnel"
+  | (string & {});
 export const OnRampsEditResponsePostApplyResourcesValueResourceType =
   /*@__PURE__*/ S.String;
 
@@ -14252,7 +14422,7 @@ export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsIt
   }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem>;
 
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -14313,7 +14483,8 @@ export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsIte
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -14380,7 +14551,7 @@ export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsIt
   }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem>;
 
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -14441,7 +14612,8 @@ export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsIte
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -14638,7 +14810,7 @@ export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsI
   }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem>;
 
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -14699,7 +14871,8 @@ export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsIt
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -14766,7 +14939,7 @@ export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsI
   }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem>;
 
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -14827,7 +15000,8 @@ export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsIt
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -15004,7 +15178,8 @@ export const OnRampsEditResponsePostApplyResourcesValueTagsMap =
   ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueTagsMap>;
 
 export type OnRampsEditResponsePostApplyResourcesValueManagedByItemClientType =
-  "MAGIC_WAN_CLOUD_ONRAMP";
+  | "MAGIC_WAN_CLOUD_ONRAMP"
+  | (string & {});
 export const OnRampsEditResponsePostApplyResourcesValueManagedByItemClientType =
   /*@__PURE__*/ S.String;
 
@@ -15137,7 +15312,8 @@ export type OnRampsEditResponseStatusLifecycleState =
   | "OnrampActive"
   | "OnrampPendingDestroy"
   | "OnrampDestroying"
-  | "OnrampDestroyFailed";
+  | "OnrampDestroyFailed"
+  | (string & {});
 export const OnRampsEditResponseStatusLifecycleState = /*@__PURE__*/ S.String;
 
 export interface OnRampsEditResponseStatusPlanProgress {
@@ -15319,7 +15495,8 @@ export type OnRampsEditResponseStatusLifecycleErrorsValueCode =
   | 103005
   | 103006
   | 103007
-  | 103008;
+  | 103008
+  | (number & {});
 export const OnRampsEditResponseStatusLifecycleErrorsValueCode =
   /*@__PURE__*/ S.Number;
 
@@ -15423,7 +15600,8 @@ export type OnRampsEditResponseVpcsByIdValueCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
-  | "CLOUDFLARE";
+  | "CLOUDFLARE"
+  | (string & {});
 export const OnRampsEditResponseVpcsByIdValueCloudType = /*@__PURE__*/ S.String;
 
 export type OnRampsEditResponseVpcsByIdValueConfigMap = {
@@ -15548,7 +15726,8 @@ export type OnRampsEditResponseVpcsByIdValueResourceType =
   | "google_compute_network_firewall_policy"
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
+  | "cloudflare_ipsec_tunnel"
+  | (string & {});
 export const OnRampsEditResponseVpcsByIdValueResourceType =
   /*@__PURE__*/ S.String;
 
@@ -15622,7 +15801,7 @@ export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcn
   }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem>;
 
 export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -15683,7 +15862,8 @@ export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnR
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -15750,7 +15930,7 @@ export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcn
   }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem>;
 
 export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -15811,7 +15991,8 @@ export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnL
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -16007,7 +16188,7 @@ export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMc
   }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem>;
 
 export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -16068,7 +16249,8 @@ export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcn
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -16135,7 +16317,7 @@ export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMc
   }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem>;
 
 export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -16196,7 +16378,8 @@ export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcn
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -16370,7 +16553,8 @@ export const OnRampsEditResponseVpcsByIdValueTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<OnRampsEditResponseVpcsByIdValueTagsMap>;
 
 export type OnRampsEditResponseVpcsByIdValueManagedByItemClientType =
-  "MAGIC_WAN_CLOUD_ONRAMP";
+  | "MAGIC_WAN_CLOUD_ONRAMP"
+  | (string & {});
 export const OnRampsEditResponseVpcsByIdValueManagedByItemClientType =
   /*@__PURE__*/ S.String;
 
@@ -16757,7 +16941,10 @@ export const RefreshCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RefreshCatalogSyncResponse",
 }) as any as S.Schema<RefreshCatalogSyncResponse>;
 
-export type CatalogSyncsUpdateRequestUpdateMode = "AUTO" | "MANUAL";
+export type CatalogSyncsUpdateRequestUpdateMode =
+  | "AUTO"
+  | "MANUAL"
+  | (string & {});
 export const CatalogSyncsUpdateRequestUpdateMode = /*@__PURE__*/ S.String;
 
 export interface UpdateCatalogSyncRequest {
@@ -16793,10 +16980,14 @@ export const UpdateCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CatalogSyncsUpdateResponseDestinationType =
   | "NONE"
-  | "ZERO_TRUST_LIST";
+  | "ZERO_TRUST_LIST"
+  | (string & {});
 export const CatalogSyncsUpdateResponseDestinationType = /*@__PURE__*/ S.String;
 
-export type CatalogSyncsUpdateResponseUpdateMode = "AUTO" | "MANUAL";
+export type CatalogSyncsUpdateResponseUpdateMode =
+  | "AUTO"
+  | "MANUAL"
+  | (string & {});
 export const CatalogSyncsUpdateResponseUpdateMode = /*@__PURE__*/ S.String;
 
 export type CatalogSyncsUpdateResponseErrorsValueCode =
@@ -16954,7 +17145,8 @@ export type CatalogSyncsUpdateResponseErrorsValueCode =
   | 103005
   | 103006
   | 103007
-  | 103008;
+  | 103008
+  | (number & {});
 export const CatalogSyncsUpdateResponseErrorsValueCode = /*@__PURE__*/ S.Number;
 
 export interface CatalogSyncsUpdateResponseErrorsValueMeta {
@@ -17108,13 +17300,15 @@ export type CloudIntegrationsUpdateResponseCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
-  | "CLOUDFLARE";
+  | "CLOUDFLARE"
+  | (string & {});
 export const CloudIntegrationsUpdateResponseCloudType = /*@__PURE__*/ S.String;
 
 export type CloudIntegrationsUpdateResponseLifecycleState =
   | "ACTIVE"
   | "PENDING_SETUP"
-  | "RETIRED";
+  | "RETIRED"
+  | (string & {});
 export const CloudIntegrationsUpdateResponseLifecycleState =
   /*@__PURE__*/ S.String;
 
@@ -17123,7 +17317,8 @@ export type CloudIntegrationsUpdateResponseState =
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const CloudIntegrationsUpdateResponseState = /*@__PURE__*/ S.String;
 
 export type CloudIntegrationsUpdateResponseStateV2 =
@@ -17131,7 +17326,8 @@ export type CloudIntegrationsUpdateResponseStateV2 =
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const CloudIntegrationsUpdateResponseStateV2 = /*@__PURE__*/ S.String;
 
 export interface CloudIntegrationsUpdateResponseStatusDiscoveryProgress {
@@ -17171,7 +17367,8 @@ export type CloudIntegrationsUpdateResponseStatusLastDiscoveryStatus =
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const CloudIntegrationsUpdateResponseStatusLastDiscoveryStatus =
   /*@__PURE__*/ S.String;
 
@@ -17180,7 +17377,8 @@ export type CloudIntegrationsUpdateResponseStatusLastDiscoveryStatusV2 =
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const CloudIntegrationsUpdateResponseStatusLastDiscoveryStatusV2 =
   /*@__PURE__*/ S.String;
 
@@ -17192,7 +17390,8 @@ export const CloudIntegrationsUpdateResponseStatusRegionsList =
   ) as any as S.Schema<CloudIntegrationsUpdateResponseStatusRegionsList>;
 
 export type CloudIntegrationsUpdateResponseStatusInUseByItemClientType =
-  "MAGIC_WAN_CLOUD_ONRAMP";
+  | "MAGIC_WAN_CLOUD_ONRAMP"
+  | (string & {});
 export const CloudIntegrationsUpdateResponseStatusInUseByItemClientType =
   /*@__PURE__*/ S.String;
 
@@ -17403,10 +17602,17 @@ export const UpdateOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateOnRampRequest",
 }) as any as S.Schema<UpdateOnRampRequest>;
 
-export type OnRampsUpdateResponseCloudType = "AWS" | "AZURE" | "GOOGLE";
+export type OnRampsUpdateResponseCloudType =
+  | "AWS"
+  | "AZURE"
+  | "GOOGLE"
+  | (string & {});
 export const OnRampsUpdateResponseCloudType = /*@__PURE__*/ S.String;
 
-export type OnRampsUpdateResponseType = "OnrampTypeSingle" | "OnrampTypeHub";
+export type OnRampsUpdateResponseType =
+  | "OnrampTypeSingle"
+  | "OnrampTypeHub"
+  | (string & {});
 export const OnRampsUpdateResponseType = /*@__PURE__*/ S.String;
 
 export type OnRampsUpdateResponseAttachedHubsList = ReadonlyArray<string>;
@@ -17488,7 +17694,8 @@ export type OnRampsUpdateResponsePlannedResourcesItemPlannedAction =
   | "create"
   | "update"
   | "replace"
-  | "destroy";
+  | "destroy"
+  | (string & {});
 export const OnRampsUpdateResponsePlannedResourcesItemPlannedAction =
   /*@__PURE__*/ S.String;
 
@@ -17496,7 +17703,8 @@ export type OnRampsUpdateResponsePlannedResourcesItemResourceCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
-  | "CLOUDFLARE";
+  | "CLOUDFLARE"
+  | (string & {});
 export const OnRampsUpdateResponsePlannedResourcesItemResourceCloudType =
   /*@__PURE__*/ S.String;
 
@@ -17557,7 +17765,8 @@ export type OnRampsUpdateResponsePlannedResourcesItemResourceResourceType =
   | "google_compute_network_firewall_policy"
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
+  | "cloudflare_ipsec_tunnel"
+  | (string & {});
 export const OnRampsUpdateResponsePlannedResourcesItemResourceResourceType =
   /*@__PURE__*/ S.String;
 
@@ -17642,7 +17851,8 @@ export type OnRampsUpdateResponsePostApplyResourcesValueCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
-  | "CLOUDFLARE";
+  | "CLOUDFLARE"
+  | (string & {});
 export const OnRampsUpdateResponsePostApplyResourcesValueCloudType =
   /*@__PURE__*/ S.String;
 
@@ -17772,7 +17982,8 @@ export type OnRampsUpdateResponsePostApplyResourcesValueResourceType =
   | "google_compute_network_firewall_policy"
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
+  | "cloudflare_ipsec_tunnel"
+  | (string & {});
 export const OnRampsUpdateResponsePostApplyResourcesValueResourceType =
   /*@__PURE__*/ S.String;
 
@@ -17846,7 +18057,7 @@ export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItems
   }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -17907,7 +18118,8 @@ export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsI
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -17974,7 +18186,7 @@ export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItems
   }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -18035,7 +18247,8 @@ export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsI
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -18232,7 +18445,7 @@ export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItem
   }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -18293,7 +18506,8 @@ export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItems
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -18360,7 +18574,7 @@ export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItem
   }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -18421,7 +18635,8 @@ export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItems
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -18598,7 +18813,7 @@ export const OnRampsUpdateResponsePostApplyResourcesValueTagsMap =
   ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueTagsMap>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueManagedByItemClientType =
-  "MAGIC_WAN_CLOUD_ONRAMP";
+  "MAGIC_WAN_CLOUD_ONRAMP" | (string & {});
 export const OnRampsUpdateResponsePostApplyResourcesValueManagedByItemClientType =
   /*@__PURE__*/ S.String;
 
@@ -18733,7 +18948,8 @@ export type OnRampsUpdateResponseStatusLifecycleState =
   | "OnrampActive"
   | "OnrampPendingDestroy"
   | "OnrampDestroying"
-  | "OnrampDestroyFailed";
+  | "OnrampDestroyFailed"
+  | (string & {});
 export const OnRampsUpdateResponseStatusLifecycleState = /*@__PURE__*/ S.String;
 
 export interface OnRampsUpdateResponseStatusPlanProgress {
@@ -18915,7 +19131,8 @@ export type OnRampsUpdateResponseStatusLifecycleErrorsValueCode =
   | 103005
   | 103006
   | 103007
-  | 103008;
+  | 103008
+  | (number & {});
 export const OnRampsUpdateResponseStatusLifecycleErrorsValueCode =
   /*@__PURE__*/ S.Number;
 
@@ -19019,7 +19236,8 @@ export type OnRampsUpdateResponseVpcsByIdValueCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
-  | "CLOUDFLARE";
+  | "CLOUDFLARE"
+  | (string & {});
 export const OnRampsUpdateResponseVpcsByIdValueCloudType =
   /*@__PURE__*/ S.String;
 
@@ -19148,7 +19366,8 @@ export type OnRampsUpdateResponseVpcsByIdValueResourceType =
   | "google_compute_network_firewall_policy"
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
+  | "cloudflare_ipsec_tunnel"
+  | (string & {});
 export const OnRampsUpdateResponseVpcsByIdValueResourceType =
   /*@__PURE__*/ S.String;
 
@@ -19222,7 +19441,7 @@ export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueM
   }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem>;
 
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -19283,7 +19502,8 @@ export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMc
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -19350,7 +19570,7 @@ export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueM
   }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem>;
 
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -19411,7 +19631,8 @@ export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMc
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -19607,7 +19828,7 @@ export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue
   }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem>;
 
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -19668,7 +19889,8 @@ export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueM
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -19735,7 +19957,7 @@ export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue
   }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem>;
 
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   /*@__PURE__*/ S.String;
 
@@ -19796,7 +20018,8 @@ export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueM
     | "google_compute_network_firewall_policy"
     | "google_compute_network_firewall_policy_rule"
     | "cloudflare_static_route"
-    | "cloudflare_ipsec_tunnel";
+    | "cloudflare_ipsec_tunnel"
+    | (string & {});
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   /*@__PURE__*/ S.String;
 
@@ -19972,7 +20195,8 @@ export const OnRampsUpdateResponseVpcsByIdValueTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueTagsMap>;
 
 export type OnRampsUpdateResponseVpcsByIdValueManagedByItemClientType =
-  "MAGIC_WAN_CLOUD_ONRAMP";
+  | "MAGIC_WAN_CLOUD_ONRAMP"
+  | (string & {});
 export const OnRampsUpdateResponseVpcsByIdValueManagedByItemClientType =
   /*@__PURE__*/ S.String;
 

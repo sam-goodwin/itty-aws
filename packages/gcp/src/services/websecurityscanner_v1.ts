@@ -135,7 +135,8 @@ export const Authentication = /*@__PURE__*/ S.suspend(() =>
 export type ScanConfigRiskLevelEnum =
   | "RISK_LEVEL_UNSPECIFIED"
   | "NORMAL"
-  | "LOW";
+  | "LOW"
+  | (string & {});
 export const ScanConfigRiskLevelEnum = /*@__PURE__*/ S.String;
 
 export type ScanConfigTargetPlatformsItemEnum =
@@ -143,7 +144,8 @@ export type ScanConfigTargetPlatformsItemEnum =
   | "APP_ENGINE"
   | "COMPUTE"
   | "CLOUD_RUN"
-  | "CLOUD_FUNCTIONS";
+  | "CLOUD_FUNCTIONS"
+  | (string & {});
 export const ScanConfigTargetPlatformsItemEnum = /*@__PURE__*/ S.String;
 
 export type ScanConfigTargetPlatformsItemEnumList =
@@ -160,7 +162,8 @@ export const StringList = /*@__PURE__*/ S.Array(
 export type ScanConfigExportToSecurityCommandCenterEnum =
   | "EXPORT_TO_SECURITY_COMMAND_CENTER_UNSPECIFIED"
   | "ENABLED"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const ScanConfigExportToSecurityCommandCenterEnum =
   /*@__PURE__*/ S.String;
 
@@ -182,7 +185,8 @@ export type ScanConfigUserAgentEnum =
   | "USER_AGENT_UNSPECIFIED"
   | "CHROME_LINUX"
   | "CHROME_ANDROID"
-  | "SAFARI_IPHONE";
+  | "SAFARI_IPHONE"
+  | (string & {});
 export const ScanConfigUserAgentEnum = /*@__PURE__*/ S.String;
 
 export type ScanRunErrorTraceCodeEnum =
@@ -193,7 +197,8 @@ export type ScanRunErrorTraceCodeEnum =
   | "TIMED_OUT_WHILE_SCANNING"
   | "TOO_MANY_REDIRECTS"
   | "TOO_MANY_HTTP_ERRORS"
-  | "STARTING_URLS_CRAWL_HTTP_ERRORS";
+  | "STARTING_URLS_CRAWL_HTTP_ERRORS"
+  | (string & {});
 export const ScanRunErrorTraceCodeEnum = /*@__PURE__*/ S.String;
 
 export type ScanConfigErrorCodeEnum =
@@ -239,7 +244,8 @@ export type ScanConfigErrorCodeEnum =
   | "UNSUPPORTED_FILTER"
   | "UNSUPPORTED_FINDING_TYPE"
   | "UNSUPPORTED_URL_SCHEME"
-  | "CLOUD_ASSET_INVENTORY_ASSET_NOT_FOUND";
+  | "CLOUD_ASSET_INVENTORY_ASSET_NOT_FOUND"
+  | (string & {});
 export const ScanConfigErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** Defines a custom error message used by CreateScanConfig and UpdateScanConfig APIs when scan configuration validation fails. It is also reported as part of a ScanRunErrorTrace message if scan validation fails due to a scan configuration error. */
@@ -281,14 +287,16 @@ export type ScanRunResultStateEnum =
   | "RESULT_STATE_UNSPECIFIED"
   | "SUCCESS"
   | "ERROR"
-  | "KILLED";
+  | "KILLED"
+  | (string & {});
 export const ScanRunResultStateEnum = /*@__PURE__*/ S.String;
 
 export type ScanRunExecutionStateEnum =
   | "EXECUTION_STATE_UNSPECIFIED"
   | "QUEUED"
   | "SCANNING"
-  | "FINISHED";
+  | "FINISHED"
+  | (string & {});
 export const ScanRunExecutionStateEnum = /*@__PURE__*/ S.String;
 
 export type ScanRunWarningTraceCodeEnum =
@@ -297,7 +305,8 @@ export type ScanRunWarningTraceCodeEnum =
   | "TOO_MANY_CRAWL_RESULTS"
   | "TOO_MANY_FUZZ_TASKS"
   | "BLOCKED_BY_IAP"
-  | "NO_STARTING_URL_FOUND_FOR_MANAGED_SCAN";
+  | "NO_STARTING_URL_FOUND_FOR_MANAGED_SCAN"
+  | (string & {});
 export const ScanRunWarningTraceCodeEnum = /*@__PURE__*/ S.String;
 
 /** Output only. Defines a warning trace message for ScanRun. Warning traces provide customers with useful information that helps make the scanning process more effective. */
@@ -516,7 +525,8 @@ export const GetProjectsScanConfigsScanRunsFindingsRequest =
 
 export type XxePayloadLocationEnum =
   | "LOCATION_UNSPECIFIED"
-  | "COMPLETE_REQUEST_BODY";
+  | "COMPLETE_REQUEST_BODY"
+  | (string & {});
 export const XxePayloadLocationEnum = /*@__PURE__*/ S.String;
 
 /** Information reported for an XXE. */
@@ -549,7 +559,8 @@ export type XssAttackVectorEnum =
   | "PROTOCOL"
   | "STORED_XSS"
   | "SAME_ORIGIN"
-  | "USER_CONTROLLABLE_URL";
+  | "USER_CONTROLLABLE_URL"
+  | (string & {});
 export const XssAttackVectorEnum = /*@__PURE__*/ S.String;
 
 /** Information reported for an XSS. */
@@ -674,7 +685,8 @@ export type FindingSeverityEnum =
   | "CRITICAL"
   | "HIGH"
   | "MEDIUM"
-  | "LOW";
+  | "LOW"
+  | (string & {});
 export const FindingSeverityEnum = /*@__PURE__*/ S.String;
 
 /** A Finding resource represents a vulnerability instance identified during a ScanRun. */

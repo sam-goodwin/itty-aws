@@ -183,7 +183,8 @@ export const CreateLogExplorerDatasetForAccountRequest =
 
 export type LogExplorerDatasetsCreateForAccountResponseObjectType =
   | "account"
-  | "zone";
+  | "zone"
+  | (string & {});
 export const LogExplorerDatasetsCreateForAccountResponseObjectType =
   /*@__PURE__*/ S.String;
 
@@ -299,7 +300,8 @@ export const CreateLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(
 
 export type LogExplorerDatasetsCreateForZoneResponseObjectType =
   | "account"
-  | "zone";
+  | "zone"
+  | (string & {});
 export const LogExplorerDatasetsCreateForZoneResponseObjectType =
   /*@__PURE__*/ S.String;
 
@@ -486,7 +488,8 @@ export const GetLogExplorerDatasetForAccountRequest = /*@__PURE__*/ S.suspend(
 
 export type LogExplorerDatasetsGetForAccountResponseObjectType =
   | "account"
-  | "zone";
+  | "zone"
+  | (string & {});
 export const LogExplorerDatasetsGetForAccountResponseObjectType =
   /*@__PURE__*/ S.String;
 
@@ -574,7 +577,8 @@ export const GetLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type LogExplorerDatasetsGetForZoneResponseObjectType =
   | "account"
-  | "zone";
+  | "zone"
+  | (string & {});
 export const LogExplorerDatasetsGetForZoneResponseObjectType =
   /*@__PURE__*/ S.String;
 
@@ -638,7 +642,11 @@ export const GetLogExplorerDatasetForZoneResponse = /*@__PURE__*/ S.suspend(
   identifier: "GetLogExplorerDatasetForZoneResponse",
 }) as any as S.Schema<GetLogExplorerDatasetForZoneResponse>;
 
-export type RayidGetRequestTimestamps = "unix" | "unixnano" | "rfc3339";
+export type RayidGetRequestTimestamps =
+  | "unix"
+  | "unixnano"
+  | "rfc3339"
+  | (string & {});
 export const RayidGetRequestTimestamps = /*@__PURE__*/ S.String;
 
 export interface GetRayidRequest {
@@ -678,7 +686,11 @@ export const GetRayidResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRayidResponse",
 }) as any as S.Schema<GetRayidResponse>;
 
-export type ReceivedGetRequestTimestamps = "unix" | "unixnano" | "rfc3339";
+export type ReceivedGetRequestTimestamps =
+  | "unix"
+  | "unixnano"
+  | "rfc3339"
+  | (string & {});
 export const ReceivedGetRequestTimestamps = /*@__PURE__*/ S.String;
 
 export interface GetReceivedRequest {
@@ -845,7 +857,8 @@ export const ListLogExplorerDatasetsForAccountRequest = /*@__PURE__*/ S.suspend(
 
 export type LogExplorerDatasetsListForAccountResultItemObjectType =
   | "account"
-  | "zone";
+  | "zone"
+  | (string & {});
 export const LogExplorerDatasetsListForAccountResultItemObjectType =
   /*@__PURE__*/ S.String;
 
@@ -933,7 +946,8 @@ export const ListLogExplorerDatasetsForZoneRequest = /*@__PURE__*/ S.suspend(
 
 export type LogExplorerDatasetsListForZoneResultItemObjectType =
   | "account"
-  | "zone";
+  | "zone"
+  | (string & {});
 export const LogExplorerDatasetsListForZoneResultItemObjectType =
   /*@__PURE__*/ S.String;
 
@@ -1149,7 +1163,8 @@ export const UpdateLogExplorerDatasetForAccountRequest =
 
 export type LogExplorerDatasetsUpdateForAccountResponseObjectType =
   | "account"
-  | "zone";
+  | "zone"
+  | (string & {});
 export const LogExplorerDatasetsUpdateForAccountResponseObjectType =
   /*@__PURE__*/ S.String;
 
@@ -1267,7 +1282,8 @@ export const UpdateLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(
 
 export type LogExplorerDatasetsUpdateForZoneResponseObjectType =
   | "account"
-  | "zone";
+  | "zone"
+  | (string & {});
 export const LogExplorerDatasetsUpdateForZoneResponseObjectType =
   /*@__PURE__*/ S.String;
 

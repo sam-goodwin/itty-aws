@@ -112,13 +112,15 @@ export type ItemLevelIssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "NOT_IMPACTED"
   | "DEMOTED"
-  | "DISAPPROVED";
+  | "DISAPPROVED"
+  | (string & {});
 export const ItemLevelIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 export type ItemLevelIssueResolutionEnum =
   | "RESOLUTION_UNSPECIFIED"
   | "MERCHANT_ACTION"
-  | "PENDING_PROCESSING";
+  | "PENDING_PROCESSING"
+  | (string & {});
 export const ItemLevelIssueResolutionEnum = /*@__PURE__*/ S.String;
 
 /** The ItemLevelIssue of the product status. */
@@ -178,7 +180,8 @@ export type AggregateProductStatusReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT";
+  | "YOUTUBE_CHECKOUT"
+  | (string & {});
 export const AggregateProductStatusReportingContextEnum =
   /*@__PURE__*/ S.String;
 
@@ -231,14 +234,16 @@ export const ListAggregateProductStatusesResponse = /*@__PURE__*/ S.suspend(
 
 export type RenderIssuesRequestPayloadContentOptionEnum =
   | "CONTENT_OPTION_UNSPECIFIED"
-  | "PRE_RENDERED_HTML";
+  | "PRE_RENDERED_HTML"
+  | (string & {});
 export const RenderIssuesRequestPayloadContentOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type RenderIssuesRequestPayloadUserInputActionOptionEnum =
   | "USER_INPUT_ACTION_RENDERING_OPTION_UNSPECIFIED"
   | "REDIRECT_TO_MERCHANT_CENTER"
-  | "BUILT_IN_USER_INPUT_ACTIONS";
+  | "BUILT_IN_USER_INPUT_ACTIONS"
+  | (string & {});
 export const RenderIssuesRequestPayloadUserInputActionOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -292,7 +297,8 @@ export type ImpactSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
-  | "INFO";
+  | "INFO"
+  | (string & {});
 export const ImpactSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Region with code and localized name. */
@@ -381,7 +387,8 @@ export type BuiltInSimpleActionTypeEnum =
   | "ADD_BUSINESS_REGISTRATION_NUMBER"
   | "EDIT_ITEM_ATTRIBUTE"
   | "FIX_ACCOUNT_ISSUE"
-  | "SHOW_ADDITIONAL_CONTENT";
+  | "SHOW_ADDITIONAL_CONTENT"
+  | (string & {});
 export const BuiltInSimpleActionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Action that is implemented and performed in (your) third-party application. Represents various functionality that is expected to be available to business and will help them with resolving the issue. The application should point the business to the place, where they can access the corresponding functionality. If the functionality is not supported, it is recommended to explain the situation to the business and provide them with instructions how to solve the issue. */
@@ -409,7 +416,8 @@ export type ExternalActionTypeEnum =
   | "REVIEW_ACCOUNT_ISSUE_IN_MERCHANT_CENTER"
   | "LEGAL_APPEAL_IN_HELP_CENTER"
   | "VERIFY_IDENTITY_IN_MERCHANT_CENTER"
-  | "VERIFY_BUSINESS_VIDEO_IN_MERCHANT_CENTER";
+  | "VERIFY_BUSINESS_VIDEO_IN_MERCHANT_CENTER"
+  | (string & {});
 export const ExternalActionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Action that is implemented and performed outside of the third-party application. It should redirect the business to the provided URL of an external system where they can perform the action. For example to request a review in the Merchant Center. */
@@ -429,7 +437,8 @@ export const ExternalAction = /*@__PURE__*/ S.suspend(() =>
 export type TextWithTooltipTooltipIconStyleEnum =
   | "TOOLTIP_ICON_STYLE_UNSPECIFIED"
   | "INFO"
-  | "QUESTION";
+  | "QUESTION"
+  | (string & {});
 export const TextWithTooltipTooltipIconStyleEnum = /*@__PURE__*/ S.String;
 
 /** Block of text that may contain a tooltip with more information. */
@@ -455,7 +464,8 @@ export type CalloutStyleHintEnum =
   | "CALLOUT_STYLE_HINT_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
-  | "INFO";
+  | "INFO"
+  | (string & {});
 export const CalloutStyleHintEnum = /*@__PURE__*/ S.String;
 
 /** An important message that should be highlighted. Usually displayed as a banner. */
@@ -481,7 +491,8 @@ export const CheckboxInput = /*@__PURE__*/ S.suspend(() =>
 export type TextInputTypeEnum =
   | "TEXT_INPUT_TYPE_UNSPECIFIED"
   | "GENERIC_SHORT_TEXT"
-  | "GENERIC_LONG_TEXT";
+  | "GENERIC_LONG_TEXT"
+  | (string & {});
 export const TextInputTypeEnum = /*@__PURE__*/ S.String;
 
 /** Text input allows the business to provide a text value. */

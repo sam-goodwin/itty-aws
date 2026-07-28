@@ -35,7 +35,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type FilterLogicalOperator = "AND" | "OR";
+export type FilterLogicalOperator = "AND" | "OR" | (string & {});
 export const FilterLogicalOperator = /*@__PURE__*/ S.String;
 
 export type PropertyOperator =
@@ -72,7 +72,8 @@ export type PropertyOperator =
   | "semver_caret"
   | "semver_wildcard"
   | "icontains_multi"
-  | "not_icontains_multi";
+  | "not_icontains_multi"
+  | (string & {});
 export const PropertyOperator = /*@__PURE__*/ S.String;
 
 export type EventPropertyFilterValueCase0Item = string | number | boolean;
@@ -192,7 +193,7 @@ export const PersonMetadataPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonMetadataPropertyFilter",
 }) as any as S.Schema<PersonMetadataPropertyFilter>;
 
-export type Key10 = "tag_name" | "text" | "href" | "selector";
+export type Key10 = "tag_name" | "text" | "href" | "selector" | (string & {});
 export const Key10 = /*@__PURE__*/ S.String;
 
 export type ElementPropertyFilterValueCase0Item = string | number | boolean;
@@ -330,7 +331,11 @@ export const CohortPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "CohortPropertyFilter",
 }) as any as S.Schema<CohortPropertyFilter>;
 
-export type DurationType = "duration" | "active_seconds" | "inactive_seconds";
+export type DurationType =
+  | "duration"
+  | "active_seconds"
+  | "inactive_seconds"
+  | (string & {});
 export const DurationType = /*@__PURE__*/ S.String;
 
 export type RecordingPropertyFilterKey = DurationType | string;
@@ -693,7 +698,8 @@ export const ErrorTrackingIssueFilter = /*@__PURE__*/ S.suspend(() =>
 export type LogPropertyFilterType =
   | "log"
   | "log_attribute"
-  | "log_resource_attribute";
+  | "log_resource_attribute"
+  | (string & {});
 export const LogPropertyFilterType = /*@__PURE__*/ S.String;
 
 export type LogPropertyFilterValueCase0Item = string | number | boolean;
@@ -773,7 +779,8 @@ export const MetricPropertyFilter = /*@__PURE__*/ S.suspend(() =>
 export type SpanPropertyFilterType =
   | "span"
   | "span_attribute"
-  | "span_resource_attribute";
+  | "span_resource_attribute"
+  | (string & {});
 export const SpanPropertyFilterType = /*@__PURE__*/ S.String;
 
 export type SpanPropertyFilterValueCase0Item = string | number | boolean;
@@ -1013,7 +1020,8 @@ export type LogSeverityLevel =
   | "info"
   | "warn"
   | "error"
-  | "fatal";
+  | "fatal"
+  | (string & {});
 export const LogSeverityLevel = /*@__PURE__*/ S.String;
 
 export type LogsAlertFiltersSeverityLevelsList =
@@ -1038,7 +1046,7 @@ export const LogsAlertFilters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsAlertFilters>;
 
 /** * `above` - Above * `below` - Below */
-export type LogsAlertThresholdOperatorEnum = "above" | "below";
+export type LogsAlertThresholdOperatorEnum = "above" | "below" | (string & {});
 export const LogsAlertThresholdOperatorEnum = /*@__PURE__*/ S.String;
 
 export interface LogsAlertsCreateRequest {
@@ -1096,7 +1104,8 @@ export type LogsAlertConfigurationStateEnum =
   | "pending_resolve"
   | "errored"
   | "snoozed"
-  | "broken";
+  | "broken"
+  | (string & {});
 export const LogsAlertConfigurationStateEnum = /*@__PURE__*/ S.String;
 
 export interface LogsAlertStateInterval {
@@ -1128,7 +1137,11 @@ export const LogsAlertConfigurationStateTimelineList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<LogsAlertConfigurationStateTimelineList>;
 
 /** * `slack` - slack * `webhook` - webhook * `teams` - teams */
-export type NotificationDestinationTypeEnum = "slack" | "webhook" | "teams";
+export type NotificationDestinationTypeEnum =
+  | "slack"
+  | "webhook"
+  | "teams"
+  | (string & {});
 export const NotificationDestinationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Notification destination types configured for this alert — e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert. */
@@ -1153,10 +1166,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -1429,7 +1443,8 @@ export type LogsAlertEventKindEnum =
   | "snooze"
   | "unsnooze"
   | "threshold_change"
-  | "broken_config";
+  | "broken_config"
+  | (string & {});
 export const LogsAlertEventKindEnum = /*@__PURE__*/ S.String;
 
 export interface LogsAlertEvent {
@@ -1781,7 +1796,10 @@ export const LogsAlertsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAlertsUpdateRequest",
 }) as any as S.Schema<LogsAlertsUpdateRequest>;
 
-export type LogsAttributesRetrieveRequestAttributeType = "log" | "resource";
+export type LogsAttributesRetrieveRequestAttributeType =
+  | "log"
+  | "resource"
+  | (string & {});
 export const LogsAttributesRetrieveRequestAttributeType =
   /*@__PURE__*/ S.String;
 
@@ -1802,7 +1820,8 @@ export const DateRange = /*@__PURE__*/ S.suspend(() =>
 export type LogPropertyFilterTypeEnum =
   | "log"
   | "log_attribute"
-  | "log_resource_attribute";
+  | "log_resource_attribute"
+  | (string & {});
 export const LogPropertyFilterTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `lt` - lt * `is_date_exact` - is_date_exact * `is_date_before` - is_date_before * `is_date_after` - is_date_after * `is_set` - is_set * `is_not_set` - is_not_set */
@@ -1819,7 +1838,8 @@ export type LogPropertyFilterOperatorEnum =
   | "is_date_before"
   | "is_date_after"
   | "is_set"
-  | "is_not_set";
+  | "is_not_set"
+  | (string & {});
 export const LogPropertyFilterOperatorEnum = /*@__PURE__*/ S.String;
 
 export interface LogPropertyFilter2 {
@@ -1906,7 +1926,7 @@ export const LogsAttributesRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsAttributesRetrieveRequest>;
 
 /** * `key` - key * `value` - value */
-export type MatchedOnEnum = "key" | "value";
+export type MatchedOnEnum = "key" | "value" | (string & {});
 export const MatchedOnEnum = /*@__PURE__*/ S.String;
 
 export interface LogAttributeEntry {
@@ -1958,7 +1978,8 @@ export type SeverityLevelsEnum =
   | "info"
   | "warn"
   | "error"
-  | "fatal";
+  | "fatal"
+  | (string & {});
 export const SeverityLevelsEnum = /*@__PURE__*/ S.String;
 
 /** Filter by log severity levels. */
@@ -2219,7 +2240,7 @@ export const LogsExportCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsExportCreateResponse>;
 
 /** * `severity_text` - severity_text * `service_name` - service_name */
-export type FacetFieldEnum = "severity_text" | "service_name";
+export type FacetFieldEnum = "severity_text" | "service_name" | (string & {});
 export const FacetFieldEnum = /*@__PURE__*/ S.String;
 
 /** Filter by log severity levels (ignored when faceting on severity_text). */
@@ -2347,7 +2368,11 @@ export const LogsGroupByBodyFilterGroupList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<LogsGroupByBodyFilterGroupList>;
 
 /** * `log` - log * `resource` - resource * `column` - column */
-export type LogsGroupBySourceEnum = "log" | "resource" | "column";
+export type LogsGroupBySourceEnum =
+  | "log"
+  | "resource"
+  | "column"
+  | (string & {});
 export const LogsGroupBySourceEnum = /*@__PURE__*/ S.String;
 
 export interface LogsGroupByDimension {
@@ -2372,7 +2397,11 @@ export const LogsGroupByBodyGroupBysList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<LogsGroupByBodyGroupBysList>;
 
 /** * `log_count` - log_count * `error_count` - error_count * `last_seen` - last_seen */
-export type OrderGroupsByEnum = "log_count" | "error_count" | "last_seen";
+export type OrderGroupsByEnum =
+  | "log_count"
+  | "error_count"
+  | "last_seen"
+  | (string & {});
 export const OrderGroupsByEnum = /*@__PURE__*/ S.String;
 
 export interface LogsGroupByBody {
@@ -3041,7 +3070,8 @@ export type LogPatternDiffEntryClassificationEnum =
   | "new"
   | "rate_shift"
   | "gone"
-  | "unchanged";
+  | "unchanged"
+  | (string & {});
 export const LogPatternDiffEntryClassificationEnum = /*@__PURE__*/ S.String;
 
 export interface LogPatternDiffEntry {
@@ -3133,7 +3163,7 @@ export const LogsQueryBodyServiceNamesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<LogsQueryBodyServiceNamesList>;
 
 /** * `latest` - latest * `earliest` - earliest */
-export type OrderByEnum = "latest" | "earliest";
+export type OrderByEnum = "latest" | "earliest" | (string & {});
 export const OrderByEnum = /*@__PURE__*/ S.String;
 
 /** Property filters for the query. */
@@ -3313,7 +3343,11 @@ export const LogsQueryResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsQueryResponse>;
 
 /** * `severity_sampling` - Severity-based reduction * `path_drop` - Path exclusion * `rate_limit` - Rate limit */
-export type RuleTypeEnum = "severity_sampling" | "path_drop" | "rate_limit";
+export type RuleTypeEnum =
+  | "severity_sampling"
+  | "path_drop"
+  | "rate_limit"
+  | (string & {});
 export const RuleTypeEnum = /*@__PURE__*/ S.String;
 
 export type LogsSamplingRulesCreateRequestScopeAttributeFiltersItemMap = {
@@ -3954,7 +3988,7 @@ export const LogsSparklineBodyFilterGroupList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<LogsSparklineBodyFilterGroupList>;
 
 /** * `severity` - severity * `service` - service */
-export type SparklineBreakdownByEnum = "severity" | "service";
+export type SparklineBreakdownByEnum = "severity" | "service" | (string & {});
 export const SparklineBreakdownByEnum = /*@__PURE__*/ S.String;
 
 export interface LogsSparklineBody {
@@ -4047,7 +4081,10 @@ export const LogsSparklineResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsSparklineResponse",
 }) as any as S.Schema<LogsSparklineResponse>;
 
-export type LogsValuesRetrieveRequestAttributeType = "log" | "resource";
+export type LogsValuesRetrieveRequestAttributeType =
+  | "log"
+  | "resource"
+  | (string & {});
 export const LogsValuesRetrieveRequestAttributeType = /*@__PURE__*/ S.String;
 
 export type LogsValuesRetrieveRequestFilterGroupList =
@@ -4159,7 +4196,8 @@ export type LogsViewColumnTypeEnum =
   | "trace_id"
   | "span_id"
   | "message"
-  | "custom";
+  | "custom"
+  | (string & {});
 export const LogsViewColumnTypeEnum = /*@__PURE__*/ S.String;
 
 export interface LogsViewColumn {

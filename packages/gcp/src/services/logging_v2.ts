@@ -297,7 +297,8 @@ export type LogBucketLifecycleStateEnum =
   | "DELETE_REQUESTED"
   | "UPDATING"
   | "CREATING"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const LogBucketLifecycleStateEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -308,7 +309,8 @@ export const StringList = /*@__PURE__*/ S.Array(
 export type IndexConfigTypeEnum =
   | "INDEX_TYPE_UNSPECIFIED"
   | "INDEX_TYPE_STRING"
-  | "INDEX_TYPE_INTEGER";
+  | "INDEX_TYPE_INTEGER"
+  | (string & {});
 export const IndexConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for an indexed field. */
@@ -577,7 +579,8 @@ export type LinkLifecycleStateEnum =
   | "DELETE_REQUESTED"
   | "UPDATING"
   | "CREATING"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const LinkLifecycleStateEnum = /*@__PURE__*/ S.String;
 
 /** Describes a BigQuery dataset that was created by a link. */
@@ -692,7 +695,8 @@ export const CreateBillingAccountsLocationsBucketsViewsRequest =
 export type SavedQueryVisibilityEnum =
   | "VISIBILITY_UNSPECIFIED"
   | "PRIVATE"
-  | "SHARED";
+  | "SHARED"
+  | (string & {});
 export const SavedQueryVisibilityEnum = /*@__PURE__*/ S.String;
 
 export type DocumentList = ReadonlyArray<unknown>;
@@ -718,7 +722,8 @@ export const FunctionApplication = /*@__PURE__*/ S.suspend(() =>
 
 export type VirtualFieldVirtualFieldTypeEnum =
   | "VIRTUAL_FIELD_TYPE_UNSPECIFIED"
-  | "COALESCE";
+  | "COALESCE"
+  | (string & {});
 export const VirtualFieldVirtualFieldTypeEnum = /*@__PURE__*/ S.String;
 
 /** A virtual field is a field that is not physically present in the underlying data schema, but is created through specific operations within the query builder model based on other fields in the schema. */
@@ -739,7 +744,8 @@ export type ProjectedFieldOperationEnum =
   | "FIELD_OPERATION_UNSPECIFIED"
   | "NO_SETTING"
   | "GROUP_BY"
-  | "AGGREGATE";
+  | "AGGREGATE"
+  | (string & {});
 export const ProjectedFieldOperationEnum = /*@__PURE__*/ S.String;
 
 /** Represents a field selected in the query, analogous to an item in a SQL SELECT clause. It specifies the source field and optionally applies transformations like aggregation, casting, regex extraction, or assigns an alias. Use ProjectedField when you need more than just the raw source field name (for which you might use FieldSource directly in QueryBuilderConfig's field_sources list if no transformations or specific operation type are needed).A ProjectedField can represent either a field present in the data schema (specified via the field property) or a virtual field that is computed from other fields (specified via the virtual_field property). */
@@ -809,7 +815,8 @@ export type SortOrderParameterSortOrderDirectionEnum =
   | "SORT_ORDER_UNSPECIFIED"
   | "SORT_ORDER_NONE"
   | "SORT_ORDER_ASCENDING"
-  | "SORT_ORDER_DESCENDING";
+  | "SORT_ORDER_DESCENDING"
+  | (string & {});
 export const SortOrderParameterSortOrderDirectionEnum = /*@__PURE__*/ S.String;
 
 /** A sort order for a query based on a column. */
@@ -843,7 +850,8 @@ export type FilterExpressionComparatorEnum =
   | "LESS_THAN_EQUALS"
   | "IS_NULL"
   | "IN"
-  | "LIKE";
+  | "LIKE"
+  | (string & {});
 export const FilterExpressionComparatorEnum = /*@__PURE__*/ S.String;
 
 /** This is a leaf of the FilterPredicate. Ex: { field: json_payload.message.error_code, filter_value: {numeric_value: 400}, comparator: EQUAL_TO} The field will be schema field that is selected using the . annotation to display the drill down value. The value will be the user inputted text that the filter is comparing against. */
@@ -880,7 +888,8 @@ export type FilterPredicateOperatorTypeEnum =
   | "OPERATOR_TYPE_UNSPECIFIED"
   | "AND"
   | "OR"
-  | "LEAF";
+  | "LEAF"
+  | (string & {});
 export const FilterPredicateOperatorTypeEnum = /*@__PURE__*/ S.String;
 
 /** A filter for a query. This equates to the WHERE clause in SQL. */
@@ -1042,7 +1051,8 @@ export const CreateBillingAccountsLocationsSavedQueriesRequest =
 export type LogSinkOutputVersionFormatEnum =
   | "VERSION_FORMAT_UNSPECIFIED"
   | "V2"
-  | "V1";
+  | "V1"
+  | (string & {});
 export const LogSinkOutputVersionFormatEnum = /*@__PURE__*/ S.String;
 
 /** Options that change functionality of a sink exporting data to BigQuery. */
@@ -1833,14 +1843,16 @@ export type MetricDescriptorLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED";
+  | "DEPRECATED"
+  | (string & {});
 export const MetricDescriptorLaunchStageEnum = /*@__PURE__*/ S.String;
 
 export type MetricDescriptorMetricKindEnum =
   | "METRIC_KIND_UNSPECIFIED"
   | "GAUGE"
   | "DELTA"
-  | "CUMULATIVE";
+  | "CUMULATIVE"
+  | (string & {});
 export const MetricDescriptorMetricKindEnum = /*@__PURE__*/ S.String;
 
 export type MetricDescriptorValueTypeEnum =
@@ -1850,10 +1862,15 @@ export type MetricDescriptorValueTypeEnum =
   | "DOUBLE"
   | "STRING"
   | "DISTRIBUTION"
-  | "MONEY";
+  | "MONEY"
+  | (string & {});
 export const MetricDescriptorValueTypeEnum = /*@__PURE__*/ S.String;
 
-export type LabelDescriptorValueTypeEnum = "STRING" | "BOOL" | "INT64";
+export type LabelDescriptorValueTypeEnum =
+  | "STRING"
+  | "BOOL"
+  | "INT64"
+  | (string & {});
 export const LabelDescriptorValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** A description of a label. */
@@ -1888,14 +1905,16 @@ export type MetricDescriptorMetadataLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED";
+  | "DEPRECATED"
+  | (string & {});
 export const MetricDescriptorMetadataLaunchStageEnum = /*@__PURE__*/ S.String;
 
 export type MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum =
   | "TIME_SERIES_RESOURCE_HIERARCHY_LEVEL_UNSPECIFIED"
   | "PROJECT"
   | "ORGANIZATION"
-  | "FOLDER";
+  | "FOLDER"
+  | (string & {});
 export const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1973,7 +1992,7 @@ export const MetricDescriptor = /*@__PURE__*/ S.suspend(() =>
   identifier: "MetricDescriptor",
 }) as any as S.Schema<MetricDescriptor>;
 
-export type LogMetricVersionEnum = "V2" | "V1";
+export type LogMetricVersionEnum = "V2" | "V1" | (string & {});
 export const LogMetricVersionEnum = /*@__PURE__*/ S.String;
 
 /** Describes a logs-based metric. The value of the metric is the number of log entries that match a logs filter in a given time interval.Logs-based metrics can also be used to extract values from logs and create a distribution of the values. The distribution records the statistics of the extracted values along with an optional histogram of the values as specified by the bucket options. */
@@ -3887,7 +3906,8 @@ export const GetSettingsBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 export type DefaultSinkConfigModeEnum =
   | "FILTER_WRITE_MODE_UNSPECIFIED"
   | "APPEND"
-  | "OVERWRITE";
+  | "OVERWRITE"
+  | (string & {});
 export const DefaultSinkConfigModeEnum = /*@__PURE__*/ S.String;
 
 /** Describes the custom _Default sink configuration that is used to override the built-in _Default sink configuration in newly created resource containers, such as projects or folders. */
@@ -4686,7 +4706,8 @@ export type LogEntrySeverityEnum =
   | "ERROR"
   | "CRITICAL"
   | "ALERT"
-  | "EMERGENCY";
+  | "EMERGENCY"
+  | (string & {});
 export const LogEntrySeverityEnum = /*@__PURE__*/ S.String;
 
 /** Additional information about the source code location that produced the log entry. */
@@ -5497,7 +5518,8 @@ export type MonitoredResourceDescriptorLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED";
+  | "DEPRECATED"
+  | (string & {});
 export const MonitoredResourceDescriptorLaunchStageEnum =
   /*@__PURE__*/ S.String;
 
@@ -7076,7 +7098,8 @@ export const TailEntriesRequest = /*@__PURE__*/ S.suspend(() =>
 export type SuppressionInfoReasonEnum =
   | "REASON_UNSPECIFIED"
   | "RATE_LIMIT"
-  | "NOT_CONSUMED";
+  | "NOT_CONSUMED"
+  | (string & {});
 export const SuppressionInfoReasonEnum = /*@__PURE__*/ S.String;
 
 /** Information about entries that were omitted from the session. */

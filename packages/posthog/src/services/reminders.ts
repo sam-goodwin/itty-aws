@@ -12,10 +12,15 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `daily` - Daily * `weekly` - Weekly * `monthly` - Monthly * `yearly` - Yearly */
-export type RecurrenceIntervalEnum = "daily" | "weekly" | "monthly" | "yearly";
+export type RecurrenceIntervalEnum =
+  | "daily"
+  | "weekly"
+  | "monthly"
+  | "yearly"
+  | (string & {});
 export const RecurrenceIntervalEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 /** For a recurring reminder: daily, weekly, monthly, or yearly. * `daily` - Daily * `weekly` - Weekly * `monthly` - Monthly * `yearly` - Yearly */
@@ -75,7 +80,11 @@ export const ReminderRecurrenceInterval =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ReminderRecurrenceInterval>;
 
 /** * `active` - Active * `completed` - Completed * `errored` - Errored */
-export type ReminderStatusEnum = "active" | "completed" | "errored";
+export type ReminderStatusEnum =
+  | "active"
+  | "completed"
+  | "errored"
+  | (string & {});
 export const ReminderStatusEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
@@ -93,7 +102,8 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;

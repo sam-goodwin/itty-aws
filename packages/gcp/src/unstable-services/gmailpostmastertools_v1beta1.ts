@@ -58,7 +58,8 @@ export type DomainPermissionEnum =
   | "PERMISSION_UNSPECIFIED"
   | "OWNER"
   | "READER"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const DomainPermissionEnum = /*@__PURE__*/ S.String;
 
 /** A registered domain resource in the Postmaster API. */
@@ -125,7 +126,8 @@ export type IpReputationReputationEnum =
   | "HIGH"
   | "MEDIUM"
   | "LOW"
-  | "BAD";
+  | "BAD"
+  | (string & {});
 export const IpReputationReputationEnum = /*@__PURE__*/ S.String;
 
 /** IP Reputation information for a set of IPs in a specific reputation category. */
@@ -164,13 +166,15 @@ export type DeliveryErrorErrorTypeEnum =
   | "LOW_DOMAIN_REPUTATION"
   | "IP_IN_RBL"
   | "DOMAIN_IN_RBL"
-  | "BAD_PTR_RECORD";
+  | "BAD_PTR_RECORD"
+  | (string & {});
 export const DeliveryErrorErrorTypeEnum = /*@__PURE__*/ S.String;
 
 export type DeliveryErrorErrorClassEnum =
   | "DELIVERY_ERROR_CLASS_UNSPECIFIED"
   | "PERMANENT_ERROR"
-  | "TEMPORARY_ERROR";
+  | "TEMPORARY_ERROR"
+  | (string & {});
 export const DeliveryErrorErrorClassEnum = /*@__PURE__*/ S.String;
 
 /** Metric on a particular delivery error type. */
@@ -200,7 +204,8 @@ export type TrafficStatsDomainReputationEnum =
   | "HIGH"
   | "MEDIUM"
   | "LOW"
-  | "BAD";
+  | "BAD"
+  | (string & {});
 export const TrafficStatsDomainReputationEnum = /*@__PURE__*/ S.String;
 
 /** Email traffic statistics pertaining to a specific date. */

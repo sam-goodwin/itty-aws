@@ -104,7 +104,7 @@ export const WorkspaceCollectionsCheckNameAvailabilityRequest =
   }) as any as S.Schema<WorkspaceCollectionsCheckNameAvailabilityRequest>;
 
 /** Reason why the workspace collection name cannot be used. */
-export type CheckNameResponseReason = "Unavailable" | "Invalid";
+export type CheckNameResponseReason = "Unavailable" | "Invalid" | (string & {});
 export const CheckNameResponseReason = /*@__PURE__*/ S.String;
 
 export interface CheckNameResponse {
@@ -134,11 +134,11 @@ export const WorkspaceCollectionsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkspaceCollectionsCreateRequestTagsMap>;
 
 /** SKU name */
-export type AzureSkuName = "S1";
+export type AzureSkuName = "S1" | (string & {});
 export const AzureSkuName = /*@__PURE__*/ S.String;
 
 /** SKU tier */
-export type AzureSkuTier = "Standard";
+export type AzureSkuTier = "Standard" | (string & {});
 export const AzureSkuTier = /*@__PURE__*/ S.String;
 
 export interface AzureSku {
@@ -421,7 +421,10 @@ export const WorkspaceCollectionsMigrateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspaceCollectionsMigrateResponse>;
 
 /** Key name */
-export type WorkspaceCollectionsRegenerateKeyRequestKeyName = "key1" | "key2";
+export type WorkspaceCollectionsRegenerateKeyRequestKeyName =
+  | "key1"
+  | "key2"
+  | (string & {});
 export const WorkspaceCollectionsRegenerateKeyRequestKeyName =
   /*@__PURE__*/ S.String;
 

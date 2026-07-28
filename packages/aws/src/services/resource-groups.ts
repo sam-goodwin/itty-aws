@@ -157,7 +157,10 @@ export const CancelTagSyncTaskResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelTagSyncTaskResponse>;
 export type CreateGroupName = string;
 export type Description = string;
-export type QueryType = "TAG_FILTERS_1_0" | "CLOUDFORMATION_STACK_1_0";
+export type QueryType =
+  | "TAG_FILTERS_1_0"
+  | "CLOUDFORMATION_STACK_1_0"
+  | (string & {});
 export const QueryType = /*@__PURE__*/ S.String;
 
 export type Query = string;
@@ -276,7 +279,8 @@ export const Group = /*@__PURE__*/ S.suspend(() =>
 export type GroupConfigurationStatus =
   | "UPDATING"
   | "UPDATE_COMPLETE"
-  | "UPDATE_FAILED";
+  | "UPDATE_FAILED"
+  | (string & {});
 export const GroupConfigurationStatus = /*@__PURE__*/ S.String;
 
 export type GroupConfigurationFailureReason = string;
@@ -357,14 +361,18 @@ export const GetAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccountSettingsRequest",
 }) as any as S.Schema<GetAccountSettingsRequest>;
-export type GroupLifecycleEventsDesiredStatus = "ACTIVE" | "INACTIVE";
+export type GroupLifecycleEventsDesiredStatus =
+  | "ACTIVE"
+  | "INACTIVE"
+  | (string & {});
 export const GroupLifecycleEventsDesiredStatus = /*@__PURE__*/ S.String;
 
 export type GroupLifecycleEventsStatus =
   | "ACTIVE"
   | "INACTIVE"
   | "IN_PROGRESS"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const GroupLifecycleEventsStatus = /*@__PURE__*/ S.String;
 
 export type GroupLifecycleEventsStatusMessage = string;
@@ -519,7 +527,7 @@ export const GetTagSyncTaskInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTagSyncTaskInput",
 }) as any as S.Schema<GetTagSyncTaskInput>;
 export type RoleArn = string;
-export type TagSyncTaskStatus = "ACTIVE" | "ERROR";
+export type TagSyncTaskStatus = "ACTIVE" | "ERROR" | (string & {});
 export const TagSyncTaskStatus = /*@__PURE__*/ S.String;
 
 export type ErrorMessage = string;
@@ -612,7 +620,10 @@ export const GroupResourcesOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GroupResourcesOutput",
 }) as any as S.Schema<GroupResourcesOutput>;
 export type MaxResults = number;
-export type ListGroupingStatusesFilterName = "status" | "resource-arn";
+export type ListGroupingStatusesFilterName =
+  | "status"
+  | "resource-arn"
+  | (string & {});
 export const ListGroupingStatusesFilterName = /*@__PURE__*/ S.String;
 
 export type ListGroupingStatusesFilterValue = string;
@@ -660,10 +671,15 @@ export const ListGroupingStatusesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListGroupingStatusesInput",
 }) as any as S.Schema<ListGroupingStatusesInput>;
-export type GroupingType = "GROUP" | "UNGROUP";
+export type GroupingType = "GROUP" | "UNGROUP" | (string & {});
 export const GroupingType = /*@__PURE__*/ S.String;
 
-export type GroupingStatus = "SUCCESS" | "FAILED" | "IN_PROGRESS" | "SKIPPED";
+export type GroupingStatus =
+  | "SUCCESS"
+  | "FAILED"
+  | "IN_PROGRESS"
+  | "SKIPPED"
+  | (string & {});
 export const GroupingStatus = /*@__PURE__*/ S.String;
 
 export interface GroupingStatusesItem {
@@ -702,7 +718,7 @@ export const ListGroupingStatusesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListGroupingStatusesOutput",
 }) as any as S.Schema<ListGroupingStatusesOutput>;
-export type ResourceFilterName = "resource-type";
+export type ResourceFilterName = "resource-type" | (string & {});
 export const ResourceFilterName = /*@__PURE__*/ S.String;
 
 export type ResourceFilterValue = string;
@@ -757,7 +773,7 @@ export const ResourceIdentifier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResourceIdentifier",
 }) as any as S.Schema<ResourceIdentifier>;
-export type ResourceStatusValue = "PENDING";
+export type ResourceStatusValue = "PENDING" | (string & {});
 export const ResourceStatusValue = /*@__PURE__*/ S.String;
 
 export interface ResourceStatus {
@@ -788,7 +804,8 @@ export type QueryErrorCode =
   | "CLOUDFORMATION_STACK_INACTIVE"
   | "CLOUDFORMATION_STACK_NOT_EXISTING"
   | "CLOUDFORMATION_STACK_UNASSUMABLE_ROLE"
-  | "RESOURCE_TYPE_NOT_SUPPORTED";
+  | "RESOURCE_TYPE_NOT_SUPPORTED"
+  | (string & {});
 export const QueryErrorCode = /*@__PURE__*/ S.String;
 
 export type QueryErrorMessage = string;
@@ -825,7 +842,8 @@ export type GroupFilterName =
   | "configuration-type"
   | "owner"
   | "display-name"
-  | "criticality";
+  | "criticality"
+  | (string & {});
 export const GroupFilterName = /*@__PURE__*/ S.String;
 
 export type GroupFilterValue = string;

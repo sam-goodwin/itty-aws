@@ -76,14 +76,16 @@ export const ActiveConference = /*@__PURE__*/ S.suspend(() =>
 export type SpaceConfigAttendanceReportGenerationTypeEnum =
   | "ATTENDANCE_REPORT_GENERATION_TYPE_UNSPECIFIED"
   | "GENERATE_REPORT"
-  | "DO_NOT_GENERATE";
+  | "DO_NOT_GENERATE"
+  | (string & {});
 export const SpaceConfigAttendanceReportGenerationTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type TranscriptionConfigAutoTranscriptionGenerationEnum =
   | "AUTO_GENERATION_TYPE_UNSPECIFIED"
   | "ON"
-  | "OFF";
+  | "OFF"
+  | (string & {});
 export const TranscriptionConfigAutoTranscriptionGenerationEnum =
   /*@__PURE__*/ S.String;
 
@@ -105,7 +107,8 @@ export const TranscriptionConfig = /*@__PURE__*/ S.suspend(() =>
 export type RecordingConfigAutoRecordingGenerationEnum =
   | "AUTO_GENERATION_TYPE_UNSPECIFIED"
   | "ON"
-  | "OFF";
+  | "OFF"
+  | (string & {});
 export const RecordingConfigAutoRecordingGenerationEnum =
   /*@__PURE__*/ S.String;
 
@@ -127,7 +130,8 @@ export const RecordingConfig = /*@__PURE__*/ S.suspend(() =>
 export type SmartNotesConfigAutoSmartNotesGenerationEnum =
   | "AUTO_GENERATION_TYPE_UNSPECIFIED"
   | "ON"
-  | "OFF";
+  | "OFF"
+  | (string & {});
 export const SmartNotesConfigAutoSmartNotesGenerationEnum =
   /*@__PURE__*/ S.String;
 
@@ -163,40 +167,49 @@ export const ArtifactConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ArtifactConfig" }) as any as S.Schema<ArtifactConfig>;
 
-export type SpaceConfigModerationEnum = "MODERATION_UNSPECIFIED" | "OFF" | "ON";
+export type SpaceConfigModerationEnum =
+  | "MODERATION_UNSPECIFIED"
+  | "OFF"
+  | "ON"
+  | (string & {});
 export const SpaceConfigModerationEnum = /*@__PURE__*/ S.String;
 
 export type SpaceConfigAccessTypeEnum =
   | "ACCESS_TYPE_UNSPECIFIED"
   | "OPEN"
   | "TRUSTED"
-  | "RESTRICTED";
+  | "RESTRICTED"
+  | (string & {});
 export const SpaceConfigAccessTypeEnum = /*@__PURE__*/ S.String;
 
 export type ModerationRestrictionsChatRestrictionEnum =
   | "RESTRICTION_TYPE_UNSPECIFIED"
   | "HOSTS_ONLY"
-  | "NO_RESTRICTION";
+  | "NO_RESTRICTION"
+  | (string & {});
 export const ModerationRestrictionsChatRestrictionEnum = /*@__PURE__*/ S.String;
 
 export type ModerationRestrictionsDefaultJoinAsViewerTypeEnum =
   | "DEFAULT_JOIN_AS_VIEWER_TYPE_UNSPECIFIED"
   | "ON"
-  | "OFF";
+  | "OFF"
+  | (string & {});
 export const ModerationRestrictionsDefaultJoinAsViewerTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type ModerationRestrictionsReactionRestrictionEnum =
   | "RESTRICTION_TYPE_UNSPECIFIED"
   | "HOSTS_ONLY"
-  | "NO_RESTRICTION";
+  | "NO_RESTRICTION"
+  | (string & {});
 export const ModerationRestrictionsReactionRestrictionEnum =
   /*@__PURE__*/ S.String;
 
 export type ModerationRestrictionsPresentRestrictionEnum =
   | "RESTRICTION_TYPE_UNSPECIFIED"
   | "HOSTS_ONLY"
-  | "NO_RESTRICTION";
+  | "NO_RESTRICTION"
+  | (string & {});
 export const ModerationRestrictionsPresentRestrictionEnum =
   /*@__PURE__*/ S.String;
 
@@ -231,7 +244,8 @@ export const ModerationRestrictions = /*@__PURE__*/ S.suspend(() =>
 export type SpaceConfigEntryPointAccessEnum =
   | "ENTRY_POINT_ACCESS_UNSPECIFIED"
   | "ALL"
-  | "CREATOR_APP_ONLY";
+  | "CREATOR_APP_ONLY"
+  | (string & {});
 export const SpaceConfigEntryPointAccessEnum = /*@__PURE__*/ S.String;
 
 /** The configuration pertaining to a meeting space. */
@@ -591,7 +605,8 @@ export type RecordingStateEnum =
   | "STATE_UNSPECIFIED"
   | "STARTED"
   | "ENDED"
-  | "FILE_GENERATED";
+  | "FILE_GENERATED"
+  | (string & {});
 export const RecordingStateEnum = /*@__PURE__*/ S.String;
 
 /** Metadata about a recording created during a conference. */
@@ -640,7 +655,8 @@ export type SmartNoteStateEnum =
   | "STATE_UNSPECIFIED"
   | "STARTED"
   | "ENDED"
-  | "FILE_GENERATED";
+  | "FILE_GENERATED"
+  | (string & {});
 export const SmartNoteStateEnum = /*@__PURE__*/ S.String;
 
 /** Google Docs location where the transcript file is saved. */
@@ -705,7 +721,8 @@ export type TranscriptStateEnum =
   | "STATE_UNSPECIFIED"
   | "STARTED"
   | "ENDED"
-  | "FILE_GENERATED";
+  | "FILE_GENERATED"
+  | (string & {});
 export const TranscriptStateEnum = /*@__PURE__*/ S.String;
 
 /** Metadata for a transcript generated from a conference. It refers to the ASR (Automatic Speech Recognition) result of user's speech during the conference. */

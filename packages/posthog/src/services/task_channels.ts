@@ -114,7 +114,10 @@ export const TaskChannelsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaskChannelsDestroyResponse>;
 
 /** * `context_created` - context_created * `context_md_building` - context_md_building */
-export type EventEnum = "context_created" | "context_md_building";
+export type EventEnum =
+  | "context_created"
+  | "context_md_building"
+  | (string & {});
 export const EventEnum = /*@__PURE__*/ S.String;
 
 export interface TaskChannelsFeedCreateRequest {

@@ -246,7 +246,10 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type SortOptionsSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type SortOptionsSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const SortOptionsSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface SortOptions {
@@ -314,7 +317,11 @@ export const ValueFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ValueFilter" }) as any as S.Schema<ValueFilter>;
 
-export type CompositeFilterLogicOperatorEnum = "AND" | "OR" | "NOT";
+export type CompositeFilterLogicOperatorEnum =
+  | "AND"
+  | "OR"
+  | "NOT"
+  | (string & {});
 export const CompositeFilterLogicOperatorEnum = /*@__PURE__*/ S.String;
 
 export type FilterList = ReadonlyArray<Filter>;
@@ -377,7 +384,8 @@ export type SourcePredefinedSourceEnum =
   | "GOOGLE_SITES"
   | "GOOGLE_GROUPS"
   | "GOOGLE_CALENDAR"
-  | "GOOGLE_KEEP";
+  | "GOOGLE_KEEP"
+  | (string & {});
 export const SourcePredefinedSourceEnum = /*@__PURE__*/ S.String;
 
 /** Defines sources for the suggest/search APIs. */
@@ -475,7 +483,8 @@ export const QueryInterpretationConfig = /*@__PURE__*/ S.suspend(() =>
 export type SourceScoringConfigSourceImportanceEnum =
   | "DEFAULT"
   | "LOW"
-  | "HIGH";
+  | "HIGH"
+  | (string & {});
 export const SourceScoringConfigSourceImportanceEnum = /*@__PURE__*/ S.String;
 
 /** Set the scoring configuration. This allows modifying the ranking of results for a source. */
@@ -608,7 +617,8 @@ export const CreateSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(
 export type DeleteIndexingDatasourcesItemsModeEnum =
   | "UNSPECIFIED"
   | "SYNCHRONOUS"
-  | "ASYNCHRONOUS";
+  | "ASYNCHRONOUS"
+  | (string & {});
 export const DeleteIndexingDatasourcesItemsModeEnum = /*@__PURE__*/ S.String;
 
 export interface DeleteIndexingDatasourcesItemsRequest {
@@ -1011,7 +1021,8 @@ export type ItemStatusCodeEnum =
   | "ERROR"
   | "MODIFIED"
   | "NEW_ITEM"
-  | "ACCEPTED";
+  | "ACCEPTED"
+  | (string & {});
 export const ItemStatusCodeEnum = /*@__PURE__*/ S.String;
 
 export type ProcessingErrorCodeEnum =
@@ -1019,7 +1030,8 @@ export type ProcessingErrorCodeEnum =
   | "MALFORMED_REQUEST"
   | "UNSUPPORTED_CONTENT_FORMAT"
   | "INDIRECT_BROKEN_ACL"
-  | "ACL_CYCLE";
+  | "ACL_CYCLE"
+  | (string & {});
 export const ProcessingErrorCodeEnum = /*@__PURE__*/ S.String;
 
 export interface FieldViolation {
@@ -1073,7 +1085,8 @@ export type RepositoryErrorTypeEnum =
   | "SERVER_ERROR"
   | "QUOTA_EXCEEDED"
   | "SERVICE_UNAVAILABLE"
-  | "CLIENT_ERROR";
+  | "CLIENT_ERROR"
+  | (string & {});
 export const RepositoryErrorTypeEnum = /*@__PURE__*/ S.String;
 
 /** Errors when the connector is communicating to the source repository. */
@@ -1121,14 +1134,16 @@ export type ItemItemTypeEnum =
   | "UNSPECIFIED"
   | "CONTENT_ITEM"
   | "CONTAINER_ITEM"
-  | "VIRTUAL_CONTAINER_ITEM";
+  | "VIRTUAL_CONTAINER_ITEM"
+  | (string & {});
 export const ItemItemTypeEnum = /*@__PURE__*/ S.String;
 
 export type ItemContentContentFormatEnum =
   | "UNSPECIFIED"
   | "HTML"
   | "TEXT"
-  | "RAW";
+  | "RAW"
+  | (string & {});
 export const ItemContentContentFormatEnum = /*@__PURE__*/ S.String;
 
 /** Represents an upload session reference. This reference is created via upload method. This reference is valid for 30 days after its creation. Updating of item content may refer to this uploaded content via contentDataRef. */
@@ -1170,7 +1185,8 @@ export type ItemAclAclInheritanceTypeEnum =
   | "NOT_APPLICABLE"
   | "CHILD_OVERRIDE"
   | "PARENT_OVERRIDE"
-  | "BOTH_PERMIT";
+  | "BOTH_PERMIT"
+  | (string & {});
 export const ItemAclAclInheritanceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Access control list information for the item. For more information see [Map ACLs](https://developers.google.com/workspace/cloud-search/docs/guides/acls). */
@@ -1230,7 +1246,11 @@ export const SearchQualityMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchQualityMetadata",
 }) as any as S.Schema<SearchQualityMetadata>;
 
-export type InteractionTypeEnum = "UNSPECIFIED" | "VIEW" | "EDIT";
+export type InteractionTypeEnum =
+  | "UNSPECIFIED"
+  | "VIEW"
+  | "EDIT"
+  | (string & {});
 export const InteractionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents an interaction between a user and an item. */
@@ -1377,7 +1397,8 @@ export type ItemCountByStatusStatusCodeEnum =
   | "ERROR"
   | "MODIFIED"
   | "NEW_ITEM"
-  | "ACCEPTED";
+  | "ACCEPTED"
+  | (string & {});
 export const ItemCountByStatusStatusCodeEnum = /*@__PURE__*/ S.String;
 
 export interface ItemCountByStatus {
@@ -1693,7 +1714,8 @@ export type RetrievalImportanceImportanceEnum =
   | "HIGHEST"
   | "HIGH"
   | "LOW"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const RetrievalImportanceImportanceEnum = /*@__PURE__*/ S.String;
 
 export interface RetrievalImportance {
@@ -1775,7 +1797,8 @@ export const IntegerOperatorOptions = /*@__PURE__*/ S.suspend(() =>
 export type IntegerPropertyOptionsOrderedRankingEnum =
   | "NO_ORDER"
   | "ASCENDING"
-  | "DESCENDING";
+  | "DESCENDING"
+  | (string & {});
 export const IntegerPropertyOptionsOrderedRankingEnum = /*@__PURE__*/ S.String;
 
 /** The options for integer properties. */
@@ -1890,7 +1913,8 @@ export const ObjectPropertyOptions = /*@__PURE__*/ S.suspend(() =>
 export type EnumPropertyOptionsOrderedRankingEnum =
   | "NO_ORDER"
   | "ASCENDING"
-  | "DESCENDING";
+  | "DESCENDING"
+  | (string & {});
 export const EnumPropertyOptionsOrderedRankingEnum = /*@__PURE__*/ S.String;
 
 /** Used to provide a search operator for enum properties. This is optional. Search operators let users restrict the query to specific fields relevant to the type of item being searched. For example, if you provide no operator for a *priority* enum property with possible values *p0* and *p1*, a query that contains the term *p0* returns items that have *p0* as the value of the *priority* property, as well as any items that contain the string *p0* in other fields. If you provide an operator name for the enum, such as *priority*, then search users can use that operator to refine results to only items that have *p0* as this property's value, with the query *priority:p0*. */
@@ -2630,7 +2654,8 @@ export const IndexItemOptions = /*@__PURE__*/ S.suspend(() =>
 export type IndexItemRequestModeEnum =
   | "UNSPECIFIED"
   | "SYNCHRONOUS"
-  | "ASYNCHRONOUS";
+  | "ASYNCHRONOUS"
+  | (string & {});
 export const IndexItemRequestModeEnum = /*@__PURE__*/ S.String;
 
 export interface IndexItemRequest {
@@ -2738,7 +2763,8 @@ export type UnmappedIdentityResolutionStatusCodeEnum =
   | "IDENTITY_SOURCE_NOT_FOUND"
   | "IDENTITY_SOURCE_MISCONFIGURED"
   | "TOO_MANY_MAPPINGS_FOUND"
-  | "INTERNAL_ERROR";
+  | "INTERNAL_ERROR"
+  | (string & {});
 export const UnmappedIdentityResolutionStatusCodeEnum = /*@__PURE__*/ S.String;
 
 export interface UnmappedIdentity {
@@ -2781,7 +2807,8 @@ export type ListDebugIdentitysourcesUnmappedidsResolutionStatusCodeEnum =
   | "IDENTITY_SOURCE_NOT_FOUND"
   | "IDENTITY_SOURCE_MISCONFIGURED"
   | "TOO_MANY_MAPPINGS_FOUND"
-  | "INTERNAL_ERROR";
+  | "INTERNAL_ERROR"
+  | (string & {});
 export const ListDebugIdentitysourcesUnmappedidsResolutionStatusCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3019,7 +3046,8 @@ export type QueryOperatorTypeEnum =
   | "ENUM"
   | "DATE"
   | "TEXT"
-  | "HTML";
+  | "HTML"
+  | (string & {});
 export const QueryOperatorTypeEnum = /*@__PURE__*/ S.String;
 
 /** The definition of a operator that can be used in a Search/Suggest request. */
@@ -3254,7 +3282,8 @@ export type PollItemsRequestStatusCodesItemEnum =
   | "ERROR"
   | "MODIFIED"
   | "NEW_ITEM"
-  | "ACCEPTED";
+  | "ACCEPTED"
+  | (string & {});
 export const PollItemsRequestStatusCodesItemEnum = /*@__PURE__*/ S.String;
 
 export type PollItemsRequestStatusCodesItemEnumList =
@@ -3325,7 +3354,8 @@ export type PushItemTypeEnum =
   | "MODIFIED"
   | "NOT_MODIFIED"
   | "REPOSITORY_ERROR"
-  | "REQUEUE";
+  | "REQUEUE"
+  | (string & {});
 export const PushItemTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents an item to be pushed to the indexing queue. */
@@ -3645,7 +3675,8 @@ export const SearchQueryRequest = /*@__PURE__*/ S.suspend(() =>
 export type SpellResultSuggestionTypeEnum =
   | "SUGGESTION_TYPE_UNSPECIFIED"
   | "NON_EMPTY_RESULTS_SPELL_SUGGESTION"
-  | "ZERO_RESULTS_FULL_PAGE_REPLACEMENT";
+  | "ZERO_RESULTS_FULL_PAGE_REPLACEMENT"
+  | (string & {});
 export const SpellResultSuggestionTypeEnum = /*@__PURE__*/ S.String;
 
 /** IMPORTANT: It is unsafe to accept this message from an untrusted source, since it's trivial for an attacker to forge serialized messages that don't fulfill the type's safety contract -- for example, it could contain attacker controlled script. A system which receives a SafeHtmlProto implicitly trusts the producer of the SafeHtmlProto. So, it's generally safe to return this message in RPC responses, but generally unsafe to accept it in RPC requests. */
@@ -3710,13 +3741,15 @@ export const ErrorInfo = /*@__PURE__*/ S.suspend(() =>
 export type QueryInterpretationReasonEnum =
   | "UNSPECIFIED"
   | "QUERY_HAS_NATURAL_LANGUAGE_INTENT"
-  | "NOT_ENOUGH_RESULTS_FOUND_FOR_USER_QUERY";
+  | "NOT_ENOUGH_RESULTS_FOUND_FOR_USER_QUERY"
+  | (string & {});
 export const QueryInterpretationReasonEnum = /*@__PURE__*/ S.String;
 
 export type QueryInterpretationInterpretationTypeEnum =
   | "NONE"
   | "BLEND"
-  | "REPLACE";
+  | "REPLACE"
+  | (string & {});
 export const QueryInterpretationInterpretationTypeEnum = /*@__PURE__*/ S.String;
 
 export interface QueryInterpretation {
@@ -3871,7 +3904,7 @@ export const PhotoList = /*@__PURE__*/ S.Array(
   Photo,
 ) as any as S.Schema<PhotoList>;
 
-export type PhoneNumberTypeEnum = "OTHER" | "MOBILE" | "OFFICE";
+export type PhoneNumberTypeEnum = "OTHER" | "MOBILE" | "OFFICE" | (string & {});
 export const PhoneNumberTypeEnum = /*@__PURE__*/ S.String;
 
 /** A person's Phone Number */
@@ -4216,7 +4249,8 @@ export type QuerySuggestionSourceCorpusEnum =
   | "GMAIL"
   | "DRIVE"
   | "CHAT"
-  | "CALENDAR";
+  | "CALENDAR"
+  | (string & {});
 export const QuerySuggestionSourceCorpusEnum = /*@__PURE__*/ S.String;
 
 export interface QuerySuggestion {

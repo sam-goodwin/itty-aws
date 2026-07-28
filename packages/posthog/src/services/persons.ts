@@ -35,7 +35,10 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type PersonsActivityRetrieveRequestFormat = "csv" | "json";
+export type PersonsActivityRetrieveRequestFormat =
+  | "csv"
+  | "json"
+  | (string & {});
 export const PersonsActivityRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface PersonsActivityRetrieveRequest {
@@ -68,7 +71,10 @@ export const PersonsActivityRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonsActivityRetrieveResponse",
 }) as any as S.Schema<PersonsActivityRetrieveResponse>;
 
-export type PersonsAllActivityRetrieveRequestFormat = "csv" | "json";
+export type PersonsAllActivityRetrieveRequestFormat =
+  | "csv"
+  | "json"
+  | (string & {});
 export const PersonsAllActivityRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface PersonsAllActivityRetrieveRequest {
@@ -98,7 +104,10 @@ export const PersonsAllActivityRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonsAllActivityRetrieveResponse",
 }) as any as S.Schema<PersonsAllActivityRetrieveResponse>;
 
-export type PersonsBatchByDistinctIdsCreateRequestFormat = "csv" | "json";
+export type PersonsBatchByDistinctIdsCreateRequestFormat =
+  | "csv"
+  | "json"
+  | (string & {});
 export const PersonsBatchByDistinctIdsCreateRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -135,7 +144,10 @@ export const PersonsBatchByDistinctIdsCreateResponse = /*@__PURE__*/ S.suspend(
   identifier: "PersonsBatchByDistinctIdsCreateResponse",
 }) as any as S.Schema<PersonsBatchByDistinctIdsCreateResponse>;
 
-export type PersonsBatchByUuidsCreateRequestFormat = "csv" | "json";
+export type PersonsBatchByUuidsCreateRequestFormat =
+  | "csv"
+  | "json"
+  | (string & {});
 export const PersonsBatchByUuidsCreateRequestFormat = /*@__PURE__*/ S.String;
 
 export interface PersonsBatchByUuidsCreateRequest {
@@ -168,7 +180,10 @@ export const PersonsBatchByUuidsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonsBatchByUuidsCreateResponse",
 }) as any as S.Schema<PersonsBatchByUuidsCreateResponse>;
 
-export type PersonsBulkDeleteCreateRequestFormat = "csv" | "json";
+export type PersonsBulkDeleteCreateRequestFormat =
+  | "csv"
+  | "json"
+  | (string & {});
 export const PersonsBulkDeleteCreateRequestFormat = /*@__PURE__*/ S.String;
 
 /** A list of PostHog person UUIDs to delete (max 1000). */
@@ -227,7 +242,10 @@ export const PersonsBulkDeleteCreateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonsBulkDeleteCreateResponse",
 }) as any as S.Schema<PersonsBulkDeleteCreateResponse>;
 
-export type PersonsCohortsRetrieveRequestFormat = "csv" | "json";
+export type PersonsCohortsRetrieveRequestFormat =
+  | "csv"
+  | "json"
+  | (string & {});
 export const PersonsCohortsRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface PersonsCohortsRetrieveRequest {
@@ -260,7 +278,10 @@ export const PersonsCohortsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonsCohortsRetrieveResponse",
 }) as any as S.Schema<PersonsCohortsRetrieveResponse>;
 
-export type PersonsDeletePropertyCreateRequestFormat = "csv" | "json";
+export type PersonsDeletePropertyCreateRequestFormat =
+  | "csv"
+  | "json"
+  | (string & {});
 export const PersonsDeletePropertyCreateRequestFormat = /*@__PURE__*/ S.String;
 
 export interface PersonsDeletePropertyCreateRequest {
@@ -298,13 +319,17 @@ export const PersonsDeletePropertyCreateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonsDeletePropertyCreateResponse",
 }) as any as S.Schema<PersonsDeletePropertyCreateResponse>;
 
-export type PersonsDeletionStatusListRequestFormat = "csv" | "json";
+export type PersonsDeletionStatusListRequestFormat =
+  | "csv"
+  | "json"
+  | (string & {});
 export const PersonsDeletionStatusListRequestFormat = /*@__PURE__*/ S.String;
 
 export type PersonsDeletionStatusListRequestStatus =
   | "all"
   | "completed"
-  | "pending";
+  | "pending"
+  | (string & {});
 export const PersonsDeletionStatusListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface PersonsDeletionStatusListRequest {
@@ -384,7 +409,7 @@ export const PaginatedAsyncDeletionStatusList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedAsyncDeletionStatusList",
 }) as any as S.Schema<PaginatedAsyncDeletionStatusList>;
 
-export type PersonsEmailsListRequestFormat = "csv" | "json";
+export type PersonsEmailsListRequestFormat = "csv" | "json" | (string & {});
 export const PersonsEmailsListRequestFormat = /*@__PURE__*/ S.String;
 
 export interface PersonsEmailsListRequest {
@@ -477,10 +502,10 @@ export const PersonsEmailsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonsEmailsListResponse",
 }) as any as S.Schema<PersonsEmailsListResponse>;
 
-export type PersonsListRequestFormat = "csv" | "json";
+export type PersonsListRequestFormat = "csv" | "json" | (string & {});
 export const PersonsListRequestFormat = /*@__PURE__*/ S.String;
 
-export type PropertyGroupOperator = "AND" | "OR";
+export type PropertyGroupOperator = "AND" | "OR" | (string & {});
 export const PropertyGroupOperator = /*@__PURE__*/ S.String;
 
 export type PropertyItemValueCase3Item = string | number;
@@ -520,10 +545,11 @@ export type PropertyItemOperatorEnum =
   | "is_date_after"
   | "is_date_before"
   | "in"
-  | "not_in";
+  | "not_in"
+  | (string & {});
 export const PropertyItemOperatorEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type PropertyItemOperator = PropertyItemOperatorEnum | BlankEnum;
@@ -561,7 +587,8 @@ export type PropertyFilterTypeEnum =
   | "revenue_analytics"
   | "account_custom_property"
   | "flag"
-  | "workflow_variable";
+  | "workflow_variable"
+  | (string & {});
 export const PropertyFilterTypeEnum = /*@__PURE__*/ S.String;
 
 export type PropertyItemType = PropertyFilterTypeEnum | BlankEnum;
@@ -699,7 +726,7 @@ export const PaginatedPersonRecordList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedPersonRecordList",
 }) as any as S.Schema<PaginatedPersonRecordList>;
 
-export type PersonsPartialUpdateRequestFormat = "csv" | "json";
+export type PersonsPartialUpdateRequestFormat = "csv" | "json" | (string & {});
 export const PersonsPartialUpdateRequestFormat = /*@__PURE__*/ S.String;
 
 export interface PersonsPartialUpdateRequest {
@@ -728,7 +755,10 @@ export const PersonsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonsPartialUpdateRequest",
 }) as any as S.Schema<PersonsPartialUpdateRequest>;
 
-export type PersonsPropertiesAtTimeRetrieveRequestFormat = "csv" | "json";
+export type PersonsPropertiesAtTimeRetrieveRequestFormat =
+  | "csv"
+  | "json"
+  | (string & {});
 export const PersonsPropertiesAtTimeRetrieveRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -860,7 +890,10 @@ export const PersonPropertiesAtTimeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonPropertiesAtTimeResponse",
 }) as any as S.Schema<PersonPropertiesAtTimeResponse>;
 
-export type PersonsPropertiesTimelineRetrieveRequestFormat = "csv" | "json";
+export type PersonsPropertiesTimelineRetrieveRequestFormat =
+  | "csv"
+  | "json"
+  | (string & {});
 export const PersonsPropertiesTimelineRetrieveRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -896,7 +929,10 @@ export const PersonsPropertiesTimelineRetrieveResponse =
     identifier: "PersonsPropertiesTimelineRetrieveResponse",
   }) as any as S.Schema<PersonsPropertiesTimelineRetrieveResponse>;
 
-export type PersonsResetPersonDistinctIdCreateRequestFormat = "csv" | "json";
+export type PersonsResetPersonDistinctIdCreateRequestFormat =
+  | "csv"
+  | "json"
+  | (string & {});
 export const PersonsResetPersonDistinctIdCreateRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -932,7 +968,7 @@ export const PersonsResetPersonDistinctIdCreateResponse =
     identifier: "PersonsResetPersonDistinctIdCreateResponse",
   }) as any as S.Schema<PersonsResetPersonDistinctIdCreateResponse>;
 
-export type PersonsRetrieveRequestFormat = "csv" | "json";
+export type PersonsRetrieveRequestFormat = "csv" | "json" | (string & {});
 export const PersonsRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface PersonsRetrieveRequest {
@@ -958,7 +994,7 @@ export const PersonsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonsRetrieveRequest",
 }) as any as S.Schema<PersonsRetrieveRequest>;
 
-export type PersonsSplitCreateRequestFormat = "csv" | "json";
+export type PersonsSplitCreateRequestFormat = "csv" | "json" | (string & {});
 export const PersonsSplitCreateRequestFormat = /*@__PURE__*/ S.String;
 
 /** List of distinct_ids to **move off** this person onto new single-id persons. The original person keeps every other distinct_id and its properties. New persons are created with deterministic UUIDs derived from `(team_id, distinct_id)`. Cannot be combined with `main_distinct_id`. */
@@ -1012,7 +1048,7 @@ export const PersonSplitResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonSplitResponse",
 }) as any as S.Schema<PersonSplitResponse>;
 
-export type PersonsUpdateRequestFormat = "csv" | "json";
+export type PersonsUpdateRequestFormat = "csv" | "json" | (string & {});
 export const PersonsUpdateRequestFormat = /*@__PURE__*/ S.String;
 
 export interface PersonsUpdateRequest {
@@ -1041,7 +1077,10 @@ export const PersonsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonsUpdateRequest",
 }) as any as S.Schema<PersonsUpdateRequest>;
 
-export type PersonsUpdatePropertyCreateRequestFormat = "csv" | "json";
+export type PersonsUpdatePropertyCreateRequestFormat =
+  | "csv"
+  | "json"
+  | (string & {});
 export const PersonsUpdatePropertyCreateRequestFormat = /*@__PURE__*/ S.String;
 
 export interface PersonsUpdatePropertyCreateRequest {
@@ -1082,7 +1121,7 @@ export const PersonsUpdatePropertyCreateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonsUpdatePropertyCreateResponse",
 }) as any as S.Schema<PersonsUpdatePropertyCreateResponse>;
 
-export type PersonsValuesRetrieveRequestFormat = "csv" | "json";
+export type PersonsValuesRetrieveRequestFormat = "csv" | "json" | (string & {});
 export const PersonsValuesRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface PersonsValuesRetrieveRequest {

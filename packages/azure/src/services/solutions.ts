@@ -50,7 +50,11 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
 /** The managed application lock level. */
-export type ApplicationLockLevel = "CanNotDelete" | "ReadOnly" | "None";
+export type ApplicationLockLevel =
+  | "CanNotDelete"
+  | "ReadOnly"
+  | "None"
+  | (string & {});
 export const ApplicationLockLevel = /*@__PURE__*/ S.String;
 
 /** The managed application provider authorization. */
@@ -82,11 +86,16 @@ export type ApplicationDefinitionArtifactName =
   | "NotSpecified"
   | "ApplicationResourceTemplate"
   | "CreateUiDefinition"
-  | "MainTemplateParameters";
+  | "MainTemplateParameters"
+  | (string & {});
 export const ApplicationDefinitionArtifactName = /*@__PURE__*/ S.String;
 
 /** The managed application artifact type. */
-export type ApplicationArtifactType = "NotSpecified" | "Template" | "Custom";
+export type ApplicationArtifactType =
+  | "NotSpecified"
+  | "Template"
+  | "Custom"
+  | (string & {});
 export const ApplicationArtifactType = /*@__PURE__*/ S.String;
 
 /** Application definition artifact. */
@@ -189,7 +198,11 @@ export const ApplicationPackageLockingPolicyDefinition =
   }) as any as S.Schema<ApplicationPackageLockingPolicyDefinition>;
 
 /** The deployment mode. */
-export type DeploymentMode = "NotSpecified" | "Incremental" | "Complete";
+export type DeploymentMode =
+  | "NotSpecified"
+  | "Incremental"
+  | "Complete"
+  | (string & {});
 export const DeploymentMode = /*@__PURE__*/ S.String;
 
 /** Managed application deployment policy. */
@@ -209,7 +222,8 @@ export const ApplicationDeploymentPolicy = /*@__PURE__*/ S.suspend(() =>
 export type ApplicationManagementMode =
   | "NotSpecified"
   | "Unmanaged"
-  | "Managed";
+  | "Managed"
+  | (string & {});
 export const ApplicationManagementMode = /*@__PURE__*/ S.String;
 
 /** Managed application management policy. */
@@ -362,13 +376,13 @@ export const ApplicationDefinitionsCreateOrUpdateResponseTagsMap =
 
 /** The type of identity that created the resource. */
 export type ApplicationDefinitionsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
 export const ApplicationDefinitionsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ApplicationDefinitionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
 export const ApplicationDefinitionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -515,7 +529,8 @@ export type ApplicationDefinitionsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationDefinitionsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -524,7 +539,8 @@ export type ApplicationDefinitionsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationDefinitionsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -634,7 +650,8 @@ export type ApplicationDefinitionSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationDefinitionSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -643,7 +660,8 @@ export type ApplicationDefinitionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationDefinitionSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -810,7 +828,8 @@ export type ApplicationDefinitionsUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationDefinitionsUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -819,7 +838,8 @@ export type ApplicationDefinitionsUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationDefinitionsUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -903,11 +923,15 @@ export const ApplicationsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ApplicationsCreateOrUpdateRequestTagsMap>;
 
 /** The Jit approval mode. */
-export type JitApprovalMode = "NotSpecified" | "AutoApprove" | "ManualApprove";
+export type JitApprovalMode =
+  | "NotSpecified"
+  | "AutoApprove"
+  | "ManualApprove"
+  | (string & {});
 export const JitApprovalMode = /*@__PURE__*/ S.String;
 
 /** The approver type. */
-export type JitApproverDefinitionType = "user" | "group";
+export type JitApproverDefinitionType = "user" | "group" | (string & {});
 export const JitApproverDefinitionType = /*@__PURE__*/ S.String;
 
 /** JIT approver definition. */
@@ -1008,7 +1032,8 @@ export type IdentityInputType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
-  | "None";
+  | "None"
+  | (string & {});
 export const IdentityInputType = /*@__PURE__*/ S.String;
 
 /** Represents the user assigned identity that is contained within the UserAssignedIdentities dictionary on ResourceIdentity */
@@ -1105,7 +1130,8 @@ export type ApplicationsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1114,7 +1140,8 @@ export type ApplicationsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1161,7 +1188,8 @@ export type ProvisioningState =
   | "Canceled"
   | "Failed"
   | "Succeeded"
-  | "Updating";
+  | "Updating"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Managed application billing details definition. */
@@ -1224,7 +1252,8 @@ export type ApplicationArtifactName =
   | "NotSpecified"
   | "ViewDefinition"
   | "Authorizations"
-  | "CustomRoleDefinition";
+  | "CustomRoleDefinition"
+  | (string & {});
 export const ApplicationArtifactName = /*@__PURE__*/ S.String;
 
 /** Managed application artifact. */
@@ -1332,7 +1361,8 @@ export type IdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
-  | "None";
+  | "None"
+  | (string & {});
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** Represents the user assigned identity that is contained within the UserAssignedIdentities dictionary on ResourceIdentity */
@@ -1494,13 +1524,14 @@ export type ApplicationsCreateOrUpdateByIdResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationsCreateOrUpdateByIdResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ApplicationsCreateOrUpdateByIdResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
 export const ApplicationsCreateOrUpdateByIdResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1680,7 +1711,8 @@ export type ApplicationsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1689,7 +1721,8 @@ export type ApplicationsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1801,7 +1834,8 @@ export type ApplicationsGetByIdResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationsGetByIdResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1810,7 +1844,8 @@ export type ApplicationsGetByIdResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationsGetByIdResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1972,7 +2007,8 @@ export type ApplicationSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -1980,7 +2016,8 @@ export type ApplicationSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -2317,7 +2354,8 @@ export type ApplicationsUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationsUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2326,7 +2364,8 @@ export type ApplicationsUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationsUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2431,7 +2470,7 @@ export const JitRequestMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JitRequestMetadata>;
 
 /** The JIT status. */
-export type Status = "NotSpecified" | "Elevate" | "Remove";
+export type Status = "NotSpecified" | "Elevate" | "Remove" | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 
 /** The sub status. */
@@ -2441,7 +2480,8 @@ export type SubStatus =
   | "Denied"
   | "Failed"
   | "Expired"
-  | "Timeout";
+  | "Timeout"
+  | (string & {});
 export const SubStatus = /*@__PURE__*/ S.String;
 
 export interface ApplicationsUpdateAccessRequest {
@@ -2554,7 +2594,8 @@ export type ApplicationsUpdateByIdResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationsUpdateByIdResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2563,7 +2604,8 @@ export type ApplicationsUpdateByIdResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationsUpdateByIdResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2679,7 +2721,11 @@ export const JitRequestPropertiesInputJitAuthorizationPoliciesList =
   ) as any as S.Schema<JitRequestPropertiesInputJitAuthorizationPoliciesList>;
 
 /** The JIT request scheduling type. */
-export type JitSchedulingType = "NotSpecified" | "Once" | "Recurring";
+export type JitSchedulingType =
+  | "NotSpecified"
+  | "Once"
+  | "Recurring"
+  | (string & {});
 export const JitSchedulingType = /*@__PURE__*/ S.String;
 
 /** The JIT scheduling policies. */
@@ -2768,7 +2814,8 @@ export type JitRequestsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const JitRequestsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2777,7 +2824,8 @@ export type JitRequestsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const JitRequestsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2831,7 +2879,8 @@ export type JitRequestState =
   | "Failed"
   | "Canceled"
   | "Expired"
-  | "Timeout";
+  | "Timeout"
+  | (string & {});
 export const JitRequestState = /*@__PURE__*/ S.String;
 
 /** Information about JIT request properties */
@@ -2969,7 +3018,8 @@ export type JitRequestsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const JitRequestsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2978,7 +3028,8 @@ export type JitRequestsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const JitRequestsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -3077,7 +3128,8 @@ export type JitRequestDefinitionSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const JitRequestDefinitionSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -3086,7 +3138,8 @@ export type JitRequestDefinitionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const JitRequestDefinitionSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -3245,7 +3298,8 @@ export type JitRequestsUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const JitRequestsUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -3254,7 +3308,8 @@ export type JitRequestsUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const JitRequestsUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -3355,11 +3410,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */

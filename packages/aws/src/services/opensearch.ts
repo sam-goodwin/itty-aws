@@ -231,7 +231,8 @@ export type InboundConnectionStatusCode =
   | "REJECTING"
   | "REJECTED"
   | "DELETING"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const InboundConnectionStatusCode = /*@__PURE__*/ S.String;
 
 export type ConnectionStatusMessage = string;
@@ -247,7 +248,7 @@ export const InboundConnectionStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InboundConnectionStatus",
 }) as any as S.Schema<InboundConnectionStatus>;
-export type ConnectionMode = "DIRECT" | "VPC_ENDPOINT";
+export type ConnectionMode = "DIRECT" | "VPC_ENDPOINT" | (string & {});
 export const ConnectionMode = /*@__PURE__*/ S.String;
 
 export interface InboundConnection {
@@ -514,7 +515,8 @@ export type PackageType =
   | "TXT-DICTIONARY"
   | "ZIP-PLUGIN"
   | "PACKAGE-LICENSE"
-  | "PACKAGE-CONFIG";
+  | "PACKAGE-CONFIG"
+  | (string & {});
 export const PackageType = /*@__PURE__*/ S.String;
 
 export type LastUpdated = Date;
@@ -523,7 +525,8 @@ export type DomainPackageStatus =
   | "ASSOCIATION_FAILED"
   | "ACTIVE"
   | "DISSOCIATING"
-  | "DISSOCIATION_FAILED";
+  | "DISSOCIATION_FAILED"
+  | (string & {});
 export const DomainPackageStatus = /*@__PURE__*/ S.String;
 
 export type PackageVersion = string;
@@ -673,7 +676,11 @@ export const AttachDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AttachDataSourceRequest",
 }) as any as S.Schema<AttachDataSourceRequest>;
-export type DataSourceAttachmentStatus = "PENDING" | "ATTACHED" | "FAILED";
+export type DataSourceAttachmentStatus =
+  | "PENDING"
+  | "ATTACHED"
+  | "FAILED"
+  | (string & {});
 export const DataSourceAttachmentStatus = /*@__PURE__*/ S.String;
 
 export interface AttachDataSourceResponse {
@@ -695,7 +702,9 @@ export const AttachDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AttachDataSourceResponse",
 }) as any as S.Schema<AttachDataSourceResponse>;
 export type AWSAccount = string;
-export type AWSServicePrincipal = "application.opensearchservice.amazonaws.com";
+export type AWSServicePrincipal =
+  | "application.opensearchservice.amazonaws.com"
+  | (string & {});
 export const AWSServicePrincipal = /*@__PURE__*/ S.String;
 
 export type RegionsList = string[];
@@ -735,7 +744,7 @@ export const AuthorizeVpcEndpointAccessRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AuthorizeVpcEndpointAccessRequest",
 }) as any as S.Schema<AuthorizeVpcEndpointAccessRequest>;
-export type PrincipalType = "AWS_ACCOUNT" | "AWS_SERVICE";
+export type PrincipalType = "AWS_ACCOUNT" | "AWS_SERVICE" | (string & {});
 export const PrincipalType = /*@__PURE__*/ S.String;
 
 export interface AuthorizedPrincipal {
@@ -847,7 +856,8 @@ export type DeploymentStatus =
   | "IN_PROGRESS"
   | "COMPLETED"
   | "NOT_ELIGIBLE"
-  | "ELIGIBLE";
+  | "ELIGIBLE"
+  | (string & {});
 export const DeploymentStatus = /*@__PURE__*/ S.String;
 
 export type DeploymentCloseDateTimeStamp = Date;
@@ -918,7 +928,8 @@ export const IamIdentityCenterOptionsInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IamIdentityCenterOptionsInput>;
 export type AppConfigType =
   | "opensearchDashboards.dashboardAdmin.users"
-  | "opensearchDashboards.dashboardAdmin.groups";
+  | "opensearchDashboards.dashboardAdmin.groups"
+  | (string & {});
 export const AppConfigType = /*@__PURE__*/ S.String;
 
 export type AppConfigValue = string;
@@ -1110,7 +1121,8 @@ export type OpenSearchPartitionInstanceType =
   | "r6gd.12xlarge.search"
   | "r6gd.16xlarge.search"
   | "t4g.small.search"
-  | "t4g.medium.search";
+  | "t4g.medium.search"
+  | (string & {});
 export const OpenSearchPartitionInstanceType = /*@__PURE__*/ S.String;
 
 export type IntegerClass = number;
@@ -1125,7 +1137,8 @@ export const ZoneAwarenessConfig = /*@__PURE__*/ S.suspend(() =>
 export type OpenSearchWarmPartitionInstanceType =
   | "ultrawarm1.medium.search"
   | "ultrawarm1.large.search"
-  | "ultrawarm1.xlarge.search";
+  | "ultrawarm1.xlarge.search"
+  | (string & {});
 export const OpenSearchWarmPartitionInstanceType = /*@__PURE__*/ S.String;
 
 export interface ColdStorageOptions {
@@ -1136,7 +1149,7 @@ export const ColdStorageOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ColdStorageOptions",
 }) as any as S.Schema<ColdStorageOptions>;
-export type NodeOptionsNodeType = "coordinator";
+export type NodeOptionsNodeType = "coordinator" | (string & {});
 export const NodeOptionsNodeType = /*@__PURE__*/ S.String;
 
 export interface NodeConfig {
@@ -1195,7 +1208,7 @@ export const ClusterConfig = /*@__PURE__*/ S.suspend(() =>
     NodeOptions: S.optional(NodeOptionsList),
   }),
 ).annotate({ identifier: "ClusterConfig" }) as any as S.Schema<ClusterConfig>;
-export type VolumeType = "standard" | "gp2" | "io1" | "gp3";
+export type VolumeType = "standard" | "gp2" | "io1" | "gp3" | (string & {});
 export const VolumeType = /*@__PURE__*/ S.String;
 
 export interface EBSOptions {
@@ -1214,7 +1227,7 @@ export const EBSOptions = /*@__PURE__*/ S.suspend(() =>
     Throughput: S.optional(S.Number),
   }),
 ).annotate({ identifier: "EBSOptions" }) as any as S.Schema<EBSOptions>;
-export type IPAddressType = "ipv4" | "dualstack";
+export type IPAddressType = "ipv4" | "dualstack" | (string & {});
 export const IPAddressType = /*@__PURE__*/ S.String;
 
 export interface SnapshotOptions {
@@ -1282,7 +1295,8 @@ export type LogType =
   | "INDEX_SLOW_LOGS"
   | "SEARCH_SLOW_LOGS"
   | "ES_APPLICATION_LOGS"
-  | "AUDIT_LOGS";
+  | "AUDIT_LOGS"
+  | (string & {});
 export const LogType = /*@__PURE__*/ S.String;
 
 export type CloudWatchLogsLogGroupArn = string;
@@ -1307,7 +1321,8 @@ export type TLSSecurityPolicy =
   | "Policy-Min-TLS-1-0-2019-07"
   | "Policy-Min-TLS-1-2-2019-07"
   | "Policy-Min-TLS-1-2-PFS-2023-10"
-  | "Policy-Min-TLS-1-2-RFC9151-FIPS-2024-08";
+  | "Policy-Min-TLS-1-2-RFC9151-FIPS-2024-08"
+  | (string & {});
 export const TLSSecurityPolicy = /*@__PURE__*/ S.String;
 
 export type DomainNameFqdn = string;
@@ -1437,10 +1452,14 @@ export const AdvancedSecurityOptionsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdvancedSecurityOptionsInput",
 }) as any as S.Schema<AdvancedSecurityOptionsInput>;
 export type IdentityCenterInstanceARN = string;
-export type SubjectKeyIdCOption = "UserName" | "UserId" | "Email";
+export type SubjectKeyIdCOption =
+  | "UserName"
+  | "UserId"
+  | "Email"
+  | (string & {});
 export const SubjectKeyIdCOption = /*@__PURE__*/ S.String;
 
-export type RolesKeyIdCOption = "GroupName" | "GroupId";
+export type RolesKeyIdCOption = "GroupName" | "GroupId" | (string & {});
 export const RolesKeyIdCOption = /*@__PURE__*/ S.String;
 
 export interface IdentityCenterOptionsInput {
@@ -1461,12 +1480,12 @@ export const IdentityCenterOptionsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IdentityCenterOptionsInput",
 }) as any as S.Schema<IdentityCenterOptionsInput>;
-export type AutoTuneDesiredState = "ENABLED" | "DISABLED";
+export type AutoTuneDesiredState = "ENABLED" | "DISABLED" | (string & {});
 export const AutoTuneDesiredState = /*@__PURE__*/ S.String;
 
 export type StartAt = Date;
 export type DurationValue = number;
-export type TimeUnit = "HOURS";
+export type TimeUnit = "HOURS" | (string & {});
 export const TimeUnit = /*@__PURE__*/ S.String;
 
 export interface Duration {
@@ -1549,7 +1568,10 @@ export const SoftwareUpdateOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SoftwareUpdateOptions",
 }) as any as S.Schema<SoftwareUpdateOptions>;
-export type NaturalLanguageQueryGenerationDesiredState = "ENABLED" | "DISABLED";
+export type NaturalLanguageQueryGenerationDesiredState =
+  | "ENABLED"
+  | "DISABLED"
+  | (string & {});
 export const NaturalLanguageQueryGenerationDesiredState =
   /*@__PURE__*/ S.String;
 
@@ -1596,7 +1618,10 @@ export const AIMLOptionsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AIMLOptionsInput",
 }) as any as S.Schema<AIMLOptionsInput>;
-export type DeploymentStrategy = "Default" | "CapacityOptimized";
+export type DeploymentStrategy =
+  | "Default"
+  | "CapacityOptimized"
+  | (string & {});
 export const DeploymentStrategy = /*@__PURE__*/ S.String;
 
 export interface DeploymentStrategyOptions {
@@ -1820,7 +1845,8 @@ export type AutoTuneState =
   | "DISABLED_AND_ROLLBACK_IN_PROGRESS"
   | "DISABLED_AND_ROLLBACK_COMPLETE"
   | "DISABLED_AND_ROLLBACK_ERROR"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const AutoTuneState = /*@__PURE__*/ S.String;
 
 export interface AutoTuneOptionsOutput {
@@ -1846,10 +1872,11 @@ export type ConfigChangeStatus =
   | "ApplyingChanges"
   | "Completed"
   | "PendingUserInput"
-  | "Cancelled";
+  | "Cancelled"
+  | (string & {});
 export const ConfigChangeStatus = /*@__PURE__*/ S.String;
 
-export type InitiatedBy = "CUSTOMER" | "SERVICE";
+export type InitiatedBy = "CUSTOMER" | "SERVICE" | (string & {});
 export const InitiatedBy = /*@__PURE__*/ S.String;
 
 export type UpdateTimestamp = Date;
@@ -1882,10 +1909,14 @@ export type DomainProcessingStatusType =
   | "UpgradingEngineVersion"
   | "UpdatingServiceSoftware"
   | "Isolated"
-  | "Deleting";
+  | "Deleting"
+  | (string & {});
 export const DomainProcessingStatusType = /*@__PURE__*/ S.String;
 
-export type PropertyValueType = "PLAIN_TEXT" | "STRINGIFIED_JSON";
+export type PropertyValueType =
+  | "PLAIN_TEXT"
+  | "STRINGIFIED_JSON"
+  | (string & {});
 export const PropertyValueType = /*@__PURE__*/ S.String;
 
 export interface ModifyingProperties {
@@ -1914,7 +1945,8 @@ export type NaturalLanguageQueryGenerationCurrentState =
   | "ENABLE_FAILED"
   | "DISABLE_COMPLETE"
   | "DISABLE_IN_PROGRESS"
-  | "DISABLE_FAILED";
+  | "DISABLE_FAILED"
+  | (string & {});
 export const NaturalLanguageQueryGenerationCurrentState =
   /*@__PURE__*/ S.String;
 
@@ -1947,7 +1979,12 @@ export const AIMLOptionsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AIMLOptionsOutput",
 }) as any as S.Schema<AIMLOptionsOutput>;
-export type PauseState = "Active" | "Completed" | "Scheduled" | "Disabled";
+export type PauseState =
+  | "Active"
+  | "Completed"
+  | "Scheduled"
+  | "Disabled"
+  | (string & {});
 export const PauseState = /*@__PURE__*/ S.String;
 
 export interface AutomatedSnapshotPauseOptions {
@@ -2081,7 +2118,7 @@ export const CreateIndexRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIndexRequest",
 }) as any as S.Schema<CreateIndexRequest>;
-export type IndexStatus = "CREATED" | "UPDATED" | "DELETED";
+export type IndexStatus = "CREATED" | "UPDATED" | "DELETED" | (string & {});
 export const IndexStatus = /*@__PURE__*/ S.String;
 
 export interface CreateIndexResponse {
@@ -2094,7 +2131,7 @@ export const CreateIndexResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateIndexResponse>;
 export type ConnectionAlias = string;
 export type Endpoint = string;
-export type SkipUnavailableStatus = "ENABLED" | "DISABLED";
+export type SkipUnavailableStatus = "ENABLED" | "DISABLED" | (string & {});
 export const SkipUnavailableStatus = /*@__PURE__*/ S.String;
 
 export interface CrossClusterSearchConnectionProperties {
@@ -2158,7 +2195,8 @@ export type OutboundConnectionStatusCode =
   | "REJECTING"
   | "REJECTED"
   | "DELETING"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const OutboundConnectionStatusCode = /*@__PURE__*/ S.String;
 
 export interface OutboundConnectionStatus {
@@ -2205,7 +2243,7 @@ export interface PackageSource {
 export const PackageSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3BucketName: S.optional(S.String), S3Key: S.optional(S.String) }),
 ).annotate({ identifier: "PackageSource" }) as any as S.Schema<PackageSource>;
-export type RequirementLevel = "REQUIRED" | "OPTIONAL" | "NONE";
+export type RequirementLevel = "REQUIRED" | "OPTIONAL" | "NONE" | (string & {});
 export const RequirementLevel = /*@__PURE__*/ S.String;
 
 export type LicenseFilepath = string;
@@ -2288,7 +2326,8 @@ export type PackageStatus =
   | "AVAILABLE"
   | "DELETING"
   | "DELETED"
-  | "DELETE_FAILED";
+  | "DELETE_FAILED"
+  | (string & {});
 export const PackageStatus = /*@__PURE__*/ S.String;
 
 export type CreatedAt = Date;
@@ -2398,7 +2437,8 @@ export type VpcEndpointStatus =
   | "UPDATING"
   | "UPDATE_FAILED"
   | "DELETING"
-  | "DELETE_FAILED";
+  | "DELETE_FAILED"
+  | (string & {});
 export const VpcEndpointStatus = /*@__PURE__*/ S.String;
 
 export interface VpcEndpoint {
@@ -2763,7 +2803,8 @@ export type CapabilityStatus =
   | "updating"
   | "update_failed"
   | "deleting"
-  | "delete_failed";
+  | "delete_failed"
+  | (string & {});
 export const CapabilityStatus = /*@__PURE__*/ S.String;
 
 export interface DeregisterCapabilityResponse {
@@ -2876,17 +2917,22 @@ export const DescribeDomainAutoTunesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDomainAutoTunesRequest",
 }) as any as S.Schema<DescribeDomainAutoTunesRequest>;
-export type AutoTuneType = "SCHEDULED_ACTION";
+export type AutoTuneType = "SCHEDULED_ACTION" | (string & {});
 export const AutoTuneType = /*@__PURE__*/ S.String;
 
 export type AutoTuneDate = Date;
 export type ScheduledAutoTuneActionType =
   | "JVM_HEAP_SIZE_TUNING"
-  | "JVM_YOUNG_GEN_TUNING";
+  | "JVM_YOUNG_GEN_TUNING"
+  | (string & {});
 export const ScheduledAutoTuneActionType = /*@__PURE__*/ S.String;
 
 export type ScheduledAutoTuneDescription = string;
-export type ScheduledAutoTuneSeverityType = "LOW" | "MEDIUM" | "HIGH";
+export type ScheduledAutoTuneSeverityType =
+  | "LOW"
+  | "MEDIUM"
+  | "HIGH"
+  | (string & {});
 export const ScheduledAutoTuneSeverityType = /*@__PURE__*/ S.String;
 
 export interface ScheduledAutoTuneDetails {
@@ -2966,7 +3012,8 @@ export type OverallChangeStatus =
   | "PENDING"
   | "PROCESSING"
   | "COMPLETED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const OverallChangeStatus = /*@__PURE__*/ S.String;
 
 export type TotalNumberOfStages = number;
@@ -3055,7 +3102,11 @@ export const DescribeDomainConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeDomainConfigRequest",
 }) as any as S.Schema<DescribeDomainConfigRequest>;
 export type UIntValue = number;
-export type OptionState = "RequiresIndexDocuments" | "Processing" | "Active";
+export type OptionState =
+  | "RequiresIndexDocuments"
+  | "Processing"
+  | "Active"
+  | (string & {});
 export const OptionState = /*@__PURE__*/ S.String;
 
 export interface OptionStatus {
@@ -3210,7 +3261,10 @@ export const IdentityCenterOptionsStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IdentityCenterOptionsStatus",
 }) as any as S.Schema<IdentityCenterOptionsStatus>;
-export type RollbackOnDisable = "NO_ROLLBACK" | "DEFAULT_ROLLBACK";
+export type RollbackOnDisable =
+  | "NO_ROLLBACK"
+  | "DEFAULT_ROLLBACK"
+  | (string & {});
 export const RollbackOnDisable = /*@__PURE__*/ S.String;
 
 export interface AutoTuneOptions {
@@ -3396,20 +3450,29 @@ export const DescribeDomainHealthRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDomainHealthRequest",
 }) as any as S.Schema<DescribeDomainHealthRequest>;
-export type DomainState = "Active" | "Processing" | "NotAvailable";
+export type DomainState =
+  | "Active"
+  | "Processing"
+  | "NotAvailable"
+  | (string & {});
 export const DomainState = /*@__PURE__*/ S.String;
 
 export type NumberOfAZs = string;
 export type NumberOfNodes = string;
-export type MasterNodeStatus = "Available" | "UnAvailable";
+export type MasterNodeStatus = "Available" | "UnAvailable" | (string & {});
 export const MasterNodeStatus = /*@__PURE__*/ S.String;
 
-export type DomainHealth = "Red" | "Yellow" | "Green" | "NotAvailable";
+export type DomainHealth =
+  | "Red"
+  | "Yellow"
+  | "Green"
+  | "NotAvailable"
+  | (string & {});
 export const DomainHealth = /*@__PURE__*/ S.String;
 
 export type NumberOfShards = string;
 export type AvailabilityZone = string;
-export type ZoneStatus = "Active" | "StandBy" | "NotAvailable";
+export type ZoneStatus = "Active" | "StandBy" | "NotAvailable" | (string & {});
 export const ZoneStatus = /*@__PURE__*/ S.String;
 
 export interface AvailabilityZoneInfo {
@@ -3503,10 +3566,10 @@ export const DescribeDomainNodesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeDomainNodesRequest",
 }) as any as S.Schema<DescribeDomainNodesRequest>;
 export type NodeId = string;
-export type NodeType = "Data" | "Ultrawarm" | "Master" | "Warm";
+export type NodeType = "Data" | "Ultrawarm" | "Master" | "Warm" | (string & {});
 export const NodeType = /*@__PURE__*/ S.String;
 
-export type NodeStatus = "Active" | "StandBy" | "NotAvailable";
+export type NodeStatus = "Active" | "StandBy" | "NotAvailable" | (string & {});
 export const NodeStatus = /*@__PURE__*/ S.String;
 
 export type StorageTypeName = string;
@@ -3713,7 +3776,7 @@ export const DescribeInboundConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeInboundConnectionsResponse",
 }) as any as S.Schema<DescribeInboundConnectionsResponse>;
-export type InsightEntityType = "Account" | "DomainName";
+export type InsightEntityType = "Account" | "DomainName" | (string & {});
 export const InsightEntityType = /*@__PURE__*/ S.String;
 
 export type InsightEntityValue = string;
@@ -3748,7 +3811,7 @@ export const DescribeInsightDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeInsightDetailsRequest",
 }) as any as S.Schema<DescribeInsightDetailsRequest>;
-export type InsightFieldType = "text" | "metric";
+export type InsightFieldType = "text" | "metric" | (string & {});
 export const InsightFieldType = /*@__PURE__*/ S.String;
 
 export interface InsightField {
@@ -3938,7 +4001,8 @@ export type DescribePackagesFilterName =
   | "PackageStatus"
   | "PackageType"
   | "EngineVersion"
-  | "PackageOwner";
+  | "PackageOwner"
+  | (string & {});
 export const DescribePackagesFilterName = /*@__PURE__*/ S.String;
 
 export type DescribePackagesFilterValue = string;
@@ -4031,7 +4095,8 @@ export const DescribeReservedInstanceOfferingsRequest = /*@__PURE__*/ S.suspend(
 export type ReservedInstancePaymentOption =
   | "ALL_UPFRONT"
   | "PARTIAL_UPFRONT"
-  | "NO_UPFRONT";
+  | "NO_UPFRONT"
+  | (string & {});
 export const ReservedInstancePaymentOption = /*@__PURE__*/ S.String;
 
 export interface RecurringCharge {
@@ -4198,7 +4263,10 @@ export const DescribeVpcEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeVpcEndpointsRequest>;
 export type VpcEndpoints = VpcEndpoint[];
 export const VpcEndpoints = /*@__PURE__*/ S.Array(VpcEndpoint);
-export type VpcEndpointErrorCode = "ENDPOINT_NOT_FOUND" | "SERVER_ERROR";
+export type VpcEndpointErrorCode =
+  | "ENDPOINT_NOT_FOUND"
+  | "SERVER_ERROR"
+  | (string & {});
 export const VpcEndpointErrorCode = /*@__PURE__*/ S.String;
 
 export interface VpcEndpointError {
@@ -4356,7 +4424,8 @@ export type ApplicationStatus =
   | "UPDATING"
   | "DELETING"
   | "ACTIVE"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ApplicationStatus = /*@__PURE__*/ S.String;
 
 export interface GetApplicationResponse {
@@ -4422,7 +4491,9 @@ export type CapabilityExtendedResponseConfig = { aiConfig: AIConfig };
 export const CapabilityExtendedResponseConfig = /*@__PURE__*/ S.Union([
   S.Struct({ aiConfig: AIConfig }),
 ]);
-export type CapabilityFailureReason = "KMS_KEY_INSUFFICIENT_PERMISSION";
+export type CapabilityFailureReason =
+  | "KMS_KEY_INSUFFICIENT_PERMISSION"
+  | (string & {});
 export const CapabilityFailureReason = /*@__PURE__*/ S.String;
 
 export type CapabilityFailureDetails = string;
@@ -4532,7 +4603,7 @@ export const GetDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDataSourceRequest",
 }) as any as S.Schema<GetDataSourceRequest>;
-export type DataSourceStatus = "ACTIVE" | "DISABLED";
+export type DataSourceStatus = "ACTIVE" | "DISABLED" | (string & {});
 export const DataSourceStatus = /*@__PURE__*/ S.String;
 
 export interface GetDataSourceResponse {
@@ -4652,14 +4723,16 @@ export type MaintenanceStatus =
   | "IN_PROGRESS"
   | "COMPLETED"
   | "FAILED"
-  | "TIMED_OUT";
+  | "TIMED_OUT"
+  | (string & {});
 export const MaintenanceStatus = /*@__PURE__*/ S.String;
 
 export type MaintenanceStatusMessage = string;
 export type MaintenanceType =
   | "REBOOT_NODE"
   | "RESTART_SEARCH_PROCESS"
-  | "RESTART_DASHBOARD";
+  | "RESTART_DASHBOARD"
+  | (string & {});
 export const MaintenanceType = /*@__PURE__*/ S.String;
 
 export interface GetDomainMaintenanceStatusResponse {
@@ -4812,10 +4885,15 @@ export type UpgradeStatus =
   | "IN_PROGRESS"
   | "SUCCEEDED"
   | "SUCCEEDED_WITH_ISSUES"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const UpgradeStatus = /*@__PURE__*/ S.String;
 
-export type UpgradeStep = "PRE_UPGRADE_CHECK" | "SNAPSHOT" | "UPGRADE";
+export type UpgradeStep =
+  | "PRE_UPGRADE_CHECK"
+  | "SNAPSHOT"
+  | "UPGRADE"
+  | (string & {});
 export const UpgradeStep = /*@__PURE__*/ S.String;
 
 export type Issue = string;
@@ -5201,7 +5279,7 @@ export const ListDomainMaintenancesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDomainMaintenancesResponse",
 }) as any as S.Schema<ListDomainMaintenancesResponse>;
-export type EngineType = "OpenSearch" | "Elasticsearch";
+export type EngineType = "OpenSearch" | "Elasticsearch" | (string & {});
 export const EngineType = /*@__PURE__*/ S.String;
 
 export interface ListDomainNamesRequest {
@@ -5292,7 +5370,7 @@ export const InsightTimeRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InsightTimeRange",
 }) as any as S.Schema<InsightTimeRange>;
-export type InsightSortOrder = "ASC" | "DESC";
+export type InsightSortOrder = "ASC" | "DESC" | (string & {});
 export const InsightSortOrder = /*@__PURE__*/ S.String;
 
 export type InsightPageSize = number;
@@ -5324,13 +5402,18 @@ export const ListInsightsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListInsightsRequest",
 }) as any as S.Schema<ListInsightsRequest>;
-export type InsightType = "EVENT" | "RECOMMENDATION";
+export type InsightType = "EVENT" | "RECOMMENDATION" | (string & {});
 export const InsightType = /*@__PURE__*/ S.String;
 
-export type InsightPriorityLevel = "CRITICAL" | "HIGH" | "MEDIUM" | "LOW";
+export type InsightPriorityLevel =
+  | "CRITICAL"
+  | "HIGH"
+  | "MEDIUM"
+  | "LOW"
+  | (string & {});
 export const InsightPriorityLevel = /*@__PURE__*/ S.String;
 
-export type InsightStatus = "ACTIVE" | "RESOLVED" | "DISMISSED";
+export type InsightStatus = "ACTIVE" | "RESOLVED" | "DISMISSED" | (string & {});
 export const InsightStatus = /*@__PURE__*/ S.String;
 
 export interface Insight {
@@ -5515,13 +5598,14 @@ export const ListScheduledActionsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ActionType =
   | "SERVICE_SOFTWARE_UPDATE"
   | "JVM_HEAP_SIZE_TUNING"
-  | "JVM_YOUNG_GEN_TUNING";
+  | "JVM_YOUNG_GEN_TUNING"
+  | (string & {});
 export const ActionType = /*@__PURE__*/ S.String;
 
-export type ActionSeverity = "HIGH" | "MEDIUM" | "LOW";
+export type ActionSeverity = "HIGH" | "MEDIUM" | "LOW" | (string & {});
 export const ActionSeverity = /*@__PURE__*/ S.String;
 
-export type ScheduledBy = "CUSTOMER" | "SYSTEM";
+export type ScheduledBy = "CUSTOMER" | "SYSTEM" | (string & {});
 export const ScheduledBy = /*@__PURE__*/ S.String;
 
 export type ActionStatus =
@@ -5530,7 +5614,8 @@ export type ActionStatus =
   | "FAILED"
   | "COMPLETED"
   | "NOT_ELIGIBLE"
-  | "ELIGIBLE";
+  | "ELIGIBLE"
+  | (string & {});
 export const ActionStatus = /*@__PURE__*/ S.String;
 
 export interface ScheduledAction {
@@ -6042,7 +6127,11 @@ export const StartDomainMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartDomainMaintenanceResponse",
 }) as any as S.Schema<StartDomainMaintenanceResponse>;
-export type ScheduleAt = "NOW" | "TIMESTAMP" | "OFF_PEAK_WINDOW";
+export type ScheduleAt =
+  | "NOW"
+  | "TIMESTAMP"
+  | "OFF_PEAK_WINDOW"
+  | (string & {});
 export const ScheduleAt = /*@__PURE__*/ S.String;
 
 export interface StartServiceSoftwareUpdateRequest {
@@ -6210,7 +6299,7 @@ export const UpdateDirectQueryDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateDirectQueryDataSourceResponse",
 }) as any as S.Schema<UpdateDirectQueryDataSourceResponse>;
-export type DryRunMode = "Basic" | "Verbose";
+export type DryRunMode = "Basic" | "Verbose" | (string & {});
 export const DryRunMode = /*@__PURE__*/ S.String;
 
 export interface UpdateDomainConfigRequest {
@@ -6369,7 +6458,11 @@ export const UpdatePackageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdatePackageResponse",
 }) as any as S.Schema<UpdatePackageResponse>;
-export type PackageScopeOperationEnum = "ADD" | "OVERRIDE" | "REMOVE";
+export type PackageScopeOperationEnum =
+  | "ADD"
+  | "OVERRIDE"
+  | "REMOVE"
+  | (string & {});
 export const PackageScopeOperationEnum = /*@__PURE__*/ S.String;
 
 export interface UpdatePackageScopeRequest {

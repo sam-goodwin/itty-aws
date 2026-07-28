@@ -28,7 +28,8 @@ export type ArtifactType =
   | "OCIArtifact"
   | "VhdImageFile"
   | "ArmTemplate"
-  | "ImageFile";
+  | "ImageFile"
+  | (string & {});
 export const ArtifactType = /*@__PURE__*/ S.String;
 
 /** Manifest artifact properties. */
@@ -118,7 +119,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -126,7 +128,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -174,7 +177,8 @@ export type ArtifactManifestPropertiesFormatProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging";
+  | "Converging"
+  | (string & {});
 export const ArtifactManifestPropertiesFormatProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -185,7 +189,8 @@ export type ArtifactManifestState =
   | "Uploaded"
   | "Validating"
   | "ValidationFailed"
-  | "Succeeded";
+  | "Succeeded"
+  | (string & {});
 export const ArtifactManifestState = /*@__PURE__*/ S.String;
 
 /** The artifacts list. */
@@ -482,7 +487,8 @@ export const ArtifactManifestsListCredentialRequest = /*@__PURE__*/ S.suspend(
 export type ArtifactManifestsListCredentialResponseCredentialType =
   | "Unknown"
   | "AzureContainerRegistryScopedToken"
-  | "AzureStorageAccountToken";
+  | "AzureStorageAccountToken"
+  | (string & {});
 export const ArtifactManifestsListCredentialResponseCredentialType =
   /*@__PURE__*/ S.String;
 
@@ -768,20 +774,22 @@ export const ArtifactStoresCreateOrUpdateRequestTagsMap =
 export type ArtifactStorePropertiesFormatInputStoreType =
   | "Unknown"
   | "AzureContainerRegistry"
-  | "AzureStorageAccount";
+  | "AzureStorageAccount"
+  | (string & {});
 export const ArtifactStorePropertiesFormatInputStoreType =
   /*@__PURE__*/ S.String;
 
 /** The backing resource network access type. */
 export type ArtifactStorePropertiesFormatInputBackingResourcePublicNetworkAccess =
-  "Enabled" | "Disabled";
+  "Enabled" | "Disabled" | (string & {});
 export const ArtifactStorePropertiesFormatInputBackingResourcePublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
 /** The replication strategy. */
 export type ArtifactStorePropertiesFormatInputReplicationStrategy =
   | "Unknown"
-  | "SingleReplication";
+  | "SingleReplication"
+  | (string & {});
 export const ArtifactStorePropertiesFormatInputReplicationStrategy =
   /*@__PURE__*/ S.String;
 
@@ -885,7 +893,8 @@ export type ArtifactStorePropertiesFormatProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging";
+  | "Converging"
+  | (string & {});
 export const ArtifactStorePropertiesFormatProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -893,20 +902,23 @@ export const ArtifactStorePropertiesFormatProvisioningState =
 export type ArtifactStorePropertiesFormatStoreType =
   | "Unknown"
   | "AzureContainerRegistry"
-  | "AzureStorageAccount";
+  | "AzureStorageAccount"
+  | (string & {});
 export const ArtifactStorePropertiesFormatStoreType = /*@__PURE__*/ S.String;
 
 /** The backing resource network access type. */
 export type ArtifactStorePropertiesFormatBackingResourcePublicNetworkAccess =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ArtifactStorePropertiesFormatBackingResourcePublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
 /** The replication strategy. */
 export type ArtifactStorePropertiesFormatReplicationStrategy =
   | "Unknown"
-  | "SingleReplication";
+  | "SingleReplication"
+  | (string & {});
 export const ArtifactStorePropertiesFormatReplicationStrategy =
   /*@__PURE__*/ S.String;
 
@@ -1609,7 +1621,8 @@ export type ComponentPropertiesProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging";
+  | "Converging"
+  | (string & {});
 export const ComponentPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The component resource deployment status. */
@@ -1627,7 +1640,8 @@ export type Status =
   | "Installing"
   | "Reinstalling"
   | "Rollingback"
-  | "Upgrading";
+  | "Upgrading"
+  | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 
 /** Helm Deployment status properties. */
@@ -1673,11 +1687,12 @@ export type PodStatus =
   | "Running"
   | "Pending"
   | "Terminating"
-  | "NotReady";
+  | "NotReady"
+  | (string & {});
 export const PodStatus = /*@__PURE__*/ S.String;
 
 /** The type of pod event. */
-export type PodEventType = "Normal" | "Warning";
+export type PodEventType = "Normal" | "Warning" | (string & {});
 export const PodEventType = /*@__PURE__*/ S.String;
 
 /** Pod Event properties. */
@@ -2080,7 +2095,8 @@ export type ConfigurationGroupSchemaPropertiesFormatProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging";
+  | "Converging"
+  | (string & {});
 export const ConfigurationGroupSchemaPropertiesFormatProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -2089,7 +2105,8 @@ export type ConfigurationGroupSchemaVersionState =
   | "Unknown"
   | "Preview"
   | "Active"
-  | "Deprecated";
+  | "Deprecated"
+  | (string & {});
 export const ConfigurationGroupSchemaVersionState = /*@__PURE__*/ S.String;
 
 /** Configuration group schema properties. */
@@ -2485,12 +2502,13 @@ export const ConfigurationGroupValuesCreateOrUpdateRequestTagsMap =
 /** Publisher Scope. */
 export type ConfigurationGroupValuePropertiesFormatInputPublisherScope =
   | "Unknown"
-  | "Private";
+  | "Private"
+  | (string & {});
 export const ConfigurationGroupValuePropertiesFormatInputPublisherScope =
   /*@__PURE__*/ S.String;
 
 /** The resource reference arm id type. */
-export type IdType = "Unknown" | "Open" | "Secret";
+export type IdType = "Unknown" | "Open" | "Secret" | (string & {});
 export const IdType = /*@__PURE__*/ S.String;
 
 /** The azure resource reference which is used for deployment. */
@@ -2512,7 +2530,8 @@ export const ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchem
 export type ConfigurationGroupValueConfigurationType =
   | "Unknown"
   | "Secret"
-  | "Open";
+  | "Open"
+  | (string & {});
 export const ConfigurationGroupValueConfigurationType = /*@__PURE__*/ S.String;
 
 /** Hybrid configuration group value properties. */
@@ -2593,14 +2612,16 @@ export type ConfigurationGroupValuePropertiesFormatProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging";
+  | "Converging"
+  | (string & {});
 export const ConfigurationGroupValuePropertiesFormatProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** Publisher Scope. */
 export type ConfigurationGroupValuePropertiesFormatPublisherScope =
   | "Unknown"
-  | "Private";
+  | "Private"
+  | (string & {});
 export const ConfigurationGroupValuePropertiesFormatPublisherScope =
   /*@__PURE__*/ S.String;
 
@@ -3057,7 +3078,8 @@ export type NetworkFunctionDefinitionGroupPropertiesFormatProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging";
+  | "Converging"
+  | (string & {});
 export const NetworkFunctionDefinitionGroupPropertiesFormatProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -3404,7 +3426,10 @@ export const NetworkFunctionDefinitionVersionsCreateOrUpdateRequestTagsMap =
 
 /** The network function type. */
 export type NetworkFunctionDefinitionVersionPropertiesFormatInputNetworkFunctionType =
-  "Unknown" | "VirtualNetworkFunction" | "ContainerizedNetworkFunction";
+    | "Unknown"
+    | "VirtualNetworkFunction"
+    | "ContainerizedNetworkFunction"
+    | (string & {});
 export const NetworkFunctionDefinitionVersionPropertiesFormatInputNetworkFunctionType =
   /*@__PURE__*/ S.String;
 
@@ -3493,7 +3518,8 @@ export type NetworkFunctionDefinitionVersionPropertiesFormatProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging";
+  | "Converging"
+  | (string & {});
 export const NetworkFunctionDefinitionVersionPropertiesFormatProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -3504,12 +3530,16 @@ export type VersionState =
   | "Validating"
   | "ValidationFailed"
   | "Active"
-  | "Deprecated";
+  | "Deprecated"
+  | (string & {});
 export const VersionState = /*@__PURE__*/ S.String;
 
 /** The network function type. */
 export type NetworkFunctionDefinitionVersionPropertiesFormatNetworkFunctionType =
-  "Unknown" | "VirtualNetworkFunction" | "ContainerizedNetworkFunction";
+    | "Unknown"
+    | "VirtualNetworkFunction"
+    | "ContainerizedNetworkFunction"
+    | (string & {});
 export const NetworkFunctionDefinitionVersionPropertiesFormatNetworkFunctionType =
   /*@__PURE__*/ S.String;
 
@@ -3929,7 +3959,8 @@ export const NetworkFunctionsCreateOrUpdateRequestTagsMap =
 /** Publisher Scope. */
 export type NetworkFunctionPropertiesFormatInputPublisherScope =
   | "Unknown"
-  | "Private";
+  | "Private"
+  | (string & {});
 export const NetworkFunctionPropertiesFormatInputPublisherScope =
   /*@__PURE__*/ S.String;
 
@@ -3953,12 +3984,17 @@ export type NetworkFunctionPropertiesFormatInputNfviType =
   | "Unknown"
   | "AzureArcKubernetes"
   | "AzureCore"
-  | "AzureOperatorNexus";
+  | "AzureOperatorNexus"
+  | (string & {});
 export const NetworkFunctionPropertiesFormatInputNfviType =
   /*@__PURE__*/ S.String;
 
 /** The secret type which indicates if secret or not. */
-export type NetworkFunctionConfigurationType = "Unknown" | "Secret" | "Open";
+export type NetworkFunctionConfigurationType =
+  | "Unknown"
+  | "Secret"
+  | "Open"
+  | (string & {});
 export const NetworkFunctionConfigurationType = /*@__PURE__*/ S.String;
 
 /** The role configuration override values from the user. */
@@ -4024,7 +4060,8 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned";
+  | "SystemAssigned,UserAssigned"
+  | (string & {});
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -4119,14 +4156,16 @@ export type NetworkFunctionPropertiesFormatProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging";
+  | "Converging"
+  | (string & {});
 export const NetworkFunctionPropertiesFormatProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** Publisher Scope. */
 export type NetworkFunctionPropertiesFormatPublisherScope =
   | "Unknown"
-  | "Private";
+  | "Private"
+  | (string & {});
 export const NetworkFunctionPropertiesFormatPublisherScope =
   /*@__PURE__*/ S.String;
 
@@ -4150,7 +4189,8 @@ export type NetworkFunctionPropertiesFormatNfviType =
   | "Unknown"
   | "AzureArcKubernetes"
   | "AzureCore"
-  | "AzureOperatorNexus";
+  | "AzureOperatorNexus"
+  | (string & {});
 export const NetworkFunctionPropertiesFormatNfviType = /*@__PURE__*/ S.String;
 
 /** The role configuration override values from the user. */
@@ -4335,7 +4375,8 @@ export type RequestMetadataHttpMethod =
   | "Put"
   | "Get"
   | "Patch"
-  | "Delete";
+  | "Delete"
+  | (string & {});
 export const RequestMetadataHttpMethod = /*@__PURE__*/ S.String;
 
 /** Request metadata of execute request post call payload. */
@@ -4802,7 +4843,8 @@ export type NetworkServiceDesignGroupPropertiesFormatProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging";
+  | "Converging"
+  | (string & {});
 export const NetworkServiceDesignGroupPropertiesFormatProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -5201,7 +5243,8 @@ export const NetworkServiceDesignVersionPropertiesFormatInputNfvisFromSiteMap =
 export type Type =
   | "Unknown"
   | "ArmResourceDefinition"
-  | "NetworkFunctionDefinition";
+  | "NetworkFunctionDefinition"
+  | (string & {});
 export const Type = /*@__PURE__*/ S.String;
 
 /** Application installation operation dependency. */
@@ -5372,12 +5415,18 @@ export type NetworkServiceDesignVersionPropertiesFormatProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging";
+  | "Converging"
+  | (string & {});
 export const NetworkServiceDesignVersionPropertiesFormatProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** The network service design version state. */
-export type NSDVersionState = "Unknown" | "Preview" | "Active" | "Deprecated";
+export type NSDVersionState =
+  | "Unknown"
+  | "Preview"
+  | "Active"
+  | "Deprecated"
+  | (string & {});
 export const NSDVersionState = /*@__PURE__*/ S.String;
 
 /** Reference to another resource. */
@@ -5874,11 +5923,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -5962,12 +6011,18 @@ export type ProxyArtifactOverviewPropertiesValueArtifactType =
   | "OCIArtifact"
   | "VhdImageFile"
   | "ArmTemplate"
-  | "ImageFile";
+  | "ImageFile"
+  | (string & {});
 export const ProxyArtifactOverviewPropertiesValueArtifactType =
   /*@__PURE__*/ S.String;
 
 /** The artifact state. */
-export type ArtifactState = "Unknown" | "Preview" | "Active" | "Deprecated";
+export type ArtifactState =
+  | "Unknown"
+  | "Preview"
+  | "Active"
+  | "Deprecated"
+  | (string & {});
 export const ArtifactState = /*@__PURE__*/ S.String;
 
 export interface ProxyArtifactOverviewPropertiesValue {
@@ -6195,7 +6250,10 @@ export const PublishersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PublishersCreateOrUpdateRequestTagsMap>;
 
 /** Publisher Scope. */
-export type PublisherPropertiesFormatInputScope = "Unknown" | "Private";
+export type PublisherPropertiesFormatInputScope =
+  | "Unknown"
+  | "Private"
+  | (string & {});
 export const PublisherPropertiesFormatInputScope = /*@__PURE__*/ S.String;
 
 /** publisher properties. */
@@ -6281,12 +6339,16 @@ export type PublisherPropertiesFormatProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging";
+  | "Converging"
+  | (string & {});
 export const PublisherPropertiesFormatProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** Publisher Scope. */
-export type PublisherPropertiesFormatScope = "Unknown" | "Private";
+export type PublisherPropertiesFormatScope =
+  | "Unknown"
+  | "Private"
+  | (string & {});
 export const PublisherPropertiesFormatScope = /*@__PURE__*/ S.String;
 
 /** publisher properties. */
@@ -6745,7 +6807,8 @@ export const SiteNetworkServicePropertiesFormatInputSiteReference =
 /** Publisher Scope. */
 export type SiteNetworkServicePropertiesFormatInputPublisherScope =
   | "Unknown"
-  | "Private";
+  | "Private"
+  | (string & {});
 export const SiteNetworkServicePropertiesFormatInputPublisherScope =
   /*@__PURE__*/ S.String;
 
@@ -6844,7 +6907,7 @@ export const SiteNetworkServicesCreateOrUpdateRequestIdentity =
   }) as any as S.Schema<SiteNetworkServicesCreateOrUpdateRequestIdentity>;
 
 /** Name of this Sku */
-export type SkuInputName = "Basic" | "Standard";
+export type SkuInputName = "Basic" | "Standard" | (string & {});
 export const SkuInputName = /*@__PURE__*/ S.String;
 
 /** Sku, to be associated with a SiteNetworkService. */
@@ -6918,7 +6981,8 @@ export type SiteNetworkServicePropertiesFormatProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging";
+  | "Converging"
+  | (string & {});
 export const SiteNetworkServicePropertiesFormatProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -6957,7 +7021,8 @@ export const SiteNetworkServicePropertiesFormatSiteReference =
 /** Publisher Scope. */
 export type SiteNetworkServicePropertiesFormatPublisherScope =
   | "Unknown"
-  | "Private";
+  | "Private"
+  | (string & {});
 export const SiteNetworkServicePropertiesFormatPublisherScope =
   /*@__PURE__*/ S.String;
 
@@ -7112,11 +7177,11 @@ export const SiteNetworkServicesCreateOrUpdateResponseIdentity =
   }) as any as S.Schema<SiteNetworkServicesCreateOrUpdateResponseIdentity>;
 
 /** Name of this Sku */
-export type SkuName = "Basic" | "Standard";
+export type SkuName = "Basic" | "Standard" | (string & {});
 export const SkuName = /*@__PURE__*/ S.String;
 
 /** The SKU tier based on the SKU name. */
-export type SkuTier = "Basic" | "Standard";
+export type SkuTier = "Basic" | "Standard" | (string & {});
 export const SkuTier = /*@__PURE__*/ S.String;
 
 /** Sku, to be associated with a SiteNetworkService. */
@@ -7544,7 +7609,8 @@ export type NFVIsNfviType =
   | "Unknown"
   | "AzureArcKubernetes"
   | "AzureCore"
-  | "AzureOperatorNexus";
+  | "AzureOperatorNexus"
+  | (string & {});
 export const NFVIsNfviType = /*@__PURE__*/ S.String;
 
 /** The NFVI object. */
@@ -7632,7 +7698,8 @@ export type SitePropertiesFormatProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging";
+  | "Converging"
+  | (string & {});
 export const SitePropertiesFormatProvisioningState = /*@__PURE__*/ S.String;
 
 /** List of NFVIs */

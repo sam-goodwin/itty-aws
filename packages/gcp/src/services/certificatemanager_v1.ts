@@ -105,7 +105,8 @@ export const StringMap = /*@__PURE__*/ S.Record(
 export type CertificateIssuanceConfigKeyAlgorithmEnum =
   | "KEY_ALGORITHM_UNSPECIFIED"
   | "RSA_2048"
-  | "ECDSA_P256";
+  | "ECDSA_P256"
+  | (string & {});
 export const CertificateIssuanceConfigKeyAlgorithmEnum = /*@__PURE__*/ S.String;
 
 /** Contains information required to contact CA service. */
@@ -357,13 +358,17 @@ export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-export type CertificateMapEntryMatcherEnum = "MATCHER_UNSPECIFIED" | "PRIMARY";
+export type CertificateMapEntryMatcherEnum =
+  | "MATCHER_UNSPECIFIED"
+  | "PRIMARY"
+  | (string & {});
 export const CertificateMapEntryMatcherEnum = /*@__PURE__*/ S.String;
 
 export type CertificateMapEntryStateEnum =
   | "SERVING_STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "PENDING";
+  | "PENDING"
+  | (string & {});
 export const CertificateMapEntryStateEnum = /*@__PURE__*/ S.String;
 
 /** Defines a certificate map entry. */
@@ -464,7 +469,8 @@ export const SelfManagedCertificate = /*@__PURE__*/ S.suspend(() =>
 export type ProvisioningIssueReasonEnum =
   | "REASON_UNSPECIFIED"
   | "AUTHORIZATION_ISSUE"
-  | "RATE_LIMITED";
+  | "RATE_LIMITED"
+  | (string & {});
 export const ProvisioningIssueReasonEnum = /*@__PURE__*/ S.String;
 
 /** Information about issues with provisioning a Managed Certificate. */
@@ -487,7 +493,8 @@ export type ManagedIdentityCertificateStateEnum =
   | "STATE_UNSPECIFIED"
   | "PROVISIONING"
   | "FAILED"
-  | "ACTIVE";
+  | "ACTIVE"
+  | (string & {});
 export const ManagedIdentityCertificateStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration and state of a Managed Identity Certificate. Certificate Manager provisions and renews Managed Identity Certificates automatically, for as long as it's authorized to do so. */
@@ -513,21 +520,24 @@ export type ManagedCertificateStateEnum =
   | "STATE_UNSPECIFIED"
   | "PROVISIONING"
   | "FAILED"
-  | "ACTIVE";
+  | "ACTIVE"
+  | (string & {});
 export const ManagedCertificateStateEnum = /*@__PURE__*/ S.String;
 
 export type AuthorizationAttemptInfoFailureReasonEnum =
   | "FAILURE_REASON_UNSPECIFIED"
   | "CONFIG"
   | "CAA"
-  | "RATE_LIMITED";
+  | "RATE_LIMITED"
+  | (string & {});
 export const AuthorizationAttemptInfoFailureReasonEnum = /*@__PURE__*/ S.String;
 
 export type AuthorizationAttemptInfoStateEnum =
   | "STATE_UNSPECIFIED"
   | "AUTHORIZING"
   | "AUTHORIZED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const AuthorizationAttemptInfoStateEnum = /*@__PURE__*/ S.String;
 
 /** CNAME troubleshooting information. */
@@ -570,7 +580,8 @@ export type TroubleshootingIssuesItemEnum =
   | "RESOLVED_TO_NOT_SERVING"
   | "RESOLVED_TO_SERVING_ON_ALT_PORTS"
   | "NO_RESOLVED_IPS"
-  | "CERTIFICATE_NOT_ATTACHED";
+  | "CERTIFICATE_NOT_ATTACHED"
+  | (string & {});
 export const TroubleshootingIssuesItemEnum = /*@__PURE__*/ S.String;
 
 export type TroubleshootingIssuesItemEnumList =
@@ -664,7 +675,8 @@ export type CertificateScopeEnum =
   | "DEFAULT"
   | "EDGE_CACHE"
   | "ALL_REGIONS"
-  | "CLIENT_AUTH";
+  | "CLIENT_AUTH"
+  | (string & {});
 export const CertificateScopeEnum = /*@__PURE__*/ S.String;
 
 /** Defines TLS certificate. */
@@ -764,7 +776,8 @@ export const DnsResourceRecord = /*@__PURE__*/ S.suspend(() =>
 export type DnsAuthorizationTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "FIXED_RECORD"
-  | "PER_PROJECT_RECORD";
+  | "PER_PROJECT_RECORD"
+  | (string & {});
 export const DnsAuthorizationTypeEnum = /*@__PURE__*/ S.String;
 
 /** A DnsAuthorization resource describes a way to perform domain authorization for certificate issuance. */

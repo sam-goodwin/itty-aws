@@ -84,7 +84,8 @@ export const GetProjectsTracesRequest = /*@__PURE__*/ S.suspend(() =>
 export type TraceSpanKindEnum =
   | "SPAN_KIND_UNSPECIFIED"
   | "RPC_SERVER"
-  | "RPC_CLIENT";
+  | "RPC_CLIENT"
+  | (string & {});
 export const TraceSpanKindEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -148,7 +149,8 @@ export type ListProjectsTracesViewEnum =
   | "VIEW_TYPE_UNSPECIFIED"
   | "MINIMAL"
   | "ROOTSPAN"
-  | "COMPLETE";
+  | "COMPLETE"
+  | (string & {});
 export const ListProjectsTracesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsTracesRequest {

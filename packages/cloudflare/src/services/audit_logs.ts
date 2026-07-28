@@ -19,7 +19,7 @@ const KEY_DICTIONARY: Record<string, string> = {
   totalCount: "total_count",
 };
 
-export type ListRequestDirection = "desc" | "asc";
+export type ListRequestDirection = "desc" | "asc" | (string & {});
 export const ListRequestDirection = /*@__PURE__*/ S.String;
 
 export interface ListAuditLogsRequest {

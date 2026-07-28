@@ -261,7 +261,7 @@ export const PropertyMask = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PropertyMask" }) as any as S.Schema<PropertyMask>;
 
-export type ValueNullValueEnum = "NULL_VALUE";
+export type ValueNullValueEnum = "NULL_VALUE" | (string & {});
 export const ValueNullValueEnum = /*@__PURE__*/ S.String;
 
 export type ValueMap = { [key: string]: Value | undefined };
@@ -363,7 +363,8 @@ export const Value = /*@__PURE__*/ S.suspend(() =>
 
 export type PropertyTransformSetToServerValueEnum =
   | "SERVER_VALUE_UNSPECIFIED"
-  | "REQUEST_TIME";
+  | "REQUEST_TIME"
+  | (string & {});
 export const PropertyTransformSetToServerValueEnum = /*@__PURE__*/ S.String;
 
 /** A transformation of an entity property. */
@@ -405,7 +406,8 @@ export const PropertyTransformList = /*@__PURE__*/ S.Array(
 export type MutationConflictResolutionStrategyEnum =
   | "STRATEGY_UNSPECIFIED"
   | "SERVER_VALUE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const MutationConflictResolutionStrategyEnum = /*@__PURE__*/ S.String;
 
 /** A mutation to apply to an entity. */
@@ -453,7 +455,8 @@ export const MutationList = /*@__PURE__*/ S.Array(
 export type CommitRequestModeEnum =
   | "MODE_UNSPECIFIED"
   | "TRANSACTIONAL"
-  | "NON_TRANSACTIONAL";
+  | "NON_TRANSACTIONAL"
+  | (string & {});
 export const CommitRequestModeEnum = /*@__PURE__*/ S.String;
 
 /** The request for Datastore.Commit. */
@@ -545,7 +548,8 @@ export const CommitResponse = /*@__PURE__*/ S.suspend(() =>
 export type ReadOptionsReadConsistencyEnum =
   | "READ_CONSISTENCY_UNSPECIFIED"
   | "STRONG"
-  | "EVENTUAL";
+  | "EVENTUAL"
+  | (string & {});
 export const ReadOptionsReadConsistencyEnum = /*@__PURE__*/ S.String;
 
 /** The options shared by read requests. */
@@ -754,7 +758,8 @@ export const PropertyReference = /*@__PURE__*/ S.suspend(() =>
 export type PropertyOrderDirectionEnum =
   | "DIRECTION_UNSPECIFIED"
   | "ASCENDING"
-  | "DESCENDING";
+  | "DESCENDING"
+  | (string & {});
 export const PropertyOrderDirectionEnum = /*@__PURE__*/ S.String;
 
 /** The desired order for a specific property. */
@@ -780,7 +785,8 @@ export type FindNearestDistanceMeasureEnum =
   | "DISTANCE_MEASURE_UNSPECIFIED"
   | "EUCLIDEAN"
   | "COSINE"
-  | "DOT_PRODUCT";
+  | "DOT_PRODUCT"
+  | (string & {});
 export const FindNearestDistanceMeasureEnum = /*@__PURE__*/ S.String;
 
 /** Nearest Neighbors search config. The ordering provided by FindNearest supersedes the order_by stage. If multiple documents have the same vector distance, the returned document order is not guaranteed to be stable between queries. */
@@ -835,7 +841,8 @@ export type PropertyFilterOpEnum =
   | "IN"
   | "NOT_EQUAL"
   | "HAS_ANCESTOR"
-  | "NOT_IN";
+  | "NOT_IN"
+  | (string & {});
 export const PropertyFilterOpEnum = /*@__PURE__*/ S.String;
 
 /** A filter on a specific property. */
@@ -855,7 +862,11 @@ export const PropertyFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PropertyFilter" }) as any as S.Schema<PropertyFilter>;
 
-export type CompositeFilterOpEnum = "OPERATOR_UNSPECIFIED" | "AND" | "OR";
+export type CompositeFilterOpEnum =
+  | "OPERATOR_UNSPECIFIED"
+  | "AND"
+  | "OR"
+  | (string & {});
 export const CompositeFilterOpEnum = /*@__PURE__*/ S.String;
 
 export type FilterList = ReadonlyArray<Filter>;
@@ -1155,7 +1166,8 @@ export type AggregationResultBatchMoreResultsEnum =
   | "NOT_FINISHED"
   | "MORE_RESULTS_AFTER_LIMIT"
   | "MORE_RESULTS_AFTER_CURSOR"
-  | "NO_MORE_RESULTS";
+  | "NO_MORE_RESULTS"
+  | (string & {});
 export const AggregationResultBatchMoreResultsEnum = /*@__PURE__*/ S.String;
 
 /** A batch of aggregation results produced by an aggregation query. */
@@ -1305,7 +1317,8 @@ export type QueryResultBatchEntityResultTypeEnum =
   | "RESULT_TYPE_UNSPECIFIED"
   | "FULL"
   | "PROJECTION"
-  | "KEY_ONLY";
+  | "KEY_ONLY"
+  | (string & {});
 export const QueryResultBatchEntityResultTypeEnum = /*@__PURE__*/ S.String;
 
 export type QueryResultBatchMoreResultsEnum =
@@ -1313,7 +1326,8 @@ export type QueryResultBatchMoreResultsEnum =
   | "NOT_FINISHED"
   | "MORE_RESULTS_AFTER_LIMIT"
   | "MORE_RESULTS_AFTER_CURSOR"
-  | "NO_MORE_RESULTS";
+  | "NO_MORE_RESULTS"
+  | (string & {});
 export const QueryResultBatchMoreResultsEnum = /*@__PURE__*/ S.String;
 
 /** A batch of results produced by a query. */

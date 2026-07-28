@@ -90,7 +90,8 @@ export type CourseCourseStateEnum =
   | "ARCHIVED"
   | "PROVISIONED"
   | "DECLINED"
-  | "SUSPENDED";
+  | "SUSPENDED"
+  | (string & {});
 export const CourseCourseStateEnum = /*@__PURE__*/ S.String;
 
 /** Google Forms item. */
@@ -219,7 +220,8 @@ export const CourseMaterialSetList = /*@__PURE__*/ S.Array(
 export type GradebookSettingsCalculationTypeEnum =
   | "CALCULATION_TYPE_UNSPECIFIED"
   | "TOTAL_POINTS"
-  | "WEIGHTED_CATEGORIES";
+  | "WEIGHTED_CATEGORIES"
+  | (string & {});
 export const GradebookSettingsCalculationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Details for a grade category in a course. Coursework may have zero or one grade category, and the category may be used in computing the overall grade. See the [help center article](https://support.google.com/edu/classroom/answer/9184995) for details. */
@@ -251,7 +253,8 @@ export type GradebookSettingsDisplaySettingEnum =
   | "DISPLAY_SETTING_UNSPECIFIED"
   | "SHOW_OVERALL_GRADE"
   | "HIDE_OVERALL_GRADE"
-  | "SHOW_TEACHERS_ONLY";
+  | "SHOW_TEACHERS_ONLY"
+  | (string & {});
 export const GradebookSettingsDisplaySettingEnum = /*@__PURE__*/ S.String;
 
 /** The gradebook settings for a course. See the [help center article](https://support.google.com/edu/classroom/answer/9184995) for details. */
@@ -414,14 +417,16 @@ export const CreateCoursesAliasesRequest = /*@__PURE__*/ S.suspend(() =>
 export type AnnouncementAssigneeModeEnum =
   | "ASSIGNEE_MODE_UNSPECIFIED"
   | "ALL_STUDENTS"
-  | "INDIVIDUAL_STUDENTS";
+  | "INDIVIDUAL_STUDENTS"
+  | (string & {});
 export const AnnouncementAssigneeModeEnum = /*@__PURE__*/ S.String;
 
 export type AnnouncementStateEnum =
   | "ANNOUNCEMENT_STATE_UNSPECIFIED"
   | "PUBLISHED"
   | "DRAFT"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const AnnouncementStateEnum = /*@__PURE__*/ S.String;
 
 /** Gemini Gem link. */
@@ -445,7 +450,8 @@ export type SharedDriveFileShareModeEnum =
   | "UNKNOWN_SHARE_MODE"
   | "VIEW"
   | "EDIT"
-  | "STUDENT_COPY";
+  | "STUDENT_COPY"
+  | (string & {});
 export const SharedDriveFileShareModeEnum = /*@__PURE__*/ S.String;
 
 /** Drive file that is used as material for course work. */
@@ -751,7 +757,8 @@ export type CourseWorkWorkTypeEnum =
   | "COURSE_WORK_TYPE_UNSPECIFIED"
   | "ASSIGNMENT"
   | "SHORT_ANSWER_QUESTION"
-  | "MULTIPLE_CHOICE_QUESTION";
+  | "MULTIPLE_CHOICE_QUESTION"
+  | (string & {});
 export const CourseWorkWorkTypeEnum = /*@__PURE__*/ S.String;
 
 /** Additional details for multiple-choice questions. */
@@ -770,20 +777,23 @@ export const MultipleChoiceQuestion = /*@__PURE__*/ S.suspend(() =>
 export type CourseWorkSubmissionModificationModeEnum =
   | "SUBMISSION_MODIFICATION_MODE_UNSPECIFIED"
   | "MODIFIABLE_UNTIL_TURNED_IN"
-  | "MODIFIABLE";
+  | "MODIFIABLE"
+  | (string & {});
 export const CourseWorkSubmissionModificationModeEnum = /*@__PURE__*/ S.String;
 
 export type CourseWorkStateEnum =
   | "COURSE_WORK_STATE_UNSPECIFIED"
   | "PUBLISHED"
   | "DRAFT"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const CourseWorkStateEnum = /*@__PURE__*/ S.String;
 
 export type CourseWorkAssigneeModeEnum =
   | "ASSIGNEE_MODE_UNSPECIFIED"
   | "ALL_STUDENTS"
-  | "INDIVIDUAL_STUDENTS";
+  | "INDIVIDUAL_STUDENTS"
+  | (string & {});
 export const CourseWorkAssigneeModeEnum = /*@__PURE__*/ S.String;
 
 /** Additional details for assignments. */
@@ -934,14 +944,16 @@ export const CreateCoursesCourseWorkAddOnAttachmentsRequest =
 export type CourseWorkMaterialAssigneeModeEnum =
   | "ASSIGNEE_MODE_UNSPECIFIED"
   | "ALL_STUDENTS"
-  | "INDIVIDUAL_STUDENTS";
+  | "INDIVIDUAL_STUDENTS"
+  | (string & {});
 export const CourseWorkMaterialAssigneeModeEnum = /*@__PURE__*/ S.String;
 
 export type CourseWorkMaterialStateEnum =
   | "COURSEWORK_MATERIAL_STATE_UNSPECIFIED"
   | "PUBLISHED"
   | "DRAFT"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const CourseWorkMaterialStateEnum = /*@__PURE__*/ S.String;
 
 /** Course work material created by a teacher for students of the course */
@@ -1285,7 +1297,8 @@ export const Name = /*@__PURE__*/ S.suspend(() =>
 
 export type GlobalPermissionPermissionEnum =
   | "PERMISSION_UNSPECIFIED"
-  | "CREATE_COURSE";
+  | "CREATE_COURSE"
+  | (string & {});
 export const GlobalPermissionPermissionEnum = /*@__PURE__*/ S.String;
 
 /** Global user permission description. */
@@ -1459,7 +1472,8 @@ export type InvitationRoleEnum =
   | "COURSE_ROLE_UNSPECIFIED"
   | "STUDENT"
   | "TEACHER"
-  | "OWNER";
+  | "OWNER"
+  | (string & {});
 export const InvitationRoleEnum = /*@__PURE__*/ S.String;
 
 /** An invitation to join a course. */
@@ -1504,7 +1518,8 @@ export type FeedFeedTypeEnum =
   | "FEED_TYPE_UNSPECIFIED"
   | "DOMAIN_ROSTER_CHANGES"
   | "COURSE_ROSTER_CHANGES"
-  | "COURSE_WORK_CHANGES";
+  | "COURSE_WORK_CHANGES"
+  | (string & {});
 export const FeedFeedTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about a `Feed` with a `feed_type` of `COURSE_ROSTER_CHANGES`. */
@@ -1604,7 +1619,8 @@ export const CreateRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type GuardianInvitationStateEnum =
   | "GUARDIAN_INVITATION_STATE_UNSPECIFIED"
   | "PENDING"
-  | "COMPLETE";
+  | "COMPLETE"
+  | (string & {});
 export const GuardianInvitationStateEnum = /*@__PURE__*/ S.String;
 
 /** An invitation to become the guardian of a specified user, sent to a specified email address. */
@@ -2379,7 +2395,8 @@ export type AddOnAttachmentStudentSubmissionPostSubmissionStateEnum =
   | "CREATED"
   | "TURNED_IN"
   | "RETURNED"
-  | "RECLAIMED_BY_STUDENT";
+  | "RECLAIMED_BY_STUDENT"
+  | (string & {});
 export const AddOnAttachmentStudentSubmissionPostSubmissionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2536,7 +2553,8 @@ export type StudentSubmissionCourseWorkTypeEnum =
   | "COURSE_WORK_TYPE_UNSPECIFIED"
   | "ASSIGNMENT"
   | "SHORT_ANSWER_QUESTION"
-  | "MULTIPLE_CHOICE_QUESTION";
+  | "MULTIPLE_CHOICE_QUESTION"
+  | (string & {});
 export const StudentSubmissionCourseWorkTypeEnum = /*@__PURE__*/ S.String;
 
 /** Attachment added to student assignment work. When creating attachments, setting the `form` field is not supported. */
@@ -2583,7 +2601,8 @@ export type StudentSubmissionStateEnum =
   | "CREATED"
   | "TURNED_IN"
   | "RETURNED"
-  | "RECLAIMED_BY_STUDENT";
+  | "RECLAIMED_BY_STUDENT"
+  | (string & {});
 export const StudentSubmissionStateEnum = /*@__PURE__*/ S.String;
 
 /** Student work for a multiple-choice question. */
@@ -2618,7 +2637,8 @@ export type StateHistoryStateEnum =
   | "TURNED_IN"
   | "RETURNED"
   | "RECLAIMED_BY_STUDENT"
-  | "STUDENT_EDITED_AFTER_TURN_IN";
+  | "STUDENT_EDITED_AFTER_TURN_IN"
+  | (string & {});
 export const StateHistoryStateEnum = /*@__PURE__*/ S.String;
 
 /** The history of each state this submission has been in. */
@@ -2642,7 +2662,8 @@ export type GradeHistoryGradeChangeTypeEnum =
   | "UNKNOWN_GRADE_CHANGE_TYPE"
   | "DRAFT_GRADE_POINTS_EARNED_CHANGE"
   | "ASSIGNED_GRADE_POINTS_EARNED_CHANGE"
-  | "MAX_POINTS_CHANGE";
+  | "MAX_POINTS_CHANGE"
+  | (string & {});
 export const GradeHistoryGradeChangeTypeEnum = /*@__PURE__*/ S.String;
 
 /** The history of each grade on this submission. */
@@ -3043,7 +3064,8 @@ export type ListCoursesCourseStatesEnum =
   | "ARCHIVED"
   | "PROVISIONED"
   | "DECLINED"
-  | "SUSPENDED";
+  | "SUSPENDED"
+  | (string & {});
 export const ListCoursesCourseStatesEnum = /*@__PURE__*/ S.String;
 
 export type ListCoursesCourseStatesEnumList =
@@ -3152,7 +3174,8 @@ export type ListCoursesAnnouncementsAnnouncementStatesEnum =
   | "ANNOUNCEMENT_STATE_UNSPECIFIED"
   | "PUBLISHED"
   | "DRAFT"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const ListCoursesAnnouncementsAnnouncementStatesEnum =
   /*@__PURE__*/ S.String;
 
@@ -3272,7 +3295,8 @@ export type ListCoursesCourseWorkCourseWorkStatesEnum =
   | "COURSE_WORK_STATE_UNSPECIFIED"
   | "PUBLISHED"
   | "DRAFT"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const ListCoursesCourseWorkCourseWorkStatesEnum = /*@__PURE__*/ S.String;
 
 export type ListCoursesCourseWorkCourseWorkStatesEnumList =
@@ -3370,7 +3394,8 @@ export type ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum =
   | "COURSEWORK_MATERIAL_STATE_UNSPECIFIED"
   | "PUBLISHED"
   | "DRAFT"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum =
   /*@__PURE__*/ S.String;
 
@@ -3525,7 +3550,8 @@ export const ListRubricsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListCoursesCourseWorkStudentSubmissionsLateEnum =
   | "LATE_VALUES_UNSPECIFIED"
   | "LATE_ONLY"
-  | "NOT_LATE_ONLY";
+  | "NOT_LATE_ONLY"
+  | (string & {});
 export const ListCoursesCourseWorkStudentSubmissionsLateEnum =
   /*@__PURE__*/ S.String;
 
@@ -3535,7 +3561,8 @@ export type ListCoursesCourseWorkStudentSubmissionsStatesEnum =
   | "CREATED"
   | "TURNED_IN"
   | "RETURNED"
-  | "RECLAIMED_BY_STUDENT";
+  | "RECLAIMED_BY_STUDENT"
+  | (string & {});
 export const ListCoursesCourseWorkStudentSubmissionsStatesEnum =
   /*@__PURE__*/ S.String;
 
@@ -3919,7 +3946,8 @@ export const ListInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListUserProfilesGuardianInvitationsStatesEnum =
   | "GUARDIAN_INVITATION_STATE_UNSPECIFIED"
   | "PENDING"
-  | "COMPLETE";
+  | "COMPLETE"
+  | (string & {});
 export const ListUserProfilesGuardianInvitationsStatesEnum =
   /*@__PURE__*/ S.String;
 
@@ -4035,7 +4063,8 @@ export const ListGuardiansResponse = /*@__PURE__*/ S.suspend(() =>
 export type ModifyAnnouncementAssigneesRequestAssigneeModeEnum =
   | "ASSIGNEE_MODE_UNSPECIFIED"
   | "ALL_STUDENTS"
-  | "INDIVIDUAL_STUDENTS";
+  | "INDIVIDUAL_STUDENTS"
+  | (string & {});
 export const ModifyAnnouncementAssigneesRequestAssigneeModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4103,7 +4132,8 @@ export const ModifyAssigneesCoursesAnnouncementsRequest =
 export type ModifyCourseWorkAssigneesRequestAssigneeModeEnum =
   | "ASSIGNEE_MODE_UNSPECIFIED"
   | "ALL_STUDENTS"
-  | "INDIVIDUAL_STUDENTS";
+  | "INDIVIDUAL_STUDENTS"
+  | (string & {});
 export const ModifyCourseWorkAssigneesRequestAssigneeModeEnum =
   /*@__PURE__*/ S.String;
 

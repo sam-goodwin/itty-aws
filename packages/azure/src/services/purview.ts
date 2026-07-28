@@ -75,7 +75,10 @@ export const AccountsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AccountsCheckNameAvailabilityRequest>;
 
 /** The reason the name is not available. */
-export type CheckNameAvailabilityResultReason = "Invalid" | "AlreadyExists";
+export type CheckNameAvailabilityResultReason =
+  | "Invalid"
+  | "AlreadyExists"
+  | (string & {});
 export const CheckNameAvailabilityResultReason = /*@__PURE__*/ S.String;
 
 /** The response payload for CheckNameAvailability API */
@@ -98,7 +101,11 @@ export const CheckNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckNameAvailabilityResult>;
 
 /** Identity Type */
-export type IdentityInputType = "None" | "SystemAssigned" | "UserAssigned";
+export type IdentityInputType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | (string & {});
 export const IdentityInputType = /*@__PURE__*/ S.String;
 
 /** Uses client ID and Principal ID */
@@ -153,7 +160,8 @@ export const CloudConnectorsInput = /*@__PURE__*/ S.suspend(() =>
 export type AccountPropertiesInputManagedEventHubState =
   | "NotSpecified"
   | "Disabled"
-  | "Enabled";
+  | "Enabled"
+  | (string & {});
 export const AccountPropertiesInputManagedEventHubState =
   /*@__PURE__*/ S.String;
 
@@ -161,7 +169,8 @@ export const AccountPropertiesInputManagedEventHubState =
 export type AccountPropertiesInputManagedResourcesPublicNetworkAccess =
   | "NotSpecified"
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const AccountPropertiesInputManagedResourcesPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -169,7 +178,8 @@ export const AccountPropertiesInputManagedResourcesPublicNetworkAccess =
 export type AccountPropertiesInputPublicNetworkAccess =
   | "NotSpecified"
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const AccountPropertiesInputPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** The account properties */
@@ -239,7 +249,11 @@ export const AccountsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountsCreateOrUpdateRequest>;
 
 /** Identity Type */
-export type IdentityType = "None" | "SystemAssigned" | "UserAssigned";
+export type IdentityType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | (string & {});
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** Uses client ID and Principal ID */
@@ -292,7 +306,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -300,7 +315,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -349,7 +365,8 @@ export type AccountStatusAccountProvisioningState =
   | "SoftDeleted"
   | "Failed"
   | "Succeeded"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const AccountStatusAccountProvisioningState = /*@__PURE__*/ S.String;
 
 /** Gets or sets the details. */
@@ -428,7 +445,8 @@ export const AccountEndpoints = /*@__PURE__*/ S.suspend(() =>
 export type AccountPropertiesManagedEventHubState =
   | "NotSpecified"
   | "Disabled"
-  | "Enabled";
+  | "Enabled"
+  | (string & {});
 export const AccountPropertiesManagedEventHubState = /*@__PURE__*/ S.String;
 
 /** The managed resources in customer subscription. */
@@ -454,7 +472,8 @@ export const ManagedResources = /*@__PURE__*/ S.suspend(() =>
 export type AccountPropertiesManagedResourcesPublicNetworkAccess =
   | "NotSpecified"
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const AccountPropertiesManagedResourcesPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -477,7 +496,8 @@ export type PrivateLinkServiceConnectionStateStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
-  | "Disconnected";
+  | "Disconnected"
+  | (string & {});
 export const PrivateLinkServiceConnectionStateStatus = /*@__PURE__*/ S.String;
 
 /** The private link service connection state. */
@@ -563,14 +583,16 @@ export type AccountPropertiesProvisioningState =
   | "SoftDeleted"
   | "Failed"
   | "Succeeded"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const AccountPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Gets or sets the public network access. */
 export type AccountPropertiesPublicNetworkAccess =
   | "NotSpecified"
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const AccountPropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** The account properties */
@@ -630,7 +652,7 @@ export const AccountProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountProperties>;
 
 /** Gets or sets the sku name. */
-export type AccountSkuName = "Standard";
+export type AccountSkuName = "Standard" | (string & {});
 export const AccountSkuName = /*@__PURE__*/ S.String;
 
 /** The Sku */
@@ -1022,7 +1044,10 @@ export const AccountsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsUpdateResponse",
 }) as any as S.Schema<AccountsUpdateResponse>;
 
-export type DefaultAccountsGetRequestScopeType = "Tenant" | "Subscription";
+export type DefaultAccountsGetRequestScopeType =
+  | "Tenant"
+  | "Subscription"
+  | (string & {});
 export const DefaultAccountsGetRequestScopeType = /*@__PURE__*/ S.String;
 
 export interface DefaultAccountsGetRequest {
@@ -1051,7 +1076,10 @@ export const DefaultAccountsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DefaultAccountsGetRequest>;
 
 /** The scope where the default account is set. */
-export type DefaultAccountPayloadScopeType = "Tenant" | "Subscription";
+export type DefaultAccountPayloadScopeType =
+  | "Tenant"
+  | "Subscription"
+  | (string & {});
 export const DefaultAccountPayloadScopeType = /*@__PURE__*/ S.String;
 
 /** Payload to get and set the default account in the given scope */
@@ -1082,7 +1110,10 @@ export const DefaultAccountPayload = /*@__PURE__*/ S.suspend(() =>
   identifier: "DefaultAccountPayload",
 }) as any as S.Schema<DefaultAccountPayload>;
 
-export type DefaultAccountsRemoveRequestScopeType = "Tenant" | "Subscription";
+export type DefaultAccountsRemoveRequestScopeType =
+  | "Tenant"
+  | "Subscription"
+  | (string & {});
 export const DefaultAccountsRemoveRequestScopeType = /*@__PURE__*/ S.String;
 
 export interface DefaultAccountsRemoveRequest {
@@ -1118,7 +1149,10 @@ export const DefaultAccountsRemoveResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DefaultAccountsRemoveResponse>;
 
 /** The scope where the default account is set. */
-export type DefaultAccountsSetRequestScopeType = "Tenant" | "Subscription";
+export type DefaultAccountsSetRequestScopeType =
+  | "Tenant"
+  | "Subscription"
+  | (string & {});
 export const DefaultAccountsSetRequestScopeType = /*@__PURE__*/ S.String;
 
 export interface DefaultAccountsSetRequest {
@@ -1243,7 +1277,11 @@ export const FeaturesSubscriptionGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeaturesSubscriptionGetRequest>;
 
 /** Identity Type. */
-export type CredentialsType = "None" | "SystemAssigned" | "UserAssigned";
+export type CredentialsType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | (string & {});
 export const CredentialsType = /*@__PURE__*/ S.String;
 
 /** Credentials to access the event streaming service attached to the purview account. */
@@ -1261,13 +1299,17 @@ export const Credentials = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Credentials" }) as any as S.Schema<Credentials>;
 
 /** The event hub type. */
-export type KafkaConfigurationPropertiesEventHubType = "Notification" | "Hook";
+export type KafkaConfigurationPropertiesEventHubType =
+  | "Notification"
+  | "Hook"
+  | (string & {});
 export const KafkaConfigurationPropertiesEventHubType = /*@__PURE__*/ S.String;
 
 /** The state of the event streaming service */
 export type KafkaConfigurationPropertiesEventStreamingState =
   | "Disabled"
-  | "Enabled";
+  | "Enabled"
+  | (string & {});
 export const KafkaConfigurationPropertiesEventStreamingState =
   /*@__PURE__*/ S.String;
 
@@ -1275,7 +1317,8 @@ export const KafkaConfigurationPropertiesEventStreamingState =
 export type KafkaConfigurationPropertiesEventStreamingType =
   | "None"
   | "Managed"
-  | "Azure";
+  | "Azure"
+  | (string & {});
 export const KafkaConfigurationPropertiesEventStreamingType =
   /*@__PURE__*/ S.String;
 

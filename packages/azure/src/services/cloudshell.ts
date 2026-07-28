@@ -143,7 +143,7 @@ export const GetConsoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetConsoleRequest>;
 
 /** The operating system type of the cloud shell. */
-export type ConsolePropertiesOsType = "Linux" | "Windows";
+export type ConsolePropertiesOsType = "Linux" | "Windows" | (string & {});
 export const ConsolePropertiesOsType = /*@__PURE__*/ S.String;
 
 /** Provisioning state of the console. */
@@ -156,7 +156,8 @@ export type ConsolePropertiesProvisioningState =
   | "Repairing"
   | "Failed"
   | "Canceled"
-  | "Succeeded";
+  | "Succeeded"
+  | (string & {});
 export const ConsolePropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Cloud shell console properties. */
@@ -242,7 +243,7 @@ export const GetUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUserSettingsRequest>;
 
 /** The operating system type of the cloud shell. Deprecated, use preferredShellType. */
-export type UserPropertiesPreferredOsType = "Windows" | "Linux";
+export type UserPropertiesPreferredOsType = "Windows" | "Linux" | (string & {});
 export const UserPropertiesPreferredOsType = /*@__PURE__*/ S.String;
 
 /** The storage profile of the user settings. */
@@ -267,14 +268,16 @@ export type TerminalSettingsFontSize =
   | "NotSpecified"
   | "Small"
   | "Medium"
-  | "Large";
+  | "Large"
+  | (string & {});
 export const TerminalSettingsFontSize = /*@__PURE__*/ S.String;
 
 /** Style of terminal font. */
 export type TerminalSettingsFontStyle =
   | "NotSpecified"
   | "Monospace"
-  | "Courier";
+  | "Courier"
+  | (string & {});
 export const TerminalSettingsFontStyle = /*@__PURE__*/ S.String;
 
 /** Settings for terminal appearance. */
@@ -294,7 +297,11 @@ export const TerminalSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminalSettings>;
 
 /** The shell type of the cloud shell. */
-export type UserPropertiesPreferredShellType = "bash" | "pwsh" | "powershell";
+export type UserPropertiesPreferredShellType =
+  | "bash"
+  | "pwsh"
+  | "powershell"
+  | (string & {});
 export const UserPropertiesPreferredShellType = /*@__PURE__*/ S.String;
 
 /** The cloud shell user settings properties. */
@@ -487,7 +494,7 @@ export const PatchUserSettingsWithLocationResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PatchUserSettingsWithLocationResponse>;
 
 /** The operating system type of the cloud shell. */
-export type ConsoleCreatePropertiesOsType = "Linux" | "Windows";
+export type ConsoleCreatePropertiesOsType = "Linux" | "Windows" | (string & {});
 export const ConsoleCreatePropertiesOsType = /*@__PURE__*/ S.String;
 
 /** Provisioning state of the console. */
@@ -500,7 +507,8 @@ export type ConsoleCreatePropertiesProvisioningState =
   | "Repairing"
   | "Failed"
   | "Canceled"
-  | "Succeeded";
+  | "Succeeded"
+  | (string & {});
 export const ConsoleCreatePropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Cloud shell properties for creating a console. */

@@ -208,14 +208,16 @@ export type GoogleAnalyticsAdminV1betaPropertyIndustryCategoryEnum =
   | "SCIENCE"
   | "SPORTS"
   | "JOBS_AND_EDUCATION"
-  | "SHOPPING";
+  | "SHOPPING"
+  | (string & {});
 export const GoogleAnalyticsAdminV1betaPropertyIndustryCategoryEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAnalyticsAdminV1betaPropertyServiceLevelEnum =
   | "SERVICE_LEVEL_UNSPECIFIED"
   | "GOOGLE_ANALYTICS_STANDARD"
-  | "GOOGLE_ANALYTICS_360";
+  | "GOOGLE_ANALYTICS_360"
+  | (string & {});
 export const GoogleAnalyticsAdminV1betaPropertyServiceLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -223,7 +225,8 @@ export type GoogleAnalyticsAdminV1betaPropertyPropertyTypeEnum =
   | "PROPERTY_TYPE_UNSPECIFIED"
   | "PROPERTY_TYPE_ORDINARY"
   | "PROPERTY_TYPE_SUBPROPERTY"
-  | "PROPERTY_TYPE_ROLLUP";
+  | "PROPERTY_TYPE_ROLLUP"
+  | (string & {});
 export const GoogleAnalyticsAdminV1betaPropertyPropertyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -321,7 +324,8 @@ export const GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue =
 export type GoogleAnalyticsAdminV1betaConversionEventCountingMethodEnum =
   | "CONVERSION_COUNTING_METHOD_UNSPECIFIED"
   | "ONCE_PER_EVENT"
-  | "ONCE_PER_SESSION";
+  | "ONCE_PER_SESSION"
+  | (string & {});
 export const GoogleAnalyticsAdminV1betaConversionEventCountingMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -389,7 +393,8 @@ export type GoogleAnalyticsAdminV1betaCustomDimensionScopeEnum =
   | "DIMENSION_SCOPE_UNSPECIFIED"
   | "EVENT"
   | "USER"
-  | "ITEM";
+  | "ITEM"
+  | (string & {});
 export const GoogleAnalyticsAdminV1betaCustomDimensionScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -447,7 +452,10 @@ export const CreatePropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreatePropertiesCustomDimensionsRequest>;
 
 export type GoogleAnalyticsAdminV1betaCustomMetricRestrictedMetricTypeItemEnum =
-  "RESTRICTED_METRIC_TYPE_UNSPECIFIED" | "COST_DATA" | "REVENUE_DATA";
+    | "RESTRICTED_METRIC_TYPE_UNSPECIFIED"
+    | "COST_DATA"
+    | "REVENUE_DATA"
+    | (string & {});
 export const GoogleAnalyticsAdminV1betaCustomMetricRestrictedMetricTypeItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -460,7 +468,8 @@ export const GoogleAnalyticsAdminV1betaCustomMetricRestrictedMetricTypeItemEnumL
 
 export type GoogleAnalyticsAdminV1betaCustomMetricScopeEnum =
   | "METRIC_SCOPE_UNSPECIFIED"
-  | "EVENT";
+  | "EVENT"
+  | (string & {});
 export const GoogleAnalyticsAdminV1betaCustomMetricScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -475,7 +484,8 @@ export type GoogleAnalyticsAdminV1betaCustomMetricMeasurementUnitEnum =
   | "MILLISECONDS"
   | "SECONDS"
   | "MINUTES"
-  | "HOURS";
+  | "HOURS"
+  | (string & {});
 export const GoogleAnalyticsAdminV1betaCustomMetricMeasurementUnitEnum =
   /*@__PURE__*/ S.String;
 
@@ -543,7 +553,8 @@ export type GoogleAnalyticsAdminV1betaDataStreamTypeEnum =
   | "DATA_STREAM_TYPE_UNSPECIFIED"
   | "WEB_DATA_STREAM"
   | "ANDROID_APP_DATA_STREAM"
-  | "IOS_APP_DATA_STREAM";
+  | "IOS_APP_DATA_STREAM"
+  | (string & {});
 export const GoogleAnalyticsAdminV1betaDataStreamTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -810,7 +821,8 @@ export const CreatePropertiesGoogleAdsLinksRequest = /*@__PURE__*/ S.suspend(
 export type GoogleAnalyticsAdminV1betaKeyEventCountingMethodEnum =
   | "COUNTING_METHOD_UNSPECIFIED"
   | "ONCE_PER_EVENT"
-  | "ONCE_PER_SESSION";
+  | "ONCE_PER_SESSION"
+  | (string & {});
 export const GoogleAnalyticsAdminV1betaKeyEventCountingMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -1107,7 +1119,8 @@ export type GoogleAnalyticsAdminV1betaDataRetentionSettingsEventDataRetentionEnu
     | "FOURTEEN_MONTHS"
     | "TWENTY_SIX_MONTHS"
     | "THIRTY_EIGHT_MONTHS"
-    | "FIFTY_MONTHS";
+    | "FIFTY_MONTHS"
+    | (string & {});
 export const GoogleAnalyticsAdminV1betaDataRetentionSettingsEventDataRetentionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1117,7 +1130,8 @@ export type GoogleAnalyticsAdminV1betaDataRetentionSettingsUserDataRetentionEnum
     | "FOURTEEN_MONTHS"
     | "TWENTY_SIX_MONTHS"
     | "THIRTY_EIGHT_MONTHS"
-    | "FIFTY_MONTHS";
+    | "FIFTY_MONTHS"
+    | (string & {});
 export const GoogleAnalyticsAdminV1betaDataRetentionSettingsUserDataRetentionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1397,7 +1411,8 @@ export type GoogleAnalyticsAdminV1betaPropertySummaryPropertyTypeEnum =
   | "PROPERTY_TYPE_UNSPECIFIED"
   | "PROPERTY_TYPE_ORDINARY"
   | "PROPERTY_TYPE_SUBPROPERTY"
-  | "PROPERTY_TYPE_ROLLUP";
+  | "PROPERTY_TYPE_ROLLUP"
+  | (string & {});
 export const GoogleAnalyticsAdminV1betaPropertySummaryPropertyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2237,7 +2252,8 @@ export type GoogleAnalyticsAdminV1betaAccessStringFilterMatchTypeEnum =
   | "ENDS_WITH"
   | "CONTAINS"
   | "FULL_REGEXP"
-  | "PARTIAL_REGEXP";
+  | "PARTIAL_REGEXP"
+  | (string & {});
 export const GoogleAnalyticsAdminV1betaAccessStringFilterMatchTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2291,7 +2307,8 @@ export type GoogleAnalyticsAdminV1betaAccessNumericFilterOperationEnum =
   | "LESS_THAN"
   | "LESS_THAN_OR_EQUAL"
   | "GREATER_THAN"
-  | "GREATER_THAN_OR_EQUAL";
+  | "GREATER_THAN_OR_EQUAL"
+  | (string & {});
 export const GoogleAnalyticsAdminV1betaAccessNumericFilterOperationEnum =
   /*@__PURE__*/ S.String;
 
@@ -2486,7 +2503,8 @@ export type GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderByOrderTypeEnum
     | "ORDER_TYPE_UNSPECIFIED"
     | "ALPHANUMERIC"
     | "CASE_INSENSITIVE_ALPHANUMERIC"
-    | "NUMERIC";
+    | "NUMERIC"
+    | (string & {});
 export const GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderByOrderTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2823,7 +2841,7 @@ export const RunAccessReportPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RunAccessReportPropertiesRequest>;
 
 export type GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestActionItemEnum =
-  "ACTION_TYPE_UNSPECIFIED" | "CREATED" | "UPDATED" | "DELETED";
+  "ACTION_TYPE_UNSPECIFIED" | "CREATED" | "UPDATED" | "DELETED" | (string & {});
 export const GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestActionItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -2849,7 +2867,8 @@ export type GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestResourceTy
     | "DISPLAY_VIDEO_360_ADVERTISER_LINK"
     | "DISPLAY_VIDEO_360_ADVERTISER_LINK_PROPOSAL"
     | "DATA_STREAM"
-    | "ATTRIBUTION_SETTINGS";
+    | "ATTRIBUTION_SETTINGS"
+    | (string & {});
 export const GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestResourceTypeItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -2929,7 +2948,8 @@ export type GoogleAnalyticsAdminV1betaChangeHistoryEventActorTypeEnum =
   | "ACTOR_TYPE_UNSPECIFIED"
   | "USER"
   | "SYSTEM"
-  | "SUPPORT";
+  | "SUPPORT"
+  | (string & {});
 export const GoogleAnalyticsAdminV1betaChangeHistoryEventActorTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2937,7 +2957,8 @@ export type GoogleAnalyticsAdminV1betaChangeHistoryChangeActionEnum =
   | "ACTION_TYPE_UNSPECIFIED"
   | "CREATED"
   | "UPDATED"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const GoogleAnalyticsAdminV1betaChangeHistoryChangeActionEnum =
   /*@__PURE__*/ S.String;
 

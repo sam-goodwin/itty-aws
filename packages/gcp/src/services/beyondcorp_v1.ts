@@ -124,13 +124,15 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 export type GoogleCloudBeyondcorpAppconnectionsV1AppConnectionTypeEnum =
   | "TYPE_UNSPECIFIED"
-  | "TCP_PROXY";
+  | "TCP_PROXY"
+  | (string & {});
 export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayTypeEnum =
   | "TYPE_UNSPECIFIED"
-  | "GCP_REGIONAL_MIG";
+  | "GCP_REGIONAL_MIG"
+  | (string & {});
 export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -191,7 +193,8 @@ export type GoogleCloudBeyondcorpAppconnectionsV1AppConnectionStateEnum =
   | "CREATED"
   | "UPDATING"
   | "DELETING"
-  | "DOWN";
+  | "DOWN"
+  | (string & {});
 export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -384,7 +387,8 @@ export type GoogleCloudBeyondcorpAppconnectorsV1AppConnectorStateEnum =
   | "CREATED"
   | "UPDATING"
   | "DELETING"
-  | "DOWN";
+  | "DOWN"
+  | (string & {});
 export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -400,7 +404,8 @@ export type GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatusEnum =
   | "HEALTHY"
   | "UNHEALTHY"
   | "UNRESPONSIVE"
-  | "DEGRADED";
+  | "DEGRADED"
+  | (string & {});
 export const GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -515,10 +520,14 @@ export type AppGatewayStateEnum =
   | "CREATED"
   | "UPDATING"
   | "DELETING"
-  | "DOWN";
+  | "DOWN"
+  | (string & {});
 export const AppGatewayStateEnum = /*@__PURE__*/ S.String;
 
-export type AppGatewayTypeEnum = "TYPE_UNSPECIFIED" | "TCP_PROXY";
+export type AppGatewayTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "TCP_PROXY"
+  | (string & {});
 export const AppGatewayTypeEnum = /*@__PURE__*/ S.String;
 
 /** Allocated connection of the AppGateway. */
@@ -544,7 +553,8 @@ export const AllocatedConnectionList = /*@__PURE__*/ S.Array(
 
 export type AppGatewayHostTypeEnum =
   | "HOST_TYPE_UNSPECIFIED"
-  | "GCP_REGIONAL_MIG";
+  | "GCP_REGIONAL_MIG"
+  | (string & {});
 export const AppGatewayHostTypeEnum = /*@__PURE__*/ S.String;
 
 /** A BeyondCorp AppGateway resource represents a BeyondCorp protected AppGateway to a remote application. It creates all the necessary GCP components needed for creating a BeyondCorp protected AppGateway. Multiple connectors can be authorised for a single AppGateway. */
@@ -639,7 +649,8 @@ export type GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayStateEnum =
   | "DELETING"
   | "RUNNING"
   | "DOWN"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -692,12 +703,12 @@ export const GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery =
   }) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery>;
 
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfigGatewayIdentityEnum =
-  "GATEWAY_IDENTITY_UNSPECIFIED" | "RESOURCE_NAME";
+  "GATEWAY_IDENTITY_UNSPECIFIED" | "RESOURCE_NAME" | (string & {});
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfigGatewayIdentityEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfoOutputTypeEnum =
-  "OUTPUT_TYPE_UNSPECIFIED" | "PROTOBUF" | "JSON" | "NONE";
+  "OUTPUT_TYPE_UNSPECIFIED" | "PROTOBUF" | "JSON" | "NONE" | (string & {});
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfoOutputTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -719,7 +730,7 @@ export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUs
   }) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo>;
 
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfoOutputTypeEnum =
-  "OUTPUT_TYPE_UNSPECIFIED" | "PROTOBUF" | "JSON" | "NONE";
+  "OUTPUT_TYPE_UNSPECIFIED" | "PROTOBUF" | "JSON" | "NONE" | (string & {});
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfoOutputTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -741,12 +752,12 @@ export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGr
   }) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo>;
 
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersOutputTypeEnum =
-  "OUTPUT_TYPE_UNSPECIFIED" | "PROTOBUF" | "JSON" | "NONE";
+  "OUTPUT_TYPE_UNSPECIFIED" | "PROTOBUF" | "JSON" | "NONE" | (string & {});
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersOutputTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfoOutputTypeEnum =
-  "OUTPUT_TYPE_UNSPECIFIED" | "PROTOBUF" | "JSON" | "NONE";
+  "OUTPUT_TYPE_UNSPECIFIED" | "PROTOBUF" | "JSON" | "NONE" | (string & {});
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfoOutputTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -981,7 +992,8 @@ export const GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcherList =
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationSchemaEnum =
   | "SCHEMA_UNSPECIFIED"
   | "PROXY_GATEWAY"
-  | "API_GATEWAY";
+  | "API_GATEWAY"
+  | (string & {});
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationSchemaEnum =
   /*@__PURE__*/ S.String;
 
@@ -1394,7 +1406,8 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */

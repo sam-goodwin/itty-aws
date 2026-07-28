@@ -100,7 +100,8 @@ export type ApplicationStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "ACTIVE"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const ApplicationStateEnum = /*@__PURE__*/ S.String;
 
 export type EnvironmentTypeEnum =
@@ -108,7 +109,8 @@ export type EnvironmentTypeEnum =
   | "PRODUCTION"
   | "STAGING"
   | "TEST"
-  | "DEVELOPMENT";
+  | "DEVELOPMENT"
+  | (string & {});
 export const EnvironmentTypeEnum = /*@__PURE__*/ S.String;
 
 /** Environment of the Application, Service, or Workload */
@@ -163,7 +165,8 @@ export type CriticalityTypeEnum =
   | "MISSION_CRITICAL"
   | "HIGH"
   | "MEDIUM"
-  | "LOW";
+  | "LOW"
+  | (string & {});
 export const CriticalityTypeEnum = /*@__PURE__*/ S.String;
 
 /** Criticality of the Application, Service, or Workload */
@@ -206,7 +209,11 @@ export const Attributes = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Attributes" }) as any as S.Schema<Attributes>;
 
-export type ScopeTypeEnum = "TYPE_UNSPECIFIED" | "REGIONAL" | "GLOBAL";
+export type ScopeTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "REGIONAL"
+  | "GLOBAL"
+  | (string & {});
 export const ScopeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Scope of an application. */
@@ -355,14 +362,16 @@ export type ServiceStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "DETACHED";
+  | "DETACHED"
+  | (string & {});
 export const ServiceStateEnum = /*@__PURE__*/ S.String;
 
 export type FunctionalTypeTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "AGENT"
   | "MCP_SERVER"
-  | "ENDPOINT";
+  | "ENDPOINT"
+  | (string & {});
 export const FunctionalTypeTypeEnum = /*@__PURE__*/ S.String;
 
 /** The functional type of a service or workload. */
@@ -379,7 +388,8 @@ export const FunctionalType = /*@__PURE__*/ S.suspend(() =>
 export type RegistrationTypeTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "EXCLUSIVE"
-  | "SHARED";
+  | "SHARED"
+  | (string & {});
 export const RegistrationTypeTypeEnum = /*@__PURE__*/ S.String;
 
 /** The registration type of a service. */
@@ -532,7 +542,8 @@ export type WorkloadStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "DETACHED";
+  | "DETACHED"
+  | (string & {});
 export const WorkloadStateEnum = /*@__PURE__*/ S.String;
 
 /** Properties of an underlying compute resource represented by the Workload. */
@@ -649,7 +660,8 @@ export type ServiceProjectAttachmentStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "ACTIVE"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const ServiceProjectAttachmentStateEnum = /*@__PURE__*/ S.String;
 
 /** ServiceProjectAttachment represents an attachment from a service project to a host project. Service projects contain the underlying cloud infrastructure resources, and expose these resources to the host project through a ServiceProjectAttachment. With the attachments, the host project can provide an aggregated view of resources across all service projects. */
@@ -1027,7 +1039,8 @@ export type BoundaryTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "AUTOMATIC"
   | "MANUAL"
-  | "MANAGED_AUTOMATIC";
+  | "MANAGED_AUTOMATIC"
+  | (string & {});
 export const BoundaryTypeEnum = /*@__PURE__*/ S.String;
 
 /** Application management boundary. */
@@ -1121,7 +1134,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */

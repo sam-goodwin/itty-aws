@@ -76,7 +76,8 @@ export type MediationReportSpecDimensionsItemEnum =
   | "MOBILE_OS_VERSION"
   | "GMA_SDK_VERSION"
   | "APP_VERSION_NAME"
-  | "SERVING_RESTRICTION";
+  | "SERVING_RESTRICTION"
+  | (string & {});
 export const MediationReportSpecDimensionsItemEnum = /*@__PURE__*/ S.String;
 
 export type MediationReportSpecDimensionsItemEnumList =
@@ -117,7 +118,8 @@ export type MediationReportSpecDimensionFilterDimensionEnum =
   | "MOBILE_OS_VERSION"
   | "GMA_SDK_VERSION"
   | "APP_VERSION_NAME"
-  | "SERVING_RESTRICTION";
+  | "SERVING_RESTRICTION"
+  | (string & {});
 export const MediationReportSpecDimensionFilterDimensionEnum =
   /*@__PURE__*/ S.String;
 
@@ -159,7 +161,8 @@ export type MediationReportSpecSortConditionDimensionEnum =
   | "MOBILE_OS_VERSION"
   | "GMA_SDK_VERSION"
   | "APP_VERSION_NAME"
-  | "SERVING_RESTRICTION";
+  | "SERVING_RESTRICTION"
+  | (string & {});
 export const MediationReportSpecSortConditionDimensionEnum =
   /*@__PURE__*/ S.String;
 
@@ -172,14 +175,16 @@ export type MediationReportSpecSortConditionMetricEnum =
   | "IMPRESSION_CTR"
   | "MATCHED_REQUESTS"
   | "MATCH_RATE"
-  | "OBSERVED_ECPM";
+  | "OBSERVED_ECPM"
+  | (string & {});
 export const MediationReportSpecSortConditionMetricEnum =
   /*@__PURE__*/ S.String;
 
 export type MediationReportSpecSortConditionOrderEnum =
   | "SORT_ORDER_UNSPECIFIED"
   | "ASCENDING"
-  | "DESCENDING";
+  | "DESCENDING"
+  | (string & {});
 export const MediationReportSpecSortConditionOrderEnum = /*@__PURE__*/ S.String;
 
 /** Sorting direction to be applied on a dimension or a metric. */
@@ -216,7 +221,8 @@ export type MediationReportSpecMetricsItemEnum =
   | "IMPRESSION_CTR"
   | "MATCHED_REQUESTS"
   | "MATCH_RATE"
-  | "OBSERVED_ECPM";
+  | "OBSERVED_ECPM"
+  | (string & {});
 export const MediationReportSpecMetricsItemEnum = /*@__PURE__*/ S.String;
 
 export type MediationReportSpecMetricsItemEnumList =
@@ -346,7 +352,8 @@ export type ReportWarningTypeEnum =
   | "DATA_BEFORE_ACCOUNT_TIMEZONE_CHANGE"
   | "DATA_DELAYED"
   | "OTHER"
-  | "REPORT_CURRENCY_NOT_ACCOUNT_CURRENCY";
+  | "REPORT_CURRENCY_NOT_ACCOUNT_CURRENCY"
+  | (string & {});
 export const ReportWarningTypeEnum = /*@__PURE__*/ S.String;
 
 /** Warnings associated with generation of the report. */
@@ -493,7 +500,8 @@ export type NetworkReportSpecMetricsItemEnum =
   | "IMPRESSION_RPM"
   | "MATCHED_REQUESTS"
   | "MATCH_RATE"
-  | "SHOW_RATE";
+  | "SHOW_RATE"
+  | (string & {});
 export const NetworkReportSpecMetricsItemEnum = /*@__PURE__*/ S.String;
 
 export type NetworkReportSpecMetricsItemEnumList =
@@ -516,7 +524,8 @@ export type NetworkReportSpecDimensionFilterDimensionEnum =
   | "MOBILE_OS_VERSION"
   | "GMA_SDK_VERSION"
   | "APP_VERSION_NAME"
-  | "SERVING_RESTRICTION";
+  | "SERVING_RESTRICTION"
+  | (string & {});
 export const NetworkReportSpecDimensionFilterDimensionEnum =
   /*@__PURE__*/ S.String;
 
@@ -556,7 +565,8 @@ export type NetworkReportSpecSortConditionDimensionEnum =
   | "MOBILE_OS_VERSION"
   | "GMA_SDK_VERSION"
   | "APP_VERSION_NAME"
-  | "SERVING_RESTRICTION";
+  | "SERVING_RESTRICTION"
+  | (string & {});
 export const NetworkReportSpecSortConditionDimensionEnum =
   /*@__PURE__*/ S.String;
 
@@ -570,13 +580,15 @@ export type NetworkReportSpecSortConditionMetricEnum =
   | "IMPRESSION_RPM"
   | "MATCHED_REQUESTS"
   | "MATCH_RATE"
-  | "SHOW_RATE";
+  | "SHOW_RATE"
+  | (string & {});
 export const NetworkReportSpecSortConditionMetricEnum = /*@__PURE__*/ S.String;
 
 export type NetworkReportSpecSortConditionOrderEnum =
   | "SORT_ORDER_UNSPECIFIED"
   | "ASCENDING"
-  | "DESCENDING";
+  | "DESCENDING"
+  | (string & {});
 export const NetworkReportSpecSortConditionOrderEnum = /*@__PURE__*/ S.String;
 
 /** Sorting direction to be applied on a dimension or a metric. */
@@ -618,7 +630,8 @@ export type NetworkReportSpecDimensionsItemEnum =
   | "MOBILE_OS_VERSION"
   | "GMA_SDK_VERSION"
   | "APP_VERSION_NAME"
-  | "SERVING_RESTRICTION";
+  | "SERVING_RESTRICTION"
+  | (string & {});
 export const NetworkReportSpecDimensionsItemEnum = /*@__PURE__*/ S.String;
 
 export type NetworkReportSpecDimensionsItemEnumList =
@@ -925,7 +938,8 @@ export type AppAppApprovalStateEnum =
   | "APP_APPROVAL_STATE_UNSPECIFIED"
   | "ACTION_REQUIRED"
   | "IN_REVIEW"
-  | "APPROVED";
+  | "APPROVED"
+  | (string & {});
 export const AppAppApprovalStateEnum = /*@__PURE__*/ S.String;
 
 /** Describes an AdMob app for a specific platform (For example: Android or iOS). */

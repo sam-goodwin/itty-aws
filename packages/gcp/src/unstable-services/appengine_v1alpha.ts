@@ -68,7 +68,8 @@ export type ManagedCertificateStatusEnum =
   | "FAILED_RETRYING_NOT_VISIBLE"
   | "FAILED_PERMANENTLY_NOT_VISIBLE"
   | "FAILED_RETRYING_CAA_FORBIDDEN"
-  | "FAILED_RETRYING_CAA_CHECKING";
+  | "FAILED_RETRYING_CAA_CHECKING"
+  | (string & {});
 export const ManagedCertificateStatusEnum = /*@__PURE__*/ S.String;
 
 /** A certificate managed by App Engine. */
@@ -170,7 +171,8 @@ export const CreateAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(
 export type CreateAppsDomainMappingsOverrideStrategyEnum =
   | "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY"
   | "STRICT"
-  | "OVERRIDE";
+  | "OVERRIDE"
+  | (string & {});
 export const CreateAppsDomainMappingsOverrideStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -188,7 +190,7 @@ export const SslSettings = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SslSettings" }) as any as S.Schema<SslSettings>;
 
-export type ResourceRecordTypeEnum = "A" | "AAAA" | "CNAME";
+export type ResourceRecordTypeEnum = "A" | "AAAA" | "CNAME" | (string & {});
 export const ResourceRecordTypeEnum = /*@__PURE__*/ S.String;
 
 /** A DNS resource record. */
@@ -343,7 +345,10 @@ export const CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest =
   }) as any as S.Schema<CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
 
 export type CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum =
-  "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY" | "STRICT" | "OVERRIDE";
+    | "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY"
+    | "STRICT"
+    | "OVERRIDE"
+    | (string & {});
 export const CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -493,7 +498,8 @@ export const DeleteProjectsLocationsApplicationsDomainMappingsRequest =
 
 export type GetAppsAuthorizedCertificatesViewEnum =
   | "BASIC_CERTIFICATE"
-  | "FULL_CERTIFICATE";
+  | "FULL_CERTIFICATE"
+  | (string & {});
 export const GetAppsAuthorizedCertificatesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetAppsAuthorizedCertificatesRequest {
@@ -636,7 +642,8 @@ export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum =
   | "BASIC_CERTIFICATE"
-  | "FULL_CERTIFICATE";
+  | "FULL_CERTIFICATE"
+  | (string & {});
 export const GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -730,7 +737,8 @@ export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 export type ListAppsAuthorizedCertificatesViewEnum =
   | "BASIC_CERTIFICATE"
-  | "FULL_CERTIFICATE";
+  | "FULL_CERTIFICATE"
+  | (string & {});
 export const ListAppsAuthorizedCertificatesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListAppsAuthorizedCertificatesRequest {
@@ -1025,7 +1033,8 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum =
   | "BASIC_CERTIFICATE"
-  | "FULL_CERTIFICATE";
+  | "FULL_CERTIFICATE"
+  | (string & {});
 export const ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum =
   /*@__PURE__*/ S.String;
 

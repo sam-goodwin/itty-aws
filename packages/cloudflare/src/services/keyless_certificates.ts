@@ -50,7 +50,11 @@ export class KeylessSslNotAvailable extends T.applyErrorMatchers(
   [{ code: 1067, message: { includes: "Keyless SSL is not available" } }],
 ) {}
 
-export type CreateRequestBundleMethod = "ubiquitous" | "optimal" | "force";
+export type CreateRequestBundleMethod =
+  | "ubiquitous"
+  | "optimal"
+  | "force"
+  | (string & {});
 export const CreateRequestBundleMethod = /*@__PURE__*/ S.String;
 
 export interface CreateRequestTunnel {
@@ -113,7 +117,7 @@ export const CreateResponsePermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponsePermissionsList>;
 
-export type CreateResponseStatus = "active" | "deleted";
+export type CreateResponseStatus = "active" | "deleted" | (string & {});
 export const CreateResponseStatus = /*@__PURE__*/ S.String;
 
 export interface CreateResponseTunnel {
@@ -235,7 +239,7 @@ export const GetResponsePermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponsePermissionsList>;
 
-export type GetResponseStatus = "active" | "deleted";
+export type GetResponseStatus = "active" | "deleted" | (string & {});
 export const GetResponseStatus = /*@__PURE__*/ S.String;
 
 export interface GetResponseTunnel {
@@ -318,7 +322,7 @@ export const ListResultItemPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemPermissionsList>;
 
-export type ListResultItemStatus = "active" | "deleted";
+export type ListResultItemStatus = "active" | "deleted" | (string & {});
 export const ListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface ListResultItemTunnel {
@@ -451,7 +455,7 @@ export const EditResponsePermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponsePermissionsList>;
 
-export type EditResponseStatus = "active" | "deleted";
+export type EditResponseStatus = "active" | "deleted" | (string & {});
 export const EditResponseStatus = /*@__PURE__*/ S.String;
 
 export interface EditResponseTunnel {

@@ -42,7 +42,8 @@ export const AccountsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
 /** The reason why the given name is not available. */
 export type AccountsCheckNameAvailabilityResponseReason =
   | "Invalid"
-  | "AlreadyExists";
+  | "AlreadyExists"
+  | (string & {});
 export const AccountsCheckNameAvailabilityResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -77,12 +78,16 @@ export const AccountsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 /** Account configuration. This can only be set at RecommendationsService Account creation. */
 export type AccountsCreateOrUpdateRequestPropertiesConfiguration =
   | "Free"
-  | "Capacity";
+  | "Capacity"
+  | (string & {});
 export const AccountsCreateOrUpdateRequestPropertiesConfiguration =
   /*@__PURE__*/ S.String;
 
 /** AAD principal type. */
-export type EndpointAuthenticationPrincipalType = "Application" | "User";
+export type EndpointAuthenticationPrincipalType =
+  | "Application"
+  | "User"
+  | (string & {});
 export const EndpointAuthenticationPrincipalType = /*@__PURE__*/ S.String;
 
 /** Service endpoints authentication details. */
@@ -234,7 +239,8 @@ export const AccountsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 /** Account configuration. This can only be set at RecommendationsService Account creation. */
 export type AccountsCreateOrUpdateResponsePropertiesConfiguration =
   | "Free"
-  | "Capacity";
+  | "Capacity"
+  | (string & {});
 export const AccountsCreateOrUpdateResponsePropertiesConfiguration =
   /*@__PURE__*/ S.String;
 
@@ -271,7 +277,8 @@ export type AccountsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const AccountsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -280,7 +287,8 @@ export type AccountsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const AccountsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -412,7 +420,10 @@ export const AccountsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AccountsGetResponseTagsMap>;
 
 /** Account configuration. This can only be set at RecommendationsService Account creation. */
-export type AccountsGetResponsePropertiesConfiguration = "Free" | "Capacity";
+export type AccountsGetResponsePropertiesConfiguration =
+  | "Free"
+  | "Capacity"
+  | (string & {});
 export const AccountsGetResponsePropertiesConfiguration =
   /*@__PURE__*/ S.String;
 
@@ -446,7 +457,8 @@ export type AccountsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const AccountsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -455,7 +467,8 @@ export type AccountsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const AccountsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -628,7 +641,10 @@ export const AccountResourceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AccountResourceTagsMap>;
 
 /** Account configuration. This can only be set at RecommendationsService Account creation. */
-export type AccountResourcePropertiesConfiguration = "Free" | "Capacity";
+export type AccountResourcePropertiesConfiguration =
+  | "Free"
+  | "Capacity"
+  | (string & {});
 export const AccountResourcePropertiesConfiguration = /*@__PURE__*/ S.String;
 
 /** Account resource properties. */
@@ -661,7 +677,8 @@ export type AccountResourceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const AccountResourceSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -669,7 +686,8 @@ export type AccountResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const AccountResourceSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -840,7 +858,10 @@ export const AccountsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AccountsUpdateResponseTagsMap>;
 
 /** Account configuration. This can only be set at RecommendationsService Account creation. */
-export type AccountsUpdateResponsePropertiesConfiguration = "Free" | "Capacity";
+export type AccountsUpdateResponsePropertiesConfiguration =
+  | "Free"
+  | "Capacity"
+  | (string & {});
 export const AccountsUpdateResponsePropertiesConfiguration =
   /*@__PURE__*/ S.String;
 
@@ -874,7 +895,8 @@ export type AccountsUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const AccountsUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -883,7 +905,8 @@ export type AccountsUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const AccountsUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -960,7 +983,8 @@ export const ModelingCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 export type ModelingCreateOrUpdateRequestPropertiesFeatures =
   | "Basic"
   | "Standard"
-  | "Premium";
+  | "Premium"
+  | (string & {});
 export const ModelingCreateOrUpdateRequestPropertiesFeatures =
   /*@__PURE__*/ S.String;
 
@@ -968,7 +992,8 @@ export const ModelingCreateOrUpdateRequestPropertiesFeatures =
 export type ModelingCreateOrUpdateRequestPropertiesFrequency =
   | "Low"
   | "Medium"
-  | "High";
+  | "High"
+  | (string & {});
 export const ModelingCreateOrUpdateRequestPropertiesFrequency =
   /*@__PURE__*/ S.String;
 
@@ -976,7 +1001,8 @@ export const ModelingCreateOrUpdateRequestPropertiesFrequency =
 export type ModelingCreateOrUpdateRequestPropertiesSize =
   | "Small"
   | "Medium"
-  | "Large";
+  | "Large"
+  | (string & {});
 export const ModelingCreateOrUpdateRequestPropertiesSize =
   /*@__PURE__*/ S.String;
 
@@ -1066,7 +1092,8 @@ export const ModelingCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 export type ModelingCreateOrUpdateResponsePropertiesFeatures =
   | "Basic"
   | "Standard"
-  | "Premium";
+  | "Premium"
+  | (string & {});
 export const ModelingCreateOrUpdateResponsePropertiesFeatures =
   /*@__PURE__*/ S.String;
 
@@ -1074,7 +1101,8 @@ export const ModelingCreateOrUpdateResponsePropertiesFeatures =
 export type ModelingCreateOrUpdateResponsePropertiesFrequency =
   | "Low"
   | "Medium"
-  | "High";
+  | "High"
+  | (string & {});
 export const ModelingCreateOrUpdateResponsePropertiesFrequency =
   /*@__PURE__*/ S.String;
 
@@ -1082,7 +1110,8 @@ export const ModelingCreateOrUpdateResponsePropertiesFrequency =
 export type ModelingCreateOrUpdateResponsePropertiesSize =
   | "Small"
   | "Medium"
-  | "Large";
+  | "Large"
+  | (string & {});
 export const ModelingCreateOrUpdateResponsePropertiesSize =
   /*@__PURE__*/ S.String;
 
@@ -1117,7 +1146,8 @@ export type ModelingCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ModelingCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1126,7 +1156,8 @@ export type ModelingCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ModelingCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1267,15 +1298,24 @@ export const ModelingGetResponseTagsMap = /*@__PURE__*/ S.Record(
 export type ModelingGetResponsePropertiesFeatures =
   | "Basic"
   | "Standard"
-  | "Premium";
+  | "Premium"
+  | (string & {});
 export const ModelingGetResponsePropertiesFeatures = /*@__PURE__*/ S.String;
 
 /** Modeling frequency controls the modeling compute frequency. */
-export type ModelingGetResponsePropertiesFrequency = "Low" | "Medium" | "High";
+export type ModelingGetResponsePropertiesFrequency =
+  | "Low"
+  | "Medium"
+  | "High"
+  | (string & {});
 export const ModelingGetResponsePropertiesFrequency = /*@__PURE__*/ S.String;
 
 /** Modeling size controls the maximum supported input data size. */
-export type ModelingGetResponsePropertiesSize = "Small" | "Medium" | "Large";
+export type ModelingGetResponsePropertiesSize =
+  | "Small"
+  | "Medium"
+  | "Large"
+  | (string & {});
 export const ModelingGetResponsePropertiesSize = /*@__PURE__*/ S.String;
 
 /** Modeling resource properties. */
@@ -1308,7 +1348,8 @@ export type ModelingGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ModelingGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1317,7 +1358,8 @@ export type ModelingGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ModelingGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1418,15 +1460,24 @@ export const ModelingResourceTagsMap = /*@__PURE__*/ S.Record(
 export type ModelingResourcePropertiesFeatures =
   | "Basic"
   | "Standard"
-  | "Premium";
+  | "Premium"
+  | (string & {});
 export const ModelingResourcePropertiesFeatures = /*@__PURE__*/ S.String;
 
 /** Modeling frequency controls the modeling compute frequency. */
-export type ModelingResourcePropertiesFrequency = "Low" | "Medium" | "High";
+export type ModelingResourcePropertiesFrequency =
+  | "Low"
+  | "Medium"
+  | "High"
+  | (string & {});
 export const ModelingResourcePropertiesFrequency = /*@__PURE__*/ S.String;
 
 /** Modeling size controls the maximum supported input data size. */
-export type ModelingResourcePropertiesSize = "Small" | "Medium" | "Large";
+export type ModelingResourcePropertiesSize =
+  | "Small"
+  | "Medium"
+  | "Large"
+  | (string & {});
 export const ModelingResourcePropertiesSize = /*@__PURE__*/ S.String;
 
 /** Modeling resource properties. */
@@ -1459,7 +1510,8 @@ export type ModelingResourceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ModelingResourceSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -1467,7 +1519,8 @@ export type ModelingResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ModelingResourceSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1614,18 +1667,24 @@ export const ModelingUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 export type ModelingUpdateResponsePropertiesFeatures =
   | "Basic"
   | "Standard"
-  | "Premium";
+  | "Premium"
+  | (string & {});
 export const ModelingUpdateResponsePropertiesFeatures = /*@__PURE__*/ S.String;
 
 /** Modeling frequency controls the modeling compute frequency. */
 export type ModelingUpdateResponsePropertiesFrequency =
   | "Low"
   | "Medium"
-  | "High";
+  | "High"
+  | (string & {});
 export const ModelingUpdateResponsePropertiesFrequency = /*@__PURE__*/ S.String;
 
 /** Modeling size controls the maximum supported input data size. */
-export type ModelingUpdateResponsePropertiesSize = "Small" | "Medium" | "Large";
+export type ModelingUpdateResponsePropertiesSize =
+  | "Small"
+  | "Medium"
+  | "Large"
+  | (string & {});
 export const ModelingUpdateResponsePropertiesSize = /*@__PURE__*/ S.String;
 
 /** Modeling resource properties. */
@@ -1658,7 +1717,8 @@ export type ModelingUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ModelingUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1667,7 +1727,8 @@ export type ModelingUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ModelingUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1768,11 +1829,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -2082,13 +2143,14 @@ export type ServiceEndpointsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ServiceEndpointsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ServiceEndpointsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
 export const ServiceEndpointsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2256,7 +2318,8 @@ export type ServiceEndpointsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ServiceEndpointsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2265,7 +2328,8 @@ export type ServiceEndpointsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ServiceEndpointsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2394,7 +2458,8 @@ export type ServiceEndpointResourceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ServiceEndpointResourceSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2403,7 +2468,8 @@ export type ServiceEndpointResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ServiceEndpointResourceSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2559,7 +2625,8 @@ export type ServiceEndpointsUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ServiceEndpointsUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2568,7 +2635,8 @@ export type ServiceEndpointsUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ServiceEndpointsUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

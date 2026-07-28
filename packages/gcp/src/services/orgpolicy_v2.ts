@@ -240,7 +240,8 @@ export type GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum =
   | "UPDATE"
   | "DELETE"
   | "REMOVE_GRANT"
-  | "GOVERN_TAGS";
+  | "GOVERN_TAGS"
+  | (string & {});
 export const GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -254,7 +255,8 @@ export const GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList =
 export type GoogleCloudOrgpolicyV2CustomConstraintActionTypeEnum =
   | "ACTION_TYPE_UNSPECIFIED"
   | "ALLOW"
-  | "DENY";
+  | "DENY"
+  | (string & {});
 export const GoogleCloudOrgpolicyV2CustomConstraintActionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -613,7 +615,8 @@ export type GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodType
     | "UPDATE"
     | "DELETE"
     | "REMOVE_GRANT"
-    | "GOVERN_TAGS";
+    | "GOVERN_TAGS"
+    | (string & {});
 export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -625,7 +628,7 @@ export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTyp
   ) as any as S.Schema<GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnumList>;
 
 export type GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionActionTypeEnum =
-  "ACTION_TYPE_UNSPECIFIED" | "ALLOW" | "DENY";
+  "ACTION_TYPE_UNSPECIFIED" | "ALLOW" | "DENY" | (string & {});
 export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionActionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -645,12 +648,12 @@ export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter
   }) as any as S.Schema<GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata>;
 
 export type GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterItemEnum =
-  "TYPE_UNSPECIFIED" | "LIST" | "STRING" | "BOOLEAN";
+  "TYPE_UNSPECIFIED" | "LIST" | "STRING" | "BOOLEAN" | (string & {});
 export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterTypeEnum =
-  "TYPE_UNSPECIFIED" | "LIST" | "STRING" | "BOOLEAN";
+  "TYPE_UNSPECIFIED" | "LIST" | "STRING" | "BOOLEAN" | (string & {});
 export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -767,7 +770,8 @@ export const GoogleCloudOrgpolicyV2ConstraintListConstraint =
 export type GoogleCloudOrgpolicyV2ConstraintConstraintDefaultEnum =
   | "CONSTRAINT_DEFAULT_UNSPECIFIED"
   | "ALLOW"
-  | "DENY";
+  | "DENY"
+  | (string & {});
 export const GoogleCloudOrgpolicyV2ConstraintConstraintDefaultEnum =
   /*@__PURE__*/ S.String;
 

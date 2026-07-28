@@ -63,21 +63,24 @@ export class NotFound extends T.applyErrorMatchers(
 export type GoogleCloudRetailV2betaCatalogAttributeRetrievableOptionEnum =
   | "RETRIEVABLE_OPTION_UNSPECIFIED"
   | "RETRIEVABLE_ENABLED"
-  | "RETRIEVABLE_DISABLED";
+  | "RETRIEVABLE_DISABLED"
+  | (string & {});
 export const GoogleCloudRetailV2betaCatalogAttributeRetrievableOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRetailV2betaCatalogAttributeTypeEnum =
   | "UNKNOWN"
   | "TEXTUAL"
-  | "NUMERICAL";
+  | "NUMERICAL"
+  | (string & {});
 export const GoogleCloudRetailV2betaCatalogAttributeTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRetailV2betaCatalogAttributeRecommendationsFilteringOptionEnum =
     | "RECOMMENDATIONS_FILTERING_OPTION_UNSPECIFIED"
     | "RECOMMENDATIONS_FILTERING_DISABLED"
-    | "RECOMMENDATIONS_FILTERING_ENABLED";
+    | "RECOMMENDATIONS_FILTERING_ENABLED"
+    | (string & {});
 export const GoogleCloudRetailV2betaCatalogAttributeRecommendationsFilteringOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -236,28 +239,32 @@ export const GoogleCloudRetailV2betaCatalogAttributeFacetConfig =
 export type GoogleCloudRetailV2betaCatalogAttributeIndexableOptionEnum =
   | "INDEXABLE_OPTION_UNSPECIFIED"
   | "INDEXABLE_ENABLED"
-  | "INDEXABLE_DISABLED";
+  | "INDEXABLE_DISABLED"
+  | (string & {});
 export const GoogleCloudRetailV2betaCatalogAttributeIndexableOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRetailV2betaCatalogAttributeDynamicFacetableOptionEnum =
   | "DYNAMIC_FACETABLE_OPTION_UNSPECIFIED"
   | "DYNAMIC_FACETABLE_ENABLED"
-  | "DYNAMIC_FACETABLE_DISABLED";
+  | "DYNAMIC_FACETABLE_DISABLED"
+  | (string & {});
 export const GoogleCloudRetailV2betaCatalogAttributeDynamicFacetableOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRetailV2betaCatalogAttributeSearchableOptionEnum =
   | "SEARCHABLE_OPTION_UNSPECIFIED"
   | "SEARCHABLE_ENABLED"
-  | "SEARCHABLE_DISABLED";
+  | "SEARCHABLE_DISABLED"
+  | (string & {});
 export const GoogleCloudRetailV2betaCatalogAttributeSearchableOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRetailV2betaCatalogAttributeExactSearchableOptionEnum =
   | "EXACT_SEARCHABLE_OPTION_UNSPECIFIED"
   | "EXACT_SEARCHABLE_ENABLED"
-  | "EXACT_SEARCHABLE_DISABLED";
+  | "EXACT_SEARCHABLE_DISABLED"
+  | (string & {});
 export const GoogleCloudRetailV2betaCatalogAttributeExactSearchableOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -358,7 +365,8 @@ export const AddCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest
 export type GoogleCloudRetailV2betaAttributesConfigAttributeConfigLevelEnum =
   | "ATTRIBUTE_CONFIG_LEVEL_UNSPECIFIED"
   | "PRODUCT_LEVEL_ATTRIBUTE_CONFIG"
-  | "CATALOG_LEVEL_ATTRIBUTE_CONFIG";
+  | "CATALOG_LEVEL_ATTRIBUTE_CONFIG"
+  | (string & {});
 export const GoogleCloudRetailV2betaAttributesConfigAttributeConfigLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -434,7 +442,8 @@ export const AddControlProjectsLocationsCatalogsServingConfigsRequest =
 export type GoogleCloudRetailV2betaSearchRequestPersonalizationSpecModeEnum =
   | "MODE_UNSPECIFIED"
   | "AUTO"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const GoogleCloudRetailV2betaSearchRequestPersonalizationSpecModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -457,7 +466,8 @@ export const GoogleCloudRetailV2betaSearchRequestPersonalizationSpec =
 export type GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnum =
   | "SOLUTION_TYPE_UNSPECIFIED"
   | "SOLUTION_TYPE_RECOMMENDATION"
-  | "SOLUTION_TYPE_SEARCH";
+  | "SOLUTION_TYPE_SEARCH"
+  | (string & {});
 export const GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -471,14 +481,16 @@ export const GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnumList =
 export type GoogleCloudRetailV2betaServingConfigDiversityTypeEnum =
   | "DIVERSITY_TYPE_UNSPECIFIED"
   | "RULE_BASED_DIVERSITY"
-  | "DATA_DRIVEN_DIVERSITY";
+  | "DATA_DRIVEN_DIVERSITY"
+  | (string & {});
 export const GoogleCloudRetailV2betaServingConfigDiversityTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModeEnum =
   | "MODE_UNSPECIFIED"
   | "DISABLED"
-  | "ENABLED";
+  | "ENABLED"
+  | (string & {});
 export const GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1386,7 +1398,11 @@ export const GoogleCloudRetailV2betaConversationalSearchRequestUserAnswer =
   }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchRequestUserAnswer>;
 
 export type GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpecConversationalFilteringModeEnum =
-  "MODE_UNSPECIFIED" | "DISABLED" | "ENABLED" | "CONVERSATIONAL_FILTER_ONLY";
+    | "MODE_UNSPECIFIED"
+    | "DISABLED"
+    | "ENABLED"
+    | "CONVERSATIONAL_FILTER_ONLY"
+    | (string & {});
 export const GoogleCloudRetailV2betaConversationalSearchRequestConversationalFilteringSpecConversationalFilteringModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1418,7 +1434,8 @@ export const GoogleCloudRetailV2betaConversationalSearchRequestConversationalFil
 export type GoogleCloudRetailV2betaSafetySettingMethodEnum =
   | "HARM_BLOCK_METHOD_UNSPECIFIED"
   | "SEVERITY"
-  | "PROBABILITY";
+  | "PROBABILITY"
+  | (string & {});
 export const GoogleCloudRetailV2betaSafetySettingMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -1428,7 +1445,8 @@ export type GoogleCloudRetailV2betaSafetySettingThresholdEnum =
   | "BLOCK_MEDIUM_AND_ABOVE"
   | "BLOCK_ONLY_HIGH"
   | "BLOCK_NONE"
-  | "OFF";
+  | "OFF"
+  | (string & {});
 export const GoogleCloudRetailV2betaSafetySettingThresholdEnum =
   /*@__PURE__*/ S.String;
 
@@ -1438,7 +1456,8 @@ export type GoogleCloudRetailV2betaSafetySettingCategoryEnum =
   | "HARM_CATEGORY_DANGEROUS_CONTENT"
   | "HARM_CATEGORY_HARASSMENT"
   | "HARM_CATEGORY_SEXUALLY_EXPLICIT"
-  | "HARM_CATEGORY_CIVIC_INTEGRITY";
+  | "HARM_CATEGORY_CIVIC_INTEGRITY"
+  | (string & {});
 export const GoogleCloudRetailV2betaSafetySettingCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -1646,7 +1665,8 @@ export const GoogleCloudRetailV2betaConversationalSearchResponseConversationalFi
 export type GoogleCloudRetailV2betaConversationalSearchResponseStateEnum =
   | "STATE_UNSPECIFIED"
   | "STREAMING"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const GoogleCloudRetailV2betaConversationalSearchResponseStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1762,7 +1782,8 @@ export type GoogleCloudRetailV2betaProductTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "PRIMARY"
   | "VARIANT"
-  | "COLLECTION";
+  | "COLLECTION"
+  | (string & {});
 export const GoogleCloudRetailV2betaProductTypeEnum = /*@__PURE__*/ S.String;
 
 /** Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods. */
@@ -1799,7 +1820,8 @@ export type GoogleCloudRetailV2betaProductAvailabilityEnum =
   | "IN_STOCK"
   | "OUT_OF_STOCK"
   | "PREORDER"
-  | "BACKORDER";
+  | "BACKORDER"
+  | (string & {});
 export const GoogleCloudRetailV2betaProductAvailabilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -2323,7 +2345,8 @@ export const GoogleCloudRetailV2betaRule = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnum =
   | "SEARCH_SOLUTION_USE_CASE_UNSPECIFIED"
   | "SEARCH_SOLUTION_USE_CASE_SEARCH"
-  | "SEARCH_SOLUTION_USE_CASE_BROWSE";
+  | "SEARCH_SOLUTION_USE_CASE_BROWSE"
+  | (string & {});
 export const GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -2337,7 +2360,8 @@ export const GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnumList =
 export type GoogleCloudRetailV2betaControlSolutionTypesItemEnum =
   | "SOLUTION_TYPE_UNSPECIFIED"
   | "SOLUTION_TYPE_RECOMMENDATION"
-  | "SOLUTION_TYPE_SEARCH";
+  | "SOLUTION_TYPE_SEARCH"
+  | (string & {});
 export const GoogleCloudRetailV2betaControlSolutionTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -2409,7 +2433,8 @@ export type GoogleCloudRetailV2betaModelServingStateEnum =
   | "SERVING_STATE_UNSPECIFIED"
   | "INACTIVE"
   | "ACTIVE"
-  | "TUNED";
+  | "TUNED"
+  | (string & {});
 export const GoogleCloudRetailV2betaModelServingStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2437,14 +2462,16 @@ export const GoogleCloudRetailV2betaModelServingConfigListList =
 export type GoogleCloudRetailV2betaModelFilteringOptionEnum =
   | "RECOMMENDATIONS_FILTERING_OPTION_UNSPECIFIED"
   | "RECOMMENDATIONS_FILTERING_DISABLED"
-  | "RECOMMENDATIONS_FILTERING_ENABLED";
+  | "RECOMMENDATIONS_FILTERING_ENABLED"
+  | (string & {});
 export const GoogleCloudRetailV2betaModelFilteringOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeEnum =
     | "CONTEXT_PRODUCTS_TYPE_UNSPECIFIED"
     | "SINGLE_CONTEXT_PRODUCT"
-    | "MULTIPLE_CONTEXT_PRODUCTS";
+    | "MULTIPLE_CONTEXT_PRODUCTS"
+    | (string & {});
 export const GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2485,21 +2512,24 @@ export type GoogleCloudRetailV2betaModelPeriodicTuningStateEnum =
   | "PERIODIC_TUNING_STATE_UNSPECIFIED"
   | "PERIODIC_TUNING_DISABLED"
   | "ALL_TUNING_DISABLED"
-  | "PERIODIC_TUNING_ENABLED";
+  | "PERIODIC_TUNING_ENABLED"
+  | (string & {});
 export const GoogleCloudRetailV2betaModelPeriodicTuningStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRetailV2betaModelTrainingStateEnum =
   | "TRAINING_STATE_UNSPECIFIED"
   | "PAUSED"
-  | "TRAINING";
+  | "TRAINING"
+  | (string & {});
 export const GoogleCloudRetailV2betaModelTrainingStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRetailV2betaModelDataStateEnum =
   | "DATA_STATE_UNSPECIFIED"
   | "DATA_OK"
-  | "DATA_ERROR";
+  | "DATA_ERROR"
+  | (string & {});
 export const GoogleCloudRetailV2betaModelDataStateEnum = /*@__PURE__*/ S.String;
 
 /** Metadata that describes the training and serving parameters of a Model. A Model can be associated with a ServingConfig and then queried through the Predict API. */
@@ -2918,7 +2948,8 @@ export const GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipientList =
 export type GoogleCloudRetailV2betaAlertConfigAlertPolicyEnrollStatusEnum =
   | "ENROLL_STATUS_UNSPECIFIED"
   | "ENROLLED"
-  | "DECLINED";
+  | "DECLINED"
+  | (string & {});
 export const GoogleCloudRetailV2betaAlertConfigAlertPolicyEnrollStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -3170,7 +3201,7 @@ export const GoogleCloudRetailV2betaIntentClassificationConfigExampleList =
   ) as any as S.Schema<GoogleCloudRetailV2betaIntentClassificationConfigExampleList>;
 
 export type GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentOperationEnum =
-  "OPERATION_UNSPECIFIED" | "EXACT_MATCH" | "CONTAINS";
+  "OPERATION_UNSPECIFIED" | "EXACT_MATCH" | "CONTAINS" | (string & {});
 export const GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentOperationEnum =
   /*@__PURE__*/ S.String;
 
@@ -3517,7 +3548,7 @@ export const GoogleCloudRetailV2betaImportErrorsConfig =
   }) as any as S.Schema<GoogleCloudRetailV2betaImportErrorsConfig>;
 
 export type GoogleCloudRetailV2betaImportProductsRequestReconciliationModeEnum =
-  "RECONCILIATION_MODE_UNSPECIFIED" | "INCREMENTAL" | "FULL";
+  "RECONCILIATION_MODE_UNSPECIFIED" | "INCREMENTAL" | "FULL" | (string & {});
 export const GoogleCloudRetailV2betaImportProductsRequestReconciliationModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4817,7 +4848,10 @@ export const PurgeProjectsLocationsCatalogsUserEventsRequest =
   }) as any as S.Schema<PurgeProjectsLocationsCatalogsUserEventsRequest>;
 
 export type GoogleCloudRetailV2betaRejoinUserEventsRequestUserEventRejoinScopeEnum =
-  "USER_EVENT_REJOIN_SCOPE_UNSPECIFIED" | "JOINED_EVENTS" | "UNJOINED_EVENTS";
+    | "USER_EVENT_REJOIN_SCOPE_UNSPECIFIED"
+    | "JOINED_EVENTS"
+    | "UNJOINED_EVENTS"
+    | (string & {});
 export const GoogleCloudRetailV2betaRejoinUserEventsRequestUserEventRejoinScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5200,7 +5234,7 @@ export const GoogleCloudRetailV2betaStringListMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<GoogleCloudRetailV2betaStringListMap>;
 
 export type GoogleCloudRetailV2betaSearchRequestQueryExpansionSpecConditionEnum =
-  "CONDITION_UNSPECIFIED" | "DISABLED" | "AUTO";
+  "CONDITION_UNSPECIFIED" | "DISABLED" | "AUTO" | (string & {});
 export const GoogleCloudRetailV2betaSearchRequestQueryExpansionSpecConditionEnum =
   /*@__PURE__*/ S.String;
 
@@ -5360,7 +5394,8 @@ export const GoogleCloudRetailV2betaSearchRequestConversationalSearchSpec =
 export type GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpecModeEnum =
   | "MODE_UNSPECIFIED"
   | "SUGGESTION_ONLY"
-  | "AUTO";
+  | "AUTO"
+  | (string & {});
 export const GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpecModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5383,7 +5418,8 @@ export const GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpec =
 export type GoogleCloudRetailV2betaSearchRequestSearchModeEnum =
   | "SEARCH_MODE_UNSPECIFIED"
   | "PRODUCT_SEARCH_ONLY"
-  | "FACETED_SEARCH_ONLY";
+  | "FACETED_SEARCH_ONLY"
+  | (string & {});
 export const GoogleCloudRetailV2betaSearchRequestSearchModeEnum =
   /*@__PURE__*/ S.String;
 

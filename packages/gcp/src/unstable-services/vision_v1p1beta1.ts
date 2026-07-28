@@ -73,7 +73,8 @@ export type GoogleCloudVisionV1p1beta1FeatureTypeEnum =
   | "CROP_HINTS"
   | "WEB_DETECTION"
   | "PRODUCT_SEARCH"
-  | "OBJECT_LOCALIZATION";
+  | "OBJECT_LOCALIZATION"
+  | (string & {});
 export const GoogleCloudVisionV1p1beta1FeatureTypeEnum = /*@__PURE__*/ S.String;
 
 /** The type of Google Cloud Vision API detection to perform, and the maximum number of results to return for that type. Multiple `Feature` objects can be specified in the `features` list. */
@@ -548,7 +549,8 @@ export type GoogleCloudVisionV1p1beta1FaceAnnotationSorrowLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const GoogleCloudVisionV1p1beta1FaceAnnotationSorrowLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -558,7 +560,8 @@ export type GoogleCloudVisionV1p1beta1FaceAnnotationHeadwearLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const GoogleCloudVisionV1p1beta1FaceAnnotationHeadwearLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -568,7 +571,8 @@ export type GoogleCloudVisionV1p1beta1FaceAnnotationSurpriseLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const GoogleCloudVisionV1p1beta1FaceAnnotationSurpriseLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -578,7 +582,8 @@ export type GoogleCloudVisionV1p1beta1FaceAnnotationAngerLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const GoogleCloudVisionV1p1beta1FaceAnnotationAngerLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -588,7 +593,8 @@ export type GoogleCloudVisionV1p1beta1FaceAnnotationUnderExposedLikelihoodEnum =
     | "UNLIKELY"
     | "POSSIBLE"
     | "LIKELY"
-    | "VERY_LIKELY";
+    | "VERY_LIKELY"
+    | (string & {});
 export const GoogleCloudVisionV1p1beta1FaceAnnotationUnderExposedLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -598,7 +604,8 @@ export type GoogleCloudVisionV1p1beta1FaceAnnotationJoyLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const GoogleCloudVisionV1p1beta1FaceAnnotationJoyLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -608,7 +615,8 @@ export type GoogleCloudVisionV1p1beta1FaceAnnotationBlurredLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const GoogleCloudVisionV1p1beta1FaceAnnotationBlurredLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -668,7 +676,8 @@ export type GoogleCloudVisionV1p1beta1FaceAnnotationLandmarkTypeEnum =
   | "CHIN_LEFT_GONION"
   | "CHIN_RIGHT_GONION"
   | "LEFT_CHEEK_CENTER"
-  | "RIGHT_CHEEK_CENTER";
+  | "RIGHT_CHEEK_CENTER"
+  | (string & {});
 export const GoogleCloudVisionV1p1beta1FaceAnnotationLandmarkTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -783,7 +792,8 @@ export type GoogleCloudVisionV1p1beta1BlockBlockTypeEnum =
   | "TABLE"
   | "PICTURE"
   | "RULER"
-  | "BARCODE";
+  | "BARCODE"
+  | (string & {});
 export const GoogleCloudVisionV1p1beta1BlockBlockTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -817,7 +827,8 @@ export type GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreakTypeEnum =
   | "SURE_SPACE"
   | "EOL_SURE_SPACE"
   | "HYPHEN"
-  | "LINE_BREAK";
+  | "LINE_BREAK"
+  | (string & {});
 export const GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreakTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1030,7 +1041,8 @@ export type GoogleCloudVisionV1p1beta1SafeSearchAnnotationAdultEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const GoogleCloudVisionV1p1beta1SafeSearchAnnotationAdultEnum =
   /*@__PURE__*/ S.String;
 
@@ -1040,7 +1052,8 @@ export type GoogleCloudVisionV1p1beta1SafeSearchAnnotationMedicalEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const GoogleCloudVisionV1p1beta1SafeSearchAnnotationMedicalEnum =
   /*@__PURE__*/ S.String;
 
@@ -1050,7 +1063,8 @@ export type GoogleCloudVisionV1p1beta1SafeSearchAnnotationViolenceEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const GoogleCloudVisionV1p1beta1SafeSearchAnnotationViolenceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1060,7 +1074,8 @@ export type GoogleCloudVisionV1p1beta1SafeSearchAnnotationSpoofEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const GoogleCloudVisionV1p1beta1SafeSearchAnnotationSpoofEnum =
   /*@__PURE__*/ S.String;
 
@@ -1070,7 +1085,8 @@ export type GoogleCloudVisionV1p1beta1SafeSearchAnnotationRacyEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const GoogleCloudVisionV1p1beta1SafeSearchAnnotationRacyEnum =
   /*@__PURE__*/ S.String;
 

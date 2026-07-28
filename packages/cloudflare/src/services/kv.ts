@@ -167,7 +167,7 @@ export const NamespacesBulkGetRequestKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamespacesBulkGetRequestKeysList>;
 
-export type NamespacesBulkGetRequestType = "text" | "json";
+export type NamespacesBulkGetRequestType = "text" | "json" | (string & {});
 export const NamespacesBulkGetRequestType = /*@__PURE__*/ S.String;
 
 export interface BulkGetNamespacesRequest {
@@ -668,10 +668,10 @@ export const ListNamespaceKeysResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNamespaceKeysResponse",
 }) as any as S.Schema<ListNamespaceKeysResponse>;
 
-export type NamespacesListRequestDirection = "asc" | "desc";
+export type NamespacesListRequestDirection = "asc" | "desc" | (string & {});
 export const NamespacesListRequestDirection = /*@__PURE__*/ S.String;
 
-export type NamespacesListRequestOrder = "id" | "title";
+export type NamespacesListRequestOrder = "id" | "title" | (string & {});
 export const NamespacesListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface ListNamespacesRequest {
@@ -810,7 +810,7 @@ export const NamespacesKeysBulkGetRequestKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamespacesKeysBulkGetRequestKeysList>;
 
-export type NamespacesKeysBulkGetRequestType = "text" | "json";
+export type NamespacesKeysBulkGetRequestType = "text" | "json" | (string & {});
 export const NamespacesKeysBulkGetRequestType = /*@__PURE__*/ S.String;
 
 export interface NamespacesKeysBulkGetRequest {

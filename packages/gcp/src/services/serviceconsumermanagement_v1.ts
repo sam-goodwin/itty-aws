@@ -401,7 +401,8 @@ export type TenantResourceStatusEnum =
   | "ACTIVE"
   | "PENDING_DELETE"
   | "FAILED"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const TenantResourceStatusEnum = /*@__PURE__*/ S.String;
 
 /** Resource constituting the TenancyUnit. */

@@ -70,7 +70,8 @@ export type ParameterFormatEnum =
   | "PARAMETER_FORMAT_UNSPECIFIED"
   | "UNFORMATTED"
   | "YAML"
-  | "JSON";
+  | "JSON"
+  | (string & {});
 export const ParameterFormatEnum = /*@__PURE__*/ S.String;
 
 /** Output-only policy member strings of a Google Cloud resource's built-in identity. */
@@ -218,7 +219,8 @@ export const CreateProjectsLocationsParametersVersionsRequest =
 export type TemplateFormatEnum =
   | "TEMPLATE_FORMAT_UNSPECIFIED"
   | "TEMPLATE_FORMAT_YAML"
-  | "TEMPLATE_FORMAT_JSON";
+  | "TEMPLATE_FORMAT_JSON"
+  | (string & {});
 export const TemplateFormatEnum = /*@__PURE__*/ S.String;
 
 /** Message describing Template resource */
@@ -501,7 +503,8 @@ export const GetProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(
 export type GetProjectsLocationsParametersVersionsViewEnum =
   | "VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetProjectsLocationsParametersVersionsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -551,7 +554,8 @@ export const GetProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(
 export type GetProjectsLocationsTemplatesVersionsViewEnum =
   | "VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetProjectsLocationsTemplatesVersionsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -1030,7 +1034,8 @@ export const RenderProjectsLocationsTemplatesVersionsRequest =
 export type RenderTemplateVersionResponseTemplateFormatEnum =
   | "TEMPLATE_FORMAT_UNSPECIFIED"
   | "TEMPLATE_FORMAT_YAML"
-  | "TEMPLATE_FORMAT_JSON";
+  | "TEMPLATE_FORMAT_JSON"
+  | (string & {});
 export const RenderTemplateVersionResponseTemplateFormatEnum =
   /*@__PURE__*/ S.String;
 

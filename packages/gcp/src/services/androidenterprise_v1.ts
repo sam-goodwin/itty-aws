@@ -100,7 +100,8 @@ export const ApprovalUrlInfo = /*@__PURE__*/ S.suspend(() =>
 
 export type ProductsApproveRequestApprovedPermissionsEnum =
   | "currentPermissionsOnly"
-  | "allPermissions";
+  | "allPermissions"
+  | (string & {});
 export const ProductsApproveRequestApprovedPermissionsEnum =
   /*@__PURE__*/ S.String;
 
@@ -192,20 +193,23 @@ export const AdministratorList = /*@__PURE__*/ S.Array(
 export type EnterpriseManagedGoogleDomainTypeEnum =
   | "managedGoogleDomainTypeUnspecified"
   | "typeTeam"
-  | "typeDomain";
+  | "typeDomain"
+  | (string & {});
 export const EnterpriseManagedGoogleDomainTypeEnum = /*@__PURE__*/ S.String;
 
 export type GoogleAuthenticationSettingsGoogleAuthenticationRequiredEnum =
   | "googleAuthenticationRequiredUnspecified"
   | "notRequired"
-  | "required";
+  | "required"
+  | (string & {});
 export const GoogleAuthenticationSettingsGoogleAuthenticationRequiredEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAuthenticationSettingsDedicatedDevicesAllowedEnum =
   | "dedicatedDevicesAllowedUnspecified"
   | "disallowed"
-  | "allowed";
+  | "allowed"
+  | (string & {});
 export const GoogleAuthenticationSettingsDedicatedDevicesAllowedEnum =
   /*@__PURE__*/ S.String;
 
@@ -232,7 +236,8 @@ export const GoogleAuthenticationSettings = /*@__PURE__*/ S.suspend(() =>
 export type EnterpriseEnterpriseTypeEnum =
   | "enterpriseTypeUnspecified"
   | "managedGoogleDomain"
-  | "managedGooglePlayAccountsEnterprise";
+  | "managedGooglePlayAccountsEnterprise"
+  | (string & {});
 export const EnterpriseEnterpriseTypeEnum = /*@__PURE__*/ S.String;
 
 /** An Enterprises resource represents the binding between an EMM and a specific organization. That binding can be instantiated in one of two different ways using this API as follows: - For Google managed domain customers, the process involves using Enterprises.enroll and Enterprises.setAccount (in conjunction with artifacts obtained from the Admin console and the Google API Console) and submitted to the EMM through a more-or-less manual process. - For managed Google Play Accounts customers, the process involves using Enterprises.generateSignupUrl and Enterprises.completeSignup in conjunction with the managed Google Play sign-up UI (Google-provided mechanism) to create the binding without manual steps. As an EMM, you can support either or both approaches in your EMM console. See Create an Enterprise for details. */
@@ -267,11 +272,15 @@ export const Enterprise = /*@__PURE__*/ S.suspend(() =>
 export type EnrollmentTokenEnrollmentTokenTypeEnum =
   | "enrollmentTokenTypeUnspecified"
   | "userlessDevice"
-  | "userDevice";
+  | "userDevice"
+  | (string & {});
 export const EnrollmentTokenEnrollmentTokenTypeEnum = /*@__PURE__*/ S.String;
 
 export type EnrollmentTokenGoogleAuthenticationOptionsAuthenticationRequirementEnum =
-  "authenticationRequirementUnspecified" | "optional" | "required";
+    | "authenticationRequirementUnspecified"
+    | "optional"
+    | "required"
+    | (string & {});
 export const EnrollmentTokenGoogleAuthenticationOptionsAuthenticationRequirementEnum =
   /*@__PURE__*/ S.String;
 
@@ -407,7 +416,8 @@ export const AdministratorWebTokenSpecStoreBuilder = /*@__PURE__*/ S.suspend(
 export type AdministratorWebTokenSpecPermissionItemEnum =
   | "unknown"
   | "approveApps"
-  | "manageMcm";
+  | "manageMcm"
+  | (string & {});
 export const AdministratorWebTokenSpecPermissionItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1015,7 +1025,8 @@ export type AppRestrictionsSchemaRestrictionRestrictionValueTypeEnum =
   | "multiselect"
   | "hidden"
   | "bundle"
-  | "bundleArray";
+  | "bundleArray"
+  | (string & {});
 export const AppRestrictionsSchemaRestrictionRestrictionValueTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1055,7 +1066,8 @@ export type AppRestrictionsSchemaRestrictionRestrictionTypeEnum =
   | "multiselect"
   | "hidden"
   | "bundle"
-  | "bundleArray";
+  | "bundleArray"
+  | (string & {});
 export const AppRestrictionsSchemaRestrictionRestrictionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1144,14 +1156,16 @@ export type ProductSetProductSetBehaviorEnum =
   | "unknown"
   | "whitelist"
   | "includeAll"
-  | "allApproved";
+  | "allApproved"
+  | (string & {});
 export const ProductSetProductSetBehaviorEnum = /*@__PURE__*/ S.String;
 
 export type ProductVisibilityTracksItemEnum =
   | "appTrackUnspecified"
   | "production"
   | "beta"
-  | "alpha";
+  | "alpha"
+  | (string & {});
 export const ProductVisibilityTracksItemEnum = /*@__PURE__*/ S.String;
 
 export type ProductVisibilityTracksItemEnumList =
@@ -1228,27 +1242,31 @@ export const GetDevicesRequest = /*@__PURE__*/ S.suspend(() =>
 export type PolicyProductAvailabilityPolicyEnum =
   | "productAvailabilityPolicyUnspecified"
   | "whitelist"
-  | "all";
+  | "all"
+  | (string & {});
 export const PolicyProductAvailabilityPolicyEnum = /*@__PURE__*/ S.String;
 
 export type AutoInstallConstraintNetworkTypeConstraintEnum =
   | "networkTypeConstraintUnspecified"
   | "anyNetwork"
-  | "unmeteredNetwork";
+  | "unmeteredNetwork"
+  | (string & {});
 export const AutoInstallConstraintNetworkTypeConstraintEnum =
   /*@__PURE__*/ S.String;
 
 export type AutoInstallConstraintDeviceIdleStateConstraintEnum =
   | "deviceIdleStateConstraintUnspecified"
   | "deviceIdleNotRequired"
-  | "deviceIdleRequired";
+  | "deviceIdleRequired"
+  | (string & {});
 export const AutoInstallConstraintDeviceIdleStateConstraintEnum =
   /*@__PURE__*/ S.String;
 
 export type AutoInstallConstraintChargingStateConstraintEnum =
   | "chargingStateConstraintUnspecified"
   | "chargingNotRequired"
-  | "chargingRequired";
+  | "chargingRequired"
+  | (string & {});
 export const AutoInstallConstraintChargingStateConstraintEnum =
   /*@__PURE__*/ S.String;
 
@@ -1286,7 +1304,8 @@ export type AutoInstallPolicyAutoInstallModeEnum =
   | "autoInstallModeUnspecified"
   | "doNotAutoInstall"
   | "autoInstallOnce"
-  | "forceAutoInstall";
+  | "forceAutoInstall"
+  | (string & {});
 export const AutoInstallPolicyAutoInstallModeEnum = /*@__PURE__*/ S.String;
 
 export interface AutoInstallPolicy {
@@ -1314,7 +1333,8 @@ export type ProductPolicyTracksItemEnum =
   | "appTrackUnspecified"
   | "production"
   | "beta"
-  | "alpha";
+  | "alpha"
+  | (string & {});
 export const ProductPolicyTracksItemEnum = /*@__PURE__*/ S.String;
 
 export type ProductPolicyTracksItemEnumList =
@@ -1458,7 +1478,8 @@ export type ProductPolicyAutoUpdateModeEnum =
   | "autoUpdateModeUnspecified"
   | "autoUpdateDefault"
   | "autoUpdatePostponed"
-  | "autoUpdateHighPriority";
+  | "autoUpdateHighPriority"
+  | (string & {});
 export const ProductPolicyAutoUpdateModeEnum = /*@__PURE__*/ S.String;
 
 /** The policy for a product. */
@@ -1502,13 +1523,15 @@ export type PolicyAutoUpdatePolicyEnum =
   | "choiceToTheUser"
   | "never"
   | "wifiOnly"
-  | "always";
+  | "always"
+  | (string & {});
 export const PolicyAutoUpdatePolicyEnum = /*@__PURE__*/ S.String;
 
 export type PolicyDeviceReportPolicyEnum =
   | "deviceReportPolicyUnspecified"
   | "deviceReportDisabled"
-  | "deviceReportEnabled";
+  | "deviceReportEnabled"
+  | (string & {});
 export const PolicyDeviceReportPolicyEnum = /*@__PURE__*/ S.String;
 
 /** Maintenance window for managed Google Play Accounts. This allows Play store to update the apps on the foreground in the designated window. */
@@ -1556,7 +1579,8 @@ export const Policy = /*@__PURE__*/ S.suspend(() =>
 export type KeyedAppStateSeverityEnum =
   | "severityUnknown"
   | "severityInfo"
-  | "severityError";
+  | "severityError"
+  | (string & {});
 export const KeyedAppStateSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Represents a keyed app state containing a key, timestamp, severity level, optional description, and optional data. */
@@ -1624,7 +1648,8 @@ export type DeviceManagementTypeEnum =
   | "managedDevice"
   | "managedProfile"
   | "containerApp"
-  | "unmanagedProfile";
+  | "unmanagedProfile"
+  | (string & {});
 export const DeviceManagementTypeEnum = /*@__PURE__*/ S.String;
 
 /** A Devices resource represents a mobile device managed by the EMM and belonging to a specific enterprise user. */
@@ -1710,7 +1735,11 @@ export const GetEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEntitlementsRequest",
 }) as any as S.Schema<GetEntitlementsRequest>;
 
-export type EntitlementReasonEnum = "free" | "groupLicense" | "userPurchase";
+export type EntitlementReasonEnum =
+  | "free"
+  | "groupLicense"
+  | "userPurchase"
+  | (string & {});
 export const EntitlementReasonEnum = /*@__PURE__*/ S.String;
 
 /** *Deprecated:* New integrations cannot use this method and can refer to our new recommendations. */
@@ -1748,16 +1777,23 @@ export const GetGrouplicensesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetGrouplicensesRequest",
 }) as any as S.Schema<GetGrouplicensesRequest>;
 
-export type GroupLicenseAcquisitionKindEnum = "free" | "bulkPurchase";
+export type GroupLicenseAcquisitionKindEnum =
+  | "free"
+  | "bulkPurchase"
+  | (string & {});
 export const GroupLicenseAcquisitionKindEnum = /*@__PURE__*/ S.String;
 
 export type GroupLicensePermissionsEnum =
   | "currentApproved"
   | "needsReapproval"
-  | "allCurrentAndFutureApproved";
+  | "allCurrentAndFutureApproved"
+  | (string & {});
 export const GroupLicensePermissionsEnum = /*@__PURE__*/ S.String;
 
-export type GroupLicenseApprovalEnum = "approved" | "unapproved";
+export type GroupLicenseApprovalEnum =
+  | "approved"
+  | "unapproved"
+  | (string & {});
 export const GroupLicenseApprovalEnum = /*@__PURE__*/ S.String;
 
 /** *Deprecated:* New integrations cannot use this method and can refer to our new recommendations */
@@ -1813,7 +1849,10 @@ export const GetInstallsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInstallsRequest",
 }) as any as S.Schema<GetInstallsRequest>;
 
-export type InstallInstallStateEnum = "installed" | "installPending";
+export type InstallInstallStateEnum =
+  | "installed"
+  | "installPending"
+  | (string & {});
 export const InstallInstallStateEnum = /*@__PURE__*/ S.String;
 
 /** The existence of an Installs resource indicates that an app is installed on a particular device (or that an install is pending). The API can be used to create an install resource using the update method. This triggers the actual install of the app on the device. If the user does not already have an entitlement for the app, then an attempt is made to create one. If this fails (for example, because the app is not free and there is no available license), then the creation of the install fails. The API can also be used to update an installed app. If the update method is used on an existing install, then the app will be updated to the latest available version. Note that it is not possible to force the installation of a specific version of an app: the version code is read-only. If a user installs an app themselves (as permitted by the enterprise), then again an install resource and possibly an entitlement resource are automatically created. The API can also be used to delete an install resource, which triggers the removal of the app from the device. Note that deleting an install does not automatically remove the corresponding entitlement, even if there are no remaining installs. The install resource will also be deleted if the user uninstalls the app themselves. */
@@ -1945,7 +1984,10 @@ export const GetPermissionsProductsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPermissionsProductsRequest",
 }) as any as S.Schema<GetPermissionsProductsRequest>;
 
-export type ProductPermissionStateEnum = "required" | "accepted";
+export type ProductPermissionStateEnum =
+  | "required"
+  | "accepted"
+  | (string & {});
 export const ProductPermissionStateEnum = /*@__PURE__*/ S.String;
 
 /** A product permissions resource represents the set of permissions required by a specific app and whether or not they have been accepted by an enterprise admin. The API can be used to read the set of permissions, and also to update the set to indicate that permissions have been accepted. */
@@ -2013,7 +2055,8 @@ export type ProductAvailableTracksItemEnum =
   | "appTrackUnspecified"
   | "production"
   | "beta"
-  | "alpha";
+  | "alpha"
+  | (string & {});
 export const ProductAvailableTracksItemEnum = /*@__PURE__*/ S.String;
 
 export type ProductAvailableTracksItemEnumList =
@@ -2027,14 +2070,16 @@ export type ProductContentRatingEnum =
   | "all"
   | "preTeen"
   | "teen"
-  | "mature";
+  | "mature"
+  | (string & {});
 export const ProductContentRatingEnum = /*@__PURE__*/ S.String;
 
 export type AppVersionTrackEnum =
   | "appTrackUnspecified"
   | "production"
   | "beta"
-  | "alpha";
+  | "alpha"
+  | (string & {});
 export const AppVersionTrackEnum = /*@__PURE__*/ S.String;
 
 /** This represents a single version of the app. */
@@ -2071,7 +2116,8 @@ export const AppVersionList = /*@__PURE__*/ S.Array(
 export type ProductDistributionChannelEnum =
   | "publicGoogleHosted"
   | "privateGoogleHosted"
-  | "privateSelfHosted";
+  | "privateSelfHosted"
+  | (string & {});
 export const ProductDistributionChannelEnum = /*@__PURE__*/ S.String;
 
 export interface ProductSigningCertificate {
@@ -2089,7 +2135,10 @@ export const ProductSigningCertificate = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductSigningCertificate",
 }) as any as S.Schema<ProductSigningCertificate>;
 
-export type ProductFeaturesItemEnum = "featureUnknown" | "vpnApp";
+export type ProductFeaturesItemEnum =
+  | "featureUnknown"
+  | "vpnApp"
+  | (string & {});
 export const ProductFeaturesItemEnum = /*@__PURE__*/ S.String;
 
 export type ProductFeaturesItemEnumList =
@@ -2102,7 +2151,8 @@ export type ProductProductPricingEnum =
   | "unknown"
   | "free"
   | "freeWithInAppPurchase"
-  | "paid";
+  | "paid"
+  | (string & {});
 export const ProductProductPricingEnum = /*@__PURE__*/ S.String;
 
 /** Id to name association of a track. */
@@ -2212,7 +2262,8 @@ export const Product = /*@__PURE__*/ S.suspend(() =>
 
 export type GetServiceAccountEnterprisesKeyTypeEnum =
   | "googleCredentials"
-  | "pkcs12";
+  | "pkcs12"
+  | (string & {});
 export const GetServiceAccountEnterprisesKeyTypeEnum = /*@__PURE__*/ S.String;
 
 export interface GetServiceAccountEnterprisesRequest {
@@ -2238,7 +2289,10 @@ export const GetServiceAccountEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetServiceAccountEnterprisesRequest",
 }) as any as S.Schema<GetServiceAccountEnterprisesRequest>;
 
-export type ServiceAccountKeyTypeEnum = "googleCredentials" | "pkcs12";
+export type ServiceAccountKeyTypeEnum =
+  | "googleCredentials"
+  | "pkcs12"
+  | (string & {});
 export const ServiceAccountKeyTypeEnum = /*@__PURE__*/ S.String;
 
 /** *Deprecated:* New integrations cannot use this method and can refer to our new recommendations */
@@ -2301,7 +2355,10 @@ export const GetStateDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetStateDevicesRequest",
 }) as any as S.Schema<GetStateDevicesRequest>;
 
-export type DeviceStateAccountStateEnum = "enabled" | "disabled";
+export type DeviceStateAccountStateEnum =
+  | "enabled"
+  | "disabled"
+  | (string & {});
 export const DeviceStateAccountStateEnum = /*@__PURE__*/ S.String;
 
 /** The state of a user's device, as accessed by the getState and setState methods on device resources. */
@@ -2396,7 +2453,11 @@ export const GetStoreLayoutEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetStoreLayoutEnterprisesRequest",
 }) as any as S.Schema<GetStoreLayoutEnterprisesRequest>;
 
-export type StoreLayoutStoreLayoutTypeEnum = "unknown" | "basic" | "custom";
+export type StoreLayoutStoreLayoutTypeEnum =
+  | "unknown"
+  | "basic"
+  | "custom"
+  | (string & {});
 export const StoreLayoutStoreLayoutTypeEnum = /*@__PURE__*/ S.String;
 
 /** General setting for the managed Google Play store layout, currently only specifying the page to display the first time the store is opened. */
@@ -2472,10 +2533,16 @@ export const GetUsersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUsersRequest",
 }) as any as S.Schema<GetUsersRequest>;
 
-export type UserAccountTypeEnum = "deviceAccount" | "userAccount";
+export type UserAccountTypeEnum =
+  | "deviceAccount"
+  | "userAccount"
+  | (string & {});
 export const UserAccountTypeEnum = /*@__PURE__*/ S.String;
 
-export type UserManagementTypeEnum = "googleManaged" | "emmManaged";
+export type UserManagementTypeEnum =
+  | "googleManaged"
+  | "emmManaged"
+  | (string & {});
 export const UserManagementTypeEnum = /*@__PURE__*/ S.String;
 
 /** A Users resource represents an account associated with an enterprise. The account may be specific to a device or to an individual user (who can then use the account across multiple devices). The account may provide access to managed Google Play only, or to other Google services, depending on the identity model: - The Google managed domain identity model requires synchronization to Google account sources (via primaryEmail). - The managed Google Play Accounts identity model provides a dynamic means for enterprises to create user or device accounts as needed. These accounts provide access to managed Google Play. */
@@ -2529,7 +2596,8 @@ export type WebAppDisplayModeEnum =
   | "displayModeUnspecified"
   | "minimalUi"
   | "standalone"
-  | "fullScreen";
+  | "fullScreen"
+  | (string & {});
 export const WebAppDisplayModeEnum = /*@__PURE__*/ S.String;
 
 /** Icon for a web app. */
@@ -3316,7 +3384,8 @@ export const WebAppsListResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type PullNotificationSetEnterprisesRequestModeEnum =
   | "waitForNotifications"
-  | "returnImmediately";
+  | "returnImmediately"
+  | (string & {});
 export const PullNotificationSetEnterprisesRequestModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3343,7 +3412,8 @@ export const PullNotificationSetEnterprisesRequest = /*@__PURE__*/ S.suspend(
 
 export type EnterpriseUpgradeEventUpgradeStateEnum =
   | "upgradeStateUnspecified"
-  | "upgradeStateSucceeded";
+  | "upgradeStateSucceeded"
+  | (string & {});
 export const EnterpriseUpgradeEventUpgradeStateEnum = /*@__PURE__*/ S.String;
 
 /** An event generated when an enterprise is upgraded. */
@@ -3362,7 +3432,8 @@ export const EnterpriseUpgradeEvent = /*@__PURE__*/ S.suspend(() =>
 export type ProductApprovalEventApprovedEnum =
   | "unknown"
   | "approved"
-  | "unapproved";
+  | "unapproved"
+  | (string & {});
 export const ProductApprovalEventApprovedEnum = /*@__PURE__*/ S.String;
 
 /** An event generated when a product's approval status is changed. */
@@ -3383,7 +3454,8 @@ export const ProductApprovalEvent = /*@__PURE__*/ S.suspend(() =>
 
 export type NewDeviceEventManagementTypeEnum =
   | "managedDevice"
-  | "managedProfile";
+  | "managedProfile"
+  | (string & {});
 export const NewDeviceEventManagementTypeEnum = /*@__PURE__*/ S.String;
 
 /** An event generated when a new device is ready to be managed. */
@@ -3410,7 +3482,8 @@ export type ProductAvailabilityChangeEventAvailabilityStatusEnum =
   | "unknown"
   | "available"
   | "removed"
-  | "unpublished";
+  | "unpublished"
+  | (string & {});
 export const ProductAvailabilityChangeEventAvailabilityStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -3456,7 +3529,8 @@ export type NotificationNotificationTypeEnum =
   | "productAvailabilityChange"
   | "newDevice"
   | "deviceReportUpdate"
-  | "enterpriseUpgrade";
+  | "enterpriseUpgrade"
+  | (string & {});
 export const NotificationNotificationTypeEnum = /*@__PURE__*/ S.String;
 
 /** An event generated when an updated device report is available. */
@@ -3478,7 +3552,10 @@ export const DeviceReportUpdateEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeviceReportUpdateEvent",
 }) as any as S.Schema<DeviceReportUpdateEvent>;
 
-export type InstallFailureEventFailureReasonEnum = "unknown" | "timeout";
+export type InstallFailureEventFailureReasonEnum =
+  | "unknown"
+  | "timeout"
+  | (string & {});
 export const InstallFailureEventFailureReasonEnum = /*@__PURE__*/ S.String;
 
 /** An event generated when an app installation failed on a device */

@@ -182,7 +182,7 @@ export class PoolNotFound extends T.applyErrorMatchers(
   [{ code: 1001 }],
 ) {}
 
-export type PoolsBulkEditRequestNotificationEmail = "";
+export type PoolsBulkEditRequestNotificationEmail = "" | (string & {});
 export const PoolsBulkEditRequestNotificationEmail = /*@__PURE__*/ S.String;
 
 export interface BulkPatchPoolsRequest {
@@ -224,7 +224,8 @@ export type PoolsBulkEditResultItemCheckRegionsItem =
   | "SAS"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS";
+  | "ALL_REGIONS"
+  | (string & {});
 export const PoolsBulkEditResultItemCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PoolsBulkEditResultItemCheckRegionsList =
@@ -235,11 +236,14 @@ export const PoolsBulkEditResultItemCheckRegionsList = /*@__PURE__*/ S.Array(
 
 export type PoolsBulkEditResultItemLoadSheddingDefaultPolicy =
   | "random"
-  | "hash";
+  | "hash"
+  | (string & {});
 export const PoolsBulkEditResultItemLoadSheddingDefaultPolicy =
   /*@__PURE__*/ S.String;
 
-export type PoolsBulkEditResultItemLoadSheddingSessionPolicy = "hash";
+export type PoolsBulkEditResultItemLoadSheddingSessionPolicy =
+  | "hash"
+  | (string & {});
 export const PoolsBulkEditResultItemLoadSheddingSessionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -313,7 +317,8 @@ export type PoolsBulkEditResultItemOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections";
+  | "least_connections"
+  | (string & {});
 export const PoolsBulkEditResultItemOriginSteeringPolicy =
   /*@__PURE__*/ S.String;
 
@@ -517,14 +522,18 @@ export const CreateRequestCountryPoolsMap = /*@__PURE__*/ S.Record(
   CreateRequestCountryPoolsValueList,
 ) as any as S.Schema<CreateRequestCountryPoolsMap>;
 
-export type CreateRequestLocationStrategyMode = "pop" | "resolver_ip";
+export type CreateRequestLocationStrategyMode =
+  | "pop"
+  | "resolver_ip"
+  | (string & {});
 export const CreateRequestLocationStrategyMode = /*@__PURE__*/ S.String;
 
 export type CreateRequestLocationStrategyPreferEcs =
   | "always"
   | "never"
   | "proximity"
-  | "geo";
+  | "geo"
+  | (string & {});
 export const CreateRequestLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface CreateRequestLocationStrategy {
@@ -684,7 +693,8 @@ export type CreateRequestRulesItemOverridesSessionAffinity =
   | "none"
   | "cookie"
   | "ip_cookie"
-  | "header";
+  | "header"
+  | (string & {});
 export const CreateRequestRulesItemOverridesSessionAffinity =
   /*@__PURE__*/ S.String;
 
@@ -699,19 +709,21 @@ export type CreateRequestRulesItemOverridesSessionAffinityAttributesSamesite =
   | "Auto"
   | "Lax"
   | "None"
-  | "Strict";
+  | "Strict"
+  | (string & {});
 export const CreateRequestRulesItemOverridesSessionAffinityAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type CreateRequestRulesItemOverridesSessionAffinityAttributesSecure =
   | "Auto"
   | "Always"
-  | "Never";
+  | "Never"
+  | (string & {});
 export const CreateRequestRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type CreateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky";
+  "none" | "temporary" | "sticky" | (string & {});
 export const CreateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -763,7 +775,8 @@ export type CreateRequestRulesItemOverridesSteeringPolicy =
   | "proximity"
   | "least_outstanding_requests"
   | "least_connections"
-  | "";
+  | ""
+  | (string & {});
 export const CreateRequestRulesItemOverridesSteeringPolicy =
   /*@__PURE__*/ S.String;
 
@@ -1015,14 +1028,18 @@ export const CreateResponseDefaultPoolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseDefaultPoolsList>;
 
-export type CreateResponseLocationStrategyMode = "pop" | "resolver_ip";
+export type CreateResponseLocationStrategyMode =
+  | "pop"
+  | "resolver_ip"
+  | (string & {});
 export const CreateResponseLocationStrategyMode = /*@__PURE__*/ S.String;
 
 export type CreateResponseLocationStrategyPreferEcs =
   | "always"
   | "never"
   | "proximity"
-  | "geo";
+  | "geo"
+  | (string & {});
 export const CreateResponseLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface CreateResponseLocationStrategy {
@@ -1184,7 +1201,8 @@ export type CreateResponseRulesItemOverridesSessionAffinity =
   | "none"
   | "cookie"
   | "ip_cookie"
-  | "header";
+  | "header"
+  | (string & {});
 export const CreateResponseRulesItemOverridesSessionAffinity =
   /*@__PURE__*/ S.String;
 
@@ -1199,19 +1217,21 @@ export type CreateResponseRulesItemOverridesSessionAffinityAttributesSamesite =
   | "Auto"
   | "Lax"
   | "None"
-  | "Strict";
+  | "Strict"
+  | (string & {});
 export const CreateResponseRulesItemOverridesSessionAffinityAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type CreateResponseRulesItemOverridesSessionAffinityAttributesSecure =
   | "Auto"
   | "Always"
-  | "Never";
+  | "Never"
+  | (string & {});
 export const CreateResponseRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type CreateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky";
+  "none" | "temporary" | "sticky" | (string & {});
 export const CreateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -1263,7 +1283,8 @@ export type CreateResponseRulesItemOverridesSteeringPolicy =
   | "proximity"
   | "least_outstanding_requests"
   | "least_connections"
-  | "";
+  | ""
+  | (string & {});
 export const CreateResponseRulesItemOverridesSteeringPolicy =
   /*@__PURE__*/ S.String;
 
@@ -1506,7 +1527,8 @@ export type MonitorsCreateRequestType =
   | "tcp"
   | "udp_icmp"
   | "icmp_ping"
-  | "smtp";
+  | "smtp"
+  | (string & {});
 export const MonitorsCreateRequestType = /*@__PURE__*/ S.String;
 
 export interface CreateMonitorRequest {
@@ -1596,7 +1618,8 @@ export type MonitorsCreateResponseType =
   | "tcp"
   | "udp_icmp"
   | "icmp_ping"
-  | "smtp";
+  | "smtp"
+  | (string & {});
 export const MonitorsCreateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1803,7 +1826,8 @@ export type MonitorsPreviewsCreateRequestType =
   | "tcp"
   | "udp_icmp"
   | "icmp_ping"
-  | "smtp";
+  | "smtp"
+  | (string & {});
 export const MonitorsPreviewsCreateRequestType = /*@__PURE__*/ S.String;
 
 export interface CreateMonitorPreviewRequest {
@@ -1959,11 +1983,16 @@ export const PoolsCreateRequestOriginsList = /*@__PURE__*/ S.Array(
   PoolsCreateRequestOriginsItem,
 ) as any as S.Schema<PoolsCreateRequestOriginsList>;
 
-export type PoolsCreateRequestLoadSheddingDefaultPolicy = "random" | "hash";
+export type PoolsCreateRequestLoadSheddingDefaultPolicy =
+  | "random"
+  | "hash"
+  | (string & {});
 export const PoolsCreateRequestLoadSheddingDefaultPolicy =
   /*@__PURE__*/ S.String;
 
-export type PoolsCreateRequestLoadSheddingSessionPolicy = "hash";
+export type PoolsCreateRequestLoadSheddingSessionPolicy =
+  | "hash"
+  | (string & {});
 export const PoolsCreateRequestLoadSheddingSessionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -2032,7 +2061,8 @@ export type PoolsCreateRequestOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections";
+  | "least_connections"
+  | (string & {});
 export const PoolsCreateRequestOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsCreateRequestOriginSteering {
@@ -2126,7 +2156,8 @@ export type PoolsCreateResponseCheckRegionsItem =
   | "SAS"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS";
+  | "ALL_REGIONS"
+  | (string & {});
 export const PoolsCreateResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PoolsCreateResponseCheckRegionsList =
@@ -2135,11 +2166,16 @@ export const PoolsCreateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   PoolsCreateResponseCheckRegionsItem,
 ) as any as S.Schema<PoolsCreateResponseCheckRegionsList>;
 
-export type PoolsCreateResponseLoadSheddingDefaultPolicy = "random" | "hash";
+export type PoolsCreateResponseLoadSheddingDefaultPolicy =
+  | "random"
+  | "hash"
+  | (string & {});
 export const PoolsCreateResponseLoadSheddingDefaultPolicy =
   /*@__PURE__*/ S.String;
 
-export type PoolsCreateResponseLoadSheddingSessionPolicy = "hash";
+export type PoolsCreateResponseLoadSheddingSessionPolicy =
+  | "hash"
+  | (string & {});
 export const PoolsCreateResponseLoadSheddingSessionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -2213,7 +2249,8 @@ export type PoolsCreateResponseOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections";
+  | "least_connections"
+  | (string & {});
 export const PoolsCreateResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsCreateResponseOriginSteering {
@@ -2381,7 +2418,8 @@ export type PoolsHealthCreateRequestType =
   | "tcp"
   | "udp_icmp"
   | "icmp_ping"
-  | "smtp";
+  | "smtp"
+  | (string & {});
 export const PoolsHealthCreateRequestType = /*@__PURE__*/ S.String;
 
 export interface CreatePoolHealthRequest {
@@ -2712,14 +2750,18 @@ export const GetResponseDefaultPoolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseDefaultPoolsList>;
 
-export type GetResponseLocationStrategyMode = "pop" | "resolver_ip";
+export type GetResponseLocationStrategyMode =
+  | "pop"
+  | "resolver_ip"
+  | (string & {});
 export const GetResponseLocationStrategyMode = /*@__PURE__*/ S.String;
 
 export type GetResponseLocationStrategyPreferEcs =
   | "always"
   | "never"
   | "proximity"
-  | "geo";
+  | "geo"
+  | (string & {});
 export const GetResponseLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface GetResponseLocationStrategy {
@@ -2874,7 +2916,8 @@ export type GetResponseRulesItemOverridesSessionAffinity =
   | "none"
   | "cookie"
   | "ip_cookie"
-  | "header";
+  | "header"
+  | (string & {});
 export const GetResponseRulesItemOverridesSessionAffinity =
   /*@__PURE__*/ S.String;
 
@@ -2889,19 +2932,21 @@ export type GetResponseRulesItemOverridesSessionAffinityAttributesSamesite =
   | "Auto"
   | "Lax"
   | "None"
-  | "Strict";
+  | "Strict"
+  | (string & {});
 export const GetResponseRulesItemOverridesSessionAffinityAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type GetResponseRulesItemOverridesSessionAffinityAttributesSecure =
   | "Auto"
   | "Always"
-  | "Never";
+  | "Never"
+  | (string & {});
 export const GetResponseRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type GetResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky";
+  "none" | "temporary" | "sticky" | (string & {});
 export const GetResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -2953,7 +2998,8 @@ export type GetResponseRulesItemOverridesSteeringPolicy =
   | "proximity"
   | "least_outstanding_requests"
   | "least_connections"
-  | "";
+  | ""
+  | (string & {});
 export const GetResponseRulesItemOverridesSteeringPolicy =
   /*@__PURE__*/ S.String;
 
@@ -3216,7 +3262,8 @@ export type MonitorsGetResponseType =
   | "tcp"
   | "udp_icmp"
   | "icmp_ping"
-  | "smtp";
+  | "smtp"
+  | (string & {});
 export const MonitorsGetResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3388,7 +3435,8 @@ export const GetMonitorGroupReferenceRequest = /*@__PURE__*/ S.suspend(() =>
 export type MonitorGroupsReferencesGetResultItemReferenceType =
   | "*"
   | "referral"
-  | "referrer";
+  | "referrer"
+  | (string & {});
 export const MonitorGroupsReferencesGetResultItemReferenceType =
   /*@__PURE__*/ S.String;
 
@@ -3460,7 +3508,8 @@ export const GetMonitorReferenceRequest = /*@__PURE__*/ S.suspend(() =>
 export type MonitorsReferencesGetResultItemReferenceType =
   | "*"
   | "referral"
-  | "referrer";
+  | "referrer"
+  | (string & {});
 export const MonitorsReferencesGetResultItemReferenceType =
   /*@__PURE__*/ S.String;
 
@@ -3540,7 +3589,8 @@ export type PoolsGetResponseCheckRegionsItem =
   | "SAS"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS";
+  | "ALL_REGIONS"
+  | (string & {});
 export const PoolsGetResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PoolsGetResponseCheckRegionsList =
@@ -3549,10 +3599,13 @@ export const PoolsGetResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   PoolsGetResponseCheckRegionsItem,
 ) as any as S.Schema<PoolsGetResponseCheckRegionsList>;
 
-export type PoolsGetResponseLoadSheddingDefaultPolicy = "random" | "hash";
+export type PoolsGetResponseLoadSheddingDefaultPolicy =
+  | "random"
+  | "hash"
+  | (string & {});
 export const PoolsGetResponseLoadSheddingDefaultPolicy = /*@__PURE__*/ S.String;
 
-export type PoolsGetResponseLoadSheddingSessionPolicy = "hash";
+export type PoolsGetResponseLoadSheddingSessionPolicy = "hash" | (string & {});
 export const PoolsGetResponseLoadSheddingSessionPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsGetResponseLoadShedding {
@@ -3620,7 +3673,8 @@ export type PoolsGetResponseOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections";
+  | "least_connections"
+  | (string & {});
 export const PoolsGetResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsGetResponseOriginSteering {
@@ -3885,7 +3939,8 @@ export const GetPoolReferenceRequest = /*@__PURE__*/ S.suspend(() =>
 export type PoolsReferencesGetResultItemReferenceType =
   | "*"
   | "referral"
-  | "referrer";
+  | "referrer"
+  | (string & {});
 export const PoolsReferencesGetResultItemReferenceType = /*@__PURE__*/ S.String;
 
 export interface PoolsReferencesGetResultItem {
@@ -4023,7 +4078,8 @@ export type RegionsGetRequestRegionId =
   | "SAF"
   | "SAS"
   | "SEAS"
-  | "NEAS";
+  | "NEAS"
+  | (string & {});
 export const RegionsGetRequestRegionId = /*@__PURE__*/ S.String;
 
 export interface GetRegionRequest {
@@ -4107,14 +4163,18 @@ export const ListResultItemDefaultPoolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemDefaultPoolsList>;
 
-export type ListResultItemLocationStrategyMode = "pop" | "resolver_ip";
+export type ListResultItemLocationStrategyMode =
+  | "pop"
+  | "resolver_ip"
+  | (string & {});
 export const ListResultItemLocationStrategyMode = /*@__PURE__*/ S.String;
 
 export type ListResultItemLocationStrategyPreferEcs =
   | "always"
   | "never"
   | "proximity"
-  | "geo";
+  | "geo"
+  | (string & {});
 export const ListResultItemLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface ListResultItemLocationStrategy {
@@ -4276,7 +4336,8 @@ export type ListResultItemRulesItemOverridesSessionAffinity =
   | "none"
   | "cookie"
   | "ip_cookie"
-  | "header";
+  | "header"
+  | (string & {});
 export const ListResultItemRulesItemOverridesSessionAffinity =
   /*@__PURE__*/ S.String;
 
@@ -4291,19 +4352,21 @@ export type ListResultItemRulesItemOverridesSessionAffinityAttributesSamesite =
   | "Auto"
   | "Lax"
   | "None"
-  | "Strict";
+  | "Strict"
+  | (string & {});
 export const ListResultItemRulesItemOverridesSessionAffinityAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type ListResultItemRulesItemOverridesSessionAffinityAttributesSecure =
   | "Auto"
   | "Always"
-  | "Never";
+  | "Never"
+  | (string & {});
 export const ListResultItemRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type ListResultItemRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky";
+  "none" | "temporary" | "sticky" | (string & {});
 export const ListResultItemRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -4355,7 +4418,8 @@ export type ListResultItemRulesItemOverridesSteeringPolicy =
   | "proximity"
   | "least_outstanding_requests"
   | "least_connections"
-  | "";
+  | ""
+  | (string & {});
 export const ListResultItemRulesItemOverridesSteeringPolicy =
   /*@__PURE__*/ S.String;
 
@@ -4734,7 +4798,8 @@ export type MonitorsListResultItemType =
   | "tcp"
   | "udp_icmp"
   | "icmp_ping"
-  | "smtp";
+  | "smtp"
+  | (string & {});
 export const MonitorsListResultItemType = /*@__PURE__*/ S.String;
 
 export interface MonitorsListResultItem {
@@ -4857,7 +4922,8 @@ export type PoolsListResultItemCheckRegionsItem =
   | "SAS"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS";
+  | "ALL_REGIONS"
+  | (string & {});
 export const PoolsListResultItemCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PoolsListResultItemCheckRegionsList =
@@ -4866,11 +4932,16 @@ export const PoolsListResultItemCheckRegionsList = /*@__PURE__*/ S.Array(
   PoolsListResultItemCheckRegionsItem,
 ) as any as S.Schema<PoolsListResultItemCheckRegionsList>;
 
-export type PoolsListResultItemLoadSheddingDefaultPolicy = "random" | "hash";
+export type PoolsListResultItemLoadSheddingDefaultPolicy =
+  | "random"
+  | "hash"
+  | (string & {});
 export const PoolsListResultItemLoadSheddingDefaultPolicy =
   /*@__PURE__*/ S.String;
 
-export type PoolsListResultItemLoadSheddingSessionPolicy = "hash";
+export type PoolsListResultItemLoadSheddingSessionPolicy =
+  | "hash"
+  | (string & {});
 export const PoolsListResultItemLoadSheddingSessionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -4944,7 +5015,8 @@ export type PoolsListResultItemOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections";
+  | "least_connections"
+  | (string & {});
 export const PoolsListResultItemOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsListResultItemOriginSteering {
@@ -5150,7 +5222,12 @@ export const ListRegionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRegionsResponse",
 }) as any as S.Schema<ListRegionsResponse>;
 
-export type SearchesListRequestReferences = "" | "*" | "referral" | "referrer";
+export type SearchesListRequestReferences =
+  | ""
+  | "*"
+  | "referral"
+  | "referrer"
+  | (string & {});
 export const SearchesListRequestReferences = /*@__PURE__*/ S.String;
 
 export interface ListSearchesRequest {
@@ -5185,7 +5262,8 @@ export const ListSearchesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type SearchesListResponseResourcesItemReferenceType =
   | "referral"
-  | "referrer";
+  | "referrer"
+  | (string & {});
 export const SearchesListResponseResourcesItemReferenceType =
   /*@__PURE__*/ S.String;
 
@@ -5199,7 +5277,8 @@ export const SearchesListResponseResourcesItemReferencesList =
 export type SearchesListResponseResourcesItemResourceType =
   | "load_balancer"
   | "monitor"
-  | "pool";
+  | "pool"
+  | (string & {});
 export const SearchesListResponseResourcesItemResourceType =
   /*@__PURE__*/ S.String;
 
@@ -5285,14 +5364,18 @@ export const EditRequestDefaultPoolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditRequestDefaultPoolsList>;
 
-export type EditRequestLocationStrategyMode = "pop" | "resolver_ip";
+export type EditRequestLocationStrategyMode =
+  | "pop"
+  | "resolver_ip"
+  | (string & {});
 export const EditRequestLocationStrategyMode = /*@__PURE__*/ S.String;
 
 export type EditRequestLocationStrategyPreferEcs =
   | "always"
   | "never"
   | "proximity"
-  | "geo";
+  | "geo"
+  | (string & {});
 export const EditRequestLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface EditRequestLocationStrategy {
@@ -5442,7 +5525,8 @@ export type EditRequestRulesItemOverridesSessionAffinity =
   | "none"
   | "cookie"
   | "ip_cookie"
-  | "header";
+  | "header"
+  | (string & {});
 export const EditRequestRulesItemOverridesSessionAffinity =
   /*@__PURE__*/ S.String;
 
@@ -5457,19 +5541,21 @@ export type EditRequestRulesItemOverridesSessionAffinityAttributesSamesite =
   | "Auto"
   | "Lax"
   | "None"
-  | "Strict";
+  | "Strict"
+  | (string & {});
 export const EditRequestRulesItemOverridesSessionAffinityAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type EditRequestRulesItemOverridesSessionAffinityAttributesSecure =
   | "Auto"
   | "Always"
-  | "Never";
+  | "Never"
+  | (string & {});
 export const EditRequestRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky";
+  "none" | "temporary" | "sticky" | (string & {});
 export const EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -5521,7 +5607,8 @@ export type EditRequestRulesItemOverridesSteeringPolicy =
   | "proximity"
   | "least_outstanding_requests"
   | "least_connections"
-  | "";
+  | ""
+  | (string & {});
 export const EditRequestRulesItemOverridesSteeringPolicy =
   /*@__PURE__*/ S.String;
 
@@ -5775,14 +5862,18 @@ export const EditResponseDefaultPoolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseDefaultPoolsList>;
 
-export type EditResponseLocationStrategyMode = "pop" | "resolver_ip";
+export type EditResponseLocationStrategyMode =
+  | "pop"
+  | "resolver_ip"
+  | (string & {});
 export const EditResponseLocationStrategyMode = /*@__PURE__*/ S.String;
 
 export type EditResponseLocationStrategyPreferEcs =
   | "always"
   | "never"
   | "proximity"
-  | "geo";
+  | "geo"
+  | (string & {});
 export const EditResponseLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface EditResponseLocationStrategy {
@@ -5939,7 +6030,8 @@ export type EditResponseRulesItemOverridesSessionAffinity =
   | "none"
   | "cookie"
   | "ip_cookie"
-  | "header";
+  | "header"
+  | (string & {});
 export const EditResponseRulesItemOverridesSessionAffinity =
   /*@__PURE__*/ S.String;
 
@@ -5954,19 +6046,21 @@ export type EditResponseRulesItemOverridesSessionAffinityAttributesSamesite =
   | "Auto"
   | "Lax"
   | "None"
-  | "Strict";
+  | "Strict"
+  | (string & {});
 export const EditResponseRulesItemOverridesSessionAffinityAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type EditResponseRulesItemOverridesSessionAffinityAttributesSecure =
   | "Auto"
   | "Always"
-  | "Never";
+  | "Never"
+  | (string & {});
 export const EditResponseRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky";
+  "none" | "temporary" | "sticky" | (string & {});
 export const EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -6018,7 +6112,8 @@ export type EditResponseRulesItemOverridesSteeringPolicy =
   | "proximity"
   | "least_outstanding_requests"
   | "least_connections"
-  | "";
+  | ""
+  | (string & {});
 export const EditResponseRulesItemOverridesSteeringPolicy =
   /*@__PURE__*/ S.String;
 
@@ -6259,7 +6354,8 @@ export type MonitorsEditRequestType =
   | "tcp"
   | "udp_icmp"
   | "icmp_ping"
-  | "smtp";
+  | "smtp"
+  | (string & {});
 export const MonitorsEditRequestType = /*@__PURE__*/ S.String;
 
 export interface PatchMonitorRequest {
@@ -6351,7 +6447,8 @@ export type MonitorsEditResponseType =
   | "tcp"
   | "udp_icmp"
   | "icmp_ping"
-  | "smtp";
+  | "smtp"
+  | (string & {});
 export const MonitorsEditResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -6552,7 +6649,8 @@ export type PoolsEditRequestCheckRegionsItem =
   | "SAS"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS";
+  | "ALL_REGIONS"
+  | (string & {});
 export const PoolsEditRequestCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PoolsEditRequestCheckRegionsList =
@@ -6561,10 +6659,13 @@ export const PoolsEditRequestCheckRegionsList = /*@__PURE__*/ S.Array(
   PoolsEditRequestCheckRegionsItem,
 ) as any as S.Schema<PoolsEditRequestCheckRegionsList>;
 
-export type PoolsEditRequestLoadSheddingDefaultPolicy = "random" | "hash";
+export type PoolsEditRequestLoadSheddingDefaultPolicy =
+  | "random"
+  | "hash"
+  | (string & {});
 export const PoolsEditRequestLoadSheddingDefaultPolicy = /*@__PURE__*/ S.String;
 
-export type PoolsEditRequestLoadSheddingSessionPolicy = "hash";
+export type PoolsEditRequestLoadSheddingSessionPolicy = "hash" | (string & {});
 export const PoolsEditRequestLoadSheddingSessionPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsEditRequestLoadShedding {
@@ -6627,7 +6728,8 @@ export type PoolsEditRequestOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections";
+  | "least_connections"
+  | (string & {});
 export const PoolsEditRequestOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsEditRequestOriginSteering {
@@ -6787,7 +6889,8 @@ export type PoolsEditResponseCheckRegionsItem =
   | "SAS"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS";
+  | "ALL_REGIONS"
+  | (string & {});
 export const PoolsEditResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PoolsEditResponseCheckRegionsList =
@@ -6796,11 +6899,14 @@ export const PoolsEditResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   PoolsEditResponseCheckRegionsItem,
 ) as any as S.Schema<PoolsEditResponseCheckRegionsList>;
 
-export type PoolsEditResponseLoadSheddingDefaultPolicy = "random" | "hash";
+export type PoolsEditResponseLoadSheddingDefaultPolicy =
+  | "random"
+  | "hash"
+  | (string & {});
 export const PoolsEditResponseLoadSheddingDefaultPolicy =
   /*@__PURE__*/ S.String;
 
-export type PoolsEditResponseLoadSheddingSessionPolicy = "hash";
+export type PoolsEditResponseLoadSheddingSessionPolicy = "hash" | (string & {});
 export const PoolsEditResponseLoadSheddingSessionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -6869,7 +6975,8 @@ export type PoolsEditResponseOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections";
+  | "least_connections"
+  | (string & {});
 export const PoolsEditResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsEditResponseOriginSteering {
@@ -7047,14 +7154,18 @@ export const UpdateRequestCountryPoolsMap = /*@__PURE__*/ S.Record(
   UpdateRequestCountryPoolsValueList,
 ) as any as S.Schema<UpdateRequestCountryPoolsMap>;
 
-export type UpdateRequestLocationStrategyMode = "pop" | "resolver_ip";
+export type UpdateRequestLocationStrategyMode =
+  | "pop"
+  | "resolver_ip"
+  | (string & {});
 export const UpdateRequestLocationStrategyMode = /*@__PURE__*/ S.String;
 
 export type UpdateRequestLocationStrategyPreferEcs =
   | "always"
   | "never"
   | "proximity"
-  | "geo";
+  | "geo"
+  | (string & {});
 export const UpdateRequestLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestLocationStrategy {
@@ -7214,7 +7325,8 @@ export type UpdateRequestRulesItemOverridesSessionAffinity =
   | "none"
   | "cookie"
   | "ip_cookie"
-  | "header";
+  | "header"
+  | (string & {});
 export const UpdateRequestRulesItemOverridesSessionAffinity =
   /*@__PURE__*/ S.String;
 
@@ -7229,19 +7341,21 @@ export type UpdateRequestRulesItemOverridesSessionAffinityAttributesSamesite =
   | "Auto"
   | "Lax"
   | "None"
-  | "Strict";
+  | "Strict"
+  | (string & {});
 export const UpdateRequestRulesItemOverridesSessionAffinityAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type UpdateRequestRulesItemOverridesSessionAffinityAttributesSecure =
   | "Auto"
   | "Always"
-  | "Never";
+  | "Never"
+  | (string & {});
 export const UpdateRequestRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type UpdateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky";
+  "none" | "temporary" | "sticky" | (string & {});
 export const UpdateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -7293,7 +7407,8 @@ export type UpdateRequestRulesItemOverridesSteeringPolicy =
   | "proximity"
   | "least_outstanding_requests"
   | "least_connections"
-  | "";
+  | ""
+  | (string & {});
 export const UpdateRequestRulesItemOverridesSteeringPolicy =
   /*@__PURE__*/ S.String;
 
@@ -7550,14 +7665,18 @@ export const UpdateResponseDefaultPoolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateResponseDefaultPoolsList>;
 
-export type UpdateResponseLocationStrategyMode = "pop" | "resolver_ip";
+export type UpdateResponseLocationStrategyMode =
+  | "pop"
+  | "resolver_ip"
+  | (string & {});
 export const UpdateResponseLocationStrategyMode = /*@__PURE__*/ S.String;
 
 export type UpdateResponseLocationStrategyPreferEcs =
   | "always"
   | "never"
   | "proximity"
-  | "geo";
+  | "geo"
+  | (string & {});
 export const UpdateResponseLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseLocationStrategy {
@@ -7719,7 +7838,8 @@ export type UpdateResponseRulesItemOverridesSessionAffinity =
   | "none"
   | "cookie"
   | "ip_cookie"
-  | "header";
+  | "header"
+  | (string & {});
 export const UpdateResponseRulesItemOverridesSessionAffinity =
   /*@__PURE__*/ S.String;
 
@@ -7734,19 +7854,21 @@ export type UpdateResponseRulesItemOverridesSessionAffinityAttributesSamesite =
   | "Auto"
   | "Lax"
   | "None"
-  | "Strict";
+  | "Strict"
+  | (string & {});
 export const UpdateResponseRulesItemOverridesSessionAffinityAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseRulesItemOverridesSessionAffinityAttributesSecure =
   | "Auto"
   | "Always"
-  | "Never";
+  | "Never"
+  | (string & {});
 export const UpdateResponseRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky";
+  "none" | "temporary" | "sticky" | (string & {});
 export const UpdateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -7798,7 +7920,8 @@ export type UpdateResponseRulesItemOverridesSteeringPolicy =
   | "proximity"
   | "least_outstanding_requests"
   | "least_connections"
-  | "";
+  | ""
+  | (string & {});
 export const UpdateResponseRulesItemOverridesSteeringPolicy =
   /*@__PURE__*/ S.String;
 
@@ -8041,7 +8164,8 @@ export type MonitorsUpdateRequestType =
   | "tcp"
   | "udp_icmp"
   | "icmp_ping"
-  | "smtp";
+  | "smtp"
+  | (string & {});
 export const MonitorsUpdateRequestType = /*@__PURE__*/ S.String;
 
 export interface UpdateMonitorRequest {
@@ -8133,7 +8257,8 @@ export type MonitorsUpdateResponseType =
   | "tcp"
   | "udp_icmp"
   | "icmp_ping"
-  | "smtp";
+  | "smtp"
+  | (string & {});
 export const MonitorsUpdateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -8395,7 +8520,8 @@ export type PoolsUpdateRequestCheckRegionsItem =
   | "SAS"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS";
+  | "ALL_REGIONS"
+  | (string & {});
 export const PoolsUpdateRequestCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PoolsUpdateRequestCheckRegionsList =
@@ -8404,11 +8530,16 @@ export const PoolsUpdateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
   PoolsUpdateRequestCheckRegionsItem,
 ) as any as S.Schema<PoolsUpdateRequestCheckRegionsList>;
 
-export type PoolsUpdateRequestLoadSheddingDefaultPolicy = "random" | "hash";
+export type PoolsUpdateRequestLoadSheddingDefaultPolicy =
+  | "random"
+  | "hash"
+  | (string & {});
 export const PoolsUpdateRequestLoadSheddingDefaultPolicy =
   /*@__PURE__*/ S.String;
 
-export type PoolsUpdateRequestLoadSheddingSessionPolicy = "hash";
+export type PoolsUpdateRequestLoadSheddingSessionPolicy =
+  | "hash"
+  | (string & {});
 export const PoolsUpdateRequestLoadSheddingSessionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -8477,7 +8608,8 @@ export type PoolsUpdateRequestOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections";
+  | "least_connections"
+  | (string & {});
 export const PoolsUpdateRequestOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsUpdateRequestOriginSteering {
@@ -8578,7 +8710,8 @@ export type PoolsUpdateResponseCheckRegionsItem =
   | "SAS"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS";
+  | "ALL_REGIONS"
+  | (string & {});
 export const PoolsUpdateResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PoolsUpdateResponseCheckRegionsList =
@@ -8587,11 +8720,16 @@ export const PoolsUpdateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   PoolsUpdateResponseCheckRegionsItem,
 ) as any as S.Schema<PoolsUpdateResponseCheckRegionsList>;
 
-export type PoolsUpdateResponseLoadSheddingDefaultPolicy = "random" | "hash";
+export type PoolsUpdateResponseLoadSheddingDefaultPolicy =
+  | "random"
+  | "hash"
+  | (string & {});
 export const PoolsUpdateResponseLoadSheddingDefaultPolicy =
   /*@__PURE__*/ S.String;
 
-export type PoolsUpdateResponseLoadSheddingSessionPolicy = "hash";
+export type PoolsUpdateResponseLoadSheddingSessionPolicy =
+  | "hash"
+  | (string & {});
 export const PoolsUpdateResponseLoadSheddingSessionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -8665,7 +8803,8 @@ export type PoolsUpdateResponseOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections";
+  | "least_connections"
+  | (string & {});
 export const PoolsUpdateResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsUpdateResponseOriginSteering {

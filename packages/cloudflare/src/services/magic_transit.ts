@@ -471,7 +471,7 @@ export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre =
   }) as any as S.Schema<CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre>;
 
 export type CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckRate =
-  "low" | "mid" | "high";
+  "low" | "mid" | "high" | (string & {});
 export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckRate =
   /*@__PURE__*/ S.String;
 
@@ -499,7 +499,7 @@ export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthChe
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
 
 export type CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckType =
-  "reply" | "request";
+  "reply" | "request" | (string & {});
 export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckType =
   /*@__PURE__*/ S.String;
 
@@ -680,7 +680,8 @@ export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp =
 export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatusState =
   | "BGP_DOWN"
   | "BGP_UP"
-  | "BGP_ESTABLISHING";
+  | "BGP_ESTABLISHING"
+  | (string & {});
 export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatusState =
   /*@__PURE__*/ S.String;
 
@@ -715,14 +716,15 @@ export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatus =
   }) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatus>;
 
 export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckDirection =
-  "unidirectional" | "bidirectional";
+  "unidirectional" | "bidirectional" | (string & {});
 export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckRate =
   | "low"
   | "mid"
-  | "high";
+  | "high"
+  | (string & {});
 export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckRate =
   /*@__PURE__*/ S.String;
 
@@ -751,7 +753,8 @@ export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget
 
 export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckType =
   | "reply"
-  | "request";
+  | "request"
+  | (string & {});
 export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckType =
   /*@__PURE__*/ S.String;
 
@@ -938,7 +941,7 @@ export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp =
   }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp>;
 
 export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatusState =
-  "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING";
+  "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING" | (string & {});
 export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatusState =
   /*@__PURE__*/ S.String;
 
@@ -989,12 +992,12 @@ export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteI
   }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities>;
 
 export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckDirection =
-  "unidirectional" | "bidirectional";
+  "unidirectional" | "bidirectional" | (string & {});
 export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckRate =
-  "low" | "mid" | "high";
+  "low" | "mid" | "high" | (string & {});
 export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckRate =
   /*@__PURE__*/ S.String;
 
@@ -1022,7 +1025,7 @@ export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTa
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
 
 export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckType =
-  "reply" | "request";
+  "reply" | "request" | (string & {});
 export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckType =
   /*@__PURE__*/ S.String;
 
@@ -1612,7 +1615,8 @@ export type Cf1SitesRampsCreateRequestBodyItemType =
   | "gre_interconnect"
   | "mpls_interconnect"
   | "mconn"
-  | "ipsec";
+  | "ipsec"
+  | (string & {});
 export const Cf1SitesRampsCreateRequestBodyItemType = /*@__PURE__*/ S.String;
 
 export interface Cf1SitesRampsCreateRequestBodyItem {
@@ -1666,7 +1670,8 @@ export type Cf1SitesRampsCreateResultItemType =
   | "gre_interconnect"
   | "mpls_interconnect"
   | "mconn"
-  | "ipsec";
+  | "ipsec"
+  | (string & {});
 export const Cf1SitesRampsCreateResultItemType = /*@__PURE__*/ S.String;
 
 export interface Cf1SitesRampsCreateResultItemGre {
@@ -1818,7 +1823,8 @@ export type ConnectorsCreateRequestInterruptWindowDaysOfWeekItem =
   | "Wednesday"
   | "Thursday"
   | "Friday"
-  | "Saturday";
+  | "Saturday"
+  | (string & {});
 export const ConnectorsCreateRequestInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
@@ -1898,7 +1904,8 @@ export type ConnectorsCreateResponseInterruptWindowDaysOfWeekItem =
   | "Wednesday"
   | "Thursday"
   | "Friday"
-  | "Saturday";
+  | "Saturday"
+  | (string & {});
 export const ConnectorsCreateResponseInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
@@ -1916,7 +1923,10 @@ export const ConnectorsCreateResponseInterruptWindowEmbargoDatesList =
     S.String,
   ) as any as S.Schema<ConnectorsCreateResponseInterruptWindowEmbargoDatesList>;
 
-export type ConnectorsCreateResponseDeviceType = "MANAGED" | "LICENSED";
+export type ConnectorsCreateResponseDeviceType =
+  | "MANAGED"
+  | "LICENSED"
+  | (string & {});
 export const ConnectorsCreateResponseDeviceType = /*@__PURE__*/ S.String;
 
 export interface ConnectorsCreateResponseDevice {
@@ -2022,11 +2032,16 @@ export const GreTunnelsCreateRequestBgp = /*@__PURE__*/ S.suspend(() =>
 
 export type GreTunnelsCreateRequestHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional";
+  | "bidirectional"
+  | (string & {});
 export const GreTunnelsCreateRequestHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
-export type GreTunnelsCreateRequestHealthCheckRate = "low" | "mid" | "high";
+export type GreTunnelsCreateRequestHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high"
+  | (string & {});
 export const GreTunnelsCreateRequestHealthCheckRate = /*@__PURE__*/ S.String;
 
 export interface GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget {
@@ -2052,7 +2067,10 @@ export type GreTunnelsCreateRequestHealthCheckTarget =
 export const GreTunnelsCreateRequestHealthCheckTarget =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
 
-export type GreTunnelsCreateRequestHealthCheckType = "reply" | "request";
+export type GreTunnelsCreateRequestHealthCheckType =
+  | "reply"
+  | "request"
+  | (string & {});
 export const GreTunnelsCreateRequestHealthCheckType = /*@__PURE__*/ S.String;
 
 export interface GreTunnelsCreateRequestHealthCheck {
@@ -2176,7 +2194,8 @@ export const GreTunnelsCreateResponseBgp = /*@__PURE__*/ S.suspend(() =>
 export type GreTunnelsCreateResponseBgpStatusState =
   | "BGP_DOWN"
   | "BGP_UP"
-  | "BGP_ESTABLISHING";
+  | "BGP_ESTABLISHING"
+  | (string & {});
 export const GreTunnelsCreateResponseBgpStatusState = /*@__PURE__*/ S.String;
 
 export interface GreTunnelsCreateResponseBgpStatus {
@@ -2208,11 +2227,16 @@ export const GreTunnelsCreateResponseBgpStatus = /*@__PURE__*/ S.suspend(() =>
 
 export type GreTunnelsCreateResponseHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional";
+  | "bidirectional"
+  | (string & {});
 export const GreTunnelsCreateResponseHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
-export type GreTunnelsCreateResponseHealthCheckRate = "low" | "mid" | "high";
+export type GreTunnelsCreateResponseHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high"
+  | (string & {});
 export const GreTunnelsCreateResponseHealthCheckRate = /*@__PURE__*/ S.String;
 
 export interface GreTunnelsCreateResponseHealthCheckTargetMagicHealthCheckTarget {
@@ -2238,7 +2262,10 @@ export type GreTunnelsCreateResponseHealthCheckTarget =
 export const GreTunnelsCreateResponseHealthCheckTarget =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
 
-export type GreTunnelsCreateResponseHealthCheckType = "reply" | "request";
+export type GreTunnelsCreateResponseHealthCheckType =
+  | "reply"
+  | "request"
+  | (string & {});
 export const GreTunnelsCreateResponseHealthCheckType = /*@__PURE__*/ S.String;
 
 export interface GreTunnelsCreateResponseHealthCheck {
@@ -2373,11 +2400,16 @@ export const IpsecTunnelsCreateRequestCustomRemoteIdentities =
 
 export type IpsecTunnelsCreateRequestHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional";
+  | "bidirectional"
+  | (string & {});
 export const IpsecTunnelsCreateRequestHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
-export type IpsecTunnelsCreateRequestHealthCheckRate = "low" | "mid" | "high";
+export type IpsecTunnelsCreateRequestHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high"
+  | (string & {});
 export const IpsecTunnelsCreateRequestHealthCheckRate = /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget {
@@ -2403,7 +2435,10 @@ export type IpsecTunnelsCreateRequestHealthCheckTarget =
 export const IpsecTunnelsCreateRequestHealthCheckTarget =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
 
-export type IpsecTunnelsCreateRequestHealthCheckType = "reply" | "request";
+export type IpsecTunnelsCreateRequestHealthCheckType =
+  | "reply"
+  | "request"
+  | (string & {});
 export const IpsecTunnelsCreateRequestHealthCheckType = /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsCreateRequestHealthCheck {
@@ -2534,7 +2569,8 @@ export const IpsecTunnelsCreateResponseBgp = /*@__PURE__*/ S.suspend(() =>
 export type IpsecTunnelsCreateResponseBgpStatusState =
   | "BGP_DOWN"
   | "BGP_UP"
-  | "BGP_ESTABLISHING";
+  | "BGP_ESTABLISHING"
+  | (string & {});
 export const IpsecTunnelsCreateResponseBgpStatusState = /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsCreateResponseBgpStatus {
@@ -2579,11 +2615,16 @@ export const IpsecTunnelsCreateResponseCustomRemoteIdentities =
 
 export type IpsecTunnelsCreateResponseHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional";
+  | "bidirectional"
+  | (string & {});
 export const IpsecTunnelsCreateResponseHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
-export type IpsecTunnelsCreateResponseHealthCheckRate = "low" | "mid" | "high";
+export type IpsecTunnelsCreateResponseHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high"
+  | (string & {});
 export const IpsecTunnelsCreateResponseHealthCheckRate = /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsCreateResponseHealthCheckTargetMagicHealthCheckTarget {
@@ -2609,7 +2650,10 @@ export type IpsecTunnelsCreateResponseHealthCheckTarget =
 export const IpsecTunnelsCreateResponseHealthCheckTarget =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
 
-export type IpsecTunnelsCreateResponseHealthCheckType = "reply" | "request";
+export type IpsecTunnelsCreateResponseHealthCheckType =
+  | "reply"
+  | "request"
+  | (string & {});
 export const IpsecTunnelsCreateResponseHealthCheckType = /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsCreateResponseHealthCheck {
@@ -2719,10 +2763,10 @@ export const CreateIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateIpsecTunnelResponse",
 }) as any as S.Schema<CreateIpsecTunnelResponse>;
 
-export type PcapsCreateRequestSystem = "magic-transit";
+export type PcapsCreateRequestSystem = "magic-transit" | (string & {});
 export const PcapsCreateRequestSystem = /*@__PURE__*/ S.String;
 
-export type PcapsCreateRequestType = "simple" | "full";
+export type PcapsCreateRequestType = "simple" | "full" | (string & {});
 export const PcapsCreateRequestType = /*@__PURE__*/ S.String;
 
 export interface PcapsCreateRequestFilterV1MagicVisibilityPCAPsPCAPsRequestSimple {
@@ -2838,13 +2882,14 @@ export type PcapsCreateResultPCAPStatus =
   | "conversion_pending"
   | "conversion_running"
   | "complete"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const PcapsCreateResultPCAPStatus = /*@__PURE__*/ S.String;
 
-export type PcapsCreateResultPCAPSystem = "magic-transit";
+export type PcapsCreateResultPCAPSystem = "magic-transit" | (string & {});
 export const PcapsCreateResultPCAPSystem = /*@__PURE__*/ S.String;
 
-export type PcapsCreateResultPCAPType = "simple" | "full";
+export type PcapsCreateResultPCAPType = "simple" | "full" | (string & {});
 export const PcapsCreateResultPCAPType = /*@__PURE__*/ S.String;
 
 export interface PcapsCreateResultPCAP {
@@ -2890,18 +2935,21 @@ export type PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullStatus =
   | "conversion_pending"
   | "conversion_running"
   | "complete"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullStatus =
   /*@__PURE__*/ S.String;
 
 export type PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullSystem =
-  "magic-transit";
+  | "magic-transit"
+  | (string & {});
 export const PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullSystem =
   /*@__PURE__*/ S.String;
 
 export type PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullType =
   | "simple"
-  | "full";
+  | "full"
+  | (string & {});
 export const PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullType =
   /*@__PURE__*/ S.String;
 
@@ -3028,7 +3076,8 @@ export const CreatePcapOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
 export type PcapsOwnershipCreateResponseStatus =
   | "pending"
   | "success"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const PcapsOwnershipCreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3334,7 +3383,11 @@ export const SitesAclsCreateRequestLan1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAclsCreateRequestLan1",
 }) as any as S.Schema<SitesAclsCreateRequestLan1>;
 
-export type SitesAclsCreateRequestProtocolsItem = "tcp" | "udp" | "icmp";
+export type SitesAclsCreateRequestProtocolsItem =
+  | "tcp"
+  | "udp"
+  | "icmp"
+  | (string & {});
 export const SitesAclsCreateRequestProtocolsItem = /*@__PURE__*/ S.String;
 
 export type SitesAclsCreateRequestProtocolsList =
@@ -3425,7 +3478,11 @@ export const SitesAclsCreateResponseLan1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAclsCreateResponseLan1",
 }) as any as S.Schema<SitesAclsCreateResponseLan1>;
 
-export type SitesAclsCreateResponseProtocolsItem = "tcp" | "udp" | "icmp";
+export type SitesAclsCreateResponseProtocolsItem =
+  | "tcp"
+  | "udp"
+  | "icmp"
+  | (string & {});
 export const SitesAclsCreateResponseProtocolsItem = /*@__PURE__*/ S.String;
 
 export type SitesAclsCreateResponseProtocolsList =
@@ -3526,7 +3583,7 @@ export const SitesLansCreateRequestStaticAddressingDhcpRelay =
   }) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpRelay>;
 
 export type SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | "byte" | "short" | "integer";
+  "text" | "hex" | "ip" | "byte" | "short" | "integer" | (string & {});
 export const SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -3754,7 +3811,7 @@ export const SitesLansCreateResultItemStaticAddressingDhcpRelay =
   }) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpRelay>;
 
 export type SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | "byte" | "short" | "integer";
+  "text" | "hex" | "ip" | "byte" | "short" | "integer" | (string & {});
 export const SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -3991,7 +4048,11 @@ export const CreateSiteWanRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSiteWanRequest",
 }) as any as S.Schema<CreateSiteWanRequest>;
 
-export type SitesWansCreateResultItemHealthCheckRate = "low" | "mid" | "high";
+export type SitesWansCreateResultItemHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high"
+  | (string & {});
 export const SitesWansCreateResultItemHealthCheckRate = /*@__PURE__*/ S.String;
 
 export interface SitesWansCreateResultItemStaticAddressing {
@@ -4240,7 +4301,8 @@ export type Cf1SitesRampsDeleteResponseType =
   | "gre_interconnect"
   | "mpls_interconnect"
   | "mconn"
-  | "ipsec";
+  | "ipsec"
+  | (string & {});
 export const Cf1SitesRampsDeleteResponseType = /*@__PURE__*/ S.String;
 
 export interface Cf1SitesRampsDeleteResponseGre {
@@ -4378,7 +4440,8 @@ export type ConnectorsDeleteResponseInterruptWindowDaysOfWeekItem =
   | "Wednesday"
   | "Thursday"
   | "Friday"
-  | "Saturday";
+  | "Saturday"
+  | (string & {});
 export const ConnectorsDeleteResponseInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
@@ -4396,7 +4459,10 @@ export const ConnectorsDeleteResponseInterruptWindowEmbargoDatesList =
     S.String,
   ) as any as S.Schema<ConnectorsDeleteResponseInterruptWindowEmbargoDatesList>;
 
-export type ConnectorsDeleteResponseDeviceType = "MANAGED" | "LICENSED";
+export type ConnectorsDeleteResponseDeviceType =
+  | "MANAGED"
+  | "LICENSED"
+  | (string & {});
 export const ConnectorsDeleteResponseDeviceType = /*@__PURE__*/ S.String;
 
 export interface ConnectorsDeleteResponseDevice {
@@ -4532,7 +4598,8 @@ export const GreTunnelsDeleteResponseDeletedGreTunnelBgp =
 export type GreTunnelsDeleteResponseDeletedGreTunnelBgpStatusState =
   | "BGP_DOWN"
   | "BGP_UP"
-  | "BGP_ESTABLISHING";
+  | "BGP_ESTABLISHING"
+  | (string & {});
 export const GreTunnelsDeleteResponseDeletedGreTunnelBgpStatusState =
   /*@__PURE__*/ S.String;
 
@@ -4568,14 +4635,16 @@ export const GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus =
 
 export type GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional";
+  | "bidirectional"
+  | (string & {});
 export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export type GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckRate =
   | "low"
   | "mid"
-  | "high";
+  | "high"
+  | (string & {});
 export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckRate =
   /*@__PURE__*/ S.String;
 
@@ -4604,7 +4673,8 @@ export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget =
 
 export type GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckType =
   | "reply"
-  | "request";
+  | "request"
+  | (string & {});
 export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckType =
   /*@__PURE__*/ S.String;
 
@@ -4785,7 +4855,8 @@ export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp =
 export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatusState =
   | "BGP_DOWN"
   | "BGP_UP"
-  | "BGP_ESTABLISHING";
+  | "BGP_ESTABLISHING"
+  | (string & {});
 export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatusState =
   /*@__PURE__*/ S.String;
 
@@ -4835,14 +4906,16 @@ export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelCustomRemoteIdentities 
 
 export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional";
+  | "bidirectional"
+  | (string & {});
 export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckRate =
   | "low"
   | "mid"
-  | "high";
+  | "high"
+  | (string & {});
 export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckRate =
   /*@__PURE__*/ S.String;
 
@@ -4871,7 +4944,8 @@ export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget =
 
 export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckType =
   | "reply"
-  | "request";
+  | "request"
+  | (string & {});
 export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckType =
   /*@__PURE__*/ S.String;
 
@@ -5296,7 +5370,11 @@ export const SitesAclsDeleteResponseLan1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAclsDeleteResponseLan1",
 }) as any as S.Schema<SitesAclsDeleteResponseLan1>;
 
-export type SitesAclsDeleteResponseProtocolsItem = "tcp" | "udp" | "icmp";
+export type SitesAclsDeleteResponseProtocolsItem =
+  | "tcp"
+  | "udp"
+  | "icmp"
+  | (string & {});
 export const SitesAclsDeleteResponseProtocolsItem = /*@__PURE__*/ S.String;
 
 export type SitesAclsDeleteResponseProtocolsList =
@@ -5423,7 +5501,7 @@ export const SitesLansDeleteResponseStaticAddressingDhcpRelay =
   }) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpRelay>;
 
 export type SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | "byte" | "short" | "integer";
+  "text" | "hex" | "ip" | "byte" | "short" | "integer" | (string & {});
 export const SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -5609,7 +5687,11 @@ export const DeleteSiteWanRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSiteWanRequest",
 }) as any as S.Schema<DeleteSiteWanRequest>;
 
-export type SitesWansDeleteResponseHealthCheckRate = "low" | "mid" | "high";
+export type SitesWansDeleteResponseHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high"
+  | (string & {});
 export const SitesWansDeleteResponseHealthCheckRate = /*@__PURE__*/ S.String;
 
 export interface SitesWansDeleteResponseStaticAddressing {
@@ -5881,7 +5963,8 @@ export type Cf1SitesRampsGetResponseType =
   | "gre_interconnect"
   | "mpls_interconnect"
   | "mconn"
-  | "ipsec";
+  | "ipsec"
+  | (string & {});
 export const Cf1SitesRampsGetResponseType = /*@__PURE__*/ S.String;
 
 export interface Cf1SitesRampsGetResponseGre {
@@ -6033,7 +6116,8 @@ export const CfInterconnectsGetResponseInterconnectGre =
 export type CfInterconnectsGetResponseInterconnectHealthCheckRate =
   | "low"
   | "mid"
-  | "high";
+  | "high"
+  | (string & {});
 export const CfInterconnectsGetResponseInterconnectHealthCheckRate =
   /*@__PURE__*/ S.String;
 
@@ -6062,7 +6146,8 @@ export const CfInterconnectsGetResponseInterconnectHealthCheckTarget =
 
 export type CfInterconnectsGetResponseInterconnectHealthCheckType =
   | "reply"
-  | "request";
+  | "request"
+  | (string & {});
 export const CfInterconnectsGetResponseInterconnectHealthCheckType =
   /*@__PURE__*/ S.String;
 
@@ -6189,7 +6274,8 @@ export type ConnectorsGetResponseInterruptWindowDaysOfWeekItem =
   | "Wednesday"
   | "Thursday"
   | "Friday"
-  | "Saturday";
+  | "Saturday"
+  | (string & {});
 export const ConnectorsGetResponseInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
@@ -6207,7 +6293,10 @@ export const ConnectorsGetResponseInterruptWindowEmbargoDatesList =
     S.String,
   ) as any as S.Schema<ConnectorsGetResponseInterruptWindowEmbargoDatesList>;
 
-export type ConnectorsGetResponseDeviceType = "MANAGED" | "LICENSED";
+export type ConnectorsGetResponseDeviceType =
+  | "MANAGED"
+  | "LICENSED"
+  | (string & {});
 export const ConnectorsGetResponseDeviceType = /*@__PURE__*/ S.String;
 
 export interface ConnectorsGetResponseDevice {
@@ -6303,7 +6392,7 @@ export const GetConnectorEventRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetConnectorEventRequest",
 }) as any as S.Schema<GetConnectorEventRequest>;
 
-export type ConnectorsEventsGetResponseEInitK = "Init";
+export type ConnectorsEventsGetResponseEInitK = "Init" | (string & {});
 export const ConnectorsEventsGetResponseEInitK = /*@__PURE__*/ S.String;
 
 export interface ConnectorsEventsGetResponseEInit {
@@ -6318,7 +6407,7 @@ export const ConnectorsEventsGetResponseEInit = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectorsEventsGetResponseEInit",
 }) as any as S.Schema<ConnectorsEventsGetResponseEInit>;
 
-export type ConnectorsEventsGetResponseELeaveK = "Leave";
+export type ConnectorsEventsGetResponseELeaveK = "Leave" | (string & {});
 export const ConnectorsEventsGetResponseELeaveK = /*@__PURE__*/ S.String;
 
 export interface ConnectorsEventsGetResponseELeave {
@@ -6333,7 +6422,9 @@ export const ConnectorsEventsGetResponseELeave = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectorsEventsGetResponseELeave",
 }) as any as S.Schema<ConnectorsEventsGetResponseELeave>;
 
-export type ConnectorsEventsGetResponseEStartAttestationK = "StartAttestation";
+export type ConnectorsEventsGetResponseEStartAttestationK =
+  | "StartAttestation"
+  | (string & {});
 export const ConnectorsEventsGetResponseEStartAttestationK =
   /*@__PURE__*/ S.String;
 
@@ -6351,7 +6442,8 @@ export const ConnectorsEventsGetResponseEStartAttestation =
   }) as any as S.Schema<ConnectorsEventsGetResponseEStartAttestation>;
 
 export type ConnectorsEventsGetResponseEFinishAttestationSuccessK =
-  "FinishAttestationSuccess";
+  | "FinishAttestationSuccess"
+  | (string & {});
 export const ConnectorsEventsGetResponseEFinishAttestationSuccessK =
   /*@__PURE__*/ S.String;
 
@@ -6369,7 +6461,8 @@ export const ConnectorsEventsGetResponseEFinishAttestationSuccess =
   }) as any as S.Schema<ConnectorsEventsGetResponseEFinishAttestationSuccess>;
 
 export type ConnectorsEventsGetResponseEFinishAttestationFailureK =
-  "FinishAttestationFailure";
+  | "FinishAttestationFailure"
+  | (string & {});
 export const ConnectorsEventsGetResponseEFinishAttestationFailureK =
   /*@__PURE__*/ S.String;
 
@@ -6387,7 +6480,8 @@ export const ConnectorsEventsGetResponseEFinishAttestationFailure =
   }) as any as S.Schema<ConnectorsEventsGetResponseEFinishAttestationFailure>;
 
 export type ConnectorsEventsGetResponseEStartRotateCryptKeyK =
-  "StartRotateCryptKey";
+  | "StartRotateCryptKey"
+  | (string & {});
 export const ConnectorsEventsGetResponseEStartRotateCryptKeyK =
   /*@__PURE__*/ S.String;
 
@@ -6405,7 +6499,8 @@ export const ConnectorsEventsGetResponseEStartRotateCryptKey =
   }) as any as S.Schema<ConnectorsEventsGetResponseEStartRotateCryptKey>;
 
 export type ConnectorsEventsGetResponseEFinishRotateCryptKeySuccessK =
-  "FinishRotateCryptKeySuccess";
+  | "FinishRotateCryptKeySuccess"
+  | (string & {});
 export const ConnectorsEventsGetResponseEFinishRotateCryptKeySuccessK =
   /*@__PURE__*/ S.String;
 
@@ -6423,7 +6518,8 @@ export const ConnectorsEventsGetResponseEFinishRotateCryptKeySuccess =
   }) as any as S.Schema<ConnectorsEventsGetResponseEFinishRotateCryptKeySuccess>;
 
 export type ConnectorsEventsGetResponseEFinishRotateCryptKeyFailureK =
-  "FinishRotateCryptKeyFailure";
+  | "FinishRotateCryptKeyFailure"
+  | (string & {});
 export const ConnectorsEventsGetResponseEFinishRotateCryptKeyFailureK =
   /*@__PURE__*/ S.String;
 
@@ -6440,7 +6536,9 @@ export const ConnectorsEventsGetResponseEFinishRotateCryptKeyFailure =
     identifier: "ConnectorsEventsGetResponseEFinishRotateCryptKeyFailure",
   }) as any as S.Schema<ConnectorsEventsGetResponseEFinishRotateCryptKeyFailure>;
 
-export type ConnectorsEventsGetResponseEStartRotatePkiK = "StartRotatePki";
+export type ConnectorsEventsGetResponseEStartRotatePkiK =
+  | "StartRotatePki"
+  | (string & {});
 export const ConnectorsEventsGetResponseEStartRotatePkiK =
   /*@__PURE__*/ S.String;
 
@@ -6458,7 +6556,8 @@ export const ConnectorsEventsGetResponseEStartRotatePki =
   }) as any as S.Schema<ConnectorsEventsGetResponseEStartRotatePki>;
 
 export type ConnectorsEventsGetResponseEFinishRotatePkiSuccessK =
-  "FinishRotatePkiSuccess";
+  | "FinishRotatePkiSuccess"
+  | (string & {});
 export const ConnectorsEventsGetResponseEFinishRotatePkiSuccessK =
   /*@__PURE__*/ S.String;
 
@@ -6476,7 +6575,8 @@ export const ConnectorsEventsGetResponseEFinishRotatePkiSuccess =
   }) as any as S.Schema<ConnectorsEventsGetResponseEFinishRotatePkiSuccess>;
 
 export type ConnectorsEventsGetResponseEFinishRotatePkiFailureK =
-  "FinishRotatePkiFailure";
+  | "FinishRotatePkiFailure"
+  | (string & {});
 export const ConnectorsEventsGetResponseEFinishRotatePkiFailureK =
   /*@__PURE__*/ S.String;
 
@@ -6493,7 +6593,9 @@ export const ConnectorsEventsGetResponseEFinishRotatePkiFailure =
     identifier: "ConnectorsEventsGetResponseEFinishRotatePkiFailure",
   }) as any as S.Schema<ConnectorsEventsGetResponseEFinishRotatePkiFailure>;
 
-export type ConnectorsEventsGetResponseEStartUpgradeK = "StartUpgrade";
+export type ConnectorsEventsGetResponseEStartUpgradeK =
+  | "StartUpgrade"
+  | (string & {});
 export const ConnectorsEventsGetResponseEStartUpgradeK = /*@__PURE__*/ S.String;
 
 export interface ConnectorsEventsGetResponseEStartUpgrade {
@@ -6513,7 +6615,8 @@ export const ConnectorsEventsGetResponseEStartUpgrade = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConnectorsEventsGetResponseEStartUpgrade>;
 
 export type ConnectorsEventsGetResponseEFinishUpgradeSuccessK =
-  "FinishUpgradeSuccess";
+  | "FinishUpgradeSuccess"
+  | (string & {});
 export const ConnectorsEventsGetResponseEFinishUpgradeSuccessK =
   /*@__PURE__*/ S.String;
 
@@ -6531,7 +6634,8 @@ export const ConnectorsEventsGetResponseEFinishUpgradeSuccess =
   }) as any as S.Schema<ConnectorsEventsGetResponseEFinishUpgradeSuccess>;
 
 export type ConnectorsEventsGetResponseEFinishUpgradeFailureK =
-  "FinishUpgradeFailure";
+  | "FinishUpgradeFailure"
+  | (string & {});
 export const ConnectorsEventsGetResponseEFinishUpgradeFailureK =
   /*@__PURE__*/ S.String;
 
@@ -6548,7 +6652,9 @@ export const ConnectorsEventsGetResponseEFinishUpgradeFailure =
     identifier: "ConnectorsEventsGetResponseEFinishUpgradeFailure",
   }) as any as S.Schema<ConnectorsEventsGetResponseEFinishUpgradeFailure>;
 
-export type ConnectorsEventsGetResponseEReconcileK = "Reconcile";
+export type ConnectorsEventsGetResponseEReconcileK =
+  | "Reconcile"
+  | (string & {});
 export const ConnectorsEventsGetResponseEReconcileK = /*@__PURE__*/ S.String;
 
 export interface ConnectorsEventsGetResponseEReconcile {
@@ -6565,7 +6671,8 @@ export const ConnectorsEventsGetResponseEReconcile = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConnectorsEventsGetResponseEReconcile>;
 
 export type ConnectorsEventsGetResponseEConfigureCloudflaredTunnelK =
-  "ConfigureCloudflaredTunnel";
+  | "ConfigureCloudflaredTunnel"
+  | (string & {});
 export const ConnectorsEventsGetResponseEConfigureCloudflaredTunnelK =
   /*@__PURE__*/ S.String;
 
@@ -6582,7 +6689,9 @@ export const ConnectorsEventsGetResponseEConfigureCloudflaredTunnel =
     identifier: "ConnectorsEventsGetResponseEConfigureCloudflaredTunnel",
   }) as any as S.Schema<ConnectorsEventsGetResponseEConfigureCloudflaredTunnel>;
 
-export type ConnectorsEventsGetResponseERekeyInstallBothK = "RekeyInstallBoth";
+export type ConnectorsEventsGetResponseERekeyInstallBothK =
+  | "RekeyInstallBoth"
+  | (string & {});
 export const ConnectorsEventsGetResponseERekeyInstallBothK =
   /*@__PURE__*/ S.String;
 
@@ -6602,7 +6711,9 @@ export const ConnectorsEventsGetResponseERekeyInstallBoth =
     identifier: "ConnectorsEventsGetResponseERekeyInstallBoth",
   }) as any as S.Schema<ConnectorsEventsGetResponseERekeyInstallBoth>;
 
-export type ConnectorsEventsGetResponseERekeyStartK = "RekeyStart";
+export type ConnectorsEventsGetResponseERekeyStartK =
+  | "RekeyStart"
+  | (string & {});
 export const ConnectorsEventsGetResponseERekeyStartK = /*@__PURE__*/ S.String;
 
 export interface ConnectorsEventsGetResponseERekeyStart {
@@ -6621,7 +6732,9 @@ export const ConnectorsEventsGetResponseERekeyStart = /*@__PURE__*/ S.suspend(
   identifier: "ConnectorsEventsGetResponseERekeyStart",
 }) as any as S.Schema<ConnectorsEventsGetResponseERekeyStart>;
 
-export type ConnectorsEventsGetResponseERekeyAdvanceK = "RekeyAdvance";
+export type ConnectorsEventsGetResponseERekeyAdvanceK =
+  | "RekeyAdvance"
+  | (string & {});
 export const ConnectorsEventsGetResponseERekeyAdvanceK = /*@__PURE__*/ S.String;
 
 export interface ConnectorsEventsGetResponseERekeyAdvance {
@@ -6640,7 +6753,9 @@ export const ConnectorsEventsGetResponseERekeyAdvance = /*@__PURE__*/ S.suspend(
   identifier: "ConnectorsEventsGetResponseERekeyAdvance",
 }) as any as S.Schema<ConnectorsEventsGetResponseERekeyAdvance>;
 
-export type ConnectorsEventsGetResponseERekeyCompleteK = "RekeyComplete";
+export type ConnectorsEventsGetResponseERekeyCompleteK =
+  | "RekeyComplete"
+  | (string & {});
 export const ConnectorsEventsGetResponseERekeyCompleteK =
   /*@__PURE__*/ S.String;
 
@@ -6660,7 +6775,9 @@ export const ConnectorsEventsGetResponseERekeyComplete =
     identifier: "ConnectorsEventsGetResponseERekeyComplete",
   }) as any as S.Schema<ConnectorsEventsGetResponseERekeyComplete>;
 
-export type ConnectorsEventsGetResponseERekeyResetK = "RekeyReset";
+export type ConnectorsEventsGetResponseERekeyResetK =
+  | "RekeyReset"
+  | (string & {});
 export const ConnectorsEventsGetResponseERekeyResetK = /*@__PURE__*/ S.String;
 
 export interface ConnectorsEventsGetResponseERekeyReset {
@@ -7933,7 +8050,8 @@ export const GreTunnelsGetResponseGreTunnelBgp = /*@__PURE__*/ S.suspend(() =>
 export type GreTunnelsGetResponseGreTunnelBgpStatusState =
   | "BGP_DOWN"
   | "BGP_UP"
-  | "BGP_ESTABLISHING";
+  | "BGP_ESTABLISHING"
+  | (string & {});
 export const GreTunnelsGetResponseGreTunnelBgpStatusState =
   /*@__PURE__*/ S.String;
 
@@ -7969,14 +8087,16 @@ export const GreTunnelsGetResponseGreTunnelBgpStatus = /*@__PURE__*/ S.suspend(
 
 export type GreTunnelsGetResponseGreTunnelHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional";
+  | "bidirectional"
+  | (string & {});
 export const GreTunnelsGetResponseGreTunnelHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export type GreTunnelsGetResponseGreTunnelHealthCheckRate =
   | "low"
   | "mid"
-  | "high";
+  | "high"
+  | (string & {});
 export const GreTunnelsGetResponseGreTunnelHealthCheckRate =
   /*@__PURE__*/ S.String;
 
@@ -8003,7 +8123,10 @@ export type GreTunnelsGetResponseGreTunnelHealthCheckTarget =
 export const GreTunnelsGetResponseGreTunnelHealthCheckTarget =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
 
-export type GreTunnelsGetResponseGreTunnelHealthCheckType = "reply" | "request";
+export type GreTunnelsGetResponseGreTunnelHealthCheckType =
+  | "reply"
+  | "request"
+  | (string & {});
 export const GreTunnelsGetResponseGreTunnelHealthCheckType =
   /*@__PURE__*/ S.String;
 
@@ -8169,7 +8292,8 @@ export const IpsecTunnelsGetResponseIpsecTunnelBgp = /*@__PURE__*/ S.suspend(
 export type IpsecTunnelsGetResponseIpsecTunnelBgpStatusState =
   | "BGP_DOWN"
   | "BGP_UP"
-  | "BGP_ESTABLISHING";
+  | "BGP_ESTABLISHING"
+  | (string & {});
 export const IpsecTunnelsGetResponseIpsecTunnelBgpStatusState =
   /*@__PURE__*/ S.String;
 
@@ -8218,14 +8342,16 @@ export const IpsecTunnelsGetResponseIpsecTunnelCustomRemoteIdentities =
 
 export type IpsecTunnelsGetResponseIpsecTunnelHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional";
+  | "bidirectional"
+  | (string & {});
 export const IpsecTunnelsGetResponseIpsecTunnelHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export type IpsecTunnelsGetResponseIpsecTunnelHealthCheckRate =
   | "low"
   | "mid"
-  | "high";
+  | "high"
+  | (string & {});
 export const IpsecTunnelsGetResponseIpsecTunnelHealthCheckRate =
   /*@__PURE__*/ S.String;
 
@@ -8254,7 +8380,8 @@ export const IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget =
 
 export type IpsecTunnelsGetResponseIpsecTunnelHealthCheckType =
   | "reply"
-  | "request";
+  | "request"
+  | (string & {});
 export const IpsecTunnelsGetResponseIpsecTunnelHealthCheckType =
   /*@__PURE__*/ S.String;
 
@@ -8439,13 +8566,14 @@ export type PcapsGetResultPCAPStatus =
   | "conversion_pending"
   | "conversion_running"
   | "complete"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const PcapsGetResultPCAPStatus = /*@__PURE__*/ S.String;
 
-export type PcapsGetResultPCAPSystem = "magic-transit";
+export type PcapsGetResultPCAPSystem = "magic-transit" | (string & {});
 export const PcapsGetResultPCAPSystem = /*@__PURE__*/ S.String;
 
-export type PcapsGetResultPCAPType = "simple" | "full";
+export type PcapsGetResultPCAPType = "simple" | "full" | (string & {});
 export const PcapsGetResultPCAPType = /*@__PURE__*/ S.String;
 
 export interface PcapsGetResultPCAP {
@@ -8489,18 +8617,21 @@ export type PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullStatus =
   | "conversion_pending"
   | "conversion_running"
   | "complete"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullStatus =
   /*@__PURE__*/ S.String;
 
 export type PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullSystem =
-  "magic-transit";
+  | "magic-transit"
+  | (string & {});
 export const PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullSystem =
   /*@__PURE__*/ S.String;
 
 export type PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullType =
   | "simple"
-  | "full";
+  | "full"
+  | (string & {});
 export const PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullType =
   /*@__PURE__*/ S.String;
 
@@ -8652,7 +8783,8 @@ export const GetPcapOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
 export type PcapsOwnershipGetResultItemStatus =
   | "pending"
   | "success"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const PcapsOwnershipGetResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface PcapsOwnershipGetResultItem {
@@ -8942,7 +9074,11 @@ export const SitesAclsGetResponseLan1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAclsGetResponseLan1",
 }) as any as S.Schema<SitesAclsGetResponseLan1>;
 
-export type SitesAclsGetResponseProtocolsItem = "tcp" | "udp" | "icmp";
+export type SitesAclsGetResponseProtocolsItem =
+  | "tcp"
+  | "udp"
+  | "icmp"
+  | (string & {});
 export const SitesAclsGetResponseProtocolsItem = /*@__PURE__*/ S.String;
 
 export type SitesAclsGetResponseProtocolsList =
@@ -9074,7 +9210,8 @@ export type SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItemType =
   | "ip"
   | "byte"
   | "short"
-  | "integer";
+  | "integer"
+  | (string & {});
 export const SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -9259,7 +9396,11 @@ export const GetSiteWanRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSiteWanRequest",
 }) as any as S.Schema<GetSiteWanRequest>;
 
-export type SitesWansGetResponseHealthCheckRate = "low" | "mid" | "high";
+export type SitesWansGetResponseHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high"
+  | (string & {});
 export const SitesWansGetResponseHealthCheckRate = /*@__PURE__*/ S.String;
 
 export interface SitesWansGetResponseStaticAddressing {
@@ -9503,7 +9644,8 @@ export type Cf1SitesRampsListResultItemType =
   | "gre_interconnect"
   | "mpls_interconnect"
   | "mconn"
-  | "ipsec";
+  | "ipsec"
+  | (string & {});
 export const Cf1SitesRampsListResultItemType = /*@__PURE__*/ S.String;
 
 export interface Cf1SitesRampsListResultItemGre {
@@ -9756,7 +9898,8 @@ export const CfInterconnectsListResponseInterconnectsItemGre =
 export type CfInterconnectsListResponseInterconnectsItemHealthCheckRate =
   | "low"
   | "mid"
-  | "high";
+  | "high"
+  | (string & {});
 export const CfInterconnectsListResponseInterconnectsItemHealthCheckRate =
   /*@__PURE__*/ S.String;
 
@@ -9785,7 +9928,8 @@ export const CfInterconnectsListResponseInterconnectsItemHealthCheckTarget =
 
 export type CfInterconnectsListResponseInterconnectsItemHealthCheckType =
   | "reply"
-  | "request";
+  | "request"
+  | (string & {});
 export const CfInterconnectsListResponseInterconnectsItemHealthCheckType =
   /*@__PURE__*/ S.String;
 
@@ -9916,7 +10060,9 @@ export const ListConnectorEventLatestsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListConnectorEventLatestsRequest",
 }) as any as S.Schema<ListConnectorEventLatestsRequest>;
 
-export type ConnectorsEventsLatestListResponseItemsItemEInitK = "Init";
+export type ConnectorsEventsLatestListResponseItemsItemEInitK =
+  | "Init"
+  | (string & {});
 export const ConnectorsEventsLatestListResponseItemsItemEInitK =
   /*@__PURE__*/ S.String;
 
@@ -9933,7 +10079,9 @@ export const ConnectorsEventsLatestListResponseItemsItemEInit =
     identifier: "ConnectorsEventsLatestListResponseItemsItemEInit",
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEInit>;
 
-export type ConnectorsEventsLatestListResponseItemsItemELeaveK = "Leave";
+export type ConnectorsEventsLatestListResponseItemsItemELeaveK =
+  | "Leave"
+  | (string & {});
 export const ConnectorsEventsLatestListResponseItemsItemELeaveK =
   /*@__PURE__*/ S.String;
 
@@ -9951,7 +10099,8 @@ export const ConnectorsEventsLatestListResponseItemsItemELeave =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemELeave>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEStartAttestationK =
-  "StartAttestation";
+  | "StartAttestation"
+  | (string & {});
 export const ConnectorsEventsLatestListResponseItemsItemEStartAttestationK =
   /*@__PURE__*/ S.String;
 
@@ -9969,7 +10118,7 @@ export const ConnectorsEventsLatestListResponseItemsItemEStartAttestation =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEStartAttestation>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccessK =
-  "FinishAttestationSuccess";
+  "FinishAttestationSuccess" | (string & {});
 export const ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccessK =
   /*@__PURE__*/ S.String;
 
@@ -9988,7 +10137,7 @@ export const ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSucces
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccess>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailureK =
-  "FinishAttestationFailure";
+  "FinishAttestationFailure" | (string & {});
 export const ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailureK =
   /*@__PURE__*/ S.String;
 
@@ -10007,7 +10156,8 @@ export const ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailur
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailure>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKeyK =
-  "StartRotateCryptKey";
+  | "StartRotateCryptKey"
+  | (string & {});
 export const ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKeyK =
   /*@__PURE__*/ S.String;
 
@@ -10026,7 +10176,7 @@ export const ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKey =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKey>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccessK =
-  "FinishRotateCryptKeySuccess";
+  "FinishRotateCryptKeySuccess" | (string & {});
 export const ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccessK =
   /*@__PURE__*/ S.String;
 
@@ -10045,7 +10195,7 @@ export const ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuc
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccess>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailureK =
-  "FinishRotateCryptKeyFailure";
+  "FinishRotateCryptKeyFailure" | (string & {});
 export const ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailureK =
   /*@__PURE__*/ S.String;
 
@@ -10064,7 +10214,8 @@ export const ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFai
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailure>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEStartRotatePkiK =
-  "StartRotatePki";
+  | "StartRotatePki"
+  | (string & {});
 export const ConnectorsEventsLatestListResponseItemsItemEStartRotatePkiK =
   /*@__PURE__*/ S.String;
 
@@ -10082,7 +10233,7 @@ export const ConnectorsEventsLatestListResponseItemsItemEStartRotatePki =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEStartRotatePki>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccessK =
-  "FinishRotatePkiSuccess";
+  "FinishRotatePkiSuccess" | (string & {});
 export const ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccessK =
   /*@__PURE__*/ S.String;
 
@@ -10101,7 +10252,7 @@ export const ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccess 
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccess>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailureK =
-  "FinishRotatePkiFailure";
+  "FinishRotatePkiFailure" | (string & {});
 export const ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailureK =
   /*@__PURE__*/ S.String;
 
@@ -10120,7 +10271,8 @@ export const ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailure 
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailure>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEStartUpgradeK =
-  "StartUpgrade";
+  | "StartUpgrade"
+  | (string & {});
 export const ConnectorsEventsLatestListResponseItemsItemEStartUpgradeK =
   /*@__PURE__*/ S.String;
 
@@ -10141,7 +10293,8 @@ export const ConnectorsEventsLatestListResponseItemsItemEStartUpgrade =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEStartUpgrade>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccessK =
-  "FinishUpgradeSuccess";
+  | "FinishUpgradeSuccess"
+  | (string & {});
 export const ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccessK =
   /*@__PURE__*/ S.String;
 
@@ -10160,7 +10313,8 @@ export const ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccess =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccess>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailureK =
-  "FinishUpgradeFailure";
+  | "FinishUpgradeFailure"
+  | (string & {});
 export const ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailureK =
   /*@__PURE__*/ S.String;
 
@@ -10179,7 +10333,8 @@ export const ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailure =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailure>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEReconcileK =
-  "Reconcile";
+  | "Reconcile"
+  | (string & {});
 export const ConnectorsEventsLatestListResponseItemsItemEReconcileK =
   /*@__PURE__*/ S.String;
 
@@ -10197,7 +10352,7 @@ export const ConnectorsEventsLatestListResponseItemsItemEReconcile =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEReconcile>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnelK =
-  "ConfigureCloudflaredTunnel";
+  "ConfigureCloudflaredTunnel" | (string & {});
 export const ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnelK =
   /*@__PURE__*/ S.String;
 
@@ -10216,7 +10371,8 @@ export const ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTun
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnel>;
 
 export type ConnectorsEventsLatestListResponseItemsItemERekeyInstallBothK =
-  "RekeyInstallBoth";
+  | "RekeyInstallBoth"
+  | (string & {});
 export const ConnectorsEventsLatestListResponseItemsItemERekeyInstallBothK =
   /*@__PURE__*/ S.String;
 
@@ -10237,7 +10393,8 @@ export const ConnectorsEventsLatestListResponseItemsItemERekeyInstallBoth =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemERekeyInstallBoth>;
 
 export type ConnectorsEventsLatestListResponseItemsItemERekeyStartK =
-  "RekeyStart";
+  | "RekeyStart"
+  | (string & {});
 export const ConnectorsEventsLatestListResponseItemsItemERekeyStartK =
   /*@__PURE__*/ S.String;
 
@@ -10258,7 +10415,8 @@ export const ConnectorsEventsLatestListResponseItemsItemERekeyStart =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemERekeyStart>;
 
 export type ConnectorsEventsLatestListResponseItemsItemERekeyAdvanceK =
-  "RekeyAdvance";
+  | "RekeyAdvance"
+  | (string & {});
 export const ConnectorsEventsLatestListResponseItemsItemERekeyAdvanceK =
   /*@__PURE__*/ S.String;
 
@@ -10279,7 +10437,8 @@ export const ConnectorsEventsLatestListResponseItemsItemERekeyAdvance =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemERekeyAdvance>;
 
 export type ConnectorsEventsLatestListResponseItemsItemERekeyCompleteK =
-  "RekeyComplete";
+  | "RekeyComplete"
+  | (string & {});
 export const ConnectorsEventsLatestListResponseItemsItemERekeyCompleteK =
   /*@__PURE__*/ S.String;
 
@@ -10300,7 +10459,8 @@ export const ConnectorsEventsLatestListResponseItemsItemERekeyComplete =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemERekeyComplete>;
 
 export type ConnectorsEventsLatestListResponseItemsItemERekeyResetK =
-  "RekeyReset";
+  | "RekeyReset"
+  | (string & {});
 export const ConnectorsEventsLatestListResponseItemsItemERekeyResetK =
   /*@__PURE__*/ S.String;
 
@@ -10488,7 +10648,10 @@ export const ListConnectorEventsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListConnectorEventsResponse",
 }) as any as S.Schema<ListConnectorEventsResponse>;
 
-export type ConnectorsListRequestDeviceType = "MANAGED" | "LICENSED";
+export type ConnectorsListRequestDeviceType =
+  | "MANAGED"
+  | "LICENSED"
+  | (string & {});
 export const ConnectorsListRequestDeviceType = /*@__PURE__*/ S.String;
 
 export interface ListConnectorsRequest {
@@ -10523,7 +10686,8 @@ export type ConnectorsListResultItemInterruptWindowDaysOfWeekItem =
   | "Wednesday"
   | "Thursday"
   | "Friday"
-  | "Saturday";
+  | "Saturday"
+  | (string & {});
 export const ConnectorsListResultItemInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
@@ -10541,7 +10705,10 @@ export const ConnectorsListResultItemInterruptWindowEmbargoDatesList =
     S.String,
   ) as any as S.Schema<ConnectorsListResultItemInterruptWindowEmbargoDatesList>;
 
-export type ConnectorsListResultItemDeviceType = "MANAGED" | "LICENSED";
+export type ConnectorsListResultItemDeviceType =
+  | "MANAGED"
+  | "LICENSED"
+  | (string & {});
 export const ConnectorsListResultItemDeviceType = /*@__PURE__*/ S.String;
 
 export interface ConnectorsListResultItemDevice {
@@ -11954,7 +12121,8 @@ export const GreTunnelsListResponseGreTunnelsItemBgp = /*@__PURE__*/ S.suspend(
 export type GreTunnelsListResponseGreTunnelsItemBgpStatusState =
   | "BGP_DOWN"
   | "BGP_UP"
-  | "BGP_ESTABLISHING";
+  | "BGP_ESTABLISHING"
+  | (string & {});
 export const GreTunnelsListResponseGreTunnelsItemBgpStatusState =
   /*@__PURE__*/ S.String;
 
@@ -11990,14 +12158,16 @@ export const GreTunnelsListResponseGreTunnelsItemBgpStatus =
 
 export type GreTunnelsListResponseGreTunnelsItemHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional";
+  | "bidirectional"
+  | (string & {});
 export const GreTunnelsListResponseGreTunnelsItemHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export type GreTunnelsListResponseGreTunnelsItemHealthCheckRate =
   | "low"
   | "mid"
-  | "high";
+  | "high"
+  | (string & {});
 export const GreTunnelsListResponseGreTunnelsItemHealthCheckRate =
   /*@__PURE__*/ S.String;
 
@@ -12026,7 +12196,8 @@ export const GreTunnelsListResponseGreTunnelsItemHealthCheckTarget =
 
 export type GreTunnelsListResponseGreTunnelsItemHealthCheckType =
   | "reply"
-  | "request";
+  | "request"
+  | (string & {});
 export const GreTunnelsListResponseGreTunnelsItemHealthCheckType =
   /*@__PURE__*/ S.String;
 
@@ -12204,7 +12375,8 @@ export const IpsecTunnelsListResponseIpsecTunnelsItemBgp =
 export type IpsecTunnelsListResponseIpsecTunnelsItemBgpStatusState =
   | "BGP_DOWN"
   | "BGP_UP"
-  | "BGP_ESTABLISHING";
+  | "BGP_ESTABLISHING"
+  | (string & {});
 export const IpsecTunnelsListResponseIpsecTunnelsItemBgpStatusState =
   /*@__PURE__*/ S.String;
 
@@ -12254,14 +12426,16 @@ export const IpsecTunnelsListResponseIpsecTunnelsItemCustomRemoteIdentities =
 
 export type IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional";
+  | "bidirectional"
+  | (string & {});
 export const IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export type IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckRate =
   | "low"
   | "mid"
-  | "high";
+  | "high"
+  | (string & {});
 export const IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckRate =
   /*@__PURE__*/ S.String;
 
@@ -12290,7 +12464,8 @@ export const IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTarget =
 
 export type IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckType =
   | "reply"
-  | "request";
+  | "request"
+  | (string & {});
 export const IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckType =
   /*@__PURE__*/ S.String;
 
@@ -12483,13 +12658,14 @@ export type PcapsListResultItemPCAPStatus =
   | "conversion_pending"
   | "conversion_running"
   | "complete"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const PcapsListResultItemPCAPStatus = /*@__PURE__*/ S.String;
 
-export type PcapsListResultItemPCAPSystem = "magic-transit";
+export type PcapsListResultItemPCAPSystem = "magic-transit" | (string & {});
 export const PcapsListResultItemPCAPSystem = /*@__PURE__*/ S.String;
 
-export type PcapsListResultItemPCAPType = "simple" | "full";
+export type PcapsListResultItemPCAPType = "simple" | "full" | (string & {});
 export const PcapsListResultItemPCAPType = /*@__PURE__*/ S.String;
 
 export interface PcapsListResultItemPCAP {
@@ -12535,18 +12711,21 @@ export type PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullStatus =
   | "conversion_pending"
   | "conversion_running"
   | "complete"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullStatus =
   /*@__PURE__*/ S.String;
 
 export type PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullSystem =
-  "magic-transit";
+  | "magic-transit"
+  | (string & {});
 export const PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullSystem =
   /*@__PURE__*/ S.String;
 
 export type PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullType =
   | "simple"
-  | "full";
+  | "full"
+  | (string & {});
 export const PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullType =
   /*@__PURE__*/ S.String;
 
@@ -12833,7 +13012,11 @@ export const SitesAclsListResultItemLan1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAclsListResultItemLan1",
 }) as any as S.Schema<SitesAclsListResultItemLan1>;
 
-export type SitesAclsListResultItemProtocolsItem = "tcp" | "udp" | "icmp";
+export type SitesAclsListResultItemProtocolsItem =
+  | "tcp"
+  | "udp"
+  | "icmp"
+  | (string & {});
 export const SitesAclsListResultItemProtocolsItem = /*@__PURE__*/ S.String;
 
 export type SitesAclsListResultItemProtocolsList =
@@ -12976,7 +13159,7 @@ export const SitesLansListResultItemStaticAddressingDhcpRelay =
   }) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpRelay>;
 
 export type SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | "byte" | "short" | "integer";
+  "text" | "hex" | "ip" | "byte" | "short" | "integer" | (string & {});
 export const SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -13267,7 +13450,11 @@ export const ListSiteWansRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSiteWansRequest",
 }) as any as S.Schema<ListSiteWansRequest>;
 
-export type SitesWansListResultItemHealthCheckRate = "low" | "mid" | "high";
+export type SitesWansListResultItemHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high"
+  | (string & {});
 export const SitesWansListResultItemHealthCheckRate = /*@__PURE__*/ S.String;
 
 export interface SitesWansListResultItemStaticAddressing {
@@ -13547,7 +13734,8 @@ export type ConnectorsEditRequestInterruptWindowDaysOfWeekItem =
   | "Wednesday"
   | "Thursday"
   | "Friday"
-  | "Saturday";
+  | "Saturday"
+  | (string & {});
 export const ConnectorsEditRequestInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
@@ -13629,7 +13817,8 @@ export type ConnectorsEditResponseInterruptWindowDaysOfWeekItem =
   | "Wednesday"
   | "Thursday"
   | "Friday"
-  | "Saturday";
+  | "Saturday"
+  | (string & {});
 export const ConnectorsEditResponseInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
@@ -13647,7 +13836,10 @@ export const ConnectorsEditResponseInterruptWindowEmbargoDatesList =
     S.String,
   ) as any as S.Schema<ConnectorsEditResponseInterruptWindowEmbargoDatesList>;
 
-export type ConnectorsEditResponseDeviceType = "MANAGED" | "LICENSED";
+export type ConnectorsEditResponseDeviceType =
+  | "MANAGED"
+  | "LICENSED"
+  | (string & {});
 export const ConnectorsEditResponseDeviceType = /*@__PURE__*/ S.String;
 
 export interface ConnectorsEditResponseDevice {
@@ -13859,7 +14051,11 @@ export const SitesAclsEditRequestLan1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAclsEditRequestLan1",
 }) as any as S.Schema<SitesAclsEditRequestLan1>;
 
-export type SitesAclsEditRequestProtocolsItem = "tcp" | "udp" | "icmp";
+export type SitesAclsEditRequestProtocolsItem =
+  | "tcp"
+  | "udp"
+  | "icmp"
+  | (string & {});
 export const SitesAclsEditRequestProtocolsItem = /*@__PURE__*/ S.String;
 
 export type SitesAclsEditRequestProtocolsList =
@@ -13953,7 +14149,11 @@ export const SitesAclsEditResponseLan1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAclsEditResponseLan1",
 }) as any as S.Schema<SitesAclsEditResponseLan1>;
 
-export type SitesAclsEditResponseProtocolsItem = "tcp" | "udp" | "icmp";
+export type SitesAclsEditResponseProtocolsItem =
+  | "tcp"
+  | "udp"
+  | "icmp"
+  | (string & {});
 export const SitesAclsEditResponseProtocolsItem = /*@__PURE__*/ S.String;
 
 export type SitesAclsEditResponseProtocolsList =
@@ -14059,7 +14259,8 @@ export type SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItemType =
   | "ip"
   | "byte"
   | "short"
-  | "integer";
+  | "integer"
+  | (string & {});
 export const SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -14286,7 +14487,7 @@ export const SitesLansEditResponseStaticAddressingDhcpRelay =
   }) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpRelay>;
 
 export type SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | "byte" | "short" | "integer";
+  "text" | "hex" | "ip" | "byte" | "short" | "integer" | (string & {});
 export const SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -14505,7 +14706,11 @@ export const PatchSiteWanRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchSiteWanRequest",
 }) as any as S.Schema<PatchSiteWanRequest>;
 
-export type SitesWansEditResponseHealthCheckRate = "low" | "mid" | "high";
+export type SitesWansEditResponseHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high"
+  | (string & {});
 export const SitesWansEditResponseHealthCheckRate = /*@__PURE__*/ S.String;
 
 export interface SitesWansEditResponseStaticAddressing {
@@ -14765,7 +14970,8 @@ export const CfInterconnectsUpdateRequestGre = /*@__PURE__*/ S.suspend(() =>
 export type CfInterconnectsUpdateRequestHealthCheckRate =
   | "low"
   | "mid"
-  | "high";
+  | "high"
+  | (string & {});
 export const CfInterconnectsUpdateRequestHealthCheckRate =
   /*@__PURE__*/ S.String;
 
@@ -14792,7 +14998,10 @@ export type CfInterconnectsUpdateRequestHealthCheckTarget =
 export const CfInterconnectsUpdateRequestHealthCheckTarget =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
 
-export type CfInterconnectsUpdateRequestHealthCheckType = "reply" | "request";
+export type CfInterconnectsUpdateRequestHealthCheckType =
+  | "reply"
+  | "request"
+  | (string & {});
 export const CfInterconnectsUpdateRequestHealthCheckType =
   /*@__PURE__*/ S.String;
 
@@ -14890,7 +15099,8 @@ export const CfInterconnectsUpdateResponseModifiedInterconnectGre =
 export type CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckRate =
   | "low"
   | "mid"
-  | "high";
+  | "high"
+  | (string & {});
 export const CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckRate =
   /*@__PURE__*/ S.String;
 
@@ -14919,7 +15129,8 @@ export const CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget 
 
 export type CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckType =
   | "reply"
-  | "request";
+  | "request"
+  | (string & {});
 export const CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckType =
   /*@__PURE__*/ S.String;
 
@@ -15855,7 +16066,8 @@ export type ConnectorsUpdateRequestInterruptWindowDaysOfWeekItem =
   | "Wednesday"
   | "Thursday"
   | "Friday"
-  | "Saturday";
+  | "Saturday"
+  | (string & {});
 export const ConnectorsUpdateRequestInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
@@ -15937,7 +16149,8 @@ export type ConnectorsUpdateResponseInterruptWindowDaysOfWeekItem =
   | "Wednesday"
   | "Thursday"
   | "Friday"
-  | "Saturday";
+  | "Saturday"
+  | (string & {});
 export const ConnectorsUpdateResponseInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
@@ -15955,7 +16168,10 @@ export const ConnectorsUpdateResponseInterruptWindowEmbargoDatesList =
     S.String,
   ) as any as S.Schema<ConnectorsUpdateResponseInterruptWindowEmbargoDatesList>;
 
-export type ConnectorsUpdateResponseDeviceType = "MANAGED" | "LICENSED";
+export type ConnectorsUpdateResponseDeviceType =
+  | "MANAGED"
+  | "LICENSED"
+  | (string & {});
 export const ConnectorsUpdateResponseDeviceType = /*@__PURE__*/ S.String;
 
 export interface ConnectorsUpdateResponseDevice {
@@ -16027,11 +16243,16 @@ export const UpdateConnectorResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type GreTunnelsUpdateRequestHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional";
+  | "bidirectional"
+  | (string & {});
 export const GreTunnelsUpdateRequestHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
-export type GreTunnelsUpdateRequestHealthCheckRate = "low" | "mid" | "high";
+export type GreTunnelsUpdateRequestHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high"
+  | (string & {});
 export const GreTunnelsUpdateRequestHealthCheckRate = /*@__PURE__*/ S.String;
 
 export interface GreTunnelsUpdateRequestHealthCheckTargetMagicHealthCheckTarget {
@@ -16057,7 +16278,10 @@ export type GreTunnelsUpdateRequestHealthCheckTarget =
 export const GreTunnelsUpdateRequestHealthCheckTarget =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
 
-export type GreTunnelsUpdateRequestHealthCheckType = "reply" | "request";
+export type GreTunnelsUpdateRequestHealthCheckType =
+  | "reply"
+  | "request"
+  | (string & {});
 export const GreTunnelsUpdateRequestHealthCheckType = /*@__PURE__*/ S.String;
 
 export interface GreTunnelsUpdateRequestHealthCheck {
@@ -16183,7 +16407,8 @@ export const GreTunnelsUpdateResponseModifiedGreTunnelBgp =
 export type GreTunnelsUpdateResponseModifiedGreTunnelBgpStatusState =
   | "BGP_DOWN"
   | "BGP_UP"
-  | "BGP_ESTABLISHING";
+  | "BGP_ESTABLISHING"
+  | (string & {});
 export const GreTunnelsUpdateResponseModifiedGreTunnelBgpStatusState =
   /*@__PURE__*/ S.String;
 
@@ -16219,14 +16444,16 @@ export const GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus =
 
 export type GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional";
+  | "bidirectional"
+  | (string & {});
 export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export type GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckRate =
   | "low"
   | "mid"
-  | "high";
+  | "high"
+  | (string & {});
 export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckRate =
   /*@__PURE__*/ S.String;
 
@@ -16255,7 +16482,8 @@ export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget =
 
 export type GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckType =
   | "reply"
-  | "request";
+  | "request"
+  | (string & {});
 export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckType =
   /*@__PURE__*/ S.String;
 
@@ -16424,11 +16652,16 @@ export const IpsecTunnelsUpdateRequestCustomRemoteIdentities =
 
 export type IpsecTunnelsUpdateRequestHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional";
+  | "bidirectional"
+  | (string & {});
 export const IpsecTunnelsUpdateRequestHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
-export type IpsecTunnelsUpdateRequestHealthCheckRate = "low" | "mid" | "high";
+export type IpsecTunnelsUpdateRequestHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high"
+  | (string & {});
 export const IpsecTunnelsUpdateRequestHealthCheckRate = /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsUpdateRequestHealthCheckTargetMagicHealthCheckTarget {
@@ -16454,7 +16687,10 @@ export type IpsecTunnelsUpdateRequestHealthCheckTarget =
 export const IpsecTunnelsUpdateRequestHealthCheckTarget =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
 
-export type IpsecTunnelsUpdateRequestHealthCheckType = "reply" | "request";
+export type IpsecTunnelsUpdateRequestHealthCheckType =
+  | "reply"
+  | "request"
+  | (string & {});
 export const IpsecTunnelsUpdateRequestHealthCheckType = /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsUpdateRequestHealthCheck {
@@ -16589,7 +16825,8 @@ export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp =
 export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatusState =
   | "BGP_DOWN"
   | "BGP_UP"
-  | "BGP_ESTABLISHING";
+  | "BGP_ESTABLISHING"
+  | (string & {});
 export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatusState =
   /*@__PURE__*/ S.String;
 
@@ -16639,14 +16876,16 @@ export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelCustomRemoteIdentities
 
 export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional";
+  | "bidirectional"
+  | (string & {});
 export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckRate =
   | "low"
   | "mid"
-  | "high";
+  | "high"
+  | (string & {});
 export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckRate =
   /*@__PURE__*/ S.String;
 
@@ -16675,7 +16914,8 @@ export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget =
 
 export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckType =
   | "reply"
-  | "request";
+  | "request"
+  | (string & {});
 export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckType =
   /*@__PURE__*/ S.String;
 
@@ -17122,7 +17362,11 @@ export const SitesAclsUpdateRequestLan1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAclsUpdateRequestLan1",
 }) as any as S.Schema<SitesAclsUpdateRequestLan1>;
 
-export type SitesAclsUpdateRequestProtocolsItem = "tcp" | "udp" | "icmp";
+export type SitesAclsUpdateRequestProtocolsItem =
+  | "tcp"
+  | "udp"
+  | "icmp"
+  | (string & {});
 export const SitesAclsUpdateRequestProtocolsItem = /*@__PURE__*/ S.String;
 
 export type SitesAclsUpdateRequestProtocolsList =
@@ -17216,7 +17460,11 @@ export const SitesAclsUpdateResponseLan1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAclsUpdateResponseLan1",
 }) as any as S.Schema<SitesAclsUpdateResponseLan1>;
 
-export type SitesAclsUpdateResponseProtocolsItem = "tcp" | "udp" | "icmp";
+export type SitesAclsUpdateResponseProtocolsItem =
+  | "tcp"
+  | "udp"
+  | "icmp"
+  | (string & {});
 export const SitesAclsUpdateResponseProtocolsItem = /*@__PURE__*/ S.String;
 
 export type SitesAclsUpdateResponseProtocolsList =
@@ -17317,7 +17565,7 @@ export const SitesLansUpdateRequestStaticAddressingDhcpRelay =
   }) as any as S.Schema<SitesLansUpdateRequestStaticAddressingDhcpRelay>;
 
 export type SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | "byte" | "short" | "integer";
+  "text" | "hex" | "ip" | "byte" | "short" | "integer" | (string & {});
 export const SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -17545,7 +17793,7 @@ export const SitesLansUpdateResponseStaticAddressingDhcpRelay =
   }) as any as S.Schema<SitesLansUpdateResponseStaticAddressingDhcpRelay>;
 
 export type SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | "byte" | "short" | "integer";
+  "text" | "hex" | "ip" | "byte" | "short" | "integer" | (string & {});
 export const SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -17764,7 +18012,11 @@ export const UpdateSiteWanRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSiteWanRequest",
 }) as any as S.Schema<UpdateSiteWanRequest>;
 
-export type SitesWansUpdateResponseHealthCheckRate = "low" | "mid" | "high";
+export type SitesWansUpdateResponseHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high"
+  | (string & {});
 export const SitesWansUpdateResponseHealthCheckRate = /*@__PURE__*/ S.String;
 
 export interface SitesWansUpdateResponseStaticAddressing {
@@ -17851,7 +18103,8 @@ export const ValidatePcapOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
 export type PcapsOwnershipValidateResponseStatus =
   | "pending"
   | "success"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const PcapsOwnershipValidateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

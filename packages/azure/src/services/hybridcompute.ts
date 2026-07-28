@@ -129,7 +129,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -137,7 +138,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -574,7 +576,7 @@ export const GatewaysCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<GatewaysCreateOrUpdateRequestTagsMap>;
 
 /** The type of the Gateway resource. */
-export type GatewayType = "Public";
+export type GatewayType = "Public" | (string & {});
 export const GatewayType = /*@__PURE__*/ S.String;
 
 /** Specifies the list of features that are enabled for this Gateway. */
@@ -651,7 +653,8 @@ export type ProvisioningState =
   | "Failed"
   | "Accepted"
   | "Canceled"
-  | "Deleted";
+  | "Deleted"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Specifies the list of features that are enabled for this Gateway. */
@@ -1035,7 +1038,9 @@ export const HybridIdentityMetadataGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HybridIdentityMetadataGetRequest>;
 
 /** The identity type. */
-export type HybridIdentityMetadataPropertiesIdentityType = "SystemAssigned";
+export type HybridIdentityMetadataPropertiesIdentityType =
+  | "SystemAssigned"
+  | (string & {});
 export const HybridIdentityMetadataPropertiesIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -1176,7 +1181,9 @@ export const HybridIdentityMetadataList = /*@__PURE__*/ S.suspend(() =>
   identifier: "HybridIdentityMetadataList",
 }) as any as S.Schema<HybridIdentityMetadataList>;
 
-export type LicenseProfilesCreateOrUpdateRequestLicenseProfileName = "default";
+export type LicenseProfilesCreateOrUpdateRequestLicenseProfileName =
+  | "default"
+  | (string & {});
 export const LicenseProfilesCreateOrUpdateRequestLicenseProfileName =
   /*@__PURE__*/ S.String;
 
@@ -1224,13 +1231,15 @@ export type LicenseProfileSubscriptionStatus =
   | "Enabled"
   | "Disabled"
   | "Disabling"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const LicenseProfileSubscriptionStatus = /*@__PURE__*/ S.String;
 
 /** The product type of the license. */
 export type LicenseProfileProductType =
   | "WindowsServer"
-  | "WindowsIoTEnterprise";
+  | "WindowsIoTEnterprise"
+  | (string & {});
 export const LicenseProfileProductType = /*@__PURE__*/ S.String;
 
 /** The error detail. */
@@ -1407,15 +1416,19 @@ export const LicenseProfileArmEsuPropertiesEsuKeysList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<LicenseProfileArmEsuPropertiesEsuKeysList>;
 
 /** The server types for Esu. */
-export type EsuServerType = "Standard" | "Datacenter";
+export type EsuServerType = "Standard" | "Datacenter" | (string & {});
 export const EsuServerType = /*@__PURE__*/ S.String;
 
 /** The ESU eligibility. */
-export type EsuEligibility = "Eligible" | "Ineligible" | "Unknown";
+export type EsuEligibility =
+  | "Eligible"
+  | "Ineligible"
+  | "Unknown"
+  | (string & {});
 export const EsuEligibility = /*@__PURE__*/ S.String;
 
 /** The ESU key state. */
-export type EsuKeyState = "Inactive" | "Active";
+export type EsuKeyState = "Inactive" | "Active" | (string & {});
 export const EsuKeyState = /*@__PURE__*/ S.String;
 
 /** Describes the properties of a License Profile ARM model. */
@@ -1710,7 +1723,9 @@ export const LicenseProfilesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "LicenseProfilesCreateOrUpdateResponse",
 }) as any as S.Schema<LicenseProfilesCreateOrUpdateResponse>;
 
-export type LicenseProfilesDeleteRequestLicenseProfileName = "default";
+export type LicenseProfilesDeleteRequestLicenseProfileName =
+  | "default"
+  | (string & {});
 export const LicenseProfilesDeleteRequestLicenseProfileName =
   /*@__PURE__*/ S.String;
 
@@ -1751,7 +1766,9 @@ export const LicenseProfilesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "LicenseProfilesDeleteResponse",
 }) as any as S.Schema<LicenseProfilesDeleteResponse>;
 
-export type LicenseProfilesGetRequestLicenseProfileName = "default";
+export type LicenseProfilesGetRequestLicenseProfileName =
+  | "default"
+  | (string & {});
 export const LicenseProfilesGetRequestLicenseProfileName =
   /*@__PURE__*/ S.String;
 
@@ -1978,7 +1995,9 @@ export const LicenseProfilesListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "LicenseProfilesListResult",
 }) as any as S.Schema<LicenseProfilesListResult>;
 
-export type LicenseProfilesUpdateRequestLicenseProfileName = "default";
+export type LicenseProfilesUpdateRequestLicenseProfileName =
+  | "default"
+  | (string & {});
 export const LicenseProfilesUpdateRequestLicenseProfileName =
   /*@__PURE__*/ S.String;
 
@@ -2018,7 +2037,10 @@ export const EsuProfileUpdateProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EsuProfileUpdateProperties>;
 
 /** Indicates the new subscription status of the OS or Product Features. */
-export type LicenseProfileSubscriptionStatusUpdate = "Enable" | "Disable";
+export type LicenseProfileSubscriptionStatusUpdate =
+  | "Enable"
+  | "Disable"
+  | (string & {});
 export const LicenseProfileSubscriptionStatusUpdate = /*@__PURE__*/ S.String;
 
 /** Product Feature */
@@ -2209,27 +2231,34 @@ export const LicensesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LicensesCreateOrUpdateRequestTagsMap>;
 
 /** The type of the license resource. */
-export type LicenseType = "ESU";
+export type LicenseType = "ESU" | (string & {});
 export const LicenseType = /*@__PURE__*/ S.String;
 
 /** Describes the state of the license. */
-export type LicenseState = "Activated" | "Deactivated";
+export type LicenseState = "Activated" | "Deactivated" | (string & {});
 export const LicenseState = /*@__PURE__*/ S.String;
 
 /** Describes the license target server. */
-export type LicenseTarget = "Windows Server 2012" | "Windows Server 2012 R2";
+export type LicenseTarget =
+  | "Windows Server 2012"
+  | "Windows Server 2012 R2"
+  | (string & {});
 export const LicenseTarget = /*@__PURE__*/ S.String;
 
 /** Describes the edition of the license. The values are either Standard or Datacenter. */
-export type LicenseEdition = "Standard" | "Datacenter";
+export type LicenseEdition = "Standard" | "Datacenter" | (string & {});
 export const LicenseEdition = /*@__PURE__*/ S.String;
 
 /** Describes the license core type (pCore or vCore). */
-export type LicenseCoreType = "pCore" | "vCore";
+export type LicenseCoreType = "pCore" | "vCore" | (string & {});
 export const LicenseCoreType = /*@__PURE__*/ S.String;
 
 /** Describes the program year the volume license is for. */
-export type VolumeLicenseDetailsProgramYear = "Year 1" | "Year 2" | "Year 3";
+export type VolumeLicenseDetailsProgramYear =
+  | "Year 1"
+  | "Year 2"
+  | "Year 3"
+  | (string & {});
 export const VolumeLicenseDetailsProgramYear = /*@__PURE__*/ S.String;
 
 export interface VolumeLicenseDetails {
@@ -2848,7 +2877,8 @@ export const MachineExtensionPropertiesInputProtectedSettingsMap =
 export type MachineExtensionInstanceViewStatusLevel =
   | "Info"
   | "Warning"
-  | "Error";
+  | "Error"
+  | (string & {});
 export const MachineExtensionInstanceViewStatusLevel = /*@__PURE__*/ S.String;
 
 /** Instance view status. */
@@ -3602,12 +3632,17 @@ export type MachineRunCommandInstanceViewExecutionState =
   | "Failed"
   | "Succeeded"
   | "TimedOut"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const MachineRunCommandInstanceViewExecutionState =
   /*@__PURE__*/ S.String;
 
 /** The level code. */
-export type ExtensionsResourceStatusLevel = "Info" | "Warning" | "Error";
+export type ExtensionsResourceStatusLevel =
+  | "Info"
+  | "Warning"
+  | "Error"
+  | (string & {});
 export const ExtensionsResourceStatusLevel = /*@__PURE__*/ S.String;
 
 /** Instance view status. */
@@ -4059,7 +4094,8 @@ export type MachineAssessPatchesResultStatus =
   | "InProgress"
   | "Failed"
   | "Succeeded"
-  | "CompletedWithWarnings";
+  | "CompletedWithWarnings"
+  | (string & {});
 export const MachineAssessPatchesResultStatus = /*@__PURE__*/ S.String;
 
 /** Summarization of patches available for installation on the machine by classification. */
@@ -4100,7 +4136,10 @@ export const AvailablePatchCountByClassification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvailablePatchCountByClassification>;
 
 /** Indicates if operation was triggered by user or by platform. */
-export type MachineAssessPatchesResultStartedBy = "User" | "Platform";
+export type MachineAssessPatchesResultStartedBy =
+  | "User"
+  | "Platform"
+  | (string & {});
 export const MachineAssessPatchesResultStartedBy = /*@__PURE__*/ S.String;
 
 /** Specifies the patch service used for the operation. */
@@ -4110,12 +4149,16 @@ export type MachineAssessPatchesResultPatchServiceUsed =
   | "WU_WSUS"
   | "YUM"
   | "APT"
-  | "Zypper";
+  | "Zypper"
+  | (string & {});
 export const MachineAssessPatchesResultPatchServiceUsed =
   /*@__PURE__*/ S.String;
 
 /** The operating system type of the machine. */
-export type MachineAssessPatchesResultOsType = "Windows" | "Linux";
+export type MachineAssessPatchesResultOsType =
+  | "Windows"
+  | "Linux"
+  | (string & {});
 export const MachineAssessPatchesResultOsType = /*@__PURE__*/ S.String;
 
 /** The error details. */
@@ -4295,7 +4338,8 @@ export const AgentUpgradeInput = /*@__PURE__*/ S.suspend(() =>
 /** Specifies the assessment mode. */
 export type PatchSettingsInputAssessmentMode =
   | "ImageDefault"
-  | "AutomaticByPlatform";
+  | "AutomaticByPlatform"
+  | (string & {});
 export const PatchSettingsInputAssessmentMode = /*@__PURE__*/ S.String;
 
 /** Specifies the patch mode. */
@@ -4303,7 +4347,8 @@ export type PatchSettingsInputPatchMode =
   | "ImageDefault"
   | "AutomaticByPlatform"
   | "AutomaticByOS"
-  | "Manual";
+  | "Manual"
+  | (string & {});
 export const PatchSettingsInputPatchMode = /*@__PURE__*/ S.String;
 
 /** Specifies the patch settings. */
@@ -4389,7 +4434,7 @@ export const LicenseInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Describes the license assignment state (Assigned or NotAssigned). */
 export type LicenseProfileMachineInstanceViewEsuPropertiesInputLicenseAssignmentState =
-  "Assigned" | "NotAssigned";
+  "Assigned" | "NotAssigned" | (string & {});
 export const LicenseProfileMachineInstanceViewEsuPropertiesInputLicenseAssignmentState =
   /*@__PURE__*/ S.String;
 
@@ -4428,7 +4473,10 @@ export const LicenseProfileMachineInstanceViewInput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LicenseProfileMachineInstanceViewInput>;
 
 /** Specifies the identity key store a machine is using. */
-export type MachinePropertiesInputIdentityKeyStore = "TPM" | "Default";
+export type MachinePropertiesInputIdentityKeyStore =
+  | "TPM"
+  | "Default"
+  | (string & {});
 export const MachinePropertiesInputIdentityKeyStore = /*@__PURE__*/ S.String;
 
 /** Machine Extensions information (deprecated field) */
@@ -4494,7 +4542,9 @@ export const MachinePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MachinePropertiesInput>;
 
 /** The identity type. */
-export type MachinesCreateOrUpdateRequestIdentityType = "SystemAssigned";
+export type MachinesCreateOrUpdateRequestIdentityType =
+  | "SystemAssigned"
+  | (string & {});
 export const MachinesCreateOrUpdateRequestIdentityType = /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
@@ -4519,7 +4569,8 @@ export type ArcKindEnum =
   | "VMware"
   | "EPS"
   | "GCP"
-  | "AWS";
+  | "AWS"
+  | (string & {});
 export const ArcKindEnum = /*@__PURE__*/ S.String;
 
 export interface MachinesCreateOrUpdateRequest {
@@ -4640,7 +4691,7 @@ export const AgentConfigurationProxyBypassList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AgentConfigurationProxyBypassList>;
 
 /** Name of configuration mode to use. Modes are pre-defined configurations of security controls, extension allowlists and guest configuration, maintained by Microsoft. */
-export type AgentConfigurationConfigMode = "full" | "monitor";
+export type AgentConfigurationConfigMode = "full" | "monitor" | (string & {});
 export const AgentConfigurationConfigMode = /*@__PURE__*/ S.String;
 
 /** Configurable properties that the user can set locally via the azcmagent config command, or remotely via ARM. */
@@ -4792,7 +4843,10 @@ export const CloudMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CloudMetadata" }) as any as S.Schema<CloudMetadata>;
 
 /** Specifies the status of Agent Upgrade. */
-export type AgentUpgradeLastAttemptStatus = "Success" | "Failed";
+export type AgentUpgradeLastAttemptStatus =
+  | "Success"
+  | "Failed"
+  | (string & {});
 export const AgentUpgradeLastAttemptStatus = /*@__PURE__*/ S.String;
 
 /** The info w.r.t Agent Upgrade. */
@@ -4827,7 +4881,8 @@ export const AgentUpgrade = /*@__PURE__*/ S.suspend(() =>
 /** Specifies the assessment mode. */
 export type PatchSettingsAssessmentMode =
   | "ImageDefault"
-  | "AutomaticByPlatform";
+  | "AutomaticByPlatform"
+  | (string & {});
 export const PatchSettingsAssessmentMode = /*@__PURE__*/ S.String;
 
 /** Specifies the patch mode. */
@@ -4835,7 +4890,8 @@ export type PatchSettingsPatchMode =
   | "ImageDefault"
   | "AutomaticByPlatform"
   | "AutomaticByOS"
-  | "Manual";
+  | "Manual"
+  | (string & {});
 export const PatchSettingsPatchMode = /*@__PURE__*/ S.String;
 
 /** Status of hotpatch enablement or disablement. */
@@ -4844,7 +4900,8 @@ export type HotpatchEnablementStatus =
   | "PendingEvaluation"
   | "Disabled"
   | "ActionRequired"
-  | "Enabled";
+  | "Enabled"
+  | (string & {});
 export const HotpatchEnablementStatus = /*@__PURE__*/ S.String;
 
 /** The error details. */
@@ -4970,7 +5027,8 @@ export type LicenseStatus =
   | "OOTGrace"
   | "NonGenuineGrace"
   | "Notification"
-  | "ExtendedGrace";
+  | "ExtendedGrace"
+  | (string & {});
 export const LicenseStatus = /*@__PURE__*/ S.String;
 
 export interface LicenseProfileMachineInstanceViewSoftwareAssurance {
@@ -4996,7 +5054,7 @@ export const LicenseProfileMachineInstanceViewEsuPropertiesEsuKeysList =
 
 /** Describes the license assignment state (Assigned or NotAssigned). */
 export type LicenseProfileMachineInstanceViewEsuPropertiesLicenseAssignmentState =
-  "Assigned" | "NotAssigned";
+  "Assigned" | "NotAssigned" | (string & {});
 export const LicenseProfileMachineInstanceViewEsuPropertiesLicenseAssignmentState =
   /*@__PURE__*/ S.String;
 
@@ -5062,7 +5120,11 @@ export const LicenseProfileMachineInstanceView = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LicenseProfileMachineInstanceView>;
 
 /** The status of the hybrid machine agent. */
-export type MachinePropertiesStatus = "Connected" | "Disconnected" | "Error";
+export type MachinePropertiesStatus =
+  | "Connected"
+  | "Disconnected"
+  | "Error"
+  | (string & {});
 export const MachinePropertiesStatus = /*@__PURE__*/ S.String;
 
 /** The error details. */
@@ -5116,7 +5178,10 @@ export const MachinePropertiesErrorDetailsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MachinePropertiesErrorDetailsList>;
 
 /** Specifies the identity key store a machine is using. */
-export type MachinePropertiesIdentityKeyStore = "TPM" | "Default";
+export type MachinePropertiesIdentityKeyStore =
+  | "TPM"
+  | "Default"
+  | (string & {});
 export const MachinePropertiesIdentityKeyStore = /*@__PURE__*/ S.String;
 
 /** Machine Extensions information (deprecated field) */
@@ -5334,7 +5399,9 @@ export const MachinesCreateOrUpdateResponseResourcesList =
   ) as any as S.Schema<MachinesCreateOrUpdateResponseResourcesList>;
 
 /** The identity type. */
-export type MachinesCreateOrUpdateResponseIdentityType = "SystemAssigned";
+export type MachinesCreateOrUpdateResponseIdentityType =
+  | "SystemAssigned"
+  | (string & {});
 export const MachinesCreateOrUpdateResponseIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -5428,7 +5495,7 @@ export const MachinesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MachinesDeleteResponse",
 }) as any as S.Schema<MachinesDeleteResponse>;
 
-export type MachinesGetRequestExpand = "instanceView";
+export type MachinesGetRequestExpand = "instanceView" | (string & {});
 export const MachinesGetRequestExpand = /*@__PURE__*/ S.String;
 
 export interface MachinesGetRequest {
@@ -5473,7 +5540,7 @@ export const MachinesGetResponseResourcesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MachinesGetResponseResourcesList>;
 
 /** The identity type. */
-export type MachinesGetResponseIdentityType = "SystemAssigned";
+export type MachinesGetResponseIdentityType = "SystemAssigned" | (string & {});
 export const MachinesGetResponseIdentityType = /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
@@ -5537,7 +5604,8 @@ export const MachinesGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type MachinesInstallPatchesRequestRebootSetting =
   | "IfRequired"
   | "Never"
-  | "Always";
+  | "Always"
+  | (string & {});
 export const MachinesInstallPatchesRequestRebootSetting =
   /*@__PURE__*/ S.String;
 
@@ -5549,7 +5617,8 @@ export type WindowsParametersClassificationsToIncludeItem =
   | "ServicePack"
   | "Definition"
   | "Tools"
-  | "Updates";
+  | "Updates"
+  | (string & {});
 export const WindowsParametersClassificationsToIncludeItem =
   /*@__PURE__*/ S.String;
 
@@ -5603,7 +5672,8 @@ export const WindowsParameters = /*@__PURE__*/ S.suspend(() =>
 export type LinuxParametersClassificationsToIncludeItem =
   | "Critical"
   | "Security"
-  | "Other";
+  | "Other"
+  | (string & {});
 export const LinuxParametersClassificationsToIncludeItem =
   /*@__PURE__*/ S.String;
 
@@ -5699,7 +5769,8 @@ export type MachineInstallPatchesResultStatus =
   | "InProgress"
   | "Failed"
   | "Succeeded"
-  | "CompletedWithWarnings";
+  | "CompletedWithWarnings"
+  | (string & {});
 export const MachineInstallPatchesResultStatus = /*@__PURE__*/ S.String;
 
 /** The reboot state of the VM following completion of the operation. */
@@ -5709,11 +5780,15 @@ export type MachineInstallPatchesResultRebootStatus =
   | "Required"
   | "Started"
   | "Failed"
-  | "Completed";
+  | "Completed"
+  | (string & {});
 export const MachineInstallPatchesResultRebootStatus = /*@__PURE__*/ S.String;
 
 /** Indicates if operation was triggered by user or by platform. */
-export type MachineInstallPatchesResultStartedBy = "User" | "Platform";
+export type MachineInstallPatchesResultStartedBy =
+  | "User"
+  | "Platform"
+  | (string & {});
 export const MachineInstallPatchesResultStartedBy = /*@__PURE__*/ S.String;
 
 /** Specifies the patch service used for the operation. */
@@ -5723,12 +5798,16 @@ export type MachineInstallPatchesResultPatchServiceUsed =
   | "WU_WSUS"
   | "YUM"
   | "APT"
-  | "Zypper";
+  | "Zypper"
+  | (string & {});
 export const MachineInstallPatchesResultPatchServiceUsed =
   /*@__PURE__*/ S.String;
 
 /** The operating system type of the machine. */
-export type MachineInstallPatchesResultOsType = "Windows" | "Linux";
+export type MachineInstallPatchesResultOsType =
+  | "Windows"
+  | "Linux"
+  | (string & {});
 export const MachineInstallPatchesResultOsType = /*@__PURE__*/ S.String;
 
 /** The error details. */
@@ -5869,7 +5948,7 @@ export const MachineResourcesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MachineResourcesList>;
 
 /** The identity type. */
-export type MachineIdentityType = "SystemAssigned";
+export type MachineIdentityType = "SystemAssigned" | (string & {});
 export const MachineIdentityType = /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
@@ -5979,7 +6058,9 @@ export const MachinesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MachinesUpdateRequestTagsMap>;
 
 /** The identity type. */
-export type MachinesUpdateRequestIdentityType = "SystemAssigned";
+export type MachinesUpdateRequestIdentityType =
+  | "SystemAssigned"
+  | (string & {});
 export const MachinesUpdateRequestIdentityType = /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
@@ -6104,7 +6185,9 @@ export const MachinesUpdateResponseResourcesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MachinesUpdateResponseResourcesList>;
 
 /** The identity type. */
-export type MachinesUpdateResponseIdentityType = "SystemAssigned";
+export type MachinesUpdateResponseIdentityType =
+  | "SystemAssigned"
+  | (string & {});
 export const MachinesUpdateResponseIdentityType = /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
@@ -6449,11 +6532,12 @@ export type ProvisioningIssueType =
   | "MissingPerimeterConfiguration"
   | "MissingIdentityConfiguration"
   | "ConfigurationPropagationFailure"
-  | "Other";
+  | "Other"
+  | (string & {});
 export const ProvisioningIssueType = /*@__PURE__*/ S.String;
 
 /** Severity of the provisioning issue. */
-export type ProvisioningIssueSeverity = "Warning" | "Error";
+export type ProvisioningIssueSeverity = "Warning" | "Error" | (string & {});
 export const ProvisioningIssueSeverity = /*@__PURE__*/ S.String;
 
 /** ARM Ids of the resources that can be associated to the same perimeter to remediate the issue */
@@ -6465,7 +6549,7 @@ export const ProvisioningIssuePropertiesSuggestedResourceIdsList =
   ) as any as S.Schema<ProvisioningIssuePropertiesSuggestedResourceIdsList>;
 
 /** Indicates direction of an access rule. */
-export type AccessRuleDirection = "Inbound" | "Outbound";
+export type AccessRuleDirection = "Inbound" | "Outbound" | (string & {});
 export const AccessRuleDirection = /*@__PURE__*/ S.String;
 
 /** Address prefixes that are allowed access. */
@@ -6585,7 +6669,7 @@ export const NetworkSecurityPerimeter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkSecurityPerimeter>;
 
 /** Property that impacts a resource's logging behavior and its connectivity with other resources and public networks. */
-export type AccessMode = "enforced" | "audit" | "learning";
+export type AccessMode = "enforced" | "audit" | "learning" | (string & {});
 export const AccessMode = /*@__PURE__*/ S.String;
 
 /** Properties that define a Resource Association. */
@@ -7370,7 +7454,7 @@ export const PrivateLinkScopesCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<PrivateLinkScopesCreateOrUpdateRequestTagsMap>;
 
 /** The network access policy to determine if Azure Arc agents can use public Azure Arc service endpoints. Defaults to disabled (access to Azure Arc services only via private link). */
-export type PublicNetworkAccessType = "Enabled" | "Disabled";
+export type PublicNetworkAccessType = "Enabled" | "Disabled" | (string & {});
 export const PublicNetworkAccessType = /*@__PURE__*/ S.String;
 
 /** Properties that define a Azure Arc PrivateLinkScope resource. */
@@ -7492,13 +7576,14 @@ export type PrivateLinkScopesCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const PrivateLinkScopesCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type PrivateLinkScopesCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
 export const PrivateLinkScopesCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -7637,7 +7722,8 @@ export type PrivateLinkScopesGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const PrivateLinkScopesGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -7646,7 +7732,8 @@ export type PrivateLinkScopesGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const PrivateLinkScopesGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -7850,7 +7937,8 @@ export type HybridComputePrivateLinkScopeSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const HybridComputePrivateLinkScopeSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -7859,7 +7947,8 @@ export type HybridComputePrivateLinkScopeSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const HybridComputePrivateLinkScopeSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -8027,7 +8116,8 @@ export type PrivateLinkScopesUpdateTagsResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const PrivateLinkScopesUpdateTagsResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -8036,7 +8126,8 @@ export type PrivateLinkScopesUpdateTagsResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const PrivateLinkScopesUpdateTagsResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

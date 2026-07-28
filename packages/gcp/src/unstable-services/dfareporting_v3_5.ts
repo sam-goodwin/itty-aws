@@ -126,7 +126,8 @@ export type CreativeAssetMetadataDetectedFeaturesItemEnum =
   | "TOUCH"
   | "WEBGL"
   | "SVG_FILTERS"
-  | "SVG_FE_IMAGE";
+  | "SVG_FE_IMAGE"
+  | (string & {});
 export const CreativeAssetMetadataDetectedFeaturesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -142,10 +143,14 @@ export type CreativeCustomEventTargetTypeEnum =
   | "TARGET_TOP"
   | "TARGET_SELF"
   | "TARGET_PARENT"
-  | "TARGET_POPUP";
+  | "TARGET_POPUP"
+  | (string & {});
 export const CreativeCustomEventTargetTypeEnum = /*@__PURE__*/ S.String;
 
-export type PopupWindowPropertiesPositionTypeEnum = "CENTER" | "COORDINATES";
+export type PopupWindowPropertiesPositionTypeEnum =
+  | "CENTER"
+  | "COORDINATES"
+  | (string & {});
 export const PopupWindowPropertiesPositionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Offset Position. */
@@ -225,7 +230,8 @@ export const PopupWindowProperties = /*@__PURE__*/ S.suspend(() =>
 export type CreativeCustomEventAdvertiserCustomEventTypeEnum =
   | "ADVERTISER_EVENT_TIMER"
   | "ADVERTISER_EVENT_EXIT"
-  | "ADVERTISER_EVENT_COUNTER";
+  | "ADVERTISER_EVENT_COUNTER"
+  | (string & {});
 export const CreativeCustomEventAdvertiserCustomEventTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -233,7 +239,8 @@ export type CreativeCustomEventArtworkTypeEnum =
   | "ARTWORK_TYPE_FLASH"
   | "ARTWORK_TYPE_HTML5"
   | "ARTWORK_TYPE_MIXED"
-  | "ARTWORK_TYPE_IMAGE";
+  | "ARTWORK_TYPE_IMAGE"
+  | (string & {});
 export const CreativeCustomEventArtworkTypeEnum = /*@__PURE__*/ S.String;
 
 /** Click-through URL */
@@ -330,7 +337,8 @@ export type CreativeAssetIdTypeEnum =
   | "VIDEO"
   | "HTML"
   | "HTML_IMAGE"
-  | "AUDIO";
+  | "AUDIO"
+  | (string & {});
 export const CreativeAssetIdTypeEnum = /*@__PURE__*/ S.String;
 
 /** Creative Asset ID. */
@@ -353,7 +361,8 @@ export type DimensionValueMatchTypeEnum =
   | "EXACT"
   | "BEGINS_WITH"
   | "CONTAINS"
-  | "WILDCARD_EXPRESSION";
+  | "WILDCARD_EXPRESSION"
+  | (string & {});
 export const DimensionValueMatchTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a DimensionValue resource. */
@@ -408,7 +417,8 @@ export type CreativeAssetMetadataWarnedValidationRulesItemEnum =
   | "CLICK_TAG_HARD_CODED"
   | "SVG_INVALID"
   | "CLICK_TAG_IN_RICH_MEDIA"
-  | "MISSING_ENABLER_REFERENCE";
+  | "MISSING_ENABLER_REFERENCE"
+  | (string & {});
 export const CreativeAssetMetadataWarnedValidationRulesItemEnum =
   /*@__PURE__*/ S.String;
 

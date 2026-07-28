@@ -112,7 +112,7 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
 ) {}
 export type AgentSpaceId = string;
 export type ServiceId = string;
-export type SourceAccountType = "source";
+export type SourceAccountType = "source" | (string & {});
 export const SourceAccountType = /*@__PURE__*/ S.String;
 
 export type RoleArn = string;
@@ -132,7 +132,7 @@ export const SourceAwsConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SourceAwsConfiguration",
 }) as any as S.Schema<SourceAwsConfiguration>;
-export type MonitorAccountType = "monitor";
+export type MonitorAccountType = "monitor" | (string & {});
 export const MonitorAccountType = /*@__PURE__*/ S.String;
 
 export interface AWSConfiguration {
@@ -149,7 +149,7 @@ export const AWSConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AWSConfiguration",
 }) as any as S.Schema<AWSConfiguration>;
-export type GithubRepoOwnerType = "organization" | "user";
+export type GithubRepoOwnerType = "organization" | "user" | (string & {});
 export const GithubRepoOwnerType = /*@__PURE__*/ S.String;
 
 export interface GitHubConfiguration {
@@ -776,7 +776,8 @@ export const ServiceConfiguration = /*@__PURE__*/ S.Union([
 ]);
 export type CapabilityType =
   | "RELEASE_READINESS_REVIEW"
-  | "RELEASE_READINESS_REVIEW_AUTOMATED_TESTING";
+  | "RELEASE_READINESS_REVIEW_AUTOMATED_TESTING"
+  | (string & {});
 export const CapabilityType = /*@__PURE__*/ S.String;
 
 export interface CapabilityConfiguration {
@@ -822,7 +823,11 @@ export const AssociateServiceInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateServiceInput",
 }) as any as S.Schema<AssociateServiceInput>;
-export type ValidationStatus = "valid" | "invalid" | "pending-confirmation";
+export type ValidationStatus =
+  | "valid"
+  | "invalid"
+  | "pending-confirmation"
+  | (string & {});
 export const ValidationStatus = /*@__PURE__*/ S.String;
 
 export type AssociationId = string;
@@ -848,7 +853,12 @@ export const Association = /*@__PURE__*/ S.suspend(() =>
     capabilities: S.optional(AssociationCapabilities),
   }),
 ).annotate({ identifier: "Association" }) as any as S.Schema<Association>;
-export type WebhookType = "hmac" | "apikey" | "gitlab" | "pagerduty";
+export type WebhookType =
+  | "hmac"
+  | "apikey"
+  | "gitlab"
+  | "pagerduty"
+  | (string & {});
 export const WebhookType = /*@__PURE__*/ S.String;
 
 export type WebhookSecret = string | redacted.Redacted<string>;
@@ -1131,12 +1141,19 @@ export type TaskType =
   | "INVESTIGATION"
   | "EVALUATION"
   | "RELEASE_READINESS_REVIEW"
-  | "RELEASE_TESTING";
+  | "RELEASE_TESTING"
+  | (string & {});
 export const TaskType = /*@__PURE__*/ S.String;
 
 export type BacklogTaskTitle = string;
 export type BacklogTaskDescription = string;
-export type Priority = "CRITICAL" | "HIGH" | "MEDIUM" | "LOW" | "MINIMAL";
+export type Priority =
+  | "CRITICAL"
+  | "HIGH"
+  | "MEDIUM"
+  | "LOW"
+  | "MINIMAL"
+  | (string & {});
 export const Priority = /*@__PURE__*/ S.String;
 
 export interface CreateBacklogTaskRequest {
@@ -1201,7 +1218,8 @@ export type TaskStatus =
   | "FAILED"
   | "TIMED_OUT"
   | "CANCELED"
-  | "SKIPPED";
+  | "SKIPPED"
+  | (string & {});
 export const TaskStatus = /*@__PURE__*/ S.String;
 
 export type BackLogTimestamp = Date;
@@ -1253,7 +1271,7 @@ export const CreateBacklogTaskResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBacklogTaskResponse",
 }) as any as S.Schema<CreateBacklogTaskResponse>;
-export type UserType = "IAM" | "IDC" | "IDP";
+export type UserType = "IAM" | "IDC" | "IDP" | (string & {});
 export const UserType = /*@__PURE__*/ S.String;
 
 export interface CreateChatRequest {
@@ -1303,7 +1321,7 @@ export const ListOfSubnetIds = /*@__PURE__*/ S.Array(S.String);
 export type SecurityGroupId = string;
 export type ListOfSecurityGroupIds = string[];
 export const ListOfSecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
-export type IpAddressType = "IPV4" | "IPV6" | "DUAL_STACK";
+export type IpAddressType = "IPV4" | "IPV6" | "DUAL_STACK" | (string & {});
 export const IpAddressType = /*@__PURE__*/ S.String;
 
 export type MaxIpv4AddressesPerEni = number;
@@ -1311,7 +1329,7 @@ export type PortRange = string;
 export type PortRanges = string[];
 export const PortRanges = /*@__PURE__*/ S.Array(S.String);
 export type CertificateString = string;
-export type ResourceConfigDnsResolution = "PUBLIC" | "IN_VPC";
+export type ResourceConfigDnsResolution = "PUBLIC" | "IN_VPC" | (string & {});
 export const ResourceConfigDnsResolution = /*@__PURE__*/ S.String;
 
 export interface ServiceManagedInput {
@@ -1383,7 +1401,10 @@ export const CreatePrivateConnectionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePrivateConnectionInput",
 }) as any as S.Schema<CreatePrivateConnectionInput>;
-export type PrivateConnectionType = "SELF_MANAGED" | "SERVICE_MANAGED";
+export type PrivateConnectionType =
+  | "SELF_MANAGED"
+  | "SERVICE_MANAGED"
+  | (string & {});
 export const PrivateConnectionType = /*@__PURE__*/ S.String;
 
 export type ResourceGatewayArn = string;
@@ -1392,7 +1413,8 @@ export type PrivateConnectionStatus =
   | "CREATE_IN_PROGRESS"
   | "CREATE_FAILED"
   | "DELETE_IN_PROGRESS"
-  | "DELETE_FAILED";
+  | "DELETE_FAILED"
+  | (string & {});
 export const PrivateConnectionStatus = /*@__PURE__*/ S.String;
 
 export type FailureMessage = string;
@@ -1719,7 +1741,7 @@ export const DescribePrivateConnectionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribePrivateConnectionOutput",
 }) as any as S.Schema<DescribePrivateConnectionOutput>;
-export type AuthFlow = "iam" | "idc" | "idp";
+export type AuthFlow = "iam" | "idc" | "idp" | (string & {});
 export const AuthFlow = /*@__PURE__*/ S.String;
 
 export interface DisableOperatorAppInput {
@@ -2210,10 +2232,11 @@ export type RecommendationStatus =
   | "REJECTED"
   | "CLOSED"
   | "COMPLETED"
-  | "UPDATE_IN_PROGRESS";
+  | "UPDATE_IN_PROGRESS"
+  | (string & {});
 export const RecommendationStatus = /*@__PURE__*/ S.String;
 
-export type RecommendationPriority = "HIGH" | "MEDIUM" | "LOW";
+export type RecommendationPriority = "HIGH" | "MEDIUM" | "LOW" | (string & {});
 export const RecommendationPriority = /*@__PURE__*/ S.String;
 
 export interface Recommendation {
@@ -2295,7 +2318,8 @@ export type Service =
   | "azureidentity"
   | "mcpserversigv4"
   | "remoteagent"
-  | "remoteagentsigv4";
+  | "remoteagentsigv4"
+  | (string & {});
 export const Service = /*@__PURE__*/ S.String;
 
 export type ServiceName = string;
@@ -2328,7 +2352,8 @@ export type MCPServerAuthorizationMethod =
   | "oauth-client-credentials"
   | "oauth-3lo"
   | "api-key"
-  | "bearer-token";
+  | "bearer-token"
+  | (string & {});
 export const MCPServerAuthorizationMethod = /*@__PURE__*/ S.String;
 
 export interface RegisteredMCPServerDetails {
@@ -2358,7 +2383,7 @@ export const RegisteredServiceNowDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RegisteredServiceNowDetails",
 }) as any as S.Schema<RegisteredServiceNowDetails>;
-export type GitLabTokenType = "personal" | "group";
+export type GitLabTokenType = "personal" | "group" | (string & {});
 export const GitLabTokenType = /*@__PURE__*/ S.String;
 
 export interface RegisteredGitLabServiceDetails {
@@ -2375,7 +2400,7 @@ export const RegisteredGitLabServiceDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RegisteredGitLabServiceDetails",
 }) as any as S.Schema<RegisteredGitLabServiceDetails>;
-export type NewRelicRegion = "US" | "EU";
+export type NewRelicRegion = "US" | "EU" | (string & {});
 export const NewRelicRegion = /*@__PURE__*/ S.String;
 
 export interface RegisteredNewRelicDetails {
@@ -2484,7 +2509,8 @@ export type RemoteAgentEndpoint = string;
 export type RemoteAgentAuthorizationMethod =
   | "oauth-client-credentials"
   | "api-key"
-  | "bearer-token";
+  | "bearer-token"
+  | (string & {});
 export const RemoteAgentAuthorizationMethod = /*@__PURE__*/ S.String;
 
 export interface RegisteredRemoteAgentDetails {
@@ -3167,10 +3193,10 @@ export const TaskFilter = /*@__PURE__*/ S.suspend(() =>
     primaryTaskId: S.optional(S.String),
   }),
 ).annotate({ identifier: "TaskFilter" }) as any as S.Schema<TaskFilter>;
-export type TaskSortField = "CREATED_AT" | "PRIORITY";
+export type TaskSortField = "CREATED_AT" | "PRIORITY" | (string & {});
 export const TaskSortField = /*@__PURE__*/ S.String;
 
-export type TaskSortOrder = "ASC" | "DESC";
+export type TaskSortOrder = "ASC" | "DESC" | (string & {});
 export const TaskSortOrder = /*@__PURE__*/ S.String;
 
 export interface ListBacklogTasksRequest {
@@ -3303,7 +3329,8 @@ export type ExecutionStatus =
   | "RUNNING"
   | "STOPPED"
   | "CANCELED"
-  | "TIMED_OUT";
+  | "TIMED_OUT"
+  | (string & {});
 export const ExecutionStatus = /*@__PURE__*/ S.String;
 
 export interface Execution {
@@ -3341,10 +3368,10 @@ export const ListExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListExecutionsResponse",
 }) as any as S.Schema<ListExecutionsResponse>;
-export type GoalStatus = "ACTIVE" | "PAUSED" | "COMPLETE";
+export type GoalStatus = "ACTIVE" | "PAUSED" | "COMPLETE" | (string & {});
 export const GoalStatus = /*@__PURE__*/ S.String;
 
-export type GoalType = "CUSTOMER_DEFINED" | "ONCALL_REPORT";
+export type GoalType = "CUSTOMER_DEFINED" | "ONCALL_REPORT" | (string & {});
 export const GoalType = /*@__PURE__*/ S.String;
 
 export interface ListGoalsRequest {
@@ -3384,7 +3411,7 @@ export interface GoalContent {
 export const GoalContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ description: S.String, objectives: S.String }),
 ).annotate({ identifier: "GoalContent" }) as any as S.Schema<GoalContent>;
-export type SchedulerState = "ENABLED" | "DISABLED";
+export type SchedulerState = "ENABLED" | "DISABLED" | (string & {});
 export const SchedulerState = /*@__PURE__*/ S.String;
 
 export interface GoalSchedule {
@@ -3439,7 +3466,7 @@ export const ListGoalsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListGoalsResponse",
 }) as any as S.Schema<ListGoalsResponse>;
-export type OrderType = "ASC" | "DESC";
+export type OrderType = "ASC" | "DESC" | (string & {});
 export const OrderType = /*@__PURE__*/ S.String;
 
 export interface ListJournalRecordsRequest {
@@ -3854,7 +3881,8 @@ export type PostRegisterServiceSupportedService =
   | "azureidentity"
   | "mcpserversigv4"
   | "remoteagent"
-  | "remoteagentsigv4";
+  | "remoteagentsigv4"
+  | (string & {});
 export const PostRegisterServiceSupportedService = /*@__PURE__*/ S.String;
 
 export type ClientId = string | redacted.Redacted<string>;
@@ -4167,7 +4195,7 @@ export const NewRelicServiceDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NewRelicServiceDetails",
 }) as any as S.Schema<NewRelicServiceDetails>;
-export type EventChannelType = "webhook";
+export type EventChannelType = "webhook" | (string & {});
 export const EventChannelType = /*@__PURE__*/ S.String;
 
 export interface EventChannelDetails {

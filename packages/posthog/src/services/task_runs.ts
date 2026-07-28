@@ -77,15 +77,24 @@ export const TasksRunsAppendLogCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TasksRunsAppendLogCreateRequest>;
 
 /** * `claude` - claude * `codex` - codex */
-export type RuntimeAdapterEnum = "claude" | "codex";
+export type RuntimeAdapterEnum = "claude" | "codex" | (string & {});
 export const RuntimeAdapterEnum = /*@__PURE__*/ S.String;
 
 /** * `anthropic` - anthropic * `openai` - openai */
-export type TaskRunDetailDTOProviderEnum = "anthropic" | "openai";
+export type TaskRunDetailDTOProviderEnum =
+  | "anthropic"
+  | "openai"
+  | (string & {});
 export const TaskRunDetailDTOProviderEnum = /*@__PURE__*/ S.String;
 
 /** * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max */
-export type ReasoningEffortEnum = "low" | "medium" | "high" | "xhigh" | "max";
+export type ReasoningEffortEnum =
+  | "low"
+  | "medium"
+  | "high"
+  | "xhigh"
+  | "max"
+  | (string & {});
 export const ReasoningEffortEnum = /*@__PURE__*/ S.String;
 
 export type TaskRunDetailDTOOutputMap = { [key: string]: unknown | undefined };
@@ -101,11 +110,16 @@ export const TaskRunDetailDTOStateMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<TaskRunDetailDTOStateMap>;
 
 /** * `user` - user * `repo` - repo * `marketplace` - marketplace * `codex` - codex */
-export type SkillSourceEnum = "user" | "repo" | "marketplace" | "codex";
+export type SkillSourceEnum =
+  | "user"
+  | "repo"
+  | "marketplace"
+  | "codex"
+  | (string & {});
 export const SkillSourceEnum = /*@__PURE__*/ S.String;
 
 /** * `zip` - zip */
-export type BundleFormatEnum = "zip";
+export type BundleFormatEnum = "zip" | (string & {});
 export const BundleFormatEnum = /*@__PURE__*/ S.String;
 
 export interface TaskRunArtifactMetadata {
@@ -235,11 +249,12 @@ export type TaskRunArtifactTypeEnum =
   | "artifact"
   | "tree_snapshot"
   | "user_attachment"
-  | "skill_bundle";
+  | "skill_bundle"
+  | (string & {});
 export const TaskRunArtifactTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `utf-8` - utf-8 * `base64` - base64 */
-export type ContentEncodingEnum = "utf-8" | "base64";
+export type ContentEncodingEnum = "utf-8" | "base64" | (string & {});
 export const ContentEncodingEnum = /*@__PURE__*/ S.String;
 
 export interface TaskRunArtifactUpload {
@@ -660,7 +675,7 @@ export const TasksRunsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TasksRunsCancelCreateRequest>;
 
 /** * `2.0` - 2.0 */
-export type JsonrpcEnum = "2.0";
+export type JsonrpcEnum = "2.0" | (string & {});
 export const JsonrpcEnum = /*@__PURE__*/ S.String;
 
 /** * `user_message` - user_message * `cancel` - cancel * `close` - close * `permission_response` - permission_response * `set_config_option` - set_config_option * `mcp_response` - mcp_response */
@@ -670,7 +685,8 @@ export type MethodEnum =
   | "close"
   | "permission_response"
   | "set_config_option"
-  | "mcp_response";
+  | "mcp_response"
+  | (string & {});
 export const MethodEnum = /*@__PURE__*/ S.String;
 
 /** Parameters for the command */
@@ -790,7 +806,7 @@ export const ConnectionTokenResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectionTokenResponse>;
 
 /** * `http` - http * `sse` - sse */
-export type ImportedMcpServerTypeEnum = "http" | "sse";
+export type ImportedMcpServerTypeEnum = "http" | "sse" | (string & {});
 export const ImportedMcpServerTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ImportedMcpServerHeader {
@@ -859,20 +875,26 @@ export const TasksRunsCreateRequestRelayedMcpServersList =
   ) as any as S.Schema<TasksRunsCreateRequestRelayedMcpServersList>;
 
 /** * `local` - local * `cloud` - cloud */
-export type TaskRunBootstrapCreateRequestEnvironmentEnum = "local" | "cloud";
+export type TaskRunBootstrapCreateRequestEnvironmentEnum =
+  | "local"
+  | "cloud"
+  | (string & {});
 export const TaskRunBootstrapCreateRequestEnvironmentEnum =
   /*@__PURE__*/ S.String;
 
 /** * `interactive` - interactive * `background` - background */
-export type TaskExecutionModeEnum = "interactive" | "background";
+export type TaskExecutionModeEnum =
+  | "interactive"
+  | "background"
+  | (string & {});
 export const TaskExecutionModeEnum = /*@__PURE__*/ S.String;
 
 /** * `user` - user * `bot` - bot */
-export type PrAuthorshipModeEnum = "user" | "bot";
+export type PrAuthorshipModeEnum = "user" | "bot" | (string & {});
 export const PrAuthorshipModeEnum = /*@__PURE__*/ S.String;
 
 /** * `manual` - manual * `signal_report` - signal_report */
-export type RunSourceEnum = "manual" | "signal_report";
+export type RunSourceEnum = "manual" | "signal_report" | (string & {});
 export const RunSourceEnum = /*@__PURE__*/ S.String;
 
 /** * `default` - default * `acceptEdits` - acceptEdits * `plan` - plan * `bypassPermissions` - bypassPermissions * `auto` - auto * `read-only` - read-only * `full-access` - full-access */
@@ -883,7 +905,8 @@ export type TaskRunBootstrapCreateRequestInitialPermissionModeEnum =
   | "bypassPermissions"
   | "auto"
   | "read-only"
-  | "full-access";
+  | "full-access"
+  | (string & {});
 export const TaskRunBootstrapCreateRequestInitialPermissionModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1049,7 +1072,8 @@ export type RunStatusEnum =
   | "in_progress"
   | "completed"
   | "failed"
-  | "cancelled";
+  | "cancelled"
+  | (string & {});
 export const RunStatusEnum = /*@__PURE__*/ S.String;
 
 /** State keys to remove atomically before applying any state updates. */
@@ -1061,7 +1085,7 @@ export const TasksRunsPartialUpdateRequestStateRemoveKeysList =
   ) as any as S.Schema<TasksRunsPartialUpdateRequestStateRemoveKeysList>;
 
 /** * `local` - local */
-export type TaskRunUpdateEnvironmentEnum = "local";
+export type TaskRunUpdateEnvironmentEnum = "local" | (string & {});
 export const TaskRunUpdateEnvironmentEnum = /*@__PURE__*/ S.String;
 
 export interface TasksRunsPartialUpdateRequest {
@@ -1319,7 +1343,7 @@ export const TasksRunsStartCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TasksRunsStartCreateRequest>;
 
 /** * `acp` - ACP * `pi` - Pi */
-export type RuntimeEnum = "acp" | "pi";
+export type RuntimeEnum = "acp" | "pi" | (string & {});
 export const RuntimeEnum = /*@__PURE__*/ S.String;
 
 export type TaskDetailDTOJsonSchemaMap = { [key: string]: unknown | undefined };

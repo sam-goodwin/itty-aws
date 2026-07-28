@@ -181,7 +181,8 @@ export type HogFlowBatchJobStatusEnum =
   | "active"
   | "completed"
   | "cancelled"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const HogFlowBatchJobStatusEnum = /*@__PURE__*/ S.String;
 
 export interface HogFlowsBatchJobsCreateRequest {
@@ -232,10 +233,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -332,7 +334,7 @@ export const HogFlowsBatchJobsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HogFlowsBatchJobsListResponse>;
 
 /** * `draft` - Draft * `active` - Active * `archived` - Archived */
-export type HogFlowStatusEnum = "draft" | "active" | "archived";
+export type HogFlowStatusEnum = "draft" | "active" | "archived" | (string & {});
 export const HogFlowStatusEnum = /*@__PURE__*/ S.String;
 
 export interface HogFlowMasking {
@@ -373,7 +375,8 @@ export const HogFlowConversionFiltersList = /*@__PURE__*/ S.Array(
 export type HogFunctionFiltersSourceEnum =
   | "events"
   | "person-updates"
-  | "data-warehouse-table";
+  | "data-warehouse-table"
+  | (string & {});
 export const HogFunctionFiltersSourceEnum = /*@__PURE__*/ S.String;
 
 export type HogFunctionFiltersActionsItemMap = {
@@ -503,11 +506,12 @@ export type ExitConditionEnum =
   | "exit_on_conversion"
   | "exit_on_trigger_not_matched"
   | "exit_on_trigger_not_matched_or_conversion"
-  | "exit_only_at_end";
+  | "exit_only_at_end"
+  | (string & {});
 export const ExitConditionEnum = /*@__PURE__*/ S.String;
 
 /** * `continue` - continue * `branch` - branch */
-export type HogFlowEdgeTypeEnum = "continue" | "branch";
+export type HogFlowEdgeTypeEnum = "continue" | "branch" | (string & {});
 export const HogFlowEdgeTypeEnum = /*@__PURE__*/ S.String;
 
 export interface HogFlowEdge {
@@ -537,7 +541,7 @@ export const HogFlowsBulkDeleteCreateRequestEdgesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<HogFlowsBulkDeleteCreateRequestEdgesList>;
 
 /** * `continue` - continue * `abort` - abort */
-export type OnErrorEnum = "continue" | "abort";
+export type OnErrorEnum = "continue" | "abort" | (string & {});
 export const OnErrorEnum = /*@__PURE__*/ S.String;
 
 /** Config for every action type except wait_until_condition — see the field description for per-type shapes. */
@@ -746,7 +750,11 @@ export const HogFlowVariablesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<HogFlowVariablesList>;
 
 /** * `active` - Active * `paused` - Paused * `completed` - Completed */
-export type HogFlowScheduleStatusEnum = "active" | "paused" | "completed";
+export type HogFlowScheduleStatusEnum =
+  | "active"
+  | "paused"
+  | "completed"
+  | (string & {});
 export const HogFlowScheduleStatusEnum = /*@__PURE__*/ S.String;
 
 export interface HogFlowSchedule {
@@ -990,7 +998,8 @@ export type HogFlowGraphOperationOpEnum =
   | "remove_action"
   | "add_edge"
   | "remove_edge"
-  | "replace_action_edges";
+  | "replace_action_edges"
+  | (string & {});
 export const HogFlowGraphOperationOpEnum = /*@__PURE__*/ S.String;
 
 /** replace_action_edges: the complete set of the action's outgoing edges (incoming edges are preserved). add_action: optional edges to wire the new node in the same op. */
@@ -1330,7 +1339,11 @@ export const HogFlowsInvocationsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "HogFlowsInvocationsCreateResponse",
 }) as any as S.Schema<HogFlowsInvocationsCreateResponse>;
 
-export type HogFlowsListRequestStatus = "active" | "archived" | "draft";
+export type HogFlowsListRequestStatus =
+  | "active"
+  | "archived"
+  | "draft"
+  | (string & {});
 export const HogFlowsListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface HogFlowsListRequest {
@@ -1540,10 +1553,17 @@ export const HogFlowsMetricsGlobalRetrieveResponse = /*@__PURE__*/ S.suspend(
   identifier: "HogFlowsMetricsGlobalRetrieveResponse",
 }) as any as S.Schema<HogFlowsMetricsGlobalRetrieveResponse>;
 
-export type HogFlowsMetricsRetrieveRequestBreakdownBy = "name" | "kind";
+export type HogFlowsMetricsRetrieveRequestBreakdownBy =
+  | "name"
+  | "kind"
+  | (string & {});
 export const HogFlowsMetricsRetrieveRequestBreakdownBy = /*@__PURE__*/ S.String;
 
-export type HogFlowsMetricsRetrieveRequestInterval = "hour" | "day" | "week";
+export type HogFlowsMetricsRetrieveRequestInterval =
+  | "hour"
+  | "day"
+  | "week"
+  | (string & {});
 export const HogFlowsMetricsRetrieveRequestInterval = /*@__PURE__*/ S.String;
 
 export interface HogFlowsMetricsRetrieveRequest {
@@ -1633,14 +1653,18 @@ export const AppMetricsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppMetricsResponse",
 }) as any as S.Schema<AppMetricsResponse>;
 
-export type HogFlowsMetricsTotalsRetrieveRequestBreakdownBy = "name" | "kind";
+export type HogFlowsMetricsTotalsRetrieveRequestBreakdownBy =
+  | "name"
+  | "kind"
+  | (string & {});
 export const HogFlowsMetricsTotalsRetrieveRequestBreakdownBy =
   /*@__PURE__*/ S.String;
 
 export type HogFlowsMetricsTotalsRetrieveRequestInterval =
   | "hour"
   | "day"
-  | "week";
+  | "week"
+  | (string & {});
 export const HogFlowsMetricsTotalsRetrieveRequestInterval =
   /*@__PURE__*/ S.String;
 
@@ -1992,7 +2016,7 @@ export const HogFlowsReputationRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HogFlowsReputationRetrieveRequest>;
 
 /** * `workflow` - Workflow * `team` - Team */
-export type EmailReputationScopeEnum = "workflow" | "team";
+export type EmailReputationScopeEnum = "workflow" | "team" | (string & {});
 export const EmailReputationScopeEnum = /*@__PURE__*/ S.String;
 
 /** * `insufficient_data` - Insufficient Data * `healthy` - Healthy * `warning` - Warning * `critical` - Critical */
@@ -2000,7 +2024,8 @@ export type EmailReputationStateEnum =
   | "insufficient_data"
   | "healthy"
   | "warning"
-  | "critical";
+  | "critical"
+  | (string & {});
 export const EmailReputationStateEnum = /*@__PURE__*/ S.String;
 
 /** One email deliverability reputation snapshot (per workflow or per team, per daily evaluation run). */
@@ -2101,7 +2126,8 @@ export const TeamEmailReputationResponse = /*@__PURE__*/ S.suspend(() =>
 export type HogInvocationRerunFilterStatusEnum =
   | "running"
   | "succeeded"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const HogInvocationRerunFilterStatusEnum = /*@__PURE__*/ S.String;
 
 /** Restrict to invocations whose latest status is one of these. Defaults to ['failed']. */
@@ -2577,7 +2603,7 @@ export const HogFlowsUserBlastRadiusCreateRequestFiltersMap =
   ) as any as S.Schema<HogFlowsUserBlastRadiusCreateRequestFiltersMap>;
 
 /** * `email` - email */
-export type DedupeKeyEnum = "email";
+export type DedupeKeyEnum = "email" | (string & {});
 export const DedupeKeyEnum = /*@__PURE__*/ S.String;
 
 export interface HogFlowsUserBlastRadiusCreateRequest {

@@ -68,7 +68,8 @@ export type RepositoryFormatEnum =
   | "APT"
   | "YUM"
   | "GOOGET"
-  | "PYTHON";
+  | "PYTHON"
+  | (string & {});
 export const RepositoryFormatEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -80,7 +81,8 @@ export const StringMap = /*@__PURE__*/ S.Record(
 export type MavenRepositoryConfigVersionPolicyEnum =
   | "VERSION_POLICY_UNSPECIFIED"
   | "RELEASE"
-  | "SNAPSHOT";
+  | "SNAPSHOT"
+  | (string & {});
 export const MavenRepositoryConfigVersionPolicyEnum = /*@__PURE__*/ S.String;
 
 /** MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type. */
@@ -477,7 +479,8 @@ export type ProjectSettingsLegacyRedirectionStateEnum =
   | "REDIRECTION_FROM_GCR_IO_ENABLED"
   | "REDIRECTION_FROM_GCR_IO_FINALIZED"
   | "REDIRECTION_FROM_GCR_IO_ENABLED_AND_COPYING"
-  | "REDIRECTION_FROM_GCR_IO_PARTIAL_AND_COPYING";
+  | "REDIRECTION_FROM_GCR_IO_PARTIAL_AND_COPYING"
+  | (string & {});
 export const ProjectSettingsLegacyRedirectionStateEnum = /*@__PURE__*/ S.String;
 
 /** The Artifact Registry settings that apply to a Project. */
@@ -603,7 +606,8 @@ export type HashTypeEnum =
   | "HASH_TYPE_UNSPECIFIED"
   | "SHA256"
   | "MD5"
-  | "DIRSUM_SHA256";
+  | "DIRSUM_SHA256"
+  | (string & {});
 export const HashTypeEnum = /*@__PURE__*/ S.String;
 
 /** A hash of file content. */
@@ -718,7 +722,8 @@ export const GetProjectsLocationsRepositoriesPackagesTagsRequest =
 export type GetProjectsLocationsRepositoriesPackagesVersionsViewEnum =
   | "VERSION_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetProjectsLocationsRepositoriesPackagesVersionsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -1126,7 +1131,8 @@ export const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsRepositoriesPackagesVersionsViewEnum =
   | "VERSION_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListProjectsLocationsRepositoriesPackagesVersionsViewEnum =
   /*@__PURE__*/ S.String;
 

@@ -45,7 +45,8 @@ export type BatchExportBackfillStatusEnum =
   | "Terminated"
   | "TimedOut"
   | "Running"
-  | "Starting";
+  | "Starting"
+  | (string & {});
 export const BatchExportBackfillStatusEnum = /*@__PURE__*/ S.String;
 
 export interface BatchExportsBackfillsCancelCreateRequest {
@@ -277,11 +278,11 @@ export const BatchExportsBackfillsRetrieveRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BatchExportsBackfillsRetrieveRequest>;
 
 /** * `events` - Events * `persons` - Persons * `sessions` - Sessions */
-export type ModelEnum = "events" | "persons" | "sessions";
+export type ModelEnum = "events" | "persons" | "sessions" | (string & {});
 export const ModelEnum = /*@__PURE__*/ S.String;
 
 /** * `Databricks` - Databricks */
-export type DatabricksDestinationRequestTypeEnum = "Databricks";
+export type DatabricksDestinationRequestTypeEnum = "Databricks" | (string & {});
 export const DatabricksDestinationRequestTypeEnum = /*@__PURE__*/ S.String;
 
 /** Typed configuration for a Databricks batch-export destination. Credentials live in the linked Integration, not in this config. Mirrors `DatabricksBatchExportInputs` in `products/batch_exports/backend/service.py`. */
@@ -330,15 +331,21 @@ export const DatabricksDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabricksDestinationRequest>;
 
 /** * `AzureBlob` - AzureBlob */
-export type AzureBlobDestinationRequestTypeEnum = "AzureBlob";
+export type AzureBlobDestinationRequestTypeEnum = "AzureBlob" | (string & {});
 export const AzureBlobDestinationRequestTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `brotli` - brotli * `gzip` - gzip * `lz4` - lz4 * `snappy` - snappy * `zstd` - zstd */
-export type CompressionEnum = "brotli" | "gzip" | "lz4" | "snappy" | "zstd";
+export type CompressionEnum =
+  | "brotli"
+  | "gzip"
+  | "lz4"
+  | "snappy"
+  | "zstd"
+  | (string & {});
 export const CompressionEnum = /*@__PURE__*/ S.String;
 
 /** * `Parquet` - Parquet * `JSONLines` - JSONLines */
-export type FileFormatEnum = "Parquet" | "JSONLines";
+export type FileFormatEnum = "Parquet" | "JSONLines" | (string & {});
 export const FileFormatEnum = /*@__PURE__*/ S.String;
 
 /** Typed configuration for an Azure Blob Storage batch-export destination. Credentials live in the linked Integration, not in this config. Mirrors `AzureBlobBatchExportInputs` in `products/batch_exports/backend/service.py`. */
@@ -384,7 +391,7 @@ export const AzureBlobDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureBlobDestinationRequest>;
 
 /** * `BigQuery` - BigQuery */
-export type BigQueryDestinationRequestTypeEnum = "BigQuery";
+export type BigQueryDestinationRequestTypeEnum = "BigQuery" | (string & {});
 export const BigQueryDestinationRequestTypeEnum = /*@__PURE__*/ S.String;
 
 /** Typed configuration for a BigQuery batch-export destination. Credentials live in the linked Integration, not in this config. Mirrors the non-credential fields of `BigQueryBatchExportInputs` in `products/batch_exports/backend/service.py`. */
@@ -424,7 +431,7 @@ export const BigQueryDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BigQueryDestinationRequest>;
 
 /** * `Postgres` - Postgres */
-export type PostgresDestinationRequestTypeEnum = "Postgres";
+export type PostgresDestinationRequestTypeEnum = "Postgres" | (string & {});
 export const PostgresDestinationRequestTypeEnum = /*@__PURE__*/ S.String;
 
 /** Typed configuration for a PostgreSQL batch-export destination. Connection credentials may live in a linked Integration (when one is provided) or inline in this config (legacy). Mirrors the non-credential fields of `PostgresBatchExportInputs` in `products/batch_exports/backend/service.py`. */
@@ -467,7 +474,7 @@ export const PostgresDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostgresDestinationRequest>;
 
 /** * `AwsS3` - AwsS3 */
-export type AwsS3DestinationRequestTypeEnum = "AwsS3";
+export type AwsS3DestinationRequestTypeEnum = "AwsS3" | (string & {});
 export const AwsS3DestinationRequestTypeEnum = /*@__PURE__*/ S.String;
 
 /** Typed configuration for an AWS S3 batch-export destination. AWS credentials live in the linked aws-s3 Integration. Mirrors the non-credential fields of `AwsS3BatchExportInputs` in `products/batch_exports/backend/service.py`. */
@@ -522,7 +529,9 @@ export const AwsS3DestinationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AwsS3DestinationRequest>;
 
 /** * `S3Compatible` - S3Compatible */
-export type S3CompatibleDestinationRequestTypeEnum = "S3Compatible";
+export type S3CompatibleDestinationRequestTypeEnum =
+  | "S3Compatible"
+  | (string & {});
 export const S3CompatibleDestinationRequestTypeEnum = /*@__PURE__*/ S.String;
 
 /** Typed configuration for an S3-compatible batch-export destination (Cloudflare R2, DigitalOcean Spaces, etc.). Credentials and the provider `endpoint_url` live in the linked s3-compatible Integration. Mirrors the non-credential fields of `S3CompatibleBatchExportInputs` in `products/batch_exports/backend/service.py`. */
@@ -574,7 +583,7 @@ export const S3CompatibleDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<S3CompatibleDestinationRequest>;
 
 /** * `Snowflake` - Snowflake */
-export type SnowflakeDestinationRequestTypeEnum = "Snowflake";
+export type SnowflakeDestinationRequestTypeEnum = "Snowflake" | (string & {});
 export const SnowflakeDestinationRequestTypeEnum = /*@__PURE__*/ S.String;
 
 /** Typed configuration for a Snowflake batch-export destination. Account, user, authentication type and credentials may live in a linked Integration (when one is provided) or inline in this config (legacy). Mirrors the non-credential fields of `SnowflakeBatchExportInputs` in `products/batch_exports/backend/service.py`. */
@@ -636,7 +645,8 @@ export type BatchExportIntervalEnum =
   | "day"
   | "week"
   | "every 5 minutes"
-  | "every 15 minutes";
+  | "every 15 minutes"
+  | (string & {});
 export const BatchExportIntervalEnum = /*@__PURE__*/ S.String;
 
 export interface BatchExportsCreateRequest {
@@ -687,7 +697,7 @@ export const BatchExportsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchExportsCreateRequest",
 }) as any as S.Schema<BatchExportsCreateRequest>;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 /** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions */
@@ -709,7 +719,8 @@ export type BatchExportDestinationTypeEnum =
   | "Workflows"
   | "HTTP"
   | "NoOp"
-  | "FileDownload";
+  | "FileDownload"
+  | (string & {});
 export const BatchExportDestinationTypeEnum = /*@__PURE__*/ S.String;
 
 export type BatchExportDestinationConfig =
@@ -753,7 +764,8 @@ export type BatchExportRunStatusEnum =
   | "Terminated"
   | "TimedOut"
   | "Running"
-  | "Starting";
+  | "Starting"
+  | (string & {});
 export const BatchExportRunStatusEnum = /*@__PURE__*/ S.String;
 
 /** Serializer for a BatchExportRun model. */
@@ -1414,7 +1426,8 @@ export type TimezoneEnum =
   | "Universal"
   | "W-SU"
   | "WET"
-  | "Zulu";
+  | "Zulu"
+  | (string & {});
 export const TimezoneEnum = /*@__PURE__*/ S.String;
 
 /** Serializer for a BatchExport model. */
@@ -2331,7 +2344,8 @@ export const FileDownloadDestinationFileConfig = /*@__PURE__*/ S.suspend(() =>
 export type FileDownloadBatchExportOnDemandModelEnum =
   | "events"
   | "persons"
-  | "sessions";
+  | "sessions"
+  | (string & {});
 export const FileDownloadBatchExportOnDemandModelEnum = /*@__PURE__*/ S.String;
 
 export type FileDownloadBatchExportsCancelCreateRequestIncludeList =
@@ -2393,7 +2407,7 @@ export const FileDownloadBatchExportsCancelCreateResponse =
   }) as any as S.Schema<FileDownloadBatchExportsCancelCreateResponse>;
 
 /** * `events` - events */
-export type FileDownloadEventsRequestModelEnum = "events";
+export type FileDownloadEventsRequestModelEnum = "events" | (string & {});
 export const FileDownloadEventsRequestModelEnum = /*@__PURE__*/ S.String;
 
 export type FileDownloadEventsRequestIncludeList = ReadonlyArray<string>;
@@ -2429,7 +2443,7 @@ export const FileDownloadEventsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FileDownloadEventsRequest>;
 
 /** * `persons` - persons */
-export type FileDownloadPersonsRequestModelEnum = "persons";
+export type FileDownloadPersonsRequestModelEnum = "persons" | (string & {});
 export const FileDownloadPersonsRequestModelEnum = /*@__PURE__*/ S.String;
 
 /** Typed configuration for the persons model. */
@@ -2451,7 +2465,7 @@ export const FileDownloadPersonsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FileDownloadPersonsRequest>;
 
 /** * `sessions` - sessions */
-export type FileDownloadSessionsRequestModelEnum = "sessions";
+export type FileDownloadSessionsRequestModelEnum = "sessions" | (string & {});
 export const FileDownloadSessionsRequestModelEnum = /*@__PURE__*/ S.String;
 
 /** Typed configuration for the sessions model. */
@@ -2667,7 +2681,8 @@ export const FileDownloadBatchExportsRetrieveRequest = /*@__PURE__*/ S.suspend(
 export type RetrieveBasicOutputStatusEnum =
   | "Starting"
   | "Running"
-  | "Cancelled";
+  | "Cancelled"
+  | (string & {});
 export const RetrieveBasicOutputStatusEnum = /*@__PURE__*/ S.String;
 
 /** Typed output for view set `retrieve` with any of the statuses without extra output. */
@@ -2683,7 +2698,7 @@ export const RetrieveBasicOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RetrieveBasicOutput>;
 
 /** * `Completed` - Completed */
-export type RetrieveCompletedOutputStatusEnum = "Completed";
+export type RetrieveCompletedOutputStatusEnum = "Completed" | (string & {});
 export const RetrieveCompletedOutputStatusEnum = /*@__PURE__*/ S.String;
 
 export type RetrieveCompletedOutputFilesList = ReadonlyArray<string>;
@@ -2711,7 +2726,8 @@ export type RetrieveFailedOutputStatusEnum =
   | "FailedRetryable"
   | "FailedBilling"
   | "Terminated"
-  | "TimedOut";
+  | "TimedOut"
+  | (string & {});
 export const RetrieveFailedOutputStatusEnum = /*@__PURE__*/ S.String;
 
 /** Typed output for view set `retrieve` with any of the failed statuses. */

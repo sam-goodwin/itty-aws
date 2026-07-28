@@ -42,7 +42,8 @@ export type DataModelingJobStatusEnum =
   | "Cancelled"
   | "Completed"
   | "Failed"
-  | "Running";
+  | "Running"
+  | (string & {});
 export const DataModelingJobStatusEnum = /*@__PURE__*/ S.String;
 
 export interface DataModelingJob {

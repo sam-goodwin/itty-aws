@@ -60,7 +60,11 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type DocumentTypeEnum = "TYPE_UNSPECIFIED" | "PLAIN_TEXT" | "HTML";
+export type DocumentTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "PLAIN_TEXT"
+  | "HTML"
+  | (string & {});
 export const DocumentTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents the input to API methods. */
@@ -87,7 +91,8 @@ export type AnalyzeEntitiesRequestEncodingTypeEnum =
   | "NONE"
   | "UTF8"
   | "UTF16"
-  | "UTF32";
+  | "UTF32"
+  | (string & {});
 export const AnalyzeEntitiesRequestEncodingTypeEnum = /*@__PURE__*/ S.String;
 
 /** The entity analysis request message. */
@@ -138,7 +143,11 @@ export const TextSpan = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TextSpan" }) as any as S.Schema<TextSpan>;
 
-export type EntityMentionTypeEnum = "TYPE_UNKNOWN" | "PROPER" | "COMMON";
+export type EntityMentionTypeEnum =
+  | "TYPE_UNKNOWN"
+  | "PROPER"
+  | "COMMON"
+  | (string & {});
 export const EntityMentionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents the feeling associated with the entire text or entities in the text. */
@@ -190,7 +199,8 @@ export type EntityTypeEnum =
   | "ADDRESS"
   | "DATE"
   | "NUMBER"
-  | "PRICE";
+  | "PRICE"
+  | (string & {});
 export const EntityTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -250,7 +260,8 @@ export type AnalyzeEntitySentimentRequestEncodingTypeEnum =
   | "NONE"
   | "UTF8"
   | "UTF16"
-  | "UTF32";
+  | "UTF32"
+  | (string & {});
 export const AnalyzeEntitySentimentRequestEncodingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -309,7 +320,8 @@ export type AnalyzeSentimentRequestEncodingTypeEnum =
   | "NONE"
   | "UTF8"
   | "UTF16"
-  | "UTF32";
+  | "UTF32"
+  | (string & {});
 export const AnalyzeSentimentRequestEncodingTypeEnum = /*@__PURE__*/ S.String;
 
 /** The sentiment analysis request message. */
@@ -388,7 +400,8 @@ export type AnalyzeSyntaxRequestEncodingTypeEnum =
   | "NONE"
   | "UTF8"
   | "UTF16"
-  | "UTF32";
+  | "UTF32"
+  | (string & {});
 export const AnalyzeSyntaxRequestEncodingTypeEnum = /*@__PURE__*/ S.String;
 
 /** The syntax analysis request message. */
@@ -430,14 +443,16 @@ export type PartOfSpeechPersonEnum =
   | "FIRST"
   | "SECOND"
   | "THIRD"
-  | "REFLEXIVE_PERSON";
+  | "REFLEXIVE_PERSON"
+  | (string & {});
 export const PartOfSpeechPersonEnum = /*@__PURE__*/ S.String;
 
 export type PartOfSpeechVoiceEnum =
   | "VOICE_UNKNOWN"
   | "ACTIVE"
   | "CAUSATIVE"
-  | "PASSIVE";
+  | "PASSIVE"
+  | (string & {});
 export const PartOfSpeechVoiceEnum = /*@__PURE__*/ S.String;
 
 export type PartOfSpeechMoodEnum =
@@ -447,7 +462,8 @@ export type PartOfSpeechMoodEnum =
   | "INDICATIVE"
   | "INTERROGATIVE"
   | "JUSSIVE"
-  | "SUBJUNCTIVE";
+  | "SUBJUNCTIVE"
+  | (string & {});
 export const PartOfSpeechMoodEnum = /*@__PURE__*/ S.String;
 
 export type PartOfSpeechFormEnum =
@@ -462,37 +478,46 @@ export type PartOfSpeechFormEnum =
   | "SHORT"
   | "LONG"
   | "ORDER"
-  | "SPECIFIC";
+  | "SPECIFIC"
+  | (string & {});
 export const PartOfSpeechFormEnum = /*@__PURE__*/ S.String;
 
 export type PartOfSpeechGenderEnum =
   | "GENDER_UNKNOWN"
   | "FEMININE"
   | "MASCULINE"
-  | "NEUTER";
+  | "NEUTER"
+  | (string & {});
 export const PartOfSpeechGenderEnum = /*@__PURE__*/ S.String;
 
 export type PartOfSpeechNumberEnum =
   | "NUMBER_UNKNOWN"
   | "SINGULAR"
   | "PLURAL"
-  | "DUAL";
+  | "DUAL"
+  | (string & {});
 export const PartOfSpeechNumberEnum = /*@__PURE__*/ S.String;
 
 export type PartOfSpeechReciprocityEnum =
   | "RECIPROCITY_UNKNOWN"
   | "RECIPROCAL"
-  | "NON_RECIPROCAL";
+  | "NON_RECIPROCAL"
+  | (string & {});
 export const PartOfSpeechReciprocityEnum = /*@__PURE__*/ S.String;
 
 export type PartOfSpeechAspectEnum =
   | "ASPECT_UNKNOWN"
   | "PERFECTIVE"
   | "IMPERFECTIVE"
-  | "PROGRESSIVE";
+  | "PROGRESSIVE"
+  | (string & {});
 export const PartOfSpeechAspectEnum = /*@__PURE__*/ S.String;
 
-export type PartOfSpeechProperEnum = "PROPER_UNKNOWN" | "PROPER" | "NOT_PROPER";
+export type PartOfSpeechProperEnum =
+  | "PROPER_UNKNOWN"
+  | "PROPER"
+  | "NOT_PROPER"
+  | (string & {});
 export const PartOfSpeechProperEnum = /*@__PURE__*/ S.String;
 
 export type PartOfSpeechTagEnum =
@@ -509,7 +534,8 @@ export type PartOfSpeechTagEnum =
   | "PUNCT"
   | "VERB"
   | "X"
-  | "AFFIX";
+  | "AFFIX"
+  | (string & {});
 export const PartOfSpeechTagEnum = /*@__PURE__*/ S.String;
 
 export type PartOfSpeechCaseEnum =
@@ -527,7 +553,8 @@ export type PartOfSpeechCaseEnum =
   | "PREPOSITIONAL"
   | "REFLEXIVE_CASE"
   | "RELATIVE_CASE"
-  | "VOCATIVE";
+  | "VOCATIVE"
+  | (string & {});
 export const PartOfSpeechCaseEnum = /*@__PURE__*/ S.String;
 
 export type PartOfSpeechTenseEnum =
@@ -537,7 +564,8 @@ export type PartOfSpeechTenseEnum =
   | "PAST"
   | "PRESENT"
   | "IMPERFECT"
-  | "PLUPERFECT";
+  | "PLUPERFECT"
+  | (string & {});
 export const PartOfSpeechTenseEnum = /*@__PURE__*/ S.String;
 
 /** Represents part of speech information for a token. Parts of speech are as defined in http://www.lrec-conf.org/proceedings/lrec2012/pdf/274_Paper.pdf */
@@ -667,7 +695,8 @@ export type DependencyEdgeLabelEnum =
   | "GOBJ"
   | "INFMOD"
   | "MES"
-  | "NCOMP";
+  | "NCOMP"
+  | (string & {});
 export const DependencyEdgeLabelEnum = /*@__PURE__*/ S.String;
 
 /** Represents dependency parse tree information for a token. (For more information on dependency labels, see http://www.aclweb.org/anthology/P13-2017 */
@@ -731,7 +760,8 @@ export const AnalyzeSyntaxResponse = /*@__PURE__*/ S.suspend(() =>
 export type ClassificationModelOptionsV2ModelContentCategoriesVersionEnum =
   | "CONTENT_CATEGORIES_VERSION_UNSPECIFIED"
   | "V1"
-  | "V2";
+  | "V2"
+  | (string & {});
 export const ClassificationModelOptionsV2ModelContentCategoriesVersionEnum =
   /*@__PURE__*/ S.String;
 
@@ -809,7 +839,8 @@ export type AnnotateTextRequestEncodingTypeEnum =
   | "NONE"
   | "UTF8"
   | "UTF16"
-  | "UTF32";
+  | "UTF32"
+  | (string & {});
 export const AnnotateTextRequestEncodingTypeEnum = /*@__PURE__*/ S.String;
 
 /** The request message for the text annotation API, which can perform multiple analysis types (sentiment, entities, and syntax) in one call. */

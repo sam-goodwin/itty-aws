@@ -161,13 +161,17 @@ export const CreateBillOfMaterialsImportJobResponse = /*@__PURE__*/ S.suspend(
   identifier: "CreateBillOfMaterialsImportJobResponse",
 }) as any as S.Schema<CreateBillOfMaterialsImportJobResponse>;
 export type DataIntegrationFlowName = string;
-export type DataIntegrationFlowSourceType = "S3" | "DATASET";
+export type DataIntegrationFlowSourceType = "S3" | "DATASET" | (string & {});
 export const DataIntegrationFlowSourceType = /*@__PURE__*/ S.String;
 
 export type DataIntegrationFlowSourceName = string;
 export type S3BucketName = string;
 export type DataIntegrationFlowS3Prefix = string;
-export type DataIntegrationFlowFileType = "CSV" | "PARQUET" | "JSON";
+export type DataIntegrationFlowFileType =
+  | "CSV"
+  | "PARQUET"
+  | "JSON"
+  | (string & {});
 export const DataIntegrationFlowFileType = /*@__PURE__*/ S.String;
 
 export interface DataIntegrationFlowS3Options {
@@ -194,14 +198,22 @@ export const DataIntegrationFlowS3SourceConfiguration = /*@__PURE__*/ S.suspend(
   identifier: "DataIntegrationFlowS3SourceConfiguration",
 }) as any as S.Schema<DataIntegrationFlowS3SourceConfiguration>;
 export type DatasetIdentifier = string;
-export type DataIntegrationFlowLoadType = "INCREMENTAL" | "REPLACE";
+export type DataIntegrationFlowLoadType =
+  | "INCREMENTAL"
+  | "REPLACE"
+  | (string & {});
 export const DataIntegrationFlowLoadType = /*@__PURE__*/ S.String;
 
-export type DataIntegrationFlowDedupeStrategyType = "FIELD_PRIORITY";
+export type DataIntegrationFlowDedupeStrategyType =
+  | "FIELD_PRIORITY"
+  | (string & {});
 export const DataIntegrationFlowDedupeStrategyType = /*@__PURE__*/ S.String;
 
 export type DataIntegrationFlowFieldPriorityDedupeFieldName = string;
-export type DataIntegrationFlowFieldPriorityDedupeSortOrder = "ASC" | "DESC";
+export type DataIntegrationFlowFieldPriorityDedupeSortOrder =
+  | "ASC"
+  | "DESC"
+  | (string & {});
 export const DataIntegrationFlowFieldPriorityDedupeSortOrder =
   /*@__PURE__*/ S.String;
 
@@ -292,7 +304,10 @@ export type DataIntegrationFlowSourceList = DataIntegrationFlowSource[];
 export const DataIntegrationFlowSourceList = /*@__PURE__*/ S.Array(
   DataIntegrationFlowSource,
 );
-export type DataIntegrationFlowTransformationType = "SQL" | "NONE";
+export type DataIntegrationFlowTransformationType =
+  | "SQL"
+  | "NONE"
+  | (string & {});
 export const DataIntegrationFlowTransformationType = /*@__PURE__*/ S.String;
 
 export type DataIntegrationFlowSQLQuery = string | redacted.Redacted<string>;
@@ -317,7 +332,7 @@ export const DataIntegrationFlowTransformation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataIntegrationFlowTransformation",
 }) as any as S.Schema<DataIntegrationFlowTransformation>;
-export type DataIntegrationFlowTargetType = "S3" | "DATASET";
+export type DataIntegrationFlowTargetType = "S3" | "DATASET" | (string & {});
 export const DataIntegrationFlowTargetType = /*@__PURE__*/ S.String;
 
 export interface DataIntegrationFlowS3TargetConfiguration {
@@ -419,7 +434,8 @@ export type DataLakeDatasetSchemaFieldType =
   | "DOUBLE"
   | "STRING"
   | "TIMESTAMP"
-  | "LONG";
+  | "LONG"
+  | (string & {});
 export const DataLakeDatasetSchemaFieldType = /*@__PURE__*/ S.String;
 
 export interface DataLakeDatasetSchemaField {
@@ -473,7 +489,8 @@ export type DataLakeDatasetPartitionTransformType =
   | "MONTH"
   | "DAY"
   | "HOUR"
-  | "IDENTITY";
+  | "IDENTITY"
+  | (string & {});
 export const DataLakeDatasetPartitionTransformType = /*@__PURE__*/ S.String;
 
 export interface DataLakeDatasetPartitionFieldTransform {
@@ -674,7 +691,8 @@ export type InstanceState =
   | "CreateFailed"
   | "DeleteFailed"
   | "Deleting"
-  | "Deleted";
+  | "Deleted"
+  | (string & {});
 export const InstanceState = /*@__PURE__*/ S.String;
 
 export interface Instance {
@@ -871,7 +889,8 @@ export type ConfigurationJobStatus =
   | "FAILED"
   | "IN_PROGRESS"
   | "QUEUED"
-  | "SUCCESS";
+  | "SUCCESS"
+  | (string & {});
 export const ConfigurationJobStatus = /*@__PURE__*/ S.String;
 
 export interface BillOfMaterialsImportJob {
@@ -940,7 +959,8 @@ export type DataIntegrationEventType =
   | "scn.data.shipmentstop"
   | "scn.data.shipmentstoporder"
   | "scn.data.supplyplan"
-  | "scn.data.dataset";
+  | "scn.data.dataset"
+  | (string & {});
 export const DataIntegrationEventType = /*@__PURE__*/ S.String;
 
 export type DataIntegrationEventGroupId = string;
@@ -948,13 +968,15 @@ export type DataIntegrationDatasetArn = string;
 export type DataIntegrationEventDatasetOperationType =
   | "APPEND"
   | "UPSERT"
-  | "DELETE";
+  | "DELETE"
+  | (string & {});
 export const DataIntegrationEventDatasetOperationType = /*@__PURE__*/ S.String;
 
 export type DataIntegrationEventDatasetLoadStatus =
   | "SUCCEEDED"
   | "IN_PROGRESS"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const DataIntegrationEventDatasetLoadStatus = /*@__PURE__*/ S.String;
 
 export interface DataIntegrationEventDatasetLoadExecutionDetails {
@@ -1097,7 +1119,8 @@ export const GetDataIntegrationFlowExecutionRequest = /*@__PURE__*/ S.suspend(
 export type DataIntegrationFlowExecutionStatus =
   | "SUCCEEDED"
   | "IN_PROGRESS"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const DataIntegrationFlowExecutionStatus = /*@__PURE__*/ S.String;
 
 export type DataIntegrationS3ObjectKey = string;

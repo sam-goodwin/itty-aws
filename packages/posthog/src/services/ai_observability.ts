@@ -36,7 +36,7 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 /** * `all` - all * `pass` - pass * `fail` - fail * `na` - na */
-export type FilterEnum = "all" | "pass" | "fail" | "na";
+export type FilterEnum = "all" | "pass" | "fail" | "na" | (string & {});
 export const FilterEnum = /*@__PURE__*/ S.String;
 
 /** Optional: specific generation IDs to include in summary (max 250) */
@@ -225,7 +225,8 @@ export type LlmAnalyticsPersonalSpendListRequestBucketMinutes =
   | 5
   | 15
   | 30
-  | 60;
+  | 60
+  | (number & {});
 export const LlmAnalyticsPersonalSpendListRequestBucketMinutes =
   /*@__PURE__*/ S.Number;
 
@@ -614,7 +615,7 @@ export const LlmAnalyticsSummarizationBatchCheckCreateRequestTraceIdsList =
   ) as any as S.Schema<LlmAnalyticsSummarizationBatchCheckCreateRequestTraceIdsList>;
 
 /** * `minimal` - minimal * `detailed` - detailed */
-export type DetailModeValueEnum = "minimal" | "detailed";
+export type DetailModeValueEnum = "minimal" | "detailed" | (string & {});
 export const DetailModeValueEnum = /*@__PURE__*/ S.String;
 
 export interface LlmAnalyticsSummarizationBatchCheckCreateRequest {
@@ -677,7 +678,7 @@ export const BatchCheckResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchCheckResponse>;
 
 /** * `trace` - trace * `event` - event */
-export type SummarizeTypeEnum = "trace" | "event";
+export type SummarizeTypeEnum = "trace" | "event" | (string & {});
 export const SummarizeTypeEnum = /*@__PURE__*/ S.String;
 
 export interface LlmAnalyticsSummarizationCreateRequest {
@@ -807,7 +808,8 @@ export type EventTypeEnum =
   | "$ai_generation"
   | "$ai_span"
   | "$ai_embedding"
-  | "$ai_trace";
+  | "$ai_trace"
+  | (string & {});
 export const EventTypeEnum = /*@__PURE__*/ S.String;
 
 export interface TextReprOptions {

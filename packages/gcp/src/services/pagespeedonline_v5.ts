@@ -43,7 +43,8 @@ export type RunpagespeedPagespeedapiCategoryEnum =
   | "PERFORMANCE"
   | "PWA"
   | "SEO"
-  | "AGENTIC_BROWSING";
+  | "AGENTIC_BROWSING"
+  | (string & {});
 export const RunpagespeedPagespeedapiCategoryEnum = /*@__PURE__*/ S.String;
 
 export type RunpagespeedPagespeedapiCategoryEnumList =
@@ -55,7 +56,8 @@ export const RunpagespeedPagespeedapiCategoryEnumList = /*@__PURE__*/ S.Array(
 export type RunpagespeedPagespeedapiStrategyEnum =
   | "STRATEGY_UNSPECIFIED"
   | "DESKTOP"
-  | "MOBILE";
+  | "MOBILE"
+  | (string & {});
 export const RunpagespeedPagespeedapiStrategyEnum = /*@__PURE__*/ S.String;
 
 export interface RunpagespeedPagespeedapiRequest {
@@ -506,7 +508,8 @@ export const AuditRefsList = /*@__PURE__*/ S.Array(
 export type LighthouseCategoryV5CategoryScoreDisplayModeEnum =
   | "CATEGORY_SCORE_DISPLAY_MODE_UNSPECIFIED"
   | "GAUGE"
-  | "FRACTION";
+  | "FRACTION"
+  | (string & {});
 export const LighthouseCategoryV5CategoryScoreDisplayModeEnum =
   /*@__PURE__*/ S.String;
 

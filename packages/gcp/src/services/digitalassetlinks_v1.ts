@@ -192,7 +192,8 @@ export type BulkCheckResponseBulkErrorCodeEnum =
   | "ERROR_CODE_WRONG_CONTENT_TYPE"
   | "ERROR_CODE_MALFORMED_CONTENT"
   | "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE"
-  | "ERROR_CODE_FETCH_BUDGET_EXHAUSTED";
+  | "ERROR_CODE_FETCH_BUDGET_EXHAUSTED"
+  | (string & {});
 export const BulkCheckResponseBulkErrorCodeEnum = /*@__PURE__*/ S.String;
 
 export type CheckResponseErrorCodeItemEnum =
@@ -206,7 +207,8 @@ export type CheckResponseErrorCodeItemEnum =
   | "ERROR_CODE_WRONG_CONTENT_TYPE"
   | "ERROR_CODE_MALFORMED_CONTENT"
   | "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE"
-  | "ERROR_CODE_FETCH_BUDGET_EXHAUSTED";
+  | "ERROR_CODE_FETCH_BUDGET_EXHAUSTED"
+  | (string & {});
 export const CheckResponseErrorCodeItemEnum = /*@__PURE__*/ S.String;
 
 export type CheckResponseErrorCodeItemEnumList =
@@ -381,7 +383,8 @@ export type ListResponseErrorCodeItemEnum =
   | "ERROR_CODE_WRONG_CONTENT_TYPE"
   | "ERROR_CODE_MALFORMED_CONTENT"
   | "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE"
-  | "ERROR_CODE_FETCH_BUDGET_EXHAUSTED";
+  | "ERROR_CODE_FETCH_BUDGET_EXHAUSTED"
+  | (string & {});
 export const ListResponseErrorCodeItemEnum = /*@__PURE__*/ S.String;
 
 export type ListResponseErrorCodeItemEnumList =

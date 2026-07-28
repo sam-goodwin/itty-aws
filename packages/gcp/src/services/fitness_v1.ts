@@ -70,7 +70,8 @@ export type AggregateRequestFilteredDataQualityStandardItemEnum =
   | "dataQualityBloodPressureBhsBA"
   | "dataQualityBloodPressureBhsBB"
   | "dataQualityBloodGlucoseIso151972003"
-  | "dataQualityBloodGlucoseIso151972013";
+  | "dataQualityBloodGlucoseIso151972013"
+  | (string & {});
 export const AggregateRequestFilteredDataQualityStandardItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -127,7 +128,11 @@ export const BucketBySession = /*@__PURE__*/ S.suspend(() =>
   identifier: "BucketBySession",
 }) as any as S.Schema<BucketBySession>;
 
-export type BucketByTimePeriodTypeEnum = "day" | "week" | "month";
+export type BucketByTimePeriodTypeEnum =
+  | "day"
+  | "week"
+  | "month"
+  | (string & {});
 export const BucketByTimePeriodTypeEnum = /*@__PURE__*/ S.String;
 
 export interface BucketByTimePeriod {
@@ -274,7 +279,8 @@ export type AggregateBucketTypeEnum =
   | "time"
   | "session"
   | "activityType"
-  | "activitySegment";
+  | "activitySegment"
+  | (string & {});
 export const AggregateBucketTypeEnum = /*@__PURE__*/ S.String;
 
 /** Holder object for the value of an entry in a map field of a data point. A map value supports a subset of the formats that the regular Value supports. */
@@ -447,7 +453,8 @@ export type DataTypeFieldFormatEnum =
   | "map"
   | "integerList"
   | "floatList"
-  | "blob";
+  | "blob"
+  | (string & {});
 export const DataTypeFieldFormatEnum = /*@__PURE__*/ S.String;
 
 /** In case of multi-dimensional data (such as an accelerometer with x, y, and z axes) each field represents one dimension. Each data type field has a unique name which identifies it. The field also defines the format of the data (int, float, etc.). This message is only instantiated in code and not used for wire comms or stored in any way. */
@@ -494,7 +501,8 @@ export type DataSourceDataQualityStandardItemEnum =
   | "dataQualityBloodPressureBhsBA"
   | "dataQualityBloodPressureBhsBB"
   | "dataQualityBloodGlucoseIso151972003"
-  | "dataQualityBloodGlucoseIso151972013";
+  | "dataQualityBloodGlucoseIso151972013"
+  | (string & {});
 export const DataSourceDataQualityStandardItemEnum = /*@__PURE__*/ S.String;
 
 export type DataSourceDataQualityStandardItemEnumList =
@@ -511,7 +519,8 @@ export type DeviceTypeEnum =
   | "chestStrap"
   | "scale"
   | "headMounted"
-  | "smartDisplay";
+  | "smartDisplay"
+  | (string & {});
 export const DeviceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Representation of an integrated device (such as a phone or a wearable) that can hold sensors. Each sensor is exposed as a data source. The main purpose of the device information contained in this class is to identify the hardware of a particular data source. This can be useful in different ways, including: - Distinguishing two similar sensors on different devices (the step counter on two nexus 5 phones, for instance) - Display the source of data to the user (by using the device make / model) - Treat data differently depending on sensor type (accelerometers on a watch may give different patterns than those on a phone) - Build different analysis models for each device/version. */
@@ -537,7 +546,7 @@ export const Device = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Device" }) as any as S.Schema<Device>;
 
-export type DataSourceTypeEnum = "raw" | "derived";
+export type DataSourceTypeEnum = "raw" | "derived" | (string & {});
 export const DataSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Definition of a unique source of sensor data. Data sources can expose raw data coming from hardware sensors on local or companion devices. They can also expose derived data, created by transforming or merging other data sources. Multiple data sources can exist for the same data type. Every data point inserted into or read from this service has an associated data source. The data source contains enough information to uniquely identify its data, including the hardware device and the application that collected and/or transformed the data. It also holds useful metadata, such as the hardware and application versions, and the device type. Each data source produces a unique stream of data, with a unique identifier. Not all changes to data source affect the stream identifier, so that data collected by updated versions of the same application/device can still be considered to belong to the same data stream. */

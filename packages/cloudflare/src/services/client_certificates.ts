@@ -102,7 +102,8 @@ export type CreateResponseStatus =
   | "active"
   | "pending_reactivation"
   | "pending_revocation"
-  | "revoked";
+  | "revoked"
+  | (string & {});
 export const CreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -213,7 +214,8 @@ export type DeleteResponseStatus =
   | "active"
   | "pending_reactivation"
   | "pending_revocation"
-  | "revoked";
+  | "revoked"
+  | (string & {});
 export const DeleteResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -324,7 +326,8 @@ export type GetResponseStatus =
   | "active"
   | "pending_reactivation"
   | "pending_revocation"
-  | "revoked";
+  | "revoked"
+  | (string & {});
 export const GetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -400,7 +403,8 @@ export type ListRequestStatus =
   | "active"
   | "pending_reactivation"
   | "pending_revocation"
-  | "revoked";
+  | "revoked"
+  | (string & {});
 export const ListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ListClientCertificatesRequest {
@@ -455,7 +459,8 @@ export type ListResultItemStatus =
   | "active"
   | "pending_reactivation"
   | "pending_revocation"
-  | "revoked";
+  | "revoked"
+  | (string & {});
 export const ListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface ListResultItem {
@@ -585,7 +590,8 @@ export type EditResponseStatus =
   | "active"
   | "pending_reactivation"
   | "pending_revocation"
-  | "revoked";
+  | "revoked"
+  | (string & {});
 export const EditResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

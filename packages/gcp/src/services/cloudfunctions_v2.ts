@@ -205,7 +205,8 @@ export type GoogleCloudFunctionsV2StateMessageSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
-  | "INFO";
+  | "INFO"
+  | (string & {});
 export const GoogleCloudFunctionsV2StateMessageSeverityEnum =
   /*@__PURE__*/ S.String;
 
@@ -238,7 +239,8 @@ export type ServiceConfigIngressSettingsEnum =
   | "INGRESS_SETTINGS_UNSPECIFIED"
   | "ALLOW_ALL"
   | "ALLOW_INTERNAL_ONLY"
-  | "ALLOW_INTERNAL_AND_GCLB";
+  | "ALLOW_INTERNAL_AND_GCLB"
+  | (string & {});
 export const ServiceConfigIngressSettingsEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -274,7 +276,8 @@ export const DirectVpcNetworkInterfaceList = /*@__PURE__*/ S.Array(
 export type ServiceConfigDirectVpcEgressEnum =
   | "DIRECT_VPC_EGRESS_UNSPECIFIED"
   | "VPC_EGRESS_PRIVATE_RANGES_ONLY"
-  | "VPC_EGRESS_ALL_TRAFFIC";
+  | "VPC_EGRESS_ALL_TRAFFIC"
+  | (string & {});
 export const ServiceConfigDirectVpcEgressEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -311,13 +314,15 @@ export const SecretEnvVarList = /*@__PURE__*/ S.Array(
 export type ServiceConfigSecurityLevelEnum =
   | "SECURITY_LEVEL_UNSPECIFIED"
   | "SECURE_ALWAYS"
-  | "SECURE_OPTIONAL";
+  | "SECURE_OPTIONAL"
+  | (string & {});
 export const ServiceConfigSecurityLevelEnum = /*@__PURE__*/ S.String;
 
 export type ServiceConfigVpcConnectorEgressSettingsEnum =
   | "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED"
   | "PRIVATE_RANGES_ONLY"
-  | "ALL_TRAFFIC";
+  | "ALL_TRAFFIC"
+  | (string & {});
 export const ServiceConfigVpcConnectorEgressSettingsEnum =
   /*@__PURE__*/ S.String;
 
@@ -463,7 +468,8 @@ export const EventFilterList = /*@__PURE__*/ S.Array(
 export type EventTriggerRetryPolicyEnum =
   | "RETRY_POLICY_UNSPECIFIED"
   | "RETRY_POLICY_DO_NOT_RETRY"
-  | "RETRY_POLICY_RETRY";
+  | "RETRY_POLICY_RETRY"
+  | (string & {});
 export const EventTriggerRetryPolicyEnum = /*@__PURE__*/ S.String;
 
 /** Describes EventTrigger, used to request events to be sent from another service. */
@@ -504,7 +510,8 @@ export const EventTrigger = /*@__PURE__*/ S.suspend(() =>
 export type Cloudfunctions_FunctionEnvironmentEnum =
   | "ENVIRONMENT_UNSPECIFIED"
   | "GEN_1"
-  | "GEN_2";
+  | "GEN_2"
+  | (string & {});
 export const Cloudfunctions_FunctionEnvironmentEnum = /*@__PURE__*/ S.String;
 
 export type UpgradeInfoUpgradeStateEnum =
@@ -521,7 +528,8 @@ export type UpgradeInfoUpgradeStateEnum =
   | "COMMIT_FUNCTION_UPGRADE_ERROR"
   | "COMMIT_FUNCTION_UPGRADE_ERROR_ROLLBACK_SAFE"
   | "COMMIT_FUNCTION_UPGRADE_AS_GEN2_SUCCESSFUL"
-  | "COMMIT_FUNCTION_UPGRADE_AS_GEN2_ERROR";
+  | "COMMIT_FUNCTION_UPGRADE_AS_GEN2_ERROR"
+  | (string & {});
 export const UpgradeInfoUpgradeStateEnum = /*@__PURE__*/ S.String;
 
 /** Location of the source in a Google Cloud Source Repository. */
@@ -605,7 +613,8 @@ export const OnDeployUpdatePolicy = /*@__PURE__*/ S.suspend(() =>
 export type BuildConfigDockerRegistryEnum =
   | "DOCKER_REGISTRY_UNSPECIFIED"
   | "CONTAINER_REGISTRY"
-  | "ARTIFACT_REGISTRY";
+  | "ARTIFACT_REGISTRY"
+  | (string & {});
 export const BuildConfigDockerRegistryEnum = /*@__PURE__*/ S.String;
 
 /** The location of the function source code. */
@@ -706,7 +715,8 @@ export type Cloudfunctions_FunctionStateEnum =
   | "DELETING"
   | "UNKNOWN"
   | "DETACHING"
-  | "DETACH_FAILED";
+  | "DETACH_FAILED"
+  | (string & {});
 export const Cloudfunctions_FunctionStateEnum = /*@__PURE__*/ S.String;
 
 /** Describes a Cloud Function that contains user computation executed in response to an event. It encapsulates function and trigger configurations. */
@@ -887,7 +897,8 @@ export const GenerateDownloadUrlResponse = /*@__PURE__*/ S.suspend(() =>
 export type GenerateUploadUrlRequestEnvironmentEnum =
   | "ENVIRONMENT_UNSPECIFIED"
   | "GEN_1"
-  | "GEN_2";
+  | "GEN_2"
+  | (string & {});
 export const GenerateUploadUrlRequestEnvironmentEnum = /*@__PURE__*/ S.String;
 
 /** Request of `GenerateSourceUploadUrl` method. */
@@ -1012,7 +1023,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1328,7 +1340,8 @@ export type RuntimeStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED"
-  | "DECOMMISSIONED";
+  | "DECOMMISSIONED"
+  | (string & {});
 export const RuntimeStageEnum = /*@__PURE__*/ S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -1353,7 +1366,8 @@ export const Cloudfunctions_Date = /*@__PURE__*/ S.suspend(() =>
 export type RuntimeEnvironmentEnum =
   | "ENVIRONMENT_UNSPECIFIED"
   | "GEN_1"
-  | "GEN_2";
+  | "GEN_2"
+  | (string & {});
 export const RuntimeEnvironmentEnum = /*@__PURE__*/ S.String;
 
 /** Describes a runtime and any special information (e.g., deprecation status) related to it. */

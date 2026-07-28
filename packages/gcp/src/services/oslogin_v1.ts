@@ -170,7 +170,8 @@ export const GetLoginProfileUsersRequest = /*@__PURE__*/ S.suspend(() =>
 export type PosixAccountOperatingSystemTypeEnum =
   | "OPERATING_SYSTEM_TYPE_UNSPECIFIED"
   | "LINUX"
-  | "WINDOWS";
+  | "WINDOWS"
+  | (string & {});
 export const PosixAccountOperatingSystemTypeEnum = /*@__PURE__*/ S.String;
 
 /** The POSIX account information associated with a Google account. */

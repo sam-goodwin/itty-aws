@@ -3248,7 +3248,7 @@ export const GetS3AccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetS3AccessPolicyRequest",
 }) as any as S.Schema<GetS3AccessPolicyRequest>;
 export type StoreId = string;
-export type StoreType = "SEQUENCE_STORE" | "REFERENCE_STORE";
+export type StoreType = "SEQUENCE_STORE" | "REFERENCE_STORE" | (string & {});
 export const StoreType = /*@__PURE__*/ S.String;
 
 export type S3AccessPolicy = string;

@@ -172,7 +172,10 @@ export const TagMap = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export type KMSKeyId = string;
-export type EncryptionOption = "AWS_OWNED_CMK" | "CUSTOMER_MANAGED_CMK";
+export type EncryptionOption =
+  | "AWS_OWNED_CMK"
+  | "CUSTOMER_MANAGED_CMK"
+  | (string & {});
 export const EncryptionOption = /*@__PURE__*/ S.String;
 
 export interface KMSKeyDetails {
@@ -217,7 +220,8 @@ export type ProviderType =
   | "GitHub"
   | "Bitbucket"
   | "GitHubEnterpriseServer"
-  | "S3Bucket";
+  | "S3Bucket"
+  | (string & {});
 export const ProviderType = /*@__PURE__*/ S.String;
 
 export type RepositoryAssociationState =
@@ -225,7 +229,8 @@ export type RepositoryAssociationState =
   | "Associating"
   | "Failed"
   | "Disassociating"
-  | "Disassociated";
+  | "Disassociated"
+  | (string & {});
 export const RepositoryAssociationState = /*@__PURE__*/ S.String;
 
 export type StateReason = string;
@@ -356,7 +361,7 @@ export interface EventInfo {
 export const EventInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(S.String), State: S.optional(S.String) }),
 ).annotate({ identifier: "EventInfo" }) as any as S.Schema<EventInfo>;
-export type VendorName = "GitHub" | "GitLab" | "NativeS3";
+export type VendorName = "GitHub" | "GitLab" | "NativeS3" | (string & {});
 export const VendorName = /*@__PURE__*/ S.String;
 
 export interface RequestMetadata {
@@ -403,7 +408,7 @@ export const RepositoryAnalysis = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RepositoryAnalysis",
 }) as any as S.Schema<RepositoryAnalysis>;
-export type AnalysisType = "Security" | "CodeQuality";
+export type AnalysisType = "Security" | "CodeQuality" | (string & {});
 export const AnalysisType = /*@__PURE__*/ S.String;
 
 export type AnalysisTypes = AnalysisType[];
@@ -443,10 +448,15 @@ export const CreateCodeReviewRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCodeReviewRequest",
 }) as any as S.Schema<CreateCodeReviewRequest>;
-export type JobState = "Completed" | "Pending" | "Failed" | "Deleting";
+export type JobState =
+  | "Completed"
+  | "Pending"
+  | "Failed"
+  | "Deleting"
+  | (string & {});
 export const JobState = /*@__PURE__*/ S.String;
 
-export type Type = "PullRequest" | "RepositoryAnalysis";
+export type Type = "PullRequest" | "RepositoryAnalysis" | (string & {});
 export const Type = /*@__PURE__*/ S.String;
 
 export type PullRequestId = string;
@@ -464,7 +474,11 @@ export const Metrics = /*@__PURE__*/ S.suspend(() =>
     FindingsCount: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Metrics" }) as any as S.Schema<Metrics>;
-export type ConfigFileState = "Present" | "Absent" | "PresentWithErrors";
+export type ConfigFileState =
+  | "Present"
+  | "Absent"
+  | "PresentWithErrors"
+  | (string & {});
 export const ConfigFileState = /*@__PURE__*/ S.String;
 
 export interface CodeReview {
@@ -568,7 +582,7 @@ export const DescribeRecommendationFeedbackRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeRecommendationFeedbackRequest",
 }) as any as S.Schema<DescribeRecommendationFeedbackRequest>;
-export type Reaction = "ThumbsUp" | "ThumbsDown";
+export type Reaction = "ThumbsUp" | "ThumbsDown" | (string & {});
 export const Reaction = /*@__PURE__*/ S.String;
 
 export type Reactions = Reaction[];
@@ -881,7 +895,8 @@ export type RecommendationCategory =
   | "JavaBestPractices"
   | "ResourceLeaks"
   | "SecurityIssues"
-  | "CodeInconsistencies";
+  | "CodeInconsistencies"
+  | (string & {});
 export const RecommendationCategory = /*@__PURE__*/ S.String;
 
 export type RuleId = string;
@@ -907,7 +922,13 @@ export const RuleMetadata = /*@__PURE__*/ S.suspend(() =>
     RuleTags: S.optional(RuleTags),
   }),
 ).annotate({ identifier: "RuleMetadata" }) as any as S.Schema<RuleMetadata>;
-export type Severity = "Info" | "Low" | "Medium" | "High" | "Critical";
+export type Severity =
+  | "Info"
+  | "Low"
+  | "Medium"
+  | "High"
+  | "Critical"
+  | (string & {});
 export const Severity = /*@__PURE__*/ S.String;
 
 export interface RecommendationSummary {

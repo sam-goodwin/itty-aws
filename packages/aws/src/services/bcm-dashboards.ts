@@ -116,12 +116,13 @@ export type MetricName =
   | "SpendCoveredBySavingsPlans"
   | "Hour"
   | "Unit"
-  | "Cost";
+  | "Cost"
+  | (string & {});
 export const MetricName = /*@__PURE__*/ S.String;
 
 export type MetricNames = MetricName[];
 export const MetricNames = /*@__PURE__*/ S.Array(MetricName);
-export type DateTimeType = "ABSOLUTE" | "RELATIVE";
+export type DateTimeType = "ABSOLUTE" | "RELATIVE" | (string & {});
 export const DateTimeType = /*@__PURE__*/ S.String;
 
 export interface DateTimeValue {
@@ -138,10 +139,14 @@ export interface DateTimeRange {
 export const DateTimeRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ startTime: DateTimeValue, endTime: DateTimeValue }),
 ).annotate({ identifier: "DateTimeRange" }) as any as S.Schema<DateTimeRange>;
-export type Granularity = "HOURLY" | "DAILY" | "MONTHLY";
+export type Granularity = "HOURLY" | "DAILY" | "MONTHLY" | (string & {});
 export const Granularity = /*@__PURE__*/ S.String;
 
-export type GroupDefinitionType = "DIMENSION" | "TAG" | "COST_CATEGORY";
+export type GroupDefinitionType =
+  | "DIMENSION"
+  | "TAG"
+  | "COST_CATEGORY"
+  | (string & {});
 export const GroupDefinitionType = /*@__PURE__*/ S.String;
 
 export interface GroupDefinition {
@@ -187,7 +192,8 @@ export type Dimension =
   | "CACHE_ENGINE"
   | "DEPLOYMENT_OPTION"
   | "SCOPE"
-  | "PLATFORM";
+  | "PLATFORM"
+  | (string & {});
 export const Dimension = /*@__PURE__*/ S.String;
 
 export type StringList = string[];
@@ -200,7 +206,8 @@ export type MatchOption =
   | "CONTAINS"
   | "GREATER_THAN_OR_EQUAL"
   | "CASE_SENSITIVE"
-  | "CASE_INSENSITIVE";
+  | "CASE_INSENSITIVE"
+  | (string & {});
 export const MatchOption = /*@__PURE__*/ S.String;
 
 export type MatchOptions = MatchOption[];
@@ -398,7 +405,7 @@ export const QueryParameters = /*@__PURE__*/ S.Union([
   S.Struct({ reservationCoverage: ReservationCoverageQuery }),
   S.Struct({ reservationUtilization: ReservationUtilizationQuery }),
 ]);
-export type VisualType = "LINE" | "BAR" | "STACK";
+export type VisualType = "LINE" | "BAR" | "STACK" | (string & {});
 export const VisualType = /*@__PURE__*/ S.String;
 
 export interface GraphDisplayConfig {
@@ -510,7 +517,7 @@ export const SchedulePeriod = /*@__PURE__*/ S.suspend(() =>
     endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
   }),
 ).annotate({ identifier: "SchedulePeriod" }) as any as S.Schema<SchedulePeriod>;
-export type ScheduleState = "ENABLED" | "DISABLED";
+export type ScheduleState = "ENABLED" | "DISABLED" | (string & {});
 export const ScheduleState = /*@__PURE__*/ S.String;
 
 export interface ScheduleConfig {
@@ -635,7 +642,7 @@ export const ExecuteScheduledReportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExecuteScheduledReportRequest",
 }) as any as S.Schema<ExecuteScheduledReportRequest>;
-export type HealthStatusCode = "HEALTHY" | "UNHEALTHY";
+export type HealthStatusCode = "HEALTHY" | "UNHEALTHY" | (string & {});
 export const HealthStatusCode = /*@__PURE__*/ S.String;
 
 export type StatusReason =
@@ -645,7 +652,8 @@ export type StatusReason =
   | "DASHBOARD_NOT_FOUND"
   | "DASHBOARD_ACCESS_DENIED"
   | "INTERNAL_FAILURE"
-  | "WIDGET_ID_NOT_FOUND";
+  | "WIDGET_ID_NOT_FOUND"
+  | (string & {});
 export const StatusReason = /*@__PURE__*/ S.String;
 
 export type StatusReasonList = StatusReason[];
@@ -686,7 +694,7 @@ export const GetDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDashboardRequest",
 }) as any as S.Schema<GetDashboardRequest>;
-export type DashboardType = "CUSTOM";
+export type DashboardType = "CUSTOM" | (string & {});
 export const DashboardType = /*@__PURE__*/ S.String;
 
 export interface GetDashboardResponse {

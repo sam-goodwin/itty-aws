@@ -256,7 +256,8 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 export type McpServerSpecTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "NO_SPEC"
-  | "TOOL_SPEC";
+  | "TOOL_SPEC"
+  | (string & {});
 export const McpServerSpecTypeEnum = /*@__PURE__*/ S.String;
 
 /** The spec of the MCP Server. */
@@ -276,7 +277,8 @@ export const McpServerSpec = /*@__PURE__*/ S.suspend(() =>
 export type AgentSpecTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "NO_SPEC"
-  | "A2A_AGENT_CARD";
+  | "A2A_AGENT_CARD"
+  | (string & {});
 export const AgentSpecTypeEnum = /*@__PURE__*/ S.String;
 
 /** The spec of the agent. */
@@ -293,7 +295,10 @@ export const AgentSpec = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AgentSpec" }) as any as S.Schema<AgentSpec>;
 
-export type EndpointSpecTypeEnum = "TYPE_UNSPECIFIED" | "NO_SPEC";
+export type EndpointSpecTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "NO_SPEC"
+  | (string & {});
 export const EndpointSpecTypeEnum = /*@__PURE__*/ S.String;
 
 /** The spec of the endpoint. */
@@ -314,7 +319,8 @@ export type InterfaceProtocolBindingEnum =
   | "PROTOCOL_BINDING_UNSPECIFIED"
   | "JSONRPC"
   | "GRPC"
-  | "HTTP_JSON";
+  | "HTTP_JSON"
+  | (string & {});
 export const InterfaceProtocolBindingEnum = /*@__PURE__*/ S.String;
 
 /** Represents the connection details for an Agent or MCP Server. */
@@ -610,7 +616,10 @@ export const A2ASkillList = /*@__PURE__*/ S.Array(
   A2ASkill,
 ) as any as S.Schema<A2ASkillList>;
 
-export type CardTypeEnum = "TYPE_UNSPECIFIED" | "A2A_AGENT_CARD";
+export type CardTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "A2A_AGENT_CARD"
+  | (string & {});
 export const CardTypeEnum = /*@__PURE__*/ S.String;
 
 /** Full Agent Card payload, often obtained from the A2A Agent Card. */
@@ -633,7 +642,11 @@ export const DocumentMapMap = /*@__PURE__*/ S.Record(
   DocumentMap,
 ) as any as S.Schema<DocumentMapMap>;
 
-export type ProtocolTypeEnum = "TYPE_UNSPECIFIED" | "A2A_AGENT" | "CUSTOM";
+export type ProtocolTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "A2A_AGENT"
+  | "CUSTOM"
+  | (string & {});
 export const ProtocolTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents the protocol of an Agent. */

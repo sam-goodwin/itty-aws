@@ -37,7 +37,8 @@ export class NotFound extends T.applyErrorMatchers(
 
 export type HeatmapsEventsRetrieveRequestAggregation =
   | "unique_visitors"
-  | "total_count";
+  | "total_count"
+  | (string & {});
 export const HeatmapsEventsRetrieveRequestAggregation = /*@__PURE__*/ S.String;
 
 export interface HeatmapsEventsRetrieveRequest {
@@ -145,7 +146,10 @@ export const HeatmapEventsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "HeatmapEventsResponse",
 }) as any as S.Schema<HeatmapEventsResponse>;
 
-export type HeatmapsListRequestAggregation = "unique_visitors" | "total_count";
+export type HeatmapsListRequestAggregation =
+  | "unique_visitors"
+  | "total_count"
+  | (string & {});
 export const HeatmapsListRequestAggregation = /*@__PURE__*/ S.String;
 
 export interface HeatmapsListRequest {

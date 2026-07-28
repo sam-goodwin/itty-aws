@@ -589,7 +589,8 @@ export type GetV1AppsByAppIdDomainsResponseDataItemStatus =
   | "provisioning_tls"
   | "active"
   | "failed"
-  | "removing";
+  | "removing"
+  | (string & {});
 export const GetV1AppsByAppIdDomainsResponseDataItemStatus =
   /*@__PURE__*/ S.String;
 
@@ -597,7 +598,8 @@ export type GetV1AppsByAppIdDomainsResponseDataItemFailureCategory =
   | "dns"
   | "acme"
   | "storage"
-  | "unknown";
+  | "unknown"
+  | (string & {});
 export const GetV1AppsByAppIdDomainsResponseDataItemFailureCategory =
   /*@__PURE__*/ S.String;
 
@@ -711,7 +713,10 @@ export const GetV1BranchesByBranchIdRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV1BranchesByBranchIdRequest",
 }) as any as S.Schema<GetV1BranchesByBranchIdRequest>;
 
-export type GetV1BranchesByBranchIdResponseDataRole = "production" | "preview";
+export type GetV1BranchesByBranchIdResponseDataRole =
+  | "production"
+  | "preview"
+  | (string & {});
 export const GetV1BranchesByBranchIdResponseDataRole = /*@__PURE__*/ S.String;
 
 /** Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
@@ -949,7 +954,8 @@ export const GetV1BucketsByBucketIdKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetV1BucketsByBucketIdKeysResponseDataItemRole =
   | "read"
-  | "read_write";
+  | "read_write"
+  | (string & {});
 export const GetV1BucketsByBucketIdKeysResponseDataItemRole =
   /*@__PURE__*/ S.String;
 
@@ -1010,7 +1016,10 @@ export const GetV1BucketsByBucketIdKeysResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV1BucketsByBucketIdKeysResponse",
 }) as any as S.Schema<GetV1BucketsByBucketIdKeysResponse>;
 
-export type GetV1BuildsByBuildIdLogsRequestFollow = "true" | "false";
+export type GetV1BuildsByBuildIdLogsRequestFollow =
+  | "true"
+  | "false"
+  | (string & {});
 export const GetV1BuildsByBuildIdLogsRequestFollow = /*@__PURE__*/ S.String;
 
 export interface GetV1BuildsByBuildIdLogsRequest {
@@ -1052,7 +1061,10 @@ export const GetV1ConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV1ConnectionsRequest",
 }) as any as S.Schema<GetV1ConnectionsRequest>;
 
-export type GetV1ConnectionsResponseDataItemKind = "postgres" | "accelerate";
+export type GetV1ConnectionsResponseDataItemKind =
+  | "postgres"
+  | "accelerate"
+  | (string & {});
 export const GetV1ConnectionsResponseDataItemKind = /*@__PURE__*/ S.String;
 
 export interface GetV1ConnectionsResponseDataItemEndpointsDirect {
@@ -1223,7 +1235,10 @@ export const GetV1ConnectionsByIdRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV1ConnectionsByIdRequest",
 }) as any as S.Schema<GetV1ConnectionsByIdRequest>;
 
-export type GetV1ConnectionsByIdResponseDataKind = "postgres" | "accelerate";
+export type GetV1ConnectionsByIdResponseDataKind =
+  | "postgres"
+  | "accelerate"
+  | (string & {});
 export const GetV1ConnectionsByIdResponseDataKind = /*@__PURE__*/ S.String;
 
 export interface GetV1ConnectionsByIdResponseDataEndpointsDirect {
@@ -1383,12 +1398,14 @@ export type GetV1DatabasesResponseDataItemStatus =
   | "failure"
   | "provisioning"
   | "ready"
-  | "recovering";
+  | "recovering"
+  | (string & {});
 export const GetV1DatabasesResponseDataItemStatus = /*@__PURE__*/ S.String;
 
 export type GetV1DatabasesResponseDataItemConnectionsItemKind =
   | "postgres"
-  | "accelerate";
+  | "accelerate"
+  | (string & {});
 export const GetV1DatabasesResponseDataItemConnectionsItemKind =
   /*@__PURE__*/ S.String;
 
@@ -1700,13 +1717,15 @@ export type GetV1DatabasesByDatabaseIdResponseDataStatus =
   | "failure"
   | "provisioning"
   | "ready"
-  | "recovering";
+  | "recovering"
+  | (string & {});
 export const GetV1DatabasesByDatabaseIdResponseDataStatus =
   /*@__PURE__*/ S.String;
 
 export type GetV1DatabasesByDatabaseIdResponseDataConnectionsItemKind =
   | "postgres"
-  | "accelerate";
+  | "accelerate"
+  | (string & {});
 export const GetV1DatabasesByDatabaseIdResponseDataConnectionsItemKind =
   /*@__PURE__*/ S.String;
 
@@ -2008,7 +2027,8 @@ export const GetV1DatabasesByDatabaseIdBackupsRequest = /*@__PURE__*/ S.suspend(
 /** Type of backup */
 export type GetV1DatabasesByDatabaseIdBackupsResponseDataItemBackupType =
   | "full"
-  | "incremental";
+  | "incremental"
+  | (string & {});
 export const GetV1DatabasesByDatabaseIdBackupsResponseDataItemBackupType =
   /*@__PURE__*/ S.String;
 
@@ -2017,7 +2037,8 @@ export type GetV1DatabasesByDatabaseIdBackupsResponseDataItemStatus =
   | "running"
   | "completed"
   | "failed"
-  | "unknown";
+  | "unknown"
+  | (string & {});
 export const GetV1DatabasesByDatabaseIdBackupsResponseDataItemStatus =
   /*@__PURE__*/ S.String;
 
@@ -2121,7 +2142,8 @@ export const GetV1DatabasesByDatabaseIdConnectionsRequest =
 
 export type GetV1DatabasesByDatabaseIdConnectionsResponseDataItemKind =
   | "postgres"
-  | "accelerate";
+  | "accelerate"
+  | (string & {});
 export const GetV1DatabasesByDatabaseIdConnectionsResponseDataItemKind =
   /*@__PURE__*/ S.String;
 
@@ -2476,7 +2498,8 @@ export const GetV1DeploymentsByDeploymentIdResponse = /*@__PURE__*/ S.suspend(
 
 export type GetV1DeploymentsByDeploymentIdLogsRequestFromStart =
   | "true"
-  | "false";
+  | "false"
+  | (string & {});
 export const GetV1DeploymentsByDeploymentIdLogsRequestFromStart =
   /*@__PURE__*/ S.String;
 
@@ -2530,14 +2553,16 @@ export type GetV1DomainsByDomainIdResponseDataStatus =
   | "provisioning_tls"
   | "active"
   | "failed"
-  | "removing";
+  | "removing"
+  | (string & {});
 export const GetV1DomainsByDomainIdResponseDataStatus = /*@__PURE__*/ S.String;
 
 export type GetV1DomainsByDomainIdResponseDataFailureCategory =
   | "dns"
   | "acme"
   | "storage"
-  | "unknown";
+  | "unknown"
+  | (string & {});
 export const GetV1DomainsByDomainIdResponseDataFailureCategory =
   /*@__PURE__*/ S.String;
 
@@ -2617,7 +2642,10 @@ export const GetV1DomainsByDomainIdResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV1DomainsByDomainIdResponse",
 }) as any as S.Schema<GetV1DomainsByDomainIdResponse>;
 
-export type GetV1EnvironmentVariablesRequestClass = "production" | "preview";
+export type GetV1EnvironmentVariablesRequestClass =
+  | "production"
+  | "preview"
+  | (string & {});
 export const GetV1EnvironmentVariablesRequestClass = /*@__PURE__*/ S.String;
 
 export interface GetV1EnvironmentVariablesRequest {
@@ -2645,7 +2673,8 @@ export const GetV1EnvironmentVariablesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetV1EnvironmentVariablesResponseDataItemClass =
   | "production"
-  | "preview";
+  | "preview"
+  | (string & {});
 export const GetV1EnvironmentVariablesResponseDataItemClass =
   /*@__PURE__*/ S.String;
 
@@ -2736,7 +2765,8 @@ export const GetV1EnvironmentVariablesByEnvVarIdRequest =
 
 export type GetV1EnvironmentVariablesByEnvVarIdResponseDataClass =
   | "production"
-  | "preview";
+  | "preview"
+  | (string & {});
 export const GetV1EnvironmentVariablesByEnvVarIdResponseDataClass =
   /*@__PURE__*/ S.String;
 
@@ -3009,7 +3039,8 @@ export const GetV1MeResponseDataWorkspace = /*@__PURE__*/ S.suspend(() =>
 export type GetV1MeResponseDataCredentialType =
   | "oauth"
   | "service_token"
-  | "management_token";
+  | "management_token"
+  | (string & {});
 export const GetV1MeResponseDataCredentialType = /*@__PURE__*/ S.String;
 
 export interface GetV1MeResponseDataCredential {
@@ -3228,7 +3259,8 @@ export const GetV1ProjectsByProjectIdBranchesRequest = /*@__PURE__*/ S.suspend(
 
 export type GetV1ProjectsByProjectIdBranchesResponseDataItemRole =
   | "production"
-  | "preview";
+  | "preview"
+  | (string & {});
 export const GetV1ProjectsByProjectIdBranchesResponseDataItemRole =
   /*@__PURE__*/ S.String;
 
@@ -3339,12 +3371,13 @@ export type GetV1ProjectsByProjectIdDatabasesResponseDataItemStatus =
   | "failure"
   | "provisioning"
   | "ready"
-  | "recovering";
+  | "recovering"
+  | (string & {});
 export const GetV1ProjectsByProjectIdDatabasesResponseDataItemStatus =
   /*@__PURE__*/ S.String;
 
 export type GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemKind =
-  "postgres" | "accelerate";
+  "postgres" | "accelerate" | (string & {});
 export const GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemKind =
   /*@__PURE__*/ S.String;
 
@@ -3654,7 +3687,10 @@ export const GetV1ProjectsByProjectIdDatabasesResponse =
     identifier: "GetV1ProjectsByProjectIdDatabasesResponse",
   }) as any as S.Schema<GetV1ProjectsByProjectIdDatabasesResponse>;
 
-export type GetV1RegionsRequestProduct = "postgres" | "accelerate";
+export type GetV1RegionsRequestProduct =
+  | "postgres"
+  | "accelerate"
+  | (string & {});
 export const GetV1RegionsRequestProduct = /*@__PURE__*/ S.String;
 
 export interface GetV1RegionsRequest {
@@ -3668,10 +3704,16 @@ export const GetV1RegionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV1RegionsRequest",
 }) as any as S.Schema<GetV1RegionsRequest>;
 
-export type GetV1RegionsResponseDataItemProduct = "postgres" | "accelerate";
+export type GetV1RegionsResponseDataItemProduct =
+  | "postgres"
+  | "accelerate"
+  | (string & {});
 export const GetV1RegionsResponseDataItemProduct = /*@__PURE__*/ S.String;
 
-export type GetV1RegionsResponseDataItemStatus = "available" | "unavailable";
+export type GetV1RegionsResponseDataItemStatus =
+  | "available"
+  | "unavailable"
+  | (string & {});
 export const GetV1RegionsResponseDataItemStatus = /*@__PURE__*/ S.String;
 
 export interface GetV1RegionsResponseDataItem {
@@ -3763,7 +3805,8 @@ export const GetV1RegionsPostgresRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetV1RegionsPostgresResponseDataItemStatus =
   | "available"
-  | "unavailable";
+  | "unavailable"
+  | (string & {});
 export const GetV1RegionsPostgresResponseDataItemStatus =
   /*@__PURE__*/ S.String;
 
@@ -3817,13 +3860,16 @@ export const GetV1ScmInstallationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV1ScmInstallationsRequest",
 }) as any as S.Schema<GetV1ScmInstallationsRequest>;
 
-export type GetV1ScmInstallationsResponseDataItemProvider = "github";
+export type GetV1ScmInstallationsResponseDataItemProvider =
+  | "github"
+  | (string & {});
 export const GetV1ScmInstallationsResponseDataItemProvider =
   /*@__PURE__*/ S.String;
 
 export type GetV1ScmInstallationsResponseDataItemAccountType =
   | "user"
-  | "organization";
+  | "organization"
+  | (string & {});
 export const GetV1ScmInstallationsResponseDataItemAccountType =
   /*@__PURE__*/ S.String;
 
@@ -3993,13 +4039,16 @@ export const GetV1SourceRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV1SourceRepositoriesRequest",
 }) as any as S.Schema<GetV1SourceRepositoriesRequest>;
 
-export type GetV1SourceRepositoriesResponseDataItemProvider = "github";
+export type GetV1SourceRepositoriesResponseDataItemProvider =
+  | "github"
+  | (string & {});
 export const GetV1SourceRepositoriesResponseDataItemProvider =
   /*@__PURE__*/ S.String;
 
 export type GetV1SourceRepositoriesResponseDataItemStatus =
   | "active"
-  | "archived";
+  | "archived"
+  | (string & {});
 export const GetV1SourceRepositoriesResponseDataItemStatus =
   /*@__PURE__*/ S.String;
 
@@ -4085,13 +4134,16 @@ export const GetV1SourceRepositoriesByIdRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV1SourceRepositoriesByIdRequest",
 }) as any as S.Schema<GetV1SourceRepositoriesByIdRequest>;
 
-export type GetV1SourceRepositoriesByIdResponseDataProvider = "github";
+export type GetV1SourceRepositoriesByIdResponseDataProvider =
+  | "github"
+  | (string & {});
 export const GetV1SourceRepositoriesByIdResponseDataProvider =
   /*@__PURE__*/ S.String;
 
 export type GetV1SourceRepositoriesByIdResponseDataStatus =
   | "active"
-  | "archived";
+  | "archived"
+  | (string & {});
 export const GetV1SourceRepositoriesByIdResponseDataStatus =
   /*@__PURE__*/ S.String;
 
@@ -4461,7 +4513,8 @@ export const PatchV1BranchesByBranchIdRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PatchV1BranchesByBranchIdResponseDataRole =
   | "production"
-  | "preview";
+  | "preview"
+  | (string & {});
 export const PatchV1BranchesByBranchIdResponseDataRole = /*@__PURE__*/ S.String;
 
 /** Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
@@ -4545,13 +4598,15 @@ export type PatchV1DatabasesByDatabaseIdResponseDataStatus =
   | "failure"
   | "provisioning"
   | "ready"
-  | "recovering";
+  | "recovering"
+  | (string & {});
 export const PatchV1DatabasesByDatabaseIdResponseDataStatus =
   /*@__PURE__*/ S.String;
 
 export type PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemKind =
   | "postgres"
-  | "accelerate";
+  | "accelerate"
+  | (string & {});
 export const PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemKind =
   /*@__PURE__*/ S.String;
 
@@ -4855,7 +4910,8 @@ export const PatchV1EnvironmentVariablesByEnvVarIdRequest =
 
 export type PatchV1EnvironmentVariablesByEnvVarIdResponseDataClass =
   | "production"
-  | "preview";
+  | "preview"
+  | (string & {});
 export const PatchV1EnvironmentVariablesByEnvVarIdResponseDataClass =
   /*@__PURE__*/ S.String;
 
@@ -4982,7 +5038,8 @@ export type PostV1AppsRequestRegionId =
   | "eu-west-3"
   | "eu-central-1"
   | "ap-northeast-1"
-  | "ap-southeast-1";
+  | "ap-southeast-1"
+  | (string & {});
 export const PostV1AppsRequestRegionId = /*@__PURE__*/ S.String;
 
 export interface PostV1AppsRequest {
@@ -5140,7 +5197,8 @@ export type PostV1AppsByAppIdDomainsResponseDataStatus =
   | "provisioning_tls"
   | "active"
   | "failed"
-  | "removing";
+  | "removing"
+  | (string & {});
 export const PostV1AppsByAppIdDomainsResponseDataStatus =
   /*@__PURE__*/ S.String;
 
@@ -5148,7 +5206,8 @@ export type PostV1AppsByAppIdDomainsResponseDataFailureCategory =
   | "dns"
   | "acme"
   | "storage"
-  | "unknown";
+  | "unknown"
+  | (string & {});
 export const PostV1AppsByAppIdDomainsResponseDataFailureCategory =
   /*@__PURE__*/ S.String;
 
@@ -5390,7 +5449,10 @@ export const PostV1BucketsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostV1BucketsResponse>;
 
 /** Access role for the key: "read" or "read_write". */
-export type PostV1BucketsByBucketIdKeysRequestRole = "read" | "read_write";
+export type PostV1BucketsByBucketIdKeysRequestRole =
+  | "read"
+  | "read_write"
+  | (string & {});
 export const PostV1BucketsByBucketIdKeysRequestRole = /*@__PURE__*/ S.String;
 
 export interface PostV1BucketsByBucketIdKeysRequest {
@@ -5412,7 +5474,10 @@ export const PostV1BucketsByBucketIdKeysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostV1BucketsByBucketIdKeysRequest",
 }) as any as S.Schema<PostV1BucketsByBucketIdKeysRequest>;
 
-export type PostV1BucketsByBucketIdKeysResponseDataRole = "read" | "read_write";
+export type PostV1BucketsByBucketIdKeysResponseDataRole =
+  | "read"
+  | "read_write"
+  | (string & {});
 export const PostV1BucketsByBucketIdKeysResponseDataRole =
   /*@__PURE__*/ S.String;
 
@@ -5470,7 +5535,10 @@ export const PostV1ConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostV1ConnectionsRequest",
 }) as any as S.Schema<PostV1ConnectionsRequest>;
 
-export type PostV1ConnectionsResponseDataKind = "postgres" | "accelerate";
+export type PostV1ConnectionsResponseDataKind =
+  | "postgres"
+  | "accelerate"
+  | (string & {});
 export const PostV1ConnectionsResponseDataKind = /*@__PURE__*/ S.String;
 
 export interface PostV1ConnectionsResponseDataEndpointsDirect {
@@ -5638,7 +5706,8 @@ export const PostV1ConnectionsByIdRotateRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PostV1ConnectionsByIdRotateResponseDataKind =
   | "postgres"
-  | "accelerate";
+  | "accelerate"
+  | (string & {});
 export const PostV1ConnectionsByIdRotateResponseDataKind =
   /*@__PURE__*/ S.String;
 
@@ -5807,7 +5876,8 @@ export type PostV1DatabasesRequestRegion =
   | "eu-central-1"
   | "ap-northeast-1"
   | "ap-southeast-1"
-  | "inherit";
+  | "inherit"
+  | (string & {});
 export const PostV1DatabasesRequestRegion = /*@__PURE__*/ S.String;
 
 export interface PostV1DatabasesRequestSourceCase0 {
@@ -5897,12 +5967,14 @@ export type PostV1DatabasesResponseDataStatus =
   | "failure"
   | "provisioning"
   | "ready"
-  | "recovering";
+  | "recovering"
+  | (string & {});
 export const PostV1DatabasesResponseDataStatus = /*@__PURE__*/ S.String;
 
 export type PostV1DatabasesResponseDataConnectionsItemKind =
   | "postgres"
-  | "accelerate";
+  | "accelerate"
+  | (string & {});
 export const PostV1DatabasesResponseDataConnectionsItemKind =
   /*@__PURE__*/ S.String;
 
@@ -6197,7 +6269,8 @@ export const PostV1DatabasesByDatabaseIdConnectionsRequest =
 
 export type PostV1DatabasesByDatabaseIdConnectionsResponseDataKind =
   | "postgres"
-  | "accelerate";
+  | "accelerate"
+  | (string & {});
 export const PostV1DatabasesByDatabaseIdConnectionsResponseDataKind =
   /*@__PURE__*/ S.String;
 
@@ -6407,12 +6480,13 @@ export type PostV1DatabasesByTargetDatabaseIdRestoreResponseDataStatus =
   | "failure"
   | "provisioning"
   | "ready"
-  | "recovering";
+  | "recovering"
+  | (string & {});
 export const PostV1DatabasesByTargetDatabaseIdRestoreResponseDataStatus =
   /*@__PURE__*/ S.String;
 
 export type PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemKind =
-  "postgres" | "accelerate";
+  "postgres" | "accelerate" | (string & {});
 export const PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemKind =
   /*@__PURE__*/ S.String;
 
@@ -6745,7 +6819,8 @@ export type PostV1DomainsByDomainIdRetryResponseDataStatus =
   | "provisioning_tls"
   | "active"
   | "failed"
-  | "removing";
+  | "removing"
+  | (string & {});
 export const PostV1DomainsByDomainIdRetryResponseDataStatus =
   /*@__PURE__*/ S.String;
 
@@ -6753,7 +6828,8 @@ export type PostV1DomainsByDomainIdRetryResponseDataFailureCategory =
   | "dns"
   | "acme"
   | "storage"
-  | "unknown";
+  | "unknown"
+  | (string & {});
 export const PostV1DomainsByDomainIdRetryResponseDataFailureCategory =
   /*@__PURE__*/ S.String;
 
@@ -6835,7 +6911,10 @@ export const PostV1DomainsByDomainIdRetryResponse = /*@__PURE__*/ S.suspend(
   identifier: "PostV1DomainsByDomainIdRetryResponse",
 }) as any as S.Schema<PostV1DomainsByDomainIdRetryResponse>;
 
-export type PostV1EnvironmentVariablesRequestClass = "production" | "preview";
+export type PostV1EnvironmentVariablesRequestClass =
+  | "production"
+  | "preview"
+  | (string & {});
 export const PostV1EnvironmentVariablesRequestClass = /*@__PURE__*/ S.String;
 
 export interface PostV1EnvironmentVariablesRequest {
@@ -6861,7 +6940,8 @@ export const PostV1EnvironmentVariablesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PostV1EnvironmentVariablesResponseDataClass =
   | "production"
-  | "preview";
+  | "preview"
+  | (string & {});
 export const PostV1EnvironmentVariablesResponseDataClass =
   /*@__PURE__*/ S.String;
 
@@ -6914,7 +6994,8 @@ export type PostV1ProjectsRequestRegion =
   | "eu-west-3"
   | "eu-central-1"
   | "ap-northeast-1"
-  | "ap-southeast-1";
+  | "ap-southeast-1"
+  | (string & {});
 export const PostV1ProjectsRequestRegion = /*@__PURE__*/ S.String;
 
 export interface PostV1ProjectsRequest {
@@ -6947,12 +7028,16 @@ export const PostV1ProjectsResponseDataWorkspace = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostV1ProjectsResponseDataWorkspace",
 }) as any as S.Schema<PostV1ProjectsResponseDataWorkspace>;
 
-export type PostV1ProjectsResponseDataDatabaseStatus = "provisioning" | "ready";
+export type PostV1ProjectsResponseDataDatabaseStatus =
+  | "provisioning"
+  | "ready"
+  | (string & {});
 export const PostV1ProjectsResponseDataDatabaseStatus = /*@__PURE__*/ S.String;
 
 export type PostV1ProjectsResponseDataDatabaseConnectionsItemKind =
   | "postgres"
-  | "accelerate";
+  | "accelerate"
+  | (string & {});
 export const PostV1ProjectsResponseDataDatabaseConnectionsItemKind =
   /*@__PURE__*/ S.String;
 
@@ -7175,7 +7260,8 @@ export const PostV1ProjectsResponseDataDatabaseSource = /*@__PURE__*/ S.suspend(
 
 export type PostV1ProjectsResponseDataDatabaseApiKeysItemKind =
   | "postgres"
-  | "accelerate";
+  | "accelerate"
+  | (string & {});
 export const PostV1ProjectsResponseDataDatabaseApiKeysItemKind =
   /*@__PURE__*/ S.String;
 
@@ -7444,7 +7530,8 @@ export const PostV1ProjectsByProjectIdBranchesRequest = /*@__PURE__*/ S.suspend(
 
 export type PostV1ProjectsByProjectIdBranchesResponseDataRole =
   | "production"
-  | "preview";
+  | "preview"
+  | (string & {});
 export const PostV1ProjectsByProjectIdBranchesResponseDataRole =
   /*@__PURE__*/ S.String;
 
@@ -7513,7 +7600,8 @@ export type PostV1ProjectsByProjectIdDatabasesRequestRegion =
   | "eu-central-1"
   | "ap-northeast-1"
   | "ap-southeast-1"
-  | "inherit";
+  | "inherit"
+  | (string & {});
 export const PostV1ProjectsByProjectIdDatabasesRequestRegion =
   /*@__PURE__*/ S.String;
 
@@ -7624,13 +7712,15 @@ export const PostV1ProjectsByProjectIdDatabasesRequest =
 
 export type PostV1ProjectsByProjectIdDatabasesResponseDataStatus =
   | "provisioning"
-  | "ready";
+  | "ready"
+  | (string & {});
 export const PostV1ProjectsByProjectIdDatabasesResponseDataStatus =
   /*@__PURE__*/ S.String;
 
 export type PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemKind =
   | "postgres"
-  | "accelerate";
+  | "accelerate"
+  | (string & {});
 export const PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemKind =
   /*@__PURE__*/ S.String;
 
@@ -7873,7 +7963,8 @@ export const PostV1ProjectsByProjectIdDatabasesResponseDataSource =
 
 export type PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemKind =
   | "postgres"
-  | "accelerate";
+  | "accelerate"
+  | (string & {});
 export const PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemKind =
   /*@__PURE__*/ S.String;
 
@@ -8084,7 +8175,9 @@ export const PostV1ProjectsByProjectIdDatabasesResponse =
     identifier: "PostV1ProjectsByProjectIdDatabasesResponse",
   }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesResponse>;
 
-export type PostV1ScmInstallationsInstallIntentsRequestProvider = "github";
+export type PostV1ScmInstallationsInstallIntentsRequestProvider =
+  | "github"
+  | (string & {});
 export const PostV1ScmInstallationsInstallIntentsRequestProvider =
   /*@__PURE__*/ S.String;
 
@@ -8108,7 +8201,9 @@ export const PostV1ScmInstallationsInstallIntentsRequest =
     identifier: "PostV1ScmInstallationsInstallIntentsRequest",
   }) as any as S.Schema<PostV1ScmInstallationsInstallIntentsRequest>;
 
-export type PostV1ScmInstallationsInstallIntentsResponseDataProvider = "github";
+export type PostV1ScmInstallationsInstallIntentsResponseDataProvider =
+  | "github"
+  | (string & {});
 export const PostV1ScmInstallationsInstallIntentsResponseDataProvider =
   /*@__PURE__*/ S.String;
 
@@ -8162,11 +8257,16 @@ export const PostV1SourceRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostV1SourceRepositoriesRequest",
 }) as any as S.Schema<PostV1SourceRepositoriesRequest>;
 
-export type PostV1SourceRepositoriesResponseDataProvider = "github";
+export type PostV1SourceRepositoriesResponseDataProvider =
+  | "github"
+  | (string & {});
 export const PostV1SourceRepositoriesResponseDataProvider =
   /*@__PURE__*/ S.String;
 
-export type PostV1SourceRepositoriesResponseDataStatus = "active" | "archived";
+export type PostV1SourceRepositoriesResponseDataStatus =
+  | "active"
+  | "archived"
+  | (string & {});
 export const PostV1SourceRepositoriesResponseDataStatus =
   /*@__PURE__*/ S.String;
 

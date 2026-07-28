@@ -89,7 +89,8 @@ export type GoogleCloudRecommenderV1beta1InsightStateInfoStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "ACCEPTED"
-  | "DISMISSED";
+  | "DISMISSED"
+  | (string & {});
 export const GoogleCloudRecommenderV1beta1InsightStateInfoStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -121,7 +122,8 @@ export type GoogleCloudRecommenderV1beta1InsightSeverityEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "CRITICAL";
+  | "CRITICAL"
+  | (string & {});
 export const GoogleCloudRecommenderV1beta1InsightSeverityEnum =
   /*@__PURE__*/ S.String;
 
@@ -132,7 +134,8 @@ export type GoogleCloudRecommenderV1beta1InsightCategoryEnum =
   | "PERFORMANCE"
   | "MANAGEABILITY"
   | "SUSTAINABILITY"
-  | "RELIABILITY";
+  | "RELIABILITY"
+  | (string & {});
 export const GoogleCloudRecommenderV1beta1InsightCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -237,7 +240,8 @@ export type GoogleCloudRecommenderV1beta1ImpactCategoryEnum =
   | "PERFORMANCE"
   | "MANAGEABILITY"
   | "SUSTAINABILITY"
-  | "RELIABILITY";
+  | "RELIABILITY"
+  | (string & {});
 export const GoogleCloudRecommenderV1beta1ImpactCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -259,7 +263,8 @@ export type GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnum =
   | "RISK_TYPE_UNSPECIFIED"
   | "SERVICE_DISRUPTION"
   | "DATA_LOSS"
-  | "ACCESS_DENY";
+  | "ACCESS_DENY"
+  | (string & {});
 export const GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -328,7 +333,8 @@ export const GoogleTypeMoney = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudRecommenderV1beta1CostProjectionPricingTypeEnum =
   | "PRICING_TYPE_UNSPECIFIED"
   | "LIST_PRICE"
-  | "CUSTOM_PRICE";
+  | "CUSTOM_PRICE"
+  | (string & {});
 export const GoogleCloudRecommenderV1beta1CostProjectionPricingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -508,7 +514,8 @@ export type GoogleCloudRecommenderV1beta1RecommendationPriorityEnum =
   | "P4"
   | "P3"
   | "P2"
-  | "P1";
+  | "P1"
+  | (string & {});
 export const GoogleCloudRecommenderV1beta1RecommendationPriorityEnum =
   /*@__PURE__*/ S.String;
 
@@ -524,7 +531,8 @@ export type GoogleCloudRecommenderV1beta1RecommendationStateInfoStateEnum =
   | "CLAIMED"
   | "SUCCEEDED"
   | "FAILED"
-  | "DISMISSED";
+  | "DISMISSED"
+  | (string & {});
 export const GoogleCloudRecommenderV1beta1RecommendationStateInfoStateEnum =
   /*@__PURE__*/ S.String;
 

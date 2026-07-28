@@ -35,7 +35,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type ActionsCreateRequestFormat = "csv" | "json";
+export type ActionsCreateRequestFormat = "csv" | "json" | (string & {});
 export const ActionsCreateRequestFormat = /*@__PURE__*/ S.String;
 
 export type ActionsCreateRequestTagsList = ReadonlyArray<unknown>;
@@ -74,7 +74,8 @@ export type PropertyFilterTypeEnum =
   | "revenue_analytics"
   | "account_custom_property"
   | "flag"
-  | "workflow_variable";
+  | "workflow_variable"
+  | (string & {});
 export const PropertyFilterTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex */
@@ -84,7 +85,8 @@ export type StringMatchOperatorEnum =
   | "icontains"
   | "not_icontains"
   | "regex"
-  | "not_regex";
+  | "not_regex"
+  | (string & {});
 export const StringMatchOperatorEnum = /*@__PURE__*/ S.String;
 
 /** Matches string values with text-oriented operators. */
@@ -116,7 +118,8 @@ export type NumericPropertyFilterOperatorEnum =
   | "gt"
   | "lt"
   | "gte"
-  | "lte";
+  | "lte"
+  | (string & {});
 export const NumericPropertyFilterOperatorEnum = /*@__PURE__*/ S.String;
 
 /** Matches numeric values with comparison operators. */
@@ -152,7 +155,8 @@ export type ArrayPropertyFilterOperatorEnum =
   | "exact"
   | "is_not"
   | "in"
-  | "not_in";
+  | "not_in"
+  | (string & {});
 export const ArrayPropertyFilterOperatorEnum = /*@__PURE__*/ S.String;
 
 /** Matches against a list of values (OR semantics for exact/is_not, set membership for in/not_in). */
@@ -181,7 +185,8 @@ export const ArrayPropertyFilter = /*@__PURE__*/ S.suspend(() =>
 export type DateOperatorEnum =
   | "is_date_exact"
   | "is_date_before"
-  | "is_date_after";
+  | "is_date_after"
+  | (string & {});
 export const DateOperatorEnum = /*@__PURE__*/ S.String;
 
 /** Matches date/datetime values with date-specific operators. */
@@ -207,7 +212,7 @@ export const DatePropertyFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatePropertyFilter>;
 
 /** * `is_set` - is_set * `is_not_set` - is_not_set */
-export type ExistenceOperatorEnum = "is_set" | "is_not_set";
+export type ExistenceOperatorEnum = "is_set" | "is_not_set" | (string & {});
 export const ExistenceOperatorEnum = /*@__PURE__*/ S.String;
 
 /** Checks whether a property is set or not, without comparing values. */
@@ -246,7 +251,11 @@ export const ActionStepJSONInputPropertiesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ActionStepJSONInputPropertiesList>;
 
 /** * `contains` - contains * `regex` - regex * `exact` - exact */
-export type ActionStepMatchingEnum = "contains" | "regex" | "exact";
+export type ActionStepMatchingEnum =
+  | "contains"
+  | "regex"
+  | "exact"
+  | (string & {});
 export const ActionStepMatchingEnum = /*@__PURE__*/ S.String;
 
 export interface ActionStepJSONInput {
@@ -412,10 +421,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -498,7 +508,7 @@ export const ActionOutput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ActionOutput" }) as any as S.Schema<ActionOutput>;
 
-export type ActionsDestroyRequestFormat = "csv" | "json";
+export type ActionsDestroyRequestFormat = "csv" | "json" | (string & {});
 export const ActionsDestroyRequestFormat = /*@__PURE__*/ S.String;
 
 export interface ActionsDestroyRequest {
@@ -531,7 +541,7 @@ export const ActionsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActionsDestroyResponse",
 }) as any as S.Schema<ActionsDestroyResponse>;
 
-export type ActionsListRequestFormat = "csv" | "json";
+export type ActionsListRequestFormat = "csv" | "json" | (string & {});
 export const ActionsListRequestFormat = /*@__PURE__*/ S.String;
 
 export interface ActionsListRequest {
@@ -594,7 +604,7 @@ export const PaginatedActionListOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedActionListOutput",
 }) as any as S.Schema<PaginatedActionListOutput>;
 
-export type ActionsPartialUpdateRequestFormat = "csv" | "json";
+export type ActionsPartialUpdateRequestFormat = "csv" | "json" | (string & {});
 export const ActionsPartialUpdateRequestFormat = /*@__PURE__*/ S.String;
 
 export type ActionsPartialUpdateRequestTagsList = ReadonlyArray<unknown>;
@@ -658,7 +668,7 @@ export const ActionsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActionsPartialUpdateRequest",
 }) as any as S.Schema<ActionsPartialUpdateRequest>;
 
-export type ActionsReferencesListRequestFormat = "csv" | "json";
+export type ActionsReferencesListRequestFormat = "csv" | "json" | (string & {});
 export const ActionsReferencesListRequestFormat = /*@__PURE__*/ S.String;
 
 export interface ActionsReferencesListRequest {
@@ -725,7 +735,7 @@ export const ActionsReferencesListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActionsReferencesListResponse",
 }) as any as S.Schema<ActionsReferencesListResponse>;
 
-export type ActionsRetrieveRequestFormat = "csv" | "json";
+export type ActionsRetrieveRequestFormat = "csv" | "json" | (string & {});
 export const ActionsRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface ActionsRetrieveRequest {
@@ -751,7 +761,7 @@ export const ActionsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActionsRetrieveRequest",
 }) as any as S.Schema<ActionsRetrieveRequest>;
 
-export type ActionsUpdateRequestFormat = "csv" | "json";
+export type ActionsUpdateRequestFormat = "csv" | "json" | (string & {});
 export const ActionsUpdateRequestFormat = /*@__PURE__*/ S.String;
 
 export type ActionsUpdateRequestTagsList = ReadonlyArray<unknown>;

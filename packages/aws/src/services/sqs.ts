@@ -534,7 +534,8 @@ export type QueueAttributeName =
   | "DeduplicationScope"
   | "FifoThroughputLimit"
   | "RedriveAllowPolicy"
-  | "SqsManagedSseEnabled";
+  | "SqsManagedSseEnabled"
+  | (string & {});
 export const QueueAttributeName = /*@__PURE__*/ S.String;
 
 export type QueueAttributeMap = { [key in QueueAttributeName]?: string };
@@ -888,7 +889,8 @@ export type MessageSystemAttributeName =
   | "MessageDeduplicationId"
   | "MessageGroupId"
   | "AWSTraceHeader"
-  | "DeadLetterQueueSourceArn";
+  | "DeadLetterQueueSourceArn"
+  | (string & {});
 export const MessageSystemAttributeName = /*@__PURE__*/ S.String;
 
 export type MessageSystemAttributeList = MessageSystemAttributeName[];
@@ -1040,7 +1042,9 @@ export const RemovePermissionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RemovePermissionResponse",
 }) as any as S.Schema<RemovePermissionResponse>;
-export type MessageSystemAttributeNameForSends = "AWSTraceHeader";
+export type MessageSystemAttributeNameForSends =
+  | "AWSTraceHeader"
+  | (string & {});
 export const MessageSystemAttributeNameForSends = /*@__PURE__*/ S.String;
 
 export interface MessageSystemAttributeValue {

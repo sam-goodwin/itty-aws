@@ -154,15 +154,20 @@ export type AggregationEnum =
   | "p95"
   | "rate"
   | "increase"
-  | "histogram_quantile";
+  | "histogram_quantile"
+  | (string & {});
 export const AggregationEnum = /*@__PURE__*/ S.String;
 
 /** * `eq` - eq * `neq` - neq * `regex` - regex * `not_regex` - not_regex */
-export type OpEnum = "eq" | "neq" | "regex" | "not_regex";
+export type OpEnum = "eq" | "neq" | "regex" | "not_regex" | (string & {});
 export const OpEnum = /*@__PURE__*/ S.String;
 
 /** * `resource` - resource * `attribute` - attribute * `auto` - auto */
-export type MetricAttributeScopeEnum = "resource" | "attribute" | "auto";
+export type MetricAttributeScopeEnum =
+  | "resource"
+  | "attribute"
+  | "auto"
+  | (string & {});
 export const MetricAttributeScopeEnum = /*@__PURE__*/ S.String;
 
 export interface MetricFilter {
@@ -254,7 +259,7 @@ export const MetricsCharacterizeCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricsCharacterizeCreateRequest>;
 
 /** * `up` - up * `down` - down * `flat` - flat */
-export type MetricAnomalyDirectionEnum = "up" | "down" | "flat";
+export type MetricAnomalyDirectionEnum = "up" | "down" | "flat" | (string & {});
 export const MetricAnomalyDirectionEnum = /*@__PURE__*/ S.String;
 
 export interface MetricAnomalyDimension {
@@ -428,7 +433,8 @@ export type OtelMetricTypeEnum =
   | "sum"
   | "histogram"
   | "exponential_histogram"
-  | "summary";
+  | "summary"
+  | (string & {});
 export const OtelMetricTypeEnum = /*@__PURE__*/ S.String;
 
 /** Label predicates ANDed together. Rows must satisfy every filter. */
@@ -465,7 +471,8 @@ export type MetricQueryIntervalEnum =
   | "hour"
   | "hour_6"
   | "day"
-  | "week";
+  | "week"
+  | (string & {});
 export const MetricQueryIntervalEnum = /*@__PURE__*/ S.String;
 
 /** Label predicates ANDed together for this clause. */

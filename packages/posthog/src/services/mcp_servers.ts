@@ -36,7 +36,7 @@ export const McpServersListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<McpServersListRequest>;
 
 /** * `api_key` - API Key * `oauth` - OAuth */
-export type MCPAuthTypeEnum = "api_key" | "oauth";
+export type MCPAuthTypeEnum = "api_key" | "oauth" | (string & {});
 export const MCPAuthTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `business` - Business Operations * `data` - Data & Analytics * `design` - Design & Content * `dev` - Developer Tools & APIs * `infra` - Infrastructure * `productivity` - Productivity & Collaboration */
@@ -46,7 +46,8 @@ export type MCPServerTemplateCategoryEnum =
   | "design"
   | "dev"
   | "infra"
-  | "productivity";
+  | "productivity"
+  | (string & {});
 export const MCPServerTemplateCategoryEnum = /*@__PURE__*/ S.String;
 
 export interface MCPServerTemplate {

@@ -241,7 +241,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -249,7 +250,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -306,7 +308,8 @@ export type ProvisioningState =
   | "Provisioning"
   | "Updating"
   | "Deleting"
-  | "Accepted";
+  | "Accepted"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Definition of AccessAnalyzerAnalyzer */
@@ -683,7 +686,8 @@ export type ExtendedKeyUsageName =
   | "OCSP_SIGNING"
   | "TIME_STAMPING"
   | "TLS_WEB_CLIENT_AUTHENTICATION"
-  | "TLS_WEB_SERVER_AUTHENTICATION";
+  | "TLS_WEB_SERVER_AUTHENTICATION"
+  | (string & {});
 export const ExtendedKeyUsageName = /*@__PURE__*/ S.String;
 
 /** <p>Contains a list of Extended Key Usage X.509 v3 extension objects. Each object specifies a purpose for which the certificate public key can be used and consists of a name and an object identifier (OID). </p> */
@@ -702,7 +706,8 @@ export type KeyAlgorithm =
   | "RSA_1024"
   | "RSA_2048"
   | "RSA_3072"
-  | "RSA_4096";
+  | "RSA_4096"
+  | (string & {});
 export const KeyAlgorithm = /*@__PURE__*/ S.String;
 
 /** Definition of KeyAlgorithmEnumValue */
@@ -730,7 +735,8 @@ export type KeyUsageName =
   | "ENCIPHER_ONLY"
   | "KEY_AGREEMENT"
   | "KEY_ENCIPHERMENT"
-  | "NON_REPUDIATION";
+  | "NON_REPUDIATION"
+  | (string & {});
 export const KeyUsageName = /*@__PURE__*/ S.String;
 
 /** <p>A list of Key Usage X.509 v3 extension objects. Each object is a string value that identifies the purpose of the public key contained in the certificate. Possible extension values include DIGITAL_SIGNATURE, KEY_ENCHIPHERMENT, NON_REPUDIATION, and more.</p> */
@@ -742,7 +748,7 @@ export const AwsAcmCertificateSummaryPropertiesKeyUsagesList =
   ) as any as S.Schema<AwsAcmCertificateSummaryPropertiesKeyUsagesList>;
 
 /** RenewalEligibility enum */
-export type RenewalEligibility = "ELIGIBLE" | "INELIGIBLE";
+export type RenewalEligibility = "ELIGIBLE" | "INELIGIBLE" | (string & {});
 export const RenewalEligibility = /*@__PURE__*/ S.String;
 
 /** Definition of RenewalEligibilityEnumValue */
@@ -766,7 +772,8 @@ export type CertificateStatus =
   | "ISSUED"
   | "PENDING_VALIDATION"
   | "REVOKED"
-  | "VALIDATION_TIMED_OUT";
+  | "VALIDATION_TIMED_OUT"
+  | (string & {});
 export const CertificateStatus = /*@__PURE__*/ S.String;
 
 /** Definition of CertificateStatusEnumValue */
@@ -791,7 +798,11 @@ export const AwsAcmCertificateSummaryPropertiesSubjectAlternativeNameSummariesLi
   ) as any as S.Schema<AwsAcmCertificateSummaryPropertiesSubjectAlternativeNameSummariesList>;
 
 /** CertificateType enum */
-export type CertificateType = "AMAZON_ISSUED" | "IMPORTED" | "PRIVATE";
+export type CertificateType =
+  | "AMAZON_ISSUED"
+  | "IMPORTED"
+  | "PRIVATE"
+  | (string & {});
 export const CertificateType = /*@__PURE__*/ S.String;
 
 /** Definition of CertificateTypeEnumValue */
@@ -2573,7 +2584,8 @@ export type AuthenticationType =
   | "API_KEY"
   | "AWS_IAM"
   | "AWS_LAMBDA"
-  | "OPENID_CONNECT";
+  | "OPENID_CONNECT"
+  | (string & {});
 export const AuthenticationType = /*@__PURE__*/ S.String;
 
 /** Definition of AuthenticationTypeEnumValue */
@@ -2680,7 +2692,7 @@ export const AwsAppSyncGraphqlApiPropertiesAdditionalAuthenticationProvidersList
   ) as any as S.Schema<AwsAppSyncGraphqlApiPropertiesAdditionalAuthenticationProvidersList>;
 
 /** GraphQLApiType enum */
-export type GraphQLApiType = "GRAPHQL" | "MERGED";
+export type GraphQLApiType = "GRAPHQL" | "MERGED" | (string & {});
 export const GraphQLApiType = /*@__PURE__*/ S.String;
 
 /** Definition of GraphQLApiTypeEnumValue */
@@ -2708,7 +2720,8 @@ export const AwsAppSyncGraphqlApiPropertiesDnsMap = /*@__PURE__*/ S.Record(
 /** DataSourceLevelMetricsBehavior enum */
 export type DataSourceLevelMetricsBehavior =
   | "FULL_REQUEST_DATA_SOURCE_METRICS"
-  | "PER_DATA_SOURCE_METRICS";
+  | "PER_DATA_SOURCE_METRICS"
+  | (string & {});
 export const DataSourceLevelMetricsBehavior = /*@__PURE__*/ S.String;
 
 /** Definition of DataSourceLevelMetricsBehaviorEnumValue */
@@ -2726,7 +2739,10 @@ export const DataSourceLevelMetricsBehaviorEnumValue = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DataSourceLevelMetricsBehaviorEnumValue>;
 
 /** OperationLevelMetricsConfig enum */
-export type OperationLevelMetricsConfig = "DISABLED" | "ENABLED";
+export type OperationLevelMetricsConfig =
+  | "DISABLED"
+  | "ENABLED"
+  | (string & {});
 export const OperationLevelMetricsConfig = /*@__PURE__*/ S.String;
 
 /** Definition of OperationLevelMetricsConfigEnumValue */
@@ -2746,7 +2762,8 @@ export const OperationLevelMetricsConfigEnumValue = /*@__PURE__*/ S.suspend(
 /** ResolverLevelMetricsBehavior enum */
 export type ResolverLevelMetricsBehavior =
   | "FULL_REQUEST_RESOLVER_METRICS"
-  | "PER_RESOLVER_METRICS";
+  | "PER_RESOLVER_METRICS"
+  | (string & {});
 export const ResolverLevelMetricsBehavior = /*@__PURE__*/ S.String;
 
 /** Definition of ResolverLevelMetricsBehaviorEnumValue */
@@ -2789,7 +2806,10 @@ export const EnhancedMetricsConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnhancedMetricsConfig>;
 
 /** GraphQLApiIntrospectionConfig enum */
-export type GraphQLApiIntrospectionConfig = "DISABLED" | "ENABLED";
+export type GraphQLApiIntrospectionConfig =
+  | "DISABLED"
+  | "ENABLED"
+  | (string & {});
 export const GraphQLApiIntrospectionConfig = /*@__PURE__*/ S.String;
 
 /** Definition of GraphQLApiIntrospectionConfigEnumValue */
@@ -2807,7 +2827,7 @@ export const GraphQLApiIntrospectionConfigEnumValue = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GraphQLApiIntrospectionConfigEnumValue>;
 
 /** FieldLogLevel enum */
-export type FieldLogLevel = "ALL" | "ERROR" | "NONE";
+export type FieldLogLevel = "ALL" | "ERROR" | "NONE" | (string & {});
 export const FieldLogLevel = /*@__PURE__*/ S.String;
 
 /** Definition of FieldLogLevelEnumValue */
@@ -2859,7 +2879,7 @@ export const AwsAppSyncGraphqlApiPropertiesUrisMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AwsAppSyncGraphqlApiPropertiesUrisMap>;
 
 /** DefaultAction enum */
-export type DefaultAction = "ALLOW" | "DENY";
+export type DefaultAction = "ALLOW" | "DENY" | (string & {});
 export const DefaultAction = /*@__PURE__*/ S.String;
 
 /** Definition of DefaultActionEnumValue */
@@ -2896,7 +2916,7 @@ export const UserPoolConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserPoolConfig" }) as any as S.Schema<UserPoolConfig>;
 
 /** GraphQLApiVisibility enum */
-export type GraphQLApiVisibility = "GLOBAL" | "PRIVATE";
+export type GraphQLApiVisibility = "GLOBAL" | "PRIVATE" | (string & {});
 export const GraphQLApiVisibility = /*@__PURE__*/ S.String;
 
 /** Definition of GraphQLApiVisibilityEnumValue */
@@ -4615,7 +4635,8 @@ export const CloudFormationStacksCreateOrReplaceRequestTagsMap =
 export type Capabilities =
   | "CAPABILITY_AUTO_EXPAND"
   | "CAPABILITY_IAM"
-  | "CAPABILITY_NAMED_IAM";
+  | "CAPABILITY_NAMED_IAM"
+  | (string & {});
 export const Capabilities = /*@__PURE__*/ S.String;
 
 /** Property capabilities */
@@ -4695,7 +4716,8 @@ export type StackStatus =
   | "UPDATE_ROLLBACK_COMPLETE"
   | "UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS"
   | "UPDATE_ROLLBACK_FAILED"
-  | "UPDATE_ROLLBACK_IN_PROGRESS";
+  | "UPDATE_ROLLBACK_IN_PROGRESS"
+  | (string & {});
 export const StackStatus = /*@__PURE__*/ S.String;
 
 /** Definition of Tag */
@@ -5022,7 +5044,7 @@ export const AutoDeployment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AutoDeployment" }) as any as S.Schema<AutoDeployment>;
 
 /** CallAs enum */
-export type CallAs = "DELEGATED_ADMIN" | "SELF";
+export type CallAs = "DELEGATED_ADMIN" | "SELF" | (string & {});
 export const CallAs = /*@__PURE__*/ S.String;
 
 /** In some cases, you must explicitly acknowledge that your stack set template contains certain capabilities in order for AWS CloudFormation to create the stack set and related stack instances. */
@@ -5047,7 +5069,8 @@ export const ActiveModel = /*@__PURE__*/ S.suspend(() =>
 /** OperationPreferencesRegionConcurrencyType enum */
 export type OperationPreferencesRegionConcurrencyType =
   | "PARALLEL"
-  | "SEQUENTIAL";
+  | "SEQUENTIAL"
+  | (string & {});
 export const OperationPreferencesRegionConcurrencyType = /*@__PURE__*/ S.String;
 
 /** Property regionOrder */
@@ -5109,7 +5132,10 @@ export const AwsCloudFormationStackSetPropertiesParametersList =
   ) as any as S.Schema<AwsCloudFormationStackSetPropertiesParametersList>;
 
 /** PermissionModel enum */
-export type PermissionModel = "SELF_MANAGED" | "SERVICE_MANAGED";
+export type PermissionModel =
+  | "SELF_MANAGED"
+  | "SERVICE_MANAGED"
+  | (string & {});
 export const PermissionModel = /*@__PURE__*/ S.String;
 
 /** DeploymentTargetsAccountFilterType enum */
@@ -5117,7 +5143,8 @@ export type DeploymentTargetsAccountFilterType =
   | "DIFFERENCE"
   | "INTERSECTION"
   | "NONE"
-  | "UNION";
+  | "UNION"
+  | (string & {});
 export const DeploymentTargetsAccountFilterType = /*@__PURE__*/ S.String;
 
 /** AWS accounts that you want to create stack instances in the specified Region(s) for. */
@@ -7397,7 +7424,11 @@ export const EventSelectorExcludeManagementEventSourcesList =
   ) as any as S.Schema<EventSelectorExcludeManagementEventSourcesList>;
 
 /** EventSelectorReadWriteType enum */
-export type EventSelectorReadWriteType = "All" | "ReadOnly" | "WriteOnly";
+export type EventSelectorReadWriteType =
+  | "All"
+  | "ReadOnly"
+  | "WriteOnly"
+  | (string & {});
 export const EventSelectorReadWriteType = /*@__PURE__*/ S.String;
 
 /** Definition of EventSelector */
@@ -8651,7 +8682,7 @@ export const CodeBuildProjectsCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<CodeBuildProjectsCreateOrReplaceRequestTagsMap>;
 
 /** BucketOwnerAccess enum */
-export type BucketOwnerAccess = "FULL" | "NONE" | "READ_ONLY";
+export type BucketOwnerAccess = "FULL" | "NONE" | "READ_ONLY" | (string & {});
 export const BucketOwnerAccess = /*@__PURE__*/ S.String;
 
 /** Definition of BucketOwnerAccessEnumValue */
@@ -8668,7 +8699,7 @@ export const BucketOwnerAccessEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BucketOwnerAccessEnumValue>;
 
 /** ArtifactNamespace enum */
-export type ArtifactNamespace = "BUILD_ID" | "NONE";
+export type ArtifactNamespace = "BUILD_ID" | "NONE" | (string & {});
 export const ArtifactNamespace = /*@__PURE__*/ S.String;
 
 /** Definition of ArtifactNamespaceEnumValue */
@@ -8685,7 +8716,7 @@ export const ArtifactNamespaceEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ArtifactNamespaceEnumValue>;
 
 /** ArtifactPackaging enum */
-export type ArtifactPackaging = "NONE" | "ZIP";
+export type ArtifactPackaging = "NONE" | "ZIP" | (string & {});
 export const ArtifactPackaging = /*@__PURE__*/ S.String;
 
 /** Definition of ArtifactPackagingEnumValue */
@@ -8702,7 +8733,11 @@ export const ArtifactPackagingEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ArtifactPackagingEnumValue>;
 
 /** ArtifactsType enum */
-export type ArtifactsType = "CODEPIPELINE" | "NO_ARTIFACTS" | "S3";
+export type ArtifactsType =
+  | "CODEPIPELINE"
+  | "NO_ARTIFACTS"
+  | "S3"
+  | (string & {});
 export const ArtifactsType = /*@__PURE__*/ S.String;
 
 /** Definition of ArtifactsTypeEnumValue */
@@ -8775,7 +8810,8 @@ export const ProjectBadge = /*@__PURE__*/ S.suspend(() =>
 /** BatchReportModeType enum */
 export type BatchReportModeType =
   | "REPORT_AGGREGATED_BATCH"
-  | "REPORT_INDIVIDUAL_BUILDS";
+  | "REPORT_INDIVIDUAL_BUILDS"
+  | (string & {});
 export const BatchReportModeType = /*@__PURE__*/ S.String;
 
 /** Definition of BatchReportModeTypeEnumValue */
@@ -8842,7 +8878,8 @@ export const ProjectBuildBatchConfig = /*@__PURE__*/ S.suspend(() =>
 export type CacheMode =
   | "LOCAL_CUSTOM_CACHE"
   | "LOCAL_DOCKER_LAYER_CACHE"
-  | "LOCAL_SOURCE_CACHE";
+  | "LOCAL_SOURCE_CACHE"
+  | (string & {});
 export const CacheMode = /*@__PURE__*/ S.String;
 
 /** <p>An array of strings that specify the local cache modes. You can use one or more local cache modes at the same time. This is only used for <code>LOCAL</code> cache types.</p> <p>Possible values are:</p> <dl> <dt>LOCAL_SOURCE_CACHE</dt> <dd> <p>Caches Git metadata for primary and secondary sources. After the cache is created, subsequent builds pull only the change between commits. This mode is a good choice for projects with a clean working directory and a source that is a large Git repository. If you choose this option and your project does not use a Git repository (GitHub, GitHub Enterprise, or Bitbucket), the option is ignored. </p> </dd> <dt>LOCAL_DOCKER_LAYER_CACHE</dt> <dd> <p>Caches existing Docker layers. This mode is a good choice for projects that build or pull large Docker images. It can prevent the performance issues caused by pulling large Docker images down from the network. </p> <note> <ul> <li> <p>You can use a Docker layer cache in the Linux environment only. </p> </li> <li> <p>The <code>privileged</code> flag must be set so that your project has the required Docker permissions. </p> </li> <li> <p>You should consider the security implications before you use a Docker layer cache. </p> </li> </ul> </note> </dd> <dt>LOCAL_CUSTOM_CACHE</dt> <dd> <p>Caches directories you specify in the buildspec file. This mode is a good choice if your build scenario is not suited to one of the other three local cache modes. If you use a custom cache: </p> <ul> <li> <p>Only directories can be specified for caching. You cannot specify individual files. </p> </li> <li> <p>Symlinks are used to reference cached directories. </p> </li> <li> <p>Cached directories are linked to your build before it downloads its project sources. Cached items are overridden if a source item has the same name. Directories are specified using cache paths in the buildspec file. </p> </li> </ul> </dd> </dl> */
@@ -8852,7 +8889,7 @@ export const ProjectCacheModesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ProjectCacheModesList>;
 
 /** CacheType enum */
-export type CacheType = "LOCAL" | "NO_CACHE" | "S3";
+export type CacheType = "LOCAL" | "NO_CACHE" | "S3" | (string & {});
 export const CacheType = /*@__PURE__*/ S.String;
 
 /** Definition of CacheTypeEnumValue */
@@ -8896,7 +8933,8 @@ export type ComputeType =
   | "BUILD_LAMBDA_1GB"
   | "BUILD_LAMBDA_2GB"
   | "BUILD_LAMBDA_4GB"
-  | "BUILD_LAMBDA_8GB";
+  | "BUILD_LAMBDA_8GB"
+  | (string & {});
 export const ComputeType = /*@__PURE__*/ S.String;
 
 /** Definition of ComputeTypeEnumValue */
@@ -8916,7 +8954,8 @@ export const ComputeTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
 export type EnvironmentVariableType =
   | "PARAMETER_STORE"
   | "PLAINTEXT"
-  | "SECRETS_MANAGER";
+  | "SECRETS_MANAGER"
+  | (string & {});
 export const EnvironmentVariableType = /*@__PURE__*/ S.String;
 
 /** Definition of EnvironmentVariableTypeEnumValue */
@@ -8970,7 +9009,10 @@ export const ProjectFleet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectFleet" }) as any as S.Schema<ProjectFleet>;
 
 /** ImagePullCredentialsType enum */
-export type ImagePullCredentialsType = "CODEBUILD" | "SERVICE_ROLE";
+export type ImagePullCredentialsType =
+  | "CODEBUILD"
+  | "SERVICE_ROLE"
+  | (string & {});
 export const ImagePullCredentialsType = /*@__PURE__*/ S.String;
 
 /** Definition of ImagePullCredentialsTypeEnumValue */
@@ -8987,7 +9029,7 @@ export const ImagePullCredentialsTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImagePullCredentialsTypeEnumValue>;
 
 /** CredentialProviderType enum */
-export type CredentialProviderType = "SECRETS_MANAGER";
+export type CredentialProviderType = "SECRETS_MANAGER" | (string & {});
 export const CredentialProviderType = /*@__PURE__*/ S.String;
 
 /** Definition of CredentialProviderTypeEnumValue */
@@ -9027,7 +9069,8 @@ export type EnvironmentType =
   | "LINUX_GPU_CONTAINER"
   | "LINUX_LAMBDA_CONTAINER"
   | "WINDOWS_CONTAINER"
-  | "WINDOWS_SERVER_2019_CONTAINER";
+  | "WINDOWS_SERVER_2019_CONTAINER"
+  | (string & {});
 export const EnvironmentType = /*@__PURE__*/ S.String;
 
 /** Definition of EnvironmentTypeEnumValue */
@@ -9083,7 +9126,7 @@ export const ProjectEnvironment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectEnvironment>;
 
 /** FileSystemType enum */
-export type FileSystemType = "EFS";
+export type FileSystemType = "EFS" | (string & {});
 export const FileSystemType = /*@__PURE__*/ S.String;
 
 /** Definition of FileSystemTypeEnumValue */
@@ -9133,7 +9176,7 @@ export const AwsCodeBuildProjectPropertiesFileSystemLocationsList =
   ) as any as S.Schema<AwsCodeBuildProjectPropertiesFileSystemLocationsList>;
 
 /** LogsConfigStatusType enum */
-export type LogsConfigStatusType = "DISABLED" | "ENABLED";
+export type LogsConfigStatusType = "DISABLED" | "ENABLED" | (string & {});
 export const LogsConfigStatusType = /*@__PURE__*/ S.String;
 
 /** Definition of LogsConfigStatusTypeEnumValue */
@@ -9203,7 +9246,7 @@ export const LogsConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogsConfig" }) as any as S.Schema<LogsConfig>;
 
 /** ProjectVisibilityType enum */
-export type ProjectVisibilityType = "PRIVATE" | "PUBLIC_READ";
+export type ProjectVisibilityType = "PRIVATE" | "PUBLIC_READ" | (string & {});
 export const ProjectVisibilityType = /*@__PURE__*/ S.String;
 
 /** Definition of ProjectVisibilityTypeEnumValue */
@@ -9252,7 +9295,7 @@ export const AwsCodeBuildProjectPropertiesSecondarySourceVersionsList =
   ) as any as S.Schema<AwsCodeBuildProjectPropertiesSecondarySourceVersionsList>;
 
 /** SourceAuthType enum */
-export type SourceAuthType = "CODECONNECTIONS" | "OAUTH";
+export type SourceAuthType = "CODECONNECTIONS" | "OAUTH" | (string & {});
 export const SourceAuthType = /*@__PURE__*/ S.String;
 
 /** Definition of SourceAuthTypeEnumValue */
@@ -9321,7 +9364,8 @@ export type SourceType =
   | "GITLAB"
   | "GITLAB_SELF_MANAGED"
   | "NO_SOURCE"
-  | "S3";
+  | "S3"
+  | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
 
 /** Definition of SourceTypeEnumValue */
@@ -9433,7 +9477,7 @@ export const VpcConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VpcConfig" }) as any as S.Schema<VpcConfig>;
 
 /** WebhookBuildType enum */
-export type WebhookBuildType = "BUILD" | "BUILD_BATCH";
+export type WebhookBuildType = "BUILD" | "BUILD_BATCH" | (string & {});
 export const WebhookBuildType = /*@__PURE__*/ S.String;
 
 /** Definition of WebhookBuildTypeEnumValue */
@@ -9459,7 +9503,8 @@ export type WebhookFilterType =
   | "HEAD_REF"
   | "RELEASE_NAME"
   | "TAG_NAME"
-  | "WORKFLOW_NAME";
+  | "WORKFLOW_NAME"
+  | (string & {});
 export const WebhookFilterType = /*@__PURE__*/ S.String;
 
 /** Definition of WebhookFilterTypeEnumValue */
@@ -10096,7 +10141,8 @@ export type AuthType =
   | "BASIC_AUTH"
   | "CODECONNECTIONS"
   | "OAUTH"
-  | "PERSONAL_ACCESS_TOKEN";
+  | "PERSONAL_ACCESS_TOKEN"
+  | (string & {});
 export const AuthType = /*@__PURE__*/ S.String;
 
 /** Definition of AuthTypeEnumValue */
@@ -10118,7 +10164,8 @@ export type ServerType =
   | "GITHUB"
   | "GITHUB_ENTERPRISE"
   | "GITLAB"
-  | "GITLAB_SELF_MANAGED";
+  | "GITLAB_SELF_MANAGED"
+  | (string & {});
 export const ServerType = /*@__PURE__*/ S.String;
 
 /** Definition of ServerTypeEnumValue */
@@ -11037,7 +11084,8 @@ export type ResourceType =
   | "AWS::WAFv2::WebACL"
   | "AWS::WorkSpaces::ConnectionAlias"
   | "AWS::WorkSpaces::Workspace"
-  | "AWS::XRay::EncryptionConfig";
+  | "AWS::XRay::EncryptionConfig"
+  | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
 
 /** <p>A comma-separated list of resource types to exclude from recording by the configuration recorder.</p> */
@@ -11064,7 +11112,8 @@ export const ExclusionByResourceTypes = /*@__PURE__*/ S.suspend(() =>
 export type RecordingStrategyType =
   | "ALL_SUPPORTED_RESOURCE_TYPES"
   | "EXCLUSION_BY_RESOURCE_TYPES"
-  | "INCLUSION_BY_RESOURCE_TYPES";
+  | "INCLUSION_BY_RESOURCE_TYPES"
+  | (string & {});
 export const RecordingStrategyType = /*@__PURE__*/ S.String;
 
 /** Definition of RecordingStrategyTypeEnumValue */
@@ -11123,7 +11172,7 @@ export const RecordingGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecordingGroup" }) as any as S.Schema<RecordingGroup>;
 
 /** RecordingFrequency enum */
-export type RecordingFrequency = "CONTINUOUS" | "DAILY";
+export type RecordingFrequency = "CONTINUOUS" | "DAILY" | (string & {});
 export const RecordingFrequency = /*@__PURE__*/ S.String;
 
 /** Definition of RecordingFrequencyEnumValue */
@@ -11606,7 +11655,7 @@ export const ConfigServiceConfigurationRecorderStatusesCreateOrReplaceRequestTag
   ) as any as S.Schema<ConfigServiceConfigurationRecorderStatusesCreateOrReplaceRequestTagsMap>;
 
 /** RecorderStatus enum */
-export type RecorderStatus = "Failure" | "Pending" | "Success";
+export type RecorderStatus = "Failure" | "Pending" | "Success" | (string & {});
 export const RecorderStatus = /*@__PURE__*/ S.String;
 
 /** Definition of RecorderStatusEnumValue */
@@ -12243,7 +12292,8 @@ export type MaximumExecutionFrequency =
   | "Six_Hours"
   | "Three_Hours"
   | "Twelve_Hours"
-  | "TwentyFour_Hours";
+  | "TwentyFour_Hours"
+  | (string & {});
 export const MaximumExecutionFrequency = /*@__PURE__*/ S.String;
 
 /** Definition of MaximumExecutionFrequencyEnumValue */
@@ -13529,7 +13579,7 @@ export const Endpoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 
 /** ClusterEndpointEncryptionType enum */
-export type ClusterEndpointEncryptionType = "NONE" | "TLS";
+export type ClusterEndpointEncryptionType = "NONE" | "TLS" | (string & {});
 export const ClusterEndpointEncryptionType = /*@__PURE__*/ S.String;
 
 /** Definition of ClusterEndpointEncryptionTypeEnumValue */
@@ -13626,7 +13676,12 @@ export const ParameterGroupStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ParameterGroupStatus>;
 
 /** SSEStatus enum */
-export type SSEStatus = "DISABLED" | "DISABLING" | "ENABLED" | "ENABLING";
+export type SSEStatus =
+  | "DISABLED"
+  | "DISABLING"
+  | "ENABLED"
+  | "ENABLING"
+  | (string & {});
 export const SSEStatus = /*@__PURE__*/ S.String;
 
 /** Definition of SSEStatusEnumValue */
@@ -14187,7 +14242,7 @@ export const DynamoDbContinuousBackupsDescriptionsCreateOrReplaceRequestTagsMap 
   ) as any as S.Schema<DynamoDbContinuousBackupsDescriptionsCreateOrReplaceRequestTagsMap>;
 
 /** ContinuousBackupsStatus enum */
-export type ContinuousBackupsStatus = "DISABLED" | "ENABLED";
+export type ContinuousBackupsStatus = "DISABLED" | "ENABLED" | (string & {});
 export const ContinuousBackupsStatus = /*@__PURE__*/ S.String;
 
 /** Definition of ContinuousBackupsStatusEnumValue */
@@ -14204,7 +14259,7 @@ export const ContinuousBackupsStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContinuousBackupsStatusEnumValue>;
 
 /** PointInTimeRecoveryStatus enum */
-export type PointInTimeRecoveryStatus = "DISABLED" | "ENABLED";
+export type PointInTimeRecoveryStatus = "DISABLED" | "ENABLED" | (string & {});
 export const PointInTimeRecoveryStatus = /*@__PURE__*/ S.String;
 
 /** Definition of PointInTimeRecoveryStatusEnumValue */
@@ -14954,7 +15009,8 @@ export const AwsDynamoDBTablePropertiesKeySchemaList = /*@__PURE__*/ S.Array(
 /** KinesisStreamSpecificationApproximateCreationDateTimePrecision enum */
 export type KinesisStreamSpecificationApproximateCreationDateTimePrecision =
   | "MICROSECOND"
-  | "MILLISECOND";
+  | "MILLISECOND"
+  | (string & {});
 export const KinesisStreamSpecificationApproximateCreationDateTimePrecision =
   /*@__PURE__*/ S.String;
 
@@ -16123,7 +16179,7 @@ export const Ec2AddressesCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<Ec2AddressesCreateOrReplaceRequestTagsMap>;
 
 /** DomainType enum */
-export type DomainType = "standard" | "vpc";
+export type DomainType = "standard" | "vpc" | (string & {});
 export const DomainType = /*@__PURE__*/ S.String;
 
 /** Definition of DomainTypeEnumValue */
@@ -16657,7 +16713,7 @@ export const Ec2FlowLogsCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<Ec2FlowLogsCreateOrReplaceRequestTagsMap>;
 
 /** FileFormat enum */
-export type FileFormat = "parquet" | "plain-text";
+export type FileFormat = "parquet" | "plain-text" | (string & {});
 export const FileFormat = /*@__PURE__*/ S.String;
 
 /** Definition of DestinationOptionsModelProperties */
@@ -16683,7 +16739,8 @@ export const DestinationOptionsModelProperties = /*@__PURE__*/ S.suspend(() =>
 export type LogDestinationType =
   | "cloud-watch-logs"
   | "kinesis-data-firehose"
-  | "s3";
+  | "s3"
+  | (string & {});
 export const LogDestinationType = /*@__PURE__*/ S.String;
 
 /** ResourceType enum */
@@ -16692,7 +16749,8 @@ export type ResourceType_2 =
   | "Subnet"
   | "TransitGateway"
   | "TransitGatewayAttachment"
-  | "VPC";
+  | "VPC"
+  | (string & {});
 export const ResourceType_2 = /*@__PURE__*/ S.String;
 
 /** Definition of Tag */
@@ -16716,7 +16774,7 @@ export const AwsEc2FlowLogPropertiesTagsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AwsEc2FlowLogPropertiesTagsList>;
 
 /** TrafficType enum */
-export type TrafficType = "ACCEPT" | "ALL" | "REJECT";
+export type TrafficType = "ACCEPT" | "ALL" | "REJECT" | (string & {});
 export const TrafficType = /*@__PURE__*/ S.String;
 
 /** Definition of awsEc2FlowLog */
@@ -17218,7 +17276,8 @@ export type ArchitectureValues =
   | "arm64_mac"
   | "i386"
   | "x86_64"
-  | "x86_64_mac";
+  | "x86_64_mac"
+  | (string & {});
 export const ArchitectureValues = /*@__PURE__*/ S.String;
 
 /** Definition of ArchitectureValuesEnumValue */
@@ -17242,7 +17301,8 @@ export type VolumeType =
   | "io2"
   | "sc1"
   | "st1"
-  | "standard";
+  | "standard"
+  | (string & {});
 export const VolumeType = /*@__PURE__*/ S.String;
 
 /** Definition of VolumeTypeEnumValue */
@@ -17324,7 +17384,11 @@ export const AwsEc2ImagePropertiesBlockDeviceMappingsList =
   ) as any as S.Schema<AwsEc2ImagePropertiesBlockDeviceMappingsList>;
 
 /** BootModeValues enum */
-export type BootModeValues = "legacy-bios" | "uefi" | "uefi-preferred";
+export type BootModeValues =
+  | "legacy-bios"
+  | "uefi"
+  | "uefi-preferred"
+  | (string & {});
 export const BootModeValues = /*@__PURE__*/ S.String;
 
 /** Definition of BootModeValuesEnumValue */
@@ -17341,7 +17405,7 @@ export const BootModeValuesEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BootModeValuesEnumValue>;
 
 /** HypervisorType enum */
-export type HypervisorType = "ovm" | "xen";
+export type HypervisorType = "ovm" | "xen" | (string & {});
 export const HypervisorType = /*@__PURE__*/ S.String;
 
 /** Definition of HypervisorTypeEnumValue */
@@ -17358,7 +17422,7 @@ export const HypervisorTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HypervisorTypeEnumValue>;
 
 /** ImageTypeValues enum */
-export type ImageTypeValues = "kernel" | "machine" | "ramdisk";
+export type ImageTypeValues = "kernel" | "machine" | "ramdisk" | (string & {});
 export const ImageTypeValues = /*@__PURE__*/ S.String;
 
 /** Definition of ImageTypeValuesEnumValue */
@@ -17375,7 +17439,7 @@ export const ImageTypeValuesEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImageTypeValuesEnumValue>;
 
 /** ImdsSupportValues enum */
-export type ImdsSupportValues = "v2.0";
+export type ImdsSupportValues = "v2.0" | (string & {});
 export const ImdsSupportValues = /*@__PURE__*/ S.String;
 
 /** Definition of ImdsSupportValuesEnumValue */
@@ -17392,7 +17456,7 @@ export const ImdsSupportValuesEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImdsSupportValuesEnumValue>;
 
 /** PlatformValues enum */
-export type PlatformValues = "Windows";
+export type PlatformValues = "Windows" | (string & {});
 export const PlatformValues = /*@__PURE__*/ S.String;
 
 /** Definition of PlatformValuesEnumValue */
@@ -17409,7 +17473,7 @@ export const PlatformValuesEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlatformValuesEnumValue>;
 
 /** ProductCodeValues enum */
-export type ProductCodeValues = "devpay" | "marketplace";
+export type ProductCodeValues = "devpay" | "marketplace" | (string & {});
 export const ProductCodeValues = /*@__PURE__*/ S.String;
 
 /** Definition of ProductCodeValuesEnumValue */
@@ -17446,7 +17510,7 @@ export const AwsEc2ImagePropertiesProductCodesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AwsEc2ImagePropertiesProductCodesList>;
 
 /** DeviceType enum */
-export type DeviceType = "ebs" | "instance-store";
+export type DeviceType = "ebs" | "instance-store" | (string & {});
 export const DeviceType = /*@__PURE__*/ S.String;
 
 /** Definition of DeviceTypeEnumValue */
@@ -17471,7 +17535,8 @@ export type ImageState =
   | "failed"
   | "invalid"
   | "pending"
-  | "transient";
+  | "transient"
+  | (string & {});
 export const ImageState = /*@__PURE__*/ S.String;
 
 /** Definition of ImageStateEnumValue */
@@ -17522,7 +17587,7 @@ export const AwsEc2ImagePropertiesTagsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AwsEc2ImagePropertiesTagsList>;
 
 /** TpmSupportValues enum */
-export type TpmSupportValues = "v2.0";
+export type TpmSupportValues = "v2.0" | (string & {});
 export const TpmSupportValues = /*@__PURE__*/ S.String;
 
 /** Definition of TpmSupportValuesEnumValue */
@@ -17539,7 +17604,7 @@ export const TpmSupportValuesEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TpmSupportValuesEnumValue>;
 
 /** VirtualizationType enum */
-export type VirtualizationType = "hvm" | "paravirtual";
+export type VirtualizationType = "hvm" | "paravirtual" | (string & {});
 export const VirtualizationType = /*@__PURE__*/ S.String;
 
 /** Definition of VirtualizationTypeEnumValue */
@@ -18102,7 +18167,8 @@ export type AttachmentStatus =
   | "attached"
   | "attaching"
   | "detached"
-  | "detaching";
+  | "detaching"
+  | (string & {});
 export const AttachmentStatus = /*@__PURE__*/ S.String;
 
 /** Definition of AttachmentStatusEnumValue */
@@ -18171,7 +18237,7 @@ export const AwsEc2InstancePropertiesBlockDeviceMappingsList =
   ) as any as S.Schema<AwsEc2InstancePropertiesBlockDeviceMappingsList>;
 
 /** CapacityReservationPreference enum */
-export type CapacityReservationPreference = "none" | "open";
+export type CapacityReservationPreference = "none" | "open" | (string & {});
 export const CapacityReservationPreference = /*@__PURE__*/ S.String;
 
 /** Definition of CapacityReservationPreferenceEnumValue */
@@ -18224,7 +18290,7 @@ export const CapacityReservationSpecificationResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CapacityReservationSpecificationResponse>;
 
 /** AmdSevSnpSpecification enum */
-export type AmdSevSnpSpecification = "disabled" | "enabled";
+export type AmdSevSnpSpecification = "disabled" | "enabled" | (string & {});
 export const AmdSevSnpSpecification = /*@__PURE__*/ S.String;
 
 /** Definition of AmdSevSnpSpecificationEnumValue */
@@ -18258,7 +18324,7 @@ export const CpuOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CpuOptions" }) as any as S.Schema<CpuOptions>;
 
 /** InstanceBootModeValues enum */
-export type InstanceBootModeValues = "legacy-bios" | "uefi";
+export type InstanceBootModeValues = "legacy-bios" | "uefi" | (string & {});
 export const InstanceBootModeValues = /*@__PURE__*/ S.String;
 
 /** Definition of InstanceBootModeValuesEnumValue */
@@ -18376,7 +18442,11 @@ export const IamInstanceProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IamInstanceProfile>;
 
 /** InstanceLifecycleType enum */
-export type InstanceLifecycleType = "capacity-block" | "scheduled" | "spot";
+export type InstanceLifecycleType =
+  | "capacity-block"
+  | "scheduled"
+  | "spot"
+  | (string & {});
 export const InstanceLifecycleType = /*@__PURE__*/ S.String;
 
 /** Definition of InstanceLifecycleTypeEnumValue */
@@ -19189,7 +19259,8 @@ export type InstanceType =
   | "z1d.6xlarge"
   | "z1d.large"
   | "z1d.metal"
-  | "z1d.xlarge";
+  | "z1d.xlarge"
+  | (string & {});
 export const InstanceType = /*@__PURE__*/ S.String;
 
 /** Definition of InstanceTypeEnumValue */
@@ -19226,7 +19297,7 @@ export const AwsEc2InstancePropertiesLicensesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AwsEc2InstancePropertiesLicensesList>;
 
 /** InstanceAutoRecoveryState enum */
-export type InstanceAutoRecoveryState = "default" | "disabled";
+export type InstanceAutoRecoveryState = "default" | "disabled" | (string & {});
 export const InstanceAutoRecoveryState = /*@__PURE__*/ S.String;
 
 /** Definition of InstanceAutoRecoveryStateEnumValue */
@@ -19256,7 +19327,10 @@ export const InstanceMaintenanceOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceMaintenanceOptions>;
 
 /** InstanceMetadataEndpointState enum */
-export type InstanceMetadataEndpointState = "disabled" | "enabled";
+export type InstanceMetadataEndpointState =
+  | "disabled"
+  | "enabled"
+  | (string & {});
 export const InstanceMetadataEndpointState = /*@__PURE__*/ S.String;
 
 /** Definition of InstanceMetadataEndpointStateEnumValue */
@@ -19276,7 +19350,8 @@ export const InstanceMetadataEndpointStateEnumValue = /*@__PURE__*/ S.suspend(
 /** Property value */
 export type InstanceMetadataProtocolStateEnumValueValue =
   | "disabled"
-  | "enabled";
+  | "enabled"
+  | (string & {});
 export const InstanceMetadataProtocolStateEnumValueValue =
   /*@__PURE__*/ S.String;
 
@@ -19295,7 +19370,7 @@ export const InstanceMetadataProtocolStateEnumValue = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstanceMetadataProtocolStateEnumValue>;
 
 /** HttpTokensState enum */
-export type HttpTokensState = "optional" | "required";
+export type HttpTokensState = "optional" | "required" | (string & {});
 export const HttpTokensState = /*@__PURE__*/ S.String;
 
 /** Definition of HttpTokensStateEnumValue */
@@ -19312,7 +19387,7 @@ export const HttpTokensStateEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HttpTokensStateEnumValue>;
 
 /** InstanceMetadataTagsState enum */
-export type InstanceMetadataTagsState = "disabled" | "enabled";
+export type InstanceMetadataTagsState = "disabled" | "enabled" | (string & {});
 export const InstanceMetadataTagsState = /*@__PURE__*/ S.String;
 
 /** Definition of InstanceMetadataTagsStateEnumValue */
@@ -19329,7 +19404,10 @@ export const InstanceMetadataTagsStateEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceMetadataTagsStateEnumValue>;
 
 /** InstanceMetadataOptionsState enum */
-export type InstanceMetadataOptionsState = "applied" | "pending";
+export type InstanceMetadataOptionsState =
+  | "applied"
+  | "pending"
+  | (string & {});
 export const InstanceMetadataOptionsState = /*@__PURE__*/ S.String;
 
 /** Definition of InstanceMetadataOptionsStateEnumValue */
@@ -19375,7 +19453,12 @@ export const InstanceMetadataOptionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceMetadataOptionsResponse>;
 
 /** MonitoringState enum */
-export type MonitoringState = "disabled" | "disabling" | "enabled" | "pending";
+export type MonitoringState =
+  | "disabled"
+  | "disabling"
+  | "enabled"
+  | "pending"
+  | (string & {});
 export const MonitoringState = /*@__PURE__*/ S.String;
 
 /** Definition of MonitoringStateEnumValue */
@@ -19632,7 +19715,8 @@ export type NetworkInterfaceStatus =
   | "attaching"
   | "available"
   | "detaching"
-  | "in-use";
+  | "in-use"
+  | (string & {});
 export const NetworkInterfaceStatus = /*@__PURE__*/ S.String;
 
 /** Definition of NetworkInterfaceStatusEnumValue */
@@ -19728,7 +19812,7 @@ export const AwsEc2InstancePropertiesNetworkInterfacesList =
   ) as any as S.Schema<AwsEc2InstancePropertiesNetworkInterfacesList>;
 
 /** Tenancy enum */
-export type Tenancy = "dedicated" | "default" | "host";
+export type Tenancy = "dedicated" | "default" | "host" | (string & {});
 export const Tenancy = /*@__PURE__*/ S.String;
 
 /** Definition of TenancyEnumValue */
@@ -19780,7 +19864,7 @@ export const Placement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Placement" }) as any as S.Schema<Placement>;
 
 /** HostnameType enum */
-export type HostnameType = "ip-name" | "resource-name";
+export type HostnameType = "ip-name" | "resource-name" | (string & {});
 export const HostnameType = /*@__PURE__*/ S.String;
 
 /** Definition of HostnameTypeEnumValue */
@@ -19836,7 +19920,8 @@ export type InstanceStateName =
   | "shutting-down"
   | "stopped"
   | "stopping"
-  | "terminated";
+  | "terminated"
+  | (string & {});
 export const InstanceStateName = /*@__PURE__*/ S.String;
 
 /** Definition of InstanceStateNameEnumValue */
@@ -20558,7 +20643,8 @@ export type EventCode =
   | "instance-retirement"
   | "instance-stop"
   | "system-maintenance"
-  | "system-reboot";
+  | "system-reboot"
+  | (string & {});
 export const EventCode = /*@__PURE__*/ S.String;
 
 /** Definition of EventCodeEnumValue */
@@ -20610,7 +20696,7 @@ export const AwsEc2InstanceStatusPropertiesEventsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AwsEc2InstanceStatusPropertiesEventsList>;
 
 /** StatusName enum */
-export type StatusName = "reachability";
+export type StatusName = "reachability" | (string & {});
 export const StatusName = /*@__PURE__*/ S.String;
 
 /** Definition of StatusNameEnumValue */
@@ -20631,7 +20717,8 @@ export type StatusType =
   | "failed"
   | "initializing"
   | "insufficient-data"
-  | "passed";
+  | "passed"
+  | (string & {});
 export const StatusType = /*@__PURE__*/ S.String;
 
 /** Definition of StatusTypeEnumValue */
@@ -20679,7 +20766,8 @@ export type SummaryStatus =
   | "initializing"
   | "insufficient-data"
   | "not-applicable"
-  | "ok";
+  | "ok"
+  | (string & {});
 export const SummaryStatus = /*@__PURE__*/ S.String;
 
 /** Definition of SummaryStatusEnumValue */
@@ -21226,7 +21314,8 @@ export type IpamState =
   | "modify-complete"
   | "modify-failed"
   | "modify-in-progress"
-  | "restore-in-progress";
+  | "restore-in-progress"
+  | (string & {});
 export const IpamState = /*@__PURE__*/ S.String;
 
 /** Definition of IpamStateEnumValue */
@@ -21263,7 +21352,7 @@ export const AwsEc2IpamPropertiesTagsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AwsEc2IpamPropertiesTagsList>;
 
 /** IpamTier enum */
-export type IpamTier = "advanced" | "free";
+export type IpamTier = "advanced" | "free" | (string & {});
 export const IpamTier = /*@__PURE__*/ S.String;
 
 /** Definition of IpamTierEnumValue */
@@ -21776,11 +21865,11 @@ export const Ec2KeyPairsCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<Ec2KeyPairsCreateOrReplaceRequestTagsMap>;
 
 /** The format of the key pair. Default: ``pem`` */
-export type AwsEc2KeyPairPropertiesKeyFormat = "pem" | "ppk";
+export type AwsEc2KeyPairPropertiesKeyFormat = "pem" | "ppk" | (string & {});
 export const AwsEc2KeyPairPropertiesKeyFormat = /*@__PURE__*/ S.String;
 
 /** The type of key pair. Note that ED25519 keys are not supported for Windows instances. If the ``PublicKeyMaterial`` property is specified, the ``KeyType`` property is ignored, and the key type is inferred from the ``PublicKeyMaterial`` value. Default: ``rsa`` */
-export type AwsEc2KeyPairPropertiesKeyType = "ed25519" | "rsa";
+export type AwsEc2KeyPairPropertiesKeyType = "ed25519" | "rsa" | (string & {});
 export const AwsEc2KeyPairPropertiesKeyType = /*@__PURE__*/ S.String;
 
 /** Definition of Tag */
@@ -24580,7 +24669,7 @@ export const Ec2SnapshotsCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<Ec2SnapshotsCreateOrReplaceRequestTagsMap>;
 
 /** SSEType enum */
-export type SSEType = "none" | "sse-ebs" | "sse-kms";
+export type SSEType = "none" | "sse-ebs" | "sse-kms" | (string & {});
 export const SSEType = /*@__PURE__*/ S.String;
 
 /** Definition of SSETypeEnumValue */
@@ -24602,7 +24691,8 @@ export type SnapshotState =
   | "error"
   | "pending"
   | "recoverable"
-  | "recovering";
+  | "recovering"
+  | (string & {});
 export const SnapshotState = /*@__PURE__*/ S.String;
 
 /** Definition of SnapshotStateEnumValue */
@@ -24619,7 +24709,7 @@ export const SnapshotStateEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SnapshotStateEnumValue>;
 
 /** StorageTier enum */
-export type StorageTier = "archive" | "standard";
+export type StorageTier = "archive" | "standard" | (string & {});
 export const StorageTier = /*@__PURE__*/ S.String;
 
 /** Definition of StorageTierEnumValue */
@@ -26285,7 +26375,11 @@ export const AwsEc2VPCEndpointPropertiesSubnetIdsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AwsEc2VPCEndpointPropertiesSubnetIdsList>;
 
 /** VpcEndpointType enum */
-export type VpcEndpointType = "Gateway" | "GatewayLoadBalancer" | "Interface";
+export type VpcEndpointType =
+  | "Gateway"
+  | "GatewayLoadBalancer"
+  | "Interface"
+  | (string & {});
 export const VpcEndpointType = /*@__PURE__*/ S.String;
 
 /** Definition of awsEc2VPCEndpoint */
@@ -27860,7 +27954,8 @@ export type ScanStatus =
   | "IN_PROGRESS"
   | "PENDING"
   | "SCAN_ELIGIBILITY_EXPIRED"
-  | "UNSUPPORTED_IMAGE";
+  | "UNSUPPORTED_IMAGE"
+  | (string & {});
 export const ScanStatus = /*@__PURE__*/ S.String;
 
 /** Definition of ScanStatusEnumValue */
@@ -28390,7 +28485,10 @@ export const EcrRepositoriesCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<EcrRepositoriesCreateOrReplaceRequestTagsMap>;
 
 /** EncryptionConfigurationEncryptionType enum */
-export type EncryptionConfigurationEncryptionType = "AES256" | "KMS";
+export type EncryptionConfigurationEncryptionType =
+  | "AES256"
+  | "KMS"
+  | (string & {});
 export const EncryptionConfigurationEncryptionType = /*@__PURE__*/ S.String;
 
 /** Definition of EncryptionConfiguration */
@@ -28423,7 +28521,7 @@ export const ImageScanningConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImageScanningConfiguration>;
 
 /** ImageTagMutability enum */
-export type ImageTagMutability = "IMMUTABLE" | "MUTABLE";
+export type ImageTagMutability = "IMMUTABLE" | "MUTABLE" | (string & {});
 export const ImageTagMutability = /*@__PURE__*/ S.String;
 
 /** Definition of LifecyclePolicy */
@@ -29661,7 +29759,11 @@ export const DeploymentConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentConfiguration>;
 
 /** DeploymentControllerType enum */
-export type DeploymentControllerType = "CODE_DEPLOY" | "ECS" | "EXTERNAL";
+export type DeploymentControllerType =
+  | "CODE_DEPLOY"
+  | "ECS"
+  | "EXTERNAL"
+  | (string & {});
 export const DeploymentControllerType = /*@__PURE__*/ S.String;
 
 /** Definition of DeploymentController */
@@ -29678,7 +29780,7 @@ export const DeploymentController = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentController>;
 
 /** LaunchType enum */
-export type LaunchType = "EC2" | "EXTERNAL" | "FARGATE";
+export type LaunchType = "EC2" | "EXTERNAL" | "FARGATE" | (string & {});
 export const LaunchType = /*@__PURE__*/ S.String;
 
 /** Definition of LoadBalancer */
@@ -29709,7 +29811,10 @@ export const AwsEcsServicePropertiesLoadBalancersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AwsEcsServicePropertiesLoadBalancersList>;
 
 /** AwsVpcConfigurationAssignPublicIp enum */
-export type AwsVpcConfigurationAssignPublicIp = "DISABLED" | "ENABLED";
+export type AwsVpcConfigurationAssignPublicIp =
+  | "DISABLED"
+  | "ENABLED"
+  | (string & {});
 export const AwsVpcConfigurationAssignPublicIp = /*@__PURE__*/ S.String;
 
 /** The IDs of the security groups associated with the task or service. If you don't specify a security group, the default security group for the VPC is used. There's a limit of 5 security groups that can be specified per ``AwsVpcConfiguration``. All specified security groups must be from the same VPC. */
@@ -29757,7 +29862,10 @@ export const NetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkConfiguration>;
 
 /** PlacementConstraintType enum */
-export type PlacementConstraintType = "distinctInstance" | "memberOf";
+export type PlacementConstraintType =
+  | "distinctInstance"
+  | "memberOf"
+  | (string & {});
 export const PlacementConstraintType = /*@__PURE__*/ S.String;
 
 /** Definition of PlacementConstraint */
@@ -29785,7 +29893,11 @@ export const AwsEcsServicePropertiesPlacementConstraintsList =
   ) as any as S.Schema<AwsEcsServicePropertiesPlacementConstraintsList>;
 
 /** PlacementStrategyType enum */
-export type PlacementStrategyType = "binpack" | "random" | "spread";
+export type PlacementStrategyType =
+  | "binpack"
+  | "random"
+  | "spread"
+  | (string & {});
 export const PlacementStrategyType = /*@__PURE__*/ S.String;
 
 /** Definition of PlacementStrategy */
@@ -29813,11 +29925,11 @@ export const AwsEcsServicePropertiesPlacementStrategiesList =
   ) as any as S.Schema<AwsEcsServicePropertiesPlacementStrategiesList>;
 
 /** PropagateTags enum */
-export type PropagateTags = "SERVICE" | "TASK_DEFINITION";
+export type PropagateTags = "SERVICE" | "TASK_DEFINITION" | (string & {});
 export const PropagateTags = /*@__PURE__*/ S.String;
 
 /** SchedulingStrategy enum */
-export type SchedulingStrategy = "DAEMON" | "REPLICA";
+export type SchedulingStrategy = "DAEMON" | "REPLICA" | (string & {});
 export const SchedulingStrategy = /*@__PURE__*/ S.String;
 
 /** Definition of Secret */
@@ -30041,7 +30153,10 @@ export const AwsEcsServicePropertiesTagsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AwsEcsServicePropertiesTagsList>;
 
 /** EBSTagSpecificationPropagateTags enum */
-export type EBSTagSpecificationPropagateTags = "SERVICE" | "TASK_DEFINITION";
+export type EBSTagSpecificationPropagateTags =
+  | "SERVICE"
+  | "TASK_DEFINITION"
+  | (string & {});
 export const EBSTagSpecificationPropagateTags = /*@__PURE__*/ S.String;
 
 /** The tags applied to this Amazon EBS volume. ``AmazonECSCreated`` and ``AmazonECSManaged`` are reserved tags that can't be used. */
@@ -30998,7 +31113,7 @@ export const ContainerDefinitionMountPointsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ContainerDefinitionMountPointsList>;
 
 /** PortMappingAppProtocol enum */
-export type PortMappingAppProtocol = "grpc" | "http" | "http2";
+export type PortMappingAppProtocol = "grpc" | "http" | "http2" | (string & {});
 export const PortMappingAppProtocol = /*@__PURE__*/ S.String;
 
 /** Definition of PortMapping */
@@ -31442,7 +31557,7 @@ export const DockerVolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DockerVolumeConfiguration>;
 
 /** AuthorizationConfigIAM enum */
-export type AuthorizationConfigIAM = "DISABLED" | "ENABLED";
+export type AuthorizationConfigIAM = "DISABLED" | "ENABLED" | (string & {});
 export const AuthorizationConfigIAM = /*@__PURE__*/ S.String;
 
 /** Definition of AuthorizationConfig */
@@ -31462,7 +31577,10 @@ export const AuthorizationConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthorizationConfig>;
 
 /** EFSVolumeConfigurationTransitEncryption enum */
-export type EFSVolumeConfigurationTransitEncryption = "DISABLED" | "ENABLED";
+export type EFSVolumeConfigurationTransitEncryption =
+  | "DISABLED"
+  | "ENABLED"
+  | (string & {});
 export const EFSVolumeConfigurationTransitEncryption = /*@__PURE__*/ S.String;
 
 /** Definition of EFSVolumeConfiguration */
@@ -32098,7 +32216,7 @@ export const EfsFileSystemsCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<EfsFileSystemsCreateOrReplaceRequestTagsMap>;
 
 /** BackupPolicyStatus enum */
-export type BackupPolicyStatus = "DISABLED" | "ENABLED";
+export type BackupPolicyStatus = "DISABLED" | "ENABLED" | (string & {});
 export const BackupPolicyStatus = /*@__PURE__*/ S.String;
 
 /** Definition of BackupPolicy */
@@ -32115,7 +32233,8 @@ export const BackupPolicy = /*@__PURE__*/ S.suspend(() =>
 /** FileSystemProtectionReplicationOverwriteProtection enum */
 export type FileSystemProtectionReplicationOverwriteProtection =
   | "DISABLED"
-  | "ENABLED";
+  | "ENABLED"
+  | (string & {});
 export const FileSystemProtectionReplicationOverwriteProtection =
   /*@__PURE__*/ S.String;
 
@@ -33204,7 +33323,11 @@ export const EfsMountTargetsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EfsMountTargetsUpdateResponse>;
 
 /** AuthenticationMode enum */
-export type AuthenticationMode = "API" | "API_AND_CONFIG_MAP" | "CONFIG_MAP";
+export type AuthenticationMode =
+  | "API"
+  | "API_AND_CONFIG_MAP"
+  | "CONFIG_MAP"
+  | (string & {});
 export const AuthenticationMode = /*@__PURE__*/ S.String;
 
 /** Definition of AuthenticationModeEnumValue */
@@ -33333,7 +33456,8 @@ export type ClusterIssueCode =
   | "ResourceNotFound"
   | "StsRegionalEndpointDisabled"
   | "UnsupportedVersion"
-  | "VpcNotFound";
+  | "VpcNotFound"
+  | (string & {});
 export const ClusterIssueCode = /*@__PURE__*/ S.String;
 
 /** Definition of ClusterIssueCodeEnumValue */
@@ -33412,7 +33536,7 @@ export const Identity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Identity" }) as any as S.Schema<Identity>;
 
 /** IpFamily enum */
-export type IpFamily = "ipv4" | "ipv6";
+export type IpFamily = "ipv4" | "ipv6" | (string & {});
 export const IpFamily = /*@__PURE__*/ S.String;
 
 /** Definition of IpFamilyEnumValue */
@@ -33453,7 +33577,8 @@ export type LogType =
   | "audit"
   | "authenticator"
   | "controllerManager"
-  | "scheduler";
+  | "scheduler"
+  | (string & {});
 export const LogType = /*@__PURE__*/ S.String;
 
 /** <p>The available cluster control plane log types.</p> */
@@ -33587,7 +33712,8 @@ export type ClusterStatus =
   | "DELETING"
   | "FAILED"
   | "PENDING"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const ClusterStatus = /*@__PURE__*/ S.String;
 
 /** Definition of ClusterStatusEnumValue */
@@ -38412,7 +38538,7 @@ export const ElasticLoadBalancingv2TargetHealthDescriptionsCreateOrReplaceReques
   ) as any as S.Schema<ElasticLoadBalancingv2TargetHealthDescriptionsCreateOrReplaceRequestTagsMap>;
 
 /** MitigationInEffectEnum enum */
-export type MitigationInEffectEnum = "no" | "yes";
+export type MitigationInEffectEnum = "no" | "yes" | (string & {});
 export const MitigationInEffectEnum = /*@__PURE__*/ S.String;
 
 /** Definition of MitigationInEffectEnumEnumValue */
@@ -38429,7 +38555,7 @@ export const MitigationInEffectEnumEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MitigationInEffectEnumEnumValue>;
 
 /** AnomalyResultEnum enum */
-export type AnomalyResultEnum = "anomalous" | "normal";
+export type AnomalyResultEnum = "anomalous" | "normal" | (string & {});
 export const AnomalyResultEnum = /*@__PURE__*/ S.String;
 
 /** Definition of AnomalyResultEnumEnumValue */
@@ -38493,7 +38619,8 @@ export type TargetHealthReasonEnum =
   | "Target.NotInUse"
   | "Target.NotRegistered"
   | "Target.ResponseCodeMismatch"
-  | "Target.Timeout";
+  | "Target.Timeout"
+  | (string & {});
 export const TargetHealthReasonEnum = /*@__PURE__*/ S.String;
 
 /** Definition of TargetHealthReasonEnumEnumValue */
@@ -38517,7 +38644,8 @@ export type TargetHealthStateEnum =
   | "unavailable"
   | "unhealthy"
   | "unhealthy.draining"
-  | "unused";
+  | "unused"
+  | (string & {});
 export const TargetHealthStateEnum = /*@__PURE__*/ S.String;
 
 /** Definition of TargetHealthStateEnumEnumValue */
@@ -39230,7 +39358,10 @@ export const Ec2InstanceAttributes = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Ec2InstanceAttributes>;
 
 /** InstanceCollectionType enum */
-export type InstanceCollectionType = "INSTANCE_FLEET" | "INSTANCE_GROUP";
+export type InstanceCollectionType =
+  | "INSTANCE_FLEET"
+  | "INSTANCE_GROUP"
+  | (string & {});
 export const InstanceCollectionType = /*@__PURE__*/ S.String;
 
 /** Definition of InstanceCollectionTypeEnumValue */
@@ -39274,7 +39405,7 @@ export const KerberosAttributes = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KerberosAttributes>;
 
 /** InstanceRoleType enum */
-export type InstanceRoleType = "CORE" | "MASTER" | "TASK";
+export type InstanceRoleType = "CORE" | "MASTER" | "TASK" | (string & {});
 export const InstanceRoleType = /*@__PURE__*/ S.String;
 
 /** Definition of InstanceRoleTypeEnumValue */
@@ -39295,7 +39426,8 @@ export type PlacementGroupStrategy =
   | "CLUSTER"
   | "NONE"
   | "PARTITION"
-  | "SPREAD";
+  | "SPREAD"
+  | (string & {});
 export const PlacementGroupStrategy = /*@__PURE__*/ S.String;
 
 /** Definition of PlacementGroupStrategyEnumValue */
@@ -39335,7 +39467,7 @@ export const AwsEmrClusterPropertiesPlacementGroupsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AwsEmrClusterPropertiesPlacementGroupsList>;
 
 /** RepoUpgradeOnBoot enum */
-export type RepoUpgradeOnBoot = "NONE" | "SECURITY";
+export type RepoUpgradeOnBoot = "NONE" | "SECURITY" | (string & {});
 export const RepoUpgradeOnBoot = /*@__PURE__*/ S.String;
 
 /** Definition of RepoUpgradeOnBootEnumValue */
@@ -39354,7 +39486,8 @@ export const RepoUpgradeOnBootEnumValue = /*@__PURE__*/ S.suspend(() =>
 /** ScaleDownBehavior enum */
 export type ScaleDownBehavior =
   | "TERMINATE_AT_INSTANCE_HOUR"
-  | "TERMINATE_AT_TASK_COMPLETION";
+  | "TERMINATE_AT_TASK_COMPLETION"
+  | (string & {});
 export const ScaleDownBehavior = /*@__PURE__*/ S.String;
 
 /** Definition of ScaleDownBehaviorEnumValue */
@@ -39384,7 +39517,8 @@ export type ClusterState =
   | "TERMINATED"
   | "TERMINATED_WITH_ERRORS"
   | "TERMINATING"
-  | "WAITING";
+  | "WAITING"
+  | (string & {});
 export const ClusterState = /*@__PURE__*/ S.String;
 
 /** Definition of ClusterStateEnumValue */
@@ -39409,7 +39543,8 @@ export type ClusterStateChangeReasonCode =
   | "INTERNAL_ERROR"
   | "STEP_FAILURE"
   | "USER_REQUEST"
-  | "VALIDATION_ERROR";
+  | "VALIDATION_ERROR"
+  | (string & {});
 export const ClusterStateChangeReasonCode = /*@__PURE__*/ S.String;
 
 /** Definition of ClusterStateChangeReasonCodeEnumValue */
@@ -40172,7 +40307,10 @@ export const CFNFeatureConfigurationAdditionalConfigurationList =
   ) as any as S.Schema<CFNFeatureConfigurationAdditionalConfigurationList>;
 
 /** CFNFeatureConfigurationStatus enum */
-export type CFNFeatureConfigurationStatus = "DISABLED" | "ENABLED";
+export type CFNFeatureConfigurationStatus =
+  | "DISABLED"
+  | "ENABLED"
+  | (string & {});
 export const CFNFeatureConfigurationStatus = /*@__PURE__*/ S.String;
 
 /** Definition of CFNFeatureConfiguration */
@@ -41176,7 +41314,7 @@ export const IamAccessKeyMetadataInfoCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<IamAccessKeyMetadataInfoCreateOrReplaceRequestTagsMap>;
 
 /** statusType enum */
-export type StatusType_2 = "Active" | "Inactive";
+export type StatusType_2 = "Active" | "Inactive" | (string & {});
 export const StatusType_2 = /*@__PURE__*/ S.String;
 
 /** Definition of statusTypeEnumValue */
@@ -46115,18 +46253,20 @@ export type AwsKmsKeyPropertiesKeySpec =
   | "RSA_3072"
   | "RSA_4096"
   | "SM2"
-  | "SYMMETRIC_DEFAULT";
+  | "SYMMETRIC_DEFAULT"
+  | (string & {});
 export const AwsKmsKeyPropertiesKeySpec = /*@__PURE__*/ S.String;
 
 /** Determines the [cryptographic operations](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations) for which you can use the KMS key. The default value is ``ENCRYPT_DECRYPT``. This property is required for asymmetric KMS keys and HMAC KMS keys. You can't change the ``KeyUsage`` value after the KMS key is created. If you change the value of the ``KeyUsage`` property on an existing KMS key, the update request fails, regardless of the value of the [UpdateReplacePolicy attribute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-updatereplacepolicy.html). This prevents you from accidentally deleting a KMS key by changing an immutable property value. Select only one valid value. + For symmetric encryption KMS keys, omit the property or specify ``ENCRYPT_DECRYPT``. + For asymmetric KMS keys with RSA key material, specify ``ENCRYPT_DECRYPT`` or ``SIGN_VERIFY``. + For asymmetric KMS keys with ECC key material, specify ``SIGN_VERIFY``. + For asymmetric KMS keys with SM2 (China Regions only) key material, specify ``ENCRYPT_DECRYPT`` or ``SIGN_VERIFY``. + For HMAC KMS keys, specify ``GENERATE_VERIFY_MAC``. */
 export type AwsKmsKeyPropertiesKeyUsage =
   | "ENCRYPT_DECRYPT"
   | "GENERATE_VERIFY_MAC"
-  | "SIGN_VERIFY";
+  | "SIGN_VERIFY"
+  | (string & {});
 export const AwsKmsKeyPropertiesKeyUsage = /*@__PURE__*/ S.String;
 
 /** The source of the key material for the KMS key. You cannot change the origin after you create the KMS key. The default is ``AWS_KMS``, which means that KMS creates the key material. To [create a KMS key with no key material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-create-cmk.html) (for imported key material), set this value to ``EXTERNAL``. For more information about importing key material into KMS, see [Importing Key Material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html) in the *Developer Guide*. You can ignore ``ENABLED`` when Origin is ``EXTERNAL``. When a KMS key with Origin ``EXTERNAL`` is created, the key state is ``PENDING_IMPORT`` and ``ENABLED`` is ``false``. After you import the key material, ``ENABLED`` updated to ``true``. The KMS key can then be used for Cryptographic Operations. CFN doesn't support creating an ``Origin`` parameter of the ``AWS_CLOUDHSM`` or ``EXTERNAL_KEY_STORE`` values. */
-export type AwsKmsKeyPropertiesOrigin = "AWS_KMS" | "EXTERNAL";
+export type AwsKmsKeyPropertiesOrigin = "AWS_KMS" | "EXTERNAL" | (string & {});
 export const AwsKmsKeyPropertiesOrigin = /*@__PURE__*/ S.String;
 
 /** Definition of Tag */
@@ -47132,7 +47272,7 @@ export const LambdaFunctionsCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<LambdaFunctionsCreateOrReplaceRequestTagsMap>;
 
 /** Architectures enum */
-export type Architectures = "arm64" | "x86_64";
+export type Architectures = "arm64" | "x86_64" | (string & {});
 export const Architectures = /*@__PURE__*/ S.String;
 
 /** The instruction set architecture that the function supports. Enter a string array with one of the valid values (arm64 or x86_64). The default value is ``x86_64``. */
@@ -47276,15 +47416,20 @@ export type LoggingConfigApplicationLogLevel =
   | "FATAL"
   | "INFO"
   | "TRACE"
-  | "WARN";
+  | "WARN"
+  | (string & {});
 export const LoggingConfigApplicationLogLevel = /*@__PURE__*/ S.String;
 
 /** LoggingConfigLogFormat enum */
-export type LoggingConfigLogFormat = "JSON" | "Text";
+export type LoggingConfigLogFormat = "JSON" | "Text" | (string & {});
 export const LoggingConfigLogFormat = /*@__PURE__*/ S.String;
 
 /** LoggingConfigSystemLogLevel enum */
-export type LoggingConfigSystemLogLevel = "DEBUG" | "INFO" | "WARN";
+export type LoggingConfigSystemLogLevel =
+  | "DEBUG"
+  | "INFO"
+  | "WARN"
+  | (string & {});
 export const LoggingConfigSystemLogLevel = /*@__PURE__*/ S.String;
 
 /** Definition of LoggingConfig */
@@ -47308,14 +47453,15 @@ export const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoggingConfig" }) as any as S.Schema<LoggingConfig>;
 
 /** PackageType enum */
-export type PackageType = "Image" | "Zip";
+export type PackageType = "Image" | "Zip" | (string & {});
 export const PackageType = /*@__PURE__*/ S.String;
 
 /** RuntimeManagementConfigUpdateRuntimeOn enum */
 export type RuntimeManagementConfigUpdateRuntimeOn =
   | "Auto"
   | "FunctionUpdate"
-  | "Manual";
+  | "Manual"
+  | (string & {});
 export const RuntimeManagementConfigUpdateRuntimeOn = /*@__PURE__*/ S.String;
 
 /** Definition of RuntimeManagementConfig */
@@ -47335,7 +47481,7 @@ export const RuntimeManagementConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RuntimeManagementConfig>;
 
 /** SnapStartApplyOn enum */
-export type SnapStartApplyOn = "None" | "PublishedVersions";
+export type SnapStartApplyOn = "None" | "PublishedVersions" | (string & {});
 export const SnapStartApplyOn = /*@__PURE__*/ S.String;
 
 /** Definition of SnapStart */
@@ -47350,11 +47496,14 @@ export const SnapStart = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SnapStart" }) as any as S.Schema<SnapStart>;
 
 /** SnapStartResponseApplyOn enum */
-export type SnapStartResponseApplyOn = "None" | "PublishedVersions";
+export type SnapStartResponseApplyOn =
+  | "None"
+  | "PublishedVersions"
+  | (string & {});
 export const SnapStartResponseApplyOn = /*@__PURE__*/ S.String;
 
 /** SnapStartResponseOptimizationStatus enum */
-export type SnapStartResponseOptimizationStatus = "Off" | "On";
+export type SnapStartResponseOptimizationStatus = "Off" | "On" | (string & {});
 export const SnapStartResponseOptimizationStatus = /*@__PURE__*/ S.String;
 
 /** Definition of SnapStartResponse */
@@ -47394,7 +47543,7 @@ export const AwsLambdaFunctionPropertiesTagsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AwsLambdaFunctionPropertiesTagsList>;
 
 /** TracingConfigMode enum */
-export type TracingConfigMode = "Active" | "PassThrough";
+export type TracingConfigMode = "Active" | "PassThrough" | (string & {});
 export const TracingConfigMode = /*@__PURE__*/ S.String;
 
 /** Definition of TracingConfig */
@@ -48543,7 +48692,8 @@ export type AddOnStatus =
   | "Enabling"
   | "Failed"
   | "Terminated"
-  | "Terminating";
+  | "Terminating"
+  | (string & {});
 export const AddOnStatus = /*@__PURE__*/ S.String;
 
 /** Definition of AddOn */
@@ -49283,7 +49433,8 @@ export const LogsLogGroupsCreateOrReplaceRequestTagsMap =
 /** Specifies the log group class for this log group. There are two classes: + The ``Standard`` log class supports all CWL features. + The ``Infrequent Access`` log class supports a subset of CWL features and incurs lower costs. For details about the features supported by each class, see [Log classes](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch_Logs_Log_Classes.html) */
 export type AwsLogsLogGroupPropertiesLogGroupClass =
   | "INFREQUENT_ACCESS"
-  | "STANDARD";
+  | "STANDARD"
+  | (string & {});
 export const AwsLogsLogGroupPropertiesLogGroupClass = /*@__PURE__*/ S.String;
 
 /** Definition of Tag */
@@ -50296,7 +50447,8 @@ export type MetricTransformationUnit =
   | "Terabits"
   | "Terabits/Second"
   | "Terabytes"
-  | "Terabytes/Second";
+  | "Terabytes/Second"
+  | (string & {});
 export const MetricTransformationUnit = /*@__PURE__*/ S.String;
 
 /** Definition of MetricTransformation */
@@ -50811,7 +50963,7 @@ export const LogsSubscriptionFiltersCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<LogsSubscriptionFiltersCreateOrReplaceRequestTagsMap>;
 
 /** Distribution enum */
-export type Distribution = "ByLogStream" | "Random";
+export type Distribution = "ByLogStream" | "Random" | (string & {});
 export const Distribution = /*@__PURE__*/ S.String;
 
 /** Definition of awsLogsSubscriptionFilter */
@@ -51312,7 +51464,8 @@ export type JobComparator =
   | "LT"
   | "LTE"
   | "NE"
-  | "STARTS_WITH";
+  | "STARTS_WITH"
+  | (string & {});
 export const JobComparator = /*@__PURE__*/ S.String;
 
 /** Definition of JobComparatorEnumValue */
@@ -51333,7 +51486,8 @@ export type SimpleCriterionKeyForJob =
   | "ACCOUNT_ID"
   | "S3_BUCKET_EFFECTIVE_PERMISSION"
   | "S3_BUCKET_NAME"
-  | "S3_BUCKET_SHARED_ACCESS";
+  | "S3_BUCKET_SHARED_ACCESS"
+  | (string & {});
 export const SimpleCriterionKeyForJob = /*@__PURE__*/ S.String;
 
 /** Definition of SimpleCriterionKeyForJobEnumValue */
@@ -51499,7 +51653,8 @@ export type JobStatus =
   | "IDLE"
   | "PAUSED"
   | "RUNNING"
-  | "USER_PAUSED";
+  | "USER_PAUSED"
+  | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
 
 /** Definition of JobStatusEnumValue */
@@ -51516,7 +51671,7 @@ export const JobStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobStatusEnumValue>;
 
 /** JobType enum */
-export type JobType = "ONE_TIME" | "SCHEDULED";
+export type JobType = "ONE_TIME" | "SCHEDULED" | (string & {});
 export const JobType = /*@__PURE__*/ S.String;
 
 /** Definition of JobTypeEnumValue */
@@ -51533,7 +51688,7 @@ export const JobTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobTypeEnumValue>;
 
 /** LastRunErrorStatusCode enum */
-export type LastRunErrorStatusCode = "ERROR" | "NONE";
+export type LastRunErrorStatusCode = "ERROR" | "NONE" | (string & {});
 export const LastRunErrorStatusCode = /*@__PURE__*/ S.String;
 
 /** Definition of LastRunErrorStatusCodeEnumValue */
@@ -52108,7 +52263,8 @@ export type Status =
   | "S3_OBJECT_OVERSIZE"
   | "S3_THROTTLED"
   | "S3_USER_ACCESS_DENIED"
-  | "UNKNOWN_ERROR";
+  | "UNKNOWN_ERROR"
+  | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 
 /** Definition of Tag */
@@ -52658,14 +52814,16 @@ export const FirewallPolicyStatefulDefaultActionsList = /*@__PURE__*/ S.Array(
 /** StatefulEngineOptionsRuleOrder enum */
 export type StatefulEngineOptionsRuleOrder =
   | "DEFAULT_ACTION_ORDER"
-  | "STRICT_ORDER";
+  | "STRICT_ORDER"
+  | (string & {});
 export const StatefulEngineOptionsRuleOrder = /*@__PURE__*/ S.String;
 
 /** StatefulEngineOptionsStreamExceptionPolicy enum */
 export type StatefulEngineOptionsStreamExceptionPolicy =
   | "CONTINUE"
   | "DROP"
-  | "REJECT";
+  | "REJECT"
+  | (string & {});
 export const StatefulEngineOptionsStreamExceptionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -52688,7 +52846,7 @@ export const StatefulEngineOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StatefulEngineOptions>;
 
 /** StatefulRuleGroupOverrideAction enum */
-export type StatefulRuleGroupOverrideAction = "DROP_TO_ALERT";
+export type StatefulRuleGroupOverrideAction = "DROP_TO_ALERT" | (string & {});
 export const StatefulRuleGroupOverrideAction = /*@__PURE__*/ S.String;
 
 /** Definition of StatefulRuleGroupOverride */
@@ -54047,7 +54205,10 @@ export const RuleVariables = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RuleVariables" }) as any as S.Schema<RuleVariables>;
 
 /** RulesSourceListGeneratedRulesType enum */
-export type RulesSourceListGeneratedRulesType = "ALLOWLIST" | "DENYLIST";
+export type RulesSourceListGeneratedRulesType =
+  | "ALLOWLIST"
+  | "DENYLIST"
+  | (string & {});
 export const RulesSourceListGeneratedRulesType = /*@__PURE__*/ S.String;
 
 /** Property targetTypes */
@@ -54082,11 +54243,16 @@ export const RulesSourceList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesSourceList>;
 
 /** StatefulRuleAction enum */
-export type StatefulRuleAction = "ALERT" | "DROP" | "PASS" | "REJECT";
+export type StatefulRuleAction =
+  | "ALERT"
+  | "DROP"
+  | "PASS"
+  | "REJECT"
+  | (string & {});
 export const StatefulRuleAction = /*@__PURE__*/ S.String;
 
 /** HeaderDirection enum */
-export type HeaderDirection = "ANY" | "FORWARD";
+export type HeaderDirection = "ANY" | "FORWARD" | (string & {});
 export const HeaderDirection = /*@__PURE__*/ S.String;
 
 /** HeaderProtocol enum */
@@ -54109,7 +54275,8 @@ export type HeaderProtocol =
   | "TCP"
   | "TFTP"
   | "TLS"
-  | "UDP";
+  | "UDP"
+  | (string & {});
 export const HeaderProtocol = /*@__PURE__*/ S.String;
 
 /** Definition of Header */
@@ -54393,7 +54560,8 @@ export const RulesSource = /*@__PURE__*/ S.suspend(() =>
 /** StatefulRuleOptionsRuleOrder enum */
 export type StatefulRuleOptionsRuleOrder =
   | "DEFAULT_ACTION_ORDER"
-  | "STRICT_ORDER";
+  | "STRICT_ORDER"
+  | (string & {});
 export const StatefulRuleOptionsRuleOrder = /*@__PURE__*/ S.String;
 
 /** Definition of StatefulRuleOptions */
@@ -54452,7 +54620,7 @@ export const AwsNetworkFirewallRuleGroupPropertiesTagsList =
   ) as any as S.Schema<AwsNetworkFirewallRuleGroupPropertiesTagsList>;
 
 /** Type enum */
-export type Type = "STATEFUL" | "STATELESS";
+export type Type = "STATEFUL" | "STATELESS" | (string & {});
 export const Type = /*@__PURE__*/ S.String;
 
 /** Definition of awsNetworkFirewallRuleGroup */
@@ -55038,7 +55206,8 @@ export type AutoTuneState =
   | "DISABLE_IN_PROGRESS"
   | "ENABLED"
   | "ENABLE_IN_PROGRESS"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const AutoTuneState = /*@__PURE__*/ S.String;
 
 /** Definition of AutoTuneStateEnumValue */
@@ -55082,7 +55251,8 @@ export type ConfigChangeStatus =
   | "Pending"
   | "PendingUserInput"
   | "Validating"
-  | "ValidationFailed";
+  | "ValidationFailed"
+  | (string & {});
 export const ConfigChangeStatus = /*@__PURE__*/ S.String;
 
 /** Definition of ConfigChangeStatusEnumValue */
@@ -55099,7 +55269,7 @@ export const ConfigChangeStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigChangeStatusEnumValue>;
 
 /** InitiatedBy enum */
-export type InitiatedBy = "CUSTOMER" | "SERVICE";
+export type InitiatedBy = "CUSTOMER" | "SERVICE" | (string & {});
 export const InitiatedBy = /*@__PURE__*/ S.String;
 
 /** Definition of InitiatedByEnumValue */
@@ -55260,7 +55430,8 @@ export type OpenSearchPartitionInstanceType =
   | "t4g.small.search"
   | "ultrawarm1.large.search"
   | "ultrawarm1.medium.search"
-  | "ultrawarm1.xlarge.search";
+  | "ultrawarm1.xlarge.search"
+  | (string & {});
 export const OpenSearchPartitionInstanceType = /*@__PURE__*/ S.String;
 
 /** Definition of OpenSearchPartitionInstanceTypeEnumValue */
@@ -55281,7 +55452,8 @@ export const OpenSearchPartitionInstanceTypeEnumValue = /*@__PURE__*/ S.suspend(
 export type OpenSearchWarmPartitionInstanceType =
   | "ultrawarm1.large.search"
   | "ultrawarm1.medium.search"
-  | "ultrawarm1.xlarge.search";
+  | "ultrawarm1.xlarge.search"
+  | (string & {});
 export const OpenSearchWarmPartitionInstanceType = /*@__PURE__*/ S.String;
 
 /** Definition of OpenSearchWarmPartitionInstanceTypeEnumValue */
@@ -55379,7 +55551,8 @@ export const CognitoOptions = /*@__PURE__*/ S.suspend(() =>
 export type TLSSecurityPolicy =
   | "Policy-Min-TLS-1-0-2019-07"
   | "Policy-Min-TLS-1-2-2019-07"
-  | "Policy-Min-TLS-1-2-PFS-2023-10";
+  | "Policy-Min-TLS-1-2-PFS-2023-10"
+  | (string & {});
 export const TLSSecurityPolicy = /*@__PURE__*/ S.String;
 
 /** Definition of TLSSecurityPolicyEnumValue */
@@ -55428,7 +55601,8 @@ export type DomainProcessingStatusType =
   | "Isolated"
   | "Modifying"
   | "UpdatingServiceSoftware"
-  | "UpgradingEngineVersion";
+  | "UpgradingEngineVersion"
+  | (string & {});
 export const DomainProcessingStatusType = /*@__PURE__*/ S.String;
 
 /** Definition of DomainProcessingStatusTypeEnumValue */
@@ -55445,7 +55619,7 @@ export const DomainProcessingStatusTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DomainProcessingStatusTypeEnumValue>;
 
 /** VolumeType enum */
-export type VolumeType_2 = "gp2" | "gp3" | "io1" | "standard";
+export type VolumeType_2 = "gp2" | "gp3" | "io1" | "standard" | (string & {});
 export const VolumeType_2 = /*@__PURE__*/ S.String;
 
 /** Definition of VolumeTypeEnumValue */
@@ -55511,7 +55685,7 @@ export const AwsOpenSearchDomainStatusPropertiesEndpointsMap =
   ) as any as S.Schema<AwsOpenSearchDomainStatusPropertiesEndpointsMap>;
 
 /** IPAddressType enum */
-export type IPAddressType = "dualstack" | "ipv4";
+export type IPAddressType = "dualstack" | "ipv4" | (string & {});
 export const IPAddressType = /*@__PURE__*/ S.String;
 
 /** Definition of IPAddressTypeEnumValue */
@@ -55554,7 +55728,10 @@ export const AwsOpenSearchDomainStatusPropertiesLogPublishingOptionsMap =
   ) as any as S.Schema<AwsOpenSearchDomainStatusPropertiesLogPublishingOptionsMap>;
 
 /** PropertyValueType enum */
-export type PropertyValueType = "PLAIN_TEXT" | "STRINGIFIED_JSON";
+export type PropertyValueType =
+  | "PLAIN_TEXT"
+  | "STRINGIFIED_JSON"
+  | (string & {});
 export const PropertyValueType = /*@__PURE__*/ S.String;
 
 /** Definition of PropertyValueTypeEnumValue */
@@ -55662,7 +55839,8 @@ export type DeploymentStatus =
   | "ELIGIBLE"
   | "IN_PROGRESS"
   | "NOT_ELIGIBLE"
-  | "PENDING_UPDATE";
+  | "PENDING_UPDATE"
+  | (string & {});
 export const DeploymentStatus = /*@__PURE__*/ S.String;
 
 /** Definition of DeploymentStatusEnumValue */
@@ -56374,11 +56552,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -56436,7 +56614,7 @@ export const OrganizationsAccountsCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<OrganizationsAccountsCreateOrReplaceRequestTagsMap>;
 
 /** JoinedMethod enum */
-export type JoinedMethod = "CREATED" | "INVITED";
+export type JoinedMethod = "CREATED" | "INVITED" | (string & {});
 export const JoinedMethod = /*@__PURE__*/ S.String;
 
 /** List of parent nodes for the member account. Currently only one parent at a time is supported. Default is root. */
@@ -56448,7 +56626,11 @@ export const AwsOrganizationsAccountPropertiesParentIdsList =
   ) as any as S.Schema<AwsOrganizationsAccountPropertiesParentIdsList>;
 
 /** Status enum */
-export type Status_2 = "ACTIVE" | "PENDING_CLOSURE" | "SUSPENDED";
+export type Status_2 =
+  | "ACTIVE"
+  | "PENDING_CLOSURE"
+  | "SUSPENDED"
+  | (string & {});
 export const Status_2 = /*@__PURE__*/ S.String;
 
 /** Definition of Tag */
@@ -56967,7 +57149,8 @@ export const OrganizationsOrganizationsCreateOrReplaceRequestTagsMap =
 /** Specifies the feature set supported by the new organization. Each feature set supports different levels of functionality. */
 export type AwsOrganizationsOrganizationPropertiesFeatureSet =
   | "ALL"
-  | "CONSOLIDATED_BILLING";
+  | "CONSOLIDATED_BILLING"
+  | (string & {});
 export const AwsOrganizationsOrganizationPropertiesFeatureSet =
   /*@__PURE__*/ S.String;
 
@@ -58341,7 +58524,10 @@ export const Endpoint_3 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Endpoint_3" }) as any as S.Schema<Endpoint_3>;
 
 /** ProcessorFeatureName enum */
-export type ProcessorFeatureName = "coreCount" | "threadsPerCore";
+export type ProcessorFeatureName =
+  | "coreCount"
+  | "threadsPerCore"
+  | (string & {});
 export const ProcessorFeatureName = /*@__PURE__*/ S.String;
 
 /** Definition of ProcessorFeature */
@@ -60764,7 +60950,7 @@ export const AwsRdsExportTaskPropertiesExportOnlyList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AwsRdsExportTaskPropertiesExportOnlyList>;
 
 /** ExportSourceType enum */
-export type ExportSourceType = "CLUSTER" | "SNAPSHOT";
+export type ExportSourceType = "CLUSTER" | "SNAPSHOT" | (string & {});
 export const ExportSourceType = /*@__PURE__*/ S.String;
 
 /** Definition of ExportSourceTypeEnumValue */
@@ -63607,7 +63793,7 @@ export const CidrRoutingConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CidrRoutingConfig>;
 
 /** ResourceRecordSetFailover enum */
-export type ResourceRecordSetFailover = "PRIMARY" | "SECONDARY";
+export type ResourceRecordSetFailover = "PRIMARY" | "SECONDARY" | (string & {});
 export const ResourceRecordSetFailover = /*@__PURE__*/ S.String;
 
 /** Definition of ResourceRecordSetFailoverEnumValue */
@@ -63708,7 +63894,8 @@ export type ResourceRecordSetRegion =
   | "us-east-1"
   | "us-east-2"
   | "us-west-1"
-  | "us-west-2";
+  | "us-west-2"
+  | (string & {});
 export const ResourceRecordSetRegion = /*@__PURE__*/ S.String;
 
 /** Definition of ResourceRecordSetRegionEnumValue */
@@ -63757,7 +63944,8 @@ export type RRType =
   | "SOA"
   | "SPF"
   | "SRV"
-  | "TXT";
+  | "TXT"
+  | (string & {});
 export const RRType = /*@__PURE__*/ S.String;
 
 /** Definition of RRTypeEnumValue */
@@ -64296,7 +64484,11 @@ export const S3AccessControlPoliciesCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<S3AccessControlPoliciesCreateOrReplaceRequestTagsMap>;
 
 /** Type enum */
-export type Type_2 = "AmazonCustomerByEmail" | "CanonicalUser" | "Group";
+export type Type_2 =
+  | "AmazonCustomerByEmail"
+  | "CanonicalUser"
+  | "Group"
+  | (string & {});
 export const Type_2 = /*@__PURE__*/ S.String;
 
 /** Definition of TypeEnumValue */
@@ -64339,7 +64531,8 @@ export type Permission =
   | "READ"
   | "READ_ACP"
   | "WRITE"
-  | "WRITE_ACP";
+  | "WRITE_ACP"
+  | (string & {});
 export const Permission = /*@__PURE__*/ S.String;
 
 /** Definition of PermissionEnumValue */
@@ -64867,7 +65060,7 @@ export const S3AccessPointsCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<S3AccessPointsCreateOrReplaceRequestTagsMap>;
 
 /** NetworkOrigin enum */
-export type NetworkOrigin = "Internet" | "VPC";
+export type NetworkOrigin = "Internet" | "VPC" | (string & {});
 export const NetworkOrigin = /*@__PURE__*/ S.String;
 
 /** Definition of PublicAccessBlockConfiguration */
@@ -65851,7 +66044,10 @@ export const S3BucketsCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<S3BucketsCreateOrReplaceRequestTagsMap>;
 
 /** AccelerateConfigurationAccelerationStatus enum */
-export type AccelerateConfigurationAccelerationStatus = "Enabled" | "Suspended";
+export type AccelerateConfigurationAccelerationStatus =
+  | "Enabled"
+  | "Suspended"
+  | (string & {});
 export const AccelerateConfigurationAccelerationStatus = /*@__PURE__*/ S.String;
 
 /** Definition of AccelerateConfiguration */
@@ -65876,11 +66072,12 @@ export type AccessControl =
   | "LogDeliveryWrite"
   | "Private"
   | "PublicRead"
-  | "PublicReadWrite";
+  | "PublicReadWrite"
+  | (string & {});
 export const AccessControl = /*@__PURE__*/ S.String;
 
 /** DestinationFormat enum */
-export type DestinationFormat = "CSV" | "ORC" | "Parquet";
+export type DestinationFormat = "CSV" | "ORC" | "Parquet" | (string & {});
 export const DestinationFormat = /*@__PURE__*/ S.String;
 
 /** Definition of Destination */
@@ -65984,7 +66181,8 @@ export const AwsS3BucketPropertiesAnalyticsConfigurationsList =
 export type ServerSideEncryptionByDefaultSSEAlgorithm =
   | "AES256"
   | "aws:kms"
-  | "aws:kms:dsse";
+  | "aws:kms:dsse"
+  | (string & {});
 export const ServerSideEncryptionByDefaultSSEAlgorithm = /*@__PURE__*/ S.String;
 
 /** Definition of ServerSideEncryptionByDefault */
@@ -66049,7 +66247,13 @@ export const CorsRuleAllowedHeadersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CorsRuleAllowedHeadersList>;
 
 /** CorsRuleAllowedMethods enum */
-export type CorsRuleAllowedMethods = "DELETE" | "GET" | "HEAD" | "POST" | "PUT";
+export type CorsRuleAllowedMethods =
+  | "DELETE"
+  | "GET"
+  | "HEAD"
+  | "POST"
+  | "PUT"
+  | (string & {});
 export const CorsRuleAllowedMethods = /*@__PURE__*/ S.String;
 
 /** An HTTP method that you allow the origin to run. *Allowed values*: ``GET`` | ``PUT`` | ``HEAD`` | ``POST`` | ``DELETE`` */
@@ -66116,7 +66320,10 @@ export const CorsConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CorsConfiguration>;
 
 /** IntelligentTieringConfigurationStatus enum */
-export type IntelligentTieringConfigurationStatus = "Disabled" | "Enabled";
+export type IntelligentTieringConfigurationStatus =
+  | "Disabled"
+  | "Enabled"
+  | (string & {});
 export const IntelligentTieringConfigurationStatus = /*@__PURE__*/ S.String;
 
 /** A container for a key-value pair. */
@@ -66128,7 +66335,10 @@ export const IntelligentTieringConfigurationTagFiltersList =
   ) as any as S.Schema<IntelligentTieringConfigurationTagFiltersList>;
 
 /** TieringAccessTier enum */
-export type TieringAccessTier = "ARCHIVE_ACCESS" | "DEEP_ARCHIVE_ACCESS";
+export type TieringAccessTier =
+  | "ARCHIVE_ACCESS"
+  | "DEEP_ARCHIVE_ACCESS"
+  | (string & {});
 export const TieringAccessTier = /*@__PURE__*/ S.String;
 
 /** Definition of Tiering */
@@ -66187,7 +66397,10 @@ export const AwsS3BucketPropertiesIntelligentTieringConfigurationsList =
   ) as any as S.Schema<AwsS3BucketPropertiesIntelligentTieringConfigurationsList>;
 
 /** InventoryConfigurationIncludedObjectVersions enum */
-export type InventoryConfigurationIncludedObjectVersions = "All" | "Current";
+export type InventoryConfigurationIncludedObjectVersions =
+  | "All"
+  | "Current"
+  | (string & {});
 export const InventoryConfigurationIncludedObjectVersions =
   /*@__PURE__*/ S.String;
 
@@ -66207,7 +66420,8 @@ export type InventoryConfigurationOptionalFields =
   | "ObjectOwner"
   | "ReplicationStatus"
   | "Size"
-  | "StorageClass";
+  | "StorageClass"
+  | (string & {});
 export const InventoryConfigurationOptionalFields = /*@__PURE__*/ S.String;
 
 /** Contains the optional fields that are included in the inventory results. */
@@ -66218,7 +66432,10 @@ export const InventoryConfigurationOptionalFieldsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<InventoryConfigurationOptionalFieldsList>;
 
 /** InventoryConfigurationScheduleFrequency enum */
-export type InventoryConfigurationScheduleFrequency = "Daily" | "Weekly";
+export type InventoryConfigurationScheduleFrequency =
+  | "Daily"
+  | "Weekly"
+  | (string & {});
 export const InventoryConfigurationScheduleFrequency = /*@__PURE__*/ S.String;
 
 /** Definition of InventoryConfiguration */
@@ -66298,7 +66515,8 @@ export type NoncurrentVersionTransitionStorageClass =
   | "GLACIER_IR"
   | "INTELLIGENT_TIERING"
   | "ONEZONE_IA"
-  | "STANDARD_IA";
+  | "STANDARD_IA"
+  | (string & {});
 export const NoncurrentVersionTransitionStorageClass = /*@__PURE__*/ S.String;
 
 /** Definition of NoncurrentVersionTransition */
@@ -66328,7 +66546,7 @@ export const RuleNoncurrentVersionTransitionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RuleNoncurrentVersionTransitionsList>;
 
 /** RuleStatus enum */
-export type RuleStatus = "Disabled" | "Enabled";
+export type RuleStatus = "Disabled" | "Enabled" | (string & {});
 export const RuleStatus = /*@__PURE__*/ S.String;
 
 /** Tags to use to identify a subset of objects to which the lifecycle rule applies. */
@@ -66344,7 +66562,8 @@ export type TransitionStorageClass =
   | "GLACIER_IR"
   | "INTELLIGENT_TIERING"
   | "ONEZONE_IA"
-  | "STANDARD_IA";
+  | "STANDARD_IA"
+  | (string & {});
 export const TransitionStorageClass = /*@__PURE__*/ S.String;
 
 /** Definition of Transition */
@@ -66448,7 +66667,10 @@ export const LifecycleConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LifecycleConfiguration>;
 
 /** PartitionedPrefixPartitionDateSource enum */
-export type PartitionedPrefixPartitionDateSource = "DeliveryTime" | "EventTime";
+export type PartitionedPrefixPartitionDateSource =
+  | "DeliveryTime"
+  | "EventTime"
+  | (string & {});
 export const PartitionedPrefixPartitionDateSource = /*@__PURE__*/ S.String;
 
 /** Definition of PartitionedPrefix */
@@ -66702,7 +66924,7 @@ export const NotificationConfiguration_3 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotificationConfiguration_3>;
 
 /** DefaultRetentionMode enum */
-export type DefaultRetentionMode = "COMPLIANCE" | "GOVERNANCE";
+export type DefaultRetentionMode = "COMPLIANCE" | "GOVERNANCE" | (string & {});
 export const DefaultRetentionMode = /*@__PURE__*/ S.String;
 
 /** Definition of DefaultRetention */
@@ -66755,7 +66977,8 @@ export const ObjectLockConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type OwnershipControlsRuleObjectOwnership =
   | "BucketOwnerEnforced"
   | "BucketOwnerPreferred"
-  | "ObjectWriter";
+  | "ObjectWriter"
+  | (string & {});
 export const OwnershipControlsRuleObjectOwnership = /*@__PURE__*/ S.String;
 
 /** Definition of OwnershipControlsRule */
@@ -66813,7 +67036,10 @@ export const PublicAccessBlockConfiguration_2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PublicAccessBlockConfiguration_2>;
 
 /** DeleteMarkerReplicationStatus enum */
-export type DeleteMarkerReplicationStatus = "Disabled" | "Enabled";
+export type DeleteMarkerReplicationStatus =
+  | "Disabled"
+  | "Enabled"
+  | (string & {});
 export const DeleteMarkerReplicationStatus = /*@__PURE__*/ S.String;
 
 /** Definition of DeleteMarkerReplication */
@@ -66869,7 +67095,7 @@ export const ReplicationTimeValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationTimeValue>;
 
 /** MetricsStatus enum */
-export type MetricsStatus = "Disabled" | "Enabled";
+export type MetricsStatus = "Disabled" | "Enabled" | (string & {});
 export const MetricsStatus = /*@__PURE__*/ S.String;
 
 /** Definition of Metrics */
@@ -66887,7 +67113,7 @@ export const Metrics = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Metrics" }) as any as S.Schema<Metrics>;
 
 /** ReplicationTimeStatus enum */
-export type ReplicationTimeStatus = "Disabled" | "Enabled";
+export type ReplicationTimeStatus = "Disabled" | "Enabled" | (string & {});
 export const ReplicationTimeStatus = /*@__PURE__*/ S.String;
 
 /** Definition of ReplicationTime */
@@ -66915,7 +67141,8 @@ export type ReplicationDestinationStorageClass =
   | "ONEZONE_IA"
   | "REDUCED_REDUNDANCY"
   | "STANDARD"
-  | "STANDARD_IA";
+  | "STANDARD_IA"
+  | (string & {});
 export const ReplicationDestinationStorageClass = /*@__PURE__*/ S.String;
 
 /** Definition of ReplicationDestination */
@@ -66991,7 +67218,7 @@ export const ReplicationRuleFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationRuleFilter>;
 
 /** ReplicaModificationsStatus enum */
-export type ReplicaModificationsStatus = "Disabled" | "Enabled";
+export type ReplicaModificationsStatus = "Disabled" | "Enabled" | (string & {});
 export const ReplicaModificationsStatus = /*@__PURE__*/ S.String;
 
 /** Definition of ReplicaModifications */
@@ -67008,7 +67235,10 @@ export const ReplicaModifications = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicaModifications>;
 
 /** SseKmsEncryptedObjectsStatus enum */
-export type SseKmsEncryptedObjectsStatus = "Disabled" | "Enabled";
+export type SseKmsEncryptedObjectsStatus =
+  | "Disabled"
+  | "Enabled"
+  | (string & {});
 export const SseKmsEncryptedObjectsStatus = /*@__PURE__*/ S.String;
 
 /** Definition of SseKmsEncryptedObjects */
@@ -67041,7 +67271,7 @@ export const SourceSelectionCriteria = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SourceSelectionCriteria>;
 
 /** ReplicationRuleStatus enum */
-export type ReplicationRuleStatus = "Disabled" | "Enabled";
+export type ReplicationRuleStatus = "Disabled" | "Enabled" | (string & {});
 export const ReplicationRuleStatus = /*@__PURE__*/ S.String;
 
 /** Definition of ReplicationRule */
@@ -67121,7 +67351,10 @@ export const AwsS3BucketPropertiesTagsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AwsS3BucketPropertiesTagsList>;
 
 /** The versioning state of the bucket. */
-export type VersioningConfigurationStatus = "Enabled" | "Suspended";
+export type VersioningConfigurationStatus =
+  | "Enabled"
+  | "Suspended"
+  | (string & {});
 export const VersioningConfigurationStatus = /*@__PURE__*/ S.String;
 
 /** Definition of VersioningConfiguration */
@@ -67138,7 +67371,7 @@ export const VersioningConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VersioningConfiguration>;
 
 /** RedirectAllRequestsToProtocol enum */
-export type RedirectAllRequestsToProtocol = "http" | "https";
+export type RedirectAllRequestsToProtocol = "http" | "https" | (string & {});
 export const RedirectAllRequestsToProtocol = /*@__PURE__*/ S.String;
 
 /** Definition of RedirectAllRequestsTo */
@@ -67158,7 +67391,7 @@ export const RedirectAllRequestsTo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedirectAllRequestsTo>;
 
 /** RedirectRuleProtocol enum */
-export type RedirectRuleProtocol = "http" | "https";
+export type RedirectRuleProtocol = "http" | "https" | (string & {});
 export const RedirectRuleProtocol = /*@__PURE__*/ S.String;
 
 /** Definition of RedirectRule */
@@ -68323,7 +68556,8 @@ export type AppType =
   | "JupyterServer"
   | "KernelGateway"
   | "RSessionGateway"
-  | "RStudioServerPro";
+  | "RStudioServerPro"
+  | (string & {});
 export const AppType = /*@__PURE__*/ S.String;
 
 /** ResourceSpecInstanceType enum */
@@ -68390,7 +68624,8 @@ export type ResourceSpecInstanceType =
   | "ml.trn1.2xlarge"
   | "ml.trn1.32xlarge"
   | "ml.trn1n.32xlarge"
-  | "system";
+  | "system"
+  | (string & {});
 export const ResourceSpecInstanceType = /*@__PURE__*/ S.String;
 
 /** Definition of ResourceSpec */
@@ -69074,7 +69309,8 @@ export type InstanceType_2 =
   | "ml.t3.2xlarge"
   | "ml.t3.large"
   | "ml.t3.medium"
-  | "ml.t3.xlarge";
+  | "ml.t3.xlarge"
+  | (string & {});
 export const InstanceType_2 = /*@__PURE__*/ S.String;
 
 /** Definition of InstanceTypeEnumValue */
@@ -69098,7 +69334,8 @@ export type NotebookInstanceStatus =
   | "Pending"
   | "Stopped"
   | "Stopping"
-  | "Updating";
+  | "Updating"
+  | (string & {});
 export const NotebookInstanceStatus = /*@__PURE__*/ S.String;
 
 /** Definition of NotebookInstanceStatusEnumValue */
@@ -71175,7 +71412,8 @@ export type LoggingConfigProtocol =
   | "firehose"
   | "http/s"
   | "lambda"
-  | "sqs";
+  | "sqs"
+  | (string & {});
 export const LoggingConfigProtocol = /*@__PURE__*/ S.String;
 
 /** Definition of LoggingConfig */
@@ -72312,7 +72550,11 @@ export const InstanceAggregatedAssociationOverview = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstanceAggregatedAssociationOverview>;
 
 /** PingStatus enum */
-export type PingStatus = "ConnectionLost" | "Inactive" | "Online";
+export type PingStatus =
+  | "ConnectionLost"
+  | "Inactive"
+  | "Online"
+  | (string & {});
 export const PingStatus = /*@__PURE__*/ S.String;
 
 /** Definition of PingStatusEnumValue */
@@ -72329,7 +72571,7 @@ export const PingStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PingStatusEnumValue>;
 
 /** PlatformType enum */
-export type PlatformType = "Linux" | "MacOS" | "Windows";
+export type PlatformType = "Linux" | "MacOS" | "Windows" | (string & {});
 export const PlatformType = /*@__PURE__*/ S.String;
 
 /** Definition of PlatformTypeEnumValue */
@@ -72346,7 +72588,7 @@ export const PlatformTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlatformTypeEnumValue>;
 
 /** ResourceType enum */
-export type ResourceType_3 = "EC2Instance" | "ManagedInstance";
+export type ResourceType_3 = "EC2Instance" | "ManagedInstance" | (string & {});
 export const ResourceType_3 = /*@__PURE__*/ S.String;
 
 /** Definition of ResourceTypeEnumValue */
@@ -72366,7 +72608,8 @@ export const ResourceTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
 export type SourceType_2 =
   | "AWS::EC2::Instance"
   | "AWS::IoT::Thing"
-  | "AWS::SSM::ManagedInstance";
+  | "AWS::SSM::ManagedInstance"
+  | (string & {});
 export const SourceType_2 = /*@__PURE__*/ S.String;
 
 /** Definition of SourceTypeEnumValue */
@@ -72917,15 +73160,19 @@ export const SsmParametersCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<SsmParametersCreateOrReplaceRequestTagsMap>;
 
 /** DataType enum */
-export type DataType = "aws:ec2:image" | "text";
+export type DataType = "aws:ec2:image" | "text" | (string & {});
 export const DataType = /*@__PURE__*/ S.String;
 
 /** Tier enum */
-export type Tier_2 = "Advanced" | "Intelligent-Tiering" | "Standard";
+export type Tier_2 =
+  | "Advanced"
+  | "Intelligent-Tiering"
+  | "Standard"
+  | (string & {});
 export const Tier_2 = /*@__PURE__*/ S.String;
 
 /** Type enum */
-export type Type_3 = "String" | "StringList";
+export type Type_3 = "String" | "StringList" | (string & {});
 export const Type_3 = /*@__PURE__*/ S.String;
 
 /** Definition of awsSsmParameter */
@@ -73498,7 +73745,8 @@ export type ComplianceSeverity =
   | "INFORMATIONAL"
   | "LOW"
   | "MEDIUM"
-  | "UNSPECIFIED";
+  | "UNSPECIFIED"
+  | (string & {});
 export const ComplianceSeverity = /*@__PURE__*/ S.String;
 
 /** Definition of ComplianceSeverityEnumValue */
@@ -73515,7 +73763,7 @@ export const ComplianceSeverityEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComplianceSeverityEnumValue>;
 
 /** ComplianceStatus enum */
-export type ComplianceStatus = "COMPLIANT" | "NON_COMPLIANT";
+export type ComplianceStatus = "COMPLIANT" | "NON_COMPLIANT" | (string & {});
 export const ComplianceStatus = /*@__PURE__*/ S.String;
 
 /** Definition of ComplianceStatusEnumValue */
@@ -74047,11 +74295,11 @@ export const AwsWafv2LoggingConfigurationPropertiesLogDestinationConfigsList =
   ) as any as S.Schema<AwsWafv2LoggingConfigurationPropertiesLogDestinationConfigsList>;
 
 /** DefaultBehavior enum */
-export type DefaultBehavior = "DROP" | "KEEP";
+export type DefaultBehavior = "DROP" | "KEEP" | (string & {});
 export const DefaultBehavior = /*@__PURE__*/ S.String;
 
 /** FilterBehavior enum */
-export type FilterBehavior = "DROP" | "KEEP";
+export type FilterBehavior = "DROP" | "KEEP" | (string & {});
 export const FilterBehavior = /*@__PURE__*/ S.String;
 
 /** Action enum */
@@ -74061,7 +74309,8 @@ export type Action_2 =
   | "CAPTCHA"
   | "CHALLENGE"
   | "COUNT"
-  | "EXCLUDED_AS_COUNT";
+  | "EXCLUDED_AS_COUNT"
+  | (string & {});
 export const Action_2 = /*@__PURE__*/ S.String;
 
 /** Definition of ActionConditionModelProperties */
@@ -74111,7 +74360,7 @@ export const FilterConditionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<FilterConditionsList>;
 
 /** FilterRequirement enum */
-export type FilterRequirement = "MEETS_ALL" | "MEETS_ANY";
+export type FilterRequirement = "MEETS_ALL" | "MEETS_ANY" | (string & {});
 export const FilterRequirement = /*@__PURE__*/ S.String;
 
 /** Definition of Filter */

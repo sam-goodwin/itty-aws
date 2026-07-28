@@ -92,7 +92,10 @@ export const SessionSummaries = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SessionSummaries>;
 
 /** * `collection` - Collection * `filters` - Filters */
-export type SessionRecordingPlaylistTypeEnum = "collection" | "filters";
+export type SessionRecordingPlaylistTypeEnum =
+  | "collection"
+  | "filters"
+  | (string & {});
 export const SessionRecordingPlaylistTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SessionRecordingPlaylistsCreateRequest {
@@ -151,10 +154,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;

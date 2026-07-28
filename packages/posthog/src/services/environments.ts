@@ -667,7 +667,8 @@ export type TimezoneEnum =
   | "Universal"
   | "W-SU"
   | "WET"
-  | "Zulu";
+  | "Zulu"
+  | (string & {});
 export const TimezoneEnum = /*@__PURE__*/ S.String;
 
 export type EnvironmentsAddProductIntentPartialUpdateRequestPersonDisplayNamePropertiesList =
@@ -699,11 +700,16 @@ export const EnvironmentsAddProductIntentPartialUpdateRequestSessionRecordingEve
   ) as any as S.Schema<EnvironmentsAddProductIntentPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 /** * `30d` - 30 Days * `90d` - 90 Days * `1y` - 1 Year * `5y` - 5 Years */
-export type SessionRecordingRetentionPeriodEnum = "30d" | "90d" | "1y" | "5y";
+export type SessionRecordingRetentionPeriodEnum =
+  | "30d"
+  | "90d"
+  | "1y"
+  | "5y"
+  | (string & {});
 export const SessionRecordingRetentionPeriodEnum = /*@__PURE__*/ S.String;
 
 /** * `0` - Sunday * `1` - Monday */
-export type WeekStartDayEnum = 0 | 1;
+export type WeekStartDayEnum = 0 | 1 | (number & {});
 export const WeekStartDayEnum = /*@__PURE__*/ S.Number;
 
 export type EnvironmentsAddProductIntentPartialUpdateRequestLiveEventsColumnsList =
@@ -721,7 +727,7 @@ export const EnvironmentsAddProductIntentPartialUpdateRequestRecordingDomainsLis
   ) as any as S.Schema<EnvironmentsAddProductIntentPartialUpdateRequestRecordingDomainsList>;
 
 /** * `0` - Disabled * `1` - Stateless * `2` - Stateful */
-export type CookielessServerHashModeEnum = 0 | 1 | 2;
+export type CookielessServerHashModeEnum = 0 | 1 | 2 | (number & {});
 export const CookielessServerHashModeEnum = /*@__PURE__*/ S.Number;
 
 /** * `AED` - AED * `AFN` - AFN * `ALL` - ALL * `AMD` - AMD * `ANG` - ANG * `AOA` - AOA * `ARS` - ARS * `AUD` - AUD * `AWG` - AWG * `AZN` - AZN * `BAM` - BAM * `BBD` - BBD * `BDT` - BDT * `BGN` - BGN * `BHD` - BHD * `BIF` - BIF * `BMD` - BMD * `BND` - BND * `BOB` - BOB * `BRL` - BRL * `BSD` - BSD * `BTC` - BTC * `BTN` - BTN * `BWP` - BWP * `BYN` - BYN * `BZD` - BZD * `CAD` - CAD * `CDF` - CDF * `CHF` - CHF * `CLP` - CLP * `CNY` - CNY * `COP` - COP * `CRC` - CRC * `CVE` - CVE * `CZK` - CZK * `DJF` - DJF * `DKK` - DKK * `DOP` - DOP * `DZD` - DZD * `EGP` - EGP * `ERN` - ERN * `ETB` - ETB * `EUR` - EUR * `FJD` - FJD * `GBP` - GBP * `GEL` - GEL * `GHS` - GHS * `GIP` - GIP * `GMD` - GMD * `GNF` - GNF * `GTQ` - GTQ * `GYD` - GYD * `HKD` - HKD * `HNL` - HNL * `HRK` - HRK * `HTG` - HTG * `HUF` - HUF * `IDR` - IDR * `ILS` - ILS * `INR` - INR * `IQD` - IQD * `IRR` - IRR * `ISK` - ISK * `JMD` - JMD * `JOD` - JOD * `JPY` - JPY * `KES` - KES * `KGS` - KGS * `KHR` - KHR * `KMF` - KMF * `KRW` - KRW * `KWD` - KWD * `KYD` - KYD * `KZT` - KZT * `LAK` - LAK * `LBP` - LBP * `LKR` - LKR * `LRD` - LRD * `LTL` - LTL * `LVL` - LVL * `LSL` - LSL * `LYD` - LYD * `MAD` - MAD * `MDL` - MDL * `MGA` - MGA * `MKD` - MKD * `MMK` - MMK * `MNT` - MNT * `MOP` - MOP * `MRU` - MRU * `MTL` - MTL * `MUR` - MUR * `MVR` - MVR * `MWK` - MWK * `MXN` - MXN * `MYR` - MYR * `MZN` - MZN * `NAD` - NAD * `NGN` - NGN * `NIO` - NIO * `NOK` - NOK * `NPR` - NPR * `NZD` - NZD * `OMR` - OMR * `PAB` - PAB * `PEN` - PEN * `PGK` - PGK * `PHP` - PHP * `PKR` - PKR * `PLN` - PLN * `PYG` - PYG * `QAR` - QAR * `RON` - RON * `RSD` - RSD * `RUB` - RUB * `RWF` - RWF * `SAR` - SAR * `SBD` - SBD * `SCR` - SCR * `SDG` - SDG * `SEK` - SEK * `SGD` - SGD * `SRD` - SRD * `SSP` - SSP * `STN` - STN * `SYP` - SYP * `SZL` - SZL * `THB` - THB * `TJS` - TJS * `TMT` - TMT * `TND` - TND * `TOP` - TOP * `TRY` - TRY * `TTD` - TTD * `TWD` - TWD * `TZS` - TZS * `UAH` - UAH * `UGX` - UGX * `USD` - USD * `UYU` - UYU * `UZS` - UZS * `VES` - VES * `VND` - VND * `VUV` - VUV * `WST` - WST * `XAF` - XAF * `XCD` - XCD * `XOF` - XOF * `XPF` - XPF * `YER` - YER * `ZAR` - ZAR * `ZMW` - ZMW */
@@ -877,7 +883,8 @@ export type BaseCurrencyEnum =
   | "XPF"
   | "YER"
   | "ZAR"
-  | "ZMW";
+  | "ZMW"
+  | (string & {});
 export const BaseCurrencyEnum = /*@__PURE__*/ S.String;
 
 export interface TeamRevenueAnalyticsConfig {
@@ -903,7 +910,8 @@ export type AttributionModeEnum =
   | "last_touch"
   | "linear"
   | "time_decay"
-  | "position_based";
+  | "position_based"
+  | (string & {});
 export const AttributionModeEnum = /*@__PURE__*/ S.String;
 
 export interface TeamMarketingAnalyticsConfig {
@@ -957,10 +965,10 @@ export const TeamCustomerAnalyticsConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TeamCustomerAnalyticsConfig>;
 
 /** * `b2b` - B2B * `b2c` - B2C * `other` - Other */
-export type BusinessModelEnum = "b2b" | "b2c" | "other";
+export type BusinessModelEnum = "b2b" | "b2c" | "other" | (string & {});
 export const BusinessModelEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 /** Whether this project serves B2B or B2C customers, used to optimize the UI layout. * `b2b` - B2B * `b2c` - B2C * `other` - Other */

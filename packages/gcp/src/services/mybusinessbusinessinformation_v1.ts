@@ -63,7 +63,8 @@ export class NotFound extends T.applyErrorMatchers(
 export type BatchGetCategoriesViewEnum =
   | "CATEGORY_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const BatchGetCategoriesViewEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -269,7 +270,8 @@ export type OpenInfoStatusEnum =
   | "OPEN_FOR_BUSINESS_UNSPECIFIED"
   | "OPEN"
   | "CLOSED_PERMANENTLY"
-  | "CLOSED_TEMPORARILY";
+  | "CLOSED_TEMPORARILY"
+  | (string & {});
 export const OpenInfoStatusEnum = /*@__PURE__*/ S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -329,7 +331,8 @@ export type TimePeriodOpenDayEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const TimePeriodOpenDayEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -360,7 +363,8 @@ export type TimePeriodCloseDayEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const TimePeriodCloseDayEnum = /*@__PURE__*/ S.String;
 
 /** Represents a span of time that the business is open, starting on the specified open day/time and closing on the specified close day/time. The closing time must occur after the opening time, for example later in the same day, or on a subsequent day. */
@@ -476,7 +480,8 @@ export const Profile = /*@__PURE__*/ S.suspend(() =>
 export type ServiceAreaBusinessBusinessTypeEnum =
   | "BUSINESS_TYPE_UNSPECIFIED"
   | "CUSTOMER_LOCATION_ONLY"
-  | "CUSTOMER_AND_BUSINESS_LOCATION";
+  | "CUSTOMER_AND_BUSINESS_LOCATION"
+  | (string & {});
 export const ServiceAreaBusinessBusinessTypeEnum = /*@__PURE__*/ S.String;
 
 /** Defines an area that's represented by a place ID. */
@@ -586,7 +591,8 @@ export const Categories = /*@__PURE__*/ S.suspend(() =>
 export type RelevantLocationRelationTypeEnum =
   | "RELATION_TYPE_UNSPECIFIED"
   | "DEPARTMENT_OF"
-  | "INDEPENDENT_ESTABLISHMENT_IN";
+  | "INDEPENDENT_ESTABLISHMENT_IN"
+  | (string & {});
 export const RelevantLocationRelationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about another location that is related to current one. The relation can be any one of DEPARTMENT_OF or INDEPENDENT_ESTABLISHMENT_OF, and the location specified here can be on either side (parent/child) of the location. */
@@ -849,7 +855,8 @@ export type AttributeValueTypeEnum =
   | "BOOL"
   | "ENUM"
   | "URL"
-  | "REPEATED_ENUM";
+  | "REPEATED_ENUM"
+  | (string & {});
 export const AttributeValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** Values for an attribute with a `value_type` of REPEATED_ENUM. This consists of two lists of value IDs: those that are set (true) and those that are unset (false). Values absent are considered unknown. At least one value must be specified. */
@@ -1184,7 +1191,8 @@ export type AttributeMetadataValueTypeEnum =
   | "BOOL"
   | "ENUM"
   | "URL"
-  | "REPEATED_ENUM";
+  | "REPEATED_ENUM"
+  | (string & {});
 export const AttributeMetadataValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** Metadata for supported attribute values. */
@@ -1263,7 +1271,8 @@ export const ListAttributeMetadataResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListCategoriesViewEnum =
   | "CATEGORY_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListCategoriesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListCategoriesRequest {

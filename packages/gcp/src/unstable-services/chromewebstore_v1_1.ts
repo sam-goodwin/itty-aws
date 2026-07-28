@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type GetItemsProjectionEnum = "DRAFT" | "PUBLISHED";
+export type GetItemsProjectionEnum = "DRAFT" | "PUBLISHED" | (string & {});
 export const GetItemsProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface GetItemsRequest {

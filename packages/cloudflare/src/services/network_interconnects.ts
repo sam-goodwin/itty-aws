@@ -182,7 +182,8 @@ export type InterconnectsCreateRequestBandwidth =
   | "5G"
   | "10G"
   | "20G"
-  | "50G";
+  | "50G"
+  | (string & {});
 export const InterconnectsCreateRequestBandwidth = /*@__PURE__*/ S.String;
 
 export interface CreateInterconnectRequest {
@@ -707,7 +708,8 @@ export type InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBodySpeed
     | "5G"
     | "10G"
     | "20G"
-    | "50G";
+    | "50G"
+    | (string & {});
 export const InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBodySpeed =
   /*@__PURE__*/ S.String;
 

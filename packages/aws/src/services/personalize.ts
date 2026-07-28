@@ -163,7 +163,7 @@ export const HyperParameters = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export type RankingInfluenceType = "POPULARITY" | "FRESHNESS";
+export type RankingInfluenceType = "POPULARITY" | "FRESHNESS" | (string & {});
 export const RankingInfluenceType = /*@__PURE__*/ S.String;
 
 export type RankingInfluenceWeight = number;
@@ -195,7 +195,10 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type Tags = Tag[];
 export const Tags = /*@__PURE__*/ S.Array(Tag);
-export type BatchInferenceJobMode = "BATCH_INFERENCE" | "THEME_GENERATION";
+export type BatchInferenceJobMode =
+  | "BATCH_INFERENCE"
+  | "THEME_GENERATION"
+  | (string & {});
 export const BatchInferenceJobMode = /*@__PURE__*/ S.String;
 
 export type ColumnName = string;
@@ -411,7 +414,7 @@ export const CreateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDatasetResponse",
 }) as any as S.Schema<CreateDatasetResponse>;
-export type IngestionMode = "BULK" | "PUT" | "ALL";
+export type IngestionMode = "BULK" | "PUT" | "ALL" | (string & {});
 export const IngestionMode = /*@__PURE__*/ S.String;
 
 export interface DatasetExportJobOutput {
@@ -452,7 +455,7 @@ export const CreateDatasetExportJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDatasetExportJobResponse",
 }) as any as S.Schema<CreateDatasetExportJobResponse>;
-export type Domain = "ECOMMERCE" | "VIDEO_ON_DEMAND";
+export type Domain = "ECOMMERCE" | "VIDEO_ON_DEMAND" | (string & {});
 export const Domain = /*@__PURE__*/ S.String;
 
 export interface CreateDatasetGroupRequest {
@@ -487,7 +490,7 @@ export const CreateDatasetGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDatasetGroupResponse",
 }) as any as S.Schema<CreateDatasetGroupResponse>;
-export type ImportMode = "FULL" | "INCREMENTAL";
+export type ImportMode = "FULL" | "INCREMENTAL" | (string & {});
 export const ImportMode = /*@__PURE__*/ S.String;
 
 export interface CreateDatasetImportJobRequest {
@@ -883,7 +886,12 @@ export const EventsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ eventParametersList: S.optional(EventParametersList) }),
 ).annotate({ identifier: "EventsConfig" }) as any as S.Schema<EventsConfig>;
 export type ItemAttribute = string;
-export type ObjectiveSensitivity = "LOW" | "MEDIUM" | "HIGH" | "OFF";
+export type ObjectiveSensitivity =
+  | "LOW"
+  | "MEDIUM"
+  | "HIGH"
+  | "OFF"
+  | (string & {});
 export const ObjectiveSensitivity = /*@__PURE__*/ S.String;
 
 export interface OptimizationObjective {
@@ -971,7 +979,7 @@ export const CreateSolutionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSolutionResponse",
 }) as any as S.Schema<CreateSolutionResponse>;
-export type TrainingMode = "FULL" | "UPDATE" | "AUTOTRAIN";
+export type TrainingMode = "FULL" | "UPDATE" | "AUTOTRAIN" | (string & {});
 export const TrainingMode = /*@__PURE__*/ S.String;
 
 export interface CreateSolutionVersionRequest {
@@ -2112,7 +2120,7 @@ export interface AutoMLResult {
 export const AutoMLResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bestRecipeArn: S.optional(S.String) }),
 ).annotate({ identifier: "AutoMLResult" }) as any as S.Schema<AutoMLResult>;
-export type TrainingType = "AUTOMATIC" | "MANUAL";
+export type TrainingType = "AUTOMATIC" | "MANUAL" | (string & {});
 export const TrainingType = /*@__PURE__*/ S.String;
 
 export interface SolutionVersionSummary {
@@ -2953,7 +2961,7 @@ export const ListMetricAttributionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListMetricAttributionsResponse",
 }) as any as S.Schema<ListMetricAttributionsResponse>;
-export type RecipeProvider = "SERVICE";
+export type RecipeProvider = "SERVICE" | (string & {});
 export const RecipeProvider = /*@__PURE__*/ S.String;
 
 export interface ListRecipesRequest {

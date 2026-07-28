@@ -1224,7 +1224,8 @@ export const AutomationRuleCondition = /*@__PURE__*/ S.suspend(() =>
 export type Clouddeploy_RetryBackoffModeEnum =
   | "BACKOFF_MODE_UNSPECIFIED"
   | "BACKOFF_MODE_LINEAR"
-  | "BACKOFF_MODE_EXPONENTIAL";
+  | "BACKOFF_MODE_EXPONENTIAL"
+  | (string & {});
 export const Clouddeploy_RetryBackoffModeEnum = /*@__PURE__*/ S.String;
 
 /** Retries the failed job. */
@@ -1550,14 +1551,16 @@ export type ReleaseRenderStateEnum =
   | "RENDER_STATE_UNSPECIFIED"
   | "SUCCEEDED"
   | "FAILED"
-  | "IN_PROGRESS";
+  | "IN_PROGRESS"
+  | (string & {});
 export const ReleaseRenderStateEnum = /*@__PURE__*/ S.String;
 
 export type ToolVersionSupportedConditionToolVersionSupportStateEnum =
   | "TOOL_VERSION_SUPPORT_STATE_UNSPECIFIED"
   | "TOOL_VERSION_SUPPORT_STATE_SUPPORTED"
   | "TOOL_VERSION_SUPPORT_STATE_MAINTENANCE_MODE"
-  | "TOOL_VERSION_SUPPORT_STATE_UNSUPPORTED";
+  | "TOOL_VERSION_SUPPORT_STATE_UNSUPPORTED"
+  | (string & {});
 export const ToolVersionSupportedConditionToolVersionSupportStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1589,7 +1592,8 @@ export type SkaffoldSupportedConditionSkaffoldSupportStateEnum =
   | "SKAFFOLD_SUPPORT_STATE_UNSPECIFIED"
   | "SKAFFOLD_SUPPORT_STATE_SUPPORTED"
   | "SKAFFOLD_SUPPORT_STATE_MAINTENANCE_MODE"
-  | "SKAFFOLD_SUPPORT_STATE_UNSUPPORTED";
+  | "SKAFFOLD_SUPPORT_STATE_UNSUPPORTED"
+  | (string & {});
 export const SkaffoldSupportedConditionSkaffoldSupportStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1744,14 +1748,16 @@ export type TargetRenderFailureCauseEnum =
   | "VERIFICATION_CONFIG_NOT_FOUND"
   | "CUSTOM_ACTION_NOT_FOUND"
   | "DEPLOYMENT_STRATEGY_NOT_SUPPORTED"
-  | "RENDER_FEATURE_NOT_SUPPORTED";
+  | "RENDER_FEATURE_NOT_SUPPORTED"
+  | (string & {});
 export const TargetRenderFailureCauseEnum = /*@__PURE__*/ S.String;
 
 export type TargetRenderRenderingStateEnum =
   | "TARGET_RENDER_STATE_UNSPECIFIED"
   | "SUCCEEDED"
   | "FAILED"
-  | "IN_PROGRESS";
+  | "IN_PROGRESS"
+  | (string & {});
 export const TargetRenderRenderingStateEnum = /*@__PURE__*/ S.String;
 
 /** CloudRunRenderMetadata contains Cloud Run information associated with a `Release` render. */
@@ -1976,7 +1982,8 @@ export type ExecutionConfigUsagesItemEnum =
   | "VERIFY"
   | "PREDEPLOY"
   | "POSTDEPLOY"
-  | "ANALYSIS";
+  | "ANALYSIS"
+  | (string & {});
 export const ExecutionConfigUsagesItemEnum = /*@__PURE__*/ S.String;
 
 export type ExecutionConfigUsagesItemEnumList =
@@ -2221,7 +2228,8 @@ export type RolloutApprovalStateEnum =
   | "NEEDS_APPROVAL"
   | "DOES_NOT_NEED_APPROVAL"
   | "APPROVED"
-  | "REJECTED";
+  | "REJECTED"
+  | (string & {});
 export const RolloutApprovalStateEnum = /*@__PURE__*/ S.String;
 
 export type RolloutDeployFailureCauseEnum =
@@ -2233,7 +2241,8 @@ export type RolloutDeployFailureCauseEnum =
   | "RELEASE_ABANDONED"
   | "VERIFICATION_CONFIG_NOT_FOUND"
   | "CLOUD_BUILD_REQUEST_FAILED"
-  | "OPERATION_FEATURE_NOT_SUPPORTED";
+  | "OPERATION_FEATURE_NOT_SUPPORTED"
+  | (string & {});
 export const RolloutDeployFailureCauseEnum = /*@__PURE__*/ S.String;
 
 export type RolloutStateEnum =
@@ -2247,7 +2256,8 @@ export type RolloutStateEnum =
   | "PENDING_RELEASE"
   | "CANCELLING"
   | "CANCELLED"
-  | "HALTED";
+  | "HALTED"
+  | (string & {});
 export const RolloutStateEnum = /*@__PURE__*/ S.String;
 
 /** CloudRunMetadata contains information from a Cloud Run deployment. */
@@ -2368,7 +2378,8 @@ export type JobStateEnum =
   | "FAILED"
   | "ABORTED"
   | "SKIPPED"
-  | "IGNORED";
+  | "IGNORED"
+  | (string & {});
 export const JobStateEnum = /*@__PURE__*/ S.String;
 
 /** A predeploy Job. */
@@ -2475,7 +2486,8 @@ export type PhaseStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "ABORTED"
-  | "SKIPPED";
+  | "SKIPPED"
+  | (string & {});
 export const PhaseStateEnum = /*@__PURE__*/ S.String;
 
 export type JobList = ReadonlyArray<Job>;
@@ -2687,7 +2699,8 @@ export type RolloutRestrictionActionsItemEnum =
   | "IGNORE_JOB"
   | "RETRY_JOB"
   | "ROLLBACK"
-  | "TERMINATE_JOBRUN";
+  | "TERMINATE_JOBRUN"
+  | (string & {});
 export const RolloutRestrictionActionsItemEnum = /*@__PURE__*/ S.String;
 
 export type RolloutRestrictionActionsItemEnumList =
@@ -2768,7 +2781,8 @@ export type WeeklyWindowDaysOfWeekItemEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const WeeklyWindowDaysOfWeekItemEnum = /*@__PURE__*/ S.String;
 
 export type WeeklyWindowDaysOfWeekItemEnumList =
@@ -2819,7 +2833,8 @@ export const TimeWindows = /*@__PURE__*/ S.suspend(() =>
 export type RolloutRestrictionInvokersItemEnum =
   | "INVOKER_UNSPECIFIED"
   | "USER"
-  | "DEPLOY_AUTOMATION";
+  | "DEPLOY_AUTOMATION"
+  | (string & {});
 export const RolloutRestrictionInvokersItemEnum = /*@__PURE__*/ S.String;
 
 export type RolloutRestrictionInvokersItemEnumList =
@@ -3237,7 +3252,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -3511,7 +3527,8 @@ export type AutomationRunStateEnum =
   | "FAILED"
   | "IN_PROGRESS"
   | "PENDING"
-  | "ABORTED";
+  | "ABORTED"
+  | (string & {});
 export const AutomationRunStateEnum = /*@__PURE__*/ S.String;
 
 /** Contains the information of an automated promote-release operation. */
@@ -3561,7 +3578,8 @@ export const AdvanceRolloutOperation = /*@__PURE__*/ S.suspend(() =>
 export type RetryPhaseBackoffModeEnum =
   | "BACKOFF_MODE_UNSPECIFIED"
   | "BACKOFF_MODE_LINEAR"
-  | "BACKOFF_MODE_EXPONENTIAL";
+  | "BACKOFF_MODE_EXPONENTIAL"
+  | (string & {});
 export const RetryPhaseBackoffModeEnum = /*@__PURE__*/ S.String;
 
 export type RetryAttemptStateEnum =
@@ -3571,7 +3589,8 @@ export type RetryAttemptStateEnum =
   | "REPAIR_STATE_FAILED"
   | "REPAIR_STATE_IN_PROGRESS"
   | "REPAIR_STATE_PENDING"
-  | "REPAIR_STATE_ABORTED";
+  | "REPAIR_STATE_ABORTED"
+  | (string & {});
 export const RetryAttemptStateEnum = /*@__PURE__*/ S.String;
 
 /** RetryAttempt represents an action of retrying the failed Cloud Deploy job. */
@@ -3623,7 +3642,8 @@ export type RollbackAttemptStateEnum =
   | "REPAIR_STATE_FAILED"
   | "REPAIR_STATE_IN_PROGRESS"
   | "REPAIR_STATE_PENDING"
-  | "REPAIR_STATE_ABORTED";
+  | "REPAIR_STATE_ABORTED"
+  | (string & {});
 export const RollbackAttemptStateEnum = /*@__PURE__*/ S.String;
 
 /** RollbackAttempt represents an action of rolling back a Cloud Deploy 'Target'. */
@@ -3916,7 +3936,8 @@ export type DeployJobRunFailureCauseEnum =
   | "DEADLINE_EXCEEDED"
   | "MISSING_RESOURCES_FOR_CANARY"
   | "CLOUD_BUILD_REQUEST_FAILED"
-  | "DEPLOY_FEATURE_NOT_SUPPORTED";
+  | "DEPLOY_FEATURE_NOT_SUPPORTED"
+  | (string & {});
 export const DeployJobRunFailureCauseEnum = /*@__PURE__*/ S.String;
 
 /** CustomTargetDeployMetadata contains information from a Custom Target deploy operation. */
@@ -4006,7 +4027,8 @@ export type PostdeployJobRunFailureCauseEnum =
   | "CLOUD_BUILD_UNAVAILABLE"
   | "EXECUTION_FAILED"
   | "DEADLINE_EXCEEDED"
-  | "CLOUD_BUILD_REQUEST_FAILED";
+  | "CLOUD_BUILD_REQUEST_FAILED"
+  | (string & {});
 export const PostdeployJobRunFailureCauseEnum = /*@__PURE__*/ S.String;
 
 /** PostdeployJobRun contains information specific to a postdeploy `JobRun`. */
@@ -4065,7 +4087,8 @@ export type PredeployJobRunFailureCauseEnum =
   | "CLOUD_BUILD_UNAVAILABLE"
   | "EXECUTION_FAILED"
   | "DEADLINE_EXCEEDED"
-  | "CLOUD_BUILD_REQUEST_FAILED";
+  | "CLOUD_BUILD_REQUEST_FAILED"
+  | (string & {});
 export const PredeployJobRunFailureCauseEnum = /*@__PURE__*/ S.String;
 
 /** PredeployJobRun contains information specific to a predeploy `JobRun`. */
@@ -4096,7 +4119,8 @@ export type JobRunStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "TERMINATING"
-  | "TERMINATED";
+  | "TERMINATED"
+  | (string & {});
 export const JobRunStateEnum = /*@__PURE__*/ S.String;
 
 export type VerifyJobRunFailureCauseEnum =
@@ -4105,7 +4129,8 @@ export type VerifyJobRunFailureCauseEnum =
   | "EXECUTION_FAILED"
   | "DEADLINE_EXCEEDED"
   | "VERIFICATION_CONFIG_NOT_FOUND"
-  | "CLOUD_BUILD_REQUEST_FAILED";
+  | "CLOUD_BUILD_REQUEST_FAILED"
+  | (string & {});
 export const VerifyJobRunFailureCauseEnum = /*@__PURE__*/ S.String;
 
 /** VerifyJobRunMetadata contains metadata about the verify `JobRun`. */
@@ -4152,7 +4177,8 @@ export type CustomCheckStatusFailureCauseEnum =
   | "CLOUD_BUILD_UNAVAILABLE"
   | "EXECUTION_FAILED"
   | "DEADLINE_EXCEEDED"
-  | "CLOUD_BUILD_REQUEST_FAILED";
+  | "CLOUD_BUILD_REQUEST_FAILED"
+  | (string & {});
 export const CustomCheckStatusFailureCauseEnum = /*@__PURE__*/ S.String;
 
 /** CustomCheckStatus contains information specific to a single iteration of a custom analysis job. */

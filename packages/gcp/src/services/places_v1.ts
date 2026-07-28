@@ -531,7 +531,8 @@ export type GoogleMapsPlacesV1FuelOptionsFuelPriceTypeEnum =
   | "E100"
   | "METHANE"
   | "BIO_DIESEL"
-  | "TRUCK_DIESEL";
+  | "TRUCK_DIESEL"
+  | (string & {});
 export const GoogleMapsPlacesV1FuelOptionsFuelPriceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -665,7 +666,8 @@ export type GoogleMapsPlacesV1PlaceOpeningHoursSecondaryHoursTypeEnum =
   | "PICKUP"
   | "ACCESS"
   | "SENIOR_HOURS"
-  | "ONLINE_SERVICE_HOURS";
+  | "ONLINE_SERVICE_HOURS"
+  | (string & {});
 export const GoogleMapsPlacesV1PlaceOpeningHoursSecondaryHoursTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -901,7 +903,8 @@ export type GoogleMapsPlacesV1AddressDescriptorLandmarkSpatialRelationshipEnum =
     | "ACROSS_THE_ROAD"
     | "DOWN_THE_ROAD"
     | "AROUND_THE_CORNER"
-    | "BEHIND";
+    | "BEHIND"
+    | (string & {});
 export const GoogleMapsPlacesV1AddressDescriptorLandmarkSpatialRelationshipEnum =
   /*@__PURE__*/ S.String;
 
@@ -950,7 +953,8 @@ export type GoogleMapsPlacesV1AddressDescriptorAreaContainmentEnum =
   | "CONTAINMENT_UNSPECIFIED"
   | "WITHIN"
   | "OUTSKIRTS"
-  | "NEAR";
+  | "NEAR"
+  | (string & {});
 export const GoogleMapsPlacesV1AddressDescriptorAreaContainmentEnum =
   /*@__PURE__*/ S.String;
 
@@ -1113,7 +1117,8 @@ export type GoogleMapsPlacesV1PlacePriceLevelEnum =
   | "PRICE_LEVEL_INEXPENSIVE"
   | "PRICE_LEVEL_MODERATE"
   | "PRICE_LEVEL_EXPENSIVE"
-  | "PRICE_LEVEL_VERY_EXPENSIVE";
+  | "PRICE_LEVEL_VERY_EXPENSIVE"
+  | (string & {});
 export const GoogleMapsPlacesV1PlacePriceLevelEnum = /*@__PURE__*/ S.String;
 
 export type GoogleMapsPlacesV1TransitLineVehicleTypeEnum =
@@ -1138,7 +1143,8 @@ export type GoogleMapsPlacesV1TransitLineVehicleTypeEnum =
   | "FUNICULAR"
   | "SPECIAL"
   | "HORSE_CARRIAGE"
-  | "AIRPLANE";
+  | "AIRPLANE"
+  | (string & {});
 export const GoogleMapsPlacesV1TransitLineVehicleTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1293,7 +1299,8 @@ export type GoogleMapsPlacesV1PlaceBusinessStatusEnum =
   | "OPERATIONAL"
   | "CLOSED_TEMPORARILY"
   | "CLOSED_PERMANENTLY"
-  | "FUTURE_OPENING";
+  | "FUTURE_OPENING"
+  | (string & {});
 export const GoogleMapsPlacesV1PlaceBusinessStatusEnum = /*@__PURE__*/ S.String;
 
 export type GoogleMapsPlacesV1EVChargeOptionsConnectorAggregationTypeEnum =
@@ -1307,7 +1314,8 @@ export type GoogleMapsPlacesV1EVChargeOptionsConnectorAggregationTypeEnum =
   | "EV_CONNECTOR_TYPE_TESLA"
   | "EV_CONNECTOR_TYPE_UNSPECIFIED_GB_T"
   | "EV_CONNECTOR_TYPE_UNSPECIFIED_WALL_OUTLET"
-  | "EV_CONNECTOR_TYPE_NACS";
+  | "EV_CONNECTOR_TYPE_NACS"
+  | (string & {});
 export const GoogleMapsPlacesV1EVChargeOptionsConnectorAggregationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1892,7 +1900,8 @@ export const GoogleMapsPlacesV1Place = /*@__PURE__*/ S.suspend(() =>
 export type GoogleMapsPlacesV1SearchNearbyRequestRankPreferenceEnum =
   | "RANK_PREFERENCE_UNSPECIFIED"
   | "DISTANCE"
-  | "POPULARITY";
+  | "POPULARITY"
+  | (string & {});
 export const GoogleMapsPlacesV1SearchNearbyRequestRankPreferenceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1901,7 +1910,8 @@ export type GoogleMapsPlacesV1RoutingParametersTravelModeEnum =
   | "DRIVE"
   | "BICYCLE"
   | "WALK"
-  | "TWO_WHEELER";
+  | "TWO_WHEELER"
+  | (string & {});
 export const GoogleMapsPlacesV1RoutingParametersTravelModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1931,7 +1941,8 @@ export type GoogleMapsPlacesV1RoutingParametersRoutingPreferenceEnum =
   | "ROUTING_PREFERENCE_UNSPECIFIED"
   | "TRAFFIC_UNAWARE"
   | "TRAFFIC_AWARE"
-  | "TRAFFIC_AWARE_OPTIMAL";
+  | "TRAFFIC_AWARE_OPTIMAL"
+  | (string & {});
 export const GoogleMapsPlacesV1RoutingParametersRoutingPreferenceEnum =
   /*@__PURE__*/ S.String;
 
@@ -2136,7 +2147,8 @@ export const GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters =
 export type GoogleMapsPlacesV1SearchTextRequestRankPreferenceEnum =
   | "RANK_PREFERENCE_UNSPECIFIED"
   | "DISTANCE"
-  | "RELEVANCE";
+  | "RELEVANCE"
+  | (string & {});
 export const GoogleMapsPlacesV1SearchTextRequestRankPreferenceEnum =
   /*@__PURE__*/ S.String;
 
@@ -2160,7 +2172,8 @@ export type GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnum =
   | "PRICE_LEVEL_INEXPENSIVE"
   | "PRICE_LEVEL_MODERATE"
   | "PRICE_LEVEL_EXPENSIVE"
-  | "PRICE_LEVEL_VERY_EXPENSIVE";
+  | "PRICE_LEVEL_VERY_EXPENSIVE"
+  | (string & {});
 export const GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -2182,7 +2195,8 @@ export type GoogleMapsPlacesV1SearchTextRequestEVOptionsConnectorTypesItemEnum =
     | "EV_CONNECTOR_TYPE_TESLA"
     | "EV_CONNECTOR_TYPE_UNSPECIFIED_GB_T"
     | "EV_CONNECTOR_TYPE_UNSPECIFIED_WALL_OUTLET"
-    | "EV_CONNECTOR_TYPE_NACS";
+    | "EV_CONNECTOR_TYPE_NACS"
+    | (string & {});
 export const GoogleMapsPlacesV1SearchTextRequestEVOptionsConnectorTypesItemEnum =
   /*@__PURE__*/ S.String;
 

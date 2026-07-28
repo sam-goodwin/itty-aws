@@ -42,7 +42,8 @@ export const CommunicationServicesCheckNameAvailabilityRequest =
 /** The reason why the given name is not available. */
 export type CommunicationServicesCheckNameAvailabilityResponseReason =
   | "Invalid"
-  | "AlreadyExists";
+  | "AlreadyExists"
+  | (string & {});
 export const CommunicationServicesCheckNameAvailabilityResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -87,7 +88,8 @@ export const DomainsResourceList = /*@__PURE__*/ S.Array(
 export type CommunicationServicePropertiesInputPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter";
+  | "SecuredByPerimeter"
+  | (string & {});
 export const CommunicationServicePropertiesInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -120,7 +122,8 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned";
+  | "SystemAssigned,UserAssigned"
+  | (string & {});
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -201,7 +204,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -209,7 +213,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -258,14 +263,16 @@ export type CommunicationServicesProvisioningState =
   | "Creating"
   | "Updating"
   | "Deleting"
-  | "Moving";
+  | "Moving"
+  | (string & {});
 export const CommunicationServicesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Allow, disallow, or let network security perimeter configuration control public network access to the protected resource. Value is optional but if passed in, it must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'. */
 export type CommunicationServicePropertiesPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter";
+  | "SecuredByPerimeter"
+  | (string & {});
 export const CommunicationServicePropertiesPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -760,7 +767,7 @@ export const CommunicationServiceKeys = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommunicationServiceKeys>;
 
 /** The keyType to regenerate. Must be either 'primary' or 'secondary'(case-insensitive). */
-export type KeyType = "Primary" | "Secondary";
+export type KeyType = "Primary" | "Secondary" | (string & {});
 export const KeyType = /*@__PURE__*/ S.String;
 
 export interface CommunicationServicesRegenerateKeyRequest {
@@ -805,7 +812,8 @@ export const CommunicationServicesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 export type CommunicationServiceUpdatePropertiesPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter";
+  | "SecuredByPerimeter"
+  | (string & {});
 export const CommunicationServiceUpdatePropertiesPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -969,7 +977,13 @@ export const CommunicationServicesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommunicationServicesUpdateResponse>;
 
 /** Type of verification. */
-export type VerificationType = "Domain" | "SPF" | "DKIM" | "DKIM2" | "DMARC";
+export type VerificationType =
+  | "Domain"
+  | "SPF"
+  | "DKIM"
+  | "DKIM2"
+  | "DMARC"
+  | (string & {});
 export const VerificationType = /*@__PURE__*/ S.String;
 
 export interface DomainsCancelVerificationRequest {
@@ -1023,11 +1037,12 @@ export const DomainsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 export type DomainManagement =
   | "AzureManaged"
   | "CustomerManaged"
-  | "CustomerManagedInExchangeOnline";
+  | "CustomerManagedInExchangeOnline"
+  | (string & {});
 export const DomainManagement = /*@__PURE__*/ S.String;
 
 /** Describes whether user engagement tracking is enabled or disabled. */
-export type UserEngagementTracking = "Disabled" | "Enabled";
+export type UserEngagementTracking = "Disabled" | "Enabled" | (string & {});
 export const UserEngagementTracking = /*@__PURE__*/ S.String;
 
 /** A class that describes the properties of a Domains resource. */
@@ -1102,7 +1117,8 @@ export type DomainsProvisioningState =
   | "Creating"
   | "Updating"
   | "Deleting"
-  | "Moving";
+  | "Moving"
+  | (string & {});
 export const DomainsProvisioningState = /*@__PURE__*/ S.String;
 
 /** Status of the verification operation. */
@@ -1112,7 +1128,8 @@ export type VerificationStatus =
   | "VerificationInProgress"
   | "VerificationFailed"
   | "Verified"
-  | "CancellationRequested";
+  | "CancellationRequested"
+  | (string & {});
 export const VerificationStatus = /*@__PURE__*/ S.String;
 
 /** A class that represents a VerificationStatus record. */
@@ -1599,7 +1616,8 @@ export type EmailServicesProvisioningState =
   | "Creating"
   | "Updating"
   | "Deleting"
-  | "Moving";
+  | "Moving"
+  | (string & {});
 export const EmailServicesProvisioningState = /*@__PURE__*/ S.String;
 
 /** A class that describes the properties of the EmailService. */
@@ -2040,11 +2058,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -2152,7 +2170,8 @@ export type ProvisioningState =
   | "Creating"
   | "Updating"
   | "Deleting"
-  | "Moving";
+  | "Moving"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** A class that describes the properties of a SenderUsername resource. */

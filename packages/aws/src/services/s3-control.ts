@@ -1197,7 +1197,11 @@ export const AccessGrantsLocationConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AccessGrantsLocationConfiguration",
 }) as any as S.Schema<AccessGrantsLocationConfiguration>;
-export type GranteeType = "DIRECTORY_USER" | "DIRECTORY_GROUP" | "IAM";
+export type GranteeType =
+  | "DIRECTORY_USER"
+  | "DIRECTORY_GROUP"
+  | "IAM"
+  | (string & {});
 export const GranteeType = /*@__PURE__*/ S.String;
 
 export type GranteeIdentifier = string;
@@ -1211,11 +1215,11 @@ export const Grantee = /*@__PURE__*/ S.suspend(() =>
     GranteeIdentifier: S.optional(S.String),
   }),
 ).annotate({ identifier: "Grantee" }) as any as S.Schema<Grantee>;
-export type Permission = "READ" | "WRITE" | "READWRITE";
+export type Permission = "READ" | "WRITE" | "READWRITE" | (string & {});
 export const Permission = /*@__PURE__*/ S.String;
 
 export type IdentityCenterApplicationArn = string;
-export type S3PrefixType = "Object";
+export type S3PrefixType = "Object" | (string & {});
 export const S3PrefixType = /*@__PURE__*/ S.String;
 
 export type TagKeyString = string;
@@ -1453,7 +1457,8 @@ export type ScopePermission =
   | "ListBucketMultipartUploads"
   | "PutObject"
   | "DeleteObject"
-  | "AbortMultipartUpload";
+  | "AbortMultipartUpload"
+  | (string & {});
 export const ScopePermission = /*@__PURE__*/ S.String;
 
 export type ScopePermissionList = ScopePermission[];
@@ -1529,7 +1534,8 @@ export type ObjectLambdaAllowedFeature =
   | "GetObject-Range"
   | "GetObject-PartNumber"
   | "HeadObject-Range"
-  | "HeadObject-PartNumber";
+  | "HeadObject-PartNumber"
+  | (string & {});
 export const ObjectLambdaAllowedFeature = /*@__PURE__*/ S.String;
 
 export type ObjectLambdaAllowedFeaturesList = ObjectLambdaAllowedFeature[];
@@ -1540,7 +1546,8 @@ export type ObjectLambdaTransformationConfigurationAction =
   | "GetObject"
   | "HeadObject"
   | "ListObjects"
-  | "ListObjectsV2";
+  | "ListObjectsV2"
+  | (string & {});
 export const ObjectLambdaTransformationConfigurationAction =
   /*@__PURE__*/ S.String;
 
@@ -1639,7 +1646,10 @@ export const CreateAccessPointForObjectLambdaRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateAccessPointForObjectLambdaRequest>;
 export type ObjectLambdaAccessPointArn = string;
 export type ObjectLambdaAccessPointAliasValue = string;
-export type ObjectLambdaAccessPointAliasStatus = "PROVISIONING" | "READY";
+export type ObjectLambdaAccessPointAliasStatus =
+  | "PROVISIONING"
+  | "READY"
+  | (string & {});
 export const ObjectLambdaAccessPointAliasStatus = /*@__PURE__*/ S.String;
 
 export interface ObjectLambdaAccessPointAlias {
@@ -1671,7 +1681,8 @@ export type BucketCannedACL =
   | "private"
   | "public-read"
   | "public-read-write"
-  | "authenticated-read";
+  | "authenticated-read"
+  | (string & {});
 export const BucketCannedACL = /*@__PURE__*/ S.String;
 
 export type BucketLocationConstraint =
@@ -1685,7 +1696,8 @@ export type BucketLocationConstraint =
   | "ap-northeast-1"
   | "sa-east-1"
   | "cn-north-1"
-  | "eu-central-1";
+  | "eu-central-1"
+  | (string & {});
 export const BucketLocationConstraint = /*@__PURE__*/ S.String;
 
 export interface CreateBucketConfiguration {
@@ -1797,10 +1809,15 @@ export type S3CannedAccessControlList =
   | "aws-exec-read"
   | "authenticated-read"
   | "bucket-owner-read"
-  | "bucket-owner-full-control";
+  | "bucket-owner-full-control"
+  | (string & {});
 export const S3CannedAccessControlList = /*@__PURE__*/ S.String;
 
-export type S3GranteeTypeIdentifier = "id" | "emailAddress" | "uri";
+export type S3GranteeTypeIdentifier =
+  | "id"
+  | "emailAddress"
+  | "uri"
+  | (string & {});
 export const S3GranteeTypeIdentifier = /*@__PURE__*/ S.String;
 
 export type NonEmptyMaxLength1024String = string;
@@ -1821,7 +1838,8 @@ export type S3Permission =
   | "READ"
   | "WRITE"
   | "READ_ACP"
-  | "WRITE_ACP";
+  | "WRITE_ACP"
+  | (string & {});
 export const S3Permission = /*@__PURE__*/ S.String;
 
 export interface S3Grant {
@@ -1836,7 +1854,7 @@ export const S3Grant = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "S3Grant" }) as any as S.Schema<S3Grant>;
 export type S3GrantList = S3Grant[];
 export const S3GrantList = /*@__PURE__*/ S.Array(S3Grant);
-export type S3MetadataDirective = "COPY" | "REPLACE";
+export type S3MetadataDirective = "COPY" | "REPLACE" | (string & {});
 export const S3MetadataDirective = /*@__PURE__*/ S.String;
 
 export type S3UserMetadata = { [key: string]: string | undefined };
@@ -1845,7 +1863,7 @@ export const S3UserMetadata = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export type S3ContentLength = number;
-export type S3SSEAlgorithm = "AES256" | "KMS";
+export type S3SSEAlgorithm = "AES256" | "KMS" | (string & {});
 export const S3SSEAlgorithm = /*@__PURE__*/ S.String;
 
 export interface S3ObjectMetadata {
@@ -1895,14 +1913,15 @@ export type S3StorageClass =
   | "GLACIER"
   | "INTELLIGENT_TIERING"
   | "DEEP_ARCHIVE"
-  | "GLACIER_IR";
+  | "GLACIER_IR"
+  | (string & {});
 export const S3StorageClass = /*@__PURE__*/ S.String;
 
 export type KmsKeyArnString = string;
-export type S3ObjectLockLegalHoldStatus = "OFF" | "ON";
+export type S3ObjectLockLegalHoldStatus = "OFF" | "ON" | (string & {});
 export const S3ObjectLockLegalHoldStatus = /*@__PURE__*/ S.String;
 
-export type S3ObjectLockMode = "COMPLIANCE" | "GOVERNANCE";
+export type S3ObjectLockMode = "COMPLIANCE" | "GOVERNANCE" | (string & {});
 export const S3ObjectLockMode = /*@__PURE__*/ S.String;
 
 export type S3ChecksumAlgorithm =
@@ -1915,7 +1934,8 @@ export type S3ChecksumAlgorithm =
   | "MD5"
   | "XXHASH64"
   | "XXHASH3"
-  | "XXHASH128";
+  | "XXHASH128"
+  | (string & {});
 export const S3ChecksumAlgorithm = /*@__PURE__*/ S.String;
 
 export interface S3CopyObjectOperation {
@@ -2013,7 +2033,7 @@ export const S3DeleteObjectTaggingOperation = /*@__PURE__*/ S.suspend(() =>
   identifier: "S3DeleteObjectTaggingOperation",
 }) as any as S.Schema<S3DeleteObjectTaggingOperation>;
 export type S3ExpirationInDays = number;
-export type S3GlacierJobTier = "BULK" | "STANDARD";
+export type S3GlacierJobTier = "BULK" | "STANDARD" | (string & {});
 export const S3GlacierJobTier = /*@__PURE__*/ S.String;
 
 export interface S3InitiateRestoreObjectOperation {
@@ -2044,7 +2064,10 @@ export const S3SetObjectLegalHoldOperation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3SetObjectLegalHoldOperation",
 }) as any as S.Schema<S3SetObjectLegalHoldOperation>;
-export type S3ObjectLockRetentionMode = "COMPLIANCE" | "GOVERNANCE";
+export type S3ObjectLockRetentionMode =
+  | "COMPLIANCE"
+  | "GOVERNANCE"
+  | (string & {});
 export const S3ObjectLockRetentionMode = /*@__PURE__*/ S.String;
 
 export interface S3Retention {
@@ -2085,10 +2108,14 @@ export type ComputeObjectChecksumAlgorithm =
   | "SHA512"
   | "XXHASH64"
   | "XXHASH3"
-  | "XXHASH128";
+  | "XXHASH128"
+  | (string & {});
 export const ComputeObjectChecksumAlgorithm = /*@__PURE__*/ S.String;
 
-export type ComputeObjectChecksumType = "FULL_OBJECT" | "COMPOSITE";
+export type ComputeObjectChecksumType =
+  | "FULL_OBJECT"
+  | "COMPOSITE"
+  | (string & {});
 export const ComputeObjectChecksumType = /*@__PURE__*/ S.String;
 
 export interface S3ComputeObjectChecksumOperation {
@@ -2165,11 +2192,11 @@ export const JobOperation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "JobOperation" }) as any as S.Schema<JobOperation>;
 export type S3BucketArnString = string;
-export type JobReportFormat = "Report_CSV_20180820";
+export type JobReportFormat = "Report_CSV_20180820" | (string & {});
 export const JobReportFormat = /*@__PURE__*/ S.String;
 
 export type ReportPrefixString = string;
-export type JobReportScope = "AllTasks" | "FailedTasksOnly";
+export type JobReportScope = "AllTasks" | "FailedTasksOnly" | (string & {});
 export const JobReportScope = /*@__PURE__*/ S.String;
 
 export interface JobReport {
@@ -2192,10 +2219,16 @@ export const JobReport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobReport" }) as any as S.Schema<JobReport>;
 export type JobManifestFormat =
   | "S3BatchOperations_CSV_20180820"
-  | "S3InventoryReport_CSV_20161130";
+  | "S3InventoryReport_CSV_20161130"
+  | (string & {});
 export const JobManifestFormat = /*@__PURE__*/ S.String;
 
-export type JobManifestFieldName = "Ignore" | "Bucket" | "Key" | "VersionId";
+export type JobManifestFieldName =
+  | "Ignore"
+  | "Bucket"
+  | "Key"
+  | "VersionId"
+  | (string & {});
 export const JobManifestFieldName = /*@__PURE__*/ S.String;
 
 export type JobManifestFieldList = JobManifestFieldName[];
@@ -2268,7 +2301,9 @@ export const GeneratedManifestEncryption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GeneratedManifestEncryption",
 }) as any as S.Schema<GeneratedManifestEncryption>;
-export type GeneratedManifestFormat = "S3InventoryReport_CSV_20211130";
+export type GeneratedManifestFormat =
+  | "S3InventoryReport_CSV_20211130"
+  | (string & {});
 export const GeneratedManifestFormat = /*@__PURE__*/ S.String;
 
 export interface S3ManifestOutputLocation {
@@ -2290,7 +2325,12 @@ export const S3ManifestOutputLocation = /*@__PURE__*/ S.suspend(() =>
   identifier: "S3ManifestOutputLocation",
 }) as any as S.Schema<S3ManifestOutputLocation>;
 export type ObjectCreationTime = Date;
-export type ReplicationStatus = "COMPLETED" | "FAILED" | "REPLICA" | "NONE";
+export type ReplicationStatus =
+  | "COMPLETED"
+  | "FAILED"
+  | "REPLICA"
+  | "NONE"
+  | (string & {});
 export const ReplicationStatus = /*@__PURE__*/ S.String;
 
 export type ReplicationStatusFilterList = ReplicationStatus[];
@@ -3468,7 +3508,8 @@ export type JobStatus =
   | "Pausing"
   | "Preparing"
   | "Ready"
-  | "Suspended";
+  | "Suspended"
+  | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
 
 export type JobTotalNumberOfTasks = number;
@@ -3615,7 +3656,8 @@ export type AsyncCreationTimestamp = Date;
 export type AsyncOperationName =
   | "CreateMultiRegionAccessPoint"
   | "DeleteMultiRegionAccessPoint"
-  | "PutMultiRegionAccessPointPolicy";
+  | "PutMultiRegionAccessPointPolicy"
+  | (string & {});
 export const AsyncOperationName = /*@__PURE__*/ S.String;
 
 export type Policy = string;
@@ -4043,7 +4085,7 @@ export const GetAccessPointRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAccessPointRequest",
 }) as any as S.Schema<GetAccessPointRequest>;
 export type AccessPointBucketName = string;
-export type NetworkOrigin = "Internet" | "VPC";
+export type NetworkOrigin = "Internet" | "VPC" | (string & {});
 export const NetworkOrigin = /*@__PURE__*/ S.String;
 
 export type CreationDate = Date;
@@ -4496,7 +4538,7 @@ export const LifecycleRuleFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LifecycleRuleFilter",
 }) as any as S.Schema<LifecycleRuleFilter>;
-export type ExpirationStatus = "Enabled" | "Disabled";
+export type ExpirationStatus = "Enabled" | "Disabled" | (string & {});
 export const ExpirationStatus = /*@__PURE__*/ S.String;
 
 export type TransitionStorageClass =
@@ -4504,7 +4546,8 @@ export type TransitionStorageClass =
   | "STANDARD_IA"
   | "ONEZONE_IA"
   | "INTELLIGENT_TIERING"
-  | "DEEP_ARCHIVE";
+  | "DEEP_ARCHIVE"
+  | (string & {});
 export const TransitionStorageClass = /*@__PURE__*/ S.String;
 
 export interface Transition {
@@ -4688,10 +4731,13 @@ export const ReplicationRuleFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ReplicationRuleFilter",
 }) as any as S.Schema<ReplicationRuleFilter>;
-export type ReplicationRuleStatus = "Enabled" | "Disabled";
+export type ReplicationRuleStatus = "Enabled" | "Disabled" | (string & {});
 export const ReplicationRuleStatus = /*@__PURE__*/ S.String;
 
-export type SseKmsEncryptedObjectsStatus = "Enabled" | "Disabled";
+export type SseKmsEncryptedObjectsStatus =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const SseKmsEncryptedObjectsStatus = /*@__PURE__*/ S.String;
 
 export interface SseKmsEncryptedObjects {
@@ -4702,7 +4748,7 @@ export const SseKmsEncryptedObjects = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SseKmsEncryptedObjects",
 }) as any as S.Schema<SseKmsEncryptedObjects>;
-export type ReplicaModificationsStatus = "Enabled" | "Disabled";
+export type ReplicaModificationsStatus = "Enabled" | "Disabled" | (string & {});
 export const ReplicaModificationsStatus = /*@__PURE__*/ S.String;
 
 export interface ReplicaModifications {
@@ -4725,7 +4771,10 @@ export const SourceSelectionCriteria = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SourceSelectionCriteria",
 }) as any as S.Schema<SourceSelectionCriteria>;
-export type ExistingObjectReplicationStatus = "Enabled" | "Disabled";
+export type ExistingObjectReplicationStatus =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const ExistingObjectReplicationStatus = /*@__PURE__*/ S.String;
 
 export interface ExistingObjectReplication {
@@ -4737,7 +4786,7 @@ export const ExistingObjectReplication = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExistingObjectReplication",
 }) as any as S.Schema<ExistingObjectReplication>;
 export type BucketIdentifierString = string;
-export type ReplicationTimeStatus = "Enabled" | "Disabled";
+export type ReplicationTimeStatus = "Enabled" | "Disabled" | (string & {});
 export const ReplicationTimeStatus = /*@__PURE__*/ S.String;
 
 export type Minutes = number;
@@ -4758,7 +4807,7 @@ export const ReplicationTime = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ReplicationTime",
 }) as any as S.Schema<ReplicationTime>;
-export type OwnerOverride = "Destination";
+export type OwnerOverride = "Destination" | (string & {});
 export const OwnerOverride = /*@__PURE__*/ S.String;
 
 export interface AccessControlTranslation {
@@ -4778,7 +4827,7 @@ export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EncryptionConfiguration",
 }) as any as S.Schema<EncryptionConfiguration>;
-export type MetricsStatus = "Enabled" | "Disabled";
+export type MetricsStatus = "Enabled" | "Disabled" | (string & {});
 export const MetricsStatus = /*@__PURE__*/ S.String;
 
 export interface Metrics {
@@ -4800,7 +4849,8 @@ export type ReplicationStorageClass =
   | "GLACIER"
   | "DEEP_ARCHIVE"
   | "OUTPOSTS"
-  | "GLACIER_IR";
+  | "GLACIER_IR"
+  | (string & {});
 export const ReplicationStorageClass = /*@__PURE__*/ S.String;
 
 export interface Destination {
@@ -4823,7 +4873,10 @@ export const Destination = /*@__PURE__*/ S.suspend(() =>
     StorageClass: S.optional(ReplicationStorageClass),
   }),
 ).annotate({ identifier: "Destination" }) as any as S.Schema<Destination>;
-export type DeleteMarkerReplicationStatus = "Enabled" | "Disabled";
+export type DeleteMarkerReplicationStatus =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const DeleteMarkerReplicationStatus = /*@__PURE__*/ S.String;
 
 export interface DeleteMarkerReplication {
@@ -4949,10 +5002,10 @@ export const GetBucketVersioningRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBucketVersioningRequest",
 }) as any as S.Schema<GetBucketVersioningRequest>;
-export type BucketVersioningStatus = "Enabled" | "Suspended";
+export type BucketVersioningStatus = "Enabled" | "Suspended" | (string & {});
 export const BucketVersioningStatus = /*@__PURE__*/ S.String;
 
-export type MFADeleteStatus = "Enabled" | "Disabled";
+export type MFADeleteStatus = "Enabled" | "Disabled" | (string & {});
 export const MFADeleteStatus = /*@__PURE__*/ S.String;
 
 export interface GetBucketVersioningResult {
@@ -4968,7 +5021,7 @@ export const GetBucketVersioningResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBucketVersioningResult",
 }) as any as S.Schema<GetBucketVersioningResult>;
 export type DurationSeconds = number;
-export type Privilege = "Minimal" | "Default";
+export type Privilege = "Minimal" | "Default" | (string & {});
 export const Privilege = /*@__PURE__*/ S.String;
 
 export type AuditContext = string;
@@ -5113,7 +5166,8 @@ export type MultiRegionAccessPointStatus =
   | "CREATING"
   | "PARTIALLY_CREATED"
   | "PARTIALLY_DELETED"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const MultiRegionAccessPointStatus = /*@__PURE__*/ S.String;
 
 export interface RegionReport {
@@ -5576,10 +5630,10 @@ export interface Exclude {
 export const Exclude = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Buckets: S.optional(Buckets), Regions: S.optional(Regions) }),
 ).annotate({ identifier: "Exclude" }) as any as S.Schema<Exclude>;
-export type Format = "CSV" | "Parquet";
+export type Format = "CSV" | "Parquet" | (string & {});
 export const Format = /*@__PURE__*/ S.String;
 
-export type OutputSchemaVersion = "V_1";
+export type OutputSchemaVersion = "V_1" | (string & {});
 export const OutputSchemaVersion = /*@__PURE__*/ S.String;
 
 export interface SSES3 {}
@@ -6353,7 +6407,8 @@ export type OperationName =
   | "S3PutObjectRetention"
   | "S3ReplicateObject"
   | "S3ComputeObjectChecksum"
-  | "S3UpdateObjectEncryption";
+  | "S3UpdateObjectEncryption"
+  | (string & {});
 export const OperationName = /*@__PURE__*/ S.String;
 
 export interface JobListDescriptor {
@@ -7041,7 +7096,7 @@ export const PutBucketTaggingResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutBucketTaggingResponse",
 }) as any as S.Schema<PutBucketTaggingResponse>;
 export type MFA = string;
-export type MFADelete = "Enabled" | "Disabled";
+export type MFADelete = "Enabled" | "Disabled" | (string & {});
 export const MFADelete = /*@__PURE__*/ S.String;
 
 export interface VersioningConfiguration {
@@ -7494,7 +7549,7 @@ export const UpdateJobPriorityResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateJobPriorityResult",
 }) as any as S.Schema<UpdateJobPriorityResult>;
-export type RequestedJobStatus = "Cancelled" | "Ready";
+export type RequestedJobStatus = "Cancelled" | "Ready" | (string & {});
 export const RequestedJobStatus = /*@__PURE__*/ S.String;
 
 export interface UpdateJobStatusRequest {

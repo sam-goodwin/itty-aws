@@ -375,12 +375,17 @@ export type GoogleAppsCloudidentityDevicesV1BrowserInfoBrowserManagementStateEnu
     | "UNMANAGED"
     | "MANAGED_BY_OTHER_DOMAIN"
     | "PROFILE_MANAGED"
-    | "BROWSER_MANAGED";
+    | "BROWSER_MANAGED"
+    | (string & {});
 export const GoogleAppsCloudidentityDevicesV1BrowserInfoBrowserManagementStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAppsCloudidentityDevicesV1BrowserInfoSafeBrowsingProtectionLevelEnum =
-  "SAFE_BROWSING_LEVEL_UNSPECIFIED" | "DISABLED" | "STANDARD" | "ENHANCED";
+    | "SAFE_BROWSING_LEVEL_UNSPECIFIED"
+    | "DISABLED"
+    | "STANDARD"
+    | "ENHANCED"
+    | (string & {});
 export const GoogleAppsCloudidentityDevicesV1BrowserInfoSafeBrowsingProtectionLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -388,7 +393,8 @@ export type GoogleAppsCloudidentityDevicesV1BrowserInfoPasswordProtectionWarning
     | "PASSWORD_PROTECTION_TRIGGER_UNSPECIFIED"
     | "PROTECTION_OFF"
     | "PASSWORD_REUSE"
-    | "PHISHING_REUSE";
+    | "PHISHING_REUSE"
+    | (string & {});
 export const GoogleAppsCloudidentityDevicesV1BrowserInfoPasswordProtectionWarningTriggerEnum =
   /*@__PURE__*/ S.String;
 
@@ -503,7 +509,8 @@ export const GoogleAppsCloudidentityDevicesV1CertificateTemplate =
 export type GoogleAppsCloudidentityDevicesV1CertificateAttributesValidationStateEnum =
     | "CERTIFICATE_VALIDATION_STATE_UNSPECIFIED"
     | "VALIDATION_SUCCESSFUL"
-    | "VALIDATION_FAILED";
+    | "VALIDATION_FAILED"
+    | (string & {});
 export const GoogleAppsCloudidentityDevicesV1CertificateAttributesValidationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -588,7 +595,8 @@ export type GoogleAppsCloudidentityDevicesV1DeviceManagementStateEnum =
   | "PENDING"
   | "UNPROVISIONED"
   | "WIPING"
-  | "WIPED";
+  | "WIPED"
+  | (string & {});
 export const GoogleAppsCloudidentityDevicesV1DeviceManagementStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -600,14 +608,16 @@ export type GoogleAppsCloudidentityDevicesV1DeviceDeviceTypeEnum =
   | "WINDOWS"
   | "MAC_OS"
   | "LINUX"
-  | "CHROME_OS";
+  | "CHROME_OS"
+  | (string & {});
 export const GoogleAppsCloudidentityDevicesV1DeviceDeviceTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAppsCloudidentityDevicesV1DeviceOwnerTypeEnum =
   | "DEVICE_OWNERSHIP_UNSPECIFIED"
   | "COMPANY"
-  | "BYOD";
+  | "BYOD"
+  | (string & {});
 export const GoogleAppsCloudidentityDevicesV1DeviceOwnerTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -615,7 +625,8 @@ export type GoogleAppsCloudidentityDevicesV1AndroidAttributesOwnershipPrivilegeE
     | "OWNERSHIP_PRIVILEGE_UNSPECIFIED"
     | "DEVICE_ADMINISTRATOR"
     | "PROFILE_OWNER"
-    | "DEVICE_OWNER";
+    | "DEVICE_OWNER"
+    | (string & {});
 export const GoogleAppsCloudidentityDevicesV1AndroidAttributesOwnershipPrivilegeEnum =
   /*@__PURE__*/ S.String;
 
@@ -660,14 +671,16 @@ export type GoogleAppsCloudidentityDevicesV1DeviceEncryptionStateEnum =
   | "ENCRYPTION_STATE_UNSPECIFIED"
   | "UNSUPPORTED_BY_DEVICE"
   | "ENCRYPTED"
-  | "NOT_ENCRYPTED";
+  | "NOT_ENCRYPTED"
+  | (string & {});
 export const GoogleAppsCloudidentityDevicesV1DeviceEncryptionStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAppsCloudidentityDevicesV1DeviceCompromisedStateEnum =
   | "COMPROMISED_STATE_UNSPECIFIED"
   | "COMPROMISED"
-  | "UNCOMPROMISED";
+  | "UNCOMPROMISED"
+  | (string & {});
 export const GoogleAppsCloudidentityDevicesV1DeviceCompromisedStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -816,7 +829,8 @@ export const CreateDevicesRequest = /*@__PURE__*/ S.suspend(() =>
 export type CreateGroupsInitialGroupConfigEnum =
   | "INITIAL_GROUP_CONFIG_UNSPECIFIED"
   | "WITH_INITIAL_OWNER"
-  | "EMPTY";
+  | "EMPTY"
+  | (string & {});
 export const CreateGroupsInitialGroupConfigEnum = /*@__PURE__*/ S.String;
 
 /** A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s. */
@@ -835,7 +849,8 @@ export const EntityKey = /*@__PURE__*/ S.suspend(() =>
 
 export type DynamicGroupQueryResourceTypeEnum =
   | "RESOURCE_TYPE_UNSPECIFIED"
-  | "USER";
+  | "USER"
+  | (string & {});
 export const DynamicGroupQueryResourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Defines a query on a resource. */
@@ -863,7 +878,8 @@ export type DynamicGroupStatusStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "UP_TO_DATE"
   | "UPDATING_MEMBERSHIPS"
-  | "INVALID_QUERY";
+  | "INVALID_QUERY"
+  | (string & {});
 export const DynamicGroupStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** The current status of a dynamic group along with timestamp. */
@@ -978,7 +994,8 @@ export type MembershipTypeEnum =
   | "SHARED_DRIVE"
   | "CBCM_BROWSER"
   | "CHROME_OS_DEVICE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const MembershipTypeEnum = /*@__PURE__*/ S.String;
 
 /** The `MembershipRole` expiry details. */
@@ -997,7 +1014,8 @@ export type MembershipRoleRestrictionEvaluationStateEnum =
   | "COMPLIANT"
   | "FORWARD_COMPLIANT"
   | "NON_COMPLIANT"
-  | "EVALUATING";
+  | "EVALUATING"
+  | (string & {});
 export const MembershipRoleRestrictionEvaluationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1057,7 +1075,8 @@ export type MembershipDeliverySettingEnum =
   | "DIGEST"
   | "DAILY"
   | "NONE"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const MembershipDeliverySettingEnum = /*@__PURE__*/ S.String;
 
 /** A membership within the Cloud Identity Groups API. A `Membership` defines a relationship between a `Group` and an entity belonging to that `Group`, referred to as a "member". */
@@ -1285,7 +1304,8 @@ export const OidcSsoInfo = /*@__PURE__*/ S.suspend(() =>
 
 export type SignInBehaviorRedirectConditionEnum =
   | "REDIRECT_CONDITION_UNSPECIFIED"
-  | "NEVER";
+  | "NEVER"
+  | (string & {});
 export const SignInBehaviorRedirectConditionEnum = /*@__PURE__*/ S.String;
 
 /** Controls sign-in behavior. */
@@ -1304,7 +1324,8 @@ export type InboundSsoAssignmentSsoModeEnum =
   | "SSO_OFF"
   | "SAML_SSO"
   | "OIDC_SSO"
-  | "DOMAIN_WIDE_SAML_IF_ENABLED";
+  | "DOMAIN_WIDE_SAML_IF_ENABLED"
+  | (string & {});
 export const InboundSsoAssignmentSsoModeEnum = /*@__PURE__*/ S.String;
 
 /** Targets with "set" SSO assignments and their respective assignments. */
@@ -1376,7 +1397,11 @@ export const Setting = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Setting" }) as any as S.Schema<Setting>;
 
-export type PolicyTypeEnum = "POLICY_TYPE_UNSPECIFIED" | "SYSTEM" | "ADMIN";
+export type PolicyTypeEnum =
+  | "POLICY_TYPE_UNSPECIFIED"
+  | "SYSTEM"
+  | "ADMIN"
+  | (string & {});
 export const PolicyTypeEnum = /*@__PURE__*/ S.String;
 
 /** PolicyQuery */
@@ -1632,7 +1657,8 @@ export type UserInvitationStateEnum =
   | "NOT_YET_SENT"
   | "INVITED"
   | "ACCEPTED"
-  | "DECLINED";
+  | "DECLINED"
+  | (string & {});
 export const UserInvitationStateEnum = /*@__PURE__*/ S.String;
 
 /** The `UserInvitation` resource represents an email that can be sent to an unmanaged user account inviting them to join the customer's Google Workspace or Cloud Identity account. An unmanaged account shares an email address domain with the Google Workspace or Cloud Identity account but is not managed by it yet. If the user accepts the `UserInvitation`, the user account will become managed. */
@@ -1700,14 +1726,16 @@ export const GetDevicesDeviceUsersRequest = /*@__PURE__*/ S.suspend(() =>
 export type GoogleAppsCloudidentityDevicesV1DeviceUserCompromisedStateEnum =
   | "COMPROMISED_STATE_UNSPECIFIED"
   | "COMPROMISED"
-  | "NOT_COMPROMISED";
+  | "NOT_COMPROMISED"
+  | (string & {});
 export const GoogleAppsCloudidentityDevicesV1DeviceUserCompromisedStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAppsCloudidentityDevicesV1DeviceUserPasswordStateEnum =
   | "PASSWORD_STATE_UNSPECIFIED"
   | "PASSWORD_SET"
-  | "PASSWORD_NOT_SET";
+  | "PASSWORD_NOT_SET"
+  | (string & {});
 export const GoogleAppsCloudidentityDevicesV1DeviceUserPasswordStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1718,7 +1746,8 @@ export type GoogleAppsCloudidentityDevicesV1DeviceUserManagementStateEnum =
   | "APPROVED"
   | "BLOCKED"
   | "PENDING_APPROVAL"
-  | "UNENROLLED";
+  | "UNENROLLED"
+  | (string & {});
 export const GoogleAppsCloudidentityDevicesV1DeviceUserManagementStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1794,7 +1823,8 @@ export const GetDevicesDeviceUsersClientStatesRequest = /*@__PURE__*/ S.suspend(
 export type GoogleAppsCloudidentityDevicesV1ClientStateComplianceStateEnum =
   | "COMPLIANCE_STATE_UNSPECIFIED"
   | "COMPLIANT"
-  | "NON_COMPLIANT";
+  | "NON_COMPLIANT"
+  | (string & {});
 export const GoogleAppsCloudidentityDevicesV1ClientStateComplianceStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1832,7 +1862,8 @@ export const GoogleAppsCloudidentityDevicesV1CustomAttributeValueMap =
 export type GoogleAppsCloudidentityDevicesV1ClientStateOwnerTypeEnum =
   | "OWNER_TYPE_UNSPECIFIED"
   | "OWNER_TYPE_CUSTOMER"
-  | "OWNER_TYPE_PARTNER";
+  | "OWNER_TYPE_PARTNER"
+  | (string & {});
 export const GoogleAppsCloudidentityDevicesV1ClientStateOwnerTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1842,14 +1873,16 @@ export type GoogleAppsCloudidentityDevicesV1ClientStateHealthScoreEnum =
   | "POOR"
   | "NEUTRAL"
   | "GOOD"
-  | "VERY_GOOD";
+  | "VERY_GOOD"
+  | (string & {});
 export const GoogleAppsCloudidentityDevicesV1ClientStateHealthScoreEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAppsCloudidentityDevicesV1ClientStateManagedEnum =
   | "MANAGED_STATE_UNSPECIFIED"
   | "MANAGED"
-  | "UNMANAGED";
+  | "UNMANAGED"
+  | (string & {});
 export const GoogleAppsCloudidentityDevicesV1ClientStateManagedEnum =
   /*@__PURE__*/ S.String;
 
@@ -2131,7 +2164,8 @@ export type RestrictionEvaluationStateEnum =
   | "EVALUATING"
   | "COMPLIANT"
   | "FORWARD_COMPLIANT"
-  | "NON_COMPLIANT";
+  | "NON_COMPLIANT"
+  | (string & {});
 export const RestrictionEvaluationStateEnum = /*@__PURE__*/ S.String;
 
 /** The evaluated state of this restriction. */
@@ -2265,7 +2299,8 @@ export const ListUserInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListDevicesViewEnum =
   | "VIEW_UNSPECIFIED"
   | "COMPANY_INVENTORY"
-  | "USER_ASSIGNED_DEVICES";
+  | "USER_ASSIGNED_DEVICES"
+  | (string & {});
 export const ListDevicesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListDevicesRequest {
@@ -2436,7 +2471,11 @@ export const GoogleAppsCloudidentityDevicesV1ListClientStatesResponse =
     identifier: "GoogleAppsCloudidentityDevicesV1ListClientStatesResponse",
   }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1ListClientStatesResponse>;
 
-export type ListGroupsViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export type ListGroupsViewEnum =
+  | "VIEW_UNSPECIFIED"
+  | "BASIC"
+  | "FULL"
+  | (string & {});
 export const ListGroupsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListGroupsRequest {
@@ -2490,7 +2529,8 @@ export const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListGroupsMembershipsViewEnum =
   | "VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListGroupsMembershipsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListGroupsMembershipsRequest {
@@ -3203,7 +3243,11 @@ export const SearchDirectGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchDirectGroupsResponse",
 }) as any as S.Schema<SearchDirectGroupsResponse>;
 
-export type SearchGroupsViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export type SearchGroupsViewEnum =
+  | "VIEW_UNSPECIFIED"
+  | "BASIC"
+  | "FULL"
+  | (string & {});
 export const SearchGroupsViewEnum = /*@__PURE__*/ S.String;
 
 export interface SearchGroupsRequest {
@@ -3300,7 +3344,8 @@ export type GroupRelationRelationTypeEnum =
   | "RELATION_TYPE_UNSPECIFIED"
   | "DIRECT"
   | "INDIRECT"
-  | "DIRECT_AND_INDIRECT";
+  | "DIRECT_AND_INDIRECT"
+  | (string & {});
 export const GroupRelationRelationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message representing a transitive group of a user or a group. */
@@ -3379,7 +3424,8 @@ export type MemberRelationRelationTypeEnum =
   | "RELATION_TYPE_UNSPECIFIED"
   | "DIRECT"
   | "INDIRECT"
-  | "DIRECT_AND_INDIRECT";
+  | "DIRECT_AND_INDIRECT"
+  | (string & {});
 export const MemberRelationRelationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message representing a transitive membership of a group. */

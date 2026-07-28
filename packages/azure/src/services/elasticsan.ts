@@ -22,11 +22,11 @@ export const ElasticSansCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ElasticSansCreateRequestTagsMap>;
 
 /** The sku name. */
-export type SkuName = "Premium_LRS" | "Premium_ZRS";
+export type SkuName = "Premium_LRS" | "Premium_ZRS" | (string & {});
 export const SkuName = /*@__PURE__*/ S.String;
 
 /** The sku tier. */
-export type SkuTier = "Premium";
+export type SkuTier = "Premium" | (string & {});
 export const SkuTier = /*@__PURE__*/ S.String;
 
 /** The SKU name. Required for account creation; optional for update. */
@@ -52,11 +52,15 @@ export const ElasticSanPropertiesInputAvailabilityZonesList =
   ) as any as S.Schema<ElasticSanPropertiesInputAvailabilityZonesList>;
 
 /** Allow or disallow public network access to ElasticSan. Value is optional but if passed in, must be 'Enabled' or 'Disabled'. */
-export type PublicNetworkAccess = "Enabled" | "Disabled";
+export type PublicNetworkAccess = "Enabled" | "Disabled" | (string & {});
 export const PublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** Enable or Disable scale up setting on Elastic San Appliance. */
-export type AutoScalePolicyEnforcement = "None" | "Enabled" | "Disabled";
+export type AutoScalePolicyEnforcement =
+  | "None"
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const AutoScalePolicyEnforcement = /*@__PURE__*/ S.String;
 
 /** Scale up properties on Elastic San Appliance. */
@@ -163,7 +167,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -171,7 +176,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -226,7 +232,8 @@ export type ProvisioningStates =
   | "Updating"
   | "Deleting"
   | "Deleted"
-  | "Restoring";
+  | "Restoring"
+  | (string & {});
 export const ProvisioningStates = /*@__PURE__*/ S.String;
 
 /** Response for PrivateEndpoint */
@@ -247,7 +254,8 @@ export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
   | "Failed"
-  | "Rejected";
+  | "Rejected"
+  | (string & {});
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** Response for Private Link Service Connection state */
@@ -746,11 +754,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -1270,7 +1278,11 @@ export const SkuInformationList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkuInformationList>;
 
 /** The identity type. */
-export type IdentityType = "None" | "SystemAssigned" | "UserAssigned";
+export type IdentityType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | (string & {});
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** UserAssignedIdentity for the resource. */
@@ -1305,13 +1317,14 @@ export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IdentityInput" }) as any as S.Schema<IdentityInput>;
 
 /** Storage Target type. */
-export type StorageTargetType = "Iscsi" | "None";
+export type StorageTargetType = "Iscsi" | "None" | (string & {});
 export const StorageTargetType = /*@__PURE__*/ S.String;
 
 /** The type of key used to encrypt the data of the disk. */
 export type EncryptionType =
   | "EncryptionAtRestWithPlatformKey"
-  | "EncryptionAtRestWithCustomerManagedKey";
+  | "EncryptionAtRestWithCustomerManagedKey"
+  | (string & {});
 export const EncryptionType = /*@__PURE__*/ S.String;
 
 /** Properties of key vault. */
@@ -1363,7 +1376,7 @@ export const EncryptionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionPropertiesInput>;
 
 /** The action of virtual network rule. */
-export type VirtualNetworkRuleAction = "Allow";
+export type VirtualNetworkRuleAction = "Allow" | (string & {});
 export const VirtualNetworkRuleAction = /*@__PURE__*/ S.String;
 
 /** Virtual Network rule. */
@@ -1871,7 +1884,8 @@ export type VolumeCreateOption =
   | "VolumeSnapshot"
   | "DiskSnapshot"
   | "Disk"
-  | "DiskRestorePoint";
+  | "DiskRestorePoint"
+  | (string & {});
 export const VolumeCreateOption = /*@__PURE__*/ S.String;
 
 /** Data source used when creating the volume. */
@@ -1963,7 +1977,8 @@ export type OperationalStatus =
   | "Updating"
   | "Running"
   | "Stopped"
-  | "Stopped (deallocated)";
+  | "Stopped (deallocated)"
+  | (string & {});
 export const OperationalStatus = /*@__PURE__*/ S.String;
 
 /** Iscsi target information */

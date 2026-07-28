@@ -130,7 +130,8 @@ export type DatastoreStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "UPDATING"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const DatastoreStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a datastore resource. */
@@ -256,7 +257,8 @@ export type NetworkPeeringPeerNetworkTypeEnum =
   | "THIRD_PARTY_SERVICE"
   | "DELL_POWERSCALE"
   | "GOOGLE_CLOUD_NETAPP_VOLUMES"
-  | "GOOGLE_CLOUD_FILESTORE_INSTANCES";
+  | "GOOGLE_CLOUD_FILESTORE_INSTANCES"
+  | (string & {});
 export const NetworkPeeringPeerNetworkTypeEnum = /*@__PURE__*/ S.String;
 
 export type NetworkPeeringStateEnum =
@@ -264,7 +266,8 @@ export type NetworkPeeringStateEnum =
   | "INACTIVE"
   | "ACTIVE"
   | "CREATING"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const NetworkPeeringStateEnum = /*@__PURE__*/ S.String;
 
 /** Details of a network peering. */
@@ -358,7 +361,8 @@ export type NetworkServiceStateEnum =
   | "STATE_UNSPECIFIED"
   | "UNPROVISIONED"
   | "RECONCILING"
-  | "ACTIVE";
+  | "ACTIVE"
+  | (string & {});
 export const NetworkServiceStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a network service that is managed by a `NetworkPolicy` resource. A network service provides a way to control an aspect of external access to VMware workloads. For example, whether the VMware workloads in the private clouds governed by a network policy can access or be accessed from the internet. */
@@ -449,13 +453,15 @@ export type ExternalAccessRuleStateEnum =
   | "ACTIVE"
   | "CREATING"
   | "UPDATING"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const ExternalAccessRuleStateEnum = /*@__PURE__*/ S.String;
 
 export type ExternalAccessRuleActionEnum =
   | "ACTION_UNSPECIFIED"
   | "ALLOW"
-  | "DENY";
+  | "DENY"
+  | (string & {});
 export const ExternalAccessRuleActionEnum = /*@__PURE__*/ S.String;
 
 /** An IP range provided in any one of the supported formats. */
@@ -565,7 +571,8 @@ export type HcxStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "CREATING"
-  | "ACTIVATING";
+  | "ACTIVATING"
+  | (string & {});
 export const HcxStateEnum = /*@__PURE__*/ S.String;
 
 /** Details about a HCX Cloud Manager appliance. */
@@ -588,7 +595,11 @@ export const Hcx = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Hcx" }) as any as S.Schema<Hcx>;
 
-export type NsxStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CREATING";
+export type NsxStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "CREATING"
+  | (string & {});
 export const NsxStateEnum = /*@__PURE__*/ S.String;
 
 /** Details about a NSX Manager appliance. */
@@ -670,7 +681,8 @@ export type EncryptionConfigTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "CMEK"
   | "LEGACY_CMEK"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const EncryptionConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** Encryption configuration for a private cloud. */
@@ -696,10 +708,15 @@ export type PrivateCloudStateEnum =
   | "UPDATING"
   | "FAILED"
   | "DELETED"
-  | "PURGING";
+  | "PURGING"
+  | (string & {});
 export const PrivateCloudStateEnum = /*@__PURE__*/ S.String;
 
-export type PrivateCloudTypeEnum = "STANDARD" | "TIME_LIMITED" | "STRETCHED";
+export type PrivateCloudTypeEnum =
+  | "STANDARD"
+  | "TIME_LIMITED"
+  | "STRETCHED"
+  | (string & {});
 export const PrivateCloudTypeEnum = /*@__PURE__*/ S.String;
 
 /** Network configuration in the consumer project with which the peering has to be done. */
@@ -725,7 +742,11 @@ export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NetworkConfig" }) as any as S.Schema<NetworkConfig>;
 
-export type VcenterStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CREATING";
+export type VcenterStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "CREATING"
+  | (string & {});
 export const VcenterStateEnum = /*@__PURE__*/ S.String;
 
 /** Details about a vCenter Server management appliance. */
@@ -910,18 +931,21 @@ export type ClusterStateEnum =
   | "CREATING"
   | "UPDATING"
   | "DELETING"
-  | "REPAIRING";
+  | "REPAIRING"
+  | (string & {});
 export const ClusterStateEnum = /*@__PURE__*/ S.String;
 
 export type DatastoreMountConfigAccessModeEnum =
   | "ACCESS_MODE_UNSPECIFIED"
   | "READ_ONLY"
-  | "READ_WRITE";
+  | "READ_WRITE"
+  | (string & {});
 export const DatastoreMountConfigAccessModeEnum = /*@__PURE__*/ S.String;
 
 export type DatastoreMountConfigNfsVersionEnum =
   | "NFS_VERSION_UNSPECIFIED"
-  | "NFS_V3";
+  | "NFS_V3"
+  | (string & {});
 export const DatastoreMountConfigNfsVersionEnum = /*@__PURE__*/ S.String;
 
 /** The network configuration for the datastore. */
@@ -1053,7 +1077,8 @@ export type ExternalAddressStateEnum =
   | "ACTIVE"
   | "CREATING"
   | "UPDATING"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const ExternalAddressStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents an allocated external IP address and its corresponding internal IP address in a private cloud. */
@@ -1125,7 +1150,8 @@ export type HcxActivationKeyStateEnum =
   | "STATE_UNSPECIFIED"
   | "AVAILABLE"
   | "CONSUMED"
-  | "CREATING";
+  | "CREATING"
+  | (string & {});
 export const HcxActivationKeyStateEnum = /*@__PURE__*/ S.String;
 
 /** HCX activation key. A default key is created during private cloud provisioning, but this behavior is subject to change and you should always verify active keys. Use VmwareEngine.ListHcxActivationKeys to retrieve existing keys and VmwareEngine.CreateHcxActivationKey to create new ones. */
@@ -1187,13 +1213,15 @@ export type LoggingServerProtocolEnum =
   | "TCP"
   | "TLS"
   | "SSL"
-  | "RELP";
+  | "RELP"
+  | (string & {});
 export const LoggingServerProtocolEnum = /*@__PURE__*/ S.String;
 
 export type LoggingServerSourceTypeEnum =
   | "SOURCE_TYPE_UNSPECIFIED"
   | "ESXI"
-  | "VCSA";
+  | "VCSA"
+  | (string & {});
 export const LoggingServerSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Logging server to receive vCenter or ESXi logs. */
@@ -1262,7 +1290,8 @@ export type ManagementDnsZoneBindingStateEnum =
   | "CREATING"
   | "UPDATING"
   | "DELETING"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ManagementDnsZoneBindingStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a binding between a network and the management DNS zone. A management DNS zone is the Cloud DNS cross-project binding zone that VMware Engine creates for each private cloud. It contains FQDNs and corresponding IP addresses for the private cloud's ESXi hosts and management VM appliances like vCenter and NSX Manager. */
@@ -1331,7 +1360,8 @@ export const CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsReques
 export type PrivateConnectionPeeringStateEnum =
   | "PEERING_STATE_UNSPECIFIED"
   | "PEERING_ACTIVE"
-  | "PEERING_INACTIVE";
+  | "PEERING_INACTIVE"
+  | (string & {});
 export const PrivateConnectionPeeringStateEnum = /*@__PURE__*/ S.String;
 
 export type PrivateConnectionStateEnum =
@@ -1341,7 +1371,8 @@ export type PrivateConnectionStateEnum =
   | "UPDATING"
   | "DELETING"
   | "UNPROVISIONED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const PrivateConnectionStateEnum = /*@__PURE__*/ S.String;
 
 export type PrivateConnectionTypeEnum =
@@ -1349,13 +1380,15 @@ export type PrivateConnectionTypeEnum =
   | "PRIVATE_SERVICE_ACCESS"
   | "NETAPP_CLOUD_VOLUMES"
   | "DELL_POWERSCALE"
-  | "THIRD_PARTY_SERVICE";
+  | "THIRD_PARTY_SERVICE"
+  | (string & {});
 export const PrivateConnectionTypeEnum = /*@__PURE__*/ S.String;
 
 export type PrivateConnectionRoutingModeEnum =
   | "ROUTING_MODE_UNSPECIFIED"
   | "GLOBAL"
-  | "REGIONAL";
+  | "REGIONAL"
+  | (string & {});
 export const PrivateConnectionRoutingModeEnum = /*@__PURE__*/ S.String;
 
 /** Private connection resource that provides connectivity for VMware Engine private clouds. */
@@ -1443,20 +1476,23 @@ export type VmwareEngineNetworkStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "UPDATING"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const VmwareEngineNetworkStateEnum = /*@__PURE__*/ S.String;
 
 export type VmwareEngineNetworkTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "LEGACY"
-  | "STANDARD";
+  | "STANDARD"
+  | (string & {});
 export const VmwareEngineNetworkTypeEnum = /*@__PURE__*/ S.String;
 
 export type VpcNetworkTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "INTRANET"
   | "INTERNET"
-  | "GOOGLE_CLOUD";
+  | "GOOGLE_CLOUD"
+  | (string & {});
 export const VpcNetworkTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a VMware Engine VPC network that is managed by a VMware Engine network resource. */
@@ -2054,7 +2090,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -2231,7 +2268,8 @@ export type AnnouncementStateEnum =
   | "ACTIVE"
   | "INACTIVE"
   | "DELETING"
-  | "CREATING";
+  | "CREATING"
+  | (string & {});
 export const AnnouncementStateEnum = /*@__PURE__*/ S.String;
 
 /** Announcement for the resources of Vmware Engine. */
@@ -2372,7 +2410,8 @@ export const GetProjectsLocationsNodeTypesRequest = /*@__PURE__*/ S.suspend(
 
 export type NodeTypeCapabilitiesItemEnum =
   | "CAPABILITY_UNSPECIFIED"
-  | "STRETCHED_CLUSTERS";
+  | "STRETCHED_CLUSTERS"
+  | (string & {});
 export const NodeTypeCapabilitiesItemEnum = /*@__PURE__*/ S.String;
 
 export type NodeTypeCapabilitiesItemEnumList =
@@ -2381,7 +2420,11 @@ export const NodeTypeCapabilitiesItemEnumList = /*@__PURE__*/ S.Array(
   NodeTypeCapabilitiesItemEnum,
 ) as any as S.Schema<NodeTypeCapabilitiesItemEnumList>;
 
-export type NodeTypeKindEnum = "KIND_UNSPECIFIED" | "STANDARD" | "STORAGE_ONLY";
+export type NodeTypeKindEnum =
+  | "KIND_UNSPECIFIED"
+  | "STANDARD"
+  | "STORAGE_ONLY"
+  | (string & {});
 export const NodeTypeKindEnum = /*@__PURE__*/ S.String;
 
 export type IntegerList = ReadonlyArray<number>;
@@ -2511,7 +2554,8 @@ export type NodeStateEnum =
   | "ACTIVE"
   | "CREATING"
   | "FAILED"
-  | "UPGRADING";
+  | "UPGRADING"
+  | (string & {});
 export const NodeStateEnum = /*@__PURE__*/ S.String;
 
 /** Node in a cluster. */
@@ -2646,7 +2690,8 @@ export type SubnetStateEnum =
   | "UPDATING"
   | "DELETING"
   | "RECONCILING"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const SubnetStateEnum = /*@__PURE__*/ S.String;
 
 /** Subnet in a private cloud. Either `management` subnets (such as vMotion) that are read-only, or `userDefined`, which can also be updated. */
@@ -2716,7 +2761,8 @@ export type TimeWindowDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const TimeWindowDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -2761,7 +2807,11 @@ export const TimeWindowList = /*@__PURE__*/ S.Array(
   TimeWindow,
 ) as any as S.Schema<TimeWindowList>;
 
-export type ScheduleLastEditorEnum = "EDITOR_UNSPECIFIED" | "SYSTEM" | "USER";
+export type ScheduleLastEditorEnum =
+  | "EDITOR_UNSPECIFIED"
+  | "SYSTEM"
+  | "USER"
+  | (string & {});
 export const ScheduleLastEditorEnum = /*@__PURE__*/ S.String;
 
 export type WeeklyTimeIntervalStartDayEnum =
@@ -2772,7 +2822,8 @@ export type WeeklyTimeIntervalStartDayEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const WeeklyTimeIntervalStartDayEnum = /*@__PURE__*/ S.String;
 
 export type WeeklyTimeIntervalEndDayEnum =
@@ -2783,7 +2834,8 @@ export type WeeklyTimeIntervalEndDayEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const WeeklyTimeIntervalEndDayEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time interval, spanning across days of the week. Until local timezones are supported, this interval is in UTC. */
@@ -2864,7 +2916,8 @@ export type UpgradeTypeEnum =
   | "FIRMWARE_UPGRADE"
   | "SWITCH_UPGRADE"
   | "OTHER"
-  | "INFRASTRUCTURE_UPGRADE";
+  | "INFRASTRUCTURE_UPGRADE"
+  | (string & {});
 export const UpgradeTypeEnum = /*@__PURE__*/ S.String;
 
 export type UpgradeStateEnum =
@@ -2876,7 +2929,8 @@ export type UpgradeStateEnum =
   | "FAILED"
   | "CANCELLING"
   | "CANCELLED"
-  | "RESCHEDULING";
+  | "RESCHEDULING"
+  | (string & {});
 export const UpgradeStateEnum = /*@__PURE__*/ S.String;
 
 export type VmwareUpgradeComponentComponentTypeEnum =
@@ -2894,7 +2948,8 @@ export type VmwareUpgradeComponentComponentTypeEnum =
   | "WITNESS_VM"
   | "NSXT"
   | "CLUSTER"
-  | "VM_TOOLS";
+  | "VM_TOOLS"
+  | (string & {});
 export const VmwareUpgradeComponentComponentTypeEnum = /*@__PURE__*/ S.String;
 
 export type VmwareUpgradeComponentStateEnum =
@@ -2904,7 +2959,8 @@ export type VmwareUpgradeComponentStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "NOT_STARTED"
-  | "NOT_APPLICABLE";
+  | "NOT_APPLICABLE"
+  | (string & {});
 export const VmwareUpgradeComponentStateEnum = /*@__PURE__*/ S.String;
 
 /** Per component upgrade resource */
@@ -3307,14 +3363,16 @@ export const ListProjectsLocationsNetworkPeeringsPeeringRoutesRequest =
 export type PeeringRouteDirectionEnum =
   | "DIRECTION_UNSPECIFIED"
   | "INCOMING"
-  | "OUTGOING";
+  | "OUTGOING"
+  | (string & {});
 export const PeeringRouteDirectionEnum = /*@__PURE__*/ S.String;
 
 export type PeeringRouteTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "DYNAMIC_PEERING_ROUTE"
   | "STATIC_PEERING_ROUTE"
-  | "SUBNET_PEERING_ROUTE";
+  | "SUBNET_PEERING_ROUTE"
+  | (string & {});
 export const PeeringRouteTypeEnum = /*@__PURE__*/ S.String;
 
 /** Exchanged network peering route. */

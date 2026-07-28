@@ -56,7 +56,7 @@ export const InsightsThresholdBounds = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsThresholdBounds",
 }) as any as S.Schema<InsightsThresholdBounds>;
 
-export type InsightThresholdType = "absolute" | "percentage";
+export type InsightThresholdType = "absolute" | "percentage" | (string & {});
 export const InsightThresholdType = /*@__PURE__*/ S.String;
 
 export interface InsightThreshold {
@@ -89,7 +89,8 @@ export const ThresholdInput = /*@__PURE__*/ S.suspend(() =>
 export type AlertConditionType =
   | "absolute_value"
   | "relative_increase"
-  | "relative_decrease";
+  | "relative_decrease"
+  | (string & {});
 export const AlertConditionType = /*@__PURE__*/ S.String;
 
 export interface AlertCondition {
@@ -118,7 +119,11 @@ export const TrendsAlertConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrendsAlertConfig",
 }) as any as S.Schema<TrendsAlertConfig>;
 
-export type HogQLAlertEvaluation = "last_row" | "first_row" | "any_row";
+export type HogQLAlertEvaluation =
+  | "last_row"
+  | "first_row"
+  | "any_row"
+  | (string & {});
 export const HogQLAlertEvaluation = /*@__PURE__*/ S.String;
 
 export interface HogQLAlertConfig {
@@ -143,7 +148,8 @@ export const HogQLAlertConfig = /*@__PURE__*/ S.suspend(() =>
 
 export type FunnelConversionMetric =
   | "conversion_from_start"
-  | "conversion_from_previous";
+  | "conversion_from_previous"
+  | (string & {});
 export const FunnelConversionMetric = /*@__PURE__*/ S.String;
 
 export interface FunnelsAlertConfig {
@@ -349,7 +355,7 @@ export const IsolationForestDetectorConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "IsolationForestDetectorConfig",
 }) as any as S.Schema<IsolationForestDetectorConfig>;
 
-export type Method = "largest" | "mean" | "median";
+export type Method = "largest" | "mean" | "median" | (string & {});
 export const Method = /*@__PURE__*/ S.String;
 
 export interface KNNDetectorConfig {
@@ -493,7 +499,7 @@ export const EnsembleDetectorConfigDetectorsList = /*@__PURE__*/ S.Array(
   EnsembleDetectorConfigDetectorsItem,
 ) as any as S.Schema<EnsembleDetectorConfigDetectorsList>;
 
-export type EnsembleOperator = "and" | "or";
+export type EnsembleOperator = "and" | "or" | (string & {});
 export const EnsembleOperator = /*@__PURE__*/ S.String;
 
 export interface EnsembleDetectorConfig {
@@ -538,7 +544,8 @@ export type CalculationIntervalEnum =
   | "hourly"
   | "daily"
   | "weekly"
-  | "monthly";
+  | "monthly"
+  | (string & {});
 export const CalculationIntervalEnum = /*@__PURE__*/ S.String;
 
 export interface AlertScheduleRestrictionWindow {
@@ -576,7 +583,10 @@ export const AlertScheduleRestriction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AlertScheduleRestriction>;
 
 /** * `notify` - Notify * `suppress` - Suppress */
-export type InvestigationInconclusiveActionEnum = "notify" | "suppress";
+export type InvestigationInconclusiveActionEnum =
+  | "notify"
+  | "suppress"
+  | (string & {});
 export const InvestigationInconclusiveActionEnum = /*@__PURE__*/ S.String;
 
 export interface AlertsCreateRequest {
@@ -658,10 +668,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -721,7 +732,8 @@ export type AlertCheckStateEnum =
   | "Firing"
   | "Not firing"
   | "Errored"
-  | "Snoozed";
+  | "Snoozed"
+  | (string & {});
 export const AlertCheckStateEnum = /*@__PURE__*/ S.String;
 
 /** * `pending` - pending * `running` - running * `done` - done * `failed` - failed * `skipped` - skipped */
@@ -730,14 +742,16 @@ export type InvestigationStatusEnum =
   | "running"
   | "done"
   | "failed"
-  | "skipped";
+  | "skipped"
+  | (string & {});
 export const InvestigationStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `true_positive` - true_positive * `false_positive` - false_positive * `inconclusive` - inconclusive */
 export type InvestigationVerdictEnum =
   | "true_positive"
   | "false_positive"
-  | "inconclusive";
+  | "inconclusive"
+  | (string & {});
 export const InvestigationVerdictEnum = /*@__PURE__*/ S.String;
 
 export interface AlertCheck {
@@ -786,7 +800,7 @@ export const AlertChecksList = /*@__PURE__*/ S.Array(
   AlertCheck,
 ) as any as S.Schema<AlertChecksList>;
 
-export type SearchMatchTypeEnum = "exact" | "similar";
+export type SearchMatchTypeEnum = "exact" | "similar" | (string & {});
 export const SearchMatchTypeEnum = /*@__PURE__*/ S.String;
 
 export interface Alert {

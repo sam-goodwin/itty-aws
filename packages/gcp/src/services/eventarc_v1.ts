@@ -219,7 +219,8 @@ export type ChannelStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
   | "ACTIVE"
-  | "INACTIVE";
+  | "INACTIVE"
+  | (string & {});
 export const ChannelStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a subscriber's intent to receive events from an event provider. Published events are delivered using the transport associated with the Channel resource. A channel is associated with exactly one event provider. */
@@ -370,7 +371,8 @@ export type LoggingConfigLogSeverityEnum =
   | "ERROR"
   | "CRITICAL"
   | "ALERT"
-  | "EMERGENCY";
+  | "EMERGENCY"
+  | (string & {});
 export const LoggingConfigLogSeverityEnum = /*@__PURE__*/ S.String;
 
 /** The configuration for Platform Telemetry logging for Eventarc Advanced resources. */
@@ -922,7 +924,8 @@ export type StateConditionCodeEnum =
   | "UNIMPLEMENTED"
   | "INTERNAL"
   | "UNAVAILABLE"
-  | "DATA_LOSS";
+  | "DATA_LOSS"
+  | (string & {});
 export const StateConditionCodeEnum = /*@__PURE__*/ S.String;
 
 /** A condition that is part of the trigger state computation. */
@@ -1470,7 +1473,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */

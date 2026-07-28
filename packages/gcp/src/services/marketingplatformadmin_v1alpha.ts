@@ -63,7 +63,8 @@ export class NotFound extends T.applyErrorMatchers(
 export type AnalyticsAccountLinkLinkVerificationStateEnum =
   | "LINK_VERIFICATION_STATE_UNSPECIFIED"
   | "LINK_VERIFICATION_STATE_VERIFIED"
-  | "LINK_VERIFICATION_STATE_NOT_VERIFIED";
+  | "LINK_VERIFICATION_STATE_NOT_VERIFIED"
+  | (string & {});
 export const AnalyticsAccountLinkLinkVerificationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -389,14 +390,16 @@ export const ReportPropertyUsageOrganizationsRequest = /*@__PURE__*/ S.suspend(
 export type PropertyUsageServiceLevelEnum =
   | "ANALYTICS_SERVICE_LEVEL_UNSPECIFIED"
   | "ANALYTICS_SERVICE_LEVEL_STANDARD"
-  | "ANALYTICS_SERVICE_LEVEL_360";
+  | "ANALYTICS_SERVICE_LEVEL_360"
+  | (string & {});
 export const PropertyUsageServiceLevelEnum = /*@__PURE__*/ S.String;
 
 export type PropertyUsagePropertyTypeEnum =
   | "ANALYTICS_PROPERTY_TYPE_UNSPECIFIED"
   | "ANALYTICS_PROPERTY_TYPE_ORDINARY"
   | "ANALYTICS_PROPERTY_TYPE_SUBPROPERTY"
-  | "ANALYTICS_PROPERTY_TYPE_ROLLUP";
+  | "ANALYTICS_PROPERTY_TYPE_ROLLUP"
+  | (string & {});
 export const PropertyUsagePropertyTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains the count of events received by the property, along with metadata that influences the volume of `billable` events. */
@@ -489,7 +492,8 @@ export const ReportPropertyUsageResponse = /*@__PURE__*/ S.suspend(() =>
 export type SetPropertyServiceLevelRequestServiceLevelEnum =
   | "ANALYTICS_SERVICE_LEVEL_UNSPECIFIED"
   | "ANALYTICS_SERVICE_LEVEL_STANDARD"
-  | "ANALYTICS_SERVICE_LEVEL_360";
+  | "ANALYTICS_SERVICE_LEVEL_360"
+  | (string & {});
 export const SetPropertyServiceLevelRequestServiceLevelEnum =
   /*@__PURE__*/ S.String;
 

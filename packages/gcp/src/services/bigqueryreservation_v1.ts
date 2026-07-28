@@ -64,7 +64,8 @@ export type CapacityCommitmentStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
   | "ACTIVE"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const CapacityCommitmentStateEnum = /*@__PURE__*/ S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
@@ -105,7 +106,8 @@ export type CapacityCommitmentPlanEnum =
   | "ANNUAL"
   | "ANNUAL_FLAT_RATE"
   | "THREE_YEAR"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const CapacityCommitmentPlanEnum = /*@__PURE__*/ S.String;
 
 export type CapacityCommitmentRenewalPlanEnum =
@@ -118,14 +120,16 @@ export type CapacityCommitmentRenewalPlanEnum =
   | "ANNUAL"
   | "ANNUAL_FLAT_RATE"
   | "THREE_YEAR"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const CapacityCommitmentRenewalPlanEnum = /*@__PURE__*/ S.String;
 
 export type CapacityCommitmentEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "STANDARD"
   | "ENTERPRISE"
-  | "ENTERPRISE_PLUS";
+  | "ENTERPRISE_PLUS"
+  | (string & {});
 export const CapacityCommitmentEditionEnum = /*@__PURE__*/ S.String;
 
 /** Capacity commitment is a way to purchase compute capacity for BigQuery jobs (in the form of slots) with some committed period of usage. Annual commitments renew by default. Commitments can be removed after their commitment end time passes. In order to remove annual commitment, its plan needs to be changed to monthly or flex first. A capacity commitment resource exists as a child resource of the admin project. */
@@ -258,14 +262,16 @@ export type ReservationScalingModeEnum =
   | "SCALING_MODE_UNSPECIFIED"
   | "AUTOSCALE_ONLY"
   | "IDLE_SLOTS_ONLY"
-  | "ALL_SLOTS";
+  | "ALL_SLOTS"
+  | (string & {});
 export const ReservationScalingModeEnum = /*@__PURE__*/ S.String;
 
 export type ReservationEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "STANDARD"
   | "ENTERPRISE"
-  | "ENTERPRISE_PLUS";
+  | "ENTERPRISE_PLUS"
+  | (string & {});
 export const ReservationEditionEnum = /*@__PURE__*/ S.String;
 
 /** Disaster Recovery(DR) replication status of the reservation. */
@@ -408,10 +414,15 @@ export type AssignmentJobTypeEnum =
   | "CONTINUOUS"
   | "BACKGROUND_CHANGE_DATA_CAPTURE"
   | "BACKGROUND_COLUMN_METADATA_INDEX"
-  | "BACKGROUND_SEARCH_INDEX_REFRESH";
+  | "BACKGROUND_SEARCH_INDEX_REFRESH"
+  | (string & {});
 export const AssignmentJobTypeEnum = /*@__PURE__*/ S.String;
 
-export type AssignmentStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "ACTIVE";
+export type AssignmentStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "PENDING"
+  | "ACTIVE"
+  | (string & {});
 export const AssignmentStateEnum = /*@__PURE__*/ S.String;
 
 /** An assignment allows a project to submit jobs of a certain type using slots from the specified reservation. */
@@ -556,7 +567,8 @@ export const DeleteProjectsLocationsReservationsAssignmentsRequest =
 export type FailoverReservationRequestFailoverModeEnum =
   | "FAILOVER_MODE_UNSPECIFIED"
   | "SOFT"
-  | "HARD";
+  | "HARD"
+  | (string & {});
 export const FailoverReservationRequestFailoverModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -687,7 +699,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */

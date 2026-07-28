@@ -48,7 +48,8 @@ export type ClientType =
   | "springBoot"
   | "kafka-springBoot"
   | "jms-springBoot"
-  | "dapr";
+  | "dapr"
+  | (string & {});
 export const ClientType = /*@__PURE__*/ S.String;
 
 /** The authentication type. */
@@ -60,15 +61,16 @@ export type AuthType =
   | "secret"
   | "accessKey"
   | "userAccount"
-  | "easyAuthMicrosoftEntraID";
+  | "easyAuthMicrosoftEntraID"
+  | (string & {});
 export const AuthType = /*@__PURE__*/ S.String;
 
 /** The type of secret source. */
-export type SecretSourceType = "rawValue" | "keyVaultSecret";
+export type SecretSourceType = "rawValue" | "keyVaultSecret" | (string & {});
 export const SecretSourceType = /*@__PURE__*/ S.String;
 
 /** The value indicating whether the metadata is required or not */
-export type DaprMetadataRequired = "true" | "false";
+export type DaprMetadataRequired = "true" | "false" | (string & {});
 export const DaprMetadataRequired = /*@__PURE__*/ S.String;
 
 /** The dapr component metadata. */
@@ -107,7 +109,10 @@ export const DaprPropertiesScopesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DaprPropertiesScopesList>;
 
 /** The direction supported by the dapr binding component */
-export type DaprPropertiesBindingComponentDirection = "input" | "output";
+export type DaprPropertiesBindingComponentDirection =
+  | "input"
+  | "output"
+  | (string & {});
 export const DaprPropertiesBindingComponentDirection = /*@__PURE__*/ S.String;
 
 /** Indicates some additional properties for dapr client type */
@@ -229,7 +234,7 @@ export const ConfigurationNameResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigurationNameResult>;
 
 /** The name of action for you dryrun job. */
-export type DryrunActionName = "createOrUpdate";
+export type DryrunActionName = "createOrUpdate" | (string & {});
 export const DryrunActionName = /*@__PURE__*/ S.String;
 
 /** The parameters of the dryrun */
@@ -293,7 +298,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -301,7 +307,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -331,7 +338,10 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 /** The type of dryrun result. */
-export type DryrunPrerequisiteResultType = "basicError" | "permissionsMissing";
+export type DryrunPrerequisiteResultType =
+  | "basicError"
+  | "permissionsMissing"
+  | (string & {});
 export const DryrunPrerequisiteResultType = /*@__PURE__*/ S.String;
 
 /** A result of dryrun */
@@ -357,7 +367,8 @@ export const DryrunPropertiesPrerequisiteResultsList = /*@__PURE__*/ S.Array(
 export type DryrunOperationPreviewOperationType =
   | "configConnection"
   | "configNetwork"
-  | "configAuth";
+  | "configAuth"
+  | (string & {});
 export const DryrunOperationPreviewOperationType = /*@__PURE__*/ S.String;
 
 /** The preview of the operations for creation */
@@ -443,7 +454,8 @@ export type TargetServiceType =
   | "AzureResource"
   | "ConfluentBootstrapServer"
   | "ConfluentSchemaRegistry"
-  | "SelfHostedServer";
+  | "SelfHostedServer"
+  | (string & {});
 export const TargetServiceType = /*@__PURE__*/ S.String;
 
 /** The target service properties */
@@ -460,7 +472,7 @@ export const TargetServiceBase = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetServiceBase>;
 
 /** Indicates how to apply the authentication configuration operations. */
-export type AuthMode = "optInAllAuth" | "optOutAllAuth";
+export type AuthMode = "optInAllAuth" | "optOutAllAuth" | (string & {});
 export const AuthMode = /*@__PURE__*/ S.String;
 
 /** The authentication info */
@@ -478,11 +490,17 @@ export const AuthInfoBase = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuthInfoBase" }) as any as S.Schema<AuthInfoBase>;
 
 /** Type of VNet solution. */
-export type VNetSolutionType = "serviceEndpoint" | "privateLink";
+export type VNetSolutionType =
+  | "serviceEndpoint"
+  | "privateLink"
+  | (string & {});
 export const VNetSolutionType = /*@__PURE__*/ S.String;
 
 /** The cleanup behavior to indicate whether clean up operation when resource is deleted or updated */
-export type DeleteOrUpdateBehavior = "Default" | "ForcedCleanup";
+export type DeleteOrUpdateBehavior =
+  | "Default"
+  | "ForcedCleanup"
+  | (string & {});
 export const DeleteOrUpdateBehavior = /*@__PURE__*/ S.String;
 
 /** The VNet solution for linker */
@@ -514,7 +532,7 @@ export const SecretStore = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecretStore" }) as any as S.Schema<SecretStore>;
 
 /** Indicates how to apply the connector operations, such as opt out network configuration, opt in configuration. */
-export type ActionType = "enable" | "optOut";
+export type ActionType = "enable" | "optOut" | (string & {});
 export const ActionType = /*@__PURE__*/ S.String;
 
 /** This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account. */
@@ -524,7 +542,7 @@ export const FirewallRulesIpRangesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<FirewallRulesIpRangesList>;
 
 /** Whether to allow firewall rules. */
-export type AllowType = "true" | "false";
+export type AllowType = "true" | "false" | (string & {});
 export const AllowType = /*@__PURE__*/ S.String;
 
 /** Target service's firewall rules. to allow connections from source service. */
@@ -1022,7 +1040,10 @@ export const ConnectorGenerateConfigurationsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConnectorGenerateConfigurationsRequest>;
 
 /** Type of configuration to determine whether the configuration can be modified after creation. KeyvaultSecret means the configuration references a key vault secret, such as App Service/ACA key vault reference. Default means the configuration is real value, such as user name, raw secret, etc. */
-export type LinkerConfigurationType = "Default" | "KeyVaultSecret";
+export type LinkerConfigurationType =
+  | "Default"
+  | "KeyVaultSecret"
+  | (string & {});
 export const LinkerConfigurationType = /*@__PURE__*/ S.String;
 
 /** A configuration item for source resource */
@@ -1449,7 +1470,11 @@ export const ConnectorValidateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectorValidateRequest>;
 
 /** The result of validation */
-export type ValidationResultItemResult = "success" | "failure" | "warning";
+export type ValidationResultItemResult =
+  | "success"
+  | "failure"
+  | "warning"
+  | (string & {});
 export const ValidationResultItemResult = /*@__PURE__*/ S.String;
 
 /** The validation item for a Linker. */
@@ -2151,11 +2176,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */

@@ -475,7 +475,8 @@ export type MiscategorizationsCreateRequestIndicatorType =
   | "domain"
   | "ipv4"
   | "ipv6"
-  | "url";
+  | "url"
+  | (string & {});
 export const MiscategorizationsCreateRequestIndicatorType =
   /*@__PURE__*/ S.String;
 
@@ -1437,7 +1438,8 @@ export type IndicatorFeedsGetResponseLatestUploadStatus =
   | "Loading"
   | "Provisioning"
   | "Complete"
-  | "Error";
+  | "Error"
+  | (string & {});
 export const IndicatorFeedsGetResponseLatestUploadStatus =
   /*@__PURE__*/ S.String;
 
@@ -1523,7 +1525,8 @@ export const GetIpRequest = /*@__PURE__*/ S.suspend(() =>
 export type IpsGetResultItemBelongsToRefType =
   | "hosting_provider"
   | "isp"
-  | "organization";
+  | "organization"
+  | (string & {});
 export const IpsGetResultItemBelongsToRefType = /*@__PURE__*/ S.String;
 
 export interface IpsGetResultItemBelongsToRef {
@@ -2010,7 +2013,8 @@ export type AttackSurfaceReportIssuesListResponseIssuesItemIssueType =
   | "exposed_infrastructure"
   | "insecure_configuration"
   | "weak_authentication"
-  | "configuration_suggestion";
+  | "configuration_suggestion"
+  | (string & {});
 export const AttackSurfaceReportIssuesListResponseIssuesItemIssueType =
   /*@__PURE__*/ S.String;
 
@@ -2032,20 +2036,23 @@ export const AttackSurfaceReportIssuesListResponseIssuesItemPayload =
 export type AttackSurfaceReportIssuesListResponseIssuesItemSeverity =
   | "Low"
   | "Moderate"
-  | "Critical";
+  | "Critical"
+  | (string & {});
 export const AttackSurfaceReportIssuesListResponseIssuesItemSeverity =
   /*@__PURE__*/ S.String;
 
 export type AttackSurfaceReportIssuesListResponseIssuesItemStatus =
   | "active"
-  | "resolved";
+  | "resolved"
+  | (string & {});
 export const AttackSurfaceReportIssuesListResponseIssuesItemStatus =
   /*@__PURE__*/ S.String;
 
 export type AttackSurfaceReportIssuesListResponseIssuesItemUserClassification =
   | "false_positive"
   | "accept_risk"
-  | "other";
+  | "other"
+  | (string & {});
 export const AttackSurfaceReportIssuesListResponseIssuesItemUserClassification =
   /*@__PURE__*/ S.String;
 

@@ -320,10 +320,10 @@ export const CreatePublicDnsNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePublicDnsNamespaceResponse>;
 export type ServiceName = string;
 export type Arn = string;
-export type RoutingPolicy = "MULTIVALUE" | "WEIGHTED";
+export type RoutingPolicy = "MULTIVALUE" | "WEIGHTED" | (string & {});
 export const RoutingPolicy = /*@__PURE__*/ S.String;
 
-export type RecordType = "SRV" | "A" | "AAAA" | "CNAME";
+export type RecordType = "SRV" | "A" | "AAAA" | "CNAME" | (string & {});
 export const RecordType = /*@__PURE__*/ S.String;
 
 export interface DnsRecord {
@@ -347,7 +347,7 @@ export const DnsConfig = /*@__PURE__*/ S.suspend(() =>
     DnsRecords: S.optional(DnsRecordList),
   }),
 ).annotate({ identifier: "DnsConfig" }) as any as S.Schema<DnsConfig>;
-export type HealthCheckType = "HTTP" | "HTTPS" | "TCP";
+export type HealthCheckType = "HTTP" | "HTTPS" | "TCP" | (string & {});
 export const HealthCheckType = /*@__PURE__*/ S.String;
 
 export type ResourcePath = string;
@@ -374,7 +374,7 @@ export const HealthCheckCustomConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HealthCheckCustomConfig",
 }) as any as S.Schema<HealthCheckCustomConfig>;
-export type ServiceTypeOption = "HTTP";
+export type ServiceTypeOption = "HTTP" | (string & {});
 export const ServiceTypeOption = /*@__PURE__*/ S.String;
 
 export interface CreateServiceRequest {
@@ -407,7 +407,7 @@ export const CreateServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateServiceRequest>;
 export type AWSAccountId = string;
 export type ResourceCount = number;
-export type ServiceType = "HTTP" | "DNS_HTTP" | "DNS";
+export type ServiceType = "HTTP" | "DNS_HTTP" | "DNS" | (string & {});
 export const ServiceType = /*@__PURE__*/ S.String;
 
 export interface Service {
@@ -538,7 +538,8 @@ export type HealthStatusFilter =
   | "HEALTHY"
   | "UNHEALTHY"
   | "ALL"
-  | "HEALTHY_OR_ELSE_ALL";
+  | "HEALTHY_OR_ELSE_ALL"
+  | (string & {});
 export const HealthStatusFilter = /*@__PURE__*/ S.String;
 
 export interface DiscoverInstancesRequest {
@@ -565,7 +566,7 @@ export const DiscoverInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DiscoverInstancesRequest",
 }) as any as S.Schema<DiscoverInstancesRequest>;
-export type HealthStatus = "HEALTHY" | "UNHEALTHY" | "UNKNOWN";
+export type HealthStatus = "HEALTHY" | "UNHEALTHY" | "UNKNOWN" | (string & {});
 export const HealthStatus = /*@__PURE__*/ S.String;
 
 export interface HttpInstanceSummary {
@@ -716,7 +717,11 @@ export const GetNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetNamespaceRequest",
 }) as any as S.Schema<GetNamespaceRequest>;
-export type NamespaceType = "DNS_PUBLIC" | "DNS_PRIVATE" | "HTTP";
+export type NamespaceType =
+  | "DNS_PUBLIC"
+  | "DNS_PRIVATE"
+  | "HTTP"
+  | (string & {});
 export const NamespaceType = /*@__PURE__*/ S.String;
 
 export interface DnsProperties {
@@ -795,15 +800,25 @@ export type OperationType =
   | "UPDATE_NAMESPACE"
   | "UPDATE_SERVICE"
   | "REGISTER_INSTANCE"
-  | "DEREGISTER_INSTANCE";
+  | "DEREGISTER_INSTANCE"
+  | (string & {});
 export const OperationType = /*@__PURE__*/ S.String;
 
-export type OperationStatus = "SUBMITTED" | "PENDING" | "SUCCESS" | "FAIL";
+export type OperationStatus =
+  | "SUBMITTED"
+  | "PENDING"
+  | "SUCCESS"
+  | "FAIL"
+  | (string & {});
 export const OperationStatus = /*@__PURE__*/ S.String;
 
 export type Message = string;
 export type Code = string;
-export type OperationTargetType = "NAMESPACE" | "SERVICE" | "INSTANCE";
+export type OperationTargetType =
+  | "NAMESPACE"
+  | "SERVICE"
+  | "INSTANCE"
+  | (string & {});
 export const OperationTargetType = /*@__PURE__*/ S.String;
 
 export type OperationTargetsMap = { [key in OperationTargetType]?: string };
@@ -953,7 +968,8 @@ export type NamespaceFilterName =
   | "TYPE"
   | "NAME"
   | "HTTP_NAME"
-  | "RESOURCE_OWNER";
+  | "RESOURCE_OWNER"
+  | (string & {});
 export const NamespaceFilterName = /*@__PURE__*/ S.String;
 
 export type FilterValue = string;
@@ -961,7 +977,12 @@ export type FilterValues = string[];
 export const FilterValues = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
-export type FilterCondition = "EQ" | "IN" | "BETWEEN" | "BEGINS_WITH";
+export type FilterCondition =
+  | "EQ"
+  | "IN"
+  | "BETWEEN"
+  | "BEGINS_WITH"
+  | (string & {});
 export const FilterCondition = /*@__PURE__*/ S.String;
 
 export interface NamespaceFilter {
@@ -1045,7 +1066,8 @@ export type OperationFilterName =
   | "SERVICE_ID"
   | "STATUS"
   | "TYPE"
-  | "UPDATE_DATE";
+  | "UPDATE_DATE"
+  | (string & {});
 export const OperationFilterName = /*@__PURE__*/ S.String;
 
 export interface OperationFilter {
@@ -1111,7 +1133,10 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListOperationsResponse",
 }) as any as S.Schema<ListOperationsResponse>;
-export type ServiceFilterName = "NAMESPACE_ID" | "RESOURCE_OWNER";
+export type ServiceFilterName =
+  | "NAMESPACE_ID"
+  | "RESOURCE_OWNER"
+  | (string & {});
 export const ServiceFilterName = /*@__PURE__*/ S.String;
 
 export interface ServiceFilter {
@@ -1306,7 +1331,7 @@ export const UpdateHttpNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateHttpNamespaceResponse",
 }) as any as S.Schema<UpdateHttpNamespaceResponse>;
-export type CustomHealthStatus = "HEALTHY" | "UNHEALTHY";
+export type CustomHealthStatus = "HEALTHY" | "UNHEALTHY" | (string & {});
 export const CustomHealthStatus = /*@__PURE__*/ S.String;
 
 export interface UpdateInstanceCustomHealthStatusRequest {

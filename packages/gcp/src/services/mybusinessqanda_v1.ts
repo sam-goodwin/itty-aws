@@ -64,7 +64,8 @@ export type AuthorTypeEnum =
   | "AUTHOR_TYPE_UNSPECIFIED"
   | "REGULAR_USER"
   | "LOCAL_GUIDE"
-  | "MERCHANT";
+  | "MERCHANT"
+  | (string & {});
 export const AuthorTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents the author of a question or answer */

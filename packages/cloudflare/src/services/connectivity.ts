@@ -205,7 +205,7 @@ export const DirectoryServicesCreateRequestHost = /*@__PURE__*/ S.Unknown.pipe(
   ]),
 );
 
-export type DirectoryServicesCreateRequestType = "tcp" | "http";
+export type DirectoryServicesCreateRequestType = "tcp" | "http" | (string & {});
 export const DirectoryServicesCreateRequestType = /*@__PURE__*/ S.String;
 
 export interface DirectoryServicesCreateRequestTlsSettings {
@@ -221,7 +221,10 @@ export const DirectoryServicesCreateRequestTlsSettings =
     identifier: "DirectoryServicesCreateRequestTlsSettings",
   }) as any as S.Schema<DirectoryServicesCreateRequestTlsSettings>;
 
-export type DirectoryServicesCreateRequestAppProtocol = "postgresql" | "mysql";
+export type DirectoryServicesCreateRequestAppProtocol =
+  | "postgresql"
+  | "mysql"
+  | (string & {});
 export const DirectoryServicesCreateRequestAppProtocol = /*@__PURE__*/ S.String;
 
 export interface CreateDirectoryServiceRequest {
@@ -421,7 +424,8 @@ export const DirectoryServicesCreateResultInfraHTTPServiceConfigHost =
 
 export type DirectoryServicesCreateResultInfraHTTPServiceConfigType =
   | "tcp"
-  | "http";
+  | "http"
+  | (string & {});
 export const DirectoryServicesCreateResultInfraHTTPServiceConfigType =
   /*@__PURE__*/ S.String;
 
@@ -622,13 +626,15 @@ export const DirectoryServicesCreateResultInfraTCPServiceConfigHost =
 
 export type DirectoryServicesCreateResultInfraTCPServiceConfigType =
   | "tcp"
-  | "http";
+  | "http"
+  | (string & {});
 export const DirectoryServicesCreateResultInfraTCPServiceConfigType =
   /*@__PURE__*/ S.String;
 
 export type DirectoryServicesCreateResultInfraTCPServiceConfigAppProtocol =
   | "postgresql"
-  | "mysql";
+  | "mysql"
+  | (string & {});
 export const DirectoryServicesCreateResultInfraTCPServiceConfigAppProtocol =
   /*@__PURE__*/ S.String;
 
@@ -918,7 +924,8 @@ export const DirectoryServicesGetResultInfraHTTPServiceConfigHost =
 
 export type DirectoryServicesGetResultInfraHTTPServiceConfigType =
   | "tcp"
-  | "http";
+  | "http"
+  | (string & {});
 export const DirectoryServicesGetResultInfraHTTPServiceConfigType =
   /*@__PURE__*/ S.String;
 
@@ -1118,13 +1125,15 @@ export const DirectoryServicesGetResultInfraTCPServiceConfigHost =
 
 export type DirectoryServicesGetResultInfraTCPServiceConfigType =
   | "tcp"
-  | "http";
+  | "http"
+  | (string & {});
 export const DirectoryServicesGetResultInfraTCPServiceConfigType =
   /*@__PURE__*/ S.String;
 
 export type DirectoryServicesGetResultInfraTCPServiceConfigAppProtocol =
   | "postgresql"
-  | "mysql";
+  | "mysql"
+  | (string & {});
 export const DirectoryServicesGetResultInfraTCPServiceConfigAppProtocol =
   /*@__PURE__*/ S.String;
 
@@ -1215,7 +1224,7 @@ export const GetDirectoryServiceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDirectoryServiceResponse",
 }) as any as S.Schema<GetDirectoryServiceResponse>;
 
-export type DirectoryServicesListRequestType = "tcp" | "http";
+export type DirectoryServicesListRequestType = "tcp" | "http" | (string & {});
 export const DirectoryServicesListRequestType = /*@__PURE__*/ S.String;
 
 export interface ListDirectoryServicesRequest {
@@ -1396,7 +1405,8 @@ export const DirectoryServicesListResultItemInfraHTTPServiceConfigHost =
 
 export type DirectoryServicesListResultItemInfraHTTPServiceConfigType =
   | "tcp"
-  | "http";
+  | "http"
+  | (string & {});
 export const DirectoryServicesListResultItemInfraHTTPServiceConfigType =
   /*@__PURE__*/ S.String;
 
@@ -1597,13 +1607,15 @@ export const DirectoryServicesListResultItemInfraTCPServiceConfigHost =
 
 export type DirectoryServicesListResultItemInfraTCPServiceConfigType =
   | "tcp"
-  | "http";
+  | "http"
+  | (string & {});
 export const DirectoryServicesListResultItemInfraTCPServiceConfigType =
   /*@__PURE__*/ S.String;
 
 export type DirectoryServicesListResultItemInfraTCPServiceConfigAppProtocol =
   | "postgresql"
-  | "mysql";
+  | "mysql"
+  | (string & {});
 export const DirectoryServicesListResultItemInfraTCPServiceConfigAppProtocol =
   /*@__PURE__*/ S.String;
 
@@ -1846,7 +1858,7 @@ export const DirectoryServicesUpdateRequestHost = /*@__PURE__*/ S.Unknown.pipe(
   ]),
 );
 
-export type DirectoryServicesUpdateRequestType = "tcp" | "http";
+export type DirectoryServicesUpdateRequestType = "tcp" | "http" | (string & {});
 export const DirectoryServicesUpdateRequestType = /*@__PURE__*/ S.String;
 
 export interface DirectoryServicesUpdateRequestTlsSettings {
@@ -1862,7 +1874,10 @@ export const DirectoryServicesUpdateRequestTlsSettings =
     identifier: "DirectoryServicesUpdateRequestTlsSettings",
   }) as any as S.Schema<DirectoryServicesUpdateRequestTlsSettings>;
 
-export type DirectoryServicesUpdateRequestAppProtocol = "postgresql" | "mysql";
+export type DirectoryServicesUpdateRequestAppProtocol =
+  | "postgresql"
+  | "mysql"
+  | (string & {});
 export const DirectoryServicesUpdateRequestAppProtocol = /*@__PURE__*/ S.String;
 
 export interface UpdateDirectoryServiceRequest {
@@ -2063,7 +2078,8 @@ export const DirectoryServicesUpdateResultInfraHTTPServiceConfigHost =
 
 export type DirectoryServicesUpdateResultInfraHTTPServiceConfigType =
   | "tcp"
-  | "http";
+  | "http"
+  | (string & {});
 export const DirectoryServicesUpdateResultInfraHTTPServiceConfigType =
   /*@__PURE__*/ S.String;
 
@@ -2264,13 +2280,15 @@ export const DirectoryServicesUpdateResultInfraTCPServiceConfigHost =
 
 export type DirectoryServicesUpdateResultInfraTCPServiceConfigType =
   | "tcp"
-  | "http";
+  | "http"
+  | (string & {});
 export const DirectoryServicesUpdateResultInfraTCPServiceConfigType =
   /*@__PURE__*/ S.String;
 
 export type DirectoryServicesUpdateResultInfraTCPServiceConfigAppProtocol =
   | "postgresql"
-  | "mysql";
+  | "mysql"
+  | (string & {});
 export const DirectoryServicesUpdateResultInfraTCPServiceConfigAppProtocol =
   /*@__PURE__*/ S.String;
 

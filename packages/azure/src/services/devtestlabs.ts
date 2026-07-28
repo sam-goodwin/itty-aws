@@ -52,7 +52,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -60,7 +61,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -330,7 +332,10 @@ export const ArtifactsGenerateArmTemplateRequestParametersList =
   ) as any as S.Schema<ArtifactsGenerateArmTemplateRequestParametersList>;
 
 /** Options for uploading the files for the artifact. UploadFilesAndGenerateSasTokens is the default value. */
-export type FileUploadOptions = "UploadFilesAndGenerateSasTokens" | "None";
+export type FileUploadOptions =
+  | "UploadFilesAndGenerateSasTokens"
+  | "None"
+  | (string & {});
 export const FileUploadOptions = /*@__PURE__*/ S.String;
 
 export interface ArtifactsGenerateArmTemplateRequest {
@@ -619,11 +624,15 @@ export const ArtifactList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ArtifactList" }) as any as S.Schema<ArtifactList>;
 
 /** The artifact source's type. */
-export type SourceControlType = "VsoGit" | "GitHub" | "StorageAccount";
+export type SourceControlType =
+  | "VsoGit"
+  | "GitHub"
+  | "StorageAccount"
+  | (string & {});
 export const SourceControlType = /*@__PURE__*/ S.String;
 
 /** Indicates if the artifact source is enabled (values: Enabled, Disabled). */
-export type EnableStatus = "Enabled" | "Disabled";
+export type EnableStatus = "Enabled" | "Disabled" | (string & {});
 export const EnableStatus = /*@__PURE__*/ S.String;
 
 /** Properties of an artifact source. */
@@ -1072,7 +1081,7 @@ export const ArtifactSourcesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ArtifactSourcesUpdateResponse>;
 
 /** Target cost status */
-export type TargetCostStatus = "Enabled" | "Disabled";
+export type TargetCostStatus = "Enabled" | "Disabled" | (string & {});
 export const TargetCostStatus = /*@__PURE__*/ S.String;
 
 /** Properties of a percentage cost threshold. */
@@ -1089,7 +1098,7 @@ export const PercentageCostThresholdProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PercentageCostThresholdProperties>;
 
 /** Indicates whether this threshold will be displayed on cost charts. */
-export type CostThresholdStatus = "Enabled" | "Disabled";
+export type CostThresholdStatus = "Enabled" | "Disabled" | (string & {});
 export const CostThresholdStatus = /*@__PURE__*/ S.String;
 
 /** Properties of a cost threshold item. */
@@ -1125,7 +1134,7 @@ export const TargetCostPropertiesCostThresholdsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<TargetCostPropertiesCostThresholdsList>;
 
 /** Reporting cycle type. */
-export type ReportingCycleType = "CalendarMonth" | "Custom";
+export type ReportingCycleType = "CalendarMonth" | "Custom" | (string & {});
 export const ReportingCycleType = /*@__PURE__*/ S.String;
 
 /** Properties of a cost target. */
@@ -1241,7 +1250,7 @@ export const LabCostSummaryProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LabCostSummaryProperties>;
 
 /** The type of the cost. */
-export type CostType = "Unavailable" | "Reported" | "Projected";
+export type CostType = "Unavailable" | "Reported" | "Projected" | (string & {});
 export const CostType = /*@__PURE__*/ S.String;
 
 /** The properties of a lab cost item. */
@@ -1465,7 +1474,8 @@ export const CostsGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type WindowsOsState =
   | "NonSysprepped"
   | "SysprepRequested"
-  | "SysprepApplied";
+  | "SysprepApplied"
+  | (string & {});
 export const WindowsOsState = /*@__PURE__*/ S.String;
 
 /** Information about a Windows OS. */
@@ -1483,7 +1493,8 @@ export const WindowsOsInfo = /*@__PURE__*/ S.suspend(() =>
 export type LinuxOsState =
   | "NonDeprovisioned"
   | "DeprovisionRequested"
-  | "DeprovisionApplied";
+  | "DeprovisionApplied"
+  | (string & {});
 export const LinuxOsState = /*@__PURE__*/ S.String;
 
 /** Information about a Linux OS. */
@@ -1517,7 +1528,7 @@ export const CustomImagePropertiesFromVm = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomImagePropertiesFromVm>;
 
 /** The OS type of the custom image (i.e. Windows, Linux) */
-export type CustomImageOsType = "Windows" | "Linux" | "None";
+export type CustomImageOsType = "Windows" | "Linux" | "None" | (string & {});
 export const CustomImageOsType = /*@__PURE__*/ S.String;
 
 /** Properties for creating a custom image from a VHD. */
@@ -1540,7 +1551,11 @@ export const CustomImagePropertiesCustom = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomImagePropertiesCustom>;
 
 /** The storage type for the disk (i.e. Standard, Premium). */
-export type StorageType = "Standard" | "Premium" | "StandardSSD";
+export type StorageType =
+  | "Standard"
+  | "Premium"
+  | "StandardSSD"
+  | (string & {});
 export const StorageType = /*@__PURE__*/ S.String;
 
 /** Storage information about the data disks present in the custom image */
@@ -3137,7 +3152,7 @@ export const GalleryImageReference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GalleryImageReference>;
 
 /** The transport protocol for the endpoint. */
-export type TransportProtocol = "Tcp" | "Udp";
+export type TransportProtocol = "Tcp" | "Udp" | (string & {});
 export const TransportProtocol = /*@__PURE__*/ S.String;
 
 /** A rule for NAT - exposing a VM's port (backendPort) on the public IP address using a load balancer. */
@@ -3239,7 +3254,11 @@ export const AttachNewDataDiskOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AttachNewDataDiskOptions>;
 
 /** Caching option for a data disk (i.e. None, ReadOnly, ReadWrite). */
-export type HostCachingOptions = "None" | "ReadOnly" | "ReadWrite";
+export type HostCachingOptions =
+  | "None"
+  | "ReadOnly"
+  | "ReadWrite"
+  | (string & {});
 export const HostCachingOptions = /*@__PURE__*/ S.String;
 
 /** Request body for adding a new or existing data disk to a virtual machine. */
@@ -3270,7 +3289,10 @@ export const LabVirtualMachineCreationParameterPropertiesInputDataDiskParameters
   ) as any as S.Schema<LabVirtualMachineCreationParameterPropertiesInputDataDiskParametersList>;
 
 /** The status of the schedule (i.e. Enabled, Disabled) */
-export type ScheduleCreationParameterPropertiesStatus = "Enabled" | "Disabled";
+export type ScheduleCreationParameterPropertiesStatus =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const ScheduleCreationParameterPropertiesStatus = /*@__PURE__*/ S.String;
 
 /** The days of the week for which the schedule is set (e.g. Sunday, Monday, Tuesday, etc.). */
@@ -3316,7 +3338,7 @@ export const HourDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HourDetails" }) as any as S.Schema<HourDetails>;
 
 /** If notifications are enabled for this schedule (i.e. Enabled, Disabled). */
-export type NotificationSettingsStatus = "Enabled" | "Disabled";
+export type NotificationSettingsStatus = "Enabled" | "Disabled" | (string & {});
 export const NotificationSettingsStatus = /*@__PURE__*/ S.String;
 
 /** Notification settings for a schedule. */
@@ -4270,7 +4292,10 @@ export const GalleryImageList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GalleryImageList>;
 
 /** The status of the schedule (i.e. Enabled, Disabled) */
-export type SchedulePropertiesInputStatus = "Enabled" | "Disabled";
+export type SchedulePropertiesInputStatus =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const SchedulePropertiesInputStatus = /*@__PURE__*/ S.String;
 
 /** Properties of a schedule. */
@@ -4353,7 +4378,7 @@ export const GlobalSchedulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GlobalSchedulesCreateOrUpdateRequest>;
 
 /** The status of the schedule (i.e. Enabled, Disabled) */
-export type SchedulePropertiesStatus = "Enabled" | "Disabled";
+export type SchedulePropertiesStatus = "Enabled" | "Disabled" | (string & {});
 export const SchedulePropertiesStatus = /*@__PURE__*/ S.String;
 
 /** Properties of a schedule. */
@@ -4894,7 +4919,8 @@ export const LabsCreateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
 export type LabPropertiesInputLabStorageType =
   | "Standard"
   | "Premium"
-  | "StandardSSD";
+  | "StandardSSD"
+  | (string & {});
 export const LabPropertiesInputLabStorageType = /*@__PURE__*/ S.String;
 
 /** The ordered list of artifact resource IDs that should be applied on all Linux VM creations by default, prior to the artifacts specified by the user. */
@@ -4914,11 +4940,11 @@ export const LabPropertiesInputMandatoryArtifactsResourceIdsWindowsList =
   ) as any as S.Schema<LabPropertiesInputMandatoryArtifactsResourceIdsWindowsList>;
 
 /** The setting to enable usage of premium data disks. When its value is 'Enabled', creation of standard or premium data disks is allowed. When its value is 'Disabled', only creation of standard data disks is allowed. */
-export type PremiumDataDisk = "Disabled" | "Enabled";
+export type PremiumDataDisk = "Disabled" | "Enabled" | (string & {});
 export const PremiumDataDisk = /*@__PURE__*/ S.String;
 
 /** The access rights to be granted to the user when provisioning an environment */
-export type EnvironmentPermission = "Reader" | "Contributor";
+export type EnvironmentPermission = "Reader" | "Contributor" | (string & {});
 export const EnvironmentPermission = /*@__PURE__*/ S.String;
 
 /** Properties of a lab's announcement banner */
@@ -5056,7 +5082,8 @@ export const LabsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 export type LabPropertiesLabStorageType =
   | "Standard"
   | "Premium"
-  | "StandardSSD";
+  | "StandardSSD"
+  | (string & {});
 export const LabPropertiesLabStorageType = /*@__PURE__*/ S.String;
 
 /** The ordered list of artifact resource IDs that should be applied on all Linux VM creations by default, prior to the artifacts specified by the user. */
@@ -5688,7 +5715,10 @@ export const LabsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LabsUpdateResponse>;
 
 /** The event type for which this notification is enabled (i.e. AutoShutdown, Cost) */
-export type NotificationChannelEventType = "AutoShutdown" | "Cost";
+export type NotificationChannelEventType =
+  | "AutoShutdown"
+  | "Cost"
+  | (string & {});
 export const NotificationChannelEventType = /*@__PURE__*/ S.String;
 
 /** An event to be notified for. */
@@ -6259,7 +6289,8 @@ export type HttpStatusCode =
   | "BadGateway"
   | "ServiceUnavailable"
   | "GatewayTimeout"
-  | "HttpVersionNotSupported";
+  | "HttpVersionNotSupported"
+  | (string & {});
 export const HttpStatusCode = /*@__PURE__*/ S.String;
 
 /** Error details for the operation in case of a failure. */
@@ -6296,7 +6327,7 @@ export const OperationResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationResult>;
 
 /** The status of the policy. */
-export type PolicyStatus = "Enabled" | "Disabled";
+export type PolicyStatus = "Enabled" | "Disabled" | (string & {});
 export const PolicyStatus = /*@__PURE__*/ S.String;
 
 /** The fact name of the policy (e.g. LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc. */
@@ -6310,11 +6341,15 @@ export type PolicyFactName =
   | "UserOwnedLabVmCountInSubnet"
   | "LabTargetCost"
   | "EnvironmentTemplate"
-  | "ScheduleEditPermission";
+  | "ScheduleEditPermission"
+  | (string & {});
 export const PolicyFactName = /*@__PURE__*/ S.String;
 
 /** The evaluator type of the policy (i.e. AllowedValuesPolicy, MaxValuePolicy). */
-export type PolicyEvaluatorType = "AllowedValuesPolicy" | "MaxValuePolicy";
+export type PolicyEvaluatorType =
+  | "AllowedValuesPolicy"
+  | "MaxValuePolicy"
+  | (string & {});
 export const PolicyEvaluatorType = /*@__PURE__*/ S.String;
 
 /** Properties of a Policy. */
@@ -6914,11 +6949,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -8763,7 +8798,8 @@ export type ManagedIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned";
+  | "SystemAssigned,UserAssigned"
+  | (string & {});
 export const ManagedIdentityType = /*@__PURE__*/ S.String;
 
 /** Properties of a managed identity */
@@ -10173,7 +10209,8 @@ export const ComputeVmProperties = /*@__PURE__*/ S.suspend(() =>
 export type VirtualMachineCreationSource =
   | "FromCustomImage"
   | "FromGalleryImage"
-  | "FromSharedGalleryImage";
+  | "FromSharedGalleryImage"
+  | (string & {});
 export const VirtualMachineCreationSource = /*@__PURE__*/ S.String;
 
 /** New or existing data disks to attach to the virtual machine after creation */
@@ -11031,7 +11068,7 @@ export const VirtualMachinesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualMachinesUpdateResponse>;
 
 /** The permission policy of the subnet for allowing public IP addresses (i.e. Allow, Deny)). */
-export type UsagePermissionType = "Default" | "Deny" | "Allow";
+export type UsagePermissionType = "Default" | "Deny" | "Allow" | (string & {});
 export const UsagePermissionType = /*@__PURE__*/ S.String;
 
 /** Subnet information. */

@@ -152,7 +152,8 @@ export type FolderTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "MY_DRIVE_ROOT"
   | "TEAM_DRIVE_ROOT"
-  | "STANDARD_FOLDER";
+  | "STANDARD_FOLDER"
+  | (string & {});
 export const FolderTypeEnum = /*@__PURE__*/ S.String;
 
 /** This item is deprecated; please see `DriveFolder` instead. */
@@ -170,7 +171,8 @@ export type DriveFolderTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "MY_DRIVE_ROOT"
   | "SHARED_DRIVE_ROOT"
-  | "STANDARD_FOLDER";
+  | "STANDARD_FOLDER"
+  | (string & {});
 export const DriveFolderTypeEnum = /*@__PURE__*/ S.String;
 
 /** A Drive item which is a folder. */
@@ -372,7 +374,8 @@ export type PermissionRoleEnum =
   | "EDITOR"
   | "COMMENTER"
   | "VIEWER"
-  | "PUBLISHED_VIEWER";
+  | "PUBLISHED_VIEWER"
+  | (string & {});
 export const PermissionRoleEnum = /*@__PURE__*/ S.String;
 
 /** Information about a group. */
@@ -439,7 +442,8 @@ export const PermissionChange = /*@__PURE__*/ S.suspend(() =>
 export type DataLeakPreventionChangeTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "FLAGGED"
-  | "CLEARED";
+  | "CLEARED"
+  | (string & {});
 export const DataLeakPreventionChangeTypeEnum = /*@__PURE__*/ S.String;
 
 /** A change in the object's data leak prevention status. */
@@ -477,7 +481,8 @@ export type AssignmentSubtypeEnum =
   | "REPLY_DELETED"
   | "RESOLVED"
   | "REOPENED"
-  | "REASSIGNED";
+  | "REASSIGNED"
+  | (string & {});
 export const AssignmentSubtypeEnum = /*@__PURE__*/ S.String;
 
 /** A comment with an assignment. */
@@ -506,7 +511,8 @@ export type PostSubtypeEnum =
   | "REPLY_ADDED"
   | "REPLY_DELETED"
   | "RESOLVED"
-  | "REOPENED";
+  | "REOPENED"
+  | (string & {});
 export const PostSubtypeEnum = /*@__PURE__*/ S.String;
 
 /** A regular posted comment. */
@@ -529,7 +535,8 @@ export type SuggestionSubtypeEnum =
   | "ACCEPTED"
   | "REJECTED"
   | "ACCEPT_DELETED"
-  | "REJECT_DELETED";
+  | "REJECT_DELETED"
+  | (string & {});
 export const SuggestionSubtypeEnum = /*@__PURE__*/ S.String;
 
 /** A suggestion. */
@@ -582,7 +589,7 @@ export const Move = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Move" }) as any as S.Schema<Move>;
 
-export type RestoreTypeEnum = "TYPE_UNSPECIFIED" | "UNTRASH";
+export type RestoreTypeEnum = "TYPE_UNSPECIFIED" | "UNTRASH" | (string & {});
 export const RestoreTypeEnum = /*@__PURE__*/ S.String;
 
 /** A deleted object was restored. */
@@ -596,7 +603,11 @@ export const Restore = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Restore" }) as any as S.Schema<Restore>;
 
-export type DeleteTypeEnum = "TYPE_UNSPECIFIED" | "TRASH" | "PERMANENT_DELETE";
+export type DeleteTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "TRASH"
+  | "PERMANENT_DELETE"
+  | (string & {});
 export const DeleteTypeEnum = /*@__PURE__*/ S.String;
 
 /** An object was deleted. */
@@ -613,7 +624,8 @@ export const Delete = /*@__PURE__*/ S.suspend(() =>
 export type RestrictionChangeNewRestrictionEnum =
   | "RESTRICTION_UNSPECIFIED"
   | "UNRESTRICTED"
-  | "FULLY_RESTRICTED";
+  | "FULLY_RESTRICTED"
+  | (string & {});
 export const RestrictionChangeNewRestrictionEnum = /*@__PURE__*/ S.String;
 
 export type RestrictionChangeFeatureEnum =
@@ -624,7 +636,8 @@ export type RestrictionChangeFeatureEnum =
   | "DRIVE_FILE_STREAM"
   | "FILE_ORGANIZER_CAN_SHARE_FOLDERS"
   | "READERS_CAN_DOWNLOAD"
-  | "WRITERS_CAN_DOWNLOAD";
+  | "WRITERS_CAN_DOWNLOAD"
+  | (string & {});
 export const RestrictionChangeFeatureEnum = /*@__PURE__*/ S.String;
 
 /** Information about restriction policy changes to a feature. */
@@ -662,7 +675,8 @@ export const SettingsChange = /*@__PURE__*/ S.suspend(() =>
 export type ApplicationReferenceTypeEnum =
   | "UNSPECIFIED_REFERENCE_TYPE"
   | "LINK"
-  | "DISCUSS";
+  | "DISCUSS"
+  | (string & {});
 export const ApplicationReferenceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Activity in applications other than Drive. */
@@ -683,7 +697,8 @@ export type AppliedLabelChangeDetailTypesItemEnum =
   | "LABEL_ADDED"
   | "LABEL_REMOVED"
   | "LABEL_FIELD_VALUE_CHANGED"
-  | "LABEL_APPLIED_BY_ITEM_CREATE";
+  | "LABEL_APPLIED_BY_ITEM_CREATE"
+  | (string & {});
 export const AppliedLabelChangeDetailTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type AppliedLabelChangeDetailTypesItemEnumList =
@@ -1090,7 +1105,8 @@ export const AnonymousUser = /*@__PURE__*/ S.suspend(() =>
 export type SystemEventTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "USER_DELETION"
-  | "TRASH_AUTO_PURGE";
+  | "TRASH_AUTO_PURGE"
+  | (string & {});
 export const SystemEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** Event triggered by system operations instead of end users. */

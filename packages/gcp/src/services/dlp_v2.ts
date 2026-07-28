@@ -96,7 +96,8 @@ export type GooglePrivacyDlpV2InspectConfigMinLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const GooglePrivacyDlpV2InspectConfigMinLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -105,7 +106,8 @@ export type GooglePrivacyDlpV2SensitivityScoreScoreEnum =
   | "SENSITIVITY_LOW"
   | "SENSITIVITY_UNKNOWN"
   | "SENSITIVITY_MODERATE"
-  | "SENSITIVITY_HIGH";
+  | "SENSITIVITY_HIGH"
+  | (string & {});
 export const GooglePrivacyDlpV2SensitivityScoreScoreEnum =
   /*@__PURE__*/ S.String;
 
@@ -153,7 +155,8 @@ export type GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -226,7 +229,8 @@ export const GooglePrivacyDlpV2FindingLimits = /*@__PURE__*/ S.suspend(() =>
 export type GooglePrivacyDlpV2InspectConfigContentOptionsItemEnum =
   | "CONTENT_UNSPECIFIED"
   | "CONTENT_TEXT"
-  | "CONTENT_IMAGE";
+  | "CONTENT_IMAGE"
+  | (string & {});
 export const GooglePrivacyDlpV2InspectConfigContentOptionsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -280,7 +284,8 @@ export type GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -404,7 +409,8 @@ export type GooglePrivacyDlpV2ExclusionRuleMatchingTypeEnum =
   | "MATCHING_TYPE_FULL_MATCH"
   | "MATCHING_TYPE_PARTIAL_MATCH"
   | "MATCHING_TYPE_INVERSE_MATCH"
-  | "MATCHING_TYPE_RULE_SPECIFIC";
+  | "MATCHING_TYPE_RULE_SPECIFIC"
+  | (string & {});
 export const GooglePrivacyDlpV2ExclusionRuleMatchingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -504,7 +510,8 @@ export type GooglePrivacyDlpV2AdjustByImageFindingsMinLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const GooglePrivacyDlpV2AdjustByImageFindingsMinLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -536,7 +543,8 @@ export type GooglePrivacyDlpV2AdjustByMatchingInfoTypesMinLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const GooglePrivacyDlpV2AdjustByMatchingInfoTypesMinLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -545,7 +553,8 @@ export type GooglePrivacyDlpV2AdjustByMatchingInfoTypesMatchingTypeEnum =
   | "MATCHING_TYPE_FULL_MATCH"
   | "MATCHING_TYPE_PARTIAL_MATCH"
   | "MATCHING_TYPE_INVERSE_MATCH"
-  | "MATCHING_TYPE_RULE_SPECIFIC";
+  | "MATCHING_TYPE_RULE_SPECIFIC"
+  | (string & {});
 export const GooglePrivacyDlpV2AdjustByMatchingInfoTypesMatchingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -660,7 +669,8 @@ export const GooglePrivacyDlpV2MetadataKeyValueExpression =
 
 export type GooglePrivacyDlpV2CustomInfoTypeExclusionTypeEnum =
   | "EXCLUSION_TYPE_UNSPECIFIED"
-  | "EXCLUSION_TYPE_EXCLUDE";
+  | "EXCLUSION_TYPE_EXCLUDE"
+  | (string & {});
 export const GooglePrivacyDlpV2CustomInfoTypeExclusionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -780,7 +790,8 @@ export type GooglePrivacyDlpV2CustomInfoTypeLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const GooglePrivacyDlpV2CustomInfoTypeLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -912,7 +923,8 @@ export const GooglePrivacyDlpV2InspectTemplate = /*@__PURE__*/ S.suspend(() =>
 export type GooglePrivacyDlpV2CloudStorageOptionsSampleMethodEnum =
   | "SAMPLE_METHOD_UNSPECIFIED"
   | "TOP"
-  | "RANDOM_START";
+  | "RANDOM_START"
+  | (string & {});
 export const GooglePrivacyDlpV2CloudStorageOptionsSampleMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -963,7 +975,8 @@ export type GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnum =
   | "CSV"
   | "TSV"
   | "POWERPOINT"
-  | "EXCEL";
+  | "EXCEL"
+  | (string & {});
 export const GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1111,7 +1124,8 @@ export const GooglePrivacyDlpV2BigQueryTable = /*@__PURE__*/ S.suspend(() =>
 export type GooglePrivacyDlpV2BigQueryOptionsSampleMethodEnum =
   | "SAMPLE_METHOD_UNSPECIFIED"
   | "TOP"
-  | "RANDOM_START";
+  | "RANDOM_START"
+  | (string & {});
 export const GooglePrivacyDlpV2BigQueryOptionsSampleMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -1242,7 +1256,8 @@ export type GooglePrivacyDlpV2OutputStorageConfigOutputSchemaEnum =
   | "GCS_COLUMNS"
   | "DATASTORE_COLUMNS"
   | "BIG_QUERY_COLUMNS"
-  | "ALL_COLUMNS";
+  | "ALL_COLUMNS"
+  | (string & {});
 export const GooglePrivacyDlpV2OutputStorageConfigOutputSchemaEnum =
   /*@__PURE__*/ S.String;
 
@@ -1337,7 +1352,8 @@ export type GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemEnum =
   | "CSV"
   | "TSV"
   | "POWERPOINT"
-  | "EXCEL";
+  | "EXCEL"
+  | (string & {});
 export const GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1945,7 +1961,8 @@ export type GooglePrivacyDlpV2ValueDayOfWeekValueEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const GooglePrivacyDlpV2ValueDayOfWeekValueEnum = /*@__PURE__*/ S.String;
 
 /** Set of primitive values supported by the system. Note that for the purposes of inspection or transformation, the number of bytes considered to comprise a 'Value' is based on its representation as a UTF-8 encoded string. For example, if 'integer_value' is set to 123456789, the number of bytes would be counted as 9, even though an int64 only holds up to 8 bytes of data. */
@@ -2430,7 +2447,8 @@ export const GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails =
 export type GooglePrivacyDlpV2DlpJobTypeEnum =
   | "DLP_JOB_TYPE_UNSPECIFIED"
   | "INSPECT_JOB"
-  | "RISK_ANALYSIS_JOB";
+  | "RISK_ANALYSIS_JOB"
+  | (string & {});
 export const GooglePrivacyDlpV2DlpJobTypeEnum = /*@__PURE__*/ S.String;
 
 /** Use this to have a random data crypto key generated. It will be discarded after the request finishes. */
@@ -2538,7 +2556,8 @@ export type GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreEnum =
   | "ALPHA_UPPER_CASE"
   | "ALPHA_LOWER_CASE"
   | "PUNCTUATION"
-  | "WHITESPACE";
+  | "WHITESPACE"
+  | (string & {});
 export const GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreEnum =
   /*@__PURE__*/ S.String;
 
@@ -2695,7 +2714,8 @@ export type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetEnum =
   | "NUMERIC"
   | "HEXADECIMAL"
   | "UPPER_CASE_ALPHA_NUMERIC"
-  | "ALPHA_NUMERIC";
+  | "ALPHA_NUMERIC"
+  | (string & {});
 export const GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetEnum =
   /*@__PURE__*/ S.String;
 
@@ -2737,7 +2757,8 @@ export type GooglePrivacyDlpV2TimePartConfigPartToExtractEnum =
   | "DAY_OF_MONTH"
   | "DAY_OF_WEEK"
   | "WEEK_OF_YEAR"
-  | "HOUR_OF_DAY";
+  | "HOUR_OF_DAY"
+  | (string & {});
 export const GooglePrivacyDlpV2TimePartConfigPartToExtractEnum =
   /*@__PURE__*/ S.String;
 
@@ -2881,7 +2902,8 @@ export type GooglePrivacyDlpV2ConditionOperatorEnum =
   | "LESS_THAN"
   | "GREATER_THAN_OR_EQUALS"
   | "LESS_THAN_OR_EQUALS"
-  | "EXISTS";
+  | "EXISTS"
+  | (string & {});
 export const GooglePrivacyDlpV2ConditionOperatorEnum = /*@__PURE__*/ S.String;
 
 /** The field type of `value` and `field` do not need to match to be considered equal, but not all comparisons are possible. EQUAL_TO and NOT_EQUAL_TO attempt to compare even with incompatible types, but all other comparisons are invalid with incompatible types. A `value` of type: - `string` can be compared against all other types - `boolean` can only be compared against other booleans - `integer` can be compared against doubles or a string if the string value can be parsed as an integer. - `double` can be compared against integers or a string if the string can be parsed as a double. - `Timestamp` can be compared against strings in RFC 3339 date string format. - `TimeOfDay` can be compared against timestamps and strings in the format of 'HH:mm:ss'. If we fail to compare do to type mismatch, a warning will be given and the condition will evaluate to false. */
@@ -2924,7 +2946,8 @@ export const GooglePrivacyDlpV2Conditions = /*@__PURE__*/ S.suspend(() =>
 
 export type GooglePrivacyDlpV2ExpressionsLogicalOperatorEnum =
   | "LOGICAL_OPERATOR_UNSPECIFIED"
-  | "AND";
+  | "AND"
+  | (string & {});
 export const GooglePrivacyDlpV2ExpressionsLogicalOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -3328,7 +3351,8 @@ export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
 export type GooglePrivacyDlpV2ErrorExtraInfoEnum =
   | "ERROR_INFO_UNSPECIFIED"
   | "IMAGE_SCAN_UNAVAILABLE_IN_REGION"
-  | "FILE_STORE_CLUSTER_UNSUPPORTED";
+  | "FILE_STORE_CLUSTER_UNSUPPORTED"
+  | (string & {});
 export const GooglePrivacyDlpV2ErrorExtraInfoEnum = /*@__PURE__*/ S.String;
 
 /** Details information about an error encountered during job execution or the results of an unsuccessful activation of the JobTrigger. */
@@ -3363,7 +3387,8 @@ export type GooglePrivacyDlpV2DlpJobStateEnum =
   | "DONE"
   | "CANCELED"
   | "FAILED"
-  | "ACTIVE";
+  | "ACTIVE"
+  | (string & {});
 export const GooglePrivacyDlpV2DlpJobStateEnum = /*@__PURE__*/ S.String;
 
 /** Combines all of the information about a DLP job. */
@@ -3581,13 +3606,15 @@ export type GooglePrivacyDlpV2ConnectionStateEnum =
   | "CONNECTION_STATE_UNSPECIFIED"
   | "MISSING_CREDENTIALS"
   | "AVAILABLE"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const GooglePrivacyDlpV2ConnectionStateEnum = /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2CloudSqlPropertiesDatabaseEngineEnum =
   | "DATABASE_ENGINE_UNKNOWN"
   | "DATABASE_ENGINE_MYSQL"
-  | "DATABASE_ENGINE_POSTGRES";
+  | "DATABASE_ENGINE_POSTGRES"
+  | (string & {});
 export const GooglePrivacyDlpV2CloudSqlPropertiesDatabaseEngineEnum =
   /*@__PURE__*/ S.String;
 
@@ -3731,7 +3758,8 @@ export const CreateOrganizationsLocationsDeidentifyTemplatesRequest =
 export type GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnum =
   | "SQL_SCHEMA_MODIFICATION_UNSPECIFIED"
   | "NEW_COLUMNS"
-  | "REMOVED_COLUMNS";
+  | "REMOVED_COLUMNS"
+  | (string & {});
 export const GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -3746,7 +3774,8 @@ export type GooglePrivacyDlpV2SchemaModifiedCadenceFrequencyEnum =
   | "UPDATE_FREQUENCY_UNSPECIFIED"
   | "UPDATE_FREQUENCY_NEVER"
   | "UPDATE_FREQUENCY_DAILY"
-  | "UPDATE_FREQUENCY_MONTHLY";
+  | "UPDATE_FREQUENCY_MONTHLY"
+  | (string & {});
 export const GooglePrivacyDlpV2SchemaModifiedCadenceFrequencyEnum =
   /*@__PURE__*/ S.String;
 
@@ -3775,7 +3804,8 @@ export type GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadenceRefreshFrequency
     | "UPDATE_FREQUENCY_UNSPECIFIED"
     | "UPDATE_FREQUENCY_NEVER"
     | "UPDATE_FREQUENCY_DAILY"
-    | "UPDATE_FREQUENCY_MONTHLY";
+    | "UPDATE_FREQUENCY_MONTHLY"
+    | (string & {});
 export const GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadenceRefreshFrequencyEnum =
   /*@__PURE__*/ S.String;
 
@@ -3783,7 +3813,8 @@ export type GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadenceFrequencyEn
     | "UPDATE_FREQUENCY_UNSPECIFIED"
     | "UPDATE_FREQUENCY_NEVER"
     | "UPDATE_FREQUENCY_DAILY"
-    | "UPDATE_FREQUENCY_MONTHLY";
+    | "UPDATE_FREQUENCY_MONTHLY"
+    | (string & {});
 export const GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadenceFrequencyEnum =
   /*@__PURE__*/ S.String;
 
@@ -3951,7 +3982,8 @@ export type GooglePrivacyDlpV2DiscoveryCloudSqlConditionsDatabaseEnginesItemEnum
     | "DATABASE_ENGINE_UNSPECIFIED"
     | "ALL_SUPPORTED_DATABASE_ENGINES"
     | "MYSQL"
-    | "POSTGRES";
+    | "POSTGRES"
+    | (string & {});
 export const GooglePrivacyDlpV2DiscoveryCloudSqlConditionsDatabaseEnginesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -3965,7 +3997,8 @@ export const GooglePrivacyDlpV2DiscoveryCloudSqlConditionsDatabaseEnginesItemEnu
 export type GooglePrivacyDlpV2DiscoveryCloudSqlConditionsTypesItemEnum =
   | "DATABASE_RESOURCE_TYPE_UNSPECIFIED"
   | "DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES"
-  | "DATABASE_RESOURCE_TYPE_TABLE";
+  | "DATABASE_RESOURCE_TYPE_TABLE"
+  | (string & {});
 export const GooglePrivacyDlpV2DiscoveryCloudSqlConditionsTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -4039,7 +4072,8 @@ export type GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadenceRefreshFrequen
     | "UPDATE_FREQUENCY_UNSPECIFIED"
     | "UPDATE_FREQUENCY_NEVER"
     | "UPDATE_FREQUENCY_DAILY"
-    | "UPDATE_FREQUENCY_MONTHLY";
+    | "UPDATE_FREQUENCY_MONTHLY"
+    | (string & {});
 export const GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadenceRefreshFrequencyEnum =
   /*@__PURE__*/ S.String;
 
@@ -4219,7 +4253,8 @@ export const GooglePrivacyDlpV2DiscoveryOtherCloudFilter =
 export type GooglePrivacyDlpV2AmazonS3BucketConditionsBucketTypesItemEnum =
   | "TYPE_UNSPECIFIED"
   | "TYPE_ALL_SUPPORTED"
-  | "TYPE_GENERAL_PURPOSE";
+  | "TYPE_GENERAL_PURPOSE"
+  | (string & {});
 export const GooglePrivacyDlpV2AmazonS3BucketConditionsBucketTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -4236,7 +4271,8 @@ export type GooglePrivacyDlpV2AmazonS3BucketConditionsObjectStorageClassesItemEn
     | "STANDARD"
     | "STANDARD_INFREQUENT_ACCESS"
     | "GLACIER_INSTANT_RETRIEVAL"
-    | "INTELLIGENT_TIERING";
+    | "INTELLIGENT_TIERING"
+    | (string & {});
 export const GooglePrivacyDlpV2AmazonS3BucketConditionsObjectStorageClassesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -4420,7 +4456,8 @@ export type GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadenceRefreshFreq
     | "UPDATE_FREQUENCY_UNSPECIFIED"
     | "UPDATE_FREQUENCY_NEVER"
     | "UPDATE_FREQUENCY_DAILY"
-    | "UPDATE_FREQUENCY_MONTHLY";
+    | "UPDATE_FREQUENCY_MONTHLY"
+    | (string & {});
 export const GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadenceRefreshFrequencyEnum =
   /*@__PURE__*/ S.String;
 
@@ -4575,7 +4612,8 @@ export type GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnum =
   | "BIG_QUERY_TABLE_TYPE_UNSPECIFIED"
   | "BIG_QUERY_TABLE_TYPE_TABLE"
   | "BIG_QUERY_TABLE_TYPE_EXTERNAL_BIG_LAKE"
-  | "BIG_QUERY_TABLE_TYPE_SNAPSHOT";
+  | "BIG_QUERY_TABLE_TYPE_SNAPSHOT"
+  | (string & {});
 export const GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -4603,7 +4641,8 @@ export const GooglePrivacyDlpV2BigQueryTableTypes = /*@__PURE__*/ S.suspend(
 export type GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionEnum =
   | "BIG_QUERY_COLLECTION_UNSPECIFIED"
   | "BIG_QUERY_COLLECTION_ALL_TYPES"
-  | "BIG_QUERY_COLLECTION_ONLY_SUPPORTED_TYPES";
+  | "BIG_QUERY_COLLECTION_ONLY_SUPPORTED_TYPES"
+  | (string & {});
 export const GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionEnum =
   /*@__PURE__*/ S.String;
 
@@ -4650,7 +4689,8 @@ export const GooglePrivacyDlpV2DiscoveryBigQueryConditions =
 
 export type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemEnum =
   | "TABLE_MODIFICATION_UNSPECIFIED"
-  | "TABLE_MODIFIED_TIMESTAMP";
+  | "TABLE_MODIFIED_TIMESTAMP"
+  | (string & {});
 export const GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -4665,7 +4705,8 @@ export type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyEnum =
   | "UPDATE_FREQUENCY_UNSPECIFIED"
   | "UPDATE_FREQUENCY_NEVER"
   | "UPDATE_FREQUENCY_DAILY"
-  | "UPDATE_FREQUENCY_MONTHLY";
+  | "UPDATE_FREQUENCY_MONTHLY"
+  | (string & {});
 export const GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyEnum =
   /*@__PURE__*/ S.String;
 
@@ -4693,7 +4734,8 @@ export const GooglePrivacyDlpV2DiscoveryTableModifiedCadence =
 export type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemEnum =
   | "SCHEMA_MODIFICATION_UNSPECIFIED"
   | "SCHEMA_NEW_COLUMNS"
-  | "SCHEMA_REMOVED_COLUMNS";
+  | "SCHEMA_REMOVED_COLUMNS"
+  | (string & {});
 export const GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -4708,7 +4750,8 @@ export type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyEnum =
   | "UPDATE_FREQUENCY_UNSPECIFIED"
   | "UPDATE_FREQUENCY_NEVER"
   | "UPDATE_FREQUENCY_DAILY"
-  | "UPDATE_FREQUENCY_MONTHLY";
+  | "UPDATE_FREQUENCY_MONTHLY"
+  | (string & {});
 export const GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyEnum =
   /*@__PURE__*/ S.String;
 
@@ -4737,7 +4780,8 @@ export type GooglePrivacyDlpV2DiscoveryGenerationCadenceRefreshFrequencyEnum =
   | "UPDATE_FREQUENCY_UNSPECIFIED"
   | "UPDATE_FREQUENCY_NEVER"
   | "UPDATE_FREQUENCY_DAILY"
-  | "UPDATE_FREQUENCY_MONTHLY";
+  | "UPDATE_FREQUENCY_MONTHLY"
+  | (string & {});
 export const GooglePrivacyDlpV2DiscoveryGenerationCadenceRefreshFrequencyEnum =
   /*@__PURE__*/ S.String;
 
@@ -4951,7 +4995,8 @@ export type GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedObjectAttri
     | "ARCHIVE"
     | "REGIONAL"
     | "MULTI_REGIONAL"
-    | "DURABLE_REDUCED_AVAILABILITY";
+    | "DURABLE_REDUCED_AVAILABILITY"
+    | (string & {});
 export const GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedObjectAttributesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -4966,7 +5011,8 @@ export type GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedBucketAttri
     | "CLOUD_STORAGE_BUCKET_ATTRIBUTE_UNSPECIFIED"
     | "ALL_SUPPORTED_BUCKETS"
     | "AUTOCLASS_DISABLED"
-    | "AUTOCLASS_ENABLED";
+    | "AUTOCLASS_ENABLED"
+    | (string & {});
 export const GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedBucketAttributesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -5024,7 +5070,8 @@ export type GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadenceRefreshFrequ
     | "UPDATE_FREQUENCY_UNSPECIFIED"
     | "UPDATE_FREQUENCY_NEVER"
     | "UPDATE_FREQUENCY_DAILY"
-    | "UPDATE_FREQUENCY_MONTHLY";
+    | "UPDATE_FREQUENCY_MONTHLY"
+    | (string & {});
 export const GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadenceRefreshFrequencyEnum =
   /*@__PURE__*/ S.String;
 
@@ -5115,7 +5162,8 @@ export const GooglePrivacyDlpV2DiscoveryTargetList = /*@__PURE__*/ S.Array(
 export type GooglePrivacyDlpV2DiscoveryConfigStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "RUNNING"
-  | "PAUSED";
+  | "PAUSED"
+  | (string & {});
 export const GooglePrivacyDlpV2DiscoveryConfigStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -5261,21 +5309,24 @@ export const GooglePrivacyDlpV2ProcessingLocation = /*@__PURE__*/ S.suspend(
 export type GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorEnum =
   | "LOGICAL_OPERATOR_UNSPECIFIED"
   | "OR"
-  | "AND";
+  | "AND"
+  | (string & {});
 export const GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreEnum =
   | "PROFILE_SCORE_BUCKET_UNSPECIFIED"
   | "HIGH"
-  | "MEDIUM_OR_HIGH";
+  | "MEDIUM_OR_HIGH"
+  | (string & {});
 export const GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreEnum =
   | "PROFILE_SCORE_BUCKET_UNSPECIFIED"
   | "HIGH"
-  | "MEDIUM_OR_HIGH";
+  | "MEDIUM_OR_HIGH"
+  | (string & {});
 export const GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreEnum =
   /*@__PURE__*/ S.String;
 
@@ -5341,7 +5392,8 @@ export type GooglePrivacyDlpV2PubSubNotificationDetailOfMessageEnum =
   | "DETAIL_LEVEL_UNSPECIFIED"
   | "TABLE_PROFILE"
   | "RESOURCE_NAME"
-  | "FILE_STORE_PROFILE";
+  | "FILE_STORE_PROFILE"
+  | (string & {});
 export const GooglePrivacyDlpV2PubSubNotificationDetailOfMessageEnum =
   /*@__PURE__*/ S.String;
 
@@ -5350,7 +5402,8 @@ export type GooglePrivacyDlpV2PubSubNotificationEventEnum =
   | "NEW_PROFILE"
   | "CHANGED_PROFILE"
   | "SCORE_INCREASED"
-  | "ERROR_CHANGED";
+  | "ERROR_CHANGED"
+  | (string & {});
 export const GooglePrivacyDlpV2PubSubNotificationEventEnum =
   /*@__PURE__*/ S.String;
 
@@ -5425,7 +5478,8 @@ export const GooglePrivacyDlpV2TagConditionList = /*@__PURE__*/ S.Array(
 export type GooglePrivacyDlpV2TagResourcesProfileGenerationsToTagItemEnum =
   | "PROFILE_GENERATION_UNSPECIFIED"
   | "PROFILE_GENERATION_NEW"
-  | "PROFILE_GENERATION_UPDATE";
+  | "PROFILE_GENERATION_UPDATE"
+  | (string & {});
 export const GooglePrivacyDlpV2TagResourcesProfileGenerationsToTagItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -5650,7 +5704,8 @@ export type GooglePrivacyDlpV2JobTriggerStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "HEALTHY"
   | "PAUSED"
-  | "CANCELLED";
+  | "CANCELLED"
+  | (string & {});
 export const GooglePrivacyDlpV2JobTriggerStatusEnum = /*@__PURE__*/ S.String;
 
 /** Job trigger option for hybrid jobs. Jobs must be manually created and finished. */
@@ -5937,7 +5992,8 @@ export type GooglePrivacyDlpV2StoredInfoTypeVersionStateEnum =
   | "PENDING"
   | "READY"
   | "FAILED"
-  | "INVALID";
+  | "INVALID"
+  | (string & {});
 export const GooglePrivacyDlpV2StoredInfoTypeVersionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -6159,7 +6215,8 @@ export const CreateProjectsLocationsConnectionsRequest =
 export type GooglePrivacyDlpV2PolicyActionReturnVerdictEnum =
   | "CONTENT_POLICY_VERDICT_UNSPECIFIED"
   | "ALLOW"
-  | "BLOCK";
+  | "BLOCK"
+  | (string & {});
 export const GooglePrivacyDlpV2PolicyActionReturnVerdictEnum =
   /*@__PURE__*/ S.String;
 
@@ -6268,7 +6325,8 @@ export const GooglePrivacyDlpV2PolicyConditionList = /*@__PURE__*/ S.Array(
 export type GooglePrivacyDlpV2PolicyRuleReturnVerdictEnum =
   | "CONTENT_POLICY_VERDICT_UNSPECIFIED"
   | "ALLOW"
-  | "BLOCK";
+  | "BLOCK"
+  | (string & {});
 export const GooglePrivacyDlpV2PolicyRuleReturnVerdictEnum =
   /*@__PURE__*/ S.String;
 
@@ -6674,7 +6732,8 @@ export const GooglePrivacyDlpV2ContentMetadata = /*@__PURE__*/ S.suspend(() =>
 export type GooglePrivacyDlpV2ConversationMessageMessageTypeEnum =
   | "MESSAGE_TYPE_UNSPECIFIED"
   | "CONTENT"
-  | "CONTEXT";
+  | "CONTEXT"
+  | (string & {});
 export const GooglePrivacyDlpV2ConversationMessageMessageTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6797,7 +6856,8 @@ export type GooglePrivacyDlpV2ByteContentItemTypeEnum =
   | "AUDIO"
   | "VIDEO"
   | "EXECUTABLE"
-  | "AI_MODEL";
+  | "AI_MODEL"
+  | (string & {});
 export const GooglePrivacyDlpV2ByteContentItemTypeEnum = /*@__PURE__*/ S.String;
 
 /** Container for bytes to inspect or redact. */
@@ -6899,7 +6959,8 @@ export const DeidentifyProjectsContentRequest = /*@__PURE__*/ S.suspend(() =>
 export type GooglePrivacyDlpV2SummaryResultCodeEnum =
   | "TRANSFORMATION_RESULT_CODE_UNSPECIFIED"
   | "SUCCESS"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const GooglePrivacyDlpV2SummaryResultCodeEnum = /*@__PURE__*/ S.String;
 
 /** A collection that informs the user the number of times a particular `TransformationResultCode` and error details occurred. */
@@ -7639,14 +7700,16 @@ export type GooglePrivacyDlpV2ColumnDataProfileEstimatedUniquenessScoreEnum =
   | "UNIQUENESS_SCORE_LEVEL_UNSPECIFIED"
   | "UNIQUENESS_SCORE_LOW"
   | "UNIQUENESS_SCORE_MEDIUM"
-  | "UNIQUENESS_SCORE_HIGH";
+  | "UNIQUENESS_SCORE_HIGH"
+  | (string & {});
 export const GooglePrivacyDlpV2ColumnDataProfileEstimatedUniquenessScoreEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2ColumnDataProfileStateEnum =
   | "STATE_UNSPECIFIED"
   | "RUNNING"
-  | "DONE";
+  | "DONE"
+  | (string & {});
 export const GooglePrivacyDlpV2ColumnDataProfileStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -7671,7 +7734,8 @@ export type GooglePrivacyDlpV2DataRiskLevelScoreEnum =
   | "RISK_LOW"
   | "RISK_UNKNOWN"
   | "RISK_MODERATE"
-  | "RISK_HIGH";
+  | "RISK_HIGH"
+  | (string & {});
 export const GooglePrivacyDlpV2DataRiskLevelScoreEnum = /*@__PURE__*/ S.String;
 
 /** Score is a summary of all elements in the data profile. A higher number means more risk. */
@@ -7692,7 +7756,8 @@ export type GooglePrivacyDlpV2ColumnDataProfileEstimatedNullPercentageEnum =
   | "NULL_PERCENTAGE_VERY_LOW"
   | "NULL_PERCENTAGE_LOW"
   | "NULL_PERCENTAGE_MEDIUM"
-  | "NULL_PERCENTAGE_HIGH";
+  | "NULL_PERCENTAGE_HIGH"
+  | (string & {});
 export const GooglePrivacyDlpV2ColumnDataProfileEstimatedNullPercentageEnum =
   /*@__PURE__*/ S.String;
 
@@ -7715,13 +7780,15 @@ export type GooglePrivacyDlpV2ColumnDataProfileColumnTypeEnum =
   | "TYPE_INTERVAL"
   | "TYPE_RANGE_DATE"
   | "TYPE_RANGE_DATETIME"
-  | "TYPE_RANGE_TIMESTAMP";
+  | "TYPE_RANGE_TIMESTAMP"
+  | (string & {});
 export const GooglePrivacyDlpV2ColumnDataProfileColumnTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2ColumnDataProfilePolicyStateEnum =
   | "COLUMN_POLICY_STATE_UNSPECIFIED"
-  | "COLUMN_POLICY_TAGGED";
+  | "COLUMN_POLICY_TAGGED"
+  | (string & {});
 export const GooglePrivacyDlpV2ColumnDataProfilePolicyStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -7902,7 +7969,8 @@ export type GooglePrivacyDlpV2FileClusterTypeClusterEnum =
   | "CLUSTER_ARCHIVE"
   | "CLUSTER_MULTIMEDIA"
   | "CLUSTER_EXECUTABLE"
-  | "CLUSTER_AI_MODEL";
+  | "CLUSTER_AI_MODEL"
+  | (string & {});
 export const GooglePrivacyDlpV2FileClusterTypeClusterEnum =
   /*@__PURE__*/ S.String;
 
@@ -8079,7 +8147,8 @@ export type GooglePrivacyDlpV2FileStoreDataProfileResourceVisibilityEnum =
   | "RESOURCE_VISIBILITY_UNSPECIFIED"
   | "RESOURCE_VISIBILITY_PUBLIC"
   | "RESOURCE_VISIBILITY_INCONCLUSIVE"
-  | "RESOURCE_VISIBILITY_RESTRICTED";
+  | "RESOURCE_VISIBILITY_RESTRICTED"
+  | (string & {});
 export const GooglePrivacyDlpV2FileStoreDataProfileResourceVisibilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -8137,14 +8206,16 @@ export const GooglePrivacyDlpV2TagList = /*@__PURE__*/ S.Array(
 export type GooglePrivacyDlpV2FileStoreDataProfileStateEnum =
   | "STATE_UNSPECIFIED"
   | "RUNNING"
-  | "DONE";
+  | "DONE"
+  | (string & {});
 export const GooglePrivacyDlpV2FileStoreDataProfileStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2DomainCategoryEnum =
   | "CATEGORY_UNSPECIFIED"
   | "AI"
-  | "CODE";
+  | "CODE"
+  | (string & {});
 export const GooglePrivacyDlpV2DomainCategoryEnum = /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2DomainSignalsItemEnum =
@@ -8155,7 +8226,8 @@ export type GooglePrivacyDlpV2DomainSignalsItemEnum =
   | "VERTEX_PLUGIN"
   | "VECTOR_PLUGIN"
   | "SOURCE_CODE"
-  | "SERVICE";
+  | "SERVICE"
+  | (string & {});
 export const GooglePrivacyDlpV2DomainSignalsItemEnum = /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2DomainSignalsItemEnumList =
@@ -8424,14 +8496,16 @@ export const GooglePrivacyDlpV2InfoTypeSummaryList = /*@__PURE__*/ S.Array(
 export type GooglePrivacyDlpV2TableDataProfileStateEnum =
   | "STATE_UNSPECIFIED"
   | "RUNNING"
-  | "DONE";
+  | "DONE"
+  | (string & {});
 export const GooglePrivacyDlpV2TableDataProfileStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2TableDataProfileEncryptionStatusEnum =
   | "ENCRYPTION_STATUS_UNSPECIFIED"
   | "ENCRYPTION_GOOGLE_MANAGED"
-  | "ENCRYPTION_CUSTOMER_MANAGED";
+  | "ENCRYPTION_CUSTOMER_MANAGED"
+  | (string & {});
 export const GooglePrivacyDlpV2TableDataProfileEncryptionStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -8439,7 +8513,8 @@ export type GooglePrivacyDlpV2TableDataProfileResourceVisibilityEnum =
   | "RESOURCE_VISIBILITY_UNSPECIFIED"
   | "RESOURCE_VISIBILITY_PUBLIC"
   | "RESOURCE_VISIBILITY_INCONCLUSIVE"
-  | "RESOURCE_VISIBILITY_RESTRICTED";
+  | "RESOURCE_VISIBILITY_RESTRICTED"
+  | (string & {});
 export const GooglePrivacyDlpV2TableDataProfileResourceVisibilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -9093,7 +9168,8 @@ export type GooglePrivacyDlpV2FindingLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const GooglePrivacyDlpV2FindingLikelihoodEnum = /*@__PURE__*/ S.String;
 
 /** If set, indicates that the finding applies to all messages in the conversation. */
@@ -9139,7 +9215,8 @@ export type GooglePrivacyDlpV2MetadataLocationTypeEnum =
   | "METADATATYPE_UNSPECIFIED"
   | "STORAGE_METADATA"
   | "CONTENT_METADATA"
-  | "CLIENT_PROVIDED_METADATA";
+  | "CLIENT_PROVIDED_METADATA"
+  | (string & {});
 export const GooglePrivacyDlpV2MetadataLocationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -9454,7 +9531,8 @@ export type GooglePrivacyDlpV2DateTimeDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const GooglePrivacyDlpV2DateTimeDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Time zone of the date time object. */
@@ -9650,7 +9728,8 @@ export type GooglePrivacyDlpV2InfoTypeCategoryTypeCategoryEnum =
   | "GOVERNMENT_ID"
   | "DOCUMENT"
   | "CONTEXTUAL_INFORMATION"
-  | "CUSTOM";
+  | "CUSTOM"
+  | (string & {});
 export const GooglePrivacyDlpV2InfoTypeCategoryTypeCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -9658,7 +9737,8 @@ export type GooglePrivacyDlpV2InfoTypeCategoryIndustryCategoryEnum =
   | "INDUSTRY_UNSPECIFIED"
   | "FINANCE"
   | "HEALTH"
-  | "TELECOMMUNICATIONS";
+  | "TELECOMMUNICATIONS"
+  | (string & {});
 export const GooglePrivacyDlpV2InfoTypeCategoryIndustryCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -9715,7 +9795,8 @@ export type GooglePrivacyDlpV2InfoTypeCategoryLocationCategoryEnum =
   | "URUGUAY"
   | "UZBEKISTAN"
   | "VENEZUELA"
-  | "INTERNAL";
+  | "INTERNAL"
+  | (string & {});
 export const GooglePrivacyDlpV2InfoTypeCategoryLocationCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -9754,14 +9835,16 @@ export type GooglePrivacyDlpV2InfoTypeDescriptionLaunchStatusEnum =
   | "INFO_TYPE_LAUNCH_STATUS_UNSPECIFIED"
   | "GENERAL_AVAILABILITY"
   | "PUBLIC_PREVIEW"
-  | "PRIVATE_PREVIEW";
+  | "PRIVATE_PREVIEW"
+  | (string & {});
 export const GooglePrivacyDlpV2InfoTypeDescriptionLaunchStatusEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2LocationSupportRegionalizationScopeEnum =
   | "REGIONALIZATION_SCOPE_UNSPECIFIED"
   | "REGIONAL"
-  | "ANY_LOCATION";
+  | "ANY_LOCATION"
+  | (string & {});
 export const GooglePrivacyDlpV2LocationSupportRegionalizationScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -9786,7 +9869,8 @@ export const GooglePrivacyDlpV2LocationSupport = /*@__PURE__*/ S.suspend(() =>
 export type GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItemEnum =
   | "ENUM_TYPE_UNSPECIFIED"
   | "INSPECT"
-  | "RISK_ANALYSIS";
+  | "RISK_ANALYSIS"
+  | (string & {});
 export const GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -10213,7 +10297,8 @@ export const GooglePrivacyDlpV2ListDiscoveryConfigsResponse =
 export type ListOrganizationsLocationsDlpJobsTypeEnum =
   | "DLP_JOB_TYPE_UNSPECIFIED"
   | "INSPECT_JOB"
-  | "RISK_ANALYSIS_JOB";
+  | "RISK_ANALYSIS_JOB"
+  | (string & {});
 export const ListOrganizationsLocationsDlpJobsTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ListOrganizationsLocationsDlpJobsRequest {
@@ -10396,7 +10481,8 @@ export const ListOrganizationsLocationsInspectTemplatesRequest =
 export type ListOrganizationsLocationsJobTriggersTypeEnum =
   | "DLP_JOB_TYPE_UNSPECIFIED"
   | "INSPECT_JOB"
-  | "RISK_ANALYSIS_JOB";
+  | "RISK_ANALYSIS_JOB"
+  | (string & {});
 export const ListOrganizationsLocationsJobTriggersTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -10689,7 +10775,8 @@ export const ListProjectsDeidentifyTemplatesRequest = /*@__PURE__*/ S.suspend(
 export type ListProjectsDlpJobsTypeEnum =
   | "DLP_JOB_TYPE_UNSPECIFIED"
   | "INSPECT_JOB"
-  | "RISK_ANALYSIS_JOB";
+  | "RISK_ANALYSIS_JOB"
+  | (string & {});
 export const ListProjectsDlpJobsTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsDlpJobsRequest {
@@ -10761,7 +10848,8 @@ export const ListProjectsInspectTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsJobTriggersTypeEnum =
   | "DLP_JOB_TYPE_UNSPECIFIED"
   | "INSPECT_JOB"
-  | "RISK_ANALYSIS_JOB";
+  | "RISK_ANALYSIS_JOB"
+  | (string & {});
 export const ListProjectsJobTriggersTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsJobTriggersRequest {
@@ -10969,7 +11057,8 @@ export const ListProjectsLocationsDiscoveryConfigsRequest =
 export type ListProjectsLocationsDlpJobsTypeEnum =
   | "DLP_JOB_TYPE_UNSPECIFIED"
   | "INSPECT_JOB"
-  | "RISK_ANALYSIS_JOB";
+  | "RISK_ANALYSIS_JOB"
+  | (string & {});
 export const ListProjectsLocationsDlpJobsTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsDlpJobsRequest {
@@ -11101,7 +11190,8 @@ export const ListProjectsLocationsInspectTemplatesRequest =
 export type ListProjectsLocationsJobTriggersTypeEnum =
   | "DLP_JOB_TYPE_UNSPECIFIED"
   | "INSPECT_JOB"
-  | "RISK_ANALYSIS_JOB";
+  | "RISK_ANALYSIS_JOB"
+  | (string & {});
 export const ListProjectsLocationsJobTriggersTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsJobTriggersRequest {

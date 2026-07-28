@@ -2006,7 +2006,7 @@ export const CancelExportTaskMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelExportTaskMessage>;
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
-export type ExportSourceType = "SNAPSHOT" | "CLUSTER";
+export type ExportSourceType = "SNAPSHOT" | "CLUSTER" | (string & {});
 export const ExportSourceType = /*@__PURE__*/ S.String;
 
 export interface ExportTask {
@@ -2140,7 +2140,11 @@ export type AvailabilityZones = string[];
 export const AvailabilityZones = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("AvailabilityZone")),
 );
-export type StorageEncryptionType = "none" | "sse-kms" | "sse-rds";
+export type StorageEncryptionType =
+  | "none"
+  | "sse-kms"
+  | "sse-rds"
+  | (string & {});
 export const StorageEncryptionType = /*@__PURE__*/ S.String;
 
 export interface DBClusterSnapshot {
@@ -2993,7 +2997,7 @@ export const ScalingConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ScalingConfiguration",
 }) as any as S.Schema<ScalingConfiguration>;
-export type ReplicaMode = "open-read-only" | "mounted";
+export type ReplicaMode = "open-read-only" | "mounted" | (string & {});
 export const ReplicaMode = /*@__PURE__*/ S.String;
 
 export interface RdsCustomClusterConfiguration {
@@ -3025,10 +3029,10 @@ export const ServerlessV2ScalingConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ServerlessV2ScalingConfiguration",
 }) as any as S.Schema<ServerlessV2ScalingConfiguration>;
-export type DatabaseInsightsMode = "standard" | "advanced";
+export type DatabaseInsightsMode = "standard" | "advanced" | (string & {});
 export const DatabaseInsightsMode = /*@__PURE__*/ S.String;
 
-export type ClusterScalabilityType = "standard" | "limitless";
+export type ClusterScalabilityType = "standard" | "limitless" | (string & {});
 export const ClusterScalabilityType = /*@__PURE__*/ S.String;
 
 export interface TagSpecification {
@@ -3046,7 +3050,10 @@ export const TagSpecificationList = /*@__PURE__*/ S.Array(
     identifier: "TagSpecification",
   }),
 );
-export type MasterUserAuthenticationType = "password" | "iam-db-auth";
+export type MasterUserAuthenticationType =
+  | "password"
+  | "iam-db-auth"
+  | (string & {});
 export const MasterUserAuthenticationType = /*@__PURE__*/ S.String;
 
 export interface CreateDBClusterMessage {
@@ -3205,7 +3212,7 @@ export const DBClusterOptionGroupMemberships = /*@__PURE__*/ S.Array(
     identifier: "DBClusterOptionGroupStatus",
   }),
 );
-export type UpgradeRolloutOrder = "first" | "second" | "last";
+export type UpgradeRolloutOrder = "first" | "second" | "last" | (string & {});
 export const UpgradeRolloutOrder = /*@__PURE__*/ S.String;
 
 export type ReadReplicaIdentifierList = string[];
@@ -3350,14 +3357,15 @@ export const ScalingConfigurationInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ScalingConfigurationInfo",
 }) as any as S.Schema<ScalingConfigurationInfo>;
-export type ActivityStreamMode = "sync" | "async";
+export type ActivityStreamMode = "sync" | "async" | (string & {});
 export const ActivityStreamMode = /*@__PURE__*/ S.String;
 
 export type ActivityStreamStatus =
   | "stopped"
   | "starting"
   | "started"
-  | "stopping";
+  | "stopping"
+  | (string & {});
 export const ActivityStreamStatus = /*@__PURE__*/ S.String;
 
 export interface DomainMembership {
@@ -3393,7 +3401,8 @@ export type WriteForwardingStatus =
   | "disabled"
   | "enabling"
   | "disabling"
-  | "unknown";
+  | "unknown"
+  | (string & {});
 export const WriteForwardingStatus = /*@__PURE__*/ S.String;
 
 export interface ServerlessV2ScalingConfigurationInfo {
@@ -3430,7 +3439,8 @@ export type LocalWriteForwardingStatus =
   | "disabled"
   | "enabling"
   | "disabling"
-  | "requested";
+  | "requested"
+  | (string & {});
 export const LocalWriteForwardingStatus = /*@__PURE__*/ S.String;
 
 export type LimitlessDatabaseStatus =
@@ -3441,7 +3451,8 @@ export type LimitlessDatabaseStatus =
   | "enabling"
   | "disabling"
   | "modifying-max-capacity"
-  | "error";
+  | "error"
+  | (string & {});
 export const LimitlessDatabaseStatus = /*@__PURE__*/ S.String;
 
 export interface LimitlessDatabase {
@@ -4027,7 +4038,7 @@ export const DBSubnetGroup = /*@__PURE__*/ S.suspend(() =>
     SupportedNetworkTypes: S.optional(StringList),
   }),
 ).annotate({ identifier: "DBSubnetGroup" }) as any as S.Schema<DBSubnetGroup>;
-export type AutomationMode = "full" | "all-paused";
+export type AutomationMode = "full" | "all-paused" | (string & {});
 export const AutomationMode = /*@__PURE__*/ S.String;
 
 export interface PendingModifiedValues {
@@ -4171,7 +4182,8 @@ export type ActivityStreamPolicyStatus =
   | "locked"
   | "unlocked"
   | "locking-policy"
-  | "unlocking-policy";
+  | "unlocking-policy"
+  | (string & {});
 export const ActivityStreamPolicyStatus = /*@__PURE__*/ S.String;
 
 export interface AdditionalStorageVolumeOutput {
@@ -4582,18 +4594,18 @@ export const CreateDBParameterGroupResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDBParameterGroupResult",
 }) as any as S.Schema<CreateDBParameterGroupResult>;
 export type DBProxyName = string;
-export type EngineFamily = "MYSQL" | "POSTGRESQL" | "SQLSERVER";
+export type EngineFamily = "MYSQL" | "POSTGRESQL" | "SQLSERVER" | (string & {});
 export const EngineFamily = /*@__PURE__*/ S.String;
 
-export type DefaultAuthScheme = "IAM_AUTH" | "NONE";
+export type DefaultAuthScheme = "IAM_AUTH" | "NONE" | (string & {});
 export const DefaultAuthScheme = /*@__PURE__*/ S.String;
 
 export type AuthUserName = string;
-export type AuthScheme = "SECRETS";
+export type AuthScheme = "SECRETS" | (string & {});
 export const AuthScheme = /*@__PURE__*/ S.String;
 
 export type Arn = string;
-export type IAMAuthMode = "DISABLED" | "REQUIRED" | "ENABLED";
+export type IAMAuthMode = "DISABLED" | "REQUIRED" | "ENABLED" | (string & {});
 export const IAMAuthMode = /*@__PURE__*/ S.String;
 
 export type ClientPasswordAuthType =
@@ -4601,7 +4613,8 @@ export type ClientPasswordAuthType =
   | "MYSQL_CACHING_SHA2_PASSWORD"
   | "POSTGRES_SCRAM_SHA_256"
   | "POSTGRES_MD5"
-  | "SQL_SERVER_AUTHENTICATION";
+  | "SQL_SERVER_AUTHENTICATION"
+  | (string & {});
 export const ClientPasswordAuthType = /*@__PURE__*/ S.String;
 
 export interface UserAuthConfig {
@@ -4624,10 +4637,10 @@ export const UserAuthConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserAuthConfig" }) as any as S.Schema<UserAuthConfig>;
 export type UserAuthConfigList = UserAuthConfig[];
 export const UserAuthConfigList = /*@__PURE__*/ S.Array(UserAuthConfig);
-export type EndpointNetworkType = "IPV4" | "IPV6" | "DUAL";
+export type EndpointNetworkType = "IPV4" | "IPV6" | "DUAL" | (string & {});
 export const EndpointNetworkType = /*@__PURE__*/ S.String;
 
-export type TargetConnectionNetworkType = "IPV4" | "IPV6";
+export type TargetConnectionNetworkType = "IPV4" | "IPV6" | (string & {});
 export const TargetConnectionNetworkType = /*@__PURE__*/ S.String;
 
 export interface CreateDBProxyRequest {
@@ -4683,7 +4696,8 @@ export type DBProxyStatus =
   | "deleting"
   | "suspended"
   | "suspending"
-  | "reactivating";
+  | "reactivating"
+  | (string & {});
 export const DBProxyStatus = /*@__PURE__*/ S.String;
 
 export interface UserAuthConfigInfo {
@@ -4763,7 +4777,10 @@ export const CreateDBProxyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDBProxyResponse",
 }) as any as S.Schema<CreateDBProxyResponse>;
 export type DBProxyEndpointName = string;
-export type DBProxyEndpointTargetRole = "READ_WRITE" | "READ_ONLY";
+export type DBProxyEndpointTargetRole =
+  | "READ_WRITE"
+  | "READ_ONLY"
+  | (string & {});
 export const DBProxyEndpointTargetRole = /*@__PURE__*/ S.String;
 
 export interface CreateDBProxyEndpointRequest {
@@ -4804,7 +4821,8 @@ export type DBProxyEndpointStatus =
   | "incompatible-network"
   | "insufficient-resource-limits"
   | "creating"
-  | "deleting";
+  | "deleting"
+  | (string & {});
 export const DBProxyEndpointStatus = /*@__PURE__*/ S.String;
 
 export interface DBProxyEndpoint {
@@ -5096,7 +5114,8 @@ export type ReadersArnList = string[];
 export const ReadersArnList = /*@__PURE__*/ S.Array(S.String);
 export type GlobalClusterMemberSynchronizationStatus =
   | "connected"
-  | "pending-resync";
+  | "pending-resync"
+  | (string & {});
 export const GlobalClusterMemberSynchronizationStatus = /*@__PURE__*/ S.String;
 
 export interface GlobalClusterMember {
@@ -5123,7 +5142,11 @@ export const GlobalClusterMemberList = /*@__PURE__*/ S.Array(
     identifier: "GlobalClusterMember",
   }),
 );
-export type FailoverStatus = "pending" | "failing-over" | "cancelling";
+export type FailoverStatus =
+  | "pending"
+  | "failing-over"
+  | "cancelling"
+  | (string & {});
 export const FailoverStatus = /*@__PURE__*/ S.String;
 
 export interface FailoverState {
@@ -5235,7 +5258,8 @@ export type IntegrationStatus =
   | "failed"
   | "deleting"
   | "syncing"
-  | "needs_attention";
+  | "needs_attention"
+  | (string & {});
 export const IntegrationStatus = /*@__PURE__*/ S.String;
 
 export interface IntegrationError {
@@ -6562,7 +6586,7 @@ export const DescribeDBClusterParametersMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeDBClusterParametersMessage",
 }) as any as S.Schema<DescribeDBClusterParametersMessage>;
 export type PotentiallySensitiveParameterValue = string;
-export type ApplyMethod = "immediate" | "pending-reboot";
+export type ApplyMethod = "immediate" | "pending-reboot" | (string & {});
 export const ApplyMethod = /*@__PURE__*/ S.String;
 
 export interface Parameter {
@@ -7028,7 +7052,8 @@ export const DescribeDBMajorEngineVersionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeDBMajorEngineVersionsRequest>;
 export type LifecycleSupportName =
   | "open-source-rds-standard-support"
-  | "open-source-rds-extended-support";
+  | "open-source-rds-extended-support"
+  | (string & {});
 export const LifecycleSupportName = /*@__PURE__*/ S.String;
 
 export interface SupportedEngineLifecycle {
@@ -7380,17 +7405,19 @@ export const DescribeDBProxyTargetsRequest = /*@__PURE__*/ S.suspend(() =>
 export type TargetType =
   | "RDS_INSTANCE"
   | "RDS_SERVERLESS_ENDPOINT"
-  | "TRACKED_CLUSTER";
+  | "TRACKED_CLUSTER"
+  | (string & {});
 export const TargetType = /*@__PURE__*/ S.String;
 
-export type TargetRole = "READ_WRITE" | "READ_ONLY" | "UNKNOWN";
+export type TargetRole = "READ_WRITE" | "READ_ONLY" | "UNKNOWN" | (string & {});
 export const TargetRole = /*@__PURE__*/ S.String;
 
 export type TargetState =
   | "REGISTERING"
   | "AVAILABLE"
   | "UNAVAILABLE"
-  | "UNUSED";
+  | "UNUSED"
+  | (string & {});
 export const TargetState = /*@__PURE__*/ S.String;
 
 export type TargetHealthReason =
@@ -7399,7 +7426,8 @@ export type TargetHealthReason =
   | "AUTH_FAILURE"
   | "PENDING_PROXY_CAPACITY"
   | "INVALID_REPLICATION_STATE"
-  | "PROMOTED";
+  | "PROMOTED"
+  | (string & {});
 export const TargetHealthReason = /*@__PURE__*/ S.String;
 
 export interface TargetHealth {
@@ -8195,7 +8223,8 @@ export type SourceType =
   | "db-proxy"
   | "blue-green-deployment"
   | "db-shard-group"
-  | "zero-etl";
+  | "zero-etl"
+  | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
 
 export interface DescribeEventsMessage {
@@ -9611,7 +9640,7 @@ export interface TagListMessage {
 export const TagListMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TagList: S.optional(TagList) }).pipe(ns),
 ).annotate({ identifier: "TagListMessage" }) as any as S.Schema<TagListMessage>;
-export type AuditPolicyState = "locked" | "unlocked";
+export type AuditPolicyState = "locked" | "unlocked" | (string & {});
 export const AuditPolicyState = /*@__PURE__*/ S.String;
 
 export interface ModifyActivityStreamRequest {
@@ -9734,7 +9763,8 @@ export const DBClusterCapacityInfo = /*@__PURE__*/ S.suspend(() =>
 export type CustomEngineVersionStatus =
   | "available"
   | "inactive"
-  | "inactive-except-restore";
+  | "inactive-except-restore"
+  | (string & {});
 export const CustomEngineVersionStatus = /*@__PURE__*/ S.String;
 
 export interface ModifyCustomDBEngineVersionMessage {

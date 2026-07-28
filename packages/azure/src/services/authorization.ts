@@ -718,7 +718,8 @@ export type RoleAssignmentPropertiesInputPrincipalType =
   | "ForeignGroup"
   | "Device"
   | "AgentUser"
-  | "AgentServicePrincipal";
+  | "AgentServicePrincipal"
+  | (string & {});
 export const RoleAssignmentPropertiesInputPrincipalType =
   /*@__PURE__*/ S.String;
 
@@ -783,7 +784,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -791,7 +793,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -828,7 +831,8 @@ export type RoleAssignmentPropertiesPrincipalType =
   | "ForeignGroup"
   | "Device"
   | "AgentUser"
-  | "AgentServicePrincipal";
+  | "AgentServicePrincipal"
+  | (string & {});
 export const RoleAssignmentPropertiesPrincipalType = /*@__PURE__*/ S.String;
 
 /** Role assignment properties. */

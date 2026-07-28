@@ -87,7 +87,8 @@ export type SuggestionClusterProtoCategoryEnum =
   | "contentLabeling"
   | "touchTargetSize"
   | "lowContrast"
-  | "implementation";
+  | "implementation"
+  | (string & {});
 export const SuggestionClusterProtoCategoryEnum = /*@__PURE__*/ S.String;
 
 /** IMPORTANT: It is unsafe to accept this message from an untrusted source, since it's trivial for an attacker to forge serialized messages that don't fulfill the type's safety contract -- for example, it could contain attacker controlled script. A system which receives a SafeHtmlProto implicitly trusts the producer of the SafeHtmlProto. So, it's generally safe to return this message in RPC responses, but generally unsafe to accept it in RPC requests. */
@@ -105,7 +106,8 @@ export type SuggestionProtoPriorityEnum =
   | "unknownPriority"
   | "error"
   | "warning"
-  | "info";
+  | "info"
+  | (string & {});
 export const SuggestionProtoPriorityEnum = /*@__PURE__*/ S.String;
 
 /** A rectangular region. */
@@ -302,7 +304,11 @@ export const BatchCreatePerfSamplesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchCreatePerfSamplesResponse",
 }) as any as S.Schema<BatchCreatePerfSamplesResponse>;
 
-export type HistoryTestPlatformEnum = "unknownPlatform" | "android" | "ios";
+export type HistoryTestPlatformEnum =
+  | "unknownPlatform"
+  | "android"
+  | "ios"
+  | (string & {});
 export const HistoryTestPlatformEnum = /*@__PURE__*/ S.String;
 
 /** A History represents a sorted list of Executions ordered by the start_timestamp_millis field (descending). It can be used to group all the Executions of a continuous build. Note that the ordering only operates on one-dimension. If a repository has multiple branches, it means that multiple histories will need to be used in order to order Executions per branch. */
@@ -353,7 +359,8 @@ export type ExecutionStateEnum =
   | "unknownState"
   | "pending"
   | "inProgress"
-  | "complete";
+  | "complete"
+  | (string & {});
 export const ExecutionStateEnum = /*@__PURE__*/ S.String;
 
 /** One dimension of the matrix of different runs of a step. */
@@ -592,7 +599,8 @@ export type OutcomeSummaryEnum =
   | "failure"
   | "inconclusive"
   | "skipped"
-  | "flaky";
+  | "flaky"
+  | (string & {});
 export const OutcomeSummaryEnum = /*@__PURE__*/ S.String;
 
 /** Details for an outcome with a SUCCESS outcome summary. LINT.IfChange */
@@ -741,7 +749,8 @@ export type StepStateEnum =
   | "unknownState"
   | "pending"
   | "inProgress"
-  | "complete";
+  | "complete"
+  | (string & {});
 export const StepStateEnum = /*@__PURE__*/ S.String;
 
 /** A reference to a file. */
@@ -907,7 +916,8 @@ export type TestIssueTypeEnum =
   | "logcatCollectionError"
   | "detectedAppSplashScreen"
   | "assetIssue"
-  | "licensingProtectionTermination";
+  | "licensingProtectionTermination"
+  | (string & {});
 export const TestIssueTypeEnum = /*@__PURE__*/ S.String;
 
 /** `Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type of the serialized message. Protobuf library provides support to pack/unpack Any values in the form of utility functions or additional generated methods of the Any type. Example 1: Pack and unpack a message in C++. Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) { ... } Example 2: Pack and unpack a message in Java. Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo = any.unpack(Foo.class); } Example 3: Pack and unpack a message in Python. foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ... Example 4: Pack and unpack a message in Go foo := &pb.Foo{...} any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo{} if err := ptypes.UnmarshalAny(any, foo); err != nil { ... } The pack methods provided by protobuf library will by default use 'type.googleapis.com/full.type.name' as the type URL and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for example "foo.bar.com/x/y.z" will yield type name "y.z". # JSON The JSON representation of an `Any` value uses the regular representation of the deserialized, embedded message, with an additional field `@type` which contains the type URL. Example: package google.profile; message Person { string first_name = 1; string last_name = 2; } { "@type": "type.googleapis.com/google.profile.Person", "firstName": , "lastName": } If the embedded message type is well-known and has a custom JSON representation, that representation will be embedded adding a field `value` which holds the custom JSON in addition to the `@type` field. Example (for message google.protobuf.Duration): { "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" } */
@@ -940,10 +950,15 @@ export type TestIssueSeverityEnum =
   | "info"
   | "suggestion"
   | "warning"
-  | "severe";
+  | "severe"
+  | (string & {});
 export const TestIssueSeverityEnum = /*@__PURE__*/ S.String;
 
-export type TestIssueCategoryEnum = "unspecifiedCategory" | "common" | "robo";
+export type TestIssueCategoryEnum =
+  | "unspecifiedCategory"
+  | "common"
+  | "robo"
+  | (string & {});
 export const TestIssueCategoryEnum = /*@__PURE__*/ S.String;
 
 /** An issue detected occurring during a test execution. */
@@ -1066,7 +1081,8 @@ export type PrimaryStepRollUpEnum =
   | "failure"
   | "inconclusive"
   | "skipped"
-  | "flaky";
+  | "flaky"
+  | (string & {});
 export const PrimaryStepRollUpEnum = /*@__PURE__*/ S.String;
 
 export type IndividualOutcomeOutcomeSummaryEnum =
@@ -1075,7 +1091,8 @@ export type IndividualOutcomeOutcomeSummaryEnum =
   | "failure"
   | "inconclusive"
   | "skipped"
-  | "flaky";
+  | "flaky"
+  | (string & {});
 export const IndividualOutcomeOutcomeSummaryEnum = /*@__PURE__*/ S.String;
 
 /** Step Id and outcome of each individual step that was run as a group with other steps with the same configuration. */
@@ -1223,7 +1240,8 @@ export type PerfMetricsSummaryPerfMetricsItemEnum =
   | "memory"
   | "cpu"
   | "network"
-  | "graphics";
+  | "graphics"
+  | (string & {});
 export const PerfMetricsSummaryPerfMetricsItemEnum = /*@__PURE__*/ S.String;
 
 export type PerfMetricsSummaryPerfMetricsItemEnumList =
@@ -1432,7 +1450,8 @@ export type BasicPerfSampleSeriesSampleSeriesLabelEnum =
   | "ntBytesReceived"
   | "networkSent"
   | "networkReceived"
-  | "graphicsFrameRate";
+  | "graphicsFrameRate"
+  | (string & {});
 export const BasicPerfSampleSeriesSampleSeriesLabelEnum =
   /*@__PURE__*/ S.String;
 
@@ -1442,7 +1461,8 @@ export type BasicPerfSampleSeriesPerfUnitEnum =
   | "percent"
   | "bytesPerSecond"
   | "framesPerSecond"
-  | "byte";
+  | "byte"
+  | (string & {});
 export const BasicPerfSampleSeriesPerfUnitEnum = /*@__PURE__*/ S.String;
 
 export type BasicPerfSampleSeriesPerfMetricTypeEnum =
@@ -1450,7 +1470,8 @@ export type BasicPerfSampleSeriesPerfMetricTypeEnum =
   | "memory"
   | "cpu"
   | "network"
-  | "graphics";
+  | "graphics"
+  | (string & {});
 export const BasicPerfSampleSeriesPerfMetricTypeEnum = /*@__PURE__*/ S.String;
 
 /** Encapsulates the metadata for basic sample series represented by a line chart */
@@ -1721,7 +1742,8 @@ export type MergedResultStateEnum =
   | "unknownState"
   | "pending"
   | "inProgress"
-  | "complete";
+  | "complete"
+  | (string & {});
 export const MergedResultStateEnum = /*@__PURE__*/ S.String;
 
 /** Merged test result for environment. If the environment has only one step (no reruns or shards), then the merged result is the same as the step result. If the environment has multiple shards and/or reruns, then the results of shards and reruns that belong to the same environment are merged into one environment result. */
@@ -1931,7 +1953,8 @@ export type TestCaseStatusEnum =
   | "failed"
   | "error"
   | "skipped"
-  | "flaky";
+  | "flaky"
+  | (string & {});
 export const TestCaseStatusEnum = /*@__PURE__*/ S.String;
 
 export interface TestCase {
@@ -2276,7 +2299,8 @@ export type ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnum =
   | "memory"
   | "cpu"
   | "network"
-  | "graphics";
+  | "graphics"
+  | (string & {});
 export const ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnum =
   /*@__PURE__*/ S.String;
 

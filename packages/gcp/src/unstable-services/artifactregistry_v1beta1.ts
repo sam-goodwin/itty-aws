@@ -74,7 +74,8 @@ export type RepositoryFormatEnum =
   | "APT"
   | "YUM"
   | "GOOGET"
-  | "PYTHON";
+  | "PYTHON"
+  | (string & {});
 export const RepositoryFormatEnum = /*@__PURE__*/ S.String;
 
 /** A Repository for storing artifacts with a specific format. */
@@ -503,7 +504,8 @@ export type HashTypeEnum =
   | "HASH_TYPE_UNSPECIFIED"
   | "SHA256"
   | "MD5"
-  | "DIRSUM_SHA256";
+  | "DIRSUM_SHA256"
+  | (string & {});
 export const HashTypeEnum = /*@__PURE__*/ S.String;
 
 /** A hash of file content. */
@@ -612,7 +614,8 @@ export const GetProjectsLocationsRepositoriesPackagesTagsRequest =
 export type GetProjectsLocationsRepositoriesPackagesVersionsViewEnum =
   | "VERSION_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetProjectsLocationsRepositoriesPackagesVersionsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -913,7 +916,8 @@ export const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsRepositoriesPackagesVersionsViewEnum =
   | "VERSION_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListProjectsLocationsRepositoriesPackagesVersionsViewEnum =
   /*@__PURE__*/ S.String;
 

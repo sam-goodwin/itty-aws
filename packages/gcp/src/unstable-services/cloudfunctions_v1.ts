@@ -117,7 +117,8 @@ export const CallFunctionResponse = /*@__PURE__*/ S.suspend(() =>
 export type CloudFunctionDockerRegistryEnum =
   | "DOCKER_REGISTRY_UNSPECIFIED"
   | "CONTAINER_REGISTRY"
-  | "ARTIFACT_REGISTRY";
+  | "ARTIFACT_REGISTRY"
+  | (string & {});
 export const CloudFunctionDockerRegistryEnum = /*@__PURE__*/ S.String;
 
 /** Describes the retry policy in case of function's execution failure. A function execution will be retried on any failure. A failed execution will be retried up to 7 days with an exponential backoff (capped at 10 seconds). Retried execution is charged as any other execution. */
@@ -198,20 +199,23 @@ export type CloudFunctionStatusEnum =
   | "OFFLINE"
   | "DEPLOY_IN_PROGRESS"
   | "DELETE_IN_PROGRESS"
-  | "UNKNOWN";
+  | "UNKNOWN"
+  | (string & {});
 export const CloudFunctionStatusEnum = /*@__PURE__*/ S.String;
 
 export type CloudFunctionIngressSettingsEnum =
   | "INGRESS_SETTINGS_UNSPECIFIED"
   | "ALLOW_ALL"
   | "ALLOW_INTERNAL_ONLY"
-  | "ALLOW_INTERNAL_AND_GCLB";
+  | "ALLOW_INTERNAL_AND_GCLB"
+  | (string & {});
 export const CloudFunctionIngressSettingsEnum = /*@__PURE__*/ S.String;
 
 export type CloudFunctionVpcConnectorEgressSettingsEnum =
   | "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED"
   | "PRIVATE_RANGES_ONLY"
-  | "ALL_TRAFFIC";
+  | "ALL_TRAFFIC"
+  | (string & {});
 export const CloudFunctionVpcConnectorEgressSettingsEnum =
   /*@__PURE__*/ S.String;
 
@@ -284,7 +288,8 @@ export const SecretVolumeList = /*@__PURE__*/ S.Array(
 export type HttpsTriggerSecurityLevelEnum =
   | "SECURITY_LEVEL_UNSPECIFIED"
   | "SECURE_ALWAYS"
-  | "SECURE_OPTIONAL";
+  | "SECURE_OPTIONAL"
+  | (string & {});
 export const HttpsTriggerSecurityLevelEnum = /*@__PURE__*/ S.String;
 
 /** Describes HttpsTrigger, could be used to connect web hooks to function. */
@@ -697,7 +702,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */

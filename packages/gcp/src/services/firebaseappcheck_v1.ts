@@ -249,7 +249,8 @@ export type GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrityMinDeviceR
     | "NO_INTEGRITY"
     | "MEETS_BASIC_INTEGRITY"
     | "MEETS_DEVICE_INTEGRITY"
-    | "MEETS_STRONG_INTEGRITY";
+    | "MEETS_STRONG_INTEGRITY"
+    | (string & {});
 export const GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrityMinDeviceRecognitionLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -479,14 +480,16 @@ export const GoogleFirebaseAppcheckV1BatchGetRecaptchaV3ConfigsResponse =
 export type GoogleFirebaseAppcheckV1ServiceReplayProtectionEnum =
   | "OFF"
   | "UNENFORCED"
-  | "ENFORCED";
+  | "ENFORCED"
+  | (string & {});
 export const GoogleFirebaseAppcheckV1ServiceReplayProtectionEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleFirebaseAppcheckV1ServiceEnforcementModeEnum =
   | "OFF"
   | "UNENFORCED"
-  | "ENFORCED";
+  | "ENFORCED"
+  | (string & {});
 export const GoogleFirebaseAppcheckV1ServiceEnforcementModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -606,7 +609,8 @@ export const GoogleFirebaseAppcheckV1BatchUpdateServicesResponse =
 export type GoogleFirebaseAppcheckV1ResourcePolicyEnforcementModeEnum =
   | "OFF"
   | "UNENFORCED"
-  | "ENFORCED";
+  | "ENFORCED"
+  | (string & {});
 export const GoogleFirebaseAppcheckV1ResourcePolicyEnforcementModeEnum =
   /*@__PURE__*/ S.String;
 

@@ -99,7 +99,8 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
 export type NewSpotInstancesConfigTerminationActionEnum =
   | "TERMINATION_ACTION_UNSPECIFIED"
   | "STOP"
-  | "DELETE";
+  | "DELETE"
+  | (string & {});
 export const NewSpotInstancesConfigTerminationActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -328,13 +329,15 @@ export type NewBucketConfigStorageClassEnum =
   | "STANDARD"
   | "NEARLINE"
   | "COLDLINE"
-  | "ARCHIVE";
+  | "ARCHIVE"
+  | (string & {});
 export const NewBucketConfigStorageClassEnum = /*@__PURE__*/ S.String;
 
 export type GcsAutoclassConfigTerminalStorageClassEnum =
   | "TERMINAL_STORAGE_CLASS_UNSPECIFIED"
   | "NEARLINE"
-  | "ARCHIVE";
+  | "ARCHIVE"
+  | (string & {});
 export const GcsAutoclassConfigTerminalStorageClassEnum =
   /*@__PURE__*/ S.String;
 
@@ -458,7 +461,8 @@ export const NewLustreConfig = /*@__PURE__*/ S.suspend(() =>
 export type NewFilestoreConfigTierEnum =
   | "TIER_UNSPECIFIED"
   | "ZONAL"
-  | "REGIONAL";
+  | "REGIONAL"
+  | (string & {});
 export const NewFilestoreConfigTierEnum = /*@__PURE__*/ S.String;
 
 /** Message describing filestore configuration */
@@ -485,7 +489,8 @@ export const FileShareConfigList = /*@__PURE__*/ S.Array(
 export type NewFilestoreConfigProtocolEnum =
   | "PROTOCOL_UNSPECIFIED"
   | "NFSV3"
-  | "NFSV41";
+  | "NFSV41"
+  | (string & {});
 export const NewFilestoreConfigProtocolEnum = /*@__PURE__*/ S.String;
 
 /** When set in a StorageResourceConfig, indicates that a new [Filestore](https://cloud.google.com/filestore) instance should be created. */

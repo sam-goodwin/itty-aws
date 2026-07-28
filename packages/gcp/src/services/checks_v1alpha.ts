@@ -118,7 +118,8 @@ export type GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfigPolicyT
     | "HATE_SPEECH"
     | "MEDICAL_INFO"
     | "VIOLENCE_AND_GORE"
-    | "OBSCENITY_AND_PROFANITY";
+    | "OBSCENITY_AND_PROFANITY"
+    | (string & {});
 export const GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfigPolicyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -149,7 +150,7 @@ export const GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfigList =
   ) as any as S.Schema<GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfigList>;
 
 export type GoogleChecksAisafetyV1alphaClassifyContentRequestClassifierVersionEnum =
-  "CLASSIFIER_VERSION_UNSPECIFIED" | "STABLE" | "LATEST";
+  "CLASSIFIER_VERSION_UNSPECIFIED" | "STABLE" | "LATEST" | (string & {});
 export const GoogleChecksAisafetyV1alphaClassifyContentRequestClassifierVersionEnum =
   /*@__PURE__*/ S.String;
 
@@ -244,7 +245,8 @@ export type GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultPolicy
     | "HATE_SPEECH"
     | "MEDICAL_INFO"
     | "VIOLENCE_AND_GORE"
-    | "OBSCENITY_AND_PROFANITY";
+    | "OBSCENITY_AND_PROFANITY"
+    | (string & {});
 export const GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultPolicyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -252,7 +254,8 @@ export type GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultViolat
     | "VIOLATION_RESULT_UNSPECIFIED"
     | "VIOLATIVE"
     | "NON_VIOLATIVE"
-    | "CLASSIFICATION_ERROR";
+    | "CLASSIFICATION_ERROR"
+    | (string & {});
 export const GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultViolationResultEnum =
   /*@__PURE__*/ S.String;
 
@@ -401,7 +404,8 @@ export type GoogleChecksRepoScanV1alphaSourceDataTypeEnum =
   | "DATA_TYPE_CRASH_LOGS"
   | "DATA_TYPE_PERFORMANCE_DIAGNOSTICS"
   | "DATA_TYPE_OTHER_APP_PERFORMANCE_DATA"
-  | "DATA_TYPE_DEVICE_OR_OTHER_IDS";
+  | "DATA_TYPE_DEVICE_OR_OTHER_IDS"
+  | (string & {});
 export const GoogleChecksRepoScanV1alphaSourceDataTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -515,7 +519,8 @@ export type GoogleChecksRepoScanV1alphaCodeScanDataTypeClassificationDataTypeEnu
     | "DATA_TYPE_CRASH_LOGS"
     | "DATA_TYPE_PERFORMANCE_DIAGNOSTICS"
     | "DATA_TYPE_OTHER_APP_PERFORMANCE_DATA"
-    | "DATA_TYPE_DEVICE_OR_OTHER_IDS";
+    | "DATA_TYPE_DEVICE_OR_OTHER_IDS"
+    | (string & {});
 export const GoogleChecksRepoScanV1alphaCodeScanDataTypeClassificationDataTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -757,7 +762,7 @@ export const GetAccountsAppsReportsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAccountsAppsReportsRequest>;
 
 export type GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnum =
-  "DATA_MONITORING_RESULT_BADGE_UNSPECIFIED" | "NEW";
+  "DATA_MONITORING_RESULT_BADGE_UNSPECIFIED" | "NEW" | (string & {});
 export const GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -952,7 +957,8 @@ export type GoogleChecksReportV1alphaDataMonitoringDataTypeResultDataTypeEnum =
   | "DATA_TYPE_CRASH_LOGS"
   | "DATA_TYPE_PERFORMANCE_DIAGNOSTICS"
   | "DATA_TYPE_OTHER_APP_PERFORMANCE_DATA"
-  | "DATA_TYPE_DEVICE_OR_OTHER_IDS";
+  | "DATA_TYPE_DEVICE_OR_OTHER_IDS"
+  | (string & {});
 export const GoogleChecksReportV1alphaDataMonitoringDataTypeResultDataTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -996,7 +1002,8 @@ export type GoogleChecksReportV1alphaDataTypeEndpointEvidenceExfiltratedDataType
     | "EXFILTRATED_DATA_TYPE_SSID"
     | "EXFILTRATED_DATA_TYPE_ACCOUNT"
     | "EXFILTRATED_DATA_TYPE_EXTERNAL_ACCOUNT"
-    | "EXFILTRATED_DATA_TYPE_INSTALLED_PACKAGES";
+    | "EXFILTRATED_DATA_TYPE_INSTALLED_PACKAGES"
+    | (string & {});
 export const GoogleChecksReportV1alphaDataTypeEndpointEvidenceExfiltratedDataTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1204,7 +1211,8 @@ export const GoogleChecksReportV1alphaDataMonitoring = /*@__PURE__*/ S.suspend(
 export type GoogleChecksReportV1alphaAppBundleReleaseTypeEnum =
   | "APP_BUNDLE_RELEASE_TYPE_UNSPECIFIED"
   | "PUBLIC"
-  | "PRE_RELEASE";
+  | "PRE_RELEASE"
+  | (string & {});
 export const GoogleChecksReportV1alphaAppBundleReleaseTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1237,7 +1245,8 @@ export type GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnum =
   | "CHECK_STATE_BADGE_UNSPECIFIED"
   | "NEWLY_FAILING"
   | "RECENTLY_FAILING"
-  | "RESOLVED";
+  | "RESOLVED"
+  | (string & {});
 export const GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1347,7 +1356,8 @@ export type GoogleChecksReportV1alphaCheckDataTypeEvidenceDataTypeEnum =
   | "DATA_TYPE_CRASH_LOGS"
   | "DATA_TYPE_PERFORMANCE_DIAGNOSTICS"
   | "DATA_TYPE_OTHER_APP_PERFORMANCE_DATA"
-  | "DATA_TYPE_DEVICE_OR_OTHER_IDS";
+  | "DATA_TYPE_DEVICE_OR_OTHER_IDS"
+  | (string & {});
 export const GoogleChecksReportV1alphaCheckDataTypeEvidenceDataTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1679,7 +1689,8 @@ export type GoogleChecksReportV1alphaCheckStateEnum =
   | "CHECK_STATE_UNSPECIFIED"
   | "PASSED"
   | "FAILED"
-  | "UNCHECKED";
+  | "UNCHECKED"
+  | (string & {});
 export const GoogleChecksReportV1alphaCheckStateEnum = /*@__PURE__*/ S.String;
 
 export type GoogleChecksReportV1alphaCheckTypeEnum =
@@ -1774,7 +1785,8 @@ export type GoogleChecksReportV1alphaCheckTypeEnum =
   | "DATA_MONITORING_PII_LOGCAT_LEAK"
   | "DATA_MONITORING_MINIMIZE_PERMISSION_MEDIA"
   | "DATA_MONITORING_MINIMIZE_PERMISSION_CAMERA"
-  | "DATA_MONITORING_MINIMIZE_PERMISSION_DOCUMENTS";
+  | "DATA_MONITORING_MINIMIZE_PERMISSION_DOCUMENTS"
+  | (string & {});
 export const GoogleChecksReportV1alphaCheckTypeEnum = /*@__PURE__*/ S.String;
 
 export type GoogleChecksReportV1alphaCheckCitationTypeEnum =
@@ -1804,7 +1816,8 @@ export type GoogleChecksReportV1alphaCheckCitationTypeEnum =
   | "INDIA_DPDPA"
   | "OCPA"
   | "TDPSA"
-  | "MCDPA";
+  | "MCDPA"
+  | (string & {});
 export const GoogleChecksReportV1alphaCheckCitationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1832,7 +1845,8 @@ export type GoogleChecksReportV1alphaCheckSeverityEnum =
   | "CHECK_SEVERITY_UNSPECIFIED"
   | "PRIORITY"
   | "POTENTIAL"
-  | "OPPORTUNITY";
+  | "OPPORTUNITY"
+  | (string & {});
 export const GoogleChecksReportV1alphaCheckSeverityEnum =
   /*@__PURE__*/ S.String;
 
@@ -2175,7 +2189,8 @@ export type GoogleChecksReportV1alphaAnalyzeUploadRequestAppBinaryFileTypeEnum =
     | "APP_BINARY_FILE_TYPE_UNSPECIFIED"
     | "ANDROID_APK"
     | "ANDROID_AAB"
-    | "IOS_IPA";
+    | "IOS_IPA"
+    | (string & {});
 export const GoogleChecksReportV1alphaAnalyzeUploadRequestAppBinaryFileTypeEnum =
   /*@__PURE__*/ S.String;
 

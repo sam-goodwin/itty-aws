@@ -276,7 +276,7 @@ export const AddEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddEndpointsRequest",
 }) as any as S.Schema<AddEndpointsRequest>;
-export type HealthState = "INITIAL" | "HEALTHY" | "UNHEALTHY";
+export type HealthState = "INITIAL" | "HEALTHY" | "UNHEALTHY" | (string & {});
 export const HealthState = /*@__PURE__*/ S.String;
 
 export interface EndpointDescription {
@@ -332,7 +332,8 @@ export type ByoipCidrState =
   | "FAILED_PROVISION"
   | "FAILED_ADVERTISING"
   | "FAILED_WITHDRAW"
-  | "FAILED_DEPROVISION";
+  | "FAILED_DEPROVISION"
+  | (string & {});
 export const ByoipCidrState = /*@__PURE__*/ S.String;
 
 export interface ByoipCidrEvent {
@@ -399,7 +400,7 @@ export const AllowCustomRoutingTrafficResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AllowCustomRoutingTrafficResponse",
 }) as any as S.Schema<AllowCustomRoutingTrafficResponse>;
-export type IpAddressType = "IPV4" | "DUAL_STACK";
+export type IpAddressType = "IPV4" | "DUAL_STACK" | (string & {});
 export const IpAddressType = /*@__PURE__*/ S.String;
 
 export type IpAddresses = string[];
@@ -438,7 +439,7 @@ export const CreateAcceleratorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAcceleratorRequest",
 }) as any as S.Schema<CreateAcceleratorRequest>;
-export type IpAddressFamily = "IPv4" | "IPv6";
+export type IpAddressFamily = "IPv4" | "IPv6" | (string & {});
 export const IpAddressFamily = /*@__PURE__*/ S.String;
 
 export interface IpSet {
@@ -455,7 +456,7 @@ export const IpSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpSet" }) as any as S.Schema<IpSet>;
 export type IpSets = IpSet[];
 export const IpSets = /*@__PURE__*/ S.Array(IpSet);
-export type AcceleratorStatus = "DEPLOYED" | "IN_PROGRESS";
+export type AcceleratorStatus = "DEPLOYED" | "IN_PROGRESS" | (string & {});
 export const AcceleratorStatus = /*@__PURE__*/ S.String;
 
 export interface AcceleratorEvent {
@@ -599,7 +600,10 @@ export const CreateCustomRoutingAcceleratorRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateCustomRoutingAcceleratorRequest",
 }) as any as S.Schema<CreateCustomRoutingAcceleratorRequest>;
-export type CustomRoutingAcceleratorStatus = "DEPLOYED" | "IN_PROGRESS";
+export type CustomRoutingAcceleratorStatus =
+  | "DEPLOYED"
+  | "IN_PROGRESS"
+  | (string & {});
 export const CustomRoutingAcceleratorStatus = /*@__PURE__*/ S.String;
 
 export interface CustomRoutingAccelerator {
@@ -638,7 +642,7 @@ export const CreateCustomRoutingAcceleratorResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateCustomRoutingAcceleratorResponse",
 }) as any as S.Schema<CreateCustomRoutingAcceleratorResponse>;
-export type CustomRoutingProtocol = "TCP" | "UDP";
+export type CustomRoutingProtocol = "TCP" | "UDP" | (string & {});
 export const CustomRoutingProtocol = /*@__PURE__*/ S.String;
 
 export type CustomRoutingProtocols = CustomRoutingProtocol[];
@@ -684,7 +688,7 @@ export const CreateCustomRoutingEndpointGroupRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateCustomRoutingEndpointGroupRequest",
 }) as any as S.Schema<CreateCustomRoutingEndpointGroupRequest>;
-export type Protocol = "TCP" | "UDP";
+export type Protocol = "TCP" | "UDP" | (string & {});
 export const Protocol = /*@__PURE__*/ S.String;
 
 export type Protocols = Protocol[];
@@ -779,7 +783,7 @@ export const CreateCustomRoutingListenerResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCustomRoutingListenerResponse>;
 export type TrafficDialPercentage = number;
 export type HealthCheckPort = number;
-export type HealthCheckProtocol = "TCP" | "HTTP" | "HTTPS";
+export type HealthCheckProtocol = "TCP" | "HTTP" | "HTTPS" | (string & {});
 export const HealthCheckProtocol = /*@__PURE__*/ S.String;
 
 export type HealthCheckPath = string;
@@ -863,7 +867,7 @@ export const CreateEndpointGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEndpointGroupResponse",
 }) as any as S.Schema<CreateEndpointGroupResponse>;
-export type ClientAffinity = "NONE" | "SOURCE_IP";
+export type ClientAffinity = "NONE" | "SOURCE_IP" | (string & {});
 export const ClientAffinity = /*@__PURE__*/ S.String;
 
 export interface CreateListenerRequest {
@@ -1543,7 +1547,10 @@ export interface SocketAddress {
 export const SocketAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ IpAddress: S.optional(S.String), Port: S.optional(S.Number) }),
 ).annotate({ identifier: "SocketAddress" }) as any as S.Schema<SocketAddress>;
-export type CustomRoutingDestinationTrafficState = "ALLOW" | "DENY";
+export type CustomRoutingDestinationTrafficState =
+  | "ALLOW"
+  | "DENY"
+  | (string & {});
 export const CustomRoutingDestinationTrafficState = /*@__PURE__*/ S.String;
 
 export interface PortMapping {

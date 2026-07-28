@@ -224,7 +224,7 @@ export const AssociateSourceViewsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssociateSourceViewsResponse>;
 export type BillingViewName = string | redacted.Redacted<string>;
 export type BillingViewDescription = string | redacted.Redacted<string>;
-export type Dimension = "LINKED_ACCOUNT";
+export type Dimension = "LINKED_ACCOUNT" | (string & {});
 export const Dimension = /*@__PURE__*/ S.String;
 
 export type Value = string;
@@ -387,7 +387,8 @@ export type BillingViewType =
   | "BILLING_GROUP"
   | "CUSTOM"
   | "BILLING_TRANSFER"
-  | "BILLING_TRANSFER_SHOWBACK";
+  | "BILLING_TRANSFER_SHOWBACK"
+  | (string & {});
 export const BillingViewType = /*@__PURE__*/ S.String;
 
 export type AccountId = string;
@@ -395,7 +396,8 @@ export type BillingViewStatus =
   | "HEALTHY"
   | "UNHEALTHY"
   | "CREATING"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const BillingViewStatus = /*@__PURE__*/ S.String;
 
 export type BillingViewStatusReason =
@@ -406,7 +408,8 @@ export type BillingViewStatusReason =
   | "CYCLIC_DEPENDENCY"
   | "SOURCE_VIEW_DEPTH_EXCEEDED"
   | "AGGREGATE_SOURCE"
-  | "VIEW_OWNER_NOT_MANAGEMENT_ACCOUNT";
+  | "VIEW_OWNER_NOT_MANAGEMENT_ACCOUNT"
+  | (string & {});
 export const BillingViewStatusReason = /*@__PURE__*/ S.String;
 
 export type BillingViewStatusReasons = BillingViewStatusReason[];
@@ -506,7 +509,7 @@ export type BillingViewArnList = string[];
 export const BillingViewArnList = /*@__PURE__*/ S.Array(S.String);
 export type BillingViewTypeList = BillingViewType[];
 export const BillingViewTypeList = /*@__PURE__*/ S.Array(BillingViewType);
-export type SearchOption = "STARTS_WITH";
+export type SearchOption = "STARTS_WITH" | (string & {});
 export const SearchOption = /*@__PURE__*/ S.String;
 
 export type SearchValue = string;
@@ -703,7 +706,8 @@ export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
   | "fieldValidationFailed"
-  | "other";
+  | "other"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export type FieldName = string;

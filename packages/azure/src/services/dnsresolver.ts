@@ -95,7 +95,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -103,7 +104,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -157,7 +159,8 @@ export type ProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Represents the properties of a DNS forwarding ruleset. */
@@ -603,7 +606,7 @@ export const DnsForwardingRulesetsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DnsForwardingRulesetsUpdateResponse>;
 
 /** The action type in requests for bulk upload or download of a DNS resolver domain list. */
-export type Action = "Upload" | "Download";
+export type Action = "Upload" | "Download" | (string & {});
 export const Action = /*@__PURE__*/ S.String;
 
 /** Describes DNS resolver domain list properties for bulk UPLOAD or DOWNLOAD operations. */
@@ -2076,7 +2079,7 @@ export const DnsResolversCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DnsResolversCreateOrUpdateResponseTagsMap>;
 
 /** The current status of the DNS resolver. This is a read-only property and any attempt to set this value will be ignored. */
-export type DnsResolverState = "Connected" | "Disconnected";
+export type DnsResolverState = "Connected" | "Disconnected" | (string & {});
 export const DnsResolverState = /*@__PURE__*/ S.String;
 
 /** Represents the properties of a DNS resolver. */
@@ -2461,7 +2464,7 @@ export const DnsSecurityRulesCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<DnsSecurityRulesCreateOrUpdateRequestTagsMap>;
 
 /** The type of action to take. */
-export type ActionType = "Allow" | "Alert" | "Block";
+export type ActionType = "Allow" | "Alert" | "Block" | (string & {});
 export const ActionType = /*@__PURE__*/ S.String;
 
 /** The action to take on DNS requests that match the DNS security rule. */
@@ -2486,7 +2489,7 @@ export const DnsSecurityRulePropertiesDnsResolverDomainListsList =
   ) as any as S.Schema<DnsSecurityRulePropertiesDnsResolverDomainListsList>;
 
 /** The state of DNS security rule. */
-export type DnsSecurityRuleState = "Enabled" | "Disabled";
+export type DnsSecurityRuleState = "Enabled" | "Disabled" | (string & {});
 export const DnsSecurityRuleState = /*@__PURE__*/ S.String;
 
 /** Represents the properties of a DNS security rule. */
@@ -2943,7 +2946,7 @@ export const ForwardingRulePropertiesMetadataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ForwardingRulePropertiesMetadataMap>;
 
 /** The state of forwarding rule. */
-export type ForwardingRuleState = "Enabled" | "Disabled";
+export type ForwardingRuleState = "Enabled" | "Disabled" | (string & {});
 export const ForwardingRuleState = /*@__PURE__*/ S.String;
 
 /** Represents the properties of a forwarding rule within a DNS forwarding ruleset. */
@@ -3217,7 +3220,8 @@ export const ForwardingRulePatchPropertiesMetadataMap = /*@__PURE__*/ S.Record(
 /** The state of forwarding rule. */
 export type ForwardingRulePatchPropertiesForwardingRuleState =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ForwardingRulePatchPropertiesForwardingRuleState =
   /*@__PURE__*/ S.String;
 
@@ -3313,7 +3317,10 @@ export const InboundEndpointsCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<InboundEndpointsCreateOrUpdateRequestTagsMap>;
 
 /** Private IP address allocation method. */
-export type IpConfigurationPrivateIpAllocationMethod = "Static" | "Dynamic";
+export type IpConfigurationPrivateIpAllocationMethod =
+  | "Static"
+  | "Dynamic"
+  | (string & {});
 export const IpConfigurationPrivateIpAllocationMethod = /*@__PURE__*/ S.String;
 
 /** IP configuration. */

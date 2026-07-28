@@ -93,7 +93,8 @@ export type MonitorLocalResourceType =
   | "AWS::AvailabilityZone"
   | "AWS::EC2::Subnet"
   | "AWS::Region"
-  | "AWS::EKS::Cluster";
+  | "AWS::EKS::Cluster"
+  | (string & {});
 export const MonitorLocalResourceType = /*@__PURE__*/ S.String;
 
 export interface MonitorLocalResource {
@@ -113,7 +114,8 @@ export type MonitorRemoteResourceType =
   | "AWS::AvailabilityZone"
   | "AWS::EC2::Subnet"
   | "AWS::AWSService"
-  | "AWS::Region";
+  | "AWS::Region"
+  | (string & {});
 export const MonitorRemoteResourceType = /*@__PURE__*/ S.String;
 
 export interface MonitorRemoteResource {
@@ -173,7 +175,8 @@ export type MonitorStatus =
   | "ACTIVE"
   | "INACTIVE"
   | "ERROR"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const MonitorStatus = /*@__PURE__*/ S.String;
 
 export type Iso8601Timestamp = Date;
@@ -206,7 +209,7 @@ export type TargetId = { accountId: string };
 export const TargetId = /*@__PURE__*/ S.Union([
   S.Struct({ accountId: S.String }),
 ]);
-export type TargetType = "ACCOUNT";
+export type TargetType = "ACCOUNT" | (string & {});
 export const TargetType = /*@__PURE__*/ S.String;
 
 export interface TargetIdentifier {
@@ -257,7 +260,8 @@ export type ScopeStatus =
   | "IN_PROGRESS"
   | "FAILED"
   | "DEACTIVATING"
-  | "DEACTIVATED";
+  | "DEACTIVATED"
+  | (string & {});
 export const ScopeStatus = /*@__PURE__*/ S.String;
 
 export interface CreateScopeOutput {
@@ -419,7 +423,8 @@ export type MetricUnit =
   | "Gigabits/Second"
   | "Terabits/Second"
   | "Count/Second"
-  | "None";
+  | "None"
+  | (string & {});
 export const MetricUnit = /*@__PURE__*/ S.String;
 
 export type InstanceId = string;
@@ -433,7 +438,8 @@ export type DestinationCategory =
   | "UNCLASSIFIED"
   | "AMAZON_S3"
   | "AMAZON_DYNAMODB"
-  | "INTER_REGION";
+  | "INTER_REGION"
+  | (string & {});
 export const DestinationCategory = /*@__PURE__*/ S.String;
 
 export type Component = string;
@@ -731,7 +737,8 @@ export type QueryStatus =
   | "RUNNING"
   | "SUCCEEDED"
   | "FAILED"
-  | "CANCELED";
+  | "CANCELED"
+  | (string & {});
 export const QueryStatus = /*@__PURE__*/ S.String;
 
 export interface GetQueryStatusMonitorTopContributorsOutput {
@@ -952,7 +959,8 @@ export type MonitorMetric =
   | "ROUND_TRIP_TIME"
   | "TIMEOUTS"
   | "RETRANSMISSIONS"
-  | "DATA_TRANSFERRED";
+  | "DATA_TRANSFERRED"
+  | (string & {});
 export const MonitorMetric = /*@__PURE__*/ S.String;
 
 export type Limit = number;
@@ -1000,7 +1008,8 @@ export const StartQueryMonitorTopContributorsOutput = /*@__PURE__*/ S.suspend(
 export type WorkloadInsightsMetric =
   | "TIMEOUTS"
   | "RETRANSMISSIONS"
-  | "DATA_TRANSFERRED";
+  | "DATA_TRANSFERRED"
+  | (string & {});
 export const WorkloadInsightsMetric = /*@__PURE__*/ S.String;
 
 export interface StartQueryWorkloadInsightsTopContributorsInput {

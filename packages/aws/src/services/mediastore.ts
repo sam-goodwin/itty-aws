@@ -142,7 +142,11 @@ export const CreateContainerInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateContainerInput>;
 export type Endpoint = string;
 export type ContainerARN = string;
-export type ContainerStatus = "ACTIVE" | "CREATING" | "DELETING";
+export type ContainerStatus =
+  | "ACTIVE"
+  | "CREATING"
+  | "DELETING"
+  | (string & {});
 export const ContainerStatus = /*@__PURE__*/ S.String;
 
 export type ContainerAccessLoggingEnabled = boolean;
@@ -366,7 +370,7 @@ export const GetCorsPolicyInput = /*@__PURE__*/ S.suspend(() =>
 export type Origin = string;
 export type AllowedOrigins = string[];
 export const AllowedOrigins = /*@__PURE__*/ S.Array(S.String);
-export type MethodName = "PUT" | "GET" | "DELETE" | "HEAD";
+export type MethodName = "PUT" | "GET" | "DELETE" | "HEAD" | (string & {});
 export const MethodName = /*@__PURE__*/ S.String;
 
 export type AllowedMethods = MethodName[];
@@ -448,7 +452,7 @@ export const GetMetricPolicyInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMetricPolicyInput",
 }) as any as S.Schema<GetMetricPolicyInput>;
-export type ContainerLevelMetrics = "ENABLED" | "DISABLED";
+export type ContainerLevelMetrics = "ENABLED" | "DISABLED" | (string & {});
 export const ContainerLevelMetrics = /*@__PURE__*/ S.String;
 
 export type ObjectGroup = string;

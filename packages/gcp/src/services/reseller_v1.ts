@@ -351,7 +351,8 @@ export const ChangeSeatsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 export type DeleteSubscriptionsDeletionTypeEnum =
   | "deletion_type_undefined"
   | "cancel"
-  | "transfer_to_direct";
+  | "transfer_to_direct"
+  | (string & {});
 export const DeleteSubscriptionsDeletionTypeEnum = /*@__PURE__*/ S.String;
 
 export interface DeleteSubscriptionsRequest {
@@ -444,7 +445,8 @@ export const Address = /*@__PURE__*/ S.suspend(() =>
 export type CustomerCustomerTypeEnum =
   | "customerTypeUnspecified"
   | "domain"
-  | "team";
+  | "team"
+  | (string & {});
 export const CustomerCustomerTypeEnum = /*@__PURE__*/ S.String;
 
 /** JSON template for primary admin in case of TEAM customers */
@@ -572,7 +574,8 @@ export const InsertCustomersRequest = /*@__PURE__*/ S.suspend(() =>
 export type InsertSubscriptionsActionEnum =
   | "actionUnspecified"
   | "buy"
-  | "switch";
+  | "switch"
+  | (string & {});
 export const InsertSubscriptionsActionEnum = /*@__PURE__*/ S.String;
 
 export interface InsertSubscriptionsRequest {

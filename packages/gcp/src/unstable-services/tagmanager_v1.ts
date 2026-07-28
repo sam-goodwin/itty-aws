@@ -168,7 +168,8 @@ export type ContainerEnabledBuiltInVariableItemEnum =
   | "elementVisibilityRecentTime"
   | "analyticsClientId"
   | "analyticsSessionId"
-  | "analyticsSessionNumber";
+  | "analyticsSessionNumber"
+  | (string & {});
 export const ContainerEnabledBuiltInVariableItemEnum = /*@__PURE__*/ S.String;
 
 export type ContainerEnabledBuiltInVariableItemEnumList =
@@ -189,7 +190,8 @@ export type ContainerUsageContextItemEnum =
   | "ios"
   | "androidSdk5"
   | "iosSdk5"
-  | "amp";
+  | "amp"
+  | (string & {});
 export const ContainerUsageContextItemEnum = /*@__PURE__*/ S.String;
 
 export type ContainerUsageContextItemEnumList =
@@ -262,7 +264,12 @@ export const CreateAccountsContainersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAccountsContainersRequest",
 }) as any as S.Schema<CreateAccountsContainersRequest>;
 
-export type EnvironmentTypeEnum = "user" | "live" | "latest" | "draft";
+export type EnvironmentTypeEnum =
+  | "user"
+  | "live"
+  | "latest"
+  | "draft"
+  | (string & {});
 export const EnvironmentTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Google Tag Manager Environment. Note that a user can create, delete and update environments of type USER, but can only update the enable_debug and url fields of environments of other types. */
@@ -384,7 +391,8 @@ export const CreateAccountsContainersFoldersRequest = /*@__PURE__*/ S.suspend(
 export type TagTagFiringOptionEnum =
   | "unlimited"
   | "oncePerEvent"
-  | "oncePerLoad";
+  | "oncePerLoad"
+  | (string & {});
 export const TagTagFiringOptionEnum = /*@__PURE__*/ S.String;
 
 export type ParameterTypeEnum =
@@ -394,7 +402,8 @@ export type ParameterTypeEnum =
   | "list"
   | "map"
   | "triggerReference"
-  | "tagReference";
+  | "tagReference"
+  | (string & {});
 export const ParameterTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Google Tag Manager Parameter. */
@@ -561,7 +570,8 @@ export type ConditionTypeEnum =
   | "less"
   | "lessOrEquals"
   | "cssSelector"
-  | "urlMatches";
+  | "urlMatches"
+  | (string & {});
 export const ConditionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a predicate. */
@@ -602,7 +612,8 @@ export type TriggerTypeEnum =
   | "ampVisibility"
   | "youTubeVideo"
   | "scrollDepth"
-  | "elementVisibility";
+  | "elementVisibility"
+  | (string & {});
 export const TriggerTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Google Tag Manager Trigger */
@@ -927,7 +938,8 @@ export type AccountAccessPermissionItemEnum =
   | "publish"
   | "delete"
   | "manage"
-  | "editWorkspace";
+  | "editWorkspace"
+  | (string & {});
 export const AccountAccessPermissionItemEnum = /*@__PURE__*/ S.String;
 
 export type AccountAccessPermissionItemEnumList =
@@ -953,7 +965,8 @@ export type ContainerAccessPermissionItemEnum =
   | "publish"
   | "delete"
   | "manage"
-  | "editWorkspace";
+  | "editWorkspace"
+  | (string & {});
 export const ContainerAccessPermissionItemEnum = /*@__PURE__*/ S.String;
 
 export type ContainerAccessPermissionItemEnumList =

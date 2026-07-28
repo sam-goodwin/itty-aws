@@ -37,7 +37,7 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 export type GetProtectedResourcesSummaryProjectsLocationsKeyRingsCryptoKeysFallbackScopeEnum =
-  "FALLBACK_SCOPE_UNSPECIFIED" | "FALLBACK_SCOPE_PROJECT";
+  "FALLBACK_SCOPE_UNSPECIFIED" | "FALLBACK_SCOPE_PROJECT" | (string & {});
 export const GetProtectedResourcesSummaryProjectsLocationsKeyRingsCryptoKeysFallbackScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -78,7 +78,8 @@ export type GoogleCloudKmsInventoryV1WarningWarningCodeEnum =
   | "WARNING_CODE_UNSPECIFIED"
   | "INSUFFICIENT_PERMISSIONS_PARTIAL_DATA"
   | "RESOURCE_LIMIT_EXCEEDED_PARTIAL_DATA"
-  | "ORG_LESS_PROJECT_PARTIAL_DATA";
+  | "ORG_LESS_PROJECT_PARTIAL_DATA"
+  | (string & {});
 export const GoogleCloudKmsInventoryV1WarningWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -172,7 +173,8 @@ export type GoogleCloudKmsV1KeyAccessJustificationsPolicyAllowedAccessReasonsIte
     | "MODIFIED_CUSTOMER_INITIATED_ACCESS"
     | "MODIFIED_GOOGLE_INITIATED_SYSTEM_OPERATION"
     | "GOOGLE_RESPONSE_TO_PRODUCTION_ALERT"
-    | "CUSTOMER_AUTHORIZED_WORKFLOW_SERVICING";
+    | "CUSTOMER_AUTHORIZED_WORKFLOW_SERVICING"
+    | (string & {});
 export const GoogleCloudKmsV1KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -227,7 +229,8 @@ export const GoogleCloudKmsV1KeyOperationAttestationCertificateChains =
 export type GoogleCloudKmsV1KeyOperationAttestationFormatEnum =
   | "ATTESTATION_FORMAT_UNSPECIFIED"
   | "CAVIUM_V1_COMPRESSED"
-  | "CAVIUM_V2_COMPRESSED";
+  | "CAVIUM_V2_COMPRESSED"
+  | (string & {});
 export const GoogleCloudKmsV1KeyOperationAttestationFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -259,7 +262,8 @@ export type GoogleCloudKmsV1CryptoKeyVersionProtectionLevelEnum =
   | "HSM"
   | "EXTERNAL"
   | "EXTERNAL_VPC"
-  | "HSM_SINGLE_TENANT";
+  | "HSM_SINGLE_TENANT"
+  | (string & {});
 export const GoogleCloudKmsV1CryptoKeyVersionProtectionLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -294,7 +298,8 @@ export type GoogleCloudKmsV1CryptoKeyVersionStateEnum =
   | "IMPORT_FAILED"
   | "GENERATION_FAILED"
   | "PENDING_EXTERNAL_DESTRUCTION"
-  | "EXTERNAL_DESTRUCTION_FAILED";
+  | "EXTERNAL_DESTRUCTION_FAILED"
+  | (string & {});
 export const GoogleCloudKmsV1CryptoKeyVersionStateEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudKmsV1CryptoKeyVersionAlgorithmEnum =
@@ -345,7 +350,8 @@ export type GoogleCloudKmsV1CryptoKeyVersionAlgorithmEnum =
   | "PQ_SIGN_ML_DSA_44_EXTERNAL_MU"
   | "PQ_SIGN_ML_DSA_65_EXTERNAL_MU"
   | "PQ_SIGN_ML_DSA_87_EXTERNAL_MU"
-  | "AES_256_KWP";
+  | "AES_256_KWP"
+  | (string & {});
 export const GoogleCloudKmsV1CryptoKeyVersionAlgorithmEnum =
   /*@__PURE__*/ S.String;
 
@@ -423,7 +429,8 @@ export type GoogleCloudKmsV1CryptoKeyVersionTemplateProtectionLevelEnum =
   | "HSM"
   | "EXTERNAL"
   | "EXTERNAL_VPC"
-  | "HSM_SINGLE_TENANT";
+  | "HSM_SINGLE_TENANT"
+  | (string & {});
 export const GoogleCloudKmsV1CryptoKeyVersionTemplateProtectionLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -475,7 +482,8 @@ export type GoogleCloudKmsV1CryptoKeyVersionTemplateAlgorithmEnum =
   | "PQ_SIGN_ML_DSA_44_EXTERNAL_MU"
   | "PQ_SIGN_ML_DSA_65_EXTERNAL_MU"
   | "PQ_SIGN_ML_DSA_87_EXTERNAL_MU"
-  | "AES_256_KWP";
+  | "AES_256_KWP"
+  | (string & {});
 export const GoogleCloudKmsV1CryptoKeyVersionTemplateAlgorithmEnum =
   /*@__PURE__*/ S.String;
 
@@ -508,7 +516,8 @@ export type GoogleCloudKmsV1CryptoKeyPurposeEnum =
   | "RAW_ENCRYPT_DECRYPT"
   | "MAC"
   | "KEY_ENCAPSULATION"
-  | "AES_WRAPPING";
+  | "AES_WRAPPING"
+  | (string & {});
 export const GoogleCloudKmsV1CryptoKeyPurposeEnum = /*@__PURE__*/ S.String;
 
 /** A CryptoKey represents a logical key that can be used for cryptographic operations. A CryptoKey is made up of zero or more versions, which represent the actual key material used in cryptographic operations. */

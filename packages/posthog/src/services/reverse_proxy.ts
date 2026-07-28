@@ -64,7 +64,8 @@ export type ProxyRecordStatusEnum =
   | "warning"
   | "erroring"
   | "deleting"
-  | "timed_out";
+  | "timed_out"
+  | (string & {});
 export const ProxyRecordStatusEnum = /*@__PURE__*/ S.String;
 
 export interface ProxyRecord {
@@ -148,7 +149,11 @@ export const ProxyRecordsDiagnoseCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProxyRecordsDiagnoseCreateRequest>;
 
 /** * `healthy` - healthy * `warn` - warn * `fail` - fail */
-export type DiagnosticReportSummaryStatusEnum = "healthy" | "warn" | "fail";
+export type DiagnosticReportSummaryStatusEnum =
+  | "healthy"
+  | "warn"
+  | "fail"
+  | (string & {});
 export const DiagnosticReportSummaryStatusEnum = /*@__PURE__*/ S.String;
 
 export interface DiagnosticReportSummary {
@@ -174,11 +179,17 @@ export type DiagnosticCheckResultStatusEnum =
   | "passed"
   | "warned"
   | "failed"
-  | "skipped";
+  | "skipped"
+  | (string & {});
 export const DiagnosticCheckResultStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `dns` - dns * `config` - config * `wait` - wait * `retry` - retry */
-export type DiagnosticRemediationTypeEnum = "dns" | "config" | "wait" | "retry";
+export type DiagnosticRemediationTypeEnum =
+  | "dns"
+  | "config"
+  | "wait"
+  | "retry"
+  | (string & {});
 export const DiagnosticRemediationTypeEnum = /*@__PURE__*/ S.String;
 
 export interface DiagnosticDnsRecord {

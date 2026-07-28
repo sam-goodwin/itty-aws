@@ -390,7 +390,8 @@ export type PrivateConnectionStateEnum =
   | "CREATED"
   | "FAILED"
   | "DELETING"
-  | "FAILED_TO_DELETE";
+  | "FAILED_TO_DELETE"
+  | (string & {});
 export const PrivateConnectionStateEnum = /*@__PURE__*/ S.String;
 
 /** Represent a user-facing Error. */
@@ -544,7 +545,8 @@ export const Datastream_ErrorList = /*@__PURE__*/ S.Array(
 
 export type GcsDestinationConfigGcsFileFormatEnum =
   | "GCS_FILE_FORMAT_UNSPECIFIED"
-  | "AVRO";
+  | "AVRO"
+  | (string & {});
 export const GcsDestinationConfigGcsFileFormatEnum = /*@__PURE__*/ S.String;
 
 /** AVRO file format configuration. */
@@ -556,13 +558,15 @@ export const AvroFileFormat = /*@__PURE__*/ S.suspend(() =>
 export type JsonFileFormatSchemaFileFormatEnum =
   | "SCHEMA_FILE_FORMAT_UNSPECIFIED"
   | "NO_SCHEMA_FILE"
-  | "AVRO_SCHEMA_FILE";
+  | "AVRO_SCHEMA_FILE"
+  | (string & {});
 export const JsonFileFormatSchemaFileFormatEnum = /*@__PURE__*/ S.String;
 
 export type JsonFileFormatCompressionEnum =
   | "JSON_COMPRESSION_UNSPECIFIED"
   | "NO_COMPRESSION"
-  | "GZIP";
+  | "GZIP"
+  | (string & {});
 export const JsonFileFormatCompressionEnum = /*@__PURE__*/ S.String;
 
 /** JSON file format configuration. */
@@ -880,7 +884,8 @@ export type StreamStateEnum =
   | "FAILED"
   | "FAILED_PERMANENTLY"
   | "STARTING"
-  | "DRAINING";
+  | "DRAINING"
+  | (string & {});
 export const StreamStateEnum = /*@__PURE__*/ S.String;
 
 /** Backfill strategy to disable automatic backfill for the Stream's objects. */
@@ -1429,13 +1434,15 @@ export type BackfillJobStateEnum =
   | "STOPPED"
   | "FAILED"
   | "COMPLETED"
-  | "UNSUPPORTED";
+  | "UNSUPPORTED"
+  | (string & {});
 export const BackfillJobStateEnum = /*@__PURE__*/ S.String;
 
 export type BackfillJobTriggerEnum =
   | "TRIGGER_UNSPECIFIED"
   | "AUTOMATIC"
-  | "MANUAL";
+  | "MANUAL"
+  | (string & {});
 export const BackfillJobTriggerEnum = /*@__PURE__*/ S.String;
 
 /** Represents a backfill job on a specific stream object. */

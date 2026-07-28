@@ -73,7 +73,10 @@ export const MarketplaceRegistrationDefinitionPropertiesAuthorizationsList =
   ) as any as S.Schema<MarketplaceRegistrationDefinitionPropertiesAuthorizationsList>;
 
 /** The multi-factor authorization provider to be used for just-in-time access requests. */
-export type JustInTimeAccessPolicyMultiFactorAuthProvider = "Azure" | "None";
+export type JustInTimeAccessPolicyMultiFactorAuthProvider =
+  | "Azure"
+  | "None"
+  | (string & {});
 export const JustInTimeAccessPolicyMultiFactorAuthProvider =
   /*@__PURE__*/ S.String;
 
@@ -455,7 +458,8 @@ export type RegistrationAssignmentPropertiesProvisioningState =
   | "Canceled"
   | "Failed"
   | "Succeeded"
-  | "Updating";
+  | "Updating"
+  | (string & {});
 export const RegistrationAssignmentPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -488,7 +492,8 @@ export type RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesProv
     | "Canceled"
     | "Failed"
     | "Succeeded"
-    | "Updating";
+    | "Updating"
+    | (string & {});
 export const RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -539,13 +544,13 @@ export const RegistrationAssignmentPropertiesRegistrationDefinitionProperties =
 
 /** The type of identity that created the resource. */
 export type RegistrationAssignmentPropertiesRegistrationDefinitionSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
 export const RegistrationAssignmentPropertiesRegistrationDefinitionSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type RegistrationAssignmentPropertiesRegistrationDefinitionSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
 export const RegistrationAssignmentPropertiesRegistrationDefinitionSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -644,7 +649,8 @@ export type RegistrationAssignmentSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const RegistrationAssignmentSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -653,7 +659,8 @@ export type RegistrationAssignmentSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const RegistrationAssignmentSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -921,7 +928,8 @@ export type RegistrationDefinitionPropertiesProvisioningState =
   | "Canceled"
   | "Failed"
   | "Succeeded"
-  | "Updating";
+  | "Updating"
+  | (string & {});
 export const RegistrationDefinitionPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -971,7 +979,8 @@ export type RegistrationDefinitionSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const RegistrationDefinitionSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -980,7 +989,8 @@ export type RegistrationDefinitionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const RegistrationDefinitionSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

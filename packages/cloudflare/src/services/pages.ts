@@ -292,7 +292,8 @@ export const ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespace
   ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsPlainTextType =
-  "plain_text";
+  | "plain_text"
+  | (string & {});
 export const ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -312,7 +313,7 @@ export const ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsPlainText =
   }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsPlainText>;
 
 export type ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretTextType =
-  "secret_text";
+  "secret_text" | (string & {});
 export const ProjectsCreateRequestDeploymentConfigsPreviewEnvVarsSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -528,7 +529,8 @@ export const ProjectsCreateRequestDeploymentConfigsPreviewServicesMap =
 export type ProjectsCreateRequestDeploymentConfigsPreviewUsageModel =
   | "standard"
   | "bundled"
-  | "unbound";
+  | "unbound"
+  | (string & {});
 export const ProjectsCreateRequestDeploymentConfigsPreviewUsageModel =
   /*@__PURE__*/ S.String;
 
@@ -817,7 +819,7 @@ export const ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamesp
   ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespacesMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionEnvVarsPlainTextType =
-  "plain_text";
+  "plain_text" | (string & {});
 export const ProjectsCreateRequestDeploymentConfigsProductionEnvVarsPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -838,7 +840,7 @@ export const ProjectsCreateRequestDeploymentConfigsProductionEnvVarsPlainText =
   }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionEnvVarsPlainText>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretTextType =
-  "secret_text";
+  "secret_text" | (string & {});
 export const ProjectsCreateRequestDeploymentConfigsProductionEnvVarsSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -1057,7 +1059,8 @@ export const ProjectsCreateRequestDeploymentConfigsProductionServicesMap =
 export type ProjectsCreateRequestDeploymentConfigsProductionUsageModel =
   | "standard"
   | "bundled"
-  | "unbound";
+  | "unbound"
+  | (string & {});
 export const ProjectsCreateRequestDeploymentConfigsProductionUsageModel =
   /*@__PURE__*/ S.String;
 
@@ -1277,7 +1280,8 @@ export const ProjectsCreateRequestSourceConfigPreviewBranchIncludesList =
 export type ProjectsCreateRequestSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
-  | "custom";
+  | "custom"
+  | (string & {});
 export const ProjectsCreateRequestSourceConfigPreviewDeploymentSetting =
   /*@__PURE__*/ S.String;
 
@@ -1355,7 +1359,10 @@ export const ProjectsCreateRequestSourceConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectsCreateRequestSourceConfig",
 }) as any as S.Schema<ProjectsCreateRequestSourceConfig>;
 
-export type ProjectsCreateRequestSourceType = "github" | "gitlab";
+export type ProjectsCreateRequestSourceType =
+  | "github"
+  | "gitlab"
+  | (string & {});
 export const ProjectsCreateRequestSourceType = /*@__PURE__*/ S.String;
 
 export interface ProjectsCreateRequestSource {
@@ -1472,7 +1479,8 @@ export const ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata 
 export type ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerType =
   | "github:push"
   | "ad_hoc"
-  | "deploy_hook";
+  | "deploy_hook"
+  | (string & {});
 export const ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerType =
   /*@__PURE__*/ S.String;
 
@@ -1494,7 +1502,8 @@ export const ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger =
   }) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger>;
 
 export type ProjectsCreateResponseCanonicalDeploymentEnvVarsPlainTextType =
-  "plain_text";
+  | "plain_text"
+  | (string & {});
 export const ProjectsCreateResponseCanonicalDeploymentEnvVarsPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -1514,7 +1523,8 @@ export const ProjectsCreateResponseCanonicalDeploymentEnvVarsPlainText =
   }) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentEnvVarsPlainText>;
 
 export type ProjectsCreateResponseCanonicalDeploymentEnvVarsSecretTextType =
-  "secret_text";
+  | "secret_text"
+  | (string & {});
 export const ProjectsCreateResponseCanonicalDeploymentEnvVarsSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -1546,7 +1556,8 @@ export const ProjectsCreateResponseCanonicalDeploymentEnvVars =
 
 export type ProjectsCreateResponseCanonicalDeploymentEnvironment =
   | "preview"
-  | "production";
+  | "production"
+  | (string & {});
 export const ProjectsCreateResponseCanonicalDeploymentEnvironment =
   /*@__PURE__*/ S.String;
 
@@ -1555,7 +1566,8 @@ export type ProjectsCreateResponseCanonicalDeploymentLatestStageName =
   | "initialize"
   | "clone_repo"
   | "build"
-  | "deploy";
+  | "deploy"
+  | (string & {});
 export const ProjectsCreateResponseCanonicalDeploymentLatestStageName =
   /*@__PURE__*/ S.String;
 
@@ -1564,7 +1576,8 @@ export type ProjectsCreateResponseCanonicalDeploymentLatestStageStatus =
   | "idle"
   | "active"
   | "failure"
-  | "canceled";
+  | "canceled"
+  | (string & {});
 export const ProjectsCreateResponseCanonicalDeploymentLatestStageStatus =
   /*@__PURE__*/ S.String;
 
@@ -1619,7 +1632,7 @@ export const ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchI
   ) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
-  "all" | "none" | "custom";
+  "all" | "none" | "custom" | (string & {});
 export const ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
   /*@__PURE__*/ S.String;
 
@@ -1691,7 +1704,8 @@ export const ProjectsCreateResponseCanonicalDeploymentSourceConfig =
 
 export type ProjectsCreateResponseCanonicalDeploymentSourceType =
   | "github"
-  | "gitlab";
+  | "gitlab"
+  | (string & {});
 export const ProjectsCreateResponseCanonicalDeploymentSourceType =
   /*@__PURE__*/ S.String;
 
@@ -1817,7 +1831,7 @@ export const ProjectsCreateResponseDeploymentConfigsPreviewCompatibilityFlagsLis
   ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewCompatibilityFlagsList>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsPlainTextType =
-  "plain_text";
+  "plain_text" | (string & {});
 export const ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -1838,7 +1852,7 @@ export const ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsPlainText =
   }) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsPlainText>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsSecretTextType =
-  "secret_text";
+  "secret_text" | (string & {});
 export const ProjectsCreateResponseDeploymentConfigsPreviewEnvVarsSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -1872,7 +1886,8 @@ export const ProjectsCreateResponseDeploymentConfigsPreviewEnvVars =
 export type ProjectsCreateResponseDeploymentConfigsPreviewUsageModel =
   | "standard"
   | "bundled"
-  | "unbound";
+  | "unbound"
+  | (string & {});
 export const ProjectsCreateResponseDeploymentConfigsPreviewUsageModel =
   /*@__PURE__*/ S.String;
 
@@ -2336,7 +2351,7 @@ export const ProjectsCreateResponseDeploymentConfigsProductionCompatibilityFlags
   ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionCompatibilityFlagsList>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionEnvVarsPlainTextType =
-  "plain_text";
+  "plain_text" | (string & {});
 export const ProjectsCreateResponseDeploymentConfigsProductionEnvVarsPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -2357,7 +2372,7 @@ export const ProjectsCreateResponseDeploymentConfigsProductionEnvVarsPlainText =
   }) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionEnvVarsPlainText>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionEnvVarsSecretTextType =
-  "secret_text";
+  "secret_text" | (string & {});
 export const ProjectsCreateResponseDeploymentConfigsProductionEnvVarsSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -2391,7 +2406,8 @@ export const ProjectsCreateResponseDeploymentConfigsProductionEnvVars =
 export type ProjectsCreateResponseDeploymentConfigsProductionUsageModel =
   | "standard"
   | "bundled"
-  | "unbound";
+  | "unbound"
+  | (string & {});
 export const ProjectsCreateResponseDeploymentConfigsProductionUsageModel =
   /*@__PURE__*/ S.String;
 
@@ -2933,7 +2949,8 @@ export const ProjectsCreateResponseSourceConfigPreviewBranchIncludesList =
 export type ProjectsCreateResponseSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
-  | "custom";
+  | "custom"
+  | (string & {});
 export const ProjectsCreateResponseSourceConfigPreviewDeploymentSetting =
   /*@__PURE__*/ S.String;
 
@@ -3000,7 +3017,10 @@ export const ProjectsCreateResponseSourceConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectsCreateResponseSourceConfig",
 }) as any as S.Schema<ProjectsCreateResponseSourceConfig>;
 
-export type ProjectsCreateResponseSourceType = "github" | "gitlab";
+export type ProjectsCreateResponseSourceType =
+  | "github"
+  | "gitlab"
+  | (string & {});
 export const ProjectsCreateResponseSourceType = /*@__PURE__*/ S.String;
 
 export interface ProjectsCreateResponseSource {
@@ -3201,7 +3221,8 @@ export const ProjectsDeploymentsCreateResponseDeploymentTriggerMetadata =
 export type ProjectsDeploymentsCreateResponseDeploymentTriggerType =
   | "github:push"
   | "ad_hoc"
-  | "deploy_hook";
+  | "deploy_hook"
+  | (string & {});
 export const ProjectsDeploymentsCreateResponseDeploymentTriggerType =
   /*@__PURE__*/ S.String;
 
@@ -3222,7 +3243,8 @@ export const ProjectsDeploymentsCreateResponseDeploymentTrigger =
   }) as any as S.Schema<ProjectsDeploymentsCreateResponseDeploymentTrigger>;
 
 export type ProjectsDeploymentsCreateResponseEnvVarsPlainTextType =
-  "plain_text";
+  | "plain_text"
+  | (string & {});
 export const ProjectsDeploymentsCreateResponseEnvVarsPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -3242,7 +3264,8 @@ export const ProjectsDeploymentsCreateResponseEnvVarsPlainText =
   }) as any as S.Schema<ProjectsDeploymentsCreateResponseEnvVarsPlainText>;
 
 export type ProjectsDeploymentsCreateResponseEnvVarsSecretTextType =
-  "secret_text";
+  | "secret_text"
+  | (string & {});
 export const ProjectsDeploymentsCreateResponseEnvVarsSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -3274,7 +3297,8 @@ export const ProjectsDeploymentsCreateResponseEnvVars =
 
 export type ProjectsDeploymentsCreateResponseEnvironment =
   | "preview"
-  | "production";
+  | "production"
+  | (string & {});
 export const ProjectsDeploymentsCreateResponseEnvironment =
   /*@__PURE__*/ S.String;
 
@@ -3283,7 +3307,8 @@ export type ProjectsDeploymentsCreateResponseLatestStageName =
   | "initialize"
   | "clone_repo"
   | "build"
-  | "deploy";
+  | "deploy"
+  | (string & {});
 export const ProjectsDeploymentsCreateResponseLatestStageName =
   /*@__PURE__*/ S.String;
 
@@ -3292,7 +3317,8 @@ export type ProjectsDeploymentsCreateResponseLatestStageStatus =
   | "idle"
   | "active"
   | "failure"
-  | "canceled";
+  | "canceled"
+  | (string & {});
 export const ProjectsDeploymentsCreateResponseLatestStageStatus =
   /*@__PURE__*/ S.String;
 
@@ -3347,7 +3373,7 @@ export const ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchIncludesL
   ) as any as S.Schema<ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsDeploymentsCreateResponseSourceConfigPreviewDeploymentSetting =
-  "all" | "none" | "custom";
+  "all" | "none" | "custom" | (string & {});
 export const ProjectsDeploymentsCreateResponseSourceConfigPreviewDeploymentSetting =
   /*@__PURE__*/ S.String;
 
@@ -3417,7 +3443,10 @@ export const ProjectsDeploymentsCreateResponseSourceConfig =
     identifier: "ProjectsDeploymentsCreateResponseSourceConfig",
   }) as any as S.Schema<ProjectsDeploymentsCreateResponseSourceConfig>;
 
-export type ProjectsDeploymentsCreateResponseSourceType = "github" | "gitlab";
+export type ProjectsDeploymentsCreateResponseSourceType =
+  | "github"
+  | "gitlab"
+  | (string & {});
 export const ProjectsDeploymentsCreateResponseSourceType =
   /*@__PURE__*/ S.String;
 
@@ -3560,7 +3589,8 @@ export const CreateProjectDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ProjectsDomainsCreateResponseCertificateAuthority =
   | "google"
-  | "lets_encrypt";
+  | "lets_encrypt"
+  | (string & {});
 export const ProjectsDomainsCreateResponseCertificateAuthority =
   /*@__PURE__*/ S.String;
 
@@ -3570,10 +3600,14 @@ export type ProjectsDomainsCreateResponseStatus =
   | "active"
   | "deactivated"
   | "blocked"
-  | "error";
+  | "error"
+  | (string & {});
 export const ProjectsDomainsCreateResponseStatus = /*@__PURE__*/ S.String;
 
-export type ProjectsDomainsCreateResponseValidationDataMethod = "http" | "txt";
+export type ProjectsDomainsCreateResponseValidationDataMethod =
+  | "http"
+  | "txt"
+  | (string & {});
 export const ProjectsDomainsCreateResponseValidationDataMethod =
   /*@__PURE__*/ S.String;
 
@@ -3582,7 +3616,8 @@ export type ProjectsDomainsCreateResponseValidationDataStatus =
   | "pending"
   | "active"
   | "deactivated"
-  | "error";
+  | "error"
+  | (string & {});
 export const ProjectsDomainsCreateResponseValidationDataStatus =
   /*@__PURE__*/ S.String;
 
@@ -3611,7 +3646,8 @@ export type ProjectsDomainsCreateResponseVerificationDataStatus =
   | "active"
   | "deactivated"
   | "blocked"
-  | "error";
+  | "error"
+  | (string & {});
 export const ProjectsDomainsCreateResponseVerificationDataStatus =
   /*@__PURE__*/ S.String;
 
@@ -3848,7 +3884,8 @@ export const ProjectsGetResponseCanonicalDeploymentDeploymentTriggerMetadata =
 export type ProjectsGetResponseCanonicalDeploymentDeploymentTriggerType =
   | "github:push"
   | "ad_hoc"
-  | "deploy_hook";
+  | "deploy_hook"
+  | (string & {});
 export const ProjectsGetResponseCanonicalDeploymentDeploymentTriggerType =
   /*@__PURE__*/ S.String;
 
@@ -3869,7 +3906,8 @@ export const ProjectsGetResponseCanonicalDeploymentDeploymentTrigger =
   }) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentDeploymentTrigger>;
 
 export type ProjectsGetResponseCanonicalDeploymentEnvVarsPlainTextType =
-  "plain_text";
+  | "plain_text"
+  | (string & {});
 export const ProjectsGetResponseCanonicalDeploymentEnvVarsPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -3889,7 +3927,8 @@ export const ProjectsGetResponseCanonicalDeploymentEnvVarsPlainText =
   }) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentEnvVarsPlainText>;
 
 export type ProjectsGetResponseCanonicalDeploymentEnvVarsSecretTextType =
-  "secret_text";
+  | "secret_text"
+  | (string & {});
 export const ProjectsGetResponseCanonicalDeploymentEnvVarsSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -3921,7 +3960,8 @@ export const ProjectsGetResponseCanonicalDeploymentEnvVars =
 
 export type ProjectsGetResponseCanonicalDeploymentEnvironment =
   | "preview"
-  | "production";
+  | "production"
+  | (string & {});
 export const ProjectsGetResponseCanonicalDeploymentEnvironment =
   /*@__PURE__*/ S.String;
 
@@ -3930,7 +3970,8 @@ export type ProjectsGetResponseCanonicalDeploymentLatestStageName =
   | "initialize"
   | "clone_repo"
   | "build"
-  | "deploy";
+  | "deploy"
+  | (string & {});
 export const ProjectsGetResponseCanonicalDeploymentLatestStageName =
   /*@__PURE__*/ S.String;
 
@@ -3939,7 +3980,8 @@ export type ProjectsGetResponseCanonicalDeploymentLatestStageStatus =
   | "idle"
   | "active"
   | "failure"
-  | "canceled";
+  | "canceled"
+  | (string & {});
 export const ProjectsGetResponseCanonicalDeploymentLatestStageStatus =
   /*@__PURE__*/ S.String;
 
@@ -3994,7 +4036,7 @@ export const ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchIncl
   ) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
-  "all" | "none" | "custom";
+  "all" | "none" | "custom" | (string & {});
 export const ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
   /*@__PURE__*/ S.String;
 
@@ -4066,7 +4108,8 @@ export const ProjectsGetResponseCanonicalDeploymentSourceConfig =
 
 export type ProjectsGetResponseCanonicalDeploymentSourceType =
   | "github"
-  | "gitlab";
+  | "gitlab"
+  | (string & {});
 export const ProjectsGetResponseCanonicalDeploymentSourceType =
   /*@__PURE__*/ S.String;
 
@@ -4192,7 +4235,8 @@ export const ProjectsGetResponseDeploymentConfigsPreviewCompatibilityFlagsList =
   ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewCompatibilityFlagsList>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewEnvVarsPlainTextType =
-  "plain_text";
+  | "plain_text"
+  | (string & {});
 export const ProjectsGetResponseDeploymentConfigsPreviewEnvVarsPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -4212,7 +4256,8 @@ export const ProjectsGetResponseDeploymentConfigsPreviewEnvVarsPlainText =
   }) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewEnvVarsPlainText>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewEnvVarsSecretTextType =
-  "secret_text";
+  | "secret_text"
+  | (string & {});
 export const ProjectsGetResponseDeploymentConfigsPreviewEnvVarsSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -4245,7 +4290,8 @@ export const ProjectsGetResponseDeploymentConfigsPreviewEnvVars =
 export type ProjectsGetResponseDeploymentConfigsPreviewUsageModel =
   | "standard"
   | "bundled"
-  | "unbound";
+  | "unbound"
+  | (string & {});
 export const ProjectsGetResponseDeploymentConfigsPreviewUsageModel =
   /*@__PURE__*/ S.String;
 
@@ -4704,7 +4750,7 @@ export const ProjectsGetResponseDeploymentConfigsProductionCompatibilityFlagsLis
   ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionCompatibilityFlagsList>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionEnvVarsPlainTextType =
-  "plain_text";
+  "plain_text" | (string & {});
 export const ProjectsGetResponseDeploymentConfigsProductionEnvVarsPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -4725,7 +4771,7 @@ export const ProjectsGetResponseDeploymentConfigsProductionEnvVarsPlainText =
   }) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionEnvVarsPlainText>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionEnvVarsSecretTextType =
-  "secret_text";
+  "secret_text" | (string & {});
 export const ProjectsGetResponseDeploymentConfigsProductionEnvVarsSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -4759,7 +4805,8 @@ export const ProjectsGetResponseDeploymentConfigsProductionEnvVars =
 export type ProjectsGetResponseDeploymentConfigsProductionUsageModel =
   | "standard"
   | "bundled"
-  | "unbound";
+  | "unbound"
+  | (string & {});
 export const ProjectsGetResponseDeploymentConfigsProductionUsageModel =
   /*@__PURE__*/ S.String;
 
@@ -5294,7 +5341,8 @@ export const ProjectsGetResponseSourceConfigPreviewBranchIncludesList =
 export type ProjectsGetResponseSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
-  | "custom";
+  | "custom"
+  | (string & {});
 export const ProjectsGetResponseSourceConfigPreviewDeploymentSetting =
   /*@__PURE__*/ S.String;
 
@@ -5361,7 +5409,7 @@ export const ProjectsGetResponseSourceConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectsGetResponseSourceConfig",
 }) as any as S.Schema<ProjectsGetResponseSourceConfig>;
 
-export type ProjectsGetResponseSourceType = "github" | "gitlab";
+export type ProjectsGetResponseSourceType = "github" | "gitlab" | (string & {});
 export const ProjectsGetResponseSourceType = /*@__PURE__*/ S.String;
 
 export interface ProjectsGetResponseSource {
@@ -5528,7 +5576,8 @@ export const ProjectsDeploymentsGetResponseDeploymentTriggerMetadata =
 export type ProjectsDeploymentsGetResponseDeploymentTriggerType =
   | "github:push"
   | "ad_hoc"
-  | "deploy_hook";
+  | "deploy_hook"
+  | (string & {});
 export const ProjectsDeploymentsGetResponseDeploymentTriggerType =
   /*@__PURE__*/ S.String;
 
@@ -5548,7 +5597,9 @@ export const ProjectsDeploymentsGetResponseDeploymentTrigger =
     identifier: "ProjectsDeploymentsGetResponseDeploymentTrigger",
   }) as any as S.Schema<ProjectsDeploymentsGetResponseDeploymentTrigger>;
 
-export type ProjectsDeploymentsGetResponseEnvVarsPlainTextType = "plain_text";
+export type ProjectsDeploymentsGetResponseEnvVarsPlainTextType =
+  | "plain_text"
+  | (string & {});
 export const ProjectsDeploymentsGetResponseEnvVarsPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -5567,7 +5618,9 @@ export const ProjectsDeploymentsGetResponseEnvVarsPlainText =
     identifier: "ProjectsDeploymentsGetResponseEnvVarsPlainText",
   }) as any as S.Schema<ProjectsDeploymentsGetResponseEnvVarsPlainText>;
 
-export type ProjectsDeploymentsGetResponseEnvVarsSecretTextType = "secret_text";
+export type ProjectsDeploymentsGetResponseEnvVarsSecretTextType =
+  | "secret_text"
+  | (string & {});
 export const ProjectsDeploymentsGetResponseEnvVarsSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -5599,7 +5652,8 @@ export const ProjectsDeploymentsGetResponseEnvVars =
 
 export type ProjectsDeploymentsGetResponseEnvironment =
   | "preview"
-  | "production";
+  | "production"
+  | (string & {});
 export const ProjectsDeploymentsGetResponseEnvironment = /*@__PURE__*/ S.String;
 
 export type ProjectsDeploymentsGetResponseLatestStageName =
@@ -5607,7 +5661,8 @@ export type ProjectsDeploymentsGetResponseLatestStageName =
   | "initialize"
   | "clone_repo"
   | "build"
-  | "deploy";
+  | "deploy"
+  | (string & {});
 export const ProjectsDeploymentsGetResponseLatestStageName =
   /*@__PURE__*/ S.String;
 
@@ -5616,7 +5671,8 @@ export type ProjectsDeploymentsGetResponseLatestStageStatus =
   | "idle"
   | "active"
   | "failure"
-  | "canceled";
+  | "canceled"
+  | (string & {});
 export const ProjectsDeploymentsGetResponseLatestStageStatus =
   /*@__PURE__*/ S.String;
 
@@ -5671,7 +5727,7 @@ export const ProjectsDeploymentsGetResponseSourceConfigPreviewBranchIncludesList
   ) as any as S.Schema<ProjectsDeploymentsGetResponseSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsDeploymentsGetResponseSourceConfigPreviewDeploymentSetting =
-  "all" | "none" | "custom";
+  "all" | "none" | "custom" | (string & {});
 export const ProjectsDeploymentsGetResponseSourceConfigPreviewDeploymentSetting =
   /*@__PURE__*/ S.String;
 
@@ -5741,7 +5797,10 @@ export const ProjectsDeploymentsGetResponseSourceConfig =
     identifier: "ProjectsDeploymentsGetResponseSourceConfig",
   }) as any as S.Schema<ProjectsDeploymentsGetResponseSourceConfig>;
 
-export type ProjectsDeploymentsGetResponseSourceType = "github" | "gitlab";
+export type ProjectsDeploymentsGetResponseSourceType =
+  | "github"
+  | "gitlab"
+  | (string & {});
 export const ProjectsDeploymentsGetResponseSourceType = /*@__PURE__*/ S.String;
 
 export interface ProjectsDeploymentsGetResponseSource {
@@ -5947,7 +6006,8 @@ export const GetProjectDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ProjectsDomainsGetResponseCertificateAuthority =
   | "google"
-  | "lets_encrypt";
+  | "lets_encrypt"
+  | (string & {});
 export const ProjectsDomainsGetResponseCertificateAuthority =
   /*@__PURE__*/ S.String;
 
@@ -5957,10 +6017,14 @@ export type ProjectsDomainsGetResponseStatus =
   | "active"
   | "deactivated"
   | "blocked"
-  | "error";
+  | "error"
+  | (string & {});
 export const ProjectsDomainsGetResponseStatus = /*@__PURE__*/ S.String;
 
-export type ProjectsDomainsGetResponseValidationDataMethod = "http" | "txt";
+export type ProjectsDomainsGetResponseValidationDataMethod =
+  | "http"
+  | "txt"
+  | (string & {});
 export const ProjectsDomainsGetResponseValidationDataMethod =
   /*@__PURE__*/ S.String;
 
@@ -5969,7 +6033,8 @@ export type ProjectsDomainsGetResponseValidationDataStatus =
   | "pending"
   | "active"
   | "deactivated"
-  | "error";
+  | "error"
+  | (string & {});
 export const ProjectsDomainsGetResponseValidationDataStatus =
   /*@__PURE__*/ S.String;
 
@@ -5998,7 +6063,8 @@ export type ProjectsDomainsGetResponseVerificationDataStatus =
   | "active"
   | "deactivated"
   | "blocked"
-  | "error";
+  | "error"
+  | (string & {});
 export const ProjectsDomainsGetResponseVerificationDataStatus =
   /*@__PURE__*/ S.String;
 
@@ -6051,7 +6117,10 @@ export const GetProjectDomainResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetProjectDomainResponse",
 }) as any as S.Schema<GetProjectDomainResponse>;
 
-export type ProjectsDeploymentsListRequestEnv = "production" | "preview";
+export type ProjectsDeploymentsListRequestEnv =
+  | "production"
+  | "preview"
+  | (string & {});
 export const ProjectsDeploymentsListRequestEnv = /*@__PURE__*/ S.String;
 
 export interface ListProjectDeploymentsRequest {
@@ -6146,7 +6215,8 @@ export const ProjectsDeploymentsListResultItemDeploymentTriggerMetadata =
 export type ProjectsDeploymentsListResultItemDeploymentTriggerType =
   | "github:push"
   | "ad_hoc"
-  | "deploy_hook";
+  | "deploy_hook"
+  | (string & {});
 export const ProjectsDeploymentsListResultItemDeploymentTriggerType =
   /*@__PURE__*/ S.String;
 
@@ -6167,7 +6237,8 @@ export const ProjectsDeploymentsListResultItemDeploymentTrigger =
   }) as any as S.Schema<ProjectsDeploymentsListResultItemDeploymentTrigger>;
 
 export type ProjectsDeploymentsListResultItemEnvVarsPlainTextType =
-  "plain_text";
+  | "plain_text"
+  | (string & {});
 export const ProjectsDeploymentsListResultItemEnvVarsPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -6187,7 +6258,8 @@ export const ProjectsDeploymentsListResultItemEnvVarsPlainText =
   }) as any as S.Schema<ProjectsDeploymentsListResultItemEnvVarsPlainText>;
 
 export type ProjectsDeploymentsListResultItemEnvVarsSecretTextType =
-  "secret_text";
+  | "secret_text"
+  | (string & {});
 export const ProjectsDeploymentsListResultItemEnvVarsSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -6219,7 +6291,8 @@ export const ProjectsDeploymentsListResultItemEnvVars =
 
 export type ProjectsDeploymentsListResultItemEnvironment =
   | "preview"
-  | "production";
+  | "production"
+  | (string & {});
 export const ProjectsDeploymentsListResultItemEnvironment =
   /*@__PURE__*/ S.String;
 
@@ -6228,7 +6301,8 @@ export type ProjectsDeploymentsListResultItemLatestStageName =
   | "initialize"
   | "clone_repo"
   | "build"
-  | "deploy";
+  | "deploy"
+  | (string & {});
 export const ProjectsDeploymentsListResultItemLatestStageName =
   /*@__PURE__*/ S.String;
 
@@ -6237,7 +6311,8 @@ export type ProjectsDeploymentsListResultItemLatestStageStatus =
   | "idle"
   | "active"
   | "failure"
-  | "canceled";
+  | "canceled"
+  | (string & {});
 export const ProjectsDeploymentsListResultItemLatestStageStatus =
   /*@__PURE__*/ S.String;
 
@@ -6292,7 +6367,7 @@ export const ProjectsDeploymentsListResultItemSourceConfigPreviewBranchIncludesL
   ) as any as S.Schema<ProjectsDeploymentsListResultItemSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsDeploymentsListResultItemSourceConfigPreviewDeploymentSetting =
-  "all" | "none" | "custom";
+  "all" | "none" | "custom" | (string & {});
 export const ProjectsDeploymentsListResultItemSourceConfigPreviewDeploymentSetting =
   /*@__PURE__*/ S.String;
 
@@ -6362,7 +6437,10 @@ export const ProjectsDeploymentsListResultItemSourceConfig =
     identifier: "ProjectsDeploymentsListResultItemSourceConfig",
   }) as any as S.Schema<ProjectsDeploymentsListResultItemSourceConfig>;
 
-export type ProjectsDeploymentsListResultItemSourceType = "github" | "gitlab";
+export type ProjectsDeploymentsListResultItemSourceType =
+  | "github"
+  | "gitlab"
+  | (string & {});
 export const ProjectsDeploymentsListResultItemSourceType =
   /*@__PURE__*/ S.String;
 
@@ -6522,7 +6600,8 @@ export const ListProjectDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ProjectsDomainsListResultItemCertificateAuthority =
   | "google"
-  | "lets_encrypt";
+  | "lets_encrypt"
+  | (string & {});
 export const ProjectsDomainsListResultItemCertificateAuthority =
   /*@__PURE__*/ S.String;
 
@@ -6532,10 +6611,14 @@ export type ProjectsDomainsListResultItemStatus =
   | "active"
   | "deactivated"
   | "blocked"
-  | "error";
+  | "error"
+  | (string & {});
 export const ProjectsDomainsListResultItemStatus = /*@__PURE__*/ S.String;
 
-export type ProjectsDomainsListResultItemValidationDataMethod = "http" | "txt";
+export type ProjectsDomainsListResultItemValidationDataMethod =
+  | "http"
+  | "txt"
+  | (string & {});
 export const ProjectsDomainsListResultItemValidationDataMethod =
   /*@__PURE__*/ S.String;
 
@@ -6544,7 +6627,8 @@ export type ProjectsDomainsListResultItemValidationDataStatus =
   | "pending"
   | "active"
   | "deactivated"
-  | "error";
+  | "error"
+  | (string & {});
 export const ProjectsDomainsListResultItemValidationDataStatus =
   /*@__PURE__*/ S.String;
 
@@ -6573,7 +6657,8 @@ export type ProjectsDomainsListResultItemVerificationDataStatus =
   | "active"
   | "deactivated"
   | "blocked"
-  | "error";
+  | "error"
+  | (string & {});
 export const ProjectsDomainsListResultItemVerificationDataStatus =
   /*@__PURE__*/ S.String;
 
@@ -6734,7 +6819,8 @@ export const ProjectsListResultItemCanonicalDeploymentDeploymentTriggerMetadata 
 export type ProjectsListResultItemCanonicalDeploymentDeploymentTriggerType =
   | "github:push"
   | "ad_hoc"
-  | "deploy_hook";
+  | "deploy_hook"
+  | (string & {});
 export const ProjectsListResultItemCanonicalDeploymentDeploymentTriggerType =
   /*@__PURE__*/ S.String;
 
@@ -6756,7 +6842,8 @@ export const ProjectsListResultItemCanonicalDeploymentDeploymentTrigger =
   }) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentDeploymentTrigger>;
 
 export type ProjectsListResultItemCanonicalDeploymentEnvVarsPlainTextType =
-  "plain_text";
+  | "plain_text"
+  | (string & {});
 export const ProjectsListResultItemCanonicalDeploymentEnvVarsPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -6776,7 +6863,8 @@ export const ProjectsListResultItemCanonicalDeploymentEnvVarsPlainText =
   }) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentEnvVarsPlainText>;
 
 export type ProjectsListResultItemCanonicalDeploymentEnvVarsSecretTextType =
-  "secret_text";
+  | "secret_text"
+  | (string & {});
 export const ProjectsListResultItemCanonicalDeploymentEnvVarsSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -6808,7 +6896,8 @@ export const ProjectsListResultItemCanonicalDeploymentEnvVars =
 
 export type ProjectsListResultItemCanonicalDeploymentEnvironment =
   | "preview"
-  | "production";
+  | "production"
+  | (string & {});
 export const ProjectsListResultItemCanonicalDeploymentEnvironment =
   /*@__PURE__*/ S.String;
 
@@ -6817,7 +6906,8 @@ export type ProjectsListResultItemCanonicalDeploymentLatestStageName =
   | "initialize"
   | "clone_repo"
   | "build"
-  | "deploy";
+  | "deploy"
+  | (string & {});
 export const ProjectsListResultItemCanonicalDeploymentLatestStageName =
   /*@__PURE__*/ S.String;
 
@@ -6826,7 +6916,8 @@ export type ProjectsListResultItemCanonicalDeploymentLatestStageStatus =
   | "idle"
   | "active"
   | "failure"
-  | "canceled";
+  | "canceled"
+  | (string & {});
 export const ProjectsListResultItemCanonicalDeploymentLatestStageStatus =
   /*@__PURE__*/ S.String;
 
@@ -6881,7 +6972,7 @@ export const ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchI
   ) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
-  "all" | "none" | "custom";
+  "all" | "none" | "custom" | (string & {});
 export const ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
   /*@__PURE__*/ S.String;
 
@@ -6953,7 +7044,8 @@ export const ProjectsListResultItemCanonicalDeploymentSourceConfig =
 
 export type ProjectsListResultItemCanonicalDeploymentSourceType =
   | "github"
-  | "gitlab";
+  | "gitlab"
+  | (string & {});
 export const ProjectsListResultItemCanonicalDeploymentSourceType =
   /*@__PURE__*/ S.String;
 
@@ -7079,7 +7171,7 @@ export const ProjectsListResultItemDeploymentConfigsPreviewCompatibilityFlagsLis
   ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewCompatibilityFlagsList>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewEnvVarsPlainTextType =
-  "plain_text";
+  "plain_text" | (string & {});
 export const ProjectsListResultItemDeploymentConfigsPreviewEnvVarsPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -7100,7 +7192,7 @@ export const ProjectsListResultItemDeploymentConfigsPreviewEnvVarsPlainText =
   }) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewEnvVarsPlainText>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewEnvVarsSecretTextType =
-  "secret_text";
+  "secret_text" | (string & {});
 export const ProjectsListResultItemDeploymentConfigsPreviewEnvVarsSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -7134,7 +7226,8 @@ export const ProjectsListResultItemDeploymentConfigsPreviewEnvVars =
 export type ProjectsListResultItemDeploymentConfigsPreviewUsageModel =
   | "standard"
   | "bundled"
-  | "unbound";
+  | "unbound"
+  | (string & {});
 export const ProjectsListResultItemDeploymentConfigsPreviewUsageModel =
   /*@__PURE__*/ S.String;
 
@@ -7598,7 +7691,7 @@ export const ProjectsListResultItemDeploymentConfigsProductionCompatibilityFlags
   ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionCompatibilityFlagsList>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionEnvVarsPlainTextType =
-  "plain_text";
+  "plain_text" | (string & {});
 export const ProjectsListResultItemDeploymentConfigsProductionEnvVarsPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -7619,7 +7712,7 @@ export const ProjectsListResultItemDeploymentConfigsProductionEnvVarsPlainText =
   }) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionEnvVarsPlainText>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionEnvVarsSecretTextType =
-  "secret_text";
+  "secret_text" | (string & {});
 export const ProjectsListResultItemDeploymentConfigsProductionEnvVarsSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -7653,7 +7746,8 @@ export const ProjectsListResultItemDeploymentConfigsProductionEnvVars =
 export type ProjectsListResultItemDeploymentConfigsProductionUsageModel =
   | "standard"
   | "bundled"
-  | "unbound";
+  | "unbound"
+  | (string & {});
 export const ProjectsListResultItemDeploymentConfigsProductionUsageModel =
   /*@__PURE__*/ S.String;
 
@@ -8195,7 +8289,8 @@ export const ProjectsListResultItemSourceConfigPreviewBranchIncludesList =
 export type ProjectsListResultItemSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
-  | "custom";
+  | "custom"
+  | (string & {});
 export const ProjectsListResultItemSourceConfigPreviewDeploymentSetting =
   /*@__PURE__*/ S.String;
 
@@ -8262,7 +8357,10 @@ export const ProjectsListResultItemSourceConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectsListResultItemSourceConfig",
 }) as any as S.Schema<ProjectsListResultItemSourceConfig>;
 
-export type ProjectsListResultItemSourceType = "github" | "gitlab";
+export type ProjectsListResultItemSourceType =
+  | "github"
+  | "gitlab"
+  | (string & {});
 export const ProjectsListResultItemSourceType = /*@__PURE__*/ S.String;
 
 export interface ProjectsListResultItemSource {
@@ -8507,7 +8605,8 @@ export const ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesM
   ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesMap>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewEnvVarsPlainTextType =
-  "plain_text";
+  | "plain_text"
+  | (string & {});
 export const ProjectsEditRequestDeploymentConfigsPreviewEnvVarsPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -8527,7 +8626,8 @@ export const ProjectsEditRequestDeploymentConfigsPreviewEnvVarsPlainText =
   }) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewEnvVarsPlainText>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretTextType =
-  "secret_text";
+  | "secret_text"
+  | (string & {});
 export const ProjectsEditRequestDeploymentConfigsPreviewEnvVarsSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -8740,7 +8840,8 @@ export const ProjectsEditRequestDeploymentConfigsPreviewServicesMap =
 export type ProjectsEditRequestDeploymentConfigsPreviewUsageModel =
   | "standard"
   | "bundled"
-  | "unbound";
+  | "unbound"
+  | (string & {});
 export const ProjectsEditRequestDeploymentConfigsPreviewUsageModel =
   /*@__PURE__*/ S.String;
 
@@ -9027,7 +9128,7 @@ export const ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespac
   ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespacesMap>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionEnvVarsPlainTextType =
-  "plain_text";
+  "plain_text" | (string & {});
 export const ProjectsEditRequestDeploymentConfigsProductionEnvVarsPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -9048,7 +9149,7 @@ export const ProjectsEditRequestDeploymentConfigsProductionEnvVarsPlainText =
   }) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionEnvVarsPlainText>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretTextType =
-  "secret_text";
+  "secret_text" | (string & {});
 export const ProjectsEditRequestDeploymentConfigsProductionEnvVarsSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -9265,7 +9366,8 @@ export const ProjectsEditRequestDeploymentConfigsProductionServicesMap =
 export type ProjectsEditRequestDeploymentConfigsProductionUsageModel =
   | "standard"
   | "bundled"
-  | "unbound";
+  | "unbound"
+  | (string & {});
 export const ProjectsEditRequestDeploymentConfigsProductionUsageModel =
   /*@__PURE__*/ S.String;
 
@@ -9483,7 +9585,8 @@ export const ProjectsEditRequestSourceConfigPreviewBranchIncludesList =
 export type ProjectsEditRequestSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
-  | "custom";
+  | "custom"
+  | (string & {});
 export const ProjectsEditRequestSourceConfigPreviewDeploymentSetting =
   /*@__PURE__*/ S.String;
 
@@ -9561,7 +9664,7 @@ export const ProjectsEditRequestSourceConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectsEditRequestSourceConfig",
 }) as any as S.Schema<ProjectsEditRequestSourceConfig>;
 
-export type ProjectsEditRequestSourceType = "github" | "gitlab";
+export type ProjectsEditRequestSourceType = "github" | "gitlab" | (string & {});
 export const ProjectsEditRequestSourceType = /*@__PURE__*/ S.String;
 
 export interface ProjectsEditRequestSource {
@@ -9681,7 +9784,8 @@ export const ProjectsEditResponseCanonicalDeploymentDeploymentTriggerMetadata =
 export type ProjectsEditResponseCanonicalDeploymentDeploymentTriggerType =
   | "github:push"
   | "ad_hoc"
-  | "deploy_hook";
+  | "deploy_hook"
+  | (string & {});
 export const ProjectsEditResponseCanonicalDeploymentDeploymentTriggerType =
   /*@__PURE__*/ S.String;
 
@@ -9703,7 +9807,8 @@ export const ProjectsEditResponseCanonicalDeploymentDeploymentTrigger =
   }) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentDeploymentTrigger>;
 
 export type ProjectsEditResponseCanonicalDeploymentEnvVarsPlainTextType =
-  "plain_text";
+  | "plain_text"
+  | (string & {});
 export const ProjectsEditResponseCanonicalDeploymentEnvVarsPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -9723,7 +9828,8 @@ export const ProjectsEditResponseCanonicalDeploymentEnvVarsPlainText =
   }) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentEnvVarsPlainText>;
 
 export type ProjectsEditResponseCanonicalDeploymentEnvVarsSecretTextType =
-  "secret_text";
+  | "secret_text"
+  | (string & {});
 export const ProjectsEditResponseCanonicalDeploymentEnvVarsSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -9755,7 +9861,8 @@ export const ProjectsEditResponseCanonicalDeploymentEnvVars =
 
 export type ProjectsEditResponseCanonicalDeploymentEnvironment =
   | "preview"
-  | "production";
+  | "production"
+  | (string & {});
 export const ProjectsEditResponseCanonicalDeploymentEnvironment =
   /*@__PURE__*/ S.String;
 
@@ -9764,7 +9871,8 @@ export type ProjectsEditResponseCanonicalDeploymentLatestStageName =
   | "initialize"
   | "clone_repo"
   | "build"
-  | "deploy";
+  | "deploy"
+  | (string & {});
 export const ProjectsEditResponseCanonicalDeploymentLatestStageName =
   /*@__PURE__*/ S.String;
 
@@ -9773,7 +9881,8 @@ export type ProjectsEditResponseCanonicalDeploymentLatestStageStatus =
   | "idle"
   | "active"
   | "failure"
-  | "canceled";
+  | "canceled"
+  | (string & {});
 export const ProjectsEditResponseCanonicalDeploymentLatestStageStatus =
   /*@__PURE__*/ S.String;
 
@@ -9828,7 +9937,7 @@ export const ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchInc
   ) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
-  "all" | "none" | "custom";
+  "all" | "none" | "custom" | (string & {});
 export const ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
   /*@__PURE__*/ S.String;
 
@@ -9900,7 +10009,8 @@ export const ProjectsEditResponseCanonicalDeploymentSourceConfig =
 
 export type ProjectsEditResponseCanonicalDeploymentSourceType =
   | "github"
-  | "gitlab";
+  | "gitlab"
+  | (string & {});
 export const ProjectsEditResponseCanonicalDeploymentSourceType =
   /*@__PURE__*/ S.String;
 
@@ -10026,7 +10136,8 @@ export const ProjectsEditResponseDeploymentConfigsPreviewCompatibilityFlagsList 
   ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewCompatibilityFlagsList>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewEnvVarsPlainTextType =
-  "plain_text";
+  | "plain_text"
+  | (string & {});
 export const ProjectsEditResponseDeploymentConfigsPreviewEnvVarsPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -10046,7 +10157,8 @@ export const ProjectsEditResponseDeploymentConfigsPreviewEnvVarsPlainText =
   }) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewEnvVarsPlainText>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewEnvVarsSecretTextType =
-  "secret_text";
+  | "secret_text"
+  | (string & {});
 export const ProjectsEditResponseDeploymentConfigsPreviewEnvVarsSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -10079,7 +10191,8 @@ export const ProjectsEditResponseDeploymentConfigsPreviewEnvVars =
 export type ProjectsEditResponseDeploymentConfigsPreviewUsageModel =
   | "standard"
   | "bundled"
-  | "unbound";
+  | "unbound"
+  | (string & {});
 export const ProjectsEditResponseDeploymentConfigsPreviewUsageModel =
   /*@__PURE__*/ S.String;
 
@@ -10539,7 +10652,7 @@ export const ProjectsEditResponseDeploymentConfigsProductionCompatibilityFlagsLi
   ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionCompatibilityFlagsList>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionEnvVarsPlainTextType =
-  "plain_text";
+  "plain_text" | (string & {});
 export const ProjectsEditResponseDeploymentConfigsProductionEnvVarsPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -10560,7 +10673,7 @@ export const ProjectsEditResponseDeploymentConfigsProductionEnvVarsPlainText =
   }) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionEnvVarsPlainText>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionEnvVarsSecretTextType =
-  "secret_text";
+  "secret_text" | (string & {});
 export const ProjectsEditResponseDeploymentConfigsProductionEnvVarsSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -10594,7 +10707,8 @@ export const ProjectsEditResponseDeploymentConfigsProductionEnvVars =
 export type ProjectsEditResponseDeploymentConfigsProductionUsageModel =
   | "standard"
   | "bundled"
-  | "unbound";
+  | "unbound"
+  | (string & {});
 export const ProjectsEditResponseDeploymentConfigsProductionUsageModel =
   /*@__PURE__*/ S.String;
 
@@ -11131,7 +11245,8 @@ export const ProjectsEditResponseSourceConfigPreviewBranchIncludesList =
 export type ProjectsEditResponseSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
-  | "custom";
+  | "custom"
+  | (string & {});
 export const ProjectsEditResponseSourceConfigPreviewDeploymentSetting =
   /*@__PURE__*/ S.String;
 
@@ -11198,7 +11313,10 @@ export const ProjectsEditResponseSourceConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectsEditResponseSourceConfig",
 }) as any as S.Schema<ProjectsEditResponseSourceConfig>;
 
-export type ProjectsEditResponseSourceType = "github" | "gitlab";
+export type ProjectsEditResponseSourceType =
+  | "github"
+  | "gitlab"
+  | (string & {});
 export const ProjectsEditResponseSourceType = /*@__PURE__*/ S.String;
 
 export interface ProjectsEditResponseSource {
@@ -11309,7 +11427,8 @@ export const PatchProjectDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ProjectsDomainsEditResponseCertificateAuthority =
   | "google"
-  | "lets_encrypt";
+  | "lets_encrypt"
+  | (string & {});
 export const ProjectsDomainsEditResponseCertificateAuthority =
   /*@__PURE__*/ S.String;
 
@@ -11319,10 +11438,14 @@ export type ProjectsDomainsEditResponseStatus =
   | "active"
   | "deactivated"
   | "blocked"
-  | "error";
+  | "error"
+  | (string & {});
 export const ProjectsDomainsEditResponseStatus = /*@__PURE__*/ S.String;
 
-export type ProjectsDomainsEditResponseValidationDataMethod = "http" | "txt";
+export type ProjectsDomainsEditResponseValidationDataMethod =
+  | "http"
+  | "txt"
+  | (string & {});
 export const ProjectsDomainsEditResponseValidationDataMethod =
   /*@__PURE__*/ S.String;
 
@@ -11331,7 +11454,8 @@ export type ProjectsDomainsEditResponseValidationDataStatus =
   | "pending"
   | "active"
   | "deactivated"
-  | "error";
+  | "error"
+  | (string & {});
 export const ProjectsDomainsEditResponseValidationDataStatus =
   /*@__PURE__*/ S.String;
 
@@ -11360,7 +11484,8 @@ export type ProjectsDomainsEditResponseVerificationDataStatus =
   | "active"
   | "deactivated"
   | "blocked"
-  | "error";
+  | "error"
+  | (string & {});
 export const ProjectsDomainsEditResponseVerificationDataStatus =
   /*@__PURE__*/ S.String;
 
@@ -11528,7 +11653,8 @@ export const ProjectsDeploymentsRetryResponseDeploymentTriggerMetadata =
 export type ProjectsDeploymentsRetryResponseDeploymentTriggerType =
   | "github:push"
   | "ad_hoc"
-  | "deploy_hook";
+  | "deploy_hook"
+  | (string & {});
 export const ProjectsDeploymentsRetryResponseDeploymentTriggerType =
   /*@__PURE__*/ S.String;
 
@@ -11548,7 +11674,9 @@ export const ProjectsDeploymentsRetryResponseDeploymentTrigger =
     identifier: "ProjectsDeploymentsRetryResponseDeploymentTrigger",
   }) as any as S.Schema<ProjectsDeploymentsRetryResponseDeploymentTrigger>;
 
-export type ProjectsDeploymentsRetryResponseEnvVarsPlainTextType = "plain_text";
+export type ProjectsDeploymentsRetryResponseEnvVarsPlainTextType =
+  | "plain_text"
+  | (string & {});
 export const ProjectsDeploymentsRetryResponseEnvVarsPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -11568,7 +11696,8 @@ export const ProjectsDeploymentsRetryResponseEnvVarsPlainText =
   }) as any as S.Schema<ProjectsDeploymentsRetryResponseEnvVarsPlainText>;
 
 export type ProjectsDeploymentsRetryResponseEnvVarsSecretTextType =
-  "secret_text";
+  | "secret_text"
+  | (string & {});
 export const ProjectsDeploymentsRetryResponseEnvVarsSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -11600,7 +11729,8 @@ export const ProjectsDeploymentsRetryResponseEnvVars =
 
 export type ProjectsDeploymentsRetryResponseEnvironment =
   | "preview"
-  | "production";
+  | "production"
+  | (string & {});
 export const ProjectsDeploymentsRetryResponseEnvironment =
   /*@__PURE__*/ S.String;
 
@@ -11609,7 +11739,8 @@ export type ProjectsDeploymentsRetryResponseLatestStageName =
   | "initialize"
   | "clone_repo"
   | "build"
-  | "deploy";
+  | "deploy"
+  | (string & {});
 export const ProjectsDeploymentsRetryResponseLatestStageName =
   /*@__PURE__*/ S.String;
 
@@ -11618,7 +11749,8 @@ export type ProjectsDeploymentsRetryResponseLatestStageStatus =
   | "idle"
   | "active"
   | "failure"
-  | "canceled";
+  | "canceled"
+  | (string & {});
 export const ProjectsDeploymentsRetryResponseLatestStageStatus =
   /*@__PURE__*/ S.String;
 
@@ -11673,7 +11805,7 @@ export const ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchIncludesLi
   ) as any as S.Schema<ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsDeploymentsRetryResponseSourceConfigPreviewDeploymentSetting =
-  "all" | "none" | "custom";
+  "all" | "none" | "custom" | (string & {});
 export const ProjectsDeploymentsRetryResponseSourceConfigPreviewDeploymentSetting =
   /*@__PURE__*/ S.String;
 
@@ -11743,7 +11875,10 @@ export const ProjectsDeploymentsRetryResponseSourceConfig =
     identifier: "ProjectsDeploymentsRetryResponseSourceConfig",
   }) as any as S.Schema<ProjectsDeploymentsRetryResponseSourceConfig>;
 
-export type ProjectsDeploymentsRetryResponseSourceType = "github" | "gitlab";
+export type ProjectsDeploymentsRetryResponseSourceType =
+  | "github"
+  | "gitlab"
+  | (string & {});
 export const ProjectsDeploymentsRetryResponseSourceType =
   /*@__PURE__*/ S.String;
 
@@ -11943,7 +12078,8 @@ export const ProjectsDeploymentsRollbackResponseDeploymentTriggerMetadata =
 export type ProjectsDeploymentsRollbackResponseDeploymentTriggerType =
   | "github:push"
   | "ad_hoc"
-  | "deploy_hook";
+  | "deploy_hook"
+  | (string & {});
 export const ProjectsDeploymentsRollbackResponseDeploymentTriggerType =
   /*@__PURE__*/ S.String;
 
@@ -11964,7 +12100,8 @@ export const ProjectsDeploymentsRollbackResponseDeploymentTrigger =
   }) as any as S.Schema<ProjectsDeploymentsRollbackResponseDeploymentTrigger>;
 
 export type ProjectsDeploymentsRollbackResponseEnvVarsPlainTextType =
-  "plain_text";
+  | "plain_text"
+  | (string & {});
 export const ProjectsDeploymentsRollbackResponseEnvVarsPlainTextType =
   /*@__PURE__*/ S.String;
 
@@ -11984,7 +12121,8 @@ export const ProjectsDeploymentsRollbackResponseEnvVarsPlainText =
   }) as any as S.Schema<ProjectsDeploymentsRollbackResponseEnvVarsPlainText>;
 
 export type ProjectsDeploymentsRollbackResponseEnvVarsSecretTextType =
-  "secret_text";
+  | "secret_text"
+  | (string & {});
 export const ProjectsDeploymentsRollbackResponseEnvVarsSecretTextType =
   /*@__PURE__*/ S.String;
 
@@ -12016,7 +12154,8 @@ export const ProjectsDeploymentsRollbackResponseEnvVars =
 
 export type ProjectsDeploymentsRollbackResponseEnvironment =
   | "preview"
-  | "production";
+  | "production"
+  | (string & {});
 export const ProjectsDeploymentsRollbackResponseEnvironment =
   /*@__PURE__*/ S.String;
 
@@ -12025,7 +12164,8 @@ export type ProjectsDeploymentsRollbackResponseLatestStageName =
   | "initialize"
   | "clone_repo"
   | "build"
-  | "deploy";
+  | "deploy"
+  | (string & {});
 export const ProjectsDeploymentsRollbackResponseLatestStageName =
   /*@__PURE__*/ S.String;
 
@@ -12034,7 +12174,8 @@ export type ProjectsDeploymentsRollbackResponseLatestStageStatus =
   | "idle"
   | "active"
   | "failure"
-  | "canceled";
+  | "canceled"
+  | (string & {});
 export const ProjectsDeploymentsRollbackResponseLatestStageStatus =
   /*@__PURE__*/ S.String;
 
@@ -12089,7 +12230,7 @@ export const ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchInclude
   ) as any as S.Schema<ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsDeploymentsRollbackResponseSourceConfigPreviewDeploymentSetting =
-  "all" | "none" | "custom";
+  "all" | "none" | "custom" | (string & {});
 export const ProjectsDeploymentsRollbackResponseSourceConfigPreviewDeploymentSetting =
   /*@__PURE__*/ S.String;
 
@@ -12159,7 +12300,10 @@ export const ProjectsDeploymentsRollbackResponseSourceConfig =
     identifier: "ProjectsDeploymentsRollbackResponseSourceConfig",
   }) as any as S.Schema<ProjectsDeploymentsRollbackResponseSourceConfig>;
 
-export type ProjectsDeploymentsRollbackResponseSourceType = "github" | "gitlab";
+export type ProjectsDeploymentsRollbackResponseSourceType =
+  | "github"
+  | "gitlab"
+  | (string & {});
 export const ProjectsDeploymentsRollbackResponseSourceType =
   /*@__PURE__*/ S.String;
 

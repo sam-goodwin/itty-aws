@@ -212,7 +212,8 @@ export type VoiceSsmlGenderEnum =
   | "SSML_VOICE_GENDER_UNSPECIFIED"
   | "MALE"
   | "FEMALE"
-  | "NEUTRAL";
+  | "NEUTRAL"
+  | (string & {});
 export const VoiceSsmlGenderEnum = /*@__PURE__*/ S.String;
 
 /** Description of a voice supported by the TTS service. */
@@ -258,7 +259,8 @@ export type CustomPronunciationParamsPhoneticEncodingEnum =
   | "PHONETIC_ENCODING_IPA"
   | "PHONETIC_ENCODING_X_SAMPA"
   | "PHONETIC_ENCODING_JAPANESE_YOMIGANA"
-  | "PHONETIC_ENCODING_PINYIN";
+  | "PHONETIC_ENCODING_PINYIN"
+  | (string & {});
 export const CustomPronunciationParamsPhoneticEncodingEnum =
   /*@__PURE__*/ S.String;
 
@@ -396,7 +398,8 @@ export const MultiSpeakerVoiceConfig = /*@__PURE__*/ S.suspend(() =>
 export type CustomVoiceParamsReportedUsageEnum =
   | "REPORTED_USAGE_UNSPECIFIED"
   | "REALTIME"
-  | "OFFLINE";
+  | "OFFLINE"
+  | (string & {});
 export const CustomVoiceParamsReportedUsageEnum = /*@__PURE__*/ S.String;
 
 /** Description of the custom voice to be synthesized. */
@@ -419,7 +422,8 @@ export type VoiceSelectionParamsSsmlGenderEnum =
   | "SSML_VOICE_GENDER_UNSPECIFIED"
   | "MALE"
   | "FEMALE"
-  | "NEUTRAL";
+  | "NEUTRAL"
+  | (string & {});
 export const VoiceSelectionParamsSsmlGenderEnum = /*@__PURE__*/ S.String;
 
 /** The configuration of Voice Clone feature. */
@@ -475,7 +479,8 @@ export type AudioConfigAudioEncodingEnum =
   | "MULAW"
   | "ALAW"
   | "PCM"
-  | "M4A";
+  | "M4A"
+  | (string & {});
 export const AudioConfigAudioEncodingEnum = /*@__PURE__*/ S.String;
 
 /** Description of audio data to be synthesized. */
@@ -554,7 +559,8 @@ export type SafetySettingThresholdEnum =
   | "BLOCK_MEDIUM_AND_ABOVE"
   | "BLOCK_ONLY_HIGH"
   | "BLOCK_NONE"
-  | "OFF";
+  | "OFF"
+  | (string & {});
 export const SafetySettingThresholdEnum = /*@__PURE__*/ S.String;
 
 export type SafetySettingCategoryEnum =
@@ -562,7 +568,8 @@ export type SafetySettingCategoryEnum =
   | "HARM_CATEGORY_HATE_SPEECH"
   | "HARM_CATEGORY_DANGEROUS_CONTENT"
   | "HARM_CATEGORY_HARASSMENT"
-  | "HARM_CATEGORY_SEXUALLY_EXPLICIT";
+  | "HARM_CATEGORY_SEXUALLY_EXPLICIT"
+  | (string & {});
 export const SafetySettingCategoryEnum = /*@__PURE__*/ S.String;
 
 /** Safety setting for a single harm category. */
@@ -619,7 +626,8 @@ export const AdvancedVoiceOptions = /*@__PURE__*/ S.suspend(() =>
 
 export type SynthesizeSpeechRequestEnableTimePointingItemEnum =
   | "TIMEPOINT_TYPE_UNSPECIFIED"
-  | "SSML_MARK";
+  | "SSML_MARK"
+  | (string & {});
 export const SynthesizeSpeechRequestEnableTimePointingItemEnum =
   /*@__PURE__*/ S.String;
 

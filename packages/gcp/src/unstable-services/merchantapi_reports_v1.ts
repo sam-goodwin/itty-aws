@@ -120,13 +120,15 @@ export const Merchantapi_Date = /*@__PURE__*/ S.suspend(() =>
 export type ProductPerformanceViewMarketingMethodEnum =
   | "MARKETING_METHOD_ENUM_UNSPECIFIED"
   | "ORGANIC"
-  | "ADS";
+  | "ADS"
+  | (string & {});
 export const ProductPerformanceViewMarketingMethodEnum = /*@__PURE__*/ S.String;
 
 export type ProductPerformanceViewStoreTypeEnum =
   | "STORE_TYPE_ENUM_UNSPECIFIED"
   | "ONLINE_STORE"
-  | "LOCAL_STORES";
+  | "LOCAL_STORES"
+  | (string & {});
 export const ProductPerformanceViewStoreTypeEnum = /*@__PURE__*/ S.String;
 
 /** The price represented as a number and currency. */
@@ -269,7 +271,8 @@ export type PriceInsightsProductViewEffectivenessEnum =
   | "EFFECTIVENESS_UNSPECIFIED"
   | "LOW"
   | "MEDIUM"
-  | "HIGH";
+  | "HIGH"
+  | (string & {});
 export const PriceInsightsProductViewEffectivenessEnum = /*@__PURE__*/ S.String;
 
 /** Fields available for query in `price_insights_product_view` table. [Price insights](https://support.google.com/merchants/answer/11916926) report. Values are only set for fields requested explicitly in the request's search query. */
@@ -346,14 +349,16 @@ export type BestSellersBrandViewRelativeDemandChangeEnum =
   | "RELATIVE_DEMAND_CHANGE_TYPE_ENUM_UNSPECIFIED"
   | "SINKER"
   | "FLAT"
-  | "RISER";
+  | "RISER"
+  | (string & {});
 export const BestSellersBrandViewRelativeDemandChangeEnum =
   /*@__PURE__*/ S.String;
 
 export type BestSellersBrandViewReportGranularityEnum =
   | "REPORT_GRANULARITY_ENUM_UNSPECIFIED"
   | "WEEKLY"
-  | "MONTHLY";
+  | "MONTHLY"
+  | (string & {});
 export const BestSellersBrandViewReportGranularityEnum = /*@__PURE__*/ S.String;
 
 export type BestSellersBrandViewRelativeDemandEnum =
@@ -362,7 +367,8 @@ export type BestSellersBrandViewRelativeDemandEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "VERY_HIGH";
+  | "VERY_HIGH"
+  | (string & {});
 export const BestSellersBrandViewRelativeDemandEnum = /*@__PURE__*/ S.String;
 
 export type BestSellersBrandViewPreviousRelativeDemandEnum =
@@ -371,7 +377,8 @@ export type BestSellersBrandViewPreviousRelativeDemandEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "VERY_HIGH";
+  | "VERY_HIGH"
+  | (string & {});
 export const BestSellersBrandViewPreviousRelativeDemandEnum =
   /*@__PURE__*/ S.String;
 
@@ -423,7 +430,8 @@ export type CompetitiveVisibilityBenchmarkViewTrafficSourceEnum =
   | "TRAFFIC_SOURCE_ENUM_UNSPECIFIED"
   | "ORGANIC"
   | "ADS"
-  | "ALL";
+  | "ALL"
+  | (string & {});
 export const CompetitiveVisibilityBenchmarkViewTrafficSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -463,7 +471,8 @@ export type BestSellersProductClusterViewPreviousRelativeDemandEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "VERY_HIGH";
+  | "VERY_HIGH"
+  | (string & {});
 export const BestSellersProductClusterViewPreviousRelativeDemandEnum =
   /*@__PURE__*/ S.String;
 
@@ -471,7 +480,8 @@ export type BestSellersProductClusterViewInventoryStatusEnum =
   | "INVENTORY_STATUS_UNSPECIFIED"
   | "IN_STOCK"
   | "OUT_OF_STOCK"
-  | "NOT_IN_INVENTORY";
+  | "NOT_IN_INVENTORY"
+  | (string & {});
 export const BestSellersProductClusterViewInventoryStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -481,14 +491,16 @@ export type BestSellersProductClusterViewRelativeDemandEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "VERY_HIGH";
+  | "VERY_HIGH"
+  | (string & {});
 export const BestSellersProductClusterViewRelativeDemandEnum =
   /*@__PURE__*/ S.String;
 
 export type BestSellersProductClusterViewReportGranularityEnum =
   | "REPORT_GRANULARITY_ENUM_UNSPECIFIED"
   | "WEEKLY"
-  | "MONTHLY";
+  | "MONTHLY"
+  | (string & {});
 export const BestSellersProductClusterViewReportGranularityEnum =
   /*@__PURE__*/ S.String;
 
@@ -496,7 +508,8 @@ export type BestSellersProductClusterViewBrandInventoryStatusEnum =
   | "INVENTORY_STATUS_UNSPECIFIED"
   | "IN_STOCK"
   | "OUT_OF_STOCK"
-  | "NOT_IN_INVENTORY";
+  | "NOT_IN_INVENTORY"
+  | (string & {});
 export const BestSellersProductClusterViewBrandInventoryStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -509,7 +522,8 @@ export type BestSellersProductClusterViewRelativeDemandChangeEnum =
   | "RELATIVE_DEMAND_CHANGE_TYPE_ENUM_UNSPECIFIED"
   | "SINKER"
   | "FLAT"
-  | "RISER";
+  | "RISER"
+  | (string & {});
 export const BestSellersProductClusterViewRelativeDemandChangeEnum =
   /*@__PURE__*/ S.String;
 
@@ -594,7 +608,8 @@ export type CompetitiveVisibilityTopMerchantViewTrafficSourceEnum =
   | "TRAFFIC_SOURCE_ENUM_UNSPECIFIED"
   | "ORGANIC"
   | "ADS"
-  | "ALL";
+  | "ALL"
+  | (string & {});
 export const CompetitiveVisibilityTopMerchantViewTrafficSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -645,7 +660,8 @@ export type CompetitiveVisibilityCompetitorViewTrafficSourceEnum =
   | "TRAFFIC_SOURCE_ENUM_UNSPECIFIED"
   | "ORGANIC"
   | "ADS"
-  | "ALL";
+  | "ALL"
+  | (string & {});
 export const CompetitiveVisibilityCompetitorViewTrafficSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -759,7 +775,8 @@ export type ProductViewClickPotentialEnum =
   | "CLICK_POTENTIAL_UNSPECIFIED"
   | "LOW"
   | "MEDIUM"
-  | "HIGH";
+  | "HIGH"
+  | (string & {});
 export const ProductViewClickPotentialEnum = /*@__PURE__*/ S.String;
 
 export type ProductViewReportingContextEnum =
@@ -782,7 +799,8 @@ export type ProductViewReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT";
+  | "YOUTUBE_CHECKOUT"
+  | (string & {});
 export const ProductViewReportingContextEnum = /*@__PURE__*/ S.String;
 
 export type ProductViewAggregatedReportingContextStatusEnum =
@@ -790,7 +808,8 @@ export type ProductViewAggregatedReportingContextStatusEnum =
   | "NOT_ELIGIBLE_OR_DISAPPROVED"
   | "PENDING"
   | "ELIGIBLE_LIMITED"
-  | "ELIGIBLE";
+  | "ELIGIBLE"
+  | (string & {});
 export const ProductViewAggregatedReportingContextStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -814,7 +833,8 @@ export type StatusPerReportingContextReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT";
+  | "YOUTUBE_CHECKOUT"
+  | (string & {});
 export const StatusPerReportingContextReportingContextEnum =
   /*@__PURE__*/ S.String;
 
@@ -863,7 +883,8 @@ export const ItemIssueType = /*@__PURE__*/ S.suspend(() =>
 export type ItemIssueResolutionEnum =
   | "ITEM_ISSUE_RESOLUTION_UNSPECIFIED"
   | "MERCHANT_ACTION"
-  | "PENDING_PROCESSING";
+  | "PENDING_PROCESSING"
+  | (string & {});
 export const ItemIssueResolutionEnum = /*@__PURE__*/ S.String;
 
 export type IssueSeverityPerReportingContextReportingContextEnum =
@@ -886,7 +907,8 @@ export type IssueSeverityPerReportingContextReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT";
+  | "YOUTUBE_CHECKOUT"
+  | (string & {});
 export const IssueSeverityPerReportingContextReportingContextEnum =
   /*@__PURE__*/ S.String;
 
@@ -921,7 +943,8 @@ export type ItemIssueSeverityAggregatedSeverityEnum =
   | "AGGREGATED_ISSUE_SEVERITY_UNSPECIFIED"
   | "DISAPPROVED"
   | "DEMOTED"
-  | "PENDING";
+  | "PENDING"
+  | (string & {});
 export const ItemIssueSeverityAggregatedSeverityEnum = /*@__PURE__*/ S.String;
 
 /** How the issue affects the serving of the product. */
@@ -967,7 +990,8 @@ export const ItemIssueList = /*@__PURE__*/ S.Array(
 export type ProductViewChannelEnum =
   | "CHANNEL_ENUM_UNSPECIFIED"
   | "ONLINE"
-  | "LOCAL";
+  | "LOCAL"
+  | (string & {});
 export const ProductViewChannelEnum = /*@__PURE__*/ S.String;
 
 /** Fields available for query in `product_view` table. Products in the current inventory. Products in this table are the same as a [Product resource in Products sub-API](https://developers.google.com/merchant/api/reference/rest/products_v1/accounts.products) but not all product attributes from Products sub-API are available for query in this table. In contrast to Products sub-API, this table allows to filter the returned list of products by product attributes. To retrieve a single product by `id` or list all products, Products sub-API should be used. Values are only set for fields requested explicitly in the request's search query. */

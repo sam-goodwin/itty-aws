@@ -125,7 +125,8 @@ export type MerchantReviewAttributesCollectionMethodEnum =
   | "COLLECTION_METHOD_UNSPECIFIED"
   | "MERCHANT_UNSOLICITED"
   | "POINT_OF_SALE"
-  | "AFTER_FULFILLMENT";
+  | "AFTER_FULFILLMENT"
+  | (string & {});
 export const MerchantReviewAttributesCollectionMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -207,7 +208,8 @@ export type MerchantReviewDestinationStatusReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT";
+  | "YOUTUBE_CHECKOUT"
+  | (string & {});
 export const MerchantReviewDestinationStatusReportingContextEnum =
   /*@__PURE__*/ S.String;
 
@@ -252,14 +254,16 @@ export type MerchantReviewItemLevelIssueReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT";
+  | "YOUTUBE_CHECKOUT"
+  | (string & {});
 export const MerchantReviewItemLevelIssueReportingContextEnum =
   /*@__PURE__*/ S.String;
 
 export type MerchantReviewItemLevelIssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "NOT_IMPACTED"
-  | "DISAPPROVED";
+  | "DISAPPROVED"
+  | (string & {});
 export const MerchantReviewItemLevelIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** The ItemLevelIssue of the merchant review status. */
@@ -394,7 +398,11 @@ export const GetAccountsProductReviewsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAccountsProductReviewsRequest",
 }) as any as S.Schema<GetAccountsProductReviewsRequest>;
 
-export type ReviewLinkTypeEnum = "TYPE_UNSPECIFIED" | "SINGLETON" | "GROUP";
+export type ReviewLinkTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "SINGLETON"
+  | "GROUP"
+  | (string & {});
 export const ReviewLinkTypeEnum = /*@__PURE__*/ S.String;
 
 /** The URI of the review landing page. */
@@ -419,7 +427,8 @@ export const StringList = /*@__PURE__*/ S.Array(
 export type ProductReviewAttributesCollectionMethodEnum =
   | "COLLECTION_METHOD_UNSPECIFIED"
   | "UNSOLICITED"
-  | "POST_FULFILLMENT";
+  | "POST_FULFILLMENT"
+  | (string & {});
 export const ProductReviewAttributesCollectionMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -546,7 +555,8 @@ export type ProductReviewDestinationStatusReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT";
+  | "YOUTUBE_CHECKOUT"
+  | (string & {});
 export const ProductReviewDestinationStatusReportingContextEnum =
   /*@__PURE__*/ S.String;
 
@@ -591,14 +601,16 @@ export type ProductReviewItemLevelIssueReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT";
+  | "YOUTUBE_CHECKOUT"
+  | (string & {});
 export const ProductReviewItemLevelIssueReportingContextEnum =
   /*@__PURE__*/ S.String;
 
 export type ProductReviewItemLevelIssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "NOT_IMPACTED"
-  | "DISAPPROVED";
+  | "DISAPPROVED"
+  | (string & {});
 export const ProductReviewItemLevelIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** The ItemLevelIssue of the product review status. */

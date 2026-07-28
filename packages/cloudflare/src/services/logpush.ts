@@ -154,13 +154,17 @@ export type JobsCreateForAccountRequestDataset =
   | "websocket_analytics"
   | "workers_trace_events"
   | "zaraz_events"
-  | "zero_trust_network_sessions";
+  | "zero_trust_network_sessions"
+  | (string & {});
 export const JobsCreateForAccountRequestDataset = /*@__PURE__*/ S.String;
 
-export type JobsCreateForAccountRequestFrequency = "high" | "low";
+export type JobsCreateForAccountRequestFrequency =
+  | "high"
+  | "low"
+  | (string & {});
 export const JobsCreateForAccountRequestFrequency = /*@__PURE__*/ S.String;
 
-export type JobsCreateForAccountRequestKind = "" | "edge";
+export type JobsCreateForAccountRequestKind = "" | "edge" | (string & {});
 export const JobsCreateForAccountRequestKind = /*@__PURE__*/ S.String;
 
 export type JobsCreateForAccountRequestOutputOptionsFieldNamesList =
@@ -172,7 +176,8 @@ export const JobsCreateForAccountRequestOutputOptionsFieldNamesList =
 
 export type JobsCreateForAccountRequestOutputOptionsOutputType =
   | "ndjson"
-  | "csv";
+  | "csv"
+  | (string & {});
 export const JobsCreateForAccountRequestOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -181,7 +186,8 @@ export type JobsCreateForAccountRequestOutputOptionsTimestampFormat =
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
-  | "rfc3339ns";
+  | "rfc3339ns"
+  | (string & {});
 export const JobsCreateForAccountRequestOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -346,13 +352,17 @@ export type JobsCreateForAccountResponseDataset =
   | "websocket_analytics"
   | "workers_trace_events"
   | "zaraz_events"
-  | "zero_trust_network_sessions";
+  | "zero_trust_network_sessions"
+  | (string & {});
 export const JobsCreateForAccountResponseDataset = /*@__PURE__*/ S.String;
 
-export type JobsCreateForAccountResponseFrequency = "high" | "low";
+export type JobsCreateForAccountResponseFrequency =
+  | "high"
+  | "low"
+  | (string & {});
 export const JobsCreateForAccountResponseFrequency = /*@__PURE__*/ S.String;
 
-export type JobsCreateForAccountResponseKind = "" | "edge";
+export type JobsCreateForAccountResponseKind = "" | "edge" | (string & {});
 export const JobsCreateForAccountResponseKind = /*@__PURE__*/ S.String;
 
 export type JobsCreateForAccountResponseOutputOptionsFieldNamesList =
@@ -364,7 +374,8 @@ export const JobsCreateForAccountResponseOutputOptionsFieldNamesList =
 
 export type JobsCreateForAccountResponseOutputOptionsOutputType =
   | "ndjson"
-  | "csv";
+  | "csv"
+  | (string & {});
 export const JobsCreateForAccountResponseOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -373,7 +384,8 @@ export type JobsCreateForAccountResponseOutputOptionsTimestampFormat =
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
-  | "rfc3339ns";
+  | "rfc3339ns"
+  | (string & {});
 export const JobsCreateForAccountResponseOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -532,13 +544,14 @@ export type JobsCreateForZoneRequestDataset =
   | "websocket_analytics"
   | "workers_trace_events"
   | "zaraz_events"
-  | "zero_trust_network_sessions";
+  | "zero_trust_network_sessions"
+  | (string & {});
 export const JobsCreateForZoneRequestDataset = /*@__PURE__*/ S.String;
 
-export type JobsCreateForZoneRequestFrequency = "high" | "low";
+export type JobsCreateForZoneRequestFrequency = "high" | "low" | (string & {});
 export const JobsCreateForZoneRequestFrequency = /*@__PURE__*/ S.String;
 
-export type JobsCreateForZoneRequestKind = "" | "edge";
+export type JobsCreateForZoneRequestKind = "" | "edge" | (string & {});
 export const JobsCreateForZoneRequestKind = /*@__PURE__*/ S.String;
 
 export type JobsCreateForZoneRequestOutputOptionsFieldNamesList =
@@ -548,7 +561,10 @@ export const JobsCreateForZoneRequestOutputOptionsFieldNamesList =
     S.String,
   ) as any as S.Schema<JobsCreateForZoneRequestOutputOptionsFieldNamesList>;
 
-export type JobsCreateForZoneRequestOutputOptionsOutputType = "ndjson" | "csv";
+export type JobsCreateForZoneRequestOutputOptionsOutputType =
+  | "ndjson"
+  | "csv"
+  | (string & {});
 export const JobsCreateForZoneRequestOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -557,7 +573,8 @@ export type JobsCreateForZoneRequestOutputOptionsTimestampFormat =
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
-  | "rfc3339ns";
+  | "rfc3339ns"
+  | (string & {});
 export const JobsCreateForZoneRequestOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -722,13 +739,14 @@ export type JobsCreateForZoneResponseDataset =
   | "websocket_analytics"
   | "workers_trace_events"
   | "zaraz_events"
-  | "zero_trust_network_sessions";
+  | "zero_trust_network_sessions"
+  | (string & {});
 export const JobsCreateForZoneResponseDataset = /*@__PURE__*/ S.String;
 
-export type JobsCreateForZoneResponseFrequency = "high" | "low";
+export type JobsCreateForZoneResponseFrequency = "high" | "low" | (string & {});
 export const JobsCreateForZoneResponseFrequency = /*@__PURE__*/ S.String;
 
-export type JobsCreateForZoneResponseKind = "" | "edge";
+export type JobsCreateForZoneResponseKind = "" | "edge" | (string & {});
 export const JobsCreateForZoneResponseKind = /*@__PURE__*/ S.String;
 
 export type JobsCreateForZoneResponseOutputOptionsFieldNamesList =
@@ -738,7 +756,10 @@ export const JobsCreateForZoneResponseOutputOptionsFieldNamesList =
     S.String,
   ) as any as S.Schema<JobsCreateForZoneResponseOutputOptionsFieldNamesList>;
 
-export type JobsCreateForZoneResponseOutputOptionsOutputType = "ndjson" | "csv";
+export type JobsCreateForZoneResponseOutputOptionsOutputType =
+  | "ndjson"
+  | "csv"
+  | (string & {});
 export const JobsCreateForZoneResponseOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -747,7 +768,8 @@ export type JobsCreateForZoneResponseOutputOptionsTimestampFormat =
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
-  | "rfc3339ns";
+  | "rfc3339ns"
+  | (string & {});
 export const JobsCreateForZoneResponseOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -1206,7 +1228,8 @@ export type DatasetsFieldsGetForAccountRequestDatasetId =
   | "websocket_analytics"
   | "workers_trace_events"
   | "zaraz_events"
-  | "zero_trust_network_sessions";
+  | "zero_trust_network_sessions"
+  | (string & {});
 export const DatasetsFieldsGetForAccountRequestDatasetId =
   /*@__PURE__*/ S.String;
 
@@ -1277,7 +1300,8 @@ export type DatasetsFieldsGetForZoneRequestDatasetId =
   | "websocket_analytics"
   | "workers_trace_events"
   | "zaraz_events"
-  | "zero_trust_network_sessions";
+  | "zero_trust_network_sessions"
+  | (string & {});
 export const DatasetsFieldsGetForZoneRequestDatasetId = /*@__PURE__*/ S.String;
 
 export interface GetDatasetFieldForZoneRequest {
@@ -1347,7 +1371,8 @@ export type DatasetsJobsGetForAccountRequestDatasetId =
   | "websocket_analytics"
   | "workers_trace_events"
   | "zaraz_events"
-  | "zero_trust_network_sessions";
+  | "zero_trust_network_sessions"
+  | (string & {});
 export const DatasetsJobsGetForAccountRequestDatasetId = /*@__PURE__*/ S.String;
 
 export interface GetDatasetJobForAccountRequest {
@@ -1410,15 +1435,22 @@ export type DatasetsJobsGetForAccountResultItemDataset =
   | "websocket_analytics"
   | "workers_trace_events"
   | "zaraz_events"
-  | "zero_trust_network_sessions";
+  | "zero_trust_network_sessions"
+  | (string & {});
 export const DatasetsJobsGetForAccountResultItemDataset =
   /*@__PURE__*/ S.String;
 
-export type DatasetsJobsGetForAccountResultItemFrequency = "high" | "low";
+export type DatasetsJobsGetForAccountResultItemFrequency =
+  | "high"
+  | "low"
+  | (string & {});
 export const DatasetsJobsGetForAccountResultItemFrequency =
   /*@__PURE__*/ S.String;
 
-export type DatasetsJobsGetForAccountResultItemKind = "" | "edge";
+export type DatasetsJobsGetForAccountResultItemKind =
+  | ""
+  | "edge"
+  | (string & {});
 export const DatasetsJobsGetForAccountResultItemKind = /*@__PURE__*/ S.String;
 
 export type DatasetsJobsGetForAccountResultItemOutputOptionsFieldNamesList =
@@ -1430,7 +1462,8 @@ export const DatasetsJobsGetForAccountResultItemOutputOptionsFieldNamesList =
 
 export type DatasetsJobsGetForAccountResultItemOutputOptionsOutputType =
   | "ndjson"
-  | "csv";
+  | "csv"
+  | (string & {});
 export const DatasetsJobsGetForAccountResultItemOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -1439,7 +1472,8 @@ export type DatasetsJobsGetForAccountResultItemOutputOptionsTimestampFormat =
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
-  | "rfc3339ns";
+  | "rfc3339ns"
+  | (string & {});
 export const DatasetsJobsGetForAccountResultItemOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -1620,7 +1654,8 @@ export type DatasetsJobsGetForZoneRequestDatasetId =
   | "websocket_analytics"
   | "workers_trace_events"
   | "zaraz_events"
-  | "zero_trust_network_sessions";
+  | "zero_trust_network_sessions"
+  | (string & {});
 export const DatasetsJobsGetForZoneRequestDatasetId = /*@__PURE__*/ S.String;
 
 export interface GetDatasetJobForZoneRequest {
@@ -1683,13 +1718,17 @@ export type DatasetsJobsGetForZoneResultItemDataset =
   | "websocket_analytics"
   | "workers_trace_events"
   | "zaraz_events"
-  | "zero_trust_network_sessions";
+  | "zero_trust_network_sessions"
+  | (string & {});
 export const DatasetsJobsGetForZoneResultItemDataset = /*@__PURE__*/ S.String;
 
-export type DatasetsJobsGetForZoneResultItemFrequency = "high" | "low";
+export type DatasetsJobsGetForZoneResultItemFrequency =
+  | "high"
+  | "low"
+  | (string & {});
 export const DatasetsJobsGetForZoneResultItemFrequency = /*@__PURE__*/ S.String;
 
-export type DatasetsJobsGetForZoneResultItemKind = "" | "edge";
+export type DatasetsJobsGetForZoneResultItemKind = "" | "edge" | (string & {});
 export const DatasetsJobsGetForZoneResultItemKind = /*@__PURE__*/ S.String;
 
 export type DatasetsJobsGetForZoneResultItemOutputOptionsFieldNamesList =
@@ -1701,7 +1740,8 @@ export const DatasetsJobsGetForZoneResultItemOutputOptionsFieldNamesList =
 
 export type DatasetsJobsGetForZoneResultItemOutputOptionsOutputType =
   | "ndjson"
-  | "csv";
+  | "csv"
+  | (string & {});
 export const DatasetsJobsGetForZoneResultItemOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -1710,7 +1750,8 @@ export type DatasetsJobsGetForZoneResultItemOutputOptionsTimestampFormat =
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
-  | "rfc3339ns";
+  | "rfc3339ns"
+  | (string & {});
 export const DatasetsJobsGetForZoneResultItemOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -1976,13 +2017,14 @@ export type JobsGetForAccountResponseDataset =
   | "websocket_analytics"
   | "workers_trace_events"
   | "zaraz_events"
-  | "zero_trust_network_sessions";
+  | "zero_trust_network_sessions"
+  | (string & {});
 export const JobsGetForAccountResponseDataset = /*@__PURE__*/ S.String;
 
-export type JobsGetForAccountResponseFrequency = "high" | "low";
+export type JobsGetForAccountResponseFrequency = "high" | "low" | (string & {});
 export const JobsGetForAccountResponseFrequency = /*@__PURE__*/ S.String;
 
-export type JobsGetForAccountResponseKind = "" | "edge";
+export type JobsGetForAccountResponseKind = "" | "edge" | (string & {});
 export const JobsGetForAccountResponseKind = /*@__PURE__*/ S.String;
 
 export type JobsGetForAccountResponseOutputOptionsFieldNamesList =
@@ -1992,7 +2034,10 @@ export const JobsGetForAccountResponseOutputOptionsFieldNamesList =
     S.String,
   ) as any as S.Schema<JobsGetForAccountResponseOutputOptionsFieldNamesList>;
 
-export type JobsGetForAccountResponseOutputOptionsOutputType = "ndjson" | "csv";
+export type JobsGetForAccountResponseOutputOptionsOutputType =
+  | "ndjson"
+  | "csv"
+  | (string & {});
 export const JobsGetForAccountResponseOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -2001,7 +2046,8 @@ export type JobsGetForAccountResponseOutputOptionsTimestampFormat =
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
-  | "rfc3339ns";
+  | "rfc3339ns"
+  | (string & {});
 export const JobsGetForAccountResponseOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -2183,13 +2229,14 @@ export type JobsGetForZoneResponseDataset =
   | "websocket_analytics"
   | "workers_trace_events"
   | "zaraz_events"
-  | "zero_trust_network_sessions";
+  | "zero_trust_network_sessions"
+  | (string & {});
 export const JobsGetForZoneResponseDataset = /*@__PURE__*/ S.String;
 
-export type JobsGetForZoneResponseFrequency = "high" | "low";
+export type JobsGetForZoneResponseFrequency = "high" | "low" | (string & {});
 export const JobsGetForZoneResponseFrequency = /*@__PURE__*/ S.String;
 
-export type JobsGetForZoneResponseKind = "" | "edge";
+export type JobsGetForZoneResponseKind = "" | "edge" | (string & {});
 export const JobsGetForZoneResponseKind = /*@__PURE__*/ S.String;
 
 export type JobsGetForZoneResponseOutputOptionsFieldNamesList =
@@ -2199,7 +2246,10 @@ export const JobsGetForZoneResponseOutputOptionsFieldNamesList =
     S.String,
   ) as any as S.Schema<JobsGetForZoneResponseOutputOptionsFieldNamesList>;
 
-export type JobsGetForZoneResponseOutputOptionsOutputType = "ndjson" | "csv";
+export type JobsGetForZoneResponseOutputOptionsOutputType =
+  | "ndjson"
+  | "csv"
+  | (string & {});
 export const JobsGetForZoneResponseOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -2208,7 +2258,8 @@ export type JobsGetForZoneResponseOutputOptionsTimestampFormat =
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
-  | "rfc3339ns";
+  | "rfc3339ns"
+  | (string & {});
 export const JobsGetForZoneResponseOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -2384,13 +2435,17 @@ export type JobsListForAccountResultItemDataset =
   | "websocket_analytics"
   | "workers_trace_events"
   | "zaraz_events"
-  | "zero_trust_network_sessions";
+  | "zero_trust_network_sessions"
+  | (string & {});
 export const JobsListForAccountResultItemDataset = /*@__PURE__*/ S.String;
 
-export type JobsListForAccountResultItemFrequency = "high" | "low";
+export type JobsListForAccountResultItemFrequency =
+  | "high"
+  | "low"
+  | (string & {});
 export const JobsListForAccountResultItemFrequency = /*@__PURE__*/ S.String;
 
-export type JobsListForAccountResultItemKind = "" | "edge";
+export type JobsListForAccountResultItemKind = "" | "edge" | (string & {});
 export const JobsListForAccountResultItemKind = /*@__PURE__*/ S.String;
 
 export type JobsListForAccountResultItemOutputOptionsFieldNamesList =
@@ -2402,7 +2457,8 @@ export const JobsListForAccountResultItemOutputOptionsFieldNamesList =
 
 export type JobsListForAccountResultItemOutputOptionsOutputType =
   | "ndjson"
-  | "csv";
+  | "csv"
+  | (string & {});
 export const JobsListForAccountResultItemOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -2411,7 +2467,8 @@ export type JobsListForAccountResultItemOutputOptionsTimestampFormat =
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
-  | "rfc3339ns";
+  | "rfc3339ns"
+  | (string & {});
 export const JobsListForAccountResultItemOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -2610,13 +2667,14 @@ export type JobsListForZoneResultItemDataset =
   | "websocket_analytics"
   | "workers_trace_events"
   | "zaraz_events"
-  | "zero_trust_network_sessions";
+  | "zero_trust_network_sessions"
+  | (string & {});
 export const JobsListForZoneResultItemDataset = /*@__PURE__*/ S.String;
 
-export type JobsListForZoneResultItemFrequency = "high" | "low";
+export type JobsListForZoneResultItemFrequency = "high" | "low" | (string & {});
 export const JobsListForZoneResultItemFrequency = /*@__PURE__*/ S.String;
 
-export type JobsListForZoneResultItemKind = "" | "edge";
+export type JobsListForZoneResultItemKind = "" | "edge" | (string & {});
 export const JobsListForZoneResultItemKind = /*@__PURE__*/ S.String;
 
 export type JobsListForZoneResultItemOutputOptionsFieldNamesList =
@@ -2626,7 +2684,10 @@ export const JobsListForZoneResultItemOutputOptionsFieldNamesList =
     S.String,
   ) as any as S.Schema<JobsListForZoneResultItemOutputOptionsFieldNamesList>;
 
-export type JobsListForZoneResultItemOutputOptionsOutputType = "ndjson" | "csv";
+export type JobsListForZoneResultItemOutputOptionsOutputType =
+  | "ndjson"
+  | "csv"
+  | (string & {});
 export const JobsListForZoneResultItemOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -2635,7 +2696,8 @@ export type JobsListForZoneResultItemOutputOptionsTimestampFormat =
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
-  | "rfc3339ns";
+  | "rfc3339ns"
+  | (string & {});
 export const JobsListForZoneResultItemOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -2853,10 +2915,13 @@ export const OriginValidateForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OriginValidateForZoneResponse",
 }) as any as S.Schema<OriginValidateForZoneResponse>;
 
-export type JobsUpdateForAccountRequestFrequency = "high" | "low";
+export type JobsUpdateForAccountRequestFrequency =
+  | "high"
+  | "low"
+  | (string & {});
 export const JobsUpdateForAccountRequestFrequency = /*@__PURE__*/ S.String;
 
-export type JobsUpdateForAccountRequestKind = "" | "edge";
+export type JobsUpdateForAccountRequestKind = "" | "edge" | (string & {});
 export const JobsUpdateForAccountRequestKind = /*@__PURE__*/ S.String;
 
 export type JobsUpdateForAccountRequestOutputOptionsFieldNamesList =
@@ -2868,7 +2933,8 @@ export const JobsUpdateForAccountRequestOutputOptionsFieldNamesList =
 
 export type JobsUpdateForAccountRequestOutputOptionsOutputType =
   | "ndjson"
-  | "csv";
+  | "csv"
+  | (string & {});
 export const JobsUpdateForAccountRequestOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -2877,7 +2943,8 @@ export type JobsUpdateForAccountRequestOutputOptionsTimestampFormat =
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
-  | "rfc3339ns";
+  | "rfc3339ns"
+  | (string & {});
 export const JobsUpdateForAccountRequestOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -3042,13 +3109,17 @@ export type JobsUpdateForAccountResponseDataset =
   | "websocket_analytics"
   | "workers_trace_events"
   | "zaraz_events"
-  | "zero_trust_network_sessions";
+  | "zero_trust_network_sessions"
+  | (string & {});
 export const JobsUpdateForAccountResponseDataset = /*@__PURE__*/ S.String;
 
-export type JobsUpdateForAccountResponseFrequency = "high" | "low";
+export type JobsUpdateForAccountResponseFrequency =
+  | "high"
+  | "low"
+  | (string & {});
 export const JobsUpdateForAccountResponseFrequency = /*@__PURE__*/ S.String;
 
-export type JobsUpdateForAccountResponseKind = "" | "edge";
+export type JobsUpdateForAccountResponseKind = "" | "edge" | (string & {});
 export const JobsUpdateForAccountResponseKind = /*@__PURE__*/ S.String;
 
 export type JobsUpdateForAccountResponseOutputOptionsFieldNamesList =
@@ -3060,7 +3131,8 @@ export const JobsUpdateForAccountResponseOutputOptionsFieldNamesList =
 
 export type JobsUpdateForAccountResponseOutputOptionsOutputType =
   | "ndjson"
-  | "csv";
+  | "csv"
+  | (string & {});
 export const JobsUpdateForAccountResponseOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -3069,7 +3141,8 @@ export type JobsUpdateForAccountResponseOutputOptionsTimestampFormat =
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
-  | "rfc3339ns";
+  | "rfc3339ns"
+  | (string & {});
 export const JobsUpdateForAccountResponseOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -3193,10 +3266,10 @@ export const UpdateJobForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateJobForAccountResponse",
 }) as any as S.Schema<UpdateJobForAccountResponse>;
 
-export type JobsUpdateForZoneRequestFrequency = "high" | "low";
+export type JobsUpdateForZoneRequestFrequency = "high" | "low" | (string & {});
 export const JobsUpdateForZoneRequestFrequency = /*@__PURE__*/ S.String;
 
-export type JobsUpdateForZoneRequestKind = "" | "edge";
+export type JobsUpdateForZoneRequestKind = "" | "edge" | (string & {});
 export const JobsUpdateForZoneRequestKind = /*@__PURE__*/ S.String;
 
 export type JobsUpdateForZoneRequestOutputOptionsFieldNamesList =
@@ -3206,7 +3279,10 @@ export const JobsUpdateForZoneRequestOutputOptionsFieldNamesList =
     S.String,
   ) as any as S.Schema<JobsUpdateForZoneRequestOutputOptionsFieldNamesList>;
 
-export type JobsUpdateForZoneRequestOutputOptionsOutputType = "ndjson" | "csv";
+export type JobsUpdateForZoneRequestOutputOptionsOutputType =
+  | "ndjson"
+  | "csv"
+  | (string & {});
 export const JobsUpdateForZoneRequestOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -3215,7 +3291,8 @@ export type JobsUpdateForZoneRequestOutputOptionsTimestampFormat =
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
-  | "rfc3339ns";
+  | "rfc3339ns"
+  | (string & {});
 export const JobsUpdateForZoneRequestOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -3380,13 +3457,14 @@ export type JobsUpdateForZoneResponseDataset =
   | "websocket_analytics"
   | "workers_trace_events"
   | "zaraz_events"
-  | "zero_trust_network_sessions";
+  | "zero_trust_network_sessions"
+  | (string & {});
 export const JobsUpdateForZoneResponseDataset = /*@__PURE__*/ S.String;
 
-export type JobsUpdateForZoneResponseFrequency = "high" | "low";
+export type JobsUpdateForZoneResponseFrequency = "high" | "low" | (string & {});
 export const JobsUpdateForZoneResponseFrequency = /*@__PURE__*/ S.String;
 
-export type JobsUpdateForZoneResponseKind = "" | "edge";
+export type JobsUpdateForZoneResponseKind = "" | "edge" | (string & {});
 export const JobsUpdateForZoneResponseKind = /*@__PURE__*/ S.String;
 
 export type JobsUpdateForZoneResponseOutputOptionsFieldNamesList =
@@ -3396,7 +3474,10 @@ export const JobsUpdateForZoneResponseOutputOptionsFieldNamesList =
     S.String,
   ) as any as S.Schema<JobsUpdateForZoneResponseOutputOptionsFieldNamesList>;
 
-export type JobsUpdateForZoneResponseOutputOptionsOutputType = "ndjson" | "csv";
+export type JobsUpdateForZoneResponseOutputOptionsOutputType =
+  | "ndjson"
+  | "csv"
+  | (string & {});
 export const JobsUpdateForZoneResponseOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -3405,7 +3486,8 @@ export type JobsUpdateForZoneResponseOutputOptionsTimestampFormat =
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
-  | "rfc3339ns";
+  | "rfc3339ns"
+  | (string & {});
 export const JobsUpdateForZoneResponseOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 

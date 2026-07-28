@@ -127,7 +127,8 @@ export type CancelTestMatrixResponseTestStateEnum =
   | "INCOMPATIBLE_ENVIRONMENT"
   | "INCOMPATIBLE_ARCHITECTURE"
   | "CANCELLED"
-  | "INVALID";
+  | "INVALID"
+  | (string & {});
 export const CancelTestMatrixResponseTestStateEnum = /*@__PURE__*/ S.String;
 
 /** Response containing the current state of the specified test matrix. */
@@ -151,7 +152,8 @@ export type SessionStateEventSessionStateEnum =
   | "EXPIRED"
   | "FINISHED"
   | "UNAVAILABLE"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const SessionStateEventSessionStateEnum = /*@__PURE__*/ S.String;
 
 /** A message encapsulating a series of Session states and the time that the DeviceSession first entered those states. */
@@ -186,7 +188,8 @@ export type DeviceSessionStateEnum =
   | "EXPIRED"
   | "FINISHED"
   | "UNAVAILABLE"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const DeviceSessionStateEnum = /*@__PURE__*/ S.String;
 
 /** A single Android device. */
@@ -307,7 +310,8 @@ export type TestMatrixInvalidMatrixDetailsEnum =
   | "MATRIX_TOO_LARGE"
   | "TEST_QUOTA_EXCEEDED"
   | "SERVICE_NOT_ACTIVATED"
-  | "UNKNOWN_PERMISSION_ERROR";
+  | "UNKNOWN_PERMISSION_ERROR"
+  | (string & {});
 export const TestMatrixInvalidMatrixDetailsEnum = /*@__PURE__*/ S.String;
 
 /** A reference to a file, used for user inputs. */
@@ -346,7 +350,8 @@ export const IosTestLoop = /*@__PURE__*/ S.suspend(() =>
 export type AndroidInstrumentationTestOrchestratorOptionEnum =
   | "ORCHESTRATOR_OPTION_UNSPECIFIED"
   | "USE_ORCHESTRATOR"
-  | "DO_NOT_USE_ORCHESTRATOR";
+  | "DO_NOT_USE_ORCHESTRATOR"
+  | (string & {});
 export const AndroidInstrumentationTestOrchestratorOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -670,7 +675,8 @@ export type RoboDirectiveActionTypeEnum =
   | "ACTION_TYPE_UNSPECIFIED"
   | "SINGLE_CLICK"
   | "ENTER_TEXT"
-  | "IGNORE";
+  | "IGNORE"
+  | (string & {});
 export const RoboDirectiveActionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Directs Robo to interact with a specific UI element if it is encountered during the crawl. Currently, Robo can perform text entry or element click. */
@@ -760,7 +766,8 @@ export const RoboStartingIntentList = /*@__PURE__*/ S.Array(
 export type AndroidRoboTestRoboModeEnum =
   | "ROBO_MODE_UNSPECIFIED"
   | "ROBO_VERSION_1"
-  | "ROBO_VERSION_2";
+  | "ROBO_VERSION_2"
+  | (string & {});
 export const AndroidRoboTestRoboModeEnum = /*@__PURE__*/ S.String;
 
 /** A test of an android application that explores the application on a virtual or physical Android Device, finding culprits and crashes as it goes. */
@@ -933,7 +940,8 @@ export type TestMatrixOutcomeSummaryEnum =
   | "SUCCESS"
   | "FAILURE"
   | "INCONCLUSIVE"
-  | "SKIPPED";
+  | "SKIPPED"
+  | (string & {});
 export const TestMatrixOutcomeSummaryEnum = /*@__PURE__*/ S.String;
 
 export type TestMatrixStateEnum =
@@ -947,7 +955,8 @@ export type TestMatrixStateEnum =
   | "INCOMPATIBLE_ENVIRONMENT"
   | "INCOMPATIBLE_ARCHITECTURE"
   | "CANCELLED"
-  | "INVALID";
+  | "INVALID"
+  | (string & {});
 export const TestMatrixStateEnum = /*@__PURE__*/ S.String;
 
 /** Describes a single error or issue with a matrix. */
@@ -1143,7 +1152,8 @@ export type TestExecutionStateEnum =
   | "INCOMPATIBLE_ENVIRONMENT"
   | "INCOMPATIBLE_ARCHITECTURE"
   | "CANCELLED"
-  | "INVALID";
+  | "INVALID"
+  | (string & {});
 export const TestExecutionStateEnum = /*@__PURE__*/ S.String;
 
 /** The environment in which the test is run. */
@@ -1603,7 +1613,8 @@ export type GetTestEnvironmentCatalogEnvironmentTypeEnum =
   | "IOS"
   | "NETWORK_CONFIGURATION"
   | "PROVIDED_SOFTWARE"
-  | "DEVICE_IP_BLOCKS";
+  | "DEVICE_IP_BLOCKS"
+  | (string & {});
 export const GetTestEnvironmentCatalogEnvironmentTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1635,7 +1646,8 @@ export const GetTestEnvironmentCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type AndroidModelAccessDeniedReasonsItemEnum =
   | "ACCESS_DENIED_REASON_UNSPECIFIED"
-  | "EULA_NOT_ACCEPTED";
+  | "EULA_NOT_ACCEPTED"
+  | (string & {});
 export const AndroidModelAccessDeniedReasonsItemEnum = /*@__PURE__*/ S.String;
 
 export type AndroidModelAccessDeniedReasonsItemEnumList =
@@ -1666,7 +1678,8 @@ export type PerAndroidVersionInfoDeviceCapacityEnum =
   | "DEVICE_CAPACITY_HIGH"
   | "DEVICE_CAPACITY_MEDIUM"
   | "DEVICE_CAPACITY_LOW"
-  | "DEVICE_CAPACITY_NONE";
+  | "DEVICE_CAPACITY_NONE"
+  | (string & {});
 export const PerAndroidVersionInfoDeviceCapacityEnum = /*@__PURE__*/ S.String;
 
 /** A version-specific information of an Android model. */
@@ -1704,14 +1717,16 @@ export type AndroidModelFormFactorEnum =
   | "TV"
   | "AUTOMOTIVE"
   | "DESKTOP"
-  | "XR";
+  | "XR"
+  | (string & {});
 export const AndroidModelFormFactorEnum = /*@__PURE__*/ S.String;
 
 export type AndroidModelFormEnum =
   | "DEVICE_FORM_UNSPECIFIED"
   | "VIRTUAL"
   | "PHYSICAL"
-  | "EMULATOR";
+  | "EMULATOR"
+  | (string & {});
 export const AndroidModelFormEnum = /*@__PURE__*/ S.String;
 
 /** Lab specific information for a device. */
@@ -2005,7 +2020,8 @@ export type DeviceIpBlockFormEnum =
   | "DEVICE_FORM_UNSPECIFIED"
   | "VIRTUAL"
   | "PHYSICAL"
-  | "EMULATOR";
+  | "EMULATOR"
+  | (string & {});
 export const DeviceIpBlockFormEnum = /*@__PURE__*/ S.String;
 
 /** A single device IP block */
@@ -2051,7 +2067,8 @@ export type IosModelFormFactorEnum =
   | "TV"
   | "AUTOMOTIVE"
   | "DESKTOP"
-  | "XR";
+  | "XR"
+  | (string & {});
 export const IosModelFormFactorEnum = /*@__PURE__*/ S.String;
 
 export type PerIosVersionInfoDeviceCapacityEnum =
@@ -2059,7 +2076,8 @@ export type PerIosVersionInfoDeviceCapacityEnum =
   | "DEVICE_CAPACITY_HIGH"
   | "DEVICE_CAPACITY_MEDIUM"
   | "DEVICE_CAPACITY_LOW"
-  | "DEVICE_CAPACITY_NONE";
+  | "DEVICE_CAPACITY_NONE"
+  | (string & {});
 export const PerIosVersionInfoDeviceCapacityEnum = /*@__PURE__*/ S.String;
 
 /** A version-specific information of an iOS model. */

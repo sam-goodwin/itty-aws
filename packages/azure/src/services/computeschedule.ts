@@ -49,11 +49,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -143,14 +143,16 @@ export type ResourceOperationDetailsOpType =
   | "Unknown"
   | "Start"
   | "Deallocate"
-  | "Hibernate";
+  | "Hibernate"
+  | (string & {});
 export const ResourceOperationDetailsOpType = /*@__PURE__*/ S.String;
 
 /** Type of deadline of the operation */
 export type ResourceOperationDetailsDeadlineType =
   | "Unknown"
   | "InitiateAt"
-  | "CompleteBy";
+  | "CompleteBy"
+  | (string & {});
 export const ResourceOperationDetailsDeadlineType = /*@__PURE__*/ S.String;
 
 /** Current state of the operation */
@@ -163,7 +165,8 @@ export type ResourceOperationDetailsState =
   | "Succeeded"
   | "Failed"
   | "Cancelled"
-  | "Blocked";
+  | "Blocked"
+  | (string & {});
 export const ResourceOperationDetailsState = /*@__PURE__*/ S.String;
 
 /** These describe errors that occur at the resource level */
@@ -338,7 +341,8 @@ export const ResourceProvisionPayload = /*@__PURE__*/ S.suspend(() =>
 export type OptimizationPreference =
   | "Cost"
   | "Availability"
-  | "CostAvailabilityBalanced";
+  | "CostAvailabilityBalanced"
+  | (string & {});
 export const OptimizationPreference = /*@__PURE__*/ S.String;
 
 /** Extra details needed to run the user's request */
@@ -864,7 +868,11 @@ export const GetOperationStatusResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOperationStatusResponse>;
 
 /** The deadlinetype of the operation, this can either be InitiateAt or CompleteBy */
-export type ScheduleDeadlineType = "Unknown" | "InitiateAt" | "CompleteBy";
+export type ScheduleDeadlineType =
+  | "Unknown"
+  | "InitiateAt"
+  | "CompleteBy"
+  | (string & {});
 export const ScheduleDeadlineType = /*@__PURE__*/ S.String;
 
 /** The schedule details for the user request */

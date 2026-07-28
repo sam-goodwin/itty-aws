@@ -237,7 +237,7 @@ export const AssociateWhatsAppBusinessAccountInput = /*@__PURE__*/ S.suspend(
   identifier: "AssociateWhatsAppBusinessAccountInput",
 }) as any as S.Schema<AssociateWhatsAppBusinessAccountInput>;
 export type WhatsAppBusinessAccountName = string;
-export type RegistrationStatus = "COMPLETE" | "INCOMPLETE";
+export type RegistrationStatus = "COMPLETE" | "INCOMPLETE" | (string & {});
 export const RegistrationStatus = /*@__PURE__*/ S.String;
 
 export type LinkedWhatsAppPhoneNumberArn = string;
@@ -341,7 +341,8 @@ export type MetaFlowCategory =
   | "CONTACT_US"
   | "CUSTOMER_SUPPORT"
   | "SURVEY"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const MetaFlowCategory = /*@__PURE__*/ S.String;
 
 export type MetaFlowCategoryList = MetaFlowCategory[];

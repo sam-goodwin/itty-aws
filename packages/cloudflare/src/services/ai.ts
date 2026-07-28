@@ -376,7 +376,7 @@ export const ListFinetunesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFinetunesResponse",
 }) as any as S.Schema<ListFinetunesResponse>;
 
-export type ModelsListRequestFormat = "openrouter";
+export type ModelsListRequestFormat = "openrouter" | (string & {});
 export const ModelsListRequestFormat = /*@__PURE__*/ S.String;
 
 export interface ListModelsRequest {
@@ -517,7 +517,10 @@ export const RunRequestAudioList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<RunRequestAudioList>;
 
-export type RunRequestResponseFormatType = "json_object" | "json_schema";
+export type RunRequestResponseFormatType =
+  | "json_object"
+  | "json_schema"
+  | (string & {});
 export const RunRequestResponseFormatType = /*@__PURE__*/ S.String;
 
 export interface RunRequestResponseFormat {

@@ -277,7 +277,7 @@ export const InputParallelism = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InputParallelism",
 }) as any as S.Schema<InputParallelism>;
-export type RecordFormatType = "JSON" | "CSV";
+export type RecordFormatType = "JSON" | "CSV" | (string & {});
 export const RecordFormatType = /*@__PURE__*/ S.String;
 
 export type RecordRowPath = string;
@@ -439,7 +439,8 @@ export const KinesisFirehoseInputDescription = /*@__PURE__*/ S.suspend(() =>
 export type InputStartingPosition =
   | "NOW"
   | "TRIM_HORIZON"
-  | "LAST_STOPPED_POINT";
+  | "LAST_STOPPED_POINT"
+  | (string & {});
 export const InputStartingPosition = /*@__PURE__*/ S.String;
 
 export interface InputStartingPositionConfiguration {
@@ -873,7 +874,8 @@ export type RuntimeEnvironment =
   | "FLINK-1_18"
   | "FLINK-1_19"
   | "FLINK-1_20"
-  | "FLINK-2_2";
+  | "FLINK-2_2"
+  | (string & {});
 export const RuntimeEnvironment = /*@__PURE__*/ S.String;
 
 export type Inputs = Input[];
@@ -896,7 +898,7 @@ export const SqlApplicationConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SqlApplicationConfiguration",
 }) as any as S.Schema<SqlApplicationConfiguration>;
-export type ConfigurationType = "DEFAULT" | "CUSTOM";
+export type ConfigurationType = "DEFAULT" | "CUSTOM" | (string & {});
 export const ConfigurationType = /*@__PURE__*/ S.String;
 
 export type CheckpointInterval = number;
@@ -917,10 +919,15 @@ export const CheckpointConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CheckpointConfiguration",
 }) as any as S.Schema<CheckpointConfiguration>;
-export type MetricsLevel = "APPLICATION" | "TASK" | "OPERATOR" | "PARALLELISM";
+export type MetricsLevel =
+  | "APPLICATION"
+  | "TASK"
+  | "OPERATOR"
+  | "PARALLELISM"
+  | (string & {});
 export const MetricsLevel = /*@__PURE__*/ S.String;
 
-export type LogLevel = "INFO" | "WARN" | "ERROR" | "DEBUG";
+export type LogLevel = "INFO" | "WARN" | "ERROR" | "DEBUG" | (string & {});
 export const LogLevel = /*@__PURE__*/ S.String;
 
 export interface MonitoringConfiguration {
@@ -1022,7 +1029,7 @@ export const CodeContent = /*@__PURE__*/ S.suspend(() =>
     S3ContentLocation: S.optional(S3ContentLocation),
   }),
 ).annotate({ identifier: "CodeContent" }) as any as S.Schema<CodeContent>;
-export type CodeContentType = "PLAINTEXT" | "ZIPFILE";
+export type CodeContentType = "PLAINTEXT" | "ZIPFILE" | (string & {});
 export const CodeContentType = /*@__PURE__*/ S.String;
 
 export interface ApplicationCodeConfiguration {
@@ -1098,7 +1105,7 @@ export const DeployAsApplicationConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeployAsApplicationConfiguration",
 }) as any as S.Schema<DeployAsApplicationConfiguration>;
-export type ArtifactType = "UDF" | "DEPENDENCY_JAR";
+export type ArtifactType = "UDF" | "DEPENDENCY_JAR" | (string & {});
 export const ArtifactType = /*@__PURE__*/ S.String;
 
 export type MavenGroupId = string;
@@ -1149,7 +1156,7 @@ export const ZeppelinApplicationConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ZeppelinApplicationConfiguration",
 }) as any as S.Schema<ZeppelinApplicationConfiguration>;
 export type KeyId = string;
-export type KeyType = "AWS_OWNED_KEY" | "CUSTOMER_MANAGED_KEY";
+export type KeyType = "AWS_OWNED_KEY" | "CUSTOMER_MANAGED_KEY" | (string & {});
 export const KeyType = /*@__PURE__*/ S.String;
 
 export interface ApplicationEncryptionConfiguration {
@@ -1210,7 +1217,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type Tags = Tag[];
 export const Tags = /*@__PURE__*/ S.Array(Tag);
-export type ApplicationMode = "STREAMING" | "INTERACTIVE";
+export type ApplicationMode = "STREAMING" | "INTERACTIVE" | (string & {});
 export const ApplicationMode = /*@__PURE__*/ S.String;
 
 export interface CreateApplicationRequest {
@@ -1258,7 +1265,8 @@ export type ApplicationStatus =
   | "FORCE_STOPPING"
   | "ROLLING_BACK"
   | "MAINTENANCE"
-  | "ROLLED_BACK";
+  | "ROLLED_BACK"
+  | (string & {});
 export const ApplicationStatus = /*@__PURE__*/ S.String;
 
 export interface SqlApplicationConfigurationDescription {
@@ -1329,7 +1337,8 @@ export const ApplicationCodeConfigurationDescription = /*@__PURE__*/ S.suspend(
 export type ApplicationRestoreType =
   | "SKIP_RESTORE_FROM_SNAPSHOT"
   | "RESTORE_FROM_LATEST_SNAPSHOT"
-  | "RESTORE_FROM_CUSTOM_SNAPSHOT";
+  | "RESTORE_FROM_CUSTOM_SNAPSHOT"
+  | (string & {});
 export const ApplicationRestoreType = /*@__PURE__*/ S.String;
 
 export type SnapshotName = string;
@@ -1693,7 +1702,7 @@ export const CreateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateApplicationResponse",
 }) as any as S.Schema<CreateApplicationResponse>;
-export type UrlType = "FLINK_DASHBOARD_URL" | "ZEPPELIN_UI_URL";
+export type UrlType = "FLINK_DASHBOARD_URL" | "ZEPPELIN_UI_URL" | (string & {});
 export const UrlType = /*@__PURE__*/ S.String;
 
 export type SessionExpirationDurationInSeconds = number;
@@ -2068,7 +2077,8 @@ export type OperationStatus =
   | "IN_PROGRESS"
   | "CANCELLED"
   | "SUCCESSFUL"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const OperationStatus = /*@__PURE__*/ S.String;
 
 export interface ApplicationVersionChangeDetails {
@@ -2156,7 +2166,12 @@ export const DescribeApplicationSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeApplicationSnapshotRequest",
 }) as any as S.Schema<DescribeApplicationSnapshotRequest>;
-export type SnapshotStatus = "CREATING" | "READY" | "DELETING" | "FAILED";
+export type SnapshotStatus =
+  | "CREATING"
+  | "READY"
+  | "DELETING"
+  | "FAILED"
+  | (string & {});
 export const SnapshotStatus = /*@__PURE__*/ S.String;
 
 export interface SnapshotDetails {

@@ -23,16 +23,19 @@ export const AccessControlListsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AccessControlListsCreateRequestTagsMap>;
 
 /** Input method to configure Access Control List. */
-export type ConfigurationType = "File" | "Inline";
+export type ConfigurationType = "File" | "Inline" | (string & {});
 export const ConfigurationType = /*@__PURE__*/ S.String;
 
 /** Default action that needs to be applied when no condition is matched. Example: Permit | Deny. */
-export type AccessControlListPropertiesInputDefaultAction = "Permit" | "Deny";
+export type AccessControlListPropertiesInputDefaultAction =
+  | "Permit"
+  | "Deny"
+  | (string & {});
 export const AccessControlListPropertiesInputDefaultAction =
   /*@__PURE__*/ S.String;
 
 /** IP Address type. */
-export type IPAddressType = "IPv4" | "IPv6";
+export type IPAddressType = "IPv4" | "IPv6" | (string & {});
 export const IPAddressType = /*@__PURE__*/ S.String;
 
 /** List of the protocols that need to be matched. */
@@ -84,11 +87,12 @@ export const VlanMatchCondition = /*@__PURE__*/ S.suspend(() =>
 export type SourceDestinationType =
   | "SourceIP"
   | "DestinationIP"
-  | "Bidirectional";
+  | "Bidirectional"
+  | (string & {});
 export const SourceDestinationType = /*@__PURE__*/ S.String;
 
 /** IP Prefix Type that needs to be matched. */
-export type PrefixType = "Prefix" | "LongestPrefix";
+export type PrefixType = "Prefix" | "LongestPrefix" | (string & {});
 export const PrefixType = /*@__PURE__*/ S.String;
 
 /** The list of IP Prefixes that need to be matched. */
@@ -174,11 +178,15 @@ export const AccessControlListMatchConditionProtocolNeighborsList =
   ) as any as S.Schema<AccessControlListMatchConditionProtocolNeighborsList>;
 
 /** Port type that needs to be matched. */
-export type PortType = "SourcePort" | "DestinationPort" | "Bidirectional";
+export type PortType =
+  | "SourcePort"
+  | "DestinationPort"
+  | "Bidirectional"
+  | (string & {});
 export const PortType = /*@__PURE__*/ S.String;
 
 /** Layer4 protocol type that needs to be matched. */
-export type Layer4Protocol = "TCP" | "UDP" | "SCTP";
+export type Layer4Protocol = "TCP" | "UDP" | "SCTP" | (string & {});
 export const Layer4Protocol = /*@__PURE__*/ S.String;
 
 /** List of the Ports that need to be matched. */
@@ -301,11 +309,23 @@ export const AccessControlListMatchConfigurationMatchConditionsList =
   ) as any as S.Schema<AccessControlListMatchConfigurationMatchConditionsList>;
 
 /** Type of actions that can be performed. */
-export type AclActionType = "Drop" | "Count" | "Log" | "Remark" | "PoliceRate";
+export type AclActionType =
+  | "Drop"
+  | "Count"
+  | "Log"
+  | "Remark"
+  | "PoliceRate"
+  | (string & {});
 export const AclActionType = /*@__PURE__*/ S.String;
 
 /** Bit rate unit. */
-export type BitRateUnit = "bps" | "Kbps" | "Mbps" | "Gbps" | "Pps";
+export type BitRateUnit =
+  | "bps"
+  | "Kbps"
+  | "Mbps"
+  | "Gbps"
+  | "Pps"
+  | (string & {});
 export const BitRateUnit = /*@__PURE__*/ S.String;
 
 /** Bit rate in bits per second. */
@@ -328,7 +348,8 @@ export type BurstSizeUnit =
   | "KBytes"
   | "MBytes"
   | "GBytes"
-  | "Packets";
+  | "Packets"
+  | (string & {});
 export const BurstSizeUnit = /*@__PURE__*/ S.String;
 
 /** Burst size in packets. */
@@ -551,17 +572,24 @@ export type AclType =
   | "ControlPlaneTrafficPolicy"
   | "Tenant"
   | "Management"
-  | "ControlPlaneAcl";
+  | "ControlPlaneAcl"
+  | (string & {});
 export const AclType = /*@__PURE__*/ S.String;
 
 /** Device Role */
-export type DeviceRole = "CE" | "ToR" | "NPB" | "ManagementSwitch";
+export type DeviceRole =
+  | "CE"
+  | "ToR"
+  | "NPB"
+  | "ManagementSwitch"
+  | (string & {});
 export const DeviceRole = /*@__PURE__*/ S.String;
 
 /** Configuration to enable or disable ACL action count. */
 export type GlobalAccessControlListActionPropertiesEnableCount =
   | "True"
-  | "False";
+  | "False"
+  | (string & {});
 export const GlobalAccessControlListActionPropertiesEnableCount =
   /*@__PURE__*/ S.String;
 
@@ -598,7 +626,12 @@ export const ControlPlanAclIpMatchCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ControlPlanAclIpMatchCondition>;
 
 /** Control Plane Access Control List (ACL) Time To Live (TTL) match conditions properties */
-export type ControlPlaneAclTtlMatchType = "eq" | "neq" | "gt" | "lt";
+export type ControlPlaneAclTtlMatchType =
+  | "eq"
+  | "neq"
+  | "gt"
+  | "lt"
+  | (string & {});
 export const ControlPlaneAclTtlMatchType = /*@__PURE__*/ S.String;
 
 /** TTL [Time To Live] match conditions properties */
@@ -624,7 +657,13 @@ export const ControlPlaneAclPortConditionPortsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ControlPlaneAclPortConditionPortsList>;
 
 /** Control Plane Access Control List (ACL) port match types */
-export type ControlPlaneAclPortMatchType = "eq" | "neq" | "gt" | "lt" | "range";
+export type ControlPlaneAclPortMatchType =
+  | "eq"
+  | "neq"
+  | "gt"
+  | "lt"
+  | "range"
+  | (string & {});
 export const ControlPlaneAclPortMatchType = /*@__PURE__*/ S.String;
 
 /** Control Plane Access Control List (ACL) Port Match conditions properties */
@@ -694,7 +733,11 @@ export const ControlPlaneAclMatchCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ControlPlaneAclMatchCondition>;
 
 /** Control Plane Access Control List (ACL) Action Types */
-export type ControlPlaneAclActionType = "Permit" | "Deny" | "Remark";
+export type ControlPlaneAclActionType =
+  | "Permit"
+  | "Deny"
+  | "Remark"
+  | (string & {});
 export const ControlPlaneAclActionType = /*@__PURE__*/ S.String;
 
 /** Control Plane Access Control List (ACL) Actions */
@@ -857,7 +900,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -865,7 +909,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -904,7 +949,10 @@ export const AccessControlListsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AccessControlListsCreateResponseTagsMap>;
 
 /** Default action that needs to be applied when no condition is matched. Example: Permit | Deny. */
-export type AccessControlListPropertiesDefaultAction = "Permit" | "Deny";
+export type AccessControlListPropertiesDefaultAction =
+  | "Permit"
+  | "Deny"
+  | (string & {});
 export const AccessControlListPropertiesDefaultAction = /*@__PURE__*/ S.String;
 
 /** List of match configurations. */
@@ -966,7 +1014,8 @@ export type ConfigurationState =
   | "DeferredControl"
   | "Provisioning"
   | "PendingCommit"
-  | "PendingAdministrativeUpdate";
+  | "PendingAdministrativeUpdate"
+  | (string & {});
 export const ConfigurationState = /*@__PURE__*/ S.String;
 
 /** The current provisioning state. */
@@ -976,7 +1025,8 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** State defined to represent administrative actions or post actions on a particular resource. */
@@ -986,7 +1036,8 @@ export type AdministrativeState =
   | "MAT"
   | "RMA"
   | "UnderMaintenance"
-  | "EnabledDegraded";
+  | "EnabledDegraded"
+  | (string & {});
 export const AdministrativeState = /*@__PURE__*/ S.String;
 
 /** Access Control List Properties defines the resource properties. */
@@ -1388,7 +1439,7 @@ export const AccessControlListsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AccessControlListsUpdateRequestTagsMap>;
 
 /** Community action types. Example: Permit | Deny. */
-export type CommunityActionTypes = "Permit" | "Deny";
+export type CommunityActionTypes = "Permit" | "Deny" | (string & {});
 export const CommunityActionTypes = /*@__PURE__*/ S.String;
 
 /** List of the protocols that need to be matched. */
@@ -2001,7 +2052,7 @@ export const AccessControlListPatchPropertiesControlPlaneAclConfigurationList =
   ) as any as S.Schema<AccessControlListPatchPropertiesControlPlaneAclConfigurationList>;
 
 /** Boolean union. Example- True/False */
-export type BooleanEnumProperty = "True" | "False";
+export type BooleanEnumProperty = "True" | "False" | (string & {});
 export const BooleanEnumProperty = /*@__PURE__*/ S.String;
 
 /** Global Access Control List actions patch properties */
@@ -2145,7 +2196,11 @@ export const AccessControlListsUpdateAdministrativeStateRequestResourceIdsList =
   ) as any as S.Schema<AccessControlListsUpdateAdministrativeStateRequestResourceIdsList>;
 
 /** Administrative state. */
-export type EnableDisableState = "Enable" | "Disable" | "UnderMaintenance";
+export type EnableDisableState =
+  | "Enable"
+  | "Disable"
+  | "UnderMaintenance"
+  | (string & {});
 export const EnableDisableState = /*@__PURE__*/ S.String;
 
 export interface AccessControlListsUpdateAdministrativeStateRequest {
@@ -2481,7 +2536,7 @@ export const ExportRoutePolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportRoutePolicy>;
 
 /** Peering option list. */
-export type PeeringOption = "OptionA" | "OptionB";
+export type PeeringOption = "OptionA" | "OptionB" | (string & {});
 export const PeeringOption = /*@__PURE__*/ S.String;
 
 /** RouteTargets to be applied. This is used for the backward compatibility. */
@@ -2596,7 +2651,8 @@ export const BfdConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 /** BMP Configuration State. */
 export type ExternalNetworkBmpPropertiesConfigurationState =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ExternalNetworkBmpPropertiesConfigurationState =
   /*@__PURE__*/ S.String;
 
@@ -2618,14 +2674,16 @@ export const ExternalNetworkBmpProperties = /*@__PURE__*/ S.suspend(() =>
 /** V4OverV6 BGP Session state */
 export type ExternalNetworkPropertiesOptionAPropertiesInputV4OverV6BgpSession =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ExternalNetworkPropertiesOptionAPropertiesInputV4OverV6BgpSession =
   /*@__PURE__*/ S.String;
 
 /** V6OverV4 BGP Session state */
 export type ExternalNetworkPropertiesOptionAPropertiesInputV6OverV4BgpSession =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ExternalNetworkPropertiesOptionAPropertiesInputV6OverV4BgpSession =
   /*@__PURE__*/ S.String;
 
@@ -2886,7 +2944,8 @@ export type BfdConfigurationAdministrativeState =
   | "Enabled"
   | "Disabled"
   | "MAT"
-  | "RMA";
+  | "RMA"
+  | (string & {});
 export const BfdConfigurationAdministrativeState = /*@__PURE__*/ S.String;
 
 /** BFD configuration properties */
@@ -2911,14 +2970,16 @@ export const BfdConfiguration = /*@__PURE__*/ S.suspend(() =>
 /** V4OverV6 BGP Session state */
 export type ExternalNetworkPropertiesOptionAPropertiesV4OverV6BgpSession =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ExternalNetworkPropertiesOptionAPropertiesV4OverV6BgpSession =
   /*@__PURE__*/ S.String;
 
 /** V6OverV4 BGP Session state */
 export type ExternalNetworkPropertiesOptionAPropertiesV6OverV4BgpSession =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ExternalNetworkPropertiesOptionAPropertiesV6OverV4BgpSession =
   /*@__PURE__*/ S.String;
 
@@ -3410,7 +3471,7 @@ export const BfdPatchConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BfdPatchConfiguration>;
 
 /** BGP Monitoring Protocol (BMP) configuration state. */
-export type BmpConfigurationState = "Enabled" | "Disabled";
+export type BmpConfigurationState = "Enabled" | "Disabled" | (string & {});
 export const BmpConfigurationState = /*@__PURE__*/ S.String;
 
 /** BMP Monitoring Configuration patch properties. */
@@ -3427,11 +3488,11 @@ export const ExternalNetworkBmpPatchProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalNetworkBmpPatchProperties>;
 
 /** V4 over V6 BGP session state */
-export type V4OverV6BgpSessionState = "Enabled" | "Disabled";
+export type V4OverV6BgpSessionState = "Enabled" | "Disabled" | (string & {});
 export const V4OverV6BgpSessionState = /*@__PURE__*/ S.String;
 
 /** V6 over V4 BGP session state */
-export type V6OverV4BgpSessionState = "Enabled" | "Disabled";
+export type V6OverV4BgpSessionState = "Enabled" | "Disabled" | (string & {});
 export const V6OverV4BgpSessionState = /*@__PURE__*/ S.String;
 
 /** Prefix Limit Patch properties. */
@@ -3758,11 +3819,16 @@ export const ExternalNetworksUpdateAdministrativeStateRequest =
   }) as any as S.Schema<ExternalNetworksUpdateAdministrativeStateRequest>;
 
 /** External Network RouteType. */
-export type ExternalNetworkRouteType = "Static" | "OptionA";
+export type ExternalNetworkRouteType = "Static" | "OptionA" | (string & {});
 export const ExternalNetworkRouteType = /*@__PURE__*/ S.String;
 
 /** Administrative state of the BfdConfiguration. Example: Enabled | Disabled. */
-export type BfdAdministrativeState = "Enabled" | "Disabled" | "MAT" | "RMA";
+export type BfdAdministrativeState =
+  | "Enabled"
+  | "Disabled"
+  | "MAT"
+  | "RMA"
+  | (string & {});
 export const BfdAdministrativeState = /*@__PURE__*/ S.String;
 
 export interface ExternalNetworksUpdateBfdAdministrativeStateRequest {
@@ -4014,7 +4080,10 @@ export const ExternalNetworksUpdateStaticRouteBfdAdministrativeStateRequest =
   }) as any as S.Schema<ExternalNetworksUpdateStaticRouteBfdAdministrativeStateRequest>;
 
 /** Extension. Example: NoExtension | NPB. */
-export type InternalNetworkPropertiesInputExtension = "NoExtension" | "NPB";
+export type InternalNetworkPropertiesInputExtension =
+  | "NoExtension"
+  | "NPB"
+  | (string & {});
 export const InternalNetworkPropertiesInputExtension = /*@__PURE__*/ S.String;
 
 /** Connected Subnet properties. */
@@ -4052,12 +4121,13 @@ export const InternalNetworkPropertiesInputConnectedIPv6SubnetsList =
 /** To check whether monitoring of internal network is enabled or not. */
 export type InternalNetworkPropertiesInputIsMonitoringEnabled =
   | "True"
-  | "False";
+  | "False"
+  | (string & {});
 export const InternalNetworkPropertiesInputIsMonitoringEnabled =
   /*@__PURE__*/ S.String;
 
 /** Enable Or Disable state. */
-export type AllowASOverride = "Enable" | "Disable";
+export type AllowASOverride = "Enable" | "Disable" | (string & {});
 export const AllowASOverride = /*@__PURE__*/ S.String;
 
 /** List of BGP IPv4 Listen Range prefixes. */
@@ -4114,7 +4184,12 @@ export const InternalNetworkBmpPropertiesNeighborIpExclusionsList =
   ) as any as S.Schema<InternalNetworkBmpPropertiesNeighborIpExclusionsList>;
 
 /** Export Policy for the BGP Monitoring Protocol (BMP) Configuration. */
-export type BmpExportPolicy = "Pre-Policy" | "Post-Policy" | "All" | "LocalRib";
+export type BmpExportPolicy =
+  | "Pre-Policy"
+  | "Post-Policy"
+  | "All"
+  | "LocalRib"
+  | (string & {});
 export const BmpExportPolicy = /*@__PURE__*/ S.String;
 
 /** Export Policy for the BGP Monitoring Protocol (BMP) Configuration. */
@@ -4160,11 +4235,17 @@ export const InternalNetworkBmpProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InternalNetworkBmpProperties>;
 
 /** V4 over V6 bgp session. */
-export type BgpConfigurationInputV4OverV6BgpSession = "Enabled" | "Disabled";
+export type BgpConfigurationInputV4OverV6BgpSession =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const BgpConfigurationInputV4OverV6BgpSession = /*@__PURE__*/ S.String;
 
 /** v6 over v4 bgp session. */
-export type BgpConfigurationInputV6OverV4BgpSession = "Enabled" | "Disabled";
+export type BgpConfigurationInputV6OverV4BgpSession =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const BgpConfigurationInputV6OverV4BgpSession = /*@__PURE__*/ S.String;
 
 /** BGP configuration properties */
@@ -4241,7 +4322,10 @@ export const StaticRouteConfigurationInputIpv6RoutesList =
   ) as any as S.Schema<StaticRouteConfigurationInputIpv6RoutesList>;
 
 /** Extension. Example: NoExtension | NPB. */
-export type StaticRouteConfigurationInputExtension = "NoExtension" | "NPB";
+export type StaticRouteConfigurationInputExtension =
+  | "NoExtension"
+  | "NPB"
+  | (string & {});
 export const StaticRouteConfigurationInputExtension = /*@__PURE__*/ S.String;
 
 /** Static Route Configuration properties. */
@@ -4359,7 +4443,10 @@ export const InternalNetworksCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InternalNetworksCreateRequest>;
 
 /** Extension. Example: NoExtension | NPB. */
-export type InternalNetworkPropertiesExtension = "NoExtension" | "NPB";
+export type InternalNetworkPropertiesExtension =
+  | "NoExtension"
+  | "NPB"
+  | (string & {});
 export const InternalNetworkPropertiesExtension = /*@__PURE__*/ S.String;
 
 /** List of Connected IPv4 Subnets. */
@@ -4379,7 +4466,10 @@ export const InternalNetworkPropertiesConnectedIPv6SubnetsList =
   ) as any as S.Schema<InternalNetworkPropertiesConnectedIPv6SubnetsList>;
 
 /** To check whether monitoring of internal network is enabled or not. */
-export type InternalNetworkPropertiesIsMonitoringEnabled = "True" | "False";
+export type InternalNetworkPropertiesIsMonitoringEnabled =
+  | "True"
+  | "False"
+  | (string & {});
 export const InternalNetworkPropertiesIsMonitoringEnabled =
   /*@__PURE__*/ S.String;
 
@@ -4398,7 +4488,7 @@ export const BgpConfigurationIpv6ListenRangePrefixesList =
   ) as any as S.Schema<BgpConfigurationIpv6ListenRangePrefixesList>;
 
 /** Border Gateway Protocol (BGP) Administrative State values */
-export type BgpAdministrativeState = "Enabled" | "Disabled";
+export type BgpAdministrativeState = "Enabled" | "Disabled" | (string & {});
 export const BgpAdministrativeState = /*@__PURE__*/ S.String;
 
 /** Neighbor Address properties. */
@@ -4438,11 +4528,17 @@ export const BgpConfigurationIpv6NeighborAddressList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BgpConfigurationIpv6NeighborAddressList>;
 
 /** V4 over V6 bgp session. */
-export type BgpConfigurationV4OverV6BgpSession = "Enabled" | "Disabled";
+export type BgpConfigurationV4OverV6BgpSession =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const BgpConfigurationV4OverV6BgpSession = /*@__PURE__*/ S.String;
 
 /** v6 over v4 bgp session. */
-export type BgpConfigurationV6OverV4BgpSession = "Enabled" | "Disabled";
+export type BgpConfigurationV6OverV4BgpSession =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const BgpConfigurationV6OverV4BgpSession = /*@__PURE__*/ S.String;
 
 /** BGP configuration properties */
@@ -4516,7 +4612,10 @@ export const StaticRouteConfigurationIpv6RoutesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<StaticRouteConfigurationIpv6RoutesList>;
 
 /** Extension. Example: NoExtension | NPB. */
-export type StaticRouteConfigurationExtension = "NoExtension" | "NPB";
+export type StaticRouteConfigurationExtension =
+  | "NoExtension"
+  | "NPB"
+  | (string & {});
 export const StaticRouteConfigurationExtension = /*@__PURE__*/ S.String;
 
 /** Static Route Configuration properties. */
@@ -4834,7 +4933,7 @@ export const InternalNetworkPatchPropertiesInputConnectedIPv6SubnetsList =
   ) as any as S.Schema<InternalNetworkPatchPropertiesInputConnectedIPv6SubnetsList>;
 
 /** To check whether monitoring of internal network is enabled or not. */
-export type IsMonitoringEnabled = "True" | "False";
+export type IsMonitoringEnabled = "True" | "False" | (string & {});
 export const IsMonitoringEnabled = /*@__PURE__*/ S.String;
 
 /** List of BGP IPv4 Listen Range prefixes. */
@@ -5154,7 +5253,7 @@ export const InternalNetworksUpdateAdministrativeStateRequest =
   }) as any as S.Schema<InternalNetworksUpdateAdministrativeStateRequest>;
 
 /** Internal Network RouteType. */
-export type InternalNetworkRouteType = "Static" | "Bgp";
+export type InternalNetworkRouteType = "Static" | "Bgp" | (string & {});
 export const InternalNetworkRouteType = /*@__PURE__*/ S.String;
 
 export interface InternalNetworksUpdateBfdAdministrativeStateRequest {
@@ -5674,7 +5773,7 @@ export const InternetGatewayRulesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<InternetGatewayRulesCreateRequestTagsMap>;
 
 /** Specify action. */
-export type Action = "Allow" | "Deny";
+export type Action = "Allow" | "Deny" | (string & {});
 export const Action = /*@__PURE__*/ S.String;
 
 /** List of Addresses to be allowed or denied. */
@@ -5684,7 +5783,7 @@ export const RulePropertiesAddressListList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RulePropertiesAddressListList>;
 
 /** Specify Rule condition. */
-export type RuleCondition = "And" | "Or";
+export type RuleCondition = "And" | "Or" | (string & {});
 export const RuleCondition = /*@__PURE__*/ S.String;
 
 /** List of Addresses to be allowed or denied. */
@@ -6166,7 +6265,7 @@ export const InternetGatewaysCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<InternetGatewaysCreateRequestTagsMap>;
 
 /** Gateway Type of the resource. */
-export type GatewayType = "Infrastructure" | "Workload";
+export type GatewayType = "Infrastructure" | "Workload" | (string & {});
 export const GatewayType = /*@__PURE__*/ S.String;
 
 /** Internet Gateway Properties defines the properties of the resource. */
@@ -6611,7 +6710,8 @@ export type WellKnownCommunities =
   | "LocalAS"
   | "NoAdvertise"
   | "NoExport"
-  | "GShut";
+  | "GShut"
+  | (string & {});
 export const WellKnownCommunities = /*@__PURE__*/ S.String;
 
 /** Supported well known Community List. */
@@ -7576,7 +7676,8 @@ export type Condition =
   | "EqualTo"
   | "GreaterThanOrEqualTo"
   | "LesserThanOrEqualTo"
-  | "Range";
+  | "Range"
+  | (string & {});
 export const Condition = /*@__PURE__*/ S.String;
 
 /** IP Prefix Rule properties. */
@@ -8087,7 +8188,8 @@ export const L2IsolationDomainsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 /** Extended VLAN status, default value is Disabled. */
 export type L2IsolationDomainPropertiesInputExtendedVlan =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const L2IsolationDomainPropertiesInputExtendedVlan =
   /*@__PURE__*/ S.String;
 
@@ -8124,7 +8226,8 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned";
+  | "SystemAssigned,UserAssigned"
+  | (string & {});
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -8206,7 +8309,10 @@ export const L2IsolationDomainsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<L2IsolationDomainsCreateResponseTagsMap>;
 
 /** Extended VLAN status, default value is Disabled. */
-export type L2IsolationDomainPropertiesExtendedVlan = "Enabled" | "Disabled";
+export type L2IsolationDomainPropertiesExtendedVlan =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const L2IsolationDomainPropertiesExtendedVlan = /*@__PURE__*/ S.String;
 
 /** L2Isolation Domain Properties defines the properties of the resource. */
@@ -8585,7 +8691,7 @@ export const L2IsolationDomainsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<L2IsolationDomainsUpdateRequestTagsMap>;
 
 /** Extended VLAN status. */
-export type ExtendedVlan = "Enabled" | "Disabled";
+export type ExtendedVlan = "Enabled" | "Disabled" | (string & {});
 export const ExtendedVlan = /*@__PURE__*/ S.String;
 
 /** L2 Isolation Domain Patch Properties defines the patchable properties of the resource. */
@@ -8615,7 +8721,8 @@ export type ManagedServiceIdentityPatchInputType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned";
+  | "SystemAssigned,UserAssigned"
+  | (string & {});
 export const ManagedServiceIdentityPatchInputType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -8893,14 +9000,16 @@ export const L3IsolationDomainsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 /** Advertise Connected Subnets. Ex: "True" | "False". */
 export type L3IsolationDomainPropertiesInputRedistributeConnectedSubnets =
   | "True"
-  | "False";
+  | "False"
+  | (string & {});
 export const L3IsolationDomainPropertiesInputRedistributeConnectedSubnets =
   /*@__PURE__*/ S.String;
 
 /** Advertise Static Routes. Ex: "True" | "False". */
 export type L3IsolationDomainPropertiesInputRedistributeStaticRoutes =
   | "True"
-  | "False";
+  | "False"
+  | (string & {});
 export const L3IsolationDomainPropertiesInputRedistributeStaticRoutes =
   /*@__PURE__*/ S.String;
 
@@ -9123,14 +9232,16 @@ export const L3IsolationDomainsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 /** Advertise Connected Subnets. Ex: "True" | "False". */
 export type L3IsolationDomainPropertiesRedistributeConnectedSubnets =
   | "True"
-  | "False";
+  | "False"
+  | (string & {});
 export const L3IsolationDomainPropertiesRedistributeConnectedSubnets =
   /*@__PURE__*/ S.String;
 
 /** Advertise Static Routes. Ex: "True" | "False". */
 export type L3IsolationDomainPropertiesRedistributeStaticRoutes =
   | "True"
-  | "False";
+  | "False"
+  | (string & {});
 export const L3IsolationDomainPropertiesRedistributeStaticRoutes =
   /*@__PURE__*/ S.String;
 
@@ -9526,11 +9637,11 @@ export const L3IsolationDomainsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<L3IsolationDomainsUpdateRequestTagsMap>;
 
 /** Advertise Connected Subnets. Ex: "True" | "False". */
-export type RedistributeConnectedSubnets = "True" | "False";
+export type RedistributeConnectedSubnets = "True" | "False" | (string & {});
 export const RedistributeConnectedSubnets = /*@__PURE__*/ S.String;
 
 /** Advertise Static Routes. Ex: "True" | "False". */
-export type RedistributeStaticRoutes = "True" | "False";
+export type RedistributeStaticRoutes = "True" | "False" | (string & {});
 export const RedistributeStaticRoutes = /*@__PURE__*/ S.String;
 
 /** List of IPv4 Route prefixes. */
@@ -11752,7 +11863,8 @@ export type DeviceAdministrativeState =
   | "Quarantine"
   | "UnderMaintenance"
   | "Enable"
-  | "Disable";
+  | "Disable"
+  | (string & {});
 export const DeviceAdministrativeState = /*@__PURE__*/ S.String;
 
 export interface NetworkBootstrapDevicesUpdateAdministrativeStateRequest {
@@ -12158,7 +12270,7 @@ export const NetworkBootstrapInterfacesCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NetworkBootstrapInterfacesCreateRequest>;
 
 /** The Interface Type. Example: Management/Data */
-export type InterfaceType = "Management" | "Data";
+export type InterfaceType = "Management" | "Data" | (string & {});
 export const InterfaceType = /*@__PURE__*/ S.String;
 
 /** Network Bootstrap Interface Properties defines the properties of the resource. */
@@ -12547,7 +12659,8 @@ export const NetworkDevicesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 /** The type of managed identity. */
 export type ManagedServiceIdentitySelectorType =
   | "SystemAssignedIdentity"
-  | "UserAssignedIdentity";
+  | "UserAssignedIdentity"
+  | (string & {});
 export const ManagedServiceIdentitySelectorType = /*@__PURE__*/ S.String;
 
 /** IdentitySelector represents the selection of a managed identity for use. */
@@ -12652,11 +12765,21 @@ export const NetworkDevicesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkDevicesCreateResponseTagsMap>;
 
 /** NetworkDeviceRole is the device role: Example: CE | ToR. */
-export type NetworkDeviceRole = "CE" | "ToR" | "NPB" | "TS" | "Management";
+export type NetworkDeviceRole =
+  | "CE"
+  | "ToR"
+  | "NPB"
+  | "TS"
+  | "Management"
+  | (string & {});
 export const NetworkDeviceRole = /*@__PURE__*/ S.String;
 
 /** Synchronization status of a secret or certificate for a device (Network Device or Terminal Server). Whether the device has been configured with the latest version of the secret or certificate. */
-export type SynchronizationStatus = "InSync" | "Synchronizing" | "OutOfSync";
+export type SynchronizationStatus =
+  | "InSync"
+  | "Synchronizing"
+  | "OutOfSync"
+  | (string & {});
 export const SynchronizationStatus = /*@__PURE__*/ S.String;
 
 /** A reference to a version of a secret in a key vault. */
@@ -13060,7 +13183,13 @@ export const NetworkDeviceSkuPropertiesSupportedVersionsList =
   ) as any as S.Schema<NetworkDeviceSkuPropertiesSupportedVersionsList>;
 
 /** Available roles for the network device. */
-export type NetworkDeviceRoleName = "CE" | "ToR" | "NPB" | "TS" | "Management";
+export type NetworkDeviceRoleName =
+  | "CE"
+  | "ToR"
+  | "NPB"
+  | "TS"
+  | "Management"
+  | (string & {});
 export const NetworkDeviceRoleName = /*@__PURE__*/ S.String;
 
 /** Available roles for the network device. */
@@ -13376,7 +13505,8 @@ export type RebootType =
   | "GracefulRebootWithZTP"
   | "GracefulRebootWithoutZTP"
   | "UngracefulRebootWithZTP"
-  | "UngracefulRebootWithoutZTP";
+  | "UngracefulRebootWithoutZTP"
+  | (string & {});
 export const RebootType = /*@__PURE__*/ S.String;
 
 export interface NetworkDevicesRebootRequest {
@@ -14776,7 +14906,7 @@ export const ManagedResourceGroupConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints. */
 export type NetworkFabricControllerPropertiesInputIsWorkloadManagementNetworkEnabled =
-  "True" | "False";
+  "True" | "False" | (string & {});
 export const NetworkFabricControllerPropertiesInputIsWorkloadManagementNetworkEnabled =
   /*@__PURE__*/ S.String;
 
@@ -14784,7 +14914,8 @@ export const NetworkFabricControllerPropertiesInputIsWorkloadManagementNetworkEn
 export type NetworkFabricControllerPropertiesInputNfcSku =
   | "Basic"
   | "Standard"
-  | "HighPerformance";
+  | "HighPerformance"
+  | (string & {});
 export const NetworkFabricControllerPropertiesInputNfcSku =
   /*@__PURE__*/ S.String;
 
@@ -14948,7 +15079,7 @@ export const NetworkFabricControllerPropertiesNetworkFabricIdsList =
 
 /** A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints. */
 export type NetworkFabricControllerPropertiesIsWorkloadManagementNetworkEnabled =
-  "True" | "False";
+  "True" | "False" | (string & {});
 export const NetworkFabricControllerPropertiesIsWorkloadManagementNetworkEnabled =
   /*@__PURE__*/ S.String;
 
@@ -14964,7 +15095,8 @@ export const NetworkFabricControllerPropertiesTenantInternetGatewayIdsList =
 export type NetworkFabricControllerPropertiesNfcSku =
   | "Basic"
   | "Standard"
-  | "HighPerformance";
+  | "HighPerformance"
+  | (string & {});
 export const NetworkFabricControllerPropertiesNfcSku = /*@__PURE__*/ S.String;
 
 /** NetworkFabricControllerProperties defines the resource properties. */
@@ -15800,7 +15932,11 @@ export const CommitBatchStatusOperationResponseError = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CommitBatchStatusOperationResponseError>;
 
 /** Commit Batch State. */
-export type CommitBatchState = "Processing" | "Succeeded" | "Failed";
+export type CommitBatchState =
+  | "Processing"
+  | "Succeeded"
+  | "Failed"
+  | (string & {});
 export const CommitBatchState = /*@__PURE__*/ S.String;
 
 /** List of devices for which the commit operation failed. */
@@ -15882,11 +16018,11 @@ export const CommitBatchStatusOperationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommitBatchStatusOperationResponse>;
 
 /** Commit stage Action to be performed. */
-export type CommitStage = "Start" | "Continue" | "Rollback";
+export type CommitStage = "Start" | "Continue" | "Rollback" | (string & {});
 export const CommitStage = /*@__PURE__*/ S.String;
 
 /** Indicates Commit configuration staging policy. Supported policy is StageCEConfiguration, which indicates to prepare the configuration for the CE device type. */
-export type CommitConfigurationPolicy = "StageCEConfiguration";
+export type CommitConfigurationPolicy = "StageCEConfiguration" | (string & {});
 export const CommitConfigurationPolicy = /*@__PURE__*/ S.String;
 
 /** List of ARM resource IDs of devices to be included in the commit operation. Either CE1 or CE2 is allowed. */
@@ -16270,13 +16406,14 @@ export const NetworkFabricPropertiesInputTrustedIpPrefixesList =
 /** Unique Route Distinguisher configuration state. Default is Enabled. */
 export type UniqueRouteDistinguisherPropertiesInputUniqueRdConfigurationState =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const UniqueRouteDistinguisherPropertiesInputUniqueRdConfigurationState =
   /*@__PURE__*/ S.String;
 
 /** NNI derived unique Route Distinguisher state. Default is Disabled. */
 export type UniqueRouteDistinguisherPropertiesInputNniDerivedUniqueRdConfigurationState =
-  "Enabled" | "Disabled";
+  "Enabled" | "Disabled" | (string & {});
 export const UniqueRouteDistinguisherPropertiesInputNniDerivedUniqueRdConfigurationState =
   /*@__PURE__*/ S.String;
 
@@ -16318,7 +16455,10 @@ export const AuthorizedTransceiverProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthorizedTransceiverProperties>;
 
 /** QoS configuration state. Default is Disabled. */
-export type QosPropertiesQosConfigurationState = "Disabled" | "Enabled";
+export type QosPropertiesQosConfigurationState =
+  | "Disabled"
+  | "Enabled"
+  | (string & {});
 export const QosPropertiesQosConfigurationState = /*@__PURE__*/ S.String;
 
 /** NetworkFabric QoS Properties. */
@@ -16474,11 +16614,14 @@ export const NetworkFabricPropertiesRouterIdsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<NetworkFabricPropertiesRouterIdsList>;
 
 /** Lock Configuration State. */
-export type LockConfigurationState = "Enabled" | "Disabled";
+export type LockConfigurationState = "Enabled" | "Disabled" | (string & {});
 export const LockConfigurationState = /*@__PURE__*/ S.String;
 
 /** Network fabric lock type */
-export type NetworkFabricLockType = "Administrative" | "Configuration";
+export type NetworkFabricLockType =
+  | "Administrative"
+  | "Configuration"
+  | (string & {});
 export const NetworkFabricLockType = /*@__PURE__*/ S.String;
 
 /** Network Fabric Lock Configuration. */
@@ -16674,7 +16817,8 @@ export const NetworkFabricPropertiesTrustedIpPrefixesList =
 /** Unique Route Distinguisher configuration state. Default is Enabled. */
 export type UniqueRouteDistinguisherPropertiesUniqueRdConfigurationState =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const UniqueRouteDistinguisherPropertiesUniqueRdConfigurationState =
   /*@__PURE__*/ S.String;
 
@@ -16688,7 +16832,7 @@ export const UniqueRouteDistinguisherPropertiesUniqueRdsList =
 
 /** NNI derived unique Route Distinguisher state. Default is Disabled. */
 export type UniqueRouteDistinguisherPropertiesNniDerivedUniqueRdConfigurationState =
-  "Enabled" | "Disabled";
+  "Enabled" | "Disabled" | (string & {});
 export const UniqueRouteDistinguisherPropertiesNniDerivedUniqueRdConfigurationState =
   /*@__PURE__*/ S.String;
 
@@ -17461,7 +17605,7 @@ export const NetworkFabricSkusGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkFabricSkusGetRequest>;
 
 /** Type of Network Fabric SKU. */
-export type FabricSkuType = "SingleRack" | "MultiRack";
+export type FabricSkuType = "SingleRack" | "MultiRack" | (string & {});
 export const FabricSkuType = /*@__PURE__*/ S.String;
 
 /** List of supported Network Fabric SKU versions. */
@@ -17719,7 +17863,7 @@ export const NetworkFabricsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NetworkFabricsListBySubscriptionRequest>;
 
 /** Network fabric lock action */
-export type NetworkFabricLockAction = "Lock" | "Unlock";
+export type NetworkFabricLockAction = "Lock" | "Unlock" | (string & {});
 export const NetworkFabricLockAction = /*@__PURE__*/ S.String;
 
 export interface NetworkFabricsLockFabricRequest {
@@ -18651,14 +18795,18 @@ export const NetworkFabricPatchPropertiesTrustedIpPrefixesList =
   ) as any as S.Schema<NetworkFabricPatchPropertiesTrustedIpPrefixesList>;
 
 /** Unique Route Distinguisher Configuration State. */
-export type UniqueRouteDistinguisherConfigurationState = "Enabled" | "Disabled";
+export type UniqueRouteDistinguisherConfigurationState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const UniqueRouteDistinguisherConfigurationState =
   /*@__PURE__*/ S.String;
 
 /** NNI Derived Unique Route Distinguisher Configuration State. */
 export type NNIDerivedUniqueRouteDistinguisherConfigurationState =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const NNIDerivedUniqueRouteDistinguisherConfigurationState =
   /*@__PURE__*/ S.String;
 
@@ -18684,7 +18832,7 @@ export const UniqueRouteDistinguisherPatchProperties = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UniqueRouteDistinguisherPatchProperties>;
 
 /** NetworkFabric QoS ConfigurationState. */
-export type QosConfigurationState = "Disabled" | "Enabled";
+export type QosConfigurationState = "Disabled" | "Enabled" | (string & {});
 export const QosConfigurationState = /*@__PURE__*/ S.String;
 
 /** NetworkFabric QoS Patch Properties. */
@@ -18971,7 +19119,7 @@ export const NetworkFabricsUpdateWorkloadManagementBfdConfigurationRequest =
   }) as any as S.Schema<NetworkFabricsUpdateWorkloadManagementBfdConfigurationRequest>;
 
 /** Action to be performed while upgrading the fabric. */
-export type NetworkFabricUpgradeAction = "Start" | "Complete";
+export type NetworkFabricUpgradeAction = "Start" | "Complete" | (string & {});
 export const NetworkFabricUpgradeAction = /*@__PURE__*/ S.String;
 
 export interface NetworkFabricsUpgradeRequest {
@@ -19050,7 +19198,11 @@ export const NetworkFabricsUpgradeResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkFabricsUpgradeResponse>;
 
 /** Validate action that to be performed */
-export type ValidateAction = "Cabling" | "Configuration" | "Connectivity";
+export type ValidateAction =
+  | "Cabling"
+  | "Configuration"
+  | "Connectivity"
+  | (string & {});
 export const ValidateAction = /*@__PURE__*/ S.String;
 
 export interface NetworkFabricsValidateConfigurationRequest {
@@ -19808,11 +19960,11 @@ export const NetworkMonitorsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkMonitorsCreateRequestTagsMap>;
 
 /** Station Configuration State. */
-export type StationConfigurationState = "Enabled" | "Disabled";
+export type StationConfigurationState = "Enabled" | "Disabled" | (string & {});
 export const StationConfigurationState = /*@__PURE__*/ S.String;
 
 /** Station Connection Mode. */
-export type StationConnectionMode = "Active" | "Passive";
+export type StationConnectionMode = "Active" | "Passive" | (string & {});
 export const StationConnectionMode = /*@__PURE__*/ S.String;
 
 /** Station Connection Properties. */
@@ -19847,7 +19999,8 @@ export type BmpConfigurationPropertiesExportPolicy =
   | "Pre-Policy"
   | "Post-Policy"
   | "All"
-  | "LocalRib";
+  | "LocalRib"
+  | (string & {});
 export const BmpConfigurationPropertiesExportPolicy = /*@__PURE__*/ S.String;
 
 /** Monitored Address Family. */
@@ -19856,7 +20009,8 @@ export type BmpMonitoredAddressFamily =
   | "ipv6Unicast"
   | "vpnIpv4"
   | "vpnIpv6"
-  | "All";
+  | "All"
+  | (string & {});
 export const BmpMonitoredAddressFamily = /*@__PURE__*/ S.String;
 
 /** Monitored Address Families for the BMP Configuration. */
@@ -21061,7 +21215,11 @@ export const NetworkRacksCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkRacksCreateRequestTagsMap>;
 
 /** Network Rack SKU name. */
-export type NetworkRackType = "Aggregate" | "Compute" | "Combined";
+export type NetworkRackType =
+  | "Aggregate"
+  | "Compute"
+  | "Combined"
+  | (string & {});
 export const NetworkRackType = /*@__PURE__*/ S.String;
 
 /** Network Rack Properties defines the properties of the resource. */
@@ -21484,7 +21642,10 @@ export const NetworkTapRuleMatchConditionProtocolTypesList =
   ) as any as S.Schema<NetworkTapRuleMatchConditionProtocolTypesList>;
 
 /** Encapsulation Type that needs to be matched. */
-export type NetworkTapRuleMatchConditionEncapsulationType = "None" | "GTPv1";
+export type NetworkTapRuleMatchConditionEncapsulationType =
+  | "None"
+  | "GTPv1"
+  | (string & {});
 export const NetworkTapRuleMatchConditionEncapsulationType =
   /*@__PURE__*/ S.String;
 
@@ -21563,7 +21724,8 @@ export type TapRuleActionType =
   | "Replicate"
   | "Goto"
   | "Redirect"
-  | "Mirror";
+  | "Mirror"
+  | (string & {});
 export const TapRuleActionType = /*@__PURE__*/ S.String;
 
 /** Action that need to performed. */
@@ -21643,7 +21805,10 @@ export const NetworkTapRulePropertiesInputDynamicMatchConfigurationsList =
   ) as any as S.Schema<NetworkTapRulePropertiesInputDynamicMatchConfigurationsList>;
 
 /** Configuration to enable network tap rule counter. */
-export type GlobalNetworkTapRuleActionPropertiesEnableCount = "True" | "False";
+export type GlobalNetworkTapRuleActionPropertiesEnableCount =
+  | "True"
+  | "False"
+  | (string & {});
 export const GlobalNetworkTapRuleActionPropertiesEnableCount =
   /*@__PURE__*/ S.String;
 
@@ -22334,7 +22499,7 @@ export const NetworkTapRuleMatchConditionPatchProtocolTypesList =
   ) as any as S.Schema<NetworkTapRuleMatchConditionPatchProtocolTypesList>;
 
 /** Encapsulation Type that needs to be matched. */
-export type EncapsulationType = "None" | "GTPv1";
+export type EncapsulationType = "None" | "GTPv1" | (string & {});
 export const EncapsulationType = /*@__PURE__*/ S.String;
 
 /** List of the Ports that need to be matched. */
@@ -22747,11 +22912,11 @@ export const NetworkTapsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkTapsCreateRequestTagsMap>;
 
 /** Type of destination. Input can be IsolationDomain or Direct. */
-export type DestinationType = "IsolationDomain" | "Direct";
+export type DestinationType = "IsolationDomain" | "Direct" | (string & {});
 export const DestinationType = /*@__PURE__*/ S.String;
 
 /** Type of encapsulation. */
-export type Encapsulation = "None" | "GRE";
+export type Encapsulation = "None" | "GRE" | (string & {});
 export const Encapsulation = /*@__PURE__*/ S.String;
 
 /** List of Neighbor Group IDs. */
@@ -22811,7 +22976,10 @@ export const NetworkTapPropertiesInputDestinationsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<NetworkTapPropertiesInputDestinationsList>;
 
 /** Polling type. */
-export type NetworkTapPropertiesInputPollingType = "Pull" | "Push";
+export type NetworkTapPropertiesInputPollingType =
+  | "Pull"
+  | "Push"
+  | (string & {});
 export const NetworkTapPropertiesInputPollingType = /*@__PURE__*/ S.String;
 
 /** Network Tap Properties defines the properties of the resource. */
@@ -22910,7 +23078,7 @@ export const NetworkTapPropertiesDestinationsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<NetworkTapPropertiesDestinationsList>;
 
 /** Polling type. */
-export type NetworkTapPropertiesPollingType = "Pull" | "Push";
+export type NetworkTapPropertiesPollingType = "Pull" | "Push" | (string & {});
 export const NetworkTapPropertiesPollingType = /*@__PURE__*/ S.String;
 
 /** Network Tap Properties defines the properties of the resource. */
@@ -23416,7 +23584,7 @@ export const NetworkTapsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkTapsUpdateRequestTagsMap>;
 
 /** Polling type. */
-export type PollingType = "Pull" | "Push";
+export type PollingType = "Pull" | "Push" | (string & {});
 export const PollingType = /*@__PURE__*/ S.String;
 
 /** List of Neighbor Group IDs. */
@@ -23635,14 +23803,18 @@ export const NetworkTapsUpdateAdministrativeStateRequest =
   }) as any as S.Schema<NetworkTapsUpdateAdministrativeStateRequest>;
 
 /** Type of NNI used. Example: CE | NPB */
-export type NetworkToNetworkInterconnectPropertiesInputNniType = "CE" | "NPB";
+export type NetworkToNetworkInterconnectPropertiesInputNniType =
+  | "CE"
+  | "NPB"
+  | (string & {});
 export const NetworkToNetworkInterconnectPropertiesInputNniType =
   /*@__PURE__*/ S.String;
 
 /** Configuration to use NNI for Infrastructure Management. Example: True/False. */
 export type NetworkToNetworkInterconnectPropertiesInputIsManagementType =
   | "True"
-  | "False";
+  | "False"
+  | (string & {});
 export const NetworkToNetworkInterconnectPropertiesInputIsManagementType =
   /*@__PURE__*/ S.String;
 
@@ -23677,7 +23849,10 @@ export const OptionBLayer3ConfigurationInputPeLoopbackIpAddressList =
   ) as any as S.Schema<OptionBLayer3ConfigurationInputPeLoopbackIpAddressList>;
 
 /** BGP Monitoring Protocol (BMP) Configuration State. */
-export type NniBmpPropertiesConfigurationState = "Enabled" | "Disabled";
+export type NniBmpPropertiesConfigurationState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const NniBmpPropertiesConfigurationState = /*@__PURE__*/ S.String;
 
 /** BGP Monitoring Protocol (BMP) properties. */
@@ -23856,7 +24031,7 @@ export const ExportRoutePolicyInformation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportRoutePolicyInformation>;
 
 /** Micro Bidirectional Forwarding Detection (BFD) enabled/disabled state. */
-export type MicroBfdState = "Enabled" | "Disabled";
+export type MicroBfdState = "Enabled" | "Disabled" | (string & {});
 export const MicroBfdState = /*@__PURE__*/ S.String;
 
 /** List of IPv4 Routes. */
@@ -23978,14 +24153,18 @@ export const NetworkToNetworkInterconnectsCreateRequest =
   }) as any as S.Schema<NetworkToNetworkInterconnectsCreateRequest>;
 
 /** Type of NNI used. Example: CE | NPB */
-export type NetworkToNetworkInterconnectPropertiesNniType = "CE" | "NPB";
+export type NetworkToNetworkInterconnectPropertiesNniType =
+  | "CE"
+  | "NPB"
+  | (string & {});
 export const NetworkToNetworkInterconnectPropertiesNniType =
   /*@__PURE__*/ S.String;
 
 /** Configuration to use NNI for Infrastructure Management. Example: True/False. */
 export type NetworkToNetworkInterconnectPropertiesIsManagementType =
   | "True"
-  | "False";
+  | "False"
+  | (string & {});
 export const NetworkToNetworkInterconnectPropertiesIsManagementType =
   /*@__PURE__*/ S.String;
 
@@ -24718,7 +24897,7 @@ export const NetworkToNetworkInterconnectsUpdateAdministrativeStateRequest =
   }) as any as S.Schema<NetworkToNetworkInterconnectsUpdateAdministrativeStateRequest>;
 
 /** Route type to be used. */
-export type RouteType = "Static" | "OptionA";
+export type RouteType = "Static" | "OptionA" | (string & {});
 export const RouteType = /*@__PURE__*/ S.String;
 
 export interface NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateRequest {
@@ -25002,11 +25181,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -25105,7 +25284,10 @@ export const RoutePoliciesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RoutePoliciesCreateRequestTagsMap>;
 
 /** Default action that needs to be applied when no condition is matched. Example: Permit | Deny. */
-export type RoutePolicyPropertiesInputDefaultAction = "Permit" | "Deny";
+export type RoutePolicyPropertiesInputDefaultAction =
+  | "Permit"
+  | "Deny"
+  | (string & {});
 export const RoutePolicyPropertiesInputDefaultAction = /*@__PURE__*/ S.String;
 
 /** List of IP Community resource IDs. */
@@ -25125,7 +25307,7 @@ export const StatementConditionPropertiesIpExtendedCommunityIdsList =
   ) as any as S.Schema<StatementConditionPropertiesIpExtendedCommunityIdsList>;
 
 /** Type of the condition used. */
-export type StatementConditionPropertiesType = "Or" | "And";
+export type StatementConditionPropertiesType = "Or" | "And" | (string & {});
 export const StatementConditionPropertiesType = /*@__PURE__*/ S.String;
 
 /** Route policy statement condition properties. */
@@ -25153,7 +25335,11 @@ export const StatementConditionProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StatementConditionProperties>;
 
 /** Action type. Example: Permit | Deny | Continue. */
-export type RoutePolicyActionType = "Permit" | "Deny" | "Continue";
+export type RoutePolicyActionType =
+  | "Permit"
+  | "Deny"
+  | "Continue"
+  | (string & {});
 export const RoutePolicyActionType = /*@__PURE__*/ S.String;
 
 /** List of IP Community resource IDs. */
@@ -25290,7 +25476,10 @@ export const RoutePolicyPropertiesInputStatementsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RoutePolicyPropertiesInputStatementsList>;
 
 /** AddressFamilyType. This parameter decides whether the given ipv4 or ipv6 route policy. */
-export type RoutePolicyPropertiesInputAddressFamilyType = "IPv4" | "IPv6";
+export type RoutePolicyPropertiesInputAddressFamilyType =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const RoutePolicyPropertiesInputAddressFamilyType =
   /*@__PURE__*/ S.String;
 
@@ -25363,7 +25552,10 @@ export const RoutePoliciesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RoutePoliciesCreateResponseTagsMap>;
 
 /** Default action that needs to be applied when no condition is matched. Example: Permit | Deny. */
-export type RoutePolicyPropertiesDefaultAction = "Permit" | "Deny";
+export type RoutePolicyPropertiesDefaultAction =
+  | "Permit"
+  | "Deny"
+  | (string & {});
 export const RoutePolicyPropertiesDefaultAction = /*@__PURE__*/ S.String;
 
 /** Route Policy statements. */
@@ -25374,7 +25566,10 @@ export const RoutePolicyPropertiesStatementsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RoutePolicyPropertiesStatementsList>;
 
 /** AddressFamilyType. This parameter decides whether the given ipv4 or ipv6 route policy. */
-export type RoutePolicyPropertiesAddressFamilyType = "IPv4" | "IPv6";
+export type RoutePolicyPropertiesAddressFamilyType =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const RoutePolicyPropertiesAddressFamilyType = /*@__PURE__*/ S.String;
 
 /** RoutePolicyProperties defines the resource properties. */
@@ -25667,7 +25862,7 @@ export const StatementConditionPatchPropertiesIpExtendedCommunityIdsList =
   ) as any as S.Schema<StatementConditionPatchPropertiesIpExtendedCommunityIdsList>;
 
 /** Type of the condition used. */
-export type RoutePolicyConditionType = "Or" | "And";
+export type RoutePolicyConditionType = "Or" | "And" | (string & {});
 export const RoutePolicyConditionType = /*@__PURE__*/ S.String;
 
 /** Route policy statement condition properties. */

@@ -168,7 +168,8 @@ export type PortabilityArchiveStateStateEnum =
   | "IN_PROGRESS"
   | "COMPLETE"
   | "FAILED"
-  | "CANCELLED";
+  | "CANCELLED"
+  | (string & {});
 export const PortabilityArchiveStateStateEnum = /*@__PURE__*/ S.String;
 
 /** Resource that contains the state of an Archive job. */
@@ -236,7 +237,8 @@ export const InitiatePortabilityArchiveRequest_ = /*@__PURE__*/ S.suspend(() =>
 export type InitiatePortabilityArchiveResponseAccessTypeEnum =
   | "ACCESS_TYPE_UNSPECIFIED"
   | "ACCESS_TYPE_ONE_TIME"
-  | "ACCESS_TYPE_TIME_BASED";
+  | "ACCESS_TYPE_TIME_BASED"
+  | (string & {});
 export const InitiatePortabilityArchiveResponseAccessTypeEnum =
   /*@__PURE__*/ S.String;
 

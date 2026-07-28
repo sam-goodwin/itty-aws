@@ -64,7 +64,7 @@ export class InvalidHealthcheckEndpoint extends T.applyErrorMatchers(
   [{ code: 1002 }],
 ) {}
 
-export type EndpointHealthchecksCreateRequestCheckType = "icmp";
+export type EndpointHealthchecksCreateRequestCheckType = "icmp" | (string & {});
 export const EndpointHealthchecksCreateRequestCheckType =
   /*@__PURE__*/ S.String;
 
@@ -99,7 +99,9 @@ export const CreateEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateEndpointHealthcheckRequest",
 }) as any as S.Schema<CreateEndpointHealthcheckRequest>;
 
-export type EndpointHealthchecksCreateResponseCheckType = "icmp";
+export type EndpointHealthchecksCreateResponseCheckType =
+  | "icmp"
+  | (string & {});
 export const EndpointHealthchecksCreateResponseCheckType =
   /*@__PURE__*/ S.String;
 
@@ -142,7 +144,8 @@ export type TraceroutesCreateRequestOptionsPacketType =
   | "tcp"
   | "udp"
   | "gre"
-  | "gre+icmp";
+  | "gre+icmp"
+  | (string & {});
 export const TraceroutesCreateRequestOptionsPacketType = /*@__PURE__*/ S.String;
 
 export interface TraceroutesCreateRequestOptions {
@@ -219,7 +222,8 @@ export type TraceroutesCreateResultItemColosItemError =
   | "Could not gather traceroute data: Code 1"
   | "Could not gather traceroute data: Code 2"
   | "Could not gather traceroute data: Code 3"
-  | "Could not gather traceroute data: Code 4";
+  | "Could not gather traceroute data: Code 4"
+  | (string & {});
 export const TraceroutesCreateResultItemColosItemError = /*@__PURE__*/ S.String;
 
 export type TraceroutesCreateResultItemColosItemHopsItemNodesItemLabelsList =
@@ -421,7 +425,7 @@ export const GetEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEndpointHealthcheckRequest",
 }) as any as S.Schema<GetEndpointHealthcheckRequest>;
 
-export type EndpointHealthchecksGetResponseCheckType = "icmp";
+export type EndpointHealthchecksGetResponseCheckType = "icmp" | (string & {});
 export const EndpointHealthchecksGetResponseCheckType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -468,7 +472,7 @@ export const ListEndpointHealthchecksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEndpointHealthchecksRequest",
 }) as any as S.Schema<ListEndpointHealthchecksRequest>;
 
-export type EndpointHealthchecksListResponseCheckType = "icmp";
+export type EndpointHealthchecksListResponseCheckType = "icmp" | (string & {});
 export const EndpointHealthchecksListResponseCheckType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -509,7 +513,7 @@ export const ListEndpointHealthchecksResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEndpointHealthchecksResponse",
 }) as any as S.Schema<ListEndpointHealthchecksResponse>;
 
-export type EndpointHealthchecksUpdateRequestCheckType = "icmp";
+export type EndpointHealthchecksUpdateRequestCheckType = "icmp" | (string & {});
 export const EndpointHealthchecksUpdateRequestCheckType =
   /*@__PURE__*/ S.String;
 
@@ -547,7 +551,9 @@ export const UpdateEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateEndpointHealthcheckRequest",
 }) as any as S.Schema<UpdateEndpointHealthcheckRequest>;
 
-export type EndpointHealthchecksUpdateResponseCheckType = "icmp";
+export type EndpointHealthchecksUpdateResponseCheckType =
+  | "icmp"
+  | (string & {});
 export const EndpointHealthchecksUpdateResponseCheckType =
   /*@__PURE__*/ S.String;
 

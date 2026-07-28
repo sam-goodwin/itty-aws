@@ -69,14 +69,16 @@ export type ScanRunResultStateEnum =
   | "RESULT_STATE_UNSPECIFIED"
   | "SUCCESS"
   | "ERROR"
-  | "KILLED";
+  | "KILLED"
+  | (string & {});
 export const ScanRunResultStateEnum = /*@__PURE__*/ S.String;
 
 export type ScanRunExecutionStateEnum =
   | "EXECUTION_STATE_UNSPECIFIED"
   | "QUEUED"
   | "SCANNING"
-  | "FINISHED";
+  | "FINISHED"
+  | (string & {});
 export const ScanRunExecutionStateEnum = /*@__PURE__*/ S.String;
 
 /** A ScanRun is a output-only resource representing an actual run of the scan. */
@@ -119,7 +121,8 @@ export type ScanConfigTargetPlatformsItemEnum =
   | "APP_ENGINE"
   | "COMPUTE"
   | "CLOUD_RUN"
-  | "CLOUD_FUNCTIONS";
+  | "CLOUD_FUNCTIONS"
+  | (string & {});
 export const ScanConfigTargetPlatformsItemEnum = /*@__PURE__*/ S.String;
 
 export type ScanConfigTargetPlatformsItemEnumList =
@@ -132,7 +135,8 @@ export type ScanConfigUserAgentEnum =
   | "USER_AGENT_UNSPECIFIED"
   | "CHROME_LINUX"
   | "CHROME_ANDROID"
-  | "SAFARI_IPHONE";
+  | "SAFARI_IPHONE"
+  | (string & {});
 export const ScanConfigUserAgentEnum = /*@__PURE__*/ S.String;
 
 /** Scan schedule configuration. */
@@ -396,7 +400,8 @@ export type FindingFindingTypeEnum =
   | "MISMATCHING_SECURITY_HEADER_VALUES"
   | "ACCESSIBLE_GIT_REPOSITORY"
   | "ACCESSIBLE_SVN_REPOSITORY"
-  | "ACCESSIBLE_ENV_FILE";
+  | "ACCESSIBLE_ENV_FILE"
+  | (string & {});
 export const FindingFindingTypeEnum = /*@__PURE__*/ S.String;
 
 /** Describes a HTTP Header. */
@@ -738,7 +743,8 @@ export type FindingTypeStatsFindingTypeEnum =
   | "MISMATCHING_SECURITY_HEADER_VALUES"
   | "ACCESSIBLE_GIT_REPOSITORY"
   | "ACCESSIBLE_SVN_REPOSITORY"
-  | "ACCESSIBLE_ENV_FILE";
+  | "ACCESSIBLE_ENV_FILE"
+  | (string & {});
 export const FindingTypeStatsFindingTypeEnum = /*@__PURE__*/ S.String;
 
 /** A FindingTypeStats resource represents stats regarding a specific FindingType of Findings under a given ScanRun. */

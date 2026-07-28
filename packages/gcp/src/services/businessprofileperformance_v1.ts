@@ -48,7 +48,8 @@ export type FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnum =
   | "WEBSITE_CLICKS"
   | "BUSINESS_BOOKINGS"
   | "BUSINESS_FOOD_ORDERS"
-  | "BUSINESS_FOOD_MENU_CLICKS";
+  | "BUSINESS_FOOD_MENU_CLICKS"
+  | (string & {});
 export const FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnum =
   /*@__PURE__*/ S.String;
 
@@ -115,7 +116,8 @@ export type DailyMetricTimeSeriesDailyMetricEnum =
   | "WEBSITE_CLICKS"
   | "BUSINESS_BOOKINGS"
   | "BUSINESS_FOOD_ORDERS"
-  | "BUSINESS_FOOD_MENU_CLICKS";
+  | "BUSINESS_FOOD_MENU_CLICKS"
+  | (string & {});
 export const DailyMetricTimeSeriesDailyMetricEnum = /*@__PURE__*/ S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -175,7 +177,8 @@ export type DailySubEntityTypeDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const DailySubEntityTypeDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -279,7 +282,8 @@ export type GetDailyMetricsTimeSeriesLocationsDailySubEntityType_dayOfWeekEnum =
     | "THURSDAY"
     | "FRIDAY"
     | "SATURDAY"
-    | "SUNDAY";
+    | "SUNDAY"
+    | (string & {});
 export const GetDailyMetricsTimeSeriesLocationsDailySubEntityType_dayOfWeekEnum =
   /*@__PURE__*/ S.String;
 
@@ -295,7 +299,8 @@ export type GetDailyMetricsTimeSeriesLocationsDailyMetricEnum =
   | "WEBSITE_CLICKS"
   | "BUSINESS_BOOKINGS"
   | "BUSINESS_FOOD_ORDERS"
-  | "BUSINESS_FOOD_MENU_CLICKS";
+  | "BUSINESS_FOOD_MENU_CLICKS"
+  | (string & {});
 export const GetDailyMetricsTimeSeriesLocationsDailyMetricEnum =
   /*@__PURE__*/ S.String;
 

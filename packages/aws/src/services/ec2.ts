@@ -1133,7 +1133,8 @@ export type ResourceType =
   | "capacity-manager-data-export"
   | "vpn-concentrator"
   | "ipam-pool-allocation"
-  | "capacity-reservation-cancellation-quote";
+  | "capacity-reservation-cancellation-quote"
+  | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export interface Tag {
@@ -1201,7 +1202,11 @@ export const AcceptAddressTransferRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AcceptAddressTransferRequest",
 }) as any as S.Schema<AcceptAddressTransferRequest>;
 export type MillisecondDateTime = Date;
-export type AddressTransferStatus = "pending" | "disabled" | "accepted";
+export type AddressTransferStatus =
+  | "pending"
+  | "disabled"
+  | "accepted"
+  | (string & {});
 export const AddressTransferStatus = /*@__PURE__*/ S.String;
 
 export interface AddressTransfer {
@@ -1395,7 +1400,8 @@ export type TransitGatewayAttachmentStatusType =
   | "rejected"
   | "available"
   | "deleting"
-  | "deleted";
+  | "deleted"
+  | (string & {});
 export const TransitGatewayAttachmentStatusType = /*@__PURE__*/ S.String;
 
 export interface TransitGatewayClientVpnAttachment {
@@ -1495,7 +1501,8 @@ export type TransitGatewayAttachmentResourceType =
   | "peering"
   | "tgw-peering"
   | "network-function"
-  | "client-vpn";
+  | "client-vpn"
+  | (string & {});
 export const TransitGatewayAttachmentResourceType = /*@__PURE__*/ S.String;
 
 export type TransitGatewayMulitcastDomainAssociationState =
@@ -1505,7 +1512,8 @@ export type TransitGatewayMulitcastDomainAssociationState =
   | "disassociating"
   | "disassociated"
   | "rejected"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const TransitGatewayMulitcastDomainAssociationState =
   /*@__PURE__*/ S.String;
 
@@ -1634,7 +1642,7 @@ export const PeeringTgwInfo = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({ identifier: "PeeringTgwInfo" }) as any as S.Schema<PeeringTgwInfo>;
-export type DynamicRoutingValue = "enable" | "disable";
+export type DynamicRoutingValue = "enable" | "disable" | (string & {});
 export const DynamicRoutingValue = /*@__PURE__*/ S.String;
 
 export interface TransitGatewayPeeringAttachmentOptions {
@@ -1679,7 +1687,8 @@ export type TransitGatewayAttachmentState =
   | "failed"
   | "rejected"
   | "rejecting"
-  | "failing";
+  | "failing"
+  | (string & {});
 export const TransitGatewayAttachmentState = /*@__PURE__*/ S.String;
 
 export interface TransitGatewayPeeringAttachment {
@@ -1771,16 +1780,19 @@ export const AcceptTransitGatewayVpcAttachmentRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AcceptTransitGatewayVpcAttachmentRequest",
 }) as any as S.Schema<AcceptTransitGatewayVpcAttachmentRequest>;
-export type DnsSupportValue = "enable" | "disable";
+export type DnsSupportValue = "enable" | "disable" | (string & {});
 export const DnsSupportValue = /*@__PURE__*/ S.String;
 
-export type SecurityGroupReferencingSupportValue = "enable" | "disable";
+export type SecurityGroupReferencingSupportValue =
+  | "enable"
+  | "disable"
+  | (string & {});
 export const SecurityGroupReferencingSupportValue = /*@__PURE__*/ S.String;
 
-export type Ipv6SupportValue = "enable" | "disable";
+export type Ipv6SupportValue = "enable" | "disable" | (string & {});
 export const Ipv6SupportValue = /*@__PURE__*/ S.String;
 
-export type ApplianceModeSupportValue = "enable" | "disable";
+export type ApplianceModeSupportValue = "enable" | "disable" | (string & {});
 export const ApplianceModeSupportValue = /*@__PURE__*/ S.String;
 
 export interface TransitGatewayVpcAttachmentOptions {
@@ -2099,7 +2111,8 @@ export type VpcPeeringConnectionStateReasonCode =
   | "failed"
   | "expired"
   | "provisioning"
-  | "deleting";
+  | "deleting"
+  | (string & {});
 export const VpcPeeringConnectionStateReasonCode = /*@__PURE__*/ S.String;
 
 export interface VpcPeeringConnectionStateReason {
@@ -2201,7 +2214,8 @@ export type AsnAssociationState =
   | "failed-association"
   | "pending-disassociation"
   | "pending-association"
-  | "associated";
+  | "associated"
+  | (string & {});
 export const AsnAssociationState = /*@__PURE__*/ S.String;
 
 export interface AsnAssociation {
@@ -2240,7 +2254,8 @@ export type ByoipCidrState =
   | "pending-provision"
   | "pending-withdrawal"
   | "provisioned"
-  | "provisioned-not-publicly-advertisable";
+  | "provisioned-not-publicly-advertisable"
+  | (string & {});
 export const ByoipCidrState = /*@__PURE__*/ S.String;
 
 export interface ByoipCidr {
@@ -2293,7 +2308,7 @@ export const AdvertiseByoipCidrResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AdvertiseByoipCidrResult",
 }) as any as S.Schema<AdvertiseByoipCidrResult>;
-export type DomainType = "vpc" | "standard";
+export type DomainType = "vpc" | "standard" | (string & {});
 export const DomainType = /*@__PURE__*/ S.String;
 
 export type PublicIpAddress = string;
@@ -2386,17 +2401,17 @@ export const AllocateAddressResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AllocateAddressResult",
 }) as any as S.Schema<AllocateAddressResult>;
-export type HostRecovery = "on" | "off";
+export type HostRecovery = "on" | "off" | (string & {});
 export const HostRecovery = /*@__PURE__*/ S.String;
 
-export type HostMaintenance = "on" | "off";
+export type HostMaintenance = "on" | "off" | (string & {});
 export const HostMaintenance = /*@__PURE__*/ S.String;
 
 export type AssetId = string;
 export type AssetIdList = string[];
 export const AssetIdList = /*@__PURE__*/ S.Array(S.String);
 export type AvailabilityZoneId = string;
-export type AutoPlacement = "on" | "off";
+export type AutoPlacement = "on" | "off" | (string & {});
 export const AutoPlacement = /*@__PURE__*/ S.String;
 
 export type AvailabilityZoneName = string;
@@ -2536,7 +2551,8 @@ export type IpamPoolAllocationResourceType =
   | "custom"
   | "subnet"
   | "eip"
-  | "anycast-ip-list";
+  | "anycast-ip-list"
+  | (string & {});
 export const IpamPoolAllocationResourceType = /*@__PURE__*/ S.String;
 
 export interface IpamPoolAllocation {
@@ -2863,7 +2879,8 @@ export type NatGatewayAddressStatus =
   | "associating"
   | "disassociating"
   | "succeeded"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const NatGatewayAddressStatus = /*@__PURE__*/ S.String;
 
 export interface NatGatewayAddress {
@@ -3086,7 +3103,8 @@ export type AssociationStatusCode =
   | "associated"
   | "association-failed"
   | "disassociating"
-  | "disassociated";
+  | "disassociated"
+  | (string & {});
 export const AssociationStatusCode = /*@__PURE__*/ S.String;
 
 export interface AssociationStatus {
@@ -3260,7 +3278,8 @@ export type IamInstanceProfileAssociationState =
   | "associating"
   | "associated"
   | "disassociating"
-  | "disassociated";
+  | "disassociated"
+  | (string & {});
 export const IamInstanceProfileAssociationState = /*@__PURE__*/ S.String;
 
 export interface IamInstanceProfileAssociation {
@@ -3370,7 +3389,8 @@ export type WeekDay =
   | "wednesday"
   | "thursday"
   | "friday"
-  | "saturday";
+  | "saturday"
+  | (string & {});
 export const WeekDay = /*@__PURE__*/ S.String;
 
 export type Hour = number;
@@ -3437,7 +3457,8 @@ export type InstanceEventWindowState =
   | "creating"
   | "deleting"
   | "active"
-  | "deleted";
+  | "deleted"
+  | (string & {});
 export const InstanceEventWindowState = /*@__PURE__*/ S.String;
 
 export interface InstanceEventWindow {
@@ -3565,7 +3586,10 @@ export const AssociateIpamResourceDiscoveryRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AssociateIpamResourceDiscoveryRequest>;
 export type IpamResourceDiscoveryAssociationId = string;
 export type ResourceArn = string;
-export type IpamAssociatedResourceDiscoveryStatus = "active" | "not-found";
+export type IpamAssociatedResourceDiscoveryStatus =
+  | "active"
+  | "not-found"
+  | (string & {});
 export const IpamAssociatedResourceDiscoveryStatus = /*@__PURE__*/ S.String;
 
 export type IpamResourceDiscoveryAssociationState =
@@ -3577,7 +3601,8 @@ export type IpamResourceDiscoveryAssociationState =
   | "disassociate-failed"
   | "isolate-in-progress"
   | "isolate-complete"
-  | "restore-in-progress";
+  | "restore-in-progress"
+  | (string & {});
 export const IpamResourceDiscoveryAssociationState = /*@__PURE__*/ S.String;
 
 export interface IpamResourceDiscoveryAssociation {
@@ -3743,7 +3768,8 @@ export const AssociateRouteServerRequest = /*@__PURE__*/ S.suspend(() =>
 export type RouteServerAssociationState =
   | "associating"
   | "associated"
-  | "disassociating";
+  | "disassociating"
+  | (string & {});
 export const RouteServerAssociationState = /*@__PURE__*/ S.String;
 
 export interface RouteServerAssociation {
@@ -3828,7 +3854,8 @@ export type RouteTableAssociationStateCode =
   | "associated"
   | "disassociating"
   | "disassociated"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const RouteTableAssociationStateCode = /*@__PURE__*/ S.String;
 
 export interface RouteTableAssociationState {
@@ -3896,7 +3923,8 @@ export type SecurityGroupVpcAssociationState =
   | "association-failed"
   | "disassociating"
   | "disassociated"
-  | "disassociation-failed";
+  | "disassociation-failed"
+  | (string & {});
 export const SecurityGroupVpcAssociationState = /*@__PURE__*/ S.String;
 
 export interface AssociateSecurityGroupVpcResult {
@@ -3952,7 +3980,8 @@ export type SubnetCidrBlockStateCode =
   | "disassociating"
   | "disassociated"
   | "failing"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const SubnetCidrBlockStateCode = /*@__PURE__*/ S.String;
 
 export interface SubnetCidrBlockState {
@@ -3973,10 +4002,10 @@ export const SubnetCidrBlockState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SubnetCidrBlockState",
 }) as any as S.Schema<SubnetCidrBlockState>;
-export type Ipv6AddressAttribute = "public" | "private";
+export type Ipv6AddressAttribute = "public" | "private" | (string & {});
 export const Ipv6AddressAttribute = /*@__PURE__*/ S.String;
 
-export type IpSource = "amazon" | "byoip" | "none";
+export type IpSource = "amazon" | "byoip" | "none" | (string & {});
 export const IpSource = /*@__PURE__*/ S.String;
 
 export interface SubnetIpv6CidrBlockAssociation {
@@ -4108,7 +4137,8 @@ export type TransitGatewayAssociationState =
   | "associating"
   | "associated"
   | "disassociating"
-  | "disassociated";
+  | "disassociated"
+  | (string & {});
 export const TransitGatewayAssociationState = /*@__PURE__*/ S.String;
 
 export interface TransitGatewayPolicyTableAssociation {
@@ -4261,7 +4291,7 @@ export const AssociateTrunkInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateTrunkInterfaceRequest",
 }) as any as S.Schema<AssociateTrunkInterfaceRequest>;
 export type TrunkInterfaceAssociationId = string;
-export type InterfaceProtocolType = "VLAN" | "GRE";
+export type InterfaceProtocolType = "VLAN" | "GRE" | (string & {});
 export const InterfaceProtocolType = /*@__PURE__*/ S.String;
 
 export interface TrunkInterfaceAssociation {
@@ -4378,7 +4408,8 @@ export type VpcCidrBlockStateCode =
   | "disassociating"
   | "disassociated"
   | "failing"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const VpcCidrBlockStateCode = /*@__PURE__*/ S.String;
 
 export interface VpcCidrBlockState {
@@ -4735,13 +4766,20 @@ export const AttachVerifiedAccessTrustProviderRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AttachVerifiedAccessTrustProviderRequest",
 }) as any as S.Schema<AttachVerifiedAccessTrustProviderRequest>;
-export type TrustProviderType = "user" | "device";
+export type TrustProviderType = "user" | "device" | (string & {});
 export const TrustProviderType = /*@__PURE__*/ S.String;
 
-export type UserTrustProviderType = "iam-identity-center" | "oidc";
+export type UserTrustProviderType =
+  | "iam-identity-center"
+  | "oidc"
+  | (string & {});
 export const UserTrustProviderType = /*@__PURE__*/ S.String;
 
-export type DeviceTrustProviderType = "jamf" | "crowdstrike" | "jumpcloud";
+export type DeviceTrustProviderType =
+  | "jamf"
+  | "crowdstrike"
+  | "jumpcloud"
+  | (string & {});
 export const DeviceTrustProviderType = /*@__PURE__*/ S.String;
 
 export type ClientSecretType = string | redacted.Redacted<string>;
@@ -5112,7 +5150,8 @@ export type VolumeAttachmentState =
   | "attached"
   | "detaching"
   | "detached"
-  | "busy";
+  | "busy"
+  | (string & {});
 export const VolumeAttachmentState = /*@__PURE__*/ S.String;
 
 export interface VolumeAttachment {
@@ -5199,7 +5238,8 @@ export type AttachmentStatus =
   | "attaching"
   | "attached"
   | "detaching"
-  | "detached";
+  | "detached"
+  | (string & {});
 export const AttachmentStatus = /*@__PURE__*/ S.String;
 
 export interface VpcAttachment {
@@ -5266,7 +5306,8 @@ export type ClientVpnAuthorizationRuleStatusCode =
   | "authorizing"
   | "active"
   | "failed"
-  | "revoking";
+  | "revoking"
+  | (string & {});
 export const ClientVpnAuthorizationRuleStatusCode = /*@__PURE__*/ S.String;
 
 export interface ClientVpnAuthorizationRuleStatus {
@@ -5797,7 +5838,8 @@ export type BundleTaskState =
   | "storing"
   | "cancelling"
   | "complete"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const BundleTaskState = /*@__PURE__*/ S.String;
 
 export interface BundleTaskError {
@@ -5913,7 +5955,7 @@ export const CancelBundleTaskResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelBundleTaskResult",
 }) as any as S.Schema<CancelBundleTaskResult>;
-export type ApplyCancellationCharges = "commitment-wind-down";
+export type ApplyCancellationCharges = "commitment-wind-down" | (string & {});
 export const ApplyCancellationCharges = /*@__PURE__*/ S.String;
 
 export type CapacityReservationCancellationQuoteId = string;
@@ -5995,7 +6037,8 @@ export type CapacityReservationFleetState =
   | "expired"
   | "cancelling"
   | "cancelled"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const CapacityReservationFleetState = /*@__PURE__*/ S.String;
 
 export interface CapacityReservationFleetCancellationState {
@@ -6319,7 +6362,12 @@ export const CancelReservedInstancesListingRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CancelReservedInstancesListingRequest",
 }) as any as S.Schema<CancelReservedInstancesListingRequest>;
-export type ListingState = "available" | "sold" | "cancelled" | "pending";
+export type ListingState =
+  | "available"
+  | "sold"
+  | "cancelled"
+  | "pending"
+  | (string & {});
 export const ListingState = /*@__PURE__*/ S.String;
 
 export interface InstanceCount {
@@ -6344,7 +6392,7 @@ export const InstanceCountList = /*@__PURE__*/ S.Array(
     identifier: "InstanceCount",
   }),
 );
-export type CurrencyCodeValues = "USD";
+export type CurrencyCodeValues = "USD" | (string & {});
 export const CurrencyCodeValues = /*@__PURE__*/ S.String;
 
 export interface PriceSchedule {
@@ -6376,7 +6424,12 @@ export const PriceScheduleList = /*@__PURE__*/ S.Array(
     identifier: "PriceSchedule",
   }),
 );
-export type ListingStatus = "active" | "pending" | "cancelled" | "closed";
+export type ListingStatus =
+  | "active"
+  | "pending"
+  | "cancelled"
+  | "closed"
+  | (string & {});
 export const ListingStatus = /*@__PURE__*/ S.String;
 
 export interface ReservedInstancesListing {
@@ -6500,7 +6553,8 @@ export type BatchState =
   | "failed"
   | "cancelled_running"
   | "cancelled_terminating"
-  | "modifying";
+  | "modifying"
+  | (string & {});
 export const BatchState = /*@__PURE__*/ S.String;
 
 export interface CancelSpotFleetRequestsSuccessItem {
@@ -6537,7 +6591,8 @@ export type CancelBatchErrorCode =
   | "fleetRequestIdDoesNotExist"
   | "fleetRequestIdMalformed"
   | "fleetRequestNotInCancellableState"
-  | "unexpectedError";
+  | "unexpectedError"
+  | (string & {});
 export const CancelBatchErrorCode = /*@__PURE__*/ S.String;
 
 export interface CancelSpotFleetRequestsError_ {
@@ -6637,7 +6692,8 @@ export type CancelSpotInstanceRequestState =
   | "open"
   | "closed"
   | "cancelled"
-  | "completed";
+  | "completed"
+  | (string & {});
 export const CancelSpotInstanceRequestState = /*@__PURE__*/ S.String;
 
 export interface CancelledSpotInstanceRequest {
@@ -6927,7 +6983,8 @@ export type VolumeType =
   | "gp2"
   | "sc1"
   | "st1"
-  | "gp3";
+  | "gp3"
+  | (string & {});
 export const VolumeType = /*@__PURE__*/ S.String;
 
 export interface CopyVolumesRequest {
@@ -6968,7 +7025,7 @@ export const CopyVolumesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopyVolumesRequest",
 }) as any as S.Schema<CopyVolumesRequest>;
-export type SSEType = "sse-ebs" | "sse-kms" | "none";
+export type SSEType = "sse-ebs" | "sse-kms" | "none" | (string & {});
 export const SSEType = /*@__PURE__*/ S.String;
 
 export interface OperatorResponse {
@@ -7000,7 +7057,8 @@ export type VolumeState =
   | "in-use"
   | "deleting"
   | "deleted"
-  | "error";
+  | "error"
+  | (string & {});
 export const VolumeState = /*@__PURE__*/ S.String;
 
 export type VolumeAttachmentList = VolumeAttachment[];
@@ -7129,10 +7187,10 @@ export const CopyVolumesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopyVolumesResult",
 }) as any as S.Schema<CopyVolumesResult>;
-export type Schedule = "hourly";
+export type Schedule = "hourly" | (string & {});
 export const Schedule = /*@__PURE__*/ S.String;
 
-export type OutputFormat = "csv" | "parquet";
+export type OutputFormat = "csv" | "parquet" | (string & {});
 export const OutputFormat = /*@__PURE__*/ S.String;
 
 export interface CreateCapacityManagerDataExportRequest {
@@ -7203,22 +7261,29 @@ export type CapacityReservationInstancePlatform =
   | "RHEL with HA"
   | "RHEL with HA and SQL Server Standard"
   | "RHEL with HA and SQL Server Enterprise"
-  | "Ubuntu Pro";
+  | "Ubuntu Pro"
+  | (string & {});
 export const CapacityReservationInstancePlatform = /*@__PURE__*/ S.String;
 
-export type CapacityReservationTenancy = "default" | "dedicated";
+export type CapacityReservationTenancy =
+  | "default"
+  | "dedicated"
+  | (string & {});
 export const CapacityReservationTenancy = /*@__PURE__*/ S.String;
 
-export type EndDateType = "unlimited" | "limited";
+export type EndDateType = "unlimited" | "limited" | (string & {});
 export const EndDateType = /*@__PURE__*/ S.String;
 
-export type InstanceMatchCriteria = "open" | "targeted";
+export type InstanceMatchCriteria = "open" | "targeted" | (string & {});
 export const InstanceMatchCriteria = /*@__PURE__*/ S.String;
 
 export type OutpostArn = string;
 export type PlacementGroupArn = string;
 export type CapacityReservationCommitmentDuration = number;
-export type CapacityReservationDeliveryPreference = "fixed" | "incremental";
+export type CapacityReservationDeliveryPreference =
+  | "fixed"
+  | "incremental"
+  | (string & {});
 export const CapacityReservationDeliveryPreference = /*@__PURE__*/ S.String;
 
 export interface CreateCapacityReservationRequest {
@@ -7292,10 +7357,11 @@ export type CapacityReservationState =
   | "delayed"
   | "unsupported"
   | "cancelling"
-  | "unavailable";
+  | "unavailable"
+  | (string & {});
 export const CapacityReservationState = /*@__PURE__*/ S.String;
 
-export type AllocationType = "used" | "future" | "cancelling";
+export type AllocationType = "used" | "future" | "cancelling" | (string & {});
 export const AllocationType = /*@__PURE__*/ S.String;
 
 export interface CapacityAllocationMetadataEntry {
@@ -7348,7 +7414,10 @@ export const CapacityAllocations = /*@__PURE__*/ S.Array(
     identifier: "CapacityAllocation",
   }),
 );
-export type CapacityReservationType = "default" | "capacity-block";
+export type CapacityReservationType =
+  | "default"
+  | "capacity-block"
+  | (string & {});
 export const CapacityReservationType = /*@__PURE__*/ S.String;
 
 export interface CapacityReservationCommitmentInfo {
@@ -7376,11 +7445,12 @@ export type InterruptibleCapacityReservationAllocationStatus =
   | "updating"
   | "canceling"
   | "canceled"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const InterruptibleCapacityReservationAllocationStatus =
   /*@__PURE__*/ S.String;
 
-export type InterruptionType = "adhoc";
+export type InterruptionType = "adhoc" | (string & {});
 export const InterruptionType = /*@__PURE__*/ S.String;
 
 export interface InterruptibleCapacityAllocation {
@@ -7700,7 +7770,8 @@ export const CreateCapacityReservationCancellationQuoteRequest =
 export type CapacityReservationCancellationQuoteState =
   | "pending"
   | "active"
-  | "expired";
+  | "expired"
+  | (string & {});
 export const CapacityReservationCancellationQuoteState = /*@__PURE__*/ S.String;
 
 export interface CapacityReservationConfiguration {
@@ -9068,7 +9139,8 @@ export type InstanceType =
   | "m8gn.8xlarge"
   | "m8gn.large"
   | "m8gn.medium"
-  | "m8gn.xlarge";
+  | "m8gn.xlarge"
+  | (string & {});
 export const InstanceType = /*@__PURE__*/ S.String;
 
 export type DoubleWithConstraints = number;
@@ -9101,10 +9173,10 @@ export type ReservationFleetInstanceSpecificationList =
 export const ReservationFleetInstanceSpecificationList = /*@__PURE__*/ S.Array(
   ReservationFleetInstanceSpecification,
 );
-export type FleetCapacityReservationTenancy = "default";
+export type FleetCapacityReservationTenancy = "default" | (string & {});
 export const FleetCapacityReservationTenancy = /*@__PURE__*/ S.String;
 
-export type FleetInstanceMatchCriteria = "open";
+export type FleetInstanceMatchCriteria = "open" | (string & {});
 export const FleetInstanceMatchCriteria = /*@__PURE__*/ S.String;
 
 export interface CreateCapacityReservationFleetRequest {
@@ -9313,7 +9385,8 @@ export type CarrierGatewayState =
   | "pending"
   | "available"
   | "deleting"
-  | "deleted";
+  | "deleted"
+  | (string & {});
 export const CarrierGatewayState = /*@__PURE__*/ S.String;
 
 export interface CarrierGateway {
@@ -9362,7 +9435,8 @@ export const CreateCarrierGatewayResult = /*@__PURE__*/ S.suspend(() =>
 export type ClientVpnAuthenticationType =
   | "certificate-authentication"
   | "directory-service-authentication"
-  | "federated-authentication";
+  | "federated-authentication"
+  | (string & {});
 export const ClientVpnAuthenticationType = /*@__PURE__*/ S.String;
 
 export interface DirectoryServiceAuthenticationRequest {
@@ -9428,10 +9502,10 @@ export const ConnectionLogOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConnectionLogOptions",
 }) as any as S.Schema<ConnectionLogOptions>;
-export type TransportProtocol = "tcp" | "udp";
+export type TransportProtocol = "tcp" | "udp" | (string & {});
 export const TransportProtocol = /*@__PURE__*/ S.String;
 
-export type SelfServicePortal = "enabled" | "disabled";
+export type SelfServicePortal = "enabled" | "disabled" | (string & {});
 export const SelfServicePortal = /*@__PURE__*/ S.String;
 
 export interface ClientConnectOptions {
@@ -9466,10 +9540,18 @@ export const ClientRouteEnforcementOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ClientRouteEnforcementOptions",
 }) as any as S.Schema<ClientRouteEnforcementOptions>;
-export type EndpointIpAddressType = "ipv4" | "ipv6" | "dual-stack";
+export type EndpointIpAddressType =
+  | "ipv4"
+  | "ipv6"
+  | "dual-stack"
+  | (string & {});
 export const EndpointIpAddressType = /*@__PURE__*/ S.String;
 
-export type TrafficIpAddressType = "ipv4" | "ipv6" | "dual-stack";
+export type TrafficIpAddressType =
+  | "ipv4"
+  | "ipv6"
+  | "dual-stack"
+  | (string & {});
 export const TrafficIpAddressType = /*@__PURE__*/ S.String;
 
 export type ClientVpnAvailabilityZoneSet = string[];
@@ -9576,7 +9658,8 @@ export type ClientVpnEndpointStatusCode =
   | "available"
   | "deleting"
   | "deleted"
-  | "pending";
+  | "pending"
+  | (string & {});
 export const ClientVpnEndpointStatusCode = /*@__PURE__*/ S.String;
 
 export interface ClientVpnEndpointStatus {
@@ -9653,7 +9736,8 @@ export type ClientVpnRouteStatusCode =
   | "creating"
   | "active"
   | "failed"
-  | "deleting";
+  | "deleting"
+  | (string & {});
 export const ClientVpnRouteStatusCode = /*@__PURE__*/ S.String;
 
 export interface ClientVpnRouteStatus {
@@ -9811,7 +9895,7 @@ export const CreateCoipPoolResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCoipPoolResult",
 }) as any as S.Schema<CreateCoipPoolResult>;
-export type GatewayType = "ipsec.1";
+export type GatewayType = "ipsec.1" | (string & {});
 export const GatewayType = /*@__PURE__*/ S.String;
 
 export interface CreateCustomerGatewayRequest {
@@ -9951,7 +10035,7 @@ export const SubnetIpv6CidrBlockAssociationSet = /*@__PURE__*/ S.Array(
     identifier: "SubnetIpv6CidrBlockAssociation",
   }),
 );
-export type HostnameType = "ip-name" | "resource-name";
+export type HostnameType = "ip-name" | "resource-name" | (string & {});
 export const HostnameType = /*@__PURE__*/ S.String;
 
 export interface PrivateDnsNameOptionsOnLaunch {
@@ -9980,7 +10064,8 @@ export const PrivateDnsNameOptionsOnLaunch = /*@__PURE__*/ S.suspend(() =>
 export type BlockPublicAccessMode =
   | "off"
   | "block-bidirectional"
-  | "block-ingress";
+  | "block-ingress"
+  | (string & {});
 export const BlockPublicAccessMode = /*@__PURE__*/ S.String;
 
 export interface BlockPublicAccessStates {
@@ -10001,7 +10086,8 @@ export type SubnetState =
   | "available"
   | "unavailable"
   | "failed"
-  | "failed-insufficient-capacity";
+  | "failed-insufficient-capacity"
+  | (string & {});
 export const SubnetState = /*@__PURE__*/ S.String;
 
 export interface Subnet {
@@ -10158,7 +10244,7 @@ export const CreateDefaultVpcRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDefaultVpcRequest",
 }) as any as S.Schema<CreateDefaultVpcRequest>;
-export type Tenancy = "default" | "dedicated" | "host";
+export type Tenancy = "default" | "dedicated" | "host" | (string & {});
 export const Tenancy = /*@__PURE__*/ S.String;
 
 export type VpcIpv6CidrBlockAssociationSet = VpcIpv6CidrBlockAssociation[];
@@ -10174,7 +10260,7 @@ export const VpcCidrBlockAssociationSet = /*@__PURE__*/ S.Array(
   }),
 );
 export type VpcEncryptionControlId = string;
-export type VpcEncryptionControlMode = "monitor" | "enforce";
+export type VpcEncryptionControlMode = "monitor" | "enforce" | (string & {});
 export const VpcEncryptionControlMode = /*@__PURE__*/ S.String;
 
 export type VpcEncryptionControlState =
@@ -10186,14 +10272,16 @@ export type VpcEncryptionControlState =
   | "deleted"
   | "available"
   | "creating"
-  | "delete-failed";
+  | "delete-failed"
+  | (string & {});
 export const VpcEncryptionControlState = /*@__PURE__*/ S.String;
 
 export type VpcEncryptionControlExclusionState =
   | "enabling"
   | "enabled"
   | "disabling"
-  | "disabled";
+  | "disabled"
+  | (string & {});
 export const VpcEncryptionControlExclusionState = /*@__PURE__*/ S.String;
 
 export interface VpcEncryptionControlExclusion {
@@ -10305,7 +10393,7 @@ export const VpcEncryptionControl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VpcEncryptionControl",
 }) as any as S.Schema<VpcEncryptionControl>;
-export type VpcState = "pending" | "available";
+export type VpcState = "pending" | "available" | (string & {});
 export const VpcState = /*@__PURE__*/ S.String;
 
 export interface Vpc {
@@ -10422,7 +10510,10 @@ export const CreateDelegateMacVolumeOwnershipTaskRequest =
     identifier: "CreateDelegateMacVolumeOwnershipTaskRequest",
   }) as any as S.Schema<CreateDelegateMacVolumeOwnershipTaskRequest>;
 export type MacModificationTaskId = string;
-export type MacSystemIntegrityProtectionSettingStatus = "enabled" | "disabled";
+export type MacSystemIntegrityProtectionSettingStatus =
+  | "enabled"
+  | "disabled"
+  | (string & {});
 export const MacSystemIntegrityProtectionSettingStatus = /*@__PURE__*/ S.String;
 
 export interface MacSystemIntegrityProtectionConfiguration {
@@ -10483,12 +10574,14 @@ export type MacModificationTaskState =
   | "successful"
   | "failed"
   | "in-progress"
-  | "pending";
+  | "pending"
+  | (string & {});
 export const MacModificationTaskState = /*@__PURE__*/ S.String;
 
 export type MacModificationTaskType =
   | "sip-modification"
-  | "volume-ownership-delegation";
+  | "volume-ownership-delegation"
+  | (string & {});
 export const MacModificationTaskType = /*@__PURE__*/ S.String;
 
 export interface MacModificationTask {
@@ -10782,10 +10875,14 @@ export type SpotAllocationStrategy =
   | "diversified"
   | "capacity-optimized"
   | "capacity-optimized-prioritized"
-  | "price-capacity-optimized";
+  | "price-capacity-optimized"
+  | (string & {});
 export const SpotAllocationStrategy = /*@__PURE__*/ S.String;
 
-export type FleetReplacementStrategy = "launch" | "launch-before-terminate";
+export type FleetReplacementStrategy =
+  | "launch"
+  | "launch-before-terminate"
+  | (string & {});
 export const FleetReplacementStrategy = /*@__PURE__*/ S.String;
 
 export interface FleetSpotCapacityRebalanceRequest {
@@ -10814,7 +10911,8 @@ export const FleetSpotMaintenanceStrategiesRequest = /*@__PURE__*/ S.suspend(
 export type SpotInstanceInterruptionBehavior =
   | "hibernate"
   | "stop"
-  | "terminate";
+  | "terminate"
+  | (string & {});
 export const SpotInstanceInterruptionBehavior = /*@__PURE__*/ S.String;
 
 export interface SpotOptionsRequest {
@@ -10841,11 +10939,15 @@ export const SpotOptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SpotOptionsRequest",
 }) as any as S.Schema<SpotOptionsRequest>;
-export type FleetOnDemandAllocationStrategy = "lowest-price" | "prioritized";
+export type FleetOnDemandAllocationStrategy =
+  | "lowest-price"
+  | "prioritized"
+  | (string & {});
 export const FleetOnDemandAllocationStrategy = /*@__PURE__*/ S.String;
 
 export type FleetCapacityReservationUsageStrategy =
-  "use-capacity-reservations-first";
+  | "use-capacity-reservations-first"
+  | (string & {});
 export const FleetCapacityReservationUsageStrategy = /*@__PURE__*/ S.String;
 
 export interface CapacityReservationOptionsRequest {
@@ -10878,7 +10980,9 @@ export const OnDemandOptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OnDemandOptionsRequest",
 }) as any as S.Schema<OnDemandOptionsRequest>;
-export type FleetReservationType = "interruptible-capacity-reservation";
+export type FleetReservationType =
+  | "interruptible-capacity-reservation"
+  | (string & {});
 export const FleetReservationType = /*@__PURE__*/ S.String;
 
 export type ReservationTypeListRequest = FleetReservationType[];
@@ -10899,7 +11003,8 @@ export const ReservedCapacityOptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservedCapacityOptionsRequest>;
 export type FleetExcessCapacityTerminationPolicy =
   | "no-termination"
-  | "termination";
+  | "termination"
+  | (string & {});
 export const FleetExcessCapacityTerminationPolicy = /*@__PURE__*/ S.String;
 
 export type LaunchTemplateId = string;
@@ -11043,7 +11148,12 @@ export const MemoryMiBRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MemoryMiBRequest",
 }) as any as S.Schema<MemoryMiBRequest>;
-export type CpuManufacturer = "intel" | "amd" | "amazon-web-services" | "apple";
+export type CpuManufacturer =
+  | "intel"
+  | "amd"
+  | "amazon-web-services"
+  | "apple"
+  | (string & {});
 export const CpuManufacturer = /*@__PURE__*/ S.String;
 
 export type CpuManufacturerSet = CpuManufacturer[];
@@ -11064,17 +11174,21 @@ export type ExcludedInstanceTypeSet = string[];
 export const ExcludedInstanceTypeSet = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
-export type InstanceGeneration = "current" | "previous";
+export type InstanceGeneration = "current" | "previous" | (string & {});
 export const InstanceGeneration = /*@__PURE__*/ S.String;
 
 export type InstanceGenerationSet = InstanceGeneration[];
 export const InstanceGenerationSet = /*@__PURE__*/ S.Array(
   InstanceGeneration.pipe(T.XmlName("item")),
 );
-export type BareMetal = "included" | "required" | "excluded";
+export type BareMetal = "included" | "required" | "excluded" | (string & {});
 export const BareMetal = /*@__PURE__*/ S.String;
 
-export type BurstablePerformance = "included" | "required" | "excluded";
+export type BurstablePerformance =
+  | "included"
+  | "required"
+  | "excluded"
+  | (string & {});
 export const BurstablePerformance = /*@__PURE__*/ S.String;
 
 export interface NetworkInterfaceCountRequest {
@@ -11086,10 +11200,10 @@ export const NetworkInterfaceCountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NetworkInterfaceCountRequest",
 }) as any as S.Schema<NetworkInterfaceCountRequest>;
-export type LocalStorage = "included" | "required" | "excluded";
+export type LocalStorage = "included" | "required" | "excluded" | (string & {});
 export const LocalStorage = /*@__PURE__*/ S.String;
 
-export type LocalStorageType = "hdd" | "ssd";
+export type LocalStorageType = "hdd" | "ssd" | (string & {});
 export const LocalStorageType = /*@__PURE__*/ S.String;
 
 export type LocalStorageTypeSet = LocalStorageType[];
@@ -11114,7 +11228,12 @@ export const BaselineEbsBandwidthMbpsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BaselineEbsBandwidthMbpsRequest",
 }) as any as S.Schema<BaselineEbsBandwidthMbpsRequest>;
-export type AcceleratorType = "gpu" | "fpga" | "inference" | "media";
+export type AcceleratorType =
+  | "gpu"
+  | "fpga"
+  | "inference"
+  | "media"
+  | (string & {});
 export const AcceleratorType = /*@__PURE__*/ S.String;
 
 export type AcceleratorTypeSet = AcceleratorType[];
@@ -11135,7 +11254,8 @@ export type AcceleratorManufacturer =
   | "amd"
   | "nvidia"
   | "xilinx"
-  | "habana";
+  | "habana"
+  | (string & {});
 export const AcceleratorManufacturer = /*@__PURE__*/ S.String;
 
 export type AcceleratorManufacturerSet = AcceleratorManufacturer[];
@@ -11161,7 +11281,8 @@ export type AcceleratorName =
   | "inferentia2"
   | "trainium"
   | "trainium2"
-  | "u30";
+  | "u30"
+  | (string & {});
 export const AcceleratorName = /*@__PURE__*/ S.String;
 
 export type AcceleratorNameSet = AcceleratorName[];
@@ -11366,10 +11487,15 @@ export type DefaultTargetCapacityType =
   | "spot"
   | "on-demand"
   | "capacity-block"
-  | "reserved-capacity";
+  | "reserved-capacity"
+  | (string & {});
 export const DefaultTargetCapacityType = /*@__PURE__*/ S.String;
 
-export type TargetCapacityUnitType = "vcpu" | "memory-mib" | "units";
+export type TargetCapacityUnitType =
+  | "vcpu"
+  | "memory-mib"
+  | "units"
+  | (string & {});
 export const TargetCapacityUnitType = /*@__PURE__*/ S.String;
 
 export interface TargetCapacitySpecificationRequest {
@@ -11390,7 +11516,7 @@ export const TargetCapacitySpecificationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TargetCapacitySpecificationRequest",
 }) as any as S.Schema<TargetCapacitySpecificationRequest>;
-export type FleetType = "request" | "maintain" | "instant";
+export type FleetType = "request" | "maintain" | "instant" | (string & {});
 export const FleetType = /*@__PURE__*/ S.String;
 
 export interface CreateFleetRequest {
@@ -11944,7 +12070,8 @@ export const LaunchTemplateAndOverridesResponse = /*@__PURE__*/ S.suspend(() =>
 export type InstanceLifecycle =
   | "spot"
   | "on-demand"
-  | "interruptible-capacity-reservation";
+  | "interruptible-capacity-reservation"
+  | (string & {});
 export const InstanceLifecycle = /*@__PURE__*/ S.String;
 
 export interface CreateFleetError_ {
@@ -11987,7 +12114,7 @@ export type InstanceIdsSet = string[];
 export const InstanceIdsSet = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
-export type PlatformValues = "Windows";
+export type PlatformValues = "Windows" | (string & {});
 export const PlatformValues = /*@__PURE__*/ S.String;
 
 export interface CreateFleetInstance {
@@ -12065,19 +12192,21 @@ export type FlowLogsResourceType =
   | "NetworkInterface"
   | "TransitGateway"
   | "TransitGatewayAttachment"
-  | "RegionalNatGateway";
+  | "RegionalNatGateway"
+  | (string & {});
 export const FlowLogsResourceType = /*@__PURE__*/ S.String;
 
-export type TrafficType = "ACCEPT" | "REJECT" | "ALL";
+export type TrafficType = "ACCEPT" | "REJECT" | "ALL" | (string & {});
 export const TrafficType = /*@__PURE__*/ S.String;
 
 export type LogDestinationType =
   | "cloud-watch-logs"
   | "s3"
-  | "kinesis-data-firehose";
+  | "kinesis-data-firehose"
+  | (string & {});
 export const LogDestinationType = /*@__PURE__*/ S.String;
 
-export type DestinationFileFormat = "plain-text" | "parquet";
+export type DestinationFileFormat = "plain-text" | "parquet" | (string & {});
 export const DestinationFileFormat = /*@__PURE__*/ S.String;
 
 export interface DestinationOptionsRequest {
@@ -12097,7 +12226,8 @@ export const DestinationOptionsRequest = /*@__PURE__*/ S.suspend(() =>
 export type TaggableResourceType =
   | "network-interface"
   | "instance"
-  | "auto-scaling-group";
+  | "auto-scaling-group"
+  | (string & {});
 export const TaggableResourceType = /*@__PURE__*/ S.String;
 
 export type TagKey = string;
@@ -12259,7 +12389,7 @@ export const CreateFpgaImageResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFpgaImageResult",
 }) as any as S.Schema<CreateFpgaImageResult>;
-export type SnapshotLocationEnum = "regional" | "local";
+export type SnapshotLocationEnum = "regional" | "local" | (string & {});
 export const SnapshotLocationEnum = /*@__PURE__*/ S.String;
 
 export interface EbsBlockDevice {
@@ -12520,7 +12650,7 @@ export type SecurityGroupIdStringListRequest = string[];
 export const SecurityGroupIdStringListRequest = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("SecurityGroupId")),
 );
-export type IpAddressType = "ipv4" | "dualstack" | "ipv6";
+export type IpAddressType = "ipv4" | "dualstack" | "ipv6" | (string & {});
 export const IpAddressType = /*@__PURE__*/ S.String;
 
 export interface CreateInstanceConnectEndpointRequest {
@@ -12570,7 +12700,8 @@ export type Ec2InstanceConnectEndpointState =
   | "delete-failed"
   | "update-in-progress"
   | "update-complete"
-  | "update-failed";
+  | "update-failed"
+  | (string & {});
 export const Ec2InstanceConnectEndpointState = /*@__PURE__*/ S.String;
 
 export type NetworkInterfaceIdSet = string[];
@@ -12800,13 +12931,17 @@ export const CreateInstanceEventWindowResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateInstanceEventWindowResult",
 }) as any as S.Schema<CreateInstanceEventWindowResult>;
-export type ExportEnvironment = "citrix" | "vmware" | "microsoft";
+export type ExportEnvironment =
+  | "citrix"
+  | "vmware"
+  | "microsoft"
+  | (string & {});
 export const ExportEnvironment = /*@__PURE__*/ S.String;
 
-export type DiskImageFormat = "VMDK" | "RAW" | "VHD";
+export type DiskImageFormat = "VMDK" | "RAW" | "VHD" | (string & {});
 export const DiskImageFormat = /*@__PURE__*/ S.String;
 
-export type ContainerFormat = "ova";
+export type ContainerFormat = "ova" | (string & {});
 export const ContainerFormat = /*@__PURE__*/ S.String;
 
 export interface ExportToS3TaskSpecification {
@@ -12926,7 +13061,8 @@ export type ExportTaskState =
   | "active"
   | "cancelling"
   | "cancelled"
-  | "completed";
+  | "completed"
+  | (string & {});
 export const ExportTaskState = /*@__PURE__*/ S.String;
 
 export interface ExportTask {
@@ -13119,10 +13255,13 @@ export type AddIpamOperatingRegionSet = AddIpamOperatingRegion[];
 export const AddIpamOperatingRegionSet = /*@__PURE__*/ S.Array(
   AddIpamOperatingRegion,
 );
-export type IpamTier = "free" | "advanced";
+export type IpamTier = "free" | "advanced" | (string & {});
 export const IpamTier = /*@__PURE__*/ S.String;
 
-export type IpamMeteredAccount = "ipam-owner" | "resource-owner";
+export type IpamMeteredAccount =
+  | "ipam-owner"
+  | "resource-owner"
+  | (string & {});
 export const IpamMeteredAccount = /*@__PURE__*/ S.String;
 
 export interface CreateIpamRequest {
@@ -13195,7 +13334,8 @@ export type IpamState =
   | "delete-failed"
   | "isolate-in-progress"
   | "isolate-complete"
-  | "restore-in-progress";
+  | "restore-in-progress"
+  | (string & {});
 export const IpamState = /*@__PURE__*/ S.String;
 
 export interface Ipam {
@@ -13333,7 +13473,7 @@ export const CreateIpamExternalResourceVerificationTokenRequest =
     identifier: "CreateIpamExternalResourceVerificationTokenRequest",
   }) as any as S.Schema<CreateIpamExternalResourceVerificationTokenRequest>;
 export type IpamExternalResourceVerificationTokenId = string;
-export type TokenState = "valid" | "expired";
+export type TokenState = "valid" | "expired" | (string & {});
 export const TokenState = /*@__PURE__*/ S.String;
 
 export type IpamExternalResourceVerificationTokenState =
@@ -13342,7 +13482,8 @@ export type IpamExternalResourceVerificationTokenState =
   | "create-failed"
   | "delete-in-progress"
   | "delete-complete"
-  | "delete-failed";
+  | "delete-failed"
+  | (string & {});
 export const IpamExternalResourceVerificationTokenState =
   /*@__PURE__*/ S.String;
 
@@ -13468,7 +13609,8 @@ export type IpamPolicyState =
   | "delete-failed"
   | "isolate-in-progress"
   | "isolate-complete"
-  | "restore-in-progress";
+  | "restore-in-progress"
+  | (string & {});
 export const IpamPolicyState = /*@__PURE__*/ S.String;
 
 export interface IpamPolicy {
@@ -13529,7 +13671,7 @@ export const CreateIpamPolicyResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIpamPolicyResult",
 }) as any as S.Schema<CreateIpamPolicyResult>;
-export type AddressFamily = "ipv4" | "ipv6";
+export type AddressFamily = "ipv4" | "ipv6" | (string & {});
 export const AddressFamily = /*@__PURE__*/ S.String;
 
 export type IpamNetmaskLength = number;
@@ -13548,13 +13690,13 @@ export const RequestIpamResourceTagList = /*@__PURE__*/ S.Array(
     identifier: "RequestIpamResourceTag",
   }),
 );
-export type IpamPoolAwsService = "ec2" | "global-services";
+export type IpamPoolAwsService = "ec2" | "global-services" | (string & {});
 export const IpamPoolAwsService = /*@__PURE__*/ S.String;
 
-export type IpamPoolPublicIpSource = "amazon" | "byoip";
+export type IpamPoolPublicIpSource = "amazon" | "byoip" | (string & {});
 export const IpamPoolPublicIpSource = /*@__PURE__*/ S.String;
 
-export type IpamPoolSourceResourceType = "vpc";
+export type IpamPoolSourceResourceType = "vpc" | (string & {});
 export const IpamPoolSourceResourceType = /*@__PURE__*/ S.String;
 
 export interface IpamPoolSourceResourceRequest {
@@ -13629,7 +13771,7 @@ export const CreateIpamPoolRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIpamPoolRequest",
 }) as any as S.Schema<CreateIpamPoolRequest>;
-export type IpamScopeType = "public" | "private";
+export type IpamScopeType = "public" | "private" | (string & {});
 export const IpamScopeType = /*@__PURE__*/ S.String;
 
 export type IpamPoolState =
@@ -13644,7 +13786,8 @@ export type IpamPoolState =
   | "delete-failed"
   | "isolate-in-progress"
   | "isolate-complete"
-  | "restore-in-progress";
+  | "restore-in-progress"
+  | (string & {});
 export const IpamPoolState = /*@__PURE__*/ S.String;
 
 export interface IpamResourceTag {
@@ -13836,7 +13979,8 @@ export const CreateIpamPoolResult = /*@__PURE__*/ S.suspend(() =>
 export type IpamPrefixListResolverRuleType =
   | "static-cidr"
   | "ipam-resource-cidr"
-  | "ipam-pool-cidr";
+  | "ipam-pool-cidr"
+  | (string & {});
 export const IpamPrefixListResolverRuleType = /*@__PURE__*/ S.String;
 
 export type IpamResourceType =
@@ -13846,13 +13990,15 @@ export type IpamResourceType =
   | "public-ipv4-pool"
   | "ipv6-pool"
   | "eni"
-  | "anycast-ip-list";
+  | "anycast-ip-list"
+  | (string & {});
 export const IpamResourceType = /*@__PURE__*/ S.String;
 
 export type IpamPrefixListResolverRuleConditionOperation =
   | "equals"
   | "not-equals"
-  | "subnet-of";
+  | "subnet-of"
+  | (string & {});
 export const IpamPrefixListResolverRuleConditionOperation =
   /*@__PURE__*/ S.String;
 
@@ -13963,13 +14109,15 @@ export type IpamPrefixListResolverState =
   | "delete-failed"
   | "isolate-in-progress"
   | "isolate-complete"
-  | "restore-in-progress";
+  | "restore-in-progress"
+  | (string & {});
 export const IpamPrefixListResolverState = /*@__PURE__*/ S.String;
 
 export type IpamPrefixListResolverVersionCreationStatus =
   | "pending"
   | "success"
-  | "failure";
+  | "failure"
+  | (string & {});
 export const IpamPrefixListResolverVersionCreationStatus =
   /*@__PURE__*/ S.String;
 
@@ -14106,7 +14254,8 @@ export type IpamPrefixListResolverTargetState =
   | "delete-failed"
   | "isolate-in-progress"
   | "isolate-complete"
-  | "restore-in-progress";
+  | "restore-in-progress"
+  | (string & {});
 export const IpamPrefixListResolverTargetState = /*@__PURE__*/ S.String;
 
 export interface IpamPrefixListResolverTarget {
@@ -14237,7 +14386,8 @@ export type IpamResourceDiscoveryState =
   | "delete-failed"
   | "isolate-in-progress"
   | "isolate-complete"
-  | "restore-in-progress";
+  | "restore-in-progress"
+  | (string & {});
 export const IpamResourceDiscoveryState = /*@__PURE__*/ S.String;
 
 export interface IpamOrganizationalUnitExclusion {
@@ -14335,7 +14485,7 @@ export const CreateIpamResourceDiscoveryResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIpamResourceDiscoveryResult",
 }) as any as S.Schema<CreateIpamResourceDiscoveryResult>;
-export type IpamScopeExternalAuthorityType = "infoblox";
+export type IpamScopeExternalAuthorityType = "infoblox" | (string & {});
 export const IpamScopeExternalAuthorityType = /*@__PURE__*/ S.String;
 
 export interface ExternalAuthorityConfiguration {
@@ -14394,7 +14544,8 @@ export type IpamScopeState =
   | "delete-failed"
   | "isolate-in-progress"
   | "isolate-complete"
-  | "restore-in-progress";
+  | "restore-in-progress"
+  | (string & {});
 export const IpamScopeState = /*@__PURE__*/ S.String;
 
 export interface IpamScopeExternalAuthorityConfiguration {
@@ -14498,10 +14649,10 @@ export const CreateIpamScopeResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIpamScopeResult",
 }) as any as S.Schema<CreateIpamScopeResult>;
-export type KeyType = "rsa" | "ed25519";
+export type KeyType = "rsa" | "ed25519" | (string & {});
 export const KeyType = /*@__PURE__*/ S.String;
 
-export type KeyFormat = "pem" | "ppk";
+export type KeyFormat = "pem" | "ppk" | (string & {});
 export const KeyFormat = /*@__PURE__*/ S.String;
 
 export interface CreateKeyPairRequest {
@@ -14846,7 +14997,7 @@ export const LaunchTemplatePlacementRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LaunchTemplatePlacementRequest",
 }) as any as S.Schema<LaunchTemplatePlacementRequest>;
 export type RamdiskId = string;
-export type ShutdownBehavior = "stop" | "terminate";
+export type ShutdownBehavior = "stop" | "terminate" | (string & {});
 export const ShutdownBehavior = /*@__PURE__*/ S.String;
 
 export interface LaunchTemplateTagSpecificationRequest {
@@ -14909,13 +15060,18 @@ export const SecurityGroupStringList = /*@__PURE__*/ S.Array(
 export type MarketType =
   | "spot"
   | "capacity-block"
-  | "interruptible-capacity-reservation";
+  | "interruptible-capacity-reservation"
+  | (string & {});
 export const MarketType = /*@__PURE__*/ S.String;
 
-export type SpotInstanceType = "one-time" | "persistent";
+export type SpotInstanceType = "one-time" | "persistent" | (string & {});
 export const SpotInstanceType = /*@__PURE__*/ S.String;
 
-export type InstanceInterruptionBehavior = "hibernate" | "stop" | "terminate";
+export type InstanceInterruptionBehavior =
+  | "hibernate"
+  | "stop"
+  | "terminate"
+  | (string & {});
 export const InstanceInterruptionBehavior = /*@__PURE__*/ S.String;
 
 export interface LaunchTemplateSpotMarketOptionsRequest {
@@ -14960,10 +15116,13 @@ export const CreditSpecificationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreditSpecificationRequest",
 }) as any as S.Schema<CreditSpecificationRequest>;
-export type AmdSevSnpSpecification = "enabled" | "disabled";
+export type AmdSevSnpSpecification = "enabled" | "disabled" | (string & {});
 export const AmdSevSnpSpecification = /*@__PURE__*/ S.String;
 
-export type NestedVirtualizationSpecification = "enabled" | "disabled";
+export type NestedVirtualizationSpecification =
+  | "enabled"
+  | "disabled"
+  | (string & {});
 export const NestedVirtualizationSpecification = /*@__PURE__*/ S.String;
 
 export interface LaunchTemplateCpuOptionsRequest {
@@ -14985,7 +15144,8 @@ export const LaunchTemplateCpuOptionsRequest = /*@__PURE__*/ S.suspend(() =>
 export type CapacityReservationPreference =
   | "capacity-reservations-only"
   | "open"
-  | "none";
+  | "none"
+  | (string & {});
 export const CapacityReservationPreference = /*@__PURE__*/ S.String;
 
 export interface CapacityReservationTarget {
@@ -15038,20 +15198,30 @@ export const LaunchTemplateHibernationOptionsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "LaunchTemplateHibernationOptionsRequest",
 }) as any as S.Schema<LaunchTemplateHibernationOptionsRequest>;
-export type LaunchTemplateHttpTokensState = "optional" | "required";
+export type LaunchTemplateHttpTokensState =
+  | "optional"
+  | "required"
+  | (string & {});
 export const LaunchTemplateHttpTokensState = /*@__PURE__*/ S.String;
 
 export type LaunchTemplateInstanceMetadataEndpointState =
   | "disabled"
-  | "enabled";
+  | "enabled"
+  | (string & {});
 export const LaunchTemplateInstanceMetadataEndpointState =
   /*@__PURE__*/ S.String;
 
-export type LaunchTemplateInstanceMetadataProtocolIpv6 = "disabled" | "enabled";
+export type LaunchTemplateInstanceMetadataProtocolIpv6 =
+  | "disabled"
+  | "enabled"
+  | (string & {});
 export const LaunchTemplateInstanceMetadataProtocolIpv6 =
   /*@__PURE__*/ S.String;
 
-export type LaunchTemplateInstanceMetadataTagsState = "disabled" | "enabled";
+export type LaunchTemplateInstanceMetadataTagsState =
+  | "disabled"
+  | "enabled"
+  | (string & {});
 export const LaunchTemplateInstanceMetadataTagsState = /*@__PURE__*/ S.String;
 
 export interface LaunchTemplateInstanceMetadataOptionsRequest {
@@ -15096,7 +15266,10 @@ export const LaunchTemplatePrivateDnsNameOptionsRequest =
   ).annotate({
     identifier: "LaunchTemplatePrivateDnsNameOptionsRequest",
   }) as any as S.Schema<LaunchTemplatePrivateDnsNameOptionsRequest>;
-export type LaunchTemplateAutoRecoveryState = "default" | "disabled";
+export type LaunchTemplateAutoRecoveryState =
+  | "default"
+  | "disabled"
+  | (string & {});
 export const LaunchTemplateAutoRecoveryState = /*@__PURE__*/ S.String;
 
 export interface LaunchTemplateInstanceMaintenanceOptionsRequest {
@@ -15116,7 +15289,11 @@ export const OperatorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OperatorRequest",
 }) as any as S.Schema<OperatorRequest>;
-export type InstanceBandwidthWeighting = "default" | "vpc-1" | "ebs-1";
+export type InstanceBandwidthWeighting =
+  | "default"
+  | "vpc-1"
+  | "ebs-1"
+  | (string & {});
 export const InstanceBandwidthWeighting = /*@__PURE__*/ S.String;
 
 export interface LaunchTemplateNetworkPerformanceOptionsRequest {
@@ -15148,7 +15325,7 @@ export const SecondaryInterfacePrivateIpAddressSpecificationListRequest =
     }),
   );
 export type SecondarySubnetId = string;
-export type SecondaryInterfaceType = "secondary";
+export type SecondaryInterfaceType = "secondary" | (string & {});
 export const SecondaryInterfaceType = /*@__PURE__*/ S.String;
 
 export interface LaunchTemplateInstanceSecondaryInterfaceSpecificationRequest {
@@ -16124,7 +16301,10 @@ export const LaunchTemplateHibernationOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LaunchTemplateHibernationOptions",
 }) as any as S.Schema<LaunchTemplateHibernationOptions>;
-export type LaunchTemplateInstanceMetadataOptionsState = "pending" | "applied";
+export type LaunchTemplateInstanceMetadataOptionsState =
+  | "pending"
+  | "applied"
+  | (string & {});
 export const LaunchTemplateInstanceMetadataOptionsState =
   /*@__PURE__*/ S.String;
 
@@ -16622,7 +16802,7 @@ export const CreateLocalGatewayRouteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLocalGatewayRouteRequest",
 }) as any as S.Schema<CreateLocalGatewayRouteRequest>;
-export type LocalGatewayRouteType = "static" | "propagated";
+export type LocalGatewayRouteType = "static" | "propagated" | (string & {});
 export const LocalGatewayRouteType = /*@__PURE__*/ S.String;
 
 export type LocalGatewayRouteState =
@@ -16630,7 +16810,8 @@ export type LocalGatewayRouteState =
   | "active"
   | "blackhole"
   | "deleting"
-  | "deleted";
+  | "deleted"
+  | (string & {});
 export const LocalGatewayRouteState = /*@__PURE__*/ S.String;
 
 export interface LocalGatewayRoute {
@@ -16709,7 +16890,10 @@ export const CreateLocalGatewayRouteResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateLocalGatewayRouteResult",
 }) as any as S.Schema<CreateLocalGatewayRouteResult>;
 export type LocalGatewayId = string;
-export type LocalGatewayRouteTableMode = "direct-vpc-routing" | "coip";
+export type LocalGatewayRouteTableMode =
+  | "direct-vpc-routing"
+  | "coip"
+  | (string & {});
 export const LocalGatewayRouteTableMode = /*@__PURE__*/ S.String;
 
 export interface CreateLocalGatewayRouteTableRequest {
@@ -17069,7 +17253,8 @@ export type LocalGatewayVirtualInterfaceConfigurationState =
   | "pending"
   | "available"
   | "deleting"
-  | "deleted";
+  | "deleted"
+  | (string & {});
 export const LocalGatewayVirtualInterfaceConfigurationState =
   /*@__PURE__*/ S.String;
 
@@ -17206,7 +17391,8 @@ export type LocalGatewayVirtualInterfaceGroupConfigurationState =
   | "incomplete"
   | "available"
   | "deleting"
-  | "deleted";
+  | "deleted"
+  | (string & {});
 export const LocalGatewayVirtualInterfaceGroupConfigurationState =
   /*@__PURE__*/ S.String;
 
@@ -17424,7 +17610,8 @@ export type PrefixListState =
   | "restore-failed"
   | "delete-in-progress"
   | "delete-complete"
-  | "delete-failed";
+  | "delete-failed"
+  | (string & {});
 export const PrefixListState = /*@__PURE__*/ S.String;
 
 export interface ManagedPrefixList {
@@ -17507,7 +17694,7 @@ export const CreateManagedPrefixListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateManagedPrefixListResult",
 }) as any as S.Schema<CreateManagedPrefixListResult>;
-export type AvailabilityMode = "zonal" | "regional";
+export type AvailabilityMode = "zonal" | "regional" | (string & {});
 export const AvailabilityMode = /*@__PURE__*/ S.String;
 
 export interface AvailabilityZoneAddress {
@@ -17530,7 +17717,7 @@ export const AvailabilityZoneAddresses = /*@__PURE__*/ S.Array(
     identifier: "AvailabilityZoneAddress",
   }),
 );
-export type ConnectivityType = "private" | "public";
+export type ConnectivityType = "private" | "public" | (string & {});
 export const ConnectivityType = /*@__PURE__*/ S.String;
 
 export interface CreateNatGatewayRequest {
@@ -17621,16 +17808,17 @@ export type NatGatewayState =
   | "failed"
   | "available"
   | "deleting"
-  | "deleted";
+  | "deleted"
+  | (string & {});
 export const NatGatewayState = /*@__PURE__*/ S.String;
 
-export type AutoScalingIpsState = "enabled" | "disabled";
+export type AutoScalingIpsState = "enabled" | "disabled" | (string & {});
 export const AutoScalingIpsState = /*@__PURE__*/ S.String;
 
-export type AutoProvisionZonesState = "enabled" | "disabled";
+export type AutoProvisionZonesState = "enabled" | "disabled" | (string & {});
 export const AutoProvisionZonesState = /*@__PURE__*/ S.String;
 
-export type NatGatewayApplianceType = "network-firewall-proxy";
+export type NatGatewayApplianceType = "network-firewall-proxy" | (string & {});
 export const NatGatewayApplianceType = /*@__PURE__*/ S.String;
 
 export type NatGatewayApplianceState =
@@ -17639,13 +17827,15 @@ export type NatGatewayApplianceState =
   | "detaching"
   | "detached"
   | "attach-failed"
-  | "detach-failed";
+  | "detach-failed"
+  | (string & {});
 export const NatGatewayApplianceState = /*@__PURE__*/ S.String;
 
 export type NatGatewayApplianceModifyState =
   | "modifying"
   | "completed"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const NatGatewayApplianceModifyState = /*@__PURE__*/ S.String;
 
 export interface NatGatewayAttachedAppliance {
@@ -17888,7 +18078,7 @@ export const PortRange = /*@__PURE__*/ S.suspend(() =>
     To: S.optional(S.Number).pipe(T.XmlName("to"), T.Ec2QueryName("To")),
   }),
 ).annotate({ identifier: "PortRange" }) as any as S.Schema<PortRange>;
-export type RuleAction = "allow" | "deny";
+export type RuleAction = "allow" | "deny" | (string & {});
 export const RuleAction = /*@__PURE__*/ S.String;
 
 export interface NetworkAclEntry {
@@ -18074,7 +18264,7 @@ export const CreateNetworkAclEntryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateNetworkAclEntryResponse",
 }) as any as S.Schema<CreateNetworkAclEntryResponse>;
-export type Protocol = "tcp" | "udp";
+export type Protocol = "tcp" | "udp" | (string & {});
 export const Protocol = /*@__PURE__*/ S.String;
 
 export type ProtocolList = Protocol[];
@@ -18625,7 +18815,8 @@ export type NetworkInterfaceCreationType =
   | "efa"
   | "efa-only"
   | "branch"
-  | "trunk";
+  | "trunk"
+  | (string & {});
 export const NetworkInterfaceCreationType = /*@__PURE__*/ S.String;
 
 export interface CreateNetworkInterfaceRequest {
@@ -18914,7 +19105,8 @@ export type NetworkInterfaceType =
   | "gateway_load_balancer"
   | "gateway_load_balancer_endpoint"
   | "iot_rules_managed"
-  | "aws_codestar_connections_managed";
+  | "aws_codestar_connections_managed"
+  | (string & {});
 export const NetworkInterfaceType = /*@__PURE__*/ S.String;
 
 export interface NetworkInterfaceIpv6Address {
@@ -19032,7 +19224,8 @@ export type NetworkInterfaceStatus =
   | "associated"
   | "attaching"
   | "in-use"
-  | "detaching";
+  | "detaching"
+  | (string & {});
 export const NetworkInterfaceStatus = /*@__PURE__*/ S.String;
 
 export type AssociatedSubnetList = string[];
@@ -19225,7 +19418,10 @@ export const CreateNetworkInterfaceResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateNetworkInterfaceResult",
 }) as any as S.Schema<CreateNetworkInterfaceResult>;
-export type InterfacePermissionType = "INSTANCE-ATTACH" | "EIP-ASSOCIATE";
+export type InterfacePermissionType =
+  | "INSTANCE-ATTACH"
+  | "EIP-ASSOCIATE"
+  | (string & {});
 export const InterfacePermissionType = /*@__PURE__*/ S.String;
 
 export interface CreateNetworkInterfacePermissionRequest {
@@ -19261,7 +19457,8 @@ export type NetworkInterfacePermissionStateCode =
   | "pending"
   | "granted"
   | "revoking"
-  | "revoked";
+  | "revoked"
+  | (string & {});
 export const NetworkInterfacePermissionStateCode = /*@__PURE__*/ S.String;
 
 export interface NetworkInterfacePermissionState {
@@ -19335,14 +19532,15 @@ export const CreateNetworkInterfacePermissionResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateNetworkInterfacePermissionResult",
 }) as any as S.Schema<CreateNetworkInterfacePermissionResult>;
-export type SpreadLevel = "host" | "rack";
+export type SpreadLevel = "host" | "rack" | (string & {});
 export const SpreadLevel = /*@__PURE__*/ S.String;
 
 export type PlacementStrategy =
   | "cluster"
   | "spread"
   | "partition"
-  | "precision-time";
+  | "precision-time"
+  | (string & {});
 export const PlacementStrategy = /*@__PURE__*/ S.String;
 
 export interface CreatePlacementGroupRequest {
@@ -19396,7 +19594,8 @@ export type PlacementGroupState =
   | "pending"
   | "available"
   | "deleting"
-  | "deleted";
+  | "deleted"
+  | (string & {});
 export const PlacementGroupState = /*@__PURE__*/ S.String;
 
 export interface PlacementGroup {
@@ -19553,7 +19752,8 @@ export type ReplaceRootVolumeTaskState =
   | "failing"
   | "succeeded"
   | "failed"
-  | "failed-detached";
+  | "failed-detached"
+  | (string & {});
 export const ReplaceRootVolumeTaskState = /*@__PURE__*/ S.String;
 
 export interface ReplaceRootVolumeTask {
@@ -19844,7 +20044,11 @@ export const CreateRouteResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRouteResult",
 }) as any as S.Schema<CreateRouteResult>;
-export type RouteServerPersistRoutesAction = "enable" | "disable" | "reset";
+export type RouteServerPersistRoutesAction =
+  | "enable"
+  | "disable"
+  | "reset"
+  | (string & {});
 export const RouteServerPersistRoutesAction = /*@__PURE__*/ S.String;
 
 export interface CreateRouteServerRequest {
@@ -19886,7 +20090,8 @@ export type RouteServerState =
   | "available"
   | "modifying"
   | "deleting"
-  | "deleted";
+  | "deleted"
+  | (string & {});
 export const RouteServerState = /*@__PURE__*/ S.String;
 
 export type RouteServerPersistRoutesState =
@@ -19895,7 +20100,8 @@ export type RouteServerPersistRoutesState =
   | "resetting"
   | "disabling"
   | "disabled"
-  | "modifying";
+  | "modifying"
+  | (string & {});
 export const RouteServerPersistRoutesState = /*@__PURE__*/ S.String;
 
 export interface RouteServer {
@@ -19994,7 +20200,8 @@ export type RouteServerEndpointState =
   | "deleted"
   | "failing"
   | "failed"
-  | "delete-failed";
+  | "delete-failed"
+  | (string & {});
 export const RouteServerEndpointState = /*@__PURE__*/ S.String;
 
 export interface RouteServerEndpoint {
@@ -20065,7 +20272,10 @@ export const CreateRouteServerEndpointResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRouteServerEndpointResult",
 }) as any as S.Schema<CreateRouteServerEndpointResult>;
-export type RouteServerPeerLivenessMode = "bfd" | "bgp-keepalive";
+export type RouteServerPeerLivenessMode =
+  | "bfd"
+  | "bgp-keepalive"
+  | (string & {});
 export const RouteServerPeerLivenessMode = /*@__PURE__*/ S.String;
 
 export interface RouteServerBgpOptionsRequest {
@@ -20117,7 +20327,8 @@ export type RouteServerPeerState =
   | "deleting"
   | "deleted"
   | "failing"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const RouteServerPeerState = /*@__PURE__*/ S.String;
 
 export interface RouteServerBgpOptions {
@@ -20138,7 +20349,7 @@ export const RouteServerBgpOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RouteServerBgpOptions",
 }) as any as S.Schema<RouteServerBgpOptions>;
-export type RouteServerBgpState = "up" | "down";
+export type RouteServerBgpState = "up" | "down" | (string & {});
 export const RouteServerBgpState = /*@__PURE__*/ S.String;
 
 export interface RouteServerBgpStatus {
@@ -20154,7 +20365,7 @@ export const RouteServerBgpStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RouteServerBgpStatus",
 }) as any as S.Schema<RouteServerBgpStatus>;
-export type RouteServerBfdState = "up" | "down";
+export type RouteServerBfdState = "up" | "down" | (string & {});
 export const RouteServerBfdState = /*@__PURE__*/ S.String;
 
 export interface RouteServerBfdStatus {
@@ -20357,10 +20568,11 @@ export type RouteOrigin =
   | "CreateRouteTable"
   | "CreateRoute"
   | "EnableVgwRoutePropagation"
-  | "Advertisement";
+  | "Advertisement"
+  | (string & {});
 export const RouteOrigin = /*@__PURE__*/ S.String;
 
-export type RouteState = "active" | "blackhole" | "filtered";
+export type RouteState = "active" | "blackhole" | "filtered" | (string & {});
 export const RouteState = /*@__PURE__*/ S.String;
 
 export interface Route {
@@ -20521,7 +20733,7 @@ export const CreateRouteTableResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRouteTableResult",
 }) as any as S.Schema<CreateRouteTableResult>;
-export type SecondaryNetworkType = "rdma";
+export type SecondaryNetworkType = "rdma" | (string & {});
 export const SecondaryNetworkType = /*@__PURE__*/ S.String;
 
 export interface CreateSecondaryNetworkRequest {
@@ -20561,7 +20773,8 @@ export type SecondaryNetworkState =
   | "create-failed"
   | "delete-in-progress"
   | "delete-complete"
-  | "delete-failed";
+  | "delete-failed"
+  | (string & {});
 export const SecondaryNetworkState = /*@__PURE__*/ S.String;
 
 export type SecondaryNetworkCidrAssociationId = string;
@@ -20571,7 +20784,8 @@ export type SecondaryNetworkCidrBlockAssociationState =
   | "association-failed"
   | "disassociating"
   | "disassociated"
-  | "disassociation-failed";
+  | "disassociation-failed"
+  | (string & {});
 export const SecondaryNetworkCidrBlockAssociationState = /*@__PURE__*/ S.String;
 
 export interface SecondaryNetworkIpv4CidrBlockAssociation {
@@ -20719,7 +20933,8 @@ export type SecondarySubnetCidrBlockAssociationState =
   | "association-failed"
   | "disassociating"
   | "disassociated"
-  | "disassociation-failed";
+  | "disassociation-failed"
+  | (string & {});
 export const SecondarySubnetCidrBlockAssociationState = /*@__PURE__*/ S.String;
 
 export interface SecondarySubnetIpv4CidrBlockAssociation {
@@ -20765,7 +20980,8 @@ export type SecondarySubnetState =
   | "create-failed"
   | "delete-in-progress"
   | "delete-complete"
-  | "delete-failed";
+  | "delete-failed"
+  | (string & {});
 export const SecondarySubnetState = /*@__PURE__*/ S.String;
 
 export interface SecondarySubnet {
@@ -20941,10 +21157,10 @@ export const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSnapshotRequest",
 }) as any as S.Schema<CreateSnapshotRequest>;
-export type StorageTier = "archive" | "standard";
+export type StorageTier = "archive" | "standard" | (string & {});
 export const StorageTier = /*@__PURE__*/ S.String;
 
-export type TransferType = "time-based" | "standard";
+export type TransferType = "time-based" | "standard" | (string & {});
 export const TransferType = /*@__PURE__*/ S.String;
 
 export type SnapshotCompletionDurationMinutesResponse = number;
@@ -20953,7 +21169,8 @@ export type SnapshotState =
   | "completed"
   | "error"
   | "recoverable"
-  | "recovering";
+  | "recovering"
+  | (string & {});
 export const SnapshotState = /*@__PURE__*/ S.String;
 
 export interface Snapshot {
@@ -21095,7 +21312,7 @@ export const InstanceSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InstanceSpecification",
 }) as any as S.Schema<InstanceSpecification>;
-export type CopyTagsFromSource = "volume";
+export type CopyTagsFromSource = "volume" | (string & {});
 export const CopyTagsFromSource = /*@__PURE__*/ S.String;
 
 export interface CreateSnapshotsRequest {
@@ -21268,7 +21485,7 @@ export const SpotInstanceStateFault = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SpotInstanceStateFault",
 }) as any as S.Schema<SpotInstanceStateFault>;
-export type DatafeedSubscriptionState = "Active" | "Inactive";
+export type DatafeedSubscriptionState = "Active" | "Inactive" | (string & {});
 export const DatafeedSubscriptionState = /*@__PURE__*/ S.String;
 
 export interface SpotDatafeedSubscription {
@@ -21430,7 +21647,7 @@ export const CreateSubnetResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSubnetResult",
 }) as any as S.Schema<CreateSubnetResult>;
-export type SubnetCidrReservationType = "prefix" | "explicit";
+export type SubnetCidrReservationType = "prefix" | "explicit" | (string & {});
 export const SubnetCidrReservationType = /*@__PURE__*/ S.String;
 
 export interface CreateSubnetCidrReservationRequest {
@@ -21585,10 +21802,10 @@ export const CreateTrafficMirrorFilterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTrafficMirrorFilterRequest",
 }) as any as S.Schema<CreateTrafficMirrorFilterRequest>;
-export type TrafficDirection = "ingress" | "egress";
+export type TrafficDirection = "ingress" | "egress" | (string & {});
 export const TrafficDirection = /*@__PURE__*/ S.String;
 
-export type TrafficMirrorRuleAction = "accept" | "reject";
+export type TrafficMirrorRuleAction = "accept" | "reject" | (string & {});
 export const TrafficMirrorRuleAction = /*@__PURE__*/ S.String;
 
 export interface TrafficMirrorPortRange {
@@ -21684,7 +21901,7 @@ export const TrafficMirrorFilterRuleList = /*@__PURE__*/ S.Array(
     identifier: "TrafficMirrorFilterRule",
   }),
 );
-export type TrafficMirrorNetworkService = "amazon-dns";
+export type TrafficMirrorNetworkService = "amazon-dns" | (string & {});
 export const TrafficMirrorNetworkService = /*@__PURE__*/ S.String;
 
 export type TrafficMirrorNetworkServiceList = TrafficMirrorNetworkService[];
@@ -21982,7 +22199,8 @@ export const CreateTrafficMirrorTargetRequest = /*@__PURE__*/ S.suspend(() =>
 export type TrafficMirrorTargetType =
   | "network-interface"
   | "network-load-balancer"
-  | "gateway-load-balancer-endpoint";
+  | "gateway-load-balancer-endpoint"
+  | (string & {});
 export const TrafficMirrorTargetType = /*@__PURE__*/ S.String;
 
 export interface TrafficMirrorTarget {
@@ -22053,19 +22271,28 @@ export const CreateTrafficMirrorTargetResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTrafficMirrorTargetResult",
 }) as any as S.Schema<CreateTrafficMirrorTargetResult>;
-export type AutoAcceptSharedAttachmentsValue = "enable" | "disable";
+export type AutoAcceptSharedAttachmentsValue =
+  | "enable"
+  | "disable"
+  | (string & {});
 export const AutoAcceptSharedAttachmentsValue = /*@__PURE__*/ S.String;
 
-export type DefaultRouteTableAssociationValue = "enable" | "disable";
+export type DefaultRouteTableAssociationValue =
+  | "enable"
+  | "disable"
+  | (string & {});
 export const DefaultRouteTableAssociationValue = /*@__PURE__*/ S.String;
 
-export type DefaultRouteTablePropagationValue = "enable" | "disable";
+export type DefaultRouteTablePropagationValue =
+  | "enable"
+  | "disable"
+  | (string & {});
 export const DefaultRouteTablePropagationValue = /*@__PURE__*/ S.String;
 
-export type VpnEcmpSupportValue = "enable" | "disable";
+export type VpnEcmpSupportValue = "enable" | "disable" | (string & {});
 export const VpnEcmpSupportValue = /*@__PURE__*/ S.String;
 
-export type MulticastSupportValue = "enable" | "disable";
+export type MulticastSupportValue = "enable" | "disable" | (string & {});
 export const MulticastSupportValue = /*@__PURE__*/ S.String;
 
 export type TransitGatewayCidrBlockStringList = string[];
@@ -22133,14 +22360,16 @@ export type TransitGatewayState =
   | "available"
   | "modifying"
   | "deleting"
-  | "deleted";
+  | "deleted"
+  | (string & {});
 export const TransitGatewayState = /*@__PURE__*/ S.String;
 
 export type EncryptionStateValue =
   | "enabling"
   | "enabled"
   | "disabling"
-  | "disabled";
+  | "disabled"
+  | (string & {});
 export const EncryptionStateValue = /*@__PURE__*/ S.String;
 
 export interface EncryptionSupport {
@@ -22292,7 +22521,7 @@ export const CreateTransitGatewayResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTransitGatewayResult",
 }) as any as S.Schema<CreateTransitGatewayResult>;
-export type ProtocolValue = "gre";
+export type ProtocolValue = "gre" | (string & {});
 export const ProtocolValue = /*@__PURE__*/ S.String;
 
 export interface CreateTransitGatewayConnectRequestOptions {
@@ -22453,10 +22682,11 @@ export type TransitGatewayConnectPeerState =
   | "pending"
   | "available"
   | "deleting"
-  | "deleted";
+  | "deleted"
+  | (string & {});
 export const TransitGatewayConnectPeerState = /*@__PURE__*/ S.String;
 
-export type BgpStatus = "up" | "down";
+export type BgpStatus = "up" | "down" | (string & {});
 export const BgpStatus = /*@__PURE__*/ S.String;
 
 export interface TransitGatewayAttachmentBgpConfiguration {
@@ -22631,7 +22861,8 @@ export type TransitGatewayMeteringPolicyState =
   | "deleted"
   | "pending"
   | "modifying"
-  | "deleting";
+  | "deleting"
+  | (string & {});
 export const TransitGatewayMeteringPolicyState = /*@__PURE__*/ S.String;
 
 export interface TransitGatewayMeteringPolicy {
@@ -22690,7 +22921,8 @@ export const CreateTransitGatewayMeteringPolicyResult = /*@__PURE__*/ S.suspend(
 export type TransitGatewayMeteringPayerType =
   | "source-attachment-owner"
   | "destination-attachment-owner"
-  | "transit-gateway-owner";
+  | "transit-gateway-owner"
+  | (string & {});
 export const TransitGatewayMeteringPayerType = /*@__PURE__*/ S.String;
 
 export interface CreateTransitGatewayMeteringPolicyEntryRequest {
@@ -22742,7 +22974,10 @@ export const CreateTransitGatewayMeteringPolicyEntryRequest =
   ).annotate({
     identifier: "CreateTransitGatewayMeteringPolicyEntryRequest",
   }) as any as S.Schema<CreateTransitGatewayMeteringPolicyEntryRequest>;
-export type TransitGatewayMeteringPolicyEntryState = "available" | "deleted";
+export type TransitGatewayMeteringPolicyEntryState =
+  | "available"
+  | "deleted"
+  | (string & {});
 export const TransitGatewayMeteringPolicyEntryState = /*@__PURE__*/ S.String;
 
 export interface TransitGatewayMeteringPolicyRule {
@@ -22858,13 +23093,16 @@ export const CreateTransitGatewayMeteringPolicyEntryResult =
   ).annotate({
     identifier: "CreateTransitGatewayMeteringPolicyEntryResult",
   }) as any as S.Schema<CreateTransitGatewayMeteringPolicyEntryResult>;
-export type Igmpv2SupportValue = "enable" | "disable";
+export type Igmpv2SupportValue = "enable" | "disable" | (string & {});
 export const Igmpv2SupportValue = /*@__PURE__*/ S.String;
 
-export type StaticSourcesSupportValue = "enable" | "disable";
+export type StaticSourcesSupportValue = "enable" | "disable" | (string & {});
 export const StaticSourcesSupportValue = /*@__PURE__*/ S.String;
 
-export type AutoAcceptSharedAssociationsValue = "enable" | "disable";
+export type AutoAcceptSharedAssociationsValue =
+  | "enable"
+  | "disable"
+  | (string & {});
 export const AutoAcceptSharedAssociationsValue = /*@__PURE__*/ S.String;
 
 export interface CreateTransitGatewayMulticastDomainRequestOptions {
@@ -22943,7 +23181,8 @@ export type TransitGatewayMulticastDomainState =
   | "pending"
   | "available"
   | "deleting"
-  | "deleted";
+  | "deleted"
+  | (string & {});
 export const TransitGatewayMulticastDomainState = /*@__PURE__*/ S.String;
 
 export interface TransitGatewayMulticastDomain {
@@ -23100,7 +23339,8 @@ export type TransitGatewayPolicyTableState =
   | "pending"
   | "available"
   | "deleting"
-  | "deleted";
+  | "deleted"
+  | (string & {});
 export const TransitGatewayPolicyTableState = /*@__PURE__*/ S.String;
 
 export interface TransitGatewayPolicyTable {
@@ -23184,7 +23424,8 @@ export type TransitGatewayPrefixListReferenceState =
   | "pending"
   | "available"
   | "modifying"
-  | "deleting";
+  | "deleting"
+  | (string & {});
 export const TransitGatewayPrefixListReferenceState = /*@__PURE__*/ S.String;
 
 export interface TransitGatewayPrefixListAttachment {
@@ -23326,7 +23567,7 @@ export const TransitGatewayRouteAttachmentList = /*@__PURE__*/ S.Array(
     identifier: "TransitGatewayRouteAttachment",
   }),
 );
-export type TransitGatewayRouteType = "static" | "propagated";
+export type TransitGatewayRouteType = "static" | "propagated" | (string & {});
 export const TransitGatewayRouteType = /*@__PURE__*/ S.String;
 
 export type TransitGatewayRouteState =
@@ -23334,7 +23575,8 @@ export type TransitGatewayRouteState =
   | "active"
   | "blackhole"
   | "deleting"
-  | "deleted";
+  | "deleted"
+  | (string & {});
 export const TransitGatewayRouteState = /*@__PURE__*/ S.String;
 
 export interface TransitGatewayRoute {
@@ -23418,7 +23660,8 @@ export type TransitGatewayRouteTableState =
   | "pending"
   | "available"
   | "deleting"
-  | "deleted";
+  | "deleted"
+  | (string & {});
 export const TransitGatewayRouteTableState = /*@__PURE__*/ S.String;
 
 export interface TransitGatewayRouteTable {
@@ -23510,7 +23753,8 @@ export const CreateTransitGatewayRouteTableAnnouncementRequest =
   }) as any as S.Schema<CreateTransitGatewayRouteTableAnnouncementRequest>;
 export type TransitGatewayRouteTableAnnouncementDirection =
   | "outgoing"
-  | "incoming";
+  | "incoming"
+  | (string & {});
 export const TransitGatewayRouteTableAnnouncementDirection =
   /*@__PURE__*/ S.String;
 
@@ -23520,7 +23764,8 @@ export type TransitGatewayRouteTableAnnouncementState =
   | "failing"
   | "failed"
   | "deleting"
-  | "deleted";
+  | "deleted"
+  | (string & {});
 export const TransitGatewayRouteTableAnnouncementState = /*@__PURE__*/ S.String;
 
 export interface TransitGatewayRouteTableAnnouncement {
@@ -23677,10 +23922,11 @@ export type VerifiedAccessEndpointType =
   | "load-balancer"
   | "network-interface"
   | "rds"
-  | "cidr";
+  | "cidr"
+  | (string & {});
 export const VerifiedAccessEndpointType = /*@__PURE__*/ S.String;
 
-export type VerifiedAccessEndpointAttachmentType = "vpc";
+export type VerifiedAccessEndpointAttachmentType = "vpc" | (string & {});
 export const VerifiedAccessEndpointAttachmentType = /*@__PURE__*/ S.String;
 
 export type CertificateArn = string;
@@ -23688,7 +23934,11 @@ export type SecurityGroupIdList = string[];
 export const SecurityGroupIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
-export type VerifiedAccessEndpointProtocol = "http" | "https" | "tcp";
+export type VerifiedAccessEndpointProtocol =
+  | "http"
+  | "https"
+  | "tcp"
+  | (string & {});
 export const VerifiedAccessEndpointProtocol = /*@__PURE__*/ S.String;
 
 export type VerifiedAccessEndpointPortNumber = number;
@@ -23969,7 +24219,8 @@ export type VerifiedAccessEndpointStatusCode =
   | "active"
   | "updating"
   | "deleting"
-  | "deleted";
+  | "deleted"
+  | (string & {});
 export const VerifiedAccessEndpointStatusCode = /*@__PURE__*/ S.String;
 
 export interface VerifiedAccessEndpointStatus {
@@ -24518,7 +24769,10 @@ export const CreateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateVolumeRequest",
 }) as any as S.Schema<CreateVolumeRequest>;
-export type VpcEncryptionControlExclusionStateInput = "enable" | "disable";
+export type VpcEncryptionControlExclusionStateInput =
+  | "enable"
+  | "disable"
+  | (string & {});
 export const VpcEncryptionControlExclusionStateInput = /*@__PURE__*/ S.String;
 
 export interface VpcEncryptionControlConfiguration {
@@ -24624,7 +24878,8 @@ export const CreateVpcResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateVpcResult>;
 export type InternetGatewayExclusionMode =
   | "allow-bidirectional"
-  | "allow-egress";
+  | "allow-egress"
+  | (string & {});
 export const InternetGatewayExclusionMode = /*@__PURE__*/ S.String;
 
 export interface CreateVpcBlockPublicAccessExclusionRequest {
@@ -24669,7 +24924,8 @@ export type VpcBlockPublicAccessExclusionState =
   | "delete-in-progress"
   | "delete-complete"
   | "disable-in-progress"
-  | "disable-complete";
+  | "disable-complete"
+  | (string & {});
 export const VpcBlockPublicAccessExclusionState = /*@__PURE__*/ S.String;
 
 export interface VpcBlockPublicAccessExclusion {
@@ -24787,7 +25043,8 @@ export type VpcEndpointType =
   | "Gateway"
   | "GatewayLoadBalancer"
   | "Resource"
-  | "ServiceNetwork";
+  | "ServiceNetwork"
+  | (string & {});
 export const VpcEndpointType = /*@__PURE__*/ S.String;
 
 export type VpcEndpointRouteTableIdList = string[];
@@ -24802,7 +25059,12 @@ export type VpcEndpointSecurityGroupIdList = string[];
 export const VpcEndpointSecurityGroupIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
-export type DnsRecordIpType = "ipv4" | "dualstack" | "ipv6" | "service-defined";
+export type DnsRecordIpType =
+  | "ipv4"
+  | "dualstack"
+  | "ipv6"
+  | "service-defined"
+  | (string & {});
 export const DnsRecordIpType = /*@__PURE__*/ S.String;
 
 export type PrivateDnsSpecifiedDomainSet = string[];
@@ -24918,7 +25180,8 @@ export type State =
   | "rejected"
   | "failed"
   | "expired"
-  | "partial";
+  | "partial"
+  | (string & {});
 export const State = /*@__PURE__*/ S.String;
 
 export interface SecurityGroupIdentifier {
@@ -25201,10 +25464,13 @@ export const CreateVpcEndpointConnectionNotificationRequest =
   ).annotate({
     identifier: "CreateVpcEndpointConnectionNotificationRequest",
   }) as any as S.Schema<CreateVpcEndpointConnectionNotificationRequest>;
-export type ConnectionNotificationType = "Topic";
+export type ConnectionNotificationType = "Topic" | (string & {});
 export const ConnectionNotificationType = /*@__PURE__*/ S.String;
 
-export type ConnectionNotificationState = "Enabled" | "Disabled";
+export type ConnectionNotificationState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const ConnectionNotificationState = /*@__PURE__*/ S.String;
 
 export interface ConnectionNotification {
@@ -25323,7 +25589,11 @@ export const CreateVpcEndpointServiceConfigurationRequest =
   ).annotate({
     identifier: "CreateVpcEndpointServiceConfigurationRequest",
   }) as any as S.Schema<CreateVpcEndpointServiceConfigurationRequest>;
-export type ServiceType = "Interface" | "Gateway" | "GatewayLoadBalancer";
+export type ServiceType =
+  | "Interface"
+  | "Gateway"
+  | "GatewayLoadBalancer"
+  | (string & {});
 export const ServiceType = /*@__PURE__*/ S.String;
 
 export interface ServiceTypeDetail {
@@ -25350,17 +25620,22 @@ export type ServiceState =
   | "Available"
   | "Deleting"
   | "Deleted"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const ServiceState = /*@__PURE__*/ S.String;
 
-export type ServiceConnectivityType = "ipv4" | "ipv6";
+export type ServiceConnectivityType = "ipv4" | "ipv6" | (string & {});
 export const ServiceConnectivityType = /*@__PURE__*/ S.String;
 
 export type SupportedIpAddressTypes = ServiceConnectivityType[];
 export const SupportedIpAddressTypes = /*@__PURE__*/ S.Array(
   ServiceConnectivityType.pipe(T.XmlName("item")),
 );
-export type DnsNameState = "pendingVerification" | "verified" | "failed";
+export type DnsNameState =
+  | "pendingVerification"
+  | "verified"
+  | "failed"
+  | (string & {});
 export const DnsNameState = /*@__PURE__*/ S.String;
 
 export interface PrivateDnsNameConfiguration {
@@ -25385,7 +25660,7 @@ export const PrivateDnsNameConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PrivateDnsNameConfiguration",
 }) as any as S.Schema<PrivateDnsNameConfiguration>;
-export type PayerResponsibility = "ServiceOwner";
+export type PayerResponsibility = "ServiceOwner" | (string & {});
 export const PayerResponsibility = /*@__PURE__*/ S.String;
 
 export interface SupportedRegionDetail {
@@ -25592,7 +25867,7 @@ export const CreateVpcPeeringConnectionResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateVpcPeeringConnectionResult",
 }) as any as S.Schema<CreateVpcPeeringConnectionResult>;
-export type VpnConcentratorType = "ipsec.1";
+export type VpnConcentratorType = "ipsec.1" | (string & {});
 export const VpnConcentratorType = /*@__PURE__*/ S.String;
 
 export interface CreateVpnConcentratorRequest {
@@ -25672,7 +25947,7 @@ export const CreateVpnConcentratorResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateVpnConcentratorResult>;
 export type CustomerGatewayId = string;
 export type VpnConcentratorId = string;
-export type TunnelInsideIpVersion = "ipv4" | "ipv6";
+export type TunnelInsideIpVersion = "ipv4" | "ipv6" | (string & {});
 export const TunnelInsideIpVersion = /*@__PURE__*/ S.String;
 
 export type PreSharedKey = string | redacted.Redacted<string>;
@@ -25882,7 +26157,7 @@ export type VpnTunnelOptionsSpecificationsList =
 export const VpnTunnelOptionsSpecificationsList = /*@__PURE__*/ S.Array(
   VpnTunnelOptionsSpecification,
 );
-export type VpnTunnelBandwidth = "standard" | "large";
+export type VpnTunnelBandwidth = "standard" | "large" | (string & {});
 export const VpnTunnelBandwidth = /*@__PURE__*/ S.String;
 
 export interface VpnConnectionOptionsSpecification {
@@ -25965,7 +26240,8 @@ export type GatewayAssociationState =
   | "associated"
   | "not-associated"
   | "associating"
-  | "disassociating";
+  | "disassociating"
+  | (string & {});
 export const GatewayAssociationState = /*@__PURE__*/ S.String;
 
 export interface Phase1EncryptionAlgorithmsListValue {
@@ -26335,10 +26611,15 @@ export const VpnConnectionOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VpnConnectionOptions",
 }) as any as S.Schema<VpnConnectionOptions>;
-export type VpnStaticRouteSource = "Static";
+export type VpnStaticRouteSource = "Static" | (string & {});
 export const VpnStaticRouteSource = /*@__PURE__*/ S.String;
 
-export type VpnState = "pending" | "available" | "deleting" | "deleted";
+export type VpnState =
+  | "pending"
+  | "available"
+  | "deleting"
+  | "deleted"
+  | (string & {});
 export const VpnState = /*@__PURE__*/ S.String;
 
 export interface VpnStaticRoute {
@@ -26368,7 +26649,7 @@ export const VpnStaticRouteList = /*@__PURE__*/ S.Array(
     identifier: "VpnStaticRoute",
   }),
 );
-export type TelemetryStatus = "UP" | "DOWN";
+export type TelemetryStatus = "UP" | "DOWN" | (string & {});
 export const TelemetryStatus = /*@__PURE__*/ S.String;
 
 export interface VgwTelemetry {
@@ -26980,7 +27261,8 @@ export type FleetStateCode =
   | "failed"
   | "deleted_running"
   | "deleted_terminating"
-  | "modifying";
+  | "modifying"
+  | (string & {});
 export const FleetStateCode = /*@__PURE__*/ S.String;
 
 export interface DeleteFleetSuccessItem {
@@ -27016,7 +27298,8 @@ export type DeleteFleetErrorCode =
   | "fleetIdDoesNotExist"
   | "fleetIdMalformed"
   | "fleetNotInDeletableState"
-  | "unexpectedError";
+  | "unexpectedError"
+  | (string & {});
 export const DeleteFleetErrorCode = /*@__PURE__*/ S.String;
 
 export interface DeleteFleetError {
@@ -27769,7 +28052,8 @@ export type LaunchTemplateErrorCode =
   | "launchTemplateNameDoesNotExist"
   | "launchTemplateNameMalformed"
   | "launchTemplateVersionDoesNotExist"
-  | "unexpectedError";
+  | "unexpectedError"
+  | (string & {});
 export const LaunchTemplateErrorCode = /*@__PURE__*/ S.String;
 
 export interface ResponseError {
@@ -28583,7 +28867,8 @@ export const SuccessfulQueuedPurchaseDeletionSet = /*@__PURE__*/ S.Array(
 export type DeleteQueuedReservedInstancesErrorCode =
   | "reserved-instances-id-invalid"
   | "reserved-instances-not-in-queued-state"
-  | "unexpected-error";
+  | "unexpected-error"
+  | (string & {});
 export const DeleteQueuedReservedInstancesErrorCode = /*@__PURE__*/ S.String;
 
 export interface DeleteQueuedReservedInstancesError_ {
@@ -30467,7 +30752,8 @@ export type AsnState =
   | "failed-provision"
   | "pending-deprovision"
   | "pending-provision"
-  | "provisioned";
+  | "provisioned"
+  | (string & {});
 export const AsnState = /*@__PURE__*/ S.String;
 
 export interface Byoasn {
@@ -30537,10 +30823,14 @@ export type IpamPoolCidrState =
   | "deprovisioned"
   | "failed-deprovision"
   | "pending-import"
-  | "failed-import";
+  | "failed-import"
+  | (string & {});
 export const IpamPoolCidrState = /*@__PURE__*/ S.String;
 
-export type IpamPoolCidrFailureCode = "cidr-not-available" | "limit-exceeded";
+export type IpamPoolCidrFailureCode =
+  | "cidr-not-available"
+  | "limit-exceeded"
+  | (string & {});
 export const IpamPoolCidrFailureCode = /*@__PURE__*/ S.String;
 
 export interface IpamPoolCidrFailureReason {
@@ -30680,7 +30970,8 @@ export type SnapshotReturnCodes =
   | "skipped"
   | "missing-permissions"
   | "internal-error"
-  | "client-error";
+  | "client-error"
+  | (string & {});
 export const SnapshotReturnCodes = /*@__PURE__*/ S.String;
 
 export interface DeleteSnapshotReturnCode {
@@ -30947,7 +31238,10 @@ export const DeregisterTransitGatewayMulticastGroupSourcesResult =
   ).annotate({
     identifier: "DeregisterTransitGatewayMulticastGroupSourcesResult",
   }) as any as S.Schema<DeregisterTransitGatewayMulticastGroupSourcesResult>;
-export type AccountAttributeName = "supported-platforms" | "default-vpc";
+export type AccountAttributeName =
+  | "supported-platforms"
+  | "default-vpc"
+  | (string & {});
 export const AccountAttributeName = /*@__PURE__*/ S.String;
 
 export type AccountAttributeNameStringList = AccountAttributeName[];
@@ -31085,7 +31379,7 @@ export const DescribeAddressesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAddressesRequest",
 }) as any as S.Schema<DescribeAddressesRequest>;
-export type ServiceManaged = "alb" | "nlb" | "rnat" | "rds";
+export type ServiceManaged = "alb" | "nlb" | "rnat" | "rds" | (string & {});
 export const ServiceManaged = /*@__PURE__*/ S.String;
 
 export interface Address {
@@ -31195,7 +31489,7 @@ export type AllocationIds = string[];
 export const AllocationIds = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
-export type AddressAttributeName = "domain-name";
+export type AddressAttributeName = "domain-name" | (string & {});
 export const AddressAttributeName = /*@__PURE__*/ S.String;
 
 export type NextToken = string;
@@ -31455,7 +31749,8 @@ export const DescribeAvailabilityZonesRequest = /*@__PURE__*/ S.suspend(() =>
 export type AvailabilityZoneOptInStatus =
   | "opt-in-not-required"
   | "opted-in"
-  | "not-opted-in";
+  | "not-opted-in"
+  | (string & {});
 export const AvailabilityZoneOptInStatus = /*@__PURE__*/ S.String;
 
 export interface AvailabilityZoneMessage {
@@ -31514,7 +31809,8 @@ export type AvailabilityZoneState =
   | "information"
   | "impaired"
   | "unavailable"
-  | "constrained";
+  | "constrained"
+  | (string & {});
 export const AvailabilityZoneState = /*@__PURE__*/ S.String;
 
 export interface AvailabilityZone {
@@ -31642,10 +31938,10 @@ export const DescribeAwsNetworkPerformanceMetricSubscriptionsRequest =
   ).annotate({
     identifier: "DescribeAwsNetworkPerformanceMetricSubscriptionsRequest",
   }) as any as S.Schema<DescribeAwsNetworkPerformanceMetricSubscriptionsRequest>;
-export type MetricType = "aggregate-latency";
+export type MetricType = "aggregate-latency" | (string & {});
 export const MetricType = /*@__PURE__*/ S.String;
 
-export type StatisticType = "p50";
+export type StatisticType = "p50" | (string & {});
 export const StatisticType = /*@__PURE__*/ S.String;
 
 export type PeriodType =
@@ -31654,7 +31950,8 @@ export type PeriodType =
   | "one-hour"
   | "three-hours"
   | "one-day"
-  | "one-week";
+  | "one-week"
+  | (string & {});
 export const PeriodType = /*@__PURE__*/ S.String;
 
 export interface Subscription {
@@ -31846,7 +32143,8 @@ export type OfferingId = string;
 export type CapacityBlockExtensionStatus =
   | "payment-pending"
   | "payment-failed"
-  | "payment-succeeded";
+  | "payment-succeeded"
+  | (string & {});
 export const CapacityBlockExtensionStatus = /*@__PURE__*/ S.String;
 
 export interface CapacityBlockExtension {
@@ -32282,7 +32580,8 @@ export type CapacityBlockResourceState =
   | "failed"
   | "scheduled"
   | "payment-pending"
-  | "payment-failed";
+  | "payment-failed"
+  | (string & {});
 export const CapacityBlockResourceState = /*@__PURE__*/ S.String;
 
 export interface CapacityBlock {
@@ -32396,7 +32695,8 @@ export const DescribeCapacityBlockStatusRequest = /*@__PURE__*/ S.suspend(() =>
 export type CapacityBlockInterconnectStatus =
   | "ok"
   | "impaired"
-  | "insufficient-data";
+  | "insufficient-data"
+  | (string & {});
 export const CapacityBlockInterconnectStatus = /*@__PURE__*/ S.String;
 
 export interface CapacityReservationStatus {
@@ -32535,7 +32835,8 @@ export type CapacityManagerDataExportStatus =
   | "pending"
   | "in-progress"
   | "delivered"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const CapacityManagerDataExportStatus = /*@__PURE__*/ S.String;
 
 export interface CapacityManagerDataExportResponse {
@@ -32630,7 +32931,10 @@ export const DescribeCapacityManagerDataExportsResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeCapacityManagerDataExportsResult",
 }) as any as S.Schema<DescribeCapacityManagerDataExportsResult>;
-export type CallerRole = "odcr-owner" | "unused-reservation-billing-owner";
+export type CallerRole =
+  | "odcr-owner"
+  | "unused-reservation-billing-owner"
+  | (string & {});
 export const CallerRole = /*@__PURE__*/ S.String;
 
 export type DescribeCapacityReservationBillingRequestsRequestMaxResults =
@@ -32674,7 +32978,8 @@ export type CapacityReservationBillingRequestStatus =
   | "rejected"
   | "cancelled"
   | "revoked"
-  | "expired";
+  | "expired"
+  | (string & {});
 export const CapacityReservationBillingRequestStatus = /*@__PURE__*/ S.String;
 
 export interface CapacityReservationInfo {
@@ -33406,7 +33711,8 @@ export type ClientVpnConnectionStatusCode =
   | "active"
   | "failed-to-terminate"
   | "terminating"
-  | "terminated";
+  | "terminated"
+  | (string & {});
 export const ClientVpnConnectionStatusCode = /*@__PURE__*/ S.String;
 
 export interface ClientVpnConnectionStatus {
@@ -33568,10 +33874,10 @@ export const DescribeClientVpnEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeClientVpnEndpointsRequest",
 }) as any as S.Schema<DescribeClientVpnEndpointsRequest>;
-export type VpnProtocol = "openvpn";
+export type VpnProtocol = "openvpn" | (string & {});
 export const VpnProtocol = /*@__PURE__*/ S.String;
 
-export type AssociatedNetworkType = "vpc";
+export type AssociatedNetworkType = "vpc" | (string & {});
 export const AssociatedNetworkType = /*@__PURE__*/ S.String;
 
 export interface AssociatedTargetNetwork {
@@ -33693,7 +33999,10 @@ export const ConnectionLogResponseOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConnectionLogResponseOptions",
 }) as any as S.Schema<ConnectionLogResponseOptions>;
-export type ClientVpnEndpointAttributeStatusCode = "applying" | "applied";
+export type ClientVpnEndpointAttributeStatusCode =
+  | "applying"
+  | "applied"
+  | (string & {});
 export const ClientVpnEndpointAttributeStatusCode = /*@__PURE__*/ S.String;
 
 export interface ClientVpnEndpointAttributeStatus {
@@ -34426,7 +34735,8 @@ export type ConversionTaskState =
   | "active"
   | "cancelling"
   | "cancelled"
-  | "completed";
+  | "completed"
+  | (string & {});
 export const ConversionTaskState = /*@__PURE__*/ S.String;
 
 export interface ConversionTask {
@@ -34567,7 +34877,12 @@ export const DescribeDeclarativePoliciesReportsRequest =
   ).annotate({
     identifier: "DescribeDeclarativePoliciesReportsRequest",
   }) as any as S.Schema<DescribeDeclarativePoliciesReportsRequest>;
-export type ReportState = "running" | "cancelled" | "complete" | "error";
+export type ReportState =
+  | "running"
+  | "cancelled"
+  | "complete"
+  | "error"
+  | (string & {});
 export const ReportState = /*@__PURE__*/ S.String;
 
 export interface DeclarativePoliciesReport {
@@ -34798,7 +35113,7 @@ export const DescribeElasticGpusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeElasticGpusRequest",
 }) as any as S.Schema<DescribeElasticGpusRequest>;
-export type ElasticGpuStatus = "OK" | "IMPAIRED";
+export type ElasticGpuStatus = "OK" | "IMPAIRED" | (string & {});
 export const ElasticGpuStatus = /*@__PURE__*/ S.String;
 
 export interface ElasticGpuHealth {
@@ -34814,7 +35129,7 @@ export const ElasticGpuHealth = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ElasticGpuHealth",
 }) as any as S.Schema<ElasticGpuHealth>;
-export type ElasticGpuState = "ATTACHED";
+export type ElasticGpuState = "ATTACHED" | (string & {});
 export const ElasticGpuState = /*@__PURE__*/ S.String;
 
 export interface ElasticGpus {
@@ -35089,7 +35404,7 @@ export const DescribeFastLaunchImagesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeFastLaunchImagesRequest",
 }) as any as S.Schema<DescribeFastLaunchImagesRequest>;
-export type FastLaunchResourceType = "snapshot";
+export type FastLaunchResourceType = "snapshot" | (string & {});
 export const FastLaunchResourceType = /*@__PURE__*/ S.String;
 
 export interface FastLaunchSnapshotConfigurationResponse {
@@ -35136,7 +35451,8 @@ export type FastLaunchStateCode =
   | "enabled"
   | "enabled-failed"
   | "disabling"
-  | "disabling-failed";
+  | "disabling-failed"
+  | (string & {});
 export const FastLaunchStateCode = /*@__PURE__*/ S.String;
 
 export interface DescribeFastLaunchImagesSuccessItem {
@@ -35254,7 +35570,8 @@ export type FastSnapshotRestoreStateCode =
   | "optimizing"
   | "enabled"
   | "disabling"
-  | "disabled";
+  | "disabled"
+  | (string & {});
 export const FastSnapshotRestoreStateCode = /*@__PURE__*/ S.String;
 
 export interface DescribeFastSnapshotRestoreSuccessItem {
@@ -35351,7 +35668,8 @@ export const DescribeFastSnapshotRestoresResult = /*@__PURE__*/ S.suspend(() =>
 export type FleetEventType =
   | "instance-change"
   | "fleet-change"
-  | "service-error";
+  | "service-error"
+  | (string & {});
 export const FleetEventType = /*@__PURE__*/ S.String;
 
 export interface DescribeFleetHistoryRequest {
@@ -35495,7 +35813,7 @@ export const DescribeFleetInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeFleetInstancesRequest",
 }) as any as S.Schema<DescribeFleetInstancesRequest>;
-export type InstanceHealthStatus = "healthy" | "unhealthy";
+export type InstanceHealthStatus = "healthy" | "unhealthy" | (string & {});
 export const InstanceHealthStatus = /*@__PURE__*/ S.String;
 
 export interface ActiveInstance {
@@ -35585,7 +35903,8 @@ export type FleetActivityStatus =
   | "error"
   | "pending_fulfillment"
   | "pending_termination"
-  | "fulfilled";
+  | "fulfilled"
+  | (string & {});
 export const FleetActivityStatus = /*@__PURE__*/ S.String;
 
 export type FleetLaunchTemplateOverridesList = FleetLaunchTemplateOverrides[];
@@ -36209,7 +36528,8 @@ export type FpgaImageAttributeName =
   | "description"
   | "name"
   | "loadPermission"
-  | "productCodes";
+  | "productCodes"
+  | (string & {});
 export const FpgaImageAttributeName = /*@__PURE__*/ S.String;
 
 export interface DescribeFpgaImageAttributeRequest {
@@ -36236,7 +36556,7 @@ export const DescribeFpgaImageAttributeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeFpgaImageAttributeRequest",
 }) as any as S.Schema<DescribeFpgaImageAttributeRequest>;
-export type PermissionGroup = "all";
+export type PermissionGroup = "all" | (string & {});
 export const PermissionGroup = /*@__PURE__*/ S.String;
 
 export interface LoadPermission {
@@ -36261,7 +36581,7 @@ export const LoadPermissionList = /*@__PURE__*/ S.Array(
     identifier: "LoadPermission",
   }),
 );
-export type ProductCodeValues = "devpay" | "marketplace";
+export type ProductCodeValues = "devpay" | "marketplace" | (string & {});
 export const ProductCodeValues = /*@__PURE__*/ S.String;
 
 export interface ProductCode {
@@ -36386,7 +36706,8 @@ export type FpgaImageStateCode =
   | "pending"
   | "failed"
   | "available"
-  | "unavailable";
+  | "unavailable"
+  | (string & {});
 export const FpgaImageStateCode = /*@__PURE__*/ S.String;
 
 export interface FpgaImageState {
@@ -36539,7 +36860,11 @@ export const DescribeHostReservationOfferingsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeHostReservationOfferingsRequest",
 }) as any as S.Schema<DescribeHostReservationOfferingsRequest>;
-export type PaymentOption = "AllUpfront" | "PartialUpfront" | "NoUpfront";
+export type PaymentOption =
+  | "AllUpfront"
+  | "PartialUpfront"
+  | "NoUpfront"
+  | (string & {});
 export const PaymentOption = /*@__PURE__*/ S.String;
 
 export interface HostOffering {
@@ -36652,7 +36977,8 @@ export type ReservationState =
   | "unsupported"
   | "payment-pending"
   | "payment-failed"
-  | "retired";
+  | "retired"
+  | (string & {});
 export const ReservationState = /*@__PURE__*/ S.String;
 
 export interface HostReservation {
@@ -36907,10 +37233,11 @@ export type AllocationState =
   | "permanent-failure"
   | "released"
   | "released-permanent-failure"
-  | "pending";
+  | "pending"
+  | (string & {});
 export const AllocationState = /*@__PURE__*/ S.String;
 
-export type AllowsMultipleInstanceTypes = "on" | "off";
+export type AllowsMultipleInstanceTypes = "on" | "off" | (string & {});
 export const AllowsMultipleInstanceTypes = /*@__PURE__*/ S.String;
 
 export interface Host {
@@ -37184,7 +37511,8 @@ export type ImageAttributeName =
   | "uefiData"
   | "lastLaunchedTime"
   | "imdsSupport"
-  | "deregistrationProtection";
+  | "deregistrationProtection"
+  | (string & {});
 export const ImageAttributeName = /*@__PURE__*/ S.String;
 
 export interface DescribeImageAttributeRequest {
@@ -37332,10 +37660,14 @@ export type ImageReferenceResourceType =
   | "ec2:LaunchTemplate"
   | "ssm:Parameter"
   | "imagebuilder:ImageRecipe"
-  | "imagebuilder:ContainerRecipe";
+  | "imagebuilder:ContainerRecipe"
+  | (string & {});
 export const ImageReferenceResourceType = /*@__PURE__*/ S.String;
 
-export type ImageReferenceOptionName = "state-name" | "version-depth";
+export type ImageReferenceOptionName =
+  | "state-name"
+  | "version-depth"
+  | (string & {});
 export const ImageReferenceOptionName = /*@__PURE__*/ S.String;
 
 export type ResourceTypeOptionValue = string;
@@ -37500,25 +37832,30 @@ export const DescribeImagesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeImagesRequest",
 }) as any as S.Schema<DescribeImagesRequest>;
-export type HypervisorType = "ovm" | "xen" | "nitro";
+export type HypervisorType = "ovm" | "xen" | "nitro" | (string & {});
 export const HypervisorType = /*@__PURE__*/ S.String;
 
-export type DeviceType = "ebs" | "instance-store";
+export type DeviceType = "ebs" | "instance-store" | (string & {});
 export const DeviceType = /*@__PURE__*/ S.String;
 
 export type VirtualizationType =
   | "hvm"
   | "paravirtual"
-  | "nested-virtualization";
+  | "nested-virtualization"
+  | (string & {});
 export const VirtualizationType = /*@__PURE__*/ S.String;
 
-export type BootModeValues = "legacy-bios" | "uefi" | "uefi-preferred";
+export type BootModeValues =
+  | "legacy-bios"
+  | "uefi"
+  | "uefi-preferred"
+  | (string & {});
 export const BootModeValues = /*@__PURE__*/ S.String;
 
-export type TpmSupportValues = "v2.0";
+export type TpmSupportValues = "v2.0" | (string & {});
 export const TpmSupportValues = /*@__PURE__*/ S.String;
 
-export type ImdsSupportValues = "v2.0";
+export type ImdsSupportValues = "v2.0" | (string & {});
 export const ImdsSupportValues = /*@__PURE__*/ S.String;
 
 export interface ImageWatermark {
@@ -37570,7 +37907,8 @@ export type ImageState =
   | "transient"
   | "failed"
   | "error"
-  | "disabled";
+  | "disabled"
+  | (string & {});
 export const ImageState = /*@__PURE__*/ S.String;
 
 export type ArchitectureValues =
@@ -37578,10 +37916,11 @@ export type ArchitectureValues =
   | "x86_64"
   | "arm64"
   | "x86_64_mac"
-  | "arm64_mac";
+  | "arm64_mac"
+  | (string & {});
 export const ArchitectureValues = /*@__PURE__*/ S.String;
 
-export type ImageTypeValues = "machine" | "kernel" | "ramdisk";
+export type ImageTypeValues = "machine" | "kernel" | "ramdisk" | (string & {});
 export const ImageTypeValues = /*@__PURE__*/ S.String;
 
 export interface Image {
@@ -38490,7 +38829,8 @@ export type InstanceAttributeName =
   | "sriovNetSupport"
   | "enaSupport"
   | "enclaveOptions"
-  | "disableApiStop";
+  | "disableApiStop"
+  | (string & {});
 export const InstanceAttributeName = /*@__PURE__*/ S.String;
 
 export interface DescribeInstanceAttributeRequest {
@@ -38971,7 +39311,8 @@ export type InstanceStateName =
   | "shutting-down"
   | "terminated"
   | "stopping"
-  | "stopped";
+  | "stopped"
+  | (string & {});
 export const InstanceStateName = /*@__PURE__*/ S.String;
 
 export interface InstanceState {
@@ -39161,7 +39502,8 @@ export type InstanceLifecycleType =
   | "spot"
   | "scheduled"
   | "capacity-block"
-  | "interruptible-capacity-reservation";
+  | "interruptible-capacity-reservation"
+  | (string & {});
 export const InstanceLifecycleType = /*@__PURE__*/ S.String;
 
 export interface ElasticGpuAssociation {
@@ -39646,19 +39988,28 @@ export const LicenseList = /*@__PURE__*/ S.Array(
     identifier: "LicenseConfiguration",
   }),
 );
-export type InstanceMetadataOptionsState = "pending" | "applied";
+export type InstanceMetadataOptionsState =
+  | "pending"
+  | "applied"
+  | (string & {});
 export const InstanceMetadataOptionsState = /*@__PURE__*/ S.String;
 
-export type HttpTokensState = "optional" | "required";
+export type HttpTokensState = "optional" | "required" | (string & {});
 export const HttpTokensState = /*@__PURE__*/ S.String;
 
-export type InstanceMetadataEndpointState = "disabled" | "enabled";
+export type InstanceMetadataEndpointState =
+  | "disabled"
+  | "enabled"
+  | (string & {});
 export const InstanceMetadataEndpointState = /*@__PURE__*/ S.String;
 
-export type InstanceMetadataProtocolState = "disabled" | "enabled";
+export type InstanceMetadataProtocolState =
+  | "disabled"
+  | "enabled"
+  | (string & {});
 export const InstanceMetadataProtocolState = /*@__PURE__*/ S.String;
 
-export type InstanceMetadataTagsState = "disabled" | "enabled";
+export type InstanceMetadataTagsState = "disabled" | "enabled" | (string & {});
 export const InstanceMetadataTagsState = /*@__PURE__*/ S.String;
 
 export interface InstanceMetadataOptionsResponse {
@@ -39722,10 +40073,13 @@ export const PrivateDnsNameOptionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PrivateDnsNameOptionsResponse",
 }) as any as S.Schema<PrivateDnsNameOptionsResponse>;
-export type InstanceAutoRecoveryState = "disabled" | "default";
+export type InstanceAutoRecoveryState = "disabled" | "default" | (string & {});
 export const InstanceAutoRecoveryState = /*@__PURE__*/ S.String;
 
-export type InstanceRebootMigrationState = "disabled" | "default";
+export type InstanceRebootMigrationState =
+  | "disabled"
+  | "default"
+  | (string & {});
 export const InstanceRebootMigrationState = /*@__PURE__*/ S.String;
 
 export interface InstanceMaintenanceOptions {
@@ -39746,7 +40100,7 @@ export const InstanceMaintenanceOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InstanceMaintenanceOptions",
 }) as any as S.Schema<InstanceMaintenanceOptions>;
-export type InstanceBootModeValues = "legacy-bios" | "uefi";
+export type InstanceBootModeValues = "legacy-bios" | "uefi" | (string & {});
 export const InstanceBootModeValues = /*@__PURE__*/ S.String;
 
 export interface InstanceNetworkPerformanceOptions {
@@ -39823,7 +40177,7 @@ export const InstanceSecondaryInterfacePrivateIpAddressList =
       { identifier: "InstanceSecondaryInterfacePrivateIpAddress" },
     ),
   );
-export type SecondaryInterfaceStatus = "available" | "in-use";
+export type SecondaryInterfaceStatus = "available" | "in-use" | (string & {});
 export const SecondaryInterfaceStatus = /*@__PURE__*/ S.String;
 
 export interface InstanceSecondaryInterface {
@@ -39891,7 +40245,12 @@ export const InstanceSecondaryInterfaceList = /*@__PURE__*/ S.Array(
     identifier: "InstanceSecondaryInterface",
   }),
 );
-export type MonitoringState = "disabled" | "disabling" | "enabled" | "pending";
+export type MonitoringState =
+  | "disabled"
+  | "disabling"
+  | "enabled"
+  | "pending"
+  | (string & {});
 export const MonitoringState = /*@__PURE__*/ S.String;
 
 export interface Monitoring {
@@ -40322,10 +40681,15 @@ export const DescribeInstanceSqlHaHistoryStatesRequest =
   ).annotate({
     identifier: "DescribeInstanceSqlHaHistoryStatesRequest",
   }) as any as S.Schema<DescribeInstanceSqlHaHistoryStatesRequest>;
-export type SqlServerLicenseUsage = "full" | "waived";
+export type SqlServerLicenseUsage = "full" | "waived" | (string & {});
 export const SqlServerLicenseUsage = /*@__PURE__*/ S.String;
 
-export type HaStatus = "processing" | "active" | "standby" | "invalid";
+export type HaStatus =
+  | "processing"
+  | "active"
+  | "standby"
+  | "invalid"
+  | (string & {});
 export const HaStatus = /*@__PURE__*/ S.String;
 
 export interface RegisteredInstance {
@@ -40485,7 +40849,8 @@ export type EventCode =
   | "system-reboot"
   | "system-maintenance"
   | "instance-retirement"
-  | "instance-stop";
+  | "instance-stop"
+  | (string & {});
 export const EventCode = /*@__PURE__*/ S.String;
 
 export interface InstanceStatusEvent {
@@ -40526,14 +40891,15 @@ export const InstanceStatusEventList = /*@__PURE__*/ S.Array(
     identifier: "InstanceStatusEvent",
   }),
 );
-export type StatusName = "reachability";
+export type StatusName = "reachability" | (string & {});
 export const StatusName = /*@__PURE__*/ S.String;
 
 export type StatusType =
   | "passed"
   | "failed"
   | "insufficient-data"
-  | "initializing";
+  | "initializing"
+  | (string & {});
 export const StatusType = /*@__PURE__*/ S.String;
 
 export interface InstanceStatusDetails {
@@ -40569,7 +40935,8 @@ export type SummaryStatus =
   | "impaired"
   | "insufficient-data"
   | "not-applicable"
-  | "initializing";
+  | "initializing"
+  | (string & {});
 export const SummaryStatus = /*@__PURE__*/ S.String;
 
 export interface InstanceStatusSummary {
@@ -40829,7 +41196,8 @@ export type LocationType =
   | "region"
   | "availability-zone"
   | "availability-zone-id"
-  | "outpost";
+  | "outpost"
+  | (string & {});
 export const LocationType = /*@__PURE__*/ S.String;
 
 export type DITOMaxResults = number;
@@ -40948,14 +41316,18 @@ export const DescribeInstanceTypesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeInstanceTypesRequest>;
 export type CurrentGenerationFlag = boolean;
 export type FreeTierEligibleFlag = boolean;
-export type UsageClassType = "spot" | "on-demand" | "capacity-block";
+export type UsageClassType =
+  | "spot"
+  | "on-demand"
+  | "capacity-block"
+  | (string & {});
 export const UsageClassType = /*@__PURE__*/ S.String;
 
 export type UsageClassTypeList = UsageClassType[];
 export const UsageClassTypeList = /*@__PURE__*/ S.Array(
   UsageClassType.pipe(T.XmlName("item")),
 );
-export type RootDeviceType = "ebs" | "instance-store";
+export type RootDeviceType = "ebs" | "instance-store" | (string & {});
 export const RootDeviceType = /*@__PURE__*/ S.String;
 
 export type RootDeviceTypeList = RootDeviceType[];
@@ -40967,7 +41339,7 @@ export const VirtualizationTypeList = /*@__PURE__*/ S.Array(
   VirtualizationType.pipe(T.XmlName("item")),
 );
 export type BareMetalFlag = boolean;
-export type InstanceTypeHypervisor = "nitro" | "xen";
+export type InstanceTypeHypervisor = "nitro" | "xen" | (string & {});
 export const InstanceTypeHypervisor = /*@__PURE__*/ S.String;
 
 export type ArchitectureType =
@@ -40975,7 +41347,8 @@ export type ArchitectureType =
   | "x86_64"
   | "arm64"
   | "x86_64_mac"
-  | "arm64_mac";
+  | "arm64_mac"
+  | (string & {});
 export const ArchitectureType = /*@__PURE__*/ S.String;
 
 export type ArchitectureTypeList = ArchitectureType[];
@@ -40985,7 +41358,8 @@ export const ArchitectureTypeList = /*@__PURE__*/ S.Array(
 export type ProcessorSustainedClockSpeed = number;
 export type SupportedAdditionalProcessorFeature =
   | "amd-sev-snp"
-  | "nested-virtualization";
+  | "nested-virtualization"
+  | (string & {});
 export const SupportedAdditionalProcessorFeature = /*@__PURE__*/ S.String;
 
 export type SupportedAdditionalProcessorFeatureList =
@@ -41077,7 +41451,7 @@ export const MemoryInfo = /*@__PURE__*/ S.suspend(() =>
 export type InstanceStorageFlag = boolean;
 export type DiskSize = number;
 export type DiskCount = number;
-export type DiskType = "hdd" | "ssd";
+export type DiskType = "hdd" | "ssd" | (string & {});
 export const DiskType = /*@__PURE__*/ S.String;
 
 export interface DiskInfo {
@@ -41102,10 +41476,17 @@ export type DiskInfoList = DiskInfo[];
 export const DiskInfoList = /*@__PURE__*/ S.Array(
   DiskInfo.pipe(T.XmlName("item")).annotate({ identifier: "DiskInfo" }),
 );
-export type EphemeralNvmeSupport = "unsupported" | "supported" | "required";
+export type EphemeralNvmeSupport =
+  | "unsupported"
+  | "supported"
+  | "required"
+  | (string & {});
 export const EphemeralNvmeSupport = /*@__PURE__*/ S.String;
 
-export type InstanceStorageEncryptionSupport = "unsupported" | "required";
+export type InstanceStorageEncryptionSupport =
+  | "unsupported"
+  | "required"
+  | (string & {});
 export const InstanceStorageEncryptionSupport = /*@__PURE__*/ S.String;
 
 export interface InstanceStorageInfo {
@@ -41136,10 +41517,14 @@ export const InstanceStorageInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InstanceStorageInfo",
 }) as any as S.Schema<InstanceStorageInfo>;
-export type EbsOptimizedSupport = "unsupported" | "supported" | "default";
+export type EbsOptimizedSupport =
+  | "unsupported"
+  | "supported"
+  | "default"
+  | (string & {});
 export const EbsOptimizedSupport = /*@__PURE__*/ S.String;
 
-export type EbsEncryptionSupport = "unsupported" | "supported";
+export type EbsEncryptionSupport = "unsupported" | "supported" | (string & {});
 export const EbsEncryptionSupport = /*@__PURE__*/ S.String;
 
 export type BaselineBandwidthInMbps = number;
@@ -41186,11 +41571,15 @@ export const EbsOptimizedInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EbsOptimizedInfo",
 }) as any as S.Schema<EbsOptimizedInfo>;
-export type EbsNvmeSupport = "unsupported" | "supported" | "required";
+export type EbsNvmeSupport =
+  | "unsupported"
+  | "supported"
+  | "required"
+  | (string & {});
 export const EbsNvmeSupport = /*@__PURE__*/ S.String;
 
 export type MaximumEbsAttachments = number;
-export type AttachmentLimitType = "shared" | "dedicated";
+export type AttachmentLimitType = "shared" | "dedicated" | (string & {});
 export const AttachmentLimitType = /*@__PURE__*/ S.String;
 
 export type MaximumEbsCards = number;
@@ -41358,7 +41747,11 @@ export const NetworkCardInfoList = /*@__PURE__*/ S.Array(
 export type MaxIpv4AddrPerInterface = number;
 export type MaxIpv6AddrPerInterface = number;
 export type Ipv6Flag = boolean;
-export type EnaSupport = "unsupported" | "supported" | "required";
+export type EnaSupport =
+  | "unsupported"
+  | "supported"
+  | "required"
+  | (string & {});
 export const EnaSupport = /*@__PURE__*/ S.String;
 
 export type EfaSupportedFlag = boolean;
@@ -41376,14 +41769,21 @@ export const EfaInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EfaInfo" }) as any as S.Schema<EfaInfo>;
 export type EncryptionInTransitSupported = boolean;
 export type EnaSrdSupported = boolean;
-export type BandwidthWeightingType = "default" | "vpc-1" | "ebs-1";
+export type BandwidthWeightingType =
+  | "default"
+  | "vpc-1"
+  | "ebs-1"
+  | (string & {});
 export const BandwidthWeightingType = /*@__PURE__*/ S.String;
 
 export type BandwidthWeightingTypeList = BandwidthWeightingType[];
 export const BandwidthWeightingTypeList = /*@__PURE__*/ S.Array(
   BandwidthWeightingType.pipe(T.XmlName("item")),
 );
-export type FlexibleEnaQueuesSupport = "unsupported" | "supported";
+export type FlexibleEnaQueuesSupport =
+  | "unsupported"
+  | "supported"
+  | (string & {});
 export const FlexibleEnaQueuesSupport = /*@__PURE__*/ S.String;
 
 export type DefaultTcpEstablishedTimeout = number;
@@ -41666,7 +42066,11 @@ export const FpgaInfo = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({ identifier: "FpgaInfo" }) as any as S.Schema<FpgaInfo>;
-export type PlacementGroupStrategy = "cluster" | "partition" | "spread";
+export type PlacementGroupStrategy =
+  | "cluster"
+  | "partition"
+  | "spread"
+  | (string & {});
 export const PlacementGroupStrategy = /*@__PURE__*/ S.String;
 
 export type PlacementGroupStrategyList = PlacementGroupStrategy[];
@@ -41753,17 +42157,17 @@ export type HibernationFlag = boolean;
 export type BurstablePerformanceFlag = boolean;
 export type DedicatedHostFlag = boolean;
 export type AutoRecoveryFlag = boolean;
-export type BootModeType = "legacy-bios" | "uefi";
+export type BootModeType = "legacy-bios" | "uefi" | (string & {});
 export const BootModeType = /*@__PURE__*/ S.String;
 
 export type BootModeTypeList = BootModeType[];
 export const BootModeTypeList = /*@__PURE__*/ S.Array(
   BootModeType.pipe(T.XmlName("item")),
 );
-export type NitroEnclavesSupport = "unsupported" | "supported";
+export type NitroEnclavesSupport = "unsupported" | "supported" | (string & {});
 export const NitroEnclavesSupport = /*@__PURE__*/ S.String;
 
-export type NitroTpmSupport = "unsupported" | "supported";
+export type NitroTpmSupport = "unsupported" | "supported" | (string & {});
 export const NitroTpmSupport = /*@__PURE__*/ S.String;
 
 export type NitroTpmSupportedVersionType = string;
@@ -41930,10 +42334,13 @@ export const NeuronInfo = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({ identifier: "NeuronInfo" }) as any as S.Schema<NeuronInfo>;
-export type PhcSupport = "unsupported" | "supported";
+export type PhcSupport = "unsupported" | "supported" | (string & {});
 export const PhcSupport = /*@__PURE__*/ S.String;
 
-export type RebootMigrationSupport = "unsupported" | "supported";
+export type RebootMigrationSupport =
+  | "unsupported"
+  | "supported"
+  | (string & {});
 export const RebootMigrationSupport = /*@__PURE__*/ S.String;
 
 export type SupportedInRegion = boolean;
@@ -43556,7 +43963,8 @@ export type LockState =
   | "compliance"
   | "governance"
   | "compliance-cooloff"
-  | "expired";
+  | "expired"
+  | (string & {});
 export const LockState = /*@__PURE__*/ S.String;
 
 export type RetentionPeriodResponseDays = number;
@@ -43865,7 +44273,7 @@ export const DescribeMovingAddressesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeMovingAddressesRequest",
 }) as any as S.Schema<DescribeMovingAddressesRequest>;
-export type MoveStatus = "movingToVpc" | "restoringToClassic";
+export type MoveStatus = "movingToVpc" | "restoringToClassic" | (string & {});
 export const MoveStatus = /*@__PURE__*/ S.String;
 
 export interface MovingAddressStatus {
@@ -44073,10 +44481,10 @@ export const DescribeNetworkInsightsAccessScopeAnalysesRequest =
   ).annotate({
     identifier: "DescribeNetworkInsightsAccessScopeAnalysesRequest",
   }) as any as S.Schema<DescribeNetworkInsightsAccessScopeAnalysesRequest>;
-export type AnalysisStatus = "running" | "succeeded" | "failed";
+export type AnalysisStatus = "running" | "succeeded" | "failed" | (string & {});
 export const AnalysisStatus = /*@__PURE__*/ S.String;
 
-export type FindingsFound = "true" | "false" | "unknown";
+export type FindingsFound = "true" | "false" | "unknown" | (string & {});
 export const FindingsFound = /*@__PURE__*/ S.String;
 
 export interface NetworkInsightsAccessScopeAnalysis {
@@ -45390,7 +45798,8 @@ export type NetworkInterfaceAttribute =
   | "groupSet"
   | "sourceDestCheck"
   | "attachment"
-  | "associatePublicIpAddress";
+  | "associatePublicIpAddress"
+  | (string & {});
 export const NetworkInterfaceAttribute = /*@__PURE__*/ S.String;
 
 export interface DescribeNetworkInterfaceAttributeRequest {
@@ -46181,7 +46590,7 @@ export const DescribeReplaceRootVolumeTasksResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeReplaceRootVolumeTasksResult",
 }) as any as S.Schema<DescribeReplaceRootVolumeTasksResult>;
-export type OfferingClassType = "standard" | "convertible";
+export type OfferingClassType = "standard" | "convertible" | (string & {});
 export const OfferingClassType = /*@__PURE__*/ S.String;
 
 export type ReservedInstancesIdStringList = string[];
@@ -46194,7 +46603,8 @@ export type OfferingTypeValues =
   | "Light Utilization"
   | "No Upfront"
   | "Partial Upfront"
-  | "All Upfront";
+  | "All Upfront"
+  | (string & {});
 export const OfferingTypeValues = /*@__PURE__*/ S.String;
 
 export interface DescribeReservedInstancesRequest {
@@ -46233,7 +46643,7 @@ export const DescribeReservedInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeReservedInstancesRequest",
 }) as any as S.Schema<DescribeReservedInstancesRequest>;
-export type RecurringChargeFrequency = "Hourly";
+export type RecurringChargeFrequency = "Hourly" | (string & {});
 export const RecurringChargeFrequency = /*@__PURE__*/ S.String;
 
 export interface RecurringCharge {
@@ -46260,7 +46670,7 @@ export const RecurringChargesList = /*@__PURE__*/ S.Array(
     identifier: "RecurringCharge",
   }),
 );
-export type Scope = "Availability Zone" | "Region";
+export type Scope = "Availability Zone" | "Region" | (string & {});
 export const Scope = /*@__PURE__*/ S.String;
 
 export type RIProductDescription =
@@ -46270,7 +46680,8 @@ export type RIProductDescription =
   | "Windows (Amazon VPC)"
   | "Red Hat Enterprise Linux"
   | "SUSE Linux"
-  | "Ubuntu Pro Linux";
+  | "Ubuntu Pro Linux"
+  | (string & {});
 export const RIProductDescription = /*@__PURE__*/ S.String;
 
 export type ReservedInstanceState =
@@ -46279,7 +46690,8 @@ export type ReservedInstanceState =
   | "payment-failed"
   | "retired"
   | "queued"
-  | "queued-deleted";
+  | "queued-deleted"
+  | (string & {});
 export const ReservedInstanceState = /*@__PURE__*/ S.String;
 
 export interface ReservedInstances {
@@ -48137,7 +48549,8 @@ export type ServiceLinkVirtualInterfaceConfigurationState =
   | "pending"
   | "available"
   | "deleting"
-  | "deleted";
+  | "deleted"
+  | (string & {});
 export const ServiceLinkVirtualInterfaceConfigurationState =
   /*@__PURE__*/ S.String;
 
@@ -48235,7 +48648,10 @@ export const DescribeServiceLinkVirtualInterfacesResult =
   ).annotate({
     identifier: "DescribeServiceLinkVirtualInterfacesResult",
   }) as any as S.Schema<DescribeServiceLinkVirtualInterfacesResult>;
-export type SnapshotAttributeName = "productCodes" | "createVolumePermission";
+export type SnapshotAttributeName =
+  | "productCodes"
+  | "createVolumePermission"
+  | (string & {});
 export const SnapshotAttributeName = /*@__PURE__*/ S.String;
 
 export interface DescribeSnapshotAttributeRequest {
@@ -48409,7 +48825,8 @@ export type TieringOperationStatus =
   | "temporary-restore-failed"
   | "permanent-restore-in-progress"
   | "permanent-restore-completed"
-  | "permanent-restore-failed";
+  | "permanent-restore-failed"
+  | (string & {});
 export const TieringOperationStatus = /*@__PURE__*/ S.String;
 
 export interface SnapshotTierStatus {
@@ -48613,7 +49030,8 @@ export type EventType =
   | "instanceChange"
   | "fleetRequestChange"
   | "error"
-  | "information";
+  | "information"
+  | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
 
 export type DescribeSpotFleetRequestHistoryMaxResults = number;
@@ -48767,7 +49185,8 @@ export type ActivityStatus =
   | "error"
   | "pending_fulfillment"
   | "pending_termination"
-  | "fulfilled";
+  | "fulfilled"
+  | (string & {});
 export const ActivityStatus = /*@__PURE__*/ S.String;
 
 export type AllocationStrategy =
@@ -48775,13 +49194,20 @@ export type AllocationStrategy =
   | "diversified"
   | "capacityOptimized"
   | "capacityOptimizedPrioritized"
-  | "priceCapacityOptimized";
+  | "priceCapacityOptimized"
+  | (string & {});
 export const AllocationStrategy = /*@__PURE__*/ S.String;
 
-export type OnDemandAllocationStrategy = "lowestPrice" | "prioritized";
+export type OnDemandAllocationStrategy =
+  | "lowestPrice"
+  | "prioritized"
+  | (string & {});
 export const OnDemandAllocationStrategy = /*@__PURE__*/ S.String;
 
-export type ReplacementStrategy = "launch" | "launch-before-terminate";
+export type ReplacementStrategy =
+  | "launch"
+  | "launch-before-terminate"
+  | (string & {});
 export const ReplacementStrategy = /*@__PURE__*/ S.String;
 
 export interface SpotCapacityRebalance {
@@ -48814,7 +49240,10 @@ export const SpotMaintenanceStrategies = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SpotMaintenanceStrategies",
 }) as any as S.Schema<SpotMaintenanceStrategies>;
-export type ExcessCapacityTerminationPolicy = "noTermination" | "default";
+export type ExcessCapacityTerminationPolicy =
+  | "noTermination"
+  | "default"
+  | (string & {});
 export const ExcessCapacityTerminationPolicy = /*@__PURE__*/ S.String;
 
 export interface SpotFleetMonitoring {
@@ -49590,7 +50019,8 @@ export type SpotInstanceState =
   | "closed"
   | "cancelled"
   | "failed"
-  | "disabled";
+  | "disabled"
+  | (string & {});
 export const SpotInstanceState = /*@__PURE__*/ S.String;
 
 export interface SpotInstanceStatus {
@@ -51439,7 +51869,10 @@ export const DescribeVerifiedAccessInstanceLoggingConfigurationsRequest =
   ).annotate({
     identifier: "DescribeVerifiedAccessInstanceLoggingConfigurationsRequest",
   }) as any as S.Schema<DescribeVerifiedAccessInstanceLoggingConfigurationsRequest>;
-export type VerifiedAccessLogDeliveryStatusCode = "success" | "failed";
+export type VerifiedAccessLogDeliveryStatusCode =
+  | "success"
+  | "failed"
+  | (string & {});
 export const VerifiedAccessLogDeliveryStatusCode = /*@__PURE__*/ S.String;
 
 export interface VerifiedAccessLogDeliveryStatus {
@@ -51742,7 +52175,10 @@ export const DescribeVerifiedAccessTrustProvidersResult =
   ).annotate({
     identifier: "DescribeVerifiedAccessTrustProvidersResult",
   }) as any as S.Schema<DescribeVerifiedAccessTrustProvidersResult>;
-export type VolumeAttributeName = "autoEnableIO" | "productCodes";
+export type VolumeAttributeName =
+  | "autoEnableIO"
+  | "productCodes"
+  | (string & {});
 export const VolumeAttributeName = /*@__PURE__*/ S.String;
 
 export interface DescribeVolumeAttributeRequest {
@@ -51883,7 +52319,8 @@ export type VolumeModificationState =
   | "modifying"
   | "optimizing"
   | "completed"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const VolumeModificationState = /*@__PURE__*/ S.String;
 
 export interface VolumeModification {
@@ -52105,7 +52542,8 @@ export const VolumeStatusEventsList = /*@__PURE__*/ S.Array(
 export type VolumeStatusName =
   | "io-enabled"
   | "io-performance"
-  | "initialization-state";
+  | "initialization-state"
+  | (string & {});
 export const VolumeStatusName = /*@__PURE__*/ S.String;
 
 export interface VolumeStatusDetails {
@@ -52136,7 +52574,8 @@ export type VolumeStatusInfoStatus =
   | "ok"
   | "impaired"
   | "insufficient-data"
-  | "warning";
+  | "warning"
+  | (string & {});
 export const VolumeStatusInfoStatus = /*@__PURE__*/ S.String;
 
 export interface VolumeStatusInfo {
@@ -52181,7 +52620,11 @@ export const VolumeStatusAttachmentStatusList = /*@__PURE__*/ S.Array(
     identifier: "VolumeStatusAttachmentStatus",
   }),
 );
-export type InitializationType = "default" | "provisioned-rate" | "volume-copy";
+export type InitializationType =
+  | "default"
+  | "provisioned-rate"
+  | "volume-copy"
+  | (string & {});
 export const InitializationType = /*@__PURE__*/ S.String;
 
 export interface InitializationStatusDetails {
@@ -52292,7 +52735,8 @@ export const DescribeVolumeStatusResult = /*@__PURE__*/ S.suspend(() =>
 export type VpcAttributeName =
   | "enableDnsSupport"
   | "enableDnsHostnames"
-  | "enableNetworkAddressUsageMetrics";
+  | "enableNetworkAddressUsageMetrics"
+  | (string & {});
 export const VpcAttributeName = /*@__PURE__*/ S.String;
 
 export interface DescribeVpcAttributeRequest {
@@ -52438,19 +52882,24 @@ export const DescribeVpcBlockPublicAccessOptionsRequest =
 export type VpcBlockPublicAccessState =
   | "default-state"
   | "update-in-progress"
-  | "update-complete";
+  | "update-complete"
+  | (string & {});
 export const VpcBlockPublicAccessState = /*@__PURE__*/ S.String;
 
 export type InternetGatewayBlockMode =
   | "off"
   | "block-bidirectional"
-  | "block-ingress";
+  | "block-ingress"
+  | (string & {});
 export const InternetGatewayBlockMode = /*@__PURE__*/ S.String;
 
-export type ManagedBy = "account" | "declarative-policy";
+export type ManagedBy = "account" | "declarative-policy" | (string & {});
 export const ManagedBy = /*@__PURE__*/ S.String;
 
-export type VpcBlockPublicAccessExclusionsAllowed = "allowed" | "not-allowed";
+export type VpcBlockPublicAccessExclusionsAllowed =
+  | "allowed"
+  | "not-allowed"
+  | (string & {});
 export const VpcBlockPublicAccessExclusionsAllowed = /*@__PURE__*/ S.String;
 
 export interface VpcBlockPublicAccessOptions {
@@ -53168,7 +53617,8 @@ export type PrincipalType =
   | "OrganizationUnit"
   | "Account"
   | "User"
-  | "Role";
+  | "Role"
+  | (string & {});
 export const PrincipalType = /*@__PURE__*/ S.String;
 
 export interface AllowedPrincipal {
@@ -54008,7 +54458,7 @@ export const DisableAllowedImagesSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DisableAllowedImagesSettingsRequest",
 }) as any as S.Schema<DisableAllowedImagesSettingsRequest>;
-export type AllowedImagesSettingsDisabledState = "disabled";
+export type AllowedImagesSettingsDisabledState = "disabled" | (string & {});
 export const AllowedImagesSettingsDisabledState = /*@__PURE__*/ S.String;
 
 export interface DisableAllowedImagesSettingsResult {
@@ -54091,7 +54541,7 @@ export const DisableCapacityManagerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DisableCapacityManagerRequest",
 }) as any as S.Schema<DisableCapacityManagerRequest>;
-export type CapacityManagerStatus = "enabled" | "disabled";
+export type CapacityManagerStatus = "enabled" | "disabled" | (string & {});
 export const CapacityManagerStatus = /*@__PURE__*/ S.String;
 
 export interface DisableCapacityManagerResult {
@@ -54485,7 +54935,7 @@ export const DisableImageBlockPublicAccessRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DisableImageBlockPublicAccessRequest",
 }) as any as S.Schema<DisableImageBlockPublicAccessRequest>;
-export type ImageBlockPublicAccessDisabledState = "unblocked";
+export type ImageBlockPublicAccessDisabledState = "unblocked" | (string & {});
 export const ImageBlockPublicAccessDisabledState = /*@__PURE__*/ S.String;
 
 export interface DisableImageBlockPublicAccessResult {
@@ -54717,7 +55167,11 @@ export const DisableRouteServerPropagationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DisableRouteServerPropagationRequest",
 }) as any as S.Schema<DisableRouteServerPropagationRequest>;
-export type RouteServerPropagationState = "pending" | "available" | "deleting";
+export type RouteServerPropagationState =
+  | "pending"
+  | "available"
+  | "deleting"
+  | (string & {});
 export const RouteServerPropagationState = /*@__PURE__*/ S.String;
 
 export interface RouteServerPropagation {
@@ -54811,7 +55265,8 @@ export const DisableSnapshotBlockPublicAccessRequest = /*@__PURE__*/ S.suspend(
 export type SnapshotBlockPublicAccessState =
   | "block-all-sharing"
   | "block-new-sharing"
-  | "unblocked";
+  | "unblocked"
+  | (string & {});
 export const SnapshotBlockPublicAccessState = /*@__PURE__*/ S.String;
 
 export interface DisableSnapshotBlockPublicAccessResult {
@@ -54859,7 +55314,8 @@ export type TransitGatewayPropagationState =
   | "enabling"
   | "enabled"
   | "disabling"
-  | "disabled";
+  | "disabled"
+  | (string & {});
 export const TransitGatewayPropagationState = /*@__PURE__*/ S.String;
 
 export interface TransitGatewayPropagation {
@@ -55794,7 +56250,10 @@ export const EnableAddressTransferResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EnableAddressTransferResult",
 }) as any as S.Schema<EnableAddressTransferResult>;
-export type AllowedImagesSettingsEnabledState = "enabled" | "audit-mode";
+export type AllowedImagesSettingsEnabledState =
+  | "enabled"
+  | "audit-mode"
+  | (string & {});
 export const AllowedImagesSettingsEnabledState = /*@__PURE__*/ S.String;
 
 export interface EnableAllowedImagesSettingsRequest {
@@ -56289,7 +56748,9 @@ export const EnableImageResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EnableImageResult",
 }) as any as S.Schema<EnableImageResult>;
-export type ImageBlockPublicAccessEnabledState = "block-new-sharing";
+export type ImageBlockPublicAccessEnabledState =
+  | "block-new-sharing"
+  | (string & {});
 export const ImageBlockPublicAccessEnabledState = /*@__PURE__*/ S.String;
 
 export interface EnableImageBlockPublicAccessRequest {
@@ -56864,7 +57325,10 @@ export const ExportClientVpnClientCertificateRevocationListRequest =
   ).annotate({
     identifier: "ExportClientVpnClientCertificateRevocationListRequest",
   }) as any as S.Schema<ExportClientVpnClientCertificateRevocationListRequest>;
-export type ClientCertificateRevocationListStatusCode = "pending" | "active";
+export type ClientCertificateRevocationListStatusCode =
+  | "pending"
+  | "active"
+  | (string & {});
 export const ClientCertificateRevocationListStatusCode = /*@__PURE__*/ S.String;
 
 export interface ClientCertificateRevocationListStatus {
@@ -57292,7 +57756,11 @@ export const GetActiveVpnTunnelStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetActiveVpnTunnelStatusRequest",
 }) as any as S.Schema<GetActiveVpnTunnelStatusRequest>;
-export type VpnTunnelProvisioningStatus = "available" | "pending" | "failed";
+export type VpnTunnelProvisioningStatus =
+  | "available"
+  | "pending"
+  | "failed"
+  | (string & {});
 export const VpnTunnelProvisioningStatus = /*@__PURE__*/ S.String;
 
 export interface ActiveVpnTunnelStatus {
@@ -57825,7 +58293,8 @@ export const GetCapacityManagerAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 export type IngestionStatus =
   | "initial-ingestion-in-progress"
   | "ingestion-complete"
-  | "ingestion-failed";
+  | "ingestion-failed"
+  | (string & {});
 export const IngestionStatus = /*@__PURE__*/ S.String;
 
 export interface GetCapacityManagerAttributesResult {
@@ -57924,7 +58393,8 @@ export type Metric =
   | "spot-total-count-inst"
   | "spot-total-count-vcpu"
   | "spot-interruption-rate-inst"
-  | "spot-interruption-rate-vcpu";
+  | "spot-interruption-rate-vcpu"
+  | (string & {});
 export const Metric = /*@__PURE__*/ S.String;
 
 export type MetricSet = Metric[];
@@ -57948,7 +58418,8 @@ export type GroupBy =
   | "tenancy"
   | "reservation-state"
   | "reservation-instance-match-criteria"
-  | "reservation-unused-financial-owner";
+  | "reservation-unused-financial-owner"
+  | (string & {});
 export const GroupBy = /*@__PURE__*/ S.String;
 
 export type GroupBySet = GroupBy[];
@@ -57973,10 +58444,11 @@ export type FilterByDimension =
   | "tenancy"
   | "reservation-state"
   | "reservation-instance-match-criteria"
-  | "reservation-unused-financial-owner";
+  | "reservation-unused-financial-owner"
+  | (string & {});
 export const FilterByDimension = /*@__PURE__*/ S.String;
 
-export type Comparison = "equals" | "in";
+export type Comparison = "equals" | "in" | (string & {});
 export const Comparison = /*@__PURE__*/ S.String;
 
 export type ConditionValue = string;
@@ -58051,13 +58523,13 @@ export const GetCapacityManagerMetricDataRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCapacityManagerMetricDataRequest",
 }) as any as S.Schema<GetCapacityManagerMetricDataRequest>;
-export type ReservationType = "capacity-block" | "odcr";
+export type ReservationType = "capacity-block" | "odcr" | (string & {});
 export const ReservationType = /*@__PURE__*/ S.String;
 
-export type ReservationEndDateType = "limited" | "unlimited";
+export type ReservationEndDateType = "limited" | "unlimited" | (string & {});
 export const ReservationEndDateType = /*@__PURE__*/ S.String;
 
-export type CapacityTenancy = "default" | "dedicated";
+export type CapacityTenancy = "default" | "dedicated" | (string & {});
 export const CapacityTenancy = /*@__PURE__*/ S.String;
 
 export interface CapacityManagerTagDimension {
@@ -58349,7 +58821,8 @@ export type CapacityManagerMonitoredTagKeyStatus =
   | "activating"
   | "activated"
   | "deactivating"
-  | "suspended";
+  | "suspended"
+  | (string & {});
 export const CapacityManagerMonitoredTagKeyStatus = /*@__PURE__*/ S.String;
 
 export interface CapacityManagerMonitoredTagKey {
@@ -58844,7 +59317,12 @@ export const GetDeclarativePoliciesReportSummaryResult =
   ).annotate({
     identifier: "GetDeclarativePoliciesReportSummaryResult",
   }) as any as S.Schema<GetDeclarativePoliciesReportSummaryResult>;
-export type UnlimitedSupportedInstanceFamily = "t2" | "t3" | "t3a" | "t4g";
+export type UnlimitedSupportedInstanceFamily =
+  | "t2"
+  | "t3"
+  | "t3a"
+  | "t4g"
+  | (string & {});
 export const UnlimitedSupportedInstanceFamily = /*@__PURE__*/ S.String;
 
 export interface GetDefaultCreditSpecificationRequest {
@@ -58992,7 +59470,8 @@ export const GetEnabledIpamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEnabledIpamPolicyRequest>;
 export type IpamPolicyManagedBy =
   | "account"
-  | "delegated-administrator-for-ipam";
+  | "delegated-administrator-for-ipam"
+  | (string & {});
 export const IpamPolicyManagedBy = /*@__PURE__*/ S.String;
 
 export interface GetEnabledIpamPolicyResult {
@@ -59018,7 +59497,12 @@ export const GetEnabledIpamPolicyResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEnabledIpamPolicyResult",
 }) as any as S.Schema<GetEnabledIpamPolicyResult>;
-export type PartitionLoadFrequency = "none" | "daily" | "weekly" | "monthly";
+export type PartitionLoadFrequency =
+  | "none"
+  | "daily"
+  | "weekly"
+  | "monthly"
+  | (string & {});
 export const PartitionLoadFrequency = /*@__PURE__*/ S.String;
 
 export interface AthenaIntegration {
@@ -59408,7 +59892,7 @@ export const GetInstanceMetadataDefaultsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetInstanceMetadataDefaultsRequest",
 }) as any as S.Schema<GetInstanceMetadataDefaultsRequest>;
-export type HttpTokensEnforcedState = "disabled" | "enabled";
+export type HttpTokensEnforcedState = "disabled" | "enabled" | (string & {});
 export const HttpTokensEnforcedState = /*@__PURE__*/ S.String;
 
 export interface InstanceMetadataDefaultsResponse {
@@ -59466,10 +59950,10 @@ export const GetInstanceMetadataDefaultsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetInstanceMetadataDefaultsResult",
 }) as any as S.Schema<GetInstanceMetadataDefaultsResult>;
-export type EkPubKeyType = "rsa-2048" | "ecc-sec-p384";
+export type EkPubKeyType = "rsa-2048" | "ecc-sec-p384" | (string & {});
 export const EkPubKeyType = /*@__PURE__*/ S.String;
 
-export type EkPubKeyFormat = "der" | "tpmt";
+export type EkPubKeyFormat = "der" | "tpmt" | (string & {});
 export const EkPubKeyFormat = /*@__PURE__*/ S.String;
 
 export interface GetInstanceTpmEkPubRequest {
@@ -59694,17 +60178,23 @@ export type IpamAddressHistoryResourceType =
   | "vpc"
   | "subnet"
   | "network-interface"
-  | "instance";
+  | "instance"
+  | (string & {});
 export const IpamAddressHistoryResourceType = /*@__PURE__*/ S.String;
 
 export type IpamComplianceStatus =
   | "compliant"
   | "noncompliant"
   | "unmanaged"
-  | "ignored";
+  | "ignored"
+  | (string & {});
 export const IpamComplianceStatus = /*@__PURE__*/ S.String;
 
-export type IpamOverlapStatus = "overlapping" | "nonoverlapping" | "ignored";
+export type IpamOverlapStatus =
+  | "overlapping"
+  | "nonoverlapping"
+  | "ignored"
+  | (string & {});
 export const IpamOverlapStatus = /*@__PURE__*/ S.String;
 
 export interface IpamAddressHistoryRecord {
@@ -59825,7 +60315,8 @@ export const GetIpamDiscoveredAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 export type IpamDiscoveryFailureCode =
   | "assume-role-failure"
   | "throttling-failure"
-  | "unauthorized-failure";
+  | "unauthorized-failure"
+  | (string & {});
 export const IpamDiscoveryFailureCode = /*@__PURE__*/ S.String;
 
 export interface IpamDiscoveryFailureReason {
@@ -59942,7 +60433,10 @@ export const GetIpamDiscoveredPublicAddressesRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetIpamDiscoveredPublicAddressesRequest",
 }) as any as S.Schema<GetIpamDiscoveredPublicAddressesRequest>;
-export type IpamPublicAddressAssociationStatus = "associated" | "disassociated";
+export type IpamPublicAddressAssociationStatus =
+  | "associated"
+  | "disassociated"
+  | (string & {});
 export const IpamPublicAddressAssociationStatus = /*@__PURE__*/ S.String;
 
 export type IpamPublicAddressType =
@@ -59952,7 +60446,8 @@ export type IpamPublicAddressType =
   | "amazon-owned-contig"
   | "byoip"
   | "ec2-public-ip"
-  | "anycast-ip-list-ip";
+  | "anycast-ip-list-ip"
+  | (string & {});
 export const IpamPublicAddressType = /*@__PURE__*/ S.String;
 
 export type IpamPublicAddressAwsService =
@@ -59965,7 +60460,8 @@ export type IpamPublicAddressAwsService =
   | "load-balancer"
   | "global-accelerator"
   | "cloudfront"
-  | "other";
+  | "other"
+  | (string & {});
 export const IpamPublicAddressAwsService = /*@__PURE__*/ S.String;
 
 export interface IpamPublicAddressTag {
@@ -60190,11 +60686,18 @@ export const GetIpamDiscoveredResourceCidrsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetIpamDiscoveredResourceCidrsRequest",
 }) as any as S.Schema<GetIpamDiscoveredResourceCidrsRequest>;
-export type IpamResourceCidrIpSource = "amazon" | "byoip" | "none";
+export type IpamResourceCidrIpSource =
+  | "amazon"
+  | "byoip"
+  | "none"
+  | (string & {});
 export const IpamResourceCidrIpSource = /*@__PURE__*/ S.String;
 
 export type BoxedDouble = number;
-export type IpamNetworkInterfaceAttachmentStatus = "available" | "in-use";
+export type IpamNetworkInterfaceAttachmentStatus =
+  | "available"
+  | "in-use"
+  | (string & {});
 export const IpamNetworkInterfaceAttachmentStatus = /*@__PURE__*/ S.String;
 
 export interface IpamDiscoveredResourceCidr {
@@ -60303,7 +60806,12 @@ export const GetIpamDiscoveredResourceCidrsResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetIpamDiscoveredResourceCidrsResult",
 }) as any as S.Schema<GetIpamDiscoveredResourceCidrsResult>;
-export type IpamPolicyResourceType = "alb" | "eip" | "rds" | "rnat";
+export type IpamPolicyResourceType =
+  | "alb"
+  | "eip"
+  | "rds"
+  | "rnat"
+  | (string & {});
 export const IpamPolicyResourceType = /*@__PURE__*/ S.String;
 
 export interface GetIpamPolicyAllocationRulesRequest {
@@ -60888,7 +61396,11 @@ export const GetIpamResourceCidrsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetIpamResourceCidrsRequest",
 }) as any as S.Schema<GetIpamResourceCidrsRequest>;
-export type IpamManagementState = "managed" | "unmanaged" | "ignored";
+export type IpamManagementState =
+  | "managed"
+  | "unmanaged"
+  | "ignored"
+  | (string & {});
 export const IpamManagementState = /*@__PURE__*/ S.String;
 
 export interface IpamResourceCidr {
@@ -61196,7 +61708,10 @@ export const GetManagedResourceVisibilityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetManagedResourceVisibilityRequest",
 }) as any as S.Schema<GetManagedResourceVisibilityRequest>;
-export type ManagedResourceDefaultVisibility = "hidden" | "visible";
+export type ManagedResourceDefaultVisibility =
+  | "hidden"
+  | "visible"
+  | (string & {});
 export const ManagedResourceDefaultVisibility = /*@__PURE__*/ S.String;
 
 export interface ManagedResourceVisibilitySettings {
@@ -61698,7 +62213,10 @@ export const GetRouteServerRoutingDatabaseRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetRouteServerRoutingDatabaseRequest",
 }) as any as S.Schema<GetRouteServerRoutingDatabaseRequest>;
-export type RouteServerRouteInstallationStatus = "installed" | "rejected";
+export type RouteServerRouteInstallationStatus =
+  | "installed"
+  | "rejected"
+  | (string & {});
 export const RouteServerRouteInstallationStatus = /*@__PURE__*/ S.String;
 
 export interface RouteServerRouteInstallationDetail {
@@ -61733,7 +62251,7 @@ export const RouteServerRouteInstallationDetails = /*@__PURE__*/ S.Array(
     identifier: "RouteServerRouteInstallationDetail",
   }),
 );
-export type RouteServerRouteStatus = "in-rib" | "in-fib";
+export type RouteServerRouteStatus = "in-rib" | "in-fib" | (string & {});
 export const RouteServerRouteStatus = /*@__PURE__*/ S.String;
 
 export type AsPath = string[];
@@ -64163,7 +64681,7 @@ export const ListVolumesInRecycleBinResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListVolumesInRecycleBinResult",
 }) as any as S.Schema<ListVolumesInRecycleBinResult>;
-export type LockMode = "compliance" | "governance";
+export type LockMode = "compliance" | "governance" | (string & {});
 export const LockMode = /*@__PURE__*/ S.String;
 
 export type CoolOffPeriodRequestHours = number;
@@ -64286,7 +64804,10 @@ export const ModifyAddressAttributeResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ModifyAddressAttributeResult",
 }) as any as S.Schema<ModifyAddressAttributeResult>;
-export type ModifyAvailabilityZoneOptInStatus = "opted-in" | "not-opted-in";
+export type ModifyAvailabilityZoneOptInStatus =
+  | "opted-in"
+  | "not-opted-in"
+  | (string & {});
 export const ModifyAvailabilityZoneOptInStatus = /*@__PURE__*/ S.String;
 
 export interface ModifyAvailabilityZoneGroupRequest {
@@ -64624,7 +65145,7 @@ export const ModifyFleetResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ModifyFleetResult",
 }) as any as S.Schema<ModifyFleetResult>;
-export type OperationType = "add" | "remove";
+export type OperationType = "add" | "remove" | (string & {});
 export const OperationType = /*@__PURE__*/ S.String;
 
 export type UserIdStringList = string[];
@@ -65328,7 +65849,8 @@ export type UnsuccessfulInstanceCreditSpecificationErrorCode =
   | "InvalidInstanceID.Malformed"
   | "InvalidInstanceID.NotFound"
   | "IncorrectInstanceState"
-  | "InstanceCreditSpecification.NotSupported";
+  | "InstanceCreditSpecification.NotSupported"
+  | (string & {});
 export const UnsuccessfulInstanceCreditSpecificationErrorCode =
   /*@__PURE__*/ S.String;
 
@@ -65540,25 +66062,29 @@ export const ModifyInstanceMaintenanceOptionsResult = /*@__PURE__*/ S.suspend(
 export type MetadataDefaultHttpTokensState =
   | "optional"
   | "required"
-  | "no-preference";
+  | "no-preference"
+  | (string & {});
 export const MetadataDefaultHttpTokensState = /*@__PURE__*/ S.String;
 
 export type DefaultInstanceMetadataEndpointState =
   | "disabled"
   | "enabled"
-  | "no-preference";
+  | "no-preference"
+  | (string & {});
 export const DefaultInstanceMetadataEndpointState = /*@__PURE__*/ S.String;
 
 export type DefaultInstanceMetadataTagsState =
   | "disabled"
   | "enabled"
-  | "no-preference";
+  | "no-preference"
+  | (string & {});
 export const DefaultInstanceMetadataTagsState = /*@__PURE__*/ S.String;
 
 export type DefaultHttpTokensEnforcedState =
   | "disabled"
   | "enabled"
-  | "no-preference";
+  | "no-preference"
+  | (string & {});
 export const DefaultHttpTokensEnforcedState = /*@__PURE__*/ S.String;
 
 export interface ModifyInstanceMetadataDefaultsRequest {
@@ -65703,10 +66229,10 @@ export const ModifyInstanceNetworkPerformanceResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ModifyInstanceNetworkPerformanceResult",
 }) as any as S.Schema<ModifyInstanceNetworkPerformanceResult>;
-export type HostTenancy = "default" | "dedicated" | "host";
+export type HostTenancy = "default" | "dedicated" | "host" | (string & {});
 export const HostTenancy = /*@__PURE__*/ S.String;
 
-export type Affinity = "default" | "host";
+export type Affinity = "default" | "host" | (string & {});
 export const Affinity = /*@__PURE__*/ S.String;
 
 export interface ModifyInstancePlacementRequest {
@@ -66551,7 +67077,8 @@ export const ModifyPrivateDnsNameOptionsResult = /*@__PURE__*/ S.suspend(() =>
 export type PublicIpDnsOption =
   | "public-dual-stack-dns-name"
   | "public-ipv4-dns-name"
-  | "public-ipv6-dns-name";
+  | "public-ipv6-dns-name"
+  | (string & {});
 export const PublicIpDnsOption = /*@__PURE__*/ S.String;
 
 export interface ModifyPublicIpDnsNameOptionsRequest {
@@ -66816,7 +67343,7 @@ export const ModifySnapshotAttributeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ModifySnapshotAttributeResponse",
 }) as any as S.Schema<ModifySnapshotAttributeResponse>;
-export type TargetStorageTier = "archive";
+export type TargetStorageTier = "archive" | (string & {});
 export const TargetStorageTier = /*@__PURE__*/ S.String;
 
 export interface ModifySnapshotTierRequest {
@@ -67016,7 +67543,8 @@ export type TrafficMirrorFilterRuleField =
   | "destination-port-range"
   | "source-port-range"
   | "protocol"
-  | "description";
+  | "description"
+  | (string & {});
 export const TrafficMirrorFilterRuleField = /*@__PURE__*/ S.String;
 
 export type TrafficMirrorFilterRuleFieldList = TrafficMirrorFilterRuleField[];
@@ -67086,7 +67614,8 @@ export const ModifyTrafficMirrorFilterRuleResult = /*@__PURE__*/ S.suspend(() =>
 export type TrafficMirrorSessionField =
   | "packet-length"
   | "description"
-  | "virtual-network-id";
+  | "virtual-network-id"
+  | (string & {});
 export const TrafficMirrorSessionField = /*@__PURE__*/ S.String;
 
 export type TrafficMirrorSessionFieldList = TrafficMirrorSessionField[];
@@ -67146,7 +67675,7 @@ export const ModifyTrafficMirrorSessionResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ModifyTrafficMirrorSessionResult",
 }) as any as S.Schema<ModifyTrafficMirrorSessionResult>;
-export type EncryptionSupportOptionValue = "enable" | "disable";
+export type EncryptionSupportOptionValue = "enable" | "disable" | (string & {});
 export const EncryptionSupportOptionValue = /*@__PURE__*/ S.String;
 
 export interface ModifyTransitGatewayOptions {
@@ -68592,7 +69121,7 @@ export const ModifyVpcPeeringConnectionOptionsResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ModifyVpcPeeringConnectionOptionsResult",
 }) as any as S.Schema<ModifyVpcPeeringConnectionOptionsResult>;
-export type VpcTenancy = "default";
+export type VpcTenancy = "default" | (string & {});
 export const VpcTenancy = /*@__PURE__*/ S.String;
 
 export interface ModifyVpcTenancyRequest {
@@ -68945,7 +69474,7 @@ export const MoveAddressToVpcRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MoveAddressToVpcRequest",
 }) as any as S.Schema<MoveAddressToVpcRequest>;
-export type Status = "MoveInProgress" | "InVpc" | "InClassic";
+export type Status = "MoveInProgress" | "InVpc" | "InClassic" | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 
 export interface MoveAddressToVpcResult {
@@ -69174,7 +69703,7 @@ export const IpamCidrAuthorizationContext = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IpamCidrAuthorizationContext",
 }) as any as S.Schema<IpamCidrAuthorizationContext>;
-export type VerificationMethod = "remarks-x509" | "dns-token";
+export type VerificationMethod = "remarks-x509" | "dns-token" | (string & {});
 export const VerificationMethod = /*@__PURE__*/ S.String;
 
 export interface ProvisionIpamPoolCidrRequest {
@@ -70778,7 +71307,7 @@ export const ReplaceVpnTunnelResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ReplaceVpnTunnelResult",
 }) as any as S.Schema<ReplaceVpnTunnelResult>;
-export type ReportStatusType = "ok" | "impaired";
+export type ReportStatusType = "ok" | "impaired" | (string & {});
 export const ReportStatusType = /*@__PURE__*/ S.String;
 
 export type ReportInstanceReasonCodes =
@@ -70790,7 +71319,8 @@ export type ReportInstanceReasonCodes =
   | "performance-instance-store"
   | "performance-ebs-volume"
   | "performance-other"
-  | "other";
+  | "other"
+  | (string & {});
 export const ReportInstanceReasonCodes = /*@__PURE__*/ S.String;
 
 export type ReasonCodesList = ReportInstanceReasonCodes[];
@@ -71149,7 +71679,7 @@ export const ResetEbsDefaultKmsKeyIdResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResetEbsDefaultKmsKeyIdResult",
 }) as any as S.Schema<ResetEbsDefaultKmsKeyIdResult>;
-export type ResetFpgaImageAttributeName = "loadPermission";
+export type ResetFpgaImageAttributeName = "loadPermission" | (string & {});
 export const ResetFpgaImageAttributeName = /*@__PURE__*/ S.String;
 
 export interface ResetFpgaImageAttributeRequest {
@@ -71189,7 +71719,7 @@ export const ResetFpgaImageAttributeResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResetFpgaImageAttributeResult",
 }) as any as S.Schema<ResetFpgaImageAttributeResult>;
-export type ResetImageAttributeName = "launchPermission";
+export type ResetImageAttributeName = "launchPermission" | (string & {});
 export const ResetImageAttributeName = /*@__PURE__*/ S.String;
 
 export interface ResetImageAttributeRequest {
@@ -72590,7 +73120,7 @@ export const SearchTransitGatewayMulticastGroupsRequest =
   ).annotate({
     identifier: "SearchTransitGatewayMulticastGroupsRequest",
   }) as any as S.Schema<SearchTransitGatewayMulticastGroupsRequest>;
-export type MembershipType = "static" | "igmp";
+export type MembershipType = "static" | "igmp" | (string & {});
 export const MembershipType = /*@__PURE__*/ S.String;
 
 export interface TransitGatewayMulticastGroup {

@@ -347,7 +347,8 @@ export const CreateUsersDraftsRequest = /*@__PURE__*/ S.suspend(() =>
 export type LabelLabelListVisibilityEnum =
   | "labelShow"
   | "labelShowIfUnread"
-  | "labelHide";
+  | "labelHide"
+  | (string & {});
 export const LabelLabelListVisibilityEnum = /*@__PURE__*/ S.String;
 
 export interface LabelColor {
@@ -363,10 +364,10 @@ export const LabelColor = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LabelColor" }) as any as S.Schema<LabelColor>;
 
-export type LabelTypeEnum = "system" | "user";
+export type LabelTypeEnum = "system" | "user" | (string & {});
 export const LabelTypeEnum = /*@__PURE__*/ S.String;
 
-export type LabelMessageListVisibilityEnum = "show" | "hide";
+export type LabelMessageListVisibilityEnum = "show" | "hide" | (string & {});
 export const LabelMessageListVisibilityEnum = /*@__PURE__*/ S.String;
 
 /** Labels are used to categorize messages and threads within the user's mailbox. The maximum number of labels supported for a user's mailbox is 10,000. */
@@ -539,7 +540,8 @@ export const CsePrivateKeyMetadataList = /*@__PURE__*/ S.Array(
 export type CseKeyPairEnablementStateEnum =
   | "stateUnspecified"
   | "enabled"
-  | "disabled";
+  | "disabled"
+  | (string & {});
 export const CseKeyPairEnablementStateEnum = /*@__PURE__*/ S.String;
 
 /** A client-side encryption S/MIME key pair, which is comprised of a public key, its certificate chain, and metadata for its paired private key. Gmail uses the key pair to complete the following tasks: - Sign outgoing client-side encrypted messages. - Save and reopen drafts of client-side encrypted messages. - Save and reopen sent messages. - Decrypt incoming or archived S/MIME messages. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured. */
@@ -598,7 +600,8 @@ export type DelegateVerificationStatusEnum =
   | "accepted"
   | "pending"
   | "rejected"
-  | "expired";
+  | "expired"
+  | (string & {});
 export const DelegateVerificationStatusEnum = /*@__PURE__*/ S.String;
 
 /** Settings for a delegate. Delegates can read, send, and delete messages, as well as view and add contacts, for the delegator's account. See "Set up mail delegation" for more information about delegates. */
@@ -639,7 +642,8 @@ export const CreateUsersSettingsDelegatesRequest = /*@__PURE__*/ S.suspend(() =>
 export type FilterCriteriaSizeComparisonEnum =
   | "unspecified"
   | "smaller"
-  | "larger";
+  | "larger"
+  | (string & {});
 export const FilterCriteriaSizeComparisonEnum = /*@__PURE__*/ S.String;
 
 /** Message matching criteria. */
@@ -735,7 +739,8 @@ export const CreateUsersSettingsFiltersRequest = /*@__PURE__*/ S.suspend(() =>
 export type ForwardingAddressVerificationStatusEnum =
   | "verificationStatusUnspecified"
   | "accepted"
-  | "pending";
+  | "pending"
+  | (string & {});
 export const ForwardingAddressVerificationStatusEnum = /*@__PURE__*/ S.String;
 
 /** Settings for a forwarding address. */
@@ -779,14 +784,16 @@ export const CreateUsersSettingsForwardingAddressesRequest =
 export type SendAsVerificationStatusEnum =
   | "verificationStatusUnspecified"
   | "accepted"
-  | "pending";
+  | "pending"
+  | (string & {});
 export const SendAsVerificationStatusEnum = /*@__PURE__*/ S.String;
 
 export type SmtpMsaSecurityModeEnum =
   | "securityModeUnspecified"
   | "none"
   | "ssl"
-  | "starttls";
+  | "starttls"
+  | (string & {});
 export const SmtpMsaSecurityModeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for communication with an SMTP service. */
@@ -1242,7 +1249,8 @@ export type AutoForwardingDispositionEnum =
   | "leaveInInbox"
   | "archive"
   | "trash"
-  | "markRead";
+  | "markRead"
+  | (string & {});
 export const AutoForwardingDispositionEnum = /*@__PURE__*/ S.String;
 
 /** Auto-forwarding settings for an account. */
@@ -1284,7 +1292,8 @@ export type ImapSettingsExpungeBehaviorEnum =
   | "expungeBehaviorUnspecified"
   | "archive"
   | "trash"
-  | "deleteForever";
+  | "deleteForever"
+  | (string & {});
 export const ImapSettingsExpungeBehaviorEnum = /*@__PURE__*/ S.String;
 
 /** IMAP settings for an account. */
@@ -1360,7 +1369,8 @@ export type PopSettingsAccessWindowEnum =
   | "accessWindowUnspecified"
   | "disabled"
   | "fromNowOn"
-  | "allMail";
+  | "allMail"
+  | (string & {});
 export const PopSettingsAccessWindowEnum = /*@__PURE__*/ S.String;
 
 export type PopSettingsDispositionEnum =
@@ -1368,7 +1378,8 @@ export type PopSettingsDispositionEnum =
   | "leaveInInbox"
   | "archive"
   | "trash"
-  | "markRead";
+  | "markRead"
+  | (string & {});
 export const PopSettingsDispositionEnum = /*@__PURE__*/ S.String;
 
 /** POP settings for an account. */
@@ -1423,7 +1434,12 @@ export const Profile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Profile" }) as any as S.Schema<Profile>;
 
-export type GetUsersDraftsFormatEnum = "minimal" | "full" | "raw" | "metadata";
+export type GetUsersDraftsFormatEnum =
+  | "minimal"
+  | "full"
+  | "raw"
+  | "metadata"
+  | (string & {});
 export const GetUsersDraftsFormatEnum = /*@__PURE__*/ S.String;
 
 export interface GetUsersDraftsRequest {
@@ -1475,7 +1491,8 @@ export type GetUsersMessagesFormatEnum =
   | "minimal"
   | "full"
   | "raw"
-  | "metadata";
+  | "metadata"
+  | (string & {});
 export const GetUsersMessagesFormatEnum = /*@__PURE__*/ S.String;
 
 export interface GetUsersMessagesRequest {
@@ -1711,7 +1728,11 @@ export const SmimeInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SmimeInfo" }) as any as S.Schema<SmimeInfo>;
 
-export type GetUsersThreadsFormatEnum = "full" | "metadata" | "minimal";
+export type GetUsersThreadsFormatEnum =
+  | "full"
+  | "metadata"
+  | "minimal"
+  | (string & {});
 export const GetUsersThreadsFormatEnum = /*@__PURE__*/ S.String;
 
 export interface GetUsersThreadsRequest {
@@ -1820,7 +1841,8 @@ export const VacationSettings = /*@__PURE__*/ S.suspend(() =>
 
 export type ImportUsersMessagesInternalDateSourceEnum =
   | "receivedTime"
-  | "dateHeader";
+  | "dateHeader"
+  | (string & {});
 export const ImportUsersMessagesInternalDateSourceEnum = /*@__PURE__*/ S.String;
 
 export interface ImportUsersMessagesRequest {
@@ -1860,7 +1882,8 @@ export const ImportUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type InsertUsersMessagesInternalDateSourceEnum =
   | "receivedTime"
-  | "dateHeader";
+  | "dateHeader"
+  | (string & {});
 export const InsertUsersMessagesInternalDateSourceEnum = /*@__PURE__*/ S.String;
 
 export interface InsertUsersMessagesRequest {
@@ -1974,7 +1997,8 @@ export type ListUsersHistoryHistoryTypesEnum =
   | "messageAdded"
   | "messageDeleted"
   | "labelAdded"
-  | "labelRemoved";
+  | "labelRemoved"
+  | (string & {});
 export const ListUsersHistoryHistoryTypesEnum = /*@__PURE__*/ S.String;
 
 export type ListUsersHistoryHistoryTypesEnumList =
@@ -3136,10 +3160,16 @@ export const VerifyUsersSettingsSendAsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "VerifyUsersSettingsSendAsResponse",
 }) as any as S.Schema<VerifyUsersSettingsSendAsResponse>;
 
-export type WatchRequestLabelFilterActionEnum = "include" | "exclude";
+export type WatchRequestLabelFilterActionEnum =
+  | "include"
+  | "exclude"
+  | (string & {});
 export const WatchRequestLabelFilterActionEnum = /*@__PURE__*/ S.String;
 
-export type WatchRequestLabelFilterBehaviorEnum = "include" | "exclude";
+export type WatchRequestLabelFilterBehaviorEnum =
+  | "include"
+  | "exclude"
+  | (string & {});
 export const WatchRequestLabelFilterBehaviorEnum = /*@__PURE__*/ S.String;
 
 /** Set up or update a new push notification watch on this user's mailbox. */

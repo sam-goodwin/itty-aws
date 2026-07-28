@@ -126,7 +126,8 @@ export const CheckAvailabilityProjectsLocationsIpamAdminScopesRequest =
 export type IpamAdminScopeAvailabilityAvailabilityEnum =
   | "AVAILABILITY_UNSPECIFIED"
   | "AVAILABLE"
-  | "UNAVAILABLE";
+  | "UNAVAILABLE"
+  | (string & {});
 export const IpamAdminScopeAvailabilityAvailabilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -346,7 +347,8 @@ export const CreateProjectsLocationsCustomRangesRequest =
 export type IpamAdminScopeEnabledAddonPlatformsItemEnum =
   | "ADD_ON_PLATFORM_UNSPECIFIED"
   | "COMPUTE_ENGINE"
-  | "GCE";
+  | "GCE"
+  | (string & {});
 export const IpamAdminScopeEnabledAddonPlatformsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -369,7 +371,8 @@ export type IpamAdminScopeStateEnum =
   | "DISABLED"
   | "DELETION_COMPLETED"
   | "CLEANUP_IN_PROGRESS"
-  | "READY_FOR_DELETION";
+  | "READY_FOR_DELETION"
+  | (string & {});
 export const IpamAdminScopeStateEnum = /*@__PURE__*/ S.String;
 
 /** An IpamAdminScope defines the administrative boundary for IP address discovery and management. It configures which platforms and organizational scopes are enabled for IP tracking. */
@@ -434,7 +437,8 @@ export const CreateProjectsLocationsIpamAdminScopesRequest =
 export type RealmManagementTypeEnum =
   | "MANAGEMENT_TYPE_UNSPECIFIED"
   | "CNR"
-  | "USER";
+  | "USER"
+  | (string & {});
 export const RealmManagementTypeEnum = /*@__PURE__*/ S.String;
 
 /** Aggregated data for the Realm. */
@@ -458,7 +462,8 @@ export type RealmTrafficTypeEnum =
   | "UNSET"
   | "INTERNET"
   | "PRIVATE"
-  | "LINKLOCAL";
+  | "LINKLOCAL"
+  | (string & {});
 export const RealmTrafficTypeEnum = /*@__PURE__*/ S.String;
 
 export type DiscoveryMetadataStateEnum =
@@ -466,7 +471,8 @@ export type DiscoveryMetadataStateEnum =
   | "INVALID"
   | "EXISTS"
   | "DOES_NOT_EXIST"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const DiscoveryMetadataStateEnum = /*@__PURE__*/ S.String;
 
 /** Metadata about a discovered resource, tracking event times, state, and source information. */
@@ -503,7 +509,11 @@ export const DiscoveryMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiscoveryMetadata",
 }) as any as S.Schema<DiscoveryMetadata>;
 
-export type RealmIpVersionEnum = "IP_VERSION_UNSPECIFIED" | "IPV4" | "IPV6";
+export type RealmIpVersionEnum =
+  | "IP_VERSION_UNSPECIFIED"
+  | "IPV4"
+  | "IPV6"
+  | (string & {});
 export const RealmIpVersionEnum = /*@__PURE__*/ S.String;
 
 /** A Realm represents a distinct network domain or security zone. It groups Ranges that share the same traffic and management characteristics. All the ranges in a Realm are routable to each other, meaning that they cannot overlap. */
@@ -1059,7 +1069,8 @@ export type GetProjectsLocationsRealmsViewEnum =
   | "REALM_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL"
-  | "AGGREGATE";
+  | "AGGREGATE"
+  | (string & {});
 export const GetProjectsLocationsRealmsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsRealmsRequest {
@@ -1087,7 +1098,8 @@ export type GetProjectsLocationsRegistryBooksViewEnum =
   | "REGISTRY_BOOK_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL"
-  | "AGGREGATE";
+  | "AGGREGATE"
+  | (string & {});
 export const GetProjectsLocationsRegistryBooksViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsRegistryBooksRequest {
@@ -1389,7 +1401,8 @@ export type ListProjectsLocationsRealmsViewEnum =
   | "REALM_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL"
-  | "AGGREGATE";
+  | "AGGREGATE"
+  | (string & {});
 export const ListProjectsLocationsRealmsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsRealmsRequest {
@@ -1453,7 +1466,8 @@ export type ListProjectsLocationsRegistryBooksViewEnum =
   | "REGISTRY_BOOK_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL"
-  | "AGGREGATE";
+  | "AGGREGATE"
+  | (string & {});
 export const ListProjectsLocationsRegistryBooksViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -1631,7 +1645,8 @@ export const PatchProjectsLocationsRegistryBooksRequest =
 export type SearchIpResourcesRequestSearchResourceTypesItemEnum =
   | "SEARCH_RESOURCE_TYPE_UNSPECIFIED"
   | "RANGES"
-  | "REALMS";
+  | "REALMS"
+  | (string & {});
 export const SearchIpResourcesRequestSearchResourceTypesItemEnum =
   /*@__PURE__*/ S.String;
 

@@ -70,7 +70,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -78,7 +79,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -324,7 +326,8 @@ export const ActionsList = /*@__PURE__*/ S.suspend(() =>
 export type AlertRuleKind =
   | "Scheduled"
   | "MicrosoftSecurityIncidentCreation"
-  | "Fusion";
+  | "Fusion"
+  | (string & {});
 export const AlertRuleKind = /*@__PURE__*/ S.String;
 
 export interface AlertRulesCreateOrUpdateRequest {
@@ -673,10 +676,10 @@ export const AlertRuleTemplatesList = /*@__PURE__*/ S.suspend(() =>
   identifier: "AlertRuleTemplatesList",
 }) as any as S.Schema<AlertRuleTemplatesList>;
 
-export type TriggersOn = "Incidents" | "Alerts";
+export type TriggersOn = "Incidents" | "Alerts" | (string & {});
 export const TriggersOn = /*@__PURE__*/ S.String;
 
-export type TriggersWhen = "Created" | "Updated";
+export type TriggersWhen = "Created" | "Updated" | (string & {});
 export const TriggersWhen = /*@__PURE__*/ S.String;
 
 export type ConditionType =
@@ -684,7 +687,8 @@ export type ConditionType =
   | "PropertyArray"
   | "PropertyChanged"
   | "PropertyArrayChanged"
-  | "Boolean";
+  | "Boolean"
+  | (string & {});
 export const ConditionType = /*@__PURE__*/ S.String;
 
 /** Describes an automation rule condition. */
@@ -731,7 +735,11 @@ export const AutomationRuleTriggeringLogic = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AutomationRuleTriggeringLogic>;
 
 /** The type of the automation rule action. */
-export type ActionType = "ModifyProperties" | "RunPlaybook" | "AddIncidentTask";
+export type ActionType =
+  | "ModifyProperties"
+  | "RunPlaybook"
+  | "AddIncidentTask"
+  | (string & {});
 export const ActionType = /*@__PURE__*/ S.String;
 
 /** Describes an automation rule action. */
@@ -1082,7 +1090,12 @@ export const BookmarkPropertiesInputLabelsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BookmarkPropertiesInputLabelsList>;
 
 /** The severity of the incident */
-export type IncidentSeverity = "High" | "Medium" | "Low" | "Informational";
+export type IncidentSeverity =
+  | "High"
+  | "Medium"
+  | "Low"
+  | "Informational"
+  | (string & {});
 export const IncidentSeverity = /*@__PURE__*/ S.String;
 
 /** Describes related incident information for the bookmark */
@@ -1449,11 +1462,11 @@ export const BookmarkList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BookmarkList" }) as any as S.Schema<BookmarkList>;
 
 /** The package kind */
-export type PackageKind = "Solution" | "Standalone";
+export type PackageKind = "Solution" | "Standalone" | (string & {});
 export const PackageKind = /*@__PURE__*/ S.String;
 
 /** The boolean value the metadata is for. */
-export type Flag = "true" | "false";
+export type Flag = "true" | "false" | (string & {});
 export const Flag = /*@__PURE__*/ S.String;
 
 /** Source type of the content */
@@ -1461,7 +1474,8 @@ export type SourceKind =
   | "LocalWorkspace"
   | "Community"
   | "Solution"
-  | "SourceRepository";
+  | "SourceRepository"
+  | (string & {});
 export const SourceKind = /*@__PURE__*/ S.String;
 
 /** The original source of the content item, where it comes from. */
@@ -1499,7 +1513,7 @@ export const MetadataAuthor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetadataAuthor" }) as any as S.Schema<MetadataAuthor>;
 
 /** Type of support for content item */
-export type SupportTier = "Microsoft" | "Partner" | "Community";
+export type SupportTier = "Microsoft" | "Partner" | "Community" | (string & {});
 export const SupportTier = /*@__PURE__*/ S.String;
 
 /** Support information for the content item. */
@@ -1546,11 +1560,12 @@ export type Kind =
   | "ResourcesDataConnector"
   | "Notebook"
   | "Standalone"
-  | "SummaryRule";
+  | "SummaryRule"
+  | (string & {});
 export const Kind = /*@__PURE__*/ S.String;
 
 /** Operator used for list of dependencies in criteria array. */
-export type MetadataDependencyOperator = "AND" | "OR";
+export type MetadataDependencyOperator = "AND" | "OR" | (string & {});
 export const MetadataDependencyOperator = /*@__PURE__*/ S.String;
 
 /** This is the list of dependencies we must fulfill, according to the AND/OR operator */
@@ -2471,7 +2486,7 @@ export const TemplateList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TemplateList" }) as any as S.Schema<TemplateList>;
 
 /** The kind of the data connector definitions */
-export type DataConnectorDefinitionKind = "Customizable";
+export type DataConnectorDefinitionKind = "Customizable" | (string & {});
 export const DataConnectorDefinitionKind = /*@__PURE__*/ S.String;
 
 export interface DataConnectorDefinitionsCreateOrUpdateRequest {
@@ -2718,7 +2733,8 @@ export type DataConnectorKind =
   | "MicrosoftDefenderAdvancedThreatProtection"
   | "MicrosoftThreatIntelligence"
   | "PremiumMicrosoftDefenderForThreatIntelligence"
-  | "RestApiPoller";
+  | "RestApiPoller"
+  | (string & {});
 export const DataConnectorKind = /*@__PURE__*/ S.String;
 
 export interface DataConnectorsCreateOrUpdateRequest {
@@ -3561,7 +3577,7 @@ export const RelationList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RelationList" }) as any as S.Schema<RelationList>;
 
 /** The status of the incident */
-export type IncidentStatus = "New" | "Active" | "Closed";
+export type IncidentStatus = "New" | "Active" | "Closed" | (string & {});
 export const IncidentStatus = /*@__PURE__*/ S.String;
 
 /** The reason the incident was closed */
@@ -3569,7 +3585,8 @@ export type IncidentClassification =
   | "Undetermined"
   | "TruePositive"
   | "BenignPositive"
-  | "FalsePositive";
+  | "FalsePositive"
+  | (string & {});
 export const IncidentClassification = /*@__PURE__*/ S.String;
 
 /** The classification reason the incident was closed with */
@@ -3577,11 +3594,12 @@ export type IncidentClassificationReason =
   | "SuspiciousActivity"
   | "SuspiciousButExpected"
   | "IncorrectAlertLogic"
-  | "InaccurateData";
+  | "InaccurateData"
+  | (string & {});
 export const IncidentClassificationReason = /*@__PURE__*/ S.String;
 
 /** The type of the owner the hunt is assigned to. */
-export type OwnerType = "Unknown" | "User" | "Group";
+export type OwnerType = "Unknown" | "User" | "Group" | (string & {});
 export const OwnerType = /*@__PURE__*/ S.String;
 
 /** Information on the user an incident is assigned to */
@@ -3610,7 +3628,7 @@ export const IncidentOwnerInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IncidentOwnerInfo>;
 
 /** The type of the label */
-export type IncidentLabelType = "User" | "AutoAssigned";
+export type IncidentLabelType = "User" | "AutoAssigned" | (string & {});
 export const IncidentLabelType = /*@__PURE__*/ S.String;
 
 /** Represents an incident label */
@@ -3741,7 +3759,8 @@ export type AttackTactic =
   | "Impact"
   | "PreAttack"
   | "ImpairProcessControl"
-  | "InhibitResponseFunction";
+  | "InhibitResponseFunction"
+  | (string & {});
 export const AttackTactic = /*@__PURE__*/ S.String;
 
 /** The tactics associated with incident */
@@ -4105,7 +4124,8 @@ export type EntityKindEnum =
   | "MailCluster"
   | "MailMessage"
   | "Mailbox"
-  | "SubmissionMail";
+  | "SubmissionMail"
+  | (string & {});
 export const EntityKindEnum = /*@__PURE__*/ S.String;
 
 /** A bag of custom fields that should be part of the entity and will be presented to the user. */
@@ -4118,7 +4138,7 @@ export const SecurityAlertPropertiesAdditionalDataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SecurityAlertPropertiesAdditionalDataMap>;
 
 /** The confidence level of this alert. */
-export type ConfidenceLevel = "Unknown" | "Low" | "High";
+export type ConfidenceLevel = "Unknown" | "Low" | "High" | (string & {});
 export const ConfidenceLevel = /*@__PURE__*/ S.String;
 
 /** confidence reason item */
@@ -4151,7 +4171,8 @@ export type ConfidenceScoreStatus =
   | "NotApplicable"
   | "InProcess"
   | "NotFinal"
-  | "Final";
+  | "Final"
+  | (string & {});
 export const ConfidenceScoreStatus = /*@__PURE__*/ S.String;
 
 /** The intent of the alert. */
@@ -4169,7 +4190,8 @@ export type KillChainIntent =
   | "Collection"
   | "Exfiltration"
   | "CommandAndControl"
-  | "Impact";
+  | "Impact"
+  | (string & {});
 export const KillChainIntent = /*@__PURE__*/ S.String;
 
 /** Manual action items to take to remediate the alert. */
@@ -4180,7 +4202,12 @@ export const SecurityAlertPropertiesRemediationStepsList =
   ) as any as S.Schema<SecurityAlertPropertiesRemediationStepsList>;
 
 /** The severity of the alert */
-export type AlertSeverity = "High" | "Medium" | "Low" | "Informational";
+export type AlertSeverity =
+  | "High"
+  | "Medium"
+  | "Low"
+  | "Informational"
+  | (string & {});
 export const AlertSeverity = /*@__PURE__*/ S.String;
 
 /** The lifecycle status of the alert. */
@@ -4189,7 +4216,8 @@ export type AlertStatus =
   | "New"
   | "Resolved"
   | "Dismissed"
-  | "InProgress";
+  | "InProgress"
+  | (string & {});
 export const AlertStatus = /*@__PURE__*/ S.String;
 
 /** The tactics of the alert */
@@ -4621,7 +4649,7 @@ export const IncidentsRunPlaybookResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IncidentsRunPlaybookResponse>;
 
 /** The status of the task */
-export type IncidentTaskStatus = "New" | "Completed";
+export type IncidentTaskStatus = "New" | "Completed" | (string & {});
 export const IncidentTaskStatus = /*@__PURE__*/ S.String;
 
 /** Describes the properties of an incident task */
@@ -6039,7 +6067,7 @@ export const ProductTemplateList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductTemplateList>;
 
 /** The kind of security ML analytics settings */
-export type SecurityMLAnalyticsSettingsKind = "Anomaly";
+export type SecurityMLAnalyticsSettingsKind = "Anomaly" | (string & {});
 export const SecurityMLAnalyticsSettingsKind = /*@__PURE__*/ S.String;
 
 export interface SecurityMLAnalyticsSettingsCreateOrUpdateRequest {
@@ -6515,7 +6543,7 @@ export const SentinelOnboardingStatesList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SentinelOnboardingStatesList>;
 
 /** The kind of repository access credentials */
-export type RepositoryAccessKind = "OAuth" | "PAT" | "App";
+export type RepositoryAccessKind = "OAuth" | "PAT" | "App" | (string & {});
 export const RepositoryAccessKind = /*@__PURE__*/ S.String;
 
 /** Credentials to access repository. */
@@ -6635,7 +6663,7 @@ export const RepoList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoList" }) as any as S.Schema<RepoList>;
 
 /** The type of repository. */
-export type RepoType = "Github" | "AzureDevOps";
+export type RepoType = "Github" | "AzureDevOps" | (string & {});
 export const RepoType = /*@__PURE__*/ S.String;
 
 /** The content type of a source control path. */
@@ -6645,7 +6673,8 @@ export type ContentType =
   | "HuntingQuery"
   | "Parser"
   | "Playbook"
-  | "Workbook";
+  | "Workbook"
+  | (string & {});
 export const ContentType = /*@__PURE__*/ S.String;
 
 /** Array of source control content types. */
@@ -6781,7 +6810,7 @@ export const SourceControlsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SourceControlsCreateRequest>;
 
 /** The version of the source control. */
-export type Version = "V1" | "V2";
+export type Version = "V1" | "V2" | (string & {});
 export const Version = /*@__PURE__*/ S.String;
 
 /** Array of source control content types. */
@@ -6927,7 +6956,11 @@ export const RepositoryResourceInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepositoryResourceInfo>;
 
 /** Status while trying to fetch the deployment information. */
-export type DeploymentFetchStatus = "Success" | "Unauthorized" | "NotFound";
+export type DeploymentFetchStatus =
+  | "Success"
+  | "Unauthorized"
+  | "NotFound"
+  | (string & {});
 export const DeploymentFetchStatus = /*@__PURE__*/ S.String;
 
 /** The current state of the deployment. */
@@ -6935,11 +6968,16 @@ export type DeploymentState =
   | "In_Progress"
   | "Completed"
   | "Queued"
-  | "Canceling";
+  | "Canceling"
+  | (string & {});
 export const DeploymentState = /*@__PURE__*/ S.String;
 
 /** Status while trying to fetch the deployment information. */
-export type DeploymentResult = "Success" | "Canceled" | "Failed";
+export type DeploymentResult =
+  | "Success"
+  | "Canceled"
+  | "Failed"
+  | (string & {});
 export const DeploymentResult = /*@__PURE__*/ S.String;
 
 /** Description about a deployment. */
@@ -6983,7 +7021,7 @@ export const DeploymentInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeploymentInfo" }) as any as S.Schema<DeploymentInfo>;
 
 /** Status of the pull request. */
-export type PullRequestState = "Open" | "Closed";
+export type PullRequestState = "Open" | "Closed" | (string & {});
 export const PullRequestState = /*@__PURE__*/ S.String;
 
 /** Information regarding pull request for protected branches. */
@@ -7113,7 +7151,8 @@ export type WarningCode =
   | "SourceControlWarning_DeletePipelineFromAzureDevOps"
   | "SourceControlWarning_DeleteWorkflowAndSecretFromGitHub"
   | "SourceControlWarning_DeleteRoleAssignment"
-  | "SourceControl_DeletedWithWarnings";
+  | "SourceControl_DeletedWithWarnings"
+  | (string & {});
 export const WarningCode = /*@__PURE__*/ S.String;
 
 export type WarningBodyDetailsList = ReadonlyArray<WarningBody>;
@@ -7325,7 +7364,7 @@ export const ThreatIntelligenceIndicatorAppendTagsResponse =
   }) as any as S.Schema<ThreatIntelligenceIndicatorAppendTagsResponse>;
 
 /** The kind of the threat intelligence entity */
-export type ThreatIntelligenceResourceInnerKind = "indicator";
+export type ThreatIntelligenceResourceInnerKind = "indicator" | (string & {});
 export const ThreatIntelligenceResourceInnerKind = /*@__PURE__*/ S.String;
 
 /** List of tags */
@@ -7996,7 +8035,8 @@ export const ThreatIntelligenceMetricsList = /*@__PURE__*/ S.suspend(() =>
 export type ThreatIntelligenceSortingOrder =
   | "unsorted"
   | "ascending"
-  | "descending";
+  | "descending"
+  | (string & {});
 export const ThreatIntelligenceSortingOrder = /*@__PURE__*/ S.String;
 
 /** List of available columns for sorting */
@@ -8614,7 +8654,7 @@ export const WatchlistItemList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WatchlistItemList>;
 
 /** The sourceType of the watchlist */
-export type SourceType = "Local" | "AzureStorage";
+export type SourceType = "Local" | "AzureStorage" | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
 
 /** List of labels relevant to this watchlist */
@@ -8744,7 +8784,8 @@ export type WatchlistProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const WatchlistProvisioningState = /*@__PURE__*/ S.String;
 
 /** Describes watchlist properties */

@@ -91,7 +91,8 @@ export type GoogleAdsSearchads360V0Resources__CustomColumnRenderTypeEnum =
   | "MONEY"
   | "STRING"
   | "BOOLEAN"
-  | "DATE";
+  | "DATE"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__CustomColumnRenderTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -102,7 +103,8 @@ export type GoogleAdsSearchads360V0Resources__CustomColumnValueTypeEnum =
   | "INT64"
   | "DOUBLE"
   | "BOOLEAN"
-  | "DATE";
+  | "DATE"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__CustomColumnValueTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -175,7 +177,8 @@ export type GoogleAdsSearchads360V0Resources__SearchAds360FieldCategoryEnum =
   | "RESOURCE"
   | "ATTRIBUTE"
   | "SEGMENT"
-  | "METRIC";
+  | "METRIC"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__SearchAds360FieldCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -192,7 +195,8 @@ export type GoogleAdsSearchads360V0Resources__SearchAds360FieldDataTypeEnum =
   | "MESSAGE"
   | "RESOURCE_NAME"
   | "STRING"
-  | "UINT64";
+  | "UINT64"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__SearchAds360FieldDataTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -328,7 +332,8 @@ export type GoogleAdsSearchads360V0Services__SearchSearchAds360RequestSummaryRow
     | "UNKNOWN"
     | "NO_SUMMARY_ROW"
     | "SUMMARY_ROW_WITH_RESULTS"
-    | "SUMMARY_ROW_ONLY";
+    | "SUMMARY_ROW_ONLY"
+    | (string & {});
 export const GoogleAdsSearchads360V0Services__SearchSearchAds360RequestSummaryRowSettingEnum =
   /*@__PURE__*/ S.String;
 
@@ -415,7 +420,8 @@ export type GoogleAdsSearchads360V0Resources__CampaignAssetSetStatusEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "ENABLED"
-  | "REMOVED";
+  | "REMOVED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__CampaignAssetSetStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -528,7 +534,8 @@ export type GoogleAdsSearchads360V0Resources__CustomerAssetSetStatusEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "ENABLED"
-  | "REMOVED";
+  | "REMOVED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__CustomerAssetSetStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -564,7 +571,8 @@ export type GoogleAdsSearchads360V0Resources__AssetEngineStatusEnum =
   | "SERVING_LIMITED"
   | "DISAPPROVED"
   | "DISABLED"
-  | "REMOVED";
+  | "REMOVED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__AssetEngineStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -602,7 +610,8 @@ export type GoogleAdsSearchads360V0Common__ImageAssetMimeTypeEnum =
   | "RTF"
   | "AUDIO_WAV"
   | "AUDIO_MP3"
-  | "HTML5_AD_ZIP";
+  | "HTML5_AD_ZIP"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__ImageAssetMimeTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -648,7 +657,8 @@ export type GoogleAdsSearchads360V0Common__AdScheduleInfoStartMinuteEnum =
   | "ZERO"
   | "FIFTEEN"
   | "THIRTY"
-  | "FORTY_FIVE";
+  | "FORTY_FIVE"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__AdScheduleInfoStartMinuteEnum =
   /*@__PURE__*/ S.String;
 
@@ -661,7 +671,8 @@ export type GoogleAdsSearchads360V0Common__AdScheduleInfoDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__AdScheduleInfoDayOfWeekEnum =
   /*@__PURE__*/ S.String;
 
@@ -671,7 +682,8 @@ export type GoogleAdsSearchads360V0Common__AdScheduleInfoEndMinuteEnum =
   | "ZERO"
   | "FIFTEEN"
   | "THIRTY"
-  | "FORTY_FIVE";
+  | "FORTY_FIVE"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__AdScheduleInfoEndMinuteEnum =
   /*@__PURE__*/ S.String;
 
@@ -805,7 +817,8 @@ export type GoogleAdsSearchads360V0Resources__AssetTypeEnum =
   | "DYNAMIC_LOCAL"
   | "DYNAMIC_JOBS"
   | "LOCATION"
-  | "HOTEL_PROPERTY";
+  | "HOTEL_PROPERTY"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__AssetTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -855,7 +868,8 @@ export type GoogleAdsSearchads360V0Resources__AssetStatusEnum =
   | "ENABLED"
   | "REMOVED"
   | "ARCHIVED"
-  | "PENDING_SYSTEM_GENERATED";
+  | "PENDING_SYSTEM_GENERATED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__AssetStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -863,7 +877,8 @@ export type GoogleAdsSearchads360V0Common__MobileAppAssetAppStoreEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "APPLE_APP_STORE"
-  | "GOOGLE_APP_STORE";
+  | "GOOGLE_APP_STORE"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__MobileAppAssetAppStoreEnum =
   /*@__PURE__*/ S.String;
 
@@ -914,7 +929,7 @@ export const GoogleAdsSearchads360V0Common__BusinessProfileLocationList =
   ) as any as S.Schema<GoogleAdsSearchads360V0Common__BusinessProfileLocationList>;
 
 export type GoogleAdsSearchads360V0Common__UnifiedLocationAssetLocationOwnershipTypeEnum =
-  "UNSPECIFIED" | "UNKNOWN" | "BUSINESS_OWNER" | "AFFILIATE";
+  "UNSPECIFIED" | "UNKNOWN" | "BUSINESS_OWNER" | "AFFILIATE" | (string & {});
 export const GoogleAdsSearchads360V0Common__UnifiedLocationAssetLocationOwnershipTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -961,7 +976,8 @@ export type GoogleAdsSearchads360V0Common__CallToActionAssetCallToActionEnum =
   | "SEE_MORE"
   | "START_NOW"
   | "VISIT_SITE"
-  | "WATCH_NOW";
+  | "WATCH_NOW"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__CallToActionAssetCallToActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -986,7 +1002,8 @@ export type GoogleAdsSearchads360V0Common__UnifiedCallAssetCallConversionReporti
     | "UNKNOWN"
     | "DISABLED"
     | "USE_ACCOUNT_LEVEL_CALL_CONVERSION_ACTION"
-    | "USE_RESOURCE_LEVEL_CALL_CONVERSION_ACTION";
+    | "USE_RESOURCE_LEVEL_CALL_CONVERSION_ACTION"
+    | (string & {});
 export const GoogleAdsSearchads360V0Common__UnifiedCallAssetCallConversionReportingStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1163,7 +1180,8 @@ export type GoogleAdsSearchads360V0Resources__AssetGroupAdStrengthEnum =
   | "POOR"
   | "AVERAGE"
   | "GOOD"
-  | "EXCELLENT";
+  | "EXCELLENT"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__AssetGroupAdStrengthEnum =
   /*@__PURE__*/ S.String;
 
@@ -1172,7 +1190,8 @@ export type GoogleAdsSearchads360V0Resources__AssetGroupStatusEnum =
   | "UNKNOWN"
   | "ENABLED"
   | "PAUSED"
-  | "REMOVED";
+  | "REMOVED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__AssetGroupStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -1227,17 +1246,18 @@ export type GoogleAdsSearchads360V0Resources__ConversionCustomVariableCardinalit
     | "BELOW_ALL_LIMITS"
     | "EXCEEDS_SEGMENTATION_LIMIT_BUT_NOT_STATS_LIMIT"
     | "APPROACHES_STATS_LIMIT"
-    | "EXCEEDS_STATS_LIMIT";
+    | "EXCEEDS_STATS_LIMIT"
+    | (string & {});
 export const GoogleAdsSearchads360V0Resources__ConversionCustomVariableCardinalityEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V0Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfoFloodlightVariableTypeEnum =
-  "UNSPECIFIED" | "UNKNOWN" | "DIMENSION" | "METRIC" | "UNSET";
+  "UNSPECIFIED" | "UNKNOWN" | "DIMENSION" | "METRIC" | "UNSET" | (string & {});
 export const GoogleAdsSearchads360V0Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfoFloodlightVariableTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V0Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfoFloodlightVariableDataTypeEnum =
-  "UNSPECIFIED" | "UNKNOWN" | "NUMBER" | "STRING";
+  "UNSPECIFIED" | "UNKNOWN" | "NUMBER" | "STRING" | (string & {});
 export const GoogleAdsSearchads360V0Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfoFloodlightVariableDataTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1264,12 +1284,17 @@ export const GoogleAdsSearchads360V0Resources_ConversionCustomVariable_Floodligh
   }) as any as S.Schema<GoogleAdsSearchads360V0Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfo>;
 
 export type GoogleAdsSearchads360V0Resources__ConversionCustomVariableFamilyEnum =
-  "UNSPECIFIED" | "UNKNOWN" | "STANDARD" | "FLOODLIGHT";
+  "UNSPECIFIED" | "UNKNOWN" | "STANDARD" | "FLOODLIGHT" | (string & {});
 export const GoogleAdsSearchads360V0Resources__ConversionCustomVariableFamilyEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V0Resources__ConversionCustomVariableStatusEnum =
-  "UNSPECIFIED" | "UNKNOWN" | "ACTIVATION_NEEDED" | "ENABLED" | "PAUSED";
+    | "UNSPECIFIED"
+    | "UNKNOWN"
+    | "ACTIVATION_NEEDED"
+    | "ENABLED"
+    | "PAUSED"
+    | (string & {});
 export const GoogleAdsSearchads360V0Resources__ConversionCustomVariableStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -1423,7 +1448,8 @@ export type GoogleAdsSearchads360V0Resources__BiddingStrategyStatusEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "ENABLED"
-  | "REMOVED";
+  | "REMOVED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__BiddingStrategyStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -1490,7 +1516,8 @@ export type GoogleAdsSearchads360V0Common__TargetImpressionShareLocationEnum =
   | "UNKNOWN"
   | "ANYWHERE_ON_PAGE"
   | "TOP_OF_PAGE"
-  | "ABSOLUTE_TOP_OF_PAGE";
+  | "ABSOLUTE_TOP_OF_PAGE"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__TargetImpressionShareLocationEnum =
   /*@__PURE__*/ S.String;
 
@@ -1535,7 +1562,8 @@ export type GoogleAdsSearchads360V0Resources__BiddingStrategyTypeEnum =
   | "TARGET_IMPRESSION_SHARE"
   | "TARGET_OUTRANK_SHARE"
   | "TARGET_ROAS"
-  | "TARGET_SPEND";
+  | "TARGET_SPEND"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__BiddingStrategyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1705,7 +1733,8 @@ export type GoogleAdsSearchads360V0Resources__ConversionAssetFieldTypeEnum =
   | "HOTEL_PROPERTY"
   | "DISCOVERY_CAROUSEL_CARD"
   | "LONG_DESCRIPTION"
-  | "CALL_TO_ACTION";
+  | "CALL_TO_ACTION"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__ConversionAssetFieldTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1713,7 +1742,8 @@ export type GoogleAdsSearchads360V0Resources__ConversionProductChannelEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "ONLINE"
-  | "LOCAL";
+  | "LOCAL"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__ConversionProductChannelEnum =
   /*@__PURE__*/ S.String;
 
@@ -1721,7 +1751,8 @@ export type GoogleAdsSearchads360V0Resources__ConversionAttributionTypeEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "VISIT"
-  | "CRITERION_AD";
+  | "CRITERION_AD"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__ConversionAttributionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1729,7 +1760,8 @@ export type GoogleAdsSearchads360V0Resources__ConversionStatusEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "ENABLED"
-  | "REMOVED";
+  | "REMOVED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__ConversionStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -1871,7 +1903,8 @@ export type GoogleAdsSearchads360V0Resources__CustomerAccountStatusEnum =
   | "PAUSED"
   | "SUSPENDED"
   | "REMOVED"
-  | "DRAFT";
+  | "DRAFT"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__CustomerAccountStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -1885,7 +1918,8 @@ export type GoogleAdsSearchads360V0Resources__CustomerAccountLevelEnum =
   | "CLIENT_ACCOUNT_ENGINE_TRACK"
   | "MANAGER"
   | "SUB_MANAGER"
-  | "ASSOCIATE_MANAGER";
+  | "ASSOCIATE_MANAGER"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__CustomerAccountLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -1916,7 +1950,8 @@ export type GoogleAdsSearchads360V0Resources__ConversionTrackingSettingConversio
     | "NOT_CONVERSION_TRACKED"
     | "CONVERSION_TRACKING_MANAGED_BY_SELF"
     | "CONVERSION_TRACKING_MANAGED_BY_THIS_MANAGER"
-    | "CONVERSION_TRACKING_MANAGED_BY_ANOTHER_MANAGER";
+    | "CONVERSION_TRACKING_MANAGED_BY_ANOTHER_MANAGER"
+    | (string & {});
 export const GoogleAdsSearchads360V0Resources__ConversionTrackingSettingConversionTrackingStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -1964,7 +1999,8 @@ export type GoogleAdsSearchads360V0Resources__CustomerAccountTypeEnum =
   | "GOOGLE_ADS"
   | "MICROSOFT"
   | "SEARCH_ADS_360"
-  | "YAHOO_JAPAN";
+  | "YAHOO_JAPAN"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__CustomerAccountTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1974,7 +2010,8 @@ export type GoogleAdsSearchads360V0Resources__CustomerStatusEnum =
   | "ENABLED"
   | "CANCELED"
   | "SUSPENDED"
-  | "CLOSED";
+  | "CLOSED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__CustomerStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -2138,7 +2175,8 @@ export type GoogleAdsSearchads360V0Resources__LabelStatusEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "ENABLED"
-  | "REMOVED";
+  | "REMOVED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__LabelStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -2173,7 +2211,8 @@ export type GoogleAdsSearchads360V0Resources__AssetGroupAssetStatusEnum =
   | "UNKNOWN"
   | "ENABLED"
   | "REMOVED"
-  | "PAUSED";
+  | "PAUSED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__AssetGroupAssetStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -2209,7 +2248,8 @@ export type GoogleAdsSearchads360V0Resources__AssetGroupAssetFieldTypeEnum =
   | "HOTEL_PROPERTY"
   | "DISCOVERY_CAROUSEL_CARD"
   | "LONG_DESCRIPTION"
-  | "CALL_TO_ACTION";
+  | "CALL_TO_ACTION"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__AssetGroupAssetFieldTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2270,7 +2310,8 @@ export type GoogleAdsSearchads360V0Resources__GeoTargetConstantStatusEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "ENABLED"
-  | "REMOVAL_PLANNED";
+  | "REMOVAL_PLANNED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__GeoTargetConstantStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -2312,7 +2353,7 @@ export const GoogleAdsSearchads360V0Resources__GeoTargetConstant =
   }) as any as S.Schema<GoogleAdsSearchads360V0Resources__GeoTargetConstant>;
 
 export type GoogleAdsSearchads360V0Resources__ProductBiddingCategoryConstantStatusEnum =
-  "UNSPECIFIED" | "UNKNOWN" | "ACTIVE" | "OBSOLETE";
+  "UNSPECIFIED" | "UNKNOWN" | "ACTIVE" | "OBSOLETE" | (string & {});
 export const GoogleAdsSearchads360V0Resources__ProductBiddingCategoryConstantStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -2323,7 +2364,8 @@ export type GoogleAdsSearchads360V0Resources__ProductBiddingCategoryConstantLeve
     | "LEVEL2"
     | "LEVEL3"
     | "LEVEL4"
-    | "LEVEL5";
+    | "LEVEL5"
+    | (string & {});
 export const GoogleAdsSearchads360V0Resources__ProductBiddingCategoryConstantLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -2371,7 +2413,8 @@ export type GoogleAdsSearchads360V0Common__FinalAppUrlOsTypeEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "IOS"
-  | "ANDROID";
+  | "ANDROID"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__FinalAppUrlOsTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2479,7 +2522,8 @@ export type GoogleAdsSearchads360V0Resources__AdTypeEnum =
   | "SMART_CAMPAIGN_AD"
   | "APP_PRE_REGISTRATION_AD"
   | "TRAVEL_AD"
-  | "MULTIMEDIA_AD";
+  | "MULTIMEDIA_AD"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__AdTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2644,7 +2688,8 @@ export type GoogleAdsSearchads360V0Resources__AdGroupAdStatusEnum =
   | "UNKNOWN"
   | "ENABLED"
   | "PAUSED"
-  | "REMOVED";
+  | "REMOVED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__AdGroupAdStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -2667,7 +2712,8 @@ export type GoogleAdsSearchads360V0Resources__AdGroupAdEngineStatusEnum =
   | "AD_GROUP_AD_SERVING"
   | "AD_GROUP_AD_ACCOUNT_PAUSED"
   | "AD_GROUP_AD_CAMPAIGN_PAUSED"
-  | "AD_GROUP_AD_AD_GROUP_PAUSED";
+  | "AD_GROUP_AD_AD_GROUP_PAUSED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__AdGroupAdEngineStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -2748,7 +2794,8 @@ export type GoogleAdsSearchads360V0Common__AssetUsageServedAssetFieldTypeEnum =
   | "HEADLINE_AS_SITELINK_POSITION_ONE"
   | "HEADLINE_AS_SITELINK_POSITION_TWO"
   | "DESCRIPTION_LINE_HEADLINE_AS_SITELINK_POSITION_ONE"
-  | "DESCRIPTION_LINE_HEADLINE_AS_SITELINK_POSITION_TWO";
+  | "DESCRIPTION_LINE_HEADLINE_AS_SITELINK_POSITION_TWO"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__AssetUsageServedAssetFieldTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2826,7 +2873,8 @@ export type GoogleAdsSearchads360V0Resources__AdGroupAssetSetStatusEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "ENABLED"
-  | "REMOVED";
+  | "REMOVED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__AdGroupAssetSetStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -2860,7 +2908,8 @@ export type GoogleAdsSearchads360V0Resources__AdGroupStatusEnum =
   | "UNKNOWN"
   | "ENABLED"
   | "PAUSED"
-  | "REMOVED";
+  | "REMOVED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__AdGroupStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -2868,7 +2917,8 @@ export type GoogleAdsSearchads360V0Resources__AdGroupAdRotationModeEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "OPTIMIZE"
-  | "ROTATE_FOREVER";
+  | "ROTATE_FOREVER"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__AdGroupAdRotationModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2882,7 +2932,8 @@ export type GoogleAdsSearchads360V0Common__TargetRestrictionTargetingDimensionEn
     | "AGE_RANGE"
     | "PLACEMENT"
     | "PARENTAL_STATUS"
-    | "INCOME_RANGE";
+    | "INCOME_RANGE"
+    | (string & {});
 export const GoogleAdsSearchads360V0Common__TargetRestrictionTargetingDimensionEnum =
   /*@__PURE__*/ S.String;
 
@@ -2947,7 +2998,8 @@ export type GoogleAdsSearchads360V0Resources__AdGroupTypeEnum =
   | "VIDEO_RESPONSIVE"
   | "VIDEO_EFFICIENT_REACH"
   | "SMART_CAMPAIGN_ADS"
-  | "TRAVEL_ADS";
+  | "TRAVEL_ADS"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__AdGroupTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2962,7 +3014,8 @@ export type GoogleAdsSearchads360V0Resources__AdGroupEngineStatusEnum =
   | "AD_GROUP_SERVING"
   | "AD_GROUP_SUBMITTED"
   | "CAMPAIGN_PAUSED"
-  | "ACCOUNT_PAUSED";
+  | "ACCOUNT_PAUSED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__AdGroupEngineStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -3047,7 +3100,8 @@ export type GoogleAdsSearchads360V0Common__DeviceInfoTypeEnum =
   | "TABLET"
   | "DESKTOP"
   | "CONNECTED_TV"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__DeviceInfoTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3167,7 +3221,8 @@ export type GoogleAdsSearchads360V0Resources__CampaignCriterionTypeEnum =
   | "LOCAL_SERVICE_ID"
   | "BRAND"
   | "BRAND_LIST"
-  | "LIFE_EVENT";
+  | "LIFE_EVENT"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__CampaignCriterionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3194,7 +3249,8 @@ export type GoogleAdsSearchads360V0Common__AgeRangeInfoTypeEnum =
   | "AGE_RANGE_45_54"
   | "AGE_RANGE_55_64"
   | "AGE_RANGE_65_UP"
-  | "AGE_RANGE_UNDETERMINED";
+  | "AGE_RANGE_UNDETERMINED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__AgeRangeInfoTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3217,7 +3273,8 @@ export type GoogleAdsSearchads360V0Common__KeywordInfoMatchTypeEnum =
   | "UNKNOWN"
   | "EXACT"
   | "PHRASE"
-  | "BROAD";
+  | "BROAD"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__KeywordInfoMatchTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3247,7 +3304,8 @@ export type GoogleAdsSearchads360V0Common__WebpageConditionInfoOperandEnum =
   | "CATEGORY"
   | "PAGE_TITLE"
   | "PAGE_CONTENT"
-  | "CUSTOM_LABEL";
+  | "CUSTOM_LABEL"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__WebpageConditionInfoOperandEnum =
   /*@__PURE__*/ S.String;
 
@@ -3255,7 +3313,8 @@ export type GoogleAdsSearchads360V0Common__WebpageConditionInfoOperatorEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "EQUALS"
-  | "CONTAINS";
+  | "CONTAINS"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__WebpageConditionInfoOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -3317,7 +3376,8 @@ export type GoogleAdsSearchads360V0Common__GenderInfoTypeEnum =
   | "UNKNOWN"
   | "MALE"
   | "FEMALE"
-  | "UNDETERMINED";
+  | "UNDETERMINED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__GenderInfoTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3340,7 +3400,8 @@ export type GoogleAdsSearchads360V0Common__LocationGroupInfoRadiusUnitsEnum =
   | "UNKNOWN"
   | "METERS"
   | "MILES"
-  | "MILLI_MILES";
+  | "MILLI_MILES"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__LocationGroupInfoRadiusUnitsEnum =
   /*@__PURE__*/ S.String;
 
@@ -3374,7 +3435,8 @@ export type GoogleAdsSearchads360V0Resources__CampaignCriterionStatusEnum =
   | "UNKNOWN"
   | "ENABLED"
   | "PAUSED"
-  | "REMOVED";
+  | "REMOVED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__CampaignCriterionStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -3450,7 +3512,8 @@ export type GoogleAdsSearchads360V0Resources__AssetSetAssetStatusEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "ENABLED"
-  | "REMOVED";
+  | "REMOVED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__AssetSetAssetStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -3485,7 +3548,8 @@ export type GoogleAdsSearchads360V0Resources__CustomerClientStatusEnum =
   | "ENABLED"
   | "CANCELED"
   | "SUSPENDED"
-  | "CLOSED";
+  | "CLOSED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__CustomerClientStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -3539,12 +3603,17 @@ export const GoogleAdsSearchads360V0Resources__CustomerClient =
   }) as any as S.Schema<GoogleAdsSearchads360V0Resources__CustomerClient>;
 
 export type GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilterTypeEnum =
-  "UNSPECIFIED" | "UNKNOWN" | "SUBDIVISION" | "UNIT_INCLUDED" | "UNIT_EXCLUDED";
+    | "UNSPECIFIED"
+    | "UNKNOWN"
+    | "SUBDIVISION"
+    | "UNIT_INCLUDED"
+    | "UNIT_EXCLUDED"
+    | (string & {});
 export const GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilterTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilterVerticalEnum =
-  "UNSPECIFIED" | "UNKNOWN" | "SHOPPING";
+  "UNSPECIFIED" | "UNKNOWN" | "SHOPPING" | (string & {});
 export const GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilterVerticalEnum =
   /*@__PURE__*/ S.String;
 
@@ -3555,7 +3624,8 @@ export type GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Product
     | "INDEX1"
     | "INDEX2"
     | "INDEX3"
-    | "INDEX4";
+    | "INDEX4"
+    | (string & {});
 export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductCustomAttributeIndexEnum =
   /*@__PURE__*/ S.String;
 
@@ -3601,7 +3671,8 @@ export type GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Product
     | "LEVEL2"
     | "LEVEL3"
     | "LEVEL4"
-    | "LEVEL5";
+    | "LEVEL5"
+    | (string & {});
 export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductTypeLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -3626,7 +3697,7 @@ export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Produc
   }) as any as S.Schema<GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductType>;
 
 export type GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductChannelChannelEnum =
-  "UNSPECIFIED" | "UNKNOWN" | "ONLINE" | "LOCAL";
+  "UNSPECIFIED" | "UNKNOWN" | "ONLINE" | "LOCAL" | (string & {});
 export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductChannelChannelEnum =
   /*@__PURE__*/ S.String;
 
@@ -3648,7 +3719,7 @@ export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Produc
   }) as any as S.Schema<GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductChannel>;
 
 export type GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductConditionConditionEnum =
-  "UNSPECIFIED" | "UNKNOWN" | "NEW" | "REFURBISHED" | "USED";
+  "UNSPECIFIED" | "UNKNOWN" | "NEW" | "REFURBISHED" | "USED" | (string & {});
 export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductConditionConditionEnum =
   /*@__PURE__*/ S.String;
 
@@ -3676,7 +3747,8 @@ export type GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Product
     | "LEVEL2"
     | "LEVEL3"
     | "LEVEL4"
-    | "LEVEL5";
+    | "LEVEL5"
+    | (string & {});
 export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductBiddingCategoryLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -3834,12 +3906,13 @@ export type GoogleAdsSearchads360V0Resources__CampaignBudgetPeriodEnum =
   | "UNKNOWN"
   | "DAILY"
   | "FIXED_DAILY"
-  | "CUSTOM_PERIOD";
+  | "CUSTOM_PERIOD"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__CampaignBudgetPeriodEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V0Resources__CampaignBudgetDeliveryMethodEnum =
-  "UNSPECIFIED" | "UNKNOWN" | "STANDARD" | "ACCELERATED";
+  "UNSPECIFIED" | "UNKNOWN" | "STANDARD" | "ACCELERATED" | (string & {});
 export const GoogleAdsSearchads360V0Resources__CampaignBudgetDeliveryMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -3892,7 +3965,8 @@ export type GoogleAdsSearchads360V0Common__SegmentsVerticalAdsVerticalEnum =
   | "RENTAL_CARS"
   | "EVENTS"
   | "THINGS_TO_DO"
-  | "FLIGHTS";
+  | "FLIGHTS"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__SegmentsVerticalAdsVerticalEnum =
   /*@__PURE__*/ S.String;
 
@@ -3920,7 +3994,8 @@ export type GoogleAdsSearchads360V0Common__SegmentsDeviceEnum =
   | "TABLET"
   | "DESKTOP"
   | "CONNECTED_TV"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__SegmentsDeviceEnum =
   /*@__PURE__*/ S.String;
 
@@ -3948,7 +4023,8 @@ export type GoogleAdsSearchads360V0Common__SegmentsConversionActionCategoryEnum 
     | "STORE_VISIT"
     | "STORE_SALE"
     | "QUALIFIED_LEAD"
-    | "CONVERTED_LEAD";
+    | "CONVERTED_LEAD"
+    | (string & {});
 export const GoogleAdsSearchads360V0Common__SegmentsConversionActionCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -3960,7 +4036,8 @@ export type GoogleAdsSearchads360V0Common__SegmentsAdNetworkTypeEnum =
   | "CONTENT"
   | "YOUTUBE_SEARCH"
   | "YOUTUBE_WATCH"
-  | "MIXED";
+  | "MIXED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__SegmentsAdNetworkTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4001,7 +4078,8 @@ export type GoogleAdsSearchads360V0Common__SegmentsAdFormatTypeEnum =
   | "UNKNOWN"
   | "VERTICAL_ADS_PROMOTION"
   | "VERTICAL_ADS_BOOKING_LINK"
-  | "TEXT";
+  | "TEXT"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__SegmentsAdFormatTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4031,12 +4109,17 @@ export type GoogleAdsSearchads360V0Common__SegmentsDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__SegmentsDayOfWeekEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V0Common__SegmentsProductChannelExclusivityEnum =
-  "UNSPECIFIED" | "UNKNOWN" | "SINGLE_CHANNEL" | "MULTI_CHANNEL";
+    | "UNSPECIFIED"
+    | "UNKNOWN"
+    | "SINGLE_CHANNEL"
+    | "MULTI_CHANNEL"
+    | (string & {});
 export const GoogleAdsSearchads360V0Common__SegmentsProductChannelExclusivityEnum =
   /*@__PURE__*/ S.String;
 
@@ -4044,7 +4127,8 @@ export type GoogleAdsSearchads360V0Common__SegmentsProductChannelEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "ONLINE"
-  | "LOCAL";
+  | "LOCAL"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__SegmentsProductChannelEnum =
   /*@__PURE__*/ S.String;
 
@@ -4054,7 +4138,8 @@ export type GoogleAdsSearchads360V0Common__SegmentsProductConditionEnum =
   | "OLD"
   | "NEW"
   | "REFURBISHED"
-  | "USED";
+  | "USED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__SegmentsProductConditionEnum =
   /*@__PURE__*/ S.String;
 
@@ -4064,7 +4149,8 @@ export type GoogleAdsSearchads360V0Common__SegmentsProductSoldConditionEnum =
   | "OLD"
   | "NEW"
   | "REFURBISHED"
-  | "USED";
+  | "USED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__SegmentsProductSoldConditionEnum =
   /*@__PURE__*/ S.String;
 
@@ -4329,7 +4415,8 @@ export type GoogleAdsSearchads360V0Common__ListingGroupInfoTypeEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "SUBDIVISION"
-  | "UNIT";
+  | "UNIT"
+  | (string & {});
 export const GoogleAdsSearchads360V0Common__ListingGroupInfoTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4352,7 +4439,8 @@ export type GoogleAdsSearchads360V0Resources__AdGroupCriterionStatusEnum =
   | "UNKNOWN"
   | "ENABLED"
   | "PAUSED"
-  | "REMOVED";
+  | "REMOVED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__AdGroupCriterionStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -4396,7 +4484,8 @@ export type GoogleAdsSearchads360V0Resources__AdGroupCriterionTypeEnum =
   | "LOCAL_SERVICE_ID"
   | "BRAND"
   | "BRAND_LIST"
-  | "LIFE_EVENT";
+  | "LIFE_EVENT"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__AdGroupCriterionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4450,7 +4539,8 @@ export type GoogleAdsSearchads360V0Resources__AdGroupCriterionEngineStatusEnum =
     | "AD_GROUP_CRITERION_APPROVED"
     | "AD_GROUP_CRITERION_DISAPPROVED"
     | "AD_GROUP_CRITERION_SERVING"
-    | "AD_GROUP_CRITERION_ACCOUNT_PAUSED";
+    | "AD_GROUP_CRITERION_ACCOUNT_PAUSED"
+    | (string & {});
 export const GoogleAdsSearchads360V0Resources__AdGroupCriterionEngineStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -4592,7 +4682,8 @@ export type GoogleAdsSearchads360V0Resources__CustomerAssetStatusEnum =
   | "UNKNOWN"
   | "ENABLED"
   | "REMOVED"
-  | "PAUSED";
+  | "PAUSED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__CustomerAssetStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -4650,7 +4741,8 @@ export type GoogleAdsSearchads360V0Resources__VisitAssetFieldTypeEnum =
   | "HOTEL_PROPERTY"
   | "DISCOVERY_CAROUSEL_CARD"
   | "LONG_DESCRIPTION"
-  | "CALL_TO_ACTION";
+  | "CALL_TO_ACTION"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__VisitAssetFieldTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4658,7 +4750,8 @@ export type GoogleAdsSearchads360V0Resources__VisitProductChannelEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "ONLINE"
-  | "LOCAL";
+  | "LOCAL"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__VisitProductChannelEnum =
   /*@__PURE__*/ S.String;
 
@@ -4790,7 +4883,8 @@ export type GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetImp
     | "UNKNOWN"
     | "ANYWHERE_ON_PAGE"
     | "TOP_OF_PAGE"
-    | "ABSOLUTE_TOP_OF_PAGE";
+    | "ABSOLUTE_TOP_OF_PAGE"
+    | (string & {});
 export const GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetImpressionShareLocationEnum =
   /*@__PURE__*/ S.String;
 
@@ -4851,7 +4945,8 @@ export type GoogleAdsSearchads360V0Resources__AccessibleBiddingStrategyTypeEnum 
     | "TARGET_IMPRESSION_SHARE"
     | "TARGET_OUTRANK_SHARE"
     | "TARGET_ROAS"
-    | "TARGET_SPEND";
+    | "TARGET_SPEND"
+    | (string & {});
 export const GoogleAdsSearchads360V0Resources__AccessibleBiddingStrategyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4935,7 +5030,8 @@ export type GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOpt
     | "UNKNOWN"
     | "CALL_CLICKS"
     | "DRIVING_DIRECTIONS"
-    | "APP_PRE_REGISTRATION";
+    | "APP_PRE_REGISTRATION"
+    | (string & {});
 export const GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -4968,7 +5064,8 @@ export type GoogleAdsSearchads360V0Resources__CampaignStatusEnum =
   | "UNKNOWN"
   | "ENABLED"
   | "PAUSED"
-  | "REMOVED";
+  | "REMOVED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__CampaignStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -4994,7 +5091,8 @@ export type GoogleAdsSearchads360V0Resources__CampaignAdvertisingChannelSubTypeE
     | "APP_CAMPAIGN_FOR_PRE_REGISTRATION"
     | "VIDEO_REACH_TARGET_FREQUENCY"
     | "TRAVEL_ACTIVITIES"
-    | "SOCIAL_FACEBOOK_TRACKING_ONLY";
+    | "SOCIAL_FACEBOOK_TRACKING_ONLY"
+    | (string & {});
 export const GoogleAdsSearchads360V0Resources__CampaignAdvertisingChannelSubTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5039,7 +5137,8 @@ export type GoogleAdsSearchads360V0Resources__CampaignFeedTypesItemEnum =
   | "CHAIN_DYNAMIC_LOCATION_GROUP"
   | "STATIC_LOCATION_GROUP"
   | "HOTEL_PROPERTY"
-  | "TRAVEL_FEED";
+  | "TRAVEL_FEED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__CampaignFeedTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -5098,7 +5197,8 @@ export type GoogleAdsSearchads360V0Resources__CampaignBiddingStrategyTypeEnum =
   | "TARGET_IMPRESSION_SHARE"
   | "TARGET_OUTRANK_SHARE"
   | "TARGET_ROAS"
-  | "TARGET_SPEND";
+  | "TARGET_SPEND"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__CampaignBiddingStrategyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5129,7 +5229,8 @@ export type GoogleAdsSearchads360V0Resources__CampaignBiddingStrategySystemStatu
     | "MULTIPLE_LEARNING"
     | "MULTIPLE_LIMITED"
     | "MULTIPLE_MISCONFIGURED"
-    | "MULTIPLE";
+    | "MULTIPLE"
+    | (string & {});
 export const GoogleAdsSearchads360V0Resources__CampaignBiddingStrategySystemStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -5146,12 +5247,17 @@ export type GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSettingPositi
     | "UNKNOWN"
     | "PRESENCE_OR_INTEREST"
     | "SEARCH_INTEREST"
-    | "PRESENCE";
+    | "PRESENCE"
+    | (string & {});
 export const GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSettingPositiveGeoTargetTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSettingNegativeGeoTargetTypeEnum =
-  "UNSPECIFIED" | "UNKNOWN" | "PRESENCE_OR_INTEREST" | "PRESENCE";
+    | "UNSPECIFIED"
+    | "UNKNOWN"
+    | "PRESENCE_OR_INTEREST"
+    | "PRESENCE"
+    | (string & {});
 export const GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSettingNegativeGeoTargetTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5221,7 +5327,8 @@ export type GoogleAdsSearchads360V0Resources__CampaignAdvertisingChannelTypeEnum
     | "LOCAL_SERVICES"
     | "DISCOVERY"
     | "TRAVEL"
-    | "SOCIAL";
+    | "SOCIAL"
+    | (string & {});
 export const GoogleAdsSearchads360V0Resources__CampaignAdvertisingChannelTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5297,7 +5404,8 @@ export type GoogleAdsSearchads360V0Resources__CampaignServingStatusEnum =
   | "NONE"
   | "ENDED"
   | "PENDING"
-  | "SUSPENDED";
+  | "SUSPENDED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__CampaignServingStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -5308,7 +5416,8 @@ export type GoogleAdsSearchads360V0Resources__CampaignAdServingOptimizationStatu
     | "CONVERSION_OPTIMIZE"
     | "ROTATE"
     | "ROTATE_INDEFINITELY"
-    | "UNAVAILABLE";
+    | "UNAVAILABLE"
+    | (string & {});
 export const GoogleAdsSearchads360V0Resources__CampaignAdServingOptimizationStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -5375,7 +5484,8 @@ export type GoogleAdsSearchads360V0Resources__CampaignExcludedParentAssetFieldTy
     | "HOTEL_PROPERTY"
     | "DISCOVERY_CAROUSEL_CARD"
     | "LONG_DESCRIPTION"
-    | "CALL_TO_ACTION";
+    | "CALL_TO_ACTION"
+    | (string & {});
 export const GoogleAdsSearchads360V0Resources__CampaignExcludedParentAssetFieldTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -5581,17 +5691,33 @@ export const GoogleAdsSearchads360V0Resources__Campaign =
   }) as any as S.Schema<GoogleAdsSearchads360V0Resources__Campaign>;
 
 export type GoogleAdsSearchads360V0Common__MetricsHistoricalCreativeQualityScoreEnum =
-  "UNSPECIFIED" | "UNKNOWN" | "BELOW_AVERAGE" | "AVERAGE" | "ABOVE_AVERAGE";
+    | "UNSPECIFIED"
+    | "UNKNOWN"
+    | "BELOW_AVERAGE"
+    | "AVERAGE"
+    | "ABOVE_AVERAGE"
+    | (string & {});
 export const GoogleAdsSearchads360V0Common__MetricsHistoricalCreativeQualityScoreEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V0Common__MetricsHistoricalLandingPageQualityScoreEnum =
-  "UNSPECIFIED" | "UNKNOWN" | "BELOW_AVERAGE" | "AVERAGE" | "ABOVE_AVERAGE";
+    | "UNSPECIFIED"
+    | "UNKNOWN"
+    | "BELOW_AVERAGE"
+    | "AVERAGE"
+    | "ABOVE_AVERAGE"
+    | (string & {});
 export const GoogleAdsSearchads360V0Common__MetricsHistoricalLandingPageQualityScoreEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnum =
-  "UNSPECIFIED" | "UNKNOWN" | "CLICK" | "ENGAGEMENT" | "VIDEO_VIEW" | "NONE";
+    | "UNSPECIFIED"
+    | "UNKNOWN"
+    | "CLICK"
+    | "ENGAGEMENT"
+    | "VIDEO_VIEW"
+    | "NONE"
+    | (string & {});
 export const GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -5603,7 +5729,12 @@ export const GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnum
   ) as any as S.Schema<GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnumList>;
 
 export type GoogleAdsSearchads360V0Common__MetricsHistoricalSearchPredictedCtrEnum =
-  "UNSPECIFIED" | "UNKNOWN" | "BELOW_AVERAGE" | "AVERAGE" | "ABOVE_AVERAGE";
+    | "UNSPECIFIED"
+    | "UNKNOWN"
+    | "BELOW_AVERAGE"
+    | "AVERAGE"
+    | "ABOVE_AVERAGE"
+    | (string & {});
 export const GoogleAdsSearchads360V0Common__MetricsHistoricalSearchPredictedCtrEnum =
   /*@__PURE__*/ S.String;
 
@@ -5987,7 +6118,8 @@ export type GoogleAdsSearchads360V0Resources__ConversionActionStatusEnum =
   | "UNKNOWN"
   | "ENABLED"
   | "REMOVED"
-  | "HIDDEN";
+  | "HIDDEN"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__ConversionActionStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -6018,7 +6150,8 @@ export type GoogleAdsSearchads360V0Resources_ConversionAction_AttributionModelSe
     | "AVAILABLE"
     | "STALE"
     | "EXPIRED"
-    | "NEVER_GENERATED";
+    | "NEVER_GENERATED"
+    | (string & {});
 export const GoogleAdsSearchads360V0Resources_ConversionAction_AttributionModelSettingsDataDrivenModelStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -6031,7 +6164,8 @@ export type GoogleAdsSearchads360V0Resources_ConversionAction_AttributionModelSe
     | "GOOGLE_SEARCH_ATTRIBUTION_LINEAR"
     | "GOOGLE_SEARCH_ATTRIBUTION_TIME_DECAY"
     | "GOOGLE_SEARCH_ATTRIBUTION_POSITION_BASED"
-    | "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN";
+    | "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN"
+    | (string & {});
 export const GoogleAdsSearchads360V0Resources_ConversionAction_AttributionModelSettingsAttributionModelEnum =
   /*@__PURE__*/ S.String;
 
@@ -6102,7 +6236,8 @@ export type GoogleAdsSearchads360V0Resources__ConversionActionCategoryEnum =
   | "STORE_VISIT"
   | "STORE_SALE"
   | "QUALIFIED_LEAD"
-  | "CONVERTED_LEAD";
+  | "CONVERTED_LEAD"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__ConversionActionCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -6148,7 +6283,8 @@ export type GoogleAdsSearchads360V0Resources__ConversionActionTypeEnum =
   | "UNIVERSAL_ANALYTICS_GOAL"
   | "UNIVERSAL_ANALYTICS_TRANSACTION"
   | "GOOGLE_ANALYTICS_4_CUSTOM"
-  | "GOOGLE_ANALYTICS_4_PURCHASE";
+  | "GOOGLE_ANALYTICS_4_PURCHASE"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__ConversionActionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6228,7 +6364,8 @@ export type GoogleAdsSearchads360V0Resources__CampaignAssetStatusEnum =
   | "UNKNOWN"
   | "ENABLED"
   | "REMOVED"
-  | "PAUSED";
+  | "PAUSED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__CampaignAssetStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -6262,7 +6399,8 @@ export type GoogleAdsSearchads360V0Resources__AdGroupAssetStatusEnum =
   | "UNKNOWN"
   | "ENABLED"
   | "REMOVED"
-  | "PAUSED";
+  | "PAUSED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__AdGroupAssetStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -6322,7 +6460,8 @@ export type GoogleAdsSearchads360V0Resources__UserListTypeEnum =
   | "EXTERNAL_REMARKETING"
   | "RULE_BASED"
   | "SIMILAR"
-  | "CRM_BASED";
+  | "CRM_BASED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__UserListTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6370,7 +6509,8 @@ export type GoogleAdsSearchads360V0Resources__CustomerManagerLinkStatusEnum =
   | "INACTIVE"
   | "PENDING"
   | "REFUSED"
-  | "CANCELED";
+  | "CANCELED"
+  | (string & {});
 export const GoogleAdsSearchads360V0Resources__CustomerManagerLinkStatusEnum =
   /*@__PURE__*/ S.String;
 

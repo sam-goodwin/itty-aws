@@ -35,10 +35,10 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type EventsListRequestFormat = "csv" | "json";
+export type EventsListRequestFormat = "csv" | "json" | (string & {});
 export const EventsListRequestFormat = /*@__PURE__*/ S.String;
 
-export type PropertyGroupOperator = "AND" | "OR";
+export type PropertyGroupOperator = "AND" | "OR" | (string & {});
 export const PropertyGroupOperator = /*@__PURE__*/ S.String;
 
 export type PropertyItemValueCase3Item = string | number;
@@ -78,10 +78,11 @@ export type PropertyItemOperatorEnum =
   | "is_date_after"
   | "is_date_before"
   | "in"
-  | "not_in";
+  | "not_in"
+  | (string & {});
 export const PropertyItemOperatorEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type PropertyItemOperator = PropertyItemOperatorEnum | BlankEnum;
@@ -119,7 +120,8 @@ export type PropertyFilterTypeEnum =
   | "revenue_analytics"
   | "account_custom_property"
   | "flag"
-  | "workflow_variable";
+  | "workflow_variable"
+  | (string & {});
 export const PropertyFilterTypeEnum = /*@__PURE__*/ S.String;
 
 export type PropertyItemType = PropertyFilterTypeEnum | BlankEnum;
@@ -323,7 +325,7 @@ export const PaginatedClickhouseEventList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedClickhouseEventList",
 }) as any as S.Schema<PaginatedClickhouseEventList>;
 
-export type EventsRetrieveRequestFormat = "csv" | "json";
+export type EventsRetrieveRequestFormat = "csv" | "json" | (string & {});
 export const EventsRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface EventsRetrieveRequest {
@@ -366,7 +368,7 @@ export const EventsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventsRetrieveResponse",
 }) as any as S.Schema<EventsRetrieveResponse>;
 
-export type EventsValuesRetrieveRequestFormat = "csv" | "json";
+export type EventsValuesRetrieveRequestFormat = "csv" | "json" | (string & {});
 export const EventsValuesRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface EventsValuesRetrieveRequest {

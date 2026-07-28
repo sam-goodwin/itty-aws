@@ -335,7 +335,8 @@ export type RequestOptionsPriorityEnum =
   | "PRIORITY_UNSPECIFIED"
   | "PRIORITY_LOW"
   | "PRIORITY_MEDIUM"
-  | "PRIORITY_HIGH";
+  | "PRIORITY_HIGH"
+  | (string & {});
 export const RequestOptionsPriorityEnum = /*@__PURE__*/ S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
@@ -635,7 +636,8 @@ export const BatchWriteResponse = /*@__PURE__*/ S.suspend(() =>
 export type ReadWriteReadLockModeEnum =
   | "READ_LOCK_MODE_UNSPECIFIED"
   | "PESSIMISTIC"
-  | "OPTIMISTIC";
+  | "OPTIMISTIC"
+  | (string & {});
 export const ReadWriteReadLockModeEnum = /*@__PURE__*/ S.String;
 
 /** Message type to initiate a read-write transaction. Currently this transaction type has no options. */
@@ -687,7 +689,8 @@ export const ReadOnly = /*@__PURE__*/ S.suspend(() =>
 export type TransactionOptionsIsolationLevelEnum =
   | "ISOLATION_LEVEL_UNSPECIFIED"
   | "SERIALIZABLE"
-  | "REPEATABLE_READ";
+  | "REPEATABLE_READ"
+  | (string & {});
 export const TransactionOptionsIsolationLevelEnum = /*@__PURE__*/ S.String;
 
 /** Options to use for transactions. */
@@ -1073,13 +1076,15 @@ export const CommitStats = /*@__PURE__*/ S.suspend(() =>
 export type CommitResponseIsolationLevelEnum =
   | "ISOLATION_LEVEL_UNSPECIFIED"
   | "SERIALIZABLE"
-  | "REPEATABLE_READ";
+  | "REPEATABLE_READ"
+  | (string & {});
 export const CommitResponseIsolationLevelEnum = /*@__PURE__*/ S.String;
 
 export type CommitResponseReadLockModeEnum =
   | "READ_LOCK_MODE_UNSPECIFIED"
   | "PESSIMISTIC"
-  | "OPTIMISTIC";
+  | "OPTIMISTIC"
+  | (string & {});
 export const CommitResponseReadLockModeEnum = /*@__PURE__*/ S.String;
 
 /** The response for Commit. */
@@ -1112,7 +1117,8 @@ export type CopyBackupEncryptionConfigEncryptionTypeEnum =
   | "ENCRYPTION_TYPE_UNSPECIFIED"
   | "USE_CONFIG_DEFAULT_OR_BACKUP_ENCRYPTION"
   | "GOOGLE_DEFAULT_ENCRYPTION"
-  | "CUSTOMER_MANAGED_ENCRYPTION";
+  | "CUSTOMER_MANAGED_ENCRYPTION"
+  | (string & {});
 export const CopyBackupEncryptionConfigEncryptionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1181,14 +1187,16 @@ export const CopyProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
 export type InstanceConfigConfigTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "GOOGLE_MANAGED"
-  | "USER_MANAGED";
+  | "USER_MANAGED"
+  | (string & {});
 export const InstanceConfigConfigTypeEnum = /*@__PURE__*/ S.String;
 
 export type ReplicaInfoTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "READ_WRITE"
   | "READ_ONLY"
-  | "WITNESS";
+  | "WITNESS"
+  | (string & {});
 export const ReplicaInfoTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ReplicaInfo {
@@ -1215,7 +1223,8 @@ export const ReplicaInfoList = /*@__PURE__*/ S.Array(
 export type InstanceConfigStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
-  | "READY";
+  | "READY"
+  | (string & {});
 export const InstanceConfigStateEnum = /*@__PURE__*/ S.String;
 
 export type InstanceConfigFreeInstanceAvailabilityEnum =
@@ -1223,7 +1232,8 @@ export type InstanceConfigFreeInstanceAvailabilityEnum =
   | "AVAILABLE"
   | "UNSUPPORTED"
   | "DISABLED"
-  | "QUOTA_EXCEEDED";
+  | "QUOTA_EXCEEDED"
+  | (string & {});
 export const InstanceConfigFreeInstanceAvailabilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -1231,7 +1241,8 @@ export type InstanceConfigQuorumTypeEnum =
   | "QUORUM_TYPE_UNSPECIFIED"
   | "REGION"
   | "DUAL_REGION"
-  | "MULTI_REGION";
+  | "MULTI_REGION"
+  | (string & {});
 export const InstanceConfigQuorumTypeEnum = /*@__PURE__*/ S.String;
 
 /** A possible configuration for a Cloud Spanner instance. Configurations define the geographic placement of nodes and their replication. */
@@ -1471,19 +1482,25 @@ export const AutoscalingConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutoscalingConfig",
 }) as any as S.Schema<AutoscalingConfig>;
 
-export type InstanceStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY";
+export type InstanceStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "READY"
+  | (string & {});
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 export type InstanceInstanceTypeEnum =
   | "INSTANCE_TYPE_UNSPECIFIED"
   | "PROVISIONED"
-  | "FREE_INSTANCE";
+  | "FREE_INSTANCE"
+  | (string & {});
 export const InstanceInstanceTypeEnum = /*@__PURE__*/ S.String;
 
 export type FreeInstanceMetadataExpireBehaviorEnum =
   | "EXPIRE_BEHAVIOR_UNSPECIFIED"
   | "FREE_TO_PROVISIONED"
-  | "REMOVE_AFTER_GRACE_PERIOD";
+  | "REMOVE_AFTER_GRACE_PERIOD"
+  | (string & {});
 export const FreeInstanceMetadataExpireBehaviorEnum = /*@__PURE__*/ S.String;
 
 /** Free instance specific metadata that is kept even after an instance has been upgraded for tracking purposes. */
@@ -1509,13 +1526,15 @@ export type InstanceEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "STANDARD"
   | "ENTERPRISE"
-  | "ENTERPRISE_PLUS";
+  | "ENTERPRISE_PLUS"
+  | (string & {});
 export const InstanceEditionEnum = /*@__PURE__*/ S.String;
 
 export type InstanceDefaultBackupScheduleTypeEnum =
   | "DEFAULT_BACKUP_SCHEDULE_TYPE_UNSPECIFIED"
   | "NONE"
-  | "AUTOMATIC";
+  | "AUTOMATIC"
+  | (string & {});
 export const InstanceDefaultBackupScheduleTypeEnum = /*@__PURE__*/ S.String;
 
 /** An isolated set of Cloud Spanner resources on which databases can be hosted. */
@@ -1617,17 +1636,23 @@ export type CreateProjectsInstancesBackupsEncryptionConfig_encryptionTypeEnum =
   | "ENCRYPTION_TYPE_UNSPECIFIED"
   | "USE_DATABASE_ENCRYPTION"
   | "GOOGLE_DEFAULT_ENCRYPTION"
-  | "CUSTOMER_MANAGED_ENCRYPTION";
+  | "CUSTOMER_MANAGED_ENCRYPTION"
+  | (string & {});
 export const CreateProjectsInstancesBackupsEncryptionConfig_encryptionTypeEnum =
   /*@__PURE__*/ S.String;
 
-export type BackupStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY";
+export type BackupStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "READY"
+  | (string & {});
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
 export type EncryptionInfoEncryptionTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "GOOGLE_DEFAULT_ENCRYPTION"
-  | "CUSTOMER_MANAGED_ENCRYPTION";
+  | "CUSTOMER_MANAGED_ENCRYPTION"
+  | (string & {});
 export const EncryptionInfoEncryptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Encryption information for a Cloud Spanner database or backup. */
@@ -1655,7 +1680,8 @@ export const EncryptionInfoList = /*@__PURE__*/ S.Array(
 export type BackupDatabaseDialectEnum =
   | "DATABASE_DIALECT_UNSPECIFIED"
   | "GOOGLE_STANDARD_SQL"
-  | "POSTGRESQL";
+  | "POSTGRESQL"
+  | (string & {});
 export const BackupDatabaseDialectEnum = /*@__PURE__*/ S.String;
 
 /** Instance partition information for the backup. */
@@ -1681,7 +1707,8 @@ export type BackupMinimumRestorableEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "STANDARD"
   | "ENTERPRISE"
-  | "ENTERPRISE_PLUS";
+  | "ENTERPRISE_PLUS"
+  | (string & {});
 export const BackupMinimumRestorableEditionEnum = /*@__PURE__*/ S.String;
 
 /** A backup of a Cloud Spanner database. */
@@ -1809,7 +1836,8 @@ export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
 export type CreateDatabaseRequestDatabaseDialectEnum =
   | "DATABASE_DIALECT_UNSPECIFIED"
   | "GOOGLE_STANDARD_SQL"
-  | "POSTGRESQL";
+  | "POSTGRESQL"
+  | (string & {});
 export const CreateDatabaseRequestDatabaseDialectEnum = /*@__PURE__*/ S.String;
 
 /** The request for CreateDatabase. */
@@ -1893,7 +1921,8 @@ export type CreateBackupEncryptionConfigEncryptionTypeEnum =
   | "ENCRYPTION_TYPE_UNSPECIFIED"
   | "USE_DATABASE_ENCRYPTION"
   | "GOOGLE_DEFAULT_ENCRYPTION"
-  | "CUSTOMER_MANAGED_ENCRYPTION";
+  | "CUSTOMER_MANAGED_ENCRYPTION"
+  | (string & {});
 export const CreateBackupEncryptionConfigEncryptionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2022,7 +2051,8 @@ export const CreateProjectsInstancesDatabasesSessionsRequest =
 export type InstancePartitionStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
-  | "READY";
+  | "READY"
+  | (string & {});
 export const InstancePartitionStateEnum = /*@__PURE__*/ S.String;
 
 /** An isolated set of Cloud Spanner resources that databases can define placements on. */
@@ -2400,7 +2430,8 @@ export type TypeCodeEnum =
   | "PROTO"
   | "ENUM"
   | "INTERVAL"
-  | "UUID";
+  | "UUID"
+  | (string & {});
 export const TypeCodeEnum = /*@__PURE__*/ S.String;
 
 /** Message representing a single field of a struct. */
@@ -2437,7 +2468,8 @@ export type TypeTypeAnnotationEnum =
   | "TYPE_ANNOTATION_CODE_UNSPECIFIED"
   | "PG_NUMERIC"
   | "PG_JSONB"
-  | "PG_OID";
+  | "PG_OID"
+  | (string & {});
 export const TypeTypeAnnotationEnum = /*@__PURE__*/ S.String;
 
 /** `Type` indicates the type of a Cloud Spanner value, as might be stored in a table cell or returned from an SQL query. */
@@ -2557,7 +2589,11 @@ export const ResultSetMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResultSetMetadata",
 }) as any as S.Schema<ResultSetMetadata>;
 
-export type PlanNodeKindEnum = "KIND_UNSPECIFIED" | "RELATIONAL" | "SCALAR";
+export type PlanNodeKindEnum =
+  | "KIND_UNSPECIFIED"
+  | "RELATIONAL"
+  | "SCALAR"
+  | (string & {});
 export const PlanNodeKindEnum = /*@__PURE__*/ S.String;
 
 /** Metadata associated with a parent-child relationship appearing in a PlanNode. */
@@ -2753,7 +2789,8 @@ export type ExecuteSqlRequestQueryModeEnum =
   | "PLAN"
   | "PROFILE"
   | "WITH_STATS"
-  | "WITH_PLAN_AND_STATS";
+  | "WITH_PLAN_AND_STATS"
+  | (string & {});
 export const ExecuteSqlRequestQueryModeEnum = /*@__PURE__*/ S.String;
 
 /** Query optimizer configuration. */
@@ -2773,7 +2810,8 @@ export const QueryOptions = /*@__PURE__*/ S.suspend(() =>
 export type ReplicaSelectionTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "READ_WRITE"
-  | "READ_ONLY";
+  | "READ_ONLY"
+  | (string & {});
 export const ReplicaSelectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** The directed read replica selector. Callers must provide one or more of the following fields for replica selection: * `location` - The location must be one of the regions within the multi-region configuration of your database. * `type` - The type of the replica. Some examples of using replica_selectors are: * `location:us-east1` --> The "us-east1" replica(s) of any available type is used to process the request. * `type:READ_ONLY` --> The "READ_ONLY" type replica(s) in the nearest available location are used to process the request. * `location:us-east1 type:READ_ONLY` --> The "READ_ONLY" type replica(s) in location "us-east1" is used to process the request. */
@@ -3311,10 +3349,14 @@ export type DatabaseStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "READY"
-  | "READY_OPTIMIZING";
+  | "READY_OPTIMIZING"
+  | (string & {});
 export const DatabaseStateEnum = /*@__PURE__*/ S.String;
 
-export type RestoreInfoSourceTypeEnum = "TYPE_UNSPECIFIED" | "BACKUP";
+export type RestoreInfoSourceTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "BACKUP"
+  | (string & {});
 export const RestoreInfoSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about a backup. */
@@ -3354,13 +3396,15 @@ export const RestoreInfo = /*@__PURE__*/ S.suspend(() =>
 export type DatabaseDatabaseDialectEnum =
   | "DATABASE_DIALECT_UNSPECIFIED"
   | "GOOGLE_STANDARD_SQL"
-  | "POSTGRESQL";
+  | "POSTGRESQL"
+  | (string & {});
 export const DatabaseDatabaseDialectEnum = /*@__PURE__*/ S.String;
 
 export type QuorumInfoInitiatorEnum =
   | "INITIATOR_UNSPECIFIED"
   | "GOOGLE"
-  | "USER";
+  | "USER"
+  | (string & {});
 export const QuorumInfoInitiatorEnum = /*@__PURE__*/ S.String;
 
 /** Information about the dual-region quorum. */
@@ -3547,7 +3591,8 @@ export const GetProjectsInstancesOperationsRequest = /*@__PURE__*/ S.suspend(
 export type GetScansProjectsInstancesDatabasesViewEnum =
   | "VIEW_UNSPECIFIED"
   | "SUMMARY"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetScansProjectsInstancesDatabasesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3628,7 +3673,11 @@ export const LocalizedString = /*@__PURE__*/ S.suspend(() =>
   identifier: "LocalizedString",
 }) as any as S.Schema<LocalizedString>;
 
-export type MetricAggregationEnum = "AGGREGATION_UNSPECIFIED" | "MAX" | "SUM";
+export type MetricAggregationEnum =
+  | "AGGREGATION_UNSPECIFIED"
+  | "MAX"
+  | "SUM"
+  | (string & {});
 export const MetricAggregationEnum = /*@__PURE__*/ S.String;
 
 export type DoubleList = ReadonlyArray<number>;
@@ -3701,7 +3750,8 @@ export type ContextValueSeverityEnum =
   | "INFO"
   | "WARNING"
   | "ERROR"
-  | "FATAL";
+  | "FATAL"
+  | (string & {});
 export const ContextValueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** A message representing context for a KeyRangeInfo, including a label, value, unit, and severity. */
@@ -3864,7 +3914,8 @@ export type DiagnosticMessageSeverityEnum =
   | "INFO"
   | "WARNING"
   | "ERROR"
-  | "FATAL";
+  | "FATAL"
+  | (string & {});
 export const DiagnosticMessageSeverityEnum = /*@__PURE__*/ S.String;
 
 /** A message representing the key visualizer diagnostic messages. */
@@ -3900,7 +3951,8 @@ export const DiagnosticMessageList = /*@__PURE__*/ S.Array(
 export type VisualizationDataKeyUnitEnum =
   | "KEY_UNIT_UNSPECIFIED"
   | "KEY"
-  | "CHUNK";
+  | "CHUNK"
+  | (string & {});
 export const VisualizationDataKeyUnitEnum = /*@__PURE__*/ S.String;
 
 export interface VisualizationData {
@@ -4768,7 +4820,11 @@ export const ListProjectsInstancesOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsInstancesOperationsRequest",
 }) as any as S.Schema<ListProjectsInstancesOperationsRequest>;
 
-export type ListScansViewEnum = "VIEW_UNSPECIFIED" | "SUMMARY" | "FULL";
+export type ListScansViewEnum =
+  | "VIEW_UNSPECIFIED"
+  | "SUMMARY"
+  | "FULL"
+  | (string & {});
 export const ListScansViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListScansRequest {
@@ -5234,13 +5290,15 @@ export const PatchProjectsInstancesInstancePartitionsRequest =
 export type ReadRequestOrderByEnum =
   | "ORDER_BY_UNSPECIFIED"
   | "ORDER_BY_PRIMARY_KEY"
-  | "ORDER_BY_NO_ORDER";
+  | "ORDER_BY_NO_ORDER"
+  | (string & {});
 export const ReadRequestOrderByEnum = /*@__PURE__*/ S.String;
 
 export type ReadRequestLockHintEnum =
   | "LOCK_HINT_UNSPECIFIED"
   | "LOCK_HINT_SHARED"
-  | "LOCK_HINT_EXCLUSIVE";
+  | "LOCK_HINT_EXCLUSIVE"
+  | (string & {});
 export const ReadRequestLockHintEnum = /*@__PURE__*/ S.String;
 
 /** The request for Read and StreamingRead. */
@@ -5316,7 +5374,8 @@ export type RestoreDatabaseEncryptionConfigEncryptionTypeEnum =
   | "ENCRYPTION_TYPE_UNSPECIFIED"
   | "USE_CONFIG_DEFAULT_OR_BACKUP_ENCRYPTION"
   | "GOOGLE_DEFAULT_ENCRYPTION"
-  | "CUSTOMER_MANAGED_ENCRYPTION";
+  | "CUSTOMER_MANAGED_ENCRYPTION"
+  | (string & {});
 export const RestoreDatabaseEncryptionConfigEncryptionTypeEnum =
   /*@__PURE__*/ S.String;
 

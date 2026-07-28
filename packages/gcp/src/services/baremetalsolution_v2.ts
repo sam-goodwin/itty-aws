@@ -63,7 +63,8 @@ export class NotFound extends T.applyErrorMatchers(
 export type AllowedClientMountPermissionsEnum =
   | "MOUNT_PERMISSIONS_UNSPECIFIED"
   | "READ"
-  | "READ_WRITE";
+  | "READ_WRITE"
+  | (string & {});
 export const AllowedClientMountPermissionsEnum = /*@__PURE__*/ S.String;
 
 /** Represents an 'access point' for the share. */
@@ -108,13 +109,15 @@ export type NfsShareStateEnum =
   | "PROVISIONED"
   | "CREATING"
   | "UPDATING"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const NfsShareStateEnum = /*@__PURE__*/ S.String;
 
 export type NfsShareStorageTypeEnum =
   | "STORAGE_TYPE_UNSPECIFIED"
   | "SSD"
-  | "HDD";
+  | "HDD"
+  | (string & {});
 export const NfsShareStorageTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -242,7 +245,8 @@ export type ProvisioningConfigStateEnum =
   | "PROVISIONED"
   | "VALIDATED"
   | "CANCELLED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ProvisioningConfigStateEnum = /*@__PURE__*/ S.String;
 
 export type NetworkConfigServiceCidrEnum =
@@ -250,7 +254,8 @@ export type NetworkConfigServiceCidrEnum =
   | "DISABLED"
   | "HIGH_26"
   | "HIGH_27"
-  | "HIGH_28";
+  | "HIGH_28"
+  | (string & {});
 export const NetworkConfigServiceCidrEnum = /*@__PURE__*/ S.String;
 
 export type NetworkConfigBandwidthEnum =
@@ -258,10 +263,15 @@ export type NetworkConfigBandwidthEnum =
   | "BW_1_GBPS"
   | "BW_2_GBPS"
   | "BW_5_GBPS"
-  | "BW_10_GBPS";
+  | "BW_10_GBPS"
+  | (string & {});
 export const NetworkConfigBandwidthEnum = /*@__PURE__*/ S.String;
 
-export type NetworkConfigTypeEnum = "TYPE_UNSPECIFIED" | "CLIENT" | "PRIVATE";
+export type NetworkConfigTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "CLIENT"
+  | "PRIVATE"
+  | (string & {});
 export const NetworkConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** A GCP vlan attachment. */
@@ -353,7 +363,11 @@ export const LunRangeList = /*@__PURE__*/ S.Array(
   LunRange,
 ) as any as S.Schema<LunRangeList>;
 
-export type VolumeConfigTypeEnum = "TYPE_UNSPECIFIED" | "FLASH" | "DISK";
+export type VolumeConfigTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "FLASH"
+  | "DISK"
+  | (string & {});
 export const VolumeConfigTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -364,7 +378,8 @@ export const StringList = /*@__PURE__*/ S.Array(
 export type NfsExportPermissionsEnum =
   | "PERMISSIONS_UNSPECIFIED"
   | "READ_ONLY"
-  | "READ_WRITE";
+  | "READ_WRITE"
+  | (string & {});
 export const NfsExportPermissionsEnum = /*@__PURE__*/ S.String;
 
 /** A NFS export entry. */
@@ -404,7 +419,8 @@ export const NfsExportList = /*@__PURE__*/ S.Array(
 export type VolumeConfigProtocolEnum =
   | "PROTOCOL_UNSPECIFIED"
   | "PROTOCOL_FC"
-  | "PROTOCOL_NFS";
+  | "PROTOCOL_NFS"
+  | (string & {});
 export const VolumeConfigProtocolEnum = /*@__PURE__*/ S.String;
 
 export type VolumeConfigPerformanceTierEnum =
@@ -412,7 +428,8 @@ export type VolumeConfigPerformanceTierEnum =
   | "VOLUME_PERFORMANCE_TIER_SHARED"
   | "VOLUME_PERFORMANCE_TIER_ASSIGNED"
   | "VOLUME_PERFORMANCE_TIER_HT"
-  | "VOLUME_PERFORMANCE_TIER_QOS2_PERFORMANCE";
+  | "VOLUME_PERFORMANCE_TIER_QOS2_PERFORMANCE"
+  | (string & {});
 export const VolumeConfigPerformanceTierEnum = /*@__PURE__*/ S.String;
 
 /** Configuration parameters for a new volume. */
@@ -467,7 +484,8 @@ export const VolumeConfigList = /*@__PURE__*/ S.Array(
 export type InstanceConfigNetworkConfigEnum =
   | "NETWORKCONFIG_UNSPECIFIED"
   | "SINGLE_VLAN"
-  | "MULTI_VLAN";
+  | "MULTI_VLAN"
+  | (string & {});
 export const InstanceConfigNetworkConfigEnum = /*@__PURE__*/ S.String;
 
 /** A network. */
@@ -490,7 +508,8 @@ export const NetworkAddress = /*@__PURE__*/ S.suspend(() =>
 export type LogicalNetworkInterfaceNetworkTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "CLIENT"
-  | "PRIVATE";
+  | "PRIVATE"
+  | (string & {});
 export const LogicalNetworkInterfaceNetworkTypeEnum = /*@__PURE__*/ S.String;
 
 /** Each logical network interface is effectively a network and IP pair. */
@@ -730,7 +749,8 @@ export const CreateProjectsLocationsSshKeysRequest = /*@__PURE__*/ S.suspend(
 export type VolumeSnapshotTypeEnum =
   | "SNAPSHOT_TYPE_UNSPECIFIED"
   | "AD_HOC"
-  | "SCHEDULED";
+  | "SCHEDULED"
+  | (string & {});
 export const VolumeSnapshotTypeEnum = /*@__PURE__*/ S.String;
 
 /** A snapshot of a volume. Only boot volumes can have snapshots. */
@@ -1136,15 +1156,21 @@ export type InstanceStateEnum =
   | "UPDATING"
   | "STARTING"
   | "STOPPING"
-  | "SHUTDOWN";
+  | "SHUTDOWN"
+  | (string & {});
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 export type LunMultiprotocolTypeEnum =
   | "MULTIPROTOCOL_TYPE_UNSPECIFIED"
-  | "LINUX";
+  | "LINUX"
+  | (string & {});
 export const LunMultiprotocolTypeEnum = /*@__PURE__*/ S.String;
 
-export type LunStorageTypeEnum = "STORAGE_TYPE_UNSPECIFIED" | "SSD" | "HDD";
+export type LunStorageTypeEnum =
+  | "STORAGE_TYPE_UNSPECIFIED"
+  | "SSD"
+  | "HDD"
+  | (string & {});
 export const LunStorageTypeEnum = /*@__PURE__*/ S.String;
 
 export type LunStateEnum =
@@ -1153,7 +1179,8 @@ export type LunStateEnum =
   | "UPDATING"
   | "READY"
   | "DELETING"
-  | "COOL_OFF";
+  | "COOL_OFF"
+  | (string & {});
 export const LunStateEnum = /*@__PURE__*/ S.String;
 
 /** A storage volume logical unit number (LUN). */
@@ -1206,7 +1233,8 @@ export const LunList = /*@__PURE__*/ S.Array(Lun) as any as S.Schema<LunList>;
 export type VolumeWorkloadProfileEnum =
   | "WORKLOAD_PROFILE_UNSPECIFIED"
   | "GENERIC"
-  | "HANA";
+  | "HANA"
+  | (string & {});
 export const VolumeWorkloadProfileEnum = /*@__PURE__*/ S.String;
 
 export type VolumePerformanceTierEnum =
@@ -1214,7 +1242,8 @@ export type VolumePerformanceTierEnum =
   | "VOLUME_PERFORMANCE_TIER_SHARED"
   | "VOLUME_PERFORMANCE_TIER_ASSIGNED"
   | "VOLUME_PERFORMANCE_TIER_HT"
-  | "VOLUME_PERFORMANCE_TIER_QOS2_PERFORMANCE";
+  | "VOLUME_PERFORMANCE_TIER_QOS2_PERFORMANCE"
+  | (string & {});
 export const VolumePerformanceTierEnum = /*@__PURE__*/ S.String;
 
 /** Details about snapshot space reservation and usage on the storage volume. */
@@ -1239,20 +1268,26 @@ export const SnapshotReservationDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "SnapshotReservationDetail",
 }) as any as S.Schema<SnapshotReservationDetail>;
 
-export type VolumeStorageTypeEnum = "STORAGE_TYPE_UNSPECIFIED" | "SSD" | "HDD";
+export type VolumeStorageTypeEnum =
+  | "STORAGE_TYPE_UNSPECIFIED"
+  | "SSD"
+  | "HDD"
+  | (string & {});
 export const VolumeStorageTypeEnum = /*@__PURE__*/ S.String;
 
 export type VolumeProtocolEnum =
   | "PROTOCOL_UNSPECIFIED"
   | "FIBRE_CHANNEL"
-  | "NFS";
+  | "NFS"
+  | (string & {});
 export const VolumeProtocolEnum = /*@__PURE__*/ S.String;
 
 export type VolumeSnapshotAutoDeleteBehaviorEnum =
   | "SNAPSHOT_AUTO_DELETE_BEHAVIOR_UNSPECIFIED"
   | "DISABLED"
   | "OLDEST_FIRST"
-  | "NEWEST_FIRST";
+  | "NEWEST_FIRST"
+  | (string & {});
 export const VolumeSnapshotAutoDeleteBehaviorEnum = /*@__PURE__*/ S.String;
 
 export type VolumeStateEnum =
@@ -1261,7 +1296,8 @@ export type VolumeStateEnum =
   | "READY"
   | "DELETING"
   | "UPDATING"
-  | "COOL_OFF";
+  | "COOL_OFF"
+  | (string & {});
 export const VolumeStateEnum = /*@__PURE__*/ S.String;
 
 /** A storage volume. */
@@ -1414,7 +1450,11 @@ export const QosPolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QosPolicy" }) as any as S.Schema<QosPolicy>;
 
-export type VRFStateEnum = "STATE_UNSPECIFIED" | "PROVISIONING" | "PROVISIONED";
+export type VRFStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "PROVISIONING"
+  | "PROVISIONED"
+  | (string & {});
 export const VRFStateEnum = /*@__PURE__*/ S.String;
 
 /** VLAN attachment details. */
@@ -1471,7 +1511,11 @@ export const VRF = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VRF" }) as any as S.Schema<VRF>;
 
-export type NetworkTypeEnum = "TYPE_UNSPECIFIED" | "CLIENT" | "PRIVATE";
+export type NetworkTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "CLIENT"
+  | "PRIVATE"
+  | (string & {});
 export const NetworkTypeEnum = /*@__PURE__*/ S.String;
 
 export type NetworkStateEnum =
@@ -1479,7 +1523,8 @@ export type NetworkStateEnum =
   | "PROVISIONING"
   | "PROVISIONED"
   | "DEPROVISIONING"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const NetworkStateEnum = /*@__PURE__*/ S.String;
 
 /** A Network. */
@@ -1549,7 +1594,8 @@ export const NetworkList = /*@__PURE__*/ S.Array(
 export type InstanceWorkloadProfileEnum =
   | "WORKLOAD_PROFILE_UNSPECIFIED"
   | "WORKLOAD_PROFILE_GENERIC"
-  | "WORKLOAD_PROFILE_HANA";
+  | "WORKLOAD_PROFILE_HANA"
+  | (string & {});
 export const InstanceWorkloadProfileEnum = /*@__PURE__*/ S.String;
 
 /** A server. */
@@ -2148,7 +2194,8 @@ export type ProvisioningQuotaAssetTypeEnum =
   | "ASSET_TYPE_UNSPECIFIED"
   | "ASSET_TYPE_SERVER"
   | "ASSET_TYPE_STORAGE"
-  | "ASSET_TYPE_NETWORK";
+  | "ASSET_TYPE_NETWORK"
+  | (string & {});
 export const ProvisioningQuotaAssetTypeEnum = /*@__PURE__*/ S.String;
 
 /** A provisioning quota for a given project. */

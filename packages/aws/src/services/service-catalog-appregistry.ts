@@ -160,13 +160,14 @@ export const AssociateAttributeGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateAttributeGroupResponse",
 }) as any as S.Schema<AssociateAttributeGroupResponse>;
-export type ResourceType = "CFN_STACK" | "RESOURCE_TAG_VALUE";
+export type ResourceType = "CFN_STACK" | "RESOURCE_TAG_VALUE" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export type ResourceSpecifier = string;
 export type AssociationOption =
   | "APPLY_APPLICATION_TAG"
-  | "SKIP_APPLICATION_TAG";
+  | "SKIP_APPLICATION_TAG"
+  | (string & {});
 export const AssociationOption = /*@__PURE__*/ S.String;
 
 export type Options = AssociationOption[];
@@ -548,7 +549,8 @@ export type ResourceGroupState =
   | "CREATE_FAILED"
   | "UPDATING"
   | "UPDATE_COMPLETE"
-  | "UPDATE_FAILED";
+  | "UPDATE_FAILED"
+  | (string & {});
 export const ResourceGroupState = /*@__PURE__*/ S.String;
 
 export interface ResourceGroup {
@@ -610,7 +612,8 @@ export type ResourceItemStatus =
   | "SUCCESS"
   | "FAILED"
   | "IN_PROGRESS"
-  | "SKIPPED";
+  | "SKIPPED"
+  | (string & {});
 export const ResourceItemStatus = /*@__PURE__*/ S.String;
 
 export type GetAssociatedResourceFilter = ResourceItemStatus[];
@@ -675,7 +678,11 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
     integrations: S.optional(ResourceIntegrations),
   }),
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
-export type ApplicationTagStatus = "IN_PROGRESS" | "SUCCESS" | "FAILURE";
+export type ApplicationTagStatus =
+  | "IN_PROGRESS"
+  | "SUCCESS"
+  | "FAILURE"
+  | (string & {});
 export const ApplicationTagStatus = /*@__PURE__*/ S.String;
 
 export type ResourcesListItemErrorMessage = string;
@@ -1121,7 +1128,7 @@ export const SyncResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SyncResourceRequest",
 }) as any as S.Schema<SyncResourceRequest>;
-export type SyncAction = "START_SYNC" | "NO_ACTION";
+export type SyncAction = "START_SYNC" | "NO_ACTION" | (string & {});
 export const SyncAction = /*@__PURE__*/ S.String;
 
 export interface SyncResourceResponse {

@@ -266,13 +266,18 @@ export const CreateAppInstanceAdminResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAppInstanceAdminResponse",
 }) as any as S.Schema<CreateAppInstanceAdminResponse>;
-export type RespondsTo = "STANDARD_MESSAGES";
+export type RespondsTo = "STANDARD_MESSAGES" | (string & {});
 export const RespondsTo = /*@__PURE__*/ S.String;
 
-export type StandardMessages = "AUTO" | "ALL" | "MENTIONS" | "NONE";
+export type StandardMessages =
+  | "AUTO"
+  | "ALL"
+  | "MENTIONS"
+  | "NONE"
+  | (string & {});
 export const StandardMessages = /*@__PURE__*/ S.String;
 
-export type TargetedMessages = "ALL" | "NONE";
+export type TargetedMessages = "ALL" | "NONE" | (string & {});
 export const TargetedMessages = /*@__PURE__*/ S.String;
 
 export interface InvokedBy {
@@ -351,7 +356,7 @@ export const CreateAppInstanceBotResponse = /*@__PURE__*/ S.suspend(() =>
 export type UserId = string | redacted.Redacted<string>;
 export type UserName = string | redacted.Redacted<string>;
 export type ExpirationDays = number;
-export type ExpirationCriterion = "CREATED_TIMESTAMP";
+export type ExpirationCriterion = "CREATED_TIMESTAMP" | (string & {});
 export const ExpirationCriterion = /*@__PURE__*/ S.String;
 
 export interface ExpirationSettings {
@@ -772,7 +777,11 @@ export const DescribeAppInstanceUserEndpointRequest = /*@__PURE__*/ S.suspend(
   identifier: "DescribeAppInstanceUserEndpointRequest",
 }) as any as S.Schema<DescribeAppInstanceUserEndpointRequest>;
 export type SensitiveString1600 = string | redacted.Redacted<string>;
-export type AppInstanceUserEndpointType = "APNS" | "APNS_SANDBOX" | "GCM";
+export type AppInstanceUserEndpointType =
+  | "APNS"
+  | "APNS_SANDBOX"
+  | "GCM"
+  | (string & {});
 export const AppInstanceUserEndpointType = /*@__PURE__*/ S.String;
 
 export type NonEmptySensitiveString1600 = string | redacted.Redacted<string>;
@@ -788,15 +797,16 @@ export const EndpointAttributes = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EndpointAttributes",
 }) as any as S.Schema<EndpointAttributes>;
-export type AllowMessages = "ALL" | "NONE";
+export type AllowMessages = "ALL" | "NONE" | (string & {});
 export const AllowMessages = /*@__PURE__*/ S.String;
 
-export type EndpointStatus = "ACTIVE" | "INACTIVE";
+export type EndpointStatus = "ACTIVE" | "INACTIVE" | (string & {});
 export const EndpointStatus = /*@__PURE__*/ S.String;
 
 export type EndpointStatusReason =
   | "INVALID_DEVICE_TOKEN"
-  | "INVALID_PINPOINT_ARN";
+  | "INVALID_PINPOINT_ARN"
+  | (string & {});
 export const EndpointStatusReason = /*@__PURE__*/ S.String;
 
 export interface EndpointState {
@@ -1536,7 +1546,8 @@ export type ErrorCode =
   | "Unauthorized"
   | "Unprocessable"
   | "VoiceConnectorGroupAssociationsExist"
-  | "PhoneNumberAssociationsExist";
+  | "PhoneNumberAssociationsExist"
+  | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
 
 export type CreateAppInstanceError =

@@ -36,7 +36,11 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 /** * `trusted` - Trusted * `full` - Full * `custom` - Custom */
-export type NetworkAccessLevelEnum = "trusted" | "full" | "custom";
+export type NetworkAccessLevelEnum =
+  | "trusted"
+  | "full"
+  | "custom"
+  | (string & {});
 export const NetworkAccessLevelEnum = /*@__PURE__*/ S.String;
 
 /** Allowed domains for custom network access. */

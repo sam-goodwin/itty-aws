@@ -98,7 +98,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -106,7 +107,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -154,7 +156,8 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted"
-  | "Created";
+  | "Created"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Defines the resource properties. */
@@ -210,7 +213,10 @@ export const AvailabilitySetsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "AvailabilitySetsCreateOrUpdateResponse",
 }) as any as S.Schema<AvailabilitySetsCreateOrUpdateResponse>;
 
-export type AvailabilitySetsDeleteRequestForce = "true" | "false";
+export type AvailabilitySetsDeleteRequestForce =
+  | "true"
+  | "false"
+  | (string & {});
 export const AvailabilitySetsDeleteRequestForce = /*@__PURE__*/ S.String;
 
 export interface AvailabilitySetsDeleteRequest {
@@ -693,7 +699,7 @@ export const CloudsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CloudsCreateOrUpdateResponse",
 }) as any as S.Schema<CloudsCreateOrUpdateResponse>;
 
-export type CloudsDeleteRequestForce = "true" | "false";
+export type CloudsDeleteRequestForce = "true" | "false" | (string & {});
 export const CloudsDeleteRequestForce = /*@__PURE__*/ S.String;
 
 export interface CloudsDeleteRequest {
@@ -1003,7 +1009,11 @@ export const HttpProxyConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HttpProxyConfiguration>;
 
 /** Guest agent provisioning action. */
-export type ProvisioningAction = "install" | "uninstall" | "repair";
+export type ProvisioningAction =
+  | "install"
+  | "uninstall"
+  | "repair"
+  | (string & {});
 export const ProvisioningAction = /*@__PURE__*/ S.String;
 
 /** Defines the resource properties. */
@@ -1247,7 +1257,8 @@ export type InventoryType =
   | "Cloud"
   | "VirtualNetwork"
   | "VirtualMachine"
-  | "VirtualMachineTemplate";
+  | "VirtualMachineTemplate"
+  | (string & {});
 export const InventoryType = /*@__PURE__*/ S.String;
 
 /** Defines the resource properties. */
@@ -1550,11 +1561,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -1698,15 +1709,15 @@ export const OsProfileForVmInstanceInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OsProfileForVmInstanceInput>;
 
 /** Limit CPU for migration. */
-export type LimitCpuForMigration = "true" | "false";
+export type LimitCpuForMigration = "true" | "false" | (string & {});
 export const LimitCpuForMigration = /*@__PURE__*/ S.String;
 
 /** Dynamic memory enabled. */
-export type DynamicMemoryEnabled = "true" | "false";
+export type DynamicMemoryEnabled = "true" | "false" | (string & {});
 export const DynamicMemoryEnabled = /*@__PURE__*/ S.String;
 
 /** Highly available. */
-export type IsHighlyAvailable = "true" | "false";
+export type IsHighlyAvailable = "true" | "false" | (string & {});
 export const IsHighlyAvailable = /*@__PURE__*/ S.String;
 
 /** Defines the resource properties. */
@@ -1741,7 +1752,7 @@ export const HardwareProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HardwareProfile>;
 
 /** Network address allocation method. */
-export type AllocationMethod = "Dynamic" | "Static";
+export type AllocationMethod = "Dynamic" | "Static" | (string & {});
 export const AllocationMethod = /*@__PURE__*/ S.String;
 
 /** Network Interface model */
@@ -1812,7 +1823,7 @@ export const StorageQosPolicyDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageQosPolicyDetails>;
 
 /** Create diff disk. */
-export type CreateDiffDisk = "true" | "false";
+export type CreateDiffDisk = "true" | "false" | (string & {});
 export const CreateDiffDisk = /*@__PURE__*/ S.String;
 
 /** Virtual disk model */
@@ -1977,7 +1988,7 @@ export const VirtualMachineInstancePropertiesAvailabilitySetsList =
   ) as any as S.Schema<VirtualMachineInstancePropertiesAvailabilitySetsList>;
 
 /** Virtual machine operating system type. */
-export type OsType = "Windows" | "Linux" | "Other";
+export type OsType = "Windows" | "Linux" | "Other" | (string & {});
 export const OsType = /*@__PURE__*/ S.String;
 
 /** Defines the resource properties. */
@@ -2302,12 +2313,16 @@ export const VirtualMachineInstancesCreateOrUpdateResponse =
     identifier: "VirtualMachineInstancesCreateOrUpdateResponse",
   }) as any as S.Schema<VirtualMachineInstancesCreateOrUpdateResponse>;
 
-export type VirtualMachineInstancesDeleteRequestForce = "true" | "false";
+export type VirtualMachineInstancesDeleteRequestForce =
+  | "true"
+  | "false"
+  | (string & {});
 export const VirtualMachineInstancesDeleteRequestForce = /*@__PURE__*/ S.String;
 
 export type VirtualMachineInstancesDeleteRequestDeleteFromHost =
   | "true"
-  | "false";
+  | "false"
+  | (string & {});
 export const VirtualMachineInstancesDeleteRequestDeleteFromHost =
   /*@__PURE__*/ S.String;
 
@@ -2576,7 +2591,10 @@ export const VirtualMachineInstancesStartResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VirtualMachineInstancesStartResponse>;
 
 /** Gets or sets a value indicating whether to request non-graceful VM shutdown. True value for this flag indicates non-graceful shutdown whereas false indicates otherwise. Defaults to false. */
-export type VirtualMachineInstancesStopRequestSkipShutdown = "true" | "false";
+export type VirtualMachineInstancesStopRequestSkipShutdown =
+  | "true"
+  | "false"
+  | (string & {});
 export const VirtualMachineInstancesStopRequestSkipShutdown =
   /*@__PURE__*/ S.String;
 
@@ -2920,7 +2938,7 @@ export const VirtualMachineTemplatesCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<VirtualMachineTemplatesCreateOrUpdateResponseTagsMap>;
 
 /** Customizable. */
-export type IsCustomizable = "true" | "false";
+export type IsCustomizable = "true" | "false" | (string & {});
 export const IsCustomizable = /*@__PURE__*/ S.String;
 
 /** Gets the network interfaces of the template. */
@@ -3038,7 +3056,10 @@ export const VirtualMachineTemplatesCreateOrUpdateResponse =
     identifier: "VirtualMachineTemplatesCreateOrUpdateResponse",
   }) as any as S.Schema<VirtualMachineTemplatesCreateOrUpdateResponse>;
 
-export type VirtualMachineTemplatesDeleteRequestForce = "true" | "false";
+export type VirtualMachineTemplatesDeleteRequestForce =
+  | "true"
+  | "false"
+  | (string & {});
 export const VirtualMachineTemplatesDeleteRequestForce = /*@__PURE__*/ S.String;
 
 export interface VirtualMachineTemplatesDeleteRequest {
@@ -3474,7 +3495,10 @@ export const VirtualNetworksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "VirtualNetworksCreateOrUpdateResponse",
 }) as any as S.Schema<VirtualNetworksCreateOrUpdateResponse>;
 
-export type VirtualNetworksDeleteRequestForce = "true" | "false";
+export type VirtualNetworksDeleteRequestForce =
+  | "true"
+  | "false"
+  | (string & {});
 export const VirtualNetworksDeleteRequestForce = /*@__PURE__*/ S.String;
 
 export interface VirtualNetworksDeleteRequest {
@@ -4053,7 +4077,7 @@ export const VmmServersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "VmmServersCreateOrUpdateResponse",
 }) as any as S.Schema<VmmServersCreateOrUpdateResponse>;
 
-export type VmmServersDeleteRequestForce = "true" | "false";
+export type VmmServersDeleteRequestForce = "true" | "false" | (string & {});
 export const VmmServersDeleteRequestForce = /*@__PURE__*/ S.String;
 
 export interface VmmServersDeleteRequest {

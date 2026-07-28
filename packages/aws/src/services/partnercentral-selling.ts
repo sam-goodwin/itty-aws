@@ -188,7 +188,8 @@ export type RelatedEntityType =
   | "Solutions"
   | "AwsProducts"
   | "AwsMarketplaceOffers"
-  | "AwsMarketplaceOfferSets";
+  | "AwsMarketplaceOfferSets"
+  | (string & {});
 export const RelatedEntityType = /*@__PURE__*/ S.String;
 
 export interface AssociateOpportunityRequest {
@@ -229,7 +230,8 @@ export type EngagementContextIdentifier = string;
 export type EngagementContextType =
   | "CustomerProject"
   | "Lead"
-  | "ProspectingResult";
+  | "ProspectingResult"
+  | (string & {});
 export const EngagementContextType = /*@__PURE__*/ S.String;
 
 export type Industry =
@@ -260,7 +262,8 @@ export type Industry =
   | "Transportation and Logistics"
   | "Travel"
   | "Wholesale and Distribution"
-  | "Other";
+  | "Other"
+  | (string & {});
 export const Industry = /*@__PURE__*/ S.String;
 
 export type CompanyName = string | redacted.Redacted<string>;
@@ -514,7 +517,8 @@ export type CountryCode =
   | "EH"
   | "YE"
   | "ZM"
-  | "ZW";
+  | "ZW"
+  | (string & {});
 export const CountryCode = /*@__PURE__*/ S.String;
 
 export interface EngagementCustomer {
@@ -591,7 +595,8 @@ export type MarketSegment =
   | "Large"
   | "Medium"
   | "Small"
-  | "Micro";
+  | "Micro"
+  | (string & {});
 export const MarketSegment = /*@__PURE__*/ S.String;
 
 export interface LeadCustomer {
@@ -940,7 +945,8 @@ export type ReceiverResponsibility =
   | "Services Partner"
   | "Training Partner"
   | "Co-Sell Facilitator"
-  | "Facilitator";
+  | "Facilitator"
+  | (string & {});
 export const ReceiverResponsibility = /*@__PURE__*/ S.String;
 
 export type ReceiverResponsibilityList = ReceiverResponsibility[];
@@ -1116,10 +1122,11 @@ export type CurrencyCode =
   | "YER"
   | "ZAR"
   | "ZMW"
-  | "ZWL";
+  | "ZWL"
+  | (string & {});
 export const CurrencyCode = /*@__PURE__*/ S.String;
 
-export type PaymentFrequency = "Monthly";
+export type PaymentFrequency = "Monthly" | (string & {});
 export const PaymentFrequency = /*@__PURE__*/ S.String;
 
 export type EstimationUrl = string;
@@ -1287,12 +1294,13 @@ export type PrimaryNeedFromAws =
   | "Co-Sell - Technical Consultation"
   | "Co-Sell - Total Cost of Ownership Evaluation"
   | "Co-Sell - Deal Support"
-  | "Co-Sell - Support for Public Tender / RFx";
+  | "Co-Sell - Support for Public Tender / RFx"
+  | (string & {});
 export const PrimaryNeedFromAws = /*@__PURE__*/ S.String;
 
 export type PrimaryNeedsFromAws = PrimaryNeedFromAws[];
 export const PrimaryNeedsFromAws = /*@__PURE__*/ S.Array(PrimaryNeedFromAws);
-export type NationalSecurity = "Yes" | "No";
+export type NationalSecurity = "Yes" | "No" | (string & {});
 export const NationalSecurity = /*@__PURE__*/ S.String;
 
 export type WebsiteUrl = string | redacted.Redacted<string>;
@@ -1367,12 +1375,13 @@ export type DeliveryModel =
   | "Managed Services"
   | "Professional Services"
   | "Resell"
-  | "Other";
+  | "Other"
+  | (string & {});
 export const DeliveryModel = /*@__PURE__*/ S.String;
 
 export type DeliveryModels = DeliveryModel[];
 export const DeliveryModels = /*@__PURE__*/ S.Array(DeliveryModel);
-export type ExpectedContractDurationTerm = "Months";
+export type ExpectedContractDurationTerm = "Months" | (string & {});
 export const ExpectedContractDurationTerm = /*@__PURE__*/ S.String;
 
 export interface ExpectedContractDuration {
@@ -1395,7 +1404,8 @@ export type SalesActivity =
   | "Agreed on solution to Business Problem"
   | "Completed Action Plan"
   | "Finalized Deployment Need"
-  | "SOW Signed";
+  | "SOW Signed"
+  | (string & {});
 export const SalesActivity = /*@__PURE__*/ S.String;
 
 export type SalesActivities = SalesActivity[];
@@ -1411,10 +1421,11 @@ export type CompetitorName =
   | "Microsoft Azure"
   | "Other- Cost Optimization"
   | "No Competition"
-  | "*Other";
+  | "*Other"
+  | (string & {});
 export const CompetitorName = /*@__PURE__*/ S.String;
 
-export type AwsPartition = "aws-eusc";
+export type AwsPartition = "aws-eusc" | (string & {});
 export const AwsPartition = /*@__PURE__*/ S.String;
 
 export interface Project {
@@ -1451,10 +1462,14 @@ export const Project = /*@__PURE__*/ S.suspend(() =>
     AwsPartition: S.optional(AwsPartition),
   }),
 ).annotate({ identifier: "Project" }) as any as S.Schema<Project>;
-export type OpportunityType = "Net New Business" | "Flat Renewal" | "Expansion";
+export type OpportunityType =
+  | "Net New Business"
+  | "Flat Renewal"
+  | "Expansion"
+  | (string & {});
 export const OpportunityType = /*@__PURE__*/ S.String;
 
-export type MarketingSource = "Marketing Activity" | "None";
+export type MarketingSource = "Marketing Activity" | "None" | (string & {});
 export const MarketingSource = /*@__PURE__*/ S.String;
 
 export type UseCases = string[];
@@ -1472,12 +1487,13 @@ export type Channel =
   | "Telemarketing"
   | "TV"
   | "Video"
-  | "Virtual Event";
+  | "Virtual Event"
+  | (string & {});
 export const Channel = /*@__PURE__*/ S.String;
 
 export type Channels = Channel[];
 export const Channels = /*@__PURE__*/ S.Array(Channel);
-export type AwsFundingUsed = "Yes" | "No";
+export type AwsFundingUsed = "Yes" | "No" | (string & {});
 export const AwsFundingUsed = /*@__PURE__*/ S.String;
 
 export interface Marketing {
@@ -1496,7 +1512,11 @@ export const Marketing = /*@__PURE__*/ S.suspend(() =>
     AwsFundingUsed: S.optional(AwsFundingUsed),
   }),
 ).annotate({ identifier: "Marketing" }) as any as S.Schema<Marketing>;
-export type RevenueModel = "Contract" | "Pay-as-you-go" | "Subscription";
+export type RevenueModel =
+  | "Contract"
+  | "Pay-as-you-go"
+  | "Subscription"
+  | (string & {});
 export const RevenueModel = /*@__PURE__*/ S.String;
 
 export interface MonetaryValue {
@@ -1529,7 +1549,8 @@ export type Stage =
   | "Business Validation"
   | "Committed"
   | "Launched"
-  | "Closed Lost";
+  | "Closed Lost"
+  | (string & {});
 export const Stage = /*@__PURE__*/ S.String;
 
 export type ClosedLostReason =
@@ -1551,7 +1572,8 @@ export type ClosedLostReason =
   | "Other"
   | "People/Relationship/Governance"
   | "Product/Technology"
-  | "Financial/Commercial";
+  | "Financial/Commercial"
+  | (string & {});
 export const ClosedLostReason = /*@__PURE__*/ S.String;
 
 export type ReviewStatus =
@@ -1560,7 +1582,8 @@ export type ReviewStatus =
   | "In review"
   | "Approved"
   | "Rejected"
-  | "Action Required";
+  | "Action Required"
+  | (string & {});
 export const ReviewStatus = /*@__PURE__*/ S.String;
 
 export interface NextStepsHistory {
@@ -1599,7 +1622,10 @@ export const LifeCycle = /*@__PURE__*/ S.suspend(() =>
     NextStepsHistory: S.optional(NextStepsHistories),
   }),
 ).annotate({ identifier: "LifeCycle" }) as any as S.Schema<LifeCycle>;
-export type OpportunityOrigin = "AWS Referral" | "Partner Referral";
+export type OpportunityOrigin =
+  | "AWS Referral"
+  | "Partner Referral"
+  | (string & {});
 export const OpportunityOrigin = /*@__PURE__*/ S.String;
 
 export type PartnerOpportunityTeamMembersList = Contact[];
@@ -1676,7 +1702,7 @@ export const CreateOpportunityResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateOpportunityResponse",
 }) as any as S.Schema<CreateOpportunityResponse>;
-export type ResourceType = "Opportunity";
+export type ResourceType = "Opportunity" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export type ResourceIdentifier = string;
@@ -1836,10 +1862,13 @@ export const GetAwsOpportunitySummaryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAwsOpportunitySummaryRequest",
 }) as any as S.Schema<GetAwsOpportunitySummaryRequest>;
-export type SalesInvolvementType = "For Visibility Only" | "Co-Sell";
+export type SalesInvolvementType =
+  | "For Visibility Only"
+  | "Co-Sell"
+  | (string & {});
 export const SalesInvolvementType = /*@__PURE__*/ S.String;
 
-export type Visibility = "Full" | "Limited";
+export type Visibility = "Full" | "Limited" | (string & {});
 export const Visibility = /*@__PURE__*/ S.String;
 
 export type AwsClosedLostReason =
@@ -1890,7 +1919,8 @@ export type AwsClosedLostReason =
   | "Security / Compliance"
   | "Self-Service"
   | "Technical Limitations"
-  | "Term Sheet Impasse";
+  | "Term Sheet Impasse"
+  | (string & {});
 export const AwsClosedLostReason = /*@__PURE__*/ S.String;
 
 export type AwsOpportunityStage =
@@ -1917,7 +1947,8 @@ export type AwsOpportunityStage =
   | "Deferred to Partner"
   | "Closed Lost"
   | "Completed"
-  | "Closed Incomplete";
+  | "Closed Incomplete"
+  | (string & {});
 export const AwsOpportunityStage = /*@__PURE__*/ S.String;
 
 export interface ProfileNextStepsHistory {
@@ -1960,7 +1991,8 @@ export type AwsMemberBusinessTitle =
   | "WWPSPDM"
   | "PDM"
   | "PSM"
-  | "ISVSM";
+  | "ISVSM"
+  | (string & {});
 export const AwsMemberBusinessTitle = /*@__PURE__*/ S.String;
 
 export interface AwsTeamMember {
@@ -1980,7 +2012,7 @@ export const AwsTeamMember = /*@__PURE__*/ S.suspend(() =>
 export type AwsOpportunityTeamMembersList = AwsTeamMember[];
 export const AwsOpportunityTeamMembersList =
   /*@__PURE__*/ S.Array(AwsTeamMember);
-export type EngagementScore = "High" | "Medium" | "Low";
+export type EngagementScore = "High" | "Medium" | "Low" | (string & {});
 export const EngagementScore = /*@__PURE__*/ S.String;
 
 export type MonetaryAmount = string | redacted.Redacted<string>;
@@ -2119,7 +2151,8 @@ export type InvolvementTypeChangeReason =
   | "Change in Deal Information"
   | "Customer Requested"
   | "Technical Complexity"
-  | "Risk Mitigation";
+  | "Risk Mitigation"
+  | (string & {});
 export const InvolvementTypeChangeReason = /*@__PURE__*/ S.String;
 
 export type AwsProductIdentifier = string;
@@ -2264,10 +2297,16 @@ export const GetEngagementInvitationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEngagementInvitationRequest>;
 export type EngagementInvitationPayloadType =
   | "OpportunityInvitation"
-  | "LeadInvitation";
+  | "LeadInvitation"
+  | (string & {});
 export const EngagementInvitationPayloadType = /*@__PURE__*/ S.String;
 
-export type InvitationStatus = "ACCEPTED" | "PENDING" | "REJECTED" | "EXPIRED";
+export type InvitationStatus =
+  | "ACCEPTED"
+  | "PENDING"
+  | "REJECTED"
+  | "EXPIRED"
+  | (string & {});
 export const InvitationStatus = /*@__PURE__*/ S.String;
 
 export type RejectionReasonString = string;
@@ -2441,7 +2480,8 @@ export type ProspectingTaskStatus =
   | "PENDING"
   | "IN_PROGRESS"
   | "COMPLETED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ProspectingTaskStatus = /*@__PURE__*/ S.String;
 
 export interface EngagementProspectingResult {
@@ -2671,7 +2711,7 @@ export const GetResourceSnapshotJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourceSnapshotJobRequest",
 }) as any as S.Schema<GetResourceSnapshotJobRequest>;
-export type ResourceSnapshotJobStatus = "Running" | "Stopped";
+export type ResourceSnapshotJobStatus = "Running" | "Stopped" | (string & {});
 export const ResourceSnapshotJobStatus = /*@__PURE__*/ S.String;
 
 export interface GetResourceSnapshotJobResponse {
@@ -2740,10 +2780,10 @@ export const GetSellingSystemSettingsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSellingSystemSettingsResponse",
 }) as any as S.Schema<GetSellingSystemSettingsResponse>;
-export type SortOrder = "ASCENDING" | "DESCENDING";
+export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
 
-export type ListTasksSortName = "StartTime";
+export type ListTasksSortName = "StartTime" | (string & {});
 export const ListTasksSortName = /*@__PURE__*/ S.String;
 
 export interface ListTasksSortBase {
@@ -2755,7 +2795,7 @@ export const ListTasksSortBase = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTasksSortBase",
 }) as any as S.Schema<ListTasksSortBase>;
-export type TaskStatus = "IN_PROGRESS" | "COMPLETE" | "FAILED";
+export type TaskStatus = "IN_PROGRESS" | "COMPLETE" | "FAILED" | (string & {});
 export const TaskStatus = /*@__PURE__*/ S.String;
 
 export type TaskStatuses = TaskStatus[];
@@ -2829,7 +2869,8 @@ export type ReasonCode =
   | "RequestThrottled"
   | "ContextNotFound"
   | "CustomerProjectContextNotPermitted"
-  | "DisqualifiedLeadNotPermitted";
+  | "DisqualifiedLeadNotPermitted"
+  | (string & {});
 export const ReasonCode = /*@__PURE__*/ S.String;
 
 export interface ListEngagementByAcceptingInvitationTaskSummary {
@@ -2966,7 +3007,9 @@ export const ListEngagementFromOpportunityTasksResponse =
     identifier: "ListEngagementFromOpportunityTasksResponse",
   }) as any as S.Schema<ListEngagementFromOpportunityTasksResponse>;
 export type PageSize = number;
-export type OpportunityEngagementInvitationSortName = "InvitationDate";
+export type OpportunityEngagementInvitationSortName =
+  | "InvitationDate"
+  | (string & {});
 export const OpportunityEngagementInvitationSortName = /*@__PURE__*/ S.String;
 
 export interface OpportunityEngagementInvitationSort {
@@ -2986,7 +3029,7 @@ export type EngagementInvitationsPayloadType =
 export const EngagementInvitationsPayloadType = /*@__PURE__*/ S.Array(
   EngagementInvitationPayloadType,
 );
-export type ParticipantType = "SENDER" | "RECEIVER";
+export type ParticipantType = "SENDER" | "RECEIVER" | (string & {});
 export const ParticipantType = /*@__PURE__*/ S.String;
 
 export type InvitationStatusList = InvitationStatus[];
@@ -3210,7 +3253,7 @@ export type EngagementContextTypeList = EngagementContextType[];
 export const EngagementContextTypeList = /*@__PURE__*/ S.Array(
   EngagementContextType,
 );
-export type EngagementSortName = "CreatedDate";
+export type EngagementSortName = "CreatedDate" | (string & {});
 export const EngagementSortName = /*@__PURE__*/ S.String;
 
 export interface EngagementSort {
@@ -3305,7 +3348,8 @@ export type OpportunitySortName =
   | "Identifier"
   | "CustomerCompanyName"
   | "CreatedDate"
-  | "TargetCloseDate";
+  | "TargetCloseDate"
+  | (string & {});
 export const OpportunitySortName = /*@__PURE__*/ S.String;
 
 export interface OpportunitySort {
@@ -3605,7 +3649,8 @@ export const TaskNameList = /*@__PURE__*/ S.Array(S.String);
 export type ProspectingFromEngagementTaskSortName =
   | "StartTime"
   | "TaskName"
-  | "FailedEngagementCount";
+  | "FailedEngagementCount"
+  | (string & {});
 export const ProspectingFromEngagementTaskSortName = /*@__PURE__*/ S.String;
 
 export interface ProspectingFromEngagementTaskSort {
@@ -3699,7 +3744,7 @@ export const ListProspectingFromEngagementTasksResponse =
   ).annotate({
     identifier: "ListProspectingFromEngagementTasksResponse",
   }) as any as S.Schema<ListProspectingFromEngagementTasksResponse>;
-export type SortBy = "CreatedDate";
+export type SortBy = "CreatedDate" | (string & {});
 export const SortBy = /*@__PURE__*/ S.String;
 
 export interface SortObject {
@@ -3845,7 +3890,8 @@ export type SolutionSortName =
   | "Name"
   | "Status"
   | "Category"
-  | "CreatedDate";
+  | "CreatedDate"
+  | (string & {});
 export const SolutionSortName = /*@__PURE__*/ S.String;
 
 export interface SolutionSort {
@@ -3855,7 +3901,7 @@ export interface SolutionSort {
 export const SolutionSort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SortOrder: SortOrder, SortBy: SolutionSortName }),
 ).annotate({ identifier: "SolutionSort" }) as any as S.Schema<SolutionSort>;
-export type SolutionStatus = "Active" | "Inactive" | "Draft";
+export type SolutionStatus = "Active" | "Inactive" | "Draft" | (string & {});
 export const SolutionStatus = /*@__PURE__*/ S.String;
 
 export type FilterStatus = SolutionStatus[];
@@ -4523,12 +4569,14 @@ export const UpdateOpportunityResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateOpportunityResponse",
 }) as any as S.Schema<UpdateOpportunityResponse>;
 export type AccessDeniedExceptionErrorCode =
-  "INCOMPATIBLE_BENEFIT_AWS_PARTNER_STATE";
+  | "INCOMPATIBLE_BENEFIT_AWS_PARTNER_STATE"
+  | (string & {});
 export const AccessDeniedExceptionErrorCode = /*@__PURE__*/ S.String;
 
 export type ValidationExceptionReason =
   | "REQUEST_VALIDATION_FAILED"
-  | "BUSINESS_VALIDATION_FAILED";
+  | "BUSINESS_VALIDATION_FAILED"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export type ValidationExceptionErrorCode =
@@ -4541,7 +4589,8 @@ export type ValidationExceptionErrorCode =
   | "INVALID_RESOURCE_STATE"
   | "DUPLICATE_KEY_VALUE"
   | "VALUE_OUT_OF_RANGE"
-  | "ACTION_NOT_PERMITTED";
+  | "ACTION_NOT_PERMITTED"
+  | (string & {});
 export const ValidationExceptionErrorCode = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionError {

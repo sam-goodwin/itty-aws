@@ -69,7 +69,8 @@ export type DataMaskingPolicyPredefinedExpressionEnum =
   | "FIRST_FOUR_CHARACTERS"
   | "EMAIL_MASK"
   | "DATE_YEAR_MASK"
-  | "RANDOM_HASH";
+  | "RANDOM_HASH"
+  | (string & {});
 export const DataMaskingPolicyPredefinedExpressionEnum = /*@__PURE__*/ S.String;
 
 /** The data masking policy that is used to specify data masking rule. */
@@ -91,7 +92,8 @@ export const DataMaskingPolicy = /*@__PURE__*/ S.suspend(() =>
 export type DataPolicyDataPolicyTypeEnum =
   | "DATA_POLICY_TYPE_UNSPECIFIED"
   | "COLUMN_LEVEL_SECURITY_POLICY"
-  | "DATA_MASKING_POLICY";
+  | "DATA_MASKING_POLICY"
+  | (string & {});
 export const DataPolicyDataPolicyTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents the label-policy binding. */
@@ -266,7 +268,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */

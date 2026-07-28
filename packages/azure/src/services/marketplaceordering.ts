@@ -41,7 +41,7 @@ export const MarketplaceAgreementsCancelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MarketplaceAgreementsCancelRequest>;
 
 /** Whether the agreement is active or cancelled */
-export type OldAgreementPropertiesState = "Active" | "Canceled";
+export type OldAgreementPropertiesState = "Active" | "Canceled" | (string & {});
 export const OldAgreementPropertiesState = /*@__PURE__*/ S.String;
 
 /** Old Agreement Terms definition */
@@ -93,7 +93,9 @@ export const MarketplaceAgreementsCancelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MarketplaceAgreementsCancelResponse",
 }) as any as S.Schema<MarketplaceAgreementsCancelResponse>;
 
-export type MarketplaceAgreementsCreateRequestOfferType = "virtualmachine";
+export type MarketplaceAgreementsCreateRequestOfferType =
+  | "virtualmachine"
+  | (string & {});
 export const MarketplaceAgreementsCreateRequestOfferType =
   /*@__PURE__*/ S.String;
 
@@ -173,7 +175,8 @@ export type MarketplaceAgreementsCreateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const MarketplaceAgreementsCreateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -182,7 +185,8 @@ export type MarketplaceAgreementsCreateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const MarketplaceAgreementsCreateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -243,7 +247,9 @@ export const MarketplaceAgreementsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MarketplaceAgreementsCreateResponse",
 }) as any as S.Schema<MarketplaceAgreementsCreateResponse>;
 
-export type MarketplaceAgreementsGetRequestOfferType = "virtualmachine";
+export type MarketplaceAgreementsGetRequestOfferType =
+  | "virtualmachine"
+  | (string & {});
 export const MarketplaceAgreementsGetRequestOfferType = /*@__PURE__*/ S.String;
 
 export interface MarketplaceAgreementsGetRequest {
@@ -282,7 +288,8 @@ export type MarketplaceAgreementsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const MarketplaceAgreementsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -291,7 +298,8 @@ export type MarketplaceAgreementsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const MarketplaceAgreementsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

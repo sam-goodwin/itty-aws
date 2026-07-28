@@ -95,14 +95,16 @@ export type AgentRegistrationStatus =
   | "unverified"
   | "verified"
   | "expired"
-  | "revoked";
+  | "revoked"
+  | (string & {});
 export const AgentRegistrationStatus = /*@__PURE__*/ S.String;
 
 /** The kind of agent registration. */
 export type AgentRegistrationKind =
   | "anonymous"
   | "service_auth"
-  | "identity_assertion";
+  | "identity_assertion"
+  | (string & {});
 export const AgentRegistrationKind = /*@__PURE__*/ S.String;
 
 export interface AgentRegistrationClaimClaimCompletion {
@@ -233,7 +235,8 @@ export type ClaimViewResponseStatus =
   | "unverified"
   | "verified"
   | "expired"
-  | "revoked";
+  | "revoked"
+  | (string & {});
 export const ClaimViewResponseStatus = /*@__PURE__*/ S.String;
 
 export interface ClaimViewResponseOrganizationsItem {
@@ -956,12 +959,13 @@ export const ApplicationsControllerFindResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationsControllerFindResponse",
 }) as any as S.Schema<ApplicationsControllerFindResponse>;
 
-export type PaginationOrder = "normal" | "desc" | "asc";
+export type PaginationOrder = "normal" | "desc" | "asc" | (string & {});
 export const PaginationOrder = /*@__PURE__*/ S.String;
 
 export type ApplicationsControllerListRequestRegistrationTypesItem =
   | "dynamic"
-  | "authenticated";
+  | "authenticated"
+  | (string & {});
 export const ApplicationsControllerListRequestRegistrationTypesItem =
   /*@__PURE__*/ S.String;
 
@@ -1391,7 +1395,12 @@ export const AuditLogExportsControllerExportRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AuditLogExportsControllerExportRequest>;
 
 /** The state of the export. Possible values: pending, ready, error, expired. */
-export type AuditLogExportJsonState = "pending" | "ready" | "error" | "expired";
+export type AuditLogExportJsonState =
+  | "pending"
+  | "ready"
+  | "error"
+  | "expired"
+  | (string & {});
 export const AuditLogExportJsonState = /*@__PURE__*/ S.String;
 
 export interface AuditLogExportJson {
@@ -1972,7 +1981,8 @@ export const AuthenticationFactorsControllerChallengeRequest =
 export type AuthenticationFactorsControllerCreateRequestType =
   | "generic_otp"
   | "sms"
-  | "totp";
+  | "totp"
+  | (string & {});
 export const AuthenticationFactorsControllerCreateRequestType =
   /*@__PURE__*/ S.String;
 
@@ -2006,7 +2016,8 @@ export type AuthenticationFactorEnrolledType =
   | "generic_otp"
   | "sms"
   | "totp"
-  | "webauthn";
+  | "webauthn"
+  | (string & {});
 export const AuthenticationFactorEnrolledType = /*@__PURE__*/ S.String;
 
 /** SMS-based authentication factor details. */
@@ -2117,7 +2128,8 @@ export type AuthenticationFactorType =
   | "generic_otp"
   | "sms"
   | "totp"
-  | "webauthn";
+  | "webauthn"
+  | (string & {});
 export const AuthenticationFactorType = /*@__PURE__*/ S.String;
 
 /** SMS-based authentication factor details. */
@@ -2830,7 +2842,7 @@ export const AuthorizationOrganizationRolePermissionsControllerAddPermissionRequ
 
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationOrganizationRolePermissionsControllerAddPermissionResponseType =
-  "EnvironmentRole" | "OrganizationRole";
+  "EnvironmentRole" | "OrganizationRole" | (string & {});
 export const AuthorizationOrganizationRolePermissionsControllerAddPermissionResponseType =
   /*@__PURE__*/ S.String;
 
@@ -2911,7 +2923,7 @@ export const AuthorizationOrganizationRolePermissionsControllerRemovePermissionR
   }) as any as S.Schema<AuthorizationOrganizationRolePermissionsControllerRemovePermissionRequest>;
 
 /** Whether the role is scoped to the environment or an organization (custom role). */
-export type RoleType = "EnvironmentRole" | "OrganizationRole";
+export type RoleType = "EnvironmentRole" | "OrganizationRole" | (string & {});
 export const RoleType = /*@__PURE__*/ S.String;
 
 /** The permission slugs assigned to the role. */
@@ -2995,7 +3007,7 @@ export const AuthorizationOrganizationRolePermissionsControllerSetPermissionsReq
 
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationOrganizationRolePermissionsControllerSetPermissionsResponseType =
-  "EnvironmentRole" | "OrganizationRole";
+  "EnvironmentRole" | "OrganizationRole" | (string & {});
 export const AuthorizationOrganizationRolePermissionsControllerSetPermissionsResponseType =
   /*@__PURE__*/ S.String;
 
@@ -3083,7 +3095,8 @@ export const AuthorizationOrganizationRolesControllerCreateRequest =
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationOrganizationRolesControllerCreateResponseType =
   | "EnvironmentRole"
-  | "OrganizationRole";
+  | "OrganizationRole"
+  | (string & {});
 export const AuthorizationOrganizationRolesControllerCreateResponseType =
   /*@__PURE__*/ S.String;
 
@@ -3189,7 +3202,8 @@ export const AuthorizationOrganizationRolesControllerGetRequest =
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationOrganizationRolesControllerGetResponseType =
   | "EnvironmentRole"
-  | "OrganizationRole";
+  | "OrganizationRole"
+  | (string & {});
 export const AuthorizationOrganizationRolesControllerGetResponseType =
   /*@__PURE__*/ S.String;
 
@@ -3310,7 +3324,8 @@ export const AuthorizationOrganizationRolesControllerUpdateRequest =
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationOrganizationRolesControllerUpdateResponseType =
   | "EnvironmentRole"
-  | "OrganizationRole";
+  | "OrganizationRole"
+  | (string & {});
 export const AuthorizationOrganizationRolesControllerUpdateResponseType =
   /*@__PURE__*/ S.String;
 
@@ -3580,7 +3595,7 @@ export const AuthorizationResourcesByExternalIdControllerGetByExternalIdRequest 
   }) as any as S.Schema<AuthorizationResourcesByExternalIdControllerGetByExternalIdRequest>;
 
 export type AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdRequestAssignment =
-  "direct" | "indirect";
+  "direct" | "indirect" | (string & {});
 export const AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdRequestAssignment =
   /*@__PURE__*/ S.String;
 
@@ -3636,7 +3651,8 @@ export const AuthorizationResourcesByExternalIdControllerListOrganizationMembers
 export type UserlandUserOrganizationMembershipBaseWithUserStatus =
   | "active"
   | "inactive"
-  | "pending";
+  | "pending"
+  | (string & {});
 export const UserlandUserOrganizationMembershipBaseWithUserStatus =
   /*@__PURE__*/ S.String;
 
@@ -4045,7 +4061,7 @@ export const AuthorizationResourcesControllerListRequest =
   }) as any as S.Schema<AuthorizationResourcesControllerListRequest>;
 
 export type AuthorizationResourcesControllerListOrganizationMembershipsForResourceRequestAssignment =
-  "direct" | "indirect";
+  "direct" | "indirect" | (string & {});
 export const AuthorizationResourcesControllerListOrganizationMembershipsForResourceRequestAssignment =
   /*@__PURE__*/ S.String;
 
@@ -4216,7 +4232,7 @@ export const UserRoleAssignmentResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserRoleAssignmentResource>;
 
 /** Whether the role was assigned directly or derived from a group. */
-export type UserRoleAssignmentSourceType = "direct" | "group";
+export type UserRoleAssignmentSourceType = "direct" | "group" | (string & {});
 export const UserRoleAssignmentSourceType = /*@__PURE__*/ S.String;
 
 /** The origin of the role assignment. */
@@ -4514,7 +4530,8 @@ export const AuthorizationRolePermissionsControllerAddPermissionRequest =
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationRolePermissionsControllerAddPermissionResponseType =
   | "EnvironmentRole"
-  | "OrganizationRole";
+  | "OrganizationRole"
+  | (string & {});
 export const AuthorizationRolePermissionsControllerAddPermissionResponseType =
   /*@__PURE__*/ S.String;
 
@@ -4602,7 +4619,8 @@ export const AuthorizationRolePermissionsControllerSetPermissionsRequest =
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationRolePermissionsControllerSetPermissionsResponseType =
   | "EnvironmentRole"
-  | "OrganizationRole";
+  | "OrganizationRole"
+  | (string & {});
 export const AuthorizationRolePermissionsControllerSetPermissionsResponseType =
   /*@__PURE__*/ S.String;
 
@@ -4680,7 +4698,8 @@ export const AuthorizationRolesControllerCreateRequest =
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationRolesControllerCreateResponseType =
   | "EnvironmentRole"
-  | "OrganizationRole";
+  | "OrganizationRole"
+  | (string & {});
 export const AuthorizationRolesControllerCreateResponseType =
   /*@__PURE__*/ S.String;
 
@@ -4785,7 +4804,8 @@ export const AuthorizationRolesControllerUpdateRequest =
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationRolesControllerUpdateResponseType =
   | "EnvironmentRole"
-  | "OrganizationRole";
+  | "OrganizationRole"
+  | (string & {});
 export const AuthorizationRolesControllerUpdateResponseType =
   /*@__PURE__*/ S.String;
 
@@ -5081,7 +5101,8 @@ export type ConnectionConnectionType =
   | "VercelMarketplaceOAuth"
   | "VercelOAuth"
   | "VMwareSAML"
-  | "XeroOAuth";
+  | "XeroOAuth"
+  | (string & {});
 export const ConnectionConnectionType = /*@__PURE__*/ S.String;
 
 /** Indicates whether a Connection is able to authenticate users. */
@@ -5091,11 +5112,12 @@ export type ConnectionState =
   | "active"
   | "validating"
   | "inactive"
-  | "deleting";
+  | "deleting"
+  | (string & {});
 export const ConnectionState = /*@__PURE__*/ S.String;
 
 /** Deprecated. Use `state` instead. */
-export type ConnectionStatus = "linked" | "unlinked";
+export type ConnectionStatus = "linked" | "unlinked" | (string & {});
 export const ConnectionStatus = /*@__PURE__*/ S.String;
 
 export interface ConnectionDomainsItem {
@@ -5210,7 +5232,8 @@ export type ConnectionsControllerListRequestConnectionType =
   | "VercelMarketplaceOAuth"
   | "VercelOAuth"
   | "VMwareSAML"
-  | "XeroOAuth";
+  | "XeroOAuth"
+  | (string & {});
 export const ConnectionsControllerListRequestConnectionType =
   /*@__PURE__*/ S.String;
 
@@ -5523,7 +5546,8 @@ export const DataIntegrationAccessTokenResponseCase0 = /*@__PURE__*/ S.suspend(
 /** - `"not_installed"`: The user does not have the integration installed. - `"needs_reauthorization"`: The user needs to reauthorize the integration. */
 export type DataIntegrationAccessTokenResponseCase1Error =
   | "needs_reauthorization"
-  | "not_installed";
+  | "not_installed"
+  | (string & {});
 export const DataIntegrationAccessTokenResponseCase1Error =
   /*@__PURE__*/ S.String;
 
@@ -5593,14 +5617,15 @@ export const ConnectedAccountScopesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ConnectedAccountScopesList>;
 
 /** The authentication method used for this connection (`oauth` or `api_key`). Defaults to `oauth` if absent. */
-export type ConnectedAccountAuthMethod = "oauth" | "api_key";
+export type ConnectedAccountAuthMethod = "oauth" | "api_key" | (string & {});
 export const ConnectedAccountAuthMethod = /*@__PURE__*/ S.String;
 
 /** The state of the connected account: - `connected`: The connection is active and tokens are valid. - `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed. - `disconnected`: The connection has been disconnected. */
 export type ConnectedAccountState =
   | "connected"
   | "needs_reauthorization"
-  | "disconnected";
+  | "disconnected"
+  | (string & {});
 export const ConnectedAccountState = /*@__PURE__*/ S.String;
 
 export interface ConnectedAccount {
@@ -5768,7 +5793,8 @@ export const DataIntegrationCredentialsResponseCase1 = /*@__PURE__*/ S.suspend(
 /** The reason credentials are unavailable. Additional values may be added in the future; handle unknown values gracefully. - `"not_installed"`: The user does not have the integration installed. - `"needs_reauthorization"`: The user needs to reauthorize the integration. */
 export type DataIntegrationCredentialsResponseCase2Error =
   | "not_installed"
-  | "needs_reauthorization";
+  | "needs_reauthorization"
+  | (string & {});
 export const DataIntegrationCredentialsResponseCase2Error =
   /*@__PURE__*/ S.String;
 
@@ -5813,7 +5839,7 @@ export const DataIntegrationsManagementControllerCreateDataIntegrationRequestSco
   ) as any as S.Schema<DataIntegrationsManagementControllerCreateDataIntegrationRequestScopesList>;
 
 export type DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsItem =
-  "oauth" | "api_key";
+  "oauth" | "api_key" | (string & {});
 export const DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsItem =
   /*@__PURE__*/ S.String;
 
@@ -5835,7 +5861,10 @@ export const DataIntegrationsManagementControllerCreateDataIntegrationRequestCon
   ) as any as S.Schema<DataIntegrationsManagementControllerCreateDataIntegrationRequestConfigMap>;
 
 /** The credentials type. `custom` uses your own OAuth app credentials; `organization` has each organization supply its own credentials (configured per-organization). */
-export type DataIntegrationCredentialsDtoType = "custom" | "organization";
+export type DataIntegrationCredentialsDtoType =
+  | "custom"
+  | "organization"
+  | (string & {});
 export const DataIntegrationCredentialsDtoType = /*@__PURE__*/ S.String;
 
 export interface DataIntegrationCredentialsDto {
@@ -5887,7 +5916,8 @@ export const CustomProviderDefinitionDtoAdditionalAuthorizationParametersMap =
 /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
 export type CustomProviderDefinitionDtoAuthenticateVia =
   | "request_body"
-  | "basic_auth_header";
+  | "basic_auth_header"
+  | (string & {});
 export const CustomProviderDefinitionDtoAuthenticateVia =
   /*@__PURE__*/ S.String;
 
@@ -5982,7 +6012,11 @@ export const DataIntegrationsManagementControllerCreateDataIntegrationRequest =
   }) as any as S.Schema<DataIntegrationsManagementControllerCreateDataIntegrationRequest>;
 
 /** The state of the Data Integration. */
-export type DataIntegrationState = "valid" | "invalid" | "requested";
+export type DataIntegrationState =
+  | "valid"
+  | "invalid"
+  | "requested"
+  | (string & {});
 export const DataIntegrationState = /*@__PURE__*/ S.String;
 
 export type DataIntegrationScopesList = ReadonlyArray<string>;
@@ -5990,7 +6024,10 @@ export const DataIntegrationScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataIntegrationScopesList>;
 
-export type DataIntegrationAuthMethodsItem = "oauth" | "api_key";
+export type DataIntegrationAuthMethodsItem =
+  | "oauth"
+  | "api_key"
+  | (string & {});
 export const DataIntegrationAuthMethodsItem = /*@__PURE__*/ S.String;
 
 /** How accounts authenticate with the provider for this Data Integration. */
@@ -6001,7 +6038,10 @@ export const DataIntegrationAuthMethodsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DataIntegrationAuthMethodsList>;
 
 /** The credentials type. `custom` uses your own OAuth app credentials; `organization` has each organization supply its own credentials (so `client_id`/`redacted_client_secret` are null on the integration itself). */
-export type DataIntegrationCredentialsType = "custom" | "organization";
+export type DataIntegrationCredentialsType =
+  | "custom"
+  | "organization"
+  | (string & {});
 export const DataIntegrationCredentialsType = /*@__PURE__*/ S.String;
 
 /** The credentials configured for the Data Integration. */
@@ -6063,7 +6103,8 @@ export const DataIntegrationCustomProviderAdditionalAuthorizationParametersMap =
 /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
 export type DataIntegrationCustomProviderAuthenticateVia =
   | "request_body"
-  | "basic_auth_header";
+  | "basic_auth_header"
+  | (string & {});
 export const DataIntegrationCustomProviderAuthenticateVia =
   /*@__PURE__*/ S.String;
 
@@ -6288,7 +6329,8 @@ export const UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParametersM
 /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
 export type UpdateCustomProviderDefinitionDtoAuthenticateVia =
   | "request_body"
-  | "basic_auth_header";
+  | "basic_auth_header"
+  | (string & {});
 export const UpdateCustomProviderDefinitionDtoAuthenticateVia =
   /*@__PURE__*/ S.String;
 
@@ -6386,7 +6428,7 @@ export const DataIntegrationsUserManagementControllerCreateUserDataInstallationR
 
 /** Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided. */
 export type DataIntegrationsUserManagementControllerCreateUserDataInstallationRequestState =
-  "connected" | "needs_reauthorization";
+  "connected" | "needs_reauthorization" | (string & {});
 export const DataIntegrationsUserManagementControllerCreateUserDataInstallationRequestState =
   /*@__PURE__*/ S.String;
 
@@ -6526,7 +6568,8 @@ export const DataIntegrationsListResponseDataItemScopesList =
 
 export type DataIntegrationsListResponseDataItemAuthMethodsItem =
   | "oauth"
-  | "api_key";
+  | "api_key"
+  | (string & {});
 export const DataIntegrationsListResponseDataItemAuthMethodsItem =
   /*@__PURE__*/ S.String;
 
@@ -6541,7 +6584,8 @@ export const DataIntegrationsListResponseDataItemAuthMethodsList =
 /** Whether the provider is owned by a user or organization. */
 export type DataIntegrationsListResponseDataItemOwnership =
   | "userland_user"
-  | "organization";
+  | "organization"
+  | (string & {});
 export const DataIntegrationsListResponseDataItemOwnership =
   /*@__PURE__*/ S.String;
 
@@ -6556,7 +6600,8 @@ export const DataIntegrationsListResponseDataItemConnectedAccountScopesList =
 /** The authentication method used for this connection (`oauth` or `api_key`). Defaults to `oauth` if absent. */
 export type DataIntegrationsListResponseDataItemConnectedAccountAuthMethod =
   | "oauth"
-  | "api_key";
+  | "api_key"
+  | (string & {});
 export const DataIntegrationsListResponseDataItemConnectedAccountAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -6564,7 +6609,8 @@ export const DataIntegrationsListResponseDataItemConnectedAccountAuthMethod =
 export type DataIntegrationsListResponseDataItemConnectedAccountState =
   | "connected"
   | "needs_reauthorization"
-  | "disconnected";
+  | "disconnected"
+  | (string & {});
 export const DataIntegrationsListResponseDataItemConnectedAccountState =
   /*@__PURE__*/ S.String;
 
@@ -6719,7 +6765,7 @@ export const DataIntegrationsUserManagementControllerUpdateUserDataInstallationR
 
 /** Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided. */
 export type DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequestState =
-  "connected" | "needs_reauthorization";
+  "connected" | "needs_reauthorization" | (string & {});
 export const DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequestState =
   /*@__PURE__*/ S.String;
 
@@ -6821,7 +6867,8 @@ export type DirectoryType =
   | "s3"
   | "sftp"
   | "sftp workday"
-  | "workday";
+  | "workday"
+  | (string & {});
 export const DirectoryType = /*@__PURE__*/ S.String;
 
 /** Describes whether the Directory has been successfully connected to an external provider. */
@@ -6830,7 +6877,8 @@ export type DirectoryState =
   | "validating"
   | "invalid_credentials"
   | "unlinked"
-  | "deleting";
+  | "deleting"
+  | (string & {});
 export const DirectoryState = /*@__PURE__*/ S.String;
 
 /** Counts of active and inactive directory users. */
@@ -7137,7 +7185,11 @@ export const DirectoryUserWithGroupsEmailsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DirectoryUserWithGroupsEmailsList>;
 
 /** The state of the user. */
-export type DirectoryUserWithGroupsState = "active" | "suspended" | "inactive";
+export type DirectoryUserWithGroupsState =
+  | "active"
+  | "suspended"
+  | "inactive"
+  | (string & {});
 export const DirectoryUserWithGroupsState = /*@__PURE__*/ S.String;
 
 /** The raw attributes received from the directory provider. */
@@ -7998,7 +8050,8 @@ export const GroupMembershipsControllerListMembersRequest =
 export type UserlandUserOrganizationMembershipBaseListDataItemStatus =
   | "active"
   | "inactive"
-  | "pending";
+  | "pending"
+  | (string & {});
 export const UserlandUserOrganizationMembershipBaseListDataItemStatus =
   /*@__PURE__*/ S.String;
 
@@ -8440,7 +8493,10 @@ export const ObjectWithoutValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "ObjectWithoutValue",
 }) as any as S.Schema<ObjectWithoutValue>;
 
-export type JumpWireWebDataVaultControllerIndexRequestOrder = "asc" | "desc";
+export type JumpWireWebDataVaultControllerIndexRequestOrder =
+  | "asc"
+  | "desc"
+  | (string & {});
 export const JumpWireWebDataVaultControllerIndexRequestOrder =
   /*@__PURE__*/ S.String;
 
@@ -9181,14 +9237,16 @@ export type OrganizationDomainsControllerCreateResponseState =
   | "legacy_verified"
   | "pending"
   | "unverified"
-  | "verified";
+  | "verified"
+  | (string & {});
 export const OrganizationDomainsControllerCreateResponseState =
   /*@__PURE__*/ S.String;
 
 /** Strategy used to verify the domain. */
 export type OrganizationDomainsControllerCreateResponseVerificationStrategy =
   | "dns"
-  | "manual";
+  | "manual"
+  | (string & {});
 export const OrganizationDomainsControllerCreateResponseVerificationStrategy =
   /*@__PURE__*/ S.String;
 
@@ -9280,11 +9338,15 @@ export type OrganizationDomainStandAloneState =
   | "legacy_verified"
   | "pending"
   | "unverified"
-  | "verified";
+  | "verified"
+  | (string & {});
 export const OrganizationDomainStandAloneState = /*@__PURE__*/ S.String;
 
 /** Strategy used to verify the domain. */
-export type OrganizationDomainStandAloneVerificationStrategy = "dns" | "manual";
+export type OrganizationDomainStandAloneVerificationStrategy =
+  | "dns"
+  | "manual"
+  | (string & {});
 export const OrganizationDomainStandAloneVerificationStrategy =
   /*@__PURE__*/ S.String;
 
@@ -9419,7 +9481,10 @@ export const OrganizationsControllerCreateRequestDomainsList =
   ) as any as S.Schema<OrganizationsControllerCreateRequestDomainsList>;
 
 /** The verification state of the domain. */
-export type OrganizationDomainDataDtoState = "pending" | "verified";
+export type OrganizationDomainDataDtoState =
+  | "pending"
+  | "verified"
+  | (string & {});
 export const OrganizationDomainDataDtoState = /*@__PURE__*/ S.String;
 
 export interface OrganizationDomainDataDto {
@@ -9493,11 +9558,15 @@ export type OrganizationDomainsItemState =
   | "legacy_verified"
   | "pending"
   | "unverified"
-  | "verified";
+  | "verified"
+  | (string & {});
 export const OrganizationDomainsItemState = /*@__PURE__*/ S.String;
 
 /** Strategy used to verify the domain. */
-export type OrganizationDomainsItemVerificationStrategy = "dns" | "manual";
+export type OrganizationDomainsItemVerificationStrategy =
+  | "dns"
+  | "manual"
+  | (string & {});
 export const OrganizationDomainsItemVerificationStrategy =
   /*@__PURE__*/ S.String;
 
@@ -9645,7 +9714,11 @@ export const OrganizationsControllerGetAuditLogConfigurationRequest =
   }) as any as S.Schema<OrganizationsControllerGetAuditLogConfigurationRequest>;
 
 /** The current state of the audit log configuration for the organization. */
-export type AuditLogConfigurationState = "active" | "inactive" | "disabled";
+export type AuditLogConfigurationState =
+  | "active"
+  | "inactive"
+  | "disabled"
+  | (string & {});
 export const AuditLogConfigurationState = /*@__PURE__*/ S.String;
 
 /** The type of the Audit Log Stream destination. */
@@ -9656,7 +9729,8 @@ export type AuditLogConfigurationLogStreamType =
   | "GoogleCloudStorage"
   | "S3"
   | "Snowflake"
-  | "Splunk";
+  | "Splunk"
+  | (string & {});
 export const AuditLogConfigurationLogStreamType = /*@__PURE__*/ S.String;
 
 /** The current state of the Audit Log Stream. */
@@ -9664,7 +9738,8 @@ export type AuditLogConfigurationLogStreamState =
   | "active"
   | "inactive"
   | "error"
-  | "invalid";
+  | "invalid"
+  | (string & {});
 export const AuditLogConfigurationLogStreamState = /*@__PURE__*/ S.String;
 
 /** The Audit Log Stream currently configured for the organization, if any. */
@@ -9882,7 +9957,8 @@ export type PortalSessionsControllerCreateRequestIntent =
   | "log_streams"
   | "domain_verification"
   | "certificate_renewal"
-  | "bring_your_own_key";
+  | "bring_your_own_key"
+  | (string & {});
 export const PortalSessionsControllerCreateRequestIntent =
   /*@__PURE__*/ S.String;
 
@@ -9986,7 +10062,8 @@ export const DataIntegrationConfigurationResponseScopesList =
 export type DataIntegrationCredentialsCredentialsType =
   | "shared"
   | "custom"
-  | "organization";
+  | "organization"
+  | (string & {});
 export const DataIntegrationCredentialsCredentialsType = /*@__PURE__*/ S.String;
 
 /** Organization-managed OAuth credential configuration. Present only for integrations whose credentials are supplied by the organization; absent otherwise. */
@@ -10204,14 +10281,16 @@ export type RadarStandaloneControllerAssessRequestAuthMethod =
   | "Email_OTP"
   | "Social"
   | "SSO"
-  | "Other";
+  | "Other"
+  | (string & {});
 export const RadarStandaloneControllerAssessRequestAuthMethod =
   /*@__PURE__*/ S.String;
 
 /** The action being performed. */
 export type RadarStandaloneControllerAssessRequestAction =
   | "sign-up"
-  | "sign-in";
+  | "sign-in"
+  | (string & {});
 export const RadarStandaloneControllerAssessRequestAction =
   /*@__PURE__*/ S.String;
 
@@ -10244,7 +10323,11 @@ export const RadarStandaloneControllerAssessRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RadarStandaloneControllerAssessRequest>;
 
 /** The verdict of the risk assessment. */
-export type RadarStandaloneResponseVerdict = "allow" | "block" | "challenge";
+export type RadarStandaloneResponseVerdict =
+  | "allow"
+  | "block"
+  | "challenge"
+  | (string & {});
 export const RadarStandaloneResponseVerdict = /*@__PURE__*/ S.String;
 
 /** The Radar control that triggered the verdict. Only present if the verdict is `block` or `challenge`. */
@@ -10255,7 +10338,8 @@ export type RadarStandaloneResponseControl =
   | "repeat_sign_up"
   | "stale_account"
   | "unrecognized_device"
-  | "restriction";
+  | "restriction"
+  | (string & {});
 export const RadarStandaloneResponseControl = /*@__PURE__*/ S.String;
 
 /** The type of blocklist entry that triggered the verdict. Only present if the control is `restriction`. */
@@ -10266,7 +10350,8 @@ export type RadarStandaloneResponseBlocklistType =
   | "device"
   | "user_agent"
   | "device_fingerprint"
-  | "country";
+  | "country"
+  | (string & {});
 export const RadarStandaloneResponseBlocklistType = /*@__PURE__*/ S.String;
 
 export interface RadarStandaloneResponse {
@@ -10300,13 +10385,15 @@ export type RadarStandaloneControllerDeleteRadarListEntryRequestType =
   | "device"
   | "user_agent"
   | "device_fingerprint"
-  | "country";
+  | "country"
+  | (string & {});
 export const RadarStandaloneControllerDeleteRadarListEntryRequestType =
   /*@__PURE__*/ S.String;
 
 export type RadarStandaloneControllerDeleteRadarListEntryRequestAction =
   | "block"
-  | "allow";
+  | "allow"
+  | (string & {});
 export const RadarStandaloneControllerDeleteRadarListEntryRequestAction =
   /*@__PURE__*/ S.String;
 
@@ -10377,13 +10464,15 @@ export type RadarStandaloneControllerUpdateRadarListRequestType =
   | "device"
   | "user_agent"
   | "device_fingerprint"
-  | "country";
+  | "country"
+  | (string & {});
 export const RadarStandaloneControllerUpdateRadarListRequestType =
   /*@__PURE__*/ S.String;
 
 export type RadarStandaloneControllerUpdateRadarListRequestAction =
   | "block"
-  | "allow";
+  | "allow"
+  | (string & {});
 export const RadarStandaloneControllerUpdateRadarListRequestAction =
   /*@__PURE__*/ S.String;
 
@@ -10589,7 +10678,8 @@ export type SsoControllerAuthorizeRequestProvider =
   | "SlackOAuth"
   | "VercelMarketplaceOAuth"
   | "VercelOAuth"
-  | "XeroOAuth";
+  | "XeroOAuth"
+  | (string & {});
 export const SsoControllerAuthorizeRequestProvider = /*@__PURE__*/ S.String;
 
 export interface SsoControllerAuthorizeRequest {
@@ -10718,7 +10808,8 @@ export type ProfileConnectionType =
   | "VercelMarketplaceOAuth"
   | "VercelOAuth"
   | "VMwareSAML"
-  | "XeroOAuth";
+  | "XeroOAuth"
+  | (string & {});
 export const ProfileConnectionType = /*@__PURE__*/ S.String;
 
 export type ProfileRolesList = ReadonlyArray<SlimRole>;
@@ -11756,7 +11847,8 @@ export type UserlandAuthenticateResponseAuthenticationMethod =
   | "XeroOAuth"
   | "MagicAuth"
   | "Impersonation"
-  | "MigratedSession";
+  | "MigratedSession"
+  | (string & {});
 export const UserlandAuthenticateResponseAuthenticationMethod =
   /*@__PURE__*/ S.String;
 
@@ -11918,7 +12010,8 @@ export const UserlandSsoControllerAuthorizeRequestProviderScopesList =
 
 export type UserlandSsoControllerAuthorizeRequestScreenHint =
   | "sign-up"
-  | "sign-in";
+  | "sign-in"
+  | (string & {});
 export const UserlandSsoControllerAuthorizeRequestScreenHint =
   /*@__PURE__*/ S.String;
 
@@ -11936,7 +12029,8 @@ export type UserlandSsoControllerAuthorizeRequestProvider =
   | "SlackOAuth"
   | "VercelMarketplaceOAuth"
   | "VercelOAuth"
-  | "XeroOAuth";
+  | "XeroOAuth"
+  | (string & {});
 export const UserlandSsoControllerAuthorizeRequestProvider =
   /*@__PURE__*/ S.String;
 
@@ -12255,7 +12349,8 @@ export type UserlandUserIdentitiesControllerGetResponseBodyItemProvider =
   | "SlackOAuth"
   | "VercelMarketplaceOAuth"
   | "VercelOAuth"
-  | "XeroOAuth";
+  | "XeroOAuth"
+  | (string & {});
 export const UserlandUserIdentitiesControllerGetResponseBodyItemProvider =
   /*@__PURE__*/ S.String;
 
@@ -12320,7 +12415,8 @@ export type UserlandUserInvitesControllerAcceptResponseState =
   | "pending"
   | "accepted"
   | "expired"
-  | "revoked";
+  | "revoked"
+  | (string & {});
 export const UserlandUserInvitesControllerAcceptResponseState =
   /*@__PURE__*/ S.String;
 
@@ -12470,7 +12566,8 @@ export type UserlandUserInvitesControllerCreateRequestLocale =
   | "zh-CN"
   | "zh-HK"
   | "zh-TW"
-  | "zu";
+  | "zu"
+  | (string & {});
 export const UserlandUserInvitesControllerCreateRequestLocale =
   /*@__PURE__*/ S.String;
 
@@ -12513,7 +12610,8 @@ export type UserlandUserInviteState =
   | "pending"
   | "accepted"
   | "expired"
-  | "revoked";
+  | "revoked"
+  | (string & {});
 export const UserlandUserInviteState = /*@__PURE__*/ S.String;
 
 export interface UserlandUserInvite {
@@ -12769,7 +12867,8 @@ export type UserlandUserInvitesControllerResendRequestLocale =
   | "zh-CN"
   | "zh-HK"
   | "zh-TW"
-  | "zu";
+  | "zu"
+  | (string & {});
 export const UserlandUserInvitesControllerResendRequestLocale =
   /*@__PURE__*/ S.String;
 
@@ -12819,7 +12918,8 @@ export type UserlandUserInvitesControllerRevokeResponseState =
   | "pending"
   | "accepted"
   | "expired"
-  | "revoked";
+  | "revoked"
+  | (string & {});
 export const UserlandUserInvitesControllerRevokeResponseState =
   /*@__PURE__*/ S.String;
 
@@ -12920,7 +13020,8 @@ export const UserlandUserOrganizationMembershipsControllerCreateRequest =
 export type UserlandUserOrganizationMembershipsControllerCreateResponseStatus =
   | "active"
   | "inactive"
-  | "pending";
+  | "pending"
+  | (string & {});
 export const UserlandUserOrganizationMembershipsControllerCreateResponseStatus =
   /*@__PURE__*/ S.String;
 
@@ -13015,7 +13116,7 @@ export const UserlandUserOrganizationMembershipsControllerDeactivateRequest =
 
 /** The status of the organization membership. One of `active`, `inactive`, or `pending`. */
 export type UserlandUserOrganizationMembershipsControllerDeactivateResponseStatus =
-  "active" | "inactive" | "pending";
+  "active" | "inactive" | "pending" | (string & {});
 export const UserlandUserOrganizationMembershipsControllerDeactivateResponseStatus =
   /*@__PURE__*/ S.String;
 
@@ -13138,7 +13239,8 @@ export const UserlandUserOrganizationMembershipsControllerGetRequest =
 export type UserlandUserOrganizationMembershipStatus =
   | "active"
   | "inactive"
-  | "pending";
+  | "pending"
+  | (string & {});
 export const UserlandUserOrganizationMembershipStatus = /*@__PURE__*/ S.String;
 
 /** An object containing IdP-sourced attributes from the linked [Directory User](/reference/directory-sync/directory-user) or [SSO Profile](/reference/sso/profile). Directory User attributes take precedence when both are linked. */
@@ -13210,7 +13312,7 @@ export const UserlandUserOrganizationMembership = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserlandUserOrganizationMembership>;
 
 export type UserlandUserOrganizationMembershipsControllerListRequestStatusesItem =
-  "active" | "inactive" | "pending";
+  "active" | "inactive" | "pending" | (string & {});
 export const UserlandUserOrganizationMembershipsControllerListRequestStatusesItem =
   /*@__PURE__*/ S.String;
 
@@ -13509,7 +13611,8 @@ export type UserlandUsersControllerCreate0RequestPasswordHashType =
   | "ssha256"
   | "scrypt"
   | "pbkdf2"
-  | "argon2";
+  | "argon2"
+  | (string & {});
 export const UserlandUsersControllerCreate0RequestPasswordHashType =
   /*@__PURE__*/ S.String;
 
@@ -14043,7 +14146,8 @@ export type UserlandUsersControllerUpdate0RequestPasswordHashType =
   | "ssha256"
   | "scrypt"
   | "pbkdf2"
-  | "argon2";
+  | "argon2"
+  | (string & {});
 export const UserlandUsersControllerUpdate0RequestPasswordHashType =
   /*@__PURE__*/ S.String;
 
@@ -14176,7 +14280,8 @@ export type UserlandUserSessionsControllerListResponseDataItemAuthMethod =
   | "passkey"
   | "password"
   | "sso"
-  | "unknown";
+  | "unknown"
+  | (string & {});
 export const UserlandUserSessionsControllerListResponseDataItemAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -14184,7 +14289,8 @@ export const UserlandUserSessionsControllerListResponseDataItemAuthMethod =
 export type UserlandUserSessionsControllerListResponseDataItemStatus =
   | "active"
   | "expired"
-  | "revoked";
+  | "revoked"
+  | (string & {});
 export const UserlandUserSessionsControllerListResponseDataItemStatus =
   /*@__PURE__*/ S.String;
 
@@ -14360,7 +14466,8 @@ export type WebhookEndpointsControllerCreateRequestEventsItem =
   | "session.revoked"
   | "waitlist_user.approved"
   | "waitlist_user.created"
-  | "waitlist_user.denied";
+  | "waitlist_user.denied"
+  | (string & {});
 export const WebhookEndpointsControllerCreateRequestEventsItem =
   /*@__PURE__*/ S.String;
 
@@ -14389,7 +14496,7 @@ export const WebhookEndpointsControllerCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WebhookEndpointsControllerCreateRequest>;
 
 /** Whether the Webhook Endpoint is enabled or disabled. */
-export type WebhookEndpointJsonStatus = "enabled" | "disabled";
+export type WebhookEndpointJsonStatus = "enabled" | "disabled" | (string & {});
 export const WebhookEndpointJsonStatus = /*@__PURE__*/ S.String;
 
 /** The events that the Webhook Endpoint is subscribed to. */
@@ -14518,7 +14625,8 @@ export const WebhookEndpointList = /*@__PURE__*/ S.suspend(() =>
 /** Whether the Webhook Endpoint is enabled or disabled. */
 export type WebhookEndpointsControllerUpdateRequestStatus =
   | "enabled"
-  | "disabled";
+  | "disabled"
+  | (string & {});
 export const WebhookEndpointsControllerUpdateRequestStatus =
   /*@__PURE__*/ S.String;
 
@@ -14614,7 +14722,8 @@ export type WebhookEndpointsControllerUpdateRequestEventsItem =
   | "session.revoked"
   | "waitlist_user.approved"
   | "waitlist_user.created"
-  | "waitlist_user.denied";
+  | "waitlist_user.denied"
+  | (string & {});
 export const WebhookEndpointsControllerUpdateRequestEventsItem =
   /*@__PURE__*/ S.String;
 
@@ -14657,7 +14766,8 @@ export type WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesItem =
   | "widgets:api-keys:manage"
   | "widgets:dsync:manage"
   | "widgets:audit-log-streaming:manage"
-  | "widgets:pipes:manage";
+  | "widgets:pipes:manage"
+  | (string & {});
 export const WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesItem =
   /*@__PURE__*/ S.String;
 

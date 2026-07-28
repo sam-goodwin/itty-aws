@@ -175,7 +175,8 @@ export type GoogleCloudDatacatalogV1EntryTypeEnum =
   | "FEATURE_ONLINE_STORE"
   | "FEATURE_VIEW"
   | "FEATURE_GROUP"
-  | "GRAPH";
+  | "GRAPH"
+  | (string & {});
 export const GoogleCloudDatacatalogV1EntryTypeEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudDatacatalogV1EntryIntegratedSystemEnum =
@@ -188,7 +189,8 @@ export type GoogleCloudDatacatalogV1EntryIntegratedSystemEnum =
   | "CLOUD_BIGTABLE"
   | "CLOUD_SQL"
   | "LOOKER"
-  | "VERTEX_AI";
+  | "VERTEX_AI"
+  | (string & {});
 export const GoogleCloudDatacatalogV1EntryIntegratedSystemEnum =
   /*@__PURE__*/ S.String;
 
@@ -306,7 +308,8 @@ export type GoogleCloudDatacatalogV1BigQueryTableSpecTableSourceTypeEnum =
   | "TABLE_SOURCE_TYPE_UNSPECIFIED"
   | "BIGQUERY_VIEW"
   | "BIGQUERY_TABLE"
-  | "BIGQUERY_MATERIALIZED_VIEW";
+  | "BIGQUERY_MATERIALIZED_VIEW"
+  | (string & {});
 export const GoogleCloudDatacatalogV1BigQueryTableSpecTableSourceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -384,7 +387,8 @@ export const GoogleCloudDatacatalogV1BigQueryDateShardedSpec =
 export type GoogleCloudDatacatalogV1DatabaseTableSpecTypeEnum =
   | "TABLE_TYPE_UNSPECIFIED"
   | "NATIVE"
-  | "EXTERNAL";
+  | "EXTERNAL"
+  | (string & {});
 export const GoogleCloudDatacatalogV1DatabaseTableSpecTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -398,7 +402,8 @@ export type GoogleCloudDatacatalogV1DataplexExternalTableSystemEnum =
   | "CLOUD_BIGTABLE"
   | "CLOUD_SQL"
   | "LOOKER"
-  | "VERTEX_AI";
+  | "VERTEX_AI"
+  | (string & {});
 export const GoogleCloudDatacatalogV1DataplexExternalTableSystemEnum =
   /*@__PURE__*/ S.String;
 
@@ -574,7 +579,10 @@ export const GoogleCloudDatacatalogV1DataplexTableSpec =
   }) as any as S.Schema<GoogleCloudDatacatalogV1DataplexTableSpec>;
 
 export type GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeEnum =
-  "VIEW_TYPE_UNSPECIFIED" | "STANDARD_VIEW" | "MATERIALIZED_VIEW";
+    | "VIEW_TYPE_UNSPECIFIED"
+    | "STANDARD_VIEW"
+    | "MATERIALIZED_VIEW"
+    | (string & {});
 export const GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -624,14 +632,16 @@ export const GoogleCloudDatacatalogV1DatabaseTableSpec =
 
 export type GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeEnum =
   | "CONNECTION_TYPE_UNSPECIFIED"
-  | "CLOUD_SQL";
+  | "CLOUD_SQL"
+  | (string & {});
 export const GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeEnum =
   | "DATABASE_TYPE_UNSPECIFIED"
   | "POSTGRES"
-  | "MYSQL";
+  | "MYSQL"
+  | (string & {});
 export const GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -700,7 +710,8 @@ export const GoogleCloudDatacatalogV1DataSourceConnectionSpec =
 export type GoogleCloudDatacatalogV1RoutineSpecRoutineTypeEnum =
   | "ROUTINE_TYPE_UNSPECIFIED"
   | "SCALAR_FUNCTION"
-  | "PROCEDURE";
+  | "PROCEDURE"
+  | (string & {});
 export const GoogleCloudDatacatalogV1RoutineSpecRoutineTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -708,7 +719,8 @@ export type GoogleCloudDatacatalogV1RoutineSpecArgumentModeEnum =
   | "MODE_UNSPECIFIED"
   | "IN"
   | "OUT"
-  | "INOUT";
+  | "INOUT"
+  | (string & {});
 export const GoogleCloudDatacatalogV1RoutineSpecArgumentModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -798,7 +810,8 @@ export type GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeEnum =
   | "TRANSLATION"
   | "STORE_VISION"
   | "ENTERPRISE_KNOWLEDGE_GRAPH"
-  | "TEXT_PROMPT";
+  | "TEXT_PROMPT"
+  | (string & {});
 export const GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -931,7 +944,8 @@ export type GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeEnum =
   | "MODEL_GARDEN"
   | "GENIE"
   | "CUSTOM_TEXT_EMBEDDING"
-  | "MARKETPLACE";
+  | "MARKETPLACE"
+  | (string & {});
 export const GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -998,7 +1012,8 @@ export const GoogleCloudDatacatalogV1ModelSpec = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudDatacatalogV1FeatureOnlineStoreSpecStorageTypeEnum =
   | "STORAGE_TYPE_UNSPECIFIED"
   | "BIGTABLE"
-  | "OPTIMIZED";
+  | "OPTIMIZED"
+  | (string & {});
 export const GoogleCloudDatacatalogV1FeatureOnlineStoreSpecStorageTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1021,14 +1036,16 @@ export const GoogleCloudDatacatalogV1FeatureOnlineStoreSpec =
 export type GoogleCloudDatacatalogV1GraphSpecGraphElementTableKindEnum =
   | "KIND_UNSPECIFIED"
   | "NODE"
-  | "EDGE";
+  | "EDGE"
+  | (string & {});
 export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableKindEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDatacatalogV1GraphSpecGraphElementTableInputSourceEnum =
   | "INPUT_SOURCE_UNSPECIFIED"
   | "TABLE"
-  | "VIEW";
+  | "VIEW"
+  | (string & {});
 export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableInputSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1346,7 +1363,8 @@ export type GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeEnum =
   | "INDEXING_TYPE_NONE"
   | "INDEXING_TYPE_NON_UNIQUE"
   | "INDEXING_TYPE_UNIQUE"
-  | "INDEXING_TYPE_PRIMARY_KEY";
+  | "INDEXING_TYPE_PRIMARY_KEY"
+  | (string & {});
 export const GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1356,7 +1374,8 @@ export type GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeEnum =
   | "DIMENSION_GROUP"
   | "FILTER"
   | "MEASURE"
-  | "PARAMETER";
+  | "PARAMETER"
+  | (string & {});
 export const GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1547,7 +1566,8 @@ export const StringMap = /*@__PURE__*/ S.Record(
 export type GoogleCloudDatacatalogV1DataSourceServiceEnum =
   | "SERVICE_UNSPECIFIED"
   | "CLOUD_STORAGE"
-  | "BIGQUERY";
+  | "BIGQUERY"
+  | (string & {});
 export const GoogleCloudDatacatalogV1DataSourceServiceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1811,7 +1831,8 @@ export const GoogleCloudDatacatalogV1TagFieldMap = /*@__PURE__*/ S.Record(
 export type GoogleCloudDatacatalogV1TagDataplexTransferStatusEnum =
   | "DATAPLEX_TRANSFER_STATUS_UNSPECIFIED"
   | "MIGRATED"
-  | "TRANSFERRED";
+  | "TRANSFERRED"
+  | (string & {});
 export const GoogleCloudDatacatalogV1TagDataplexTransferStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -1895,7 +1916,8 @@ export type GoogleCloudDatacatalogV1FieldTypePrimitiveTypeEnum =
   | "STRING"
   | "BOOL"
   | "TIMESTAMP"
-  | "RICHTEXT";
+  | "RICHTEXT"
+  | (string & {});
 export const GoogleCloudDatacatalogV1FieldTypePrimitiveTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1992,7 +2014,8 @@ export const GoogleCloudDatacatalogV1TagTemplateFieldMap =
 export type GoogleCloudDatacatalogV1TagTemplateDataplexTransferStatusEnum =
   | "DATAPLEX_TRANSFER_STATUS_UNSPECIFIED"
   | "MIGRATED"
-  | "TRANSFERRED";
+  | "TRANSFERRED"
+  | (string & {});
 export const GoogleCloudDatacatalogV1TagTemplateDataplexTransferStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -2077,7 +2100,8 @@ export const CreateProjectsLocationsTagTemplatesFieldsRequest =
 
 export type GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnum =
   | "POLICY_TYPE_UNSPECIFIED"
-  | "FINE_GRAINED_ACCESS_CONTROL";
+  | "FINE_GRAINED_ACCESS_CONTROL"
+  | (string & {});
 export const GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -2091,7 +2115,8 @@ export const GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnumList =
 export type GoogleCloudDatacatalogV1TaxonomyServiceNameEnum =
   | "MANAGING_SYSTEM_UNSPECIFIED"
   | "MANAGING_SYSTEM_DATAPLEX"
-  | "MANAGING_SYSTEM_OTHER";
+  | "MANAGING_SYSTEM_OTHER"
+  | (string & {});
 export const GoogleCloudDatacatalogV1TaxonomyServiceNameEnum =
   /*@__PURE__*/ S.String;
 
@@ -2452,7 +2477,7 @@ export const GoogleCloudDatacatalogV1SerializedPolicyTagList =
   ) as any as S.Schema<GoogleCloudDatacatalogV1SerializedPolicyTagList>;
 
 export type GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemEnum =
-  "POLICY_TYPE_UNSPECIFIED" | "FINE_GRAINED_ACCESS_CONTROL";
+  "POLICY_TYPE_UNSPECIFIED" | "FINE_GRAINED_ACCESS_CONTROL" | (string & {});
 export const GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -3818,14 +3843,16 @@ export const RetrieveConfigOrganizationsLocationsRequest =
 export type GoogleCloudDatacatalogV1MigrationConfigTagTemplateMigrationEnum =
   | "TAG_TEMPLATE_MIGRATION_UNSPECIFIED"
   | "TAG_TEMPLATE_MIGRATION_ENABLED"
-  | "TAG_TEMPLATE_MIGRATION_DISABLED";
+  | "TAG_TEMPLATE_MIGRATION_DISABLED"
+  | (string & {});
 export const GoogleCloudDatacatalogV1MigrationConfigTagTemplateMigrationEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDatacatalogV1MigrationConfigCatalogUiExperienceEnum =
   | "CATALOG_UI_EXPERIENCE_UNSPECIFIED"
   | "CATALOG_UI_EXPERIENCE_ENABLED"
-  | "CATALOG_UI_EXPERIENCE_DISABLED";
+  | "CATALOG_UI_EXPERIENCE_DISABLED"
+  | (string & {});
 export const GoogleCloudDatacatalogV1MigrationConfigCatalogUiExperienceEnum =
   /*@__PURE__*/ S.String;
 
@@ -3996,7 +4023,8 @@ export type GoogleCloudDatacatalogV1SearchCatalogResultSearchResultTypeEnum =
   | "SEARCH_RESULT_TYPE_UNSPECIFIED"
   | "ENTRY"
   | "TAG_TEMPLATE"
-  | "ENTRY_GROUP";
+  | "ENTRY_GROUP"
+  | (string & {});
 export const GoogleCloudDatacatalogV1SearchCatalogResultSearchResultTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4010,7 +4038,8 @@ export type GoogleCloudDatacatalogV1SearchCatalogResultIntegratedSystemEnum =
   | "CLOUD_BIGTABLE"
   | "CLOUD_SQL"
   | "LOOKER"
-  | "VERTEX_AI";
+  | "VERTEX_AI"
+  | (string & {});
 export const GoogleCloudDatacatalogV1SearchCatalogResultIntegratedSystemEnum =
   /*@__PURE__*/ S.String;
 
@@ -4092,14 +4121,16 @@ export const GoogleCloudDatacatalogV1SearchCatalogResponse =
 export type GoogleCloudDatacatalogV1SetConfigRequestTagTemplateMigrationEnum =
   | "TAG_TEMPLATE_MIGRATION_UNSPECIFIED"
   | "TAG_TEMPLATE_MIGRATION_ENABLED"
-  | "TAG_TEMPLATE_MIGRATION_DISABLED";
+  | "TAG_TEMPLATE_MIGRATION_DISABLED"
+  | (string & {});
 export const GoogleCloudDatacatalogV1SetConfigRequestTagTemplateMigrationEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDatacatalogV1SetConfigRequestCatalogUiExperienceEnum =
   | "CATALOG_UI_EXPERIENCE_UNSPECIFIED"
   | "CATALOG_UI_EXPERIENCE_ENABLED"
-  | "CATALOG_UI_EXPERIENCE_DISABLED";
+  | "CATALOG_UI_EXPERIENCE_DISABLED"
+  | (string & {});
 export const GoogleCloudDatacatalogV1SetConfigRequestCatalogUiExperienceEnum =
   /*@__PURE__*/ S.String;
 

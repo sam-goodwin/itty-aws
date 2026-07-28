@@ -283,7 +283,8 @@ export type JobDataStatusEnum =
   | "JOB_EXECUTION_STATUS_RUNNING"
   | "JOB_EXECUTION_STATUS_SUCCEEDED"
   | "JOB_EXECUTION_STATUS_FAILED"
-  | "JOB_EXECUTION_STATUS_UNKNOWN";
+  | "JOB_EXECUTION_STATUS_UNKNOWN"
+  | (string & {});
 export const JobDataStatusEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -426,12 +427,14 @@ export const AccessProjectsLocationsBatchesSparkApplicationsRequest =
 export type ApplicationInfoQuantileDataStatusEnum =
   | "QUANTILE_DATA_STATUS_UNSPECIFIED"
   | "QUANTILE_DATA_STATUS_COMPLETED"
-  | "QUANTILE_DATA_STATUS_FAILED";
+  | "QUANTILE_DATA_STATUS_FAILED"
+  | (string & {});
 export const ApplicationInfoQuantileDataStatusEnum = /*@__PURE__*/ S.String;
 
 export type ApplicationInfoApplicationContextIngestionStatusEnum =
   | "APPLICATION_CONTEXT_INGESTION_STATUS_UNSPECIFIED"
-  | "APPLICATION_CONTEXT_INGESTION_STATUS_COMPLETED";
+  | "APPLICATION_CONTEXT_INGESTION_STATUS_COMPLETED"
+  | (string & {});
 export const ApplicationInfoApplicationContextIngestionStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -777,7 +780,8 @@ export type SqlExecutionUiDataJobsValueEnum =
   | "JOB_EXECUTION_STATUS_RUNNING"
   | "JOB_EXECUTION_STATUS_SUCCEEDED"
   | "JOB_EXECUTION_STATUS_FAILED"
-  | "JOB_EXECUTION_STATUS_UNKNOWN";
+  | "JOB_EXECUTION_STATUS_UNKNOWN"
+  | (string & {});
 export const SqlExecutionUiDataJobsValueEnum = /*@__PURE__*/ S.String;
 
 export type SqlExecutionUiDataJobsValueEnumMap = {
@@ -1443,7 +1447,8 @@ export type StageDataStatusEnum =
   | "STAGE_STATUS_COMPLETE"
   | "STAGE_STATUS_FAILED"
   | "STAGE_STATUS_PENDING"
-  | "STAGE_STATUS_SKIPPED";
+  | "STAGE_STATUS_SKIPPED"
+  | (string & {});
 export const StageDataStatusEnum = /*@__PURE__*/ S.String;
 
 /** Executor resources consumed by a stage. */
@@ -1760,7 +1765,8 @@ export type RddOperationNodeOutputDeterministicLevelEnum =
   | "DETERMINISTIC_LEVEL_UNSPECIFIED"
   | "DETERMINISTIC_LEVEL_DETERMINATE"
   | "DETERMINISTIC_LEVEL_UNORDERED"
-  | "DETERMINISTIC_LEVEL_INDETERMINATE";
+  | "DETERMINISTIC_LEVEL_INDETERMINATE"
+  | (string & {});
 export const RddOperationNodeOutputDeterministicLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -2099,7 +2105,8 @@ export type LoggingConfigDriverLogLevelsValueEnum =
   | "WARN"
   | "ERROR"
   | "FATAL"
-  | "OFF";
+  | "OFF"
+  | (string & {});
 export const LoggingConfigDriverLogLevelsValueEnum = /*@__PURE__*/ S.String;
 
 export type LoggingConfigDriverLogLevelsValueEnumMap = {
@@ -2283,7 +2290,8 @@ export type JobStatusSubstateEnum =
   | "UNSPECIFIED"
   | "SUBMITTED"
   | "QUEUED"
-  | "STALE_STATUS";
+  | "STALE_STATUS"
+  | (string & {});
 export const JobStatusSubstateEnum = /*@__PURE__*/ S.String;
 
 export type JobStatusStateEnum =
@@ -2296,7 +2304,8 @@ export type JobStatusStateEnum =
   | "CANCELLED"
   | "DONE"
   | "ERROR"
-  | "ATTEMPT_FAILURE";
+  | "ATTEMPT_FAILURE"
+  | (string & {});
 export const JobStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** Dataproc job status. */
@@ -2486,7 +2495,8 @@ export type YarnApplicationStateEnum =
   | "RUNNING"
   | "FINISHED"
   | "FAILED"
-  | "KILLED";
+  | "KILLED"
+  | (string & {});
 export const YarnApplicationStateEnum = /*@__PURE__*/ S.String;
 
 /** A YARN application created by a job. Application information is a subset of org.apache.hadoop.yarn.proto.YarnProtos.ApplicationReportProto.Beta Feature: This report is available for testing purposes only. It may be changed before final release. */
@@ -2704,7 +2714,8 @@ export const BasicAutoscalingAlgorithm = /*@__PURE__*/ S.suspend(() =>
 export type AutoscalingPolicyClusterTypeEnum =
   | "CLUSTER_TYPE_UNSPECIFIED"
   | "STANDARD"
-  | "ZERO_SCALE";
+  | "ZERO_SCALE"
+  | (string & {});
 export const AutoscalingPolicyClusterTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for the size bounds of an instance group, including its proportional size to other groups. */
@@ -2814,7 +2825,8 @@ export type BatchStateEnum =
   | "CANCELLING"
   | "CANCELLED"
   | "SUCCEEDED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const BatchStateEnum = /*@__PURE__*/ S.String;
 
 /** A configuration for running an Apache PySpark (https://spark.apache.org/docs/latest/api/python/getting_started/quickstart.html) batch workload. */
@@ -2850,7 +2862,8 @@ export type StateHistoryStateEnum =
   | "CANCELLING"
   | "CANCELLED"
   | "SUCCEEDED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const StateHistoryStateEnum = /*@__PURE__*/ S.String;
 
 /** Historical state information. */
@@ -2881,7 +2894,8 @@ export type AutotuningConfigScenariosItemEnum =
   | "BROADCAST_HASH_JOIN"
   | "MEMORY"
   | "NONE"
-  | "AUTO";
+  | "AUTO"
+  | (string & {});
 export const AutotuningConfigScenariosItemEnum = /*@__PURE__*/ S.String;
 
 export type AutotuningConfigScenariosItemEnumList =
@@ -2958,7 +2972,8 @@ export const RuntimeConfig = /*@__PURE__*/ S.suspend(() =>
 export type AuthenticationConfigUserWorkloadAuthenticationTypeEnum =
   | "AUTHENTICATION_TYPE_UNSPECIFIED"
   | "SERVICE_ACCOUNT"
-  | "END_USER_CREDENTIALS";
+  | "END_USER_CREDENTIALS"
+  | (string & {});
 export const AuthenticationConfigUserWorkloadAuthenticationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3135,7 +3150,8 @@ export const UsageMetrics = /*@__PURE__*/ S.suspend(() =>
 export type CohortInfoCohortSourceEnum =
   | "COHORT_SOURCE_UNSPECIFIED"
   | "USER_PROVIDED"
-  | "AIRFLOW";
+  | "AIRFLOW"
+  | (string & {});
 export const CohortInfoCohortSourceEnum = /*@__PURE__*/ S.String;
 
 /** Information about the cohort that the workload belongs to. */
@@ -3382,7 +3398,8 @@ export type SessionStateHistoryStateEnum =
   | "ACTIVE"
   | "TERMINATING"
   | "TERMINATED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const SessionStateHistoryStateEnum = /*@__PURE__*/ S.String;
 
 /** Historical state information. */
@@ -3409,7 +3426,11 @@ export const SessionStateHistoryList = /*@__PURE__*/ S.Array(
   SessionStateHistory,
 ) as any as S.Schema<SessionStateHistoryList>;
 
-export type JupyterConfigKernelEnum = "KERNEL_UNSPECIFIED" | "PYTHON" | "SCALA";
+export type JupyterConfigKernelEnum =
+  | "KERNEL_UNSPECIFIED"
+  | "PYTHON"
+  | "SCALA"
+  | (string & {});
 export const JupyterConfigKernelEnum = /*@__PURE__*/ S.String;
 
 /** Jupyter configuration for an interactive session. */
@@ -3432,7 +3453,8 @@ export type SessionStateEnum =
   | "ACTIVE"
   | "TERMINATING"
   | "TERMINATED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const SessionStateEnum = /*@__PURE__*/ S.String;
 
 /** A representation of a session. */
@@ -3744,7 +3766,8 @@ export type AttachedDiskConfigDiskTypeEnum =
   | "HYPERDISK_BALANCED"
   | "HYPERDISK_EXTREME"
   | "HYPERDISK_ML"
-  | "HYPERDISK_THROUGHPUT";
+  | "HYPERDISK_THROUGHPUT"
+  | (string & {});
 export const AttachedDiskConfigDiskTypeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the config of attached disk options for single VM instance. */
@@ -3899,7 +3922,8 @@ export type InstanceGroupConfigPreemptibilityEnum =
   | "PREEMPTIBILITY_UNSPECIFIED"
   | "NON_PREEMPTIBLE"
   | "PREEMPTIBLE"
-  | "SPOT";
+  | "SPOT"
+  | (string & {});
 export const InstanceGroupConfigPreemptibilityEnum = /*@__PURE__*/ S.String;
 
 /** The config settings for Compute Engine resources in an instance group, such as a master or worker group. */
@@ -3979,14 +4003,16 @@ export const NodeInitializationActionList = /*@__PURE__*/ S.Array(
 export type ClusterConfigEngineEnum =
   | "ENGINE_UNSPECIFIED"
   | "DEFAULT"
-  | "LIGHTNING";
+  | "LIGHTNING"
+  | (string & {});
 export const ClusterConfigEngineEnum = /*@__PURE__*/ S.String;
 
 export type ClusterConfigClusterTypeEnum =
   | "CLUSTER_TYPE_UNSPECIFIED"
   | "STANDARD"
   | "SINGLE_NODE"
-  | "ZERO_SCALE";
+  | "ZERO_SCALE"
+  | (string & {});
 export const ClusterConfigClusterTypeEnum = /*@__PURE__*/ S.String;
 
 export type MetricMetricSourceEnum =
@@ -3998,7 +4024,8 @@ export type MetricMetricSourceEnum =
   | "SPARK_HISTORY_SERVER"
   | "HIVESERVER2"
   | "HIVEMETASTORE"
-  | "FLINK";
+  | "FLINK"
+  | (string & {});
 export const MetricMetricSourceEnum = /*@__PURE__*/ S.String;
 
 /** A custom metric. */
@@ -4050,7 +4077,8 @@ export type ConfidentialInstanceConfigConfidentialInstanceTypeEnum =
   | "CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED"
   | "SEV"
   | "SEV_SNP"
-  | "TDX";
+  | "TDX"
+  | (string & {});
 export const ConfidentialInstanceConfigConfidentialInstanceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4076,7 +4104,8 @@ export type ReservationAffinityConsumeReservationTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "NO_RESERVATION"
   | "ANY_RESERVATION"
-  | "SPECIFIC_RESERVATION";
+  | "SPECIFIC_RESERVATION"
+  | (string & {});
 export const ReservationAffinityConsumeReservationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4105,7 +4134,8 @@ export type GceClusterConfigPrivateIpv6GoogleAccessEnum =
   | "PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED"
   | "INHERIT_FROM_SUBNETWORK"
   | "OUTBOUND"
-  | "BIDIRECTIONAL";
+  | "BIDIRECTIONAL"
+  | (string & {});
 export const GceClusterConfigPrivateIpv6GoogleAccessEnum =
   /*@__PURE__*/ S.String;
 
@@ -4216,7 +4246,10 @@ export const LifecycleConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "LifecycleConfig",
 }) as any as S.Schema<LifecycleConfig>;
 
-export type NodeGroupRolesItemEnum = "ROLE_UNSPECIFIED" | "DRIVER";
+export type NodeGroupRolesItemEnum =
+  | "ROLE_UNSPECIFIED"
+  | "DRIVER"
+  | (string & {});
 export const NodeGroupRolesItemEnum = /*@__PURE__*/ S.String;
 
 export type NodeGroupRolesItemEnumList = ReadonlyArray<NodeGroupRolesItemEnum>;
@@ -4284,7 +4317,8 @@ export type SoftwareConfigOptionalComponentsItemEnum =
   | "SOLR"
   | "ZEPPELIN"
   | "ZOOKEEPER"
-  | "JUPYTER_KERNEL_GATEWAY";
+  | "JUPYTER_KERNEL_GATEWAY"
+  | (string & {});
 export const SoftwareConfigOptionalComponentsItemEnum = /*@__PURE__*/ S.String;
 
 export type SoftwareConfigOptionalComponentsItemEnumList =
@@ -4316,7 +4350,8 @@ export const SoftwareConfig = /*@__PURE__*/ S.suspend(() =>
 export type ClusterConfigClusterTierEnum =
   | "CLUSTER_TIER_UNSPECIFIED"
   | "CLUSTER_TIER_STANDARD"
-  | "CLUSTER_TIER_PREMIUM";
+  | "CLUSTER_TIER_PREMIUM"
+  | (string & {});
 export const ClusterConfigClusterTierEnum = /*@__PURE__*/ S.String;
 
 /** Encryption settings for the cluster. */
@@ -4396,7 +4431,8 @@ export type GkeNodePoolTargetRolesItemEnum =
   | "DEFAULT"
   | "CONTROLLER"
   | "SPARK_DRIVER"
-  | "SPARK_EXECUTOR";
+  | "SPARK_EXECUTOR"
+  | (string & {});
 export const GkeNodePoolTargetRolesItemEnum = /*@__PURE__*/ S.String;
 
 export type GkeNodePoolTargetRolesItemEnumList =
@@ -4882,14 +4918,16 @@ export const CreateProjectsRegionsAutoscalingPoliciesRequest =
 export type CreateProjectsRegionsClustersActionOnFailedPrimaryWorkersEnum =
   | "FAILURE_ACTION_UNSPECIFIED"
   | "NO_ACTION"
-  | "DELETE";
+  | "DELETE"
+  | (string & {});
 export const CreateProjectsRegionsClustersActionOnFailedPrimaryWorkersEnum =
   /*@__PURE__*/ S.String;
 
 export type ClusterStatusSubstateEnum =
   | "UNSPECIFIED"
   | "UNHEALTHY"
-  | "STALE_STATUS";
+  | "STALE_STATUS"
+  | (string & {});
 export const ClusterStatusSubstateEnum = /*@__PURE__*/ S.String;
 
 export type ClusterStatusStateEnum =
@@ -4904,7 +4942,8 @@ export type ClusterStatusStateEnum =
   | "STOPPED"
   | "STARTING"
   | "REPAIRING"
-  | "SCHEDULED";
+  | "SCHEDULED"
+  | (string & {});
 export const ClusterStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** The status of a cluster and its instances. */
@@ -5380,7 +5419,8 @@ export const DeleteProjectsRegionsWorkflowTemplatesRequest =
 export type DiagnoseClusterRequestTarballAccessEnum =
   | "TARBALL_ACCESS_UNSPECIFIED"
   | "GOOGLE_CLOUD_SUPPORT"
-  | "GOOGLE_DATAPROC_DIAGNOSE";
+  | "GOOGLE_DATAPROC_DIAGNOSE"
+  | (string & {});
 export const DiagnoseClusterRequestTarballAccessEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive).The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
@@ -6474,7 +6514,8 @@ export const ListClustersResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsRegionsJobsJobStateMatcherEnum =
   | "ALL"
   | "ACTIVE"
-  | "NON_ACTIVE";
+  | "NON_ACTIVE"
+  | (string & {});
 export const ListProjectsRegionsJobsJobStateMatcherEnum =
   /*@__PURE__*/ S.String;
 
@@ -6682,7 +6723,10 @@ export const PatchProjectsRegionsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchProjectsRegionsJobsRequest",
 }) as any as S.Schema<PatchProjectsRegionsJobsRequest>;
 
-export type NodePoolRepairActionEnum = "REPAIR_ACTION_UNSPECIFIED" | "DELETE";
+export type NodePoolRepairActionEnum =
+  | "REPAIR_ACTION_UNSPECIFIED"
+  | "DELETE"
+  | (string & {});
 export const NodePoolRepairActionEnum = /*@__PURE__*/ S.String;
 
 /** indicating a list of workers of same type */
@@ -6709,7 +6753,8 @@ export const NodePoolList = /*@__PURE__*/ S.Array(
 
 export type ClusterToRepairClusterRepairActionEnum =
   | "CLUSTER_REPAIR_ACTION_UNSPECIFIED"
-  | "REPAIR_ERROR_DUE_TO_UPDATE_CLUSTER";
+  | "REPAIR_ERROR_DUE_TO_UPDATE_CLUSTER"
+  | (string & {});
 export const ClusterToRepairClusterRepairActionEnum = /*@__PURE__*/ S.String;
 
 /** Cluster to be repaired */
@@ -6786,7 +6831,8 @@ export const RepairProjectsRegionsClustersRequest = /*@__PURE__*/ S.suspend(
 
 export type RepairNodeGroupRequestRepairActionEnum =
   | "REPAIR_ACTION_UNSPECIFIED"
-  | "REPLACE";
+  | "REPLACE"
+  | (string & {});
 export const RepairNodeGroupRequestRepairActionEnum = /*@__PURE__*/ S.String;
 
 export interface RepairNodeGroupRequest {
@@ -6876,7 +6922,8 @@ export const ResizeProjectsRegionsClustersNodeGroupsRequest =
 export type SearchExecutorsProjectsLocationsBatchesSparkApplicationsExecutorStatusEnum =
     | "EXECUTOR_STATUS_UNSPECIFIED"
     | "EXECUTOR_STATUS_ACTIVE"
-    | "EXECUTOR_STATUS_DEAD";
+    | "EXECUTOR_STATUS_DEAD"
+    | (string & {});
 export const SearchExecutorsProjectsLocationsBatchesSparkApplicationsExecutorStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -7045,7 +7092,8 @@ export const SearchSparkApplicationExecutorsResponse = /*@__PURE__*/ S.suspend(
 export type SearchExecutorsProjectsLocationsSessionsSparkApplicationsExecutorStatusEnum =
     | "EXECUTOR_STATUS_UNSPECIFIED"
     | "EXECUTOR_STATUS_ACTIVE"
-    | "EXECUTOR_STATUS_DEAD";
+    | "EXECUTOR_STATUS_DEAD"
+    | (string & {});
 export const SearchExecutorsProjectsLocationsSessionsSparkApplicationsExecutorStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -7216,7 +7264,8 @@ export type SearchJobsProjectsLocationsBatchesSparkApplicationsJobStatusEnum =
   | "JOB_EXECUTION_STATUS_RUNNING"
   | "JOB_EXECUTION_STATUS_SUCCEEDED"
   | "JOB_EXECUTION_STATUS_FAILED"
-  | "JOB_EXECUTION_STATUS_UNKNOWN";
+  | "JOB_EXECUTION_STATUS_UNKNOWN"
+  | (string & {});
 export const SearchJobsProjectsLocationsBatchesSparkApplicationsJobStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -7281,7 +7330,8 @@ export type SearchJobsProjectsLocationsSessionsSparkApplicationsJobStatusEnum =
   | "JOB_EXECUTION_STATUS_RUNNING"
   | "JOB_EXECUTION_STATUS_SUCCEEDED"
   | "JOB_EXECUTION_STATUS_FAILED"
-  | "JOB_EXECUTION_STATUS_UNKNOWN";
+  | "JOB_EXECUTION_STATUS_UNKNOWN"
+  | (string & {});
 export const SearchJobsProjectsLocationsSessionsSparkApplicationsJobStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -7343,7 +7393,8 @@ export const SearchSessionSparkApplicationJobsResponse =
 export type SearchProjectsLocationsBatchesSparkApplicationsApplicationStatusEnum =
     | "APPLICATION_STATUS_UNSPECIFIED"
     | "APPLICATION_STATUS_RUNNING"
-    | "APPLICATION_STATUS_COMPLETED";
+    | "APPLICATION_STATUS_COMPLETED"
+    | (string & {});
 export const SearchProjectsLocationsBatchesSparkApplicationsApplicationStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -7431,7 +7482,8 @@ export const SearchSparkApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
 export type SearchProjectsLocationsSessionsSparkApplicationsApplicationStatusEnum =
     | "APPLICATION_STATUS_UNSPECIFIED"
     | "APPLICATION_STATUS_RUNNING"
-    | "APPLICATION_STATUS_COMPLETED";
+    | "APPLICATION_STATUS_COMPLETED"
+    | (string & {});
 export const SearchProjectsLocationsSessionsSparkApplicationsApplicationStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -7723,7 +7775,8 @@ export type SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsTask
     | "TASK_STATUS_SUCCESS"
     | "TASK_STATUS_FAILED"
     | "TASK_STATUS_KILLED"
-    | "TASK_STATUS_PENDING";
+    | "TASK_STATUS_PENDING"
+    | (string & {});
 export const SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsTaskStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -7800,7 +7853,8 @@ export type SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsTas
     | "TASK_STATUS_SUCCESS"
     | "TASK_STATUS_FAILED"
     | "TASK_STATUS_KILLED"
-    | "TASK_STATUS_PENDING";
+    | "TASK_STATUS_PENDING"
+    | (string & {});
 export const SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsTaskStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -7872,7 +7926,8 @@ export type SearchStagesProjectsLocationsBatchesSparkApplicationsStageStatusEnum
     | "STAGE_STATUS_COMPLETE"
     | "STAGE_STATUS_FAILED"
     | "STAGE_STATUS_PENDING"
-    | "STAGE_STATUS_SKIPPED";
+    | "STAGE_STATUS_SKIPPED"
+    | (string & {});
 export const SearchStagesProjectsLocationsBatchesSparkApplicationsStageStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -7937,7 +7992,8 @@ export type SearchStagesProjectsLocationsSessionsSparkApplicationsStageStatusEnu
     | "STAGE_STATUS_COMPLETE"
     | "STAGE_STATUS_FAILED"
     | "STAGE_STATUS_PENDING"
-    | "STAGE_STATUS_SKIPPED";
+    | "STAGE_STATUS_SKIPPED"
+    | (string & {});
 export const SearchStagesProjectsLocationsSessionsSparkApplicationsStageStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -9474,7 +9530,8 @@ export type SparkConnectExecutionInfoStateEnum =
   | "EXECUTION_STATE_CANCELED"
   | "EXECUTION_STATE_FAILED"
   | "EXECUTION_STATE_FINISHED"
-  | "EXECUTION_STATE_CLOSED";
+  | "EXECUTION_STATE_CLOSED"
+  | (string & {});
 export const SparkConnectExecutionInfoStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents the lifecycle and details of an Execution via Spark Connect */

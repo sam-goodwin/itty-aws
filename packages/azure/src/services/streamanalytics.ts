@@ -22,7 +22,7 @@ export const ClustersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ClustersCreateOrUpdateRequestTagsMap>;
 
 /** Specifies the SKU name of the cluster. Required on PUT (CreateOrUpdate) requests. */
-export type ClusterSkuName = "Default";
+export type ClusterSkuName = "Default" | (string & {});
 export const ClusterSkuName = /*@__PURE__*/ S.String;
 
 /** The SKU of the cluster. This determines the size/capacity of the cluster. Required on PUT (CreateOrUpdate) requests. */
@@ -97,7 +97,8 @@ export type ClusterProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled"
-  | "InProgress";
+  | "InProgress"
+  | (string & {});
 export const ClusterProvisioningState = /*@__PURE__*/ S.String;
 
 /** The properties associated with a Stream Analytics cluster. */
@@ -389,7 +390,8 @@ export type JobState =
   | "Failed"
   | "Degraded"
   | "Restarting"
-  | "Scaling";
+  | "Scaling"
+  | (string & {});
 export const JobState = /*@__PURE__*/ S.String;
 
 /** A streaming job. */
@@ -989,7 +991,12 @@ export const FunctionsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunctionsUpdateResponse>;
 
 /** Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests. */
-export type EventSerializationType = "Csv" | "Avro" | "Json" | "Parquet";
+export type EventSerializationType =
+  | "Csv"
+  | "Avro"
+  | "Json"
+  | "Parquet"
+  | (string & {});
 export const EventSerializationType = /*@__PURE__*/ S.String;
 
 /** Describes how data from an input is serialized or how data is serialized when written to an output. */
@@ -1004,7 +1011,7 @@ export const Serialization = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Serialization" }) as any as S.Schema<Serialization>;
 
 /** Indicates the type of compression that the input uses. Required on PUT (CreateOrReplace) requests. */
-export type CompressionType = "None" | "GZip" | "Deflate";
+export type CompressionType = "None" | "GZip" | "Deflate" | (string & {});
 export const CompressionType = /*@__PURE__*/ S.String;
 
 /** Describes how input data is compressed */
@@ -2319,7 +2326,7 @@ export const StreamingJobsCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<StreamingJobsCreateOrReplaceRequestTagsMap>;
 
 /** The name of the SKU. Required on PUT (CreateOrReplace) requests. */
-export type SkuName = "Standard";
+export type SkuName = "Standard" | (string & {});
 export const SkuName = /*@__PURE__*/ S.String;
 
 /** The properties that are associated with a SKU. */
@@ -2334,26 +2341,30 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
 /** Describes the type of the job. Valid modes are `Cloud` and 'Edge'. */
-export type StreamingJobPropertiesInputJobType = "Cloud" | "Edge";
+export type StreamingJobPropertiesInputJobType =
+  | "Cloud"
+  | "Edge"
+  | (string & {});
 export const StreamingJobPropertiesInputJobType = /*@__PURE__*/ S.String;
 
 /** Value may be JobStartTime, CustomTime, or LastOutputEventTime to indicate whether the starting point of the output event stream should start whenever the job is started, start at a custom user time stamp specified via the outputStartTime property, or start from the last event output time. */
 export type OutputStartMode =
   | "JobStartTime"
   | "CustomTime"
-  | "LastOutputEventTime";
+  | "LastOutputEventTime"
+  | (string & {});
 export const OutputStartMode = /*@__PURE__*/ S.String;
 
 /** Indicates the policy to apply to events that arrive out of order in the input event stream. */
-export type EventsOutOfOrderPolicy = "Adjust" | "Drop";
+export type EventsOutOfOrderPolicy = "Adjust" | "Drop" | (string & {});
 export const EventsOutOfOrderPolicy = /*@__PURE__*/ S.String;
 
 /** Indicates the policy to apply to events that arrive at the output and cannot be written to the external storage due to being malformed (missing column values, column values of wrong type or size). */
-export type OutputErrorPolicy = "Stop" | "Drop";
+export type OutputErrorPolicy = "Stop" | "Drop" | (string & {});
 export const OutputErrorPolicy = /*@__PURE__*/ S.String;
 
 /** Controls certain runtime behaviors of the streaming job. */
-export type CompatibilityLevel = "1.0" | "1.2";
+export type CompatibilityLevel = "1.0" | "1.2" | (string & {});
 export const CompatibilityLevel = /*@__PURE__*/ S.String;
 
 /** An input object, containing all information associated with the named input. All inputs are contained under a streaming job. */
@@ -2478,7 +2489,8 @@ export const StreamingJobPropertiesInputFunctionsList = /*@__PURE__*/ S.Array(
 export type JobStorageAccountAuthenticationMode =
   | "Msi"
   | "UserToken"
-  | "ConnectionString";
+  | "ConnectionString"
+  | (string & {});
 export const JobStorageAccountAuthenticationMode = /*@__PURE__*/ S.String;
 
 /** The properties that are associated with an Azure Storage account with MSI */
@@ -2503,7 +2515,8 @@ export const JobStorageAccount = /*@__PURE__*/ S.suspend(() =>
 /** Valid values are JobStorageAccount and SystemAccount. If set to JobStorageAccount, this requires the user to also specify jobStorageAccount property. . */
 export type StreamingJobPropertiesInputContentStoragePolicy =
   | "SystemAccount"
-  | "JobStorageAccount";
+  | "JobStorageAccount"
+  | (string & {});
 export const StreamingJobPropertiesInputContentStoragePolicy =
   /*@__PURE__*/ S.String;
 
@@ -2640,7 +2653,7 @@ export const StreamingJobsCreateOrReplaceResponseTagsMap =
   ) as any as S.Schema<StreamingJobsCreateOrReplaceResponseTagsMap>;
 
 /** Describes the type of the job. Valid modes are `Cloud` and 'Edge'. */
-export type StreamingJobPropertiesJobType = "Cloud" | "Edge";
+export type StreamingJobPropertiesJobType = "Cloud" | "Edge" | (string & {});
 export const StreamingJobPropertiesJobType = /*@__PURE__*/ S.String;
 
 /** An input object, containing all information associated with the named input. All inputs are contained under a streaming job. */
@@ -2788,7 +2801,8 @@ export const StreamingJobPropertiesFunctionsList = /*@__PURE__*/ S.Array(
 /** Valid values are JobStorageAccount and SystemAccount. If set to JobStorageAccount, this requires the user to also specify jobStorageAccount property. . */
 export type StreamingJobPropertiesContentStoragePolicy =
   | "SystemAccount"
-  | "JobStorageAccount";
+  | "JobStorageAccount"
+  | (string & {});
 export const StreamingJobPropertiesContentStoragePolicy =
   /*@__PURE__*/ S.String;
 

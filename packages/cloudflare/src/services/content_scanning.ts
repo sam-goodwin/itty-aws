@@ -41,7 +41,7 @@ export class Forbidden extends T.applyErrorMatchers(
   [{ status: 403 }],
 ) {}
 
-export type CreateRequestValue = "enabled" | "disabled";
+export type CreateRequestValue = "enabled" | "disabled" | (string & {});
 export const CreateRequestValue = /*@__PURE__*/ S.String;
 
 export interface CreateContentScanningRequest {
@@ -381,7 +381,7 @@ export const SettingsGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsGetResponse",
 }) as any as S.Schema<SettingsGetResponse>;
 
-export type UpdateRequestValue = "enabled" | "disabled";
+export type UpdateRequestValue = "enabled" | "disabled" | (string & {});
 export const UpdateRequestValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequest {

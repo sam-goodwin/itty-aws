@@ -163,7 +163,11 @@ export const DeleteCalendarsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteCalendarsResponse",
 }) as any as S.Schema<DeleteCalendarsResponse>;
 
-export type DeleteEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
+export type DeleteEventsSendUpdatesEnum =
+  | "all"
+  | "externalOnly"
+  | "none"
+  | (string & {});
 export const DeleteEventsSendUpdatesEnum = /*@__PURE__*/ S.String;
 
 export interface DeleteEventsRequest {
@@ -1324,7 +1328,11 @@ export const InsertCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsertCalendarsRequest",
 }) as any as S.Schema<InsertCalendarsRequest>;
 
-export type InsertEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
+export type InsertEventsSendUpdatesEnum =
+  | "all"
+  | "externalOnly"
+  | "none"
+  | (string & {});
 export const InsertEventsSendUpdatesEnum = /*@__PURE__*/ S.String;
 
 export interface InsertEventsRequest {
@@ -1519,7 +1527,8 @@ export type ListCalendarListMinAccessRoleEnum =
   | "owner"
   | "reader"
   | "writer"
-  | "writerWithoutPrivateAccess";
+  | "writerWithoutPrivateAccess"
+  | (string & {});
 export const ListCalendarListMinAccessRoleEnum = /*@__PURE__*/ S.String;
 
 export interface ListCalendarListRequest {
@@ -1593,7 +1602,8 @@ export type ListEventsEventTypesEnum =
   | "focusTime"
   | "fromGmail"
   | "outOfOffice"
-  | "workingLocation";
+  | "workingLocation"
+  | (string & {});
 export const ListEventsEventTypesEnum = /*@__PURE__*/ S.String;
 
 export type ListEventsEventTypesEnumList =
@@ -1602,7 +1612,7 @@ export const ListEventsEventTypesEnumList = /*@__PURE__*/ S.Array(
   ListEventsEventTypesEnum,
 ) as any as S.Schema<ListEventsEventTypesEnumList>;
 
-export type ListEventsOrderByEnum = "startTime" | "updated";
+export type ListEventsOrderByEnum = "startTime" | "updated" | (string & {});
 export const ListEventsOrderByEnum = /*@__PURE__*/ S.String;
 
 export interface ListEventsRequest {
@@ -1728,7 +1738,11 @@ export const Settings = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Settings" }) as any as S.Schema<Settings>;
 
-export type MoveEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
+export type MoveEventsSendUpdatesEnum =
+  | "all"
+  | "externalOnly"
+  | "none"
+  | (string & {});
 export const MoveEventsSendUpdatesEnum = /*@__PURE__*/ S.String;
 
 export interface MoveEventsRequest {
@@ -1833,7 +1847,11 @@ export const PatchCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchCalendarsRequest",
 }) as any as S.Schema<PatchCalendarsRequest>;
 
-export type PatchEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
+export type PatchEventsSendUpdatesEnum =
+  | "all"
+  | "externalOnly"
+  | "none"
+  | (string & {});
 export const PatchEventsSendUpdatesEnum = /*@__PURE__*/ S.String;
 
 export interface PatchEventsRequest {
@@ -2045,7 +2063,11 @@ export const FreeBusyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FreeBusyResponse",
 }) as any as S.Schema<FreeBusyResponse>;
 
-export type QuickAddEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
+export type QuickAddEventsSendUpdatesEnum =
+  | "all"
+  | "externalOnly"
+  | "none"
+  | (string & {});
 export const QuickAddEventsSendUpdatesEnum = /*@__PURE__*/ S.String;
 
 export interface QuickAddEventsRequest {
@@ -2240,7 +2262,11 @@ export const UpdateCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateCalendarsRequest",
 }) as any as S.Schema<UpdateCalendarsRequest>;
 
-export type UpdateEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
+export type UpdateEventsSendUpdatesEnum =
+  | "all"
+  | "externalOnly"
+  | "none"
+  | (string & {});
 export const UpdateEventsSendUpdatesEnum = /*@__PURE__*/ S.String;
 
 export interface UpdateEventsRequest {
@@ -2326,7 +2352,8 @@ export type WatchCalendarListMinAccessRoleEnum =
   | "owner"
   | "reader"
   | "writer"
-  | "writerWithoutPrivateAccess";
+  | "writerWithoutPrivateAccess"
+  | (string & {});
 export const WatchCalendarListMinAccessRoleEnum = /*@__PURE__*/ S.String;
 
 export interface WatchCalendarListRequest {
@@ -2370,7 +2397,7 @@ export const WatchCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WatchCalendarListRequest",
 }) as any as S.Schema<WatchCalendarListRequest>;
 
-export type WatchEventsOrderByEnum = "startTime" | "updated";
+export type WatchEventsOrderByEnum = "startTime" | "updated" | (string & {});
 export const WatchEventsOrderByEnum = /*@__PURE__*/ S.String;
 
 export type WatchEventsEventTypesEnum =
@@ -2379,7 +2406,8 @@ export type WatchEventsEventTypesEnum =
   | "focusTime"
   | "fromGmail"
   | "outOfOffice"
-  | "workingLocation";
+  | "workingLocation"
+  | (string & {});
 export const WatchEventsEventTypesEnum = /*@__PURE__*/ S.String;
 
 export type WatchEventsEventTypesEnumList =

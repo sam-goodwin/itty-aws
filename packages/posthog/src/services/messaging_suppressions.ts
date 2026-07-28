@@ -34,7 +34,7 @@ export const MessagingSuppressionsAddSuppressionCreateRequest =
   }) as any as S.Schema<MessagingSuppressionsAddSuppressionCreateRequest>;
 
 /** * `BOUNCE` - Bounce * `MANUAL` - Manual */
-export type MessageSuppressionSourceEnum = "BOUNCE" | "MANUAL";
+export type MessageSuppressionSourceEnum = "BOUNCE" | "MANUAL" | (string & {});
 export const MessageSuppressionSourceEnum = /*@__PURE__*/ S.String;
 
 export interface MessageSuppression {

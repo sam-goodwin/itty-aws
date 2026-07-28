@@ -63,7 +63,8 @@ export class NotFound extends T.applyErrorMatchers(
 export type AccountLabelLabelTypeEnum =
   | "LABEL_TYPE_UNSPECIFIED"
   | "MANUAL"
-  | "AUTOMATIC";
+  | "AUTOMATIC"
+  | (string & {});
 export const AccountLabelLabelTypeEnum = /*@__PURE__*/ S.String;
 
 /** Label assigned by CSS domain or CSS group to one of its sub-accounts. */
@@ -194,7 +195,8 @@ export type AccountAccountTypeEnum =
   | "MC_MARKETPLACE_MCA"
   | "MC_OTHER_MCA"
   | "MC_STANDALONE"
-  | "MC_MCA_SUBACCOUNT";
+  | "MC_MCA_SUBACCOUNT"
+  | (string & {});
 export const AccountAccountTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about CSS/MC account. */
@@ -372,7 +374,8 @@ export const Price = /*@__PURE__*/ S.suspend(() =>
 export type HeadlineOfferSubscriptionCostPeriodEnum =
   | "SUBSCRIPTION_PERIOD_UNSPECIFIED"
   | "MONTH"
-  | "YEAR";
+  | "YEAR"
+  | (string & {});
 export const HeadlineOfferSubscriptionCostPeriodEnum = /*@__PURE__*/ S.String;
 
 /** The SubscriptionCost of the product. */

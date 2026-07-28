@@ -71,10 +71,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -241,10 +242,18 @@ export const CommentsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CommentsDestroyResponse",
 }) as any as S.Schema<CommentsDestroyResponse>;
 
-export type CommentsListRequestCompleted = "any" | "open" | "completed";
+export type CommentsListRequestCompleted =
+  | "any"
+  | "open"
+  | "completed"
+  | (string & {});
 export const CommentsListRequestCompleted = /*@__PURE__*/ S.String;
 
-export type CommentsListRequestKind = "any" | "comment" | "task";
+export type CommentsListRequestKind =
+  | "any"
+  | "comment"
+  | "task"
+  | (string & {});
 export const CommentsListRequestKind = /*@__PURE__*/ S.String;
 
 export interface CommentsListRequest {

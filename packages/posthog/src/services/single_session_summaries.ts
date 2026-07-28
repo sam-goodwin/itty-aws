@@ -17,13 +17,15 @@ export type SingleSessionSummariesListRequestOrder =
   | "-session_start_time"
   | "created_at"
   | "session_duration"
-  | "session_start_time";
+  | "session_start_time"
+  | (string & {});
 export const SingleSessionSummariesListRequestOrder = /*@__PURE__*/ S.String;
 
 export type SingleSessionSummariesListRequestOutcome =
   | "failure"
   | "success"
-  | "unknown";
+  | "unknown"
+  | (string & {});
 export const SingleSessionSummariesListRequestOutcome = /*@__PURE__*/ S.String;
 
 export interface SingleSessionSummariesListRequest {
@@ -122,10 +124,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;

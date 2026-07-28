@@ -251,7 +251,8 @@ export type GoogleCloudDocumentaiV1DocumentSchemaEntityTypePropertyOccurrenceTyp
     | "OPTIONAL_ONCE"
     | "OPTIONAL_MULTIPLE"
     | "REQUIRED_ONCE"
-    | "REQUIRED_MULTIPLE";
+    | "REQUIRED_MULTIPLE"
+    | (string & {});
 export const GoogleCloudDocumentaiV1DocumentSchemaEntityTypePropertyOccurrenceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -259,7 +260,8 @@ export type GoogleCloudDocumentaiV1DocumentSchemaEntityTypePropertyMethodEnum =
   | "METHOD_UNSPECIFIED"
   | "EXTRACT"
   | "DERIVE"
-  | "RELAXED_EXTRACT";
+  | "RELAXED_EXTRACT"
+  | (string & {});
 export const GoogleCloudDocumentaiV1DocumentSchemaEntityTypePropertyMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -709,7 +711,8 @@ export type GoogleCloudDocumentaiV1ProcessorStateEnum =
   | "DISABLING"
   | "CREATING"
   | "FAILED"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const GoogleCloudDocumentaiV1ProcessorStateEnum = /*@__PURE__*/ S.String;
 
 /** The first-class citizen for Document AI. Each processor defines how to extract structural information from a document. */
@@ -1158,7 +1161,8 @@ export type GoogleCloudDocumentaiV1ProcessorTypeLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED";
+  | "DEPRECATED"
+  | (string & {});
 export const GoogleCloudDocumentaiV1ProcessorTypeLaunchStageEnum =
   /*@__PURE__*/ S.String;
 
@@ -1497,7 +1501,8 @@ export type GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResul
     | "VALIDATION_RESULT_TYPE_VALID"
     | "VALIDATION_RESULT_TYPE_INVALID"
     | "VALIDATION_RESULT_TYPE_SKIPPED"
-    | "VALIDATION_RESULT_TYPE_NOT_APPLICABLE";
+    | "VALIDATION_RESULT_TYPE_NOT_APPLICABLE"
+    | (string & {});
 export const GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResultValidationResultTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1687,7 +1692,8 @@ export type GoogleCloudDocumentaiV1DocumentProvenanceTypeEnum =
   | "REPLACE"
   | "EVAL_REQUESTED"
   | "EVAL_APPROVED"
-  | "EVAL_SKIPPED";
+  | "EVAL_SKIPPED"
+  | (string & {});
 export const GoogleCloudDocumentaiV1DocumentProvenanceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1801,7 +1807,8 @@ export const GoogleCloudDocumentaiV1DocumentShardInfo = /*@__PURE__*/ S.suspend(
 export type GoogleCloudDocumentaiV1DocumentEntityMethodEnum =
   | "METHOD_UNSPECIFIED"
   | "EXTRACT"
-  | "DERIVE";
+  | "DERIVE"
+  | (string & {});
 export const GoogleCloudDocumentaiV1DocumentEntityMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -1813,7 +1820,8 @@ export type GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypeEnum =
   | "TOKEN"
   | "VISUAL_ELEMENT"
   | "TABLE"
-  | "FORM_FIELD";
+  | "FORM_FIELD"
+  | (string & {});
 export const GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2546,7 +2554,8 @@ export type GoogleCloudDocumentaiV1DocumentPageLayoutOrientationEnum =
   | "PAGE_UP"
   | "PAGE_RIGHT"
   | "PAGE_DOWN"
-  | "PAGE_LEFT";
+  | "PAGE_LEFT"
+  | (string & {});
 export const GoogleCloudDocumentaiV1DocumentPageLayoutOrientationEnum =
   /*@__PURE__*/ S.String;
 
@@ -2774,7 +2783,8 @@ export type GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "SPACE"
   | "WIDE_SPACE"
-  | "HYPHEN";
+  | "HYPHEN"
+  | (string & {});
 export const GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3587,7 +3597,10 @@ export const GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenA
   }) as any as S.Schema<GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo>;
 
 export type GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfoCustomModelTypeEnum =
-  "CUSTOM_MODEL_TYPE_UNSPECIFIED" | "VERSIONED_FOUNDATION" | "FINE_TUNED";
+    | "CUSTOM_MODEL_TYPE_UNSPECIFIED"
+    | "VERSIONED_FOUNDATION"
+    | "FINE_TUNED"
+    | (string & {});
 export const GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfoCustomModelTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3635,7 +3648,8 @@ export const GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo =
 export type GoogleCloudDocumentaiV1ProcessorVersionModelTypeEnum =
   | "MODEL_TYPE_UNSPECIFIED"
   | "MODEL_TYPE_GENERATIVE"
-  | "MODEL_TYPE_CUSTOM";
+  | "MODEL_TYPE_CUSTOM"
+  | (string & {});
 export const GoogleCloudDocumentaiV1ProcessorVersionModelTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3734,7 +3748,8 @@ export type GoogleCloudDocumentaiV1ProcessorVersionStateEnum =
   | "CREATING"
   | "DELETING"
   | "FAILED"
-  | "IMPORTING";
+  | "IMPORTING"
+  | (string & {});
 export const GoogleCloudDocumentaiV1ProcessorVersionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -3865,7 +3880,7 @@ export const GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetricsList =
   ) as any as S.Schema<GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetricsList>;
 
 export type GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetricsMetricsTypeEnum =
-  "METRICS_TYPE_UNSPECIFIED" | "AGGREGATE";
+  "METRICS_TYPE_UNSPECIFIED" | "AGGREGATE" | (string & {});
 export const GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetricsMetricsTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4575,7 +4590,8 @@ export type GoogleCloudDocumentaiV1HumanReviewStatusStateEnum =
   | "SKIPPED"
   | "VALIDATION_PASSED"
   | "IN_PROGRESS"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const GoogleCloudDocumentaiV1HumanReviewStatusStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -4642,7 +4658,8 @@ export const ProcessProjectsLocationsProcessorsProcessorVersionsRequest =
 
 export type GoogleCloudDocumentaiV1ReviewDocumentRequestPriorityEnum =
   | "DEFAULT"
-  | "URGENT";
+  | "URGENT"
+  | (string & {});
 export const GoogleCloudDocumentaiV1ReviewDocumentRequestPriorityEnum =
   /*@__PURE__*/ S.String;
 
@@ -4737,7 +4754,10 @@ export const SetDefaultProcessorVersionProjectsLocationsProcessorsRequest =
   }) as any as S.Schema<SetDefaultProcessorVersionProjectsLocationsProcessorsRequest>;
 
 export type GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptionsTrainingMethodEnum =
-  "TRAINING_METHOD_UNSPECIFIED" | "MODEL_BASED" | "TEMPLATE_BASED";
+    | "TRAINING_METHOD_UNSPECIFIED"
+    | "MODEL_BASED"
+    | "TEMPLATE_BASED"
+    | (string & {});
 export const GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptionsTrainingMethodEnum =
   /*@__PURE__*/ S.String;
 

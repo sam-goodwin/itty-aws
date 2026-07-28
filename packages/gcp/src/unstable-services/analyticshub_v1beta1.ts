@@ -135,7 +135,8 @@ export type ListingCategoriesItemEnum =
   | "CATEGORY_SCIENCE_AND_RESEARCH"
   | "CATEGORY_TRANSPORTATION_AND_LOGISTICS"
   | "CATEGORY_TRAVEL_AND_TOURISM"
-  | "CATEGORY_GOOGLE_EARTH_ENGINE";
+  | "CATEGORY_GOOGLE_EARTH_ENGINE"
+  | (string & {});
 export const ListingCategoriesItemEnum = /*@__PURE__*/ S.String;
 
 export type ListingCategoriesItemEnumList =
@@ -171,7 +172,7 @@ export const BigQueryDatasetSource = /*@__PURE__*/ S.suspend(() =>
   identifier: "BigQueryDatasetSource",
 }) as any as S.Schema<BigQueryDatasetSource>;
 
-export type ListingStateEnum = "STATE_UNSPECIFIED" | "ACTIVE";
+export type ListingStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | (string & {});
 export const ListingStateEnum = /*@__PURE__*/ S.String;
 
 /** Restricted export config, used to configure restricted export on linked dataset. */
@@ -425,7 +426,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */

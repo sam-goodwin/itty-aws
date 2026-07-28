@@ -68,7 +68,8 @@ export type ParameterTypeEnum =
   | "list"
   | "map"
   | "triggerReference"
-  | "tagReference";
+  | "tagReference"
+  | (string & {});
 export const ParameterTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Google Tag Manager Parameter. */
@@ -151,7 +152,8 @@ export type EntityChangeStatusEnum =
   | "none"
   | "added"
   | "deleted"
-  | "updated";
+  | "updated"
+  | (string & {});
 export const EntityChangeStatusEnum = /*@__PURE__*/ S.String;
 
 export type ConditionTypeEnum =
@@ -166,7 +168,8 @@ export type ConditionTypeEnum =
   | "less"
   | "lessOrEquals"
   | "cssSelector"
-  | "urlMatches";
+  | "urlMatches"
+  | (string & {});
 export const ConditionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a predicate. */
@@ -223,7 +226,8 @@ export type TriggerTypeEnum =
   | "ampVisibility"
   | "youTubeVideo"
   | "scrollDepth"
-  | "elementVisibility";
+  | "elementVisibility"
+  | (string & {});
 export const TriggerTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Google Tag Manager Trigger */
@@ -338,14 +342,16 @@ export const StringList = /*@__PURE__*/ S.Array(
 export type VariableFormatValueCaseConversionTypeEnum =
   | "none"
   | "lowercase"
-  | "uppercase";
+  | "uppercase"
+  | (string & {});
 export const VariableFormatValueCaseConversionTypeEnum = /*@__PURE__*/ S.String;
 
 export type VariableFormatValueConvertToNumberEnum =
   | "decimalSeparatorTypeUnspecified"
   | "period"
   | "comma"
-  | "automatic";
+  | "automatic"
+  | (string & {});
 export const VariableFormatValueConvertToNumberEnum = /*@__PURE__*/ S.String;
 
 export interface VariableFormatValue {
@@ -767,7 +773,8 @@ export type BuiltInVariableTypeEnum =
   | "visitorRegion"
   | "analyticsClientId"
   | "analyticsSessionId"
-  | "analyticsSessionNumber";
+  | "analyticsSessionNumber"
+  | (string & {});
 export const BuiltInVariableTypeEnum = /*@__PURE__*/ S.String;
 
 /** Built-in variables are a special category of variables that are pre-created and non-customizable. They provide common functionality like accessing properties of the gtm data layer, monitoring clicks, or accessing elements of a page URL. */
@@ -820,7 +827,8 @@ export const TeardownTagList = /*@__PURE__*/ S.Array(
 export type TagConsentSettingConsentStatusEnum =
   | "notSet"
   | "notNeeded"
-  | "needed";
+  | "needed"
+  | (string & {});
 export const TagConsentSettingConsentStatusEnum = /*@__PURE__*/ S.String;
 
 export interface TagConsentSetting {
@@ -861,7 +869,8 @@ export type TagTagFiringOptionEnum =
   | "tagFiringOptionUnspecified"
   | "unlimited"
   | "oncePerEvent"
-  | "oncePerLoad";
+  | "oncePerLoad"
+  | (string & {});
 export const TagTagFiringOptionEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Google Tag Manager Tag. */
@@ -1110,7 +1119,8 @@ export const BulkUpdateWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
 export type CombineAccountsContainersSettingSourceEnum =
   | "settingSourceUnspecified"
   | "current"
-  | "other";
+  | "other"
+  | (string & {});
 export const CombineAccountsContainersSettingSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1202,7 +1212,8 @@ export type ContainerUsageContextItemEnum =
   | "androidSdk5"
   | "iosSdk5"
   | "amp"
-  | "server";
+  | "server"
+  | (string & {});
 export const ContainerUsageContextItemEnum = /*@__PURE__*/ S.String;
 
 export type ContainerUsageContextItemEnumList =
@@ -1474,7 +1485,12 @@ export const CreateAccountsContainersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAccountsContainersRequest",
 }) as any as S.Schema<CreateAccountsContainersRequest>;
 
-export type EnvironmentTypeEnum = "user" | "live" | "latest" | "workspace";
+export type EnvironmentTypeEnum =
+  | "user"
+  | "live"
+  | "latest"
+  | "workspace"
+  | (string & {});
 export const EnvironmentTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Google Tag Manager Environment. Note that a user can create, delete and update environments of type USER, but can only update the enable_debug and url fields of environments of other types. */
@@ -1723,7 +1739,8 @@ export type CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnum =
   | "visitorRegion"
   | "analyticsClientId"
   | "analyticsSessionId"
-  | "analyticsSessionNumber";
+  | "analyticsSessionNumber"
+  | (string & {});
 export const CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1974,7 +1991,8 @@ export type AccountAccessPermissionEnum =
   | "accountPermissionUnspecified"
   | "noAccess"
   | "user"
-  | "admin";
+  | "admin"
+  | (string & {});
 export const AccountAccessPermissionEnum = /*@__PURE__*/ S.String;
 
 /** Defines the Google Tag Manager Account access permissions. */
@@ -1994,7 +2012,8 @@ export type ContainerAccessPermissionEnum =
   | "read"
   | "edit"
   | "approve"
-  | "publish";
+  | "publish"
+  | (string & {});
 export const ContainerAccessPermissionEnum = /*@__PURE__*/ S.String;
 
 /** Defines the Google Tag Manager Container access permissions. */
@@ -2281,7 +2300,8 @@ export type DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnum =
   | "visitorRegion"
   | "analyticsClientId"
   | "analyticsSessionId"
-  | "analyticsSessionNumber";
+  | "analyticsSessionNumber"
+  | (string & {});
 export const DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4213,7 +4233,8 @@ export type RevertAccountsContainersWorkspacesBuilt_in_variablesTypeEnum =
   | "visitorRegion"
   | "analyticsClientId"
   | "analyticsSessionId"
-  | "analyticsSessionNumber";
+  | "analyticsSessionNumber"
+  | (string & {});
 export const RevertAccountsContainersWorkspacesBuilt_in_variablesTypeEnum =
   /*@__PURE__*/ S.String;
 

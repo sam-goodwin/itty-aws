@@ -14,7 +14,8 @@ export type { PosthogOpError, PosthogOpContext };
 
 export type McpServerInstallationsAuthorizeRetrieveRequestInstallSource =
   | "posthog"
-  | "posthog-code";
+  | "posthog-code"
+  | (string & {});
 export const McpServerInstallationsAuthorizeRetrieveRequestInstallSource =
   /*@__PURE__*/ S.String;
 
@@ -57,7 +58,7 @@ export const McpServerInstallationsAuthorizeRetrieveResponse =
   }) as any as S.Schema<McpServerInstallationsAuthorizeRetrieveResponse>;
 
 /** * `api_key` - API Key * `oauth` - OAuth */
-export type MCPAuthTypeEnum = "api_key" | "oauth";
+export type MCPAuthTypeEnum = "api_key" | "oauth" | (string & {});
 export const MCPAuthTypeEnum = /*@__PURE__*/ S.String;
 
 export interface McpServerInstallationsCreateRequest {
@@ -89,7 +90,10 @@ export const McpServerInstallationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<McpServerInstallationsCreateRequest>;
 
 /** * `personal` - Personal * `shared` - Shared */
-export type MCPServerInstallationScopeEnum = "personal" | "shared";
+export type MCPServerInstallationScopeEnum =
+  | "personal"
+  | "shared"
+  | (string & {});
 export const MCPServerInstallationScopeEnum = /*@__PURE__*/ S.String;
 
 export interface MCPServerInstallation {
@@ -171,15 +175,15 @@ export const McpServerInstallationsDestroyResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<McpServerInstallationsDestroyResponse>;
 
 /** * `api_key` - api_key * `oauth` - oauth */
-export type InstallCustomAuthTypeEnum = "api_key" | "oauth";
+export type InstallCustomAuthTypeEnum = "api_key" | "oauth" | (string & {});
 export const InstallCustomAuthTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `posthog` - posthog * `posthog-code` - posthog-code */
-export type InstallSourceEnum = "posthog" | "posthog-code";
+export type InstallSourceEnum = "posthog" | "posthog-code" | (string & {});
 export const InstallSourceEnum = /*@__PURE__*/ S.String;
 
 /** * `personal` - personal * `shared` - shared */
-export type MCPInstallationScopeEnum = "personal" | "shared";
+export type MCPInstallationScopeEnum = "personal" | "shared" | (string & {});
 export const MCPInstallationScopeEnum = /*@__PURE__*/ S.String;
 
 export interface McpServerInstallationsInstallCustomCreateRequest {
@@ -425,7 +429,8 @@ export const McpServerInstallationsShareCreateRequest = /*@__PURE__*/ S.suspend(
 export type ToolApprovalUpdateApprovalStateEnum =
   | "approved"
   | "needs_approval"
-  | "do_not_use";
+  | "do_not_use"
+  | (string & {});
 export const ToolApprovalUpdateApprovalStateEnum = /*@__PURE__*/ S.String;
 
 export interface McpServerInstallationsToolsPartialUpdateRequest {
@@ -458,7 +463,8 @@ export const McpServerInstallationsToolsPartialUpdateRequest =
 export type MCPServerInstallationToolApprovalStateEnum =
   | "approved"
   | "needs_approval"
-  | "do_not_use";
+  | "do_not_use"
+  | (string & {});
 export const MCPServerInstallationToolApprovalStateEnum =
   /*@__PURE__*/ S.String;
 

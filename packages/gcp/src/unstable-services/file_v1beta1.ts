@@ -159,7 +159,8 @@ export const StringMap = /*@__PURE__*/ S.Record(
 export type BackupFileSystemProtocolEnum =
   | "FILE_PROTOCOL_UNSPECIFIED"
   | "NFS_V3"
-  | "NFS_V4_1";
+  | "NFS_V4_1"
+  | (string & {});
 export const BackupFileSystemProtocolEnum = /*@__PURE__*/ S.String;
 
 export type BackupSourceInstanceTierEnum =
@@ -171,7 +172,8 @@ export type BackupSourceInstanceTierEnum =
   | "HIGH_SCALE_SSD"
   | "ENTERPRISE"
   | "ZONAL"
-  | "REGIONAL";
+  | "REGIONAL"
+  | (string & {});
 export const BackupSourceInstanceTierEnum = /*@__PURE__*/ S.String;
 
 export type BackupStateEnum =
@@ -180,7 +182,8 @@ export type BackupStateEnum =
   | "FINALIZING"
   | "READY"
   | "DELETING"
-  | "INVALID";
+  | "INVALID"
+  | (string & {});
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
 /** A Filestore backup. */
@@ -318,10 +321,15 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 export type InstanceProtocolEnum =
   | "FILE_PROTOCOL_UNSPECIFIED"
   | "NFS_V3"
-  | "NFS_V4_1";
+  | "NFS_V4_1"
+  | (string & {});
 export const InstanceProtocolEnum = /*@__PURE__*/ S.String;
 
-export type ReplicationRoleEnum = "ROLE_UNSPECIFIED" | "ACTIVE" | "STANDBY";
+export type ReplicationRoleEnum =
+  | "ROLE_UNSPECIFIED"
+  | "ACTIVE"
+  | "STANDBY"
+  | (string & {});
 export const ReplicationRoleEnum = /*@__PURE__*/ S.String;
 
 export type ReplicaConfigStateEnum =
@@ -333,7 +341,8 @@ export type ReplicaConfigStateEnum =
   | "PROMOTING"
   | "PAUSING"
   | "PAUSED"
-  | "RESUMING";
+  | "RESUMING"
+  | (string & {});
 export const ReplicaConfigStateEnum = /*@__PURE__*/ S.String;
 
 export type ReplicaConfigStateReasonsItemEnum =
@@ -341,7 +350,8 @@ export type ReplicaConfigStateReasonsItemEnum =
   | "PEER_INSTANCE_UNREACHABLE"
   | "REMOVE_FAILED"
   | "PAUSE_FAILED"
-  | "RESUME_FAILED";
+  | "RESUME_FAILED"
+  | (string & {});
 export const ReplicaConfigStateReasonsItemEnum = /*@__PURE__*/ S.String;
 
 export type ReplicaConfigStateReasonsItemEnumList =
@@ -432,7 +442,8 @@ export const PerformanceConfig = /*@__PURE__*/ S.suspend(() =>
 
 export type InstanceSuspensionReasonsItemEnum =
   | "SUSPENSION_REASON_UNSPECIFIED"
-  | "KMS_KEY_ISSUE";
+  | "KMS_KEY_ISSUE"
+  | (string & {});
 export const InstanceSuspensionReasonsItemEnum = /*@__PURE__*/ S.String;
 
 export type InstanceSuspensionReasonsItemEnumList =
@@ -462,7 +473,8 @@ export type NfsExportOptionsSecurityFlavorsItemEnum =
   | "AUTH_SYS"
   | "KRB5"
   | "KRB5I"
-  | "KRB5P";
+  | "KRB5P"
+  | (string & {});
 export const NfsExportOptionsSecurityFlavorsItemEnum = /*@__PURE__*/ S.String;
 
 export type NfsExportOptionsSecurityFlavorsItemEnumList =
@@ -475,13 +487,15 @@ export const NfsExportOptionsSecurityFlavorsItemEnumList =
 export type NfsExportOptionsSquashModeEnum =
   | "SQUASH_MODE_UNSPECIFIED"
   | "NO_ROOT_SQUASH"
-  | "ROOT_SQUASH";
+  | "ROOT_SQUASH"
+  | (string & {});
 export const NfsExportOptionsSquashModeEnum = /*@__PURE__*/ S.String;
 
 export type NfsExportOptionsAccessModeEnum =
   | "ACCESS_MODE_UNSPECIFIED"
   | "READ_ONLY"
-  | "READ_WRITE";
+  | "READ_WRITE"
+  | (string & {});
 export const NfsExportOptionsAccessModeEnum = /*@__PURE__*/ S.String;
 
 /** NFS export options specifications. */
@@ -633,7 +647,8 @@ export const DirectoryServicesConfig = /*@__PURE__*/ S.suspend(() =>
 export type InstanceBackendTypeEnum =
   | "BACKEND_TYPE_UNSPECIFIED"
   | "COMPUTE_BASED_BACKEND"
-  | "FILESTORE_BACKEND";
+  | "FILESTORE_BACKEND"
+  | (string & {});
 export const InstanceBackendTypeEnum = /*@__PURE__*/ S.String;
 
 export type InstanceStateEnum =
@@ -648,13 +663,15 @@ export type InstanceStateEnum =
   | "REVERTING"
   | "SUSPENDING"
   | "RESUMING"
-  | "PROMOTING";
+  | "PROMOTING"
+  | (string & {});
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 export type NetworkConfigModesItemEnum =
   | "ADDRESS_MODE_UNSPECIFIED"
   | "MODE_IPV4"
-  | "MODE_IPV6";
+  | "MODE_IPV6"
+  | (string & {});
 export const NetworkConfigModesItemEnum = /*@__PURE__*/ S.String;
 
 export type NetworkConfigModesItemEnumList =
@@ -678,7 +695,8 @@ export type NetworkConfigConnectModeEnum =
   | "CONNECT_MODE_UNSPECIFIED"
   | "DIRECT_PEERING"
   | "PRIVATE_SERVICE_ACCESS"
-  | "PRIVATE_SERVICE_CONNECT";
+  | "PRIVATE_SERVICE_CONNECT"
+  | (string & {});
 export const NetworkConfigConnectModeEnum = /*@__PURE__*/ S.String;
 
 /** Network configuration for the instance. */
@@ -721,7 +739,8 @@ export type InstanceTierEnum =
   | "HIGH_SCALE_SSD"
   | "ENTERPRISE"
   | "ZONAL"
-  | "REGIONAL";
+  | "REGIONAL"
+  | (string & {});
 export const InstanceTierEnum = /*@__PURE__*/ S.String;
 
 /** A Filestore instance. */
@@ -851,7 +870,8 @@ export type ShareStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "READY"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const ShareStateEnum = /*@__PURE__*/ S.String;
 
 /** A Filestore share. */
@@ -918,7 +938,8 @@ export type SnapshotStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "READY"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const SnapshotStateEnum = /*@__PURE__*/ S.String;
 
 /** A Filestore snapshot. */

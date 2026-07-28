@@ -14,7 +14,7 @@ import * as Retry from "../retry.ts";
 export type { AzureOpError, AzureOpContext };
 
 export type AdvancedThreatProtectionSettingsGetRequestAdvancedThreatProtectionName =
-  "Default";
+  "Default" | (string & {});
 export const AdvancedThreatProtectionSettingsGetRequestAdvancedThreatProtectionName =
   /*@__PURE__*/ S.String;
 
@@ -55,7 +55,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -63,7 +64,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -93,7 +95,10 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 /** Specifies the state of the Advanced Threat Protection, whether it is enabled or disabled on the server. */
-export type AdvancedThreatProtectionState = "Enabled" | "Disabled";
+export type AdvancedThreatProtectionState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const AdvancedThreatProtectionState = /*@__PURE__*/ S.String;
 
 /** The current provisioning state. */
@@ -101,7 +106,8 @@ export type AdvancedThreatProtectionProvisioningState =
   | "Succeeded"
   | "Updating"
   | "Canceled"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const AdvancedThreatProtectionProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of an Advanced Threat Protection setting. */
@@ -224,7 +230,7 @@ export const AdvancedThreatProtectionListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdvancedThreatProtectionListResult>;
 
 export type AdvancedThreatProtectionSettingsUpdateRequestAdvancedThreatProtectionName =
-  "Default";
+  "Default" | (string & {});
 export const AdvancedThreatProtectionSettingsUpdateRequestAdvancedThreatProtectionName =
   /*@__PURE__*/ S.String;
 
@@ -303,7 +309,7 @@ export const AdvancedThreatProtectionSettingsUpdateResponse =
   }) as any as S.Schema<AdvancedThreatProtectionSettingsUpdateResponse>;
 
 export type AdvancedThreatProtectionSettingsUpdatePutRequestAdvancedThreatProtectionName =
-  "Default";
+  "Default" | (string & {});
 export const AdvancedThreatProtectionSettingsUpdatePutRequestAdvancedThreatProtectionName =
   /*@__PURE__*/ S.String;
 
@@ -382,12 +388,13 @@ export const AdvancedThreatProtectionSettingsUpdatePutResponse =
   }) as any as S.Schema<AdvancedThreatProtectionSettingsUpdatePutResponse>;
 
 export type AzureADAdministratorsCreateOrUpdateRequestAdministratorName =
-  "ActiveDirectory";
+  | "ActiveDirectory"
+  | (string & {});
 export const AzureADAdministratorsCreateOrUpdateRequestAdministratorName =
   /*@__PURE__*/ S.String;
 
 /** Type of the sever administrator. */
-export type AdministratorType = "ActiveDirectory";
+export type AdministratorType = "ActiveDirectory" | (string & {});
 export const AdministratorType = /*@__PURE__*/ S.String;
 
 /** The properties of an administrator. */
@@ -476,7 +483,8 @@ export const AzureADAdministratorsCreateOrUpdateResponse =
   }) as any as S.Schema<AzureADAdministratorsCreateOrUpdateResponse>;
 
 export type AzureADAdministratorsDeleteRequestAdministratorName =
-  "ActiveDirectory";
+  | "ActiveDirectory"
+  | (string & {});
 export const AzureADAdministratorsDeleteRequestAdministratorName =
   /*@__PURE__*/ S.String;
 
@@ -518,7 +526,8 @@ export const AzureADAdministratorsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureADAdministratorsDeleteResponse>;
 
 export type AzureADAdministratorsGetRequestAdministratorName =
-  "ActiveDirectory";
+  | "ActiveDirectory"
+  | (string & {});
 export const AzureADAdministratorsGetRequestAdministratorName =
   /*@__PURE__*/ S.String;
 
@@ -651,7 +660,7 @@ export const AdministratorListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdministratorListResult>;
 
 /** Backup Format for the current backup. (CollatedFormat is INTERNAL – DO NOT USE) */
-export type BackupFormat = "CollatedFormat" | "Raw";
+export type BackupFormat = "CollatedFormat" | "Raw" | (string & {});
 export const BackupFormat = /*@__PURE__*/ S.String;
 
 /** Backup Settings */
@@ -832,7 +841,8 @@ export type OperationStatus =
   | "Succeeded"
   | "Failed"
   | "CancelInProgress"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const OperationStatus = /*@__PURE__*/ S.String;
 
 export interface BackupAndExportCreateResponse {
@@ -1304,7 +1314,7 @@ export const ConfigurationsBatchUpdateRequestValueList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ConfigurationsBatchUpdateRequestValueList>;
 
 /** Whether to reset all server parameters to default. */
-export type ResetAllToDefault = "True" | "False";
+export type ResetAllToDefault = "True" | "False" | (string & {});
 export const ResetAllToDefault = /*@__PURE__*/ S.String;
 
 export interface ConfigurationsBatchUpdateRequest {
@@ -1339,19 +1349,22 @@ export const ConfigurationsBatchUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigurationsBatchUpdateRequest>;
 
 /** Source of the configuration. */
-export type ConfigurationSource = "system-default" | "user-override";
+export type ConfigurationSource =
+  | "system-default"
+  | "user-override"
+  | (string & {});
 export const ConfigurationSource = /*@__PURE__*/ S.String;
 
 /** If is the configuration read only. */
-export type IsReadOnly = "True" | "False";
+export type IsReadOnly = "True" | "False" | (string & {});
 export const IsReadOnly = /*@__PURE__*/ S.String;
 
 /** If is the configuration pending restart or not. */
-export type IsConfigPendingRestart = "True" | "False";
+export type IsConfigPendingRestart = "True" | "False" | (string & {});
 export const IsConfigPendingRestart = /*@__PURE__*/ S.String;
 
 /** If is the configuration dynamic. */
-export type IsDynamicConfig = "True" | "False";
+export type IsDynamicConfig = "True" | "False" | (string & {});
 export const IsDynamicConfig = /*@__PURE__*/ S.String;
 
 /** The properties of a configuration. */
@@ -2737,7 +2750,7 @@ export const LogFileListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogFileListResult",
 }) as any as S.Schema<LogFileListResult>;
 
-export type BackupType = "FULL";
+export type BackupType = "FULL" | (string & {});
 export const BackupType = /*@__PURE__*/ S.String;
 
 /** The current provisioning state. */
@@ -2746,7 +2759,8 @@ export type ProvisioningState =
   | "Creating"
   | "Deleting"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The properties of a server backup. */
@@ -2980,7 +2994,8 @@ export type MaintenanceType =
   | "RoutineMaintenance"
   | "MinorVersionUpgrade"
   | "SecurityPatches"
-  | "HotFixes";
+  | "HotFixes"
+  | (string & {});
 export const MaintenanceType = /*@__PURE__*/ S.String;
 
 /** The current status of this maintenance. */
@@ -2990,7 +3005,8 @@ export type MaintenanceState =
   | "InPreparation"
   | "Processing"
   | "Completed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const MaintenanceState = /*@__PURE__*/ S.String;
 
 /** The current provisioning state. */
@@ -2998,7 +3014,8 @@ export type MaintenanceProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const MaintenanceProvisioningState = /*@__PURE__*/ S.String;
 
 /** The properties of a maintenance resource. */
@@ -3288,7 +3305,8 @@ export const OperationProgressGetResponseOperationsList = /*@__PURE__*/ S.Array(
 /** Identifies the type of source operation */
 export type ObjectType =
   | "BackupAndExportResponse"
-  | "ImportFromStorageResponse";
+  | "ImportFromStorageResponse"
+  | (string & {});
 export const ObjectType = /*@__PURE__*/ S.String;
 
 /** Represents the response properties specific to the operation */
@@ -3460,7 +3478,7 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type Origin = "user" | "system" | "user,system";
+export type Origin = "user" | "system" | "user,system" | (string & {});
 export const Origin = /*@__PURE__*/ S.String;
 
 /** Additional descriptions for the operation. */
@@ -3524,7 +3542,8 @@ export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected";
+  | "Rejected"
+  | (string & {});
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -3621,7 +3640,8 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -4034,7 +4054,7 @@ export const ServerTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ServerTagsMap>;
 
 /** The major version of a server. 8.0.21 stands for MySQL 8.0, 5.7.44 stands for MySQL 5.7 */
-export type ServerVersion = "5.7" | "8.0.21";
+export type ServerVersion = "5.7" | "8.0.21" | (string & {});
 export const ServerVersion = /*@__PURE__*/ S.String;
 
 /** The mode to create a new MySQL server. */
@@ -4042,15 +4062,19 @@ export type CreateMode =
   | "Default"
   | "PointInTimeRestore"
   | "Replica"
-  | "GeoRestore";
+  | "GeoRestore"
+  | (string & {});
 export const CreateMode = /*@__PURE__*/ S.String;
 
 /** The replication role. */
-export type ReplicationRole = "None" | "Source" | "Replica";
+export type ReplicationRole = "None" | "Source" | "Replica" | (string & {});
 export const ReplicationRole = /*@__PURE__*/ S.String;
 
 /** The key type, AzureKeyVault for enable cmk, SystemManaged for disable cmk. */
-export type DataEncryptionType = "AzureKeyVault" | "SystemManaged";
+export type DataEncryptionType =
+  | "AzureKeyVault"
+  | "SystemManaged"
+  | (string & {});
 export const DataEncryptionType = /*@__PURE__*/ S.String;
 
 /** The date encryption for cmk. */
@@ -4084,23 +4108,27 @@ export type ServerState =
   | "Starting"
   | "Stopping"
   | "Stopped"
-  | "Updating";
+  | "Updating"
+  | (string & {});
 export const ServerState = /*@__PURE__*/ S.String;
 
 /** Enable Storage Auto Grow or not. */
-export type StorageAutoGrow = "Enabled" | "Disabled";
+export type StorageAutoGrow = "Enabled" | "Disabled" | (string & {});
 export const StorageAutoGrow = /*@__PURE__*/ S.String;
 
 /** Enable Log On Disk or not. */
-export type StorageLogOnDisk = "Enabled" | "Disabled";
+export type StorageLogOnDisk = "Enabled" | "Disabled" | (string & {});
 export const StorageLogOnDisk = /*@__PURE__*/ S.String;
 
 /** Enable IO Auto Scaling or not. */
-export type StorageAutoIoScaling = "Enabled" | "Disabled";
+export type StorageAutoIoScaling = "Enabled" | "Disabled" | (string & {});
 export const StorageAutoIoScaling = /*@__PURE__*/ S.String;
 
 /** The redundant type of the server storage. The parameter is used for server creation. */
-export type StorageStorageRedundancy = "LocalRedundancy" | "ZoneRedundancy";
+export type StorageStorageRedundancy =
+  | "LocalRedundancy"
+  | "ZoneRedundancy"
+  | (string & {});
 export const StorageStorageRedundancy = /*@__PURE__*/ S.String;
 
 /** Storage Profile properties of a server */
@@ -4133,7 +4161,7 @@ export const Storage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Storage" }) as any as S.Schema<Storage>;
 
 /** Whether or not geo redundant backup is enabled. */
-export type BackupGeoRedundantBackup = "Enabled" | "Disabled";
+export type BackupGeoRedundantBackup = "Enabled" | "Disabled" | (string & {});
 export const BackupGeoRedundantBackup = /*@__PURE__*/ S.String;
 
 /** Storage Profile properties of a server */
@@ -4157,7 +4185,11 @@ export const Backup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Backup" }) as any as S.Schema<Backup>;
 
 /** High availability mode for a server. */
-export type HighAvailabilityMode = "Disabled" | "ZoneRedundant" | "SameZone";
+export type HighAvailabilityMode =
+  | "Disabled"
+  | "ZoneRedundant"
+  | "SameZone"
+  | (string & {});
 export const HighAvailabilityMode = /*@__PURE__*/ S.String;
 
 /** The state of server high availability. */
@@ -4166,7 +4198,8 @@ export type HighAvailabilityState =
   | "CreatingStandby"
   | "Healthy"
   | "FailingOver"
-  | "RemovingStandby";
+  | "RemovingStandby"
+  | (string & {});
 export const HighAvailabilityState = /*@__PURE__*/ S.String;
 
 /** High availability properties of a server */
@@ -4189,7 +4222,7 @@ export const HighAvailability = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HighAvailability>;
 
 /** Enum to indicate whether value is 'Enabled' or 'Disabled' */
-export type EnableStatusEnum = "Enabled" | "Disabled";
+export type EnableStatusEnum = "Enabled" | "Disabled" | (string & {});
 export const EnableStatusEnum = /*@__PURE__*/ S.String;
 
 /** Network related properties of a server */
@@ -4244,7 +4277,7 @@ export const ServerPropertiesPrivateEndpointConnectionsList =
   ) as any as S.Schema<ServerPropertiesPrivateEndpointConnectionsList>;
 
 /** Enum to indicate the patch strategy of a server */
-export type PatchStrategy = "Regular" | "VirtualCanary";
+export type PatchStrategy = "Regular" | "VirtualCanary" | (string & {});
 export const PatchStrategy = /*@__PURE__*/ S.String;
 
 /** Maintenance policy of a server. */
@@ -4261,7 +4294,11 @@ export const MaintenancePolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MaintenancePolicy>;
 
 /** The batch of maintenance when enabled the custom managed maintenance window of a server. */
-export type BatchOfMaintenance = "Default" | "Batch1" | "Batch2";
+export type BatchOfMaintenance =
+  | "Default"
+  | "Batch1"
+  | "Batch2"
+  | (string & {});
 export const BatchOfMaintenance = /*@__PURE__*/ S.String;
 
 /** Maintenance window of a server. */
@@ -4290,7 +4327,7 @@ export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MaintenanceWindow>;
 
 /** Storage type of import source. */
-export type ImportSourceStorageType = "AzureBlob";
+export type ImportSourceStorageType = "AzureBlob" | (string & {});
 export const ImportSourceStorageType = /*@__PURE__*/ S.String;
 
 /** Import source related properties. */
@@ -4394,7 +4431,7 @@ export const ServerProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerProperties>;
 
 /** Type of managed service identity. */
-export type ManagedServiceIdentityType = "UserAssigned";
+export type ManagedServiceIdentityType = "UserAssigned" | (string & {});
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** Metadata of user assigned identity. */
@@ -4448,7 +4485,11 @@ export const MySQLServerIdentity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MySQLServerIdentity>;
 
 /** The tier of the particular SKU, e.g. GeneralPurpose. */
-export type ServerSkuTier = "Burstable" | "GeneralPurpose" | "MemoryOptimized";
+export type ServerSkuTier =
+  | "Burstable"
+  | "GeneralPurpose"
+  | "MemoryOptimized"
+  | (string & {});
 export const ServerSkuTier = /*@__PURE__*/ S.String;
 
 /** Billing information related properties of a server. */
@@ -4523,7 +4564,9 @@ export const ServerListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerListResult>;
 
 /** The key type like 'AzureKeyVault'. */
-export type ServerKeyPropertiesInputServerKeyType = "AzureKeyVault";
+export type ServerKeyPropertiesInputServerKeyType =
+  | "AzureKeyVault"
+  | (string & {});
 export const ServerKeyPropertiesInputServerKeyType = /*@__PURE__*/ S.String;
 
 /** Properties for a key execution. */
@@ -4574,7 +4617,7 @@ export const ServerKeysCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerKeysCreateOrUpdateRequest>;
 
 /** The key type like 'AzureKeyVault'. */
-export type ServerKeyPropertiesServerKeyType = "AzureKeyVault";
+export type ServerKeyPropertiesServerKeyType = "AzureKeyVault" | (string & {});
 export const ServerKeyPropertiesServerKeyType = /*@__PURE__*/ S.String;
 
 /** Properties for a key execution. */
@@ -4785,21 +4828,22 @@ export const ServersCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ServersCreateRequestTagsMap>;
 
 /** Enable Storage Auto Grow or not. */
-export type StorageInputAutoGrow = "Enabled" | "Disabled";
+export type StorageInputAutoGrow = "Enabled" | "Disabled" | (string & {});
 export const StorageInputAutoGrow = /*@__PURE__*/ S.String;
 
 /** Enable Log On Disk or not. */
-export type StorageInputLogOnDisk = "Enabled" | "Disabled";
+export type StorageInputLogOnDisk = "Enabled" | "Disabled" | (string & {});
 export const StorageInputLogOnDisk = /*@__PURE__*/ S.String;
 
 /** Enable IO Auto Scaling or not. */
-export type StorageInputAutoIoScaling = "Enabled" | "Disabled";
+export type StorageInputAutoIoScaling = "Enabled" | "Disabled" | (string & {});
 export const StorageInputAutoIoScaling = /*@__PURE__*/ S.String;
 
 /** The redundant type of the server storage. The parameter is used for server creation. */
 export type StorageInputStorageRedundancy =
   | "LocalRedundancy"
-  | "ZoneRedundancy";
+  | "ZoneRedundancy"
+  | (string & {});
 export const StorageInputStorageRedundancy = /*@__PURE__*/ S.String;
 
 /** Storage Profile properties of a server */
@@ -4829,7 +4873,10 @@ export const StorageInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageInput" }) as any as S.Schema<StorageInput>;
 
 /** Whether or not geo redundant backup is enabled. */
-export type BackupInputGeoRedundantBackup = "Enabled" | "Disabled";
+export type BackupInputGeoRedundantBackup =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const BackupInputGeoRedundantBackup = /*@__PURE__*/ S.String;
 
 /** Storage Profile properties of a server */

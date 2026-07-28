@@ -28,7 +28,7 @@ export const ApplicationProviderAuthorization = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationProviderAuthorization>;
 
 /** The ownership role the application has on the resource types. The service owner role gives the application owner permissions. The limited owner role gives elevated permissions but does not allow all the permissions of a service owner, such as read/write on internal metadata. */
-export type Role = "ServiceOwner" | "LimitedOwner";
+export type Role = "ServiceOwner" | "LimitedOwner" | (string & {});
 export const Role = /*@__PURE__*/ S.String;
 
 /** The resource types from the defined resource types in the provider namespace that the application can access. If no resource types are specified and the role is service owner, the default is * which is all resource types */
@@ -75,7 +75,8 @@ export type ProvisioningState =
   | "Succeeded"
   | "MovingResources"
   | "TransientFailure"
-  | "RolloutInProgress";
+  | "RolloutInProgress"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 export interface AuthorizedApplicationProperties {
@@ -130,7 +131,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -138,7 +140,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -549,7 +552,7 @@ export const ProviderRegistrationPropertiesProviderAuthorizationsList =
   ) as any as S.Schema<ProviderRegistrationPropertiesProviderAuthorizationsList>;
 
 /** The status. */
-export type ServiceStatus = "Active" | "Inactive";
+export type ServiceStatus = "Active" | "Inactive" | (string & {});
 export const ServiceStatus = /*@__PURE__*/ S.String;
 
 /** Resource provider service. */
@@ -584,7 +587,8 @@ export type ResourceProviderType =
   | "RegistrationFree"
   | "LegacyRegistrationRequired"
   | "TenantOnly"
-  | "AuthorizationFree";
+  | "AuthorizationFree"
+  | (string & {});
 export const ResourceProviderType = /*@__PURE__*/ S.String;
 
 /** The required features. */
@@ -596,7 +600,7 @@ export const ProviderRegistrationPropertiesRequiredFeaturesList =
   ) as any as S.Schema<ProviderRegistrationPropertiesRequiredFeaturesList>;
 
 /** The required feature policy. */
-export type FeaturesPolicy = "Any" | "All";
+export type FeaturesPolicy = "Any" | "All" | (string & {});
 export const FeaturesPolicy = /*@__PURE__*/ S.String;
 
 export interface FeaturesRule {
@@ -622,13 +626,15 @@ export type OptInHeaderType =
   | "PrivateLinkVnetTrafficTag"
   | "ResourceGroupLocation"
   | "ClientPrincipalNameEncoded"
-  | "MSIResourceIdEncoded";
+  | "MSIResourceIdEncoded"
+  | (string & {});
 export const OptInHeaderType = /*@__PURE__*/ S.String;
 
 /** The opt out headers. */
 export type OptOutHeaderType =
   | "NotSpecified"
-  | "SystemDataCreatedByLastModifiedBy";
+  | "SystemDataCreatedByLastModifiedBy"
+  | (string & {});
 export const OptOutHeaderType = /*@__PURE__*/ S.String;
 
 export interface RequestHeaderOptions {
@@ -678,7 +684,8 @@ export type Readiness =
   | "PrivatePreview"
   | "PublicPreview"
   | "RemovedFromARM"
-  | "Retired";
+  | "Retired"
+  | (string & {});
 export const Readiness = /*@__PURE__*/ S.String;
 
 export interface ServiceTreeInfo {
@@ -711,7 +718,8 @@ export const ResourceProviderManagementServiceTreeInfosList =
 export type ResourceAccessPolicy =
   | "NotSpecified"
   | "AcisReadAllowed"
-  | "AcisActionAllowed";
+  | "AcisActionAllowed"
+  | (string & {});
 export const ResourceAccessPolicy = /*@__PURE__*/ S.String;
 
 /** The allowed group claims. */
@@ -760,7 +768,8 @@ export const ResourceProviderManagementExpeditedRolloutSubmittersList =
 /** Type of server failure response message. */
 export type ServerFailureResponseMessageType =
   | "NotSpecified"
-  | "OutageReporting";
+  | "OutageReporting"
+  | (string & {});
 export const ServerFailureResponseMessageType = /*@__PURE__*/ S.String;
 
 /** Options for error response messages. */
@@ -780,7 +789,7 @@ export const ResourceProviderManagementErrorResponseMessageOptions =
   }) as any as S.Schema<ResourceProviderManagementErrorResponseMessageOptions>;
 
 /** Expedited rollout intent. */
-export type ExpeditedRolloutIntent = "NotSpecified" | "Hotfix";
+export type ExpeditedRolloutIntent = "NotSpecified" | "Hotfix" | (string & {});
 export const ExpeditedRolloutIntent = /*@__PURE__*/ S.String;
 
 /** Metadata for expedited rollout. */
@@ -880,7 +889,8 @@ export const ResourceProviderManagement = /*@__PURE__*/ S.suspend(() =>
 export type ResourceProviderCapabilitiesEffect =
   | "NotSpecified"
   | "Allow"
-  | "Disallow";
+  | "Disallow"
+  | (string & {});
 export const ResourceProviderCapabilitiesEffect = /*@__PURE__*/ S.String;
 
 /** The required features. */
@@ -922,13 +932,15 @@ export const ProviderRegistrationPropertiesCapabilitiesList =
 /** The cross tenant token validation. */
 export type CrossTenantTokenValidation =
   | "EnsureSecureValidation"
-  | "PassthroughInsecureToken";
+  | "PassthroughInsecureToken"
+  | (string & {});
 export const CrossTenantTokenValidation = /*@__PURE__*/ S.String;
 
 export type PreflightOption =
   | "None"
   | "ContinueDeploymentOnFailure"
-  | "DefaultValidationOnly";
+  | "DefaultValidationOnly"
+  | (string & {});
 export const PreflightOption = /*@__PURE__*/ S.String;
 
 /** The preflight options. */
@@ -979,7 +991,8 @@ export type EndpointType =
   | "NotSpecified"
   | "Canary"
   | "Production"
-  | "TestInProduction";
+  | "TestInProduction"
+  | (string & {});
 export const EndpointType = /*@__PURE__*/ S.String;
 
 export interface ResourceProviderEndpoint {
@@ -1027,11 +1040,18 @@ export const ProviderRegistrationPropertiesGlobalNotificationEndpointsList =
   ) as any as S.Schema<ProviderRegistrationPropertiesGlobalNotificationEndpointsList>;
 
 /** The notification type. */
-export type NotificationType = "Unspecified" | "SubscriptionNotification";
+export type NotificationType =
+  | "Unspecified"
+  | "SubscriptionNotification"
+  | (string & {});
 export const NotificationType = /*@__PURE__*/ S.String;
 
 /** Whether notifications should be skipped. */
-export type SkipNotifications = "Unspecified" | "Enabled" | "Disabled";
+export type SkipNotifications =
+  | "Unspecified"
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const SkipNotifications = /*@__PURE__*/ S.String;
 
 export interface Notification {
@@ -1056,11 +1076,11 @@ export const ProviderRegistrationPropertiesNotificationsList =
   ) as any as S.Schema<ProviderRegistrationPropertiesNotificationsList>;
 
 /** The authentication scheme. */
-export type AuthenticationScheme = "PoP" | "Bearer";
+export type AuthenticationScheme = "PoP" | "Bearer" | (string & {});
 export const AuthenticationScheme = /*@__PURE__*/ S.String;
 
 /** The signed request scope. */
-export type SignedRequestScope = "ResourceUri" | "Endpoint";
+export type SignedRequestScope = "ResourceUri" | "Endpoint" | (string & {});
 export const SignedRequestScope = /*@__PURE__*/ S.String;
 
 export interface TokenAuthConfiguration {
@@ -1149,7 +1169,8 @@ export const AsyncOperationPollingRulesAuthorizationActionsList =
 /** The additional options. */
 export type AdditionalOptionsAsyncOperation =
   | "ProtectedAsyncOperationPolling"
-  | "ProtectedAsyncOperationPollingAuditOnly";
+  | "ProtectedAsyncOperationPollingAuditOnly"
+  | (string & {});
 export const AdditionalOptionsAsyncOperation = /*@__PURE__*/ S.String;
 
 export interface AsyncOperationPollingRules {
@@ -1182,7 +1203,11 @@ export const ResourceProviderAuthorizationRules = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceProviderAuthorizationRules>;
 
 /** Notification options. */
-export type NotificationOptions = "NotSpecified" | "None" | "EmitSpendingLimit";
+export type NotificationOptions =
+  | "NotSpecified"
+  | "None"
+  | "EmitSpendingLimit"
+  | (string & {});
 export const NotificationOptions = /*@__PURE__*/ S.String;
 
 export interface ResourceHydrationAccount {
@@ -1215,7 +1240,7 @@ export const ProviderRegistrationPropertiesResourceHydrationAccountsList =
   ) as any as S.Schema<ProviderRegistrationPropertiesResourceHydrationAccountsList>;
 
 /** The endpoint type. */
-export type NotificationEndpointType = "Webhook" | "Eventhub";
+export type NotificationEndpointType = "Webhook" | "Eventhub" | (string & {});
 export const NotificationEndpointType = /*@__PURE__*/ S.String;
 
 export interface EndpointInformation {
@@ -1319,7 +1344,8 @@ export type BlockActionVerb =
   | "Write"
   | "Action"
   | "Delete"
-  | "Unrecognized";
+  | "Unrecognized"
+  | (string & {});
 export const BlockActionVerb = /*@__PURE__*/ S.String;
 
 /** Resource group lock option during move. */
@@ -1339,7 +1365,8 @@ export const ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMove
 
 export type ServiceClientOptionsType =
   | "NotSpecified"
-  | "DisableAutomaticDecompression";
+  | "DisableAutomaticDecompression"
+  | (string & {});
 export const ServiceClientOptionsType = /*@__PURE__*/ S.String;
 
 /** Response options. */
@@ -1456,7 +1483,8 @@ export type SubscriptionTransitioningState =
   | "SuspendedToRegistered"
   | "SuspendedToWarned"
   | "SuspendedToDeleted"
-  | "SuspendedToUnregistered";
+  | "SuspendedToUnregistered"
+  | (string & {});
 export const SubscriptionTransitioningState = /*@__PURE__*/ S.String;
 
 /** The action. */
@@ -1466,7 +1494,8 @@ export type SubscriptionNotificationOperation =
   | "SoftDeleteAllResources"
   | "NoOp"
   | "BillingCancellation"
-  | "UndoSoftDelete";
+  | "UndoSoftDelete"
+  | (string & {});
 export const SubscriptionNotificationOperation = /*@__PURE__*/ S.String;
 
 export interface SubscriptionStateOverrideAction {
@@ -1679,7 +1708,11 @@ export const ProviderRegistrationProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProviderRegistrationProperties>;
 
 /** Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
-export type ProviderRegistrationInputKind = "Managed" | "Hybrid" | "Direct";
+export type ProviderRegistrationInputKind =
+  | "Managed"
+  | "Hybrid"
+  | "Direct"
+  | (string & {});
 export const ProviderRegistrationInputKind = /*@__PURE__*/ S.String;
 
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
@@ -1712,21 +1745,27 @@ export type RoutingType =
   | "CascadeAuthorizedExtension"
   | "BypassEndpointSelectionOptimization"
   | "LocationMapping"
-  | "ServiceFanout";
+  | "ServiceFanout"
+  | (string & {});
 export const RoutingType = /*@__PURE__*/ S.String;
 
 /** The additional options. */
 export type AdditionalOptionsResourceTypeRegistration =
   | "ProtectedAsyncOperationPolling"
-  | "ProtectedAsyncOperationPollingAuditOnly";
+  | "ProtectedAsyncOperationPollingAuditOnly"
+  | (string & {});
 export const AdditionalOptionsResourceTypeRegistration = /*@__PURE__*/ S.String;
 
 /** The regionality. */
-export type Regionality = "NotSpecified" | "Global" | "Regional";
+export type Regionality =
+  | "NotSpecified"
+  | "Global"
+  | "Regional"
+  | (string & {});
 export const Regionality = /*@__PURE__*/ S.String;
 
 /** Resource type endpoint kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
-export type ResourceTypeEndpointKind = "Managed" | "Direct";
+export type ResourceTypeEndpointKind = "Managed" | "Direct" | (string & {});
 export const ResourceTypeEndpointKind = /*@__PURE__*/ S.String;
 
 /** The api versions. */
@@ -1765,7 +1804,8 @@ export type ExtensionCategory =
   | "ResourceMoveBegin"
   | "ResourceMoveCompleted"
   | "BestMatchOperationBegin"
-  | "SubscriptionLifecycleNotificationDeletion";
+  | "SubscriptionLifecycleNotificationDeletion"
+  | (string & {});
 export const ExtensionCategory = /*@__PURE__*/ S.String;
 
 /** The extension categories. */
@@ -1808,7 +1848,8 @@ export type EndpointTypeResourceType =
   | "NotSpecified"
   | "Canary"
   | "Production"
-  | "TestInProduction";
+  | "TestInProduction"
+  | (string & {});
 export const EndpointTypeResourceType = /*@__PURE__*/ S.String;
 
 /** List of zones. */
@@ -1818,7 +1859,12 @@ export const ResourceTypeEndpointZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ResourceTypeEndpointZonesList>;
 
 /** The data boundary. */
-export type DataBoundary = "NotDefined" | "Global" | "EU" | "US";
+export type DataBoundary =
+  | "NotDefined"
+  | "Global"
+  | "EU"
+  | "US"
+  | (string & {});
 export const DataBoundary = /*@__PURE__*/ S.String;
 
 export interface ResourceTypeEndpoint {
@@ -1889,7 +1935,8 @@ export const ResourceTypeRegistrationPropertiesEndpointsList =
 export type ExtensionOptionType =
   | "NotSpecified"
   | "DoNotMergeExistingReadOnlyAndSecretProperties"
-  | "IncludeInternalMetadata";
+  | "IncludeInternalMetadata"
+  | (string & {});
 export const ExtensionOptionType = /*@__PURE__*/ S.String;
 
 /** The request. */
@@ -1932,7 +1979,12 @@ export const ResourceTypeExtensionOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceTypeExtensionOptions>;
 
 /** The marketplace type. */
-export type MarketplaceType = "NotSpecified" | "AddOn" | "Bypass" | "Store";
+export type MarketplaceType =
+  | "NotSpecified"
+  | "AddOn"
+  | "Bypass"
+  | "Store"
+  | (string & {});
 export const MarketplaceType = /*@__PURE__*/ S.String;
 
 /** The api versions. */
@@ -1977,7 +2029,8 @@ export type Intent =
   | "NOT_SPECIFIED"
   | "LOW_PRIVILEGE"
   | "DEFERRED_ACCESS_CHECK"
-  | "RP_CONTRACT";
+  | "RP_CONTRACT"
+  | (string & {});
 export const Intent = /*@__PURE__*/ S.String;
 
 export interface AllowedUnauthorizedActionsExtension {
@@ -2059,11 +2112,11 @@ export const ResourceTypeRegistrationPropertiesLinkedAccessChecksList =
   ) as any as S.Schema<ResourceTypeRegistrationPropertiesLinkedAccessChecksList>;
 
 /** The direction. */
-export type LoggingDirections = "None" | "Request" | "Response";
+export type LoggingDirections = "None" | "Request" | "Response" | (string & {});
 export const LoggingDirections = /*@__PURE__*/ S.String;
 
 /** The detail level. */
-export type LoggingDetails = "None" | "Body";
+export type LoggingDetails = "None" | "Body" | (string & {});
 export const LoggingDetails = /*@__PURE__*/ S.String;
 
 /** The hidden paths on request. */
@@ -2132,7 +2185,8 @@ export const ResourceTypeRegistrationPropertiesLoggingRulesList =
 export type ThrottlingMetricType =
   | "NotSpecified"
   | "NumberOfRequests"
-  | "NumberOfResources";
+  | "NumberOfResources"
+  | (string & {});
 export const ThrottlingMetricType = /*@__PURE__*/ S.String;
 
 export interface ThrottlingMetric {
@@ -2212,7 +2266,8 @@ export type IdentityManagementTypes =
   | "SystemAssigned"
   | "UserAssigned"
   | "Actor"
-  | "DelegatedResourceIdentity";
+  | "DelegatedResourceIdentity"
+  | (string & {});
 export const IdentityManagementTypes = /*@__PURE__*/ S.String;
 
 /** The application ids. */
@@ -2302,7 +2357,8 @@ export type SubscriptionState =
   | "Warned"
   | "PastDue"
   | "Disabled"
-  | "Deleted";
+  | "Deleted"
+  | (string & {});
 export const SubscriptionState = /*@__PURE__*/ S.String;
 
 /** The allowed actions. */
@@ -2339,10 +2395,14 @@ export type ExtendedLocationType =
   | "NotSpecified"
   | "CustomLocation"
   | "EdgeZone"
-  | "ArcZone";
+  | "ArcZone"
+  | (string & {});
 export const ExtendedLocationType = /*@__PURE__*/ S.String;
 
-export type ResourceTypeExtendedLocationPolicy = "NotSpecified" | "All";
+export type ResourceTypeExtendedLocationPolicy =
+  | "NotSpecified"
+  | "All"
+  | (string & {});
 export const ResourceTypeExtendedLocationPolicy = /*@__PURE__*/ S.String;
 
 export interface ExtendedLocationOptions {
@@ -2389,11 +2449,15 @@ export const ResourceMovePolicy = /*@__PURE__*/ S.suspend(() =>
 export type ResourceDeletionPolicy =
   | "NotSpecified"
   | "CascadeDeleteAll"
-  | "CascadeDeleteProxyOnlyChildren";
+  | "CascadeDeleteProxyOnlyChildren"
+  | (string & {});
 export const ResourceDeletionPolicy = /*@__PURE__*/ S.String;
 
 /** The policy. */
-export type Policy = "NotSpecified" | "SynchronizeBeginExtension";
+export type Policy =
+  | "NotSpecified"
+  | "SynchronizeBeginExtension"
+  | (string & {});
 export const Policy = /*@__PURE__*/ S.String;
 
 export interface ResourceConcurrencyControlOption {
@@ -2476,14 +2540,16 @@ export type ResourceTypeCategory =
   | "None"
   | "FreeForm"
   | "Internal"
-  | "PureProxy";
+  | "PureProxy"
+  | (string & {});
 export const ResourceTypeCategory = /*@__PURE__*/ S.String;
 
 /** The resource validation. */
 export type ResourceValidation =
   | "NotSpecified"
   | "ReservedWords"
-  | "ProfaneWords";
+  | "ProfaneWords"
+  | (string & {});
 export const ResourceValidation = /*@__PURE__*/ S.String;
 
 /** The disallowed end user operations. */
@@ -2504,7 +2570,7 @@ export const ResourceTypeRegistrationPropertiesMetadataMap =
     S.Unknown,
   ) as any as S.Schema<ResourceTypeRegistrationPropertiesMetadataMap>;
 
-export type QuotaPolicy = "Default" | "None" | "Restricted";
+export type QuotaPolicy = "Default" | "None" | "Restricted" | (string & {});
 export const QuotaPolicy = /*@__PURE__*/ S.String;
 
 export interface LocationQuotaRule {
@@ -2626,7 +2692,10 @@ export const ResourceTypeRegistrationPropertiesLinkedNotificationRulesList =
   ) as any as S.Schema<ResourceTypeRegistrationPropertiesLinkedNotificationRulesList>;
 
 /** The capabilities. */
-export type TemplateDeploymentCapabilities = "Default" | "Preflight";
+export type TemplateDeploymentCapabilities =
+  | "Default"
+  | "Preflight"
+  | (string & {});
 export const TemplateDeploymentCapabilities = /*@__PURE__*/ S.String;
 
 /** The preflight options. */
@@ -2635,13 +2704,15 @@ export type TemplateDeploymentPreflightOptions =
   | "ValidationRequests"
   | "DeploymentRequests"
   | "TestOnly"
-  | "RegisteredOnly";
+  | "RegisteredOnly"
+  | (string & {});
 export const TemplateDeploymentPreflightOptions = /*@__PURE__*/ S.String;
 
 /** The preflight notifications. */
 export type TemplateDeploymentPreflightNotifications =
   | "None"
-  | "UnregisteredSubscriptions";
+  | "UnregisteredSubscriptions"
+  | (string & {});
 export const TemplateDeploymentPreflightNotifications = /*@__PURE__*/ S.String;
 
 export interface TemplateDeploymentPolicy {
@@ -2669,13 +2740,15 @@ export type PolicyExecutionType =
   | "NotSpecified"
   | "ExecutePolicies"
   | "BypassPolicies"
-  | "ExpectPartialPutRequests";
+  | "ExpectPartialPutRequests"
+  | (string & {});
 export const PolicyExecutionType = /*@__PURE__*/ S.String;
 
 export type AvailabilityZonePolicy =
   | "NotSpecified"
   | "SingleZoned"
-  | "MultiZoned";
+  | "MultiZoned"
+  | (string & {});
 export const AvailabilityZonePolicy = /*@__PURE__*/ S.String;
 
 /** The availability zone rule. */
@@ -2746,11 +2819,17 @@ export const ResourceTypeRegistrationPropertiesApiProfilesList =
 export type LinkedOperation =
   | "None"
   | "CrossResourceGroupResourceMove"
-  | "CrossSubscriptionResourceMove";
+  | "CrossSubscriptionResourceMove"
+  | (string & {});
 export const LinkedOperation = /*@__PURE__*/ S.String;
 
 /** The linked action. */
-export type LinkedAction = "NotSpecified" | "Blocked" | "Validate" | "Enabled";
+export type LinkedAction =
+  | "NotSpecified"
+  | "Blocked"
+  | "Validate"
+  | "Enabled"
+  | (string & {});
 export const LinkedAction = /*@__PURE__*/ S.String;
 
 /** Depends on types. */
@@ -2811,7 +2890,8 @@ export type LegacyOperation =
   | "Action"
   | "Read"
   | "EvaluateDeploymentOutput"
-  | "DeploymentCleanup";
+  | "DeploymentCleanup"
+  | (string & {});
 export const LegacyOperation = /*@__PURE__*/ S.String;
 
 export type ResourceTypeRegistrationPropertiesLegacyPolicyDisallowedLegacyOperationsList =
@@ -2873,7 +2953,7 @@ export const ResourceTypeRegistrationPropertiesLegacyPolicy =
   }) as any as S.Schema<ResourceTypeRegistrationPropertiesLegacyPolicy>;
 
 /** Capacity policy. */
-export type CapacityPolicy = "Default" | "Restricted";
+export type CapacityPolicy = "Default" | "Restricted" | (string & {});
 export const CapacityPolicy = /*@__PURE__*/ S.String;
 
 /** Capacity rule. */
@@ -2948,7 +3028,10 @@ export const ResourceTypeRegistrationPropertiesResourceCache =
   }) as any as S.Schema<ResourceTypeRegistrationPropertiesResourceCache>;
 
 /** Filter option. */
-export type FilterOption = "NotSpecified" | "EnableSubscriptionFilterOnTenant";
+export type FilterOption =
+  | "NotSpecified"
+  | "EnableSubscriptionFilterOnTenant"
+  | (string & {});
 export const FilterOption = /*@__PURE__*/ S.String;
 
 /** Resource query management options. */
@@ -2966,7 +3049,11 @@ export const ResourceTypeRegistrationPropertiesResourceQueryManagement =
   }) as any as S.Schema<ResourceTypeRegistrationPropertiesResourceQueryManagement>;
 
 /** Supported operations. */
-export type SupportedOperations = "NotSpecified" | "Get" | "Delete";
+export type SupportedOperations =
+  | "NotSpecified"
+  | "Get"
+  | "Delete"
+  | (string & {});
 export const SupportedOperations = /*@__PURE__*/ S.String;
 
 /** Batch provisioning support. */
@@ -3058,7 +3145,7 @@ export const ResourceTypeRegistrationPropertiesResourceManagementOptions =
   }) as any as S.Schema<ResourceTypeRegistrationPropertiesResourceManagementOptions>;
 
 /** Common api versions merge mode. */
-export type CommonApiVersionsMergeMode = "Merge" | "Overwrite";
+export type CommonApiVersionsMergeMode = "Merge" | "Overwrite" | (string & {});
 export const CommonApiVersionsMergeMode = /*@__PURE__*/ S.String;
 
 /** Resource type common attribute management. */
@@ -3091,11 +3178,14 @@ export const ResourceTypeRegistrationPropertiesRoutingRule =
   }) as any as S.Schema<ResourceTypeRegistrationPropertiesRoutingRule>;
 
 /** The frontdoor request mode. */
-export type FrontdoorRequestMode = "NotSpecified" | "UseManifest";
+export type FrontdoorRequestMode =
+  | "NotSpecified"
+  | "UseManifest"
+  | (string & {});
 export const FrontdoorRequestMode = /*@__PURE__*/ S.String;
 
 /** The resource sub type. */
-export type ResourceSubType = "NotSpecified" | "AsyncOperation";
+export type ResourceSubType = "NotSpecified" | "AsyncOperation" | (string & {});
 export const ResourceSubType = /*@__PURE__*/ S.String;
 
 export interface ResourceTypeRegistrationProperties {
@@ -3391,7 +3481,11 @@ export const ResourceTypeRegistrationProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceTypeRegistrationProperties>;
 
 /** Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
-export type ResourceTypeRegistrationInputKind = "Managed" | "Hybrid" | "Direct";
+export type ResourceTypeRegistrationInputKind =
+  | "Managed"
+  | "Hybrid"
+  | "Direct"
+  | (string & {});
 export const ResourceTypeRegistrationInputKind = /*@__PURE__*/ S.String;
 
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
@@ -3592,7 +3686,11 @@ export const CustomRolloutSpecificationReleaseScopesList =
   ) as any as S.Schema<CustomRolloutSpecificationReleaseScopesList>;
 
 /** Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
-export type ProviderRegistrationKind = "Managed" | "Hybrid" | "Direct";
+export type ProviderRegistrationKind =
+  | "Managed"
+  | "Hybrid"
+  | "Direct"
+  | (string & {});
 export const ProviderRegistrationKind = /*@__PURE__*/ S.String;
 
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
@@ -3623,7 +3721,11 @@ export const ProviderRegistration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProviderRegistration>;
 
 /** Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
-export type ResourceTypeRegistrationKind = "Managed" | "Hybrid" | "Direct";
+export type ResourceTypeRegistrationKind =
+  | "Managed"
+  | "Hybrid"
+  | "Direct"
+  | (string & {});
 export const ResourceTypeRegistrationKind = /*@__PURE__*/ S.String;
 
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
@@ -4171,7 +4273,8 @@ export type TrafficRegionCategory =
   | "HighTraffic"
   | "None"
   | "RestOfTheWorldGroupOne"
-  | "RestOfTheWorldGroupTwo";
+  | "RestOfTheWorldGroupTwo"
+  | (string & {});
 export const TrafficRegionCategory = /*@__PURE__*/ S.String;
 
 /** The subscription reregistration result. */
@@ -4179,7 +4282,8 @@ export type SubscriptionReregistrationResult =
   | "NotApplicable"
   | "ConditionalUpdate"
   | "ForcedUpdate"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const SubscriptionReregistrationResult = /*@__PURE__*/ S.String;
 
 export interface DefaultRolloutStatusInput {
@@ -4630,7 +4734,8 @@ export const ResourceProviderManifestRequiredFeaturesList =
 /** The additional options. */
 export type AdditionalOptions =
   | "ProtectedAsyncOperationPolling"
-  | "ProtectedAsyncOperationPollingAuditOnly";
+  | "ProtectedAsyncOperationPollingAuditOnly"
+  | (string & {});
 export const AdditionalOptions = /*@__PURE__*/ S.String;
 
 /** The allowed unauthorized actions. */
@@ -4735,7 +4840,8 @@ export const ResourceTypeLinkedOperationRulesList = /*@__PURE__*/ S.Array(
 export type ManifestResourceDeletionPolicy =
   | "NotSpecified"
   | "Cascade"
-  | "Force";
+  | "Force"
+  | (string & {});
 export const ManifestResourceDeletionPolicy = /*@__PURE__*/ S.String;
 
 /** The notifications. */
@@ -5000,11 +5106,12 @@ export type AvailableCheckInManifestEnvironment =
   | "Prod"
   | "All"
   | "Mooncake"
-  | "Fairfax";
+  | "Fairfax"
+  | (string & {});
 export const AvailableCheckInManifestEnvironment = /*@__PURE__*/ S.String;
 
 /** The service feature flag. */
-export type ServiceFeatureFlagAction = "DoNotCreate" | "Create";
+export type ServiceFeatureFlagAction = "DoNotCreate" | "Create" | (string & {});
 export const ServiceFeatureFlagAction = /*@__PURE__*/ S.String;
 
 /** The resource types to include. */
@@ -5328,11 +5435,18 @@ export const NewRegionFrontloadReleaseStopResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NewRegionFrontloadReleaseStopResponse>;
 
 /** The notification mode. */
-export type NotificationMode = "NotSpecified" | "EventHub" | "WebHook";
+export type NotificationMode =
+  | "NotSpecified"
+  | "EventHub"
+  | "WebHook"
+  | (string & {});
 export const NotificationMode = /*@__PURE__*/ S.String;
 
 /** The message scope. */
-export type MessageScope = "NotSpecified" | "RegisteredSubscriptions";
+export type MessageScope =
+  | "NotSpecified"
+  | "RegisteredSubscriptions"
+  | (string & {});
 export const MessageScope = /*@__PURE__*/ S.String;
 
 /** The included events. */
@@ -5607,7 +5721,11 @@ export const NotificationRegistrationArrayResponseWithContinuation =
   }) as any as S.Schema<NotificationRegistrationArrayResponseWithContinuation>;
 
 /** The origin. */
-export type OperationOrigins = "NotSpecified" | "User" | "System";
+export type OperationOrigins =
+  | "NotSpecified"
+  | "User"
+  | "System"
+  | (string & {});
 export const OperationOrigins = /*@__PURE__*/ S.String;
 
 export interface OperationsDisplayDefinition {
@@ -5695,7 +5813,7 @@ export const LocalizedOperationDisplayDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocalizedOperationDisplayDefinition>;
 
 /** The action type. */
-export type OperationActionType = "NotSpecified" | "Internal";
+export type OperationActionType = "NotSpecified" | "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 export interface LocalizedOperationDefinition {
@@ -6295,7 +6413,8 @@ export const ProviderMonitorSettingsUpdateResponse = /*@__PURE__*/ S.suspend(
 export type ProviderRegistrationsCreateOrUpdateRequestKind =
   | "Managed"
   | "Hybrid"
-  | "Direct";
+  | "Direct"
+  | (string & {});
 export const ProviderRegistrationsCreateOrUpdateRequestKind =
   /*@__PURE__*/ S.String;
 
@@ -6331,7 +6450,8 @@ export const ProviderRegistrationsCreateOrUpdateRequest =
 export type ProviderRegistrationsCreateOrUpdateResponseKind =
   | "Managed"
   | "Hybrid"
-  | "Direct";
+  | "Direct"
+  | (string & {});
 export const ProviderRegistrationsCreateOrUpdateResponseKind =
   /*@__PURE__*/ S.String;
 
@@ -6458,7 +6578,8 @@ export const ProviderRegistrationsGetRequest = /*@__PURE__*/ S.suspend(() =>
 export type ProviderRegistrationsGetResponseKind =
   | "Managed"
   | "Hybrid"
-  | "Direct";
+  | "Direct"
+  | (string & {});
 export const ProviderRegistrationsGetResponseKind = /*@__PURE__*/ S.String;
 
 export interface ProviderRegistrationsGetResponse {
@@ -6597,7 +6718,8 @@ export const ResourceActionsDeleteResourcesResponse = /*@__PURE__*/ S.suspend(
 export type ResourceTypeRegistrationsCreateOrUpdateRequestKind =
   | "Managed"
   | "Hybrid"
-  | "Direct";
+  | "Direct"
+  | (string & {});
 export const ResourceTypeRegistrationsCreateOrUpdateRequestKind =
   /*@__PURE__*/ S.String;
 
@@ -6636,7 +6758,8 @@ export const ResourceTypeRegistrationsCreateOrUpdateRequest =
 export type ResourceTypeRegistrationsCreateOrUpdateResponseKind =
   | "Managed"
   | "Hybrid"
-  | "Direct";
+  | "Direct"
+  | (string & {});
 export const ResourceTypeRegistrationsCreateOrUpdateResponseKind =
   /*@__PURE__*/ S.String;
 
@@ -6729,7 +6852,8 @@ export const ResourceTypeRegistrationsGetRequest = /*@__PURE__*/ S.suspend(() =>
 export type ResourceTypeRegistrationsGetResponseKind =
   | "Managed"
   | "Hybrid"
-  | "Direct";
+  | "Direct"
+  | (string & {});
 export const ResourceTypeRegistrationsGetResponseKind = /*@__PURE__*/ S.String;
 
 export interface ResourceTypeRegistrationsGetResponse {
@@ -6912,7 +7036,7 @@ export const SkuSettingRequiredFeaturesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SkuSettingRequiredFeaturesList>;
 
 /** The scale type. */
-export type SkuScaleType = "None" | "Manual" | "Automatic";
+export type SkuScaleType = "None" | "Manual" | "Automatic" | (string & {});
 export const SkuScaleType = /*@__PURE__*/ S.String;
 
 export interface SkuCapacity {

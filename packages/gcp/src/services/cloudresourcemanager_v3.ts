@@ -63,7 +63,8 @@ export class NotFound extends T.applyErrorMatchers(
 export type FolderStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "DELETE_REQUESTED";
+  | "DELETE_REQUESTED"
+  | (string & {});
 export const FolderStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -234,7 +235,8 @@ export const CreateLiensRequest = /*@__PURE__*/ S.suspend(() =>
 export type ProjectStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "DELETE_REQUESTED";
+  | "DELETE_REQUESTED"
+  | (string & {});
 export const ProjectStateEnum = /*@__PURE__*/ S.String;
 
 /** A project is a high-level Google Cloud entity. It is a container for ACLs, APIs, App Engine Apps, VMs, and other Google Cloud Platform resources. */
@@ -343,7 +345,8 @@ export const CreateTagBindingsRequest = /*@__PURE__*/ S.suspend(() =>
 export type TagKeyPurposeEnum =
   | "PURPOSE_UNSPECIFIED"
   | "GCE_FIREWALL"
-  | "DATA_GOVERNANCE";
+  | "DATA_GOVERNANCE"
+  | (string & {});
 export const TagKeyPurposeEnum = /*@__PURE__*/ S.String;
 
 /** A TagKey, used to group a set of TagValues. */
@@ -832,7 +835,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1149,7 +1153,8 @@ export const GetOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type OrganizationStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "DELETE_REQUESTED";
+  | "DELETE_REQUESTED"
+  | (string & {});
 export const OrganizationStateEnum = /*@__PURE__*/ S.String;
 
 /** The root node in the resource hierarchy to which a particular entity's (a company, for example) resources belong. */

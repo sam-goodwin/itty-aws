@@ -148,7 +148,11 @@ export type ResourceIdentifier = string;
 export type AvailabilityZone = string;
 export type ExpiryTime = Date;
 export type StartTime = Date;
-export type ZonalShiftStatus = "ACTIVE" | "EXPIRED" | "CANCELED";
+export type ZonalShiftStatus =
+  | "ACTIVE"
+  | "EXPIRED"
+  | "CANCELED"
+  | (string & {});
 export const ZonalShiftStatus = /*@__PURE__*/ S.String;
 
 export type ZonalShiftComment = string;
@@ -217,7 +221,7 @@ export const BlockedWindows = /*@__PURE__*/ S.Array(S.String);
 export type BlockedDate = string;
 export type BlockedDates = string[];
 export const BlockedDates = /*@__PURE__*/ S.Array(S.String);
-export type ControlConditionType = "CLOUDWATCH";
+export type ControlConditionType = "CLOUDWATCH" | (string & {});
 export const ControlConditionType = /*@__PURE__*/ S.String;
 
 export type MetricIdentifier = string;
@@ -269,7 +273,7 @@ export const CreatePracticeRunConfigurationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreatePracticeRunConfigurationRequest>;
 export type ResourceArn = string;
 export type ResourceName = string;
-export type ZonalAutoshiftStatus = "ENABLED" | "DISABLED";
+export type ZonalAutoshiftStatus = "ENABLED" | "DISABLED" | (string & {});
 export const ZonalAutoshiftStatus = /*@__PURE__*/ S.String;
 
 export interface PracticeRunConfiguration {
@@ -361,7 +365,10 @@ export const GetAutoshiftObserverNotificationStatusRequest =
   ).annotate({
     identifier: "GetAutoshiftObserverNotificationStatusRequest",
   }) as any as S.Schema<GetAutoshiftObserverNotificationStatusRequest>;
-export type AutoshiftObserverNotificationStatus = "ENABLED" | "DISABLED";
+export type AutoshiftObserverNotificationStatus =
+  | "ENABLED"
+  | "DISABLED"
+  | (string & {});
 export const AutoshiftObserverNotificationStatus = /*@__PURE__*/ S.String;
 
 export interface GetAutoshiftObserverNotificationStatusResponse {
@@ -398,14 +405,15 @@ export const AppliedWeights = /*@__PURE__*/ S.Record(
   S.String,
   S.Number.pipe(S.optional),
 );
-export type AppliedStatus = "APPLIED" | "NOT_APPLIED";
+export type AppliedStatus = "APPLIED" | "NOT_APPLIED" | (string & {});
 export const AppliedStatus = /*@__PURE__*/ S.String;
 
 export type ShiftType =
   | "ZONAL_SHIFT"
   | "PRACTICE_RUN"
   | "FIS_EXPERIMENT"
-  | "ZONAL_AUTOSHIFT";
+  | "ZONAL_AUTOSHIFT"
+  | (string & {});
 export const ShiftType = /*@__PURE__*/ S.String;
 
 export type PracticeRunOutcome =
@@ -413,7 +421,8 @@ export type PracticeRunOutcome =
   | "INTERRUPTED"
   | "PENDING"
   | "SUCCEEDED"
-  | "CAPACITY_CHECK_FAILED";
+  | "CAPACITY_CHECK_FAILED"
+  | (string & {});
 export const PracticeRunOutcome = /*@__PURE__*/ S.String;
 
 export interface ZonalShiftInResource {
@@ -445,7 +454,7 @@ export const ZonalShiftInResource = /*@__PURE__*/ S.suspend(() =>
 export type ZonalShiftsInResource = ZonalShiftInResource[];
 export const ZonalShiftsInResource =
   /*@__PURE__*/ S.Array(ZonalShiftInResource);
-export type AutoshiftAppliedStatus = "APPLIED" | "NOT_APPLIED";
+export type AutoshiftAppliedStatus = "APPLIED" | "NOT_APPLIED" | (string & {});
 export const AutoshiftAppliedStatus = /*@__PURE__*/ S.String;
 
 export interface AutoshiftInResource {
@@ -486,7 +495,7 @@ export const GetManagedResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetManagedResourceResponse",
 }) as any as S.Schema<GetManagedResourceResponse>;
-export type AutoshiftExecutionStatus = "ACTIVE" | "COMPLETED";
+export type AutoshiftExecutionStatus = "ACTIVE" | "COMPLETED" | (string & {});
 export const AutoshiftExecutionStatus = /*@__PURE__*/ S.String;
 
 export type MaxResults = number;
@@ -891,7 +900,8 @@ export type ConflictExceptionReason =
   | "PracticeBlockingAlarmsRed"
   | "PracticeInBlockedDates"
   | "PracticeInBlockedWindows"
-  | "PracticeOutsideAllowedWindows";
+  | "PracticeOutsideAllowedWindows"
+  | (string & {});
 export const ConflictExceptionReason = /*@__PURE__*/ S.String;
 
 export type ValidationExceptionReason =
@@ -909,7 +919,8 @@ export type ValidationExceptionReason =
   | "AutoshiftUpdateNotAllowed"
   | "UnsupportedPracticeCancelShiftType"
   | "InvalidPracticeAllowedWindow"
-  | "InvalidPracticeWindows";
+  | "InvalidPracticeWindows"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export type CancelPracticeRunError =

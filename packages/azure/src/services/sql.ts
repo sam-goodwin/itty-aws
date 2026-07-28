@@ -14,14 +14,16 @@ import * as Retry from "../retry.ts";
 export type { AzureOpError, AzureOpContext };
 
 export type BackupShortTermRetentionPoliciesCreateOrUpdateRequestPolicyName =
-  "default";
+  | "default"
+  | (string & {});
 export const BackupShortTermRetentionPoliciesCreateOrUpdateRequestPolicyName =
   /*@__PURE__*/ S.String;
 
 /** The differential backup interval in hours. This is how many interval hours between each differential backup will be supported. This is only applicable to live databases but not dropped databases. */
 export type BackupShortTermRetentionPolicyPropertiesDiffBackupIntervalInHours =
   | 12
-  | 24;
+  | 24
+  | (number & {});
 export const BackupShortTermRetentionPolicyPropertiesDiffBackupIntervalInHours =
   /*@__PURE__*/ S.Number;
 
@@ -87,7 +89,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -95,7 +98,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -149,7 +153,9 @@ export const BackupShortTermRetentionPoliciesCreateOrUpdateResponse =
     identifier: "BackupShortTermRetentionPoliciesCreateOrUpdateResponse",
   }) as any as S.Schema<BackupShortTermRetentionPoliciesCreateOrUpdateResponse>;
 
-export type BackupShortTermRetentionPoliciesGetRequestPolicyName = "default";
+export type BackupShortTermRetentionPoliciesGetRequestPolicyName =
+  | "default"
+  | (string & {});
 export const BackupShortTermRetentionPoliciesGetRequestPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -291,7 +297,9 @@ export const BackupShortTermRetentionPolicyListResult = /*@__PURE__*/ S.suspend(
   identifier: "BackupShortTermRetentionPolicyListResult",
 }) as any as S.Schema<BackupShortTermRetentionPolicyListResult>;
 
-export type BackupShortTermRetentionPoliciesUpdateRequestPolicyName = "default";
+export type BackupShortTermRetentionPoliciesUpdateRequestPolicyName =
+  | "default"
+  | (string & {});
 export const BackupShortTermRetentionPoliciesUpdateRequestPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -363,7 +371,8 @@ export type CapabilitiesListByLocationRequestInclude =
   | "supportedManagedInstanceVersions"
   | "supportedInstancePoolEditions"
   | "supportedManagedInstanceEditions"
-  | "supportedJobAgentVersions";
+  | "supportedJobAgentVersions"
+  | (string & {});
 export const CapabilitiesListByLocationRequestInclude = /*@__PURE__*/ S.String;
 
 export interface CapabilitiesListByLocationRequest {
@@ -398,7 +407,8 @@ export type MaxSizeCapabilityUnit =
   | "Megabytes"
   | "Gigabytes"
   | "Terabytes"
-  | "Petabytes";
+  | "Petabytes"
+  | (string & {});
 export const MaxSizeCapabilityUnit = /*@__PURE__*/ S.String;
 
 /** The maximum size capability. */
@@ -423,7 +433,8 @@ export type LogSizeCapabilityUnit =
   | "Gigabytes"
   | "Terabytes"
   | "Petabytes"
-  | "Percent";
+  | "Percent"
+  | (string & {});
 export const LogSizeCapabilityUnit = /*@__PURE__*/ S.String;
 
 /** The log size capability. */
@@ -447,7 +458,8 @@ export type MaxSizeRangeCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const MaxSizeRangeCapabilityStatus = /*@__PURE__*/ S.String;
 
 /** The maximum size range capability. */
@@ -487,7 +499,7 @@ export const ServiceObjectiveCapabilitySupportedMaxSizesList =
   ) as any as S.Schema<ServiceObjectiveCapabilitySupportedMaxSizesList>;
 
 /** Unit type used to measure performance level. */
-export type PerformanceLevelCapabilityUnit = "DTU" | "VCores";
+export type PerformanceLevelCapabilityUnit = "DTU" | "VCores" | (string & {});
 export const PerformanceLevelCapabilityUnit = /*@__PURE__*/ S.String;
 
 /** The performance level capability. */
@@ -536,7 +548,8 @@ export type LicenseTypeCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const LicenseTypeCapabilityStatus = /*@__PURE__*/ S.String;
 
 /** The license type capability */
@@ -567,7 +580,7 @@ export const ServiceObjectiveCapabilitySupportedLicenseTypesList =
   ) as any as S.Schema<ServiceObjectiveCapabilitySupportedLicenseTypesList>;
 
 /** Unit of time that delay is expressed in */
-export type AutoPauseDelayTimeRangeUnit = "Minutes";
+export type AutoPauseDelayTimeRangeUnit = "Minutes" | (string & {});
 export const AutoPauseDelayTimeRangeUnit = /*@__PURE__*/ S.String;
 
 /** Supported auto pause delay time range */
@@ -603,7 +616,8 @@ export type MinCapacityCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const MinCapacityCapabilityStatus = /*@__PURE__*/ S.String;
 
 /** The min capacity capability */
@@ -638,7 +652,8 @@ export type MaintenanceConfigurationCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const MaintenanceConfigurationCapabilityStatus = /*@__PURE__*/ S.String;
 
 /** The maintenance configuration capability */
@@ -676,7 +691,8 @@ export type ZonePinningCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ZonePinningCapabilityStatus = /*@__PURE__*/ S.String;
 
 /** The zone pinning capability */
@@ -709,7 +725,8 @@ export const ServiceObjectiveCapabilitySupportedZonesList =
 /** Specifies the behavior when monthly free limits are exhausted for the free database. AutoPause: The database will be auto paused upon exhaustion of free limits for remainder of the month. BillForUsage: The database will continue to be online upon exhaustion of free limits and any overage will be billed. */
 export type FreeLimitExhaustionBehaviorCapabilityExhaustionBehaviorType =
   | "AutoPause"
-  | "BillOverUsage";
+  | "BillOverUsage"
+  | (string & {});
 export const FreeLimitExhaustionBehaviorCapabilityExhaustionBehaviorType =
   /*@__PURE__*/ S.String;
 
@@ -718,7 +735,8 @@ export type FreeLimitExhaustionBehaviorCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const FreeLimitExhaustionBehaviorCapabilityStatus =
   /*@__PURE__*/ S.String;
 
@@ -754,7 +772,8 @@ export type ServiceObjectiveCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ServiceObjectiveCapabilityStatus = /*@__PURE__*/ S.String;
 
 /** The service objectives capability. */
@@ -841,7 +860,8 @@ export type ReadScaleCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ReadScaleCapabilityStatus = /*@__PURE__*/ S.String;
 
 /** The read scale capability. */
@@ -868,7 +888,8 @@ export type StorageCapabilityStorageAccountType =
   | "GRS"
   | "LRS"
   | "ZRS"
-  | "GZRS";
+  | "GZRS"
+  | (string & {});
 export const StorageCapabilityStorageAccountType = /*@__PURE__*/ S.String;
 
 /** The status of the capability. */
@@ -876,7 +897,8 @@ export type StorageCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const StorageCapabilityStatus = /*@__PURE__*/ S.String;
 
 /** The storage account type capability. */
@@ -911,7 +933,8 @@ export type EditionCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const EditionCapabilityStatus = /*@__PURE__*/ S.String;
 
 /** The edition capability. */
@@ -1013,14 +1036,16 @@ export const ElasticPoolPerformanceLevelCapabilitySupportedPerDatabaseMaxSizesLi
 /** Unit type used to measure performance level. */
 export type ElasticPoolPerDatabaseMaxPerformanceLevelCapabilityUnit =
   | "DTU"
-  | "VCores";
+  | "VCores"
+  | (string & {});
 export const ElasticPoolPerDatabaseMaxPerformanceLevelCapabilityUnit =
   /*@__PURE__*/ S.String;
 
 /** Unit type used to measure performance level. */
 export type ElasticPoolPerDatabaseMinPerformanceLevelCapabilityUnit =
   | "DTU"
-  | "VCores";
+  | "VCores"
+  | (string & {});
 export const ElasticPoolPerDatabaseMinPerformanceLevelCapabilityUnit =
   /*@__PURE__*/ S.String;
 
@@ -1029,7 +1054,8 @@ export type ElasticPoolPerDatabaseMinPerformanceLevelCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ElasticPoolPerDatabaseMinPerformanceLevelCapabilityStatus =
   /*@__PURE__*/ S.String;
 
@@ -1071,7 +1097,8 @@ export type ElasticPoolPerDatabaseMaxPerformanceLevelCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ElasticPoolPerDatabaseMaxPerformanceLevelCapabilityStatus =
   /*@__PURE__*/ S.String;
 
@@ -1130,7 +1157,7 @@ export const ElasticPoolPerformanceLevelCapabilitySupportedMinCapacitiesList =
   ) as any as S.Schema<ElasticPoolPerformanceLevelCapabilitySupportedMinCapacitiesList>;
 
 /** Unit of time that delay is expressed in */
-export type PerDatabaseAutoPauseDelayTimeRangeUnit = "Minutes";
+export type PerDatabaseAutoPauseDelayTimeRangeUnit = "Minutes" | (string & {});
 export const PerDatabaseAutoPauseDelayTimeRangeUnit = /*@__PURE__*/ S.String;
 
 /** Supported auto pause delay time range */
@@ -1174,7 +1201,8 @@ export type ElasticPoolPerformanceLevelCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ElasticPoolPerformanceLevelCapabilityStatus =
   /*@__PURE__*/ S.String;
 
@@ -1266,7 +1294,8 @@ export type ElasticPoolEditionCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ElasticPoolEditionCapabilityStatus = /*@__PURE__*/ S.String;
 
 /** The elastic pool edition capability. */
@@ -1312,7 +1341,8 @@ export type ServerVersionCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ServerVersionCapabilityStatus = /*@__PURE__*/ S.String;
 
 /** The server capability */
@@ -1363,7 +1393,8 @@ export type MaxLimitRangeCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const MaxLimitRangeCapabilityStatus = /*@__PURE__*/ S.String;
 
 /** The maximum limit range capability. */
@@ -1404,7 +1435,8 @@ export type ManagedInstanceMaintenanceConfigurationCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ManagedInstanceMaintenanceConfigurationCapabilityStatus =
   /*@__PURE__*/ S.String;
 
@@ -1443,7 +1475,8 @@ export type ManagedInstanceVcoresCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ManagedInstanceVcoresCapabilityStatus = /*@__PURE__*/ S.String;
 
 /** The managed instance virtual cores capability. */
@@ -1534,7 +1567,8 @@ export type ManagedInstanceFamilyCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ManagedInstanceFamilyCapabilityStatus = /*@__PURE__*/ S.String;
 
 /** The managed server family capability. */
@@ -1593,7 +1627,8 @@ export type ManagedInstanceEditionCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ManagedInstanceEditionCapabilityStatus = /*@__PURE__*/ S.String;
 
 /** The managed server capability */
@@ -1649,7 +1684,8 @@ export type InstancePoolVcoresCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const InstancePoolVcoresCapabilityStatus = /*@__PURE__*/ S.String;
 
 /** The managed instance virtual cores capability. */
@@ -1690,7 +1726,8 @@ export type InstancePoolFamilyCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const InstancePoolFamilyCapabilityStatus = /*@__PURE__*/ S.String;
 
 /** The instance pool family capability. */
@@ -1735,7 +1772,8 @@ export type InstancePoolEditionCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const InstancePoolEditionCapabilityStatus = /*@__PURE__*/ S.String;
 
 /** The instance pool capability */
@@ -1775,7 +1813,8 @@ export type ManagedInstanceVersionCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ManagedInstanceVersionCapabilityStatus = /*@__PURE__*/ S.String;
 
 /** The managed instance capability */
@@ -1846,7 +1885,8 @@ export type JobAgentServiceLevelObjectiveCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const JobAgentServiceLevelObjectiveCapabilityStatus =
   /*@__PURE__*/ S.String;
 
@@ -1886,7 +1926,8 @@ export type JobAgentEditionCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const JobAgentEditionCapabilityStatus = /*@__PURE__*/ S.String;
 
 /** The job agent edition capability. */
@@ -1926,7 +1967,8 @@ export type JobAgentVersionCapabilityStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const JobAgentVersionCapabilityStatus = /*@__PURE__*/ S.String;
 
 /** The job agent version capability. */
@@ -1966,7 +2008,8 @@ export type LocationCapabilitiesStatus =
   | "Visible"
   | "Available"
   | "Default"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const LocationCapabilitiesStatus = /*@__PURE__*/ S.String;
 
 /** The location capability. */
@@ -2007,12 +2050,16 @@ export const LocationCapabilities = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocationCapabilities>;
 
 export type DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestAdvancedThreatProtectionName =
-  "Default";
+  "Default" | (string & {});
 export const DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestAdvancedThreatProtectionName =
   /*@__PURE__*/ S.String;
 
 /** Specifies the state of the Advanced Threat Protection, whether it is enabled or disabled or a state has not been applied yet on the specific database or server. */
-export type AdvancedThreatProtectionState = "New" | "Enabled" | "Disabled";
+export type AdvancedThreatProtectionState =
+  | "New"
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const AdvancedThreatProtectionState = /*@__PURE__*/ S.String;
 
 /** Properties of an Advanced Threat Protection state. */
@@ -2117,7 +2164,7 @@ export const DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponse =
   }) as any as S.Schema<DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponse>;
 
 export type DatabaseAdvancedThreatProtectionSettingsGetRequestAdvancedThreatProtectionName =
-  "Default";
+  "Default" | (string & {});
 export const DatabaseAdvancedThreatProtectionSettingsGetRequestAdvancedThreatProtectionName =
   /*@__PURE__*/ S.String;
 
@@ -2332,11 +2379,16 @@ export type AdvisorStatus =
   | "GA"
   | "PublicPreview"
   | "LimitedPublicPreview"
-  | "PrivatePreview";
+  | "PrivatePreview"
+  | (string & {});
 export const AdvisorStatus = /*@__PURE__*/ S.String;
 
 /** Gets the auto-execute status (whether to let the system execute the recommendations) of this advisor. Possible values are 'Enabled' and 'Disabled' */
-export type AutoExecuteStatus = "Enabled" | "Disabled" | "Default";
+export type AutoExecuteStatus =
+  | "Enabled"
+  | "Disabled"
+  | "Default"
+  | (string & {});
 export const AutoExecuteStatus = /*@__PURE__*/ S.String;
 
 /** Gets the resource from which current value of auto-execute status is inherited. Auto-execute status can be set on (and inherited from) different levels in the resource hierarchy. Possible values are 'Subscription', 'Server', 'ElasticPool', 'Database' and 'Default' (when status is not explicitly set on any level). */
@@ -2345,7 +2397,8 @@ export type AutoExecuteStatusInheritedFrom =
   | "Subscription"
   | "Server"
   | "ElasticPool"
-  | "Database";
+  | "Database"
+  | (string & {});
 export const AutoExecuteStatusInheritedFrom = /*@__PURE__*/ S.String;
 
 /** Current state the recommended action is in. Some commonly used states are: Active -> recommended action is active and no action has been taken yet. Pending -> recommended action is approved for and is awaiting execution. Executing -> recommended action is being applied on the user database. Verifying -> recommended action was applied and is being verified of its usefulness by the system. Success -> recommended action was applied and improvement found during verification. Pending Revert -> verification found little or no improvement so recommended action is queued for revert or user has manually reverted. Reverting -> changes made while applying recommended action are being reverted on the user database. Reverted -> successfully reverted the changes made by recommended action on user database. Ignored -> user explicitly ignored/discarded the recommended action. */
@@ -2363,11 +2416,12 @@ export type RecommendedActionCurrentState =
   | "Monitoring"
   | "Resolved"
   | "Success"
-  | "Error";
+  | "Error"
+  | (string & {});
 export const RecommendedActionCurrentState = /*@__PURE__*/ S.String;
 
 /** Gets if approval for applying this recommended action was given by user/system. */
-export type RecommendedActionInitiatedBy = "User" | "System";
+export type RecommendedActionInitiatedBy = "User" | "System" | (string & {});
 export const RecommendedActionInitiatedBy = /*@__PURE__*/ S.String;
 
 /** Contains information of current state for an Azure SQL Database, Server or Elastic Pool Recommended Action. */
@@ -2390,7 +2444,7 @@ export const RecommendedActionStateInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecommendedActionStateInfo>;
 
 /** Gets the method in which this recommended action can be manually implemented. e.g., TSql, AzurePowerShell. */
-export type ImplementationMethod = "TSql" | "AzurePowerShell";
+export type ImplementationMethod = "TSql" | "AzurePowerShell" | (string & {});
 export const ImplementationMethod = /*@__PURE__*/ S.String;
 
 /** Contains information for manual implementation for an Azure SQL Database, Server or Elastic Pool Recommended Action. */
@@ -2410,7 +2464,7 @@ export const RecommendedActionImplementationInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecommendedActionImplementationInfo>;
 
 /** Gets whether the error could be ignored and recommended action could be retried. Possible values are: Yes/No */
-export type IsRetryable = "Yes" | "No";
+export type IsRetryable = "Yes" | "No" | (string & {});
 export const IsRetryable = /*@__PURE__*/ S.String;
 
 /** Contains error information for an Azure SQL Database, Server or Elastic Pool Recommended Action. */
@@ -2884,7 +2938,8 @@ export type DatabaseAutomaticTuningPropertiesDesiredState =
   | "Inherit"
   | "Custom"
   | "Auto"
-  | "Unspecified";
+  | "Unspecified"
+  | (string & {});
 export const DatabaseAutomaticTuningPropertiesDesiredState =
   /*@__PURE__*/ S.String;
 
@@ -2893,16 +2948,21 @@ export type DatabaseAutomaticTuningPropertiesActualState =
   | "Inherit"
   | "Custom"
   | "Auto"
-  | "Unspecified";
+  | "Unspecified"
+  | (string & {});
 export const DatabaseAutomaticTuningPropertiesActualState =
   /*@__PURE__*/ S.String;
 
 /** Automatic tuning option desired state. */
-export type AutomaticTuningOptionsDesiredState = "Off" | "On" | "Default";
+export type AutomaticTuningOptionsDesiredState =
+  | "Off"
+  | "On"
+  | "Default"
+  | (string & {});
 export const AutomaticTuningOptionsDesiredState = /*@__PURE__*/ S.String;
 
 /** Automatic tuning option actual state. */
-export type AutomaticTuningOptionsActualState = "Off" | "On";
+export type AutomaticTuningOptionsActualState = "Off" | "On" | (string & {});
 export const AutomaticTuningOptionsActualState = /*@__PURE__*/ S.String;
 
 /** Reason description if desired and actual state are different. */
@@ -2913,7 +2973,8 @@ export type AutomaticTuningOptionsReasonDesc =
   | "InheritedFromServer"
   | "QueryStoreOff"
   | "QueryStoreReadOnly"
-  | "NotSupported";
+  | "NotSupported"
+  | (string & {});
 export const AutomaticTuningOptionsReasonDesc = /*@__PURE__*/ S.String;
 
 /** Automatic tuning properties for individual advisors. */
@@ -2996,7 +3057,8 @@ export type DatabaseAutomaticTuningPropertiesInputDesiredState =
   | "Inherit"
   | "Custom"
   | "Auto"
-  | "Unspecified";
+  | "Unspecified"
+  | (string & {});
 export const DatabaseAutomaticTuningPropertiesInputDesiredState =
   /*@__PURE__*/ S.String;
 
@@ -3005,16 +3067,24 @@ export type DatabaseAutomaticTuningPropertiesInputActualState =
   | "Inherit"
   | "Custom"
   | "Auto"
-  | "Unspecified";
+  | "Unspecified"
+  | (string & {});
 export const DatabaseAutomaticTuningPropertiesInputActualState =
   /*@__PURE__*/ S.String;
 
 /** Automatic tuning option desired state. */
-export type AutomaticTuningOptionsInputDesiredState = "Off" | "On" | "Default";
+export type AutomaticTuningOptionsInputDesiredState =
+  | "Off"
+  | "On"
+  | "Default"
+  | (string & {});
 export const AutomaticTuningOptionsInputDesiredState = /*@__PURE__*/ S.String;
 
 /** Automatic tuning option actual state. */
-export type AutomaticTuningOptionsInputActualState = "Off" | "On";
+export type AutomaticTuningOptionsInputActualState =
+  | "Off"
+  | "On"
+  | (string & {});
 export const AutomaticTuningOptionsInputActualState = /*@__PURE__*/ S.String;
 
 /** Reason description if desired and actual state are different. */
@@ -3025,7 +3095,8 @@ export type AutomaticTuningOptionsInputReasonDesc =
   | "InheritedFromServer"
   | "QueryStoreOff"
   | "QueryStoreReadOnly"
-  | "NotSupported";
+  | "NotSupported"
+  | (string & {});
 export const AutomaticTuningOptionsInputReasonDesc = /*@__PURE__*/ S.String;
 
 /** Automatic tuning properties for individual advisors. */
@@ -3139,7 +3210,7 @@ export const DatabaseAutomaticTuningUpdateResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DatabaseAutomaticTuningUpdateResponse>;
 
 export type DatabaseBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName =
-  "default";
+  "default" | (string & {});
 export const DatabaseBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -3152,7 +3223,10 @@ export const DatabaseBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
   ) as any as S.Schema<DatabaseBlobAuditingPolicyPropertiesAuditActionsAndGroupsList>;
 
 /** Specifies the state of the audit. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required. */
-export type DatabaseBlobAuditingPolicyPropertiesState = "Enabled" | "Disabled";
+export type DatabaseBlobAuditingPolicyPropertiesState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const DatabaseBlobAuditingPolicyPropertiesState = /*@__PURE__*/ S.String;
 
 /** Properties of a database blob auditing policy. */
@@ -3265,7 +3339,8 @@ export const DatabaseBlobAuditingPoliciesCreateOrUpdateResponse =
   }) as any as S.Schema<DatabaseBlobAuditingPoliciesCreateOrUpdateResponse>;
 
 export type DatabaseBlobAuditingPoliciesGetRequestBlobAuditingPolicyName =
-  "default";
+  | "default"
+  | (string & {});
 export const DatabaseBlobAuditingPoliciesGetRequestBlobAuditingPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -3486,14 +3561,16 @@ export type ColumnDataType =
   | "nvarchar"
   | "nchar"
   | "xml"
-  | "sysname";
+  | "sysname"
+  | (string & {});
 export const ColumnDataType = /*@__PURE__*/ S.String;
 
 /** The table temporal type. */
 export type TableTemporalType =
   | "NonTemporalTable"
   | "HistoryTable"
-  | "SystemVersionedTemporalTable";
+  | "SystemVersionedTemporalTable"
+  | (string & {});
 export const TableTemporalType = /*@__PURE__*/ S.String;
 
 /** Database column properties. */
@@ -3726,7 +3803,7 @@ export const DatabaseColumnsListByTableResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseColumnsListByTableResponse>;
 
 export type DatabaseEncryptionProtectorsRevalidateRequestEncryptionProtectorName =
-  "current";
+  "current" | (string & {});
 export const DatabaseEncryptionProtectorsRevalidateRequestEncryptionProtectorName =
   /*@__PURE__*/ S.String;
 
@@ -3772,7 +3849,8 @@ export const DatabaseEncryptionProtectorsRevalidateResponse =
   }) as any as S.Schema<DatabaseEncryptionProtectorsRevalidateResponse>;
 
 export type DatabaseEncryptionProtectorsRevertRequestEncryptionProtectorName =
-  "current";
+  | "current"
+  | (string & {});
 export const DatabaseEncryptionProtectorsRevertRequestEncryptionProtectorName =
   /*@__PURE__*/ S.String;
 
@@ -3821,14 +3899,16 @@ export const DatabaseEncryptionProtectorsRevertResponse =
 export type DatabaseExtensionsPropertiesOperationMode =
   | "PolybaseImport"
   | "Import"
-  | "Export";
+  | "Export"
+  | (string & {});
 export const DatabaseExtensionsPropertiesOperationMode = /*@__PURE__*/ S.String;
 
 /** Storage key type: StorageAccessKey, SharedAccessKey or ManagedIdentity. */
 export type DatabaseExtensionsPropertiesStorageKeyType =
   | "SharedAccessKey"
   | "StorageAccessKey"
-  | "ManagedIdentity";
+  | "ManagedIdentity"
+  | (string & {});
 export const DatabaseExtensionsPropertiesStorageKeyType =
   /*@__PURE__*/ S.String;
 
@@ -4214,7 +4294,8 @@ export type DatabaseOperationPropertiesState =
   | "Succeeded"
   | "Failed"
   | "CancelInProgress"
-  | "Cancelled";
+  | "Cancelled"
+  | (string & {});
 export const DatabaseOperationPropertiesState = /*@__PURE__*/ S.String;
 
 /** The operation phase. */
@@ -4224,7 +4305,8 @@ export type PhaseDetailsPhase =
   | "BuildingHyperscaleComponents"
   | "Catchup"
   | "WaitingForCutover"
-  | "CutoverInProgress";
+  | "CutoverInProgress"
+  | (string & {});
 export const PhaseDetailsPhase = /*@__PURE__*/ S.String;
 
 /** The operation phase information. */
@@ -4745,14 +4827,16 @@ export type DatabasePropertiesInputCreateMode =
   | "RestoreExternalBackup"
   | "RestoreExternalBackupSecondary"
   | "RestoreLongTermRetentionBackup"
-  | "OnlineSecondary";
+  | "OnlineSecondary"
+  | (string & {});
 export const DatabasePropertiesInputCreateMode = /*@__PURE__*/ S.String;
 
 /** The name of the sample schema to apply when creating this database. */
 export type DatabasePropertiesInputSampleName =
   | "AdventureWorksLT"
   | "WideWorldImportersStd"
-  | "WideWorldImportersFull";
+  | "WideWorldImportersFull"
+  | (string & {});
 export const DatabasePropertiesInputSampleName = /*@__PURE__*/ S.String;
 
 /** The status of the database. */
@@ -4780,27 +4864,37 @@ export type DatabasePropertiesInputStatus =
   | "Disabled"
   | "Stopping"
   | "Stopped"
-  | "Starting";
+  | "Starting"
+  | (string & {});
 export const DatabasePropertiesInputStatus = /*@__PURE__*/ S.String;
 
 /** Collation of the metadata catalog. */
 export type DatabasePropertiesInputCatalogCollation =
   | "DATABASE_DEFAULT"
-  | "SQL_Latin1_General_CP1_CI_AS";
+  | "SQL_Latin1_General_CP1_CI_AS"
+  | (string & {});
 export const DatabasePropertiesInputCatalogCollation = /*@__PURE__*/ S.String;
 
 /** The license type to apply for this database. `LicenseIncluded` if you need a license, or `BasePrice` if you have a license and are eligible for the Azure Hybrid Benefit. */
 export type DatabasePropertiesInputLicenseType =
   | "LicenseIncluded"
-  | "BasePrice";
+  | "BasePrice"
+  | (string & {});
 export const DatabasePropertiesInputLicenseType = /*@__PURE__*/ S.String;
 
 /** The state of read-only routing. If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica in the same region. Not applicable to a Hyperscale database within an elastic pool. */
-export type DatabasePropertiesInputReadScale = "Enabled" | "Disabled";
+export type DatabasePropertiesInputReadScale =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const DatabasePropertiesInputReadScale = /*@__PURE__*/ S.String;
 
 /** The secondary type of the database if it is a secondary. Valid values are Geo, Named and Standby. */
-export type DatabasePropertiesInputSecondaryType = "Geo" | "Named" | "Standby";
+export type DatabasePropertiesInputSecondaryType =
+  | "Geo"
+  | "Named"
+  | "Standby"
+  | (string & {});
 export const DatabasePropertiesInputSecondaryType = /*@__PURE__*/ S.String;
 
 /** An ARM Resource SKU. */
@@ -4833,7 +4927,8 @@ export type DatabasePropertiesInputCurrentBackupStorageRedundancy =
   | "Geo"
   | "Local"
   | "Zone"
-  | "GeoZone";
+  | "GeoZone"
+  | (string & {});
 export const DatabasePropertiesInputCurrentBackupStorageRedundancy =
   /*@__PURE__*/ S.String;
 
@@ -4842,7 +4937,8 @@ export type DatabasePropertiesInputRequestedBackupStorageRedundancy =
   | "Geo"
   | "Local"
   | "Zone"
-  | "GeoZone";
+  | "GeoZone"
+  | (string & {});
 export const DatabasePropertiesInputRequestedBackupStorageRedundancy =
   /*@__PURE__*/ S.String;
 
@@ -4864,14 +4960,18 @@ export const DatabasePropertiesInputKeysMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DatabasePropertiesInputKeysMap>;
 
 /** Type of enclave requested on the database i.e. Default or VBS enclaves. */
-export type DatabasePropertiesInputPreferredEnclaveType = "Default" | "VBS";
+export type DatabasePropertiesInputPreferredEnclaveType =
+  | "Default"
+  | "VBS"
+  | (string & {});
 export const DatabasePropertiesInputPreferredEnclaveType =
   /*@__PURE__*/ S.String;
 
 /** Specifies the behavior when monthly free limits are exhausted for the free database. AutoPause: The database will be auto paused upon exhaustion of free limits for remainder of the month. BillForUsage: The database will continue to be online upon exhaustion of free limits and any overage will be billed. */
 export type DatabasePropertiesInputFreeLimitExhaustionBehavior =
   | "AutoPause"
-  | "BillOverUsage";
+  | "BillOverUsage"
+  | (string & {});
 export const DatabasePropertiesInputFreeLimitExhaustionBehavior =
   /*@__PURE__*/ S.String;
 
@@ -4880,7 +4980,8 @@ export type DatabasePropertiesInputAvailabilityZone =
   | "NoPreference"
   | "1"
   | "2"
-  | "3";
+  | "3"
+  | (string & {});
 export const DatabasePropertiesInputAvailabilityZone = /*@__PURE__*/ S.String;
 
 /** The database's properties. */
@@ -5041,7 +5142,7 @@ export const DatabasesCreateOrUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabasesCreateOrUpdateRequestSku>;
 
 /** The identity type */
-export type DatabaseIdentityType = "None" | "UserAssigned";
+export type DatabaseIdentityType = "None" | "UserAssigned" | (string & {});
 export const DatabaseIdentityType = /*@__PURE__*/ S.String;
 
 /** Azure Active Directory identity configuration for a resource. */
@@ -5153,14 +5254,16 @@ export type DatabasePropertiesCreateMode =
   | "RestoreExternalBackup"
   | "RestoreExternalBackupSecondary"
   | "RestoreLongTermRetentionBackup"
-  | "OnlineSecondary";
+  | "OnlineSecondary"
+  | (string & {});
 export const DatabasePropertiesCreateMode = /*@__PURE__*/ S.String;
 
 /** The name of the sample schema to apply when creating this database. */
 export type DatabasePropertiesSampleName =
   | "AdventureWorksLT"
   | "WideWorldImportersStd"
-  | "WideWorldImportersFull";
+  | "WideWorldImportersFull"
+  | (string & {});
 export const DatabasePropertiesSampleName = /*@__PURE__*/ S.String;
 
 /** The status of the database. */
@@ -5188,25 +5291,37 @@ export type DatabasePropertiesStatus =
   | "Disabled"
   | "Stopping"
   | "Stopped"
-  | "Starting";
+  | "Starting"
+  | (string & {});
 export const DatabasePropertiesStatus = /*@__PURE__*/ S.String;
 
 /** Collation of the metadata catalog. */
 export type DatabasePropertiesCatalogCollation =
   | "DATABASE_DEFAULT"
-  | "SQL_Latin1_General_CP1_CI_AS";
+  | "SQL_Latin1_General_CP1_CI_AS"
+  | (string & {});
 export const DatabasePropertiesCatalogCollation = /*@__PURE__*/ S.String;
 
 /** The license type to apply for this database. `LicenseIncluded` if you need a license, or `BasePrice` if you have a license and are eligible for the Azure Hybrid Benefit. */
-export type DatabasePropertiesLicenseType = "LicenseIncluded" | "BasePrice";
+export type DatabasePropertiesLicenseType =
+  | "LicenseIncluded"
+  | "BasePrice"
+  | (string & {});
 export const DatabasePropertiesLicenseType = /*@__PURE__*/ S.String;
 
 /** The state of read-only routing. If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica in the same region. Not applicable to a Hyperscale database within an elastic pool. */
-export type DatabasePropertiesReadScale = "Enabled" | "Disabled";
+export type DatabasePropertiesReadScale =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const DatabasePropertiesReadScale = /*@__PURE__*/ S.String;
 
 /** The secondary type of the database if it is a secondary. Valid values are Geo, Named and Standby. */
-export type DatabasePropertiesSecondaryType = "Geo" | "Named" | "Standby";
+export type DatabasePropertiesSecondaryType =
+  | "Geo"
+  | "Named"
+  | "Standby"
+  | (string & {});
 export const DatabasePropertiesSecondaryType = /*@__PURE__*/ S.String;
 
 /** An ARM Resource SKU. */
@@ -5239,7 +5354,8 @@ export type DatabasePropertiesCurrentBackupStorageRedundancy =
   | "Geo"
   | "Local"
   | "Zone"
-  | "GeoZone";
+  | "GeoZone"
+  | (string & {});
 export const DatabasePropertiesCurrentBackupStorageRedundancy =
   /*@__PURE__*/ S.String;
 
@@ -5248,12 +5364,13 @@ export type DatabasePropertiesRequestedBackupStorageRedundancy =
   | "Geo"
   | "Local"
   | "Zone"
-  | "GeoZone";
+  | "GeoZone"
+  | (string & {});
 export const DatabasePropertiesRequestedBackupStorageRedundancy =
   /*@__PURE__*/ S.String;
 
 /** The database key type. Only supported value is 'AzureKeyVault'. */
-export type DatabaseKeyType = "AzureKeyVault";
+export type DatabaseKeyType = "AzureKeyVault" | (string & {});
 export const DatabaseKeyType = /*@__PURE__*/ S.String;
 
 /** Database level key used for encryption at rest. */
@@ -5291,13 +5408,17 @@ export const DatabasePropertiesKeysMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DatabasePropertiesKeysMap>;
 
 /** Type of enclave requested on the database i.e. Default or VBS enclaves. */
-export type DatabasePropertiesPreferredEnclaveType = "Default" | "VBS";
+export type DatabasePropertiesPreferredEnclaveType =
+  | "Default"
+  | "VBS"
+  | (string & {});
 export const DatabasePropertiesPreferredEnclaveType = /*@__PURE__*/ S.String;
 
 /** Specifies the behavior when monthly free limits are exhausted for the free database. AutoPause: The database will be auto paused upon exhaustion of free limits for remainder of the month. BillForUsage: The database will continue to be online upon exhaustion of free limits and any overage will be billed. */
 export type DatabasePropertiesFreeLimitExhaustionBehavior =
   | "AutoPause"
-  | "BillOverUsage";
+  | "BillOverUsage"
+  | (string & {});
 export const DatabasePropertiesFreeLimitExhaustionBehavior =
   /*@__PURE__*/ S.String;
 
@@ -5306,7 +5427,8 @@ export type DatabasePropertiesAvailabilityZone =
   | "NoPreference"
   | "1"
   | "2"
-  | "3";
+  | "3"
+  | (string & {});
 export const DatabasePropertiesAvailabilityZone = /*@__PURE__*/ S.String;
 
 /** The database's properties. */
@@ -5572,12 +5694,12 @@ export const DatabasesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabasesDeleteResponse>;
 
 export type DatabaseSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName =
-  "Default";
+  "Default" | (string & {});
 export const DatabaseSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName =
   /*@__PURE__*/ S.String;
 
 /** Specifies the state of the policy, whether it is enabled or disabled or a policy has not been applied yet on the specific database. */
-export type SecurityAlertsPolicyState = "Enabled" | "Disabled";
+export type SecurityAlertsPolicyState = "Enabled" | "Disabled" | (string & {});
 export const SecurityAlertsPolicyState = /*@__PURE__*/ S.String;
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force */
@@ -5755,7 +5877,8 @@ export const DatabaseSecurityAlertPoliciesCreateOrUpdateResponse =
   }) as any as S.Schema<DatabaseSecurityAlertPoliciesCreateOrUpdateResponse>;
 
 export type DatabaseSecurityAlertPoliciesGetRequestSecurityAlertPolicyName =
-  "Default";
+  | "Default"
+  | (string & {});
 export const DatabaseSecurityAlertPoliciesGetRequestSecurityAlertPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -6012,7 +6135,8 @@ export const DatabaseSecurityAlertListResult = /*@__PURE__*/ S.suspend(() =>
 export type DatabasesExportRequestStorageKeyType =
   | "SharedAccessKey"
   | "StorageAccessKey"
-  | "ManagedIdentity";
+  | "ManagedIdentity"
+  | (string & {});
 export const DatabasesExportRequestStorageKeyType = /*@__PURE__*/ S.String;
 
 /** Contains the ARM resources for which to create private endpoint connection. */
@@ -6178,7 +6302,8 @@ export const DatabasesExportResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type DatabasesFailoverRequestReplicaType =
   | "Primary"
-  | "ReadableSecondary";
+  | "ReadableSecondary"
+  | (string & {});
 export const DatabasesFailoverRequestReplicaType = /*@__PURE__*/ S.String;
 
 export interface DatabasesFailoverRequest {
@@ -6333,7 +6458,8 @@ export const DatabasesGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type DatabasesImportRequestStorageKeyType =
   | "SharedAccessKey"
   | "StorageAccessKey"
-  | "ManagedIdentity";
+  | "ManagedIdentity"
+  | (string & {});
 export const DatabasesImportRequestStorageKeyType = /*@__PURE__*/ S.String;
 
 /** Contains the ARM resources for which to create private endpoint connection. */
@@ -6705,12 +6831,12 @@ export const DatabasesPauseResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabasesPauseResponse>;
 
 export type DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequestBaselineName =
-  "default";
+  "default" | (string & {});
 export const DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequestBaselineName =
   /*@__PURE__*/ S.String;
 
@@ -6877,12 +7003,13 @@ export const DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdateResponse =
   }) as any as S.Schema<DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdateResponse>;
 
 export type DatabaseSqlVulnerabilityAssessmentBaselinesGetRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const DatabaseSqlVulnerabilityAssessmentBaselinesGetRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type DatabaseSqlVulnerabilityAssessmentBaselinesGetRequestBaselineName =
-  "default";
+  | "default"
+  | (string & {});
 export const DatabaseSqlVulnerabilityAssessmentBaselinesGetRequestBaselineName =
   /*@__PURE__*/ S.String;
 
@@ -6954,7 +7081,7 @@ export const DatabaseSqlVulnerabilityAssessmentBaselinesGetResponse =
   }) as any as S.Schema<DatabaseSqlVulnerabilityAssessmentBaselinesGetResponse>;
 
 export type DatabaseSqlVulnerabilityAssessmentBaselinesListBySqlVulnerabilityAssessmentRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const DatabaseSqlVulnerabilityAssessmentBaselinesListBySqlVulnerabilityAssessmentRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -7049,7 +7176,7 @@ export const DatabaseSqlVulnerabilityAssessmentBaselinesListBySqlVulnerabilityAs
   }) as any as S.Schema<DatabaseSqlVulnerabilityAssessmentBaselinesListBySqlVulnerabilityAssessmentResponse>;
 
 export type DatabaseSqlVulnerabilityAssessmentExecuteScanExecuteRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const DatabaseSqlVulnerabilityAssessmentExecuteScanExecuteRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -7095,12 +7222,12 @@ export const DatabaseSqlVulnerabilityAssessmentExecuteScanExecuteResponse =
   }) as any as S.Schema<DatabaseSqlVulnerabilityAssessmentExecuteScanExecuteResponse>;
 
 export type DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestBaselineName =
-  "default";
+  "default" | (string & {});
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestBaselineName =
   /*@__PURE__*/ S.String;
 
@@ -7245,12 +7372,12 @@ export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRespon
   }) as any as S.Schema<DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdateResponse>;
 
 export type DatabaseSqlVulnerabilityAssessmentRuleBaselinesDeleteRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesDeleteRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type DatabaseSqlVulnerabilityAssessmentRuleBaselinesDeleteRequestBaselineName =
-  "default";
+  "default" | (string & {});
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesDeleteRequestBaselineName =
   /*@__PURE__*/ S.String;
 
@@ -7304,12 +7431,12 @@ export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesDeleteResponse =
   }) as any as S.Schema<DatabaseSqlVulnerabilityAssessmentRuleBaselinesDeleteResponse>;
 
 export type DatabaseSqlVulnerabilityAssessmentRuleBaselinesGetRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesGetRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type DatabaseSqlVulnerabilityAssessmentRuleBaselinesGetRequestBaselineName =
-  "default";
+  "default" | (string & {});
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesGetRequestBaselineName =
   /*@__PURE__*/ S.String;
 
@@ -7384,12 +7511,12 @@ export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesGetResponse =
   }) as any as S.Schema<DatabaseSqlVulnerabilityAssessmentRuleBaselinesGetResponse>;
 
 export type DatabaseSqlVulnerabilityAssessmentRuleBaselinesListByBaselineRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesListByBaselineRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type DatabaseSqlVulnerabilityAssessmentRuleBaselinesListByBaselineRequestBaselineName =
-  "default";
+  "default" | (string & {});
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesListByBaselineRequestBaselineName =
   /*@__PURE__*/ S.String;
 
@@ -7489,7 +7616,7 @@ export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesListByBaselineRespon
   }) as any as S.Schema<DatabaseSqlVulnerabilityAssessmentRuleBaselinesListByBaselineResponse>;
 
 export type DatabaseSqlVulnerabilityAssessmentScanResultGetRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const DatabaseSqlVulnerabilityAssessmentScanResultGetRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -7535,7 +7662,11 @@ export const DatabaseSqlVulnerabilityAssessmentScanResultGetRequest =
   }) as any as S.Schema<DatabaseSqlVulnerabilityAssessmentScanResultGetRequest>;
 
 /** SQL Vulnerability Assessment baseline status */
-export type RuleStatus = "NonFinding" | "Finding" | "InternalError";
+export type RuleStatus =
+  | "NonFinding"
+  | "Finding"
+  | "InternalError"
+  | (string & {});
 export const RuleStatus = /*@__PURE__*/ S.String;
 
 export type SqlVulnerabilityAssessmentScanResultPropertiesQueryResultsItemList =
@@ -7667,7 +7798,8 @@ export type RuleSeverity =
   | "Medium"
   | "Low"
   | "Informational"
-  | "Obsolete";
+  | "Obsolete"
+  | (string & {});
 export const RuleSeverity = /*@__PURE__*/ S.String;
 
 /** SQL Vulnerability Assessment rule type. */
@@ -7675,7 +7807,8 @@ export type RuleType =
   | "Binary"
   | "BaselineExpected"
   | "PositiveList"
-  | "NegativeList";
+  | "NegativeList"
+  | (string & {});
 export const RuleType = /*@__PURE__*/ S.String;
 
 export type QueryCheckExpectedResultItemList = ReadonlyArray<string>;
@@ -7833,7 +7966,7 @@ export const DatabaseSqlVulnerabilityAssessmentScanResultGetResponse =
   }) as any as S.Schema<DatabaseSqlVulnerabilityAssessmentScanResultGetResponse>;
 
 export type DatabaseSqlVulnerabilityAssessmentScanResultListByScanRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const DatabaseSqlVulnerabilityAssessmentScanResultListByScanRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -7929,7 +8062,7 @@ export const DatabaseSqlVulnerabilityAssessmentScanResultListByScanResponse =
   }) as any as S.Schema<DatabaseSqlVulnerabilityAssessmentScanResultListByScanResponse>;
 
 export type DatabaseSqlVulnerabilityAssessmentScansGetRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const DatabaseSqlVulnerabilityAssessmentScansGetRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -7972,7 +8105,10 @@ export const DatabaseSqlVulnerabilityAssessmentScansGetRequest =
   }) as any as S.Schema<DatabaseSqlVulnerabilityAssessmentScansGetRequest>;
 
 /** The scan trigger type. */
-export type VulnerabilityAssessmentScanTriggerType = "OnDemand" | "Recurring";
+export type VulnerabilityAssessmentScanTriggerType =
+  | "OnDemand"
+  | "Recurring"
+  | (string & {});
 export const VulnerabilityAssessmentScanTriggerType = /*@__PURE__*/ S.String;
 
 /** The scan status. */
@@ -7980,7 +8116,8 @@ export type VulnerabilityAssessmentScanState =
   | "Passed"
   | "Failed"
   | "FailedToRun"
-  | "InProgress";
+  | "InProgress"
+  | (string & {});
 export const VulnerabilityAssessmentScanState = /*@__PURE__*/ S.String;
 
 /** Properties of a vulnerability assessment scan error. */
@@ -8097,7 +8234,7 @@ export const DatabaseSqlVulnerabilityAssessmentScansGetResponse =
   }) as any as S.Schema<DatabaseSqlVulnerabilityAssessmentScansGetResponse>;
 
 export type DatabaseSqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const DatabaseSqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -8190,7 +8327,7 @@ export const DatabaseSqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssess
   }) as any as S.Schema<DatabaseSqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsResponse>;
 
 export type DatabaseSqlVulnerabilityAssessmentsSettingsGetRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const DatabaseSqlVulnerabilityAssessmentsSettingsGetRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -8230,7 +8367,10 @@ export const DatabaseSqlVulnerabilityAssessmentsSettingsGetRequest =
   }) as any as S.Schema<DatabaseSqlVulnerabilityAssessmentsSettingsGetRequest>;
 
 /** Specifies the state of the SQL Vulnerability Assessment, whether it is enabled or disabled or a state has not been applied yet on the specific database or server. */
-export type SqlVulnerabilityAssessmentState = "Enabled" | "Disabled";
+export type SqlVulnerabilityAssessmentState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const SqlVulnerabilityAssessmentState = /*@__PURE__*/ S.String;
 
 export interface SqlVulnerabilityAssessmentPolicyProperties {
@@ -8530,14 +8670,16 @@ export type DatabaseUpdatePropertiesInputCreateMode =
   | "RestoreExternalBackup"
   | "RestoreExternalBackupSecondary"
   | "RestoreLongTermRetentionBackup"
-  | "OnlineSecondary";
+  | "OnlineSecondary"
+  | (string & {});
 export const DatabaseUpdatePropertiesInputCreateMode = /*@__PURE__*/ S.String;
 
 /** The name of the sample schema to apply when creating this database. */
 export type DatabaseUpdatePropertiesInputSampleName =
   | "AdventureWorksLT"
   | "WideWorldImportersStd"
-  | "WideWorldImportersFull";
+  | "WideWorldImportersFull"
+  | (string & {});
 export const DatabaseUpdatePropertiesInputSampleName = /*@__PURE__*/ S.String;
 
 /** The status of the database. */
@@ -8565,31 +8707,38 @@ export type DatabaseUpdatePropertiesInputStatus =
   | "Disabled"
   | "Stopping"
   | "Stopped"
-  | "Starting";
+  | "Starting"
+  | (string & {});
 export const DatabaseUpdatePropertiesInputStatus = /*@__PURE__*/ S.String;
 
 /** Collation of the metadata catalog. */
 export type DatabaseUpdatePropertiesInputCatalogCollation =
   | "DATABASE_DEFAULT"
-  | "SQL_Latin1_General_CP1_CI_AS";
+  | "SQL_Latin1_General_CP1_CI_AS"
+  | (string & {});
 export const DatabaseUpdatePropertiesInputCatalogCollation =
   /*@__PURE__*/ S.String;
 
 /** The license type to apply for this database. `LicenseIncluded` if you need a license, or `BasePrice` if you have a license and are eligible for the Azure Hybrid Benefit. */
 export type DatabaseUpdatePropertiesInputLicenseType =
   | "LicenseIncluded"
-  | "BasePrice";
+  | "BasePrice"
+  | (string & {});
 export const DatabaseUpdatePropertiesInputLicenseType = /*@__PURE__*/ S.String;
 
 /** The state of read-only routing. If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica in the same region. Not applicable to a Hyperscale database within an elastic pool. */
-export type DatabaseUpdatePropertiesInputReadScale = "Enabled" | "Disabled";
+export type DatabaseUpdatePropertiesInputReadScale =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const DatabaseUpdatePropertiesInputReadScale = /*@__PURE__*/ S.String;
 
 /** The secondary type of the database if it is a secondary. Valid values are Geo, Named and Standby. */
 export type DatabaseUpdatePropertiesInputSecondaryType =
   | "Geo"
   | "Named"
-  | "Standby";
+  | "Standby"
+  | (string & {});
 export const DatabaseUpdatePropertiesInputSecondaryType =
   /*@__PURE__*/ S.String;
 
@@ -8624,7 +8773,8 @@ export type DatabaseUpdatePropertiesInputCurrentBackupStorageRedundancy =
   | "Geo"
   | "Local"
   | "Zone"
-  | "GeoZone";
+  | "GeoZone"
+  | (string & {});
 export const DatabaseUpdatePropertiesInputCurrentBackupStorageRedundancy =
   /*@__PURE__*/ S.String;
 
@@ -8633,7 +8783,8 @@ export type DatabaseUpdatePropertiesInputRequestedBackupStorageRedundancy =
   | "Geo"
   | "Local"
   | "Zone"
-  | "GeoZone";
+  | "GeoZone"
+  | (string & {});
 export const DatabaseUpdatePropertiesInputRequestedBackupStorageRedundancy =
   /*@__PURE__*/ S.String;
 
@@ -8657,14 +8808,16 @@ export const DatabaseUpdatePropertiesInputKeysMap = /*@__PURE__*/ S.Record(
 /** Type of enclave requested on the database i.e. Default or VBS enclaves. */
 export type DatabaseUpdatePropertiesInputPreferredEnclaveType =
   | "Default"
-  | "VBS";
+  | "VBS"
+  | (string & {});
 export const DatabaseUpdatePropertiesInputPreferredEnclaveType =
   /*@__PURE__*/ S.String;
 
 /** Specifies the behavior when monthly free limits are exhausted for the free database. AutoPause: The database will be auto paused upon exhaustion of free limits for remainder of the month. BillForUsage: The database will continue to be online upon exhaustion of free limits and any overage will be billed. */
 export type DatabaseUpdatePropertiesInputFreeLimitExhaustionBehavior =
   | "AutoPause"
-  | "BillOverUsage";
+  | "BillOverUsage"
+  | (string & {});
 export const DatabaseUpdatePropertiesInputFreeLimitExhaustionBehavior =
   /*@__PURE__*/ S.String;
 
@@ -9205,12 +9358,12 @@ export const DatabaseUsageListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseUsageListResult>;
 
 export type DatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const DatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type DatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestBaselineName =
-  "master" | "default";
+  "master" | "default" | (string & {});
 export const DatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestBaselineName =
   /*@__PURE__*/ S.String;
 
@@ -9338,12 +9491,12 @@ export const DatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateResponse 
   }) as any as S.Schema<DatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateResponse>;
 
 export type DatabaseVulnerabilityAssessmentRuleBaselinesDeleteRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const DatabaseVulnerabilityAssessmentRuleBaselinesDeleteRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type DatabaseVulnerabilityAssessmentRuleBaselinesDeleteRequestBaselineName =
-  "master" | "default";
+  "master" | "default" | (string & {});
 export const DatabaseVulnerabilityAssessmentRuleBaselinesDeleteRequestBaselineName =
   /*@__PURE__*/ S.String;
 
@@ -9398,12 +9551,12 @@ export const DatabaseVulnerabilityAssessmentRuleBaselinesDeleteResponse =
   }) as any as S.Schema<DatabaseVulnerabilityAssessmentRuleBaselinesDeleteResponse>;
 
 export type DatabaseVulnerabilityAssessmentRuleBaselinesGetRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const DatabaseVulnerabilityAssessmentRuleBaselinesGetRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type DatabaseVulnerabilityAssessmentRuleBaselinesGetRequestBaselineName =
-  "master" | "default";
+  "master" | "default" | (string & {});
 export const DatabaseVulnerabilityAssessmentRuleBaselinesGetRequestBaselineName =
   /*@__PURE__*/ S.String;
 
@@ -9479,7 +9632,7 @@ export const DatabaseVulnerabilityAssessmentRuleBaselinesGetResponse =
   }) as any as S.Schema<DatabaseVulnerabilityAssessmentRuleBaselinesGetResponse>;
 
 export type DatabaseVulnerabilityAssessmentScansExportRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const DatabaseVulnerabilityAssessmentScansExportRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -9563,7 +9716,7 @@ export const DatabaseVulnerabilityAssessmentScansExportResponse =
   }) as any as S.Schema<DatabaseVulnerabilityAssessmentScansExportResponse>;
 
 export type DatabaseVulnerabilityAssessmentScansGetRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const DatabaseVulnerabilityAssessmentScansGetRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -9690,7 +9843,7 @@ export const DatabaseVulnerabilityAssessmentScansGetResponse =
   }) as any as S.Schema<DatabaseVulnerabilityAssessmentScansGetResponse>;
 
 export type DatabaseVulnerabilityAssessmentScansInitiateScanRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const DatabaseVulnerabilityAssessmentScansInitiateScanRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -9739,7 +9892,7 @@ export const DatabaseVulnerabilityAssessmentScansInitiateScanResponse =
   }) as any as S.Schema<DatabaseVulnerabilityAssessmentScansInitiateScanResponse>;
 
 export type DatabaseVulnerabilityAssessmentScansListByDatabaseRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const DatabaseVulnerabilityAssessmentScansListByDatabaseRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -9829,7 +9982,7 @@ export const DatabaseVulnerabilityAssessmentScansListByDatabaseResponse =
   }) as any as S.Schema<DatabaseVulnerabilityAssessmentScansListByDatabaseResponse>;
 
 export type DatabaseVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const DatabaseVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -9952,7 +10105,7 @@ export const DatabaseVulnerabilityAssessmentsCreateOrUpdateResponse =
   }) as any as S.Schema<DatabaseVulnerabilityAssessmentsCreateOrUpdateResponse>;
 
 export type DatabaseVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const DatabaseVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -9998,7 +10151,7 @@ export const DatabaseVulnerabilityAssessmentsDeleteResponse =
   }) as any as S.Schema<DatabaseVulnerabilityAssessmentsDeleteResponse>;
 
 export type DatabaseVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const DatabaseVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -10141,14 +10294,16 @@ export const DatabaseVulnerabilityAssessmentsListByDatabaseResponse =
   }) as any as S.Schema<DatabaseVulnerabilityAssessmentsListByDatabaseResponse>;
 
 export type DataMaskingPoliciesCreateOrUpdateRequestDataMaskingPolicyName =
-  "Default";
+  | "Default"
+  | (string & {});
 export const DataMaskingPoliciesCreateOrUpdateRequestDataMaskingPolicyName =
   /*@__PURE__*/ S.String;
 
 /** The state of the data masking policy. */
 export type DataMaskingPolicyPropertiesInputDataMaskingState =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const DataMaskingPolicyPropertiesInputDataMaskingState =
   /*@__PURE__*/ S.String;
 
@@ -10209,7 +10364,8 @@ export const DataMaskingPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 /** The state of the data masking policy. */
 export type DataMaskingPolicyPropertiesDataMaskingState =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const DataMaskingPolicyPropertiesDataMaskingState =
   /*@__PURE__*/ S.String;
 
@@ -10266,7 +10422,9 @@ export const DataMaskingPoliciesCreateOrUpdateResponse =
     identifier: "DataMaskingPoliciesCreateOrUpdateResponse",
   }) as any as S.Schema<DataMaskingPoliciesCreateOrUpdateResponse>;
 
-export type DataMaskingPoliciesGetRequestDataMaskingPolicyName = "Default";
+export type DataMaskingPoliciesGetRequestDataMaskingPolicyName =
+  | "Default"
+  | (string & {});
 export const DataMaskingPoliciesGetRequestDataMaskingPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -10333,12 +10491,16 @@ export const DataMaskingPoliciesGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataMaskingPoliciesGetResponse>;
 
 export type DataMaskingRulesCreateOrUpdateRequestDataMaskingPolicyName =
-  "Default";
+  | "Default"
+  | (string & {});
 export const DataMaskingRulesCreateOrUpdateRequestDataMaskingPolicyName =
   /*@__PURE__*/ S.String;
 
 /** The rule state. Used to delete a rule. To delete an existing rule, specify the schemaName, tableName, columnName, maskingFunction, and specify ruleState as disabled. However, if the rule doesn't already exist, the rule will be created with ruleState set to enabled, regardless of the provided value of ruleState. */
-export type DataMaskingRulePropertiesInputRuleState = "Enabled" | "Disabled";
+export type DataMaskingRulePropertiesInputRuleState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const DataMaskingRulePropertiesInputRuleState = /*@__PURE__*/ S.String;
 
 /** The masking function that is used for the data masking rule. */
@@ -10348,7 +10510,8 @@ export type DataMaskingRulePropertiesInputMaskingFunction =
   | "Email"
   | "Number"
   | "SSN"
-  | "Text";
+  | "Text"
+  | (string & {});
 export const DataMaskingRulePropertiesInputMaskingFunction =
   /*@__PURE__*/ S.String;
 
@@ -10437,7 +10600,10 @@ export const DataMaskingRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DataMaskingRulesCreateOrUpdateRequest>;
 
 /** The rule state. Used to delete a rule. To delete an existing rule, specify the schemaName, tableName, columnName, maskingFunction, and specify ruleState as disabled. However, if the rule doesn't already exist, the rule will be created with ruleState set to enabled, regardless of the provided value of ruleState. */
-export type DataMaskingRulePropertiesRuleState = "Enabled" | "Disabled";
+export type DataMaskingRulePropertiesRuleState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const DataMaskingRulePropertiesRuleState = /*@__PURE__*/ S.String;
 
 /** The masking function that is used for the data masking rule. */
@@ -10447,7 +10613,8 @@ export type DataMaskingRulePropertiesMaskingFunction =
   | "Email"
   | "Number"
   | "SSN"
-  | "Text";
+  | "Text"
+  | (string & {});
 export const DataMaskingRulePropertiesMaskingFunction = /*@__PURE__*/ S.String;
 
 /** The properties of a database data masking rule. */
@@ -10528,7 +10695,8 @@ export const DataMaskingRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DataMaskingRulesCreateOrUpdateResponse>;
 
 export type DataMaskingRulesListByDatabaseRequestDataMaskingPolicyName =
-  "Default";
+  | "Default"
+  | (string & {});
 export const DataMaskingRulesListByDatabaseRequestDataMaskingPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -10621,7 +10789,7 @@ export const DataMaskingRuleListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataMaskingRuleListResult>;
 
 export type DataWarehouseUserActivitiesGetRequestDataWarehouseUserActivityName =
-  "current";
+  "current" | (string & {});
 export const DataWarehouseUserActivitiesGetRequestDataWarehouseUserActivityName =
   /*@__PURE__*/ S.String;
 
@@ -10987,35 +11155,40 @@ export const DeletedServersRecoverResponse = /*@__PURE__*/ S.suspend(() =>
 /** Replication mode of the link */
 export type DistributedAvailabilityGroupPropertiesInputReplicationMode =
   | "Async"
-  | "Sync";
+  | "Sync"
+  | (string & {});
 export const DistributedAvailabilityGroupPropertiesInputReplicationMode =
   /*@__PURE__*/ S.String;
 
 /** SQL server side link role */
 export type DistributedAvailabilityGroupPropertiesInputPartnerLinkRole =
   | "Primary"
-  | "Secondary";
+  | "Secondary"
+  | (string & {});
 export const DistributedAvailabilityGroupPropertiesInputPartnerLinkRole =
   /*@__PURE__*/ S.String;
 
 /** SQL server side link role */
 export type DistributedAvailabilityGroupPropertiesInputInstanceLinkRole =
   | "Primary"
-  | "Secondary";
+  | "Secondary"
+  | (string & {});
 export const DistributedAvailabilityGroupPropertiesInputInstanceLinkRole =
   /*@__PURE__*/ S.String;
 
 /** The link failover mode - can be Manual if intended to be used for two-way failover with a supported SQL Server, or None for one-way failover to Azure. */
 export type DistributedAvailabilityGroupPropertiesInputFailoverMode =
   | "None"
-  | "Manual";
+  | "Manual"
+  | (string & {});
 export const DistributedAvailabilityGroupPropertiesInputFailoverMode =
   /*@__PURE__*/ S.String;
 
 /** Database seeding mode – can be Automatic (default), or Manual for supported scenarios. */
 export type DistributedAvailabilityGroupPropertiesInputSeedingMode =
   | "Automatic"
-  | "Manual";
+  | "Manual"
+  | (string & {});
 export const DistributedAvailabilityGroupPropertiesInputSeedingMode =
   /*@__PURE__*/ S.String;
 
@@ -11023,14 +11196,16 @@ export const DistributedAvailabilityGroupPropertiesInputSeedingMode =
 export type DistributedAvailabilityGroupDatabaseInputSynchronizationHealth =
   | "NOT_HEALTHY"
   | "PARTIALLY_HEALTHY"
-  | "HEALTHY";
+  | "HEALTHY"
+  | (string & {});
 export const DistributedAvailabilityGroupDatabaseInputSynchronizationHealth =
   /*@__PURE__*/ S.String;
 
 /** Link connected state */
 export type DistributedAvailabilityGroupDatabaseInputConnectedState =
   | "DISCONNECTED"
-  | "CONNECTED";
+  | "CONNECTED"
+  | (string & {});
 export const DistributedAvailabilityGroupDatabaseInputConnectedState =
   /*@__PURE__*/ S.String;
 
@@ -11160,35 +11335,40 @@ export const DistributedAvailabilityGroupsCreateOrUpdateRequest =
 /** Replication mode of the link */
 export type DistributedAvailabilityGroupPropertiesReplicationMode =
   | "Async"
-  | "Sync";
+  | "Sync"
+  | (string & {});
 export const DistributedAvailabilityGroupPropertiesReplicationMode =
   /*@__PURE__*/ S.String;
 
 /** SQL server side link role */
 export type DistributedAvailabilityGroupPropertiesPartnerLinkRole =
   | "Primary"
-  | "Secondary";
+  | "Secondary"
+  | (string & {});
 export const DistributedAvailabilityGroupPropertiesPartnerLinkRole =
   /*@__PURE__*/ S.String;
 
 /** SQL server side link role */
 export type DistributedAvailabilityGroupPropertiesInstanceLinkRole =
   | "Primary"
-  | "Secondary";
+  | "Secondary"
+  | (string & {});
 export const DistributedAvailabilityGroupPropertiesInstanceLinkRole =
   /*@__PURE__*/ S.String;
 
 /** The link failover mode - can be Manual if intended to be used for two-way failover with a supported SQL Server, or None for one-way failover to Azure. */
 export type DistributedAvailabilityGroupPropertiesFailoverMode =
   | "None"
-  | "Manual";
+  | "Manual"
+  | (string & {});
 export const DistributedAvailabilityGroupPropertiesFailoverMode =
   /*@__PURE__*/ S.String;
 
 /** Database seeding mode – can be Automatic (default), or Manual for supported scenarios. */
 export type DistributedAvailabilityGroupPropertiesSeedingMode =
   | "Automatic"
-  | "Manual";
+  | "Manual"
+  | (string & {});
 export const DistributedAvailabilityGroupPropertiesSeedingMode =
   /*@__PURE__*/ S.String;
 
@@ -11196,14 +11376,16 @@ export const DistributedAvailabilityGroupPropertiesSeedingMode =
 export type DistributedAvailabilityGroupDatabaseSynchronizationHealth =
   | "NOT_HEALTHY"
   | "PARTIALLY_HEALTHY"
-  | "HEALTHY";
+  | "HEALTHY"
+  | (string & {});
 export const DistributedAvailabilityGroupDatabaseSynchronizationHealth =
   /*@__PURE__*/ S.String;
 
 /** Link connected state */
 export type DistributedAvailabilityGroupDatabaseConnectedState =
   | "DISCONNECTED"
-  | "CONNECTED";
+  | "CONNECTED"
+  | (string & {});
 export const DistributedAvailabilityGroupDatabaseConnectedState =
   /*@__PURE__*/ S.String;
 
@@ -11428,7 +11610,8 @@ export const DistributedAvailabilityGroupsDeleteResponse =
 /** The failover type, can be ForcedAllowDataLoss or Planned. */
 export type DistributedAvailabilityGroupsFailoverRequestFailoverType =
   | "ForcedAllowDataLoss"
-  | "Planned";
+  | "Planned"
+  | (string & {});
 export const DistributedAvailabilityGroupsFailoverRequestFailoverType =
   /*@__PURE__*/ S.String;
 
@@ -11622,14 +11805,16 @@ export const DistributedAvailabilityGroupsListResult = /*@__PURE__*/ S.suspend(
 /** New role of managed instance in a distributed availability group, can be Primary or Secondary. */
 export type DistributedAvailabilityGroupsSetRoleRequestInstanceRole =
   | "Primary"
-  | "Secondary";
+  | "Secondary"
+  | (string & {});
 export const DistributedAvailabilityGroupsSetRoleRequestInstanceRole =
   /*@__PURE__*/ S.String;
 
 /** The type of the role change, can be Planned or Forced. */
 export type DistributedAvailabilityGroupsSetRoleRequestRoleChangeType =
   | "Forced"
-  | "Planned";
+  | "Planned"
+  | (string & {});
 export const DistributedAvailabilityGroupsSetRoleRequestRoleChangeType =
   /*@__PURE__*/ S.String;
 
@@ -12203,7 +12388,11 @@ export const ElasticPoolsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ElasticPoolsCreateOrUpdateRequestTagsMap>;
 
 /** The state of the elastic pool. */
-export type ElasticPoolPropertiesInputState = "Creating" | "Ready" | "Disabled";
+export type ElasticPoolPropertiesInputState =
+  | "Creating"
+  | "Ready"
+  | "Disabled"
+  | (string & {});
 export const ElasticPoolPropertiesInputState = /*@__PURE__*/ S.String;
 
 /** Per database settings of an elastic pool. */
@@ -12228,11 +12417,15 @@ export const ElasticPoolPerDatabaseSettings = /*@__PURE__*/ S.suspend(() =>
 /** The license type to apply for this elastic pool. */
 export type ElasticPoolPropertiesInputLicenseType =
   | "LicenseIncluded"
-  | "BasePrice";
+  | "BasePrice"
+  | (string & {});
 export const ElasticPoolPropertiesInputLicenseType = /*@__PURE__*/ S.String;
 
 /** Type of enclave requested on the database i.e. Default or VBS enclaves. */
-export type ElasticPoolPropertiesInputPreferredEnclaveType = "Default" | "VBS";
+export type ElasticPoolPropertiesInputPreferredEnclaveType =
+  | "Default"
+  | "VBS"
+  | (string & {});
 export const ElasticPoolPropertiesInputPreferredEnclaveType =
   /*@__PURE__*/ S.String;
 
@@ -12241,7 +12434,8 @@ export type ElasticPoolPropertiesInputAvailabilityZone =
   | "NoPreference"
   | "1"
   | "2"
-  | "3";
+  | "3"
+  | (string & {});
 export const ElasticPoolPropertiesInputAvailabilityZone =
   /*@__PURE__*/ S.String;
 
@@ -12366,15 +12560,25 @@ export const ElasticPoolsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ElasticPoolsCreateOrUpdateResponseTagsMap>;
 
 /** The state of the elastic pool. */
-export type ElasticPoolPropertiesState = "Creating" | "Ready" | "Disabled";
+export type ElasticPoolPropertiesState =
+  | "Creating"
+  | "Ready"
+  | "Disabled"
+  | (string & {});
 export const ElasticPoolPropertiesState = /*@__PURE__*/ S.String;
 
 /** The license type to apply for this elastic pool. */
-export type ElasticPoolPropertiesLicenseType = "LicenseIncluded" | "BasePrice";
+export type ElasticPoolPropertiesLicenseType =
+  | "LicenseIncluded"
+  | "BasePrice"
+  | (string & {});
 export const ElasticPoolPropertiesLicenseType = /*@__PURE__*/ S.String;
 
 /** Type of enclave requested on the database i.e. Default or VBS enclaves. */
-export type ElasticPoolPropertiesPreferredEnclaveType = "Default" | "VBS";
+export type ElasticPoolPropertiesPreferredEnclaveType =
+  | "Default"
+  | "VBS"
+  | (string & {});
 export const ElasticPoolPropertiesPreferredEnclaveType = /*@__PURE__*/ S.String;
 
 /** Specifies the availability zone the database is pinned to. */
@@ -12382,7 +12586,8 @@ export type ElasticPoolPropertiesAvailabilityZone =
   | "NoPreference"
   | "1"
   | "2"
-  | "3";
+  | "3"
+  | (string & {});
 export const ElasticPoolPropertiesAvailabilityZone = /*@__PURE__*/ S.String;
 
 /** Properties of an elastic pool */
@@ -12804,11 +13009,15 @@ export const ElasticPoolsUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
 /** The license type to apply for this elastic pool. */
 export type ElasticPoolUpdatePropertiesLicenseType =
   | "LicenseIncluded"
-  | "BasePrice";
+  | "BasePrice"
+  | (string & {});
 export const ElasticPoolUpdatePropertiesLicenseType = /*@__PURE__*/ S.String;
 
 /** Type of enclave requested on the database i.e. Default or VBS enclaves. */
-export type ElasticPoolUpdatePropertiesPreferredEnclaveType = "Default" | "VBS";
+export type ElasticPoolUpdatePropertiesPreferredEnclaveType =
+  | "Default"
+  | "VBS"
+  | (string & {});
 export const ElasticPoolUpdatePropertiesPreferredEnclaveType =
   /*@__PURE__*/ S.String;
 
@@ -12817,7 +13026,8 @@ export type ElasticPoolUpdatePropertiesAvailabilityZone =
   | "NoPreference"
   | "1"
   | "2"
-  | "3";
+  | "3"
+  | (string & {});
 export const ElasticPoolUpdatePropertiesAvailabilityZone =
   /*@__PURE__*/ S.String;
 
@@ -12980,14 +13190,16 @@ export const ElasticPoolsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ElasticPoolsUpdateResponse>;
 
 export type EncryptionProtectorsCreateOrUpdateRequestEncryptionProtectorName =
-  "current";
+  | "current"
+  | (string & {});
 export const EncryptionProtectorsCreateOrUpdateRequestEncryptionProtectorName =
   /*@__PURE__*/ S.String;
 
 /** The encryption protector type like 'ServiceManaged', 'AzureKeyVault'. */
 export type EncryptionProtectorPropertiesInputServerKeyType =
   | "ServiceManaged"
-  | "AzureKeyVault";
+  | "AzureKeyVault"
+  | (string & {});
 export const EncryptionProtectorPropertiesInputServerKeyType =
   /*@__PURE__*/ S.String;
 
@@ -13048,7 +13260,8 @@ export const EncryptionProtectorsCreateOrUpdateRequest =
 /** The encryption protector type like 'ServiceManaged', 'AzureKeyVault'. */
 export type EncryptionProtectorPropertiesServerKeyType =
   | "ServiceManaged"
-  | "AzureKeyVault";
+  | "AzureKeyVault"
+  | (string & {});
 export const EncryptionProtectorPropertiesServerKeyType =
   /*@__PURE__*/ S.String;
 
@@ -13114,7 +13327,9 @@ export const EncryptionProtectorsCreateOrUpdateResponse =
     identifier: "EncryptionProtectorsCreateOrUpdateResponse",
   }) as any as S.Schema<EncryptionProtectorsCreateOrUpdateResponse>;
 
-export type EncryptionProtectorsGetRequestEncryptionProtectorName = "current";
+export type EncryptionProtectorsGetRequestEncryptionProtectorName =
+  | "current"
+  | (string & {});
 export const EncryptionProtectorsGetRequestEncryptionProtectorName =
   /*@__PURE__*/ S.String;
 
@@ -13258,7 +13473,8 @@ export const EncryptionProtectorListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionProtectorListResult>;
 
 export type EncryptionProtectorsRevalidateRequestEncryptionProtectorName =
-  "current";
+  | "current"
+  | (string & {});
 export const EncryptionProtectorsRevalidateRequestEncryptionProtectorName =
   /*@__PURE__*/ S.String;
 
@@ -13441,7 +13657,7 @@ export const EndpointCertificateListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointCertificateListResult>;
 
 export type ExtendedDatabaseBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName =
-  "default";
+  "default" | (string & {});
 export const ExtendedDatabaseBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -13456,7 +13672,8 @@ export const ExtendedDatabaseBlobAuditingPolicyPropertiesAuditActionsAndGroupsLi
 /** Specifies the state of the audit. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required. */
 export type ExtendedDatabaseBlobAuditingPolicyPropertiesState =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ExtendedDatabaseBlobAuditingPolicyPropertiesState =
   /*@__PURE__*/ S.String;
 
@@ -13570,7 +13787,7 @@ export const ExtendedDatabaseBlobAuditingPoliciesCreateOrUpdateResponse =
   }) as any as S.Schema<ExtendedDatabaseBlobAuditingPoliciesCreateOrUpdateResponse>;
 
 export type ExtendedDatabaseBlobAuditingPoliciesGetRequestBlobAuditingPolicyName =
-  "default";
+  "default" | (string & {});
 export const ExtendedDatabaseBlobAuditingPoliciesGetRequestBlobAuditingPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -13714,7 +13931,7 @@ export const ExtendedDatabaseBlobAuditingPolicyListResult =
   }) as any as S.Schema<ExtendedDatabaseBlobAuditingPolicyListResult>;
 
 export type ExtendedServerBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName =
-  "default";
+  "default" | (string & {});
 export const ExtendedServerBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -13729,7 +13946,8 @@ export const ExtendedServerBlobAuditingPolicyPropertiesAuditActionsAndGroupsList
 /** Specifies the state of the audit. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required. */
 export type ExtendedServerBlobAuditingPolicyPropertiesState =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ExtendedServerBlobAuditingPolicyPropertiesState =
   /*@__PURE__*/ S.String;
 
@@ -13843,7 +14061,7 @@ export const ExtendedServerBlobAuditingPoliciesCreateOrUpdateResponse =
   }) as any as S.Schema<ExtendedServerBlobAuditingPoliciesCreateOrUpdateResponse>;
 
 export type ExtendedServerBlobAuditingPoliciesGetRequestBlobAuditingPolicyName =
-  "default";
+  "default" | (string & {});
 export const ExtendedServerBlobAuditingPoliciesGetRequestBlobAuditingPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -13983,7 +14201,8 @@ export const ExtendedServerBlobAuditingPolicyListResult =
 /** Failover policy of the read-write endpoint for the failover group. If failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is required. */
 export type FailoverGroupReadWriteEndpointFailoverPolicy =
   | "Manual"
-  | "Automatic";
+  | "Automatic"
+  | (string & {});
 export const FailoverGroupReadWriteEndpointFailoverPolicy =
   /*@__PURE__*/ S.String;
 
@@ -14006,7 +14225,8 @@ export const FailoverGroupReadWriteEndpoint = /*@__PURE__*/ S.suspend(() =>
 /** Failover policy of the read-only endpoint for the failover group. */
 export type FailoverGroupReadOnlyEndpointFailoverPolicy =
   | "Disabled"
-  | "Enabled";
+  | "Enabled"
+  | (string & {});
 export const FailoverGroupReadOnlyEndpointFailoverPolicy =
   /*@__PURE__*/ S.String;
 
@@ -14029,12 +14249,16 @@ export const FailoverGroupReadOnlyEndpoint = /*@__PURE__*/ S.suspend(() =>
 /** Local replication role of the failover group instance. */
 export type FailoverGroupPropertiesInputReplicationRole =
   | "Primary"
-  | "Secondary";
+  | "Secondary"
+  | (string & {});
 export const FailoverGroupPropertiesInputReplicationRole =
   /*@__PURE__*/ S.String;
 
 /** Local replication role of the failover group instance. */
-export type PartnerInfoInputReplicationRole = "Primary" | "Secondary";
+export type PartnerInfoInputReplicationRole =
+  | "Primary"
+  | "Secondary"
+  | (string & {});
 export const PartnerInfoInputReplicationRole = /*@__PURE__*/ S.String;
 
 /** Partner server information for the failover group. */
@@ -14068,7 +14292,10 @@ export const FailoverGroupPropertiesInputDatabasesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<FailoverGroupPropertiesInputDatabasesList>;
 
 /** Databases secondary type on partner server. */
-export type FailoverGroupPropertiesInputSecondaryType = "Geo" | "Standby";
+export type FailoverGroupPropertiesInputSecondaryType =
+  | "Geo"
+  | "Standby"
+  | (string & {});
 export const FailoverGroupPropertiesInputSecondaryType = /*@__PURE__*/ S.String;
 
 /** Properties of a failover group. */
@@ -14144,11 +14371,17 @@ export const FailoverGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FailoverGroupsCreateOrUpdateRequest>;
 
 /** Local replication role of the failover group instance. */
-export type FailoverGroupPropertiesReplicationRole = "Primary" | "Secondary";
+export type FailoverGroupPropertiesReplicationRole =
+  | "Primary"
+  | "Secondary"
+  | (string & {});
 export const FailoverGroupPropertiesReplicationRole = /*@__PURE__*/ S.String;
 
 /** Local replication role of the failover group instance. */
-export type PartnerInfoReplicationRole = "Primary" | "Secondary";
+export type PartnerInfoReplicationRole =
+  | "Primary"
+  | "Secondary"
+  | (string & {});
 export const PartnerInfoReplicationRole = /*@__PURE__*/ S.String;
 
 /** Partner server information for the failover group. */
@@ -14182,7 +14415,10 @@ export const FailoverGroupPropertiesDatabasesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<FailoverGroupPropertiesDatabasesList>;
 
 /** Databases secondary type on partner server. */
-export type FailoverGroupPropertiesSecondaryType = "Geo" | "Standby";
+export type FailoverGroupPropertiesSecondaryType =
+  | "Geo"
+  | "Standby"
+  | (string & {});
 export const FailoverGroupPropertiesSecondaryType = /*@__PURE__*/ S.String;
 
 /** Properties of a failover group. */
@@ -14668,7 +14904,10 @@ export const FailoverGroupUpdatePropertiesInputPartnerServersList =
   ) as any as S.Schema<FailoverGroupUpdatePropertiesInputPartnerServersList>;
 
 /** Databases secondary type on partner server. */
-export type FailoverGroupUpdatePropertiesInputSecondaryType = "Geo" | "Standby";
+export type FailoverGroupUpdatePropertiesInputSecondaryType =
+  | "Geo"
+  | "Standby"
+  | (string & {});
 export const FailoverGroupUpdatePropertiesInputSecondaryType =
   /*@__PURE__*/ S.String;
 
@@ -15074,12 +15313,16 @@ export const FirewallRulesReplaceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FirewallRulesReplaceResponse>;
 
 export type GeoBackupPoliciesCreateOrUpdateRequestGeoBackupPolicyName =
-  "Default";
+  | "Default"
+  | (string & {});
 export const GeoBackupPoliciesCreateOrUpdateRequestGeoBackupPolicyName =
   /*@__PURE__*/ S.String;
 
 /** The state of the geo backup policy. */
-export type GeoBackupPolicyPropertiesInputState = "Enabled" | "Disabled";
+export type GeoBackupPolicyPropertiesInputState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const GeoBackupPolicyPropertiesInputState = /*@__PURE__*/ S.String;
 
 /** The properties of the geo backup policy. */
@@ -15134,7 +15377,10 @@ export const GeoBackupPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GeoBackupPoliciesCreateOrUpdateRequest>;
 
 /** The state of the geo backup policy. */
-export type GeoBackupPolicyPropertiesState = "Enabled" | "Disabled";
+export type GeoBackupPolicyPropertiesState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const GeoBackupPolicyPropertiesState = /*@__PURE__*/ S.String;
 
 /** The properties of the geo backup policy. */
@@ -15184,7 +15430,9 @@ export const GeoBackupPoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "GeoBackupPoliciesCreateOrUpdateResponse",
 }) as any as S.Schema<GeoBackupPoliciesCreateOrUpdateResponse>;
 
-export type GeoBackupPoliciesGetRequestGeoBackupPolicyName = "Default";
+export type GeoBackupPoliciesGetRequestGeoBackupPolicyName =
+  | "Default"
+  | (string & {});
 export const GeoBackupPoliciesGetRequestGeoBackupPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -15335,14 +15583,16 @@ export const GeoBackupPolicyListResult = /*@__PURE__*/ S.suspend(() =>
 /** Type of the geo-secondary instance. Set 'Standby' if the instance is used as a DR option only. */
 export type InstanceFailoverGroupPropertiesInputSecondaryType =
   | "Geo"
-  | "Standby";
+  | "Standby"
+  | (string & {});
 export const InstanceFailoverGroupPropertiesInputSecondaryType =
   /*@__PURE__*/ S.String;
 
 /** Failover policy of the read-write endpoint for the failover group. If failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is required. */
 export type InstanceFailoverGroupReadWriteEndpointFailoverPolicy =
   | "Manual"
-  | "Automatic";
+  | "Automatic"
+  | (string & {});
 export const InstanceFailoverGroupReadWriteEndpointFailoverPolicy =
   /*@__PURE__*/ S.String;
 
@@ -15366,7 +15616,8 @@ export const InstanceFailoverGroupReadWriteEndpoint = /*@__PURE__*/ S.suspend(
 /** Failover policy of the read-only endpoint for the failover group. */
 export type InstanceFailoverGroupReadOnlyEndpointFailoverPolicy =
   | "Disabled"
-  | "Enabled";
+  | "Enabled"
+  | (string & {});
 export const InstanceFailoverGroupReadOnlyEndpointFailoverPolicy =
   /*@__PURE__*/ S.String;
 
@@ -15389,12 +15640,16 @@ export const InstanceFailoverGroupReadOnlyEndpoint = /*@__PURE__*/ S.suspend(
 /** Local replication role of the failover group instance. */
 export type InstanceFailoverGroupPropertiesInputReplicationRole =
   | "Primary"
-  | "Secondary";
+  | "Secondary"
+  | (string & {});
 export const InstanceFailoverGroupPropertiesInputReplicationRole =
   /*@__PURE__*/ S.String;
 
 /** Local replication role of the failover group instance. */
-export type PartnerRegionInfoReplicationRole = "Primary" | "Secondary";
+export type PartnerRegionInfoReplicationRole =
+  | "Primary"
+  | "Secondary"
+  | (string & {});
 export const PartnerRegionInfoReplicationRole = /*@__PURE__*/ S.String;
 
 /** Partner region information for the failover group. */
@@ -15512,14 +15767,18 @@ export const InstanceFailoverGroupsCreateOrUpdateRequest =
   }) as any as S.Schema<InstanceFailoverGroupsCreateOrUpdateRequest>;
 
 /** Type of the geo-secondary instance. Set 'Standby' if the instance is used as a DR option only. */
-export type InstanceFailoverGroupPropertiesSecondaryType = "Geo" | "Standby";
+export type InstanceFailoverGroupPropertiesSecondaryType =
+  | "Geo"
+  | "Standby"
+  | (string & {});
 export const InstanceFailoverGroupPropertiesSecondaryType =
   /*@__PURE__*/ S.String;
 
 /** Local replication role of the failover group instance. */
 export type InstanceFailoverGroupPropertiesReplicationRole =
   | "Primary"
-  | "Secondary";
+  | "Secondary"
+  | (string & {});
 export const InstanceFailoverGroupPropertiesReplicationRole =
   /*@__PURE__*/ S.String;
 
@@ -15899,11 +16158,15 @@ export type InstancePoolOperationPropertiesState =
   | "Succeeded"
   | "Failed"
   | "CancelInProgress"
-  | "Cancelled";
+  | "Cancelled"
+  | (string & {});
 export const InstancePoolOperationPropertiesState = /*@__PURE__*/ S.String;
 
 /** Error type (e.g. None, User). */
-export type InstancePoolOperationPropertiesErrorType = "None" | "User";
+export type InstancePoolOperationPropertiesErrorType =
+  | "None"
+  | "User"
+  | (string & {});
 export const InstancePoolOperationPropertiesErrorType = /*@__PURE__*/ S.String;
 
 /** The properties of a instance pool operation. */
@@ -16065,7 +16328,8 @@ export const InstancePoolsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 /** The license type. Possible values are 'LicenseIncluded' (price for SQL license is included) and 'BasePrice' (without SQL license price). */
 export type InstancePoolPropertiesInputLicenseType =
   | "LicenseIncluded"
-  | "BasePrice";
+  | "BasePrice"
+  | (string & {});
 export const InstancePoolPropertiesInputLicenseType = /*@__PURE__*/ S.String;
 
 /** Properties of an instance pool. */
@@ -16164,7 +16428,10 @@ export const InstancePoolsCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<InstancePoolsCreateOrUpdateResponseTagsMap>;
 
 /** The license type. Possible values are 'LicenseIncluded' (price for SQL license is included) and 'BasePrice' (without SQL license price). */
-export type InstancePoolPropertiesLicenseType = "LicenseIncluded" | "BasePrice";
+export type InstancePoolPropertiesLicenseType =
+  | "LicenseIncluded"
+  | "BasePrice"
+  | (string & {});
 export const InstancePoolPropertiesLicenseType = /*@__PURE__*/ S.String;
 
 /** Properties of an instance pool. */
@@ -16881,7 +17148,8 @@ export type JobAgentPropertiesState =
   | "Ready"
   | "Updating"
   | "Deleting"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const JobAgentPropertiesState = /*@__PURE__*/ S.String;
 
 /** Properties of a job agent. */
@@ -16930,7 +17198,8 @@ export type JobAgentIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssignedUserAssigned";
+  | "SystemAssignedUserAssigned"
+  | (string & {});
 export const JobAgentIdentityType = /*@__PURE__*/ S.String;
 
 /** Azure Active Directory identity configuration for a resource. */
@@ -17800,7 +18069,8 @@ export type JobExecutionLifecycle =
   | "Failed"
   | "TimedOut"
   | "Canceled"
-  | "Skipped";
+  | "Skipped"
+  | (string & {});
 export const JobExecutionLifecycle = /*@__PURE__*/ S.String;
 
 /** The ARM provisioning state of the job execution. */
@@ -17809,7 +18079,8 @@ export type ProvisioningState =
   | "InProgress"
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The type of the target. */
@@ -17818,7 +18089,8 @@ export type JobTargetType =
   | "SqlDatabase"
   | "SqlElasticPool"
   | "SqlShardMap"
-  | "SqlServer";
+  | "SqlServer"
+  | (string & {});
 export const JobTargetType = /*@__PURE__*/ S.String;
 
 /** The target that a job execution is executed on. */
@@ -18457,7 +18729,7 @@ export const JobPrivateEndpointListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobPrivateEndpointListResult>;
 
 /** Schedule interval type */
-export type JobScheduleType = "Once" | "Recurring";
+export type JobScheduleType = "Once" | "Recurring" | (string & {});
 export const JobScheduleType = /*@__PURE__*/ S.String;
 
 /** Scheduling properties of a job. */
@@ -18878,11 +19150,11 @@ export const JobStepExecutionsListByJobExecutionResponse =
   }) as any as S.Schema<JobStepExecutionsListByJobExecutionResponse>;
 
 /** Type of action being executed by the job step. */
-export type JobStepActionType = "TSql";
+export type JobStepActionType = "TSql" | (string & {});
 export const JobStepActionType = /*@__PURE__*/ S.String;
 
 /** The source of the action to execute. */
-export type JobStepActionSource = "Inline";
+export type JobStepActionSource = "Inline" | (string & {});
 export const JobStepActionSource = /*@__PURE__*/ S.String;
 
 /** The action to be executed by a job step. */
@@ -18903,7 +19175,7 @@ export const JobStepAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobStepAction" }) as any as S.Schema<JobStepAction>;
 
 /** The output destination type. */
-export type JobStepOutputType = "SqlDatabase";
+export type JobStepOutputType = "SqlDatabase" | (string & {});
 export const JobStepOutputType = /*@__PURE__*/ S.String;
 
 /** The output configuration of a job step. */
@@ -19550,7 +19822,7 @@ export const JobTargetExecutionsListByStepResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<JobTargetExecutionsListByStepResponse>;
 
 /** Whether the target is included or excluded from the group. */
-export type JobTargetMembershipType = "Include" | "Exclude";
+export type JobTargetMembershipType = "Include" | "Exclude" | (string & {});
 export const JobTargetMembershipType = /*@__PURE__*/ S.String;
 
 /** A job target, for example a specific database or a container of databases that is evaluated during job execution. */
@@ -19936,12 +20208,16 @@ export const JobVersionListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobVersionListResult>;
 
 export type LedgerDigestUploadsCreateOrUpdateRequestLedgerDigestUploads =
-  "current";
+  | "current"
+  | (string & {});
 export const LedgerDigestUploadsCreateOrUpdateRequestLedgerDigestUploads =
   /*@__PURE__*/ S.String;
 
 /** Specifies the state of ledger digest upload. */
-export type LedgerDigestUploadsPropertiesState = "Enabled" | "Disabled";
+export type LedgerDigestUploadsPropertiesState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const LedgerDigestUploadsPropertiesState = /*@__PURE__*/ S.String;
 
 /** The properties of a database ledger digest upload settings. */
@@ -20022,7 +20298,9 @@ export const LedgerDigestUploadsCreateOrUpdateResponse =
     identifier: "LedgerDigestUploadsCreateOrUpdateResponse",
   }) as any as S.Schema<LedgerDigestUploadsCreateOrUpdateResponse>;
 
-export type LedgerDigestUploadsDisableRequestLedgerDigestUploads = "current";
+export type LedgerDigestUploadsDisableRequestLedgerDigestUploads =
+  | "current"
+  | (string & {});
 export const LedgerDigestUploadsDisableRequestLedgerDigestUploads =
   /*@__PURE__*/ S.String;
 
@@ -20081,7 +20359,9 @@ export const LedgerDigestUploadsDisableResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "LedgerDigestUploadsDisableResponse",
 }) as any as S.Schema<LedgerDigestUploadsDisableResponse>;
 
-export type LedgerDigestUploadsGetRequestLedgerDigestUploads = "current";
+export type LedgerDigestUploadsGetRequestLedgerDigestUploads =
+  | "current"
+  | (string & {});
 export const LedgerDigestUploadsGetRequestLedgerDigestUploads =
   /*@__PURE__*/ S.String;
 
@@ -20261,7 +20541,8 @@ export type LongTermRetentionBackupPropertiesBackupStorageRedundancy =
   | "Geo"
   | "Local"
   | "Zone"
-  | "GeoZone";
+  | "GeoZone"
+  | (string & {});
 export const LongTermRetentionBackupPropertiesBackupStorageRedundancy =
   /*@__PURE__*/ S.String;
 
@@ -20270,35 +20551,40 @@ export type LongTermRetentionBackupPropertiesRequestedBackupStorageRedundancy =
   | "Geo"
   | "Local"
   | "Zone"
-  | "GeoZone";
+  | "GeoZone"
+  | (string & {});
 export const LongTermRetentionBackupPropertiesRequestedBackupStorageRedundancy =
   /*@__PURE__*/ S.String;
 
 /** The setting for whether or not time-based immutability is enabled for the LTR backup. When time-based immutability is enabled and locked, the backup cannot be deleted until BackupExpirationTime. */
 export type LongTermRetentionBackupPropertiesTimeBasedImmutability =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const LongTermRetentionBackupPropertiesTimeBasedImmutability =
   /*@__PURE__*/ S.String;
 
 /** The time-based immutability mode. Only applicable if time-based immutability is enabled. */
 export type LongTermRetentionBackupPropertiesTimeBasedImmutabilityMode =
   | "Locked"
-  | "Unlocked";
+  | "Unlocked"
+  | (string & {});
 export const LongTermRetentionBackupPropertiesTimeBasedImmutabilityMode =
   /*@__PURE__*/ S.String;
 
 /** The setting for whether LegalHold is enabled or disabled on the LTR backup. When LegalHold is enabled, the backup cannot be deleted until the LegalHold is removed. */
 export type LongTermRetentionBackupPropertiesLegalHoldImmutability =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const LongTermRetentionBackupPropertiesLegalHoldImmutability =
   /*@__PURE__*/ S.String;
 
 /** The BackupStorageAccessTier for the LTR backup */
 export type LongTermRetentionBackupPropertiesBackupStorageAccessTier =
   | "Hot"
-  | "Archive";
+  | "Archive"
+  | (string & {});
 export const LongTermRetentionBackupPropertiesBackupStorageAccessTier =
   /*@__PURE__*/ S.String;
 
@@ -20458,7 +20744,7 @@ export const LongTermRetentionBackupsChangeAccessTierByResourceGroupResponse =
 
 /** The storage account type used to store backups for this database. */
 export type CopyLongTermRetentionBackupParametersPropertiesTargetBackupStorageRedundancy =
-  "Geo" | "Local" | "Zone" | "GeoZone";
+  "Geo" | "Local" | "Zone" | "GeoZone" | (string & {});
 export const CopyLongTermRetentionBackupParametersPropertiesTargetBackupStorageRedundancy =
   /*@__PURE__*/ S.String;
 
@@ -20529,7 +20815,7 @@ export const LongTermRetentionBackupsCopyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The storage account type used to store backups for this database. */
 export type LongTermRetentionOperationResultPropertiesTargetBackupStorageRedundancy =
-  "Geo" | "Local" | "Zone" | "GeoZone";
+  "Geo" | "Local" | "Zone" | "GeoZone" | (string & {});
 export const LongTermRetentionOperationResultPropertiesTargetBackupStorageRedundancy =
   /*@__PURE__*/ S.String;
 
@@ -20853,7 +21139,8 @@ export const LongTermRetentionBackupsGetByResourceGroupResponse =
 export type LongTermRetentionBackupsListByDatabaseRequestDatabaseState =
   | "All"
   | "Live"
-  | "Deleted";
+  | "Deleted"
+  | (string & {});
 export const LongTermRetentionBackupsListByDatabaseRequestDatabaseState =
   /*@__PURE__*/ S.String;
 
@@ -20947,7 +21234,8 @@ export const LongTermRetentionBackupListResult = /*@__PURE__*/ S.suspend(() =>
 export type LongTermRetentionBackupsListByLocationRequestDatabaseState =
   | "All"
   | "Live"
-  | "Deleted";
+  | "Deleted"
+  | (string & {});
 export const LongTermRetentionBackupsListByLocationRequestDatabaseState =
   /*@__PURE__*/ S.String;
 
@@ -20985,7 +21273,7 @@ export const LongTermRetentionBackupsListByLocationRequest =
   }) as any as S.Schema<LongTermRetentionBackupsListByLocationRequest>;
 
 export type LongTermRetentionBackupsListByResourceGroupDatabaseRequestDatabaseState =
-  "All" | "Live" | "Deleted";
+  "All" | "Live" | "Deleted" | (string & {});
 export const LongTermRetentionBackupsListByResourceGroupDatabaseRequestDatabaseState =
   /*@__PURE__*/ S.String;
 
@@ -21032,7 +21320,7 @@ export const LongTermRetentionBackupsListByResourceGroupDatabaseRequest =
   }) as any as S.Schema<LongTermRetentionBackupsListByResourceGroupDatabaseRequest>;
 
 export type LongTermRetentionBackupsListByResourceGroupLocationRequestDatabaseState =
-  "All" | "Live" | "Deleted";
+  "All" | "Live" | "Deleted" | (string & {});
 export const LongTermRetentionBackupsListByResourceGroupLocationRequestDatabaseState =
   /*@__PURE__*/ S.String;
 
@@ -21073,7 +21361,7 @@ export const LongTermRetentionBackupsListByResourceGroupLocationRequest =
   }) as any as S.Schema<LongTermRetentionBackupsListByResourceGroupLocationRequest>;
 
 export type LongTermRetentionBackupsListByResourceGroupServerRequestDatabaseState =
-  "All" | "Live" | "Deleted";
+  "All" | "Live" | "Deleted" | (string & {});
 export const LongTermRetentionBackupsListByResourceGroupServerRequestDatabaseState =
   /*@__PURE__*/ S.String;
 
@@ -21119,7 +21407,8 @@ export const LongTermRetentionBackupsListByResourceGroupServerRequest =
 export type LongTermRetentionBackupsListByServerRequestDatabaseState =
   | "All"
   | "Live"
-  | "Deleted";
+  | "Deleted"
+  | (string & {});
 export const LongTermRetentionBackupsListByServerRequestDatabaseState =
   /*@__PURE__*/ S.String;
 
@@ -21637,7 +21926,7 @@ export const LongTermRetentionBackupsSetLegalHoldImmutabilityByResourceGroupResp
 
 /** The storage account type used to store backups for this database. */
 export type UpdateLongTermRetentionBackupParametersPropertiesRequestedBackupStorageRedundancy =
-  "Geo" | "Local" | "Zone" | "GeoZone";
+  "Geo" | "Local" | "Zone" | "GeoZone" | (string & {});
 export const UpdateLongTermRetentionBackupParametersPropertiesRequestedBackupStorageRedundancy =
   /*@__PURE__*/ S.String;
 
@@ -21895,13 +22184,13 @@ export const LongTermRetentionManagedInstanceBackupsGetRequest =
 
 /** The storage account type used to store backups for this database. */
 export type ManagedInstanceLongTermRetentionBackupPropertiesBackupStorageRedundancy =
-  "Geo" | "Local" | "Zone" | "GeoZone";
+  "Geo" | "Local" | "Zone" | "GeoZone" | (string & {});
 export const ManagedInstanceLongTermRetentionBackupPropertiesBackupStorageRedundancy =
   /*@__PURE__*/ S.String;
 
 /** The BackupStorageAccessTier for the LTR backup */
 export type ManagedInstanceLongTermRetentionBackupPropertiesBackupStorageAccessTier =
-  "Hot" | "Archive";
+  "Hot" | "Archive" | (string & {});
 export const ManagedInstanceLongTermRetentionBackupPropertiesBackupStorageAccessTier =
   /*@__PURE__*/ S.String;
 
@@ -22032,7 +22321,7 @@ export const LongTermRetentionManagedInstanceBackupsGetByResourceGroupResponse =
   }) as any as S.Schema<LongTermRetentionManagedInstanceBackupsGetByResourceGroupResponse>;
 
 export type LongTermRetentionManagedInstanceBackupsListByDatabaseRequestDatabaseState =
-  "All" | "Live" | "Deleted";
+  "All" | "Live" | "Deleted" | (string & {});
 export const LongTermRetentionManagedInstanceBackupsListByDatabaseRequestDatabaseState =
   /*@__PURE__*/ S.String;
 
@@ -22127,7 +22416,7 @@ export const ManagedInstanceLongTermRetentionBackupListResult =
   }) as any as S.Schema<ManagedInstanceLongTermRetentionBackupListResult>;
 
 export type LongTermRetentionManagedInstanceBackupsListByInstanceRequestDatabaseState =
-  "All" | "Live" | "Deleted";
+  "All" | "Live" | "Deleted" | (string & {});
 export const LongTermRetentionManagedInstanceBackupsListByInstanceRequestDatabaseState =
   /*@__PURE__*/ S.String;
 
@@ -22168,7 +22457,7 @@ export const LongTermRetentionManagedInstanceBackupsListByInstanceRequest =
   }) as any as S.Schema<LongTermRetentionManagedInstanceBackupsListByInstanceRequest>;
 
 export type LongTermRetentionManagedInstanceBackupsListByLocationRequestDatabaseState =
-  "All" | "Live" | "Deleted";
+  "All" | "Live" | "Deleted" | (string & {});
 export const LongTermRetentionManagedInstanceBackupsListByLocationRequestDatabaseState =
   /*@__PURE__*/ S.String;
 
@@ -22215,7 +22504,7 @@ export const LongTermRetentionManagedInstanceBackupsListByLocationRequest =
   }) as any as S.Schema<LongTermRetentionManagedInstanceBackupsListByLocationRequest>;
 
 export type LongTermRetentionManagedInstanceBackupsListByResourceGroupDatabaseRequestDatabaseState =
-  "All" | "Live" | "Deleted";
+  "All" | "Live" | "Deleted" | (string & {});
 export const LongTermRetentionManagedInstanceBackupsListByResourceGroupDatabaseRequestDatabaseState =
   /*@__PURE__*/ S.String;
 
@@ -22263,7 +22552,7 @@ export const LongTermRetentionManagedInstanceBackupsListByResourceGroupDatabaseR
   }) as any as S.Schema<LongTermRetentionManagedInstanceBackupsListByResourceGroupDatabaseRequest>;
 
 export type LongTermRetentionManagedInstanceBackupsListByResourceGroupInstanceRequestDatabaseState =
-  "All" | "Live" | "Deleted";
+  "All" | "Live" | "Deleted" | (string & {});
 export const LongTermRetentionManagedInstanceBackupsListByResourceGroupInstanceRequestDatabaseState =
   /*@__PURE__*/ S.String;
 
@@ -22308,7 +22597,7 @@ export const LongTermRetentionManagedInstanceBackupsListByResourceGroupInstanceR
   }) as any as S.Schema<LongTermRetentionManagedInstanceBackupsListByResourceGroupInstanceRequest>;
 
 export type LongTermRetentionManagedInstanceBackupsListByResourceGroupLocationRequestDatabaseState =
-  "All" | "Live" | "Deleted";
+  "All" | "Live" | "Deleted" | (string & {});
 export const LongTermRetentionManagedInstanceBackupsListByResourceGroupLocationRequestDatabaseState =
   /*@__PURE__*/ S.String;
 
@@ -22359,21 +22648,24 @@ export const LongTermRetentionManagedInstanceBackupsListByResourceGroupLocationR
   }) as any as S.Schema<LongTermRetentionManagedInstanceBackupsListByResourceGroupLocationRequest>;
 
 export type LongTermRetentionPoliciesCreateOrUpdateRequestPolicyName =
-  "default";
+  | "default"
+  | (string & {});
 export const LongTermRetentionPoliciesCreateOrUpdateRequestPolicyName =
   /*@__PURE__*/ S.String;
 
 /** The setting for whether or not time-based immutability is enabled for the LTR backup. When time-based immutability is enabled and locked, the backup cannot be deleted until BackupExpirationTime. */
 export type LongTermRetentionPolicyPropertiesTimeBasedImmutability =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const LongTermRetentionPolicyPropertiesTimeBasedImmutability =
   /*@__PURE__*/ S.String;
 
 /** The time-based immutability mode. Only applicable if time-based immutability is enabled. */
 export type LongTermRetentionPolicyPropertiesTimeBasedImmutabilityMode =
   | "Locked"
-  | "Unlocked";
+  | "Unlocked"
+  | (string & {});
 export const LongTermRetentionPolicyPropertiesTimeBasedImmutabilityMode =
   /*@__PURE__*/ S.String;
 
@@ -22471,7 +22763,9 @@ export const LongTermRetentionPoliciesCreateOrUpdateResponse =
     identifier: "LongTermRetentionPoliciesCreateOrUpdateResponse",
   }) as any as S.Schema<LongTermRetentionPoliciesCreateOrUpdateResponse>;
 
-export type LongTermRetentionPoliciesGetRequestPolicyName = "default";
+export type LongTermRetentionPoliciesGetRequestPolicyName =
+  | "default"
+  | (string & {});
 export const LongTermRetentionPoliciesGetRequestPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -22647,7 +22941,8 @@ export type DayOfWeek =
   | "Wednesday"
   | "Thursday"
   | "Friday"
-  | "Saturday";
+  | "Saturday"
+  | (string & {});
 export const DayOfWeek = /*@__PURE__*/ S.String;
 
 /** Maintenance window time range. */
@@ -22871,7 +23166,7 @@ export const MaintenanceWindowsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MaintenanceWindowsGetResponse>;
 
 export type ManagedBackupShortTermRetentionPoliciesCreateOrUpdateRequestPolicyName =
-  "default";
+  "default" | (string & {});
 export const ManagedBackupShortTermRetentionPoliciesCreateOrUpdateRequestPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -22953,7 +23248,8 @@ export const ManagedBackupShortTermRetentionPoliciesCreateOrUpdateResponse =
   }) as any as S.Schema<ManagedBackupShortTermRetentionPoliciesCreateOrUpdateResponse>;
 
 export type ManagedBackupShortTermRetentionPoliciesGetRequestPolicyName =
-  "default";
+  | "default"
+  | (string & {});
 export const ManagedBackupShortTermRetentionPoliciesGetRequestPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -23098,7 +23394,8 @@ export const ManagedBackupShortTermRetentionPoliciesListByDatabaseResponse =
   }) as any as S.Schema<ManagedBackupShortTermRetentionPoliciesListByDatabaseResponse>;
 
 export type ManagedBackupShortTermRetentionPoliciesUpdateRequestPolicyName =
-  "default";
+  | "default"
+  | (string & {});
 export const ManagedBackupShortTermRetentionPoliciesUpdateRequestPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -23166,7 +23463,7 @@ export const ManagedBackupShortTermRetentionPoliciesUpdateResponse =
   }) as any as S.Schema<ManagedBackupShortTermRetentionPoliciesUpdateResponse>;
 
 export type ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestAdvancedThreatProtectionName =
-  "Default";
+  "Default" | (string & {});
 export const ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestAdvancedThreatProtectionName =
   /*@__PURE__*/ S.String;
 
@@ -23273,7 +23570,7 @@ export const ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRespon
   }) as any as S.Schema<ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponse>;
 
 export type ManagedDatabaseAdvancedThreatProtectionSettingsGetRequestAdvancedThreatProtectionName =
-  "Default";
+  "Default" | (string & {});
 export const ManagedDatabaseAdvancedThreatProtectionSettingsGetRequestAdvancedThreatProtectionName =
   /*@__PURE__*/ S.String;
 
@@ -23714,14 +24011,16 @@ export type ManagedDatabaseMoveOperationResultPropertiesState =
   | "Succeeded"
   | "Failed"
   | "CancelInProgress"
-  | "Cancelled";
+  | "Cancelled"
+  | (string & {});
 export const ManagedDatabaseMoveOperationResultPropertiesState =
   /*@__PURE__*/ S.String;
 
 /** Operation mode. */
 export type ManagedDatabaseMoveOperationResultPropertiesOperationMode =
   | "Move"
-  | "Copy";
+  | "Copy"
+  | (string & {});
 export const ManagedDatabaseMoveOperationResultPropertiesOperationMode =
   /*@__PURE__*/ S.String;
 
@@ -23960,7 +24259,10 @@ export const ManagedDatabaseQueriesGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedDatabaseQueriesGetResponse",
 }) as any as S.Schema<ManagedDatabaseQueriesGetResponse>;
 
-export type ManagedDatabaseQueriesListByQueryRequestInterval = "PT1H" | "P1D";
+export type ManagedDatabaseQueriesListByQueryRequestInterval =
+  | "PT1H"
+  | "P1D"
+  | (string & {});
 export const ManagedDatabaseQueriesListByQueryRequestInterval =
   /*@__PURE__*/ S.String;
 
@@ -24007,7 +24309,7 @@ export const ManagedDatabaseQueriesListByQueryRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ManagedDatabaseQueriesListByQueryRequest>;
 
 /** Interval type (length). */
-export type QueryTimeGrainType = "PT1H" | "P1D";
+export type QueryTimeGrainType = "PT1H" | "P1D" | (string & {});
 export const QueryTimeGrainType = /*@__PURE__*/ S.String;
 
 /** The unit of the metric. */
@@ -24015,7 +24317,8 @@ export type QueryMetricUnitType =
   | "percentage"
   | "KB"
   | "microseconds"
-  | "count";
+  | "count"
+  | (string & {});
 export const QueryMetricUnitType = /*@__PURE__*/ S.String;
 
 /** Properties of a topquery metric in one interval. */
@@ -24163,7 +24466,10 @@ export const ManagedInstanceQueryStatistics = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedInstanceQueryStatistics",
 }) as any as S.Schema<ManagedInstanceQueryStatistics>;
 
-export type RecommendedSensitivityLabelUpdateKind = "enable" | "disable";
+export type RecommendedSensitivityLabelUpdateKind =
+  | "enable"
+  | "disable"
+  | (string & {});
 export const RecommendedSensitivityLabelUpdateKind = /*@__PURE__*/ S.String;
 
 /** Properties of an operation executed on a recommended sensitivity label. */
@@ -24249,7 +24555,8 @@ export const ManagedDatabaseRecommendedSensitivityLabelsUpdateResponse =
   }) as any as S.Schema<ManagedDatabaseRecommendedSensitivityLabelsUpdateResponse>;
 
 export type ManagedDatabaseRestoreDetailsGetRequestRestoreDetailsName =
-  "Default";
+  | "Default"
+  | (string & {});
 export const ManagedDatabaseRestoreDetailsGetRequestRestoreDetailsName =
   /*@__PURE__*/ S.String;
 
@@ -24719,13 +25026,15 @@ export type ManagedDatabasePropertiesInputStatus =
   | "Stopped"
   | "Starting"
   | "DbMoving"
-  | "DbCopying";
+  | "DbCopying"
+  | (string & {});
 export const ManagedDatabasePropertiesInputStatus = /*@__PURE__*/ S.String;
 
 /** Collation of the metadata catalog. */
 export type ManagedDatabasePropertiesInputCatalogCollation =
   | "DATABASE_DEFAULT"
-  | "SQL_Latin1_General_CP1_CI_AS";
+  | "SQL_Latin1_General_CP1_CI_AS"
+  | (string & {});
 export const ManagedDatabasePropertiesInputCatalogCollation =
   /*@__PURE__*/ S.String;
 
@@ -24735,7 +25044,8 @@ export type ManagedDatabasePropertiesInputCreateMode =
   | "RestoreExternalBackup"
   | "PointInTimeRestore"
   | "Recovery"
-  | "RestoreLongTermRetentionBackup";
+  | "RestoreLongTermRetentionBackup"
+  | (string & {});
 export const ManagedDatabasePropertiesInputCreateMode = /*@__PURE__*/ S.String;
 
 /** The managed database's properties. */
@@ -24865,13 +25175,15 @@ export type ManagedDatabasePropertiesStatus =
   | "Stopped"
   | "Starting"
   | "DbMoving"
-  | "DbCopying";
+  | "DbCopying"
+  | (string & {});
 export const ManagedDatabasePropertiesStatus = /*@__PURE__*/ S.String;
 
 /** Collation of the metadata catalog. */
 export type ManagedDatabasePropertiesCatalogCollation =
   | "DATABASE_DEFAULT"
-  | "SQL_Latin1_General_CP1_CI_AS";
+  | "SQL_Latin1_General_CP1_CI_AS"
+  | (string & {});
 export const ManagedDatabasePropertiesCatalogCollation = /*@__PURE__*/ S.String;
 
 /** Managed database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. SourceDatabaseName, SourceManagedInstanceName and PointInTime must be specified. RestoreExternalBackup: Create a database by restoring from external backup files. Collation, StorageContainerUri and StorageContainerSasToken must be specified. Recovery: Creates a database by restoring a geo-replicated backup. RecoverableDatabaseId must be specified as the recoverable database resource ID to restore. RestoreLongTermRetentionBackup: Create a database by restoring from a long term retention backup (longTermRetentionBackupResourceId required). */
@@ -24880,14 +25192,16 @@ export type ManagedDatabasePropertiesCreateMode =
   | "RestoreExternalBackup"
   | "PointInTimeRestore"
   | "Recovery"
-  | "RestoreLongTermRetentionBackup";
+  | "RestoreLongTermRetentionBackup"
+  | (string & {});
 export const ManagedDatabasePropertiesCreateMode = /*@__PURE__*/ S.String;
 
 /** Root cause kind. Allowed values are “TransparentDataEncryption”, “DatabaseReplication”, and “Unknown”. */
 export type ManagedDatabaseExtendedAccessibilityInfoInaccessibilityReasonKind =
   | "Unknown"
   | "TransparentDataEncryption"
-  | "DatabaseReplication";
+  | "DatabaseReplication"
+  | (string & {});
 export const ManagedDatabaseExtendedAccessibilityInfoInaccessibilityReasonKind =
   /*@__PURE__*/ S.String;
 
@@ -25063,7 +25377,7 @@ export const ManagedDatabasesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedDatabasesDeleteResponse>;
 
 export type ManagedDatabaseSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName =
-  "Default";
+  "Default" | (string & {});
 export const ManagedDatabaseSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -25071,7 +25385,8 @@ export const ManagedDatabaseSecurityAlertPoliciesCreateOrUpdateRequestSecurityAl
 export type SecurityAlertPolicyPropertiesInputState =
   | "New"
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const SecurityAlertPolicyPropertiesInputState = /*@__PURE__*/ S.String;
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force */
@@ -25164,7 +25479,11 @@ export const ManagedDatabaseSecurityAlertPoliciesCreateOrUpdateRequest =
   }) as any as S.Schema<ManagedDatabaseSecurityAlertPoliciesCreateOrUpdateRequest>;
 
 /** Specifies the state of the policy, whether it is enabled or disabled or a policy has not been applied yet on the specific database. */
-export type SecurityAlertPolicyPropertiesState = "New" | "Enabled" | "Disabled";
+export type SecurityAlertPolicyPropertiesState =
+  | "New"
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const SecurityAlertPolicyPropertiesState = /*@__PURE__*/ S.String;
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force */
@@ -25243,7 +25562,7 @@ export const ManagedDatabaseSecurityAlertPoliciesCreateOrUpdateResponse =
   }) as any as S.Schema<ManagedDatabaseSecurityAlertPoliciesCreateOrUpdateResponse>;
 
 export type ManagedDatabaseSecurityAlertPoliciesGetRequestSecurityAlertPolicyName =
-  "Default";
+  "Default" | (string & {});
 export const ManagedDatabaseSecurityAlertPoliciesGetRequestSecurityAlertPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -25431,7 +25750,8 @@ export const ManagedDatabaseSecurityEventsListByDatabaseRequest =
 export type SecurityEventPropertiesSecurityEventType =
   | "Undefined"
   | "SqlInjectionVulnerability"
-  | "SqlInjectionExploit";
+  | "SqlInjectionExploit"
+  | (string & {});
 export const SecurityEventPropertiesSecurityEventType = /*@__PURE__*/ S.String;
 
 /** The properties of a security event sql injection additional properties. */
@@ -25551,7 +25871,7 @@ export const SecurityEventCollection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityEventCollection>;
 
 export type ManagedDatabaseSensitivityLabelsCreateOrUpdateRequestSensitivityLabelSource =
-  "current";
+  "current" | (string & {});
 export const ManagedDatabaseSensitivityLabelsCreateOrUpdateRequestSensitivityLabelSource =
   /*@__PURE__*/ S.String;
 
@@ -25560,14 +25880,16 @@ export type SensitivityLabelRank =
   | "Low"
   | "Medium"
   | "High"
-  | "Critical";
+  | "Critical"
+  | (string & {});
 export const SensitivityLabelRank = /*@__PURE__*/ S.String;
 
 export type ClientClassificationSource =
   | "None"
   | "Native"
   | "Recommended"
-  | "MIP";
+  | "MIP"
+  | (string & {});
 export const ClientClassificationSource = /*@__PURE__*/ S.String;
 
 /** Properties of a sensitivity label. */
@@ -25710,7 +26032,7 @@ export const ManagedDatabaseSensitivityLabelsCreateOrUpdateResponse =
   }) as any as S.Schema<ManagedDatabaseSensitivityLabelsCreateOrUpdateResponse>;
 
 export type ManagedDatabaseSensitivityLabelsDeleteRequestSensitivityLabelSource =
-  "current";
+  "current" | (string & {});
 export const ManagedDatabaseSensitivityLabelsDeleteRequestSensitivityLabelSource =
   /*@__PURE__*/ S.String;
 
@@ -25765,7 +26087,7 @@ export const ManagedDatabaseSensitivityLabelsDeleteResponse =
   }) as any as S.Schema<ManagedDatabaseSensitivityLabelsDeleteResponse>;
 
 export type ManagedDatabaseSensitivityLabelsDisableRecommendationRequestSensitivityLabelSource =
-  "recommended";
+  "recommended" | (string & {});
 export const ManagedDatabaseSensitivityLabelsDisableRecommendationRequestSensitivityLabelSource =
   /*@__PURE__*/ S.String;
 
@@ -25820,7 +26142,7 @@ export const ManagedDatabaseSensitivityLabelsDisableRecommendationResponse =
   }) as any as S.Schema<ManagedDatabaseSensitivityLabelsDisableRecommendationResponse>;
 
 export type ManagedDatabaseSensitivityLabelsEnableRecommendationRequestSensitivityLabelSource =
-  "recommended";
+  "recommended" | (string & {});
 export const ManagedDatabaseSensitivityLabelsEnableRecommendationRequestSensitivityLabelSource =
   /*@__PURE__*/ S.String;
 
@@ -25876,7 +26198,8 @@ export const ManagedDatabaseSensitivityLabelsEnableRecommendationResponse =
 
 export type ManagedDatabaseSensitivityLabelsGetRequestSensitivityLabelSource =
   | "current"
-  | "recommended";
+  | "recommended"
+  | (string & {});
 export const ManagedDatabaseSensitivityLabelsGetRequestSensitivityLabelSource =
   /*@__PURE__*/ S.String;
 
@@ -26161,7 +26484,7 @@ export const ManagedDatabaseSensitivityLabelsListRecommendedByDatabaseResponse =
       "ManagedDatabaseSensitivityLabelsListRecommendedByDatabaseResponse",
   }) as any as S.Schema<ManagedDatabaseSensitivityLabelsListRecommendedByDatabaseResponse>;
 
-export type SensitivityLabelUpdateKind = "set" | "remove";
+export type SensitivityLabelUpdateKind = "set" | "remove" | (string & {});
 export const SensitivityLabelUpdateKind = /*@__PURE__*/ S.String;
 
 /** A sensitivity label. */
@@ -26512,7 +26835,10 @@ export const ManagedDatabasesReevaluateInaccessibleDatabaseStateResponse =
   }) as any as S.Schema<ManagedDatabasesReevaluateInaccessibleDatabaseStateResponse>;
 
 /** The move operation mode. */
-export type ManagedDatabasesStartMoveRequestOperationMode = "Move" | "Copy";
+export type ManagedDatabasesStartMoveRequestOperationMode =
+  | "Move"
+  | "Copy"
+  | (string & {});
 export const ManagedDatabasesStartMoveRequestOperationMode =
   /*@__PURE__*/ S.String;
 
@@ -26757,14 +27083,15 @@ export const ManagedDatabaseTablesListBySchemaResponse =
   }) as any as S.Schema<ManagedDatabaseTablesListBySchemaResponse>;
 
 export type ManagedDatabaseTransparentDataEncryptionCreateOrUpdateRequestTdeName =
-  "current";
+  "current" | (string & {});
 export const ManagedDatabaseTransparentDataEncryptionCreateOrUpdateRequestTdeName =
   /*@__PURE__*/ S.String;
 
 /** Specifies the state of the transparent data encryption. */
 export type ManagedTransparentDataEncryptionPropertiesState =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ManagedTransparentDataEncryptionPropertiesState =
   /*@__PURE__*/ S.String;
 
@@ -26847,7 +27174,8 @@ export const ManagedDatabaseTransparentDataEncryptionCreateOrUpdateResponse =
   }) as any as S.Schema<ManagedDatabaseTransparentDataEncryptionCreateOrUpdateResponse>;
 
 export type ManagedDatabaseTransparentDataEncryptionGetRequestTdeName =
-  "current";
+  | "current"
+  | (string & {});
 export const ManagedDatabaseTransparentDataEncryptionGetRequestTdeName =
   /*@__PURE__*/ S.String;
 
@@ -26990,12 +27318,12 @@ export const ManagedTransparentDataEncryptionListResult =
   }) as any as S.Schema<ManagedTransparentDataEncryptionListResult>;
 
 export type ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestBaselineName =
-  "master" | "default";
+  "master" | "default" | (string & {});
 export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestBaselineName =
   /*@__PURE__*/ S.String;
 
@@ -27078,12 +27406,12 @@ export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRe
   }) as any as S.Schema<ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateResponse>;
 
 export type ManagedDatabaseVulnerabilityAssessmentRuleBaselinesDeleteRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesDeleteRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type ManagedDatabaseVulnerabilityAssessmentRuleBaselinesDeleteRequestBaselineName =
-  "master" | "default";
+  "master" | "default" | (string & {});
 export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesDeleteRequestBaselineName =
   /*@__PURE__*/ S.String;
 
@@ -27140,12 +27468,12 @@ export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesDeleteResponse =
   }) as any as S.Schema<ManagedDatabaseVulnerabilityAssessmentRuleBaselinesDeleteResponse>;
 
 export type ManagedDatabaseVulnerabilityAssessmentRuleBaselinesGetRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesGetRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type ManagedDatabaseVulnerabilityAssessmentRuleBaselinesGetRequestBaselineName =
-  "master" | "default";
+  "master" | "default" | (string & {});
 export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesGetRequestBaselineName =
   /*@__PURE__*/ S.String;
 
@@ -27222,7 +27550,7 @@ export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesGetResponse =
   }) as any as S.Schema<ManagedDatabaseVulnerabilityAssessmentRuleBaselinesGetResponse>;
 
 export type ManagedDatabaseVulnerabilityAssessmentScansExportRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const ManagedDatabaseVulnerabilityAssessmentScansExportRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -27292,7 +27620,7 @@ export const ManagedDatabaseVulnerabilityAssessmentScansExportResponse =
   }) as any as S.Schema<ManagedDatabaseVulnerabilityAssessmentScansExportResponse>;
 
 export type ManagedDatabaseVulnerabilityAssessmentScansGetRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const ManagedDatabaseVulnerabilityAssessmentScansGetRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -27360,7 +27688,7 @@ export const ManagedDatabaseVulnerabilityAssessmentScansGetResponse =
   }) as any as S.Schema<ManagedDatabaseVulnerabilityAssessmentScansGetResponse>;
 
 export type ManagedDatabaseVulnerabilityAssessmentScansInitiateScanRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const ManagedDatabaseVulnerabilityAssessmentScansInitiateScanRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -27411,7 +27739,7 @@ export const ManagedDatabaseVulnerabilityAssessmentScansInitiateScanResponse =
   }) as any as S.Schema<ManagedDatabaseVulnerabilityAssessmentScansInitiateScanResponse>;
 
 export type ManagedDatabaseVulnerabilityAssessmentScansListByDatabaseRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const ManagedDatabaseVulnerabilityAssessmentScansListByDatabaseRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -27478,7 +27806,7 @@ export const ManagedDatabaseVulnerabilityAssessmentScansListByDatabaseResponse =
   }) as any as S.Schema<ManagedDatabaseVulnerabilityAssessmentScansListByDatabaseResponse>;
 
 export type ManagedDatabaseVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const ManagedDatabaseVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -27546,7 +27874,7 @@ export const ManagedDatabaseVulnerabilityAssessmentsCreateOrUpdateResponse =
   }) as any as S.Schema<ManagedDatabaseVulnerabilityAssessmentsCreateOrUpdateResponse>;
 
 export type ManagedDatabaseVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const ManagedDatabaseVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -27592,7 +27920,7 @@ export const ManagedDatabaseVulnerabilityAssessmentsDeleteResponse =
   }) as any as S.Schema<ManagedDatabaseVulnerabilityAssessmentsDeleteResponse>;
 
 export type ManagedDatabaseVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const ManagedDatabaseVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -27711,13 +28039,14 @@ export const ManagedDatabaseVulnerabilityAssessmentsListByDatabaseResponse =
   }) as any as S.Schema<ManagedDatabaseVulnerabilityAssessmentsListByDatabaseResponse>;
 
 export type ManagedInstanceAdministratorsCreateOrUpdateRequestAdministratorName =
-  "ActiveDirectory";
+  "ActiveDirectory" | (string & {});
 export const ManagedInstanceAdministratorsCreateOrUpdateRequestAdministratorName =
   /*@__PURE__*/ S.String;
 
 /** Type of the managed instance administrator. */
 export type ManagedInstanceAdministratorPropertiesAdministratorType =
-  "ActiveDirectory";
+  | "ActiveDirectory"
+  | (string & {});
 export const ManagedInstanceAdministratorPropertiesAdministratorType =
   /*@__PURE__*/ S.String;
 
@@ -27805,7 +28134,8 @@ export const ManagedInstanceAdministratorsCreateOrUpdateResponse =
   }) as any as S.Schema<ManagedInstanceAdministratorsCreateOrUpdateResponse>;
 
 export type ManagedInstanceAdministratorsDeleteRequestAdministratorName =
-  "ActiveDirectory";
+  | "ActiveDirectory"
+  | (string & {});
 export const ManagedInstanceAdministratorsDeleteRequestAdministratorName =
   /*@__PURE__*/ S.String;
 
@@ -27847,7 +28177,8 @@ export const ManagedInstanceAdministratorsDeleteResponse =
   }) as any as S.Schema<ManagedInstanceAdministratorsDeleteResponse>;
 
 export type ManagedInstanceAdministratorsGetRequestAdministratorName =
-  "ActiveDirectory";
+  | "ActiveDirectory"
+  | (string & {});
 export const ManagedInstanceAdministratorsGetRequestAdministratorName =
   /*@__PURE__*/ S.String;
 
@@ -27984,7 +28315,7 @@ export const ManagedInstanceAdministratorListResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ManagedInstanceAdministratorListResult>;
 
 export type ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateRequestAdvancedThreatProtectionName =
-  "Default";
+  "Default" | (string & {});
 export const ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateRequestAdvancedThreatProtectionName =
   /*@__PURE__*/ S.String;
 
@@ -28088,7 +28419,7 @@ export const ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateRespon
   }) as any as S.Schema<ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateResponse>;
 
 export type ManagedInstanceAdvancedThreatProtectionSettingsGetRequestAdvancedThreatProtectionName =
-  "Default";
+  "Default" | (string & {});
 export const ManagedInstanceAdvancedThreatProtectionSettingsGetRequestAdvancedThreatProtectionName =
   /*@__PURE__*/ S.String;
 
@@ -28265,7 +28596,7 @@ export const ManagedInstanceAdvancedThreatProtectionListResult =
   }) as any as S.Schema<ManagedInstanceAdvancedThreatProtectionListResult>;
 
 export type ManagedInstanceAzureADOnlyAuthenticationsCreateOrUpdateRequestAuthenticationName =
-  "Default";
+  "Default" | (string & {});
 export const ManagedInstanceAzureADOnlyAuthenticationsCreateOrUpdateRequestAuthenticationName =
   /*@__PURE__*/ S.String;
 
@@ -28346,7 +28677,7 @@ export const ManagedInstanceAzureADOnlyAuthenticationsCreateOrUpdateResponse =
   }) as any as S.Schema<ManagedInstanceAzureADOnlyAuthenticationsCreateOrUpdateResponse>;
 
 export type ManagedInstanceAzureADOnlyAuthenticationsDeleteRequestAuthenticationName =
-  "Default";
+  "Default" | (string & {});
 export const ManagedInstanceAzureADOnlyAuthenticationsDeleteRequestAuthenticationName =
   /*@__PURE__*/ S.String;
 
@@ -28389,7 +28720,7 @@ export const ManagedInstanceAzureADOnlyAuthenticationsDeleteResponse =
   }) as any as S.Schema<ManagedInstanceAzureADOnlyAuthenticationsDeleteResponse>;
 
 export type ManagedInstanceAzureADOnlyAuthenticationsGetRequestAuthenticationName =
-  "Default";
+  "Default" | (string & {});
 export const ManagedInstanceAzureADOnlyAuthenticationsGetRequestAuthenticationName =
   /*@__PURE__*/ S.String;
 
@@ -28528,7 +28859,9 @@ export const ManagedInstanceAzureADOnlyAuthListResult = /*@__PURE__*/ S.suspend(
   identifier: "ManagedInstanceAzureADOnlyAuthListResult",
 }) as any as S.Schema<ManagedInstanceAzureADOnlyAuthListResult>;
 
-export type ManagedInstanceDtcsCreateOrUpdateRequestDtcName = "current";
+export type ManagedInstanceDtcsCreateOrUpdateRequestDtcName =
+  | "current"
+  | (string & {});
 export const ManagedInstanceDtcsCreateOrUpdateRequestDtcName =
   /*@__PURE__*/ S.String;
 
@@ -28593,7 +28926,8 @@ export type ManagedInstanceDtcPropertiesInputProvisioningState =
   | "InProgress"
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const ManagedInstanceDtcPropertiesInputProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -28669,7 +29003,8 @@ export type ManagedInstanceDtcPropertiesProvisioningState =
   | "InProgress"
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const ManagedInstanceDtcPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -28727,7 +29062,7 @@ export const ManagedInstanceDtcsCreateOrUpdateResponse =
     identifier: "ManagedInstanceDtcsCreateOrUpdateResponse",
   }) as any as S.Schema<ManagedInstanceDtcsCreateOrUpdateResponse>;
 
-export type ManagedInstanceDtcsGetRequestDtcName = "current";
+export type ManagedInstanceDtcsGetRequestDtcName = "current" | (string & {});
 export const ManagedInstanceDtcsGetRequestDtcName = /*@__PURE__*/ S.String;
 
 export interface ManagedInstanceDtcsGetRequest {
@@ -28857,14 +29192,15 @@ export const ManagedInstanceDtcListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedInstanceDtcListResult>;
 
 export type ManagedInstanceEncryptionProtectorsCreateOrUpdateRequestEncryptionProtectorName =
-  "current";
+  "current" | (string & {});
 export const ManagedInstanceEncryptionProtectorsCreateOrUpdateRequestEncryptionProtectorName =
   /*@__PURE__*/ S.String;
 
 /** The encryption protector type like 'ServiceManaged', 'AzureKeyVault'. */
 export type ManagedInstanceEncryptionProtectorPropertiesInputServerKeyType =
   | "ServiceManaged"
-  | "AzureKeyVault";
+  | "AzureKeyVault"
+  | (string & {});
 export const ManagedInstanceEncryptionProtectorPropertiesInputServerKeyType =
   /*@__PURE__*/ S.String;
 
@@ -28927,7 +29263,8 @@ export const ManagedInstanceEncryptionProtectorsCreateOrUpdateRequest =
 /** The encryption protector type like 'ServiceManaged', 'AzureKeyVault'. */
 export type ManagedInstanceEncryptionProtectorPropertiesServerKeyType =
   | "ServiceManaged"
-  | "AzureKeyVault";
+  | "AzureKeyVault"
+  | (string & {});
 export const ManagedInstanceEncryptionProtectorPropertiesServerKeyType =
   /*@__PURE__*/ S.String;
 
@@ -28986,7 +29323,7 @@ export const ManagedInstanceEncryptionProtectorsCreateOrUpdateResponse =
   }) as any as S.Schema<ManagedInstanceEncryptionProtectorsCreateOrUpdateResponse>;
 
 export type ManagedInstanceEncryptionProtectorsGetRequestEncryptionProtectorName =
-  "current";
+  "current" | (string & {});
 export const ManagedInstanceEncryptionProtectorsGetRequestEncryptionProtectorName =
   /*@__PURE__*/ S.String;
 
@@ -29130,7 +29467,7 @@ export const ManagedInstanceEncryptionProtectorListResult =
   }) as any as S.Schema<ManagedInstanceEncryptionProtectorListResult>;
 
 export type ManagedInstanceEncryptionProtectorsRevalidateRequestEncryptionProtectorName =
-  "current";
+  "current" | (string & {});
 export const ManagedInstanceEncryptionProtectorsRevalidateRequestEncryptionProtectorName =
   /*@__PURE__*/ S.String;
 
@@ -29175,7 +29512,8 @@ export const ManagedInstanceEncryptionProtectorsRevalidateResponse =
 /** The encryption protector type like 'ServiceManaged', 'AzureKeyVault'. */
 export type ManagedInstanceKeyPropertiesInputServerKeyType =
   | "ServiceManaged"
-  | "AzureKeyVault";
+  | "AzureKeyVault"
+  | (string & {});
 export const ManagedInstanceKeyPropertiesInputServerKeyType =
   /*@__PURE__*/ S.String;
 
@@ -29230,7 +29568,8 @@ export const ManagedInstanceKeysCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 /** The encryption protector type like 'ServiceManaged', 'AzureKeyVault'. */
 export type ManagedInstanceKeyPropertiesServerKeyType =
   | "ServiceManaged"
-  | "AzureKeyVault";
+  | "AzureKeyVault"
+  | (string & {});
 export const ManagedInstanceKeyPropertiesServerKeyType = /*@__PURE__*/ S.String;
 
 /** Properties for a key execution. */
@@ -29457,13 +29796,13 @@ export const ManagedInstanceKeyListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedInstanceKeyListResult>;
 
 export type ManagedInstanceLongTermRetentionPoliciesCreateOrUpdateRequestPolicyName =
-  "default";
+  "default" | (string & {});
 export const ManagedInstanceLongTermRetentionPoliciesCreateOrUpdateRequestPolicyName =
   /*@__PURE__*/ S.String;
 
 /** The BackupStorageAccessTier for the LTR backup */
 export type ManagedInstanceLongTermRetentionPolicyPropertiesBackupStorageAccessTier =
-  "Hot" | "Archive";
+  "Hot" | "Archive" | (string & {});
 export const ManagedInstanceLongTermRetentionPolicyPropertiesBackupStorageAccessTier =
   /*@__PURE__*/ S.String;
 
@@ -29560,7 +29899,8 @@ export const ManagedInstanceLongTermRetentionPoliciesCreateOrUpdateResponse =
   }) as any as S.Schema<ManagedInstanceLongTermRetentionPoliciesCreateOrUpdateResponse>;
 
 export type ManagedInstanceLongTermRetentionPoliciesDeleteRequestPolicyName =
-  "default";
+  | "default"
+  | (string & {});
 export const ManagedInstanceLongTermRetentionPoliciesDeleteRequestPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -29625,7 +29965,8 @@ export const ManagedInstanceLongTermRetentionPoliciesDeleteResponse =
   }) as any as S.Schema<ManagedInstanceLongTermRetentionPoliciesDeleteResponse>;
 
 export type ManagedInstanceLongTermRetentionPoliciesGetRequestPolicyName =
-  "default";
+  | "default"
+  | (string & {});
 export const ManagedInstanceLongTermRetentionPoliciesGetRequestPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -29838,7 +30179,8 @@ export type ManagedInstanceOperationPropertiesState =
   | "Succeeded"
   | "Failed"
   | "CancelInProgress"
-  | "Cancelled";
+  | "Cancelled"
+  | (string & {});
 export const ManagedInstanceOperationPropertiesState = /*@__PURE__*/ S.String;
 
 export interface UpsertManagedServerOperationParameters {
@@ -29882,7 +30224,8 @@ export type UpsertManagedServerOperationStepWithEstimatesAndDurationStatus =
   | "SlowedDown"
   | "Completed"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const UpsertManagedServerOperationStepWithEstimatesAndDurationStatus =
   /*@__PURE__*/ S.String;
 
@@ -30648,34 +30991,39 @@ export type ManagedInstancePropertiesInputProvisioningState =
   | "InProgress"
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const ManagedInstancePropertiesInputProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** Specifies the mode of database creation. Default: Regular instance creation. Restore: Creates an instance by restoring a set of backups to specific point in time. RestorePointInTime and SourceManagedInstanceId must be specified. */
 export type ManagedInstancePropertiesInputManagedInstanceCreateMode =
   | "Default"
-  | "PointInTimeRestore";
+  | "PointInTimeRestore"
+  | (string & {});
 export const ManagedInstancePropertiesInputManagedInstanceCreateMode =
   /*@__PURE__*/ S.String;
 
 /** The license type. Possible values are 'LicenseIncluded' (regular price inclusive of a new SQL license) and 'BasePrice' (discounted AHB price for bringing your own SQL licenses). */
 export type ManagedInstancePropertiesInputLicenseType =
   | "LicenseIncluded"
-  | "BasePrice";
+  | "BasePrice"
+  | (string & {});
 export const ManagedInstancePropertiesInputLicenseType = /*@__PURE__*/ S.String;
 
 /** Hybrid secondary usage. Possible values are 'Active' (default value) and 'Passive' (customer uses the secondary as Passive DR). */
 export type ManagedInstancePropertiesInputHybridSecondaryUsage =
   | "Active"
-  | "Passive";
+  | "Passive"
+  | (string & {});
 export const ManagedInstancePropertiesInputHybridSecondaryUsage =
   /*@__PURE__*/ S.String;
 
 /** Hybrid secondary usage detected. Possible values are 'Active' (customer does not meet the requirements to use the secondary as Passive DR) and 'Passive' (customer meets the requirements to use the secondary as Passive DR). */
 export type ManagedInstancePropertiesInputHybridSecondaryUsageDetected =
   | "Active"
-  | "Passive";
+  | "Passive"
+  | (string & {});
 export const ManagedInstancePropertiesInputHybridSecondaryUsageDetected =
   /*@__PURE__*/ S.String;
 
@@ -30683,7 +31031,8 @@ export const ManagedInstancePropertiesInputHybridSecondaryUsageDetected =
 export type ManagedInstancePropertiesInputProxyOverride =
   | "Proxy"
   | "Redirect"
-  | "Default";
+  | "Default"
+  | (string & {});
 export const ManagedInstancePropertiesInputProxyOverride =
   /*@__PURE__*/ S.String;
 
@@ -30692,7 +31041,8 @@ export type ManagedInstancePropertiesInputCurrentBackupStorageRedundancy =
   | "Geo"
   | "Local"
   | "Zone"
-  | "GeoZone";
+  | "GeoZone"
+  | (string & {});
 export const ManagedInstancePropertiesInputCurrentBackupStorageRedundancy =
   /*@__PURE__*/ S.String;
 
@@ -30701,13 +31051,15 @@ export type ManagedInstancePropertiesInputRequestedBackupStorageRedundancy =
   | "Geo"
   | "Local"
   | "Zone"
-  | "GeoZone";
+  | "GeoZone"
+  | (string & {});
 export const ManagedInstancePropertiesInputRequestedBackupStorageRedundancy =
   /*@__PURE__*/ S.String;
 
 /** Type of the sever administrator. */
 export type ManagedInstanceExternalAdministratorAdministratorType =
-  "ActiveDirectory";
+  | "ActiveDirectory"
+  | (string & {});
 export const ManagedInstanceExternalAdministratorAdministratorType =
   /*@__PURE__*/ S.String;
 
@@ -30715,7 +31067,8 @@ export const ManagedInstanceExternalAdministratorAdministratorType =
 export type ManagedInstanceExternalAdministratorPrincipalType =
   | "User"
   | "Group"
-  | "Application";
+  | "Application"
+  | (string & {});
 export const ManagedInstanceExternalAdministratorPrincipalType =
   /*@__PURE__*/ S.String;
 
@@ -30753,7 +31106,10 @@ export const ManagedInstanceExternalAdministrator = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ManagedInstanceExternalAdministrator>;
 
 /** Service principal type. */
-export type ServicePrincipalInputType = "None" | "SystemAssigned";
+export type ServicePrincipalInputType =
+  | "None"
+  | "SystemAssigned"
+  | (string & {});
 export const ServicePrincipalInputType = /*@__PURE__*/ S.String;
 
 /** The managed instance's service principal configuration for a resource. */
@@ -30772,12 +31128,16 @@ export const ServicePrincipalInput = /*@__PURE__*/ S.suspend(() =>
 /** Status of external governance. */
 export type ManagedInstancePropertiesInputExternalGovernanceStatus =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ManagedInstancePropertiesInputExternalGovernanceStatus =
   /*@__PURE__*/ S.String;
 
 /** Pricing model of Managed Instance. */
-export type ManagedInstancePropertiesInputPricingModel = "Regular" | "Freemium";
+export type ManagedInstancePropertiesInputPricingModel =
+  | "Regular"
+  | "Freemium"
+  | (string & {});
 export const ManagedInstancePropertiesInputPricingModel =
   /*@__PURE__*/ S.String;
 
@@ -30785,7 +31145,8 @@ export const ManagedInstancePropertiesInputPricingModel =
 export type ManagedInstancePropertiesInputAuthenticationMetadata =
   | "AzureAD"
   | "Paired"
-  | "Windows";
+  | "Windows"
+  | (string & {});
 export const ManagedInstancePropertiesInputAuthenticationMetadata =
   /*@__PURE__*/ S.String;
 
@@ -30793,7 +31154,8 @@ export const ManagedInstancePropertiesInputAuthenticationMetadata =
 export type ManagedInstancePropertiesInputDatabaseFormat =
   | "AlwaysUpToDate"
   | "SQLServer2022"
-  | "SQLServer2025";
+  | "SQLServer2025"
+  | (string & {});
 export const ManagedInstancePropertiesInputDatabaseFormat =
   /*@__PURE__*/ S.String;
 
@@ -30802,7 +31164,8 @@ export type ManagedInstancePropertiesInputRequestedLogicalAvailabilityZone =
   | "NoPreference"
   | "1"
   | "2"
-  | "3";
+  | "3"
+  | (string & {});
 export const ManagedInstancePropertiesInputRequestedLogicalAvailabilityZone =
   /*@__PURE__*/ S.String;
 
@@ -30970,7 +31333,8 @@ export type IdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned";
+  | "SystemAssigned,UserAssigned"
+  | (string & {});
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** Azure Active Directory identity configuration for a resource. */
@@ -31075,34 +31439,39 @@ export type ManagedInstancePropertiesProvisioningState =
   | "InProgress"
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const ManagedInstancePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** Specifies the mode of database creation. Default: Regular instance creation. Restore: Creates an instance by restoring a set of backups to specific point in time. RestorePointInTime and SourceManagedInstanceId must be specified. */
 export type ManagedInstancePropertiesManagedInstanceCreateMode =
   | "Default"
-  | "PointInTimeRestore";
+  | "PointInTimeRestore"
+  | (string & {});
 export const ManagedInstancePropertiesManagedInstanceCreateMode =
   /*@__PURE__*/ S.String;
 
 /** The license type. Possible values are 'LicenseIncluded' (regular price inclusive of a new SQL license) and 'BasePrice' (discounted AHB price for bringing your own SQL licenses). */
 export type ManagedInstancePropertiesLicenseType =
   | "LicenseIncluded"
-  | "BasePrice";
+  | "BasePrice"
+  | (string & {});
 export const ManagedInstancePropertiesLicenseType = /*@__PURE__*/ S.String;
 
 /** Hybrid secondary usage. Possible values are 'Active' (default value) and 'Passive' (customer uses the secondary as Passive DR). */
 export type ManagedInstancePropertiesHybridSecondaryUsage =
   | "Active"
-  | "Passive";
+  | "Passive"
+  | (string & {});
 export const ManagedInstancePropertiesHybridSecondaryUsage =
   /*@__PURE__*/ S.String;
 
 /** Hybrid secondary usage detected. Possible values are 'Active' (customer does not meet the requirements to use the secondary as Passive DR) and 'Passive' (customer meets the requirements to use the secondary as Passive DR). */
 export type ManagedInstancePropertiesHybridSecondaryUsageDetected =
   | "Active"
-  | "Passive";
+  | "Passive"
+  | (string & {});
 export const ManagedInstancePropertiesHybridSecondaryUsageDetected =
   /*@__PURE__*/ S.String;
 
@@ -31110,7 +31479,8 @@ export const ManagedInstancePropertiesHybridSecondaryUsageDetected =
 export type ManagedInstancePropertiesProxyOverride =
   | "Proxy"
   | "Redirect"
-  | "Default";
+  | "Default"
+  | (string & {});
 export const ManagedInstancePropertiesProxyOverride = /*@__PURE__*/ S.String;
 
 /** Properties of a private endpoint connection. */
@@ -31164,7 +31534,8 @@ export type ManagedInstancePropertiesCurrentBackupStorageRedundancy =
   | "Geo"
   | "Local"
   | "Zone"
-  | "GeoZone";
+  | "GeoZone"
+  | (string & {});
 export const ManagedInstancePropertiesCurrentBackupStorageRedundancy =
   /*@__PURE__*/ S.String;
 
@@ -31173,12 +31544,13 @@ export type ManagedInstancePropertiesRequestedBackupStorageRedundancy =
   | "Geo"
   | "Local"
   | "Zone"
-  | "GeoZone";
+  | "GeoZone"
+  | (string & {});
 export const ManagedInstancePropertiesRequestedBackupStorageRedundancy =
   /*@__PURE__*/ S.String;
 
 /** Service principal type. */
-export type ServicePrincipalType = "None" | "SystemAssigned";
+export type ServicePrincipalType = "None" | "SystemAssigned" | (string & {});
 export const ServicePrincipalType = /*@__PURE__*/ S.String;
 
 /** The managed instance's service principal configuration for a resource. */
@@ -31206,19 +31578,24 @@ export const ServicePrincipal = /*@__PURE__*/ S.suspend(() =>
 /** Status of external governance. */
 export type ManagedInstancePropertiesExternalGovernanceStatus =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ManagedInstancePropertiesExternalGovernanceStatus =
   /*@__PURE__*/ S.String;
 
 /** Pricing model of Managed Instance. */
-export type ManagedInstancePropertiesPricingModel = "Regular" | "Freemium";
+export type ManagedInstancePropertiesPricingModel =
+  | "Regular"
+  | "Freemium"
+  | (string & {});
 export const ManagedInstancePropertiesPricingModel = /*@__PURE__*/ S.String;
 
 /** The managed instance's authentication metadata lookup mode. */
 export type ManagedInstancePropertiesAuthenticationMetadata =
   | "AzureAD"
   | "Paired"
-  | "Windows";
+  | "Windows"
+  | (string & {});
 export const ManagedInstancePropertiesAuthenticationMetadata =
   /*@__PURE__*/ S.String;
 
@@ -31226,7 +31603,8 @@ export const ManagedInstancePropertiesAuthenticationMetadata =
 export type ManagedInstancePropertiesDatabaseFormat =
   | "AlwaysUpToDate"
   | "SQLServer2022"
-  | "SQLServer2025";
+  | "SQLServer2025"
+  | (string & {});
 export const ManagedInstancePropertiesDatabaseFormat = /*@__PURE__*/ S.String;
 
 /** Specifies the availability zone the database is pinned to. */
@@ -31234,7 +31612,8 @@ export type ManagedInstancePropertiesRequestedLogicalAvailabilityZone =
   | "NoPreference"
   | "1"
   | "2"
-  | "3";
+  | "3"
+  | (string & {});
 export const ManagedInstancePropertiesRequestedLogicalAvailabilityZone =
   /*@__PURE__*/ S.String;
 
@@ -31523,7 +31902,8 @@ export const ManagedInstancesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type ManagedInstancesFailoverRequestReplicaType =
   | "Primary"
-  | "ReadableSecondary";
+  | "ReadableSecondary"
+  | (string & {});
 export const ManagedInstancesFailoverRequestReplicaType =
   /*@__PURE__*/ S.String;
 
@@ -31874,7 +32254,8 @@ export const ManagedInstancesListByInstancePoolRequest =
 
 export type ManagedInstancesListByManagedInstanceRequestInterval =
   | "PT1H"
-  | "P1D";
+  | "P1D"
+  | (string & {});
 export const ManagedInstancesListByManagedInstanceRequestInterval =
   /*@__PURE__*/ S.String;
 
@@ -31883,7 +32264,8 @@ export type ManagedInstancesListByManagedInstanceRequestAggregationFunction =
   | "min"
   | "max"
   | "stdev"
-  | "sum";
+  | "sum"
+  | (string & {});
 export const ManagedInstancesListByManagedInstanceRequestAggregationFunction =
   /*@__PURE__*/ S.String;
 
@@ -31892,7 +32274,8 @@ export type ManagedInstancesListByManagedInstanceRequestObservationMetric =
   | "io"
   | "logIo"
   | "duration"
-  | "dtu";
+  | "dtu"
+  | (string & {});
 export const ManagedInstancesListByManagedInstanceRequestObservationMetric =
   /*@__PURE__*/ S.String;
 
@@ -31954,7 +32337,7 @@ export const ManagedInstancesListByManagedInstanceRequest =
   }) as any as S.Schema<ManagedInstancesListByManagedInstanceRequest>;
 
 /** Interval type (length). */
-export type TopQueriesIntervalType = "PT1H" | "P1D";
+export type TopQueriesIntervalType = "PT1H" | "P1D" | (string & {});
 export const TopQueriesIntervalType = /*@__PURE__*/ S.String;
 
 /** List of intervals with appropriate metric data */
@@ -32846,7 +33229,7 @@ export const ManagedInstanceTdeCertificatesCreateResponse =
   }) as any as S.Schema<ManagedInstanceTdeCertificatesCreateResponse>;
 
 export type ManagedInstanceVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const ManagedInstanceVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -32967,7 +33350,7 @@ export const ManagedInstanceVulnerabilityAssessmentsCreateOrUpdateResponse =
   }) as any as S.Schema<ManagedInstanceVulnerabilityAssessmentsCreateOrUpdateResponse>;
 
 export type ManagedInstanceVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const ManagedInstanceVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -33010,7 +33393,7 @@ export const ManagedInstanceVulnerabilityAssessmentsDeleteResponse =
   }) as any as S.Schema<ManagedInstanceVulnerabilityAssessmentsDeleteResponse>;
 
 export type ManagedInstanceVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const ManagedInstanceVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -33149,12 +33532,15 @@ export const ManagedInstanceVulnerabilityAssessmentListResult =
   }) as any as S.Schema<ManagedInstanceVulnerabilityAssessmentListResult>;
 
 export type ManagedLedgerDigestUploadsCreateOrUpdateRequestLedgerDigestUploads =
-  "current";
+  "current" | (string & {});
 export const ManagedLedgerDigestUploadsCreateOrUpdateRequestLedgerDigestUploads =
   /*@__PURE__*/ S.String;
 
 /** Specifies the state of ledger digest upload. */
-export type ManagedLedgerDigestUploadsPropertiesState = "Enabled" | "Disabled";
+export type ManagedLedgerDigestUploadsPropertiesState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const ManagedLedgerDigestUploadsPropertiesState = /*@__PURE__*/ S.String;
 
 /** The properties of a database ledger digest upload settings. */
@@ -33237,7 +33623,8 @@ export const ManagedLedgerDigestUploadsCreateOrUpdateResponse =
   }) as any as S.Schema<ManagedLedgerDigestUploadsCreateOrUpdateResponse>;
 
 export type ManagedLedgerDigestUploadsDisableRequestLedgerDigestUploads =
-  "current";
+  | "current"
+  | (string & {});
 export const ManagedLedgerDigestUploadsDisableRequestLedgerDigestUploads =
   /*@__PURE__*/ S.String;
 
@@ -33300,7 +33687,9 @@ export const ManagedLedgerDigestUploadsDisableResponse =
     identifier: "ManagedLedgerDigestUploadsDisableResponse",
   }) as any as S.Schema<ManagedLedgerDigestUploadsDisableResponse>;
 
-export type ManagedLedgerDigestUploadsGetRequestLedgerDigestUploads = "current";
+export type ManagedLedgerDigestUploadsGetRequestLedgerDigestUploads =
+  | "current"
+  | (string & {});
 export const ManagedLedgerDigestUploadsGetRequestLedgerDigestUploads =
   /*@__PURE__*/ S.String;
 
@@ -33441,7 +33830,7 @@ export const ManagedLedgerDigestUploadsListResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ManagedLedgerDigestUploadsListResult>;
 
 export type ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesCreateOrUpdateRequestPolicyName =
-  "default";
+  "default" | (string & {});
 export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesCreateOrUpdateRequestPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -33510,7 +33899,7 @@ export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesCre
   }) as any as S.Schema<ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesCreateOrUpdateResponse>;
 
 export type ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesGetRequestPolicyName =
-  "default";
+  "default" | (string & {});
 export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesGetRequestPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -33631,7 +34020,7 @@ export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesLis
   }) as any as S.Schema<ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesListByRestorableDroppedDatabaseResponse>;
 
 export type ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesUpdateRequestPolicyName =
-  "default";
+  "default" | (string & {});
 export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesUpdateRequestPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -33988,7 +34377,7 @@ export const ManagedServerDnsAliasListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedServerDnsAliasListResult>;
 
 export type ManagedServerSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName =
-  "Default";
+  "Default" | (string & {});
 export const ManagedServerSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -34166,7 +34555,7 @@ export const ManagedServerSecurityAlertPoliciesCreateOrUpdateResponse =
   }) as any as S.Schema<ManagedServerSecurityAlertPoliciesCreateOrUpdateResponse>;
 
 export type ManagedServerSecurityAlertPoliciesGetRequestSecurityAlertPolicyName =
-  "Default";
+  "Default" | (string & {});
 export const ManagedServerSecurityAlertPoliciesGetRequestSecurityAlertPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -34855,7 +35244,7 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation. */
-export type OperationOrigin = "user" | "system";
+export type OperationOrigin = "user" | "system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Additional descriptions for the operation. */
@@ -35149,11 +35538,14 @@ export type PrivateLinkServiceConnectionStateStatus =
   | "Approved"
   | "Pending"
   | "Rejected"
-  | "Disconnected";
+  | "Disconnected"
+  | (string & {});
 export const PrivateLinkServiceConnectionStateStatus = /*@__PURE__*/ S.String;
 
 /** The actions required for private link service connection. */
-export type PrivateLinkServiceConnectionStateActionsRequire = "None";
+export type PrivateLinkServiceConnectionStateActionsRequire =
+  | "None"
+  | (string & {});
 export const PrivateLinkServiceConnectionStateActionsRequire =
   /*@__PURE__*/ S.String;
 
@@ -35245,7 +35637,8 @@ export type PrivateEndpointProvisioningState =
   | "Ready"
   | "Dropping"
   | "Failed"
-  | "Rejecting";
+  | "Rejecting"
+  | (string & {});
 export const PrivateEndpointProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of a private endpoint connection. */
@@ -36033,7 +36426,8 @@ export type ReplicationLinkPropertiesInputRole =
   | "Secondary"
   | "NonReadableSecondary"
   | "Source"
-  | "Copy";
+  | "Copy"
+  | (string & {});
 export const ReplicationLinkPropertiesInputRole = /*@__PURE__*/ S.String;
 
 /** Local replication role. */
@@ -36042,7 +36436,8 @@ export type ReplicationLinkPropertiesInputPartnerRole =
   | "Secondary"
   | "NonReadableSecondary"
   | "Source"
-  | "Copy";
+  | "Copy"
+  | (string & {});
 export const ReplicationLinkPropertiesInputPartnerRole = /*@__PURE__*/ S.String;
 
 /** Replication state (PENDING, SEEDING, CATCHUP, SUSPENDED). */
@@ -36050,7 +36445,8 @@ export type ReplicationLinkPropertiesInputReplicationState =
   | "PENDING"
   | "SEEDING"
   | "CATCH_UP"
-  | "SUSPENDED";
+  | "SUSPENDED"
+  | (string & {});
 export const ReplicationLinkPropertiesInputReplicationState =
   /*@__PURE__*/ S.String;
 
@@ -36058,7 +36454,8 @@ export const ReplicationLinkPropertiesInputReplicationState =
 export type ReplicationLinkPropertiesInputLinkType =
   | "GEO"
   | "NAMED"
-  | "STANDBY";
+  | "STANDBY"
+  | (string & {});
 export const ReplicationLinkPropertiesInputLinkType = /*@__PURE__*/ S.String;
 
 /** Properties of a replication link. */
@@ -36126,7 +36523,8 @@ export type ReplicationLinkPropertiesRole =
   | "Secondary"
   | "NonReadableSecondary"
   | "Source"
-  | "Copy";
+  | "Copy"
+  | (string & {});
 export const ReplicationLinkPropertiesRole = /*@__PURE__*/ S.String;
 
 /** Local replication role. */
@@ -36135,7 +36533,8 @@ export type ReplicationLinkPropertiesPartnerRole =
   | "Secondary"
   | "NonReadableSecondary"
   | "Source"
-  | "Copy";
+  | "Copy"
+  | (string & {});
 export const ReplicationLinkPropertiesPartnerRole = /*@__PURE__*/ S.String;
 
 /** Replication state (PENDING, SEEDING, CATCHUP, SUSPENDED). */
@@ -36143,11 +36542,16 @@ export type ReplicationLinkPropertiesReplicationState =
   | "PENDING"
   | "SEEDING"
   | "CATCH_UP"
-  | "SUSPENDED";
+  | "SUSPENDED"
+  | (string & {});
 export const ReplicationLinkPropertiesReplicationState = /*@__PURE__*/ S.String;
 
 /** Link type (GEO, NAMED, STANDBY). Update operation does not support NAMED. */
-export type ReplicationLinkPropertiesLinkType = "GEO" | "NAMED" | "STANDBY";
+export type ReplicationLinkPropertiesLinkType =
+  | "GEO"
+  | "NAMED"
+  | "STANDBY"
+  | (string & {});
 export const ReplicationLinkPropertiesLinkType = /*@__PURE__*/ S.String;
 
 /** Properties of a replication link. */
@@ -36536,7 +36940,8 @@ export const ReplicationLinksUnlinkResponse = /*@__PURE__*/ S.suspend(() =>
 export type ReplicationLinkUpdatePropertiesLinkType =
   | "GEO"
   | "NAMED"
-  | "STANDBY";
+  | "STANDBY"
+  | (string & {});
 export const ReplicationLinkUpdatePropertiesLinkType = /*@__PURE__*/ S.String;
 
 /** Properties of a replication link update. */
@@ -36649,7 +37054,8 @@ export type RestorableDroppedDatabasePropertiesBackupStorageRedundancy =
   | "Geo"
   | "Local"
   | "Zone"
-  | "GeoZone";
+  | "GeoZone"
+  | (string & {});
 export const RestorableDroppedDatabasePropertiesBackupStorageRedundancy =
   /*@__PURE__*/ S.String;
 
@@ -37125,7 +37531,10 @@ export const RestorePointsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestorePointsCreateRequest>;
 
 /** The type of restore point */
-export type RestorePointPropertiesRestorePointType = "CONTINUOUS" | "DISCRETE";
+export type RestorePointPropertiesRestorePointType =
+  | "CONTINUOUS"
+  | "DISCRETE"
+  | (string & {});
 export const RestorePointPropertiesRestorePointType = /*@__PURE__*/ S.String;
 
 /** Properties of a database restore point */
@@ -37350,7 +37759,8 @@ export const RestorePointListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestorePointListResult>;
 
 export type SensitivityLabelsCreateOrUpdateRequestSensitivityLabelSource =
-  "current";
+  | "current"
+  | (string & {});
 export const SensitivityLabelsCreateOrUpdateRequestSensitivityLabelSource =
   /*@__PURE__*/ S.String;
 
@@ -37429,7 +37839,9 @@ export const SensitivityLabelsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "SensitivityLabelsCreateOrUpdateResponse",
 }) as any as S.Schema<SensitivityLabelsCreateOrUpdateResponse>;
 
-export type SensitivityLabelsDeleteRequestSensitivityLabelSource = "current";
+export type SensitivityLabelsDeleteRequestSensitivityLabelSource =
+  | "current"
+  | (string & {});
 export const SensitivityLabelsDeleteRequestSensitivityLabelSource =
   /*@__PURE__*/ S.String;
 
@@ -37482,7 +37894,7 @@ export const SensitivityLabelsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SensitivityLabelsDeleteResponse>;
 
 export type SensitivityLabelsDisableRecommendationRequestSensitivityLabelSource =
-  "recommended";
+  "recommended" | (string & {});
 export const SensitivityLabelsDisableRecommendationRequestSensitivityLabelSource =
   /*@__PURE__*/ S.String;
 
@@ -37537,7 +37949,7 @@ export const SensitivityLabelsDisableRecommendationResponse =
   }) as any as S.Schema<SensitivityLabelsDisableRecommendationResponse>;
 
 export type SensitivityLabelsEnableRecommendationRequestSensitivityLabelSource =
-  "recommended";
+  "recommended" | (string & {});
 export const SensitivityLabelsEnableRecommendationRequestSensitivityLabelSource =
   /*@__PURE__*/ S.String;
 
@@ -37593,7 +38005,8 @@ export const SensitivityLabelsEnableRecommendationResponse =
 
 export type SensitivityLabelsGetRequestSensitivityLabelSource =
   | "current"
-  | "recommended";
+  | "recommended"
+  | (string & {});
 export const SensitivityLabelsGetRequestSensitivityLabelSource =
   /*@__PURE__*/ S.String;
 
@@ -37887,7 +38300,7 @@ export const SensitivityLabelsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SensitivityLabelsUpdateResponse>;
 
 export type ServerAdvancedThreatProtectionSettingsCreateOrUpdateRequestAdvancedThreatProtectionName =
-  "Default";
+  "Default" | (string & {});
 export const ServerAdvancedThreatProtectionSettingsCreateOrUpdateRequestAdvancedThreatProtectionName =
   /*@__PURE__*/ S.String;
 
@@ -37989,7 +38402,7 @@ export const ServerAdvancedThreatProtectionSettingsCreateOrUpdateResponse =
   }) as any as S.Schema<ServerAdvancedThreatProtectionSettingsCreateOrUpdateResponse>;
 
 export type ServerAdvancedThreatProtectionSettingsGetRequestAdvancedThreatProtectionName =
-  "Default";
+  "Default" | (string & {});
 export const ServerAdvancedThreatProtectionSettingsGetRequestAdvancedThreatProtectionName =
   /*@__PURE__*/ S.String;
 
@@ -38386,7 +38799,8 @@ export const ServerAutomaticTuningGetRequest = /*@__PURE__*/ S.suspend(() =>
 export type AutomaticTuningServerPropertiesDesiredState =
   | "Custom"
   | "Auto"
-  | "Unspecified";
+  | "Unspecified"
+  | (string & {});
 export const AutomaticTuningServerPropertiesDesiredState =
   /*@__PURE__*/ S.String;
 
@@ -38394,23 +38808,32 @@ export const AutomaticTuningServerPropertiesDesiredState =
 export type AutomaticTuningServerPropertiesActualState =
   | "Custom"
   | "Auto"
-  | "Unspecified";
+  | "Unspecified"
+  | (string & {});
 export const AutomaticTuningServerPropertiesActualState =
   /*@__PURE__*/ S.String;
 
 /** Automatic tuning option desired state. */
-export type AutomaticTuningServerOptionsDesiredState = "Off" | "On" | "Default";
+export type AutomaticTuningServerOptionsDesiredState =
+  | "Off"
+  | "On"
+  | "Default"
+  | (string & {});
 export const AutomaticTuningServerOptionsDesiredState = /*@__PURE__*/ S.String;
 
 /** Automatic tuning option actual state. */
-export type AutomaticTuningServerOptionsActualState = "Off" | "On";
+export type AutomaticTuningServerOptionsActualState =
+  | "Off"
+  | "On"
+  | (string & {});
 export const AutomaticTuningServerOptionsActualState = /*@__PURE__*/ S.String;
 
 /** Reason description if desired and actual state are different. */
 export type AutomaticTuningServerOptionsReasonDesc =
   | "Default"
   | "Disabled"
-  | "AutoConfigured";
+  | "AutoConfigured"
+  | (string & {});
 export const AutomaticTuningServerOptionsReasonDesc = /*@__PURE__*/ S.String;
 
 /** Automatic tuning properties for individual advisors. */
@@ -38491,7 +38914,8 @@ export const ServerAutomaticTuningGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type AutomaticTuningServerPropertiesInputDesiredState =
   | "Custom"
   | "Auto"
-  | "Unspecified";
+  | "Unspecified"
+  | (string & {});
 export const AutomaticTuningServerPropertiesInputDesiredState =
   /*@__PURE__*/ S.String;
 
@@ -38499,7 +38923,8 @@ export const AutomaticTuningServerPropertiesInputDesiredState =
 export type AutomaticTuningServerPropertiesInputActualState =
   | "Custom"
   | "Auto"
-  | "Unspecified";
+  | "Unspecified"
+  | (string & {});
 export const AutomaticTuningServerPropertiesInputActualState =
   /*@__PURE__*/ S.String;
 
@@ -38507,12 +38932,16 @@ export const AutomaticTuningServerPropertiesInputActualState =
 export type AutomaticTuningServerOptionsInputDesiredState =
   | "Off"
   | "On"
-  | "Default";
+  | "Default"
+  | (string & {});
 export const AutomaticTuningServerOptionsInputDesiredState =
   /*@__PURE__*/ S.String;
 
 /** Automatic tuning option actual state. */
-export type AutomaticTuningServerOptionsInputActualState = "Off" | "On";
+export type AutomaticTuningServerOptionsInputActualState =
+  | "Off"
+  | "On"
+  | (string & {});
 export const AutomaticTuningServerOptionsInputActualState =
   /*@__PURE__*/ S.String;
 
@@ -38520,7 +38949,8 @@ export const AutomaticTuningServerOptionsInputActualState =
 export type AutomaticTuningServerOptionsInputReasonDesc =
   | "Default"
   | "Disabled"
-  | "AutoConfigured";
+  | "AutoConfigured"
+  | (string & {});
 export const AutomaticTuningServerOptionsInputReasonDesc =
   /*@__PURE__*/ S.String;
 
@@ -38628,12 +39058,15 @@ export const ServerAutomaticTuningUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerAutomaticTuningUpdateResponse>;
 
 export type ServerAzureADAdministratorsCreateOrUpdateRequestAdministratorName =
-  "ActiveDirectory";
+  | "ActiveDirectory"
+  | (string & {});
 export const ServerAzureADAdministratorsCreateOrUpdateRequestAdministratorName =
   /*@__PURE__*/ S.String;
 
 /** Type of the sever administrator. */
-export type AdministratorPropertiesInputAdministratorType = "ActiveDirectory";
+export type AdministratorPropertiesInputAdministratorType =
+  | "ActiveDirectory"
+  | (string & {});
 export const AdministratorPropertiesInputAdministratorType =
   /*@__PURE__*/ S.String;
 
@@ -38697,7 +39130,9 @@ export const ServerAzureADAdministratorsCreateOrUpdateRequest =
   }) as any as S.Schema<ServerAzureADAdministratorsCreateOrUpdateRequest>;
 
 /** Type of the sever administrator. */
-export type AdministratorPropertiesAdministratorType = "ActiveDirectory";
+export type AdministratorPropertiesAdministratorType =
+  | "ActiveDirectory"
+  | (string & {});
 export const AdministratorPropertiesAdministratorType = /*@__PURE__*/ S.String;
 
 /** Properties of a active directory administrator. */
@@ -38751,7 +39186,8 @@ export const ServerAzureADAdministratorsCreateOrUpdateResponse =
   }) as any as S.Schema<ServerAzureADAdministratorsCreateOrUpdateResponse>;
 
 export type ServerAzureADAdministratorsDeleteRequestAdministratorName =
-  "ActiveDirectory";
+  | "ActiveDirectory"
+  | (string & {});
 export const ServerAzureADAdministratorsDeleteRequestAdministratorName =
   /*@__PURE__*/ S.String;
 
@@ -38794,7 +39230,8 @@ export const ServerAzureADAdministratorsDeleteResponse =
   }) as any as S.Schema<ServerAzureADAdministratorsDeleteResponse>;
 
 export type ServerAzureADAdministratorsGetRequestAdministratorName =
-  "ActiveDirectory";
+  | "ActiveDirectory"
+  | (string & {});
 export const ServerAzureADAdministratorsGetRequestAdministratorName =
   /*@__PURE__*/ S.String;
 
@@ -38928,7 +39365,7 @@ export const AdministratorListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdministratorListResult>;
 
 export type ServerAzureADOnlyAuthenticationsCreateOrUpdateRequestAuthenticationName =
-  "Default";
+  "Default" | (string & {});
 export const ServerAzureADOnlyAuthenticationsCreateOrUpdateRequestAuthenticationName =
   /*@__PURE__*/ S.String;
 
@@ -39006,7 +39443,8 @@ export const ServerAzureADOnlyAuthenticationsCreateOrUpdateResponse =
   }) as any as S.Schema<ServerAzureADOnlyAuthenticationsCreateOrUpdateResponse>;
 
 export type ServerAzureADOnlyAuthenticationsDeleteRequestAuthenticationName =
-  "Default";
+  | "Default"
+  | (string & {});
 export const ServerAzureADOnlyAuthenticationsDeleteRequestAuthenticationName =
   /*@__PURE__*/ S.String;
 
@@ -39049,7 +39487,8 @@ export const ServerAzureADOnlyAuthenticationsDeleteResponse =
   }) as any as S.Schema<ServerAzureADOnlyAuthenticationsDeleteResponse>;
 
 export type ServerAzureADOnlyAuthenticationsGetRequestAuthenticationName =
-  "Default";
+  | "Default"
+  | (string & {});
 export const ServerAzureADOnlyAuthenticationsGetRequestAuthenticationName =
   /*@__PURE__*/ S.String;
 
@@ -39185,7 +39624,7 @@ export const AzureADOnlyAuthListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureADOnlyAuthListResult>;
 
 export type ServerBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName =
-  "default";
+  "default" | (string & {});
 export const ServerBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -39198,7 +39637,10 @@ export const ServerBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
   ) as any as S.Schema<ServerBlobAuditingPolicyPropertiesAuditActionsAndGroupsList>;
 
 /** Specifies the state of the audit. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required. */
-export type ServerBlobAuditingPolicyPropertiesState = "Enabled" | "Disabled";
+export type ServerBlobAuditingPolicyPropertiesState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const ServerBlobAuditingPolicyPropertiesState = /*@__PURE__*/ S.String;
 
 /** Properties of a server blob auditing policy. */
@@ -39307,7 +39749,8 @@ export const ServerBlobAuditingPoliciesCreateOrUpdateResponse =
   }) as any as S.Schema<ServerBlobAuditingPoliciesCreateOrUpdateResponse>;
 
 export type ServerBlobAuditingPoliciesGetRequestBlobAuditingPolicyName =
-  "default";
+  | "default"
+  | (string & {});
 export const ServerBlobAuditingPoliciesGetRequestBlobAuditingPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -39444,7 +39887,7 @@ export const ServerBlobAuditingPolicyListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerBlobAuditingPolicyListResult>;
 
 export type ServerConfigurationOptionsCreateOrUpdateRequestServerConfigurationOptionName =
-  "allowPolybaseExport";
+  "allowPolybaseExport" | (string & {});
 export const ServerConfigurationOptionsCreateOrUpdateRequestServerConfigurationOptionName =
   /*@__PURE__*/ S.String;
 
@@ -39454,7 +39897,8 @@ export type ServerConfigurationOptionPropertiesProvisioningState =
   | "InProgress"
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const ServerConfigurationOptionPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -39537,7 +39981,8 @@ export const ServerConfigurationOptionsCreateOrUpdateResponse =
   }) as any as S.Schema<ServerConfigurationOptionsCreateOrUpdateResponse>;
 
 export type ServerConfigurationOptionsGetRequestServerConfigurationOptionName =
-  "allowPolybaseExport";
+  | "allowPolybaseExport"
+  | (string & {});
 export const ServerConfigurationOptionsGetRequestServerConfigurationOptionName =
   /*@__PURE__*/ S.String;
 
@@ -39674,7 +40119,8 @@ export const ServerConfigurationOptionListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerConfigurationOptionListResult>;
 
 export type ServerConnectionPoliciesCreateOrUpdateRequestConnectionPolicyName =
-  "default";
+  | "default"
+  | (string & {});
 export const ServerConnectionPoliciesCreateOrUpdateRequestConnectionPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -39682,7 +40128,8 @@ export const ServerConnectionPoliciesCreateOrUpdateRequestConnectionPolicyName =
 export type ServerConnectionPolicyPropertiesConnectionType =
   | "Default"
   | "Redirect"
-  | "Proxy";
+  | "Proxy"
+  | (string & {});
 export const ServerConnectionPolicyPropertiesConnectionType =
   /*@__PURE__*/ S.String;
 
@@ -39765,7 +40212,9 @@ export const ServerConnectionPoliciesCreateOrUpdateResponse =
     identifier: "ServerConnectionPoliciesCreateOrUpdateResponse",
   }) as any as S.Schema<ServerConnectionPoliciesCreateOrUpdateResponse>;
 
-export type ServerConnectionPoliciesGetRequestConnectionPolicyName = "default";
+export type ServerConnectionPoliciesGetRequestConnectionPolicyName =
+  | "default"
+  | (string & {});
 export const ServerConnectionPoliciesGetRequestConnectionPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -39909,12 +40358,15 @@ export const ServerConnectionPolicyListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerConnectionPolicyListResult>;
 
 export type ServerDevOpsAuditSettingsCreateOrUpdateRequestDevOpsAuditingSettingsName =
-  "Default";
+  "Default" | (string & {});
 export const ServerDevOpsAuditSettingsCreateOrUpdateRequestDevOpsAuditingSettingsName =
   /*@__PURE__*/ S.String;
 
 /** Specifies the state of the audit. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required. */
-export type ServerDevOpsAuditSettingsPropertiesState = "Enabled" | "Disabled";
+export type ServerDevOpsAuditSettingsPropertiesState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const ServerDevOpsAuditSettingsPropertiesState = /*@__PURE__*/ S.String;
 
 /** Properties of a server DevOps audit settings. */
@@ -40005,7 +40457,8 @@ export const ServerDevOpsAuditSettingsCreateOrUpdateResponse =
   }) as any as S.Schema<ServerDevOpsAuditSettingsCreateOrUpdateResponse>;
 
 export type ServerDevOpsAuditSettingsGetRequestDevOpsAuditingSettingsName =
-  "Default";
+  | "Default"
+  | (string & {});
 export const ServerDevOpsAuditSettingsGetRequestDevOpsAuditingSettingsName =
   /*@__PURE__*/ S.String;
 
@@ -40421,7 +40874,8 @@ export const ServerDnsAliasListResult = /*@__PURE__*/ S.suspend(() =>
 /** The encryption protector type like 'ServiceManaged', 'AzureKeyVault'. */
 export type ServerKeyPropertiesInputServerKeyType =
   | "ServiceManaged"
-  | "AzureKeyVault";
+  | "AzureKeyVault"
+  | (string & {});
 export const ServerKeyPropertiesInputServerKeyType = /*@__PURE__*/ S.String;
 
 /** Properties for a server key execution. */
@@ -40474,7 +40928,8 @@ export const ServerKeysCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 /** The encryption protector type like 'ServiceManaged', 'AzureKeyVault'. */
 export type ServerKeyPropertiesServerKeyType =
   | "ServiceManaged"
-  | "AzureKeyVault";
+  | "AzureKeyVault"
+  | (string & {});
 export const ServerKeyPropertiesServerKeyType = /*@__PURE__*/ S.String;
 
 /** Properties for a server key execution. */
@@ -40739,7 +41194,8 @@ export type ServerOperationPropertiesState =
   | "Succeeded"
   | "Failed"
   | "CancelInProgress"
-  | "Cancelled";
+  | "Cancelled"
+  | (string & {});
 export const ServerOperationPropertiesState = /*@__PURE__*/ S.String;
 
 /** The properties of a server operation. */
@@ -40838,7 +41294,9 @@ export const ServerOperationListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServerOperationListResult",
 }) as any as S.Schema<ServerOperationListResult>;
 
-export type ServersCheckNameAvailabilityRequestType = "Microsoft.Sql/servers";
+export type ServersCheckNameAvailabilityRequestType =
+  | "Microsoft.Sql/servers"
+  | (string & {});
 export const ServersCheckNameAvailabilityRequestType = /*@__PURE__*/ S.String;
 
 export interface ServersCheckNameAvailabilityRequest {
@@ -40865,7 +41323,10 @@ export const ServersCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServersCheckNameAvailabilityRequest>;
 
 /** The reason code explaining why the name is unavailable. Will be undefined if the name is available. */
-export type CheckNameAvailabilityResponseReason = "Invalid" | "AlreadyExists";
+export type CheckNameAvailabilityResponseReason =
+  | "Invalid"
+  | "AlreadyExists"
+  | (string & {});
 export const CheckNameAvailabilityResponseReason = /*@__PURE__*/ S.String;
 
 /** The result of a name availability check. */
@@ -40905,24 +41366,29 @@ export type ServerPropertiesInputMinimalTlsVersion =
   | "1.0"
   | "1.1"
   | "1.2"
-  | "1.3";
+  | "1.3"
+  | (string & {});
 export const ServerPropertiesInputMinimalTlsVersion = /*@__PURE__*/ S.String;
 
 /** Whether or not public endpoint access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled' or 'SecuredByPerimeter' */
 export type ServerPropertiesInputPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter";
+  | "SecuredByPerimeter"
+  | (string & {});
 export const ServerPropertiesInputPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** Whether or not existing server has a workspace created and if it allows connection from workspace */
 export type ServerPropertiesInputWorkspaceFeature =
   | "Connected"
-  | "Disconnected";
+  | "Disconnected"
+  | (string & {});
 export const ServerPropertiesInputWorkspaceFeature = /*@__PURE__*/ S.String;
 
 /** Type of the sever administrator. */
-export type ServerExternalAdministratorAdministratorType = "ActiveDirectory";
+export type ServerExternalAdministratorAdministratorType =
+  | "ActiveDirectory"
+  | (string & {});
 export const ServerExternalAdministratorAdministratorType =
   /*@__PURE__*/ S.String;
 
@@ -40930,7 +41396,8 @@ export const ServerExternalAdministratorAdministratorType =
 export type ServerExternalAdministratorPrincipalType =
   | "User"
   | "Group"
-  | "Application";
+  | "Application"
+  | (string & {});
 export const ServerExternalAdministratorPrincipalType = /*@__PURE__*/ S.String;
 
 /** Properties of a active directory administrator. */
@@ -40965,7 +41432,8 @@ export const ServerExternalAdministrator = /*@__PURE__*/ S.suspend(() =>
 export type ServerPropertiesInputRestrictOutboundNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter";
+  | "SecuredByPerimeter"
+  | (string & {});
 export const ServerPropertiesInputRestrictOutboundNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -40973,18 +41441,23 @@ export const ServerPropertiesInputRestrictOutboundNetworkAccess =
 export type ServerPropertiesInputIsIPv6Enabled =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter";
+  | "SecuredByPerimeter"
+  | (string & {});
 export const ServerPropertiesInputIsIPv6Enabled = /*@__PURE__*/ S.String;
 
 /** Status of external governance. */
 export type ServerPropertiesInputExternalGovernanceStatus =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ServerPropertiesInputExternalGovernanceStatus =
   /*@__PURE__*/ S.String;
 
 /** Create mode for server, only valid values for this are Normal and Restore. */
-export type ServerPropertiesInputCreateMode = "Normal" | "Restore";
+export type ServerPropertiesInputCreateMode =
+  | "Normal"
+  | "Restore"
+  | (string & {});
 export const ServerPropertiesInputCreateMode = /*@__PURE__*/ S.String;
 
 /** The properties of a server. */
@@ -41186,25 +41659,31 @@ export type ServerPropertiesMinimalTlsVersion =
   | "1.0"
   | "1.1"
   | "1.2"
-  | "1.3";
+  | "1.3"
+  | (string & {});
 export const ServerPropertiesMinimalTlsVersion = /*@__PURE__*/ S.String;
 
 /** Whether or not public endpoint access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled' or 'SecuredByPerimeter' */
 export type ServerPropertiesPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter";
+  | "SecuredByPerimeter"
+  | (string & {});
 export const ServerPropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** Whether or not existing server has a workspace created and if it allows connection from workspace */
-export type ServerPropertiesWorkspaceFeature = "Connected" | "Disconnected";
+export type ServerPropertiesWorkspaceFeature =
+  | "Connected"
+  | "Disconnected"
+  | (string & {});
 export const ServerPropertiesWorkspaceFeature = /*@__PURE__*/ S.String;
 
 /** Whether or not to restrict outbound network access for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled' */
 export type ServerPropertiesRestrictOutboundNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter";
+  | "SecuredByPerimeter"
+  | (string & {});
 export const ServerPropertiesRestrictOutboundNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -41212,15 +41691,19 @@ export const ServerPropertiesRestrictOutboundNetworkAccess =
 export type ServerPropertiesIsIPv6Enabled =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter";
+  | "SecuredByPerimeter"
+  | (string & {});
 export const ServerPropertiesIsIPv6Enabled = /*@__PURE__*/ S.String;
 
 /** Status of external governance. */
-export type ServerPropertiesExternalGovernanceStatus = "Enabled" | "Disabled";
+export type ServerPropertiesExternalGovernanceStatus =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const ServerPropertiesExternalGovernanceStatus = /*@__PURE__*/ S.String;
 
 /** Create mode for server, only valid values for this are Normal and Restore. */
-export type ServerPropertiesCreateMode = "Normal" | "Restore";
+export type ServerPropertiesCreateMode = "Normal" | "Restore" | (string & {});
 export const ServerPropertiesCreateMode = /*@__PURE__*/ S.String;
 
 /** The properties of a server. */
@@ -41397,7 +41880,7 @@ export const ServersDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServersDeleteResponse>;
 
 export type ServerSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName =
-  "Default";
+  "Default" | (string & {});
 export const ServerSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -41573,7 +42056,8 @@ export const ServerSecurityAlertPoliciesCreateOrUpdateResponse =
   }) as any as S.Schema<ServerSecurityAlertPoliciesCreateOrUpdateResponse>;
 
 export type ServerSecurityAlertPoliciesGetRequestSecurityAlertPolicyName =
-  "Default";
+  | "Default"
+  | (string & {});
 export const ServerSecurityAlertPoliciesGetRequestSecurityAlertPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -41928,7 +42412,8 @@ export const ServersGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type ServersImportDatabaseRequestStorageKeyType =
   | "SharedAccessKey"
   | "StorageAccessKey"
-  | "ManagedIdentity";
+  | "ManagedIdentity"
+  | (string & {});
 export const ServersImportDatabaseRequestStorageKeyType =
   /*@__PURE__*/ S.String;
 
@@ -42671,7 +43156,8 @@ export const ServerTrustGroupPropertiesGroupMembersList = /*@__PURE__*/ S.Array(
 
 export type ServerTrustGroupPropertiesTrustScopesItem =
   | "GlobalTransactions"
-  | "ServiceBroker";
+  | "ServiceBroker"
+  | (string & {});
 export const ServerTrustGroupPropertiesTrustScopesItem = /*@__PURE__*/ S.String;
 
 /** Trust scope of the server trust group. */
@@ -43015,7 +43501,7 @@ export const ServerUsageListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerUsageListResult>;
 
 export type ServerVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const ServerVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -43135,7 +43621,7 @@ export const ServerVulnerabilityAssessmentsCreateOrUpdateResponse =
   }) as any as S.Schema<ServerVulnerabilityAssessmentsCreateOrUpdateResponse>;
 
 export type ServerVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const ServerVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -43178,7 +43664,7 @@ export const ServerVulnerabilityAssessmentsDeleteResponse =
   }) as any as S.Schema<ServerVulnerabilityAssessmentsDeleteResponse>;
 
 export type ServerVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const ServerVulnerabilityAssessmentsGetRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -43316,7 +43802,10 @@ export const ServerVulnerabilityAssessmentListResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ServerVulnerabilityAssessmentListResult>;
 
 /** The state of Sql Agent. */
-export type SqlAgentConfigurationPropertiesState = "Enabled" | "Disabled";
+export type SqlAgentConfigurationPropertiesState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const SqlAgentConfigurationPropertiesState = /*@__PURE__*/ S.String;
 
 /** Sql agent configuration properties. */
@@ -43434,17 +43923,19 @@ export const SqlAgentGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlAgentGetResponse>;
 
 export type SqlVulnerabilityAssessmentBaselineGetRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const SqlVulnerabilityAssessmentBaselineGetRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type SqlVulnerabilityAssessmentBaselineGetRequestBaselineName =
-  "default";
+  | "default"
+  | (string & {});
 export const SqlVulnerabilityAssessmentBaselineGetRequestBaselineName =
   /*@__PURE__*/ S.String;
 
 export type SqlVulnerabilityAssessmentBaselineGetRequestSystemDatabaseName =
-  "master";
+  | "master"
+  | (string & {});
 export const SqlVulnerabilityAssessmentBaselineGetRequestSystemDatabaseName =
   /*@__PURE__*/ S.String;
 
@@ -43519,12 +44010,12 @@ export const SqlVulnerabilityAssessmentBaselineGetResponse =
   }) as any as S.Schema<SqlVulnerabilityAssessmentBaselineGetResponse>;
 
 export type SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessmentRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessmentRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessmentRequestSystemDatabaseName =
-  "master";
+  "master" | (string & {});
 export const SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessmentRequestSystemDatabaseName =
   /*@__PURE__*/ S.String;
 
@@ -43594,17 +44085,17 @@ export const SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessmentR
   }) as any as S.Schema<SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessmentResponse>;
 
 export type SqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const SqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type SqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequestBaselineName =
-  "default";
+  "default" | (string & {});
 export const SqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequestBaselineName =
   /*@__PURE__*/ S.String;
 
 export type SqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequestSystemDatabaseName =
-  "master";
+  "master" | (string & {});
 export const SqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequestSystemDatabaseName =
   /*@__PURE__*/ S.String;
 
@@ -43684,12 +44175,12 @@ export const SqlVulnerabilityAssessmentBaselinesCreateOrUpdateResponse =
   }) as any as S.Schema<SqlVulnerabilityAssessmentBaselinesCreateOrUpdateResponse>;
 
 export type SqlVulnerabilityAssessmentExecuteScanExecuteRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const SqlVulnerabilityAssessmentExecuteScanExecuteRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type SqlVulnerabilityAssessmentExecuteScanExecuteRequestSystemDatabaseName =
-  "master";
+  "master" | (string & {});
 export const SqlVulnerabilityAssessmentExecuteScanExecuteRequestSystemDatabaseName =
   /*@__PURE__*/ S.String;
 
@@ -43738,17 +44229,17 @@ export const SqlVulnerabilityAssessmentExecuteScanExecuteResponse =
   }) as any as S.Schema<SqlVulnerabilityAssessmentExecuteScanExecuteResponse>;
 
 export type SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateRequestBaselineName =
-  "default";
+  "default" | (string & {});
 export const SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateRequestBaselineName =
   /*@__PURE__*/ S.String;
 
 export type SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateRequestSystemDatabaseName =
-  "master";
+  "master" | (string & {});
 export const SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateRequestSystemDatabaseName =
   /*@__PURE__*/ S.String;
 
@@ -43831,17 +44322,18 @@ export const SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateResponse =
   }) as any as S.Schema<SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateResponse>;
 
 export type SqlVulnerabilityAssessmentRuleBaselineGetRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const SqlVulnerabilityAssessmentRuleBaselineGetRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type SqlVulnerabilityAssessmentRuleBaselineGetRequestBaselineName =
-  "default";
+  | "default"
+  | (string & {});
 export const SqlVulnerabilityAssessmentRuleBaselineGetRequestBaselineName =
   /*@__PURE__*/ S.String;
 
 export type SqlVulnerabilityAssessmentRuleBaselineGetRequestSystemDatabaseName =
-  "master";
+  "master" | (string & {});
 export const SqlVulnerabilityAssessmentRuleBaselineGetRequestSystemDatabaseName =
   /*@__PURE__*/ S.String;
 
@@ -43919,17 +44411,17 @@ export const SqlVulnerabilityAssessmentRuleBaselineGetResponse =
   }) as any as S.Schema<SqlVulnerabilityAssessmentRuleBaselineGetResponse>;
 
 export type SqlVulnerabilityAssessmentRuleBaselineListByBaselineRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const SqlVulnerabilityAssessmentRuleBaselineListByBaselineRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type SqlVulnerabilityAssessmentRuleBaselineListByBaselineRequestBaselineName =
-  "default";
+  "default" | (string & {});
 export const SqlVulnerabilityAssessmentRuleBaselineListByBaselineRequestBaselineName =
   /*@__PURE__*/ S.String;
 
 export type SqlVulnerabilityAssessmentRuleBaselineListByBaselineRequestSystemDatabaseName =
-  "master";
+  "master" | (string & {});
 export const SqlVulnerabilityAssessmentRuleBaselineListByBaselineRequestSystemDatabaseName =
   /*@__PURE__*/ S.String;
 
@@ -44002,17 +44494,18 @@ export const SqlVulnerabilityAssessmentRuleBaselineListByBaselineResponse =
   }) as any as S.Schema<SqlVulnerabilityAssessmentRuleBaselineListByBaselineResponse>;
 
 export type SqlVulnerabilityAssessmentRuleBaselinesDeleteRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const SqlVulnerabilityAssessmentRuleBaselinesDeleteRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type SqlVulnerabilityAssessmentRuleBaselinesDeleteRequestBaselineName =
-  "default";
+  | "default"
+  | (string & {});
 export const SqlVulnerabilityAssessmentRuleBaselinesDeleteRequestBaselineName =
   /*@__PURE__*/ S.String;
 
 export type SqlVulnerabilityAssessmentRuleBaselinesDeleteRequestSystemDatabaseName =
-  "master";
+  "master" | (string & {});
 export const SqlVulnerabilityAssessmentRuleBaselinesDeleteRequestSystemDatabaseName =
   /*@__PURE__*/ S.String;
 
@@ -44069,12 +44562,13 @@ export const SqlVulnerabilityAssessmentRuleBaselinesDeleteResponse =
   }) as any as S.Schema<SqlVulnerabilityAssessmentRuleBaselinesDeleteResponse>;
 
 export type SqlVulnerabilityAssessmentScanResultGetRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const SqlVulnerabilityAssessmentScanResultGetRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type SqlVulnerabilityAssessmentScanResultGetRequestSystemDatabaseName =
-  "master";
+  | "master"
+  | (string & {});
 export const SqlVulnerabilityAssessmentScanResultGetRequestSystemDatabaseName =
   /*@__PURE__*/ S.String;
 
@@ -44148,12 +44642,12 @@ export const SqlVulnerabilityAssessmentScanResultGetResponse =
   }) as any as S.Schema<SqlVulnerabilityAssessmentScanResultGetResponse>;
 
 export type SqlVulnerabilityAssessmentScanResultListByScanRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const SqlVulnerabilityAssessmentScanResultListByScanRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type SqlVulnerabilityAssessmentScanResultListByScanRequestSystemDatabaseName =
-  "master";
+  "master" | (string & {});
 export const SqlVulnerabilityAssessmentScanResultListByScanRequestSystemDatabaseName =
   /*@__PURE__*/ S.String;
 
@@ -44225,12 +44719,13 @@ export const SqlVulnerabilityAssessmentScanResultListByScanResponse =
   }) as any as S.Schema<SqlVulnerabilityAssessmentScanResultListByScanResponse>;
 
 export type SqlVulnerabilityAssessmentScansGetRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const SqlVulnerabilityAssessmentScansGetRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type SqlVulnerabilityAssessmentScansGetRequestSystemDatabaseName =
-  "master";
+  | "master"
+  | (string & {});
 export const SqlVulnerabilityAssessmentScansGetRequestSystemDatabaseName =
   /*@__PURE__*/ S.String;
 
@@ -44300,12 +44795,12 @@ export const SqlVulnerabilityAssessmentScansGetResponse =
   }) as any as S.Schema<SqlVulnerabilityAssessmentScansGetResponse>;
 
 export type SqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const SqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
 export type SqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsRequestSystemDatabaseName =
-  "master";
+  "master" | (string & {});
 export const SqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsRequestSystemDatabaseName =
   /*@__PURE__*/ S.String;
 
@@ -44375,7 +44870,7 @@ export const SqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsRes
   }) as any as S.Schema<SqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsResponse>;
 
 export type SqlVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const SqlVulnerabilityAssessmentsDeleteRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -44418,7 +44913,7 @@ export const SqlVulnerabilityAssessmentsDeleteResponse =
   }) as any as S.Schema<SqlVulnerabilityAssessmentsDeleteResponse>;
 
 export type SqlVulnerabilityAssessmentsSettingsCreateOrUpdateRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const SqlVulnerabilityAssessmentsSettingsCreateOrUpdateRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -44483,7 +44978,7 @@ export const SqlVulnerabilityAssessmentsSettingsCreateOrUpdateResponse =
   }) as any as S.Schema<SqlVulnerabilityAssessmentsSettingsCreateOrUpdateResponse>;
 
 export type SqlVulnerabilityAssessmentsSettingsGetRequestVulnerabilityAssessmentName =
-  "default";
+  "default" | (string & {});
 export const SqlVulnerabilityAssessmentsSettingsGetRequestVulnerabilityAssessmentName =
   /*@__PURE__*/ S.String;
 
@@ -44595,7 +45090,7 @@ export const SqlVulnerabilityAssessmentsSettingsListByServerResponse =
   }) as any as S.Schema<SqlVulnerabilityAssessmentsSettingsListByServerResponse>;
 
 export type StartStopManagedInstanceSchedulesCreateOrUpdateRequestStartStopScheduleName =
-  "default";
+  "default" | (string & {});
 export const StartStopManagedInstanceSchedulesCreateOrUpdateRequestStartStopScheduleName =
   /*@__PURE__*/ S.String;
 
@@ -44607,7 +45102,8 @@ export type ScheduleItemStartDay =
   | "Wednesday"
   | "Thursday"
   | "Friday"
-  | "Saturday";
+  | "Saturday"
+  | (string & {});
 export const ScheduleItemStartDay = /*@__PURE__*/ S.String;
 
 /** Day of maintenance window. */
@@ -44618,7 +45114,8 @@ export type ScheduleItemStopDay =
   | "Wednesday"
   | "Thursday"
   | "Friday"
-  | "Saturday";
+  | "Saturday"
+  | (string & {});
 export const ScheduleItemStopDay = /*@__PURE__*/ S.String;
 
 /** Schedule info describing when the server should be started or stopped. */
@@ -44765,7 +45262,7 @@ export const StartStopManagedInstanceSchedulesCreateOrUpdateResponse =
   }) as any as S.Schema<StartStopManagedInstanceSchedulesCreateOrUpdateResponse>;
 
 export type StartStopManagedInstanceSchedulesDeleteRequestStartStopScheduleName =
-  "default";
+  "default" | (string & {});
 export const StartStopManagedInstanceSchedulesDeleteRequestStartStopScheduleName =
   /*@__PURE__*/ S.String;
 
@@ -44808,7 +45305,8 @@ export const StartStopManagedInstanceSchedulesDeleteResponse =
   }) as any as S.Schema<StartStopManagedInstanceSchedulesDeleteResponse>;
 
 export type StartStopManagedInstanceSchedulesGetRequestStartStopScheduleName =
-  "default";
+  | "default"
+  | (string & {});
 export const StartStopManagedInstanceSchedulesGetRequestStartStopScheduleName =
   /*@__PURE__*/ S.String;
 
@@ -45205,7 +45703,8 @@ export const SynapseLinkWorkspaceListResult = /*@__PURE__*/ S.suspend(() =>
 export type SyncAgentPropertiesInputState =
   | "Online"
   | "Offline"
-  | "NeverConnected";
+  | "NeverConnected"
+  | (string & {});
 export const SyncAgentPropertiesInputState = /*@__PURE__*/ S.String;
 
 /** Properties of an Azure SQL Database sync agent. */
@@ -45256,7 +45755,11 @@ export const SyncAgentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncAgentsCreateOrUpdateRequest>;
 
 /** State of the sync agent. */
-export type SyncAgentPropertiesState = "Online" | "Offline" | "NeverConnected";
+export type SyncAgentPropertiesState =
+  | "Online"
+  | "Offline"
+  | "NeverConnected"
+  | (string & {});
 export const SyncAgentPropertiesState = /*@__PURE__*/ S.String;
 
 /** Properties of an Azure SQL Database sync agent. */
@@ -45544,7 +46047,8 @@ export const SyncAgentsListLinkedDatabasesRequest = /*@__PURE__*/ S.suspend(
 /** Type of the sync agent linked database. */
 export type SyncAgentLinkedDatabasePropertiesDatabaseType =
   | "AzureSqlDatabase"
-  | "SqlServerDatabase";
+  | "SqlServerDatabase"
+  | (string & {});
 export const SyncAgentLinkedDatabasePropertiesDatabaseType =
   /*@__PURE__*/ S.String;
 
@@ -45665,7 +46169,8 @@ export const SyncGroupsCancelSyncResponse = /*@__PURE__*/ S.suspend(() =>
 /** Conflict resolution policy of the sync group. */
 export type SyncGroupPropertiesInputConflictResolutionPolicy =
   | "HubWin"
-  | "MemberWin";
+  | "MemberWin"
+  | (string & {});
 export const SyncGroupPropertiesInputConflictResolutionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -45675,7 +46180,8 @@ export type SyncGroupPropertiesInputSyncState =
   | "Error"
   | "Warning"
   | "Progressing"
-  | "Good";
+  | "Good"
+  | (string & {});
 export const SyncGroupPropertiesInputSyncState = /*@__PURE__*/ S.String;
 
 /** Properties of column in sync group table. */
@@ -45849,7 +46355,8 @@ export const SyncGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 /** Conflict resolution policy of the sync group. */
 export type SyncGroupPropertiesConflictResolutionPolicy =
   | "HubWin"
-  | "MemberWin";
+  | "MemberWin"
+  | (string & {});
 export const SyncGroupPropertiesConflictResolutionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -45859,7 +46366,8 @@ export type SyncGroupPropertiesSyncState =
   | "Error"
   | "Warning"
   | "Progressing"
-  | "Good";
+  | "Good"
+  | (string & {});
 export const SyncGroupPropertiesSyncState = /*@__PURE__*/ S.String;
 
 /** Properties of a sync group with support to MI. */
@@ -46325,7 +46833,8 @@ export type SyncGroupsListLogsRequestType =
   | "All"
   | "Error"
   | "Warning"
-  | "Success";
+  | "Success"
+  | (string & {});
 export const SyncGroupsListLogsRequestType = /*@__PURE__*/ S.String;
 
 export interface SyncGroupsListLogsRequest {
@@ -46376,7 +46885,8 @@ export type SyncGroupLogPropertiesType =
   | "All"
   | "Error"
   | "Warning"
-  | "Success";
+  | "Success"
+  | (string & {});
 export const SyncGroupLogPropertiesType = /*@__PURE__*/ S.String;
 
 /** Properties of an Azure SQL Database sync group log. */
@@ -46682,14 +47192,16 @@ export const SyncGroupsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 /** Type of the sync agent linked database. */
 export type SyncMemberPropertiesInputDatabaseType =
   | "AzureSqlDatabase"
-  | "SqlServerDatabase";
+  | "SqlServerDatabase"
+  | (string & {});
 export const SyncMemberPropertiesInputDatabaseType = /*@__PURE__*/ S.String;
 
 /** Sync direction of the sync member. */
 export type SyncMemberPropertiesInputSyncDirection =
   | "Bidirectional"
   | "OneWayMemberToHub"
-  | "OneWayHubToMember";
+  | "OneWayHubToMember"
+  | (string & {});
 export const SyncMemberPropertiesInputSyncDirection = /*@__PURE__*/ S.String;
 
 /** Sync state of the sync member. */
@@ -46711,7 +47223,8 @@ export type SyncMemberPropertiesInputSyncState =
   | "DeProvisionFailed"
   | "Reprovisioning"
   | "ReprovisionFailed"
-  | "UnReprovisioned";
+  | "UnReprovisioned"
+  | (string & {});
 export const SyncMemberPropertiesInputSyncState = /*@__PURE__*/ S.String;
 
 /** Properties of a sync member with support to MI. */
@@ -46797,14 +47310,16 @@ export const SyncMembersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 /** Type of the sync agent linked database. */
 export type SyncMemberPropertiesDatabaseType =
   | "AzureSqlDatabase"
-  | "SqlServerDatabase";
+  | "SqlServerDatabase"
+  | (string & {});
 export const SyncMemberPropertiesDatabaseType = /*@__PURE__*/ S.String;
 
 /** Sync direction of the sync member. */
 export type SyncMemberPropertiesSyncDirection =
   | "Bidirectional"
   | "OneWayMemberToHub"
-  | "OneWayHubToMember";
+  | "OneWayHubToMember"
+  | (string & {});
 export const SyncMemberPropertiesSyncDirection = /*@__PURE__*/ S.String;
 
 /** Sync state of the sync member. */
@@ -46826,7 +47341,8 @@ export type SyncMemberPropertiesSyncState =
   | "DeProvisionFailed"
   | "Reprovisioning"
   | "ReprovisionFailed"
-  | "UnReprovisioned";
+  | "UnReprovisioned"
+  | (string & {});
 export const SyncMemberPropertiesSyncState = /*@__PURE__*/ S.String;
 
 /** Properties of a sync member with support to MI. */
@@ -47402,12 +47918,17 @@ export const TimeZoneListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "TimeZoneListResult",
 }) as any as S.Schema<TimeZoneListResult>;
 
-export type TransparentDataEncryptionsCreateOrUpdateRequestTdeName = "current";
+export type TransparentDataEncryptionsCreateOrUpdateRequestTdeName =
+  | "current"
+  | (string & {});
 export const TransparentDataEncryptionsCreateOrUpdateRequestTdeName =
   /*@__PURE__*/ S.String;
 
 /** Specifies the state of the transparent data encryption. */
-export type TransparentDataEncryptionPropertiesState = "Enabled" | "Disabled";
+export type TransparentDataEncryptionPropertiesState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const TransparentDataEncryptionPropertiesState = /*@__PURE__*/ S.String;
 
 /** Specifies the encryption scan state of the transparent data encryption. */
@@ -47417,7 +47938,8 @@ export type TransparentDataEncryptionPropertiesScanState =
   | "Running"
   | "Suspend"
   | "Aborted"
-  | "Completed";
+  | "Completed"
+  | (string & {});
 export const TransparentDataEncryptionPropertiesScanState =
   /*@__PURE__*/ S.String;
 
@@ -47499,7 +48021,9 @@ export const TransparentDataEncryptionsCreateOrUpdateResponse =
     identifier: "TransparentDataEncryptionsCreateOrUpdateResponse",
   }) as any as S.Schema<TransparentDataEncryptionsCreateOrUpdateResponse>;
 
-export type TransparentDataEncryptionsGetRequestTdeName = "current";
+export type TransparentDataEncryptionsGetRequestTdeName =
+  | "current"
+  | (string & {});
 export const TransparentDataEncryptionsGetRequestTdeName =
   /*@__PURE__*/ S.String;
 
@@ -47640,7 +48164,9 @@ export const LogicalDatabaseTransparentDataEncryptionListResult =
     identifier: "LogicalDatabaseTransparentDataEncryptionListResult",
   }) as any as S.Schema<LogicalDatabaseTransparentDataEncryptionListResult>;
 
-export type TransparentDataEncryptionsResumeRequestTdeName = "current";
+export type TransparentDataEncryptionsResumeRequestTdeName =
+  | "current"
+  | (string & {});
 export const TransparentDataEncryptionsResumeRequestTdeName =
   /*@__PURE__*/ S.String;
 
@@ -47701,7 +48227,9 @@ export const TransparentDataEncryptionsResumeResponse = /*@__PURE__*/ S.suspend(
   identifier: "TransparentDataEncryptionsResumeResponse",
 }) as any as S.Schema<TransparentDataEncryptionsResumeResponse>;
 
-export type TransparentDataEncryptionsSuspendRequestTdeName = "current";
+export type TransparentDataEncryptionsSuspendRequestTdeName =
+  | "current"
+  | (string & {});
 export const TransparentDataEncryptionsSuspendRequestTdeName =
   /*@__PURE__*/ S.String;
 
@@ -48284,7 +48812,8 @@ export const VirtualClustersUpdateDnsServersRequest = /*@__PURE__*/ S.suspend(
 export type VirtualClusterDnsServersPropertiesStatus =
   | "Succeeded"
   | "Failed"
-  | "InProgress";
+  | "InProgress"
+  | (string & {});
 export const VirtualClusterDnsServersPropertiesStatus = /*@__PURE__*/ S.String;
 
 /** The properties of dns servers on virtual cluster. */
@@ -48332,7 +48861,8 @@ export type VirtualNetworkRulePropertiesState =
   | "Ready"
   | "Failed"
   | "Deleting"
-  | "Unknown";
+  | "Unknown"
+  | (string & {});
 export const VirtualNetworkRulePropertiesState = /*@__PURE__*/ S.String;
 
 /** Properties of a virtual network rule. */

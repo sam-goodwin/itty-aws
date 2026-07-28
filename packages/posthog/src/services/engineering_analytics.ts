@@ -135,7 +135,8 @@ export type BrokenTestRowStateEnum =
   | "novel_burst"
   | "potentially_resolved"
   | "flaky"
-  | "pr_only";
+  | "pr_only"
+  | (string & {});
 export const BrokenTestRowStateEnum = /*@__PURE__*/ S.String;
 
 /** Hourly failure counts over the last 24 hours, oldest first (fixed 24-slot array), for the row sparkline. All zeros when nothing failed in the last day. */
@@ -421,7 +422,7 @@ export const EngineeringAnalyticsCiSignalsConfigRetrieveRequest =
   }) as any as S.Schema<EngineeringAnalyticsCiSignalsConfigRetrieveRequest>;
 
 /** * `running` - RUNNING * `completed` - COMPLETED * `failed` - FAILED */
-export type SyncStatusEnum = "running" | "completed" | "failed";
+export type SyncStatusEnum = "running" | "completed" | "failed" | (string & {});
 export const SyncStatusEnum = /*@__PURE__*/ S.String;
 
 export interface CISignalsConfig {
@@ -558,7 +559,8 @@ export const EngineeringAnalyticsFlakyTestsRequest = /*@__PURE__*/ S.suspend(
 export type FlakyTestItemClassificationEnum =
   | "confirmed_flake"
   | "suspected_regression"
-  | "quarantined";
+  | "quarantined"
+  | (string & {});
 export const FlakyTestItemClassificationEnum = /*@__PURE__*/ S.String;
 
 export interface FlakyTestItem {
@@ -956,7 +958,11 @@ export const Author = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Author" }) as any as S.Schema<Author>;
 
 /** * `open` - OPEN * `closed` - CLOSED * `merged` - MERGED */
-export type EngineeringAnalyticsPRStateEnum = "open" | "closed" | "merged";
+export type EngineeringAnalyticsPRStateEnum =
+  | "open"
+  | "closed"
+  | "merged"
+  | (string & {});
 export const EngineeringAnalyticsPRStateEnum = /*@__PURE__*/ S.String;
 
 export interface PullRequest {
@@ -1002,7 +1008,8 @@ export type PRLifecycleEventKindEnum =
   | "ci_started"
   | "ci_finished"
   | "merged"
-  | "closed";
+  | "closed"
+  | (string & {});
 export const PRLifecycleEventKindEnum = /*@__PURE__*/ S.String;
 
 export interface PRLifecycleEvent {
@@ -1033,7 +1040,11 @@ export const PRLifecycleEventsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PRLifecycleEventsList>;
 
 /** * `precise` - PRECISE * `coarse` - COARSE * `partial` - PARTIAL */
-export type MetricQualityEnum = "precise" | "coarse" | "partial";
+export type MetricQualityEnum =
+  | "precise"
+  | "coarse"
+  | "partial"
+  | (string & {});
 export const MetricQualityEnum = /*@__PURE__*/ S.String;
 
 export interface PRLifecycle {
@@ -1338,15 +1349,25 @@ export const EngineeringAnalyticsQuarantineRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EngineeringAnalyticsQuarantineRequest>;
 
 /** * `run` - RUN * `skip` - SKIP */
-export type QuarantineModeEnum = "run" | "skip";
+export type QuarantineModeEnum = "run" | "skip" | (string & {});
 export const QuarantineModeEnum = /*@__PURE__*/ S.String;
 
 /** * `active` - ACTIVE * `expiring_soon` - EXPIRING_SOON * `in_grace` - IN_GRACE * `overdue` - OVERDUE */
-export type LifecycleEnum = "active" | "expiring_soon" | "in_grace" | "overdue";
+export type LifecycleEnum =
+  | "active"
+  | "expiring_soon"
+  | "in_grace"
+  | "overdue"
+  | (string & {});
 export const LifecycleEnum = /*@__PURE__*/ S.String;
 
 /** * `product` - PRODUCT * `file` - FILE * `directory` - DIRECTORY * `test` - TEST */
-export type SelectorKindEnum = "product" | "file" | "directory" | "test";
+export type SelectorKindEnum =
+  | "product"
+  | "file"
+  | "directory"
+  | "test"
+  | (string & {});
 export const SelectorKindEnum = /*@__PURE__*/ S.String;
 
 export interface QuarantineEntry {
@@ -1438,7 +1459,7 @@ export const QuarantineFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QuarantineFile" }) as any as S.Schema<QuarantineFile>;
 
 /** * `quarantine` - QUARANTINE * `extend` - EXTEND * `remove` - REMOVE */
-export type OperationEnum = "quarantine" | "extend" | "remove";
+export type OperationEnum = "quarantine" | "extend" | "remove" | (string & {});
 export const OperationEnum = /*@__PURE__*/ S.String;
 
 export interface EngineeringAnalyticsQuarantineRequestRequest {
@@ -2222,7 +2243,8 @@ export const TeamMergeTrend = /*@__PURE__*/ S.suspend(() =>
 
 export type EngineeringAnalyticsWorkflowHealthRequestRunScope =
   | "all"
-  | "pull_request";
+  | "pull_request"
+  | (string & {});
 export const EngineeringAnalyticsWorkflowHealthRequestRunScope =
   /*@__PURE__*/ S.String;
 

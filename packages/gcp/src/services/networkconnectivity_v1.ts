@@ -235,7 +235,8 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
 export type CheckConsumerConfigRequestRequestedIpVersionEnum =
   | "IP_VERSION_UNSPECIFIED"
   | "IPV4"
-  | "IPV6";
+  | "IPV6"
+  | (string & {});
 export const CheckConsumerConfigRequestRequestedIpVersionEnum =
   /*@__PURE__*/ S.String;
 
@@ -295,7 +296,8 @@ export type CheckConsumerConfigResponseErrorsItemEnum =
   | "NETWORK_PROJECT_SERVICE_AGENT_NOT_FOUND"
   | "ENDPOINT_PROJECT_INVALID"
   | "ENDPOINT_PROJECT_API_NOT_ENABLED"
-  | "ENDPOINT_PROJECT_IS_NOT_SERVICE_PROJECT";
+  | "ENDPOINT_PROJECT_IS_NOT_SERVICE_PROJECT"
+  | (string & {});
 export const CheckConsumerConfigResponseErrorsItemEnum = /*@__PURE__*/ S.String;
 
 export type CheckConsumerConfigResponseErrorsItemEnumList =
@@ -321,7 +323,8 @@ export const CheckConsumerConfigResponse = /*@__PURE__*/ S.suspend(() =>
 export type CreateProjectsLocationsAutomatedDnsRecordsInsertModeEnum =
   | "INSERT_MODE_UNSPECIFIED"
   | "FAIL_IF_EXISTS"
-  | "OVERWRITE";
+  | "OVERWRITE"
+  | (string & {});
 export const CreateProjectsLocationsAutomatedDnsRecordsInsertModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -336,13 +339,15 @@ export type AutomatedDnsRecordStateEnum =
   | "PROGRAMMED"
   | "FAILED_DEPROGRAMMING"
   | "CREATING"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const AutomatedDnsRecordStateEnum = /*@__PURE__*/ S.String;
 
 export type AutomatedDnsRecordCreationModeEnum =
   | "CREATION_MODE_UNSPECIFIED"
   | "CONSUMER_API"
-  | "SERVICE_CONNECTION_MAP";
+  | "SERVICE_CONNECTION_MAP"
+  | (string & {});
 export const AutomatedDnsRecordCreationModeEnum = /*@__PURE__*/ S.String;
 
 export type AutomatedDnsRecordRecordTypeEnum =
@@ -350,7 +355,8 @@ export type AutomatedDnsRecordRecordTypeEnum =
   | "A"
   | "AAAA"
   | "TXT"
-  | "CNAME";
+  | "CNAME"
+  | (string & {});
 export const AutomatedDnsRecordRecordTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -478,7 +484,8 @@ export type SpokeTypeCountSpokeTypeEnum =
   | "ROUTER_APPLIANCE"
   | "VPC_NETWORK"
   | "GATEWAY"
-  | "PRODUCER_VPC_NETWORK";
+  | "PRODUCER_VPC_NETWORK"
+  | (string & {});
 export const SpokeTypeCountSpokeTypeEnum = /*@__PURE__*/ S.String;
 
 /** The number of spokes of a given type that are associated with a specific hub. The type indicates what kind of resource is associated with the spoke. */
@@ -510,7 +517,8 @@ export type SpokeStateCountStateEnum =
   | "UPDATING"
   | "INACTIVE"
   | "OBSOLETE"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const SpokeStateCountStateEnum = /*@__PURE__*/ S.String;
 
 /** The number of spokes that are in a particular state and associated with a given hub. */
@@ -542,7 +550,8 @@ export type SpokeStateReasonCountStateReasonCodeEnum =
   | "FAILED"
   | "UPDATE_PENDING_REVIEW"
   | "UPDATE_REJECTED"
-  | "UPDATE_FAILED";
+  | "UPDATE_FAILED"
+  | (string & {});
 export const SpokeStateReasonCountStateReasonCodeEnum = /*@__PURE__*/ S.String;
 
 /** The number of spokes in the hub that are inactive for this reason. */
@@ -583,14 +592,18 @@ export const SpokeSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SpokeSummary" }) as any as S.Schema<SpokeSummary>;
 
-export type HubPolicyModeEnum = "POLICY_MODE_UNSPECIFIED" | "PRESET";
+export type HubPolicyModeEnum =
+  | "POLICY_MODE_UNSPECIFIED"
+  | "PRESET"
+  | (string & {});
 export const HubPolicyModeEnum = /*@__PURE__*/ S.String;
 
 export type HubPresetTopologyEnum =
   | "PRESET_TOPOLOGY_UNSPECIFIED"
   | "MESH"
   | "STAR"
-  | "HYBRID_INSPECTION";
+  | "HYBRID_INSPECTION"
+  | (string & {});
 export const HubPresetTopologyEnum = /*@__PURE__*/ S.String;
 
 /** RoutingVPC contains information about the VPC networks associated with the spokes of a Network Connectivity Center hub. */
@@ -622,7 +635,8 @@ export type HubStateEnum =
   | "UPDATING"
   | "INACTIVE"
   | "OBSOLETE"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const HubStateEnum = /*@__PURE__*/ S.String;
 
 /** A Network Connectivity Center hub is a global management resource to which you attach spokes. A single hub can contain spokes from multiple regions. However, if any of a hub's spokes use the site-to-site data transfer feature, the resources associated with those spokes must all be in the same VPC network. Spokes that do not use site-to-site data transfer can be associated with any VPC network in your project. */
@@ -703,7 +717,8 @@ export const CreateProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(
 export type FilterProtocolVersionEnum =
   | "PROTOCOL_VERSION_UNSPECIFIED"
   | "IPV4"
-  | "IPV6";
+  | "IPV6"
+  | (string & {});
 export const FilterProtocolVersionEnum = /*@__PURE__*/ S.String;
 
 /** Filter matches L4 traffic. */
@@ -729,7 +744,8 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 export type WarningsCodeEnum =
   | "WARNING_UNSPECIFIED"
   | "RESOURCE_NOT_ACTIVE"
-  | "RESOURCE_BEING_MODIFIED";
+  | "RESOURCE_BEING_MODIFIED"
+  | (string & {});
 export const WarningsCodeEnum = /*@__PURE__*/ S.String;
 
 /** Informational warning message. */
@@ -756,7 +772,8 @@ export const WarningsList = /*@__PURE__*/ S.Array(
 
 export type PolicyBasedRouteNextHopOtherRoutesEnum =
   | "OTHER_ROUTES_UNSPECIFIED"
-  | "DEFAULT_ROUTING";
+  | "DEFAULT_ROUTING"
+  | (string & {});
 export const PolicyBasedRouteNextHopOtherRoutesEnum = /*@__PURE__*/ S.String;
 
 /** InterconnectAttachment that this route applies to. */
@@ -870,14 +887,16 @@ export type InternalRangePeeringEnum =
   | "PEERING_UNSPECIFIED"
   | "FOR_SELF"
   | "FOR_PEER"
-  | "NOT_SHARED";
+  | "NOT_SHARED"
+  | (string & {});
 export const InternalRangePeeringEnum = /*@__PURE__*/ S.String;
 
 export type InternalRangeUsageEnum =
   | "USAGE_UNSPECIFIED"
   | "FOR_VPC"
   | "EXTERNAL_TO_VPC"
-  | "FOR_MIGRATION";
+  | "FOR_MIGRATION"
+  | (string & {});
 export const InternalRangeUsageEnum = /*@__PURE__*/ S.String;
 
 /** Specification for migration with source and target resource names. */
@@ -897,7 +916,8 @@ export const Migration = /*@__PURE__*/ S.suspend(() =>
 export type InternalRangeOverlapsItemEnum =
   | "OVERLAP_UNSPECIFIED"
   | "OVERLAP_ROUTE_RANGE"
-  | "OVERLAP_EXISTING_SUBNET_RANGE";
+  | "OVERLAP_EXISTING_SUBNET_RANGE"
+  | (string & {});
 export const InternalRangeOverlapsItemEnum = /*@__PURE__*/ S.String;
 
 export type InternalRangeOverlapsItemEnumList =
@@ -911,7 +931,8 @@ export type AllocationOptionsAllocationStrategyEnum =
   | "RANDOM"
   | "FIRST_AVAILABLE"
   | "RANDOM_FIRST_N_AVAILABLE"
-  | "FIRST_SMALLEST_FITTING";
+  | "FIRST_SMALLEST_FITTING"
+  | (string & {});
 export const AllocationOptionsAllocationStrategyEnum = /*@__PURE__*/ S.String;
 
 /** Range auto-allocation options, to be optionally used when CIDR block is not explicitly set. */
@@ -1023,7 +1044,8 @@ export type StateMetadataStateEnum =
   | "ACTIVE"
   | "DELETING"
   | "SUSPENDING"
-  | "SUSPENDED";
+  | "SUSPENDED"
+  | (string & {});
 export const StateMetadataStateEnum = /*@__PURE__*/ S.String;
 
 /** The state and activation time details of the resource state. */
@@ -1133,7 +1155,8 @@ export const CreateProjectsLocationsMulticloudDataTransferConfigsRequest =
 export type DestinationEndpointStateEnum =
   | "STATE_UNSPECIFIED"
   | "VALID"
-  | "INVALID";
+  | "INVALID"
+  | (string & {});
 export const DestinationEndpointStateEnum = /*@__PURE__*/ S.String;
 
 /** The metadata for a `DestinationEndpoint` resource. */
@@ -1232,7 +1255,8 @@ export const CreateProjectsLocationsMulticloudDataTransferConfigsDestinationsReq
 
 export type PscAuthorizationPolicyAuthorizationModeEnum =
   | "AUTHORIZATION_MODE_UNSPECIFIED"
-  | "AUTHORIZATION_MODE_TRANSITIVE_TO_SERVICE_ATTACHMENT";
+  | "AUTHORIZATION_MODE_TRANSITIVE_TO_SERVICE_ATTACHMENT"
+  | (string & {});
 export const PscAuthorizationPolicyAuthorizationModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1307,7 +1331,8 @@ export const CreateProjectsLocationsPscAuthorizationPoliciesRequest =
 export type RegionalEndpointAccessTypeEnum =
   | "ACCESS_TYPE_UNSPECIFIED"
   | "GLOBAL"
-  | "REGIONAL";
+  | "REGIONAL"
+  | (string & {});
 export const RegionalEndpointAccessTypeEnum = /*@__PURE__*/ S.String;
 
 /** The RegionalEndpoint resource. */
@@ -1386,7 +1411,8 @@ export const CreateProjectsLocationsRegionalEndpointsRequest =
 
 export type ServiceConnectionMapInfrastructureEnum =
   | "INFRASTRUCTURE_UNSPECIFIED"
-  | "PSC";
+  | "PSC"
+  | (string & {});
 export const ServiceConnectionMapInfrastructureEnum = /*@__PURE__*/ S.String;
 
 /** Describes the cause of the error with structured details. Example of an error when contacting the "pubsub.googleapis.com" API when it is not enabled: { "reason": "API_DISABLED" "domain": "googleapis.com" "metadata": { "resource": "projects/123", "service": "pubsub.googleapis.com" } } This response indicates that the pubsub.googleapis.com API is not enabled. Example of an error that is returned when attempting to create a Spanner instance in a region that is out of stock: { "reason": "STOCKOUT" "domain": "spanner.googleapis.com", "metadata": { "availableRegions": "us-central1,us-east2" } } */
@@ -1415,20 +1441,23 @@ export type ConsumerPscConnectionStateEnum =
   | "CREATING"
   | "DELETING"
   | "CREATE_REPAIRING"
-  | "DELETE_REPAIRING";
+  | "DELETE_REPAIRING"
+  | (string & {});
 export const ConsumerPscConnectionStateEnum = /*@__PURE__*/ S.String;
 
 export type ConsumerPscConnectionErrorTypeEnum =
   | "CONNECTION_ERROR_TYPE_UNSPECIFIED"
   | "ERROR_INTERNAL"
   | "ERROR_CONSUMER_SIDE"
-  | "ERROR_PRODUCER_SIDE";
+  | "ERROR_PRODUCER_SIDE"
+  | (string & {});
 export const ConsumerPscConnectionErrorTypeEnum = /*@__PURE__*/ S.String;
 
 export type ConsumerPscConnectionIpVersionEnum =
   | "IP_VERSION_UNSPECIFIED"
   | "IPV4"
-  | "IPV6";
+  | "IPV6"
+  | (string & {});
 export const ConsumerPscConnectionIpVersionEnum = /*@__PURE__*/ S.String;
 
 export type DnsAutomationStatusStateEnum =
@@ -1437,7 +1466,8 @@ export type DnsAutomationStatusStateEnum =
   | "ACTIVE"
   | "PENDING_DELETE"
   | "CREATE_FAILED"
-  | "DELETE_FAILED";
+  | "DELETE_FAILED"
+  | (string & {});
 export const DnsAutomationStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** The status of DNS automation for a PSC connection. */
@@ -1527,13 +1557,15 @@ export type ConsumerPscConfigStateEnum =
   | "VALID"
   | "CONNECTION_POLICY_MISSING"
   | "POLICY_LIMIT_REACHED"
-  | "CONSUMER_INSTANCE_PROJECT_NOT_ALLOWLISTED";
+  | "CONSUMER_INSTANCE_PROJECT_NOT_ALLOWLISTED"
+  | (string & {});
 export const ConsumerPscConfigStateEnum = /*@__PURE__*/ S.String;
 
 export type ConsumerPscConfigIpVersionEnum =
   | "IP_VERSION_UNSPECIFIED"
   | "IPV4"
-  | "IPV6";
+  | "IPV6"
+  | (string & {});
 export const ConsumerPscConfigIpVersionEnum = /*@__PURE__*/ S.String;
 
 /** Allow the producer to specify which consumers can connect to it. */
@@ -1696,18 +1728,26 @@ export const CreateProjectsLocationsServiceConnectionMapsRequest =
   }) as any as S.Schema<CreateProjectsLocationsServiceConnectionMapsRequest>;
 
 export type CreateProjectsLocationsServiceConnectionPoliciesSubnetworkModeEnum =
-  "SUBNETWORK_MODE_UNSPECIFIED" | "USER_PROVIDED" | "AUTO_CREATED";
+    | "SUBNETWORK_MODE_UNSPECIFIED"
+    | "USER_PROVIDED"
+    | "AUTO_CREATED"
+    | (string & {});
 export const CreateProjectsLocationsServiceConnectionPoliciesSubnetworkModeEnum =
   /*@__PURE__*/ S.String;
 
 export type CreateProjectsLocationsServiceConnectionPoliciesAutoSubnetworkConfig_ipStackEnum =
-  "SUBNET_IP_STACK_UNSPECIFIED" | "IPV4_ONLY" | "IPV6_ONLY" | "IPV4_IPV6";
+    | "SUBNET_IP_STACK_UNSPECIFIED"
+    | "IPV4_ONLY"
+    | "IPV6_ONLY"
+    | "IPV4_IPV6"
+    | (string & {});
 export const CreateProjectsLocationsServiceConnectionPoliciesAutoSubnetworkConfig_ipStackEnum =
   /*@__PURE__*/ S.String;
 
 export type PscConfigProducerInstanceLocationEnum =
   | "PRODUCER_INSTANCE_LOCATION_UNSPECIFIED"
-  | "CUSTOM_RESOURCE_HIERARCHY_LEVELS";
+  | "CUSTOM_RESOURCE_HIERARCHY_LEVELS"
+  | (string & {});
 export const PscConfigProducerInstanceLocationEnum = /*@__PURE__*/ S.String;
 
 /** Configuration used for Private Service Connect connections. Used when Infrastructure is PSC. */
@@ -1737,20 +1777,23 @@ export type PscConnectionStateEnum =
   | "CREATING"
   | "DELETING"
   | "CREATE_REPAIRING"
-  | "DELETE_REPAIRING";
+  | "DELETE_REPAIRING"
+  | (string & {});
 export const PscConnectionStateEnum = /*@__PURE__*/ S.String;
 
 export type PscConnectionErrorTypeEnum =
   | "CONNECTION_ERROR_TYPE_UNSPECIFIED"
   | "ERROR_INTERNAL"
   | "ERROR_CONSUMER_SIDE"
-  | "ERROR_PRODUCER_SIDE";
+  | "ERROR_PRODUCER_SIDE"
+  | (string & {});
 export const PscConnectionErrorTypeEnum = /*@__PURE__*/ S.String;
 
 export type PscConnectionIpVersionEnum =
   | "IP_VERSION_UNSPECIFIED"
   | "IPV4"
-  | "IPV6";
+  | "IPV6"
+  | (string & {});
 export const PscConnectionIpVersionEnum = /*@__PURE__*/ S.String;
 
 /** Information about a specific Private Service Connect connection. */
@@ -1810,7 +1853,8 @@ export const PscConnectionList = /*@__PURE__*/ S.Array(
 
 export type ServiceConnectionPolicyInfrastructureEnum =
   | "INFRASTRUCTURE_UNSPECIFIED"
-  | "PSC";
+  | "PSC"
+  | (string & {});
 export const ServiceConnectionPolicyInfrastructureEnum = /*@__PURE__*/ S.String;
 
 /** Information for the automatically created subnetwork and its associated IR. */
@@ -2006,7 +2050,8 @@ export type SpokeSpokeTypeEnum =
   | "ROUTER_APPLIANCE"
   | "VPC_NETWORK"
   | "GATEWAY"
-  | "PRODUCER_VPC_NETWORK";
+  | "PRODUCER_VPC_NETWORK"
+  | (string & {});
 export const SpokeSpokeTypeEnum = /*@__PURE__*/ S.String;
 
 /** A router appliance instance is a Compute Engine virtual machine (VM) instance that acts as a BGP speaker. A router appliance instance is specified by the URI of the VM and the internal IP address of one of the VM's network interfaces. */
@@ -2114,7 +2159,8 @@ export const IpRangeReservationList = /*@__PURE__*/ S.Array(
 export type GatewayCapacityEnum =
   | "GATEWAY_CAPACITY_UNSPECIFIED"
   | "CAPACITY_1_GBPS"
-  | "CAPACITY_10_GBPS";
+  | "CAPACITY_10_GBPS"
+  | (string & {});
 export const GatewayCapacityEnum = /*@__PURE__*/ S.String;
 
 /** A gateway that can apply specialized traffic processing. */
@@ -2147,7 +2193,8 @@ export type SpokeStateEnum =
   | "UPDATING"
   | "INACTIVE"
   | "OBSOLETE"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const SpokeStateEnum = /*@__PURE__*/ S.String;
 
 export type StateReasonCodeEnum =
@@ -2158,7 +2205,8 @@ export type StateReasonCodeEnum =
   | "FAILED"
   | "UPDATE_PENDING_REVIEW"
   | "UPDATE_REJECTED"
-  | "UPDATE_FAILED";
+  | "UPDATE_FAILED"
+  | (string & {});
 export const StateReasonCodeEnum = /*@__PURE__*/ S.String;
 
 /** The reason for the current state of the spoke. */
@@ -2370,7 +2418,8 @@ export const CreateProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(
 
 export type GatewayAdvertisedRouteRecipientEnum =
   | "RECIPIENT_UNSPECIFIED"
-  | "ADVERTISE_TO_HUB";
+  | "ADVERTISE_TO_HUB"
+  | (string & {});
 export const GatewayAdvertisedRouteRecipientEnum = /*@__PURE__*/ S.String;
 
 export type GatewayAdvertisedRouteStateEnum =
@@ -2383,7 +2432,8 @@ export type GatewayAdvertisedRouteStateEnum =
   | "UPDATING"
   | "INACTIVE"
   | "OBSOLETE"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const GatewayAdvertisedRouteStateEnum = /*@__PURE__*/ S.String;
 
 /** A gateway advertised route is a route that a gateway spoke advertises somewhere. */
@@ -2468,13 +2518,15 @@ export type TransportBandwidthEnum =
   | "BPS_10G"
   | "BPS_20G"
   | "BPS_50G"
-  | "BPS_100G";
+  | "BPS_100G"
+  | (string & {});
 export const TransportBandwidthEnum = /*@__PURE__*/ S.String;
 
 export type TransportStackTypeEnum =
   | "STACK_TYPE_UNSPECIFIED"
   | "IPV4_ONLY"
-  | "IPV4_IPV6";
+  | "IPV4_IPV6"
+  | (string & {});
 export const TransportStackTypeEnum = /*@__PURE__*/ S.String;
 
 export type TransportStateEnum =
@@ -2484,7 +2536,8 @@ export type TransportStateEnum =
   | "PENDING_KEY"
   | "ACTIVE"
   | "DELETING"
-  | "DEPROVISIONED";
+  | "DEPROVISIONED"
+  | (string & {});
 export const TransportStateEnum = /*@__PURE__*/ S.String;
 
 /** Message describing Transport object. */
@@ -2574,7 +2627,8 @@ export const CreateProjectsLocationsTransportsRequest = /*@__PURE__*/ S.suspend(
 export type DeleteProjectsLocationsAutomatedDnsRecordsDeleteModeEnum =
   | "DELETE_MODE_UNSPECIFIED"
   | "DEPROGRAM"
-  | "SKIP_DEPROGRAMMING";
+  | "SKIP_DEPROGRAMMING"
+  | (string & {});
 export const DeleteProjectsLocationsAutomatedDnsRecordsDeleteModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3027,7 +3081,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -3295,7 +3350,8 @@ export type GroupStateEnum =
   | "UPDATING"
   | "INACTIVE"
   | "OBSOLETE"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const GroupStateEnum = /*@__PURE__*/ S.String;
 
 /** A group represents a subset of spokes attached to a hub. */
@@ -3362,7 +3418,8 @@ export type RouteTableStateEnum =
   | "UPDATING"
   | "INACTIVE"
   | "OBSOLETE"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const RouteTableStateEnum = /*@__PURE__*/ S.String;
 
 export interface RouteTable {
@@ -3499,7 +3556,8 @@ export type RouteTypeEnum =
   | "ROUTE_TYPE_UNSPECIFIED"
   | "VPC_PRIMARY_SUBNET"
   | "VPC_SECONDARY_SUBNET"
-  | "DYNAMIC_ROUTE";
+  | "DYNAMIC_ROUTE"
+  | (string & {});
 export const RouteTypeEnum = /*@__PURE__*/ S.String;
 
 export type RouteStateEnum =
@@ -3512,7 +3570,8 @@ export type RouteStateEnum =
   | "UPDATING"
   | "INACTIVE"
   | "OBSOLETE"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const RouteStateEnum = /*@__PURE__*/ S.String;
 
 /** A route defines a path from VM instances within a spoke to a specific destination resource. Only VPC spokes have routes. */
@@ -3675,7 +3734,8 @@ export type ServiceConfigEligibilityCriteriaEnum =
   | "ELIGIBILITY_CRITERIA_UNSPECIFIED"
   | "NETWORK_SERVICE_TIER_PREMIUM_ONLY"
   | "NETWORK_SERVICE_TIER_STANDARD_ONLY"
-  | "REQUEST_ENDPOINT_REGIONAL_ENDPOINT_ONLY";
+  | "REQUEST_ENDPOINT_REGIONAL_ENDPOINT_ONLY"
+  | (string & {});
 export const ServiceConfigEligibilityCriteriaEnum = /*@__PURE__*/ S.String;
 
 /** Specifies eligibility information for the service. */
@@ -3793,20 +3853,23 @@ export const GetProjectsLocationsRemoteTransportProfilesRequest =
 export type RemoteTransportProfileOrderStateEnum =
   | "STATE_UNSPECIFIED"
   | "CLOSED"
-  | "OPEN";
+  | "OPEN"
+  | (string & {});
 export const RemoteTransportProfileOrderStateEnum = /*@__PURE__*/ S.String;
 
 export type RemoteTransportProfileSlaEnum =
   | "SERVICE_LEVEL_AVAILABILITY_UNSPECIFIED"
   | "HIGH"
-  | "MAXIMUM";
+  | "MAXIMUM"
+  | (string & {});
 export const RemoteTransportProfileSlaEnum = /*@__PURE__*/ S.String;
 
 export type RemoteTransportProfileFlowEnum =
   | "KEY_PROVISIONING_FLOW_UNSPECIFIED"
   | "INPUT_ONLY"
   | "OUTPUT_ONLY"
-  | "INPUT_OR_OUTPUT";
+  | "INPUT_OR_OUTPUT"
+  | (string & {});
 export const RemoteTransportProfileFlowEnum = /*@__PURE__*/ S.String;
 
 export type RemoteTransportProfileSupportedBandwidthsItemEnum =
@@ -3823,7 +3886,8 @@ export type RemoteTransportProfileSupportedBandwidthsItemEnum =
   | "BPS_10G"
   | "BPS_20G"
   | "BPS_50G"
-  | "BPS_100G";
+  | "BPS_100G"
+  | (string & {});
 export const RemoteTransportProfileSupportedBandwidthsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -5255,7 +5319,8 @@ export const ListTransportsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListSpokesProjectsLocationsGlobalHubsViewEnum =
   | "SPOKE_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "DETAILED";
+  | "DETAILED"
+  | (string & {});
 export const ListSpokesProjectsLocationsGlobalHubsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -5666,7 +5731,8 @@ export type PscPropagationStatusCodeEnum =
   | "ERROR_PRODUCER_PROPAGATED_CONNECTION_LIMIT_EXCEEDED"
   | "ERROR_PRODUCER_NAT_IP_SPACE_EXHAUSTED"
   | "ERROR_PRODUCER_QUOTA_EXCEEDED"
-  | "ERROR_CONSUMER_QUOTA_EXCEEDED";
+  | "ERROR_CONSUMER_QUOTA_EXCEEDED"
+  | (string & {});
 export const PscPropagationStatusCodeEnum = /*@__PURE__*/ S.String;
 
 /** The status of one or more propagated Private Service Connect connections in a hub. */

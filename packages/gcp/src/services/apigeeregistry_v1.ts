@@ -572,7 +572,8 @@ export type InstanceStateEnum =
   | "ACTIVE"
   | "UPDATING"
   | "DELETING"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 /** An Instance represents the instance resources of the Registry. Currently, only one instance is allowed for each project. */

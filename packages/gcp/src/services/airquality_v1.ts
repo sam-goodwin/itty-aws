@@ -78,7 +78,8 @@ export type LookupCurrentConditionsRequestUaqiColorPaletteEnum =
   | "COLOR_PALETTE_UNSPECIFIED"
   | "RED_GREEN"
   | "INDIGO_PERSIAN_DARK"
-  | "INDIGO_PERSIAN_LIGHT";
+  | "INDIGO_PERSIAN_LIGHT"
+  | (string & {});
 export const LookupCurrentConditionsRequestUaqiColorPaletteEnum =
   /*@__PURE__*/ S.String;
 
@@ -107,7 +108,8 @@ export type LookupCurrentConditionsRequestExtraComputationsItemEnum =
   | "HEALTH_RECOMMENDATIONS"
   | "POLLUTANT_ADDITIONAL_INFO"
   | "DOMINANT_POLLUTANT_CONCENTRATION"
-  | "POLLUTANT_CONCENTRATION";
+  | "POLLUTANT_CONCENTRATION"
+  | (string & {});
 export const LookupCurrentConditionsRequestExtraComputationsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -241,7 +243,8 @@ export const AdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 export type ConcentrationUnitsEnum =
   | "UNIT_UNSPECIFIED"
   | "PARTS_PER_BILLION"
-  | "MICROGRAMS_PER_CUBIC_METER";
+  | "MICROGRAMS_PER_CUBIC_METER"
+  | (string & {});
 export const ConcentrationUnitsEnum = /*@__PURE__*/ S.String;
 
 /** The concentration of a given pollutant in the air. */
@@ -347,7 +350,8 @@ export type LookupForecastRequestExtraComputationsItemEnum =
   | "HEALTH_RECOMMENDATIONS"
   | "POLLUTANT_ADDITIONAL_INFO"
   | "DOMINANT_POLLUTANT_CONCENTRATION"
-  | "POLLUTANT_CONCENTRATION";
+  | "POLLUTANT_CONCENTRATION"
+  | (string & {});
 export const LookupForecastRequestExtraComputationsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -376,7 +380,8 @@ export type LookupForecastRequestUaqiColorPaletteEnum =
   | "COLOR_PALETTE_UNSPECIFIED"
   | "RED_GREEN"
   | "INDIGO_PERSIAN_DARK"
-  | "INDIGO_PERSIAN_LIGHT";
+  | "INDIGO_PERSIAN_LIGHT"
+  | (string & {});
 export const LookupForecastRequestUaqiColorPaletteEnum = /*@__PURE__*/ S.String;
 
 /** The request object of the air quality forecast API. */
@@ -492,7 +497,8 @@ export type LookupHeatmapTileMapTypesHeatmapTilesMapTypeEnum =
   | "DEU_UBA"
   | "CAN_EC"
   | "FRA_ATMO"
-  | "US_AQI";
+  | "US_AQI"
+  | (string & {});
 export const LookupHeatmapTileMapTypesHeatmapTilesMapTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -556,7 +562,8 @@ export type LookupHistoryRequestUaqiColorPaletteEnum =
   | "COLOR_PALETTE_UNSPECIFIED"
   | "RED_GREEN"
   | "INDIGO_PERSIAN_DARK"
-  | "INDIGO_PERSIAN_LIGHT";
+  | "INDIGO_PERSIAN_LIGHT"
+  | (string & {});
 export const LookupHistoryRequestUaqiColorPaletteEnum = /*@__PURE__*/ S.String;
 
 export type LookupHistoryRequestExtraComputationsItemEnum =
@@ -565,7 +572,8 @@ export type LookupHistoryRequestExtraComputationsItemEnum =
   | "HEALTH_RECOMMENDATIONS"
   | "POLLUTANT_ADDITIONAL_INFO"
   | "DOMINANT_POLLUTANT_CONCENTRATION"
-  | "POLLUTANT_CONCENTRATION";
+  | "POLLUTANT_CONCENTRATION"
+  | (string & {});
 export const LookupHistoryRequestExtraComputationsItemEnum =
   /*@__PURE__*/ S.String;
 

@@ -386,10 +386,15 @@ export type ResourceShareInvitationStatus =
   | "PENDING"
   | "ACCEPTED"
   | "REJECTED"
-  | "EXPIRED";
+  | "EXPIRED"
+  | (string & {});
 export const ResourceShareInvitationStatus = /*@__PURE__*/ S.String;
 
-export type ResourceShareAssociationType = "PRINCIPAL" | "RESOURCE" | "SOURCE";
+export type ResourceShareAssociationType =
+  | "PRINCIPAL"
+  | "RESOURCE"
+  | "SOURCE"
+  | (string & {});
 export const ResourceShareAssociationType = /*@__PURE__*/ S.String;
 
 export type ResourceShareAssociationStatus =
@@ -400,7 +405,8 @@ export type ResourceShareAssociationStatus =
   | "DISASSOCIATED"
   | "SUSPENDED"
   | "SUSPENDING"
-  | "RESTORING";
+  | "RESTORING"
+  | (string & {});
 export const ResourceShareAssociationStatus = /*@__PURE__*/ S.String;
 
 export interface ResourceShareAssociation {
@@ -610,13 +616,14 @@ export const CreatePermissionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePermissionRequest",
 }) as any as S.Schema<CreatePermissionRequest>;
-export type PermissionType = "CUSTOMER_MANAGED" | "AWS_MANAGED";
+export type PermissionType = "CUSTOMER_MANAGED" | "AWS_MANAGED" | (string & {});
 export const PermissionType = /*@__PURE__*/ S.String;
 
 export type PermissionFeatureSet =
   | "CREATED_FROM_POLICY"
   | "PROMOTING_TO_STANDARD"
-  | "STANDARD";
+  | "STANDARD"
+  | (string & {});
 export const PermissionFeatureSet = /*@__PURE__*/ S.String;
 
 export interface ResourceSharePermissionSummary {
@@ -692,7 +699,8 @@ export type PermissionStatus =
   | "ATTACHABLE"
   | "UNATTACHABLE"
   | "DELETING"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const PermissionStatus = /*@__PURE__*/ S.String;
 
 export interface ResourceSharePermissionDetail {
@@ -795,13 +803,15 @@ export type ResourceShareStatus =
   | "ACTIVE"
   | "FAILED"
   | "DELETING"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const ResourceShareStatus = /*@__PURE__*/ S.String;
 
 export type ResourceShareFeatureSet =
   | "CREATED_FROM_POLICY"
   | "PROMOTING_TO_STANDARD"
-  | "STANDARD";
+  | "STANDARD"
+  | (string & {});
 export const ResourceShareFeatureSet = /*@__PURE__*/ S.String;
 
 export interface ResourceShare {
@@ -1218,7 +1228,7 @@ export const GetResourceShareInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourceShareInvitationsResponse",
 }) as any as S.Schema<GetResourceShareInvitationsResponse>;
-export type ResourceOwner = "SELF" | "OTHER-ACCOUNTS";
+export type ResourceOwner = "SELF" | "OTHER-ACCOUNTS" | (string & {});
 export const ResourceOwner = /*@__PURE__*/ S.String;
 
 export type TagValueList = string[];
@@ -1288,7 +1298,11 @@ export const GetResourceSharesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourceSharesResponse",
 }) as any as S.Schema<GetResourceSharesResponse>;
-export type ResourceRegionScopeFilter = "ALL" | "REGIONAL" | "GLOBAL";
+export type ResourceRegionScopeFilter =
+  | "ALL"
+  | "REGIONAL"
+  | "GLOBAL"
+  | (string & {});
 export const ResourceRegionScopeFilter = /*@__PURE__*/ S.String;
 
 export interface ListPendingInvitationResourcesRequest {
@@ -1322,10 +1336,11 @@ export type ResourceStatus =
   | "ZONAL_RESOURCE_INACCESSIBLE"
   | "LIMIT_EXCEEDED"
   | "UNAVAILABLE"
-  | "PENDING";
+  | "PENDING"
+  | (string & {});
 export const ResourceStatus = /*@__PURE__*/ S.String;
 
-export type ResourceRegionScope = "REGIONAL" | "GLOBAL";
+export type ResourceRegionScope = "REGIONAL" | "GLOBAL" | (string & {});
 export const ResourceRegionScope = /*@__PURE__*/ S.String;
 
 export interface Resource {
@@ -1448,7 +1463,11 @@ export const ListPermissionAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPermissionAssociationsResponse",
 }) as any as S.Schema<ListPermissionAssociationsResponse>;
-export type PermissionTypeFilter = "ALL" | "AWS_MANAGED" | "CUSTOMER_MANAGED";
+export type PermissionTypeFilter =
+  | "ALL"
+  | "AWS_MANAGED"
+  | "CUSTOMER_MANAGED"
+  | (string & {});
 export const PermissionTypeFilter = /*@__PURE__*/ S.String;
 
 export interface ListPermissionsRequest {
@@ -1601,7 +1620,8 @@ export const ReplacePermissionAssociationsWorkIdList = /*@__PURE__*/ S.Array(
 export type ReplacePermissionAssociationsWorkStatus =
   | "IN_PROGRESS"
   | "COMPLETED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ReplacePermissionAssociationsWorkStatus = /*@__PURE__*/ S.String;
 
 export interface ListReplacePermissionAssociationsWorkRequest {

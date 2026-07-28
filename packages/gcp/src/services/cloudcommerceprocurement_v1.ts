@@ -187,7 +187,8 @@ export const ApproveProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetProvidersAccountsViewEnum =
   | "ACCOUNT_VIEW_UNSPECIFIED"
   | "ACCOUNT_VIEW_BASIC"
-  | "ACCOUNT_VIEW_FULL";
+  | "ACCOUNT_VIEW_FULL"
+  | (string & {});
 export const GetProvidersAccountsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProvidersAccountsRequest {
@@ -215,7 +216,8 @@ export type ApprovalStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
   | "APPROVED"
-  | "REJECTED";
+  | "REJECTED"
+  | (string & {});
 export const ApprovalStateEnum = /*@__PURE__*/ S.String;
 
 /** An approval for some action on an account. */
@@ -252,7 +254,8 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
 export type AccountStateEnum =
   | "ACCOUNT_STATE_UNSPECIFIED"
   | "ACCOUNT_ACTIVATION_REQUESTED"
-  | "ACCOUNT_ACTIVE";
+  | "ACCOUNT_ACTIVE"
+  | (string & {});
 export const AccountStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents an account that was established by the customer on the service provider's system. */
@@ -313,7 +316,8 @@ export type EntitlementStateEnum =
   | "ENTITLEMENT_CANCELLED"
   | "ENTITLEMENT_PENDING_PLAN_CHANGE"
   | "ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL"
-  | "ENTITLEMENT_SUSPENDED";
+  | "ENTITLEMENT_SUSPENDED"
+  | (string & {});
 export const EntitlementStateEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;

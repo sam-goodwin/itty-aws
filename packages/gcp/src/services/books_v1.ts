@@ -152,7 +152,8 @@ export type AddVolumeMylibraryBookshelvesReasonEnum =
   | "REASON_UNDEFINED"
   | "IOS_PREX"
   | "IOS_SEARCH"
-  | "ONBOARDING";
+  | "ONBOARDING"
+  | (string & {});
 export const AddVolumeMylibraryBookshelvesReasonEnum = /*@__PURE__*/ S.String;
 
 export interface AddVolumeMylibraryBookshelvesRequest {
@@ -1152,7 +1153,8 @@ export const Notification = /*@__PURE__*/ S.suspend(() =>
 export type GetPersonalizedstreamMaxAllowedMaturityRatingEnum =
   | "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
   | "MATURE"
-  | "not-mature";
+  | "not-mature"
+  | (string & {});
 export const GetPersonalizedstreamMaxAllowedMaturityRatingEnum =
   /*@__PURE__*/ S.String;
 
@@ -2443,7 +2445,11 @@ export const Usersettings = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Usersettings" }) as any as S.Schema<Usersettings>;
 
-export type GetVolumesProjectionEnum = "PROJECTION_UNDEFINED" | "FULL" | "LITE";
+export type GetVolumesProjectionEnum =
+  | "PROJECTION_UNDEFINED"
+  | "FULL"
+  | "LITE"
+  | (string & {});
 export const GetVolumesProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface GetVolumesRequest {
@@ -2776,7 +2782,8 @@ export const Category = /*@__PURE__*/ S.suspend(() =>
 export type ListCategoryVolumesOnboardingMaxAllowedMaturityRatingEnum =
   | "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
   | "MATURE"
-  | "not-mature";
+  | "not-mature"
+  | (string & {});
 export const ListCategoryVolumesOnboardingMaxAllowedMaturityRatingEnum =
   /*@__PURE__*/ S.String;
 
@@ -3285,7 +3292,8 @@ export const ListMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListMylibraryBookshelvesVolumesProjectionEnum =
   | "PROJECTION_UNDEFINED"
   | "FULL"
-  | "LITE";
+  | "LITE"
+  | (string & {});
 export const ListMylibraryBookshelvesVolumesProjectionEnum =
   /*@__PURE__*/ S.String;
 
@@ -3391,7 +3399,8 @@ export type ListVolumesPrintTypeEnum =
   | "PRINT_TYPE_UNDEFINED"
   | "ALL"
   | "BOOKS"
-  | "MAGAZINES";
+  | "MAGAZINES"
+  | (string & {});
 export const ListVolumesPrintTypeEnum = /*@__PURE__*/ S.String;
 
 export type ListVolumesFilterEnum =
@@ -3400,34 +3409,42 @@ export type ListVolumesFilterEnum =
   | "free-ebooks"
   | "full"
   | "paid-ebooks"
-  | "partial";
+  | "partial"
+  | (string & {});
 export const ListVolumesFilterEnum = /*@__PURE__*/ S.String;
 
 export type ListVolumesOrderByEnum =
   | "ORDER_BY_UNDEFINED"
   | "newest"
-  | "relevance";
+  | "relevance"
+  | (string & {});
 export const ListVolumesOrderByEnum = /*@__PURE__*/ S.String;
 
 export type ListVolumesLibraryRestrictEnum =
   | "LIBRARY_RESTRICT_UNDEFINED"
   | "my-library"
-  | "no-restrict";
+  | "no-restrict"
+  | (string & {});
 export const ListVolumesLibraryRestrictEnum = /*@__PURE__*/ S.String;
 
-export type ListVolumesDownloadEnum = "DOWNLOAD_UNDEFINED" | "EPUB";
+export type ListVolumesDownloadEnum =
+  | "DOWNLOAD_UNDEFINED"
+  | "EPUB"
+  | (string & {});
 export const ListVolumesDownloadEnum = /*@__PURE__*/ S.String;
 
 export type ListVolumesProjectionEnum =
   | "PROJECTION_UNDEFINED"
   | "FULL"
-  | "LITE";
+  | "LITE"
+  | (string & {});
 export const ListVolumesProjectionEnum = /*@__PURE__*/ S.String;
 
 export type ListVolumesMaxAllowedMaturityRatingEnum =
   | "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
   | "MATURE"
-  | "not-mature";
+  | "not-mature"
+  | (string & {});
 export const ListVolumesMaxAllowedMaturityRatingEnum = /*@__PURE__*/ S.String;
 
 export interface ListVolumesRequest {
@@ -3493,13 +3510,15 @@ export type ListVolumesAssociatedAssociationEnum =
   | "ASSOCIATION_UNDEFINED"
   | "end-of-sample"
   | "end-of-volume"
-  | "related-for-play";
+  | "related-for-play"
+  | (string & {});
 export const ListVolumesAssociatedAssociationEnum = /*@__PURE__*/ S.String;
 
 export type ListVolumesAssociatedMaxAllowedMaturityRatingEnum =
   | "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
   | "MATURE"
-  | "not-mature";
+  | "not-mature"
+  | (string & {});
 export const ListVolumesAssociatedMaxAllowedMaturityRatingEnum =
   /*@__PURE__*/ S.String;
 
@@ -3541,7 +3560,8 @@ export type ListVolumesMybooksProcessingStateEnum =
   | "PROCESSING_STATE_UNDEFINED"
   | "COMPLETED_FAILED"
   | "COMPLETED_SUCCESS"
-  | "RUNNING";
+  | "RUNNING"
+  | (string & {});
 export const ListVolumesMybooksProcessingStateEnum = /*@__PURE__*/ S.String;
 
 export type ListVolumesMybooksProcessingStateEnumList =
@@ -3559,7 +3579,8 @@ export type ListVolumesMybooksAcquireMethodEnum =
   | "PURCHASED"
   | "RENTED"
   | "SAMPLE"
-  | "UPLOADED";
+  | "UPLOADED"
+  | (string & {});
 export const ListVolumesMybooksAcquireMethodEnum = /*@__PURE__*/ S.String;
 
 export type ListVolumesMybooksAcquireMethodEnumList =
@@ -3611,7 +3632,8 @@ export const ListVolumesMybooksRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListVolumesRecommendedMaxAllowedMaturityRatingEnum =
   | "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
   | "MATURE"
-  | "not-mature";
+  | "not-mature"
+  | (string & {});
 export const ListVolumesRecommendedMaxAllowedMaturityRatingEnum =
   /*@__PURE__*/ S.String;
 
@@ -3645,7 +3667,8 @@ export type ListVolumesUseruploadedProcessingStateEnum =
   | "PROCESSING_STATE_UNDEFINED"
   | "COMPLETED_FAILED"
   | "COMPLETED_SUCCESS"
-  | "RUNNING";
+  | "RUNNING"
+  | (string & {});
 export const ListVolumesUseruploadedProcessingStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -3722,7 +3745,8 @@ export const MoveVolumeMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(
 export type RateVolumesRecommendedRatingEnum =
   | "RATING_UNDEFINED"
   | "HAVE_IT"
-  | "NOT_INTERESTED";
+  | "NOT_INTERESTED"
+  | (string & {});
 export const RateVolumesRecommendedRatingEnum = /*@__PURE__*/ S.String;
 
 export interface RateVolumesRecommendedRequest {
@@ -3814,7 +3838,8 @@ export const DownloadAccesses = /*@__PURE__*/ S.suspend(() =>
 
 export type RemoveVolumeMylibraryBookshelvesReasonEnum =
   | "REASON_UNDEFINED"
-  | "ONBOARDING";
+  | "ONBOARDING"
+  | (string & {});
 export const RemoveVolumeMylibraryBookshelvesReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -3852,7 +3877,8 @@ export type RequestAccessMyconfigLicenseTypesEnum =
   | "LICENSE_TYPES_UNDEFINED"
   | "BOTH"
   | "CONCURRENT"
-  | "DOWNLOAD";
+  | "DOWNLOAD"
+  | (string & {});
 export const RequestAccessMyconfigLicenseTypesEnum = /*@__PURE__*/ S.String;
 
 export interface RequestAccessMyconfigRequest {
@@ -3957,7 +3983,8 @@ export type SetPositionMylibraryReadingpositionsActionEnum =
   | "next-page"
   | "prev-page"
   | "scroll"
-  | "search";
+  | "search"
+  | (string & {});
 export const SetPositionMylibraryReadingpositionsActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -4088,7 +4115,8 @@ export const AnnotationsSummary = /*@__PURE__*/ S.suspend(() =>
 
 export type SyncVolumeLicensesMyconfigFeaturesEnum =
   | "FEATURES_UNDEFINED"
-  | "RENTALS";
+  | "RENTALS"
+  | (string & {});
 export const SyncVolumeLicensesMyconfigFeaturesEnum = /*@__PURE__*/ S.String;
 
 export type SyncVolumeLicensesMyconfigFeaturesEnumList =

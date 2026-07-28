@@ -89,7 +89,12 @@ export const BatchGetProjectsAppsEventsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetProjectsAppsEventsRequest",
 }) as any as S.Schema<BatchGetProjectsAppsEventsRequest>;
 
-export type IssueStateEnum = "STATE_UNSPECIFIED" | "OPEN" | "CLOSED" | "MUTED";
+export type IssueStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "OPEN"
+  | "CLOSED"
+  | "MUTED"
+  | (string & {});
 export const IssueStateEnum = /*@__PURE__*/ S.String;
 
 export type IssueSignalsSignalEnum =
@@ -97,7 +102,8 @@ export type IssueSignalsSignalEnum =
   | "SIGNAL_EARLY"
   | "SIGNAL_FRESH"
   | "SIGNAL_REGRESSED"
-  | "SIGNAL_REPETITIVE";
+  | "SIGNAL_REPETITIVE"
+  | (string & {});
 export const IssueSignalsSignalEnum = /*@__PURE__*/ S.String;
 
 /** Distinctive characteristics assigned by the Crashlytics analyzer. */
@@ -145,7 +151,8 @@ export type IssueErrorTypeEnum =
   | "ERROR_TYPE_UNSPECIFIED"
   | "FATAL"
   | "NON_FATAL"
-  | "ANR";
+  | "ANR"
+  | (string & {});
 export const IssueErrorTypeEnum = /*@__PURE__*/ S.String;
 
 /** An issue describes a set of similar events that have been analyzed by Crashlytics and grouped together. All events within an issue will be of the same error_type: crash, non-fatal exception or ANR. All events within an issue will contain similar stack traces in their blamed thread. */
@@ -278,7 +285,8 @@ export type ThreadThreadStateEnum =
   | "THREAD_STATE_WAITING"
   | "THREAD_STATE_NEW"
   | "THREAD_STATE_NATIVE_RUNNABLE"
-  | "THREAD_STATE_NATIVE_WAITING";
+  | "THREAD_STATE_NATIVE_WAITING"
+  | (string & {});
 export const ThreadThreadStateEnum = /*@__PURE__*/ S.String;
 
 /** An application thread. */
@@ -373,7 +381,8 @@ export type PlayTrackTypeEnum =
   | "TRACK_TYPE_INTERNAL"
   | "TRACK_TYPE_OPEN_TESTING"
   | "TRACK_TYPE_CLOSED_TESTING"
-  | "TRACK_TYPE_EARLY_ACCESS";
+  | "TRACK_TYPE_EARLY_ACCESS"
+  | (string & {});
 export const PlayTrackTypeEnum = /*@__PURE__*/ S.String;
 
 /** Describes a release track in the Play Developer Console. */
@@ -528,7 +537,8 @@ export type DeviceFormFactorEnum =
   | "TABLET"
   | "DESKTOP"
   | "TV"
-  | "WATCH";
+  | "WATCH"
+  | (string & {});
 export const DeviceFormFactorEnum = /*@__PURE__*/ S.String;
 
 /** Mobile device metadata. */
@@ -911,7 +921,8 @@ export type GetProjectsAppsReportsFilter_issue_statesEnum =
   | "STATE_UNSPECIFIED"
   | "OPEN"
   | "CLOSED"
-  | "MUTED";
+  | "MUTED"
+  | (string & {});
 export const GetProjectsAppsReportsFilter_issue_statesEnum =
   /*@__PURE__*/ S.String;
 
@@ -926,7 +937,8 @@ export type GetProjectsAppsReportsFilter_issue_errorTypesEnum =
   | "ERROR_TYPE_UNSPECIFIED"
   | "FATAL"
   | "NON_FATAL"
-  | "ANR";
+  | "ANR"
+  | (string & {});
 export const GetProjectsAppsReportsFilter_issue_errorTypesEnum =
   /*@__PURE__*/ S.String;
 
@@ -943,7 +955,8 @@ export type GetProjectsAppsReportsFilter_device_formFactorsEnum =
   | "TABLET"
   | "DESKTOP"
   | "TV"
-  | "WATCH";
+  | "WATCH"
+  | (string & {});
 export const GetProjectsAppsReportsFilter_device_formFactorsEnum =
   /*@__PURE__*/ S.String;
 
@@ -959,7 +972,8 @@ export type GetProjectsAppsReportsFilter_issue_signalsEnum =
   | "SIGNAL_EARLY"
   | "SIGNAL_FRESH"
   | "SIGNAL_REGRESSED"
-  | "SIGNAL_REPETITIVE";
+  | "SIGNAL_REPETITIVE"
+  | (string & {});
 export const GetProjectsAppsReportsFilter_issue_signalsEnum =
   /*@__PURE__*/ S.String;
 
@@ -974,7 +988,8 @@ export type GetProjectsAppsReportsFilter_issue_stateEnum =
   | "STATE_UNSPECIFIED"
   | "OPEN"
   | "CLOSED"
-  | "MUTED";
+  | "MUTED"
+  | (string & {});
 export const GetProjectsAppsReportsFilter_issue_stateEnum =
   /*@__PURE__*/ S.String;
 
@@ -982,7 +997,8 @@ export type GetProjectsAppsReportsGranularityEnum =
   | "TIME_GRANULARITY_UNSPECIFIED"
   | "TIME_GRANULARITY_NONE"
   | "TIME_GRANULARITY_HOUR"
-  | "TIME_GRANULARITY_DAY";
+  | "TIME_GRANULARITY_DAY"
+  | (string & {});
 export const GetProjectsAppsReportsGranularityEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsAppsReportsRequest {
@@ -1181,7 +1197,8 @@ export type ListProjectsAppsEventsFilter_issue_stateEnum =
   | "STATE_UNSPECIFIED"
   | "OPEN"
   | "CLOSED"
-  | "MUTED";
+  | "MUTED"
+  | (string & {});
 export const ListProjectsAppsEventsFilter_issue_stateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1191,7 +1208,8 @@ export type ListProjectsAppsEventsFilter_device_formFactorsEnum =
   | "TABLET"
   | "DESKTOP"
   | "TV"
-  | "WATCH";
+  | "WATCH"
+  | (string & {});
 export const ListProjectsAppsEventsFilter_device_formFactorsEnum =
   /*@__PURE__*/ S.String;
 
@@ -1207,7 +1225,8 @@ export type ListProjectsAppsEventsFilter_issue_signalsEnum =
   | "SIGNAL_EARLY"
   | "SIGNAL_FRESH"
   | "SIGNAL_REGRESSED"
-  | "SIGNAL_REPETITIVE";
+  | "SIGNAL_REPETITIVE"
+  | (string & {});
 export const ListProjectsAppsEventsFilter_issue_signalsEnum =
   /*@__PURE__*/ S.String;
 
@@ -1222,7 +1241,8 @@ export type ListProjectsAppsEventsFilter_issue_statesEnum =
   | "STATE_UNSPECIFIED"
   | "OPEN"
   | "CLOSED"
-  | "MUTED";
+  | "MUTED"
+  | (string & {});
 export const ListProjectsAppsEventsFilter_issue_statesEnum =
   /*@__PURE__*/ S.String;
 
@@ -1237,7 +1257,8 @@ export type ListProjectsAppsEventsFilter_issue_errorTypesEnum =
   | "ERROR_TYPE_UNSPECIFIED"
   | "FATAL"
   | "NON_FATAL"
-  | "ANR";
+  | "ANR"
+  | (string & {});
 export const ListProjectsAppsEventsFilter_issue_errorTypesEnum =
   /*@__PURE__*/ S.String;
 

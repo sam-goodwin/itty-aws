@@ -126,7 +126,7 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
 ).pipe(C.withBadRequestError) {}
 export type VeniceGlobalArn = string;
 export type StatementId = string;
-export type StatementEffect = "Allow" | "Deny";
+export type StatementEffect = "Allow" | "Deny" | (string & {});
 export const StatementEffect = /*@__PURE__*/ S.String;
 
 export type StatementAction = string;
@@ -207,10 +207,13 @@ export const BatchDeleteUniqueIdInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDeleteUniqueIdInput",
 }) as any as S.Schema<BatchDeleteUniqueIdInput>;
-export type DeleteUniqueIdStatus = "COMPLETED" | "ACCEPTED";
+export type DeleteUniqueIdStatus = "COMPLETED" | "ACCEPTED" | (string & {});
 export const DeleteUniqueIdStatus = /*@__PURE__*/ S.String;
 
-export type DeleteUniqueIdErrorType = "SERVICE_ERROR" | "VALIDATION_ERROR";
+export type DeleteUniqueIdErrorType =
+  | "SERVICE_ERROR"
+  | "VALIDATION_ERROR"
+  | (string & {});
 export const DeleteUniqueIdErrorType = /*@__PURE__*/ S.String;
 
 export interface DeleteUniqueIdError {
@@ -255,7 +258,7 @@ export const BatchDeleteUniqueIdOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchDeleteUniqueIdOutput>;
 export type Description = string;
 export type InputSourceARN = string;
-export type IdNamespaceType = "SOURCE" | "TARGET";
+export type IdNamespaceType = "SOURCE" | "TARGET" | (string & {});
 export const IdNamespaceType = /*@__PURE__*/ S.String;
 
 export interface IdMappingWorkflowInputSource {
@@ -292,7 +295,7 @@ export type IdMappingWorkflowOutputSourceConfig =
 export const IdMappingWorkflowOutputSourceConfig = /*@__PURE__*/ S.Array(
   IdMappingWorkflowOutputSource,
 );
-export type IdMappingType = "PROVIDER" | "RULE_BASED";
+export type IdMappingType = "PROVIDER" | "RULE_BASED" | (string & {});
 export const IdMappingType = /*@__PURE__*/ S.String;
 
 export type AttributeName = string;
@@ -307,15 +310,22 @@ export const Rule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Rule" }) as any as S.Schema<Rule>;
 export type RuleList = Rule[];
 export const RuleList = /*@__PURE__*/ S.Array(Rule);
-export type IdMappingWorkflowRuleDefinitionType = "SOURCE" | "TARGET";
+export type IdMappingWorkflowRuleDefinitionType =
+  | "SOURCE"
+  | "TARGET"
+  | (string & {});
 export const IdMappingWorkflowRuleDefinitionType = /*@__PURE__*/ S.String;
 
-export type AttributeMatchingModel = "ONE_TO_ONE" | "MANY_TO_MANY";
+export type AttributeMatchingModel =
+  | "ONE_TO_ONE"
+  | "MANY_TO_MANY"
+  | (string & {});
 export const AttributeMatchingModel = /*@__PURE__*/ S.String;
 
 export type RecordMatchingModel =
   | "ONE_SOURCE_TO_ONE_TARGET"
-  | "MANY_SOURCE_TO_ONE_TARGET";
+  | "MANY_SOURCE_TO_ONE_TARGET"
+  | (string & {});
 export const RecordMatchingModel = /*@__PURE__*/ S.String;
 
 export interface IdMappingRuleBasedProperties {
@@ -373,7 +383,7 @@ export const IdMappingTechniques = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IdMappingTechniques",
 }) as any as S.Schema<IdMappingTechniques>;
-export type IdMappingIncrementalRunType = "ON_DEMAND";
+export type IdMappingIncrementalRunType = "ON_DEMAND" | (string & {});
 export const IdMappingIncrementalRunType = /*@__PURE__*/ S.String;
 
 export interface IdMappingIncrementalRunConfig {
@@ -641,10 +651,14 @@ export const OutputSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OutputSource" }) as any as S.Schema<OutputSource>;
 export type OutputSourceConfig = OutputSource[];
 export const OutputSourceConfig = /*@__PURE__*/ S.Array(OutputSource);
-export type ResolutionType = "RULE_MATCHING" | "ML_MATCHING" | "PROVIDER";
+export type ResolutionType =
+  | "RULE_MATCHING"
+  | "ML_MATCHING"
+  | "PROVIDER"
+  | (string & {});
 export const ResolutionType = /*@__PURE__*/ S.String;
 
-export type MatchPurpose = "IDENTIFIER_GENERATION" | "INDEXING";
+export type MatchPurpose = "IDENTIFIER_GENERATION" | "INDEXING" | (string & {});
 export const MatchPurpose = /*@__PURE__*/ S.String;
 
 export interface RuleBasedProperties {
@@ -704,7 +718,7 @@ export const ResolutionTechniques = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResolutionTechniques",
 }) as any as S.Schema<ResolutionTechniques>;
-export type IncrementalRunType = "IMMEDIATE";
+export type IncrementalRunType = "IMMEDIATE" | (string & {});
 export const IncrementalRunType = /*@__PURE__*/ S.String;
 
 export interface IncrementalRunConfig {
@@ -796,7 +810,8 @@ export type SchemaAttributeType =
   | "PROVIDER_ID"
   | "IPV4"
   | "IPV6"
-  | "MAID";
+  | "MAID"
+  | (string & {});
 export const SchemaAttributeType = /*@__PURE__*/ S.String;
 
 export interface SchemaInputAttribute {
@@ -1017,7 +1032,11 @@ export const Record = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Record" }) as any as S.Schema<Record>;
 export type RecordList = Record[];
 export const RecordList = /*@__PURE__*/ S.Array(Record);
-export type ProcessingType = "CONSISTENT" | "EVENTUAL" | "EVENTUAL_NO_LOOKUP";
+export type ProcessingType =
+  | "CONSISTENT"
+  | "EVENTUAL"
+  | "EVENTUAL_NO_LOOKUP"
+  | (string & {});
 export const ProcessingType = /*@__PURE__*/ S.String;
 
 export interface GenerateMatchIdInput {
@@ -1119,7 +1138,12 @@ export const GetIdMappingJobInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetIdMappingJobInput",
 }) as any as S.Schema<GetIdMappingJobInput>;
-export type JobStatus = "RUNNING" | "SUCCEEDED" | "FAILED" | "QUEUED";
+export type JobStatus =
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "QUEUED"
+  | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
 
 export interface IdMappingJobMetrics {
@@ -1184,7 +1208,7 @@ export type IdMappingJobOutputSourceConfig = IdMappingJobOutputSource[];
 export const IdMappingJobOutputSourceConfig = /*@__PURE__*/ S.Array(
   IdMappingJobOutputSource,
 );
-export type JobType = "BATCH" | "INCREMENTAL" | "DELETE_ONLY";
+export type JobType = "BATCH" | "INCREMENTAL" | "DELETE_ONLY" | (string & {});
 export const JobType = /*@__PURE__*/ S.String;
 
 export interface GetIdMappingJobOutput {
@@ -1523,7 +1547,7 @@ export const GetProviderServiceInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetProviderServiceInput",
 }) as any as S.Schema<GetProviderServiceInput>;
 export type ProviderServiceDisplayName = string;
-export type ServiceType = "ASSIGNMENT" | "ID_MAPPING";
+export type ServiceType = "ASSIGNMENT" | "ID_MAPPING" | (string & {});
 export const ServiceType = /*@__PURE__*/ S.String;
 
 export interface ProviderIdNameSpaceConfiguration {

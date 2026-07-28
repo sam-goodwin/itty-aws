@@ -147,7 +147,8 @@ export const AccountsClaimWebsiteResponse = /*@__PURE__*/ S.suspend(() =>
 export type AccountCredentialsPurposeEnum =
   | "ACCOUNT_CREDENTIALS_PURPOSE_UNSPECIFIED"
   | "SHOPIFY_ORDER_MANAGEMENT"
-  | "SHOPIFY_INTEGRATION";
+  | "SHOPIFY_INTEGRATION"
+  | (string & {});
 export const AccountCredentialsPurposeEnum = /*@__PURE__*/ S.String;
 
 /** Credentials allowing Google to call a partner's API on behalf of a merchant. */
@@ -193,7 +194,8 @@ export const CreateAccountsCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 export type AccountLabelLabelTypeEnum =
   | "LABEL_TYPE_UNSPECIFIED"
   | "MANUAL"
-  | "AUTOMATIC";
+  | "AUTOMATIC"
+  | (string & {});
 export const AccountLabelLabelTypeEnum = /*@__PURE__*/ S.String;
 
 /** Label assigned by CSS domain or CSS group to one of its sub-accounts. */
@@ -243,7 +245,8 @@ export const CreateAccountsLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 export type AccountReturnCarrierCarrierCodeEnum =
   | "CARRIER_CODE_UNSPECIFIED"
   | "FEDEX"
-  | "UPS";
+  | "UPS"
+  | (string & {});
 export const AccountReturnCarrierCarrierCodeEnum = /*@__PURE__*/ S.String;
 
 /** The return carrier information. This service is designed for merchants enrolled in the Buy on Google program. */
@@ -391,7 +394,8 @@ export type ConversionSourceStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "ARCHIVED"
-  | "PENDING";
+  | "PENDING"
+  | (string & {});
 export const ConversionSourceStateEnum = /*@__PURE__*/ S.String;
 
 export type AttributionSettingsAttributionModelEnum =
@@ -402,7 +406,8 @@ export type AttributionSettingsAttributionModelEnum =
   | "CROSS_CHANNEL_FIRST_CLICK"
   | "CROSS_CHANNEL_LINEAR"
   | "CROSS_CHANNEL_POSITION_BASED"
-  | "CROSS_CHANNEL_TIME_DECAY";
+  | "CROSS_CHANNEL_TIME_DECAY"
+  | (string & {});
 export const AttributionSettingsAttributionModelEnum = /*@__PURE__*/ S.String;
 
 /** Message representing a types of conversion events */
@@ -584,7 +589,8 @@ export const DateTime = /*@__PURE__*/ S.suspend(() =>
 export type OrderTrackingSignalShippingInfoShippingStatusEnum =
   | "SHIPPING_STATE_UNSPECIFIED"
   | "SHIPPED"
-  | "DELIVERED";
+  | "DELIVERED"
+  | (string & {});
 export const OrderTrackingSignalShippingInfoShippingStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -922,13 +928,15 @@ export type PromotionRedemptionRestrictionEnum =
   | "SIGN_UP_FOR_EMAIL"
   | "SIGN_UP_FOR_TEXT"
   | "FORMS_OF_PAYMENT"
-  | "CUSTOM";
+  | "CUSTOM"
+  | (string & {});
 export const PromotionRedemptionRestrictionEnum = /*@__PURE__*/ S.String;
 
 export type PromotionRedemptionChannelItemEnum =
   | "REDEMPTION_CHANNEL_UNSPECIFIED"
   | "IN_STORE"
-  | "ONLINE";
+  | "ONLINE"
+  | (string & {});
 export const PromotionRedemptionChannelItemEnum = /*@__PURE__*/ S.String;
 
 export type PromotionRedemptionChannelItemEnumList =
@@ -940,7 +948,8 @@ export const PromotionRedemptionChannelItemEnumList = /*@__PURE__*/ S.Array(
 export type PromotionOfferTypeEnum =
   | "OFFER_TYPE_UNSPECIFIED"
   | "NO_CODE"
-  | "GENERIC_CODE";
+  | "GENERIC_CODE"
+  | (string & {});
 export const PromotionOfferTypeEnum = /*@__PURE__*/ S.String;
 
 /** A message that represents a time period. */
@@ -960,13 +969,15 @@ export const TimePeriod = /*@__PURE__*/ S.suspend(() =>
 export type PromotionProductApplicabilityEnum =
   | "PRODUCT_APPLICABILITY_UNSPECIFIED"
   | "ALL_PRODUCTS"
-  | "SPECIFIC_PRODUCTS";
+  | "SPECIFIC_PRODUCTS"
+  | (string & {});
 export const PromotionProductApplicabilityEnum = /*@__PURE__*/ S.String;
 
 export type PromotionStoreApplicabilityEnum =
   | "STORE_APPLICABILITY_UNSPECIFIED"
   | "ALL_STORES"
-  | "SPECIFIC_STORES";
+  | "SPECIFIC_STORES"
+  | (string & {});
 export const PromotionStoreApplicabilityEnum = /*@__PURE__*/ S.String;
 
 export type PromotionCouponValueTypeEnum =
@@ -982,7 +993,8 @@ export type PromotionCouponValueTypeEnum =
   | "FREE_GIFT_WITH_ITEM_ID"
   | "FREE_SHIPPING_STANDARD"
   | "FREE_SHIPPING_OVERNIGHT"
-  | "FREE_SHIPPING_TWO_DAY";
+  | "FREE_SHIPPING_TWO_DAY"
+  | (string & {});
 export const PromotionCouponValueTypeEnum = /*@__PURE__*/ S.String;
 
 export type PromotionPromotionStatusDestinationStatusStatusEnum =
@@ -992,7 +1004,8 @@ export type PromotionPromotionStatusDestinationStatusStatusEnum =
   | "LIVE"
   | "STOPPED"
   | "EXPIRED"
-  | "PENDING";
+  | "PENDING"
+  | (string & {});
 export const PromotionPromotionStatusDestinationStatusStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -1336,7 +1349,8 @@ export type ReturnPolicyOnlinePolicyTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "NUMBER_OF_DAYS_AFTER_DELIVERY"
   | "NO_RETURNS"
-  | "LIFETIME_RETURNS";
+  | "LIFETIME_RETURNS"
+  | (string & {});
 export const ReturnPolicyOnlinePolicyTypeEnum = /*@__PURE__*/ S.String;
 
 /** The available policies. */
@@ -1359,7 +1373,8 @@ export type ReturnPolicyOnlineReturnMethodsItemEnum =
   | "RETURN_METHOD_UNSPECIFIED"
   | "BY_MAIL"
   | "IN_STORE"
-  | "AT_A_KIOSK";
+  | "AT_A_KIOSK"
+  | (string & {});
 export const ReturnPolicyOnlineReturnMethodsItemEnum = /*@__PURE__*/ S.String;
 
 export type ReturnPolicyOnlineReturnMethodsItemEnumList =
@@ -1372,7 +1387,8 @@ export const ReturnPolicyOnlineReturnMethodsItemEnumList =
 export type ReturnPolicyOnlineItemConditionsItemEnum =
   | "ITEM_CONDITION_UNSPECIFIED"
   | "NEW"
-  | "USED";
+  | "USED"
+  | (string & {});
 export const ReturnPolicyOnlineItemConditionsItemEnum = /*@__PURE__*/ S.String;
 
 export type ReturnPolicyOnlineItemConditionsItemEnumList =
@@ -1399,7 +1415,10 @@ export const ReturnPolicyOnlineRestockingFee = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReturnPolicyOnlineRestockingFee>;
 
 export type ReturnPolicyOnlineReturnReasonCategoryInfoReturnReasonCategoryEnum =
-  "RETURN_REASON_CATEGORY_UNSPECIFIED" | "BUYER_REMORSE" | "ITEM_DEFECT";
+    | "RETURN_REASON_CATEGORY_UNSPECIFIED"
+    | "BUYER_REMORSE"
+    | "ITEM_DEFECT"
+    | (string & {});
 export const ReturnPolicyOnlineReturnReasonCategoryInfoReturnReasonCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -1407,14 +1426,16 @@ export type ReturnPolicyOnlineReturnReasonCategoryInfoReturnLabelSourceEnum =
   | "RETURN_LABEL_SOURCE_UNSPECIFIED"
   | "DOWNLOAD_AND_PRINT"
   | "IN_THE_BOX"
-  | "CUSTOMER_RESPONSIBILITY";
+  | "CUSTOMER_RESPONSIBILITY"
+  | (string & {});
 export const ReturnPolicyOnlineReturnReasonCategoryInfoReturnLabelSourceEnum =
   /*@__PURE__*/ S.String;
 
 export type ReturnPolicyOnlineReturnShippingFeeTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "FIXED"
-  | "CUSTOMER_PAYING_ACTUAL_FEE";
+  | "CUSTOMER_PAYING_ACTUAL_FEE"
+  | (string & {});
 export const ReturnPolicyOnlineReturnShippingFeeTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3837,7 +3858,8 @@ export const ProductStructuredDescription = /*@__PURE__*/ S.suspend(() =>
 export type ProductSustainabilityIncentiveTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "EV_TAX_CREDIT"
-  | "EV_PRICE_DISCOUNT";
+  | "EV_PRICE_DISCOUNT"
+  | (string & {});
 export const ProductSustainabilityIncentiveTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information regarding sustainability related incentive programs such as rebates or tax relief. */
@@ -6097,7 +6119,8 @@ export const RecommendationCallToAction = /*@__PURE__*/ S.suspend(() =>
 export type RecommendationDescriptionTypeEnum =
   | "DESCRIPTION_TYPE_UNSPECIFIED"
   | "SHORT"
-  | "LONG";
+  | "LONG"
+  | (string & {});
 export const RecommendationDescriptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Google-provided description for the recommendation. */
@@ -6125,7 +6148,8 @@ export const RecommendationDescriptionList = /*@__PURE__*/ S.Array(
 export type RecommendationCreativeTypeEnum =
   | "CREATIVE_TYPE_UNSPECIFIED"
   | "VIDEO"
-  | "PHOTO";
+  | "PHOTO"
+  | (string & {});
 export const RecommendationCreativeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Creative is a multimedia attachment to recommendation that can be used on the frontend. */
@@ -6258,7 +6282,7 @@ export const LiasettingsGetAccessibleGmbAccountsResponse =
     identifier: "LiasettingsGetAccessibleGmbAccountsResponse",
   }) as any as S.Schema<LiasettingsGetAccessibleGmbAccountsResponse>;
 
-export type GetAccountsViewEnum = "MERCHANT" | "CSS";
+export type GetAccountsViewEnum = "MERCHANT" | "CSS" | (string & {});
 export const GetAccountsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetAccountsRequest {
@@ -6629,7 +6653,8 @@ export type FreeListingsProgramStatusRegionStatusEligibilityStatusEnum =
   | "WARNING"
   | "UNDER_REVIEW"
   | "PENDING_REVIEW"
-  | "ONBOARDING";
+  | "ONBOARDING"
+  | (string & {});
 export const FreeListingsProgramStatusRegionStatusEligibilityStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -6642,14 +6667,16 @@ export type FreeListingsProgramStatusRegionStatusReviewIneligibilityReasonEnum =
     | "NO_REVIEW_REQUIRED"
     | "WILL_BE_REVIEWED_AUTOMATICALLY"
     | "IS_RETIRED"
-    | "ALREADY_REVIEWED";
+    | "ALREADY_REVIEWED"
+    | (string & {});
 export const FreeListingsProgramStatusRegionStatusReviewIneligibilityReasonEnum =
   /*@__PURE__*/ S.String;
 
 export type FreeListingsProgramStatusRegionStatusReviewEligibilityStatusEnum =
   | "REVIEW_ELIGIBILITY_UNSPECIFIED"
   | "ELIGIBLE"
-  | "INELIGIBLE";
+  | "INELIGIBLE"
+  | (string & {});
 export const FreeListingsProgramStatusRegionStatusReviewEligibilityStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -6709,7 +6736,8 @@ export type FreeListingsProgramStatusGlobalStateEnum =
   | "PROGRAM_STATE_UNSPECIFIED"
   | "NOT_ENABLED"
   | "NO_OFFERS_UPLOADED"
-  | "ENABLED";
+  | "ENABLED"
+  | (string & {});
 export const FreeListingsProgramStatusGlobalStateEnum = /*@__PURE__*/ S.String;
 
 /** Response message for GetFreeListingsProgramStatus. */
@@ -6765,14 +6793,16 @@ export type CheckoutSettingsReviewStateEnum =
   | "CHECKOUT_ON_MERCHANT_REVIEW_STATE_UNSPECIFIED"
   | "IN_REVIEW"
   | "APPROVED"
-  | "DISAPPROVED";
+  | "DISAPPROVED"
+  | (string & {});
 export const CheckoutSettingsReviewStateEnum = /*@__PURE__*/ S.String;
 
 export type CheckoutSettingsEffectiveEnrollmentStateEnum =
   | "CHECKOUT_ON_MERCHANT_ENROLLMENT_STATE_UNSPECIFIED"
   | "INACTIVE"
   | "ENROLLED"
-  | "OPT_OUT";
+  | "OPT_OUT"
+  | (string & {});
 export const CheckoutSettingsEffectiveEnrollmentStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -6780,14 +6810,16 @@ export type CheckoutSettingsEffectiveReviewStateEnum =
   | "CHECKOUT_ON_MERCHANT_REVIEW_STATE_UNSPECIFIED"
   | "IN_REVIEW"
   | "APPROVED"
-  | "DISAPPROVED";
+  | "DISAPPROVED"
+  | (string & {});
 export const CheckoutSettingsEffectiveReviewStateEnum = /*@__PURE__*/ S.String;
 
 export type CheckoutSettingsEnrollmentStateEnum =
   | "CHECKOUT_ON_MERCHANT_ENROLLMENT_STATE_UNSPECIFIED"
   | "INACTIVE"
   | "ENROLLED"
-  | "OPT_OUT";
+  | "OPT_OUT"
+  | (string & {});
 export const CheckoutSettingsEnrollmentStateEnum = /*@__PURE__*/ S.String;
 
 /** `CheckoutSettings` for a specific merchant ID. */
@@ -7076,7 +7108,8 @@ export type ShoppingAdsProgramStatusGlobalStateEnum =
   | "PROGRAM_STATE_UNSPECIFIED"
   | "NOT_ENABLED"
   | "NO_OFFERS_UPLOADED"
-  | "ENABLED";
+  | "ENABLED"
+  | (string & {});
 export const ShoppingAdsProgramStatusGlobalStateEnum = /*@__PURE__*/ S.String;
 
 export type ShoppingAdsProgramStatusRegionStatusEligibilityStatusEnum =
@@ -7086,7 +7119,8 @@ export type ShoppingAdsProgramStatusRegionStatusEligibilityStatusEnum =
   | "WARNING"
   | "UNDER_REVIEW"
   | "PENDING_REVIEW"
-  | "ONBOARDING";
+  | "ONBOARDING"
+  | (string & {});
 export const ShoppingAdsProgramStatusRegionStatusEligibilityStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -7107,7 +7141,8 @@ export const ShoppingAdsProgramStatusReviewIneligibilityReasonDetails =
 export type ShoppingAdsProgramStatusRegionStatusReviewEligibilityStatusEnum =
   | "REVIEW_ELIGIBILITY_UNSPECIFIED"
   | "ELIGIBLE"
-  | "INELIGIBLE";
+  | "INELIGIBLE"
+  | (string & {});
 export const ShoppingAdsProgramStatusRegionStatusReviewEligibilityStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -7120,7 +7155,8 @@ export type ShoppingAdsProgramStatusRegionStatusReviewIneligibilityReasonEnum =
   | "NO_REVIEW_REQUIRED"
   | "WILL_BE_REVIEWED_AUTOMATICALLY"
   | "IS_RETIRED"
-  | "ALREADY_REVIEWED";
+  | "ALREADY_REVIEWED"
+  | (string & {});
 export const ShoppingAdsProgramStatusRegionStatusReviewIneligibilityReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -7749,7 +7785,7 @@ export const AccountsLinkResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsLinkResponse",
 }) as any as S.Schema<AccountsLinkResponse>;
 
-export type ListAccountsViewEnum = "MERCHANT" | "CSS";
+export type ListAccountsViewEnum = "MERCHANT" | "CSS" | (string & {});
 export const ListAccountsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListAccountsRequest {
@@ -8920,14 +8956,16 @@ export const PatchReturnpolicyonlineRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type RenderAccountIssuesRequestPayloadContentOptionEnum =
   | "CONTENT_OPTION_UNSPECIFIED"
-  | "PRE_RENDERED_HTML";
+  | "PRE_RENDERED_HTML"
+  | (string & {});
 export const RenderAccountIssuesRequestPayloadContentOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type RenderAccountIssuesRequestPayloadUserInputActionOptionEnum =
   | "USER_INPUT_ACTION_RENDERING_OPTION_UNSPECIFIED"
   | "REDIRECT_TO_MERCHANT_CENTER"
-  | "BUILT_IN_USER_INPUT_ACTIONS";
+  | "BUILT_IN_USER_INPUT_ACTIONS"
+  | (string & {});
 export const RenderAccountIssuesRequestPayloadUserInputActionOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -9023,7 +9061,8 @@ export type AccountIssueImpactSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
-  | "INFO";
+  | "INFO"
+  | (string & {});
 export const AccountIssueImpactSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Overall impact of the issue. */
@@ -9050,7 +9089,8 @@ export type ExternalActionTypeEnum =
   | "REVIEW_PRODUCT_ISSUE_IN_MERCHANT_CENTER"
   | "REVIEW_ACCOUNT_ISSUE_IN_MERCHANT_CENTER"
   | "LEGAL_APPEAL_IN_HELP_CENTER"
-  | "VERIFY_IDENTITY_IN_MERCHANT_CENTER";
+  | "VERIFY_IDENTITY_IN_MERCHANT_CENTER"
+  | (string & {});
 export const ExternalActionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Action that is implemented and performed outside of the third-party application. It should redirect the merchant to the provided URL of an external system where they can perform the action. For example to request a review in the Merchant Center. */
@@ -9093,13 +9133,15 @@ export type CalloutStyleHintEnum =
   | "CALLOUT_STYLE_HINT_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
-  | "INFO";
+  | "INFO"
+  | (string & {});
 export const CalloutStyleHintEnum = /*@__PURE__*/ S.String;
 
 export type TextWithTooltipTooltipIconStyleEnum =
   | "TOOLTIP_ICON_STYLE_UNSPECIFIED"
   | "INFO"
-  | "QUESTION";
+  | "QUESTION"
+  | (string & {});
 export const TextWithTooltipTooltipIconStyleEnum = /*@__PURE__*/ S.String;
 
 /** Block of text that may contain a tooltip with more information. */
@@ -9185,7 +9227,8 @@ export const InputFieldChoiceInput = /*@__PURE__*/ S.suspend(() =>
 export type InputFieldTextInputTypeEnum =
   | "TEXT_INPUT_TYPE_UNSPECIFIED"
   | "GENERIC_SHORT_TEXT"
-  | "GENERIC_LONG_TEXT";
+  | "GENERIC_LONG_TEXT"
+  | (string & {});
 export const InputFieldTextInputTypeEnum = /*@__PURE__*/ S.String;
 
 /** Text input allows merchants to provide a text value. */
@@ -9301,7 +9344,8 @@ export type BuiltInSimpleActionTypeEnum =
   | "ADD_BUSINESS_REGISTRATION_NUMBER"
   | "EDIT_ITEM_ATTRIBUTE"
   | "FIX_ACCOUNT_ISSUE"
-  | "SHOW_ADDITIONAL_CONTENT";
+  | "SHOW_ADDITIONAL_CONTENT"
+  | (string & {});
 export const BuiltInSimpleActionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Long text from external source. */
@@ -9433,14 +9477,16 @@ export const RenderAccountIssuesResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type RenderProductIssuesRequestPayloadContentOptionEnum =
   | "CONTENT_OPTION_UNSPECIFIED"
-  | "PRE_RENDERED_HTML";
+  | "PRE_RENDERED_HTML"
+  | (string & {});
 export const RenderProductIssuesRequestPayloadContentOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type RenderProductIssuesRequestPayloadUserInputActionOptionEnum =
   | "USER_INPUT_ACTION_RENDERING_OPTION_UNSPECIFIED"
   | "REDIRECT_TO_MERCHANT_CENTER"
-  | "BUILT_IN_USER_INPUT_ACTIONS";
+  | "BUILT_IN_USER_INPUT_ACTIONS"
+  | (string & {});
 export const RenderProductIssuesRequestPayloadUserInputActionOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -9499,7 +9545,8 @@ export type ProductIssueImpactSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
-  | "INFO";
+  | "INFO"
+  | (string & {});
 export const ProductIssueImpactSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Overall impact of product issue. */
@@ -9568,7 +9615,8 @@ export const RenderProductIssuesResponse = /*@__PURE__*/ S.suspend(() =>
 export type ReportInteractionRequestInteractionTypeEnum =
   | "INTERACTION_TYPE_UNSPECIFIED"
   | "INTERACTION_DISMISS"
-  | "INTERACTION_CLICK";
+  | "INTERACTION_CLICK"
+  | (string & {});
 export const ReportInteractionRequestInteractionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -9700,7 +9748,8 @@ export const LiasettingsRequestInventoryVerificationResponse =
 export type RequestPhoneVerificationRequestPhoneVerificationMethodEnum =
   | "PHONE_VERIFICATION_METHOD_UNSPECIFIED"
   | "SMS"
-  | "PHONE_CALL";
+  | "PHONE_CALL"
+  | (string & {});
 export const RequestPhoneVerificationRequestPhoneVerificationMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -9989,20 +10038,23 @@ export type BestSellersRelativeDemandEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "VERY_HIGH";
+  | "VERY_HIGH"
+  | (string & {});
 export const BestSellersRelativeDemandEnum = /*@__PURE__*/ S.String;
 
 export type BestSellersReportGranularityEnum =
   | "REPORT_GRANULARITY_UNSPECIFIED"
   | "WEEKLY"
-  | "MONTHLY";
+  | "MONTHLY"
+  | (string & {});
 export const BestSellersReportGranularityEnum = /*@__PURE__*/ S.String;
 
 export type BestSellersRelativeDemandChangeEnum =
   | "RELATIVE_DEMAND_CHANGE_TYPE_UNSPECIFIED"
   | "SINKER"
   | "FLAT"
-  | "RISER";
+  | "RISER"
+  | (string & {});
 export const BestSellersRelativeDemandChangeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -10028,7 +10080,8 @@ export type BestSellersPreviousRelativeDemandEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "VERY_HIGH";
+  | "VERY_HIGH"
+  | (string & {});
 export const BestSellersPreviousRelativeDemandEnum = /*@__PURE__*/ S.String;
 
 /** Fields related to the [Best sellers reports](https://support.google.com/merchants/answer/9488679). */
@@ -10082,7 +10135,8 @@ export type SegmentsProgramEnum =
   | "SHOPPING_ADS"
   | "FREE_PRODUCT_LISTING"
   | "FREE_LOCAL_PRODUCT_LISTING"
-  | "BUY_ON_GOOGLE_LISTING";
+  | "BUY_ON_GOOGLE_LISTING"
+  | (string & {});
 export const SegmentsProgramEnum = /*@__PURE__*/ S.String;
 
 /** Dimensions according to which metrics are segmented in the response. Values of product dimensions, such as `offer_id`, reflect the state of a product at the time of the corresponding event, for example, impression or order. Segment fields cannot be selected in queries without also selecting at least one metric field. Values are only set for dimensions requested explicitly in the request's search query. */
@@ -10185,7 +10239,8 @@ export type CompetitiveVisibilityTrafficSourceEnum =
   | "UNKNOWN"
   | "ORGANIC"
   | "ADS"
-  | "ALL";
+  | "ALL"
+  | (string & {});
 export const CompetitiveVisibilityTrafficSourceEnum = /*@__PURE__*/ S.String;
 
 /** Fields related to [competitive visibility reports] (https://support.google.com/merchants/answer/11366442). */
@@ -10242,18 +10297,24 @@ export type ProductViewAggregatedDestinationStatusEnum =
   | "NOT_ELIGIBLE_OR_DISAPPROVED"
   | "PENDING"
   | "ELIGIBLE_LIMITED"
-  | "ELIGIBLE";
+  | "ELIGIBLE"
+  | (string & {});
 export const ProductViewAggregatedDestinationStatusEnum =
   /*@__PURE__*/ S.String;
 
-export type ProductViewChannelEnum = "CHANNEL_UNSPECIFIED" | "LOCAL" | "ONLINE";
+export type ProductViewChannelEnum =
+  | "CHANNEL_UNSPECIFIED"
+  | "LOCAL"
+  | "ONLINE"
+  | (string & {});
 export const ProductViewChannelEnum = /*@__PURE__*/ S.String;
 
 export type ProductViewClickPotentialEnum =
   | "CLICK_POTENTIAL_UNSPECIFIED"
   | "LOW"
   | "MEDIUM"
-  | "HIGH";
+  | "HIGH"
+  | (string & {});
 export const ProductViewClickPotentialEnum = /*@__PURE__*/ S.String;
 
 /** Type of the item issue. */
@@ -10275,7 +10336,8 @@ export const ProductViewItemIssueItemIssueType = /*@__PURE__*/ S.suspend(() =>
 export type ProductViewItemIssueResolutionEnum =
   | "UNKNOWN"
   | "MERCHANT_ACTION"
-  | "PENDING_PROCESSING";
+  | "PENDING_PROCESSING"
+  | (string & {});
 export const ProductViewItemIssueResolutionEnum = /*@__PURE__*/ S.String;
 
 /** Issue severity for all affected regions in a destination. */
@@ -10309,7 +10371,8 @@ export type ProductViewItemIssueItemIssueSeverityAggregatedSeverityEnum =
   | "AGGREGATED_ISSUE_SEVERITY_UNSPECIFIED"
   | "DISAPPROVED"
   | "DEMOTED"
-  | "PENDING";
+  | "PENDING"
+  | (string & {});
 export const ProductViewItemIssueItemIssueSeverityAggregatedSeverityEnum =
   /*@__PURE__*/ S.String;
 
@@ -10571,14 +10634,16 @@ export type ProductClusterBrandInventoryStatusEnum =
   | "INVENTORY_STATUS_UNSPECIFIED"
   | "IN_STOCK"
   | "OUT_OF_STOCK"
-  | "NOT_IN_INVENTORY";
+  | "NOT_IN_INVENTORY"
+  | (string & {});
 export const ProductClusterBrandInventoryStatusEnum = /*@__PURE__*/ S.String;
 
 export type ProductClusterInventoryStatusEnum =
   | "INVENTORY_STATUS_UNSPECIFIED"
   | "IN_STOCK"
   | "OUT_OF_STOCK"
-  | "NOT_IN_INVENTORY";
+  | "NOT_IN_INVENTORY"
+  | (string & {});
 export const ProductClusterInventoryStatusEnum = /*@__PURE__*/ S.String;
 
 /** Product cluster fields. A product cluster is a grouping for different offers that represent the same product. Values are only set for fields requested explicitly in the request's search query. */
@@ -10623,7 +10688,8 @@ export type PriceInsightsEffectivenessEnum =
   | "EFFECTIVENESS_UNSPECIFIED"
   | "LOW"
   | "MEDIUM"
-  | "HIGH";
+  | "HIGH"
+  | (string & {});
 export const PriceInsightsEffectivenessEnum = /*@__PURE__*/ S.String;
 
 /** Price insights fields requested by the merchant in the query. Field values are only set if the merchant queries `PriceInsightsProductView`. https://support.google.com/merchants/answer/11916926 */
@@ -11265,7 +11331,8 @@ export const UpdateShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
 export type VerifyPhoneNumberRequestPhoneVerificationMethodEnum =
   | "PHONE_VERIFICATION_METHOD_UNSPECIFIED"
   | "SMS"
-  | "PHONE_CALL";
+  | "PHONE_CALL"
+  | (string & {});
 export const VerifyPhoneNumberRequestPhoneVerificationMethodEnum =
   /*@__PURE__*/ S.String;
 

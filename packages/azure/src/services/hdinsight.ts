@@ -45,7 +45,8 @@ export type AutoscaleScheduleDaysItem =
   | "Thursday"
   | "Friday"
   | "Saturday"
-  | "Sunday";
+  | "Sunday"
+  | (string & {});
 export const AutoscaleScheduleDaysItem = /*@__PURE__*/ S.String;
 
 /** Days of the week for a schedule-based autoscale rule */
@@ -496,7 +497,8 @@ export const ApplicationPropertiesInputErrorsList = /*@__PURE__*/ S.Array(
 /** The method that private IP address is allocated. */
 export type IPConfigurationPropertiesInputPrivateIPAllocationMethod =
   | "dynamic"
-  | "static";
+  | "static"
+  | (string & {});
 export const IPConfigurationPropertiesInputPrivateIPAllocationMethod =
   /*@__PURE__*/ S.String;
 
@@ -963,7 +965,8 @@ export type PrivateLinkConfigurationPropertiesProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Canceled"
-  | "Deleting";
+  | "Deleting"
+  | (string & {});
 export const PrivateLinkConfigurationPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -973,14 +976,16 @@ export type IPConfigurationPropertiesProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Canceled"
-  | "Deleting";
+  | "Deleting"
+  | (string & {});
 export const IPConfigurationPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** The method that private IP address is allocated. */
 export type IPConfigurationPropertiesPrivateIPAllocationMethod =
   | "dynamic"
-  | "static";
+  | "static"
+  | (string & {});
 export const IPConfigurationPropertiesPrivateIPAllocationMethod =
   /*@__PURE__*/ S.String;
 
@@ -1150,7 +1155,8 @@ export type ApplicationsCreateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationsCreateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1159,7 +1165,8 @@ export type ApplicationsCreateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationsCreateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1303,7 +1310,8 @@ export type ApplicationsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1312,7 +1320,8 @@ export type ApplicationsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1412,7 +1421,8 @@ export const ApplicationsGetAzureAsyncOperationStatusRequest =
 export type ApplicationsGetAzureAsyncOperationStatusResponseStatus =
   | "InProgress"
   | "Succeeded"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const ApplicationsGetAzureAsyncOperationStatusResponseStatus =
   /*@__PURE__*/ S.String;
 
@@ -1485,7 +1495,8 @@ export type ApplicationSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -1493,7 +1504,8 @@ export type ApplicationSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ApplicationSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -1591,11 +1603,17 @@ export const ClustersCreateRequestZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ClustersCreateRequestZonesList>;
 
 /** The type of operating system. */
-export type ClusterCreatePropertiesInputOsType = "Windows" | "Linux";
+export type ClusterCreatePropertiesInputOsType =
+  | "Windows"
+  | "Linux"
+  | (string & {});
 export const ClusterCreatePropertiesInputOsType = /*@__PURE__*/ S.String;
 
 /** The cluster tier. */
-export type ClusterCreatePropertiesInputTier = "Standard" | "Premium";
+export type ClusterCreatePropertiesInputTier =
+  | "Standard"
+  | "Premium"
+  | (string & {});
 export const ClusterCreatePropertiesInputTier = /*@__PURE__*/ S.String;
 
 /** The versions of different services in the cluster. */
@@ -1674,7 +1692,7 @@ export const KafkaRestProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KafkaRestProperties>;
 
 /** The directory type. */
-export type SecurityProfileDirectoryType = "ActiveDirectory";
+export type SecurityProfileDirectoryType = "ActiveDirectory" | (string & {});
 export const SecurityProfileDirectoryType = /*@__PURE__*/ S.String;
 
 /** The LDAPS protocol URLs to communicate with the Active Directory. */
@@ -1801,7 +1819,8 @@ export const StorageProfile = /*@__PURE__*/ S.suspend(() =>
 export type DiskEncryptionPropertiesEncryptionAlgorithm =
   | "RSA-OAEP"
   | "RSA-OAEP-256"
-  | "RSA1_5";
+  | "RSA1_5"
+  | (string & {});
 export const DiskEncryptionPropertiesEncryptionAlgorithm =
   /*@__PURE__*/ S.String;
 
@@ -1851,12 +1870,16 @@ export const EncryptionInTransitProperties = /*@__PURE__*/ S.suspend(() =>
 /** The direction for the resource provider connection. */
 export type NetworkPropertiesResourceProviderConnection =
   | "Inbound"
-  | "Outbound";
+  | "Outbound"
+  | (string & {});
 export const NetworkPropertiesResourceProviderConnection =
   /*@__PURE__*/ S.String;
 
 /** Indicates whether or not private link is enabled. */
-export type NetworkPropertiesPrivateLink = "Disabled" | "Enabled";
+export type NetworkPropertiesPrivateLink =
+  | "Disabled"
+  | "Enabled"
+  | (string & {});
 export const NetworkPropertiesPrivateLink = /*@__PURE__*/ S.String;
 
 /** The network properties. */
@@ -1976,7 +1999,8 @@ export type ClusterIdentityInputType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
-  | "None";
+  | "None"
+  | (string & {});
 export const ClusterIdentityInputType = /*@__PURE__*/ S.String;
 
 /** The User Assigned Identity */
@@ -2076,11 +2100,11 @@ export const ClustersCreateResponseZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ClustersCreateResponseZonesList>;
 
 /** The type of operating system. */
-export type ClusterGetPropertiesOsType = "Windows" | "Linux";
+export type ClusterGetPropertiesOsType = "Windows" | "Linux" | (string & {});
 export const ClusterGetPropertiesOsType = /*@__PURE__*/ S.String;
 
 /** The cluster tier. */
-export type ClusterGetPropertiesTier = "Standard" | "Premium";
+export type ClusterGetPropertiesTier = "Standard" | "Premium" | (string & {});
 export const ClusterGetPropertiesTier = /*@__PURE__*/ S.String;
 
 /** The list of roles in the cluster. */
@@ -2106,7 +2130,8 @@ export type ClusterGetPropertiesProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Canceled"
-  | "Deleting";
+  | "Deleting"
+  | (string & {});
 export const ClusterGetPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The quota properties for the cluster. */
@@ -2223,7 +2248,8 @@ export type PrivateLinkServiceConnectionStateStatus =
   | "Approved"
   | "Rejected"
   | "Pending"
-  | "Removed";
+  | "Removed"
+  | (string & {});
 export const PrivateLinkServiceConnectionStateStatus = /*@__PURE__*/ S.String;
 
 /** The private link service connection state. */
@@ -2252,7 +2278,8 @@ export type PrivateEndpointConnectionPropertiesProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Canceled"
-  | "Deleting";
+  | "Deleting"
+  | (string & {});
 export const PrivateEndpointConnectionPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -2282,13 +2309,13 @@ export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
 export const ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
 export const ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2454,7 +2481,8 @@ export type ClusterIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
-  | "None";
+  | "None"
+  | (string & {});
 export const ClusterIdentityType = /*@__PURE__*/ S.String;
 
 /** The User Assigned Identity */
@@ -2514,7 +2542,8 @@ export type ClustersCreateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ClustersCreateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2523,7 +2552,8 @@ export type ClustersCreateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ClustersCreateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2747,7 +2777,8 @@ export type ClustersGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ClustersGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2756,7 +2787,8 @@ export type ClustersGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ClustersGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2859,7 +2891,11 @@ export const ClustersGetAzureAsyncOperationStatusRequest =
   }) as any as S.Schema<ClustersGetAzureAsyncOperationStatusRequest>;
 
 /** The async operation state. */
-export type AsyncOperationResultStatus = "InProgress" | "Succeeded" | "Failed";
+export type AsyncOperationResultStatus =
+  | "InProgress"
+  | "Succeeded"
+  | "Failed"
+  | (string & {});
 export const AsyncOperationResultStatus = /*@__PURE__*/ S.String;
 
 /** The azure async operation response. */
@@ -2968,7 +3004,8 @@ export type ClusterSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ClusterSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -2976,7 +3013,8 @@ export type ClusterSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ClusterSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -3089,7 +3127,7 @@ export const ClustersListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClustersListByResourceGroupRequest",
 }) as any as S.Schema<ClustersListByResourceGroupRequest>;
 
-export type ClustersResizeRequestRoleName = "workernode";
+export type ClustersResizeRequestRoleName = "workernode" | (string & {});
 export const ClustersResizeRequestRoleName = /*@__PURE__*/ S.String;
 
 export interface ClustersResizeRequest {
@@ -3229,7 +3267,8 @@ export type ClustersUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ClustersUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -3238,7 +3277,8 @@ export type ClustersUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ClustersUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -3311,7 +3351,9 @@ export const ClustersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClustersUpdateResponse",
 }) as any as S.Schema<ClustersUpdateResponse>;
 
-export type ClustersUpdateAutoScaleConfigurationRequestRoleName = "workernode";
+export type ClustersUpdateAutoScaleConfigurationRequestRoleName =
+  | "workernode"
+  | (string & {});
 export const ClustersUpdateAutoScaleConfigurationRequestRoleName =
   /*@__PURE__*/ S.String;
 
@@ -3888,7 +3930,8 @@ export const ExtensionsGetAzureAsyncOperationStatusRequest =
 export type ExtensionsGetAzureAsyncOperationStatusResponseStatus =
   | "InProgress"
   | "Succeeded"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const ExtensionsGetAzureAsyncOperationStatusResponseStatus =
   /*@__PURE__*/ S.String;
 
@@ -4057,7 +4100,8 @@ export const LocationsGetAzureAsyncOperationStatusRequest =
 export type LocationsGetAzureAsyncOperationStatusResponseStatus =
   | "InProgress"
   | "Succeeded"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const LocationsGetAzureAsyncOperationStatusResponseStatus =
   /*@__PURE__*/ S.String;
 
@@ -4298,7 +4342,8 @@ export type VmSizeCompatibilityFilterV2FilterMode =
   | "Exclude"
   | "Include"
   | "Recommend"
-  | "Default";
+  | "Default"
+  | (string & {});
 export const VmSizeCompatibilityFilterV2FilterMode = /*@__PURE__*/ S.String;
 
 /** The list of regions under the effect of the filter. */
@@ -4329,7 +4374,10 @@ export const VmSizeCompatibilityFilterV2ClusterVersionsList =
     S.String,
   ) as any as S.Schema<VmSizeCompatibilityFilterV2ClusterVersionsList>;
 
-export type VmSizeCompatibilityFilterV2OsTypeItem = "Windows" | "Linux";
+export type VmSizeCompatibilityFilterV2OsTypeItem =
+  | "Windows"
+  | "Linux"
+  | (string & {});
 export const VmSizeCompatibilityFilterV2OsTypeItem = /*@__PURE__*/ S.String;
 
 /** The OSType affected, Windows or Linux. */
@@ -4459,7 +4507,7 @@ export const BillingResourcesBillingMetersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BillingResourcesBillingMetersList>;
 
 /** The managed disk billing tier, Standard or Premium. */
-export type DiskBillingMetersTier = "Standard" | "Premium";
+export type DiskBillingMetersTier = "Standard" | "Premium" | (string & {});
 export const DiskBillingMetersTier = /*@__PURE__*/ S.String;
 
 /** The disk billing meters. */
@@ -5059,13 +5107,13 @@ export const PrivateEndpointConnectionsCreateOrUpdateRequest =
 
 /** The type of identity that created the resource. */
 export type PrivateEndpointConnectionsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
 export const PrivateEndpointConnectionsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type PrivateEndpointConnectionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
 export const PrivateEndpointConnectionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -5199,7 +5247,8 @@ export type PrivateEndpointConnectionsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const PrivateEndpointConnectionsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -5208,7 +5257,8 @@ export type PrivateEndpointConnectionsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const PrivateEndpointConnectionsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -5301,7 +5351,8 @@ export type PrivateEndpointConnectionSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const PrivateEndpointConnectionSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -5310,7 +5361,8 @@ export type PrivateEndpointConnectionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const PrivateEndpointConnectionSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -5466,7 +5518,8 @@ export type PrivateLinkResourcesGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const PrivateLinkResourcesGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -5475,7 +5528,8 @@ export type PrivateLinkResourcesGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const PrivateLinkResourcesGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -5606,7 +5660,8 @@ export type PrivateLinkResourceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const PrivateLinkResourceSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -5615,7 +5670,8 @@ export type PrivateLinkResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const PrivateLinkResourceSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -5762,7 +5818,8 @@ export const ScriptActionsGetExecutionAsyncOperationStatusRequest =
 export type ScriptActionsGetExecutionAsyncOperationStatusResponseStatus =
   | "InProgress"
   | "Succeeded"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const ScriptActionsGetExecutionAsyncOperationStatusResponseStatus =
   /*@__PURE__*/ S.String;
 
@@ -6186,7 +6243,8 @@ export const VirtualMachinesGetAsyncOperationStatusRequest =
 export type VirtualMachinesGetAsyncOperationStatusResponseStatus =
   | "InProgress"
   | "Succeeded"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const VirtualMachinesGetAsyncOperationStatusResponseStatus =
   /*@__PURE__*/ S.String;
 

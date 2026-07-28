@@ -595,7 +595,8 @@ export type CompatibilityIssue =
   | "ADFSIdentitySystemRequired"
   | "ConnectionToInternetRequired"
   | "ConnectionToAzureRequired"
-  | "DisconnectedEnvironmentRequired";
+  | "DisconnectedEnvironmentRequired"
+  | (string & {});
 export const CompatibilityIssue = /*@__PURE__*/ S.String;
 
 /** List of all issues found */
@@ -889,7 +890,7 @@ export const ProductsListDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductsListDetailsRequest>;
 
 /** Compute role type (IaaS or PaaS). */
-export type ComputeRole = "None" | "IaaS" | "PaaS";
+export type ComputeRole = "None" | "IaaS" | "PaaS" | (string & {});
 export const ComputeRole = /*@__PURE__*/ S.String;
 
 /** The URI. */
@@ -904,7 +905,7 @@ export const Uri = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Uri" }) as any as S.Schema<Uri>;
 
 /** Operating system type (Windows or Linux). */
-export type OperatingSystem = "None" | "Windows" | "Linux";
+export type OperatingSystem = "None" | "Windows" | "Linux" | (string & {});
 export const OperatingSystem = /*@__PURE__*/ S.String;
 
 /** OS disk image. */
@@ -1110,7 +1111,9 @@ export const RegistrationParameterProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistrationParameterProperties>;
 
 /** Location of the resource. */
-export type RegistrationsCreateOrUpdateRequestLocation = "global";
+export type RegistrationsCreateOrUpdateRequestLocation =
+  | "global"
+  | (string & {});
 export const RegistrationsCreateOrUpdateRequestLocation =
   /*@__PURE__*/ S.String;
 
@@ -1146,7 +1149,9 @@ export const RegistrationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistrationsCreateOrUpdateRequest>;
 
 /** Location of the resource. */
-export type RegistrationsCreateOrUpdateResponseLocation = "global";
+export type RegistrationsCreateOrUpdateResponseLocation =
+  | "global"
+  | (string & {});
 export const RegistrationsCreateOrUpdateResponseLocation =
   /*@__PURE__*/ S.String;
 
@@ -1299,7 +1304,7 @@ export const RegistrationsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistrationsGetRequest>;
 
 /** Location of the resource. */
-export type RegistrationsGetResponseLocation = "global";
+export type RegistrationsGetResponseLocation = "global" | (string & {});
 export const RegistrationsGetResponseLocation = /*@__PURE__*/ S.String;
 
 /** Custom tags for the resource. */
@@ -1403,7 +1408,7 @@ export const RegistrationsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistrationsListRequest>;
 
 /** Location of the resource. */
-export type RegistrationLocation = "global";
+export type RegistrationLocation = "global" | (string & {});
 export const RegistrationLocation = /*@__PURE__*/ S.String;
 
 /** Custom tags for the resource. */
@@ -1485,7 +1490,7 @@ export const RegistrationsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RegistrationsListBySubscriptionRequest>;
 
 /** Location of the resource. */
-export type RegistrationsUpdateRequestLocation = "global";
+export type RegistrationsUpdateRequestLocation = "global" | (string & {});
 export const RegistrationsUpdateRequestLocation = /*@__PURE__*/ S.String;
 
 export interface RegistrationsUpdateRequest {
@@ -1520,7 +1525,7 @@ export const RegistrationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistrationsUpdateRequest>;
 
 /** Location of the resource. */
-export type RegistrationsUpdateResponseLocation = "global";
+export type RegistrationsUpdateResponseLocation = "global" | (string & {});
 export const RegistrationsUpdateResponseLocation = /*@__PURE__*/ S.String;
 
 /** Custom tags for the resource. */

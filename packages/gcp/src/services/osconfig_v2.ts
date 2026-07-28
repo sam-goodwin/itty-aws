@@ -175,7 +175,8 @@ export type OSPolicyAssignmentRolloutStateEnum =
   | "IN_PROGRESS"
   | "CANCELLING"
   | "CANCELLED"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const OSPolicyAssignmentRolloutStateEnum = /*@__PURE__*/ S.String;
 
 /** VM inventory details. */
@@ -252,7 +253,8 @@ export const OSPolicyAssignmentInstanceFilter = /*@__PURE__*/ S.suspend(() =>
 export type OSPolicyModeEnum =
   | "MODE_UNSPECIFIED"
   | "VALIDATION"
-  | "ENFORCEMENT";
+  | "ENFORCEMENT"
+  | (string & {});
 export const OSPolicyModeEnum = /*@__PURE__*/ S.String;
 
 /** Filtering criteria to select VMs based on inventory details. */
@@ -338,7 +340,8 @@ export type OSPolicyResourceFileResourceStateEnum =
   | "DESIRED_STATE_UNSPECIFIED"
   | "PRESENT"
   | "ABSENT"
-  | "CONTENTS_MATCH";
+  | "CONTENTS_MATCH"
+  | (string & {});
 export const OSPolicyResourceFileResourceStateEnum = /*@__PURE__*/ S.String;
 
 /** A resource that manages the state of a file. */
@@ -435,7 +438,8 @@ export const OSPolicyResourcePackageResourceDeb = /*@__PURE__*/ S.suspend(() =>
 export type OSPolicyResourcePackageResourceDesiredStateEnum =
   | "DESIRED_STATE_UNSPECIFIED"
   | "INSTALLED"
-  | "REMOVED";
+  | "REMOVED"
+  | (string & {});
 export const OSPolicyResourcePackageResourceDesiredStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -517,7 +521,8 @@ export const OSPolicyResourcePackageResource = /*@__PURE__*/ S.suspend(() =>
 export type OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeEnum =
   | "ARCHIVE_TYPE_UNSPECIFIED"
   | "DEB"
-  | "DEB_SRC";
+  | "DEB_SRC"
+  | (string & {});
 export const OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -638,7 +643,8 @@ export type OSPolicyResourceExecResourceExecInterpreterEnum =
   | "INTERPRETER_UNSPECIFIED"
   | "NONE"
   | "SHELL"
-  | "POWERSHELL";
+  | "POWERSHELL"
+  | (string & {});
 export const OSPolicyResourceExecResourceExecInterpreterEnum =
   /*@__PURE__*/ S.String;
 
@@ -910,7 +916,8 @@ export type GoogleCloudOsconfigV2_PolicyOrchestrator_IterationStateStateEnum =
   | "COMPLETED"
   | "FAILED"
   | "CANCELLED"
-  | "UNKNOWN";
+  | "UNKNOWN"
+  | (string & {});
 export const GoogleCloudOsconfigV2_PolicyOrchestrator_IterationStateStateEnum =
   /*@__PURE__*/ S.String;
 

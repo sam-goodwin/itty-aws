@@ -181,7 +181,7 @@ export interface AnalysisSchema {
 export const AnalysisSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ referencedTables: S.optional(QueryTables) }),
 ).annotate({ identifier: "AnalysisSchema" }) as any as S.Schema<AnalysisSchema>;
-export type AnalysisFormat = "SQL" | "PYSPARK_1_0";
+export type AnalysisFormat = "SQL" | "PYSPARK_1_0" | (string & {});
 export const AnalysisFormat = /*@__PURE__*/ S.String;
 
 export type AnalysisTemplateText = string | redacted.Redacted<string>;
@@ -281,7 +281,8 @@ export type ParameterType =
   | "STRING"
   | "TIMESTAMP_LTZ"
   | "TIMESTAMP_NTZ"
-  | "TINYINT";
+  | "TINYINT"
+  | (string & {});
 export const ParameterType = /*@__PURE__*/ S.String;
 
 export type ParameterValue = string;
@@ -301,13 +302,16 @@ export const AnalysisParameter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnalysisParameter>;
 export type AnalysisParameterList = AnalysisParameter[];
 export const AnalysisParameterList = /*@__PURE__*/ S.Array(AnalysisParameter);
-export type AnalysisTemplateValidationType = "DIFFERENTIAL_PRIVACY";
+export type AnalysisTemplateValidationType =
+  | "DIFFERENTIAL_PRIVACY"
+  | (string & {});
 export const AnalysisTemplateValidationType = /*@__PURE__*/ S.String;
 
 export type AnalysisTemplateValidationStatus =
   | "VALID"
   | "INVALID"
-  | "UNABLE_TO_VALIDATE";
+  | "UNABLE_TO_VALIDATE"
+  | (string & {});
 export const AnalysisTemplateValidationStatus = /*@__PURE__*/ S.String;
 
 export interface AnalysisTemplateValidationStatusReason {
@@ -343,7 +347,7 @@ export type AnalysisTemplateValidationStatusDetailList =
 export const AnalysisTemplateValidationStatusDetailList = /*@__PURE__*/ S.Array(
   AnalysisTemplateValidationStatusDetail,
 );
-export type ErrorMessageType = "DETAILED";
+export type ErrorMessageType = "DETAILED" | (string & {});
 export const ErrorMessageType = /*@__PURE__*/ S.String;
 
 export interface ErrorMessageConfiguration {
@@ -356,7 +360,10 @@ export const ErrorMessageConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorMessageConfiguration>;
 export type MaxMembershipInferenceAttackScore = number;
 export type SyntheticDataColumnName = string;
-export type SyntheticDataColumnType = "CATEGORICAL" | "NUMERICAL";
+export type SyntheticDataColumnType =
+  | "CATEGORICAL"
+  | "NUMERICAL"
+  | (string & {});
 export const SyntheticDataColumnType = /*@__PURE__*/ S.String;
 
 export interface SyntheticDataColumnProperties {
@@ -522,15 +529,23 @@ export type AnalysisRuleType =
   | "AGGREGATION"
   | "LIST"
   | "CUSTOM"
-  | "ID_MAPPING_TABLE";
+  | "ID_MAPPING_TABLE"
+  | (string & {});
 export const AnalysisRuleType = /*@__PURE__*/ S.String;
 
 export type AnalysisRuleTypeList = AnalysisRuleType[];
 export const AnalysisRuleTypeList = /*@__PURE__*/ S.Array(AnalysisRuleType);
-export type AnalysisMethod = "DIRECT_QUERY" | "DIRECT_JOB" | "MULTIPLE";
+export type AnalysisMethod =
+  | "DIRECT_QUERY"
+  | "DIRECT_JOB"
+  | "MULTIPLE"
+  | (string & {});
 export const AnalysisMethod = /*@__PURE__*/ S.String;
 
-export type SelectedAnalysisMethod = "DIRECT_QUERY" | "DIRECT_JOB";
+export type SelectedAnalysisMethod =
+  | "DIRECT_QUERY"
+  | "DIRECT_JOB"
+  | (string & {});
 export const SelectedAnalysisMethod = /*@__PURE__*/ S.String;
 
 export type SelectedAnalysisMethods = SelectedAnalysisMethod[];
@@ -538,10 +553,10 @@ export const SelectedAnalysisMethods = /*@__PURE__*/ S.Array(
   SelectedAnalysisMethod,
 );
 export type TableDescription = string;
-export type SchemaType = "TABLE" | "ID_MAPPING_TABLE";
+export type SchemaType = "TABLE" | "ID_MAPPING_TABLE" | (string & {});
 export const SchemaType = /*@__PURE__*/ S.String;
 
-export type SchemaStatus = "READY" | "NOT_READY";
+export type SchemaStatus = "READY" | "NOT_READY" | (string & {});
 export const SchemaStatus = /*@__PURE__*/ S.String;
 
 export type SchemaStatusReasonCode =
@@ -555,7 +570,8 @@ export type SchemaStatusReasonCode =
   | "RESULT_RECEIVERS_NOT_CONFIGURED"
   | "ADDITIONAL_ANALYSES_NOT_ALLOWED"
   | "RESULT_RECEIVERS_NOT_ALLOWED"
-  | "ANALYSIS_RULE_TYPES_NOT_COMPATIBLE";
+  | "ANALYSIS_RULE_TYPES_NOT_COMPATIBLE"
+  | (string & {});
 export const SchemaStatusReasonCode = /*@__PURE__*/ S.String;
 
 export interface SchemaStatusReason {
@@ -569,13 +585,16 @@ export const SchemaStatusReason = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SchemaStatusReason>;
 export type SchemaStatusReasonList = SchemaStatusReason[];
 export const SchemaStatusReasonList = /*@__PURE__*/ S.Array(SchemaStatusReason);
-export type SchemaConfiguration = "DIFFERENTIAL_PRIVACY";
+export type SchemaConfiguration = "DIFFERENTIAL_PRIVACY" | (string & {});
 export const SchemaConfiguration = /*@__PURE__*/ S.String;
 
 export type SchemaConfigurationList = SchemaConfiguration[];
 export const SchemaConfigurationList =
   /*@__PURE__*/ S.Array(SchemaConfiguration);
-export type AnalysisType = "DIRECT_ANALYSIS" | "ADDITIONAL_ANALYSIS";
+export type AnalysisType =
+  | "DIRECT_ANALYSIS"
+  | "ADDITIONAL_ANALYSIS"
+  | (string & {});
 export const AnalysisType = /*@__PURE__*/ S.String;
 
 export interface SchemaStatusDetail {
@@ -599,7 +618,7 @@ export const SchemaStatusDetail = /*@__PURE__*/ S.suspend(() =>
 export type SchemaStatusDetailList = SchemaStatusDetail[];
 export const SchemaStatusDetailList = /*@__PURE__*/ S.Array(SchemaStatusDetail);
 export type SchemaResourceArn = string;
-export type IdNamespaceType = "SOURCE" | "TARGET";
+export type IdNamespaceType = "SOURCE" | "TARGET" | (string & {});
 export const IdNamespaceType = /*@__PURE__*/ S.String;
 
 export interface IdMappingTableInputSource {
@@ -736,7 +755,11 @@ export const AnalysisRuleColumnList = /*@__PURE__*/ S.Array(S.String);
 export type JoinOperator = string;
 export type JoinOperatorsList = string[];
 export const JoinOperatorsList = /*@__PURE__*/ S.Array(S.String);
-export type AdditionalAnalyses = "ALLOWED" | "REQUIRED" | "NOT_ALLOWED";
+export type AdditionalAnalyses =
+  | "ALLOWED"
+  | "REQUIRED"
+  | "NOT_ALLOWED"
+  | (string & {});
 export const AdditionalAnalyses = /*@__PURE__*/ S.String;
 
 export interface AnalysisRuleList {
@@ -1236,14 +1259,19 @@ export const CreateAnalysisTemplateOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAnalysisTemplateOutput",
 }) as any as S.Schema<CreateAnalysisTemplateOutput>;
-export type MemberAbility = "CAN_QUERY" | "CAN_RECEIVE_RESULTS" | "CAN_RUN_JOB";
+export type MemberAbility =
+  | "CAN_QUERY"
+  | "CAN_RECEIVE_RESULTS"
+  | "CAN_RUN_JOB"
+  | (string & {});
 export const MemberAbility = /*@__PURE__*/ S.String;
 
 export type MemberAbilities = MemberAbility[];
 export const MemberAbilities = /*@__PURE__*/ S.Array(MemberAbility);
 export type CustomMLMemberAbility =
   | "CAN_RECEIVE_MODEL_OUTPUT"
-  | "CAN_RECEIVE_INFERENCE_OUTPUT";
+  | "CAN_RECEIVE_INFERENCE_OUTPUT"
+  | (string & {});
 export const CustomMLMemberAbility = /*@__PURE__*/ S.String;
 
 export type CustomMLMemberAbilities = CustomMLMemberAbility[];
@@ -1365,19 +1393,23 @@ export const DataEncryptionMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataEncryptionMetadata",
 }) as any as S.Schema<DataEncryptionMetadata>;
-export type CollaborationQueryLogStatus = "ENABLED" | "DISABLED";
+export type CollaborationQueryLogStatus =
+  | "ENABLED"
+  | "DISABLED"
+  | (string & {});
 export const CollaborationQueryLogStatus = /*@__PURE__*/ S.String;
 
-export type CollaborationJobLogStatus = "ENABLED" | "DISABLED";
+export type CollaborationJobLogStatus = "ENABLED" | "DISABLED" | (string & {});
 export const CollaborationJobLogStatus = /*@__PURE__*/ S.String;
 
-export type AnalyticsEngine = "SPARK" | "CLEAN_ROOMS_SQL";
+export type AnalyticsEngine = "SPARK" | "CLEAN_ROOMS_SQL" | (string & {});
 export const AnalyticsEngine = /*@__PURE__*/ S.String;
 
 export type AutoApprovedChangeType =
   | "ADD_MEMBER"
   | "GRANT_RECEIVE_RESULTS_ABILITY"
-  | "REVOKE_RECEIVE_RESULTS_ABILITY";
+  | "REVOKE_RECEIVE_RESULTS_ABILITY"
+  | (string & {});
 export const AutoApprovedChangeType = /*@__PURE__*/ S.String;
 
 export type AutoApprovedChangeTypeList = AutoApprovedChangeType[];
@@ -1417,7 +1449,8 @@ export type SupportedS3Region =
   | "me-central-1"
   | "il-central-1"
   | "sa-east-1"
-  | "mx-central-1";
+  | "mx-central-1"
+  | (string & {});
 export const SupportedS3Region = /*@__PURE__*/ S.String;
 
 export type AllowedResultRegions = SupportedS3Region[];
@@ -1520,7 +1553,10 @@ export const CreateCollaborationOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCollaborationOutput",
 }) as any as S.Schema<CreateCollaborationOutput>;
-export type ChangeSpecificationType = "MEMBER" | "COLLABORATION";
+export type ChangeSpecificationType =
+  | "MEMBER"
+  | "COLLABORATION"
+  | (string & {});
 export const ChangeSpecificationType = /*@__PURE__*/ S.String;
 
 export interface MemberChangeSpecification {
@@ -1600,7 +1636,8 @@ export type ChangeRequestStatus =
   | "APPROVED"
   | "CANCELLED"
   | "DENIED"
-  | "COMMITTED";
+  | "COMMITTED"
+  | (string & {});
 export const ChangeRequestStatus = /*@__PURE__*/ S.String;
 
 export type ChangeType =
@@ -1613,7 +1650,8 @@ export type ChangeType =
   | "GRANT_CAN_RECEIVE_MODEL_OUTPUT"
   | "GRANT_CAN_RECEIVE_INFERENCE_OUTPUT"
   | "REVOKE_CAN_RECEIVE_MODEL_OUTPUT"
-  | "REVOKE_CAN_RECEIVE_INFERENCE_OUTPUT";
+  | "REVOKE_CAN_RECEIVE_INFERENCE_OUTPUT"
+  | (string & {});
 export const ChangeType = /*@__PURE__*/ S.String;
 
 export type ChangeTypeList = ChangeType[];
@@ -1632,7 +1670,7 @@ export const Change = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Change" }) as any as S.Schema<Change>;
 export type ChangeList = Change[];
 export const ChangeList = /*@__PURE__*/ S.Array(Change);
-export type ApprovalStatus = "APPROVED" | "DENIED" | "PENDING";
+export type ApprovalStatus = "APPROVED" | "DENIED" | "PENDING" | (string & {});
 export const ApprovalStatus = /*@__PURE__*/ S.String;
 
 export interface ApprovalStatusDetails {
@@ -1795,7 +1833,8 @@ export type CommercialRegion =
   | "il-central-1"
   | "sa-east-1"
   | "mx-central-1"
-  | "ap-east-2";
+  | "ap-east-2"
+  | (string & {});
 export const CommercialRegion = /*@__PURE__*/ S.String;
 
 export type GlueTableName = string;
@@ -1924,7 +1963,11 @@ export const CreateConfiguredTableInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateConfiguredTableInput",
 }) as any as S.Schema<CreateConfiguredTableInput>;
 export type ConfiguredTableArn = string;
-export type ConfiguredTableAnalysisRuleType = "AGGREGATION" | "LIST" | "CUSTOM";
+export type ConfiguredTableAnalysisRuleType =
+  | "AGGREGATION"
+  | "LIST"
+  | "CUSTOM"
+  | (string & {});
 export const ConfiguredTableAnalysisRuleType = /*@__PURE__*/ S.String;
 
 export type ConfiguredTableAnalysisRuleTypeList =
@@ -2080,7 +2123,8 @@ export type ConfiguredTableAssociationArn = string;
 export type ConfiguredTableAssociationAnalysisRuleType =
   | "AGGREGATION"
   | "LIST"
-  | "CUSTOM";
+  | "CUSTOM"
+  | (string & {});
 export const ConfiguredTableAssociationAnalysisRuleType =
   /*@__PURE__*/ S.String;
 
@@ -2400,13 +2444,13 @@ export const CreateIdNamespaceAssociationOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIdNamespaceAssociationOutput",
 }) as any as S.Schema<CreateIdNamespaceAssociationOutput>;
-export type MembershipQueryLogStatus = "ENABLED" | "DISABLED";
+export type MembershipQueryLogStatus = "ENABLED" | "DISABLED" | (string & {});
 export const MembershipQueryLogStatus = /*@__PURE__*/ S.String;
 
-export type MembershipJobLogStatus = "ENABLED" | "DISABLED";
+export type MembershipJobLogStatus = "ENABLED" | "DISABLED" | (string & {});
 export const MembershipJobLogStatus = /*@__PURE__*/ S.String;
 
-export type ResultFormat = "CSV" | "PARQUET";
+export type ResultFormat = "CSV" | "PARQUET" | (string & {});
 export const ResultFormat = /*@__PURE__*/ S.String;
 
 export type KeyPrefix = string;
@@ -2637,10 +2681,16 @@ export const CreateMembershipOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMembershipOutput",
 }) as any as S.Schema<CreateMembershipOutput>;
-export type PrivacyBudgetTemplateAutoRefresh = "CALENDAR_MONTH" | "NONE";
+export type PrivacyBudgetTemplateAutoRefresh =
+  | "CALENDAR_MONTH"
+  | "NONE"
+  | (string & {});
 export const PrivacyBudgetTemplateAutoRefresh = /*@__PURE__*/ S.String;
 
-export type PrivacyBudgetType = "DIFFERENTIAL_PRIVACY" | "ACCESS_BUDGET";
+export type PrivacyBudgetType =
+  | "DIFFERENTIAL_PRIVACY"
+  | "ACCESS_BUDGET"
+  | (string & {});
 export const PrivacyBudgetType = /*@__PURE__*/ S.String;
 
 export type Epsilon = number;
@@ -2659,11 +2709,12 @@ export type AccessBudgetType =
   | "CALENDAR_DAY"
   | "CALENDAR_MONTH"
   | "CALENDAR_WEEK"
-  | "LIFETIME";
+  | "LIFETIME"
+  | (string & {});
 export const AccessBudgetType = /*@__PURE__*/ S.String;
 
 export type Budget = number;
-export type AutoRefreshMode = "ENABLED" | "DISABLED";
+export type AutoRefreshMode = "ENABLED" | "DISABLED" | (string & {});
 export const AutoRefreshMode = /*@__PURE__*/ S.String;
 
 export interface BudgetParameter {
@@ -3902,7 +3953,8 @@ export type ProtectedJobStatus =
   | "CANCELLED"
   | "CANCELLING"
   | "FAILED"
-  | "SUCCESS";
+  | "SUCCESS"
+  | (string & {});
 export const ProtectedJobStatus = /*@__PURE__*/ S.String;
 
 export interface ProtectedJobS3OutputConfigurationOutput {
@@ -4001,7 +4053,7 @@ export const ProtectedJobError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProtectedJobError",
 }) as any as S.Schema<ProtectedJobError>;
-export type ProtectedJobWorkerComputeType = "CR.1X" | "CR.4X";
+export type ProtectedJobWorkerComputeType = "CR.1X" | "CR.4X" | (string & {});
 export const ProtectedJobWorkerComputeType = /*@__PURE__*/ S.String;
 
 export type SparkPropertyKey = string;
@@ -4274,7 +4326,8 @@ export type DifferentialPrivacyAggregationType =
   | "COUNT"
   | "COUNT_DISTINCT"
   | "SUM"
-  | "STDDEV";
+  | "STDDEV"
+  | (string & {});
 export const DifferentialPrivacyAggregationType = /*@__PURE__*/ S.String;
 
 export type DifferentialPrivacyAggregationExpression = string;
@@ -4311,7 +4364,7 @@ export const DifferentialPrivacyParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DifferentialPrivacyParameters",
 }) as any as S.Schema<DifferentialPrivacyParameters>;
-export type WorkerComputeType = "CR.1X" | "CR.4X";
+export type WorkerComputeType = "CR.1X" | "CR.4X" | (string & {});
 export const WorkerComputeType = /*@__PURE__*/ S.String;
 
 export interface WorkerComputeConfiguration {
@@ -5799,7 +5852,7 @@ export const ListProtectedJobsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListProtectedJobsInput",
 }) as any as S.Schema<ListProtectedJobsInput>;
-export type ProtectedJobAnalysisType = "DIRECT_ANALYSIS";
+export type ProtectedJobAnalysisType = "DIRECT_ANALYSIS" | (string & {});
 export const ProtectedJobAnalysisType = /*@__PURE__*/ S.String;
 
 export type ProtectedJobReceiverAccountIds = string[];
@@ -6076,7 +6129,7 @@ export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceOutput",
 }) as any as S.Schema<ListTagsForResourceOutput>;
-export type JobType = "BATCH" | "INCREMENTAL" | "DELETE_ONLY";
+export type JobType = "BATCH" | "INCREMENTAL" | "DELETE_ONLY" | (string & {});
 export const JobType = /*@__PURE__*/ S.String;
 
 export interface PopulateIdMappingTableInput {
@@ -6192,7 +6245,7 @@ export const PreviewPrivacyImpactOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PreviewPrivacyImpactOutput",
 }) as any as S.Schema<PreviewPrivacyImpactOutput>;
-export type ProtectedJobType = "PYSPARK";
+export type ProtectedJobType = "PYSPARK" | (string & {});
 export const ProtectedJobType = /*@__PURE__*/ S.String;
 
 export interface ProtectedJobMemberOutputConfigurationInput {
@@ -6427,7 +6480,12 @@ export const UpdateCollaborationOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateCollaborationOutput",
 }) as any as S.Schema<UpdateCollaborationOutput>;
-export type ChangeRequestAction = "APPROVE" | "DENY" | "CANCEL" | "COMMIT";
+export type ChangeRequestAction =
+  | "APPROVE"
+  | "DENY"
+  | "CANCEL"
+  | "COMMIT"
+  | (string & {});
 export const ChangeRequestAction = /*@__PURE__*/ S.String;
 
 export interface UpdateCollaborationChangeRequestInput {
@@ -6886,7 +6944,7 @@ export const UpdatePrivacyBudgetTemplateOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdatePrivacyBudgetTemplateOutput",
 }) as any as S.Schema<UpdatePrivacyBudgetTemplateOutput>;
-export type TargetProtectedJobStatus = "CANCELLED";
+export type TargetProtectedJobStatus = "CANCELLED" | (string & {});
 export const TargetProtectedJobStatus = /*@__PURE__*/ S.String;
 
 export interface UpdateProtectedJobInput {

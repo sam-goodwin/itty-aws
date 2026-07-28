@@ -104,7 +104,8 @@ export const CreateUsersSshPublicKeysRequest = /*@__PURE__*/ S.suspend(() =>
 export type DeleteUsersProjectsOperatingSystemTypeEnum =
   | "OPERATING_SYSTEM_TYPE_UNSPECIFIED"
   | "LINUX"
-  | "WINDOWS";
+  | "WINDOWS"
+  | (string & {});
 export const DeleteUsersProjectsOperatingSystemTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -158,14 +159,16 @@ export const DeleteUsersSshPublicKeysRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetLoginProfileUsersOperatingSystemTypeEnum =
   | "OPERATING_SYSTEM_TYPE_UNSPECIFIED"
   | "LINUX"
-  | "WINDOWS";
+  | "WINDOWS"
+  | (string & {});
 export const GetLoginProfileUsersOperatingSystemTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GetLoginProfileUsersViewEnum =
   | "LOGIN_PROFILE_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "SECURITY_KEY";
+  | "SECURITY_KEY"
+  | (string & {});
 export const GetLoginProfileUsersViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetLoginProfileUsersRequest {
@@ -255,7 +258,8 @@ export const SecurityKeyList = /*@__PURE__*/ S.Array(
 export type PosixAccountOperatingSystemTypeEnum =
   | "OPERATING_SYSTEM_TYPE_UNSPECIFIED"
   | "LINUX"
-  | "WINDOWS";
+  | "WINDOWS"
+  | (string & {});
 export const PosixAccountOperatingSystemTypeEnum = /*@__PURE__*/ S.String;
 
 /** The POSIX account information associated with a Google account. */
@@ -356,7 +360,8 @@ export const StringList = /*@__PURE__*/ S.Array(
 export type ImportSshPublicKeyUsersViewEnum =
   | "LOGIN_PROFILE_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "SECURITY_KEY";
+  | "SECURITY_KEY"
+  | (string & {});
 export const ImportSshPublicKeyUsersViewEnum = /*@__PURE__*/ S.String;
 
 export interface ImportSshPublicKeyUsersRequest {

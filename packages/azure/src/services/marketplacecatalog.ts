@@ -90,7 +90,8 @@ export type Store =
   | "AMP"
   | "Ibiza"
   | "Cosell"
-  | "DakotaDownstream";
+  | "DakotaDownstream"
+  | (string & {});
 export const Store = /*@__PURE__*/ S.String;
 
 /** The list of the storefronts for which this offer is designated */
@@ -121,10 +122,15 @@ export type OfferType =
   | "CoreVirtualMachine"
   | "PowerBIVisuals"
   | "Office365"
-  | "AADApps";
+  | "AADApps"
+  | (string & {});
 export const OfferType = /*@__PURE__*/ S.String;
 
-export type StopSellReason = "EndOfSupport" | "SecurityIssue" | "Other";
+export type StopSellReason =
+  | "EndOfSupport"
+  | "SecurityIssue"
+  | "Other"
+  | (string & {});
 export const StopSellReason = /*@__PURE__*/ S.String;
 
 export interface StopSellInfo {
@@ -176,7 +182,7 @@ export const CatalogItemIsvContactDetailsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<CatalogItemIsvContactDetailsMap>;
 
-export type LegalTermsType = "None" | "EA";
+export type LegalTermsType = "None" | "EA" | (string & {});
 export const LegalTermsType = /*@__PURE__*/ S.String;
 
 /** List of category IDs the marketplace item belongs to */
@@ -252,7 +258,12 @@ export const CatalogItemCompetenciesList = /*@__PURE__*/ S.Array(
   Competency,
 ) as any as S.Schema<CatalogItemCompetenciesList>;
 
-export type ServiceDurationUnit = "Days" | "Hours" | "Weeks" | "Months";
+export type ServiceDurationUnit =
+  | "Days"
+  | "Hours"
+  | "Weeks"
+  | "Months"
+  | (string & {});
 export const ServiceDurationUnit = /*@__PURE__*/ S.String;
 
 export interface Duration {
@@ -269,7 +280,7 @@ export const Duration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Duration" }) as any as S.Schema<Duration>;
 
 /** 0 = Fixed 1 = Estimated */
-export type CurrencyDecorator = 0 | 1;
+export type CurrencyDecorator = 0 | 1 | (number & {});
 export const CurrencyDecorator = /*@__PURE__*/ S.Number;
 
 export interface PlanPrice {
@@ -427,7 +438,12 @@ export const CatalogItemIconFileUrisMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<CatalogItemIconFileUrisMap>;
 
-export type ArtifactType = "Template" | "Fragment" | "Custom" | "Metadata";
+export type ArtifactType =
+  | "Template"
+  | "Fragment"
+  | "Custom"
+  | "Metadata"
+  | (string & {});
 export const ArtifactType = /*@__PURE__*/ S.String;
 
 export interface Artifact {
@@ -735,7 +751,8 @@ export type PricingAudience =
   | "IndirectGov"
   | "DirectChk"
   | "DirectBlue"
-  | "DirectRock";
+  | "DirectRock"
+  | (string & {});
 export const PricingAudience = /*@__PURE__*/ S.String;
 
 export interface TermDescriptionParameter {
@@ -1028,10 +1045,19 @@ export const PlanArtifactsList = /*@__PURE__*/ S.Array(
   Artifact,
 ) as any as S.Schema<PlanArtifactsList>;
 
-export type CSPState = "OptIn" | "OptOut" | "Terminated" | "SelectiveOptIn";
+export type CSPState =
+  | "OptIn"
+  | "OptOut"
+  | "Terminated"
+  | "SelectiveOptIn"
+  | (string & {});
 export const CSPState = /*@__PURE__*/ S.String;
 
-export type VmSecurityType = "None" | "Trusted" | "Confidential";
+export type VmSecurityType =
+  | "None"
+  | "Trusted"
+  | "Confidential"
+  | (string & {});
 export const VmSecurityType = /*@__PURE__*/ S.String;
 
 export type BillingComponentCustomMeterIdsValueList = ReadonlyArray<number>;
@@ -1112,7 +1138,13 @@ export const PlanCertificationsList = /*@__PURE__*/ S.Array(
   LinkProperties,
 ) as any as S.Schema<PlanCertificationsList>;
 
-export type PricingType = "Free" | "FreeTrial" | "Byol" | "Payg" | "Ri";
+export type PricingType =
+  | "Free"
+  | "FreeTrial"
+  | "Byol"
+  | "Payg"
+  | "Ri"
+  | (string & {});
 export const PricingType = /*@__PURE__*/ S.String;
 
 /** The list of the pricing types for which this plan is designated */
@@ -1354,7 +1386,7 @@ export const CatalogItemKeywordsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CatalogItemKeywordsList>;
 
 /** 0 = None 1 = Azure 2 = AMP 4 = AppSource 8 = Any */
-export type StoreFrontOptions = 0 | 1 | 2 | 4 | 8;
+export type StoreFrontOptions = 0 | 1 | 2 | 4 | 8 | (number & {});
 export const StoreFrontOptions = /*@__PURE__*/ S.Number;
 
 /** The list of document links provided for the item */
@@ -1364,7 +1396,7 @@ export const CatalogItemDocumentLinksList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CatalogItemDocumentLinksList>;
 
 /** 1 = DogFood 2 = Canary 3 = Production 4 = FairFax 5 = Unknown */
-export type EnvironmentInfo = 1 | 2 | 3 | 4 | 5;
+export type EnvironmentInfo = 1 | 2 | 3 | 4 | 5 | (number & {});
 export const EnvironmentInfo = /*@__PURE__*/ S.Number;
 
 /** List of linked Add Ins provided for the item */
@@ -1388,7 +1420,7 @@ export const CatalogItemPbiServicePrincipalIdsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CatalogItemPbiServicePrincipalIdsList>;
 
 /** 0 = Undefined 1 = None 2 = SelfAttested 3 = MicrosoftCertified */
-export type CertificationType = 0 | 1 | 2 | 3;
+export type CertificationType = 0 | 1 | 2 | 3 | (number & {});
 export const CertificationType = /*@__PURE__*/ S.Number;
 
 export interface M365CertificationInfo {
@@ -1410,7 +1442,7 @@ export const M365CertificationInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<M365CertificationInfo>;
 
 /** 0 = None 1 = Free 2 = FreeTrial 4 = Paid 8 = Byol */
-export type PricingOptions = 0 | 1 | 2 | 4 | 8;
+export type PricingOptions = 0 | 1 | 2 | 4 | 8 | (number & {});
 export const PricingOptions = /*@__PURE__*/ S.Number;
 
 export interface UIPricing {
@@ -1466,7 +1498,8 @@ export type ReviewSource =
   | "Ibiza"
   | "G2"
   | "Internal"
-  | "All";
+  | "All"
+  | (string & {});
 export const ReviewSource = /*@__PURE__*/ S.String;
 
 export type RatingSummaryStarsDistributionMap = {
@@ -1538,7 +1571,19 @@ export const EnrichedData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnrichedData" }) as any as S.Schema<EnrichedData>;
 
 /** 1 = Capability1 2 = Capability2 3 = Capability3 4 = Capability4 5 = Capability5 6 = Capability6 7 = Capability7 8 = Capability8 9 = Capability9 10 = Capability10 11 = Capability11 */
-export type OfficeCapabilityType = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+export type OfficeCapabilityType =
+  | 1
+  | 2
+  | 3
+  | 4
+  | 5
+  | 6
+  | 7
+  | 8
+  | 9
+  | 10
+  | 11
+  | (number & {});
 export const OfficeCapabilityType = /*@__PURE__*/ S.Number;
 
 /** Office capabilities */
@@ -2062,11 +2107,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -4161,7 +4206,8 @@ export const SearchPostArmRequestPricingTypesList = /*@__PURE__*/ S.Array(
 export type PrivateStoreAllow =
   | "AllowedByAdmin"
   | "AllowedByDefault"
-  | "NonAllowed";
+  | "NonAllowed"
+  | (string & {});
 export const PrivateStoreAllow = /*@__PURE__*/ S.String;
 
 export type SearchPostArmRequestPrivateStoreAllowancesList =

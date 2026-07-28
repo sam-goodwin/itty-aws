@@ -12,7 +12,7 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `read_write` - read_write * `read` - read * `none` - none */
-export type AccessLevelEnum = "read_write" | "read" | "none";
+export type AccessLevelEnum = "read_write" | "read" | "none" | (string & {});
 export const AccessLevelEnum = /*@__PURE__*/ S.String;
 
 export interface PropertyAccessControlsCreateRequest {

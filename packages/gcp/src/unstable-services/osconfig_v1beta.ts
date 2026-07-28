@@ -153,7 +153,8 @@ export type ExecStepConfigInterpreterEnum =
   | "INTERPRETER_UNSPECIFIED"
   | "NONE"
   | "SHELL"
-  | "POWERSHELL";
+  | "POWERSHELL"
+  | (string & {});
 export const ExecStepConfigInterpreterEnum = /*@__PURE__*/ S.String;
 
 /** Google Cloud Storage object representation. */
@@ -217,7 +218,8 @@ export type WindowsUpdateSettingsClassificationsItemEnum =
   | "SERVICE_PACK"
   | "TOOL"
   | "UPDATE_ROLLUP"
-  | "UPDATE";
+  | "UPDATE"
+  | (string & {});
 export const WindowsUpdateSettingsClassificationsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -285,7 +287,8 @@ export type PatchConfigRebootConfigEnum =
   | "REBOOT_CONFIG_UNSPECIFIED"
   | "DEFAULT"
   | "ALWAYS"
-  | "NEVER";
+  | "NEVER"
+  | (string & {});
 export const PatchConfigRebootConfigEnum = /*@__PURE__*/ S.String;
 
 /** Yum patching is performed by executing `yum update`. Additional options can be set to control how this is executed. Note that not all settings are supported on all platforms. */
@@ -308,7 +311,11 @@ export const YumSettings = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "YumSettings" }) as any as S.Schema<YumSettings>;
 
-export type AptSettingsTypeEnum = "TYPE_UNSPECIFIED" | "DIST" | "UPGRADE";
+export type AptSettingsTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "DIST"
+  | "UPGRADE"
+  | (string & {});
 export const AptSettingsTypeEnum = /*@__PURE__*/ S.String;
 
 /** Apt patching is completed by executing `apt-get update && apt-get upgrade`. Additional options can be set to control how this is executed. */
@@ -369,7 +376,8 @@ export const PatchConfig = /*@__PURE__*/ S.suspend(() =>
 export type PatchRolloutModeEnum =
   | "MODE_UNSPECIFIED"
   | "ZONE_BY_ZONE"
-  | "CONCURRENT_ZONES";
+  | "CONCURRENT_ZONES"
+  | (string & {});
 export const PatchRolloutModeEnum = /*@__PURE__*/ S.String;
 
 /** Message encapsulating a value that can be either absolute ("fixed") or relative ("percent") to a value. */
@@ -409,7 +417,8 @@ export type PatchJobStateEnum =
   | "COMPLETED_WITH_INACTIVE_VMS"
   | "COMPLETED_WITH_ERRORS"
   | "CANCELED"
-  | "TIMED_OUT";
+  | "TIMED_OUT"
+  | (string & {});
 export const PatchJobStateEnum = /*@__PURE__*/ S.String;
 
 /** A summary of the current patch state across all instances that this patch job affects. Contains counts of instances in different states. These states map to `InstancePatchState`. List patch job instance details to see the specific states of each instance. */
@@ -640,7 +649,8 @@ export type SoftwareRecipeStepExtractArchiveTypeEnum =
   | "TAR_BZIP"
   | "TAR_LZMA"
   | "TAR_XZ"
-  | "ZIP";
+  | "ZIP"
+  | (string & {});
 export const SoftwareRecipeStepExtractArchiveTypeEnum = /*@__PURE__*/ S.String;
 
 /** Extracts an archive of the type specified in the specified directory. */
@@ -709,7 +719,8 @@ export const SoftwareRecipeStepCopyFile = /*@__PURE__*/ S.suspend(() =>
 export type SoftwareRecipeStepRunScriptInterpreterEnum =
   | "INTERPRETER_UNSPECIFIED"
   | "SHELL"
-  | "POWERSHELL";
+  | "POWERSHELL"
+  | (string & {});
 export const SoftwareRecipeStepRunScriptInterpreterEnum =
   /*@__PURE__*/ S.String;
 
@@ -772,7 +783,8 @@ export type SoftwareRecipeDesiredStateEnum =
   | "DESIRED_STATE_UNSPECIFIED"
   | "INSTALLED"
   | "UPDATED"
-  | "REMOVED";
+  | "REMOVED"
+  | (string & {});
 export const SoftwareRecipeDesiredStateEnum = /*@__PURE__*/ S.String;
 
 /** Specifies an artifact available via some URI. */
@@ -874,14 +886,16 @@ export type PackageManagerEnum =
   | "APT"
   | "YUM"
   | "ZYPPER"
-  | "GOO";
+  | "GOO"
+  | (string & {});
 export const PackageManagerEnum = /*@__PURE__*/ S.String;
 
 export type PackageDesiredStateEnum =
   | "DESIRED_STATE_UNSPECIFIED"
   | "INSTALLED"
   | "UPDATED"
-  | "REMOVED";
+  | "REMOVED"
+  | (string & {});
 export const PackageDesiredStateEnum = /*@__PURE__*/ S.String;
 
 /** Package is a reference to the software package to be installed or removed. The agent on the VM instance uses the system package manager to apply the config. These are the commands that the agent uses to install or remove packages. Apt install: `apt-get update && apt-get -y install package1 package2 package3` remove: `apt-get -y remove package1 package2 package3` Yum install: `yum -y install package1 package2 package3` remove: `yum -y remove package1 package2 package3` Zypper install: `zypper install package1 package2 package3` remove: `zypper rm package1 package2` Googet install: `googet -noconfirm install package1 package2 package3` remove: `googet -noconfirm remove package1 package2 package3` */
@@ -965,7 +979,8 @@ export const ZypperRepository = /*@__PURE__*/ S.suspend(() =>
 export type AptRepositoryArchiveTypeEnum =
   | "ARCHIVE_TYPE_UNSPECIFIED"
   | "DEB"
-  | "DEB_SRC";
+  | "DEB_SRC"
+  | (string & {});
 export const AptRepositoryArchiveTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a single Apt package repository. This repository is added to a repo file that is stored at `/etc/apt/sources.list.d/google_osconfig.list`. */
@@ -1080,14 +1095,16 @@ export const CreateProjectsGuestPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 export type PatchDeploymentStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "PAUSED";
+  | "PAUSED"
+  | (string & {});
 export const PatchDeploymentStateEnum = /*@__PURE__*/ S.String;
 
 export type RecurringScheduleFrequencyEnum =
   | "FREQUENCY_UNSPECIFIED"
   | "WEEKLY"
   | "MONTHLY"
-  | "DAILY";
+  | "DAILY"
+  | (string & {});
 export const RecurringScheduleFrequencyEnum = /*@__PURE__*/ S.String;
 
 export type WeekDayOfMonthDayOfWeekEnum =
@@ -1098,7 +1115,8 @@ export type WeekDayOfMonthDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const WeekDayOfMonthDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Represents one week day in a month. An example is "the 4th Sunday". */
@@ -1142,7 +1160,8 @@ export type WeeklyScheduleDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const WeeklyScheduleDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Represents a weekly schedule. */
@@ -1643,7 +1662,8 @@ export type PatchJobInstanceDetailsStateEnum =
   | "RUNNING_PRE_PATCH_STEP"
   | "RUNNING_POST_PATCH_STEP"
   | "NO_AGENT_DETECTED"
-  | "SKIPPED";
+  | "SKIPPED"
+  | (string & {});
 export const PatchJobInstanceDetailsStateEnum = /*@__PURE__*/ S.String;
 
 /** Patch details for a VM instance. For more information about reviewing VM instance details, see [Listing all VM instance details for a specific patch job](https://cloud.google.com/compute/docs/os-patch-management/manage-patch-jobs#list-instance-details). */

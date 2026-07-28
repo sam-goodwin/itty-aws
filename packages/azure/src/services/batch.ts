@@ -80,7 +80,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -88,7 +89,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -379,7 +381,7 @@ export const ApplicationPackageActivateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationPackageActivateRequest>;
 
 /** The current state of the application package. */
-export type PackageState = "Pending" | "Active";
+export type PackageState = "Pending" | "Active" | (string & {});
 export const PackageState = /*@__PURE__*/ S.String;
 
 /** Properties of an application package */
@@ -833,7 +835,8 @@ export const BatchAccountCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 /** The authentication mode which the Batch service will use to manage the auto-storage account. */
 export type AutoStorageBasePropertiesAuthenticationMode =
   | "StorageKeys"
-  | "BatchAccountManagedIdentity";
+  | "BatchAccountManagedIdentity"
+  | (string & {});
 export const AutoStorageBasePropertiesAuthenticationMode =
   /*@__PURE__*/ S.String;
 
@@ -870,7 +873,10 @@ export const AutoStorageBaseProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AutoStorageBaseProperties>;
 
 /** The allocation mode for creating pools in the Batch account. */
-export type PoolAllocationMode = "BatchService" | "UserSubscription";
+export type PoolAllocationMode =
+  | "BatchService"
+  | "UserSubscription"
+  | (string & {});
 export const PoolAllocationMode = /*@__PURE__*/ S.String;
 
 /** Identifies the Azure key vault associated with a Batch account. */
@@ -893,16 +899,17 @@ export const KeyVaultReference = /*@__PURE__*/ S.suspend(() =>
 export type BatchAccountCreatePropertiesPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter";
+  | "SecuredByPerimeter"
+  | (string & {});
 export const BatchAccountCreatePropertiesPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
 /** Default action for endpoint access. It is only applicable when publicNetworkAccess is enabled. */
-export type EndpointAccessDefaultAction = "Allow" | "Deny";
+export type EndpointAccessDefaultAction = "Allow" | "Deny" | (string & {});
 export const EndpointAccessDefaultAction = /*@__PURE__*/ S.String;
 
 /** The action when client IP address is matched. */
-export type IPRuleAction = "Allow";
+export type IPRuleAction = "Allow" | (string & {});
 export const IPRuleAction = /*@__PURE__*/ S.String;
 
 /** Rule to filter client IP address. */
@@ -956,7 +963,10 @@ export const NetworkProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkProfile" }) as any as S.Schema<NetworkProfile>;
 
 /** Type of the key source. */
-export type KeySource = "Microsoft.Batch" | "Microsoft.KeyVault";
+export type KeySource =
+  | "Microsoft.Batch"
+  | "Microsoft.KeyVault"
+  | (string & {});
 export const KeySource = /*@__PURE__*/ S.String;
 
 /** KeyVault configuration when using an encryption KeySource of Microsoft.KeyVault. */
@@ -992,7 +1002,8 @@ export const EncryptionProperties = /*@__PURE__*/ S.suspend(() =>
 export type AuthenticationMode =
   | "SharedKey"
   | "AAD"
-  | "TaskAuthenticationToken";
+  | "TaskAuthenticationToken"
+  | (string & {});
 export const AuthenticationMode = /*@__PURE__*/ S.String;
 
 /** List of allowed authentication modes for the Batch account that can be used to authenticate with the data plane. This does not affect authentication with the control plane. */
@@ -1039,7 +1050,11 @@ export const BatchAccountCreateProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchAccountCreateProperties>;
 
 /** The type of identity used for the Batch account. */
-export type ResourceIdentityType = "SystemAssigned" | "UserAssigned" | "None";
+export type ResourceIdentityType =
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "None"
+  | (string & {});
 export const ResourceIdentityType = /*@__PURE__*/ S.String;
 
 /** The list of associated user identities. */
@@ -1131,14 +1146,16 @@ export type ProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Cancelled";
+  | "Cancelled"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The network access type for operating on the resources in the Batch account. */
 export type BatchAccountPropertiesPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter";
+  | "SecuredByPerimeter"
+  | (string & {});
 export const BatchAccountPropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** The provisioning state of the private endpoint connection. */
@@ -1148,7 +1165,8 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Cancelled";
+  | "Cancelled"
+  | (string & {});
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1178,7 +1196,8 @@ export type PrivateLinkServiceConnectionStatus =
   | "Approved"
   | "Pending"
   | "Rejected"
-  | "Disconnected";
+  | "Disconnected"
+  | (string & {});
 export const PrivateLinkServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** The private link service connection state of the private endpoint connection */
@@ -1275,7 +1294,8 @@ export const BatchAccountPropertiesPrivateEndpointConnectionsList =
 /** The authentication mode which the Batch service will use to manage the auto-storage account. */
 export type AutoStoragePropertiesAuthenticationMode =
   | "StorageKeys"
-  | "BatchAccountManagedIdentity";
+  | "BatchAccountManagedIdentity"
+  | (string & {});
 export const AutoStoragePropertiesAuthenticationMode = /*@__PURE__*/ S.String;
 
 /** Contains information about the auto-storage account associated with a Batch account. */
@@ -2007,7 +2027,7 @@ export const OutboundEnvironmentEndpointCollection = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OutboundEnvironmentEndpointCollection>;
 
 /** The type of account key to regenerate. */
-export type AccountKeyType = "Primary" | "Secondary";
+export type AccountKeyType = "Primary" | "Secondary" | (string & {});
 export const AccountKeyType = /*@__PURE__*/ S.String;
 
 export interface BatchAccountRegenerateKeyRequest {
@@ -2091,7 +2111,8 @@ export const BatchAccountUpdatePropertiesAllowedAuthenticationModesList =
 export type BatchAccountUpdatePropertiesPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter";
+  | "SecuredByPerimeter"
+  | (string & {});
 export const BatchAccountUpdatePropertiesPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -2201,7 +2222,7 @@ export const BatchAccountUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchAccountUpdateResponse>;
 
 /** The result of the request to list operations. */
-export type ResourceType = "Microsoft.Batch/batchAccounts";
+export type ResourceType = "Microsoft.Batch/batchAccounts" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export interface LocationCheckNameAvailabilityRequest {
@@ -2234,7 +2255,10 @@ export const LocationCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LocationCheckNameAvailabilityRequest>;
 
 /** Gets the reason that a Batch account name could not be used. The Reason element is only returned if NameAvailable is false. */
-export type NameAvailabilityReason = "Invalid" | "AlreadyExists";
+export type NameAvailabilityReason =
+  | "Invalid"
+  | "AlreadyExists"
+  | (string & {});
 export const NameAvailabilityReason = /*@__PURE__*/ S.String;
 
 /** The CheckNameAvailability operation response. */
@@ -2419,7 +2443,8 @@ export type NetworkSecurityPerimeterConfigurationProvisioningState =
   | "Deleting"
   | "Accepted"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const NetworkSecurityPerimeterConfigurationProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -2428,11 +2453,15 @@ export type ProvisioningIssuePropertiesIssueType =
   | "Unknown"
   | "ConfigurationPropagationFailure"
   | "MissingPerimeterConfiguration"
-  | "MissingIdentityConfiguration";
+  | "MissingIdentityConfiguration"
+  | (string & {});
 export const ProvisioningIssuePropertiesIssueType = /*@__PURE__*/ S.String;
 
 /** Severity of the issue. */
-export type ProvisioningIssuePropertiesSeverity = "Warning" | "Error";
+export type ProvisioningIssuePropertiesSeverity =
+  | "Warning"
+  | "Error"
+  | (string & {});
 export const ProvisioningIssuePropertiesSeverity = /*@__PURE__*/ S.String;
 
 /** Fully qualified resource IDs of suggested resources that can be associated to the network security perimeter (NSP) to remediate the issue. */
@@ -2444,7 +2473,7 @@ export const ProvisioningIssuePropertiesSuggestedResourceIdsList =
   ) as any as S.Schema<ProvisioningIssuePropertiesSuggestedResourceIdsList>;
 
 /** Direction of Access Rule */
-export type AccessRuleDirection = "Inbound" | "Outbound";
+export type AccessRuleDirection = "Inbound" | "Outbound" | (string & {});
 export const AccessRuleDirection = /*@__PURE__*/ S.String;
 
 /** Address prefixes in the CIDR format for inbound rules */
@@ -2629,7 +2658,11 @@ export const NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesLi
   ) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList>;
 
 /** Access mode of the resource association */
-export type ResourceAssociationAccessMode = "Enforced" | "Learning" | "Audit";
+export type ResourceAssociationAccessMode =
+  | "Enforced"
+  | "Learning"
+  | "Audit"
+  | (string & {});
 export const ResourceAssociationAccessMode = /*@__PURE__*/ S.String;
 
 /** Information about resource association */
@@ -2973,21 +3006,23 @@ export const WindowsConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WindowsConfiguration>;
 
 /** The type of caching to enable for the disk. */
-export type CachingType = "None" | "ReadOnly" | "ReadWrite";
+export type CachingType = "None" | "ReadOnly" | "ReadWrite" | (string & {});
 export const CachingType = /*@__PURE__*/ S.String;
 
 /** The storage account type for use in creating data disks or OS disk. */
 export type StorageAccountType =
   | "Standard_LRS"
   | "Premium_LRS"
-  | "StandardSSD_LRS";
+  | "StandardSSD_LRS"
+  | (string & {});
 export const StorageAccountType = /*@__PURE__*/ S.String;
 
 /** Specifies the EncryptionType of the managed disk. It is set to DiskWithVMGuestState for encryption of the managed disk along with VMGuestState blob, VMGuestStateOnly for encryption of just the VMGuestState blob, and NonPersistedTPM for not persisting firmware state in the VMGuestState blob. **Note**: It can be set for only Confidential VMs and required when using Confidential VMs. */
 export type SecurityEncryptionTypes =
   | "NonPersistedTPM"
   | "VMGuestStateOnly"
-  | "DiskWithVMGuestState";
+  | "DiskWithVMGuestState"
+  | (string & {});
 export const SecurityEncryptionTypes = /*@__PURE__*/ S.String;
 
 /** The ARM resource id of the disk encryption set. */
@@ -3063,7 +3098,10 @@ export const VirtualMachineConfigurationDataDisksList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<VirtualMachineConfigurationDataDisksList>;
 
 /** The container technology to be used. */
-export type ContainerType = "DockerCompatible" | "CriCompatible";
+export type ContainerType =
+  | "DockerCompatible"
+  | "CriCompatible"
+  | (string & {});
 export const ContainerType = /*@__PURE__*/ S.String;
 
 /** This is the full image reference, as would be specified to "docker pull". An image will be sourced from the default Docker registry unless the image is fully qualified with an alternative registry. */
@@ -3128,7 +3166,7 @@ export const ContainerConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerConfiguration>;
 
 /** If omitted, no disks on the compute nodes in the pool will be encrypted. */
-export type DiskEncryptionTarget = "OsDisk" | "TemporaryDisk";
+export type DiskEncryptionTarget = "OsDisk" | "TemporaryDisk" | (string & {});
 export const DiskEncryptionTarget = /*@__PURE__*/ S.String;
 
 /** On Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and "TemporaryDisk" must be specified. */
@@ -3174,7 +3212,7 @@ export const DiskEncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiskEncryptionConfiguration>;
 
 /** The default value is regional. */
-export type NodePlacementPolicyType = "Regional" | "Zonal";
+export type NodePlacementPolicyType = "Regional" | "Zonal" | (string & {});
 export const NodePlacementPolicyType = /*@__PURE__*/ S.String;
 
 /** Allocation configuration used by Batch Service to provision the nodes. */
@@ -3241,7 +3279,7 @@ export const VirtualMachineConfigurationExtensionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<VirtualMachineConfigurationExtensionsList>;
 
 /** The location where the OS disk should be placed. */
-export type DiffDiskPlacement = "CacheDisk";
+export type DiffDiskPlacement = "CacheDisk" | (string & {});
 export const DiffDiskPlacement = /*@__PURE__*/ S.String;
 
 /** Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine. */
@@ -3281,7 +3319,7 @@ export const OSDisk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OSDisk" }) as any as S.Schema<OSDisk>;
 
 /** Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. */
-export type SecurityTypes = "trustedLaunch" | "confidentialVM";
+export type SecurityTypes = "trustedLaunch" | "confidentialVM" | (string & {});
 export const SecurityTypes = /*@__PURE__*/ S.String;
 
 /** Specifies the security settings like secure boot and vTPM used while creating the virtual machine. */
@@ -3299,7 +3337,7 @@ export const UefiSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UefiSettings" }) as any as S.Schema<UefiSettings>;
 
 /** Specifies the access control policy execution mode. */
-export type HostEndpointSettingsModeTypes = "Audit" | "Enforce";
+export type HostEndpointSettingsModeTypes = "Audit" | "Enforce" | (string & {});
 export const HostEndpointSettingsModeTypes = /*@__PURE__*/ S.String;
 
 /** Specifies particular host endpoint settings. */
@@ -3436,7 +3474,8 @@ export type ComputeNodeDeallocationOption =
   | "Requeue"
   | "Terminate"
   | "TaskCompletion"
-  | "RetainedData";
+  | "RetainedData"
+  | (string & {});
 export const ComputeNodeDeallocationOption = /*@__PURE__*/ S.String;
 
 /** Fixed scale settings for the pool. */
@@ -3492,20 +3531,26 @@ export const ScaleSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScaleSettings" }) as any as S.Schema<ScaleSettings>;
 
 /** This imposes restrictions on which nodes can be assigned to the pool. Enabling this value can reduce the chance of the requested number of nodes to be allocated in the pool. If not specified, this value defaults to 'Disabled'. */
-export type InterNodeCommunicationState = "Enabled" | "Disabled";
+export type InterNodeCommunicationState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const InterNodeCommunicationState = /*@__PURE__*/ S.String;
 
 /** The scope of dynamic vnet assignment. */
-export type NetworkConfigurationDynamicVnetAssignmentScope = "none" | "job";
+export type NetworkConfigurationDynamicVnetAssignmentScope =
+  | "none"
+  | "job"
+  | (string & {});
 export const NetworkConfigurationDynamicVnetAssignmentScope =
   /*@__PURE__*/ S.String;
 
 /** The protocol of the endpoint. */
-export type InboundEndpointProtocol = "TCP" | "UDP";
+export type InboundEndpointProtocol = "TCP" | "UDP" | (string & {});
 export const InboundEndpointProtocol = /*@__PURE__*/ S.String;
 
 /** The action that should be taken for a specified IP address, subnet range or tag. */
-export type NetworkSecurityGroupRuleAccess = "Allow" | "Deny";
+export type NetworkSecurityGroupRuleAccess = "Allow" | "Deny" | (string & {});
 export const NetworkSecurityGroupRuleAccess = /*@__PURE__*/ S.String;
 
 /** Valid values are '*' (for all ports 0 - 65535) or arrays of ports or port ranges (i.e. 100-200). The ports should in the range of 0 to 65535 and the port ranges or ports can't overlap. If any other values are provided the request fails with HTTP status code 400. Default value will be *. */
@@ -3599,7 +3644,8 @@ export const PoolEndpointConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type IPAddressProvisioningType =
   | "BatchManaged"
   | "UserManaged"
-  | "NoPublicIPAddresses";
+  | "NoPublicIPAddresses"
+  | (string & {});
 export const IPAddressProvisioningType = /*@__PURE__*/ S.String;
 
 /** The number of IPs specified here limits the maximum size of the Pool - 100 dedicated nodes or 100 Spot/low-priority nodes can be allocated for each public IP. For example, a pool needing 250 dedicated VMs would need at least 3 public IPs specified. Each element of this collection is of the form: /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}. */
@@ -3611,7 +3657,7 @@ export const PublicIPAddressConfigurationIpAddressIdsList =
   ) as any as S.Schema<PublicIPAddressConfigurationIpAddressIdsList>;
 
 /** The IP families used to specify IP versions available to the pool. */
-export type IPFamily = "IPv4" | "IPv6";
+export type IPFamily = "IPv4" | "IPv6" | (string & {});
 export const IPFamily = /*@__PURE__*/ S.String;
 
 /** IP families are used to determine single-stack or dual-stack pools. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6. */
@@ -3691,11 +3737,14 @@ export const NetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkConfiguration>;
 
 /** The order for scheduling tasks from different jobs with the same priority. */
-export type JobDefaultOrder = "None" | "CreationTime";
+export type JobDefaultOrder = "None" | "CreationTime" | (string & {});
 export const JobDefaultOrder = /*@__PURE__*/ S.String;
 
 /** How tasks should be distributed across compute nodes. */
-export type TaskSchedulingPolicyNodeFillType = "Spread" | "Pack";
+export type TaskSchedulingPolicyNodeFillType =
+  | "Spread"
+  | "Pack"
+  | (string & {});
 export const TaskSchedulingPolicyNodeFillType = /*@__PURE__*/ S.String;
 
 /** Specifies how tasks should be distributed across compute nodes. */
@@ -3715,7 +3764,7 @@ export const TaskSchedulingPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaskSchedulingPolicy>;
 
 /** The elevation level of the user. */
-export type ElevationLevel = "NonAdmin" | "Admin";
+export type ElevationLevel = "NonAdmin" | "Admin" | (string & {});
 export const ElevationLevel = /*@__PURE__*/ S.String;
 
 /** Properties used to create a user account on a Linux node. */
@@ -3738,7 +3787,7 @@ export const LinuxUserConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LinuxUserConfiguration>;
 
 /** Specifies login mode for the user. The default value is Interactive. */
-export type LoginMode = "Batch" | "Interactive";
+export type LoginMode = "Batch" | "Interactive" | (string & {});
 export const LoginMode = /*@__PURE__*/ S.String;
 
 /** Properties used to create a user account on a Windows node. */
@@ -3862,7 +3911,7 @@ export const StartTaskEnvironmentSettingsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<StartTaskEnvironmentSettingsList>;
 
 /** The default value is Pool. If the pool is running Windows a value of Task should be specified if stricter isolation between tasks is required. For example, if the task mutates the registry in a way which could impact other tasks. */
-export type AutoUserScope = "Task" | "Pool";
+export type AutoUserScope = "Task" | "Pool" | (string & {});
 export const AutoUserScope = /*@__PURE__*/ S.String;
 
 /** Specifies the parameters for the auto user that runs a task on the Batch service. */
@@ -3898,7 +3947,8 @@ export const UserIdentity = /*@__PURE__*/ S.suspend(() =>
 /** A flag to indicate where the container task working directory is. The default is 'taskWorkingDirectory'. */
 export type ContainerWorkingDirectory =
   | "TaskWorkingDirectory"
-  | "ContainerImageDefault";
+  | "ContainerImageDefault"
+  | (string & {});
 export const ContainerWorkingDirectory = /*@__PURE__*/ S.String;
 
 /** The paths which will be mounted to container task's container. */
@@ -3908,7 +3958,8 @@ export type ContainerHostDataPath =
   | "VfsMounts"
   | "Task"
   | "JobPrep"
-  | "Applications";
+  | "Applications"
+  | (string & {});
 export const ContainerHostDataPath = /*@__PURE__*/ S.String;
 
 /** The entry of path and mount mode you want to mount into task container. */
@@ -4146,7 +4197,7 @@ export const PoolPropertiesInputMountConfigurationList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PoolPropertiesInputMountConfigurationList>;
 
 /** Specifies the mode of an upgrade to virtual machines in the scale set.<br /><br /> Possible values are:<br /><br /> **Manual** - You control the application of updates to virtual machines in the scale set. You do this by using the manualUpgrade action.<br /><br /> **Automatic** - All virtual machines in the scale set are automatically updated at the same time.<br /><br /> **Rolling** - Scale set performs updates in batches with an optional pause time in between. */
-export type UpgradeMode = "automatic" | "manual" | "rolling";
+export type UpgradeMode = "automatic" | "manual" | "rolling" | (string & {});
 export const UpgradeMode = /*@__PURE__*/ S.String;
 
 /** The configuration parameters used for performing automatic OS upgrade. */
@@ -4272,7 +4323,7 @@ export const PoolPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoolPropertiesInput>;
 
 /** The type of identity used for the Batch Pool. */
-export type PoolIdentityType = "UserAssigned" | "None";
+export type PoolIdentityType = "UserAssigned" | "None" | (string & {});
 export const PoolIdentityType = /*@__PURE__*/ S.String;
 
 /** The list of user identities associated with the Batch pool. */
@@ -4348,11 +4399,15 @@ export const PoolCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoolCreateRequest>;
 
 /** The current state of the pool. */
-export type PoolProvisioningState = "Succeeded" | "Deleting";
+export type PoolProvisioningState = "Succeeded" | "Deleting" | (string & {});
 export const PoolProvisioningState = /*@__PURE__*/ S.String;
 
 /** Whether the pool is resizing. */
-export type AllocationState = "Steady" | "Resizing" | "Stopping";
+export type AllocationState =
+  | "Steady"
+  | "Resizing"
+  | "Stopping"
+  | (string & {});
 export const AllocationState = /*@__PURE__*/ S.String;
 
 /** Additional details about the error. */

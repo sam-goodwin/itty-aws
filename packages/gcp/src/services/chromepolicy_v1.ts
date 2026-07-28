@@ -583,7 +583,7 @@ export const GoogleChromePolicyVersionsV1AdditionalTargetKeyNameList =
   ) as any as S.Schema<GoogleChromePolicyVersionsV1AdditionalTargetKeyNameList>;
 
 export type GoogleChromePolicyVersionsV1PolicySchemaValidTargetResourcesItemEnum =
-  "TARGET_RESOURCE_UNSPECIFIED" | "ORG_UNIT" | "GROUP";
+  "TARGET_RESOURCE_UNSPECIFIED" | "ORG_UNIT" | "GROUP" | (string & {});
 export const GoogleChromePolicyVersionsV1PolicySchemaValidTargetResourcesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -602,7 +602,8 @@ export const StringList = /*@__PURE__*/ S.Array(
 export type Proto2EnumDescriptorProtoVisibilityEnum =
   | "VISIBILITY_UNSET"
   | "VISIBILITY_LOCAL"
-  | "VISIBILITY_EXPORT";
+  | "VISIBILITY_EXPORT"
+  | (string & {});
 export const Proto2EnumDescriptorProtoVisibilityEnum = /*@__PURE__*/ S.String;
 
 /** Describes a value within an enum. */
@@ -684,13 +685,15 @@ export type Proto2FieldDescriptorProtoTypeEnum =
   | "TYPE_SFIXED32"
   | "TYPE_SFIXED64"
   | "TYPE_SINT32"
-  | "TYPE_SINT64";
+  | "TYPE_SINT64"
+  | (string & {});
 export const Proto2FieldDescriptorProtoTypeEnum = /*@__PURE__*/ S.String;
 
 export type Proto2FieldDescriptorProtoLabelEnum =
   | "LABEL_OPTIONAL"
   | "LABEL_REPEATED"
-  | "LABEL_REQUIRED";
+  | "LABEL_REQUIRED"
+  | (string & {});
 export const Proto2FieldDescriptorProtoLabelEnum = /*@__PURE__*/ S.String;
 
 /** Describes a field within a message. */
@@ -736,7 +739,8 @@ export const Proto2FieldDescriptorProtoList = /*@__PURE__*/ S.Array(
 export type Proto2DescriptorProtoVisibilityEnum =
   | "VISIBILITY_UNSET"
   | "VISIBILITY_LOCAL"
-  | "VISIBILITY_EXPORT";
+  | "VISIBILITY_EXPORT"
+  | (string & {});
 export const Proto2DescriptorProtoVisibilityEnum = /*@__PURE__*/ S.String;
 
 /** Describes a message type. */
@@ -887,7 +891,8 @@ export type GoogleChromePolicyVersionsV1UploadedFileConstraintsSupportedContentT
     | "CONTENT_TYPE_GZIP"
     | "CONTENT_TYPE_CSV"
     | "CONTENT_TYPE_YAML"
-    | "CONTENT_TYPE_IMAGE_WEBP";
+    | "CONTENT_TYPE_IMAGE_WEBP"
+    | (string & {});
 export const GoogleChromePolicyVersionsV1UploadedFileConstraintsSupportedContentTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1023,7 +1028,8 @@ export type GoogleChromePolicyVersionsV1PolicySchemaSupportedPlatformsItemEnum =
     | "CHROME_OS"
     | "CHROME_BROWSER"
     | "CHROME_BROWSER_FOR_ANDROID"
-    | "CHROME_BROWSER_FOR_IOS";
+    | "CHROME_BROWSER_FOR_IOS"
+    | (string & {});
 export const GoogleChromePolicyVersionsV1PolicySchemaSupportedPlatformsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1086,7 +1092,8 @@ export type GoogleChromePolicyVersionsV1PolicyApiLifecyclePolicyApiLifecycleStag
     | "API_PREVIEW"
     | "API_DEVELOPMENT"
     | "API_CURRENT"
-    | "API_DEPRECATED";
+    | "API_DEPRECATED"
+    | (string & {});
 export const GoogleChromePolicyVersionsV1PolicyApiLifecyclePolicyApiLifecycleStageEnum =
   /*@__PURE__*/ S.String;
 

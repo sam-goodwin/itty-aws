@@ -60,7 +60,11 @@ export const HybridUseBenefitCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HybridUseBenefitCreateRequest>;
 
 /** Represent the current state of the Reservation. */
-export type ProvisioningState = "Succeeded" | "Cancelled" | "Failed";
+export type ProvisioningState =
+  | "Succeeded"
+  | "Cancelled"
+  | "Failed"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Hybrid use benefit properties */

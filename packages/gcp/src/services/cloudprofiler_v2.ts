@@ -68,7 +68,8 @@ export type ProfileProfileTypeEnum =
   | "THREADS"
   | "CONTENTION"
   | "PEAK_HEAP"
-  | "HEAP_ALLOC";
+  | "HEAP_ALLOC"
+  | (string & {});
 export const ProfileProfileTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -153,7 +154,8 @@ export type CreateProfileRequestProfileTypeItemEnum =
   | "THREADS"
   | "CONTENTION"
   | "PEAK_HEAP"
-  | "HEAP_ALLOC";
+  | "HEAP_ALLOC"
+  | (string & {});
 export const CreateProfileRequestProfileTypeItemEnum = /*@__PURE__*/ S.String;
 
 export type CreateProfileRequestProfileTypeItemEnumList =

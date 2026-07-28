@@ -43,11 +43,12 @@ export type AvailabilityStateValues =
   | "Available"
   | "Unavailable"
   | "Degraded"
-  | "Unknown";
+  | "Unknown"
+  | (string & {});
 export const AvailabilityStateValues = /*@__PURE__*/ S.String;
 
 /** Chronicity of the availability transition. */
-export type ReasonChronicityTypes = "Transient" | "Persistent";
+export type ReasonChronicityTypes = "Transient" | "Persistent" | (string & {});
 export const ReasonChronicityTypes = /*@__PURE__*/ S.String;
 
 /** An annotation describing a change in the availabilityState to Available from Unavailable with a reasonType of type Unplanned */
@@ -495,7 +496,7 @@ export const ChildResourcesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ChildResourcesListRequest",
 }) as any as S.Schema<ChildResourcesListRequest>;
 
-export type EmergingIssuesGetRequestIssueName = "default";
+export type EmergingIssuesGetRequestIssueName = "default" | (string & {});
 export const EmergingIssuesGetRequestIssueName = /*@__PURE__*/ S.String;
 
 export interface EmergingIssuesGetRequest {
@@ -522,7 +523,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -530,7 +532,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -586,11 +589,15 @@ export const EmergingIssueStatusBannersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EmergingIssueStatusBannersList>;
 
 /** The severity level of this active event. */
-export type SeverityValues = "Information" | "Warning" | "Error";
+export type SeverityValues =
+  | "Information"
+  | "Warning"
+  | "Error"
+  | (string & {});
 export const SeverityValues = /*@__PURE__*/ S.String;
 
 /** The stage of this active event. */
-export type StageValues = "Active" | "Resolve" | "Archived";
+export type StageValues = "Active" | "Resolve" | "Archived" | (string & {});
 export const StageValues = /*@__PURE__*/ S.String;
 
 /** Object of impacted region. */
@@ -820,7 +827,8 @@ export type EventTypeValues =
   | "RCA"
   | "EmergingIssues"
   | "SecurityAdvisory"
-  | "Billing";
+  | "Billing"
+  | (string & {});
 export const EventTypeValues = /*@__PURE__*/ S.String;
 
 /** Sub-type of event. */
@@ -832,19 +840,23 @@ export type EventSubTypeValues =
   | "PriceChanges"
   | "TaxChanges"
   | "MeterIDChanges"
-  | "UnauthorizedPartyAbuse";
+  | "UnauthorizedPartyAbuse"
+  | (string & {});
 export const EventSubTypeValues = /*@__PURE__*/ S.String;
 
 /** Source of event. */
-export type EventSourceValues = "ResourceHealth" | "ServiceHealth";
+export type EventSourceValues =
+  | "ResourceHealth"
+  | "ServiceHealth"
+  | (string & {});
 export const EventSourceValues = /*@__PURE__*/ S.String;
 
 /** Current status of event. */
-export type EventStatusValues = "Active" | "Resolved";
+export type EventStatusValues = "Active" | "Resolved" | (string & {});
 export const EventStatusValues = /*@__PURE__*/ S.String;
 
 /** Level of insight. */
-export type LevelValues = "Critical" | "Warning";
+export type LevelValues = "Critical" | "Warning" | (string & {});
 export const LevelValues = /*@__PURE__*/ S.String;
 
 /** Level of event. */
@@ -852,7 +864,8 @@ export type EventLevelValues =
   | "Critical"
   | "Error"
   | "Warning"
-  | "Informational";
+  | "Informational"
+  | (string & {});
 export const EventLevelValues = /*@__PURE__*/ S.String;
 
 /** Article of event. */
@@ -875,7 +888,7 @@ export const EventPropertiesArticle = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventPropertiesArticle>;
 
 /** Type of link. */
-export type LinkTypeValues = "Button" | "Hyperlink";
+export type LinkTypeValues = "Button" | "Hyperlink" | (string & {});
 export const LinkTypeValues = /*@__PURE__*/ S.String;
 
 /** Display text of link. */
@@ -1825,7 +1838,7 @@ export const MetadataEntityPropertiesDependsOnList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MetadataEntityPropertiesDependsOnList>;
 
-export type Scenario = "Alerts";
+export type Scenario = "Alerts" | (string & {});
 export const Scenario = /*@__PURE__*/ S.String;
 
 /** The list of scenarios applicable to this metadata entity. */

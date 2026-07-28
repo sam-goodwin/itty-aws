@@ -108,7 +108,7 @@ export const CreateProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateProjectsLocationsCatalogsRequest",
 }) as any as S.Schema<CreateProjectsLocationsCatalogsRequest>;
 
-export type DatabaseTypeEnum = "TYPE_UNSPECIFIED" | "HIVE";
+export type DatabaseTypeEnum = "TYPE_UNSPECIFIED" | "HIVE" | (string & {});
 export const DatabaseTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -239,7 +239,7 @@ export const HiveTableOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "HiveTableOptions",
 }) as any as S.Schema<HiveTableOptions>;
 
-export type TableTypeEnum = "TYPE_UNSPECIFIED" | "HIVE";
+export type TableTypeEnum = "TYPE_UNSPECIFIED" | "HIVE" | (string & {});
 export const TableTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a table. */
@@ -428,7 +428,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -684,7 +685,8 @@ export const ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsCatalogsDatabasesTablesViewEnum =
   | "TABLE_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListProjectsLocationsCatalogsDatabasesTablesViewEnum =
   /*@__PURE__*/ S.String;
 

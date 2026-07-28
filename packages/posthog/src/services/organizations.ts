@@ -71,10 +71,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -252,7 +253,10 @@ export const CimdVerificationTokensRetrieveRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CimdVerificationTokensRetrieveRequest>;
 
 /** * `bayesian` - Bayesian * `frequentist` - Frequentist */
-export type DefaultExperimentStatsMethodEnum = "bayesian" | "frequentist";
+export type DefaultExperimentStatsMethodEnum =
+  | "bayesian"
+  | "frequentist"
+  | (string & {});
 export const DefaultExperimentStatsMethodEnum = /*@__PURE__*/ S.String;
 
 /** Default statistical method for new experiments in this organization. * `bayesian` - Bayesian * `frequentist` - Frequentist */
@@ -303,11 +307,11 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.Http({ method: "POST", uri: "/api/organizations/", code: 200 })),
 ).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
 
-export type EffectiveMembershipLevelEnum = 1 | 8 | 15;
+export type EffectiveMembershipLevelEnum = 1 | 8 | 15 | (number & {});
 export const EffectiveMembershipLevelEnum = /*@__PURE__*/ S.Number;
 
 /** * `0` - none * `3` - config * `6` - install * `9` - root */
-export type PluginsAccessLevelEnum = 0 | 3 | 6 | 9;
+export type PluginsAccessLevelEnum = 0 | 3 | 6 | 9 | (number & {});
 export const PluginsAccessLevelEnum = /*@__PURE__*/ S.Number;
 
 export type OrganizationTeamsItemMap = { [key: string]: unknown | undefined };
@@ -1130,7 +1134,7 @@ export const IntegrationsEnvironmentMappingPartialUpdateRequest =
   }) as any as S.Schema<IntegrationsEnvironmentMappingPartialUpdateRequest>;
 
 /** * `vercel` - Vercel */
-export type OrganizationIntegrationKindEnum = "vercel";
+export type OrganizationIntegrationKindEnum = "vercel" | (string & {});
 export const OrganizationIntegrationKindEnum = /*@__PURE__*/ S.String;
 
 /** Serializer for organization-level integrations. */
@@ -1158,7 +1162,7 @@ export const OrganizationIntegration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationIntegration>;
 
 /** * `1` - member * `8` - administrator * `15` - owner */
-export type OrganizationMembershipLevelEnum = 1 | 8 | 15;
+export type OrganizationMembershipLevelEnum = 1 | 8 | 15 | (number & {});
 export const OrganizationMembershipLevelEnum = /*@__PURE__*/ S.Number;
 
 export interface InvitesBulkCreateRequest {
@@ -1372,7 +1376,7 @@ export const PaginatedOrganizationInviteListOutput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedOrganizationInviteListOutput>;
 
 /** * `BAA` - BAA * `DPA` - DPA */
-export type CreateLegalDocumentDocumentTypeEnum = "BAA" | "DPA";
+export type CreateLegalDocumentDocumentTypeEnum = "BAA" | "DPA" | (string & {});
 export const CreateLegalDocumentDocumentTypeEnum = /*@__PURE__*/ S.String;
 
 export interface LegalDocumentsCreateRequest {
@@ -1658,7 +1662,10 @@ export const OrganizationMemberGithubLogin = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrganizationMemberGithubLogin",
 }) as any as S.Schema<OrganizationMemberGithubLogin>;
 
-export type MembersListRequestOrder = "-joined_at" | "joined_at";
+export type MembersListRequestOrder =
+  | "-joined_at"
+  | "joined_at"
+  | (string & {});
 export const MembersListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface MembersListRequest {
@@ -1691,7 +1698,7 @@ export const MembersListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "MembersListRequest",
 }) as any as S.Schema<MembersListRequest>;
 
-export type SearchMatchTypeEnum = "exact" | "similar";
+export type SearchMatchTypeEnum = "exact" | "similar" | (string & {});
 export const SearchMatchTypeEnum = /*@__PURE__*/ S.String;
 
 export interface OrganizationMember {
@@ -2530,7 +2537,8 @@ export type TimezoneEnum =
   | "Universal"
   | "W-SU"
   | "WET"
-  | "Zulu";
+  | "Zulu"
+  | (string & {});
 export const TimezoneEnum = /*@__PURE__*/ S.String;
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
@@ -2563,11 +2571,16 @@ export const ProjectBackwardCompatSessionRecordingEventTriggerConfigList =
   ) as any as S.Schema<ProjectBackwardCompatSessionRecordingEventTriggerConfigList>;
 
 /** * `30d` - 30 Days * `90d` - 90 Days * `1y` - 1 Year * `5y` - 5 Years */
-export type SessionRecordingRetentionPeriodEnum = "30d" | "90d" | "1y" | "5y";
+export type SessionRecordingRetentionPeriodEnum =
+  | "30d"
+  | "90d"
+  | "1y"
+  | "5y"
+  | (string & {});
 export const SessionRecordingRetentionPeriodEnum = /*@__PURE__*/ S.String;
 
 /** * `0` - Sunday * `1` - Monday */
-export type WeekStartDayEnum = 0 | 1;
+export type WeekStartDayEnum = 0 | 1 | (number & {});
 export const WeekStartDayEnum = /*@__PURE__*/ S.Number;
 
 export type ProjectBackwardCompatLiveEventsColumnsList = ReadonlyArray<string>;
@@ -2614,7 +2627,7 @@ export const ProjectBackwardCompatProductIntentsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ProjectBackwardCompatProductIntentsList>;
 
 /** * `b2b` - B2B * `b2c` - B2C * `other` - Other */
-export type BusinessModelEnum = "b2b" | "b2c" | "other";
+export type BusinessModelEnum = "b2b" | "b2c" | "other" | (string & {});
 export const BusinessModelEnum = /*@__PURE__*/ S.String;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
@@ -2692,7 +2705,8 @@ export type AvailableSetupTaskIdsEnum =
   | "use_posthog_ai"
   | "use_posthog_code"
   | "use_posthog_mcp"
-  | "use_posthog_in_slack";
+  | "use_posthog_in_slack"
+  | (string & {});
 export const AvailableSetupTaskIdsEnum = /*@__PURE__*/ S.String;
 
 export type ProjectBackwardCompatAvailableSetupTaskIdsList =
@@ -2863,7 +2877,8 @@ export type BaseCurrencyEnum =
   | "XPF"
   | "YER"
   | "ZAR"
-  | "ZMW";
+  | "ZMW"
+  | (string & {});
 export const BaseCurrencyEnum = /*@__PURE__*/ S.String;
 
 export interface TeamRevenueAnalyticsConfig {
@@ -2889,7 +2904,8 @@ export type AttributionModeEnum =
   | "last_touch"
   | "linear"
   | "time_decay"
-  | "position_based";
+  | "position_based"
+  | (string & {});
 export const AttributionModeEnum = /*@__PURE__*/ S.String;
 
 export interface TeamMarketingAnalyticsConfig {
@@ -2955,7 +2971,7 @@ export const TeamWorkflowsConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TeamWorkflowsConfig>;
 
 /** * `0` - Disabled * `1` - Stateless * `2` - Stateful */
-export type CookielessServerHashModeEnum = 0 | 1 | 2;
+export type CookielessServerHashModeEnum = 0 | 1 | 2 | (number & {});
 export const CookielessServerHashModeEnum = /*@__PURE__*/ S.Number;
 
 /** Mixin for serializers to add user access control fields */
@@ -8247,7 +8263,12 @@ export const WelcomeInviter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WelcomeInviter" }) as any as S.Schema<WelcomeInviter>;
 
 /** * `today` - today * `this_week` - this_week * `inactive` - inactive * `never` - never */
-export type LastActiveEnum = "today" | "this_week" | "inactive" | "never";
+export type LastActiveEnum =
+  | "today"
+  | "this_week"
+  | "inactive"
+  | "never"
+  | (string & {});
 export const LastActiveEnum = /*@__PURE__*/ S.String;
 
 export interface WelcomeTeamMember {

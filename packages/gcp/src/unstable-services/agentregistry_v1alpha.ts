@@ -253,7 +253,10 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type EndpointSpecTypeEnum = "TYPE_UNSPECIFIED" | "NO_SPEC";
+export type EndpointSpecTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "NO_SPEC"
+  | (string & {});
 export const EndpointSpecTypeEnum = /*@__PURE__*/ S.String;
 
 /** The spec of the endpoint. */
@@ -273,7 +276,8 @@ export const EndpointSpec = /*@__PURE__*/ S.suspend(() =>
 export type McpServerSpecTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "NO_SPEC"
-  | "TOOL_SPEC";
+  | "TOOL_SPEC"
+  | (string & {});
 export const McpServerSpecTypeEnum = /*@__PURE__*/ S.String;
 
 /** The spec of the MCP Server. */
@@ -294,7 +298,8 @@ export type InterfaceProtocolBindingEnum =
   | "PROTOCOL_BINDING_UNSPECIFIED"
   | "JSONRPC"
   | "GRPC"
-  | "HTTP_JSON";
+  | "HTTP_JSON"
+  | (string & {});
 export const InterfaceProtocolBindingEnum = /*@__PURE__*/ S.String;
 
 /** Represents the connection details for an Agent or MCP Server. */
@@ -319,7 +324,8 @@ export const InterfaceList = /*@__PURE__*/ S.Array(
 export type AgentSpecTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "NO_SPEC"
-  | "A2A_AGENT_CARD";
+  | "A2A_AGENT_CARD"
+  | (string & {});
 export const AgentSpecTypeEnum = /*@__PURE__*/ S.String;
 
 /** The spec of the agent. */
@@ -463,7 +469,8 @@ export type SkillRevisionStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "FAILED"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const SkillRevisionStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents an immutable, versioned snapshot of a Skill package. */
@@ -507,7 +514,8 @@ export type SkillTargetStateEnum =
   | "TARGET_STATE_ACTIVE"
   | "TARGET_STATE_DISABLED"
   | "TARGET_STATE_DEPRECATED"
-  | "TARGET_STATE_DECOMMISSIONED";
+  | "TARGET_STATE_DECOMMISSIONED"
+  | (string & {});
 export const SkillTargetStateEnum = /*@__PURE__*/ S.String;
 
 export type SkillStateEnum =
@@ -518,10 +526,11 @@ export type SkillStateEnum =
   | "STATE_DISABLED"
   | "STATE_DEPRECATED"
   | "STATE_DECOMMISSIONED"
-  | "STATE_DELETING";
+  | "STATE_DELETING"
+  | (string & {});
 export const SkillStateEnum = /*@__PURE__*/ S.String;
 
-export type SkillTypeEnum = "TYPE_UNSPECIFIED" | "SIMPLE";
+export type SkillTypeEnum = "TYPE_UNSPECIFIED" | "SIMPLE" | (string & {});
 export const SkillTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents an Executable Agent Skill or a Composite Tool Suite (Bundle). Sibling resource with Agent and McpServer under agentregistry.googleapis.com. */
@@ -851,7 +860,10 @@ export const GetProjectsLocationsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetProjectsLocationsAgentsRequest",
 }) as any as S.Schema<GetProjectsLocationsAgentsRequest>;
 
-export type CardTypeEnum = "TYPE_UNSPECIFIED" | "A2A_AGENT_CARD";
+export type CardTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "A2A_AGENT_CARD"
+  | (string & {});
 export const CardTypeEnum = /*@__PURE__*/ S.String;
 
 /** Full Agent Card payload, often obtained from the A2A Agent Card. */
@@ -874,7 +886,11 @@ export const DocumentMapMap = /*@__PURE__*/ S.Record(
   DocumentMap,
 ) as any as S.Schema<DocumentMapMap>;
 
-export type ProtocolTypeEnum = "TYPE_UNSPECIFIED" | "A2A_AGENT" | "CUSTOM";
+export type ProtocolTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "A2A_AGENT"
+  | "CUSTOM"
+  | (string & {});
 export const ProtocolTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents the protocol of an Agent. */
@@ -1184,7 +1200,8 @@ export type PublisherPublisherTierEnum =
   | "PUBLISHER_TIER_UNSPECIFIED"
   | "FIRST_PARTY"
   | "THIRD_PARTY"
-  | "PRIVATE";
+  | "PRIVATE"
+  | (string & {});
 export const PublisherPublisherTierEnum = /*@__PURE__*/ S.String;
 
 /** Represents a verified Publisher of Skills. Prepopulated publishers include `publishers/cloud.google.com` and `publishers/workspace.google.com`. */
@@ -1968,7 +1985,8 @@ export const SearchMcpServersResponse = /*@__PURE__*/ S.suspend(() =>
 export type SearchProjectsLocationsSkillsSearchTypeEnum =
   | "SEARCH_TYPE_UNSPECIFIED"
   | "KEYWORD"
-  | "SEMANTIC";
+  | "SEMANTIC"
+  | (string & {});
 export const SearchProjectsLocationsSkillsSearchTypeEnum =
   /*@__PURE__*/ S.String;
 

@@ -281,7 +281,8 @@ export type AggType =
   | "PTD_DISTINCT_COUNT"
   | "PTD_AVERAGE"
   | "COLUMN"
-  | "CUSTOM";
+  | "CUSTOM"
+  | (string & {});
 export const AggType = /*@__PURE__*/ S.String;
 
 export type AggFunctionParamKey = string;
@@ -299,7 +300,8 @@ export type TopicTimeGranularity =
   | "WEEK"
   | "MONTH"
   | "QUARTER"
-  | "YEAR";
+  | "YEAR"
+  | (string & {});
 export const TopicTimeGranularity = /*@__PURE__*/ S.String;
 
 export interface AggFunction {
@@ -328,7 +330,8 @@ export type ComparisonMethodType =
   | "POP_OVERTIME_DIFF"
   | "PERCENT_OF_TOTAL"
   | "RUNNING_SUM"
-  | "MOVING_AVERAGE";
+  | "MOVING_AVERAGE"
+  | (string & {});
 export const ComparisonMethodType = /*@__PURE__*/ S.String;
 
 export interface TopicIRComparisonMethod {
@@ -354,10 +357,11 @@ export type DisplayFormat =
   | "CURRENCY"
   | "NUMBER"
   | "DATE"
-  | "STRING";
+  | "STRING"
+  | (string & {});
 export const DisplayFormat = /*@__PURE__*/ S.String;
 
-export type TopicNumericSeparatorSymbol = "COMMA" | "DOT";
+export type TopicNumericSeparatorSymbol = "COMMA" | "DOT" | (string & {});
 export const TopicNumericSeparatorSymbol = /*@__PURE__*/ S.String;
 
 export type NumberScale =
@@ -368,7 +372,8 @@ export type NumberScale =
   | "BILLIONS"
   | "TRILLIONS"
   | "LAKHS"
-  | "CRORES";
+  | "CRORES"
+  | (string & {});
 export const NumberScale = /*@__PURE__*/ S.String;
 
 export interface NegativeFormat {
@@ -442,7 +447,7 @@ export const TopicIRMetric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TopicIRMetric" }) as any as S.Schema<TopicIRMetric>;
 export type TopicIRMetricList = TopicIRMetric[];
 export const TopicIRMetricList = /*@__PURE__*/ S.Array(TopicIRMetric);
-export type TopicSortDirection = "ASCENDING" | "DESCENDING";
+export type TopicSortDirection = "ASCENDING" | "DESCENDING" | (string & {});
 export const TopicSortDirection = /*@__PURE__*/ S.String;
 
 export interface TopicSortClause {
@@ -486,13 +491,15 @@ export type TopicIRFilterType =
   | "TOP_BOTTOM_FILTER"
   | "EQUALS"
   | "RANK_LIMIT_FILTER"
-  | "ACCEPT_ALL_FILTER";
+  | "ACCEPT_ALL_FILTER"
+  | (string & {});
 export const TopicIRFilterType = /*@__PURE__*/ S.String;
 
 export type FilterClass =
   | "ENFORCED_VALUE_FILTER"
   | "CONDITIONAL_VALUE_FILTER"
-  | "NAMED_VALUE_FILTER";
+  | "NAMED_VALUE_FILTER"
+  | (string & {});
 export const FilterClass = /*@__PURE__*/ S.String;
 
 export type TopicIRFilterFunction =
@@ -505,10 +512,11 @@ export type TopicIRFilterFunction =
   | "THIS"
   | "LAST"
   | "NEXT"
-  | "NOW";
+  | "NOW"
+  | (string & {});
 export const TopicIRFilterFunction = /*@__PURE__*/ S.String;
 
-export type ConstantType = "SINGULAR" | "RANGE" | "COLLECTIVE";
+export type ConstantType = "SINGULAR" | "RANGE" | "COLLECTIVE" | (string & {});
 export const ConstantType = /*@__PURE__*/ S.String;
 
 export type ConstantValueString = string;
@@ -546,7 +554,11 @@ export const TopicConstantValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TopicConstantValue",
 }) as any as S.Schema<TopicConstantValue>;
-export type NullFilterOption = "ALL_VALUES" | "NON_NULLS_ONLY" | "NULLS_ONLY";
+export type NullFilterOption =
+  | "ALL_VALUES"
+  | "NON_NULLS_ONLY"
+  | "NULLS_ONLY"
+  | (string & {});
 export const NullFilterOption = /*@__PURE__*/ S.String;
 
 export type TimeGranularity =
@@ -558,7 +570,8 @@ export type TimeGranularity =
   | "HOUR"
   | "MINUTE"
   | "SECOND"
-  | "MILLISECOND";
+  | "MILLISECOND"
+  | (string & {});
 export const TimeGranularity = /*@__PURE__*/ S.String;
 
 export interface AggregationPartitionBy {
@@ -593,7 +606,7 @@ export const FilterAggMetrics = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FilterAggMetrics>;
 export type FilterAggMetricsList = FilterAggMetrics[];
 export const FilterAggMetricsList = /*@__PURE__*/ S.Array(FilterAggMetrics);
-export type AnchorType = "TODAY";
+export type AnchorType = "TODAY" | (string & {});
 export const AnchorType = /*@__PURE__*/ S.String;
 
 export interface Anchor {
@@ -680,14 +693,19 @@ export const ContributionAnalysisTimeRanges = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ContributionAnalysisTimeRanges",
 }) as any as S.Schema<ContributionAnalysisTimeRanges>;
-export type ContributionAnalysisDirection = "INCREASE" | "DECREASE" | "NEUTRAL";
+export type ContributionAnalysisDirection =
+  | "INCREASE"
+  | "DECREASE"
+  | "NEUTRAL"
+  | (string & {});
 export const ContributionAnalysisDirection = /*@__PURE__*/ S.String;
 
 export type ContributionAnalysisSortType =
   | "ABSOLUTE_DIFFERENCE"
   | "CONTRIBUTION_PERCENTAGE"
   | "DEVIATION_FROM_EXPECTED"
-  | "PERCENTAGE_DIFFERENCE";
+  | "PERCENTAGE_DIFFERENCE"
+  | (string & {});
 export const ContributionAnalysisSortType = /*@__PURE__*/ S.String;
 
 export interface TopicIRContributionAnalysis {
@@ -735,7 +753,8 @@ export type VisualRole =
   | "COMPLIMENTARY"
   | "MULTI_INTENT"
   | "FALLBACK"
-  | "FRAGMENT";
+  | "FRAGMENT"
+  | (string & {});
 export const VisualRole = /*@__PURE__*/ S.String;
 
 export type TopicVisuals = TopicVisual[];
@@ -846,7 +865,8 @@ export type ReviewedAnswerErrorCode =
   | "INVALID_DATASET_ARN"
   | "DUPLICATED_ANSWER"
   | "INVALID_DATA"
-  | "MISSING_REQUIRED_FIELDS";
+  | "MISSING_REQUIRED_FIELDS"
+  | (string & {});
 export const ReviewedAnswerErrorCode = /*@__PURE__*/ S.String;
 
 export interface InvalidTopicReviewedAnswer {
@@ -1131,14 +1151,19 @@ export const CreateAccountCustomizationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccountCustomizationResponse",
 }) as any as S.Schema<CreateAccountCustomizationResponse>;
-export type Edition = "STANDARD" | "ENTERPRISE" | "ENTERPRISE_AND_Q";
+export type Edition =
+  | "STANDARD"
+  | "ENTERPRISE"
+  | "ENTERPRISE_AND_Q"
+  | (string & {});
 export const Edition = /*@__PURE__*/ S.String;
 
 export type AuthenticationMethodOption =
   | "IAM_AND_QUICKSIGHT"
   | "IAM_ONLY"
   | "ACTIVE_DIRECTORY"
-  | "IAM_IDENTITY_CENTER";
+  | "IAM_IDENTITY_CENTER"
+  | (string & {});
 export const AuthenticationMethodOption = /*@__PURE__*/ S.String;
 
 export type AccountName = string;
@@ -1256,7 +1281,8 @@ export type ActionConnectorType =
   | "SMARTSHEET"
   | "SLACK"
   | "ASANA"
-  | "BAMBOO_HR";
+  | "BAMBOO_HR"
+  | (string & {});
 export const ActionConnectorType = /*@__PURE__*/ S.String;
 
 export type ConnectionAuthType =
@@ -1265,11 +1291,14 @@ export type ConnectionAuthType =
   | "OAUTH2_CLIENT_CREDENTIALS"
   | "NONE"
   | "IAM"
-  | "OAUTH2_AUTHORIZATION_CODE";
+  | "OAUTH2_AUTHORIZATION_CODE"
+  | (string & {});
 export const ConnectionAuthType = /*@__PURE__*/ S.String;
 
 export type Endpoint = string;
-export type AuthorizationCodeGrantCredentialsSource = "PLAIN_CREDENTIALS";
+export type AuthorizationCodeGrantCredentialsSource =
+  | "PLAIN_CREDENTIALS"
+  | (string & {});
 export const AuthorizationCodeGrantCredentialsSource = /*@__PURE__*/ S.String;
 
 export type ClientId = string;
@@ -1316,7 +1345,7 @@ export const AuthorizationCodeGrantMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AuthorizationCodeGrantMetadata",
 }) as any as S.Schema<AuthorizationCodeGrantMetadata>;
-export type ClientCredentialsSource = "PLAIN_CREDENTIALS";
+export type ClientCredentialsSource = "PLAIN_CREDENTIALS" | (string & {});
 export const ClientCredentialsSource = /*@__PURE__*/ S.String;
 
 export interface ClientCredentialsGrantDetails {
@@ -1529,7 +1558,8 @@ export type ResourceStatus =
   | "UPDATE_IN_PROGRESS"
   | "UPDATE_SUCCESSFUL"
   | "UPDATE_FAILED"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const ResourceStatus = /*@__PURE__*/ S.String;
 
 export interface CreateActionConnectorResponse {
@@ -1564,7 +1594,7 @@ export type StarterPrompt = string;
 export type StarterPromptList = string[];
 export const StarterPromptList = /*@__PURE__*/ S.Array(S.String);
 export type WelcomeMessage = string | redacted.Redacted<string>;
-export type AgentLifecycle = "PREVIEW" | "PUBLISHED";
+export type AgentLifecycle = "PREVIEW" | "PUBLISHED" | (string & {});
 export const AgentLifecycle = /*@__PURE__*/ S.String;
 
 export type ModelProfileId = string;
@@ -1650,7 +1680,12 @@ export const CreateAgentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAgentRequest",
 }) as any as S.Schema<CreateAgentRequest>;
 export type AgentArn = string;
-export type AgentStatus = "ACTIVE" | "UPDATING" | "FAILED" | "CREATING";
+export type AgentStatus =
+  | "ACTIVE"
+  | "UPDATING"
+  | "FAILED"
+  | "CREATING"
+  | (string & {});
 export const AgentStatus = /*@__PURE__*/ S.String;
 
 export interface CreateAgentResponse {
@@ -1792,7 +1827,7 @@ export type SheetDescription = string;
 export type SheetName = string;
 export type SheetControlTitle = string;
 export type ParameterName = string;
-export type Visibility = "HIDDEN" | "VISIBLE";
+export type Visibility = "HIDDEN" | "VISIBLE" | (string & {});
 export const Visibility = /*@__PURE__*/ S.String;
 
 export type RelativeFontSize =
@@ -1800,7 +1835,8 @@ export type RelativeFontSize =
   | "SMALL"
   | "MEDIUM"
   | "LARGE"
-  | "EXTRA_LARGE";
+  | "EXTRA_LARGE"
+  | (string & {});
 export const RelativeFontSize = /*@__PURE__*/ S.String;
 
 export type PixelLength = string;
@@ -1814,11 +1850,11 @@ export const FontSize = /*@__PURE__*/ S.suspend(() =>
     Absolute: S.optional(S.String),
   }),
 ).annotate({ identifier: "FontSize" }) as any as S.Schema<FontSize>;
-export type FontDecoration = "UNDERLINE" | "NONE";
+export type FontDecoration = "UNDERLINE" | "NONE" | (string & {});
 export const FontDecoration = /*@__PURE__*/ S.String;
 
 export type HexColor = string;
-export type FontWeightName = "NORMAL" | "BOLD";
+export type FontWeightName = "NORMAL" | "BOLD" | (string & {});
 export const FontWeightName = /*@__PURE__*/ S.String;
 
 export interface FontWeight {
@@ -1827,7 +1863,7 @@ export interface FontWeight {
 export const FontWeight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(FontWeightName) }),
 ).annotate({ identifier: "FontWeight" }) as any as S.Schema<FontWeight>;
-export type FontStyle = "NORMAL" | "ITALIC";
+export type FontStyle = "NORMAL" | "ITALIC" | (string & {});
 export const FontStyle = /*@__PURE__*/ S.String;
 
 export interface FontConfiguration {
@@ -1955,7 +1991,10 @@ export const ListControlDisplayOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListControlDisplayOptions",
 }) as any as S.Schema<ListControlDisplayOptions>;
-export type SheetControlListType = "MULTI_SELECT" | "SINGLE_SELECT";
+export type SheetControlListType =
+  | "MULTI_SELECT"
+  | "SINGLE_SELECT"
+  | (string & {});
 export const SheetControlListType = /*@__PURE__*/ S.String;
 
 export type ParameterSelectableValueList = string[];
@@ -2006,7 +2045,11 @@ export const CascadingControlConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CascadingControlConfiguration",
 }) as any as S.Schema<CascadingControlConfiguration>;
-export type ControlSortDirection = "ASC" | "DESC" | "USER_DEFINED_ORDER";
+export type ControlSortDirection =
+  | "ASC"
+  | "DESC"
+  | "USER_DEFINED_ORDER"
+  | (string & {});
 export const ControlSortDirection = /*@__PURE__*/ S.String;
 
 export interface SelectableValuesSort {
@@ -2017,7 +2060,7 @@ export const SelectableValuesSort = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SelectableValuesSort",
 }) as any as S.Schema<SelectableValuesSort>;
-export type SortDirection = "ASC" | "DESC";
+export type SortDirection = "ASC" | "DESC" | (string & {});
 export const SortDirection = /*@__PURE__*/ S.String;
 
 export type SimpleNumericalAggregationFunction =
@@ -2031,7 +2074,8 @@ export type SimpleNumericalAggregationFunction =
   | "VARP"
   | "STDEV"
   | "STDEVP"
-  | "MEDIAN";
+  | "MEDIAN"
+  | (string & {});
 export const SimpleNumericalAggregationFunction = /*@__PURE__*/ S.String;
 
 export type PercentileValue = number;
@@ -2055,17 +2099,21 @@ export const NumericalAggregationFunction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NumericalAggregationFunction",
 }) as any as S.Schema<NumericalAggregationFunction>;
-export type CategoricalAggregationFunction = "COUNT" | "DISTINCT_COUNT";
+export type CategoricalAggregationFunction =
+  | "COUNT"
+  | "DISTINCT_COUNT"
+  | (string & {});
 export const CategoricalAggregationFunction = /*@__PURE__*/ S.String;
 
 export type DateAggregationFunction =
   | "COUNT"
   | "DISTINCT_COUNT"
   | "MIN"
-  | "MAX";
+  | "MAX"
+  | (string & {});
 export const DateAggregationFunction = /*@__PURE__*/ S.String;
 
-export type SimpleAttributeAggregationFunction = "UNIQUE_VALUE";
+export type SimpleAttributeAggregationFunction = "UNIQUE_VALUE" | (string & {});
 export const SimpleAttributeAggregationFunction = /*@__PURE__*/ S.String;
 
 export interface AttributeAggregationFunction {
@@ -2166,7 +2214,7 @@ export const DropDownControlDisplayOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DropDownControlDisplayOptions",
 }) as any as S.Schema<DropDownControlDisplayOptions>;
-export type CommitMode = "AUTO" | "MANUAL";
+export type CommitMode = "AUTO" | "MANUAL" | (string & {});
 export const CommitMode = /*@__PURE__*/ S.String;
 
 export interface ParameterDropDownControl {
@@ -2330,7 +2378,10 @@ export const ParameterControl = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ParameterControl>;
 export type ParameterControlList = ParameterControl[];
 export const ParameterControlList = /*@__PURE__*/ S.Array(ParameterControl);
-export type SheetControlDateTimePickerType = "SINGLE_VALUED" | "DATE_RANGE";
+export type SheetControlDateTimePickerType =
+  | "SINGLE_VALUED"
+  | "DATE_RANGE"
+  | (string & {});
 export const SheetControlDateTimePickerType = /*@__PURE__*/ S.String;
 
 export interface FilterDateTimePickerControl {
@@ -2455,7 +2506,7 @@ export const FilterTextAreaControl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FilterTextAreaControl",
 }) as any as S.Schema<FilterTextAreaControl>;
-export type SheetControlSliderType = "SINGLE_POINT" | "RANGE";
+export type SheetControlSliderType = "SINGLE_POINT" | "RANGE" | (string & {});
 export const SheetControlSliderType = /*@__PURE__*/ S.String;
 
 export interface FilterSliderControl {
@@ -2605,10 +2656,10 @@ export type FieldId = string;
 export type HierarchyId = string;
 export type Prefix = string | redacted.Redacted<string>;
 export type Suffix = string | redacted.Redacted<string>;
-export type NumericSeparatorSymbol = "COMMA" | "DOT" | "SPACE";
+export type NumericSeparatorSymbol = "COMMA" | "DOT" | "SPACE" | (string & {});
 export const NumericSeparatorSymbol = /*@__PURE__*/ S.String;
 
-export type DigitGroupingStyle = "DEFAULT" | "LAKHS";
+export type DigitGroupingStyle = "DEFAULT" | "LAKHS" | (string & {});
 export const DigitGroupingStyle = /*@__PURE__*/ S.String;
 
 export interface ThousandSeparatorOptions {
@@ -2646,7 +2697,7 @@ export const DecimalPlacesConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DecimalPlacesConfiguration",
 }) as any as S.Schema<DecimalPlacesConfiguration>;
-export type NegativeValueDisplayMode = "POSITIVE" | "NEGATIVE";
+export type NegativeValueDisplayMode = "POSITIVE" | "NEGATIVE" | (string & {});
 export const NegativeValueDisplayMode = /*@__PURE__*/ S.String;
 
 export interface NegativeValueConfiguration {
@@ -3043,21 +3094,31 @@ export const TableSortConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TableSortConfiguration",
 }) as any as S.Schema<TableSortConfiguration>;
-export type TableOrientation = "VERTICAL" | "HORIZONTAL";
+export type TableOrientation = "VERTICAL" | "HORIZONTAL" | (string & {});
 export const TableOrientation = /*@__PURE__*/ S.String;
 
-export type TextWrap = "NONE" | "WRAP";
+export type TextWrap = "NONE" | "WRAP" | (string & {});
 export const TextWrap = /*@__PURE__*/ S.String;
 
-export type HorizontalTextAlignment = "LEFT" | "CENTER" | "RIGHT" | "AUTO";
+export type HorizontalTextAlignment =
+  | "LEFT"
+  | "CENTER"
+  | "RIGHT"
+  | "AUTO"
+  | (string & {});
 export const HorizontalTextAlignment = /*@__PURE__*/ S.String;
 
-export type VerticalTextAlignment = "TOP" | "MIDDLE" | "BOTTOM" | "AUTO";
+export type VerticalTextAlignment =
+  | "TOP"
+  | "MIDDLE"
+  | "BOTTOM"
+  | "AUTO"
+  | (string & {});
 export const VerticalTextAlignment = /*@__PURE__*/ S.String;
 
 export type TableFieldHeight = number;
 export type TableBorderThickness = number;
-export type TableBorderStyle = "NONE" | "SOLID";
+export type TableBorderStyle = "NONE" | "SOLID" | (string & {});
 export const TableBorderStyle = /*@__PURE__*/ S.String;
 
 export interface TableBorderOptions {
@@ -3128,7 +3189,7 @@ export const TableCellStyle = /*@__PURE__*/ S.suspend(() =>
     Border: S.optional(GlobalTableBorderOptions),
   }),
 ).annotate({ identifier: "TableCellStyle" }) as any as S.Schema<TableCellStyle>;
-export type WidgetStatus = "ENABLED" | "DISABLED";
+export type WidgetStatus = "ENABLED" | "DISABLED" | (string & {});
 export const WidgetStatus = /*@__PURE__*/ S.String;
 
 export type RowAlternateColorList = string[];
@@ -3161,10 +3222,10 @@ export const TableOptions = /*@__PURE__*/ S.suspend(() =>
     RowAlternateColorOptions: S.optional(RowAlternateColorOptions),
   }),
 ).annotate({ identifier: "TableOptions" }) as any as S.Schema<TableOptions>;
-export type TableTotalsPlacement = "START" | "END" | "AUTO";
+export type TableTotalsPlacement = "START" | "END" | "AUTO" | (string & {});
 export const TableTotalsPlacement = /*@__PURE__*/ S.String;
 
-export type TableTotalsScrollStatus = "PINNED" | "SCROLLED";
+export type TableTotalsScrollStatus = "PINNED" | "SCROLLED" | (string & {});
 export const TableTotalsScrollStatus = /*@__PURE__*/ S.String;
 
 export type SimpleTotalAggregationFunction =
@@ -3173,7 +3234,8 @@ export type SimpleTotalAggregationFunction =
   | "AVERAGE"
   | "MIN"
   | "MAX"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const SimpleTotalAggregationFunction = /*@__PURE__*/ S.String;
 
 export interface TotalAggregationFunction {
@@ -3221,7 +3283,11 @@ export const TotalOptions = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TotalOptions" }) as any as S.Schema<TotalOptions>;
 export type CustomLabel = string;
-export type URLTargetConfiguration = "NEW_TAB" | "NEW_WINDOW" | "SAME_TAB";
+export type URLTargetConfiguration =
+  | "NEW_TAB"
+  | "NEW_WINDOW"
+  | "SAME_TAB"
+  | (string & {});
 export const URLTargetConfiguration = /*@__PURE__*/ S.String;
 
 export interface TableFieldCustomTextContent {
@@ -3236,7 +3302,7 @@ export const TableFieldCustomTextContent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TableFieldCustomTextContent",
 }) as any as S.Schema<TableFieldCustomTextContent>;
-export type TableFieldIconSetType = "LINK";
+export type TableFieldIconSetType = "LINK" | (string & {});
 export const TableFieldIconSetType = /*@__PURE__*/ S.String;
 
 export interface TableFieldCustomIconContent {
@@ -3274,7 +3340,8 @@ export const TableFieldLinkConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type TableCellImageScalingConfiguration =
   | "FIT_TO_CELL_HEIGHT"
   | "FIT_TO_CELL_WIDTH"
-  | "DO_NOT_SCALE";
+  | "DO_NOT_SCALE"
+  | (string & {});
 export const TableCellImageScalingConfiguration = /*@__PURE__*/ S.String;
 
 export interface TableCellImageSizingConfiguration {
@@ -3342,7 +3409,10 @@ export const TablePinnedFieldOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "TablePinnedFieldOptions",
 }) as any as S.Schema<TablePinnedFieldOptions>;
 export type TransposedColumnIndex = number;
-export type TransposedColumnType = "ROW_HEADER_COLUMN" | "VALUE_COLUMN";
+export type TransposedColumnType =
+  | "ROW_HEADER_COLUMN"
+  | "VALUE_COLUMN"
+  | (string & {});
 export const TransposedColumnType = /*@__PURE__*/ S.String;
 
 export interface TransposedTableOption {
@@ -3405,13 +3475,13 @@ export const DataBarsOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataBarsOptions",
 }) as any as S.Schema<DataBarsOptions>;
-export type SparklineAxisBehavior = "SHARED" | "INDEPENDENT";
+export type SparklineAxisBehavior = "SHARED" | "INDEPENDENT" | (string & {});
 export const SparklineAxisBehavior = /*@__PURE__*/ S.String;
 
-export type SparklineVisualType = "LINE" | "AREA_LINE";
+export type SparklineVisualType = "LINE" | "AREA_LINE" | (string & {});
 export const SparklineVisualType = /*@__PURE__*/ S.String;
 
-export type LineInterpolation = "LINEAR" | "SMOOTH" | "STEPPED";
+export type LineInterpolation = "LINEAR" | "SMOOTH" | "STEPPED" | (string & {});
 export const LineInterpolation = /*@__PURE__*/ S.String;
 
 export type LineChartMarkerShape =
@@ -3419,7 +3489,8 @@ export type LineChartMarkerShape =
   | "TRIANGLE"
   | "SQUARE"
   | "DIAMOND"
-  | "ROUNDED_SQUARE";
+  | "ROUNDED_SQUARE"
+  | (string & {});
 export const LineChartMarkerShape = /*@__PURE__*/ S.String;
 
 export interface LineChartMarkerStyleSettings {
@@ -3480,13 +3551,17 @@ export type TableInlineVisualizationList = TableInlineVisualization[];
 export const TableInlineVisualizationList = /*@__PURE__*/ S.Array(
   TableInlineVisualization,
 );
-export type SelectedTooltipType = "BASIC" | "DETAILED" | "SHEET";
+export type SelectedTooltipType =
+  | "BASIC"
+  | "DETAILED"
+  | "SHEET"
+  | (string & {});
 export const SelectedTooltipType = /*@__PURE__*/ S.String;
 
-export type TooltipTitleType = "NONE" | "PRIMARY_VALUE";
+export type TooltipTitleType = "NONE" | "PRIMARY_VALUE" | (string & {});
 export const TooltipTitleType = /*@__PURE__*/ S.String;
 
-export type TooltipTarget = "BOTH" | "BAR" | "LINE";
+export type TooltipTarget = "BOTH" | "BAR" | "LINE" | (string & {});
 export const TooltipTarget = /*@__PURE__*/ S.String;
 
 export interface FieldTooltipItem {
@@ -3569,7 +3644,10 @@ export const TooltipOptions = /*@__PURE__*/ S.suspend(() =>
     SheetTooltip: S.optional(SheetTooltip),
   }),
 ).annotate({ identifier: "TooltipOptions" }) as any as S.Schema<TooltipOptions>;
-export type DashboardCustomizationStatus = "ENABLED" | "DISABLED";
+export type DashboardCustomizationStatus =
+  | "ENABLED"
+  | "DISABLED"
+  | (string & {});
 export const DashboardCustomizationStatus = /*@__PURE__*/ S.String;
 
 export type VisualCustomizationAdditionalFieldsList = ColumnIdentifier[];
@@ -3598,7 +3676,7 @@ export const DashboardCustomizationVisualOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DashboardCustomizationVisualOptions",
 }) as any as S.Schema<DashboardCustomizationVisualOptions>;
-export type DashboardBehavior = "ENABLED" | "DISABLED";
+export type DashboardBehavior = "ENABLED" | "DISABLED" | (string & {});
 export const DashboardBehavior = /*@__PURE__*/ S.String;
 
 export interface VisualMenuOption {
@@ -3720,7 +3798,8 @@ export type ConditionalFormattingIconSetType =
   | "FLAGS"
   | "BARS"
   | "FOUR_COLOR_ARROW"
-  | "FOUR_GRAY_ARROW";
+  | "FOUR_GRAY_ARROW"
+  | (string & {});
 export const ConditionalFormattingIconSetType = /*@__PURE__*/ S.String;
 
 export interface ConditionalFormattingIconSet {
@@ -3761,7 +3840,8 @@ export type Icon =
   | "THUMBS_UP"
   | "THUMBS_DOWN"
   | "CHECKMARK"
-  | "X";
+  | "X"
+  | (string & {});
 export const Icon = /*@__PURE__*/ S.String;
 
 export type UnicodeIcon = string;
@@ -3774,7 +3854,9 @@ export const ConditionalFormattingCustomIconOptions = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ConditionalFormattingCustomIconOptions",
 }) as any as S.Schema<ConditionalFormattingCustomIconOptions>;
-export type ConditionalFormattingIconDisplayOption = "ICON_ONLY";
+export type ConditionalFormattingIconDisplayOption =
+  | "ICON_ONLY"
+  | (string & {});
 export const ConditionalFormattingIconDisplayOption = /*@__PURE__*/ S.String;
 
 export interface ConditionalFormattingIconDisplayConfiguration {
@@ -3887,12 +3969,15 @@ export const TableConditionalFormatting = /*@__PURE__*/ S.suspend(() =>
   identifier: "TableConditionalFormatting",
 }) as any as S.Schema<TableConditionalFormatting>;
 export type VisualCustomActionName = string;
-export type VisualCustomActionTrigger = "DATA_POINT_CLICK" | "DATA_POINT_MENU";
+export type VisualCustomActionTrigger =
+  | "DATA_POINT_CLICK"
+  | "DATA_POINT_MENU"
+  | (string & {});
 export const VisualCustomActionTrigger = /*@__PURE__*/ S.String;
 
 export type SelectedFieldList = string[];
 export const SelectedFieldList = /*@__PURE__*/ S.Array(S.String);
-export type SelectedFieldOptions = "ALL_FIELDS";
+export type SelectedFieldOptions = "ALL_FIELDS" | (string & {});
 export const SelectedFieldOptions = /*@__PURE__*/ S.String;
 
 export type CustomActionColumnList = ColumnIdentifier[];
@@ -3914,7 +3999,7 @@ export const FilterOperationSelectedFieldsConfiguration =
   }) as any as S.Schema<FilterOperationSelectedFieldsConfiguration>;
 export type TargetVisualList = string[];
 export const TargetVisualList = /*@__PURE__*/ S.Array(S.String);
-export type TargetVisualOptions = "ALL_VISUALS";
+export type TargetVisualOptions = "ALL_VISUALS" | (string & {});
 export const TargetVisualOptions = /*@__PURE__*/ S.String;
 
 export interface SameSheetTargetVisualConfiguration {
@@ -4023,7 +4108,7 @@ export const CustomValuesConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CustomValuesConfiguration",
 }) as any as S.Schema<CustomValuesConfiguration>;
-export type SelectAllValueOptions = "ALL_VALUES";
+export type SelectAllValueOptions = "ALL_VALUES" | (string & {});
 export const SelectAllValueOptions = /*@__PURE__*/ S.String;
 
 export interface DestinationParameterValueConfiguration {
@@ -4165,7 +4250,8 @@ export type PivotTableDataPathType =
   | "HIERARCHY_ROWS_LAYOUT_COLUMN"
   | "MULTIPLE_ROW_METRICS_COLUMN"
   | "EMPTY_COLUMN_HEADER"
-  | "COUNT_METRIC_COLUMN";
+  | "COUNT_METRIC_COLUMN"
+  | (string & {});
 export const PivotTableDataPathType = /*@__PURE__*/ S.String;
 
 export interface DataPathType {
@@ -4230,10 +4316,10 @@ export const PivotTableSortConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PivotTableSortConfiguration",
 }) as any as S.Schema<PivotTableSortConfiguration>;
-export type PivotTableMetricPlacement = "ROW" | "COLUMN";
+export type PivotTableMetricPlacement = "ROW" | "COLUMN" | (string & {});
 export const PivotTableMetricPlacement = /*@__PURE__*/ S.String;
 
-export type PivotTableRowsLayout = "TABULAR" | "HIERARCHY";
+export type PivotTableRowsLayout = "TABULAR" | "HIERARCHY" | (string & {});
 export const PivotTableRowsLayout = /*@__PURE__*/ S.String;
 
 export type PivotTableRowsLabelText = string;
@@ -4283,7 +4369,7 @@ export const PivotTableOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PivotTableOptions",
 }) as any as S.Schema<PivotTableOptions>;
-export type PivotTableSubtotalLevel = "ALL" | "CUSTOM" | "LAST";
+export type PivotTableSubtotalLevel = "ALL" | "CUSTOM" | "LAST" | (string & {});
 export const PivotTableSubtotalLevel = /*@__PURE__*/ S.String;
 
 export interface PivotTableFieldSubtotalOptions {
@@ -4299,7 +4385,11 @@ export type PivotTableFieldSubtotalOptionsList =
 export const PivotTableFieldSubtotalOptionsList = /*@__PURE__*/ S.Array(
   PivotTableFieldSubtotalOptions,
 );
-export type StyledCellType = "TOTAL" | "METRIC_HEADER" | "VALUE";
+export type StyledCellType =
+  | "TOTAL"
+  | "METRIC_HEADER"
+  | "VALUE"
+  | (string & {});
 export const StyledCellType = /*@__PURE__*/ S.String;
 
 export interface TableStyleTarget {
@@ -4419,7 +4509,10 @@ export const PivotTableFieldCollapseStateTarget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PivotTableFieldCollapseStateTarget",
 }) as any as S.Schema<PivotTableFieldCollapseStateTarget>;
-export type PivotTableFieldCollapseState = "COLLAPSED" | "EXPANDED";
+export type PivotTableFieldCollapseState =
+  | "COLLAPSED"
+  | "EXPANDED"
+  | (string & {});
 export const PivotTableFieldCollapseState = /*@__PURE__*/ S.String;
 
 export interface PivotTableFieldCollapseStateOption {
@@ -4496,7 +4589,8 @@ export const PivotTableConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type PivotTableConditionalFormattingScopeRole =
   | "FIELD"
   | "FIELD_TOTAL"
-  | "GRAND_TOTAL";
+  | "GRAND_TOTAL"
+  | (string & {});
 export const PivotTableConditionalFormattingScopeRole = /*@__PURE__*/ S.String;
 
 export interface PivotTableConditionalFormattingScope {
@@ -4607,7 +4701,7 @@ export const BarChartFieldWells = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BarChartFieldWells>;
 export type FieldSortOptionsList = FieldSortOptions[];
 export const FieldSortOptionsList = /*@__PURE__*/ S.Array(FieldSortOptions);
-export type OtherCategories = "INCLUDE" | "EXCLUDE";
+export type OtherCategories = "INCLUDE" | "EXCLUDE" | (string & {});
 export const OtherCategories = /*@__PURE__*/ S.String;
 
 export interface ItemsLimitConfiguration {
@@ -4642,10 +4736,14 @@ export const BarChartSortConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BarChartSortConfiguration",
 }) as any as S.Schema<BarChartSortConfiguration>;
-export type BarChartOrientation = "HORIZONTAL" | "VERTICAL";
+export type BarChartOrientation = "HORIZONTAL" | "VERTICAL" | (string & {});
 export const BarChartOrientation = /*@__PURE__*/ S.String;
 
-export type BarsArrangement = "CLUSTERED" | "STACKED" | "STACKED_PERCENT";
+export type BarsArrangement =
+  | "CLUSTERED"
+  | "STACKED"
+  | "STACKED_PERCENT"
+  | (string & {});
 export const BarsArrangement = /*@__PURE__*/ S.String;
 
 export interface DataPathColor {
@@ -4688,7 +4786,7 @@ export const PanelTitleOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PanelTitleOptions",
 }) as any as S.Schema<PanelTitleOptions>;
-export type PanelBorderStyle = "SOLID" | "DASHED" | "DOTTED";
+export type PanelBorderStyle = "SOLID" | "DASHED" | "DOTTED" | (string & {});
 export const PanelBorderStyle = /*@__PURE__*/ S.String;
 
 export type HexColorWithTransparency = string;
@@ -4718,10 +4816,10 @@ export const PanelConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PanelConfiguration",
 }) as any as S.Schema<PanelConfiguration>;
-export type SmallMultiplesAxisScale = "SHARED" | "INDEPENDENT";
+export type SmallMultiplesAxisScale = "SHARED" | "INDEPENDENT" | (string & {});
 export const SmallMultiplesAxisScale = /*@__PURE__*/ S.String;
 
-export type SmallMultiplesAxisPlacement = "OUTSIDE" | "INSIDE";
+export type SmallMultiplesAxisPlacement = "OUTSIDE" | "INSIDE" | (string & {});
 export const SmallMultiplesAxisPlacement = /*@__PURE__*/ S.String;
 
 export interface SmallMultiplesAxisProperties {
@@ -4964,10 +5062,11 @@ export type DecalPatternType =
   | "CHECKERBOARD_SMALL"
   | "TRIANGLE_SMALL"
   | "DIAGONAL_OPPOSITE_SMALL"
-  | "DIAMOND_SMALL";
+  | "DIAMOND_SMALL"
+  | (string & {});
 export const DecalPatternType = /*@__PURE__*/ S.String;
 
-export type DecalStyleType = "Manual" | "Auto";
+export type DecalStyleType = "Manual" | "Auto" | (string & {});
 export const DecalStyleType = /*@__PURE__*/ S.String;
 
 export interface DecalSettings {
@@ -5057,7 +5156,12 @@ export const BarSeriesItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BarSeriesItem" }) as any as S.Schema<BarSeriesItem>;
 export type BarSeriesItemList = BarSeriesItem[];
 export const BarSeriesItemList = /*@__PURE__*/ S.Array(BarSeriesItem);
-export type LegendPosition = "AUTO" | "RIGHT" | "BOTTOM" | "TOP";
+export type LegendPosition =
+  | "AUTO"
+  | "RIGHT"
+  | "BOTTOM"
+  | "TOP"
+  | (string & {});
 export const LegendPosition = /*@__PURE__*/ S.String;
 
 export interface LegendOptions {
@@ -5150,13 +5254,21 @@ export type DataLabelPosition =
   | "LEFT"
   | "TOP"
   | "BOTTOM"
-  | "RIGHT";
+  | "RIGHT"
+  | (string & {});
 export const DataLabelPosition = /*@__PURE__*/ S.String;
 
-export type DataLabelContent = "VALUE" | "PERCENT" | "VALUE_AND_PERCENT";
+export type DataLabelContent =
+  | "VALUE"
+  | "PERCENT"
+  | "VALUE_AND_PERCENT"
+  | (string & {});
 export const DataLabelContent = /*@__PURE__*/ S.String;
 
-export type DataLabelOverlap = "DISABLE_OVERLAP" | "ENABLE_OVERLAP";
+export type DataLabelOverlap =
+  | "DISABLE_OVERLAP"
+  | "ENABLE_OVERLAP"
+  | (string & {});
 export const DataLabelOverlap = /*@__PURE__*/ S.String;
 
 export interface DataLabelOptions {
@@ -5210,10 +5322,10 @@ export const ReferenceLineDynamicDataConfiguration = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ReferenceLineDynamicDataConfiguration",
 }) as any as S.Schema<ReferenceLineDynamicDataConfiguration>;
-export type AxisBinding = "PRIMARY_YAXIS" | "SECONDARY_YAXIS";
+export type AxisBinding = "PRIMARY_YAXIS" | "SECONDARY_YAXIS" | (string & {});
 export const AxisBinding = /*@__PURE__*/ S.String;
 
-export type ReferenceLineSeriesType = "BAR" | "LINE";
+export type ReferenceLineSeriesType = "BAR" | "LINE" | (string & {});
 export const ReferenceLineSeriesType = /*@__PURE__*/ S.String;
 
 export interface ReferenceLineDataConfiguration {
@@ -5232,7 +5344,11 @@ export const ReferenceLineDataConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ReferenceLineDataConfiguration",
 }) as any as S.Schema<ReferenceLineDataConfiguration>;
-export type ReferenceLinePatternType = "SOLID" | "DASHED" | "DOTTED";
+export type ReferenceLinePatternType =
+  | "SOLID"
+  | "DASHED"
+  | "DOTTED"
+  | (string & {});
 export const ReferenceLinePatternType = /*@__PURE__*/ S.String;
 
 export interface ReferenceLineStyleConfiguration {
@@ -5249,7 +5365,8 @@ export const ReferenceLineStyleConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReferenceLineStyleConfiguration>;
 export type ReferenceLineValueLabelRelativePosition =
   | "BEFORE_CUSTOM_LABEL"
-  | "AFTER_CUSTOM_LABEL";
+  | "AFTER_CUSTOM_LABEL"
+  | (string & {});
 export const ReferenceLineValueLabelRelativePosition = /*@__PURE__*/ S.String;
 
 export interface ReferenceLineValueLabelConfiguration {
@@ -5273,10 +5390,17 @@ export const ReferenceLineCustomLabelConfiguration = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ReferenceLineCustomLabelConfiguration",
 }) as any as S.Schema<ReferenceLineCustomLabelConfiguration>;
-export type ReferenceLineLabelHorizontalPosition = "LEFT" | "CENTER" | "RIGHT";
+export type ReferenceLineLabelHorizontalPosition =
+  | "LEFT"
+  | "CENTER"
+  | "RIGHT"
+  | (string & {});
 export const ReferenceLineLabelHorizontalPosition = /*@__PURE__*/ S.String;
 
-export type ReferenceLineLabelVerticalPosition = "ABOVE" | "BELOW";
+export type ReferenceLineLabelVerticalPosition =
+  | "ABOVE"
+  | "BELOW"
+  | (string & {});
 export const ReferenceLineLabelVerticalPosition = /*@__PURE__*/ S.String;
 
 export interface ReferenceLineLabelConfiguration {
@@ -5558,7 +5682,11 @@ export const SecondaryValueOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SecondaryValueOptions",
 }) as any as S.Schema<SecondaryValueOptions>;
-export type ComparisonMethod = "DIFFERENCE" | "PERCENT_DIFFERENCE" | "PERCENT";
+export type ComparisonMethod =
+  | "DIFFERENCE"
+  | "PERCENT_DIFFERENCE"
+  | "PERCENT"
+  | (string & {});
 export const ComparisonMethod = /*@__PURE__*/ S.String;
 
 export interface ComparisonFormatConfiguration {
@@ -5589,10 +5717,14 @@ export const ComparisonConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ComparisonConfiguration",
 }) as any as S.Schema<ComparisonConfiguration>;
-export type PrimaryValueDisplayType = "HIDDEN" | "COMPARISON" | "ACTUAL";
+export type PrimaryValueDisplayType =
+  | "HIDDEN"
+  | "COMPARISON"
+  | "ACTUAL"
+  | (string & {});
 export const PrimaryValueDisplayType = /*@__PURE__*/ S.String;
 
-export type KPISparklineType = "LINE" | "AREA";
+export type KPISparklineType = "LINE" | "AREA" | (string & {});
 export const KPISparklineType = /*@__PURE__*/ S.String;
 
 export interface KPISparklineOptions {
@@ -5611,7 +5743,10 @@ export const KPISparklineOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KPISparklineOptions",
 }) as any as S.Schema<KPISparklineOptions>;
-export type KPIVisualStandardLayoutType = "CLASSIC" | "VERTICAL";
+export type KPIVisualStandardLayoutType =
+  | "CLASSIC"
+  | "VERTICAL"
+  | (string & {});
 export const KPIVisualStandardLayoutType = /*@__PURE__*/ S.String;
 
 export interface KPIVisualStandardLayout {
@@ -5811,7 +5946,12 @@ export const PieChartSortConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PieChartSortConfiguration",
 }) as any as S.Schema<PieChartSortConfiguration>;
-export type ArcThickness = "SMALL" | "MEDIUM" | "LARGE" | "WHOLE";
+export type ArcThickness =
+  | "SMALL"
+  | "MEDIUM"
+  | "LARGE"
+  | "WHOLE"
+  | (string & {});
 export const ArcThickness = /*@__PURE__*/ S.String;
 
 export interface ArcOptions {
@@ -5923,7 +6063,7 @@ export const ArcAxisConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ArcAxisConfiguration",
 }) as any as S.Schema<ArcAxisConfiguration>;
-export type ArcThicknessOptions = "SMALL" | "MEDIUM" | "LARGE";
+export type ArcThicknessOptions = "SMALL" | "MEDIUM" | "LARGE" | (string & {});
 export const ArcThicknessOptions = /*@__PURE__*/ S.String;
 
 export interface ArcConfiguration {
@@ -6185,13 +6325,14 @@ export type ForecastConfigurationList = ForecastConfiguration[];
 export const ForecastConfigurationList = /*@__PURE__*/ S.Array(
   ForecastConfiguration,
 );
-export type LineChartType = "LINE" | "AREA" | "STACKED_AREA";
+export type LineChartType = "LINE" | "AREA" | "STACKED_AREA" | (string & {});
 export const LineChartType = /*@__PURE__*/ S.String;
 
 export type MissingDataTreatmentOption =
   | "INTERPOLATE"
   | "SHOW_AS_ZERO"
-  | "SHOW_AS_BLANK";
+  | "SHOW_AS_BLANK"
+  | (string & {});
 export const MissingDataTreatmentOption = /*@__PURE__*/ S.String;
 
 export interface MissingDataConfiguration {
@@ -6218,7 +6359,7 @@ export const LineSeriesAxisDisplayOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LineSeriesAxisDisplayOptions",
 }) as any as S.Schema<LineSeriesAxisDisplayOptions>;
-export type SingleYAxisOption = "PRIMARY_Y_AXIS";
+export type SingleYAxisOption = "PRIMARY_Y_AXIS" | (string & {});
 export const SingleYAxisOption = /*@__PURE__*/ S.String;
 
 export interface YAxisOptions {
@@ -6235,7 +6376,7 @@ export const SingleAxisOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SingleAxisOptions",
 }) as any as S.Schema<SingleAxisOptions>;
-export type LineChartLineStyle = "SOLID" | "DOTTED" | "DASHED";
+export type LineChartLineStyle = "SOLID" | "DOTTED" | "DASHED" | (string & {});
 export const LineChartLineStyle = /*@__PURE__*/ S.String;
 
 export interface LineChartLineStyleSettings {
@@ -6451,7 +6592,7 @@ export const DataColor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataColor" }) as any as S.Schema<DataColor>;
 export type ColorScaleColorList = DataColor[];
 export const ColorScaleColorList = /*@__PURE__*/ S.Array(DataColor);
-export type ColorFillType = "DISCRETE" | "GRADIENT";
+export type ColorFillType = "DISCRETE" | "GRADIENT" | (string & {});
 export const ColorFillType = /*@__PURE__*/ S.String;
 
 export interface ColorScale {
@@ -6648,7 +6789,7 @@ export const GeospatialCoordinateBounds = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GeospatialCoordinateBounds",
 }) as any as S.Schema<GeospatialCoordinateBounds>;
-export type MapZoomMode = "AUTO" | "MANUAL";
+export type MapZoomMode = "AUTO" | "MANUAL" | (string & {});
 export const MapZoomMode = /*@__PURE__*/ S.String;
 
 export interface GeospatialWindowOptions {
@@ -6667,7 +6808,8 @@ export type BaseMapStyleType =
   | "LIGHT_GRAY"
   | "DARK_GRAY"
   | "STREET"
-  | "IMAGERY";
+  | "IMAGERY"
+  | (string & {});
 export const BaseMapStyleType = /*@__PURE__*/ S.String;
 
 export interface GeospatialMapStyleOptions {
@@ -6678,7 +6820,11 @@ export const GeospatialMapStyleOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GeospatialMapStyleOptions",
 }) as any as S.Schema<GeospatialMapStyleOptions>;
-export type GeospatialSelectedPointStyle = "POINT" | "CLUSTER" | "HEATMAP";
+export type GeospatialSelectedPointStyle =
+  | "POINT"
+  | "CLUSTER"
+  | "HEATMAP"
+  | (string & {});
 export const GeospatialSelectedPointStyle = /*@__PURE__*/ S.String;
 
 export interface SimpleClusterMarker {
@@ -6969,7 +7115,7 @@ export const FilledMapVisual = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FilledMapVisual",
 }) as any as S.Schema<FilledMapVisual>;
-export type GeospatialLayerType = "POINT" | "LINE" | "POLYGON";
+export type GeospatialLayerType = "POINT" | "LINE" | "POLYGON" | (string & {});
 export const GeospatialLayerType = /*@__PURE__*/ S.String;
 
 export interface GeospatialStaticFileSource {
@@ -6988,7 +7134,7 @@ export const GeospatialDataSourceItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GeospatialDataSourceItem",
 }) as any as S.Schema<GeospatialDataSourceItem>;
-export type GeospatialColorState = "ENABLED" | "DISABLED";
+export type GeospatialColorState = "ENABLED" | "DISABLED" | (string & {});
 export const GeospatialColorState = /*@__PURE__*/ S.String;
 
 export interface GeospatialSolidColor {
@@ -7251,7 +7397,10 @@ export const GeospatialLayerJoinDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "GeospatialLayerJoinDefinition",
 }) as any as S.Schema<GeospatialLayerJoinDefinition>;
 export type LayerCustomActionName = string;
-export type LayerCustomActionTrigger = "DATA_POINT_CLICK" | "DATA_POINT_MENU";
+export type LayerCustomActionTrigger =
+  | "DATA_POINT_CLICK"
+  | "DATA_POINT_MENU"
+  | (string & {});
 export const LayerCustomActionTrigger = /*@__PURE__*/ S.String;
 
 export interface LayerCustomActionOperation {
@@ -7323,7 +7472,7 @@ export const GeospatialLayerItem = /*@__PURE__*/ S.suspend(() =>
 export type GeospatialMapLayerList = GeospatialLayerItem[];
 export const GeospatialMapLayerList =
   /*@__PURE__*/ S.Array(GeospatialLayerItem);
-export type GeospatialMapNavigation = "ENABLED" | "DISABLED";
+export type GeospatialMapNavigation = "ENABLED" | "DISABLED" | (string & {});
 export const GeospatialMapNavigation = /*@__PURE__*/ S.String;
 
 export interface GeospatialMapState {
@@ -7434,7 +7583,8 @@ export type FunnelChartMeasureDataLabelStyle =
   | "PERCENTAGE_BY_FIRST_STAGE"
   | "PERCENTAGE_BY_PREVIOUS_STAGE"
   | "VALUE_AND_PERCENTAGE_BY_FIRST_STAGE"
-  | "VALUE_AND_PERCENTAGE_BY_PREVIOUS_STAGE";
+  | "VALUE_AND_PERCENTAGE_BY_PREVIOUS_STAGE"
+  | (string & {});
 export const FunnelChartMeasureDataLabelStyle = /*@__PURE__*/ S.String;
 
 export interface FunnelChartDataLabelOptions {
@@ -7842,7 +7992,7 @@ export const BoxPlotSortConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BoxPlotSortConfiguration",
 }) as any as S.Schema<BoxPlotSortConfiguration>;
-export type BoxPlotFillStyle = "SOLID" | "TRANSPARENT";
+export type BoxPlotFillStyle = "SOLID" | "TRANSPARENT" | (string & {});
 export const BoxPlotFillStyle = /*@__PURE__*/ S.String;
 
 export interface BoxPlotStyleOptions {
@@ -8062,7 +8212,7 @@ export const HistogramFieldWells = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HistogramFieldWells",
 }) as any as S.Schema<HistogramFieldWells>;
-export type HistogramBinType = "BIN_COUNT" | "BIN_WIDTH";
+export type HistogramBinType = "BIN_COUNT" | "BIN_WIDTH" | (string & {});
 export const HistogramBinType = /*@__PURE__*/ S.String;
 
 export type BinCountValue = number;
@@ -8189,19 +8339,30 @@ export const WordCloudSortConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WordCloudSortConfiguration",
 }) as any as S.Schema<WordCloudSortConfiguration>;
-export type WordCloudWordOrientation = "HORIZONTAL" | "HORIZONTAL_AND_VERTICAL";
+export type WordCloudWordOrientation =
+  | "HORIZONTAL"
+  | "HORIZONTAL_AND_VERTICAL"
+  | (string & {});
 export const WordCloudWordOrientation = /*@__PURE__*/ S.String;
 
-export type WordCloudWordScaling = "EMPHASIZE" | "NORMAL";
+export type WordCloudWordScaling = "EMPHASIZE" | "NORMAL" | (string & {});
 export const WordCloudWordScaling = /*@__PURE__*/ S.String;
 
-export type WordCloudCloudLayout = "FLUID" | "NORMAL";
+export type WordCloudCloudLayout = "FLUID" | "NORMAL" | (string & {});
 export const WordCloudCloudLayout = /*@__PURE__*/ S.String;
 
-export type WordCloudWordCasing = "LOWER_CASE" | "EXISTING_CASE";
+export type WordCloudWordCasing =
+  | "LOWER_CASE"
+  | "EXISTING_CASE"
+  | (string & {});
 export const WordCloudWordCasing = /*@__PURE__*/ S.String;
 
-export type WordCloudWordPadding = "NONE" | "SMALL" | "MEDIUM" | "LARGE";
+export type WordCloudWordPadding =
+  | "NONE"
+  | "SMALL"
+  | "MEDIUM"
+  | "LARGE"
+  | (string & {});
 export const WordCloudWordPadding = /*@__PURE__*/ S.String;
 
 export type WordCloudMaximumStringLength = number;
@@ -8266,7 +8427,7 @@ export const WordCloudVisual = /*@__PURE__*/ S.suspend(() =>
   identifier: "WordCloudVisual",
 }) as any as S.Schema<WordCloudVisual>;
 export type TopBottomRankedComputationResultSize = number;
-export type TopBottomComputationType = "TOP" | "BOTTOM";
+export type TopBottomComputationType = "TOP" | "BOTTOM" | (string & {});
 export const TopBottomComputationType = /*@__PURE__*/ S.String;
 
 export interface TopBottomRankedComputation {
@@ -8290,7 +8451,10 @@ export const TopBottomRankedComputation = /*@__PURE__*/ S.suspend(() =>
   identifier: "TopBottomRankedComputation",
 }) as any as S.Schema<TopBottomRankedComputation>;
 export type TopBottomMoversComputationMoverSize = number;
-export type TopBottomSortOrder = "PERCENT_DIFFERENCE" | "ABSOLUTE_DIFFERENCE";
+export type TopBottomSortOrder =
+  | "PERCENT_DIFFERENCE"
+  | "ABSOLUTE_DIFFERENCE"
+  | (string & {});
 export const TopBottomSortOrder = /*@__PURE__*/ S.String;
 
 export interface TopBottomMoversComputation {
@@ -8331,7 +8495,10 @@ export const TotalAggregationComputation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TotalAggregationComputation",
 }) as any as S.Schema<TotalAggregationComputation>;
-export type MaximumMinimumComputationType = "MAXIMUM" | "MINIMUM";
+export type MaximumMinimumComputationType =
+  | "MAXIMUM"
+  | "MINIMUM"
+  | (string & {});
 export const MaximumMinimumComputationType = /*@__PURE__*/ S.String;
 
 export interface MaximumMinimumComputation {
@@ -8437,7 +8604,10 @@ export const UniqueValuesComputation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UniqueValuesComputation",
 }) as any as S.Schema<UniqueValuesComputation>;
-export type ForecastComputationSeasonality = "AUTOMATIC" | "CUSTOM";
+export type ForecastComputationSeasonality =
+  | "AUTOMATIC"
+  | "CUSTOM"
+  | (string & {});
 export const ForecastComputationSeasonality = /*@__PURE__*/ S.String;
 
 export type ForecastComputationCustomSeasonalityValue = number;
@@ -8618,14 +8788,18 @@ export const SankeyDiagramVisual = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SankeyDiagramVisual",
 }) as any as S.Schema<SankeyDiagramVisual>;
-export type CustomContentType = "IMAGE" | "OTHER_EMBEDDED_CONTENT";
+export type CustomContentType =
+  | "IMAGE"
+  | "OTHER_EMBEDDED_CONTENT"
+  | (string & {});
 export const CustomContentType = /*@__PURE__*/ S.String;
 
 export type CustomContentImageScalingConfiguration =
   | "FIT_TO_HEIGHT"
   | "FIT_TO_WIDTH"
   | "DO_NOT_SCALE"
-  | "SCALE_TO_VISUAL";
+  | "SCALE_TO_VISUAL"
+  | (string & {});
 export const CustomContentImageScalingConfiguration = /*@__PURE__*/ S.String;
 
 export interface CustomContentConfiguration {
@@ -8725,7 +8899,7 @@ export const RadarChartSortConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RadarChartSortConfiguration",
 }) as any as S.Schema<RadarChartSortConfiguration>;
-export type RadarChartShape = "CIRCLE" | "POLYGON";
+export type RadarChartShape = "CIRCLE" | "POLYGON" | (string & {});
 export const RadarChartShape = /*@__PURE__*/ S.String;
 
 export interface RadarChartAreaStyleSettings {
@@ -8745,7 +8919,11 @@ export const RadarChartSeriesSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "RadarChartSeriesSettings",
 }) as any as S.Schema<RadarChartSeriesSettings>;
 export type RadarChartStartAngle = number;
-export type RadarChartAxesRangeScale = "AUTO" | "INDEPENDENT" | "SHARED";
+export type RadarChartAxesRangeScale =
+  | "AUTO"
+  | "INDEPENDENT"
+  | "SHARED"
+  | (string & {});
 export const RadarChartAxesRangeScale = /*@__PURE__*/ S.String;
 
 export interface RadarChartConfiguration {
@@ -8810,7 +8988,7 @@ export const RadarChartVisual = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RadarChartVisual",
 }) as any as S.Schema<RadarChartVisual>;
-export type PluginVisualAxisName = "GROUP_BY" | "VALUE";
+export type PluginVisualAxisName = "GROUP_BY" | "VALUE" | (string & {});
 export const PluginVisualAxisName = /*@__PURE__*/ S.String;
 
 export type UnaggregatedFieldList = UnaggregatedField[];
@@ -9030,7 +9208,8 @@ export type SheetImageScalingType =
   | "SCALE_TO_WIDTH"
   | "SCALE_TO_HEIGHT"
   | "SCALE_TO_CONTAINER"
-  | "SCALE_NONE";
+  | "SCALE_NONE"
+  | (string & {});
 export const SheetImageScalingType = /*@__PURE__*/ S.String;
 
 export interface SheetImageScalingConfiguration {
@@ -9078,7 +9257,7 @@ export const ImageInteractionOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImageInteractionOptions",
 }) as any as S.Schema<ImageInteractionOptions>;
 export type ImageCustomActionName = string;
-export type ImageCustomActionTrigger = "CLICK" | "MENU";
+export type ImageCustomActionTrigger = "CLICK" | "MENU" | (string & {});
 export const ImageCustomActionTrigger = /*@__PURE__*/ S.String;
 
 export interface ImageCustomActionOperation {
@@ -9146,7 +9325,8 @@ export type LayoutElementType =
   | "FILTER_CONTROL"
   | "PARAMETER_CONTROL"
   | "TEXT_BOX"
-  | "IMAGE";
+  | "IMAGE"
+  | (string & {});
 export const LayoutElementType = /*@__PURE__*/ S.String;
 
 export type GridLayoutElementColumnIndex = number;
@@ -9221,7 +9401,7 @@ export const GridLayoutElement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GridLayoutElement>;
 export type GridLayoutElementList = GridLayoutElement[];
 export const GridLayoutElementList = /*@__PURE__*/ S.Array(GridLayoutElement);
-export type ResizeOption = "FIXED" | "RESPONSIVE";
+export type ResizeOption = "FIXED" | "RESPONSIVE" | (string & {});
 export const ResizeOption = /*@__PURE__*/ S.String;
 
 export interface GridLayoutScreenCanvasSizeOptions {
@@ -9368,7 +9548,7 @@ export const FreeFormLayoutCanvasSizeOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FreeFormLayoutCanvasSizeOptions",
 }) as any as S.Schema<FreeFormLayoutCanvasSizeOptions>;
-export type SheetLayoutGroupMemberType = "ELEMENT" | "GROUP";
+export type SheetLayoutGroupMemberType = "ELEMENT" | "GROUP" | (string & {});
 export const SheetLayoutGroupMemberType = /*@__PURE__*/ S.String;
 
 export interface SheetLayoutGroupMember {
@@ -9474,7 +9654,7 @@ export const BodySectionContent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BodySectionContent",
 }) as any as S.Schema<BodySectionContent>;
-export type SectionPageBreakStatus = "ENABLED" | "DISABLED";
+export type SectionPageBreakStatus = "ENABLED" | "DISABLED" | (string & {});
 export const SectionPageBreakStatus = /*@__PURE__*/ S.String;
 
 export interface SectionAfterPageBreak {
@@ -9611,10 +9791,11 @@ export type PaperSize =
   | "A4"
   | "A5"
   | "JIS_B4"
-  | "JIS_B5";
+  | "JIS_B5"
+  | (string & {});
 export const PaperSize = /*@__PURE__*/ S.String;
 
-export type PaperOrientation = "PORTRAIT" | "LANDSCAPE";
+export type PaperOrientation = "PORTRAIT" | "LANDSCAPE" | (string & {});
 export const PaperOrientation = /*@__PURE__*/ S.String;
 
 export interface SectionBasedLayoutPaperCanvasSizeOptions {
@@ -9700,13 +9881,14 @@ export const SheetControlLayout = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SheetControlLayout>;
 export type SheetControlLayoutList = SheetControlLayout[];
 export const SheetControlLayoutList = /*@__PURE__*/ S.Array(SheetControlLayout);
-export type SheetContentType = "PAGINATED" | "INTERACTIVE";
+export type SheetContentType = "PAGINATED" | "INTERACTIVE" | (string & {});
 export const SheetContentType = /*@__PURE__*/ S.String;
 
 export type VisualHighlightTrigger =
   | "DATA_POINT_CLICK"
   | "DATA_POINT_HOVER"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const VisualHighlightTrigger = /*@__PURE__*/ S.String;
 
 export interface VisualHighlightOperation {
@@ -9808,7 +9990,10 @@ export const CalculatedField = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CalculatedField>;
 export type CalculatedFields = CalculatedField[];
 export const CalculatedFields = /*@__PURE__*/ S.Array(CalculatedField);
-export type ParameterValueType = "MULTI_VALUED" | "SINGLE_VALUED";
+export type ParameterValueType =
+  | "MULTI_VALUED"
+  | "SINGLE_VALUED"
+  | (string & {});
 export const ParameterValueType = /*@__PURE__*/ S.String;
 
 export interface DynamicDefaultValue {
@@ -9837,7 +10022,7 @@ export const StringDefaultValues = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StringDefaultValues",
 }) as any as S.Schema<StringDefaultValues>;
-export type ValueWhenUnsetOption = "RECOMMENDED_VALUE" | "NULL";
+export type ValueWhenUnsetOption = "RECOMMENDED_VALUE" | "NULL" | (string & {});
 export const ValueWhenUnsetOption = /*@__PURE__*/ S.String;
 
 export interface StringValueWhenUnsetConfiguration {
@@ -10048,13 +10233,20 @@ export type CategoryFilterMatchOperator =
   | "CONTAINS"
   | "DOES_NOT_CONTAIN"
   | "STARTS_WITH"
-  | "ENDS_WITH";
+  | "ENDS_WITH"
+  | (string & {});
 export const CategoryFilterMatchOperator = /*@__PURE__*/ S.String;
 
-export type CategoryFilterSelectAllOptions = "FILTER_ALL_VALUES";
+export type CategoryFilterSelectAllOptions =
+  | "FILTER_ALL_VALUES"
+  | (string & {});
 export const CategoryFilterSelectAllOptions = /*@__PURE__*/ S.String;
 
-export type FilterNullOption = "ALL_VALUES" | "NULLS_ONLY" | "NON_NULLS_ONLY";
+export type FilterNullOption =
+  | "ALL_VALUES"
+  | "NULLS_ONLY"
+  | "NON_NULLS_ONLY"
+  | (string & {});
 export const FilterNullOption = /*@__PURE__*/ S.String;
 
 export interface FilterListConfiguration {
@@ -10288,7 +10480,7 @@ export const NumericRangeFilterValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NumericRangeFilterValue",
 }) as any as S.Schema<NumericRangeFilterValue>;
-export type NumericFilterSelectAllOptions = "FILTER_ALL_VALUES";
+export type NumericFilterSelectAllOptions = "FILTER_ALL_VALUES" | (string & {});
 export const NumericFilterSelectAllOptions = /*@__PURE__*/ S.String;
 
 export interface NumericRangeFilter {
@@ -10321,7 +10513,10 @@ export const NumericRangeFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NumericRangeFilter",
 }) as any as S.Schema<NumericRangeFilter>;
-export type NumericEqualityMatchOperator = "EQUALS" | "DOES_NOT_EQUAL";
+export type NumericEqualityMatchOperator =
+  | "EQUALS"
+  | "DOES_NOT_EQUAL"
+  | (string & {});
 export const NumericEqualityMatchOperator = /*@__PURE__*/ S.String;
 
 export interface NumericEqualityFilter {
@@ -10434,7 +10629,7 @@ export const TimeRangeFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TimeRangeFilter",
 }) as any as S.Schema<TimeRangeFilter>;
-export type AnchorOption = "NOW";
+export type AnchorOption = "NOW" | (string & {});
 export const AnchorOption = /*@__PURE__*/ S.String;
 
 export interface AnchorDateConfiguration {
@@ -10449,7 +10644,13 @@ export const AnchorDateConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AnchorDateConfiguration",
 }) as any as S.Schema<AnchorDateConfiguration>;
-export type RelativeDateType = "PREVIOUS" | "THIS" | "LAST" | "NOW" | "NEXT";
+export type RelativeDateType =
+  | "PREVIOUS"
+  | "THIS"
+  | "LAST"
+  | "NOW"
+  | "NEXT"
+  | (string & {});
 export const RelativeDateType = /*@__PURE__*/ S.String;
 
 export interface RelativeDatesFilter {
@@ -10572,7 +10773,10 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type FilterList = Filter[];
 export const FilterList = /*@__PURE__*/ S.Array(Filter);
-export type FilterVisualScope = "ALL_VISUALS" | "SELECTED_VISUALS";
+export type FilterVisualScope =
+  | "ALL_VISUALS"
+  | "SELECTED_VISUALS"
+  | (string & {});
 export const FilterVisualScope = /*@__PURE__*/ S.String;
 
 export type FilteredVisualsList = string[];
@@ -10627,7 +10831,10 @@ export const FilterScopeConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FilterScopeConfiguration",
 }) as any as S.Schema<FilterScopeConfiguration>;
-export type CrossDatasetTypes = "ALL_DATASETS" | "SINGLE_DATASET";
+export type CrossDatasetTypes =
+  | "ALL_DATASETS"
+  | "SINGLE_DATASET"
+  | (string & {});
 export const CrossDatasetTypes = /*@__PURE__*/ S.String;
 
 export interface FilterGroup {
@@ -10648,10 +10855,10 @@ export const FilterGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FilterGroup" }) as any as S.Schema<FilterGroup>;
 export type FilterGroupList = FilterGroup[];
 export const FilterGroupList = /*@__PURE__*/ S.Array(FilterGroup);
-export type ColumnRole = "DIMENSION" | "MEASURE";
+export type ColumnRole = "DIMENSION" | "MEASURE" | (string & {});
 export const ColumnRole = /*@__PURE__*/ S.String;
 
-export type SpecialValue = "EMPTY" | "NULL" | "OTHER";
+export type SpecialValue = "EMPTY" | "NULL" | "OTHER" | (string & {});
 export const SpecialValue = /*@__PURE__*/ S.String;
 
 export interface CustomColor {
@@ -10787,10 +10994,11 @@ export type DayOfTheWeek =
   | "WEDNESDAY"
   | "THURSDAY"
   | "FRIDAY"
-  | "SATURDAY";
+  | "SATURDAY"
+  | (string & {});
 export const DayOfTheWeek = /*@__PURE__*/ S.String;
 
-export type QBusinessInsightsStatus = "ENABLED" | "DISABLED";
+export type QBusinessInsightsStatus = "ENABLED" | "DISABLED" | (string & {});
 export const QBusinessInsightsStatus = /*@__PURE__*/ S.String;
 
 export type DataSetArnsList = string[];
@@ -10811,7 +11019,7 @@ export const AssetOptions = /*@__PURE__*/ S.suspend(() =>
     CustomActionDefaults: S.optional(VisualCustomActionDefaults),
   }),
 ).annotate({ identifier: "AssetOptions" }) as any as S.Schema<AssetOptions>;
-export type QueryExecutionMode = "AUTO" | "MANUAL";
+export type QueryExecutionMode = "AUTO" | "MANUAL" | (string & {});
 export const QueryExecutionMode = /*@__PURE__*/ S.String;
 
 export interface QueryExecutionOptions {
@@ -10912,7 +11120,7 @@ export const AnalysisDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AnalysisDefinition",
 }) as any as S.Schema<AnalysisDefinition>;
-export type ValidationStrategyMode = "STRICT" | "LENIENT";
+export type ValidationStrategyMode = "STRICT" | "LENIENT" | (string & {});
 export const ValidationStrategyMode = /*@__PURE__*/ S.String;
 
 export interface ValidationStrategy {
@@ -11164,13 +11372,15 @@ export type BrandStatus =
   | "CREATE_SUCCEEDED"
   | "CREATE_FAILED"
   | "DELETE_IN_PROGRESS"
-  | "DELETE_FAILED";
+  | "DELETE_FAILED"
+  | (string & {});
 export const BrandStatus = /*@__PURE__*/ S.String;
 
 export type BrandVersionStatus =
   | "CREATE_IN_PROGRESS"
   | "CREATE_SUCCEEDED"
-  | "CREATE_FAILED";
+  | "CREATE_FAILED"
+  | (string & {});
 export const BrandVersionStatus = /*@__PURE__*/ S.String;
 
 export type ErrorMessage = string;
@@ -11254,7 +11464,7 @@ export const CreateBrandResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateBrandResponse",
 }) as any as S.Schema<CreateBrandResponse>;
 export type CustomPermissionsName = string;
-export type CapabilityState = "DENY";
+export type CapabilityState = "DENY" | (string & {});
 export const CapabilityState = /*@__PURE__*/ S.String;
 
 export interface Capabilities {
@@ -11796,7 +12006,7 @@ export const ExportToCSVOption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExportToCSVOption",
 }) as any as S.Schema<ExportToCSVOption>;
-export type DashboardUIState = "EXPANDED" | "COLLAPSED";
+export type DashboardUIState = "EXPANDED" | "COLLAPSED" | (string & {});
 export const DashboardUIState = /*@__PURE__*/ S.String;
 
 export interface SheetControlsOption {
@@ -12067,10 +12277,11 @@ export type InputColumnDataType =
   | "BIT"
   | "BOOLEAN"
   | "JSON"
-  | "SEMISTRUCT";
+  | "SEMISTRUCT"
+  | (string & {});
 export const InputColumnDataType = /*@__PURE__*/ S.String;
 
-export type ColumnDataSubType = "FLOAT" | "FIXED";
+export type ColumnDataSubType = "FLOAT" | "FIXED" | (string & {});
 export const ColumnDataSubType = /*@__PURE__*/ S.String;
 
 export interface InputColumn {
@@ -12123,11 +12334,18 @@ export const CustomSql = /*@__PURE__*/ S.suspend(() =>
     Columns: S.optional(InputColumnList),
   }),
 ).annotate({ identifier: "CustomSql" }) as any as S.Schema<CustomSql>;
-export type FileFormat = "CSV" | "TSV" | "CLF" | "ELF" | "XLSX" | "JSON";
+export type FileFormat =
+  | "CSV"
+  | "TSV"
+  | "CLF"
+  | "ELF"
+  | "XLSX"
+  | "JSON"
+  | (string & {});
 export const FileFormat = /*@__PURE__*/ S.String;
 
 export type PositiveInteger = number;
-export type TextQualifier = "DOUBLE_QUOTE" | "SINGLE_QUOTE";
+export type TextQualifier = "DOUBLE_QUOTE" | "SINGLE_QUOTE" | (string & {});
 export const TextQualifier = /*@__PURE__*/ S.String;
 
 export type Delimiter = string;
@@ -12273,7 +12491,8 @@ export type DataSetStringComparisonFilterOperator =
   | "CONTAINS"
   | "DOES_NOT_CONTAIN"
   | "STARTS_WITH"
-  | "ENDS_WITH";
+  | "ENDS_WITH"
+  | (string & {});
 export const DataSetStringComparisonFilterOperator = /*@__PURE__*/ S.String;
 
 export type DataSetStringFilterStaticValue = string | redacted.Redacted<string>;
@@ -12298,7 +12517,10 @@ export const DataSetStringComparisonFilterCondition = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DataSetStringComparisonFilterCondition",
 }) as any as S.Schema<DataSetStringComparisonFilterCondition>;
-export type DataSetStringListFilterOperator = "INCLUDE" | "EXCLUDE";
+export type DataSetStringListFilterOperator =
+  | "INCLUDE"
+  | "EXCLUDE"
+  | (string & {});
 export const DataSetStringListFilterOperator = /*@__PURE__*/ S.String;
 
 export type DataSetStringFilterStaticValueList = (
@@ -12349,7 +12571,8 @@ export type DataSetNumericComparisonFilterOperator =
   | "GREATER_THAN"
   | "GREATER_THAN_OR_EQUALS_TO"
   | "LESS_THAN"
-  | "LESS_THAN_OR_EQUALS_TO";
+  | "LESS_THAN_OR_EQUALS_TO"
+  | (string & {});
 export const DataSetNumericComparisonFilterOperator = /*@__PURE__*/ S.String;
 
 export interface DataSetNumericFilterValue {
@@ -12409,7 +12632,8 @@ export type DataSetDateComparisonFilterOperator =
   | "BEFORE"
   | "BEFORE_OR_EQUALS_TO"
   | "AFTER"
-  | "AFTER_OR_EQUALS_TO";
+  | "AFTER_OR_EQUALS_TO"
+  | (string & {});
 export const DataSetDateComparisonFilterOperator = /*@__PURE__*/ S.String;
 
 export interface DataSetDateFilterValue {
@@ -12523,7 +12747,12 @@ export const RenameColumnOperation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RenameColumnOperation",
 }) as any as S.Schema<RenameColumnOperation>;
-export type ColumnDataType = "STRING" | "INTEGER" | "DECIMAL" | "DATETIME";
+export type ColumnDataType =
+  | "STRING"
+  | "INTEGER"
+  | "DECIMAL"
+  | "DATETIME"
+  | (string & {});
 export const ColumnDataType = /*@__PURE__*/ S.String;
 
 export type TypeCastFormat = string;
@@ -12550,7 +12779,8 @@ export type GeoSpatialDataRole =
   | "CITY"
   | "POSTCODE"
   | "LONGITUDE"
-  | "LATITUDE";
+  | "LATITUDE"
+  | (string & {});
 export const GeoSpatialDataRole = /*@__PURE__*/ S.String;
 
 export type ColumnDescriptiveText = string | redacted.Redacted<string>;
@@ -12583,7 +12813,10 @@ export const TagColumnOperation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TagColumnOperation",
 }) as any as S.Schema<TagColumnOperation>;
-export type ColumnTagName = "COLUMN_GEOGRAPHIC_ROLE" | "COLUMN_DESCRIPTION";
+export type ColumnTagName =
+  | "COLUMN_GEOGRAPHIC_ROLE"
+  | "COLUMN_DESCRIPTION"
+  | (string & {});
 export const ColumnTagName = /*@__PURE__*/ S.String;
 
 export type ColumnTagNames = ColumnTagName[];
@@ -12745,7 +12978,7 @@ export const JoinKeyProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "JoinKeyProperties",
 }) as any as S.Schema<JoinKeyProperties>;
-export type JoinType = "INNER" | "OUTER" | "LEFT" | "RIGHT";
+export type JoinType = "INNER" | "OUTER" | "LEFT" | "RIGHT" | (string & {});
 export const JoinType = /*@__PURE__*/ S.String;
 
 export type OnClause = string;
@@ -12800,11 +13033,11 @@ export const LogicalTableMap = /*@__PURE__*/ S.Record(
   S.String,
   LogicalTable.pipe(S.optional),
 );
-export type DataSetImportMode = "SPICE" | "DIRECT_QUERY";
+export type DataSetImportMode = "SPICE" | "DIRECT_QUERY" | (string & {});
 export const DataSetImportMode = /*@__PURE__*/ S.String;
 
 export type ColumnGroupName = string;
-export type GeoSpatialCountryCode = "US";
+export type GeoSpatialCountryCode = "US" | (string & {});
 export const GeoSpatialCountryCode = /*@__PURE__*/ S.String;
 
 export type ColumnList = string[];
@@ -12850,13 +13083,19 @@ export const FieldFolderMap = /*@__PURE__*/ S.Record(
   S.String,
   FieldFolder.pipe(S.optional),
 );
-export type RowLevelPermissionPolicy = "GRANT_ACCESS" | "DENY_ACCESS";
+export type RowLevelPermissionPolicy =
+  | "GRANT_ACCESS"
+  | "DENY_ACCESS"
+  | (string & {});
 export const RowLevelPermissionPolicy = /*@__PURE__*/ S.String;
 
-export type RowLevelPermissionFormatVersion = "VERSION_1" | "VERSION_2";
+export type RowLevelPermissionFormatVersion =
+  | "VERSION_1"
+  | "VERSION_2"
+  | (string & {});
 export const RowLevelPermissionFormatVersion = /*@__PURE__*/ S.String;
 
-export type Status = "ENABLED" | "DISABLED";
+export type Status = "ENABLED" | "DISABLED" | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 
 export interface RowLevelPermissionDataSet {
@@ -12959,7 +13198,10 @@ export const DataSetUsageConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataSetUsageConfiguration",
 }) as any as S.Schema<DataSetUsageConfiguration>;
 export type DatasetParameterId = string;
-export type DatasetParameterValueType = "MULTI_VALUED" | "SINGLE_VALUED";
+export type DatasetParameterValueType =
+  | "MULTI_VALUED"
+  | "SINGLE_VALUED"
+  | (string & {});
 export const DatasetParameterValueType = /*@__PURE__*/ S.String;
 
 export interface StringDatasetParameterDefaultValues {
@@ -13099,7 +13341,7 @@ export const PerformanceConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PerformanceConfiguration",
 }) as any as S.Schema<PerformanceConfiguration>;
-export type DataSetUseAs = "RLS_RULES";
+export type DataSetUseAs = "RLS_RULES" | (string & {});
 export const DataSetUseAs = /*@__PURE__*/ S.String;
 
 export interface ParentDataSet {
@@ -13197,7 +13439,12 @@ export const CastColumnTypesOperation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CastColumnTypesOperation",
 }) as any as S.Schema<CastColumnTypesOperation>;
-export type JoinOperationType = "INNER" | "OUTER" | "LEFT" | "RIGHT";
+export type JoinOperationType =
+  | "INNER"
+  | "OUTER"
+  | "LEFT"
+  | "RIGHT"
+  | (string & {});
 export const JoinOperationType = /*@__PURE__*/ S.String;
 
 export type JoinOperationOnClause = string | redacted.Redacted<string>;
@@ -13253,7 +13500,8 @@ export type DataPrepSimpleAggregationFunctionType =
   | "SUM"
   | "AVERAGE"
   | "MAX"
-  | "MIN";
+  | "MIN"
+  | (string & {});
 export const DataPrepSimpleAggregationFunctionType = /*@__PURE__*/ S.String;
 
 export interface DataPrepSimpleAggregationFunction {
@@ -13792,7 +14040,8 @@ export type DataSourceType =
   | "ONE_DRIVE"
   | "WEB_CRAWLER"
   | "S3_KNOWLEDGE_BASE"
-  | "QBUSINESS";
+  | "QBUSINESS"
+  | (string & {});
 export const DataSourceType = /*@__PURE__*/ S.String;
 
 export type Domain = string;
@@ -14029,7 +14278,12 @@ export const ServiceNowParameters = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceNowParameters",
 }) as any as S.Schema<ServiceNowParameters>;
 export type Warehouse = string;
-export type AuthenticationType = "PASSWORD" | "KEYPAIR" | "TOKEN" | "X509";
+export type AuthenticationType =
+  | "PASSWORD"
+  | "KEYPAIR"
+  | "TOKEN"
+  | "X509"
+  | (string & {});
 export const AuthenticationType = /*@__PURE__*/ S.String;
 
 export type DatabaseAccessControlRole = string;
@@ -14152,7 +14406,7 @@ export const DatabricksParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DatabricksParameters",
 }) as any as S.Schema<DatabricksParameters>;
-export type StarburstProductType = "GALAXY" | "ENTERPRISE";
+export type StarburstProductType = "GALAXY" | "ENTERPRISE" | (string & {});
 export const StarburstProductType = /*@__PURE__*/ S.String;
 
 export interface StarburstParameters {
@@ -14222,7 +14476,12 @@ export const CustomConnectionParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CustomConnectionParameters",
 }) as any as S.Schema<CustomConnectionParameters>;
-export type WebCrawlerAuthType = "NO_AUTH" | "BASIC_AUTH" | "FORM" | "SAML";
+export type WebCrawlerAuthType =
+  | "NO_AUTH"
+  | "BASIC_AUTH"
+  | "FORM"
+  | "SAML"
+  | (string & {});
 export const WebCrawlerAuthType = /*@__PURE__*/ S.String;
 
 export type XpathFields = string;
@@ -15668,10 +15927,10 @@ export const CreateFlowResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateFlowResponse>;
 export type RestrictiveResourceId = string;
 export type FolderName = string;
-export type FolderType = "SHARED" | "RESTRICTED";
+export type FolderType = "SHARED" | "RESTRICTED" | (string & {});
 export const FolderType = /*@__PURE__*/ S.String;
 
-export type SharingModel = "ACCOUNT" | "NAMESPACE";
+export type SharingModel = "ACCOUNT" | "NAMESPACE" | (string & {});
 export const SharingModel = /*@__PURE__*/ S.String;
 
 export interface CreateFolderRequest {
@@ -15731,7 +15990,8 @@ export type MemberType =
   | "ANALYSIS"
   | "DATASET"
   | "DATASOURCE"
-  | "TOPIC";
+  | "TOPIC"
+  | (string & {});
 export const MemberType = /*@__PURE__*/ S.String;
 
 export interface CreateFolderMembershipRequest {
@@ -15895,7 +16155,7 @@ export const CreateGroupMembershipResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateGroupMembershipResponse",
 }) as any as S.Schema<CreateGroupMembershipResponse>;
 export type IAMPolicyAssignmentName = string;
-export type AssignmentStatus = "ENABLED" | "DRAFT" | "DISABLED";
+export type AssignmentStatus = "ENABLED" | "DRAFT" | "DISABLED" | (string & {});
 export const AssignmentStatus = /*@__PURE__*/ S.String;
 
 export type IdentityName = string;
@@ -15960,7 +16220,10 @@ export const CreateIAMPolicyAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIAMPolicyAssignmentResponse",
 }) as any as S.Schema<CreateIAMPolicyAssignmentResponse>;
-export type IngestionType = "INCREMENTAL_REFRESH" | "FULL_REFRESH";
+export type IngestionType =
+  | "INCREMENTAL_REFRESH"
+  | "FULL_REFRESH"
+  | (string & {});
 export const IngestionType = /*@__PURE__*/ S.String;
 
 export interface CreateIngestionRequest {
@@ -15997,7 +16260,8 @@ export type IngestionStatus =
   | "RUNNING"
   | "FAILED"
   | "COMPLETED"
-  | "CANCELLED";
+  | "CANCELLED"
+  | (string & {});
 export const IngestionStatus = /*@__PURE__*/ S.String;
 
 export interface CreateIngestionResponse {
@@ -16018,7 +16282,7 @@ export const CreateIngestionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIngestionResponse",
 }) as any as S.Schema<CreateIngestionResponse>;
-export type IdentityStore = "QUICKSIGHT";
+export type IdentityStore = "QUICKSIGHT" | (string & {});
 export const IdentityStore = /*@__PURE__*/ S.String;
 
 export interface CreateNamespaceRequest {
@@ -16051,7 +16315,8 @@ export type NamespaceStatus =
   | "CREATING"
   | "DELETING"
   | "RETRYABLE_FAILURE"
-  | "NON_RETRYABLE_FAILURE";
+  | "NON_RETRYABLE_FAILURE"
+  | (string & {});
 export const NamespaceStatus = /*@__PURE__*/ S.String;
 
 export interface CreateNamespaceResponse {
@@ -16077,7 +16342,7 @@ export const CreateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateNamespaceResponse",
 }) as any as S.Schema<CreateNamespaceResponse>;
 export type OAuthClientApplicationId = string;
-export type OAuthClientAuthenticationType = "TOKEN";
+export type OAuthClientAuthenticationType = "TOKEN" | (string & {});
 export const OAuthClientAuthenticationType = /*@__PURE__*/ S.String;
 
 export type OAuthTokenEndpointUrl = string | redacted.Redacted<string>;
@@ -16154,7 +16419,8 @@ export type RefreshInterval =
   | "HOURLY"
   | "DAILY"
   | "WEEKLY"
-  | "MONTHLY";
+  | "MONTHLY"
+  | (string & {});
 export const RefreshInterval = /*@__PURE__*/ S.String;
 
 export type DayOfWeek =
@@ -16164,7 +16430,8 @@ export type DayOfWeek =
   | "WEDNESDAY"
   | "THURSDAY"
   | "FRIDAY"
-  | "SATURDAY";
+  | "SATURDAY"
+  | (string & {});
 export const DayOfWeek = /*@__PURE__*/ S.String;
 
 export type DayOfMonth = string;
@@ -16264,7 +16531,8 @@ export type Role =
   | "READER"
   | "ADMIN_PRO"
   | "AUTHOR_PRO"
-  | "READER_PRO";
+  | "READER_PRO"
+  | (string & {});
 export const Role = /*@__PURE__*/ S.String;
 
 export interface CreateRoleMembershipRequest {
@@ -16722,7 +16990,7 @@ export const Font = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Font" }) as any as S.Schema<Font>;
 export type FontList = Font[];
 export const FontList = /*@__PURE__*/ S.Array(Font);
-export type TextTransform = "CAPITALIZE";
+export type TextTransform = "CAPITALIZE" | (string & {});
 export const TextTransform = /*@__PURE__*/ S.String;
 
 export interface VisualTitleFontConfiguration {
@@ -16917,7 +17185,10 @@ export const CreateThemeAliasResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateThemeAliasResponse",
 }) as any as S.Schema<CreateThemeAliasResponse>;
-export type TopicUserExperienceVersion = "LEGACY" | "NEW_READER_EXPERIENCE";
+export type TopicUserExperienceVersion =
+  | "LEGACY"
+  | "NEW_READER_EXPERIENCE"
+  | (string & {});
 export const TopicUserExperienceVersion = /*@__PURE__*/ S.String;
 
 export interface DataAggregation {
@@ -16940,16 +17211,18 @@ export type NamedFilterType =
   | "NUMERIC_RANGE_FILTER"
   | "DATE_RANGE_FILTER"
   | "RELATIVE_DATE_FILTER"
-  | "NULL_FILTER";
+  | "NULL_FILTER"
+  | (string & {});
 export const NamedFilterType = /*@__PURE__*/ S.String;
 
-export type CategoryFilterFunction = "EXACT" | "CONTAINS";
+export type CategoryFilterFunction = "EXACT" | "CONTAINS" | (string & {});
 export const CategoryFilterFunction = /*@__PURE__*/ S.String;
 
 export type CategoryFilterType =
   | "CUSTOM_FILTER"
   | "CUSTOM_FILTER_LIST"
-  | "FILTER_LIST";
+  | "FILTER_LIST"
+  | (string & {});
 export const CategoryFilterType = /*@__PURE__*/ S.String;
 
 export type StringList = string[];
@@ -17016,7 +17289,8 @@ export type NamedFilterAggType =
   | "STDEV"
   | "STDEVP"
   | "VAR"
-  | "VARP";
+  | "VARP"
+  | (string & {});
 export const NamedFilterAggType = /*@__PURE__*/ S.String;
 
 export interface TopicNumericEqualityFilter {
@@ -17081,7 +17355,8 @@ export type TopicRelativeDateFilterFunction =
   | "THIS"
   | "LAST"
   | "NEXT"
-  | "NOW";
+  | "NOW"
+  | (string & {});
 export const TopicRelativeDateFilterFunction = /*@__PURE__*/ S.String;
 
 export interface TopicRelativeDateFilter {
@@ -17098,7 +17373,11 @@ export const TopicRelativeDateFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TopicRelativeDateFilter",
 }) as any as S.Schema<TopicRelativeDateFilter>;
-export type NullFilterType = "ALL_VALUES" | "NON_NULLS_ONLY" | "NULLS_ONLY";
+export type NullFilterType =
+  | "ALL_VALUES"
+  | "NON_NULLS_ONLY"
+  | "NULLS_ONLY"
+  | (string & {});
 export const NullFilterType = /*@__PURE__*/ S.String;
 
 export interface TopicNullFilter {
@@ -17147,7 +17426,7 @@ export const TopicFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TopicFilter" }) as any as S.Schema<TopicFilter>;
 export type TopicFilters = TopicFilter[];
 export const TopicFilters = /*@__PURE__*/ S.Array(TopicFilter);
-export type ColumnDataRole = "DIMENSION" | "MEASURE";
+export type ColumnDataRole = "DIMENSION" | "MEASURE" | (string & {});
 export const ColumnDataRole = /*@__PURE__*/ S.String;
 
 export type DefaultAggregation =
@@ -17161,16 +17440,18 @@ export type DefaultAggregation =
   | "STDEV"
   | "STDEVP"
   | "VAR"
-  | "VARP";
+  | "VARP"
+  | (string & {});
 export const DefaultAggregation = /*@__PURE__*/ S.String;
 
 export type ColumnOrderingType =
   | "GREATER_IS_BETTER"
   | "LESSER_IS_BETTER"
-  | "SPECIFIED";
+  | "SPECIFIED"
+  | (string & {});
 export const ColumnOrderingType = /*@__PURE__*/ S.String;
 
-export type UndefinedSpecifiedValueType = "LEAST" | "MOST";
+export type UndefinedSpecifiedValueType = "LEAST" | "MOST" | (string & {});
 export const UndefinedSpecifiedValueType = /*@__PURE__*/ S.String;
 
 export interface ComparativeOrder {
@@ -17224,7 +17505,8 @@ export type AuthorSpecifiedAggregation =
   | "STDEVP"
   | "VAR"
   | "VARP"
-  | "PERCENTILE";
+  | "PERCENTILE"
+  | (string & {});
 export const AuthorSpecifiedAggregation = /*@__PURE__*/ S.String;
 
 export type AuthorSpecifiedAggregations = AuthorSpecifiedAggregation[];
@@ -17358,10 +17640,10 @@ export const SemanticEntityType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SemanticEntityType",
 }) as any as S.Schema<SemanticEntityType>;
-export type PropertyRole = "PRIMARY" | "ID";
+export type PropertyRole = "PRIMARY" | "ID" | (string & {});
 export const PropertyRole = /*@__PURE__*/ S.String;
 
-export type PropertyUsage = "INHERIT" | "DIMENSION" | "MEASURE";
+export type PropertyUsage = "INHERIT" | "DIMENSION" | "MEASURE" | (string & {});
 export const PropertyUsage = /*@__PURE__*/ S.String;
 
 export type NamedEntityAggType =
@@ -17377,7 +17659,8 @@ export type NamedEntityAggType =
   | "VARP"
   | "PERCENTILE"
   | "MEDIAN"
-  | "CUSTOM";
+  | "CUSTOM"
+  | (string & {});
 export const NamedEntityAggType = /*@__PURE__*/ S.String;
 
 export type AggregationFunctionParameters = {
@@ -17547,7 +17830,12 @@ export const CreateTopicResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTopicResponse",
 }) as any as S.Schema<CreateTopicResponse>;
-export type TopicScheduleType = "HOURLY" | "DAILY" | "WEEKLY" | "MONTHLY";
+export type TopicScheduleType =
+  | "HOURLY"
+  | "DAILY"
+  | "WEEKLY"
+  | "MONTHLY"
+  | (string & {});
 export const TopicScheduleType = /*@__PURE__*/ S.String;
 
 export interface TopicRefreshSchedule {
@@ -17673,13 +17961,15 @@ export type VPCConnectionResourceStatus =
   | "UPDATE_FAILED"
   | "DELETION_IN_PROGRESS"
   | "DELETION_FAILED"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const VPCConnectionResourceStatus = /*@__PURE__*/ S.String;
 
 export type VPCConnectionAvailabilityStatus =
   | "AVAILABLE"
   | "UNAVAILABLE"
-  | "PARTIALLY_AVAILABLE";
+  | "PARTIALLY_AVAILABLE"
+  | (string & {});
 export const VPCConnectionAvailabilityStatus = /*@__PURE__*/ S.String;
 
 export interface CreateVPCConnectionResponse {
@@ -18448,7 +18738,7 @@ export const DeleteIAMPolicyAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteIAMPolicyAssignmentResponse",
 }) as any as S.Schema<DeleteIAMPolicyAssignmentResponse>;
-export type ServiceType = "REDSHIFT" | "QBUSINESS" | "ATHENA";
+export type ServiceType = "REDSHIFT" | "QBUSINESS" | "ATHENA" | (string & {});
 export const ServiceType = /*@__PURE__*/ S.String;
 
 export interface DeleteIdentityPropagationConfigRequest {
@@ -19383,7 +19673,7 @@ export const DescribeActionConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeActionConnectorRequest",
 }) as any as S.Schema<DescribeActionConnectorRequest>;
-export type ActionConnectorErrorType = "INTERNAL_FAILURE";
+export type ActionConnectorErrorType = "INTERNAL_FAILURE" | (string & {});
 export const ActionConnectorErrorType = /*@__PURE__*/ S.String;
 
 export interface ActionConnectorError {
@@ -19848,7 +20138,8 @@ export type AnalysisErrorType =
   | "PARAMETER_NOT_FOUND"
   | "COLUMN_TYPE_MISMATCH"
   | "COLUMN_GEOGRAPHIC_ROLE_MISMATCH"
-  | "COLUMN_REPLACEMENT_MISSING";
+  | "COLUMN_REPLACEMENT_MISSING"
+  | (string & {});
 export const AnalysisErrorType = /*@__PURE__*/ S.String;
 
 export interface Entity {
@@ -20052,7 +20343,8 @@ export type AssetBundleExportJobStatus =
   | "QUEUED_FOR_IMMEDIATE_EXECUTION"
   | "IN_PROGRESS"
   | "SUCCESSFUL"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const AssetBundleExportJobStatus = /*@__PURE__*/ S.String;
 
 export type SensitiveS3Uri = string | redacted.Redacted<string>;
@@ -20076,7 +20368,10 @@ export const AssetBundleExportJobErrorList = /*@__PURE__*/ S.Array(
 );
 export type AssetBundleResourceArns = string[];
 export const AssetBundleResourceArns = /*@__PURE__*/ S.Array(S.String);
-export type AssetBundleExportFormat = "CLOUDFORMATION_JSON" | "QUICKSIGHT_JSON";
+export type AssetBundleExportFormat =
+  | "CLOUDFORMATION_JSON"
+  | "QUICKSIGHT_JSON"
+  | (string & {});
 export const AssetBundleExportFormat = /*@__PURE__*/ S.String;
 
 export interface AssetBundleExportJobResourceIdOverrideConfiguration {
@@ -20091,7 +20386,8 @@ export const AssetBundleExportJobResourceIdOverrideConfiguration =
 export type AssetBundleExportJobVPCConnectionPropertyToOverride =
   | "Name"
   | "DnsResolvers"
-  | "RoleArn";
+  | "RoleArn"
+  | (string & {});
 export const AssetBundleExportJobVPCConnectionPropertyToOverride =
   /*@__PURE__*/ S.String;
 
@@ -20117,7 +20413,8 @@ export type AssetBundleExportJobVPCConnectionOverridePropertiesList =
 export const AssetBundleExportJobVPCConnectionOverridePropertiesList =
   /*@__PURE__*/ S.Array(AssetBundleExportJobVPCConnectionOverrideProperties);
 export type AssetBundleExportJobRefreshSchedulePropertyToOverride =
-  "StartAfterDateTime";
+  | "StartAfterDateTime"
+  | (string & {});
 export const AssetBundleExportJobRefreshSchedulePropertyToOverride =
   /*@__PURE__*/ S.String;
 
@@ -20160,7 +20457,8 @@ export type AssetBundleExportJobDataSourcePropertyToOverride =
   | "ManifestFileLocation"
   | "Warehouse"
   | "RoleArn"
-  | "ProductType";
+  | "ProductType"
+  | (string & {});
 export const AssetBundleExportJobDataSourcePropertyToOverride =
   /*@__PURE__*/ S.String;
 
@@ -20187,7 +20485,8 @@ export const AssetBundleExportJobDataSourceOverridePropertiesList =
   /*@__PURE__*/ S.Array(AssetBundleExportJobDataSourceOverrideProperties);
 export type AssetBundleExportJobDataSetPropertyToOverride =
   | "Name"
-  | "RefreshFailureEmailAlertStatus";
+  | "RefreshFailureEmailAlertStatus"
+  | (string & {});
 export const AssetBundleExportJobDataSetPropertyToOverride =
   /*@__PURE__*/ S.String;
 
@@ -20212,7 +20511,9 @@ export type AssetBundleExportJobDataSetOverridePropertiesList =
   AssetBundleExportJobDataSetOverrideProperties[];
 export const AssetBundleExportJobDataSetOverridePropertiesList =
   /*@__PURE__*/ S.Array(AssetBundleExportJobDataSetOverrideProperties);
-export type AssetBundleExportJobThemePropertyToOverride = "Name";
+export type AssetBundleExportJobThemePropertyToOverride =
+  | "Name"
+  | (string & {});
 export const AssetBundleExportJobThemePropertyToOverride =
   /*@__PURE__*/ S.String;
 
@@ -20237,7 +20538,9 @@ export type AssetBundleExportJobThemeOverridePropertiesList =
   AssetBundleExportJobThemeOverrideProperties[];
 export const AssetBundleExportJobThemeOverridePropertiesList =
   /*@__PURE__*/ S.Array(AssetBundleExportJobThemeOverrideProperties);
-export type AssetBundleExportJobAnalysisPropertyToOverride = "Name";
+export type AssetBundleExportJobAnalysisPropertyToOverride =
+  | "Name"
+  | (string & {});
 export const AssetBundleExportJobAnalysisPropertyToOverride =
   /*@__PURE__*/ S.String;
 
@@ -20262,7 +20565,9 @@ export type AssetBundleExportJobAnalysisOverridePropertiesList =
   AssetBundleExportJobAnalysisOverrideProperties[];
 export const AssetBundleExportJobAnalysisOverridePropertiesList =
   /*@__PURE__*/ S.Array(AssetBundleExportJobAnalysisOverrideProperties);
-export type AssetBundleExportJobDashboardPropertyToOverride = "Name";
+export type AssetBundleExportJobDashboardPropertyToOverride =
+  | "Name"
+  | (string & {});
 export const AssetBundleExportJobDashboardPropertyToOverride =
   /*@__PURE__*/ S.String;
 
@@ -20289,7 +20594,8 @@ export const AssetBundleExportJobDashboardOverridePropertiesList =
   /*@__PURE__*/ S.Array(AssetBundleExportJobDashboardOverrideProperties);
 export type AssetBundleExportJobFolderPropertyToOverride =
   | "Name"
-  | "ParentFolderArn";
+  | "ParentFolderArn"
+  | (string & {});
 export const AssetBundleExportJobFolderPropertyToOverride =
   /*@__PURE__*/ S.String;
 
@@ -20372,7 +20678,11 @@ export type AssetBundleExportJobWarningList = AssetBundleExportJobWarning[];
 export const AssetBundleExportJobWarningList = /*@__PURE__*/ S.Array(
   AssetBundleExportJobWarning,
 );
-export type IncludeFolderMembers = "RECURSE" | "ONE_LEVEL" | "NONE";
+export type IncludeFolderMembers =
+  | "RECURSE"
+  | "ONE_LEVEL"
+  | "NONE"
+  | (string & {});
 export const IncludeFolderMembers = /*@__PURE__*/ S.String;
 
 export interface DescribeAssetBundleExportJobResponse {
@@ -20457,7 +20767,8 @@ export type AssetBundleImportJobStatus =
   | "FAILED"
   | "FAILED_ROLLBACK_IN_PROGRESS"
   | "FAILED_ROLLBACK_COMPLETED"
-  | "FAILED_ROLLBACK_ERROR";
+  | "FAILED_ROLLBACK_ERROR"
+  | (string & {});
 export const AssetBundleImportJobStatus = /*@__PURE__*/ S.String;
 
 export interface AssetBundleImportJobError {
@@ -20592,7 +20903,7 @@ export type AssetBundleImportJobDataSourceOverrideParametersList =
 export const AssetBundleImportJobDataSourceOverrideParametersList =
   /*@__PURE__*/ S.Array(AssetBundleImportJobDataSourceOverrideParameters);
 export type PositiveLong = number;
-export type LookbackWindowSizeUnit = "HOUR" | "DAY" | "WEEK";
+export type LookbackWindowSizeUnit = "HOUR" | "DAY" | "WEEK" | (string & {});
 export const LookbackWindowSizeUnit = /*@__PURE__*/ S.String;
 
 export interface LookbackWindow {
@@ -20623,7 +20934,7 @@ export const RefreshConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RefreshConfiguration",
 }) as any as S.Schema<RefreshConfiguration>;
-export type RefreshFailureAlertStatus = "ENABLED" | "DISABLED";
+export type RefreshFailureAlertStatus = "ENABLED" | "DISABLED" | (string & {});
 export const RefreshFailureAlertStatus = /*@__PURE__*/ S.String;
 
 export interface RefreshFailureEmailAlert {
@@ -20771,7 +21082,10 @@ export const AssetBundleImportJobOverrideParameters = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AssetBundleImportJobOverrideParameters",
 }) as any as S.Schema<AssetBundleImportJobOverrideParameters>;
-export type AssetBundleImportFailureAction = "DO_NOTHING" | "ROLLBACK";
+export type AssetBundleImportFailureAction =
+  | "DO_NOTHING"
+  | "ROLLBACK"
+  | (string & {});
 export const AssetBundleImportFailureAction = /*@__PURE__*/ S.String;
 
 export type AssetBundleRestrictiveResourceId = string;
@@ -21179,7 +21493,8 @@ export type AutomationJobStatus =
   | "RUNNING"
   | "SUCCEEDED"
   | "QUEUED"
-  | "STOPPED";
+  | "STOPPED"
+  | (string & {});
 export const AutomationJobStatus = /*@__PURE__*/ S.String;
 
 export type SensitiveIOPayload = string | redacted.Redacted<string>;
@@ -21406,7 +21721,8 @@ export type DashboardErrorType =
   | "PARAMETER_NOT_FOUND"
   | "COLUMN_TYPE_MISMATCH"
   | "COLUMN_GEOGRAPHIC_ROLE_MISMATCH"
-  | "COLUMN_REPLACEMENT_MISSING";
+  | "COLUMN_REPLACEMENT_MISSING"
+  | (string & {});
 export const DashboardErrorType = /*@__PURE__*/ S.String;
 
 export interface DashboardError {
@@ -21640,7 +21956,8 @@ export const SnapshotUserConfigurationRedacted = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SnapshotUserConfigurationRedacted>;
 export type SnapshotFileSheetSelectionScope =
   | "ALL_VISUALS"
-  | "SELECTED_VISUALS";
+  | "SELECTED_VISUALS"
+  | (string & {});
 export const SnapshotFileSheetSelectionScope = /*@__PURE__*/ S.String;
 
 export type SnapshotFileSheetSelectionVisualIdList = string[];
@@ -21665,7 +21982,7 @@ export type SnapshotFileSheetSelectionList = SnapshotFileSheetSelection[];
 export const SnapshotFileSheetSelectionList = /*@__PURE__*/ S.Array(
   SnapshotFileSheetSelection,
 );
-export type SnapshotFileFormatType = "CSV" | "PDF" | "EXCEL";
+export type SnapshotFileFormatType = "CSV" | "PDF" | "EXCEL" | (string & {});
 export const SnapshotFileFormatType = /*@__PURE__*/ S.String;
 
 export interface SnapshotFile {
@@ -21741,7 +22058,12 @@ export const SnapshotConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SnapshotConfiguration",
 }) as any as S.Schema<SnapshotConfiguration>;
-export type SnapshotJobStatus = "QUEUED" | "RUNNING" | "COMPLETED" | "FAILED";
+export type SnapshotJobStatus =
+  | "QUEUED"
+  | "RUNNING"
+  | "COMPLETED"
+  | "FAILED"
+  | (string & {});
 export const SnapshotJobStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeDashboardSnapshotJobResponse {
@@ -21951,7 +22273,7 @@ export const DescribeDashboardsQAConfigurationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeDashboardsQAConfigurationRequest",
 }) as any as S.Schema<DescribeDashboardsQAConfigurationRequest>;
-export type DashboardsQAStatus = "ENABLED" | "DISABLED";
+export type DashboardsQAStatus = "ENABLED" | "DISABLED" | (string & {});
 export const DashboardsQAStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeDashboardsQAConfigurationResponse {
@@ -22191,7 +22513,8 @@ export type DataSourceErrorInfoType =
   | "UNKNOWN_HOST"
   | "GENERIC_SQL_FAILURE"
   | "CONFLICT"
-  | "UNKNOWN";
+  | "UNKNOWN"
+  | (string & {});
 export const DataSourceErrorInfoType = /*@__PURE__*/ S.String;
 
 export interface DataSourceErrorInfo {
@@ -22338,7 +22661,11 @@ export const DescribeDefaultQBusinessApplicationResponse =
   ).annotate({
     identifier: "DescribeDefaultQBusinessApplicationResponse",
   }) as any as S.Schema<DescribeDefaultQBusinessApplicationResponse>;
-export type FlowPublishState = "PUBLISHED" | "DRAFT" | "PENDING_APPROVAL";
+export type FlowPublishState =
+  | "PUBLISHED"
+  | "DRAFT"
+  | "PENDING_APPROVAL"
+  | (string & {});
 export const FlowPublishState = /*@__PURE__*/ S.String;
 
 export interface DescribeFlowRequest {
@@ -22802,7 +23129,8 @@ export type IngestionErrorType =
   | "PERMISSION_NOT_FOUND"
   | "ELASTICSEARCH_CURSOR_NOT_ENABLED"
   | "CURSOR_NOT_ENABLED"
-  | "DUPLICATE_COLUMN_NAMES_FOUND";
+  | "DUPLICATE_COLUMN_NAMES_FOUND"
+  | (string & {});
 export const IngestionErrorType = /*@__PURE__*/ S.String;
 
 export interface ErrorInfo {
@@ -22834,14 +23162,15 @@ export interface QueueInfo {
 export const QueueInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ WaitingOnIngestion: S.String, QueuedIngestion: S.String }),
 ).annotate({ identifier: "QueueInfo" }) as any as S.Schema<QueueInfo>;
-export type IngestionRequestSource = "MANUAL" | "SCHEDULED";
+export type IngestionRequestSource = "MANUAL" | "SCHEDULED" | (string & {});
 export const IngestionRequestSource = /*@__PURE__*/ S.String;
 
 export type IngestionRequestType =
   | "INITIAL_INGESTION"
   | "EDIT"
   | "INCREMENTAL_REFRESH"
-  | "FULL_REFRESH";
+  | "FULL_REFRESH"
+  | (string & {});
 export const IngestionRequestType = /*@__PURE__*/ S.String;
 
 export interface Ingestion {
@@ -22987,7 +23316,7 @@ export type KeyRegistration = RegisteredCustomerManagedKey[];
 export const KeyRegistration = /*@__PURE__*/ S.Array(
   RegisteredCustomerManagedKey,
 );
-export type QDataKeyType = "AWS_OWNED" | "CMK";
+export type QDataKeyType = "AWS_OWNED" | "CMK" | (string & {});
 export const QDataKeyType = /*@__PURE__*/ S.String;
 
 export interface QDataKey {
@@ -23048,7 +23377,8 @@ export type DataSetStatus =
   | "UPDATING"
   | "ACTIVE"
   | "FAILED"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const DataSetStatus = /*@__PURE__*/ S.String;
 
 export type DataSourceArn = string;
@@ -23073,7 +23403,7 @@ export const KnowledgeBaseConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KnowledgeBaseConfiguration",
 }) as any as S.Schema<KnowledgeBaseConfiguration>;
-export type ImageExtractionStatus = "ENABLED" | "DISABLED";
+export type ImageExtractionStatus = "ENABLED" | "DISABLED" | (string & {});
 export const ImageExtractionStatus = /*@__PURE__*/ S.String;
 
 export interface ImageExtractionConfiguration {
@@ -23084,7 +23414,7 @@ export const ImageExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImageExtractionConfiguration",
 }) as any as S.Schema<ImageExtractionConfiguration>;
-export type AudioExtractionStatus = "ENABLED" | "DISABLED";
+export type AudioExtractionStatus = "ENABLED" | "DISABLED" | (string & {});
 export const AudioExtractionStatus = /*@__PURE__*/ S.String;
 
 export interface AudioExtractionConfiguration {
@@ -23095,12 +23425,13 @@ export const AudioExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AudioExtractionConfiguration",
 }) as any as S.Schema<AudioExtractionConfiguration>;
-export type VideoExtractionStatus = "ENABLED" | "DISABLED";
+export type VideoExtractionStatus = "ENABLED" | "DISABLED" | (string & {});
 export const VideoExtractionStatus = /*@__PURE__*/ S.String;
 
 export type VideoExtractionType =
   | "AUDIO_TRANSCRIPTION_ONLY"
-  | "VISUAL_CONTENT_AND_AUDIO_TRANSCRIPTION";
+  | "VISUAL_CONTENT_AND_AUDIO_TRANSCRIPTION"
+  | (string & {});
 export const VideoExtractionType = /*@__PURE__*/ S.String;
 
 export interface VideoExtractionConfiguration {
@@ -23139,7 +23470,8 @@ export type KbIngestionStatus =
   | "INCOMPLETE"
   | "CANCELLED"
   | "CANCELLING"
-  | "TIMEOUT";
+  | "TIMEOUT"
+  | (string & {});
 export const KbIngestionStatus = /*@__PURE__*/ S.String;
 
 export interface KnowledgeBaseIngestionSummary {
@@ -23284,7 +23616,10 @@ export const DescribeNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeNamespaceRequest",
 }) as any as S.Schema<DescribeNamespaceRequest>;
-export type NamespaceErrorType = "PERMISSION_DENIED" | "INTERNAL_SERVICE_ERROR";
+export type NamespaceErrorType =
+  | "PERMISSION_DENIED"
+  | "INTERNAL_SERVICE_ERROR"
+  | (string & {});
 export const NamespaceErrorType = /*@__PURE__*/ S.String;
 
 export interface NamespaceError {
@@ -23432,7 +23767,7 @@ export const DescribeQPersonalizationConfigurationRequest =
   ).annotate({
     identifier: "DescribeQPersonalizationConfigurationRequest",
   }) as any as S.Schema<DescribeQPersonalizationConfigurationRequest>;
-export type PersonalizationMode = "ENABLED" | "DISABLED";
+export type PersonalizationMode = "ENABLED" | "DISABLED" | (string & {});
 export const PersonalizationMode = /*@__PURE__*/ S.String;
 
 export interface DescribeQPersonalizationConfigurationResponse {
@@ -23471,7 +23806,7 @@ export const DescribeQuickSightQSearchConfigurationRequest =
   ).annotate({
     identifier: "DescribeQuickSightQSearchConfigurationRequest",
   }) as any as S.Schema<DescribeQuickSightQSearchConfigurationRequest>;
-export type QSearchStatus = "ENABLED" | "DISABLED";
+export type QSearchStatus = "ENABLED" | "DISABLED" | (string & {});
 export const QSearchStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeQuickSightQSearchConfigurationResponse {
@@ -23598,7 +23933,10 @@ export const DescribeSelfUpgradeConfigurationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeSelfUpgradeConfigurationRequest",
 }) as any as S.Schema<DescribeSelfUpgradeConfigurationRequest>;
-export type SelfUpgradeStatus = "AUTO_APPROVAL" | "ADMIN_APPROVAL";
+export type SelfUpgradeStatus =
+  | "AUTO_APPROVAL"
+  | "ADMIN_APPROVAL"
+  | (string & {});
 export const SelfUpgradeStatus = /*@__PURE__*/ S.String;
 
 export interface SelfUpgradeConfiguration {
@@ -23656,7 +23994,8 @@ export type SpaceQuickSightResourceType =
   | "DASHBOARD"
   | "KNOWLEDGE_BASE"
   | "ACTION_CONNECTOR"
-  | "DATA_SET";
+  | "DATA_SET"
+  | (string & {});
 export const SpaceQuickSightResourceType = /*@__PURE__*/ S.String;
 
 export type SpaceQuickSightResourceDetails = { resourceArn: string };
@@ -23809,7 +24148,8 @@ export type TemplateErrorType =
   | "SOURCE_NOT_FOUND"
   | "DATA_SET_NOT_FOUND"
   | "INTERNAL_FAILURE"
-  | "ACCESS_DENIED";
+  | "ACCESS_DENIED"
+  | (string & {});
 export const TemplateErrorType = /*@__PURE__*/ S.String;
 
 export interface TemplateError {
@@ -24049,7 +24389,7 @@ export const DescribeThemeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeThemeRequest",
 }) as any as S.Schema<DescribeThemeRequest>;
-export type ThemeErrorType = "INTERNAL_FAILURE";
+export type ThemeErrorType = "INTERNAL_FAILURE" | (string & {});
 export const ThemeErrorType = /*@__PURE__*/ S.String;
 
 export interface ThemeError {
@@ -24083,7 +24423,7 @@ export const ThemeVersion = /*@__PURE__*/ S.suspend(() =>
     Status: S.optional(ResourceStatus),
   }),
 ).annotate({ identifier: "ThemeVersion" }) as any as S.Schema<ThemeVersion>;
-export type ThemeType = "QUICKSIGHT" | "CUSTOM" | "ALL";
+export type ThemeType = "QUICKSIGHT" | "CUSTOM" | "ALL" | (string & {});
 export const ThemeType = /*@__PURE__*/ S.String;
 
 export interface Theme {
@@ -24321,7 +24661,8 @@ export type TopicRefreshStatus =
   | "RUNNING"
   | "FAILED"
   | "COMPLETED"
-  | "CANCELLED";
+  | "CANCELLED"
+  | (string & {});
 export const TopicRefreshStatus = /*@__PURE__*/ S.String;
 
 export interface TopicRefreshDetails {
@@ -24433,10 +24774,15 @@ export type UserRole =
   | "RESTRICTED_READER"
   | "ADMIN_PRO"
   | "AUTHOR_PRO"
-  | "READER_PRO";
+  | "READER_PRO"
+  | (string & {});
 export const UserRole = /*@__PURE__*/ S.String;
 
-export type IdentityType = "IAM" | "QUICKSIGHT" | "IAM_IDENTITY_CENTER";
+export type IdentityType =
+  | "IAM"
+  | "QUICKSIGHT"
+  | "IAM_IDENTITY_CENTER"
+  | (string & {});
 export const IdentityType = /*@__PURE__*/ S.String;
 
 export interface User {
@@ -24515,7 +24861,8 @@ export type NetworkInterfaceStatus =
   | "DELETED"
   | "DELETION_FAILED"
   | "DELETION_SCHEDULED"
-  | "ATTACHMENT_FAILED_ROLLBACK_FAILED";
+  | "ATTACHMENT_FAILED_ROLLBACK_FAILED"
+  | (string & {});
 export const NetworkInterfaceStatus = /*@__PURE__*/ S.String;
 
 export type NetworkInterfaceId = string;
@@ -24598,7 +24945,8 @@ export const SessionTagList = /*@__PURE__*/ S.Array(SessionTag);
 export type ArnList = string[];
 export const ArnList = /*@__PURE__*/ S.Array(S.String);
 export type AnonymousUserDashboardEmbeddingConfigurationEnabledFeature =
-  "SHARED_VIEW";
+  | "SHARED_VIEW"
+  | (string & {});
 export const AnonymousUserDashboardEmbeddingConfigurationEnabledFeature =
   /*@__PURE__*/ S.String;
 
@@ -24609,7 +24957,8 @@ export const AnonymousUserDashboardEmbeddingConfigurationEnabledFeatures =
     AnonymousUserDashboardEmbeddingConfigurationEnabledFeature,
   );
 export type AnonymousUserDashboardEmbeddingConfigurationDisabledFeature =
-  "SHARED_VIEW";
+  | "SHARED_VIEW"
+  | (string & {});
 export const AnonymousUserDashboardEmbeddingConfigurationDisabledFeature =
   /*@__PURE__*/ S.String;
 
@@ -25109,7 +25458,11 @@ export const GenerateEmbedUrlForRegisteredUserWithIdentityResponse =
   ).annotate({
     identifier: "GenerateEmbedUrlForRegisteredUserWithIdentityResponse",
   }) as any as S.Schema<GenerateEmbedUrlForRegisteredUserWithIdentityResponse>;
-export type EmbeddingIdentityType = "IAM" | "QUICKSIGHT" | "ANONYMOUS";
+export type EmbeddingIdentityType =
+  | "IAM"
+  | "QUICKSIGHT"
+  | "ANONYMOUS"
+  | (string & {});
 export const EmbeddingIdentityType = /*@__PURE__*/ S.String;
 
 export type AdditionalDashboardIdList = string[];
@@ -26958,7 +27311,8 @@ export type SelfUpgradeRequestStatus =
   | "APPROVED"
   | "DENIED"
   | "UPDATE_FAILED"
-  | "VERIFY_FAILED";
+  | "VERIFY_FAILED"
+  | (string & {});
 export const SelfUpgradeRequestStatus = /*@__PURE__*/ S.String;
 
 export interface SelfUpgradeRequestDetail {
@@ -27824,10 +28178,10 @@ export type UserIndexCapacityFilters = UserIndexCapacityFilter[];
 export const UserIndexCapacityFilters = /*@__PURE__*/ S.Array(
   UserIndexCapacityFilter,
 );
-export type UserIndexCapacitySortBy = "TOTAL_CAPACITY_BYTES";
+export type UserIndexCapacitySortBy = "TOTAL_CAPACITY_BYTES" | (string & {});
 export const UserIndexCapacitySortBy = /*@__PURE__*/ S.String;
 
-export type UserIndexCapacitySortOrder = "ASC" | "DESC";
+export type UserIndexCapacitySortOrder = "ASC" | "DESC" | (string & {});
 export const UserIndexCapacitySortOrder = /*@__PURE__*/ S.String;
 
 export type ListUsersIndexCapacityRequestMaxResultsInteger = number;
@@ -27989,10 +28343,10 @@ export const ListVPCConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListVPCConnectionsResponse",
 }) as any as S.Schema<ListVPCConnectionsResponse>;
 export type QAQueryText = string | redacted.Redacted<string>;
-export type IncludeQuickSightQIndex = "INCLUDE" | "EXCLUDE";
+export type IncludeQuickSightQIndex = "INCLUDE" | "EXCLUDE" | (string & {});
 export const IncludeQuickSightQIndex = /*@__PURE__*/ S.String;
 
-export type IncludeGeneratedAnswer = "INCLUDE" | "EXCLUDE";
+export type IncludeGeneratedAnswer = "INCLUDE" | "EXCLUDE" | (string & {});
 export const IncludeGeneratedAnswer = /*@__PURE__*/ S.String;
 
 export type MaxTopicsToConsider = number;
@@ -28026,7 +28380,8 @@ export const PredictQAResultsRequest = /*@__PURE__*/ S.suspend(() =>
 export type QAResultType =
   | "DASHBOARD_VISUAL"
   | "GENERATED_ANSWER"
-  | "NO_ANSWER";
+  | "NO_ANSWER"
+  | (string & {});
 export const QAResultType = /*@__PURE__*/ S.String;
 
 export type VisualTitle = string;
@@ -28059,7 +28414,8 @@ export const DashboardVisualResult = /*@__PURE__*/ S.suspend(() =>
 export type GeneratedAnswerStatus =
   | "ANSWER_GENERATED"
   | "ANSWER_RETRIEVED"
-  | "ANSWER_DOWNGRADE";
+  | "ANSWER_DOWNGRADE"
+  | (string & {});
 export const GeneratedAnswerStatus = /*@__PURE__*/ S.String;
 
 export type QuestionId = string;
@@ -28272,10 +28628,11 @@ export type ActionConnectorSearchFilterNameEnum =
   | "QUICKSIGHT_VIEWER_OR_OWNER"
   | "DIRECT_QUICKSIGHT_SOLE_OWNER"
   | "DIRECT_QUICKSIGHT_OWNER"
-  | "DIRECT_QUICKSIGHT_VIEWER_OR_OWNER";
+  | "DIRECT_QUICKSIGHT_VIEWER_OR_OWNER"
+  | (string & {});
 export const ActionConnectorSearchFilterNameEnum = /*@__PURE__*/ S.String;
 
-export type FilterOperator = "StringEquals" | "StringLike";
+export type FilterOperator = "StringEquals" | "StringLike" | (string & {});
 export const FilterOperator = /*@__PURE__*/ S.String;
 
 export interface ActionConnectorSearchFilter {
@@ -28344,10 +28701,11 @@ export type AgentOwnershipFilterAttribute =
   | "DIRECT_QUICKSIGHT_OWNER"
   | "DIRECT_QUICKSIGHT_VIEWER_OR_OWNER"
   | "DIRECT_QUICKSIGHT_SOLE_OWNER"
-  | "AGENT_NAME";
+  | "AGENT_NAME"
+  | (string & {});
 export const AgentOwnershipFilterAttribute = /*@__PURE__*/ S.String;
 
-export type ComparisonOperator = "StringEquals" | "StringLike";
+export type ComparisonOperator = "StringEquals" | "StringLike" | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ S.String;
 
 export interface AgentSearchFilter {
@@ -28415,7 +28773,8 @@ export type AnalysisFilterAttribute =
   | "QUICKSIGHT_OWNER"
   | "DIRECT_QUICKSIGHT_OWNER"
   | "DIRECT_QUICKSIGHT_SOLE_OWNER"
-  | "ANALYSIS_NAME";
+  | "ANALYSIS_NAME"
+  | (string & {});
 export const AnalysisFilterAttribute = /*@__PURE__*/ S.String;
 
 export interface AnalysisSearchFilter {
@@ -28486,7 +28845,8 @@ export type DashboardFilterAttribute =
   | "QUICKSIGHT_OWNER"
   | "DIRECT_QUICKSIGHT_OWNER"
   | "DIRECT_QUICKSIGHT_SOLE_OWNER"
-  | "DASHBOARD_NAME";
+  | "DASHBOARD_NAME"
+  | (string & {});
 export const DashboardFilterAttribute = /*@__PURE__*/ S.String;
 
 export interface DashboardSearchFilter {
@@ -28557,7 +28917,8 @@ export type DataSetFilterAttribute =
   | "DIRECT_QUICKSIGHT_VIEWER_OR_OWNER"
   | "DIRECT_QUICKSIGHT_OWNER"
   | "DIRECT_QUICKSIGHT_SOLE_OWNER"
-  | "DATASET_NAME";
+  | "DATASET_NAME"
+  | (string & {});
 export const DataSetFilterAttribute = /*@__PURE__*/ S.String;
 
 export interface DataSetSearchFilter {
@@ -28625,7 +28986,8 @@ export type DataSourceFilterAttribute =
   | "DIRECT_QUICKSIGHT_VIEWER_OR_OWNER"
   | "DIRECT_QUICKSIGHT_OWNER"
   | "DIRECT_QUICKSIGHT_SOLE_OWNER"
-  | "DATASOURCE_NAME";
+  | "DATASOURCE_NAME"
+  | (string & {});
 export const DataSourceFilterAttribute = /*@__PURE__*/ S.String;
 
 export interface DataSourceSearchFilter {
@@ -28719,10 +29081,14 @@ export type FieldName =
   | "assetDescription"
   | "DIRECT_QUICKSIGHT_OWNER"
   | "DIRECT_QUICKSIGHT_VIEWER_OR_OWNER"
-  | "DIRECT_QUICKSIGHT_SOLE_OWNER";
+  | "DIRECT_QUICKSIGHT_SOLE_OWNER"
+  | (string & {});
 export const FieldName = /*@__PURE__*/ S.String;
 
-export type SearchFilterOperator = "StringEquals" | "StringLike";
+export type SearchFilterOperator =
+  | "StringEquals"
+  | "StringLike"
+  | (string & {});
 export const SearchFilterOperator = /*@__PURE__*/ S.String;
 
 export interface SearchFlowsFilter {
@@ -28792,7 +29158,8 @@ export type FolderFilterAttribute =
   | "DIRECT_QUICKSIGHT_VIEWER_OR_OWNER"
   | "QUICKSIGHT_OWNER"
   | "QUICKSIGHT_VIEWER_OR_OWNER"
-  | "FOLDER_NAME";
+  | "FOLDER_NAME"
+  | (string & {});
 export const FolderFilterAttribute = /*@__PURE__*/ S.String;
 
 export interface FolderSearchFilter {
@@ -28855,10 +29222,10 @@ export const SearchFoldersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchFoldersResponse",
 }) as any as S.Schema<SearchFoldersResponse>;
-export type GroupFilterOperator = "StartsWith";
+export type GroupFilterOperator = "StartsWith" | (string & {});
 export const GroupFilterOperator = /*@__PURE__*/ S.String;
 
-export type GroupFilterAttribute = "GROUP_NAME";
+export type GroupFilterAttribute = "GROUP_NAME" | (string & {});
 export const GroupFilterAttribute = /*@__PURE__*/ S.String;
 
 export interface GroupSearchFilter {
@@ -28930,14 +29297,16 @@ export type KnowledgeBaseSearchFilterName =
   | "DIRECT_QUICKSIGHT_VIEWER_OR_OWNER"
   | "DIRECT_QUICKSIGHT_SOLE_OWNER"
   | "KNOWLEDGE_BASE_SIZE_BYTES"
-  | "PRIMARY_OWNER";
+  | "PRIMARY_OWNER"
+  | (string & {});
 export const KnowledgeBaseSearchFilterName = /*@__PURE__*/ S.String;
 
 export type KnowledgeBaseSearchOperator =
   | "STRING_EQUALS"
   | "STRING_LIKE"
   | "GREATER_THAN_OR_EQUALS"
-  | "LESS_THAN_OR_EQUALS";
+  | "LESS_THAN_OR_EQUALS"
+  | (string & {});
 export const KnowledgeBaseSearchOperator = /*@__PURE__*/ S.String;
 
 export interface KnowledgeBaseSearchFilter {
@@ -28960,10 +29329,11 @@ export const KnowledgeBaseSearchFilters = /*@__PURE__*/ S.Array(
 );
 export type KnowledgeBaseSortByField =
   | "KNOWLEDGE_BASE_SIZE_BYTES"
-  | "CREATED_AT";
+  | "CREATED_AT"
+  | (string & {});
 export const KnowledgeBaseSortByField = /*@__PURE__*/ S.String;
 
-export type SortOrder = "ASC" | "DESC";
+export type SortOrder = "ASC" | "DESC" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
 
 export interface KnowledgeBaseSortBy {
@@ -29029,13 +29399,15 @@ export type SpaceQuickSightSearchFilterName =
   | "DIRECT_QUICKSIGHT_SOLE_OWNER"
   | "CONTRIBUTED_BY"
   | "CONSUMED_SOURCE_SIZE"
-  | "CREATED_BY";
+  | "CREATED_BY"
+  | (string & {});
 export const SpaceQuickSightSearchFilterName = /*@__PURE__*/ S.String;
 
 export type SpaceSearchOperator =
   | "STRING_EQUALS"
   | "STRING_LIKE"
-  | "NUMBER_RANGE";
+  | "NUMBER_RANGE"
+  | (string & {});
 export const SpaceSearchOperator = /*@__PURE__*/ S.String;
 
 export interface SpaceQuicksightSearchFilter {
@@ -29102,7 +29474,7 @@ export const SearchSpacesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchSpacesResponse",
 }) as any as S.Schema<SearchSpacesResponse>;
-export type TopicFilterOperator = "StringEquals" | "StringLike";
+export type TopicFilterOperator = "StringEquals" | "StringLike" | (string & {});
 export const TopicFilterOperator = /*@__PURE__*/ S.String;
 
 export type TopicFilterAttribute =
@@ -29112,7 +29484,8 @@ export type TopicFilterAttribute =
   | "QUICKSIGHT_OWNER"
   | "DIRECT_QUICKSIGHT_OWNER"
   | "DIRECT_QUICKSIGHT_SOLE_OWNER"
-  | "TOPIC_NAME";
+  | "TOPIC_NAME"
+  | (string & {});
 export const TopicFilterAttribute = /*@__PURE__*/ S.String;
 
 export interface TopicSearchFilter {
@@ -31422,7 +31795,11 @@ export const UpdateRoleCustomPermissionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateRoleCustomPermissionResponse",
 }) as any as S.Schema<UpdateRoleCustomPermissionResponse>;
-export type SelfUpgradeAdminAction = "APPROVE" | "DENY" | "VERIFY";
+export type SelfUpgradeAdminAction =
+  | "APPROVE"
+  | "DENY"
+  | "VERIFY"
+  | (string & {});
 export const SelfUpgradeAdminAction = /*@__PURE__*/ S.String;
 
 export interface UpdateSelfUpgradeRequest {
@@ -31671,7 +32048,7 @@ export const UpdateSpaceResourcesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateSpaceResourcesResponse",
 }) as any as S.Schema<UpdateSpaceResourcesResponse>;
-export type PurchaseMode = "MANUAL" | "AUTO_PURCHASE";
+export type PurchaseMode = "MANUAL" | "AUTO_PURCHASE" | (string & {});
 export const PurchaseMode = /*@__PURE__*/ S.String;
 
 export interface UpdateSPICECapacityConfigurationRequest {
@@ -32289,7 +32666,8 @@ export type ExceptionResourceType =
   | "DATA_SOURCE"
   | "DATA_SET"
   | "VPC_CONNECTION"
-  | "INGESTION";
+  | "INGESTION"
+  | (string & {});
 export const ExceptionResourceType = /*@__PURE__*/ S.String;
 
 export type BatchCreateTopicReviewedAnswerError =

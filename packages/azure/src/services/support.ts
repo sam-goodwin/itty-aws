@@ -42,7 +42,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -50,7 +51,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -80,7 +82,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 /** Direction of communication. */
-export type CommunicationDirection = "inbound" | "outbound";
+export type CommunicationDirection = "inbound" | "outbound" | (string & {});
 export const CommunicationDirection = /*@__PURE__*/ S.String;
 
 /** Describes the properties of a Message Details resource. */
@@ -297,7 +299,8 @@ export const ChatTranscriptsNoSubscriptionListRequest = /*@__PURE__*/ S.suspend(
 /** The type of resource. */
 export type Type =
   | "Microsoft.Support/supportTickets"
-  | "Microsoft.Support/communications";
+  | "Microsoft.Support/communications"
+  | (string & {});
 export const Type = /*@__PURE__*/ S.String;
 
 export interface CommunicationsCheckNameAvailabilityRequest {
@@ -396,7 +399,7 @@ export const CommunicationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommunicationsCreateRequest>;
 
 /** Communication type. */
-export type CommunicationType = "web" | "phone";
+export type CommunicationType = "web" | "phone" | (string & {});
 export const CommunicationType = /*@__PURE__*/ S.String;
 
 /** Describes the properties of a communication resource. */
@@ -1323,7 +1326,8 @@ export const FileWorkspacesNoSubscriptionGetResponse = /*@__PURE__*/ S.suspend(
 
 /** The type of resource. */
 export type LookUpResourceIdPostRequestType =
-  "Microsoft.Support/supportTickets";
+  | "Microsoft.Support/supportTickets"
+  | (string & {});
 export const LookUpResourceIdPostRequestType = /*@__PURE__*/ S.String;
 
 export interface LookUpResourceIdPostRequest {
@@ -1398,11 +1402,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -2003,15 +2007,16 @@ export type SeverityLevel =
   | "minimal"
   | "moderate"
   | "critical"
-  | "highestcriticalimpact";
+  | "highestcriticalimpact"
+  | (string & {});
 export const SeverityLevel = /*@__PURE__*/ S.String;
 
 /** Advanced diagnostic consent to be updated on the support ticket. */
-export type Consent = "Yes" | "No";
+export type Consent = "Yes" | "No" | (string & {});
 export const Consent = /*@__PURE__*/ S.String;
 
 /** Preferred contact method. */
-export type PreferredContactMethod = "email" | "phone";
+export type PreferredContactMethod = "email" | "phone" | (string & {});
 export const PreferredContactMethod = /*@__PURE__*/ S.String;
 
 /** Additional email addresses listed will be copied on any correspondence about the support ticket. */
@@ -2129,7 +2134,7 @@ export const QuotaTicketDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QuotaTicketDetails>;
 
 /** User consent value provided */
-export type UserConsent = "Yes" | "No";
+export type UserConsent = "Yes" | "No" | (string & {});
 export const UserConsent = /*@__PURE__*/ S.String;
 
 /** This property indicates secondary consent for the support ticket. */
@@ -2162,7 +2167,8 @@ export type EscalationStatus =
   | "EscalationInitiated"
   | "EscalationProcessed"
   | "EscalationUnsupported"
-  | "EscalationUnavailable";
+  | "EscalationUnavailable"
+  | (string & {});
 export const EscalationStatus = /*@__PURE__*/ S.String;
 
 /** An array containing the allowed severities for direct connect escalation. */
@@ -2325,7 +2331,7 @@ export const SupportEngineer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SupportEngineer>;
 
 /** This property indicates if support ticket is a temporary ticket. */
-export type IsTemporaryTicket = "Yes" | "No";
+export type IsTemporaryTicket = "Yes" | "No" | (string & {});
 export const IsTemporaryTicket = /*@__PURE__*/ S.String;
 
 /** This property indicates secondary consents for the support ticket */
@@ -2337,11 +2343,11 @@ export const SupportTicketDetailsPropertiesSecondaryConsentList =
   ) as any as S.Schema<SupportTicketDetailsPropertiesSecondaryConsentList>;
 
 /** Support channel type for the support ticket. */
-export type SupportChannel = "Chat" | "Web";
+export type SupportChannel = "Chat" | "Web" | (string & {});
 export const SupportChannel = /*@__PURE__*/ S.String;
 
 /** Status of the chat conversation associated with the support ticket. */
-export type ChatConversationStatus = "Active" | "Closed";
+export type ChatConversationStatus = "Active" | "Closed" | (string & {});
 export const ChatConversationStatus = /*@__PURE__*/ S.String;
 
 /** Describes the properties of a support ticket. */
@@ -2732,7 +2738,7 @@ export const SupportTicketsNoSubscriptionListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SupportTicketsNoSubscriptionListRequest>;
 
 /** Status to be updated on the ticket. */
-export type Status = "open" | "closed";
+export type Status = "open" | "closed" | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 
 /** Email addresses listed will be copied on any correspondence about the support ticket. */

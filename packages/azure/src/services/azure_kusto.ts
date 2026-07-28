@@ -14,7 +14,8 @@ export type { AzureOpError, AzureOpContext };
 
 /** The type of resource, for instance Microsoft.Kusto/clusters/attachedDatabaseConfigurations. */
 export type AttachedDatabaseConfigurationsCheckNameAvailabilityRequestType =
-  "Microsoft.Kusto/clusters/attachedDatabaseConfigurations";
+  | "Microsoft.Kusto/clusters/attachedDatabaseConfigurations"
+  | (string & {});
 export const AttachedDatabaseConfigurationsCheckNameAvailabilityRequestType =
   /*@__PURE__*/ S.String;
 
@@ -51,7 +52,7 @@ export const AttachedDatabaseConfigurationsCheckNameAvailabilityRequest =
   }) as any as S.Schema<AttachedDatabaseConfigurationsCheckNameAvailabilityRequest>;
 
 /** Message providing the reason why the given name is invalid. */
-export type Reason = "Invalid" | "AlreadyExists";
+export type Reason = "Invalid" | "AlreadyExists" | (string & {});
 export const Reason = /*@__PURE__*/ S.String;
 
 /** The result returned from a check name availability request. */
@@ -77,7 +78,11 @@ export const CheckNameResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckNameResult>;
 
 /** The default principals modification kind */
-export type DefaultPrincipalsModificationKind = "Union" | "Replace" | "None";
+export type DefaultPrincipalsModificationKind =
+  | "Union"
+  | "Replace"
+  | "None"
+  | (string & {});
 export const DefaultPrincipalsModificationKind = /*@__PURE__*/ S.String;
 
 /** List of tables to include in the follower database */
@@ -259,7 +264,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -267,7 +273,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -304,7 +311,8 @@ export type ProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Moving"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The list of databases from the clusterResourceId which are currently attached to the cluster. */
@@ -553,7 +561,8 @@ export const AttachedDatabaseConfigurationListResult = /*@__PURE__*/ S.suspend(
 
 /** The type of resource, Microsoft.Kusto/clusters/principalAssignments. */
 export type ClusterPrincipalAssignmentsCheckNameAvailabilityRequestType =
-  "Microsoft.Kusto/clusters/principalAssignments";
+  | "Microsoft.Kusto/clusters/principalAssignments"
+  | (string & {});
 export const ClusterPrincipalAssignmentsCheckNameAvailabilityRequestType =
   /*@__PURE__*/ S.String;
 
@@ -593,11 +602,12 @@ export const ClusterPrincipalAssignmentsCheckNameAvailabilityRequest =
 export type ClusterPrincipalRole =
   | "AllDatabasesAdmin"
   | "AllDatabasesViewer"
-  | "AllDatabasesMonitor";
+  | "AllDatabasesMonitor"
+  | (string & {});
 export const ClusterPrincipalRole = /*@__PURE__*/ S.String;
 
 /** Principal type. */
-export type PrincipalType = "App" | "Group" | "User";
+export type PrincipalType = "App" | "Group" | "User" | (string & {});
 export const PrincipalType = /*@__PURE__*/ S.String;
 
 /** A class representing cluster principal property. */
@@ -890,11 +900,12 @@ export type CalloutType =
   | "mysql"
   | "postgresql"
   | "genevametrics"
-  | "azure_openai";
+  | "azure_openai"
+  | (string & {});
 export const CalloutType = /*@__PURE__*/ S.String;
 
 /** Indicates whether outbound access is permitted for the specified URI pattern. */
-export type OutboundAccess = "Allow" | "Deny";
+export type OutboundAccess = "Allow" | "Deny" | (string & {});
 export const OutboundAccess = /*@__PURE__*/ S.String;
 
 /** Configuration for external callout policies, including URI patterns, access types, and service types. */
@@ -962,7 +973,7 @@ export const ClustersAddCalloutPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClustersAddCalloutPoliciesResponse>;
 
 /** Language extension that can run within KQL query. */
-export type LanguageExtensionName = "PYTHON" | "R";
+export type LanguageExtensionName = "PYTHON" | "R" | (string & {});
 export const LanguageExtensionName = /*@__PURE__*/ S.String;
 
 /** Language extension image name. */
@@ -973,7 +984,8 @@ export type LanguageExtensionImageName =
   | "Python3_10_8_DL"
   | "PythonCustomImage"
   | "Python3_11_7"
-  | "Python3_11_7_DL";
+  | "Python3_11_7_DL"
+  | (string & {});
 export const LanguageExtensionImageName = /*@__PURE__*/ S.String;
 
 /** The language extension object. */
@@ -1044,7 +1056,8 @@ export const ClustersAddLanguageExtensionsResponse = /*@__PURE__*/ S.suspend(
 
 /** The type of resource, Microsoft.Kusto/clusters. */
 export type ClustersCheckNameAvailabilityRequestType =
-  "Microsoft.Kusto/clusters";
+  | "Microsoft.Kusto/clusters"
+  | (string & {});
 export const ClustersCheckNameAvailabilityRequestType = /*@__PURE__*/ S.String;
 
 export interface ClustersCheckNameAvailabilityRequest {
@@ -1129,7 +1142,10 @@ export const OptimizedAutoscale = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OptimizedAutoscale>;
 
 /** When enabled, the cluster is deployed into the configured subnet, when disabled it will be removed from the subnet. */
-export type VirtualNetworkConfigurationState = "Enabled" | "Disabled";
+export type VirtualNetworkConfigurationState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const VirtualNetworkConfigurationState = /*@__PURE__*/ S.String;
 
 /** A class that contains virtual network definition. */
@@ -1205,7 +1221,8 @@ export const LanguageExtensionsList = /*@__PURE__*/ S.suspend(() =>
 export type ClusterPropertiesInputPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter";
+  | "SecuredByPerimeter"
+  | (string & {});
 export const ClusterPropertiesInputPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** The list of ips in the format of CIDR allowed to connect to the cluster. */
@@ -1217,7 +1234,7 @@ export const ClusterPropertiesInputAllowedIpRangeListList =
   ) as any as S.Schema<ClusterPropertiesInputAllowedIpRangeListList>;
 
 /** The engine type */
-export type ClusterPropertiesInputEngineType = "V2" | "V3";
+export type ClusterPropertiesInputEngineType = "V2" | "V3" | (string & {});
 export const ClusterPropertiesInputEngineType = /*@__PURE__*/ S.String;
 
 /** Represents an accepted audience trusted by the cluster. */
@@ -1244,7 +1261,8 @@ export const ClusterPropertiesInputAcceptedAudiencesList =
 /** Whether or not to restrict outbound network access. Value is optional but if passed in, must be 'Enabled' or 'Disabled' */
 export type ClusterPropertiesInputRestrictOutboundNetworkAccess =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ClusterPropertiesInputRestrictOutboundNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -1262,7 +1280,10 @@ export const ClusterPropertiesInputCalloutPoliciesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ClusterPropertiesInputCalloutPoliciesList>;
 
 /** Indicates what public IP type to create - IPv4 (default), or DualStack (both IPv4 and IPv6) */
-export type ClusterPropertiesInputPublicIPType = "IPv4" | "DualStack";
+export type ClusterPropertiesInputPublicIPType =
+  | "IPv4"
+  | "DualStack"
+  | (string & {});
 export const ClusterPropertiesInputPublicIPType = /*@__PURE__*/ S.String;
 
 /** Class representing the Kusto cluster properties. */
@@ -1403,11 +1424,12 @@ export type AzureSkuName =
   | "Standard_E2d_v5"
   | "Standard_E4d_v5"
   | "Standard_E8d_v5"
-  | "Standard_E16d_v5";
+  | "Standard_E16d_v5"
+  | (string & {});
 export const AzureSkuName = /*@__PURE__*/ S.String;
 
 /** SKU tier. */
-export type AzureSkuTier = "Basic" | "Standard";
+export type AzureSkuTier = "Basic" | "Standard" | (string & {});
 export const AzureSkuTier = /*@__PURE__*/ S.String;
 
 /** Azure SKU definition. */
@@ -1438,7 +1460,8 @@ export type IdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned, UserAssigned";
+  | "SystemAssigned, UserAssigned"
+  | (string & {});
 export const IdentityType = /*@__PURE__*/ S.String;
 
 export interface ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalpropertiesInput {}
@@ -1536,7 +1559,8 @@ export type State =
   | "Stopped"
   | "Starting"
   | "Updating"
-  | "Migrated";
+  | "Migrated"
+  | (string & {});
 export const State = /*@__PURE__*/ S.String;
 
 /** The cluster's external tenants. */
@@ -1551,7 +1575,8 @@ export const ClusterPropertiesTrustedExternalTenantsList =
 export type ClusterPropertiesPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter";
+  | "SecuredByPerimeter"
+  | (string & {});
 export const ClusterPropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** The list of ips in the format of CIDR allowed to connect to the cluster. */
@@ -1561,7 +1586,7 @@ export const ClusterPropertiesAllowedIpRangeListList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ClusterPropertiesAllowedIpRangeListList>;
 
 /** The engine type */
-export type ClusterPropertiesEngineType = "V2" | "V3";
+export type ClusterPropertiesEngineType = "V2" | "V3" | (string & {});
 export const ClusterPropertiesEngineType = /*@__PURE__*/ S.String;
 
 /** The cluster's accepted audiences. */
@@ -1574,7 +1599,8 @@ export const ClusterPropertiesAcceptedAudiencesList = /*@__PURE__*/ S.Array(
 /** Whether or not to restrict outbound network access. Value is optional but if passed in, must be 'Enabled' or 'Disabled' */
 export type ClusterPropertiesRestrictOutboundNetworkAccess =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ClusterPropertiesRestrictOutboundNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -1611,7 +1637,10 @@ export const ClusterPropertiesCalloutPoliciesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ClusterPropertiesCalloutPoliciesList>;
 
 /** Indicates what public IP type to create - IPv4 (default), or DualStack (both IPv4 and IPv6) */
-export type ClusterPropertiesPublicIPType = "IPv4" | "DualStack";
+export type ClusterPropertiesPublicIPType =
+  | "IPv4"
+  | "DualStack"
+  | (string & {});
 export const ClusterPropertiesPublicIPType = /*@__PURE__*/ S.String;
 
 /** Private endpoint which the connection belongs to. */
@@ -1704,7 +1733,7 @@ export const ClusterPropertiesPrivateEndpointConnectionsList =
   ) as any as S.Schema<ClusterPropertiesPrivateEndpointConnectionsList>;
 
 /** The role of the cluster in the migration process. */
-export type MigrationClusterRole = "Source" | "Destination";
+export type MigrationClusterRole = "Source" | "Destination" | (string & {});
 export const MigrationClusterRole = /*@__PURE__*/ S.String;
 
 /** Represents a properties of a cluster that is part of a migration. */
@@ -1730,7 +1759,11 @@ export const MigrationClusterProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MigrationClusterProperties>;
 
 /** Indicates whether the cluster is zonal or non-zonal. */
-export type ZoneStatus = "NonZonal" | "ZonalInconsistency" | "Zonal";
+export type ZoneStatus =
+  | "NonZonal"
+  | "ZonalInconsistency"
+  | "Zonal"
+  | (string & {});
 export const ZoneStatus = /*@__PURE__*/ S.String;
 
 /** Class representing the Kusto cluster properties. */
@@ -2312,7 +2345,11 @@ export const ClustersListFollowerDatabasesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ClustersListFollowerDatabasesRequest>;
 
 /** The origin of the following setup. */
-export type DatabaseShareOrigin = "Direct" | "DataShare" | "Other";
+export type DatabaseShareOrigin =
+  | "Direct"
+  | "DataShare"
+  | "Other"
+  | (string & {});
 export const DatabaseShareOrigin = /*@__PURE__*/ S.String;
 
 /** A class representing follower database request. */
@@ -2810,7 +2847,7 @@ export const ClustersListSkusByResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClustersListSkusByResourceRequest>;
 
 /** Scale type. */
-export type AzureScaleType = "automatic" | "manual" | "none";
+export type AzureScaleType = "automatic" | "manual" | "none" | (string & {});
 export const AzureScaleType = /*@__PURE__*/ S.String;
 
 /** Azure capacity definition. */
@@ -3219,7 +3256,8 @@ export const DatabaseInviteFollowerResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of resource, Microsoft.Kusto/clusters/databases/principalAssignments. */
 export type DatabasePrincipalAssignmentsCheckNameAvailabilityRequestType =
-  "Microsoft.Kusto/clusters/databases/principalAssignments";
+  | "Microsoft.Kusto/clusters/databases/principalAssignments"
+  | (string & {});
 export const DatabasePrincipalAssignmentsCheckNameAvailabilityRequestType =
   /*@__PURE__*/ S.String;
 
@@ -3265,7 +3303,8 @@ export type DatabasePrincipalRole =
   | "Monitor"
   | "User"
   | "UnrestrictedViewer"
-  | "Viewer";
+  | "Viewer"
+  | (string & {});
 export const DatabasePrincipalRole = /*@__PURE__*/ S.String;
 
 /** A class representing database principal property. */
@@ -3559,7 +3598,7 @@ export const DatabasePrincipalAssignmentListResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DatabasePrincipalAssignmentListResult>;
 
 /** Database principal type. */
-export type DatabasePrincipalType = "App" | "Group" | "User";
+export type DatabasePrincipalType = "App" | "Group" | "User" | (string & {});
 export const DatabasePrincipalType = /*@__PURE__*/ S.String;
 
 /** A class representing database principal entity. */
@@ -3685,7 +3724,8 @@ export const DatabasePrincipalListResult = /*@__PURE__*/ S.suspend(() =>
 /** The type of resource, for instance Microsoft.Kusto/clusters/databases. */
 export type Type =
   | "Microsoft.Kusto/clusters/databases"
-  | "Microsoft.Kusto/clusters/attachedDatabaseConfigurations";
+  | "Microsoft.Kusto/clusters/attachedDatabaseConfigurations"
+  | (string & {});
 export const Type = /*@__PURE__*/ S.String;
 
 export interface DatabasesCheckNameAvailabilityRequest {
@@ -3720,11 +3760,14 @@ export const DatabasesCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   identifier: "DatabasesCheckNameAvailabilityRequest",
 }) as any as S.Schema<DatabasesCheckNameAvailabilityRequest>;
 
-export type DatabasesCreateOrUpdateRequestCallerRole = "Admin" | "None";
+export type DatabasesCreateOrUpdateRequestCallerRole =
+  | "Admin"
+  | "None"
+  | (string & {});
 export const DatabasesCreateOrUpdateRequestCallerRole = /*@__PURE__*/ S.String;
 
 /** Kind of the database */
-export type Kind = "ReadWrite" | "ReadOnlyFollowing";
+export type Kind = "ReadWrite" | "ReadOnlyFollowing" | (string & {});
 export const Kind = /*@__PURE__*/ S.String;
 
 export interface DatabasesCreateOrUpdateRequest {
@@ -4028,7 +4071,7 @@ export const DatabasesRemovePrincipalsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabasesRemovePrincipalsRequest",
 }) as any as S.Schema<DatabasesRemovePrincipalsRequest>;
 
-export type DatabasesUpdateRequestCallerRole = "Admin" | "None";
+export type DatabasesUpdateRequestCallerRole = "Admin" | "None" | (string & {});
 export const DatabasesUpdateRequestCallerRole = /*@__PURE__*/ S.String;
 
 export interface DatabasesUpdateRequest {
@@ -4097,7 +4140,8 @@ export const DatabasesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of resource, Microsoft.Kusto/clusters/databases/dataConnections. */
 export type DataConnectionsCheckNameAvailabilityRequestType =
-  "Microsoft.Kusto/clusters/databases/dataConnections";
+  | "Microsoft.Kusto/clusters/databases/dataConnections"
+  | (string & {});
 export const DataConnectionsCheckNameAvailabilityRequestType =
   /*@__PURE__*/ S.String;
 
@@ -4143,7 +4187,8 @@ export type DataConnectionKind =
   | "IotHub"
   | "CosmosDb"
   | "EventHubWithManagedIdentity"
-  | "EventGridWithManagedIdentity";
+  | "EventGridWithManagedIdentity"
+  | (string & {});
 export const DataConnectionKind = /*@__PURE__*/ S.String;
 
 export interface DataConnectionsCreateOrUpdateRequest {
@@ -4536,7 +4581,8 @@ export const DataConnectionsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of resource, for instance Microsoft.Kusto/clusters/managedPrivateEndpoints. */
 export type ManagedPrivateEndpointsCheckNameAvailabilityRequestType =
-  "Microsoft.Kusto/clusters/managedPrivateEndpoints";
+  | "Microsoft.Kusto/clusters/managedPrivateEndpoints"
+  | (string & {});
 export const ManagedPrivateEndpointsCheckNameAvailabilityRequestType =
   /*@__PURE__*/ S.String;
 
@@ -4976,7 +5022,12 @@ export const OperationsResultsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsResultsGetRequest>;
 
 /** The status of operation. */
-export type Status = "Succeeded" | "Canceled" | "Failed" | "Running";
+export type Status =
+  | "Succeeded"
+  | "Canceled"
+  | "Failed"
+  | "Running"
+  | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 
 /** Operation result properties */
@@ -5443,7 +5494,8 @@ export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of resource, for instance Microsoft.Kusto/clusters/sandboxCustomImages. */
 export type SandboxCustomImagesCheckNameAvailabilityRequestType =
-  "Microsoft.Kusto/clusters/sandboxCustomImages";
+  | "Microsoft.Kusto/clusters/sandboxCustomImages"
+  | (string & {});
 export const SandboxCustomImagesCheckNameAvailabilityRequestType =
   /*@__PURE__*/ S.String;
 
@@ -5480,7 +5532,7 @@ export const SandboxCustomImagesCheckNameAvailabilityRequest =
   }) as any as S.Schema<SandboxCustomImagesCheckNameAvailabilityRequest>;
 
 /** The language name, for example Python. */
-export type Language = "Python";
+export type Language = "Python" | (string & {});
 export const Language = /*@__PURE__*/ S.String;
 
 /** A class representing the properties of a sandbox custom image object. */
@@ -5783,7 +5835,8 @@ export const SandboxCustomImagesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of resource, Microsoft.Kusto/clusters/databases/scripts. */
 export type ScriptsCheckNameAvailabilityRequestType =
-  "Microsoft.Kusto/clusters/databases/scripts";
+  | "Microsoft.Kusto/clusters/databases/scripts"
+  | (string & {});
 export const ScriptsCheckNameAvailabilityRequestType = /*@__PURE__*/ S.String;
 
 export interface ScriptsCheckNameAvailabilityRequest {
@@ -5821,13 +5874,14 @@ export const ScriptsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsCheckNameAvailabilityRequest>;
 
 /** Differentiates between the type of script commands included - Database or Cluster. The default is Database. */
-export type ScriptLevel = "Database" | "Cluster";
+export type ScriptLevel = "Database" | "Cluster" | (string & {});
 export const ScriptLevel = /*@__PURE__*/ S.String;
 
 /** Indicates if the permissions for the script caller are kept following completion of the script. */
 export type PrincipalPermissionsAction =
   | "RetainPermissionOnScriptCompletion"
-  | "RemovePermissionOnScriptCompletion";
+  | "RemovePermissionOnScriptCompletion"
+  | (string & {});
 export const PrincipalPermissionsAction = /*@__PURE__*/ S.String;
 
 /** A class representing database script property. */

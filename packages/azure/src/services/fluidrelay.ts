@@ -79,7 +79,8 @@ export const FluidRelayContainersGetRequest = /*@__PURE__*/ S.suspend(() =>
 export type FluidRelayContainerPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const FluidRelayContainerPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -115,7 +116,8 @@ export type FluidRelayContainersGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const FluidRelayContainersGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -124,7 +126,8 @@ export type FluidRelayContainersGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const FluidRelayContainersGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -216,7 +219,8 @@ export type FluidRelayContainerSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const FluidRelayContainerSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -225,7 +229,8 @@ export type FluidRelayContainerSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const FluidRelayContainerSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -398,13 +403,14 @@ export const FluidRelayServersCreateOrUpdateRequestTagsMap =
 export type FluidRelayServerPropertiesInputProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const FluidRelayServerPropertiesInputProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** Values can be SystemAssigned or UserAssigned */
 export type CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentityIdentityType =
-  "SystemAssigned" | "UserAssigned";
+  "SystemAssigned" | "UserAssigned" | (string & {});
 export const CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentityIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -463,7 +469,10 @@ export const EncryptionProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionProperties>;
 
 /** Sku of the storage associated with the resource */
-export type FluidRelayServerPropertiesInputStoragesku = "standard" | "basic";
+export type FluidRelayServerPropertiesInputStoragesku =
+  | "standard"
+  | "basic"
+  | (string & {});
 export const FluidRelayServerPropertiesInputStoragesku = /*@__PURE__*/ S.String;
 
 /** The properties of a Fluid Relay Service resource. */
@@ -492,7 +501,8 @@ export type IdentityInputType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
-  | "None";
+  | "None"
+  | (string & {});
 export const IdentityInputType = /*@__PURE__*/ S.String;
 
 export interface IdentityInputUserAssignedIdentitiesValue {}
@@ -614,12 +624,16 @@ export const FluidRelayEndpoints = /*@__PURE__*/ S.suspend(() =>
 export type FluidRelayServerPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const FluidRelayServerPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** Sku of the storage associated with the resource */
-export type FluidRelayServerPropertiesStoragesku = "standard" | "basic";
+export type FluidRelayServerPropertiesStoragesku =
+  | "standard"
+  | "basic"
+  | (string & {});
 export const FluidRelayServerPropertiesStoragesku = /*@__PURE__*/ S.String;
 
 /** The properties of a Fluid Relay Service resource. */
@@ -652,13 +666,14 @@ export type FluidRelayServersCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const FluidRelayServersCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type FluidRelayServersCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
 export const FluidRelayServersCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -700,7 +715,8 @@ export type IdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
-  | "None";
+  | "None"
+  | (string & {});
 export const IdentityType = /*@__PURE__*/ S.String;
 
 export interface IdentityUserAssignedIdentitiesValue {
@@ -852,7 +868,8 @@ export type FluidRelayServersGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const FluidRelayServersGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -861,7 +878,8 @@ export type FluidRelayServersGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const FluidRelayServersGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -966,7 +984,8 @@ export type FluidRelayServerSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const FluidRelayServerSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -974,7 +993,8 @@ export type FluidRelayServerSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const FluidRelayServerSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1126,7 +1146,10 @@ export const FluidRelayServerKeys = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FluidRelayServerKeys>;
 
 /** The key to regenerate. */
-export type FluidRelayServersRegenerateKeyRequestKeyName = "key1" | "key2";
+export type FluidRelayServersRegenerateKeyRequestKeyName =
+  | "key1"
+  | "key2"
+  | (string & {});
 export const FluidRelayServersRegenerateKeyRequestKeyName =
   /*@__PURE__*/ S.String;
 
@@ -1232,7 +1255,8 @@ export type FluidRelayServersUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const FluidRelayServersUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1241,7 +1265,8 @@ export type FluidRelayServersUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const FluidRelayServersUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

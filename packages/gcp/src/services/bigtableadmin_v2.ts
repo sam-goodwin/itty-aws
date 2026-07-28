@@ -225,10 +225,15 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 export type InstanceEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "ENTERPRISE"
-  | "ENTERPRISE_PLUS";
+  | "ENTERPRISE_PLUS"
+  | (string & {});
 export const InstanceEditionEnum = /*@__PURE__*/ S.String;
 
-export type InstanceStateEnum = "STATE_NOT_KNOWN" | "READY" | "CREATING";
+export type InstanceStateEnum =
+  | "STATE_NOT_KNOWN"
+  | "READY"
+  | "CREATING"
+  | (string & {});
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -240,7 +245,8 @@ export const StringMap = /*@__PURE__*/ S.Record(
 export type InstanceTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "PRODUCTION"
-  | "DEVELOPMENT";
+  | "DEVELOPMENT"
+  | (string & {});
 export const InstanceTypeEnum = /*@__PURE__*/ S.String;
 
 /** A collection of Bigtable Tables and the resources that serve them. All tables in an instance are served from all Clusters in the instance. */
@@ -287,13 +293,15 @@ export const Instance = /*@__PURE__*/ S.suspend(() =>
 export type ClusterNodeScalingFactorEnum =
   | "NODE_SCALING_FACTOR_UNSPECIFIED"
   | "NODE_SCALING_FACTOR_1X"
-  | "NODE_SCALING_FACTOR_2X";
+  | "NODE_SCALING_FACTOR_2X"
+  | (string & {});
 export const ClusterNodeScalingFactorEnum = /*@__PURE__*/ S.String;
 
 export type ClusterDefaultStorageTypeEnum =
   | "STORAGE_TYPE_UNSPECIFIED"
   | "SSD"
-  | "HDD";
+  | "HDD"
+  | (string & {});
 export const ClusterDefaultStorageTypeEnum = /*@__PURE__*/ S.String;
 
 /** Limits for the number of nodes a Cluster can autoscale up/down to. */
@@ -360,7 +368,8 @@ export type ClusterStateEnum =
   | "READY"
   | "CREATING"
   | "RESIZING"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const ClusterStateEnum = /*@__PURE__*/ S.String;
 
 /** Cloud Key Management Service (Cloud KMS) settings for a CMEK-protected cluster. */
@@ -504,14 +513,16 @@ export type AppProfilePriorityEnum =
   | "PRIORITY_UNSPECIFIED"
   | "PRIORITY_LOW"
   | "PRIORITY_MEDIUM"
-  | "PRIORITY_HIGH";
+  | "PRIORITY_HIGH"
+  | (string & {});
 export const AppProfilePriorityEnum = /*@__PURE__*/ S.String;
 
 export type StandardIsolationPriorityEnum =
   | "PRIORITY_UNSPECIFIED"
   | "PRIORITY_LOW"
   | "PRIORITY_MEDIUM"
-  | "PRIORITY_HIGH";
+  | "PRIORITY_HIGH"
+  | (string & {});
 export const StandardIsolationPriorityEnum = /*@__PURE__*/ S.String;
 
 /** If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. MemoryConfig can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled. */
@@ -538,7 +549,8 @@ export const StandardIsolation = /*@__PURE__*/ S.suspend(() =>
 
 export type DataBoostIsolationReadOnlyComputeBillingOwnerEnum =
   | "COMPUTE_BILLING_OWNER_UNSPECIFIED"
-  | "HOST_PAYS";
+  | "HOST_PAYS"
+  | (string & {});
 export const DataBoostIsolationReadOnlyComputeBillingOwnerEnum =
   /*@__PURE__*/ S.String;
 
@@ -642,19 +654,25 @@ export const CreateProjectsInstancesClustersRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateProjectsInstancesClustersRequest",
 }) as any as S.Schema<CreateProjectsInstancesClustersRequest>;
 
-export type BackupStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY";
+export type BackupStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "READY"
+  | (string & {});
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
 export type BackupBackupTypeEnum =
   | "BACKUP_TYPE_UNSPECIFIED"
   | "STANDARD"
-  | "HOT";
+  | "HOT"
+  | (string & {});
 export const BackupBackupTypeEnum = /*@__PURE__*/ S.String;
 
 export type EncryptionInfoEncryptionTypeEnum =
   | "ENCRYPTION_TYPE_UNSPECIFIED"
   | "GOOGLE_DEFAULT_ENCRYPTION"
-  | "CUSTOMER_MANAGED_ENCRYPTION";
+  | "CUSTOMER_MANAGED_ENCRYPTION"
+  | (string & {});
 export const EncryptionInfoEncryptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Encryption information for a given resource. If this resource is protected with customer managed encryption, the in-use Cloud Key Management Service (Cloud KMS) key version is specified along with its status. */
@@ -786,7 +804,7 @@ export const CreateProjectsInstancesLogicalViewsRequest =
   }) as any as S.Schema<CreateProjectsInstancesLogicalViewsRequest>;
 
 export type GoogleBigtableAdminV2MaterializedViewClusterStateReplicationStateEnum =
-  "STATE_NOT_KNOWN" | "INITIALIZING" | "READY";
+  "STATE_NOT_KNOWN" | "INITIALIZING" | "READY" | (string & {});
 export const GoogleBigtableAdminV2MaterializedViewClusterStateReplicationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -895,7 +913,8 @@ export const BackupInfo = /*@__PURE__*/ S.suspend(() =>
 
 export type RestoreInfoSourceTypeEnum =
   | "RESTORE_SOURCE_TYPE_UNSPECIFIED"
-  | "BACKUP";
+  | "BACKUP"
+  | (string & {});
 export const RestoreInfoSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about a table restore. */
@@ -1578,7 +1597,8 @@ export type ClusterStateReplicationStateEnum =
   | "PLANNED_MAINTENANCE"
   | "UNPLANNED_MAINTENANCE"
   | "READY"
-  | "READY_OPTIMIZING";
+  | "READY_OPTIMIZING"
+  | (string & {});
 export const ClusterStateReplicationStateEnum = /*@__PURE__*/ S.String;
 
 export type EncryptionInfoList = ReadonlyArray<EncryptionInfo>;
@@ -1628,7 +1648,8 @@ export const TableStats = /*@__PURE__*/ S.suspend(() =>
 
 export type TableGranularityEnum =
   | "TIMESTAMP_GRANULARITY_UNSPECIFIED"
-  | "MILLIS";
+  | "MILLIS"
+  | (string & {});
 export const TableGranularityEnum = /*@__PURE__*/ S.String;
 
 /** Change stream configuration. */
@@ -2228,7 +2249,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -2487,7 +2509,8 @@ export type MemoryLayerStateEnum =
   | "READY"
   | "ENABLING"
   | "RESIZING"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const MemoryLayerStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration of a memory layer. */
@@ -2639,7 +2662,8 @@ export type GetProjectsInstancesMaterializedViewsViewEnum =
   | "VIEW_UNSPECIFIED"
   | "SCHEMA_VIEW"
   | "REPLICATION_VIEW"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetProjectsInstancesMaterializedViewsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -2674,7 +2698,8 @@ export type GetProjectsInstancesTablesViewEnum =
   | "REPLICATION_VIEW"
   | "ENCRYPTION_VIEW"
   | "STATS_VIEW"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetProjectsInstancesTablesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsInstancesTablesRequest {
@@ -2702,7 +2727,8 @@ export type GetProjectsInstancesTablesAuthorizedViewsViewEnum =
   | "RESPONSE_VIEW_UNSPECIFIED"
   | "NAME_ONLY"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetProjectsInstancesTablesAuthorizedViewsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3176,7 +3202,8 @@ export type ListProjectsInstancesMaterializedViewsViewEnum =
   | "VIEW_UNSPECIFIED"
   | "SCHEMA_VIEW"
   | "REPLICATION_VIEW"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListProjectsInstancesMaterializedViewsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3238,7 +3265,8 @@ export type ListProjectsInstancesTablesViewEnum =
   | "REPLICATION_VIEW"
   | "ENCRYPTION_VIEW"
   | "STATS_VIEW"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListProjectsInstancesTablesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsInstancesTablesRequest {
@@ -3293,7 +3321,8 @@ export type ListProjectsInstancesTablesAuthorizedViewsViewEnum =
   | "RESPONSE_VIEW_UNSPECIFIED"
   | "NAME_ONLY"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListProjectsInstancesTablesAuthorizedViewsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3352,7 +3381,8 @@ export type ListProjectsInstancesTablesSchemaBundlesViewEnum =
   | "SCHEMA_BUNDLE_VIEW_UNSPECIFIED"
   | "NAME_ONLY"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListProjectsInstancesTablesSchemaBundlesViewEnum =
   /*@__PURE__*/ S.String;
 

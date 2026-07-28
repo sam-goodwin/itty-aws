@@ -57,7 +57,8 @@ export const ElectionQueryElectionsRequest = /*@__PURE__*/ S.suspend(() =>
 export type CivicinfoSchemaV2ElectionShapeLookupBehaviorEnum =
   | "shapeLookupDefault"
   | "shapeLookupDisabled"
-  | "shapeLookupEnabled";
+  | "shapeLookupEnabled"
+  | (string & {});
 export const CivicinfoSchemaV2ElectionShapeLookupBehaviorEnum =
   /*@__PURE__*/ S.String;
 
@@ -438,7 +439,8 @@ export type CivicinfoSchemaV2ContestLevelItemEnum =
   | "locality"
   | "subLocality1"
   | "subLocality2"
-  | "special";
+  | "special"
+  | (string & {});
 export const CivicinfoSchemaV2ContestLevelItemEnum = /*@__PURE__*/ S.String;
 
 export type CivicinfoSchemaV2ContestLevelItemEnumList =
@@ -461,7 +463,8 @@ export type CivicinfoSchemaV2ElectoralDistrictScopeEnum =
   | "township"
   | "ward"
   | "cityCouncil"
-  | "national";
+  | "national"
+  | (string & {});
 export const CivicinfoSchemaV2ElectoralDistrictScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -496,7 +499,8 @@ export type CivicinfoSchemaV2ContestRolesItemEnum =
   | "judge"
   | "schoolBoard"
   | "specialPurposeOfficer"
-  | "otherRole";
+  | "otherRole"
+  | (string & {});
 export const CivicinfoSchemaV2ContestRolesItemEnum = /*@__PURE__*/ S.String;
 
 export type CivicinfoSchemaV2ContestRolesItemEnumList =

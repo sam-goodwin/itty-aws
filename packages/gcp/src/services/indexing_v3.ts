@@ -81,7 +81,8 @@ export const GetMetadataUrlNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type UrlNotificationTypeEnum =
   | "URL_NOTIFICATION_TYPE_UNSPECIFIED"
   | "URL_UPDATED"
-  | "URL_DELETED";
+  | "URL_DELETED"
+  | (string & {});
 export const UrlNotificationTypeEnum = /*@__PURE__*/ S.String;
 
 /** `UrlNotification` is the resource used in all Indexing API calls. It describes one event in the life cycle of a Web Document. */

@@ -207,14 +207,16 @@ export type InstanceHealthStateEnum =
   | "HEALTHY"
   | "UNHEALTHY"
   | "AGENT_NOT_INSTALLED"
-  | "AGENT_NOT_RUNNING";
+  | "AGENT_NOT_RUNNING"
+  | (string & {});
 export const InstanceHealthStateEnum = /*@__PURE__*/ S.String;
 
 export type ReservationAffinityConsumeReservationTypeEnum =
   | "RESERVATION_UNSPECIFIED"
   | "RESERVATION_NONE"
   | "RESERVATION_ANY"
-  | "RESERVATION_SPECIFIC";
+  | "RESERVATION_SPECIFIC"
+  | (string & {});
 export const ReservationAffinityConsumeReservationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -334,13 +336,15 @@ export type DataDiskDiskTypeEnum =
   | "HYPERDISK_EXTREME"
   | "HYPERDISK_THROUGHPUT"
   | "HYPERDISK_BALANCED_HIGH_AVAILABILITY"
-  | "HYPERDISK_ML";
+  | "HYPERDISK_ML"
+  | (string & {});
 export const DataDiskDiskTypeEnum = /*@__PURE__*/ S.String;
 
 export type DataDiskDiskEncryptionEnum =
   | "DISK_ENCRYPTION_UNSPECIFIED"
   | "GMEK"
-  | "CMEK";
+  | "CMEK"
+  | (string & {});
 export const DataDiskDiskEncryptionEnum = /*@__PURE__*/ S.String;
 
 /** An instance-attached disk resource. */
@@ -390,7 +394,8 @@ export const AccessConfigList = /*@__PURE__*/ S.Array(
 export type NetworkInterfaceNicTypeEnum =
   | "NIC_TYPE_UNSPECIFIED"
   | "VIRTIO_NET"
-  | "GVNIC";
+  | "GVNIC"
+  | (string & {});
 export const NetworkInterfaceNicTypeEnum = /*@__PURE__*/ S.String;
 
 /** The definition of a network interface resource attached to a VM. */
@@ -436,7 +441,8 @@ export type AcceleratorConfigTypeEnum =
   | "NVIDIA_TESLA_P100_VWS"
   | "NVIDIA_TESLA_P4_VWS"
   | "NVIDIA_B200"
-  | "NVIDIA_RTX6000";
+  | "NVIDIA_RTX6000"
+  | (string & {});
 export const AcceleratorConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** An accelerator configuration for a VM instance Definition of a hardware accelerator. Note that there is no check on `type` and `core_count` combinations. TPUs are not supported. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. */
@@ -462,7 +468,8 @@ export const AcceleratorConfigList = /*@__PURE__*/ S.Array(
 
 export type ConfidentialInstanceConfigConfidentialInstanceTypeEnum =
   | "CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED"
-  | "SEV";
+  | "SEV"
+  | (string & {});
 export const ConfidentialInstanceConfigConfidentialInstanceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -491,13 +498,15 @@ export type BootDiskDiskTypeEnum =
   | "HYPERDISK_EXTREME"
   | "HYPERDISK_THROUGHPUT"
   | "HYPERDISK_BALANCED_HIGH_AVAILABILITY"
-  | "HYPERDISK_ML";
+  | "HYPERDISK_ML"
+  | (string & {});
 export const BootDiskDiskTypeEnum = /*@__PURE__*/ S.String;
 
 export type BootDiskDiskEncryptionEnum =
   | "DISK_ENCRYPTION_UNSPECIFIED"
   | "GMEK"
-  | "CMEK";
+  | "CMEK"
+  | (string & {});
 export const BootDiskDiskEncryptionEnum = /*@__PURE__*/ S.String;
 
 /** The definition of a boot disk. */
@@ -586,13 +595,15 @@ export type UpgradeHistoryEntryStateEnum =
   | "STATE_UNSPECIFIED"
   | "STARTED"
   | "SUCCEEDED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const UpgradeHistoryEntryStateEnum = /*@__PURE__*/ S.String;
 
 export type UpgradeHistoryEntryActionEnum =
   | "ACTION_UNSPECIFIED"
   | "UPGRADE"
-  | "ROLLBACK";
+  | "ROLLBACK"
+  | (string & {});
 export const UpgradeHistoryEntryActionEnum = /*@__PURE__*/ S.String;
 
 /** The entry of VM image upgrade history. */
@@ -648,7 +659,8 @@ export type InstanceStateEnum =
   | "UPGRADING"
   | "INITIALIZING"
   | "SUSPENDING"
-  | "SUSPENDED";
+  | "SUSPENDED"
+  | (string & {});
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 /** The definition of a notebook instance. */
@@ -1405,7 +1417,8 @@ export type EventTypeEnum =
   | "HEARTBEAT"
   | "HEALTH"
   | "MAINTENANCE"
-  | "METADATA_CHANGE";
+  | "METADATA_CHANGE"
+  | (string & {});
 export const EventTypeEnum = /*@__PURE__*/ S.String;
 
 /** The definition of an Event for a managed / semi-managed notebook instance. */

@@ -130,7 +130,8 @@ export type RulesBulkDeleteResultItemAction =
   | "managed_challenge"
   | "allow"
   | "log"
-  | "bypass";
+  | "bypass"
+  | (string & {});
 export const RulesBulkDeleteResultItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesBulkDeleteResultItemFilterFirewallFilter {
@@ -191,7 +192,8 @@ export type RulesBulkDeleteResultItemProductsItem =
   | "hot"
   | "securityLevel"
   | "rateLimit"
-  | "waf";
+  | "waf"
+  | (string & {});
 export const RulesBulkDeleteResultItemProductsItem = /*@__PURE__*/ S.String;
 
 export type RulesBulkDeleteResultItemProductsList =
@@ -279,7 +281,8 @@ export type RulesBulkEditResultItemAction =
   | "managed_challenge"
   | "allow"
   | "log"
-  | "bypass";
+  | "bypass"
+  | (string & {});
 export const RulesBulkEditResultItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesBulkEditResultItemFilterFirewallFilter {
@@ -340,7 +343,8 @@ export type RulesBulkEditResultItemProductsItem =
   | "hot"
   | "securityLevel"
   | "rateLimit"
-  | "waf";
+  | "waf"
+  | (string & {});
 export const RulesBulkEditResultItemProductsItem = /*@__PURE__*/ S.String;
 
 export type RulesBulkEditResultItemProductsList =
@@ -427,7 +431,8 @@ export type RulesBulkUpdateResultItemAction =
   | "managed_challenge"
   | "allow"
   | "log"
-  | "bypass";
+  | "bypass"
+  | (string & {});
 export const RulesBulkUpdateResultItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesBulkUpdateResultItemFilterFirewallFilter {
@@ -488,7 +493,8 @@ export type RulesBulkUpdateResultItemProductsItem =
   | "hot"
   | "securityLevel"
   | "rateLimit"
-  | "waf";
+  | "waf"
+  | (string & {});
 export const RulesBulkUpdateResultItemProductsItem = /*@__PURE__*/ S.String;
 
 export type RulesBulkUpdateResultItemProductsList =
@@ -550,7 +556,7 @@ export const BulkPutRulesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkPutRulesResponse>;
 
 export type AccessRulesCreateForAccountRequestConfigurationAccessRuleIPConfigurationTarget =
-  "ip";
+  "ip" | (string & {});
 export const AccessRulesCreateForAccountRequestConfigurationAccessRuleIPConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -574,7 +580,7 @@ export const AccessRulesCreateForAccountRequestConfigurationAccessRuleIPConfigur
   }) as any as S.Schema<AccessRulesCreateForAccountRequestConfigurationAccessRuleIPConfiguration>;
 
 export type AccessRulesCreateForAccountRequestConfigurationIPV6ConfigurationTarget =
-  "ip6";
+  "ip6" | (string & {});
 export const AccessRulesCreateForAccountRequestConfigurationIPV6ConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -598,7 +604,7 @@ export const AccessRulesCreateForAccountRequestConfigurationIPV6Configuration =
   }) as any as S.Schema<AccessRulesCreateForAccountRequestConfigurationIPV6Configuration>;
 
 export type AccessRulesCreateForAccountRequestConfigurationAccessRuleCIDRConfigurationTarget =
-  "ip_range";
+  "ip_range" | (string & {});
 export const AccessRulesCreateForAccountRequestConfigurationAccessRuleCIDRConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -622,7 +628,7 @@ export const AccessRulesCreateForAccountRequestConfigurationAccessRuleCIDRConfig
   }) as any as S.Schema<AccessRulesCreateForAccountRequestConfigurationAccessRuleCIDRConfiguration>;
 
 export type AccessRulesCreateForAccountRequestConfigurationASNConfigurationTarget =
-  "asn";
+  "asn" | (string & {});
 export const AccessRulesCreateForAccountRequestConfigurationASNConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -646,7 +652,7 @@ export const AccessRulesCreateForAccountRequestConfigurationASNConfiguration =
   }) as any as S.Schema<AccessRulesCreateForAccountRequestConfigurationASNConfiguration>;
 
 export type AccessRulesCreateForAccountRequestConfigurationCountryConfigurationTarget =
-  "country";
+  "country" | (string & {});
 export const AccessRulesCreateForAccountRequestConfigurationCountryConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -691,7 +697,8 @@ export type AccessRulesCreateForAccountRequestMode =
   | "challenge"
   | "whitelist"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const AccessRulesCreateForAccountRequestMode = /*@__PURE__*/ S.String;
 
 export interface CreateAccessRuleForAccountRequest {
@@ -728,7 +735,8 @@ export type AccessRulesCreateForAccountResponseAllowedModesItem =
   | "challenge"
   | "whitelist"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const AccessRulesCreateForAccountResponseAllowedModesItem =
   /*@__PURE__*/ S.String;
 
@@ -740,7 +748,7 @@ export const AccessRulesCreateForAccountResponseAllowedModesList =
   ) as any as S.Schema<AccessRulesCreateForAccountResponseAllowedModesList>;
 
 export type AccessRulesCreateForAccountResponseConfigurationAccessRuleIPConfigurationTarget =
-  "ip";
+  "ip" | (string & {});
 export const AccessRulesCreateForAccountResponseConfigurationAccessRuleIPConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -764,7 +772,7 @@ export const AccessRulesCreateForAccountResponseConfigurationAccessRuleIPConfigu
   }) as any as S.Schema<AccessRulesCreateForAccountResponseConfigurationAccessRuleIPConfiguration>;
 
 export type AccessRulesCreateForAccountResponseConfigurationIPV6ConfigurationTarget =
-  "ip6";
+  "ip6" | (string & {});
 export const AccessRulesCreateForAccountResponseConfigurationIPV6ConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -788,7 +796,7 @@ export const AccessRulesCreateForAccountResponseConfigurationIPV6Configuration =
   }) as any as S.Schema<AccessRulesCreateForAccountResponseConfigurationIPV6Configuration>;
 
 export type AccessRulesCreateForAccountResponseConfigurationAccessRuleCIDRConfigurationTarget =
-  "ip_range";
+  "ip_range" | (string & {});
 export const AccessRulesCreateForAccountResponseConfigurationAccessRuleCIDRConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -812,7 +820,7 @@ export const AccessRulesCreateForAccountResponseConfigurationAccessRuleCIDRConfi
   }) as any as S.Schema<AccessRulesCreateForAccountResponseConfigurationAccessRuleCIDRConfiguration>;
 
 export type AccessRulesCreateForAccountResponseConfigurationASNConfigurationTarget =
-  "asn";
+  "asn" | (string & {});
 export const AccessRulesCreateForAccountResponseConfigurationASNConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -836,7 +844,7 @@ export const AccessRulesCreateForAccountResponseConfigurationASNConfiguration =
   }) as any as S.Schema<AccessRulesCreateForAccountResponseConfigurationASNConfiguration>;
 
 export type AccessRulesCreateForAccountResponseConfigurationCountryConfigurationTarget =
-  "country";
+  "country" | (string & {});
 export const AccessRulesCreateForAccountResponseConfigurationCountryConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -881,12 +889,14 @@ export type AccessRulesCreateForAccountResponseMode =
   | "challenge"
   | "whitelist"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const AccessRulesCreateForAccountResponseMode = /*@__PURE__*/ S.String;
 
 export type AccessRulesCreateForAccountResponseScopeType =
   | "user"
-  | "organization";
+  | "organization"
+  | (string & {});
 export const AccessRulesCreateForAccountResponseScopeType =
   /*@__PURE__*/ S.String;
 
@@ -946,7 +956,7 @@ export const CreateAccessRuleForAccountResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAccessRuleForAccountResponse>;
 
 export type AccessRulesCreateForZoneRequestConfigurationAccessRuleIPConfigurationTarget =
-  "ip";
+  "ip" | (string & {});
 export const AccessRulesCreateForZoneRequestConfigurationAccessRuleIPConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -970,7 +980,7 @@ export const AccessRulesCreateForZoneRequestConfigurationAccessRuleIPConfigurati
   }) as any as S.Schema<AccessRulesCreateForZoneRequestConfigurationAccessRuleIPConfiguration>;
 
 export type AccessRulesCreateForZoneRequestConfigurationIPV6ConfigurationTarget =
-  "ip6";
+  "ip6" | (string & {});
 export const AccessRulesCreateForZoneRequestConfigurationIPV6ConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -993,7 +1003,7 @@ export const AccessRulesCreateForZoneRequestConfigurationIPV6Configuration =
   }) as any as S.Schema<AccessRulesCreateForZoneRequestConfigurationIPV6Configuration>;
 
 export type AccessRulesCreateForZoneRequestConfigurationAccessRuleCIDRConfigurationTarget =
-  "ip_range";
+  "ip_range" | (string & {});
 export const AccessRulesCreateForZoneRequestConfigurationAccessRuleCIDRConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -1017,7 +1027,7 @@ export const AccessRulesCreateForZoneRequestConfigurationAccessRuleCIDRConfigura
   }) as any as S.Schema<AccessRulesCreateForZoneRequestConfigurationAccessRuleCIDRConfiguration>;
 
 export type AccessRulesCreateForZoneRequestConfigurationASNConfigurationTarget =
-  "asn";
+  "asn" | (string & {});
 export const AccessRulesCreateForZoneRequestConfigurationASNConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -1040,7 +1050,7 @@ export const AccessRulesCreateForZoneRequestConfigurationASNConfiguration =
   }) as any as S.Schema<AccessRulesCreateForZoneRequestConfigurationASNConfiguration>;
 
 export type AccessRulesCreateForZoneRequestConfigurationCountryConfigurationTarget =
-  "country";
+  "country" | (string & {});
 export const AccessRulesCreateForZoneRequestConfigurationCountryConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -1085,7 +1095,8 @@ export type AccessRulesCreateForZoneRequestMode =
   | "challenge"
   | "whitelist"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const AccessRulesCreateForZoneRequestMode = /*@__PURE__*/ S.String;
 
 export interface CreateAccessRuleForZoneRequest {
@@ -1122,7 +1133,8 @@ export type AccessRulesCreateForZoneResponseAllowedModesItem =
   | "challenge"
   | "whitelist"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const AccessRulesCreateForZoneResponseAllowedModesItem =
   /*@__PURE__*/ S.String;
 
@@ -1134,7 +1146,7 @@ export const AccessRulesCreateForZoneResponseAllowedModesList =
   ) as any as S.Schema<AccessRulesCreateForZoneResponseAllowedModesList>;
 
 export type AccessRulesCreateForZoneResponseConfigurationAccessRuleIPConfigurationTarget =
-  "ip";
+  "ip" | (string & {});
 export const AccessRulesCreateForZoneResponseConfigurationAccessRuleIPConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -1158,7 +1170,7 @@ export const AccessRulesCreateForZoneResponseConfigurationAccessRuleIPConfigurat
   }) as any as S.Schema<AccessRulesCreateForZoneResponseConfigurationAccessRuleIPConfiguration>;
 
 export type AccessRulesCreateForZoneResponseConfigurationIPV6ConfigurationTarget =
-  "ip6";
+  "ip6" | (string & {});
 export const AccessRulesCreateForZoneResponseConfigurationIPV6ConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -1182,7 +1194,7 @@ export const AccessRulesCreateForZoneResponseConfigurationIPV6Configuration =
   }) as any as S.Schema<AccessRulesCreateForZoneResponseConfigurationIPV6Configuration>;
 
 export type AccessRulesCreateForZoneResponseConfigurationAccessRuleCIDRConfigurationTarget =
-  "ip_range";
+  "ip_range" | (string & {});
 export const AccessRulesCreateForZoneResponseConfigurationAccessRuleCIDRConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -1206,7 +1218,7 @@ export const AccessRulesCreateForZoneResponseConfigurationAccessRuleCIDRConfigur
   }) as any as S.Schema<AccessRulesCreateForZoneResponseConfigurationAccessRuleCIDRConfiguration>;
 
 export type AccessRulesCreateForZoneResponseConfigurationASNConfigurationTarget =
-  "asn";
+  "asn" | (string & {});
 export const AccessRulesCreateForZoneResponseConfigurationASNConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -1229,7 +1241,7 @@ export const AccessRulesCreateForZoneResponseConfigurationASNConfiguration =
   }) as any as S.Schema<AccessRulesCreateForZoneResponseConfigurationASNConfiguration>;
 
 export type AccessRulesCreateForZoneResponseConfigurationCountryConfigurationTarget =
-  "country";
+  "country" | (string & {});
 export const AccessRulesCreateForZoneResponseConfigurationCountryConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -1274,10 +1286,14 @@ export type AccessRulesCreateForZoneResponseMode =
   | "challenge"
   | "whitelist"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const AccessRulesCreateForZoneResponseMode = /*@__PURE__*/ S.String;
 
-export type AccessRulesCreateForZoneResponseScopeType = "user" | "organization";
+export type AccessRulesCreateForZoneResponseScopeType =
+  | "user"
+  | "organization"
+  | (string & {});
 export const AccessRulesCreateForZoneResponseScopeType = /*@__PURE__*/ S.String;
 
 export interface AccessRulesCreateForZoneResponseScope {
@@ -1336,7 +1352,8 @@ export const CreateAccessRuleForZoneResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAccessRuleForZoneResponse>;
 
 export type LockdownsCreateRequestConfigurationsLockdownIPConfigurationTarget =
-  "ip";
+  | "ip"
+  | (string & {});
 export const LockdownsCreateRequestConfigurationsLockdownIPConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -1359,7 +1376,7 @@ export const LockdownsCreateRequestConfigurationsLockdownIPConfiguration =
   }) as any as S.Schema<LockdownsCreateRequestConfigurationsLockdownIPConfiguration>;
 
 export type LockdownsCreateRequestConfigurationsLockdownCIDRConfigurationTarget =
-  "ip_range";
+  "ip_range" | (string & {});
 export const LockdownsCreateRequestConfigurationsLockdownCIDRConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -1433,7 +1450,7 @@ export const CreateLockdownRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateLockdownRequest>;
 
 export type LockdownsCreateResponseConfigurationsLockdownIPConfigurationTarget =
-  "ip";
+  "ip" | (string & {});
 export const LockdownsCreateResponseConfigurationsLockdownIPConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -1456,7 +1473,7 @@ export const LockdownsCreateResponseConfigurationsLockdownIPConfiguration =
   }) as any as S.Schema<LockdownsCreateResponseConfigurationsLockdownIPConfiguration>;
 
 export type LockdownsCreateResponseConfigurationsLockdownCIDRConfigurationTarget =
-  "ip_range";
+  "ip_range" | (string & {});
 export const LockdownsCreateResponseConfigurationsLockdownCIDRConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -1531,7 +1548,8 @@ export type RulesCreateRequestActionMode =
   | "ban"
   | "challenge"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const RulesCreateRequestActionMode = /*@__PURE__*/ S.String;
 
 export interface RulesCreateRequestActionResponse {
@@ -1623,7 +1641,8 @@ export type RulesCreateResultItemAction =
   | "managed_challenge"
   | "allow"
   | "log"
-  | "bypass";
+  | "bypass"
+  | (string & {});
 export const RulesCreateResultItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesCreateResultItemFilterFirewallFilter {
@@ -1684,7 +1703,8 @@ export type RulesCreateResultItemProductsItem =
   | "hot"
   | "securityLevel"
   | "rateLimit"
-  | "waf";
+  | "waf"
+  | (string & {});
 export const RulesCreateResultItemProductsItem = /*@__PURE__*/ S.String;
 
 export type RulesCreateResultItemProductsList =
@@ -1744,7 +1764,7 @@ export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRuleResponse",
 }) as any as S.Schema<CreateRuleResponse>;
 
-export type UaRulesCreateRequestConfigurationTarget = "ua";
+export type UaRulesCreateRequestConfigurationTarget = "ua" | (string & {});
 export const UaRulesCreateRequestConfigurationTarget = /*@__PURE__*/ S.String;
 
 export interface UaRulesCreateRequestConfiguration {
@@ -1767,7 +1787,8 @@ export type UaRulesCreateRequestMode =
   | "challenge"
   | "whitelist"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const UaRulesCreateRequestMode = /*@__PURE__*/ S.String;
 
 export interface CreateUaRuleRequest {
@@ -1820,7 +1841,8 @@ export type UaRulesCreateResponseMode =
   | "block"
   | "challenge"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const UaRulesCreateResponseMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1889,7 +1911,8 @@ export type WafOverridesCreateResponseRewriteActionBlock =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesCreateResponseRewriteActionBlock =
   /*@__PURE__*/ S.String;
 
@@ -1898,7 +1921,8 @@ export type WafOverridesCreateResponseRewriteActionChallenge =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesCreateResponseRewriteActionChallenge =
   /*@__PURE__*/ S.String;
 
@@ -1907,7 +1931,8 @@ export type WafOverridesCreateResponseRewriteActionDefault =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesCreateResponseRewriteActionDefault =
   /*@__PURE__*/ S.String;
 
@@ -1916,7 +1941,8 @@ export type WafOverridesCreateResponseRewriteActionDisable =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesCreateResponseRewriteActionDisable =
   /*@__PURE__*/ S.String;
 
@@ -1925,7 +1951,8 @@ export type WafOverridesCreateResponseRewriteActionSimulate =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesCreateResponseRewriteActionSimulate =
   /*@__PURE__*/ S.String;
 
@@ -1959,7 +1986,8 @@ export type WafOverridesCreateResponseRules =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesCreateResponseRules = /*@__PURE__*/ S.String;
 
 export type WafOverridesCreateResponseUrlsList = ReadonlyArray<string>;
@@ -2141,7 +2169,8 @@ export type RulesDeleteResponseAction =
   | "managed_challenge"
   | "allow"
   | "log"
-  | "bypass";
+  | "bypass"
+  | (string & {});
 export const RulesDeleteResponseAction = /*@__PURE__*/ S.String;
 
 export interface RulesDeleteResponseFilterFirewallFilter {
@@ -2202,7 +2231,8 @@ export type RulesDeleteResponseProductsItem =
   | "hot"
   | "securityLevel"
   | "rateLimit"
-  | "waf";
+  | "waf"
+  | (string & {});
 export const RulesDeleteResponseProductsItem = /*@__PURE__*/ S.String;
 
 export type RulesDeleteResponseProductsList =
@@ -2285,7 +2315,8 @@ export type UaRulesDeleteResponseMode =
   | "block"
   | "challenge"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const UaRulesDeleteResponseMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2377,7 +2408,8 @@ export type AccessRulesGetForAccountResponseAllowedModesItem =
   | "challenge"
   | "whitelist"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const AccessRulesGetForAccountResponseAllowedModesItem =
   /*@__PURE__*/ S.String;
 
@@ -2389,7 +2421,7 @@ export const AccessRulesGetForAccountResponseAllowedModesList =
   ) as any as S.Schema<AccessRulesGetForAccountResponseAllowedModesList>;
 
 export type AccessRulesGetForAccountResponseConfigurationAccessRuleIPConfigurationTarget =
-  "ip";
+  "ip" | (string & {});
 export const AccessRulesGetForAccountResponseConfigurationAccessRuleIPConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -2413,7 +2445,7 @@ export const AccessRulesGetForAccountResponseConfigurationAccessRuleIPConfigurat
   }) as any as S.Schema<AccessRulesGetForAccountResponseConfigurationAccessRuleIPConfiguration>;
 
 export type AccessRulesGetForAccountResponseConfigurationIPV6ConfigurationTarget =
-  "ip6";
+  "ip6" | (string & {});
 export const AccessRulesGetForAccountResponseConfigurationIPV6ConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -2437,7 +2469,7 @@ export const AccessRulesGetForAccountResponseConfigurationIPV6Configuration =
   }) as any as S.Schema<AccessRulesGetForAccountResponseConfigurationIPV6Configuration>;
 
 export type AccessRulesGetForAccountResponseConfigurationAccessRuleCIDRConfigurationTarget =
-  "ip_range";
+  "ip_range" | (string & {});
 export const AccessRulesGetForAccountResponseConfigurationAccessRuleCIDRConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -2461,7 +2493,7 @@ export const AccessRulesGetForAccountResponseConfigurationAccessRuleCIDRConfigur
   }) as any as S.Schema<AccessRulesGetForAccountResponseConfigurationAccessRuleCIDRConfiguration>;
 
 export type AccessRulesGetForAccountResponseConfigurationASNConfigurationTarget =
-  "asn";
+  "asn" | (string & {});
 export const AccessRulesGetForAccountResponseConfigurationASNConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -2484,7 +2516,7 @@ export const AccessRulesGetForAccountResponseConfigurationASNConfiguration =
   }) as any as S.Schema<AccessRulesGetForAccountResponseConfigurationASNConfiguration>;
 
 export type AccessRulesGetForAccountResponseConfigurationCountryConfigurationTarget =
-  "country";
+  "country" | (string & {});
 export const AccessRulesGetForAccountResponseConfigurationCountryConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -2529,10 +2561,14 @@ export type AccessRulesGetForAccountResponseMode =
   | "challenge"
   | "whitelist"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const AccessRulesGetForAccountResponseMode = /*@__PURE__*/ S.String;
 
-export type AccessRulesGetForAccountResponseScopeType = "user" | "organization";
+export type AccessRulesGetForAccountResponseScopeType =
+  | "user"
+  | "organization"
+  | (string & {});
 export const AccessRulesGetForAccountResponseScopeType = /*@__PURE__*/ S.String;
 
 export interface AccessRulesGetForAccountResponseScope {
@@ -2618,7 +2654,8 @@ export type AccessRulesGetForZoneResponseAllowedModesItem =
   | "challenge"
   | "whitelist"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const AccessRulesGetForZoneResponseAllowedModesItem =
   /*@__PURE__*/ S.String;
 
@@ -2630,7 +2667,7 @@ export const AccessRulesGetForZoneResponseAllowedModesList =
   ) as any as S.Schema<AccessRulesGetForZoneResponseAllowedModesList>;
 
 export type AccessRulesGetForZoneResponseConfigurationAccessRuleIPConfigurationTarget =
-  "ip";
+  "ip" | (string & {});
 export const AccessRulesGetForZoneResponseConfigurationAccessRuleIPConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -2654,7 +2691,8 @@ export const AccessRulesGetForZoneResponseConfigurationAccessRuleIPConfiguration
   }) as any as S.Schema<AccessRulesGetForZoneResponseConfigurationAccessRuleIPConfiguration>;
 
 export type AccessRulesGetForZoneResponseConfigurationIPV6ConfigurationTarget =
-  "ip6";
+  | "ip6"
+  | (string & {});
 export const AccessRulesGetForZoneResponseConfigurationIPV6ConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -2677,7 +2715,7 @@ export const AccessRulesGetForZoneResponseConfigurationIPV6Configuration =
   }) as any as S.Schema<AccessRulesGetForZoneResponseConfigurationIPV6Configuration>;
 
 export type AccessRulesGetForZoneResponseConfigurationAccessRuleCIDRConfigurationTarget =
-  "ip_range";
+  "ip_range" | (string & {});
 export const AccessRulesGetForZoneResponseConfigurationAccessRuleCIDRConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -2701,7 +2739,8 @@ export const AccessRulesGetForZoneResponseConfigurationAccessRuleCIDRConfigurati
   }) as any as S.Schema<AccessRulesGetForZoneResponseConfigurationAccessRuleCIDRConfiguration>;
 
 export type AccessRulesGetForZoneResponseConfigurationASNConfigurationTarget =
-  "asn";
+  | "asn"
+  | (string & {});
 export const AccessRulesGetForZoneResponseConfigurationASNConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -2724,7 +2763,7 @@ export const AccessRulesGetForZoneResponseConfigurationASNConfiguration =
   }) as any as S.Schema<AccessRulesGetForZoneResponseConfigurationASNConfiguration>;
 
 export type AccessRulesGetForZoneResponseConfigurationCountryConfigurationTarget =
-  "country";
+  "country" | (string & {});
 export const AccessRulesGetForZoneResponseConfigurationCountryConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -2769,10 +2808,14 @@ export type AccessRulesGetForZoneResponseMode =
   | "challenge"
   | "whitelist"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const AccessRulesGetForZoneResponseMode = /*@__PURE__*/ S.String;
 
-export type AccessRulesGetForZoneResponseScopeType = "user" | "organization";
+export type AccessRulesGetForZoneResponseScopeType =
+  | "user"
+  | "organization"
+  | (string & {});
 export const AccessRulesGetForZoneResponseScopeType = /*@__PURE__*/ S.String;
 
 export interface AccessRulesGetForZoneResponseScope {
@@ -2853,7 +2896,8 @@ export const GetLockdownRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetLockdownRequest>;
 
 export type LockdownsGetResponseConfigurationsLockdownIPConfigurationTarget =
-  "ip";
+  | "ip"
+  | (string & {});
 export const LockdownsGetResponseConfigurationsLockdownIPConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -2876,7 +2920,8 @@ export const LockdownsGetResponseConfigurationsLockdownIPConfiguration =
   }) as any as S.Schema<LockdownsGetResponseConfigurationsLockdownIPConfiguration>;
 
 export type LockdownsGetResponseConfigurationsLockdownCIDRConfigurationTarget =
-  "ip_range";
+  | "ip_range"
+  | (string & {});
 export const LockdownsGetResponseConfigurationsLockdownCIDRConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -2972,7 +3017,8 @@ export type RulesGetResponseAction =
   | "managed_challenge"
   | "allow"
   | "log"
-  | "bypass";
+  | "bypass"
+  | (string & {});
 export const RulesGetResponseAction = /*@__PURE__*/ S.String;
 
 export interface RulesGetResponseFilterFirewallFilter {
@@ -3032,7 +3078,8 @@ export type RulesGetResponseProductsItem =
   | "hot"
   | "securityLevel"
   | "rateLimit"
-  | "waf";
+  | "waf"
+  | (string & {});
 export const RulesGetResponseProductsItem = /*@__PURE__*/ S.String;
 
 export type RulesGetResponseProductsList =
@@ -3115,7 +3162,8 @@ export type UaRulesGetResponseMode =
   | "block"
   | "challenge"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const UaRulesGetResponseMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3179,7 +3227,8 @@ export type WafOverridesGetResponseRewriteActionBlock =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesGetResponseRewriteActionBlock = /*@__PURE__*/ S.String;
 
 export type WafOverridesGetResponseRewriteActionChallenge =
@@ -3187,7 +3236,8 @@ export type WafOverridesGetResponseRewriteActionChallenge =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesGetResponseRewriteActionChallenge =
   /*@__PURE__*/ S.String;
 
@@ -3196,7 +3246,8 @@ export type WafOverridesGetResponseRewriteActionDefault =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesGetResponseRewriteActionDefault =
   /*@__PURE__*/ S.String;
 
@@ -3205,7 +3256,8 @@ export type WafOverridesGetResponseRewriteActionDisable =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesGetResponseRewriteActionDisable =
   /*@__PURE__*/ S.String;
 
@@ -3214,7 +3266,8 @@ export type WafOverridesGetResponseRewriteActionSimulate =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesGetResponseRewriteActionSimulate =
   /*@__PURE__*/ S.String;
 
@@ -3248,7 +3301,8 @@ export type WafOverridesGetResponseRules =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesGetResponseRules = /*@__PURE__*/ S.String;
 
 export type WafOverridesGetResponseUrlsList = ReadonlyArray<string>;
@@ -3393,14 +3447,21 @@ export type AccessRulesListForAccountRequestConfigurationTarget =
   | "ip"
   | "ip_range"
   | "asn"
-  | "country";
+  | "country"
+  | (string & {});
 export const AccessRulesListForAccountRequestConfigurationTarget =
   /*@__PURE__*/ S.String;
 
-export type AccessRulesListForAccountRequestDirection = "asc" | "desc";
+export type AccessRulesListForAccountRequestDirection =
+  | "asc"
+  | "desc"
+  | (string & {});
 export const AccessRulesListForAccountRequestDirection = /*@__PURE__*/ S.String;
 
-export type AccessRulesListForAccountRequestMatch = "any" | "all";
+export type AccessRulesListForAccountRequestMatch =
+  | "any"
+  | "all"
+  | (string & {});
 export const AccessRulesListForAccountRequestMatch = /*@__PURE__*/ S.String;
 
 export type AccessRulesListForAccountRequestMode =
@@ -3408,13 +3469,15 @@ export type AccessRulesListForAccountRequestMode =
   | "challenge"
   | "whitelist"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const AccessRulesListForAccountRequestMode = /*@__PURE__*/ S.String;
 
 export type AccessRulesListForAccountRequestOrder =
   | "configuration.target"
   | "configuration.value"
-  | "mode";
+  | "mode"
+  | (string & {});
 export const AccessRulesListForAccountRequestOrder = /*@__PURE__*/ S.String;
 
 export interface ListAccessRulesForAccountRequest {
@@ -3477,7 +3540,8 @@ export type AccessRulesListForAccountResultItemAllowedModesItem =
   | "challenge"
   | "whitelist"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const AccessRulesListForAccountResultItemAllowedModesItem =
   /*@__PURE__*/ S.String;
 
@@ -3489,7 +3553,7 @@ export const AccessRulesListForAccountResultItemAllowedModesList =
   ) as any as S.Schema<AccessRulesListForAccountResultItemAllowedModesList>;
 
 export type AccessRulesListForAccountResultItemConfigurationAccessRuleIPConfigurationTarget =
-  "ip";
+  "ip" | (string & {});
 export const AccessRulesListForAccountResultItemConfigurationAccessRuleIPConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -3513,7 +3577,7 @@ export const AccessRulesListForAccountResultItemConfigurationAccessRuleIPConfigu
   }) as any as S.Schema<AccessRulesListForAccountResultItemConfigurationAccessRuleIPConfiguration>;
 
 export type AccessRulesListForAccountResultItemConfigurationIPV6ConfigurationTarget =
-  "ip6";
+  "ip6" | (string & {});
 export const AccessRulesListForAccountResultItemConfigurationIPV6ConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -3537,7 +3601,7 @@ export const AccessRulesListForAccountResultItemConfigurationIPV6Configuration =
   }) as any as S.Schema<AccessRulesListForAccountResultItemConfigurationIPV6Configuration>;
 
 export type AccessRulesListForAccountResultItemConfigurationAccessRuleCIDRConfigurationTarget =
-  "ip_range";
+  "ip_range" | (string & {});
 export const AccessRulesListForAccountResultItemConfigurationAccessRuleCIDRConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -3561,7 +3625,7 @@ export const AccessRulesListForAccountResultItemConfigurationAccessRuleCIDRConfi
   }) as any as S.Schema<AccessRulesListForAccountResultItemConfigurationAccessRuleCIDRConfiguration>;
 
 export type AccessRulesListForAccountResultItemConfigurationASNConfigurationTarget =
-  "asn";
+  "asn" | (string & {});
 export const AccessRulesListForAccountResultItemConfigurationASNConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -3585,7 +3649,7 @@ export const AccessRulesListForAccountResultItemConfigurationASNConfiguration =
   }) as any as S.Schema<AccessRulesListForAccountResultItemConfigurationASNConfiguration>;
 
 export type AccessRulesListForAccountResultItemConfigurationCountryConfigurationTarget =
-  "country";
+  "country" | (string & {});
 export const AccessRulesListForAccountResultItemConfigurationCountryConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -3630,12 +3694,14 @@ export type AccessRulesListForAccountResultItemMode =
   | "challenge"
   | "whitelist"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const AccessRulesListForAccountResultItemMode = /*@__PURE__*/ S.String;
 
 export type AccessRulesListForAccountResultItemScopeType =
   | "user"
-  | "organization";
+  | "organization"
+  | (string & {});
 export const AccessRulesListForAccountResultItemScopeType =
   /*@__PURE__*/ S.String;
 
@@ -3718,14 +3784,18 @@ export type AccessRulesListForZoneRequestConfigurationTarget =
   | "ip"
   | "ip_range"
   | "asn"
-  | "country";
+  | "country"
+  | (string & {});
 export const AccessRulesListForZoneRequestConfigurationTarget =
   /*@__PURE__*/ S.String;
 
-export type AccessRulesListForZoneRequestDirection = "asc" | "desc";
+export type AccessRulesListForZoneRequestDirection =
+  | "asc"
+  | "desc"
+  | (string & {});
 export const AccessRulesListForZoneRequestDirection = /*@__PURE__*/ S.String;
 
-export type AccessRulesListForZoneRequestMatch = "any" | "all";
+export type AccessRulesListForZoneRequestMatch = "any" | "all" | (string & {});
 export const AccessRulesListForZoneRequestMatch = /*@__PURE__*/ S.String;
 
 export type AccessRulesListForZoneRequestMode =
@@ -3733,13 +3803,15 @@ export type AccessRulesListForZoneRequestMode =
   | "challenge"
   | "whitelist"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const AccessRulesListForZoneRequestMode = /*@__PURE__*/ S.String;
 
 export type AccessRulesListForZoneRequestOrder =
   | "configuration.target"
   | "configuration.value"
-  | "mode";
+  | "mode"
+  | (string & {});
 export const AccessRulesListForZoneRequestOrder = /*@__PURE__*/ S.String;
 
 export interface ListAccessRulesForZoneRequest {
@@ -3802,7 +3874,8 @@ export type AccessRulesListForZoneResultItemAllowedModesItem =
   | "challenge"
   | "whitelist"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const AccessRulesListForZoneResultItemAllowedModesItem =
   /*@__PURE__*/ S.String;
 
@@ -3814,7 +3887,7 @@ export const AccessRulesListForZoneResultItemAllowedModesList =
   ) as any as S.Schema<AccessRulesListForZoneResultItemAllowedModesList>;
 
 export type AccessRulesListForZoneResultItemConfigurationAccessRuleIPConfigurationTarget =
-  "ip";
+  "ip" | (string & {});
 export const AccessRulesListForZoneResultItemConfigurationAccessRuleIPConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -3838,7 +3911,7 @@ export const AccessRulesListForZoneResultItemConfigurationAccessRuleIPConfigurat
   }) as any as S.Schema<AccessRulesListForZoneResultItemConfigurationAccessRuleIPConfiguration>;
 
 export type AccessRulesListForZoneResultItemConfigurationIPV6ConfigurationTarget =
-  "ip6";
+  "ip6" | (string & {});
 export const AccessRulesListForZoneResultItemConfigurationIPV6ConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -3862,7 +3935,7 @@ export const AccessRulesListForZoneResultItemConfigurationIPV6Configuration =
   }) as any as S.Schema<AccessRulesListForZoneResultItemConfigurationIPV6Configuration>;
 
 export type AccessRulesListForZoneResultItemConfigurationAccessRuleCIDRConfigurationTarget =
-  "ip_range";
+  "ip_range" | (string & {});
 export const AccessRulesListForZoneResultItemConfigurationAccessRuleCIDRConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -3886,7 +3959,7 @@ export const AccessRulesListForZoneResultItemConfigurationAccessRuleCIDRConfigur
   }) as any as S.Schema<AccessRulesListForZoneResultItemConfigurationAccessRuleCIDRConfiguration>;
 
 export type AccessRulesListForZoneResultItemConfigurationASNConfigurationTarget =
-  "asn";
+  "asn" | (string & {});
 export const AccessRulesListForZoneResultItemConfigurationASNConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -3909,7 +3982,7 @@ export const AccessRulesListForZoneResultItemConfigurationASNConfiguration =
   }) as any as S.Schema<AccessRulesListForZoneResultItemConfigurationASNConfiguration>;
 
 export type AccessRulesListForZoneResultItemConfigurationCountryConfigurationTarget =
-  "country";
+  "country" | (string & {});
 export const AccessRulesListForZoneResultItemConfigurationCountryConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -3954,10 +4027,14 @@ export type AccessRulesListForZoneResultItemMode =
   | "challenge"
   | "whitelist"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const AccessRulesListForZoneResultItemMode = /*@__PURE__*/ S.String;
 
-export type AccessRulesListForZoneResultItemScopeType = "user" | "organization";
+export type AccessRulesListForZoneResultItemScopeType =
+  | "user"
+  | "organization"
+  | (string & {});
 export const AccessRulesListForZoneResultItemScopeType = /*@__PURE__*/ S.String;
 
 export interface AccessRulesListForZoneResultItemScope {
@@ -4089,7 +4166,7 @@ export const ListLockdownsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLockdownsRequest>;
 
 export type LockdownsListResultItemConfigurationsLockdownIPConfigurationTarget =
-  "ip";
+  "ip" | (string & {});
 export const LockdownsListResultItemConfigurationsLockdownIPConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -4112,7 +4189,7 @@ export const LockdownsListResultItemConfigurationsLockdownIPConfiguration =
   }) as any as S.Schema<LockdownsListResultItemConfigurationsLockdownIPConfiguration>;
 
 export type LockdownsListResultItemConfigurationsLockdownCIDRConfigurationTarget =
-  "ip_range";
+  "ip_range" | (string & {});
 export const LockdownsListResultItemConfigurationsLockdownCIDRConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -4246,7 +4323,8 @@ export type RulesListResultItemAction =
   | "managed_challenge"
   | "allow"
   | "log"
-  | "bypass";
+  | "bypass"
+  | (string & {});
 export const RulesListResultItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesListResultItemFilterFirewallFilter {
@@ -4307,7 +4385,8 @@ export type RulesListResultItemProductsItem =
   | "hot"
   | "securityLevel"
   | "rateLimit"
-  | "waf";
+  | "waf"
+  | (string & {});
 export const RulesListResultItemProductsItem = /*@__PURE__*/ S.String;
 
 export type RulesListResultItemProductsList =
@@ -4421,7 +4500,8 @@ export type UaRulesListResultItemMode =
   | "block"
   | "challenge"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const UaRulesListResultItemMode = /*@__PURE__*/ S.String;
 
 export interface UaRulesListResultItem {
@@ -4507,7 +4587,8 @@ export type WafOverridesListResultItemRewriteActionBlock =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesListResultItemRewriteActionBlock =
   /*@__PURE__*/ S.String;
 
@@ -4516,7 +4597,8 @@ export type WafOverridesListResultItemRewriteActionChallenge =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesListResultItemRewriteActionChallenge =
   /*@__PURE__*/ S.String;
 
@@ -4525,7 +4607,8 @@ export type WafOverridesListResultItemRewriteActionDefault =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesListResultItemRewriteActionDefault =
   /*@__PURE__*/ S.String;
 
@@ -4534,7 +4617,8 @@ export type WafOverridesListResultItemRewriteActionDisable =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesListResultItemRewriteActionDisable =
   /*@__PURE__*/ S.String;
 
@@ -4543,7 +4627,8 @@ export type WafOverridesListResultItemRewriteActionSimulate =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesListResultItemRewriteActionSimulate =
   /*@__PURE__*/ S.String;
 
@@ -4577,7 +4662,8 @@ export type WafOverridesListResultItemRules =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesListResultItemRules = /*@__PURE__*/ S.String;
 
 export type WafOverridesListResultItemUrlsList = ReadonlyArray<string>;
@@ -4641,16 +4727,22 @@ export const ListWafOverridesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListWafOverridesResponse",
 }) as any as S.Schema<ListWafOverridesResponse>;
 
-export type WafPackagesGroupsListRequestDirection = "asc" | "desc";
+export type WafPackagesGroupsListRequestDirection =
+  | "asc"
+  | "desc"
+  | (string & {});
 export const WafPackagesGroupsListRequestDirection = /*@__PURE__*/ S.String;
 
-export type WafPackagesGroupsListRequestMatch = "any" | "all";
+export type WafPackagesGroupsListRequestMatch = "any" | "all" | (string & {});
 export const WafPackagesGroupsListRequestMatch = /*@__PURE__*/ S.String;
 
-export type WafPackagesGroupsListRequestMode = "on" | "off";
+export type WafPackagesGroupsListRequestMode = "on" | "off" | (string & {});
 export const WafPackagesGroupsListRequestMode = /*@__PURE__*/ S.String;
 
-export type WafPackagesGroupsListRequestOrder = "mode" | "rules_count";
+export type WafPackagesGroupsListRequestOrder =
+  | "mode"
+  | "rules_count"
+  | (string & {});
 export const WafPackagesGroupsListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface ListWafPackageGroupsRequest {
@@ -4702,10 +4794,13 @@ export const ListWafPackageGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListWafPackageGroupsRequest",
 }) as any as S.Schema<ListWafPackageGroupsRequest>;
 
-export type WafPackagesGroupsListResultItemMode = "on" | "off";
+export type WafPackagesGroupsListResultItemMode = "on" | "off" | (string & {});
 export const WafPackagesGroupsListResultItemMode = /*@__PURE__*/ S.String;
 
-export type WafPackagesGroupsListResultItemAllowedModesItem = "on" | "off";
+export type WafPackagesGroupsListResultItemAllowedModesItem =
+  | "on"
+  | "off"
+  | (string & {});
 export const WafPackagesGroupsListResultItemAllowedModesItem =
   /*@__PURE__*/ S.String;
 
@@ -4776,19 +4871,28 @@ export const ListWafPackageGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListWafPackageGroupsResponse",
 }) as any as S.Schema<ListWafPackageGroupsResponse>;
 
-export type WafPackagesRulesListRequestDirection = "asc" | "desc";
+export type WafPackagesRulesListRequestDirection =
+  | "asc"
+  | "desc"
+  | (string & {});
 export const WafPackagesRulesListRequestDirection = /*@__PURE__*/ S.String;
 
-export type WafPackagesRulesListRequestMatch = "any" | "all";
+export type WafPackagesRulesListRequestMatch = "any" | "all" | (string & {});
 export const WafPackagesRulesListRequestMatch = /*@__PURE__*/ S.String;
 
-export type WafPackagesRulesListRequestMode = "DIS" | "CHL" | "BLK" | "SIM";
+export type WafPackagesRulesListRequestMode =
+  | "DIS"
+  | "CHL"
+  | "BLK"
+  | "SIM"
+  | (string & {});
 export const WafPackagesRulesListRequestMode = /*@__PURE__*/ S.String;
 
 export type WafPackagesRulesListRequestOrder =
   | "priority"
   | "group_id"
-  | "description";
+  | "description"
+  | (string & {});
 export const WafPackagesRulesListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface ListWafPackageRulesRequest {
@@ -4842,7 +4946,7 @@ export const ListWafPackageRulesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWafPackageRulesRequest>;
 
 export type WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleAllowedModesItem =
-  "on" | "off";
+  "on" | "off" | (string & {});
 export const WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleAllowedModesItem =
   /*@__PURE__*/ S.String;
 
@@ -4871,7 +4975,8 @@ export const WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleGroup =
 
 export type WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleMode =
   | "on"
-  | "off";
+  | "off"
+  | (string & {});
 export const WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleMode =
   /*@__PURE__*/ S.String;
 
@@ -4910,7 +5015,7 @@ export const WafPackagesRulesListResultItemWAFManagedRulesAnomalyRule =
   }) as any as S.Schema<WafPackagesRulesListResultItemWAFManagedRulesAnomalyRule>;
 
 export type WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleAllowedModesItem =
-  "default" | "disable" | "simulate" | "block" | "challenge";
+  "default" | "disable" | "simulate" | "block" | "challenge" | (string & {});
 export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleAllowedModesItem =
   /*@__PURE__*/ S.String;
 
@@ -4922,12 +5027,12 @@ export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleAll
   ) as any as S.Schema<WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleAllowedModesList>;
 
 export type WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleDefaultMode =
-  "disable" | "simulate" | "block" | "challenge";
+  "disable" | "simulate" | "block" | "challenge" | (string & {});
 export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleDefaultMode =
   /*@__PURE__*/ S.String;
 
 export type WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleMode =
-  "default" | "disable" | "simulate" | "block" | "challenge";
+  "default" | "disable" | "simulate" | "block" | "challenge" | (string & {});
 export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleMode =
   /*@__PURE__*/ S.String;
 
@@ -4973,7 +5078,7 @@ export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRule =
   }) as any as S.Schema<WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRule>;
 
 export type WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleAllowedModesItem =
-  "on" | "off";
+  "on" | "off" | (string & {});
 export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleAllowedModesItem =
   /*@__PURE__*/ S.String;
 
@@ -4985,7 +5090,7 @@ export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleAl
   ) as any as S.Schema<WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleAllowedModesList>;
 
 export type WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleMode =
-  "on" | "off";
+  "on" | "off" | (string & {});
 export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleMode =
   /*@__PURE__*/ S.String;
 
@@ -5082,13 +5187,13 @@ export const ListWafPackageRulesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListWafPackageRulesResponse",
 }) as any as S.Schema<ListWafPackageRulesResponse>;
 
-export type WafPackagesListRequestDirection = "asc" | "desc";
+export type WafPackagesListRequestDirection = "asc" | "desc" | (string & {});
 export const WafPackagesListRequestDirection = /*@__PURE__*/ S.String;
 
-export type WafPackagesListRequestMatch = "any" | "all";
+export type WafPackagesListRequestMatch = "any" | "all" | (string & {});
 export const WafPackagesListRequestMatch = /*@__PURE__*/ S.String;
 
-export type WafPackagesListRequestOrder = "name";
+export type WafPackagesListRequestOrder = "name" | (string & {});
 export const WafPackagesListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface ListWafPackagesRequest {
@@ -5138,7 +5243,7 @@ export const ListWafPackagesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWafPackagesResponse>;
 
 export type AccessRulesEditForAccountRequestConfigurationAccessRuleIPConfigurationTarget =
-  "ip";
+  "ip" | (string & {});
 export const AccessRulesEditForAccountRequestConfigurationAccessRuleIPConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -5162,7 +5267,7 @@ export const AccessRulesEditForAccountRequestConfigurationAccessRuleIPConfigurat
   }) as any as S.Schema<AccessRulesEditForAccountRequestConfigurationAccessRuleIPConfiguration>;
 
 export type AccessRulesEditForAccountRequestConfigurationIPV6ConfigurationTarget =
-  "ip6";
+  "ip6" | (string & {});
 export const AccessRulesEditForAccountRequestConfigurationIPV6ConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -5186,7 +5291,7 @@ export const AccessRulesEditForAccountRequestConfigurationIPV6Configuration =
   }) as any as S.Schema<AccessRulesEditForAccountRequestConfigurationIPV6Configuration>;
 
 export type AccessRulesEditForAccountRequestConfigurationAccessRuleCIDRConfigurationTarget =
-  "ip_range";
+  "ip_range" | (string & {});
 export const AccessRulesEditForAccountRequestConfigurationAccessRuleCIDRConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -5210,7 +5315,7 @@ export const AccessRulesEditForAccountRequestConfigurationAccessRuleCIDRConfigur
   }) as any as S.Schema<AccessRulesEditForAccountRequestConfigurationAccessRuleCIDRConfiguration>;
 
 export type AccessRulesEditForAccountRequestConfigurationASNConfigurationTarget =
-  "asn";
+  "asn" | (string & {});
 export const AccessRulesEditForAccountRequestConfigurationASNConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -5233,7 +5338,7 @@ export const AccessRulesEditForAccountRequestConfigurationASNConfiguration =
   }) as any as S.Schema<AccessRulesEditForAccountRequestConfigurationASNConfiguration>;
 
 export type AccessRulesEditForAccountRequestConfigurationCountryConfigurationTarget =
-  "country";
+  "country" | (string & {});
 export const AccessRulesEditForAccountRequestConfigurationCountryConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -5278,7 +5383,8 @@ export type AccessRulesEditForAccountRequestMode =
   | "challenge"
   | "whitelist"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const AccessRulesEditForAccountRequestMode = /*@__PURE__*/ S.String;
 
 export interface PatchAccessRuleForAccountRequest {
@@ -5318,7 +5424,8 @@ export type AccessRulesEditForAccountResponseAllowedModesItem =
   | "challenge"
   | "whitelist"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const AccessRulesEditForAccountResponseAllowedModesItem =
   /*@__PURE__*/ S.String;
 
@@ -5330,7 +5437,7 @@ export const AccessRulesEditForAccountResponseAllowedModesList =
   ) as any as S.Schema<AccessRulesEditForAccountResponseAllowedModesList>;
 
 export type AccessRulesEditForAccountResponseConfigurationAccessRuleIPConfigurationTarget =
-  "ip";
+  "ip" | (string & {});
 export const AccessRulesEditForAccountResponseConfigurationAccessRuleIPConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -5354,7 +5461,7 @@ export const AccessRulesEditForAccountResponseConfigurationAccessRuleIPConfigura
   }) as any as S.Schema<AccessRulesEditForAccountResponseConfigurationAccessRuleIPConfiguration>;
 
 export type AccessRulesEditForAccountResponseConfigurationIPV6ConfigurationTarget =
-  "ip6";
+  "ip6" | (string & {});
 export const AccessRulesEditForAccountResponseConfigurationIPV6ConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -5378,7 +5485,7 @@ export const AccessRulesEditForAccountResponseConfigurationIPV6Configuration =
   }) as any as S.Schema<AccessRulesEditForAccountResponseConfigurationIPV6Configuration>;
 
 export type AccessRulesEditForAccountResponseConfigurationAccessRuleCIDRConfigurationTarget =
-  "ip_range";
+  "ip_range" | (string & {});
 export const AccessRulesEditForAccountResponseConfigurationAccessRuleCIDRConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -5402,7 +5509,7 @@ export const AccessRulesEditForAccountResponseConfigurationAccessRuleCIDRConfigu
   }) as any as S.Schema<AccessRulesEditForAccountResponseConfigurationAccessRuleCIDRConfiguration>;
 
 export type AccessRulesEditForAccountResponseConfigurationASNConfigurationTarget =
-  "asn";
+  "asn" | (string & {});
 export const AccessRulesEditForAccountResponseConfigurationASNConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -5426,7 +5533,7 @@ export const AccessRulesEditForAccountResponseConfigurationASNConfiguration =
   }) as any as S.Schema<AccessRulesEditForAccountResponseConfigurationASNConfiguration>;
 
 export type AccessRulesEditForAccountResponseConfigurationCountryConfigurationTarget =
-  "country";
+  "country" | (string & {});
 export const AccessRulesEditForAccountResponseConfigurationCountryConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -5471,12 +5578,14 @@ export type AccessRulesEditForAccountResponseMode =
   | "challenge"
   | "whitelist"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const AccessRulesEditForAccountResponseMode = /*@__PURE__*/ S.String;
 
 export type AccessRulesEditForAccountResponseScopeType =
   | "user"
-  | "organization";
+  | "organization"
+  | (string & {});
 export const AccessRulesEditForAccountResponseScopeType =
   /*@__PURE__*/ S.String;
 
@@ -5536,7 +5645,7 @@ export const PatchAccessRuleForAccountResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchAccessRuleForAccountResponse>;
 
 export type AccessRulesEditForZoneRequestConfigurationAccessRuleIPConfigurationTarget =
-  "ip";
+  "ip" | (string & {});
 export const AccessRulesEditForZoneRequestConfigurationAccessRuleIPConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -5560,7 +5669,8 @@ export const AccessRulesEditForZoneRequestConfigurationAccessRuleIPConfiguration
   }) as any as S.Schema<AccessRulesEditForZoneRequestConfigurationAccessRuleIPConfiguration>;
 
 export type AccessRulesEditForZoneRequestConfigurationIPV6ConfigurationTarget =
-  "ip6";
+  | "ip6"
+  | (string & {});
 export const AccessRulesEditForZoneRequestConfigurationIPV6ConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -5583,7 +5693,7 @@ export const AccessRulesEditForZoneRequestConfigurationIPV6Configuration =
   }) as any as S.Schema<AccessRulesEditForZoneRequestConfigurationIPV6Configuration>;
 
 export type AccessRulesEditForZoneRequestConfigurationAccessRuleCIDRConfigurationTarget =
-  "ip_range";
+  "ip_range" | (string & {});
 export const AccessRulesEditForZoneRequestConfigurationAccessRuleCIDRConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -5607,7 +5717,8 @@ export const AccessRulesEditForZoneRequestConfigurationAccessRuleCIDRConfigurati
   }) as any as S.Schema<AccessRulesEditForZoneRequestConfigurationAccessRuleCIDRConfiguration>;
 
 export type AccessRulesEditForZoneRequestConfigurationASNConfigurationTarget =
-  "asn";
+  | "asn"
+  | (string & {});
 export const AccessRulesEditForZoneRequestConfigurationASNConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -5630,7 +5741,7 @@ export const AccessRulesEditForZoneRequestConfigurationASNConfiguration =
   }) as any as S.Schema<AccessRulesEditForZoneRequestConfigurationASNConfiguration>;
 
 export type AccessRulesEditForZoneRequestConfigurationCountryConfigurationTarget =
-  "country";
+  "country" | (string & {});
 export const AccessRulesEditForZoneRequestConfigurationCountryConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -5675,7 +5786,8 @@ export type AccessRulesEditForZoneRequestMode =
   | "challenge"
   | "whitelist"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const AccessRulesEditForZoneRequestMode = /*@__PURE__*/ S.String;
 
 export interface PatchAccessRuleForZoneRequest {
@@ -5715,7 +5827,8 @@ export type AccessRulesEditForZoneResponseAllowedModesItem =
   | "challenge"
   | "whitelist"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const AccessRulesEditForZoneResponseAllowedModesItem =
   /*@__PURE__*/ S.String;
 
@@ -5727,7 +5840,7 @@ export const AccessRulesEditForZoneResponseAllowedModesList =
   ) as any as S.Schema<AccessRulesEditForZoneResponseAllowedModesList>;
 
 export type AccessRulesEditForZoneResponseConfigurationAccessRuleIPConfigurationTarget =
-  "ip";
+  "ip" | (string & {});
 export const AccessRulesEditForZoneResponseConfigurationAccessRuleIPConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -5751,7 +5864,7 @@ export const AccessRulesEditForZoneResponseConfigurationAccessRuleIPConfiguratio
   }) as any as S.Schema<AccessRulesEditForZoneResponseConfigurationAccessRuleIPConfiguration>;
 
 export type AccessRulesEditForZoneResponseConfigurationIPV6ConfigurationTarget =
-  "ip6";
+  "ip6" | (string & {});
 export const AccessRulesEditForZoneResponseConfigurationIPV6ConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -5774,7 +5887,7 @@ export const AccessRulesEditForZoneResponseConfigurationIPV6Configuration =
   }) as any as S.Schema<AccessRulesEditForZoneResponseConfigurationIPV6Configuration>;
 
 export type AccessRulesEditForZoneResponseConfigurationAccessRuleCIDRConfigurationTarget =
-  "ip_range";
+  "ip_range" | (string & {});
 export const AccessRulesEditForZoneResponseConfigurationAccessRuleCIDRConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -5798,7 +5911,8 @@ export const AccessRulesEditForZoneResponseConfigurationAccessRuleCIDRConfigurat
   }) as any as S.Schema<AccessRulesEditForZoneResponseConfigurationAccessRuleCIDRConfiguration>;
 
 export type AccessRulesEditForZoneResponseConfigurationASNConfigurationTarget =
-  "asn";
+  | "asn"
+  | (string & {});
 export const AccessRulesEditForZoneResponseConfigurationASNConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -5821,7 +5935,7 @@ export const AccessRulesEditForZoneResponseConfigurationASNConfiguration =
   }) as any as S.Schema<AccessRulesEditForZoneResponseConfigurationASNConfiguration>;
 
 export type AccessRulesEditForZoneResponseConfigurationCountryConfigurationTarget =
-  "country";
+  "country" | (string & {});
 export const AccessRulesEditForZoneResponseConfigurationCountryConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -5866,10 +5980,14 @@ export type AccessRulesEditForZoneResponseMode =
   | "challenge"
   | "whitelist"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const AccessRulesEditForZoneResponseMode = /*@__PURE__*/ S.String;
 
-export type AccessRulesEditForZoneResponseScopeType = "user" | "organization";
+export type AccessRulesEditForZoneResponseScopeType =
+  | "user"
+  | "organization"
+  | (string & {});
 export const AccessRulesEditForZoneResponseScopeType = /*@__PURE__*/ S.String;
 
 export interface AccessRulesEditForZoneResponseScope {
@@ -5956,7 +6074,8 @@ export type RulesEditResultItemAction =
   | "managed_challenge"
   | "allow"
   | "log"
-  | "bypass";
+  | "bypass"
+  | (string & {});
 export const RulesEditResultItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesEditResultItemFilterFirewallFilter {
@@ -6017,7 +6136,8 @@ export type RulesEditResultItemProductsItem =
   | "hot"
   | "securityLevel"
   | "rateLimit"
-  | "waf";
+  | "waf"
+  | (string & {});
 export const RulesEditResultItemProductsItem = /*@__PURE__*/ S.String;
 
 export type RulesEditResultItemProductsList =
@@ -6077,7 +6197,7 @@ export const PatchRuleResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchRuleResponse",
 }) as any as S.Schema<PatchRuleResponse>;
 
-export type WafPackagesGroupsEditRequestMode = "on" | "off";
+export type WafPackagesGroupsEditRequestMode = "on" | "off" | (string & {});
 export const WafPackagesGroupsEditRequestMode = /*@__PURE__*/ S.String;
 
 export interface PatchWafPackageGroupRequest {
@@ -6123,7 +6243,8 @@ export type WafPackagesRulesEditRequestMode =
   | "block"
   | "challenge"
   | "on"
-  | "off";
+  | "off"
+  | (string & {});
 export const WafPackagesRulesEditRequestMode = /*@__PURE__*/ S.String;
 
 export interface PatchWafPackageRuleRequest {
@@ -6156,7 +6277,7 @@ export const PatchWafPackageRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchWafPackageRuleRequest>;
 
 export type WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleAllowedModesItem =
-  "on" | "off";
+  "on" | "off" | (string & {});
 export const WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleAllowedModesItem =
   /*@__PURE__*/ S.String;
 
@@ -6185,7 +6306,8 @@ export const WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleGroup =
 
 export type WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleMode =
   | "on"
-  | "off";
+  | "off"
+  | (string & {});
 export const WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleMode =
   /*@__PURE__*/ S.String;
 
@@ -6224,7 +6346,7 @@ export const WafPackagesRulesEditResultWAFManagedRulesAnomalyRule =
   }) as any as S.Schema<WafPackagesRulesEditResultWAFManagedRulesAnomalyRule>;
 
 export type WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleAllowedModesItem =
-  "default" | "disable" | "simulate" | "block" | "challenge";
+  "default" | "disable" | "simulate" | "block" | "challenge" | (string & {});
 export const WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleAllowedModesItem =
   /*@__PURE__*/ S.String;
 
@@ -6236,7 +6358,7 @@ export const WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleAllowed
   ) as any as S.Schema<WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleAllowedModesList>;
 
 export type WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleDefaultMode =
-  "disable" | "simulate" | "block" | "challenge";
+  "disable" | "simulate" | "block" | "challenge" | (string & {});
 export const WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleDefaultMode =
   /*@__PURE__*/ S.String;
 
@@ -6245,7 +6367,8 @@ export type WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleMode =
   | "disable"
   | "simulate"
   | "block"
-  | "challenge";
+  | "challenge"
+  | (string & {});
 export const WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleMode =
   /*@__PURE__*/ S.String;
 
@@ -6290,7 +6413,7 @@ export const WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRule =
   }) as any as S.Schema<WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRule>;
 
 export type WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleAllowedModesItem =
-  "on" | "off";
+  "on" | "off" | (string & {});
 export const WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleAllowedModesItem =
   /*@__PURE__*/ S.String;
 
@@ -6303,7 +6426,8 @@ export const WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleAllowe
 
 export type WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleMode =
   | "on"
-  | "off";
+  | "off"
+  | (string & {});
 export const WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleMode =
   /*@__PURE__*/ S.String;
 
@@ -6386,7 +6510,8 @@ export const PatchWafPackageRuleResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchWafPackageRuleResponse>;
 
 export type LockdownsUpdateRequestConfigurationsLockdownIPConfigurationTarget =
-  "ip";
+  | "ip"
+  | (string & {});
 export const LockdownsUpdateRequestConfigurationsLockdownIPConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -6409,7 +6534,7 @@ export const LockdownsUpdateRequestConfigurationsLockdownIPConfiguration =
   }) as any as S.Schema<LockdownsUpdateRequestConfigurationsLockdownIPConfiguration>;
 
 export type LockdownsUpdateRequestConfigurationsLockdownCIDRConfigurationTarget =
-  "ip_range";
+  "ip_range" | (string & {});
 export const LockdownsUpdateRequestConfigurationsLockdownCIDRConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -6486,7 +6611,7 @@ export const UpdateLockdownRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateLockdownRequest>;
 
 export type LockdownsUpdateResponseConfigurationsLockdownIPConfigurationTarget =
-  "ip";
+  "ip" | (string & {});
 export const LockdownsUpdateResponseConfigurationsLockdownIPConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -6509,7 +6634,7 @@ export const LockdownsUpdateResponseConfigurationsLockdownIPConfiguration =
   }) as any as S.Schema<LockdownsUpdateResponseConfigurationsLockdownIPConfiguration>;
 
 export type LockdownsUpdateResponseConfigurationsLockdownCIDRConfigurationTarget =
-  "ip_range";
+  "ip_range" | (string & {});
 export const LockdownsUpdateResponseConfigurationsLockdownCIDRConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -6584,7 +6709,8 @@ export type RulesUpdateRequestActionMode =
   | "ban"
   | "challenge"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const RulesUpdateRequestActionMode = /*@__PURE__*/ S.String;
 
 export interface RulesUpdateRequestActionResponse {
@@ -6679,7 +6805,8 @@ export type RulesUpdateResponseAction =
   | "managed_challenge"
   | "allow"
   | "log"
-  | "bypass";
+  | "bypass"
+  | (string & {});
 export const RulesUpdateResponseAction = /*@__PURE__*/ S.String;
 
 export interface RulesUpdateResponseFilterFirewallFilter {
@@ -6740,7 +6867,8 @@ export type RulesUpdateResponseProductsItem =
   | "hot"
   | "securityLevel"
   | "rateLimit"
-  | "waf";
+  | "waf"
+  | (string & {});
 export const RulesUpdateResponseProductsItem = /*@__PURE__*/ S.String;
 
 export type RulesUpdateResponseProductsList =
@@ -6782,7 +6910,8 @@ export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRuleResponse>;
 
 export type UaRulesUpdateRequestConfigurationAccessRuleIPConfigurationTarget =
-  "ip";
+  | "ip"
+  | (string & {});
 export const UaRulesUpdateRequestConfigurationAccessRuleIPConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -6804,7 +6933,9 @@ export const UaRulesUpdateRequestConfigurationAccessRuleIPConfiguration =
     identifier: "UaRulesUpdateRequestConfigurationAccessRuleIPConfiguration",
   }) as any as S.Schema<UaRulesUpdateRequestConfigurationAccessRuleIPConfiguration>;
 
-export type UaRulesUpdateRequestConfigurationIPV6ConfigurationTarget = "ip6";
+export type UaRulesUpdateRequestConfigurationIPV6ConfigurationTarget =
+  | "ip6"
+  | (string & {});
 export const UaRulesUpdateRequestConfigurationIPV6ConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -6827,7 +6958,7 @@ export const UaRulesUpdateRequestConfigurationIPV6Configuration =
   }) as any as S.Schema<UaRulesUpdateRequestConfigurationIPV6Configuration>;
 
 export type UaRulesUpdateRequestConfigurationAccessRuleCIDRConfigurationTarget =
-  "ip_range";
+  "ip_range" | (string & {});
 export const UaRulesUpdateRequestConfigurationAccessRuleCIDRConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -6849,7 +6980,9 @@ export const UaRulesUpdateRequestConfigurationAccessRuleCIDRConfiguration =
     identifier: "UaRulesUpdateRequestConfigurationAccessRuleCIDRConfiguration",
   }) as any as S.Schema<UaRulesUpdateRequestConfigurationAccessRuleCIDRConfiguration>;
 
-export type UaRulesUpdateRequestConfigurationASNConfigurationTarget = "asn";
+export type UaRulesUpdateRequestConfigurationASNConfigurationTarget =
+  | "asn"
+  | (string & {});
 export const UaRulesUpdateRequestConfigurationASNConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -6872,7 +7005,8 @@ export const UaRulesUpdateRequestConfigurationASNConfiguration =
   }) as any as S.Schema<UaRulesUpdateRequestConfigurationASNConfiguration>;
 
 export type UaRulesUpdateRequestConfigurationCountryConfigurationTarget =
-  "country";
+  | "country"
+  | (string & {});
 export const UaRulesUpdateRequestConfigurationCountryConfigurationTarget =
   /*@__PURE__*/ S.String;
 
@@ -6915,7 +7049,8 @@ export type UaRulesUpdateRequestMode =
   | "challenge"
   | "whitelist"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const UaRulesUpdateRequestMode = /*@__PURE__*/ S.String;
 
 export interface UpdateUaRuleRequest {
@@ -6972,7 +7107,8 @@ export type UaRulesUpdateResponseMode =
   | "block"
   | "challenge"
   | "js_challenge"
-  | "managed_challenge";
+  | "managed_challenge"
+  | (string & {});
 export const UaRulesUpdateResponseMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -7005,7 +7141,8 @@ export type WafOverridesUpdateRequestRewriteActionBlock =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesUpdateRequestRewriteActionBlock =
   /*@__PURE__*/ S.String;
 
@@ -7014,7 +7151,8 @@ export type WafOverridesUpdateRequestRewriteActionChallenge =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesUpdateRequestRewriteActionChallenge =
   /*@__PURE__*/ S.String;
 
@@ -7023,7 +7161,8 @@ export type WafOverridesUpdateRequestRewriteActionDefault =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesUpdateRequestRewriteActionDefault =
   /*@__PURE__*/ S.String;
 
@@ -7032,7 +7171,8 @@ export type WafOverridesUpdateRequestRewriteActionDisable =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesUpdateRequestRewriteActionDisable =
   /*@__PURE__*/ S.String;
 
@@ -7041,7 +7181,8 @@ export type WafOverridesUpdateRequestRewriteActionSimulate =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesUpdateRequestRewriteActionSimulate =
   /*@__PURE__*/ S.String;
 
@@ -7075,7 +7216,8 @@ export type WafOverridesUpdateRequestRules =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesUpdateRequestRules = /*@__PURE__*/ S.String;
 
 export type WafOverridesUpdateRequestUrlsList = ReadonlyArray<string>;
@@ -7133,7 +7275,8 @@ export type WafOverridesUpdateResponseRewriteActionBlock =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesUpdateResponseRewriteActionBlock =
   /*@__PURE__*/ S.String;
 
@@ -7142,7 +7285,8 @@ export type WafOverridesUpdateResponseRewriteActionChallenge =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesUpdateResponseRewriteActionChallenge =
   /*@__PURE__*/ S.String;
 
@@ -7151,7 +7295,8 @@ export type WafOverridesUpdateResponseRewriteActionDefault =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesUpdateResponseRewriteActionDefault =
   /*@__PURE__*/ S.String;
 
@@ -7160,7 +7305,8 @@ export type WafOverridesUpdateResponseRewriteActionDisable =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesUpdateResponseRewriteActionDisable =
   /*@__PURE__*/ S.String;
 
@@ -7169,7 +7315,8 @@ export type WafOverridesUpdateResponseRewriteActionSimulate =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesUpdateResponseRewriteActionSimulate =
   /*@__PURE__*/ S.String;
 
@@ -7203,7 +7350,8 @@ export type WafOverridesUpdateResponseRules =
   | "block"
   | "simulate"
   | "disable"
-  | "default";
+  | "default"
+  | (string & {});
 export const WafOverridesUpdateResponseRules = /*@__PURE__*/ S.String;
 
 export type WafOverridesUpdateResponseUrlsList = ReadonlyArray<string>;

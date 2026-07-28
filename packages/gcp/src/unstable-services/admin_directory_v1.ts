@@ -161,7 +161,8 @@ export type BatchChangeChromeOsDeviceStatusRequestDeprovisionReasonEnum =
   | "DEPROVISION_REASON_RETIRING_DEVICE"
   | "DEPROVISION_REASON_UPGRADE_TRANSFER"
   | "DEPROVISION_REASON_NOT_REQUIRED"
-  | "DEPROVISION_REASON_REPAIR_CENTER";
+  | "DEPROVISION_REASON_REPAIR_CENTER"
+  | (string & {});
 export const BatchChangeChromeOsDeviceStatusRequestDeprovisionReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -174,7 +175,8 @@ export type BatchChangeChromeOsDeviceStatusRequestChangeChromeOsDeviceStatusActi
     | "CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_UNSPECIFIED"
     | "CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_DEPROVISION"
     | "CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_DISABLE"
-    | "CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_REENABLE";
+    | "CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_REENABLE"
+    | (string & {});
 export const BatchChangeChromeOsDeviceStatusRequestChangeChromeOsDeviceStatusActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -307,7 +309,8 @@ export type AuxiliaryMessageSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "SEVERITY_INFO"
   | "SEVERITY_WARNING"
-  | "SEVERITY_ERROR";
+  | "SEVERITY_ERROR"
+  | (string & {});
 export const AuxiliaryMessageSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Auxiliary message about issues with printers or settings. Example: {message_type:AUXILIARY_MESSAGE_WARNING, field_mask:make_and_model, message:"Given printer is invalid or no longer supported."} */
@@ -450,7 +453,8 @@ export type FailureInfoErrorCodeEnum =
   | "UNIMPLEMENTED"
   | "INTERNAL"
   | "UNAVAILABLE"
-  | "DATA_LOSS";
+  | "DATA_LOSS"
+  | (string & {});
 export const FailureInfoErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** Info about failures */
@@ -597,7 +601,8 @@ export type PrintServerFailureInfoErrorCodeEnum =
   | "UNIMPLEMENTED"
   | "INTERNAL"
   | "UNAVAILABLE"
-  | "DATA_LOSS";
+  | "DATA_LOSS"
+  | (string & {});
 export const PrintServerFailureInfoErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** Info about failures */
@@ -1683,7 +1688,7 @@ export const Asp = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Asp" }) as any as S.Schema<Asp>;
 
-export type GetChromeosdevicesProjectionEnum = "BASIC" | "FULL";
+export type GetChromeosdevicesProjectionEnum = "BASIC" | "FULL" | (string & {});
 export const GetChromeosdevicesProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface GetChromeosdevicesRequest {
@@ -1818,7 +1823,8 @@ export type ChromeOsDeviceDeprovisionReasonEnum =
   | "DEPROVISION_REASON_RETIRING_DEVICE"
   | "DEPROVISION_REASON_UPGRADE_TRANSFER"
   | "DEPROVISION_REASON_NOT_REQUIRED"
-  | "DEPROVISION_REASON_REPAIR_CENTER";
+  | "DEPROVISION_REASON_REPAIR_CENTER"
+  | (string & {});
 export const ChromeOsDeviceDeprovisionReasonEnum = /*@__PURE__*/ S.String;
 
 export interface ChromeOsDeviceRecentUsersItem {
@@ -1845,7 +1851,8 @@ export const ChromeOsDeviceRecentUsersItemList = /*@__PURE__*/ S.Array(
 export type ChromeOsDeviceChromeOsTypeEnum =
   | "chromeOsTypeUnspecified"
   | "chromeOsFlex"
-  | "chromeOs";
+  | "chromeOs"
+  | (string & {});
 export const ChromeOsDeviceChromeOsTypeEnum = /*@__PURE__*/ S.String;
 
 export type ChromeOsDeviceDeviceLicenseTypeEnum =
@@ -1858,7 +1865,8 @@ export type ChromeOsDeviceDeviceLicenseTypeEnum =
   | "enterpriseUpgradePerpetual"
   | "enterpriseUpgradeFixedTerm"
   | "educationUpgradePerpetual"
-  | "educationUpgradeFixedTerm";
+  | "educationUpgradeFixedTerm"
+  | (string & {});
 export const ChromeOsDeviceDeviceLicenseTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ChromeOsDeviceDeviceFilesItem {
@@ -1940,7 +1948,8 @@ export type ChromeOsDeviceOsVersionComplianceEnum =
   | "complianceUnspecified"
   | "compliant"
   | "pending"
-  | "notCompliant";
+  | "notCompliant"
+  | (string & {});
 export const ChromeOsDeviceOsVersionComplianceEnum = /*@__PURE__*/ S.String;
 
 export type IntegerList = ReadonlyArray<number>;
@@ -2145,7 +2154,8 @@ export type OsUpdateStatusStateEnum =
   | "updateStateUnspecified"
   | "updateStateNotStarted"
   | "updateStateDownloadInProgress"
-  | "updateStateNeedReboot";
+  | "updateStateNeedReboot"
+  | (string & {});
 export const OsUpdateStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** Contains information regarding the current OS update status. */
@@ -2408,7 +2418,8 @@ export type DirectoryChromeosdevicesCommandTypeEnum =
   | "DEVICE_START_CRD_SESSION"
   | "CAPTURE_LOGS"
   | "FETCH_CRD_AVAILABILITY_INFO"
-  | "FETCH_SUPPORT_PACKET";
+  | "FETCH_SUPPORT_PACKET"
+  | (string & {});
 export const DirectoryChromeosdevicesCommandTypeEnum = /*@__PURE__*/ S.String;
 
 export type DirectoryChromeosdevicesCommandStateEnum =
@@ -2418,14 +2429,16 @@ export type DirectoryChromeosdevicesCommandStateEnum =
   | "CANCELLED"
   | "SENT_TO_CLIENT"
   | "ACKED_BY_CLIENT"
-  | "EXECUTED_BY_CLIENT";
+  | "EXECUTED_BY_CLIENT"
+  | (string & {});
 export const DirectoryChromeosdevicesCommandStateEnum = /*@__PURE__*/ S.String;
 
 export type DirectoryChromeosdevicesCommandResultResultEnum =
   | "COMMAND_RESULT_TYPE_UNSPECIFIED"
   | "IGNORED"
   | "FAILURE"
-  | "SUCCESS";
+  | "SUCCESS"
+  | (string & {});
 export const DirectoryChromeosdevicesCommandResultResultEnum =
   /*@__PURE__*/ S.String;
 
@@ -2817,7 +2830,7 @@ export const Member = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Member" }) as any as S.Schema<Member>;
 
-export type GetMobiledevicesProjectionEnum = "BASIC" | "FULL";
+export type GetMobiledevicesProjectionEnum = "BASIC" | "FULL" | (string & {});
 export const GetMobiledevicesProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface GetMobiledevicesRequest {
@@ -3293,7 +3306,7 @@ export const GetRoleAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRoleAssignmentsRequest",
 }) as any as S.Schema<GetRoleAssignmentsRequest>;
 
-export type RoleAssignmentAssigneeTypeEnum = "user" | "group";
+export type RoleAssignmentAssigneeTypeEnum = "user" | "group" | (string & {});
 export const RoleAssignmentAssigneeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Defines an assignment of a role. */
@@ -3563,10 +3576,17 @@ export const Token = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Token" }) as any as S.Schema<Token>;
 
-export type GetUsersProjectionEnum = "basic" | "custom" | "full";
+export type GetUsersProjectionEnum =
+  | "basic"
+  | "custom"
+  | "full"
+  | (string & {});
 export const GetUsersProjectionEnum = /*@__PURE__*/ S.String;
 
-export type GetUsersViewTypeEnum = "admin_view" | "domain_public";
+export type GetUsersViewTypeEnum =
+  | "admin_view"
+  | "domain_public"
+  | (string & {});
 export const GetUsersViewTypeEnum = /*@__PURE__*/ S.String;
 
 export interface GetUsersRequest {
@@ -3823,7 +3843,8 @@ export const InsertOrgunitsRequest = /*@__PURE__*/ S.suspend(() =>
 export type InsertResourcesBuildingsCoordinatesSourceEnum =
   | "CLIENT_SPECIFIED"
   | "RESOLVED_FROM_ADDRESS"
-  | "SOURCE_UNSPECIFIED";
+  | "SOURCE_UNSPECIFIED"
+  | (string & {});
 export const InsertResourcesBuildingsCoordinatesSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -4035,7 +4056,8 @@ export type DirectoryChromeosdevicesIssueCommandRequestCommandTypeEnum =
   | "DEVICE_START_CRD_SESSION"
   | "CAPTURE_LOGS"
   | "FETCH_CRD_AVAILABILITY_INFO"
-  | "FETCH_SUPPORT_PACKET";
+  | "FETCH_SUPPORT_PACKET"
+  | (string & {});
 export const DirectoryChromeosdevicesIssueCommandRequestCommandTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4142,13 +4164,20 @@ export type ListChromeosdevicesOrderByEnum =
   | "lastSync"
   | "notes"
   | "serialNumber"
-  | "status";
+  | "status"
+  | (string & {});
 export const ListChromeosdevicesOrderByEnum = /*@__PURE__*/ S.String;
 
-export type ListChromeosdevicesProjectionEnum = "BASIC" | "FULL";
+export type ListChromeosdevicesProjectionEnum =
+  | "BASIC"
+  | "FULL"
+  | (string & {});
 export const ListChromeosdevicesProjectionEnum = /*@__PURE__*/ S.String;
 
-export type ListChromeosdevicesSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListChromeosdevicesSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListChromeosdevicesSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListChromeosdevicesRequest {
@@ -4393,10 +4422,13 @@ export const Domains2 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Domains2" }) as any as S.Schema<Domains2>;
 
-export type ListGroupsSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListGroupsSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListGroupsSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListGroupsOrderByEnum = "email";
+export type ListGroupsOrderByEnum = "email" | (string & {});
 export const ListGroupsOrderByEnum = /*@__PURE__*/ S.String;
 
 export interface ListGroupsRequest {
@@ -4561,13 +4593,17 @@ export type ListMobiledevicesOrderByEnum =
   | "name"
   | "os"
   | "status"
-  | "type";
+  | "type"
+  | (string & {});
 export const ListMobiledevicesOrderByEnum = /*@__PURE__*/ S.String;
 
-export type ListMobiledevicesProjectionEnum = "BASIC" | "FULL";
+export type ListMobiledevicesProjectionEnum = "BASIC" | "FULL" | (string & {});
 export const ListMobiledevicesProjectionEnum = /*@__PURE__*/ S.String;
 
-export type ListMobiledevicesSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListMobiledevicesSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const ListMobiledevicesSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListMobiledevicesRequest {
@@ -4630,7 +4666,11 @@ export const MobileDevices = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MobileDevices" }) as any as S.Schema<MobileDevices>;
 
-export type ListOrgunitsTypeEnum = "all" | "children" | "allIncludingParent";
+export type ListOrgunitsTypeEnum =
+  | "all"
+  | "children"
+  | "allIncludingParent"
+  | (string & {});
 export const ListOrgunitsTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ListOrgunitsRequest {
@@ -5156,19 +5196,31 @@ export type ListUsersEventEnum =
   | "delete"
   | "makeAdmin"
   | "undelete"
-  | "update";
+  | "update"
+  | (string & {});
 export const ListUsersEventEnum = /*@__PURE__*/ S.String;
 
-export type ListUsersViewTypeEnum = "admin_view" | "domain_public";
+export type ListUsersViewTypeEnum =
+  | "admin_view"
+  | "domain_public"
+  | (string & {});
 export const ListUsersViewTypeEnum = /*@__PURE__*/ S.String;
 
-export type ListUsersOrderByEnum = "email" | "familyName" | "givenName";
+export type ListUsersOrderByEnum =
+  | "email"
+  | "familyName"
+  | "givenName"
+  | (string & {});
 export const ListUsersOrderByEnum = /*@__PURE__*/ S.String;
 
-export type ListUsersProjectionEnum = "basic" | "custom" | "full";
+export type ListUsersProjectionEnum =
+  | "basic"
+  | "custom"
+  | "full"
+  | (string & {});
 export const ListUsersProjectionEnum = /*@__PURE__*/ S.String;
 
-export type ListUsersSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type ListUsersSortOrderEnum = "ASCENDING" | "DESCENDING" | (string & {});
 export const ListUsersSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListUsersRequest {
@@ -5249,7 +5301,7 @@ export const Users = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Users" }) as any as S.Schema<Users>;
 
-export type ListUsersAliasesEventEnum = "add" | "delete";
+export type ListUsersAliasesEventEnum = "add" | "delete" | (string & {});
 export const ListUsersAliasesEventEnum = /*@__PURE__*/ S.String;
 
 export interface ListUsersAliasesRequest {
@@ -5419,7 +5471,10 @@ export const MoveDevicesToOuChromeosdevicesResponse = /*@__PURE__*/ S.suspend(
   identifier: "MoveDevicesToOuChromeosdevicesResponse",
 }) as any as S.Schema<MoveDevicesToOuChromeosdevicesResponse>;
 
-export type PatchChromeosdevicesProjectionEnum = "BASIC" | "FULL";
+export type PatchChromeosdevicesProjectionEnum =
+  | "BASIC"
+  | "FULL"
+  | (string & {});
 export const PatchChromeosdevicesProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface PatchChromeosdevicesRequest {
@@ -5594,7 +5649,8 @@ export const PatchOrgunitsRequest = /*@__PURE__*/ S.suspend(() =>
 export type PatchResourcesBuildingsCoordinatesSourceEnum =
   | "CLIENT_SPECIFIED"
   | "RESOLVED_FROM_ADDRESS"
-  | "SOURCE_UNSPECIFIED";
+  | "SOURCE_UNSPECIFIED"
+  | (string & {});
 export const PatchResourcesBuildingsCoordinatesSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -5963,7 +6019,10 @@ export const UndeleteUsersResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UndeleteUsersResponse",
 }) as any as S.Schema<UndeleteUsersResponse>;
 
-export type UpdateChromeosdevicesProjectionEnum = "BASIC" | "FULL";
+export type UpdateChromeosdevicesProjectionEnum =
+  | "BASIC"
+  | "FULL"
+  | (string & {});
 export const UpdateChromeosdevicesProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface UpdateChromeosdevicesRequest {
@@ -6086,7 +6145,8 @@ export const UpdateOrgunitsRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateResourcesBuildingsCoordinatesSourceEnum =
   | "CLIENT_SPECIFIED"
   | "RESOLVED_FROM_ADDRESS"
-  | "SOURCE_UNSPECIFIED";
+  | "SOURCE_UNSPECIFIED"
+  | (string & {});
 export const UpdateResourcesBuildingsCoordinatesSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -6257,16 +6317,30 @@ export const UpdateUsersPhotosRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateUsersPhotosRequest",
 }) as any as S.Schema<UpdateUsersPhotosRequest>;
 
-export type WatchUsersSortOrderEnum = "ASCENDING" | "DESCENDING";
+export type WatchUsersSortOrderEnum =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
 export const WatchUsersSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type WatchUsersOrderByEnum = "email" | "familyName" | "givenName";
+export type WatchUsersOrderByEnum =
+  | "email"
+  | "familyName"
+  | "givenName"
+  | (string & {});
 export const WatchUsersOrderByEnum = /*@__PURE__*/ S.String;
 
-export type WatchUsersProjectionEnum = "basic" | "custom" | "full";
+export type WatchUsersProjectionEnum =
+  | "basic"
+  | "custom"
+  | "full"
+  | (string & {});
 export const WatchUsersProjectionEnum = /*@__PURE__*/ S.String;
 
-export type WatchUsersViewTypeEnum = "admin_view" | "domain_public";
+export type WatchUsersViewTypeEnum =
+  | "admin_view"
+  | "domain_public"
+  | (string & {});
 export const WatchUsersViewTypeEnum = /*@__PURE__*/ S.String;
 
 export type WatchUsersEventEnum =
@@ -6274,7 +6348,8 @@ export type WatchUsersEventEnum =
   | "delete"
   | "makeAdmin"
   | "undelete"
-  | "update";
+  | "update"
+  | (string & {});
 export const WatchUsersEventEnum = /*@__PURE__*/ S.String;
 
 export interface WatchUsersRequest {
@@ -6331,7 +6406,7 @@ export const WatchUsersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WatchUsersRequest",
 }) as any as S.Schema<WatchUsersRequest>;
 
-export type WatchUsersAliasesEventEnum = "add" | "delete";
+export type WatchUsersAliasesEventEnum = "add" | "delete" | (string & {});
 export const WatchUsersAliasesEventEnum = /*@__PURE__*/ S.String;
 
 export interface WatchUsersAliasesRequest {

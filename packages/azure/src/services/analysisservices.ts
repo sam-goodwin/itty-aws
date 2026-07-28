@@ -258,7 +258,11 @@ export const CheckServerNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckServerNameAvailabilityResult>;
 
 /** The name of the Azure pricing tier to which the SKU applies. */
-export type ResourceSkuTier = "Development" | "Basic" | "Standard";
+export type ResourceSkuTier =
+  | "Development"
+  | "Basic"
+  | "Standard"
+  | (string & {});
 export const ResourceSkuTier = /*@__PURE__*/ S.String;
 
 /** Represents the SKU name and Azure pricing tier for Analysis Services resource. */
@@ -362,17 +366,24 @@ export const IPv4FirewallSettings = /*@__PURE__*/ S.suspend(() =>
 /** How the read-write server's participation in the query pool is controlled.<br/>It can have the following values: <ul><li>readOnly - indicates that the read-write server is intended not to participate in query operations</li><li>all - indicates that the read-write server can participate in query operations</li></ul>Specifying readOnly when capacity is 1 results in error. */
 export type AnalysisServicesServerPropertiesInputQuerypoolConnectionMode =
   | "All"
-  | "ReadOnly";
+  | "ReadOnly"
+  | (string & {});
 export const AnalysisServicesServerPropertiesInputQuerypoolConnectionMode =
   /*@__PURE__*/ S.String;
 
 /** The managed mode of the server (0 = not managed, 1 = managed). */
-export type AnalysisServicesServerPropertiesInputManagedMode = 0 | 1;
+export type AnalysisServicesServerPropertiesInputManagedMode =
+  | 0
+  | 1
+  | (number & {});
 export const AnalysisServicesServerPropertiesInputManagedMode =
   /*@__PURE__*/ S.Number;
 
 /** The server monitor mode for AS server */
-export type AnalysisServicesServerPropertiesInputServerMonitorMode = 0 | 1;
+export type AnalysisServicesServerPropertiesInputServerMonitorMode =
+  | 0
+  | 1
+  | (number & {});
 export const AnalysisServicesServerPropertiesInputServerMonitorMode =
   /*@__PURE__*/ S.Number;
 
@@ -481,17 +492,21 @@ export const GatewayDetails = /*@__PURE__*/ S.suspend(() =>
 /** How the read-write server's participation in the query pool is controlled.<br/>It can have the following values: <ul><li>readOnly - indicates that the read-write server is intended not to participate in query operations</li><li>all - indicates that the read-write server can participate in query operations</li></ul>Specifying readOnly when capacity is 1 results in error. */
 export type AnalysisServicesServerPropertiesQuerypoolConnectionMode =
   | "All"
-  | "ReadOnly";
+  | "ReadOnly"
+  | (string & {});
 export const AnalysisServicesServerPropertiesQuerypoolConnectionMode =
   /*@__PURE__*/ S.String;
 
 /** The managed mode of the server (0 = not managed, 1 = managed). */
-export type AnalysisServicesServerPropertiesManagedMode = 0 | 1;
+export type AnalysisServicesServerPropertiesManagedMode = 0 | 1 | (number & {});
 export const AnalysisServicesServerPropertiesManagedMode =
   /*@__PURE__*/ S.Number;
 
 /** The server monitor mode for AS server */
-export type AnalysisServicesServerPropertiesServerMonitorMode = 0 | 1;
+export type AnalysisServicesServerPropertiesServerMonitorMode =
+  | 0
+  | 1
+  | (number & {});
 export const AnalysisServicesServerPropertiesServerMonitorMode =
   /*@__PURE__*/ S.Number;
 
@@ -508,7 +523,8 @@ export type AnalysisServicesServerPropertiesState =
   | "Pausing"
   | "Resuming"
   | "Preparing"
-  | "Scaling";
+  | "Scaling"
+  | (string & {});
 export const AnalysisServicesServerPropertiesState = /*@__PURE__*/ S.String;
 
 /** The current deployment state of Analysis Services resource. The provisioningState is to indicate states for resource provisioning. */
@@ -524,7 +540,8 @@ export type AnalysisServicesServerPropertiesProvisioningState =
   | "Pausing"
   | "Resuming"
   | "Preparing"
-  | "Scaling";
+  | "Scaling"
+  | (string & {});
 export const AnalysisServicesServerPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -862,7 +879,7 @@ export const ServersListGatewayStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServersListGatewayStatusRequest>;
 
 /** Live message of list gateway. Status: 0 - Live */
-export type GatewayListStatusLiveStatus = 0;
+export type GatewayListStatusLiveStatus = 0 | (number & {});
 export const GatewayListStatusLiveStatus = /*@__PURE__*/ S.Number;
 
 /** Status of gateway is live. */
@@ -1199,19 +1216,23 @@ export const ServersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** How the read-write server's participation in the query pool is controlled.<br/>It can have the following values: <ul><li>readOnly - indicates that the read-write server is intended not to participate in query operations</li><li>all - indicates that the read-write server can participate in query operations</li></ul>Specifying readOnly when capacity is 1 results in error. */
 export type AnalysisServicesServerMutablePropertiesInputQuerypoolConnectionMode =
-  "All" | "ReadOnly";
+  "All" | "ReadOnly" | (string & {});
 export const AnalysisServicesServerMutablePropertiesInputQuerypoolConnectionMode =
   /*@__PURE__*/ S.String;
 
 /** The managed mode of the server (0 = not managed, 1 = managed). */
-export type AnalysisServicesServerMutablePropertiesInputManagedMode = 0 | 1;
+export type AnalysisServicesServerMutablePropertiesInputManagedMode =
+  | 0
+  | 1
+  | (number & {});
 export const AnalysisServicesServerMutablePropertiesInputManagedMode =
   /*@__PURE__*/ S.Number;
 
 /** The server monitor mode for AS server */
 export type AnalysisServicesServerMutablePropertiesInputServerMonitorMode =
   | 0
-  | 1;
+  | 1
+  | (number & {});
 export const AnalysisServicesServerMutablePropertiesInputServerMonitorMode =
   /*@__PURE__*/ S.Number;
 

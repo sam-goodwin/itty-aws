@@ -569,7 +569,7 @@ export const VisualReviewReposRunsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "VisualReviewReposRunsListRequest",
 }) as any as S.Schema<VisualReviewReposRunsListRequest>;
 
-export type SearchMatchTypeEnum = "exact" | "similar";
+export type SearchMatchTypeEnum = "exact" | "similar" | (string & {});
 export const SearchMatchTypeEnum = /*@__PURE__*/ S.String;
 
 export interface RunSummary {

@@ -46,7 +46,9 @@ export class PageRuleNotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type CreateRequestActionsItemAlwaysUseHTTPSId = "always_use_https";
+export type CreateRequestActionsItemAlwaysUseHTTPSId =
+  | "always_use_https"
+  | (string & {});
 export const CreateRequestActionsItemAlwaysUseHTTPSId = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemAlwaysUseHTTPS {
@@ -63,11 +65,15 @@ export const CreateRequestActionsItemAlwaysUseHTTPS = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateRequestActionsItemAlwaysUseHTTPS>;
 
 export type CreateRequestActionsItemAutomaticHTTPSRewritesId =
-  "automatic_https_rewrites";
+  | "automatic_https_rewrites"
+  | (string & {});
 export const CreateRequestActionsItemAutomaticHTTPSRewritesId =
   /*@__PURE__*/ S.String;
 
-export type CreateRequestActionsItemAutomaticHTTPSRewritesValue = "on" | "off";
+export type CreateRequestActionsItemAutomaticHTTPSRewritesValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateRequestActionsItemAutomaticHTTPSRewritesValue =
   /*@__PURE__*/ S.String;
 
@@ -87,7 +93,9 @@ export const CreateRequestActionsItemAutomaticHTTPSRewrites =
     identifier: "CreateRequestActionsItemAutomaticHTTPSRewrites",
   }) as any as S.Schema<CreateRequestActionsItemAutomaticHTTPSRewrites>;
 
-export type CreateRequestActionsItemBrowserCacheTTLId = "browser_cache_ttl";
+export type CreateRequestActionsItemBrowserCacheTTLId =
+  | "browser_cache_ttl"
+  | (string & {});
 export const CreateRequestActionsItemBrowserCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemBrowserCacheTTL {
@@ -106,10 +114,15 @@ export const CreateRequestActionsItemBrowserCacheTTL = /*@__PURE__*/ S.suspend(
   identifier: "CreateRequestActionsItemBrowserCacheTTL",
 }) as any as S.Schema<CreateRequestActionsItemBrowserCacheTTL>;
 
-export type CreateRequestActionsItemBrowserCheckId = "browser_check";
+export type CreateRequestActionsItemBrowserCheckId =
+  | "browser_check"
+  | (string & {});
 export const CreateRequestActionsItemBrowserCheckId = /*@__PURE__*/ S.String;
 
-export type CreateRequestActionsItemBrowserCheckValue = "on" | "off";
+export type CreateRequestActionsItemBrowserCheckValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateRequestActionsItemBrowserCheckValue = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemBrowserCheck {
@@ -129,7 +142,8 @@ export const CreateRequestActionsItemBrowserCheck = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateRequestActionsItemBrowserCheck>;
 
 export type CreateRequestActionsItemBypassCacheOnCookieId =
-  "bypass_cache_on_cookie";
+  | "bypass_cache_on_cookie"
+  | (string & {});
 export const CreateRequestActionsItemBypassCacheOnCookieId =
   /*@__PURE__*/ S.String;
 
@@ -150,11 +164,15 @@ export const CreateRequestActionsItemBypassCacheOnCookie =
   }) as any as S.Schema<CreateRequestActionsItemBypassCacheOnCookie>;
 
 export type CreateRequestActionsItemCacheByDeviceTypeId =
-  "cache_by_device_type";
+  | "cache_by_device_type"
+  | (string & {});
 export const CreateRequestActionsItemCacheByDeviceTypeId =
   /*@__PURE__*/ S.String;
 
-export type CreateRequestActionsItemCacheByDeviceTypeValue = "on" | "off";
+export type CreateRequestActionsItemCacheByDeviceTypeValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateRequestActionsItemCacheByDeviceTypeValue =
   /*@__PURE__*/ S.String;
 
@@ -175,11 +193,15 @@ export const CreateRequestActionsItemCacheByDeviceType =
   }) as any as S.Schema<CreateRequestActionsItemCacheByDeviceType>;
 
 export type CreateRequestActionsItemCacheDeceptionArmorId =
-  "cache_deception_armor";
+  | "cache_deception_armor"
+  | (string & {});
 export const CreateRequestActionsItemCacheDeceptionArmorId =
   /*@__PURE__*/ S.String;
 
-export type CreateRequestActionsItemCacheDeceptionArmorValue = "on" | "off";
+export type CreateRequestActionsItemCacheDeceptionArmorValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateRequestActionsItemCacheDeceptionArmorValue =
   /*@__PURE__*/ S.String;
 
@@ -199,7 +221,9 @@ export const CreateRequestActionsItemCacheDeceptionArmor =
     identifier: "CreateRequestActionsItemCacheDeceptionArmor",
   }) as any as S.Schema<CreateRequestActionsItemCacheDeceptionArmor>;
 
-export type CreateRequestActionsItemCacheKeyFieldsId = "cache_key_fields";
+export type CreateRequestActionsItemCacheKeyFieldsId =
+  | "cache_key_fields"
+  | (string & {});
 export const CreateRequestActionsItemCacheKeyFieldsId = /*@__PURE__*/ S.String;
 
 export type CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList =
@@ -300,7 +324,8 @@ export const CreateRequestActionsItemCacheKeyFieldsValueHost =
   }) as any as S.Schema<CreateRequestActionsItemCacheKeyFieldsValueHost>;
 
 export type CreateRequestActionsItemCacheKeyFieldsValueQueryStringExcludeEnum =
-  "*";
+  | "*"
+  | (string & {});
 export const CreateRequestActionsItemCacheKeyFieldsValueQueryStringExcludeEnum =
   /*@__PURE__*/ S.String;
 
@@ -318,7 +343,8 @@ export const CreateRequestActionsItemCacheKeyFieldsValueQueryStringExclude =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export type CreateRequestActionsItemCacheKeyFieldsValueQueryStringIncludeEnum =
-  "*";
+  | "*"
+  | (string & {});
 export const CreateRequestActionsItemCacheKeyFieldsValueQueryStringIncludeEnum =
   /*@__PURE__*/ S.String;
 
@@ -418,7 +444,9 @@ export const CreateRequestActionsItemCacheKeyFields = /*@__PURE__*/ S.suspend(
   identifier: "CreateRequestActionsItemCacheKeyFields",
 }) as any as S.Schema<CreateRequestActionsItemCacheKeyFields>;
 
-export type CreateRequestActionsItemCacheLevelId = "cache_level";
+export type CreateRequestActionsItemCacheLevelId =
+  | "cache_level"
+  | (string & {});
 export const CreateRequestActionsItemCacheLevelId = /*@__PURE__*/ S.String;
 
 export type CreateRequestActionsItemCacheLevelValue =
@@ -426,7 +454,8 @@ export type CreateRequestActionsItemCacheLevelValue =
   | "basic"
   | "simplified"
   | "aggressive"
-  | "cache_everything";
+  | "cache_everything"
+  | (string & {});
 export const CreateRequestActionsItemCacheLevelValue = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemCacheLevel {
@@ -444,7 +473,9 @@ export const CreateRequestActionsItemCacheLevel = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestActionsItemCacheLevel",
 }) as any as S.Schema<CreateRequestActionsItemCacheLevel>;
 
-export type CreateRequestActionsItemCacheOnCookieId = "cache_on_cookie";
+export type CreateRequestActionsItemCacheOnCookieId =
+  | "cache_on_cookie"
+  | (string & {});
 export const CreateRequestActionsItemCacheOnCookieId = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemCacheOnCookie {
@@ -463,13 +494,16 @@ export const CreateRequestActionsItemCacheOnCookie = /*@__PURE__*/ S.suspend(
   identifier: "CreateRequestActionsItemCacheOnCookie",
 }) as any as S.Schema<CreateRequestActionsItemCacheOnCookie>;
 
-export type CreateRequestActionsItemCacheTTLByStatusId = "cache_ttl_by_status";
+export type CreateRequestActionsItemCacheTTLByStatusId =
+  | "cache_ttl_by_status"
+  | (string & {});
 export const CreateRequestActionsItemCacheTTLByStatusId =
   /*@__PURE__*/ S.String;
 
 export type CreateRequestActionsItemCacheTTLByStatusValueCase0 =
   | "no-cache"
-  | "no-store";
+  | "no-store"
+  | (string & {});
 export const CreateRequestActionsItemCacheTTLByStatusValueCase0 =
   /*@__PURE__*/ S.String;
 
@@ -495,7 +529,9 @@ export const CreateRequestActionsItemCacheTTLByStatus = /*@__PURE__*/ S.suspend(
   identifier: "CreateRequestActionsItemCacheTTLByStatus",
 }) as any as S.Schema<CreateRequestActionsItemCacheTTLByStatus>;
 
-export type CreateRequestActionsItemDisableAppsId = "disable_apps";
+export type CreateRequestActionsItemDisableAppsId =
+  | "disable_apps"
+  | (string & {});
 export const CreateRequestActionsItemDisableAppsId = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemDisableApps {
@@ -511,7 +547,8 @@ export const CreateRequestActionsItemDisableApps = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRequestActionsItemDisableApps>;
 
 export type CreateRequestActionsItemDisablePerformanceId =
-  "disable_performance";
+  | "disable_performance"
+  | (string & {});
 export const CreateRequestActionsItemDisablePerformanceId =
   /*@__PURE__*/ S.String;
 
@@ -528,7 +565,9 @@ export const CreateRequestActionsItemDisablePerformance =
     identifier: "CreateRequestActionsItemDisablePerformance",
   }) as any as S.Schema<CreateRequestActionsItemDisablePerformance>;
 
-export type CreateRequestActionsItemDisableSecurityId = "disable_security";
+export type CreateRequestActionsItemDisableSecurityId =
+  | "disable_security"
+  | (string & {});
 export const CreateRequestActionsItemDisableSecurityId = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemDisableSecurity {
@@ -544,7 +583,9 @@ export const CreateRequestActionsItemDisableSecurity = /*@__PURE__*/ S.suspend(
   identifier: "CreateRequestActionsItemDisableSecurity",
 }) as any as S.Schema<CreateRequestActionsItemDisableSecurity>;
 
-export type CreateRequestActionsItemDisableZarazId = "disable_zaraz";
+export type CreateRequestActionsItemDisableZarazId =
+  | "disable_zaraz"
+  | (string & {});
 export const CreateRequestActionsItemDisableZarazId = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemDisableZaraz {
@@ -560,7 +601,9 @@ export const CreateRequestActionsItemDisableZaraz = /*@__PURE__*/ S.suspend(
   identifier: "CreateRequestActionsItemDisableZaraz",
 }) as any as S.Schema<CreateRequestActionsItemDisableZaraz>;
 
-export type CreateRequestActionsItemEdgeCacheTTLId = "edge_cache_ttl";
+export type CreateRequestActionsItemEdgeCacheTTLId =
+  | "edge_cache_ttl"
+  | (string & {});
 export const CreateRequestActionsItemEdgeCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemEdgeCacheTTL {
@@ -578,11 +621,16 @@ export const CreateRequestActionsItemEdgeCacheTTL = /*@__PURE__*/ S.suspend(
   identifier: "CreateRequestActionsItemEdgeCacheTTL",
 }) as any as S.Schema<CreateRequestActionsItemEdgeCacheTTL>;
 
-export type CreateRequestActionsItemEmailObfuscationId = "email_obfuscation";
+export type CreateRequestActionsItemEmailObfuscationId =
+  | "email_obfuscation"
+  | (string & {});
 export const CreateRequestActionsItemEmailObfuscationId =
   /*@__PURE__*/ S.String;
 
-export type CreateRequestActionsItemEmailObfuscationValue = "on" | "off";
+export type CreateRequestActionsItemEmailObfuscationValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateRequestActionsItemEmailObfuscationValue =
   /*@__PURE__*/ S.String;
 
@@ -603,11 +651,15 @@ export const CreateRequestActionsItemEmailObfuscation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateRequestActionsItemEmailObfuscation>;
 
 export type CreateRequestActionsItemExplicitCacheControlId =
-  "explicit_cache_control";
+  | "explicit_cache_control"
+  | (string & {});
 export const CreateRequestActionsItemExplicitCacheControlId =
   /*@__PURE__*/ S.String;
 
-export type CreateRequestActionsItemExplicitCacheControlValue = "on" | "off";
+export type CreateRequestActionsItemExplicitCacheControlValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateRequestActionsItemExplicitCacheControlValue =
   /*@__PURE__*/ S.String;
 
@@ -627,10 +679,15 @@ export const CreateRequestActionsItemExplicitCacheControl =
     identifier: "CreateRequestActionsItemExplicitCacheControl",
   }) as any as S.Schema<CreateRequestActionsItemExplicitCacheControl>;
 
-export type CreateRequestActionsItemForwardingURLId = "forwarding_url";
+export type CreateRequestActionsItemForwardingURLId =
+  | "forwarding_url"
+  | (string & {});
 export const CreateRequestActionsItemForwardingURLId = /*@__PURE__*/ S.String;
 
-export type CreateRequestActionsItemForwardingURLValueStatusCode = 301 | 302;
+export type CreateRequestActionsItemForwardingURLValueStatusCode =
+  | 301
+  | 302
+  | (number & {});
 export const CreateRequestActionsItemForwardingURLValueStatusCode =
   /*@__PURE__*/ S.Number;
 
@@ -670,7 +727,8 @@ export const CreateRequestActionsItemForwardingURL = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateRequestActionsItemForwardingURL>;
 
 export type CreateRequestActionsItemHostHeaderOverrideId =
-  "host_header_override";
+  | "host_header_override"
+  | (string & {});
 export const CreateRequestActionsItemHostHeaderOverrideId =
   /*@__PURE__*/ S.String;
 
@@ -690,10 +748,15 @@ export const CreateRequestActionsItemHostHeaderOverride =
     identifier: "CreateRequestActionsItemHostHeaderOverride",
   }) as any as S.Schema<CreateRequestActionsItemHostHeaderOverride>;
 
-export type CreateRequestActionsItemIPGeolocationId = "ip_geolocation";
+export type CreateRequestActionsItemIPGeolocationId =
+  | "ip_geolocation"
+  | (string & {});
 export const CreateRequestActionsItemIPGeolocationId = /*@__PURE__*/ S.String;
 
-export type CreateRequestActionsItemIPGeolocationValue = "on" | "off";
+export type CreateRequestActionsItemIPGeolocationValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateRequestActionsItemIPGeolocationValue =
   /*@__PURE__*/ S.String;
 
@@ -713,10 +776,10 @@ export const CreateRequestActionsItemIPGeolocation = /*@__PURE__*/ S.suspend(
   identifier: "CreateRequestActionsItemIPGeolocation",
 }) as any as S.Schema<CreateRequestActionsItemIPGeolocation>;
 
-export type CreateRequestActionsItemMirageId = "mirage";
+export type CreateRequestActionsItemMirageId = "mirage" | (string & {});
 export const CreateRequestActionsItemMirageId = /*@__PURE__*/ S.String;
 
-export type CreateRequestActionsItemMirageValue = "on" | "off";
+export type CreateRequestActionsItemMirageValue = "on" | "off" | (string & {});
 export const CreateRequestActionsItemMirageValue = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemMirage {
@@ -735,11 +798,15 @@ export const CreateRequestActionsItemMirage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRequestActionsItemMirage>;
 
 export type CreateRequestActionsItemOpportunisticEncryptionId =
-  "opportunistic_encryption";
+  | "opportunistic_encryption"
+  | (string & {});
 export const CreateRequestActionsItemOpportunisticEncryptionId =
   /*@__PURE__*/ S.String;
 
-export type CreateRequestActionsItemOpportunisticEncryptionValue = "on" | "off";
+export type CreateRequestActionsItemOpportunisticEncryptionValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateRequestActionsItemOpportunisticEncryptionValue =
   /*@__PURE__*/ S.String;
 
@@ -760,11 +827,15 @@ export const CreateRequestActionsItemOpportunisticEncryption =
   }) as any as S.Schema<CreateRequestActionsItemOpportunisticEncryption>;
 
 export type CreateRequestActionsItemOriginErrorPagePassThruId =
-  "origin_error_page_pass_thru";
+  | "origin_error_page_pass_thru"
+  | (string & {});
 export const CreateRequestActionsItemOriginErrorPagePassThruId =
   /*@__PURE__*/ S.String;
 
-export type CreateRequestActionsItemOriginErrorPagePassThruValue = "on" | "off";
+export type CreateRequestActionsItemOriginErrorPagePassThruValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateRequestActionsItemOriginErrorPagePassThruValue =
   /*@__PURE__*/ S.String;
 
@@ -784,10 +855,14 @@ export const CreateRequestActionsItemOriginErrorPagePassThru =
     identifier: "CreateRequestActionsItemOriginErrorPagePassThru",
   }) as any as S.Schema<CreateRequestActionsItemOriginErrorPagePassThru>;
 
-export type CreateRequestActionsItemPolishId = "polish";
+export type CreateRequestActionsItemPolishId = "polish" | (string & {});
 export const CreateRequestActionsItemPolishId = /*@__PURE__*/ S.String;
 
-export type CreateRequestActionsItemPolishValue = "off" | "lossless" | "lossy";
+export type CreateRequestActionsItemPolishValue =
+  | "off"
+  | "lossless"
+  | "lossy"
+  | (string & {});
 export const CreateRequestActionsItemPolishValue = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemPolish {
@@ -805,7 +880,9 @@ export const CreateRequestActionsItemPolish = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestActionsItemPolish",
 }) as any as S.Schema<CreateRequestActionsItemPolish>;
 
-export type CreateRequestActionsItemResolveOverrideId = "resolve_override";
+export type CreateRequestActionsItemResolveOverrideId =
+  | "resolve_override"
+  | (string & {});
 export const CreateRequestActionsItemResolveOverrideId = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemResolveOverride {
@@ -824,11 +901,16 @@ export const CreateRequestActionsItemResolveOverride = /*@__PURE__*/ S.suspend(
   identifier: "CreateRequestActionsItemResolveOverride",
 }) as any as S.Schema<CreateRequestActionsItemResolveOverride>;
 
-export type CreateRequestActionsItemRespectStrongEtagId = "respect_strong_etag";
+export type CreateRequestActionsItemRespectStrongEtagId =
+  | "respect_strong_etag"
+  | (string & {});
 export const CreateRequestActionsItemRespectStrongEtagId =
   /*@__PURE__*/ S.String;
 
-export type CreateRequestActionsItemRespectStrongEtagValue = "on" | "off";
+export type CreateRequestActionsItemRespectStrongEtagValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateRequestActionsItemRespectStrongEtagValue =
   /*@__PURE__*/ S.String;
 
@@ -848,11 +930,16 @@ export const CreateRequestActionsItemRespectStrongEtag =
     identifier: "CreateRequestActionsItemRespectStrongEtag",
   }) as any as S.Schema<CreateRequestActionsItemRespectStrongEtag>;
 
-export type CreateRequestActionsItemResponseBufferingId = "response_buffering";
+export type CreateRequestActionsItemResponseBufferingId =
+  | "response_buffering"
+  | (string & {});
 export const CreateRequestActionsItemResponseBufferingId =
   /*@__PURE__*/ S.String;
 
-export type CreateRequestActionsItemResponseBufferingValue = "on" | "off";
+export type CreateRequestActionsItemResponseBufferingValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateRequestActionsItemResponseBufferingValue =
   /*@__PURE__*/ S.String;
 
@@ -872,10 +959,15 @@ export const CreateRequestActionsItemResponseBuffering =
     identifier: "CreateRequestActionsItemResponseBuffering",
   }) as any as S.Schema<CreateRequestActionsItemResponseBuffering>;
 
-export type CreateRequestActionsItemRocketLoaderId = "rocket_loader";
+export type CreateRequestActionsItemRocketLoaderId =
+  | "rocket_loader"
+  | (string & {});
 export const CreateRequestActionsItemRocketLoaderId = /*@__PURE__*/ S.String;
 
-export type CreateRequestActionsItemRocketLoaderValue = "on" | "off";
+export type CreateRequestActionsItemRocketLoaderValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateRequestActionsItemRocketLoaderValue = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemRocketLoader {
@@ -894,7 +986,9 @@ export const CreateRequestActionsItemRocketLoader = /*@__PURE__*/ S.suspend(
   identifier: "CreateRequestActionsItemRocketLoader",
 }) as any as S.Schema<CreateRequestActionsItemRocketLoader>;
 
-export type CreateRequestActionsItemSecurityLevelId = "security_level";
+export type CreateRequestActionsItemSecurityLevelId =
+  | "security_level"
+  | (string & {});
 export const CreateRequestActionsItemSecurityLevelId = /*@__PURE__*/ S.String;
 
 export type CreateRequestActionsItemSecurityLevelValue =
@@ -903,7 +997,8 @@ export type CreateRequestActionsItemSecurityLevelValue =
   | "low"
   | "medium"
   | "high"
-  | "under_attack";
+  | "under_attack"
+  | (string & {});
 export const CreateRequestActionsItemSecurityLevelValue =
   /*@__PURE__*/ S.String;
 
@@ -923,11 +1018,15 @@ export const CreateRequestActionsItemSecurityLevel = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateRequestActionsItemSecurityLevel>;
 
 export type CreateRequestActionsItemSortQueryStringForCacheId =
-  "sort_query_string_for_cache";
+  | "sort_query_string_for_cache"
+  | (string & {});
 export const CreateRequestActionsItemSortQueryStringForCacheId =
   /*@__PURE__*/ S.String;
 
-export type CreateRequestActionsItemSortQueryStringForCacheValue = "on" | "off";
+export type CreateRequestActionsItemSortQueryStringForCacheValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateRequestActionsItemSortQueryStringForCacheValue =
   /*@__PURE__*/ S.String;
 
@@ -947,7 +1046,7 @@ export const CreateRequestActionsItemSortQueryStringForCache =
     identifier: "CreateRequestActionsItemSortQueryStringForCache",
   }) as any as S.Schema<CreateRequestActionsItemSortQueryStringForCache>;
 
-export type CreateRequestActionsItemSSLId = "ssl";
+export type CreateRequestActionsItemSSLId = "ssl" | (string & {});
 export const CreateRequestActionsItemSSLId = /*@__PURE__*/ S.String;
 
 export type CreateRequestActionsItemSSLValue =
@@ -955,7 +1054,8 @@ export type CreateRequestActionsItemSSLValue =
   | "flexible"
   | "full"
   | "strict"
-  | "origin_pull";
+  | "origin_pull"
+  | (string & {});
 export const CreateRequestActionsItemSSLValue = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemSSL {
@@ -974,11 +1074,15 @@ export const CreateRequestActionsItemSSL = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRequestActionsItemSSL>;
 
 export type CreateRequestActionsItemTrueClientIPHeaderId =
-  "true_client_ip_header";
+  | "true_client_ip_header"
+  | (string & {});
 export const CreateRequestActionsItemTrueClientIPHeaderId =
   /*@__PURE__*/ S.String;
 
-export type CreateRequestActionsItemTrueClientIPHeaderValue = "on" | "off";
+export type CreateRequestActionsItemTrueClientIPHeaderValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateRequestActionsItemTrueClientIPHeaderValue =
   /*@__PURE__*/ S.String;
 
@@ -998,10 +1102,10 @@ export const CreateRequestActionsItemTrueClientIPHeader =
     identifier: "CreateRequestActionsItemTrueClientIPHeader",
   }) as any as S.Schema<CreateRequestActionsItemTrueClientIPHeader>;
 
-export type CreateRequestActionsItemWAFId = "waf";
+export type CreateRequestActionsItemWAFId = "waf" | (string & {});
 export const CreateRequestActionsItemWAFId = /*@__PURE__*/ S.String;
 
-export type CreateRequestActionsItemWAFValue = "on" | "off";
+export type CreateRequestActionsItemWAFValue = "on" | "off" | (string & {});
 export const CreateRequestActionsItemWAFValue = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemWAF {
@@ -1103,7 +1207,8 @@ export type CreateRequestTargetsItemConstraintOperator =
   | "contains"
   | "equals"
   | "not_equal"
-  | "not_contain";
+  | "not_contain"
+  | (string & {});
 export const CreateRequestTargetsItemConstraintOperator =
   /*@__PURE__*/ S.String;
 
@@ -1122,7 +1227,7 @@ export const CreateRequestTargetsItemConstraint = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestTargetsItemConstraint",
 }) as any as S.Schema<CreateRequestTargetsItemConstraint>;
 
-export type CreateRequestTargetsItemTarget = "url";
+export type CreateRequestTargetsItemTarget = "url" | (string & {});
 export const CreateRequestTargetsItemTarget = /*@__PURE__*/ S.String;
 
 export interface CreateRequestTargetsItem {
@@ -1145,7 +1250,7 @@ export const CreateRequestTargetsList = /*@__PURE__*/ S.Array(
   CreateRequestTargetsItem,
 ) as any as S.Schema<CreateRequestTargetsList>;
 
-export type CreateRequestStatus = "active" | "disabled";
+export type CreateRequestStatus = "active" | "disabled" | (string & {});
 export const CreateRequestStatus = /*@__PURE__*/ S.String;
 
 export interface CreatePageRuleRequest {
@@ -1176,7 +1281,9 @@ export const CreatePageRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePageRuleRequest",
 }) as any as S.Schema<CreatePageRuleRequest>;
 
-export type CreateResponseActionsItemAlwaysUseHTTPSId = "always_use_https";
+export type CreateResponseActionsItemAlwaysUseHTTPSId =
+  | "always_use_https"
+  | (string & {});
 export const CreateResponseActionsItemAlwaysUseHTTPSId = /*@__PURE__*/ S.String;
 
 export interface CreateResponseActionsItemAlwaysUseHTTPS {
@@ -1193,11 +1300,15 @@ export const CreateResponseActionsItemAlwaysUseHTTPS = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateResponseActionsItemAlwaysUseHTTPS>;
 
 export type CreateResponseActionsItemAutomaticHTTPSRewritesId =
-  "automatic_https_rewrites";
+  | "automatic_https_rewrites"
+  | (string & {});
 export const CreateResponseActionsItemAutomaticHTTPSRewritesId =
   /*@__PURE__*/ S.String;
 
-export type CreateResponseActionsItemAutomaticHTTPSRewritesValue = "on" | "off";
+export type CreateResponseActionsItemAutomaticHTTPSRewritesValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateResponseActionsItemAutomaticHTTPSRewritesValue =
   /*@__PURE__*/ S.String;
 
@@ -1217,7 +1328,9 @@ export const CreateResponseActionsItemAutomaticHTTPSRewrites =
     identifier: "CreateResponseActionsItemAutomaticHTTPSRewrites",
   }) as any as S.Schema<CreateResponseActionsItemAutomaticHTTPSRewrites>;
 
-export type CreateResponseActionsItemBrowserCacheTTLId = "browser_cache_ttl";
+export type CreateResponseActionsItemBrowserCacheTTLId =
+  | "browser_cache_ttl"
+  | (string & {});
 export const CreateResponseActionsItemBrowserCacheTTLId =
   /*@__PURE__*/ S.String;
 
@@ -1237,10 +1350,15 @@ export const CreateResponseActionsItemBrowserCacheTTL = /*@__PURE__*/ S.suspend(
   identifier: "CreateResponseActionsItemBrowserCacheTTL",
 }) as any as S.Schema<CreateResponseActionsItemBrowserCacheTTL>;
 
-export type CreateResponseActionsItemBrowserCheckId = "browser_check";
+export type CreateResponseActionsItemBrowserCheckId =
+  | "browser_check"
+  | (string & {});
 export const CreateResponseActionsItemBrowserCheckId = /*@__PURE__*/ S.String;
 
-export type CreateResponseActionsItemBrowserCheckValue = "on" | "off";
+export type CreateResponseActionsItemBrowserCheckValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateResponseActionsItemBrowserCheckValue =
   /*@__PURE__*/ S.String;
 
@@ -1261,7 +1379,8 @@ export const CreateResponseActionsItemBrowserCheck = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateResponseActionsItemBrowserCheck>;
 
 export type CreateResponseActionsItemBypassCacheOnCookieId =
-  "bypass_cache_on_cookie";
+  | "bypass_cache_on_cookie"
+  | (string & {});
 export const CreateResponseActionsItemBypassCacheOnCookieId =
   /*@__PURE__*/ S.String;
 
@@ -1282,11 +1401,15 @@ export const CreateResponseActionsItemBypassCacheOnCookie =
   }) as any as S.Schema<CreateResponseActionsItemBypassCacheOnCookie>;
 
 export type CreateResponseActionsItemCacheByDeviceTypeId =
-  "cache_by_device_type";
+  | "cache_by_device_type"
+  | (string & {});
 export const CreateResponseActionsItemCacheByDeviceTypeId =
   /*@__PURE__*/ S.String;
 
-export type CreateResponseActionsItemCacheByDeviceTypeValue = "on" | "off";
+export type CreateResponseActionsItemCacheByDeviceTypeValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateResponseActionsItemCacheByDeviceTypeValue =
   /*@__PURE__*/ S.String;
 
@@ -1307,11 +1430,15 @@ export const CreateResponseActionsItemCacheByDeviceType =
   }) as any as S.Schema<CreateResponseActionsItemCacheByDeviceType>;
 
 export type CreateResponseActionsItemCacheDeceptionArmorId =
-  "cache_deception_armor";
+  | "cache_deception_armor"
+  | (string & {});
 export const CreateResponseActionsItemCacheDeceptionArmorId =
   /*@__PURE__*/ S.String;
 
-export type CreateResponseActionsItemCacheDeceptionArmorValue = "on" | "off";
+export type CreateResponseActionsItemCacheDeceptionArmorValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateResponseActionsItemCacheDeceptionArmorValue =
   /*@__PURE__*/ S.String;
 
@@ -1331,7 +1458,9 @@ export const CreateResponseActionsItemCacheDeceptionArmor =
     identifier: "CreateResponseActionsItemCacheDeceptionArmor",
   }) as any as S.Schema<CreateResponseActionsItemCacheDeceptionArmor>;
 
-export type CreateResponseActionsItemCacheKeyFieldsId = "cache_key_fields";
+export type CreateResponseActionsItemCacheKeyFieldsId =
+  | "cache_key_fields"
+  | (string & {});
 export const CreateResponseActionsItemCacheKeyFieldsId = /*@__PURE__*/ S.String;
 
 export type CreateResponseActionsItemCacheKeyFieldsValueCookieCheckPresenceList =
@@ -1432,7 +1561,7 @@ export const CreateResponseActionsItemCacheKeyFieldsValueHost =
   }) as any as S.Schema<CreateResponseActionsItemCacheKeyFieldsValueHost>;
 
 export type CreateResponseActionsItemCacheKeyFieldsValueQueryStringExcludeEnum =
-  "*";
+  "*" | (string & {});
 export const CreateResponseActionsItemCacheKeyFieldsValueQueryStringExcludeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1450,7 +1579,7 @@ export const CreateResponseActionsItemCacheKeyFieldsValueQueryStringExclude =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export type CreateResponseActionsItemCacheKeyFieldsValueQueryStringIncludeEnum =
-  "*";
+  "*" | (string & {});
 export const CreateResponseActionsItemCacheKeyFieldsValueQueryStringIncludeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1550,7 +1679,9 @@ export const CreateResponseActionsItemCacheKeyFields = /*@__PURE__*/ S.suspend(
   identifier: "CreateResponseActionsItemCacheKeyFields",
 }) as any as S.Schema<CreateResponseActionsItemCacheKeyFields>;
 
-export type CreateResponseActionsItemCacheLevelId = "cache_level";
+export type CreateResponseActionsItemCacheLevelId =
+  | "cache_level"
+  | (string & {});
 export const CreateResponseActionsItemCacheLevelId = /*@__PURE__*/ S.String;
 
 export type CreateResponseActionsItemCacheLevelValue =
@@ -1558,7 +1689,8 @@ export type CreateResponseActionsItemCacheLevelValue =
   | "basic"
   | "simplified"
   | "aggressive"
-  | "cache_everything";
+  | "cache_everything"
+  | (string & {});
 export const CreateResponseActionsItemCacheLevelValue = /*@__PURE__*/ S.String;
 
 export interface CreateResponseActionsItemCacheLevel {
@@ -1576,7 +1708,9 @@ export const CreateResponseActionsItemCacheLevel = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseActionsItemCacheLevel",
 }) as any as S.Schema<CreateResponseActionsItemCacheLevel>;
 
-export type CreateResponseActionsItemCacheOnCookieId = "cache_on_cookie";
+export type CreateResponseActionsItemCacheOnCookieId =
+  | "cache_on_cookie"
+  | (string & {});
 export const CreateResponseActionsItemCacheOnCookieId = /*@__PURE__*/ S.String;
 
 export interface CreateResponseActionsItemCacheOnCookie {
@@ -1595,13 +1729,16 @@ export const CreateResponseActionsItemCacheOnCookie = /*@__PURE__*/ S.suspend(
   identifier: "CreateResponseActionsItemCacheOnCookie",
 }) as any as S.Schema<CreateResponseActionsItemCacheOnCookie>;
 
-export type CreateResponseActionsItemCacheTTLByStatusId = "cache_ttl_by_status";
+export type CreateResponseActionsItemCacheTTLByStatusId =
+  | "cache_ttl_by_status"
+  | (string & {});
 export const CreateResponseActionsItemCacheTTLByStatusId =
   /*@__PURE__*/ S.String;
 
 export type CreateResponseActionsItemCacheTTLByStatusValueCase0 =
   | "no-cache"
-  | "no-store";
+  | "no-store"
+  | (string & {});
 export const CreateResponseActionsItemCacheTTLByStatusValueCase0 =
   /*@__PURE__*/ S.String;
 
@@ -1627,7 +1764,9 @@ export const CreateResponseActionsItemCacheTTLByStatus =
     identifier: "CreateResponseActionsItemCacheTTLByStatus",
   }) as any as S.Schema<CreateResponseActionsItemCacheTTLByStatus>;
 
-export type CreateResponseActionsItemDisableAppsId = "disable_apps";
+export type CreateResponseActionsItemDisableAppsId =
+  | "disable_apps"
+  | (string & {});
 export const CreateResponseActionsItemDisableAppsId = /*@__PURE__*/ S.String;
 
 export interface CreateResponseActionsItemDisableApps {
@@ -1644,7 +1783,8 @@ export const CreateResponseActionsItemDisableApps = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateResponseActionsItemDisableApps>;
 
 export type CreateResponseActionsItemDisablePerformanceId =
-  "disable_performance";
+  | "disable_performance"
+  | (string & {});
 export const CreateResponseActionsItemDisablePerformanceId =
   /*@__PURE__*/ S.String;
 
@@ -1661,7 +1801,9 @@ export const CreateResponseActionsItemDisablePerformance =
     identifier: "CreateResponseActionsItemDisablePerformance",
   }) as any as S.Schema<CreateResponseActionsItemDisablePerformance>;
 
-export type CreateResponseActionsItemDisableSecurityId = "disable_security";
+export type CreateResponseActionsItemDisableSecurityId =
+  | "disable_security"
+  | (string & {});
 export const CreateResponseActionsItemDisableSecurityId =
   /*@__PURE__*/ S.String;
 
@@ -1678,7 +1820,9 @@ export const CreateResponseActionsItemDisableSecurity = /*@__PURE__*/ S.suspend(
   identifier: "CreateResponseActionsItemDisableSecurity",
 }) as any as S.Schema<CreateResponseActionsItemDisableSecurity>;
 
-export type CreateResponseActionsItemDisableZarazId = "disable_zaraz";
+export type CreateResponseActionsItemDisableZarazId =
+  | "disable_zaraz"
+  | (string & {});
 export const CreateResponseActionsItemDisableZarazId = /*@__PURE__*/ S.String;
 
 export interface CreateResponseActionsItemDisableZaraz {
@@ -1694,7 +1838,9 @@ export const CreateResponseActionsItemDisableZaraz = /*@__PURE__*/ S.suspend(
   identifier: "CreateResponseActionsItemDisableZaraz",
 }) as any as S.Schema<CreateResponseActionsItemDisableZaraz>;
 
-export type CreateResponseActionsItemEdgeCacheTTLId = "edge_cache_ttl";
+export type CreateResponseActionsItemEdgeCacheTTLId =
+  | "edge_cache_ttl"
+  | (string & {});
 export const CreateResponseActionsItemEdgeCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface CreateResponseActionsItemEdgeCacheTTL {
@@ -1712,11 +1858,16 @@ export const CreateResponseActionsItemEdgeCacheTTL = /*@__PURE__*/ S.suspend(
   identifier: "CreateResponseActionsItemEdgeCacheTTL",
 }) as any as S.Schema<CreateResponseActionsItemEdgeCacheTTL>;
 
-export type CreateResponseActionsItemEmailObfuscationId = "email_obfuscation";
+export type CreateResponseActionsItemEmailObfuscationId =
+  | "email_obfuscation"
+  | (string & {});
 export const CreateResponseActionsItemEmailObfuscationId =
   /*@__PURE__*/ S.String;
 
-export type CreateResponseActionsItemEmailObfuscationValue = "on" | "off";
+export type CreateResponseActionsItemEmailObfuscationValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateResponseActionsItemEmailObfuscationValue =
   /*@__PURE__*/ S.String;
 
@@ -1737,11 +1888,15 @@ export const CreateResponseActionsItemEmailObfuscation =
   }) as any as S.Schema<CreateResponseActionsItemEmailObfuscation>;
 
 export type CreateResponseActionsItemExplicitCacheControlId =
-  "explicit_cache_control";
+  | "explicit_cache_control"
+  | (string & {});
 export const CreateResponseActionsItemExplicitCacheControlId =
   /*@__PURE__*/ S.String;
 
-export type CreateResponseActionsItemExplicitCacheControlValue = "on" | "off";
+export type CreateResponseActionsItemExplicitCacheControlValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateResponseActionsItemExplicitCacheControlValue =
   /*@__PURE__*/ S.String;
 
@@ -1761,10 +1916,15 @@ export const CreateResponseActionsItemExplicitCacheControl =
     identifier: "CreateResponseActionsItemExplicitCacheControl",
   }) as any as S.Schema<CreateResponseActionsItemExplicitCacheControl>;
 
-export type CreateResponseActionsItemForwardingURLId = "forwarding_url";
+export type CreateResponseActionsItemForwardingURLId =
+  | "forwarding_url"
+  | (string & {});
 export const CreateResponseActionsItemForwardingURLId = /*@__PURE__*/ S.String;
 
-export type CreateResponseActionsItemForwardingURLValueStatusCode = 301 | 302;
+export type CreateResponseActionsItemForwardingURLValueStatusCode =
+  | 301
+  | 302
+  | (number & {});
 export const CreateResponseActionsItemForwardingURLValueStatusCode =
   /*@__PURE__*/ S.Number;
 
@@ -1804,7 +1964,8 @@ export const CreateResponseActionsItemForwardingURL = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateResponseActionsItemForwardingURL>;
 
 export type CreateResponseActionsItemHostHeaderOverrideId =
-  "host_header_override";
+  | "host_header_override"
+  | (string & {});
 export const CreateResponseActionsItemHostHeaderOverrideId =
   /*@__PURE__*/ S.String;
 
@@ -1824,10 +1985,15 @@ export const CreateResponseActionsItemHostHeaderOverride =
     identifier: "CreateResponseActionsItemHostHeaderOverride",
   }) as any as S.Schema<CreateResponseActionsItemHostHeaderOverride>;
 
-export type CreateResponseActionsItemIPGeolocationId = "ip_geolocation";
+export type CreateResponseActionsItemIPGeolocationId =
+  | "ip_geolocation"
+  | (string & {});
 export const CreateResponseActionsItemIPGeolocationId = /*@__PURE__*/ S.String;
 
-export type CreateResponseActionsItemIPGeolocationValue = "on" | "off";
+export type CreateResponseActionsItemIPGeolocationValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateResponseActionsItemIPGeolocationValue =
   /*@__PURE__*/ S.String;
 
@@ -1847,10 +2013,10 @@ export const CreateResponseActionsItemIPGeolocation = /*@__PURE__*/ S.suspend(
   identifier: "CreateResponseActionsItemIPGeolocation",
 }) as any as S.Schema<CreateResponseActionsItemIPGeolocation>;
 
-export type CreateResponseActionsItemMirageId = "mirage";
+export type CreateResponseActionsItemMirageId = "mirage" | (string & {});
 export const CreateResponseActionsItemMirageId = /*@__PURE__*/ S.String;
 
-export type CreateResponseActionsItemMirageValue = "on" | "off";
+export type CreateResponseActionsItemMirageValue = "on" | "off" | (string & {});
 export const CreateResponseActionsItemMirageValue = /*@__PURE__*/ S.String;
 
 export interface CreateResponseActionsItemMirage {
@@ -1869,13 +2035,15 @@ export const CreateResponseActionsItemMirage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateResponseActionsItemMirage>;
 
 export type CreateResponseActionsItemOpportunisticEncryptionId =
-  "opportunistic_encryption";
+  | "opportunistic_encryption"
+  | (string & {});
 export const CreateResponseActionsItemOpportunisticEncryptionId =
   /*@__PURE__*/ S.String;
 
 export type CreateResponseActionsItemOpportunisticEncryptionValue =
   | "on"
-  | "off";
+  | "off"
+  | (string & {});
 export const CreateResponseActionsItemOpportunisticEncryptionValue =
   /*@__PURE__*/ S.String;
 
@@ -1896,13 +2064,15 @@ export const CreateResponseActionsItemOpportunisticEncryption =
   }) as any as S.Schema<CreateResponseActionsItemOpportunisticEncryption>;
 
 export type CreateResponseActionsItemOriginErrorPagePassThruId =
-  "origin_error_page_pass_thru";
+  | "origin_error_page_pass_thru"
+  | (string & {});
 export const CreateResponseActionsItemOriginErrorPagePassThruId =
   /*@__PURE__*/ S.String;
 
 export type CreateResponseActionsItemOriginErrorPagePassThruValue =
   | "on"
-  | "off";
+  | "off"
+  | (string & {});
 export const CreateResponseActionsItemOriginErrorPagePassThruValue =
   /*@__PURE__*/ S.String;
 
@@ -1922,10 +2092,14 @@ export const CreateResponseActionsItemOriginErrorPagePassThru =
     identifier: "CreateResponseActionsItemOriginErrorPagePassThru",
   }) as any as S.Schema<CreateResponseActionsItemOriginErrorPagePassThru>;
 
-export type CreateResponseActionsItemPolishId = "polish";
+export type CreateResponseActionsItemPolishId = "polish" | (string & {});
 export const CreateResponseActionsItemPolishId = /*@__PURE__*/ S.String;
 
-export type CreateResponseActionsItemPolishValue = "off" | "lossless" | "lossy";
+export type CreateResponseActionsItemPolishValue =
+  | "off"
+  | "lossless"
+  | "lossy"
+  | (string & {});
 export const CreateResponseActionsItemPolishValue = /*@__PURE__*/ S.String;
 
 export interface CreateResponseActionsItemPolish {
@@ -1943,7 +2117,9 @@ export const CreateResponseActionsItemPolish = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseActionsItemPolish",
 }) as any as S.Schema<CreateResponseActionsItemPolish>;
 
-export type CreateResponseActionsItemResolveOverrideId = "resolve_override";
+export type CreateResponseActionsItemResolveOverrideId =
+  | "resolve_override"
+  | (string & {});
 export const CreateResponseActionsItemResolveOverrideId =
   /*@__PURE__*/ S.String;
 
@@ -1964,11 +2140,15 @@ export const CreateResponseActionsItemResolveOverride = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateResponseActionsItemResolveOverride>;
 
 export type CreateResponseActionsItemRespectStrongEtagId =
-  "respect_strong_etag";
+  | "respect_strong_etag"
+  | (string & {});
 export const CreateResponseActionsItemRespectStrongEtagId =
   /*@__PURE__*/ S.String;
 
-export type CreateResponseActionsItemRespectStrongEtagValue = "on" | "off";
+export type CreateResponseActionsItemRespectStrongEtagValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateResponseActionsItemRespectStrongEtagValue =
   /*@__PURE__*/ S.String;
 
@@ -1988,11 +2168,16 @@ export const CreateResponseActionsItemRespectStrongEtag =
     identifier: "CreateResponseActionsItemRespectStrongEtag",
   }) as any as S.Schema<CreateResponseActionsItemRespectStrongEtag>;
 
-export type CreateResponseActionsItemResponseBufferingId = "response_buffering";
+export type CreateResponseActionsItemResponseBufferingId =
+  | "response_buffering"
+  | (string & {});
 export const CreateResponseActionsItemResponseBufferingId =
   /*@__PURE__*/ S.String;
 
-export type CreateResponseActionsItemResponseBufferingValue = "on" | "off";
+export type CreateResponseActionsItemResponseBufferingValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateResponseActionsItemResponseBufferingValue =
   /*@__PURE__*/ S.String;
 
@@ -2012,10 +2197,15 @@ export const CreateResponseActionsItemResponseBuffering =
     identifier: "CreateResponseActionsItemResponseBuffering",
   }) as any as S.Schema<CreateResponseActionsItemResponseBuffering>;
 
-export type CreateResponseActionsItemRocketLoaderId = "rocket_loader";
+export type CreateResponseActionsItemRocketLoaderId =
+  | "rocket_loader"
+  | (string & {});
 export const CreateResponseActionsItemRocketLoaderId = /*@__PURE__*/ S.String;
 
-export type CreateResponseActionsItemRocketLoaderValue = "on" | "off";
+export type CreateResponseActionsItemRocketLoaderValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateResponseActionsItemRocketLoaderValue =
   /*@__PURE__*/ S.String;
 
@@ -2035,7 +2225,9 @@ export const CreateResponseActionsItemRocketLoader = /*@__PURE__*/ S.suspend(
   identifier: "CreateResponseActionsItemRocketLoader",
 }) as any as S.Schema<CreateResponseActionsItemRocketLoader>;
 
-export type CreateResponseActionsItemSecurityLevelId = "security_level";
+export type CreateResponseActionsItemSecurityLevelId =
+  | "security_level"
+  | (string & {});
 export const CreateResponseActionsItemSecurityLevelId = /*@__PURE__*/ S.String;
 
 export type CreateResponseActionsItemSecurityLevelValue =
@@ -2044,7 +2236,8 @@ export type CreateResponseActionsItemSecurityLevelValue =
   | "low"
   | "medium"
   | "high"
-  | "under_attack";
+  | "under_attack"
+  | (string & {});
 export const CreateResponseActionsItemSecurityLevelValue =
   /*@__PURE__*/ S.String;
 
@@ -2064,13 +2257,15 @@ export const CreateResponseActionsItemSecurityLevel = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateResponseActionsItemSecurityLevel>;
 
 export type CreateResponseActionsItemSortQueryStringForCacheId =
-  "sort_query_string_for_cache";
+  | "sort_query_string_for_cache"
+  | (string & {});
 export const CreateResponseActionsItemSortQueryStringForCacheId =
   /*@__PURE__*/ S.String;
 
 export type CreateResponseActionsItemSortQueryStringForCacheValue =
   | "on"
-  | "off";
+  | "off"
+  | (string & {});
 export const CreateResponseActionsItemSortQueryStringForCacheValue =
   /*@__PURE__*/ S.String;
 
@@ -2090,7 +2285,7 @@ export const CreateResponseActionsItemSortQueryStringForCache =
     identifier: "CreateResponseActionsItemSortQueryStringForCache",
   }) as any as S.Schema<CreateResponseActionsItemSortQueryStringForCache>;
 
-export type CreateResponseActionsItemSSLId = "ssl";
+export type CreateResponseActionsItemSSLId = "ssl" | (string & {});
 export const CreateResponseActionsItemSSLId = /*@__PURE__*/ S.String;
 
 export type CreateResponseActionsItemSSLValue =
@@ -2098,7 +2293,8 @@ export type CreateResponseActionsItemSSLValue =
   | "flexible"
   | "full"
   | "strict"
-  | "origin_pull";
+  | "origin_pull"
+  | (string & {});
 export const CreateResponseActionsItemSSLValue = /*@__PURE__*/ S.String;
 
 export interface CreateResponseActionsItemSSL {
@@ -2117,11 +2313,15 @@ export const CreateResponseActionsItemSSL = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateResponseActionsItemSSL>;
 
 export type CreateResponseActionsItemTrueClientIPHeaderId =
-  "true_client_ip_header";
+  | "true_client_ip_header"
+  | (string & {});
 export const CreateResponseActionsItemTrueClientIPHeaderId =
   /*@__PURE__*/ S.String;
 
-export type CreateResponseActionsItemTrueClientIPHeaderValue = "on" | "off";
+export type CreateResponseActionsItemTrueClientIPHeaderValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const CreateResponseActionsItemTrueClientIPHeaderValue =
   /*@__PURE__*/ S.String;
 
@@ -2141,10 +2341,10 @@ export const CreateResponseActionsItemTrueClientIPHeader =
     identifier: "CreateResponseActionsItemTrueClientIPHeader",
   }) as any as S.Schema<CreateResponseActionsItemTrueClientIPHeader>;
 
-export type CreateResponseActionsItemWAFId = "waf";
+export type CreateResponseActionsItemWAFId = "waf" | (string & {});
 export const CreateResponseActionsItemWAFId = /*@__PURE__*/ S.String;
 
-export type CreateResponseActionsItemWAFValue = "on" | "off";
+export type CreateResponseActionsItemWAFValue = "on" | "off" | (string & {});
 export const CreateResponseActionsItemWAFValue = /*@__PURE__*/ S.String;
 
 export interface CreateResponseActionsItemWAF {
@@ -2242,7 +2442,7 @@ export const CreateResponseActionsList = /*@__PURE__*/ S.Array(
   CreateResponseActionsItem,
 ) as any as S.Schema<CreateResponseActionsList>;
 
-export type CreateResponseStatus = "active" | "disabled";
+export type CreateResponseStatus = "active" | "disabled" | (string & {});
 export const CreateResponseStatus = /*@__PURE__*/ S.String;
 
 export type CreateResponseTargetsItemConstraintOperator =
@@ -2250,7 +2450,8 @@ export type CreateResponseTargetsItemConstraintOperator =
   | "contains"
   | "equals"
   | "not_equal"
-  | "not_contain";
+  | "not_contain"
+  | (string & {});
 export const CreateResponseTargetsItemConstraintOperator =
   /*@__PURE__*/ S.String;
 
@@ -2269,7 +2470,7 @@ export const CreateResponseTargetsItemConstraint = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseTargetsItemConstraint",
 }) as any as S.Schema<CreateResponseTargetsItemConstraint>;
 
-export type CreateResponseTargetsItemTarget = "url";
+export type CreateResponseTargetsItemTarget = "url" | (string & {});
 export const CreateResponseTargetsItemTarget = /*@__PURE__*/ S.String;
 
 export interface CreateResponseTargetsItem {
@@ -2383,7 +2584,9 @@ export const GetPageRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPageRuleRequest",
 }) as any as S.Schema<GetPageRuleRequest>;
 
-export type GetResponseActionsItemAlwaysUseHTTPSId = "always_use_https";
+export type GetResponseActionsItemAlwaysUseHTTPSId =
+  | "always_use_https"
+  | (string & {});
 export const GetResponseActionsItemAlwaysUseHTTPSId = /*@__PURE__*/ S.String;
 
 export interface GetResponseActionsItemAlwaysUseHTTPS {
@@ -2400,11 +2603,15 @@ export const GetResponseActionsItemAlwaysUseHTTPS = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetResponseActionsItemAlwaysUseHTTPS>;
 
 export type GetResponseActionsItemAutomaticHTTPSRewritesId =
-  "automatic_https_rewrites";
+  | "automatic_https_rewrites"
+  | (string & {});
 export const GetResponseActionsItemAutomaticHTTPSRewritesId =
   /*@__PURE__*/ S.String;
 
-export type GetResponseActionsItemAutomaticHTTPSRewritesValue = "on" | "off";
+export type GetResponseActionsItemAutomaticHTTPSRewritesValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const GetResponseActionsItemAutomaticHTTPSRewritesValue =
   /*@__PURE__*/ S.String;
 
@@ -2424,7 +2631,9 @@ export const GetResponseActionsItemAutomaticHTTPSRewrites =
     identifier: "GetResponseActionsItemAutomaticHTTPSRewrites",
   }) as any as S.Schema<GetResponseActionsItemAutomaticHTTPSRewrites>;
 
-export type GetResponseActionsItemBrowserCacheTTLId = "browser_cache_ttl";
+export type GetResponseActionsItemBrowserCacheTTLId =
+  | "browser_cache_ttl"
+  | (string & {});
 export const GetResponseActionsItemBrowserCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface GetResponseActionsItemBrowserCacheTTL {
@@ -2443,10 +2652,15 @@ export const GetResponseActionsItemBrowserCacheTTL = /*@__PURE__*/ S.suspend(
   identifier: "GetResponseActionsItemBrowserCacheTTL",
 }) as any as S.Schema<GetResponseActionsItemBrowserCacheTTL>;
 
-export type GetResponseActionsItemBrowserCheckId = "browser_check";
+export type GetResponseActionsItemBrowserCheckId =
+  | "browser_check"
+  | (string & {});
 export const GetResponseActionsItemBrowserCheckId = /*@__PURE__*/ S.String;
 
-export type GetResponseActionsItemBrowserCheckValue = "on" | "off";
+export type GetResponseActionsItemBrowserCheckValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const GetResponseActionsItemBrowserCheckValue = /*@__PURE__*/ S.String;
 
 export interface GetResponseActionsItemBrowserCheck {
@@ -2465,7 +2679,8 @@ export const GetResponseActionsItemBrowserCheck = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseActionsItemBrowserCheck>;
 
 export type GetResponseActionsItemBypassCacheOnCookieId =
-  "bypass_cache_on_cookie";
+  | "bypass_cache_on_cookie"
+  | (string & {});
 export const GetResponseActionsItemBypassCacheOnCookieId =
   /*@__PURE__*/ S.String;
 
@@ -2485,10 +2700,15 @@ export const GetResponseActionsItemBypassCacheOnCookie =
     identifier: "GetResponseActionsItemBypassCacheOnCookie",
   }) as any as S.Schema<GetResponseActionsItemBypassCacheOnCookie>;
 
-export type GetResponseActionsItemCacheByDeviceTypeId = "cache_by_device_type";
+export type GetResponseActionsItemCacheByDeviceTypeId =
+  | "cache_by_device_type"
+  | (string & {});
 export const GetResponseActionsItemCacheByDeviceTypeId = /*@__PURE__*/ S.String;
 
-export type GetResponseActionsItemCacheByDeviceTypeValue = "on" | "off";
+export type GetResponseActionsItemCacheByDeviceTypeValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const GetResponseActionsItemCacheByDeviceTypeValue =
   /*@__PURE__*/ S.String;
 
@@ -2509,11 +2729,15 @@ export const GetResponseActionsItemCacheByDeviceType = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetResponseActionsItemCacheByDeviceType>;
 
 export type GetResponseActionsItemCacheDeceptionArmorId =
-  "cache_deception_armor";
+  | "cache_deception_armor"
+  | (string & {});
 export const GetResponseActionsItemCacheDeceptionArmorId =
   /*@__PURE__*/ S.String;
 
-export type GetResponseActionsItemCacheDeceptionArmorValue = "on" | "off";
+export type GetResponseActionsItemCacheDeceptionArmorValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const GetResponseActionsItemCacheDeceptionArmorValue =
   /*@__PURE__*/ S.String;
 
@@ -2533,7 +2757,9 @@ export const GetResponseActionsItemCacheDeceptionArmor =
     identifier: "GetResponseActionsItemCacheDeceptionArmor",
   }) as any as S.Schema<GetResponseActionsItemCacheDeceptionArmor>;
 
-export type GetResponseActionsItemCacheKeyFieldsId = "cache_key_fields";
+export type GetResponseActionsItemCacheKeyFieldsId =
+  | "cache_key_fields"
+  | (string & {});
 export const GetResponseActionsItemCacheKeyFieldsId = /*@__PURE__*/ S.String;
 
 export type GetResponseActionsItemCacheKeyFieldsValueCookieCheckPresenceList =
@@ -2634,7 +2860,8 @@ export const GetResponseActionsItemCacheKeyFieldsValueHost =
   }) as any as S.Schema<GetResponseActionsItemCacheKeyFieldsValueHost>;
 
 export type GetResponseActionsItemCacheKeyFieldsValueQueryStringExcludeEnum =
-  "*";
+  | "*"
+  | (string & {});
 export const GetResponseActionsItemCacheKeyFieldsValueQueryStringExcludeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2652,7 +2879,8 @@ export const GetResponseActionsItemCacheKeyFieldsValueQueryStringExclude =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export type GetResponseActionsItemCacheKeyFieldsValueQueryStringIncludeEnum =
-  "*";
+  | "*"
+  | (string & {});
 export const GetResponseActionsItemCacheKeyFieldsValueQueryStringIncludeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2752,7 +2980,7 @@ export const GetResponseActionsItemCacheKeyFields = /*@__PURE__*/ S.suspend(
   identifier: "GetResponseActionsItemCacheKeyFields",
 }) as any as S.Schema<GetResponseActionsItemCacheKeyFields>;
 
-export type GetResponseActionsItemCacheLevelId = "cache_level";
+export type GetResponseActionsItemCacheLevelId = "cache_level" | (string & {});
 export const GetResponseActionsItemCacheLevelId = /*@__PURE__*/ S.String;
 
 export type GetResponseActionsItemCacheLevelValue =
@@ -2760,7 +2988,8 @@ export type GetResponseActionsItemCacheLevelValue =
   | "basic"
   | "simplified"
   | "aggressive"
-  | "cache_everything";
+  | "cache_everything"
+  | (string & {});
 export const GetResponseActionsItemCacheLevelValue = /*@__PURE__*/ S.String;
 
 export interface GetResponseActionsItemCacheLevel {
@@ -2778,7 +3007,9 @@ export const GetResponseActionsItemCacheLevel = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseActionsItemCacheLevel",
 }) as any as S.Schema<GetResponseActionsItemCacheLevel>;
 
-export type GetResponseActionsItemCacheOnCookieId = "cache_on_cookie";
+export type GetResponseActionsItemCacheOnCookieId =
+  | "cache_on_cookie"
+  | (string & {});
 export const GetResponseActionsItemCacheOnCookieId = /*@__PURE__*/ S.String;
 
 export interface GetResponseActionsItemCacheOnCookie {
@@ -2796,12 +3027,15 @@ export const GetResponseActionsItemCacheOnCookie = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseActionsItemCacheOnCookie",
 }) as any as S.Schema<GetResponseActionsItemCacheOnCookie>;
 
-export type GetResponseActionsItemCacheTTLByStatusId = "cache_ttl_by_status";
+export type GetResponseActionsItemCacheTTLByStatusId =
+  | "cache_ttl_by_status"
+  | (string & {});
 export const GetResponseActionsItemCacheTTLByStatusId = /*@__PURE__*/ S.String;
 
 export type GetResponseActionsItemCacheTTLByStatusValueCase0 =
   | "no-cache"
-  | "no-store";
+  | "no-store"
+  | (string & {});
 export const GetResponseActionsItemCacheTTLByStatusValueCase0 =
   /*@__PURE__*/ S.String;
 
@@ -2827,7 +3061,9 @@ export const GetResponseActionsItemCacheTTLByStatus = /*@__PURE__*/ S.suspend(
   identifier: "GetResponseActionsItemCacheTTLByStatus",
 }) as any as S.Schema<GetResponseActionsItemCacheTTLByStatus>;
 
-export type GetResponseActionsItemDisableAppsId = "disable_apps";
+export type GetResponseActionsItemDisableAppsId =
+  | "disable_apps"
+  | (string & {});
 export const GetResponseActionsItemDisableAppsId = /*@__PURE__*/ S.String;
 
 export interface GetResponseActionsItemDisableApps {
@@ -2842,7 +3078,9 @@ export const GetResponseActionsItemDisableApps = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseActionsItemDisableApps",
 }) as any as S.Schema<GetResponseActionsItemDisableApps>;
 
-export type GetResponseActionsItemDisablePerformanceId = "disable_performance";
+export type GetResponseActionsItemDisablePerformanceId =
+  | "disable_performance"
+  | (string & {});
 export const GetResponseActionsItemDisablePerformanceId =
   /*@__PURE__*/ S.String;
 
@@ -2859,7 +3097,9 @@ export const GetResponseActionsItemDisablePerformance = /*@__PURE__*/ S.suspend(
   identifier: "GetResponseActionsItemDisablePerformance",
 }) as any as S.Schema<GetResponseActionsItemDisablePerformance>;
 
-export type GetResponseActionsItemDisableSecurityId = "disable_security";
+export type GetResponseActionsItemDisableSecurityId =
+  | "disable_security"
+  | (string & {});
 export const GetResponseActionsItemDisableSecurityId = /*@__PURE__*/ S.String;
 
 export interface GetResponseActionsItemDisableSecurity {
@@ -2875,7 +3115,9 @@ export const GetResponseActionsItemDisableSecurity = /*@__PURE__*/ S.suspend(
   identifier: "GetResponseActionsItemDisableSecurity",
 }) as any as S.Schema<GetResponseActionsItemDisableSecurity>;
 
-export type GetResponseActionsItemDisableZarazId = "disable_zaraz";
+export type GetResponseActionsItemDisableZarazId =
+  | "disable_zaraz"
+  | (string & {});
 export const GetResponseActionsItemDisableZarazId = /*@__PURE__*/ S.String;
 
 export interface GetResponseActionsItemDisableZaraz {
@@ -2890,7 +3132,9 @@ export const GetResponseActionsItemDisableZaraz = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseActionsItemDisableZaraz",
 }) as any as S.Schema<GetResponseActionsItemDisableZaraz>;
 
-export type GetResponseActionsItemEdgeCacheTTLId = "edge_cache_ttl";
+export type GetResponseActionsItemEdgeCacheTTLId =
+  | "edge_cache_ttl"
+  | (string & {});
 export const GetResponseActionsItemEdgeCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface GetResponseActionsItemEdgeCacheTTL {
@@ -2907,10 +3151,15 @@ export const GetResponseActionsItemEdgeCacheTTL = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseActionsItemEdgeCacheTTL",
 }) as any as S.Schema<GetResponseActionsItemEdgeCacheTTL>;
 
-export type GetResponseActionsItemEmailObfuscationId = "email_obfuscation";
+export type GetResponseActionsItemEmailObfuscationId =
+  | "email_obfuscation"
+  | (string & {});
 export const GetResponseActionsItemEmailObfuscationId = /*@__PURE__*/ S.String;
 
-export type GetResponseActionsItemEmailObfuscationValue = "on" | "off";
+export type GetResponseActionsItemEmailObfuscationValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const GetResponseActionsItemEmailObfuscationValue =
   /*@__PURE__*/ S.String;
 
@@ -2931,11 +3180,15 @@ export const GetResponseActionsItemEmailObfuscation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetResponseActionsItemEmailObfuscation>;
 
 export type GetResponseActionsItemExplicitCacheControlId =
-  "explicit_cache_control";
+  | "explicit_cache_control"
+  | (string & {});
 export const GetResponseActionsItemExplicitCacheControlId =
   /*@__PURE__*/ S.String;
 
-export type GetResponseActionsItemExplicitCacheControlValue = "on" | "off";
+export type GetResponseActionsItemExplicitCacheControlValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const GetResponseActionsItemExplicitCacheControlValue =
   /*@__PURE__*/ S.String;
 
@@ -2955,10 +3208,15 @@ export const GetResponseActionsItemExplicitCacheControl =
     identifier: "GetResponseActionsItemExplicitCacheControl",
   }) as any as S.Schema<GetResponseActionsItemExplicitCacheControl>;
 
-export type GetResponseActionsItemForwardingURLId = "forwarding_url";
+export type GetResponseActionsItemForwardingURLId =
+  | "forwarding_url"
+  | (string & {});
 export const GetResponseActionsItemForwardingURLId = /*@__PURE__*/ S.String;
 
-export type GetResponseActionsItemForwardingURLValueStatusCode = 301 | 302;
+export type GetResponseActionsItemForwardingURLValueStatusCode =
+  | 301
+  | 302
+  | (number & {});
 export const GetResponseActionsItemForwardingURLValueStatusCode =
   /*@__PURE__*/ S.Number;
 
@@ -2996,7 +3254,9 @@ export const GetResponseActionsItemForwardingURL = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseActionsItemForwardingURL",
 }) as any as S.Schema<GetResponseActionsItemForwardingURL>;
 
-export type GetResponseActionsItemHostHeaderOverrideId = "host_header_override";
+export type GetResponseActionsItemHostHeaderOverrideId =
+  | "host_header_override"
+  | (string & {});
 export const GetResponseActionsItemHostHeaderOverrideId =
   /*@__PURE__*/ S.String;
 
@@ -3016,10 +3276,15 @@ export const GetResponseActionsItemHostHeaderOverride = /*@__PURE__*/ S.suspend(
   identifier: "GetResponseActionsItemHostHeaderOverride",
 }) as any as S.Schema<GetResponseActionsItemHostHeaderOverride>;
 
-export type GetResponseActionsItemIPGeolocationId = "ip_geolocation";
+export type GetResponseActionsItemIPGeolocationId =
+  | "ip_geolocation"
+  | (string & {});
 export const GetResponseActionsItemIPGeolocationId = /*@__PURE__*/ S.String;
 
-export type GetResponseActionsItemIPGeolocationValue = "on" | "off";
+export type GetResponseActionsItemIPGeolocationValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const GetResponseActionsItemIPGeolocationValue = /*@__PURE__*/ S.String;
 
 export interface GetResponseActionsItemIPGeolocation {
@@ -3037,10 +3302,10 @@ export const GetResponseActionsItemIPGeolocation = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseActionsItemIPGeolocation",
 }) as any as S.Schema<GetResponseActionsItemIPGeolocation>;
 
-export type GetResponseActionsItemMirageId = "mirage";
+export type GetResponseActionsItemMirageId = "mirage" | (string & {});
 export const GetResponseActionsItemMirageId = /*@__PURE__*/ S.String;
 
-export type GetResponseActionsItemMirageValue = "on" | "off";
+export type GetResponseActionsItemMirageValue = "on" | "off" | (string & {});
 export const GetResponseActionsItemMirageValue = /*@__PURE__*/ S.String;
 
 export interface GetResponseActionsItemMirage {
@@ -3059,11 +3324,15 @@ export const GetResponseActionsItemMirage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseActionsItemMirage>;
 
 export type GetResponseActionsItemOpportunisticEncryptionId =
-  "opportunistic_encryption";
+  | "opportunistic_encryption"
+  | (string & {});
 export const GetResponseActionsItemOpportunisticEncryptionId =
   /*@__PURE__*/ S.String;
 
-export type GetResponseActionsItemOpportunisticEncryptionValue = "on" | "off";
+export type GetResponseActionsItemOpportunisticEncryptionValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const GetResponseActionsItemOpportunisticEncryptionValue =
   /*@__PURE__*/ S.String;
 
@@ -3084,11 +3353,15 @@ export const GetResponseActionsItemOpportunisticEncryption =
   }) as any as S.Schema<GetResponseActionsItemOpportunisticEncryption>;
 
 export type GetResponseActionsItemOriginErrorPagePassThruId =
-  "origin_error_page_pass_thru";
+  | "origin_error_page_pass_thru"
+  | (string & {});
 export const GetResponseActionsItemOriginErrorPagePassThruId =
   /*@__PURE__*/ S.String;
 
-export type GetResponseActionsItemOriginErrorPagePassThruValue = "on" | "off";
+export type GetResponseActionsItemOriginErrorPagePassThruValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const GetResponseActionsItemOriginErrorPagePassThruValue =
   /*@__PURE__*/ S.String;
 
@@ -3108,10 +3381,14 @@ export const GetResponseActionsItemOriginErrorPagePassThru =
     identifier: "GetResponseActionsItemOriginErrorPagePassThru",
   }) as any as S.Schema<GetResponseActionsItemOriginErrorPagePassThru>;
 
-export type GetResponseActionsItemPolishId = "polish";
+export type GetResponseActionsItemPolishId = "polish" | (string & {});
 export const GetResponseActionsItemPolishId = /*@__PURE__*/ S.String;
 
-export type GetResponseActionsItemPolishValue = "off" | "lossless" | "lossy";
+export type GetResponseActionsItemPolishValue =
+  | "off"
+  | "lossless"
+  | "lossy"
+  | (string & {});
 export const GetResponseActionsItemPolishValue = /*@__PURE__*/ S.String;
 
 export interface GetResponseActionsItemPolish {
@@ -3129,7 +3406,9 @@ export const GetResponseActionsItemPolish = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseActionsItemPolish",
 }) as any as S.Schema<GetResponseActionsItemPolish>;
 
-export type GetResponseActionsItemResolveOverrideId = "resolve_override";
+export type GetResponseActionsItemResolveOverrideId =
+  | "resolve_override"
+  | (string & {});
 export const GetResponseActionsItemResolveOverrideId = /*@__PURE__*/ S.String;
 
 export interface GetResponseActionsItemResolveOverride {
@@ -3148,10 +3427,15 @@ export const GetResponseActionsItemResolveOverride = /*@__PURE__*/ S.suspend(
   identifier: "GetResponseActionsItemResolveOverride",
 }) as any as S.Schema<GetResponseActionsItemResolveOverride>;
 
-export type GetResponseActionsItemRespectStrongEtagId = "respect_strong_etag";
+export type GetResponseActionsItemRespectStrongEtagId =
+  | "respect_strong_etag"
+  | (string & {});
 export const GetResponseActionsItemRespectStrongEtagId = /*@__PURE__*/ S.String;
 
-export type GetResponseActionsItemRespectStrongEtagValue = "on" | "off";
+export type GetResponseActionsItemRespectStrongEtagValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const GetResponseActionsItemRespectStrongEtagValue =
   /*@__PURE__*/ S.String;
 
@@ -3171,10 +3455,15 @@ export const GetResponseActionsItemRespectStrongEtag = /*@__PURE__*/ S.suspend(
   identifier: "GetResponseActionsItemRespectStrongEtag",
 }) as any as S.Schema<GetResponseActionsItemRespectStrongEtag>;
 
-export type GetResponseActionsItemResponseBufferingId = "response_buffering";
+export type GetResponseActionsItemResponseBufferingId =
+  | "response_buffering"
+  | (string & {});
 export const GetResponseActionsItemResponseBufferingId = /*@__PURE__*/ S.String;
 
-export type GetResponseActionsItemResponseBufferingValue = "on" | "off";
+export type GetResponseActionsItemResponseBufferingValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const GetResponseActionsItemResponseBufferingValue =
   /*@__PURE__*/ S.String;
 
@@ -3194,10 +3483,15 @@ export const GetResponseActionsItemResponseBuffering = /*@__PURE__*/ S.suspend(
   identifier: "GetResponseActionsItemResponseBuffering",
 }) as any as S.Schema<GetResponseActionsItemResponseBuffering>;
 
-export type GetResponseActionsItemRocketLoaderId = "rocket_loader";
+export type GetResponseActionsItemRocketLoaderId =
+  | "rocket_loader"
+  | (string & {});
 export const GetResponseActionsItemRocketLoaderId = /*@__PURE__*/ S.String;
 
-export type GetResponseActionsItemRocketLoaderValue = "on" | "off";
+export type GetResponseActionsItemRocketLoaderValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const GetResponseActionsItemRocketLoaderValue = /*@__PURE__*/ S.String;
 
 export interface GetResponseActionsItemRocketLoader {
@@ -3215,7 +3509,9 @@ export const GetResponseActionsItemRocketLoader = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseActionsItemRocketLoader",
 }) as any as S.Schema<GetResponseActionsItemRocketLoader>;
 
-export type GetResponseActionsItemSecurityLevelId = "security_level";
+export type GetResponseActionsItemSecurityLevelId =
+  | "security_level"
+  | (string & {});
 export const GetResponseActionsItemSecurityLevelId = /*@__PURE__*/ S.String;
 
 export type GetResponseActionsItemSecurityLevelValue =
@@ -3224,7 +3520,8 @@ export type GetResponseActionsItemSecurityLevelValue =
   | "low"
   | "medium"
   | "high"
-  | "under_attack";
+  | "under_attack"
+  | (string & {});
 export const GetResponseActionsItemSecurityLevelValue = /*@__PURE__*/ S.String;
 
 export interface GetResponseActionsItemSecurityLevel {
@@ -3242,11 +3539,15 @@ export const GetResponseActionsItemSecurityLevel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseActionsItemSecurityLevel>;
 
 export type GetResponseActionsItemSortQueryStringForCacheId =
-  "sort_query_string_for_cache";
+  | "sort_query_string_for_cache"
+  | (string & {});
 export const GetResponseActionsItemSortQueryStringForCacheId =
   /*@__PURE__*/ S.String;
 
-export type GetResponseActionsItemSortQueryStringForCacheValue = "on" | "off";
+export type GetResponseActionsItemSortQueryStringForCacheValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const GetResponseActionsItemSortQueryStringForCacheValue =
   /*@__PURE__*/ S.String;
 
@@ -3266,7 +3567,7 @@ export const GetResponseActionsItemSortQueryStringForCache =
     identifier: "GetResponseActionsItemSortQueryStringForCache",
   }) as any as S.Schema<GetResponseActionsItemSortQueryStringForCache>;
 
-export type GetResponseActionsItemSSLId = "ssl";
+export type GetResponseActionsItemSSLId = "ssl" | (string & {});
 export const GetResponseActionsItemSSLId = /*@__PURE__*/ S.String;
 
 export type GetResponseActionsItemSSLValue =
@@ -3274,7 +3575,8 @@ export type GetResponseActionsItemSSLValue =
   | "flexible"
   | "full"
   | "strict"
-  | "origin_pull";
+  | "origin_pull"
+  | (string & {});
 export const GetResponseActionsItemSSLValue = /*@__PURE__*/ S.String;
 
 export interface GetResponseActionsItemSSL {
@@ -3293,11 +3595,15 @@ export const GetResponseActionsItemSSL = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseActionsItemSSL>;
 
 export type GetResponseActionsItemTrueClientIPHeaderId =
-  "true_client_ip_header";
+  | "true_client_ip_header"
+  | (string & {});
 export const GetResponseActionsItemTrueClientIPHeaderId =
   /*@__PURE__*/ S.String;
 
-export type GetResponseActionsItemTrueClientIPHeaderValue = "on" | "off";
+export type GetResponseActionsItemTrueClientIPHeaderValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const GetResponseActionsItemTrueClientIPHeaderValue =
   /*@__PURE__*/ S.String;
 
@@ -3317,10 +3623,10 @@ export const GetResponseActionsItemTrueClientIPHeader = /*@__PURE__*/ S.suspend(
   identifier: "GetResponseActionsItemTrueClientIPHeader",
 }) as any as S.Schema<GetResponseActionsItemTrueClientIPHeader>;
 
-export type GetResponseActionsItemWAFId = "waf";
+export type GetResponseActionsItemWAFId = "waf" | (string & {});
 export const GetResponseActionsItemWAFId = /*@__PURE__*/ S.String;
 
-export type GetResponseActionsItemWAFValue = "on" | "off";
+export type GetResponseActionsItemWAFValue = "on" | "off" | (string & {});
 export const GetResponseActionsItemWAFValue = /*@__PURE__*/ S.String;
 
 export interface GetResponseActionsItemWAF {
@@ -3417,7 +3723,7 @@ export const GetResponseActionsList = /*@__PURE__*/ S.Array(
   GetResponseActionsItem,
 ) as any as S.Schema<GetResponseActionsList>;
 
-export type GetResponseStatus = "active" | "disabled";
+export type GetResponseStatus = "active" | "disabled" | (string & {});
 export const GetResponseStatus = /*@__PURE__*/ S.String;
 
 export type GetResponseTargetsItemConstraintOperator =
@@ -3425,7 +3731,8 @@ export type GetResponseTargetsItemConstraintOperator =
   | "contains"
   | "equals"
   | "not_equal"
-  | "not_contain";
+  | "not_contain"
+  | (string & {});
 export const GetResponseTargetsItemConstraintOperator = /*@__PURE__*/ S.String;
 
 export interface GetResponseTargetsItemConstraint {
@@ -3443,7 +3750,7 @@ export const GetResponseTargetsItemConstraint = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseTargetsItemConstraint",
 }) as any as S.Schema<GetResponseTargetsItemConstraint>;
 
-export type GetResponseTargetsItemTarget = "url";
+export type GetResponseTargetsItemTarget = "url" | (string & {});
 export const GetResponseTargetsItemTarget = /*@__PURE__*/ S.String;
 
 export interface GetResponseTargetsItem {
@@ -3497,16 +3804,16 @@ export const GetPageRuleResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPageRuleResponse",
 }) as any as S.Schema<GetPageRuleResponse>;
 
-export type ListRequestDirection = "asc" | "desc";
+export type ListRequestDirection = "asc" | "desc" | (string & {});
 export const ListRequestDirection = /*@__PURE__*/ S.String;
 
-export type ListRequestMatch = "any" | "all";
+export type ListRequestMatch = "any" | "all" | (string & {});
 export const ListRequestMatch = /*@__PURE__*/ S.String;
 
-export type ListRequestOrder = "status" | "priority";
+export type ListRequestOrder = "status" | "priority" | (string & {});
 export const ListRequestOrder = /*@__PURE__*/ S.String;
 
-export type ListRequestStatus = "active" | "disabled";
+export type ListRequestStatus = "active" | "disabled" | (string & {});
 export const ListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ListPageRulesRequest {
@@ -3537,7 +3844,9 @@ export const ListPageRulesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPageRulesRequest",
 }) as any as S.Schema<ListPageRulesRequest>;
 
-export type ListResultItemActionsItemAlwaysUseHTTPSId = "always_use_https";
+export type ListResultItemActionsItemAlwaysUseHTTPSId =
+  | "always_use_https"
+  | (string & {});
 export const ListResultItemActionsItemAlwaysUseHTTPSId = /*@__PURE__*/ S.String;
 
 export interface ListResultItemActionsItemAlwaysUseHTTPS {
@@ -3554,11 +3863,15 @@ export const ListResultItemActionsItemAlwaysUseHTTPS = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListResultItemActionsItemAlwaysUseHTTPS>;
 
 export type ListResultItemActionsItemAutomaticHTTPSRewritesId =
-  "automatic_https_rewrites";
+  | "automatic_https_rewrites"
+  | (string & {});
 export const ListResultItemActionsItemAutomaticHTTPSRewritesId =
   /*@__PURE__*/ S.String;
 
-export type ListResultItemActionsItemAutomaticHTTPSRewritesValue = "on" | "off";
+export type ListResultItemActionsItemAutomaticHTTPSRewritesValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const ListResultItemActionsItemAutomaticHTTPSRewritesValue =
   /*@__PURE__*/ S.String;
 
@@ -3578,7 +3891,9 @@ export const ListResultItemActionsItemAutomaticHTTPSRewrites =
     identifier: "ListResultItemActionsItemAutomaticHTTPSRewrites",
   }) as any as S.Schema<ListResultItemActionsItemAutomaticHTTPSRewrites>;
 
-export type ListResultItemActionsItemBrowserCacheTTLId = "browser_cache_ttl";
+export type ListResultItemActionsItemBrowserCacheTTLId =
+  | "browser_cache_ttl"
+  | (string & {});
 export const ListResultItemActionsItemBrowserCacheTTLId =
   /*@__PURE__*/ S.String;
 
@@ -3598,10 +3913,15 @@ export const ListResultItemActionsItemBrowserCacheTTL = /*@__PURE__*/ S.suspend(
   identifier: "ListResultItemActionsItemBrowserCacheTTL",
 }) as any as S.Schema<ListResultItemActionsItemBrowserCacheTTL>;
 
-export type ListResultItemActionsItemBrowserCheckId = "browser_check";
+export type ListResultItemActionsItemBrowserCheckId =
+  | "browser_check"
+  | (string & {});
 export const ListResultItemActionsItemBrowserCheckId = /*@__PURE__*/ S.String;
 
-export type ListResultItemActionsItemBrowserCheckValue = "on" | "off";
+export type ListResultItemActionsItemBrowserCheckValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const ListResultItemActionsItemBrowserCheckValue =
   /*@__PURE__*/ S.String;
 
@@ -3622,7 +3942,8 @@ export const ListResultItemActionsItemBrowserCheck = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListResultItemActionsItemBrowserCheck>;
 
 export type ListResultItemActionsItemBypassCacheOnCookieId =
-  "bypass_cache_on_cookie";
+  | "bypass_cache_on_cookie"
+  | (string & {});
 export const ListResultItemActionsItemBypassCacheOnCookieId =
   /*@__PURE__*/ S.String;
 
@@ -3643,11 +3964,15 @@ export const ListResultItemActionsItemBypassCacheOnCookie =
   }) as any as S.Schema<ListResultItemActionsItemBypassCacheOnCookie>;
 
 export type ListResultItemActionsItemCacheByDeviceTypeId =
-  "cache_by_device_type";
+  | "cache_by_device_type"
+  | (string & {});
 export const ListResultItemActionsItemCacheByDeviceTypeId =
   /*@__PURE__*/ S.String;
 
-export type ListResultItemActionsItemCacheByDeviceTypeValue = "on" | "off";
+export type ListResultItemActionsItemCacheByDeviceTypeValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const ListResultItemActionsItemCacheByDeviceTypeValue =
   /*@__PURE__*/ S.String;
 
@@ -3668,11 +3993,15 @@ export const ListResultItemActionsItemCacheByDeviceType =
   }) as any as S.Schema<ListResultItemActionsItemCacheByDeviceType>;
 
 export type ListResultItemActionsItemCacheDeceptionArmorId =
-  "cache_deception_armor";
+  | "cache_deception_armor"
+  | (string & {});
 export const ListResultItemActionsItemCacheDeceptionArmorId =
   /*@__PURE__*/ S.String;
 
-export type ListResultItemActionsItemCacheDeceptionArmorValue = "on" | "off";
+export type ListResultItemActionsItemCacheDeceptionArmorValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const ListResultItemActionsItemCacheDeceptionArmorValue =
   /*@__PURE__*/ S.String;
 
@@ -3692,7 +4021,9 @@ export const ListResultItemActionsItemCacheDeceptionArmor =
     identifier: "ListResultItemActionsItemCacheDeceptionArmor",
   }) as any as S.Schema<ListResultItemActionsItemCacheDeceptionArmor>;
 
-export type ListResultItemActionsItemCacheKeyFieldsId = "cache_key_fields";
+export type ListResultItemActionsItemCacheKeyFieldsId =
+  | "cache_key_fields"
+  | (string & {});
 export const ListResultItemActionsItemCacheKeyFieldsId = /*@__PURE__*/ S.String;
 
 export type ListResultItemActionsItemCacheKeyFieldsValueCookieCheckPresenceList =
@@ -3793,7 +4124,7 @@ export const ListResultItemActionsItemCacheKeyFieldsValueHost =
   }) as any as S.Schema<ListResultItemActionsItemCacheKeyFieldsValueHost>;
 
 export type ListResultItemActionsItemCacheKeyFieldsValueQueryStringExcludeEnum =
-  "*";
+  "*" | (string & {});
 export const ListResultItemActionsItemCacheKeyFieldsValueQueryStringExcludeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3811,7 +4142,7 @@ export const ListResultItemActionsItemCacheKeyFieldsValueQueryStringExclude =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export type ListResultItemActionsItemCacheKeyFieldsValueQueryStringIncludeEnum =
-  "*";
+  "*" | (string & {});
 export const ListResultItemActionsItemCacheKeyFieldsValueQueryStringIncludeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3911,7 +4242,9 @@ export const ListResultItemActionsItemCacheKeyFields = /*@__PURE__*/ S.suspend(
   identifier: "ListResultItemActionsItemCacheKeyFields",
 }) as any as S.Schema<ListResultItemActionsItemCacheKeyFields>;
 
-export type ListResultItemActionsItemCacheLevelId = "cache_level";
+export type ListResultItemActionsItemCacheLevelId =
+  | "cache_level"
+  | (string & {});
 export const ListResultItemActionsItemCacheLevelId = /*@__PURE__*/ S.String;
 
 export type ListResultItemActionsItemCacheLevelValue =
@@ -3919,7 +4252,8 @@ export type ListResultItemActionsItemCacheLevelValue =
   | "basic"
   | "simplified"
   | "aggressive"
-  | "cache_everything";
+  | "cache_everything"
+  | (string & {});
 export const ListResultItemActionsItemCacheLevelValue = /*@__PURE__*/ S.String;
 
 export interface ListResultItemActionsItemCacheLevel {
@@ -3937,7 +4271,9 @@ export const ListResultItemActionsItemCacheLevel = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemActionsItemCacheLevel",
 }) as any as S.Schema<ListResultItemActionsItemCacheLevel>;
 
-export type ListResultItemActionsItemCacheOnCookieId = "cache_on_cookie";
+export type ListResultItemActionsItemCacheOnCookieId =
+  | "cache_on_cookie"
+  | (string & {});
 export const ListResultItemActionsItemCacheOnCookieId = /*@__PURE__*/ S.String;
 
 export interface ListResultItemActionsItemCacheOnCookie {
@@ -3956,13 +4292,16 @@ export const ListResultItemActionsItemCacheOnCookie = /*@__PURE__*/ S.suspend(
   identifier: "ListResultItemActionsItemCacheOnCookie",
 }) as any as S.Schema<ListResultItemActionsItemCacheOnCookie>;
 
-export type ListResultItemActionsItemCacheTTLByStatusId = "cache_ttl_by_status";
+export type ListResultItemActionsItemCacheTTLByStatusId =
+  | "cache_ttl_by_status"
+  | (string & {});
 export const ListResultItemActionsItemCacheTTLByStatusId =
   /*@__PURE__*/ S.String;
 
 export type ListResultItemActionsItemCacheTTLByStatusValueCase0 =
   | "no-cache"
-  | "no-store";
+  | "no-store"
+  | (string & {});
 export const ListResultItemActionsItemCacheTTLByStatusValueCase0 =
   /*@__PURE__*/ S.String;
 
@@ -3988,7 +4327,9 @@ export const ListResultItemActionsItemCacheTTLByStatus =
     identifier: "ListResultItemActionsItemCacheTTLByStatus",
   }) as any as S.Schema<ListResultItemActionsItemCacheTTLByStatus>;
 
-export type ListResultItemActionsItemDisableAppsId = "disable_apps";
+export type ListResultItemActionsItemDisableAppsId =
+  | "disable_apps"
+  | (string & {});
 export const ListResultItemActionsItemDisableAppsId = /*@__PURE__*/ S.String;
 
 export interface ListResultItemActionsItemDisableApps {
@@ -4005,7 +4346,8 @@ export const ListResultItemActionsItemDisableApps = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListResultItemActionsItemDisableApps>;
 
 export type ListResultItemActionsItemDisablePerformanceId =
-  "disable_performance";
+  | "disable_performance"
+  | (string & {});
 export const ListResultItemActionsItemDisablePerformanceId =
   /*@__PURE__*/ S.String;
 
@@ -4022,7 +4364,9 @@ export const ListResultItemActionsItemDisablePerformance =
     identifier: "ListResultItemActionsItemDisablePerformance",
   }) as any as S.Schema<ListResultItemActionsItemDisablePerformance>;
 
-export type ListResultItemActionsItemDisableSecurityId = "disable_security";
+export type ListResultItemActionsItemDisableSecurityId =
+  | "disable_security"
+  | (string & {});
 export const ListResultItemActionsItemDisableSecurityId =
   /*@__PURE__*/ S.String;
 
@@ -4039,7 +4383,9 @@ export const ListResultItemActionsItemDisableSecurity = /*@__PURE__*/ S.suspend(
   identifier: "ListResultItemActionsItemDisableSecurity",
 }) as any as S.Schema<ListResultItemActionsItemDisableSecurity>;
 
-export type ListResultItemActionsItemDisableZarazId = "disable_zaraz";
+export type ListResultItemActionsItemDisableZarazId =
+  | "disable_zaraz"
+  | (string & {});
 export const ListResultItemActionsItemDisableZarazId = /*@__PURE__*/ S.String;
 
 export interface ListResultItemActionsItemDisableZaraz {
@@ -4055,7 +4401,9 @@ export const ListResultItemActionsItemDisableZaraz = /*@__PURE__*/ S.suspend(
   identifier: "ListResultItemActionsItemDisableZaraz",
 }) as any as S.Schema<ListResultItemActionsItemDisableZaraz>;
 
-export type ListResultItemActionsItemEdgeCacheTTLId = "edge_cache_ttl";
+export type ListResultItemActionsItemEdgeCacheTTLId =
+  | "edge_cache_ttl"
+  | (string & {});
 export const ListResultItemActionsItemEdgeCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface ListResultItemActionsItemEdgeCacheTTL {
@@ -4073,11 +4421,16 @@ export const ListResultItemActionsItemEdgeCacheTTL = /*@__PURE__*/ S.suspend(
   identifier: "ListResultItemActionsItemEdgeCacheTTL",
 }) as any as S.Schema<ListResultItemActionsItemEdgeCacheTTL>;
 
-export type ListResultItemActionsItemEmailObfuscationId = "email_obfuscation";
+export type ListResultItemActionsItemEmailObfuscationId =
+  | "email_obfuscation"
+  | (string & {});
 export const ListResultItemActionsItemEmailObfuscationId =
   /*@__PURE__*/ S.String;
 
-export type ListResultItemActionsItemEmailObfuscationValue = "on" | "off";
+export type ListResultItemActionsItemEmailObfuscationValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const ListResultItemActionsItemEmailObfuscationValue =
   /*@__PURE__*/ S.String;
 
@@ -4098,11 +4451,15 @@ export const ListResultItemActionsItemEmailObfuscation =
   }) as any as S.Schema<ListResultItemActionsItemEmailObfuscation>;
 
 export type ListResultItemActionsItemExplicitCacheControlId =
-  "explicit_cache_control";
+  | "explicit_cache_control"
+  | (string & {});
 export const ListResultItemActionsItemExplicitCacheControlId =
   /*@__PURE__*/ S.String;
 
-export type ListResultItemActionsItemExplicitCacheControlValue = "on" | "off";
+export type ListResultItemActionsItemExplicitCacheControlValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const ListResultItemActionsItemExplicitCacheControlValue =
   /*@__PURE__*/ S.String;
 
@@ -4122,10 +4479,15 @@ export const ListResultItemActionsItemExplicitCacheControl =
     identifier: "ListResultItemActionsItemExplicitCacheControl",
   }) as any as S.Schema<ListResultItemActionsItemExplicitCacheControl>;
 
-export type ListResultItemActionsItemForwardingURLId = "forwarding_url";
+export type ListResultItemActionsItemForwardingURLId =
+  | "forwarding_url"
+  | (string & {});
 export const ListResultItemActionsItemForwardingURLId = /*@__PURE__*/ S.String;
 
-export type ListResultItemActionsItemForwardingURLValueStatusCode = 301 | 302;
+export type ListResultItemActionsItemForwardingURLValueStatusCode =
+  | 301
+  | 302
+  | (number & {});
 export const ListResultItemActionsItemForwardingURLValueStatusCode =
   /*@__PURE__*/ S.Number;
 
@@ -4165,7 +4527,8 @@ export const ListResultItemActionsItemForwardingURL = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListResultItemActionsItemForwardingURL>;
 
 export type ListResultItemActionsItemHostHeaderOverrideId =
-  "host_header_override";
+  | "host_header_override"
+  | (string & {});
 export const ListResultItemActionsItemHostHeaderOverrideId =
   /*@__PURE__*/ S.String;
 
@@ -4185,10 +4548,15 @@ export const ListResultItemActionsItemHostHeaderOverride =
     identifier: "ListResultItemActionsItemHostHeaderOverride",
   }) as any as S.Schema<ListResultItemActionsItemHostHeaderOverride>;
 
-export type ListResultItemActionsItemIPGeolocationId = "ip_geolocation";
+export type ListResultItemActionsItemIPGeolocationId =
+  | "ip_geolocation"
+  | (string & {});
 export const ListResultItemActionsItemIPGeolocationId = /*@__PURE__*/ S.String;
 
-export type ListResultItemActionsItemIPGeolocationValue = "on" | "off";
+export type ListResultItemActionsItemIPGeolocationValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const ListResultItemActionsItemIPGeolocationValue =
   /*@__PURE__*/ S.String;
 
@@ -4208,10 +4576,10 @@ export const ListResultItemActionsItemIPGeolocation = /*@__PURE__*/ S.suspend(
   identifier: "ListResultItemActionsItemIPGeolocation",
 }) as any as S.Schema<ListResultItemActionsItemIPGeolocation>;
 
-export type ListResultItemActionsItemMirageId = "mirage";
+export type ListResultItemActionsItemMirageId = "mirage" | (string & {});
 export const ListResultItemActionsItemMirageId = /*@__PURE__*/ S.String;
 
-export type ListResultItemActionsItemMirageValue = "on" | "off";
+export type ListResultItemActionsItemMirageValue = "on" | "off" | (string & {});
 export const ListResultItemActionsItemMirageValue = /*@__PURE__*/ S.String;
 
 export interface ListResultItemActionsItemMirage {
@@ -4230,13 +4598,15 @@ export const ListResultItemActionsItemMirage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemActionsItemMirage>;
 
 export type ListResultItemActionsItemOpportunisticEncryptionId =
-  "opportunistic_encryption";
+  | "opportunistic_encryption"
+  | (string & {});
 export const ListResultItemActionsItemOpportunisticEncryptionId =
   /*@__PURE__*/ S.String;
 
 export type ListResultItemActionsItemOpportunisticEncryptionValue =
   | "on"
-  | "off";
+  | "off"
+  | (string & {});
 export const ListResultItemActionsItemOpportunisticEncryptionValue =
   /*@__PURE__*/ S.String;
 
@@ -4257,13 +4627,15 @@ export const ListResultItemActionsItemOpportunisticEncryption =
   }) as any as S.Schema<ListResultItemActionsItemOpportunisticEncryption>;
 
 export type ListResultItemActionsItemOriginErrorPagePassThruId =
-  "origin_error_page_pass_thru";
+  | "origin_error_page_pass_thru"
+  | (string & {});
 export const ListResultItemActionsItemOriginErrorPagePassThruId =
   /*@__PURE__*/ S.String;
 
 export type ListResultItemActionsItemOriginErrorPagePassThruValue =
   | "on"
-  | "off";
+  | "off"
+  | (string & {});
 export const ListResultItemActionsItemOriginErrorPagePassThruValue =
   /*@__PURE__*/ S.String;
 
@@ -4283,10 +4655,14 @@ export const ListResultItemActionsItemOriginErrorPagePassThru =
     identifier: "ListResultItemActionsItemOriginErrorPagePassThru",
   }) as any as S.Schema<ListResultItemActionsItemOriginErrorPagePassThru>;
 
-export type ListResultItemActionsItemPolishId = "polish";
+export type ListResultItemActionsItemPolishId = "polish" | (string & {});
 export const ListResultItemActionsItemPolishId = /*@__PURE__*/ S.String;
 
-export type ListResultItemActionsItemPolishValue = "off" | "lossless" | "lossy";
+export type ListResultItemActionsItemPolishValue =
+  | "off"
+  | "lossless"
+  | "lossy"
+  | (string & {});
 export const ListResultItemActionsItemPolishValue = /*@__PURE__*/ S.String;
 
 export interface ListResultItemActionsItemPolish {
@@ -4304,7 +4680,9 @@ export const ListResultItemActionsItemPolish = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemActionsItemPolish",
 }) as any as S.Schema<ListResultItemActionsItemPolish>;
 
-export type ListResultItemActionsItemResolveOverrideId = "resolve_override";
+export type ListResultItemActionsItemResolveOverrideId =
+  | "resolve_override"
+  | (string & {});
 export const ListResultItemActionsItemResolveOverrideId =
   /*@__PURE__*/ S.String;
 
@@ -4325,11 +4703,15 @@ export const ListResultItemActionsItemResolveOverride = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListResultItemActionsItemResolveOverride>;
 
 export type ListResultItemActionsItemRespectStrongEtagId =
-  "respect_strong_etag";
+  | "respect_strong_etag"
+  | (string & {});
 export const ListResultItemActionsItemRespectStrongEtagId =
   /*@__PURE__*/ S.String;
 
-export type ListResultItemActionsItemRespectStrongEtagValue = "on" | "off";
+export type ListResultItemActionsItemRespectStrongEtagValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const ListResultItemActionsItemRespectStrongEtagValue =
   /*@__PURE__*/ S.String;
 
@@ -4349,11 +4731,16 @@ export const ListResultItemActionsItemRespectStrongEtag =
     identifier: "ListResultItemActionsItemRespectStrongEtag",
   }) as any as S.Schema<ListResultItemActionsItemRespectStrongEtag>;
 
-export type ListResultItemActionsItemResponseBufferingId = "response_buffering";
+export type ListResultItemActionsItemResponseBufferingId =
+  | "response_buffering"
+  | (string & {});
 export const ListResultItemActionsItemResponseBufferingId =
   /*@__PURE__*/ S.String;
 
-export type ListResultItemActionsItemResponseBufferingValue = "on" | "off";
+export type ListResultItemActionsItemResponseBufferingValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const ListResultItemActionsItemResponseBufferingValue =
   /*@__PURE__*/ S.String;
 
@@ -4373,10 +4760,15 @@ export const ListResultItemActionsItemResponseBuffering =
     identifier: "ListResultItemActionsItemResponseBuffering",
   }) as any as S.Schema<ListResultItemActionsItemResponseBuffering>;
 
-export type ListResultItemActionsItemRocketLoaderId = "rocket_loader";
+export type ListResultItemActionsItemRocketLoaderId =
+  | "rocket_loader"
+  | (string & {});
 export const ListResultItemActionsItemRocketLoaderId = /*@__PURE__*/ S.String;
 
-export type ListResultItemActionsItemRocketLoaderValue = "on" | "off";
+export type ListResultItemActionsItemRocketLoaderValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const ListResultItemActionsItemRocketLoaderValue =
   /*@__PURE__*/ S.String;
 
@@ -4396,7 +4788,9 @@ export const ListResultItemActionsItemRocketLoader = /*@__PURE__*/ S.suspend(
   identifier: "ListResultItemActionsItemRocketLoader",
 }) as any as S.Schema<ListResultItemActionsItemRocketLoader>;
 
-export type ListResultItemActionsItemSecurityLevelId = "security_level";
+export type ListResultItemActionsItemSecurityLevelId =
+  | "security_level"
+  | (string & {});
 export const ListResultItemActionsItemSecurityLevelId = /*@__PURE__*/ S.String;
 
 export type ListResultItemActionsItemSecurityLevelValue =
@@ -4405,7 +4799,8 @@ export type ListResultItemActionsItemSecurityLevelValue =
   | "low"
   | "medium"
   | "high"
-  | "under_attack";
+  | "under_attack"
+  | (string & {});
 export const ListResultItemActionsItemSecurityLevelValue =
   /*@__PURE__*/ S.String;
 
@@ -4425,13 +4820,15 @@ export const ListResultItemActionsItemSecurityLevel = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListResultItemActionsItemSecurityLevel>;
 
 export type ListResultItemActionsItemSortQueryStringForCacheId =
-  "sort_query_string_for_cache";
+  | "sort_query_string_for_cache"
+  | (string & {});
 export const ListResultItemActionsItemSortQueryStringForCacheId =
   /*@__PURE__*/ S.String;
 
 export type ListResultItemActionsItemSortQueryStringForCacheValue =
   | "on"
-  | "off";
+  | "off"
+  | (string & {});
 export const ListResultItemActionsItemSortQueryStringForCacheValue =
   /*@__PURE__*/ S.String;
 
@@ -4451,7 +4848,7 @@ export const ListResultItemActionsItemSortQueryStringForCache =
     identifier: "ListResultItemActionsItemSortQueryStringForCache",
   }) as any as S.Schema<ListResultItemActionsItemSortQueryStringForCache>;
 
-export type ListResultItemActionsItemSSLId = "ssl";
+export type ListResultItemActionsItemSSLId = "ssl" | (string & {});
 export const ListResultItemActionsItemSSLId = /*@__PURE__*/ S.String;
 
 export type ListResultItemActionsItemSSLValue =
@@ -4459,7 +4856,8 @@ export type ListResultItemActionsItemSSLValue =
   | "flexible"
   | "full"
   | "strict"
-  | "origin_pull";
+  | "origin_pull"
+  | (string & {});
 export const ListResultItemActionsItemSSLValue = /*@__PURE__*/ S.String;
 
 export interface ListResultItemActionsItemSSL {
@@ -4478,11 +4876,15 @@ export const ListResultItemActionsItemSSL = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemActionsItemSSL>;
 
 export type ListResultItemActionsItemTrueClientIPHeaderId =
-  "true_client_ip_header";
+  | "true_client_ip_header"
+  | (string & {});
 export const ListResultItemActionsItemTrueClientIPHeaderId =
   /*@__PURE__*/ S.String;
 
-export type ListResultItemActionsItemTrueClientIPHeaderValue = "on" | "off";
+export type ListResultItemActionsItemTrueClientIPHeaderValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const ListResultItemActionsItemTrueClientIPHeaderValue =
   /*@__PURE__*/ S.String;
 
@@ -4502,10 +4904,10 @@ export const ListResultItemActionsItemTrueClientIPHeader =
     identifier: "ListResultItemActionsItemTrueClientIPHeader",
   }) as any as S.Schema<ListResultItemActionsItemTrueClientIPHeader>;
 
-export type ListResultItemActionsItemWAFId = "waf";
+export type ListResultItemActionsItemWAFId = "waf" | (string & {});
 export const ListResultItemActionsItemWAFId = /*@__PURE__*/ S.String;
 
-export type ListResultItemActionsItemWAFValue = "on" | "off";
+export type ListResultItemActionsItemWAFValue = "on" | "off" | (string & {});
 export const ListResultItemActionsItemWAFValue = /*@__PURE__*/ S.String;
 
 export interface ListResultItemActionsItemWAF {
@@ -4603,7 +5005,7 @@ export const ListResultItemActionsList = /*@__PURE__*/ S.Array(
   ListResultItemActionsItem,
 ) as any as S.Schema<ListResultItemActionsList>;
 
-export type ListResultItemStatus = "active" | "disabled";
+export type ListResultItemStatus = "active" | "disabled" | (string & {});
 export const ListResultItemStatus = /*@__PURE__*/ S.String;
 
 export type ListResultItemTargetsItemConstraintOperator =
@@ -4611,7 +5013,8 @@ export type ListResultItemTargetsItemConstraintOperator =
   | "contains"
   | "equals"
   | "not_equal"
-  | "not_contain";
+  | "not_contain"
+  | (string & {});
 export const ListResultItemTargetsItemConstraintOperator =
   /*@__PURE__*/ S.String;
 
@@ -4630,7 +5033,7 @@ export const ListResultItemTargetsItemConstraint = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemTargetsItemConstraint",
 }) as any as S.Schema<ListResultItemTargetsItemConstraint>;
 
-export type ListResultItemTargetsItemTarget = "url";
+export type ListResultItemTargetsItemTarget = "url" | (string & {});
 export const ListResultItemTargetsItemTarget = /*@__PURE__*/ S.String;
 
 export interface ListResultItemTargetsItem {
@@ -4694,7 +5097,9 @@ export const ListPageRulesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPageRulesResponse",
 }) as any as S.Schema<ListPageRulesResponse>;
 
-export type EditRequestActionsItemAlwaysUseHTTPSId = "always_use_https";
+export type EditRequestActionsItemAlwaysUseHTTPSId =
+  | "always_use_https"
+  | (string & {});
 export const EditRequestActionsItemAlwaysUseHTTPSId = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemAlwaysUseHTTPS {
@@ -4711,11 +5116,15 @@ export const EditRequestActionsItemAlwaysUseHTTPS = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EditRequestActionsItemAlwaysUseHTTPS>;
 
 export type EditRequestActionsItemAutomaticHTTPSRewritesId =
-  "automatic_https_rewrites";
+  | "automatic_https_rewrites"
+  | (string & {});
 export const EditRequestActionsItemAutomaticHTTPSRewritesId =
   /*@__PURE__*/ S.String;
 
-export type EditRequestActionsItemAutomaticHTTPSRewritesValue = "on" | "off";
+export type EditRequestActionsItemAutomaticHTTPSRewritesValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditRequestActionsItemAutomaticHTTPSRewritesValue =
   /*@__PURE__*/ S.String;
 
@@ -4735,7 +5144,9 @@ export const EditRequestActionsItemAutomaticHTTPSRewrites =
     identifier: "EditRequestActionsItemAutomaticHTTPSRewrites",
   }) as any as S.Schema<EditRequestActionsItemAutomaticHTTPSRewrites>;
 
-export type EditRequestActionsItemBrowserCacheTTLId = "browser_cache_ttl";
+export type EditRequestActionsItemBrowserCacheTTLId =
+  | "browser_cache_ttl"
+  | (string & {});
 export const EditRequestActionsItemBrowserCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemBrowserCacheTTL {
@@ -4754,10 +5165,15 @@ export const EditRequestActionsItemBrowserCacheTTL = /*@__PURE__*/ S.suspend(
   identifier: "EditRequestActionsItemBrowserCacheTTL",
 }) as any as S.Schema<EditRequestActionsItemBrowserCacheTTL>;
 
-export type EditRequestActionsItemBrowserCheckId = "browser_check";
+export type EditRequestActionsItemBrowserCheckId =
+  | "browser_check"
+  | (string & {});
 export const EditRequestActionsItemBrowserCheckId = /*@__PURE__*/ S.String;
 
-export type EditRequestActionsItemBrowserCheckValue = "on" | "off";
+export type EditRequestActionsItemBrowserCheckValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditRequestActionsItemBrowserCheckValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemBrowserCheck {
@@ -4776,7 +5192,8 @@ export const EditRequestActionsItemBrowserCheck = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditRequestActionsItemBrowserCheck>;
 
 export type EditRequestActionsItemBypassCacheOnCookieId =
-  "bypass_cache_on_cookie";
+  | "bypass_cache_on_cookie"
+  | (string & {});
 export const EditRequestActionsItemBypassCacheOnCookieId =
   /*@__PURE__*/ S.String;
 
@@ -4796,10 +5213,15 @@ export const EditRequestActionsItemBypassCacheOnCookie =
     identifier: "EditRequestActionsItemBypassCacheOnCookie",
   }) as any as S.Schema<EditRequestActionsItemBypassCacheOnCookie>;
 
-export type EditRequestActionsItemCacheByDeviceTypeId = "cache_by_device_type";
+export type EditRequestActionsItemCacheByDeviceTypeId =
+  | "cache_by_device_type"
+  | (string & {});
 export const EditRequestActionsItemCacheByDeviceTypeId = /*@__PURE__*/ S.String;
 
-export type EditRequestActionsItemCacheByDeviceTypeValue = "on" | "off";
+export type EditRequestActionsItemCacheByDeviceTypeValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditRequestActionsItemCacheByDeviceTypeValue =
   /*@__PURE__*/ S.String;
 
@@ -4820,11 +5242,15 @@ export const EditRequestActionsItemCacheByDeviceType = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EditRequestActionsItemCacheByDeviceType>;
 
 export type EditRequestActionsItemCacheDeceptionArmorId =
-  "cache_deception_armor";
+  | "cache_deception_armor"
+  | (string & {});
 export const EditRequestActionsItemCacheDeceptionArmorId =
   /*@__PURE__*/ S.String;
 
-export type EditRequestActionsItemCacheDeceptionArmorValue = "on" | "off";
+export type EditRequestActionsItemCacheDeceptionArmorValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditRequestActionsItemCacheDeceptionArmorValue =
   /*@__PURE__*/ S.String;
 
@@ -4844,7 +5270,9 @@ export const EditRequestActionsItemCacheDeceptionArmor =
     identifier: "EditRequestActionsItemCacheDeceptionArmor",
   }) as any as S.Schema<EditRequestActionsItemCacheDeceptionArmor>;
 
-export type EditRequestActionsItemCacheKeyFieldsId = "cache_key_fields";
+export type EditRequestActionsItemCacheKeyFieldsId =
+  | "cache_key_fields"
+  | (string & {});
 export const EditRequestActionsItemCacheKeyFieldsId = /*@__PURE__*/ S.String;
 
 export type EditRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList =
@@ -4945,7 +5373,8 @@ export const EditRequestActionsItemCacheKeyFieldsValueHost =
   }) as any as S.Schema<EditRequestActionsItemCacheKeyFieldsValueHost>;
 
 export type EditRequestActionsItemCacheKeyFieldsValueQueryStringExcludeEnum =
-  "*";
+  | "*"
+  | (string & {});
 export const EditRequestActionsItemCacheKeyFieldsValueQueryStringExcludeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4963,7 +5392,8 @@ export const EditRequestActionsItemCacheKeyFieldsValueQueryStringExclude =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export type EditRequestActionsItemCacheKeyFieldsValueQueryStringIncludeEnum =
-  "*";
+  | "*"
+  | (string & {});
 export const EditRequestActionsItemCacheKeyFieldsValueQueryStringIncludeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5063,7 +5493,7 @@ export const EditRequestActionsItemCacheKeyFields = /*@__PURE__*/ S.suspend(
   identifier: "EditRequestActionsItemCacheKeyFields",
 }) as any as S.Schema<EditRequestActionsItemCacheKeyFields>;
 
-export type EditRequestActionsItemCacheLevelId = "cache_level";
+export type EditRequestActionsItemCacheLevelId = "cache_level" | (string & {});
 export const EditRequestActionsItemCacheLevelId = /*@__PURE__*/ S.String;
 
 export type EditRequestActionsItemCacheLevelValue =
@@ -5071,7 +5501,8 @@ export type EditRequestActionsItemCacheLevelValue =
   | "basic"
   | "simplified"
   | "aggressive"
-  | "cache_everything";
+  | "cache_everything"
+  | (string & {});
 export const EditRequestActionsItemCacheLevelValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemCacheLevel {
@@ -5089,7 +5520,9 @@ export const EditRequestActionsItemCacheLevel = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestActionsItemCacheLevel",
 }) as any as S.Schema<EditRequestActionsItemCacheLevel>;
 
-export type EditRequestActionsItemCacheOnCookieId = "cache_on_cookie";
+export type EditRequestActionsItemCacheOnCookieId =
+  | "cache_on_cookie"
+  | (string & {});
 export const EditRequestActionsItemCacheOnCookieId = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemCacheOnCookie {
@@ -5107,12 +5540,15 @@ export const EditRequestActionsItemCacheOnCookie = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestActionsItemCacheOnCookie",
 }) as any as S.Schema<EditRequestActionsItemCacheOnCookie>;
 
-export type EditRequestActionsItemCacheTTLByStatusId = "cache_ttl_by_status";
+export type EditRequestActionsItemCacheTTLByStatusId =
+  | "cache_ttl_by_status"
+  | (string & {});
 export const EditRequestActionsItemCacheTTLByStatusId = /*@__PURE__*/ S.String;
 
 export type EditRequestActionsItemCacheTTLByStatusValueCase0 =
   | "no-cache"
-  | "no-store";
+  | "no-store"
+  | (string & {});
 export const EditRequestActionsItemCacheTTLByStatusValueCase0 =
   /*@__PURE__*/ S.String;
 
@@ -5138,7 +5574,9 @@ export const EditRequestActionsItemCacheTTLByStatus = /*@__PURE__*/ S.suspend(
   identifier: "EditRequestActionsItemCacheTTLByStatus",
 }) as any as S.Schema<EditRequestActionsItemCacheTTLByStatus>;
 
-export type EditRequestActionsItemDisableAppsId = "disable_apps";
+export type EditRequestActionsItemDisableAppsId =
+  | "disable_apps"
+  | (string & {});
 export const EditRequestActionsItemDisableAppsId = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemDisableApps {
@@ -5153,7 +5591,9 @@ export const EditRequestActionsItemDisableApps = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestActionsItemDisableApps",
 }) as any as S.Schema<EditRequestActionsItemDisableApps>;
 
-export type EditRequestActionsItemDisablePerformanceId = "disable_performance";
+export type EditRequestActionsItemDisablePerformanceId =
+  | "disable_performance"
+  | (string & {});
 export const EditRequestActionsItemDisablePerformanceId =
   /*@__PURE__*/ S.String;
 
@@ -5170,7 +5610,9 @@ export const EditRequestActionsItemDisablePerformance = /*@__PURE__*/ S.suspend(
   identifier: "EditRequestActionsItemDisablePerformance",
 }) as any as S.Schema<EditRequestActionsItemDisablePerformance>;
 
-export type EditRequestActionsItemDisableSecurityId = "disable_security";
+export type EditRequestActionsItemDisableSecurityId =
+  | "disable_security"
+  | (string & {});
 export const EditRequestActionsItemDisableSecurityId = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemDisableSecurity {
@@ -5186,7 +5628,9 @@ export const EditRequestActionsItemDisableSecurity = /*@__PURE__*/ S.suspend(
   identifier: "EditRequestActionsItemDisableSecurity",
 }) as any as S.Schema<EditRequestActionsItemDisableSecurity>;
 
-export type EditRequestActionsItemDisableZarazId = "disable_zaraz";
+export type EditRequestActionsItemDisableZarazId =
+  | "disable_zaraz"
+  | (string & {});
 export const EditRequestActionsItemDisableZarazId = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemDisableZaraz {
@@ -5201,7 +5645,9 @@ export const EditRequestActionsItemDisableZaraz = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestActionsItemDisableZaraz",
 }) as any as S.Schema<EditRequestActionsItemDisableZaraz>;
 
-export type EditRequestActionsItemEdgeCacheTTLId = "edge_cache_ttl";
+export type EditRequestActionsItemEdgeCacheTTLId =
+  | "edge_cache_ttl"
+  | (string & {});
 export const EditRequestActionsItemEdgeCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemEdgeCacheTTL {
@@ -5218,10 +5664,15 @@ export const EditRequestActionsItemEdgeCacheTTL = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestActionsItemEdgeCacheTTL",
 }) as any as S.Schema<EditRequestActionsItemEdgeCacheTTL>;
 
-export type EditRequestActionsItemEmailObfuscationId = "email_obfuscation";
+export type EditRequestActionsItemEmailObfuscationId =
+  | "email_obfuscation"
+  | (string & {});
 export const EditRequestActionsItemEmailObfuscationId = /*@__PURE__*/ S.String;
 
-export type EditRequestActionsItemEmailObfuscationValue = "on" | "off";
+export type EditRequestActionsItemEmailObfuscationValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditRequestActionsItemEmailObfuscationValue =
   /*@__PURE__*/ S.String;
 
@@ -5242,11 +5693,15 @@ export const EditRequestActionsItemEmailObfuscation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EditRequestActionsItemEmailObfuscation>;
 
 export type EditRequestActionsItemExplicitCacheControlId =
-  "explicit_cache_control";
+  | "explicit_cache_control"
+  | (string & {});
 export const EditRequestActionsItemExplicitCacheControlId =
   /*@__PURE__*/ S.String;
 
-export type EditRequestActionsItemExplicitCacheControlValue = "on" | "off";
+export type EditRequestActionsItemExplicitCacheControlValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditRequestActionsItemExplicitCacheControlValue =
   /*@__PURE__*/ S.String;
 
@@ -5266,10 +5721,15 @@ export const EditRequestActionsItemExplicitCacheControl =
     identifier: "EditRequestActionsItemExplicitCacheControl",
   }) as any as S.Schema<EditRequestActionsItemExplicitCacheControl>;
 
-export type EditRequestActionsItemForwardingURLId = "forwarding_url";
+export type EditRequestActionsItemForwardingURLId =
+  | "forwarding_url"
+  | (string & {});
 export const EditRequestActionsItemForwardingURLId = /*@__PURE__*/ S.String;
 
-export type EditRequestActionsItemForwardingURLValueStatusCode = 301 | 302;
+export type EditRequestActionsItemForwardingURLValueStatusCode =
+  | 301
+  | 302
+  | (number & {});
 export const EditRequestActionsItemForwardingURLValueStatusCode =
   /*@__PURE__*/ S.Number;
 
@@ -5307,7 +5767,9 @@ export const EditRequestActionsItemForwardingURL = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestActionsItemForwardingURL",
 }) as any as S.Schema<EditRequestActionsItemForwardingURL>;
 
-export type EditRequestActionsItemHostHeaderOverrideId = "host_header_override";
+export type EditRequestActionsItemHostHeaderOverrideId =
+  | "host_header_override"
+  | (string & {});
 export const EditRequestActionsItemHostHeaderOverrideId =
   /*@__PURE__*/ S.String;
 
@@ -5327,10 +5789,15 @@ export const EditRequestActionsItemHostHeaderOverride = /*@__PURE__*/ S.suspend(
   identifier: "EditRequestActionsItemHostHeaderOverride",
 }) as any as S.Schema<EditRequestActionsItemHostHeaderOverride>;
 
-export type EditRequestActionsItemIPGeolocationId = "ip_geolocation";
+export type EditRequestActionsItemIPGeolocationId =
+  | "ip_geolocation"
+  | (string & {});
 export const EditRequestActionsItemIPGeolocationId = /*@__PURE__*/ S.String;
 
-export type EditRequestActionsItemIPGeolocationValue = "on" | "off";
+export type EditRequestActionsItemIPGeolocationValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditRequestActionsItemIPGeolocationValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemIPGeolocation {
@@ -5348,10 +5815,10 @@ export const EditRequestActionsItemIPGeolocation = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestActionsItemIPGeolocation",
 }) as any as S.Schema<EditRequestActionsItemIPGeolocation>;
 
-export type EditRequestActionsItemMirageId = "mirage";
+export type EditRequestActionsItemMirageId = "mirage" | (string & {});
 export const EditRequestActionsItemMirageId = /*@__PURE__*/ S.String;
 
-export type EditRequestActionsItemMirageValue = "on" | "off";
+export type EditRequestActionsItemMirageValue = "on" | "off" | (string & {});
 export const EditRequestActionsItemMirageValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemMirage {
@@ -5370,11 +5837,15 @@ export const EditRequestActionsItemMirage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditRequestActionsItemMirage>;
 
 export type EditRequestActionsItemOpportunisticEncryptionId =
-  "opportunistic_encryption";
+  | "opportunistic_encryption"
+  | (string & {});
 export const EditRequestActionsItemOpportunisticEncryptionId =
   /*@__PURE__*/ S.String;
 
-export type EditRequestActionsItemOpportunisticEncryptionValue = "on" | "off";
+export type EditRequestActionsItemOpportunisticEncryptionValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditRequestActionsItemOpportunisticEncryptionValue =
   /*@__PURE__*/ S.String;
 
@@ -5395,11 +5866,15 @@ export const EditRequestActionsItemOpportunisticEncryption =
   }) as any as S.Schema<EditRequestActionsItemOpportunisticEncryption>;
 
 export type EditRequestActionsItemOriginErrorPagePassThruId =
-  "origin_error_page_pass_thru";
+  | "origin_error_page_pass_thru"
+  | (string & {});
 export const EditRequestActionsItemOriginErrorPagePassThruId =
   /*@__PURE__*/ S.String;
 
-export type EditRequestActionsItemOriginErrorPagePassThruValue = "on" | "off";
+export type EditRequestActionsItemOriginErrorPagePassThruValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditRequestActionsItemOriginErrorPagePassThruValue =
   /*@__PURE__*/ S.String;
 
@@ -5419,10 +5894,14 @@ export const EditRequestActionsItemOriginErrorPagePassThru =
     identifier: "EditRequestActionsItemOriginErrorPagePassThru",
   }) as any as S.Schema<EditRequestActionsItemOriginErrorPagePassThru>;
 
-export type EditRequestActionsItemPolishId = "polish";
+export type EditRequestActionsItemPolishId = "polish" | (string & {});
 export const EditRequestActionsItemPolishId = /*@__PURE__*/ S.String;
 
-export type EditRequestActionsItemPolishValue = "off" | "lossless" | "lossy";
+export type EditRequestActionsItemPolishValue =
+  | "off"
+  | "lossless"
+  | "lossy"
+  | (string & {});
 export const EditRequestActionsItemPolishValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemPolish {
@@ -5440,7 +5919,9 @@ export const EditRequestActionsItemPolish = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestActionsItemPolish",
 }) as any as S.Schema<EditRequestActionsItemPolish>;
 
-export type EditRequestActionsItemResolveOverrideId = "resolve_override";
+export type EditRequestActionsItemResolveOverrideId =
+  | "resolve_override"
+  | (string & {});
 export const EditRequestActionsItemResolveOverrideId = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemResolveOverride {
@@ -5459,10 +5940,15 @@ export const EditRequestActionsItemResolveOverride = /*@__PURE__*/ S.suspend(
   identifier: "EditRequestActionsItemResolveOverride",
 }) as any as S.Schema<EditRequestActionsItemResolveOverride>;
 
-export type EditRequestActionsItemRespectStrongEtagId = "respect_strong_etag";
+export type EditRequestActionsItemRespectStrongEtagId =
+  | "respect_strong_etag"
+  | (string & {});
 export const EditRequestActionsItemRespectStrongEtagId = /*@__PURE__*/ S.String;
 
-export type EditRequestActionsItemRespectStrongEtagValue = "on" | "off";
+export type EditRequestActionsItemRespectStrongEtagValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditRequestActionsItemRespectStrongEtagValue =
   /*@__PURE__*/ S.String;
 
@@ -5482,10 +5968,15 @@ export const EditRequestActionsItemRespectStrongEtag = /*@__PURE__*/ S.suspend(
   identifier: "EditRequestActionsItemRespectStrongEtag",
 }) as any as S.Schema<EditRequestActionsItemRespectStrongEtag>;
 
-export type EditRequestActionsItemResponseBufferingId = "response_buffering";
+export type EditRequestActionsItemResponseBufferingId =
+  | "response_buffering"
+  | (string & {});
 export const EditRequestActionsItemResponseBufferingId = /*@__PURE__*/ S.String;
 
-export type EditRequestActionsItemResponseBufferingValue = "on" | "off";
+export type EditRequestActionsItemResponseBufferingValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditRequestActionsItemResponseBufferingValue =
   /*@__PURE__*/ S.String;
 
@@ -5505,10 +5996,15 @@ export const EditRequestActionsItemResponseBuffering = /*@__PURE__*/ S.suspend(
   identifier: "EditRequestActionsItemResponseBuffering",
 }) as any as S.Schema<EditRequestActionsItemResponseBuffering>;
 
-export type EditRequestActionsItemRocketLoaderId = "rocket_loader";
+export type EditRequestActionsItemRocketLoaderId =
+  | "rocket_loader"
+  | (string & {});
 export const EditRequestActionsItemRocketLoaderId = /*@__PURE__*/ S.String;
 
-export type EditRequestActionsItemRocketLoaderValue = "on" | "off";
+export type EditRequestActionsItemRocketLoaderValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditRequestActionsItemRocketLoaderValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemRocketLoader {
@@ -5526,7 +6022,9 @@ export const EditRequestActionsItemRocketLoader = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestActionsItemRocketLoader",
 }) as any as S.Schema<EditRequestActionsItemRocketLoader>;
 
-export type EditRequestActionsItemSecurityLevelId = "security_level";
+export type EditRequestActionsItemSecurityLevelId =
+  | "security_level"
+  | (string & {});
 export const EditRequestActionsItemSecurityLevelId = /*@__PURE__*/ S.String;
 
 export type EditRequestActionsItemSecurityLevelValue =
@@ -5535,7 +6033,8 @@ export type EditRequestActionsItemSecurityLevelValue =
   | "low"
   | "medium"
   | "high"
-  | "under_attack";
+  | "under_attack"
+  | (string & {});
 export const EditRequestActionsItemSecurityLevelValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemSecurityLevel {
@@ -5553,11 +6052,15 @@ export const EditRequestActionsItemSecurityLevel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditRequestActionsItemSecurityLevel>;
 
 export type EditRequestActionsItemSortQueryStringForCacheId =
-  "sort_query_string_for_cache";
+  | "sort_query_string_for_cache"
+  | (string & {});
 export const EditRequestActionsItemSortQueryStringForCacheId =
   /*@__PURE__*/ S.String;
 
-export type EditRequestActionsItemSortQueryStringForCacheValue = "on" | "off";
+export type EditRequestActionsItemSortQueryStringForCacheValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditRequestActionsItemSortQueryStringForCacheValue =
   /*@__PURE__*/ S.String;
 
@@ -5577,7 +6080,7 @@ export const EditRequestActionsItemSortQueryStringForCache =
     identifier: "EditRequestActionsItemSortQueryStringForCache",
   }) as any as S.Schema<EditRequestActionsItemSortQueryStringForCache>;
 
-export type EditRequestActionsItemSSLId = "ssl";
+export type EditRequestActionsItemSSLId = "ssl" | (string & {});
 export const EditRequestActionsItemSSLId = /*@__PURE__*/ S.String;
 
 export type EditRequestActionsItemSSLValue =
@@ -5585,7 +6088,8 @@ export type EditRequestActionsItemSSLValue =
   | "flexible"
   | "full"
   | "strict"
-  | "origin_pull";
+  | "origin_pull"
+  | (string & {});
 export const EditRequestActionsItemSSLValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemSSL {
@@ -5604,11 +6108,15 @@ export const EditRequestActionsItemSSL = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditRequestActionsItemSSL>;
 
 export type EditRequestActionsItemTrueClientIPHeaderId =
-  "true_client_ip_header";
+  | "true_client_ip_header"
+  | (string & {});
 export const EditRequestActionsItemTrueClientIPHeaderId =
   /*@__PURE__*/ S.String;
 
-export type EditRequestActionsItemTrueClientIPHeaderValue = "on" | "off";
+export type EditRequestActionsItemTrueClientIPHeaderValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditRequestActionsItemTrueClientIPHeaderValue =
   /*@__PURE__*/ S.String;
 
@@ -5628,10 +6136,10 @@ export const EditRequestActionsItemTrueClientIPHeader = /*@__PURE__*/ S.suspend(
   identifier: "EditRequestActionsItemTrueClientIPHeader",
 }) as any as S.Schema<EditRequestActionsItemTrueClientIPHeader>;
 
-export type EditRequestActionsItemWAFId = "waf";
+export type EditRequestActionsItemWAFId = "waf" | (string & {});
 export const EditRequestActionsItemWAFId = /*@__PURE__*/ S.String;
 
-export type EditRequestActionsItemWAFValue = "on" | "off";
+export type EditRequestActionsItemWAFValue = "on" | "off" | (string & {});
 export const EditRequestActionsItemWAFValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemWAF {
@@ -5728,7 +6236,7 @@ export const EditRequestActionsList = /*@__PURE__*/ S.Array(
   EditRequestActionsItem,
 ) as any as S.Schema<EditRequestActionsList>;
 
-export type EditRequestStatus = "active" | "disabled";
+export type EditRequestStatus = "active" | "disabled" | (string & {});
 export const EditRequestStatus = /*@__PURE__*/ S.String;
 
 export type EditRequestTargetsItemConstraintOperator =
@@ -5736,7 +6244,8 @@ export type EditRequestTargetsItemConstraintOperator =
   | "contains"
   | "equals"
   | "not_equal"
-  | "not_contain";
+  | "not_contain"
+  | (string & {});
 export const EditRequestTargetsItemConstraintOperator = /*@__PURE__*/ S.String;
 
 export interface EditRequestTargetsItemConstraint {
@@ -5754,7 +6263,7 @@ export const EditRequestTargetsItemConstraint = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestTargetsItemConstraint",
 }) as any as S.Schema<EditRequestTargetsItemConstraint>;
 
-export type EditRequestTargetsItemTarget = "url";
+export type EditRequestTargetsItemTarget = "url" | (string & {});
 export const EditRequestTargetsItemTarget = /*@__PURE__*/ S.String;
 
 export interface EditRequestTargetsItem {
@@ -5812,7 +6321,9 @@ export const PatchPageRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchPageRuleRequest",
 }) as any as S.Schema<PatchPageRuleRequest>;
 
-export type EditResponseActionsItemAlwaysUseHTTPSId = "always_use_https";
+export type EditResponseActionsItemAlwaysUseHTTPSId =
+  | "always_use_https"
+  | (string & {});
 export const EditResponseActionsItemAlwaysUseHTTPSId = /*@__PURE__*/ S.String;
 
 export interface EditResponseActionsItemAlwaysUseHTTPS {
@@ -5829,11 +6340,15 @@ export const EditResponseActionsItemAlwaysUseHTTPS = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EditResponseActionsItemAlwaysUseHTTPS>;
 
 export type EditResponseActionsItemAutomaticHTTPSRewritesId =
-  "automatic_https_rewrites";
+  | "automatic_https_rewrites"
+  | (string & {});
 export const EditResponseActionsItemAutomaticHTTPSRewritesId =
   /*@__PURE__*/ S.String;
 
-export type EditResponseActionsItemAutomaticHTTPSRewritesValue = "on" | "off";
+export type EditResponseActionsItemAutomaticHTTPSRewritesValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditResponseActionsItemAutomaticHTTPSRewritesValue =
   /*@__PURE__*/ S.String;
 
@@ -5853,7 +6368,9 @@ export const EditResponseActionsItemAutomaticHTTPSRewrites =
     identifier: "EditResponseActionsItemAutomaticHTTPSRewrites",
   }) as any as S.Schema<EditResponseActionsItemAutomaticHTTPSRewrites>;
 
-export type EditResponseActionsItemBrowserCacheTTLId = "browser_cache_ttl";
+export type EditResponseActionsItemBrowserCacheTTLId =
+  | "browser_cache_ttl"
+  | (string & {});
 export const EditResponseActionsItemBrowserCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface EditResponseActionsItemBrowserCacheTTL {
@@ -5872,10 +6389,15 @@ export const EditResponseActionsItemBrowserCacheTTL = /*@__PURE__*/ S.suspend(
   identifier: "EditResponseActionsItemBrowserCacheTTL",
 }) as any as S.Schema<EditResponseActionsItemBrowserCacheTTL>;
 
-export type EditResponseActionsItemBrowserCheckId = "browser_check";
+export type EditResponseActionsItemBrowserCheckId =
+  | "browser_check"
+  | (string & {});
 export const EditResponseActionsItemBrowserCheckId = /*@__PURE__*/ S.String;
 
-export type EditResponseActionsItemBrowserCheckValue = "on" | "off";
+export type EditResponseActionsItemBrowserCheckValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditResponseActionsItemBrowserCheckValue = /*@__PURE__*/ S.String;
 
 export interface EditResponseActionsItemBrowserCheck {
@@ -5894,7 +6416,8 @@ export const EditResponseActionsItemBrowserCheck = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditResponseActionsItemBrowserCheck>;
 
 export type EditResponseActionsItemBypassCacheOnCookieId =
-  "bypass_cache_on_cookie";
+  | "bypass_cache_on_cookie"
+  | (string & {});
 export const EditResponseActionsItemBypassCacheOnCookieId =
   /*@__PURE__*/ S.String;
 
@@ -5914,11 +6437,16 @@ export const EditResponseActionsItemBypassCacheOnCookie =
     identifier: "EditResponseActionsItemBypassCacheOnCookie",
   }) as any as S.Schema<EditResponseActionsItemBypassCacheOnCookie>;
 
-export type EditResponseActionsItemCacheByDeviceTypeId = "cache_by_device_type";
+export type EditResponseActionsItemCacheByDeviceTypeId =
+  | "cache_by_device_type"
+  | (string & {});
 export const EditResponseActionsItemCacheByDeviceTypeId =
   /*@__PURE__*/ S.String;
 
-export type EditResponseActionsItemCacheByDeviceTypeValue = "on" | "off";
+export type EditResponseActionsItemCacheByDeviceTypeValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditResponseActionsItemCacheByDeviceTypeValue =
   /*@__PURE__*/ S.String;
 
@@ -5939,11 +6467,15 @@ export const EditResponseActionsItemCacheByDeviceType = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EditResponseActionsItemCacheByDeviceType>;
 
 export type EditResponseActionsItemCacheDeceptionArmorId =
-  "cache_deception_armor";
+  | "cache_deception_armor"
+  | (string & {});
 export const EditResponseActionsItemCacheDeceptionArmorId =
   /*@__PURE__*/ S.String;
 
-export type EditResponseActionsItemCacheDeceptionArmorValue = "on" | "off";
+export type EditResponseActionsItemCacheDeceptionArmorValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditResponseActionsItemCacheDeceptionArmorValue =
   /*@__PURE__*/ S.String;
 
@@ -5963,7 +6495,9 @@ export const EditResponseActionsItemCacheDeceptionArmor =
     identifier: "EditResponseActionsItemCacheDeceptionArmor",
   }) as any as S.Schema<EditResponseActionsItemCacheDeceptionArmor>;
 
-export type EditResponseActionsItemCacheKeyFieldsId = "cache_key_fields";
+export type EditResponseActionsItemCacheKeyFieldsId =
+  | "cache_key_fields"
+  | (string & {});
 export const EditResponseActionsItemCacheKeyFieldsId = /*@__PURE__*/ S.String;
 
 export type EditResponseActionsItemCacheKeyFieldsValueCookieCheckPresenceList =
@@ -6064,7 +6598,8 @@ export const EditResponseActionsItemCacheKeyFieldsValueHost =
   }) as any as S.Schema<EditResponseActionsItemCacheKeyFieldsValueHost>;
 
 export type EditResponseActionsItemCacheKeyFieldsValueQueryStringExcludeEnum =
-  "*";
+  | "*"
+  | (string & {});
 export const EditResponseActionsItemCacheKeyFieldsValueQueryStringExcludeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6082,7 +6617,8 @@ export const EditResponseActionsItemCacheKeyFieldsValueQueryStringExclude =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export type EditResponseActionsItemCacheKeyFieldsValueQueryStringIncludeEnum =
-  "*";
+  | "*"
+  | (string & {});
 export const EditResponseActionsItemCacheKeyFieldsValueQueryStringIncludeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6182,7 +6718,7 @@ export const EditResponseActionsItemCacheKeyFields = /*@__PURE__*/ S.suspend(
   identifier: "EditResponseActionsItemCacheKeyFields",
 }) as any as S.Schema<EditResponseActionsItemCacheKeyFields>;
 
-export type EditResponseActionsItemCacheLevelId = "cache_level";
+export type EditResponseActionsItemCacheLevelId = "cache_level" | (string & {});
 export const EditResponseActionsItemCacheLevelId = /*@__PURE__*/ S.String;
 
 export type EditResponseActionsItemCacheLevelValue =
@@ -6190,7 +6726,8 @@ export type EditResponseActionsItemCacheLevelValue =
   | "basic"
   | "simplified"
   | "aggressive"
-  | "cache_everything";
+  | "cache_everything"
+  | (string & {});
 export const EditResponseActionsItemCacheLevelValue = /*@__PURE__*/ S.String;
 
 export interface EditResponseActionsItemCacheLevel {
@@ -6208,7 +6745,9 @@ export const EditResponseActionsItemCacheLevel = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseActionsItemCacheLevel",
 }) as any as S.Schema<EditResponseActionsItemCacheLevel>;
 
-export type EditResponseActionsItemCacheOnCookieId = "cache_on_cookie";
+export type EditResponseActionsItemCacheOnCookieId =
+  | "cache_on_cookie"
+  | (string & {});
 export const EditResponseActionsItemCacheOnCookieId = /*@__PURE__*/ S.String;
 
 export interface EditResponseActionsItemCacheOnCookie {
@@ -6227,12 +6766,15 @@ export const EditResponseActionsItemCacheOnCookie = /*@__PURE__*/ S.suspend(
   identifier: "EditResponseActionsItemCacheOnCookie",
 }) as any as S.Schema<EditResponseActionsItemCacheOnCookie>;
 
-export type EditResponseActionsItemCacheTTLByStatusId = "cache_ttl_by_status";
+export type EditResponseActionsItemCacheTTLByStatusId =
+  | "cache_ttl_by_status"
+  | (string & {});
 export const EditResponseActionsItemCacheTTLByStatusId = /*@__PURE__*/ S.String;
 
 export type EditResponseActionsItemCacheTTLByStatusValueCase0 =
   | "no-cache"
-  | "no-store";
+  | "no-store"
+  | (string & {});
 export const EditResponseActionsItemCacheTTLByStatusValueCase0 =
   /*@__PURE__*/ S.String;
 
@@ -6258,7 +6800,9 @@ export const EditResponseActionsItemCacheTTLByStatus = /*@__PURE__*/ S.suspend(
   identifier: "EditResponseActionsItemCacheTTLByStatus",
 }) as any as S.Schema<EditResponseActionsItemCacheTTLByStatus>;
 
-export type EditResponseActionsItemDisableAppsId = "disable_apps";
+export type EditResponseActionsItemDisableAppsId =
+  | "disable_apps"
+  | (string & {});
 export const EditResponseActionsItemDisableAppsId = /*@__PURE__*/ S.String;
 
 export interface EditResponseActionsItemDisableApps {
@@ -6273,7 +6817,9 @@ export const EditResponseActionsItemDisableApps = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseActionsItemDisableApps",
 }) as any as S.Schema<EditResponseActionsItemDisableApps>;
 
-export type EditResponseActionsItemDisablePerformanceId = "disable_performance";
+export type EditResponseActionsItemDisablePerformanceId =
+  | "disable_performance"
+  | (string & {});
 export const EditResponseActionsItemDisablePerformanceId =
   /*@__PURE__*/ S.String;
 
@@ -6290,7 +6836,9 @@ export const EditResponseActionsItemDisablePerformance =
     identifier: "EditResponseActionsItemDisablePerformance",
   }) as any as S.Schema<EditResponseActionsItemDisablePerformance>;
 
-export type EditResponseActionsItemDisableSecurityId = "disable_security";
+export type EditResponseActionsItemDisableSecurityId =
+  | "disable_security"
+  | (string & {});
 export const EditResponseActionsItemDisableSecurityId = /*@__PURE__*/ S.String;
 
 export interface EditResponseActionsItemDisableSecurity {
@@ -6306,7 +6854,9 @@ export const EditResponseActionsItemDisableSecurity = /*@__PURE__*/ S.suspend(
   identifier: "EditResponseActionsItemDisableSecurity",
 }) as any as S.Schema<EditResponseActionsItemDisableSecurity>;
 
-export type EditResponseActionsItemDisableZarazId = "disable_zaraz";
+export type EditResponseActionsItemDisableZarazId =
+  | "disable_zaraz"
+  | (string & {});
 export const EditResponseActionsItemDisableZarazId = /*@__PURE__*/ S.String;
 
 export interface EditResponseActionsItemDisableZaraz {
@@ -6321,7 +6871,9 @@ export const EditResponseActionsItemDisableZaraz = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseActionsItemDisableZaraz",
 }) as any as S.Schema<EditResponseActionsItemDisableZaraz>;
 
-export type EditResponseActionsItemEdgeCacheTTLId = "edge_cache_ttl";
+export type EditResponseActionsItemEdgeCacheTTLId =
+  | "edge_cache_ttl"
+  | (string & {});
 export const EditResponseActionsItemEdgeCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface EditResponseActionsItemEdgeCacheTTL {
@@ -6338,10 +6890,15 @@ export const EditResponseActionsItemEdgeCacheTTL = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseActionsItemEdgeCacheTTL",
 }) as any as S.Schema<EditResponseActionsItemEdgeCacheTTL>;
 
-export type EditResponseActionsItemEmailObfuscationId = "email_obfuscation";
+export type EditResponseActionsItemEmailObfuscationId =
+  | "email_obfuscation"
+  | (string & {});
 export const EditResponseActionsItemEmailObfuscationId = /*@__PURE__*/ S.String;
 
-export type EditResponseActionsItemEmailObfuscationValue = "on" | "off";
+export type EditResponseActionsItemEmailObfuscationValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditResponseActionsItemEmailObfuscationValue =
   /*@__PURE__*/ S.String;
 
@@ -6362,11 +6919,15 @@ export const EditResponseActionsItemEmailObfuscation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EditResponseActionsItemEmailObfuscation>;
 
 export type EditResponseActionsItemExplicitCacheControlId =
-  "explicit_cache_control";
+  | "explicit_cache_control"
+  | (string & {});
 export const EditResponseActionsItemExplicitCacheControlId =
   /*@__PURE__*/ S.String;
 
-export type EditResponseActionsItemExplicitCacheControlValue = "on" | "off";
+export type EditResponseActionsItemExplicitCacheControlValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditResponseActionsItemExplicitCacheControlValue =
   /*@__PURE__*/ S.String;
 
@@ -6386,10 +6947,15 @@ export const EditResponseActionsItemExplicitCacheControl =
     identifier: "EditResponseActionsItemExplicitCacheControl",
   }) as any as S.Schema<EditResponseActionsItemExplicitCacheControl>;
 
-export type EditResponseActionsItemForwardingURLId = "forwarding_url";
+export type EditResponseActionsItemForwardingURLId =
+  | "forwarding_url"
+  | (string & {});
 export const EditResponseActionsItemForwardingURLId = /*@__PURE__*/ S.String;
 
-export type EditResponseActionsItemForwardingURLValueStatusCode = 301 | 302;
+export type EditResponseActionsItemForwardingURLValueStatusCode =
+  | 301
+  | 302
+  | (number & {});
 export const EditResponseActionsItemForwardingURLValueStatusCode =
   /*@__PURE__*/ S.Number;
 
@@ -6429,7 +6995,8 @@ export const EditResponseActionsItemForwardingURL = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EditResponseActionsItemForwardingURL>;
 
 export type EditResponseActionsItemHostHeaderOverrideId =
-  "host_header_override";
+  | "host_header_override"
+  | (string & {});
 export const EditResponseActionsItemHostHeaderOverrideId =
   /*@__PURE__*/ S.String;
 
@@ -6449,10 +7016,15 @@ export const EditResponseActionsItemHostHeaderOverride =
     identifier: "EditResponseActionsItemHostHeaderOverride",
   }) as any as S.Schema<EditResponseActionsItemHostHeaderOverride>;
 
-export type EditResponseActionsItemIPGeolocationId = "ip_geolocation";
+export type EditResponseActionsItemIPGeolocationId =
+  | "ip_geolocation"
+  | (string & {});
 export const EditResponseActionsItemIPGeolocationId = /*@__PURE__*/ S.String;
 
-export type EditResponseActionsItemIPGeolocationValue = "on" | "off";
+export type EditResponseActionsItemIPGeolocationValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditResponseActionsItemIPGeolocationValue = /*@__PURE__*/ S.String;
 
 export interface EditResponseActionsItemIPGeolocation {
@@ -6471,10 +7043,10 @@ export const EditResponseActionsItemIPGeolocation = /*@__PURE__*/ S.suspend(
   identifier: "EditResponseActionsItemIPGeolocation",
 }) as any as S.Schema<EditResponseActionsItemIPGeolocation>;
 
-export type EditResponseActionsItemMirageId = "mirage";
+export type EditResponseActionsItemMirageId = "mirage" | (string & {});
 export const EditResponseActionsItemMirageId = /*@__PURE__*/ S.String;
 
-export type EditResponseActionsItemMirageValue = "on" | "off";
+export type EditResponseActionsItemMirageValue = "on" | "off" | (string & {});
 export const EditResponseActionsItemMirageValue = /*@__PURE__*/ S.String;
 
 export interface EditResponseActionsItemMirage {
@@ -6493,11 +7065,15 @@ export const EditResponseActionsItemMirage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditResponseActionsItemMirage>;
 
 export type EditResponseActionsItemOpportunisticEncryptionId =
-  "opportunistic_encryption";
+  | "opportunistic_encryption"
+  | (string & {});
 export const EditResponseActionsItemOpportunisticEncryptionId =
   /*@__PURE__*/ S.String;
 
-export type EditResponseActionsItemOpportunisticEncryptionValue = "on" | "off";
+export type EditResponseActionsItemOpportunisticEncryptionValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditResponseActionsItemOpportunisticEncryptionValue =
   /*@__PURE__*/ S.String;
 
@@ -6518,11 +7094,15 @@ export const EditResponseActionsItemOpportunisticEncryption =
   }) as any as S.Schema<EditResponseActionsItemOpportunisticEncryption>;
 
 export type EditResponseActionsItemOriginErrorPagePassThruId =
-  "origin_error_page_pass_thru";
+  | "origin_error_page_pass_thru"
+  | (string & {});
 export const EditResponseActionsItemOriginErrorPagePassThruId =
   /*@__PURE__*/ S.String;
 
-export type EditResponseActionsItemOriginErrorPagePassThruValue = "on" | "off";
+export type EditResponseActionsItemOriginErrorPagePassThruValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditResponseActionsItemOriginErrorPagePassThruValue =
   /*@__PURE__*/ S.String;
 
@@ -6542,10 +7122,14 @@ export const EditResponseActionsItemOriginErrorPagePassThru =
     identifier: "EditResponseActionsItemOriginErrorPagePassThru",
   }) as any as S.Schema<EditResponseActionsItemOriginErrorPagePassThru>;
 
-export type EditResponseActionsItemPolishId = "polish";
+export type EditResponseActionsItemPolishId = "polish" | (string & {});
 export const EditResponseActionsItemPolishId = /*@__PURE__*/ S.String;
 
-export type EditResponseActionsItemPolishValue = "off" | "lossless" | "lossy";
+export type EditResponseActionsItemPolishValue =
+  | "off"
+  | "lossless"
+  | "lossy"
+  | (string & {});
 export const EditResponseActionsItemPolishValue = /*@__PURE__*/ S.String;
 
 export interface EditResponseActionsItemPolish {
@@ -6563,7 +7147,9 @@ export const EditResponseActionsItemPolish = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseActionsItemPolish",
 }) as any as S.Schema<EditResponseActionsItemPolish>;
 
-export type EditResponseActionsItemResolveOverrideId = "resolve_override";
+export type EditResponseActionsItemResolveOverrideId =
+  | "resolve_override"
+  | (string & {});
 export const EditResponseActionsItemResolveOverrideId = /*@__PURE__*/ S.String;
 
 export interface EditResponseActionsItemResolveOverride {
@@ -6582,11 +7168,16 @@ export const EditResponseActionsItemResolveOverride = /*@__PURE__*/ S.suspend(
   identifier: "EditResponseActionsItemResolveOverride",
 }) as any as S.Schema<EditResponseActionsItemResolveOverride>;
 
-export type EditResponseActionsItemRespectStrongEtagId = "respect_strong_etag";
+export type EditResponseActionsItemRespectStrongEtagId =
+  | "respect_strong_etag"
+  | (string & {});
 export const EditResponseActionsItemRespectStrongEtagId =
   /*@__PURE__*/ S.String;
 
-export type EditResponseActionsItemRespectStrongEtagValue = "on" | "off";
+export type EditResponseActionsItemRespectStrongEtagValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditResponseActionsItemRespectStrongEtagValue =
   /*@__PURE__*/ S.String;
 
@@ -6606,11 +7197,16 @@ export const EditResponseActionsItemRespectStrongEtag = /*@__PURE__*/ S.suspend(
   identifier: "EditResponseActionsItemRespectStrongEtag",
 }) as any as S.Schema<EditResponseActionsItemRespectStrongEtag>;
 
-export type EditResponseActionsItemResponseBufferingId = "response_buffering";
+export type EditResponseActionsItemResponseBufferingId =
+  | "response_buffering"
+  | (string & {});
 export const EditResponseActionsItemResponseBufferingId =
   /*@__PURE__*/ S.String;
 
-export type EditResponseActionsItemResponseBufferingValue = "on" | "off";
+export type EditResponseActionsItemResponseBufferingValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditResponseActionsItemResponseBufferingValue =
   /*@__PURE__*/ S.String;
 
@@ -6630,10 +7226,15 @@ export const EditResponseActionsItemResponseBuffering = /*@__PURE__*/ S.suspend(
   identifier: "EditResponseActionsItemResponseBuffering",
 }) as any as S.Schema<EditResponseActionsItemResponseBuffering>;
 
-export type EditResponseActionsItemRocketLoaderId = "rocket_loader";
+export type EditResponseActionsItemRocketLoaderId =
+  | "rocket_loader"
+  | (string & {});
 export const EditResponseActionsItemRocketLoaderId = /*@__PURE__*/ S.String;
 
-export type EditResponseActionsItemRocketLoaderValue = "on" | "off";
+export type EditResponseActionsItemRocketLoaderValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditResponseActionsItemRocketLoaderValue = /*@__PURE__*/ S.String;
 
 export interface EditResponseActionsItemRocketLoader {
@@ -6651,7 +7252,9 @@ export const EditResponseActionsItemRocketLoader = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseActionsItemRocketLoader",
 }) as any as S.Schema<EditResponseActionsItemRocketLoader>;
 
-export type EditResponseActionsItemSecurityLevelId = "security_level";
+export type EditResponseActionsItemSecurityLevelId =
+  | "security_level"
+  | (string & {});
 export const EditResponseActionsItemSecurityLevelId = /*@__PURE__*/ S.String;
 
 export type EditResponseActionsItemSecurityLevelValue =
@@ -6660,7 +7263,8 @@ export type EditResponseActionsItemSecurityLevelValue =
   | "low"
   | "medium"
   | "high"
-  | "under_attack";
+  | "under_attack"
+  | (string & {});
 export const EditResponseActionsItemSecurityLevelValue = /*@__PURE__*/ S.String;
 
 export interface EditResponseActionsItemSecurityLevel {
@@ -6679,11 +7283,15 @@ export const EditResponseActionsItemSecurityLevel = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EditResponseActionsItemSecurityLevel>;
 
 export type EditResponseActionsItemSortQueryStringForCacheId =
-  "sort_query_string_for_cache";
+  | "sort_query_string_for_cache"
+  | (string & {});
 export const EditResponseActionsItemSortQueryStringForCacheId =
   /*@__PURE__*/ S.String;
 
-export type EditResponseActionsItemSortQueryStringForCacheValue = "on" | "off";
+export type EditResponseActionsItemSortQueryStringForCacheValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditResponseActionsItemSortQueryStringForCacheValue =
   /*@__PURE__*/ S.String;
 
@@ -6703,7 +7311,7 @@ export const EditResponseActionsItemSortQueryStringForCache =
     identifier: "EditResponseActionsItemSortQueryStringForCache",
   }) as any as S.Schema<EditResponseActionsItemSortQueryStringForCache>;
 
-export type EditResponseActionsItemSSLId = "ssl";
+export type EditResponseActionsItemSSLId = "ssl" | (string & {});
 export const EditResponseActionsItemSSLId = /*@__PURE__*/ S.String;
 
 export type EditResponseActionsItemSSLValue =
@@ -6711,7 +7319,8 @@ export type EditResponseActionsItemSSLValue =
   | "flexible"
   | "full"
   | "strict"
-  | "origin_pull";
+  | "origin_pull"
+  | (string & {});
 export const EditResponseActionsItemSSLValue = /*@__PURE__*/ S.String;
 
 export interface EditResponseActionsItemSSL {
@@ -6730,11 +7339,15 @@ export const EditResponseActionsItemSSL = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditResponseActionsItemSSL>;
 
 export type EditResponseActionsItemTrueClientIPHeaderId =
-  "true_client_ip_header";
+  | "true_client_ip_header"
+  | (string & {});
 export const EditResponseActionsItemTrueClientIPHeaderId =
   /*@__PURE__*/ S.String;
 
-export type EditResponseActionsItemTrueClientIPHeaderValue = "on" | "off";
+export type EditResponseActionsItemTrueClientIPHeaderValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const EditResponseActionsItemTrueClientIPHeaderValue =
   /*@__PURE__*/ S.String;
 
@@ -6754,10 +7367,10 @@ export const EditResponseActionsItemTrueClientIPHeader =
     identifier: "EditResponseActionsItemTrueClientIPHeader",
   }) as any as S.Schema<EditResponseActionsItemTrueClientIPHeader>;
 
-export type EditResponseActionsItemWAFId = "waf";
+export type EditResponseActionsItemWAFId = "waf" | (string & {});
 export const EditResponseActionsItemWAFId = /*@__PURE__*/ S.String;
 
-export type EditResponseActionsItemWAFValue = "on" | "off";
+export type EditResponseActionsItemWAFValue = "on" | "off" | (string & {});
 export const EditResponseActionsItemWAFValue = /*@__PURE__*/ S.String;
 
 export interface EditResponseActionsItemWAF {
@@ -6854,7 +7467,7 @@ export const EditResponseActionsList = /*@__PURE__*/ S.Array(
   EditResponseActionsItem,
 ) as any as S.Schema<EditResponseActionsList>;
 
-export type EditResponseStatus = "active" | "disabled";
+export type EditResponseStatus = "active" | "disabled" | (string & {});
 export const EditResponseStatus = /*@__PURE__*/ S.String;
 
 export type EditResponseTargetsItemConstraintOperator =
@@ -6862,7 +7475,8 @@ export type EditResponseTargetsItemConstraintOperator =
   | "contains"
   | "equals"
   | "not_equal"
-  | "not_contain";
+  | "not_contain"
+  | (string & {});
 export const EditResponseTargetsItemConstraintOperator = /*@__PURE__*/ S.String;
 
 export interface EditResponseTargetsItemConstraint {
@@ -6880,7 +7494,7 @@ export const EditResponseTargetsItemConstraint = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseTargetsItemConstraint",
 }) as any as S.Schema<EditResponseTargetsItemConstraint>;
 
-export type EditResponseTargetsItemTarget = "url";
+export type EditResponseTargetsItemTarget = "url" | (string & {});
 export const EditResponseTargetsItemTarget = /*@__PURE__*/ S.String;
 
 export interface EditResponseTargetsItem {
@@ -6934,7 +7548,9 @@ export const PatchPageRuleResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchPageRuleResponse",
 }) as any as S.Schema<PatchPageRuleResponse>;
 
-export type UpdateRequestActionsItemAlwaysUseHTTPSId = "always_use_https";
+export type UpdateRequestActionsItemAlwaysUseHTTPSId =
+  | "always_use_https"
+  | (string & {});
 export const UpdateRequestActionsItemAlwaysUseHTTPSId = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemAlwaysUseHTTPS {
@@ -6951,11 +7567,15 @@ export const UpdateRequestActionsItemAlwaysUseHTTPS = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateRequestActionsItemAlwaysUseHTTPS>;
 
 export type UpdateRequestActionsItemAutomaticHTTPSRewritesId =
-  "automatic_https_rewrites";
+  | "automatic_https_rewrites"
+  | (string & {});
 export const UpdateRequestActionsItemAutomaticHTTPSRewritesId =
   /*@__PURE__*/ S.String;
 
-export type UpdateRequestActionsItemAutomaticHTTPSRewritesValue = "on" | "off";
+export type UpdateRequestActionsItemAutomaticHTTPSRewritesValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateRequestActionsItemAutomaticHTTPSRewritesValue =
   /*@__PURE__*/ S.String;
 
@@ -6975,7 +7595,9 @@ export const UpdateRequestActionsItemAutomaticHTTPSRewrites =
     identifier: "UpdateRequestActionsItemAutomaticHTTPSRewrites",
   }) as any as S.Schema<UpdateRequestActionsItemAutomaticHTTPSRewrites>;
 
-export type UpdateRequestActionsItemBrowserCacheTTLId = "browser_cache_ttl";
+export type UpdateRequestActionsItemBrowserCacheTTLId =
+  | "browser_cache_ttl"
+  | (string & {});
 export const UpdateRequestActionsItemBrowserCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemBrowserCacheTTL {
@@ -6994,10 +7616,15 @@ export const UpdateRequestActionsItemBrowserCacheTTL = /*@__PURE__*/ S.suspend(
   identifier: "UpdateRequestActionsItemBrowserCacheTTL",
 }) as any as S.Schema<UpdateRequestActionsItemBrowserCacheTTL>;
 
-export type UpdateRequestActionsItemBrowserCheckId = "browser_check";
+export type UpdateRequestActionsItemBrowserCheckId =
+  | "browser_check"
+  | (string & {});
 export const UpdateRequestActionsItemBrowserCheckId = /*@__PURE__*/ S.String;
 
-export type UpdateRequestActionsItemBrowserCheckValue = "on" | "off";
+export type UpdateRequestActionsItemBrowserCheckValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateRequestActionsItemBrowserCheckValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemBrowserCheck {
@@ -7017,7 +7644,8 @@ export const UpdateRequestActionsItemBrowserCheck = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateRequestActionsItemBrowserCheck>;
 
 export type UpdateRequestActionsItemBypassCacheOnCookieId =
-  "bypass_cache_on_cookie";
+  | "bypass_cache_on_cookie"
+  | (string & {});
 export const UpdateRequestActionsItemBypassCacheOnCookieId =
   /*@__PURE__*/ S.String;
 
@@ -7038,11 +7666,15 @@ export const UpdateRequestActionsItemBypassCacheOnCookie =
   }) as any as S.Schema<UpdateRequestActionsItemBypassCacheOnCookie>;
 
 export type UpdateRequestActionsItemCacheByDeviceTypeId =
-  "cache_by_device_type";
+  | "cache_by_device_type"
+  | (string & {});
 export const UpdateRequestActionsItemCacheByDeviceTypeId =
   /*@__PURE__*/ S.String;
 
-export type UpdateRequestActionsItemCacheByDeviceTypeValue = "on" | "off";
+export type UpdateRequestActionsItemCacheByDeviceTypeValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateRequestActionsItemCacheByDeviceTypeValue =
   /*@__PURE__*/ S.String;
 
@@ -7063,11 +7695,15 @@ export const UpdateRequestActionsItemCacheByDeviceType =
   }) as any as S.Schema<UpdateRequestActionsItemCacheByDeviceType>;
 
 export type UpdateRequestActionsItemCacheDeceptionArmorId =
-  "cache_deception_armor";
+  | "cache_deception_armor"
+  | (string & {});
 export const UpdateRequestActionsItemCacheDeceptionArmorId =
   /*@__PURE__*/ S.String;
 
-export type UpdateRequestActionsItemCacheDeceptionArmorValue = "on" | "off";
+export type UpdateRequestActionsItemCacheDeceptionArmorValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateRequestActionsItemCacheDeceptionArmorValue =
   /*@__PURE__*/ S.String;
 
@@ -7087,7 +7723,9 @@ export const UpdateRequestActionsItemCacheDeceptionArmor =
     identifier: "UpdateRequestActionsItemCacheDeceptionArmor",
   }) as any as S.Schema<UpdateRequestActionsItemCacheDeceptionArmor>;
 
-export type UpdateRequestActionsItemCacheKeyFieldsId = "cache_key_fields";
+export type UpdateRequestActionsItemCacheKeyFieldsId =
+  | "cache_key_fields"
+  | (string & {});
 export const UpdateRequestActionsItemCacheKeyFieldsId = /*@__PURE__*/ S.String;
 
 export type UpdateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList =
@@ -7188,7 +7826,8 @@ export const UpdateRequestActionsItemCacheKeyFieldsValueHost =
   }) as any as S.Schema<UpdateRequestActionsItemCacheKeyFieldsValueHost>;
 
 export type UpdateRequestActionsItemCacheKeyFieldsValueQueryStringExcludeEnum =
-  "*";
+  | "*"
+  | (string & {});
 export const UpdateRequestActionsItemCacheKeyFieldsValueQueryStringExcludeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7206,7 +7845,8 @@ export const UpdateRequestActionsItemCacheKeyFieldsValueQueryStringExclude =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export type UpdateRequestActionsItemCacheKeyFieldsValueQueryStringIncludeEnum =
-  "*";
+  | "*"
+  | (string & {});
 export const UpdateRequestActionsItemCacheKeyFieldsValueQueryStringIncludeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7306,7 +7946,9 @@ export const UpdateRequestActionsItemCacheKeyFields = /*@__PURE__*/ S.suspend(
   identifier: "UpdateRequestActionsItemCacheKeyFields",
 }) as any as S.Schema<UpdateRequestActionsItemCacheKeyFields>;
 
-export type UpdateRequestActionsItemCacheLevelId = "cache_level";
+export type UpdateRequestActionsItemCacheLevelId =
+  | "cache_level"
+  | (string & {});
 export const UpdateRequestActionsItemCacheLevelId = /*@__PURE__*/ S.String;
 
 export type UpdateRequestActionsItemCacheLevelValue =
@@ -7314,7 +7956,8 @@ export type UpdateRequestActionsItemCacheLevelValue =
   | "basic"
   | "simplified"
   | "aggressive"
-  | "cache_everything";
+  | "cache_everything"
+  | (string & {});
 export const UpdateRequestActionsItemCacheLevelValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemCacheLevel {
@@ -7332,7 +7975,9 @@ export const UpdateRequestActionsItemCacheLevel = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestActionsItemCacheLevel",
 }) as any as S.Schema<UpdateRequestActionsItemCacheLevel>;
 
-export type UpdateRequestActionsItemCacheOnCookieId = "cache_on_cookie";
+export type UpdateRequestActionsItemCacheOnCookieId =
+  | "cache_on_cookie"
+  | (string & {});
 export const UpdateRequestActionsItemCacheOnCookieId = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemCacheOnCookie {
@@ -7351,13 +7996,16 @@ export const UpdateRequestActionsItemCacheOnCookie = /*@__PURE__*/ S.suspend(
   identifier: "UpdateRequestActionsItemCacheOnCookie",
 }) as any as S.Schema<UpdateRequestActionsItemCacheOnCookie>;
 
-export type UpdateRequestActionsItemCacheTTLByStatusId = "cache_ttl_by_status";
+export type UpdateRequestActionsItemCacheTTLByStatusId =
+  | "cache_ttl_by_status"
+  | (string & {});
 export const UpdateRequestActionsItemCacheTTLByStatusId =
   /*@__PURE__*/ S.String;
 
 export type UpdateRequestActionsItemCacheTTLByStatusValueCase0 =
   | "no-cache"
-  | "no-store";
+  | "no-store"
+  | (string & {});
 export const UpdateRequestActionsItemCacheTTLByStatusValueCase0 =
   /*@__PURE__*/ S.String;
 
@@ -7383,7 +8031,9 @@ export const UpdateRequestActionsItemCacheTTLByStatus = /*@__PURE__*/ S.suspend(
   identifier: "UpdateRequestActionsItemCacheTTLByStatus",
 }) as any as S.Schema<UpdateRequestActionsItemCacheTTLByStatus>;
 
-export type UpdateRequestActionsItemDisableAppsId = "disable_apps";
+export type UpdateRequestActionsItemDisableAppsId =
+  | "disable_apps"
+  | (string & {});
 export const UpdateRequestActionsItemDisableAppsId = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemDisableApps {
@@ -7399,7 +8049,8 @@ export const UpdateRequestActionsItemDisableApps = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRequestActionsItemDisableApps>;
 
 export type UpdateRequestActionsItemDisablePerformanceId =
-  "disable_performance";
+  | "disable_performance"
+  | (string & {});
 export const UpdateRequestActionsItemDisablePerformanceId =
   /*@__PURE__*/ S.String;
 
@@ -7416,7 +8067,9 @@ export const UpdateRequestActionsItemDisablePerformance =
     identifier: "UpdateRequestActionsItemDisablePerformance",
   }) as any as S.Schema<UpdateRequestActionsItemDisablePerformance>;
 
-export type UpdateRequestActionsItemDisableSecurityId = "disable_security";
+export type UpdateRequestActionsItemDisableSecurityId =
+  | "disable_security"
+  | (string & {});
 export const UpdateRequestActionsItemDisableSecurityId = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemDisableSecurity {
@@ -7432,7 +8085,9 @@ export const UpdateRequestActionsItemDisableSecurity = /*@__PURE__*/ S.suspend(
   identifier: "UpdateRequestActionsItemDisableSecurity",
 }) as any as S.Schema<UpdateRequestActionsItemDisableSecurity>;
 
-export type UpdateRequestActionsItemDisableZarazId = "disable_zaraz";
+export type UpdateRequestActionsItemDisableZarazId =
+  | "disable_zaraz"
+  | (string & {});
 export const UpdateRequestActionsItemDisableZarazId = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemDisableZaraz {
@@ -7448,7 +8103,9 @@ export const UpdateRequestActionsItemDisableZaraz = /*@__PURE__*/ S.suspend(
   identifier: "UpdateRequestActionsItemDisableZaraz",
 }) as any as S.Schema<UpdateRequestActionsItemDisableZaraz>;
 
-export type UpdateRequestActionsItemEdgeCacheTTLId = "edge_cache_ttl";
+export type UpdateRequestActionsItemEdgeCacheTTLId =
+  | "edge_cache_ttl"
+  | (string & {});
 export const UpdateRequestActionsItemEdgeCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemEdgeCacheTTL {
@@ -7466,11 +8123,16 @@ export const UpdateRequestActionsItemEdgeCacheTTL = /*@__PURE__*/ S.suspend(
   identifier: "UpdateRequestActionsItemEdgeCacheTTL",
 }) as any as S.Schema<UpdateRequestActionsItemEdgeCacheTTL>;
 
-export type UpdateRequestActionsItemEmailObfuscationId = "email_obfuscation";
+export type UpdateRequestActionsItemEmailObfuscationId =
+  | "email_obfuscation"
+  | (string & {});
 export const UpdateRequestActionsItemEmailObfuscationId =
   /*@__PURE__*/ S.String;
 
-export type UpdateRequestActionsItemEmailObfuscationValue = "on" | "off";
+export type UpdateRequestActionsItemEmailObfuscationValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateRequestActionsItemEmailObfuscationValue =
   /*@__PURE__*/ S.String;
 
@@ -7491,11 +8153,15 @@ export const UpdateRequestActionsItemEmailObfuscation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateRequestActionsItemEmailObfuscation>;
 
 export type UpdateRequestActionsItemExplicitCacheControlId =
-  "explicit_cache_control";
+  | "explicit_cache_control"
+  | (string & {});
 export const UpdateRequestActionsItemExplicitCacheControlId =
   /*@__PURE__*/ S.String;
 
-export type UpdateRequestActionsItemExplicitCacheControlValue = "on" | "off";
+export type UpdateRequestActionsItemExplicitCacheControlValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateRequestActionsItemExplicitCacheControlValue =
   /*@__PURE__*/ S.String;
 
@@ -7515,10 +8181,15 @@ export const UpdateRequestActionsItemExplicitCacheControl =
     identifier: "UpdateRequestActionsItemExplicitCacheControl",
   }) as any as S.Schema<UpdateRequestActionsItemExplicitCacheControl>;
 
-export type UpdateRequestActionsItemForwardingURLId = "forwarding_url";
+export type UpdateRequestActionsItemForwardingURLId =
+  | "forwarding_url"
+  | (string & {});
 export const UpdateRequestActionsItemForwardingURLId = /*@__PURE__*/ S.String;
 
-export type UpdateRequestActionsItemForwardingURLValueStatusCode = 301 | 302;
+export type UpdateRequestActionsItemForwardingURLValueStatusCode =
+  | 301
+  | 302
+  | (number & {});
 export const UpdateRequestActionsItemForwardingURLValueStatusCode =
   /*@__PURE__*/ S.Number;
 
@@ -7558,7 +8229,8 @@ export const UpdateRequestActionsItemForwardingURL = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateRequestActionsItemForwardingURL>;
 
 export type UpdateRequestActionsItemHostHeaderOverrideId =
-  "host_header_override";
+  | "host_header_override"
+  | (string & {});
 export const UpdateRequestActionsItemHostHeaderOverrideId =
   /*@__PURE__*/ S.String;
 
@@ -7578,10 +8250,15 @@ export const UpdateRequestActionsItemHostHeaderOverride =
     identifier: "UpdateRequestActionsItemHostHeaderOverride",
   }) as any as S.Schema<UpdateRequestActionsItemHostHeaderOverride>;
 
-export type UpdateRequestActionsItemIPGeolocationId = "ip_geolocation";
+export type UpdateRequestActionsItemIPGeolocationId =
+  | "ip_geolocation"
+  | (string & {});
 export const UpdateRequestActionsItemIPGeolocationId = /*@__PURE__*/ S.String;
 
-export type UpdateRequestActionsItemIPGeolocationValue = "on" | "off";
+export type UpdateRequestActionsItemIPGeolocationValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateRequestActionsItemIPGeolocationValue =
   /*@__PURE__*/ S.String;
 
@@ -7601,10 +8278,10 @@ export const UpdateRequestActionsItemIPGeolocation = /*@__PURE__*/ S.suspend(
   identifier: "UpdateRequestActionsItemIPGeolocation",
 }) as any as S.Schema<UpdateRequestActionsItemIPGeolocation>;
 
-export type UpdateRequestActionsItemMirageId = "mirage";
+export type UpdateRequestActionsItemMirageId = "mirage" | (string & {});
 export const UpdateRequestActionsItemMirageId = /*@__PURE__*/ S.String;
 
-export type UpdateRequestActionsItemMirageValue = "on" | "off";
+export type UpdateRequestActionsItemMirageValue = "on" | "off" | (string & {});
 export const UpdateRequestActionsItemMirageValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemMirage {
@@ -7623,11 +8300,15 @@ export const UpdateRequestActionsItemMirage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRequestActionsItemMirage>;
 
 export type UpdateRequestActionsItemOpportunisticEncryptionId =
-  "opportunistic_encryption";
+  | "opportunistic_encryption"
+  | (string & {});
 export const UpdateRequestActionsItemOpportunisticEncryptionId =
   /*@__PURE__*/ S.String;
 
-export type UpdateRequestActionsItemOpportunisticEncryptionValue = "on" | "off";
+export type UpdateRequestActionsItemOpportunisticEncryptionValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateRequestActionsItemOpportunisticEncryptionValue =
   /*@__PURE__*/ S.String;
 
@@ -7648,11 +8329,15 @@ export const UpdateRequestActionsItemOpportunisticEncryption =
   }) as any as S.Schema<UpdateRequestActionsItemOpportunisticEncryption>;
 
 export type UpdateRequestActionsItemOriginErrorPagePassThruId =
-  "origin_error_page_pass_thru";
+  | "origin_error_page_pass_thru"
+  | (string & {});
 export const UpdateRequestActionsItemOriginErrorPagePassThruId =
   /*@__PURE__*/ S.String;
 
-export type UpdateRequestActionsItemOriginErrorPagePassThruValue = "on" | "off";
+export type UpdateRequestActionsItemOriginErrorPagePassThruValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateRequestActionsItemOriginErrorPagePassThruValue =
   /*@__PURE__*/ S.String;
 
@@ -7672,10 +8357,14 @@ export const UpdateRequestActionsItemOriginErrorPagePassThru =
     identifier: "UpdateRequestActionsItemOriginErrorPagePassThru",
   }) as any as S.Schema<UpdateRequestActionsItemOriginErrorPagePassThru>;
 
-export type UpdateRequestActionsItemPolishId = "polish";
+export type UpdateRequestActionsItemPolishId = "polish" | (string & {});
 export const UpdateRequestActionsItemPolishId = /*@__PURE__*/ S.String;
 
-export type UpdateRequestActionsItemPolishValue = "off" | "lossless" | "lossy";
+export type UpdateRequestActionsItemPolishValue =
+  | "off"
+  | "lossless"
+  | "lossy"
+  | (string & {});
 export const UpdateRequestActionsItemPolishValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemPolish {
@@ -7693,7 +8382,9 @@ export const UpdateRequestActionsItemPolish = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestActionsItemPolish",
 }) as any as S.Schema<UpdateRequestActionsItemPolish>;
 
-export type UpdateRequestActionsItemResolveOverrideId = "resolve_override";
+export type UpdateRequestActionsItemResolveOverrideId =
+  | "resolve_override"
+  | (string & {});
 export const UpdateRequestActionsItemResolveOverrideId = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemResolveOverride {
@@ -7712,11 +8403,16 @@ export const UpdateRequestActionsItemResolveOverride = /*@__PURE__*/ S.suspend(
   identifier: "UpdateRequestActionsItemResolveOverride",
 }) as any as S.Schema<UpdateRequestActionsItemResolveOverride>;
 
-export type UpdateRequestActionsItemRespectStrongEtagId = "respect_strong_etag";
+export type UpdateRequestActionsItemRespectStrongEtagId =
+  | "respect_strong_etag"
+  | (string & {});
 export const UpdateRequestActionsItemRespectStrongEtagId =
   /*@__PURE__*/ S.String;
 
-export type UpdateRequestActionsItemRespectStrongEtagValue = "on" | "off";
+export type UpdateRequestActionsItemRespectStrongEtagValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateRequestActionsItemRespectStrongEtagValue =
   /*@__PURE__*/ S.String;
 
@@ -7736,11 +8432,16 @@ export const UpdateRequestActionsItemRespectStrongEtag =
     identifier: "UpdateRequestActionsItemRespectStrongEtag",
   }) as any as S.Schema<UpdateRequestActionsItemRespectStrongEtag>;
 
-export type UpdateRequestActionsItemResponseBufferingId = "response_buffering";
+export type UpdateRequestActionsItemResponseBufferingId =
+  | "response_buffering"
+  | (string & {});
 export const UpdateRequestActionsItemResponseBufferingId =
   /*@__PURE__*/ S.String;
 
-export type UpdateRequestActionsItemResponseBufferingValue = "on" | "off";
+export type UpdateRequestActionsItemResponseBufferingValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateRequestActionsItemResponseBufferingValue =
   /*@__PURE__*/ S.String;
 
@@ -7760,10 +8461,15 @@ export const UpdateRequestActionsItemResponseBuffering =
     identifier: "UpdateRequestActionsItemResponseBuffering",
   }) as any as S.Schema<UpdateRequestActionsItemResponseBuffering>;
 
-export type UpdateRequestActionsItemRocketLoaderId = "rocket_loader";
+export type UpdateRequestActionsItemRocketLoaderId =
+  | "rocket_loader"
+  | (string & {});
 export const UpdateRequestActionsItemRocketLoaderId = /*@__PURE__*/ S.String;
 
-export type UpdateRequestActionsItemRocketLoaderValue = "on" | "off";
+export type UpdateRequestActionsItemRocketLoaderValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateRequestActionsItemRocketLoaderValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemRocketLoader {
@@ -7782,7 +8488,9 @@ export const UpdateRequestActionsItemRocketLoader = /*@__PURE__*/ S.suspend(
   identifier: "UpdateRequestActionsItemRocketLoader",
 }) as any as S.Schema<UpdateRequestActionsItemRocketLoader>;
 
-export type UpdateRequestActionsItemSecurityLevelId = "security_level";
+export type UpdateRequestActionsItemSecurityLevelId =
+  | "security_level"
+  | (string & {});
 export const UpdateRequestActionsItemSecurityLevelId = /*@__PURE__*/ S.String;
 
 export type UpdateRequestActionsItemSecurityLevelValue =
@@ -7791,7 +8499,8 @@ export type UpdateRequestActionsItemSecurityLevelValue =
   | "low"
   | "medium"
   | "high"
-  | "under_attack";
+  | "under_attack"
+  | (string & {});
 export const UpdateRequestActionsItemSecurityLevelValue =
   /*@__PURE__*/ S.String;
 
@@ -7811,11 +8520,15 @@ export const UpdateRequestActionsItemSecurityLevel = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateRequestActionsItemSecurityLevel>;
 
 export type UpdateRequestActionsItemSortQueryStringForCacheId =
-  "sort_query_string_for_cache";
+  | "sort_query_string_for_cache"
+  | (string & {});
 export const UpdateRequestActionsItemSortQueryStringForCacheId =
   /*@__PURE__*/ S.String;
 
-export type UpdateRequestActionsItemSortQueryStringForCacheValue = "on" | "off";
+export type UpdateRequestActionsItemSortQueryStringForCacheValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateRequestActionsItemSortQueryStringForCacheValue =
   /*@__PURE__*/ S.String;
 
@@ -7835,7 +8548,7 @@ export const UpdateRequestActionsItemSortQueryStringForCache =
     identifier: "UpdateRequestActionsItemSortQueryStringForCache",
   }) as any as S.Schema<UpdateRequestActionsItemSortQueryStringForCache>;
 
-export type UpdateRequestActionsItemSSLId = "ssl";
+export type UpdateRequestActionsItemSSLId = "ssl" | (string & {});
 export const UpdateRequestActionsItemSSLId = /*@__PURE__*/ S.String;
 
 export type UpdateRequestActionsItemSSLValue =
@@ -7843,7 +8556,8 @@ export type UpdateRequestActionsItemSSLValue =
   | "flexible"
   | "full"
   | "strict"
-  | "origin_pull";
+  | "origin_pull"
+  | (string & {});
 export const UpdateRequestActionsItemSSLValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemSSL {
@@ -7862,11 +8576,15 @@ export const UpdateRequestActionsItemSSL = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRequestActionsItemSSL>;
 
 export type UpdateRequestActionsItemTrueClientIPHeaderId =
-  "true_client_ip_header";
+  | "true_client_ip_header"
+  | (string & {});
 export const UpdateRequestActionsItemTrueClientIPHeaderId =
   /*@__PURE__*/ S.String;
 
-export type UpdateRequestActionsItemTrueClientIPHeaderValue = "on" | "off";
+export type UpdateRequestActionsItemTrueClientIPHeaderValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateRequestActionsItemTrueClientIPHeaderValue =
   /*@__PURE__*/ S.String;
 
@@ -7886,10 +8604,10 @@ export const UpdateRequestActionsItemTrueClientIPHeader =
     identifier: "UpdateRequestActionsItemTrueClientIPHeader",
   }) as any as S.Schema<UpdateRequestActionsItemTrueClientIPHeader>;
 
-export type UpdateRequestActionsItemWAFId = "waf";
+export type UpdateRequestActionsItemWAFId = "waf" | (string & {});
 export const UpdateRequestActionsItemWAFId = /*@__PURE__*/ S.String;
 
-export type UpdateRequestActionsItemWAFValue = "on" | "off";
+export type UpdateRequestActionsItemWAFValue = "on" | "off" | (string & {});
 export const UpdateRequestActionsItemWAFValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemWAF {
@@ -7991,7 +8709,8 @@ export type UpdateRequestTargetsItemConstraintOperator =
   | "contains"
   | "equals"
   | "not_equal"
-  | "not_contain";
+  | "not_contain"
+  | (string & {});
 export const UpdateRequestTargetsItemConstraintOperator =
   /*@__PURE__*/ S.String;
 
@@ -8010,7 +8729,7 @@ export const UpdateRequestTargetsItemConstraint = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestTargetsItemConstraint",
 }) as any as S.Schema<UpdateRequestTargetsItemConstraint>;
 
-export type UpdateRequestTargetsItemTarget = "url";
+export type UpdateRequestTargetsItemTarget = "url" | (string & {});
 export const UpdateRequestTargetsItemTarget = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestTargetsItem {
@@ -8033,7 +8752,7 @@ export const UpdateRequestTargetsList = /*@__PURE__*/ S.Array(
   UpdateRequestTargetsItem,
 ) as any as S.Schema<UpdateRequestTargetsList>;
 
-export type UpdateRequestStatus = "active" | "disabled";
+export type UpdateRequestStatus = "active" | "disabled" | (string & {});
 export const UpdateRequestStatus = /*@__PURE__*/ S.String;
 
 export interface UpdatePageRuleRequest {
@@ -8071,7 +8790,9 @@ export const UpdatePageRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePageRuleRequest",
 }) as any as S.Schema<UpdatePageRuleRequest>;
 
-export type UpdateResponseActionsItemAlwaysUseHTTPSId = "always_use_https";
+export type UpdateResponseActionsItemAlwaysUseHTTPSId =
+  | "always_use_https"
+  | (string & {});
 export const UpdateResponseActionsItemAlwaysUseHTTPSId = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseActionsItemAlwaysUseHTTPS {
@@ -8088,11 +8809,15 @@ export const UpdateResponseActionsItemAlwaysUseHTTPS = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateResponseActionsItemAlwaysUseHTTPS>;
 
 export type UpdateResponseActionsItemAutomaticHTTPSRewritesId =
-  "automatic_https_rewrites";
+  | "automatic_https_rewrites"
+  | (string & {});
 export const UpdateResponseActionsItemAutomaticHTTPSRewritesId =
   /*@__PURE__*/ S.String;
 
-export type UpdateResponseActionsItemAutomaticHTTPSRewritesValue = "on" | "off";
+export type UpdateResponseActionsItemAutomaticHTTPSRewritesValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateResponseActionsItemAutomaticHTTPSRewritesValue =
   /*@__PURE__*/ S.String;
 
@@ -8112,7 +8837,9 @@ export const UpdateResponseActionsItemAutomaticHTTPSRewrites =
     identifier: "UpdateResponseActionsItemAutomaticHTTPSRewrites",
   }) as any as S.Schema<UpdateResponseActionsItemAutomaticHTTPSRewrites>;
 
-export type UpdateResponseActionsItemBrowserCacheTTLId = "browser_cache_ttl";
+export type UpdateResponseActionsItemBrowserCacheTTLId =
+  | "browser_cache_ttl"
+  | (string & {});
 export const UpdateResponseActionsItemBrowserCacheTTLId =
   /*@__PURE__*/ S.String;
 
@@ -8132,10 +8859,15 @@ export const UpdateResponseActionsItemBrowserCacheTTL = /*@__PURE__*/ S.suspend(
   identifier: "UpdateResponseActionsItemBrowserCacheTTL",
 }) as any as S.Schema<UpdateResponseActionsItemBrowserCacheTTL>;
 
-export type UpdateResponseActionsItemBrowserCheckId = "browser_check";
+export type UpdateResponseActionsItemBrowserCheckId =
+  | "browser_check"
+  | (string & {});
 export const UpdateResponseActionsItemBrowserCheckId = /*@__PURE__*/ S.String;
 
-export type UpdateResponseActionsItemBrowserCheckValue = "on" | "off";
+export type UpdateResponseActionsItemBrowserCheckValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateResponseActionsItemBrowserCheckValue =
   /*@__PURE__*/ S.String;
 
@@ -8156,7 +8888,8 @@ export const UpdateResponseActionsItemBrowserCheck = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateResponseActionsItemBrowserCheck>;
 
 export type UpdateResponseActionsItemBypassCacheOnCookieId =
-  "bypass_cache_on_cookie";
+  | "bypass_cache_on_cookie"
+  | (string & {});
 export const UpdateResponseActionsItemBypassCacheOnCookieId =
   /*@__PURE__*/ S.String;
 
@@ -8177,11 +8910,15 @@ export const UpdateResponseActionsItemBypassCacheOnCookie =
   }) as any as S.Schema<UpdateResponseActionsItemBypassCacheOnCookie>;
 
 export type UpdateResponseActionsItemCacheByDeviceTypeId =
-  "cache_by_device_type";
+  | "cache_by_device_type"
+  | (string & {});
 export const UpdateResponseActionsItemCacheByDeviceTypeId =
   /*@__PURE__*/ S.String;
 
-export type UpdateResponseActionsItemCacheByDeviceTypeValue = "on" | "off";
+export type UpdateResponseActionsItemCacheByDeviceTypeValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateResponseActionsItemCacheByDeviceTypeValue =
   /*@__PURE__*/ S.String;
 
@@ -8202,11 +8939,15 @@ export const UpdateResponseActionsItemCacheByDeviceType =
   }) as any as S.Schema<UpdateResponseActionsItemCacheByDeviceType>;
 
 export type UpdateResponseActionsItemCacheDeceptionArmorId =
-  "cache_deception_armor";
+  | "cache_deception_armor"
+  | (string & {});
 export const UpdateResponseActionsItemCacheDeceptionArmorId =
   /*@__PURE__*/ S.String;
 
-export type UpdateResponseActionsItemCacheDeceptionArmorValue = "on" | "off";
+export type UpdateResponseActionsItemCacheDeceptionArmorValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateResponseActionsItemCacheDeceptionArmorValue =
   /*@__PURE__*/ S.String;
 
@@ -8226,7 +8967,9 @@ export const UpdateResponseActionsItemCacheDeceptionArmor =
     identifier: "UpdateResponseActionsItemCacheDeceptionArmor",
   }) as any as S.Schema<UpdateResponseActionsItemCacheDeceptionArmor>;
 
-export type UpdateResponseActionsItemCacheKeyFieldsId = "cache_key_fields";
+export type UpdateResponseActionsItemCacheKeyFieldsId =
+  | "cache_key_fields"
+  | (string & {});
 export const UpdateResponseActionsItemCacheKeyFieldsId = /*@__PURE__*/ S.String;
 
 export type UpdateResponseActionsItemCacheKeyFieldsValueCookieCheckPresenceList =
@@ -8327,7 +9070,7 @@ export const UpdateResponseActionsItemCacheKeyFieldsValueHost =
   }) as any as S.Schema<UpdateResponseActionsItemCacheKeyFieldsValueHost>;
 
 export type UpdateResponseActionsItemCacheKeyFieldsValueQueryStringExcludeEnum =
-  "*";
+  "*" | (string & {});
 export const UpdateResponseActionsItemCacheKeyFieldsValueQueryStringExcludeEnum =
   /*@__PURE__*/ S.String;
 
@@ -8345,7 +9088,7 @@ export const UpdateResponseActionsItemCacheKeyFieldsValueQueryStringExclude =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export type UpdateResponseActionsItemCacheKeyFieldsValueQueryStringIncludeEnum =
-  "*";
+  "*" | (string & {});
 export const UpdateResponseActionsItemCacheKeyFieldsValueQueryStringIncludeEnum =
   /*@__PURE__*/ S.String;
 
@@ -8445,7 +9188,9 @@ export const UpdateResponseActionsItemCacheKeyFields = /*@__PURE__*/ S.suspend(
   identifier: "UpdateResponseActionsItemCacheKeyFields",
 }) as any as S.Schema<UpdateResponseActionsItemCacheKeyFields>;
 
-export type UpdateResponseActionsItemCacheLevelId = "cache_level";
+export type UpdateResponseActionsItemCacheLevelId =
+  | "cache_level"
+  | (string & {});
 export const UpdateResponseActionsItemCacheLevelId = /*@__PURE__*/ S.String;
 
 export type UpdateResponseActionsItemCacheLevelValue =
@@ -8453,7 +9198,8 @@ export type UpdateResponseActionsItemCacheLevelValue =
   | "basic"
   | "simplified"
   | "aggressive"
-  | "cache_everything";
+  | "cache_everything"
+  | (string & {});
 export const UpdateResponseActionsItemCacheLevelValue = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseActionsItemCacheLevel {
@@ -8471,7 +9217,9 @@ export const UpdateResponseActionsItemCacheLevel = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponseActionsItemCacheLevel",
 }) as any as S.Schema<UpdateResponseActionsItemCacheLevel>;
 
-export type UpdateResponseActionsItemCacheOnCookieId = "cache_on_cookie";
+export type UpdateResponseActionsItemCacheOnCookieId =
+  | "cache_on_cookie"
+  | (string & {});
 export const UpdateResponseActionsItemCacheOnCookieId = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseActionsItemCacheOnCookie {
@@ -8490,13 +9238,16 @@ export const UpdateResponseActionsItemCacheOnCookie = /*@__PURE__*/ S.suspend(
   identifier: "UpdateResponseActionsItemCacheOnCookie",
 }) as any as S.Schema<UpdateResponseActionsItemCacheOnCookie>;
 
-export type UpdateResponseActionsItemCacheTTLByStatusId = "cache_ttl_by_status";
+export type UpdateResponseActionsItemCacheTTLByStatusId =
+  | "cache_ttl_by_status"
+  | (string & {});
 export const UpdateResponseActionsItemCacheTTLByStatusId =
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseActionsItemCacheTTLByStatusValueCase0 =
   | "no-cache"
-  | "no-store";
+  | "no-store"
+  | (string & {});
 export const UpdateResponseActionsItemCacheTTLByStatusValueCase0 =
   /*@__PURE__*/ S.String;
 
@@ -8522,7 +9273,9 @@ export const UpdateResponseActionsItemCacheTTLByStatus =
     identifier: "UpdateResponseActionsItemCacheTTLByStatus",
   }) as any as S.Schema<UpdateResponseActionsItemCacheTTLByStatus>;
 
-export type UpdateResponseActionsItemDisableAppsId = "disable_apps";
+export type UpdateResponseActionsItemDisableAppsId =
+  | "disable_apps"
+  | (string & {});
 export const UpdateResponseActionsItemDisableAppsId = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseActionsItemDisableApps {
@@ -8539,7 +9292,8 @@ export const UpdateResponseActionsItemDisableApps = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateResponseActionsItemDisableApps>;
 
 export type UpdateResponseActionsItemDisablePerformanceId =
-  "disable_performance";
+  | "disable_performance"
+  | (string & {});
 export const UpdateResponseActionsItemDisablePerformanceId =
   /*@__PURE__*/ S.String;
 
@@ -8556,7 +9310,9 @@ export const UpdateResponseActionsItemDisablePerformance =
     identifier: "UpdateResponseActionsItemDisablePerformance",
   }) as any as S.Schema<UpdateResponseActionsItemDisablePerformance>;
 
-export type UpdateResponseActionsItemDisableSecurityId = "disable_security";
+export type UpdateResponseActionsItemDisableSecurityId =
+  | "disable_security"
+  | (string & {});
 export const UpdateResponseActionsItemDisableSecurityId =
   /*@__PURE__*/ S.String;
 
@@ -8573,7 +9329,9 @@ export const UpdateResponseActionsItemDisableSecurity = /*@__PURE__*/ S.suspend(
   identifier: "UpdateResponseActionsItemDisableSecurity",
 }) as any as S.Schema<UpdateResponseActionsItemDisableSecurity>;
 
-export type UpdateResponseActionsItemDisableZarazId = "disable_zaraz";
+export type UpdateResponseActionsItemDisableZarazId =
+  | "disable_zaraz"
+  | (string & {});
 export const UpdateResponseActionsItemDisableZarazId = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseActionsItemDisableZaraz {
@@ -8589,7 +9347,9 @@ export const UpdateResponseActionsItemDisableZaraz = /*@__PURE__*/ S.suspend(
   identifier: "UpdateResponseActionsItemDisableZaraz",
 }) as any as S.Schema<UpdateResponseActionsItemDisableZaraz>;
 
-export type UpdateResponseActionsItemEdgeCacheTTLId = "edge_cache_ttl";
+export type UpdateResponseActionsItemEdgeCacheTTLId =
+  | "edge_cache_ttl"
+  | (string & {});
 export const UpdateResponseActionsItemEdgeCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseActionsItemEdgeCacheTTL {
@@ -8607,11 +9367,16 @@ export const UpdateResponseActionsItemEdgeCacheTTL = /*@__PURE__*/ S.suspend(
   identifier: "UpdateResponseActionsItemEdgeCacheTTL",
 }) as any as S.Schema<UpdateResponseActionsItemEdgeCacheTTL>;
 
-export type UpdateResponseActionsItemEmailObfuscationId = "email_obfuscation";
+export type UpdateResponseActionsItemEmailObfuscationId =
+  | "email_obfuscation"
+  | (string & {});
 export const UpdateResponseActionsItemEmailObfuscationId =
   /*@__PURE__*/ S.String;
 
-export type UpdateResponseActionsItemEmailObfuscationValue = "on" | "off";
+export type UpdateResponseActionsItemEmailObfuscationValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateResponseActionsItemEmailObfuscationValue =
   /*@__PURE__*/ S.String;
 
@@ -8632,11 +9397,15 @@ export const UpdateResponseActionsItemEmailObfuscation =
   }) as any as S.Schema<UpdateResponseActionsItemEmailObfuscation>;
 
 export type UpdateResponseActionsItemExplicitCacheControlId =
-  "explicit_cache_control";
+  | "explicit_cache_control"
+  | (string & {});
 export const UpdateResponseActionsItemExplicitCacheControlId =
   /*@__PURE__*/ S.String;
 
-export type UpdateResponseActionsItemExplicitCacheControlValue = "on" | "off";
+export type UpdateResponseActionsItemExplicitCacheControlValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateResponseActionsItemExplicitCacheControlValue =
   /*@__PURE__*/ S.String;
 
@@ -8656,10 +9425,15 @@ export const UpdateResponseActionsItemExplicitCacheControl =
     identifier: "UpdateResponseActionsItemExplicitCacheControl",
   }) as any as S.Schema<UpdateResponseActionsItemExplicitCacheControl>;
 
-export type UpdateResponseActionsItemForwardingURLId = "forwarding_url";
+export type UpdateResponseActionsItemForwardingURLId =
+  | "forwarding_url"
+  | (string & {});
 export const UpdateResponseActionsItemForwardingURLId = /*@__PURE__*/ S.String;
 
-export type UpdateResponseActionsItemForwardingURLValueStatusCode = 301 | 302;
+export type UpdateResponseActionsItemForwardingURLValueStatusCode =
+  | 301
+  | 302
+  | (number & {});
 export const UpdateResponseActionsItemForwardingURLValueStatusCode =
   /*@__PURE__*/ S.Number;
 
@@ -8699,7 +9473,8 @@ export const UpdateResponseActionsItemForwardingURL = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateResponseActionsItemForwardingURL>;
 
 export type UpdateResponseActionsItemHostHeaderOverrideId =
-  "host_header_override";
+  | "host_header_override"
+  | (string & {});
 export const UpdateResponseActionsItemHostHeaderOverrideId =
   /*@__PURE__*/ S.String;
 
@@ -8719,10 +9494,15 @@ export const UpdateResponseActionsItemHostHeaderOverride =
     identifier: "UpdateResponseActionsItemHostHeaderOverride",
   }) as any as S.Schema<UpdateResponseActionsItemHostHeaderOverride>;
 
-export type UpdateResponseActionsItemIPGeolocationId = "ip_geolocation";
+export type UpdateResponseActionsItemIPGeolocationId =
+  | "ip_geolocation"
+  | (string & {});
 export const UpdateResponseActionsItemIPGeolocationId = /*@__PURE__*/ S.String;
 
-export type UpdateResponseActionsItemIPGeolocationValue = "on" | "off";
+export type UpdateResponseActionsItemIPGeolocationValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateResponseActionsItemIPGeolocationValue =
   /*@__PURE__*/ S.String;
 
@@ -8742,10 +9522,10 @@ export const UpdateResponseActionsItemIPGeolocation = /*@__PURE__*/ S.suspend(
   identifier: "UpdateResponseActionsItemIPGeolocation",
 }) as any as S.Schema<UpdateResponseActionsItemIPGeolocation>;
 
-export type UpdateResponseActionsItemMirageId = "mirage";
+export type UpdateResponseActionsItemMirageId = "mirage" | (string & {});
 export const UpdateResponseActionsItemMirageId = /*@__PURE__*/ S.String;
 
-export type UpdateResponseActionsItemMirageValue = "on" | "off";
+export type UpdateResponseActionsItemMirageValue = "on" | "off" | (string & {});
 export const UpdateResponseActionsItemMirageValue = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseActionsItemMirage {
@@ -8764,13 +9544,15 @@ export const UpdateResponseActionsItemMirage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateResponseActionsItemMirage>;
 
 export type UpdateResponseActionsItemOpportunisticEncryptionId =
-  "opportunistic_encryption";
+  | "opportunistic_encryption"
+  | (string & {});
 export const UpdateResponseActionsItemOpportunisticEncryptionId =
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseActionsItemOpportunisticEncryptionValue =
   | "on"
-  | "off";
+  | "off"
+  | (string & {});
 export const UpdateResponseActionsItemOpportunisticEncryptionValue =
   /*@__PURE__*/ S.String;
 
@@ -8791,13 +9573,15 @@ export const UpdateResponseActionsItemOpportunisticEncryption =
   }) as any as S.Schema<UpdateResponseActionsItemOpportunisticEncryption>;
 
 export type UpdateResponseActionsItemOriginErrorPagePassThruId =
-  "origin_error_page_pass_thru";
+  | "origin_error_page_pass_thru"
+  | (string & {});
 export const UpdateResponseActionsItemOriginErrorPagePassThruId =
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseActionsItemOriginErrorPagePassThruValue =
   | "on"
-  | "off";
+  | "off"
+  | (string & {});
 export const UpdateResponseActionsItemOriginErrorPagePassThruValue =
   /*@__PURE__*/ S.String;
 
@@ -8817,10 +9601,14 @@ export const UpdateResponseActionsItemOriginErrorPagePassThru =
     identifier: "UpdateResponseActionsItemOriginErrorPagePassThru",
   }) as any as S.Schema<UpdateResponseActionsItemOriginErrorPagePassThru>;
 
-export type UpdateResponseActionsItemPolishId = "polish";
+export type UpdateResponseActionsItemPolishId = "polish" | (string & {});
 export const UpdateResponseActionsItemPolishId = /*@__PURE__*/ S.String;
 
-export type UpdateResponseActionsItemPolishValue = "off" | "lossless" | "lossy";
+export type UpdateResponseActionsItemPolishValue =
+  | "off"
+  | "lossless"
+  | "lossy"
+  | (string & {});
 export const UpdateResponseActionsItemPolishValue = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseActionsItemPolish {
@@ -8838,7 +9626,9 @@ export const UpdateResponseActionsItemPolish = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponseActionsItemPolish",
 }) as any as S.Schema<UpdateResponseActionsItemPolish>;
 
-export type UpdateResponseActionsItemResolveOverrideId = "resolve_override";
+export type UpdateResponseActionsItemResolveOverrideId =
+  | "resolve_override"
+  | (string & {});
 export const UpdateResponseActionsItemResolveOverrideId =
   /*@__PURE__*/ S.String;
 
@@ -8859,11 +9649,15 @@ export const UpdateResponseActionsItemResolveOverride = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateResponseActionsItemResolveOverride>;
 
 export type UpdateResponseActionsItemRespectStrongEtagId =
-  "respect_strong_etag";
+  | "respect_strong_etag"
+  | (string & {});
 export const UpdateResponseActionsItemRespectStrongEtagId =
   /*@__PURE__*/ S.String;
 
-export type UpdateResponseActionsItemRespectStrongEtagValue = "on" | "off";
+export type UpdateResponseActionsItemRespectStrongEtagValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateResponseActionsItemRespectStrongEtagValue =
   /*@__PURE__*/ S.String;
 
@@ -8883,11 +9677,16 @@ export const UpdateResponseActionsItemRespectStrongEtag =
     identifier: "UpdateResponseActionsItemRespectStrongEtag",
   }) as any as S.Schema<UpdateResponseActionsItemRespectStrongEtag>;
 
-export type UpdateResponseActionsItemResponseBufferingId = "response_buffering";
+export type UpdateResponseActionsItemResponseBufferingId =
+  | "response_buffering"
+  | (string & {});
 export const UpdateResponseActionsItemResponseBufferingId =
   /*@__PURE__*/ S.String;
 
-export type UpdateResponseActionsItemResponseBufferingValue = "on" | "off";
+export type UpdateResponseActionsItemResponseBufferingValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateResponseActionsItemResponseBufferingValue =
   /*@__PURE__*/ S.String;
 
@@ -8907,10 +9706,15 @@ export const UpdateResponseActionsItemResponseBuffering =
     identifier: "UpdateResponseActionsItemResponseBuffering",
   }) as any as S.Schema<UpdateResponseActionsItemResponseBuffering>;
 
-export type UpdateResponseActionsItemRocketLoaderId = "rocket_loader";
+export type UpdateResponseActionsItemRocketLoaderId =
+  | "rocket_loader"
+  | (string & {});
 export const UpdateResponseActionsItemRocketLoaderId = /*@__PURE__*/ S.String;
 
-export type UpdateResponseActionsItemRocketLoaderValue = "on" | "off";
+export type UpdateResponseActionsItemRocketLoaderValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateResponseActionsItemRocketLoaderValue =
   /*@__PURE__*/ S.String;
 
@@ -8930,7 +9734,9 @@ export const UpdateResponseActionsItemRocketLoader = /*@__PURE__*/ S.suspend(
   identifier: "UpdateResponseActionsItemRocketLoader",
 }) as any as S.Schema<UpdateResponseActionsItemRocketLoader>;
 
-export type UpdateResponseActionsItemSecurityLevelId = "security_level";
+export type UpdateResponseActionsItemSecurityLevelId =
+  | "security_level"
+  | (string & {});
 export const UpdateResponseActionsItemSecurityLevelId = /*@__PURE__*/ S.String;
 
 export type UpdateResponseActionsItemSecurityLevelValue =
@@ -8939,7 +9745,8 @@ export type UpdateResponseActionsItemSecurityLevelValue =
   | "low"
   | "medium"
   | "high"
-  | "under_attack";
+  | "under_attack"
+  | (string & {});
 export const UpdateResponseActionsItemSecurityLevelValue =
   /*@__PURE__*/ S.String;
 
@@ -8959,13 +9766,15 @@ export const UpdateResponseActionsItemSecurityLevel = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateResponseActionsItemSecurityLevel>;
 
 export type UpdateResponseActionsItemSortQueryStringForCacheId =
-  "sort_query_string_for_cache";
+  | "sort_query_string_for_cache"
+  | (string & {});
 export const UpdateResponseActionsItemSortQueryStringForCacheId =
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseActionsItemSortQueryStringForCacheValue =
   | "on"
-  | "off";
+  | "off"
+  | (string & {});
 export const UpdateResponseActionsItemSortQueryStringForCacheValue =
   /*@__PURE__*/ S.String;
 
@@ -8985,7 +9794,7 @@ export const UpdateResponseActionsItemSortQueryStringForCache =
     identifier: "UpdateResponseActionsItemSortQueryStringForCache",
   }) as any as S.Schema<UpdateResponseActionsItemSortQueryStringForCache>;
 
-export type UpdateResponseActionsItemSSLId = "ssl";
+export type UpdateResponseActionsItemSSLId = "ssl" | (string & {});
 export const UpdateResponseActionsItemSSLId = /*@__PURE__*/ S.String;
 
 export type UpdateResponseActionsItemSSLValue =
@@ -8993,7 +9802,8 @@ export type UpdateResponseActionsItemSSLValue =
   | "flexible"
   | "full"
   | "strict"
-  | "origin_pull";
+  | "origin_pull"
+  | (string & {});
 export const UpdateResponseActionsItemSSLValue = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseActionsItemSSL {
@@ -9012,11 +9822,15 @@ export const UpdateResponseActionsItemSSL = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateResponseActionsItemSSL>;
 
 export type UpdateResponseActionsItemTrueClientIPHeaderId =
-  "true_client_ip_header";
+  | "true_client_ip_header"
+  | (string & {});
 export const UpdateResponseActionsItemTrueClientIPHeaderId =
   /*@__PURE__*/ S.String;
 
-export type UpdateResponseActionsItemTrueClientIPHeaderValue = "on" | "off";
+export type UpdateResponseActionsItemTrueClientIPHeaderValue =
+  | "on"
+  | "off"
+  | (string & {});
 export const UpdateResponseActionsItemTrueClientIPHeaderValue =
   /*@__PURE__*/ S.String;
 
@@ -9036,10 +9850,10 @@ export const UpdateResponseActionsItemTrueClientIPHeader =
     identifier: "UpdateResponseActionsItemTrueClientIPHeader",
   }) as any as S.Schema<UpdateResponseActionsItemTrueClientIPHeader>;
 
-export type UpdateResponseActionsItemWAFId = "waf";
+export type UpdateResponseActionsItemWAFId = "waf" | (string & {});
 export const UpdateResponseActionsItemWAFId = /*@__PURE__*/ S.String;
 
-export type UpdateResponseActionsItemWAFValue = "on" | "off";
+export type UpdateResponseActionsItemWAFValue = "on" | "off" | (string & {});
 export const UpdateResponseActionsItemWAFValue = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseActionsItemWAF {
@@ -9137,7 +9951,7 @@ export const UpdateResponseActionsList = /*@__PURE__*/ S.Array(
   UpdateResponseActionsItem,
 ) as any as S.Schema<UpdateResponseActionsList>;
 
-export type UpdateResponseStatus = "active" | "disabled";
+export type UpdateResponseStatus = "active" | "disabled" | (string & {});
 export const UpdateResponseStatus = /*@__PURE__*/ S.String;
 
 export type UpdateResponseTargetsItemConstraintOperator =
@@ -9145,7 +9959,8 @@ export type UpdateResponseTargetsItemConstraintOperator =
   | "contains"
   | "equals"
   | "not_equal"
-  | "not_contain";
+  | "not_contain"
+  | (string & {});
 export const UpdateResponseTargetsItemConstraintOperator =
   /*@__PURE__*/ S.String;
 
@@ -9164,7 +9979,7 @@ export const UpdateResponseTargetsItemConstraint = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponseTargetsItemConstraint",
 }) as any as S.Schema<UpdateResponseTargetsItemConstraint>;
 
-export type UpdateResponseTargetsItemTarget = "url";
+export type UpdateResponseTargetsItemTarget = "url" | (string & {});
 export const UpdateResponseTargetsItemTarget = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseTargetsItem {

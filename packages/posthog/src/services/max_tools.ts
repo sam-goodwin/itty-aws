@@ -12,7 +12,12 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `trends` - trends * `funnel` - funnel * `retention` - retention * `sql` - sql */
-export type InsightTypeEnum = "trends" | "funnel" | "retention" | "sql";
+export type InsightTypeEnum =
+  | "trends"
+  | "funnel"
+  | "retention"
+  | "sql"
+  | (string & {});
 export const InsightTypeEnum = /*@__PURE__*/ S.String;
 
 export interface MaxToolsCreateAndQueryInsightCreateRequest {

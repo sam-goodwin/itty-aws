@@ -188,13 +188,15 @@ export type MessageNewTaskStateEnum =
   | "RUNNING"
   | "FAILED"
   | "SUCCEEDED"
-  | "UNEXECUTED";
+  | "UNEXECUTED"
+  | (string & {});
 export const MessageNewTaskStateEnum = /*@__PURE__*/ S.String;
 
 export type MessageTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "JOB_STATE_CHANGED"
-  | "TASK_STATE_CHANGED";
+  | "TASK_STATE_CHANGED"
+  | (string & {});
 export const MessageTypeEnum = /*@__PURE__*/ S.String;
 
 export type MessageNewJobStateEnum =
@@ -206,7 +208,8 @@ export type MessageNewJobStateEnum =
   | "FAILED"
   | "DELETION_IN_PROGRESS"
   | "CANCELLATION_IN_PROGRESS"
-  | "CANCELLED";
+  | "CANCELLED"
+  | (string & {});
 export const MessageNewJobStateEnum = /*@__PURE__*/ S.String;
 
 /** Message details. Describe the conditions under which messages will be sent. If no attribute is defined, no message will be sent by default. One message should specify either the job or the task level attributes, but not both. For example, job level: JOB_STATE_CHANGED and/or a specified new_job_state; task level: TASK_STATE_CHANGED and/or a specified new_task_state. */
@@ -413,7 +416,8 @@ export const ComputeResource = /*@__PURE__*/ S.suspend(() =>
 export type LifecyclePolicyActionEnum =
   | "ACTION_UNSPECIFIED"
   | "RETRY_TASK"
-  | "FAIL_TASK";
+  | "FAIL_TASK"
+  | (string & {});
 export const LifecyclePolicyActionEnum = /*@__PURE__*/ S.String;
 
 export type IntegerList = ReadonlyArray<number>;
@@ -548,7 +552,8 @@ export const EnvironmentList = /*@__PURE__*/ S.Array(
 export type TaskGroupSchedulingPolicyEnum =
   | "SCHEDULING_POLICY_UNSPECIFIED"
   | "AS_SOON_AS_POSSIBLE"
-  | "IN_ORDER";
+  | "IN_ORDER"
+  | (string & {});
 export const TaskGroupSchedulingPolicyEnum = /*@__PURE__*/ S.String;
 
 /** A TaskGroup defines one or more Tasks that all share the same TaskSpec. */
@@ -600,7 +605,8 @@ export type InstanceStatusProvisioningModelEnum =
   | "SPOT"
   | "PREEMPTIBLE"
   | "RESERVATION_BOUND"
-  | "FLEX_START";
+  | "FLEX_START"
+  | (string & {});
 export const InstanceStatusProvisioningModelEnum = /*@__PURE__*/ S.String;
 
 /** A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD partitions. See https://cloud.google.com/compute/docs/disks#pdspecs and https://cloud.google.com/compute/docs/disks#localssds. */
@@ -682,7 +688,8 @@ export type JobStatusStateEnum =
   | "FAILED"
   | "DELETION_IN_PROGRESS"
   | "CANCELLATION_IN_PROGRESS"
-  | "CANCELLED";
+  | "CANCELLED"
+  | (string & {});
 export const JobStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** This Task Execution field includes detail information for task execution procedures, based on StatusEvent types. */
@@ -703,7 +710,8 @@ export type StatusEventTaskStateEnum =
   | "RUNNING"
   | "FAILED"
   | "SUCCEEDED"
-  | "UNEXECUTED";
+  | "UNEXECUTED"
+  | (string & {});
 export const StatusEventTaskStateEnum = /*@__PURE__*/ S.String;
 
 /** Status event. */
@@ -770,7 +778,8 @@ export type InstancePolicyProvisioningModelEnum =
   | "SPOT"
   | "PREEMPTIBLE"
   | "RESERVATION_BOUND"
-  | "FLEX_START";
+  | "FLEX_START"
+  | (string & {});
 export const InstancePolicyProvisioningModelEnum = /*@__PURE__*/ S.String;
 
 /** A new or an existing persistent disk (PD) or a local ssd attached to a VM instance. */
@@ -991,7 +1000,8 @@ export const CloudLoggingOption = /*@__PURE__*/ S.suspend(() =>
 export type LogsPolicyDestinationEnum =
   | "DESTINATION_UNSPECIFIED"
   | "CLOUD_LOGGING"
-  | "PATH";
+  | "PATH"
+  | (string & {});
 export const LogsPolicyDestinationEnum = /*@__PURE__*/ S.String;
 
 /** LogsPolicy describes if and how a job's logs are preserved. Logs include information that is automatically written by the Batch service agent and any information that you configured the job's runnables to write to the `stdout` or `stderr` streams. */
@@ -1207,7 +1217,8 @@ export type TaskStatusStateEnum =
   | "RUNNING"
   | "FAILED"
   | "SUCCEEDED"
-  | "UNEXECUTED";
+  | "UNEXECUTED"
+  | (string & {});
 export const TaskStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** Status of a task. */
@@ -1471,7 +1482,8 @@ export type AgentInfoStateEnum =
   | "AGENT_STATE_UNSPECIFIED"
   | "AGENT_STARTING"
   | "AGENT_RUNNING"
-  | "AGENT_STOPPED";
+  | "AGENT_STOPPED"
+  | (string & {});
 export const AgentInfoStateEnum = /*@__PURE__*/ S.String;
 
 /** Task Info */
@@ -1777,14 +1789,16 @@ export const AgentTaskSpec = /*@__PURE__*/ S.suspend(() =>
 export type AgentTaskTaskSourceEnum =
   | "TASK_SOURCE_UNSPECIFIED"
   | "BATCH_INTERNAL"
-  | "USER";
+  | "USER"
+  | (string & {});
 export const AgentTaskTaskSourceEnum = /*@__PURE__*/ S.String;
 
 export type AgentTaskIntendedStateEnum =
   | "INTENDED_STATE_UNSPECIFIED"
   | "ASSIGNED"
   | "CANCELLED"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const AgentTaskIntendedStateEnum = /*@__PURE__*/ S.String;
 
 /** TODO(b/182501497) The message needs to be redefined when the Agent API server updates data in storage per the backend design. */

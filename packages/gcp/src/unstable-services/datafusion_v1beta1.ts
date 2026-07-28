@@ -178,7 +178,8 @@ export type InstanceTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "BASIC"
   | "ENTERPRISE"
-  | "DEVELOPER";
+  | "DEVELOPER"
+  | (string & {});
 export const InstanceTypeEnum = /*@__PURE__*/ S.String;
 
 export type AcceleratorAcceleratorTypeEnum =
@@ -186,14 +187,16 @@ export type AcceleratorAcceleratorTypeEnum =
   | "CDC"
   | "HEALTHCARE"
   | "CCAI_INSIGHTS"
-  | "CLOUDSEARCH";
+  | "CLOUDSEARCH"
+  | (string & {});
 export const AcceleratorAcceleratorTypeEnum = /*@__PURE__*/ S.String;
 
 export type AcceleratorStateEnum =
   | "STATE_UNSPECIFIED"
   | "ENABLED"
   | "DISABLED"
-  | "UNKNOWN";
+  | "UNKNOWN"
+  | (string & {});
 export const AcceleratorStateEnum = /*@__PURE__*/ S.String;
 
 /** Identifies Cloud Data Fusion accelerators for an instance. */
@@ -218,7 +221,8 @@ export const AcceleratorList = /*@__PURE__*/ S.Array(
 export type InstanceDisabledReasonItemEnum =
   | "DISABLED_REASON_UNSPECIFIED"
   | "KMS_KEY_ISSUE"
-  | "PROJECT_STATE_OFF";
+  | "PROJECT_STATE_OFF"
+  | (string & {});
 export const InstanceDisabledReasonItemEnum = /*@__PURE__*/ S.String;
 
 export type InstanceDisabledReasonItemEnumList =
@@ -260,7 +264,8 @@ export type VersionTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TYPE_PREVIEW"
   | "TYPE_GENERAL_AVAILABILITY"
-  | "TYPE_DEPRECATED";
+  | "TYPE_DEPRECATED"
+  | (string & {});
 export const VersionTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -296,7 +301,8 @@ export const VersionList = /*@__PURE__*/ S.Array(
 export type NetworkConfigConnectionTypeEnum =
   | "CONNECTION_TYPE_UNSPECIFIED"
   | "VPC_PEERING"
-  | "PRIVATE_SERVICE_CONNECT_INTERFACES";
+  | "PRIVATE_SERVICE_CONNECT_INTERFACES"
+  | (string & {});
 export const NetworkConfigConnectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for using Private Service Connect to establish connectivity between the Data Fusion consumer project and the corresponding tenant project. */
@@ -350,14 +356,16 @@ export type InstanceStateEnum =
   | "AUTO_UPDATING"
   | "AUTO_UPGRADING"
   | "DISABLED"
-  | "ENABLING";
+  | "ENABLING"
+  | (string & {});
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 export type MaintenanceEventStateEnum =
   | "STATE_UNSPECIFIED"
   | "SCHEDULED"
   | "STARTED"
-  | "COMPLETED";
+  | "COMPLETED"
+  | (string & {});
 export const MaintenanceEventStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a maintenance event. */
@@ -736,7 +744,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1095,7 +1104,8 @@ export const ListDnsPeeringsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsInstancesNamespacesViewEnum =
   | "NAMESPACE_VIEW_UNSPECIFIED"
   | "NAMESPACE_VIEW_BASIC"
-  | "NAMESPACE_VIEW_FULL";
+  | "NAMESPACE_VIEW_FULL"
+  | (string & {});
 export const ListProjectsLocationsInstancesNamespacesViewEnum =
   /*@__PURE__*/ S.String;
 

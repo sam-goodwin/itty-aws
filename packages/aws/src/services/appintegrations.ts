@@ -193,7 +193,10 @@ export type Permission = string;
 export type PermissionList = string[];
 export const PermissionList = /*@__PURE__*/ S.Array(S.String);
 export type InitializationTimeout = number;
-export type ContactHandlingScope = "CROSS_CONTACTS" | "PER_CONTACT";
+export type ContactHandlingScope =
+  | "CROSS_CONTACTS"
+  | "PER_CONTACT"
+  | (string & {});
 export const ContactHandlingScope = /*@__PURE__*/ S.String;
 
 export interface ContactHandling {
@@ -225,7 +228,11 @@ export const IframeConfig = /*@__PURE__*/ S.suspend(() =>
     Sandbox: S.optional(IframePermissionList),
   }),
 ).annotate({ identifier: "IframeConfig" }) as any as S.Schema<IframeConfig>;
-export type ApplicationType = "STANDARD" | "SERVICE" | "MCP_SERVER";
+export type ApplicationType =
+  | "STANDARD"
+  | "SERVICE"
+  | "MCP_SERVER"
+  | (string & {});
 export const ApplicationType = /*@__PURE__*/ S.String;
 
 export interface CreateApplicationRequest {
@@ -405,7 +412,7 @@ export const ClientAssociationMetadata = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export type ExecutionMode = "ON_DEMAND" | "SCHEDULED";
+export type ExecutionMode = "ON_DEMAND" | "SCHEDULED" | (string & {});
 export const ExecutionMode = /*@__PURE__*/ S.String;
 
 export interface OnDemandConfiguration {
@@ -902,7 +909,11 @@ export const ListDataIntegrationAssociationsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListDataIntegrationAssociationsRequest",
 }) as any as S.Schema<ListDataIntegrationAssociationsRequest>;
-export type ExecutionStatus = "COMPLETED" | "IN_PROGRESS" | "FAILED";
+export type ExecutionStatus =
+  | "COMPLETED"
+  | "IN_PROGRESS"
+  | "FAILED"
+  | (string & {});
 export const ExecutionStatus = /*@__PURE__*/ S.String;
 
 export interface LastExecutionStatus {

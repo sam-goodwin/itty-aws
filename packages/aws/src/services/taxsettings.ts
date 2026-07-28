@@ -244,7 +244,8 @@ export type EntityExemptionAccountStatus =
   | "None"
   | "Valid"
   | "Expired"
-  | "Pending";
+  | "Pending"
+  | (string & {});
 export const EntityExemptionAccountStatus = /*@__PURE__*/ S.String;
 
 export interface TaxExemption {
@@ -314,7 +315,8 @@ export type TaxRegistrationType =
   | "TIN"
   | "NRIC"
   | "PAN"
-  | "NIP";
+  | "NIP"
+  | (string & {});
 export const TaxRegistrationType = /*@__PURE__*/ S.String;
 
 export type LegalName = string;
@@ -346,14 +348,15 @@ export const Address = /*@__PURE__*/ S.suspend(() =>
     countryCode: S.String,
   }),
 ).annotate({ identifier: "Address" }) as any as S.Schema<Address>;
-export type Sector = "Business" | "Individual" | "Government";
+export type Sector = "Business" | "Individual" | "Government" | (string & {});
 export const Sector = /*@__PURE__*/ S.String;
 
 export type MalaysiaServiceTaxCode =
   | "Consultancy"
   | "Digital Service And Electronic Medium"
   | "IT Services"
-  | "Training Or Coaching";
+  | "Training Or Coaching"
+  | (string & {});
 export const MalaysiaServiceTaxCode = /*@__PURE__*/ S.String;
 
 export type MalaysiaServiceTaxCodesList = MalaysiaServiceTaxCode[];
@@ -376,10 +379,10 @@ export const MalaysiaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MalaysiaAdditionalInfo",
 }) as any as S.Schema<MalaysiaAdditionalInfo>;
-export type IsraelDealerType = "Authorized" | "Non-authorized";
+export type IsraelDealerType = "Authorized" | "Non-authorized" | (string & {});
 export const IsraelDealerType = /*@__PURE__*/ S.String;
 
-export type IsraelCustomerType = "Business" | "Individual";
+export type IsraelCustomerType = "Business" | "Individual" | (string & {});
 export const IsraelCustomerType = /*@__PURE__*/ S.String;
 
 export interface IsraelAdditionalInfo {
@@ -419,7 +422,7 @@ export const CanadaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CanadaAdditionalInfo",
 }) as any as S.Schema<CanadaAdditionalInfo>;
-export type RegistrationType = "Intra-EU" | "Local";
+export type RegistrationType = "Intra-EU" | "Local" | (string & {});
 export const RegistrationType = /*@__PURE__*/ S.String;
 
 export interface SpainAdditionalInfo {
@@ -430,7 +433,11 @@ export const SpainAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SpainAdditionalInfo",
 }) as any as S.Schema<SpainAdditionalInfo>;
-export type PersonType = "Legal Person" | "Physical Person" | "Business";
+export type PersonType =
+  | "Legal Person"
+  | "Physical Person"
+  | "Business"
+  | (string & {});
 export const PersonType = /*@__PURE__*/ S.String;
 
 export interface KenyaAdditionalInfo {
@@ -467,7 +474,8 @@ export type Industries =
   | "Banks"
   | "Insurance"
   | "PensionAndBenefitFunds"
-  | "DevelopmentAgencies";
+  | "DevelopmentAgencies"
+  | (string & {});
 export const Industries = /*@__PURE__*/ S.String;
 
 export interface TurkeyAdditionalInfo {
@@ -498,7 +506,7 @@ export type SdiAccountId = string;
 export type CigNumber = string;
 export type CupNumber = string;
 export type TaxCode = string;
-export type CustomerType = "Business" | "Individual";
+export type CustomerType = "Business" | "Individual" | (string & {});
 export const CustomerType = /*@__PURE__*/ S.String;
 
 export interface ItalyAdditionalInfo {
@@ -521,7 +529,8 @@ export const ItalyAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ItalyAdditionalInfo>;
 export type TaxRegistrationNumberType =
   | "TaxRegistrationNumber"
-  | "LocalRegistrationNumber";
+  | "LocalRegistrationNumber"
+  | (string & {});
 export const TaxRegistrationNumberType = /*@__PURE__*/ S.String;
 
 export interface RomaniaAdditionalInfo {
@@ -532,7 +541,7 @@ export const RomaniaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RomaniaAdditionalInfo",
 }) as any as S.Schema<RomaniaAdditionalInfo>;
-export type UkraineTrnType = "Business" | "Individual";
+export type UkraineTrnType = "Business" | "Individual" | (string & {});
 export const UkraineTrnType = /*@__PURE__*/ S.String;
 
 export interface UkraineAdditionalInfo {
@@ -547,7 +556,8 @@ export type IndividualRegistrationNumber = string;
 export type PolandTaxRegistrationNumberType =
   | "EUTaxRegistrationNumber"
   | "LocalTaxRegistrationNumber"
-  | "LocalRegistrationNumber";
+  | "LocalRegistrationNumber"
+  | (string & {});
 export const PolandTaxRegistrationNumberType = /*@__PURE__*/ S.String;
 
 export interface PolandAdditionalInfo {
@@ -567,7 +577,8 @@ export const PolandAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 export type SaudiArabiaTaxRegistrationNumberType =
   | "TaxRegistrationNumber"
   | "TaxIdentificationNumber"
-  | "CommercialRegistrationNumber";
+  | "CommercialRegistrationNumber"
+  | (string & {});
 export const SaudiArabiaTaxRegistrationNumberType = /*@__PURE__*/ S.String;
 
 export interface SaudiArabiaAdditionalInfo {
@@ -584,7 +595,8 @@ export type IndonesiaTaxRegistrationNumberType =
   | "NIK"
   | "PassportNumber"
   | "NPWP"
-  | "NITKU";
+  | "NITKU"
+  | (string & {});
 export const IndonesiaTaxRegistrationNumberType = /*@__PURE__*/ S.String;
 
 export type PpnExceptionDesignationCode = string;
@@ -645,7 +657,10 @@ export const GreeceAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GreeceAdditionalInfo",
 }) as any as S.Schema<GreeceAdditionalInfo>;
-export type UzbekistanTaxRegistrationNumberType = "Business" | "Individual";
+export type UzbekistanTaxRegistrationNumberType =
+  | "Business"
+  | "Individual"
+  | (string & {});
 export const UzbekistanTaxRegistrationNumberType = /*@__PURE__*/ S.String;
 
 export type VatRegistrationNumber = string;
@@ -682,7 +697,7 @@ export const BelgiumAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BelgiumAdditionalInfo",
 }) as any as S.Schema<BelgiumAdditionalInfo>;
-export type ChileDocumentType = "Invoice" | "Receipt";
+export type ChileDocumentType = "Invoice" | "Receipt" | (string & {});
 export const ChileDocumentType = /*@__PURE__*/ S.String;
 
 export interface ChileAdditionalInfo {
@@ -861,7 +876,8 @@ export type TaxRegistrationStatus =
   | "Verified"
   | "Pending"
   | "Deleted"
-  | "Rejected";
+  | "Rejected"
+  | (string & {});
 export const TaxRegistrationStatus = /*@__PURE__*/ S.String;
 
 export interface BatchPutTaxRegistrationError_ {
@@ -980,7 +996,7 @@ export const GetTaxInheritanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTaxInheritanceRequest",
 }) as any as S.Schema<GetTaxInheritanceRequest>;
-export type HeritageStatus = "OptIn" | "OptOut";
+export type HeritageStatus = "OptIn" | "OptOut" | (string & {});
 export const HeritageStatus = /*@__PURE__*/ S.String;
 
 export interface GetTaxInheritanceResponse {
@@ -1204,7 +1220,7 @@ export const ListSupplementalTaxRegistrationsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListSupplementalTaxRegistrationsRequest",
 }) as any as S.Schema<ListSupplementalTaxRegistrationsRequest>;
-export type SupplementalTaxRegistrationType = "VAT";
+export type SupplementalTaxRegistrationType = "VAT" | (string & {});
 export const SupplementalTaxRegistrationType = /*@__PURE__*/ S.String;
 
 export interface SupplementalTaxRegistration {
@@ -1349,7 +1365,8 @@ export type Seller = string;
 export type AddressRoleType =
   | "TaxAddress"
   | "BillingAddress"
-  | "ContactAddress";
+  | "ContactAddress"
+  | (string & {});
 export const AddressRoleType = /*@__PURE__*/ S.String;
 
 export type AddressRoleMap = { [key in AddressRoleType]?: Jurisdiction };
@@ -1549,7 +1566,8 @@ export type ValidationExceptionErrorCode =
   | "FieldValidationFailed"
   | "MissingInput"
   | "NonIndiaCustomerCanNotSetPAN"
-  | "GSTExistenceBlockSetPAN";
+  | "GSTExistenceBlockSetPAN"
+  | (string & {});
 export const ValidationExceptionErrorCode = /*@__PURE__*/ S.String;
 
 export type FieldName = string;

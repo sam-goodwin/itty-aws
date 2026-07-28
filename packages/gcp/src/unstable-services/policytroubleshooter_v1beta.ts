@@ -122,7 +122,8 @@ export type GoogleCloudPolicytroubleshooterV1betaTroubleshootIamPolicyResponseAc
     | "GRANTED"
     | "NOT_GRANTED"
     | "UNKNOWN_CONDITIONAL"
-    | "UNKNOWN_INFO_DENIED";
+    | "UNKNOWN_INFO_DENIED"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterV1betaTroubleshootIamPolicyResponseAccessEnum =
   /*@__PURE__*/ S.String;
 
@@ -131,7 +132,8 @@ export type GoogleCloudPolicytroubleshooterV1betaBindingExplanationAccessEnum =
   | "GRANTED"
   | "NOT_GRANTED"
   | "UNKNOWN_CONDITIONAL"
-  | "UNKNOWN_INFO_DENIED";
+  | "UNKNOWN_INFO_DENIED"
+  | (string & {});
 export const GoogleCloudPolicytroubleshooterV1betaBindingExplanationAccessEnum =
   /*@__PURE__*/ S.String;
 
@@ -159,22 +161,23 @@ export type GoogleCloudPolicytroubleshooterV1betaBindingExplanationRolePermissio
     | "ROLE_PERMISSION_UNSPECIFIED"
     | "ROLE_PERMISSION_INCLUDED"
     | "ROLE_PERMISSION_NOT_INCLUDED"
-    | "ROLE_PERMISSION_UNKNOWN_INFO_DENIED";
+    | "ROLE_PERMISSION_UNKNOWN_INFO_DENIED"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterV1betaBindingExplanationRolePermissionEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicytroubleshooterV1betaBindingExplanationRelevanceEnum =
-  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH";
+  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH" | (string & {});
 export const GoogleCloudPolicytroubleshooterV1betaBindingExplanationRelevanceEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicytroubleshooterV1betaBindingExplanationRolePermissionRelevanceEnum =
-  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH";
+  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH" | (string & {});
 export const GoogleCloudPolicytroubleshooterV1betaBindingExplanationRolePermissionRelevanceEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicytroubleshooterV1betaBindingExplanationAnnotatedMembershipRelevanceEnum =
-  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH";
+  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH" | (string & {});
 export const GoogleCloudPolicytroubleshooterV1betaBindingExplanationAnnotatedMembershipRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -183,7 +186,8 @@ export type GoogleCloudPolicytroubleshooterV1betaBindingExplanationAnnotatedMemb
     | "MEMBERSHIP_INCLUDED"
     | "MEMBERSHIP_NOT_INCLUDED"
     | "MEMBERSHIP_UNKNOWN_INFO_DENIED"
-    | "MEMBERSHIP_UNKNOWN_UNSUPPORTED";
+    | "MEMBERSHIP_UNKNOWN_UNSUPPORTED"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterV1betaBindingExplanationAnnotatedMembershipMembershipEnum =
   /*@__PURE__*/ S.String;
 
@@ -273,7 +277,8 @@ export const GoogleCloudPolicytroubleshooterV1betaBindingExplanationList =
 export type GoogleCloudPolicytroubleshooterV1betaExplainedPolicyRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "NORMAL"
-  | "HIGH";
+  | "HIGH"
+  | (string & {});
 export const GoogleCloudPolicytroubleshooterV1betaExplainedPolicyRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -282,7 +287,8 @@ export type GoogleCloudPolicytroubleshooterV1betaExplainedPolicyAccessEnum =
   | "GRANTED"
   | "NOT_GRANTED"
   | "UNKNOWN_CONDITIONAL"
-  | "UNKNOWN_INFO_DENIED";
+  | "UNKNOWN_INFO_DENIED"
+  | (string & {});
 export const GoogleCloudPolicytroubleshooterV1betaExplainedPolicyAccessEnum =
   /*@__PURE__*/ S.String;
 
@@ -290,7 +296,8 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;

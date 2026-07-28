@@ -17,7 +17,8 @@ export type DatabaseMigrationPropertiesCosmosDbMongoInputKind =
   | "SqlMi"
   | "SqlVm"
   | "SqlDb"
-  | "MongoToCosmosDbMongo";
+  | "MongoToCosmosDbMongo"
+  | (string & {});
 export const DatabaseMigrationPropertiesCosmosDbMongoInputKind =
   /*@__PURE__*/ S.String;
 
@@ -151,7 +152,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -159,7 +161,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -192,7 +195,8 @@ export type DatabaseMigrationPropertiesCosmosDbMongoKind =
   | "SqlMi"
   | "SqlVm"
   | "SqlDb"
-  | "MongoToCosmosDbMongo";
+  | "MongoToCosmosDbMongo"
+  | (string & {});
 export const DatabaseMigrationPropertiesCosmosDbMongoKind =
   /*@__PURE__*/ S.String;
 
@@ -202,7 +206,8 @@ export type DatabaseMigrationPropertiesCosmosDbMongoProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const DatabaseMigrationPropertiesCosmosDbMongoProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -226,7 +231,8 @@ export type MongoMigrationProgressDetailsMigrationStatus =
   | "InProgress"
   | "Completed"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const MongoMigrationProgressDetailsMigrationStatus =
   /*@__PURE__*/ S.String;
 
@@ -742,7 +748,8 @@ export type DatabaseMigrationPropertiesSqlDbInputKind =
   | "SqlMi"
   | "SqlVm"
   | "SqlDb"
-  | "MongoToCosmosDbMongo";
+  | "MongoToCosmosDbMongo"
+  | (string & {});
 export const DatabaseMigrationPropertiesSqlDbInputKind = /*@__PURE__*/ S.String;
 
 /** Source SQL Connection */
@@ -855,7 +862,8 @@ export type DatabaseMigrationPropertiesSqlDbKind =
   | "SqlMi"
   | "SqlVm"
   | "SqlDb"
-  | "MongoToCosmosDbMongo";
+  | "MongoToCosmosDbMongo"
+  | (string & {});
 export const DatabaseMigrationPropertiesSqlDbKind = /*@__PURE__*/ S.String;
 
 /** Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started. */
@@ -864,7 +872,8 @@ export type DatabaseMigrationPropertiesSqlDbProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const DatabaseMigrationPropertiesSqlDbProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1233,7 +1242,8 @@ export type DatabaseMigrationPropertiesSqlMiInputKind =
   | "SqlMi"
   | "SqlVm"
   | "SqlDb"
-  | "MongoToCosmosDbMongo";
+  | "MongoToCosmosDbMongo"
+  | (string & {});
 export const DatabaseMigrationPropertiesSqlMiInputKind = /*@__PURE__*/ S.String;
 
 /** File share */
@@ -1254,7 +1264,10 @@ export const SqlFileShare = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SqlFileShare" }) as any as S.Schema<SqlFileShare>;
 
 /** Authentication type used for accessing Azure Blob Storage. */
-export type AzureBlobInputAuthType = "AccountKey" | "ManagedIdentity";
+export type AzureBlobInputAuthType =
+  | "AccountKey"
+  | "ManagedIdentity"
+  | (string & {});
 export const AzureBlobInputAuthType = /*@__PURE__*/ S.String;
 
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
@@ -1262,7 +1275,8 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned";
+  | "SystemAssigned,UserAssigned"
+  | (string & {});
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -1459,7 +1473,8 @@ export type DatabaseMigrationPropertiesSqlMiKind =
   | "SqlMi"
   | "SqlVm"
   | "SqlDb"
-  | "MongoToCosmosDbMongo";
+  | "MongoToCosmosDbMongo"
+  | (string & {});
 export const DatabaseMigrationPropertiesSqlMiKind = /*@__PURE__*/ S.String;
 
 /** Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started. */
@@ -1468,7 +1483,8 @@ export type DatabaseMigrationPropertiesSqlMiProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const DatabaseMigrationPropertiesSqlMiProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1635,7 +1651,10 @@ export const MigrationStatusDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MigrationStatusDetails>;
 
 /** Authentication type used for accessing Azure Blob Storage. */
-export type AzureBlobAuthType = "AccountKey" | "ManagedIdentity";
+export type AzureBlobAuthType =
+  | "AccountKey"
+  | "ManagedIdentity"
+  | (string & {});
 export const AzureBlobAuthType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -2020,7 +2039,8 @@ export type DatabaseMigrationPropertiesSqlVmInputKind =
   | "SqlMi"
   | "SqlVm"
   | "SqlDb"
-  | "MongoToCosmosDbMongo";
+  | "MongoToCosmosDbMongo"
+  | (string & {});
 export const DatabaseMigrationPropertiesSqlVmInputKind = /*@__PURE__*/ S.String;
 
 /** Database Migration Resource properties for SQL Virtual Machine. */
@@ -2097,7 +2117,8 @@ export type DatabaseMigrationPropertiesSqlVmKind =
   | "SqlMi"
   | "SqlVm"
   | "SqlDb"
-  | "MongoToCosmosDbMongo";
+  | "MongoToCosmosDbMongo"
+  | (string & {});
 export const DatabaseMigrationPropertiesSqlVmKind = /*@__PURE__*/ S.String;
 
 /** Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started. */
@@ -2106,7 +2127,8 @@ export type DatabaseMigrationPropertiesSqlVmProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const DatabaseMigrationPropertiesSqlVmProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -2860,7 +2882,8 @@ export type MigrationServicePropertiesProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const MigrationServicePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -3135,7 +3158,8 @@ export type DatabaseMigrationBasePropertiesKind =
   | "SqlMi"
   | "SqlVm"
   | "SqlDb"
-  | "MongoToCosmosDbMongo";
+  | "MongoToCosmosDbMongo"
+  | (string & {});
 export const DatabaseMigrationBasePropertiesKind = /*@__PURE__*/ S.String;
 
 /** Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started. */
@@ -3144,7 +3168,8 @@ export type DatabaseMigrationBasePropertiesProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const DatabaseMigrationBasePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -3337,7 +3362,7 @@ export const OperationsDisplayDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsDisplayDefinition",
 }) as any as S.Schema<OperationsDisplayDefinition>;
 
-export type OperationsDefinitionOrigin = "user" | "system";
+export type OperationsDefinitionOrigin = "user" | "system" | (string & {});
 export const OperationsDefinitionOrigin = /*@__PURE__*/ S.String;
 
 export type OperationsDefinitionPropertiesMap = {
@@ -3402,7 +3427,8 @@ export type ProjectSourcePlatform =
   | "MySQL"
   | "PostgreSql"
   | "MongoDb"
-  | "Unknown";
+  | "Unknown"
+  | (string & {});
 export const ProjectSourcePlatform = /*@__PURE__*/ S.String;
 
 /** Azure Active Directory Application */
@@ -3435,7 +3461,8 @@ export type ProjectTargetPlatform =
   | "AzureDbForMySql"
   | "AzureDbForPostgreSql"
   | "MongoDb"
-  | "Unknown";
+  | "Unknown"
+  | (string & {});
 export const ProjectTargetPlatform = /*@__PURE__*/ S.String;
 
 /** Defines the connection properties of a server */
@@ -3649,7 +3676,10 @@ export const ProjectPropertiesDatabasesInfoList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ProjectPropertiesDatabasesInfoList>;
 
 /** The project's provisioning state */
-export type ProjectPropertiesProvisioningState = "Deleting" | "Succeeded";
+export type ProjectPropertiesProvisioningState =
+  | "Deleting"
+  | "Succeeded"
+  | (string & {});
 export const ProjectPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Project-specific properties */
@@ -4023,7 +4053,11 @@ export const ResourceSkusListSkusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkusListSkusRequest>;
 
 /** The scale type applicable to the SKU. */
-export type ResourceSkuCapacityScaleType = "Automatic" | "Manual" | "None";
+export type ResourceSkuCapacityScaleType =
+  | "Automatic"
+  | "Manual"
+  | "None"
+  | (string & {});
 export const ResourceSkuCapacityScaleType = /*@__PURE__*/ S.String;
 
 /** Describes scaling information of a SKU. */
@@ -4109,7 +4143,7 @@ export const ResourceSkuCapabilitiesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ResourceSkuCapabilitiesList>;
 
 /** The type of restrictions. */
-export type ResourceSkuRestrictionsType = "location";
+export type ResourceSkuRestrictionsType = "location" | (string & {});
 export const ResourceSkuRestrictionsType = /*@__PURE__*/ S.String;
 
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
@@ -4121,7 +4155,8 @@ export const ResourceSkuRestrictionsValuesList = /*@__PURE__*/ S.Array(
 /** The reason code for restriction. */
 export type ResourceSkuRestrictionsReasonCode =
   | "QuotaId"
-  | "NotAvailableForSubscription";
+  | "NotAvailableForSubscription"
+  | (string & {});
 export const ResourceSkuRestrictionsReasonCode = /*@__PURE__*/ S.String;
 
 /** Describes scaling information of a SKU. */
@@ -4250,7 +4285,8 @@ export const ServicesCheckChildrenNameAvailabilityRequest =
 /** The reason why the name is not available, if nameAvailable is false */
 export type ServicesCheckChildrenNameAvailabilityResponseReason =
   | "AlreadyExists"
-  | "Invalid";
+  | "Invalid"
+  | (string & {});
 export const ServicesCheckChildrenNameAvailabilityResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -4305,7 +4341,8 @@ export const ServicesCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
 /** The reason why the name is not available, if nameAvailable is false */
 export type ServicesCheckNameAvailabilityResponseReason =
   | "AlreadyExists"
-  | "Invalid";
+  | "Invalid"
+  | (string & {});
 export const ServicesCheckNameAvailabilityResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -4507,7 +4544,8 @@ export type DataMigrationServicePropertiesProvisioningState =
   | "FailedToStart"
   | "FailedToStop"
   | "Succeeded"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const DataMigrationServicePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -4869,7 +4907,8 @@ export const AvailableServiceSkuSku = /*@__PURE__*/ S.suspend(() =>
 export type AvailableServiceSkuCapacityScaleType =
   | "none"
   | "manual"
-  | "automatic";
+  | "automatic"
+  | (string & {});
 export const AvailableServiceSkuCapacityScaleType = /*@__PURE__*/ S.String;
 
 /** A description of the scaling capacities of the SKU */
@@ -5166,7 +5205,8 @@ export type ProjectTaskPropertiesTaskType =
   | "Service.Check.OCI"
   | "Service.Upload.OCI"
   | "Service.Install.OCI"
-  | "MigrateSchemaSqlServerSqlDb";
+  | "MigrateSchemaSqlServerSqlDb"
+  | (string & {});
 export const ProjectTaskPropertiesTaskType = /*@__PURE__*/ S.String;
 
 /** Inner errors that caused this error */
@@ -5234,7 +5274,8 @@ export type ProjectTaskPropertiesState =
   | "Succeeded"
   | "Failed"
   | "FailedInputValidation"
-  | "Faulted";
+  | "Faulted"
+  | (string & {});
 export const ProjectTaskPropertiesState = /*@__PURE__*/ S.String;
 
 /** Command type. */
@@ -5243,7 +5284,8 @@ export type ProjectTaskPropertiesCommandsItemCommandType =
   | "Migrate.SqlServer.AzureDbSqlMi.Complete"
   | "cancel"
   | "finish"
-  | "restart";
+  | "restart"
+  | (string & {});
 export const ProjectTaskPropertiesCommandsItemCommandType =
   /*@__PURE__*/ S.String;
 
@@ -5291,7 +5333,8 @@ export type ProjectTaskPropertiesCommandsItemState =
   | "Accepted"
   | "Running"
   | "Succeeded"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const ProjectTaskPropertiesCommandsItemState = /*@__PURE__*/ S.String;
 
 /** Base class for all types of DMS (classic) command properties. If command is not supported by current client, this object is returned. */
@@ -5420,7 +5463,8 @@ export type ProjectTaskPropertiesInputTaskType =
   | "Service.Check.OCI"
   | "Service.Upload.OCI"
   | "Service.Install.OCI"
-  | "MigrateSchemaSqlServerSqlDb";
+  | "MigrateSchemaSqlServerSqlDb"
+  | (string & {});
 export const ProjectTaskPropertiesInputTaskType = /*@__PURE__*/ S.String;
 
 /** Key value pairs of client data to attach meta data information to task */
@@ -6162,7 +6206,8 @@ export type DatabaseMigrationPropertiesKind =
   | "SqlMi"
   | "SqlVm"
   | "SqlDb"
-  | "MongoToCosmosDbMongo";
+  | "MongoToCosmosDbMongo"
+  | (string & {});
 export const DatabaseMigrationPropertiesKind = /*@__PURE__*/ S.String;
 
 /** Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started. */
@@ -6171,7 +6216,8 @@ export type DatabaseMigrationPropertiesProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const DatabaseMigrationPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -6553,7 +6599,8 @@ export type TasksCommandRequestCommandType =
   | "Migrate.SqlServer.AzureDbSqlMi.Complete"
   | "cancel"
   | "finish"
-  | "restart";
+  | "restart"
+  | (string & {});
 export const TasksCommandRequestCommandType = /*@__PURE__*/ S.String;
 
 export interface TasksCommandRequest {
@@ -6596,7 +6643,8 @@ export type TasksCommandResponseCommandType =
   | "Migrate.SqlServer.AzureDbSqlMi.Complete"
   | "cancel"
   | "finish"
-  | "restart";
+  | "restart"
+  | (string & {});
 export const TasksCommandResponseCommandType = /*@__PURE__*/ S.String;
 
 /** Inner errors that caused this error */
@@ -6638,7 +6686,8 @@ export type TasksCommandResponseState =
   | "Accepted"
   | "Running"
   | "Succeeded"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const TasksCommandResponseState = /*@__PURE__*/ S.String;
 
 export interface TasksCommandResponse {

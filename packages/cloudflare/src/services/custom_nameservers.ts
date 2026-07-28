@@ -86,7 +86,7 @@ export const CreateCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCustomNameserverRequest",
 }) as any as S.Schema<CreateCustomNameserverRequest>;
 
-export type CreateResponseDnsRecordsItemType = "A" | "AAAA";
+export type CreateResponseDnsRecordsItemType = "A" | "AAAA" | (string & {});
 export const CreateResponseDnsRecordsItemType = /*@__PURE__*/ S.String;
 
 export interface CreateResponseDnsRecordsItem {
@@ -110,7 +110,11 @@ export const CreateResponseDnsRecordsList = /*@__PURE__*/ S.Array(
   CreateResponseDnsRecordsItem,
 ) as any as S.Schema<CreateResponseDnsRecordsList>;
 
-export type CreateResponseStatus = "moved" | "pending" | "verified";
+export type CreateResponseStatus =
+  | "moved"
+  | "pending"
+  | "verified"
+  | (string & {});
 export const CreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -201,7 +205,7 @@ export const GetCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCustomNameserverRequest",
 }) as any as S.Schema<GetCustomNameserverRequest>;
 
-export type GetResultItemDnsRecordsItemType = "A" | "AAAA";
+export type GetResultItemDnsRecordsItemType = "A" | "AAAA" | (string & {});
 export const GetResultItemDnsRecordsItemType = /*@__PURE__*/ S.String;
 
 export interface GetResultItemDnsRecordsItem {
@@ -225,7 +229,11 @@ export const GetResultItemDnsRecordsList = /*@__PURE__*/ S.Array(
   GetResultItemDnsRecordsItem,
 ) as any as S.Schema<GetResultItemDnsRecordsList>;
 
-export type GetResultItemStatus = "moved" | "pending" | "verified";
+export type GetResultItemStatus =
+  | "moved"
+  | "pending"
+  | "verified"
+  | (string & {});
 export const GetResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface GetResultItem {

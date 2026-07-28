@@ -57,7 +57,12 @@ export class ListNotFound extends T.applyErrorMatchers(
   [{ code: 10001 }],
 ) {}
 
-export type ListsCreateRequestKind = "ip" | "redirect" | "hostname" | "asn";
+export type ListsCreateRequestKind =
+  | "ip"
+  | "redirect"
+  | "hostname"
+  | "asn"
+  | (string & {});
 export const ListsCreateRequestKind = /*@__PURE__*/ S.String;
 
 export interface CreateListRequest {
@@ -89,7 +94,12 @@ export const CreateListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateListRequest",
 }) as any as S.Schema<CreateListRequest>;
 
-export type ListsCreateResponseKind = "ip" | "redirect" | "hostname" | "asn";
+export type ListsCreateResponseKind =
+  | "ip"
+  | "redirect"
+  | "hostname"
+  | "asn"
+  | (string & {});
 export const ListsCreateResponseKind = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -143,7 +153,7 @@ export const ListsItemsCreateRequestBodyItemListsListItemIPComment =
   }) as any as S.Schema<ListsItemsCreateRequestBodyItemListsListItemIPComment>;
 
 export type ListsItemsCreateRequestBodyItemListsListItemRedirectCommentRedirectStatusCode =
-  301 | 302 | 307 | 308;
+  301 | 302 | 307 | 308 | (number & {});
 export const ListsItemsCreateRequestBodyItemListsListItemRedirectCommentRedirectStatusCode =
   /*@__PURE__*/ S.Number;
 
@@ -421,7 +431,12 @@ export const GetListRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetListRequest" }) as any as S.Schema<GetListRequest>;
 
-export type ListsGetResponseKind = "ip" | "redirect" | "hostname" | "asn";
+export type ListsGetResponseKind =
+  | "ip"
+  | "redirect"
+  | "hostname"
+  | "asn"
+  | (string & {});
 export const ListsGetResponseKind = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -482,7 +497,7 @@ export const GetListBulkOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetListBulkOperationRequest>;
 
 export type ListsBulkOperationsGetResultListsBulkOperationPendingOrRunningStatus =
-  "pending" | "running";
+  "pending" | "running" | (string & {});
 export const ListsBulkOperationsGetResultListsBulkOperationPendingOrRunningStatus =
   /*@__PURE__*/ S.String;
 
@@ -505,7 +520,8 @@ export const ListsBulkOperationsGetResultListsBulkOperationPendingOrRunning =
   }) as any as S.Schema<ListsBulkOperationsGetResultListsBulkOperationPendingOrRunning>;
 
 export type ListsBulkOperationsGetResultListsBulkOperationCompletedStatus =
-  "completed";
+  | "completed"
+  | (string & {});
 export const ListsBulkOperationsGetResultListsBulkOperationCompletedStatus =
   /*@__PURE__*/ S.String;
 
@@ -529,7 +545,8 @@ export const ListsBulkOperationsGetResultListsBulkOperationCompleted =
   }) as any as S.Schema<ListsBulkOperationsGetResultListsBulkOperationCompleted>;
 
 export type ListsBulkOperationsGetResultListsBulkOperationFailedStatus =
-  "failed";
+  | "failed"
+  | (string & {});
 export const ListsBulkOperationsGetResultListsBulkOperationFailedStatus =
   /*@__PURE__*/ S.String;
 
@@ -671,7 +688,8 @@ export type ListsItemsGetResultListsListItemRedirectFullRedirectStatusCode =
   | 301
   | 302
   | 307
-  | 308;
+  | 308
+  | (number & {});
 export const ListsItemsGetResultListsListItemRedirectFullRedirectStatusCode =
   /*@__PURE__*/ S.Number;
 
@@ -880,7 +898,7 @@ export const ListsItemsListResultItemListsListItemHostnameFull =
   }) as any as S.Schema<ListsItemsListResultItemListsListItemHostnameFull>;
 
 export type ListsItemsListResultItemListsListItemRedirectFullRedirectStatusCode =
-  301 | 302 | 307 | 308;
+  301 | 302 | 307 | 308 | (number & {});
 export const ListsItemsListResultItemListsListItemRedirectFullRedirectStatusCode =
   /*@__PURE__*/ S.Number;
 
@@ -1022,7 +1040,12 @@ export const ListListsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListListsRequest",
 }) as any as S.Schema<ListListsRequest>;
 
-export type ListsListResultItemKind = "ip" | "redirect" | "hostname" | "asn";
+export type ListsListResultItemKind =
+  | "ip"
+  | "redirect"
+  | "hostname"
+  | "asn"
+  | (string & {});
 export const ListsListResultItemKind = /*@__PURE__*/ S.String;
 
 export interface ListsListResultItem {
@@ -1104,7 +1127,12 @@ export const UpdateListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateListRequest",
 }) as any as S.Schema<UpdateListRequest>;
 
-export type ListsUpdateResponseKind = "ip" | "redirect" | "hostname" | "asn";
+export type ListsUpdateResponseKind =
+  | "ip"
+  | "redirect"
+  | "hostname"
+  | "asn"
+  | (string & {});
 export const ListsUpdateResponseKind = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1158,7 +1186,7 @@ export const ListsItemsUpdateRequestBodyItemListsListItemIPComment =
   }) as any as S.Schema<ListsItemsUpdateRequestBodyItemListsListItemIPComment>;
 
 export type ListsItemsUpdateRequestBodyItemListsListItemRedirectCommentRedirectStatusCode =
-  301 | 302 | 307 | 308;
+  301 | 302 | 307 | 308 | (number & {});
 export const ListsItemsUpdateRequestBodyItemListsListItemRedirectCommentRedirectStatusCode =
   /*@__PURE__*/ S.Number;
 

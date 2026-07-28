@@ -135,7 +135,8 @@ export const ConnectorConfigurationNetwork = /*@__PURE__*/ S.suspend(() =>
 
 export type ConnectorConfigurationSecretSecretTypeEnum =
   | "SECRET_TYPE_UNSPECIFIED"
-  | "PLAINTEXT";
+  | "PLAINTEXT"
+  | (string & {});
 export const ConnectorConfigurationSecretSecretTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -356,7 +357,8 @@ export const SparkProperties = /*@__PURE__*/ S.suspend(() =>
 export type CloudSqlPropertiesTypeEnum =
   | "DATABASE_TYPE_UNSPECIFIED"
   | "POSTGRES"
-  | "MYSQL";
+  | "MYSQL"
+  | (string & {});
 export const CloudSqlPropertiesTypeEnum = /*@__PURE__*/ S.String;
 
 /** Credential info for the Cloud SQL. */
@@ -649,7 +651,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */

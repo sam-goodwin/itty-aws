@@ -128,7 +128,8 @@ export const GetAccountsLanguagesProductCertificationsRequest =
 export type IssueResolutionEnum =
   | "RESOLUTION_UNSPECIFIED"
   | "USER_ACTION"
-  | "PENDING_PROCESSING";
+  | "PENDING_PROCESSING"
+  | (string & {});
 export const IssueResolutionEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -140,7 +141,8 @@ export type IssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
-  | "INFO";
+  | "INFO"
+  | (string & {});
 export const IssueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Product issue. */
@@ -221,7 +223,8 @@ export type DestinationStatusStatusEnum =
   | "UNKNOWN"
   | "ACTIVE"
   | "PENDING"
-  | "DISAPPROVED";
+  | "DISAPPROVED"
+  | (string & {});
 export const DestinationStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** The destination status. */
@@ -298,7 +301,8 @@ export type GetAccountsProductsIncludeEnum =
   | "UNKNOWN"
   | "ATTRIBUTES"
   | "ISSUES"
-  | "DESTINATION_STATUSES";
+  | "DESTINATION_STATUSES"
+  | (string & {});
 export const GetAccountsProductsIncludeEnum = /*@__PURE__*/ S.String;
 
 export type GetAccountsProductsIncludeEnumList =
@@ -392,10 +396,15 @@ export type ImageStatusEnum =
   | "TOO_BIG"
   | "CRAWL_SKIPPED"
   | "HOSTLOADED"
-  | "HTTP_404";
+  | "HTTP_404"
+  | (string & {});
 export const ImageStatusEnum = /*@__PURE__*/ S.String;
 
-export type ImageTypeEnum = "TYPE_UNSPECIFIED" | "CRAWLED" | "UPLOADED";
+export type ImageTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "CRAWLED"
+  | "UPLOADED"
+  | (string & {});
 export const ImageTypeEnum = /*@__PURE__*/ S.String;
 
 /** An image. */
@@ -928,7 +937,8 @@ export type ListAccountsProductsIncludeEnum =
   | "UNKNOWN"
   | "ATTRIBUTES"
   | "ISSUES"
-  | "DESTINATION_STATUSES";
+  | "DESTINATION_STATUSES"
+  | (string & {});
 export const ListAccountsProductsIncludeEnum = /*@__PURE__*/ S.String;
 
 export type ListAccountsProductsIncludeEnumList =

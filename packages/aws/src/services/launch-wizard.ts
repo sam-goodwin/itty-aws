@@ -188,7 +188,8 @@ export type DeploymentStatus =
   | "UPDATE_COMPLETED"
   | "UPDATE_FAILED"
   | "UPDATE_ROLLBACK_COMPLETED"
-  | "UPDATE_ROLLBACK_FAILED";
+  | "UPDATE_ROLLBACK_FAILED"
+  | (string & {});
 export const DeploymentStatus = /*@__PURE__*/ S.String;
 
 export interface DeleteDeploymentOutput {
@@ -327,7 +328,12 @@ export const GetWorkloadInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetWorkloadInput",
 }) as any as S.Schema<GetWorkloadInput>;
-export type WorkloadStatus = "ACTIVE" | "INACTIVE" | "DISABLED" | "DELETED";
+export type WorkloadStatus =
+  | "ACTIVE"
+  | "INACTIVE"
+  | "DISABLED"
+  | "DELETED"
+  | (string & {});
 export const WorkloadStatus = /*@__PURE__*/ S.String;
 
 export interface WorkloadData {
@@ -381,7 +387,8 @@ export type WorkloadDeploymentPatternStatus =
   | "ACTIVE"
   | "INACTIVE"
   | "DISABLED"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const WorkloadDeploymentPatternStatus = /*@__PURE__*/ S.String;
 
 export type AllowedValues = string[];
@@ -495,7 +502,8 @@ export type EventStatus =
   | "FAILED"
   | "IN_PROGRESS"
   | "PENDING"
-  | "TIMED_OUT";
+  | "TIMED_OUT"
+  | (string & {});
 export const EventStatus = /*@__PURE__*/ S.String;
 
 export interface DeploymentEventDataSummary {
@@ -533,7 +541,9 @@ export const ListDeploymentEventsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDeploymentEventsOutput",
 }) as any as S.Schema<ListDeploymentEventsOutput>;
 export type MaxWorkloadResults = number;
-export type DeploymentPatternVersionFilterKey = "updateFromVersion";
+export type DeploymentPatternVersionFilterKey =
+  | "updateFromVersion"
+  | (string & {});
 export const DeploymentPatternVersionFilterKey = /*@__PURE__*/ S.String;
 
 export type DeploymentPatternVersionFilterValue = string;
@@ -601,7 +611,10 @@ export const ListDeploymentPatternVersionsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDeploymentPatternVersionsOutput",
 }) as any as S.Schema<ListDeploymentPatternVersionsOutput>;
-export type DeploymentFilterKey = "WORKLOAD_NAME" | "DEPLOYMENT_STATUS";
+export type DeploymentFilterKey =
+  | "WORKLOAD_NAME"
+  | "DEPLOYMENT_STATUS"
+  | (string & {});
 export const DeploymentFilterKey = /*@__PURE__*/ S.String;
 
 export type DeploymentFilterValue = string;

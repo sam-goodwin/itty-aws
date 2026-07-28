@@ -170,7 +170,11 @@ export const GetVitalsAnrrateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetVitalsAnrrateRequest>;
 
 export type GooglePlayDeveloperReportingV1alpha1FreshnessInfoFreshnessAggregationPeriodEnum =
-  "AGGREGATION_PERIOD_UNSPECIFIED" | "HOURLY" | "DAILY" | "FULL_RANGE";
+    | "AGGREGATION_PERIOD_UNSPECIFIED"
+    | "HOURLY"
+    | "DAILY"
+    | "FULL_RANGE"
+    | (string & {});
 export const GooglePlayDeveloperReportingV1alpha1FreshnessInfoFreshnessAggregationPeriodEnum =
   /*@__PURE__*/ S.String;
 
@@ -631,7 +635,11 @@ export const GooglePlayDeveloperReportingV1alpha1MetricValue =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1MetricValue>;
 
 export type GooglePlayDeveloperReportingV1alpha1TimelineSpecAggregationPeriodEnum =
-  "AGGREGATION_PERIOD_UNSPECIFIED" | "HOURLY" | "DAILY" | "FULL_RANGE";
+    | "AGGREGATION_PERIOD_UNSPECIFIED"
+    | "HOURLY"
+    | "DAILY"
+    | "FULL_RANGE"
+    | (string & {});
 export const GooglePlayDeveloperReportingV1alpha1TimelineSpecAggregationPeriodEnum =
   /*@__PURE__*/ S.String;
 
@@ -742,7 +750,11 @@ export const GooglePlayDeveloperReportingV1alpha1ListAnomaliesResponse =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1ListAnomaliesResponse>;
 
 export type GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetRequestUserCohortEnum =
-  "USER_COHORT_UNSPECIFIED" | "OS_PUBLIC" | "OS_BETA" | "APP_TESTERS";
+    | "USER_COHORT_UNSPECIFIED"
+    | "OS_PUBLIC"
+    | "OS_BETA"
+    | "APP_TESTERS"
+    | (string & {});
 export const GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetRequestUserCohortEnum =
   /*@__PURE__*/ S.String;
 
@@ -816,7 +828,11 @@ export const GooglePlayDeveloperReportingV1alpha1MetricValueList =
   ) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1MetricValueList>;
 
 export type GooglePlayDeveloperReportingV1alpha1MetricsRowAggregationPeriodEnum =
-  "AGGREGATION_PERIOD_UNSPECIFIED" | "HOURLY" | "DAILY" | "FULL_RANGE";
+    | "AGGREGATION_PERIOD_UNSPECIFIED"
+    | "HOURLY"
+    | "DAILY"
+    | "FULL_RANGE"
+    | (string & {});
 export const GooglePlayDeveloperReportingV1alpha1MetricsRowAggregationPeriodEnum =
   /*@__PURE__*/ S.String;
 
@@ -873,7 +889,11 @@ export const GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetResponse =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetResponse>;
 
 export type GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetRequestUserCohortEnum =
-  "USER_COHORT_UNSPECIFIED" | "OS_PUBLIC" | "OS_BETA" | "APP_TESTERS";
+    | "USER_COHORT_UNSPECIFIED"
+    | "OS_PUBLIC"
+    | "OS_BETA"
+    | "APP_TESTERS"
+    | (string & {});
 export const GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetRequestUserCohortEnum =
   /*@__PURE__*/ S.String;
 
@@ -1033,7 +1053,11 @@ export const GooglePlayDeveloperReportingV1alpha1QueryErrorCountMetricSetRespons
   }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1QueryErrorCountMetricSetResponse>;
 
 export type GooglePlayDeveloperReportingV1alpha1QueryExcessiveWakeupRateMetricSetRequestUserCohortEnum =
-  "USER_COHORT_UNSPECIFIED" | "OS_PUBLIC" | "OS_BETA" | "APP_TESTERS";
+    | "USER_COHORT_UNSPECIFIED"
+    | "OS_PUBLIC"
+    | "OS_BETA"
+    | "APP_TESTERS"
+    | (string & {});
 export const GooglePlayDeveloperReportingV1alpha1QueryExcessiveWakeupRateMetricSetRequestUserCohortEnum =
   /*@__PURE__*/ S.String;
 
@@ -1119,7 +1143,11 @@ export const GooglePlayDeveloperReportingV1alpha1QueryExcessiveWakeupRateMetricS
   }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1QueryExcessiveWakeupRateMetricSetResponse>;
 
 export type GooglePlayDeveloperReportingV1alpha1QueryLmkRateMetricSetRequestUserCohortEnum =
-  "USER_COHORT_UNSPECIFIED" | "OS_PUBLIC" | "OS_BETA" | "APP_TESTERS";
+    | "USER_COHORT_UNSPECIFIED"
+    | "OS_PUBLIC"
+    | "OS_BETA"
+    | "APP_TESTERS"
+    | (string & {});
 export const GooglePlayDeveloperReportingV1alpha1QueryLmkRateMetricSetRequestUserCohortEnum =
   /*@__PURE__*/ S.String;
 
@@ -1204,7 +1232,11 @@ export const GooglePlayDeveloperReportingV1alpha1QueryLmkRateMetricSetResponse =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1QueryLmkRateMetricSetResponse>;
 
 export type GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetRequestUserCohortEnum =
-  "USER_COHORT_UNSPECIFIED" | "OS_PUBLIC" | "OS_BETA" | "APP_TESTERS";
+    | "USER_COHORT_UNSPECIFIED"
+    | "OS_PUBLIC"
+    | "OS_BETA"
+    | "APP_TESTERS"
+    | (string & {});
 export const GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetRequestUserCohortEnum =
   /*@__PURE__*/ S.String;
 
@@ -1289,7 +1321,11 @@ export const GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSet
   }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetResponse>;
 
 export type GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetRequestUserCohortEnum =
-  "USER_COHORT_UNSPECIFIED" | "OS_PUBLIC" | "OS_BETA" | "APP_TESTERS";
+    | "USER_COHORT_UNSPECIFIED"
+    | "OS_PUBLIC"
+    | "OS_BETA"
+    | "APP_TESTERS"
+    | (string & {});
 export const GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetRequestUserCohortEnum =
   /*@__PURE__*/ S.String;
 
@@ -1374,7 +1410,11 @@ export const GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetResp
   }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetResponse>;
 
 export type GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakelockRateMetricSetRequestUserCohortEnum =
-  "USER_COHORT_UNSPECIFIED" | "OS_PUBLIC" | "OS_BETA" | "APP_TESTERS";
+    | "USER_COHORT_UNSPECIFIED"
+    | "OS_PUBLIC"
+    | "OS_BETA"
+    | "APP_TESTERS"
+    | (string & {});
 export const GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakelockRateMetricSetRequestUserCohortEnum =
   /*@__PURE__*/ S.String;
 
@@ -1650,7 +1690,8 @@ export type GooglePlayDeveloperReportingV1alpha1ErrorIssueTypeEnum =
   | "ERROR_TYPE_UNSPECIFIED"
   | "APPLICATION_NOT_RESPONDING"
   | "CRASH"
-  | "NON_FATAL";
+  | "NON_FATAL"
+  | (string & {});
 export const GooglePlayDeveloperReportingV1alpha1ErrorIssueTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1897,7 +1938,8 @@ export type GooglePlayDeveloperReportingV1alpha1ErrorReportTypeEnum =
   | "ERROR_TYPE_UNSPECIFIED"
   | "APPLICATION_NOT_RESPONDING"
   | "CRASH"
-  | "NON_FATAL";
+  | "NON_FATAL"
+  | (string & {});
 export const GooglePlayDeveloperReportingV1alpha1ErrorReportTypeEnum =
   /*@__PURE__*/ S.String;
 

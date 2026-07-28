@@ -1740,7 +1740,8 @@ export const awsSpec = (
           return enumDecl({ name, values: enumValues, pure: PURE });
         }
 
-        // ---- Int enums: closed numeric literal unions.
+        // ---- Int enums: open numeric literal unions (documented values
+        // plus `(number & {})` for forward compatibility).
         case "intEnum": {
           const name = formatName(id);
           const enumOverride = serviceSpec.enums?.[name];
@@ -1758,8 +1759,11 @@ export const awsSpec = (
               ];
             }
           }
+          const intUnion = enumValues.length
+            ? `${enumValues.join(" | ")} | (number & {})`
+            : "number";
           return [
-            `export type ${name} = ${enumValues.join(" | ")};`,
+            `export type ${name} = ${intUnion};`,
             `export const ${name} = ${PURE}S.Literals([${enumValues.join(", ")}]);`,
           ];
         }

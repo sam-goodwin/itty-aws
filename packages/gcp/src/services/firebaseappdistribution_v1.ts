@@ -531,7 +531,8 @@ export type GoogleFirebaseAppdistroV1AabInfoIntegrationStateEnum =
   | "PLAY_IAS_TERMS_NOT_ACCEPTED"
   | "ADHOC_SHARING_KEY_NOT_GENERATED"
   | "ADHOC_SHARING_KEY_NOT_REGISTERED"
-  | "PLAY_ANDROID_DEVELOPER_CONSOLE_ACCOUNT_NOT_FOUND";
+  | "PLAY_ANDROID_DEVELOPER_CONSOLE_ACCOUNT_NOT_FOUND"
+  | (string & {});
 export const GoogleFirebaseAppdistroV1AabInfoIntegrationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -612,7 +613,8 @@ export type GoogleFirebaseAppdistroV1ReleaseAndroidPackageRegistrationStateEnum 
     | "ANDROID_PACKAGE_REGISTRATION_STATE_UNSPECIFIED"
     | "REGISTERED"
     | "NOT_REGISTERED"
-    | "REGISTERED_WITH_ANOTHER_CERTIFICATE_FINGERPRINT";
+    | "REGISTERED_WITH_ANOTHER_CERTIFICATE_FINGERPRINT"
+    | (string & {});
 export const GoogleFirebaseAppdistroV1ReleaseAndroidPackageRegistrationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -620,7 +622,8 @@ export type GoogleFirebaseAppdistroV1ReleaseBinaryTypeEnum =
   | "BINARY_TYPE_UNSPECIFIED"
   | "IPA"
   | "APK"
-  | "AAB";
+  | "AAB"
+  | (string & {});
 export const GoogleFirebaseAppdistroV1ReleaseBinaryTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -630,7 +633,8 @@ export type GoogleFirebaseAppdistroV1ReleaseTestStateEnum =
   | "IN_PROGRESS"
   | "PASSED"
   | "FAILED"
-  | "INCONCLUSIVE";
+  | "INCONCLUSIVE"
+  | (string & {});
 export const GoogleFirebaseAppdistroV1ReleaseTestStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1183,7 +1187,8 @@ export type GdataCompositeMediaReferenceTypeEnum =
   | "BLOB_REF"
   | "INLINE"
   | "BIGSTORE_REF"
-  | "COSMO_BINARY_REFERENCE";
+  | "COSMO_BINARY_REFERENCE"
+  | (string & {});
 export const GdataCompositeMediaReferenceTypeEnum = /*@__PURE__*/ S.String;
 
 /** This is a copy of the tech.blob.ObjectId proto, which could not be used directly here due to transitive closure issues with JavaScript support; see http://b/8801763. */
@@ -1384,7 +1389,8 @@ export type GdataMediaReferenceTypeEnum =
   | "DIFF_UPLOAD_REQUEST"
   | "DIFF_UPLOAD_RESPONSE"
   | "COSMO_BINARY_REFERENCE"
-  | "ARBITRARY_BYTES";
+  | "ARBITRARY_BYTES"
+  | (string & {});
 export const GdataMediaReferenceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Detailed Content-Type information from Scotty. The Content-Type of the media will typically be filled in by the header or Scotty's best_guess, but this extended information provides the backend with more information so that it can make a better decision if needed. This is only used on media upload requests from Scotty. */

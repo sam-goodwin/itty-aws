@@ -145,7 +145,7 @@ export const TrackingOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TrackingOptions",
 }) as any as S.Schema<TrackingOptions>;
-export type TlsPolicy = "REQUIRE" | "OPTIONAL";
+export type TlsPolicy = "REQUIRE" | "OPTIONAL" | (string & {});
 export const TlsPolicy = /*@__PURE__*/ S.String;
 
 export type PoolName = string;
@@ -236,7 +236,8 @@ export type EventType =
   | "DELIVERY"
   | "OPEN"
   | "CLICK"
-  | "RENDERING_FAILURE";
+  | "RENDERING_FAILURE"
+  | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
 
 export type EventTypes = EventType[];
@@ -252,7 +253,11 @@ export const KinesisFirehoseDestination = /*@__PURE__*/ S.suspend(() =>
   identifier: "KinesisFirehoseDestination",
 }) as any as S.Schema<KinesisFirehoseDestination>;
 export type DimensionName = string;
-export type DimensionValueSource = "MESSAGE_TAG" | "EMAIL_HEADER" | "LINK_TAG";
+export type DimensionValueSource =
+  | "MESSAGE_TAG"
+  | "EMAIL_HEADER"
+  | "LINK_TAG"
+  | (string & {});
 export const DimensionValueSource = /*@__PURE__*/ S.String;
 
 export type DefaultDimensionValue = string;
@@ -459,7 +464,10 @@ export const CreateDeliverabilityTestReportRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateDeliverabilityTestReportRequest",
 }) as any as S.Schema<CreateDeliverabilityTestReportRequest>;
 export type ReportId = string;
-export type DeliverabilityTestStatus = "IN_PROGRESS" | "COMPLETED";
+export type DeliverabilityTestStatus =
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | (string & {});
 export const DeliverabilityTestStatus = /*@__PURE__*/ S.String;
 
 export interface CreateDeliverabilityTestReportResponse {
@@ -494,7 +502,11 @@ export const CreateEmailIdentityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEmailIdentityRequest",
 }) as any as S.Schema<CreateEmailIdentityRequest>;
-export type IdentityType = "EMAIL_ADDRESS" | "DOMAIN" | "MANAGED_DOMAIN";
+export type IdentityType =
+  | "EMAIL_ADDRESS"
+  | "DOMAIN"
+  | "MANAGED_DOMAIN"
+  | (string & {});
 export const IdentityType = /*@__PURE__*/ S.String;
 
 export type DkimStatus =
@@ -502,7 +514,8 @@ export type DkimStatus =
   | "SUCCESS"
   | "FAILED"
   | "TEMPORARY_FAILURE"
-  | "NOT_STARTED";
+  | "NOT_STARTED"
+  | (string & {});
 export const DkimStatus = /*@__PURE__*/ S.String;
 
 export type DnsToken = string;
@@ -862,7 +875,7 @@ export const GetDedicatedIpRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDedicatedIpRequest",
 }) as any as S.Schema<GetDedicatedIpRequest>;
-export type WarmupStatus = "IN_PROGRESS" | "DONE";
+export type WarmupStatus = "IN_PROGRESS" | "DONE" | (string & {});
 export const WarmupStatus = /*@__PURE__*/ S.String;
 
 export type Percentage100Wrapper = number;
@@ -946,7 +959,8 @@ export const GetDeliverabilityDashboardOptionsRequest = /*@__PURE__*/ S.suspend(
 export type DeliverabilityDashboardAccountStatus =
   | "ACTIVE"
   | "PENDING_EXPIRATION"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const DeliverabilityDashboardAccountStatus = /*@__PURE__*/ S.String;
 
 export type Domain = string;
@@ -1302,10 +1316,14 @@ export type MailFromDomainStatus =
   | "PENDING"
   | "SUCCESS"
   | "FAILED"
-  | "TEMPORARY_FAILURE";
+  | "TEMPORARY_FAILURE"
+  | (string & {});
 export const MailFromDomainStatus = /*@__PURE__*/ S.String;
 
-export type BehaviorOnMxFailure = "USE_DEFAULT_VALUE" | "REJECT_MESSAGE";
+export type BehaviorOnMxFailure =
+  | "USE_DEFAULT_VALUE"
+  | "REJECT_MESSAGE"
+  | (string & {});
 export const BehaviorOnMxFailure = /*@__PURE__*/ S.String;
 
 export interface MailFromAttributes {

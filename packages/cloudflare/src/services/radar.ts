@@ -194,7 +194,8 @@ export type AiTimeseriesGroupsSummaryRequestDimension =
   | "VERTICAL"
   | "CONTENT_TYPE"
   | "RESPONSE_STATUS"
-  | "RESPONSE_STATUS_CATEGORY";
+  | "RESPONSE_STATUS_CATEGORY"
+  | (string & {});
 export const AiTimeseriesGroupsSummaryRequestDimension = /*@__PURE__*/ S.String;
 
 export type AiTimeseriesGroupsSummaryRequestAsnList = ReadonlyArray<string>;
@@ -218,7 +219,8 @@ export type AiTimeseriesGroupsSummaryRequestContentType =
   | "DOCUMENTS"
   | "BINARY"
   | "SERIALIZATION"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const AiTimeseriesGroupsSummaryRequestContentType =
   /*@__PURE__*/ S.String;
 
@@ -263,7 +265,10 @@ export const AiTimeseriesGroupsSummaryRequestDateStartList =
     S.String,
   ) as any as S.Schema<AiTimeseriesGroupsSummaryRequestDateStartList>;
 
-export type AiTimeseriesGroupsSummaryRequestFormat = "JSON" | "CSV";
+export type AiTimeseriesGroupsSummaryRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AiTimeseriesGroupsSummaryRequestFormat = /*@__PURE__*/ S.String;
 
 export type AiTimeseriesGroupsSummaryRequestIndustryList =
@@ -297,7 +302,8 @@ export type AiTimeseriesGroupsSummaryRequestResponseStatusCategory =
   | "SUCCESS"
   | "REDIRECTION"
   | "CLIENT_ERROR"
-  | "SERVER_ERROR";
+  | "SERVER_ERROR"
+  | (string & {});
 export const AiTimeseriesGroupsSummaryRequestResponseStatusCategory =
   /*@__PURE__*/ S.String;
 
@@ -441,7 +447,8 @@ export type AiTimeseriesGroupsSummaryResponseMetaConfidenceInfoAnnotationsItemDa
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AiTimeseriesGroupsSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -451,7 +458,8 @@ export type AiTimeseriesGroupsSummaryResponseMetaConfidenceInfoAnnotationsItemEv
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AiTimeseriesGroupsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -550,7 +558,8 @@ export type AiTimeseriesGroupsSummaryResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AiTimeseriesGroupsSummaryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -628,7 +637,8 @@ export type AiTimeseriesGroupsTimeseriesRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AiTimeseriesGroupsTimeseriesRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -653,7 +663,8 @@ export type AiTimeseriesGroupsTimeseriesRequestContentType =
   | "DOCUMENTS"
   | "BINARY"
   | "SERIALIZATION"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const AiTimeseriesGroupsTimeseriesRequestContentType =
   /*@__PURE__*/ S.String;
 
@@ -699,7 +710,10 @@ export const AiTimeseriesGroupsTimeseriesRequestDateStartList =
     S.String,
   ) as any as S.Schema<AiTimeseriesGroupsTimeseriesRequestDateStartList>;
 
-export type AiTimeseriesGroupsTimeseriesRequestFormat = "JSON" | "CSV";
+export type AiTimeseriesGroupsTimeseriesRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AiTimeseriesGroupsTimeseriesRequestFormat = /*@__PURE__*/ S.String;
 
 export type AiTimeseriesGroupsTimeseriesRequestIndustryList =
@@ -734,7 +748,8 @@ export type AiTimeseriesGroupsTimeseriesRequestResponseStatusCategory =
   | "SUCCESS"
   | "REDIRECTION"
   | "CLIENT_ERROR"
-  | "SERVER_ERROR";
+  | "SERVER_ERROR"
+  | (string & {});
 export const AiTimeseriesGroupsTimeseriesRequestResponseStatusCategory =
   /*@__PURE__*/ S.String;
 
@@ -860,7 +875,8 @@ export type AiTimeseriesGroupsTimeseriesResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AiTimeseriesGroupsTimeseriesResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -889,7 +905,8 @@ export type AiTimeseriesGroupsTimeseriesResponseMetaConfidenceInfoAnnotationsIte
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AiTimeseriesGroupsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -899,7 +916,8 @@ export type AiTimeseriesGroupsTimeseriesResponseMetaConfidenceInfoAnnotationsIte
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AiTimeseriesGroupsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -998,7 +1016,8 @@ export type AiTimeseriesGroupsTimeseriesResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AiTimeseriesGroupsTimeseriesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -1070,7 +1089,8 @@ export type AiTimeseriesGroupsTimeseriesGroupsRequestDimension =
   | "VERTICAL"
   | "CONTENT_TYPE"
   | "RESPONSE_STATUS"
-  | "RESPONSE_STATUS_CATEGORY";
+  | "RESPONSE_STATUS_CATEGORY"
+  | (string & {});
 export const AiTimeseriesGroupsTimeseriesGroupsRequestDimension =
   /*@__PURE__*/ S.String;
 
@@ -1078,7 +1098,8 @@ export type AiTimeseriesGroupsTimeseriesGroupsRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AiTimeseriesGroupsTimeseriesGroupsRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -1105,7 +1126,8 @@ export type AiTimeseriesGroupsTimeseriesGroupsRequestContentType =
   | "DOCUMENTS"
   | "BINARY"
   | "SERIALIZATION"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const AiTimeseriesGroupsTimeseriesGroupsRequestContentType =
   /*@__PURE__*/ S.String;
 
@@ -1151,7 +1173,10 @@ export const AiTimeseriesGroupsTimeseriesGroupsRequestDateStartList =
     S.String,
   ) as any as S.Schema<AiTimeseriesGroupsTimeseriesGroupsRequestDateStartList>;
 
-export type AiTimeseriesGroupsTimeseriesGroupsRequestFormat = "JSON" | "CSV";
+export type AiTimeseriesGroupsTimeseriesGroupsRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AiTimeseriesGroupsTimeseriesGroupsRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -1179,7 +1204,8 @@ export const AiTimeseriesGroupsTimeseriesGroupsRequestNameList =
 export type AiTimeseriesGroupsTimeseriesGroupsRequestNormalization =
   | "PERCENTAGE"
   | "MIN0_MAX"
-  | "PERCENTAGE_CHANGE";
+  | "PERCENTAGE_CHANGE"
+  | (string & {});
 export const AiTimeseriesGroupsTimeseriesGroupsRequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -1195,7 +1221,8 @@ export type AiTimeseriesGroupsTimeseriesGroupsRequestResponseStatusCategory =
   | "SUCCESS"
   | "REDIRECTION"
   | "CLIENT_ERROR"
-  | "SERVER_ERROR";
+  | "SERVER_ERROR"
+  | (string & {});
 export const AiTimeseriesGroupsTimeseriesGroupsRequestResponseStatusCategory =
   /*@__PURE__*/ S.String;
 
@@ -1344,7 +1371,8 @@ export type AiTimeseriesGroupsTimeseriesGroupsResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AiTimeseriesGroupsTimeseriesGroupsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -1373,7 +1401,8 @@ export type AiTimeseriesGroupsTimeseriesGroupsResponseMetaConfidenceInfoAnnotati
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AiTimeseriesGroupsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -1383,7 +1412,8 @@ export type AiTimeseriesGroupsTimeseriesGroupsResponseMetaConfidenceInfoAnnotati
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AiTimeseriesGroupsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -1482,7 +1512,8 @@ export type AiTimeseriesGroupsTimeseriesGroupsResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AiTimeseriesGroupsTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -1588,7 +1619,11 @@ export const EmailRoutingSummaryArcRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EmailRoutingSummaryArcRequestDateStartList>;
 
-export type EmailRoutingSummaryArcRequestDkim = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingSummaryArcRequestDkim =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingSummaryArcRequestDkim = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryArcRequestDkimList =
@@ -1597,7 +1632,11 @@ export const EmailRoutingSummaryArcRequestDkimList = /*@__PURE__*/ S.Array(
   EmailRoutingSummaryArcRequestDkim,
 ) as any as S.Schema<EmailRoutingSummaryArcRequestDkimList>;
 
-export type EmailRoutingSummaryArcRequestDmarc = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingSummaryArcRequestDmarc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingSummaryArcRequestDmarc = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryArcRequestDmarcList =
@@ -1608,7 +1647,8 @@ export const EmailRoutingSummaryArcRequestDmarcList = /*@__PURE__*/ S.Array(
 
 export type EmailRoutingSummaryArcRequestEncrypted =
   | "ENCRYPTED"
-  | "NOT_ENCRYPTED";
+  | "NOT_ENCRYPTED"
+  | (string & {});
 export const EmailRoutingSummaryArcRequestEncrypted = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryArcRequestEncryptedList =
@@ -1617,10 +1657,16 @@ export const EmailRoutingSummaryArcRequestEncryptedList = /*@__PURE__*/ S.Array(
   EmailRoutingSummaryArcRequestEncrypted,
 ) as any as S.Schema<EmailRoutingSummaryArcRequestEncryptedList>;
 
-export type EmailRoutingSummaryArcRequestFormat = "JSON" | "CSV";
+export type EmailRoutingSummaryArcRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailRoutingSummaryArcRequestFormat = /*@__PURE__*/ S.String;
 
-export type EmailRoutingSummaryArcRequestIpVersion = "IPv4" | "IPv6";
+export type EmailRoutingSummaryArcRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const EmailRoutingSummaryArcRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryArcRequestIpVersionList =
@@ -1634,7 +1680,11 @@ export const EmailRoutingSummaryArcRequestNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EmailRoutingSummaryArcRequestNameList>;
 
-export type EmailRoutingSummaryArcRequestSpf = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingSummaryArcRequestSpf =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingSummaryArcRequestSpf = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryArcRequestSpfList =
@@ -1725,7 +1775,8 @@ export type EmailRoutingSummaryArcResponseMetaConfidenceInfoAnnotationsItemDataS
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailRoutingSummaryArcResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -1735,7 +1786,8 @@ export type EmailRoutingSummaryArcResponseMetaConfidenceInfoAnnotationsItemEvent
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailRoutingSummaryArcResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -1834,7 +1886,8 @@ export type EmailRoutingSummaryArcResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailRoutingSummaryArcResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -1919,7 +1972,8 @@ export type EmailRoutingTimeseriesGroupsArcRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsArcRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -1947,7 +2001,8 @@ export const EmailRoutingTimeseriesGroupsArcRequestDateStartList =
 export type EmailRoutingTimeseriesGroupsArcRequestDkim =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsArcRequestDkim =
   /*@__PURE__*/ S.String;
 
@@ -1961,7 +2016,8 @@ export const EmailRoutingTimeseriesGroupsArcRequestDkimList =
 export type EmailRoutingTimeseriesGroupsArcRequestDmarc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsArcRequestDmarc =
   /*@__PURE__*/ S.String;
 
@@ -1974,7 +2030,8 @@ export const EmailRoutingTimeseriesGroupsArcRequestDmarcList =
 
 export type EmailRoutingTimeseriesGroupsArcRequestEncrypted =
   | "ENCRYPTED"
-  | "NOT_ENCRYPTED";
+  | "NOT_ENCRYPTED"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsArcRequestEncrypted =
   /*@__PURE__*/ S.String;
 
@@ -1985,11 +2042,17 @@ export const EmailRoutingTimeseriesGroupsArcRequestEncryptedList =
     EmailRoutingTimeseriesGroupsArcRequestEncrypted,
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsArcRequestEncryptedList>;
 
-export type EmailRoutingTimeseriesGroupsArcRequestFormat = "JSON" | "CSV";
+export type EmailRoutingTimeseriesGroupsArcRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsArcRequestFormat =
   /*@__PURE__*/ S.String;
 
-export type EmailRoutingTimeseriesGroupsArcRequestIpVersion = "IPv4" | "IPv6";
+export type EmailRoutingTimeseriesGroupsArcRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsArcRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -2010,7 +2073,8 @@ export const EmailRoutingTimeseriesGroupsArcRequestNameList =
 export type EmailRoutingTimeseriesGroupsArcRequestSpf =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsArcRequestSpf = /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsArcRequestSpfList =
@@ -2098,7 +2162,8 @@ export type EmailRoutingTimeseriesGroupsArcResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsArcResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -2127,7 +2192,8 @@ export type EmailRoutingTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotations
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailRoutingTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -2137,7 +2203,8 @@ export type EmailRoutingTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotations
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailRoutingTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -2236,7 +2303,8 @@ export type EmailRoutingTimeseriesGroupsArcResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsArcResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -2359,7 +2427,11 @@ export const EmailSecuritySummaryArcRequestDateStartList =
     S.String,
   ) as any as S.Schema<EmailSecuritySummaryArcRequestDateStartList>;
 
-export type EmailSecuritySummaryArcRequestDkim = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummaryArcRequestDkim =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryArcRequestDkim = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryArcRequestDkimList =
@@ -2368,7 +2440,11 @@ export const EmailSecuritySummaryArcRequestDkimList = /*@__PURE__*/ S.Array(
   EmailSecuritySummaryArcRequestDkim,
 ) as any as S.Schema<EmailSecuritySummaryArcRequestDkimList>;
 
-export type EmailSecuritySummaryArcRequestDmarc = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummaryArcRequestDmarc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryArcRequestDmarc = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryArcRequestDmarcList =
@@ -2377,7 +2453,10 @@ export const EmailSecuritySummaryArcRequestDmarcList = /*@__PURE__*/ S.Array(
   EmailSecuritySummaryArcRequestDmarc,
 ) as any as S.Schema<EmailSecuritySummaryArcRequestDmarcList>;
 
-export type EmailSecuritySummaryArcRequestFormat = "JSON" | "CSV";
+export type EmailSecuritySummaryArcRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailSecuritySummaryArcRequestFormat = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryArcRequestNameList = ReadonlyArray<string>;
@@ -2385,7 +2464,11 @@ export const EmailSecuritySummaryArcRequestNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EmailSecuritySummaryArcRequestNameList>;
 
-export type EmailSecuritySummaryArcRequestSpf = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummaryArcRequestSpf =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryArcRequestSpf = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryArcRequestSpfList =
@@ -2398,7 +2481,8 @@ export type EmailSecuritySummaryArcRequestTlsVersion =
   | "TLSv1_0"
   | "TLSv1_1"
   | "TLSv1_2"
-  | "TLSv1_3";
+  | "TLSv1_3"
+  | (string & {});
 export const EmailSecuritySummaryArcRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryArcRequestTlsVersionList =
@@ -2485,7 +2569,8 @@ export type EmailSecuritySummaryArcResponseMetaConfidenceInfoAnnotationsItemData
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailSecuritySummaryArcResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -2495,7 +2580,8 @@ export type EmailSecuritySummaryArcResponseMetaConfidenceInfoAnnotationsItemEven
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailSecuritySummaryArcResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -2594,7 +2680,8 @@ export type EmailSecuritySummaryArcResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailSecuritySummaryArcResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -2679,7 +2766,8 @@ export type EmailSecurityTimeseriesGroupsArcRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsArcRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -2707,7 +2795,8 @@ export const EmailSecurityTimeseriesGroupsArcRequestDateStartList =
 export type EmailSecurityTimeseriesGroupsArcRequestDkim =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsArcRequestDkim =
   /*@__PURE__*/ S.String;
 
@@ -2721,7 +2810,8 @@ export const EmailSecurityTimeseriesGroupsArcRequestDkimList =
 export type EmailSecurityTimeseriesGroupsArcRequestDmarc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsArcRequestDmarc =
   /*@__PURE__*/ S.String;
 
@@ -2732,7 +2822,10 @@ export const EmailSecurityTimeseriesGroupsArcRequestDmarcList =
     EmailSecurityTimeseriesGroupsArcRequestDmarc,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsArcRequestDmarcList>;
 
-export type EmailSecurityTimeseriesGroupsArcRequestFormat = "JSON" | "CSV";
+export type EmailSecurityTimeseriesGroupsArcRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsArcRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -2746,7 +2839,8 @@ export const EmailSecurityTimeseriesGroupsArcRequestNameList =
 export type EmailSecurityTimeseriesGroupsArcRequestSpf =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsArcRequestSpf =
   /*@__PURE__*/ S.String;
 
@@ -2761,7 +2855,8 @@ export type EmailSecurityTimeseriesGroupsArcRequestTlsVersion =
   | "TLSv1_0"
   | "TLSv1_1"
   | "TLSv1_2"
-  | "TLSv1_3";
+  | "TLSv1_3"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsArcRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -2845,7 +2940,8 @@ export type EmailSecurityTimeseriesGroupsArcResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsArcResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -2874,7 +2970,8 @@ export type EmailSecurityTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotation
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailSecurityTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -2884,7 +2981,8 @@ export type EmailSecurityTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotation
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailSecurityTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -2983,7 +3081,8 @@ export type EmailSecurityTimeseriesGroupsArcResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsArcResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -3090,10 +3189,10 @@ export const ArcEmailSecurityTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   identifier: "ArcEmailSecurityTimeseriesGroupResponse",
 }) as any as S.Schema<ArcEmailSecurityTimeseriesGroupResponse>;
 
-export type BgpIpsTopAsesRequestFormat = "JSON" | "CSV";
+export type BgpIpsTopAsesRequestFormat = "JSON" | "CSV" | (string & {});
 export const BgpIpsTopAsesRequestFormat = /*@__PURE__*/ S.String;
 
-export type BgpIpsTopAsesRequestMetric = "v4_24s" | "v6_48s";
+export type BgpIpsTopAsesRequestMetric = "v4_24s" | "v6_48s" | (string & {});
 export const BgpIpsTopAsesRequestMetric = /*@__PURE__*/ S.String;
 
 export interface AsesBgpIpTopRequest {
@@ -3161,7 +3260,7 @@ export const AsesBgpIpTopResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AsesBgpIpTopResponse",
 }) as any as S.Schema<AsesBgpIpTopResponse>;
 
-export type BgpRoutesAsesRequestFormat = "JSON" | "CSV";
+export type BgpRoutesAsesRequestFormat = "JSON" | "CSV" | (string & {});
 export const BgpRoutesAsesRequestFormat = /*@__PURE__*/ S.String;
 
 export type BgpRoutesAsesRequestSortBy =
@@ -3171,10 +3270,11 @@ export type BgpRoutesAsesRequestSortBy =
   | "ipv6"
   | "rpki_valid"
   | "rpki_invalid"
-  | "rpki_unknown";
+  | "rpki_unknown"
+  | (string & {});
 export const BgpRoutesAsesRequestSortBy = /*@__PURE__*/ S.String;
 
-export type BgpRoutesAsesRequestSortOrder = "ASC" | "DESC";
+export type BgpRoutesAsesRequestSortOrder = "ASC" | "DESC" | (string & {});
 export const BgpRoutesAsesRequestSortOrder = /*@__PURE__*/ S.String;
 
 export interface AsesBgpRouteRequest {
@@ -3313,7 +3413,8 @@ export type DnsTopAsesRequestDnssec =
   | "INVALID"
   | "INSECURE"
   | "SECURE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const DnsTopAsesRequestDnssec = /*@__PURE__*/ S.String;
 
 export type DnsTopAsesRequestDnssecList =
@@ -3322,7 +3423,10 @@ export const DnsTopAsesRequestDnssecList = /*@__PURE__*/ S.Array(
   DnsTopAsesRequestDnssec,
 ) as any as S.Schema<DnsTopAsesRequestDnssecList>;
 
-export type DnsTopAsesRequestDnssecAware = "SUPPORTED" | "NOT_SUPPORTED";
+export type DnsTopAsesRequestDnssecAware =
+  | "SUPPORTED"
+  | "NOT_SUPPORTED"
+  | (string & {});
 export const DnsTopAsesRequestDnssecAware = /*@__PURE__*/ S.String;
 
 export type DnsTopAsesRequestDnssecAwareList =
@@ -3341,10 +3445,10 @@ export const DnsTopAsesRequestDomainList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DnsTopAsesRequestDomainList>;
 
-export type DnsTopAsesRequestFormat = "JSON" | "CSV";
+export type DnsTopAsesRequestFormat = "JSON" | "CSV" | (string & {});
 export const DnsTopAsesRequestFormat = /*@__PURE__*/ S.String;
 
-export type DnsTopAsesRequestIpVersion = "IPv4" | "IPv6";
+export type DnsTopAsesRequestIpVersion = "IPv4" | "IPv6" | (string & {});
 export const DnsTopAsesRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type DnsTopAsesRequestIpVersionList =
@@ -3373,7 +3477,12 @@ export const DnsTopAsesRequestNodataList = /*@__PURE__*/ S.Array(
   S.Boolean,
 ) as any as S.Schema<DnsTopAsesRequestNodataList>;
 
-export type DnsTopAsesRequestProtocol = "UDP" | "TCP" | "HTTPS" | "TLS";
+export type DnsTopAsesRequestProtocol =
+  | "UDP"
+  | "TCP"
+  | "HTTPS"
+  | "TLS"
+  | (string & {});
 export const DnsTopAsesRequestProtocol = /*@__PURE__*/ S.String;
 
 export type DnsTopAsesRequestProtocolList =
@@ -3470,7 +3579,8 @@ export type DnsTopAsesRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const DnsTopAsesRequestQueryType = /*@__PURE__*/ S.String;
 
 export type DnsTopAsesRequestQueryTypeList =
@@ -3498,7 +3608,8 @@ export type DnsTopAsesRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const DnsTopAsesRequestResponseCode = /*@__PURE__*/ S.String;
 
 export type DnsTopAsesRequestResponseCodeList =
@@ -3514,7 +3625,8 @@ export type DnsTopAsesRequestResponseTtl =
   | "GT_15M_LTE_1H"
   | "GT_1H_LTE_1D"
   | "GT_1D_LTE_1W"
-  | "GT_1W";
+  | "GT_1W"
+  | (string & {});
 export const DnsTopAsesRequestResponseTtl = /*@__PURE__*/ S.String;
 
 export type DnsTopAsesRequestResponseTtlList =
@@ -3624,7 +3736,8 @@ export type DnsTopAsesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   | "NET"
   | "ROBOTS_TXT"
   | "SPEED"
-  | "WORKERS_AI";
+  | "WORKERS_AI"
+  | (string & {});
 export const DnsTopAsesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -3634,7 +3747,8 @@ export type DnsTopAsesResponseMetaConfidenceInfoAnnotationsItemEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const DnsTopAsesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -3727,7 +3841,8 @@ export type DnsTopAsesResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsTopAsesResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface DnsTopAsesResponseMetaUnitsItem {
@@ -3833,7 +3948,7 @@ export const NetflowsTopAsesRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetflowsTopAsesRequestDateStartList>;
 
-export type NetflowsTopAsesRequestFormat = "JSON" | "CSV";
+export type NetflowsTopAsesRequestFormat = "JSON" | "CSV" | (string & {});
 export const NetflowsTopAsesRequestFormat = /*@__PURE__*/ S.String;
 
 export type NetflowsTopAsesRequestGeoIdList = ReadonlyArray<string>;
@@ -3917,7 +4032,8 @@ export type NetflowsTopAsesResponseMetaConfidenceInfoAnnotationsItemDataSource =
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const NetflowsTopAsesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -3927,7 +4043,8 @@ export type NetflowsTopAsesResponseMetaConfidenceInfoAnnotationsItemEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const NetflowsTopAsesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -4023,7 +4140,8 @@ export type NetflowsTopAsesResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const NetflowsTopAsesResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface NetflowsTopAsesResponseMetaUnitsItem {
@@ -4120,7 +4238,7 @@ export const QualitySpeedTopAsesRequestDateEndList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QualitySpeedTopAsesRequestDateEndList>;
 
-export type QualitySpeedTopAsesRequestFormat = "JSON" | "CSV";
+export type QualitySpeedTopAsesRequestFormat = "JSON" | "CSV" | (string & {});
 export const QualitySpeedTopAsesRequestFormat = /*@__PURE__*/ S.String;
 
 export type QualitySpeedTopAsesRequestLocationList = ReadonlyArray<string>;
@@ -4139,7 +4257,8 @@ export type QualitySpeedTopAsesRequestOrderBy =
   | "LATENCY_IDLE"
   | "LATENCY_LOADED"
   | "JITTER_IDLE"
-  | "JITTER_LOADED";
+  | "JITTER_LOADED"
+  | (string & {});
 export const QualitySpeedTopAsesRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface AsesQualitySpeedTopRequest {
@@ -4215,7 +4334,8 @@ export type QualitySpeedTopAsesResponseMetaConfidenceInfoAnnotationsItemDataSour
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const QualitySpeedTopAsesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -4225,7 +4345,8 @@ export type QualitySpeedTopAsesResponseMetaConfidenceInfoAnnotationsItemEventTyp
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const QualitySpeedTopAsesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -4322,7 +4443,8 @@ export type QualitySpeedTopAsesResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const QualitySpeedTopAsesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -4418,7 +4540,7 @@ export const AsesQualitySpeedTopResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AsesQualitySpeedTopResponse",
 }) as any as S.Schema<AsesQualitySpeedTopResponse>;
 
-export type EntitiesAsnsAsSetRequestFormat = "JSON" | "CSV";
+export type EntitiesAsnsAsSetRequestFormat = "JSON" | "CSV" | (string & {});
 export const EntitiesAsnsAsSetRequestFormat = /*@__PURE__*/ S.String;
 
 export interface AsSetEntityAsnRequest {
@@ -4544,10 +4666,16 @@ export const AttacksLayer3TopAttacksRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer3TopAttacksRequestDateStartList>;
 
-export type AttacksLayer3TopAttacksRequestFormat = "JSON" | "CSV";
+export type AttacksLayer3TopAttacksRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer3TopAttacksRequestFormat = /*@__PURE__*/ S.String;
 
-export type AttacksLayer3TopAttacksRequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer3TopAttacksRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer3TopAttacksRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TopAttacksRequestIpVersionList =
@@ -4557,7 +4685,10 @@ export const AttacksLayer3TopAttacksRequestIpVersionList =
     AttacksLayer3TopAttacksRequestIpVersion,
   ) as any as S.Schema<AttacksLayer3TopAttacksRequestIpVersionList>;
 
-export type AttacksLayer3TopAttacksRequestLimitDirection = "ORIGIN" | "TARGET";
+export type AttacksLayer3TopAttacksRequestLimitDirection =
+  | "ORIGIN"
+  | "TARGET"
+  | (string & {});
 export const AttacksLayer3TopAttacksRequestLimitDirection =
   /*@__PURE__*/ S.String;
 
@@ -4568,7 +4699,8 @@ export const AttacksLayer3TopAttacksRequestLocationList = /*@__PURE__*/ S.Array(
 
 export type AttacksLayer3TopAttacksRequestMagnitude =
   | "MITIGATED_BYTES"
-  | "MITIGATED_ATTACKS";
+  | "MITIGATED_ATTACKS"
+  | (string & {});
 export const AttacksLayer3TopAttacksRequestMagnitude = /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TopAttacksRequestNameList = ReadonlyArray<string>;
@@ -4578,7 +4710,8 @@ export const AttacksLayer3TopAttacksRequestNameList = /*@__PURE__*/ S.Array(
 
 export type AttacksLayer3TopAttacksRequestNormalization =
   | "PERCENTAGE"
-  | "MIN_MAX";
+  | "MIN_MAX"
+  | (string & {});
 export const AttacksLayer3TopAttacksRequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -4586,7 +4719,8 @@ export type AttacksLayer3TopAttacksRequestProtocol =
   | "UDP"
   | "TCP"
   | "ICMP"
-  | "GRE";
+  | "GRE"
+  | (string & {});
 export const AttacksLayer3TopAttacksRequestProtocol = /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TopAttacksRequestProtocolList =
@@ -4699,7 +4833,8 @@ export type AttacksLayer3TopAttacksResponseMetaConfidenceInfoAnnotationsItemData
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer3TopAttacksResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -4709,7 +4844,8 @@ export type AttacksLayer3TopAttacksResponseMetaConfidenceInfoAnnotationsItemEven
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer3TopAttacksResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -4808,7 +4944,8 @@ export type AttacksLayer3TopAttacksResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer3TopAttacksResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -4920,10 +5057,16 @@ export const AttacksLayer7TopAttacksRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer7TopAttacksRequestDateStartList>;
 
-export type AttacksLayer7TopAttacksRequestFormat = "JSON" | "CSV";
+export type AttacksLayer7TopAttacksRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer7TopAttacksRequestFormat = /*@__PURE__*/ S.String;
 
-export type AttacksLayer7TopAttacksRequestLimitDirection = "ORIGIN" | "TARGET";
+export type AttacksLayer7TopAttacksRequestLimitDirection =
+  | "ORIGIN"
+  | "TARGET"
+  | (string & {});
 export const AttacksLayer7TopAttacksRequestLimitDirection =
   /*@__PURE__*/ S.String;
 
@@ -4939,7 +5082,8 @@ export type AttacksLayer7TopAttacksRequestMitigationProduct =
   | "ACCESS_RULES"
   | "IP_REPUTATION"
   | "API_SHIELD"
-  | "DATA_LOSS_PREVENTION";
+  | "DATA_LOSS_PREVENTION"
+  | (string & {});
 export const AttacksLayer7TopAttacksRequestMitigationProduct =
   /*@__PURE__*/ S.String;
 
@@ -4957,7 +5101,8 @@ export const AttacksLayer7TopAttacksRequestNameList = /*@__PURE__*/ S.Array(
 
 export type AttacksLayer7TopAttacksRequestNormalization =
   | "PERCENTAGE"
-  | "MIN_MAX";
+  | "MIN_MAX"
+  | (string & {});
 export const AttacksLayer7TopAttacksRequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -5058,7 +5203,8 @@ export type AttacksLayer7TopAttacksResponseMetaConfidenceInfoAnnotationsItemData
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer7TopAttacksResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -5068,7 +5214,8 @@ export type AttacksLayer7TopAttacksResponseMetaConfidenceInfoAnnotationsItemEven
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer7TopAttacksResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -5167,7 +5314,8 @@ export type AttacksLayer7TopAttacksResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer7TopAttacksResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -5283,14 +5431,23 @@ export const AttacksLayer3SummaryBitrateRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer3SummaryBitrateRequestDateStartList>;
 
-export type AttacksLayer3SummaryBitrateRequestDirection = "ORIGIN" | "TARGET";
+export type AttacksLayer3SummaryBitrateRequestDirection =
+  | "ORIGIN"
+  | "TARGET"
+  | (string & {});
 export const AttacksLayer3SummaryBitrateRequestDirection =
   /*@__PURE__*/ S.String;
 
-export type AttacksLayer3SummaryBitrateRequestFormat = "JSON" | "CSV";
+export type AttacksLayer3SummaryBitrateRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer3SummaryBitrateRequestFormat = /*@__PURE__*/ S.String;
 
-export type AttacksLayer3SummaryBitrateRequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer3SummaryBitrateRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer3SummaryBitrateRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -5317,7 +5474,8 @@ export type AttacksLayer3SummaryBitrateRequestProtocol =
   | "UDP"
   | "TCP"
   | "ICMP"
-  | "GRE";
+  | "GRE"
+  | (string & {});
 export const AttacksLayer3SummaryBitrateRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -5420,7 +5578,8 @@ export type AttacksLayer3SummaryBitrateResponseMetaConfidenceInfoAnnotationsItem
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer3SummaryBitrateResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -5430,7 +5589,8 @@ export type AttacksLayer3SummaryBitrateResponseMetaConfidenceInfoAnnotationsItem
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer3SummaryBitrateResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -5529,7 +5689,8 @@ export type AttacksLayer3SummaryBitrateResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer3SummaryBitrateResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -5623,7 +5784,8 @@ export type AttacksLayer3TimeseriesGroupsBitrateRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsBitrateRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -5657,17 +5819,22 @@ export const AttacksLayer3TimeseriesGroupsBitrateRequestDateStartList =
 
 export type AttacksLayer3TimeseriesGroupsBitrateRequestDirection =
   | "ORIGIN"
-  | "TARGET";
+  | "TARGET"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsBitrateRequestDirection =
   /*@__PURE__*/ S.String;
 
-export type AttacksLayer3TimeseriesGroupsBitrateRequestFormat = "JSON" | "CSV";
+export type AttacksLayer3TimeseriesGroupsBitrateRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsBitrateRequestFormat =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesGroupsBitrateRequestIpVersion =
   | "IPv4"
-  | "IPv6";
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsBitrateRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -5694,7 +5861,8 @@ export const AttacksLayer3TimeseriesGroupsBitrateRequestNameList =
 
 export type AttacksLayer3TimeseriesGroupsBitrateRequestNormalization =
   | "PERCENTAGE"
-  | "MIN0_MAX";
+  | "MIN0_MAX"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsBitrateRequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -5702,7 +5870,8 @@ export type AttacksLayer3TimeseriesGroupsBitrateRequestProtocol =
   | "UDP"
   | "TCP"
   | "ICMP"
-  | "GRE";
+  | "GRE"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsBitrateRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -5806,7 +5975,8 @@ export type AttacksLayer3TimeseriesGroupsBitrateResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsBitrateResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -5835,7 +6005,8 @@ export type AttacksLayer3TimeseriesGroupsBitrateResponseMetaConfidenceInfoAnnota
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer3TimeseriesGroupsBitrateResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -5845,7 +6016,8 @@ export type AttacksLayer3TimeseriesGroupsBitrateResponseMetaConfidenceInfoAnnota
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer3TimeseriesGroupsBitrateResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -5945,7 +6117,8 @@ export type AttacksLayer3TimeseriesGroupsBitrateResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsBitrateResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -6105,7 +6278,8 @@ export type HttpSummaryBotClassRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpSummaryBotClassRequestBrowserFamily = /*@__PURE__*/ S.String;
 
 export type HttpSummaryBotClassRequestBrowserFamilyList =
@@ -6138,7 +6312,8 @@ export const HttpSummaryBotClassRequestDateStartList = /*@__PURE__*/ S.Array(
 export type HttpSummaryBotClassRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpSummaryBotClassRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpSummaryBotClassRequestDeviceTypeList =
@@ -6147,7 +6322,7 @@ export const HttpSummaryBotClassRequestDeviceTypeList = /*@__PURE__*/ S.Array(
   HttpSummaryBotClassRequestDeviceType,
 ) as any as S.Schema<HttpSummaryBotClassRequestDeviceTypeList>;
 
-export type HttpSummaryBotClassRequestFormat = "JSON" | "CSV";
+export type HttpSummaryBotClassRequestFormat = "JSON" | "CSV" | (string & {});
 export const HttpSummaryBotClassRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpSummaryBotClassRequestGeoIdList = ReadonlyArray<string>;
@@ -6155,7 +6330,10 @@ export const HttpSummaryBotClassRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpSummaryBotClassRequestGeoIdList>;
 
-export type HttpSummaryBotClassRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpSummaryBotClassRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpSummaryBotClassRequestHttpProtocol = /*@__PURE__*/ S.String;
 
 export type HttpSummaryBotClassRequestHttpProtocolList =
@@ -6167,7 +6345,8 @@ export const HttpSummaryBotClassRequestHttpProtocolList = /*@__PURE__*/ S.Array(
 export type HttpSummaryBotClassRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpSummaryBotClassRequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type HttpSummaryBotClassRequestHttpVersionList =
@@ -6176,7 +6355,10 @@ export const HttpSummaryBotClassRequestHttpVersionList = /*@__PURE__*/ S.Array(
   HttpSummaryBotClassRequestHttpVersion,
 ) as any as S.Schema<HttpSummaryBotClassRequestHttpVersionList>;
 
-export type HttpSummaryBotClassRequestIpVersion = "IPv4" | "IPv6";
+export type HttpSummaryBotClassRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpSummaryBotClassRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpSummaryBotClassRequestIpVersionList =
@@ -6202,7 +6384,8 @@ export type HttpSummaryBotClassRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpSummaryBotClassRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpSummaryBotClassRequestOsList =
@@ -6216,7 +6399,8 @@ export type HttpSummaryBotClassRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpSummaryBotClassRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpSummaryBotClassRequestTlsVersionList =
@@ -6335,7 +6519,8 @@ export type HttpSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemDataSour
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -6345,7 +6530,8 @@ export type HttpSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemEventTyp
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -6442,7 +6628,8 @@ export type HttpSummaryBotClassResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpSummaryBotClassResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -6522,7 +6709,8 @@ export type HttpTimeseriesGroupsBotClassRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const HttpTimeseriesGroupsBotClassRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -6535,7 +6723,8 @@ export type HttpTimeseriesGroupsBotClassRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpTimeseriesGroupsBotClassRequestBrowserFamily =
   /*@__PURE__*/ S.String;
 
@@ -6577,7 +6766,8 @@ export const HttpTimeseriesGroupsBotClassRequestDateStartList =
 export type HttpTimeseriesGroupsBotClassRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpTimeseriesGroupsBotClassRequestDeviceType =
   /*@__PURE__*/ S.String;
 
@@ -6588,7 +6778,10 @@ export const HttpTimeseriesGroupsBotClassRequestDeviceTypeList =
     HttpTimeseriesGroupsBotClassRequestDeviceType,
   ) as any as S.Schema<HttpTimeseriesGroupsBotClassRequestDeviceTypeList>;
 
-export type HttpTimeseriesGroupsBotClassRequestFormat = "JSON" | "CSV";
+export type HttpTimeseriesGroupsBotClassRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const HttpTimeseriesGroupsBotClassRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsBotClassRequestGeoIdList =
@@ -6598,7 +6791,10 @@ export const HttpTimeseriesGroupsBotClassRequestGeoIdList =
     S.String,
   ) as any as S.Schema<HttpTimeseriesGroupsBotClassRequestGeoIdList>;
 
-export type HttpTimeseriesGroupsBotClassRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpTimeseriesGroupsBotClassRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpTimeseriesGroupsBotClassRequestHttpProtocol =
   /*@__PURE__*/ S.String;
 
@@ -6612,7 +6808,8 @@ export const HttpTimeseriesGroupsBotClassRequestHttpProtocolList =
 export type HttpTimeseriesGroupsBotClassRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpTimeseriesGroupsBotClassRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -6623,7 +6820,10 @@ export const HttpTimeseriesGroupsBotClassRequestHttpVersionList =
     HttpTimeseriesGroupsBotClassRequestHttpVersion,
   ) as any as S.Schema<HttpTimeseriesGroupsBotClassRequestHttpVersionList>;
 
-export type HttpTimeseriesGroupsBotClassRequestIpVersion = "IPv4" | "IPv6";
+export type HttpTimeseriesGroupsBotClassRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpTimeseriesGroupsBotClassRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -6654,7 +6854,8 @@ export type HttpTimeseriesGroupsBotClassRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpTimeseriesGroupsBotClassRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsBotClassRequestOsList =
@@ -6668,7 +6869,8 @@ export type HttpTimeseriesGroupsBotClassRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpTimeseriesGroupsBotClassRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -6782,7 +6984,8 @@ export type HttpTimeseriesGroupsBotClassResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const HttpTimeseriesGroupsBotClassResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -6811,7 +7014,8 @@ export type HttpTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsIte
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -6821,7 +7025,8 @@ export type HttpTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsIte
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -6920,7 +7125,8 @@ export type HttpTimeseriesGroupsBotClassResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpTimeseriesGroupsBotClassResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -7025,7 +7231,8 @@ export const BotClassHttpTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type LeakedCredentialsSummaryBotClassRequestCompromised =
   | "CLEAN"
-  | "COMPROMISED";
+  | "COMPROMISED"
+  | (string & {});
 export const LeakedCredentialsSummaryBotClassRequestCompromised =
   /*@__PURE__*/ S.String;
 
@@ -7057,7 +7264,10 @@ export const LeakedCredentialsSummaryBotClassRequestDateStartList =
     S.String,
   ) as any as S.Schema<LeakedCredentialsSummaryBotClassRequestDateStartList>;
 
-export type LeakedCredentialsSummaryBotClassRequestFormat = "JSON" | "CSV";
+export type LeakedCredentialsSummaryBotClassRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const LeakedCredentialsSummaryBotClassRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -7141,7 +7351,8 @@ export type LeakedCredentialsSummaryBotClassResponseMetaConfidenceInfoAnnotation
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const LeakedCredentialsSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -7151,7 +7362,8 @@ export type LeakedCredentialsSummaryBotClassResponseMetaConfidenceInfoAnnotation
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const LeakedCredentialsSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -7250,7 +7462,8 @@ export type LeakedCredentialsSummaryBotClassResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const LeakedCredentialsSummaryBotClassResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -7337,13 +7550,15 @@ export type LeakedCredentialsTimeseriesGroupsBotClassRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const LeakedCredentialsTimeseriesGroupsBotClassRequestAggInterval =
   /*@__PURE__*/ S.String;
 
 export type LeakedCredentialsTimeseriesGroupsBotClassRequestCompromised =
   | "CLEAN"
-  | "COMPROMISED";
+  | "COMPROMISED"
+  | (string & {});
 export const LeakedCredentialsTimeseriesGroupsBotClassRequestCompromised =
   /*@__PURE__*/ S.String;
 
@@ -7377,7 +7592,8 @@ export const LeakedCredentialsTimeseriesGroupsBotClassRequestDateStartList =
 
 export type LeakedCredentialsTimeseriesGroupsBotClassRequestFormat =
   | "JSON"
-  | "CSV";
+  | "CSV"
+  | (string & {});
 export const LeakedCredentialsTimeseriesGroupsBotClassRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -7458,7 +7674,8 @@ export type LeakedCredentialsTimeseriesGroupsBotClassResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const LeakedCredentialsTimeseriesGroupsBotClassResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -7487,7 +7704,8 @@ export type LeakedCredentialsTimeseriesGroupsBotClassResponseMetaConfidenceInfoA
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const LeakedCredentialsTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -7497,7 +7715,8 @@ export type LeakedCredentialsTimeseriesGroupsBotClassResponseMetaConfidenceInfoA
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const LeakedCredentialsTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -7598,7 +7817,8 @@ export type LeakedCredentialsTimeseriesGroupsBotClassResponseMetaNormalization =
     | "PERCENTAGE_CHANGE"
     | "ROLLING_AVERAGE"
     | "OVERLAPPED_PERCENTAGE"
-    | "RATIO";
+    | "RATIO"
+    | (string & {});
 export const LeakedCredentialsTimeseriesGroupsBotClassResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -7715,15 +7935,22 @@ export const EntitiesAsnsBotnetThreatFeedRequestAsnList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EntitiesAsnsBotnetThreatFeedRequestAsnList>;
 
-export type EntitiesAsnsBotnetThreatFeedRequestFormat = "JSON" | "CSV";
+export type EntitiesAsnsBotnetThreatFeedRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EntitiesAsnsBotnetThreatFeedRequestFormat = /*@__PURE__*/ S.String;
 
 export type EntitiesAsnsBotnetThreatFeedRequestMetric =
   | "OFFENSE_COUNT"
-  | "NUMBER_OF_OFFENDING_IPS";
+  | "NUMBER_OF_OFFENDING_IPS"
+  | (string & {});
 export const EntitiesAsnsBotnetThreatFeedRequestMetric = /*@__PURE__*/ S.String;
 
-export type EntitiesAsnsBotnetThreatFeedRequestSortOrder = "ASC" | "DESC";
+export type EntitiesAsnsBotnetThreatFeedRequestSortOrder =
+  | "ASC"
+  | "DESC"
+  | (string & {});
 export const EntitiesAsnsBotnetThreatFeedRequestSortOrder =
   /*@__PURE__*/ S.String;
 
@@ -7859,7 +8086,7 @@ export const VerifiedBotsTopBotsRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VerifiedBotsTopBotsRequestDateStartList>;
 
-export type VerifiedBotsTopBotsRequestFormat = "JSON" | "CSV";
+export type VerifiedBotsTopBotsRequestFormat = "JSON" | "CSV" | (string & {});
 export const VerifiedBotsTopBotsRequestFormat = /*@__PURE__*/ S.String;
 
 export type VerifiedBotsTopBotsRequestLocationList = ReadonlyArray<string>;
@@ -7949,7 +8176,8 @@ export type VerifiedBotsTopBotsResponseMetaConfidenceInfoAnnotationsItemDataSour
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const VerifiedBotsTopBotsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -7959,7 +8187,8 @@ export type VerifiedBotsTopBotsResponseMetaConfidenceInfoAnnotationsItemEventTyp
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const VerifiedBotsTopBotsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -8056,7 +8285,8 @@ export type VerifiedBotsTopBotsResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const VerifiedBotsTopBotsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -8145,7 +8375,8 @@ export type HttpTimeseriesGroupsBrowserFamilyRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const HttpTimeseriesGroupsBrowserFamilyRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -8158,7 +8389,8 @@ export const HttpTimeseriesGroupsBrowserFamilyRequestAsnList =
 
 export type HttpTimeseriesGroupsBrowserFamilyRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpTimeseriesGroupsBrowserFamilyRequestBotClass =
   /*@__PURE__*/ S.String;
 
@@ -8200,7 +8432,8 @@ export const HttpTimeseriesGroupsBrowserFamilyRequestDateStartList =
 export type HttpTimeseriesGroupsBrowserFamilyRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpTimeseriesGroupsBrowserFamilyRequestDeviceType =
   /*@__PURE__*/ S.String;
 
@@ -8211,7 +8444,10 @@ export const HttpTimeseriesGroupsBrowserFamilyRequestDeviceTypeList =
     HttpTimeseriesGroupsBrowserFamilyRequestDeviceType,
   ) as any as S.Schema<HttpTimeseriesGroupsBrowserFamilyRequestDeviceTypeList>;
 
-export type HttpTimeseriesGroupsBrowserFamilyRequestFormat = "JSON" | "CSV";
+export type HttpTimeseriesGroupsBrowserFamilyRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const HttpTimeseriesGroupsBrowserFamilyRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -8224,7 +8460,8 @@ export const HttpTimeseriesGroupsBrowserFamilyRequestGeoIdList =
 
 export type HttpTimeseriesGroupsBrowserFamilyRequestHttpProtocol =
   | "HTTP"
-  | "HTTPS";
+  | "HTTPS"
+  | (string & {});
 export const HttpTimeseriesGroupsBrowserFamilyRequestHttpProtocol =
   /*@__PURE__*/ S.String;
 
@@ -8238,7 +8475,8 @@ export const HttpTimeseriesGroupsBrowserFamilyRequestHttpProtocolList =
 export type HttpTimeseriesGroupsBrowserFamilyRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpTimeseriesGroupsBrowserFamilyRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -8249,7 +8487,10 @@ export const HttpTimeseriesGroupsBrowserFamilyRequestHttpVersionList =
     HttpTimeseriesGroupsBrowserFamilyRequestHttpVersion,
   ) as any as S.Schema<HttpTimeseriesGroupsBrowserFamilyRequestHttpVersionList>;
 
-export type HttpTimeseriesGroupsBrowserFamilyRequestIpVersion = "IPv4" | "IPv6";
+export type HttpTimeseriesGroupsBrowserFamilyRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpTimeseriesGroupsBrowserFamilyRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -8281,7 +8522,8 @@ export type HttpTimeseriesGroupsBrowserFamilyRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpTimeseriesGroupsBrowserFamilyRequestOs =
   /*@__PURE__*/ S.String;
 
@@ -8297,7 +8539,8 @@ export type HttpTimeseriesGroupsBrowserFamilyRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpTimeseriesGroupsBrowserFamilyRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -8421,7 +8664,8 @@ export type HttpTimeseriesGroupsBrowserFamilyResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const HttpTimeseriesGroupsBrowserFamilyResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -8450,7 +8694,8 @@ export type HttpTimeseriesGroupsBrowserFamilyResponseMetaConfidenceInfoAnnotatio
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpTimeseriesGroupsBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -8460,7 +8705,8 @@ export type HttpTimeseriesGroupsBrowserFamilyResponseMetaConfidenceInfoAnnotatio
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpTimeseriesGroupsBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -8559,7 +8805,8 @@ export type HttpTimeseriesGroupsBrowserFamilyResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpTimeseriesGroupsBrowserFamilyResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -8655,7 +8902,8 @@ export const HttpTopBrowserFamilyRequestAsnList = /*@__PURE__*/ S.Array(
 
 export type HttpTopBrowserFamilyRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpTopBrowserFamilyRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpTopBrowserFamilyRequestBotClassList =
@@ -8687,7 +8935,8 @@ export const HttpTopBrowserFamilyRequestDateStartList = /*@__PURE__*/ S.Array(
 export type HttpTopBrowserFamilyRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpTopBrowserFamilyRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpTopBrowserFamilyRequestDeviceTypeList =
@@ -8696,7 +8945,7 @@ export const HttpTopBrowserFamilyRequestDeviceTypeList = /*@__PURE__*/ S.Array(
   HttpTopBrowserFamilyRequestDeviceType,
 ) as any as S.Schema<HttpTopBrowserFamilyRequestDeviceTypeList>;
 
-export type HttpTopBrowserFamilyRequestFormat = "JSON" | "CSV";
+export type HttpTopBrowserFamilyRequestFormat = "JSON" | "CSV" | (string & {});
 export const HttpTopBrowserFamilyRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpTopBrowserFamilyRequestGeoIdList = ReadonlyArray<string>;
@@ -8704,7 +8953,10 @@ export const HttpTopBrowserFamilyRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpTopBrowserFamilyRequestGeoIdList>;
 
-export type HttpTopBrowserFamilyRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpTopBrowserFamilyRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpTopBrowserFamilyRequestHttpProtocol = /*@__PURE__*/ S.String;
 
 export type HttpTopBrowserFamilyRequestHttpProtocolList =
@@ -8717,7 +8969,8 @@ export const HttpTopBrowserFamilyRequestHttpProtocolList =
 export type HttpTopBrowserFamilyRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpTopBrowserFamilyRequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type HttpTopBrowserFamilyRequestHttpVersionList =
@@ -8726,7 +8979,10 @@ export const HttpTopBrowserFamilyRequestHttpVersionList = /*@__PURE__*/ S.Array(
   HttpTopBrowserFamilyRequestHttpVersion,
 ) as any as S.Schema<HttpTopBrowserFamilyRequestHttpVersionList>;
 
-export type HttpTopBrowserFamilyRequestIpVersion = "IPv4" | "IPv6";
+export type HttpTopBrowserFamilyRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpTopBrowserFamilyRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpTopBrowserFamilyRequestIpVersionList =
@@ -8752,7 +9008,8 @@ export type HttpTopBrowserFamilyRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpTopBrowserFamilyRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpTopBrowserFamilyRequestOsList =
@@ -8766,7 +9023,8 @@ export type HttpTopBrowserFamilyRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpTopBrowserFamilyRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpTopBrowserFamilyRequestTlsVersionList =
@@ -8888,7 +9146,8 @@ export type HttpTopBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemDataSou
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpTopBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -8898,7 +9157,8 @@ export type HttpTopBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemEventTy
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpTopBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -8996,7 +9256,8 @@ export type HttpTopBrowserFamilyResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpTopBrowserFamilyResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -9081,7 +9342,8 @@ export type HttpTimeseriesGroupsBrowserRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const HttpTimeseriesGroupsBrowserRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -9092,7 +9354,8 @@ export const HttpTimeseriesGroupsBrowserRequestAsnList = /*@__PURE__*/ S.Array(
 
 export type HttpTimeseriesGroupsBrowserRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpTimeseriesGroupsBrowserRequestBotClass =
   /*@__PURE__*/ S.String;
 
@@ -9107,7 +9370,8 @@ export type HttpTimeseriesGroupsBrowserRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpTimeseriesGroupsBrowserRequestBrowserFamily =
   /*@__PURE__*/ S.String;
 
@@ -9149,7 +9413,8 @@ export const HttpTimeseriesGroupsBrowserRequestDateStartList =
 export type HttpTimeseriesGroupsBrowserRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpTimeseriesGroupsBrowserRequestDeviceType =
   /*@__PURE__*/ S.String;
 
@@ -9160,7 +9425,10 @@ export const HttpTimeseriesGroupsBrowserRequestDeviceTypeList =
     HttpTimeseriesGroupsBrowserRequestDeviceType,
   ) as any as S.Schema<HttpTimeseriesGroupsBrowserRequestDeviceTypeList>;
 
-export type HttpTimeseriesGroupsBrowserRequestFormat = "JSON" | "CSV";
+export type HttpTimeseriesGroupsBrowserRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const HttpTimeseriesGroupsBrowserRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsBrowserRequestGeoIdList = ReadonlyArray<string>;
@@ -9169,7 +9437,10 @@ export const HttpTimeseriesGroupsBrowserRequestGeoIdList =
     S.String,
   ) as any as S.Schema<HttpTimeseriesGroupsBrowserRequestGeoIdList>;
 
-export type HttpTimeseriesGroupsBrowserRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpTimeseriesGroupsBrowserRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpTimeseriesGroupsBrowserRequestHttpProtocol =
   /*@__PURE__*/ S.String;
 
@@ -9183,7 +9454,8 @@ export const HttpTimeseriesGroupsBrowserRequestHttpProtocolList =
 export type HttpTimeseriesGroupsBrowserRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpTimeseriesGroupsBrowserRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -9194,7 +9466,10 @@ export const HttpTimeseriesGroupsBrowserRequestHttpVersionList =
     HttpTimeseriesGroupsBrowserRequestHttpVersion,
   ) as any as S.Schema<HttpTimeseriesGroupsBrowserRequestHttpVersionList>;
 
-export type HttpTimeseriesGroupsBrowserRequestIpVersion = "IPv4" | "IPv6";
+export type HttpTimeseriesGroupsBrowserRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpTimeseriesGroupsBrowserRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -9224,7 +9499,8 @@ export type HttpTimeseriesGroupsBrowserRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpTimeseriesGroupsBrowserRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsBrowserRequestOsList =
@@ -9238,7 +9514,8 @@ export type HttpTimeseriesGroupsBrowserRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpTimeseriesGroupsBrowserRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -9360,7 +9637,8 @@ export type HttpTimeseriesGroupsBrowserResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const HttpTimeseriesGroupsBrowserResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -9389,7 +9667,8 @@ export type HttpTimeseriesGroupsBrowserResponseMetaConfidenceInfoAnnotationsItem
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpTimeseriesGroupsBrowserResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -9399,7 +9678,8 @@ export type HttpTimeseriesGroupsBrowserResponseMetaConfidenceInfoAnnotationsItem
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpTimeseriesGroupsBrowserResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -9498,7 +9778,8 @@ export type HttpTimeseriesGroupsBrowserResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpTimeseriesGroupsBrowserResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -9588,7 +9869,10 @@ export const HttpTopBrowserRequestAsnList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpTopBrowserRequestAsnList>;
 
-export type HttpTopBrowserRequestBotClass = "LIKELY_AUTOMATED" | "LIKELY_HUMAN";
+export type HttpTopBrowserRequestBotClass =
+  | "LIKELY_AUTOMATED"
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpTopBrowserRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpTopBrowserRequestBotClassList =
@@ -9601,7 +9885,8 @@ export type HttpTopBrowserRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpTopBrowserRequestBrowserFamily = /*@__PURE__*/ S.String;
 
 export type HttpTopBrowserRequestBrowserFamilyList =
@@ -9630,7 +9915,11 @@ export const HttpTopBrowserRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpTopBrowserRequestDateStartList>;
 
-export type HttpTopBrowserRequestDeviceType = "DESKTOP" | "MOBILE" | "OTHER";
+export type HttpTopBrowserRequestDeviceType =
+  | "DESKTOP"
+  | "MOBILE"
+  | "OTHER"
+  | (string & {});
 export const HttpTopBrowserRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpTopBrowserRequestDeviceTypeList =
@@ -9639,7 +9928,7 @@ export const HttpTopBrowserRequestDeviceTypeList = /*@__PURE__*/ S.Array(
   HttpTopBrowserRequestDeviceType,
 ) as any as S.Schema<HttpTopBrowserRequestDeviceTypeList>;
 
-export type HttpTopBrowserRequestFormat = "JSON" | "CSV";
+export type HttpTopBrowserRequestFormat = "JSON" | "CSV" | (string & {});
 export const HttpTopBrowserRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpTopBrowserRequestGeoIdList = ReadonlyArray<string>;
@@ -9647,7 +9936,10 @@ export const HttpTopBrowserRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpTopBrowserRequestGeoIdList>;
 
-export type HttpTopBrowserRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpTopBrowserRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpTopBrowserRequestHttpProtocol = /*@__PURE__*/ S.String;
 
 export type HttpTopBrowserRequestHttpProtocolList =
@@ -9656,7 +9948,11 @@ export const HttpTopBrowserRequestHttpProtocolList = /*@__PURE__*/ S.Array(
   HttpTopBrowserRequestHttpProtocol,
 ) as any as S.Schema<HttpTopBrowserRequestHttpProtocolList>;
 
-export type HttpTopBrowserRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
+export type HttpTopBrowserRequestHttpVersion =
+  | "HTTPv1"
+  | "HTTPv2"
+  | "HTTPv3"
+  | (string & {});
 export const HttpTopBrowserRequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type HttpTopBrowserRequestHttpVersionList =
@@ -9665,7 +9961,7 @@ export const HttpTopBrowserRequestHttpVersionList = /*@__PURE__*/ S.Array(
   HttpTopBrowserRequestHttpVersion,
 ) as any as S.Schema<HttpTopBrowserRequestHttpVersionList>;
 
-export type HttpTopBrowserRequestIpVersion = "IPv4" | "IPv6";
+export type HttpTopBrowserRequestIpVersion = "IPv4" | "IPv6" | (string & {});
 export const HttpTopBrowserRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpTopBrowserRequestIpVersionList =
@@ -9691,7 +9987,8 @@ export type HttpTopBrowserRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpTopBrowserRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpTopBrowserRequestOsList =
@@ -9705,7 +10002,8 @@ export type HttpTopBrowserRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpTopBrowserRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpTopBrowserRequestTlsVersionList =
@@ -9810,7 +10108,8 @@ export type HttpTopBrowserResponseMetaConfidenceInfoAnnotationsItemDataSource =
   | "NET"
   | "ROBOTS_TXT"
   | "SPEED"
-  | "WORKERS_AI";
+  | "WORKERS_AI"
+  | (string & {});
 export const HttpTopBrowserResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -9820,7 +10119,8 @@ export type HttpTopBrowserResponseMetaConfidenceInfoAnnotationsItemEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const HttpTopBrowserResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -9916,7 +10216,8 @@ export type HttpTopBrowserResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpTopBrowserResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface HttpTopBrowserResponseMetaUnitsItem {
@@ -10019,7 +10320,7 @@ export const DnsSummaryCacheHitRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DnsSummaryCacheHitRequestDateStartList>;
 
-export type DnsSummaryCacheHitRequestFormat = "JSON" | "CSV";
+export type DnsSummaryCacheHitRequestFormat = "JSON" | "CSV" | (string & {});
 export const DnsSummaryCacheHitRequestFormat = /*@__PURE__*/ S.String;
 
 export type DnsSummaryCacheHitRequestLocationList = ReadonlyArray<string>;
@@ -10037,7 +10338,12 @@ export const DnsSummaryCacheHitRequestNodataList = /*@__PURE__*/ S.Array(
   S.Boolean,
 ) as any as S.Schema<DnsSummaryCacheHitRequestNodataList>;
 
-export type DnsSummaryCacheHitRequestProtocol = "UDP" | "TCP" | "HTTPS" | "TLS";
+export type DnsSummaryCacheHitRequestProtocol =
+  | "UDP"
+  | "TCP"
+  | "HTTPS"
+  | "TLS"
+  | (string & {});
 export const DnsSummaryCacheHitRequestProtocol = /*@__PURE__*/ S.String;
 
 export type DnsSummaryCacheHitRequestProtocolList =
@@ -10134,7 +10440,8 @@ export type DnsSummaryCacheHitRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const DnsSummaryCacheHitRequestQueryType = /*@__PURE__*/ S.String;
 
 export type DnsSummaryCacheHitRequestQueryTypeList =
@@ -10162,7 +10469,8 @@ export type DnsSummaryCacheHitRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const DnsSummaryCacheHitRequestResponseCode = /*@__PURE__*/ S.String;
 
 export type DnsSummaryCacheHitRequestResponseCodeList =
@@ -10263,7 +10571,8 @@ export type DnsSummaryCacheHitResponseMetaConfidenceInfoAnnotationsItemDataSourc
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const DnsSummaryCacheHitResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -10273,7 +10582,8 @@ export type DnsSummaryCacheHitResponseMetaConfidenceInfoAnnotationsItemEventType
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const DnsSummaryCacheHitResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -10370,7 +10680,8 @@ export type DnsSummaryCacheHitResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsSummaryCacheHitResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -10450,7 +10761,8 @@ export type DnsTimeseriesGroupsCacheHitRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const DnsTimeseriesGroupsCacheHitRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -10487,7 +10799,10 @@ export const DnsTimeseriesGroupsCacheHitRequestDateStartList =
     S.String,
   ) as any as S.Schema<DnsTimeseriesGroupsCacheHitRequestDateStartList>;
 
-export type DnsTimeseriesGroupsCacheHitRequestFormat = "JSON" | "CSV";
+export type DnsTimeseriesGroupsCacheHitRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const DnsTimeseriesGroupsCacheHitRequestFormat = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsCacheHitRequestLocationList =
@@ -10513,7 +10828,8 @@ export type DnsTimeseriesGroupsCacheHitRequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const DnsTimeseriesGroupsCacheHitRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -10612,7 +10928,8 @@ export type DnsTimeseriesGroupsCacheHitRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const DnsTimeseriesGroupsCacheHitRequestQueryType =
   /*@__PURE__*/ S.String;
 
@@ -10642,7 +10959,8 @@ export type DnsTimeseriesGroupsCacheHitRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const DnsTimeseriesGroupsCacheHitRequestResponseCode =
   /*@__PURE__*/ S.String;
 
@@ -10746,7 +11064,8 @@ export type DnsTimeseriesGroupsCacheHitResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const DnsTimeseriesGroupsCacheHitResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -10775,7 +11094,8 @@ export type DnsTimeseriesGroupsCacheHitResponseMetaConfidenceInfoAnnotationsItem
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const DnsTimeseriesGroupsCacheHitResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -10785,7 +11105,8 @@ export type DnsTimeseriesGroupsCacheHitResponseMetaConfidenceInfoAnnotationsItem
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const DnsTimeseriesGroupsCacheHitResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -10884,7 +11205,8 @@ export type DnsTimeseriesGroupsCacheHitResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsTimeseriesGroupsCacheHitResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -10985,7 +11307,10 @@ export const RankingInternetServicesCategoriesRequestDateList =
     S.String,
   ) as any as S.Schema<RankingInternetServicesCategoriesRequestDateList>;
 
-export type RankingInternetServicesCategoriesRequestFormat = "JSON" | "CSV";
+export type RankingInternetServicesCategoriesRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const RankingInternetServicesCategoriesRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -11099,7 +11424,10 @@ export const VerifiedBotsTopCategoriesRequestDateStartList =
     S.String,
   ) as any as S.Schema<VerifiedBotsTopCategoriesRequestDateStartList>;
 
-export type VerifiedBotsTopCategoriesRequestFormat = "JSON" | "CSV";
+export type VerifiedBotsTopCategoriesRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const VerifiedBotsTopCategoriesRequestFormat = /*@__PURE__*/ S.String;
 
 export type VerifiedBotsTopCategoriesRequestLocationList =
@@ -11193,7 +11521,8 @@ export type VerifiedBotsTopCategoriesResponseMetaConfidenceInfoAnnotationsItemDa
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const VerifiedBotsTopCategoriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -11203,7 +11532,8 @@ export type VerifiedBotsTopCategoriesResponseMetaConfidenceInfoAnnotationsItemEv
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const VerifiedBotsTopCategoriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -11302,7 +11632,8 @@ export type VerifiedBotsTopCategoriesResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const VerifiedBotsTopCategoriesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -11386,7 +11717,7 @@ export const CategoriesVerifiedBotTopResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CategoriesVerifiedBotTopResponse",
 }) as any as S.Schema<CategoriesVerifiedBotTopResponse>;
 
-export type BgpRpkiAspaChangesRequestFormat = "JSON" | "CSV";
+export type BgpRpkiAspaChangesRequestFormat = "JSON" | "CSV" | (string & {});
 export const BgpRpkiAspaChangesRequestFormat = /*@__PURE__*/ S.String;
 
 export interface ChangesBgpRpkiAspaRequest {
@@ -11458,7 +11789,8 @@ export type BgpRpkiAspaChangesResponseChangesItemEntriesItemType =
   | "CustomerAdded"
   | "CustomerRemoved"
   | "ProvidersAdded"
-  | "ProvidersRemoved";
+  | "ProvidersRemoved"
+  | (string & {});
 export const BgpRpkiAspaChangesResponseChangesItemEntriesItemType =
   /*@__PURE__*/ S.String;
 
@@ -11555,7 +11887,8 @@ export const ChangesBgpRpkiAspaResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type LeakedCredentialsSummaryCompromisedRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const LeakedCredentialsSummaryCompromisedRequestBotClass =
   /*@__PURE__*/ S.String;
 
@@ -11587,7 +11920,10 @@ export const LeakedCredentialsSummaryCompromisedRequestDateStartList =
     S.String,
   ) as any as S.Schema<LeakedCredentialsSummaryCompromisedRequestDateStartList>;
 
-export type LeakedCredentialsSummaryCompromisedRequestFormat = "JSON" | "CSV";
+export type LeakedCredentialsSummaryCompromisedRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const LeakedCredentialsSummaryCompromisedRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -11671,7 +12007,8 @@ export type LeakedCredentialsSummaryCompromisedResponseMetaConfidenceInfoAnnotat
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const LeakedCredentialsSummaryCompromisedResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -11681,7 +12018,8 @@ export type LeakedCredentialsSummaryCompromisedResponseMetaConfidenceInfoAnnotat
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const LeakedCredentialsSummaryCompromisedResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -11780,7 +12118,8 @@ export type LeakedCredentialsSummaryCompromisedResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const LeakedCredentialsSummaryCompromisedResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -11868,13 +12207,15 @@ export type LeakedCredentialsTimeseriesGroupsCompromisedRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const LeakedCredentialsTimeseriesGroupsCompromisedRequestAggInterval =
   /*@__PURE__*/ S.String;
 
 export type LeakedCredentialsTimeseriesGroupsCompromisedRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const LeakedCredentialsTimeseriesGroupsCompromisedRequestBotClass =
   /*@__PURE__*/ S.String;
 
@@ -11908,7 +12249,8 @@ export const LeakedCredentialsTimeseriesGroupsCompromisedRequestDateStartList =
 
 export type LeakedCredentialsTimeseriesGroupsCompromisedRequestFormat =
   | "JSON"
-  | "CSV";
+  | "CSV"
+  | (string & {});
 export const LeakedCredentialsTimeseriesGroupsCompromisedRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -11987,7 +12329,12 @@ export const CompromisedLeakedCredentialTimeseriesGroupRequest =
   }) as any as S.Schema<CompromisedLeakedCredentialTimeseriesGroupRequest>;
 
 export type LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaAggInterval =
-  "FIFTEEN_MINUTES" | "ONE_HOUR" | "ONE_DAY" | "ONE_WEEK" | "ONE_MONTH";
+    | "FIFTEEN_MINUTES"
+    | "ONE_HOUR"
+    | "ONE_DAY"
+    | "ONE_WEEK"
+    | "ONE_MONTH"
+    | (string & {});
 export const LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -12016,7 +12363,8 @@ export type LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaConfidenceIn
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -12026,7 +12374,8 @@ export type LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaConfidenceIn
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -12127,7 +12476,8 @@ export type LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaNormalizatio
     | "PERCENTAGE_CHANGE"
     | "ROLLING_AVERAGE"
     | "OVERLAPPED_PERCENTAGE"
-    | "RATIO";
+    | "RATIO"
+    | (string & {});
 export const LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -12248,7 +12598,8 @@ export const HttpSummaryDeviceTypeRequestAsnList = /*@__PURE__*/ S.Array(
 
 export type HttpSummaryDeviceTypeRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpSummaryDeviceTypeRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpSummaryDeviceTypeRequestBotClassList =
@@ -12261,7 +12612,8 @@ export type HttpSummaryDeviceTypeRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpSummaryDeviceTypeRequestBrowserFamily = /*@__PURE__*/ S.String;
 
 export type HttpSummaryDeviceTypeRequestBrowserFamilyList =
@@ -12291,7 +12643,7 @@ export const HttpSummaryDeviceTypeRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpSummaryDeviceTypeRequestDateStartList>;
 
-export type HttpSummaryDeviceTypeRequestFormat = "JSON" | "CSV";
+export type HttpSummaryDeviceTypeRequestFormat = "JSON" | "CSV" | (string & {});
 export const HttpSummaryDeviceTypeRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpSummaryDeviceTypeRequestGeoIdList = ReadonlyArray<string>;
@@ -12299,7 +12651,10 @@ export const HttpSummaryDeviceTypeRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpSummaryDeviceTypeRequestGeoIdList>;
 
-export type HttpSummaryDeviceTypeRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpSummaryDeviceTypeRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpSummaryDeviceTypeRequestHttpProtocol = /*@__PURE__*/ S.String;
 
 export type HttpSummaryDeviceTypeRequestHttpProtocolList =
@@ -12312,7 +12667,8 @@ export const HttpSummaryDeviceTypeRequestHttpProtocolList =
 export type HttpSummaryDeviceTypeRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpSummaryDeviceTypeRequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type HttpSummaryDeviceTypeRequestHttpVersionList =
@@ -12322,7 +12678,10 @@ export const HttpSummaryDeviceTypeRequestHttpVersionList =
     HttpSummaryDeviceTypeRequestHttpVersion,
   ) as any as S.Schema<HttpSummaryDeviceTypeRequestHttpVersionList>;
 
-export type HttpSummaryDeviceTypeRequestIpVersion = "IPv4" | "IPv6";
+export type HttpSummaryDeviceTypeRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpSummaryDeviceTypeRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpSummaryDeviceTypeRequestIpVersionList =
@@ -12348,7 +12707,8 @@ export type HttpSummaryDeviceTypeRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpSummaryDeviceTypeRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpSummaryDeviceTypeRequestOsList =
@@ -12362,7 +12722,8 @@ export type HttpSummaryDeviceTypeRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpSummaryDeviceTypeRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpSummaryDeviceTypeRequestTlsVersionList =
@@ -12483,7 +12844,8 @@ export type HttpSummaryDeviceTypeResponseMetaConfidenceInfoAnnotationsItemDataSo
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpSummaryDeviceTypeResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -12493,7 +12855,8 @@ export type HttpSummaryDeviceTypeResponseMetaConfidenceInfoAnnotationsItemEventT
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpSummaryDeviceTypeResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -12592,7 +12955,8 @@ export type HttpSummaryDeviceTypeResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpSummaryDeviceTypeResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -12676,7 +13040,8 @@ export type HttpTimeseriesGroupsDeviceTypeRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const HttpTimeseriesGroupsDeviceTypeRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -12689,7 +13054,8 @@ export const HttpTimeseriesGroupsDeviceTypeRequestAsnList =
 
 export type HttpTimeseriesGroupsDeviceTypeRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpTimeseriesGroupsDeviceTypeRequestBotClass =
   /*@__PURE__*/ S.String;
 
@@ -12704,7 +13070,8 @@ export type HttpTimeseriesGroupsDeviceTypeRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpTimeseriesGroupsDeviceTypeRequestBrowserFamily =
   /*@__PURE__*/ S.String;
 
@@ -12743,7 +13110,10 @@ export const HttpTimeseriesGroupsDeviceTypeRequestDateStartList =
     S.String,
   ) as any as S.Schema<HttpTimeseriesGroupsDeviceTypeRequestDateStartList>;
 
-export type HttpTimeseriesGroupsDeviceTypeRequestFormat = "JSON" | "CSV";
+export type HttpTimeseriesGroupsDeviceTypeRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const HttpTimeseriesGroupsDeviceTypeRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -12756,7 +13126,8 @@ export const HttpTimeseriesGroupsDeviceTypeRequestGeoIdList =
 
 export type HttpTimeseriesGroupsDeviceTypeRequestHttpProtocol =
   | "HTTP"
-  | "HTTPS";
+  | "HTTPS"
+  | (string & {});
 export const HttpTimeseriesGroupsDeviceTypeRequestHttpProtocol =
   /*@__PURE__*/ S.String;
 
@@ -12770,7 +13141,8 @@ export const HttpTimeseriesGroupsDeviceTypeRequestHttpProtocolList =
 export type HttpTimeseriesGroupsDeviceTypeRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpTimeseriesGroupsDeviceTypeRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -12781,7 +13153,10 @@ export const HttpTimeseriesGroupsDeviceTypeRequestHttpVersionList =
     HttpTimeseriesGroupsDeviceTypeRequestHttpVersion,
   ) as any as S.Schema<HttpTimeseriesGroupsDeviceTypeRequestHttpVersionList>;
 
-export type HttpTimeseriesGroupsDeviceTypeRequestIpVersion = "IPv4" | "IPv6";
+export type HttpTimeseriesGroupsDeviceTypeRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpTimeseriesGroupsDeviceTypeRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -12813,7 +13188,8 @@ export type HttpTimeseriesGroupsDeviceTypeRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpTimeseriesGroupsDeviceTypeRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsDeviceTypeRequestOsList =
@@ -12828,7 +13204,8 @@ export type HttpTimeseriesGroupsDeviceTypeRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpTimeseriesGroupsDeviceTypeRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -12947,7 +13324,8 @@ export type HttpTimeseriesGroupsDeviceTypeResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const HttpTimeseriesGroupsDeviceTypeResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -12976,7 +13354,8 @@ export type HttpTimeseriesGroupsDeviceTypeResponseMetaConfidenceInfoAnnotationsI
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpTimeseriesGroupsDeviceTypeResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -12986,7 +13365,8 @@ export type HttpTimeseriesGroupsDeviceTypeResponseMetaConfidenceInfoAnnotationsI
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpTimeseriesGroupsDeviceTypeResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -13085,7 +13465,8 @@ export type HttpTimeseriesGroupsDeviceTypeResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpTimeseriesGroupsDeviceTypeResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -13209,7 +13590,8 @@ export const RobotsTxtTopUserAgentsDirectiveRequestDateList =
 
 export type RobotsTxtTopUserAgentsDirectiveRequestDirective =
   | "ALLOW"
-  | "DISALLOW";
+  | "DISALLOW"
+  | (string & {});
 export const RobotsTxtTopUserAgentsDirectiveRequestDirective =
   /*@__PURE__*/ S.String;
 
@@ -13220,7 +13602,10 @@ export const RobotsTxtTopUserAgentsDirectiveRequestDomainCategoryList =
     S.String,
   ) as any as S.Schema<RobotsTxtTopUserAgentsDirectiveRequestDomainCategoryList>;
 
-export type RobotsTxtTopUserAgentsDirectiveRequestFormat = "JSON" | "CSV";
+export type RobotsTxtTopUserAgentsDirectiveRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const RobotsTxtTopUserAgentsDirectiveRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -13231,7 +13616,9 @@ export const RobotsTxtTopUserAgentsDirectiveRequestNameList =
     S.String,
   ) as any as S.Schema<RobotsTxtTopUserAgentsDirectiveRequestNameList>;
 
-export type RobotsTxtTopUserAgentsDirectiveRequestUserAgentCategory = "AI";
+export type RobotsTxtTopUserAgentsDirectiveRequestUserAgentCategory =
+  | "AI"
+  | (string & {});
 export const RobotsTxtTopUserAgentsDirectiveRequestUserAgentCategory =
   /*@__PURE__*/ S.String;
 
@@ -13313,7 +13700,8 @@ export type RobotsTxtTopUserAgentsDirectiveResponseMetaConfidenceInfoAnnotations
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const RobotsTxtTopUserAgentsDirectiveResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -13323,7 +13711,8 @@ export type RobotsTxtTopUserAgentsDirectiveResponseMetaConfidenceInfoAnnotations
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const RobotsTxtTopUserAgentsDirectiveResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -13422,7 +13811,8 @@ export type RobotsTxtTopUserAgentsDirectiveResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const RobotsTxtTopUserAgentsDirectiveResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -13513,7 +13903,11 @@ export const DirectiveRobotsTxtTopUserAgentResponse = /*@__PURE__*/ S.suspend(
   identifier: "DirectiveRobotsTxtTopUserAgentResponse",
 }) as any as S.Schema<DirectiveRobotsTxtTopUserAgentResponse>;
 
-export type EmailRoutingSummaryDkimRequestArc = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingSummaryDkimRequestArc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingSummaryDkimRequestArc = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryDkimRequestArcList =
@@ -13539,7 +13933,11 @@ export const EmailRoutingSummaryDkimRequestDateStartList =
     S.String,
   ) as any as S.Schema<EmailRoutingSummaryDkimRequestDateStartList>;
 
-export type EmailRoutingSummaryDkimRequestDmarc = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingSummaryDkimRequestDmarc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingSummaryDkimRequestDmarc = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryDkimRequestDmarcList =
@@ -13550,7 +13948,8 @@ export const EmailRoutingSummaryDkimRequestDmarcList = /*@__PURE__*/ S.Array(
 
 export type EmailRoutingSummaryDkimRequestEncrypted =
   | "ENCRYPTED"
-  | "NOT_ENCRYPTED";
+  | "NOT_ENCRYPTED"
+  | (string & {});
 export const EmailRoutingSummaryDkimRequestEncrypted = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryDkimRequestEncryptedList =
@@ -13560,10 +13959,16 @@ export const EmailRoutingSummaryDkimRequestEncryptedList =
     EmailRoutingSummaryDkimRequestEncrypted,
   ) as any as S.Schema<EmailRoutingSummaryDkimRequestEncryptedList>;
 
-export type EmailRoutingSummaryDkimRequestFormat = "JSON" | "CSV";
+export type EmailRoutingSummaryDkimRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailRoutingSummaryDkimRequestFormat = /*@__PURE__*/ S.String;
 
-export type EmailRoutingSummaryDkimRequestIpVersion = "IPv4" | "IPv6";
+export type EmailRoutingSummaryDkimRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const EmailRoutingSummaryDkimRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryDkimRequestIpVersionList =
@@ -13578,7 +13983,11 @@ export const EmailRoutingSummaryDkimRequestNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EmailRoutingSummaryDkimRequestNameList>;
 
-export type EmailRoutingSummaryDkimRequestSpf = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingSummaryDkimRequestSpf =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingSummaryDkimRequestSpf = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryDkimRequestSpfList =
@@ -13669,7 +14078,8 @@ export type EmailRoutingSummaryDkimResponseMetaConfidenceInfoAnnotationsItemData
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailRoutingSummaryDkimResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -13679,7 +14089,8 @@ export type EmailRoutingSummaryDkimResponseMetaConfidenceInfoAnnotationsItemEven
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailRoutingSummaryDkimResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -13778,7 +14189,8 @@ export type EmailRoutingSummaryDkimResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailRoutingSummaryDkimResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -13863,14 +14275,16 @@ export type EmailRoutingTimeseriesGroupsDkimRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsDkimRequestAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsDkimRequestArc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsDkimRequestArc =
   /*@__PURE__*/ S.String;
 
@@ -13905,7 +14319,8 @@ export const EmailRoutingTimeseriesGroupsDkimRequestDateStartList =
 export type EmailRoutingTimeseriesGroupsDkimRequestDmarc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsDkimRequestDmarc =
   /*@__PURE__*/ S.String;
 
@@ -13918,7 +14333,8 @@ export const EmailRoutingTimeseriesGroupsDkimRequestDmarcList =
 
 export type EmailRoutingTimeseriesGroupsDkimRequestEncrypted =
   | "ENCRYPTED"
-  | "NOT_ENCRYPTED";
+  | "NOT_ENCRYPTED"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsDkimRequestEncrypted =
   /*@__PURE__*/ S.String;
 
@@ -13929,11 +14345,17 @@ export const EmailRoutingTimeseriesGroupsDkimRequestEncryptedList =
     EmailRoutingTimeseriesGroupsDkimRequestEncrypted,
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsDkimRequestEncryptedList>;
 
-export type EmailRoutingTimeseriesGroupsDkimRequestFormat = "JSON" | "CSV";
+export type EmailRoutingTimeseriesGroupsDkimRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsDkimRequestFormat =
   /*@__PURE__*/ S.String;
 
-export type EmailRoutingTimeseriesGroupsDkimRequestIpVersion = "IPv4" | "IPv6";
+export type EmailRoutingTimeseriesGroupsDkimRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsDkimRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -13954,7 +14376,8 @@ export const EmailRoutingTimeseriesGroupsDkimRequestNameList =
 export type EmailRoutingTimeseriesGroupsDkimRequestSpf =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsDkimRequestSpf =
   /*@__PURE__*/ S.String;
 
@@ -14043,7 +14466,8 @@ export type EmailRoutingTimeseriesGroupsDkimResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsDkimResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -14072,7 +14496,8 @@ export type EmailRoutingTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotation
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailRoutingTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -14082,7 +14507,8 @@ export type EmailRoutingTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotation
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailRoutingTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -14181,7 +14607,8 @@ export type EmailRoutingTimeseriesGroupsDkimResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsDkimResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -14288,7 +14715,11 @@ export const DkimEmailRoutingTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   identifier: "DkimEmailRoutingTimeseriesGroupResponse",
 }) as any as S.Schema<DkimEmailRoutingTimeseriesGroupResponse>;
 
-export type EmailSecuritySummaryDkimRequestArc = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummaryDkimRequestArc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryDkimRequestArc = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryDkimRequestArcList =
@@ -14316,7 +14747,11 @@ export const EmailSecuritySummaryDkimRequestDateStartList =
     S.String,
   ) as any as S.Schema<EmailSecuritySummaryDkimRequestDateStartList>;
 
-export type EmailSecuritySummaryDkimRequestDmarc = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummaryDkimRequestDmarc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryDkimRequestDmarc = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryDkimRequestDmarcList =
@@ -14325,7 +14760,10 @@ export const EmailSecuritySummaryDkimRequestDmarcList = /*@__PURE__*/ S.Array(
   EmailSecuritySummaryDkimRequestDmarc,
 ) as any as S.Schema<EmailSecuritySummaryDkimRequestDmarcList>;
 
-export type EmailSecuritySummaryDkimRequestFormat = "JSON" | "CSV";
+export type EmailSecuritySummaryDkimRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailSecuritySummaryDkimRequestFormat = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryDkimRequestNameList = ReadonlyArray<string>;
@@ -14333,7 +14771,11 @@ export const EmailSecuritySummaryDkimRequestNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EmailSecuritySummaryDkimRequestNameList>;
 
-export type EmailSecuritySummaryDkimRequestSpf = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummaryDkimRequestSpf =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryDkimRequestSpf = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryDkimRequestSpfList =
@@ -14346,7 +14788,8 @@ export type EmailSecuritySummaryDkimRequestTlsVersion =
   | "TLSv1_0"
   | "TLSv1_1"
   | "TLSv1_2"
-  | "TLSv1_3";
+  | "TLSv1_3"
+  | (string & {});
 export const EmailSecuritySummaryDkimRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryDkimRequestTlsVersionList =
@@ -14433,7 +14876,8 @@ export type EmailSecuritySummaryDkimResponseMetaConfidenceInfoAnnotationsItemDat
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailSecuritySummaryDkimResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -14443,7 +14887,8 @@ export type EmailSecuritySummaryDkimResponseMetaConfidenceInfoAnnotationsItemEve
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailSecuritySummaryDkimResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -14542,7 +14987,8 @@ export type EmailSecuritySummaryDkimResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailSecuritySummaryDkimResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -14630,14 +15076,16 @@ export type EmailSecurityTimeseriesGroupsDkimRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsDkimRequestAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsDkimRequestArc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsDkimRequestArc =
   /*@__PURE__*/ S.String;
 
@@ -14672,7 +15120,8 @@ export const EmailSecurityTimeseriesGroupsDkimRequestDateStartList =
 export type EmailSecurityTimeseriesGroupsDkimRequestDmarc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsDkimRequestDmarc =
   /*@__PURE__*/ S.String;
 
@@ -14683,7 +15132,10 @@ export const EmailSecurityTimeseriesGroupsDkimRequestDmarcList =
     EmailSecurityTimeseriesGroupsDkimRequestDmarc,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsDkimRequestDmarcList>;
 
-export type EmailSecurityTimeseriesGroupsDkimRequestFormat = "JSON" | "CSV";
+export type EmailSecurityTimeseriesGroupsDkimRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsDkimRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -14697,7 +15149,8 @@ export const EmailSecurityTimeseriesGroupsDkimRequestNameList =
 export type EmailSecurityTimeseriesGroupsDkimRequestSpf =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsDkimRequestSpf =
   /*@__PURE__*/ S.String;
 
@@ -14712,7 +15165,8 @@ export type EmailSecurityTimeseriesGroupsDkimRequestTlsVersion =
   | "TLSv1_0"
   | "TLSv1_1"
   | "TLSv1_2"
-  | "TLSv1_3";
+  | "TLSv1_3"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsDkimRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -14796,7 +15250,8 @@ export type EmailSecurityTimeseriesGroupsDkimResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsDkimResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -14825,7 +15280,8 @@ export type EmailSecurityTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotatio
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailSecurityTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -14835,7 +15291,8 @@ export type EmailSecurityTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotatio
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailSecurityTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -14934,7 +15391,8 @@ export type EmailSecurityTimeseriesGroupsDkimResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsDkimResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -15041,7 +15499,11 @@ export const DkimEmailSecurityTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   identifier: "DkimEmailSecurityTimeseriesGroupResponse",
 }) as any as S.Schema<DkimEmailSecurityTimeseriesGroupResponse>;
 
-export type EmailRoutingSummaryDmarcRequestArc = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingSummaryDmarcRequestArc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingSummaryDmarcRequestArc = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryDmarcRequestArcList =
@@ -15069,7 +15531,11 @@ export const EmailRoutingSummaryDmarcRequestDateStartList =
     S.String,
   ) as any as S.Schema<EmailRoutingSummaryDmarcRequestDateStartList>;
 
-export type EmailRoutingSummaryDmarcRequestDkim = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingSummaryDmarcRequestDkim =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingSummaryDmarcRequestDkim = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryDmarcRequestDkimList =
@@ -15080,7 +15546,8 @@ export const EmailRoutingSummaryDmarcRequestDkimList = /*@__PURE__*/ S.Array(
 
 export type EmailRoutingSummaryDmarcRequestEncrypted =
   | "ENCRYPTED"
-  | "NOT_ENCRYPTED";
+  | "NOT_ENCRYPTED"
+  | (string & {});
 export const EmailRoutingSummaryDmarcRequestEncrypted = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryDmarcRequestEncryptedList =
@@ -15090,10 +15557,16 @@ export const EmailRoutingSummaryDmarcRequestEncryptedList =
     EmailRoutingSummaryDmarcRequestEncrypted,
   ) as any as S.Schema<EmailRoutingSummaryDmarcRequestEncryptedList>;
 
-export type EmailRoutingSummaryDmarcRequestFormat = "JSON" | "CSV";
+export type EmailRoutingSummaryDmarcRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailRoutingSummaryDmarcRequestFormat = /*@__PURE__*/ S.String;
 
-export type EmailRoutingSummaryDmarcRequestIpVersion = "IPv4" | "IPv6";
+export type EmailRoutingSummaryDmarcRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const EmailRoutingSummaryDmarcRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryDmarcRequestIpVersionList =
@@ -15108,7 +15581,11 @@ export const EmailRoutingSummaryDmarcRequestNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EmailRoutingSummaryDmarcRequestNameList>;
 
-export type EmailRoutingSummaryDmarcRequestSpf = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingSummaryDmarcRequestSpf =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingSummaryDmarcRequestSpf = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryDmarcRequestSpfList =
@@ -15199,7 +15676,8 @@ export type EmailRoutingSummaryDmarcResponseMetaConfidenceInfoAnnotationsItemDat
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailRoutingSummaryDmarcResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -15209,7 +15687,8 @@ export type EmailRoutingSummaryDmarcResponseMetaConfidenceInfoAnnotationsItemEve
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailRoutingSummaryDmarcResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -15308,7 +15787,8 @@ export type EmailRoutingSummaryDmarcResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailRoutingSummaryDmarcResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -15396,14 +15876,16 @@ export type EmailRoutingTimeseriesGroupsDmarcRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsDmarcRequestAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsDmarcRequestArc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsDmarcRequestArc =
   /*@__PURE__*/ S.String;
 
@@ -15438,7 +15920,8 @@ export const EmailRoutingTimeseriesGroupsDmarcRequestDateStartList =
 export type EmailRoutingTimeseriesGroupsDmarcRequestDkim =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsDmarcRequestDkim =
   /*@__PURE__*/ S.String;
 
@@ -15451,7 +15934,8 @@ export const EmailRoutingTimeseriesGroupsDmarcRequestDkimList =
 
 export type EmailRoutingTimeseriesGroupsDmarcRequestEncrypted =
   | "ENCRYPTED"
-  | "NOT_ENCRYPTED";
+  | "NOT_ENCRYPTED"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsDmarcRequestEncrypted =
   /*@__PURE__*/ S.String;
 
@@ -15462,11 +15946,17 @@ export const EmailRoutingTimeseriesGroupsDmarcRequestEncryptedList =
     EmailRoutingTimeseriesGroupsDmarcRequestEncrypted,
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsDmarcRequestEncryptedList>;
 
-export type EmailRoutingTimeseriesGroupsDmarcRequestFormat = "JSON" | "CSV";
+export type EmailRoutingTimeseriesGroupsDmarcRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsDmarcRequestFormat =
   /*@__PURE__*/ S.String;
 
-export type EmailRoutingTimeseriesGroupsDmarcRequestIpVersion = "IPv4" | "IPv6";
+export type EmailRoutingTimeseriesGroupsDmarcRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsDmarcRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -15487,7 +15977,8 @@ export const EmailRoutingTimeseriesGroupsDmarcRequestNameList =
 export type EmailRoutingTimeseriesGroupsDmarcRequestSpf =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsDmarcRequestSpf =
   /*@__PURE__*/ S.String;
 
@@ -15576,7 +16067,8 @@ export type EmailRoutingTimeseriesGroupsDmarcResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsDmarcResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -15605,7 +16097,8 @@ export type EmailRoutingTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotatio
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailRoutingTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -15615,7 +16108,8 @@ export type EmailRoutingTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotatio
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailRoutingTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -15714,7 +16208,8 @@ export type EmailRoutingTimeseriesGroupsDmarcResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsDmarcResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -15821,7 +16316,11 @@ export const DmarcEmailRoutingTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   identifier: "DmarcEmailRoutingTimeseriesGroupResponse",
 }) as any as S.Schema<DmarcEmailRoutingTimeseriesGroupResponse>;
 
-export type EmailSecuritySummaryDmarcRequestArc = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummaryDmarcRequestArc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryDmarcRequestArc = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryDmarcRequestArcList =
@@ -15850,7 +16349,11 @@ export const EmailSecuritySummaryDmarcRequestDateStartList =
     S.String,
   ) as any as S.Schema<EmailSecuritySummaryDmarcRequestDateStartList>;
 
-export type EmailSecuritySummaryDmarcRequestDkim = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummaryDmarcRequestDkim =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryDmarcRequestDkim = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryDmarcRequestDkimList =
@@ -15859,7 +16362,10 @@ export const EmailSecuritySummaryDmarcRequestDkimList = /*@__PURE__*/ S.Array(
   EmailSecuritySummaryDmarcRequestDkim,
 ) as any as S.Schema<EmailSecuritySummaryDmarcRequestDkimList>;
 
-export type EmailSecuritySummaryDmarcRequestFormat = "JSON" | "CSV";
+export type EmailSecuritySummaryDmarcRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailSecuritySummaryDmarcRequestFormat = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryDmarcRequestNameList = ReadonlyArray<string>;
@@ -15867,7 +16373,11 @@ export const EmailSecuritySummaryDmarcRequestNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EmailSecuritySummaryDmarcRequestNameList>;
 
-export type EmailSecuritySummaryDmarcRequestSpf = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummaryDmarcRequestSpf =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryDmarcRequestSpf = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryDmarcRequestSpfList =
@@ -15880,7 +16390,8 @@ export type EmailSecuritySummaryDmarcRequestTlsVersion =
   | "TLSv1_0"
   | "TLSv1_1"
   | "TLSv1_2"
-  | "TLSv1_3";
+  | "TLSv1_3"
+  | (string & {});
 export const EmailSecuritySummaryDmarcRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -15968,7 +16479,8 @@ export type EmailSecuritySummaryDmarcResponseMetaConfidenceInfoAnnotationsItemDa
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailSecuritySummaryDmarcResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -15978,7 +16490,8 @@ export type EmailSecuritySummaryDmarcResponseMetaConfidenceInfoAnnotationsItemEv
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailSecuritySummaryDmarcResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -16077,7 +16590,8 @@ export type EmailSecuritySummaryDmarcResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailSecuritySummaryDmarcResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -16165,14 +16679,16 @@ export type EmailSecurityTimeseriesGroupsDmarcRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsDmarcRequestAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsDmarcRequestArc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsDmarcRequestArc =
   /*@__PURE__*/ S.String;
 
@@ -16207,7 +16723,8 @@ export const EmailSecurityTimeseriesGroupsDmarcRequestDateStartList =
 export type EmailSecurityTimeseriesGroupsDmarcRequestDkim =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsDmarcRequestDkim =
   /*@__PURE__*/ S.String;
 
@@ -16218,7 +16735,10 @@ export const EmailSecurityTimeseriesGroupsDmarcRequestDkimList =
     EmailSecurityTimeseriesGroupsDmarcRequestDkim,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsDmarcRequestDkimList>;
 
-export type EmailSecurityTimeseriesGroupsDmarcRequestFormat = "JSON" | "CSV";
+export type EmailSecurityTimeseriesGroupsDmarcRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsDmarcRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -16232,7 +16752,8 @@ export const EmailSecurityTimeseriesGroupsDmarcRequestNameList =
 export type EmailSecurityTimeseriesGroupsDmarcRequestSpf =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsDmarcRequestSpf =
   /*@__PURE__*/ S.String;
 
@@ -16247,7 +16768,8 @@ export type EmailSecurityTimeseriesGroupsDmarcRequestTlsVersion =
   | "TLSv1_0"
   | "TLSv1_1"
   | "TLSv1_2"
-  | "TLSv1_3";
+  | "TLSv1_3"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsDmarcRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -16331,7 +16853,8 @@ export type EmailSecurityTimeseriesGroupsDmarcResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsDmarcResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -16360,7 +16883,8 @@ export type EmailSecurityTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotati
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailSecurityTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -16370,7 +16894,8 @@ export type EmailSecurityTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotati
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailSecurityTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -16469,7 +16994,8 @@ export type EmailSecurityTimeseriesGroupsDmarcResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsDmarcResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -16597,7 +17123,7 @@ export const As112SummaryDnssecRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<As112SummaryDnssecRequestDateStartList>;
 
-export type As112SummaryDnssecRequestFormat = "JSON" | "CSV";
+export type As112SummaryDnssecRequestFormat = "JSON" | "CSV" | (string & {});
 export const As112SummaryDnssecRequestFormat = /*@__PURE__*/ S.String;
 
 export type As112SummaryDnssecRequestLocationList = ReadonlyArray<string>;
@@ -16610,7 +17136,12 @@ export const As112SummaryDnssecRequestNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<As112SummaryDnssecRequestNameList>;
 
-export type As112SummaryDnssecRequestProtocol = "UDP" | "TCP" | "HTTPS" | "TLS";
+export type As112SummaryDnssecRequestProtocol =
+  | "UDP"
+  | "TCP"
+  | "HTTPS"
+  | "TLS"
+  | (string & {});
 export const As112SummaryDnssecRequestProtocol = /*@__PURE__*/ S.String;
 
 export type As112SummaryDnssecRequestProtocolList =
@@ -16707,7 +17238,8 @@ export type As112SummaryDnssecRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const As112SummaryDnssecRequestQueryType = /*@__PURE__*/ S.String;
 
 export type As112SummaryDnssecRequestQueryTypeList =
@@ -16735,7 +17267,8 @@ export type As112SummaryDnssecRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const As112SummaryDnssecRequestResponseCode = /*@__PURE__*/ S.String;
 
 export type As112SummaryDnssecRequestResponseCodeList =
@@ -16822,7 +17355,8 @@ export type As112SummaryDnssecResponseMetaConfidenceInfoAnnotationsItemDataSourc
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const As112SummaryDnssecResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -16832,7 +17366,8 @@ export type As112SummaryDnssecResponseMetaConfidenceInfoAnnotationsItemEventType
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const As112SummaryDnssecResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -16929,7 +17464,8 @@ export type As112SummaryDnssecResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const As112SummaryDnssecResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -17009,7 +17545,8 @@ export type As112TimeseriesGroupsDnssecRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const As112TimeseriesGroupsDnssecRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -17041,7 +17578,10 @@ export const As112TimeseriesGroupsDnssecRequestDateStartList =
     S.String,
   ) as any as S.Schema<As112TimeseriesGroupsDnssecRequestDateStartList>;
 
-export type As112TimeseriesGroupsDnssecRequestFormat = "JSON" | "CSV";
+export type As112TimeseriesGroupsDnssecRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const As112TimeseriesGroupsDnssecRequestFormat = /*@__PURE__*/ S.String;
 
 export type As112TimeseriesGroupsDnssecRequestLocationList =
@@ -17060,7 +17600,8 @@ export type As112TimeseriesGroupsDnssecRequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const As112TimeseriesGroupsDnssecRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -17159,7 +17700,8 @@ export type As112TimeseriesGroupsDnssecRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const As112TimeseriesGroupsDnssecRequestQueryType =
   /*@__PURE__*/ S.String;
 
@@ -17189,7 +17731,8 @@ export type As112TimeseriesGroupsDnssecRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const As112TimeseriesGroupsDnssecRequestResponseCode =
   /*@__PURE__*/ S.String;
 
@@ -17277,7 +17820,8 @@ export type As112TimeseriesGroupsDnssecResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const As112TimeseriesGroupsDnssecResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -17306,7 +17850,8 @@ export type As112TimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItem
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const As112TimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -17316,7 +17861,8 @@ export type As112TimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItem
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const As112TimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -17415,7 +17961,8 @@ export type As112TimeseriesGroupsDnssecResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const As112TimeseriesGroupsDnssecResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -17512,7 +18059,10 @@ export const DnssecAs112TimeseriesGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DnssecAs112TimeseriesGroupResponse",
 }) as any as S.Schema<DnssecAs112TimeseriesGroupResponse>;
 
-export type As112TopDnssecRequestDnssec = "SUPPORTED" | "NOT_SUPPORTED";
+export type As112TopDnssecRequestDnssec =
+  | "SUPPORTED"
+  | "NOT_SUPPORTED"
+  | (string & {});
 export const As112TopDnssecRequestDnssec = /*@__PURE__*/ S.String;
 
 export type As112TopDnssecRequestContinentList = ReadonlyArray<string>;
@@ -17535,7 +18085,7 @@ export const As112TopDnssecRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<As112TopDnssecRequestDateStartList>;
 
-export type As112TopDnssecRequestFormat = "JSON" | "CSV";
+export type As112TopDnssecRequestFormat = "JSON" | "CSV" | (string & {});
 export const As112TopDnssecRequestFormat = /*@__PURE__*/ S.String;
 
 export type As112TopDnssecRequestLocationList = ReadonlyArray<string>;
@@ -17617,7 +18167,8 @@ export type As112TopDnssecResponseMetaConfidenceInfoAnnotationsItemDataSource =
   | "NET"
   | "ROBOTS_TXT"
   | "SPEED"
-  | "WORKERS_AI";
+  | "WORKERS_AI"
+  | (string & {});
 export const As112TopDnssecResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -17627,7 +18178,8 @@ export type As112TopDnssecResponseMetaConfidenceInfoAnnotationsItemEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const As112TopDnssecResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -17723,7 +18275,8 @@ export type As112TopDnssecResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const As112TopDnssecResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface As112TopDnssecResponseMetaUnitsItem {
@@ -17829,7 +18382,7 @@ export const DnsSummaryDnssecAwareRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DnsSummaryDnssecAwareRequestDateStartList>;
 
-export type DnsSummaryDnssecAwareRequestFormat = "JSON" | "CSV";
+export type DnsSummaryDnssecAwareRequestFormat = "JSON" | "CSV" | (string & {});
 export const DnsSummaryDnssecAwareRequestFormat = /*@__PURE__*/ S.String;
 
 export type DnsSummaryDnssecAwareRequestLocationList = ReadonlyArray<string>;
@@ -17851,7 +18404,8 @@ export type DnsSummaryDnssecAwareRequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const DnsSummaryDnssecAwareRequestProtocol = /*@__PURE__*/ S.String;
 
 export type DnsSummaryDnssecAwareRequestProtocolList =
@@ -17948,7 +18502,8 @@ export type DnsSummaryDnssecAwareRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const DnsSummaryDnssecAwareRequestQueryType = /*@__PURE__*/ S.String;
 
 export type DnsSummaryDnssecAwareRequestQueryTypeList =
@@ -17976,7 +18531,8 @@ export type DnsSummaryDnssecAwareRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const DnsSummaryDnssecAwareRequestResponseCode = /*@__PURE__*/ S.String;
 
 export type DnsSummaryDnssecAwareRequestResponseCodeList =
@@ -18088,7 +18644,8 @@ export type DnsSummaryDnssecAwareResponseMetaConfidenceInfoAnnotationsItemDataSo
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const DnsSummaryDnssecAwareResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -18098,7 +18655,8 @@ export type DnsSummaryDnssecAwareResponseMetaConfidenceInfoAnnotationsItemEventT
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const DnsSummaryDnssecAwareResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -18197,7 +18755,8 @@ export type DnsSummaryDnssecAwareResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsSummaryDnssecAwareResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -18278,7 +18837,8 @@ export type DnsTimeseriesGroupsDnssecAwareRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const DnsTimeseriesGroupsDnssecAwareRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -18317,7 +18877,10 @@ export const DnsTimeseriesGroupsDnssecAwareRequestDateStartList =
     S.String,
   ) as any as S.Schema<DnsTimeseriesGroupsDnssecAwareRequestDateStartList>;
 
-export type DnsTimeseriesGroupsDnssecAwareRequestFormat = "JSON" | "CSV";
+export type DnsTimeseriesGroupsDnssecAwareRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const DnsTimeseriesGroupsDnssecAwareRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -18346,7 +18909,8 @@ export type DnsTimeseriesGroupsDnssecAwareRequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const DnsTimeseriesGroupsDnssecAwareRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -18445,7 +19009,8 @@ export type DnsTimeseriesGroupsDnssecAwareRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const DnsTimeseriesGroupsDnssecAwareRequestQueryType =
   /*@__PURE__*/ S.String;
 
@@ -18475,7 +19040,8 @@ export type DnsTimeseriesGroupsDnssecAwareRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const DnsTimeseriesGroupsDnssecAwareRequestResponseCode =
   /*@__PURE__*/ S.String;
 
@@ -18586,7 +19152,8 @@ export type DnsTimeseriesGroupsDnssecAwareResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const DnsTimeseriesGroupsDnssecAwareResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -18615,7 +19182,8 @@ export type DnsTimeseriesGroupsDnssecAwareResponseMetaConfidenceInfoAnnotationsI
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const DnsTimeseriesGroupsDnssecAwareResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -18625,7 +19193,8 @@ export type DnsTimeseriesGroupsDnssecAwareResponseMetaConfidenceInfoAnnotationsI
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const DnsTimeseriesGroupsDnssecAwareResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -18724,7 +19293,8 @@ export type DnsTimeseriesGroupsDnssecAwareResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsTimeseriesGroupsDnssecAwareResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -18849,7 +19419,7 @@ export const DnsSummaryDnssecRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DnsSummaryDnssecRequestDateStartList>;
 
-export type DnsSummaryDnssecRequestFormat = "JSON" | "CSV";
+export type DnsSummaryDnssecRequestFormat = "JSON" | "CSV" | (string & {});
 export const DnsSummaryDnssecRequestFormat = /*@__PURE__*/ S.String;
 
 export type DnsSummaryDnssecRequestLocationList = ReadonlyArray<string>;
@@ -18867,7 +19437,12 @@ export const DnsSummaryDnssecRequestNodataList = /*@__PURE__*/ S.Array(
   S.Boolean,
 ) as any as S.Schema<DnsSummaryDnssecRequestNodataList>;
 
-export type DnsSummaryDnssecRequestProtocol = "UDP" | "TCP" | "HTTPS" | "TLS";
+export type DnsSummaryDnssecRequestProtocol =
+  | "UDP"
+  | "TCP"
+  | "HTTPS"
+  | "TLS"
+  | (string & {});
 export const DnsSummaryDnssecRequestProtocol = /*@__PURE__*/ S.String;
 
 export type DnsSummaryDnssecRequestProtocolList =
@@ -18964,7 +19539,8 @@ export type DnsSummaryDnssecRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const DnsSummaryDnssecRequestQueryType = /*@__PURE__*/ S.String;
 
 export type DnsSummaryDnssecRequestQueryTypeList =
@@ -18992,7 +19568,8 @@ export type DnsSummaryDnssecRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const DnsSummaryDnssecRequestResponseCode = /*@__PURE__*/ S.String;
 
 export type DnsSummaryDnssecRequestResponseCodeList =
@@ -19085,7 +19662,8 @@ export type DnsSummaryDnssecResponseMetaConfidenceInfoAnnotationsItemDataSource 
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const DnsSummaryDnssecResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -19095,7 +19673,8 @@ export type DnsSummaryDnssecResponseMetaConfidenceInfoAnnotationsItemEventType =
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const DnsSummaryDnssecResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -19191,7 +19770,8 @@ export type DnsSummaryDnssecResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsSummaryDnssecResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface DnsSummaryDnssecResponseMetaUnitsItem {
@@ -19276,7 +19856,8 @@ export type DnsTimeseriesGroupsDnssecRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const DnsTimeseriesGroupsDnssecRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -19312,7 +19893,10 @@ export const DnsTimeseriesGroupsDnssecRequestDateStartList =
     S.String,
   ) as any as S.Schema<DnsTimeseriesGroupsDnssecRequestDateStartList>;
 
-export type DnsTimeseriesGroupsDnssecRequestFormat = "JSON" | "CSV";
+export type DnsTimeseriesGroupsDnssecRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const DnsTimeseriesGroupsDnssecRequestFormat = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsDnssecRequestLocationList =
@@ -19336,7 +19920,8 @@ export type DnsTimeseriesGroupsDnssecRequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const DnsTimeseriesGroupsDnssecRequestProtocol = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsDnssecRequestProtocolList =
@@ -19434,7 +20019,8 @@ export type DnsTimeseriesGroupsDnssecRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const DnsTimeseriesGroupsDnssecRequestQueryType = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsDnssecRequestQueryTypeList =
@@ -19463,7 +20049,8 @@ export type DnsTimeseriesGroupsDnssecRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const DnsTimeseriesGroupsDnssecRequestResponseCode =
   /*@__PURE__*/ S.String;
 
@@ -19563,7 +20150,8 @@ export type DnsTimeseriesGroupsDnssecResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const DnsTimeseriesGroupsDnssecResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -19592,7 +20180,8 @@ export type DnsTimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemDa
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const DnsTimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -19602,7 +20191,8 @@ export type DnsTimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemEv
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const DnsTimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -19701,7 +20291,8 @@ export type DnsTimeseriesGroupsDnssecResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsTimeseriesGroupsDnssecResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -19838,7 +20429,7 @@ export const DnsSummaryDnssecE2eRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DnsSummaryDnssecE2eRequestDateStartList>;
 
-export type DnsSummaryDnssecE2eRequestFormat = "JSON" | "CSV";
+export type DnsSummaryDnssecE2eRequestFormat = "JSON" | "CSV" | (string & {});
 export const DnsSummaryDnssecE2eRequestFormat = /*@__PURE__*/ S.String;
 
 export type DnsSummaryDnssecE2eRequestLocationList = ReadonlyArray<string>;
@@ -19860,7 +20451,8 @@ export type DnsSummaryDnssecE2eRequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const DnsSummaryDnssecE2eRequestProtocol = /*@__PURE__*/ S.String;
 
 export type DnsSummaryDnssecE2eRequestProtocolList =
@@ -19957,7 +20549,8 @@ export type DnsSummaryDnssecE2eRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const DnsSummaryDnssecE2eRequestQueryType = /*@__PURE__*/ S.String;
 
 export type DnsSummaryDnssecE2eRequestQueryTypeList =
@@ -19985,7 +20578,8 @@ export type DnsSummaryDnssecE2eRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const DnsSummaryDnssecE2eRequestResponseCode = /*@__PURE__*/ S.String;
 
 export type DnsSummaryDnssecE2eRequestResponseCodeList =
@@ -20094,7 +20688,8 @@ export type DnsSummaryDnssecE2eResponseMetaConfidenceInfoAnnotationsItemDataSour
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const DnsSummaryDnssecE2eResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -20104,7 +20699,8 @@ export type DnsSummaryDnssecE2eResponseMetaConfidenceInfoAnnotationsItemEventTyp
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const DnsSummaryDnssecE2eResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -20201,7 +20797,8 @@ export type DnsSummaryDnssecE2eResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsSummaryDnssecE2eResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -20281,7 +20878,8 @@ export type DnsTimeseriesGroupsDnssecE2eRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const DnsTimeseriesGroupsDnssecE2eRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -20318,7 +20916,10 @@ export const DnsTimeseriesGroupsDnssecE2eRequestDateStartList =
     S.String,
   ) as any as S.Schema<DnsTimeseriesGroupsDnssecE2eRequestDateStartList>;
 
-export type DnsTimeseriesGroupsDnssecE2eRequestFormat = "JSON" | "CSV";
+export type DnsTimeseriesGroupsDnssecE2eRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const DnsTimeseriesGroupsDnssecE2eRequestFormat = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsDnssecE2eRequestLocationList =
@@ -20345,7 +20946,8 @@ export type DnsTimeseriesGroupsDnssecE2eRequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const DnsTimeseriesGroupsDnssecE2eRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -20444,7 +21046,8 @@ export type DnsTimeseriesGroupsDnssecE2eRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const DnsTimeseriesGroupsDnssecE2eRequestQueryType =
   /*@__PURE__*/ S.String;
 
@@ -20474,7 +21077,8 @@ export type DnsTimeseriesGroupsDnssecE2eRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const DnsTimeseriesGroupsDnssecE2eRequestResponseCode =
   /*@__PURE__*/ S.String;
 
@@ -20578,7 +21182,8 @@ export type DnsTimeseriesGroupsDnssecE2eResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const DnsTimeseriesGroupsDnssecE2eResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -20607,7 +21212,8 @@ export type DnsTimeseriesGroupsDnssecE2eResponseMetaConfidenceInfoAnnotationsIte
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const DnsTimeseriesGroupsDnssecE2eResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -20617,7 +21223,8 @@ export type DnsTimeseriesGroupsDnssecE2eResponseMetaConfidenceInfoAnnotationsIte
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const DnsTimeseriesGroupsDnssecE2eResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -20716,7 +21323,8 @@ export type DnsTimeseriesGroupsDnssecE2eResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsTimeseriesGroupsDnssecE2eResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -20816,7 +21424,10 @@ export const RobotsTxtTopDomainCategoriesRequestDateList =
     S.String,
   ) as any as S.Schema<RobotsTxtTopDomainCategoriesRequestDateList>;
 
-export type RobotsTxtTopDomainCategoriesRequestFormat = "JSON" | "CSV";
+export type RobotsTxtTopDomainCategoriesRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const RobotsTxtTopDomainCategoriesRequestFormat = /*@__PURE__*/ S.String;
 
 export type RobotsTxtTopDomainCategoriesRequestNameList = ReadonlyArray<string>;
@@ -20825,7 +21436,9 @@ export const RobotsTxtTopDomainCategoriesRequestNameList =
     S.String,
   ) as any as S.Schema<RobotsTxtTopDomainCategoriesRequestNameList>;
 
-export type RobotsTxtTopDomainCategoriesRequestUserAgentCategory = "AI";
+export type RobotsTxtTopDomainCategoriesRequestUserAgentCategory =
+  | "AI"
+  | (string & {});
 export const RobotsTxtTopDomainCategoriesRequestUserAgentCategory =
   /*@__PURE__*/ S.String;
 
@@ -20894,7 +21507,8 @@ export type RobotsTxtTopDomainCategoriesResponseMetaConfidenceInfoAnnotationsIte
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const RobotsTxtTopDomainCategoriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -20904,7 +21518,8 @@ export type RobotsTxtTopDomainCategoriesResponseMetaConfidenceInfoAnnotationsIte
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const RobotsTxtTopDomainCategoriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -21003,7 +21618,8 @@ export type RobotsTxtTopDomainCategoriesResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const RobotsTxtTopDomainCategoriesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -21088,7 +21704,7 @@ export const DomainCategoriesRobotsTxtTopResponse = /*@__PURE__*/ S.suspend(
   identifier: "DomainCategoriesRobotsTxtTopResponse",
 }) as any as S.Schema<DomainCategoriesRobotsTxtTopResponse>;
 
-export type DatasetsDownloadRequestFormat = "JSON" | "CSV";
+export type DatasetsDownloadRequestFormat = "JSON" | "CSV" | (string & {});
 export const DatasetsDownloadRequestFormat = /*@__PURE__*/ S.String;
 
 export interface DownloadDatasetRequest {
@@ -21160,14 +21776,23 @@ export const AttacksLayer3SummaryDurationRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer3SummaryDurationRequestDateStartList>;
 
-export type AttacksLayer3SummaryDurationRequestDirection = "ORIGIN" | "TARGET";
+export type AttacksLayer3SummaryDurationRequestDirection =
+  | "ORIGIN"
+  | "TARGET"
+  | (string & {});
 export const AttacksLayer3SummaryDurationRequestDirection =
   /*@__PURE__*/ S.String;
 
-export type AttacksLayer3SummaryDurationRequestFormat = "JSON" | "CSV";
+export type AttacksLayer3SummaryDurationRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer3SummaryDurationRequestFormat = /*@__PURE__*/ S.String;
 
-export type AttacksLayer3SummaryDurationRequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer3SummaryDurationRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer3SummaryDurationRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -21195,7 +21820,8 @@ export type AttacksLayer3SummaryDurationRequestProtocol =
   | "UDP"
   | "TCP"
   | "ICMP"
-  | "GRE";
+  | "GRE"
+  | (string & {});
 export const AttacksLayer3SummaryDurationRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -21298,7 +21924,8 @@ export type AttacksLayer3SummaryDurationResponseMetaConfidenceInfoAnnotationsIte
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer3SummaryDurationResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -21308,7 +21935,8 @@ export type AttacksLayer3SummaryDurationResponseMetaConfidenceInfoAnnotationsIte
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer3SummaryDurationResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -21407,7 +22035,8 @@ export type AttacksLayer3SummaryDurationResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer3SummaryDurationResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -21504,7 +22133,8 @@ export type AttacksLayer3TimeseriesGroupsDurationRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsDurationRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -21538,17 +22168,22 @@ export const AttacksLayer3TimeseriesGroupsDurationRequestDateStartList =
 
 export type AttacksLayer3TimeseriesGroupsDurationRequestDirection =
   | "ORIGIN"
-  | "TARGET";
+  | "TARGET"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsDurationRequestDirection =
   /*@__PURE__*/ S.String;
 
-export type AttacksLayer3TimeseriesGroupsDurationRequestFormat = "JSON" | "CSV";
+export type AttacksLayer3TimeseriesGroupsDurationRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsDurationRequestFormat =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesGroupsDurationRequestIpVersion =
   | "IPv4"
-  | "IPv6";
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsDurationRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -21575,7 +22210,8 @@ export const AttacksLayer3TimeseriesGroupsDurationRequestNameList =
 
 export type AttacksLayer3TimeseriesGroupsDurationRequestNormalization =
   | "PERCENTAGE"
-  | "MIN0_MAX";
+  | "MIN0_MAX"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsDurationRequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -21583,7 +22219,8 @@ export type AttacksLayer3TimeseriesGroupsDurationRequestProtocol =
   | "UDP"
   | "TCP"
   | "ICMP"
-  | "GRE";
+  | "GRE"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsDurationRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -21691,7 +22328,8 @@ export type AttacksLayer3TimeseriesGroupsDurationResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsDurationResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -21720,7 +22358,8 @@ export type AttacksLayer3TimeseriesGroupsDurationResponseMetaConfidenceInfoAnnot
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer3TimeseriesGroupsDurationResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -21730,7 +22369,8 @@ export type AttacksLayer3TimeseriesGroupsDurationResponseMetaConfidenceInfoAnnot
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer3TimeseriesGroupsDurationResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -21831,7 +22471,8 @@ export type AttacksLayer3TimeseriesGroupsDurationResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsDurationResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -22014,7 +22655,7 @@ export const As112SummaryEdnsRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<As112SummaryEdnsRequestDateStartList>;
 
-export type As112SummaryEdnsRequestFormat = "JSON" | "CSV";
+export type As112SummaryEdnsRequestFormat = "JSON" | "CSV" | (string & {});
 export const As112SummaryEdnsRequestFormat = /*@__PURE__*/ S.String;
 
 export type As112SummaryEdnsRequestLocationList = ReadonlyArray<string>;
@@ -22027,7 +22668,12 @@ export const As112SummaryEdnsRequestNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<As112SummaryEdnsRequestNameList>;
 
-export type As112SummaryEdnsRequestProtocol = "UDP" | "TCP" | "HTTPS" | "TLS";
+export type As112SummaryEdnsRequestProtocol =
+  | "UDP"
+  | "TCP"
+  | "HTTPS"
+  | "TLS"
+  | (string & {});
 export const As112SummaryEdnsRequestProtocol = /*@__PURE__*/ S.String;
 
 export type As112SummaryEdnsRequestProtocolList =
@@ -22124,7 +22770,8 @@ export type As112SummaryEdnsRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const As112SummaryEdnsRequestQueryType = /*@__PURE__*/ S.String;
 
 export type As112SummaryEdnsRequestQueryTypeList =
@@ -22152,7 +22799,8 @@ export type As112SummaryEdnsRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const As112SummaryEdnsRequestResponseCode = /*@__PURE__*/ S.String;
 
 export type As112SummaryEdnsRequestResponseCodeList =
@@ -22231,7 +22879,8 @@ export type As112SummaryEdnsResponseMetaConfidenceInfoAnnotationsItemDataSource 
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const As112SummaryEdnsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -22241,7 +22890,8 @@ export type As112SummaryEdnsResponseMetaConfidenceInfoAnnotationsItemEventType =
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const As112SummaryEdnsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -22337,7 +22987,8 @@ export type As112SummaryEdnsResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const As112SummaryEdnsResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface As112SummaryEdnsResponseMetaUnitsItem {
@@ -22416,7 +23067,8 @@ export type As112TimeseriesGroupsEdnsRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const As112TimeseriesGroupsEdnsRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -22447,7 +23099,10 @@ export const As112TimeseriesGroupsEdnsRequestDateStartList =
     S.String,
   ) as any as S.Schema<As112TimeseriesGroupsEdnsRequestDateStartList>;
 
-export type As112TimeseriesGroupsEdnsRequestFormat = "JSON" | "CSV";
+export type As112TimeseriesGroupsEdnsRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const As112TimeseriesGroupsEdnsRequestFormat = /*@__PURE__*/ S.String;
 
 export type As112TimeseriesGroupsEdnsRequestLocationList =
@@ -22466,7 +23121,8 @@ export type As112TimeseriesGroupsEdnsRequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const As112TimeseriesGroupsEdnsRequestProtocol = /*@__PURE__*/ S.String;
 
 export type As112TimeseriesGroupsEdnsRequestProtocolList =
@@ -22564,7 +23220,8 @@ export type As112TimeseriesGroupsEdnsRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const As112TimeseriesGroupsEdnsRequestQueryType = /*@__PURE__*/ S.String;
 
 export type As112TimeseriesGroupsEdnsRequestQueryTypeList =
@@ -22593,7 +23250,8 @@ export type As112TimeseriesGroupsEdnsRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const As112TimeseriesGroupsEdnsRequestResponseCode =
   /*@__PURE__*/ S.String;
 
@@ -22677,7 +23335,8 @@ export type As112TimeseriesGroupsEdnsResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const As112TimeseriesGroupsEdnsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -22706,7 +23365,8 @@ export type As112TimeseriesGroupsEdnsResponseMetaConfidenceInfoAnnotationsItemDa
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const As112TimeseriesGroupsEdnsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -22716,7 +23376,8 @@ export type As112TimeseriesGroupsEdnsResponseMetaConfidenceInfoAnnotationsItemEv
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const As112TimeseriesGroupsEdnsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -22815,7 +23476,8 @@ export type As112TimeseriesGroupsEdnsResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const As112TimeseriesGroupsEdnsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -22912,7 +23574,10 @@ export const EdnsAs112TimeseriesGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EdnsAs112TimeseriesGroupResponse",
 }) as any as S.Schema<EdnsAs112TimeseriesGroupResponse>;
 
-export type As112TopEdnsRequestEdns = "SUPPORTED" | "NOT_SUPPORTED";
+export type As112TopEdnsRequestEdns =
+  | "SUPPORTED"
+  | "NOT_SUPPORTED"
+  | (string & {});
 export const As112TopEdnsRequestEdns = /*@__PURE__*/ S.String;
 
 export type As112TopEdnsRequestContinentList = ReadonlyArray<string>;
@@ -22935,7 +23600,7 @@ export const As112TopEdnsRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<As112TopEdnsRequestDateStartList>;
 
-export type As112TopEdnsRequestFormat = "JSON" | "CSV";
+export type As112TopEdnsRequestFormat = "JSON" | "CSV" | (string & {});
 export const As112TopEdnsRequestFormat = /*@__PURE__*/ S.String;
 
 export type As112TopEdnsRequestLocationList = ReadonlyArray<string>;
@@ -23017,7 +23682,8 @@ export type As112TopEdnsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   | "NET"
   | "ROBOTS_TXT"
   | "SPEED"
-  | "WORKERS_AI";
+  | "WORKERS_AI"
+  | (string & {});
 export const As112TopEdnsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -23027,7 +23693,8 @@ export type As112TopEdnsResponseMetaConfidenceInfoAnnotationsItemEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const As112TopEdnsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -23122,7 +23789,8 @@ export type As112TopEdnsResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const As112TopEdnsResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface As112TopEdnsResponseMetaUnitsItem {
@@ -23203,7 +23871,11 @@ export const EdnsAs112TopResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EdnsAs112TopResponse",
 }) as any as S.Schema<EdnsAs112TopResponse>;
 
-export type EmailRoutingSummaryEncryptedRequestArc = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingSummaryEncryptedRequestArc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingSummaryEncryptedRequestArc = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryEncryptedRequestArcList =
@@ -23233,7 +23905,11 @@ export const EmailRoutingSummaryEncryptedRequestDateStartList =
     S.String,
   ) as any as S.Schema<EmailRoutingSummaryEncryptedRequestDateStartList>;
 
-export type EmailRoutingSummaryEncryptedRequestDkim = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingSummaryEncryptedRequestDkim =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingSummaryEncryptedRequestDkim = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryEncryptedRequestDkimList =
@@ -23243,7 +23919,11 @@ export const EmailRoutingSummaryEncryptedRequestDkimList =
     EmailRoutingSummaryEncryptedRequestDkim,
   ) as any as S.Schema<EmailRoutingSummaryEncryptedRequestDkimList>;
 
-export type EmailRoutingSummaryEncryptedRequestDmarc = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingSummaryEncryptedRequestDmarc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingSummaryEncryptedRequestDmarc = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryEncryptedRequestDmarcList =
@@ -23253,10 +23933,16 @@ export const EmailRoutingSummaryEncryptedRequestDmarcList =
     EmailRoutingSummaryEncryptedRequestDmarc,
   ) as any as S.Schema<EmailRoutingSummaryEncryptedRequestDmarcList>;
 
-export type EmailRoutingSummaryEncryptedRequestFormat = "JSON" | "CSV";
+export type EmailRoutingSummaryEncryptedRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailRoutingSummaryEncryptedRequestFormat = /*@__PURE__*/ S.String;
 
-export type EmailRoutingSummaryEncryptedRequestIpVersion = "IPv4" | "IPv6";
+export type EmailRoutingSummaryEncryptedRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const EmailRoutingSummaryEncryptedRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -23273,7 +23959,11 @@ export const EmailRoutingSummaryEncryptedRequestNameList =
     S.String,
   ) as any as S.Schema<EmailRoutingSummaryEncryptedRequestNameList>;
 
-export type EmailRoutingSummaryEncryptedRequestSpf = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingSummaryEncryptedRequestSpf =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingSummaryEncryptedRequestSpf = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryEncryptedRequestSpfList =
@@ -23370,7 +24060,8 @@ export type EmailRoutingSummaryEncryptedResponseMetaConfidenceInfoAnnotationsIte
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailRoutingSummaryEncryptedResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -23380,7 +24071,8 @@ export type EmailRoutingSummaryEncryptedResponseMetaConfidenceInfoAnnotationsIte
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailRoutingSummaryEncryptedResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -23479,7 +24171,8 @@ export type EmailRoutingSummaryEncryptedResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailRoutingSummaryEncryptedResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -23565,14 +24258,16 @@ export type EmailRoutingTimeseriesGroupsEncryptedRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsEncryptedRequestAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsEncryptedRequestArc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsEncryptedRequestArc =
   /*@__PURE__*/ S.String;
 
@@ -23607,7 +24302,8 @@ export const EmailRoutingTimeseriesGroupsEncryptedRequestDateStartList =
 export type EmailRoutingTimeseriesGroupsEncryptedRequestDkim =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsEncryptedRequestDkim =
   /*@__PURE__*/ S.String;
 
@@ -23621,7 +24317,8 @@ export const EmailRoutingTimeseriesGroupsEncryptedRequestDkimList =
 export type EmailRoutingTimeseriesGroupsEncryptedRequestDmarc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsEncryptedRequestDmarc =
   /*@__PURE__*/ S.String;
 
@@ -23632,13 +24329,17 @@ export const EmailRoutingTimeseriesGroupsEncryptedRequestDmarcList =
     EmailRoutingTimeseriesGroupsEncryptedRequestDmarc,
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsEncryptedRequestDmarcList>;
 
-export type EmailRoutingTimeseriesGroupsEncryptedRequestFormat = "JSON" | "CSV";
+export type EmailRoutingTimeseriesGroupsEncryptedRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsEncryptedRequestFormat =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsEncryptedRequestIpVersion =
   | "IPv4"
-  | "IPv6";
+  | "IPv6"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsEncryptedRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -23659,7 +24360,8 @@ export const EmailRoutingTimeseriesGroupsEncryptedRequestNameList =
 export type EmailRoutingTimeseriesGroupsEncryptedRequestSpf =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsEncryptedRequestSpf =
   /*@__PURE__*/ S.String;
 
@@ -23754,7 +24456,8 @@ export type EmailRoutingTimeseriesGroupsEncryptedResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsEncryptedResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -23783,7 +24486,8 @@ export type EmailRoutingTimeseriesGroupsEncryptedResponseMetaConfidenceInfoAnnot
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailRoutingTimeseriesGroupsEncryptedResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -23793,7 +24497,8 @@ export type EmailRoutingTimeseriesGroupsEncryptedResponseMetaConfidenceInfoAnnot
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailRoutingTimeseriesGroupsEncryptedResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -23894,7 +24599,8 @@ export type EmailRoutingTimeseriesGroupsEncryptedResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsEncryptedResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -23997,7 +24703,7 @@ export const EncryptedEmailRoutingTimeseriesGroupResponse =
     identifier: "EncryptedEmailRoutingTimeseriesGroupResponse",
   }) as any as S.Schema<EncryptedEmailRoutingTimeseriesGroupResponse>;
 
-export type AnnotationsOutagesGetRequestFormat = "JSON" | "CSV";
+export type AnnotationsOutagesGetRequestFormat = "JSON" | "CSV" | (string & {});
 export const AnnotationsOutagesGetRequestFormat = /*@__PURE__*/ S.String;
 
 export interface GetAnnotationOutageRequest {
@@ -24240,7 +24946,7 @@ export const BgpTopAsesGetRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BgpTopAsesGetRequestDateStartList>;
 
-export type BgpTopAsesGetRequestFormat = "JSON" | "CSV";
+export type BgpTopAsesGetRequestFormat = "JSON" | "CSV" | (string & {});
 export const BgpTopAsesGetRequestFormat = /*@__PURE__*/ S.String;
 
 export type BgpTopAsesGetRequestNameList = ReadonlyArray<string>;
@@ -24253,7 +24959,10 @@ export const BgpTopAsesGetRequestPrefixList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BgpTopAsesGetRequestPrefixList>;
 
-export type BgpTopAsesGetRequestUpdateType = "ANNOUNCEMENT" | "WITHDRAWAL";
+export type BgpTopAsesGetRequestUpdateType =
+  | "ANNOUNCEMENT"
+  | "WITHDRAWAL"
+  | (string & {});
 export const BgpTopAsesGetRequestUpdateType = /*@__PURE__*/ S.String;
 
 export type BgpTopAsesGetRequestUpdateTypeList =
@@ -24369,7 +25078,7 @@ export const GetBgpTopAsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBgpTopAsResponse",
 }) as any as S.Schema<GetBgpTopAsResponse>;
 
-export type BotsGetRequestFormat = "JSON" | "CSV";
+export type BotsGetRequestFormat = "JSON" | "CSV" | (string & {});
 export const BotsGetRequestFormat = /*@__PURE__*/ S.String;
 
 export interface GetBotRequest {
@@ -24444,7 +25153,7 @@ export const GetBotResponse = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetBotResponse" }) as any as S.Schema<GetBotResponse>;
 
-export type CtAuthoritiesGetRequestFormat = "JSON" | "CSV";
+export type CtAuthoritiesGetRequestFormat = "JSON" | "CSV" | (string & {});
 export const CtAuthoritiesGetRequestFormat = /*@__PURE__*/ S.String;
 
 export interface GetCtAuthorityRequest {
@@ -24477,13 +25186,15 @@ export type CtAuthoritiesGetResponseCertificateAuthorityAppleStatus =
   | "NOT_BEFORE"
   | "REMOVED"
   | "DISABLED"
-  | "BLOCKED";
+  | "BLOCKED"
+  | (string & {});
 export const CtAuthoritiesGetResponseCertificateAuthorityAppleStatus =
   /*@__PURE__*/ S.String;
 
 export type CtAuthoritiesGetResponseCertificateAuthorityCertificateRecordType =
   | "ROOT_CERTIFICATE"
-  | "INTERMEDIATE_CERTIFICATE";
+  | "INTERMEDIATE_CERTIFICATE"
+  | (string & {});
 export const CtAuthoritiesGetResponseCertificateAuthorityCertificateRecordType =
   /*@__PURE__*/ S.String;
 
@@ -24494,7 +25205,8 @@ export type CtAuthoritiesGetResponseCertificateAuthorityChromeStatus =
   | "NOT_BEFORE"
   | "REMOVED"
   | "DISABLED"
-  | "BLOCKED";
+  | "BLOCKED"
+  | (string & {});
 export const CtAuthoritiesGetResponseCertificateAuthorityChromeStatus =
   /*@__PURE__*/ S.String;
 
@@ -24505,7 +25217,8 @@ export type CtAuthoritiesGetResponseCertificateAuthorityMicrosoftStatus =
   | "NOT_BEFORE"
   | "REMOVED"
   | "DISABLED"
-  | "BLOCKED";
+  | "BLOCKED"
+  | (string & {});
 export const CtAuthoritiesGetResponseCertificateAuthorityMicrosoftStatus =
   /*@__PURE__*/ S.String;
 
@@ -24516,17 +25229,18 @@ export type CtAuthoritiesGetResponseCertificateAuthorityMozillaStatus =
   | "NOT_BEFORE"
   | "REMOVED"
   | "DISABLED"
-  | "BLOCKED";
+  | "BLOCKED"
+  | (string & {});
 export const CtAuthoritiesGetResponseCertificateAuthorityMozillaStatus =
   /*@__PURE__*/ S.String;
 
 export type CtAuthoritiesGetResponseCertificateAuthorityRelatedItemCertificateRecordType =
-  "ROOT_CERTIFICATE" | "INTERMEDIATE_CERTIFICATE";
+  "ROOT_CERTIFICATE" | "INTERMEDIATE_CERTIFICATE" | (string & {});
 export const CtAuthoritiesGetResponseCertificateAuthorityRelatedItemCertificateRecordType =
   /*@__PURE__*/ S.String;
 
 export type CtAuthoritiesGetResponseCertificateAuthorityRelatedItemRevocationStatus =
-  "NOT_REVOKED" | "REVOKED" | "PARENT_CERT_REVOKED";
+  "NOT_REVOKED" | "REVOKED" | "PARENT_CERT_REVOKED" | (string & {});
 export const CtAuthoritiesGetResponseCertificateAuthorityRelatedItemRevocationStatus =
   /*@__PURE__*/ S.String;
 
@@ -24564,7 +25278,8 @@ export const CtAuthoritiesGetResponseCertificateAuthorityRelatedList =
 export type CtAuthoritiesGetResponseCertificateAuthorityRevocationStatus =
   | "NOT_REVOKED"
   | "REVOKED"
-  | "PARENT_CERT_REVOKED";
+  | "PARENT_CERT_REVOKED"
+  | (string & {});
 export const CtAuthoritiesGetResponseCertificateAuthorityRevocationStatus =
   /*@__PURE__*/ S.String;
 
@@ -24647,7 +25362,7 @@ export const GetCtAuthorityResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCtAuthorityResponse",
 }) as any as S.Schema<GetCtAuthorityResponse>;
 
-export type CtLogsGetRequestFormat = "JSON" | "CSV";
+export type CtLogsGetRequestFormat = "JSON" | "CSV" | (string & {});
 export const CtLogsGetRequestFormat = /*@__PURE__*/ S.String;
 
 export interface GetCtLogRequest {
@@ -24669,7 +25384,10 @@ export const GetCtLogRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCtLogRequest",
 }) as any as S.Schema<GetCtLogRequest>;
 
-export type CtLogsGetResponseCertificateLogApi = "RFC6962" | "STATIC";
+export type CtLogsGetResponseCertificateLogApi =
+  | "RFC6962"
+  | "STATIC"
+  | (string & {});
 export const CtLogsGetResponseCertificateLogApi = /*@__PURE__*/ S.String;
 
 export type CtLogsGetResponseCertificateLogPerformanceEndpointsItemEndpoint =
@@ -24679,7 +25397,8 @@ export type CtLogsGetResponseCertificateLogPerformanceEndpointsItemEndpoint =
   | "add-pre-chain (old)"
   | "get-entries"
   | "get-roots"
-  | "get-sth";
+  | "get-sth"
+  | (string & {});
 export const CtLogsGetResponseCertificateLogPerformanceEndpointsItemEndpoint =
   /*@__PURE__*/ S.String;
 
@@ -24729,7 +25448,8 @@ export type CtLogsGetResponseCertificateLogRelatedItemState =
   | "QUALIFIED"
   | "READ_ONLY"
   | "RETIRED"
-  | "REJECTED";
+  | "REJECTED"
+  | (string & {});
 export const CtLogsGetResponseCertificateLogRelatedItemState =
   /*@__PURE__*/ S.String;
 
@@ -24770,7 +25490,8 @@ export type CtLogsGetResponseCertificateLogState =
   | "QUALIFIED"
   | "READ_ONLY"
   | "RETIRED"
-  | "REJECTED";
+  | "REJECTED"
+  | (string & {});
 export const CtLogsGetResponseCertificateLogState = /*@__PURE__*/ S.String;
 
 export interface CtLogsGetResponseCertificateLog {
@@ -24860,7 +25581,11 @@ export const GetDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDatasetResponse",
 }) as any as S.Schema<GetDatasetResponse>;
 
-export type EmailSecurityTopTldsGetRequestArc = "PASS" | "NONE" | "FAIL";
+export type EmailSecurityTopTldsGetRequestArc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTopTldsGetRequestArc = /*@__PURE__*/ S.String;
 
 export type EmailSecurityTopTldsGetRequestArcList =
@@ -24886,7 +25611,11 @@ export const EmailSecurityTopTldsGetRequestDateStartList =
     S.String,
   ) as any as S.Schema<EmailSecurityTopTldsGetRequestDateStartList>;
 
-export type EmailSecurityTopTldsGetRequestDkim = "PASS" | "NONE" | "FAIL";
+export type EmailSecurityTopTldsGetRequestDkim =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTopTldsGetRequestDkim = /*@__PURE__*/ S.String;
 
 export type EmailSecurityTopTldsGetRequestDkimList =
@@ -24895,7 +25624,11 @@ export const EmailSecurityTopTldsGetRequestDkimList = /*@__PURE__*/ S.Array(
   EmailSecurityTopTldsGetRequestDkim,
 ) as any as S.Schema<EmailSecurityTopTldsGetRequestDkimList>;
 
-export type EmailSecurityTopTldsGetRequestDmarc = "PASS" | "NONE" | "FAIL";
+export type EmailSecurityTopTldsGetRequestDmarc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTopTldsGetRequestDmarc = /*@__PURE__*/ S.String;
 
 export type EmailSecurityTopTldsGetRequestDmarcList =
@@ -24904,7 +25637,10 @@ export const EmailSecurityTopTldsGetRequestDmarcList = /*@__PURE__*/ S.Array(
   EmailSecurityTopTldsGetRequestDmarc,
 ) as any as S.Schema<EmailSecurityTopTldsGetRequestDmarcList>;
 
-export type EmailSecurityTopTldsGetRequestFormat = "JSON" | "CSV";
+export type EmailSecurityTopTldsGetRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailSecurityTopTldsGetRequestFormat = /*@__PURE__*/ S.String;
 
 export type EmailSecurityTopTldsGetRequestNameList = ReadonlyArray<string>;
@@ -24912,7 +25648,11 @@ export const EmailSecurityTopTldsGetRequestNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EmailSecurityTopTldsGetRequestNameList>;
 
-export type EmailSecurityTopTldsGetRequestSpf = "PASS" | "NONE" | "FAIL";
+export type EmailSecurityTopTldsGetRequestSpf =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTopTldsGetRequestSpf = /*@__PURE__*/ S.String;
 
 export type EmailSecurityTopTldsGetRequestSpfList =
@@ -24921,14 +25661,18 @@ export const EmailSecurityTopTldsGetRequestSpfList = /*@__PURE__*/ S.Array(
   EmailSecurityTopTldsGetRequestSpf,
 ) as any as S.Schema<EmailSecurityTopTldsGetRequestSpfList>;
 
-export type EmailSecurityTopTldsGetRequestTldCategory = "CLASSIC" | "COUNTRY";
+export type EmailSecurityTopTldsGetRequestTldCategory =
+  | "CLASSIC"
+  | "COUNTRY"
+  | (string & {});
 export const EmailSecurityTopTldsGetRequestTldCategory = /*@__PURE__*/ S.String;
 
 export type EmailSecurityTopTldsGetRequestTlsVersion =
   | "TLSv1_0"
   | "TLSv1_1"
   | "TLSv1_2"
-  | "TLSv1_3";
+  | "TLSv1_3"
+  | (string & {});
 export const EmailSecurityTopTldsGetRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type EmailSecurityTopTldsGetRequestTlsVersionList =
@@ -25026,7 +25770,8 @@ export type EmailSecurityTopTldsGetResponseMetaConfidenceInfoAnnotationsItemData
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailSecurityTopTldsGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -25036,7 +25781,8 @@ export type EmailSecurityTopTldsGetResponseMetaConfidenceInfoAnnotationsItemEven
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailSecurityTopTldsGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -25135,7 +25881,8 @@ export type EmailSecurityTopTldsGetResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailSecurityTopTldsGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -25220,14 +25967,16 @@ export const GetEmailSecurityTopTldResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type EmailSecurityTopTldsMaliciousGetRequestMalicious =
   | "MALICIOUS"
-  | "NOT_MALICIOUS";
+  | "NOT_MALICIOUS"
+  | (string & {});
 export const EmailSecurityTopTldsMaliciousGetRequestMalicious =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTopTldsMaliciousGetRequestArc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTopTldsMaliciousGetRequestArc =
   /*@__PURE__*/ S.String;
 
@@ -25262,7 +26011,8 @@ export const EmailSecurityTopTldsMaliciousGetRequestDateStartList =
 export type EmailSecurityTopTldsMaliciousGetRequestDkim =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTopTldsMaliciousGetRequestDkim =
   /*@__PURE__*/ S.String;
 
@@ -25276,7 +26026,8 @@ export const EmailSecurityTopTldsMaliciousGetRequestDkimList =
 export type EmailSecurityTopTldsMaliciousGetRequestDmarc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTopTldsMaliciousGetRequestDmarc =
   /*@__PURE__*/ S.String;
 
@@ -25287,7 +26038,10 @@ export const EmailSecurityTopTldsMaliciousGetRequestDmarcList =
     EmailSecurityTopTldsMaliciousGetRequestDmarc,
   ) as any as S.Schema<EmailSecurityTopTldsMaliciousGetRequestDmarcList>;
 
-export type EmailSecurityTopTldsMaliciousGetRequestFormat = "JSON" | "CSV";
+export type EmailSecurityTopTldsMaliciousGetRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailSecurityTopTldsMaliciousGetRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -25301,7 +26055,8 @@ export const EmailSecurityTopTldsMaliciousGetRequestNameList =
 export type EmailSecurityTopTldsMaliciousGetRequestSpf =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTopTldsMaliciousGetRequestSpf =
   /*@__PURE__*/ S.String;
 
@@ -25314,7 +26069,8 @@ export const EmailSecurityTopTldsMaliciousGetRequestSpfList =
 
 export type EmailSecurityTopTldsMaliciousGetRequestTldCategory =
   | "CLASSIC"
-  | "COUNTRY";
+  | "COUNTRY"
+  | (string & {});
 export const EmailSecurityTopTldsMaliciousGetRequestTldCategory =
   /*@__PURE__*/ S.String;
 
@@ -25322,7 +26078,8 @@ export type EmailSecurityTopTldsMaliciousGetRequestTlsVersion =
   | "TLSv1_0"
   | "TLSv1_1"
   | "TLSv1_2"
-  | "TLSv1_3";
+  | "TLSv1_3"
+  | (string & {});
 export const EmailSecurityTopTldsMaliciousGetRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -25439,7 +26196,8 @@ export type EmailSecurityTopTldsMaliciousGetResponseMetaConfidenceInfoAnnotation
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailSecurityTopTldsMaliciousGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -25449,7 +26207,8 @@ export type EmailSecurityTopTldsMaliciousGetResponseMetaConfidenceInfoAnnotation
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailSecurityTopTldsMaliciousGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -25548,7 +26307,8 @@ export type EmailSecurityTopTldsMaliciousGetResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailSecurityTopTldsMaliciousGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -25637,10 +26397,17 @@ export const GetEmailSecurityTopTldMaliciousResponse = /*@__PURE__*/ S.suspend(
   identifier: "GetEmailSecurityTopTldMaliciousResponse",
 }) as any as S.Schema<GetEmailSecurityTopTldMaliciousResponse>;
 
-export type EmailSecurityTopTldsSpamGetRequestSpam = "SPAM" | "NOT_SPAM";
+export type EmailSecurityTopTldsSpamGetRequestSpam =
+  | "SPAM"
+  | "NOT_SPAM"
+  | (string & {});
 export const EmailSecurityTopTldsSpamGetRequestSpam = /*@__PURE__*/ S.String;
 
-export type EmailSecurityTopTldsSpamGetRequestArc = "PASS" | "NONE" | "FAIL";
+export type EmailSecurityTopTldsSpamGetRequestArc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTopTldsSpamGetRequestArc = /*@__PURE__*/ S.String;
 
 export type EmailSecurityTopTldsSpamGetRequestArcList =
@@ -25670,7 +26437,11 @@ export const EmailSecurityTopTldsSpamGetRequestDateStartList =
     S.String,
   ) as any as S.Schema<EmailSecurityTopTldsSpamGetRequestDateStartList>;
 
-export type EmailSecurityTopTldsSpamGetRequestDkim = "PASS" | "NONE" | "FAIL";
+export type EmailSecurityTopTldsSpamGetRequestDkim =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTopTldsSpamGetRequestDkim = /*@__PURE__*/ S.String;
 
 export type EmailSecurityTopTldsSpamGetRequestDkimList =
@@ -25679,7 +26450,11 @@ export const EmailSecurityTopTldsSpamGetRequestDkimList = /*@__PURE__*/ S.Array(
   EmailSecurityTopTldsSpamGetRequestDkim,
 ) as any as S.Schema<EmailSecurityTopTldsSpamGetRequestDkimList>;
 
-export type EmailSecurityTopTldsSpamGetRequestDmarc = "PASS" | "NONE" | "FAIL";
+export type EmailSecurityTopTldsSpamGetRequestDmarc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTopTldsSpamGetRequestDmarc = /*@__PURE__*/ S.String;
 
 export type EmailSecurityTopTldsSpamGetRequestDmarcList =
@@ -25689,7 +26464,10 @@ export const EmailSecurityTopTldsSpamGetRequestDmarcList =
     EmailSecurityTopTldsSpamGetRequestDmarc,
   ) as any as S.Schema<EmailSecurityTopTldsSpamGetRequestDmarcList>;
 
-export type EmailSecurityTopTldsSpamGetRequestFormat = "JSON" | "CSV";
+export type EmailSecurityTopTldsSpamGetRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailSecurityTopTldsSpamGetRequestFormat = /*@__PURE__*/ S.String;
 
 export type EmailSecurityTopTldsSpamGetRequestNameList = ReadonlyArray<string>;
@@ -25697,7 +26475,11 @@ export const EmailSecurityTopTldsSpamGetRequestNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EmailSecurityTopTldsSpamGetRequestNameList>;
 
-export type EmailSecurityTopTldsSpamGetRequestSpf = "PASS" | "NONE" | "FAIL";
+export type EmailSecurityTopTldsSpamGetRequestSpf =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTopTldsSpamGetRequestSpf = /*@__PURE__*/ S.String;
 
 export type EmailSecurityTopTldsSpamGetRequestSpfList =
@@ -25708,7 +26490,8 @@ export const EmailSecurityTopTldsSpamGetRequestSpfList = /*@__PURE__*/ S.Array(
 
 export type EmailSecurityTopTldsSpamGetRequestTldCategory =
   | "CLASSIC"
-  | "COUNTRY";
+  | "COUNTRY"
+  | (string & {});
 export const EmailSecurityTopTldsSpamGetRequestTldCategory =
   /*@__PURE__*/ S.String;
 
@@ -25716,7 +26499,8 @@ export type EmailSecurityTopTldsSpamGetRequestTlsVersion =
   | "TLSv1_0"
   | "TLSv1_1"
   | "TLSv1_2"
-  | "TLSv1_3";
+  | "TLSv1_3"
+  | (string & {});
 export const EmailSecurityTopTldsSpamGetRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -25826,7 +26610,8 @@ export type EmailSecurityTopTldsSpamGetResponseMetaConfidenceInfoAnnotationsItem
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailSecurityTopTldsSpamGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -25836,7 +26621,8 @@ export type EmailSecurityTopTldsSpamGetResponseMetaConfidenceInfoAnnotationsItem
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailSecurityTopTldsSpamGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -25935,7 +26721,8 @@ export type EmailSecurityTopTldsSpamGetResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailSecurityTopTldsSpamGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -26020,10 +26807,17 @@ export const GetEmailSecurityTopTldSpamResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEmailSecurityTopTldSpamResponse",
 }) as any as S.Schema<GetEmailSecurityTopTldSpamResponse>;
 
-export type EmailSecurityTopTldsSpoofGetRequestSpoof = "SPOOF" | "NOT_SPOOF";
+export type EmailSecurityTopTldsSpoofGetRequestSpoof =
+  | "SPOOF"
+  | "NOT_SPOOF"
+  | (string & {});
 export const EmailSecurityTopTldsSpoofGetRequestSpoof = /*@__PURE__*/ S.String;
 
-export type EmailSecurityTopTldsSpoofGetRequestArc = "PASS" | "NONE" | "FAIL";
+export type EmailSecurityTopTldsSpoofGetRequestArc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTopTldsSpoofGetRequestArc = /*@__PURE__*/ S.String;
 
 export type EmailSecurityTopTldsSpoofGetRequestArcList =
@@ -26053,7 +26847,11 @@ export const EmailSecurityTopTldsSpoofGetRequestDateStartList =
     S.String,
   ) as any as S.Schema<EmailSecurityTopTldsSpoofGetRequestDateStartList>;
 
-export type EmailSecurityTopTldsSpoofGetRequestDkim = "PASS" | "NONE" | "FAIL";
+export type EmailSecurityTopTldsSpoofGetRequestDkim =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTopTldsSpoofGetRequestDkim = /*@__PURE__*/ S.String;
 
 export type EmailSecurityTopTldsSpoofGetRequestDkimList =
@@ -26063,7 +26861,11 @@ export const EmailSecurityTopTldsSpoofGetRequestDkimList =
     EmailSecurityTopTldsSpoofGetRequestDkim,
   ) as any as S.Schema<EmailSecurityTopTldsSpoofGetRequestDkimList>;
 
-export type EmailSecurityTopTldsSpoofGetRequestDmarc = "PASS" | "NONE" | "FAIL";
+export type EmailSecurityTopTldsSpoofGetRequestDmarc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTopTldsSpoofGetRequestDmarc = /*@__PURE__*/ S.String;
 
 export type EmailSecurityTopTldsSpoofGetRequestDmarcList =
@@ -26073,7 +26875,10 @@ export const EmailSecurityTopTldsSpoofGetRequestDmarcList =
     EmailSecurityTopTldsSpoofGetRequestDmarc,
   ) as any as S.Schema<EmailSecurityTopTldsSpoofGetRequestDmarcList>;
 
-export type EmailSecurityTopTldsSpoofGetRequestFormat = "JSON" | "CSV";
+export type EmailSecurityTopTldsSpoofGetRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailSecurityTopTldsSpoofGetRequestFormat = /*@__PURE__*/ S.String;
 
 export type EmailSecurityTopTldsSpoofGetRequestNameList = ReadonlyArray<string>;
@@ -26082,7 +26887,11 @@ export const EmailSecurityTopTldsSpoofGetRequestNameList =
     S.String,
   ) as any as S.Schema<EmailSecurityTopTldsSpoofGetRequestNameList>;
 
-export type EmailSecurityTopTldsSpoofGetRequestSpf = "PASS" | "NONE" | "FAIL";
+export type EmailSecurityTopTldsSpoofGetRequestSpf =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTopTldsSpoofGetRequestSpf = /*@__PURE__*/ S.String;
 
 export type EmailSecurityTopTldsSpoofGetRequestSpfList =
@@ -26093,7 +26902,8 @@ export const EmailSecurityTopTldsSpoofGetRequestSpfList = /*@__PURE__*/ S.Array(
 
 export type EmailSecurityTopTldsSpoofGetRequestTldCategory =
   | "CLASSIC"
-  | "COUNTRY";
+  | "COUNTRY"
+  | (string & {});
 export const EmailSecurityTopTldsSpoofGetRequestTldCategory =
   /*@__PURE__*/ S.String;
 
@@ -26101,7 +26911,8 @@ export type EmailSecurityTopTldsSpoofGetRequestTlsVersion =
   | "TLSv1_0"
   | "TLSv1_1"
   | "TLSv1_2"
-  | "TLSv1_3";
+  | "TLSv1_3"
+  | (string & {});
 export const EmailSecurityTopTldsSpoofGetRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -26211,7 +27022,8 @@ export type EmailSecurityTopTldsSpoofGetResponseMetaConfidenceInfoAnnotationsIte
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailSecurityTopTldsSpoofGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -26221,7 +27033,8 @@ export type EmailSecurityTopTldsSpoofGetResponseMetaConfidenceInfoAnnotationsIte
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailSecurityTopTldsSpoofGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -26320,7 +27133,8 @@ export type EmailSecurityTopTldsSpoofGetResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailSecurityTopTldsSpoofGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -26405,7 +27219,7 @@ export const GetEmailSecurityTopTldSpoofResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEmailSecurityTopTldSpoofResponse",
 }) as any as S.Schema<GetEmailSecurityTopTldSpoofResponse>;
 
-export type EntitiesGetRequestFormat = "JSON" | "CSV";
+export type EntitiesGetRequestFormat = "JSON" | "CSV" | (string & {});
 export const EntitiesGetRequestFormat = /*@__PURE__*/ S.String;
 
 export interface GetEntityRequest {
@@ -26462,7 +27276,7 @@ export const GetEntityResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEntityResponse",
 }) as any as S.Schema<GetEntityResponse>;
 
-export type EntitiesAsnsGetRequestFormat = "JSON" | "CSV";
+export type EntitiesAsnsGetRequestFormat = "JSON" | "CSV" | (string & {});
 export const EntitiesAsnsGetRequestFormat = /*@__PURE__*/ S.String;
 
 export interface GetEntityAsnRequest {
@@ -26592,7 +27406,7 @@ export const GetEntityAsnResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEntityAsnResponse",
 }) as any as S.Schema<GetEntityAsnResponse>;
 
-export type EntitiesLocationsGetRequestFormat = "JSON" | "CSV";
+export type EntitiesLocationsGetRequestFormat = "JSON" | "CSV" | (string & {});
 export const EntitiesLocationsGetRequestFormat = /*@__PURE__*/ S.String;
 
 export interface GetEntityLocationRequest {
@@ -26658,7 +27472,7 @@ export const GetEntityLocationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEntityLocationResponse",
 }) as any as S.Schema<GetEntityLocationResponse>;
 
-export type GeolocationsGetRequestFormat = "JSON" | "CSV";
+export type GeolocationsGetRequestFormat = "JSON" | "CSV" | (string & {});
 export const GeolocationsGetRequestFormat = /*@__PURE__*/ S.String;
 
 export interface GetGeolocationRequest {
@@ -26683,7 +27497,8 @@ export const GetGeolocationRequest = /*@__PURE__*/ S.suspend(() =>
 export type GeolocationsGetResponseGeolocationParentParentType =
   | "CONTINENT"
   | "COUNTRY"
-  | "ADM1";
+  | "ADM1"
+  | (string & {});
 export const GeolocationsGetResponseGeolocationParentParentType =
   /*@__PURE__*/ S.String;
 
@@ -26718,7 +27533,8 @@ export const GeolocationsGetResponseGeolocationParentParent =
 export type GeolocationsGetResponseGeolocationParentType =
   | "CONTINENT"
   | "COUNTRY"
-  | "ADM1";
+  | "ADM1"
+  | (string & {});
 export const GeolocationsGetResponseGeolocationParentType =
   /*@__PURE__*/ S.String;
 
@@ -26755,7 +27571,8 @@ export const GeolocationsGetResponseGeolocationParent = /*@__PURE__*/ S.suspend(
 export type GeolocationsGetResponseGeolocationType =
   | "CONTINENT"
   | "COUNTRY"
-  | "ADM1";
+  | "ADM1"
+  | (string & {});
 export const GeolocationsGetResponseGeolocationType = /*@__PURE__*/ S.String;
 
 export interface GeolocationsGetResponseGeolocation {
@@ -26804,7 +27621,10 @@ export const HttpAsesGetRequestAsnList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpAsesGetRequestAsnList>;
 
-export type HttpAsesGetRequestBotClass = "LIKELY_AUTOMATED" | "LIKELY_HUMAN";
+export type HttpAsesGetRequestBotClass =
+  | "LIKELY_AUTOMATED"
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpAsesGetRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpAsesGetRequestBotClassList =
@@ -26817,7 +27637,8 @@ export type HttpAsesGetRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpAsesGetRequestBrowserFamily = /*@__PURE__*/ S.String;
 
 export type HttpAsesGetRequestBrowserFamilyList =
@@ -26846,7 +27667,11 @@ export const HttpAsesGetRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpAsesGetRequestDateStartList>;
 
-export type HttpAsesGetRequestDeviceType = "DESKTOP" | "MOBILE" | "OTHER";
+export type HttpAsesGetRequestDeviceType =
+  | "DESKTOP"
+  | "MOBILE"
+  | "OTHER"
+  | (string & {});
 export const HttpAsesGetRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpAsesGetRequestDeviceTypeList =
@@ -26855,7 +27680,7 @@ export const HttpAsesGetRequestDeviceTypeList = /*@__PURE__*/ S.Array(
   HttpAsesGetRequestDeviceType,
 ) as any as S.Schema<HttpAsesGetRequestDeviceTypeList>;
 
-export type HttpAsesGetRequestFormat = "JSON" | "CSV";
+export type HttpAsesGetRequestFormat = "JSON" | "CSV" | (string & {});
 export const HttpAsesGetRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpAsesGetRequestGeoIdList = ReadonlyArray<string>;
@@ -26863,7 +27688,7 @@ export const HttpAsesGetRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpAsesGetRequestGeoIdList>;
 
-export type HttpAsesGetRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpAsesGetRequestHttpProtocol = "HTTP" | "HTTPS" | (string & {});
 export const HttpAsesGetRequestHttpProtocol = /*@__PURE__*/ S.String;
 
 export type HttpAsesGetRequestHttpProtocolList =
@@ -26872,7 +27697,11 @@ export const HttpAsesGetRequestHttpProtocolList = /*@__PURE__*/ S.Array(
   HttpAsesGetRequestHttpProtocol,
 ) as any as S.Schema<HttpAsesGetRequestHttpProtocolList>;
 
-export type HttpAsesGetRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
+export type HttpAsesGetRequestHttpVersion =
+  | "HTTPv1"
+  | "HTTPv2"
+  | "HTTPv3"
+  | (string & {});
 export const HttpAsesGetRequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesGetRequestHttpVersionList =
@@ -26881,7 +27710,7 @@ export const HttpAsesGetRequestHttpVersionList = /*@__PURE__*/ S.Array(
   HttpAsesGetRequestHttpVersion,
 ) as any as S.Schema<HttpAsesGetRequestHttpVersionList>;
 
-export type HttpAsesGetRequestIpVersion = "IPv4" | "IPv6";
+export type HttpAsesGetRequestIpVersion = "IPv4" | "IPv6" | (string & {});
 export const HttpAsesGetRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesGetRequestIpVersionList =
@@ -26907,7 +27736,8 @@ export type HttpAsesGetRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpAsesGetRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpAsesGetRequestOsList = ReadonlyArray<HttpAsesGetRequestOs>;
@@ -26920,7 +27750,8 @@ export type HttpAsesGetRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpAsesGetRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesGetRequestTlsVersionList =
@@ -27023,7 +27854,8 @@ export type HttpAsesGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   | "NET"
   | "ROBOTS_TXT"
   | "SPEED"
-  | "WORKERS_AI";
+  | "WORKERS_AI"
+  | (string & {});
 export const HttpAsesGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -27033,7 +27865,8 @@ export type HttpAsesGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const HttpAsesGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -27128,7 +27961,8 @@ export type HttpAsesGetResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpAsesGetResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface HttpAsesGetResponseMetaUnitsItem {
@@ -27211,7 +28045,8 @@ export const GetHttpAsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type HttpAsesBotClassGetRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpAsesBotClassGetRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpAsesBotClassGetRequestAsnList = ReadonlyArray<string>;
@@ -27223,7 +28058,8 @@ export type HttpAsesBotClassGetRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpAsesBotClassGetRequestBrowserFamily = /*@__PURE__*/ S.String;
 
 export type HttpAsesBotClassGetRequestBrowserFamilyList =
@@ -27256,7 +28092,8 @@ export const HttpAsesBotClassGetRequestDateStartList = /*@__PURE__*/ S.Array(
 export type HttpAsesBotClassGetRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpAsesBotClassGetRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpAsesBotClassGetRequestDeviceTypeList =
@@ -27265,7 +28102,7 @@ export const HttpAsesBotClassGetRequestDeviceTypeList = /*@__PURE__*/ S.Array(
   HttpAsesBotClassGetRequestDeviceType,
 ) as any as S.Schema<HttpAsesBotClassGetRequestDeviceTypeList>;
 
-export type HttpAsesBotClassGetRequestFormat = "JSON" | "CSV";
+export type HttpAsesBotClassGetRequestFormat = "JSON" | "CSV" | (string & {});
 export const HttpAsesBotClassGetRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpAsesBotClassGetRequestGeoIdList = ReadonlyArray<string>;
@@ -27273,7 +28110,10 @@ export const HttpAsesBotClassGetRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpAsesBotClassGetRequestGeoIdList>;
 
-export type HttpAsesBotClassGetRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpAsesBotClassGetRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpAsesBotClassGetRequestHttpProtocol = /*@__PURE__*/ S.String;
 
 export type HttpAsesBotClassGetRequestHttpProtocolList =
@@ -27285,7 +28125,8 @@ export const HttpAsesBotClassGetRequestHttpProtocolList = /*@__PURE__*/ S.Array(
 export type HttpAsesBotClassGetRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpAsesBotClassGetRequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesBotClassGetRequestHttpVersionList =
@@ -27294,7 +28135,10 @@ export const HttpAsesBotClassGetRequestHttpVersionList = /*@__PURE__*/ S.Array(
   HttpAsesBotClassGetRequestHttpVersion,
 ) as any as S.Schema<HttpAsesBotClassGetRequestHttpVersionList>;
 
-export type HttpAsesBotClassGetRequestIpVersion = "IPv4" | "IPv6";
+export type HttpAsesBotClassGetRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpAsesBotClassGetRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesBotClassGetRequestIpVersionList =
@@ -27320,7 +28164,8 @@ export type HttpAsesBotClassGetRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpAsesBotClassGetRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpAsesBotClassGetRequestOsList =
@@ -27334,7 +28179,8 @@ export type HttpAsesBotClassGetRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpAsesBotClassGetRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesBotClassGetRequestTlsVersionList =
@@ -27459,7 +28305,8 @@ export type HttpAsesBotClassGetResponseMetaConfidenceInfoAnnotationsItemDataSour
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpAsesBotClassGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -27469,7 +28316,8 @@ export type HttpAsesBotClassGetResponseMetaConfidenceInfoAnnotationsItemEventTyp
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpAsesBotClassGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -27566,7 +28414,8 @@ export type HttpAsesBotClassGetResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpAsesBotClassGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -27653,7 +28502,8 @@ export type HttpAsesBrowserFamilyGetRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpAsesBrowserFamilyGetRequestBrowserFamily =
   /*@__PURE__*/ S.String;
 
@@ -27664,7 +28514,8 @@ export const HttpAsesBrowserFamilyGetRequestAsnList = /*@__PURE__*/ S.Array(
 
 export type HttpAsesBrowserFamilyGetRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpAsesBrowserFamilyGetRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpAsesBrowserFamilyGetRequestBotClassList =
@@ -27703,7 +28554,8 @@ export const HttpAsesBrowserFamilyGetRequestDateStartList =
 export type HttpAsesBrowserFamilyGetRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpAsesBrowserFamilyGetRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpAsesBrowserFamilyGetRequestDeviceTypeList =
@@ -27713,7 +28565,10 @@ export const HttpAsesBrowserFamilyGetRequestDeviceTypeList =
     HttpAsesBrowserFamilyGetRequestDeviceType,
   ) as any as S.Schema<HttpAsesBrowserFamilyGetRequestDeviceTypeList>;
 
-export type HttpAsesBrowserFamilyGetRequestFormat = "JSON" | "CSV";
+export type HttpAsesBrowserFamilyGetRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const HttpAsesBrowserFamilyGetRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpAsesBrowserFamilyGetRequestGeoIdList = ReadonlyArray<string>;
@@ -27721,7 +28576,10 @@ export const HttpAsesBrowserFamilyGetRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpAsesBrowserFamilyGetRequestGeoIdList>;
 
-export type HttpAsesBrowserFamilyGetRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpAsesBrowserFamilyGetRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpAsesBrowserFamilyGetRequestHttpProtocol =
   /*@__PURE__*/ S.String;
 
@@ -27735,7 +28593,8 @@ export const HttpAsesBrowserFamilyGetRequestHttpProtocolList =
 export type HttpAsesBrowserFamilyGetRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpAsesBrowserFamilyGetRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -27746,7 +28605,10 @@ export const HttpAsesBrowserFamilyGetRequestHttpVersionList =
     HttpAsesBrowserFamilyGetRequestHttpVersion,
   ) as any as S.Schema<HttpAsesBrowserFamilyGetRequestHttpVersionList>;
 
-export type HttpAsesBrowserFamilyGetRequestIpVersion = "IPv4" | "IPv6";
+export type HttpAsesBrowserFamilyGetRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpAsesBrowserFamilyGetRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesBrowserFamilyGetRequestIpVersionList =
@@ -27774,7 +28636,8 @@ export type HttpAsesBrowserFamilyGetRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpAsesBrowserFamilyGetRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpAsesBrowserFamilyGetRequestOsList =
@@ -27788,7 +28651,8 @@ export type HttpAsesBrowserFamilyGetRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpAsesBrowserFamilyGetRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesBrowserFamilyGetRequestTlsVersionList =
@@ -27918,7 +28782,8 @@ export type HttpAsesBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemDat
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpAsesBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -27928,7 +28793,8 @@ export type HttpAsesBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemEve
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpAsesBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -28027,7 +28893,8 @@ export type HttpAsesBrowserFamilyGetResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpAsesBrowserFamilyGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -28116,7 +28983,8 @@ export const GetHttpAsBrowserFamilyResponse = /*@__PURE__*/ S.suspend(() =>
 export type HttpAsesDeviceTypeGetRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpAsesDeviceTypeGetRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpAsesDeviceTypeGetRequestAsnList = ReadonlyArray<string>;
@@ -28126,7 +28994,8 @@ export const HttpAsesDeviceTypeGetRequestAsnList = /*@__PURE__*/ S.Array(
 
 export type HttpAsesDeviceTypeGetRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpAsesDeviceTypeGetRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpAsesDeviceTypeGetRequestBotClassList =
@@ -28139,7 +29008,8 @@ export type HttpAsesDeviceTypeGetRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpAsesDeviceTypeGetRequestBrowserFamily = /*@__PURE__*/ S.String;
 
 export type HttpAsesDeviceTypeGetRequestBrowserFamilyList =
@@ -28169,7 +29039,7 @@ export const HttpAsesDeviceTypeGetRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpAsesDeviceTypeGetRequestDateStartList>;
 
-export type HttpAsesDeviceTypeGetRequestFormat = "JSON" | "CSV";
+export type HttpAsesDeviceTypeGetRequestFormat = "JSON" | "CSV" | (string & {});
 export const HttpAsesDeviceTypeGetRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpAsesDeviceTypeGetRequestGeoIdList = ReadonlyArray<string>;
@@ -28177,7 +29047,10 @@ export const HttpAsesDeviceTypeGetRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpAsesDeviceTypeGetRequestGeoIdList>;
 
-export type HttpAsesDeviceTypeGetRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpAsesDeviceTypeGetRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpAsesDeviceTypeGetRequestHttpProtocol = /*@__PURE__*/ S.String;
 
 export type HttpAsesDeviceTypeGetRequestHttpProtocolList =
@@ -28190,7 +29063,8 @@ export const HttpAsesDeviceTypeGetRequestHttpProtocolList =
 export type HttpAsesDeviceTypeGetRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpAsesDeviceTypeGetRequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesDeviceTypeGetRequestHttpVersionList =
@@ -28200,7 +29074,10 @@ export const HttpAsesDeviceTypeGetRequestHttpVersionList =
     HttpAsesDeviceTypeGetRequestHttpVersion,
   ) as any as S.Schema<HttpAsesDeviceTypeGetRequestHttpVersionList>;
 
-export type HttpAsesDeviceTypeGetRequestIpVersion = "IPv4" | "IPv6";
+export type HttpAsesDeviceTypeGetRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpAsesDeviceTypeGetRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesDeviceTypeGetRequestIpVersionList =
@@ -28226,7 +29103,8 @@ export type HttpAsesDeviceTypeGetRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpAsesDeviceTypeGetRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpAsesDeviceTypeGetRequestOsList =
@@ -28240,7 +29118,8 @@ export type HttpAsesDeviceTypeGetRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpAsesDeviceTypeGetRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesDeviceTypeGetRequestTlsVersionList =
@@ -28369,7 +29248,8 @@ export type HttpAsesDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemDataSo
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpAsesDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -28379,7 +29259,8 @@ export type HttpAsesDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemEventT
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpAsesDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -28478,7 +29359,8 @@ export type HttpAsesDeviceTypeGetResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpAsesDeviceTypeGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -28565,7 +29447,8 @@ export const GetHttpAsDeviceTypeResponse = /*@__PURE__*/ S.suspend(() =>
 export type HttpAsesHttpMethodGetRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpAsesHttpMethodGetRequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesHttpMethodGetRequestAsnList = ReadonlyArray<string>;
@@ -28575,7 +29458,8 @@ export const HttpAsesHttpMethodGetRequestAsnList = /*@__PURE__*/ S.Array(
 
 export type HttpAsesHttpMethodGetRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpAsesHttpMethodGetRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpAsesHttpMethodGetRequestBotClassList =
@@ -28588,7 +29472,8 @@ export type HttpAsesHttpMethodGetRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpAsesHttpMethodGetRequestBrowserFamily = /*@__PURE__*/ S.String;
 
 export type HttpAsesHttpMethodGetRequestBrowserFamilyList =
@@ -28621,7 +29506,8 @@ export const HttpAsesHttpMethodGetRequestDateStartList = /*@__PURE__*/ S.Array(
 export type HttpAsesHttpMethodGetRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpAsesHttpMethodGetRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpAsesHttpMethodGetRequestDeviceTypeList =
@@ -28630,7 +29516,7 @@ export const HttpAsesHttpMethodGetRequestDeviceTypeList = /*@__PURE__*/ S.Array(
   HttpAsesHttpMethodGetRequestDeviceType,
 ) as any as S.Schema<HttpAsesHttpMethodGetRequestDeviceTypeList>;
 
-export type HttpAsesHttpMethodGetRequestFormat = "JSON" | "CSV";
+export type HttpAsesHttpMethodGetRequestFormat = "JSON" | "CSV" | (string & {});
 export const HttpAsesHttpMethodGetRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpAsesHttpMethodGetRequestGeoIdList = ReadonlyArray<string>;
@@ -28638,7 +29524,10 @@ export const HttpAsesHttpMethodGetRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpAsesHttpMethodGetRequestGeoIdList>;
 
-export type HttpAsesHttpMethodGetRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpAsesHttpMethodGetRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpAsesHttpMethodGetRequestHttpProtocol = /*@__PURE__*/ S.String;
 
 export type HttpAsesHttpMethodGetRequestHttpProtocolList =
@@ -28648,7 +29537,10 @@ export const HttpAsesHttpMethodGetRequestHttpProtocolList =
     HttpAsesHttpMethodGetRequestHttpProtocol,
   ) as any as S.Schema<HttpAsesHttpMethodGetRequestHttpProtocolList>;
 
-export type HttpAsesHttpMethodGetRequestIpVersion = "IPv4" | "IPv6";
+export type HttpAsesHttpMethodGetRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpAsesHttpMethodGetRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesHttpMethodGetRequestIpVersionList =
@@ -28674,7 +29566,8 @@ export type HttpAsesHttpMethodGetRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpAsesHttpMethodGetRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpAsesHttpMethodGetRequestOsList =
@@ -28688,7 +29581,8 @@ export type HttpAsesHttpMethodGetRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpAsesHttpMethodGetRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesHttpMethodGetRequestTlsVersionList =
@@ -28817,7 +29711,8 @@ export type HttpAsesHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemDataSo
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpAsesHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -28827,7 +29722,8 @@ export type HttpAsesHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemEventT
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpAsesHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -28926,7 +29822,8 @@ export type HttpAsesHttpMethodGetResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpAsesHttpMethodGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -29010,7 +29907,10 @@ export const GetHttpAsHttpMethodResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetHttpAsHttpMethodResponse",
 }) as any as S.Schema<GetHttpAsHttpMethodResponse>;
 
-export type HttpAsesHttpProtocolGetRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpAsesHttpProtocolGetRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpAsesHttpProtocolGetRequestHttpProtocol =
   /*@__PURE__*/ S.String;
 
@@ -29021,7 +29921,8 @@ export const HttpAsesHttpProtocolGetRequestAsnList = /*@__PURE__*/ S.Array(
 
 export type HttpAsesHttpProtocolGetRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpAsesHttpProtocolGetRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpAsesHttpProtocolGetRequestBotClassList =
@@ -29034,7 +29935,8 @@ export type HttpAsesHttpProtocolGetRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpAsesHttpProtocolGetRequestBrowserFamily =
   /*@__PURE__*/ S.String;
 
@@ -29071,7 +29973,8 @@ export const HttpAsesHttpProtocolGetRequestDateStartList =
 export type HttpAsesHttpProtocolGetRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpAsesHttpProtocolGetRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpAsesHttpProtocolGetRequestDeviceTypeList =
@@ -29081,7 +29984,10 @@ export const HttpAsesHttpProtocolGetRequestDeviceTypeList =
     HttpAsesHttpProtocolGetRequestDeviceType,
   ) as any as S.Schema<HttpAsesHttpProtocolGetRequestDeviceTypeList>;
 
-export type HttpAsesHttpProtocolGetRequestFormat = "JSON" | "CSV";
+export type HttpAsesHttpProtocolGetRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const HttpAsesHttpProtocolGetRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpAsesHttpProtocolGetRequestGeoIdList = ReadonlyArray<string>;
@@ -29092,7 +29998,8 @@ export const HttpAsesHttpProtocolGetRequestGeoIdList = /*@__PURE__*/ S.Array(
 export type HttpAsesHttpProtocolGetRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpAsesHttpProtocolGetRequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesHttpProtocolGetRequestHttpVersionList =
@@ -29102,7 +30009,10 @@ export const HttpAsesHttpProtocolGetRequestHttpVersionList =
     HttpAsesHttpProtocolGetRequestHttpVersion,
   ) as any as S.Schema<HttpAsesHttpProtocolGetRequestHttpVersionList>;
 
-export type HttpAsesHttpProtocolGetRequestIpVersion = "IPv4" | "IPv6";
+export type HttpAsesHttpProtocolGetRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpAsesHttpProtocolGetRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesHttpProtocolGetRequestIpVersionList =
@@ -29129,7 +30039,8 @@ export type HttpAsesHttpProtocolGetRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpAsesHttpProtocolGetRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpAsesHttpProtocolGetRequestOsList =
@@ -29143,7 +30054,8 @@ export type HttpAsesHttpProtocolGetRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpAsesHttpProtocolGetRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesHttpProtocolGetRequestTlsVersionList =
@@ -29273,7 +30185,8 @@ export type HttpAsesHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemData
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpAsesHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -29283,7 +30196,8 @@ export type HttpAsesHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemEven
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpAsesHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -29382,7 +30296,8 @@ export type HttpAsesHttpProtocolGetResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpAsesHttpProtocolGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -29467,7 +30382,10 @@ export const GetHttpAsHttpProtocolResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetHttpAsHttpProtocolResponse",
 }) as any as S.Schema<GetHttpAsHttpProtocolResponse>;
 
-export type HttpAsesIpVersionGetRequestIpVersion = "IPv4" | "IPv6";
+export type HttpAsesIpVersionGetRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpAsesIpVersionGetRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesIpVersionGetRequestAsnList = ReadonlyArray<string>;
@@ -29477,7 +30395,8 @@ export const HttpAsesIpVersionGetRequestAsnList = /*@__PURE__*/ S.Array(
 
 export type HttpAsesIpVersionGetRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpAsesIpVersionGetRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpAsesIpVersionGetRequestBotClassList =
@@ -29490,7 +30409,8 @@ export type HttpAsesIpVersionGetRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpAsesIpVersionGetRequestBrowserFamily = /*@__PURE__*/ S.String;
 
 export type HttpAsesIpVersionGetRequestBrowserFamilyList =
@@ -29523,7 +30443,8 @@ export const HttpAsesIpVersionGetRequestDateStartList = /*@__PURE__*/ S.Array(
 export type HttpAsesIpVersionGetRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpAsesIpVersionGetRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpAsesIpVersionGetRequestDeviceTypeList =
@@ -29532,7 +30453,7 @@ export const HttpAsesIpVersionGetRequestDeviceTypeList = /*@__PURE__*/ S.Array(
   HttpAsesIpVersionGetRequestDeviceType,
 ) as any as S.Schema<HttpAsesIpVersionGetRequestDeviceTypeList>;
 
-export type HttpAsesIpVersionGetRequestFormat = "JSON" | "CSV";
+export type HttpAsesIpVersionGetRequestFormat = "JSON" | "CSV" | (string & {});
 export const HttpAsesIpVersionGetRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpAsesIpVersionGetRequestGeoIdList = ReadonlyArray<string>;
@@ -29540,7 +30461,10 @@ export const HttpAsesIpVersionGetRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpAsesIpVersionGetRequestGeoIdList>;
 
-export type HttpAsesIpVersionGetRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpAsesIpVersionGetRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpAsesIpVersionGetRequestHttpProtocol = /*@__PURE__*/ S.String;
 
 export type HttpAsesIpVersionGetRequestHttpProtocolList =
@@ -29553,7 +30477,8 @@ export const HttpAsesIpVersionGetRequestHttpProtocolList =
 export type HttpAsesIpVersionGetRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpAsesIpVersionGetRequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesIpVersionGetRequestHttpVersionList =
@@ -29579,7 +30504,8 @@ export type HttpAsesIpVersionGetRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpAsesIpVersionGetRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpAsesIpVersionGetRequestOsList =
@@ -29593,7 +30519,8 @@ export type HttpAsesIpVersionGetRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpAsesIpVersionGetRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesIpVersionGetRequestTlsVersionList =
@@ -29718,7 +30645,8 @@ export type HttpAsesIpVersionGetResponseMetaConfidenceInfoAnnotationsItemDataSou
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpAsesIpVersionGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -29728,7 +30656,8 @@ export type HttpAsesIpVersionGetResponseMetaConfidenceInfoAnnotationsItemEventTy
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpAsesIpVersionGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -29826,7 +30755,8 @@ export type HttpAsesIpVersionGetResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpAsesIpVersionGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -29917,7 +30847,8 @@ export type HttpAsesOsGetRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpAsesOsGetRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpAsesOsGetRequestAsnList = ReadonlyArray<string>;
@@ -29925,7 +30856,10 @@ export const HttpAsesOsGetRequestAsnList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpAsesOsGetRequestAsnList>;
 
-export type HttpAsesOsGetRequestBotClass = "LIKELY_AUTOMATED" | "LIKELY_HUMAN";
+export type HttpAsesOsGetRequestBotClass =
+  | "LIKELY_AUTOMATED"
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpAsesOsGetRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpAsesOsGetRequestBotClassList =
@@ -29938,7 +30872,8 @@ export type HttpAsesOsGetRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpAsesOsGetRequestBrowserFamily = /*@__PURE__*/ S.String;
 
 export type HttpAsesOsGetRequestBrowserFamilyList =
@@ -29967,7 +30902,11 @@ export const HttpAsesOsGetRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpAsesOsGetRequestDateStartList>;
 
-export type HttpAsesOsGetRequestDeviceType = "DESKTOP" | "MOBILE" | "OTHER";
+export type HttpAsesOsGetRequestDeviceType =
+  | "DESKTOP"
+  | "MOBILE"
+  | "OTHER"
+  | (string & {});
 export const HttpAsesOsGetRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpAsesOsGetRequestDeviceTypeList =
@@ -29976,7 +30915,7 @@ export const HttpAsesOsGetRequestDeviceTypeList = /*@__PURE__*/ S.Array(
   HttpAsesOsGetRequestDeviceType,
 ) as any as S.Schema<HttpAsesOsGetRequestDeviceTypeList>;
 
-export type HttpAsesOsGetRequestFormat = "JSON" | "CSV";
+export type HttpAsesOsGetRequestFormat = "JSON" | "CSV" | (string & {});
 export const HttpAsesOsGetRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpAsesOsGetRequestGeoIdList = ReadonlyArray<string>;
@@ -29984,7 +30923,7 @@ export const HttpAsesOsGetRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpAsesOsGetRequestGeoIdList>;
 
-export type HttpAsesOsGetRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpAsesOsGetRequestHttpProtocol = "HTTP" | "HTTPS" | (string & {});
 export const HttpAsesOsGetRequestHttpProtocol = /*@__PURE__*/ S.String;
 
 export type HttpAsesOsGetRequestHttpProtocolList =
@@ -29993,7 +30932,11 @@ export const HttpAsesOsGetRequestHttpProtocolList = /*@__PURE__*/ S.Array(
   HttpAsesOsGetRequestHttpProtocol,
 ) as any as S.Schema<HttpAsesOsGetRequestHttpProtocolList>;
 
-export type HttpAsesOsGetRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
+export type HttpAsesOsGetRequestHttpVersion =
+  | "HTTPv1"
+  | "HTTPv2"
+  | "HTTPv3"
+  | (string & {});
 export const HttpAsesOsGetRequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesOsGetRequestHttpVersionList =
@@ -30002,7 +30945,7 @@ export const HttpAsesOsGetRequestHttpVersionList = /*@__PURE__*/ S.Array(
   HttpAsesOsGetRequestHttpVersion,
 ) as any as S.Schema<HttpAsesOsGetRequestHttpVersionList>;
 
-export type HttpAsesOsGetRequestIpVersion = "IPv4" | "IPv6";
+export type HttpAsesOsGetRequestIpVersion = "IPv4" | "IPv6" | (string & {});
 export const HttpAsesOsGetRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesOsGetRequestIpVersionList =
@@ -30026,7 +30969,8 @@ export type HttpAsesOsGetRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpAsesOsGetRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesOsGetRequestTlsVersionList =
@@ -30133,7 +31077,8 @@ export type HttpAsesOsGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   | "NET"
   | "ROBOTS_TXT"
   | "SPEED"
-  | "WORKERS_AI";
+  | "WORKERS_AI"
+  | (string & {});
 export const HttpAsesOsGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -30143,7 +31088,8 @@ export type HttpAsesOsGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const HttpAsesOsGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -30239,7 +31185,8 @@ export type HttpAsesOsGetResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpAsesOsGetResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface HttpAsesOsGetResponseMetaUnitsItem {
@@ -30325,7 +31272,8 @@ export type HttpAsesTlsVersionGetRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpAsesTlsVersionGetRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesTlsVersionGetRequestAsnList = ReadonlyArray<string>;
@@ -30335,7 +31283,8 @@ export const HttpAsesTlsVersionGetRequestAsnList = /*@__PURE__*/ S.Array(
 
 export type HttpAsesTlsVersionGetRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpAsesTlsVersionGetRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpAsesTlsVersionGetRequestBotClassList =
@@ -30348,7 +31297,8 @@ export type HttpAsesTlsVersionGetRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpAsesTlsVersionGetRequestBrowserFamily = /*@__PURE__*/ S.String;
 
 export type HttpAsesTlsVersionGetRequestBrowserFamilyList =
@@ -30381,7 +31331,8 @@ export const HttpAsesTlsVersionGetRequestDateStartList = /*@__PURE__*/ S.Array(
 export type HttpAsesTlsVersionGetRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpAsesTlsVersionGetRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpAsesTlsVersionGetRequestDeviceTypeList =
@@ -30390,7 +31341,7 @@ export const HttpAsesTlsVersionGetRequestDeviceTypeList = /*@__PURE__*/ S.Array(
   HttpAsesTlsVersionGetRequestDeviceType,
 ) as any as S.Schema<HttpAsesTlsVersionGetRequestDeviceTypeList>;
 
-export type HttpAsesTlsVersionGetRequestFormat = "JSON" | "CSV";
+export type HttpAsesTlsVersionGetRequestFormat = "JSON" | "CSV" | (string & {});
 export const HttpAsesTlsVersionGetRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpAsesTlsVersionGetRequestGeoIdList = ReadonlyArray<string>;
@@ -30398,7 +31349,10 @@ export const HttpAsesTlsVersionGetRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpAsesTlsVersionGetRequestGeoIdList>;
 
-export type HttpAsesTlsVersionGetRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpAsesTlsVersionGetRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpAsesTlsVersionGetRequestHttpProtocol = /*@__PURE__*/ S.String;
 
 export type HttpAsesTlsVersionGetRequestHttpProtocolList =
@@ -30411,7 +31365,8 @@ export const HttpAsesTlsVersionGetRequestHttpProtocolList =
 export type HttpAsesTlsVersionGetRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpAsesTlsVersionGetRequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesTlsVersionGetRequestHttpVersionList =
@@ -30421,7 +31376,10 @@ export const HttpAsesTlsVersionGetRequestHttpVersionList =
     HttpAsesTlsVersionGetRequestHttpVersion,
   ) as any as S.Schema<HttpAsesTlsVersionGetRequestHttpVersionList>;
 
-export type HttpAsesTlsVersionGetRequestIpVersion = "IPv4" | "IPv6";
+export type HttpAsesTlsVersionGetRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpAsesTlsVersionGetRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpAsesTlsVersionGetRequestIpVersionList =
@@ -30447,7 +31405,8 @@ export type HttpAsesTlsVersionGetRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpAsesTlsVersionGetRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpAsesTlsVersionGetRequestOsList =
@@ -30576,7 +31535,8 @@ export type HttpAsesTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemDataSo
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpAsesTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -30586,7 +31546,8 @@ export type HttpAsesTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemEventT
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpAsesTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -30685,7 +31646,8 @@ export type HttpAsesTlsVersionGetResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpAsesTlsVersionGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -30776,7 +31738,8 @@ export const HttpLocationsGetRequestAsnList = /*@__PURE__*/ S.Array(
 
 export type HttpLocationsGetRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpLocationsGetRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpLocationsGetRequestBotClassList =
@@ -30789,7 +31752,8 @@ export type HttpLocationsGetRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpLocationsGetRequestBrowserFamily = /*@__PURE__*/ S.String;
 
 export type HttpLocationsGetRequestBrowserFamilyList =
@@ -30818,7 +31782,11 @@ export const HttpLocationsGetRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpLocationsGetRequestDateStartList>;
 
-export type HttpLocationsGetRequestDeviceType = "DESKTOP" | "MOBILE" | "OTHER";
+export type HttpLocationsGetRequestDeviceType =
+  | "DESKTOP"
+  | "MOBILE"
+  | "OTHER"
+  | (string & {});
 export const HttpLocationsGetRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpLocationsGetRequestDeviceTypeList =
@@ -30827,7 +31795,7 @@ export const HttpLocationsGetRequestDeviceTypeList = /*@__PURE__*/ S.Array(
   HttpLocationsGetRequestDeviceType,
 ) as any as S.Schema<HttpLocationsGetRequestDeviceTypeList>;
 
-export type HttpLocationsGetRequestFormat = "JSON" | "CSV";
+export type HttpLocationsGetRequestFormat = "JSON" | "CSV" | (string & {});
 export const HttpLocationsGetRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpLocationsGetRequestGeoIdList = ReadonlyArray<string>;
@@ -30835,7 +31803,10 @@ export const HttpLocationsGetRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpLocationsGetRequestGeoIdList>;
 
-export type HttpLocationsGetRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpLocationsGetRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpLocationsGetRequestHttpProtocol = /*@__PURE__*/ S.String;
 
 export type HttpLocationsGetRequestHttpProtocolList =
@@ -30844,7 +31815,11 @@ export const HttpLocationsGetRequestHttpProtocolList = /*@__PURE__*/ S.Array(
   HttpLocationsGetRequestHttpProtocol,
 ) as any as S.Schema<HttpLocationsGetRequestHttpProtocolList>;
 
-export type HttpLocationsGetRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
+export type HttpLocationsGetRequestHttpVersion =
+  | "HTTPv1"
+  | "HTTPv2"
+  | "HTTPv3"
+  | (string & {});
 export const HttpLocationsGetRequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type HttpLocationsGetRequestHttpVersionList =
@@ -30853,7 +31828,7 @@ export const HttpLocationsGetRequestHttpVersionList = /*@__PURE__*/ S.Array(
   HttpLocationsGetRequestHttpVersion,
 ) as any as S.Schema<HttpLocationsGetRequestHttpVersionList>;
 
-export type HttpLocationsGetRequestIpVersion = "IPv4" | "IPv6";
+export type HttpLocationsGetRequestIpVersion = "IPv4" | "IPv6" | (string & {});
 export const HttpLocationsGetRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpLocationsGetRequestIpVersionList =
@@ -30879,7 +31854,8 @@ export type HttpLocationsGetRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpLocationsGetRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpLocationsGetRequestOsList =
@@ -30893,7 +31869,8 @@ export type HttpLocationsGetRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpLocationsGetRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpLocationsGetRequestTlsVersionList =
@@ -31004,7 +31981,8 @@ export type HttpLocationsGetResponseMetaConfidenceInfoAnnotationsItemDataSource 
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpLocationsGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -31014,7 +31992,8 @@ export type HttpLocationsGetResponseMetaConfidenceInfoAnnotationsItemEventType =
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpLocationsGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -31110,7 +32089,8 @@ export type HttpLocationsGetResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpLocationsGetResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface HttpLocationsGetResponseMetaUnitsItem {
@@ -31194,7 +32174,8 @@ export const GetHttpLocationResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type HttpLocationsBotClassGetRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpLocationsBotClassGetRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpLocationsBotClassGetRequestAsnList = ReadonlyArray<string>;
@@ -31206,7 +32187,8 @@ export type HttpLocationsBotClassGetRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpLocationsBotClassGetRequestBrowserFamily =
   /*@__PURE__*/ S.String;
 
@@ -31246,7 +32228,8 @@ export const HttpLocationsBotClassGetRequestDateStartList =
 export type HttpLocationsBotClassGetRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpLocationsBotClassGetRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpLocationsBotClassGetRequestDeviceTypeList =
@@ -31256,7 +32239,10 @@ export const HttpLocationsBotClassGetRequestDeviceTypeList =
     HttpLocationsBotClassGetRequestDeviceType,
   ) as any as S.Schema<HttpLocationsBotClassGetRequestDeviceTypeList>;
 
-export type HttpLocationsBotClassGetRequestFormat = "JSON" | "CSV";
+export type HttpLocationsBotClassGetRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const HttpLocationsBotClassGetRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpLocationsBotClassGetRequestGeoIdList = ReadonlyArray<string>;
@@ -31264,7 +32250,10 @@ export const HttpLocationsBotClassGetRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpLocationsBotClassGetRequestGeoIdList>;
 
-export type HttpLocationsBotClassGetRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpLocationsBotClassGetRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpLocationsBotClassGetRequestHttpProtocol =
   /*@__PURE__*/ S.String;
 
@@ -31278,7 +32267,8 @@ export const HttpLocationsBotClassGetRequestHttpProtocolList =
 export type HttpLocationsBotClassGetRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpLocationsBotClassGetRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -31289,7 +32279,10 @@ export const HttpLocationsBotClassGetRequestHttpVersionList =
     HttpLocationsBotClassGetRequestHttpVersion,
   ) as any as S.Schema<HttpLocationsBotClassGetRequestHttpVersionList>;
 
-export type HttpLocationsBotClassGetRequestIpVersion = "IPv4" | "IPv6";
+export type HttpLocationsBotClassGetRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpLocationsBotClassGetRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpLocationsBotClassGetRequestIpVersionList =
@@ -31317,7 +32310,8 @@ export type HttpLocationsBotClassGetRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpLocationsBotClassGetRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpLocationsBotClassGetRequestOsList =
@@ -31331,7 +32325,8 @@ export type HttpLocationsBotClassGetRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpLocationsBotClassGetRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpLocationsBotClassGetRequestTlsVersionList =
@@ -31461,7 +32456,8 @@ export type HttpLocationsBotClassGetResponseMetaConfidenceInfoAnnotationsItemDat
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpLocationsBotClassGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -31471,7 +32467,8 @@ export type HttpLocationsBotClassGetResponseMetaConfidenceInfoAnnotationsItemEve
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpLocationsBotClassGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -31570,7 +32567,8 @@ export type HttpLocationsBotClassGetResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpLocationsBotClassGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -31660,7 +32658,8 @@ export type HttpLocationsBrowserFamilyGetRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpLocationsBrowserFamilyGetRequestBrowserFamily =
   /*@__PURE__*/ S.String;
 
@@ -31672,7 +32671,8 @@ export const HttpLocationsBrowserFamilyGetRequestAsnList =
 
 export type HttpLocationsBrowserFamilyGetRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpLocationsBrowserFamilyGetRequestBotClass =
   /*@__PURE__*/ S.String;
 
@@ -31714,7 +32714,8 @@ export const HttpLocationsBrowserFamilyGetRequestDateStartList =
 export type HttpLocationsBrowserFamilyGetRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpLocationsBrowserFamilyGetRequestDeviceType =
   /*@__PURE__*/ S.String;
 
@@ -31725,7 +32726,10 @@ export const HttpLocationsBrowserFamilyGetRequestDeviceTypeList =
     HttpLocationsBrowserFamilyGetRequestDeviceType,
   ) as any as S.Schema<HttpLocationsBrowserFamilyGetRequestDeviceTypeList>;
 
-export type HttpLocationsBrowserFamilyGetRequestFormat = "JSON" | "CSV";
+export type HttpLocationsBrowserFamilyGetRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const HttpLocationsBrowserFamilyGetRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -31736,7 +32740,10 @@ export const HttpLocationsBrowserFamilyGetRequestGeoIdList =
     S.String,
   ) as any as S.Schema<HttpLocationsBrowserFamilyGetRequestGeoIdList>;
 
-export type HttpLocationsBrowserFamilyGetRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpLocationsBrowserFamilyGetRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpLocationsBrowserFamilyGetRequestHttpProtocol =
   /*@__PURE__*/ S.String;
 
@@ -31750,7 +32757,8 @@ export const HttpLocationsBrowserFamilyGetRequestHttpProtocolList =
 export type HttpLocationsBrowserFamilyGetRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpLocationsBrowserFamilyGetRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -31761,7 +32769,10 @@ export const HttpLocationsBrowserFamilyGetRequestHttpVersionList =
     HttpLocationsBrowserFamilyGetRequestHttpVersion,
   ) as any as S.Schema<HttpLocationsBrowserFamilyGetRequestHttpVersionList>;
 
-export type HttpLocationsBrowserFamilyGetRequestIpVersion = "IPv4" | "IPv6";
+export type HttpLocationsBrowserFamilyGetRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpLocationsBrowserFamilyGetRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -31793,7 +32804,8 @@ export type HttpLocationsBrowserFamilyGetRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpLocationsBrowserFamilyGetRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpLocationsBrowserFamilyGetRequestOsList =
@@ -31807,7 +32819,8 @@ export type HttpLocationsBrowserFamilyGetRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpLocationsBrowserFamilyGetRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -31946,7 +32959,8 @@ export type HttpLocationsBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsIt
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpLocationsBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -31956,7 +32970,8 @@ export type HttpLocationsBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsIt
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpLocationsBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -32055,7 +33070,8 @@ export type HttpLocationsBrowserFamilyGetResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpLocationsBrowserFamilyGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -32146,7 +33162,8 @@ export const GetHttpLocationBrowserFamilyResponse = /*@__PURE__*/ S.suspend(
 export type HttpLocationsDeviceTypeGetRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpLocationsDeviceTypeGetRequestDeviceType =
   /*@__PURE__*/ S.String;
 
@@ -32157,7 +33174,8 @@ export const HttpLocationsDeviceTypeGetRequestAsnList = /*@__PURE__*/ S.Array(
 
 export type HttpLocationsDeviceTypeGetRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpLocationsDeviceTypeGetRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpLocationsDeviceTypeGetRequestBotClassList =
@@ -32171,7 +33189,8 @@ export type HttpLocationsDeviceTypeGetRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpLocationsDeviceTypeGetRequestBrowserFamily =
   /*@__PURE__*/ S.String;
 
@@ -32210,7 +33229,10 @@ export const HttpLocationsDeviceTypeGetRequestDateStartList =
     S.String,
   ) as any as S.Schema<HttpLocationsDeviceTypeGetRequestDateStartList>;
 
-export type HttpLocationsDeviceTypeGetRequestFormat = "JSON" | "CSV";
+export type HttpLocationsDeviceTypeGetRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const HttpLocationsDeviceTypeGetRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpLocationsDeviceTypeGetRequestGeoIdList = ReadonlyArray<string>;
@@ -32218,7 +33240,10 @@ export const HttpLocationsDeviceTypeGetRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpLocationsDeviceTypeGetRequestGeoIdList>;
 
-export type HttpLocationsDeviceTypeGetRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpLocationsDeviceTypeGetRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpLocationsDeviceTypeGetRequestHttpProtocol =
   /*@__PURE__*/ S.String;
 
@@ -32232,7 +33257,8 @@ export const HttpLocationsDeviceTypeGetRequestHttpProtocolList =
 export type HttpLocationsDeviceTypeGetRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpLocationsDeviceTypeGetRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -32243,7 +33269,10 @@ export const HttpLocationsDeviceTypeGetRequestHttpVersionList =
     HttpLocationsDeviceTypeGetRequestHttpVersion,
   ) as any as S.Schema<HttpLocationsDeviceTypeGetRequestHttpVersionList>;
 
-export type HttpLocationsDeviceTypeGetRequestIpVersion = "IPv4" | "IPv6";
+export type HttpLocationsDeviceTypeGetRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpLocationsDeviceTypeGetRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -32273,7 +33302,8 @@ export type HttpLocationsDeviceTypeGetRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpLocationsDeviceTypeGetRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpLocationsDeviceTypeGetRequestOsList =
@@ -32287,7 +33317,8 @@ export type HttpLocationsDeviceTypeGetRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpLocationsDeviceTypeGetRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -32420,7 +33451,8 @@ export type HttpLocationsDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemD
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpLocationsDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -32430,7 +33462,8 @@ export type HttpLocationsDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemE
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpLocationsDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -32529,7 +33562,8 @@ export type HttpLocationsDeviceTypeGetResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpLocationsDeviceTypeGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -32618,7 +33652,8 @@ export const GetHttpLocationDeviceTypeResponse = /*@__PURE__*/ S.suspend(() =>
 export type HttpLocationsHttpMethodGetRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpLocationsHttpMethodGetRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -32629,7 +33664,8 @@ export const HttpLocationsHttpMethodGetRequestAsnList = /*@__PURE__*/ S.Array(
 
 export type HttpLocationsHttpMethodGetRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpLocationsHttpMethodGetRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpLocationsHttpMethodGetRequestBotClassList =
@@ -32643,7 +33679,8 @@ export type HttpLocationsHttpMethodGetRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpLocationsHttpMethodGetRequestBrowserFamily =
   /*@__PURE__*/ S.String;
 
@@ -32685,7 +33722,8 @@ export const HttpLocationsHttpMethodGetRequestDateStartList =
 export type HttpLocationsHttpMethodGetRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpLocationsHttpMethodGetRequestDeviceType =
   /*@__PURE__*/ S.String;
 
@@ -32696,7 +33734,10 @@ export const HttpLocationsHttpMethodGetRequestDeviceTypeList =
     HttpLocationsHttpMethodGetRequestDeviceType,
   ) as any as S.Schema<HttpLocationsHttpMethodGetRequestDeviceTypeList>;
 
-export type HttpLocationsHttpMethodGetRequestFormat = "JSON" | "CSV";
+export type HttpLocationsHttpMethodGetRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const HttpLocationsHttpMethodGetRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpLocationsHttpMethodGetRequestGeoIdList = ReadonlyArray<string>;
@@ -32704,7 +33745,10 @@ export const HttpLocationsHttpMethodGetRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpLocationsHttpMethodGetRequestGeoIdList>;
 
-export type HttpLocationsHttpMethodGetRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpLocationsHttpMethodGetRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpLocationsHttpMethodGetRequestHttpProtocol =
   /*@__PURE__*/ S.String;
 
@@ -32715,7 +33759,10 @@ export const HttpLocationsHttpMethodGetRequestHttpProtocolList =
     HttpLocationsHttpMethodGetRequestHttpProtocol,
   ) as any as S.Schema<HttpLocationsHttpMethodGetRequestHttpProtocolList>;
 
-export type HttpLocationsHttpMethodGetRequestIpVersion = "IPv4" | "IPv6";
+export type HttpLocationsHttpMethodGetRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpLocationsHttpMethodGetRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -32745,7 +33792,8 @@ export type HttpLocationsHttpMethodGetRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpLocationsHttpMethodGetRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpLocationsHttpMethodGetRequestOsList =
@@ -32759,7 +33807,8 @@ export type HttpLocationsHttpMethodGetRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpLocationsHttpMethodGetRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -32892,7 +33941,8 @@ export type HttpLocationsHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemD
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpLocationsHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -32902,7 +33952,8 @@ export type HttpLocationsHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemE
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpLocationsHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -33001,7 +34052,8 @@ export type HttpLocationsHttpMethodGetResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpLocationsHttpMethodGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -33087,7 +34139,10 @@ export const GetHttpLocationHttpMethodResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetHttpLocationHttpMethodResponse",
 }) as any as S.Schema<GetHttpLocationHttpMethodResponse>;
 
-export type HttpLocationsHttpProtocolGetRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpLocationsHttpProtocolGetRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpLocationsHttpProtocolGetRequestHttpProtocol =
   /*@__PURE__*/ S.String;
 
@@ -33098,7 +34153,8 @@ export const HttpLocationsHttpProtocolGetRequestAsnList = /*@__PURE__*/ S.Array(
 
 export type HttpLocationsHttpProtocolGetRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpLocationsHttpProtocolGetRequestBotClass =
   /*@__PURE__*/ S.String;
 
@@ -33113,7 +34169,8 @@ export type HttpLocationsHttpProtocolGetRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpLocationsHttpProtocolGetRequestBrowserFamily =
   /*@__PURE__*/ S.String;
 
@@ -33155,7 +34212,8 @@ export const HttpLocationsHttpProtocolGetRequestDateStartList =
 export type HttpLocationsHttpProtocolGetRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpLocationsHttpProtocolGetRequestDeviceType =
   /*@__PURE__*/ S.String;
 
@@ -33166,7 +34224,10 @@ export const HttpLocationsHttpProtocolGetRequestDeviceTypeList =
     HttpLocationsHttpProtocolGetRequestDeviceType,
   ) as any as S.Schema<HttpLocationsHttpProtocolGetRequestDeviceTypeList>;
 
-export type HttpLocationsHttpProtocolGetRequestFormat = "JSON" | "CSV";
+export type HttpLocationsHttpProtocolGetRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const HttpLocationsHttpProtocolGetRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpLocationsHttpProtocolGetRequestGeoIdList =
@@ -33179,7 +34240,8 @@ export const HttpLocationsHttpProtocolGetRequestGeoIdList =
 export type HttpLocationsHttpProtocolGetRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpLocationsHttpProtocolGetRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -33190,7 +34252,10 @@ export const HttpLocationsHttpProtocolGetRequestHttpVersionList =
     HttpLocationsHttpProtocolGetRequestHttpVersion,
   ) as any as S.Schema<HttpLocationsHttpProtocolGetRequestHttpVersionList>;
 
-export type HttpLocationsHttpProtocolGetRequestIpVersion = "IPv4" | "IPv6";
+export type HttpLocationsHttpProtocolGetRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpLocationsHttpProtocolGetRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -33221,7 +34286,8 @@ export type HttpLocationsHttpProtocolGetRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpLocationsHttpProtocolGetRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpLocationsHttpProtocolGetRequestOsList =
@@ -33235,7 +34301,8 @@ export type HttpLocationsHttpProtocolGetRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpLocationsHttpProtocolGetRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -33372,7 +34439,8 @@ export type HttpLocationsHttpProtocolGetResponseMetaConfidenceInfoAnnotationsIte
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpLocationsHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -33382,7 +34450,8 @@ export type HttpLocationsHttpProtocolGetResponseMetaConfidenceInfoAnnotationsIte
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpLocationsHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -33481,7 +34550,8 @@ export type HttpLocationsHttpProtocolGetResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpLocationsHttpProtocolGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -33568,7 +34638,10 @@ export const GetHttpLocationHttpProtocolResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetHttpLocationHttpProtocolResponse",
 }) as any as S.Schema<GetHttpLocationHttpProtocolResponse>;
 
-export type HttpLocationsIpVersionGetRequestIpVersion = "IPv4" | "IPv6";
+export type HttpLocationsIpVersionGetRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpLocationsIpVersionGetRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpLocationsIpVersionGetRequestAsnList = ReadonlyArray<string>;
@@ -33578,7 +34651,8 @@ export const HttpLocationsIpVersionGetRequestAsnList = /*@__PURE__*/ S.Array(
 
 export type HttpLocationsIpVersionGetRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpLocationsIpVersionGetRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpLocationsIpVersionGetRequestBotClassList =
@@ -33592,7 +34666,8 @@ export type HttpLocationsIpVersionGetRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpLocationsIpVersionGetRequestBrowserFamily =
   /*@__PURE__*/ S.String;
 
@@ -33633,7 +34708,8 @@ export const HttpLocationsIpVersionGetRequestDateStartList =
 export type HttpLocationsIpVersionGetRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpLocationsIpVersionGetRequestDeviceType =
   /*@__PURE__*/ S.String;
 
@@ -33644,7 +34720,10 @@ export const HttpLocationsIpVersionGetRequestDeviceTypeList =
     HttpLocationsIpVersionGetRequestDeviceType,
   ) as any as S.Schema<HttpLocationsIpVersionGetRequestDeviceTypeList>;
 
-export type HttpLocationsIpVersionGetRequestFormat = "JSON" | "CSV";
+export type HttpLocationsIpVersionGetRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const HttpLocationsIpVersionGetRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpLocationsIpVersionGetRequestGeoIdList = ReadonlyArray<string>;
@@ -33652,7 +34731,10 @@ export const HttpLocationsIpVersionGetRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpLocationsIpVersionGetRequestGeoIdList>;
 
-export type HttpLocationsIpVersionGetRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpLocationsIpVersionGetRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpLocationsIpVersionGetRequestHttpProtocol =
   /*@__PURE__*/ S.String;
 
@@ -33666,7 +34748,8 @@ export const HttpLocationsIpVersionGetRequestHttpProtocolList =
 export type HttpLocationsIpVersionGetRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpLocationsIpVersionGetRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -33696,7 +34779,8 @@ export type HttpLocationsIpVersionGetRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpLocationsIpVersionGetRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpLocationsIpVersionGetRequestOsList =
@@ -33710,7 +34794,8 @@ export type HttpLocationsIpVersionGetRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpLocationsIpVersionGetRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -33843,7 +34928,8 @@ export type HttpLocationsIpVersionGetResponseMetaConfidenceInfoAnnotationsItemDa
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpLocationsIpVersionGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -33853,7 +34939,8 @@ export type HttpLocationsIpVersionGetResponseMetaConfidenceInfoAnnotationsItemEv
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpLocationsIpVersionGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -33952,7 +35039,8 @@ export type HttpLocationsIpVersionGetResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpLocationsIpVersionGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -34045,7 +35133,8 @@ export type HttpLocationsOsGetRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpLocationsOsGetRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpLocationsOsGetRequestAsnList = ReadonlyArray<string>;
@@ -34055,7 +35144,8 @@ export const HttpLocationsOsGetRequestAsnList = /*@__PURE__*/ S.Array(
 
 export type HttpLocationsOsGetRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpLocationsOsGetRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpLocationsOsGetRequestBotClassList =
@@ -34068,7 +35158,8 @@ export type HttpLocationsOsGetRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpLocationsOsGetRequestBrowserFamily = /*@__PURE__*/ S.String;
 
 export type HttpLocationsOsGetRequestBrowserFamilyList =
@@ -34100,7 +35191,8 @@ export const HttpLocationsOsGetRequestDateStartList = /*@__PURE__*/ S.Array(
 export type HttpLocationsOsGetRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpLocationsOsGetRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpLocationsOsGetRequestDeviceTypeList =
@@ -34109,7 +35201,7 @@ export const HttpLocationsOsGetRequestDeviceTypeList = /*@__PURE__*/ S.Array(
   HttpLocationsOsGetRequestDeviceType,
 ) as any as S.Schema<HttpLocationsOsGetRequestDeviceTypeList>;
 
-export type HttpLocationsOsGetRequestFormat = "JSON" | "CSV";
+export type HttpLocationsOsGetRequestFormat = "JSON" | "CSV" | (string & {});
 export const HttpLocationsOsGetRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpLocationsOsGetRequestGeoIdList = ReadonlyArray<string>;
@@ -34117,7 +35209,10 @@ export const HttpLocationsOsGetRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpLocationsOsGetRequestGeoIdList>;
 
-export type HttpLocationsOsGetRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpLocationsOsGetRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpLocationsOsGetRequestHttpProtocol = /*@__PURE__*/ S.String;
 
 export type HttpLocationsOsGetRequestHttpProtocolList =
@@ -34129,7 +35224,8 @@ export const HttpLocationsOsGetRequestHttpProtocolList = /*@__PURE__*/ S.Array(
 export type HttpLocationsOsGetRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpLocationsOsGetRequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type HttpLocationsOsGetRequestHttpVersionList =
@@ -34138,7 +35234,10 @@ export const HttpLocationsOsGetRequestHttpVersionList = /*@__PURE__*/ S.Array(
   HttpLocationsOsGetRequestHttpVersion,
 ) as any as S.Schema<HttpLocationsOsGetRequestHttpVersionList>;
 
-export type HttpLocationsOsGetRequestIpVersion = "IPv4" | "IPv6";
+export type HttpLocationsOsGetRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpLocationsOsGetRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpLocationsOsGetRequestIpVersionList =
@@ -34162,7 +35261,8 @@ export type HttpLocationsOsGetRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpLocationsOsGetRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpLocationsOsGetRequestTlsVersionList =
@@ -34285,7 +35385,8 @@ export type HttpLocationsOsGetResponseMetaConfidenceInfoAnnotationsItemDataSourc
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpLocationsOsGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -34295,7 +35396,8 @@ export type HttpLocationsOsGetResponseMetaConfidenceInfoAnnotationsItemEventType
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpLocationsOsGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -34392,7 +35494,8 @@ export type HttpLocationsOsGetResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpLocationsOsGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -34480,7 +35583,8 @@ export type HttpLocationsTlsVersionGetRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpLocationsTlsVersionGetRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -34491,7 +35595,8 @@ export const HttpLocationsTlsVersionGetRequestAsnList = /*@__PURE__*/ S.Array(
 
 export type HttpLocationsTlsVersionGetRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpLocationsTlsVersionGetRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpLocationsTlsVersionGetRequestBotClassList =
@@ -34505,7 +35610,8 @@ export type HttpLocationsTlsVersionGetRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpLocationsTlsVersionGetRequestBrowserFamily =
   /*@__PURE__*/ S.String;
 
@@ -34547,7 +35653,8 @@ export const HttpLocationsTlsVersionGetRequestDateStartList =
 export type HttpLocationsTlsVersionGetRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpLocationsTlsVersionGetRequestDeviceType =
   /*@__PURE__*/ S.String;
 
@@ -34558,7 +35665,10 @@ export const HttpLocationsTlsVersionGetRequestDeviceTypeList =
     HttpLocationsTlsVersionGetRequestDeviceType,
   ) as any as S.Schema<HttpLocationsTlsVersionGetRequestDeviceTypeList>;
 
-export type HttpLocationsTlsVersionGetRequestFormat = "JSON" | "CSV";
+export type HttpLocationsTlsVersionGetRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const HttpLocationsTlsVersionGetRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpLocationsTlsVersionGetRequestGeoIdList = ReadonlyArray<string>;
@@ -34566,7 +35676,10 @@ export const HttpLocationsTlsVersionGetRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpLocationsTlsVersionGetRequestGeoIdList>;
 
-export type HttpLocationsTlsVersionGetRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpLocationsTlsVersionGetRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpLocationsTlsVersionGetRequestHttpProtocol =
   /*@__PURE__*/ S.String;
 
@@ -34580,7 +35693,8 @@ export const HttpLocationsTlsVersionGetRequestHttpProtocolList =
 export type HttpLocationsTlsVersionGetRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpLocationsTlsVersionGetRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -34591,7 +35705,10 @@ export const HttpLocationsTlsVersionGetRequestHttpVersionList =
     HttpLocationsTlsVersionGetRequestHttpVersion,
   ) as any as S.Schema<HttpLocationsTlsVersionGetRequestHttpVersionList>;
 
-export type HttpLocationsTlsVersionGetRequestIpVersion = "IPv4" | "IPv6";
+export type HttpLocationsTlsVersionGetRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpLocationsTlsVersionGetRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -34621,7 +35738,8 @@ export type HttpLocationsTlsVersionGetRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpLocationsTlsVersionGetRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpLocationsTlsVersionGetRequestOsList =
@@ -34752,7 +35870,8 @@ export type HttpLocationsTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemD
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpLocationsTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -34762,7 +35881,8 @@ export type HttpLocationsTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemE
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpLocationsTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -34861,7 +35981,8 @@ export type HttpLocationsTlsVersionGetResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpLocationsTlsVersionGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -34952,7 +36073,7 @@ export const RankingDomainGetRequestDateList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RankingDomainGetRequestDateList>;
 
-export type RankingDomainGetRequestFormat = "JSON" | "CSV";
+export type RankingDomainGetRequestFormat = "JSON" | "CSV" | (string & {});
 export const RankingDomainGetRequestFormat = /*@__PURE__*/ S.String;
 
 export type RankingDomainGetRequestNameList = ReadonlyArray<string>;
@@ -34963,7 +36084,8 @@ export const RankingDomainGetRequestNameList = /*@__PURE__*/ S.Array(
 export type RankingDomainGetRequestRankingType =
   | "POPULAR"
   | "TRENDING_RISE"
-  | "TRENDING_STEADY";
+  | "TRENDING_STEADY"
+  | (string & {});
 export const RankingDomainGetRequestRankingType = /*@__PURE__*/ S.String;
 
 export interface GetRankingDomainRequest {
@@ -35119,13 +36241,20 @@ export const GetRankingDomainResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRankingDomainResponse",
 }) as any as S.Schema<GetRankingDomainResponse>;
 
-export type TrafficAnomaliesGetRequestFormat = "JSON" | "CSV";
+export type TrafficAnomaliesGetRequestFormat = "JSON" | "CSV" | (string & {});
 export const TrafficAnomaliesGetRequestFormat = /*@__PURE__*/ S.String;
 
-export type TrafficAnomaliesGetRequestStatus = "VERIFIED" | "UNVERIFIED";
+export type TrafficAnomaliesGetRequestStatus =
+  | "VERIFIED"
+  | "UNVERIFIED"
+  | (string & {});
 export const TrafficAnomaliesGetRequestStatus = /*@__PURE__*/ S.String;
 
-export type TrafficAnomaliesGetRequestType = "LOCATION" | "AS" | "ORIGIN";
+export type TrafficAnomaliesGetRequestType =
+  | "LOCATION"
+  | "AS"
+  | "ORIGIN"
+  | (string & {});
 export const TrafficAnomaliesGetRequestType = /*@__PURE__*/ S.String;
 
 export type TrafficAnomaliesGetRequestTypeList =
@@ -35301,12 +36430,16 @@ export const GetTrafficAnomalyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTrafficAnomalyResponse",
 }) as any as S.Schema<GetTrafficAnomalyResponse>;
 
-export type TrafficAnomaliesLocationsGetRequestFormat = "JSON" | "CSV";
+export type TrafficAnomaliesLocationsGetRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const TrafficAnomaliesLocationsGetRequestFormat = /*@__PURE__*/ S.String;
 
 export type TrafficAnomaliesLocationsGetRequestStatus =
   | "VERIFIED"
-  | "UNVERIFIED";
+  | "UNVERIFIED"
+  | (string & {});
 export const TrafficAnomaliesLocationsGetRequestStatus = /*@__PURE__*/ S.String;
 
 export interface GetTrafficAnomalyLocationRequest {
@@ -35395,7 +36528,8 @@ export type SearchGlobalRequestExclude =
   | "LOCATIONS"
   | "NOTEBOOKS"
   | "TLDS"
-  | "VERTICALS";
+  | "VERTICALS"
+  | (string & {});
 export const SearchGlobalRequestExclude = /*@__PURE__*/ S.String;
 
 export type SearchGlobalRequestExcludeList =
@@ -35404,7 +36538,7 @@ export const SearchGlobalRequestExcludeList = /*@__PURE__*/ S.Array(
   SearchGlobalRequestExclude,
 ) as any as S.Schema<SearchGlobalRequestExcludeList>;
 
-export type SearchGlobalRequestFormat = "JSON" | "CSV";
+export type SearchGlobalRequestFormat = "JSON" | "CSV" | (string & {});
 export const SearchGlobalRequestFormat = /*@__PURE__*/ S.String;
 
 export type SearchGlobalRequestInclude =
@@ -35419,7 +36553,8 @@ export type SearchGlobalRequestInclude =
   | "LOCATIONS"
   | "NOTEBOOKS"
   | "TLDS"
-  | "VERTICALS";
+  | "VERTICALS"
+  | (string & {});
 export const SearchGlobalRequestInclude = /*@__PURE__*/ S.String;
 
 export type SearchGlobalRequestIncludeList =
@@ -35505,7 +36640,7 @@ export const QualitySpeedHistogramRequestDateEndList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QualitySpeedHistogramRequestDateEndList>;
 
-export type QualitySpeedHistogramRequestFormat = "JSON" | "CSV";
+export type QualitySpeedHistogramRequestFormat = "JSON" | "CSV" | (string & {});
 export const QualitySpeedHistogramRequestFormat = /*@__PURE__*/ S.String;
 
 export type QualitySpeedHistogramRequestLocationList = ReadonlyArray<string>;
@@ -35516,7 +36651,8 @@ export const QualitySpeedHistogramRequestLocationList = /*@__PURE__*/ S.Array(
 export type QualitySpeedHistogramRequestMetricGroup =
   | "BANDWIDTH"
   | "LATENCY"
-  | "JITTER";
+  | "JITTER"
+  | (string & {});
 export const QualitySpeedHistogramRequestMetricGroup = /*@__PURE__*/ S.String;
 
 export type QualitySpeedHistogramRequestNameList = ReadonlyArray<string>;
@@ -35637,7 +36773,8 @@ export type QualitySpeedHistogramResponseMetaConfidenceInfoAnnotationsItemDataSo
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const QualitySpeedHistogramResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -35647,7 +36784,8 @@ export type QualitySpeedHistogramResponseMetaConfidenceInfoAnnotationsItemEventT
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const QualitySpeedHistogramResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -35746,7 +36884,8 @@ export type QualitySpeedHistogramResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const QualitySpeedHistogramResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -35856,14 +36995,18 @@ export const AttacksLayer7SummaryHttpMethodRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer7SummaryHttpMethodRequestDateStartList>;
 
-export type AttacksLayer7SummaryHttpMethodRequestFormat = "JSON" | "CSV";
+export type AttacksLayer7SummaryHttpMethodRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer7SummaryHttpMethodRequestFormat =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7SummaryHttpMethodRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const AttacksLayer7SummaryHttpMethodRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -35874,7 +37017,10 @@ export const AttacksLayer7SummaryHttpMethodRequestHttpVersionList =
     AttacksLayer7SummaryHttpMethodRequestHttpVersion,
   ) as any as S.Schema<AttacksLayer7SummaryHttpMethodRequestHttpVersionList>;
 
-export type AttacksLayer7SummaryHttpMethodRequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer7SummaryHttpMethodRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer7SummaryHttpMethodRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -35899,7 +37045,8 @@ export type AttacksLayer7SummaryHttpMethodRequestMitigationProduct =
   | "ACCESS_RULES"
   | "IP_REPUTATION"
   | "API_SHIELD"
-  | "DATA_LOSS_PREVENTION";
+  | "DATA_LOSS_PREVENTION"
+  | (string & {});
 export const AttacksLayer7SummaryHttpMethodRequestMitigationProduct =
   /*@__PURE__*/ S.String;
 
@@ -36020,7 +37167,8 @@ export type AttacksLayer7SummaryHttpMethodResponseMetaConfidenceInfoAnnotationsI
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer7SummaryHttpMethodResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -36030,7 +37178,8 @@ export type AttacksLayer7SummaryHttpMethodResponseMetaConfidenceInfoAnnotationsI
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer7SummaryHttpMethodResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -36129,7 +37278,8 @@ export type AttacksLayer7SummaryHttpMethodResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer7SummaryHttpMethodResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -36208,7 +37358,8 @@ export type AttacksLayer7TimeseriesGroupsHttpMethodRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsHttpMethodRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -36249,14 +37400,16 @@ export const AttacksLayer7TimeseriesGroupsHttpMethodRequestDateStartList =
 
 export type AttacksLayer7TimeseriesGroupsHttpMethodRequestFormat =
   | "JSON"
-  | "CSV";
+  | "CSV"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsHttpMethodRequestFormat =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TimeseriesGroupsHttpMethodRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsHttpMethodRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -36269,7 +37422,8 @@ export const AttacksLayer7TimeseriesGroupsHttpMethodRequestHttpVersionList =
 
 export type AttacksLayer7TimeseriesGroupsHttpMethodRequestIpVersion =
   | "IPv4"
-  | "IPv6";
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsHttpMethodRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -36294,7 +37448,8 @@ export type AttacksLayer7TimeseriesGroupsHttpMethodRequestMitigationProduct =
   | "ACCESS_RULES"
   | "IP_REPUTATION"
   | "API_SHIELD"
-  | "DATA_LOSS_PREVENTION";
+  | "DATA_LOSS_PREVENTION"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsHttpMethodRequestMitigationProduct =
   /*@__PURE__*/ S.String;
 
@@ -36314,7 +37469,8 @@ export const AttacksLayer7TimeseriesGroupsHttpMethodRequestNameList =
 
 export type AttacksLayer7TimeseriesGroupsHttpMethodRequestNormalization =
   | "PERCENTAGE"
-  | "MIN0_MAX";
+  | "MIN0_MAX"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsHttpMethodRequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -36429,7 +37585,8 @@ export type AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -36458,7 +37615,8 @@ export type AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaConfidenceInfoAnn
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -36468,7 +37626,8 @@ export type AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaConfidenceInfoAnn
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -36569,7 +37728,8 @@ export type AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -36669,7 +37829,8 @@ export const HttpSummaryHttpProtocolRequestAsnList = /*@__PURE__*/ S.Array(
 
 export type HttpSummaryHttpProtocolRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpSummaryHttpProtocolRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpSummaryHttpProtocolRequestBotClassList =
@@ -36682,7 +37843,8 @@ export type HttpSummaryHttpProtocolRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpSummaryHttpProtocolRequestBrowserFamily =
   /*@__PURE__*/ S.String;
 
@@ -36719,7 +37881,8 @@ export const HttpSummaryHttpProtocolRequestDateStartList =
 export type HttpSummaryHttpProtocolRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpSummaryHttpProtocolRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpSummaryHttpProtocolRequestDeviceTypeList =
@@ -36729,7 +37892,10 @@ export const HttpSummaryHttpProtocolRequestDeviceTypeList =
     HttpSummaryHttpProtocolRequestDeviceType,
   ) as any as S.Schema<HttpSummaryHttpProtocolRequestDeviceTypeList>;
 
-export type HttpSummaryHttpProtocolRequestFormat = "JSON" | "CSV";
+export type HttpSummaryHttpProtocolRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const HttpSummaryHttpProtocolRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpSummaryHttpProtocolRequestGeoIdList = ReadonlyArray<string>;
@@ -36740,7 +37906,8 @@ export const HttpSummaryHttpProtocolRequestGeoIdList = /*@__PURE__*/ S.Array(
 export type HttpSummaryHttpProtocolRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpSummaryHttpProtocolRequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type HttpSummaryHttpProtocolRequestHttpVersionList =
@@ -36750,7 +37917,10 @@ export const HttpSummaryHttpProtocolRequestHttpVersionList =
     HttpSummaryHttpProtocolRequestHttpVersion,
   ) as any as S.Schema<HttpSummaryHttpProtocolRequestHttpVersionList>;
 
-export type HttpSummaryHttpProtocolRequestIpVersion = "IPv4" | "IPv6";
+export type HttpSummaryHttpProtocolRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpSummaryHttpProtocolRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpSummaryHttpProtocolRequestIpVersionList =
@@ -36777,7 +37947,8 @@ export type HttpSummaryHttpProtocolRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpSummaryHttpProtocolRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpSummaryHttpProtocolRequestOsList =
@@ -36791,7 +37962,8 @@ export type HttpSummaryHttpProtocolRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpSummaryHttpProtocolRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpSummaryHttpProtocolRequestTlsVersionList =
@@ -36913,7 +38085,8 @@ export type HttpSummaryHttpProtocolResponseMetaConfidenceInfoAnnotationsItemData
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpSummaryHttpProtocolResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -36923,7 +38096,8 @@ export type HttpSummaryHttpProtocolResponseMetaConfidenceInfoAnnotationsItemEven
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpSummaryHttpProtocolResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -37022,7 +38196,8 @@ export type HttpSummaryHttpProtocolResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpSummaryHttpProtocolResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -37104,7 +38279,8 @@ export type HttpTimeseriesGroupsHttpProtocolRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const HttpTimeseriesGroupsHttpProtocolRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -37117,7 +38293,8 @@ export const HttpTimeseriesGroupsHttpProtocolRequestAsnList =
 
 export type HttpTimeseriesGroupsHttpProtocolRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpTimeseriesGroupsHttpProtocolRequestBotClass =
   /*@__PURE__*/ S.String;
 
@@ -37132,7 +38309,8 @@ export type HttpTimeseriesGroupsHttpProtocolRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpTimeseriesGroupsHttpProtocolRequestBrowserFamily =
   /*@__PURE__*/ S.String;
 
@@ -37174,7 +38352,8 @@ export const HttpTimeseriesGroupsHttpProtocolRequestDateStartList =
 export type HttpTimeseriesGroupsHttpProtocolRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpTimeseriesGroupsHttpProtocolRequestDeviceType =
   /*@__PURE__*/ S.String;
 
@@ -37185,7 +38364,10 @@ export const HttpTimeseriesGroupsHttpProtocolRequestDeviceTypeList =
     HttpTimeseriesGroupsHttpProtocolRequestDeviceType,
   ) as any as S.Schema<HttpTimeseriesGroupsHttpProtocolRequestDeviceTypeList>;
 
-export type HttpTimeseriesGroupsHttpProtocolRequestFormat = "JSON" | "CSV";
+export type HttpTimeseriesGroupsHttpProtocolRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const HttpTimeseriesGroupsHttpProtocolRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -37199,7 +38381,8 @@ export const HttpTimeseriesGroupsHttpProtocolRequestGeoIdList =
 export type HttpTimeseriesGroupsHttpProtocolRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpTimeseriesGroupsHttpProtocolRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -37210,7 +38393,10 @@ export const HttpTimeseriesGroupsHttpProtocolRequestHttpVersionList =
     HttpTimeseriesGroupsHttpProtocolRequestHttpVersion,
   ) as any as S.Schema<HttpTimeseriesGroupsHttpProtocolRequestHttpVersionList>;
 
-export type HttpTimeseriesGroupsHttpProtocolRequestIpVersion = "IPv4" | "IPv6";
+export type HttpTimeseriesGroupsHttpProtocolRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpTimeseriesGroupsHttpProtocolRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -37242,7 +38428,8 @@ export type HttpTimeseriesGroupsHttpProtocolRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpTimeseriesGroupsHttpProtocolRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsHttpProtocolRequestOsList =
@@ -37257,7 +38444,8 @@ export type HttpTimeseriesGroupsHttpProtocolRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpTimeseriesGroupsHttpProtocolRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -37378,7 +38566,8 @@ export type HttpTimeseriesGroupsHttpProtocolResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const HttpTimeseriesGroupsHttpProtocolResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -37407,7 +38596,8 @@ export type HttpTimeseriesGroupsHttpProtocolResponseMetaConfidenceInfoAnnotation
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpTimeseriesGroupsHttpProtocolResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -37417,7 +38607,8 @@ export type HttpTimeseriesGroupsHttpProtocolResponseMetaConfidenceInfoAnnotation
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpTimeseriesGroupsHttpProtocolResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -37516,7 +38707,8 @@ export type HttpTimeseriesGroupsHttpProtocolResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpTimeseriesGroupsHttpProtocolResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -37658,7 +38850,10 @@ export const AttacksLayer7SummaryHttpVersionRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer7SummaryHttpVersionRequestDateStartList>;
 
-export type AttacksLayer7SummaryHttpVersionRequestFormat = "JSON" | "CSV";
+export type AttacksLayer7SummaryHttpVersionRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer7SummaryHttpVersionRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -37708,7 +38903,8 @@ export type AttacksLayer7SummaryHttpVersionRequestHttpMethod =
   | "RPC_IN_DATA"
   | "JSON"
   | "COOK"
-  | "TRACK";
+  | "TRACK"
+  | (string & {});
 export const AttacksLayer7SummaryHttpVersionRequestHttpMethod =
   /*@__PURE__*/ S.String;
 
@@ -37719,7 +38915,10 @@ export const AttacksLayer7SummaryHttpVersionRequestHttpMethodList =
     AttacksLayer7SummaryHttpVersionRequestHttpMethod,
   ) as any as S.Schema<AttacksLayer7SummaryHttpVersionRequestHttpMethodList>;
 
-export type AttacksLayer7SummaryHttpVersionRequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer7SummaryHttpVersionRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer7SummaryHttpVersionRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -37744,7 +38943,8 @@ export type AttacksLayer7SummaryHttpVersionRequestMitigationProduct =
   | "ACCESS_RULES"
   | "IP_REPUTATION"
   | "API_SHIELD"
-  | "DATA_LOSS_PREVENTION";
+  | "DATA_LOSS_PREVENTION"
+  | (string & {});
 export const AttacksLayer7SummaryHttpVersionRequestMitigationProduct =
   /*@__PURE__*/ S.String;
 
@@ -37862,7 +39062,8 @@ export type AttacksLayer7SummaryHttpVersionResponseMetaConfidenceInfoAnnotations
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer7SummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -37872,7 +39073,8 @@ export type AttacksLayer7SummaryHttpVersionResponseMetaConfidenceInfoAnnotations
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer7SummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -37971,7 +39173,8 @@ export type AttacksLayer7SummaryHttpVersionResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer7SummaryHttpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -38057,7 +39260,8 @@ export type AttacksLayer7TimeseriesGroupsHttpVersionRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsHttpVersionRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -38098,7 +39302,8 @@ export const AttacksLayer7TimeseriesGroupsHttpVersionRequestDateStartList =
 
 export type AttacksLayer7TimeseriesGroupsHttpVersionRequestFormat =
   | "JSON"
-  | "CSV";
+  | "CSV"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsHttpVersionRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -38148,7 +39353,8 @@ export type AttacksLayer7TimeseriesGroupsHttpVersionRequestHttpMethod =
   | "RPC_IN_DATA"
   | "JSON"
   | "COOK"
-  | "TRACK";
+  | "TRACK"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsHttpVersionRequestHttpMethod =
   /*@__PURE__*/ S.String;
 
@@ -38161,7 +39367,8 @@ export const AttacksLayer7TimeseriesGroupsHttpVersionRequestHttpMethodList =
 
 export type AttacksLayer7TimeseriesGroupsHttpVersionRequestIpVersion =
   | "IPv4"
-  | "IPv6";
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsHttpVersionRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -38186,7 +39393,8 @@ export type AttacksLayer7TimeseriesGroupsHttpVersionRequestMitigationProduct =
   | "ACCESS_RULES"
   | "IP_REPUTATION"
   | "API_SHIELD"
-  | "DATA_LOSS_PREVENTION";
+  | "DATA_LOSS_PREVENTION"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsHttpVersionRequestMitigationProduct =
   /*@__PURE__*/ S.String;
 
@@ -38206,7 +39414,8 @@ export const AttacksLayer7TimeseriesGroupsHttpVersionRequestNameList =
 
 export type AttacksLayer7TimeseriesGroupsHttpVersionRequestNormalization =
   | "PERCENTAGE"
-  | "MIN0_MAX";
+  | "MIN0_MAX"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsHttpVersionRequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -38318,7 +39527,8 @@ export type AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -38347,7 +39557,8 @@ export type AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAn
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -38357,7 +39568,8 @@ export type AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAn
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -38458,7 +39670,8 @@ export type AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -38594,7 +39807,8 @@ export const HttpSummaryHttpVersionRequestAsnList = /*@__PURE__*/ S.Array(
 
 export type HttpSummaryHttpVersionRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpSummaryHttpVersionRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpSummaryHttpVersionRequestBotClassList =
@@ -38607,7 +39821,8 @@ export type HttpSummaryHttpVersionRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpSummaryHttpVersionRequestBrowserFamily =
   /*@__PURE__*/ S.String;
 
@@ -38641,7 +39856,8 @@ export const HttpSummaryHttpVersionRequestDateStartList = /*@__PURE__*/ S.Array(
 export type HttpSummaryHttpVersionRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpSummaryHttpVersionRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpSummaryHttpVersionRequestDeviceTypeList =
@@ -38651,7 +39867,10 @@ export const HttpSummaryHttpVersionRequestDeviceTypeList =
     HttpSummaryHttpVersionRequestDeviceType,
   ) as any as S.Schema<HttpSummaryHttpVersionRequestDeviceTypeList>;
 
-export type HttpSummaryHttpVersionRequestFormat = "JSON" | "CSV";
+export type HttpSummaryHttpVersionRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const HttpSummaryHttpVersionRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpSummaryHttpVersionRequestGeoIdList = ReadonlyArray<string>;
@@ -38659,7 +39878,10 @@ export const HttpSummaryHttpVersionRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpSummaryHttpVersionRequestGeoIdList>;
 
-export type HttpSummaryHttpVersionRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpSummaryHttpVersionRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpSummaryHttpVersionRequestHttpProtocol = /*@__PURE__*/ S.String;
 
 export type HttpSummaryHttpVersionRequestHttpProtocolList =
@@ -38669,7 +39891,10 @@ export const HttpSummaryHttpVersionRequestHttpProtocolList =
     HttpSummaryHttpVersionRequestHttpProtocol,
   ) as any as S.Schema<HttpSummaryHttpVersionRequestHttpProtocolList>;
 
-export type HttpSummaryHttpVersionRequestIpVersion = "IPv4" | "IPv6";
+export type HttpSummaryHttpVersionRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpSummaryHttpVersionRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpSummaryHttpVersionRequestIpVersionList =
@@ -38695,7 +39920,8 @@ export type HttpSummaryHttpVersionRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpSummaryHttpVersionRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpSummaryHttpVersionRequestOsList =
@@ -38709,7 +39935,8 @@ export type HttpSummaryHttpVersionRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpSummaryHttpVersionRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpSummaryHttpVersionRequestTlsVersionList =
@@ -38831,7 +40058,8 @@ export type HttpSummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemDataS
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpSummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -38841,7 +40069,8 @@ export type HttpSummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemEvent
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpSummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -38940,7 +40169,8 @@ export type HttpSummaryHttpVersionResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpSummaryHttpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -39025,7 +40255,8 @@ export type HttpTimeseriesGroupsHttpVersionRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const HttpTimeseriesGroupsHttpVersionRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -39038,7 +40269,8 @@ export const HttpTimeseriesGroupsHttpVersionRequestAsnList =
 
 export type HttpTimeseriesGroupsHttpVersionRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpTimeseriesGroupsHttpVersionRequestBotClass =
   /*@__PURE__*/ S.String;
 
@@ -39053,7 +40285,8 @@ export type HttpTimeseriesGroupsHttpVersionRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpTimeseriesGroupsHttpVersionRequestBrowserFamily =
   /*@__PURE__*/ S.String;
 
@@ -39095,7 +40328,8 @@ export const HttpTimeseriesGroupsHttpVersionRequestDateStartList =
 export type HttpTimeseriesGroupsHttpVersionRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpTimeseriesGroupsHttpVersionRequestDeviceType =
   /*@__PURE__*/ S.String;
 
@@ -39106,7 +40340,10 @@ export const HttpTimeseriesGroupsHttpVersionRequestDeviceTypeList =
     HttpTimeseriesGroupsHttpVersionRequestDeviceType,
   ) as any as S.Schema<HttpTimeseriesGroupsHttpVersionRequestDeviceTypeList>;
 
-export type HttpTimeseriesGroupsHttpVersionRequestFormat = "JSON" | "CSV";
+export type HttpTimeseriesGroupsHttpVersionRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const HttpTimeseriesGroupsHttpVersionRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -39119,7 +40356,8 @@ export const HttpTimeseriesGroupsHttpVersionRequestGeoIdList =
 
 export type HttpTimeseriesGroupsHttpVersionRequestHttpProtocol =
   | "HTTP"
-  | "HTTPS";
+  | "HTTPS"
+  | (string & {});
 export const HttpTimeseriesGroupsHttpVersionRequestHttpProtocol =
   /*@__PURE__*/ S.String;
 
@@ -39130,7 +40368,10 @@ export const HttpTimeseriesGroupsHttpVersionRequestHttpProtocolList =
     HttpTimeseriesGroupsHttpVersionRequestHttpProtocol,
   ) as any as S.Schema<HttpTimeseriesGroupsHttpVersionRequestHttpProtocolList>;
 
-export type HttpTimeseriesGroupsHttpVersionRequestIpVersion = "IPv4" | "IPv6";
+export type HttpTimeseriesGroupsHttpVersionRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpTimeseriesGroupsHttpVersionRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -39162,7 +40403,8 @@ export type HttpTimeseriesGroupsHttpVersionRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpTimeseriesGroupsHttpVersionRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsHttpVersionRequestOsList =
@@ -39177,7 +40419,8 @@ export type HttpTimeseriesGroupsHttpVersionRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpTimeseriesGroupsHttpVersionRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -39296,7 +40539,8 @@ export type HttpTimeseriesGroupsHttpVersionResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const HttpTimeseriesGroupsHttpVersionResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -39325,7 +40569,8 @@ export type HttpTimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotations
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpTimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -39335,7 +40580,8 @@ export type HttpTimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotations
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpTimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -39434,7 +40680,8 @@ export type HttpTimeseriesGroupsHttpVersionResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpTimeseriesGroupsHttpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -39583,14 +40830,23 @@ export const AttacksLayer3SummaryIndustryRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer3SummaryIndustryRequestDateStartList>;
 
-export type AttacksLayer3SummaryIndustryRequestDirection = "ORIGIN" | "TARGET";
+export type AttacksLayer3SummaryIndustryRequestDirection =
+  | "ORIGIN"
+  | "TARGET"
+  | (string & {});
 export const AttacksLayer3SummaryIndustryRequestDirection =
   /*@__PURE__*/ S.String;
 
-export type AttacksLayer3SummaryIndustryRequestFormat = "JSON" | "CSV";
+export type AttacksLayer3SummaryIndustryRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer3SummaryIndustryRequestFormat = /*@__PURE__*/ S.String;
 
-export type AttacksLayer3SummaryIndustryRequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer3SummaryIndustryRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer3SummaryIndustryRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -39618,7 +40874,8 @@ export type AttacksLayer3SummaryIndustryRequestProtocol =
   | "UDP"
   | "TCP"
   | "ICMP"
-  | "GRE";
+  | "GRE"
+  | (string & {});
 export const AttacksLayer3SummaryIndustryRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -39724,7 +40981,8 @@ export type AttacksLayer3SummaryIndustryResponseMetaConfidenceInfoAnnotationsIte
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer3SummaryIndustryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -39734,7 +40992,8 @@ export type AttacksLayer3SummaryIndustryResponseMetaConfidenceInfoAnnotationsIte
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer3SummaryIndustryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -39833,7 +41092,8 @@ export type AttacksLayer3SummaryIndustryResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer3SummaryIndustryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -39911,7 +41171,8 @@ export type AttacksLayer3TimeseriesGroupsIndustryRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsIndustryRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -39945,17 +41206,22 @@ export const AttacksLayer3TimeseriesGroupsIndustryRequestDateStartList =
 
 export type AttacksLayer3TimeseriesGroupsIndustryRequestDirection =
   | "ORIGIN"
-  | "TARGET";
+  | "TARGET"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsIndustryRequestDirection =
   /*@__PURE__*/ S.String;
 
-export type AttacksLayer3TimeseriesGroupsIndustryRequestFormat = "JSON" | "CSV";
+export type AttacksLayer3TimeseriesGroupsIndustryRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsIndustryRequestFormat =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesGroupsIndustryRequestIpVersion =
   | "IPv4"
-  | "IPv6";
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsIndustryRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -39982,7 +41248,8 @@ export const AttacksLayer3TimeseriesGroupsIndustryRequestNameList =
 
 export type AttacksLayer3TimeseriesGroupsIndustryRequestNormalization =
   | "PERCENTAGE"
-  | "MIN0_MAX";
+  | "MIN0_MAX"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsIndustryRequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -39990,7 +41257,8 @@ export type AttacksLayer3TimeseriesGroupsIndustryRequestProtocol =
   | "UDP"
   | "TCP"
   | "ICMP"
-  | "GRE";
+  | "GRE"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsIndustryRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -40101,7 +41369,8 @@ export type AttacksLayer3TimeseriesGroupsIndustryResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsIndustryResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -40130,7 +41399,8 @@ export type AttacksLayer3TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnot
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer3TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -40140,7 +41410,8 @@ export type AttacksLayer3TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnot
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer3TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -40241,7 +41512,8 @@ export type AttacksLayer3TimeseriesGroupsIndustryResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsIndustryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -40358,10 +41630,16 @@ export const AttacksLayer3TopIndustryRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer3TopIndustryRequestDateStartList>;
 
-export type AttacksLayer3TopIndustryRequestFormat = "JSON" | "CSV";
+export type AttacksLayer3TopIndustryRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer3TopIndustryRequestFormat = /*@__PURE__*/ S.String;
 
-export type AttacksLayer3TopIndustryRequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer3TopIndustryRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer3TopIndustryRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TopIndustryRequestIpVersionList =
@@ -40386,7 +41664,8 @@ export type AttacksLayer3TopIndustryRequestProtocol =
   | "UDP"
   | "TCP"
   | "ICMP"
-  | "GRE";
+  | "GRE"
+  | (string & {});
 export const AttacksLayer3TopIndustryRequestProtocol = /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TopIndustryRequestProtocolList =
@@ -40482,7 +41761,8 @@ export type AttacksLayer3TopIndustryResponseMetaConfidenceInfoAnnotationsItemDat
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer3TopIndustryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -40492,7 +41772,8 @@ export type AttacksLayer3TopIndustryResponseMetaConfidenceInfoAnnotationsItemEve
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer3TopIndustryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -40591,7 +41872,8 @@ export type AttacksLayer3TopIndustryResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer3TopIndustryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -40707,7 +41989,10 @@ export const AttacksLayer7SummaryIndustryRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer7SummaryIndustryRequestDateStartList>;
 
-export type AttacksLayer7SummaryIndustryRequestFormat = "JSON" | "CSV";
+export type AttacksLayer7SummaryIndustryRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer7SummaryIndustryRequestFormat = /*@__PURE__*/ S.String;
 
 export type AttacksLayer7SummaryIndustryRequestHttpMethod =
@@ -40756,7 +42041,8 @@ export type AttacksLayer7SummaryIndustryRequestHttpMethod =
   | "RPC_IN_DATA"
   | "JSON"
   | "COOK"
-  | "TRACK";
+  | "TRACK"
+  | (string & {});
 export const AttacksLayer7SummaryIndustryRequestHttpMethod =
   /*@__PURE__*/ S.String;
 
@@ -40770,7 +42056,8 @@ export const AttacksLayer7SummaryIndustryRequestHttpMethodList =
 export type AttacksLayer7SummaryIndustryRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const AttacksLayer7SummaryIndustryRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -40781,7 +42068,10 @@ export const AttacksLayer7SummaryIndustryRequestHttpVersionList =
     AttacksLayer7SummaryIndustryRequestHttpVersion,
   ) as any as S.Schema<AttacksLayer7SummaryIndustryRequestHttpVersionList>;
 
-export type AttacksLayer7SummaryIndustryRequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer7SummaryIndustryRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer7SummaryIndustryRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -40806,7 +42096,8 @@ export type AttacksLayer7SummaryIndustryRequestMitigationProduct =
   | "ACCESS_RULES"
   | "IP_REPUTATION"
   | "API_SHIELD"
-  | "DATA_LOSS_PREVENTION";
+  | "DATA_LOSS_PREVENTION"
+  | (string & {});
 export const AttacksLayer7SummaryIndustryRequestMitigationProduct =
   /*@__PURE__*/ S.String;
 
@@ -40926,7 +42217,8 @@ export type AttacksLayer7SummaryIndustryResponseMetaConfidenceInfoAnnotationsIte
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer7SummaryIndustryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -40936,7 +42228,8 @@ export type AttacksLayer7SummaryIndustryResponseMetaConfidenceInfoAnnotationsIte
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer7SummaryIndustryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -41035,7 +42328,8 @@ export type AttacksLayer7SummaryIndustryResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer7SummaryIndustryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -41113,7 +42407,8 @@ export type AttacksLayer7TimeseriesGroupsIndustryRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsIndustryRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -41152,7 +42447,10 @@ export const AttacksLayer7TimeseriesGroupsIndustryRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsIndustryRequestDateStartList>;
 
-export type AttacksLayer7TimeseriesGroupsIndustryRequestFormat = "JSON" | "CSV";
+export type AttacksLayer7TimeseriesGroupsIndustryRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsIndustryRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -41202,7 +42500,8 @@ export type AttacksLayer7TimeseriesGroupsIndustryRequestHttpMethod =
   | "RPC_IN_DATA"
   | "JSON"
   | "COOK"
-  | "TRACK";
+  | "TRACK"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsIndustryRequestHttpMethod =
   /*@__PURE__*/ S.String;
 
@@ -41216,7 +42515,8 @@ export const AttacksLayer7TimeseriesGroupsIndustryRequestHttpMethodList =
 export type AttacksLayer7TimeseriesGroupsIndustryRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsIndustryRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -41229,7 +42529,8 @@ export const AttacksLayer7TimeseriesGroupsIndustryRequestHttpVersionList =
 
 export type AttacksLayer7TimeseriesGroupsIndustryRequestIpVersion =
   | "IPv4"
-  | "IPv6";
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsIndustryRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -41254,7 +42555,8 @@ export type AttacksLayer7TimeseriesGroupsIndustryRequestMitigationProduct =
   | "ACCESS_RULES"
   | "IP_REPUTATION"
   | "API_SHIELD"
-  | "DATA_LOSS_PREVENTION";
+  | "DATA_LOSS_PREVENTION"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsIndustryRequestMitigationProduct =
   /*@__PURE__*/ S.String;
 
@@ -41274,7 +42576,8 @@ export const AttacksLayer7TimeseriesGroupsIndustryRequestNameList =
 
 export type AttacksLayer7TimeseriesGroupsIndustryRequestNormalization =
   | "PERCENTAGE"
-  | "MIN0_MAX";
+  | "MIN0_MAX"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsIndustryRequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -41392,7 +42695,8 @@ export type AttacksLayer7TimeseriesGroupsIndustryResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsIndustryResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -41421,7 +42725,8 @@ export type AttacksLayer7TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnot
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer7TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -41431,7 +42736,8 @@ export type AttacksLayer7TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnot
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer7TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -41532,7 +42838,8 @@ export type AttacksLayer7TimeseriesGroupsIndustryResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsIndustryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -41654,7 +42961,10 @@ export const AttacksLayer7TopIndustryRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer7TopIndustryRequestDateStartList>;
 
-export type AttacksLayer7TopIndustryRequestFormat = "JSON" | "CSV";
+export type AttacksLayer7TopIndustryRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer7TopIndustryRequestFormat = /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TopIndustryRequestHttpMethod =
@@ -41703,7 +43013,8 @@ export type AttacksLayer7TopIndustryRequestHttpMethod =
   | "RPC_IN_DATA"
   | "JSON"
   | "COOK"
-  | "TRACK";
+  | "TRACK"
+  | (string & {});
 export const AttacksLayer7TopIndustryRequestHttpMethod = /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TopIndustryRequestHttpMethodList =
@@ -41716,7 +43027,8 @@ export const AttacksLayer7TopIndustryRequestHttpMethodList =
 export type AttacksLayer7TopIndustryRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const AttacksLayer7TopIndustryRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -41727,7 +43039,10 @@ export const AttacksLayer7TopIndustryRequestHttpVersionList =
     AttacksLayer7TopIndustryRequestHttpVersion,
   ) as any as S.Schema<AttacksLayer7TopIndustryRequestHttpVersionList>;
 
-export type AttacksLayer7TopIndustryRequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer7TopIndustryRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer7TopIndustryRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TopIndustryRequestIpVersionList =
@@ -41750,7 +43065,8 @@ export type AttacksLayer7TopIndustryRequestMitigationProduct =
   | "ACCESS_RULES"
   | "IP_REPUTATION"
   | "API_SHIELD"
-  | "DATA_LOSS_PREVENTION";
+  | "DATA_LOSS_PREVENTION"
+  | (string & {});
 export const AttacksLayer7TopIndustryRequestMitigationProduct =
   /*@__PURE__*/ S.String;
 
@@ -41865,7 +43181,8 @@ export type AttacksLayer7TopIndustryResponseMetaConfidenceInfoAnnotationsItemDat
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer7TopIndustryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -41875,7 +43192,8 @@ export type AttacksLayer7TopIndustryResponseMetaConfidenceInfoAnnotationsItemEve
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer7TopIndustryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -41974,7 +43292,8 @@ export type AttacksLayer7TopIndustryResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer7TopIndustryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -42057,7 +43376,7 @@ export const IndustryAttackLayer7TopResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "IndustryAttackLayer7TopResponse",
 }) as any as S.Schema<IndustryAttackLayer7TopResponse>;
 
-export type EntitiesAsnsIpRequestFormat = "JSON" | "CSV";
+export type EntitiesAsnsIpRequestFormat = "JSON" | "CSV" | (string & {});
 export const EntitiesAsnsIpRequestFormat = /*@__PURE__*/ S.String;
 
 export interface IpEntityAsnRequest {
@@ -42203,7 +43522,7 @@ export const As112SummaryIpVersionRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<As112SummaryIpVersionRequestDateStartList>;
 
-export type As112SummaryIpVersionRequestFormat = "JSON" | "CSV";
+export type As112SummaryIpVersionRequestFormat = "JSON" | "CSV" | (string & {});
 export const As112SummaryIpVersionRequestFormat = /*@__PURE__*/ S.String;
 
 export type As112SummaryIpVersionRequestLocationList = ReadonlyArray<string>;
@@ -42220,7 +43539,8 @@ export type As112SummaryIpVersionRequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const As112SummaryIpVersionRequestProtocol = /*@__PURE__*/ S.String;
 
 export type As112SummaryIpVersionRequestProtocolList =
@@ -42317,7 +43637,8 @@ export type As112SummaryIpVersionRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const As112SummaryIpVersionRequestQueryType = /*@__PURE__*/ S.String;
 
 export type As112SummaryIpVersionRequestQueryTypeList =
@@ -42345,7 +43666,8 @@ export type As112SummaryIpVersionRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const As112SummaryIpVersionRequestResponseCode = /*@__PURE__*/ S.String;
 
 export type As112SummaryIpVersionRequestResponseCodeList =
@@ -42443,7 +43765,8 @@ export type As112SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSo
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const As112SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -42453,7 +43776,8 @@ export type As112SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventT
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const As112SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -42552,7 +43876,8 @@ export type As112SummaryIpVersionResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const As112SummaryIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -42633,7 +43958,8 @@ export type As112TimeseriesGroupsIpVersionRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const As112TimeseriesGroupsIpVersionRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -42665,7 +43991,10 @@ export const As112TimeseriesGroupsIpVersionRequestDateStartList =
     S.String,
   ) as any as S.Schema<As112TimeseriesGroupsIpVersionRequestDateStartList>;
 
-export type As112TimeseriesGroupsIpVersionRequestFormat = "JSON" | "CSV";
+export type As112TimeseriesGroupsIpVersionRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const As112TimeseriesGroupsIpVersionRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -42687,7 +44016,8 @@ export type As112TimeseriesGroupsIpVersionRequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const As112TimeseriesGroupsIpVersionRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -42786,7 +44116,8 @@ export type As112TimeseriesGroupsIpVersionRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const As112TimeseriesGroupsIpVersionRequestQueryType =
   /*@__PURE__*/ S.String;
 
@@ -42816,7 +44147,8 @@ export type As112TimeseriesGroupsIpVersionRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const As112TimeseriesGroupsIpVersionRequestResponseCode =
   /*@__PURE__*/ S.String;
 
@@ -42905,7 +44237,8 @@ export type As112TimeseriesGroupsIpVersionResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const As112TimeseriesGroupsIpVersionResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -42934,7 +44267,8 @@ export type As112TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsI
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const As112TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -42944,7 +44278,8 @@ export type As112TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsI
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const As112TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -43043,7 +44378,8 @@ export type As112TimeseriesGroupsIpVersionResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const As112TimeseriesGroupsIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -43140,7 +44476,7 @@ export const IpVersionAs112TimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   identifier: "IpVersionAs112TimeseriesGroupResponse",
 }) as any as S.Schema<IpVersionAs112TimeseriesGroupResponse>;
 
-export type As112TopIpVersionRequestIpVersion = "IPv4" | "IPv6";
+export type As112TopIpVersionRequestIpVersion = "IPv4" | "IPv6" | (string & {});
 export const As112TopIpVersionRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type As112TopIpVersionRequestContinentList = ReadonlyArray<string>;
@@ -43163,7 +44499,7 @@ export const As112TopIpVersionRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<As112TopIpVersionRequestDateStartList>;
 
-export type As112TopIpVersionRequestFormat = "JSON" | "CSV";
+export type As112TopIpVersionRequestFormat = "JSON" | "CSV" | (string & {});
 export const As112TopIpVersionRequestFormat = /*@__PURE__*/ S.String;
 
 export type As112TopIpVersionRequestLocationList = ReadonlyArray<string>;
@@ -43251,7 +44587,8 @@ export type As112TopIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const As112TopIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -43261,7 +44598,8 @@ export type As112TopIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType 
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const As112TopIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -43357,7 +44695,8 @@ export type As112TopIpVersionResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const As112TopIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -43468,11 +44807,17 @@ export const AttacksLayer3SummaryIpVersionRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer3SummaryIpVersionRequestDateStartList>;
 
-export type AttacksLayer3SummaryIpVersionRequestDirection = "ORIGIN" | "TARGET";
+export type AttacksLayer3SummaryIpVersionRequestDirection =
+  | "ORIGIN"
+  | "TARGET"
+  | (string & {});
 export const AttacksLayer3SummaryIpVersionRequestDirection =
   /*@__PURE__*/ S.String;
 
-export type AttacksLayer3SummaryIpVersionRequestFormat = "JSON" | "CSV";
+export type AttacksLayer3SummaryIpVersionRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer3SummaryIpVersionRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -43494,7 +44839,8 @@ export type AttacksLayer3SummaryIpVersionRequestProtocol =
   | "UDP"
   | "TCP"
   | "ICMP"
-  | "GRE";
+  | "GRE"
+  | (string & {});
 export const AttacksLayer3SummaryIpVersionRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -43592,7 +44938,8 @@ export type AttacksLayer3SummaryIpVersionResponseMetaConfidenceInfoAnnotationsIt
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer3SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -43602,7 +44949,8 @@ export type AttacksLayer3SummaryIpVersionResponseMetaConfidenceInfoAnnotationsIt
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer3SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -43701,7 +45049,8 @@ export type AttacksLayer3SummaryIpVersionResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer3SummaryIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -43787,7 +45136,8 @@ export type AttacksLayer3TimeseriesGroupsIpVersionRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsIpVersionRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -43821,13 +45171,15 @@ export const AttacksLayer3TimeseriesGroupsIpVersionRequestDateStartList =
 
 export type AttacksLayer3TimeseriesGroupsIpVersionRequestDirection =
   | "ORIGIN"
-  | "TARGET";
+  | "TARGET"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsIpVersionRequestDirection =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesGroupsIpVersionRequestFormat =
   | "JSON"
-  | "CSV";
+  | "CSV"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsIpVersionRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -43847,7 +45199,8 @@ export const AttacksLayer3TimeseriesGroupsIpVersionRequestNameList =
 
 export type AttacksLayer3TimeseriesGroupsIpVersionRequestNormalization =
   | "PERCENTAGE"
-  | "MIN0_MAX";
+  | "MIN0_MAX"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsIpVersionRequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -43855,7 +45208,8 @@ export type AttacksLayer3TimeseriesGroupsIpVersionRequestProtocol =
   | "UDP"
   | "TCP"
   | "ICMP"
-  | "GRE";
+  | "GRE"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsIpVersionRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -43960,7 +45314,8 @@ export type AttacksLayer3TimeseriesGroupsIpVersionResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsIpVersionResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -43989,7 +45344,8 @@ export type AttacksLayer3TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnno
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer3TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -43999,7 +45355,8 @@ export type AttacksLayer3TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnno
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer3TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -44100,7 +45457,8 @@ export type AttacksLayer3TimeseriesGroupsIpVersionResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -44245,7 +45603,10 @@ export const AttacksLayer7SummaryIpVersionRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer7SummaryIpVersionRequestDateStartList>;
 
-export type AttacksLayer7SummaryIpVersionRequestFormat = "JSON" | "CSV";
+export type AttacksLayer7SummaryIpVersionRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer7SummaryIpVersionRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -44295,7 +45656,8 @@ export type AttacksLayer7SummaryIpVersionRequestHttpMethod =
   | "RPC_IN_DATA"
   | "JSON"
   | "COOK"
-  | "TRACK";
+  | "TRACK"
+  | (string & {});
 export const AttacksLayer7SummaryIpVersionRequestHttpMethod =
   /*@__PURE__*/ S.String;
 
@@ -44309,7 +45671,8 @@ export const AttacksLayer7SummaryIpVersionRequestHttpMethodList =
 export type AttacksLayer7SummaryIpVersionRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const AttacksLayer7SummaryIpVersionRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -44334,7 +45697,8 @@ export type AttacksLayer7SummaryIpVersionRequestMitigationProduct =
   | "ACCESS_RULES"
   | "IP_REPUTATION"
   | "API_SHIELD"
-  | "DATA_LOSS_PREVENTION";
+  | "DATA_LOSS_PREVENTION"
+  | (string & {});
 export const AttacksLayer7SummaryIpVersionRequestMitigationProduct =
   /*@__PURE__*/ S.String;
 
@@ -44449,7 +45813,8 @@ export type AttacksLayer7SummaryIpVersionResponseMetaConfidenceInfoAnnotationsIt
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer7SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -44459,7 +45824,8 @@ export type AttacksLayer7SummaryIpVersionResponseMetaConfidenceInfoAnnotationsIt
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer7SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -44558,7 +45924,8 @@ export type AttacksLayer7SummaryIpVersionResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer7SummaryIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -44642,7 +46009,8 @@ export type AttacksLayer7TimeseriesGroupsIpVersionRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsIpVersionRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -44683,7 +46051,8 @@ export const AttacksLayer7TimeseriesGroupsIpVersionRequestDateStartList =
 
 export type AttacksLayer7TimeseriesGroupsIpVersionRequestFormat =
   | "JSON"
-  | "CSV";
+  | "CSV"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsIpVersionRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -44733,7 +46102,8 @@ export type AttacksLayer7TimeseriesGroupsIpVersionRequestHttpMethod =
   | "RPC_IN_DATA"
   | "JSON"
   | "COOK"
-  | "TRACK";
+  | "TRACK"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsIpVersionRequestHttpMethod =
   /*@__PURE__*/ S.String;
 
@@ -44747,7 +46117,8 @@ export const AttacksLayer7TimeseriesGroupsIpVersionRequestHttpMethodList =
 export type AttacksLayer7TimeseriesGroupsIpVersionRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsIpVersionRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -44772,7 +46143,8 @@ export type AttacksLayer7TimeseriesGroupsIpVersionRequestMitigationProduct =
   | "ACCESS_RULES"
   | "IP_REPUTATION"
   | "API_SHIELD"
-  | "DATA_LOSS_PREVENTION";
+  | "DATA_LOSS_PREVENTION"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsIpVersionRequestMitigationProduct =
   /*@__PURE__*/ S.String;
 
@@ -44792,7 +46164,8 @@ export const AttacksLayer7TimeseriesGroupsIpVersionRequestNameList =
 
 export type AttacksLayer7TimeseriesGroupsIpVersionRequestNormalization =
   | "PERCENTAGE"
-  | "MIN0_MAX";
+  | "MIN0_MAX"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsIpVersionRequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -44904,7 +46277,8 @@ export type AttacksLayer7TimeseriesGroupsIpVersionResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsIpVersionResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -44933,7 +46307,8 @@ export type AttacksLayer7TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnno
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer7TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -44943,7 +46318,8 @@ export type AttacksLayer7TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnno
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer7TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -45044,7 +46420,8 @@ export type AttacksLayer7TimeseriesGroupsIpVersionResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -45180,7 +46557,7 @@ export const DnsSummaryIpVersionRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DnsSummaryIpVersionRequestDateStartList>;
 
-export type DnsSummaryIpVersionRequestFormat = "JSON" | "CSV";
+export type DnsSummaryIpVersionRequestFormat = "JSON" | "CSV" | (string & {});
 export const DnsSummaryIpVersionRequestFormat = /*@__PURE__*/ S.String;
 
 export type DnsSummaryIpVersionRequestLocationList = ReadonlyArray<string>;
@@ -45202,7 +46579,8 @@ export type DnsSummaryIpVersionRequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const DnsSummaryIpVersionRequestProtocol = /*@__PURE__*/ S.String;
 
 export type DnsSummaryIpVersionRequestProtocolList =
@@ -45299,7 +46677,8 @@ export type DnsSummaryIpVersionRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const DnsSummaryIpVersionRequestQueryType = /*@__PURE__*/ S.String;
 
 export type DnsSummaryIpVersionRequestQueryTypeList =
@@ -45327,7 +46706,8 @@ export type DnsSummaryIpVersionRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const DnsSummaryIpVersionRequestResponseCode = /*@__PURE__*/ S.String;
 
 export type DnsSummaryIpVersionRequestResponseCodeList =
@@ -45436,7 +46816,8 @@ export type DnsSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSour
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const DnsSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -45446,7 +46827,8 @@ export type DnsSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventTyp
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const DnsSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -45543,7 +46925,8 @@ export type DnsSummaryIpVersionResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsSummaryIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -45623,7 +47006,8 @@ export type DnsTimeseriesGroupsIpVersionRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const DnsTimeseriesGroupsIpVersionRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -45660,7 +47044,10 @@ export const DnsTimeseriesGroupsIpVersionRequestDateStartList =
     S.String,
   ) as any as S.Schema<DnsTimeseriesGroupsIpVersionRequestDateStartList>;
 
-export type DnsTimeseriesGroupsIpVersionRequestFormat = "JSON" | "CSV";
+export type DnsTimeseriesGroupsIpVersionRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const DnsTimeseriesGroupsIpVersionRequestFormat = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsIpVersionRequestLocationList =
@@ -45687,7 +47074,8 @@ export type DnsTimeseriesGroupsIpVersionRequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const DnsTimeseriesGroupsIpVersionRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -45786,7 +47174,8 @@ export type DnsTimeseriesGroupsIpVersionRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const DnsTimeseriesGroupsIpVersionRequestQueryType =
   /*@__PURE__*/ S.String;
 
@@ -45816,7 +47205,8 @@ export type DnsTimeseriesGroupsIpVersionRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const DnsTimeseriesGroupsIpVersionRequestResponseCode =
   /*@__PURE__*/ S.String;
 
@@ -45920,7 +47310,8 @@ export type DnsTimeseriesGroupsIpVersionResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const DnsTimeseriesGroupsIpVersionResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -45949,7 +47340,8 @@ export type DnsTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsIte
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const DnsTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -45959,7 +47351,8 @@ export type DnsTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsIte
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const DnsTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -46058,7 +47451,8 @@ export type DnsTimeseriesGroupsIpVersionResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsTimeseriesGroupsIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -46152,7 +47546,11 @@ export const IpVersionDnsTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "IpVersionDnsTimeseriesGroupResponse",
 }) as any as S.Schema<IpVersionDnsTimeseriesGroupResponse>;
 
-export type EmailRoutingSummaryIpVersionRequestArc = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingSummaryIpVersionRequestArc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingSummaryIpVersionRequestArc = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryIpVersionRequestArcList =
@@ -46182,7 +47580,11 @@ export const EmailRoutingSummaryIpVersionRequestDateStartList =
     S.String,
   ) as any as S.Schema<EmailRoutingSummaryIpVersionRequestDateStartList>;
 
-export type EmailRoutingSummaryIpVersionRequestDkim = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingSummaryIpVersionRequestDkim =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingSummaryIpVersionRequestDkim = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryIpVersionRequestDkimList =
@@ -46192,7 +47594,11 @@ export const EmailRoutingSummaryIpVersionRequestDkimList =
     EmailRoutingSummaryIpVersionRequestDkim,
   ) as any as S.Schema<EmailRoutingSummaryIpVersionRequestDkimList>;
 
-export type EmailRoutingSummaryIpVersionRequestDmarc = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingSummaryIpVersionRequestDmarc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingSummaryIpVersionRequestDmarc = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryIpVersionRequestDmarcList =
@@ -46204,7 +47610,8 @@ export const EmailRoutingSummaryIpVersionRequestDmarcList =
 
 export type EmailRoutingSummaryIpVersionRequestEncrypted =
   | "ENCRYPTED"
-  | "NOT_ENCRYPTED";
+  | "NOT_ENCRYPTED"
+  | (string & {});
 export const EmailRoutingSummaryIpVersionRequestEncrypted =
   /*@__PURE__*/ S.String;
 
@@ -46215,7 +47622,10 @@ export const EmailRoutingSummaryIpVersionRequestEncryptedList =
     EmailRoutingSummaryIpVersionRequestEncrypted,
   ) as any as S.Schema<EmailRoutingSummaryIpVersionRequestEncryptedList>;
 
-export type EmailRoutingSummaryIpVersionRequestFormat = "JSON" | "CSV";
+export type EmailRoutingSummaryIpVersionRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailRoutingSummaryIpVersionRequestFormat = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryIpVersionRequestNameList = ReadonlyArray<string>;
@@ -46224,7 +47634,11 @@ export const EmailRoutingSummaryIpVersionRequestNameList =
     S.String,
   ) as any as S.Schema<EmailRoutingSummaryIpVersionRequestNameList>;
 
-export type EmailRoutingSummaryIpVersionRequestSpf = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingSummaryIpVersionRequestSpf =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingSummaryIpVersionRequestSpf = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryIpVersionRequestSpfList =
@@ -46321,7 +47735,8 @@ export type EmailRoutingSummaryIpVersionResponseMetaConfidenceInfoAnnotationsIte
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailRoutingSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -46331,7 +47746,8 @@ export type EmailRoutingSummaryIpVersionResponseMetaConfidenceInfoAnnotationsIte
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailRoutingSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -46430,7 +47846,8 @@ export type EmailRoutingSummaryIpVersionResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailRoutingSummaryIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -46516,14 +47933,16 @@ export type EmailRoutingTimeseriesGroupsIpVersionRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsIpVersionRequestAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsIpVersionRequestArc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsIpVersionRequestArc =
   /*@__PURE__*/ S.String;
 
@@ -46558,7 +47977,8 @@ export const EmailRoutingTimeseriesGroupsIpVersionRequestDateStartList =
 export type EmailRoutingTimeseriesGroupsIpVersionRequestDkim =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsIpVersionRequestDkim =
   /*@__PURE__*/ S.String;
 
@@ -46572,7 +47992,8 @@ export const EmailRoutingTimeseriesGroupsIpVersionRequestDkimList =
 export type EmailRoutingTimeseriesGroupsIpVersionRequestDmarc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsIpVersionRequestDmarc =
   /*@__PURE__*/ S.String;
 
@@ -46585,7 +48006,8 @@ export const EmailRoutingTimeseriesGroupsIpVersionRequestDmarcList =
 
 export type EmailRoutingTimeseriesGroupsIpVersionRequestEncrypted =
   | "ENCRYPTED"
-  | "NOT_ENCRYPTED";
+  | "NOT_ENCRYPTED"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsIpVersionRequestEncrypted =
   /*@__PURE__*/ S.String;
 
@@ -46596,7 +48018,10 @@ export const EmailRoutingTimeseriesGroupsIpVersionRequestEncryptedList =
     EmailRoutingTimeseriesGroupsIpVersionRequestEncrypted,
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsIpVersionRequestEncryptedList>;
 
-export type EmailRoutingTimeseriesGroupsIpVersionRequestFormat = "JSON" | "CSV";
+export type EmailRoutingTimeseriesGroupsIpVersionRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsIpVersionRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -46610,7 +48035,8 @@ export const EmailRoutingTimeseriesGroupsIpVersionRequestNameList =
 export type EmailRoutingTimeseriesGroupsIpVersionRequestSpf =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsIpVersionRequestSpf =
   /*@__PURE__*/ S.String;
 
@@ -46705,7 +48131,8 @@ export type EmailRoutingTimeseriesGroupsIpVersionResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsIpVersionResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -46734,7 +48161,8 @@ export type EmailRoutingTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnot
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailRoutingTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -46744,7 +48172,8 @@ export type EmailRoutingTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnot
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailRoutingTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -46845,7 +48274,8 @@ export type EmailRoutingTimeseriesGroupsIpVersionResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -46951,7 +48381,8 @@ export const HttpSummaryIpVersionRequestAsnList = /*@__PURE__*/ S.Array(
 
 export type HttpSummaryIpVersionRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpSummaryIpVersionRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpSummaryIpVersionRequestBotClassList =
@@ -46964,7 +48395,8 @@ export type HttpSummaryIpVersionRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpSummaryIpVersionRequestBrowserFamily = /*@__PURE__*/ S.String;
 
 export type HttpSummaryIpVersionRequestBrowserFamilyList =
@@ -46997,7 +48429,8 @@ export const HttpSummaryIpVersionRequestDateStartList = /*@__PURE__*/ S.Array(
 export type HttpSummaryIpVersionRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpSummaryIpVersionRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpSummaryIpVersionRequestDeviceTypeList =
@@ -47006,7 +48439,7 @@ export const HttpSummaryIpVersionRequestDeviceTypeList = /*@__PURE__*/ S.Array(
   HttpSummaryIpVersionRequestDeviceType,
 ) as any as S.Schema<HttpSummaryIpVersionRequestDeviceTypeList>;
 
-export type HttpSummaryIpVersionRequestFormat = "JSON" | "CSV";
+export type HttpSummaryIpVersionRequestFormat = "JSON" | "CSV" | (string & {});
 export const HttpSummaryIpVersionRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpSummaryIpVersionRequestGeoIdList = ReadonlyArray<string>;
@@ -47014,7 +48447,10 @@ export const HttpSummaryIpVersionRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpSummaryIpVersionRequestGeoIdList>;
 
-export type HttpSummaryIpVersionRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpSummaryIpVersionRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpSummaryIpVersionRequestHttpProtocol = /*@__PURE__*/ S.String;
 
 export type HttpSummaryIpVersionRequestHttpProtocolList =
@@ -47027,7 +48463,8 @@ export const HttpSummaryIpVersionRequestHttpProtocolList =
 export type HttpSummaryIpVersionRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpSummaryIpVersionRequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type HttpSummaryIpVersionRequestHttpVersionList =
@@ -47053,7 +48490,8 @@ export type HttpSummaryIpVersionRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpSummaryIpVersionRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpSummaryIpVersionRequestOsList =
@@ -47067,7 +48505,8 @@ export type HttpSummaryIpVersionRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpSummaryIpVersionRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpSummaryIpVersionRequestTlsVersionList =
@@ -47186,7 +48625,8 @@ export type HttpSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSou
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -47196,7 +48636,8 @@ export type HttpSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventTy
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -47294,7 +48735,8 @@ export type HttpSummaryIpVersionResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpSummaryIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -47375,7 +48817,8 @@ export type HttpTimeseriesGroupsIpVersionRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const HttpTimeseriesGroupsIpVersionRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -47387,7 +48830,8 @@ export const HttpTimeseriesGroupsIpVersionRequestAsnList =
 
 export type HttpTimeseriesGroupsIpVersionRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpTimeseriesGroupsIpVersionRequestBotClass =
   /*@__PURE__*/ S.String;
 
@@ -47402,7 +48846,8 @@ export type HttpTimeseriesGroupsIpVersionRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpTimeseriesGroupsIpVersionRequestBrowserFamily =
   /*@__PURE__*/ S.String;
 
@@ -47444,7 +48889,8 @@ export const HttpTimeseriesGroupsIpVersionRequestDateStartList =
 export type HttpTimeseriesGroupsIpVersionRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpTimeseriesGroupsIpVersionRequestDeviceType =
   /*@__PURE__*/ S.String;
 
@@ -47455,7 +48901,10 @@ export const HttpTimeseriesGroupsIpVersionRequestDeviceTypeList =
     HttpTimeseriesGroupsIpVersionRequestDeviceType,
   ) as any as S.Schema<HttpTimeseriesGroupsIpVersionRequestDeviceTypeList>;
 
-export type HttpTimeseriesGroupsIpVersionRequestFormat = "JSON" | "CSV";
+export type HttpTimeseriesGroupsIpVersionRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const HttpTimeseriesGroupsIpVersionRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -47466,7 +48915,10 @@ export const HttpTimeseriesGroupsIpVersionRequestGeoIdList =
     S.String,
   ) as any as S.Schema<HttpTimeseriesGroupsIpVersionRequestGeoIdList>;
 
-export type HttpTimeseriesGroupsIpVersionRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpTimeseriesGroupsIpVersionRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpTimeseriesGroupsIpVersionRequestHttpProtocol =
   /*@__PURE__*/ S.String;
 
@@ -47480,7 +48932,8 @@ export const HttpTimeseriesGroupsIpVersionRequestHttpProtocolList =
 export type HttpTimeseriesGroupsIpVersionRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpTimeseriesGroupsIpVersionRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -47512,7 +48965,8 @@ export type HttpTimeseriesGroupsIpVersionRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpTimeseriesGroupsIpVersionRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsIpVersionRequestOsList =
@@ -47526,7 +48980,8 @@ export type HttpTimeseriesGroupsIpVersionRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpTimeseriesGroupsIpVersionRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -47642,7 +49097,8 @@ export type HttpTimeseriesGroupsIpVersionResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const HttpTimeseriesGroupsIpVersionResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -47671,7 +49127,8 @@ export type HttpTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsIt
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -47681,7 +49138,8 @@ export type HttpTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsIt
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -47780,7 +49238,8 @@ export type HttpTimeseriesGroupsIpVersionResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpTimeseriesGroupsIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -47911,7 +49370,8 @@ export type AnnotationsListRequestDataSource =
   | "NET"
   | "ROBOTS_TXT"
   | "SPEED"
-  | "WORKERS_AI";
+  | "WORKERS_AI"
+  | (string & {});
 export const AnnotationsListRequestDataSource = /*@__PURE__*/ S.String;
 
 export type AnnotationsListRequestEventType =
@@ -47920,10 +49380,11 @@ export type AnnotationsListRequestEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const AnnotationsListRequestEventType = /*@__PURE__*/ S.String;
 
-export type AnnotationsListRequestFormat = "JSON" | "CSV";
+export type AnnotationsListRequestFormat = "JSON" | "CSV" | (string & {});
 export const AnnotationsListRequestFormat = /*@__PURE__*/ S.String;
 
 export interface ListAnnotationsRequest {
@@ -48146,13 +49607,20 @@ export const ListAnnotationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAnnotationsResponse",
 }) as any as S.Schema<ListAnnotationsResponse>;
 
-export type BgpHijacksEventsListRequestFormat = "JSON" | "CSV";
+export type BgpHijacksEventsListRequestFormat = "JSON" | "CSV" | (string & {});
 export const BgpHijacksEventsListRequestFormat = /*@__PURE__*/ S.String;
 
-export type BgpHijacksEventsListRequestSortBy = "ID" | "TIME" | "CONFIDENCE";
+export type BgpHijacksEventsListRequestSortBy =
+  | "ID"
+  | "TIME"
+  | "CONFIDENCE"
+  | (string & {});
 export const BgpHijacksEventsListRequestSortBy = /*@__PURE__*/ S.String;
 
-export type BgpHijacksEventsListRequestSortOrder = "ASC" | "DESC";
+export type BgpHijacksEventsListRequestSortOrder =
+  | "ASC"
+  | "DESC"
+  | (string & {});
 export const BgpHijacksEventsListRequestSortOrder = /*@__PURE__*/ S.String;
 
 export interface ListBgpHijackEventsRequest {
@@ -48361,7 +49829,7 @@ export const ListBgpHijackEventsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBgpHijackEventsResponse",
 }) as any as S.Schema<ListBgpHijackEventsResponse>;
 
-export type BgpLeaksEventsListRequestFormat = "JSON" | "CSV";
+export type BgpLeaksEventsListRequestFormat = "JSON" | "CSV" | (string & {});
 export const BgpLeaksEventsListRequestFormat = /*@__PURE__*/ S.String;
 
 export type BgpLeaksEventsListRequestSortBy =
@@ -48370,10 +49838,11 @@ export type BgpLeaksEventsListRequestSortBy =
   | "PEERS"
   | "PREFIXES"
   | "ORIGINS"
-  | "TIME";
+  | "TIME"
+  | (string & {});
 export const BgpLeaksEventsListRequestSortBy = /*@__PURE__*/ S.String;
 
-export type BgpLeaksEventsListRequestSortOrder = "ASC" | "DESC";
+export type BgpLeaksEventsListRequestSortOrder = "ASC" | "DESC" | (string & {});
 export const BgpLeaksEventsListRequestSortOrder = /*@__PURE__*/ S.String;
 
 export interface ListBgpLeakEventsRequest {
@@ -48533,16 +50002,17 @@ export type BotsListRequestBotCategory =
   | "AGGREGATOR"
   | "AI_ASSISTANT"
   | "AI_SEARCH"
-  | "ARCHIVER";
+  | "ARCHIVER"
+  | (string & {});
 export const BotsListRequestBotCategory = /*@__PURE__*/ S.String;
 
-export type BotsListRequestBotVerificationStatus = "VERIFIED";
+export type BotsListRequestBotVerificationStatus = "VERIFIED" | (string & {});
 export const BotsListRequestBotVerificationStatus = /*@__PURE__*/ S.String;
 
-export type BotsListRequestFormat = "JSON" | "CSV";
+export type BotsListRequestFormat = "JSON" | "CSV" | (string & {});
 export const BotsListRequestFormat = /*@__PURE__*/ S.String;
 
-export type BotsListRequestKind = "AGENT" | "BOT";
+export type BotsListRequestKind = "AGENT" | "BOT" | (string & {});
 export const BotsListRequestKind = /*@__PURE__*/ S.String;
 
 export interface ListBotsRequest {
@@ -48632,7 +50102,7 @@ export const ListBotsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBotsResponse",
 }) as any as S.Schema<ListBotsResponse>;
 
-export type CtAuthoritiesListRequestFormat = "JSON" | "CSV";
+export type CtAuthoritiesListRequestFormat = "JSON" | "CSV" | (string & {});
 export const CtAuthoritiesListRequestFormat = /*@__PURE__*/ S.String;
 
 export interface ListCtAuthoritiesRequest {
@@ -48656,12 +50126,12 @@ export const ListCtAuthoritiesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCtAuthoritiesRequest>;
 
 export type CtAuthoritiesListResponseCertificateAuthoritiesItemCertificateRecordType =
-  "ROOT_CERTIFICATE" | "INTERMEDIATE_CERTIFICATE";
+  "ROOT_CERTIFICATE" | "INTERMEDIATE_CERTIFICATE" | (string & {});
 export const CtAuthoritiesListResponseCertificateAuthoritiesItemCertificateRecordType =
   /*@__PURE__*/ S.String;
 
 export type CtAuthoritiesListResponseCertificateAuthoritiesItemRevocationStatus =
-  "NOT_REVOKED" | "REVOKED" | "PARENT_CERT_REVOKED";
+  "NOT_REVOKED" | "REVOKED" | "PARENT_CERT_REVOKED" | (string & {});
 export const CtAuthoritiesListResponseCertificateAuthoritiesItemRevocationStatus =
   /*@__PURE__*/ S.String;
 
@@ -48723,7 +50193,7 @@ export const ListCtAuthoritiesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCtAuthoritiesResponse",
 }) as any as S.Schema<ListCtAuthoritiesResponse>;
 
-export type CtLogsListRequestFormat = "JSON" | "CSV";
+export type CtLogsListRequestFormat = "JSON" | "CSV" | (string & {});
 export const CtLogsListRequestFormat = /*@__PURE__*/ S.String;
 
 export interface ListCtLogsRequest {
@@ -48746,7 +50216,10 @@ export const ListCtLogsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCtLogsRequest",
 }) as any as S.Schema<ListCtLogsRequest>;
 
-export type CtLogsListResponseCertificateLogsItemApi = "RFC6962" | "STATIC";
+export type CtLogsListResponseCertificateLogsItemApi =
+  | "RFC6962"
+  | "STATIC"
+  | (string & {});
 export const CtLogsListResponseCertificateLogsItemApi = /*@__PURE__*/ S.String;
 
 export type CtLogsListResponseCertificateLogsItemState =
@@ -48755,7 +50228,8 @@ export type CtLogsListResponseCertificateLogsItemState =
   | "QUALIFIED"
   | "READ_ONLY"
   | "RETIRED"
-  | "REJECTED";
+  | "REJECTED"
+  | (string & {});
 export const CtLogsListResponseCertificateLogsItemState =
   /*@__PURE__*/ S.String;
 
@@ -48814,10 +50288,13 @@ export const ListCtLogsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCtLogsResponse",
 }) as any as S.Schema<ListCtLogsResponse>;
 
-export type DatasetsListRequestDatasetType = "RANKING_BUCKET" | "REPORT";
+export type DatasetsListRequestDatasetType =
+  | "RANKING_BUCKET"
+  | "REPORT"
+  | (string & {});
 export const DatasetsListRequestDatasetType = /*@__PURE__*/ S.String;
 
-export type DatasetsListRequestFormat = "JSON" | "CSV";
+export type DatasetsListRequestFormat = "JSON" | "CSV" | (string & {});
 export const DatasetsListRequestFormat = /*@__PURE__*/ S.String;
 
 export interface ListDatasetsRequest {
@@ -48890,10 +50367,13 @@ export const ListDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDatasetsResponse",
 }) as any as S.Schema<ListDatasetsResponse>;
 
-export type EntitiesAsnsListRequestFormat = "JSON" | "CSV";
+export type EntitiesAsnsListRequestFormat = "JSON" | "CSV" | (string & {});
 export const EntitiesAsnsListRequestFormat = /*@__PURE__*/ S.String;
 
-export type EntitiesAsnsListRequestOrderBy = "ASN" | "POPULATION";
+export type EntitiesAsnsListRequestOrderBy =
+  | "ASN"
+  | "POPULATION"
+  | (string & {});
 export const EntitiesAsnsListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface ListEntityAsnsRequest {
@@ -48987,10 +50467,11 @@ export type EntitiesLocationsListRequestContinent =
   | "EU"
   | "NA"
   | "OC"
-  | "SA";
+  | "SA"
+  | (string & {});
 export const EntitiesLocationsListRequestContinent = /*@__PURE__*/ S.String;
 
-export type EntitiesLocationsListRequestFormat = "JSON" | "CSV";
+export type EntitiesLocationsListRequestFormat = "JSON" | "CSV" | (string & {});
 export const EntitiesLocationsListRequestFormat = /*@__PURE__*/ S.String;
 
 export interface ListEntityLocationsRequest {
@@ -49073,7 +50554,7 @@ export const ListEntityLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEntityLocationsResponse",
 }) as any as S.Schema<ListEntityLocationsResponse>;
 
-export type GeolocationsListRequestFormat = "JSON" | "CSV";
+export type GeolocationsListRequestFormat = "JSON" | "CSV" | (string & {});
 export const GeolocationsListRequestFormat = /*@__PURE__*/ S.String;
 
 export interface ListGeolocationsRequest {
@@ -49105,7 +50586,8 @@ export const ListGeolocationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type GeolocationsListResponseGeolocationsItemParentParentType =
   | "CONTINENT"
   | "COUNTRY"
-  | "ADM1";
+  | "ADM1"
+  | (string & {});
 export const GeolocationsListResponseGeolocationsItemParentParentType =
   /*@__PURE__*/ S.String;
 
@@ -49140,7 +50622,8 @@ export const GeolocationsListResponseGeolocationsItemParentParent =
 export type GeolocationsListResponseGeolocationsItemParentType =
   | "CONTINENT"
   | "COUNTRY"
-  | "ADM1";
+  | "ADM1"
+  | (string & {});
 export const GeolocationsListResponseGeolocationsItemParentType =
   /*@__PURE__*/ S.String;
 
@@ -49177,7 +50660,8 @@ export const GeolocationsListResponseGeolocationsItemParent =
 export type GeolocationsListResponseGeolocationsItemType =
   | "CONTINENT"
   | "COUNTRY"
-  | "ADM1";
+  | "ADM1"
+  | (string & {});
 export const GeolocationsListResponseGeolocationsItemType =
   /*@__PURE__*/ S.String;
 
@@ -49229,7 +50713,10 @@ export const ListGeolocationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGeolocationsResponse",
 }) as any as S.Schema<ListGeolocationsResponse>;
 
-export type AnnotationsOutagesLocationsRequestFormat = "JSON" | "CSV";
+export type AnnotationsOutagesLocationsRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AnnotationsOutagesLocationsRequestFormat = /*@__PURE__*/ S.String;
 
 export interface LocationsAnnotationOutageRequest {
@@ -49322,7 +50809,7 @@ export const As112TopLocationsRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<As112TopLocationsRequestDateStartList>;
 
-export type As112TopLocationsRequestFormat = "JSON" | "CSV";
+export type As112TopLocationsRequestFormat = "JSON" | "CSV" | (string & {});
 export const As112TopLocationsRequestFormat = /*@__PURE__*/ S.String;
 
 export type As112TopLocationsRequestLocationList = ReadonlyArray<string>;
@@ -49403,7 +50890,8 @@ export type As112TopLocationsResponseMetaConfidenceInfoAnnotationsItemDataSource
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const As112TopLocationsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -49413,7 +50901,8 @@ export type As112TopLocationsResponseMetaConfidenceInfoAnnotationsItemEventType 
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const As112TopLocationsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -49509,7 +50998,8 @@ export type As112TopLocationsResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const As112TopLocationsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -49626,7 +51116,8 @@ export type DnsTopLocationsRequestDnssec =
   | "INVALID"
   | "INSECURE"
   | "SECURE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const DnsTopLocationsRequestDnssec = /*@__PURE__*/ S.String;
 
 export type DnsTopLocationsRequestDnssecList =
@@ -49635,7 +51126,10 @@ export const DnsTopLocationsRequestDnssecList = /*@__PURE__*/ S.Array(
   DnsTopLocationsRequestDnssec,
 ) as any as S.Schema<DnsTopLocationsRequestDnssecList>;
 
-export type DnsTopLocationsRequestDnssecAware = "SUPPORTED" | "NOT_SUPPORTED";
+export type DnsTopLocationsRequestDnssecAware =
+  | "SUPPORTED"
+  | "NOT_SUPPORTED"
+  | (string & {});
 export const DnsTopLocationsRequestDnssecAware = /*@__PURE__*/ S.String;
 
 export type DnsTopLocationsRequestDnssecAwareList =
@@ -49654,10 +51148,10 @@ export const DnsTopLocationsRequestDomainList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DnsTopLocationsRequestDomainList>;
 
-export type DnsTopLocationsRequestFormat = "JSON" | "CSV";
+export type DnsTopLocationsRequestFormat = "JSON" | "CSV" | (string & {});
 export const DnsTopLocationsRequestFormat = /*@__PURE__*/ S.String;
 
-export type DnsTopLocationsRequestIpVersion = "IPv4" | "IPv6";
+export type DnsTopLocationsRequestIpVersion = "IPv4" | "IPv6" | (string & {});
 export const DnsTopLocationsRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type DnsTopLocationsRequestIpVersionList =
@@ -49686,7 +51180,12 @@ export const DnsTopLocationsRequestNodataList = /*@__PURE__*/ S.Array(
   S.Boolean,
 ) as any as S.Schema<DnsTopLocationsRequestNodataList>;
 
-export type DnsTopLocationsRequestProtocol = "UDP" | "TCP" | "HTTPS" | "TLS";
+export type DnsTopLocationsRequestProtocol =
+  | "UDP"
+  | "TCP"
+  | "HTTPS"
+  | "TLS"
+  | (string & {});
 export const DnsTopLocationsRequestProtocol = /*@__PURE__*/ S.String;
 
 export type DnsTopLocationsRequestProtocolList =
@@ -49783,7 +51282,8 @@ export type DnsTopLocationsRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const DnsTopLocationsRequestQueryType = /*@__PURE__*/ S.String;
 
 export type DnsTopLocationsRequestQueryTypeList =
@@ -49811,7 +51311,8 @@ export type DnsTopLocationsRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const DnsTopLocationsRequestResponseCode = /*@__PURE__*/ S.String;
 
 export type DnsTopLocationsRequestResponseCodeList =
@@ -49827,7 +51328,8 @@ export type DnsTopLocationsRequestResponseTtl =
   | "GT_15M_LTE_1H"
   | "GT_1H_LTE_1D"
   | "GT_1D_LTE_1W"
-  | "GT_1W";
+  | "GT_1W"
+  | (string & {});
 export const DnsTopLocationsRequestResponseTtl = /*@__PURE__*/ S.String;
 
 export type DnsTopLocationsRequestResponseTtlList =
@@ -49951,7 +51453,8 @@ export type DnsTopLocationsResponseMetaConfidenceInfoAnnotationsItemDataSource =
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const DnsTopLocationsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -49961,7 +51464,8 @@ export type DnsTopLocationsResponseMetaConfidenceInfoAnnotationsItemEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const DnsTopLocationsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -50057,7 +51561,8 @@ export type DnsTopLocationsResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsTopLocationsResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface DnsTopLocationsResponseMetaUnitsItem {
@@ -50164,7 +51669,7 @@ export const NetflowsTopLocationsRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetflowsTopLocationsRequestDateStartList>;
 
-export type NetflowsTopLocationsRequestFormat = "JSON" | "CSV";
+export type NetflowsTopLocationsRequestFormat = "JSON" | "CSV" | (string & {});
 export const NetflowsTopLocationsRequestFormat = /*@__PURE__*/ S.String;
 
 export type NetflowsTopLocationsRequestGeoIdList = ReadonlyArray<string>;
@@ -50262,7 +51767,8 @@ export type NetflowsTopLocationsResponseMetaConfidenceInfoAnnotationsItemDataSou
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const NetflowsTopLocationsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -50272,7 +51778,8 @@ export type NetflowsTopLocationsResponseMetaConfidenceInfoAnnotationsItemEventTy
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const NetflowsTopLocationsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -50370,7 +51877,8 @@ export type NetflowsTopLocationsResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const NetflowsTopLocationsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -50471,7 +51979,10 @@ export const QualitySpeedTopLocationsRequestDateEndList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QualitySpeedTopLocationsRequestDateEndList>;
 
-export type QualitySpeedTopLocationsRequestFormat = "JSON" | "CSV";
+export type QualitySpeedTopLocationsRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const QualitySpeedTopLocationsRequestFormat = /*@__PURE__*/ S.String;
 
 export type QualitySpeedTopLocationsRequestLocationList = ReadonlyArray<string>;
@@ -50491,7 +52002,8 @@ export type QualitySpeedTopLocationsRequestOrderBy =
   | "LATENCY_IDLE"
   | "LATENCY_LOADED"
   | "JITTER_IDLE"
-  | "JITTER_LOADED";
+  | "JITTER_LOADED"
+  | (string & {});
 export const QualitySpeedTopLocationsRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface LocationsQualitySpeedTopRequest {
@@ -50569,7 +52081,8 @@ export type QualitySpeedTopLocationsResponseMetaConfidenceInfoAnnotationsItemDat
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const QualitySpeedTopLocationsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -50579,7 +52092,8 @@ export type QualitySpeedTopLocationsResponseMetaConfidenceInfoAnnotationsItemEve
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const QualitySpeedTopLocationsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -50678,7 +52192,8 @@ export type QualitySpeedTopLocationsResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const QualitySpeedTopLocationsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -50777,7 +52292,11 @@ export const LocationsQualitySpeedTopResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "LocationsQualitySpeedTopResponse",
 }) as any as S.Schema<LocationsQualitySpeedTopResponse>;
 
-export type EmailSecuritySummaryMaliciousRequestArc = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummaryMaliciousRequestArc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryMaliciousRequestArc = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryMaliciousRequestArcList =
@@ -50808,7 +52327,11 @@ export const EmailSecuritySummaryMaliciousRequestDateStartList =
     S.String,
   ) as any as S.Schema<EmailSecuritySummaryMaliciousRequestDateStartList>;
 
-export type EmailSecuritySummaryMaliciousRequestDkim = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummaryMaliciousRequestDkim =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryMaliciousRequestDkim = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryMaliciousRequestDkimList =
@@ -50821,7 +52344,8 @@ export const EmailSecuritySummaryMaliciousRequestDkimList =
 export type EmailSecuritySummaryMaliciousRequestDmarc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryMaliciousRequestDmarc = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryMaliciousRequestDmarcList =
@@ -50831,7 +52355,10 @@ export const EmailSecuritySummaryMaliciousRequestDmarcList =
     EmailSecuritySummaryMaliciousRequestDmarc,
   ) as any as S.Schema<EmailSecuritySummaryMaliciousRequestDmarcList>;
 
-export type EmailSecuritySummaryMaliciousRequestFormat = "JSON" | "CSV";
+export type EmailSecuritySummaryMaliciousRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailSecuritySummaryMaliciousRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -50842,7 +52369,11 @@ export const EmailSecuritySummaryMaliciousRequestNameList =
     S.String,
   ) as any as S.Schema<EmailSecuritySummaryMaliciousRequestNameList>;
 
-export type EmailSecuritySummaryMaliciousRequestSpf = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummaryMaliciousRequestSpf =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryMaliciousRequestSpf = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryMaliciousRequestSpfList =
@@ -50856,7 +52387,8 @@ export type EmailSecuritySummaryMaliciousRequestTlsVersion =
   | "TLSv1_0"
   | "TLSv1_1"
   | "TLSv1_2"
-  | "TLSv1_3";
+  | "TLSv1_3"
+  | (string & {});
 export const EmailSecuritySummaryMaliciousRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -50960,7 +52492,8 @@ export type EmailSecuritySummaryMaliciousResponseMetaConfidenceInfoAnnotationsIt
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailSecuritySummaryMaliciousResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -50970,7 +52503,8 @@ export type EmailSecuritySummaryMaliciousResponseMetaConfidenceInfoAnnotationsIt
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailSecuritySummaryMaliciousResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -51069,7 +52603,8 @@ export type EmailSecuritySummaryMaliciousResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailSecuritySummaryMaliciousResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -51155,14 +52690,16 @@ export type EmailSecurityTimeseriesGroupsMaliciousRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsMaliciousRequestAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsMaliciousRequestArc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsMaliciousRequestArc =
   /*@__PURE__*/ S.String;
 
@@ -51197,7 +52734,8 @@ export const EmailSecurityTimeseriesGroupsMaliciousRequestDateStartList =
 export type EmailSecurityTimeseriesGroupsMaliciousRequestDkim =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsMaliciousRequestDkim =
   /*@__PURE__*/ S.String;
 
@@ -51211,7 +52749,8 @@ export const EmailSecurityTimeseriesGroupsMaliciousRequestDkimList =
 export type EmailSecurityTimeseriesGroupsMaliciousRequestDmarc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsMaliciousRequestDmarc =
   /*@__PURE__*/ S.String;
 
@@ -51224,7 +52763,8 @@ export const EmailSecurityTimeseriesGroupsMaliciousRequestDmarcList =
 
 export type EmailSecurityTimeseriesGroupsMaliciousRequestFormat =
   | "JSON"
-  | "CSV";
+  | "CSV"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsMaliciousRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -51238,7 +52778,8 @@ export const EmailSecurityTimeseriesGroupsMaliciousRequestNameList =
 export type EmailSecurityTimeseriesGroupsMaliciousRequestSpf =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsMaliciousRequestSpf =
   /*@__PURE__*/ S.String;
 
@@ -51253,7 +52794,8 @@ export type EmailSecurityTimeseriesGroupsMaliciousRequestTlsVersion =
   | "TLSv1_0"
   | "TLSv1_1"
   | "TLSv1_2"
-  | "TLSv1_3";
+  | "TLSv1_3"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsMaliciousRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -51352,7 +52894,8 @@ export type EmailSecurityTimeseriesGroupsMaliciousResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsMaliciousResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -51381,7 +52924,8 @@ export type EmailSecurityTimeseriesGroupsMaliciousResponseMetaConfidenceInfoAnno
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailSecurityTimeseriesGroupsMaliciousResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -51391,7 +52935,8 @@ export type EmailSecurityTimeseriesGroupsMaliciousResponseMetaConfidenceInfoAnno
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailSecurityTimeseriesGroupsMaliciousResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -51492,7 +53037,8 @@ export type EmailSecurityTimeseriesGroupsMaliciousResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsMaliciousResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -51632,7 +53178,10 @@ export const AttacksLayer7SummaryManagedRulesRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer7SummaryManagedRulesRequestDateStartList>;
 
-export type AttacksLayer7SummaryManagedRulesRequestFormat = "JSON" | "CSV";
+export type AttacksLayer7SummaryManagedRulesRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer7SummaryManagedRulesRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -51682,7 +53231,8 @@ export type AttacksLayer7SummaryManagedRulesRequestHttpMethod =
   | "RPC_IN_DATA"
   | "JSON"
   | "COOK"
-  | "TRACK";
+  | "TRACK"
+  | (string & {});
 export const AttacksLayer7SummaryManagedRulesRequestHttpMethod =
   /*@__PURE__*/ S.String;
 
@@ -51696,7 +53246,8 @@ export const AttacksLayer7SummaryManagedRulesRequestHttpMethodList =
 export type AttacksLayer7SummaryManagedRulesRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const AttacksLayer7SummaryManagedRulesRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -51707,7 +53258,10 @@ export const AttacksLayer7SummaryManagedRulesRequestHttpVersionList =
     AttacksLayer7SummaryManagedRulesRequestHttpVersion,
   ) as any as S.Schema<AttacksLayer7SummaryManagedRulesRequestHttpVersionList>;
 
-export type AttacksLayer7SummaryManagedRulesRequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer7SummaryManagedRulesRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer7SummaryManagedRulesRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -51732,7 +53286,8 @@ export type AttacksLayer7SummaryManagedRulesRequestMitigationProduct =
   | "ACCESS_RULES"
   | "IP_REPUTATION"
   | "API_SHIELD"
-  | "DATA_LOSS_PREVENTION";
+  | "DATA_LOSS_PREVENTION"
+  | (string & {});
 export const AttacksLayer7SummaryManagedRulesRequestMitigationProduct =
   /*@__PURE__*/ S.String;
 
@@ -51858,7 +53413,8 @@ export type AttacksLayer7SummaryManagedRulesResponseMetaConfidenceInfoAnnotation
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer7SummaryManagedRulesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -51868,7 +53424,8 @@ export type AttacksLayer7SummaryManagedRulesResponseMetaConfidenceInfoAnnotation
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer7SummaryManagedRulesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -51967,7 +53524,8 @@ export type AttacksLayer7SummaryManagedRulesResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer7SummaryManagedRulesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -52047,7 +53605,8 @@ export type AttacksLayer7TimeseriesGroupsManagedRulesRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsManagedRulesRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -52088,7 +53647,8 @@ export const AttacksLayer7TimeseriesGroupsManagedRulesRequestDateStartList =
 
 export type AttacksLayer7TimeseriesGroupsManagedRulesRequestFormat =
   | "JSON"
-  | "CSV";
+  | "CSV"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsManagedRulesRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -52138,7 +53698,8 @@ export type AttacksLayer7TimeseriesGroupsManagedRulesRequestHttpMethod =
   | "RPC_IN_DATA"
   | "JSON"
   | "COOK"
-  | "TRACK";
+  | "TRACK"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsManagedRulesRequestHttpMethod =
   /*@__PURE__*/ S.String;
 
@@ -52152,7 +53713,8 @@ export const AttacksLayer7TimeseriesGroupsManagedRulesRequestHttpMethodList =
 export type AttacksLayer7TimeseriesGroupsManagedRulesRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsManagedRulesRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -52165,7 +53727,8 @@ export const AttacksLayer7TimeseriesGroupsManagedRulesRequestHttpVersionList =
 
 export type AttacksLayer7TimeseriesGroupsManagedRulesRequestIpVersion =
   | "IPv4"
-  | "IPv6";
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsManagedRulesRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -52190,7 +53753,8 @@ export type AttacksLayer7TimeseriesGroupsManagedRulesRequestMitigationProduct =
   | "ACCESS_RULES"
   | "IP_REPUTATION"
   | "API_SHIELD"
-  | "DATA_LOSS_PREVENTION";
+  | "DATA_LOSS_PREVENTION"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsManagedRulesRequestMitigationProduct =
   /*@__PURE__*/ S.String;
 
@@ -52210,7 +53774,8 @@ export const AttacksLayer7TimeseriesGroupsManagedRulesRequestNameList =
 
 export type AttacksLayer7TimeseriesGroupsManagedRulesRequestNormalization =
   | "PERCENTAGE"
-  | "MIN0_MAX";
+  | "MIN0_MAX"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsManagedRulesRequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -52334,7 +53899,8 @@ export type AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -52363,7 +53929,8 @@ export type AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaConfidenceInfoA
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -52373,7 +53940,8 @@ export type AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaConfidenceInfoA
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -52474,7 +54042,8 @@ export type AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaNormalization =
     | "PERCENTAGE_CHANGE"
     | "ROLLING_AVERAGE"
     | "OVERLAPPED_PERCENTAGE"
-    | "RATIO";
+    | "RATIO"
+    | (string & {});
 export const AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -52599,7 +54168,10 @@ export const DnsSummaryMatchingAnswerRequestDateStartList =
     S.String,
   ) as any as S.Schema<DnsSummaryMatchingAnswerRequestDateStartList>;
 
-export type DnsSummaryMatchingAnswerRequestFormat = "JSON" | "CSV";
+export type DnsSummaryMatchingAnswerRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const DnsSummaryMatchingAnswerRequestFormat = /*@__PURE__*/ S.String;
 
 export type DnsSummaryMatchingAnswerRequestLocationList = ReadonlyArray<string>;
@@ -52622,7 +54194,8 @@ export type DnsSummaryMatchingAnswerRequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const DnsSummaryMatchingAnswerRequestProtocol = /*@__PURE__*/ S.String;
 
 export type DnsSummaryMatchingAnswerRequestProtocolList =
@@ -52720,7 +54293,8 @@ export type DnsSummaryMatchingAnswerRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const DnsSummaryMatchingAnswerRequestQueryType = /*@__PURE__*/ S.String;
 
 export type DnsSummaryMatchingAnswerRequestQueryTypeList =
@@ -52749,7 +54323,8 @@ export type DnsSummaryMatchingAnswerRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const DnsSummaryMatchingAnswerRequestResponseCode =
   /*@__PURE__*/ S.String;
 
@@ -52864,7 +54439,8 @@ export type DnsSummaryMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemDat
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const DnsSummaryMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -52874,7 +54450,8 @@ export type DnsSummaryMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemEve
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const DnsSummaryMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -52973,7 +54550,8 @@ export type DnsSummaryMatchingAnswerResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsSummaryMatchingAnswerResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -53058,7 +54636,8 @@ export type DnsTimeseriesGroupsMatchingAnswerRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const DnsTimeseriesGroupsMatchingAnswerRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -53097,7 +54676,10 @@ export const DnsTimeseriesGroupsMatchingAnswerRequestDateStartList =
     S.String,
   ) as any as S.Schema<DnsTimeseriesGroupsMatchingAnswerRequestDateStartList>;
 
-export type DnsTimeseriesGroupsMatchingAnswerRequestFormat = "JSON" | "CSV";
+export type DnsTimeseriesGroupsMatchingAnswerRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const DnsTimeseriesGroupsMatchingAnswerRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -53126,7 +54708,8 @@ export type DnsTimeseriesGroupsMatchingAnswerRequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const DnsTimeseriesGroupsMatchingAnswerRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -53225,7 +54808,8 @@ export type DnsTimeseriesGroupsMatchingAnswerRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const DnsTimeseriesGroupsMatchingAnswerRequestQueryType =
   /*@__PURE__*/ S.String;
 
@@ -53255,7 +54839,8 @@ export type DnsTimeseriesGroupsMatchingAnswerRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const DnsTimeseriesGroupsMatchingAnswerRequestResponseCode =
   /*@__PURE__*/ S.String;
 
@@ -53368,7 +54953,8 @@ export type DnsTimeseriesGroupsMatchingAnswerResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const DnsTimeseriesGroupsMatchingAnswerResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -53397,7 +54983,8 @@ export type DnsTimeseriesGroupsMatchingAnswerResponseMetaConfidenceInfoAnnotatio
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const DnsTimeseriesGroupsMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -53407,7 +54994,8 @@ export type DnsTimeseriesGroupsMatchingAnswerResponseMetaConfidenceInfoAnnotatio
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const DnsTimeseriesGroupsMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -53506,7 +55094,8 @@ export type DnsTimeseriesGroupsMatchingAnswerResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsTimeseriesGroupsMatchingAnswerResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -53639,7 +55228,10 @@ export const AttacksLayer7SummaryMitigationProductRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer7SummaryMitigationProductRequestDateStartList>;
 
-export type AttacksLayer7SummaryMitigationProductRequestFormat = "JSON" | "CSV";
+export type AttacksLayer7SummaryMitigationProductRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer7SummaryMitigationProductRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -53689,7 +55281,8 @@ export type AttacksLayer7SummaryMitigationProductRequestHttpMethod =
   | "RPC_IN_DATA"
   | "JSON"
   | "COOK"
-  | "TRACK";
+  | "TRACK"
+  | (string & {});
 export const AttacksLayer7SummaryMitigationProductRequestHttpMethod =
   /*@__PURE__*/ S.String;
 
@@ -53703,7 +55296,8 @@ export const AttacksLayer7SummaryMitigationProductRequestHttpMethodList =
 export type AttacksLayer7SummaryMitigationProductRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const AttacksLayer7SummaryMitigationProductRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -53716,7 +55310,8 @@ export const AttacksLayer7SummaryMitigationProductRequestHttpVersionList =
 
 export type AttacksLayer7SummaryMitigationProductRequestIpVersion =
   | "IPv4"
-  | "IPv6";
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer7SummaryMitigationProductRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -53856,7 +55451,8 @@ export type AttacksLayer7SummaryMitigationProductResponseMetaConfidenceInfoAnnot
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer7SummaryMitigationProductResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -53866,7 +55462,8 @@ export type AttacksLayer7SummaryMitigationProductResponseMetaConfidenceInfoAnnot
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer7SummaryMitigationProductResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -53967,7 +55564,8 @@ export type AttacksLayer7SummaryMitigationProductResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer7SummaryMitigationProductResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -54048,7 +55646,8 @@ export type AttacksLayer7TimeseriesGroupsMitigationProductRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsMitigationProductRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -54089,7 +55688,8 @@ export const AttacksLayer7TimeseriesGroupsMitigationProductRequestDateStartList 
 
 export type AttacksLayer7TimeseriesGroupsMitigationProductRequestFormat =
   | "JSON"
-  | "CSV";
+  | "CSV"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsMitigationProductRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -54139,7 +55739,8 @@ export type AttacksLayer7TimeseriesGroupsMitigationProductRequestHttpMethod =
   | "RPC_IN_DATA"
   | "JSON"
   | "COOK"
-  | "TRACK";
+  | "TRACK"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsMitigationProductRequestHttpMethod =
   /*@__PURE__*/ S.String;
 
@@ -54153,7 +55754,8 @@ export const AttacksLayer7TimeseriesGroupsMitigationProductRequestHttpMethodList
 export type AttacksLayer7TimeseriesGroupsMitigationProductRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsMitigationProductRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -54166,7 +55768,8 @@ export const AttacksLayer7TimeseriesGroupsMitigationProductRequestHttpVersionLis
 
 export type AttacksLayer7TimeseriesGroupsMitigationProductRequestIpVersion =
   | "IPv4"
-  | "IPv6";
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsMitigationProductRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -54192,7 +55795,7 @@ export const AttacksLayer7TimeseriesGroupsMitigationProductRequestNameList =
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsMitigationProductRequestNameList>;
 
 export type AttacksLayer7TimeseriesGroupsMitigationProductRequestNormalization =
-  "PERCENTAGE" | "MIN0_MAX";
+  "PERCENTAGE" | "MIN0_MAX" | (string & {});
 export const AttacksLayer7TimeseriesGroupsMitigationProductRequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -54309,7 +55912,12 @@ export const MitigationProductAttackLayer7TimeseriesGroupRequest =
   }) as any as S.Schema<MitigationProductAttackLayer7TimeseriesGroupRequest>;
 
 export type AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaAggInterval =
-  "FIFTEEN_MINUTES" | "ONE_HOUR" | "ONE_DAY" | "ONE_WEEK" | "ONE_MONTH";
+    | "FIFTEEN_MINUTES"
+    | "ONE_HOUR"
+    | "ONE_DAY"
+    | "ONE_WEEK"
+    | "ONE_MONTH"
+    | (string & {});
 export const AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -54338,7 +55946,8 @@ export type AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaConfidence
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -54348,7 +55957,8 @@ export type AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaConfidence
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -54449,7 +56059,8 @@ export type AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaNormalizat
     | "PERCENTAGE_CHANGE"
     | "ROLLING_AVERAGE"
     | "OVERLAPPED_PERCENTAGE"
-    | "RATIO";
+    | "RATIO"
+    | (string & {});
 export const AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -54544,7 +56155,7 @@ export const MitigationProductAttackLayer7TimeseriesGroupResponse =
     identifier: "MitigationProductAttackLayer7TimeseriesGroupResponse",
   }) as any as S.Schema<MitigationProductAttackLayer7TimeseriesGroupResponse>;
 
-export type BgpRoutesMoasRequestFormat = "JSON" | "CSV";
+export type BgpRoutesMoasRequestFormat = "JSON" | "CSV" | (string & {});
 export const BgpRoutesMoasRequestFormat = /*@__PURE__*/ S.String;
 
 export interface MoasBgpRouteRequest {
@@ -54656,7 +56267,10 @@ export const AiInferenceSummaryModelRequestDateStartList =
     S.String,
   ) as any as S.Schema<AiInferenceSummaryModelRequestDateStartList>;
 
-export type AiInferenceSummaryModelRequestFormat = "JSON" | "CSV";
+export type AiInferenceSummaryModelRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AiInferenceSummaryModelRequestFormat = /*@__PURE__*/ S.String;
 
 export type AiInferenceSummaryModelRequestNameList = ReadonlyArray<string>;
@@ -54730,7 +56344,8 @@ export type AiInferenceSummaryModelResponseMetaConfidenceInfoAnnotationsItemData
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AiInferenceSummaryModelResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -54740,7 +56355,8 @@ export type AiInferenceSummaryModelResponseMetaConfidenceInfoAnnotationsItemEven
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AiInferenceSummaryModelResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -54839,7 +56455,8 @@ export type AiInferenceSummaryModelResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AiInferenceSummaryModelResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -54916,7 +56533,8 @@ export type AiInferenceTimeseriesGroupsSummaryModelRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AiInferenceTimeseriesGroupsSummaryModelRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -54943,7 +56561,8 @@ export const AiInferenceTimeseriesGroupsSummaryModelRequestDateStartList =
 
 export type AiInferenceTimeseriesGroupsSummaryModelRequestFormat =
   | "JSON"
-  | "CSV";
+  | "CSV"
+  | (string & {});
 export const AiInferenceTimeseriesGroupsSummaryModelRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -55018,7 +56637,8 @@ export type AiInferenceTimeseriesGroupsSummaryModelResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AiInferenceTimeseriesGroupsSummaryModelResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -55047,7 +56667,8 @@ export type AiInferenceTimeseriesGroupsSummaryModelResponseMetaConfidenceInfoAnn
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AiInferenceTimeseriesGroupsSummaryModelResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -55057,7 +56678,8 @@ export type AiInferenceTimeseriesGroupsSummaryModelResponseMetaConfidenceInfoAnn
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AiInferenceTimeseriesGroupsSummaryModelResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -55158,7 +56780,8 @@ export type AiInferenceTimeseriesGroupsSummaryModelResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AiInferenceTimeseriesGroupsSummaryModelResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -55279,11 +56902,17 @@ export const AttacksLayer3TopLocationsOriginRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer3TopLocationsOriginRequestDateStartList>;
 
-export type AttacksLayer3TopLocationsOriginRequestFormat = "JSON" | "CSV";
+export type AttacksLayer3TopLocationsOriginRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer3TopLocationsOriginRequestFormat =
   /*@__PURE__*/ S.String;
 
-export type AttacksLayer3TopLocationsOriginRequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer3TopLocationsOriginRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer3TopLocationsOriginRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -55312,7 +56941,8 @@ export type AttacksLayer3TopLocationsOriginRequestProtocol =
   | "UDP"
   | "TCP"
   | "ICMP"
-  | "GRE";
+  | "GRE"
+  | (string & {});
 export const AttacksLayer3TopLocationsOriginRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -55414,7 +57044,8 @@ export type AttacksLayer3TopLocationsOriginResponseMetaConfidenceInfoAnnotations
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer3TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -55424,7 +57055,8 @@ export type AttacksLayer3TopLocationsOriginResponseMetaConfidenceInfoAnnotations
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer3TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -55523,7 +57155,8 @@ export type AttacksLayer3TopLocationsOriginResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer3TopLocationsOriginResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -55642,7 +57275,10 @@ export const AttacksLayer7TopAsesOriginRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer7TopAsesOriginRequestDateStartList>;
 
-export type AttacksLayer7TopAsesOriginRequestFormat = "JSON" | "CSV";
+export type AttacksLayer7TopAsesOriginRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer7TopAsesOriginRequestFormat = /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TopAsesOriginRequestHttpMethod =
@@ -55691,7 +57327,8 @@ export type AttacksLayer7TopAsesOriginRequestHttpMethod =
   | "RPC_IN_DATA"
   | "JSON"
   | "COOK"
-  | "TRACK";
+  | "TRACK"
+  | (string & {});
 export const AttacksLayer7TopAsesOriginRequestHttpMethod =
   /*@__PURE__*/ S.String;
 
@@ -55705,7 +57342,8 @@ export const AttacksLayer7TopAsesOriginRequestHttpMethodList =
 export type AttacksLayer7TopAsesOriginRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const AttacksLayer7TopAsesOriginRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -55716,7 +57354,10 @@ export const AttacksLayer7TopAsesOriginRequestHttpVersionList =
     AttacksLayer7TopAsesOriginRequestHttpVersion,
   ) as any as S.Schema<AttacksLayer7TopAsesOriginRequestHttpVersionList>;
 
-export type AttacksLayer7TopAsesOriginRequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer7TopAsesOriginRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer7TopAsesOriginRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -55741,7 +57382,8 @@ export type AttacksLayer7TopAsesOriginRequestMitigationProduct =
   | "ACCESS_RULES"
   | "IP_REPUTATION"
   | "API_SHIELD"
-  | "DATA_LOSS_PREVENTION";
+  | "DATA_LOSS_PREVENTION"
+  | (string & {});
 export const AttacksLayer7TopAsesOriginRequestMitigationProduct =
   /*@__PURE__*/ S.String;
 
@@ -55853,7 +57495,8 @@ export type AttacksLayer7TopAsesOriginResponseMetaConfidenceInfoAnnotationsItemD
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer7TopAsesOriginResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -55863,7 +57506,8 @@ export type AttacksLayer7TopAsesOriginResponseMetaConfidenceInfoAnnotationsItemE
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer7TopAsesOriginResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -55962,7 +57606,8 @@ export type AttacksLayer7TopAsesOriginResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer7TopAsesOriginResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -56084,7 +57729,10 @@ export const AttacksLayer7TopLocationsOriginRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer7TopLocationsOriginRequestDateStartList>;
 
-export type AttacksLayer7TopLocationsOriginRequestFormat = "JSON" | "CSV";
+export type AttacksLayer7TopLocationsOriginRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer7TopLocationsOriginRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -56134,7 +57782,8 @@ export type AttacksLayer7TopLocationsOriginRequestHttpMethod =
   | "RPC_IN_DATA"
   | "JSON"
   | "COOK"
-  | "TRACK";
+  | "TRACK"
+  | (string & {});
 export const AttacksLayer7TopLocationsOriginRequestHttpMethod =
   /*@__PURE__*/ S.String;
 
@@ -56148,7 +57797,8 @@ export const AttacksLayer7TopLocationsOriginRequestHttpMethodList =
 export type AttacksLayer7TopLocationsOriginRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const AttacksLayer7TopLocationsOriginRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -56159,7 +57809,10 @@ export const AttacksLayer7TopLocationsOriginRequestHttpVersionList =
     AttacksLayer7TopLocationsOriginRequestHttpVersion,
   ) as any as S.Schema<AttacksLayer7TopLocationsOriginRequestHttpVersionList>;
 
-export type AttacksLayer7TopLocationsOriginRequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer7TopLocationsOriginRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer7TopLocationsOriginRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -56177,7 +57830,8 @@ export type AttacksLayer7TopLocationsOriginRequestMitigationProduct =
   | "ACCESS_RULES"
   | "IP_REPUTATION"
   | "API_SHIELD"
-  | "DATA_LOSS_PREVENTION";
+  | "DATA_LOSS_PREVENTION"
+  | (string & {});
 export const AttacksLayer7TopLocationsOriginRequestMitigationProduct =
   /*@__PURE__*/ S.String;
 
@@ -56298,7 +57952,8 @@ export type AttacksLayer7TopLocationsOriginResponseMetaConfidenceInfoAnnotations
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer7TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -56308,7 +57963,8 @@ export type AttacksLayer7TopLocationsOriginResponseMetaConfidenceInfoAnnotations
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer7TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -56407,7 +58063,8 @@ export type AttacksLayer7TopLocationsOriginResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer7TopLocationsOriginResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -56502,10 +58159,11 @@ export type OriginsGetRequestSlug =
   | "AMAZON"
   | "GOOGLE"
   | "MICROSOFT"
-  | "ORACLE";
+  | "ORACLE"
+  | (string & {});
 export const OriginsGetRequestSlug = /*@__PURE__*/ S.String;
 
-export type OriginsGetRequestFormat = "JSON" | "CSV";
+export type OriginsGetRequestFormat = "JSON" | "CSV" | (string & {});
 export const OriginsGetRequestFormat = /*@__PURE__*/ S.String;
 
 export interface OriginsGetRequest {
@@ -56569,7 +58227,7 @@ export const OriginsGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OriginsGetResponse",
 }) as any as S.Schema<OriginsGetResponse>;
 
-export type OriginsListRequestFormat = "JSON" | "CSV";
+export type OriginsListRequestFormat = "JSON" | "CSV" | (string & {});
 export const OriginsListRequestFormat = /*@__PURE__*/ S.String;
 
 export interface OriginsListRequest {
@@ -56647,7 +58305,8 @@ export type OriginsSummaryRequestDimension =
   | "ORIGIN"
   | "REGION"
   | "SUCCESS_RATE"
-  | "PERCENTILE";
+  | "PERCENTILE"
+  | (string & {});
 export const OriginsSummaryRequestDimension = /*@__PURE__*/ S.String;
 
 export type OriginsSummaryRequestMetric =
@@ -56656,7 +58315,8 @@ export type OriginsSummaryRequestMetric =
   | "RESPONSE_HEADER_RECEIVE_DURATION"
   | "TCP_HANDSHAKE_DURATION"
   | "TCP_RTT"
-  | "TLS_HANDSHAKE_DURATION";
+  | "TLS_HANDSHAKE_DURATION"
+  | (string & {});
 export const OriginsSummaryRequestMetric = /*@__PURE__*/ S.String;
 
 export type OriginsSummaryRequestDateEndList = ReadonlyArray<string>;
@@ -56674,7 +58334,7 @@ export const OriginsSummaryRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OriginsSummaryRequestDateStartList>;
 
-export type OriginsSummaryRequestFormat = "JSON" | "CSV";
+export type OriginsSummaryRequestFormat = "JSON" | "CSV" | (string & {});
 export const OriginsSummaryRequestFormat = /*@__PURE__*/ S.String;
 
 export type OriginsSummaryRequestNameList = ReadonlyArray<string>;
@@ -56686,7 +58346,8 @@ export type OriginsSummaryRequestOrigin =
   | "AMAZON"
   | "GOOGLE"
   | "MICROSOFT"
-  | "ORACLE";
+  | "ORACLE"
+  | (string & {});
 export const OriginsSummaryRequestOrigin = /*@__PURE__*/ S.String;
 
 export type OriginsSummaryRequestOriginList =
@@ -56772,7 +58433,8 @@ export type OriginsSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   | "NET"
   | "ROBOTS_TXT"
   | "SPEED"
-  | "WORKERS_AI";
+  | "WORKERS_AI"
+  | (string & {});
 export const OriginsSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -56782,7 +58444,8 @@ export type OriginsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const OriginsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -56878,7 +58541,8 @@ export type OriginsSummaryResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const OriginsSummaryResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface OriginsSummaryResponseMetaUnitsItem {
@@ -56951,14 +58615,16 @@ export type OriginsTimeseriesRequestMetric =
   | "RESPONSE_HEADER_RECEIVE_DURATION"
   | "TCP_HANDSHAKE_DURATION"
   | "TCP_RTT"
-  | "TLS_HANDSHAKE_DURATION";
+  | "TLS_HANDSHAKE_DURATION"
+  | (string & {});
 export const OriginsTimeseriesRequestMetric = /*@__PURE__*/ S.String;
 
 export type OriginsTimeseriesRequestOrigin =
   | "AMAZON"
   | "GOOGLE"
   | "MICROSOFT"
-  | "ORACLE";
+  | "ORACLE"
+  | (string & {});
 export const OriginsTimeseriesRequestOrigin = /*@__PURE__*/ S.String;
 
 export type OriginsTimeseriesRequestOriginList =
@@ -56967,7 +58633,12 @@ export const OriginsTimeseriesRequestOriginList = /*@__PURE__*/ S.Array(
   OriginsTimeseriesRequestOrigin,
 ) as any as S.Schema<OriginsTimeseriesRequestOriginList>;
 
-export type OriginsTimeseriesRequestAggInterval = "15m" | "1h" | "1d" | "1w";
+export type OriginsTimeseriesRequestAggInterval =
+  | "15m"
+  | "1h"
+  | "1d"
+  | "1w"
+  | (string & {});
 export const OriginsTimeseriesRequestAggInterval = /*@__PURE__*/ S.String;
 
 export type OriginsTimeseriesRequestDateEndList = ReadonlyArray<string>;
@@ -56985,7 +58656,7 @@ export const OriginsTimeseriesRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OriginsTimeseriesRequestDateStartList>;
 
-export type OriginsTimeseriesRequestFormat = "JSON" | "CSV";
+export type OriginsTimeseriesRequestFormat = "JSON" | "CSV" | (string & {});
 export const OriginsTimeseriesRequestFormat = /*@__PURE__*/ S.String;
 
 export type OriginsTimeseriesRequestNameList = ReadonlyArray<string>;
@@ -57049,7 +58720,8 @@ export type OriginsTimeseriesResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const OriginsTimeseriesResponseMetaAggInterval = /*@__PURE__*/ S.String;
 
 export type OriginsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
@@ -57077,7 +58749,8 @@ export type OriginsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const OriginsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -57087,7 +58760,8 @@ export type OriginsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType 
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const OriginsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -57183,7 +58857,8 @@ export type OriginsTimeseriesResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const OriginsTimeseriesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -57249,7 +58924,8 @@ export type OriginsTimeseriesGroupsRequestDimension =
   | "ORIGIN"
   | "REGION"
   | "SUCCESS_RATE"
-  | "PERCENTILE";
+  | "PERCENTILE"
+  | (string & {});
 export const OriginsTimeseriesGroupsRequestDimension = /*@__PURE__*/ S.String;
 
 export type OriginsTimeseriesGroupsRequestMetric =
@@ -57258,14 +58934,16 @@ export type OriginsTimeseriesGroupsRequestMetric =
   | "RESPONSE_HEADER_RECEIVE_DURATION"
   | "TCP_HANDSHAKE_DURATION"
   | "TCP_RTT"
-  | "TLS_HANDSHAKE_DURATION";
+  | "TLS_HANDSHAKE_DURATION"
+  | (string & {});
 export const OriginsTimeseriesGroupsRequestMetric = /*@__PURE__*/ S.String;
 
 export type OriginsTimeseriesGroupsRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const OriginsTimeseriesGroupsRequestAggInterval = /*@__PURE__*/ S.String;
 
 export type OriginsTimeseriesGroupsRequestDateEndList = ReadonlyArray<string>;
@@ -57285,7 +58963,10 @@ export const OriginsTimeseriesGroupsRequestDateStartList =
     S.String,
   ) as any as S.Schema<OriginsTimeseriesGroupsRequestDateStartList>;
 
-export type OriginsTimeseriesGroupsRequestFormat = "JSON" | "CSV";
+export type OriginsTimeseriesGroupsRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const OriginsTimeseriesGroupsRequestFormat = /*@__PURE__*/ S.String;
 
 export type OriginsTimeseriesGroupsRequestNameList = ReadonlyArray<string>;
@@ -57295,7 +58976,8 @@ export const OriginsTimeseriesGroupsRequestNameList = /*@__PURE__*/ S.Array(
 
 export type OriginsTimeseriesGroupsRequestNormalization =
   | "PERCENTAGE"
-  | "MIN0_MAX";
+  | "MIN0_MAX"
+  | (string & {});
 export const OriginsTimeseriesGroupsRequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -57303,7 +58985,8 @@ export type OriginsTimeseriesGroupsRequestOrigin =
   | "AMAZON"
   | "GOOGLE"
   | "MICROSOFT"
-  | "ORACLE";
+  | "ORACLE"
+  | (string & {});
 export const OriginsTimeseriesGroupsRequestOrigin = /*@__PURE__*/ S.String;
 
 export type OriginsTimeseriesGroupsRequestOriginList =
@@ -57389,7 +59072,8 @@ export type OriginsTimeseriesGroupsResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const OriginsTimeseriesGroupsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -57418,7 +59102,8 @@ export type OriginsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemData
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const OriginsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -57428,7 +59113,8 @@ export type OriginsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEven
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const OriginsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -57527,7 +59213,8 @@ export type OriginsTimeseriesGroupsResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const OriginsTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -57616,7 +59303,10 @@ export const HttpSummaryOsRequestAsnList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpSummaryOsRequestAsnList>;
 
-export type HttpSummaryOsRequestBotClass = "LIKELY_AUTOMATED" | "LIKELY_HUMAN";
+export type HttpSummaryOsRequestBotClass =
+  | "LIKELY_AUTOMATED"
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpSummaryOsRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpSummaryOsRequestBotClassList =
@@ -57629,7 +59319,8 @@ export type HttpSummaryOsRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpSummaryOsRequestBrowserFamily = /*@__PURE__*/ S.String;
 
 export type HttpSummaryOsRequestBrowserFamilyList =
@@ -57658,7 +59349,11 @@ export const HttpSummaryOsRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpSummaryOsRequestDateStartList>;
 
-export type HttpSummaryOsRequestDeviceType = "DESKTOP" | "MOBILE" | "OTHER";
+export type HttpSummaryOsRequestDeviceType =
+  | "DESKTOP"
+  | "MOBILE"
+  | "OTHER"
+  | (string & {});
 export const HttpSummaryOsRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpSummaryOsRequestDeviceTypeList =
@@ -57667,7 +59362,7 @@ export const HttpSummaryOsRequestDeviceTypeList = /*@__PURE__*/ S.Array(
   HttpSummaryOsRequestDeviceType,
 ) as any as S.Schema<HttpSummaryOsRequestDeviceTypeList>;
 
-export type HttpSummaryOsRequestFormat = "JSON" | "CSV";
+export type HttpSummaryOsRequestFormat = "JSON" | "CSV" | (string & {});
 export const HttpSummaryOsRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpSummaryOsRequestGeoIdList = ReadonlyArray<string>;
@@ -57675,7 +59370,7 @@ export const HttpSummaryOsRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpSummaryOsRequestGeoIdList>;
 
-export type HttpSummaryOsRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpSummaryOsRequestHttpProtocol = "HTTP" | "HTTPS" | (string & {});
 export const HttpSummaryOsRequestHttpProtocol = /*@__PURE__*/ S.String;
 
 export type HttpSummaryOsRequestHttpProtocolList =
@@ -57684,7 +59379,11 @@ export const HttpSummaryOsRequestHttpProtocolList = /*@__PURE__*/ S.Array(
   HttpSummaryOsRequestHttpProtocol,
 ) as any as S.Schema<HttpSummaryOsRequestHttpProtocolList>;
 
-export type HttpSummaryOsRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
+export type HttpSummaryOsRequestHttpVersion =
+  | "HTTPv1"
+  | "HTTPv2"
+  | "HTTPv3"
+  | (string & {});
 export const HttpSummaryOsRequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type HttpSummaryOsRequestHttpVersionList =
@@ -57693,7 +59392,7 @@ export const HttpSummaryOsRequestHttpVersionList = /*@__PURE__*/ S.Array(
   HttpSummaryOsRequestHttpVersion,
 ) as any as S.Schema<HttpSummaryOsRequestHttpVersionList>;
 
-export type HttpSummaryOsRequestIpVersion = "IPv4" | "IPv6";
+export type HttpSummaryOsRequestIpVersion = "IPv4" | "IPv6" | (string & {});
 export const HttpSummaryOsRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpSummaryOsRequestIpVersionList =
@@ -57717,7 +59416,8 @@ export type HttpSummaryOsRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpSummaryOsRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpSummaryOsRequestTlsVersionList =
@@ -57816,7 +59516,8 @@ export type HttpSummaryOsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   | "NET"
   | "ROBOTS_TXT"
   | "SPEED"
-  | "WORKERS_AI";
+  | "WORKERS_AI"
+  | (string & {});
 export const HttpSummaryOsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -57826,7 +59527,8 @@ export type HttpSummaryOsResponseMetaConfidenceInfoAnnotationsItemEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const HttpSummaryOsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -57922,7 +59624,8 @@ export type HttpSummaryOsResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpSummaryOsResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface HttpSummaryOsResponseMetaUnitsItem {
@@ -58000,7 +59703,8 @@ export type HttpTimeseriesGroupsOsRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const HttpTimeseriesGroupsOsRequestAggInterval = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsOsRequestAsnList = ReadonlyArray<string>;
@@ -58010,7 +59714,8 @@ export const HttpTimeseriesGroupsOsRequestAsnList = /*@__PURE__*/ S.Array(
 
 export type HttpTimeseriesGroupsOsRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpTimeseriesGroupsOsRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsOsRequestBotClassList =
@@ -58023,7 +59728,8 @@ export type HttpTimeseriesGroupsOsRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpTimeseriesGroupsOsRequestBrowserFamily =
   /*@__PURE__*/ S.String;
 
@@ -58057,7 +59763,8 @@ export const HttpTimeseriesGroupsOsRequestDateStartList = /*@__PURE__*/ S.Array(
 export type HttpTimeseriesGroupsOsRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpTimeseriesGroupsOsRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsOsRequestDeviceTypeList =
@@ -58067,7 +59774,10 @@ export const HttpTimeseriesGroupsOsRequestDeviceTypeList =
     HttpTimeseriesGroupsOsRequestDeviceType,
   ) as any as S.Schema<HttpTimeseriesGroupsOsRequestDeviceTypeList>;
 
-export type HttpTimeseriesGroupsOsRequestFormat = "JSON" | "CSV";
+export type HttpTimeseriesGroupsOsRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const HttpTimeseriesGroupsOsRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsOsRequestGeoIdList = ReadonlyArray<string>;
@@ -58075,7 +59785,10 @@ export const HttpTimeseriesGroupsOsRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpTimeseriesGroupsOsRequestGeoIdList>;
 
-export type HttpTimeseriesGroupsOsRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpTimeseriesGroupsOsRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpTimeseriesGroupsOsRequestHttpProtocol = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsOsRequestHttpProtocolList =
@@ -58088,7 +59801,8 @@ export const HttpTimeseriesGroupsOsRequestHttpProtocolList =
 export type HttpTimeseriesGroupsOsRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpTimeseriesGroupsOsRequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsOsRequestHttpVersionList =
@@ -58098,7 +59812,10 @@ export const HttpTimeseriesGroupsOsRequestHttpVersionList =
     HttpTimeseriesGroupsOsRequestHttpVersion,
   ) as any as S.Schema<HttpTimeseriesGroupsOsRequestHttpVersionList>;
 
-export type HttpTimeseriesGroupsOsRequestIpVersion = "IPv4" | "IPv6";
+export type HttpTimeseriesGroupsOsRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpTimeseriesGroupsOsRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsOsRequestIpVersionList =
@@ -58122,7 +59839,8 @@ export type HttpTimeseriesGroupsOsRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpTimeseriesGroupsOsRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsOsRequestTlsVersionList =
@@ -58231,7 +59949,8 @@ export type HttpTimeseriesGroupsOsResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const HttpTimeseriesGroupsOsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -58260,7 +59979,8 @@ export type HttpTimeseriesGroupsOsResponseMetaConfidenceInfoAnnotationsItemDataS
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpTimeseriesGroupsOsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -58270,7 +59990,8 @@ export type HttpTimeseriesGroupsOsResponseMetaConfidenceInfoAnnotationsItemEvent
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpTimeseriesGroupsOsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -58369,7 +60090,8 @@ export type HttpTimeseriesGroupsOsResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpTimeseriesGroupsOsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -58453,10 +60175,14 @@ export const OsHttpTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OsHttpTimeseriesGroupResponse",
 }) as any as S.Schema<OsHttpTimeseriesGroupResponse>;
 
-export type BgpRoutesPfx2asRequestFormat = "JSON" | "CSV";
+export type BgpRoutesPfx2asRequestFormat = "JSON" | "CSV" | (string & {});
 export const BgpRoutesPfx2asRequestFormat = /*@__PURE__*/ S.String;
 
-export type BgpRoutesPfx2asRequestRpkiStatus = "VALID" | "INVALID" | "UNKNOWN";
+export type BgpRoutesPfx2asRequestRpkiStatus =
+  | "VALID"
+  | "INVALID"
+  | "UNKNOWN"
+  | (string & {});
 export const BgpRoutesPfx2asRequestRpkiStatus = /*@__PURE__*/ S.String;
 
 export interface Pfx2asBgpRouteRequest {
@@ -58546,7 +60272,8 @@ export const HttpSummaryPostQuantumRequestAsnList = /*@__PURE__*/ S.Array(
 
 export type HttpSummaryPostQuantumRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpSummaryPostQuantumRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpSummaryPostQuantumRequestBotClassList =
@@ -58559,7 +60286,8 @@ export type HttpSummaryPostQuantumRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpSummaryPostQuantumRequestBrowserFamily =
   /*@__PURE__*/ S.String;
 
@@ -58593,7 +60321,8 @@ export const HttpSummaryPostQuantumRequestDateStartList = /*@__PURE__*/ S.Array(
 export type HttpSummaryPostQuantumRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpSummaryPostQuantumRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpSummaryPostQuantumRequestDeviceTypeList =
@@ -58603,7 +60332,10 @@ export const HttpSummaryPostQuantumRequestDeviceTypeList =
     HttpSummaryPostQuantumRequestDeviceType,
   ) as any as S.Schema<HttpSummaryPostQuantumRequestDeviceTypeList>;
 
-export type HttpSummaryPostQuantumRequestFormat = "JSON" | "CSV";
+export type HttpSummaryPostQuantumRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const HttpSummaryPostQuantumRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpSummaryPostQuantumRequestGeoIdList = ReadonlyArray<string>;
@@ -58611,7 +60343,10 @@ export const HttpSummaryPostQuantumRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpSummaryPostQuantumRequestGeoIdList>;
 
-export type HttpSummaryPostQuantumRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpSummaryPostQuantumRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpSummaryPostQuantumRequestHttpProtocol = /*@__PURE__*/ S.String;
 
 export type HttpSummaryPostQuantumRequestHttpProtocolList =
@@ -58624,7 +60359,8 @@ export const HttpSummaryPostQuantumRequestHttpProtocolList =
 export type HttpSummaryPostQuantumRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpSummaryPostQuantumRequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type HttpSummaryPostQuantumRequestHttpVersionList =
@@ -58634,7 +60370,10 @@ export const HttpSummaryPostQuantumRequestHttpVersionList =
     HttpSummaryPostQuantumRequestHttpVersion,
   ) as any as S.Schema<HttpSummaryPostQuantumRequestHttpVersionList>;
 
-export type HttpSummaryPostQuantumRequestIpVersion = "IPv4" | "IPv6";
+export type HttpSummaryPostQuantumRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpSummaryPostQuantumRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpSummaryPostQuantumRequestIpVersionList =
@@ -58660,7 +60399,8 @@ export type HttpSummaryPostQuantumRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpSummaryPostQuantumRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpSummaryPostQuantumRequestOsList =
@@ -58674,7 +60414,8 @@ export type HttpSummaryPostQuantumRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpSummaryPostQuantumRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpSummaryPostQuantumRequestTlsVersionList =
@@ -58801,7 +60542,8 @@ export type HttpSummaryPostQuantumResponseMetaConfidenceInfoAnnotationsItemDataS
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpSummaryPostQuantumResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -58811,7 +60553,8 @@ export type HttpSummaryPostQuantumResponseMetaConfidenceInfoAnnotationsItemEvent
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpSummaryPostQuantumResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -58910,7 +60653,8 @@ export type HttpSummaryPostQuantumResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpSummaryPostQuantumResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -58992,7 +60736,8 @@ export type HttpTimeseriesGroupsPostQuantumRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const HttpTimeseriesGroupsPostQuantumRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -59005,7 +60750,8 @@ export const HttpTimeseriesGroupsPostQuantumRequestAsnList =
 
 export type HttpTimeseriesGroupsPostQuantumRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpTimeseriesGroupsPostQuantumRequestBotClass =
   /*@__PURE__*/ S.String;
 
@@ -59020,7 +60766,8 @@ export type HttpTimeseriesGroupsPostQuantumRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpTimeseriesGroupsPostQuantumRequestBrowserFamily =
   /*@__PURE__*/ S.String;
 
@@ -59062,7 +60809,8 @@ export const HttpTimeseriesGroupsPostQuantumRequestDateStartList =
 export type HttpTimeseriesGroupsPostQuantumRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpTimeseriesGroupsPostQuantumRequestDeviceType =
   /*@__PURE__*/ S.String;
 
@@ -59073,7 +60821,10 @@ export const HttpTimeseriesGroupsPostQuantumRequestDeviceTypeList =
     HttpTimeseriesGroupsPostQuantumRequestDeviceType,
   ) as any as S.Schema<HttpTimeseriesGroupsPostQuantumRequestDeviceTypeList>;
 
-export type HttpTimeseriesGroupsPostQuantumRequestFormat = "JSON" | "CSV";
+export type HttpTimeseriesGroupsPostQuantumRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const HttpTimeseriesGroupsPostQuantumRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -59086,7 +60837,8 @@ export const HttpTimeseriesGroupsPostQuantumRequestGeoIdList =
 
 export type HttpTimeseriesGroupsPostQuantumRequestHttpProtocol =
   | "HTTP"
-  | "HTTPS";
+  | "HTTPS"
+  | (string & {});
 export const HttpTimeseriesGroupsPostQuantumRequestHttpProtocol =
   /*@__PURE__*/ S.String;
 
@@ -59100,7 +60852,8 @@ export const HttpTimeseriesGroupsPostQuantumRequestHttpProtocolList =
 export type HttpTimeseriesGroupsPostQuantumRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpTimeseriesGroupsPostQuantumRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -59111,7 +60864,10 @@ export const HttpTimeseriesGroupsPostQuantumRequestHttpVersionList =
     HttpTimeseriesGroupsPostQuantumRequestHttpVersion,
   ) as any as S.Schema<HttpTimeseriesGroupsPostQuantumRequestHttpVersionList>;
 
-export type HttpTimeseriesGroupsPostQuantumRequestIpVersion = "IPv4" | "IPv6";
+export type HttpTimeseriesGroupsPostQuantumRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpTimeseriesGroupsPostQuantumRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -59143,7 +60899,8 @@ export type HttpTimeseriesGroupsPostQuantumRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpTimeseriesGroupsPostQuantumRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsPostQuantumRequestOsList =
@@ -59158,7 +60915,8 @@ export type HttpTimeseriesGroupsPostQuantumRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpTimeseriesGroupsPostQuantumRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -59282,7 +61040,8 @@ export type HttpTimeseriesGroupsPostQuantumResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const HttpTimeseriesGroupsPostQuantumResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -59311,7 +61070,8 @@ export type HttpTimeseriesGroupsPostQuantumResponseMetaConfidenceInfoAnnotations
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpTimeseriesGroupsPostQuantumResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -59321,7 +61081,8 @@ export type HttpTimeseriesGroupsPostQuantumResponseMetaConfidenceInfoAnnotations
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpTimeseriesGroupsPostQuantumResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -59420,7 +61181,8 @@ export type HttpTimeseriesGroupsPostQuantumResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpTimeseriesGroupsPostQuantumResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -59549,7 +61311,7 @@ export const BgpTopPrefixesRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BgpTopPrefixesRequestDateStartList>;
 
-export type BgpTopPrefixesRequestFormat = "JSON" | "CSV";
+export type BgpTopPrefixesRequestFormat = "JSON" | "CSV" | (string & {});
 export const BgpTopPrefixesRequestFormat = /*@__PURE__*/ S.String;
 
 export type BgpTopPrefixesRequestNameList = ReadonlyArray<string>;
@@ -59557,7 +61319,10 @@ export const BgpTopPrefixesRequestNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BgpTopPrefixesRequestNameList>;
 
-export type BgpTopPrefixesRequestUpdateType = "ANNOUNCEMENT" | "WITHDRAWAL";
+export type BgpTopPrefixesRequestUpdateType =
+  | "ANNOUNCEMENT"
+  | "WITHDRAWAL"
+  | (string & {});
 export const BgpTopPrefixesRequestUpdateType = /*@__PURE__*/ S.String;
 
 export type BgpTopPrefixesRequestUpdateTypeList =
@@ -59668,7 +61433,7 @@ export const PrefixesBgpTopResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrefixesBgpTopResponse",
 }) as any as S.Schema<PrefixesBgpTopResponse>;
 
-export type BgpTopAsesPrefixesRequestFormat = "JSON" | "CSV";
+export type BgpTopAsesPrefixesRequestFormat = "JSON" | "CSV" | (string & {});
 export const BgpTopAsesPrefixesRequestFormat = /*@__PURE__*/ S.String;
 
 export interface PrefixesBgpTopAsRequest {
@@ -59765,7 +61530,7 @@ export const As112SummaryProtocolRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<As112SummaryProtocolRequestDateStartList>;
 
-export type As112SummaryProtocolRequestFormat = "JSON" | "CSV";
+export type As112SummaryProtocolRequestFormat = "JSON" | "CSV" | (string & {});
 export const As112SummaryProtocolRequestFormat = /*@__PURE__*/ S.String;
 
 export type As112SummaryProtocolRequestLocationList = ReadonlyArray<string>;
@@ -59866,7 +61631,8 @@ export type As112SummaryProtocolRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const As112SummaryProtocolRequestQueryType = /*@__PURE__*/ S.String;
 
 export type As112SummaryProtocolRequestQueryTypeList =
@@ -59894,7 +61660,8 @@ export type As112SummaryProtocolRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const As112SummaryProtocolRequestResponseCode = /*@__PURE__*/ S.String;
 
 export type As112SummaryProtocolRequestResponseCodeList =
@@ -59985,7 +61752,8 @@ export type As112SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemDataSou
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const As112SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -59995,7 +61763,8 @@ export type As112SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemEventTy
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const As112SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -60093,7 +61862,8 @@ export type As112SummaryProtocolResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const As112SummaryProtocolResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -60180,7 +61950,8 @@ export type As112TimeseriesGroupsProtocolRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const As112TimeseriesGroupsProtocolRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -60212,7 +61983,10 @@ export const As112TimeseriesGroupsProtocolRequestDateStartList =
     S.String,
   ) as any as S.Schema<As112TimeseriesGroupsProtocolRequestDateStartList>;
 
-export type As112TimeseriesGroupsProtocolRequestFormat = "JSON" | "CSV";
+export type As112TimeseriesGroupsProtocolRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const As112TimeseriesGroupsProtocolRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -60318,7 +62092,8 @@ export type As112TimeseriesGroupsProtocolRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const As112TimeseriesGroupsProtocolRequestQueryType =
   /*@__PURE__*/ S.String;
 
@@ -60348,7 +62123,8 @@ export type As112TimeseriesGroupsProtocolRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const As112TimeseriesGroupsProtocolRequestResponseCode =
   /*@__PURE__*/ S.String;
 
@@ -60431,7 +62207,8 @@ export type As112TimeseriesGroupsProtocolResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const As112TimeseriesGroupsProtocolResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -60460,7 +62237,8 @@ export type As112TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsIt
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const As112TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -60470,7 +62248,8 @@ export type As112TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsIt
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const As112TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -60569,7 +62348,8 @@ export type As112TimeseriesGroupsProtocolResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const As112TimeseriesGroupsProtocolResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -60712,14 +62492,23 @@ export const AttacksLayer3SummaryProtocolRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer3SummaryProtocolRequestDateStartList>;
 
-export type AttacksLayer3SummaryProtocolRequestDirection = "ORIGIN" | "TARGET";
+export type AttacksLayer3SummaryProtocolRequestDirection =
+  | "ORIGIN"
+  | "TARGET"
+  | (string & {});
 export const AttacksLayer3SummaryProtocolRequestDirection =
   /*@__PURE__*/ S.String;
 
-export type AttacksLayer3SummaryProtocolRequestFormat = "JSON" | "CSV";
+export type AttacksLayer3SummaryProtocolRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer3SummaryProtocolRequestFormat = /*@__PURE__*/ S.String;
 
-export type AttacksLayer3SummaryProtocolRequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer3SummaryProtocolRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer3SummaryProtocolRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -60830,7 +62619,8 @@ export type AttacksLayer3SummaryProtocolResponseMetaConfidenceInfoAnnotationsIte
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer3SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -60840,7 +62630,8 @@ export type AttacksLayer3SummaryProtocolResponseMetaConfidenceInfoAnnotationsIte
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer3SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -60939,7 +62730,8 @@ export type AttacksLayer3SummaryProtocolResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer3SummaryProtocolResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -61030,7 +62822,8 @@ export type AttacksLayer3TimeseriesGroupsProtocolRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsProtocolRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -61064,17 +62857,22 @@ export const AttacksLayer3TimeseriesGroupsProtocolRequestDateStartList =
 
 export type AttacksLayer3TimeseriesGroupsProtocolRequestDirection =
   | "ORIGIN"
-  | "TARGET";
+  | "TARGET"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsProtocolRequestDirection =
   /*@__PURE__*/ S.String;
 
-export type AttacksLayer3TimeseriesGroupsProtocolRequestFormat = "JSON" | "CSV";
+export type AttacksLayer3TimeseriesGroupsProtocolRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsProtocolRequestFormat =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesGroupsProtocolRequestIpVersion =
   | "IPv4"
-  | "IPv6";
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsProtocolRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -61101,7 +62899,8 @@ export const AttacksLayer3TimeseriesGroupsProtocolRequestNameList =
 
 export type AttacksLayer3TimeseriesGroupsProtocolRequestNormalization =
   | "PERCENTAGE"
-  | "MIN0_MAX";
+  | "MIN0_MAX"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsProtocolRequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -61195,7 +62994,8 @@ export type AttacksLayer3TimeseriesGroupsProtocolResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsProtocolResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -61224,7 +63024,8 @@ export type AttacksLayer3TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnot
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer3TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -61234,7 +63035,8 @@ export type AttacksLayer3TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnot
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer3TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -61335,7 +63137,8 @@ export type AttacksLayer3TimeseriesGroupsProtocolResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsProtocolResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -61487,7 +63290,7 @@ export const DnsSummaryProtocolRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DnsSummaryProtocolRequestDateStartList>;
 
-export type DnsSummaryProtocolRequestFormat = "JSON" | "CSV";
+export type DnsSummaryProtocolRequestFormat = "JSON" | "CSV" | (string & {});
 export const DnsSummaryProtocolRequestFormat = /*@__PURE__*/ S.String;
 
 export type DnsSummaryProtocolRequestLocationList = ReadonlyArray<string>;
@@ -61593,7 +63396,8 @@ export type DnsSummaryProtocolRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const DnsSummaryProtocolRequestQueryType = /*@__PURE__*/ S.String;
 
 export type DnsSummaryProtocolRequestQueryTypeList =
@@ -61621,7 +63425,8 @@ export type DnsSummaryProtocolRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const DnsSummaryProtocolRequestResponseCode = /*@__PURE__*/ S.String;
 
 export type DnsSummaryProtocolRequestResponseCodeList =
@@ -61719,7 +63524,8 @@ export type DnsSummaryProtocolResponseMetaConfidenceInfoAnnotationsItemDataSourc
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const DnsSummaryProtocolResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -61729,7 +63535,8 @@ export type DnsSummaryProtocolResponseMetaConfidenceInfoAnnotationsItemEventType
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const DnsSummaryProtocolResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -61826,7 +63633,8 @@ export type DnsSummaryProtocolResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsSummaryProtocolResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -61912,7 +63720,8 @@ export type DnsTimeseriesGroupsProtocolRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const DnsTimeseriesGroupsProtocolRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -61949,7 +63758,10 @@ export const DnsTimeseriesGroupsProtocolRequestDateStartList =
     S.String,
   ) as any as S.Schema<DnsTimeseriesGroupsProtocolRequestDateStartList>;
 
-export type DnsTimeseriesGroupsProtocolRequestFormat = "JSON" | "CSV";
+export type DnsTimeseriesGroupsProtocolRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const DnsTimeseriesGroupsProtocolRequestFormat = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsProtocolRequestLocationList =
@@ -62059,7 +63871,8 @@ export type DnsTimeseriesGroupsProtocolRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const DnsTimeseriesGroupsProtocolRequestQueryType =
   /*@__PURE__*/ S.String;
 
@@ -62089,7 +63902,8 @@ export type DnsTimeseriesGroupsProtocolRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const DnsTimeseriesGroupsProtocolRequestResponseCode =
   /*@__PURE__*/ S.String;
 
@@ -62188,7 +64002,8 @@ export type DnsTimeseriesGroupsProtocolResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const DnsTimeseriesGroupsProtocolResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -62217,7 +64032,8 @@ export type DnsTimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItem
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const DnsTimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -62227,7 +64043,8 @@ export type DnsTimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItem
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const DnsTimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -62326,7 +64143,8 @@ export type DnsTimeseriesGroupsProtocolResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsTimeseriesGroupsProtocolResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -62458,7 +64276,7 @@ export const As112SummaryQueryTypeRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<As112SummaryQueryTypeRequestDateStartList>;
 
-export type As112SummaryQueryTypeRequestFormat = "JSON" | "CSV";
+export type As112SummaryQueryTypeRequestFormat = "JSON" | "CSV" | (string & {});
 export const As112SummaryQueryTypeRequestFormat = /*@__PURE__*/ S.String;
 
 export type As112SummaryQueryTypeRequestLocationList = ReadonlyArray<string>;
@@ -62475,7 +64293,8 @@ export type As112SummaryQueryTypeRequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const As112SummaryQueryTypeRequestProtocol = /*@__PURE__*/ S.String;
 
 export type As112SummaryQueryTypeRequestProtocolList =
@@ -62503,7 +64322,8 @@ export type As112SummaryQueryTypeRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const As112SummaryQueryTypeRequestResponseCode = /*@__PURE__*/ S.String;
 
 export type As112SummaryQueryTypeRequestResponseCodeList =
@@ -62599,7 +64419,8 @@ export type As112SummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemDataSo
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const As112SummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -62609,7 +64430,8 @@ export type As112SummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemEventT
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const As112SummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -62708,7 +64530,8 @@ export type As112SummaryQueryTypeResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const As112SummaryQueryTypeResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -62783,7 +64606,8 @@ export type As112TimeseriesGroupsQueryTypeRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const As112TimeseriesGroupsQueryTypeRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -62815,7 +64639,10 @@ export const As112TimeseriesGroupsQueryTypeRequestDateStartList =
     S.String,
   ) as any as S.Schema<As112TimeseriesGroupsQueryTypeRequestDateStartList>;
 
-export type As112TimeseriesGroupsQueryTypeRequestFormat = "JSON" | "CSV";
+export type As112TimeseriesGroupsQueryTypeRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const As112TimeseriesGroupsQueryTypeRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -62837,7 +64664,8 @@ export type As112TimeseriesGroupsQueryTypeRequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const As112TimeseriesGroupsQueryTypeRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -62867,7 +64695,8 @@ export type As112TimeseriesGroupsQueryTypeRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const As112TimeseriesGroupsQueryTypeRequestResponseCode =
   /*@__PURE__*/ S.String;
 
@@ -62954,7 +64783,8 @@ export type As112TimeseriesGroupsQueryTypeResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const As112TimeseriesGroupsQueryTypeResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -62983,7 +64813,8 @@ export type As112TimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsI
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const As112TimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -62993,7 +64824,8 @@ export type As112TimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsI
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const As112TimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -63092,7 +64924,8 @@ export type As112TimeseriesGroupsQueryTypeResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const As112TimeseriesGroupsQueryTypeResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -63205,7 +65038,7 @@ export const DnsSummaryQueryTypeRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DnsSummaryQueryTypeRequestDateStartList>;
 
-export type DnsSummaryQueryTypeRequestFormat = "JSON" | "CSV";
+export type DnsSummaryQueryTypeRequestFormat = "JSON" | "CSV" | (string & {});
 export const DnsSummaryQueryTypeRequestFormat = /*@__PURE__*/ S.String;
 
 export type DnsSummaryQueryTypeRequestLocationList = ReadonlyArray<string>;
@@ -63227,7 +65060,8 @@ export type DnsSummaryQueryTypeRequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const DnsSummaryQueryTypeRequestProtocol = /*@__PURE__*/ S.String;
 
 export type DnsSummaryQueryTypeRequestProtocolList =
@@ -63255,7 +65089,8 @@ export type DnsSummaryQueryTypeRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const DnsSummaryQueryTypeRequestResponseCode = /*@__PURE__*/ S.String;
 
 export type DnsSummaryQueryTypeRequestResponseCodeList =
@@ -63362,7 +65197,8 @@ export type DnsSummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemDataSour
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const DnsSummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -63372,7 +65208,8 @@ export type DnsSummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemEventTyp
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const DnsSummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -63469,7 +65306,8 @@ export type DnsSummaryQueryTypeResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsSummaryQueryTypeResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -63542,7 +65380,8 @@ export type DnsTimeseriesGroupsQueryTypeRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const DnsTimeseriesGroupsQueryTypeRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -63579,7 +65418,10 @@ export const DnsTimeseriesGroupsQueryTypeRequestDateStartList =
     S.String,
   ) as any as S.Schema<DnsTimeseriesGroupsQueryTypeRequestDateStartList>;
 
-export type DnsTimeseriesGroupsQueryTypeRequestFormat = "JSON" | "CSV";
+export type DnsTimeseriesGroupsQueryTypeRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const DnsTimeseriesGroupsQueryTypeRequestFormat = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsQueryTypeRequestLocationList =
@@ -63606,7 +65448,8 @@ export type DnsTimeseriesGroupsQueryTypeRequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const DnsTimeseriesGroupsQueryTypeRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -63636,7 +65479,8 @@ export type DnsTimeseriesGroupsQueryTypeRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const DnsTimeseriesGroupsQueryTypeRequestResponseCode =
   /*@__PURE__*/ S.String;
 
@@ -63738,7 +65582,8 @@ export type DnsTimeseriesGroupsQueryTypeResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const DnsTimeseriesGroupsQueryTypeResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -63767,7 +65612,8 @@ export type DnsTimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsIte
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const DnsTimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -63777,7 +65623,8 @@ export type DnsTimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsIte
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const DnsTimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -63876,7 +65723,8 @@ export type DnsTimeseriesGroupsQueryTypeResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsTimeseriesGroupsQueryTypeResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -63961,7 +65809,7 @@ export const QueryTypeDnsTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryTypeDnsTimeseriesGroupResponse",
 }) as any as S.Schema<QueryTypeDnsTimeseriesGroupResponse>;
 
-export type BgpRoutesRealtimeRequestFormat = "JSON" | "CSV";
+export type BgpRoutesRealtimeRequestFormat = "JSON" | "CSV" | (string & {});
 export const BgpRoutesRealtimeRequestFormat = /*@__PURE__*/ S.String;
 
 export interface RealtimeBgpRouteRequest {
@@ -64169,7 +66017,7 @@ export const RealtimeBgpRouteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RealtimeBgpRouteResponse",
 }) as any as S.Schema<RealtimeBgpRouteResponse>;
 
-export type EntitiesAsnsRelRequestFormat = "JSON" | "CSV";
+export type EntitiesAsnsRelRequestFormat = "JSON" | "CSV" | (string & {});
 export const EntitiesAsnsRelRequestFormat = /*@__PURE__*/ S.String;
 
 export interface RelEntityAsnRequest {
@@ -64281,7 +66129,10 @@ export const DnsSummaryResponseCodeRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DnsSummaryResponseCodeRequestDateStartList>;
 
-export type DnsSummaryResponseCodeRequestFormat = "JSON" | "CSV";
+export type DnsSummaryResponseCodeRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const DnsSummaryResponseCodeRequestFormat = /*@__PURE__*/ S.String;
 
 export type DnsSummaryResponseCodeRequestLocationList = ReadonlyArray<string>;
@@ -64303,7 +66154,8 @@ export type DnsSummaryResponseCodeRequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const DnsSummaryResponseCodeRequestProtocol = /*@__PURE__*/ S.String;
 
 export type DnsSummaryResponseCodeRequestProtocolList =
@@ -64400,7 +66252,8 @@ export type DnsSummaryResponseCodeRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const DnsSummaryResponseCodeRequestQueryType = /*@__PURE__*/ S.String;
 
 export type DnsSummaryResponseCodeRequestQueryTypeList =
@@ -64509,7 +66362,8 @@ export type DnsSummaryResponseCodeResponseMetaConfidenceInfoAnnotationsItemDataS
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const DnsSummaryResponseCodeResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -64519,7 +66373,8 @@ export type DnsSummaryResponseCodeResponseMetaConfidenceInfoAnnotationsItemEvent
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const DnsSummaryResponseCodeResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -64618,7 +66473,8 @@ export type DnsSummaryResponseCodeResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsSummaryResponseCodeResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -64694,7 +66550,8 @@ export type DnsTimeseriesGroupsResponseCodeRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const DnsTimeseriesGroupsResponseCodeRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -64733,7 +66590,10 @@ export const DnsTimeseriesGroupsResponseCodeRequestDateStartList =
     S.String,
   ) as any as S.Schema<DnsTimeseriesGroupsResponseCodeRequestDateStartList>;
 
-export type DnsTimeseriesGroupsResponseCodeRequestFormat = "JSON" | "CSV";
+export type DnsTimeseriesGroupsResponseCodeRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const DnsTimeseriesGroupsResponseCodeRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -64762,7 +66622,8 @@ export type DnsTimeseriesGroupsResponseCodeRequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const DnsTimeseriesGroupsResponseCodeRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -64861,7 +66722,8 @@ export type DnsTimeseriesGroupsResponseCodeRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const DnsTimeseriesGroupsResponseCodeRequestQueryType =
   /*@__PURE__*/ S.String;
 
@@ -64970,7 +66832,8 @@ export type DnsTimeseriesGroupsResponseCodeResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const DnsTimeseriesGroupsResponseCodeResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -64999,7 +66862,8 @@ export type DnsTimeseriesGroupsResponseCodeResponseMetaConfidenceInfoAnnotations
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const DnsTimeseriesGroupsResponseCodeResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -65009,7 +66873,8 @@ export type DnsTimeseriesGroupsResponseCodeResponseMetaConfidenceInfoAnnotations
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const DnsTimeseriesGroupsResponseCodeResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -65108,7 +66973,8 @@ export type DnsTimeseriesGroupsResponseCodeResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsTimeseriesGroupsResponseCodeResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -65223,7 +67089,10 @@ export const As112SummaryResponseCodesRequestDateStartList =
     S.String,
   ) as any as S.Schema<As112SummaryResponseCodesRequestDateStartList>;
 
-export type As112SummaryResponseCodesRequestFormat = "JSON" | "CSV";
+export type As112SummaryResponseCodesRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const As112SummaryResponseCodesRequestFormat = /*@__PURE__*/ S.String;
 
 export type As112SummaryResponseCodesRequestLocationList =
@@ -65242,7 +67111,8 @@ export type As112SummaryResponseCodesRequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const As112SummaryResponseCodesRequestProtocol = /*@__PURE__*/ S.String;
 
 export type As112SummaryResponseCodesRequestProtocolList =
@@ -65340,7 +67210,8 @@ export type As112SummaryResponseCodesRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const As112SummaryResponseCodesRequestQueryType = /*@__PURE__*/ S.String;
 
 export type As112SummaryResponseCodesRequestQueryTypeList =
@@ -65436,7 +67307,8 @@ export type As112SummaryResponseCodesResponseMetaConfidenceInfoAnnotationsItemDa
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const As112SummaryResponseCodesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -65446,7 +67318,8 @@ export type As112SummaryResponseCodesResponseMetaConfidenceInfoAnnotationsItemEv
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const As112SummaryResponseCodesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -65545,7 +67418,8 @@ export type As112SummaryResponseCodesResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const As112SummaryResponseCodesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -65623,7 +67497,8 @@ export type As112TimeseriesGroupsResponseCodesRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const As112TimeseriesGroupsResponseCodesRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -65655,7 +67530,10 @@ export const As112TimeseriesGroupsResponseCodesRequestDateStartList =
     S.String,
   ) as any as S.Schema<As112TimeseriesGroupsResponseCodesRequestDateStartList>;
 
-export type As112TimeseriesGroupsResponseCodesRequestFormat = "JSON" | "CSV";
+export type As112TimeseriesGroupsResponseCodesRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const As112TimeseriesGroupsResponseCodesRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -65677,7 +67555,8 @@ export type As112TimeseriesGroupsResponseCodesRequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const As112TimeseriesGroupsResponseCodesRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -65776,7 +67655,8 @@ export type As112TimeseriesGroupsResponseCodesRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const As112TimeseriesGroupsResponseCodesRequestQueryType =
   /*@__PURE__*/ S.String;
 
@@ -65863,7 +67743,8 @@ export type As112TimeseriesGroupsResponseCodesResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const As112TimeseriesGroupsResponseCodesResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -65892,7 +67773,8 @@ export type As112TimeseriesGroupsResponseCodesResponseMetaConfidenceInfoAnnotati
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const As112TimeseriesGroupsResponseCodesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -65902,7 +67784,8 @@ export type As112TimeseriesGroupsResponseCodesResponseMetaConfidenceInfoAnnotati
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const As112TimeseriesGroupsResponseCodesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -66001,7 +67884,8 @@ export type As112TimeseriesGroupsResponseCodesResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const As112TimeseriesGroupsResponseCodesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -66117,7 +68001,7 @@ export const DnsSummaryResponseTtlRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DnsSummaryResponseTtlRequestDateStartList>;
 
-export type DnsSummaryResponseTtlRequestFormat = "JSON" | "CSV";
+export type DnsSummaryResponseTtlRequestFormat = "JSON" | "CSV" | (string & {});
 export const DnsSummaryResponseTtlRequestFormat = /*@__PURE__*/ S.String;
 
 export type DnsSummaryResponseTtlRequestLocationList = ReadonlyArray<string>;
@@ -66139,7 +68023,8 @@ export type DnsSummaryResponseTtlRequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const DnsSummaryResponseTtlRequestProtocol = /*@__PURE__*/ S.String;
 
 export type DnsSummaryResponseTtlRequestProtocolList =
@@ -66236,7 +68121,8 @@ export type DnsSummaryResponseTtlRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const DnsSummaryResponseTtlRequestQueryType = /*@__PURE__*/ S.String;
 
 export type DnsSummaryResponseTtlRequestQueryTypeList =
@@ -66264,7 +68150,8 @@ export type DnsSummaryResponseTtlRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const DnsSummaryResponseTtlRequestResponseCode = /*@__PURE__*/ S.String;
 
 export type DnsSummaryResponseTtlRequestResponseCodeList =
@@ -66376,7 +68263,8 @@ export type DnsSummaryResponseTtlResponseMetaConfidenceInfoAnnotationsItemDataSo
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const DnsSummaryResponseTtlResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -66386,7 +68274,8 @@ export type DnsSummaryResponseTtlResponseMetaConfidenceInfoAnnotationsItemEventT
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const DnsSummaryResponseTtlResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -66485,7 +68374,8 @@ export type DnsSummaryResponseTtlResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsSummaryResponseTtlResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -66581,7 +68471,8 @@ export type DnsTimeseriesGroupsResponseTtlRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const DnsTimeseriesGroupsResponseTtlRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -66620,7 +68511,10 @@ export const DnsTimeseriesGroupsResponseTtlRequestDateStartList =
     S.String,
   ) as any as S.Schema<DnsTimeseriesGroupsResponseTtlRequestDateStartList>;
 
-export type DnsTimeseriesGroupsResponseTtlRequestFormat = "JSON" | "CSV";
+export type DnsTimeseriesGroupsResponseTtlRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const DnsTimeseriesGroupsResponseTtlRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -66649,7 +68543,8 @@ export type DnsTimeseriesGroupsResponseTtlRequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const DnsTimeseriesGroupsResponseTtlRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -66748,7 +68643,8 @@ export type DnsTimeseriesGroupsResponseTtlRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const DnsTimeseriesGroupsResponseTtlRequestQueryType =
   /*@__PURE__*/ S.String;
 
@@ -66778,7 +68674,8 @@ export type DnsTimeseriesGroupsResponseTtlRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const DnsTimeseriesGroupsResponseTtlRequestResponseCode =
   /*@__PURE__*/ S.String;
 
@@ -66889,7 +68786,8 @@ export type DnsTimeseriesGroupsResponseTtlResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const DnsTimeseriesGroupsResponseTtlResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -66918,7 +68816,8 @@ export type DnsTimeseriesGroupsResponseTtlResponseMetaConfidenceInfoAnnotationsI
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const DnsTimeseriesGroupsResponseTtlResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -66928,7 +68827,8 @@ export type DnsTimeseriesGroupsResponseTtlResponseMetaConfidenceInfoAnnotationsI
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const DnsTimeseriesGroupsResponseTtlResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -67027,7 +68927,8 @@ export type DnsTimeseriesGroupsResponseTtlResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsTimeseriesGroupsResponseTtlResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -67185,7 +69086,7 @@ export const ResponseTTLDnsTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   identifier: "ResponseTTLDnsTimeseriesGroupResponse",
 }) as any as S.Schema<ResponseTTLDnsTimeseriesGroupResponse>;
 
-export type BgpRpkiAspaSnapshotRequestFormat = "JSON" | "CSV";
+export type BgpRpkiAspaSnapshotRequestFormat = "JSON" | "CSV" | (string & {});
 export const BgpRpkiAspaSnapshotRequestFormat = /*@__PURE__*/ S.String;
 
 export interface SnapshotBgpRpkiAspaRequest {
@@ -67312,7 +69213,11 @@ export const SnapshotBgpRpkiAspaResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SnapshotBgpRpkiAspaResponse",
 }) as any as S.Schema<SnapshotBgpRpkiAspaResponse>;
 
-export type EmailSecuritySummarySpamRequestArc = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummarySpamRequestArc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummarySpamRequestArc = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummarySpamRequestArcList =
@@ -67340,7 +69245,11 @@ export const EmailSecuritySummarySpamRequestDateStartList =
     S.String,
   ) as any as S.Schema<EmailSecuritySummarySpamRequestDateStartList>;
 
-export type EmailSecuritySummarySpamRequestDkim = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummarySpamRequestDkim =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummarySpamRequestDkim = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummarySpamRequestDkimList =
@@ -67349,7 +69258,11 @@ export const EmailSecuritySummarySpamRequestDkimList = /*@__PURE__*/ S.Array(
   EmailSecuritySummarySpamRequestDkim,
 ) as any as S.Schema<EmailSecuritySummarySpamRequestDkimList>;
 
-export type EmailSecuritySummarySpamRequestDmarc = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummarySpamRequestDmarc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummarySpamRequestDmarc = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummarySpamRequestDmarcList =
@@ -67358,7 +69271,10 @@ export const EmailSecuritySummarySpamRequestDmarcList = /*@__PURE__*/ S.Array(
   EmailSecuritySummarySpamRequestDmarc,
 ) as any as S.Schema<EmailSecuritySummarySpamRequestDmarcList>;
 
-export type EmailSecuritySummarySpamRequestFormat = "JSON" | "CSV";
+export type EmailSecuritySummarySpamRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailSecuritySummarySpamRequestFormat = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummarySpamRequestNameList = ReadonlyArray<string>;
@@ -67366,7 +69282,11 @@ export const EmailSecuritySummarySpamRequestNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EmailSecuritySummarySpamRequestNameList>;
 
-export type EmailSecuritySummarySpamRequestSpf = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummarySpamRequestSpf =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummarySpamRequestSpf = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummarySpamRequestSpfList =
@@ -67379,7 +69299,8 @@ export type EmailSecuritySummarySpamRequestTlsVersion =
   | "TLSv1_0"
   | "TLSv1_1"
   | "TLSv1_2"
-  | "TLSv1_3";
+  | "TLSv1_3"
+  | (string & {});
 export const EmailSecuritySummarySpamRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummarySpamRequestTlsVersionList =
@@ -67469,7 +69390,8 @@ export type EmailSecuritySummarySpamResponseMetaConfidenceInfoAnnotationsItemDat
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailSecuritySummarySpamResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -67479,7 +69401,8 @@ export type EmailSecuritySummarySpamResponseMetaConfidenceInfoAnnotationsItemEve
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailSecuritySummarySpamResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -67578,7 +69501,8 @@ export type EmailSecuritySummarySpamResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailSecuritySummarySpamResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -67663,14 +69587,16 @@ export type EmailSecurityTimeseriesGroupsSpamRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpamRequestAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsSpamRequestArc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpamRequestArc =
   /*@__PURE__*/ S.String;
 
@@ -67705,7 +69631,8 @@ export const EmailSecurityTimeseriesGroupsSpamRequestDateStartList =
 export type EmailSecurityTimeseriesGroupsSpamRequestDkim =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpamRequestDkim =
   /*@__PURE__*/ S.String;
 
@@ -67719,7 +69646,8 @@ export const EmailSecurityTimeseriesGroupsSpamRequestDkimList =
 export type EmailSecurityTimeseriesGroupsSpamRequestDmarc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpamRequestDmarc =
   /*@__PURE__*/ S.String;
 
@@ -67730,7 +69658,10 @@ export const EmailSecurityTimeseriesGroupsSpamRequestDmarcList =
     EmailSecurityTimeseriesGroupsSpamRequestDmarc,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsSpamRequestDmarcList>;
 
-export type EmailSecurityTimeseriesGroupsSpamRequestFormat = "JSON" | "CSV";
+export type EmailSecurityTimeseriesGroupsSpamRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpamRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -67744,7 +69675,8 @@ export const EmailSecurityTimeseriesGroupsSpamRequestNameList =
 export type EmailSecurityTimeseriesGroupsSpamRequestSpf =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpamRequestSpf =
   /*@__PURE__*/ S.String;
 
@@ -67759,7 +69691,8 @@ export type EmailSecurityTimeseriesGroupsSpamRequestTlsVersion =
   | "TLSv1_0"
   | "TLSv1_1"
   | "TLSv1_2"
-  | "TLSv1_3";
+  | "TLSv1_3"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpamRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -67848,7 +69781,8 @@ export type EmailSecurityTimeseriesGroupsSpamResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpamResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -67877,7 +69811,8 @@ export type EmailSecurityTimeseriesGroupsSpamResponseMetaConfidenceInfoAnnotatio
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailSecurityTimeseriesGroupsSpamResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -67887,7 +69822,8 @@ export type EmailSecurityTimeseriesGroupsSpamResponseMetaConfidenceInfoAnnotatio
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailSecurityTimeseriesGroupsSpamResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -67986,7 +69922,8 @@ export type EmailSecurityTimeseriesGroupsSpamResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpamResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -68086,7 +70023,11 @@ export const SpamEmailSecurityTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   identifier: "SpamEmailSecurityTimeseriesGroupResponse",
 }) as any as S.Schema<SpamEmailSecurityTimeseriesGroupResponse>;
 
-export type EmailRoutingSummarySpfRequestArc = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingSummarySpfRequestArc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingSummarySpfRequestArc = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummarySpfRequestArcList =
@@ -68110,7 +70051,11 @@ export const EmailRoutingSummarySpfRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EmailRoutingSummarySpfRequestDateStartList>;
 
-export type EmailRoutingSummarySpfRequestDkim = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingSummarySpfRequestDkim =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingSummarySpfRequestDkim = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummarySpfRequestDkimList =
@@ -68119,7 +70064,11 @@ export const EmailRoutingSummarySpfRequestDkimList = /*@__PURE__*/ S.Array(
   EmailRoutingSummarySpfRequestDkim,
 ) as any as S.Schema<EmailRoutingSummarySpfRequestDkimList>;
 
-export type EmailRoutingSummarySpfRequestDmarc = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingSummarySpfRequestDmarc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingSummarySpfRequestDmarc = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummarySpfRequestDmarcList =
@@ -68130,7 +70079,8 @@ export const EmailRoutingSummarySpfRequestDmarcList = /*@__PURE__*/ S.Array(
 
 export type EmailRoutingSummarySpfRequestEncrypted =
   | "ENCRYPTED"
-  | "NOT_ENCRYPTED";
+  | "NOT_ENCRYPTED"
+  | (string & {});
 export const EmailRoutingSummarySpfRequestEncrypted = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummarySpfRequestEncryptedList =
@@ -68139,10 +70089,16 @@ export const EmailRoutingSummarySpfRequestEncryptedList = /*@__PURE__*/ S.Array(
   EmailRoutingSummarySpfRequestEncrypted,
 ) as any as S.Schema<EmailRoutingSummarySpfRequestEncryptedList>;
 
-export type EmailRoutingSummarySpfRequestFormat = "JSON" | "CSV";
+export type EmailRoutingSummarySpfRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailRoutingSummarySpfRequestFormat = /*@__PURE__*/ S.String;
 
-export type EmailRoutingSummarySpfRequestIpVersion = "IPv4" | "IPv6";
+export type EmailRoutingSummarySpfRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const EmailRoutingSummarySpfRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummarySpfRequestIpVersionList =
@@ -68238,7 +70194,8 @@ export type EmailRoutingSummarySpfResponseMetaConfidenceInfoAnnotationsItemDataS
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailRoutingSummarySpfResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -68248,7 +70205,8 @@ export type EmailRoutingSummarySpfResponseMetaConfidenceInfoAnnotationsItemEvent
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailRoutingSummarySpfResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -68347,7 +70305,8 @@ export type EmailRoutingSummarySpfResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailRoutingSummarySpfResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -68432,14 +70391,16 @@ export type EmailRoutingTimeseriesGroupsSpfRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsSpfRequestAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsSpfRequestArc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsSpfRequestArc = /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsSpfRequestArcList =
@@ -68473,7 +70434,8 @@ export const EmailRoutingTimeseriesGroupsSpfRequestDateStartList =
 export type EmailRoutingTimeseriesGroupsSpfRequestDkim =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsSpfRequestDkim =
   /*@__PURE__*/ S.String;
 
@@ -68487,7 +70449,8 @@ export const EmailRoutingTimeseriesGroupsSpfRequestDkimList =
 export type EmailRoutingTimeseriesGroupsSpfRequestDmarc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsSpfRequestDmarc =
   /*@__PURE__*/ S.String;
 
@@ -68500,7 +70463,8 @@ export const EmailRoutingTimeseriesGroupsSpfRequestDmarcList =
 
 export type EmailRoutingTimeseriesGroupsSpfRequestEncrypted =
   | "ENCRYPTED"
-  | "NOT_ENCRYPTED";
+  | "NOT_ENCRYPTED"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsSpfRequestEncrypted =
   /*@__PURE__*/ S.String;
 
@@ -68511,11 +70475,17 @@ export const EmailRoutingTimeseriesGroupsSpfRequestEncryptedList =
     EmailRoutingTimeseriesGroupsSpfRequestEncrypted,
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsSpfRequestEncryptedList>;
 
-export type EmailRoutingTimeseriesGroupsSpfRequestFormat = "JSON" | "CSV";
+export type EmailRoutingTimeseriesGroupsSpfRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsSpfRequestFormat =
   /*@__PURE__*/ S.String;
 
-export type EmailRoutingTimeseriesGroupsSpfRequestIpVersion = "IPv4" | "IPv6";
+export type EmailRoutingTimeseriesGroupsSpfRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsSpfRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -68611,7 +70581,8 @@ export type EmailRoutingTimeseriesGroupsSpfResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsSpfResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -68640,7 +70611,8 @@ export type EmailRoutingTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotations
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailRoutingTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -68650,7 +70622,8 @@ export type EmailRoutingTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotations
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailRoutingTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -68749,7 +70722,8 @@ export type EmailRoutingTimeseriesGroupsSpfResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsSpfResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -68855,7 +70829,11 @@ export const SpfEmailRoutingTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   identifier: "SpfEmailRoutingTimeseriesGroupResponse",
 }) as any as S.Schema<SpfEmailRoutingTimeseriesGroupResponse>;
 
-export type EmailSecuritySummarySpfRequestArc = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummarySpfRequestArc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummarySpfRequestArc = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummarySpfRequestArcList =
@@ -68881,7 +70859,11 @@ export const EmailSecuritySummarySpfRequestDateStartList =
     S.String,
   ) as any as S.Schema<EmailSecuritySummarySpfRequestDateStartList>;
 
-export type EmailSecuritySummarySpfRequestDkim = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummarySpfRequestDkim =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummarySpfRequestDkim = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummarySpfRequestDkimList =
@@ -68890,7 +70872,11 @@ export const EmailSecuritySummarySpfRequestDkimList = /*@__PURE__*/ S.Array(
   EmailSecuritySummarySpfRequestDkim,
 ) as any as S.Schema<EmailSecuritySummarySpfRequestDkimList>;
 
-export type EmailSecuritySummarySpfRequestDmarc = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummarySpfRequestDmarc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummarySpfRequestDmarc = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummarySpfRequestDmarcList =
@@ -68899,7 +70885,10 @@ export const EmailSecuritySummarySpfRequestDmarcList = /*@__PURE__*/ S.Array(
   EmailSecuritySummarySpfRequestDmarc,
 ) as any as S.Schema<EmailSecuritySummarySpfRequestDmarcList>;
 
-export type EmailSecuritySummarySpfRequestFormat = "JSON" | "CSV";
+export type EmailSecuritySummarySpfRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailSecuritySummarySpfRequestFormat = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummarySpfRequestNameList = ReadonlyArray<string>;
@@ -68911,7 +70900,8 @@ export type EmailSecuritySummarySpfRequestTlsVersion =
   | "TLSv1_0"
   | "TLSv1_1"
   | "TLSv1_2"
-  | "TLSv1_3";
+  | "TLSv1_3"
+  | (string & {});
 export const EmailSecuritySummarySpfRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummarySpfRequestTlsVersionList =
@@ -68998,7 +70988,8 @@ export type EmailSecuritySummarySpfResponseMetaConfidenceInfoAnnotationsItemData
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailSecuritySummarySpfResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -69008,7 +70999,8 @@ export type EmailSecuritySummarySpfResponseMetaConfidenceInfoAnnotationsItemEven
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailSecuritySummarySpfResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -69107,7 +71099,8 @@ export type EmailSecuritySummarySpfResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailSecuritySummarySpfResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -69192,14 +71185,16 @@ export type EmailSecurityTimeseriesGroupsSpfRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpfRequestAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsSpfRequestArc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpfRequestArc =
   /*@__PURE__*/ S.String;
 
@@ -69234,7 +71229,8 @@ export const EmailSecurityTimeseriesGroupsSpfRequestDateStartList =
 export type EmailSecurityTimeseriesGroupsSpfRequestDkim =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpfRequestDkim =
   /*@__PURE__*/ S.String;
 
@@ -69248,7 +71244,8 @@ export const EmailSecurityTimeseriesGroupsSpfRequestDkimList =
 export type EmailSecurityTimeseriesGroupsSpfRequestDmarc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpfRequestDmarc =
   /*@__PURE__*/ S.String;
 
@@ -69259,7 +71256,10 @@ export const EmailSecurityTimeseriesGroupsSpfRequestDmarcList =
     EmailSecurityTimeseriesGroupsSpfRequestDmarc,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsSpfRequestDmarcList>;
 
-export type EmailSecurityTimeseriesGroupsSpfRequestFormat = "JSON" | "CSV";
+export type EmailSecurityTimeseriesGroupsSpfRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpfRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -69274,7 +71274,8 @@ export type EmailSecurityTimeseriesGroupsSpfRequestTlsVersion =
   | "TLSv1_0"
   | "TLSv1_1"
   | "TLSv1_2"
-  | "TLSv1_3";
+  | "TLSv1_3"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpfRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -69358,7 +71359,8 @@ export type EmailSecurityTimeseriesGroupsSpfResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpfResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -69387,7 +71389,8 @@ export type EmailSecurityTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotation
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailSecurityTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -69397,7 +71400,8 @@ export type EmailSecurityTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotation
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailSecurityTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -69496,7 +71500,8 @@ export type EmailSecurityTimeseriesGroupsSpfResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpfResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -69603,7 +71608,11 @@ export const SpfEmailSecurityTimeseriesGroupResponse = /*@__PURE__*/ S.suspend(
   identifier: "SpfEmailSecurityTimeseriesGroupResponse",
 }) as any as S.Schema<SpfEmailSecurityTimeseriesGroupResponse>;
 
-export type EmailSecuritySummarySpoofRequestArc = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummarySpoofRequestArc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummarySpoofRequestArc = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummarySpoofRequestArcList =
@@ -69632,7 +71641,11 @@ export const EmailSecuritySummarySpoofRequestDateStartList =
     S.String,
   ) as any as S.Schema<EmailSecuritySummarySpoofRequestDateStartList>;
 
-export type EmailSecuritySummarySpoofRequestDkim = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummarySpoofRequestDkim =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummarySpoofRequestDkim = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummarySpoofRequestDkimList =
@@ -69641,7 +71654,11 @@ export const EmailSecuritySummarySpoofRequestDkimList = /*@__PURE__*/ S.Array(
   EmailSecuritySummarySpoofRequestDkim,
 ) as any as S.Schema<EmailSecuritySummarySpoofRequestDkimList>;
 
-export type EmailSecuritySummarySpoofRequestDmarc = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummarySpoofRequestDmarc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummarySpoofRequestDmarc = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummarySpoofRequestDmarcList =
@@ -69650,7 +71667,10 @@ export const EmailSecuritySummarySpoofRequestDmarcList = /*@__PURE__*/ S.Array(
   EmailSecuritySummarySpoofRequestDmarc,
 ) as any as S.Schema<EmailSecuritySummarySpoofRequestDmarcList>;
 
-export type EmailSecuritySummarySpoofRequestFormat = "JSON" | "CSV";
+export type EmailSecuritySummarySpoofRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailSecuritySummarySpoofRequestFormat = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummarySpoofRequestNameList = ReadonlyArray<string>;
@@ -69658,7 +71678,11 @@ export const EmailSecuritySummarySpoofRequestNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EmailSecuritySummarySpoofRequestNameList>;
 
-export type EmailSecuritySummarySpoofRequestSpf = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummarySpoofRequestSpf =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummarySpoofRequestSpf = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummarySpoofRequestSpfList =
@@ -69671,7 +71695,8 @@ export type EmailSecuritySummarySpoofRequestTlsVersion =
   | "TLSv1_0"
   | "TLSv1_1"
   | "TLSv1_2"
-  | "TLSv1_3";
+  | "TLSv1_3"
+  | (string & {});
 export const EmailSecuritySummarySpoofRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -69764,7 +71789,8 @@ export type EmailSecuritySummarySpoofResponseMetaConfidenceInfoAnnotationsItemDa
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailSecuritySummarySpoofResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -69774,7 +71800,8 @@ export type EmailSecuritySummarySpoofResponseMetaConfidenceInfoAnnotationsItemEv
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailSecuritySummarySpoofResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -69873,7 +71900,8 @@ export type EmailSecuritySummarySpoofResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailSecuritySummarySpoofResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -69958,14 +71986,16 @@ export type EmailSecurityTimeseriesGroupsSpoofRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpoofRequestAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsSpoofRequestArc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpoofRequestArc =
   /*@__PURE__*/ S.String;
 
@@ -70000,7 +72030,8 @@ export const EmailSecurityTimeseriesGroupsSpoofRequestDateStartList =
 export type EmailSecurityTimeseriesGroupsSpoofRequestDkim =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpoofRequestDkim =
   /*@__PURE__*/ S.String;
 
@@ -70014,7 +72045,8 @@ export const EmailSecurityTimeseriesGroupsSpoofRequestDkimList =
 export type EmailSecurityTimeseriesGroupsSpoofRequestDmarc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpoofRequestDmarc =
   /*@__PURE__*/ S.String;
 
@@ -70025,7 +72057,10 @@ export const EmailSecurityTimeseriesGroupsSpoofRequestDmarcList =
     EmailSecurityTimeseriesGroupsSpoofRequestDmarc,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsSpoofRequestDmarcList>;
 
-export type EmailSecurityTimeseriesGroupsSpoofRequestFormat = "JSON" | "CSV";
+export type EmailSecurityTimeseriesGroupsSpoofRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpoofRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -70039,7 +72074,8 @@ export const EmailSecurityTimeseriesGroupsSpoofRequestNameList =
 export type EmailSecurityTimeseriesGroupsSpoofRequestSpf =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpoofRequestSpf =
   /*@__PURE__*/ S.String;
 
@@ -70054,7 +72090,8 @@ export type EmailSecurityTimeseriesGroupsSpoofRequestTlsVersion =
   | "TLSv1_0"
   | "TLSv1_1"
   | "TLSv1_2"
-  | "TLSv1_3";
+  | "TLSv1_3"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpoofRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -70143,7 +72180,8 @@ export type EmailSecurityTimeseriesGroupsSpoofResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpoofResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -70172,7 +72210,8 @@ export type EmailSecurityTimeseriesGroupsSpoofResponseMetaConfidenceInfoAnnotati
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailSecurityTimeseriesGroupsSpoofResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -70182,7 +72221,8 @@ export type EmailSecurityTimeseriesGroupsSpoofResponseMetaConfidenceInfoAnnotati
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailSecurityTimeseriesGroupsSpoofResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -70281,7 +72321,8 @@ export type EmailSecurityTimeseriesGroupsSpoofResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsSpoofResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -70383,7 +72424,7 @@ export const SpoofEmailSecurityTimeseriesGroupResponse =
     identifier: "SpoofEmailSecurityTimeseriesGroupResponse",
   }) as any as S.Schema<SpoofEmailSecurityTimeseriesGroupResponse>;
 
-export type BgpRoutesStatsRequestFormat = "JSON" | "CSV";
+export type BgpRoutesStatsRequestFormat = "JSON" | "CSV" | (string & {});
 export const BgpRoutesStatsRequestFormat = /*@__PURE__*/ S.String;
 
 export interface StatsBgpRouteRequest {
@@ -70480,7 +72521,7 @@ export const StatsBgpRouteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StatsBgpRouteResponse",
 }) as any as S.Schema<StatsBgpRouteResponse>;
 
-export type AgentReadinessSummaryRequestDimension = "CHECK";
+export type AgentReadinessSummaryRequestDimension = "CHECK" | (string & {});
 export const AgentReadinessSummaryRequestDimension = /*@__PURE__*/ S.String;
 
 export type AgentReadinessSummaryRequestDomainCategoryList =
@@ -70490,7 +72531,7 @@ export const AgentReadinessSummaryRequestDomainCategoryList =
     S.String,
   ) as any as S.Schema<AgentReadinessSummaryRequestDomainCategoryList>;
 
-export type AgentReadinessSummaryRequestFormat = "JSON" | "CSV";
+export type AgentReadinessSummaryRequestFormat = "JSON" | "CSV" | (string & {});
 export const AgentReadinessSummaryRequestFormat = /*@__PURE__*/ S.String;
 
 export type AgentReadinessSummaryRequestNameList = ReadonlyArray<string>;
@@ -70563,7 +72604,8 @@ export type AgentReadinessSummaryResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AgentReadinessSummaryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -70662,7 +72704,10 @@ export const AiMarkdownForAgentsSummaryRequestDateStartList =
     S.String,
   ) as any as S.Schema<AiMarkdownForAgentsSummaryRequestDateStartList>;
 
-export type AiMarkdownForAgentsSummaryRequestFormat = "JSON" | "CSV";
+export type AiMarkdownForAgentsSummaryRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AiMarkdownForAgentsSummaryRequestFormat = /*@__PURE__*/ S.String;
 
 export type AiMarkdownForAgentsSummaryRequestNameList = ReadonlyArray<string>;
@@ -70733,7 +72778,8 @@ export type AiMarkdownForAgentsSummaryResponseMetaConfidenceInfoAnnotationsItemD
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AiMarkdownForAgentsSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -70743,7 +72789,8 @@ export type AiMarkdownForAgentsSummaryResponseMetaConfidenceInfoAnnotationsItemE
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AiMarkdownForAgentsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -70842,7 +72889,8 @@ export type AiMarkdownForAgentsSummaryResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AiMarkdownForAgentsSummaryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -70927,7 +72975,8 @@ export type AiBotsSummaryV2RequestDimension =
   | "VERTICAL"
   | "CONTENT_TYPE"
   | "RESPONSE_STATUS"
-  | "RESPONSE_STATUS_CATEGORY";
+  | "RESPONSE_STATUS_CATEGORY"
+  | (string & {});
 export const AiBotsSummaryV2RequestDimension = /*@__PURE__*/ S.String;
 
 export type AiBotsSummaryV2RequestAsnList = ReadonlyArray<string>;
@@ -70951,7 +73000,8 @@ export type AiBotsSummaryV2RequestContentType =
   | "DOCUMENTS"
   | "BINARY"
   | "SERIALIZATION"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const AiBotsSummaryV2RequestContentType = /*@__PURE__*/ S.String;
 
 export type AiBotsSummaryV2RequestContentTypeList =
@@ -70985,7 +73035,7 @@ export const AiBotsSummaryV2RequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AiBotsSummaryV2RequestDateStartList>;
 
-export type AiBotsSummaryV2RequestFormat = "JSON" | "CSV";
+export type AiBotsSummaryV2RequestFormat = "JSON" | "CSV" | (string & {});
 export const AiBotsSummaryV2RequestFormat = /*@__PURE__*/ S.String;
 
 export type AiBotsSummaryV2RequestIndustryList = ReadonlyArray<string>;
@@ -71013,7 +73063,8 @@ export type AiBotsSummaryV2RequestResponseStatusCategory =
   | "SUCCESS"
   | "REDIRECTION"
   | "CLIENT_ERROR"
-  | "SERVER_ERROR";
+  | "SERVER_ERROR"
+  | (string & {});
 export const AiBotsSummaryV2RequestResponseStatusCategory =
   /*@__PURE__*/ S.String;
 
@@ -71135,7 +73186,8 @@ export type AiBotsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AiBotsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -71145,7 +73197,8 @@ export type AiBotsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const AiBotsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -71241,7 +73294,8 @@ export type AiBotsSummaryV2ResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AiBotsSummaryV2ResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface AiBotsSummaryV2ResponseMetaUnitsItem {
@@ -71313,7 +73367,8 @@ export type BotsSummaryRequestDimension =
   | "BOT"
   | "BOT_KIND"
   | "BOT_OPERATOR"
-  | "BOT_CATEGORY";
+  | "BOT_CATEGORY"
+  | (string & {});
 export const BotsSummaryRequestDimension = /*@__PURE__*/ S.String;
 
 export type BotsSummaryRequestAsnList = ReadonlyArray<string>;
@@ -71342,7 +73397,8 @@ export type BotsSummaryRequestBotCategory =
   | "AGGREGATOR"
   | "AI_ASSISTANT"
   | "AI_SEARCH"
-  | "ARCHIVER";
+  | "ARCHIVER"
+  | (string & {});
 export const BotsSummaryRequestBotCategory = /*@__PURE__*/ S.String;
 
 export type BotsSummaryRequestBotCategoryList =
@@ -71351,7 +73407,7 @@ export const BotsSummaryRequestBotCategoryList = /*@__PURE__*/ S.Array(
   BotsSummaryRequestBotCategory,
 ) as any as S.Schema<BotsSummaryRequestBotCategoryList>;
 
-export type BotsSummaryRequestBotKind = "AGENT" | "BOT";
+export type BotsSummaryRequestBotKind = "AGENT" | "BOT" | (string & {});
 export const BotsSummaryRequestBotKind = /*@__PURE__*/ S.String;
 
 export type BotsSummaryRequestBotKindList =
@@ -71365,7 +73421,9 @@ export const BotsSummaryRequestBotOperatorList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BotsSummaryRequestBotOperatorList>;
 
-export type BotsSummaryRequestBotVerificationStatus = "VERIFIED";
+export type BotsSummaryRequestBotVerificationStatus =
+  | "VERIFIED"
+  | (string & {});
 export const BotsSummaryRequestBotVerificationStatus = /*@__PURE__*/ S.String;
 
 export type BotsSummaryRequestBotVerificationStatusList =
@@ -71395,7 +73453,7 @@ export const BotsSummaryRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BotsSummaryRequestDateStartList>;
 
-export type BotsSummaryRequestFormat = "JSON" | "CSV";
+export type BotsSummaryRequestFormat = "JSON" | "CSV" | (string & {});
 export const BotsSummaryRequestFormat = /*@__PURE__*/ S.String;
 
 export type BotsSummaryRequestLocationList = ReadonlyArray<string>;
@@ -71497,7 +73555,8 @@ export type BotsSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   | "NET"
   | "ROBOTS_TXT"
   | "SPEED"
-  | "WORKERS_AI";
+  | "WORKERS_AI"
+  | (string & {});
 export const BotsSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -71507,7 +73566,8 @@ export type BotsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const BotsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -71602,7 +73662,8 @@ export type BotsSummaryResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const BotsSummaryResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface BotsSummaryResponseMetaUnitsItem {
@@ -71677,7 +73738,8 @@ export type BotsWebCrawlersSummaryRequestDimension =
   | "VERTICAL"
   | "INDUSTRY"
   | "RESPONSE_STATUS"
-  | "RESPONSE_STATUS_CATEGORY";
+  | "RESPONSE_STATUS_CATEGORY"
+  | (string & {});
 export const BotsWebCrawlersSummaryRequestDimension = /*@__PURE__*/ S.String;
 
 export type BotsWebCrawlersSummaryRequestBotOperatorList =
@@ -71691,7 +73753,8 @@ export type BotsWebCrawlersSummaryRequestClientType =
   | "HUMAN"
   | "NON_AI_BOT"
   | "AI_BOT"
-  | "MIXED_PURPOSE";
+  | "MIXED_PURPOSE"
+  | (string & {});
 export const BotsWebCrawlersSummaryRequestClientType = /*@__PURE__*/ S.String;
 
 export type BotsWebCrawlersSummaryRequestClientTypeList =
@@ -71716,7 +73779,10 @@ export const BotsWebCrawlersSummaryRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BotsWebCrawlersSummaryRequestDateStartList>;
 
-export type BotsWebCrawlersSummaryRequestFormat = "JSON" | "CSV";
+export type BotsWebCrawlersSummaryRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const BotsWebCrawlersSummaryRequestFormat = /*@__PURE__*/ S.String;
 
 export type BotsWebCrawlersSummaryRequestIndustryList = ReadonlyArray<string>;
@@ -71741,7 +73807,8 @@ export type BotsWebCrawlersSummaryRequestResponseStatusCategory =
   | "SUCCESS"
   | "REDIRECTION"
   | "CLIENT_ERROR"
-  | "SERVER_ERROR";
+  | "SERVER_ERROR"
+  | (string & {});
 export const BotsWebCrawlersSummaryRequestResponseStatusCategory =
   /*@__PURE__*/ S.String;
 
@@ -71856,7 +73923,8 @@ export type BotsWebCrawlersSummaryResponseMetaConfidenceInfoAnnotationsItemDataS
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const BotsWebCrawlersSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -71866,7 +73934,8 @@ export type BotsWebCrawlersSummaryResponseMetaConfidenceInfoAnnotationsItemEvent
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const BotsWebCrawlersSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -71965,7 +74034,8 @@ export type BotsWebCrawlersSummaryResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const BotsWebCrawlersSummaryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -72051,7 +74121,8 @@ export type CtSummaryRequestDimension =
   | "PUBLIC_KEY_ALGORITHM"
   | "SIGNATURE_ALGORITHM"
   | "TLD"
-  | "VALIDATION_LEVEL";
+  | "VALIDATION_LEVEL"
+  | (string & {});
 export const CtSummaryRequestDimension = /*@__PURE__*/ S.String;
 
 export type CtSummaryRequestCaList = ReadonlyArray<string>;
@@ -72086,7 +74157,8 @@ export type CtSummaryRequestDuration =
   | "GT_10D_LTE_47D"
   | "GT_47D_LTE_100D"
   | "GT_100D_LTE_200D"
-  | "GT_200D";
+  | "GT_200D"
+  | (string & {});
 export const CtSummaryRequestDuration = /*@__PURE__*/ S.String;
 
 export type CtSummaryRequestDurationList =
@@ -72095,7 +74167,10 @@ export const CtSummaryRequestDurationList = /*@__PURE__*/ S.Array(
   CtSummaryRequestDuration,
 ) as any as S.Schema<CtSummaryRequestDurationList>;
 
-export type CtSummaryRequestEntryType = "PRECERTIFICATE" | "CERTIFICATE";
+export type CtSummaryRequestEntryType =
+  | "PRECERTIFICATE"
+  | "CERTIFICATE"
+  | (string & {});
 export const CtSummaryRequestEntryType = /*@__PURE__*/ S.String;
 
 export type CtSummaryRequestEntryTypeList =
@@ -72104,7 +74179,10 @@ export const CtSummaryRequestEntryTypeList = /*@__PURE__*/ S.Array(
   CtSummaryRequestEntryType,
 ) as any as S.Schema<CtSummaryRequestEntryTypeList>;
 
-export type CtSummaryRequestExpirationStatus = "EXPIRED" | "VALID";
+export type CtSummaryRequestExpirationStatus =
+  | "EXPIRED"
+  | "VALID"
+  | (string & {});
 export const CtSummaryRequestExpirationStatus = /*@__PURE__*/ S.String;
 
 export type CtSummaryRequestExpirationStatusList =
@@ -72113,7 +74191,7 @@ export const CtSummaryRequestExpirationStatusList = /*@__PURE__*/ S.Array(
   CtSummaryRequestExpirationStatus,
 ) as any as S.Schema<CtSummaryRequestExpirationStatusList>;
 
-export type CtSummaryRequestFormat = "JSON" | "CSV";
+export type CtSummaryRequestFormat = "JSON" | "CSV" | (string & {});
 export const CtSummaryRequestFormat = /*@__PURE__*/ S.String;
 
 export type CtSummaryRequestHasIpsList = ReadonlyArray<boolean>;
@@ -72131,7 +74209,7 @@ export const CtSummaryRequestLogList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CtSummaryRequestLogList>;
 
-export type CtSummaryRequestLogApi = "RFC6962" | "STATIC";
+export type CtSummaryRequestLogApi = "RFC6962" | "STATIC" | (string & {});
 export const CtSummaryRequestLogApi = /*@__PURE__*/ S.String;
 
 export type CtSummaryRequestLogApiList = ReadonlyArray<CtSummaryRequestLogApi>;
@@ -72149,10 +74227,17 @@ export const CtSummaryRequestNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CtSummaryRequestNameList>;
 
-export type CtSummaryRequestNormalization = "RAW_VALUES" | "PERCENTAGE";
+export type CtSummaryRequestNormalization =
+  | "RAW_VALUES"
+  | "PERCENTAGE"
+  | (string & {});
 export const CtSummaryRequestNormalization = /*@__PURE__*/ S.String;
 
-export type CtSummaryRequestPublicKeyAlgorithm = "DSA" | "ECDSA" | "RSA";
+export type CtSummaryRequestPublicKeyAlgorithm =
+  | "DSA"
+  | "ECDSA"
+  | "RSA"
+  | (string & {});
 export const CtSummaryRequestPublicKeyAlgorithm = /*@__PURE__*/ S.String;
 
 export type CtSummaryRequestPublicKeyAlgorithmList =
@@ -72176,7 +74261,8 @@ export type CtSummaryRequestSignatureAlgorithm =
   | "RSA_SHA_1"
   | "RSA_SHA_256"
   | "RSA_SHA_384"
-  | "RSA_SHA_512";
+  | "RSA_SHA_512"
+  | (string & {});
 export const CtSummaryRequestSignatureAlgorithm = /*@__PURE__*/ S.String;
 
 export type CtSummaryRequestSignatureAlgorithmList =
@@ -72190,7 +74276,7 @@ export const CtSummaryRequestTldList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CtSummaryRequestTldList>;
 
-export type CtSummaryRequestUniqueEntries = "true" | "false";
+export type CtSummaryRequestUniqueEntries = "true" | "false" | (string & {});
 export const CtSummaryRequestUniqueEntries = /*@__PURE__*/ S.String;
 
 export type CtSummaryRequestUniqueEntriesList =
@@ -72202,7 +74288,8 @@ export const CtSummaryRequestUniqueEntriesList = /*@__PURE__*/ S.Array(
 export type CtSummaryRequestValidationLevel =
   | "DOMAIN"
   | "ORGANIZATION"
-  | "EXTENDED";
+  | "EXTENDED"
+  | (string & {});
 export const CtSummaryRequestValidationLevel = /*@__PURE__*/ S.String;
 
 export type CtSummaryRequestValidationLevelList =
@@ -72332,7 +74419,8 @@ export type CtSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   | "NET"
   | "ROBOTS_TXT"
   | "SPEED"
-  | "WORKERS_AI";
+  | "WORKERS_AI"
+  | (string & {});
 export const CtSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -72342,7 +74430,8 @@ export type CtSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const CtSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -72434,7 +74523,8 @@ export type CtSummaryResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const CtSummaryResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface CtSummaryResponseMetaUnitsItem {
@@ -72660,7 +74750,7 @@ export const NetflowsSummaryRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetflowsSummaryRequestDateStartList>;
 
-export type NetflowsSummaryRequestFormat = "JSON" | "CSV";
+export type NetflowsSummaryRequestFormat = "JSON" | "CSV" | (string & {});
 export const NetflowsSummaryRequestFormat = /*@__PURE__*/ S.String;
 
 export type NetflowsSummaryRequestGeoIdList = ReadonlyArray<string>;
@@ -72741,7 +74831,8 @@ export type NetflowsSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const NetflowsSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -72751,7 +74842,8 @@ export type NetflowsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const NetflowsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -72847,7 +74939,8 @@ export type NetflowsSummaryResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const NetflowsSummaryResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface NetflowsSummaryResponseMetaUnitsItem {
@@ -72922,7 +75015,9 @@ export const SummaryNetflowResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SummaryNetflowResponse",
 }) as any as S.Schema<SummaryNetflowResponse>;
 
-export type PostQuantumOriginSummaryRequestDimension = "KEY_AGREEMENT";
+export type PostQuantumOriginSummaryRequestDimension =
+  | "KEY_AGREEMENT"
+  | (string & {});
 export const PostQuantumOriginSummaryRequestDimension = /*@__PURE__*/ S.String;
 
 export type PostQuantumOriginSummaryRequestDateEndList = ReadonlyArray<string>;
@@ -72944,7 +75039,10 @@ export const PostQuantumOriginSummaryRequestDateStartList =
     S.String,
   ) as any as S.Schema<PostQuantumOriginSummaryRequestDateStartList>;
 
-export type PostQuantumOriginSummaryRequestFormat = "JSON" | "CSV";
+export type PostQuantumOriginSummaryRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const PostQuantumOriginSummaryRequestFormat = /*@__PURE__*/ S.String;
 
 export type PostQuantumOriginSummaryRequestNameList = ReadonlyArray<string>;
@@ -73018,7 +75116,8 @@ export type PostQuantumOriginSummaryResponseMetaConfidenceInfoAnnotationsItemDat
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const PostQuantumOriginSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -73028,7 +75127,8 @@ export type PostQuantumOriginSummaryResponseMetaConfidenceInfoAnnotationsItemEve
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const PostQuantumOriginSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -73127,7 +75227,8 @@ export type PostQuantumOriginSummaryResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const PostQuantumOriginSummaryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -73201,7 +75302,11 @@ export const SummaryPostQuantumOriginResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SummaryPostQuantumOriginResponse",
 }) as any as S.Schema<SummaryPostQuantumOriginResponse>;
 
-export type QualityIqiSummaryRequestMetric = "BANDWIDTH" | "DNS" | "LATENCY";
+export type QualityIqiSummaryRequestMetric =
+  | "BANDWIDTH"
+  | "DNS"
+  | "LATENCY"
+  | (string & {});
 export const QualityIqiSummaryRequestMetric = /*@__PURE__*/ S.String;
 
 export type QualityIqiSummaryRequestAsnList = ReadonlyArray<string>;
@@ -73229,7 +75334,7 @@ export const QualityIqiSummaryRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QualityIqiSummaryRequestDateStartList>;
 
-export type QualityIqiSummaryRequestFormat = "JSON" | "CSV";
+export type QualityIqiSummaryRequestFormat = "JSON" | "CSV" | (string & {});
 export const QualityIqiSummaryRequestFormat = /*@__PURE__*/ S.String;
 
 export type QualityIqiSummaryRequestLocationList = ReadonlyArray<string>;
@@ -73313,7 +75418,8 @@ export type QualityIqiSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const QualityIqiSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -73323,7 +75429,8 @@ export type QualityIqiSummaryResponseMetaConfidenceInfoAnnotationsItemEventType 
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const QualityIqiSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -73419,7 +75526,8 @@ export type QualityIqiSummaryResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const QualityIqiSummaryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -73510,7 +75618,7 @@ export const QualitySpeedSummaryRequestDateEndList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QualitySpeedSummaryRequestDateEndList>;
 
-export type QualitySpeedSummaryRequestFormat = "JSON" | "CSV";
+export type QualitySpeedSummaryRequestFormat = "JSON" | "CSV" | (string & {});
 export const QualitySpeedSummaryRequestFormat = /*@__PURE__*/ S.String;
 
 export type QualitySpeedSummaryRequestLocationList = ReadonlyArray<string>;
@@ -73583,7 +75691,8 @@ export type QualitySpeedSummaryResponseMetaConfidenceInfoAnnotationsItemDataSour
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const QualitySpeedSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -73593,7 +75702,8 @@ export type QualitySpeedSummaryResponseMetaConfidenceInfoAnnotationsItemEventTyp
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const QualitySpeedSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -73690,7 +75800,8 @@ export type QualitySpeedSummaryResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const QualitySpeedSummaryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -73805,7 +75916,10 @@ export const TcpResetsTimeoutsSummaryRequestDateStartList =
     S.String,
   ) as any as S.Schema<TcpResetsTimeoutsSummaryRequestDateStartList>;
 
-export type TcpResetsTimeoutsSummaryRequestFormat = "JSON" | "CSV";
+export type TcpResetsTimeoutsSummaryRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const TcpResetsTimeoutsSummaryRequestFormat = /*@__PURE__*/ S.String;
 
 export type TcpResetsTimeoutsSummaryRequestLocationList = ReadonlyArray<string>;
@@ -73895,7 +76009,8 @@ export type TcpResetsTimeoutsSummaryResponseMetaConfidenceInfoAnnotationsItemDat
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const TcpResetsTimeoutsSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -73905,7 +76020,8 @@ export type TcpResetsTimeoutsSummaryResponseMetaConfidenceInfoAnnotationsItemEve
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const TcpResetsTimeoutsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -74004,7 +76120,8 @@ export type TcpResetsTimeoutsSummaryResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const TcpResetsTimeoutsSummaryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -74094,7 +76211,10 @@ export const SummaryTcpResetsTimeoutResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SummaryTcpResetsTimeoutResponse",
 }) as any as S.Schema<SummaryTcpResetsTimeoutResponse>;
 
-export type AiInferenceSummaryV2RequestDimension = "MODEL" | "TASK";
+export type AiInferenceSummaryV2RequestDimension =
+  | "MODEL"
+  | "TASK"
+  | (string & {});
 export const AiInferenceSummaryV2RequestDimension = /*@__PURE__*/ S.String;
 
 export type AiInferenceSummaryV2RequestAsnList = ReadonlyArray<string>;
@@ -74122,7 +76242,7 @@ export const AiInferenceSummaryV2RequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AiInferenceSummaryV2RequestDateStartList>;
 
-export type AiInferenceSummaryV2RequestFormat = "JSON" | "CSV";
+export type AiInferenceSummaryV2RequestFormat = "JSON" | "CSV" | (string & {});
 export const AiInferenceSummaryV2RequestFormat = /*@__PURE__*/ S.String;
 
 export type AiInferenceSummaryV2RequestLocationList = ReadonlyArray<string>;
@@ -74215,7 +76335,8 @@ export type AiInferenceSummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSou
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AiInferenceSummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -74225,7 +76346,8 @@ export type AiInferenceSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventTy
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AiInferenceSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -74323,7 +76445,8 @@ export type AiInferenceSummaryV2ResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AiInferenceSummaryV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -74398,7 +76521,8 @@ export type As112SummaryV2RequestDimension =
   | "IP_VERSION"
   | "PROTOCOL"
   | "QUERY_TYPE"
-  | "RESPONSE_CODE";
+  | "RESPONSE_CODE"
+  | (string & {});
 export const As112SummaryV2RequestDimension = /*@__PURE__*/ S.String;
 
 export type As112SummaryV2RequestContinentList = ReadonlyArray<string>;
@@ -74421,7 +76545,7 @@ export const As112SummaryV2RequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<As112SummaryV2RequestDateStartList>;
 
-export type As112SummaryV2RequestFormat = "JSON" | "CSV";
+export type As112SummaryV2RequestFormat = "JSON" | "CSV" | (string & {});
 export const As112SummaryV2RequestFormat = /*@__PURE__*/ S.String;
 
 export type As112SummaryV2RequestLocationList = ReadonlyArray<string>;
@@ -74434,7 +76558,12 @@ export const As112SummaryV2RequestNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<As112SummaryV2RequestNameList>;
 
-export type As112SummaryV2RequestProtocol = "UDP" | "TCP" | "HTTPS" | "TLS";
+export type As112SummaryV2RequestProtocol =
+  | "UDP"
+  | "TCP"
+  | "HTTPS"
+  | "TLS"
+  | (string & {});
 export const As112SummaryV2RequestProtocol = /*@__PURE__*/ S.String;
 
 export type As112SummaryV2RequestProtocolList =
@@ -74531,7 +76660,8 @@ export type As112SummaryV2RequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const As112SummaryV2RequestQueryType = /*@__PURE__*/ S.String;
 
 export type As112SummaryV2RequestQueryTypeList =
@@ -74559,7 +76689,8 @@ export type As112SummaryV2RequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const As112SummaryV2RequestResponseCode = /*@__PURE__*/ S.String;
 
 export type As112SummaryV2RequestResponseCodeList =
@@ -74648,7 +76779,8 @@ export type As112SummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   | "NET"
   | "ROBOTS_TXT"
   | "SPEED"
-  | "WORKERS_AI";
+  | "WORKERS_AI"
+  | (string & {});
 export const As112SummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -74658,7 +76790,8 @@ export type As112SummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const As112SummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -74754,7 +76887,8 @@ export type As112SummaryV2ResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const As112SummaryV2ResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface As112SummaryV2ResponseMetaUnitsItem {
@@ -74828,7 +76962,8 @@ export type AttacksLayer3SummaryV2RequestDimension =
   | "DURATION"
   | "BITRATE"
   | "VERTICAL"
-  | "INDUSTRY";
+  | "INDUSTRY"
+  | (string & {});
 export const AttacksLayer3SummaryV2RequestDimension = /*@__PURE__*/ S.String;
 
 export type AttacksLayer3SummaryV2RequestContinentList = ReadonlyArray<string>;
@@ -74851,13 +76986,22 @@ export const AttacksLayer3SummaryV2RequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AttacksLayer3SummaryV2RequestDateStartList>;
 
-export type AttacksLayer3SummaryV2RequestDirection = "ORIGIN" | "TARGET";
+export type AttacksLayer3SummaryV2RequestDirection =
+  | "ORIGIN"
+  | "TARGET"
+  | (string & {});
 export const AttacksLayer3SummaryV2RequestDirection = /*@__PURE__*/ S.String;
 
-export type AttacksLayer3SummaryV2RequestFormat = "JSON" | "CSV";
+export type AttacksLayer3SummaryV2RequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer3SummaryV2RequestFormat = /*@__PURE__*/ S.String;
 
-export type AttacksLayer3SummaryV2RequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer3SummaryV2RequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer3SummaryV2RequestIpVersion = /*@__PURE__*/ S.String;
 
 export type AttacksLayer3SummaryV2RequestIpVersionList =
@@ -74880,7 +77024,8 @@ export type AttacksLayer3SummaryV2RequestProtocol =
   | "UDP"
   | "TCP"
   | "ICMP"
-  | "GRE";
+  | "GRE"
+  | (string & {});
 export const AttacksLayer3SummaryV2RequestProtocol = /*@__PURE__*/ S.String;
 
 export type AttacksLayer3SummaryV2RequestProtocolList =
@@ -74983,7 +77128,8 @@ export type AttacksLayer3SummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataS
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer3SummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -74993,7 +77139,8 @@ export type AttacksLayer3SummaryV2ResponseMetaConfidenceInfoAnnotationsItemEvent
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer3SummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -75092,7 +77239,8 @@ export type AttacksLayer3SummaryV2ResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer3SummaryV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -75171,7 +77319,8 @@ export type AttacksLayer7SummaryV2RequestDimension =
   | "MANAGED_RULES"
   | "MITIGATION_PRODUCT"
   | "VERTICAL"
-  | "INDUSTRY";
+  | "INDUSTRY"
+  | (string & {});
 export const AttacksLayer7SummaryV2RequestDimension = /*@__PURE__*/ S.String;
 
 export type AttacksLayer7SummaryV2RequestAsnList = ReadonlyArray<string>;
@@ -75199,7 +77348,10 @@ export const AttacksLayer7SummaryV2RequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AttacksLayer7SummaryV2RequestDateStartList>;
 
-export type AttacksLayer7SummaryV2RequestFormat = "JSON" | "CSV";
+export type AttacksLayer7SummaryV2RequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer7SummaryV2RequestFormat = /*@__PURE__*/ S.String;
 
 export type AttacksLayer7SummaryV2RequestHttpMethod =
@@ -75248,7 +77400,8 @@ export type AttacksLayer7SummaryV2RequestHttpMethod =
   | "RPC_IN_DATA"
   | "JSON"
   | "COOK"
-  | "TRACK";
+  | "TRACK"
+  | (string & {});
 export const AttacksLayer7SummaryV2RequestHttpMethod = /*@__PURE__*/ S.String;
 
 export type AttacksLayer7SummaryV2RequestHttpMethodList =
@@ -75261,7 +77414,8 @@ export const AttacksLayer7SummaryV2RequestHttpMethodList =
 export type AttacksLayer7SummaryV2RequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const AttacksLayer7SummaryV2RequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type AttacksLayer7SummaryV2RequestHttpVersionList =
@@ -75271,7 +77425,10 @@ export const AttacksLayer7SummaryV2RequestHttpVersionList =
     AttacksLayer7SummaryV2RequestHttpVersion,
   ) as any as S.Schema<AttacksLayer7SummaryV2RequestHttpVersionList>;
 
-export type AttacksLayer7SummaryV2RequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer7SummaryV2RequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer7SummaryV2RequestIpVersion = /*@__PURE__*/ S.String;
 
 export type AttacksLayer7SummaryV2RequestIpVersionList =
@@ -75292,7 +77449,8 @@ export type AttacksLayer7SummaryV2RequestMitigationProduct =
   | "ACCESS_RULES"
   | "IP_REPUTATION"
   | "API_SHIELD"
-  | "DATA_LOSS_PREVENTION";
+  | "DATA_LOSS_PREVENTION"
+  | (string & {});
 export const AttacksLayer7SummaryV2RequestMitigationProduct =
   /*@__PURE__*/ S.String;
 
@@ -75410,7 +77568,8 @@ export type AttacksLayer7SummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataS
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer7SummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -75420,7 +77579,8 @@ export type AttacksLayer7SummaryV2ResponseMetaConfidenceInfoAnnotationsItemEvent
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer7SummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -75519,7 +77679,8 @@ export type AttacksLayer7SummaryV2ResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer7SummaryV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -75605,7 +77766,8 @@ export type DnsSummaryV2RequestDimension =
   | "RESPONSE_CODE"
   | "RESPONSE_TTL"
   | "TLD"
-  | "TLD_DNS_MAGNITUDE";
+  | "TLD_DNS_MAGNITUDE"
+  | (string & {});
 export const DnsSummaryV2RequestDimension = /*@__PURE__*/ S.String;
 
 export type DnsSummaryV2RequestAsnList = ReadonlyArray<string>;
@@ -75642,7 +77804,8 @@ export type DnsSummaryV2RequestDnssec =
   | "INVALID"
   | "INSECURE"
   | "SECURE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const DnsSummaryV2RequestDnssec = /*@__PURE__*/ S.String;
 
 export type DnsSummaryV2RequestDnssecList =
@@ -75651,7 +77814,10 @@ export const DnsSummaryV2RequestDnssecList = /*@__PURE__*/ S.Array(
   DnsSummaryV2RequestDnssec,
 ) as any as S.Schema<DnsSummaryV2RequestDnssecList>;
 
-export type DnsSummaryV2RequestDnssecAware = "SUPPORTED" | "NOT_SUPPORTED";
+export type DnsSummaryV2RequestDnssecAware =
+  | "SUPPORTED"
+  | "NOT_SUPPORTED"
+  | (string & {});
 export const DnsSummaryV2RequestDnssecAware = /*@__PURE__*/ S.String;
 
 export type DnsSummaryV2RequestDnssecAwareList =
@@ -75665,10 +77831,10 @@ export const DnsSummaryV2RequestDnssecE2eList = /*@__PURE__*/ S.Array(
   S.Boolean,
 ) as any as S.Schema<DnsSummaryV2RequestDnssecE2eList>;
 
-export type DnsSummaryV2RequestFormat = "JSON" | "CSV";
+export type DnsSummaryV2RequestFormat = "JSON" | "CSV" | (string & {});
 export const DnsSummaryV2RequestFormat = /*@__PURE__*/ S.String;
 
-export type DnsSummaryV2RequestIpVersion = "IPv4" | "IPv6";
+export type DnsSummaryV2RequestIpVersion = "IPv4" | "IPv6" | (string & {});
 export const DnsSummaryV2RequestIpVersion = /*@__PURE__*/ S.String;
 
 export type DnsSummaryV2RequestIpVersionList =
@@ -75697,7 +77863,12 @@ export const DnsSummaryV2RequestNodataList = /*@__PURE__*/ S.Array(
   S.Boolean,
 ) as any as S.Schema<DnsSummaryV2RequestNodataList>;
 
-export type DnsSummaryV2RequestProtocol = "UDP" | "TCP" | "HTTPS" | "TLS";
+export type DnsSummaryV2RequestProtocol =
+  | "UDP"
+  | "TCP"
+  | "HTTPS"
+  | "TLS"
+  | (string & {});
 export const DnsSummaryV2RequestProtocol = /*@__PURE__*/ S.String;
 
 export type DnsSummaryV2RequestProtocolList =
@@ -75794,7 +77965,8 @@ export type DnsSummaryV2RequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const DnsSummaryV2RequestQueryType = /*@__PURE__*/ S.String;
 
 export type DnsSummaryV2RequestQueryTypeList =
@@ -75822,7 +77994,8 @@ export type DnsSummaryV2RequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const DnsSummaryV2RequestResponseCode = /*@__PURE__*/ S.String;
 
 export type DnsSummaryV2RequestResponseCodeList =
@@ -75838,7 +78011,8 @@ export type DnsSummaryV2RequestResponseTtl =
   | "GT_15M_LTE_1H"
   | "GT_1H_LTE_1D"
   | "GT_1D_LTE_1W"
-  | "GT_1W";
+  | "GT_1W"
+  | (string & {});
 export const DnsSummaryV2RequestResponseTtl = /*@__PURE__*/ S.String;
 
 export type DnsSummaryV2RequestResponseTtlList =
@@ -75964,7 +78138,8 @@ export type DnsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   | "NET"
   | "ROBOTS_TXT"
   | "SPEED"
-  | "WORKERS_AI";
+  | "WORKERS_AI"
+  | (string & {});
 export const DnsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -75974,7 +78149,8 @@ export type DnsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const DnsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -76069,7 +78245,8 @@ export type DnsSummaryV2ResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsSummaryV2ResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface DnsSummaryV2ResponseMetaUnitsItem {
@@ -76142,10 +78319,15 @@ export type EmailRoutingSummaryV2RequestDimension =
   | "ARC"
   | "DKIM"
   | "DMARC"
-  | "SPF";
+  | "SPF"
+  | (string & {});
 export const EmailRoutingSummaryV2RequestDimension = /*@__PURE__*/ S.String;
 
-export type EmailRoutingSummaryV2RequestArc = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingSummaryV2RequestArc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingSummaryV2RequestArc = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryV2RequestArcList =
@@ -76169,7 +78351,11 @@ export const EmailRoutingSummaryV2RequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EmailRoutingSummaryV2RequestDateStartList>;
 
-export type EmailRoutingSummaryV2RequestDkim = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingSummaryV2RequestDkim =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingSummaryV2RequestDkim = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryV2RequestDkimList =
@@ -76178,7 +78364,11 @@ export const EmailRoutingSummaryV2RequestDkimList = /*@__PURE__*/ S.Array(
   EmailRoutingSummaryV2RequestDkim,
 ) as any as S.Schema<EmailRoutingSummaryV2RequestDkimList>;
 
-export type EmailRoutingSummaryV2RequestDmarc = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingSummaryV2RequestDmarc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingSummaryV2RequestDmarc = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryV2RequestDmarcList =
@@ -76189,7 +78379,8 @@ export const EmailRoutingSummaryV2RequestDmarcList = /*@__PURE__*/ S.Array(
 
 export type EmailRoutingSummaryV2RequestEncrypted =
   | "ENCRYPTED"
-  | "NOT_ENCRYPTED";
+  | "NOT_ENCRYPTED"
+  | (string & {});
 export const EmailRoutingSummaryV2RequestEncrypted = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryV2RequestEncryptedList =
@@ -76198,10 +78389,13 @@ export const EmailRoutingSummaryV2RequestEncryptedList = /*@__PURE__*/ S.Array(
   EmailRoutingSummaryV2RequestEncrypted,
 ) as any as S.Schema<EmailRoutingSummaryV2RequestEncryptedList>;
 
-export type EmailRoutingSummaryV2RequestFormat = "JSON" | "CSV";
+export type EmailRoutingSummaryV2RequestFormat = "JSON" | "CSV" | (string & {});
 export const EmailRoutingSummaryV2RequestFormat = /*@__PURE__*/ S.String;
 
-export type EmailRoutingSummaryV2RequestIpVersion = "IPv4" | "IPv6";
+export type EmailRoutingSummaryV2RequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const EmailRoutingSummaryV2RequestIpVersion = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryV2RequestIpVersionList =
@@ -76215,7 +78409,11 @@ export const EmailRoutingSummaryV2RequestNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EmailRoutingSummaryV2RequestNameList>;
 
-export type EmailRoutingSummaryV2RequestSpf = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingSummaryV2RequestSpf =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingSummaryV2RequestSpf = /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryV2RequestSpfList =
@@ -76315,7 +78513,8 @@ export type EmailRoutingSummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSo
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailRoutingSummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -76325,7 +78524,8 @@ export type EmailRoutingSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventT
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailRoutingSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -76424,7 +78624,8 @@ export type EmailRoutingSummaryV2ResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailRoutingSummaryV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -76504,10 +78705,15 @@ export type EmailSecuritySummaryV2RequestDimension =
   | "DKIM"
   | "DMARC"
   | "SPF"
-  | "TLS_VERSION";
+  | "TLS_VERSION"
+  | (string & {});
 export const EmailSecuritySummaryV2RequestDimension = /*@__PURE__*/ S.String;
 
-export type EmailSecuritySummaryV2RequestArc = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummaryV2RequestArc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryV2RequestArc = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryV2RequestArcList =
@@ -76531,7 +78737,11 @@ export const EmailSecuritySummaryV2RequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EmailSecuritySummaryV2RequestDateStartList>;
 
-export type EmailSecuritySummaryV2RequestDkim = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummaryV2RequestDkim =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryV2RequestDkim = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryV2RequestDkimList =
@@ -76540,7 +78750,11 @@ export const EmailSecuritySummaryV2RequestDkimList = /*@__PURE__*/ S.Array(
   EmailSecuritySummaryV2RequestDkim,
 ) as any as S.Schema<EmailSecuritySummaryV2RequestDkimList>;
 
-export type EmailSecuritySummaryV2RequestDmarc = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummaryV2RequestDmarc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryV2RequestDmarc = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryV2RequestDmarcList =
@@ -76549,7 +78763,10 @@ export const EmailSecuritySummaryV2RequestDmarcList = /*@__PURE__*/ S.Array(
   EmailSecuritySummaryV2RequestDmarc,
 ) as any as S.Schema<EmailSecuritySummaryV2RequestDmarcList>;
 
-export type EmailSecuritySummaryV2RequestFormat = "JSON" | "CSV";
+export type EmailSecuritySummaryV2RequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailSecuritySummaryV2RequestFormat = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryV2RequestNameList = ReadonlyArray<string>;
@@ -76557,7 +78774,11 @@ export const EmailSecuritySummaryV2RequestNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EmailSecuritySummaryV2RequestNameList>;
 
-export type EmailSecuritySummaryV2RequestSpf = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummaryV2RequestSpf =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryV2RequestSpf = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryV2RequestSpfList =
@@ -76570,7 +78791,8 @@ export type EmailSecuritySummaryV2RequestTlsVersion =
   | "TLSv1_0"
   | "TLSv1_1"
   | "TLSv1_2"
-  | "TLSv1_3";
+  | "TLSv1_3"
+  | (string & {});
 export const EmailSecuritySummaryV2RequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryV2RequestTlsVersionList =
@@ -76666,7 +78888,8 @@ export type EmailSecuritySummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataS
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailSecuritySummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -76676,7 +78899,8 @@ export type EmailSecuritySummaryV2ResponseMetaConfidenceInfoAnnotationsItemEvent
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailSecuritySummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -76775,7 +78999,8 @@ export type EmailSecuritySummaryV2ResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailSecuritySummaryV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -76862,10 +79087,11 @@ export type HttpSummaryV2RequestDimension =
   | "LOCATION"
   | "OS"
   | "POST_QUANTUM"
-  | "TLS_VERSION";
+  | "TLS_VERSION"
+  | (string & {});
 export const HttpSummaryV2RequestDimension = /*@__PURE__*/ S.String;
 
-export type HttpSummaryV2RequestApiTraffic = "API" | "NON_API";
+export type HttpSummaryV2RequestApiTraffic = "API" | "NON_API" | (string & {});
 export const HttpSummaryV2RequestApiTraffic = /*@__PURE__*/ S.String;
 
 export type HttpSummaryV2RequestApiTrafficList =
@@ -76879,7 +79105,10 @@ export const HttpSummaryV2RequestAsnList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpSummaryV2RequestAsnList>;
 
-export type HttpSummaryV2RequestBotClass = "LIKELY_AUTOMATED" | "LIKELY_HUMAN";
+export type HttpSummaryV2RequestBotClass =
+  | "LIKELY_AUTOMATED"
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpSummaryV2RequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpSummaryV2RequestBotClassList =
@@ -76904,7 +79133,8 @@ export type HttpSummaryV2RequestContentType =
   | "DOCUMENTS"
   | "BINARY"
   | "SERIALIZATION"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpSummaryV2RequestContentType = /*@__PURE__*/ S.String;
 
 export type HttpSummaryV2RequestContentTypeList =
@@ -76933,7 +79163,11 @@ export const HttpSummaryV2RequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpSummaryV2RequestDateStartList>;
 
-export type HttpSummaryV2RequestDeviceType = "DESKTOP" | "MOBILE" | "OTHER";
+export type HttpSummaryV2RequestDeviceType =
+  | "DESKTOP"
+  | "MOBILE"
+  | "OTHER"
+  | (string & {});
 export const HttpSummaryV2RequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpSummaryV2RequestDeviceTypeList =
@@ -76942,7 +79176,7 @@ export const HttpSummaryV2RequestDeviceTypeList = /*@__PURE__*/ S.Array(
   HttpSummaryV2RequestDeviceType,
 ) as any as S.Schema<HttpSummaryV2RequestDeviceTypeList>;
 
-export type HttpSummaryV2RequestFormat = "JSON" | "CSV";
+export type HttpSummaryV2RequestFormat = "JSON" | "CSV" | (string & {});
 export const HttpSummaryV2RequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpSummaryV2RequestGeoIdList = ReadonlyArray<string>;
@@ -76950,7 +79184,7 @@ export const HttpSummaryV2RequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpSummaryV2RequestGeoIdList>;
 
-export type HttpSummaryV2RequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpSummaryV2RequestHttpProtocol = "HTTP" | "HTTPS" | (string & {});
 export const HttpSummaryV2RequestHttpProtocol = /*@__PURE__*/ S.String;
 
 export type HttpSummaryV2RequestHttpProtocolList =
@@ -76959,7 +79193,11 @@ export const HttpSummaryV2RequestHttpProtocolList = /*@__PURE__*/ S.Array(
   HttpSummaryV2RequestHttpProtocol,
 ) as any as S.Schema<HttpSummaryV2RequestHttpProtocolList>;
 
-export type HttpSummaryV2RequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
+export type HttpSummaryV2RequestHttpVersion =
+  | "HTTPv1"
+  | "HTTPv2"
+  | "HTTPv3"
+  | (string & {});
 export const HttpSummaryV2RequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type HttpSummaryV2RequestHttpVersionList =
@@ -76968,7 +79206,7 @@ export const HttpSummaryV2RequestHttpVersionList = /*@__PURE__*/ S.Array(
   HttpSummaryV2RequestHttpVersion,
 ) as any as S.Schema<HttpSummaryV2RequestHttpVersionList>;
 
-export type HttpSummaryV2RequestIpVersion = "IPv4" | "IPv6";
+export type HttpSummaryV2RequestIpVersion = "IPv4" | "IPv6" | (string & {});
 export const HttpSummaryV2RequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpSummaryV2RequestIpVersionList =
@@ -76994,7 +79232,8 @@ export type HttpSummaryV2RequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpSummaryV2RequestOs = /*@__PURE__*/ S.String;
 
 export type HttpSummaryV2RequestOsList = ReadonlyArray<HttpSummaryV2RequestOs>;
@@ -77007,7 +79246,8 @@ export type HttpSummaryV2RequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpSummaryV2RequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpSummaryV2RequestTlsVersionList =
@@ -77124,7 +79364,8 @@ export type HttpSummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   | "NET"
   | "ROBOTS_TXT"
   | "SPEED"
-  | "WORKERS_AI";
+  | "WORKERS_AI"
+  | (string & {});
 export const HttpSummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -77134,7 +79375,8 @@ export type HttpSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const HttpSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -77230,7 +79472,8 @@ export type HttpSummaryV2ResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpSummaryV2ResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface HttpSummaryV2ResponseMetaUnitsItem {
@@ -77299,7 +79542,8 @@ export const SummaryV2HttpResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type LeakedCredentialsSummaryV2RequestDimension =
   | "COMPROMISED"
-  | "BOT_CLASS";
+  | "BOT_CLASS"
+  | (string & {});
 export const LeakedCredentialsSummaryV2RequestDimension =
   /*@__PURE__*/ S.String;
 
@@ -77310,7 +79554,8 @@ export const LeakedCredentialsSummaryV2RequestAsnList = /*@__PURE__*/ S.Array(
 
 export type LeakedCredentialsSummaryV2RequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const LeakedCredentialsSummaryV2RequestBotClass = /*@__PURE__*/ S.String;
 
 export type LeakedCredentialsSummaryV2RequestBotClassList =
@@ -77322,7 +79567,8 @@ export const LeakedCredentialsSummaryV2RequestBotClassList =
 
 export type LeakedCredentialsSummaryV2RequestCompromised =
   | "CLEAN"
-  | "COMPROMISED";
+  | "COMPROMISED"
+  | (string & {});
 export const LeakedCredentialsSummaryV2RequestCompromised =
   /*@__PURE__*/ S.String;
 
@@ -77361,7 +79607,10 @@ export const LeakedCredentialsSummaryV2RequestDateStartList =
     S.String,
   ) as any as S.Schema<LeakedCredentialsSummaryV2RequestDateStartList>;
 
-export type LeakedCredentialsSummaryV2RequestFormat = "JSON" | "CSV";
+export type LeakedCredentialsSummaryV2RequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const LeakedCredentialsSummaryV2RequestFormat = /*@__PURE__*/ S.String;
 
 export type LeakedCredentialsSummaryV2RequestLocationList =
@@ -77468,7 +79717,8 @@ export type LeakedCredentialsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemD
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const LeakedCredentialsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -77478,7 +79728,8 @@ export type LeakedCredentialsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemE
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const LeakedCredentialsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -77577,7 +79828,8 @@ export type LeakedCredentialsSummaryV2ResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const LeakedCredentialsSummaryV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -77655,7 +79907,8 @@ export type NetflowsSummaryV2RequestDimension =
   | "ADM1"
   | "AS"
   | "LOCATION"
-  | "PRODUCT";
+  | "PRODUCT"
+  | (string & {});
 export const NetflowsSummaryV2RequestDimension = /*@__PURE__*/ S.String;
 
 export type NetflowsSummaryV2RequestAsnList = ReadonlyArray<string>;
@@ -77683,7 +79936,7 @@ export const NetflowsSummaryV2RequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetflowsSummaryV2RequestDateStartList>;
 
-export type NetflowsSummaryV2RequestFormat = "JSON" | "CSV";
+export type NetflowsSummaryV2RequestFormat = "JSON" | "CSV" | (string & {});
 export const NetflowsSummaryV2RequestFormat = /*@__PURE__*/ S.String;
 
 export type NetflowsSummaryV2RequestGeoIdList = ReadonlyArray<string>;
@@ -77701,7 +79954,7 @@ export const NetflowsSummaryV2RequestNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetflowsSummaryV2RequestNameList>;
 
-export type NetflowsSummaryV2RequestProduct = "HTTP" | "ALL";
+export type NetflowsSummaryV2RequestProduct = "HTTP" | "ALL" | (string & {});
 export const NetflowsSummaryV2RequestProduct = /*@__PURE__*/ S.String;
 
 export type NetflowsSummaryV2RequestProductList =
@@ -77794,7 +80047,8 @@ export type NetflowsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const NetflowsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -77804,7 +80058,8 @@ export type NetflowsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType 
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const NetflowsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -77900,7 +80155,8 @@ export type NetflowsSummaryV2ResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const NetflowsSummaryV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -78059,11 +80315,17 @@ export const AttacksLayer3TopLocationsTargetRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer3TopLocationsTargetRequestDateStartList>;
 
-export type AttacksLayer3TopLocationsTargetRequestFormat = "JSON" | "CSV";
+export type AttacksLayer3TopLocationsTargetRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer3TopLocationsTargetRequestFormat =
   /*@__PURE__*/ S.String;
 
-export type AttacksLayer3TopLocationsTargetRequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer3TopLocationsTargetRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer3TopLocationsTargetRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -78092,7 +80354,8 @@ export type AttacksLayer3TopLocationsTargetRequestProtocol =
   | "UDP"
   | "TCP"
   | "ICMP"
-  | "GRE";
+  | "GRE"
+  | (string & {});
 export const AttacksLayer3TopLocationsTargetRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -78194,7 +80457,8 @@ export type AttacksLayer3TopLocationsTargetResponseMetaConfidenceInfoAnnotations
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer3TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -78204,7 +80468,8 @@ export type AttacksLayer3TopLocationsTargetResponseMetaConfidenceInfoAnnotations
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer3TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -78303,7 +80568,8 @@ export type AttacksLayer3TopLocationsTargetResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer3TopLocationsTargetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -78422,7 +80688,10 @@ export const AttacksLayer7TopLocationsTargetRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer7TopLocationsTargetRequestDateStartList>;
 
-export type AttacksLayer7TopLocationsTargetRequestFormat = "JSON" | "CSV";
+export type AttacksLayer7TopLocationsTargetRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer7TopLocationsTargetRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -78433,7 +80702,8 @@ export type AttacksLayer7TopLocationsTargetRequestMitigationProduct =
   | "ACCESS_RULES"
   | "IP_REPUTATION"
   | "API_SHIELD"
-  | "DATA_LOSS_PREVENTION";
+  | "DATA_LOSS_PREVENTION"
+  | (string & {});
 export const AttacksLayer7TopLocationsTargetRequestMitigationProduct =
   /*@__PURE__*/ S.String;
 
@@ -78534,7 +80804,8 @@ export type AttacksLayer7TopLocationsTargetResponseMetaConfidenceInfoAnnotations
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer7TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -78544,7 +80815,8 @@ export type AttacksLayer7TopLocationsTargetResponseMetaConfidenceInfoAnnotations
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer7TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -78643,7 +80915,8 @@ export type AttacksLayer7TopLocationsTargetResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer7TopLocationsTargetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -78749,7 +81022,10 @@ export const AiInferenceSummaryTaskRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AiInferenceSummaryTaskRequestDateStartList>;
 
-export type AiInferenceSummaryTaskRequestFormat = "JSON" | "CSV";
+export type AiInferenceSummaryTaskRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AiInferenceSummaryTaskRequestFormat = /*@__PURE__*/ S.String;
 
 export type AiInferenceSummaryTaskRequestNameList = ReadonlyArray<string>;
@@ -78823,7 +81099,8 @@ export type AiInferenceSummaryTaskResponseMetaConfidenceInfoAnnotationsItemDataS
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AiInferenceSummaryTaskResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -78833,7 +81110,8 @@ export type AiInferenceSummaryTaskResponseMetaConfidenceInfoAnnotationsItemEvent
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AiInferenceSummaryTaskResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -78932,7 +81210,8 @@ export type AiInferenceSummaryTaskResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AiInferenceSummaryTaskResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -79008,7 +81287,8 @@ export type AiInferenceTimeseriesGroupsSummaryTaskRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AiInferenceTimeseriesGroupsSummaryTaskRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -79035,7 +81315,8 @@ export const AiInferenceTimeseriesGroupsSummaryTaskRequestDateStartList =
 
 export type AiInferenceTimeseriesGroupsSummaryTaskRequestFormat =
   | "JSON"
-  | "CSV";
+  | "CSV"
+  | (string & {});
 export const AiInferenceTimeseriesGroupsSummaryTaskRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -79110,7 +81391,8 @@ export type AiInferenceTimeseriesGroupsSummaryTaskResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AiInferenceTimeseriesGroupsSummaryTaskResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -79139,7 +81421,8 @@ export type AiInferenceTimeseriesGroupsSummaryTaskResponseMetaConfidenceInfoAnno
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AiInferenceTimeseriesGroupsSummaryTaskResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -79149,7 +81432,8 @@ export type AiInferenceTimeseriesGroupsSummaryTaskResponseMetaConfidenceInfoAnno
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AiInferenceTimeseriesGroupsSummaryTaskResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -79250,7 +81534,8 @@ export type AiInferenceTimeseriesGroupsSummaryTaskResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AiInferenceTimeseriesGroupsSummaryTaskResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -79346,7 +81631,8 @@ export const TaskAiInferenceTimeseriesGroupSummaryResponse =
 export type EmailSecuritySummaryThreatCategoryRequestArc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryThreatCategoryRequestArc =
   /*@__PURE__*/ S.String;
 
@@ -79381,7 +81667,8 @@ export const EmailSecuritySummaryThreatCategoryRequestDateStartList =
 export type EmailSecuritySummaryThreatCategoryRequestDkim =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryThreatCategoryRequestDkim =
   /*@__PURE__*/ S.String;
 
@@ -79395,7 +81682,8 @@ export const EmailSecuritySummaryThreatCategoryRequestDkimList =
 export type EmailSecuritySummaryThreatCategoryRequestDmarc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryThreatCategoryRequestDmarc =
   /*@__PURE__*/ S.String;
 
@@ -79406,7 +81694,10 @@ export const EmailSecuritySummaryThreatCategoryRequestDmarcList =
     EmailSecuritySummaryThreatCategoryRequestDmarc,
   ) as any as S.Schema<EmailSecuritySummaryThreatCategoryRequestDmarcList>;
 
-export type EmailSecuritySummaryThreatCategoryRequestFormat = "JSON" | "CSV";
+export type EmailSecuritySummaryThreatCategoryRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailSecuritySummaryThreatCategoryRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -79420,7 +81711,8 @@ export const EmailSecuritySummaryThreatCategoryRequestNameList =
 export type EmailSecuritySummaryThreatCategoryRequestSpf =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryThreatCategoryRequestSpf =
   /*@__PURE__*/ S.String;
 
@@ -79435,7 +81727,8 @@ export type EmailSecuritySummaryThreatCategoryRequestTlsVersion =
   | "TLSv1_0"
   | "TLSv1_1"
   | "TLSv1_2"
-  | "TLSv1_3";
+  | "TLSv1_3"
+  | (string & {});
 export const EmailSecuritySummaryThreatCategoryRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -79539,7 +81832,8 @@ export type EmailSecuritySummaryThreatCategoryResponseMetaConfidenceInfoAnnotati
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailSecuritySummaryThreatCategoryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -79549,7 +81843,8 @@ export type EmailSecuritySummaryThreatCategoryResponseMetaConfidenceInfoAnnotati
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailSecuritySummaryThreatCategoryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -79648,7 +81943,8 @@ export type EmailSecuritySummaryThreatCategoryResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailSecuritySummaryThreatCategoryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -79742,14 +82038,16 @@ export type EmailSecurityTimeseriesGroupsThreatCategoryRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsThreatCategoryRequestAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsThreatCategoryRequestArc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsThreatCategoryRequestArc =
   /*@__PURE__*/ S.String;
 
@@ -79784,7 +82082,8 @@ export const EmailSecurityTimeseriesGroupsThreatCategoryRequestDateStartList =
 export type EmailSecurityTimeseriesGroupsThreatCategoryRequestDkim =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsThreatCategoryRequestDkim =
   /*@__PURE__*/ S.String;
 
@@ -79798,7 +82097,8 @@ export const EmailSecurityTimeseriesGroupsThreatCategoryRequestDkimList =
 export type EmailSecurityTimeseriesGroupsThreatCategoryRequestDmarc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsThreatCategoryRequestDmarc =
   /*@__PURE__*/ S.String;
 
@@ -79811,7 +82111,8 @@ export const EmailSecurityTimeseriesGroupsThreatCategoryRequestDmarcList =
 
 export type EmailSecurityTimeseriesGroupsThreatCategoryRequestFormat =
   | "JSON"
-  | "CSV";
+  | "CSV"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsThreatCategoryRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -79825,7 +82126,8 @@ export const EmailSecurityTimeseriesGroupsThreatCategoryRequestNameList =
 export type EmailSecurityTimeseriesGroupsThreatCategoryRequestSpf =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsThreatCategoryRequestSpf =
   /*@__PURE__*/ S.String;
 
@@ -79840,7 +82142,8 @@ export type EmailSecurityTimeseriesGroupsThreatCategoryRequestTlsVersion =
   | "TLSv1_0"
   | "TLSv1_1"
   | "TLSv1_2"
-  | "TLSv1_3";
+  | "TLSv1_3"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsThreatCategoryRequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -79947,7 +82250,12 @@ export const ThreatCategoryEmailSecurityTimeseriesGroupRequest =
   }) as any as S.Schema<ThreatCategoryEmailSecurityTimeseriesGroupRequest>;
 
 export type EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaAggInterval =
-  "FIFTEEN_MINUTES" | "ONE_HOUR" | "ONE_DAY" | "ONE_WEEK" | "ONE_MONTH";
+    | "FIFTEEN_MINUTES"
+    | "ONE_HOUR"
+    | "ONE_DAY"
+    | "ONE_WEEK"
+    | "ONE_MONTH"
+    | (string & {});
 export const EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -79976,7 +82284,8 @@ export type EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaConfidenceInf
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -79986,7 +82295,8 @@ export type EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaConfidenceInf
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -80087,7 +82397,8 @@ export type EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaNormalization
     | "PERCENTAGE_CHANGE"
     | "ROLLING_AVERAGE"
     | "OVERLAPPED_PERCENTAGE"
-    | "RATIO";
+    | "RATIO"
+    | (string & {});
 export const EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -80210,7 +82521,12 @@ export const ThreatCategoryEmailSecurityTimeseriesGroupResponse =
     identifier: "ThreatCategoryEmailSecurityTimeseriesGroupResponse",
   }) as any as S.Schema<ThreatCategoryEmailSecurityTimeseriesGroupResponse>;
 
-export type AiBotsTimeseriesRequestAggInterval = "15m" | "1h" | "1d" | "1w";
+export type AiBotsTimeseriesRequestAggInterval =
+  | "15m"
+  | "1h"
+  | "1d"
+  | "1w"
+  | (string & {});
 export const AiBotsTimeseriesRequestAggInterval = /*@__PURE__*/ S.String;
 
 export type AiBotsTimeseriesRequestAsnList = ReadonlyArray<string>;
@@ -80234,7 +82550,8 @@ export type AiBotsTimeseriesRequestContentType =
   | "DOCUMENTS"
   | "BINARY"
   | "SERIALIZATION"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const AiBotsTimeseriesRequestContentType = /*@__PURE__*/ S.String;
 
 export type AiBotsTimeseriesRequestContentTypeList =
@@ -80268,7 +82585,7 @@ export const AiBotsTimeseriesRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AiBotsTimeseriesRequestDateStartList>;
 
-export type AiBotsTimeseriesRequestFormat = "JSON" | "CSV";
+export type AiBotsTimeseriesRequestFormat = "JSON" | "CSV" | (string & {});
 export const AiBotsTimeseriesRequestFormat = /*@__PURE__*/ S.String;
 
 export type AiBotsTimeseriesRequestIndustryList = ReadonlyArray<string>;
@@ -80296,7 +82613,8 @@ export type AiBotsTimeseriesRequestResponseStatusCategory =
   | "SUCCESS"
   | "REDIRECTION"
   | "CLIENT_ERROR"
-  | "SERVER_ERROR";
+  | "SERVER_ERROR"
+  | (string & {});
 export const AiBotsTimeseriesRequestResponseStatusCategory =
   /*@__PURE__*/ S.String;
 
@@ -80394,7 +82712,8 @@ export type AiBotsTimeseriesResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AiBotsTimeseriesResponseMetaAggInterval = /*@__PURE__*/ S.String;
 
 export type AiBotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
@@ -80422,7 +82741,8 @@ export type AiBotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource 
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AiBotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -80432,7 +82752,8 @@ export type AiBotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AiBotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -80528,7 +82849,8 @@ export type AiBotsTimeseriesResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AiBotsTimeseriesResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface AiBotsTimeseriesResponseMetaUnitsItem {
@@ -80593,7 +82915,8 @@ export type AiMarkdownForAgentsTimeseriesRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AiMarkdownForAgentsTimeseriesRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -80618,7 +82941,10 @@ export const AiMarkdownForAgentsTimeseriesRequestDateStartList =
     S.String,
   ) as any as S.Schema<AiMarkdownForAgentsTimeseriesRequestDateStartList>;
 
-export type AiMarkdownForAgentsTimeseriesRequestFormat = "JSON" | "CSV";
+export type AiMarkdownForAgentsTimeseriesRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AiMarkdownForAgentsTimeseriesRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -80681,7 +83007,8 @@ export type AiMarkdownForAgentsTimeseriesResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AiMarkdownForAgentsTimeseriesResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -80710,7 +83037,8 @@ export type AiMarkdownForAgentsTimeseriesResponseMetaConfidenceInfoAnnotationsIt
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AiMarkdownForAgentsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -80720,7 +83048,8 @@ export type AiMarkdownForAgentsTimeseriesResponseMetaConfidenceInfoAnnotationsIt
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AiMarkdownForAgentsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -80819,7 +83148,8 @@ export type AiMarkdownForAgentsTimeseriesResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AiMarkdownForAgentsTimeseriesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -80884,7 +83214,12 @@ export const TimeseriesAiMarkdownForAgentResponse = /*@__PURE__*/ S.suspend(
   identifier: "TimeseriesAiMarkdownForAgentResponse",
 }) as any as S.Schema<TimeseriesAiMarkdownForAgentResponse>;
 
-export type As112TimeseriesRequestAggInterval = "15m" | "1h" | "1d" | "1w";
+export type As112TimeseriesRequestAggInterval =
+  | "15m"
+  | "1h"
+  | "1d"
+  | "1w"
+  | (string & {});
 export const As112TimeseriesRequestAggInterval = /*@__PURE__*/ S.String;
 
 export type As112TimeseriesRequestContinentList = ReadonlyArray<string>;
@@ -80907,7 +83242,7 @@ export const As112TimeseriesRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<As112TimeseriesRequestDateStartList>;
 
-export type As112TimeseriesRequestFormat = "JSON" | "CSV";
+export type As112TimeseriesRequestFormat = "JSON" | "CSV" | (string & {});
 export const As112TimeseriesRequestFormat = /*@__PURE__*/ S.String;
 
 export type As112TimeseriesRequestLocationList = ReadonlyArray<string>;
@@ -80920,7 +83255,12 @@ export const As112TimeseriesRequestNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<As112TimeseriesRequestNameList>;
 
-export type As112TimeseriesRequestProtocol = "UDP" | "TCP" | "HTTPS" | "TLS";
+export type As112TimeseriesRequestProtocol =
+  | "UDP"
+  | "TCP"
+  | "HTTPS"
+  | "TLS"
+  | (string & {});
 export const As112TimeseriesRequestProtocol = /*@__PURE__*/ S.String;
 
 export type As112TimeseriesRequestProtocolList =
@@ -81017,7 +83357,8 @@ export type As112TimeseriesRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const As112TimeseriesRequestQueryType = /*@__PURE__*/ S.String;
 
 export type As112TimeseriesRequestQueryTypeList =
@@ -81045,7 +83386,8 @@ export type As112TimeseriesRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const As112TimeseriesRequestResponseCode = /*@__PURE__*/ S.String;
 
 export type As112TimeseriesRequestResponseCodeList =
@@ -81105,7 +83447,8 @@ export type As112TimeseriesResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const As112TimeseriesResponseMetaAggInterval = /*@__PURE__*/ S.String;
 
 export type As112TimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
@@ -81133,7 +83476,8 @@ export type As112TimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const As112TimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -81143,7 +83487,8 @@ export type As112TimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const As112TimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -81239,7 +83584,8 @@ export type As112TimeseriesResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const As112TimeseriesResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface As112TimeseriesResponseMetaUnitsItem {
@@ -81304,7 +83650,8 @@ export type AttacksLayer3TimeseriesRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AttacksLayer3TimeseriesRequestAggInterval = /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesRequestAsnList = ReadonlyArray<string>;
@@ -81335,13 +83682,22 @@ export const AttacksLayer3TimeseriesRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer3TimeseriesRequestDateStartList>;
 
-export type AttacksLayer3TimeseriesRequestDirection = "ORIGIN" | "TARGET";
+export type AttacksLayer3TimeseriesRequestDirection =
+  | "ORIGIN"
+  | "TARGET"
+  | (string & {});
 export const AttacksLayer3TimeseriesRequestDirection = /*@__PURE__*/ S.String;
 
-export type AttacksLayer3TimeseriesRequestFormat = "JSON" | "CSV";
+export type AttacksLayer3TimeseriesRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer3TimeseriesRequestFormat = /*@__PURE__*/ S.String;
 
-export type AttacksLayer3TimeseriesRequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer3TimeseriesRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer3TimeseriesRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesRequestIpVersionList =
@@ -81356,7 +83712,10 @@ export const AttacksLayer3TimeseriesRequestLocationList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AttacksLayer3TimeseriesRequestLocationList>;
 
-export type AttacksLayer3TimeseriesRequestMetric = "BYTES" | "BYTES_OLD";
+export type AttacksLayer3TimeseriesRequestMetric =
+  | "BYTES"
+  | "BYTES_OLD"
+  | (string & {});
 export const AttacksLayer3TimeseriesRequestMetric = /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesRequestNameList = ReadonlyArray<string>;
@@ -81366,7 +83725,8 @@ export const AttacksLayer3TimeseriesRequestNameList = /*@__PURE__*/ S.Array(
 
 export type AttacksLayer3TimeseriesRequestNormalization =
   | "PERCENTAGE_CHANGE"
-  | "MIN0_MAX";
+  | "MIN0_MAX"
+  | (string & {});
 export const AttacksLayer3TimeseriesRequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -81374,7 +83734,8 @@ export type AttacksLayer3TimeseriesRequestProtocol =
   | "UDP"
   | "TCP"
   | "ICMP"
-  | "GRE";
+  | "GRE"
+  | (string & {});
 export const AttacksLayer3TimeseriesRequestProtocol = /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesRequestProtocolList =
@@ -81467,7 +83828,8 @@ export type AttacksLayer3TimeseriesResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AttacksLayer3TimeseriesResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -81496,7 +83858,8 @@ export type AttacksLayer3TimeseriesResponseMetaConfidenceInfoAnnotationsItemData
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer3TimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -81506,7 +83869,8 @@ export type AttacksLayer3TimeseriesResponseMetaConfidenceInfoAnnotationsItemEven
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer3TimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -81605,7 +83969,8 @@ export type AttacksLayer3TimeseriesResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer3TimeseriesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -81672,7 +84037,8 @@ export type AttacksLayer7TimeseriesRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AttacksLayer7TimeseriesRequestAggInterval = /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TimeseriesRequestAsnList = ReadonlyArray<string>;
@@ -81703,7 +84069,10 @@ export const AttacksLayer7TimeseriesRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer7TimeseriesRequestDateStartList>;
 
-export type AttacksLayer7TimeseriesRequestFormat = "JSON" | "CSV";
+export type AttacksLayer7TimeseriesRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer7TimeseriesRequestFormat = /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TimeseriesRequestHttpMethod =
@@ -81752,7 +84121,8 @@ export type AttacksLayer7TimeseriesRequestHttpMethod =
   | "RPC_IN_DATA"
   | "JSON"
   | "COOK"
-  | "TRACK";
+  | "TRACK"
+  | (string & {});
 export const AttacksLayer7TimeseriesRequestHttpMethod = /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TimeseriesRequestHttpMethodList =
@@ -81765,7 +84135,8 @@ export const AttacksLayer7TimeseriesRequestHttpMethodList =
 export type AttacksLayer7TimeseriesRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const AttacksLayer7TimeseriesRequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TimeseriesRequestHttpVersionList =
@@ -81775,7 +84146,10 @@ export const AttacksLayer7TimeseriesRequestHttpVersionList =
     AttacksLayer7TimeseriesRequestHttpVersion,
   ) as any as S.Schema<AttacksLayer7TimeseriesRequestHttpVersionList>;
 
-export type AttacksLayer7TimeseriesRequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer7TimeseriesRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer7TimeseriesRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TimeseriesRequestIpVersionList =
@@ -81797,7 +84171,8 @@ export type AttacksLayer7TimeseriesRequestMitigationProduct =
   | "ACCESS_RULES"
   | "IP_REPUTATION"
   | "API_SHIELD"
-  | "DATA_LOSS_PREVENTION";
+  | "DATA_LOSS_PREVENTION"
+  | (string & {});
 export const AttacksLayer7TimeseriesRequestMitigationProduct =
   /*@__PURE__*/ S.String;
 
@@ -81815,7 +84190,8 @@ export const AttacksLayer7TimeseriesRequestNameList = /*@__PURE__*/ S.Array(
 
 export type AttacksLayer7TimeseriesRequestNormalization =
   | "PERCENTAGE_CHANGE"
-  | "MIN0_MAX";
+  | "MIN0_MAX"
+  | (string & {});
 export const AttacksLayer7TimeseriesRequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -81905,7 +84281,8 @@ export type AttacksLayer7TimeseriesResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AttacksLayer7TimeseriesResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -81934,7 +84311,8 @@ export type AttacksLayer7TimeseriesResponseMetaConfidenceInfoAnnotationsItemData
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer7TimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -81944,7 +84322,8 @@ export type AttacksLayer7TimeseriesResponseMetaConfidenceInfoAnnotationsItemEven
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer7TimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -82043,7 +84422,8 @@ export type AttacksLayer7TimeseriesResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer7TimeseriesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -82136,7 +84516,12 @@ export const TimeseriesAttackLayer7Response = /*@__PURE__*/ S.suspend(() =>
   identifier: "TimeseriesAttackLayer7Response",
 }) as any as S.Schema<TimeseriesAttackLayer7Response>;
 
-export type BgpTimeseriesRequestAggInterval = "15m" | "1h" | "1d" | "1w";
+export type BgpTimeseriesRequestAggInterval =
+  | "15m"
+  | "1h"
+  | "1d"
+  | "1w"
+  | (string & {});
 export const BgpTimeseriesRequestAggInterval = /*@__PURE__*/ S.String;
 
 export type BgpTimeseriesRequestAsnList = ReadonlyArray<string>;
@@ -82159,7 +84544,7 @@ export const BgpTimeseriesRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BgpTimeseriesRequestDateStartList>;
 
-export type BgpTimeseriesRequestFormat = "JSON" | "CSV";
+export type BgpTimeseriesRequestFormat = "JSON" | "CSV" | (string & {});
 export const BgpTimeseriesRequestFormat = /*@__PURE__*/ S.String;
 
 export type BgpTimeseriesRequestNameList = ReadonlyArray<string>;
@@ -82172,7 +84557,10 @@ export const BgpTimeseriesRequestPrefixList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BgpTimeseriesRequestPrefixList>;
 
-export type BgpTimeseriesRequestUpdateType = "ANNOUNCEMENT" | "WITHDRAWAL";
+export type BgpTimeseriesRequestUpdateType =
+  | "ANNOUNCEMENT"
+  | "WITHDRAWAL"
+  | (string & {});
 export const BgpTimeseriesRequestUpdateType = /*@__PURE__*/ S.String;
 
 export type BgpTimeseriesRequestUpdateTypeList =
@@ -82219,7 +84607,12 @@ export const TimeseriesBgpRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TimeseriesBgpRequest",
 }) as any as S.Schema<TimeseriesBgpRequest>;
 
-export type BgpTimeseriesResponseMetaAggInterval = "15m" | "1h" | "1d" | "1w";
+export type BgpTimeseriesResponseMetaAggInterval =
+  | "15m"
+  | "1h"
+  | "1d"
+  | "1w"
+  | (string & {});
 export const BgpTimeseriesResponseMetaAggInterval = /*@__PURE__*/ S.String;
 
 export type BgpTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
@@ -82247,7 +84640,8 @@ export type BgpTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   | "NET"
   | "ROBOTS_TXT"
   | "SPEED"
-  | "WORKERS_AI";
+  | "WORKERS_AI"
+  | (string & {});
 export const BgpTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -82257,7 +84651,8 @@ export type BgpTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const BgpTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -82419,10 +84814,10 @@ export const BgpIpsTimeseriesRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BgpIpsTimeseriesRequestDateStartList>;
 
-export type BgpIpsTimeseriesRequestFormat = "JSON" | "CSV";
+export type BgpIpsTimeseriesRequestFormat = "JSON" | "CSV" | (string & {});
 export const BgpIpsTimeseriesRequestFormat = /*@__PURE__*/ S.String;
 
-export type BgpIpsTimeseriesRequestIpVersion = "IPv4" | "IPv6";
+export type BgpIpsTimeseriesRequestIpVersion = "IPv4" | "IPv6" | (string & {});
 export const BgpIpsTimeseriesRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type BgpIpsTimeseriesRequestIpVersionList =
@@ -82486,7 +84881,8 @@ export type BgpIpsTimeseriesResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const BgpIpsTimeseriesResponseMetaAggInterval = /*@__PURE__*/ S.String;
 
 export type BgpIpsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
@@ -82514,7 +84910,8 @@ export type BgpIpsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource 
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const BgpIpsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -82524,7 +84921,8 @@ export type BgpIpsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const BgpIpsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -82620,7 +85018,8 @@ export type BgpIpsTimeseriesResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const BgpIpsTimeseriesResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface BgpIpsTimeseriesResponseMetaUnitsItem {
@@ -82802,7 +85201,7 @@ export const TimeseriesBgpIpResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TimeseriesBgpIpResponse",
 }) as any as S.Schema<TimeseriesBgpIpResponse>;
 
-export type BgpRpkiAspaTimeseriesRequestFormat = "JSON" | "CSV";
+export type BgpRpkiAspaTimeseriesRequestFormat = "JSON" | "CSV" | (string & {});
 export const BgpRpkiAspaTimeseriesRequestFormat = /*@__PURE__*/ S.String;
 
 export type BgpRpkiAspaTimeseriesRequestLocationList = ReadonlyArray<string>;
@@ -82820,7 +85219,8 @@ export type BgpRpkiAspaTimeseriesRequestRir =
   | "ARIN"
   | "APNIC"
   | "LACNIC"
-  | "AFRINIC";
+  | "AFRINIC"
+  | (string & {});
 export const BgpRpkiAspaTimeseriesRequestRir = /*@__PURE__*/ S.String;
 
 export type BgpRpkiAspaTimeseriesRequestRirList =
@@ -82927,7 +85327,7 @@ export const BgpRpkiRoasTimeseriesRequestAsnList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BgpRpkiRoasTimeseriesRequestAsnList>;
 
-export type BgpRpkiRoasTimeseriesRequestFormat = "JSON" | "CSV";
+export type BgpRpkiRoasTimeseriesRequestFormat = "JSON" | "CSV" | (string & {});
 export const BgpRpkiRoasTimeseriesRequestFormat = /*@__PURE__*/ S.String;
 
 export type BgpRpkiRoasTimeseriesRequestLocationList = ReadonlyArray<string>;
@@ -82941,7 +85341,8 @@ export type BgpRpkiRoasTimeseriesRequestMetric =
   | "validPfxsV6Ratio"
   | "validIpsRatio"
   | "validIpsV4Ratio"
-  | "validIpsV6Ratio";
+  | "validIpsV6Ratio"
+  | (string & {});
 export const BgpRpkiRoasTimeseriesRequestMetric = /*@__PURE__*/ S.String;
 
 export type BgpRpkiRoasTimeseriesRequestNameList = ReadonlyArray<string>;
@@ -83045,7 +85446,12 @@ export const TimeseriesBgpRpkiRoaResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TimeseriesBgpRpkiRoaResponse",
 }) as any as S.Schema<TimeseriesBgpRpkiRoaResponse>;
 
-export type BotsTimeseriesRequestAggInterval = "15m" | "1h" | "1d" | "1w";
+export type BotsTimeseriesRequestAggInterval =
+  | "15m"
+  | "1h"
+  | "1d"
+  | "1w"
+  | (string & {});
 export const BotsTimeseriesRequestAggInterval = /*@__PURE__*/ S.String;
 
 export type BotsTimeseriesRequestAsnList = ReadonlyArray<string>;
@@ -83074,7 +85480,8 @@ export type BotsTimeseriesRequestBotCategory =
   | "AGGREGATOR"
   | "AI_ASSISTANT"
   | "AI_SEARCH"
-  | "ARCHIVER";
+  | "ARCHIVER"
+  | (string & {});
 export const BotsTimeseriesRequestBotCategory = /*@__PURE__*/ S.String;
 
 export type BotsTimeseriesRequestBotCategoryList =
@@ -83083,7 +85490,7 @@ export const BotsTimeseriesRequestBotCategoryList = /*@__PURE__*/ S.Array(
   BotsTimeseriesRequestBotCategory,
 ) as any as S.Schema<BotsTimeseriesRequestBotCategoryList>;
 
-export type BotsTimeseriesRequestBotKind = "AGENT" | "BOT";
+export type BotsTimeseriesRequestBotKind = "AGENT" | "BOT" | (string & {});
 export const BotsTimeseriesRequestBotKind = /*@__PURE__*/ S.String;
 
 export type BotsTimeseriesRequestBotKindList =
@@ -83097,7 +85504,9 @@ export const BotsTimeseriesRequestBotOperatorList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BotsTimeseriesRequestBotOperatorList>;
 
-export type BotsTimeseriesRequestBotVerificationStatus = "VERIFIED";
+export type BotsTimeseriesRequestBotVerificationStatus =
+  | "VERIFIED"
+  | (string & {});
 export const BotsTimeseriesRequestBotVerificationStatus =
   /*@__PURE__*/ S.String;
 
@@ -83128,7 +85537,7 @@ export const BotsTimeseriesRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BotsTimeseriesRequestDateStartList>;
 
-export type BotsTimeseriesRequestFormat = "JSON" | "CSV";
+export type BotsTimeseriesRequestFormat = "JSON" | "CSV" | (string & {});
 export const BotsTimeseriesRequestFormat = /*@__PURE__*/ S.String;
 
 export type BotsTimeseriesRequestLocationList = ReadonlyArray<string>;
@@ -83205,7 +85614,8 @@ export type BotsTimeseriesResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const BotsTimeseriesResponseMetaAggInterval = /*@__PURE__*/ S.String;
 
 export type BotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
@@ -83233,7 +85643,8 @@ export type BotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   | "NET"
   | "ROBOTS_TXT"
   | "SPEED"
-  | "WORKERS_AI";
+  | "WORKERS_AI"
+  | (string & {});
 export const BotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -83243,7 +85654,8 @@ export type BotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const BotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -83339,7 +85751,8 @@ export type BotsTimeseriesResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const BotsTimeseriesResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface BotsTimeseriesResponseMetaUnitsItem {
@@ -83399,7 +85812,12 @@ export const TimeseriesBotResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TimeseriesBotResponse",
 }) as any as S.Schema<TimeseriesBotResponse>;
 
-export type CtTimeseriesRequestAggInterval = "15m" | "1h" | "1d" | "1w";
+export type CtTimeseriesRequestAggInterval =
+  | "15m"
+  | "1h"
+  | "1d"
+  | "1w"
+  | (string & {});
 export const CtTimeseriesRequestAggInterval = /*@__PURE__*/ S.String;
 
 export type CtTimeseriesRequestCaList = ReadonlyArray<string>;
@@ -83434,7 +85852,8 @@ export type CtTimeseriesRequestDuration =
   | "GT_10D_LTE_47D"
   | "GT_47D_LTE_100D"
   | "GT_100D_LTE_200D"
-  | "GT_200D";
+  | "GT_200D"
+  | (string & {});
 export const CtTimeseriesRequestDuration = /*@__PURE__*/ S.String;
 
 export type CtTimeseriesRequestDurationList =
@@ -83443,7 +85862,10 @@ export const CtTimeseriesRequestDurationList = /*@__PURE__*/ S.Array(
   CtTimeseriesRequestDuration,
 ) as any as S.Schema<CtTimeseriesRequestDurationList>;
 
-export type CtTimeseriesRequestEntryType = "PRECERTIFICATE" | "CERTIFICATE";
+export type CtTimeseriesRequestEntryType =
+  | "PRECERTIFICATE"
+  | "CERTIFICATE"
+  | (string & {});
 export const CtTimeseriesRequestEntryType = /*@__PURE__*/ S.String;
 
 export type CtTimeseriesRequestEntryTypeList =
@@ -83452,7 +85874,10 @@ export const CtTimeseriesRequestEntryTypeList = /*@__PURE__*/ S.Array(
   CtTimeseriesRequestEntryType,
 ) as any as S.Schema<CtTimeseriesRequestEntryTypeList>;
 
-export type CtTimeseriesRequestExpirationStatus = "EXPIRED" | "VALID";
+export type CtTimeseriesRequestExpirationStatus =
+  | "EXPIRED"
+  | "VALID"
+  | (string & {});
 export const CtTimeseriesRequestExpirationStatus = /*@__PURE__*/ S.String;
 
 export type CtTimeseriesRequestExpirationStatusList =
@@ -83461,7 +85886,7 @@ export const CtTimeseriesRequestExpirationStatusList = /*@__PURE__*/ S.Array(
   CtTimeseriesRequestExpirationStatus,
 ) as any as S.Schema<CtTimeseriesRequestExpirationStatusList>;
 
-export type CtTimeseriesRequestFormat = "JSON" | "CSV";
+export type CtTimeseriesRequestFormat = "JSON" | "CSV" | (string & {});
 export const CtTimeseriesRequestFormat = /*@__PURE__*/ S.String;
 
 export type CtTimeseriesRequestHasIpsList = ReadonlyArray<boolean>;
@@ -83479,7 +85904,7 @@ export const CtTimeseriesRequestLogList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CtTimeseriesRequestLogList>;
 
-export type CtTimeseriesRequestLogApi = "RFC6962" | "STATIC";
+export type CtTimeseriesRequestLogApi = "RFC6962" | "STATIC" | (string & {});
 export const CtTimeseriesRequestLogApi = /*@__PURE__*/ S.String;
 
 export type CtTimeseriesRequestLogApiList =
@@ -83498,7 +85923,11 @@ export const CtTimeseriesRequestNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CtTimeseriesRequestNameList>;
 
-export type CtTimeseriesRequestPublicKeyAlgorithm = "DSA" | "ECDSA" | "RSA";
+export type CtTimeseriesRequestPublicKeyAlgorithm =
+  | "DSA"
+  | "ECDSA"
+  | "RSA"
+  | (string & {});
 export const CtTimeseriesRequestPublicKeyAlgorithm = /*@__PURE__*/ S.String;
 
 export type CtTimeseriesRequestPublicKeyAlgorithmList =
@@ -83522,7 +85951,8 @@ export type CtTimeseriesRequestSignatureAlgorithm =
   | "RSA_SHA_1"
   | "RSA_SHA_256"
   | "RSA_SHA_384"
-  | "RSA_SHA_512";
+  | "RSA_SHA_512"
+  | (string & {});
 export const CtTimeseriesRequestSignatureAlgorithm = /*@__PURE__*/ S.String;
 
 export type CtTimeseriesRequestSignatureAlgorithmList =
@@ -83536,7 +85966,7 @@ export const CtTimeseriesRequestTldList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CtTimeseriesRequestTldList>;
 
-export type CtTimeseriesRequestUniqueEntries = "true" | "false";
+export type CtTimeseriesRequestUniqueEntries = "true" | "false" | (string & {});
 export const CtTimeseriesRequestUniqueEntries = /*@__PURE__*/ S.String;
 
 export type CtTimeseriesRequestUniqueEntriesList =
@@ -83548,7 +85978,8 @@ export const CtTimeseriesRequestUniqueEntriesList = /*@__PURE__*/ S.Array(
 export type CtTimeseriesRequestValidationLevel =
   | "DOMAIN"
   | "ORGANIZATION"
-  | "EXTENDED";
+  | "EXTENDED"
+  | (string & {});
 export const CtTimeseriesRequestValidationLevel = /*@__PURE__*/ S.String;
 
 export type CtTimeseriesRequestValidationLevelList =
@@ -83648,7 +86079,8 @@ export type CtTimeseriesResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const CtTimeseriesResponseMetaAggInterval = /*@__PURE__*/ S.String;
 
 export type CtTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
@@ -83676,7 +86108,8 @@ export type CtTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   | "NET"
   | "ROBOTS_TXT"
   | "SPEED"
-  | "WORKERS_AI";
+  | "WORKERS_AI"
+  | (string & {});
 export const CtTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -83686,7 +86119,8 @@ export type CtTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const CtTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -83781,7 +86215,8 @@ export type CtTimeseriesResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const CtTimeseriesResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface CtTimeseriesResponseMetaUnitsItem {
@@ -83841,7 +86276,12 @@ export const TimeseriesCtResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TimeseriesCtResponse",
 }) as any as S.Schema<TimeseriesCtResponse>;
 
-export type DnsTimeseriesRequestAggInterval = "15m" | "1h" | "1d" | "1w";
+export type DnsTimeseriesRequestAggInterval =
+  | "15m"
+  | "1h"
+  | "1d"
+  | "1w"
+  | (string & {});
 export const DnsTimeseriesRequestAggInterval = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesRequestAsnList = ReadonlyArray<string>;
@@ -83878,7 +86318,8 @@ export type DnsTimeseriesRequestDnssec =
   | "INVALID"
   | "INSECURE"
   | "SECURE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const DnsTimeseriesRequestDnssec = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesRequestDnssecList =
@@ -83887,7 +86328,10 @@ export const DnsTimeseriesRequestDnssecList = /*@__PURE__*/ S.Array(
   DnsTimeseriesRequestDnssec,
 ) as any as S.Schema<DnsTimeseriesRequestDnssecList>;
 
-export type DnsTimeseriesRequestDnssecAware = "SUPPORTED" | "NOT_SUPPORTED";
+export type DnsTimeseriesRequestDnssecAware =
+  | "SUPPORTED"
+  | "NOT_SUPPORTED"
+  | (string & {});
 export const DnsTimeseriesRequestDnssecAware = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesRequestDnssecAwareList =
@@ -83901,10 +86345,10 @@ export const DnsTimeseriesRequestDnssecE2eList = /*@__PURE__*/ S.Array(
   S.Boolean,
 ) as any as S.Schema<DnsTimeseriesRequestDnssecE2eList>;
 
-export type DnsTimeseriesRequestFormat = "JSON" | "CSV";
+export type DnsTimeseriesRequestFormat = "JSON" | "CSV" | (string & {});
 export const DnsTimeseriesRequestFormat = /*@__PURE__*/ S.String;
 
-export type DnsTimeseriesRequestIpVersion = "IPv4" | "IPv6";
+export type DnsTimeseriesRequestIpVersion = "IPv4" | "IPv6" | (string & {});
 export const DnsTimeseriesRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesRequestIpVersionList =
@@ -83933,7 +86377,12 @@ export const DnsTimeseriesRequestNodataList = /*@__PURE__*/ S.Array(
   S.Boolean,
 ) as any as S.Schema<DnsTimeseriesRequestNodataList>;
 
-export type DnsTimeseriesRequestProtocol = "UDP" | "TCP" | "HTTPS" | "TLS";
+export type DnsTimeseriesRequestProtocol =
+  | "UDP"
+  | "TCP"
+  | "HTTPS"
+  | "TLS"
+  | (string & {});
 export const DnsTimeseriesRequestProtocol = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesRequestProtocolList =
@@ -84030,7 +86479,8 @@ export type DnsTimeseriesRequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const DnsTimeseriesRequestQueryType = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesRequestQueryTypeList =
@@ -84058,7 +86508,8 @@ export type DnsTimeseriesRequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const DnsTimeseriesRequestResponseCode = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesRequestResponseCodeList =
@@ -84074,7 +86525,8 @@ export type DnsTimeseriesRequestResponseTtl =
   | "GT_15M_LTE_1H"
   | "GT_1H_LTE_1D"
   | "GT_1D_LTE_1W"
-  | "GT_1W";
+  | "GT_1W"
+  | (string & {});
 export const DnsTimeseriesRequestResponseTtl = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesRequestResponseTtlList =
@@ -84175,7 +86627,8 @@ export type DnsTimeseriesResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const DnsTimeseriesResponseMetaAggInterval = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
@@ -84203,7 +86656,8 @@ export type DnsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   | "NET"
   | "ROBOTS_TXT"
   | "SPEED"
-  | "WORKERS_AI";
+  | "WORKERS_AI"
+  | (string & {});
 export const DnsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -84213,7 +86667,8 @@ export type DnsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const DnsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -84309,7 +86764,8 @@ export type DnsTimeseriesResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsTimeseriesResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface DnsTimeseriesResponseMetaUnitsItem {
@@ -84376,14 +86832,16 @@ export type AiBotsTimeseriesGroupsRequestDimension =
   | "VERTICAL"
   | "CONTENT_TYPE"
   | "RESPONSE_STATUS"
-  | "RESPONSE_STATUS_CATEGORY";
+  | "RESPONSE_STATUS_CATEGORY"
+  | (string & {});
 export const AiBotsTimeseriesGroupsRequestDimension = /*@__PURE__*/ S.String;
 
 export type AiBotsTimeseriesGroupsRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AiBotsTimeseriesGroupsRequestAggInterval = /*@__PURE__*/ S.String;
 
 export type AiBotsTimeseriesGroupsRequestAsnList = ReadonlyArray<string>;
@@ -84407,7 +86865,8 @@ export type AiBotsTimeseriesGroupsRequestContentType =
   | "DOCUMENTS"
   | "BINARY"
   | "SERIALIZATION"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const AiBotsTimeseriesGroupsRequestContentType = /*@__PURE__*/ S.String;
 
 export type AiBotsTimeseriesGroupsRequestContentTypeList =
@@ -84444,7 +86903,10 @@ export const AiBotsTimeseriesGroupsRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AiBotsTimeseriesGroupsRequestDateStartList>;
 
-export type AiBotsTimeseriesGroupsRequestFormat = "JSON" | "CSV";
+export type AiBotsTimeseriesGroupsRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AiBotsTimeseriesGroupsRequestFormat = /*@__PURE__*/ S.String;
 
 export type AiBotsTimeseriesGroupsRequestIndustryList = ReadonlyArray<string>;
@@ -84465,7 +86927,8 @@ export const AiBotsTimeseriesGroupsRequestNameList = /*@__PURE__*/ S.Array(
 export type AiBotsTimeseriesGroupsRequestNormalization =
   | "PERCENTAGE"
   | "MIN0_MAX"
-  | "PERCENTAGE_CHANGE";
+  | "PERCENTAGE_CHANGE"
+  | (string & {});
 export const AiBotsTimeseriesGroupsRequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -84481,7 +86944,8 @@ export type AiBotsTimeseriesGroupsRequestResponseStatusCategory =
   | "SUCCESS"
   | "REDIRECTION"
   | "CLIENT_ERROR"
-  | "SERVER_ERROR";
+  | "SERVER_ERROR"
+  | (string & {});
 export const AiBotsTimeseriesGroupsRequestResponseStatusCategory =
   /*@__PURE__*/ S.String;
 
@@ -84609,7 +87073,8 @@ export type AiBotsTimeseriesGroupsResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AiBotsTimeseriesGroupsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -84638,7 +87103,8 @@ export type AiBotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataS
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AiBotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -84648,7 +87114,8 @@ export type AiBotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEvent
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AiBotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -84747,7 +87214,8 @@ export type AiBotsTimeseriesGroupsResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AiBotsTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -84835,10 +87303,16 @@ export type BotsTimeseriesGroupsRequestDimension =
   | "BOT"
   | "BOT_KIND"
   | "BOT_OPERATOR"
-  | "BOT_CATEGORY";
+  | "BOT_CATEGORY"
+  | (string & {});
 export const BotsTimeseriesGroupsRequestDimension = /*@__PURE__*/ S.String;
 
-export type BotsTimeseriesGroupsRequestAggInterval = "15m" | "1h" | "1d" | "1w";
+export type BotsTimeseriesGroupsRequestAggInterval =
+  | "15m"
+  | "1h"
+  | "1d"
+  | "1w"
+  | (string & {});
 export const BotsTimeseriesGroupsRequestAggInterval = /*@__PURE__*/ S.String;
 
 export type BotsTimeseriesGroupsRequestAsnList = ReadonlyArray<string>;
@@ -84867,7 +87341,8 @@ export type BotsTimeseriesGroupsRequestBotCategory =
   | "AGGREGATOR"
   | "AI_ASSISTANT"
   | "AI_SEARCH"
-  | "ARCHIVER";
+  | "ARCHIVER"
+  | (string & {});
 export const BotsTimeseriesGroupsRequestBotCategory = /*@__PURE__*/ S.String;
 
 export type BotsTimeseriesGroupsRequestBotCategoryList =
@@ -84876,7 +87351,10 @@ export const BotsTimeseriesGroupsRequestBotCategoryList = /*@__PURE__*/ S.Array(
   BotsTimeseriesGroupsRequestBotCategory,
 ) as any as S.Schema<BotsTimeseriesGroupsRequestBotCategoryList>;
 
-export type BotsTimeseriesGroupsRequestBotKind = "AGENT" | "BOT";
+export type BotsTimeseriesGroupsRequestBotKind =
+  | "AGENT"
+  | "BOT"
+  | (string & {});
 export const BotsTimeseriesGroupsRequestBotKind = /*@__PURE__*/ S.String;
 
 export type BotsTimeseriesGroupsRequestBotKindList =
@@ -84890,7 +87368,9 @@ export const BotsTimeseriesGroupsRequestBotOperatorList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BotsTimeseriesGroupsRequestBotOperatorList>;
 
-export type BotsTimeseriesGroupsRequestBotVerificationStatus = "VERIFIED";
+export type BotsTimeseriesGroupsRequestBotVerificationStatus =
+  | "VERIFIED"
+  | (string & {});
 export const BotsTimeseriesGroupsRequestBotVerificationStatus =
   /*@__PURE__*/ S.String;
 
@@ -84921,7 +87401,7 @@ export const BotsTimeseriesGroupsRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BotsTimeseriesGroupsRequestDateStartList>;
 
-export type BotsTimeseriesGroupsRequestFormat = "JSON" | "CSV";
+export type BotsTimeseriesGroupsRequestFormat = "JSON" | "CSV" | (string & {});
 export const BotsTimeseriesGroupsRequestFormat = /*@__PURE__*/ S.String;
 
 export type BotsTimeseriesGroupsRequestLocationList = ReadonlyArray<string>;
@@ -85020,7 +87500,8 @@ export type BotsTimeseriesGroupsResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const BotsTimeseriesGroupsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -85049,7 +87530,8 @@ export type BotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSou
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const BotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -85059,7 +87541,8 @@ export type BotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventTy
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const BotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -85157,7 +87640,8 @@ export type BotsTimeseriesGroupsResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const BotsTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -85247,7 +87731,8 @@ export type BotsWebCrawlersTimeseriesGroupsRequestDimension =
   | "VERTICAL"
   | "INDUSTRY"
   | "RESPONSE_STATUS"
-  | "RESPONSE_STATUS_CATEGORY";
+  | "RESPONSE_STATUS_CATEGORY"
+  | (string & {});
 export const BotsWebCrawlersTimeseriesGroupsRequestDimension =
   /*@__PURE__*/ S.String;
 
@@ -85255,7 +87740,8 @@ export type BotsWebCrawlersTimeseriesGroupsRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const BotsWebCrawlersTimeseriesGroupsRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -85270,7 +87756,8 @@ export type BotsWebCrawlersTimeseriesGroupsRequestClientType =
   | "HUMAN"
   | "NON_AI_BOT"
   | "AI_BOT"
-  | "MIXED_PURPOSE";
+  | "MIXED_PURPOSE"
+  | (string & {});
 export const BotsWebCrawlersTimeseriesGroupsRequestClientType =
   /*@__PURE__*/ S.String;
 
@@ -85302,7 +87789,10 @@ export const BotsWebCrawlersTimeseriesGroupsRequestDateStartList =
     S.String,
   ) as any as S.Schema<BotsWebCrawlersTimeseriesGroupsRequestDateStartList>;
 
-export type BotsWebCrawlersTimeseriesGroupsRequestFormat = "JSON" | "CSV";
+export type BotsWebCrawlersTimeseriesGroupsRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const BotsWebCrawlersTimeseriesGroupsRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -85323,7 +87813,8 @@ export const BotsWebCrawlersTimeseriesGroupsRequestNameList =
 export type BotsWebCrawlersTimeseriesGroupsRequestNormalization =
   | "PERCENTAGE"
   | "MIN0_MAX"
-  | "PERCENTAGE_CHANGE";
+  | "PERCENTAGE_CHANGE"
+  | (string & {});
 export const BotsWebCrawlersTimeseriesGroupsRequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -85339,7 +87830,8 @@ export type BotsWebCrawlersTimeseriesGroupsRequestResponseStatusCategory =
   | "SUCCESS"
   | "REDIRECTION"
   | "CLIENT_ERROR"
-  | "SERVER_ERROR";
+  | "SERVER_ERROR"
+  | (string & {});
 export const BotsWebCrawlersTimeseriesGroupsRequestResponseStatusCategory =
   /*@__PURE__*/ S.String;
 
@@ -85457,7 +87949,8 @@ export type BotsWebCrawlersTimeseriesGroupsResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const BotsWebCrawlersTimeseriesGroupsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -85486,7 +87979,8 @@ export type BotsWebCrawlersTimeseriesGroupsResponseMetaConfidenceInfoAnnotations
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const BotsWebCrawlersTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -85496,7 +87990,8 @@ export type BotsWebCrawlersTimeseriesGroupsResponseMetaConfidenceInfoAnnotations
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const BotsWebCrawlersTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -85595,7 +88090,8 @@ export type BotsWebCrawlersTimeseriesGroupsResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const BotsWebCrawlersTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -85697,10 +88193,16 @@ export type CtTimeseriesGroupsRequestDimension =
   | "PUBLIC_KEY_ALGORITHM"
   | "SIGNATURE_ALGORITHM"
   | "TLD"
-  | "VALIDATION_LEVEL";
+  | "VALIDATION_LEVEL"
+  | (string & {});
 export const CtTimeseriesGroupsRequestDimension = /*@__PURE__*/ S.String;
 
-export type CtTimeseriesGroupsRequestAggInterval = "15m" | "1h" | "1d" | "1w";
+export type CtTimeseriesGroupsRequestAggInterval =
+  | "15m"
+  | "1h"
+  | "1d"
+  | "1w"
+  | (string & {});
 export const CtTimeseriesGroupsRequestAggInterval = /*@__PURE__*/ S.String;
 
 export type CtTimeseriesGroupsRequestCaList = ReadonlyArray<string>;
@@ -85735,7 +88237,8 @@ export type CtTimeseriesGroupsRequestDuration =
   | "GT_10D_LTE_47D"
   | "GT_47D_LTE_100D"
   | "GT_100D_LTE_200D"
-  | "GT_200D";
+  | "GT_200D"
+  | (string & {});
 export const CtTimeseriesGroupsRequestDuration = /*@__PURE__*/ S.String;
 
 export type CtTimeseriesGroupsRequestDurationList =
@@ -85746,7 +88249,8 @@ export const CtTimeseriesGroupsRequestDurationList = /*@__PURE__*/ S.Array(
 
 export type CtTimeseriesGroupsRequestEntryType =
   | "PRECERTIFICATE"
-  | "CERTIFICATE";
+  | "CERTIFICATE"
+  | (string & {});
 export const CtTimeseriesGroupsRequestEntryType = /*@__PURE__*/ S.String;
 
 export type CtTimeseriesGroupsRequestEntryTypeList =
@@ -85755,7 +88259,10 @@ export const CtTimeseriesGroupsRequestEntryTypeList = /*@__PURE__*/ S.Array(
   CtTimeseriesGroupsRequestEntryType,
 ) as any as S.Schema<CtTimeseriesGroupsRequestEntryTypeList>;
 
-export type CtTimeseriesGroupsRequestExpirationStatus = "EXPIRED" | "VALID";
+export type CtTimeseriesGroupsRequestExpirationStatus =
+  | "EXPIRED"
+  | "VALID"
+  | (string & {});
 export const CtTimeseriesGroupsRequestExpirationStatus = /*@__PURE__*/ S.String;
 
 export type CtTimeseriesGroupsRequestExpirationStatusList =
@@ -85765,7 +88272,7 @@ export const CtTimeseriesGroupsRequestExpirationStatusList =
     CtTimeseriesGroupsRequestExpirationStatus,
   ) as any as S.Schema<CtTimeseriesGroupsRequestExpirationStatusList>;
 
-export type CtTimeseriesGroupsRequestFormat = "JSON" | "CSV";
+export type CtTimeseriesGroupsRequestFormat = "JSON" | "CSV" | (string & {});
 export const CtTimeseriesGroupsRequestFormat = /*@__PURE__*/ S.String;
 
 export type CtTimeseriesGroupsRequestHasIpsList = ReadonlyArray<boolean>;
@@ -85783,7 +88290,10 @@ export const CtTimeseriesGroupsRequestLogList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CtTimeseriesGroupsRequestLogList>;
 
-export type CtTimeseriesGroupsRequestLogApi = "RFC6962" | "STATIC";
+export type CtTimeseriesGroupsRequestLogApi =
+  | "RFC6962"
+  | "STATIC"
+  | (string & {});
 export const CtTimeseriesGroupsRequestLogApi = /*@__PURE__*/ S.String;
 
 export type CtTimeseriesGroupsRequestLogApiList =
@@ -85804,13 +88314,15 @@ export const CtTimeseriesGroupsRequestNameList = /*@__PURE__*/ S.Array(
 
 export type CtTimeseriesGroupsRequestNormalization =
   | "RAW_VALUES"
-  | "PERCENTAGE";
+  | "PERCENTAGE"
+  | (string & {});
 export const CtTimeseriesGroupsRequestNormalization = /*@__PURE__*/ S.String;
 
 export type CtTimeseriesGroupsRequestPublicKeyAlgorithm =
   | "DSA"
   | "ECDSA"
-  | "RSA";
+  | "RSA"
+  | (string & {});
 export const CtTimeseriesGroupsRequestPublicKeyAlgorithm =
   /*@__PURE__*/ S.String;
 
@@ -85836,7 +88348,8 @@ export type CtTimeseriesGroupsRequestSignatureAlgorithm =
   | "RSA_SHA_1"
   | "RSA_SHA_256"
   | "RSA_SHA_384"
-  | "RSA_SHA_512";
+  | "RSA_SHA_512"
+  | (string & {});
 export const CtTimeseriesGroupsRequestSignatureAlgorithm =
   /*@__PURE__*/ S.String;
 
@@ -85852,7 +88365,10 @@ export const CtTimeseriesGroupsRequestTldList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CtTimeseriesGroupsRequestTldList>;
 
-export type CtTimeseriesGroupsRequestUniqueEntries = "true" | "false";
+export type CtTimeseriesGroupsRequestUniqueEntries =
+  | "true"
+  | "false"
+  | (string & {});
 export const CtTimeseriesGroupsRequestUniqueEntries = /*@__PURE__*/ S.String;
 
 export type CtTimeseriesGroupsRequestUniqueEntriesList =
@@ -85864,7 +88380,8 @@ export const CtTimeseriesGroupsRequestUniqueEntriesList = /*@__PURE__*/ S.Array(
 export type CtTimeseriesGroupsRequestValidationLevel =
   | "DOMAIN"
   | "ORGANIZATION"
-  | "EXTENDED";
+  | "EXTENDED"
+  | (string & {});
 export const CtTimeseriesGroupsRequestValidationLevel = /*@__PURE__*/ S.String;
 
 export type CtTimeseriesGroupsRequestValidationLevelList =
@@ -85992,7 +88509,8 @@ export type CtTimeseriesGroupsResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const CtTimeseriesGroupsResponseMetaAggInterval = /*@__PURE__*/ S.String;
 
 export type CtTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
@@ -86020,7 +88538,8 @@ export type CtTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSourc
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const CtTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -86030,7 +88549,8 @@ export type CtTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const CtTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -86127,7 +88647,8 @@ export type CtTimeseriesGroupsResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const CtTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -86516,14 +89037,16 @@ export type NetflowsTimeseriesGroupsRequestDimension =
   | "ADM1"
   | "AS"
   | "LOCATION"
-  | "PRODUCT";
+  | "PRODUCT"
+  | (string & {});
 export const NetflowsTimeseriesGroupsRequestDimension = /*@__PURE__*/ S.String;
 
 export type NetflowsTimeseriesGroupsRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const NetflowsTimeseriesGroupsRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -86558,7 +89081,10 @@ export const NetflowsTimeseriesGroupsRequestDateStartList =
     S.String,
   ) as any as S.Schema<NetflowsTimeseriesGroupsRequestDateStartList>;
 
-export type NetflowsTimeseriesGroupsRequestFormat = "JSON" | "CSV";
+export type NetflowsTimeseriesGroupsRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const NetflowsTimeseriesGroupsRequestFormat = /*@__PURE__*/ S.String;
 
 export type NetflowsTimeseriesGroupsRequestGeoIdList = ReadonlyArray<string>;
@@ -86580,11 +89106,15 @@ export const NetflowsTimeseriesGroupsRequestNameList = /*@__PURE__*/ S.Array(
 export type NetflowsTimeseriesGroupsRequestNormalization =
   | "PERCENTAGE"
   | "MIN0_MAX"
-  | "PERCENTAGE_CHANGE";
+  | "PERCENTAGE_CHANGE"
+  | (string & {});
 export const NetflowsTimeseriesGroupsRequestNormalization =
   /*@__PURE__*/ S.String;
 
-export type NetflowsTimeseriesGroupsRequestProduct = "HTTP" | "ALL";
+export type NetflowsTimeseriesGroupsRequestProduct =
+  | "HTTP"
+  | "ALL"
+  | (string & {});
 export const NetflowsTimeseriesGroupsRequestProduct = /*@__PURE__*/ S.String;
 
 export type NetflowsTimeseriesGroupsRequestProductList =
@@ -86673,7 +89203,8 @@ export type NetflowsTimeseriesGroupsResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const NetflowsTimeseriesGroupsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -86702,7 +89233,8 @@ export type NetflowsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDat
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const NetflowsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -86712,7 +89244,8 @@ export type NetflowsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEve
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const NetflowsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -86811,7 +89344,8 @@ export type NetflowsTimeseriesGroupsResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const NetflowsTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -86896,7 +89430,9 @@ export const TimeseriesGroupsNetflowResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TimeseriesGroupsNetflowResponse",
 }) as any as S.Schema<TimeseriesGroupsNetflowResponse>;
 
-export type PostQuantumOriginTimeseriesGroupsRequestDimension = "KEY_AGREEMENT";
+export type PostQuantumOriginTimeseriesGroupsRequestDimension =
+  | "KEY_AGREEMENT"
+  | (string & {});
 export const PostQuantumOriginTimeseriesGroupsRequestDimension =
   /*@__PURE__*/ S.String;
 
@@ -86921,7 +89457,10 @@ export const PostQuantumOriginTimeseriesGroupsRequestDateStartList =
     S.String,
   ) as any as S.Schema<PostQuantumOriginTimeseriesGroupsRequestDateStartList>;
 
-export type PostQuantumOriginTimeseriesGroupsRequestFormat = "JSON" | "CSV";
+export type PostQuantumOriginTimeseriesGroupsRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const PostQuantumOriginTimeseriesGroupsRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -86985,7 +89524,8 @@ export type PostQuantumOriginTimeseriesGroupsResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const PostQuantumOriginTimeseriesGroupsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -87014,7 +89554,8 @@ export type PostQuantumOriginTimeseriesGroupsResponseMetaConfidenceInfoAnnotatio
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const PostQuantumOriginTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -87024,7 +89565,8 @@ export type PostQuantumOriginTimeseriesGroupsResponseMetaConfidenceInfoAnnotatio
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const PostQuantumOriginTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -87123,7 +89665,8 @@ export type PostQuantumOriginTimeseriesGroupsResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const PostQuantumOriginTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -87215,14 +89758,16 @@ export const TimeseriesGroupsPostQuantumOriginResponse =
 export type QualityIqiTimeseriesGroupsRequestMetric =
   | "BANDWIDTH"
   | "DNS"
-  | "LATENCY";
+  | "LATENCY"
+  | (string & {});
 export const QualityIqiTimeseriesGroupsRequestMetric = /*@__PURE__*/ S.String;
 
 export type QualityIqiTimeseriesGroupsRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const QualityIqiTimeseriesGroupsRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -87259,7 +89804,10 @@ export const QualityIqiTimeseriesGroupsRequestDateStartList =
     S.String,
   ) as any as S.Schema<QualityIqiTimeseriesGroupsRequestDateStartList>;
 
-export type QualityIqiTimeseriesGroupsRequestFormat = "JSON" | "CSV";
+export type QualityIqiTimeseriesGroupsRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const QualityIqiTimeseriesGroupsRequestFormat = /*@__PURE__*/ S.String;
 
 export type QualityIqiTimeseriesGroupsRequestLocationList =
@@ -87341,7 +89889,8 @@ export type QualityIqiTimeseriesGroupsResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const QualityIqiTimeseriesGroupsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -87370,7 +89919,8 @@ export type QualityIqiTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemD
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const QualityIqiTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -87380,7 +89930,8 @@ export type QualityIqiTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemE
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const QualityIqiTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -87479,7 +90030,8 @@ export type QualityIqiTimeseriesGroupsResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const QualityIqiTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -87593,7 +90145,10 @@ export const RankingTimeseriesGroupsRequestDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RankingTimeseriesGroupsRequestDomainsList>;
 
-export type RankingTimeseriesGroupsRequestFormat = "JSON" | "CSV";
+export type RankingTimeseriesGroupsRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const RankingTimeseriesGroupsRequestFormat = /*@__PURE__*/ S.String;
 
 export type RankingTimeseriesGroupsRequestLocationList = ReadonlyArray<string>;
@@ -87609,7 +90164,8 @@ export const RankingTimeseriesGroupsRequestNameList = /*@__PURE__*/ S.Array(
 export type RankingTimeseriesGroupsRequestRankingType =
   | "POPULAR"
   | "TRENDING_RISE"
-  | "TRENDING_STEADY";
+  | "TRENDING_STEADY"
+  | (string & {});
 export const RankingTimeseriesGroupsRequestRankingType = /*@__PURE__*/ S.String;
 
 export interface TimeseriesGroupsRankingRequest {
@@ -87678,7 +90234,8 @@ export type RankingTimeseriesGroupsResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const RankingTimeseriesGroupsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -87707,7 +90264,8 @@ export type RankingTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemData
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const RankingTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -87717,7 +90275,8 @@ export type RankingTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEven
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const RankingTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -87816,7 +90375,8 @@ export type RankingTimeseriesGroupsResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const RankingTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -87923,7 +90483,8 @@ export const RankingInternetServicesTimeseriesGroupsRequestDateStartList =
 
 export type RankingInternetServicesTimeseriesGroupsRequestFormat =
   | "JSON"
-  | "CSV";
+  | "CSV"
+  | (string & {});
 export const RankingInternetServicesTimeseriesGroupsRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -88005,7 +90566,8 @@ export type RankingInternetServicesTimeseriesGroupsResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const RankingInternetServicesTimeseriesGroupsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -88034,7 +90596,8 @@ export type RankingInternetServicesTimeseriesGroupsResponseMetaConfidenceInfoAnn
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const RankingInternetServicesTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -88044,7 +90607,8 @@ export type RankingInternetServicesTimeseriesGroupsResponseMetaConfidenceInfoAnn
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const RankingInternetServicesTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -88145,7 +90709,8 @@ export type RankingInternetServicesTimeseriesGroupsResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const RankingInternetServicesTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -88242,7 +90807,8 @@ export type TcpResetsTimeoutsTimeseriesGroupsRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const TcpResetsTimeoutsTimeseriesGroupsRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -88281,7 +90847,10 @@ export const TcpResetsTimeoutsTimeseriesGroupsRequestDateStartList =
     S.String,
   ) as any as S.Schema<TcpResetsTimeoutsTimeseriesGroupsRequestDateStartList>;
 
-export type TcpResetsTimeoutsTimeseriesGroupsRequestFormat = "JSON" | "CSV";
+export type TcpResetsTimeoutsTimeseriesGroupsRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const TcpResetsTimeoutsTimeseriesGroupsRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -88367,7 +90936,8 @@ export type TcpResetsTimeoutsTimeseriesGroupsResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const TcpResetsTimeoutsTimeseriesGroupsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -88396,7 +90966,8 @@ export type TcpResetsTimeoutsTimeseriesGroupsResponseMetaConfidenceInfoAnnotatio
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const TcpResetsTimeoutsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -88406,7 +90977,8 @@ export type TcpResetsTimeoutsTimeseriesGroupsResponseMetaConfidenceInfoAnnotatio
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const TcpResetsTimeoutsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -88505,7 +91077,8 @@ export type TcpResetsTimeoutsTimeseriesGroupsResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const TcpResetsTimeoutsTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -88650,7 +91223,10 @@ export const TimeseriesGroupsTcpResetsTimeoutResponse = /*@__PURE__*/ S.suspend(
   identifier: "TimeseriesGroupsTcpResetsTimeoutResponse",
 }) as any as S.Schema<TimeseriesGroupsTcpResetsTimeoutResponse>;
 
-export type AiInferenceTimeseriesGroupsV2RequestDimension = "MODEL" | "TASK";
+export type AiInferenceTimeseriesGroupsV2RequestDimension =
+  | "MODEL"
+  | "TASK"
+  | (string & {});
 export const AiInferenceTimeseriesGroupsV2RequestDimension =
   /*@__PURE__*/ S.String;
 
@@ -88658,7 +91234,8 @@ export type AiInferenceTimeseriesGroupsV2RequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AiInferenceTimeseriesGroupsV2RequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -88696,7 +91273,10 @@ export const AiInferenceTimeseriesGroupsV2RequestDateStartList =
     S.String,
   ) as any as S.Schema<AiInferenceTimeseriesGroupsV2RequestDateStartList>;
 
-export type AiInferenceTimeseriesGroupsV2RequestFormat = "JSON" | "CSV";
+export type AiInferenceTimeseriesGroupsV2RequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AiInferenceTimeseriesGroupsV2RequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -88716,7 +91296,8 @@ export const AiInferenceTimeseriesGroupsV2RequestNameList =
 
 export type AiInferenceTimeseriesGroupsV2RequestNormalization =
   | "PERCENTAGE"
-  | "MIN0_MAX";
+  | "MIN0_MAX"
+  | (string & {});
 export const AiInferenceTimeseriesGroupsV2RequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -88799,7 +91380,8 @@ export type AiInferenceTimeseriesGroupsV2ResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AiInferenceTimeseriesGroupsV2ResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -88828,7 +91410,8 @@ export type AiInferenceTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsIt
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AiInferenceTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -88838,7 +91421,8 @@ export type AiInferenceTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsIt
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AiInferenceTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -88937,7 +91521,8 @@ export type AiInferenceTimeseriesGroupsV2ResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AiInferenceTimeseriesGroupsV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -89031,14 +91616,16 @@ export type As112TimeseriesGroupsV2RequestDimension =
   | "IP_VERSION"
   | "PROTOCOL"
   | "QUERY_TYPE"
-  | "RESPONSE_CODE";
+  | "RESPONSE_CODE"
+  | (string & {});
 export const As112TimeseriesGroupsV2RequestDimension = /*@__PURE__*/ S.String;
 
 export type As112TimeseriesGroupsV2RequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const As112TimeseriesGroupsV2RequestAggInterval = /*@__PURE__*/ S.String;
 
 export type As112TimeseriesGroupsV2RequestContinentList = ReadonlyArray<string>;
@@ -89064,7 +91651,10 @@ export const As112TimeseriesGroupsV2RequestDateStartList =
     S.String,
   ) as any as S.Schema<As112TimeseriesGroupsV2RequestDateStartList>;
 
-export type As112TimeseriesGroupsV2RequestFormat = "JSON" | "CSV";
+export type As112TimeseriesGroupsV2RequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const As112TimeseriesGroupsV2RequestFormat = /*@__PURE__*/ S.String;
 
 export type As112TimeseriesGroupsV2RequestLocationList = ReadonlyArray<string>;
@@ -89081,7 +91671,8 @@ export type As112TimeseriesGroupsV2RequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const As112TimeseriesGroupsV2RequestProtocol = /*@__PURE__*/ S.String;
 
 export type As112TimeseriesGroupsV2RequestProtocolList =
@@ -89178,7 +91769,8 @@ export type As112TimeseriesGroupsV2RequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const As112TimeseriesGroupsV2RequestQueryType = /*@__PURE__*/ S.String;
 
 export type As112TimeseriesGroupsV2RequestQueryTypeList =
@@ -89207,7 +91799,8 @@ export type As112TimeseriesGroupsV2RequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const As112TimeseriesGroupsV2RequestResponseCode =
   /*@__PURE__*/ S.String;
 
@@ -89297,7 +91890,8 @@ export type As112TimeseriesGroupsV2ResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const As112TimeseriesGroupsV2ResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -89326,7 +91920,8 @@ export type As112TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemData
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const As112TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -89336,7 +91931,8 @@ export type As112TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEven
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const As112TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -89435,7 +92031,8 @@ export type As112TimeseriesGroupsV2ResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const As112TimeseriesGroupsV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -89526,7 +92123,8 @@ export type AttacksLayer3TimeseriesGroupsV2RequestDimension =
   | "DURATION"
   | "BITRATE"
   | "VERTICAL"
-  | "INDUSTRY";
+  | "INDUSTRY"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsV2RequestDimension =
   /*@__PURE__*/ S.String;
 
@@ -89534,7 +92132,8 @@ export type AttacksLayer3TimeseriesGroupsV2RequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsV2RequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -89568,15 +92167,22 @@ export const AttacksLayer3TimeseriesGroupsV2RequestDateStartList =
 
 export type AttacksLayer3TimeseriesGroupsV2RequestDirection =
   | "ORIGIN"
-  | "TARGET";
+  | "TARGET"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsV2RequestDirection =
   /*@__PURE__*/ S.String;
 
-export type AttacksLayer3TimeseriesGroupsV2RequestFormat = "JSON" | "CSV";
+export type AttacksLayer3TimeseriesGroupsV2RequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsV2RequestFormat =
   /*@__PURE__*/ S.String;
 
-export type AttacksLayer3TimeseriesGroupsV2RequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer3TimeseriesGroupsV2RequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsV2RequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -89603,7 +92209,8 @@ export const AttacksLayer3TimeseriesGroupsV2RequestNameList =
 
 export type AttacksLayer3TimeseriesGroupsV2RequestNormalization =
   | "PERCENTAGE"
-  | "MIN0_MAX";
+  | "MIN0_MAX"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsV2RequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -89611,7 +92218,8 @@ export type AttacksLayer3TimeseriesGroupsV2RequestProtocol =
   | "UDP"
   | "TCP"
   | "ICMP"
-  | "GRE";
+  | "GRE"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsV2RequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -89713,7 +92321,8 @@ export type AttacksLayer3TimeseriesGroupsV2ResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsV2ResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -89742,7 +92351,8 @@ export type AttacksLayer3TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotations
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer3TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -89752,7 +92362,8 @@ export type AttacksLayer3TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotations
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer3TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -89851,7 +92462,8 @@ export type AttacksLayer3TimeseriesGroupsV2ResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -89946,7 +92558,8 @@ export type AttacksLayer7TimeseriesGroupsV2RequestDimension =
   | "MANAGED_RULES"
   | "MITIGATION_PRODUCT"
   | "VERTICAL"
-  | "INDUSTRY";
+  | "INDUSTRY"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsV2RequestDimension =
   /*@__PURE__*/ S.String;
 
@@ -89954,7 +92567,8 @@ export type AttacksLayer7TimeseriesGroupsV2RequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsV2RequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -89993,7 +92607,10 @@ export const AttacksLayer7TimeseriesGroupsV2RequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsV2RequestDateStartList>;
 
-export type AttacksLayer7TimeseriesGroupsV2RequestFormat = "JSON" | "CSV";
+export type AttacksLayer7TimeseriesGroupsV2RequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsV2RequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -90043,7 +92660,8 @@ export type AttacksLayer7TimeseriesGroupsV2RequestHttpMethod =
   | "RPC_IN_DATA"
   | "JSON"
   | "COOK"
-  | "TRACK";
+  | "TRACK"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsV2RequestHttpMethod =
   /*@__PURE__*/ S.String;
 
@@ -90057,7 +92675,8 @@ export const AttacksLayer7TimeseriesGroupsV2RequestHttpMethodList =
 export type AttacksLayer7TimeseriesGroupsV2RequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsV2RequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -90068,7 +92687,10 @@ export const AttacksLayer7TimeseriesGroupsV2RequestHttpVersionList =
     AttacksLayer7TimeseriesGroupsV2RequestHttpVersion,
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsV2RequestHttpVersionList>;
 
-export type AttacksLayer7TimeseriesGroupsV2RequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer7TimeseriesGroupsV2RequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsV2RequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -90093,7 +92715,8 @@ export type AttacksLayer7TimeseriesGroupsV2RequestMitigationProduct =
   | "ACCESS_RULES"
   | "IP_REPUTATION"
   | "API_SHIELD"
-  | "DATA_LOSS_PREVENTION";
+  | "DATA_LOSS_PREVENTION"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsV2RequestMitigationProduct =
   /*@__PURE__*/ S.String;
 
@@ -90113,7 +92736,8 @@ export const AttacksLayer7TimeseriesGroupsV2RequestNameList =
 
 export type AttacksLayer7TimeseriesGroupsV2RequestNormalization =
   | "PERCENTAGE"
-  | "MIN0_MAX";
+  | "MIN0_MAX"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsV2RequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -90220,7 +92844,8 @@ export type AttacksLayer7TimeseriesGroupsV2ResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsV2ResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -90249,7 +92874,8 @@ export type AttacksLayer7TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotations
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer7TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -90259,7 +92885,8 @@ export type AttacksLayer7TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotations
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer7TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -90358,7 +92985,8 @@ export type AttacksLayer7TimeseriesGroupsV2ResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -90460,14 +93088,16 @@ export type DnsTimeseriesGroupsV2RequestDimension =
   | "RESPONSE_CODE"
   | "RESPONSE_TTL"
   | "TLD"
-  | "TLD_DNS_MAGNITUDE";
+  | "TLD_DNS_MAGNITUDE"
+  | (string & {});
 export const DnsTimeseriesGroupsV2RequestDimension = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsV2RequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const DnsTimeseriesGroupsV2RequestAggInterval = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsV2RequestAsnList = ReadonlyArray<string>;
@@ -90504,7 +93134,8 @@ export type DnsTimeseriesGroupsV2RequestDnssec =
   | "INVALID"
   | "INSECURE"
   | "SECURE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const DnsTimeseriesGroupsV2RequestDnssec = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsV2RequestDnssecList =
@@ -90515,7 +93146,8 @@ export const DnsTimeseriesGroupsV2RequestDnssecList = /*@__PURE__*/ S.Array(
 
 export type DnsTimeseriesGroupsV2RequestDnssecAware =
   | "SUPPORTED"
-  | "NOT_SUPPORTED";
+  | "NOT_SUPPORTED"
+  | (string & {});
 export const DnsTimeseriesGroupsV2RequestDnssecAware = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsV2RequestDnssecAwareList =
@@ -90530,10 +93162,13 @@ export const DnsTimeseriesGroupsV2RequestDnssecE2eList = /*@__PURE__*/ S.Array(
   S.Boolean,
 ) as any as S.Schema<DnsTimeseriesGroupsV2RequestDnssecE2eList>;
 
-export type DnsTimeseriesGroupsV2RequestFormat = "JSON" | "CSV";
+export type DnsTimeseriesGroupsV2RequestFormat = "JSON" | "CSV" | (string & {});
 export const DnsTimeseriesGroupsV2RequestFormat = /*@__PURE__*/ S.String;
 
-export type DnsTimeseriesGroupsV2RequestIpVersion = "IPv4" | "IPv6";
+export type DnsTimeseriesGroupsV2RequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const DnsTimeseriesGroupsV2RequestIpVersion = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsV2RequestIpVersionList =
@@ -90567,14 +93202,16 @@ export const DnsTimeseriesGroupsV2RequestNodataList = /*@__PURE__*/ S.Array(
 export type DnsTimeseriesGroupsV2RequestNormalization =
   | "PERCENTAGE"
   | "MIN0_MAX"
-  | "RANK";
+  | "RANK"
+  | (string & {});
 export const DnsTimeseriesGroupsV2RequestNormalization = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsV2RequestProtocol =
   | "UDP"
   | "TCP"
   | "HTTPS"
-  | "TLS";
+  | "TLS"
+  | (string & {});
 export const DnsTimeseriesGroupsV2RequestProtocol = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsV2RequestProtocolList =
@@ -90671,7 +93308,8 @@ export type DnsTimeseriesGroupsV2RequestQueryType =
   | "URI"
   | "WKS"
   | "X25"
-  | "ZONEMD";
+  | "ZONEMD"
+  | (string & {});
 export const DnsTimeseriesGroupsV2RequestQueryType = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsV2RequestQueryTypeList =
@@ -90699,7 +93337,8 @@ export type DnsTimeseriesGroupsV2RequestResponseCode =
   | "BADNAME"
   | "BADALG"
   | "BADTRUNC"
-  | "BADCOOKIE";
+  | "BADCOOKIE"
+  | (string & {});
 export const DnsTimeseriesGroupsV2RequestResponseCode = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsV2RequestResponseCodeList =
@@ -90716,7 +93355,8 @@ export type DnsTimeseriesGroupsV2RequestResponseTtl =
   | "GT_15M_LTE_1H"
   | "GT_1H_LTE_1D"
   | "GT_1D_LTE_1W"
-  | "GT_1W";
+  | "GT_1W"
+  | (string & {});
 export const DnsTimeseriesGroupsV2RequestResponseTtl = /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsV2RequestResponseTtlList =
@@ -90857,7 +93497,8 @@ export type DnsTimeseriesGroupsV2ResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const DnsTimeseriesGroupsV2ResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -90886,7 +93527,8 @@ export type DnsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSo
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const DnsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -90896,7 +93538,8 @@ export type DnsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventT
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const DnsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -90995,7 +93638,8 @@ export type DnsTimeseriesGroupsV2ResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const DnsTimeseriesGroupsV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -91083,7 +93727,8 @@ export type EmailRoutingTimeseriesGroupsV2RequestDimension =
   | "ARC"
   | "DKIM"
   | "DMARC"
-  | "SPF";
+  | "SPF"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsV2RequestDimension =
   /*@__PURE__*/ S.String;
 
@@ -91091,11 +93736,16 @@ export type EmailRoutingTimeseriesGroupsV2RequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsV2RequestAggInterval =
   /*@__PURE__*/ S.String;
 
-export type EmailRoutingTimeseriesGroupsV2RequestArc = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingTimeseriesGroupsV2RequestArc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsV2RequestArc = /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsV2RequestArcList =
@@ -91129,7 +93779,8 @@ export const EmailRoutingTimeseriesGroupsV2RequestDateStartList =
 export type EmailRoutingTimeseriesGroupsV2RequestDkim =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsV2RequestDkim = /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsV2RequestDkimList =
@@ -91142,7 +93793,8 @@ export const EmailRoutingTimeseriesGroupsV2RequestDkimList =
 export type EmailRoutingTimeseriesGroupsV2RequestDmarc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsV2RequestDmarc =
   /*@__PURE__*/ S.String;
 
@@ -91155,7 +93807,8 @@ export const EmailRoutingTimeseriesGroupsV2RequestDmarcList =
 
 export type EmailRoutingTimeseriesGroupsV2RequestEncrypted =
   | "ENCRYPTED"
-  | "NOT_ENCRYPTED";
+  | "NOT_ENCRYPTED"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsV2RequestEncrypted =
   /*@__PURE__*/ S.String;
 
@@ -91166,11 +93819,17 @@ export const EmailRoutingTimeseriesGroupsV2RequestEncryptedList =
     EmailRoutingTimeseriesGroupsV2RequestEncrypted,
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsV2RequestEncryptedList>;
 
-export type EmailRoutingTimeseriesGroupsV2RequestFormat = "JSON" | "CSV";
+export type EmailRoutingTimeseriesGroupsV2RequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsV2RequestFormat =
   /*@__PURE__*/ S.String;
 
-export type EmailRoutingTimeseriesGroupsV2RequestIpVersion = "IPv4" | "IPv6";
+export type EmailRoutingTimeseriesGroupsV2RequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsV2RequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -91188,7 +93847,11 @@ export const EmailRoutingTimeseriesGroupsV2RequestNameList =
     S.String,
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsV2RequestNameList>;
 
-export type EmailRoutingTimeseriesGroupsV2RequestSpf = "PASS" | "NONE" | "FAIL";
+export type EmailRoutingTimeseriesGroupsV2RequestSpf =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsV2RequestSpf = /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsV2RequestSpfList =
@@ -91287,7 +93950,8 @@ export type EmailRoutingTimeseriesGroupsV2ResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsV2ResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -91316,7 +93980,8 @@ export type EmailRoutingTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsI
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailRoutingTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -91326,7 +93991,8 @@ export type EmailRoutingTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsI
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailRoutingTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -91425,7 +94091,8 @@ export type EmailRoutingTimeseriesGroupsV2ResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailRoutingTimeseriesGroupsV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -91522,7 +94189,8 @@ export type EmailSecurityTimeseriesGroupsV2RequestDimension =
   | "DKIM"
   | "DMARC"
   | "SPF"
-  | "TLS_VERSION";
+  | "TLS_VERSION"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsV2RequestDimension =
   /*@__PURE__*/ S.String;
 
@@ -91530,14 +94198,16 @@ export type EmailSecurityTimeseriesGroupsV2RequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsV2RequestAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsV2RequestArc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsV2RequestArc = /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsV2RequestArcList =
@@ -91571,7 +94241,8 @@ export const EmailSecurityTimeseriesGroupsV2RequestDateStartList =
 export type EmailSecurityTimeseriesGroupsV2RequestDkim =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsV2RequestDkim =
   /*@__PURE__*/ S.String;
 
@@ -91585,7 +94256,8 @@ export const EmailSecurityTimeseriesGroupsV2RequestDkimList =
 export type EmailSecurityTimeseriesGroupsV2RequestDmarc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsV2RequestDmarc =
   /*@__PURE__*/ S.String;
 
@@ -91596,7 +94268,10 @@ export const EmailSecurityTimeseriesGroupsV2RequestDmarcList =
     EmailSecurityTimeseriesGroupsV2RequestDmarc,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsV2RequestDmarcList>;
 
-export type EmailSecurityTimeseriesGroupsV2RequestFormat = "JSON" | "CSV";
+export type EmailSecurityTimeseriesGroupsV2RequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsV2RequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -91610,7 +94285,8 @@ export const EmailSecurityTimeseriesGroupsV2RequestNameList =
 export type EmailSecurityTimeseriesGroupsV2RequestSpf =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsV2RequestSpf = /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsV2RequestSpfList =
@@ -91624,7 +94300,8 @@ export type EmailSecurityTimeseriesGroupsV2RequestTlsVersion =
   | "TLSv1_0"
   | "TLSv1_1"
   | "TLSv1_2"
-  | "TLSv1_3";
+  | "TLSv1_3"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsV2RequestTlsVersion =
   /*@__PURE__*/ S.String;
 
@@ -91721,7 +94398,8 @@ export type EmailSecurityTimeseriesGroupsV2ResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsV2ResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -91750,7 +94428,8 @@ export type EmailSecurityTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotations
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailSecurityTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -91760,7 +94439,8 @@ export type EmailSecurityTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotations
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailSecurityTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -91859,7 +94539,8 @@ export type EmailSecurityTimeseriesGroupsV2ResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -91962,17 +94643,22 @@ export type HttpTimeseriesGroupsV2RequestDimension =
   | "LOCATION"
   | "OS"
   | "POST_QUANTUM"
-  | "TLS_VERSION";
+  | "TLS_VERSION"
+  | (string & {});
 export const HttpTimeseriesGroupsV2RequestDimension = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsV2RequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const HttpTimeseriesGroupsV2RequestAggInterval = /*@__PURE__*/ S.String;
 
-export type HttpTimeseriesGroupsV2RequestApiTraffic = "API" | "NON_API";
+export type HttpTimeseriesGroupsV2RequestApiTraffic =
+  | "API"
+  | "NON_API"
+  | (string & {});
 export const HttpTimeseriesGroupsV2RequestApiTraffic = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsV2RequestApiTrafficList =
@@ -91989,7 +94675,8 @@ export const HttpTimeseriesGroupsV2RequestAsnList = /*@__PURE__*/ S.Array(
 
 export type HttpTimeseriesGroupsV2RequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpTimeseriesGroupsV2RequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsV2RequestBotClassList =
@@ -92014,7 +94701,8 @@ export type HttpTimeseriesGroupsV2RequestContentType =
   | "DOCUMENTS"
   | "BINARY"
   | "SERIALIZATION"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpTimeseriesGroupsV2RequestContentType = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsV2RequestContentTypeList =
@@ -92047,7 +94735,8 @@ export const HttpTimeseriesGroupsV2RequestDateStartList = /*@__PURE__*/ S.Array(
 export type HttpTimeseriesGroupsV2RequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpTimeseriesGroupsV2RequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsV2RequestDeviceTypeList =
@@ -92057,7 +94746,10 @@ export const HttpTimeseriesGroupsV2RequestDeviceTypeList =
     HttpTimeseriesGroupsV2RequestDeviceType,
   ) as any as S.Schema<HttpTimeseriesGroupsV2RequestDeviceTypeList>;
 
-export type HttpTimeseriesGroupsV2RequestFormat = "JSON" | "CSV";
+export type HttpTimeseriesGroupsV2RequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const HttpTimeseriesGroupsV2RequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsV2RequestGeoIdList = ReadonlyArray<string>;
@@ -92065,7 +94757,10 @@ export const HttpTimeseriesGroupsV2RequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpTimeseriesGroupsV2RequestGeoIdList>;
 
-export type HttpTimeseriesGroupsV2RequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpTimeseriesGroupsV2RequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpTimeseriesGroupsV2RequestHttpProtocol = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsV2RequestHttpProtocolList =
@@ -92078,7 +94773,8 @@ export const HttpTimeseriesGroupsV2RequestHttpProtocolList =
 export type HttpTimeseriesGroupsV2RequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpTimeseriesGroupsV2RequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsV2RequestHttpVersionList =
@@ -92088,7 +94784,10 @@ export const HttpTimeseriesGroupsV2RequestHttpVersionList =
     HttpTimeseriesGroupsV2RequestHttpVersion,
   ) as any as S.Schema<HttpTimeseriesGroupsV2RequestHttpVersionList>;
 
-export type HttpTimeseriesGroupsV2RequestIpVersion = "IPv4" | "IPv6";
+export type HttpTimeseriesGroupsV2RequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpTimeseriesGroupsV2RequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsV2RequestIpVersionList =
@@ -92109,7 +94808,8 @@ export const HttpTimeseriesGroupsV2RequestNameList = /*@__PURE__*/ S.Array(
 
 export type HttpTimeseriesGroupsV2RequestNormalization =
   | "PERCENTAGE"
-  | "MIN0_MAX";
+  | "MIN0_MAX"
+  | (string & {});
 export const HttpTimeseriesGroupsV2RequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -92120,7 +94820,8 @@ export type HttpTimeseriesGroupsV2RequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpTimeseriesGroupsV2RequestOs = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsV2RequestOsList =
@@ -92134,7 +94835,8 @@ export type HttpTimeseriesGroupsV2RequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpTimeseriesGroupsV2RequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsV2RequestTlsVersionList =
@@ -92262,7 +94964,8 @@ export type HttpTimeseriesGroupsV2ResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const HttpTimeseriesGroupsV2ResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -92291,7 +94994,8 @@ export type HttpTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataS
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -92301,7 +95005,8 @@ export type HttpTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEvent
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -92400,7 +95105,8 @@ export type HttpTimeseriesGroupsV2ResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpTimeseriesGroupsV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -92486,7 +95192,8 @@ export const TimeseriesGroupsV2HttpResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type LeakedCredentialsTimeseriesGroupsV2RequestDimension =
   | "COMPROMISED"
-  | "BOT_CLASS";
+  | "BOT_CLASS"
+  | (string & {});
 export const LeakedCredentialsTimeseriesGroupsV2RequestDimension =
   /*@__PURE__*/ S.String;
 
@@ -92494,7 +95201,8 @@ export type LeakedCredentialsTimeseriesGroupsV2RequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const LeakedCredentialsTimeseriesGroupsV2RequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -92507,7 +95215,8 @@ export const LeakedCredentialsTimeseriesGroupsV2RequestAsnList =
 
 export type LeakedCredentialsTimeseriesGroupsV2RequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const LeakedCredentialsTimeseriesGroupsV2RequestBotClass =
   /*@__PURE__*/ S.String;
 
@@ -92523,7 +95232,8 @@ export type LeakedCredentialsTimeseriesGroupsV2RequestCheckResult =
   | "USERNAME_LEAKED"
   | "USERNAME_PASSWORD_SIMILAR"
   | "USERNAME_AND_PASSWORD_LEAKED"
-  | "PASSWORD_LEAKED";
+  | "PASSWORD_LEAKED"
+  | (string & {});
 export const LeakedCredentialsTimeseriesGroupsV2RequestCheckResult =
   /*@__PURE__*/ S.String;
 
@@ -92536,7 +95246,8 @@ export const LeakedCredentialsTimeseriesGroupsV2RequestCheckResultList =
 
 export type LeakedCredentialsTimeseriesGroupsV2RequestCompromised =
   | "CLEAN"
-  | "COMPROMISED";
+  | "COMPROMISED"
+  | (string & {});
 export const LeakedCredentialsTimeseriesGroupsV2RequestCompromised =
   /*@__PURE__*/ S.String;
 
@@ -92575,7 +95286,10 @@ export const LeakedCredentialsTimeseriesGroupsV2RequestDateStartList =
     S.String,
   ) as any as S.Schema<LeakedCredentialsTimeseriesGroupsV2RequestDateStartList>;
 
-export type LeakedCredentialsTimeseriesGroupsV2RequestFormat = "JSON" | "CSV";
+export type LeakedCredentialsTimeseriesGroupsV2RequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const LeakedCredentialsTimeseriesGroupsV2RequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -92595,7 +95309,8 @@ export const LeakedCredentialsTimeseriesGroupsV2RequestNameList =
 
 export type LeakedCredentialsTimeseriesGroupsV2RequestNormalization =
   | "PERCENTAGE_CHANGE"
-  | "MIN0_MAX";
+  | "MIN0_MAX"
+  | (string & {});
 export const LeakedCredentialsTimeseriesGroupsV2RequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -92699,7 +95414,8 @@ export type LeakedCredentialsTimeseriesGroupsV2ResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const LeakedCredentialsTimeseriesGroupsV2ResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -92728,7 +95444,8 @@ export type LeakedCredentialsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotat
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const LeakedCredentialsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -92738,7 +95455,8 @@ export type LeakedCredentialsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotat
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const LeakedCredentialsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -92837,7 +95555,8 @@ export type LeakedCredentialsTimeseriesGroupsV2ResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const LeakedCredentialsTimeseriesGroupsV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -92928,10 +95647,15 @@ export const TimeseriesGroupsV2LeakedCredentialResponse =
     identifier: "TimeseriesGroupsV2LeakedCredentialResponse",
   }) as any as S.Schema<TimeseriesGroupsV2LeakedCredentialResponse>;
 
-export type HttpTimeseriesRequestAggInterval = "15m" | "1h" | "1d" | "1w";
+export type HttpTimeseriesRequestAggInterval =
+  | "15m"
+  | "1h"
+  | "1d"
+  | "1w"
+  | (string & {});
 export const HttpTimeseriesRequestAggInterval = /*@__PURE__*/ S.String;
 
-export type HttpTimeseriesRequestApiTraffic = "API" | "NON_API";
+export type HttpTimeseriesRequestApiTraffic = "API" | "NON_API" | (string & {});
 export const HttpTimeseriesRequestApiTraffic = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesRequestApiTrafficList =
@@ -92945,7 +95669,10 @@ export const HttpTimeseriesRequestAsnList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpTimeseriesRequestAsnList>;
 
-export type HttpTimeseriesRequestBotClass = "LIKELY_AUTOMATED" | "LIKELY_HUMAN";
+export type HttpTimeseriesRequestBotClass =
+  | "LIKELY_AUTOMATED"
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpTimeseriesRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesRequestBotClassList =
@@ -92958,7 +95685,8 @@ export type HttpTimeseriesRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpTimeseriesRequestBrowserFamily = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesRequestBrowserFamilyList =
@@ -92983,7 +95711,8 @@ export type HttpTimeseriesRequestContentType =
   | "DOCUMENTS"
   | "BINARY"
   | "SERIALIZATION"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpTimeseriesRequestContentType = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesRequestContentTypeList =
@@ -93012,7 +95741,11 @@ export const HttpTimeseriesRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpTimeseriesRequestDateStartList>;
 
-export type HttpTimeseriesRequestDeviceType = "DESKTOP" | "MOBILE" | "OTHER";
+export type HttpTimeseriesRequestDeviceType =
+  | "DESKTOP"
+  | "MOBILE"
+  | "OTHER"
+  | (string & {});
 export const HttpTimeseriesRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesRequestDeviceTypeList =
@@ -93021,7 +95754,7 @@ export const HttpTimeseriesRequestDeviceTypeList = /*@__PURE__*/ S.Array(
   HttpTimeseriesRequestDeviceType,
 ) as any as S.Schema<HttpTimeseriesRequestDeviceTypeList>;
 
-export type HttpTimeseriesRequestFormat = "JSON" | "CSV";
+export type HttpTimeseriesRequestFormat = "JSON" | "CSV" | (string & {});
 export const HttpTimeseriesRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesRequestGeoIdList = ReadonlyArray<string>;
@@ -93029,7 +95762,10 @@ export const HttpTimeseriesRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpTimeseriesRequestGeoIdList>;
 
-export type HttpTimeseriesRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpTimeseriesRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpTimeseriesRequestHttpProtocol = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesRequestHttpProtocolList =
@@ -93038,7 +95774,11 @@ export const HttpTimeseriesRequestHttpProtocolList = /*@__PURE__*/ S.Array(
   HttpTimeseriesRequestHttpProtocol,
 ) as any as S.Schema<HttpTimeseriesRequestHttpProtocolList>;
 
-export type HttpTimeseriesRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
+export type HttpTimeseriesRequestHttpVersion =
+  | "HTTPv1"
+  | "HTTPv2"
+  | "HTTPv3"
+  | (string & {});
 export const HttpTimeseriesRequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesRequestHttpVersionList =
@@ -93047,7 +95787,7 @@ export const HttpTimeseriesRequestHttpVersionList = /*@__PURE__*/ S.Array(
   HttpTimeseriesRequestHttpVersion,
 ) as any as S.Schema<HttpTimeseriesRequestHttpVersionList>;
 
-export type HttpTimeseriesRequestIpVersion = "IPv4" | "IPv6";
+export type HttpTimeseriesRequestIpVersion = "IPv4" | "IPv6" | (string & {});
 export const HttpTimeseriesRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesRequestIpVersionList =
@@ -93068,7 +95808,8 @@ export const HttpTimeseriesRequestNameList = /*@__PURE__*/ S.Array(
 
 export type HttpTimeseriesRequestNormalization =
   | "PERCENTAGE_CHANGE"
-  | "MIN0_MAX";
+  | "MIN0_MAX"
+  | (string & {});
 export const HttpTimeseriesRequestNormalization = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesRequestOs =
@@ -93078,7 +95819,8 @@ export type HttpTimeseriesRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpTimeseriesRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesRequestOsList =
@@ -93092,7 +95834,8 @@ export type HttpTimeseriesRequestTlsVersion =
   | "TLSv1_1"
   | "TLSv1_2"
   | "TLSv1_3"
-  | "TLSvQUIC";
+  | "TLSvQUIC"
+  | (string & {});
 export const HttpTimeseriesRequestTlsVersion = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesRequestTlsVersionList =
@@ -93190,7 +95933,8 @@ export type HttpTimeseriesResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const HttpTimeseriesResponseMetaAggInterval = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
@@ -93218,7 +95962,8 @@ export type HttpTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   | "NET"
   | "ROBOTS_TXT"
   | "SPEED"
-  | "WORKERS_AI";
+  | "WORKERS_AI"
+  | (string & {});
 export const HttpTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -93228,7 +95973,8 @@ export type HttpTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const HttpTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -93324,7 +96070,8 @@ export type HttpTimeseriesResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpTimeseriesResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface HttpTimeseriesResponseMetaUnitsItem {
@@ -93384,7 +96131,12 @@ export const TimeseriesHttpResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TimeseriesHttpResponse",
 }) as any as S.Schema<TimeseriesHttpResponse>;
 
-export type NetflowsTimeseriesRequestAggInterval = "15m" | "1h" | "1d" | "1w";
+export type NetflowsTimeseriesRequestAggInterval =
+  | "15m"
+  | "1h"
+  | "1d"
+  | "1w"
+  | (string & {});
 export const NetflowsTimeseriesRequestAggInterval = /*@__PURE__*/ S.String;
 
 export type NetflowsTimeseriesRequestAsnList = ReadonlyArray<string>;
@@ -93412,7 +96164,7 @@ export const NetflowsTimeseriesRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetflowsTimeseriesRequestDateStartList>;
 
-export type NetflowsTimeseriesRequestFormat = "JSON" | "CSV";
+export type NetflowsTimeseriesRequestFormat = "JSON" | "CSV" | (string & {});
 export const NetflowsTimeseriesRequestFormat = /*@__PURE__*/ S.String;
 
 export type NetflowsTimeseriesRequestGeoIdList = ReadonlyArray<string>;
@@ -93432,10 +96184,11 @@ export const NetflowsTimeseriesRequestNameList = /*@__PURE__*/ S.Array(
 
 export type NetflowsTimeseriesRequestNormalization =
   | "PERCENTAGE_CHANGE"
-  | "MIN0_MAX";
+  | "MIN0_MAX"
+  | (string & {});
 export const NetflowsTimeseriesRequestNormalization = /*@__PURE__*/ S.String;
 
-export type NetflowsTimeseriesRequestProduct = "HTTP" | "ALL";
+export type NetflowsTimeseriesRequestProduct = "HTTP" | "ALL" | (string & {});
 export const NetflowsTimeseriesRequestProduct = /*@__PURE__*/ S.String;
 
 export type NetflowsTimeseriesRequestProductList =
@@ -93508,7 +96261,8 @@ export type NetflowsTimeseriesResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const NetflowsTimeseriesResponseMetaAggInterval = /*@__PURE__*/ S.String;
 
 export type NetflowsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
@@ -93536,7 +96290,8 @@ export type NetflowsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSourc
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const NetflowsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -93546,7 +96301,8 @@ export type NetflowsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const NetflowsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -93643,7 +96399,8 @@ export type NetflowsTimeseriesResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const NetflowsTimeseriesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -93732,7 +96489,7 @@ export const TimeseriesNetflowResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TimeseriesNetflowResponse",
 }) as any as S.Schema<TimeseriesNetflowResponse>;
 
-export type TldsGetRequestFormat = "JSON" | "CSV";
+export type TldsGetRequestFormat = "JSON" | "CSV" | (string & {});
 export const TldsGetRequestFormat = /*@__PURE__*/ S.String;
 
 export interface TldsGetRequest {
@@ -93780,7 +96537,7 @@ export const TldsGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TldsGetResponse",
 }) as any as S.Schema<TldsGetResponse>;
 
-export type TldsListRequestFormat = "JSON" | "CSV";
+export type TldsListRequestFormat = "JSON" | "CSV" | (string & {});
 export const TldsListRequestFormat = /*@__PURE__*/ S.String;
 
 export type TldsListRequestTldType =
@@ -93788,7 +96545,8 @@ export type TldsListRequestTldType =
   | "COUNTRY_CODE"
   | "GENERIC_RESTRICTED"
   | "INFRASTRUCTURE"
-  | "SPONSORED";
+  | "SPONSORED"
+  | (string & {});
 export const TldsListRequestTldType = /*@__PURE__*/ S.String;
 
 export interface TldsListRequest {
@@ -93858,7 +96616,8 @@ export const TldsListResponse = /*@__PURE__*/ S.suspend(() =>
 export type TldsPerformanceSummaryRequestDimension =
   | "LATENCY"
   | "NAMESERVER_LATENCY"
-  | "LOCATION_LATENCY";
+  | "LOCATION_LATENCY"
+  | (string & {});
 export const TldsPerformanceSummaryRequestDimension = /*@__PURE__*/ S.String;
 
 export type TldsPerformanceSummaryRequestContinentList = ReadonlyArray<string>;
@@ -93881,7 +96640,10 @@ export const TldsPerformanceSummaryRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TldsPerformanceSummaryRequestDateStartList>;
 
-export type TldsPerformanceSummaryRequestFormat = "JSON" | "CSV";
+export type TldsPerformanceSummaryRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const TldsPerformanceSummaryRequestFormat = /*@__PURE__*/ S.String;
 
 export type TldsPerformanceSummaryRequestLocationList = ReadonlyArray<string>;
@@ -93984,7 +96746,8 @@ export type TldsPerformanceSummaryResponseMetaConfidenceInfoAnnotationsItemDataS
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const TldsPerformanceSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -93994,7 +96757,8 @@ export type TldsPerformanceSummaryResponseMetaConfidenceInfoAnnotationsItemEvent
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const TldsPerformanceSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -94093,7 +96857,8 @@ export type TldsPerformanceSummaryResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const TldsPerformanceSummaryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -94168,7 +96933,8 @@ export const TldsPerformanceSummaryResponse = /*@__PURE__*/ S.suspend(() =>
 export type TldsPerformanceTimeseriesGroupsRequestDimension =
   | "LATENCY"
   | "NAMESERVER_LATENCY"
-  | "LOCATION_LATENCY";
+  | "LOCATION_LATENCY"
+  | (string & {});
 export const TldsPerformanceTimeseriesGroupsRequestDimension =
   /*@__PURE__*/ S.String;
 
@@ -94176,7 +96942,8 @@ export type TldsPerformanceTimeseriesGroupsRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const TldsPerformanceTimeseriesGroupsRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -94208,7 +96975,10 @@ export const TldsPerformanceTimeseriesGroupsRequestDateStartList =
     S.String,
   ) as any as S.Schema<TldsPerformanceTimeseriesGroupsRequestDateStartList>;
 
-export type TldsPerformanceTimeseriesGroupsRequestFormat = "JSON" | "CSV";
+export type TldsPerformanceTimeseriesGroupsRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const TldsPerformanceTimeseriesGroupsRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -94312,7 +97082,8 @@ export type TldsPerformanceTimeseriesGroupsResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const TldsPerformanceTimeseriesGroupsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -94341,7 +97112,8 @@ export type TldsPerformanceTimeseriesGroupsResponseMetaConfidenceInfoAnnotations
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const TldsPerformanceTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -94351,7 +97123,8 @@ export type TldsPerformanceTimeseriesGroupsResponseMetaConfidenceInfoAnnotations
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const TldsPerformanceTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -94450,7 +97223,8 @@ export type TldsPerformanceTimeseriesGroupsResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const TldsPerformanceTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -94538,7 +97312,11 @@ export const TldsPerformanceTimeseriesGroupsResponse = /*@__PURE__*/ S.suspend(
   identifier: "TldsPerformanceTimeseriesGroupsResponse",
 }) as any as S.Schema<TldsPerformanceTimeseriesGroupsResponse>;
 
-export type EmailSecuritySummaryTlsVersionRequestArc = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummaryTlsVersionRequestArc =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryTlsVersionRequestArc = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryTlsVersionRequestArcList =
@@ -94572,7 +97350,8 @@ export const EmailSecuritySummaryTlsVersionRequestDateStartList =
 export type EmailSecuritySummaryTlsVersionRequestDkim =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryTlsVersionRequestDkim = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryTlsVersionRequestDkimList =
@@ -94585,7 +97364,8 @@ export const EmailSecuritySummaryTlsVersionRequestDkimList =
 export type EmailSecuritySummaryTlsVersionRequestDmarc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryTlsVersionRequestDmarc =
   /*@__PURE__*/ S.String;
 
@@ -94596,7 +97376,10 @@ export const EmailSecuritySummaryTlsVersionRequestDmarcList =
     EmailSecuritySummaryTlsVersionRequestDmarc,
   ) as any as S.Schema<EmailSecuritySummaryTlsVersionRequestDmarcList>;
 
-export type EmailSecuritySummaryTlsVersionRequestFormat = "JSON" | "CSV";
+export type EmailSecuritySummaryTlsVersionRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const EmailSecuritySummaryTlsVersionRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -94607,7 +97390,11 @@ export const EmailSecuritySummaryTlsVersionRequestNameList =
     S.String,
   ) as any as S.Schema<EmailSecuritySummaryTlsVersionRequestNameList>;
 
-export type EmailSecuritySummaryTlsVersionRequestSpf = "PASS" | "NONE" | "FAIL";
+export type EmailSecuritySummaryTlsVersionRequestSpf =
+  | "PASS"
+  | "NONE"
+  | "FAIL"
+  | (string & {});
 export const EmailSecuritySummaryTlsVersionRequestSpf = /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryTlsVersionRequestSpfList =
@@ -94705,7 +97492,8 @@ export type EmailSecuritySummaryTlsVersionResponseMetaConfidenceInfoAnnotationsI
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailSecuritySummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -94715,7 +97503,8 @@ export type EmailSecuritySummaryTlsVersionResponseMetaConfidenceInfoAnnotationsI
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailSecuritySummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -94814,7 +97603,8 @@ export type EmailSecuritySummaryTlsVersionResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailSecuritySummaryTlsVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -94906,14 +97696,16 @@ export type EmailSecurityTimeseriesGroupsTlsVersionRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsTlsVersionRequestAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsTlsVersionRequestArc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsTlsVersionRequestArc =
   /*@__PURE__*/ S.String;
 
@@ -94948,7 +97740,8 @@ export const EmailSecurityTimeseriesGroupsTlsVersionRequestDateStartList =
 export type EmailSecurityTimeseriesGroupsTlsVersionRequestDkim =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsTlsVersionRequestDkim =
   /*@__PURE__*/ S.String;
 
@@ -94962,7 +97755,8 @@ export const EmailSecurityTimeseriesGroupsTlsVersionRequestDkimList =
 export type EmailSecurityTimeseriesGroupsTlsVersionRequestDmarc =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsTlsVersionRequestDmarc =
   /*@__PURE__*/ S.String;
 
@@ -94975,7 +97769,8 @@ export const EmailSecurityTimeseriesGroupsTlsVersionRequestDmarcList =
 
 export type EmailSecurityTimeseriesGroupsTlsVersionRequestFormat =
   | "JSON"
-  | "CSV";
+  | "CSV"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsTlsVersionRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -94989,7 +97784,8 @@ export const EmailSecurityTimeseriesGroupsTlsVersionRequestNameList =
 export type EmailSecurityTimeseriesGroupsTlsVersionRequestSpf =
   | "PASS"
   | "NONE"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsTlsVersionRequestSpf =
   /*@__PURE__*/ S.String;
 
@@ -95081,7 +97877,8 @@ export type EmailSecurityTimeseriesGroupsTlsVersionResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsTlsVersionResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -95110,7 +97907,8 @@ export type EmailSecurityTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnn
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const EmailSecurityTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -95120,7 +97918,8 @@ export type EmailSecurityTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnn
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const EmailSecurityTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -95221,7 +98020,8 @@ export type EmailSecurityTimeseriesGroupsTlsVersionResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const EmailSecurityTimeseriesGroupsTlsVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -95359,7 +98159,8 @@ export const HttpSummaryTlsVersionRequestAsnList = /*@__PURE__*/ S.Array(
 
 export type HttpSummaryTlsVersionRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpSummaryTlsVersionRequestBotClass = /*@__PURE__*/ S.String;
 
 export type HttpSummaryTlsVersionRequestBotClassList =
@@ -95372,7 +98173,8 @@ export type HttpSummaryTlsVersionRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpSummaryTlsVersionRequestBrowserFamily = /*@__PURE__*/ S.String;
 
 export type HttpSummaryTlsVersionRequestBrowserFamilyList =
@@ -95405,7 +98207,8 @@ export const HttpSummaryTlsVersionRequestDateStartList = /*@__PURE__*/ S.Array(
 export type HttpSummaryTlsVersionRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpSummaryTlsVersionRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type HttpSummaryTlsVersionRequestDeviceTypeList =
@@ -95414,7 +98217,7 @@ export const HttpSummaryTlsVersionRequestDeviceTypeList = /*@__PURE__*/ S.Array(
   HttpSummaryTlsVersionRequestDeviceType,
 ) as any as S.Schema<HttpSummaryTlsVersionRequestDeviceTypeList>;
 
-export type HttpSummaryTlsVersionRequestFormat = "JSON" | "CSV";
+export type HttpSummaryTlsVersionRequestFormat = "JSON" | "CSV" | (string & {});
 export const HttpSummaryTlsVersionRequestFormat = /*@__PURE__*/ S.String;
 
 export type HttpSummaryTlsVersionRequestGeoIdList = ReadonlyArray<string>;
@@ -95422,7 +98225,10 @@ export const HttpSummaryTlsVersionRequestGeoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpSummaryTlsVersionRequestGeoIdList>;
 
-export type HttpSummaryTlsVersionRequestHttpProtocol = "HTTP" | "HTTPS";
+export type HttpSummaryTlsVersionRequestHttpProtocol =
+  | "HTTP"
+  | "HTTPS"
+  | (string & {});
 export const HttpSummaryTlsVersionRequestHttpProtocol = /*@__PURE__*/ S.String;
 
 export type HttpSummaryTlsVersionRequestHttpProtocolList =
@@ -95435,7 +98241,8 @@ export const HttpSummaryTlsVersionRequestHttpProtocolList =
 export type HttpSummaryTlsVersionRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpSummaryTlsVersionRequestHttpVersion = /*@__PURE__*/ S.String;
 
 export type HttpSummaryTlsVersionRequestHttpVersionList =
@@ -95445,7 +98252,10 @@ export const HttpSummaryTlsVersionRequestHttpVersionList =
     HttpSummaryTlsVersionRequestHttpVersion,
   ) as any as S.Schema<HttpSummaryTlsVersionRequestHttpVersionList>;
 
-export type HttpSummaryTlsVersionRequestIpVersion = "IPv4" | "IPv6";
+export type HttpSummaryTlsVersionRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpSummaryTlsVersionRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type HttpSummaryTlsVersionRequestIpVersionList =
@@ -95471,7 +98281,8 @@ export type HttpSummaryTlsVersionRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpSummaryTlsVersionRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpSummaryTlsVersionRequestOsList =
@@ -95592,7 +98403,8 @@ export type HttpSummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemDataSo
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpSummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -95602,7 +98414,8 @@ export type HttpSummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemEventT
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpSummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -95701,7 +98514,8 @@ export type HttpSummaryTlsVersionResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpSummaryTlsVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -95791,7 +98605,8 @@ export type HttpTimeseriesGroupsTlsVersionRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const HttpTimeseriesGroupsTlsVersionRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -95804,7 +98619,8 @@ export const HttpTimeseriesGroupsTlsVersionRequestAsnList =
 
 export type HttpTimeseriesGroupsTlsVersionRequestBotClass =
   | "LIKELY_AUTOMATED"
-  | "LIKELY_HUMAN";
+  | "LIKELY_HUMAN"
+  | (string & {});
 export const HttpTimeseriesGroupsTlsVersionRequestBotClass =
   /*@__PURE__*/ S.String;
 
@@ -95819,7 +98635,8 @@ export type HttpTimeseriesGroupsTlsVersionRequestBrowserFamily =
   | "CHROME"
   | "EDGE"
   | "FIREFOX"
-  | "SAFARI";
+  | "SAFARI"
+  | (string & {});
 export const HttpTimeseriesGroupsTlsVersionRequestBrowserFamily =
   /*@__PURE__*/ S.String;
 
@@ -95861,7 +98678,8 @@ export const HttpTimeseriesGroupsTlsVersionRequestDateStartList =
 export type HttpTimeseriesGroupsTlsVersionRequestDeviceType =
   | "DESKTOP"
   | "MOBILE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const HttpTimeseriesGroupsTlsVersionRequestDeviceType =
   /*@__PURE__*/ S.String;
 
@@ -95872,7 +98690,10 @@ export const HttpTimeseriesGroupsTlsVersionRequestDeviceTypeList =
     HttpTimeseriesGroupsTlsVersionRequestDeviceType,
   ) as any as S.Schema<HttpTimeseriesGroupsTlsVersionRequestDeviceTypeList>;
 
-export type HttpTimeseriesGroupsTlsVersionRequestFormat = "JSON" | "CSV";
+export type HttpTimeseriesGroupsTlsVersionRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const HttpTimeseriesGroupsTlsVersionRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -95885,7 +98706,8 @@ export const HttpTimeseriesGroupsTlsVersionRequestGeoIdList =
 
 export type HttpTimeseriesGroupsTlsVersionRequestHttpProtocol =
   | "HTTP"
-  | "HTTPS";
+  | "HTTPS"
+  | (string & {});
 export const HttpTimeseriesGroupsTlsVersionRequestHttpProtocol =
   /*@__PURE__*/ S.String;
 
@@ -95899,7 +98721,8 @@ export const HttpTimeseriesGroupsTlsVersionRequestHttpProtocolList =
 export type HttpTimeseriesGroupsTlsVersionRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const HttpTimeseriesGroupsTlsVersionRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -95910,7 +98733,10 @@ export const HttpTimeseriesGroupsTlsVersionRequestHttpVersionList =
     HttpTimeseriesGroupsTlsVersionRequestHttpVersion,
   ) as any as S.Schema<HttpTimeseriesGroupsTlsVersionRequestHttpVersionList>;
 
-export type HttpTimeseriesGroupsTlsVersionRequestIpVersion = "IPv4" | "IPv6";
+export type HttpTimeseriesGroupsTlsVersionRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const HttpTimeseriesGroupsTlsVersionRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -95942,7 +98768,8 @@ export type HttpTimeseriesGroupsTlsVersionRequestOs =
   | "ANDROID"
   | "CHROMEOS"
   | "LINUX"
-  | "SMART_TV";
+  | "SMART_TV"
+  | (string & {});
 export const HttpTimeseriesGroupsTlsVersionRequestOs = /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsTlsVersionRequestOsList =
@@ -96060,7 +98887,8 @@ export type HttpTimeseriesGroupsTlsVersionResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const HttpTimeseriesGroupsTlsVersionResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -96089,7 +98917,8 @@ export type HttpTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsI
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const HttpTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -96099,7 +98928,8 @@ export type HttpTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsI
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const HttpTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -96198,7 +99028,8 @@ export type HttpTimeseriesGroupsTlsVersionResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const HttpTimeseriesGroupsTlsVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -96351,7 +99182,7 @@ export const RankingTopRequestDomainCategoryList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RankingTopRequestDomainCategoryList>;
 
-export type RankingTopRequestFormat = "JSON" | "CSV";
+export type RankingTopRequestFormat = "JSON" | "CSV" | (string & {});
 export const RankingTopRequestFormat = /*@__PURE__*/ S.String;
 
 export type RankingTopRequestLocationList = ReadonlyArray<string>;
@@ -96367,7 +99198,8 @@ export const RankingTopRequestNameList = /*@__PURE__*/ S.Array(
 export type RankingTopRequestRankingType =
   | "POPULAR"
   | "TRENDING_RISE"
-  | "TRENDING_STEADY";
+  | "TRENDING_STEADY"
+  | (string & {});
 export const RankingTopRequestRankingType = /*@__PURE__*/ S.String;
 
 export interface TopRankingRequest {
@@ -96429,7 +99261,8 @@ export type RankingTopResponseMetaConfidenceInfoAnnotationsItemDataSource =
   | "NET"
   | "ROBOTS_TXT"
   | "SPEED"
-  | "WORKERS_AI";
+  | "WORKERS_AI"
+  | (string & {});
 export const RankingTopResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -96439,7 +99272,8 @@ export type RankingTopResponseMetaConfidenceInfoAnnotationsItemEventType =
   | "OUTAGE"
   | "PARTIAL_PROJECTION"
   | "PIPELINE"
-  | "TRAFFIC_ANOMALY";
+  | "TRAFFIC_ANOMALY"
+  | (string & {});
 export const RankingTopResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -96532,7 +99366,8 @@ export type RankingTopResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const RankingTopResponseMetaNormalization = /*@__PURE__*/ S.String;
 
 export interface RankingTopResponseMetaUnitsItem {
@@ -96641,7 +99476,10 @@ export const RankingInternetServicesTopRequestDateList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RankingInternetServicesTopRequestDateList>;
 
-export type RankingInternetServicesTopRequestFormat = "JSON" | "CSV";
+export type RankingInternetServicesTopRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const RankingInternetServicesTopRequestFormat = /*@__PURE__*/ S.String;
 
 export type RankingInternetServicesTopRequestNameList = ReadonlyArray<string>;
@@ -96715,7 +99553,8 @@ export type RankingInternetServicesTopResponseMetaConfidenceInfoAnnotationsItemD
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const RankingInternetServicesTopResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -96725,7 +99564,8 @@ export type RankingInternetServicesTopResponseMetaConfidenceInfoAnnotationsItemE
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const RankingInternetServicesTopResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -96824,7 +99664,8 @@ export type RankingInternetServicesTopResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const RankingInternetServicesTopResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -96982,7 +99823,10 @@ export const AiBotsSummaryUserAgentRequestDateStartList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AiBotsSummaryUserAgentRequestDateStartList>;
 
-export type AiBotsSummaryUserAgentRequestFormat = "JSON" | "CSV";
+export type AiBotsSummaryUserAgentRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AiBotsSummaryUserAgentRequestFormat = /*@__PURE__*/ S.String;
 
 export type AiBotsSummaryUserAgentRequestLocationList = ReadonlyArray<string>;
@@ -97074,7 +99918,8 @@ export type AiBotsSummaryUserAgentResponseMetaConfidenceInfoAnnotationsItemDataS
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AiBotsSummaryUserAgentResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -97084,7 +99929,8 @@ export type AiBotsSummaryUserAgentResponseMetaConfidenceInfoAnnotationsItemEvent
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AiBotsSummaryUserAgentResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -97183,7 +100029,8 @@ export type AiBotsSummaryUserAgentResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AiBotsSummaryUserAgentResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -97259,7 +100106,8 @@ export type AiTimeseriesGroupsUserAgentRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AiTimeseriesGroupsUserAgentRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -97296,7 +100144,10 @@ export const AiTimeseriesGroupsUserAgentRequestDateStartList =
     S.String,
   ) as any as S.Schema<AiTimeseriesGroupsUserAgentRequestDateStartList>;
 
-export type AiTimeseriesGroupsUserAgentRequestFormat = "JSON" | "CSV";
+export type AiTimeseriesGroupsUserAgentRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AiTimeseriesGroupsUserAgentRequestFormat = /*@__PURE__*/ S.String;
 
 export type AiTimeseriesGroupsUserAgentRequestLocationList =
@@ -97379,7 +100230,8 @@ export type AiTimeseriesGroupsUserAgentResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AiTimeseriesGroupsUserAgentResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -97408,7 +100260,8 @@ export type AiTimeseriesGroupsUserAgentResponseMetaConfidenceInfoAnnotationsItem
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AiTimeseriesGroupsUserAgentResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -97418,7 +100271,8 @@ export type AiTimeseriesGroupsUserAgentResponseMetaConfidenceInfoAnnotationsItem
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AiTimeseriesGroupsUserAgentResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -97517,7 +100371,8 @@ export type AiTimeseriesGroupsUserAgentResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AiTimeseriesGroupsUserAgentResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -97630,14 +100485,23 @@ export const AttacksLayer3SummaryVectorRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer3SummaryVectorRequestDateStartList>;
 
-export type AttacksLayer3SummaryVectorRequestDirection = "ORIGIN" | "TARGET";
+export type AttacksLayer3SummaryVectorRequestDirection =
+  | "ORIGIN"
+  | "TARGET"
+  | (string & {});
 export const AttacksLayer3SummaryVectorRequestDirection =
   /*@__PURE__*/ S.String;
 
-export type AttacksLayer3SummaryVectorRequestFormat = "JSON" | "CSV";
+export type AttacksLayer3SummaryVectorRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer3SummaryVectorRequestFormat = /*@__PURE__*/ S.String;
 
-export type AttacksLayer3SummaryVectorRequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer3SummaryVectorRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer3SummaryVectorRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -97664,7 +100528,8 @@ export type AttacksLayer3SummaryVectorRequestProtocol =
   | "UDP"
   | "TCP"
   | "ICMP"
-  | "GRE";
+  | "GRE"
+  | (string & {});
 export const AttacksLayer3SummaryVectorRequestProtocol = /*@__PURE__*/ S.String;
 
 export type AttacksLayer3SummaryVectorRequestProtocolList =
@@ -97765,7 +100630,8 @@ export type AttacksLayer3SummaryVectorResponseMetaConfidenceInfoAnnotationsItemD
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer3SummaryVectorResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -97775,7 +100641,8 @@ export type AttacksLayer3SummaryVectorResponseMetaConfidenceInfoAnnotationsItemE
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer3SummaryVectorResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -97874,7 +100741,8 @@ export type AttacksLayer3SummaryVectorResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer3SummaryVectorResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -97952,7 +100820,8 @@ export type AttacksLayer3TimeseriesGroupsVectorRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsVectorRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -97986,17 +100855,22 @@ export const AttacksLayer3TimeseriesGroupsVectorRequestDateStartList =
 
 export type AttacksLayer3TimeseriesGroupsVectorRequestDirection =
   | "ORIGIN"
-  | "TARGET";
+  | "TARGET"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsVectorRequestDirection =
   /*@__PURE__*/ S.String;
 
-export type AttacksLayer3TimeseriesGroupsVectorRequestFormat = "JSON" | "CSV";
+export type AttacksLayer3TimeseriesGroupsVectorRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsVectorRequestFormat =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesGroupsVectorRequestIpVersion =
   | "IPv4"
-  | "IPv6";
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsVectorRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -98023,7 +100897,8 @@ export const AttacksLayer3TimeseriesGroupsVectorRequestNameList =
 
 export type AttacksLayer3TimeseriesGroupsVectorRequestNormalization =
   | "PERCENTAGE"
-  | "MIN0_MAX";
+  | "MIN0_MAX"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsVectorRequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -98031,7 +100906,8 @@ export type AttacksLayer3TimeseriesGroupsVectorRequestProtocol =
   | "UDP"
   | "TCP"
   | "ICMP"
-  | "GRE";
+  | "GRE"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsVectorRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -98128,7 +101004,8 @@ export type AttacksLayer3TimeseriesGroupsVectorResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsVectorResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -98157,7 +101034,8 @@ export type AttacksLayer3TimeseriesGroupsVectorResponseMetaConfidenceInfoAnnotat
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer3TimeseriesGroupsVectorResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -98167,7 +101045,8 @@ export type AttacksLayer3TimeseriesGroupsVectorResponseMetaConfidenceInfoAnnotat
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer3TimeseriesGroupsVectorResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -98266,7 +101145,8 @@ export type AttacksLayer3TimeseriesGroupsVectorResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsVectorResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -98385,14 +101265,23 @@ export const AttacksLayer3SummaryVerticalRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer3SummaryVerticalRequestDateStartList>;
 
-export type AttacksLayer3SummaryVerticalRequestDirection = "ORIGIN" | "TARGET";
+export type AttacksLayer3SummaryVerticalRequestDirection =
+  | "ORIGIN"
+  | "TARGET"
+  | (string & {});
 export const AttacksLayer3SummaryVerticalRequestDirection =
   /*@__PURE__*/ S.String;
 
-export type AttacksLayer3SummaryVerticalRequestFormat = "JSON" | "CSV";
+export type AttacksLayer3SummaryVerticalRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer3SummaryVerticalRequestFormat = /*@__PURE__*/ S.String;
 
-export type AttacksLayer3SummaryVerticalRequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer3SummaryVerticalRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer3SummaryVerticalRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -98420,7 +101309,8 @@ export type AttacksLayer3SummaryVerticalRequestProtocol =
   | "UDP"
   | "TCP"
   | "ICMP"
-  | "GRE";
+  | "GRE"
+  | (string & {});
 export const AttacksLayer3SummaryVerticalRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -98526,7 +101416,8 @@ export type AttacksLayer3SummaryVerticalResponseMetaConfidenceInfoAnnotationsIte
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer3SummaryVerticalResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -98536,7 +101427,8 @@ export type AttacksLayer3SummaryVerticalResponseMetaConfidenceInfoAnnotationsIte
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer3SummaryVerticalResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -98635,7 +101527,8 @@ export type AttacksLayer3SummaryVerticalResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer3SummaryVerticalResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -98713,7 +101606,8 @@ export type AttacksLayer3TimeseriesGroupsVerticalRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsVerticalRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -98747,17 +101641,22 @@ export const AttacksLayer3TimeseriesGroupsVerticalRequestDateStartList =
 
 export type AttacksLayer3TimeseriesGroupsVerticalRequestDirection =
   | "ORIGIN"
-  | "TARGET";
+  | "TARGET"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsVerticalRequestDirection =
   /*@__PURE__*/ S.String;
 
-export type AttacksLayer3TimeseriesGroupsVerticalRequestFormat = "JSON" | "CSV";
+export type AttacksLayer3TimeseriesGroupsVerticalRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsVerticalRequestFormat =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesGroupsVerticalRequestIpVersion =
   | "IPv4"
-  | "IPv6";
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsVerticalRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -98784,7 +101683,8 @@ export const AttacksLayer3TimeseriesGroupsVerticalRequestNameList =
 
 export type AttacksLayer3TimeseriesGroupsVerticalRequestNormalization =
   | "PERCENTAGE"
-  | "MIN0_MAX";
+  | "MIN0_MAX"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsVerticalRequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -98792,7 +101692,8 @@ export type AttacksLayer3TimeseriesGroupsVerticalRequestProtocol =
   | "UDP"
   | "TCP"
   | "ICMP"
-  | "GRE";
+  | "GRE"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsVerticalRequestProtocol =
   /*@__PURE__*/ S.String;
 
@@ -98903,7 +101804,8 @@ export type AttacksLayer3TimeseriesGroupsVerticalResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsVerticalResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -98932,7 +101834,8 @@ export type AttacksLayer3TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnot
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer3TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -98942,7 +101845,8 @@ export type AttacksLayer3TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnot
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer3TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -99043,7 +101947,8 @@ export type AttacksLayer3TimeseriesGroupsVerticalResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer3TimeseriesGroupsVerticalResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -99160,10 +102065,16 @@ export const AttacksLayer3TopVerticalRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer3TopVerticalRequestDateStartList>;
 
-export type AttacksLayer3TopVerticalRequestFormat = "JSON" | "CSV";
+export type AttacksLayer3TopVerticalRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer3TopVerticalRequestFormat = /*@__PURE__*/ S.String;
 
-export type AttacksLayer3TopVerticalRequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer3TopVerticalRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer3TopVerticalRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TopVerticalRequestIpVersionList =
@@ -99188,7 +102099,8 @@ export type AttacksLayer3TopVerticalRequestProtocol =
   | "UDP"
   | "TCP"
   | "ICMP"
-  | "GRE";
+  | "GRE"
+  | (string & {});
 export const AttacksLayer3TopVerticalRequestProtocol = /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TopVerticalRequestProtocolList =
@@ -99284,7 +102196,8 @@ export type AttacksLayer3TopVerticalResponseMetaConfidenceInfoAnnotationsItemDat
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer3TopVerticalResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -99294,7 +102207,8 @@ export type AttacksLayer3TopVerticalResponseMetaConfidenceInfoAnnotationsItemEve
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer3TopVerticalResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -99393,7 +102307,8 @@ export type AttacksLayer3TopVerticalResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer3TopVerticalResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -99509,7 +102424,10 @@ export const AttacksLayer7SummaryVerticalRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer7SummaryVerticalRequestDateStartList>;
 
-export type AttacksLayer7SummaryVerticalRequestFormat = "JSON" | "CSV";
+export type AttacksLayer7SummaryVerticalRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer7SummaryVerticalRequestFormat = /*@__PURE__*/ S.String;
 
 export type AttacksLayer7SummaryVerticalRequestHttpMethod =
@@ -99558,7 +102476,8 @@ export type AttacksLayer7SummaryVerticalRequestHttpMethod =
   | "RPC_IN_DATA"
   | "JSON"
   | "COOK"
-  | "TRACK";
+  | "TRACK"
+  | (string & {});
 export const AttacksLayer7SummaryVerticalRequestHttpMethod =
   /*@__PURE__*/ S.String;
 
@@ -99572,7 +102491,8 @@ export const AttacksLayer7SummaryVerticalRequestHttpMethodList =
 export type AttacksLayer7SummaryVerticalRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const AttacksLayer7SummaryVerticalRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -99583,7 +102503,10 @@ export const AttacksLayer7SummaryVerticalRequestHttpVersionList =
     AttacksLayer7SummaryVerticalRequestHttpVersion,
   ) as any as S.Schema<AttacksLayer7SummaryVerticalRequestHttpVersionList>;
 
-export type AttacksLayer7SummaryVerticalRequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer7SummaryVerticalRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer7SummaryVerticalRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -99608,7 +102531,8 @@ export type AttacksLayer7SummaryVerticalRequestMitigationProduct =
   | "ACCESS_RULES"
   | "IP_REPUTATION"
   | "API_SHIELD"
-  | "DATA_LOSS_PREVENTION";
+  | "DATA_LOSS_PREVENTION"
+  | (string & {});
 export const AttacksLayer7SummaryVerticalRequestMitigationProduct =
   /*@__PURE__*/ S.String;
 
@@ -99728,7 +102652,8 @@ export type AttacksLayer7SummaryVerticalResponseMetaConfidenceInfoAnnotationsIte
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer7SummaryVerticalResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -99738,7 +102663,8 @@ export type AttacksLayer7SummaryVerticalResponseMetaConfidenceInfoAnnotationsIte
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer7SummaryVerticalResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -99837,7 +102763,8 @@ export type AttacksLayer7SummaryVerticalResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer7SummaryVerticalResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -99915,7 +102842,8 @@ export type AttacksLayer7TimeseriesGroupsVerticalRequestAggInterval =
   | "15m"
   | "1h"
   | "1d"
-  | "1w";
+  | "1w"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsVerticalRequestAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -99954,7 +102882,10 @@ export const AttacksLayer7TimeseriesGroupsVerticalRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsVerticalRequestDateStartList>;
 
-export type AttacksLayer7TimeseriesGroupsVerticalRequestFormat = "JSON" | "CSV";
+export type AttacksLayer7TimeseriesGroupsVerticalRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsVerticalRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -100004,7 +102935,8 @@ export type AttacksLayer7TimeseriesGroupsVerticalRequestHttpMethod =
   | "RPC_IN_DATA"
   | "JSON"
   | "COOK"
-  | "TRACK";
+  | "TRACK"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsVerticalRequestHttpMethod =
   /*@__PURE__*/ S.String;
 
@@ -100018,7 +102950,8 @@ export const AttacksLayer7TimeseriesGroupsVerticalRequestHttpMethodList =
 export type AttacksLayer7TimeseriesGroupsVerticalRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsVerticalRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -100031,7 +102964,8 @@ export const AttacksLayer7TimeseriesGroupsVerticalRequestHttpVersionList =
 
 export type AttacksLayer7TimeseriesGroupsVerticalRequestIpVersion =
   | "IPv4"
-  | "IPv6";
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsVerticalRequestIpVersion =
   /*@__PURE__*/ S.String;
 
@@ -100056,7 +102990,8 @@ export type AttacksLayer7TimeseriesGroupsVerticalRequestMitigationProduct =
   | "ACCESS_RULES"
   | "IP_REPUTATION"
   | "API_SHIELD"
-  | "DATA_LOSS_PREVENTION";
+  | "DATA_LOSS_PREVENTION"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsVerticalRequestMitigationProduct =
   /*@__PURE__*/ S.String;
 
@@ -100076,7 +103011,8 @@ export const AttacksLayer7TimeseriesGroupsVerticalRequestNameList =
 
 export type AttacksLayer7TimeseriesGroupsVerticalRequestNormalization =
   | "PERCENTAGE"
-  | "MIN0_MAX";
+  | "MIN0_MAX"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsVerticalRequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -100194,7 +103130,8 @@ export type AttacksLayer7TimeseriesGroupsVerticalResponseMetaAggInterval =
   | "ONE_HOUR"
   | "ONE_DAY"
   | "ONE_WEEK"
-  | "ONE_MONTH";
+  | "ONE_MONTH"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsVerticalResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
@@ -100223,7 +103160,8 @@ export type AttacksLayer7TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnot
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer7TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -100233,7 +103171,8 @@ export type AttacksLayer7TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnot
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer7TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -100334,7 +103273,8 @@ export type AttacksLayer7TimeseriesGroupsVerticalResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer7TimeseriesGroupsVerticalResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -100456,7 +103396,10 @@ export const AttacksLayer7TopVerticalRequestDateStartList =
     S.String,
   ) as any as S.Schema<AttacksLayer7TopVerticalRequestDateStartList>;
 
-export type AttacksLayer7TopVerticalRequestFormat = "JSON" | "CSV";
+export type AttacksLayer7TopVerticalRequestFormat =
+  | "JSON"
+  | "CSV"
+  | (string & {});
 export const AttacksLayer7TopVerticalRequestFormat = /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TopVerticalRequestHttpMethod =
@@ -100505,7 +103448,8 @@ export type AttacksLayer7TopVerticalRequestHttpMethod =
   | "RPC_IN_DATA"
   | "JSON"
   | "COOK"
-  | "TRACK";
+  | "TRACK"
+  | (string & {});
 export const AttacksLayer7TopVerticalRequestHttpMethod = /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TopVerticalRequestHttpMethodList =
@@ -100518,7 +103462,8 @@ export const AttacksLayer7TopVerticalRequestHttpMethodList =
 export type AttacksLayer7TopVerticalRequestHttpVersion =
   | "HTTPv1"
   | "HTTPv2"
-  | "HTTPv3";
+  | "HTTPv3"
+  | (string & {});
 export const AttacksLayer7TopVerticalRequestHttpVersion =
   /*@__PURE__*/ S.String;
 
@@ -100529,7 +103474,10 @@ export const AttacksLayer7TopVerticalRequestHttpVersionList =
     AttacksLayer7TopVerticalRequestHttpVersion,
   ) as any as S.Schema<AttacksLayer7TopVerticalRequestHttpVersionList>;
 
-export type AttacksLayer7TopVerticalRequestIpVersion = "IPv4" | "IPv6";
+export type AttacksLayer7TopVerticalRequestIpVersion =
+  | "IPv4"
+  | "IPv6"
+  | (string & {});
 export const AttacksLayer7TopVerticalRequestIpVersion = /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TopVerticalRequestIpVersionList =
@@ -100552,7 +103500,8 @@ export type AttacksLayer7TopVerticalRequestMitigationProduct =
   | "ACCESS_RULES"
   | "IP_REPUTATION"
   | "API_SHIELD"
-  | "DATA_LOSS_PREVENTION";
+  | "DATA_LOSS_PREVENTION"
+  | (string & {});
 export const AttacksLayer7TopVerticalRequestMitigationProduct =
   /*@__PURE__*/ S.String;
 
@@ -100667,7 +103616,8 @@ export type AttacksLayer7TopVerticalResponseMetaConfidenceInfoAnnotationsItemDat
     | "NET"
     | "ROBOTS_TXT"
     | "SPEED"
-    | "WORKERS_AI";
+    | "WORKERS_AI"
+    | (string & {});
 export const AttacksLayer7TopVerticalResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -100677,7 +103627,8 @@ export type AttacksLayer7TopVerticalResponseMetaConfidenceInfoAnnotationsItemEve
     | "OUTAGE"
     | "PARTIAL_PROJECTION"
     | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+    | "TRAFFIC_ANOMALY"
+    | (string & {});
 export const AttacksLayer7TopVerticalResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -100776,7 +103727,8 @@ export type AttacksLayer7TopVerticalResponseMetaNormalization =
   | "PERCENTAGE_CHANGE"
   | "ROLLING_AVERAGE"
   | "OVERLAPPED_PERCENTAGE"
-  | "RATIO";
+  | "RATIO"
+  | (string & {});
 export const AttacksLayer7TopVerticalResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 

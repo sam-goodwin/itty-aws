@@ -234,7 +234,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -590,7 +591,8 @@ export type GeoTaxonomyTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "GLOBAL"
   | "REGIONAL"
-  | "MULTI_REGIONAL";
+  | "MULTI_REGIONAL"
+  | (string & {});
 export const GeoTaxonomyTypeEnum = /*@__PURE__*/ S.String;
 
 /** Encapsulates the geographic taxonomy data for a sku. */
@@ -610,13 +612,15 @@ export const GeoTaxonomy = /*@__PURE__*/ S.suspend(() =>
 export type AggregationInfoAggregationIntervalEnum =
   | "AGGREGATION_INTERVAL_UNSPECIFIED"
   | "DAILY"
-  | "MONTHLY";
+  | "MONTHLY"
+  | (string & {});
 export const AggregationInfoAggregationIntervalEnum = /*@__PURE__*/ S.String;
 
 export type AggregationInfoAggregationLevelEnum =
   | "AGGREGATION_LEVEL_UNSPECIFIED"
   | "ACCOUNT"
-  | "PROJECT";
+  | "PROJECT"
+  | (string & {});
 export const AggregationInfoAggregationLevelEnum = /*@__PURE__*/ S.String;
 
 /** Represents the aggregation level and interval for pricing of a single SKU. */

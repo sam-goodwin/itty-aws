@@ -126,7 +126,8 @@ export type AppEngineHttpTargetHttpMethodEnum =
   | "PUT"
   | "DELETE"
   | "PATCH"
-  | "OPTIONS";
+  | "OPTIONS"
+  | (string & {});
 export const AppEngineHttpTargetHttpMethodEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -216,7 +217,8 @@ export type JobStateEnum =
   | "ENABLED"
   | "PAUSED"
   | "DISABLED"
-  | "UPDATE_FAILED";
+  | "UPDATE_FAILED"
+  | (string & {});
 export const JobStateEnum = /*@__PURE__*/ S.String;
 
 /** Pub/Sub target. The job will be delivered by publishing a message to the given Pub/Sub topic. */
@@ -244,7 +246,8 @@ export type HttpTargetHttpMethodEnum =
   | "PUT"
   | "DELETE"
   | "PATCH"
-  | "OPTIONS";
+  | "OPTIONS"
+  | (string & {});
 export const HttpTargetHttpMethodEnum = /*@__PURE__*/ S.String;
 
 /** Contains information needed for generating an [OAuth token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com. */

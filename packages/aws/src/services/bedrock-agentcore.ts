@@ -272,7 +272,7 @@ export const BatchCreateMemoryRecordsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchCreateMemoryRecordsInput",
 }) as any as S.Schema<BatchCreateMemoryRecordsInput>;
 export type MemoryRecordId = string;
-export type MemoryRecordStatus = "SUCCEEDED" | "FAILED";
+export type MemoryRecordStatus = "SUCCEEDED" | "FAILED" | (string & {});
 export const MemoryRecordStatus = /*@__PURE__*/ S.String;
 
 export interface MemoryRecordOutput {
@@ -593,14 +593,16 @@ export type ABTestStatus =
   | "UPDATE_FAILED"
   | "DELETING"
   | "DELETE_FAILED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ABTestStatus = /*@__PURE__*/ S.String;
 
 export type ABTestExecutionStatus =
   | "PAUSED"
   | "RUNNING"
   | "STOPPED"
-  | "NOT_STARTED";
+  | "NOT_STARTED"
+  | (string & {});
 export const ABTestExecutionStatus = /*@__PURE__*/ S.String;
 
 export interface CreateABTestResponse {
@@ -629,7 +631,7 @@ export type Content = { text: string | redacted.Redacted<string> };
 export const Content = /*@__PURE__*/ S.Union([
   S.Struct({ text: SensitiveString }),
 ]);
-export type Role = "ASSISTANT" | "USER" | "TOOL" | "OTHER";
+export type Role = "ASSISTANT" | "USER" | "TOOL" | "OTHER" | (string & {});
 export const Role = /*@__PURE__*/ S.String;
 
 export interface Conversational {
@@ -667,7 +669,7 @@ export const MetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   MetadataValue.pipe(S.optional),
 );
-export type ExtractionMode = "SKIP";
+export type ExtractionMode = "SKIP" | (string & {});
 export const ExtractionMode = /*@__PURE__*/ S.String;
 
 export interface CreateEventInput {
@@ -739,10 +741,10 @@ export type UserId = string;
 export type PaymentAgentName = string;
 export type PaymentManagerArn = string;
 export type PaymentConnectorId = string;
-export type PaymentInstrumentType = "EMBEDDED_CRYPTO_WALLET";
+export type PaymentInstrumentType = "EMBEDDED_CRYPTO_WALLET" | (string & {});
 export const PaymentInstrumentType = /*@__PURE__*/ S.String;
 
-export type CryptoWalletNetwork = "ETHEREUM" | "SOLANA";
+export type CryptoWalletNetwork = "ETHEREUM" | "SOLANA" | (string & {});
 export const CryptoWalletNetwork = /*@__PURE__*/ S.String;
 
 export type Email = string | redacted.Redacted<string>;
@@ -927,7 +929,8 @@ export type PaymentInstrumentStatus =
   | "INITIATED"
   | "ACTIVE"
   | "FAILED"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const PaymentInstrumentStatus = /*@__PURE__*/ S.String;
 
 export interface PaymentInstrument {
@@ -964,7 +967,7 @@ export const CreatePaymentInstrumentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePaymentInstrumentResponse",
 }) as any as S.Schema<CreatePaymentInstrumentResponse>;
-export type Currency = "USD";
+export type Currency = "USD" | (string & {});
 export const Currency = /*@__PURE__*/ S.String;
 
 export interface Amount {
@@ -1117,7 +1120,8 @@ export type BatchEvaluationStatus =
   | "FAILED"
   | "STOPPING"
   | "STOPPED"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const BatchEvaluationStatus = /*@__PURE__*/ S.String;
 
 export interface DeleteBatchEvaluationResponse {
@@ -1262,7 +1266,11 @@ export const DeletePaymentSessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeletePaymentSessionRequest",
 }) as any as S.Schema<DeletePaymentSessionRequest>;
-export type PaymentSessionStatus = "ACTIVE" | "EXPIRED" | "DELETED";
+export type PaymentSessionStatus =
+  | "ACTIVE"
+  | "EXPIRED"
+  | "DELETED"
+  | (string & {});
 export const PaymentSessionStatus = /*@__PURE__*/ S.String;
 
 export interface DeletePaymentSessionResponse {
@@ -1298,7 +1306,8 @@ export type RecommendationStatus =
   | "IN_PROGRESS"
   | "COMPLETED"
   | "FAILED"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const RecommendationStatus = /*@__PURE__*/ S.String;
 
 export interface DeleteRecommendationResponse {
@@ -1853,7 +1862,8 @@ export type InsightsFailureCategory =
   | "configuration-mismatch-category-tool-definition"
   | "coding-use-case-specific-failure-types-category-edge-case-oversights"
   | "coding-use-case-specific-failure-types-category-dependency-issues"
-  | "other";
+  | "other"
+  | (string & {});
 export const InsightsFailureCategory = /*@__PURE__*/ S.String;
 
 export interface InsightsFailureSignal {
@@ -2183,7 +2193,10 @@ export const BrowserExtension = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BrowserExtension>;
 export type BrowserExtensions = BrowserExtension[];
 export const BrowserExtensions = /*@__PURE__*/ S.Array(BrowserExtension);
-export type BrowserEnterprisePolicyType = "MANAGED" | "RECOMMENDED";
+export type BrowserEnterprisePolicyType =
+  | "MANAGED"
+  | "RECOMMENDED"
+  | (string & {});
 export const BrowserEnterprisePolicyType = /*@__PURE__*/ S.String;
 
 export interface BrowserEnterprisePolicy {
@@ -2212,11 +2225,11 @@ export const BrowserProfileConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "BrowserProfileConfiguration",
 }) as any as S.Schema<BrowserProfileConfiguration>;
 export type BrowserSessionTimeout = number;
-export type BrowserSessionStatus = "READY" | "TERMINATED";
+export type BrowserSessionStatus = "READY" | "TERMINATED" | (string & {});
 export const BrowserSessionStatus = /*@__PURE__*/ S.String;
 
 export type BrowserStreamEndpoint = string;
-export type AutomationStreamStatus = "ENABLED" | "DISABLED";
+export type AutomationStreamStatus = "ENABLED" | "DISABLED" | (string & {});
 export const AutomationStreamStatus = /*@__PURE__*/ S.String;
 
 export interface AutomationStream {
@@ -2384,7 +2397,10 @@ export const GetCodeInterpreterSessionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCodeInterpreterSessionRequest",
 }) as any as S.Schema<GetCodeInterpreterSessionRequest>;
 export type CodeInterpreterSessionTimeout = number;
-export type CodeInterpreterSessionStatus = "READY" | "TERMINATED";
+export type CodeInterpreterSessionStatus =
+  | "READY"
+  | "TERMINATED"
+  | (string & {});
 export const CodeInterpreterSessionStatus = /*@__PURE__*/ S.String;
 
 export interface GetCodeInterpreterSessionResponse {
@@ -2535,10 +2551,11 @@ export type BlockchainChainId =
   | "BASE_SEPOLIA"
   | "ETHEREUM"
   | "SOLANA"
-  | "SOLANA_DEVNET";
+  | "SOLANA_DEVNET"
+  | (string & {});
 export const BlockchainChainId = /*@__PURE__*/ S.String;
 
-export type InstrumentBalanceToken = "USDC";
+export type InstrumentBalanceToken = "USDC" | (string & {});
 export const InstrumentBalanceToken = /*@__PURE__*/ S.String;
 
 export interface GetPaymentInstrumentBalanceRequest {
@@ -2662,7 +2679,8 @@ export type RecommendationName = string;
 export type RecommendationDescription = string;
 export type RecommendationType =
   | "SYSTEM_PROMPT_RECOMMENDATION"
-  | "TOOL_DESCRIPTION_RECOMMENDATION";
+  | "TOOL_DESCRIPTION_RECOMMENDATION"
+  | (string & {});
 export const RecommendationType = /*@__PURE__*/ S.String;
 
 export type SystemPromptText = string | redacted.Redacted<string>;
@@ -2701,7 +2719,8 @@ export type CloudWatchLogsFilterOperator =
   | "GreaterThanOrEqual"
   | "LessThanOrEqual"
   | "Contains"
-  | "NotContains";
+  | "NotContains"
+  | (string & {});
 export const CloudWatchLogsFilterOperator = /*@__PURE__*/ S.String;
 
 export type FilterStringValue = string;
@@ -3061,7 +3080,8 @@ export const ScopesListType = /*@__PURE__*/ S.Array(S.String);
 export type Oauth2FlowType =
   | "USER_FEDERATION"
   | "M2M"
-  | "ON_BEHALF_OF_TOKEN_EXCHANGE";
+  | "ON_BEHALF_OF_TOKEN_EXCHANGE"
+  | (string & {});
 export const Oauth2FlowType = /*@__PURE__*/ S.String;
 
 export type ResourceOauth2ReturnUrlType = string;
@@ -3124,7 +3144,7 @@ export const GetResourceOauth2TokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResourceOauth2TokenRequest>;
 export type AuthorizationUrlType = string | redacted.Redacted<string>;
 export type AccessTokenType = string | redacted.Redacted<string>;
-export type SessionStatus = "IN_PROGRESS" | "FAILED";
+export type SessionStatus = "IN_PROGRESS" | "FAILED" | (string & {});
 export const SessionStatus = /*@__PURE__*/ S.String;
 
 export interface GetResourceOauth2TokenResponse {
@@ -3143,7 +3163,13 @@ export const GetResourceOauth2TokenResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourceOauth2TokenResponse",
 }) as any as S.Schema<GetResourceOauth2TokenResponse>;
-export type PaymentHttpMethodType = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
+export type PaymentHttpMethodType =
+  | "GET"
+  | "POST"
+  | "PUT"
+  | "DELETE"
+  | "PATCH"
+  | (string & {});
 export const PaymentHttpMethodType = /*@__PURE__*/ S.String;
 
 export type PaymentRequestHostType = string;
@@ -3520,7 +3546,7 @@ export const ContentDeltaEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ContentDeltaEvent",
 }) as any as S.Schema<ContentDeltaEvent>;
-export type CommandExecutionStatus = "COMPLETED" | "TIMED_OUT";
+export type CommandExecutionStatus = "COMPLETED" | "TIMED_OUT" | (string & {});
 export const CommandExecutionStatus = /*@__PURE__*/ S.String;
 
 export interface ContentStopEvent {
@@ -3550,7 +3576,8 @@ export type ValidationExceptionReason =
   | "FieldValidationFailed"
   | "IdempotentParameterMismatchException"
   | "EventInOtherSession"
-  | "ResourceConflict";
+  | "ResourceConflict"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {
@@ -3716,7 +3743,7 @@ export const InvokeAgentRuntimeCommandResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InvokeAgentRuntimeCommandResponse",
 }) as any as S.Schema<InvokeAgentRuntimeCommandResponse>;
-export type MouseButton = "LEFT" | "RIGHT" | "MIDDLE";
+export type MouseButton = "LEFT" | "RIGHT" | "MIDDLE" | (string & {});
 export const MouseButton = /*@__PURE__*/ S.String;
 
 export interface MouseClickArguments {
@@ -3805,7 +3832,7 @@ export const KeyShortcutArguments = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KeyShortcutArguments",
 }) as any as S.Schema<KeyShortcutArguments>;
-export type ScreenshotFormat = "PNG";
+export type ScreenshotFormat = "PNG" | (string & {});
 export const ScreenshotFormat = /*@__PURE__*/ S.String;
 
 export interface ScreenshotArguments {
@@ -3933,7 +3960,7 @@ export const InvokeBrowserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InvokeBrowserRequest",
 }) as any as S.Schema<InvokeBrowserRequest>;
-export type BrowserActionStatus = "SUCCESS" | "FAILED";
+export type BrowserActionStatus = "SUCCESS" | "FAILED" | (string & {});
 export const BrowserActionStatus = /*@__PURE__*/ S.String;
 
 export interface MouseClickResult {
@@ -4121,11 +4148,16 @@ export type ToolName =
   | "writeFiles"
   | "startCommandExecution"
   | "getTask"
-  | "stopTask";
+  | "stopTask"
+  | (string & {});
 export const ToolName = /*@__PURE__*/ S.String;
 
 export type MaxLenString = string;
-export type ProgrammingLanguage = "python" | "javascript" | "typescript";
+export type ProgrammingLanguage =
+  | "python"
+  | "javascript"
+  | "typescript"
+  | (string & {});
 export const ProgrammingLanguage = /*@__PURE__*/ S.String;
 
 export type StringList = string[];
@@ -4146,7 +4178,7 @@ export const InputContentBlock = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InputContentBlock>;
 export type InputContentBlockList = InputContentBlock[];
 export const InputContentBlockList = /*@__PURE__*/ S.Array(InputContentBlock);
-export type LanguageRuntime = "nodejs" | "deno" | "python";
+export type LanguageRuntime = "nodejs" | "deno" | "python" | (string & {});
 export const LanguageRuntime = /*@__PURE__*/ S.String;
 
 export interface ToolArguments {
@@ -4211,10 +4243,15 @@ export const InvokeCodeInterpreterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InvokeCodeInterpreterRequest",
 }) as any as S.Schema<InvokeCodeInterpreterRequest>;
-export type ContentBlockType = "text" | "image" | "resource" | "resource_link";
+export type ContentBlockType =
+  | "text"
+  | "image"
+  | "resource"
+  | "resource_link"
+  | (string & {});
 export const ContentBlockType = /*@__PURE__*/ S.String;
 
-export type ResourceContentType = "text" | "blob";
+export type ResourceContentType = "text" | "blob" | (string & {});
 export const ResourceContentType = /*@__PURE__*/ S.String;
 
 export interface ResourceContent {
@@ -4266,7 +4303,8 @@ export type TaskStatus =
   | "working"
   | "completed"
   | "canceled"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const TaskStatus = /*@__PURE__*/ S.String;
 
 export interface ToolResultStructuredContent {
@@ -4440,7 +4478,7 @@ export const InvokeCodeInterpreterResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvokeCodeInterpreterResponse>;
 export type HarnessArn = string;
 export type HarnessEndpointName = string;
-export type HarnessConversationRole = "user" | "assistant";
+export type HarnessConversationRole = "user" | "assistant" | (string & {});
 export const HarnessConversationRole = /*@__PURE__*/ S.String;
 
 export type SensitiveText = string | redacted.Redacted<string>;
@@ -4450,7 +4488,8 @@ export type SensitiveJson = unknown;
 export type HarnessToolUseType =
   | "tool_use"
   | "server_tool_use"
-  | "mcp_tool_use";
+  | "mcp_tool_use"
+  | (string & {});
 export const HarnessToolUseType = /*@__PURE__*/ S.String;
 
 export interface HarnessToolUseBlock {
@@ -4482,7 +4521,7 @@ export type HarnessToolResultContentBlocks = HarnessToolResultContentBlock[];
 export const HarnessToolResultContentBlocks = /*@__PURE__*/ S.Array(
   HarnessToolResultContentBlock,
 );
-export type HarnessToolUseStatus = "success" | "error";
+export type HarnessToolUseStatus = "success" | "error" | (string & {});
 export const HarnessToolUseStatus = /*@__PURE__*/ S.String;
 
 export interface HarnessToolResultBlock {
@@ -4566,7 +4605,8 @@ export type TopP = number;
 export type HarnessBedrockApiFormat =
   | "converse_stream"
   | "responses"
-  | "chat_completions";
+  | "chat_completions"
+  | (string & {});
 export const HarnessBedrockApiFormat = /*@__PURE__*/ S.String;
 
 export interface HarnessBedrockModelConfig {
@@ -4590,7 +4630,10 @@ export const HarnessBedrockModelConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "HarnessBedrockModelConfig",
 }) as any as S.Schema<HarnessBedrockModelConfig>;
 export type ApiKeyArn = string;
-export type HarnessOpenAiApiFormat = "chat_completions" | "responses";
+export type HarnessOpenAiApiFormat =
+  | "chat_completions"
+  | "responses"
+  | (string & {});
 export const HarnessOpenAiApiFormat = /*@__PURE__*/ S.String;
 
 export interface HarnessOpenAiModelConfig {
@@ -4705,7 +4748,8 @@ export type HarnessToolType =
   | "agentcore_browser"
   | "agentcore_gateway"
   | "inline_function"
-  | "agentcore_code_interpreter";
+  | "agentcore_code_interpreter"
+  | (string & {});
 export const HarnessToolType = /*@__PURE__*/ S.String;
 
 export type HarnessRemoteMcpUrl = string | redacted.Redacted<string>;
@@ -4750,7 +4794,8 @@ export const OAuthCustomParameters = /*@__PURE__*/ S.Record(
 export type OAuthGrantType =
   | "CLIENT_CREDENTIALS"
   | "AUTHORIZATION_CODE"
-  | "TOKEN_EXCHANGE";
+  | "TOKEN_EXCHANGE"
+  | (string & {});
 export const OAuthGrantType = /*@__PURE__*/ S.String;
 
 export type OAuthDefaultReturnUrl = string;
@@ -5131,7 +5176,8 @@ export type HarnessStopReason =
   | "model_context_window_exceeded"
   | "max_iterations_exceeded"
   | "max_output_tokens_exceeded"
-  | "timeout_exceeded";
+  | "timeout_exceeded"
+  | (string & {});
 export const HarnessStopReason = /*@__PURE__*/ S.String;
 
 export interface HarnessMessageStopEvent {
@@ -5625,7 +5671,11 @@ export type LeftExpression = { metadataKey: string };
 export const LeftExpression = /*@__PURE__*/ S.Union([
   S.Struct({ metadataKey: S.String }),
 ]);
-export type OperatorType = "EQUALS_TO" | "EXISTS" | "NOT_EXISTS";
+export type OperatorType =
+  | "EQUALS_TO"
+  | "EXISTS"
+  | "NOT_EXISTS"
+  | (string & {});
 export const OperatorType = /*@__PURE__*/ S.String;
 
 export type RightExpression = { metadataValue: MetadataValue };
@@ -5705,7 +5755,7 @@ export const ListEventsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEventsOutput",
 }) as any as S.Schema<ListEventsOutput>;
-export type ExtractionJobStatus = "FAILED";
+export type ExtractionJobStatus = "FAILED" | (string & {});
 export const ExtractionJobStatus = /*@__PURE__*/ S.String;
 
 export interface ExtractionJobFilterInput {
@@ -5816,7 +5866,8 @@ export type MemoryRecordOperatorType =
   | "GREATER_THAN"
   | "GREATER_THAN_OR_EQUALS"
   | "LESS_THAN"
-  | "LESS_THAN_OR_EQUALS";
+  | "LESS_THAN_OR_EQUALS"
+  | (string & {});
 export const MemoryRecordOperatorType = /*@__PURE__*/ S.String;
 
 export type MemoryRecordRightExpression = {
@@ -6114,7 +6165,7 @@ export const ListRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRecommendationsResponse",
 }) as any as S.Schema<ListRecommendationsResponse>;
-export type EventFilterCondition = "HAS_EVENTS";
+export type EventFilterCondition = "HAS_EVENTS" | (string & {});
 export const EventFilterCondition = /*@__PURE__*/ S.String;
 
 export interface SessionFilter {
@@ -6179,7 +6230,7 @@ export const ListSessionsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSessionsOutput",
 }) as any as S.Schema<ListSessionsOutput>;
-export type PaymentType = "CRYPTO_X402";
+export type PaymentType = "CRYPTO_X402" | (string & {});
 export const PaymentType = /*@__PURE__*/ S.String;
 
 export type PaymentDocument = unknown;
@@ -6234,7 +6285,7 @@ export const ProcessPaymentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProcessPaymentRequest",
 }) as any as S.Schema<ProcessPaymentRequest>;
 export type ProcessPaymentId = string;
-export type PaymentStatus = "PROOF_GENERATED";
+export type PaymentStatus = "PROOF_GENERATED" | (string & {});
 export const PaymentStatus = /*@__PURE__*/ S.String;
 
 export interface CryptoX402PaymentOutput {
@@ -6413,7 +6464,12 @@ export type RegistryRecordArn = string;
 export type RegistryRecordId = string;
 export type RegistryRecordName = string;
 export type Description = string | redacted.Redacted<string>;
-export type DescriptorType = "MCP" | "A2A" | "CUSTOM" | "AGENT_SKILLS";
+export type DescriptorType =
+  | "MCP"
+  | "A2A"
+  | "CUSTOM"
+  | "AGENT_SKILLS"
+  | (string & {});
 export const DescriptorType = /*@__PURE__*/ S.String;
 
 export type SchemaVersion = string;
@@ -6527,7 +6583,8 @@ export type RegistryRecordStatus =
   | "PENDING_APPROVAL"
   | "APPROVED"
   | "REJECTED"
-  | "DEPRECATED";
+  | "DEPRECATED"
+  | (string & {});
 export const RegistryRecordStatus = /*@__PURE__*/ S.String;
 
 export interface RegistryRecordSummary {

@@ -117,15 +117,24 @@ export const SurveysArchivedResponseUuidsRetrieveResponse =
   }) as any as S.Schema<SurveysArchivedResponseUuidsRetrieveResponse>;
 
 /** * `popover` - popover * `widget` - widget * `external_survey` - external survey * `api` - api */
-export type SurveyType = "popover" | "widget" | "external_survey" | "api";
+export type SurveyType =
+  | "popover"
+  | "widget"
+  | "external_survey"
+  | "api"
+  | (string & {});
 export const SurveyType = /*@__PURE__*/ S.String;
 
 /** * `once` - once * `recurring` - recurring * `always` - always */
-export type ScheduleEnum = "once" | "recurring" | "always";
+export type ScheduleEnum = "once" | "recurring" | "always" | (string & {});
 export const ScheduleEnum = /*@__PURE__*/ S.String;
 
 /** * `cohort` - cohort * `person` - person * `group` - group */
-export type PropertyGroupTypeEnum = "cohort" | "person" | "group";
+export type PropertyGroupTypeEnum =
+  | "cohort"
+  | "person"
+  | "group"
+  | (string & {});
 export const PropertyGroupTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
@@ -139,7 +148,8 @@ export type FeatureFlagFilterPropertyGenericSchemaOperatorEnum =
   | "gt"
   | "gte"
   | "lt"
-  | "lte";
+  | "lte"
+  | (string & {});
 export const FeatureFlagFilterPropertyGenericSchemaOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -172,7 +182,7 @@ export const FeatureFlagFilterPropertyGenericSchema = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FeatureFlagFilterPropertyGenericSchema>;
 
 /** * `is_set` - is_set * `is_not_set` - is_not_set */
-export type ExistenceOperatorEnum = "is_set" | "is_not_set";
+export type ExistenceOperatorEnum = "is_set" | "is_not_set" | (string & {});
 export const ExistenceOperatorEnum = /*@__PURE__*/ S.String;
 
 export interface FeatureFlagFilterPropertyExistsSchema {
@@ -207,7 +217,8 @@ export const FeatureFlagFilterPropertyExistsSchema = /*@__PURE__*/ S.suspend(
 export type DateOperatorEnum =
   | "is_date_exact"
   | "is_date_before"
-  | "is_date_after";
+  | "is_date_after"
+  | (string & {});
 export const DateOperatorEnum = /*@__PURE__*/ S.String;
 
 export interface FeatureFlagFilterPropertyDateSchema {
@@ -247,7 +258,8 @@ export type FeatureFlagFilterPropertySemverSchemaOperatorEnum =
   | "semver_neq"
   | "semver_tilde"
   | "semver_caret"
-  | "semver_wildcard";
+  | "semver_wildcard"
+  | (string & {});
 export const FeatureFlagFilterPropertySemverSchemaOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -282,7 +294,8 @@ export const FeatureFlagFilterPropertySemverSchema = /*@__PURE__*/ S.suspend(
 /** * `icontains_multi` - icontains_multi * `not_icontains_multi` - not_icontains_multi */
 export type FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum =
   | "icontains_multi"
-  | "not_icontains_multi";
+  | "not_icontains_multi"
+  | (string & {});
 export const FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -325,14 +338,17 @@ export const FeatureFlagFilterPropertyMultiContainsSchema =
   }) as any as S.Schema<FeatureFlagFilterPropertyMultiContainsSchema>;
 
 /** * `cohort` - cohort */
-export type FeatureFlagFilterPropertyCohortInSchemaTypeEnum = "cohort";
+export type FeatureFlagFilterPropertyCohortInSchemaTypeEnum =
+  | "cohort"
+  | (string & {});
 export const FeatureFlagFilterPropertyCohortInSchemaTypeEnum =
   /*@__PURE__*/ S.String;
 
 /** * `in` - in * `not_in` - not_in */
 export type FeatureFlagFilterPropertyCohortInSchemaOperatorEnum =
   | "in"
-  | "not_in";
+  | "not_in"
+  | (string & {});
 export const FeatureFlagFilterPropertyCohortInSchemaOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -365,13 +381,16 @@ export const FeatureFlagFilterPropertyCohortInSchema = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FeatureFlagFilterPropertyCohortInSchema>;
 
 /** * `flag` - flag */
-export type FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum = "flag";
+export type FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum =
+  | "flag"
+  | (string & {});
 export const FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum =
   /*@__PURE__*/ S.String;
 
 /** * `flag_evaluates_to` - flag_evaluates_to */
 export type FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum =
-  "flag_evaluates_to";
+  | "flag_evaluates_to"
+  | (string & {});
 export const FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -527,11 +546,11 @@ export const FeatureFlagFiltersSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeatureFlagFiltersSchema>;
 
 /** * `open` - open */
-export type SurveyOpenQuestionSchemaTypeEnum = "open";
+export type SurveyOpenQuestionSchemaTypeEnum = "open" | (string & {});
 export const SurveyOpenQuestionSchemaTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `html` - html * `text` - text */
-export type DescriptionContentTypeEnum = "html" | "text";
+export type DescriptionContentTypeEnum = "html" | "text" | (string & {});
 export const DescriptionContentTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SurveyOpenQuestionSchema {
@@ -564,7 +583,7 @@ export const SurveyOpenQuestionSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SurveyOpenQuestionSchema>;
 
 /** * `link` - link */
-export type SurveyLinkQuestionSchemaTypeEnum = "link";
+export type SurveyLinkQuestionSchemaTypeEnum = "link" | (string & {});
 export const SurveyLinkQuestionSchemaTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SurveyLinkQuestionSchema {
@@ -600,15 +619,20 @@ export const SurveyLinkQuestionSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SurveyLinkQuestionSchema>;
 
 /** * `rating` - rating */
-export type SurveyRatingQuestionSchemaTypeEnum = "rating";
+export type SurveyRatingQuestionSchemaTypeEnum = "rating" | (string & {});
 export const SurveyRatingQuestionSchemaTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `number` - number * `emoji` - emoji */
-export type SurveyRatingQuestionSchemaDisplayEnum = "number" | "emoji";
+export type SurveyRatingQuestionSchemaDisplayEnum =
+  | "number"
+  | "emoji"
+  | (string & {});
 export const SurveyRatingQuestionSchemaDisplayEnum = /*@__PURE__*/ S.String;
 
 /** * `next_question` - next_question */
-export type SurveyNextQuestionBranchingTypeEnum = "next_question";
+export type SurveyNextQuestionBranchingTypeEnum =
+  | "next_question"
+  | (string & {});
 export const SurveyNextQuestionBranchingTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SurveyNextQuestionBranching {
@@ -624,7 +648,7 @@ export const SurveyNextQuestionBranching = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SurveyNextQuestionBranching>;
 
 /** * `end` - end */
-export type SurveyEndBranchingTypeEnum = "end";
+export type SurveyEndBranchingTypeEnum = "end" | (string & {});
 export const SurveyEndBranchingTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SurveyEndBranching {
@@ -640,7 +664,9 @@ export const SurveyEndBranching = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SurveyEndBranching>;
 
 /** * `specific_question` - specific_question */
-export type SurveySpecificQuestionBranchingTypeEnum = "specific_question";
+export type SurveySpecificQuestionBranchingTypeEnum =
+  | "specific_question"
+  | (string & {});
 export const SurveySpecificQuestionBranchingTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SurveySpecificQuestionBranching {
@@ -659,10 +685,14 @@ export const SurveySpecificQuestionBranching = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SurveySpecificQuestionBranching>;
 
 /** * `response_based` - response_based */
-export type SurveyResponseBasedBranchingTypeEnum = "response_based";
+export type SurveyResponseBasedBranchingTypeEnum =
+  | "response_based"
+  | (string & {});
 export const SurveyResponseBasedBranchingTypeEnum = /*@__PURE__*/ S.String;
 
-export type SurveyResponseBasedBranchingResponseValuesValueCase1 = "end";
+export type SurveyResponseBasedBranchingResponseValuesValueCase1 =
+  | "end"
+  | (string & {});
 export const SurveyResponseBasedBranchingResponseValuesValueCase1 =
   /*@__PURE__*/ S.String;
 
@@ -749,7 +779,9 @@ export const SurveyRatingQuestionSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SurveyRatingQuestionSchema>;
 
 /** * `single_choice` - single_choice */
-export type SurveySingleChoiceQuestionSchemaTypeEnum = "single_choice";
+export type SurveySingleChoiceQuestionSchemaTypeEnum =
+  | "single_choice"
+  | (string & {});
 export const SurveySingleChoiceQuestionSchemaTypeEnum = /*@__PURE__*/ S.String;
 
 /** Array of choice options. Choice indices (0, 1, 2, ...) are used for branching logic. */
@@ -800,7 +832,9 @@ export const SurveySingleChoiceQuestionSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SurveySingleChoiceQuestionSchema>;
 
 /** * `multiple_choice` - multiple_choice */
-export type SurveyMultipleChoiceQuestionSchemaTypeEnum = "multiple_choice";
+export type SurveyMultipleChoiceQuestionSchemaTypeEnum =
+  | "multiple_choice"
+  | (string & {});
 export const SurveyMultipleChoiceQuestionSchemaTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -873,7 +907,8 @@ export type StringMatchOperatorEnum =
   | "icontains"
   | "not_icontains"
   | "regex"
-  | "not_regex";
+  | "not_regex"
+  | (string & {});
 export const StringMatchOperatorEnum = /*@__PURE__*/ S.String;
 
 export interface SurveyConditionEventValueSchema {
@@ -911,7 +946,7 @@ export const SurveyEventsConditionSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SurveyEventsConditionSchema>;
 
 /** * `Desktop` - Desktop * `Mobile` - Mobile * `Tablet` - Tablet */
-export type DeviceTypesEnum = "Desktop" | "Mobile" | "Tablet";
+export type DeviceTypesEnum = "Desktop" | "Mobile" | "Tablet" | (string & {});
 export const DeviceTypesEnum = /*@__PURE__*/ S.String;
 
 /** Device types that should match for this survey to be shown. */
@@ -952,7 +987,7 @@ export const SurveyConditionsSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SurveyConditionsSchema>;
 
 /** * `button` - button * `tab` - tab * `selector` - selector */
-export type WidgetTypeEnum = "button" | "tab" | "selector";
+export type WidgetTypeEnum = "button" | "tab" | "selector" | (string & {});
 export const WidgetTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SurveyAppearanceSchema {
@@ -1037,10 +1072,14 @@ export const SurveysCreateRequestIterationStartDatesList =
   ) as any as S.Schema<SurveysCreateRequestIterationStartDatesList>;
 
 /** * `day` - day * `week` - week * `month` - month */
-export type ResponseSamplingIntervalTypeEnum = "day" | "week" | "month";
+export type ResponseSamplingIntervalTypeEnum =
+  | "day"
+  | "week"
+  | "month"
+  | (string & {});
 export const ResponseSamplingIntervalTypeEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type SurveysCreateRequestResponseSamplingIntervalType =
@@ -1163,7 +1202,7 @@ export const MinimalFeatureFlagFiltersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MinimalFeatureFlagFiltersMap>;
 
 /** * `server` - Server * `client` - Client * `all` - All */
-export type EvaluationRuntimeEnum = "server" | "client" | "all";
+export type EvaluationRuntimeEnum = "server" | "client" | "all" | (string & {});
 export const EvaluationRuntimeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
@@ -1174,7 +1213,10 @@ export const MinimalFeatureFlagEvaluationRuntime =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MinimalFeatureFlagEvaluationRuntime>;
 
 /** * `distinct_id` - User ID (default) * `device_id` - Device ID */
-export type BucketingIdentifierEnum = "distinct_id" | "device_id";
+export type BucketingIdentifierEnum =
+  | "distinct_id"
+  | "device_id"
+  | (string & {});
 export const BucketingIdentifierEnum = /*@__PURE__*/ S.String;
 
 /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
@@ -1243,7 +1285,8 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -1798,7 +1841,7 @@ export type SurveyResponseSamplingIntervalType =
 export const SurveyResponseSamplingIntervalType =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SurveyResponseSamplingIntervalType>;
 
-export type SearchMatchTypeEnum = "exact" | "similar";
+export type SearchMatchTypeEnum = "exact" | "similar" | (string & {});
 export const SearchMatchTypeEnum = /*@__PURE__*/ S.String;
 
 /** Mixin for serializers to add user access control fields */
@@ -1898,7 +1941,8 @@ export type SurveysListRequestType =
   | "api"
   | "external_survey"
   | "popover"
-  | "widget";
+  | "widget"
+  | (string & {});
 export const SurveysListRequestType = /*@__PURE__*/ S.String;
 
 export interface SurveysListRequest {

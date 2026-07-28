@@ -760,7 +760,12 @@ export const BatchGetBlueprintsRequest = /*@__PURE__*/ S.suspend(() =>
 export type Generic512CharString = string;
 export type TimestampValue = Date;
 export type BlueprintParameterSpec = string;
-export type BlueprintStatus = "CREATING" | "ACTIVE" | "UPDATING" | "FAILED";
+export type BlueprintStatus =
+  | "CREATING"
+  | "ACTIVE"
+  | "UPDATING"
+  | "FAILED"
+  | (string & {});
 export const BlueprintStatus = /*@__PURE__*/ S.String;
 
 export type ErrorString = string;
@@ -862,7 +867,7 @@ export const S3Target = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "S3Target" }) as any as S.Schema<S3Target>;
 export type S3TargetList = S3Target[];
 export const S3TargetList = /*@__PURE__*/ S.Array(S3Target);
-export type JdbcMetadataEntry = "COMMENTS" | "RAWTYPES";
+export type JdbcMetadataEntry = "COMMENTS" | "RAWTYPES" | (string & {});
 export const JdbcMetadataEntry = /*@__PURE__*/ S.String;
 
 export type EnableAdditionalMetadata = JdbcMetadataEntry[];
@@ -1008,7 +1013,8 @@ export const ClassifierNameList = /*@__PURE__*/ S.Array(S.String);
 export type RecrawlBehavior =
   | "CRAWL_EVERYTHING"
   | "CRAWL_NEW_FOLDERS_ONLY"
-  | "CRAWL_EVENT_MODE";
+  | "CRAWL_EVENT_MODE"
+  | (string & {});
 export const RecrawlBehavior = /*@__PURE__*/ S.String;
 
 export interface RecrawlPolicy {
@@ -1017,13 +1023,14 @@ export interface RecrawlPolicy {
 export const RecrawlPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RecrawlBehavior: S.optional(RecrawlBehavior) }),
 ).annotate({ identifier: "RecrawlPolicy" }) as any as S.Schema<RecrawlPolicy>;
-export type UpdateBehavior = "LOG" | "UPDATE_IN_DATABASE";
+export type UpdateBehavior = "LOG" | "UPDATE_IN_DATABASE" | (string & {});
 export const UpdateBehavior = /*@__PURE__*/ S.String;
 
 export type DeleteBehavior =
   | "LOG"
   | "DELETE_FROM_DATABASE"
-  | "DEPRECATE_IN_DATABASE";
+  | "DEPRECATE_IN_DATABASE"
+  | (string & {});
 export const DeleteBehavior = /*@__PURE__*/ S.String;
 
 export interface SchemaChangePolicy {
@@ -1038,7 +1045,7 @@ export const SchemaChangePolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SchemaChangePolicy",
 }) as any as S.Schema<SchemaChangePolicy>;
-export type CrawlerLineageSettings = "ENABLE" | "DISABLE";
+export type CrawlerLineageSettings = "ENABLE" | "DISABLE" | (string & {});
 export const CrawlerLineageSettings = /*@__PURE__*/ S.String;
 
 export interface LineageConfiguration {
@@ -1049,12 +1056,16 @@ export const LineageConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LineageConfiguration",
 }) as any as S.Schema<LineageConfiguration>;
-export type CrawlerState = "READY" | "RUNNING" | "STOPPING";
+export type CrawlerState = "READY" | "RUNNING" | "STOPPING" | (string & {});
 export const CrawlerState = /*@__PURE__*/ S.String;
 
 export type TablePrefix = string;
 export type CronExpression = string;
-export type ScheduleState = "SCHEDULED" | "NOT_SCHEDULED" | "TRANSITIONING";
+export type ScheduleState =
+  | "SCHEDULED"
+  | "NOT_SCHEDULED"
+  | "TRANSITIONING"
+  | (string & {});
 export const ScheduleState = /*@__PURE__*/ S.String;
 
 export interface Schedule {
@@ -1068,7 +1079,11 @@ export const Schedule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
 export type MillisecondsCount = number;
-export type LastCrawlStatus = "SUCCEEDED" | "CANCELLED" | "FAILED";
+export type LastCrawlStatus =
+  | "SUCCEEDED"
+  | "CANCELLED"
+  | "FAILED"
+  | (string & {});
 export const LastCrawlStatus = /*@__PURE__*/ S.String;
 
 export type LogGroup = string;
@@ -1278,7 +1293,11 @@ export const DataSource = /*@__PURE__*/ S.suspend(() =>
 export type DataQualityRuleResultDescription =
   | string
   | redacted.Redacted<string>;
-export type DataQualityRuleResultStatus = "PASS" | "FAIL" | "ERROR";
+export type DataQualityRuleResultStatus =
+  | "PASS"
+  | "FAIL"
+  | "ERROR"
+  | (string & {});
 export const DataQualityRuleResultStatus = /*@__PURE__*/ S.String;
 
 export type EvaluatedMetricsMap = { [key: string]: number | undefined };
@@ -1492,7 +1511,8 @@ export type WorkerType =
   | "G.025X"
   | "G.4X"
   | "G.8X"
-  | "Z.2X";
+  | "Z.2X"
+  | (string & {});
 export const WorkerType = /*@__PURE__*/ S.String;
 
 export type GlueVersionString = string;
@@ -1684,7 +1704,7 @@ export const BatchGetJobsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetJobsRequest",
 }) as any as S.Schema<BatchGetJobsRequest>;
-export type JobMode = "SCRIPT" | "VISUAL" | "NOTEBOOK";
+export type JobMode = "SCRIPT" | "VISUAL" | "NOTEBOOK" | (string & {});
 export const JobMode = /*@__PURE__*/ S.String;
 
 export type UriString = string;
@@ -1837,7 +1857,8 @@ export type JDBCDataType =
   | "TIMESTAMP_WITH_TIMEZONE"
   | "TINYINT"
   | "VARBINARY"
-  | "VARCHAR";
+  | "VARCHAR"
+  | (string & {});
 export const JDBCDataType = /*@__PURE__*/ S.String;
 
 export type GlueRecordType =
@@ -1850,7 +1871,8 @@ export type GlueRecordType =
   | "BIGDECIMAL"
   | "BYTE"
   | "SHORT"
-  | "DOUBLE";
+  | "DOUBLE"
+  | (string & {});
 export const GlueRecordType = /*@__PURE__*/ S.String;
 
 export type JDBCDataTypeMapping = { [key in JDBCDataType]?: GlueRecordType };
@@ -1995,7 +2017,7 @@ export const S3CatalogSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3CatalogSource",
 }) as any as S.Schema<S3CatalogSource>;
-export type CompressionType = "gzip" | "bzip2";
+export type CompressionType = "gzip" | "bzip2" | (string & {});
 export const CompressionType = /*@__PURE__*/ S.String;
 
 export type BoxedBoolean = boolean;
@@ -2016,10 +2038,21 @@ export const S3DirectSourceAdditionalOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3DirectSourceAdditionalOptions",
 }) as any as S.Schema<S3DirectSourceAdditionalOptions>;
-export type Separator = "comma" | "ctrla" | "pipe" | "semicolon" | "tab";
+export type Separator =
+  | "comma"
+  | "ctrla"
+  | "pipe"
+  | "semicolon"
+  | "tab"
+  | (string & {});
 export const Separator = /*@__PURE__*/ S.String;
 
-export type QuoteChar = "quote" | "quillemet" | "single_quote" | "disabled";
+export type QuoteChar =
+  | "quote"
+  | "quillemet"
+  | "single_quote"
+  | "disabled"
+  | (string & {});
 export const QuoteChar = /*@__PURE__*/ S.String;
 
 export interface S3CsvSource {
@@ -2105,7 +2138,8 @@ export type ParquetCompressionType =
   | "brotli"
   | "lz4"
   | "uncompressed"
-  | "none";
+  | "none"
+  | (string & {});
 export const ParquetCompressionType = /*@__PURE__*/ S.String;
 
 export interface S3ParquetSource {
@@ -2284,7 +2318,10 @@ export const RedshiftTarget = /*@__PURE__*/ S.suspend(() =>
     UpsertRedshiftOptions: S.optional(UpsertRedshiftTargetOptions),
   }),
 ).annotate({ identifier: "RedshiftTarget" }) as any as S.Schema<RedshiftTarget>;
-export type UpdateCatalogBehavior = "UPDATE_IN_DATABASE" | "LOG";
+export type UpdateCatalogBehavior =
+  | "UPDATE_IN_DATABASE"
+  | "LOG"
+  | (string & {});
 export const UpdateCatalogBehavior = /*@__PURE__*/ S.String;
 
 export interface CatalogSchemaChangePolicy {
@@ -2384,7 +2421,8 @@ export type TargetFormat =
   | "delta"
   | "iceberg"
   | "hyper"
-  | "xml";
+  | "xml"
+  | (string & {});
 export const TargetFormat = /*@__PURE__*/ S.String;
 
 export interface S3DirectTarget {
@@ -2503,7 +2541,8 @@ export type JoinType =
   | "right"
   | "outer"
   | "leftsemi"
-  | "leftanti";
+  | "leftanti"
+  | (string & {});
 export const JoinType = /*@__PURE__*/ S.String;
 
 export interface JoinColumn {
@@ -2564,7 +2603,7 @@ export const FillMissingValues = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FillMissingValues",
 }) as any as S.Schema<FillMissingValues>;
-export type FilterLogicalOperator = "AND" | "OR";
+export type FilterLogicalOperator = "AND" | "OR" | (string & {});
 export const FilterLogicalOperator = /*@__PURE__*/ S.String;
 
 export type FilterOperation =
@@ -2574,10 +2613,11 @@ export type FilterOperation =
   | "LTE"
   | "GTE"
   | "REGEX"
-  | "ISNULL";
+  | "ISNULL"
+  | (string & {});
 export const FilterOperation = /*@__PURE__*/ S.String;
 
-export type FilterValueType = "COLUMNEXTRACTED" | "CONSTANT";
+export type FilterValueType = "COLUMNEXTRACTED" | "CONSTANT" | (string & {});
 export const FilterValueType = /*@__PURE__*/ S.String;
 
 export interface FilterValue {
@@ -2668,7 +2708,8 @@ export type StartingPosition =
   | "latest"
   | "trim_horizon"
   | "earliest"
-  | "timestamp";
+  | "timestamp"
+  | (string & {});
 export const StartingPosition = /*@__PURE__*/ S.String;
 
 export type Iso8601DateTime = Date;
@@ -2927,7 +2968,7 @@ export const Merge = /*@__PURE__*/ S.suspend(() =>
     PrimaryKeys: GlueStudioPathList,
   }),
 ).annotate({ identifier: "Merge" }) as any as S.Schema<Merge>;
-export type UnionType = "ALL" | "DISTINCT";
+export type UnionType = "ALL" | "DISTINCT" | (string & {});
 export const UnionType = /*@__PURE__*/ S.String;
 
 export interface Union {
@@ -2945,7 +2986,8 @@ export type PiiType =
   | "RowPartialMasking"
   | "ColumnAudit"
   | "ColumnHashing"
-  | "ColumnMasking";
+  | "ColumnMasking"
+  | (string & {});
 export const PiiType = /*@__PURE__*/ S.String;
 
 export type BoxedDoubleFraction = number;
@@ -3001,7 +3043,8 @@ export type AggFunction =
   | "sum"
   | "sumDistinct"
   | "var_samp"
-  | "var_pop";
+  | "var_pop"
+  | (string & {});
 export const AggFunction = /*@__PURE__*/ S.String;
 
 export interface AggregateOperation {
@@ -3220,7 +3263,8 @@ export type ParamType =
   | "complex"
   | "bool"
   | "list"
-  | "null";
+  | "null"
+  | (string & {});
 export const ParamType = /*@__PURE__*/ S.String;
 
 export interface TransformConfigParameter {
@@ -3274,7 +3318,10 @@ export const DynamicTransform = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicTransform",
 }) as any as S.Schema<DynamicTransform>;
 export type DQDLString = string;
-export type DQTransformOutput = "PrimaryInput" | "EvaluationResults";
+export type DQTransformOutput =
+  | "PrimaryInput"
+  | "EvaluationResults"
+  | (string & {});
 export const DQTransformOutput = /*@__PURE__*/ S.String;
 
 export interface DQResultsPublishingOptions {
@@ -3293,7 +3340,10 @@ export const DQResultsPublishingOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DQResultsPublishingOptions",
 }) as any as S.Schema<DQResultsPublishingOptions>;
-export type DQStopJobOnFailureTiming = "Immediate" | "AfterDataLoad";
+export type DQStopJobOnFailureTiming =
+  | "Immediate"
+  | "AfterDataLoad"
+  | (string & {});
 export const DQStopJobOnFailureTiming = /*@__PURE__*/ S.String;
 
 export interface DQStopJobOnFailureOptions {
@@ -3406,7 +3456,8 @@ export type HudiTargetCompressionType =
   | "gzip"
   | "lzo"
   | "uncompressed"
-  | "snappy";
+  | "snappy"
+  | (string & {});
 export const HudiTargetCompressionType = /*@__PURE__*/ S.String;
 
 export interface S3HudiDirectTarget {
@@ -3442,7 +3493,8 @@ export type JDBCConnectionType =
   | "mysql"
   | "oracle"
   | "postgresql"
-  | "redshift";
+  | "redshift"
+  | (string & {});
 export const JDBCConnectionType = /*@__PURE__*/ S.String;
 
 export interface DirectJDBCSource {
@@ -3545,7 +3597,10 @@ export const S3DeltaCatalogTarget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3DeltaCatalogTarget",
 }) as any as S.Schema<S3DeltaCatalogTarget>;
-export type DeltaTargetCompressionType = "uncompressed" | "snappy";
+export type DeltaTargetCompressionType =
+  | "uncompressed"
+  | "snappy"
+  | (string & {});
 export const DeltaTargetCompressionType = /*@__PURE__*/ S.String;
 
 export interface S3DeltaDirectTarget {
@@ -3697,7 +3752,8 @@ export const DQDLAliases = /*@__PURE__*/ S.Record(
 export type AdditionalOptionKeys =
   | "performanceTuning.caching"
   | "observations.scope"
-  | "compositeRuleEvaluation.method";
+  | "compositeRuleEvaluation.method"
+  | (string & {});
 export const AdditionalOptionKeys = /*@__PURE__*/ S.String;
 
 export type DQAdditionalOptions = { [key in AdditionalOptionKeys]?: string };
@@ -3977,7 +4033,8 @@ export type IcebergTargetCompressionType =
   | "gzip"
   | "lzo"
   | "uncompressed"
-  | "snappy";
+  | "snappy"
+  | (string & {});
 export const IcebergTargetCompressionType = /*@__PURE__*/ S.String;
 
 export interface S3IcebergDirectTarget {
@@ -4042,7 +4099,7 @@ export const S3ExcelSource = /*@__PURE__*/ S.suspend(() =>
     OutputSchemas: S.optional(GlueSchemas),
   }),
 ).annotate({ identifier: "S3ExcelSource" }) as any as S.Schema<S3ExcelSource>;
-export type HyperTargetCompressionType = "uncompressed";
+export type HyperTargetCompressionType = "uncompressed" | (string & {});
 export const HyperTargetCompressionType = /*@__PURE__*/ S.String;
 
 export interface S3HyperDirectTarget {
@@ -4071,7 +4128,7 @@ export const S3HyperDirectTarget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3HyperDirectTarget",
 }) as any as S.Schema<S3HyperDirectTarget>;
-export type DdbExportType = "ddb" | "s3";
+export type DdbExportType = "ddb" | "s3" | (string & {});
 export const DdbExportType = /*@__PURE__*/ S.String;
 
 export interface DDBELTConnectionOptions {
@@ -4287,19 +4344,21 @@ export const CodeGenConfigurationNodes = /*@__PURE__*/ S.Record(
   S.String,
   CodeGenConfigurationNode.pipe(S.optional),
 );
-export type ExecutionClass = "FLEX" | "STANDARD";
+export type ExecutionClass = "FLEX" | "STANDARD" | (string & {});
 export const ExecutionClass = /*@__PURE__*/ S.String;
 
 export type SourceControlProvider =
   | "GITHUB"
   | "GITLAB"
   | "BITBUCKET"
-  | "AWS_CODE_COMMIT";
+  | "AWS_CODE_COMMIT"
+  | (string & {});
 export const SourceControlProvider = /*@__PURE__*/ S.String;
 
 export type SourceControlAuthStrategy =
   | "PERSONAL_ACCESS_TOKEN"
-  | "AWS_SECRETS_MANAGER";
+  | "AWS_SECRETS_MANAGER"
+  | (string & {});
 export const SourceControlAuthStrategy = /*@__PURE__*/ S.String;
 
 export interface SourceControlDetails {
@@ -4515,7 +4574,8 @@ export type TableNameString = string;
 export type TableOptimizerType =
   | "compaction"
   | "retention"
-  | "orphan_file_deletion";
+  | "orphan_file_deletion"
+  | (string & {});
 export const TableOptimizerType = /*@__PURE__*/ S.String;
 
 export interface BatchGetTableOptimizerEntry {
@@ -4554,7 +4614,7 @@ export type TableOptimizerVpcConfiguration = { glueConnectionName: string };
 export const TableOptimizerVpcConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ glueConnectionName: S.String }),
 ]);
-export type CompactionStrategy = "binpack" | "sort" | "z-order";
+export type CompactionStrategy = "binpack" | "sort" | "z-order" | (string & {});
 export const CompactionStrategy = /*@__PURE__*/ S.String;
 
 export interface IcebergCompactionConfiguration {
@@ -4657,7 +4717,8 @@ export type TableOptimizerEventType =
   | "starting"
   | "completed"
   | "failed"
-  | "in_progress";
+  | "in_progress"
+  | (string & {});
 export const TableOptimizerEventType = /*@__PURE__*/ S.String;
 
 export type TableOptimizerRunTimestamp = Date;
@@ -4783,7 +4844,7 @@ export const TableOptimizerRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TableOptimizerRun",
 }) as any as S.Schema<TableOptimizerRun>;
-export type ConfigurationSource = "catalog" | "table";
+export type ConfigurationSource = "catalog" | "table" | (string & {});
 export const ConfigurationSource = /*@__PURE__*/ S.String;
 
 export interface TableOptimizer {
@@ -4865,7 +4926,12 @@ export const BatchGetTriggersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetTriggersRequest",
 }) as any as S.Schema<BatchGetTriggersRequest>;
 export type IdString = string;
-export type TriggerType = "SCHEDULED" | "CONDITIONAL" | "ON_DEMAND" | "EVENT";
+export type TriggerType =
+  | "SCHEDULED"
+  | "CONDITIONAL"
+  | "ON_DEMAND"
+  | "EVENT"
+  | (string & {});
 export const TriggerType = /*@__PURE__*/ S.String;
 
 export type TriggerState =
@@ -4876,7 +4942,8 @@ export type TriggerState =
   | "DEACTIVATING"
   | "DEACTIVATED"
   | "DELETING"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const TriggerState = /*@__PURE__*/ S.String;
 
 export interface Action {
@@ -4899,10 +4966,10 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
 export type ActionList = Action[];
 export const ActionList = /*@__PURE__*/ S.Array(Action);
-export type Logical = "AND" | "ANY";
+export type Logical = "AND" | "ANY" | (string & {});
 export const Logical = /*@__PURE__*/ S.String;
 
-export type LogicalOperator = "EQUALS";
+export type LogicalOperator = "EQUALS" | (string & {});
 export const LogicalOperator = /*@__PURE__*/ S.String;
 
 export type JobRunState =
@@ -4915,7 +4982,8 @@ export type JobRunState =
   | "TIMEOUT"
   | "ERROR"
   | "WAITING"
-  | "EXPIRED";
+  | "EXPIRED"
+  | (string & {});
 export const JobRunState = /*@__PURE__*/ S.String;
 
 export type CrawlState =
@@ -4924,7 +4992,8 @@ export type CrawlState =
   | "CANCELLED"
   | "SUCCEEDED"
   | "FAILED"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const CrawlState = /*@__PURE__*/ S.String;
 
 export interface Condition {
@@ -5029,7 +5098,8 @@ export type WorkflowRunStatus =
   | "COMPLETED"
   | "STOPPING"
   | "STOPPED"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const WorkflowRunStatus = /*@__PURE__*/ S.String;
 
 export interface WorkflowRunStatistics {
@@ -5056,7 +5126,7 @@ export const WorkflowRunStatistics = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WorkflowRunStatistics",
 }) as any as S.Schema<WorkflowRunStatistics>;
-export type NodeType = "CRAWLER" | "JOB" | "TRIGGER";
+export type NodeType = "CRAWLER" | "JOB" | "TRIGGER" | (string & {});
 export const NodeType = /*@__PURE__*/ S.String;
 
 export interface TriggerNodeDetails {
@@ -5311,7 +5381,7 @@ export const BatchGetWorkflowsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetWorkflowsResponse",
 }) as any as S.Schema<BatchGetWorkflowsResponse>;
-export type InclusionAnnotationValue = "INCLUDE" | "EXCLUDE";
+export type InclusionAnnotationValue = "INCLUDE" | "EXCLUDE" | (string & {});
 export const InclusionAnnotationValue = /*@__PURE__*/ S.String;
 
 export interface DatapointInclusionAnnotation {
@@ -5541,7 +5611,8 @@ export type TaskStatusType =
   | "STOPPED"
   | "SUCCEEDED"
   | "FAILED"
-  | "TIMEOUT";
+  | "TIMEOUT"
+  | (string & {});
 export const TaskStatusType = /*@__PURE__*/ S.String;
 
 export interface CancelMLTaskRunResponse {
@@ -5580,7 +5651,7 @@ export const CancelStatementResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelStatementResponse",
 }) as any as S.Schema<CancelStatementResponse>;
-export type DataFormat = "AVRO" | "JSON" | "PROTOBUF";
+export type DataFormat = "AVRO" | "JSON" | "PROTOBUF" | (string & {});
 export const DataFormat = /*@__PURE__*/ S.String;
 
 export type SchemaDefinitionString = string;
@@ -5730,7 +5801,8 @@ export type Permission =
   | "INSERT"
   | "CREATE_DATABASE"
   | "CREATE_TABLE"
-  | "DATA_LOCATION_ACCESS";
+  | "DATA_LOCATION_ACCESS"
+  | (string & {});
 export const Permission = /*@__PURE__*/ S.String;
 
 export type PermissionList = Permission[];
@@ -5750,12 +5822,16 @@ export const PrincipalPermissions = /*@__PURE__*/ S.suspend(() =>
 export type PrincipalPermissionsList = PrincipalPermissions[];
 export const PrincipalPermissionsList =
   /*@__PURE__*/ S.Array(PrincipalPermissions);
-export type AllowFullTableExternalDataAccessEnum = "True" | "False";
+export type AllowFullTableExternalDataAccessEnum =
+  | "True"
+  | "False"
+  | (string & {});
 export const AllowFullTableExternalDataAccessEnum = /*@__PURE__*/ S.String;
 
 export type OverwriteChildResourcePermissionsWithDefaultEnum =
   | "Accept"
-  | "Deny";
+  | "Deny"
+  | (string & {});
 export const OverwriteChildResourcePermissionsWithDefaultEnum =
   /*@__PURE__*/ S.String;
 
@@ -5855,14 +5931,18 @@ export const CreateJsonClassifierRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateJsonClassifierRequest>;
 export type CsvColumnDelimiter = string;
 export type CsvQuoteSymbol = string;
-export type CsvHeaderOption = "UNKNOWN" | "PRESENT" | "ABSENT";
+export type CsvHeaderOption = "UNKNOWN" | "PRESENT" | "ABSENT" | (string & {});
 export const CsvHeaderOption = /*@__PURE__*/ S.String;
 
 export type CsvHeader = string[];
 export const CsvHeader = /*@__PURE__*/ S.Array(S.String);
 export type CustomDatatypes = string[];
 export const CustomDatatypes = /*@__PURE__*/ S.Array(S.String);
-export type CsvSerdeOption = "OpenCSVSerDe" | "LazySimpleSerDe" | "None";
+export type CsvSerdeOption =
+  | "OpenCSVSerDe"
+  | "LazySimpleSerDe"
+  | "None"
+  | (string & {});
 export const CsvSerdeOption = /*@__PURE__*/ S.String;
 
 export interface CreateCsvClassifierRequest {
@@ -6046,7 +6126,8 @@ export type ConnectionType =
   | "TERADATANOS"
   | "TIMESTREAM"
   | "TPCDS"
-  | "VERTICA";
+  | "VERTICA"
+  | (string & {});
 export const ConnectionType = /*@__PURE__*/ S.String;
 
 export type MatchCriteria = string[];
@@ -6100,7 +6181,8 @@ export type ConnectionPropertyKey =
   | "REGION"
   | "WORKGROUP_NAME"
   | "CLUSTER_IDENTIFIER"
-  | "DATABASE";
+  | "DATABASE"
+  | (string & {});
 export const ConnectionPropertyKey = /*@__PURE__*/ S.String;
 
 export type ConnectionProperties = { [key in ConnectionPropertyKey]?: string };
@@ -6131,13 +6213,19 @@ export const PhysicalConnectionRequirements = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PhysicalConnectionRequirements",
 }) as any as S.Schema<PhysicalConnectionRequirements>;
-export type AuthenticationType = "BASIC" | "OAUTH2" | "CUSTOM" | "IAM";
+export type AuthenticationType =
+  | "BASIC"
+  | "OAUTH2"
+  | "CUSTOM"
+  | "IAM"
+  | (string & {});
 export const AuthenticationType = /*@__PURE__*/ S.String;
 
 export type OAuth2GrantType =
   | "AUTHORIZATION_CODE"
   | "CLIENT_CREDENTIALS"
-  | "JWT_BEARER";
+  | "JWT_BEARER"
+  | (string & {});
 export const OAuth2GrantType = /*@__PURE__*/ S.String;
 
 export type UserManagedClientApplicationClientId = string;
@@ -6261,7 +6349,7 @@ export const AuthenticationConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AuthenticationConfigurationInput",
 }) as any as S.Schema<AuthenticationConfigurationInput>;
-export type ComputeEnvironment = "SPARK" | "ATHENA" | "PYTHON";
+export type ComputeEnvironment = "SPARK" | "ATHENA" | "PYTHON" | (string & {});
 export const ComputeEnvironment = /*@__PURE__*/ S.String;
 
 export type ComputeEnvironmentList = ComputeEnvironment[];
@@ -6314,7 +6402,11 @@ export const CreateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConnectionRequest",
 }) as any as S.Schema<CreateConnectionRequest>;
-export type ConnectionStatus = "READY" | "IN_PROGRESS" | "FAILED";
+export type ConnectionStatus =
+  | "READY"
+  | "IN_PROGRESS"
+  | "FAILED"
+  | (string & {});
 export const ConnectionStatus = /*@__PURE__*/ S.String;
 
 export interface CreateConnectionResponse {
@@ -6802,7 +6894,8 @@ export type IntegrationStatus =
   | "FAILED"
   | "DELETING"
   | "SYNCING"
-  | "NEEDS_ATTENTION";
+  | "NEEDS_ATTENTION"
+  | (string & {});
 export const IntegrationStatus = /*@__PURE__*/ S.String;
 
 export type IntegrationTimestamp = Date;
@@ -6936,7 +7029,7 @@ export const SourceTableConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SourceTableConfig",
 }) as any as S.Schema<SourceTableConfig>;
-export type UnnestSpec = "TOPLEVEL" | "FULL" | "NOUNNEST";
+export type UnnestSpec = "TOPLEVEL" | "FULL" | "NOUNNEST" | (string & {});
 export const UnnestSpec = /*@__PURE__*/ S.String;
 
 export interface IntegrationPartition {
@@ -7067,7 +7160,7 @@ export const CreateJobResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateJobResponse>;
 export type GlueTables = GlueTable[];
 export const GlueTables = /*@__PURE__*/ S.Array(GlueTable);
-export type TransformType = "FIND_MATCHES";
+export type TransformType = "FIND_MATCHES" | (string & {});
 export const TransformType = /*@__PURE__*/ S.String;
 
 export interface FindMatchesParameters {
@@ -7098,7 +7191,10 @@ export const TransformParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TransformParameters",
 }) as any as S.Schema<TransformParameters>;
-export type MLUserDataEncryptionModeString = "DISABLED" | "SSE-KMS";
+export type MLUserDataEncryptionModeString =
+  | "DISABLED"
+  | "SSE-KMS"
+  | (string & {});
 export const MLUserDataEncryptionModeString = /*@__PURE__*/ S.String;
 
 export interface MLUserDataEncryption {
@@ -7276,7 +7372,8 @@ export type Compatibility =
   | "FORWARD"
   | "FORWARD_ALL"
   | "FULL"
-  | "FULL_ALL";
+  | "FULL_ALL"
+  | (string & {});
 export const Compatibility = /*@__PURE__*/ S.String;
 
 export interface CreateSchemaInput {
@@ -7304,14 +7401,15 @@ export const CreateSchemaInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSchemaInput",
 }) as any as S.Schema<CreateSchemaInput>;
 export type SchemaCheckpointNumber = number;
-export type SchemaStatus = "AVAILABLE" | "PENDING" | "DELETING";
+export type SchemaStatus = "AVAILABLE" | "PENDING" | "DELETING" | (string & {});
 export const SchemaStatus = /*@__PURE__*/ S.String;
 
 export type SchemaVersionStatus =
   | "AVAILABLE"
   | "PENDING"
   | "FAILURE"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const SchemaVersionStatus = /*@__PURE__*/ S.String;
 
 export interface CreateSchemaResponse {
@@ -7394,7 +7492,7 @@ export const CodeGenEdge = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CodeGenEdge" }) as any as S.Schema<CodeGenEdge>;
 export type DagEdges = CodeGenEdge[];
 export const DagEdges = /*@__PURE__*/ S.Array(CodeGenEdge);
-export type Language = "PYTHON" | "SCALA";
+export type Language = "PYTHON" | "SCALA" | (string & {});
 export const Language = /*@__PURE__*/ S.String;
 
 export interface CreateScriptRequest {
@@ -7427,7 +7525,11 @@ export const CreateScriptResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateScriptResponse",
 }) as any as S.Schema<CreateScriptResponse>;
-export type S3EncryptionMode = "DISABLED" | "SSE-KMS" | "SSE-S3";
+export type S3EncryptionMode =
+  | "DISABLED"
+  | "SSE-KMS"
+  | "SSE-S3"
+  | (string & {});
 export const S3EncryptionMode = /*@__PURE__*/ S.String;
 
 export interface S3Encryption {
@@ -7442,7 +7544,7 @@ export const S3Encryption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "S3Encryption" }) as any as S.Schema<S3Encryption>;
 export type S3EncryptionList = S3Encryption[];
 export const S3EncryptionList = /*@__PURE__*/ S.Array(S3Encryption);
-export type CloudWatchEncryptionMode = "DISABLED" | "SSE-KMS";
+export type CloudWatchEncryptionMode = "DISABLED" | "SSE-KMS" | (string & {});
 export const CloudWatchEncryptionMode = /*@__PURE__*/ S.String;
 
 export interface CloudWatchEncryption {
@@ -7457,7 +7559,7 @@ export const CloudWatchEncryption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CloudWatchEncryption",
 }) as any as S.Schema<CloudWatchEncryption>;
-export type JobBookmarksEncryptionMode = "DISABLED" | "CSE-KMS";
+export type JobBookmarksEncryptionMode = "DISABLED" | "CSE-KMS" | (string & {});
 export const JobBookmarksEncryptionMode = /*@__PURE__*/ S.String;
 
 export interface JobBookmarksEncryption {
@@ -7472,7 +7574,7 @@ export const JobBookmarksEncryption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "JobBookmarksEncryption",
 }) as any as S.Schema<JobBookmarksEncryption>;
-export type DataQualityEncryptionMode = "DISABLED" | "SSE-KMS";
+export type DataQualityEncryptionMode = "DISABLED" | "SSE-KMS" | (string & {});
 export const DataQualityEncryptionMode = /*@__PURE__*/ S.String;
 
 export interface DataQualityEncryption {
@@ -7545,7 +7647,7 @@ export const OrchestrationArgumentsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export type SessionType = "LIVY" | "SPARK_CONNECT";
+export type SessionType = "LIVY" | "SPARK_CONNECT" | (string & {});
 export const SessionType = /*@__PURE__*/ S.String;
 
 export interface CreateSessionRequest {
@@ -7596,7 +7698,8 @@ export type SessionStatus =
   | "FAILED"
   | "TIMEOUT"
   | "STOPPING"
-  | "STOPPED";
+  | "STOPPED"
+  | (string & {});
 export const SessionStatus = /*@__PURE__*/ S.String;
 
 export type DoubleValue = number;
@@ -7676,7 +7779,7 @@ export const TableIdentifier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TableIdentifier",
 }) as any as S.Schema<TableIdentifier>;
-export type ViewDialect = "REDSHIFT" | "ATHENA" | "SPARK";
+export type ViewDialect = "REDSHIFT" | "ATHENA" | "SPARK" | (string & {});
 export const ViewDialect = /*@__PURE__*/ S.String;
 
 export type ViewDialectVersionString = string;
@@ -7704,7 +7807,7 @@ export const ViewRepresentationInputList = /*@__PURE__*/ S.Array(
 );
 export type TableVersionId = number;
 export type RefreshSeconds = number;
-export type LastRefreshType = "FULL" | "INCREMENTAL";
+export type LastRefreshType = "FULL" | "INCREMENTAL" | (string & {});
 export const LastRefreshType = /*@__PURE__*/ S.String;
 
 export type ViewSubObjectsList = string[];
@@ -7775,12 +7878,12 @@ export const TableInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TableInput" }) as any as S.Schema<TableInput>;
 export type PartitionIndexList = PartitionIndex[];
 export const PartitionIndexList = /*@__PURE__*/ S.Array(PartitionIndex);
-export type MetadataOperation = "CREATE";
+export type MetadataOperation = "CREATE" | (string & {});
 export const MetadataOperation = /*@__PURE__*/ S.String;
 
 export type IntegerList = number[];
 export const IntegerList = /*@__PURE__*/ S.Array(S.Number);
-export type IcebergStructTypeEnum = "struct";
+export type IcebergStructTypeEnum = "struct" | (string & {});
 export const IcebergStructTypeEnum = /*@__PURE__*/ S.String;
 
 export type IcebergDocument = unknown;
@@ -7855,10 +7958,10 @@ export const IcebergPartitionSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IcebergPartitionSpec",
 }) as any as S.Schema<IcebergPartitionSpec>;
-export type IcebergSortDirection = "asc" | "desc";
+export type IcebergSortDirection = "asc" | "desc" | (string & {});
 export const IcebergSortDirection = /*@__PURE__*/ S.String;
 
-export type IcebergNullOrder = "nulls-first" | "nulls-last";
+export type IcebergNullOrder = "nulls-first" | "nulls-last" | (string & {});
 export const IcebergNullOrder = /*@__PURE__*/ S.String;
 
 export interface IcebergSortField {
@@ -8093,13 +8196,14 @@ export const CreateUsageProfileResponse = /*@__PURE__*/ S.suspend(() =>
 export type FunctionType =
   | "REGULAR_FUNCTION"
   | "AGGREGATE_FUNCTION"
-  | "STORED_PROCEDURE";
+  | "STORED_PROCEDURE"
+  | (string & {});
 export const FunctionType = /*@__PURE__*/ S.String;
 
-export type PrincipalType = "USER" | "ROLE" | "GROUP";
+export type PrincipalType = "USER" | "ROLE" | "GROUP" | (string & {});
 export const PrincipalType = /*@__PURE__*/ S.String;
 
-export type ResourceType = "JAR" | "FILE" | "ARCHIVE";
+export type ResourceType = "JAR" | "FILE" | "ARCHIVE" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export interface ResourceUri {
@@ -8760,7 +8864,7 @@ export const DeleteRegistryInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteRegistryInput",
 }) as any as S.Schema<DeleteRegistryInput>;
-export type RegistryStatus = "AVAILABLE" | "DELETING";
+export type RegistryStatus = "AVAILABLE" | "DELETING" | (string & {});
 export const RegistryStatus = /*@__PURE__*/ S.String;
 
 export interface DeleteRegistryResponse {
@@ -9063,7 +9167,7 @@ export const DescribeConnectionTypeRequest = /*@__PURE__*/ S.suspend(() =>
 export type Description = string;
 export type AuthenticationTypes = AuthenticationType[];
 export const AuthenticationTypes = /*@__PURE__*/ S.Array(AuthenticationType);
-export type DataOperation = "READ" | "WRITE";
+export type DataOperation = "READ" | "WRITE" | (string & {});
 export const DataOperation = /*@__PURE__*/ S.String;
 
 export type DataOperations = DataOperation[];
@@ -9089,7 +9193,8 @@ export type PropertyType =
   | "SECRET"
   | "READ_ONLY"
   | "UNUSED"
-  | "SECRET_OR_USER_INPUT";
+  | "SECRET_OR_USER_INPUT"
+  | (string & {});
 export const PropertyType = /*@__PURE__*/ S.String;
 
 export type PropertyTypes = PropertyType[];
@@ -9105,7 +9210,12 @@ export const AllowedValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AllowedValue" }) as any as S.Schema<AllowedValue>;
 export type AllowedValues = AllowedValue[];
 export const AllowedValues = /*@__PURE__*/ S.Array(AllowedValue);
-export type PropertyLocation = "HEADER" | "BODY" | "QUERY_PARAM" | "PATH";
+export type PropertyLocation =
+  | "HEADER"
+  | "BODY"
+  | "QUERY_PARAM"
+  | "PATH"
+  | (string & {});
 export const PropertyLocation = /*@__PURE__*/ S.String;
 
 export interface Property {
@@ -9197,7 +9307,7 @@ export const ComputeEnvironmentConfigurationMap = /*@__PURE__*/ S.Record(
   S.String,
   ComputeEnvironmentConfiguration.pipe(S.optional),
 );
-export type HTTPMethod = "GET" | "POST";
+export type HTTPMethod = "GET" | "POST" | (string & {});
 export const HTTPMethod = /*@__PURE__*/ S.String;
 
 export type PathString = string;
@@ -9339,7 +9449,8 @@ export type FieldDataType =
   | "DOUBLE"
   | "STRUCT"
   | "BINARY"
-  | "UNION";
+  | "UNION"
+  | (string & {});
 export const FieldDataType = /*@__PURE__*/ S.String;
 
 export interface FieldDefinition {
@@ -9460,7 +9571,8 @@ export type FieldFilterOperator =
   | "GREATER_THAN_OR_EQUAL_TO"
   | "LESS_THAN_OR_EQUAL_TO"
   | "CONTAINS"
-  | "ORDER_BY";
+  | "ORDER_BY"
+  | (string & {});
 export const FieldFilterOperator = /*@__PURE__*/ S.String;
 
 export type FieldFilterOperatorsList = FieldFilterOperator[];
@@ -9846,7 +9958,8 @@ export type BlueprintRunState =
   | "RUNNING"
   | "SUCCEEDED"
   | "FAILED"
-  | "ROLLING_BACK";
+  | "ROLLING_BACK"
+  | (string & {});
 export const BlueprintRunState = /*@__PURE__*/ S.String;
 
 export type BlueprintParameters = string;
@@ -10271,7 +10384,8 @@ export type ColumnStatisticsType =
   | "DOUBLE"
   | "LONG"
   | "STRING"
-  | "BINARY";
+  | "BINARY"
+  | (string & {});
 export const ColumnStatisticsType = /*@__PURE__*/ S.String;
 
 export type NonNegativeLong = number;
@@ -10500,7 +10614,7 @@ export const GetColumnStatisticsTaskRunRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetColumnStatisticsTaskRunRequest>;
 export type TableName = string;
 export type PositiveInteger = number;
-export type ComputationType = "FULL" | "INCREMENTAL";
+export type ComputationType = "FULL" | "INCREMENTAL" | (string & {});
 export const ComputationType = /*@__PURE__*/ S.String;
 
 export type ColumnStatisticsState =
@@ -10508,7 +10622,8 @@ export type ColumnStatisticsState =
   | "RUNNING"
   | "SUCCEEDED"
   | "FAILED"
-  | "STOPPED";
+  | "STOPPED"
+  | (string & {});
 export const ColumnStatisticsState = /*@__PURE__*/ S.String;
 
 export interface ColumnStatisticsTaskRun {
@@ -10611,13 +10726,13 @@ export const GetColumnStatisticsTaskSettingsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetColumnStatisticsTaskSettingsRequest",
 }) as any as S.Schema<GetColumnStatisticsTaskSettingsRequest>;
-export type ScheduleType = "CRON" | "AUTO";
+export type ScheduleType = "CRON" | "AUTO" | (string & {});
 export const ScheduleType = /*@__PURE__*/ S.String;
 
-export type SettingSource = "CATALOG" | "TABLE";
+export type SettingSource = "CATALOG" | "TABLE" | (string & {});
 export const SettingSource = /*@__PURE__*/ S.String;
 
-export type ExecutionStatus = "FAILED" | "STARTED";
+export type ExecutionStatus = "FAILED" | "STARTED" | (string & {});
 export const ExecutionStatus = /*@__PURE__*/ S.String;
 
 export interface ExecutionAttempt {
@@ -10953,7 +11068,7 @@ export const GetCustomEntityTypeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCustomEntityTypeResponse",
 }) as any as S.Schema<GetCustomEntityTypeResponse>;
-export type GlueResourceType = "JOB" | "SESSION";
+export type GlueResourceType = "JOB" | "SESSION" | (string & {});
 export const GlueResourceType = /*@__PURE__*/ S.String;
 
 export interface GetDashboardUrlRequest {
@@ -11025,10 +11140,10 @@ export const GetDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDatabaseResponse",
 }) as any as S.Schema<GetDatabaseResponse>;
 export type CatalogGetterPageSize = number;
-export type ResourceShareType = "FOREIGN" | "ALL" | "FEDERATED";
+export type ResourceShareType = "FOREIGN" | "ALL" | "FEDERATED" | (string & {});
 export const ResourceShareType = /*@__PURE__*/ S.String;
 
-export type DatabaseAttributes = "NAME" | "TARGET_DATABASE";
+export type DatabaseAttributes = "NAME" | "TARGET_DATABASE" | (string & {});
 export const DatabaseAttributes = /*@__PURE__*/ S.String;
 
 export type DatabaseAttributesList = DatabaseAttributes[];
@@ -11078,7 +11193,8 @@ export const GetDataCatalogEncryptionSettingsRequest = /*@__PURE__*/ S.suspend(
 export type CatalogEncryptionMode =
   | "DISABLED"
   | "SSE-KMS"
-  | "SSE-KMS-WITH-SERVICE-ROLE";
+  | "SSE-KMS-WITH-SERVICE-ROLE"
+  | (string & {});
 export const CatalogEncryptionMode = /*@__PURE__*/ S.String;
 
 export interface EncryptionAtRest {
@@ -11160,7 +11276,11 @@ export const GetDataQualityModelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDataQualityModelRequest",
 }) as any as S.Schema<GetDataQualityModelRequest>;
-export type DataQualityModelStatus = "RUNNING" | "SUCCEEDED" | "FAILED";
+export type DataQualityModelStatus =
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "FAILED"
+  | (string & {});
 export const DataQualityModelStatus = /*@__PURE__*/ S.String;
 
 export interface GetDataQualityModelResponse {
@@ -11368,7 +11488,7 @@ export const GetDataQualityRulesetEvaluationRunRequest =
   ).annotate({
     identifier: "GetDataQualityRulesetEvaluationRunRequest",
   }) as any as S.Schema<GetDataQualityRulesetEvaluationRunRequest>;
-export type DQCompositeRuleEvaluationMethod = "COLUMN" | "ROW";
+export type DQCompositeRuleEvaluationMethod = "COLUMN" | "ROW" | (string & {});
 export const DQCompositeRuleEvaluationMethod = /*@__PURE__*/ S.String;
 
 export interface DataQualityEvaluationRunAdditionalRunOptions {
@@ -11943,10 +12063,14 @@ export type MaterializedViewRefreshState =
   | "RUNNING"
   | "SUCCEEDED"
   | "FAILED"
-  | "STOPPED";
+  | "STOPPED"
+  | (string & {});
 export const MaterializedViewRefreshState = /*@__PURE__*/ S.String;
 
-export type MaterializedViewRefreshType = "FULL" | "INCREMENTAL";
+export type MaterializedViewRefreshType =
+  | "FULL"
+  | "INCREMENTAL"
+  | (string & {});
 export const MaterializedViewRefreshType = /*@__PURE__*/ S.String;
 
 export type ByteCount = number;
@@ -12017,7 +12141,8 @@ export type TaskType =
   | "LABELING_SET_GENERATION"
   | "IMPORT_LABELS"
   | "EXPORT_LABELS"
-  | "FIND_MATCHES";
+  | "FIND_MATCHES"
+  | (string & {});
 export const TaskType = /*@__PURE__*/ S.String;
 
 export type ReplaceBoolean = boolean;
@@ -12128,10 +12253,14 @@ export const TaskRunFilterCriteria = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TaskRunFilterCriteria",
 }) as any as S.Schema<TaskRunFilterCriteria>;
-export type TaskRunSortColumnType = "TASK_RUN_TYPE" | "STATUS" | "STARTED";
+export type TaskRunSortColumnType =
+  | "TASK_RUN_TYPE"
+  | "STATUS"
+  | "STARTED"
+  | (string & {});
 export const TaskRunSortColumnType = /*@__PURE__*/ S.String;
 
-export type SortDirectionType = "DESCENDING" | "ASCENDING";
+export type SortDirectionType = "DESCENDING" | "ASCENDING" | (string & {});
 export const SortDirectionType = /*@__PURE__*/ S.String;
 
 export interface TaskRunSortCriteria {
@@ -12213,7 +12342,11 @@ export const GetMLTransformRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMLTransformRequest",
 }) as any as S.Schema<GetMLTransformRequest>;
-export type TransformStatusType = "NOT_READY" | "READY" | "DELETING";
+export type TransformStatusType =
+  | "NOT_READY"
+  | "READY"
+  | "DELETING"
+  | (string & {});
 export const TransformStatusType = /*@__PURE__*/ S.String;
 
 export type RecordsCount = number;
@@ -12370,7 +12503,8 @@ export type TransformSortColumnType =
   | "TRANSFORM_TYPE"
   | "STATUS"
   | "CREATED"
-  | "LAST_MODIFIED";
+  | "LAST_MODIFIED"
+  | (string & {});
 export const TransformSortColumnType = /*@__PURE__*/ S.String;
 
 export interface TransformSortCriteria {
@@ -12519,7 +12653,8 @@ export type PartitionIndexStatus =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const PartitionIndexStatus = /*@__PURE__*/ S.String;
 
 export type BackfillErrorCode =
@@ -12527,7 +12662,8 @@ export type BackfillErrorCode =
   | "INTERNAL_ERROR"
   | "INVALID_PARTITION_TYPE_DATA_ERROR"
   | "MISSING_PARTITION_VALUE_ERROR"
-  | "UNSUPPORTED_PARTITION_CHARACTER_ERROR";
+  | "UNSUPPORTED_PARTITION_CHARACTER_ERROR"
+  | (string & {});
 export const BackfillErrorCode = /*@__PURE__*/ S.String;
 
 export type BackfillErroredPartitionsList = PartitionValueList[];
@@ -12894,7 +13030,7 @@ export const GetSchemaVersionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSchemaVersionResponse",
 }) as any as S.Schema<GetSchemaVersionResponse>;
-export type SchemaDiffType = "SYNTAX_DIFF";
+export type SchemaDiffType = "SYNTAX_DIFF" | (string & {});
 export const SchemaDiffType = /*@__PURE__*/ S.String;
 
 export interface GetSchemaVersionsDiffInput {
@@ -13065,7 +13201,8 @@ export type StatementState =
   | "AVAILABLE"
   | "CANCELLING"
   | "CANCELLED"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const StatementState = /*@__PURE__*/ S.String;
 
 export interface StatementOutputData {
@@ -13129,7 +13266,8 @@ export type TableAttributes =
   | "NAME"
   | "TABLE_TYPE"
   | "DEFAULT"
-  | "LATEST_ICEBERG_METADATA";
+  | "LATEST_ICEBERG_METADATA"
+  | (string & {});
 export const TableAttributes = /*@__PURE__*/ S.String;
 
 export type TableAttributesList = TableAttributes[];
@@ -13260,7 +13398,7 @@ export const IcebergTableMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IcebergTableMetadata",
 }) as any as S.Schema<IcebergTableMetadata>;
-export type ResourceAction = "UPDATE" | "CREATE";
+export type ResourceAction = "UPDATE" | "CREATE" | (string & {});
 export const ResourceAction = /*@__PURE__*/ S.String;
 
 export type ResourceState =
@@ -13268,7 +13406,8 @@ export type ResourceState =
   | "IN_PROGRESS"
   | "SUCCESS"
   | "STOPPED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ResourceState = /*@__PURE__*/ S.String;
 
 export interface ViewValidation {
@@ -13619,7 +13758,8 @@ export type PermissionType =
   | "COLUMN_PERMISSION"
   | "CELL_FILTER_PERMISSION"
   | "NESTED_PERMISSION"
-  | "NESTED_CELL_PERMISSION";
+  | "NESTED_CELL_PERMISSION"
+  | (string & {});
 export const PermissionType = /*@__PURE__*/ S.String;
 
 export type PermissionTypeList = PermissionType[];
@@ -14248,10 +14388,18 @@ export type FieldName =
   | "STATE"
   | "START_TIME"
   | "END_TIME"
-  | "DPU_HOUR";
+  | "DPU_HOUR"
+  | (string & {});
 export const FieldName = /*@__PURE__*/ S.String;
 
-export type FilterOperator = "GT" | "GE" | "LT" | "LE" | "EQ" | "NE";
+export type FilterOperator =
+  | "GT"
+  | "GE"
+  | "LT"
+  | "LE"
+  | "EQ"
+  | "NE"
+  | (string & {});
 export const FilterOperator = /*@__PURE__*/ S.String;
 
 export interface CrawlsFilter {
@@ -14291,7 +14439,8 @@ export type CrawlerHistoryState =
   | "RUNNING"
   | "COMPLETED"
   | "FAILED"
-  | "STOPPED";
+  | "STOPPED"
+  | (string & {});
 export const CrawlerHistoryState = /*@__PURE__*/ S.String;
 
 export interface CrawlerHistory {
@@ -14758,7 +14907,11 @@ export const RunIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RunId: S.optional(S.String), JobRunId: S.optional(S.String) }),
 ).annotate({ identifier: "RunIdentifier" }) as any as S.Schema<RunIdentifier>;
 export type StatisticNameString = string;
-export type StatisticEvaluationLevel = "Dataset" | "Column" | "Multicolumn";
+export type StatisticEvaluationLevel =
+  | "Dataset"
+  | "Column"
+  | "Multicolumn"
+  | (string & {});
 export const StatisticEvaluationLevel = /*@__PURE__*/ S.String;
 
 export type ReferenceDatasetsList = string[];
@@ -15898,10 +16051,14 @@ export const PutFormTypeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutFormTypeResponse",
 }) as any as S.Schema<PutFormTypeResponse>;
-export type ExistCondition = "MUST_EXIST" | "NOT_EXIST" | "NONE";
+export type ExistCondition =
+  | "MUST_EXIST"
+  | "NOT_EXIST"
+  | "NONE"
+  | (string & {});
 export const ExistCondition = /*@__PURE__*/ S.String;
 
-export type EnableHybridValues = "TRUE" | "FALSE";
+export type EnableHybridValues = "TRUE" | "FALSE" | (string & {});
 export const EnableHybridValues = /*@__PURE__*/ S.String;
 
 export interface PutResourcePolicyRequest {
@@ -16082,7 +16239,7 @@ export const QuerySchemaVersionMetadataResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "QuerySchemaVersionMetadataResponse",
 }) as any as S.Schema<QuerySchemaVersionMetadataResponse>;
-export type IntegrationType = "REST";
+export type IntegrationType = "REST" | (string & {});
 export const IntegrationType = /*@__PURE__*/ S.String;
 
 export interface ConnectionPropertiesConfiguration {
@@ -16100,10 +16257,11 @@ export const ConnectionPropertiesConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type ConnectorOAuth2GrantType =
   | "CLIENT_CREDENTIALS"
   | "JWT_BEARER"
-  | "AUTHORIZATION_CODE";
+  | "AUTHORIZATION_CODE"
+  | (string & {});
 export const ConnectorOAuth2GrantType = /*@__PURE__*/ S.String;
 
-export type ContentType = "APPLICATION_JSON" | "URL_ENCODED";
+export type ContentType = "APPLICATION_JSON" | "URL_ENCODED" | (string & {});
 export const ContentType = /*@__PURE__*/ S.String;
 
 export interface ClientCredentialsProperties {
@@ -16404,7 +16562,7 @@ export type SearchText = string;
 export type SearchMaxResults = number;
 export type SearchNextToken = string;
 export type SearchAttribute = string;
-export type SearchSortOrder = "ASCENDING" | "DESCENDING";
+export type SearchSortOrder = "ASCENDING" | "DESCENDING" | (string & {});
 export const SearchSortOrder = /*@__PURE__*/ S.String;
 
 export interface SearchSort {
@@ -16426,7 +16584,8 @@ export type SearchFilterOperator =
   | "greaterThanOrEquals"
   | "lessThan"
   | "lessThanOrEquals"
-  | "notExists";
+  | "notExists"
+  | (string & {});
 export const SearchFilterOperator = /*@__PURE__*/ S.String;
 
 export type SearchFilterStringValue = string;
@@ -16571,7 +16730,8 @@ export type Comparator =
   | "GREATER_THAN"
   | "LESS_THAN"
   | "GREATER_THAN_EQUALS"
-  | "LESS_THAN_EQUALS";
+  | "LESS_THAN_EQUALS"
+  | (string & {});
 export const Comparator = /*@__PURE__*/ S.String;
 
 export interface PropertyPredicate {
@@ -16591,7 +16751,7 @@ export const PropertyPredicate = /*@__PURE__*/ S.suspend(() =>
 export type SearchPropertyPredicates = PropertyPredicate[];
 export const SearchPropertyPredicates =
   /*@__PURE__*/ S.Array(PropertyPredicate);
-export type Sort = "ASC" | "DESC";
+export type Sort = "ASC" | "DESC" | (string & {});
 export const Sort = /*@__PURE__*/ S.String;
 
 export interface SortCriterion {
@@ -18118,7 +18278,12 @@ export const UpdateSourceControlFromJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateSourceControlFromJobResponse",
 }) as any as S.Schema<UpdateSourceControlFromJobResponse>;
-export type ViewUpdateAction = "ADD" | "REPLACE" | "ADD_OR_REPLACE" | "DROP";
+export type ViewUpdateAction =
+  | "ADD"
+  | "REPLACE"
+  | "ADD_OR_REPLACE"
+  | "DROP"
+  | (string & {});
 export const ViewUpdateAction = /*@__PURE__*/ S.String;
 
 export type IcebergUpdateAction =
@@ -18132,7 +18297,8 @@ export type IcebergUpdateAction =
   | "set-properties"
   | "remove-properties"
   | "add-encryption-key"
-  | "remove-encryption-key";
+  | "remove-encryption-key"
+  | (string & {});
 export const IcebergUpdateAction = /*@__PURE__*/ S.String;
 
 export type EncryptionKeyIdString = string;
@@ -18386,7 +18552,8 @@ export type FederationSourceErrorCode =
   | "OperationNotSupportedException"
   | "InternalServiceException"
   | "PartialFailureException"
-  | "ThrottlingException";
+  | "ThrottlingException"
+  | (string & {});
 export const FederationSourceErrorCode = /*@__PURE__*/ S.String;
 
 export type IntegrationErrorMessage = string;

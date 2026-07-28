@@ -28,15 +28,21 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 /** * `personal` - personal * `team` - team */
-export type VisibilityEnum = "personal" | "team";
+export type VisibilityEnum = "personal" | "team" | (string & {});
 export const VisibilityEnum = /*@__PURE__*/ S.String;
 
 /** * `claude` - claude * `codex` - codex */
-export type RuntimeAdapterEnum = "claude" | "codex";
+export type RuntimeAdapterEnum = "claude" | "codex" | (string & {});
 export const RuntimeAdapterEnum = /*@__PURE__*/ S.String;
 
 /** * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max */
-export type ReasoningEffortEnum = "low" | "medium" | "high" | "xhigh" | "max";
+export type ReasoningEffortEnum =
+  | "low"
+  | "medium"
+  | "high"
+  | "xhigh"
+  | "max"
+  | (string & {});
 export const ReasoningEffortEnum = /*@__PURE__*/ S.String;
 
 export interface LoopRepositoryEntry {
@@ -62,7 +68,11 @@ export const LoopsCreateRequestRepositoriesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<LoopsCreateRequestRepositoriesList>;
 
 /** * `skip` - skip * `allow` - allow * `cancel_previous` - cancel_previous */
-export type OverlapPolicyEnum = "skip" | "allow" | "cancel_previous";
+export type OverlapPolicyEnum =
+  | "skip"
+  | "allow"
+  | "cancel_previous"
+  | (string & {});
 export const OverlapPolicyEnum = /*@__PURE__*/ S.String;
 
 export interface LoopBehaviors {
@@ -91,7 +101,7 @@ export const LoopConnectorsMcpInstallationIdsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<LoopConnectorsMcpInstallationIdsList>;
 
 /** * `read_only` - read_only * `full` - full */
-export type PosthogMcpScopesEnum = "read_only" | "full";
+export type PosthogMcpScopesEnum = "read_only" | "full" | (string & {});
 export const PosthogMcpScopesEnum = /*@__PURE__*/ S.String;
 
 export interface LoopConnectors {
@@ -112,7 +122,8 @@ export type EventsEnum =
   | "run_completed"
   | "run_failed"
   | "pr_created"
-  | "needs_attention";
+  | "needs_attention"
+  | (string & {});
 export const EventsEnum = /*@__PURE__*/ S.String;
 
 /** Event kinds this channel notifies on. One or more of: run_completed, run_failed, pr_created, needs_attention. */
@@ -203,7 +214,7 @@ export const LoopContextTargetWrite = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LoopContextTargetWrite>;
 
 /** * `schedule` - schedule * `github` - github * `api` - api */
-export type LoopTriggerTypeEnum = "schedule" | "github" | "api";
+export type LoopTriggerTypeEnum = "schedule" | "github" | "api" | (string & {});
 export const LoopTriggerTypeEnum = /*@__PURE__*/ S.String;
 
 export interface LoopTriggerWrite {
@@ -791,7 +802,8 @@ export type LoopFireResultReasonEnum =
   | "disabled"
   | "gate_blocked"
   | "owner_inactive"
-  | "owner_changed";
+  | "owner_changed"
+  | (string & {});
 export const LoopFireResultReasonEnum = /*@__PURE__*/ S.String;
 
 /** Response for a manual (`run/`) or external (`trigger/`) fire. */

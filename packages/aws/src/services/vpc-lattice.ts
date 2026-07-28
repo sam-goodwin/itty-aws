@@ -469,7 +469,12 @@ export const CreateListenerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateListenerResponse",
 }) as any as S.Schema<CreateListenerResponse>;
 export type ResourceConfigurationName = string;
-export type ResourceConfigurationType = "GROUP" | "CHILD" | "SINGLE" | "ARN";
+export type ResourceConfigurationType =
+  | "GROUP"
+  | "CHILD"
+  | "SINGLE"
+  | "ARN"
+  | (string & {});
 export const ResourceConfigurationType = /*@__PURE__*/ S.String;
 
 export type PortRange = string;

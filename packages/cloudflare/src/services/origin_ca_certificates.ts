@@ -76,7 +76,8 @@ export const CreateRequestHostnamesList = /*@__PURE__*/ S.Array(
 export type CreateRequestRequestType =
   | "origin-rsa"
   | "origin-ecc"
-  | "keyless-certificate";
+  | "keyless-certificate"
+  | (string & {});
 export const CreateRequestRequestType = /*@__PURE__*/ S.String;
 
 export type CreateRequestRequestedValidity =
@@ -86,7 +87,8 @@ export type CreateRequestRequestedValidity =
   | 365
   | 730
   | 1095
-  | 5475;
+  | 5475
+  | (number & {});
 export const CreateRequestRequestedValidity = /*@__PURE__*/ S.Number;
 
 export interface CreateOriginCaCertificateRequest {
@@ -122,7 +124,8 @@ export const CreateResponseHostnamesList = /*@__PURE__*/ S.Array(
 export type CreateResponseRequestType =
   | "origin-rsa"
   | "origin-ecc"
-  | "keyless-certificate";
+  | "keyless-certificate"
+  | (string & {});
 export const CreateResponseRequestType = /*@__PURE__*/ S.String;
 
 export type CreateResponseRequestedValidity =
@@ -132,7 +135,8 @@ export type CreateResponseRequestedValidity =
   | 365
   | 730
   | 1095
-  | 5475;
+  | 5475
+  | (number & {});
 export const CreateResponseRequestedValidity = /*@__PURE__*/ S.Number;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -235,7 +239,8 @@ export const GetResponseHostnamesList = /*@__PURE__*/ S.Array(
 export type GetResponseRequestType =
   | "origin-rsa"
   | "origin-ecc"
-  | "keyless-certificate";
+  | "keyless-certificate"
+  | (string & {});
 export const GetResponseRequestType = /*@__PURE__*/ S.String;
 
 export type GetResponseRequestedValidity =
@@ -245,7 +250,8 @@ export type GetResponseRequestedValidity =
   | 365
   | 730
   | 1095
-  | 5475;
+  | 5475
+  | (number & {});
 export const GetResponseRequestedValidity = /*@__PURE__*/ S.Number;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -318,7 +324,8 @@ export const ListResultItemHostnamesList = /*@__PURE__*/ S.Array(
 export type ListResultItemRequestType =
   | "origin-rsa"
   | "origin-ecc"
-  | "keyless-certificate";
+  | "keyless-certificate"
+  | (string & {});
 export const ListResultItemRequestType = /*@__PURE__*/ S.String;
 
 export type ListResultItemRequestedValidity =
@@ -328,7 +335,8 @@ export type ListResultItemRequestedValidity =
   | 365
   | 730
   | 1095
-  | 5475;
+  | 5475
+  | (number & {});
 export const ListResultItemRequestedValidity = /*@__PURE__*/ S.Number;
 
 export interface ListResultItem {

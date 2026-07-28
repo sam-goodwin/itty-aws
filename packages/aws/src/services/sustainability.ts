@@ -142,7 +142,11 @@ export const TimePeriod = /*@__PURE__*/ S.suspend(() =>
     End: T.DateFromString.pipe(T.TimestampFormat("date-time")),
   }),
 ).annotate({ identifier: "TimePeriod" }) as any as S.Schema<TimePeriod>;
-export type Dimension = "USAGE_ACCOUNT_ID" | "REGION" | "SERVICE";
+export type Dimension =
+  | "USAGE_ACCOUNT_ID"
+  | "REGION"
+  | "SERVICE"
+  | (string & {});
 export const Dimension = /*@__PURE__*/ S.String;
 
 export type DimensionList = Dimension[];
@@ -169,7 +173,8 @@ export type EmissionsType =
   | "TOTAL_SCOPE_2_LBM_CARBON_EMISSIONS"
   | "TOTAL_SCOPE_2_MBM_CARBON_EMISSIONS"
   | "TOTAL_SCOPE_3_LBM_CARBON_EMISSIONS"
-  | "TOTAL_SCOPE_3_MBM_CARBON_EMISSIONS";
+  | "TOTAL_SCOPE_3_MBM_CARBON_EMISSIONS"
+  | (string & {});
 export const EmissionsType = /*@__PURE__*/ S.String;
 
 export type EmissionsTypeList = EmissionsType[];
@@ -179,7 +184,8 @@ export type TimeGranularity =
   | "YEARLY_FISCAL"
   | "QUARTERLY_CALENDAR"
   | "QUARTERLY_FISCAL"
-  | "MONTHLY";
+  | "MONTHLY"
+  | (string & {});
 export const TimeGranularity = /*@__PURE__*/ S.String;
 
 export type Month = number;
@@ -232,7 +238,7 @@ export const DimensionsMap = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export type ModelVersion = string;
-export type EmissionsUnit = "MTCO2e";
+export type EmissionsUnit = "MTCO2e" | (string & {});
 export const EmissionsUnit = /*@__PURE__*/ S.String;
 
 export interface Emissions {

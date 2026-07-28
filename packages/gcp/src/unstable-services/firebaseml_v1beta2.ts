@@ -255,7 +255,8 @@ export const DownloadProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DownloadModelResponseModelFormatEnum =
   | "MODEL_FORMAT_UNSPECIFIED"
-  | "TFLITE";
+  | "TFLITE"
+  | (string & {});
 export const DownloadModelResponseModelFormatEnum = /*@__PURE__*/ S.String;
 
 /** The response for downloading a model to device. */

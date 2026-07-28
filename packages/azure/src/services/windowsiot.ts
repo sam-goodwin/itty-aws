@@ -118,7 +118,8 @@ export const ServicesCheckDeviceServiceNameAvailabilityRequest =
 /** The reason for unavailability. */
 export type DeviceServiceNameAvailabilityInfoReason =
   | "Invalid"
-  | "AlreadyExists";
+  | "AlreadyExists"
+  | (string & {});
 export const DeviceServiceNameAvailabilityInfoReason = /*@__PURE__*/ S.String;
 
 /** The properties indicating whether a given Windows IoT Device Service name is available. */

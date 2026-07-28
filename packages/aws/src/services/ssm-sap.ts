@@ -109,7 +109,7 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
   { Message: S.optional(S.String) },
   T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
-export type PermissionActionType = "RESTORE";
+export type PermissionActionType = "RESTORE" | (string & {});
 export const PermissionActionType = /*@__PURE__*/ S.String;
 
 export type Arn = string;
@@ -193,7 +193,7 @@ export const GetApplicationInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetApplicationInput",
 }) as any as S.Schema<GetApplicationInput>;
-export type ApplicationType = "HANA" | "SAP_ABAP";
+export type ApplicationType = "HANA" | "SAP_ABAP" | (string & {});
 export const ApplicationType = /*@__PURE__*/ S.String;
 
 export type ApplicationStatus =
@@ -204,7 +204,8 @@ export type ApplicationStatus =
   | "FAILED"
   | "REGISTERING"
   | "DELETING"
-  | "UNKNOWN";
+  | "UNKNOWN"
+  | (string & {});
 export const ApplicationStatus = /*@__PURE__*/ S.String;
 
 export type ApplicationDiscoveryStatus =
@@ -212,7 +213,8 @@ export type ApplicationDiscoveryStatus =
   | "REGISTRATION_FAILED"
   | "REFRESH_FAILED"
   | "REGISTERING"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const ApplicationDiscoveryStatus = /*@__PURE__*/ S.String;
 
 export type ComponentId = string;
@@ -290,7 +292,8 @@ export type ComponentType =
   | "DIALOG"
   | "WEBDISP"
   | "WD"
-  | "ERS";
+  | "ERS"
+  | (string & {});
 export const ComponentType = /*@__PURE__*/ S.String;
 
 export type ComponentStatus =
@@ -300,10 +303,17 @@ export type ComponentStatus =
   | "STOPPING"
   | "RUNNING"
   | "RUNNING_WITH_ERROR"
-  | "UNDEFINED";
+  | "UNDEFINED"
+  | (string & {});
 export const ComponentStatus = /*@__PURE__*/ S.String;
 
-export type ReplicationMode = "PRIMARY" | "NONE" | "SYNC" | "SYNCMEM" | "ASYNC";
+export type ReplicationMode =
+  | "PRIMARY"
+  | "NONE"
+  | "SYNC"
+  | "SYNCMEM"
+  | "ASYNC"
+  | (string & {});
 export const ReplicationMode = /*@__PURE__*/ S.String;
 
 export type OperationMode =
@@ -311,7 +321,8 @@ export type OperationMode =
   | "LOGREPLAY"
   | "DELTA_DATASHIPPING"
   | "LOGREPLAY_READACCESS"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const OperationMode = /*@__PURE__*/ S.String;
 
 export type ClusterStatus =
@@ -319,7 +330,8 @@ export type ClusterStatus =
   | "STANDBY"
   | "MAINTENANCE"
   | "OFFLINE"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const ClusterStatus = /*@__PURE__*/ S.String;
 
 export interface Resilience {
@@ -342,7 +354,8 @@ export type AllocationType =
   | "VPC_SUBNET"
   | "ELASTIC_IP"
   | "OVERLAY"
-  | "UNKNOWN";
+  | "UNKNOWN"
+  | (string & {});
 export const AllocationType = /*@__PURE__*/ S.String;
 
 export interface IpAddressMember {
@@ -378,7 +391,12 @@ export const AssociatedHost = /*@__PURE__*/ S.suspend(() =>
 export type DatabaseId = string;
 export type DatabaseIdList = string[];
 export const DatabaseIdList = /*@__PURE__*/ S.Array(S.String);
-export type HostRole = "LEADER" | "WORKER" | "STANDBY" | "UNKNOWN";
+export type HostRole =
+  | "LEADER"
+  | "WORKER"
+  | "STANDBY"
+  | "UNKNOWN"
+  | (string & {});
 export const HostRole = /*@__PURE__*/ S.String;
 
 export interface Host {
@@ -401,7 +419,7 @@ export const Host = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Host" }) as any as S.Schema<Host>;
 export type HostList = Host[];
 export const HostList = /*@__PURE__*/ S.Array(Host);
-export type DatabaseConnectionMethod = "DIRECT" | "OVERLAY";
+export type DatabaseConnectionMethod = "DIRECT" | "OVERLAY" | (string & {});
 export const DatabaseConnectionMethod = /*@__PURE__*/ S.String;
 
 export interface DatabaseConnection {
@@ -491,13 +509,18 @@ export const GetConfigurationCheckOperationInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetConfigurationCheckOperationInput",
 }) as any as S.Schema<GetConfigurationCheckOperationInput>;
-export type OperationStatus = "INPROGRESS" | "SUCCESS" | "ERROR";
+export type OperationStatus =
+  | "INPROGRESS"
+  | "SUCCESS"
+  | "ERROR"
+  | (string & {});
 export const OperationStatus = /*@__PURE__*/ S.String;
 
 export type ConfigurationCheckType =
   | "SAP_CHECK_01"
   | "SAP_CHECK_02"
-  | "SAP_CHECK_03";
+  | "SAP_CHECK_03"
+  | (string & {});
 export const ConfigurationCheckType = /*@__PURE__*/ S.String;
 
 export interface RuleStatusCounts {
@@ -583,7 +606,7 @@ export const GetDatabaseInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDatabaseInput",
 }) as any as S.Schema<GetDatabaseInput>;
 export type DatabaseName = string;
-export type CredentialType = "ADMIN";
+export type CredentialType = "ADMIN" | (string & {});
 export const CredentialType = /*@__PURE__*/ S.String;
 
 export type SecretId = string | redacted.Redacted<string>;
@@ -605,7 +628,7 @@ export type ApplicationCredentialList = ApplicationCredential[];
 export const ApplicationCredentialList = /*@__PURE__*/ S.Array(
   ApplicationCredential,
 );
-export type DatabaseType = "SYSTEM" | "TENANT";
+export type DatabaseType = "SYSTEM" | "TENANT" | (string & {});
 export const DatabaseType = /*@__PURE__*/ S.String;
 
 export type DatabaseStatus =
@@ -615,7 +638,8 @@ export type DatabaseStatus =
   | "WARNING"
   | "UNKNOWN"
   | "ERROR"
-  | "STOPPING";
+  | "STOPPING"
+  | (string & {});
 export const DatabaseStatus = /*@__PURE__*/ S.String;
 
 export type ComponentArnList = string[];
@@ -758,7 +782,8 @@ export type FilterValue = string;
 export type FilterOperator =
   | "Equals"
   | "GreaterThanOrEquals"
-  | "LessThanOrEquals";
+  | "LessThanOrEquals"
+  | (string & {});
 export const FilterOperator = /*@__PURE__*/ S.String;
 
 export interface Filter {
@@ -943,7 +968,8 @@ export const ListConfigurationCheckDefinitionsOutput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListConfigurationCheckDefinitionsOutput>;
 export type ConfigurationCheckOperationListingMode =
   | "ALL_OPERATIONS"
-  | "LATEST_PER_CHECK";
+  | "LATEST_PER_CHECK"
+  | (string & {});
 export const ConfigurationCheckOperationListingMode = /*@__PURE__*/ S.String;
 
 export interface ListConfigurationCheckOperationsInput {
@@ -1086,7 +1112,11 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
     ResourceType: S.optional(S.String),
   }),
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
-export type OperationEventStatus = "IN_PROGRESS" | "COMPLETED" | "FAILED";
+export type OperationEventStatus =
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | (string & {});
 export const OperationEventStatus = /*@__PURE__*/ S.String;
 
 export interface OperationEvent {
@@ -1241,7 +1271,8 @@ export type RuleResultStatus =
   | "FAILED"
   | "WARNING"
   | "INFO"
-  | "UNKNOWN";
+  | "UNKNOWN"
+  | (string & {});
 export const RuleResultStatus = /*@__PURE__*/ S.String;
 
 export type RuleResultMetadataKey = string;
@@ -1486,7 +1517,7 @@ export const StartConfigurationChecksOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartConfigurationChecksOutput",
 }) as any as S.Schema<StartConfigurationChecksOutput>;
-export type ConnectedEntityType = "DBMS";
+export type ConnectedEntityType = "DBMS" | (string & {});
 export const ConnectedEntityType = /*@__PURE__*/ S.String;
 
 export interface StopApplicationInput {
@@ -1576,7 +1607,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-export type BackintMode = "AWSBackup";
+export type BackintMode = "AWSBackup" | (string & {});
 export const BackintMode = /*@__PURE__*/ S.String;
 
 export interface BackintConfig {

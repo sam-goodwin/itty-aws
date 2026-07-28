@@ -541,7 +541,8 @@ export const OAuthSettings = /*@__PURE__*/ S.suspend(() =>
 
 export type AccessSettingsIdentitySourcesItemEnum =
   | "IDENTITY_SOURCE_UNSPECIFIED"
-  | "WORKFORCE_IDENTITY_FEDERATION";
+  | "WORKFORCE_IDENTITY_FEDERATION"
+  | (string & {});
 export const AccessSettingsIdentitySourcesItemEnum = /*@__PURE__*/ S.String;
 
 export type AccessSettingsIdentitySourcesItemEnumList =
@@ -604,13 +605,15 @@ export type ReauthSettingsMethodEnum =
   | "LOGIN"
   | "PASSWORD"
   | "SECURE_KEY"
-  | "ENROLLED_SECOND_FACTORS";
+  | "ENROLLED_SECOND_FACTORS"
+  | (string & {});
 export const ReauthSettingsMethodEnum = /*@__PURE__*/ S.String;
 
 export type ReauthSettingsPolicyTypeEnum =
   | "POLICY_TYPE_UNSPECIFIED"
   | "MINIMUM"
-  | "DEFAULT";
+  | "DEFAULT"
+  | (string & {});
 export const ReauthSettingsPolicyTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for IAP reauthentication policies. */
@@ -666,7 +669,8 @@ export type AttributePropagationSettingsOutputCredentialsItemEnum =
   | "OUTPUT_CREDENTIALS_UNSPECIFIED"
   | "HEADER"
   | "JWT"
-  | "RCTOKEN";
+  | "RCTOKEN"
+  | (string & {});
 export const AttributePropagationSettingsOutputCredentialsItemEnum =
   /*@__PURE__*/ S.String;
 

@@ -97,14 +97,19 @@ export const CreateRequestCustomMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<CreateRequestCustomMetadataMap>;
 
-export type CreateRequestSslBundleMethod = "ubiquitous" | "optimal" | "force";
+export type CreateRequestSslBundleMethod =
+  | "ubiquitous"
+  | "optimal"
+  | "force"
+  | (string & {});
 export const CreateRequestSslBundleMethod = /*@__PURE__*/ S.String;
 
 export type CreateRequestSslCertificateAuthority =
   | "digicert"
   | "google"
   | "lets_encrypt"
-  | "ssl_com";
+  | "ssl_com"
+  | (string & {});
 export const CreateRequestSslCertificateAuthority = /*@__PURE__*/ S.String;
 
 export interface CreateRequestSslCustomCertBundleItem {
@@ -129,7 +134,7 @@ export const CreateRequestSslCustomCertBundleList = /*@__PURE__*/ S.Array(
   CreateRequestSslCustomCertBundleItem,
 ) as any as S.Schema<CreateRequestSslCustomCertBundleList>;
 
-export type CreateRequestSslMethod = "http" | "txt" | "email";
+export type CreateRequestSslMethod = "http" | "txt" | "email" | (string & {});
 export const CreateRequestSslMethod = /*@__PURE__*/ S.String;
 
 export type CreateRequestSslSettingsCiphersList = ReadonlyArray<string>;
@@ -137,20 +142,21 @@ export const CreateRequestSslSettingsCiphersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateRequestSslSettingsCiphersList>;
 
-export type CreateRequestSslSettingsEarlyHints = "on" | "off";
+export type CreateRequestSslSettingsEarlyHints = "on" | "off" | (string & {});
 export const CreateRequestSslSettingsEarlyHints = /*@__PURE__*/ S.String;
 
-export type CreateRequestSslSettingsHttp2 = "on" | "off";
+export type CreateRequestSslSettingsHttp2 = "on" | "off" | (string & {});
 export const CreateRequestSslSettingsHttp2 = /*@__PURE__*/ S.String;
 
 export type CreateRequestSslSettingsMinTlsVersion =
   | "1.0"
   | "1.1"
   | "1.2"
-  | "1.3";
+  | "1.3"
+  | (string & {});
 export const CreateRequestSslSettingsMinTlsVersion = /*@__PURE__*/ S.String;
 
-export type CreateRequestSslSettingsTls13 = "on" | "off";
+export type CreateRequestSslSettingsTls13 = "on" | "off" | (string & {});
 export const CreateRequestSslSettingsTls13 = /*@__PURE__*/ S.String;
 
 export interface CreateRequestSslSettings {
@@ -181,7 +187,7 @@ export const CreateRequestSslSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestSslSettings",
 }) as any as S.Schema<CreateRequestSslSettings>;
 
-export type CreateRequestSslType = "dv";
+export type CreateRequestSslType = "dv" | (string & {});
 export const CreateRequestSslType = /*@__PURE__*/ S.String;
 
 export interface CreateRequestSsl {
@@ -275,7 +281,7 @@ export const CreateResponseCustomMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<CreateResponseCustomMetadataMap>;
 
-export type CreateResponseOwnershipVerificationType = "txt";
+export type CreateResponseOwnershipVerificationType = "txt" | (string & {});
 export const CreateResponseOwnershipVerificationType = /*@__PURE__*/ S.String;
 
 export interface CreateResponseOwnershipVerification {
@@ -312,14 +318,19 @@ export const CreateResponseOwnershipVerificationHttp = /*@__PURE__*/ S.suspend(
   identifier: "CreateResponseOwnershipVerificationHttp",
 }) as any as S.Schema<CreateResponseOwnershipVerificationHttp>;
 
-export type CreateResponseSslBundleMethod = "ubiquitous" | "optimal" | "force";
+export type CreateResponseSslBundleMethod =
+  | "ubiquitous"
+  | "optimal"
+  | "force"
+  | (string & {});
 export const CreateResponseSslBundleMethod = /*@__PURE__*/ S.String;
 
 export type CreateResponseSslCertificateAuthority =
   | "digicert"
   | "google"
   | "lets_encrypt"
-  | "ssl_com";
+  | "ssl_com"
+  | (string & {});
 export const CreateResponseSslCertificateAuthority = /*@__PURE__*/ S.String;
 
 export type CreateResponseSslDcvDelegationRecordsItemEmailsList =
@@ -374,7 +385,7 @@ export const CreateResponseSslHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseSslHostsList>;
 
-export type CreateResponseSslMethod = "http" | "txt" | "email";
+export type CreateResponseSslMethod = "http" | "txt" | "email" | (string & {});
 export const CreateResponseSslMethod = /*@__PURE__*/ S.String;
 
 export type CreateResponseSslSettingsCiphersList = ReadonlyArray<string>;
@@ -382,20 +393,21 @@ export const CreateResponseSslSettingsCiphersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseSslSettingsCiphersList>;
 
-export type CreateResponseSslSettingsEarlyHints = "on" | "off";
+export type CreateResponseSslSettingsEarlyHints = "on" | "off" | (string & {});
 export const CreateResponseSslSettingsEarlyHints = /*@__PURE__*/ S.String;
 
-export type CreateResponseSslSettingsHttp2 = "on" | "off";
+export type CreateResponseSslSettingsHttp2 = "on" | "off" | (string & {});
 export const CreateResponseSslSettingsHttp2 = /*@__PURE__*/ S.String;
 
 export type CreateResponseSslSettingsMinTlsVersion =
   | "1.0"
   | "1.1"
   | "1.2"
-  | "1.3";
+  | "1.3"
+  | (string & {});
 export const CreateResponseSslSettingsMinTlsVersion = /*@__PURE__*/ S.String;
 
-export type CreateResponseSslSettingsTls13 = "on" | "off";
+export type CreateResponseSslSettingsTls13 = "on" | "off" | (string & {});
 export const CreateResponseSslSettingsTls13 = /*@__PURE__*/ S.String;
 
 export interface CreateResponseSslSettings {
@@ -447,10 +459,11 @@ export type CreateResponseSslStatus =
   | "deactivating"
   | "inactive"
   | "backup_issued"
-  | "holding_deployment";
+  | "holding_deployment"
+  | (string & {});
 export const CreateResponseSslStatus = /*@__PURE__*/ S.String;
 
-export type CreateResponseSslType = "dv";
+export type CreateResponseSslType = "dv" | (string & {});
 export const CreateResponseSslType = /*@__PURE__*/ S.String;
 
 export interface CreateResponseSslValidationErrorsItem {
@@ -616,7 +629,8 @@ export type CreateResponseStatus =
   | "test_blocked"
   | "test_failed"
   | "provisioned"
-  | "blocked";
+  | "blocked"
+  | (string & {});
 export const CreateResponseStatus = /*@__PURE__*/ S.String;
 
 export type CreateResponseVerificationErrorsList = ReadonlyArray<string>;
@@ -791,7 +805,8 @@ export type FallbackOriginDeleteResponseStatus =
   | "pending_deletion"
   | "active"
   | "deployment_timed_out"
-  | "deletion_timed_out";
+  | "deletion_timed_out"
+  | (string & {});
 export const FallbackOriginDeleteResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -850,7 +865,7 @@ export const GetResponseCustomMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<GetResponseCustomMetadataMap>;
 
-export type GetResponseOwnershipVerificationType = "txt";
+export type GetResponseOwnershipVerificationType = "txt" | (string & {});
 export const GetResponseOwnershipVerificationType = /*@__PURE__*/ S.String;
 
 export interface GetResponseOwnershipVerification {
@@ -887,14 +902,19 @@ export const GetResponseOwnershipVerificationHttp = /*@__PURE__*/ S.suspend(
   identifier: "GetResponseOwnershipVerificationHttp",
 }) as any as S.Schema<GetResponseOwnershipVerificationHttp>;
 
-export type GetResponseSslBundleMethod = "ubiquitous" | "optimal" | "force";
+export type GetResponseSslBundleMethod =
+  | "ubiquitous"
+  | "optimal"
+  | "force"
+  | (string & {});
 export const GetResponseSslBundleMethod = /*@__PURE__*/ S.String;
 
 export type GetResponseSslCertificateAuthority =
   | "digicert"
   | "google"
   | "lets_encrypt"
-  | "ssl_com";
+  | "ssl_com"
+  | (string & {});
 export const GetResponseSslCertificateAuthority = /*@__PURE__*/ S.String;
 
 export type GetResponseSslDcvDelegationRecordsItemEmailsList =
@@ -949,7 +969,7 @@ export const GetResponseSslHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseSslHostsList>;
 
-export type GetResponseSslMethod = "http" | "txt" | "email";
+export type GetResponseSslMethod = "http" | "txt" | "email" | (string & {});
 export const GetResponseSslMethod = /*@__PURE__*/ S.String;
 
 export type GetResponseSslSettingsCiphersList = ReadonlyArray<string>;
@@ -957,16 +977,21 @@ export const GetResponseSslSettingsCiphersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseSslSettingsCiphersList>;
 
-export type GetResponseSslSettingsEarlyHints = "on" | "off";
+export type GetResponseSslSettingsEarlyHints = "on" | "off" | (string & {});
 export const GetResponseSslSettingsEarlyHints = /*@__PURE__*/ S.String;
 
-export type GetResponseSslSettingsHttp2 = "on" | "off";
+export type GetResponseSslSettingsHttp2 = "on" | "off" | (string & {});
 export const GetResponseSslSettingsHttp2 = /*@__PURE__*/ S.String;
 
-export type GetResponseSslSettingsMinTlsVersion = "1.0" | "1.1" | "1.2" | "1.3";
+export type GetResponseSslSettingsMinTlsVersion =
+  | "1.0"
+  | "1.1"
+  | "1.2"
+  | "1.3"
+  | (string & {});
 export const GetResponseSslSettingsMinTlsVersion = /*@__PURE__*/ S.String;
 
-export type GetResponseSslSettingsTls13 = "on" | "off";
+export type GetResponseSslSettingsTls13 = "on" | "off" | (string & {});
 export const GetResponseSslSettingsTls13 = /*@__PURE__*/ S.String;
 
 export interface GetResponseSslSettings {
@@ -1018,10 +1043,11 @@ export type GetResponseSslStatus =
   | "deactivating"
   | "inactive"
   | "backup_issued"
-  | "holding_deployment";
+  | "holding_deployment"
+  | (string & {});
 export const GetResponseSslStatus = /*@__PURE__*/ S.String;
 
-export type GetResponseSslType = "dv";
+export type GetResponseSslType = "dv" | (string & {});
 export const GetResponseSslType = /*@__PURE__*/ S.String;
 
 export interface GetResponseSslValidationErrorsItem {
@@ -1181,7 +1207,8 @@ export type GetResponseStatus =
   | "test_blocked"
   | "test_failed"
   | "provisioned"
-  | "blocked";
+  | "blocked"
+  | (string & {});
 export const GetResponseStatus = /*@__PURE__*/ S.String;
 
 export type GetResponseVerificationErrorsList = ReadonlyArray<string>;
@@ -1274,7 +1301,8 @@ export type FallbackOriginGetResponseStatus =
   | "pending_deletion"
   | "active"
   | "deployment_timed_out"
-  | "deletion_timed_out";
+  | "deletion_timed_out"
+  | (string & {});
 export const FallbackOriginGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1305,10 +1333,11 @@ export const GetFallbackOriginResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListRequestCertificateAuthority =
   | "google"
   | "lets_encrypt"
-  | "ssl_com";
+  | "ssl_com"
+  | (string & {});
 export const ListRequestCertificateAuthority = /*@__PURE__*/ S.String;
 
-export type ListRequestDirection = "asc" | "desc";
+export type ListRequestDirection = "asc" | "desc" | (string & {});
 export const ListRequestDirection = /*@__PURE__*/ S.String;
 
 export type ListRequestHostnameStatus =
@@ -1327,10 +1356,11 @@ export type ListRequestHostnameStatus =
   | "test_blocked"
   | "test_failed"
   | "provisioned"
-  | "blocked";
+  | "blocked"
+  | (string & {});
 export const ListRequestHostnameStatus = /*@__PURE__*/ S.String;
 
-export type ListRequestOrder = "ssl" | "ssl_status";
+export type ListRequestOrder = "ssl" | "ssl_status" | (string & {});
 export const ListRequestOrder = /*@__PURE__*/ S.String;
 
 export type ListRequestSslStatus =
@@ -1354,7 +1384,8 @@ export type ListRequestSslStatus =
   | "deactivating"
   | "inactive"
   | "backup_issued"
-  | "holding_deployment";
+  | "holding_deployment"
+  | (string & {});
 export const ListRequestSslStatus = /*@__PURE__*/ S.String;
 
 export interface ListCustomHostnamesRequest {
@@ -1435,7 +1466,7 @@ export const ListResultItemCustomMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<ListResultItemCustomMetadataMap>;
 
-export type ListResultItemOwnershipVerificationType = "txt";
+export type ListResultItemOwnershipVerificationType = "txt" | (string & {});
 export const ListResultItemOwnershipVerificationType = /*@__PURE__*/ S.String;
 
 export interface ListResultItemOwnershipVerification {
@@ -1472,14 +1503,19 @@ export const ListResultItemOwnershipVerificationHttp = /*@__PURE__*/ S.suspend(
   identifier: "ListResultItemOwnershipVerificationHttp",
 }) as any as S.Schema<ListResultItemOwnershipVerificationHttp>;
 
-export type ListResultItemSslBundleMethod = "ubiquitous" | "optimal" | "force";
+export type ListResultItemSslBundleMethod =
+  | "ubiquitous"
+  | "optimal"
+  | "force"
+  | (string & {});
 export const ListResultItemSslBundleMethod = /*@__PURE__*/ S.String;
 
 export type ListResultItemSslCertificateAuthority =
   | "digicert"
   | "google"
   | "lets_encrypt"
-  | "ssl_com";
+  | "ssl_com"
+  | (string & {});
 export const ListResultItemSslCertificateAuthority = /*@__PURE__*/ S.String;
 
 export type ListResultItemSslDcvDelegationRecordsItemEmailsList =
@@ -1534,7 +1570,7 @@ export const ListResultItemSslHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemSslHostsList>;
 
-export type ListResultItemSslMethod = "http" | "txt" | "email";
+export type ListResultItemSslMethod = "http" | "txt" | "email" | (string & {});
 export const ListResultItemSslMethod = /*@__PURE__*/ S.String;
 
 export type ListResultItemSslSettingsCiphersList = ReadonlyArray<string>;
@@ -1542,20 +1578,21 @@ export const ListResultItemSslSettingsCiphersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemSslSettingsCiphersList>;
 
-export type ListResultItemSslSettingsEarlyHints = "on" | "off";
+export type ListResultItemSslSettingsEarlyHints = "on" | "off" | (string & {});
 export const ListResultItemSslSettingsEarlyHints = /*@__PURE__*/ S.String;
 
-export type ListResultItemSslSettingsHttp2 = "on" | "off";
+export type ListResultItemSslSettingsHttp2 = "on" | "off" | (string & {});
 export const ListResultItemSslSettingsHttp2 = /*@__PURE__*/ S.String;
 
 export type ListResultItemSslSettingsMinTlsVersion =
   | "1.0"
   | "1.1"
   | "1.2"
-  | "1.3";
+  | "1.3"
+  | (string & {});
 export const ListResultItemSslSettingsMinTlsVersion = /*@__PURE__*/ S.String;
 
-export type ListResultItemSslSettingsTls13 = "on" | "off";
+export type ListResultItemSslSettingsTls13 = "on" | "off" | (string & {});
 export const ListResultItemSslSettingsTls13 = /*@__PURE__*/ S.String;
 
 export interface ListResultItemSslSettings {
@@ -1607,10 +1644,11 @@ export type ListResultItemSslStatus =
   | "deactivating"
   | "inactive"
   | "backup_issued"
-  | "holding_deployment";
+  | "holding_deployment"
+  | (string & {});
 export const ListResultItemSslStatus = /*@__PURE__*/ S.String;
 
-export type ListResultItemSslType = "dv";
+export type ListResultItemSslType = "dv" | (string & {});
 export const ListResultItemSslType = /*@__PURE__*/ S.String;
 
 export interface ListResultItemSslValidationErrorsItem {
@@ -1776,7 +1814,8 @@ export type ListResultItemStatus =
   | "test_blocked"
   | "test_failed"
   | "provisioned"
-  | "blocked";
+  | "blocked"
+  | (string & {});
 export const ListResultItemStatus = /*@__PURE__*/ S.String;
 
 export type ListResultItemVerificationErrorsList = ReadonlyArray<string>;
@@ -1865,14 +1904,19 @@ export const EditRequestCustomMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<EditRequestCustomMetadataMap>;
 
-export type EditRequestSslBundleMethod = "ubiquitous" | "optimal" | "force";
+export type EditRequestSslBundleMethod =
+  | "ubiquitous"
+  | "optimal"
+  | "force"
+  | (string & {});
 export const EditRequestSslBundleMethod = /*@__PURE__*/ S.String;
 
 export type EditRequestSslCertificateAuthority =
   | "digicert"
   | "google"
   | "lets_encrypt"
-  | "ssl_com";
+  | "ssl_com"
+  | (string & {});
 export const EditRequestSslCertificateAuthority = /*@__PURE__*/ S.String;
 
 export interface EditRequestSslCustomCertBundleItem {
@@ -1896,7 +1940,7 @@ export const EditRequestSslCustomCertBundleList = /*@__PURE__*/ S.Array(
   EditRequestSslCustomCertBundleItem,
 ) as any as S.Schema<EditRequestSslCustomCertBundleList>;
 
-export type EditRequestSslMethod = "http" | "txt" | "email";
+export type EditRequestSslMethod = "http" | "txt" | "email" | (string & {});
 export const EditRequestSslMethod = /*@__PURE__*/ S.String;
 
 export type EditRequestSslSettingsCiphersList = ReadonlyArray<string>;
@@ -1904,16 +1948,21 @@ export const EditRequestSslSettingsCiphersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditRequestSslSettingsCiphersList>;
 
-export type EditRequestSslSettingsEarlyHints = "on" | "off";
+export type EditRequestSslSettingsEarlyHints = "on" | "off" | (string & {});
 export const EditRequestSslSettingsEarlyHints = /*@__PURE__*/ S.String;
 
-export type EditRequestSslSettingsHttp2 = "on" | "off";
+export type EditRequestSslSettingsHttp2 = "on" | "off" | (string & {});
 export const EditRequestSslSettingsHttp2 = /*@__PURE__*/ S.String;
 
-export type EditRequestSslSettingsMinTlsVersion = "1.0" | "1.1" | "1.2" | "1.3";
+export type EditRequestSslSettingsMinTlsVersion =
+  | "1.0"
+  | "1.1"
+  | "1.2"
+  | "1.3"
+  | (string & {});
 export const EditRequestSslSettingsMinTlsVersion = /*@__PURE__*/ S.String;
 
-export type EditRequestSslSettingsTls13 = "on" | "off";
+export type EditRequestSslSettingsTls13 = "on" | "off" | (string & {});
 export const EditRequestSslSettingsTls13 = /*@__PURE__*/ S.String;
 
 export interface EditRequestSslSettings {
@@ -1944,7 +1993,7 @@ export const EditRequestSslSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestSslSettings",
 }) as any as S.Schema<EditRequestSslSettings>;
 
-export type EditRequestSslType = "dv";
+export type EditRequestSslType = "dv" | (string & {});
 export const EditRequestSslType = /*@__PURE__*/ S.String;
 
 export interface EditRequestSsl {
@@ -2042,7 +2091,7 @@ export const EditResponseCustomMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<EditResponseCustomMetadataMap>;
 
-export type EditResponseOwnershipVerificationType = "txt";
+export type EditResponseOwnershipVerificationType = "txt" | (string & {});
 export const EditResponseOwnershipVerificationType = /*@__PURE__*/ S.String;
 
 export interface EditResponseOwnershipVerification {
@@ -2079,14 +2128,19 @@ export const EditResponseOwnershipVerificationHttp = /*@__PURE__*/ S.suspend(
   identifier: "EditResponseOwnershipVerificationHttp",
 }) as any as S.Schema<EditResponseOwnershipVerificationHttp>;
 
-export type EditResponseSslBundleMethod = "ubiquitous" | "optimal" | "force";
+export type EditResponseSslBundleMethod =
+  | "ubiquitous"
+  | "optimal"
+  | "force"
+  | (string & {});
 export const EditResponseSslBundleMethod = /*@__PURE__*/ S.String;
 
 export type EditResponseSslCertificateAuthority =
   | "digicert"
   | "google"
   | "lets_encrypt"
-  | "ssl_com";
+  | "ssl_com"
+  | (string & {});
 export const EditResponseSslCertificateAuthority = /*@__PURE__*/ S.String;
 
 export type EditResponseSslDcvDelegationRecordsItemEmailsList =
@@ -2141,7 +2195,7 @@ export const EditResponseSslHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseSslHostsList>;
 
-export type EditResponseSslMethod = "http" | "txt" | "email";
+export type EditResponseSslMethod = "http" | "txt" | "email" | (string & {});
 export const EditResponseSslMethod = /*@__PURE__*/ S.String;
 
 export type EditResponseSslSettingsCiphersList = ReadonlyArray<string>;
@@ -2149,20 +2203,21 @@ export const EditResponseSslSettingsCiphersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseSslSettingsCiphersList>;
 
-export type EditResponseSslSettingsEarlyHints = "on" | "off";
+export type EditResponseSslSettingsEarlyHints = "on" | "off" | (string & {});
 export const EditResponseSslSettingsEarlyHints = /*@__PURE__*/ S.String;
 
-export type EditResponseSslSettingsHttp2 = "on" | "off";
+export type EditResponseSslSettingsHttp2 = "on" | "off" | (string & {});
 export const EditResponseSslSettingsHttp2 = /*@__PURE__*/ S.String;
 
 export type EditResponseSslSettingsMinTlsVersion =
   | "1.0"
   | "1.1"
   | "1.2"
-  | "1.3";
+  | "1.3"
+  | (string & {});
 export const EditResponseSslSettingsMinTlsVersion = /*@__PURE__*/ S.String;
 
-export type EditResponseSslSettingsTls13 = "on" | "off";
+export type EditResponseSslSettingsTls13 = "on" | "off" | (string & {});
 export const EditResponseSslSettingsTls13 = /*@__PURE__*/ S.String;
 
 export interface EditResponseSslSettings {
@@ -2214,10 +2269,11 @@ export type EditResponseSslStatus =
   | "deactivating"
   | "inactive"
   | "backup_issued"
-  | "holding_deployment";
+  | "holding_deployment"
+  | (string & {});
 export const EditResponseSslStatus = /*@__PURE__*/ S.String;
 
-export type EditResponseSslType = "dv";
+export type EditResponseSslType = "dv" | (string & {});
 export const EditResponseSslType = /*@__PURE__*/ S.String;
 
 export interface EditResponseSslValidationErrorsItem {
@@ -2380,7 +2436,8 @@ export type EditResponseStatus =
   | "test_blocked"
   | "test_failed"
   | "provisioned"
-  | "blocked";
+  | "blocked"
+  | (string & {});
 export const EditResponseStatus = /*@__PURE__*/ S.String;
 
 export type EditResponseVerificationErrorsList = ReadonlyArray<string>;
@@ -2488,7 +2545,7 @@ export const CertificatePackCertificatesUpdateResponseCustomMetadataMap =
   ) as any as S.Schema<CertificatePackCertificatesUpdateResponseCustomMetadataMap>;
 
 export type CertificatePackCertificatesUpdateResponseOwnershipVerificationType =
-  "txt";
+  "txt" | (string & {});
 export const CertificatePackCertificatesUpdateResponseOwnershipVerificationType =
   /*@__PURE__*/ S.String;
 
@@ -2534,7 +2591,8 @@ export const CertificatePackCertificatesUpdateResponseOwnershipVerificationHttp 
 export type CertificatePackCertificatesUpdateResponseSslBundleMethod =
   | "ubiquitous"
   | "optimal"
-  | "force";
+  | "force"
+  | (string & {});
 export const CertificatePackCertificatesUpdateResponseSslBundleMethod =
   /*@__PURE__*/ S.String;
 
@@ -2542,7 +2600,8 @@ export type CertificatePackCertificatesUpdateResponseSslCertificateAuthority =
   | "digicert"
   | "google"
   | "lets_encrypt"
-  | "ssl_com";
+  | "ssl_com"
+  | (string & {});
 export const CertificatePackCertificatesUpdateResponseSslCertificateAuthority =
   /*@__PURE__*/ S.String;
 
@@ -2607,7 +2666,8 @@ export const CertificatePackCertificatesUpdateResponseSslHostsList =
 export type CertificatePackCertificatesUpdateResponseSslMethod =
   | "http"
   | "txt"
-  | "email";
+  | "email"
+  | (string & {});
 export const CertificatePackCertificatesUpdateResponseSslMethod =
   /*@__PURE__*/ S.String;
 
@@ -2620,13 +2680,15 @@ export const CertificatePackCertificatesUpdateResponseSslSettingsCiphersList =
 
 export type CertificatePackCertificatesUpdateResponseSslSettingsEarlyHints =
   | "on"
-  | "off";
+  | "off"
+  | (string & {});
 export const CertificatePackCertificatesUpdateResponseSslSettingsEarlyHints =
   /*@__PURE__*/ S.String;
 
 export type CertificatePackCertificatesUpdateResponseSslSettingsHttp2 =
   | "on"
-  | "off";
+  | "off"
+  | (string & {});
 export const CertificatePackCertificatesUpdateResponseSslSettingsHttp2 =
   /*@__PURE__*/ S.String;
 
@@ -2634,13 +2696,15 @@ export type CertificatePackCertificatesUpdateResponseSslSettingsMinTlsVersion =
   | "1.0"
   | "1.1"
   | "1.2"
-  | "1.3";
+  | "1.3"
+  | (string & {});
 export const CertificatePackCertificatesUpdateResponseSslSettingsMinTlsVersion =
   /*@__PURE__*/ S.String;
 
 export type CertificatePackCertificatesUpdateResponseSslSettingsTls13 =
   | "on"
-  | "off";
+  | "off"
+  | (string & {});
 export const CertificatePackCertificatesUpdateResponseSslSettingsTls13 =
   /*@__PURE__*/ S.String;
 
@@ -2706,11 +2770,14 @@ export type CertificatePackCertificatesUpdateResponseSslStatus =
   | "deactivating"
   | "inactive"
   | "backup_issued"
-  | "holding_deployment";
+  | "holding_deployment"
+  | (string & {});
 export const CertificatePackCertificatesUpdateResponseSslStatus =
   /*@__PURE__*/ S.String;
 
-export type CertificatePackCertificatesUpdateResponseSslType = "dv";
+export type CertificatePackCertificatesUpdateResponseSslType =
+  | "dv"
+  | (string & {});
 export const CertificatePackCertificatesUpdateResponseSslType =
   /*@__PURE__*/ S.String;
 
@@ -2894,7 +2961,8 @@ export type CertificatePackCertificatesUpdateResponseStatus =
   | "test_blocked"
   | "test_failed"
   | "provisioned"
-  | "blocked";
+  | "blocked"
+  | (string & {});
 export const CertificatePackCertificatesUpdateResponseStatus =
   /*@__PURE__*/ S.String;
 
@@ -3000,7 +3068,8 @@ export type FallbackOriginUpdateResponseStatus =
   | "pending_deletion"
   | "active"
   | "deployment_timed_out"
-  | "deletion_timed_out";
+  | "deletion_timed_out"
+  | (string & {});
 export const FallbackOriginUpdateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

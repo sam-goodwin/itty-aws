@@ -102,7 +102,8 @@ export type ApigatewayApiStateEnum =
   | "ACTIVE"
   | "FAILED"
   | "DELETING"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const ApigatewayApiStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -287,7 +288,8 @@ export type ApigatewayApiConfigStateEnum =
   | "FAILED"
   | "DELETING"
   | "UPDATING"
-  | "ACTIVATING";
+  | "ACTIVATING"
+  | (string & {});
 export const ApigatewayApiConfigStateEnum = /*@__PURE__*/ S.String;
 
 export type ApigatewayApiConfigFileList =
@@ -397,7 +399,8 @@ export type ApigatewayGatewayStateEnum =
   | "ACTIVE"
   | "FAILED"
   | "DELETING"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const ApigatewayGatewayStateEnum = /*@__PURE__*/ S.String;
 
 /** A Gateway is an API-aware HTTP proxy. It performs API-Method and/or API-Consumer specific actions based on an API Config such as authentication, policy enforcement, and backend selection. */
@@ -609,7 +612,8 @@ export type ApigatewayAuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const ApigatewayAuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -785,7 +789,8 @@ export const GetProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsApisConfigsViewEnum =
   | "CONFIG_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetProjectsLocationsApisConfigsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsApisConfigsRequest {

@@ -211,7 +211,8 @@ export const GoogleCloudApihubV1PluginInstanceActionSource =
 
 export type GoogleCloudApihubV1SourceMetadataSourceTypeEnum =
   | "SOURCE_TYPE_UNSPECIFIED"
-  | "PLUGIN";
+  | "PLUGIN"
+  | (string & {});
 export const GoogleCloudApihubV1SourceMetadataSourceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -431,7 +432,8 @@ export const GoogleCloudApihubV1SpecContents = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudApihubV1AdditionalSpecContentSpecContentTypeEnum =
   | "SPEC_CONTENT_TYPE_UNSPECIFIED"
   | "BOOSTED_SPEC_CONTENT"
-  | "GATEWAY_OPEN_API_SPEC";
+  | "GATEWAY_OPEN_API_SPEC"
+  | (string & {});
 export const GoogleCloudApihubV1AdditionalSpecContentSpecContentTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -496,7 +498,8 @@ export type GoogleCloudApihubV1OpenApiSpecDetailsFormatEnum =
   | "FORMAT_UNSPECIFIED"
   | "OPEN_API_SPEC_2_0"
   | "OPEN_API_SPEC_3_0"
-  | "OPEN_API_SPEC_3_1";
+  | "OPEN_API_SPEC_3_1"
+  | (string & {});
 export const GoogleCloudApihubV1OpenApiSpecDetailsFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -539,13 +542,15 @@ export const GoogleCloudApihubV1SpecDetails = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudApihubV1SpecParsingModeEnum =
   | "PARSING_MODE_UNSPECIFIED"
   | "RELAXED"
-  | "STRICT";
+  | "STRICT"
+  | (string & {});
 export const GoogleCloudApihubV1SpecParsingModeEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudApihubV1LintResponseLinterEnum =
   | "LINTER_UNSPECIFIED"
   | "SPECTRAL"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const GoogleCloudApihubV1LintResponseLinterEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudApihubV1SummaryEntrySeverityEnum =
@@ -553,7 +558,8 @@ export type GoogleCloudApihubV1SummaryEntrySeverityEnum =
   | "SEVERITY_ERROR"
   | "SEVERITY_WARNING"
   | "SEVERITY_INFO"
-  | "SEVERITY_HINT";
+  | "SEVERITY_HINT"
+  | (string & {});
 export const GoogleCloudApihubV1SummaryEntrySeverityEnum =
   /*@__PURE__*/ S.String;
 
@@ -584,7 +590,8 @@ export type GoogleCloudApihubV1IssueSeverityEnum =
   | "SEVERITY_ERROR"
   | "SEVERITY_WARNING"
   | "SEVERITY_INFO"
-  | "SEVERITY_HINT";
+  | "SEVERITY_HINT"
+  | (string & {});
 export const GoogleCloudApihubV1IssueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Point within the file (line and character). */
@@ -653,7 +660,8 @@ export const GoogleCloudApihubV1IssueList = /*@__PURE__*/ S.Array(
 export type GoogleCloudApihubV1LintResponseStateEnum =
   | "LINT_STATE_UNSPECIFIED"
   | "LINT_STATE_SUCCESS"
-  | "LINT_STATE_ERROR";
+  | "LINT_STATE_ERROR"
+  | (string & {});
 export const GoogleCloudApihubV1LintResponseStateEnum = /*@__PURE__*/ S.String;
 
 /** LintResponse contains the response from the linter. */
@@ -930,7 +938,8 @@ export const GoogleCloudApihubV1ApiData = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudApihubV1CollectApiDataRequestCollectionTypeEnum =
   | "COLLECTION_TYPE_UNSPECIFIED"
   | "COLLECTION_TYPE_UPSERT"
-  | "COLLECTION_TYPE_DELETE";
+  | "COLLECTION_TYPE_DELETE"
+  | (string & {});
 export const GoogleCloudApihubV1CollectApiDataRequestCollectionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1047,7 +1056,8 @@ export type GoogleCloudApihubV1HttpOperationConfigMethodEnum =
   | "OPTIONS"
   | "HEAD"
   | "PATCH"
-  | "TRACE";
+  | "TRACE"
+  | (string & {});
 export const GoogleCloudApihubV1HttpOperationConfigMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -1211,7 +1221,8 @@ export const ConfigureAndDeployServerProjectsLocationsServersRequest =
 export type GoogleCloudApihubV1ConfigEncryptionTypeEnum =
   | "ENCRYPTION_TYPE_UNSPECIFIED"
   | "GMEK"
-  | "CMEK";
+  | "CMEK"
+  | (string & {});
 export const GoogleCloudApihubV1ConfigEncryptionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1263,7 +1274,8 @@ export type GoogleCloudApihubV1ApiHubInstanceStateEnum =
   | "ACTIVE"
   | "UPDATING"
   | "DELETING"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const GoogleCloudApihubV1ApiHubInstanceStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1400,7 +1412,8 @@ export type GoogleCloudApihubV1HttpOperationMethodEnum =
   | "OPTIONS"
   | "HEAD"
   | "PATCH"
-  | "TRACE";
+  | "TRACE"
+  | (string & {});
 export const GoogleCloudApihubV1HttpOperationMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -1598,7 +1611,8 @@ export const CreateProjectsLocationsApisVersionsSpecsRequest =
 export type GoogleCloudApihubV1AttributeDefinitionTypeEnum =
   | "DEFINITION_TYPE_UNSPECIFIED"
   | "SYSTEM_DEFINED"
-  | "USER_DEFINED";
+  | "USER_DEFINED"
+  | (string & {});
 export const GoogleCloudApihubV1AttributeDefinitionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1612,7 +1626,8 @@ export type GoogleCloudApihubV1AttributeScopeEnum =
   | "DEPENDENCY"
   | "DEFINITION"
   | "EXTERNAL_API"
-  | "PLUGIN";
+  | "PLUGIN"
+  | (string & {});
 export const GoogleCloudApihubV1AttributeScopeEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudApihubV1AttributeDataTypeEnum =
@@ -1620,7 +1635,8 @@ export type GoogleCloudApihubV1AttributeDataTypeEnum =
   | "ENUM"
   | "JSON"
   | "STRING"
-  | "URI";
+  | "URI"
+  | (string & {});
 export const GoogleCloudApihubV1AttributeDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** An attribute in the API Hub. An attribute is a name value pair which can be attached to different resources in the API hub based on the scope of the attribute. Attributes can either be pre-defined by the API Hub or created by users. */
@@ -1718,14 +1734,16 @@ export const GoogleCloudApihubV1PluginInstanceActionIDList =
 export type GoogleCloudApihubV1CurationLastExecutionErrorCodeEnum =
   | "ERROR_CODE_UNSPECIFIED"
   | "INTERNAL_ERROR"
-  | "UNAUTHORIZED";
+  | "UNAUTHORIZED"
+  | (string & {});
 export const GoogleCloudApihubV1CurationLastExecutionErrorCodeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudApihubV1CurationLastExecutionStateEnum =
   | "LAST_EXECUTION_STATE_UNSPECIFIED"
   | "SUCCEEDED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const GoogleCloudApihubV1CurationLastExecutionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1834,14 +1852,16 @@ export const CreateProjectsLocationsCurationsRequest = /*@__PURE__*/ S.suspend(
 
 export type GoogleCloudApihubV1DependencyDiscoveryModeEnum =
   | "DISCOVERY_MODE_UNSPECIFIED"
-  | "MANUAL";
+  | "MANUAL"
+  | (string & {});
 export const GoogleCloudApihubV1DependencyDiscoveryModeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudApihubV1DependencyErrorDetailErrorEnum =
   | "ERROR_UNSPECIFIED"
   | "SUPPLIER_NOT_FOUND"
-  | "SUPPLIER_RECREATED";
+  | "SUPPLIER_RECREATED"
+  | (string & {});
 export const GoogleCloudApihubV1DependencyErrorDetailErrorEnum =
   /*@__PURE__*/ S.String;
 
@@ -1865,7 +1885,8 @@ export const GoogleCloudApihubV1DependencyErrorDetail = /*@__PURE__*/ S.suspend(
 export type GoogleCloudApihubV1DependencyStateEnum =
   | "STATE_UNSPECIFIED"
   | "PROPOSED"
-  | "VALIDATED";
+  | "VALIDATED"
+  | (string & {});
 export const GoogleCloudApihubV1DependencyStateEnum = /*@__PURE__*/ S.String;
 
 /** Reference to an entity participating in a dependency. */
@@ -2090,7 +2111,8 @@ export const CreateProjectsLocationsHostProjectRegistrationsRequest =
 export type GoogleCloudApihubV1PluginOwnershipTypeEnum =
   | "OWNERSHIP_TYPE_UNSPECIFIED"
   | "SYSTEM_OWNED"
-  | "USER_OWNED";
+  | "USER_OWNED"
+  | (string & {});
 export const GoogleCloudApihubV1PluginOwnershipTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2098,7 +2120,8 @@ export type GoogleCloudApihubV1PluginActionConfigTriggerModeEnum =
   | "TRIGGER_MODE_UNSPECIFIED"
   | "API_HUB_ON_DEMAND_TRIGGER"
   | "API_HUB_SCHEDULE_TRIGGER"
-  | "NON_API_HUB_MANAGED";
+  | "NON_API_HUB_MANAGED"
+  | (string & {});
 export const GoogleCloudApihubV1PluginActionConfigTriggerModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2136,13 +2159,15 @@ export const GoogleCloudApihubV1PluginActionConfigList = /*@__PURE__*/ S.Array(
 export type GoogleCloudApihubV1PluginStateEnum =
   | "STATE_UNSPECIFIED"
   | "ENABLED"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const GoogleCloudApihubV1PluginStateEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudApihubV1PluginPluginCategoryEnum =
   | "PLUGIN_CATEGORY_UNSPECIFIED"
   | "API_GATEWAY"
-  | "API_PRODUCER";
+  | "API_PRODUCER"
+  | (string & {});
 export const GoogleCloudApihubV1PluginPluginCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -2155,7 +2180,8 @@ export type GoogleCloudApihubV1PluginGatewayTypeEnum =
   | "CLOUD_ENDPOINTS"
   | "API_DISCOVERY"
   | "OTHERS"
-  | "AWS_API_GATEWAY";
+  | "AWS_API_GATEWAY"
+  | (string & {});
 export const GoogleCloudApihubV1PluginGatewayTypeEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudApihubV1AuthConfigTemplateSupportedAuthTypesItemEnum =
@@ -2164,7 +2190,8 @@ export type GoogleCloudApihubV1AuthConfigTemplateSupportedAuthTypesItemEnum =
   | "GOOGLE_SERVICE_ACCOUNT"
   | "USER_PASSWORD"
   | "API_KEY"
-  | "OAUTH2_CLIENT_CREDENTIALS";
+  | "OAUTH2_CLIENT_CREDENTIALS"
+  | (string & {});
 export const GoogleCloudApihubV1AuthConfigTemplateSupportedAuthTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -2243,7 +2270,8 @@ export type GoogleCloudApihubV1ConfigVariableTemplateValueTypeEnum =
   | "ENUM"
   | "MULTI_SELECT"
   | "MULTI_STRING"
-  | "MULTI_INT";
+  | "MULTI_INT"
+  | (string & {});
 export const GoogleCloudApihubV1ConfigVariableTemplateValueTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2403,7 +2431,8 @@ export type GoogleCloudApihubV1PluginInstanceStateEnum =
   | "APPLYING_CONFIG"
   | "ERROR"
   | "FAILED"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const GoogleCloudApihubV1PluginInstanceStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2565,7 +2594,8 @@ export type GoogleCloudApihubV1ApiKeyConfigHttpElementLocationEnum =
   | "HEADER"
   | "PATH"
   | "BODY"
-  | "COOKIE";
+  | "COOKIE"
+  | (string & {});
 export const GoogleCloudApihubV1ApiKeyConfigHttpElementLocationEnum =
   /*@__PURE__*/ S.String;
 
@@ -2613,7 +2643,8 @@ export type GoogleCloudApihubV1AuthConfigAuthTypeEnum =
   | "GOOGLE_SERVICE_ACCOUNT"
   | "USER_PASSWORD"
   | "API_KEY"
-  | "OAUTH2_CLIENT_CREDENTIALS";
+  | "OAUTH2_CLIENT_CREDENTIALS"
+  | (string & {});
 export const GoogleCloudApihubV1AuthConfigAuthTypeEnum = /*@__PURE__*/ S.String;
 
 /** AuthConfig represents the authentication information. */
@@ -2648,14 +2679,16 @@ export const GoogleCloudApihubV1AuthConfig = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudApihubV1ExecutionStatusCurrentExecutionStateEnum =
   | "CURRENT_EXECUTION_STATE_UNSPECIFIED"
   | "RUNNING"
-  | "NOT_RUNNING";
+  | "NOT_RUNNING"
+  | (string & {});
 export const GoogleCloudApihubV1ExecutionStatusCurrentExecutionStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudApihubV1LastExecutionResultEnum =
   | "RESULT_UNSPECIFIED"
   | "SUCCEEDED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const GoogleCloudApihubV1LastExecutionResultEnum =
   /*@__PURE__*/ S.String;
 
@@ -2718,7 +2751,8 @@ export const GoogleCloudApihubV1CustomCuration = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudApihubV1CurationConfigCurationTypeEnum =
   | "CURATION_TYPE_UNSPECIFIED"
   | "DEFAULT_CURATION_FOR_API_METADATA"
-  | "CUSTOM_CURATION_FOR_API_METADATA";
+  | "CUSTOM_CURATION_FOR_API_METADATA"
+  | (string & {});
 export const GoogleCloudApihubV1CurationConfigCurationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2741,7 +2775,8 @@ export const GoogleCloudApihubV1CurationConfig = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudApihubV1ResourceConfigActionTypeEnum =
   | "ACTION_TYPE_UNSPECIFIED"
   | "SYNC_METADATA"
-  | "SYNC_RUNTIME_DATA";
+  | "SYNC_RUNTIME_DATA"
+  | (string & {});
 export const GoogleCloudApihubV1ResourceConfigActionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2767,7 +2802,8 @@ export type GoogleCloudApihubV1PluginInstanceActionStateEnum =
   | "DISABLED"
   | "ENABLING"
   | "DISABLING"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const GoogleCloudApihubV1PluginInstanceActionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -3402,7 +3438,8 @@ export const ExecuteActionProjectsLocationsPluginsInstancesRequest =
 export type FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsSpecContentTypeEnum =
     | "SPEC_CONTENT_TYPE_UNSPECIFIED"
     | "BOOSTED_SPEC_CONTENT"
-    | "GATEWAY_OPEN_API_SPEC";
+    | "GATEWAY_OPEN_API_SPEC"
+    | (string & {});
 export const FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsSpecContentTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3704,13 +3741,15 @@ export type GoogleCloudApihubV1AddonStateEnum =
   | "ACTIVE"
   | "UPDATING"
   | "ERROR"
-  | "INACTIVE";
+  | "INACTIVE"
+  | (string & {});
 export const GoogleCloudApihubV1AddonStateEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudApihubV1AddonDataSourceEnum =
   | "DATA_SOURCE_UNSPECIFIED"
   | "PLUGIN_INSTANCE"
-  | "ALL_DATA";
+  | "ALL_DATA"
+  | (string & {});
 export const GoogleCloudApihubV1AddonDataSourceEnum = /*@__PURE__*/ S.String;
 
 /** Addon resource. */
@@ -3824,7 +3863,8 @@ export const GetProjectsLocationsApisVersionsDefinitionsRequest =
 
 export type GoogleCloudApihubV1DefinitionTypeEnum =
   | "TYPE_UNSPECIFIED"
-  | "SCHEMA";
+  | "SCHEMA"
+  | (string & {});
 export const GoogleCloudApihubV1DefinitionTypeEnum = /*@__PURE__*/ S.String;
 
 /** The schema details derived from the spec. Currently, this entity is supported for OpenAPI spec only. For OpenAPI spec, this maps to the schema defined in the `definitions` section for OpenAPI 2.0 version and in `components.schemas` section for OpenAPI 3.0 and 3.1 version. */
@@ -4010,7 +4050,8 @@ export const GetProjectsLocationsDiscoveredApiObservationsRequest =
 export type GoogleCloudApihubV1DiscoveredApiObservationSourceTypesItemEnum =
   | "SOURCE_TYPE_UNSPECIFIED"
   | "GCP_XLB"
-  | "GCP_ILB";
+  | "GCP_ILB"
+  | (string & {});
 export const GoogleCloudApihubV1DiscoveredApiObservationSourceTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -4025,7 +4066,8 @@ export type GoogleCloudApihubV1DiscoveredApiObservationStyleEnum =
   | "STYLE_UNSPECIFIED"
   | "REST"
   | "GRPC"
-  | "GRAPHQL";
+  | "GRAPHQL"
+  | (string & {});
 export const GoogleCloudApihubV1DiscoveredApiObservationStyleEnum =
   /*@__PURE__*/ S.String;
 
@@ -4129,7 +4171,8 @@ export type GoogleCloudApihubV1HeaderDataTypeEnum =
   | "INTEGER"
   | "FLOAT"
   | "STRING"
-  | "UUID";
+  | "UUID"
+  | (string & {});
 export const GoogleCloudApihubV1HeaderDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** An aggregation of HTTP header occurrences. */
@@ -4181,7 +4224,8 @@ export type GoogleCloudApihubV1QueryParamDataTypeEnum =
   | "INTEGER"
   | "FLOAT"
   | "STRING"
-  | "UUID";
+  | "UUID"
+  | (string & {});
 export const GoogleCloudApihubV1QueryParamDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** An aggregation of HTTP query parameter occurrences. */
@@ -4230,7 +4274,8 @@ export type GoogleCloudApihubV1PathParamDataTypeEnum =
   | "INTEGER"
   | "FLOAT"
   | "STRING"
-  | "UUID";
+  | "UUID"
+  | (string & {});
 export const GoogleCloudApihubV1PathParamDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** HTTP Path parameter. */
@@ -4284,7 +4329,8 @@ export const GoogleCloudApihubV1HttpOperationDetails = /*@__PURE__*/ S.suspend(
 export type GoogleCloudApihubV1DiscoveredApiOperationClassificationEnum =
   | "CLASSIFICATION_UNSPECIFIED"
   | "KNOWN"
-  | "UNKNOWN";
+  | "UNKNOWN"
+  | (string & {});
 export const GoogleCloudApihubV1DiscoveredApiOperationClassificationEnum =
   /*@__PURE__*/ S.String;
 
@@ -4466,7 +4512,8 @@ export const GetStyleGuideProjectsLocationsPluginsRequest =
 export type GoogleCloudApihubV1StyleGuideLinterEnum =
   | "LINTER_UNSPECIFIED"
   | "SPECTRAL"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const GoogleCloudApihubV1StyleGuideLinterEnum = /*@__PURE__*/ S.String;
 
 /** Represents a singleton style guide resource to be used for linting Open API specs. */
@@ -5560,12 +5607,13 @@ export type GoogleCloudApihubV1ManagePluginInstanceSourceDataRequestDataTypeEnum
     | "PROXY_DEPLOYMENT_MANIFEST"
     | "ENVIRONMENT_MANIFEST"
     | "PROXY_BUNDLE"
-    | "SHARED_FLOW_BUNDLE";
+    | "SHARED_FLOW_BUNDLE"
+    | (string & {});
 export const GoogleCloudApihubV1ManagePluginInstanceSourceDataRequestDataTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudApihubV1ManagePluginInstanceSourceDataRequestActionEnum =
-  "ACTION_UNSPECIFIED" | "UPLOAD" | "DELETE";
+  "ACTION_UNSPECIFIED" | "UPLOAD" | "DELETE" | (string & {});
 export const GoogleCloudApihubV1ManagePluginInstanceSourceDataRequestActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -5906,7 +5954,8 @@ export const PatchProjectsLocationsPluginsInstancesRequest =
 export type RetrieveApiViewsProjectsLocationsViewEnum =
   | "API_VIEW_TYPE_UNSPECIFIED"
   | "MCP_SERVER"
-  | "MCP_TOOL";
+  | "MCP_TOOL"
+  | (string & {});
 export const RetrieveApiViewsProjectsLocationsViewEnum = /*@__PURE__*/ S.String;
 
 export interface RetrieveApiViewsProjectsLocationsRequest {

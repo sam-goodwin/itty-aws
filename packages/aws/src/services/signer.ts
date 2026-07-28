@@ -254,10 +254,10 @@ export const SigningMaterial = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SigningMaterial>;
 export type PlatformId = string;
 export type DisplayName = string;
-export type EncryptionAlgorithm = "RSA" | "ECDSA";
+export type EncryptionAlgorithm = "RSA" | "ECDSA" | (string & {});
 export const EncryptionAlgorithm = /*@__PURE__*/ S.String;
 
-export type HashAlgorithm = "SHA1" | "SHA256";
+export type HashAlgorithm = "SHA1" | "SHA256" | (string & {});
 export const HashAlgorithm = /*@__PURE__*/ S.String;
 
 export interface SigningConfigurationOverrides {
@@ -272,7 +272,11 @@ export const SigningConfigurationOverrides = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SigningConfigurationOverrides",
 }) as any as S.Schema<SigningConfigurationOverrides>;
-export type ImageFormat = "JSON" | "JSONEmbedded" | "JSONDetached";
+export type ImageFormat =
+  | "JSON"
+  | "JSONEmbedded"
+  | "JSONDetached"
+  | (string & {});
 export const ImageFormat = /*@__PURE__*/ S.String;
 
 export interface SigningPlatformOverrides {
@@ -295,7 +299,11 @@ export const SigningParameters = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export type RequestedBy = string;
-export type SigningStatus = "InProgress" | "Failed" | "Succeeded";
+export type SigningStatus =
+  | "InProgress"
+  | "Failed"
+  | "Succeeded"
+  | (string & {});
 export const SigningStatus = /*@__PURE__*/ S.String;
 
 export type StatusReason = string;
@@ -434,7 +442,7 @@ export const GetSigningPlatformRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSigningPlatformRequest",
 }) as any as S.Schema<GetSigningPlatformRequest>;
-export type Category = "AWSIoT";
+export type Category = "AWSIoT" | (string & {});
 export const Category = /*@__PURE__*/ S.String;
 
 export type EncryptionAlgorithms = EncryptionAlgorithm[];
@@ -549,7 +557,7 @@ export const SigningProfileRevocationRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SigningProfileRevocationRecord",
 }) as any as S.Schema<SigningProfileRevocationRecord>;
-export type ValidityType = "DAYS" | "MONTHS" | "YEARS";
+export type ValidityType = "DAYS" | "MONTHS" | "YEARS" | (string & {});
 export const ValidityType = /*@__PURE__*/ S.String;
 
 export interface SignatureValidityPeriod {
@@ -561,7 +569,11 @@ export const SignatureValidityPeriod = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SignatureValidityPeriod",
 }) as any as S.Schema<SignatureValidityPeriod>;
-export type SigningProfileStatus = "Active" | "Canceled" | "Revoked";
+export type SigningProfileStatus =
+  | "Active"
+  | "Canceled"
+  | "Revoked"
+  | (string & {});
 export const SigningProfileStatus = /*@__PURE__*/ S.String;
 
 export type TagKey = string;

@@ -167,7 +167,8 @@ export type GoogleAppsDriveLabelsV2LabelPermissionRoleEnum =
   | "READER"
   | "APPLIER"
   | "ORGANIZER"
-  | "EDITOR";
+  | "EDITOR"
+  | (string & {});
 export const GoogleAppsDriveLabelsV2LabelPermissionRoleEnum =
   /*@__PURE__*/ S.String;
 
@@ -352,7 +353,8 @@ export type GoogleAppsDriveLabelsV2LifecycleStateEnum =
   | "UNPUBLISHED_DRAFT"
   | "PUBLISHED"
   | "DISABLED"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const GoogleAppsDriveLabelsV2LifecycleStateEnum = /*@__PURE__*/ S.String;
 
 /** The policy that governs how to treat a disabled label, field, or selection choice in different contexts. */
@@ -395,7 +397,8 @@ export type GoogleAppsDriveLabelsV2LabelAppliedLabelPolicyCopyModeEnum =
   | "COPY_MODE_UNSPECIFIED"
   | "DO_NOT_COPY"
   | "ALWAYS_COPY"
-  | "COPY_APPLIABLE";
+  | "COPY_APPLIABLE"
+  | (string & {});
 export const GoogleAppsDriveLabelsV2LabelAppliedLabelPolicyCopyModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -419,7 +422,8 @@ export type GoogleAppsDriveLabelsV2LabelLabelTypeEnum =
   | "LABEL_TYPE_UNSPECIFIED"
   | "SHARED"
   | "ADMIN"
-  | "GOOGLE_APP";
+  | "GOOGLE_APP"
+  | (string & {});
 export const GoogleAppsDriveLabelsV2LabelLabelTypeEnum = /*@__PURE__*/ S.String;
 
 /** The capabilities a user has on this label's applied metadata. */
@@ -868,7 +872,8 @@ export const GoogleTypeDate = /*@__PURE__*/ S.suspend(() =>
 export type GoogleAppsDriveLabelsV2FieldDateOptionsDateFormatTypeEnum =
   | "DATE_FORMAT_UNSPECIFIED"
   | "LONG_DATE"
-  | "SHORT_DATE";
+  | "SHORT_DATE"
+  | (string & {});
 export const GoogleAppsDriveLabelsV2FieldDateOptionsDateFormatTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -980,7 +985,8 @@ export const GoogleAppsDriveLabelsV2FieldList = /*@__PURE__*/ S.Array(
 export type GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledAppAppEnum =
   | "APP_UNSPECIFIED"
   | "DRIVE"
-  | "GMAIL";
+  | "GMAIL"
+  | (string & {});
 export const GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledAppAppEnum =
   /*@__PURE__*/ S.String;
 
@@ -1639,7 +1645,8 @@ export const GoogleAppsDriveLabelsV2WriteControl = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestViewEnum =
   | "LABEL_VIEW_BASIC"
-  | "LABEL_VIEW_FULL";
+  | "LABEL_VIEW_FULL"
+  | (string & {});
 export const GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -2266,7 +2273,10 @@ export const GoogleAppsDriveLabelsV2LabelLimits = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleAppsDriveLabelsV2LabelLimits",
 }) as any as S.Schema<GoogleAppsDriveLabelsV2LabelLimits>;
 
-export type GetLabelsViewEnum = "LABEL_VIEW_BASIC" | "LABEL_VIEW_FULL";
+export type GetLabelsViewEnum =
+  | "LABEL_VIEW_BASIC"
+  | "LABEL_VIEW_FULL"
+  | (string & {});
 export const GetLabelsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetLabelsRequest {
@@ -2301,10 +2311,14 @@ export type ListLabelsMinimumRoleEnum =
   | "READER"
   | "APPLIER"
   | "ORGANIZER"
-  | "EDITOR";
+  | "EDITOR"
+  | (string & {});
 export const ListLabelsMinimumRoleEnum = /*@__PURE__*/ S.String;
 
-export type ListLabelsViewEnum = "LABEL_VIEW_BASIC" | "LABEL_VIEW_FULL";
+export type ListLabelsViewEnum =
+  | "LABEL_VIEW_BASIC"
+  | "LABEL_VIEW_FULL"
+  | (string & {});
 export const ListLabelsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListLabelsRequest {
@@ -2410,7 +2424,8 @@ export const GoogleAppsDriveLabelsV2LabelLockCapabilities =
 export type GoogleAppsDriveLabelsV2LabelLockStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const GoogleAppsDriveLabelsV2LabelLockStateEnum = /*@__PURE__*/ S.String;
 
 /** A lock that can be applied to a label, field, or choice. */
@@ -2613,13 +2628,15 @@ export type GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequestCopyModeEnum =
   | "COPY_MODE_UNSPECIFIED"
   | "DO_NOT_COPY"
   | "ALWAYS_COPY"
-  | "COPY_APPLIABLE";
+  | "COPY_APPLIABLE"
+  | (string & {});
 export const GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequestCopyModeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequestViewEnum =
   | "LABEL_VIEW_BASIC"
-  | "LABEL_VIEW_FULL";
+  | "LABEL_VIEW_FULL"
+  | (string & {});
 export const GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequestViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -2674,7 +2691,7 @@ export const UpdateLabelCopyModeLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateLabelCopyModeLabelsRequest>;
 
 export type GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequestViewEnum =
-  "LABEL_VIEW_BASIC" | "LABEL_VIEW_FULL";
+  "LABEL_VIEW_BASIC" | "LABEL_VIEW_FULL" | (string & {});
 export const GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequestViewEnum =
   /*@__PURE__*/ S.String;
 

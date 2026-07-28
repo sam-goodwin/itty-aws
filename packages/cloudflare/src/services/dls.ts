@@ -278,7 +278,7 @@ export const ListRegionalServicePrefixBindingsResponse =
     identifier: "ListRegionalServicePrefixBindingsResponse",
   }) as any as S.Schema<ListRegionalServicePrefixBindingsResponse>;
 
-export type RegionsListRequestType = "managed" | "custom";
+export type RegionsListRequestType = "managed" | "custom" | (string & {});
 export const RegionsListRequestType = /*@__PURE__*/ S.String;
 
 export interface ListRegionsRequest {

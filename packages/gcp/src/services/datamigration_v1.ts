@@ -276,7 +276,8 @@ export const StringMap = /*@__PURE__*/ S.Record(
 export type PostgreSqlConnectionProfileNetworkArchitectureEnum =
   | "NETWORK_ARCHITECTURE_UNSPECIFIED"
   | "NETWORK_ARCHITECTURE_OLD_CSQL_PRODUCER"
-  | "NETWORK_ARCHITECTURE_NEW_CSQL_PRODUCER";
+  | "NETWORK_ARCHITECTURE_NEW_CSQL_PRODUCER"
+  | (string & {});
 export const PostgreSqlConnectionProfileNetworkArchitectureEnum =
   /*@__PURE__*/ S.String;
 
@@ -336,7 +337,8 @@ export type SslConfigTypeEnum =
   | "SERVER_ONLY"
   | "SERVER_CLIENT"
   | "REQUIRED"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const SslConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** SSL configuration information. */
@@ -437,7 +439,8 @@ export type ConnectionProfileStateEnum =
   | "UPDATING"
   | "DELETING"
   | "DELETED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ConnectionProfileStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for Oracle Automatic Storage Management (ASM) connection. */
@@ -528,13 +531,15 @@ export type ConnectionProfileProviderEnum =
   | "RDS"
   | "AURORA"
   | "ALLOYDB"
-  | "AZURE_DATABASE";
+  | "AZURE_DATABASE"
+  | (string & {});
 export const ConnectionProfileProviderEnum = /*@__PURE__*/ S.String;
 
 export type ConnectionProfileRoleEnum =
   | "ROLE_UNSPECIFIED"
   | "SOURCE"
-  | "DESTINATION";
+  | "DESTINATION"
+  | (string & {});
 export const ConnectionProfileRoleEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the backup details in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server. */
@@ -616,7 +621,8 @@ export type AlloyDbSettingsDatabaseVersionEnum =
   | "POSTGRES_15"
   | "POSTGRES_16"
   | "POSTGRES_17"
-  | "POSTGRES_18";
+  | "POSTGRES_18"
+  | (string & {});
 export const AlloyDbSettingsDatabaseVersionEnum = /*@__PURE__*/ S.String;
 
 /** The username/password for a database user. Used for specifying initial users at cluster creation time. */
@@ -814,7 +820,8 @@ export const MySqlConnectionProfile = /*@__PURE__*/ S.suspend(() =>
 export type CloudSqlSettingsEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "ENTERPRISE"
-  | "ENTERPRISE_PLUS";
+  | "ENTERPRISE_PLUS"
+  | (string & {});
 export const CloudSqlSettingsEditionEnum = /*@__PURE__*/ S.String;
 
 export type CloudSqlSettingsDatabaseVersionEnum =
@@ -842,7 +849,8 @@ export type CloudSqlSettingsDatabaseVersionEnum =
   | "POSTGRES_13"
   | "POSTGRES_14"
   | "POSTGRES_15"
-  | "POSTGRES_16";
+  | "POSTGRES_16"
+  | (string & {});
 export const CloudSqlSettingsDatabaseVersionEnum = /*@__PURE__*/ S.String;
 
 /** An entry for an Access Control list. */
@@ -896,13 +904,15 @@ export const SqlIpConfig = /*@__PURE__*/ S.suspend(() =>
 export type CloudSqlSettingsAvailabilityTypeEnum =
   | "SQL_AVAILABILITY_TYPE_UNSPECIFIED"
   | "ZONAL"
-  | "REGIONAL";
+  | "REGIONAL"
+  | (string & {});
 export const CloudSqlSettingsAvailabilityTypeEnum = /*@__PURE__*/ S.String;
 
 export type CloudSqlSettingsActivationPolicyEnum =
   | "SQL_ACTIVATION_POLICY_UNSPECIFIED"
   | "ALWAYS"
-  | "NEVER";
+  | "NEVER"
+  | (string & {});
 export const CloudSqlSettingsActivationPolicyEnum = /*@__PURE__*/ S.String;
 
 /** Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation. */
@@ -922,7 +932,8 @@ export type CloudSqlSettingsDataDiskTypeEnum =
   | "SQL_DATA_DISK_TYPE_UNSPECIFIED"
   | "PD_SSD"
   | "PD_HDD"
-  | "HYPERDISK_BALANCED";
+  | "HYPERDISK_BALANCED"
+  | (string & {});
 export const CloudSqlSettingsDataDiskTypeEnum = /*@__PURE__*/ S.String;
 
 /** Settings for creating a Cloud SQL database instance. */
@@ -1129,7 +1140,8 @@ export type DatabaseEngineInfoEngineEnum =
   | "MYSQL"
   | "POSTGRESQL"
   | "SQLSERVER"
-  | "ORACLE";
+  | "ORACLE"
+  | (string & {});
 export const DatabaseEngineInfoEngineEnum = /*@__PURE__*/ S.String;
 
 /** The type and version of a source or destination database. */
@@ -1154,7 +1166,8 @@ export type ConversionWorkspaceDestinationProviderEnum =
   | "RDS"
   | "AURORA"
   | "ALLOYDB"
-  | "AZURE_DATABASE";
+  | "AZURE_DATABASE"
+  | (string & {});
 export const ConversionWorkspaceDestinationProviderEnum =
   /*@__PURE__*/ S.String;
 
@@ -1164,7 +1177,8 @@ export type ConversionWorkspaceSourceProviderEnum =
   | "RDS"
   | "AURORA"
   | "ALLOYDB"
-  | "AZURE_DATABASE";
+  | "AZURE_DATABASE"
+  | (string & {});
 export const ConversionWorkspaceSourceProviderEnum = /*@__PURE__*/ S.String;
 
 /** The main conversion workspace resource entity. */
@@ -1258,7 +1272,8 @@ export type SourceNumericFilterNumericFilterOptionEnum =
   | "NUMERIC_FILTER_OPTION_UNSPECIFIED"
   | "NUMERIC_FILTER_OPTION_ALL"
   | "NUMERIC_FILTER_OPTION_LIMIT"
-  | "NUMERIC_FILTER_OPTION_LIMITLESS";
+  | "NUMERIC_FILTER_OPTION_LIMITLESS"
+  | (string & {});
 export const SourceNumericFilterNumericFilterOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1358,7 +1373,8 @@ export type MultiEntityRenameSourceNameTransformationEnum =
   | "ENTITY_NAME_TRANSFORMATION_NO_TRANSFORMATION"
   | "ENTITY_NAME_TRANSFORMATION_LOWER_CASE"
   | "ENTITY_NAME_TRANSFORMATION_UPPER_CASE"
-  | "ENTITY_NAME_TRANSFORMATION_CAPITALIZED_CASE";
+  | "ENTITY_NAME_TRANSFORMATION_CAPITALIZED_CASE"
+  | (string & {});
 export const MultiEntityRenameSourceNameTransformationEnum =
   /*@__PURE__*/ S.String;
 
@@ -1524,7 +1540,8 @@ export type DoubleComparisonFilterValueComparisonEnum =
   | "VALUE_COMPARISON_IF_VALUE_SMALLER_THAN"
   | "VALUE_COMPARISON_IF_VALUE_SMALLER_EQUAL_THAN"
   | "VALUE_COMPARISON_IF_VALUE_LARGER_THAN"
-  | "VALUE_COMPARISON_IF_VALUE_LARGER_EQUAL_THAN";
+  | "VALUE_COMPARISON_IF_VALUE_LARGER_EQUAL_THAN"
+  | (string & {});
 export const DoubleComparisonFilterValueComparisonEnum = /*@__PURE__*/ S.String;
 
 /** Filter based on relation between source value and compare value of type double in ConditionalColumnSetValue */
@@ -1548,7 +1565,8 @@ export type IntComparisonFilterValueComparisonEnum =
   | "VALUE_COMPARISON_IF_VALUE_SMALLER_THAN"
   | "VALUE_COMPARISON_IF_VALUE_SMALLER_EQUAL_THAN"
   | "VALUE_COMPARISON_IF_VALUE_LARGER_THAN"
-  | "VALUE_COMPARISON_IF_VALUE_LARGER_EQUAL_THAN";
+  | "VALUE_COMPARISON_IF_VALUE_LARGER_EQUAL_THAN"
+  | (string & {});
 export const IntComparisonFilterValueComparisonEnum = /*@__PURE__*/ S.String;
 
 /** Filter based on relation between source value and compare value of type integer in ConditionalColumnSetValue */
@@ -1605,7 +1623,8 @@ export const RoundToScale = /*@__PURE__*/ S.suspend(() =>
 export type ValueListFilterValuePresentListEnum =
   | "VALUE_PRESENT_IN_LIST_UNSPECIFIED"
   | "VALUE_PRESENT_IN_LIST_IF_VALUE_LIST"
-  | "VALUE_PRESENT_IN_LIST_IF_VALUE_NOT_LIST";
+  | "VALUE_PRESENT_IN_LIST_IF_VALUE_NOT_LIST"
+  | (string & {});
 export const ValueListFilterValuePresentListEnum = /*@__PURE__*/ S.String;
 
 /** A list of values to filter by in ConditionalColumnSetValue */
@@ -1693,7 +1712,8 @@ export type MappingRuleStateEnum =
   | "STATE_UNSPECIFIED"
   | "ENABLED"
   | "DISABLED"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const MappingRuleStateEnum = /*@__PURE__*/ S.String;
 
 /** Options to configure rule type SourceSqlChange. The rule is used to alter the sql code for database entities. The rule filter field can refer to one entity. The rule scope can be: StoredProcedure, Function, Trigger, View */
@@ -1725,7 +1745,8 @@ export type MappingRuleRuleScopeEnum =
   | "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE"
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
-  | "DATABASE_ENTITY_TYPE_DATABASE";
+  | "DATABASE_ENTITY_TYPE_DATABASE"
+  | (string & {});
 export const MappingRuleRuleScopeEnum = /*@__PURE__*/ S.String;
 
 /** Definition of a transformation that is to be applied to a group of entities in the source schema. Several such transformations can be applied to an entity sequentially to define the corresponding entity in the target schema. */
@@ -1890,7 +1911,8 @@ export const VpcPeeringConnectivity = /*@__PURE__*/ S.suspend(() =>
 export type SourceObjectsConfigObjectsSelectionTypeEnum =
   | "OBJECTS_SELECTION_TYPE_UNSPECIFIED"
   | "ALL_OBJECTS"
-  | "SPECIFIED_OBJECTS";
+  | "SPECIFIED_OBJECTS"
+  | (string & {});
 export const SourceObjectsConfigObjectsSelectionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1898,7 +1920,8 @@ export type SourceObjectIdentifierTypeEnum =
   | "MIGRATION_JOB_OBJECT_TYPE_UNSPECIFIED"
   | "DATABASE"
   | "SCHEMA"
-  | "TABLE";
+  | "TABLE"
+  | (string & {});
 export const SourceObjectIdentifierTypeEnum = /*@__PURE__*/ S.String;
 
 /** An identifier for the Migration Job Object. */
@@ -1975,7 +1998,8 @@ export const MigrationJobObjectsConfig = /*@__PURE__*/ S.suspend(() =>
 export type MigrationJobPurposeEnum =
   | "PURPOSE_UNSPECIFIED"
   | "MIGRATE"
-  | "FAILBACK";
+  | "FAILBACK"
+  | (string & {});
 export const MigrationJobPurposeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for SQL Server as a source in a migration. */
@@ -2039,7 +2063,8 @@ export type MigrationJobPhaseEnum =
   | "PROMOTE_IN_PROGRESS"
   | "WAITING_FOR_SOURCE_WRITES_TO_STOP"
   | "PREPARING_THE_DUMP"
-  | "READY_FOR_PROMOTE";
+  | "READY_FOR_PROMOTE"
+  | (string & {});
 export const MigrationJobPhaseEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for PostgreSQL to PostgreSQL migrations. */
@@ -2063,7 +2088,8 @@ export type DatabaseTypeEngineEnum =
   | "MYSQL"
   | "POSTGRESQL"
   | "SQLSERVER"
-  | "ORACLE";
+  | "ORACLE"
+  | (string & {});
 export const DatabaseTypeEngineEnum = /*@__PURE__*/ S.String;
 
 export type DatabaseTypeProviderEnum =
@@ -2072,7 +2098,8 @@ export type DatabaseTypeProviderEnum =
   | "RDS"
   | "AURORA"
   | "ALLOYDB"
-  | "AZURE_DATABASE";
+  | "AZURE_DATABASE"
+  | (string & {});
 export const DatabaseTypeProviderEnum = /*@__PURE__*/ S.String;
 
 /** A message defining the database engine and provider. */
@@ -2105,7 +2132,8 @@ export type MigrationJobStateEnum =
   | "UPDATING"
   | "STARTING"
   | "RESTARTING"
-  | "RESUMING";
+  | "RESUMING"
+  | (string & {});
 export const MigrationJobStateEnum = /*@__PURE__*/ S.String;
 
 /** A conversion workspace's version. */
@@ -2128,7 +2156,8 @@ export type PerformanceConfigDumpParallelLevelEnum =
   | "DUMP_PARALLEL_LEVEL_UNSPECIFIED"
   | "MIN"
   | "OPTIMAL"
-  | "MAX";
+  | "MAX"
+  | (string & {});
 export const PerformanceConfigDumpParallelLevelEnum = /*@__PURE__*/ S.String;
 
 /** Performance configuration definition. */
@@ -2275,7 +2304,8 @@ export const PostgresToSqlServerConfig = /*@__PURE__*/ S.suspend(() =>
 export type MigrationJobDumpTypeEnum =
   | "DUMP_TYPE_UNSPECIFIED"
   | "LOGICAL"
-  | "PHYSICAL";
+  | "PHYSICAL"
+  | (string & {});
 export const MigrationJobDumpTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration to use LogMiner CDC method. */
@@ -2384,7 +2414,8 @@ export const MySqlHomogeneousConfig = /*@__PURE__*/ S.suspend(() =>
 export type MigrationJobTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "ONE_TIME"
-  | "CONTINUOUS";
+  | "CONTINUOUS"
+  | (string & {});
 export const MigrationJobTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Database Migration Service migration job object. */
@@ -2569,7 +2600,8 @@ export type PrivateConnectionStateEnum =
   | "FAILED"
   | "DELETING"
   | "FAILED_TO_DELETE"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const PrivateConnectionStateEnum = /*@__PURE__*/ S.String;
 
 /** The PrivateConnection resource is used to establish private connectivity with the customer's network. */
@@ -2865,7 +2897,8 @@ export type DescribeDatabaseEntitiesProjectsLocationsConversionWorkspacesViewEnu
     | "DATABASE_ENTITY_VIEW_BASIC"
     | "DATABASE_ENTITY_VIEW_FULL"
     | "DATABASE_ENTITY_VIEW_ROOT_SUMMARY"
-    | "DATABASE_ENTITY_VIEW_FULL_COMPACT";
+    | "DATABASE_ENTITY_VIEW_FULL_COMPACT"
+    | (string & {});
 export const DescribeDatabaseEntitiesProjectsLocationsConversionWorkspacesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -2873,7 +2906,8 @@ export type DescribeDatabaseEntitiesProjectsLocationsConversionWorkspacesTreeEnu
     | "DB_TREE_TYPE_UNSPECIFIED"
     | "SOURCE_TREE"
     | "DRAFT_TREE"
-    | "DESTINATION_TREE";
+    | "DESTINATION_TREE"
+    | (string & {});
 export const DescribeDatabaseEntitiesProjectsLocationsConversionWorkspacesTreeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3138,7 +3172,8 @@ export type EntityMappingDraftTypeEnum =
   | "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE"
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
-  | "DATABASE_ENTITY_TYPE_DATABASE";
+  | "DATABASE_ENTITY_TYPE_DATABASE"
+  | (string & {});
 export const EntityMappingDraftTypeEnum = /*@__PURE__*/ S.String;
 
 export type EntityMappingSourceTypeEnum =
@@ -3157,7 +3192,8 @@ export type EntityMappingSourceTypeEnum =
   | "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE"
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
-  | "DATABASE_ENTITY_TYPE_DATABASE";
+  | "DATABASE_ENTITY_TYPE_DATABASE"
+  | (string & {});
 export const EntityMappingSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** A single record of a rule which was used for a mapping. */
@@ -3227,7 +3263,8 @@ export type DatabaseEntityTreeEnum =
   | "TREE_TYPE_UNSPECIFIED"
   | "SOURCE"
   | "DRAFT"
-  | "DESTINATION";
+  | "DESTINATION"
+  | (string & {});
 export const DatabaseEntityTreeEnum = /*@__PURE__*/ S.String;
 
 /** Package's parent is a schema. */
@@ -3263,7 +3300,8 @@ export type EntityDdlEntityTypeEnum =
   | "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE"
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
-  | "DATABASE_ENTITY_TYPE_DATABASE";
+  | "DATABASE_ENTITY_TYPE_DATABASE"
+  | (string & {});
 export const EntityDdlEntityTypeEnum = /*@__PURE__*/ S.String;
 
 export type EntityDdlEditedDdlKindEnum =
@@ -3271,7 +3309,8 @@ export type EntityDdlEditedDdlKindEnum =
   | "SOURCE"
   | "DETERMINISTIC"
   | "AI"
-  | "USER_EDIT";
+  | "USER_EDIT"
+  | (string & {});
 export const EntityDdlEditedDdlKindEnum = /*@__PURE__*/ S.String;
 
 export type EntityDdlDdlKindEnum =
@@ -3279,7 +3318,8 @@ export type EntityDdlDdlKindEnum =
   | "SOURCE"
   | "DETERMINISTIC"
   | "AI"
-  | "USER_EDIT";
+  | "USER_EDIT"
+  | (string & {});
 export const EntityDdlDdlKindEnum = /*@__PURE__*/ S.String;
 
 /** A single DDL statement for a specific entity */
@@ -3376,7 +3416,8 @@ export type DatabaseEntityEntityTypeEnum =
   | "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE"
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
-  | "DATABASE_ENTITY_TYPE_DATABASE";
+  | "DATABASE_ENTITY_TYPE_DATABASE"
+  | (string & {});
 export const DatabaseEntityEntityTypeEnum = /*@__PURE__*/ S.String;
 
 /** Issue position. */
@@ -3404,7 +3445,8 @@ export type EntityIssueTypeEnum =
   | "ISSUE_TYPE_DDL"
   | "ISSUE_TYPE_APPLY"
   | "ISSUE_TYPE_CONVERT"
-  | "ISSUE_TYPE_PULL_SCHEMA";
+  | "ISSUE_TYPE_PULL_SCHEMA"
+  | (string & {});
 export const EntityIssueTypeEnum = /*@__PURE__*/ S.String;
 
 export type EntityIssueEntityTypeEnum =
@@ -3423,14 +3465,16 @@ export type EntityIssueEntityTypeEnum =
   | "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE"
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
-  | "DATABASE_ENTITY_TYPE_DATABASE";
+  | "DATABASE_ENTITY_TYPE_DATABASE"
+  | (string & {});
 export const EntityIssueEntityTypeEnum = /*@__PURE__*/ S.String;
 
 export type EntityIssueSeverityEnum =
   | "ISSUE_SEVERITY_UNSPECIFIED"
   | "ISSUE_SEVERITY_INFO"
   | "ISSUE_SEVERITY_WARNING"
-  | "ISSUE_SEVERITY_ERROR";
+  | "ISSUE_SEVERITY_ERROR"
+  | (string & {});
 export const EntityIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Issue related to the entity. */
@@ -3532,7 +3576,8 @@ export type SynonymEntitySourceTypeEnum =
   | "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE"
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
-  | "DATABASE_ENTITY_TYPE_DATABASE";
+  | "DATABASE_ENTITY_TYPE_DATABASE"
+  | (string & {});
 export const SynonymEntitySourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Synonym's parent is a schema. */
@@ -3940,7 +3985,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -4234,7 +4280,8 @@ export type MigrationJobObjectPhaseEnum =
   | "PROMOTED"
   | "DIFF_BACKUP"
   | "CREATING_BACKUP"
-  | "RESTORING_BACKUP";
+  | "RESTORING_BACKUP"
+  | (string & {});
 export const MigrationJobObjectPhaseEnum = /*@__PURE__*/ S.String;
 
 export type MigrationJobObjectStateEnum =
@@ -4247,7 +4294,8 @@ export type MigrationJobObjectStateEnum =
   | "FAILED"
   | "REMOVING"
   | "NOT_SELECTED"
-  | "COMPLETED";
+  | "COMPLETED"
+  | (string & {});
 export const MigrationJobObjectStateEnum = /*@__PURE__*/ S.String;
 
 /** Metadata for heterogeneous migration jobs objects. */
@@ -4338,7 +4386,8 @@ export const GetProjectsLocationsPrivateConnectionsRequest =
 export type ImportMappingRulesRequestRulesFormatEnum =
   | "IMPORT_RULES_FILE_FORMAT_UNSPECIFIED"
   | "IMPORT_RULES_FILE_FORMAT_HARBOUR_BRIDGE_SESSION_FILE"
-  | "IMPORT_RULES_FILE_FORMAT_ORATOPG_CONFIG_FILE";
+  | "IMPORT_RULES_FILE_FORMAT_ORATOPG_CONFIG_FILE"
+  | (string & {});
 export const ImportMappingRulesRequestRulesFormatEnum = /*@__PURE__*/ S.String;
 
 /** Details of a single rules file. */
@@ -5110,7 +5159,8 @@ export const SearchBackgroundJobsProjectsLocationsConversionWorkspacesRequest =
 export type ImportRulesJobDetailsFileFormatEnum =
   | "IMPORT_RULES_FILE_FORMAT_UNSPECIFIED"
   | "IMPORT_RULES_FILE_FORMAT_HARBOUR_BRIDGE_SESSION_FILE"
-  | "IMPORT_RULES_FILE_FORMAT_ORATOPG_CONFIG_FILE";
+  | "IMPORT_RULES_FILE_FORMAT_ORATOPG_CONFIG_FILE"
+  | (string & {});
 export const ImportRulesJobDetailsFileFormatEnum = /*@__PURE__*/ S.String;
 
 /** Details regarding an Import Rules background job. */
@@ -5145,13 +5195,15 @@ export type BackgroundJobLogEntryJobTypeEnum =
   | "BACKGROUND_JOB_TYPE_SOURCE_SEED"
   | "BACKGROUND_JOB_TYPE_CONVERT"
   | "BACKGROUND_JOB_TYPE_APPLY_DESTINATION"
-  | "BACKGROUND_JOB_TYPE_IMPORT_RULES_FILE";
+  | "BACKGROUND_JOB_TYPE_IMPORT_RULES_FILE"
+  | (string & {});
 export const BackgroundJobLogEntryJobTypeEnum = /*@__PURE__*/ S.String;
 
 export type BackgroundJobLogEntryCompletionStateEnum =
   | "JOB_COMPLETION_STATE_UNSPECIFIED"
   | "SUCCEEDED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const BackgroundJobLogEntryCompletionStateEnum = /*@__PURE__*/ S.String;
 
 /** Details regarding a Convert background job. */

@@ -155,7 +155,8 @@ export type ErrorCode =
   | "InvalidRequestException"
   | "InternalFailureException"
   | "ServiceUnavailableException"
-  | "ThrottlingException";
+  | "ThrottlingException"
+  | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
 
 export type ErrorMessage = string;
@@ -641,7 +642,8 @@ export type AlarmStateName =
   | "ACTIVE"
   | "ACKNOWLEDGED"
   | "SNOOZE_DISABLED"
-  | "LATCHED";
+  | "LATCHED"
+  | (string & {});
 export const AlarmStateName = /*@__PURE__*/ S.String;
 
 export type InputPropertyValue = string;
@@ -651,7 +653,8 @@ export type ComparisonOperator =
   | "LESS"
   | "LESS_OR_EQUAL"
   | "EQUAL"
-  | "NOT_EQUAL";
+  | "NOT_EQUAL"
+  | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ S.String;
 
 export type ThresholdValue = string;
@@ -680,7 +683,8 @@ export type CustomerActionName =
   | "ENABLE"
   | "DISABLE"
   | "ACKNOWLEDGE"
-  | "RESET";
+  | "RESET"
+  | (string & {});
 export const CustomerActionName = /*@__PURE__*/ S.String;
 
 export interface SnoozeActionConfiguration {
@@ -745,10 +749,10 @@ export const CustomerAction = /*@__PURE__*/ S.suspend(() =>
     resetActionConfiguration: S.optional(ResetActionConfiguration),
   }),
 ).annotate({ identifier: "CustomerAction" }) as any as S.Schema<CustomerAction>;
-export type EventType = "STATE_CHANGE";
+export type EventType = "STATE_CHANGE" | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
 
-export type TriggerType = "SNOOZE_TIMEOUT";
+export type TriggerType = "SNOOZE_TIMEOUT" | (string & {});
 export const TriggerType = /*@__PURE__*/ S.String;
 
 export interface StateChangeConfiguration {

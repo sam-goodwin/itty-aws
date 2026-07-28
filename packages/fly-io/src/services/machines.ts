@@ -37,7 +37,7 @@ export const AppCertificatesAcmeCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppCertificatesAcmeCreateRequest",
 }) as any as S.Schema<AppCertificatesAcmeCreateRequest>;
 
-export type IssuedCertificateType = "rsa" | "ecdsa";
+export type IssuedCertificateType = "rsa" | "ecdsa" | (string & {});
 export const IssuedCertificateType = /*@__PURE__*/ S.String;
 
 export interface IssuedCertificate {
@@ -60,13 +60,14 @@ export const CertificateEntryIssuedList = /*@__PURE__*/ S.Array(
   IssuedCertificate,
 ) as any as S.Schema<CertificateEntryIssuedList>;
 
-export type CertificateEntrySource = "custom" | "fly";
+export type CertificateEntrySource = "custom" | "fly" | (string & {});
 export const CertificateEntrySource = /*@__PURE__*/ S.String;
 
 export type CertificateEntryStatus =
   | "active"
   | "pending_ownership"
-  | "pending_validation";
+  | "pending_validation"
+  | (string & {});
 export const CertificateEntryStatus = /*@__PURE__*/ S.String;
 
 export interface CertificateEntry {
@@ -975,7 +976,7 @@ export const FlyMachineCheckHeadersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<FlyMachineCheckHeadersList>;
 
 /** Kind of the check (informational, readiness) */
-export type FlyMachineCheckKind = "informational" | "readiness";
+export type FlyMachineCheckKind = "informational" | "readiness" | (string & {});
 export const FlyMachineCheckKind = /*@__PURE__*/ S.String;
 
 export interface FlyMachineCheck {
@@ -1040,7 +1041,8 @@ export const FlyContainerConfigCmdList = /*@__PURE__*/ S.Array(
 export type FlyContainerDependencyCondition =
   | "exited_successfully"
   | "healthy"
-  | "started";
+  | "started"
+  | (string & {});
 export const FlyContainerDependencyCondition = /*@__PURE__*/ S.String;
 
 export interface FlyContainerDependency {
@@ -1083,7 +1085,8 @@ export type FlyEnvFromFieldRef =
   | "app_name"
   | "private_ip"
   | "region"
-  | "image";
+  | "image"
+  | (string & {});
 export const FlyEnvFromFieldRef = /*@__PURE__*/ S.String;
 
 /** EnvVar defines an environment variable to be populated from a machine field, env_var */
@@ -1165,7 +1168,7 @@ export const FlyHTTPHealthcheckHeadersList = /*@__PURE__*/ S.Array(
   FlyMachineHTTPHeader,
 ) as any as S.Schema<FlyHTTPHealthcheckHeadersList>;
 
-export type FlyContainerHealthcheckScheme = "http" | "https";
+export type FlyContainerHealthcheckScheme = "http" | "https" | (string & {});
 export const FlyContainerHealthcheckScheme = /*@__PURE__*/ S.String;
 
 export interface FlyHTTPHealthcheck {
@@ -1198,7 +1201,10 @@ export const FlyHTTPHealthcheck = /*@__PURE__*/ S.suspend(() =>
   identifier: "FlyHTTPHealthcheck",
 }) as any as S.Schema<FlyHTTPHealthcheck>;
 
-export type FlyContainerHealthcheckKind = "readiness" | "liveness";
+export type FlyContainerHealthcheckKind =
+  | "readiness"
+  | "liveness"
+  | (string & {});
 export const FlyContainerHealthcheckKind = /*@__PURE__*/ S.String;
 
 export interface FlyTCPHealthcheck {
@@ -1213,7 +1219,7 @@ export const FlyTCPHealthcheck = /*@__PURE__*/ S.suspend(() =>
   identifier: "FlyTCPHealthcheck",
 }) as any as S.Schema<FlyTCPHealthcheck>;
 
-export type FlyUnhealthyPolicy = "stop";
+export type FlyUnhealthyPolicy = "stop" | (string & {});
 export const FlyUnhealthyPolicy = /*@__PURE__*/ S.String;
 
 export interface FlyContainerHealthcheck {
@@ -1267,7 +1273,8 @@ export type FlyMachineRestartPolicy =
   | "no"
   | "always"
   | "on-failure"
-  | "spot-price";
+  | "spot-price"
+  | (string & {});
 export const FlyMachineRestartPolicy = /*@__PURE__*/ S.String;
 
 /** The Machine restart policy defines whether and how flyd restarts a Machine after its main process exits. See https://fly.io/docs/machines/guides-examples/machine-restart-policy/. */
@@ -1318,7 +1325,8 @@ export type FlyStopConfigSignal =
   | "SIGKILL"
   | "SIGUSR1"
   | "SIGUSR2"
-  | "SIGTERM";
+  | "SIGTERM"
+  | (string & {});
 export const FlyStopConfigSignal = /*@__PURE__*/ S.String;
 
 export interface FlyStopConfig {
@@ -1472,7 +1480,11 @@ export const FlyMachineGuestKernelArgsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<FlyMachineGuestKernelArgsList>;
 
 /** Deprecated: use MachineConfig.Rootfs instead */
-export type FlyMachineGuestPersistRootfs = "never" | "always" | "restart";
+export type FlyMachineGuestPersistRootfs =
+  | "never"
+  | "always"
+  | "restart"
+  | (string & {});
 export const FlyMachineGuestPersistRootfs = /*@__PURE__*/ S.String;
 
 export interface FlyMachineGuest {
@@ -1659,7 +1671,11 @@ export const FlyMachineConfigProcessesList = /*@__PURE__*/ S.Array(
   FlyMachineProcess,
 ) as any as S.Schema<FlyMachineConfigProcessesList>;
 
-export type FlyMachineRootfsPersist = "never" | "always" | "restart";
+export type FlyMachineRootfsPersist =
+  | "never"
+  | "always"
+  | "restart"
+  | (string & {});
 export const FlyMachineRootfsPersist = /*@__PURE__*/ S.String;
 
 export interface FlyMachineRootfs {
@@ -1676,7 +1692,11 @@ export const FlyMachineRootfs = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlyMachineRootfs>;
 
 /** Accepts a string (new format) or a boolean (old format). For backward compatibility with older clients, the API continues to use booleans for "off" and "stop" in responses. * "off" or false - Do not autostop the Machine. * "stop" or true - Automatically stop the Machine. * "suspend" - Automatically suspend the Machine, falling back to a full stop if this is not possible. */
-export type FlyMachineServiceAutostop = "off" | "stop" | "suspend";
+export type FlyMachineServiceAutostop =
+  | "off"
+  | "stop"
+  | "suspend"
+  | (string & {});
 export const FlyMachineServiceAutostop = /*@__PURE__*/ S.String;
 
 export type FlyMachineServiceCheckHeadersList =
@@ -1753,7 +1773,7 @@ export const FlyMachinePortHandlersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<FlyMachinePortHandlersList>;
 
 /** Currently either "cookie" or "header" */
-export type FlyReplayCacheType = "cookie" | "header";
+export type FlyReplayCacheType = "cookie" | "header" | (string & {});
 export const FlyReplayCacheType = /*@__PURE__*/ S.String;
 
 export interface FlyReplayCache {
@@ -2096,7 +2116,11 @@ export const MachineEventsList = /*@__PURE__*/ S.Array(
   MachineEvent,
 ) as any as S.Schema<MachineEventsList>;
 
-export type MachineHostStatus = "ok" | "unknown" | "unreachable";
+export type MachineHostStatus =
+  | "ok"
+  | "unknown"
+  | "unreachable"
+  | (string & {});
 export const MachineHostStatus = /*@__PURE__*/ S.String;
 
 export type ImageRefLabelsMap = { [key: string]: string | undefined };
@@ -2796,7 +2820,8 @@ export type MachinesRestartRequestSignal =
   | "SIGKILL"
   | "SIGUSR1"
   | "SIGUSR2"
-  | "SIGTERM";
+  | "SIGTERM"
+  | (string & {});
 export const MachinesRestartRequestSignal = /*@__PURE__*/ S.String;
 
 export interface MachinesRestartRequest {
@@ -2951,7 +2976,8 @@ export type MachinesSignalRequestSignal =
   | "SIGTERM"
   | "SIGTRAP"
   | "SIGUSR1"
-  | "SIGUSR2";
+  | "SIGUSR2"
+  | (string & {});
 export const MachinesSignalRequestSignal = /*@__PURE__*/ S.String;
 
 export interface MachinesSignalRequest {
@@ -3019,7 +3045,8 @@ export type MachinesStopRequestSignal =
   | "SIGKILL"
   | "SIGUSR1"
   | "SIGUSR2"
-  | "SIGTERM";
+  | "SIGTERM"
+  | (string & {});
 export const MachinesStopRequestSignal = /*@__PURE__*/ S.String;
 
 export interface MachinesStopRequest {
@@ -3277,7 +3304,8 @@ export type MachinesWaitRequestState =
   | "suspended"
   | "destroyed"
   | "failed"
-  | "settled";
+  | "settled"
+  | (string & {});
 export const MachinesWaitRequestState = /*@__PURE__*/ S.String;
 
 export interface MachinesWaitRequest {
@@ -4142,7 +4170,7 @@ export const TokensAuthenticateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensAuthenticateResponse",
 }) as any as S.Schema<TokensAuthenticateResponse>;
 
-export type RessetAction = 1 | 2 | 4 | 8 | 16 | 31 | 0;
+export type RessetAction = 1 | 2 | 4 | 8 | 16 | 31 | 0 | (number & {});
 export const RessetAction = /*@__PURE__*/ S.Number;
 
 /** Command is the command being executed on a machine. If this is specified, the Machine must be set. */
@@ -4319,10 +4347,10 @@ export const VolumeDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "VolumeDeleteRequest",
 }) as any as S.Schema<VolumeDeleteRequest>;
 
-export type VolumeHostStatus = "ok" | "unknown" | "unreachable";
+export type VolumeHostStatus = "ok" | "unknown" | "unreachable" | (string & {});
 export const VolumeHostStatus = /*@__PURE__*/ S.String;
 
-export type VolumeType = "local" | "cache";
+export type VolumeType = "local" | "cache" | (string & {});
 export const VolumeType = /*@__PURE__*/ S.String;
 
 export interface Volume {
@@ -4593,10 +4621,14 @@ export const VolumesOrgListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "VolumesOrgListRequest",
 }) as any as S.Schema<VolumesOrgListRequest>;
 
-export type OrgVolumeHostStatus = "ok" | "unknown" | "unreachable";
+export type OrgVolumeHostStatus =
+  | "ok"
+  | "unknown"
+  | "unreachable"
+  | (string & {});
 export const OrgVolumeHostStatus = /*@__PURE__*/ S.String;
 
-export type OrgVolumeType = "local" | "cache";
+export type OrgVolumeType = "local" | "cache" | (string & {});
 export const OrgVolumeType = /*@__PURE__*/ S.String;
 
 export interface OrgVolume {

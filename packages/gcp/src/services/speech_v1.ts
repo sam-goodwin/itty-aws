@@ -66,7 +66,11 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
-export type CustomClassStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DELETED";
+export type CustomClassStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "DELETED"
+  | (string & {});
 export const CustomClassStateEnum = /*@__PURE__*/ S.String;
 
 /** An item of the class. */
@@ -189,7 +193,11 @@ export const PhraseList = /*@__PURE__*/ S.Array(
   Phrase,
 ) as any as S.Schema<PhraseList>;
 
-export type PhraseSetStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DELETED";
+export type PhraseSetStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "DELETED"
+  | (string & {});
 export const PhraseSetStateEnum = /*@__PURE__*/ S.String;
 
 /** Provides "hints" to the speech recognizer to favor specific words and phrases in the results. */
@@ -590,7 +598,8 @@ export type RecognitionConfigEncodingEnum =
   | "SPEEX_WITH_HEADER_BYTE"
   | "MP3"
   | "WEBM_OPUS"
-  | "ALAW";
+  | "ALAW"
+  | (string & {});
 export const RecognitionConfigEncodingEnum = /*@__PURE__*/ S.String;
 
 /** Provides "hints" to the speech recognizer to favor specific words and phrases in the results. */
@@ -653,20 +662,23 @@ export type RecognitionMetadataInteractionTypeEnum =
   | "PROFESSIONALLY_PRODUCED"
   | "VOICE_SEARCH"
   | "VOICE_COMMAND"
-  | "DICTATION";
+  | "DICTATION"
+  | (string & {});
 export const RecognitionMetadataInteractionTypeEnum = /*@__PURE__*/ S.String;
 
 export type RecognitionMetadataMicrophoneDistanceEnum =
   | "MICROPHONE_DISTANCE_UNSPECIFIED"
   | "NEARFIELD"
   | "MIDFIELD"
-  | "FARFIELD";
+  | "FARFIELD"
+  | (string & {});
 export const RecognitionMetadataMicrophoneDistanceEnum = /*@__PURE__*/ S.String;
 
 export type RecognitionMetadataOriginalMediaTypeEnum =
   | "ORIGINAL_MEDIA_TYPE_UNSPECIFIED"
   | "AUDIO"
-  | "VIDEO";
+  | "VIDEO"
+  | (string & {});
 export const RecognitionMetadataOriginalMediaTypeEnum = /*@__PURE__*/ S.String;
 
 export type RecognitionMetadataRecordingDeviceTypeEnum =
@@ -676,7 +688,8 @@ export type RecognitionMetadataRecordingDeviceTypeEnum =
   | "PHONE_LINE"
   | "VEHICLE"
   | "OTHER_OUTDOOR_DEVICE"
-  | "OTHER_INDOOR_DEVICE";
+  | "OTHER_INDOOR_DEVICE"
+  | (string & {});
 export const RecognitionMetadataRecordingDeviceTypeEnum =
   /*@__PURE__*/ S.String;
 

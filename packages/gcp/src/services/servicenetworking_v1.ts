@@ -1491,7 +1491,8 @@ export type ValidateConsumerConfigResponseValidationErrorEnum =
   | "RANGES_DELETED_LATER"
   | "COMPUTE_API_NOT_ENABLED"
   | "USE_PERMISSION_NOT_FOUND"
-  | "SN_SERVICE_AGENT_PERMISSION_DENIED_ON_CONSUMER_PROJECT";
+  | "SN_SERVICE_AGENT_PERMISSION_DENIED_ON_CONSUMER_PROJECT"
+  | (string & {});
 export const ValidateConsumerConfigResponseValidationErrorEnum =
   /*@__PURE__*/ S.String;
 

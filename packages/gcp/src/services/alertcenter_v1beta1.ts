@@ -203,7 +203,8 @@ export type AlertFeedbackTypeEnum =
   | "ALERT_FEEDBACK_TYPE_UNSPECIFIED"
   | "NOT_USEFUL"
   | "SOMEWHAT_USEFUL"
-  | "VERY_USEFUL";
+  | "VERY_USEFUL"
+  | (string & {});
 export const AlertFeedbackTypeEnum = /*@__PURE__*/ S.String;
 
 /** A customer feedback about an alert. */
@@ -421,7 +422,8 @@ export const GetSettingsV1beta1Request = /*@__PURE__*/ S.suspend(() =>
 
 export type CloudPubsubTopicPayloadFormatEnum =
   | "PAYLOAD_FORMAT_UNSPECIFIED"
-  | "JSON";
+  | "JSON"
+  | (string & {});
 export const CloudPubsubTopicPayloadFormatEnum = /*@__PURE__*/ S.String;
 
 /** A reference to a Cloud Pubsub topic. To register for notifications, the owner of the topic must grant `alerts-api-push-notifications@system.gserviceaccount.com` the `projects.topics.publish` permission. */

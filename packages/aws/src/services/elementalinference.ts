@@ -143,7 +143,8 @@ export type TranscriptionLanguage =
   | "ita"
   | "deu"
   | "spa"
-  | "por";
+  | "por"
+  | (string & {});
 export const TranscriptionLanguage = /*@__PURE__*/ S.String;
 
 export interface AspectRatio {
@@ -154,7 +155,11 @@ export const AspectRatio = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ width: S.Number, height: S.Number }),
 ).annotate({ identifier: "AspectRatio" }) as any as S.Schema<AspectRatio>;
 export type DictionaryId = string;
-export type ProfanityFilterMode = "DISABLED" | "CENSOR" | "DROP";
+export type ProfanityFilterMode =
+  | "DISABLED"
+  | "CENSOR"
+  | "DROP"
+  | (string & {});
 export const ProfanityFilterMode = /*@__PURE__*/ S.String;
 
 export interface SubtitlingConfig {
@@ -182,7 +187,7 @@ export const OutputConfig = /*@__PURE__*/ S.Union([
   S.Struct({ clipping: ClippingConfig }),
   S.Struct({ subtitling: SubtitlingConfig }),
 ]);
-export type OutputStatus = "ENABLED" | "DISABLED";
+export type OutputStatus = "ENABLED" | "DISABLED" | (string & {});
 export const OutputStatus = /*@__PURE__*/ S.String;
 
 export interface CreateOutput {
@@ -236,7 +241,14 @@ export const AssociateFeedResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateFeedResponse",
 }) as any as S.Schema<AssociateFeedResponse>;
-export type DictionaryLanguage = "eng" | "fra" | "ita" | "deu" | "spa" | "por";
+export type DictionaryLanguage =
+  | "eng"
+  | "fra"
+  | "ita"
+  | "deu"
+  | "spa"
+  | "por"
+  | (string & {});
 export const DictionaryLanguage = /*@__PURE__*/ S.String;
 
 export type DictionaryEntriesPayload = string;
@@ -278,7 +290,8 @@ export type DictionaryStatus =
   | "AVAILABLE"
   | "REFERENCED"
   | "DELETING"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const DictionaryStatus = /*@__PURE__*/ S.String;
 
 export type FeedReferences = string[];
@@ -355,7 +368,8 @@ export type FeedStatus =
   | "UPDATING"
   | "DELETING"
   | "DELETED"
-  | "ARCHIVED";
+  | "ARCHIVED"
+  | (string & {});
 export const FeedStatus = /*@__PURE__*/ S.String;
 
 export interface FeedAssociation {

@@ -329,7 +329,8 @@ export const CustomerEncryptionKey = /*@__PURE__*/ S.suspend(() =>
 export type GceRegionalPersistentDiskReclaimPolicyEnum =
   | "RECLAIM_POLICY_UNSPECIFIED"
   | "DELETE"
-  | "RETAIN";
+  | "RETAIN"
+  | (string & {});
 export const GceRegionalPersistentDiskReclaimPolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -367,7 +368,8 @@ export const GceRegionalPersistentDisk = /*@__PURE__*/ S.suspend(() =>
 export type GceHyperdiskBalancedHighAvailabilityReclaimPolicyEnum =
   | "RECLAIM_POLICY_UNSPECIFIED"
   | "DELETE"
-  | "RETAIN";
+  | "RETAIN"
+  | (string & {});
 export const GceHyperdiskBalancedHighAvailabilityReclaimPolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -804,7 +806,8 @@ export type WorkstationStateEnum =
   | "STATE_STARTING"
   | "STATE_RUNNING"
   | "STATE_STOPPING"
-  | "STATE_STOPPED";
+  | "STATE_STOPPED"
+  | (string & {});
 export const WorkstationStateEnum = /*@__PURE__*/ S.String;
 
 /** A directory to persist across workstation sessions. Updates to this field will only take effect on this workstation after it is restarted. */
@@ -1179,7 +1182,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */

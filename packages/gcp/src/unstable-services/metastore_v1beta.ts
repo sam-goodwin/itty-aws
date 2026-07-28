@@ -297,7 +297,8 @@ export type BackendMetastoreMetastoreTypeEnum =
   | "METASTORE_TYPE_UNSPECIFIED"
   | "DATAPLEX"
   | "BIGQUERY"
-  | "DATAPROC_METASTORE";
+  | "DATAPROC_METASTORE"
+  | (string & {});
 export const BackendMetastoreMetastoreTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a backend metastore for the federation. */
@@ -330,7 +331,8 @@ export type FederationStateEnum =
   | "ACTIVE"
   | "UPDATING"
   | "DELETING"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const FederationStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a federation of multiple backend metastores. */
@@ -405,7 +407,8 @@ export const CreateProjectsLocationsFederationsRequest =
 export type ServiceReleaseChannelEnum =
   | "RELEASE_CHANNEL_UNSPECIFIED"
   | "CANARY"
-  | "STABLE";
+  | "STABLE"
+  | (string & {});
 export const ServiceReleaseChannelEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -432,7 +435,8 @@ export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
 export type TelemetryConfigLogFormatEnum =
   | "LOG_FORMAT_UNSPECIFIED"
   | "LEGACY"
-  | "JSON";
+  | "JSON"
+  | (string & {});
 export const TelemetryConfigLogFormatEnum = /*@__PURE__*/ S.String;
 
 /** Telemetry Configuration for the Dataproc Metastore service. */
@@ -458,7 +462,8 @@ export type ServiceStateEnum =
   | "DELETING"
   | "ERROR"
   | "AUTOSCALING"
-  | "MIGRATING";
+  | "MIGRATING"
+  | (string & {});
 export const ServiceStateEnum = /*@__PURE__*/ S.String;
 
 /** Contains information of the customer's network configurations. */
@@ -501,7 +506,8 @@ export type LatestBackupStateEnum =
   | "STATE_UNSPECIFIED"
   | "IN_PROGRESS"
   | "SUCCEEDED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const LatestBackupStateEnum = /*@__PURE__*/ S.String;
 
 /** The details of the latest scheduled backup. */
@@ -560,7 +566,8 @@ export type MaintenanceWindowDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const MaintenanceWindowDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Maintenance window. This specifies when Dataproc Metastore may perform system maintenance operation to the service. */
@@ -582,7 +589,8 @@ export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
 export type ServiceDatabaseTypeEnum =
   | "DATABASE_TYPE_UNSPECIFIED"
   | "MYSQL"
-  | "SPANNER";
+  | "SPANNER"
+  | (string & {});
 export const ServiceDatabaseTypeEnum = /*@__PURE__*/ S.String;
 
 /** A securely stored value. */
@@ -616,7 +624,8 @@ export const KerberosConfig = /*@__PURE__*/ S.suspend(() =>
 export type HiveMetastoreConfigEndpointProtocolEnum =
   | "ENDPOINT_PROTOCOL_UNSPECIFIED"
   | "THRIFT"
-  | "GRPC";
+  | "GRPC"
+  | (string & {});
 export const HiveMetastoreConfigEndpointProtocolEnum = /*@__PURE__*/ S.String;
 
 /** Configuration information for the auxiliary service versions. */
@@ -733,13 +742,15 @@ export type MetadataExportStateEnum =
   | "RUNNING"
   | "SUCCEEDED"
   | "FAILED"
-  | "CANCELLED";
+  | "CANCELLED"
+  | (string & {});
 export const MetadataExportStateEnum = /*@__PURE__*/ S.String;
 
 export type MetadataExportDatabaseDumpTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "MYSQL"
-  | "AVRO";
+  | "AVRO"
+  | (string & {});
 export const MetadataExportDatabaseDumpTypeEnum = /*@__PURE__*/ S.String;
 
 /** The details of a metadata export operation. */
@@ -773,7 +784,8 @@ export const MetadataExportList = /*@__PURE__*/ S.Array(
 export type RestoreTypeEnum =
   | "RESTORE_TYPE_UNSPECIFIED"
   | "FULL"
-  | "METADATA_ONLY";
+  | "METADATA_ONLY"
+  | (string & {});
 export const RestoreTypeEnum = /*@__PURE__*/ S.String;
 
 export type RestoreStateEnum =
@@ -781,7 +793,8 @@ export type RestoreStateEnum =
   | "RUNNING"
   | "SUCCEEDED"
   | "FAILED"
-  | "CANCELLED";
+  | "CANCELLED"
+  | (string & {});
 export const RestoreStateEnum = /*@__PURE__*/ S.String;
 
 /** The details of a metadata restore operation. */
@@ -887,7 +900,11 @@ export const MultiRegionConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "MultiRegionConfig",
 }) as any as S.Schema<MultiRegionConfig>;
 
-export type ServiceTierEnum = "TIER_UNSPECIFIED" | "DEVELOPER" | "ENTERPRISE";
+export type ServiceTierEnum =
+  | "TIER_UNSPECIFIED"
+  | "DEVELOPER"
+  | "ENTERPRISE"
+  | (string & {});
 export const ServiceTierEnum = /*@__PURE__*/ S.String;
 
 export type ScalingConfigInstanceSizeEnum =
@@ -896,7 +913,8 @@ export type ScalingConfigInstanceSizeEnum =
   | "SMALL"
   | "MEDIUM"
   | "LARGE"
-  | "EXTRA_LARGE";
+  | "EXTRA_LARGE"
+  | (string & {});
 export const ScalingConfigInstanceSizeEnum = /*@__PURE__*/ S.String;
 
 /** Represents the autoscaling limit configuration of a metastore service. */
@@ -1069,7 +1087,8 @@ export type BackupStateEnum =
   | "DELETING"
   | "ACTIVE"
   | "FAILED"
-  | "RESTORING";
+  | "RESTORING"
+  | (string & {});
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
 /** The details of a backup resource. */
@@ -1134,15 +1153,21 @@ export type MetadataImportStateEnum =
   | "RUNNING"
   | "SUCCEEDED"
   | "UPDATING"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const MetadataImportStateEnum = /*@__PURE__*/ S.String;
 
 export type DatabaseDumpDatabaseTypeEnum =
   | "DATABASE_TYPE_UNSPECIFIED"
-  | "MYSQL";
+  | "MYSQL"
+  | (string & {});
 export const DatabaseDumpDatabaseTypeEnum = /*@__PURE__*/ S.String;
 
-export type DatabaseDumpTypeEnum = "TYPE_UNSPECIFIED" | "MYSQL" | "AVRO";
+export type DatabaseDumpTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "MYSQL"
+  | "AVRO"
+  | (string & {});
 export const DatabaseDumpTypeEnum = /*@__PURE__*/ S.String;
 
 /** A specification of the location of and metadata about a database dump from a relational database management system. */
@@ -1332,7 +1357,8 @@ export const DeleteProjectsLocationsServicesMigrationExecutionsRequest =
 export type ExportMetadataRequestDatabaseDumpTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "MYSQL"
-  | "AVRO";
+  | "AVRO"
+  | (string & {});
 export const ExportMetadataRequestDatabaseDumpTypeEnum = /*@__PURE__*/ S.String;
 
 /** Request message for DataprocMetastore.ExportMetadata. */
@@ -1444,7 +1470,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1750,7 +1777,8 @@ export const GetProjectsLocationsServicesMigrationExecutionsRequest =
 export type MigrationExecutionPhaseEnum =
   | "PHASE_UNSPECIFIED"
   | "REPLICATION"
-  | "CUTOVER";
+  | "CUTOVER"
+  | (string & {});
 export const MigrationExecutionPhaseEnum = /*@__PURE__*/ S.String;
 
 export type MigrationExecutionStateEnum =
@@ -1762,7 +1790,8 @@ export type MigrationExecutionStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "CANCELLED"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const MigrationExecutionStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration information to start the Change Data Capture (CDC) streams from customer database to backend database of Dataproc Metastore. */
@@ -2467,7 +2496,8 @@ export const RemoveIamPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 export type RestoreServiceRequestRestoreTypeEnum =
   | "RESTORE_TYPE_UNSPECIFIED"
   | "FULL"
-  | "METADATA_ONLY";
+  | "METADATA_ONLY"
+  | (string & {});
 export const RestoreServiceRequestRestoreTypeEnum = /*@__PURE__*/ S.String;
 
 /** Request message for DataprocMetastore.RestoreService. */

@@ -64,7 +64,8 @@ export type AuthTokenStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "CREATING"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const AuthTokenStateEnum = /*@__PURE__*/ S.String;
 
 /** Auth token for the cluster. */
@@ -294,14 +295,16 @@ export type AclPolicyStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "UPDATING"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const AclPolicyStateEnum = /*@__PURE__*/ S.String;
 
 export type AclPolicyRevisionStatusStateEnum =
   | "STATE_UNSPECIFIED"
   | "APPLYING"
   | "APPLIED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const AclPolicyRevisionStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** AclPolicyRevisionStatus stores the per-revision status for an attached cluster. */
@@ -422,7 +425,8 @@ export type ClusterNodeTypeEnum =
   | "REDIS_STANDARD_SMALL"
   | "REDIS_HIGHCPU_MEDIUM"
   | "REDIS_STANDARD_LARGE"
-  | "REDIS_HIGHMEM_2XLARGE";
+  | "REDIS_HIGHMEM_2XLARGE"
+  | (string & {});
 export const ClusterNodeTypeEnum = /*@__PURE__*/ S.String;
 
 export type EncryptionInfoKmsKeyPrimaryStateEnum =
@@ -434,7 +438,8 @@ export type EncryptionInfoKmsKeyPrimaryStateEnum =
   | "DESTROY_SCHEDULED"
   | "EKM_KEY_UNREACHABLE_DETECTED"
   | "BILLING_DISABLED"
-  | "UNKNOWN_FAILURE";
+  | "UNKNOWN_FAILURE"
+  | (string & {});
 export const EncryptionInfoKmsKeyPrimaryStateEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -445,7 +450,8 @@ export const StringList = /*@__PURE__*/ S.Array(
 export type EncryptionInfoEncryptionTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "GOOGLE_DEFAULT_ENCRYPTION"
-  | "CUSTOMER_MANAGED_ENCRYPTION";
+  | "CUSTOMER_MANAGED_ENCRYPTION"
+  | (string & {});
 export const EncryptionInfoEncryptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** EncryptionInfo describes the encryption information of a cluster or a backup. */
@@ -471,7 +477,8 @@ export const EncryptionInfo = /*@__PURE__*/ S.suspend(() =>
 export type ZoneDistributionConfigModeEnum =
   | "ZONE_DISTRIBUTION_MODE_UNSPECIFIED"
   | "MULTI_ZONE"
-  | "SINGLE_ZONE";
+  | "SINGLE_ZONE"
+  | (string & {});
 export const ZoneDistributionConfigModeEnum = /*@__PURE__*/ S.String;
 
 /** Zone distribution config for allocation of cluster resources. */
@@ -512,13 +519,15 @@ export type PscAutoConnectionConnectionTypeEnum =
   | "CONNECTION_TYPE_UNSPECIFIED"
   | "CONNECTION_TYPE_DISCOVERY"
   | "CONNECTION_TYPE_PRIMARY"
-  | "CONNECTION_TYPE_READER";
+  | "CONNECTION_TYPE_READER"
+  | (string & {});
 export const PscAutoConnectionConnectionTypeEnum = /*@__PURE__*/ S.String;
 
 export type PscAutoConnectionPscConnectionStatusEnum =
   | "PSC_CONNECTION_STATUS_UNSPECIFIED"
   | "PSC_CONNECTION_STATUS_ACTIVE"
-  | "PSC_CONNECTION_STATUS_NOT_FOUND";
+  | "PSC_CONNECTION_STATUS_NOT_FOUND"
+  | (string & {});
 export const PscAutoConnectionPscConnectionStatusEnum = /*@__PURE__*/ S.String;
 
 /** Details of consumer resources in a PSC connection that is created through Service Connectivity Automation. */
@@ -559,13 +568,15 @@ export type PscConnectionConnectionTypeEnum =
   | "CONNECTION_TYPE_UNSPECIFIED"
   | "CONNECTION_TYPE_DISCOVERY"
   | "CONNECTION_TYPE_PRIMARY"
-  | "CONNECTION_TYPE_READER";
+  | "CONNECTION_TYPE_READER"
+  | (string & {});
 export const PscConnectionConnectionTypeEnum = /*@__PURE__*/ S.String;
 
 export type PscConnectionPscConnectionStatusEnum =
   | "PSC_CONNECTION_STATUS_UNSPECIFIED"
   | "PSC_CONNECTION_STATUS_ACTIVE"
-  | "PSC_CONNECTION_STATUS_NOT_FOUND";
+  | "PSC_CONNECTION_STATUS_NOT_FOUND"
+  | (string & {});
 export const PscConnectionPscConnectionStatusEnum = /*@__PURE__*/ S.String;
 
 /** Details of consumer resources in a PSC connection. */
@@ -647,7 +658,8 @@ export type RDBConfigRdbSnapshotPeriodEnum =
   | "ONE_HOUR"
   | "SIX_HOURS"
   | "TWELVE_HOURS"
-  | "TWENTY_FOUR_HOURS";
+  | "TWENTY_FOUR_HOURS"
+  | (string & {});
 export const RDBConfigRdbSnapshotPeriodEnum = /*@__PURE__*/ S.String;
 
 /** Configuration of the RDB based persistence. */
@@ -668,7 +680,8 @@ export type AOFConfigAppendFsyncEnum =
   | "APPEND_FSYNC_UNSPECIFIED"
   | "NO"
   | "EVERYSEC"
-  | "ALWAYS";
+  | "ALWAYS"
+  | (string & {});
 export const AOFConfigAppendFsyncEnum = /*@__PURE__*/ S.String;
 
 /** Configuration of the AOF based persistence. */
@@ -686,7 +699,8 @@ export type ClusterPersistenceConfigModeEnum =
   | "PERSISTENCE_MODE_UNSPECIFIED"
   | "DISABLED"
   | "RDB"
-  | "AOF";
+  | "AOF"
+  | (string & {});
 export const ClusterPersistenceConfigModeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration of the persistence functionality. */
@@ -711,7 +725,8 @@ export const ClusterPersistenceConfig = /*@__PURE__*/ S.suspend(() =>
 export type AutomatedBackupConfigAutomatedBackupModeEnum =
   | "AUTOMATED_BACKUP_MODE_UNSPECIFIED"
   | "DISABLED"
-  | "ENABLED";
+  | "ENABLED"
+  | (string & {});
 export const AutomatedBackupConfigAutomatedBackupModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -806,7 +821,8 @@ export type CrossClusterReplicationConfigClusterRoleEnum =
   | "CLUSTER_ROLE_UNSPECIFIED"
   | "NONE"
   | "PRIMARY"
-  | "SECONDARY";
+  | "SECONDARY"
+  | (string & {});
 export const CrossClusterReplicationConfigClusterRoleEnum =
   /*@__PURE__*/ S.String;
 
@@ -838,7 +854,8 @@ export const CrossClusterReplicationConfig = /*@__PURE__*/ S.suspend(() =>
 export type ClusterTransitEncryptionModeEnum =
   | "TRANSIT_ENCRYPTION_MODE_UNSPECIFIED"
   | "TRANSIT_ENCRYPTION_MODE_DISABLED"
-  | "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION";
+  | "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"
+  | (string & {});
 export const ClusterTransitEncryptionModeEnum = /*@__PURE__*/ S.String;
 
 /** Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters. */
@@ -889,7 +906,8 @@ export type ClusterWeeklyMaintenanceWindowDayEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const ClusterWeeklyMaintenanceWindowDayEnum = /*@__PURE__*/ S.String;
 
 /** Time window specified for weekly operations. */
@@ -937,7 +955,8 @@ export type ClusterServerCaModeEnum =
   | "SERVER_CA_MODE_UNSPECIFIED"
   | "SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA"
   | "SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA"
-  | "SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA";
+  | "SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA"
+  | (string & {});
 export const ClusterServerCaModeEnum = /*@__PURE__*/ S.String;
 
 export type ClusterStateEnum =
@@ -945,7 +964,8 @@ export type ClusterStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "UPDATING"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const ClusterStateEnum = /*@__PURE__*/ S.String;
 
 /** Endpoints on each network, for Redis clients to connect to the cluster. */
@@ -1009,14 +1029,16 @@ export type ClusterAuthorizationModeEnum =
   | "AUTH_MODE_UNSPECIFIED"
   | "AUTH_MODE_IAM_AUTH"
   | "AUTH_MODE_DISABLED"
-  | "AUTH_MODE_TOKEN_AUTH";
+  | "AUTH_MODE_TOKEN_AUTH"
+  | (string & {});
 export const ClusterAuthorizationModeEnum = /*@__PURE__*/ S.String;
 
 export type PscServiceAttachmentConnectionTypeEnum =
   | "CONNECTION_TYPE_UNSPECIFIED"
   | "CONNECTION_TYPE_DISCOVERY"
   | "CONNECTION_TYPE_PRIMARY"
-  | "CONNECTION_TYPE_READER";
+  | "CONNECTION_TYPE_READER"
+  | (string & {});
 export const PscServiceAttachmentConnectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration of a service attachment of the cluster, for creating PSC connections. */
@@ -1048,7 +1070,8 @@ export type UpdateInfoTargetNodeTypeEnum =
   | "REDIS_STANDARD_SMALL"
   | "REDIS_HIGHCPU_MEDIUM"
   | "REDIS_STANDARD_LARGE"
-  | "REDIS_HIGHMEM_2XLARGE";
+  | "REDIS_HIGHMEM_2XLARGE"
+  | (string & {});
 export const UpdateInfoTargetNodeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents information about an updating cluster. */
@@ -1261,7 +1284,8 @@ export type WeeklyMaintenanceWindowDayEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const WeeklyMaintenanceWindowDayEnum = /*@__PURE__*/ S.String;
 
 /** Time window in which disruptive maintenance updates occur. Non-disruptive updates can occur inside or outside this window. */
@@ -1311,7 +1335,11 @@ export const MaintenancePolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "MaintenancePolicy",
 }) as any as S.Schema<MaintenancePolicy>;
 
-export type InstanceTierEnum = "TIER_UNSPECIFIED" | "BASIC" | "STANDARD_HA";
+export type InstanceTierEnum =
+  | "TIER_UNSPECIFIED"
+  | "BASIC"
+  | "STANDARD_HA"
+  | (string & {});
 export const InstanceTierEnum = /*@__PURE__*/ S.String;
 
 export type InstanceStateEnum =
@@ -1323,7 +1351,8 @@ export type InstanceStateEnum =
   | "REPAIRING"
   | "MAINTENANCE"
   | "IMPORTING"
-  | "FAILING_OVER";
+  | "FAILING_OVER"
+  | (string & {});
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 /** TlsCertificate Resource */
@@ -1356,7 +1385,8 @@ export const TlsCertificateList = /*@__PURE__*/ S.Array(
 
 export type InstanceSuspensionReasonsItemEnum =
   | "SUSPENSION_REASON_UNSPECIFIED"
-  | "CUSTOMER_MANAGED_KEY_ISSUE";
+  | "CUSTOMER_MANAGED_KEY_ISSUE"
+  | (string & {});
 export const InstanceSuspensionReasonsItemEnum = /*@__PURE__*/ S.String;
 
 export type InstanceSuspensionReasonsItemEnumList =
@@ -1368,7 +1398,8 @@ export const InstanceSuspensionReasonsItemEnumList = /*@__PURE__*/ S.Array(
 export type InstanceReadReplicasModeEnum =
   | "READ_REPLICAS_MODE_UNSPECIFIED"
   | "READ_REPLICAS_DISABLED"
-  | "READ_REPLICAS_ENABLED";
+  | "READ_REPLICAS_ENABLED"
+  | (string & {});
 export const InstanceReadReplicasModeEnum = /*@__PURE__*/ S.String;
 
 /** Node specific properties. */
@@ -1393,7 +1424,8 @@ export const NodeInfoList = /*@__PURE__*/ S.Array(
 export type PersistenceConfigPersistenceModeEnum =
   | "PERSISTENCE_MODE_UNSPECIFIED"
   | "DISABLED"
-  | "RDB";
+  | "RDB"
+  | (string & {});
 export const PersistenceConfigPersistenceModeEnum = /*@__PURE__*/ S.String;
 
 export type PersistenceConfigRdbSnapshotPeriodEnum =
@@ -1401,7 +1433,8 @@ export type PersistenceConfigRdbSnapshotPeriodEnum =
   | "ONE_HOUR"
   | "SIX_HOURS"
   | "TWELVE_HOURS"
-  | "TWENTY_FOUR_HOURS";
+  | "TWENTY_FOUR_HOURS"
+  | (string & {});
 export const PersistenceConfigRdbSnapshotPeriodEnum = /*@__PURE__*/ S.String;
 
 /** Configuration of the persistence functionality. */
@@ -1429,13 +1462,15 @@ export const PersistenceConfig = /*@__PURE__*/ S.suspend(() =>
 export type InstanceConnectModeEnum =
   | "CONNECT_MODE_UNSPECIFIED"
   | "DIRECT_PEERING"
-  | "PRIVATE_SERVICE_ACCESS";
+  | "PRIVATE_SERVICE_ACCESS"
+  | (string & {});
 export const InstanceConnectModeEnum = /*@__PURE__*/ S.String;
 
 export type InstanceTransitEncryptionModeEnum =
   | "TRANSIT_ENCRYPTION_MODE_UNSPECIFIED"
   | "SERVER_AUTHENTICATION"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const InstanceTransitEncryptionModeEnum = /*@__PURE__*/ S.String;
 
 /** Upcoming maintenance schedule. If no maintenance is scheduled, fields are not populated. */
@@ -1854,7 +1889,8 @@ export const ExportProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
 export type FailoverInstanceRequestDataProtectionModeEnum =
   | "DATA_PROTECTION_MODE_UNSPECIFIED"
   | "LIMITED_DATA_LOSS"
-  | "FORCE_DATA_LOSS";
+  | "FORCE_DATA_LOSS"
+  | (string & {});
 export const FailoverInstanceRequestDataProtectionModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2175,13 +2211,15 @@ export type BackupNodeTypeEnum =
   | "REDIS_STANDARD_SMALL"
   | "REDIS_HIGHCPU_MEDIUM"
   | "REDIS_STANDARD_LARGE"
-  | "REDIS_HIGHMEM_2XLARGE";
+  | "REDIS_HIGHMEM_2XLARGE"
+  | (string & {});
 export const BackupNodeTypeEnum = /*@__PURE__*/ S.String;
 
 export type BackupBackupTypeEnum =
   | "BACKUP_TYPE_UNSPECIFIED"
   | "ON_DEMAND"
-  | "AUTOMATED";
+  | "AUTOMATED"
+  | (string & {});
 export const BackupBackupTypeEnum = /*@__PURE__*/ S.String;
 
 export type BackupStateEnum =
@@ -2189,7 +2227,8 @@ export type BackupStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "SUSPENDED";
+  | "SUSPENDED"
+  | (string & {});
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
 /** Backup is consisted of multiple backup files. */
@@ -2309,7 +2348,8 @@ export type TokenAuthUserStateEnum =
   | "ACTIVE"
   | "CREATING"
   | "UPDATING"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const TokenAuthUserStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a token based auth user for the cluster. */
@@ -3100,7 +3140,8 @@ export const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
 export type RescheduleClusterMaintenanceRequestRescheduleTypeEnum =
   | "RESCHEDULE_TYPE_UNSPECIFIED"
   | "IMMEDIATE"
-  | "SPECIFIC_TIME";
+  | "SPECIFIC_TIME"
+  | (string & {});
 export const RescheduleClusterMaintenanceRequestRescheduleTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3148,7 +3189,8 @@ export type RescheduleMaintenanceRequestRescheduleTypeEnum =
   | "RESCHEDULE_TYPE_UNSPECIFIED"
   | "IMMEDIATE"
   | "NEXT_AVAILABLE_WINDOW"
-  | "SPECIFIC_TIME";
+  | "SPECIFIC_TIME"
+  | (string & {});
 export const RescheduleMaintenanceRequestRescheduleTypeEnum =
   /*@__PURE__*/ S.String;
 

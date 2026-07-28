@@ -53,7 +53,8 @@ export class HostnameTlsSettingNotFound extends T.applyErrorMatchers(
 export type SettingsTlsDeleteRequestSettingId =
   | "ciphers"
   | "min_tls_version"
-  | "http2";
+  | "http2"
+  | (string & {});
 export const SettingsTlsDeleteRequestSettingId = /*@__PURE__*/ S.String;
 
 export interface DeleteSettingTlsRequest {
@@ -88,7 +89,8 @@ export type SettingsTlsDeleteResponseValueCase0 =
   | "1.2"
   | "1.3"
   | "on"
-  | "off";
+  | "off"
+  | (string & {});
 export const SettingsTlsDeleteResponseValueCase0 = /*@__PURE__*/ S.String;
 
 export type SettingsTlsDeleteResponseValueCase1List = ReadonlyArray<string>;
@@ -131,7 +133,8 @@ export const DeleteSettingTlsResponse = /*@__PURE__*/ S.suspend(() =>
 export type SettingsTlsGetRequestSettingId =
   | "ciphers"
   | "min_tls_version"
-  | "http2";
+  | "http2"
+  | (string & {});
 export const SettingsTlsGetRequestSettingId = /*@__PURE__*/ S.String;
 
 export interface GetSettingTlsRequest {
@@ -163,7 +166,8 @@ export type SettingsTlsGetResultItemValueCase0 =
   | "1.2"
   | "1.3"
   | "on"
-  | "off";
+  | "off"
+  | (string & {});
 export const SettingsTlsGetResultItemValueCase0 = /*@__PURE__*/ S.String;
 
 export type SettingsTlsGetResultItemValueCase1List = ReadonlyArray<string>;
@@ -225,7 +229,8 @@ export const GetSettingTlsResponse = /*@__PURE__*/ S.suspend(() =>
 export type SettingsTlsUpdateRequestSettingId =
   | "ciphers"
   | "min_tls_version"
-  | "http2";
+  | "http2"
+  | (string & {});
 export const SettingsTlsUpdateRequestSettingId = /*@__PURE__*/ S.String;
 
 export type SettingsTlsUpdateRequestValueCase0 =
@@ -234,7 +239,8 @@ export type SettingsTlsUpdateRequestValueCase0 =
   | "1.2"
   | "1.3"
   | "on"
-  | "off";
+  | "off"
+  | (string & {});
 export const SettingsTlsUpdateRequestValueCase0 = /*@__PURE__*/ S.String;
 
 export type SettingsTlsUpdateRequestValueCase1List = ReadonlyArray<string>;
@@ -284,7 +290,8 @@ export type SettingsTlsUpdateResponseValueCase0 =
   | "1.2"
   | "1.3"
   | "on"
-  | "off";
+  | "off"
+  | (string & {});
 export const SettingsTlsUpdateResponseValueCase0 = /*@__PURE__*/ S.String;
 
 export type SettingsTlsUpdateResponseValueCase1List = ReadonlyArray<string>;

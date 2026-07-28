@@ -118,7 +118,7 @@ export class SessionExpiredException extends S.TaggedErrorClass<SessionExpiredEx
 ).pipe(C.withBadRequestError) {}
 export type ResourceARN = string;
 export type ClientId = string;
-export type Service = "TURN";
+export type Service = "TURN" | (string & {});
 export const Service = /*@__PURE__*/ S.String;
 
 export type Username = string;

@@ -46,10 +46,10 @@ export const UsersCancelEmailChangeRequestPartialUpdateRequestNotificationSettin
   ) as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequestNotificationSettingsMap>;
 
 /** * `disabled` - disabled * `toolbar` - toolbar */
-export type ToolbarModeEnum = "disabled" | "toolbar";
+export type ToolbarModeEnum = "disabled" | "toolbar" | (string & {});
 export const ToolbarModeEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UsersCancelEmailChangeRequestPartialUpdateRequestToolbarMode =
@@ -59,7 +59,7 @@ export const UsersCancelEmailChangeRequestPartialUpdateRequestToolbarMode =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequestToolbarMode>;
 
 /** * `light` - Light * `dark` - Dark * `system` - System */
-export type ThemeModeEnum = "light" | "dark" | "system";
+export type ThemeModeEnum = "light" | "dark" | "system" | (string & {});
 export const ThemeModeEnum = /*@__PURE__*/ S.String;
 
 export type UsersCancelEmailChangeRequestPartialUpdateRequestThemeMode =
@@ -69,7 +69,7 @@ export const UsersCancelEmailChangeRequestPartialUpdateRequestThemeMode =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequestThemeMode>;
 
 /** * `above` - Above * `below` - Below * `hidden` - Hidden */
-export type ShortcutPositionEnum = "above" | "below" | "hidden";
+export type ShortcutPositionEnum = "above" | "below" | "hidden" | (string & {});
 export const ShortcutPositionEnum = /*@__PURE__*/ S.String;
 
 export type UsersCancelEmailChangeRequestPartialUpdateRequestShortcutPosition =
@@ -87,7 +87,8 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
 export interface UsersCancelEmailChangeRequestPartialUpdateRequest {
@@ -639,7 +640,10 @@ export const UserGitHubLinkStartResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UserGitHubLinkStartResponse",
 }) as any as S.Schema<UserGitHubLinkStartResponse>;
 
-export type UsersIntegrationsListRequestKind = "github" | "slack";
+export type UsersIntegrationsListRequestKind =
+  | "github"
+  | "slack"
+  | (string & {});
 export const UsersIntegrationsListRequestKind = /*@__PURE__*/ S.String;
 
 export interface UsersIntegrationsListRequest {
@@ -1513,7 +1517,8 @@ export type TimezoneEnum =
   | "Universal"
   | "W-SU"
   | "WET"
-  | "Zulu";
+  | "Zulu"
+  | (string & {});
 export const TimezoneEnum = /*@__PURE__*/ S.String;
 
 /** Serializer for `Team` model with minimal attributes to speeed up loading and transfer times. Also used for nested serializers. */
@@ -1548,11 +1553,11 @@ export const TeamBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TeamBasic" }) as any as S.Schema<TeamBasic>;
 
-export type EffectiveMembershipLevelEnum = 1 | 8 | 15;
+export type EffectiveMembershipLevelEnum = 1 | 8 | 15 | (number & {});
 export const EffectiveMembershipLevelEnum = /*@__PURE__*/ S.Number;
 
 /** * `0` - none * `3` - config * `6` - install * `9` - root */
-export type PluginsAccessLevelEnum = 0 | 3 | 6 | 9;
+export type PluginsAccessLevelEnum = 0 | 3 | 6 | 9 | (number & {});
 export const PluginsAccessLevelEnum = /*@__PURE__*/ S.Number;
 
 export type OrganizationTeamsItemMap = { [key: string]: unknown | undefined };
@@ -1592,7 +1597,10 @@ export const OrganizationMetadataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<OrganizationMetadataMap>;
 
 /** * `bayesian` - Bayesian * `frequentist` - Frequentist */
-export type DefaultExperimentStatsMethodEnum = "bayesian" | "frequentist";
+export type DefaultExperimentStatsMethodEnum =
+  | "bayesian"
+  | "frequentist"
+  | (string & {});
 export const DefaultExperimentStatsMethodEnum = /*@__PURE__*/ S.String;
 
 /** Default statistical method for new experiments in this organization. * `bayesian` - Bayesian * `frequentist` - Frequentist */
@@ -1757,7 +1765,8 @@ export type OnboardingSkippedReasonEnum =
   | "delegated"
   | "later"
   | "other"
-  | "provisioned";
+  | "provisioned"
+  | (string & {});
 export const OnboardingSkippedReasonEnum = /*@__PURE__*/ S.String;
 
 /** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
@@ -2048,7 +2057,7 @@ export const RevokeOtherSessionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeOtherSessionsResponse>;
 
 /** * `later` - Later * `other` - Other */
-export type OnboardingSkipRequestReasonEnum = "later" | "other";
+export type OnboardingSkipRequestReasonEnum = "later" | "other" | (string & {});
 export const OnboardingSkipRequestReasonEnum = /*@__PURE__*/ S.String;
 
 export interface UsersOnboardingSkipCreateRequest {
@@ -2162,7 +2171,7 @@ export const UsersPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsersPartialUpdateRequest>;
 
 /** * `ios` - iOS * `android` - Android * `web` - Web */
-export type PushTokenPlatformEnum = "ios" | "android" | "web";
+export type PushTokenPlatformEnum = "ios" | "android" | "web" | (string & {});
 export const PushTokenPlatformEnum = /*@__PURE__*/ S.String;
 
 export interface UsersPushTokensCreateRequest {
@@ -2463,7 +2472,13 @@ export const UsersScenePersonalisationCreateResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UsersScenePersonalisationCreateResponse>;
 
 /** * `P0` - P0 * `P1` - P1 * `P2` - P2 * `P3` - P3 * `P4` - P4 */
-export type AutonomyPriorityEnum = "P0" | "P1" | "P2" | "P3" | "P4";
+export type AutonomyPriorityEnum =
+  | "P0"
+  | "P1"
+  | "P2"
+  | "P3"
+  | "P4"
+  | (string & {});
 export const AutonomyPriorityEnum = /*@__PURE__*/ S.String;
 
 export type UsersSignalAutonomyCreateRequestAutostartPriority =

@@ -113,7 +113,8 @@ export type AccessReasonTypeEnum =
   | "GOOGLE_INITIATED_REVIEW"
   | "THIRD_PARTY_DATA_REQUEST"
   | "GOOGLE_RESPONSE_TO_PRODUCTION_ALERT"
-  | "CLOUD_INITIATED_ACCESS";
+  | "CLOUD_INITIATED_ACCESS"
+  | (string & {});
 export const AccessReasonTypeEnum = /*@__PURE__*/ S.String;
 
 export interface AccessReason {
@@ -193,7 +194,8 @@ export type SignatureInfoGoogleKeyAlgorithmEnum =
   | "PQ_SIGN_ML_DSA_44_EXTERNAL_MU"
   | "PQ_SIGN_ML_DSA_65_EXTERNAL_MU"
   | "PQ_SIGN_ML_DSA_87_EXTERNAL_MU"
-  | "AES_256_KWP";
+  | "AES_256_KWP"
+  | (string & {});
 export const SignatureInfoGoogleKeyAlgorithmEnum = /*@__PURE__*/ S.String;
 
 /** Information about the digital signature of the resource. */
@@ -524,7 +526,8 @@ export type CustomerApprovalApprovalPolicyJustificationBasedApprovalPolicyEnum =
     | "JUSTIFICATION_BASED_APPROVAL_ENABLED_ALL"
     | "JUSTIFICATION_BASED_APPROVAL_ENABLED_EXTERNAL_JUSTIFICATIONS"
     | "JUSTIFICATION_BASED_APPROVAL_NOT_ENABLED"
-    | "JUSTIFICATION_BASED_APPROVAL_INHERITED";
+    | "JUSTIFICATION_BASED_APPROVAL_INHERITED"
+    | (string & {});
 export const CustomerApprovalApprovalPolicyJustificationBasedApprovalPolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -547,13 +550,15 @@ export type AccessApprovalSettingsRequestScopeMaxWidthPreferenceEnum =
   | "REQUEST_SCOPE_MAX_WIDTH_PREFERENCE_UNSPECIFIED"
   | "ORGANIZATION"
   | "FOLDER"
-  | "PROJECT";
+  | "PROJECT"
+  | (string & {});
 export const AccessApprovalSettingsRequestScopeMaxWidthPreferenceEnum =
   /*@__PURE__*/ S.String;
 
 export type EnrolledServiceEnrollmentLevelEnum =
   | "ENROLLMENT_LEVEL_UNSPECIFIED"
-  | "BLOCK_ALL";
+  | "BLOCK_ALL"
+  | (string & {});
 export const EnrolledServiceEnrollmentLevelEnum = /*@__PURE__*/ S.String;
 
 /** Represents the enrollment of a cloud resource into a specific service. */

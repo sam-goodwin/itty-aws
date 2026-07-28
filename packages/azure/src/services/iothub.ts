@@ -399,7 +399,10 @@ export const IotHubResourceCheckNameAvailabilityRequest =
   }) as any as S.Schema<IotHubResourceCheckNameAvailabilityRequest>;
 
 /** The reason for unavailability. */
-export type IotHubNameAvailabilityInfoReason = "Invalid" | "AlreadyExists";
+export type IotHubNameAvailabilityInfoReason =
+  | "Invalid"
+  | "AlreadyExists"
+  | (string & {});
 export const IotHubNameAvailabilityInfoReason = /*@__PURE__*/ S.String;
 
 /** The properties indicating whether a given IoT hub name is available. */
@@ -528,7 +531,8 @@ export type SharedAccessSignatureAuthorizationRuleRights =
   | "RegistryRead, RegistryWrite, DeviceConnect"
   | "RegistryRead, ServiceConnect, DeviceConnect"
   | "RegistryWrite, ServiceConnect, DeviceConnect"
-  | "RegistryRead, RegistryWrite, ServiceConnect, DeviceConnect";
+  | "RegistryRead, RegistryWrite, ServiceConnect, DeviceConnect"
+  | (string & {});
 export const SharedAccessSignatureAuthorizationRuleRights =
   /*@__PURE__*/ S.String;
 
@@ -570,11 +574,14 @@ export const IotHubPropertiesInputAllowedFqdnListList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<IotHubPropertiesInputAllowedFqdnListList>;
 
 /** Whether requests from Public Network are allowed */
-export type IotHubPropertiesInputPublicNetworkAccess = "Enabled" | "Disabled";
+export type IotHubPropertiesInputPublicNetworkAccess =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const IotHubPropertiesInputPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** The desired action for requests captured by this rule. */
-export type IpFilterRuleAction = "Accept" | "Reject";
+export type IpFilterRuleAction = "Accept" | "Reject" | (string & {});
 export const IpFilterRuleAction = /*@__PURE__*/ S.String;
 
 /** The IP filter rules for the IoT hub. */
@@ -602,11 +609,14 @@ export const IotHubPropertiesInputIpFilterRulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<IotHubPropertiesInputIpFilterRulesList>;
 
 /** Default Action for Network Rule Set */
-export type NetworkRuleSetPropertiesDefaultAction = "Deny" | "Allow";
+export type NetworkRuleSetPropertiesDefaultAction =
+  | "Deny"
+  | "Allow"
+  | (string & {});
 export const NetworkRuleSetPropertiesDefaultAction = /*@__PURE__*/ S.String;
 
 /** IP Filter Action */
-export type NetworkRuleSetIpRuleAction = "Allow";
+export type NetworkRuleSetIpRuleAction = "Allow" | (string & {});
 export const NetworkRuleSetIpRuleAction = /*@__PURE__*/ S.String;
 
 /** IP Rule to be applied as part of Network Rule Set */
@@ -667,7 +677,8 @@ export type PrivateLinkServiceConnectionStateStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
-  | "Disconnected";
+  | "Disconnected"
+  | (string & {});
 export const PrivateLinkServiceConnectionStateStatus = /*@__PURE__*/ S.String;
 
 /** The current state of a private endpoint connection */
@@ -752,7 +763,8 @@ export const IotHubPropertiesInputEventHubEndpointsMap = /*@__PURE__*/ S.Record(
 /** Method used to authenticate against the service bus queue endpoint */
 export type RoutingServiceBusQueueEndpointPropertiesAuthenticationType =
   | "keyBased"
-  | "identityBased";
+  | "identityBased"
+  | (string & {});
 export const RoutingServiceBusQueueEndpointPropertiesAuthenticationType =
   /*@__PURE__*/ S.String;
 
@@ -819,7 +831,8 @@ export const RoutingEndpointsInputServiceBusQueuesList = /*@__PURE__*/ S.Array(
 /** Method used to authenticate against the service bus topic endpoint */
 export type RoutingServiceBusTopicEndpointPropertiesAuthenticationType =
   | "keyBased"
-  | "identityBased";
+  | "identityBased"
+  | (string & {});
 export const RoutingServiceBusTopicEndpointPropertiesAuthenticationType =
   /*@__PURE__*/ S.String;
 
@@ -873,7 +886,8 @@ export const RoutingEndpointsInputServiceBusTopicsList = /*@__PURE__*/ S.Array(
 /** Method used to authenticate against the event hub endpoint */
 export type RoutingEventHubPropertiesAuthenticationType =
   | "keyBased"
-  | "identityBased";
+  | "identityBased"
+  | (string & {});
 export const RoutingEventHubPropertiesAuthenticationType =
   /*@__PURE__*/ S.String;
 
@@ -924,7 +938,8 @@ export const RoutingEndpointsInputEventHubsList = /*@__PURE__*/ S.Array(
 /** Method used to authenticate against the storage endpoint */
 export type RoutingStorageContainerPropertiesAuthenticationType =
   | "keyBased"
-  | "identityBased";
+  | "identityBased"
+  | (string & {});
 export const RoutingStorageContainerPropertiesAuthenticationType =
   /*@__PURE__*/ S.String;
 
@@ -932,7 +947,8 @@ export const RoutingStorageContainerPropertiesAuthenticationType =
 export type RoutingStorageContainerPropertiesEncoding =
   | "Avro"
   | "AvroDeflate"
-  | "JSON";
+  | "JSON"
+  | (string & {});
 export const RoutingStorageContainerPropertiesEncoding = /*@__PURE__*/ S.String;
 
 /** The properties related to a storage container endpoint. */
@@ -996,7 +1012,8 @@ export const RoutingEndpointsInputStorageContainersList = /*@__PURE__*/ S.Array(
 /** Method used to authenticate against the cosmos DB sql container endpoint */
 export type RoutingCosmosDBSqlApiPropertiesInputAuthenticationType =
   | "keyBased"
-  | "identityBased";
+  | "identityBased"
+  | (string & {});
 export const RoutingCosmosDBSqlApiPropertiesInputAuthenticationType =
   /*@__PURE__*/ S.String;
 
@@ -1091,7 +1108,8 @@ export type RoutePropertiesSource =
   | "TwinChangeEvents"
   | "DeviceLifecycleEvents"
   | "DeviceJobLifecycleEvents"
-  | "DeviceConnectionStateEvents";
+  | "DeviceConnectionStateEvents"
+  | (string & {});
 export const RoutePropertiesSource = /*@__PURE__*/ S.String;
 
 /** The list of endpoints to which messages that satisfy the condition are routed. Currently only one endpoint is allowed. */
@@ -1132,7 +1150,7 @@ export const RoutingPropertiesInputRoutesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RoutingPropertiesInputRoutesList>;
 
 /** The source to which the routing rule is to be applied to. For example, DeviceMessages */
-export type FallbackRoutePropertiesSource = "DeviceMessages";
+export type FallbackRoutePropertiesSource = "DeviceMessages" | (string & {});
 export const FallbackRoutePropertiesSource = /*@__PURE__*/ S.String;
 
 /** The list of endpoints to which the messages that satisfy the condition are routed to. Currently only 1 endpoint is allowed. */
@@ -1222,7 +1240,8 @@ export const RoutingPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 /** Specifies authentication type being used for connecting to the storage account. */
 export type StorageEndpointPropertiesAuthenticationType =
   | "keyBased"
-  | "identityBased";
+  | "identityBased"
+  | (string & {});
 export const StorageEndpointPropertiesAuthenticationType =
   /*@__PURE__*/ S.String;
 
@@ -1327,7 +1346,10 @@ export const CloudToDeviceProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudToDeviceProperties>;
 
 /** The capabilities and features enabled for the IoT hub. */
-export type IotHubPropertiesInputFeatures = "None" | "DeviceManagement";
+export type IotHubPropertiesInputFeatures =
+  | "None"
+  | "DeviceManagement"
+  | (string & {});
 export const IotHubPropertiesInputFeatures = /*@__PURE__*/ S.String;
 
 /** The properties of an IoT hub. */
@@ -1409,7 +1431,8 @@ export type IotHubSkuInfoInputName =
   | "S3"
   | "B1"
   | "B2"
-  | "B3";
+  | "B3"
+  | (string & {});
 export const IotHubSkuInfoInputName = /*@__PURE__*/ S.String;
 
 /** Information about the SKU of the IoT hub. */
@@ -1433,7 +1456,8 @@ export type ArmIdentityInputType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
-  | "None";
+  | "None"
+  | (string & {});
 export const ArmIdentityInputType = /*@__PURE__*/ S.String;
 
 export interface ArmUserIdentityInput {}
@@ -1534,7 +1558,10 @@ export const IotHubPropertiesAllowedFqdnListList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<IotHubPropertiesAllowedFqdnListList>;
 
 /** Whether requests from Public Network are allowed */
-export type IotHubPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
+export type IotHubPropertiesPublicNetworkAccess =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const IotHubPropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** The IP filter rules. */
@@ -1670,7 +1697,8 @@ export const RoutingEndpointsStorageContainersList = /*@__PURE__*/ S.Array(
 /** Method used to authenticate against the cosmos DB sql container endpoint */
 export type RoutingCosmosDBSqlApiPropertiesAuthenticationType =
   | "keyBased"
-  | "identityBased";
+  | "identityBased"
+  | (string & {});
 export const RoutingCosmosDBSqlApiPropertiesAuthenticationType =
   /*@__PURE__*/ S.String;
 
@@ -1812,11 +1840,17 @@ export const IotHubPropertiesMessagingEndpointsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<IotHubPropertiesMessagingEndpointsMap>;
 
 /** The capabilities and features enabled for the IoT hub. */
-export type IotHubPropertiesFeatures = "None" | "DeviceManagement";
+export type IotHubPropertiesFeatures =
+  | "None"
+  | "DeviceManagement"
+  | (string & {});
 export const IotHubPropertiesFeatures = /*@__PURE__*/ S.String;
 
 /** The role of the region, can be either primary or secondary. The primary region is where the IoT hub is currently provisioned. The secondary region is the Azure disaster recovery (DR) paired region and also the region where the IoT hub can failover to. */
-export type IotHubLocationDescriptionRole = "primary" | "secondary";
+export type IotHubLocationDescriptionRole =
+  | "primary"
+  | "secondary"
+  | (string & {});
 export const IotHubLocationDescriptionRole = /*@__PURE__*/ S.String;
 
 /** Public representation of one of the locations where a resource is provisioned. */
@@ -1926,11 +1960,19 @@ export const IotHubProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IotHubProperties>;
 
 /** The name of the SKU. */
-export type IotHubSkuInfoName = "F1" | "S1" | "S2" | "S3" | "B1" | "B2" | "B3";
+export type IotHubSkuInfoName =
+  | "F1"
+  | "S1"
+  | "S2"
+  | "S3"
+  | "B1"
+  | "B2"
+  | "B3"
+  | (string & {});
 export const IotHubSkuInfoName = /*@__PURE__*/ S.String;
 
 /** The billing tier for the IoT hub. */
-export type IotHubSkuInfoTier = "Free" | "Standard" | "Basic";
+export type IotHubSkuInfoTier = "Free" | "Standard" | "Basic" | (string & {});
 export const IotHubSkuInfoTier = /*@__PURE__*/ S.String;
 
 /** Information about the SKU of the IoT hub. */
@@ -1955,7 +1997,8 @@ export type ArmIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
-  | "None";
+  | "None"
+  | (string & {});
 export const ArmIdentityType = /*@__PURE__*/ S.String;
 
 export interface ArmUserIdentity {
@@ -2002,7 +2045,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -2010,7 +2054,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -2193,7 +2238,8 @@ export const IotHubResourceDeleteEventHubConsumerGroupResponse =
 /** Specifies authentication type being used for connecting to the storage account. */
 export type IotHubResourceExportDevicesRequestAuthenticationType =
   | "keyBased"
-  | "identityBased";
+  | "identityBased"
+  | (string & {});
 export const IotHubResourceExportDevicesRequestAuthenticationType =
   /*@__PURE__*/ S.String;
 
@@ -2256,7 +2302,8 @@ export type JobResponseType =
   | "updateDeviceConfiguration"
   | "rebootDevice"
   | "factoryResetDevice"
-  | "firmwareUpdate";
+  | "firmwareUpdate"
+  | (string & {});
 export const JobResponseType = /*@__PURE__*/ S.String;
 
 /** The status of the job. */
@@ -2266,7 +2313,8 @@ export type JobResponseStatus =
   | "running"
   | "completed"
   | "failed"
-  | "cancelled";
+  | "cancelled"
+  | (string & {});
 export const JobResponseStatus = /*@__PURE__*/ S.String;
 
 /** The properties of the Job Response object. */
@@ -2404,7 +2452,8 @@ export type EndpointHealthDataHealthStatus =
   | "healthy"
   | "degraded"
   | "unhealthy"
-  | "dead";
+  | "dead"
+  | (string & {});
 export const EndpointHealthDataHealthStatus = /*@__PURE__*/ S.String;
 
 /** The health data for an endpoint */
@@ -2685,7 +2734,11 @@ export const IotHubResourceGetValidSkusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IotHubResourceGetValidSkusRequest>;
 
 /** The type of the scaling enabled. */
-export type IotHubCapacityScaleType = "Automatic" | "Manual" | "None";
+export type IotHubCapacityScaleType =
+  | "Automatic"
+  | "Manual"
+  | "None"
+  | (string & {});
 export const IotHubCapacityScaleType = /*@__PURE__*/ S.String;
 
 /** IoT Hub capacity information. */
@@ -2753,7 +2806,8 @@ export const IotHubSkuDescriptionListResult = /*@__PURE__*/ S.suspend(() =>
 /** Specifies authentication type being used for connecting to the storage account. */
 export type IotHubResourceImportDevicesRequestAuthenticationType =
   | "keyBased"
-  | "identityBased";
+  | "identityBased"
+  | (string & {});
 export const IotHubResourceImportDevicesRequestAuthenticationType =
   /*@__PURE__*/ S.String;
 
@@ -3079,7 +3133,8 @@ export type IotHubResourceTestAllRoutesRequestRoutingSource =
   | "TwinChangeEvents"
   | "DeviceLifecycleEvents"
   | "DeviceJobLifecycleEvents"
-  | "DeviceConnectionStateEvents";
+  | "DeviceConnectionStateEvents"
+  | (string & {});
 export const IotHubResourceTestAllRoutesRequestRoutingSource =
   /*@__PURE__*/ S.String;
 
@@ -3245,11 +3300,15 @@ export const IotHubResourceTestRouteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IotHubResourceTestRouteRequest>;
 
 /** Result of testing route */
-export type TestRouteResultResult = "undefined" | "false" | "true";
+export type TestRouteResultResult =
+  | "undefined"
+  | "false"
+  | "true"
+  | (string & {});
 export const TestRouteResultResult = /*@__PURE__*/ S.String;
 
 /** Severity of the route error */
-export type RouteCompilationErrorSeverity = "error" | "warning";
+export type RouteCompilationErrorSeverity = "error" | "warning" | (string & {});
 export const RouteCompilationErrorSeverity = /*@__PURE__*/ S.String;
 
 /** Position where the route error happened */

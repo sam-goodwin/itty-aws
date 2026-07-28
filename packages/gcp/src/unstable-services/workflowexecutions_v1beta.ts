@@ -97,13 +97,15 @@ export type ExecutionStateEnum =
   | "FAILED"
   | "CANCELLED"
   | "UNAVAILABLE"
-  | "QUEUED";
+  | "QUEUED"
+  | (string & {});
 export const ExecutionStateEnum = /*@__PURE__*/ S.String;
 
 export type ExecutionCallLogLevelEnum =
   | "CALL_LOG_LEVEL_UNSPECIFIED"
   | "LOG_ALL_CALLS"
-  | "LOG_ERRORS_ONLY";
+  | "LOG_ERRORS_ONLY"
+  | (string & {});
 export const ExecutionCallLogLevelEnum = /*@__PURE__*/ S.String;
 
 /** Represents a step of the workflow this execution is running. */
@@ -270,7 +272,8 @@ export const CreateProjectsLocationsWorkflowsExecutionsRequest =
 export type GetProjectsLocationsWorkflowsExecutionsViewEnum =
   | "EXECUTION_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetProjectsLocationsWorkflowsExecutionsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -301,7 +304,8 @@ export const GetProjectsLocationsWorkflowsExecutionsRequest =
 export type ListProjectsLocationsWorkflowsExecutionsViewEnum =
   | "EXECUTION_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListProjectsLocationsWorkflowsExecutionsViewEnum =
   /*@__PURE__*/ S.String;
 

@@ -34,7 +34,8 @@ export type AutoUpdateRingType =
   | "Slow"
   | "Fast"
   | "Stable"
-  | "Beta";
+  | "Beta"
+  | (string & {});
 export const AutoUpdateRingType = /*@__PURE__*/ S.String;
 
 /** Model representing Cache Node for ConnectedCache resource */
@@ -184,11 +185,11 @@ export const ProxyUrlConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProxyUrlConfiguration>;
 
 /** Proxy details enum */
-export type ProxyRequired = "None" | "Required";
+export type ProxyRequired = "None" | "Required" | (string & {});
 export const ProxyRequired = /*@__PURE__*/ S.String;
 
 /** Operating System of the cache node */
-export type OsType = "Windows" | "Linux" | "Eflow";
+export type OsType = "Windows" | "Linux" | "Eflow" | (string & {});
 export const OsType = /*@__PURE__*/ S.String;
 
 /** Model representing cache node for connected cache resource */
@@ -333,7 +334,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -341,7 +343,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -388,7 +391,8 @@ export type ProvisioningState =
   | "Unknown"
   | "Accepted"
   | "Upgrading"
-  | "Deleting";
+  | "Deleting"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Cache node resource comma separated values of Cidrs. */
@@ -402,11 +406,15 @@ export type BgpReviewStateEnum =
   | "NotConfigured"
   | "InReview"
   | "Approved"
-  | "AttentionRequired";
+  | "AttentionRequired"
+  | (string & {});
 export const BgpReviewStateEnum = /*@__PURE__*/ S.String;
 
 /** Cache node configuration setup state */
-export type ConfigurationState = "Configured" | "NotConfigured_Ip";
+export type ConfigurationState =
+  | "Configured"
+  | "NotConfigured_Ip"
+  | (string & {});
 export const ConfigurationState = /*@__PURE__*/ S.String;
 
 /** Model representing Cache Node for ConnectedCache resource */
@@ -1816,7 +1824,8 @@ export const CustomerEntityInput = /*@__PURE__*/ S.suspend(() =>
 export type CustomerTransitState =
   | "NoTransit"
   | "CombinedTransit"
-  | "TransitOnly";
+  | "TransitOnly"
+  | (string & {});
 export const CustomerTransitState = /*@__PURE__*/ S.String;
 
 /** Model representing customer for connected cache resource */
@@ -3550,11 +3559,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */

@@ -68,7 +68,7 @@ export const WebAnalyticsAchievementsOverviewRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WebAnalyticsAchievementsOverviewRequest>;
 
 /** * `user` - user * `team` - team */
-export type AchievementDefinitionScopeEnum = "user" | "team";
+export type AchievementDefinitionScopeEnum = "user" | "team" | (string & {});
 export const AchievementDefinitionScopeEnum = /*@__PURE__*/ S.String;
 
 export interface AchievementStage {
@@ -255,7 +255,7 @@ export const WebAnalyticsUserPreferences = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebAnalyticsUserPreferences>;
 
 /** * `data` - data * `recording` - recording */
-export type InteractionKindEnum = "data" | "recording";
+export type InteractionKindEnum = "data" | "recording" | (string & {});
 export const InteractionKindEnum = /*@__PURE__*/ S.String;
 
 export interface WebAnalyticsAchievementsRecordInteractionRequest {

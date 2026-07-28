@@ -157,7 +157,8 @@ export type StreamGroupLocationStatus =
   | "ACTIVATING"
   | "ACTIVE"
   | "ERROR"
-  | "REMOVING";
+  | "REMOVING"
+  | (string & {});
 export const StreamGroupLocationStatus = /*@__PURE__*/ S.String;
 
 export type CapacityValue = number;
@@ -255,7 +256,11 @@ export const AssociateApplicationsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateApplicationsOutput",
 }) as any as S.Schema<AssociateApplicationsOutput>;
 export type Description = string;
-export type RuntimeEnvironmentType = "PROTON" | "WINDOWS" | "UBUNTU";
+export type RuntimeEnvironmentType =
+  | "PROTON"
+  | "WINDOWS"
+  | "UBUNTU"
+  | (string & {});
 export const RuntimeEnvironmentType = /*@__PURE__*/ S.String;
 
 export type RuntimeEnvironmentVersion = string;
@@ -318,16 +323,18 @@ export type ApplicationStatus =
   | "PROCESSING"
   | "READY"
   | "DELETING"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const ApplicationStatus = /*@__PURE__*/ S.String;
 
 export type ApplicationStatusReason =
   | "internalError"
   | "accessDenied"
-  | "sourceModified";
+  | "sourceModified"
+  | (string & {});
 export const ApplicationStatusReason = /*@__PURE__*/ S.String;
 
-export type ReplicationStatusType = "REPLICATING" | "COMPLETED";
+export type ReplicationStatusType = "REPLICATING" | "COMPLETED" | (string & {});
 export const ReplicationStatusType = /*@__PURE__*/ S.String;
 
 export interface ReplicationStatus {
@@ -397,7 +404,8 @@ export type StreamClass =
   | "gen6n_small_win2022"
   | "gen6n_medium_win2022"
   | "gen6e_pro"
-  | "gen6e_pro_win2022";
+  | "gen6e_pro_win2022"
+  | (string & {});
 export const StreamClass = /*@__PURE__*/ S.String;
 
 export interface CreateStreamGroupInput {
@@ -445,10 +453,14 @@ export type StreamGroupStatus =
   | "ACTIVE_WITH_ERRORS"
   | "ERROR"
   | "DELETING"
-  | "EXPIRED";
+  | "EXPIRED"
+  | (string & {});
 export const StreamGroupStatus = /*@__PURE__*/ S.String;
 
-export type StreamGroupStatusReason = "internalError" | "noAvailableInstances";
+export type StreamGroupStatusReason =
+  | "internalError"
+  | "noAvailableInstances"
+  | (string & {});
 export const StreamGroupStatusReason = /*@__PURE__*/ S.String;
 
 export interface CreateStreamGroupOutput {
@@ -774,7 +786,8 @@ export type StreamSessionStatus =
   | "RECONNECTING"
   | "TERMINATING"
   | "TERMINATED"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const StreamSessionStatus = /*@__PURE__*/ S.String;
 
 export type StreamSessionStatusReason =
@@ -787,10 +800,11 @@ export type StreamSessionStatusReason =
   | "reconnectionTimeout"
   | "maxSessionLengthTimeout"
   | "idleTimeout"
-  | "apiTerminated";
+  | "apiTerminated"
+  | (string & {});
 export const StreamSessionStatusReason = /*@__PURE__*/ S.String;
 
-export type Protocol = "WebRTC";
+export type Protocol = "WebRTC" | (string & {});
 export const Protocol = /*@__PURE__*/ S.String;
 
 export type ConnectionTimeoutSeconds = number;
@@ -812,7 +826,11 @@ export const PerformanceStatsConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PerformanceStatsConfiguration>;
 export type FileLocationUri = string;
 export type WebSdkProtocolUrl = string;
-export type ExportFilesStatus = "SUCCEEDED" | "FAILED" | "PENDING";
+export type ExportFilesStatus =
+  | "SUCCEEDED"
+  | "FAILED"
+  | "PENDING"
+  | (string & {});
 export const ExportFilesStatus = /*@__PURE__*/ S.String;
 
 export type ExportFilesReason = string;

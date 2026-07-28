@@ -189,7 +189,8 @@ export type CheckCompatibilityRequestSchemaTypeEnum =
   | "SCHEMA_TYPE_UNSPECIFIED"
   | "AVRO"
   | "JSON"
-  | "PROTOBUF";
+  | "PROTOBUF"
+  | (string & {});
 export const CheckCompatibilityRequestSchemaTypeEnum = /*@__PURE__*/ S.String;
 
 /** SchemaReference is a reference to a schema. */
@@ -330,7 +331,8 @@ export type ClusterStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const ClusterStateEnum = /*@__PURE__*/ S.String;
 
 /** The configuration of a Virtual Private Cloud (VPC) network that can access the Kafka cluster. */
@@ -432,7 +434,8 @@ export const UpdateOptions = /*@__PURE__*/ S.suspend(() =>
 export type RebalanceConfigModeEnum =
   | "MODE_UNSPECIFIED"
   | "NO_REBALANCE"
-  | "AUTO_REBALANCE_ON_SCALE_UP";
+  | "AUTO_REBALANCE_ON_SCALE_UP"
+  | (string & {});
 export const RebalanceConfigModeEnum = /*@__PURE__*/ S.String;
 
 /** Defines rebalancing behavior of a Kafka cluster. */
@@ -727,7 +730,8 @@ export type ConnectClusterStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "DETACHED";
+  | "DETACHED"
+  | (string & {});
 export const ConnectClusterStateEnum = /*@__PURE__*/ S.String;
 
 /** An Apache Kafka Connect cluster deployed in a location. */
@@ -806,7 +810,8 @@ export type ConnectorStateEnum =
   | "PAUSED"
   | "FAILED"
   | "RESTARTING"
-  | "STOPPED";
+  | "STOPPED"
+  | (string & {});
 export const ConnectorStateEnum = /*@__PURE__*/ S.String;
 
 /** Task Retry Policy is implemented on a best-effort basis. The default policy retries tasks with a minimum_backoff of 60 seconds, and a maximum_backoff of 12 hours. You can disable the policy by setting the task_retry_disabled field to true. Retry delay will be exponential based on provided minimum and maximum backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. Note that the delay between consecutive task restarts may not always precisely match the configured settings. This can happen when the ConnectCluster is in rebalancing state or if the ConnectCluster is unresponsive etc. The default values for minimum and maximum backoffs are 60 seconds and 12 hours respectively. */
@@ -929,7 +934,8 @@ export type CreateVersionRequestSchemaTypeEnum =
   | "SCHEMA_TYPE_UNSPECIFIED"
   | "AVRO"
   | "JSON"
-  | "PROTOBUF";
+  | "PROTOBUF"
+  | (string & {});
 export const CreateVersionRequestSchemaTypeEnum = /*@__PURE__*/ S.String;
 
 /** Request for CreateVersion. */
@@ -1203,7 +1209,8 @@ export type SchemaConfigCompatibilityEnum =
   | "FORWARD"
   | "FORWARD_TRANSITIVE"
   | "FULL"
-  | "FULL_TRANSITIVE";
+  | "FULL_TRANSITIVE"
+  | (string & {});
 export const SchemaConfigCompatibilityEnum = /*@__PURE__*/ S.String;
 
 /** SchemaConfig represents configuration for a schema registry or a specific subject. */
@@ -1261,7 +1268,12 @@ export const DeleteProjectsLocationsSchemaRegistriesContextsModeRequest =
     identifier: "DeleteProjectsLocationsSchemaRegistriesContextsModeRequest",
   }) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesContextsModeRequest>;
 
-export type SchemaModeModeEnum = "NONE" | "READONLY" | "READWRITE" | "IMPORT";
+export type SchemaModeModeEnum =
+  | "NONE"
+  | "READONLY"
+  | "READWRITE"
+  | "IMPORT"
+  | (string & {});
 export const SchemaModeModeEnum = /*@__PURE__*/ S.String;
 
 /** SchemaMode represents the mode of a schema registry or a specific subject. Four modes are supported: * NONE: deprecated. This was the default mode for a subject, but now the default is unset (which means use the global schema registry setting) * READONLY: The schema registry is in read-only mode. * READWRITE: The schema registry is in read-write mode, which allows limited write operations on the schema. * IMPORT: The schema registry is in import mode, which allows more editing operations on the schema for data importing purposes. */
@@ -1446,7 +1458,8 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsClustersViewEnum =
   | "CLUSTER_VIEW_UNSPECIFIED"
   | "CLUSTER_VIEW_BASIC"
-  | "CLUSTER_VIEW_FULL";
+  | "CLUSTER_VIEW_FULL"
+  | (string & {});
 export const GetProjectsLocationsClustersViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsClustersRequest {
@@ -1784,7 +1797,8 @@ export type Managedkafka_SchemaSchemaTypeEnum =
   | "SCHEMA_TYPE_UNSPECIFIED"
   | "AVRO"
   | "JSON"
-  | "PROTOBUF";
+  | "PROTOBUF"
+  | (string & {});
 export const Managedkafka_SchemaSchemaTypeEnum = /*@__PURE__*/ S.String;
 
 /** Schema for a Kafka message. */
@@ -1833,7 +1847,8 @@ export type SchemaVersionSchemaTypeEnum =
   | "SCHEMA_TYPE_UNSPECIFIED"
   | "AVRO"
   | "JSON"
-  | "PROTOBUF";
+  | "PROTOBUF"
+  | (string & {});
 export const SchemaVersionSchemaTypeEnum = /*@__PURE__*/ S.String;
 
 /** Version of a schema. */
@@ -2169,7 +2184,8 @@ export const ListAclsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsClustersConsumerGroupsViewEnum =
   | "CONSUMER_GROUP_VIEW_UNSPECIFIED"
   | "CONSUMER_GROUP_VIEW_BASIC"
-  | "CONSUMER_GROUP_VIEW_FULL";
+  | "CONSUMER_GROUP_VIEW_FULL"
+  | (string & {});
 export const ListProjectsLocationsClustersConsumerGroupsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -2432,7 +2448,8 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsSchemaRegistriesViewEnum =
   | "SCHEMA_REGISTRY_VIEW_UNSPECIFIED"
   | "SCHEMA_REGISTRY_VIEW_BASIC"
-  | "SCHEMA_REGISTRY_VIEW_FULL";
+  | "SCHEMA_REGISTRY_VIEW_FULL"
+  | (string & {});
 export const ListProjectsLocationsSchemaRegistriesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -2777,7 +2794,8 @@ export type LookupVersionRequestSchemaTypeEnum =
   | "SCHEMA_TYPE_UNSPECIFIED"
   | "AVRO"
   | "JSON"
-  | "PROTOBUF";
+  | "PROTOBUF"
+  | (string & {});
 export const LookupVersionRequestSchemaTypeEnum = /*@__PURE__*/ S.String;
 
 /** Request for LookupVersion. */
@@ -3203,7 +3221,8 @@ export type UpdateSchemaConfigRequestCompatibilityEnum =
   | "FORWARD"
   | "FORWARD_TRANSITIVE"
   | "FULL"
-  | "FULL_TRANSITIVE";
+  | "FULL_TRANSITIVE"
+  | (string & {});
 export const UpdateSchemaConfigRequestCompatibilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -3271,7 +3290,8 @@ export type UpdateSchemaModeRequestModeEnum =
   | "NONE"
   | "READONLY"
   | "READWRITE"
-  | "IMPORT";
+  | "IMPORT"
+  | (string & {});
 export const UpdateSchemaModeRequestModeEnum = /*@__PURE__*/ S.String;
 
 /** Request for updating schema registry or subject mode. */

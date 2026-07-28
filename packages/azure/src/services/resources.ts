@@ -49,7 +49,11 @@ export const Sku_2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Sku_2" }) as any as S.Schema<Sku_2>;
 
 /** The managed application lock level. */
-export type ApplicationLockLevel = "CanNotDelete" | "ReadOnly" | "None";
+export type ApplicationLockLevel =
+  | "CanNotDelete"
+  | "ReadOnly"
+  | "None"
+  | (string & {});
 export const ApplicationLockLevel = /*@__PURE__*/ S.String;
 
 /** The managed application provider authorization. */
@@ -81,11 +85,16 @@ export type ApplicationDefinitionArtifactName =
   | "NotSpecified"
   | "ApplicationResourceTemplate"
   | "CreateUiDefinition"
-  | "MainTemplateParameters";
+  | "MainTemplateParameters"
+  | (string & {});
 export const ApplicationDefinitionArtifactName = /*@__PURE__*/ S.String;
 
 /** The managed application artifact type. */
-export type ApplicationArtifactType = "NotSpecified" | "Template" | "Custom";
+export type ApplicationArtifactType =
+  | "NotSpecified"
+  | "Template"
+  | "Custom"
+  | (string & {});
 export const ApplicationArtifactType = /*@__PURE__*/ S.String;
 
 /** Application definition artifact. */
@@ -188,7 +197,11 @@ export const ApplicationPackageLockingPolicyDefinition =
   }) as any as S.Schema<ApplicationPackageLockingPolicyDefinition>;
 
 /** The deployment mode. */
-export type DeploymentMode_2 = "NotSpecified" | "Incremental" | "Complete";
+export type DeploymentMode_2 =
+  | "NotSpecified"
+  | "Incremental"
+  | "Complete"
+  | (string & {});
 export const DeploymentMode_2 = /*@__PURE__*/ S.String;
 
 /** Managed application deployment policy. */
@@ -208,7 +221,8 @@ export const ApplicationDeploymentPolicy = /*@__PURE__*/ S.suspend(() =>
 export type ApplicationManagementMode =
   | "NotSpecified"
   | "Unmanaged"
-  | "Managed";
+  | "Managed"
+  | (string & {});
 export const ApplicationManagementMode = /*@__PURE__*/ S.String;
 
 /** Managed application management policy. */
@@ -588,11 +602,15 @@ export const ApplicationsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ApplicationsCreateOrUpdateRequestTagsMap>;
 
 /** The Jit approval mode. */
-export type JitApprovalMode = "NotSpecified" | "AutoApprove" | "ManualApprove";
+export type JitApprovalMode =
+  | "NotSpecified"
+  | "AutoApprove"
+  | "ManualApprove"
+  | (string & {});
 export const JitApprovalMode = /*@__PURE__*/ S.String;
 
 /** The approver type. */
-export type JitApproverDefinitionType = "user" | "group";
+export type JitApproverDefinitionType = "user" | "group" | (string & {});
 export const JitApproverDefinitionType = /*@__PURE__*/ S.String;
 
 /** JIT approver definition. */
@@ -693,7 +711,8 @@ export type IdentityInputType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
-  | "None";
+  | "None"
+  | (string & {});
 export const IdentityInputType = /*@__PURE__*/ S.String;
 
 /** Represents the user assigned identity that is contained within the UserAssignedIdentities dictionary on ResourceIdentity */
@@ -802,7 +821,8 @@ export type ProvisioningState_3 =
   | "Canceled"
   | "Failed"
   | "Succeeded"
-  | "Updating";
+  | "Updating"
+  | (string & {});
 export const ProvisioningState_3 = /*@__PURE__*/ S.String;
 
 /** Managed application billing details definition. */
@@ -865,7 +885,8 @@ export type ApplicationArtifactName =
   | "NotSpecified"
   | "ViewDefinition"
   | "Authorizations"
-  | "CustomRoleDefinition";
+  | "CustomRoleDefinition"
+  | (string & {});
 export const ApplicationArtifactName = /*@__PURE__*/ S.String;
 
 /** Managed application artifact. */
@@ -973,7 +994,8 @@ export type IdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
-  | "None";
+  | "None"
+  | (string & {});
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** Represents the user assigned identity that is contained within the UserAssignedIdentities dictionary on ResourceIdentity */
@@ -1859,7 +1881,11 @@ export const ChangesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChangesGetRequest>;
 
 /** The type of change that was captured in the resource */
-export type ChangePropertiesChangeType = "Update" | "Delete" | "Create";
+export type ChangePropertiesChangeType =
+  | "Update"
+  | "Delete"
+  | "Create"
+  | (string & {});
 export const ChangePropertiesChangeType = /*@__PURE__*/ S.String;
 
 /** Details about the change resource */
@@ -1888,11 +1914,15 @@ export const ChangeAttributes = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChangeAttributes>;
 
 /** The type of change that occurred */
-export type ChangeBasePropertyChangeType = "Insert" | "Update" | "Remove";
+export type ChangeBasePropertyChangeType =
+  | "Insert"
+  | "Update"
+  | "Remove"
+  | (string & {});
 export const ChangeBasePropertyChangeType = /*@__PURE__*/ S.String;
 
 /** The entity that made the change */
-export type ChangeBaseChangeCategory = "User" | "System";
+export type ChangeBaseChangeCategory = "User" | "System" | (string & {});
 export const ChangeBaseChangeCategory = /*@__PURE__*/ S.String;
 
 /** An individual change on the target resource */
@@ -2069,7 +2099,7 @@ export const CheckResourceNameRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckResourceNameRequest>;
 
 /** Is the resource name Allowed or Reserved */
-export type ResourceNameStatus = "Allowed" | "Reserved";
+export type ResourceNameStatus = "Allowed" | "Reserved" | (string & {});
 export const ResourceNameStatus = /*@__PURE__*/ S.String;
 
 /** Resource Name valid if not a reserved word, does not contain a reserved word and does not start with a reserved word */
@@ -2091,7 +2121,7 @@ export const CheckResourceNameResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckResourceNameResult",
 }) as any as S.Schema<CheckResourceNameResult>;
 
-export type DataBoundariesGetScopeRequestDefault = "default";
+export type DataBoundariesGetScopeRequestDefault = "default" | (string & {});
 export const DataBoundariesGetScopeRequestDefault = /*@__PURE__*/ S.String;
 
 export interface DataBoundariesGetScopeRequest {
@@ -2121,7 +2151,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -2129,7 +2160,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -2159,7 +2191,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 /** The data boundary definition. */
-export type DataBoundary = "NotDefined" | "Global" | "EU";
+export type DataBoundary = "NotDefined" | "Global" | "EU" | (string & {});
 export const DataBoundary = /*@__PURE__*/ S.String;
 
 /** Denotes the state of provisioning. */
@@ -2170,7 +2202,8 @@ export type ProvisioningState =
   | "Canceled"
   | "Failed"
   | "Succeeded"
-  | "Updating";
+  | "Updating"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Data boundary properties */
@@ -2213,7 +2246,7 @@ export const DataBoundariesGetScopeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataBoundariesGetScopeResponse",
 }) as any as S.Schema<DataBoundariesGetScopeResponse>;
 
-export type DataBoundariesGetTenantRequestDefault = "default";
+export type DataBoundariesGetTenantRequestDefault = "default" | (string & {});
 export const DataBoundariesGetTenantRequestDefault = /*@__PURE__*/ S.String;
 
 export interface DataBoundariesGetTenantRequest {
@@ -2259,7 +2292,7 @@ export const DataBoundariesGetTenantResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataBoundariesGetTenantResponse",
 }) as any as S.Schema<DataBoundariesGetTenantResponse>;
 
-export type DataBoundariesPutRequestDefault = "default";
+export type DataBoundariesPutRequestDefault = "default" | (string & {});
 export const DataBoundariesPutRequestDefault = /*@__PURE__*/ S.String;
 
 export interface DataBoundariesPutRequest {
@@ -2341,7 +2374,7 @@ export const AliasPathApiVersionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AliasPathApiVersionsList>;
 
 /** The type of alias pattern. */
-export type AliasPatternType = "NotSpecified" | "Extract";
+export type AliasPatternType = "NotSpecified" | "Extract" | (string & {});
 export const AliasPatternType = /*@__PURE__*/ S.String;
 
 /** The type of the pattern for an alias path. */
@@ -2370,11 +2403,12 @@ export type AliasPathTokenType =
   | "Array"
   | "Integer"
   | "Number"
-  | "Boolean";
+  | "Boolean"
+  | (string & {});
 export const AliasPathTokenType = /*@__PURE__*/ S.String;
 
 /** The attributes of the token that the alias path is referring to. */
-export type AliasPathAttributes = "None" | "Modifiable";
+export type AliasPathAttributes = "None" | "Modifiable" | (string & {});
 export const AliasPathAttributes = /*@__PURE__*/ S.String;
 
 /** The alias path metadata. */
@@ -2420,7 +2454,7 @@ export const AliasPathsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AliasPathsList>;
 
 /** The type of the alias. */
-export type AliasType = "NotSpecified" | "PlainText" | "Mask";
+export type AliasType = "NotSpecified" | "PlainText" | "Mask" | (string & {});
 export const AliasType = /*@__PURE__*/ S.String;
 
 /** The alias type. */
@@ -2795,7 +2829,8 @@ export type ProvisioningOperation =
   | "Action"
   | "Read"
   | "EvaluateDeploymentOutput"
-  | "DeploymentCleanup";
+  | "DeploymentCleanup"
+  | (string & {});
 export const ProvisioningOperation = /*@__PURE__*/ S.String;
 
 /** The error details. */
@@ -2871,7 +2906,8 @@ export type ExtensionConfigPropertyType =
   | "Array"
   | "Object"
   | "SecureString"
-  | "SecureObject";
+  | "SecureObject"
+  | (string & {});
 export const ExtensionConfigPropertyType = /*@__PURE__*/ S.String;
 
 /** Azure Key Vault reference. */
@@ -3618,7 +3654,7 @@ export const DeploymentPropertiesExtensionConfigsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DeploymentPropertiesExtensionConfigsMap>;
 
 /** The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources. */
-export type DeploymentMode = "Incremental" | "Complete";
+export type DeploymentMode = "Incremental" | "Complete" | (string & {});
 export const DeploymentMode = /*@__PURE__*/ S.String;
 
 /** The debug setting. */
@@ -3633,7 +3669,10 @@ export const DebugSetting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DebugSetting" }) as any as S.Schema<DebugSetting>;
 
 /** The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment. */
-export type OnErrorDeploymentType = "LastSuccessful" | "SpecificDeployment";
+export type OnErrorDeploymentType =
+  | "LastSuccessful"
+  | "SpecificDeployment"
+  | (string & {});
 export const OnErrorDeploymentType = /*@__PURE__*/ S.String;
 
 /** Deployment on error behavior. */
@@ -3656,7 +3695,8 @@ export const OnErrorDeployment = /*@__PURE__*/ S.suspend(() =>
 export type ExpressionEvaluationOptionsScopeType =
   | "NotSpecified"
   | "Outer"
-  | "Inner";
+  | "Inner"
+  | (string & {});
 export const ExpressionEvaluationOptionsScopeType = /*@__PURE__*/ S.String;
 
 /** Specifies whether template expressions are evaluated within the scope of the parent template or nested template. */
@@ -3673,7 +3713,11 @@ export const ExpressionEvaluationOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExpressionEvaluationOptions>;
 
 /** The level of validation performed on the deployment. */
-export type ValidationLevel = "Template" | "Provider" | "ProviderNoRbac";
+export type ValidationLevel =
+  | "Template"
+  | "Provider"
+  | "ProviderNoRbac"
+  | (string & {});
 export const ValidationLevel = /*@__PURE__*/ S.String;
 
 /** Deployment properties. */
@@ -3734,7 +3778,7 @@ export const DeploymentsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DeploymentsCreateOrUpdateRequestTagsMap>;
 
 /** The identity type. */
-export type DeploymentIdentityType = "None" | "UserAssigned";
+export type DeploymentIdentityType = "None" | "UserAssigned" | (string & {});
 export const DeploymentIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -3822,7 +3866,8 @@ export type ProvisioningState_2 =
   | "Canceled"
   | "Failed"
   | "Succeeded"
-  | "Updating";
+  | "Updating"
+  | (string & {});
 export const ProvisioningState_2 = /*@__PURE__*/ S.String;
 
 /** The collection of locations where this resource type can be created. */
@@ -3868,7 +3913,7 @@ export const ProviderResourceTypeLocationMappingsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ProviderResourceTypeLocationMappingsList>;
 
 /** The type of alias pattern */
-export type AliasPatternType_2 = "NotSpecified" | "Extract";
+export type AliasPatternType_2 = "NotSpecified" | "Extract" | (string & {});
 export const AliasPatternType_2 = /*@__PURE__*/ S.String;
 
 /** The type of the pattern for an alias path. */
@@ -4067,7 +4112,8 @@ export type ProviderAuthorizationConsentState =
   | "NotSpecified"
   | "Required"
   | "NotRequired"
-  | "Consented";
+  | "Consented"
+  | (string & {});
 export const ProviderAuthorizationConsentState = /*@__PURE__*/ S.String;
 
 /** Resource provider information. */
@@ -4225,7 +4271,7 @@ export const DeploymentPropertiesExtendedValidatedResourcesList =
   ) as any as S.Schema<DeploymentPropertiesExtendedValidatedResourcesList>;
 
 /** Denotes the additional response level. */
-export type Level = "Warning" | "Info" | "Error";
+export type Level = "Warning" | "Info" | "Error" | (string & {});
 export const Level = /*@__PURE__*/ S.String;
 
 /** The resource management error additional info. */
@@ -4753,11 +4799,11 @@ export const DeploymentScriptsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DeploymentScriptsCreateRequestTagsMap>;
 
 /** Type of the script. */
-export type ScriptType = "AzurePowerShell" | "AzureCLI";
+export type ScriptType = "AzurePowerShell" | "AzureCLI" | (string & {});
 export const ScriptType = /*@__PURE__*/ S.String;
 
 /** Type of the managed identity. */
-export type ManagedServiceIdentityType = "UserAssigned";
+export type ManagedServiceIdentityType = "UserAssigned" | (string & {});
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User-assigned managed identity. */
@@ -6288,19 +6334,28 @@ export const DeploymentStackPropertiesInputExternalInputDefinitionsMap =
   ) as any as S.Schema<DeploymentStackPropertiesInputExternalInputDefinitionsMap>;
 
 /** Specifies an action for a newly unmanaged resource. */
-export type UnmanageActionResourceMode = "delete" | "detach";
+export type UnmanageActionResourceMode = "delete" | "detach" | (string & {});
 export const UnmanageActionResourceMode = /*@__PURE__*/ S.String;
 
 /** Specifies an action for a newly unmanaged resource group. */
-export type UnmanageActionResourceGroupMode = "delete" | "detach";
+export type UnmanageActionResourceGroupMode =
+  | "delete"
+  | "detach"
+  | (string & {});
 export const UnmanageActionResourceGroupMode = /*@__PURE__*/ S.String;
 
 /** Specifies an action for a newly unmanaged resource. */
-export type UnmanageActionManagementGroupMode = "delete" | "detach";
+export type UnmanageActionManagementGroupMode =
+  | "delete"
+  | "detach"
+  | (string & {});
 export const UnmanageActionManagementGroupMode = /*@__PURE__*/ S.String;
 
 /** Specifies an action for resources that do not support deletion. */
-export type ResourcesWithoutDeleteSupportAction = "detach" | "fail";
+export type ResourcesWithoutDeleteSupportAction =
+  | "detach"
+  | "fail"
+  | (string & {});
 export const ResourcesWithoutDeleteSupportAction = /*@__PURE__*/ S.String;
 
 /** Defines the behavior of resources that are no longer managed after the stack is updated or deleted. */
@@ -6341,7 +6396,11 @@ export const DeploymentStacksDebugSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentStacksDebugSetting>;
 
 /** denySettings Mode that defines denied actions. */
-export type DenySettingsMode = "denyDelete" | "denyWriteAndDelete" | "none";
+export type DenySettingsMode =
+  | "denyDelete"
+  | "denyWriteAndDelete"
+  | "none"
+  | (string & {});
 export const DenySettingsMode = /*@__PURE__*/ S.String;
 
 /** List of AAD principal IDs excluded from the lock. Up to 5 principals are permitted. */
@@ -6662,7 +6721,8 @@ export type DeploymentStackProvisioningState =
   | "canceled"
   | "deleting"
   | "initializing"
-  | "running";
+  | "running"
+  | (string & {});
 export const DeploymentStackProvisioningState = /*@__PURE__*/ S.String;
 
 /** Details about the usage of a deployment extension. */
@@ -6837,7 +6897,8 @@ export const ManagedResourceReferenceIdentifiersMap = /*@__PURE__*/ S.Record(
 export type ResourceStatusMode =
   | "managed"
   | "removeDenyFailed"
-  | "deleteFailed";
+  | "deleteFailed"
+  | (string & {});
 export const ResourceStatusMode = /*@__PURE__*/ S.String;
 
 /** denyAssignment settings applied to the resource. */
@@ -6848,7 +6909,8 @@ export type ManagedResourceReferenceDenyStatus =
   | "denyWriteAndDelete"
   | "removedBySystem"
   | "none"
-  | "unknown";
+  | "unknown"
+  | (string & {});
 export const ManagedResourceReferenceDenyStatus = /*@__PURE__*/ S.String;
 
 /** The managed resource model. */
@@ -7218,22 +7280,22 @@ export const DeploymentStacksCreateOrUpdateAtSubscriptionResponse =
   }) as any as S.Schema<DeploymentStacksCreateOrUpdateAtSubscriptionResponse>;
 
 export type DeploymentStacksDeleteAtManagementGroupRequestUnmanageActionResources =
-  "delete" | "detach";
+  "delete" | "detach" | (string & {});
 export const DeploymentStacksDeleteAtManagementGroupRequestUnmanageActionResources =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtManagementGroupRequestUnmanageActionResourceGroups =
-  "delete" | "detach";
+  "delete" | "detach" | (string & {});
 export const DeploymentStacksDeleteAtManagementGroupRequestUnmanageActionResourceGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtManagementGroupRequestUnmanageActionManagementGroups =
-  "delete" | "detach";
+  "delete" | "detach" | (string & {});
 export const DeploymentStacksDeleteAtManagementGroupRequestUnmanageActionManagementGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtManagementGroupRequestUnmanageActionResourcesWithoutDeleteSupport =
-  "detach" | "fail";
+  "detach" | "fail" | (string & {});
 export const DeploymentStacksDeleteAtManagementGroupRequestUnmanageActionResourcesWithoutDeleteSupport =
   /*@__PURE__*/ S.String;
 
@@ -7298,22 +7360,22 @@ export const DeploymentStacksDeleteAtManagementGroupResponse =
   }) as any as S.Schema<DeploymentStacksDeleteAtManagementGroupResponse>;
 
 export type DeploymentStacksDeleteAtResourceGroupRequestUnmanageActionResources =
-  "delete" | "detach";
+  "delete" | "detach" | (string & {});
 export const DeploymentStacksDeleteAtResourceGroupRequestUnmanageActionResources =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtResourceGroupRequestUnmanageActionResourceGroups =
-  "delete" | "detach";
+  "delete" | "detach" | (string & {});
 export const DeploymentStacksDeleteAtResourceGroupRequestUnmanageActionResourceGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtResourceGroupRequestUnmanageActionManagementGroups =
-  "delete" | "detach";
+  "delete" | "detach" | (string & {});
 export const DeploymentStacksDeleteAtResourceGroupRequestUnmanageActionManagementGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtResourceGroupRequestUnmanageActionResourcesWithoutDeleteSupport =
-  "detach" | "fail";
+  "detach" | "fail" | (string & {});
 export const DeploymentStacksDeleteAtResourceGroupRequestUnmanageActionResourcesWithoutDeleteSupport =
   /*@__PURE__*/ S.String;
 
@@ -7381,22 +7443,22 @@ export const DeploymentStacksDeleteAtResourceGroupResponse =
   }) as any as S.Schema<DeploymentStacksDeleteAtResourceGroupResponse>;
 
 export type DeploymentStacksDeleteAtSubscriptionRequestUnmanageActionResources =
-  "delete" | "detach";
+  "delete" | "detach" | (string & {});
 export const DeploymentStacksDeleteAtSubscriptionRequestUnmanageActionResources =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtSubscriptionRequestUnmanageActionResourceGroups =
-  "delete" | "detach";
+  "delete" | "detach" | (string & {});
 export const DeploymentStacksDeleteAtSubscriptionRequestUnmanageActionResourceGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtSubscriptionRequestUnmanageActionManagementGroups =
-  "delete" | "detach";
+  "delete" | "detach" | (string & {});
 export const DeploymentStacksDeleteAtSubscriptionRequestUnmanageActionManagementGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtSubscriptionRequestUnmanageActionResourcesWithoutDeleteSupport =
-  "detach" | "fail";
+  "detach" | "fail" | (string & {});
 export const DeploymentStacksDeleteAtSubscriptionRequestUnmanageActionResourcesWithoutDeleteSupport =
   /*@__PURE__*/ S.String;
 
@@ -7925,7 +7987,8 @@ export type DeploymentStackValidateResultSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const DeploymentStackValidateResultSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -7934,7 +7997,8 @@ export type DeploymentStackValidateResultSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const DeploymentStackValidateResultSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -8484,18 +8548,23 @@ export type DeploymentStacksWhatIfChangeType =
   | "detach"
   | "modify"
   | "noChange"
-  | "unsupported";
+  | "unsupported"
+  | (string & {});
 export const DeploymentStacksWhatIfChangeType = /*@__PURE__*/ S.String;
 
 /** Denotes the confidence level of the predicted change. */
-export type DeploymentStacksWhatIfChangeCertainty = "definite" | "potential";
+export type DeploymentStacksWhatIfChangeCertainty =
+  | "definite"
+  | "potential"
+  | (string & {});
 export const DeploymentStacksWhatIfChangeCertainty = /*@__PURE__*/ S.String;
 
 /** The management status of the deployment stack resource. */
 export type DeploymentStacksManagementStatus =
   | "managed"
   | "unmanaged"
-  | "unknown";
+  | "unknown"
+  | (string & {});
 export const DeploymentStacksManagementStatus = /*@__PURE__*/ S.String;
 
 /** The predicted changes to the deployment stack management status of the resource. */
@@ -8523,7 +8592,8 @@ export type DenyStatusMode =
   | "denyWriteAndDelete"
   | "removedBySystem"
   | "none"
-  | "unknown";
+  | "unknown"
+  | (string & {});
 export const DenyStatusMode = /*@__PURE__*/ S.String;
 
 /** The predicted changes to the deployment stack deny status of the resource. */
@@ -8567,7 +8637,8 @@ export type DeploymentStacksWhatIfPropertyChangeType =
   | "create"
   | "delete"
   | "modify"
-  | "noEffect";
+  | "noEffect"
+  | (string & {});
 export const DeploymentStacksWhatIfPropertyChangeType = /*@__PURE__*/ S.String;
 
 /** Nested property changes. */
@@ -8774,7 +8845,11 @@ export const DeploymentStacksWhatIfChange = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentStacksWhatIfChange>;
 
 /** Denotes the additional response level. */
-export type DeploymentStacksDiagnosticLevel = "info" | "warning" | "error";
+export type DeploymentStacksDiagnosticLevel =
+  | "info"
+  | "warning"
+  | "error"
+  | (string & {});
 export const DeploymentStacksDiagnosticLevel = /*@__PURE__*/ S.String;
 
 /** The resource management error additional info. */
@@ -8963,22 +9038,22 @@ export const DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateRespons
   }) as any as S.Schema<DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateResponse>;
 
 export type DeploymentStacksWhatIfResultsAtManagementGroupDeleteRequestUnmanageActionResources =
-  "delete" | "detach";
+  "delete" | "detach" | (string & {});
 export const DeploymentStacksWhatIfResultsAtManagementGroupDeleteRequestUnmanageActionResources =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtManagementGroupDeleteRequestUnmanageActionResourceGroups =
-  "delete" | "detach";
+  "delete" | "detach" | (string & {});
 export const DeploymentStacksWhatIfResultsAtManagementGroupDeleteRequestUnmanageActionResourceGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtManagementGroupDeleteRequestUnmanageActionManagementGroups =
-  "delete" | "detach";
+  "delete" | "detach" | (string & {});
 export const DeploymentStacksWhatIfResultsAtManagementGroupDeleteRequestUnmanageActionManagementGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtManagementGroupDeleteRequestUnmanageActionResourcesWithoutDeleteSupport =
-  "detach" | "fail";
+  "detach" | "fail" | (string & {});
 export const DeploymentStacksWhatIfResultsAtManagementGroupDeleteRequestUnmanageActionResourcesWithoutDeleteSupport =
   /*@__PURE__*/ S.String;
 
@@ -9349,22 +9424,22 @@ export const DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateResponse 
   }) as any as S.Schema<DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateResponse>;
 
 export type DeploymentStacksWhatIfResultsAtResourceGroupDeleteRequestUnmanageActionResources =
-  "delete" | "detach";
+  "delete" | "detach" | (string & {});
 export const DeploymentStacksWhatIfResultsAtResourceGroupDeleteRequestUnmanageActionResources =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtResourceGroupDeleteRequestUnmanageActionResourceGroups =
-  "delete" | "detach";
+  "delete" | "detach" | (string & {});
 export const DeploymentStacksWhatIfResultsAtResourceGroupDeleteRequestUnmanageActionResourceGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtResourceGroupDeleteRequestUnmanageActionManagementGroups =
-  "delete" | "detach";
+  "delete" | "detach" | (string & {});
 export const DeploymentStacksWhatIfResultsAtResourceGroupDeleteRequestUnmanageActionManagementGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtResourceGroupDeleteRequestUnmanageActionResourcesWithoutDeleteSupport =
-  "detach" | "fail";
+  "detach" | "fail" | (string & {});
 export const DeploymentStacksWhatIfResultsAtResourceGroupDeleteRequestUnmanageActionResourcesWithoutDeleteSupport =
   /*@__PURE__*/ S.String;
 
@@ -9679,22 +9754,22 @@ export const DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateResponse =
   }) as any as S.Schema<DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateResponse>;
 
 export type DeploymentStacksWhatIfResultsAtSubscriptionDeleteRequestUnmanageActionResources =
-  "delete" | "detach";
+  "delete" | "detach" | (string & {});
 export const DeploymentStacksWhatIfResultsAtSubscriptionDeleteRequestUnmanageActionResources =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtSubscriptionDeleteRequestUnmanageActionResourceGroups =
-  "delete" | "detach";
+  "delete" | "detach" | (string & {});
 export const DeploymentStacksWhatIfResultsAtSubscriptionDeleteRequestUnmanageActionResourceGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtSubscriptionDeleteRequestUnmanageActionManagementGroups =
-  "delete" | "detach";
+  "delete" | "detach" | (string & {});
 export const DeploymentStacksWhatIfResultsAtSubscriptionDeleteRequestUnmanageActionManagementGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtSubscriptionDeleteRequestUnmanageActionResourcesWithoutDeleteSupport =
-  "detach" | "fail";
+  "detach" | "fail" | (string & {});
 export const DeploymentStacksWhatIfResultsAtSubscriptionDeleteRequestUnmanageActionResourcesWithoutDeleteSupport =
   /*@__PURE__*/ S.String;
 
@@ -10199,7 +10274,10 @@ export const DeploymentWhatIfPropertiesExtensionConfigsMap =
   ) as any as S.Schema<DeploymentWhatIfPropertiesExtensionConfigsMap>;
 
 /** The format of the What-If results */
-export type WhatIfResultFormat = "ResourceIdOnly" | "FullResourcePayloads";
+export type WhatIfResultFormat =
+  | "ResourceIdOnly"
+  | "FullResourcePayloads"
+  | (string & {});
 export const WhatIfResultFormat = /*@__PURE__*/ S.String;
 
 /** Deployment What-If operation settings. */
@@ -10305,7 +10383,8 @@ export type ChangeType =
   | "Deploy"
   | "NoChange"
   | "Modify"
-  | "Unsupported";
+  | "Unsupported"
+  | (string & {});
 export const ChangeType = /*@__PURE__*/ S.String;
 
 /** The type of property change. */
@@ -10314,7 +10393,8 @@ export type PropertyChangeType =
   | "Delete"
   | "Modify"
   | "Array"
-  | "NoEffect";
+  | "NoEffect"
+  | (string & {});
 export const PropertyChangeType = /*@__PURE__*/ S.String;
 
 /** Nested property changes. */
@@ -10827,7 +10907,11 @@ export const JitRequestPropertiesJitAuthorizationPoliciesList =
   ) as any as S.Schema<JitRequestPropertiesJitAuthorizationPoliciesList>;
 
 /** The JIT request scheduling type. */
-export type JitSchedulingType = "NotSpecified" | "Once" | "Recurring";
+export type JitSchedulingType =
+  | "NotSpecified"
+  | "Once"
+  | "Recurring"
+  | (string & {});
 export const JitSchedulingType = /*@__PURE__*/ S.String;
 
 /** The JIT scheduling policies. */
@@ -10857,7 +10941,8 @@ export type JitRequestState =
   | "Failed"
   | "Canceled"
   | "Expired"
-  | "Timeout";
+  | "Timeout"
+  | (string & {});
 export const JitRequestState = /*@__PURE__*/ S.String;
 
 /** Information about JIT request properties */
@@ -11261,7 +11346,8 @@ export const OperationListResult_2 = /*@__PURE__*/ S.suspend(() =>
 export type ManagementLockPropertiesLevel =
   | "NotSpecified"
   | "CanNotDelete"
-  | "ReadOnly";
+  | "ReadOnly"
+  | (string & {});
 export const ManagementLockPropertiesLevel = /*@__PURE__*/ S.String;
 
 /** Lock owner properties. */
@@ -11337,7 +11423,8 @@ export type ManagementLockObjectSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ManagementLockObjectSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -11346,7 +11433,8 @@ export type ManagementLockObjectSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ManagementLockObjectSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -11910,11 +11998,11 @@ export const OperationDisplay_3 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay_3>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -11996,7 +12084,8 @@ export const PolicyAssignmentPropertiesInputParametersMap =
 export type PolicyAssignmentPropertiesInputEnforcementMode =
   | "Default"
   | "DoNotEnforce"
-  | "Enroll";
+  | "Enroll"
+  | (string & {});
 export const PolicyAssignmentPropertiesInputEnforcementMode =
   /*@__PURE__*/ S.String;
 
@@ -12032,7 +12121,8 @@ export type SelectorKind =
   | "policyDefinitionReferenceId"
   | "resourceRolloutPercentage"
   | "userPrincipalId"
-  | "groupPrincipalId";
+  | "groupPrincipalId"
+  | (string & {});
 export const SelectorKind = /*@__PURE__*/ S.String;
 
 /** The list of values to filter in. */
@@ -12098,7 +12188,7 @@ export const PolicyAssignmentPropertiesInputResourceSelectorsList =
   ) as any as S.Schema<PolicyAssignmentPropertiesInputResourceSelectorsList>;
 
 /** The override kind. */
-export type OverrideKind = "policyEffect" | "definitionVersion";
+export type OverrideKind = "policyEffect" | "definitionVersion" | (string & {});
 export const OverrideKind = /*@__PURE__*/ S.String;
 
 /** The list of the selector expressions. */
@@ -12137,7 +12227,8 @@ export type AssignmentType =
   | "NotSpecified"
   | "System"
   | "SystemHidden"
-  | "Custom";
+  | "Custom"
+  | (string & {});
 export const AssignmentType = /*@__PURE__*/ S.String;
 
 /** The policy definition reference IDs for self-serve exemption. */
@@ -12220,7 +12311,11 @@ export const PolicyAssignmentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyAssignmentPropertiesInput>;
 
 /** The identity type. This is the only required field when adding a system or user assigned identity to a resource. */
-export type ResourceIdentityType = "SystemAssigned" | "UserAssigned" | "None";
+export type ResourceIdentityType =
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "None"
+  | (string & {});
 export const ResourceIdentityType = /*@__PURE__*/ S.String;
 
 export interface UserAssignedIdentitiesValueInput {}
@@ -12303,7 +12398,8 @@ export const PolicyAssignmentPropertiesParametersMap = /*@__PURE__*/ S.Record(
 export type PolicyAssignmentPropertiesEnforcementMode =
   | "Default"
   | "DoNotEnforce"
-  | "Enroll";
+  | "Enroll"
+  | (string & {});
 export const PolicyAssignmentPropertiesEnforcementMode = /*@__PURE__*/ S.String;
 
 /** The messages that describe why a resource is non-compliant with the policy. */
@@ -12860,7 +12956,12 @@ export const PolicyAssignmentsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyAssignmentsUpdateResponse>;
 
 /** The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static. */
-export type PolicyType = "NotSpecified" | "BuiltIn" | "Custom" | "Static";
+export type PolicyType =
+  | "NotSpecified"
+  | "BuiltIn"
+  | "Custom"
+  | "Static"
+  | (string & {});
 export const PolicyType = /*@__PURE__*/ S.String;
 
 /** The data type of the parameter. */
@@ -12871,7 +12972,8 @@ export type ParameterType =
   | "Boolean"
   | "Integer"
   | "Float"
-  | "DateTime";
+  | "DateTime"
+  | (string & {});
 export const ParameterType = /*@__PURE__*/ S.String;
 
 /** The allowed values for the parameter. */
@@ -15394,7 +15496,7 @@ export const PolicyTokensAcquireRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyTokensAcquireRequest>;
 
 /** The result of the completed token acquisition operation. Possible values are Succeeded and Failed. */
-export type PolicyTokenResult = "Succeeded" | "Failed";
+export type PolicyTokenResult = "Succeeded" | "Failed" | (string & {});
 export const PolicyTokenResult = /*@__PURE__*/ S.String;
 
 /** The policy token evaluated request details. */
@@ -15470,11 +15572,17 @@ export const PolicyLogInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PolicyLogInfo" }) as any as S.Schema<PolicyLogInfo>;
 
 /** The result of the external endpoint. Possible values are Succeeded and Failed. */
-export type ExternalEndpointResult = "Succeeded" | "Failed";
+export type ExternalEndpointResult = "Succeeded" | "Failed" | (string & {});
 export const ExternalEndpointResult = /*@__PURE__*/ S.String;
 
 /** The effective outcome of the policy evaluation based on both the policy effect and evaluation result. Possible values are Unknown, Allow, Audit, Deny, Error. */
-export type PolicyAction = "Unknown" | "Allow" | "Audit" | "Deny" | "Error";
+export type PolicyAction =
+  | "Unknown"
+  | "Allow"
+  | "Audit"
+  | "Deny"
+  | "Error"
+  | (string & {});
 export const PolicyAction = /*@__PURE__*/ S.String;
 
 /** The compliance state of the resource against the policy. Possible values are NotSpecified, NonCompliant, Partial, Conflict, NotApplicable, Compliant, Error, Unknown, Exempt, and Protected. */
@@ -15488,7 +15596,8 @@ export type ComplianceState =
   | "Error"
   | "Unknown"
   | "Exempt"
-  | "Protected";
+  | "Protected"
+  | (string & {});
 export const ComplianceState = /*@__PURE__*/ S.String;
 
 /** The external evaluation endpoint invocation results. */
@@ -15687,7 +15796,8 @@ export const PrivateLinkAssociationGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PrivateLinkAssociationPropertiesExpandedPublicNetworkAccess =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const PrivateLinkAssociationPropertiesExpandedPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -15777,7 +15887,8 @@ export const PrivateLinkAssociationGetResult = /*@__PURE__*/ S.suspend(() =>
 
 export type PrivateLinkAssociationPropertiesPublicNetworkAccess =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const PrivateLinkAssociationPropertiesPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -16366,7 +16477,7 @@ export const ResourceGroupsExportTemplateRequestResourcesList =
   ) as any as S.Schema<ResourceGroupsExportTemplateRequestResourcesList>;
 
 /** The output format for the exported resources. */
-export type ExportTemplateOutputFormat = "Json" | "Bicep";
+export type ExportTemplateOutputFormat = "Json" | "Bicep" | (string & {});
 export const ExportTemplateOutputFormat = /*@__PURE__*/ S.String;
 
 export interface ResourceGroupsExportTemplateRequest {
@@ -16818,7 +16929,9 @@ export const ResourceLinksGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceLinksGetRequest",
 }) as any as S.Schema<ResourceLinksGetRequest>;
 
-export type ResourceLinksListAtSourceScopeRequestFilter = "atScope()";
+export type ResourceLinksListAtSourceScopeRequestFilter =
+  | "atScope()"
+  | (string & {});
 export const ResourceLinksListAtSourceScopeRequestFilter =
   /*@__PURE__*/ S.String;
 
@@ -17143,7 +17256,8 @@ export type ResourceIdentityType_2 =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
-  | "None";
+  | "None"
+  | (string & {});
 export const ResourceIdentityType_2 = /*@__PURE__*/ S.String;
 
 export interface IdentityUserAssignedIdentitiesValueInput {}
@@ -17181,7 +17295,7 @@ export const IdentityInput_2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IdentityInput_2>;
 
 /** The extended location type. */
-export type ExtendedLocationType = "EdgeZone";
+export type ExtendedLocationType = "EdgeZone" | (string & {});
 export const ExtendedLocationType = /*@__PURE__*/ S.String;
 
 /** Resource extended location. */
@@ -18210,7 +18324,7 @@ export const ResourceValidatorValidateResourcesRequestResourcesList =
   ) as any as S.Schema<ResourceValidatorValidateResourcesRequestResourcesList>;
 
 /** The type of resource validation */
-export type ResourceValidationType = "ArmFull" | "ArmPartial";
+export type ResourceValidationType = "ArmFull" | "ArmPartial" | (string & {});
 export const ResourceValidationType = /*@__PURE__*/ S.String;
 
 export interface ResourceValidatorValidateResourcesRequest {
@@ -18295,7 +18409,8 @@ export type SubscriptionFeatureRegistrationsCreateOrUpdateRequestPropertiesState
     | "Registering"
     | "Registered"
     | "Unregistering"
-    | "Unregistered";
+    | "Unregistered"
+    | (string & {});
 export const SubscriptionFeatureRegistrationsCreateOrUpdateRequestPropertiesState =
   /*@__PURE__*/ S.String;
 
@@ -18383,7 +18498,8 @@ export type SubscriptionFeatureRegistrationsCreateOrUpdateResponsePropertiesStat
     | "Registering"
     | "Registered"
     | "Unregistering"
-    | "Unregistered";
+    | "Unregistered"
+    | (string & {});
 export const SubscriptionFeatureRegistrationsCreateOrUpdateResponsePropertiesState =
   /*@__PURE__*/ S.String;
 
@@ -18423,7 +18539,7 @@ export const SubscriptionFeatureRegistrationsCreateOrUpdateResponsePropertiesMet
 
 /** The feature approval type. */
 export type SubscriptionFeatureRegistrationsCreateOrUpdateResponsePropertiesApprovalType =
-  "NotSpecified" | "ApprovalRequired" | "AutoApproval";
+  "NotSpecified" | "ApprovalRequired" | "AutoApproval" | (string & {});
 export const SubscriptionFeatureRegistrationsCreateOrUpdateResponsePropertiesApprovalType =
   /*@__PURE__*/ S.String;
 
@@ -18574,7 +18690,8 @@ export type SubscriptionFeatureRegistrationsGetResponsePropertiesState =
   | "Registering"
   | "Registered"
   | "Unregistering"
-  | "Unregistered";
+  | "Unregistered"
+  | (string & {});
 export const SubscriptionFeatureRegistrationsGetResponsePropertiesState =
   /*@__PURE__*/ S.String;
 
@@ -18592,7 +18709,8 @@ export const SubscriptionFeatureRegistrationsGetResponsePropertiesMetadataMap =
 export type SubscriptionFeatureRegistrationsGetResponsePropertiesApprovalType =
   | "NotSpecified"
   | "ApprovalRequired"
-  | "AutoApproval";
+  | "AutoApproval"
+  | (string & {});
 export const SubscriptionFeatureRegistrationsGetResponsePropertiesApprovalType =
   /*@__PURE__*/ S.String;
 
@@ -18704,7 +18822,8 @@ export type SubscriptionFeatureRegistrationPropertiesState =
   | "Registering"
   | "Registered"
   | "Unregistering"
-  | "Unregistered";
+  | "Unregistered"
+  | (string & {});
 export const SubscriptionFeatureRegistrationPropertiesState =
   /*@__PURE__*/ S.String;
 
@@ -18722,7 +18841,8 @@ export const SubscriptionFeatureRegistrationPropertiesMetadataMap =
 export type SubscriptionFeatureRegistrationPropertiesApprovalType =
   | "NotSpecified"
   | "ApprovalRequired"
-  | "AutoApproval";
+  | "AutoApproval"
+  | (string & {});
 export const SubscriptionFeatureRegistrationPropertiesApprovalType =
   /*@__PURE__*/ S.String;
 
@@ -18974,11 +19094,12 @@ export type SubscriptionState =
   | "Warned"
   | "PastDue"
   | "Disabled"
-  | "Deleted";
+  | "Deleted"
+  | (string & {});
 export const SubscriptionState = /*@__PURE__*/ S.String;
 
 /** The subscription spending limit. */
-export type SpendingLimit = "On" | "Off" | "CurrentPeriodOff";
+export type SpendingLimit = "On" | "Off" | "CurrentPeriodOff" | (string & {});
 export const SpendingLimit = /*@__PURE__*/ S.String;
 
 /** Subscription policies. */
@@ -19120,15 +19241,19 @@ export const SubscriptionsListLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionsListLocationsRequest>;
 
 /** The location type. */
-export type LocationType = "Region" | "EdgeZone";
+export type LocationType = "Region" | "EdgeZone" | (string & {});
 export const LocationType = /*@__PURE__*/ S.String;
 
 /** The type of the region. */
-export type RegionType = "Physical" | "Logical";
+export type RegionType = "Physical" | "Logical" | (string & {});
 export const RegionType = /*@__PURE__*/ S.String;
 
 /** The category of the region. */
-export type RegionCategory = "Recommended" | "Extended" | "Other";
+export type RegionCategory =
+  | "Recommended"
+  | "Extended"
+  | "Other"
+  | (string & {});
 export const RegionCategory = /*@__PURE__*/ S.String;
 
 /** Information regarding paired region. */
@@ -19606,7 +19731,7 @@ export const TagsListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TagsListResult" }) as any as S.Schema<TagsListResult>;
 
 /** The operation type for the patch API. */
-export type TagsPatchOperation = "Replace" | "Merge" | "Delete";
+export type TagsPatchOperation = "Replace" | "Merge" | "Delete" | (string & {});
 export const TagsPatchOperation = /*@__PURE__*/ S.String;
 
 export interface TagsUpdateAtScopeRequest {
@@ -19725,7 +19850,8 @@ export type TemplateSpecsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const TemplateSpecsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -19734,7 +19860,8 @@ export type TemplateSpecsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const TemplateSpecsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -19893,7 +20020,7 @@ export const TemplateSpecsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TemplateSpecsDeleteResponse",
 }) as any as S.Schema<TemplateSpecsDeleteResponse>;
 
-export type TemplateSpecsGetRequestExpand = "versions";
+export type TemplateSpecsGetRequestExpand = "versions" | (string & {});
 export const TemplateSpecsGetRequestExpand = /*@__PURE__*/ S.String;
 
 export interface TemplateSpecsGetRequest {
@@ -19929,7 +20056,8 @@ export type TemplateSpecsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const TemplateSpecsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -19938,7 +20066,8 @@ export type TemplateSpecsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const TemplateSpecsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -20011,7 +20140,7 @@ export const TemplateSpecsGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TemplateSpecsGetResponse",
 }) as any as S.Schema<TemplateSpecsGetResponse>;
 
-export type TemplateSpecsGetBuiltInRequestExpand = "versions";
+export type TemplateSpecsGetBuiltInRequestExpand = "versions" | (string & {});
 export const TemplateSpecsGetBuiltInRequestExpand = /*@__PURE__*/ S.String;
 
 export interface TemplateSpecsGetBuiltInRequest {
@@ -20043,7 +20172,8 @@ export type TemplateSpecsGetBuiltInResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const TemplateSpecsGetBuiltInResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -20052,7 +20182,8 @@ export type TemplateSpecsGetBuiltInResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const TemplateSpecsGetBuiltInResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -20128,7 +20259,7 @@ export const TemplateSpecsGetBuiltInResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TemplateSpecsGetBuiltInResponse",
 }) as any as S.Schema<TemplateSpecsGetBuiltInResponse>;
 
-export type TemplateSpecsListBuiltInsRequestExpand = "versions";
+export type TemplateSpecsListBuiltInsRequestExpand = "versions" | (string & {});
 export const TemplateSpecsListBuiltInsRequestExpand = /*@__PURE__*/ S.String;
 
 export interface TemplateSpecsListBuiltInsRequest {
@@ -20157,7 +20288,8 @@ export type TemplateSpecSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const TemplateSpecSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -20165,7 +20297,8 @@ export type TemplateSpecSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const TemplateSpecSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -20254,7 +20387,9 @@ export const TemplateSpecsListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "TemplateSpecsListResult",
 }) as any as S.Schema<TemplateSpecsListResult>;
 
-export type TemplateSpecsListByResourceGroupRequestExpand = "versions";
+export type TemplateSpecsListByResourceGroupRequestExpand =
+  | "versions"
+  | (string & {});
 export const TemplateSpecsListByResourceGroupRequestExpand =
   /*@__PURE__*/ S.String;
 
@@ -20286,7 +20421,9 @@ export const TemplateSpecsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
   identifier: "TemplateSpecsListByResourceGroupRequest",
 }) as any as S.Schema<TemplateSpecsListByResourceGroupRequest>;
 
-export type TemplateSpecsListBySubscriptionRequestExpand = "versions";
+export type TemplateSpecsListBySubscriptionRequestExpand =
+  | "versions"
+  | (string & {});
 export const TemplateSpecsListBySubscriptionRequestExpand =
   /*@__PURE__*/ S.String;
 
@@ -20357,7 +20494,8 @@ export type TemplateSpecsUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const TemplateSpecsUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -20366,7 +20504,8 @@ export type TemplateSpecsUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const TemplateSpecsUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -20546,13 +20685,14 @@ export type TemplateSpecVersionsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const TemplateSpecVersionsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type TemplateSpecVersionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
 export const TemplateSpecVersionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -20700,7 +20840,8 @@ export type TemplateSpecVersionsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const TemplateSpecVersionsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -20709,7 +20850,8 @@ export type TemplateSpecVersionsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const TemplateSpecVersionsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -20813,13 +20955,14 @@ export type TemplateSpecVersionsGetBuiltInResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const TemplateSpecVersionsGetBuiltInResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type TemplateSpecVersionsGetBuiltInResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
 export const TemplateSpecVersionsGetBuiltInResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -20927,7 +21070,8 @@ export type TemplateSpecVersionSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const TemplateSpecVersionSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -20936,7 +21080,8 @@ export type TemplateSpecVersionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const TemplateSpecVersionSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -21096,7 +21241,8 @@ export type TemplateSpecVersionsUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const TemplateSpecVersionsUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -21105,7 +21251,8 @@ export type TemplateSpecVersionsUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const TemplateSpecVersionsUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -21196,7 +21343,11 @@ export const TenantsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TenantsListRequest>;
 
 /** Category of the tenant. */
-export type TenantCategory = "Home" | "ProjectedBy" | "ManagedBy";
+export type TenantCategory =
+  | "Home"
+  | "ProjectedBy"
+  | "ManagedBy"
+  | (string & {});
 export const TenantCategory = /*@__PURE__*/ S.String;
 
 /** The list of domains for the tenant. */

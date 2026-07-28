@@ -245,7 +245,7 @@ export class WebCrawlerDomainNotOwned extends T.applyErrorMatchers(
 ) {}
 
 export type InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0Type =
-  "text";
+  "text" | (string & {});
 export const InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0Type =
   /*@__PURE__*/ S.String;
 
@@ -278,7 +278,7 @@ export const InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1Ima
   }) as any as S.Schema<InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl>;
 
 export type InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type =
-  "image_url";
+  "image_url" | (string & {});
 export const InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type =
   /*@__PURE__*/ S.String;
 
@@ -329,7 +329,8 @@ export type InstancesChatCompletionsRequestMessagesItemRole =
   | "developer"
   | "user"
   | "assistant"
-  | "tool";
+  | "tool"
+  | (string & {});
 export const InstancesChatCompletionsRequestMessagesItemRole =
   /*@__PURE__*/ S.String;
 
@@ -358,7 +359,8 @@ export type InstancesChatCompletionsRequestAiSearchOptionsCacheCacheThreshold =
   | "super_strict_match"
   | "close_enough"
   | "flexible_friend"
-  | "anything_goes";
+  | "anything_goes"
+  | (string & {});
 export const InstancesChatCompletionsRequestAiSearchOptionsCacheCacheThreshold =
   /*@__PURE__*/ S.String;
 
@@ -410,7 +412,8 @@ export type InstancesChatCompletionsRequestAiSearchOptionsQueryRewriteModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesChatCompletionsRequestAiSearchOptionsQueryRewriteModel =
   /*@__PURE__*/ S.String;
 
@@ -434,7 +437,8 @@ export const InstancesChatCompletionsRequestAiSearchOptionsQueryRewrite =
 
 export type InstancesChatCompletionsRequestAiSearchOptionsRerankingModel =
   | "@cf/baai/bge-reranker-base"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesChatCompletionsRequestAiSearchOptionsRerankingModel =
   /*@__PURE__*/ S.String;
 
@@ -457,7 +461,7 @@ export const InstancesChatCompletionsRequestAiSearchOptionsReranking =
   }) as any as S.Schema<InstancesChatCompletionsRequestAiSearchOptionsReranking>;
 
 export type InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  "asc" | "desc" | "exists" | "not_exists" | (string & {});
 export const InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -496,17 +500,17 @@ export const InstancesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap =
   ) as any as S.Schema<InstancesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap>;
 
 export type InstancesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod =
-  "max" | "rrf";
+  "max" | "rrf" | (string & {});
 export const InstancesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod =
   /*@__PURE__*/ S.String;
 
 export type InstancesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode =
-  "and" | "or";
+  "and" | "or" | (string & {});
 export const InstancesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode =
   /*@__PURE__*/ S.String;
 
 export type InstancesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalType =
-  "vector" | "keyword" | "hybrid";
+  "vector" | "keyword" | "hybrid" | (string & {});
 export const InstancesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalType =
   /*@__PURE__*/ S.String;
 
@@ -614,7 +618,8 @@ export type InstancesChatCompletionsRequestModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesChatCompletionsRequestModel = /*@__PURE__*/ S.String;
 
 export interface ChatCompletionsInstanceRequest {
@@ -652,7 +657,7 @@ export const ChatCompletionsInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChatCompletionsInstanceRequest>;
 
 export type InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0Type =
-  "text";
+  "text" | (string & {});
 export const InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0Type =
   /*@__PURE__*/ S.String;
 
@@ -685,7 +690,7 @@ export const InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemC
   }) as any as S.Schema<InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl>;
 
 export type InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type =
-  "image_url";
+  "image_url" | (string & {});
 export const InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type =
   /*@__PURE__*/ S.String;
 
@@ -736,7 +741,8 @@ export type InstancesChatCompletionsResponseChoicesItemMessageRole =
   | "developer"
   | "user"
   | "assistant"
-  | "tool";
+  | "tool"
+  | (string & {});
 export const InstancesChatCompletionsResponseChoicesItemMessageRole =
   /*@__PURE__*/ S.String;
 
@@ -803,7 +809,7 @@ export const InstancesChatCompletionsResponseChunksItemItem =
   }) as any as S.Schema<InstancesChatCompletionsResponseChunksItemItem>;
 
 export type InstancesChatCompletionsResponseChunksItemScoringDetailsFusionMethod =
-  "rrf" | "max";
+  "rrf" | "max" | (string & {});
 export const InstancesChatCompletionsResponseChunksItemScoringDetailsFusionMethod =
   /*@__PURE__*/ S.String;
 
@@ -893,7 +899,11 @@ export const NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList =
   ) as any as S.Schema<NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList>;
 
 export type NamespacesChatCompletionsRequestAiSearchOptionsCacheCacheThreshold =
-  "super_strict_match" | "close_enough" | "flexible_friend" | "anything_goes";
+    | "super_strict_match"
+    | "close_enough"
+    | "flexible_friend"
+    | "anything_goes"
+    | (string & {});
 export const NamespacesChatCompletionsRequestAiSearchOptionsCacheCacheThreshold =
   /*@__PURE__*/ S.String;
 
@@ -945,7 +955,8 @@ export type NamespacesChatCompletionsRequestAiSearchOptionsQueryRewriteModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesChatCompletionsRequestAiSearchOptionsQueryRewriteModel =
   /*@__PURE__*/ S.String;
 
@@ -969,7 +980,8 @@ export const NamespacesChatCompletionsRequestAiSearchOptionsQueryRewrite =
 
 export type NamespacesChatCompletionsRequestAiSearchOptionsRerankingModel =
   | "@cf/baai/bge-reranker-base"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesChatCompletionsRequestAiSearchOptionsRerankingModel =
   /*@__PURE__*/ S.String;
 
@@ -992,7 +1004,7 @@ export const NamespacesChatCompletionsRequestAiSearchOptionsReranking =
   }) as any as S.Schema<NamespacesChatCompletionsRequestAiSearchOptionsReranking>;
 
 export type NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  "asc" | "desc" | "exists" | "not_exists" | (string & {});
 export const NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -1031,17 +1043,17 @@ export const NamespacesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap 
   ) as any as S.Schema<NamespacesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap>;
 
 export type NamespacesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod =
-  "max" | "rrf";
+  "max" | "rrf" | (string & {});
 export const NamespacesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod =
   /*@__PURE__*/ S.String;
 
 export type NamespacesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode =
-  "and" | "or";
+  "and" | "or" | (string & {});
 export const NamespacesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode =
   /*@__PURE__*/ S.String;
 
 export type NamespacesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalType =
-  "vector" | "keyword" | "hybrid";
+  "vector" | "keyword" | "hybrid" | (string & {});
 export const NamespacesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalType =
   /*@__PURE__*/ S.String;
 
@@ -1125,7 +1137,7 @@ export const NamespacesChatCompletionsRequestAiSearchOptions =
   }) as any as S.Schema<NamespacesChatCompletionsRequestAiSearchOptions>;
 
 export type NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase0Type =
-  "text";
+  "text" | (string & {});
 export const NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase0Type =
   /*@__PURE__*/ S.String;
 
@@ -1158,7 +1170,7 @@ export const NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1Im
   }) as any as S.Schema<NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl>;
 
 export type NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type =
-  "image_url";
+  "image_url" | (string & {});
 export const NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type =
   /*@__PURE__*/ S.String;
 
@@ -1209,7 +1221,8 @@ export type NamespacesChatCompletionsRequestMessagesItemRole =
   | "developer"
   | "user"
   | "assistant"
-  | "tool";
+  | "tool"
+  | (string & {});
 export const NamespacesChatCompletionsRequestMessagesItemRole =
   /*@__PURE__*/ S.String;
 
@@ -1264,7 +1277,8 @@ export type NamespacesChatCompletionsRequestModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesChatCompletionsRequestModel = /*@__PURE__*/ S.String;
 
 export interface ChatCompletionsNamespaceRequest {
@@ -1299,7 +1313,7 @@ export const ChatCompletionsNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChatCompletionsNamespaceRequest>;
 
 export type NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0Type =
-  "text";
+  "text" | (string & {});
 export const NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0Type =
   /*@__PURE__*/ S.String;
 
@@ -1332,7 +1346,7 @@ export const NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item
   }) as any as S.Schema<NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl>;
 
 export type NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type =
-  "image_url";
+  "image_url" | (string & {});
 export const NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type =
   /*@__PURE__*/ S.String;
 
@@ -1383,7 +1397,8 @@ export type NamespacesChatCompletionsResponseChoicesItemMessageRole =
   | "developer"
   | "user"
   | "assistant"
-  | "tool";
+  | "tool"
+  | (string & {});
 export const NamespacesChatCompletionsResponseChoicesItemMessageRole =
   /*@__PURE__*/ S.String;
 
@@ -1450,7 +1465,7 @@ export const NamespacesChatCompletionsResponseChunksItemItem =
   }) as any as S.Schema<NamespacesChatCompletionsResponseChunksItemItem>;
 
 export type NamespacesChatCompletionsResponseChunksItemScoringDetailsFusionMethod =
-  "rrf" | "max";
+  "rrf" | "max" | (string & {});
 export const NamespacesChatCompletionsResponseChunksItemScoringDetailsFusionMethod =
   /*@__PURE__*/ S.String;
 
@@ -1536,7 +1551,7 @@ export const ChatCompletionsNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChatCompletionsNamespaceResponse>;
 
 export type NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0Type =
-  "text";
+  "text" | (string & {});
 export const NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0Type =
   /*@__PURE__*/ S.String;
 
@@ -1569,7 +1584,7 @@ export const NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1It
   }) as any as S.Schema<NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl>;
 
 export type NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type =
-  "image_url";
+  "image_url" | (string & {});
 export const NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type =
   /*@__PURE__*/ S.String;
 
@@ -1620,7 +1635,8 @@ export type NamespacesInstancesChatCompletionsRequestMessagesItemRole =
   | "developer"
   | "user"
   | "assistant"
-  | "tool";
+  | "tool"
+  | (string & {});
 export const NamespacesInstancesChatCompletionsRequestMessagesItemRole =
   /*@__PURE__*/ S.String;
 
@@ -1646,7 +1662,11 @@ export const NamespacesInstancesChatCompletionsRequestMessagesList =
   ) as any as S.Schema<NamespacesInstancesChatCompletionsRequestMessagesList>;
 
 export type NamespacesInstancesChatCompletionsRequestAiSearchOptionsCacheCacheThreshold =
-  "super_strict_match" | "close_enough" | "flexible_friend" | "anything_goes";
+    | "super_strict_match"
+    | "close_enough"
+    | "flexible_friend"
+    | "anything_goes"
+    | (string & {});
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsCacheCacheThreshold =
   /*@__PURE__*/ S.String;
 
@@ -1698,7 +1718,8 @@ export type NamespacesInstancesChatCompletionsRequestAiSearchOptionsQueryRewrite
     | "openai/gpt-5"
     | "openai/gpt-5-mini"
     | "openai/gpt-5-nano"
-    | "";
+    | ""
+    | (string & {});
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsQueryRewriteModel =
   /*@__PURE__*/ S.String;
 
@@ -1722,7 +1743,7 @@ export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsQueryRewrit
   }) as any as S.Schema<NamespacesInstancesChatCompletionsRequestAiSearchOptionsQueryRewrite>;
 
 export type NamespacesInstancesChatCompletionsRequestAiSearchOptionsRerankingModel =
-  "@cf/baai/bge-reranker-base" | "";
+  "@cf/baai/bge-reranker-base" | "" | (string & {});
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsRerankingModel =
   /*@__PURE__*/ S.String;
 
@@ -1746,7 +1767,7 @@ export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsReranking =
   }) as any as S.Schema<NamespacesInstancesChatCompletionsRequestAiSearchOptionsReranking>;
 
 export type NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  "asc" | "desc" | "exists" | "not_exists" | (string & {});
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -1785,17 +1806,17 @@ export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalFi
   ) as any as S.Schema<NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap>;
 
 export type NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod =
-  "max" | "rrf";
+  "max" | "rrf" | (string & {});
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode =
-  "and" | "or";
+  "and" | "or" | (string & {});
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalType =
-  "vector" | "keyword" | "hybrid";
+  "vector" | "keyword" | "hybrid" | (string & {});
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalType =
   /*@__PURE__*/ S.String;
 
@@ -1906,7 +1927,8 @@ export type NamespacesInstancesChatCompletionsRequestModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesChatCompletionsRequestModel =
   /*@__PURE__*/ S.String;
 
@@ -1948,7 +1970,7 @@ export const ChatCompletionsNamespaceInstanceRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ChatCompletionsNamespaceInstanceRequest>;
 
 export type NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0Type =
-  "text";
+  "text" | (string & {});
 export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0Type =
   /*@__PURE__*/ S.String;
 
@@ -1981,7 +2003,7 @@ export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageContent
   }) as any as S.Schema<NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl>;
 
 export type NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type =
-  "image_url";
+  "image_url" | (string & {});
 export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type =
   /*@__PURE__*/ S.String;
 
@@ -2032,7 +2054,8 @@ export type NamespacesInstancesChatCompletionsResponseChoicesItemMessageRole =
   | "developer"
   | "user"
   | "assistant"
-  | "tool";
+  | "tool"
+  | (string & {});
 export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageRole =
   /*@__PURE__*/ S.String;
 
@@ -2099,7 +2122,7 @@ export const NamespacesInstancesChatCompletionsResponseChunksItemItem =
   }) as any as S.Schema<NamespacesInstancesChatCompletionsResponseChunksItemItem>;
 
 export type NamespacesInstancesChatCompletionsResponseChunksItemScoringDetailsFusionMethod =
-  "rrf" | "max";
+  "rrf" | "max" | (string & {});
 export const NamespacesInstancesChatCompletionsResponseChunksItemScoringDetailsFusionMethod =
   /*@__PURE__*/ S.String;
 
@@ -2307,14 +2330,16 @@ export type InstancesCreateRequestAiSearchModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesCreateRequestAiSearchModel = /*@__PURE__*/ S.String;
 
 export type InstancesCreateRequestCacheThreshold =
   | "super_strict_match"
   | "close_enough"
   | "flexible_friend"
-  | "anything_goes";
+  | "anything_goes"
+  | (string & {});
 export const InstancesCreateRequestCacheThreshold = /*@__PURE__*/ S.String;
 
 export type InstancesCreateRequestCacheTtl =
@@ -2327,14 +2352,16 @@ export type InstancesCreateRequestCacheTtl =
   | 86400
   | 172800
   | 259200
-  | 518400;
+  | 518400
+  | (number & {});
 export const InstancesCreateRequestCacheTtl = /*@__PURE__*/ S.Number;
 
 export type InstancesCreateRequestCustomMetadataItemDataType =
   | "text"
   | "number"
   | "boolean"
-  | "datetime";
+  | "datetime"
+  | (string & {});
 export const InstancesCreateRequestCustomMetadataItemDataType =
   /*@__PURE__*/ S.String;
 
@@ -2371,10 +2398,11 @@ export type InstancesCreateRequestEmbeddingModel =
   | "google-ai-studio/gemini-embedding-2"
   | "openai/text-embedding-3-small"
   | "openai/text-embedding-3-large"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesCreateRequestEmbeddingModel = /*@__PURE__*/ S.String;
 
-export type InstancesCreateRequestFusionMethod = "max" | "rrf";
+export type InstancesCreateRequestFusionMethod = "max" | "rrf" | (string & {});
 export const InstancesCreateRequestFusionMethod = /*@__PURE__*/ S.String;
 
 export interface InstancesCreateRequestIndexMethod {
@@ -2394,7 +2422,8 @@ export const InstancesCreateRequestIndexMethod = /*@__PURE__*/ S.suspend(() =>
 
 export type InstancesCreateRequestIndexingOptionsKeywordTokenizer =
   | "porter"
-  | "trigram";
+  | "trigram"
+  | (string & {});
 export const InstancesCreateRequestIndexingOptionsKeywordTokenizer =
   /*@__PURE__*/ S.String;
 
@@ -2475,7 +2504,8 @@ export const InstancesCreateRequestPublicEndpointParamsMcp =
 
 export type InstancesCreateRequestPublicEndpointParamsRateLimitTechnique =
   | "fixed"
-  | "sliding";
+  | "sliding"
+  | (string & {});
 export const InstancesCreateRequestPublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
@@ -2557,14 +2587,16 @@ export const InstancesCreateRequestPublicEndpointParams =
 
 export type InstancesCreateRequestRerankingModel =
   | "@cf/baai/bge-reranker-base"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesCreateRequestRerankingModel = /*@__PURE__*/ S.String;
 
 export type InstancesCreateRequestRetrievalOptionsBoostByItemDirection =
   | "asc"
   | "desc"
   | "exists"
-  | "not_exists";
+  | "not_exists"
+  | (string & {});
 export const InstancesCreateRequestRetrievalOptionsBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -2595,7 +2627,8 @@ export const InstancesCreateRequestRetrievalOptionsBoostByList =
 
 export type InstancesCreateRequestRetrievalOptionsKeywordMatchMode =
   | "and"
-  | "or";
+  | "or"
+  | (string & {});
 export const InstancesCreateRequestRetrievalOptionsKeywordMatchMode =
   /*@__PURE__*/ S.String;
 
@@ -2653,7 +2686,8 @@ export type InstancesCreateRequestRewriteModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesCreateRequestRewriteModel = /*@__PURE__*/ S.String;
 
 export type InstancesCreateRequestSourceParamsExcludeItemsList =
@@ -2748,11 +2782,16 @@ export const InstancesCreateRequestSourceParamsWebCrawlerParseOptions =
 
 export type InstancesCreateRequestSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "crawl";
+  | "crawl"
+  | (string & {});
 export const InstancesCreateRequestSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
-export type WebCrawlerCrawlOptionsSource = "all" | "sitemaps" | "links";
+export type WebCrawlerCrawlOptionsSource =
+  | "all"
+  | "sitemaps"
+  | "links"
+  | (string & {});
 export const WebCrawlerCrawlOptionsSource = /*@__PURE__*/ S.String;
 
 export interface WebCrawlerCrawlOptions {
@@ -2844,10 +2883,11 @@ export type InstancesCreateRequestSyncInterval =
   | 14400
   | 21600
   | 43200
-  | 86400;
+  | 86400
+  | (number & {});
 export const InstancesCreateRequestSyncInterval = /*@__PURE__*/ S.Number;
 
-export type InstancesCreateRequestType = "r2" | "web-crawler";
+export type InstancesCreateRequestType = "r2" | "web-crawler" | (string & {});
 export const InstancesCreateRequestType = /*@__PURE__*/ S.String;
 
 export interface CreateInstanceRequest {
@@ -2994,14 +3034,16 @@ export type InstancesCreateResponseAiSearchModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesCreateResponseAiSearchModel = /*@__PURE__*/ S.String;
 
 export type InstancesCreateResponseCacheThreshold =
   | "super_strict_match"
   | "close_enough"
   | "flexible_friend"
-  | "anything_goes";
+  | "anything_goes"
+  | (string & {});
 export const InstancesCreateResponseCacheThreshold = /*@__PURE__*/ S.String;
 
 export type InstancesCreateResponseCacheTtl =
@@ -3014,14 +3056,16 @@ export type InstancesCreateResponseCacheTtl =
   | 86400
   | 172800
   | 259200
-  | 518400;
+  | 518400
+  | (number & {});
 export const InstancesCreateResponseCacheTtl = /*@__PURE__*/ S.Number;
 
 export type InstancesCreateResponseCustomMetadataItemDataType =
   | "text"
   | "number"
   | "boolean"
-  | "datetime";
+  | "datetime"
+  | (string & {});
 export const InstancesCreateResponseCustomMetadataItemDataType =
   /*@__PURE__*/ S.String;
 
@@ -3058,10 +3102,11 @@ export type InstancesCreateResponseEmbeddingModel =
   | "google-ai-studio/gemini-embedding-2"
   | "openai/text-embedding-3-small"
   | "openai/text-embedding-3-large"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesCreateResponseEmbeddingModel = /*@__PURE__*/ S.String;
 
-export type InstancesCreateResponseFusionMethod = "max" | "rrf";
+export type InstancesCreateResponseFusionMethod = "max" | "rrf" | (string & {});
 export const InstancesCreateResponseFusionMethod = /*@__PURE__*/ S.String;
 
 export interface InstancesCreateResponseIndexMethod {
@@ -3081,7 +3126,8 @@ export const InstancesCreateResponseIndexMethod = /*@__PURE__*/ S.suspend(() =>
 
 export type InstancesCreateResponseIndexingOptionsKeywordTokenizer =
   | "porter"
-  | "trigram";
+  | "trigram"
+  | (string & {});
 export const InstancesCreateResponseIndexingOptionsKeywordTokenizer =
   /*@__PURE__*/ S.String;
 
@@ -3162,7 +3208,8 @@ export const InstancesCreateResponsePublicEndpointParamsMcp =
 
 export type InstancesCreateResponsePublicEndpointParamsRateLimitTechnique =
   | "fixed"
-  | "sliding";
+  | "sliding"
+  | (string & {});
 export const InstancesCreateResponsePublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
@@ -3244,14 +3291,16 @@ export const InstancesCreateResponsePublicEndpointParams =
 
 export type InstancesCreateResponseRerankingModel =
   | "@cf/baai/bge-reranker-base"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesCreateResponseRerankingModel = /*@__PURE__*/ S.String;
 
 export type InstancesCreateResponseRetrievalOptionsBoostByItemDirection =
   | "asc"
   | "desc"
   | "exists"
-  | "not_exists";
+  | "not_exists"
+  | (string & {});
 export const InstancesCreateResponseRetrievalOptionsBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -3282,7 +3331,8 @@ export const InstancesCreateResponseRetrievalOptionsBoostByList =
 
 export type InstancesCreateResponseRetrievalOptionsKeywordMatchMode =
   | "and"
-  | "or";
+  | "or"
+  | (string & {});
 export const InstancesCreateResponseRetrievalOptionsKeywordMatchMode =
   /*@__PURE__*/ S.String;
 
@@ -3340,7 +3390,8 @@ export type InstancesCreateResponseRewriteModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesCreateResponseRewriteModel = /*@__PURE__*/ S.String;
 
 export type InstancesCreateResponseSourceParamsExcludeItemsList =
@@ -3435,7 +3486,8 @@ export const InstancesCreateResponseSourceParamsWebCrawlerParseOptions =
 
 export type InstancesCreateResponseSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "crawl";
+  | "crawl"
+  | (string & {});
 export const InstancesCreateResponseSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
@@ -3505,10 +3557,11 @@ export type InstancesCreateResponseSyncInterval =
   | 14400
   | 21600
   | 43200
-  | 86400;
+  | 86400
+  | (number & {});
 export const InstancesCreateResponseSyncInterval = /*@__PURE__*/ S.Number;
 
-export type InstancesCreateResponseType = "r2" | "web-crawler";
+export type InstancesCreateResponseType = "r2" | "web-crawler" | (string & {});
 export const InstancesCreateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3660,7 +3713,10 @@ export const CreateInstanceJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateInstanceJobRequest",
 }) as any as S.Schema<CreateInstanceJobRequest>;
 
-export type InstancesJobsCreateResponseSource = "user" | "schedule";
+export type InstancesJobsCreateResponseSource =
+  | "user"
+  | "schedule"
+  | (string & {});
 export const InstancesJobsCreateResponseSource = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3758,7 +3814,8 @@ export type NamespacesInstancesCreateRequestAiSearchModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesCreateRequestAiSearchModel =
   /*@__PURE__*/ S.String;
 
@@ -3766,7 +3823,8 @@ export type NamespacesInstancesCreateRequestCacheThreshold =
   | "super_strict_match"
   | "close_enough"
   | "flexible_friend"
-  | "anything_goes";
+  | "anything_goes"
+  | (string & {});
 export const NamespacesInstancesCreateRequestCacheThreshold =
   /*@__PURE__*/ S.String;
 
@@ -3780,14 +3838,16 @@ export type NamespacesInstancesCreateRequestCacheTtl =
   | 86400
   | 172800
   | 259200
-  | 518400;
+  | 518400
+  | (number & {});
 export const NamespacesInstancesCreateRequestCacheTtl = /*@__PURE__*/ S.Number;
 
 export type NamespacesInstancesCreateRequestCustomMetadataItemDataType =
   | "text"
   | "number"
   | "boolean"
-  | "datetime";
+  | "datetime"
+  | (string & {});
 export const NamespacesInstancesCreateRequestCustomMetadataItemDataType =
   /*@__PURE__*/ S.String;
 
@@ -3825,11 +3885,15 @@ export type NamespacesInstancesCreateRequestEmbeddingModel =
   | "google-ai-studio/gemini-embedding-2"
   | "openai/text-embedding-3-small"
   | "openai/text-embedding-3-large"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesCreateRequestEmbeddingModel =
   /*@__PURE__*/ S.String;
 
-export type NamespacesInstancesCreateRequestFusionMethod = "max" | "rrf";
+export type NamespacesInstancesCreateRequestFusionMethod =
+  | "max"
+  | "rrf"
+  | (string & {});
 export const NamespacesInstancesCreateRequestFusionMethod =
   /*@__PURE__*/ S.String;
 
@@ -3851,7 +3915,8 @@ export const NamespacesInstancesCreateRequestIndexMethod =
 
 export type NamespacesInstancesCreateRequestIndexingOptionsKeywordTokenizer =
   | "porter"
-  | "trigram";
+  | "trigram"
+  | (string & {});
 export const NamespacesInstancesCreateRequestIndexingOptionsKeywordTokenizer =
   /*@__PURE__*/ S.String;
 
@@ -3932,7 +3997,7 @@ export const NamespacesInstancesCreateRequestPublicEndpointParamsMcp =
   }) as any as S.Schema<NamespacesInstancesCreateRequestPublicEndpointParamsMcp>;
 
 export type NamespacesInstancesCreateRequestPublicEndpointParamsRateLimitTechnique =
-  "fixed" | "sliding";
+  "fixed" | "sliding" | (string & {});
 export const NamespacesInstancesCreateRequestPublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
@@ -4015,12 +4080,13 @@ export const NamespacesInstancesCreateRequestPublicEndpointParams =
 
 export type NamespacesInstancesCreateRequestRerankingModel =
   | "@cf/baai/bge-reranker-base"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesCreateRequestRerankingModel =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesCreateRequestRetrievalOptionsBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  "asc" | "desc" | "exists" | "not_exists" | (string & {});
 export const NamespacesInstancesCreateRequestRetrievalOptionsBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -4051,7 +4117,8 @@ export const NamespacesInstancesCreateRequestRetrievalOptionsBoostByList =
 
 export type NamespacesInstancesCreateRequestRetrievalOptionsKeywordMatchMode =
   | "and"
-  | "or";
+  | "or"
+  | (string & {});
 export const NamespacesInstancesCreateRequestRetrievalOptionsKeywordMatchMode =
   /*@__PURE__*/ S.String;
 
@@ -4109,7 +4176,8 @@ export type NamespacesInstancesCreateRequestRewriteModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesCreateRequestRewriteModel =
   /*@__PURE__*/ S.String;
 
@@ -4206,7 +4274,8 @@ export const NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptions 
 
 export type NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "crawl";
+  | "crawl"
+  | (string & {});
 export const NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
@@ -4279,11 +4348,15 @@ export type NamespacesInstancesCreateRequestSyncInterval =
   | 14400
   | 21600
   | 43200
-  | 86400;
+  | 86400
+  | (number & {});
 export const NamespacesInstancesCreateRequestSyncInterval =
   /*@__PURE__*/ S.Number;
 
-export type NamespacesInstancesCreateRequestType = "r2" | "web-crawler";
+export type NamespacesInstancesCreateRequestType =
+  | "r2"
+  | "web-crawler"
+  | (string & {});
 export const NamespacesInstancesCreateRequestType = /*@__PURE__*/ S.String;
 
 export interface CreateNamespaceInstanceRequest {
@@ -4454,7 +4527,8 @@ export type NamespacesInstancesCreateResponseAiSearchModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesCreateResponseAiSearchModel =
   /*@__PURE__*/ S.String;
 
@@ -4462,7 +4536,8 @@ export type NamespacesInstancesCreateResponseCacheThreshold =
   | "super_strict_match"
   | "close_enough"
   | "flexible_friend"
-  | "anything_goes";
+  | "anything_goes"
+  | (string & {});
 export const NamespacesInstancesCreateResponseCacheThreshold =
   /*@__PURE__*/ S.String;
 
@@ -4476,14 +4551,16 @@ export type NamespacesInstancesCreateResponseCacheTtl =
   | 86400
   | 172800
   | 259200
-  | 518400;
+  | 518400
+  | (number & {});
 export const NamespacesInstancesCreateResponseCacheTtl = /*@__PURE__*/ S.Number;
 
 export type NamespacesInstancesCreateResponseCustomMetadataItemDataType =
   | "text"
   | "number"
   | "boolean"
-  | "datetime";
+  | "datetime"
+  | (string & {});
 export const NamespacesInstancesCreateResponseCustomMetadataItemDataType =
   /*@__PURE__*/ S.String;
 
@@ -4522,11 +4599,15 @@ export type NamespacesInstancesCreateResponseEmbeddingModel =
   | "google-ai-studio/gemini-embedding-2"
   | "openai/text-embedding-3-small"
   | "openai/text-embedding-3-large"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesCreateResponseEmbeddingModel =
   /*@__PURE__*/ S.String;
 
-export type NamespacesInstancesCreateResponseFusionMethod = "max" | "rrf";
+export type NamespacesInstancesCreateResponseFusionMethod =
+  | "max"
+  | "rrf"
+  | (string & {});
 export const NamespacesInstancesCreateResponseFusionMethod =
   /*@__PURE__*/ S.String;
 
@@ -4548,7 +4629,8 @@ export const NamespacesInstancesCreateResponseIndexMethod =
 
 export type NamespacesInstancesCreateResponseIndexingOptionsKeywordTokenizer =
   | "porter"
-  | "trigram";
+  | "trigram"
+  | (string & {});
 export const NamespacesInstancesCreateResponseIndexingOptionsKeywordTokenizer =
   /*@__PURE__*/ S.String;
 
@@ -4629,7 +4711,7 @@ export const NamespacesInstancesCreateResponsePublicEndpointParamsMcp =
   }) as any as S.Schema<NamespacesInstancesCreateResponsePublicEndpointParamsMcp>;
 
 export type NamespacesInstancesCreateResponsePublicEndpointParamsRateLimitTechnique =
-  "fixed" | "sliding";
+  "fixed" | "sliding" | (string & {});
 export const NamespacesInstancesCreateResponsePublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
@@ -4713,12 +4795,13 @@ export const NamespacesInstancesCreateResponsePublicEndpointParams =
 
 export type NamespacesInstancesCreateResponseRerankingModel =
   | "@cf/baai/bge-reranker-base"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesCreateResponseRerankingModel =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesCreateResponseRetrievalOptionsBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  "asc" | "desc" | "exists" | "not_exists" | (string & {});
 export const NamespacesInstancesCreateResponseRetrievalOptionsBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -4749,7 +4832,8 @@ export const NamespacesInstancesCreateResponseRetrievalOptionsBoostByList =
 
 export type NamespacesInstancesCreateResponseRetrievalOptionsKeywordMatchMode =
   | "and"
-  | "or";
+  | "or"
+  | (string & {});
 export const NamespacesInstancesCreateResponseRetrievalOptionsKeywordMatchMode =
   /*@__PURE__*/ S.String;
 
@@ -4807,7 +4891,8 @@ export type NamespacesInstancesCreateResponseRewriteModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesCreateResponseRewriteModel =
   /*@__PURE__*/ S.String;
 
@@ -4904,7 +4989,8 @@ export const NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions
 
 export type NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "crawl";
+  | "crawl"
+  | (string & {});
 export const NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
@@ -4977,11 +5063,15 @@ export type NamespacesInstancesCreateResponseSyncInterval =
   | 14400
   | 21600
   | 43200
-  | 86400;
+  | 86400
+  | (number & {});
 export const NamespacesInstancesCreateResponseSyncInterval =
   /*@__PURE__*/ S.Number;
 
-export type NamespacesInstancesCreateResponseType = "r2" | "web-crawler";
+export type NamespacesInstancesCreateResponseType =
+  | "r2"
+  | "web-crawler"
+  | (string & {});
 export const NamespacesInstancesCreateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -5157,7 +5247,10 @@ export const CreateNamespaceInstanceJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateNamespaceInstanceJobRequest",
 }) as any as S.Schema<CreateNamespaceInstanceJobRequest>;
 
-export type NamespacesInstancesJobsCreateResponseSource = "user" | "schedule";
+export type NamespacesInstancesJobsCreateResponseSource =
+  | "user"
+  | "schedule"
+  | (string & {});
 export const NamespacesInstancesJobsCreateResponseSource =
   /*@__PURE__*/ S.String;
 
@@ -5185,7 +5278,9 @@ export const CreateNamespaceInstanceJobResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateNamespaceInstanceJobResponse",
 }) as any as S.Schema<CreateNamespaceInstanceJobResponse>;
 
-export type NamespacesInstancesItemsCreateOrUpdateRequestNextAction = "INDEX";
+export type NamespacesInstancesItemsCreateOrUpdateRequestNextAction =
+  | "INDEX"
+  | (string & {});
 export const NamespacesInstancesItemsCreateOrUpdateRequestNextAction =
   /*@__PURE__*/ S.String;
 
@@ -5228,7 +5323,8 @@ export const CreateOrUpdateNamespaceInstanceItemRequest =
 
 export type NamespacesInstancesItemsCreateOrUpdateResponseNextAction =
   | "INDEX"
-  | "DELETE";
+  | "DELETE"
+  | (string & {});
 export const NamespacesInstancesItemsCreateOrUpdateResponseNextAction =
   /*@__PURE__*/ S.String;
 
@@ -5238,7 +5334,8 @@ export type NamespacesInstancesItemsCreateOrUpdateResponseStatus =
   | "completed"
   | "error"
   | "skipped"
-  | "outdated";
+  | "outdated"
+  | (string & {});
 export const NamespacesInstancesItemsCreateOrUpdateResponseStatus =
   /*@__PURE__*/ S.String;
 
@@ -5386,14 +5483,16 @@ export type InstancesDeleteResponseAiSearchModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesDeleteResponseAiSearchModel = /*@__PURE__*/ S.String;
 
 export type InstancesDeleteResponseCacheThreshold =
   | "super_strict_match"
   | "close_enough"
   | "flexible_friend"
-  | "anything_goes";
+  | "anything_goes"
+  | (string & {});
 export const InstancesDeleteResponseCacheThreshold = /*@__PURE__*/ S.String;
 
 export type InstancesDeleteResponseCacheTtl =
@@ -5406,14 +5505,16 @@ export type InstancesDeleteResponseCacheTtl =
   | 86400
   | 172800
   | 259200
-  | 518400;
+  | 518400
+  | (number & {});
 export const InstancesDeleteResponseCacheTtl = /*@__PURE__*/ S.Number;
 
 export type InstancesDeleteResponseCustomMetadataItemDataType =
   | "text"
   | "number"
   | "boolean"
-  | "datetime";
+  | "datetime"
+  | (string & {});
 export const InstancesDeleteResponseCustomMetadataItemDataType =
   /*@__PURE__*/ S.String;
 
@@ -5450,10 +5551,11 @@ export type InstancesDeleteResponseEmbeddingModel =
   | "google-ai-studio/gemini-embedding-2"
   | "openai/text-embedding-3-small"
   | "openai/text-embedding-3-large"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesDeleteResponseEmbeddingModel = /*@__PURE__*/ S.String;
 
-export type InstancesDeleteResponseFusionMethod = "max" | "rrf";
+export type InstancesDeleteResponseFusionMethod = "max" | "rrf" | (string & {});
 export const InstancesDeleteResponseFusionMethod = /*@__PURE__*/ S.String;
 
 export interface InstancesDeleteResponseIndexMethod {
@@ -5473,7 +5575,8 @@ export const InstancesDeleteResponseIndexMethod = /*@__PURE__*/ S.suspend(() =>
 
 export type InstancesDeleteResponseIndexingOptionsKeywordTokenizer =
   | "porter"
-  | "trigram";
+  | "trigram"
+  | (string & {});
 export const InstancesDeleteResponseIndexingOptionsKeywordTokenizer =
   /*@__PURE__*/ S.String;
 
@@ -5554,7 +5657,8 @@ export const InstancesDeleteResponsePublicEndpointParamsMcp =
 
 export type InstancesDeleteResponsePublicEndpointParamsRateLimitTechnique =
   | "fixed"
-  | "sliding";
+  | "sliding"
+  | (string & {});
 export const InstancesDeleteResponsePublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
@@ -5636,14 +5740,16 @@ export const InstancesDeleteResponsePublicEndpointParams =
 
 export type InstancesDeleteResponseRerankingModel =
   | "@cf/baai/bge-reranker-base"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesDeleteResponseRerankingModel = /*@__PURE__*/ S.String;
 
 export type InstancesDeleteResponseRetrievalOptionsBoostByItemDirection =
   | "asc"
   | "desc"
   | "exists"
-  | "not_exists";
+  | "not_exists"
+  | (string & {});
 export const InstancesDeleteResponseRetrievalOptionsBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -5674,7 +5780,8 @@ export const InstancesDeleteResponseRetrievalOptionsBoostByList =
 
 export type InstancesDeleteResponseRetrievalOptionsKeywordMatchMode =
   | "and"
-  | "or";
+  | "or"
+  | (string & {});
 export const InstancesDeleteResponseRetrievalOptionsKeywordMatchMode =
   /*@__PURE__*/ S.String;
 
@@ -5732,7 +5839,8 @@ export type InstancesDeleteResponseRewriteModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesDeleteResponseRewriteModel = /*@__PURE__*/ S.String;
 
 export type InstancesDeleteResponseSourceParamsExcludeItemsList =
@@ -5827,7 +5935,8 @@ export const InstancesDeleteResponseSourceParamsWebCrawlerParseOptions =
 
 export type InstancesDeleteResponseSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "crawl";
+  | "crawl"
+  | (string & {});
 export const InstancesDeleteResponseSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
@@ -5897,10 +6006,11 @@ export type InstancesDeleteResponseSyncInterval =
   | 14400
   | 21600
   | 43200
-  | 86400;
+  | 86400
+  | (number & {});
 export const InstancesDeleteResponseSyncInterval = /*@__PURE__*/ S.Number;
 
-export type InstancesDeleteResponseType = "r2" | "web-crawler";
+export type InstancesDeleteResponseType = "r2" | "web-crawler" | (string & {});
 export const InstancesDeleteResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -6109,7 +6219,8 @@ export type NamespacesInstancesDeleteResponseAiSearchModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesDeleteResponseAiSearchModel =
   /*@__PURE__*/ S.String;
 
@@ -6117,7 +6228,8 @@ export type NamespacesInstancesDeleteResponseCacheThreshold =
   | "super_strict_match"
   | "close_enough"
   | "flexible_friend"
-  | "anything_goes";
+  | "anything_goes"
+  | (string & {});
 export const NamespacesInstancesDeleteResponseCacheThreshold =
   /*@__PURE__*/ S.String;
 
@@ -6131,14 +6243,16 @@ export type NamespacesInstancesDeleteResponseCacheTtl =
   | 86400
   | 172800
   | 259200
-  | 518400;
+  | 518400
+  | (number & {});
 export const NamespacesInstancesDeleteResponseCacheTtl = /*@__PURE__*/ S.Number;
 
 export type NamespacesInstancesDeleteResponseCustomMetadataItemDataType =
   | "text"
   | "number"
   | "boolean"
-  | "datetime";
+  | "datetime"
+  | (string & {});
 export const NamespacesInstancesDeleteResponseCustomMetadataItemDataType =
   /*@__PURE__*/ S.String;
 
@@ -6177,11 +6291,15 @@ export type NamespacesInstancesDeleteResponseEmbeddingModel =
   | "google-ai-studio/gemini-embedding-2"
   | "openai/text-embedding-3-small"
   | "openai/text-embedding-3-large"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesDeleteResponseEmbeddingModel =
   /*@__PURE__*/ S.String;
 
-export type NamespacesInstancesDeleteResponseFusionMethod = "max" | "rrf";
+export type NamespacesInstancesDeleteResponseFusionMethod =
+  | "max"
+  | "rrf"
+  | (string & {});
 export const NamespacesInstancesDeleteResponseFusionMethod =
   /*@__PURE__*/ S.String;
 
@@ -6203,7 +6321,8 @@ export const NamespacesInstancesDeleteResponseIndexMethod =
 
 export type NamespacesInstancesDeleteResponseIndexingOptionsKeywordTokenizer =
   | "porter"
-  | "trigram";
+  | "trigram"
+  | (string & {});
 export const NamespacesInstancesDeleteResponseIndexingOptionsKeywordTokenizer =
   /*@__PURE__*/ S.String;
 
@@ -6284,7 +6403,7 @@ export const NamespacesInstancesDeleteResponsePublicEndpointParamsMcp =
   }) as any as S.Schema<NamespacesInstancesDeleteResponsePublicEndpointParamsMcp>;
 
 export type NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimitTechnique =
-  "fixed" | "sliding";
+  "fixed" | "sliding" | (string & {});
 export const NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
@@ -6368,12 +6487,13 @@ export const NamespacesInstancesDeleteResponsePublicEndpointParams =
 
 export type NamespacesInstancesDeleteResponseRerankingModel =
   | "@cf/baai/bge-reranker-base"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesDeleteResponseRerankingModel =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  "asc" | "desc" | "exists" | "not_exists" | (string & {});
 export const NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -6404,7 +6524,8 @@ export const NamespacesInstancesDeleteResponseRetrievalOptionsBoostByList =
 
 export type NamespacesInstancesDeleteResponseRetrievalOptionsKeywordMatchMode =
   | "and"
-  | "or";
+  | "or"
+  | (string & {});
 export const NamespacesInstancesDeleteResponseRetrievalOptionsKeywordMatchMode =
   /*@__PURE__*/ S.String;
 
@@ -6462,7 +6583,8 @@ export type NamespacesInstancesDeleteResponseRewriteModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesDeleteResponseRewriteModel =
   /*@__PURE__*/ S.String;
 
@@ -6559,7 +6681,8 @@ export const NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptions
 
 export type NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "crawl";
+  | "crawl"
+  | (string & {});
 export const NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
@@ -6632,11 +6755,15 @@ export type NamespacesInstancesDeleteResponseSyncInterval =
   | 14400
   | 21600
   | 43200
-  | 86400;
+  | 86400
+  | (number & {});
 export const NamespacesInstancesDeleteResponseSyncInterval =
   /*@__PURE__*/ S.Number;
 
-export type NamespacesInstancesDeleteResponseType = "r2" | "web-crawler";
+export type NamespacesInstancesDeleteResponseType =
+  | "r2"
+  | "web-crawler"
+  | (string & {});
 export const NamespacesInstancesDeleteResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -6910,7 +7037,10 @@ export const GetInstanceJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInstanceJobRequest",
 }) as any as S.Schema<GetInstanceJobRequest>;
 
-export type InstancesJobsGetResponseSource = "user" | "schedule";
+export type InstancesJobsGetResponseSource =
+  | "user"
+  | "schedule"
+  | (string & {});
 export const InstancesJobsGetResponseSource = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -6963,7 +7093,10 @@ export const GetNamespaceInstanceItemRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetNamespaceInstanceItemRequest",
 }) as any as S.Schema<GetNamespaceInstanceItemRequest>;
 
-export type NamespacesInstancesItemsGetResponseNextAction = "INDEX" | "DELETE";
+export type NamespacesInstancesItemsGetResponseNextAction =
+  | "INDEX"
+  | "DELETE"
+  | (string & {});
 export const NamespacesInstancesItemsGetResponseNextAction =
   /*@__PURE__*/ S.String;
 
@@ -6973,7 +7106,8 @@ export type NamespacesInstancesItemsGetResponseStatus =
   | "completed"
   | "error"
   | "skipped"
-  | "outdated";
+  | "outdated"
+  | (string & {});
 export const NamespacesInstancesItemsGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -7039,7 +7173,10 @@ export const GetNamespaceInstanceJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetNamespaceInstanceJobRequest",
 }) as any as S.Schema<GetNamespaceInstanceJobRequest>;
 
-export type NamespacesInstancesJobsGetResponseSource = "user" | "schedule";
+export type NamespacesInstancesJobsGetResponseSource =
+  | "user"
+  | "schedule"
+  | (string & {});
 export const NamespacesInstancesJobsGetResponseSource = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -7092,7 +7229,10 @@ export const ListInstanceJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInstanceJobsRequest",
 }) as any as S.Schema<ListInstanceJobsRequest>;
 
-export type InstancesJobsListResultItemSource = "user" | "schedule";
+export type InstancesJobsListResultItemSource =
+  | "user"
+  | "schedule"
+  | (string & {});
 export const InstancesJobsListResultItemSource = /*@__PURE__*/ S.String;
 
 export interface InstancesJobsListResultItem {
@@ -7139,10 +7279,13 @@ export const ListInstanceJobsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInstanceJobsResponse",
 }) as any as S.Schema<ListInstanceJobsResponse>;
 
-export type InstancesListRequestOrderBy = "created_at";
+export type InstancesListRequestOrderBy = "created_at" | (string & {});
 export const InstancesListRequestOrderBy = /*@__PURE__*/ S.String;
 
-export type InstancesListRequestOrderByDirection = "asc" | "desc";
+export type InstancesListRequestOrderByDirection =
+  | "asc"
+  | "desc"
+  | (string & {});
 export const InstancesListRequestOrderByDirection = /*@__PURE__*/ S.String;
 
 export interface ListInstancesRequest {
@@ -7214,14 +7357,16 @@ export type InstancesListResultItemAiSearchModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesListResultItemAiSearchModel = /*@__PURE__*/ S.String;
 
 export type InstancesListResultItemCacheThreshold =
   | "super_strict_match"
   | "close_enough"
   | "flexible_friend"
-  | "anything_goes";
+  | "anything_goes"
+  | (string & {});
 export const InstancesListResultItemCacheThreshold = /*@__PURE__*/ S.String;
 
 export type InstancesListResultItemCacheTtl =
@@ -7234,14 +7379,16 @@ export type InstancesListResultItemCacheTtl =
   | 86400
   | 172800
   | 259200
-  | 518400;
+  | 518400
+  | (number & {});
 export const InstancesListResultItemCacheTtl = /*@__PURE__*/ S.Number;
 
 export type InstancesListResultItemCustomMetadataItemDataType =
   | "text"
   | "number"
   | "boolean"
-  | "datetime";
+  | "datetime"
+  | (string & {});
 export const InstancesListResultItemCustomMetadataItemDataType =
   /*@__PURE__*/ S.String;
 
@@ -7278,10 +7425,11 @@ export type InstancesListResultItemEmbeddingModel =
   | "google-ai-studio/gemini-embedding-2"
   | "openai/text-embedding-3-small"
   | "openai/text-embedding-3-large"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesListResultItemEmbeddingModel = /*@__PURE__*/ S.String;
 
-export type InstancesListResultItemFusionMethod = "max" | "rrf";
+export type InstancesListResultItemFusionMethod = "max" | "rrf" | (string & {});
 export const InstancesListResultItemFusionMethod = /*@__PURE__*/ S.String;
 
 export interface InstancesListResultItemIndexMethod {
@@ -7301,7 +7449,8 @@ export const InstancesListResultItemIndexMethod = /*@__PURE__*/ S.suspend(() =>
 
 export type InstancesListResultItemIndexingOptionsKeywordTokenizer =
   | "porter"
-  | "trigram";
+  | "trigram"
+  | (string & {});
 export const InstancesListResultItemIndexingOptionsKeywordTokenizer =
   /*@__PURE__*/ S.String;
 
@@ -7382,7 +7531,8 @@ export const InstancesListResultItemPublicEndpointParamsMcp =
 
 export type InstancesListResultItemPublicEndpointParamsRateLimitTechnique =
   | "fixed"
-  | "sliding";
+  | "sliding"
+  | (string & {});
 export const InstancesListResultItemPublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
@@ -7464,14 +7614,16 @@ export const InstancesListResultItemPublicEndpointParams =
 
 export type InstancesListResultItemRerankingModel =
   | "@cf/baai/bge-reranker-base"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesListResultItemRerankingModel = /*@__PURE__*/ S.String;
 
 export type InstancesListResultItemRetrievalOptionsBoostByItemDirection =
   | "asc"
   | "desc"
   | "exists"
-  | "not_exists";
+  | "not_exists"
+  | (string & {});
 export const InstancesListResultItemRetrievalOptionsBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -7502,7 +7654,8 @@ export const InstancesListResultItemRetrievalOptionsBoostByList =
 
 export type InstancesListResultItemRetrievalOptionsKeywordMatchMode =
   | "and"
-  | "or";
+  | "or"
+  | (string & {});
 export const InstancesListResultItemRetrievalOptionsKeywordMatchMode =
   /*@__PURE__*/ S.String;
 
@@ -7560,7 +7713,8 @@ export type InstancesListResultItemRewriteModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesListResultItemRewriteModel = /*@__PURE__*/ S.String;
 
 export type InstancesListResultItemSourceParamsExcludeItemsList =
@@ -7655,7 +7809,8 @@ export const InstancesListResultItemSourceParamsWebCrawlerParseOptions =
 
 export type InstancesListResultItemSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "crawl";
+  | "crawl"
+  | (string & {});
 export const InstancesListResultItemSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
@@ -7725,10 +7880,11 @@ export type InstancesListResultItemSyncInterval =
   | 14400
   | 21600
   | 43200
-  | 86400;
+  | 86400
+  | (number & {});
 export const InstancesListResultItemSyncInterval = /*@__PURE__*/ S.Number;
 
-export type InstancesListResultItemType = "r2" | "web-crawler";
+export type InstancesListResultItemType = "r2" | "web-crawler" | (string & {});
 export const InstancesListResultItemType = /*@__PURE__*/ S.String;
 
 export interface InstancesListResultItem {
@@ -7877,7 +8033,8 @@ export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type NamespacesInstancesItemsListRequestSortBy =
   | "status"
-  | "modified_at";
+  | "modified_at"
+  | (string & {});
 export const NamespacesInstancesItemsListRequestSortBy = /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesItemsListRequestStatus =
@@ -7886,7 +8043,8 @@ export type NamespacesInstancesItemsListRequestStatus =
   | "completed"
   | "error"
   | "skipped"
-  | "outdated";
+  | "outdated"
+  | (string & {});
 export const NamespacesInstancesItemsListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ListNamespaceInstanceItemsRequest {
@@ -7939,7 +8097,8 @@ export const ListNamespaceInstanceItemsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type NamespacesInstancesItemsListResultItemNextAction =
   | "INDEX"
-  | "DELETE";
+  | "DELETE"
+  | (string & {});
 export const NamespacesInstancesItemsListResultItemNextAction =
   /*@__PURE__*/ S.String;
 
@@ -7949,7 +8108,8 @@ export type NamespacesInstancesItemsListResultItemStatus =
   | "completed"
   | "error"
   | "skipped"
-  | "outdated";
+  | "outdated"
+  | (string & {});
 export const NamespacesInstancesItemsListResultItemStatus =
   /*@__PURE__*/ S.String;
 
@@ -8039,7 +8199,10 @@ export const ListNamespaceInstanceJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNamespaceInstanceJobsRequest",
 }) as any as S.Schema<ListNamespaceInstanceJobsRequest>;
 
-export type NamespacesInstancesJobsListResultItemSource = "user" | "schedule";
+export type NamespacesInstancesJobsListResultItemSource =
+  | "user"
+  | "schedule"
+  | (string & {});
 export const NamespacesInstancesJobsListResultItemSource =
   /*@__PURE__*/ S.String;
 
@@ -8088,10 +8251,15 @@ export const ListNamespaceInstanceJobsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNamespaceInstanceJobsResponse",
 }) as any as S.Schema<ListNamespaceInstanceJobsResponse>;
 
-export type NamespacesInstancesListRequestOrderBy = "created_at";
+export type NamespacesInstancesListRequestOrderBy =
+  | "created_at"
+  | (string & {});
 export const NamespacesInstancesListRequestOrderBy = /*@__PURE__*/ S.String;
 
-export type NamespacesInstancesListRequestOrderByDirection = "asc" | "desc";
+export type NamespacesInstancesListRequestOrderByDirection =
+  | "asc"
+  | "desc"
+  | (string & {});
 export const NamespacesInstancesListRequestOrderByDirection =
   /*@__PURE__*/ S.String;
 
@@ -8170,7 +8338,8 @@ export type NamespacesInstancesListResultItemAiSearchModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesListResultItemAiSearchModel =
   /*@__PURE__*/ S.String;
 
@@ -8178,7 +8347,8 @@ export type NamespacesInstancesListResultItemCacheThreshold =
   | "super_strict_match"
   | "close_enough"
   | "flexible_friend"
-  | "anything_goes";
+  | "anything_goes"
+  | (string & {});
 export const NamespacesInstancesListResultItemCacheThreshold =
   /*@__PURE__*/ S.String;
 
@@ -8192,14 +8362,16 @@ export type NamespacesInstancesListResultItemCacheTtl =
   | 86400
   | 172800
   | 259200
-  | 518400;
+  | 518400
+  | (number & {});
 export const NamespacesInstancesListResultItemCacheTtl = /*@__PURE__*/ S.Number;
 
 export type NamespacesInstancesListResultItemCustomMetadataItemDataType =
   | "text"
   | "number"
   | "boolean"
-  | "datetime";
+  | "datetime"
+  | (string & {});
 export const NamespacesInstancesListResultItemCustomMetadataItemDataType =
   /*@__PURE__*/ S.String;
 
@@ -8238,11 +8410,15 @@ export type NamespacesInstancesListResultItemEmbeddingModel =
   | "google-ai-studio/gemini-embedding-2"
   | "openai/text-embedding-3-small"
   | "openai/text-embedding-3-large"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesListResultItemEmbeddingModel =
   /*@__PURE__*/ S.String;
 
-export type NamespacesInstancesListResultItemFusionMethod = "max" | "rrf";
+export type NamespacesInstancesListResultItemFusionMethod =
+  | "max"
+  | "rrf"
+  | (string & {});
 export const NamespacesInstancesListResultItemFusionMethod =
   /*@__PURE__*/ S.String;
 
@@ -8264,7 +8440,8 @@ export const NamespacesInstancesListResultItemIndexMethod =
 
 export type NamespacesInstancesListResultItemIndexingOptionsKeywordTokenizer =
   | "porter"
-  | "trigram";
+  | "trigram"
+  | (string & {});
 export const NamespacesInstancesListResultItemIndexingOptionsKeywordTokenizer =
   /*@__PURE__*/ S.String;
 
@@ -8345,7 +8522,7 @@ export const NamespacesInstancesListResultItemPublicEndpointParamsMcp =
   }) as any as S.Schema<NamespacesInstancesListResultItemPublicEndpointParamsMcp>;
 
 export type NamespacesInstancesListResultItemPublicEndpointParamsRateLimitTechnique =
-  "fixed" | "sliding";
+  "fixed" | "sliding" | (string & {});
 export const NamespacesInstancesListResultItemPublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
@@ -8429,12 +8606,13 @@ export const NamespacesInstancesListResultItemPublicEndpointParams =
 
 export type NamespacesInstancesListResultItemRerankingModel =
   | "@cf/baai/bge-reranker-base"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesListResultItemRerankingModel =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesListResultItemRetrievalOptionsBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  "asc" | "desc" | "exists" | "not_exists" | (string & {});
 export const NamespacesInstancesListResultItemRetrievalOptionsBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -8465,7 +8643,8 @@ export const NamespacesInstancesListResultItemRetrievalOptionsBoostByList =
 
 export type NamespacesInstancesListResultItemRetrievalOptionsKeywordMatchMode =
   | "and"
-  | "or";
+  | "or"
+  | (string & {});
 export const NamespacesInstancesListResultItemRetrievalOptionsKeywordMatchMode =
   /*@__PURE__*/ S.String;
 
@@ -8523,7 +8702,8 @@ export type NamespacesInstancesListResultItemRewriteModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesListResultItemRewriteModel =
   /*@__PURE__*/ S.String;
 
@@ -8620,7 +8800,8 @@ export const NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptions
 
 export type NamespacesInstancesListResultItemSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "crawl";
+  | "crawl"
+  | (string & {});
 export const NamespacesInstancesListResultItemSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
@@ -8693,11 +8874,15 @@ export type NamespacesInstancesListResultItemSyncInterval =
   | 14400
   | 21600
   | 43200
-  | 86400;
+  | 86400
+  | (number & {});
 export const NamespacesInstancesListResultItemSyncInterval =
   /*@__PURE__*/ S.Number;
 
-export type NamespacesInstancesListResultItemType = "r2" | "web-crawler";
+export type NamespacesInstancesListResultItemType =
+  | "r2"
+  | "web-crawler"
+  | (string & {});
 export const NamespacesInstancesListResultItemType = /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesListResultItem {
@@ -9194,7 +9379,9 @@ export const LogsNamespaceInstanceJobResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsNamespaceInstanceJobResponse",
 }) as any as S.Schema<LogsNamespaceInstanceJobResponse>;
 
-export type NamespacesInstancesJobsUpdateRequestAction = "cancel";
+export type NamespacesInstancesJobsUpdateRequestAction =
+  | "cancel"
+  | (string & {});
 export const NamespacesInstancesJobsUpdateRequestAction =
   /*@__PURE__*/ S.String;
 
@@ -9226,7 +9413,10 @@ export const PatchNamespaceInstanceJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchNamespaceInstanceJobRequest",
 }) as any as S.Schema<PatchNamespaceInstanceJobRequest>;
 
-export type NamespacesInstancesJobsUpdateResponseSource = "user" | "schedule";
+export type NamespacesInstancesJobsUpdateResponseSource =
+  | "user"
+  | "schedule"
+  | (string & {});
 export const NamespacesInstancesJobsUpdateResponseSource =
   /*@__PURE__*/ S.String;
 
@@ -9305,14 +9495,16 @@ export type InstancesReadResponseAiSearchModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesReadResponseAiSearchModel = /*@__PURE__*/ S.String;
 
 export type InstancesReadResponseCacheThreshold =
   | "super_strict_match"
   | "close_enough"
   | "flexible_friend"
-  | "anything_goes";
+  | "anything_goes"
+  | (string & {});
 export const InstancesReadResponseCacheThreshold = /*@__PURE__*/ S.String;
 
 export type InstancesReadResponseCacheTtl =
@@ -9325,14 +9517,16 @@ export type InstancesReadResponseCacheTtl =
   | 86400
   | 172800
   | 259200
-  | 518400;
+  | 518400
+  | (number & {});
 export const InstancesReadResponseCacheTtl = /*@__PURE__*/ S.Number;
 
 export type InstancesReadResponseCustomMetadataItemDataType =
   | "text"
   | "number"
   | "boolean"
-  | "datetime";
+  | "datetime"
+  | (string & {});
 export const InstancesReadResponseCustomMetadataItemDataType =
   /*@__PURE__*/ S.String;
 
@@ -9369,10 +9563,11 @@ export type InstancesReadResponseEmbeddingModel =
   | "google-ai-studio/gemini-embedding-2"
   | "openai/text-embedding-3-small"
   | "openai/text-embedding-3-large"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesReadResponseEmbeddingModel = /*@__PURE__*/ S.String;
 
-export type InstancesReadResponseFusionMethod = "max" | "rrf";
+export type InstancesReadResponseFusionMethod = "max" | "rrf" | (string & {});
 export const InstancesReadResponseFusionMethod = /*@__PURE__*/ S.String;
 
 export interface InstancesReadResponseIndexMethod {
@@ -9392,7 +9587,8 @@ export const InstancesReadResponseIndexMethod = /*@__PURE__*/ S.suspend(() =>
 
 export type InstancesReadResponseIndexingOptionsKeywordTokenizer =
   | "porter"
-  | "trigram";
+  | "trigram"
+  | (string & {});
 export const InstancesReadResponseIndexingOptionsKeywordTokenizer =
   /*@__PURE__*/ S.String;
 
@@ -9473,7 +9669,8 @@ export const InstancesReadResponsePublicEndpointParamsMcp =
 
 export type InstancesReadResponsePublicEndpointParamsRateLimitTechnique =
   | "fixed"
-  | "sliding";
+  | "sliding"
+  | (string & {});
 export const InstancesReadResponsePublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
@@ -9555,14 +9752,16 @@ export const InstancesReadResponsePublicEndpointParams =
 
 export type InstancesReadResponseRerankingModel =
   | "@cf/baai/bge-reranker-base"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesReadResponseRerankingModel = /*@__PURE__*/ S.String;
 
 export type InstancesReadResponseRetrievalOptionsBoostByItemDirection =
   | "asc"
   | "desc"
   | "exists"
-  | "not_exists";
+  | "not_exists"
+  | (string & {});
 export const InstancesReadResponseRetrievalOptionsBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -9593,7 +9792,8 @@ export const InstancesReadResponseRetrievalOptionsBoostByList =
 
 export type InstancesReadResponseRetrievalOptionsKeywordMatchMode =
   | "and"
-  | "or";
+  | "or"
+  | (string & {});
 export const InstancesReadResponseRetrievalOptionsKeywordMatchMode =
   /*@__PURE__*/ S.String;
 
@@ -9651,7 +9851,8 @@ export type InstancesReadResponseRewriteModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesReadResponseRewriteModel = /*@__PURE__*/ S.String;
 
 export type InstancesReadResponseSourceParamsExcludeItemsList =
@@ -9746,7 +9947,8 @@ export const InstancesReadResponseSourceParamsWebCrawlerParseOptions =
 
 export type InstancesReadResponseSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "crawl";
+  | "crawl"
+  | (string & {});
 export const InstancesReadResponseSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
@@ -9816,10 +10018,11 @@ export type InstancesReadResponseSyncInterval =
   | 14400
   | 21600
   | 43200
-  | 86400;
+  | 86400
+  | (number & {});
 export const InstancesReadResponseSyncInterval = /*@__PURE__*/ S.Number;
 
-export type InstancesReadResponseType = "r2" | "web-crawler";
+export type InstancesReadResponseType = "r2" | "web-crawler" | (string & {});
 export const InstancesReadResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -10038,7 +10241,8 @@ export type NamespacesInstancesReadResponseAiSearchModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesReadResponseAiSearchModel =
   /*@__PURE__*/ S.String;
 
@@ -10046,7 +10250,8 @@ export type NamespacesInstancesReadResponseCacheThreshold =
   | "super_strict_match"
   | "close_enough"
   | "flexible_friend"
-  | "anything_goes";
+  | "anything_goes"
+  | (string & {});
 export const NamespacesInstancesReadResponseCacheThreshold =
   /*@__PURE__*/ S.String;
 
@@ -10060,14 +10265,16 @@ export type NamespacesInstancesReadResponseCacheTtl =
   | 86400
   | 172800
   | 259200
-  | 518400;
+  | 518400
+  | (number & {});
 export const NamespacesInstancesReadResponseCacheTtl = /*@__PURE__*/ S.Number;
 
 export type NamespacesInstancesReadResponseCustomMetadataItemDataType =
   | "text"
   | "number"
   | "boolean"
-  | "datetime";
+  | "datetime"
+  | (string & {});
 export const NamespacesInstancesReadResponseCustomMetadataItemDataType =
   /*@__PURE__*/ S.String;
 
@@ -10105,11 +10312,15 @@ export type NamespacesInstancesReadResponseEmbeddingModel =
   | "google-ai-studio/gemini-embedding-2"
   | "openai/text-embedding-3-small"
   | "openai/text-embedding-3-large"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesReadResponseEmbeddingModel =
   /*@__PURE__*/ S.String;
 
-export type NamespacesInstancesReadResponseFusionMethod = "max" | "rrf";
+export type NamespacesInstancesReadResponseFusionMethod =
+  | "max"
+  | "rrf"
+  | (string & {});
 export const NamespacesInstancesReadResponseFusionMethod =
   /*@__PURE__*/ S.String;
 
@@ -10131,7 +10342,8 @@ export const NamespacesInstancesReadResponseIndexMethod =
 
 export type NamespacesInstancesReadResponseIndexingOptionsKeywordTokenizer =
   | "porter"
-  | "trigram";
+  | "trigram"
+  | (string & {});
 export const NamespacesInstancesReadResponseIndexingOptionsKeywordTokenizer =
   /*@__PURE__*/ S.String;
 
@@ -10212,7 +10424,7 @@ export const NamespacesInstancesReadResponsePublicEndpointParamsMcp =
   }) as any as S.Schema<NamespacesInstancesReadResponsePublicEndpointParamsMcp>;
 
 export type NamespacesInstancesReadResponsePublicEndpointParamsRateLimitTechnique =
-  "fixed" | "sliding";
+  "fixed" | "sliding" | (string & {});
 export const NamespacesInstancesReadResponsePublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
@@ -10295,12 +10507,13 @@ export const NamespacesInstancesReadResponsePublicEndpointParams =
 
 export type NamespacesInstancesReadResponseRerankingModel =
   | "@cf/baai/bge-reranker-base"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesReadResponseRerankingModel =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesReadResponseRetrievalOptionsBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  "asc" | "desc" | "exists" | "not_exists" | (string & {});
 export const NamespacesInstancesReadResponseRetrievalOptionsBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -10331,7 +10544,8 @@ export const NamespacesInstancesReadResponseRetrievalOptionsBoostByList =
 
 export type NamespacesInstancesReadResponseRetrievalOptionsKeywordMatchMode =
   | "and"
-  | "or";
+  | "or"
+  | (string & {});
 export const NamespacesInstancesReadResponseRetrievalOptionsKeywordMatchMode =
   /*@__PURE__*/ S.String;
 
@@ -10389,7 +10603,8 @@ export type NamespacesInstancesReadResponseRewriteModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesReadResponseRewriteModel =
   /*@__PURE__*/ S.String;
 
@@ -10486,7 +10701,8 @@ export const NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptions =
 
 export type NamespacesInstancesReadResponseSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "crawl";
+  | "crawl"
+  | (string & {});
 export const NamespacesInstancesReadResponseSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
@@ -10559,11 +10775,15 @@ export type NamespacesInstancesReadResponseSyncInterval =
   | 14400
   | 21600
   | 43200
-  | 86400;
+  | 86400
+  | (number & {});
 export const NamespacesInstancesReadResponseSyncInterval =
   /*@__PURE__*/ S.Number;
 
-export type NamespacesInstancesReadResponseType = "r2" | "web-crawler";
+export type NamespacesInstancesReadResponseType =
+  | "r2"
+  | "web-crawler"
+  | (string & {});
 export const NamespacesInstancesReadResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -10758,7 +10978,8 @@ export type InstancesSearchRequestAiSearchOptionsCacheCacheThreshold =
   | "super_strict_match"
   | "close_enough"
   | "flexible_friend"
-  | "anything_goes";
+  | "anything_goes"
+  | (string & {});
 export const InstancesSearchRequestAiSearchOptionsCacheCacheThreshold =
   /*@__PURE__*/ S.String;
 
@@ -10810,7 +11031,8 @@ export type InstancesSearchRequestAiSearchOptionsQueryRewriteModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesSearchRequestAiSearchOptionsQueryRewriteModel =
   /*@__PURE__*/ S.String;
 
@@ -10832,7 +11054,8 @@ export const InstancesSearchRequestAiSearchOptionsQueryRewrite =
 
 export type InstancesSearchRequestAiSearchOptionsRerankingModel =
   | "@cf/baai/bge-reranker-base"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesSearchRequestAiSearchOptionsRerankingModel =
   /*@__PURE__*/ S.String;
 
@@ -10853,7 +11076,7 @@ export const InstancesSearchRequestAiSearchOptionsReranking =
   }) as any as S.Schema<InstancesSearchRequestAiSearchOptionsReranking>;
 
 export type InstancesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  "asc" | "desc" | "exists" | "not_exists" | (string & {});
 export const InstancesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -10893,20 +11116,23 @@ export const InstancesSearchRequestAiSearchOptionsRetrievalFiltersMap =
 
 export type InstancesSearchRequestAiSearchOptionsRetrievalFusionMethod =
   | "max"
-  | "rrf";
+  | "rrf"
+  | (string & {});
 export const InstancesSearchRequestAiSearchOptionsRetrievalFusionMethod =
   /*@__PURE__*/ S.String;
 
 export type InstancesSearchRequestAiSearchOptionsRetrievalKeywordMatchMode =
   | "and"
-  | "or";
+  | "or"
+  | (string & {});
 export const InstancesSearchRequestAiSearchOptionsRetrievalKeywordMatchMode =
   /*@__PURE__*/ S.String;
 
 export type InstancesSearchRequestAiSearchOptionsRetrievalRetrievalType =
   | "vector"
   | "keyword"
-  | "hybrid";
+  | "hybrid"
+  | (string & {});
 export const InstancesSearchRequestAiSearchOptionsRetrievalRetrievalType =
   /*@__PURE__*/ S.String;
 
@@ -10981,7 +11207,8 @@ export const InstancesSearchRequestAiSearchOptions = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstancesSearchRequestAiSearchOptions>;
 
 export type InstancesSearchRequestMessagesItemContentCase1ItemCase0Type =
-  "text";
+  | "text"
+  | (string & {});
 export const InstancesSearchRequestMessagesItemContentCase1ItemCase0Type =
   /*@__PURE__*/ S.String;
 
@@ -11013,7 +11240,8 @@ export const InstancesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl =
   }) as any as S.Schema<InstancesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl>;
 
 export type InstancesSearchRequestMessagesItemContentCase1ItemCase1Type =
-  "image_url";
+  | "image_url"
+  | (string & {});
 export const InstancesSearchRequestMessagesItemContentCase1ItemCase1Type =
   /*@__PURE__*/ S.String;
 
@@ -11063,7 +11291,8 @@ export type InstancesSearchRequestMessagesItemRole =
   | "developer"
   | "user"
   | "assistant"
-  | "tool";
+  | "tool"
+  | (string & {});
 export const InstancesSearchRequestMessagesItemRole = /*@__PURE__*/ S.String;
 
 export interface InstancesSearchRequestMessagesItem {
@@ -11144,7 +11373,8 @@ export const InstancesSearchResponseChunksItemItem = /*@__PURE__*/ S.suspend(
 
 export type InstancesSearchResponseChunksItemScoringDetailsFusionMethod =
   | "rrf"
-  | "max";
+  | "max"
+  | (string & {});
 export const InstancesSearchResponseChunksItemScoringDetailsFusionMethod =
   /*@__PURE__*/ S.String;
 
@@ -11205,7 +11435,11 @@ export const InstancesSearchResponseChunksList = /*@__PURE__*/ S.Array(
   InstancesSearchResponseChunksItem,
 ) as any as S.Schema<InstancesSearchResponseChunksList>;
 
-export type InstancesSearchResponseQueryKind = "text" | "image" | "multimodal";
+export type InstancesSearchResponseQueryKind =
+  | "text"
+  | "image"
+  | "multimodal"
+  | (string & {});
 export const InstancesSearchResponseQueryKind = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -11235,7 +11469,8 @@ export type NamespacesSearchRequestAiSearchOptionsCacheCacheThreshold =
   | "super_strict_match"
   | "close_enough"
   | "flexible_friend"
-  | "anything_goes";
+  | "anything_goes"
+  | (string & {});
 export const NamespacesSearchRequestAiSearchOptionsCacheCacheThreshold =
   /*@__PURE__*/ S.String;
 
@@ -11287,7 +11522,8 @@ export type NamespacesSearchRequestAiSearchOptionsQueryRewriteModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesSearchRequestAiSearchOptionsQueryRewriteModel =
   /*@__PURE__*/ S.String;
 
@@ -11311,7 +11547,8 @@ export const NamespacesSearchRequestAiSearchOptionsQueryRewrite =
 
 export type NamespacesSearchRequestAiSearchOptionsRerankingModel =
   | "@cf/baai/bge-reranker-base"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesSearchRequestAiSearchOptionsRerankingModel =
   /*@__PURE__*/ S.String;
 
@@ -11332,7 +11569,7 @@ export const NamespacesSearchRequestAiSearchOptionsReranking =
   }) as any as S.Schema<NamespacesSearchRequestAiSearchOptionsReranking>;
 
 export type NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  "asc" | "desc" | "exists" | "not_exists" | (string & {});
 export const NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -11372,20 +11609,23 @@ export const NamespacesSearchRequestAiSearchOptionsRetrievalFiltersMap =
 
 export type NamespacesSearchRequestAiSearchOptionsRetrievalFusionMethod =
   | "max"
-  | "rrf";
+  | "rrf"
+  | (string & {});
 export const NamespacesSearchRequestAiSearchOptionsRetrievalFusionMethod =
   /*@__PURE__*/ S.String;
 
 export type NamespacesSearchRequestAiSearchOptionsRetrievalKeywordMatchMode =
   | "and"
-  | "or";
+  | "or"
+  | (string & {});
 export const NamespacesSearchRequestAiSearchOptionsRetrievalKeywordMatchMode =
   /*@__PURE__*/ S.String;
 
 export type NamespacesSearchRequestAiSearchOptionsRetrievalRetrievalType =
   | "vector"
   | "keyword"
-  | "hybrid";
+  | "hybrid"
+  | (string & {});
 export const NamespacesSearchRequestAiSearchOptionsRetrievalRetrievalType =
   /*@__PURE__*/ S.String;
 
@@ -11464,7 +11704,8 @@ export const NamespacesSearchRequestAiSearchOptions = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NamespacesSearchRequestAiSearchOptions>;
 
 export type NamespacesSearchRequestMessagesItemContentCase1ItemCase0Type =
-  "text";
+  | "text"
+  | (string & {});
 export const NamespacesSearchRequestMessagesItemContentCase1ItemCase0Type =
   /*@__PURE__*/ S.String;
 
@@ -11496,7 +11737,8 @@ export const NamespacesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl =
   }) as any as S.Schema<NamespacesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl>;
 
 export type NamespacesSearchRequestMessagesItemContentCase1ItemCase1Type =
-  "image_url";
+  | "image_url"
+  | (string & {});
 export const NamespacesSearchRequestMessagesItemContentCase1ItemCase1Type =
   /*@__PURE__*/ S.String;
 
@@ -11546,7 +11788,8 @@ export type NamespacesSearchRequestMessagesItemRole =
   | "developer"
   | "user"
   | "assistant"
-  | "tool";
+  | "tool"
+  | (string & {});
 export const NamespacesSearchRequestMessagesItemRole = /*@__PURE__*/ S.String;
 
 export interface NamespacesSearchRequestMessagesItem {
@@ -11626,7 +11869,8 @@ export const NamespacesSearchResponseChunksItemItem = /*@__PURE__*/ S.suspend(
 
 export type NamespacesSearchResponseChunksItemScoringDetailsFusionMethod =
   | "rrf"
-  | "max";
+  | "max"
+  | (string & {});
 export const NamespacesSearchResponseChunksItemScoringDetailsFusionMethod =
   /*@__PURE__*/ S.String;
 
@@ -11689,7 +11933,11 @@ export const NamespacesSearchResponseChunksList = /*@__PURE__*/ S.Array(
   NamespacesSearchResponseChunksItem,
 ) as any as S.Schema<NamespacesSearchResponseChunksList>;
 
-export type NamespacesSearchResponseQueryKind = "text" | "image" | "multimodal";
+export type NamespacesSearchResponseQueryKind =
+  | "text"
+  | "image"
+  | "multimodal"
+  | (string & {});
 export const NamespacesSearchResponseQueryKind = /*@__PURE__*/ S.String;
 
 export interface NamespacesSearchResponseErrorsItem {
@@ -11730,7 +11978,11 @@ export const SearchNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchNamespaceResponse>;
 
 export type NamespacesInstancesSearchRequestAiSearchOptionsCacheCacheThreshold =
-  "super_strict_match" | "close_enough" | "flexible_friend" | "anything_goes";
+    | "super_strict_match"
+    | "close_enough"
+    | "flexible_friend"
+    | "anything_goes"
+    | (string & {});
 export const NamespacesInstancesSearchRequestAiSearchOptionsCacheCacheThreshold =
   /*@__PURE__*/ S.String;
 
@@ -11782,7 +12034,8 @@ export type NamespacesInstancesSearchRequestAiSearchOptionsQueryRewriteModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesSearchRequestAiSearchOptionsQueryRewriteModel =
   /*@__PURE__*/ S.String;
 
@@ -11806,7 +12059,8 @@ export const NamespacesInstancesSearchRequestAiSearchOptionsQueryRewrite =
 
 export type NamespacesInstancesSearchRequestAiSearchOptionsRerankingModel =
   | "@cf/baai/bge-reranker-base"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesSearchRequestAiSearchOptionsRerankingModel =
   /*@__PURE__*/ S.String;
 
@@ -11829,7 +12083,7 @@ export const NamespacesInstancesSearchRequestAiSearchOptionsReranking =
   }) as any as S.Schema<NamespacesInstancesSearchRequestAiSearchOptionsReranking>;
 
 export type NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  "asc" | "desc" | "exists" | "not_exists" | (string & {});
 export const NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -11868,17 +12122,17 @@ export const NamespacesInstancesSearchRequestAiSearchOptionsRetrievalFiltersMap 
   ) as any as S.Schema<NamespacesInstancesSearchRequestAiSearchOptionsRetrievalFiltersMap>;
 
 export type NamespacesInstancesSearchRequestAiSearchOptionsRetrievalFusionMethod =
-  "max" | "rrf";
+  "max" | "rrf" | (string & {});
 export const NamespacesInstancesSearchRequestAiSearchOptionsRetrievalFusionMethod =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesSearchRequestAiSearchOptionsRetrievalKeywordMatchMode =
-  "and" | "or";
+  "and" | "or" | (string & {});
 export const NamespacesInstancesSearchRequestAiSearchOptionsRetrievalKeywordMatchMode =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesSearchRequestAiSearchOptionsRetrievalRetrievalType =
-  "vector" | "keyword" | "hybrid";
+  "vector" | "keyword" | "hybrid" | (string & {});
 export const NamespacesInstancesSearchRequestAiSearchOptionsRetrievalRetrievalType =
   /*@__PURE__*/ S.String;
 
@@ -11957,7 +12211,7 @@ export const NamespacesInstancesSearchRequestAiSearchOptions =
   }) as any as S.Schema<NamespacesInstancesSearchRequestAiSearchOptions>;
 
 export type NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase0Type =
-  "text";
+  "text" | (string & {});
 export const NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase0Type =
   /*@__PURE__*/ S.String;
 
@@ -11990,7 +12244,7 @@ export const NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1Im
   }) as any as S.Schema<NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl>;
 
 export type NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1Type =
-  "image_url";
+  "image_url" | (string & {});
 export const NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1Type =
   /*@__PURE__*/ S.String;
 
@@ -12041,7 +12295,8 @@ export type NamespacesInstancesSearchRequestMessagesItemRole =
   | "developer"
   | "user"
   | "assistant"
-  | "tool";
+  | "tool"
+  | (string & {});
 export const NamespacesInstancesSearchRequestMessagesItemRole =
   /*@__PURE__*/ S.String;
 
@@ -12130,7 +12385,7 @@ export const NamespacesInstancesSearchResponseChunksItemItem =
   }) as any as S.Schema<NamespacesInstancesSearchResponseChunksItemItem>;
 
 export type NamespacesInstancesSearchResponseChunksItemScoringDetailsFusionMethod =
-  "rrf" | "max";
+  "rrf" | "max" | (string & {});
 export const NamespacesInstancesSearchResponseChunksItemScoringDetailsFusionMethod =
   /*@__PURE__*/ S.String;
 
@@ -12196,7 +12451,8 @@ export const NamespacesInstancesSearchResponseChunksList =
 export type NamespacesInstancesSearchResponseQueryKind =
   | "text"
   | "image"
-  | "multimodal";
+  | "multimodal"
+  | (string & {});
 export const NamespacesInstancesSearchResponseQueryKind =
   /*@__PURE__*/ S.String;
 
@@ -12473,7 +12729,9 @@ export const StatsNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StatsNamespaceInstanceResponse",
 }) as any as S.Schema<StatsNamespaceInstanceResponse>;
 
-export type NamespacesInstancesItemsSyncRequestNextAction = "INDEX";
+export type NamespacesInstancesItemsSyncRequestNextAction =
+  | "INDEX"
+  | (string & {});
 export const NamespacesInstancesItemsSyncRequestNextAction =
   /*@__PURE__*/ S.String;
 
@@ -12512,7 +12770,10 @@ export const SyncNamespaceInstanceItemRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SyncNamespaceInstanceItemRequest",
 }) as any as S.Schema<SyncNamespaceInstanceItemRequest>;
 
-export type NamespacesInstancesItemsSyncResponseNextAction = "INDEX" | "DELETE";
+export type NamespacesInstancesItemsSyncResponseNextAction =
+  | "INDEX"
+  | "DELETE"
+  | (string & {});
 export const NamespacesInstancesItemsSyncResponseNextAction =
   /*@__PURE__*/ S.String;
 
@@ -12522,7 +12783,8 @@ export type NamespacesInstancesItemsSyncResponseStatus =
   | "completed"
   | "error"
   | "skipped"
-  | "outdated";
+  | "outdated"
+  | (string & {});
 export const NamespacesInstancesItemsSyncResponseStatus =
   /*@__PURE__*/ S.String;
 
@@ -12593,14 +12855,16 @@ export type InstancesUpdateRequestAiSearchModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesUpdateRequestAiSearchModel = /*@__PURE__*/ S.String;
 
 export type InstancesUpdateRequestCacheThreshold =
   | "super_strict_match"
   | "close_enough"
   | "flexible_friend"
-  | "anything_goes";
+  | "anything_goes"
+  | (string & {});
 export const InstancesUpdateRequestCacheThreshold = /*@__PURE__*/ S.String;
 
 export type InstancesUpdateRequestCacheTtl =
@@ -12613,14 +12877,16 @@ export type InstancesUpdateRequestCacheTtl =
   | 86400
   | 172800
   | 259200
-  | 518400;
+  | 518400
+  | (number & {});
 export const InstancesUpdateRequestCacheTtl = /*@__PURE__*/ S.Number;
 
 export type InstancesUpdateRequestCustomMetadataItemDataType =
   | "text"
   | "number"
   | "boolean"
-  | "datetime";
+  | "datetime"
+  | (string & {});
 export const InstancesUpdateRequestCustomMetadataItemDataType =
   /*@__PURE__*/ S.String;
 
@@ -12657,10 +12923,11 @@ export type InstancesUpdateRequestEmbeddingModel =
   | "google-ai-studio/gemini-embedding-2"
   | "openai/text-embedding-3-small"
   | "openai/text-embedding-3-large"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesUpdateRequestEmbeddingModel = /*@__PURE__*/ S.String;
 
-export type InstancesUpdateRequestFusionMethod = "max" | "rrf";
+export type InstancesUpdateRequestFusionMethod = "max" | "rrf" | (string & {});
 export const InstancesUpdateRequestFusionMethod = /*@__PURE__*/ S.String;
 
 export interface InstancesUpdateRequestIndexMethod {
@@ -12680,7 +12947,8 @@ export const InstancesUpdateRequestIndexMethod = /*@__PURE__*/ S.suspend(() =>
 
 export type InstancesUpdateRequestIndexingOptionsKeywordTokenizer =
   | "porter"
-  | "trigram";
+  | "trigram"
+  | (string & {});
 export const InstancesUpdateRequestIndexingOptionsKeywordTokenizer =
   /*@__PURE__*/ S.String;
 
@@ -12761,7 +13029,8 @@ export const InstancesUpdateRequestPublicEndpointParamsMcp =
 
 export type InstancesUpdateRequestPublicEndpointParamsRateLimitTechnique =
   | "fixed"
-  | "sliding";
+  | "sliding"
+  | (string & {});
 export const InstancesUpdateRequestPublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
@@ -12843,14 +13112,16 @@ export const InstancesUpdateRequestPublicEndpointParams =
 
 export type InstancesUpdateRequestRerankingModel =
   | "@cf/baai/bge-reranker-base"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesUpdateRequestRerankingModel = /*@__PURE__*/ S.String;
 
 export type InstancesUpdateRequestRetrievalOptionsBoostByItemDirection =
   | "asc"
   | "desc"
   | "exists"
-  | "not_exists";
+  | "not_exists"
+  | (string & {});
 export const InstancesUpdateRequestRetrievalOptionsBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -12881,7 +13152,8 @@ export const InstancesUpdateRequestRetrievalOptionsBoostByList =
 
 export type InstancesUpdateRequestRetrievalOptionsKeywordMatchMode =
   | "and"
-  | "or";
+  | "or"
+  | (string & {});
 export const InstancesUpdateRequestRetrievalOptionsKeywordMatchMode =
   /*@__PURE__*/ S.String;
 
@@ -12939,7 +13211,8 @@ export type InstancesUpdateRequestRewriteModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesUpdateRequestRewriteModel = /*@__PURE__*/ S.String;
 
 export type InstancesUpdateRequestSourceParamsExcludeItemsList =
@@ -13034,7 +13307,8 @@ export const InstancesUpdateRequestSourceParamsWebCrawlerParseOptions =
 
 export type InstancesUpdateRequestSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "crawl";
+  | "crawl"
+  | (string & {});
 export const InstancesUpdateRequestSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
@@ -13126,7 +13400,8 @@ export type InstancesUpdateRequestSummarizationModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesUpdateRequestSummarizationModel = /*@__PURE__*/ S.String;
 
 export type InstancesUpdateRequestSyncInterval =
@@ -13137,7 +13412,8 @@ export type InstancesUpdateRequestSyncInterval =
   | 14400
   | 21600
   | 43200
-  | 86400;
+  | 86400
+  | (number & {});
 export const InstancesUpdateRequestSyncInterval = /*@__PURE__*/ S.Number;
 
 export interface UpdateInstanceRequest {
@@ -13298,14 +13574,16 @@ export type InstancesUpdateResponseAiSearchModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesUpdateResponseAiSearchModel = /*@__PURE__*/ S.String;
 
 export type InstancesUpdateResponseCacheThreshold =
   | "super_strict_match"
   | "close_enough"
   | "flexible_friend"
-  | "anything_goes";
+  | "anything_goes"
+  | (string & {});
 export const InstancesUpdateResponseCacheThreshold = /*@__PURE__*/ S.String;
 
 export type InstancesUpdateResponseCacheTtl =
@@ -13318,14 +13596,16 @@ export type InstancesUpdateResponseCacheTtl =
   | 86400
   | 172800
   | 259200
-  | 518400;
+  | 518400
+  | (number & {});
 export const InstancesUpdateResponseCacheTtl = /*@__PURE__*/ S.Number;
 
 export type InstancesUpdateResponseCustomMetadataItemDataType =
   | "text"
   | "number"
   | "boolean"
-  | "datetime";
+  | "datetime"
+  | (string & {});
 export const InstancesUpdateResponseCustomMetadataItemDataType =
   /*@__PURE__*/ S.String;
 
@@ -13362,10 +13642,11 @@ export type InstancesUpdateResponseEmbeddingModel =
   | "google-ai-studio/gemini-embedding-2"
   | "openai/text-embedding-3-small"
   | "openai/text-embedding-3-large"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesUpdateResponseEmbeddingModel = /*@__PURE__*/ S.String;
 
-export type InstancesUpdateResponseFusionMethod = "max" | "rrf";
+export type InstancesUpdateResponseFusionMethod = "max" | "rrf" | (string & {});
 export const InstancesUpdateResponseFusionMethod = /*@__PURE__*/ S.String;
 
 export interface InstancesUpdateResponseIndexMethod {
@@ -13385,7 +13666,8 @@ export const InstancesUpdateResponseIndexMethod = /*@__PURE__*/ S.suspend(() =>
 
 export type InstancesUpdateResponseIndexingOptionsKeywordTokenizer =
   | "porter"
-  | "trigram";
+  | "trigram"
+  | (string & {});
 export const InstancesUpdateResponseIndexingOptionsKeywordTokenizer =
   /*@__PURE__*/ S.String;
 
@@ -13466,7 +13748,8 @@ export const InstancesUpdateResponsePublicEndpointParamsMcp =
 
 export type InstancesUpdateResponsePublicEndpointParamsRateLimitTechnique =
   | "fixed"
-  | "sliding";
+  | "sliding"
+  | (string & {});
 export const InstancesUpdateResponsePublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
@@ -13548,14 +13831,16 @@ export const InstancesUpdateResponsePublicEndpointParams =
 
 export type InstancesUpdateResponseRerankingModel =
   | "@cf/baai/bge-reranker-base"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesUpdateResponseRerankingModel = /*@__PURE__*/ S.String;
 
 export type InstancesUpdateResponseRetrievalOptionsBoostByItemDirection =
   | "asc"
   | "desc"
   | "exists"
-  | "not_exists";
+  | "not_exists"
+  | (string & {});
 export const InstancesUpdateResponseRetrievalOptionsBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -13586,7 +13871,8 @@ export const InstancesUpdateResponseRetrievalOptionsBoostByList =
 
 export type InstancesUpdateResponseRetrievalOptionsKeywordMatchMode =
   | "and"
-  | "or";
+  | "or"
+  | (string & {});
 export const InstancesUpdateResponseRetrievalOptionsKeywordMatchMode =
   /*@__PURE__*/ S.String;
 
@@ -13644,7 +13930,8 @@ export type InstancesUpdateResponseRewriteModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const InstancesUpdateResponseRewriteModel = /*@__PURE__*/ S.String;
 
 export type InstancesUpdateResponseSourceParamsExcludeItemsList =
@@ -13739,7 +14026,8 @@ export const InstancesUpdateResponseSourceParamsWebCrawlerParseOptions =
 
 export type InstancesUpdateResponseSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "crawl";
+  | "crawl"
+  | (string & {});
 export const InstancesUpdateResponseSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
@@ -13809,10 +14097,11 @@ export type InstancesUpdateResponseSyncInterval =
   | 14400
   | 21600
   | 43200
-  | 86400;
+  | 86400
+  | (number & {});
 export const InstancesUpdateResponseSyncInterval = /*@__PURE__*/ S.Number;
 
-export type InstancesUpdateResponseType = "r2" | "web-crawler";
+export type InstancesUpdateResponseType = "r2" | "web-crawler" | (string & {});
 export const InstancesUpdateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -14011,7 +14300,8 @@ export type NamespacesInstancesUpdateRequestAiSearchModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesUpdateRequestAiSearchModel =
   /*@__PURE__*/ S.String;
 
@@ -14019,7 +14309,8 @@ export type NamespacesInstancesUpdateRequestCacheThreshold =
   | "super_strict_match"
   | "close_enough"
   | "flexible_friend"
-  | "anything_goes";
+  | "anything_goes"
+  | (string & {});
 export const NamespacesInstancesUpdateRequestCacheThreshold =
   /*@__PURE__*/ S.String;
 
@@ -14033,14 +14324,16 @@ export type NamespacesInstancesUpdateRequestCacheTtl =
   | 86400
   | 172800
   | 259200
-  | 518400;
+  | 518400
+  | (number & {});
 export const NamespacesInstancesUpdateRequestCacheTtl = /*@__PURE__*/ S.Number;
 
 export type NamespacesInstancesUpdateRequestCustomMetadataItemDataType =
   | "text"
   | "number"
   | "boolean"
-  | "datetime";
+  | "datetime"
+  | (string & {});
 export const NamespacesInstancesUpdateRequestCustomMetadataItemDataType =
   /*@__PURE__*/ S.String;
 
@@ -14078,11 +14371,15 @@ export type NamespacesInstancesUpdateRequestEmbeddingModel =
   | "google-ai-studio/gemini-embedding-2"
   | "openai/text-embedding-3-small"
   | "openai/text-embedding-3-large"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesUpdateRequestEmbeddingModel =
   /*@__PURE__*/ S.String;
 
-export type NamespacesInstancesUpdateRequestFusionMethod = "max" | "rrf";
+export type NamespacesInstancesUpdateRequestFusionMethod =
+  | "max"
+  | "rrf"
+  | (string & {});
 export const NamespacesInstancesUpdateRequestFusionMethod =
   /*@__PURE__*/ S.String;
 
@@ -14104,7 +14401,8 @@ export const NamespacesInstancesUpdateRequestIndexMethod =
 
 export type NamespacesInstancesUpdateRequestIndexingOptionsKeywordTokenizer =
   | "porter"
-  | "trigram";
+  | "trigram"
+  | (string & {});
 export const NamespacesInstancesUpdateRequestIndexingOptionsKeywordTokenizer =
   /*@__PURE__*/ S.String;
 
@@ -14185,7 +14483,7 @@ export const NamespacesInstancesUpdateRequestPublicEndpointParamsMcp =
   }) as any as S.Schema<NamespacesInstancesUpdateRequestPublicEndpointParamsMcp>;
 
 export type NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimitTechnique =
-  "fixed" | "sliding";
+  "fixed" | "sliding" | (string & {});
 export const NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
@@ -14268,12 +14566,13 @@ export const NamespacesInstancesUpdateRequestPublicEndpointParams =
 
 export type NamespacesInstancesUpdateRequestRerankingModel =
   | "@cf/baai/bge-reranker-base"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesUpdateRequestRerankingModel =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  "asc" | "desc" | "exists" | "not_exists" | (string & {});
 export const NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -14304,7 +14603,8 @@ export const NamespacesInstancesUpdateRequestRetrievalOptionsBoostByList =
 
 export type NamespacesInstancesUpdateRequestRetrievalOptionsKeywordMatchMode =
   | "and"
-  | "or";
+  | "or"
+  | (string & {});
 export const NamespacesInstancesUpdateRequestRetrievalOptionsKeywordMatchMode =
   /*@__PURE__*/ S.String;
 
@@ -14362,7 +14662,8 @@ export type NamespacesInstancesUpdateRequestRewriteModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesUpdateRequestRewriteModel =
   /*@__PURE__*/ S.String;
 
@@ -14459,7 +14760,8 @@ export const NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptions 
 
 export type NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "crawl";
+  | "crawl"
+  | (string & {});
 export const NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
@@ -14554,7 +14856,8 @@ export type NamespacesInstancesUpdateRequestSummarizationModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesUpdateRequestSummarizationModel =
   /*@__PURE__*/ S.String;
 
@@ -14566,7 +14869,8 @@ export type NamespacesInstancesUpdateRequestSyncInterval =
   | 14400
   | 21600
   | 43200
-  | 86400;
+  | 86400
+  | (number & {});
 export const NamespacesInstancesUpdateRequestSyncInterval =
   /*@__PURE__*/ S.Number;
 
@@ -14752,7 +15056,8 @@ export type NamespacesInstancesUpdateResponseAiSearchModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesUpdateResponseAiSearchModel =
   /*@__PURE__*/ S.String;
 
@@ -14760,7 +15065,8 @@ export type NamespacesInstancesUpdateResponseCacheThreshold =
   | "super_strict_match"
   | "close_enough"
   | "flexible_friend"
-  | "anything_goes";
+  | "anything_goes"
+  | (string & {});
 export const NamespacesInstancesUpdateResponseCacheThreshold =
   /*@__PURE__*/ S.String;
 
@@ -14774,14 +15080,16 @@ export type NamespacesInstancesUpdateResponseCacheTtl =
   | 86400
   | 172800
   | 259200
-  | 518400;
+  | 518400
+  | (number & {});
 export const NamespacesInstancesUpdateResponseCacheTtl = /*@__PURE__*/ S.Number;
 
 export type NamespacesInstancesUpdateResponseCustomMetadataItemDataType =
   | "text"
   | "number"
   | "boolean"
-  | "datetime";
+  | "datetime"
+  | (string & {});
 export const NamespacesInstancesUpdateResponseCustomMetadataItemDataType =
   /*@__PURE__*/ S.String;
 
@@ -14820,11 +15128,15 @@ export type NamespacesInstancesUpdateResponseEmbeddingModel =
   | "google-ai-studio/gemini-embedding-2"
   | "openai/text-embedding-3-small"
   | "openai/text-embedding-3-large"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesUpdateResponseEmbeddingModel =
   /*@__PURE__*/ S.String;
 
-export type NamespacesInstancesUpdateResponseFusionMethod = "max" | "rrf";
+export type NamespacesInstancesUpdateResponseFusionMethod =
+  | "max"
+  | "rrf"
+  | (string & {});
 export const NamespacesInstancesUpdateResponseFusionMethod =
   /*@__PURE__*/ S.String;
 
@@ -14846,7 +15158,8 @@ export const NamespacesInstancesUpdateResponseIndexMethod =
 
 export type NamespacesInstancesUpdateResponseIndexingOptionsKeywordTokenizer =
   | "porter"
-  | "trigram";
+  | "trigram"
+  | (string & {});
 export const NamespacesInstancesUpdateResponseIndexingOptionsKeywordTokenizer =
   /*@__PURE__*/ S.String;
 
@@ -14927,7 +15240,7 @@ export const NamespacesInstancesUpdateResponsePublicEndpointParamsMcp =
   }) as any as S.Schema<NamespacesInstancesUpdateResponsePublicEndpointParamsMcp>;
 
 export type NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimitTechnique =
-  "fixed" | "sliding";
+  "fixed" | "sliding" | (string & {});
 export const NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
@@ -15011,12 +15324,13 @@ export const NamespacesInstancesUpdateResponsePublicEndpointParams =
 
 export type NamespacesInstancesUpdateResponseRerankingModel =
   | "@cf/baai/bge-reranker-base"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesUpdateResponseRerankingModel =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  "asc" | "desc" | "exists" | "not_exists" | (string & {});
 export const NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -15047,7 +15361,8 @@ export const NamespacesInstancesUpdateResponseRetrievalOptionsBoostByList =
 
 export type NamespacesInstancesUpdateResponseRetrievalOptionsKeywordMatchMode =
   | "and"
-  | "or";
+  | "or"
+  | (string & {});
 export const NamespacesInstancesUpdateResponseRetrievalOptionsKeywordMatchMode =
   /*@__PURE__*/ S.String;
 
@@ -15105,7 +15420,8 @@ export type NamespacesInstancesUpdateResponseRewriteModel =
   | "openai/gpt-5"
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
-  | "";
+  | ""
+  | (string & {});
 export const NamespacesInstancesUpdateResponseRewriteModel =
   /*@__PURE__*/ S.String;
 
@@ -15202,7 +15518,8 @@ export const NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptions
 
 export type NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "crawl";
+  | "crawl"
+  | (string & {});
 export const NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
@@ -15275,11 +15592,15 @@ export type NamespacesInstancesUpdateResponseSyncInterval =
   | 14400
   | 21600
   | 43200
-  | 86400;
+  | 86400
+  | (number & {});
 export const NamespacesInstancesUpdateResponseSyncInterval =
   /*@__PURE__*/ S.Number;
 
-export type NamespacesInstancesUpdateResponseType = "r2" | "web-crawler";
+export type NamespacesInstancesUpdateResponseType =
+  | "r2"
+  | "web-crawler"
+  | (string & {});
 export const NamespacesInstancesUpdateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -15512,7 +15833,8 @@ export const UploadNamespaceInstanceItemRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type NamespacesInstancesItemsUploadResponseNextAction =
   | "INDEX"
-  | "DELETE";
+  | "DELETE"
+  | (string & {});
 export const NamespacesInstancesItemsUploadResponseNextAction =
   /*@__PURE__*/ S.String;
 
@@ -15522,7 +15844,8 @@ export type NamespacesInstancesItemsUploadResponseStatus =
   | "completed"
   | "error"
   | "skipped"
-  | "outdated";
+  | "outdated"
+  | (string & {});
 export const NamespacesInstancesItemsUploadResponseStatus =
   /*@__PURE__*/ S.String;
 

@@ -153,7 +153,8 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 export type CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum =
     | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
     | "LIMIT_DECREASE_BELOW_USAGE"
-    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
+    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
+    | (string & {});
 export const CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum =
   /*@__PURE__*/ S.String;
 
@@ -231,7 +232,8 @@ export const CreateServicesConsumerQuotaMetricsLimitsAdminOverridesRequest =
 export type CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum =
     | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
     | "LIMIT_DECREASE_BELOW_USAGE"
-    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
+    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
+    | (string & {});
 export const CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum =
   /*@__PURE__*/ S.String;
 
@@ -278,7 +280,8 @@ export const CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest =
 export type DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum =
     | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
     | "LIMIT_DECREASE_BELOW_USAGE"
-    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
+    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
+    | (string & {});
 export const DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum =
   /*@__PURE__*/ S.String;
 
@@ -321,7 +324,8 @@ export const DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesRequest =
 export type DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum =
     | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
     | "LIMIT_DECREASE_BELOW_USAGE"
-    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
+    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
+    | (string & {});
 export const DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum =
   /*@__PURE__*/ S.String;
 
@@ -475,7 +479,11 @@ export const GetServicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetServicesRequest",
 }) as any as S.Schema<GetServicesRequest>;
 
-export type ServiceStateEnum = "STATE_UNSPECIFIED" | "DISABLED" | "ENABLED";
+export type ServiceStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "DISABLED"
+  | "ENABLED"
+  | (string & {});
 export const ServiceStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration of a specific monitoring destination (the producer project or the consumer project). */
@@ -717,11 +725,16 @@ export type MonitoredResourceDescriptorLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED";
+  | "DEPRECATED"
+  | (string & {});
 export const MonitoredResourceDescriptorLaunchStageEnum =
   /*@__PURE__*/ S.String;
 
-export type LabelDescriptorValueTypeEnum = "STRING" | "BOOL" | "INT64";
+export type LabelDescriptorValueTypeEnum =
+  | "STRING"
+  | "BOOL"
+  | "INT64"
+  | (string & {});
 export const LabelDescriptorValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** A description of a label. */
@@ -810,13 +823,15 @@ export const EndpointList = /*@__PURE__*/ S.Array(
 export type ApiSyntaxEnum =
   | "SYNTAX_PROTO2"
   | "SYNTAX_PROTO3"
-  | "SYNTAX_EDITIONS";
+  | "SYNTAX_EDITIONS"
+  | (string & {});
 export const ApiSyntaxEnum = /*@__PURE__*/ S.String;
 
 export type MethodSyntaxEnum =
   | "SYNTAX_PROTO2"
   | "SYNTAX_PROTO3"
-  | "SYNTAX_EDITIONS";
+  | "SYNTAX_EDITIONS"
+  | (string & {});
 export const MethodSyntaxEnum = /*@__PURE__*/ S.String;
 
 /** A protocol buffer option, which can be attached to a message, field, enumeration, etc. New usages of this message as an alternative to FileOptions, MessageOptions, FieldOptions, EnumOptions, EnumValueOptions, ServiceOptions, or MethodOptions are strongly discouraged. */
@@ -1132,7 +1147,8 @@ export const Service = /*@__PURE__*/ S.suspend(() =>
 export type GetServicesConsumerQuotaMetricsViewEnum =
   | "QUOTA_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetServicesConsumerQuotaMetricsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetServicesConsumerQuotaMetricsRequest {
@@ -1300,7 +1316,8 @@ export const ConsumerQuotaMetric = /*@__PURE__*/ S.suspend(() =>
 export type GetServicesConsumerQuotaMetricsLimitsViewEnum =
   | "QUOTA_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetServicesConsumerQuotaMetricsLimitsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -1331,7 +1348,8 @@ export const GetServicesConsumerQuotaMetricsLimitsRequest =
 export type ImportAdminOverridesRequestForceOnlyItemEnum =
   | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
   | "LIMIT_DECREASE_BELOW_USAGE"
-  | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
+  | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
+  | (string & {});
 export const ImportAdminOverridesRequestForceOnlyItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1404,7 +1422,8 @@ export const ImportAdminOverridesServicesConsumerQuotaMetricsRequest =
 export type ImportConsumerOverridesRequestForceOnlyItemEnum =
   | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
   | "LIMIT_DECREASE_BELOW_USAGE"
-  | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
+  | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
+  | (string & {});
 export const ImportConsumerOverridesRequestForceOnlyItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1561,7 +1580,8 @@ export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListServicesConsumerQuotaMetricsViewEnum =
   | "QUOTA_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListServicesConsumerQuotaMetricsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListServicesConsumerQuotaMetricsRequest {
@@ -1701,7 +1721,8 @@ export const ListConsumerOverridesResponse = /*@__PURE__*/ S.suspend(() =>
 export type PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum =
     | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
     | "LIMIT_DECREASE_BELOW_USAGE"
-    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
+    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
+    | (string & {});
 export const PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum =
   /*@__PURE__*/ S.String;
 
@@ -1750,7 +1771,8 @@ export const PatchServicesConsumerQuotaMetricsLimitsAdminOverridesRequest =
 export type PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum =
     | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
     | "LIMIT_DECREASE_BELOW_USAGE"
-    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
+    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
+    | (string & {});
 export const PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum =
   /*@__PURE__*/ S.String;
 

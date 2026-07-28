@@ -250,7 +250,9 @@ export const UsageReports = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UsageReports" }) as any as S.Schema<UsageReports>;
 
-export type GetEntityUsageReportsEntityTypeEnum = "gplus_communities";
+export type GetEntityUsageReportsEntityTypeEnum =
+  | "gplus_communities"
+  | (string & {});
 export const GetEntityUsageReportsEntityTypeEnum = /*@__PURE__*/ S.String;
 
 export interface GetEntityUsageReportsRequest {
@@ -374,7 +376,8 @@ export type ListActivitiesApplicationNameEnum =
   | "takeout"
   | "graduation"
   | "voice"
-  | "chrome_sync";
+  | "chrome_sync"
+  | (string & {});
 export const ListActivitiesApplicationNameEnum = /*@__PURE__*/ S.String;
 
 export interface ListActivitiesRequest {
@@ -1295,7 +1298,8 @@ export type WatchActivitiesApplicationNameEnum =
   | "chrome"
   | "data_studio"
   | "keep"
-  | "classroom";
+  | "classroom"
+  | (string & {});
 export const WatchActivitiesApplicationNameEnum = /*@__PURE__*/ S.String;
 
 export interface WatchActivitiesRequest {

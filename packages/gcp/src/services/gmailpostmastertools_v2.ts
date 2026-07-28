@@ -69,7 +69,8 @@ export type BaseMetricStandardMetricEnum =
   | "TLS_ENCRYPTION_MESSAGE_COUNT"
   | "TLS_ENCRYPTION_RATE"
   | "DELIVERY_ERROR_COUNT"
-  | "DELIVERY_ERROR_RATE";
+  | "DELIVERY_ERROR_RATE"
+  | (string & {});
 export const BaseMetricStandardMetricEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the base metric to query, which can be a predefined standard metric or a user-defined custom metric (if supported in the future). */
@@ -190,7 +191,8 @@ export const TimeQuery = /*@__PURE__*/ S.suspend(() =>
 export type QueryDomainStatsRequestAggregationGranularityEnum =
   | "AGGREGATION_GRANULARITY_UNSPECIFIED"
   | "DAILY"
-  | "OVERALL";
+  | "OVERALL"
+  | (string & {});
 export const QueryDomainStatsRequestAggregationGranularityEnum =
   /*@__PURE__*/ S.String;
 
@@ -438,7 +440,8 @@ export const CreateDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 export type DomainVerificationStateEnum =
   | "VERIFICATION_STATE_UNSPECIFIED"
   | "UNVERIFIED"
-  | "VERIFIED";
+  | "VERIFIED"
+  | (string & {});
 export const DomainVerificationStateEnum = /*@__PURE__*/ S.String;
 
 export type DomainPermissionEnum =
@@ -446,7 +449,8 @@ export type DomainPermissionEnum =
   | "READER"
   | "ADMIN"
   | "OWNER"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const DomainPermissionEnum = /*@__PURE__*/ S.String;
 
 /** Information about a domain registered by the user. */
@@ -477,7 +481,8 @@ export type CreateUserRequestPermissionEnum =
   | "READER"
   | "ADMIN"
   | "OWNER"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const CreateUserRequestPermissionEnum = /*@__PURE__*/ S.String;
 
 /** [Developer Preview](https://developers.google.com/workspace/preview): Request message for CreateUser. */
@@ -522,7 +527,8 @@ export type UserPermissionEnum =
   | "READER"
   | "ADMIN"
   | "OWNER"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const UserPermissionEnum = /*@__PURE__*/ S.String;
 
 /** [Developer Preview](https://developers.google.com/workspace/preview): Information about a user's access to a domain. */
@@ -611,7 +617,8 @@ export const GetComplianceStatusDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ComplianceStatusStatusEnum =
   | "STATE_UNSPECIFIED"
   | "COMPLIANT"
-  | "NEEDS_WORK";
+  | "NEEDS_WORK"
+  | (string & {});
 export const ComplianceStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** The status of a sender compliance requirement. */
@@ -631,7 +638,8 @@ export type OneClickUnsubscribeVerdictReasonEnum =
   | "REASON_UNSPECIFIED"
   | "NO_UNSUB_GENERAL"
   | "NO_UNSUB_SPAM_REPORTS"
-  | "NO_UNSUB_PROMO_SPAM_REPORTS";
+  | "NO_UNSUB_PROMO_SPAM_REPORTS"
+  | (string & {});
 export const OneClickUnsubscribeVerdictReasonEnum = /*@__PURE__*/ S.String;
 
 /** Compliance verdict for whether a sender meets the one-click unsubscribe compliance requirement. */
@@ -654,7 +662,8 @@ export type HonorUnsubscribeVerdictReasonEnum =
   | "REASON_UNSPECIFIED"
   | "NOT_HONORING"
   | "NOT_HONORING_TOO_FEW_CAMPAIGNS"
-  | "NOT_HONORING_TOO_MANY_CAMPAIGNS";
+  | "NOT_HONORING_TOO_MANY_CAMPAIGNS"
+  | (string & {});
 export const HonorUnsubscribeVerdictReasonEnum = /*@__PURE__*/ S.String;
 
 /** Compliance verdict for whether a sender meets the unsubscribe honoring compliance requirement. */
@@ -685,7 +694,8 @@ export type ComplianceRowDataRequirementEnum =
   | "ENCRYPTION"
   | "USER_REPORTED_SPAM_RATE"
   | "ONE_CLICK_UNSUBSCRIBE"
-  | "HONOR_UNSUBSCRIBE";
+  | "HONOR_UNSUBSCRIBE"
+  | (string & {});
 export const ComplianceRowDataRequirementEnum = /*@__PURE__*/ S.String;
 
 /** Data for a single row of the compliance status table. */
@@ -717,7 +727,8 @@ export type DeliverabilityStatusVerdictReasonEnum =
   | "SPAM_RATE_HIGH"
   | "USER_FEEDBACK_NEGATIVE"
   | "USER_FEEDBACK_LOW"
-  | "USER_FEEDBACK_POSITIVE";
+  | "USER_FEEDBACK_POSITIVE"
+  | (string & {});
 export const DeliverabilityStatusVerdictReasonEnum = /*@__PURE__*/ S.String;
 
 /** [Developer Preview](https://developers.google.com/workspace/preview): Verdict of domain deliverability status. */
@@ -819,7 +830,8 @@ export const GetDomainsUsersRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetVerificationTokenDomainsVerificationMethodEnum =
   | "DOMAIN_VERIFICATION_METHOD_UNSPECIFIED"
   | "TXT"
-  | "CNAME";
+  | "CNAME"
+  | (string & {});
 export const GetVerificationTokenDomainsVerificationMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -849,7 +861,8 @@ export const GetVerificationTokenDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 export type DomainVerificationTokenVerificationMethodEnum =
   | "DOMAIN_VERIFICATION_METHOD_UNSPECIFIED"
   | "TXT"
-  | "CNAME";
+  | "CNAME"
+  | (string & {});
 export const DomainVerificationTokenVerificationMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -1009,7 +1022,8 @@ export const QueryDomainsDomainStatsRequest = /*@__PURE__*/ S.suspend(() =>
 export type VerifyDomainRequestVerificationMethodEnum =
   | "DOMAIN_VERIFICATION_METHOD_UNSPECIFIED"
   | "TXT"
-  | "CNAME";
+  | "CNAME"
+  | (string & {});
 export const VerifyDomainRequestVerificationMethodEnum = /*@__PURE__*/ S.String;
 
 /** [Developer Preview](https://developers.google.com/workspace/preview): Request message for VerifyDomain. */

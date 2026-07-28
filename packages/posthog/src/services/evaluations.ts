@@ -12,7 +12,11 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `llm_judge` - LLM as a judge * `hog` - Hog * `sentiment` - Sentiment analysis */
-export type EvaluationTypeEnum = "llm_judge" | "hog" | "sentiment";
+export type EvaluationTypeEnum =
+  | "llm_judge"
+  | "hog"
+  | "sentiment"
+  | (string & {});
 export const EvaluationTypeEnum = /*@__PURE__*/ S.String;
 
 export interface EvaluationsCreateRequestEvaluationConfigCase0 {
@@ -43,7 +47,8 @@ export const EvaluationsCreateRequestEvaluationConfigCase1 =
 
 /** Classify sentiment from user messages in the generation input. */
 export type EvaluationsCreateRequestEvaluationConfigCase2Source =
-  "user_messages";
+  | "user_messages"
+  | (string & {});
 export const EvaluationsCreateRequestEvaluationConfigCase2Source =
   /*@__PURE__*/ S.String;
 
@@ -69,7 +74,7 @@ export const EvaluationsCreateRequestEvaluationConfig =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EvaluationsCreateRequestEvaluationConfig>;
 
 /** * `boolean` - Boolean (Pass/Fail) * `sentiment` - Sentiment */
-export type OutputTypeEnum = "boolean" | "sentiment";
+export type OutputTypeEnum = "boolean" | "sentiment" | (string & {});
 export const OutputTypeEnum = /*@__PURE__*/ S.String;
 
 /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results. */
@@ -128,7 +133,7 @@ export const EvaluationsCreateRequestConditionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EvaluationsCreateRequestConditionsList>;
 
 /** * `generation` - Generation * `trace` - Trace */
-export type EvaluationTargetEnum = "generation" | "trace";
+export type EvaluationTargetEnum = "generation" | "trace" | (string & {});
 export const EvaluationTargetEnum = /*@__PURE__*/ S.String;
 
 /** Target-specific config. For 'trace' target: {window_seconds}. Empty for 'generation'. */
@@ -155,7 +160,8 @@ export type LLMProviderEnum =
   | "azure_openai"
   | "together_ai"
   | "minimax"
-  | "zeabur";
+  | "zeabur"
+  | (string & {});
 export const LLMProviderEnum = /*@__PURE__*/ S.String;
 
 /** Nested serializer for model configuration. */
@@ -230,7 +236,11 @@ export const EvaluationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationsCreateRequest>;
 
 /** * `active` - Active * `paused` - Paused * `error` - Error */
-export type EvaluationStatusEnum = "active" | "paused" | "error";
+export type EvaluationStatusEnum =
+  | "active"
+  | "paused"
+  | "error"
+  | (string & {});
 export const EvaluationStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `provider_key_required` - No provider API key configured * `provider_key_deleted` - Provider API key was deleted * `no_default_model` - No default model available for the selected provider * `provider_key_invalid` - Provider API key is invalid * `provider_key_permission_denied` - Provider API key lacks model access * `provider_key_quota_exceeded` - Provider API key quota exceeded * `provider_key_rate_limited` - Provider API key is rate limited * `model_not_found` - Model not found * `hog_error` - Hog evaluation code failed */
@@ -243,7 +253,8 @@ export type StatusReasonEnum =
   | "provider_key_quota_exceeded"
   | "provider_key_rate_limited"
   | "model_not_found"
-  | "hog_error";
+  | "hog_error"
+  | (string & {});
 export const StatusReasonEnum = /*@__PURE__*/ S.String;
 
 export interface EvaluationEvaluationConfigCase0 {
@@ -271,7 +282,9 @@ export const EvaluationEvaluationConfigCase1 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationEvaluationConfigCase1>;
 
 /** Classify sentiment from user messages in the generation input. */
-export type EvaluationEvaluationConfigCase2Source = "user_messages";
+export type EvaluationEvaluationConfigCase2Source =
+  | "user_messages"
+  | (string & {});
 export const EvaluationEvaluationConfigCase2Source = /*@__PURE__*/ S.String;
 
 export interface EvaluationEvaluationConfigCase2 {
@@ -360,10 +373,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -484,7 +498,8 @@ export const EvaluationsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
 export type EvaluationsListRequestEvaluationType =
   | "hog"
   | "llm_judge"
-  | "sentiment";
+  | "sentiment"
+  | (string & {});
 export const EvaluationsListRequestEvaluationType = /*@__PURE__*/ S.String;
 
 export type EvaluationsListRequestIdInList = ReadonlyArray<string>;
@@ -498,7 +513,8 @@ export type EvaluationsListRequestOrderByItem =
   | "-updated_at"
   | "created_at"
   | "name"
-  | "updated_at";
+  | "updated_at"
+  | (string & {});
 export const EvaluationsListRequestOrderByItem = /*@__PURE__*/ S.String;
 
 export type EvaluationsListRequestOrderByList =
@@ -598,7 +614,8 @@ export const EvaluationsPartialUpdateRequestEvaluationConfigCase1 =
 
 /** Classify sentiment from user messages in the generation input. */
 export type EvaluationsPartialUpdateRequestEvaluationConfigCase2Source =
-  "user_messages";
+  | "user_messages"
+  | (string & {});
 export const EvaluationsPartialUpdateRequestEvaluationConfigCase2Source =
   /*@__PURE__*/ S.String;
 
@@ -865,7 +882,8 @@ export const EvaluationsUpdateRequestEvaluationConfigCase1 =
 
 /** Classify sentiment from user messages in the generation input. */
 export type EvaluationsUpdateRequestEvaluationConfigCase2Source =
-  "user_messages";
+  | "user_messages"
+  | (string & {});
 export const EvaluationsUpdateRequestEvaluationConfigCase2Source =
   /*@__PURE__*/ S.String;
 

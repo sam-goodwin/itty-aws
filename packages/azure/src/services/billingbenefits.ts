@@ -36,7 +36,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -44,7 +45,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -78,7 +80,8 @@ export type BenefitProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled"
-  | "Pending";
+  | "Pending"
+  | (string & {});
 export const BenefitProvisioningState = /*@__PURE__*/ S.String;
 
 /** Represents the current status of the MACC. */
@@ -93,15 +96,16 @@ export type MaccStatus =
   | "Stopped"
   | "PendingSettlement"
   | "ShortfallCharged"
-  | "ShortfallWaived";
+  | "ShortfallWaived"
+  | (string & {});
 export const MaccStatus = /*@__PURE__*/ S.String;
 
 /** Represents type of the object being operated on. Possible values are primary or contributor. */
-export type MaccEntityType = "Primary" | "Contributor";
+export type MaccEntityType = "Primary" | "Contributor" | (string & {});
 export const MaccEntityType = /*@__PURE__*/ S.String;
 
 /** Grain. */
-export type CommitmentGrain = "Hourly" | "FullTerm" | "Unknown";
+export type CommitmentGrain = "Hourly" | "FullTerm" | "Unknown" | (string & {});
 export const CommitmentGrain = /*@__PURE__*/ S.String;
 
 /** Commitment towards the benefit. */
@@ -121,7 +125,7 @@ export const Commitment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Commitment" }) as any as S.Schema<Commitment>;
 
 /** Represents the enablement status of a feature or settings. */
-export type EnablementMode = "Unknown" | "Enabled" | "Disabled";
+export type EnablementMode = "Unknown" | "Enabled" | "Disabled" | (string & {});
 export const EnablementMode = /*@__PURE__*/ S.String;
 
 /** Optional field to record suppression reason for automatic shortfall. */
@@ -193,7 +197,8 @@ export type MaccMilestoneStatus =
   | "Removed"
   | "PendingSettlement"
   | "ShortfallCharged"
-  | "ShortfallWaived";
+  | "ShortfallWaived"
+  | (string & {});
 export const MaccMilestoneStatus = /*@__PURE__*/ S.String;
 
 /** MACC milestone represents interim targets within the period of MACC. */
@@ -256,7 +261,8 @@ export const ProductDetailsBase = /*@__PURE__*/ S.suspend(() =>
 export type BenefitAppliedScopeType =
   | "BillingAccount"
   | "BillingProfile"
-  | "Customer";
+  | "Customer"
+  | (string & {});
 export const BenefitAppliedScopeType = /*@__PURE__*/ S.String;
 
 /** MACC properties */
@@ -392,7 +398,8 @@ export type BenefitType =
   | "SavingsPlans"
   | "Reservations"
   | "SavingsPlan"
-  | "MACC";
+  | "MACC"
+  | (string & {});
 export const BenefitType = /*@__PURE__*/ S.String;
 
 /** Abstract benefit model to validate. */
@@ -510,7 +517,8 @@ export type ResourceType =
   | "Discounts"
   | "FreeServices"
   | "SavingsPlans"
-  | "Reservations";
+  | "Reservations"
+  | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
 
 /** Manifest-sourced array of search terms for this catalog group. Omitted when empty. */
@@ -785,7 +793,10 @@ export const ConditionalCreditContributorsGetFromPrimaryRequest =
   }) as any as S.Schema<ConditionalCreditContributorsGetFromPrimaryRequest>;
 
 /** Type of conditional credit entity */
-export type ConditionalCreditEntityType = "Primary" | "Contributor";
+export type ConditionalCreditEntityType =
+  | "Primary"
+  | "Contributor"
+  | (string & {});
 export const ConditionalCreditEntityType = /*@__PURE__*/ S.String;
 
 /** The status of the conditional credit */
@@ -798,7 +809,8 @@ export type ConditionalCreditStatus =
   | "Canceled"
   | "Completed"
   | "Stopped"
-  | "PendingSettlement";
+  | "PendingSettlement"
+  | (string & {});
 export const ConditionalCreditStatus = /*@__PURE__*/ S.String;
 
 /** Current status of the milestone */
@@ -812,11 +824,12 @@ export type MilestoneStatus =
   | "Canceled"
   | "Removed"
   | "PendingSettlement"
-  | "Missed";
+  | "Missed"
+  | (string & {});
 export const MilestoneStatus = /*@__PURE__*/ S.String;
 
 /** Represent benefit term in ISO 8601 format. */
-export type Term = "P1M" | "P1Y" | "P3Y" | "P5Y";
+export type Term = "P1M" | "P1Y" | "P3Y" | "P5Y" | (string & {});
 export const Term = /*@__PURE__*/ S.String;
 
 /** Award details for milestone completion */
@@ -1165,7 +1178,8 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned";
+  | "SystemAssigned,UserAssigned"
+  | (string & {});
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -1218,7 +1232,7 @@ export const ConditionalCreditsCancelResponseIdentity = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConditionalCreditsCancelResponseIdentity>;
 
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
-export type SkuTier = "Free" | "Basic" | "Standard" | "Premium";
+export type SkuTier = "Free" | "Basic" | "Standard" | "Premium" | (string & {});
 export const SkuTier = /*@__PURE__*/ S.String;
 
 /** The resource model definition representing SKU */
@@ -2104,11 +2118,15 @@ export const ConditionalCreditTransactionsGetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConditionalCreditTransactionsGetRequest>;
 
 /** The type of charge for a transaction. */
-export type TransactionChargeType = "Usage" | "Purchase" | "Refund";
+export type TransactionChargeType =
+  | "Usage"
+  | "Purchase"
+  | "Refund"
+  | (string & {});
 export const TransactionChargeType = /*@__PURE__*/ S.String;
 
 /** Billing lifecycle status of a transaction. */
-export type TransactionBillingStatus = "Open" | "Closed";
+export type TransactionBillingStatus = "Open" | "Closed" | (string & {});
 export const TransactionBillingStatus = /*@__PURE__*/ S.String;
 
 /** Product details for a transaction */
@@ -2461,7 +2479,8 @@ export type CreditStatus =
   | "Failed"
   | "Expired"
   | "Exhausted"
-  | "NotStarted";
+  | "NotStarted"
+  | (string & {});
 export const CreditStatus = /*@__PURE__*/ S.String;
 
 /** The reason for the credit. Not required if not applicable. */
@@ -2482,11 +2501,15 @@ export const CreditReason = /*@__PURE__*/ S.suspend(() =>
 export type CreditRedemptionPolicy =
   | "NotApplicable"
   | "AutoRedeem"
-  | "ManualRedeem";
+  | "ManualRedeem"
+  | (string & {});
 export const CreditRedemptionPolicy = /*@__PURE__*/ S.String;
 
 /** Expiration policy of the Credit */
-export type CreditExpirationPolicy = "None" | "SuspendBillingProfile";
+export type CreditExpirationPolicy =
+  | "None"
+  | "SuspendBillingProfile"
+  | (string & {});
 export const CreditExpirationPolicy = /*@__PURE__*/ S.String;
 
 /** Credit breakdown item representing a milestone, line-item, or no-charge service */
@@ -2554,7 +2577,7 @@ export const CreditPropertiesBreakdownList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreditPropertiesBreakdownList>;
 
 /** Indicates where the credit benefit is applied */
-export type AppliedOn = "Consumption" | "Invoice" | "External";
+export type AppliedOn = "Consumption" | "Invoice" | "External" | (string & {});
 export const AppliedOn = /*@__PURE__*/ S.String;
 
 /** Indicates where the credit benefit is applied (e.g., consume, invoice, or external application). */
@@ -3628,7 +3651,7 @@ export const DiscountGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DiscountGetResponseTagsMap>;
 
 /** This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values. */
-export type DiscountEntityType = "Primary" | "Affiliate";
+export type DiscountEntityType = "Primary" | "Affiliate" | (string & {});
 export const DiscountEntityType = /*@__PURE__*/ S.String;
 
 /** Represents the current status of the discount. */
@@ -3637,7 +3660,8 @@ export type DiscountStatus =
   | "Pending"
   | "Failed"
   | "Canceled"
-  | "Expired";
+  | "Expired"
+  | (string & {});
 export const DiscountStatus = /*@__PURE__*/ S.String;
 
 /** Properties belonging to discounts. */
@@ -4356,7 +4380,8 @@ export type FreeServicesStatus =
   | "Pending"
   | "Active"
   | "Canceled"
-  | "Completed";
+  | "Completed"
+  | (string & {});
 export const FreeServicesStatus = /*@__PURE__*/ S.String;
 
 /** Properties of free services */
@@ -6262,11 +6287,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -6323,11 +6348,15 @@ export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceSku" }) as any as S.Schema<ResourceSku>;
 
 /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
-export type BillingPlan = "P1M";
+export type BillingPlan = "P1M" | (string & {});
 export const BillingPlan = /*@__PURE__*/ S.String;
 
 /** Type of the Applied Scope. */
-export type AppliedScopeType = "Single" | "Shared" | "ManagementGroup";
+export type AppliedScopeType =
+  | "Single"
+  | "Shared"
+  | "ManagementGroup"
+  | (string & {});
 export const AppliedScopeType = /*@__PURE__*/ S.String;
 
 /** Properties specific to applied scope type. Not required if not applicable. */
@@ -6359,7 +6388,7 @@ export const AppliedScopeProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppliedScopeProperties>;
 
 /** Represents the renewal action for a reservation to be a new purchase or existing renewal. */
-export type RenewAction = "CreateNew" | "RenewExisting";
+export type RenewAction = "CreateNew" | "RenewExisting" | (string & {});
 export const RenewAction = /*@__PURE__*/ S.String;
 
 /** The type of the resource that is being reserved. */
@@ -6389,11 +6418,12 @@ export type ReservedResourceType =
   | "NetAppStorage"
   | "AzureFiles"
   | "SqlEdge"
-  | "VirtualMachineSoftware";
+  | "VirtualMachineSoftware"
+  | (string & {});
 export const ReservedResourceType = /*@__PURE__*/ S.String;
 
 /** Turning this on will apply the reservation discount to other VMs in the same VM size group. */
-export type InstanceFlexibility = "On" | "Off";
+export type InstanceFlexibility = "On" | "Off" | (string & {});
 export const InstanceFlexibility = /*@__PURE__*/ S.String;
 
 /** Properties specific to each reserved resource type. Not required if not applicable. */
@@ -6500,7 +6530,8 @@ export type ProvisioningState =
   | "Succeeded"
   | "Cancelled"
   | "Expired"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties specific to each reserved resource type. Not required if not applicable. */
@@ -7362,7 +7393,12 @@ export const SavingsPlanOrderGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SavingsPlanOrderGetRequest>;
 
 /** Describes whether the payment is completed, failed, cancelled or scheduled in the future. */
-export type PaymentStatus = "Succeeded" | "Failed" | "Scheduled" | "Cancelled";
+export type PaymentStatus =
+  | "Succeeded"
+  | "Failed"
+  | "Scheduled"
+  | "Cancelled"
+  | (string & {});
 export const PaymentStatus = /*@__PURE__*/ S.String;
 
 /** Information about payment related to a savings plan order. */

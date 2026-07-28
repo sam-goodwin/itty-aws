@@ -185,7 +185,8 @@ export type HandshakeStatus =
   | "ACCEPTED"
   | "REJECTED"
   | "CANCELED"
-  | "EXPIRED";
+  | "EXPIRED"
+  | (string & {});
 export const HandshakeStatus = /*@__PURE__*/ S.String;
 
 export interface AcceptChannelHandshakeDetail {
@@ -257,7 +258,8 @@ export const CancelChannelHandshakeResponse = /*@__PURE__*/ S.suspend(() =>
 export type HandshakeType =
   | "START_SERVICE_PERIOD"
   | "REVOKE_SERVICE_PERIOD"
-  | "PROGRAM_MANAGEMENT_ACCOUNT";
+  | "PROGRAM_MANAGEMENT_ACCOUNT"
+  | (string & {});
 export const HandshakeType = /*@__PURE__*/ S.String;
 
 export type AssociatedResourceIdentifier = string;
@@ -265,7 +267,8 @@ export type ProgramManagementAccountIdentifier = string;
 export type Note = string;
 export type ServicePeriodType =
   | "MINIMUM_NOTICE_PERIOD"
-  | "FIXED_COMMITMENT_PERIOD";
+  | "FIXED_COMMITMENT_PERIOD"
+  | (string & {});
 export const ServicePeriodType = /*@__PURE__*/ S.String;
 
 export type MinimumNoticeDays = string;
@@ -375,7 +378,8 @@ export const CreateChannelHandshakeResponse = /*@__PURE__*/ S.suspend(() =>
 export type Program =
   | "SOLUTION_PROVIDER"
   | "DISTRIBUTION"
-  | "DISTRIBUTION_SELLER";
+  | "DISTRIBUTION_SELLER"
+  | (string & {});
 export const Program = /*@__PURE__*/ S.String;
 
 export type ProgramManagementAccountDisplayName = string;
@@ -433,20 +437,32 @@ export const CreateProgramManagementAccountResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateProgramManagementAccountResponse",
 }) as any as S.Schema<CreateProgramManagementAccountResponse>;
-export type AssociationType = "DOWNSTREAM_SELLER" | "END_CUSTOMER" | "INTERNAL";
+export type AssociationType =
+  | "DOWNSTREAM_SELLER"
+  | "END_CUSTOMER"
+  | "INTERNAL"
+  | (string & {});
 export const AssociationType = /*@__PURE__*/ S.String;
 
 export type RelationshipDisplayName = string;
 export type ResaleAccountModel =
   | "DISTRIBUTOR"
   | "END_CUSTOMER"
-  | "SOLUTION_PROVIDER";
+  | "SOLUTION_PROVIDER"
+  | (string & {});
 export const ResaleAccountModel = /*@__PURE__*/ S.String;
 
-export type Sector = "COMMERCIAL" | "GOVERNMENT" | "GOVERNMENT_EXCEPTION";
+export type Sector =
+  | "COMMERCIAL"
+  | "GOVERNMENT"
+  | "GOVERNMENT_EXCEPTION"
+  | (string & {});
 export const Sector = /*@__PURE__*/ S.String;
 
-export type Coverage = "ENTIRE_ORGANIZATION" | "MANAGEMENT_ACCOUNT_ONLY";
+export type Coverage =
+  | "ENTIRE_ORGANIZATION"
+  | "MANAGEMENT_ACCOUNT_ONLY"
+  | (string & {});
 export const Coverage = /*@__PURE__*/ S.String;
 
 export interface ResoldEnterprise {
@@ -463,7 +479,7 @@ export const ResoldEnterprise = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResoldEnterprise",
 }) as any as S.Schema<ResoldEnterprise>;
-export type Provider = "DISTRIBUTOR" | "DISTRIBUTION_SELLER";
+export type Provider = "DISTRIBUTOR" | "DISTRIBUTION_SELLER" | (string & {});
 export const Provider = /*@__PURE__*/ S.String;
 
 export interface PartnerLedSupport {
@@ -704,7 +720,7 @@ export const GetRelationshipResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRelationshipResponse",
 }) as any as S.Schema<GetRelationshipResponse>;
-export type ParticipantType = "SENDER" | "RECEIVER";
+export type ParticipantType = "SENDER" | "RECEIVER" | (string & {});
 export const ParticipantType = /*@__PURE__*/ S.String;
 
 export type HandshakeStatusList = HandshakeStatus[];
@@ -762,10 +778,10 @@ export const ListChannelHandshakesTypeFilters = /*@__PURE__*/ S.Union([
     programManagementAccountTypeFilters: ProgramManagementAccountTypeFilters,
   }),
 ]);
-export type SortOrder = "Ascending" | "Descending";
+export type SortOrder = "Ascending" | "Descending" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
 
-export type StartServicePeriodTypeSortName = "UpdatedAt";
+export type StartServicePeriodTypeSortName = "UpdatedAt" | (string & {});
 export const StartServicePeriodTypeSortName = /*@__PURE__*/ S.String;
 
 export interface StartServicePeriodTypeSort {
@@ -777,7 +793,7 @@ export const StartServicePeriodTypeSort = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartServicePeriodTypeSort",
 }) as any as S.Schema<StartServicePeriodTypeSort>;
-export type RevokeServicePeriodTypeSortName = "UpdatedAt";
+export type RevokeServicePeriodTypeSortName = "UpdatedAt" | (string & {});
 export const RevokeServicePeriodTypeSortName = /*@__PURE__*/ S.String;
 
 export interface RevokeServicePeriodTypeSort {
@@ -789,7 +805,7 @@ export const RevokeServicePeriodTypeSort = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RevokeServicePeriodTypeSort",
 }) as any as S.Schema<RevokeServicePeriodTypeSort>;
-export type ProgramManagementAccountTypeSortName = "UpdatedAt";
+export type ProgramManagementAccountTypeSortName = "UpdatedAt" | (string & {});
 export const ProgramManagementAccountTypeSortName = /*@__PURE__*/ S.String;
 
 export interface ProgramManagementAccountTypeSort {
@@ -1001,7 +1017,11 @@ export const ProgramManagementAccountDisplayNameList = /*@__PURE__*/ S.Array(
 );
 export type AccountIdList = string[];
 export const AccountIdList = /*@__PURE__*/ S.Array(S.String);
-export type ProgramManagementAccountStatus = "PENDING" | "ACTIVE" | "INACTIVE";
+export type ProgramManagementAccountStatus =
+  | "PENDING"
+  | "ACTIVE"
+  | "INACTIVE"
+  | (string & {});
 export const ProgramManagementAccountStatus = /*@__PURE__*/ S.String;
 
 export type ProgramManagementAccountStatusList =
@@ -1009,7 +1029,7 @@ export type ProgramManagementAccountStatusList =
 export const ProgramManagementAccountStatusList = /*@__PURE__*/ S.Array(
   ProgramManagementAccountStatus,
 );
-export type ListProgramManagementAccountsSortName = "UpdatedAt";
+export type ListProgramManagementAccountsSortName = "UpdatedAt" | (string & {});
 export const ListProgramManagementAccountsSortName = /*@__PURE__*/ S.String;
 
 export interface ListProgramManagementAccountsSortBase {
@@ -1121,7 +1141,7 @@ export type ProgramManagementAccountIdentifierList = string[];
 export const ProgramManagementAccountIdentifierList = /*@__PURE__*/ S.Array(
   S.String,
 );
-export type ListRelationshipsSortName = "UpdatedAt";
+export type ListRelationshipsSortName = "UpdatedAt" | (string & {});
 export const ListRelationshipsSortName = /*@__PURE__*/ S.String;
 
 export interface ListRelationshipsSortBase {
@@ -1449,7 +1469,8 @@ export const UpdateRelationshipResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRelationshipResponse>;
 export type ValidationExceptionReason =
   | "REQUEST_VALIDATION_FAILED"
-  | "BUSINESS_VALIDATION_FAILED";
+  | "BUSINESS_VALIDATION_FAILED"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

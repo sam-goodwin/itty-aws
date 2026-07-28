@@ -109,19 +109,22 @@ export type NodeApiVersionEnum =
   | "V1_ALPHA1"
   | "V1"
   | "V2_ALPHA1"
-  | "V2";
+  | "V2"
+  | (string & {});
 export const NodeApiVersionEnum = /*@__PURE__*/ S.String;
 
 export type UpcomingMaintenanceTypeEnum =
   | "UNKNOWN_TYPE"
   | "SCHEDULED"
-  | "UNSCHEDULED";
+  | "UNSCHEDULED"
+  | (string & {});
 export const UpcomingMaintenanceTypeEnum = /*@__PURE__*/ S.String;
 
 export type UpcomingMaintenanceMaintenanceStatusEnum =
   | "UNKNOWN"
   | "PENDING"
-  | "ONGOING";
+  | "ONGOING"
+  | (string & {});
 export const UpcomingMaintenanceMaintenanceStatusEnum = /*@__PURE__*/ S.String;
 
 /** Upcoming Maintenance notification information. */
@@ -189,7 +192,8 @@ export type NodeHealthEnum =
   | "HEALTHY"
   | "TIMEOUT"
   | "UNHEALTHY_TENSORFLOW"
-  | "UNHEALTHY_MAINTENANCE";
+  | "UNHEALTHY_MAINTENANCE"
+  | (string & {});
 export const NodeHealthEnum = /*@__PURE__*/ S.String;
 
 /** Defines the customer encryption key for disk encryption. */
@@ -258,7 +262,8 @@ export type AcceleratorConfigTypeEnum =
   | "V4"
   | "V5LITE_POD"
   | "V5P"
-  | "V6E";
+  | "V6E"
+  | (string & {});
 export const AcceleratorConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** A TPU accelerator configuration. */
@@ -284,7 +289,8 @@ export type SymptomSymptomTypeEnum =
   | "EXECUTE_TIMED_OUT"
   | "MESH_BUILD_FAIL"
   | "HBM_OUT_OF_MEMORY"
-  | "PROJECT_ABUSE";
+  | "PROJECT_ABUSE"
+  | (string & {});
 export const SymptomSymptomTypeEnum = /*@__PURE__*/ S.String;
 
 /** A Symptom instance. */
@@ -334,7 +340,8 @@ export type NodeStateEnum =
   | "HIDING"
   | "HIDDEN"
   | "UNHIDING"
-  | "UNKNOWN";
+  | "UNKNOWN"
+  | (string & {});
 export const NodeStateEnum = /*@__PURE__*/ S.String;
 
 /** Network related configurations. */
@@ -368,7 +375,8 @@ export const NetworkConfigList = /*@__PURE__*/ S.Array(
 export type AttachedDiskModeEnum =
   | "DISK_MODE_UNSPECIFIED"
   | "READ_WRITE"
-  | "READ_ONLY";
+  | "READ_ONLY"
+  | (string & {});
 export const AttachedDiskModeEnum = /*@__PURE__*/ S.String;
 
 /** A node-attached disk resource. Next ID: 8; */
@@ -690,7 +698,8 @@ export type QueuedResourceStateStateEnum =
   | "ACTIVE"
   | "SUSPENDING"
   | "SUSPENDED"
-  | "WAITING_FOR_RESOURCES";
+  | "WAITING_FOR_RESOURCES"
+  | (string & {});
 export const QueuedResourceStateStateEnum = /*@__PURE__*/ S.String;
 
 /** Further data for the deleting state. */
@@ -720,7 +729,8 @@ export const SuspendedData = /*@__PURE__*/ S.suspend(() =>
 export type QueuedResourceStateStateInitiatorEnum =
   | "STATE_INITIATOR_UNSPECIFIED"
   | "USER"
-  | "SERVICE";
+  | "SERVICE"
+  | (string & {});
 export const QueuedResourceStateStateInitiatorEnum = /*@__PURE__*/ S.String;
 
 /** Further data for the failed state. */

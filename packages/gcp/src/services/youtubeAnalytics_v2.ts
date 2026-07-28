@@ -89,10 +89,15 @@ export type ErrorsCodeEnum =
   | "GONE"
   | "PRECONDITION_FAILED"
   | "INTERNAL_ERROR"
-  | "SERVICE_UNAVAILABLE";
+  | "SERVICE_UNAVAILABLE"
+  | (string & {});
 export const ErrorsCodeEnum = /*@__PURE__*/ S.String;
 
-export type ErrorProtoLocationTypeEnum = "PATH" | "OTHER" | "PARAMETER";
+export type ErrorProtoLocationTypeEnum =
+  | "PATH"
+  | "OTHER"
+  | "PARAMETER"
+  | (string & {});
 export const ErrorProtoLocationTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;

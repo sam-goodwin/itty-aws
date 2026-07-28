@@ -192,7 +192,12 @@ export const PrivateStoreAdminRequestApprovalsListRequest =
   }) as any as S.Schema<PrivateStoreAdminRequestApprovalsListRequest>;
 
 /** The type of identity that creates/modifies resources */
-export type IdentityType = "User" | "Application" | "ManagedIdentity" | "Key";
+export type IdentityType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key"
+  | (string & {});
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** Read only system data */
@@ -222,7 +227,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 /** Gets or sets admin action */
-export type AdminAction = "Approved" | "Rejected";
+export type AdminAction = "Approved" | "Rejected" | (string & {});
 export const AdminAction = /*@__PURE__*/ S.String;
 
 /** Gets or sets Approved plans ids, empty in case of rejected */
@@ -578,7 +583,7 @@ export const CollectionPropertiesSubscriptionsListList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CollectionPropertiesSubscriptionsListList>;
 
 /** Rule type */
-export type RuleType = "PrivateProducts" | "TermsAndCondition";
+export type RuleType = "PrivateProducts" | "TermsAndCondition" | (string & {});
 export const RuleType = /*@__PURE__*/ S.String;
 
 export type RuleValueList = ReadonlyArray<string>;
@@ -1014,7 +1019,8 @@ export type Accessibility =
   | "Unknown"
   | "Public"
   | "PrivateTenantOnLevel"
-  | "PrivateSubscriptionOnLevel";
+  | "PrivateSubscriptionOnLevel"
+  | (string & {});
 export const Accessibility = /*@__PURE__*/ S.String;
 
 export interface Plan {
@@ -1473,7 +1479,8 @@ export type Operation =
   | "DeletePrivateStoreOffer"
   | "DeletePrivateStoreCollection"
   | "DeletePrivateStoreCollectionOffer"
-  | "Ping";
+  | "Ping"
+  | (string & {});
 export const Operation = /*@__PURE__*/ S.String;
 
 export interface PrivateStoreCollectionOfferPostRequest {
@@ -1908,7 +1915,12 @@ export const PrivateStoreCreateApprovalRequestRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateStoreCreateApprovalRequestRequest>;
 
 /** Gets the plan status */
-export type Status = "Pending" | "Rejected" | "Approved" | "None";
+export type Status =
+  | "Pending"
+  | "Rejected"
+  | "Approved"
+  | "None"
+  | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 
 /** Return plan with request details */
@@ -1998,7 +2010,7 @@ export const PrivateStoreCreateApprovalRequestResponse =
   }) as any as S.Schema<PrivateStoreCreateApprovalRequestResponse>;
 
 /** Indicates private store availability */
-export type Availability = "enabled" | "disabled";
+export type Availability = "enabled" | "disabled" | (string & {});
 export const Availability = /*@__PURE__*/ S.String;
 
 /** Gets or sets list of branding characteristics */
@@ -2160,7 +2172,8 @@ export type SubscriptionState =
   | "Warned"
   | "PastDue"
   | "Disabled"
-  | "Deleted";
+  | "Deleted"
+  | (string & {});
 export const SubscriptionState = /*@__PURE__*/ S.String;
 
 /** Subscription information. */

@@ -610,7 +610,8 @@ export const AudioStream = /*@__PURE__*/ S.suspend(() =>
 export type H265CodecSettingsFrameRateConversionStrategyEnum =
   | "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED"
   | "DOWNSAMPLE"
-  | "DROP_DUPLICATE";
+  | "DROP_DUPLICATE"
+  | (string & {});
 export const H265CodecSettingsFrameRateConversionStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -738,7 +739,8 @@ export const Vp9ColorFormatHLG = /*@__PURE__*/ S.suspend(() =>
 export type Vp9CodecSettingsFrameRateConversionStrategyEnum =
   | "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED"
   | "DOWNSAMPLE"
-  | "DROP_DUPLICATE";
+  | "DROP_DUPLICATE"
+  | (string & {});
 export const Vp9CodecSettingsFrameRateConversionStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -796,7 +798,8 @@ export const Vp9CodecSettings = /*@__PURE__*/ S.suspend(() =>
 export type H264CodecSettingsFrameRateConversionStrategyEnum =
   | "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED"
   | "DOWNSAMPLE"
-  | "DROP_DUPLICATE";
+  | "DROP_DUPLICATE"
+  | (string & {});
 export const H264CodecSettingsFrameRateConversionStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -1057,7 +1060,8 @@ export const SpriteSheetList = /*@__PURE__*/ S.Array(
 export type DashConfigSegmentReferenceSchemeEnum =
   | "SEGMENT_REFERENCE_SCHEME_UNSPECIFIED"
   | "SEGMENT_LIST"
-  | "SEGMENT_TEMPLATE_NUMBER";
+  | "SEGMENT_TEMPLATE_NUMBER"
+  | (string & {});
 export const DashConfigSegmentReferenceSchemeEnum = /*@__PURE__*/ S.String;
 
 /** `DASH` manifest configuration. */
@@ -1071,7 +1075,11 @@ export const DashConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DashConfig" }) as any as S.Schema<DashConfig>;
 
-export type ManifestTypeEnum = "MANIFEST_TYPE_UNSPECIFIED" | "HLS" | "DASH";
+export type ManifestTypeEnum =
+  | "MANIFEST_TYPE_UNSPECIFIED"
+  | "HLS"
+  | "DASH"
+  | (string & {});
 export const ManifestTypeEnum = /*@__PURE__*/ S.String;
 
 /** Manifest configuration. */
@@ -1151,7 +1159,8 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
 export type AnimationFadeFadeTypeEnum =
   | "FADE_TYPE_UNSPECIFIED"
   | "FADE_IN"
-  | "FADE_OUT";
+  | "FADE_OUT"
+  | (string & {});
 export const AnimationFadeFadeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Display overlay object with fade animation. */
@@ -1286,7 +1295,8 @@ export const JobConfig = /*@__PURE__*/ S.suspend(() =>
 export type JobModeEnum =
   | "PROCESSING_MODE_UNSPECIFIED"
   | "PROCESSING_MODE_INTERACTIVE"
-  | "PROCESSING_MODE_BATCH";
+  | "PROCESSING_MODE_BATCH"
+  | (string & {});
 export const JobModeEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -1300,13 +1310,15 @@ export type JobStateEnum =
   | "PENDING"
   | "RUNNING"
   | "SUCCEEDED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const JobStateEnum = /*@__PURE__*/ S.String;
 
 export type JobOptimizationEnum =
   | "OPTIMIZATION_STRATEGY_UNSPECIFIED"
   | "AUTODETECT"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const JobOptimizationEnum = /*@__PURE__*/ S.String;
 
 /** Transcoding job resource. */

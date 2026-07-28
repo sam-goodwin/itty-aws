@@ -30,7 +30,8 @@ export type PrivateEndpointServiceConnectionStatus =
   | "Approved"
   | "Pending"
   | "Rejected"
-  | "Disconnected";
+  | "Disconnected"
+  | (string & {});
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** An object that represents the approval state of the private link connection. */
@@ -128,7 +129,8 @@ export const PrivateEndpointConnectionsCreateRequest = /*@__PURE__*/ S.suspend(
 export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Provisioning"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 

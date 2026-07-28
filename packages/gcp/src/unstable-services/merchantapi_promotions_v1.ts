@@ -100,7 +100,8 @@ export const Interval = /*@__PURE__*/ S.suspend(() =>
 export type AttributesProductApplicabilityEnum =
   | "PRODUCT_APPLICABILITY_UNSPECIFIED"
   | "ALL_PRODUCTS"
-  | "SPECIFIC_PRODUCTS";
+  | "SPECIFIC_PRODUCTS"
+  | (string & {});
 export const AttributesProductApplicabilityEnum = /*@__PURE__*/ S.String;
 
 /** The price represented as a number and currency. */
@@ -132,7 +133,8 @@ export type AttributesCouponValueTypeEnum =
   | "FREE_SHIPPING_OVERNIGHT"
   | "FREE_SHIPPING_TWO_DAY"
   | "MONEY_OFF_RANGE"
-  | "PERCENT_OFF_RANGE";
+  | "PERCENT_OFF_RANGE"
+  | (string & {});
 export const AttributesCouponValueTypeEnum = /*@__PURE__*/ S.String;
 
 export type AttributesPromotionDestinationsItemEnum =
@@ -148,7 +150,8 @@ export type AttributesPromotionDestinationsItemEnum =
   | "FREE_VEHICLE_LISTINGS"
   | "VEHICLE_ADS"
   | "CLOUD_RETAIL"
-  | "LOCAL_CLOUD_RETAIL";
+  | "LOCAL_CLOUD_RETAIL"
+  | (string & {});
 export const AttributesPromotionDestinationsItemEnum = /*@__PURE__*/ S.String;
 
 export type AttributesPromotionDestinationsItemEnumList =
@@ -164,31 +167,36 @@ export type AttributesRedemptionRestrictionEnum =
   | "FIRST_ORDER"
   | "SIGNUP_FOR_EMAIL"
   | "SIGNUP_FOR_TEXT"
-  | "CUSTOM";
+  | "CUSTOM"
+  | (string & {});
 export const AttributesRedemptionRestrictionEnum = /*@__PURE__*/ S.String;
 
 export type AttributesStoreApplicabilityEnum =
   | "STORE_APPLICABILITY_UNSPECIFIED"
   | "ALL_STORES"
-  | "SPECIFIC_STORES";
+  | "SPECIFIC_STORES"
+  | (string & {});
 export const AttributesStoreApplicabilityEnum = /*@__PURE__*/ S.String;
 
 export type AttributesOfferTypeEnum =
   | "OFFER_TYPE_UNSPECIFIED"
   | "NO_CODE"
-  | "GENERIC_CODE";
+  | "GENERIC_CODE"
+  | (string & {});
 export const AttributesOfferTypeEnum = /*@__PURE__*/ S.String;
 
 export type AttributesEventApplicabilityEnum =
   | "EVENT_APPLICABILITY_UNSPECIFIED"
   | "SITEWIDE"
-  | "SPECIFIC_CATEGORIES";
+  | "SPECIFIC_CATEGORIES"
+  | (string & {});
 export const AttributesEventApplicabilityEnum = /*@__PURE__*/ S.String;
 
 export type AttributesAudienceEnum =
   | "AUDIENCE_UNSPECIFIED"
   | "NEW_CUSTOMERS"
-  | "LOCATION";
+  | "LOCATION"
+  | (string & {});
 export const AttributesAudienceEnum = /*@__PURE__*/ S.String;
 
 /** Attributes. */
@@ -326,7 +334,8 @@ export const Attributes = /*@__PURE__*/ S.suspend(() =>
 export type PromotionRedemptionChannelItemEnum =
   | "REDEMPTION_CHANNEL_UNSPECIFIED"
   | "IN_STORE"
-  | "ONLINE";
+  | "ONLINE"
+  | (string & {});
 export const PromotionRedemptionChannelItemEnum = /*@__PURE__*/ S.String;
 
 export type PromotionRedemptionChannelItemEnumList =
@@ -379,7 +388,8 @@ export type DestinationStatusReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT";
+  | "YOUTUBE_CHECKOUT"
+  | (string & {});
 export const DestinationStatusReportingContextEnum = /*@__PURE__*/ S.String;
 
 export type DestinationStatusStatusEnum =
@@ -389,7 +399,8 @@ export type DestinationStatusStatusEnum =
   | "LIVE"
   | "STOPPED"
   | "EXPIRED"
-  | "PENDING";
+  | "PENDING"
+  | (string & {});
 export const DestinationStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** The status for the specified destination. */
@@ -417,7 +428,8 @@ export type ItemLevelIssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "NOT_IMPACTED"
   | "DEMOTED"
-  | "DISAPPROVED";
+  | "DISAPPROVED"
+  | (string & {});
 export const ItemLevelIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 export type ItemLevelIssueReportingContextEnum =
@@ -440,7 +452,8 @@ export type ItemLevelIssueReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT";
+  | "YOUTUBE_CHECKOUT"
+  | (string & {});
 export const ItemLevelIssueReportingContextEnum = /*@__PURE__*/ S.String;
 
 /** The issue associated with the promotion. */

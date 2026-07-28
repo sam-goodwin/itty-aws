@@ -172,7 +172,7 @@ export class VersionMismatchException extends S.TaggedErrorClass<VersionMismatch
   T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export type ChannelName = string;
-export type ChannelType = "SINGLE_MASTER" | "FULL_MESH";
+export type ChannelType = "SINGLE_MASTER" | "FULL_MESH" | (string & {});
 export const ChannelType = /*@__PURE__*/ S.String;
 
 export type MessageTtlSeconds = number;
@@ -240,7 +240,7 @@ export const ResourceTags = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export type DefaultStorageTier = "HOT" | "WARM";
+export type DefaultStorageTier = "HOT" | "WARM" | (string & {});
 export const DefaultStorageTier = /*@__PURE__*/ S.String;
 
 export interface StreamStorageConfiguration {
@@ -399,13 +399,14 @@ export type SyncStatus =
   | "SYNC_FAILED"
   | "DELETING"
   | "DELETE_FAILED"
-  | "DELETING_ACKNOWLEDGED";
+  | "DELETING_ACKNOWLEDGED"
+  | (string & {});
 export const SyncStatus = /*@__PURE__*/ S.String;
 
 export type FailedStatusDetails = string;
 export type HubDeviceArn = string;
 export type MediaUriSecretArn = string | redacted.Redacted<string>;
-export type MediaUriType = "RTSP_URI" | "FILE_URI";
+export type MediaUriType = "RTSP_URI" | "FILE_URI" | (string & {});
 export const MediaUriType = /*@__PURE__*/ S.String;
 
 export interface MediaSourceConfig {
@@ -444,7 +445,10 @@ export const UploaderConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UploaderConfig" }) as any as S.Schema<UploaderConfig>;
 export type EdgeRetentionInHours = number;
 export type MaxLocalMediaSizeInMB = number;
-export type StrategyOnFullSize = "DELETE_OLDEST_MEDIA" | "DENY_NEW_MEDIA";
+export type StrategyOnFullSize =
+  | "DELETE_OLDEST_MEDIA"
+  | "DENY_NEW_MEDIA"
+  | (string & {});
 export const StrategyOnFullSize = /*@__PURE__*/ S.String;
 
 export interface LocalSizeConfig {
@@ -487,7 +491,11 @@ export const EdgeConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EdgeConfig" }) as any as S.Schema<EdgeConfig>;
 export type JobStatusDetails = string;
-export type RecorderStatus = "SUCCESS" | "USER_ERROR" | "SYSTEM_ERROR";
+export type RecorderStatus =
+  | "SUCCESS"
+  | "USER_ERROR"
+  | "SYSTEM_ERROR"
+  | (string & {});
 export const RecorderStatus = /*@__PURE__*/ S.String;
 
 export interface LastRecorderStatus {
@@ -510,7 +518,11 @@ export const LastRecorderStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LastRecorderStatus",
 }) as any as S.Schema<LastRecorderStatus>;
-export type UploaderStatus = "SUCCESS" | "USER_ERROR" | "SYSTEM_ERROR";
+export type UploaderStatus =
+  | "SUCCESS"
+  | "USER_ERROR"
+  | "SYSTEM_ERROR"
+  | (string & {});
 export const UploaderStatus = /*@__PURE__*/ S.String;
 
 export interface LastUploaderStatus {
@@ -597,10 +609,13 @@ export const DescribeImageGenerationConfigurationInput =
   ).annotate({
     identifier: "DescribeImageGenerationConfigurationInput",
   }) as any as S.Schema<DescribeImageGenerationConfigurationInput>;
-export type ConfigurationStatus = "ENABLED" | "DISABLED";
+export type ConfigurationStatus = "ENABLED" | "DISABLED" | (string & {});
 export const ConfigurationStatus = /*@__PURE__*/ S.String;
 
-export type ImageSelectorType = "SERVER_TIMESTAMP" | "PRODUCER_TIMESTAMP";
+export type ImageSelectorType =
+  | "SERVER_TIMESTAMP"
+  | "PRODUCER_TIMESTAMP"
+  | (string & {});
 export const ImageSelectorType = /*@__PURE__*/ S.String;
 
 export type DestinationUri = string;
@@ -615,10 +630,10 @@ export const ImageGenerationDestinationConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImageGenerationDestinationConfig",
 }) as any as S.Schema<ImageGenerationDestinationConfig>;
 export type SamplingInterval = number;
-export type Format = "JPEG" | "PNG";
+export type Format = "JPEG" | "PNG" | (string & {});
 export const Format = /*@__PURE__*/ S.String;
 
-export type FormatConfigKey = "JPEGQuality";
+export type FormatConfigKey = "JPEGQuality" | (string & {});
 export const FormatConfigKey = /*@__PURE__*/ S.String;
 
 export type FormatConfigValue = string;
@@ -746,7 +761,10 @@ export const DescribeMediaStorageConfigurationInput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeMediaStorageConfigurationInput",
 }) as any as S.Schema<DescribeMediaStorageConfigurationInput>;
-export type MediaStorageConfigurationStatus = "ENABLED" | "DISABLED";
+export type MediaStorageConfigurationStatus =
+  | "ENABLED"
+  | "DISABLED"
+  | (string & {});
 export const MediaStorageConfigurationStatus = /*@__PURE__*/ S.String;
 
 export interface MediaStorageConfiguration {
@@ -848,7 +866,12 @@ export const DescribeSignalingChannelInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSignalingChannelInput",
 }) as any as S.Schema<DescribeSignalingChannelInput>;
-export type Status = "CREATING" | "ACTIVE" | "UPDATING" | "DELETING";
+export type Status =
+  | "CREATING"
+  | "ACTIVE"
+  | "UPDATING"
+  | "DELETING"
+  | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 
 export interface ChannelInfo {
@@ -979,7 +1002,8 @@ export type APIName =
   | "GET_HLS_STREAMING_SESSION_URL"
   | "GET_DASH_STREAMING_SESSION_URL"
   | "GET_CLIP"
-  | "GET_IMAGES";
+  | "GET_IMAGES"
+  | (string & {});
 export const APIName = /*@__PURE__*/ S.String;
 
 export interface GetDataEndpointInput {
@@ -1015,12 +1039,12 @@ export const GetDataEndpointOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDataEndpointOutput",
 }) as any as S.Schema<GetDataEndpointOutput>;
-export type ChannelProtocol = "WSS" | "HTTPS" | "WEBRTC";
+export type ChannelProtocol = "WSS" | "HTTPS" | "WEBRTC" | (string & {});
 export const ChannelProtocol = /*@__PURE__*/ S.String;
 
 export type ListOfProtocols = ChannelProtocol[];
 export const ListOfProtocols = /*@__PURE__*/ S.Array(ChannelProtocol);
-export type ChannelRole = "MASTER" | "VIEWER";
+export type ChannelRole = "MASTER" | "VIEWER" | (string & {});
 export const ChannelRole = /*@__PURE__*/ S.String;
 
 export interface SingleMasterChannelEndpointConfiguration {
@@ -1153,7 +1177,7 @@ export const ListEdgeAgentConfigurationsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEdgeAgentConfigurationsOutput",
 }) as any as S.Schema<ListEdgeAgentConfigurationsOutput>;
 export type ListStreamsInputLimit = number;
-export type ComparisonOperator = "BEGINS_WITH";
+export type ComparisonOperator = "BEGINS_WITH" | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ S.String;
 
 export interface ChannelNameCondition {
@@ -1485,7 +1509,8 @@ export const UntagStreamOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UntagStreamOutput>;
 export type UpdateDataRetentionOperation =
   | "INCREASE_DATA_RETENTION"
-  | "DECREASE_DATA_RETENTION";
+  | "DECREASE_DATA_RETENTION"
+  | (string & {});
 export const UpdateDataRetentionOperation = /*@__PURE__*/ S.String;
 
 export type DataRetentionChangeInHours = number;

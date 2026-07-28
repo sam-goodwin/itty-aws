@@ -153,7 +153,8 @@ export type TransitGatewayAttachmentStatus =
   | "READY"
   | "PENDING_ACCEPTANCE"
   | "REJECTING"
-  | "REJECTED";
+  | "REJECTED"
+  | (string & {});
 export const TransitGatewayAttachmentStatus = /*@__PURE__*/ S.String;
 
 export interface AcceptNetworkFirewallTransitGatewayAttachmentResponse {
@@ -254,7 +255,7 @@ export const AssociateFirewallPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateFirewallPolicyResponse",
 }) as any as S.Schema<AssociateFirewallPolicyResponse>;
 export type CollectionMember_String = string;
-export type IPAddressType = "DUALSTACK" | "IPV4" | "IPV6";
+export type IPAddressType = "DUALSTACK" | "IPV4" | "IPV6" | (string & {});
 export const IPAddressType = /*@__PURE__*/ S.String;
 
 export interface SubnetMapping {
@@ -360,7 +361,7 @@ export const ProxyConfigRuleGroup = /*@__PURE__*/ S.suspend(() =>
 export type ProxyConfigRuleGroupSet = ProxyConfigRuleGroup[];
 export const ProxyConfigRuleGroupSet =
   /*@__PURE__*/ S.Array(ProxyConfigRuleGroup);
-export type ProxyRulePhaseAction = "ALLOW" | "DENY" | "ALERT";
+export type ProxyRulePhaseAction = "ALLOW" | "DENY" | "ALERT" | (string & {});
 export const ProxyRulePhaseAction = /*@__PURE__*/ S.String;
 
 export interface ProxyConfigDefaultRulePhaseActionsRequest {
@@ -430,7 +431,10 @@ export const AttachRuleGroupsToProxyConfigurationResponse =
   }) as any as S.Schema<AttachRuleGroupsToProxyConfigurationResponse>;
 export type VpcId = string;
 export type KeyId = string;
-export type EncryptionType = "CUSTOMER_KMS" | "AWS_OWNED_KMS_KEY";
+export type EncryptionType =
+  | "CUSTOMER_KMS"
+  | "AWS_OWNED_KMS_KEY"
+  | (string & {});
 export const EncryptionType = /*@__PURE__*/ S.String;
 
 export interface EncryptionConfiguration {
@@ -442,7 +446,7 @@ export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EncryptionConfiguration",
 }) as any as S.Schema<EncryptionConfiguration>;
-export type EnabledAnalysisType = "TLS_SNI" | "HTTP_HOST";
+export type EnabledAnalysisType = "TLS_SNI" | "HTTP_HOST" | (string & {});
 export const EnabledAnalysisType = /*@__PURE__*/ S.String;
 
 export type EnabledAnalysisTypes = EnabledAnalysisType[];
@@ -531,13 +535,18 @@ export const Firewall = /*@__PURE__*/ S.suspend(() =>
     AvailabilityZoneChangeProtection: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "Firewall" }) as any as S.Schema<Firewall>;
-export type FirewallStatusValue = "PROVISIONING" | "DELETING" | "READY";
+export type FirewallStatusValue =
+  | "PROVISIONING"
+  | "DELETING"
+  | "READY"
+  | (string & {});
 export const FirewallStatusValue = /*@__PURE__*/ S.String;
 
 export type ConfigurationSyncState =
   | "PENDING"
   | "IN_SYNC"
-  | "CAPACITY_CONSTRAINED";
+  | "CAPACITY_CONSTRAINED"
+  | (string & {});
 export const ConfigurationSyncState = /*@__PURE__*/ S.String;
 
 export type AvailabilityZone = string;
@@ -549,7 +558,8 @@ export type AttachmentStatus =
   | "FAILED"
   | "ERROR"
   | "SCALING"
-  | "READY";
+  | "READY"
+  | (string & {});
 export const AttachmentStatus = /*@__PURE__*/ S.String;
 
 export type StatusMessage = string;
@@ -572,7 +582,8 @@ export type PerObjectSyncStatus =
   | "IN_SYNC"
   | "CAPACITY_CONSTRAINED"
   | "NOT_SUBSCRIBED"
-  | "DEPRECATED";
+  | "DEPRECATED"
+  | (string & {});
 export const PerObjectSyncStatus = /*@__PURE__*/ S.String;
 
 export interface PerObjectStatus {
@@ -737,7 +748,7 @@ export const CustomAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomAction" }) as any as S.Schema<CustomAction>;
 export type CustomActions = CustomAction[];
 export const CustomActions = /*@__PURE__*/ S.Array(CustomAction);
-export type OverrideAction = "DROP_TO_ALERT";
+export type OverrideAction = "DROP_TO_ALERT" | (string & {});
 export const OverrideAction = /*@__PURE__*/ S.String;
 
 export interface StatefulRuleGroupOverride {
@@ -771,10 +782,14 @@ export const StatefulRuleGroupReferences = /*@__PURE__*/ S.Array(
 );
 export type StatefulActions = string[];
 export const StatefulActions = /*@__PURE__*/ S.Array(S.String);
-export type RuleOrder = "DEFAULT_ACTION_ORDER" | "STRICT_ORDER";
+export type RuleOrder = "DEFAULT_ACTION_ORDER" | "STRICT_ORDER" | (string & {});
 export const RuleOrder = /*@__PURE__*/ S.String;
 
-export type StreamExceptionPolicy = "DROP" | "CONTINUE" | "REJECT";
+export type StreamExceptionPolicy =
+  | "DROP"
+  | "CONTINUE"
+  | "REJECT"
+  | (string & {});
 export const StreamExceptionPolicy = /*@__PURE__*/ S.String;
 
 export type TcpIdleTimeoutRangeBound = number;
@@ -867,7 +882,7 @@ export const CreateFirewallPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFirewallPolicyRequest",
 }) as any as S.Schema<CreateFirewallPolicyRequest>;
-export type ResourceStatus = "ACTIVE" | "DELETING" | "ERROR";
+export type ResourceStatus = "ACTIVE" | "DELETING" | "ERROR" | (string & {});
 export const ResourceStatus = /*@__PURE__*/ S.String;
 
 export type RuleCapacity = number;
@@ -920,7 +935,7 @@ export const CreateFirewallPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateFirewallPolicyResponse>;
 export type NatGatewayId = string;
 export type NatGatewayPort = number;
-export type ListenerPropertyType = "HTTP" | "HTTPS";
+export type ListenerPropertyType = "HTTP" | "HTTPS" | (string & {});
 export const ListenerPropertyType = /*@__PURE__*/ S.String;
 
 export interface ListenerPropertyRequest {
@@ -936,7 +951,7 @@ export type ListenerPropertiesRequest = ListenerPropertyRequest[];
 export const ListenerPropertiesRequest = /*@__PURE__*/ S.Array(
   ListenerPropertyRequest,
 );
-export type TlsInterceptMode = "ENABLED" | "DISABLED";
+export type TlsInterceptMode = "ENABLED" | "DISABLED" | (string & {});
 export const TlsInterceptMode = /*@__PURE__*/ S.String;
 
 export interface TlsInterceptPropertiesRequest {
@@ -984,10 +999,15 @@ export type ProxyState =
   | "DETACHING"
   | "DETACHED"
   | "ATTACH_FAILED"
-  | "DETACH_FAILED";
+  | "DETACH_FAILED"
+  | (string & {});
 export const ProxyState = /*@__PURE__*/ S.String;
 
-export type ProxyModifyState = "MODIFYING" | "COMPLETED" | "FAILED";
+export type ProxyModifyState =
+  | "MODIFYING"
+  | "COMPLETED"
+  | "FAILED"
+  | (string & {});
 export const ProxyModifyState = /*@__PURE__*/ S.String;
 
 export interface ListenerProperty {
@@ -1301,7 +1321,7 @@ export const ReferenceSets = /*@__PURE__*/ S.suspend(() =>
 export type RulesString = string;
 export type RuleTargets = string[];
 export const RuleTargets = /*@__PURE__*/ S.Array(S.String);
-export type TargetType = "TLS_SNI" | "HTTP_HOST";
+export type TargetType = "TLS_SNI" | "HTTP_HOST" | (string & {});
 export const TargetType = /*@__PURE__*/ S.String;
 
 export type TargetTypes = TargetType[];
@@ -1310,7 +1330,8 @@ export type GeneratedRulesType =
   | "ALLOWLIST"
   | "DENYLIST"
   | "REJECTLIST"
-  | "ALERTLIST";
+  | "ALERTLIST"
+  | (string & {});
 export const GeneratedRulesType = /*@__PURE__*/ S.String;
 
 export interface RulesSourceList {
@@ -1327,7 +1348,12 @@ export const RulesSourceList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RulesSourceList",
 }) as any as S.Schema<RulesSourceList>;
-export type StatefulAction = "PASS" | "DROP" | "ALERT" | "REJECT";
+export type StatefulAction =
+  | "PASS"
+  | "DROP"
+  | "ALERT"
+  | "REJECT"
+  | (string & {});
 export const StatefulAction = /*@__PURE__*/ S.String;
 
 export type StatefulRuleProtocol =
@@ -1351,12 +1377,13 @@ export type StatefulRuleProtocol =
   | "NTP"
   | "DHCP"
   | "HTTP2"
-  | "QUIC";
+  | "QUIC"
+  | (string & {});
 export const StatefulRuleProtocol = /*@__PURE__*/ S.String;
 
 export type Source = string;
 export type Port = string;
-export type StatefulRuleDirection = "FORWARD" | "ANY";
+export type StatefulRuleDirection = "FORWARD" | "ANY" | (string & {});
 export const StatefulRuleDirection = /*@__PURE__*/ S.String;
 
 export type Destination = string;
@@ -1435,7 +1462,8 @@ export type TCPFlag =
   | "ACK"
   | "URG"
   | "ECE"
-  | "CWR";
+  | "CWR"
+  | (string & {});
 export const TCPFlag = /*@__PURE__*/ S.String;
 
 export type Flags = TCPFlag[];
@@ -1533,7 +1561,11 @@ export const RuleGroup = /*@__PURE__*/ S.suspend(() =>
     StatefulRuleOptions: S.optional(StatefulRuleOptions),
   }),
 ).annotate({ identifier: "RuleGroup" }) as any as S.Schema<RuleGroup>;
-export type RuleGroupType = "STATELESS" | "STATEFUL" | "STATEFUL_DOMAIN";
+export type RuleGroupType =
+  | "STATELESS"
+  | "STATEFUL"
+  | "STATEFUL_DOMAIN"
+  | (string & {});
 export const RuleGroupType = /*@__PURE__*/ S.String;
 
 export interface SourceMetadata {
@@ -1546,7 +1578,7 @@ export const SourceMetadata = /*@__PURE__*/ S.suspend(() =>
     SourceUpdateToken: S.optional(S.String),
   }),
 ).annotate({ identifier: "SourceMetadata" }) as any as S.Schema<SourceMetadata>;
-export type SummaryRuleOption = "SID" | "MSG" | "METADATA";
+export type SummaryRuleOption = "SID" | "MSG" | "METADATA" | (string & {});
 export const SummaryRuleOption = /*@__PURE__*/ S.String;
 
 export type SummaryRuleOptions = SummaryRuleOption[];
@@ -1597,7 +1629,8 @@ export type RuleIdList = string[];
 export const RuleIdList = /*@__PURE__*/ S.Array(S.String);
 export type IdentifiedType =
   | "STATELESS_RULE_FORWARDING_ASYMMETRICALLY"
-  | "STATELESS_RULE_CONTAINS_TCP_FLAGS";
+  | "STATELESS_RULE_CONTAINS_TCP_FLAGS"
+  | (string & {});
 export const IdentifiedType = /*@__PURE__*/ S.String;
 
 export interface AnalysisResult {
@@ -1697,7 +1730,7 @@ export type ServerCertificateScopes = ServerCertificateScope[];
 export const ServerCertificateScopes = /*@__PURE__*/ S.Array(
   ServerCertificateScope,
 );
-export type RevocationCheckAction = "PASS" | "DROP" | "REJECT";
+export type RevocationCheckAction = "PASS" | "DROP" | "REJECT" | (string & {});
 export const RevocationCheckAction = /*@__PURE__*/ S.String;
 
 export interface CheckCertificateRevocationStatusActions {
@@ -2302,14 +2335,15 @@ export const DescribeFlowOperationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeFlowOperationRequest",
 }) as any as S.Schema<DescribeFlowOperationRequest>;
-export type FlowOperationType = "FLOW_FLUSH" | "FLOW_CAPTURE";
+export type FlowOperationType = "FLOW_FLUSH" | "FLOW_CAPTURE" | (string & {});
 export const FlowOperationType = /*@__PURE__*/ S.String;
 
 export type FlowOperationStatus =
   | "COMPLETED"
   | "IN_PROGRESS"
   | "FAILED"
-  | "COMPLETED_WITH_ERRORS";
+  | "COMPLETED_WITH_ERRORS"
+  | (string & {});
 export const FlowOperationStatus = /*@__PURE__*/ S.String;
 
 export type FlowRequestTimestamp = Date;
@@ -2389,13 +2423,14 @@ export const DescribeLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeLoggingConfigurationRequest",
 }) as any as S.Schema<DescribeLoggingConfigurationRequest>;
-export type LogType = "ALERT" | "FLOW" | "TLS";
+export type LogType = "ALERT" | "FLOW" | "TLS" | (string & {});
 export const LogType = /*@__PURE__*/ S.String;
 
 export type LogDestinationType =
   | "S3"
   | "CloudWatchLogs"
-  | "KinesisDataFirehose";
+  | "KinesisDataFirehose"
+  | (string & {});
 export const LogDestinationType = /*@__PURE__*/ S.String;
 
 export type HashMapKey = string;
@@ -3369,17 +3404,21 @@ export const ListProxyRuleGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListProxyRuleGroupsResponse",
 }) as any as S.Schema<ListProxyRuleGroupsResponse>;
-export type ResourceManagedStatus = "MANAGED" | "ACCOUNT";
+export type ResourceManagedStatus = "MANAGED" | "ACCOUNT" | (string & {});
 export const ResourceManagedStatus = /*@__PURE__*/ S.String;
 
 export type ResourceManagedType =
   | "AWS_MANAGED_THREAT_SIGNATURES"
   | "AWS_MANAGED_DOMAIN_LISTS"
   | "ACTIVE_THREAT_DEFENSE"
-  | "PARTNER_MANAGED";
+  | "PARTNER_MANAGED"
+  | (string & {});
 export const ResourceManagedType = /*@__PURE__*/ S.String;
 
-export type SubscriptionStatus = "NOT_SUBSCRIBED" | "SUBSCRIBED";
+export type SubscriptionStatus =
+  | "NOT_SUBSCRIBED"
+  | "SUBSCRIBED"
+  | (string & {});
 export const SubscriptionStatus = /*@__PURE__*/ S.String;
 
 export interface ListRuleGroupsRequest {
@@ -4164,7 +4203,11 @@ export const UpdateProxyRuleGroupPrioritiesResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateProxyRuleGroupPrioritiesResponse",
 }) as any as S.Schema<UpdateProxyRuleGroupPrioritiesResponse>;
-export type RuleGroupRequestPhase = "PRE_DNS" | "PRE_REQ" | "POST_RES";
+export type RuleGroupRequestPhase =
+  | "PRE_DNS"
+  | "PRE_REQ"
+  | "POST_RES"
+  | (string & {});
 export const RuleGroupRequestPhase = /*@__PURE__*/ S.String;
 
 export interface ProxyRulePriority {

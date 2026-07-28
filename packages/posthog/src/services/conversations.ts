@@ -36,7 +36,7 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 /** * `good` - good * `bad` - bad */
-export type RatingEnum = "good" | "bad";
+export type RatingEnum = "good" | "bad" | (string & {});
 export const RatingEnum = /*@__PURE__*/ S.String;
 
 export interface ConversationsTicketsAiFeedbackCreateRequest {
@@ -90,7 +90,8 @@ export type TicketStatusEnum =
   | "open"
   | "pending"
   | "on_hold"
-  | "resolved";
+  | "resolved"
+  | (string & {});
 export const TicketStatusEnum = /*@__PURE__*/ S.String;
 
 export interface ConversationsTicketsBulkUpdateStatusCreateRequest {
@@ -148,7 +149,7 @@ export const ConversationsTicketsBulkUpdateTagsCreateRequestIdsList =
   ) as any as S.Schema<ConversationsTicketsBulkUpdateTagsCreateRequestIdsList>;
 
 /** * `add` - add * `remove` - remove * `set` - set */
-export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
+export type BulkUpdateTagsActionEnum = "add" | "remove" | "set" | (string & {});
 export const BulkUpdateTagsActionEnum = /*@__PURE__*/ S.String;
 
 /** Tag names to add, remove, or set. */
@@ -331,7 +332,8 @@ export type ConversationsTicketsListRequestChannelDetail =
   | "teams_bot_mention"
   | "teams_channel_message"
   | "widget_api"
-  | "widget_embedded";
+  | "widget_embedded"
+  | (string & {});
 export const ConversationsTicketsListRequestChannelDetail =
   /*@__PURE__*/ S.String;
 
@@ -340,7 +342,8 @@ export type ConversationsTicketsListRequestChannelSource =
   | "github"
   | "slack"
   | "teams"
-  | "widget";
+  | "widget"
+  | (string & {});
 export const ConversationsTicketsListRequestChannelSource =
   /*@__PURE__*/ S.String;
 
@@ -352,13 +355,15 @@ export type ConversationsTicketsListRequestOrderBy =
   | "created_at"
   | "sla_due_at"
   | "ticket_number"
-  | "updated_at";
+  | "updated_at"
+  | (string & {});
 export const ConversationsTicketsListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export type ConversationsTicketsListRequestSla =
   | "at-risk"
   | "breached"
-  | "on-track";
+  | "on-track"
+  | (string & {});
 export const ConversationsTicketsListRequestSla = /*@__PURE__*/ S.String;
 
 export interface ConversationsTicketsListRequest {
@@ -439,7 +444,8 @@ export type ChannelSourceEnum =
   | "email"
   | "slack"
   | "teams"
-  | "github";
+  | "github"
+  | (string & {});
 export const ChannelSourceEnum = /*@__PURE__*/ S.String;
 
 /** * `slack_channel_message` - Channel message * `slack_bot_mention` - Bot mention * `slack_emoji_reaction` - Emoji reaction * `teams_channel_message` - Teams channel message * `teams_bot_mention` - Teams bot mention * `widget_embedded` - Widget * `widget_api` - API * `github_issue` - GitHub issue */
@@ -451,14 +457,20 @@ export type ChannelDetailEnum =
   | "teams_bot_mention"
   | "widget_embedded"
   | "widget_api"
-  | "github_issue";
+  | "github_issue"
+  | (string & {});
 export const ChannelDetailEnum = /*@__PURE__*/ S.String;
 
 /** * `low` - Low * `medium` - Medium * `high` - High * `critical` - Critical */
-export type TicketPriorityEnum = "low" | "medium" | "high" | "critical";
+export type TicketPriorityEnum =
+  | "low"
+  | "medium"
+  | "high"
+  | "critical"
+  | (string & {});
 export const TicketPriorityEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 /** Ticket priority: low, medium, high, or critical. Null if unset. * `low` - Low * `medium` - Medium * `high` - High * `critical` - Critical */
@@ -945,7 +957,8 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;

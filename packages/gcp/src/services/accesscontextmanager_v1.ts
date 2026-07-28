@@ -266,7 +266,8 @@ export type OsConstraintOsTypeEnum =
   | "DESKTOP_LINUX"
   | "DESKTOP_CHROME_OS"
   | "ANDROID"
-  | "IOS";
+  | "IOS"
+  | (string & {});
 export const OsConstraintOsTypeEnum = /*@__PURE__*/ S.String;
 
 /** A restriction on the OS type and version of devices making requests. */
@@ -295,7 +296,8 @@ export type DevicePolicyAllowedEncryptionStatusesItemEnum =
   | "ENCRYPTION_UNSPECIFIED"
   | "ENCRYPTION_UNSUPPORTED"
   | "UNENCRYPTED"
-  | "ENCRYPTED";
+  | "ENCRYPTED"
+  | (string & {});
 export const DevicePolicyAllowedEncryptionStatusesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -310,7 +312,8 @@ export type DevicePolicyAllowedDeviceManagementLevelsItemEnum =
   | "MANAGEMENT_UNSPECIFIED"
   | "NONE"
   | "BASIC"
-  | "COMPLETE";
+  | "COMPLETE"
+  | (string & {});
 export const DevicePolicyAllowedDeviceManagementLevelsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -385,7 +388,7 @@ export const ConditionList = /*@__PURE__*/ S.Array(
   Condition,
 ) as any as S.Schema<ConditionList>;
 
-export type BasicLevelCombiningFunctionEnum = "AND" | "OR";
+export type BasicLevelCombiningFunctionEnum = "AND" | "OR" | (string & {});
 export const BasicLevelCombiningFunctionEnum = /*@__PURE__*/ S.String;
 
 /** `BasicLevel` is an `AccessLevel` using a set of recommended features. */
@@ -480,19 +483,22 @@ export const CreateAccessPoliciesAccessLevelsRequest = /*@__PURE__*/ S.suspend(
 
 export type AuthorizedOrgsDescAuthorizationTypeEnum =
   | "AUTHORIZATION_TYPE_UNSPECIFIED"
-  | "AUTHORIZATION_TYPE_TRUST";
+  | "AUTHORIZATION_TYPE_TRUST"
+  | (string & {});
 export const AuthorizedOrgsDescAuthorizationTypeEnum = /*@__PURE__*/ S.String;
 
 export type AuthorizedOrgsDescAssetTypeEnum =
   | "ASSET_TYPE_UNSPECIFIED"
   | "ASSET_TYPE_DEVICE"
-  | "ASSET_TYPE_CREDENTIAL_STRENGTH";
+  | "ASSET_TYPE_CREDENTIAL_STRENGTH"
+  | (string & {});
 export const AuthorizedOrgsDescAssetTypeEnum = /*@__PURE__*/ S.String;
 
 export type AuthorizedOrgsDescAuthorizationDirectionEnum =
   | "AUTHORIZATION_DIRECTION_UNSPECIFIED"
   | "AUTHORIZATION_DIRECTION_TO"
-  | "AUTHORIZATION_DIRECTION_FROM";
+  | "AUTHORIZATION_DIRECTION_FROM"
+  | (string & {});
 export const AuthorizedOrgsDescAuthorizationDirectionEnum =
   /*@__PURE__*/ S.String;
 
@@ -547,14 +553,16 @@ export const CreateAccessPoliciesAuthorizedOrgsDescsRequest =
 
 export type ServicePerimeterPerimeterTypeEnum =
   | "PERIMETER_TYPE_REGULAR"
-  | "PERIMETER_TYPE_BRIDGE";
+  | "PERIMETER_TYPE_BRIDGE"
+  | (string & {});
 export const ServicePerimeterPerimeterTypeEnum = /*@__PURE__*/ S.String;
 
 export type IngressFromIdentityTypeEnum =
   | "IDENTITY_TYPE_UNSPECIFIED"
   | "ANY_IDENTITY"
   | "ANY_USER_ACCOUNT"
-  | "ANY_SERVICE_ACCOUNT";
+  | "ANY_SERVICE_ACCOUNT"
+  | (string & {});
 export const IngressFromIdentityTypeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the Private Service Connect endpoint that an API call refers to. */
@@ -742,7 +750,8 @@ export const ServicePatternList = /*@__PURE__*/ S.Array(
 
 export type VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum =
   | "SERVICE_PATTERNS_ENFORCEMENT_SCOPE_UNSPECIFIED"
-  | "GOOGLE_APIS_VIA_PRIVATE_PATH";
+  | "GOOGLE_APIS_VIA_PRIVATE_PATH"
+  | (string & {});
 export const VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -803,13 +812,15 @@ export type EgressFromIdentityTypeEnum =
   | "IDENTITY_TYPE_UNSPECIFIED"
   | "ANY_IDENTITY"
   | "ANY_USER_ACCOUNT"
-  | "ANY_SERVICE_ACCOUNT";
+  | "ANY_SERVICE_ACCOUNT"
+  | (string & {});
 export const EgressFromIdentityTypeEnum = /*@__PURE__*/ S.String;
 
 export type EgressFromSourceRestrictionEnum =
   | "SOURCE_RESTRICTION_UNSPECIFIED"
   | "SOURCE_RESTRICTION_ENABLED"
-  | "SOURCE_RESTRICTION_DISABLED";
+  | "SOURCE_RESTRICTION_DISABLED"
+  | (string & {});
 export const EgressFromSourceRestrictionEnum = /*@__PURE__*/ S.String;
 
 /** Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed. */
@@ -962,7 +973,8 @@ export type SessionSettingsSessionReauthMethodEnum =
   | "SESSION_REAUTH_METHOD_UNSPECIFIED"
   | "LOGIN"
   | "SECURITY_KEY"
-  | "PASSWORD";
+  | "PASSWORD"
+  | (string & {});
 export const SessionSettingsSessionReauthMethodEnum = /*@__PURE__*/ S.String;
 
 /** Stores settings related to Google Cloud Session Length including session duration, the type of challenge (i.e. method) they should face when their session expires, and other related settings. */
@@ -1255,7 +1267,8 @@ export const GetAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetAccessPoliciesAccessLevelsAccessLevelFormatEnum =
   | "LEVEL_FORMAT_UNSPECIFIED"
   | "AS_DEFINED"
-  | "CEL";
+  | "CEL"
+  | (string & {});
 export const GetAccessPoliciesAccessLevelsAccessLevelFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -1372,7 +1385,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1518,14 +1532,16 @@ export type SupportedServiceSupportStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED";
+  | "DEPRECATED"
+  | (string & {});
 export const SupportedServiceSupportStageEnum = /*@__PURE__*/ S.String;
 
 export type SupportedServiceServiceSupportStageEnum =
   | "SERVICE_SUPPORT_STAGE_UNSPECIFIED"
   | "GA"
   | "PREVIEW"
-  | "DEPRECATED";
+  | "DEPRECATED"
+  | (string & {});
 export const SupportedServiceServiceSupportStageEnum = /*@__PURE__*/ S.String;
 
 /** `SupportedService` specifies the VPC Service Controls and its properties. */
@@ -1607,7 +1623,8 @@ export const ListAccessPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListAccessPoliciesAccessLevelsAccessLevelFormatEnum =
   | "LEVEL_FORMAT_UNSPECIFIED"
   | "AS_DEFINED"
-  | "CEL";
+  | "CEL"
+  | (string & {});
 export const ListAccessPoliciesAccessLevelsAccessLevelFormatEnum =
   /*@__PURE__*/ S.String;
 

@@ -14,7 +14,10 @@ import * as Retry from "../retry.ts";
 export type { AzureOpError, AzureOpContext };
 
 /** Property enabled state. */
-export type ImagePropertiesInputEnabledState = "Enabled" | "Disabled";
+export type ImagePropertiesInputEnabledState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const ImagePropertiesInputEnabledState = /*@__PURE__*/ S.String;
 
 /** Resource provisioning state. */
@@ -24,15 +27,19 @@ export type ImagePropertiesInputProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Locked";
+  | "Locked"
+  | (string & {});
 export const ImagePropertiesInputProvisioningState = /*@__PURE__*/ S.String;
 
 /** The operating system type. */
-export type ImagePropertiesInputOsType = "Windows" | "Linux";
+export type ImagePropertiesInputOsType = "Windows" | "Linux" | (string & {});
 export const ImagePropertiesInputOsType = /*@__PURE__*/ S.String;
 
 /** Property enabled state. */
-export type ImagePropertiesInputTermsStatus = "Enabled" | "Disabled";
+export type ImagePropertiesInputTermsStatus =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const ImagePropertiesInputTermsStatus = /*@__PURE__*/ S.String;
 
 /** The available regions of the image in the shared gallery. */
@@ -42,7 +49,10 @@ export const ImagePropertiesInputAvailableRegionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ImagePropertiesInputAvailableRegionsList>;
 
 /** The operating system state. */
-export type ImagePropertiesInputOsState = "Generalized" | "Specialized";
+export type ImagePropertiesInputOsState =
+  | "Generalized"
+  | "Specialized"
+  | (string & {});
 export const ImagePropertiesInputOsState = /*@__PURE__*/ S.String;
 
 /** Properties of an image resource. */
@@ -112,7 +122,8 @@ export type ImagesCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ImagesCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -121,7 +132,8 @@ export type ImagesCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ImagesCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -159,7 +171,10 @@ export const ImagesCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ImagesCreateOrUpdateResponseSystemData>;
 
 /** Property enabled state. */
-export type ImagePropertiesEnabledState = "Enabled" | "Disabled";
+export type ImagePropertiesEnabledState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const ImagePropertiesEnabledState = /*@__PURE__*/ S.String;
 
 /** Resource provisioning state. */
@@ -169,15 +184,16 @@ export type ImagePropertiesProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Locked";
+  | "Locked"
+  | (string & {});
 export const ImagePropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The operating system type. */
-export type ImagePropertiesOsType = "Windows" | "Linux";
+export type ImagePropertiesOsType = "Windows" | "Linux" | (string & {});
 export const ImagePropertiesOsType = /*@__PURE__*/ S.String;
 
 /** Property enabled state. */
-export type ImagePropertiesTermsStatus = "Enabled" | "Disabled";
+export type ImagePropertiesTermsStatus = "Enabled" | "Disabled" | (string & {});
 export const ImagePropertiesTermsStatus = /*@__PURE__*/ S.String;
 
 /** The available regions of the image in the shared gallery. */
@@ -187,7 +203,10 @@ export const ImagePropertiesAvailableRegionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ImagePropertiesAvailableRegionsList>;
 
 /** The operating system state. */
-export type ImagePropertiesOsState = "Generalized" | "Specialized";
+export type ImagePropertiesOsState =
+  | "Generalized"
+  | "Specialized"
+  | (string & {});
 export const ImagePropertiesOsState = /*@__PURE__*/ S.String;
 
 /** Properties of an image resource. */
@@ -305,7 +324,8 @@ export type ImagesGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ImagesGetResponseSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -313,7 +333,8 @@ export type ImagesGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ImagesGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -404,7 +425,8 @@ export type ImageSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ImageSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -412,7 +434,8 @@ export type ImageSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ImageSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -487,7 +510,10 @@ export const PagedImages = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PagedImages" }) as any as S.Schema<PagedImages>;
 
 /** Property enabled state. */
-export type ImageUpdatePropertiesEnabledState = "Enabled" | "Disabled";
+export type ImageUpdatePropertiesEnabledState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const ImageUpdatePropertiesEnabledState = /*@__PURE__*/ S.String;
 
 /** Properties of an image resource update */
@@ -539,7 +565,8 @@ export type ImagesUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ImagesUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -548,7 +575,8 @@ export type ImagesUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ImagesUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -616,7 +644,7 @@ export const LabPlansCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LabPlansCreateOrUpdateRequestTagsMap>;
 
 /** A connection type for access labs and VMs (Public, Private or None). */
-export type ConnectionType = "Public" | "Private" | "None";
+export type ConnectionType = "Public" | "Private" | "None" | (string & {});
 export const ConnectionType = /*@__PURE__*/ S.String;
 
 /** Connection profile for how users connect to lab virtual machines. */
@@ -643,11 +671,15 @@ export const LabPlanPropertiesDefaultConnectionProfile =
   }) as any as S.Schema<LabPlanPropertiesDefaultConnectionProfile>;
 
 /** Property enabled state. */
-export type EnableState = "Enabled" | "Disabled";
+export type EnableState = "Enabled" | "Disabled" | (string & {});
 export const EnableState = /*@__PURE__*/ S.String;
 
 /** Defines whether to shut down VM on idle and the criteria for idle detection. */
-export type ShutdownOnIdleMode = "None" | "UserAbsence" | "LowUsage";
+export type ShutdownOnIdleMode =
+  | "None"
+  | "UserAbsence"
+  | "LowUsage"
+  | (string & {});
 export const ShutdownOnIdleMode = /*@__PURE__*/ S.String;
 
 /** Profile for how to handle shutting down virtual machines. */
@@ -725,7 +757,8 @@ export type LabPlanPropertiesProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Locked";
+  | "Locked"
+  | (string & {});
 export const LabPlanPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Error details of the latest operation failure on this resource */
@@ -793,7 +826,9 @@ export const LabPlanProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LabPlanProperties>;
 
 /** The identity type. */
-export type LabPlansCreateOrUpdateRequestIdentityType = "SystemAssigned";
+export type LabPlansCreateOrUpdateRequestIdentityType =
+  | "SystemAssigned"
+  | (string & {});
 export const LabPlansCreateOrUpdateRequestIdentityType = /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
@@ -861,7 +896,8 @@ export type LabPlansCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const LabPlansCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -870,7 +906,8 @@ export type LabPlansCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const LabPlansCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -908,7 +945,9 @@ export const LabPlansCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LabPlansCreateOrUpdateResponseSystemData>;
 
 /** The identity type. */
-export type LabPlansCreateOrUpdateResponseIdentityType = "SystemAssigned";
+export type LabPlansCreateOrUpdateResponseIdentityType =
+  | "SystemAssigned"
+  | (string & {});
 export const LabPlansCreateOrUpdateResponseIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -1034,7 +1073,8 @@ export type LabPlansGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const LabPlansGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1043,7 +1083,8 @@ export type LabPlansGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const LabPlansGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1078,7 +1119,7 @@ export const LabPlansGetResponseSystemData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LabPlansGetResponseSystemData>;
 
 /** The identity type. */
-export type LabPlansGetResponseIdentityType = "SystemAssigned";
+export type LabPlansGetResponseIdentityType = "SystemAssigned" | (string & {});
 export const LabPlansGetResponseIdentityType = /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
@@ -1167,7 +1208,8 @@ export type LabPlanSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const LabPlanSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -1175,7 +1217,8 @@ export type LabPlanSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const LabPlanSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -1207,7 +1250,7 @@ export const LabPlanSystemData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LabPlanSystemData>;
 
 /** The identity type. */
-export type LabPlanIdentityType = "SystemAssigned";
+export type LabPlanIdentityType = "SystemAssigned" | (string & {});
 export const LabPlanIdentityType = /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
@@ -1441,7 +1484,9 @@ export const LabPlanUpdateProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LabPlanUpdateProperties>;
 
 /** The identity type. */
-export type LabPlansUpdateRequestIdentityType = "SystemAssigned";
+export type LabPlansUpdateRequestIdentityType =
+  | "SystemAssigned"
+  | (string & {});
 export const LabPlansUpdateRequestIdentityType = /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
@@ -1505,7 +1550,8 @@ export type LabPlansUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const LabPlansUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1514,7 +1560,8 @@ export type LabPlansUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const LabPlansUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1549,7 +1596,9 @@ export const LabPlansUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LabPlansUpdateResponseSystemData>;
 
 /** The identity type. */
-export type LabPlansUpdateResponseIdentityType = "SystemAssigned";
+export type LabPlansUpdateResponseIdentityType =
+  | "SystemAssigned"
+  | (string & {});
 export const LabPlansUpdateResponseIdentityType = /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
@@ -1665,7 +1714,10 @@ export const LabPropertiesInputConnectionProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LabPropertiesInputConnectionProfile>;
 
 /** Indicates what lab virtual machines are created from. */
-export type VirtualMachineProfileInputCreateOption = "Image" | "TemplateVM";
+export type VirtualMachineProfileInputCreateOption =
+  | "Image"
+  | "TemplateVM"
+  | (string & {});
 export const VirtualMachineProfileInputCreateOption = /*@__PURE__*/ S.String;
 
 /** Image reference information. Used in the virtual machine profile. */
@@ -1694,7 +1746,10 @@ export const ImageReferenceInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImageReferenceInput>;
 
 /** The operating system type. */
-export type VirtualMachineProfileInputOsType = "Windows" | "Linux";
+export type VirtualMachineProfileInputOsType =
+  | "Windows"
+  | "Linux"
+  | (string & {});
 export const VirtualMachineProfileInputOsType = /*@__PURE__*/ S.String;
 
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
@@ -1702,7 +1757,8 @@ export type VirtualMachineProfileInputSkuTier =
   | "Free"
   | "Basic"
   | "Standard"
-  | "Premium";
+  | "Premium"
+  | (string & {});
 export const VirtualMachineProfileInputSkuTier = /*@__PURE__*/ S.String;
 
 /** The resource model definition representing SKU */
@@ -1733,7 +1789,8 @@ export const VirtualMachineProfileInputSku = /*@__PURE__*/ S.suspend(() =>
 /** Property enabled state. */
 export type VirtualMachineAdditionalCapabilitiesInstallGpuDrivers =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const VirtualMachineAdditionalCapabilitiesInstallGpuDrivers =
   /*@__PURE__*/ S.String;
 
@@ -1756,7 +1813,8 @@ export const VirtualMachineAdditionalCapabilities = /*@__PURE__*/ S.suspend(
 /** Property enabled state. */
 export type VirtualMachineProfileInputUseSharedPassword =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const VirtualMachineProfileInputUseSharedPassword =
   /*@__PURE__*/ S.String;
 
@@ -1812,7 +1870,10 @@ export const VirtualMachineProfileInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualMachineProfileInput>;
 
 /** Property enabled state. */
-export type SecurityProfileInputOpenAccess = "Enabled" | "Disabled";
+export type SecurityProfileInputOpenAccess =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const SecurityProfileInputOpenAccess = /*@__PURE__*/ S.String;
 
 /** The lab security profile. */
@@ -1858,7 +1919,8 @@ export type LabPropertiesInputProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Locked";
+  | "Locked"
+  | (string & {});
 export const LabPropertiesInputProvisioningState = /*@__PURE__*/ S.String;
 
 /** Profile for how to handle networking for Labs. */
@@ -1996,7 +2058,8 @@ export type LabsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const LabsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2005,7 +2068,8 @@ export type LabsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const LabsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2093,7 +2157,10 @@ export const LabPropertiesConnectionProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LabPropertiesConnectionProfile>;
 
 /** Indicates what lab virtual machines are created from. */
-export type VirtualMachineProfileCreateOption = "Image" | "TemplateVM";
+export type VirtualMachineProfileCreateOption =
+  | "Image"
+  | "TemplateVM"
+  | (string & {});
 export const VirtualMachineProfileCreateOption = /*@__PURE__*/ S.String;
 
 /** Image reference information. Used in the virtual machine profile. */
@@ -2123,7 +2190,7 @@ export const ImageReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageReference" }) as any as S.Schema<ImageReference>;
 
 /** The operating system type. */
-export type VirtualMachineProfileOsType = "Windows" | "Linux";
+export type VirtualMachineProfileOsType = "Windows" | "Linux" | (string & {});
 export const VirtualMachineProfileOsType = /*@__PURE__*/ S.String;
 
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
@@ -2131,7 +2198,8 @@ export type VirtualMachineProfileSkuTier =
   | "Free"
   | "Basic"
   | "Standard"
-  | "Premium";
+  | "Premium"
+  | (string & {});
 export const VirtualMachineProfileSkuTier = /*@__PURE__*/ S.String;
 
 /** The resource model definition representing SKU */
@@ -2160,7 +2228,10 @@ export const VirtualMachineProfileSku = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualMachineProfileSku>;
 
 /** Property enabled state. */
-export type VirtualMachineProfileUseSharedPassword = "Enabled" | "Disabled";
+export type VirtualMachineProfileUseSharedPassword =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const VirtualMachineProfileUseSharedPassword = /*@__PURE__*/ S.String;
 
 /** The base virtual machine configuration for a lab. */
@@ -2201,7 +2272,7 @@ export const VirtualMachineProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualMachineProfile>;
 
 /** Property enabled state. */
-export type SecurityProfileOpenAccess = "Enabled" | "Disabled";
+export type SecurityProfileOpenAccess = "Enabled" | "Disabled" | (string & {});
 export const SecurityProfileOpenAccess = /*@__PURE__*/ S.String;
 
 /** The lab security profile. */
@@ -2227,7 +2298,8 @@ export type LabPropertiesProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Locked";
+  | "Locked"
+  | (string & {});
 export const LabPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The state of a virtual machine. */
@@ -2236,7 +2308,8 @@ export type LabState =
   | "Publishing"
   | "Scaling"
   | "Syncing"
-  | "Published";
+  | "Published"
+  | (string & {});
 export const LabState = /*@__PURE__*/ S.String;
 
 /** Error details of the latest operation failure on this resource */
@@ -2402,7 +2475,8 @@ export type LabsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const LabsGetResponseSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -2410,7 +2484,8 @@ export type LabsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const LabsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2506,7 +2581,8 @@ export type LabSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const LabSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -2514,7 +2590,8 @@ export type LabSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const LabSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -2815,7 +2892,8 @@ export type LabsUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const LabsUpdateResponseSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -2823,7 +2901,8 @@ export type LabsUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const LabsUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2915,7 +2994,8 @@ export type OperationResultStatus =
   | "InProgress"
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const OperationResultStatus = /*@__PURE__*/ S.String;
 
 /** The error details. */
@@ -3075,11 +3155,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -3127,7 +3207,7 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsListResponse>;
 
 /** Schedule recurrence frequencies. */
-export type RecurrenceFrequency = "Daily" | "Weekly";
+export type RecurrenceFrequency = "Daily" | "Weekly" | (string & {});
 export const RecurrenceFrequency = /*@__PURE__*/ S.String;
 
 /** Days of the week. */
@@ -3138,7 +3218,8 @@ export type WeekDay =
   | "Wednesday"
   | "Thursday"
   | "Friday"
-  | "Saturday";
+  | "Saturday"
+  | (string & {});
 export const WeekDay = /*@__PURE__*/ S.String;
 
 /** The week days the schedule runs. Used for when the Frequency is set to Weekly. */
@@ -3176,7 +3257,8 @@ export type SchedulePropertiesProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Locked";
+  | "Locked"
+  | (string & {});
 export const SchedulePropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Error details of the latest operation failure on this resource */
@@ -3271,7 +3353,8 @@ export type SchedulesCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SchedulesCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -3280,7 +3363,8 @@ export type SchedulesCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SchedulesCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -3409,7 +3493,8 @@ export type SchedulesGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SchedulesGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -3418,7 +3503,8 @@ export type SchedulesGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SchedulesGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -3509,7 +3595,8 @@ export type ScheduleSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ScheduleSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -3517,7 +3604,8 @@ export type ScheduleSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ScheduleSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -3652,7 +3740,8 @@ export type SchedulesUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SchedulesUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -3661,7 +3750,8 @@ export type SchedulesUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SchedulesUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -3742,11 +3832,15 @@ export const SkusListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkusListRequest>;
 
 /** The tier of the SKU. */
-export type LabServicesSkuTier = "Standard" | "Premium";
+export type LabServicesSkuTier = "Standard" | "Premium" | (string & {});
 export const LabServicesSkuTier = /*@__PURE__*/ S.String;
 
 /** The localized name of the resource. */
-export type LabServicesSkuCapacityScaleType = "None" | "Manual" | "Automatic";
+export type LabServicesSkuCapacityScaleType =
+  | "None"
+  | "Manual"
+  | "Automatic"
+  | (string & {});
 export const LabServicesSkuCapacityScaleType = /*@__PURE__*/ S.String;
 
 /** The scale out/in options of the SKU. */
@@ -3826,7 +3920,7 @@ export const LabServicesSkuCostsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<LabServicesSkuCostsList>;
 
 /** The type of restriction. */
-export type LabServicesSkuRestrictionsType = "Location";
+export type LabServicesSkuRestrictionsType = "Location" | (string & {});
 export const LabServicesSkuRestrictionsType = /*@__PURE__*/ S.String;
 
 /** The values of the restriction. */
@@ -3838,7 +3932,8 @@ export const LabServicesSkuRestrictionsValuesList = /*@__PURE__*/ S.Array(
 /** The reason for the restriction. */
 export type LabServicesSkuRestrictionsReasonCode =
   | "QuotaId"
-  | "NotAvailableForSubscription";
+  | "NotAvailableForSubscription"
+  | (string & {});
 export const LabServicesSkuRestrictionsReasonCode = /*@__PURE__*/ S.String;
 
 /** The restriction details. */
@@ -3952,7 +4047,7 @@ export const UsagesListByLocationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsagesListByLocationRequest>;
 
 /** The unit details. */
-export type UsageUnit = "Count";
+export type UsageUnit = "Count" | (string & {});
 export const UsageUnit = /*@__PURE__*/ S.String;
 
 /** The instances of the resource. */
@@ -4030,7 +4125,8 @@ export type UserPropertiesInputProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Locked";
+  | "Locked"
+  | (string & {});
 export const UserPropertiesInputProvisioningState = /*@__PURE__*/ S.String;
 
 /** Error details of the latest operation failure on this resource */
@@ -4116,7 +4212,8 @@ export type UsersCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const UsersCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -4125,7 +4222,8 @@ export type UsersCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const UsersCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -4169,7 +4267,8 @@ export type UserPropertiesProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Locked";
+  | "Locked"
+  | (string & {});
 export const UserPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Error details of the latest operation failure on this resource */
@@ -4196,11 +4295,16 @@ export const UserPropertiesResourceOperationError = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UserPropertiesResourceOperationError>;
 
 /** The user lab registration state. */
-export type RegistrationState = "NotRegistered" | "Registered";
+export type RegistrationState = "NotRegistered" | "Registered" | (string & {});
 export const RegistrationState = /*@__PURE__*/ S.String;
 
 /** The lab user invitation state. */
-export type InvitationState = "NotSent" | "Sending" | "Sent" | "Failed";
+export type InvitationState =
+  | "NotSent"
+  | "Sending"
+  | "Sent"
+  | "Failed"
+  | (string & {});
 export const InvitationState = /*@__PURE__*/ S.String;
 
 /** User resource properties */
@@ -4330,7 +4434,8 @@ export type UsersGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const UsersGetResponseSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -4338,7 +4443,8 @@ export type UsersGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const UsersGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -4467,7 +4573,8 @@ export type UserSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const UserSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -4475,7 +4582,8 @@ export type UserSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const UserSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -4596,7 +4704,8 @@ export type UsersUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const UsersUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -4605,7 +4714,8 @@ export type UsersUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const UsersUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -4696,7 +4806,8 @@ export type VirtualMachinesGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const VirtualMachinesGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -4705,7 +4816,8 @@ export type VirtualMachinesGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const VirtualMachinesGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -4749,7 +4861,8 @@ export type VirtualMachinePropertiesProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Locked";
+  | "Locked"
+  | (string & {});
 export const VirtualMachinePropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The state of a virtual machine. */
@@ -4760,7 +4873,8 @@ export type VirtualMachineState =
   | "Stopping"
   | "ResettingPassword"
   | "Reimaging"
-  | "Redeploying";
+  | "Redeploying"
+  | (string & {});
 export const VirtualMachineState = /*@__PURE__*/ S.String;
 
 /** Error details of the latest operation failure on this resource */
@@ -4818,7 +4932,7 @@ export const VirtualMachineConnectionProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualMachineConnectionProfile>;
 
 /** The type of the lab virtual machine. */
-export type VirtualMachineType = "User" | "Template";
+export type VirtualMachineType = "User" | "Template" | (string & {});
 export const VirtualMachineType = /*@__PURE__*/ S.String;
 
 /** Virtual machine resource properties */
@@ -4908,7 +5022,8 @@ export type VirtualMachineSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const VirtualMachineSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -4916,7 +5031,8 @@ export type VirtualMachineSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const VirtualMachineSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

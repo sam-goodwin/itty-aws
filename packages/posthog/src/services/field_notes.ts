@@ -16,7 +16,8 @@ export type FieldNoteStatusEnum =
   | "pending"
   | "acknowledged"
   | "resolved"
-  | "dismissed";
+  | "dismissed"
+  | (string & {});
 export const FieldNoteStatusEnum = /*@__PURE__*/ S.String;
 
 /** Structured element metadata (inferred selectors, attributes, component hints). */
@@ -136,10 +137,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -254,7 +256,8 @@ export type FieldNotesListRequestFieldNoteStatus =
   | "acknowledged"
   | "dismissed"
   | "pending"
-  | "resolved";
+  | "resolved"
+  | (string & {});
 export const FieldNotesListRequestFieldNoteStatus = /*@__PURE__*/ S.String;
 
 export interface FieldNotesListRequest {

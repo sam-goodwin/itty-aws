@@ -14,7 +14,10 @@ import * as Retry from "../retry.ts";
 export type { AzureOpError, AzureOpContext };
 
 /** The properties with which the alert rule resource was created. */
-export type AlertRuleCreationProperties = "CreatedWithActionGroup" | "None";
+export type AlertRuleCreationProperties =
+  | "CreatedWithActionGroup"
+  | "None"
+  | (string & {});
 export const AlertRuleCreationProperties = /*@__PURE__*/ S.String;
 
 /** The generic properties of the alert rule proxy resource. */
@@ -79,7 +82,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -87,7 +91,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -120,7 +125,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 export type AzureResourceManagerResourceProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const AzureResourceManagerResourceProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -375,7 +381,8 @@ export type ValidationStatus =
   | "Succeeded"
   | "Failed"
   | "Canceled"
-  | "TimedOut";
+  | "TimedOut"
+  | (string & {});
 export const ValidationStatus = /*@__PURE__*/ S.String;
 
 /** The model of a health validation issue. */
@@ -632,11 +639,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -743,7 +750,8 @@ export type SharedPrivateLinkResourceStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
-  | "Disconnected";
+  | "Disconnected"
+  | (string & {});
 export const SharedPrivateLinkResourceStatus = /*@__PURE__*/ S.String;
 
 /** The generic properties of a Shared Private Link resource. */
@@ -967,7 +975,7 @@ export const SharedPrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SharedPrivateLinkResourceListResult>;
 
 /** The type of authentication to use when connecting to a target. */
-export type TargetAuthenticationType = "Aad" | "Sql";
+export type TargetAuthenticationType = "Aad" | "Sql" | (string & {});
 export const TargetAuthenticationType = /*@__PURE__*/ S.String;
 
 /** The vault specific details required if using SQL authentication to connect to a target. */
@@ -1258,7 +1266,7 @@ export const WatchersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WatchersCreateOrUpdateRequestTagsMap>;
 
 /** The type of Kusto offering. */
-export type KustoOfferingType = "adx" | "free" | "fabric";
+export type KustoOfferingType = "adx" | "free" | "fabric" | (string & {});
 export const KustoOfferingType = /*@__PURE__*/ S.String;
 
 /** The properties of a data store. */
@@ -1311,7 +1319,8 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned, UserAssigned";
+  | "SystemAssigned, UserAssigned"
+  | (string & {});
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -1398,14 +1407,16 @@ export type WatcherStatus =
   | "Running"
   | "Stopping"
   | "Stopped"
-  | "Deleting";
+  | "Deleting"
+  | (string & {});
 export const WatcherStatus = /*@__PURE__*/ S.String;
 
 /** The status of the last provisioning operation performed on the resource. */
 export type DatabaseWatcherProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const DatabaseWatcherProvisioningState = /*@__PURE__*/ S.String;
 
 /** The RP specific properties of the resource. */

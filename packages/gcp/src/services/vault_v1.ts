@@ -193,7 +193,8 @@ export const AddHeldAccountsResponse = /*@__PURE__*/ S.suspend(() =>
 export type MatterPermissionRoleEnum =
   | "ROLE_UNSPECIFIED"
   | "COLLABORATOR"
-  | "OWNER";
+  | "OWNER"
+  | (string & {});
 export const MatterPermissionRoleEnum = /*@__PURE__*/ S.String;
 
 /** Users can be matter owners or collaborators. Each matter has only one owner. All others users who can access the matter are collaborators. When an account is purged, its corresponding MatterPermission resources cease to exist. */
@@ -320,14 +321,16 @@ export type MatterMatterRegionEnum =
   | "MATTER_REGION_UNSPECIFIED"
   | "ANY"
   | "US"
-  | "EUROPE";
+  | "EUROPE"
+  | (string & {});
 export const MatterMatterRegionEnum = /*@__PURE__*/ S.String;
 
 export type MatterStateEnum =
   | "STATE_UNSPECIFIED"
   | "OPEN"
   | "CLOSED"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const MatterStateEnum = /*@__PURE__*/ S.String;
 
 export type MatterPermissionList = ReadonlyArray<MatterPermission>;
@@ -378,7 +381,8 @@ export type QueryDataScopeEnum =
   | "DATA_SCOPE_UNSPECIFIED"
   | "ALL_DATA"
   | "HELD_DATA"
-  | "UNPROCESSED_DATA";
+  | "UNPROCESSED_DATA"
+  | (string & {});
 export const QueryDataScopeEnum = /*@__PURE__*/ S.String;
 
 /** The organizational unit to search */
@@ -414,7 +418,8 @@ export type QueryMethodEnum =
   | "ROOM"
   | "SITES_URL"
   | "SHARED_DRIVE"
-  | "DRIVE_DOCUMENT";
+  | "DRIVE_DOCUMENT"
+  | (string & {});
 export const QueryMethodEnum = /*@__PURE__*/ S.String;
 
 /** Additional options for Google Chat search */
@@ -441,7 +446,8 @@ export type CalendarOptionsResponseStatusesItemEnum =
   | "ATTENDEE_RESPONSE_NEEDS_ACTION"
   | "ATTENDEE_RESPONSE_ACCEPTED"
   | "ATTENDEE_RESPONSE_DECLINED"
-  | "ATTENDEE_RESPONSE_TENTATIVE";
+  | "ATTENDEE_RESPONSE_TENTATIVE"
+  | (string & {});
 export const CalendarOptionsResponseStatusesItemEnum = /*@__PURE__*/ S.String;
 
 export type CalendarOptionsResponseStatusesItemEnumList =
@@ -480,14 +486,16 @@ export type DriveOptionsClientSideEncryptedOptionEnum =
   | "CLIENT_SIDE_ENCRYPTED_OPTION_UNSPECIFIED"
   | "CLIENT_SIDE_ENCRYPTED_OPTION_ANY"
   | "CLIENT_SIDE_ENCRYPTED_OPTION_ENCRYPTED"
-  | "CLIENT_SIDE_ENCRYPTED_OPTION_UNENCRYPTED";
+  | "CLIENT_SIDE_ENCRYPTED_OPTION_UNENCRYPTED"
+  | (string & {});
 export const DriveOptionsClientSideEncryptedOptionEnum = /*@__PURE__*/ S.String;
 
 export type DriveOptionsSharedDrivesOptionEnum =
   | "SHARED_DRIVES_OPTION_UNSPECIFIED"
   | "NOT_INCLUDED"
   | "INCLUDED_IF_ACCOUNT_IS_NOT_A_MEMBER"
-  | "INCLUDED";
+  | "INCLUDED"
+  | (string & {});
 export const DriveOptionsSharedDrivesOptionEnum = /*@__PURE__*/ S.String;
 
 /** Additional options for Drive search. */
@@ -519,7 +527,8 @@ export type MailOptionsClientSideEncryptedOptionEnum =
   | "CLIENT_SIDE_ENCRYPTED_OPTION_UNSPECIFIED"
   | "CLIENT_SIDE_ENCRYPTED_OPTION_ANY"
   | "CLIENT_SIDE_ENCRYPTED_OPTION_ENCRYPTED"
-  | "CLIENT_SIDE_ENCRYPTED_OPTION_UNENCRYPTED";
+  | "CLIENT_SIDE_ENCRYPTED_OPTION_UNENCRYPTED"
+  | (string & {});
 export const MailOptionsClientSideEncryptedOptionEnum = /*@__PURE__*/ S.String;
 
 /** Additional options for Gmail search */
@@ -547,7 +556,8 @@ export type QuerySearchMethodEnum =
   | "ROOM"
   | "SITES_URL"
   | "SHARED_DRIVE"
-  | "DRIVE_DOCUMENT";
+  | "DRIVE_DOCUMENT"
+  | (string & {});
 export const QuerySearchMethodEnum = /*@__PURE__*/ S.String;
 
 /** The Chat spaces to search */
@@ -582,7 +592,8 @@ export type QueryCorpusEnum =
   | "HANGOUTS_CHAT"
   | "VOICE"
   | "CALENDAR"
-  | "GEMINI";
+  | "GEMINI"
+  | (string & {});
 export const QueryCorpusEnum = /*@__PURE__*/ S.String;
 
 /** The accounts to search */
@@ -600,7 +611,8 @@ export type VoiceOptionsCoveredDataItemEnum =
   | "COVERED_DATA_UNSPECIFIED"
   | "TEXT_MESSAGES"
   | "VOICEMAILS"
-  | "CALL_LOGS";
+  | "CALL_LOGS"
+  | (string & {});
 export const VoiceOptionsCoveredDataItemEnum = /*@__PURE__*/ S.String;
 
 export type VoiceOptionsCoveredDataItemEnumList =
@@ -731,7 +743,8 @@ export const Query = /*@__PURE__*/ S.suspend(() =>
 export type CountArtifactsRequestViewEnum =
   | "COUNT_RESULT_VIEW_UNSPECIFIED"
   | "TOTAL_COUNT"
-  | "ALL";
+  | "ALL"
+  | (string & {});
 export const CountArtifactsRequestViewEnum = /*@__PURE__*/ S.String;
 
 /** Count artifacts request. */
@@ -816,7 +829,8 @@ export type ExportStatusEnum =
   | "EXPORT_STATUS_UNSPECIFIED"
   | "COMPLETED"
   | "FAILED"
-  | "IN_PROGRESS";
+  | "IN_PROGRESS"
+  | (string & {});
 export const ExportStatusEnum = /*@__PURE__*/ S.String;
 
 /** Progress information for an export. */
@@ -882,7 +896,8 @@ export type HangoutsChatExportOptionsExportFormatEnum =
   | "PST"
   | "ICS"
   | "XML"
-  | "JSON";
+  | "JSON"
+  | (string & {});
 export const HangoutsChatExportOptionsExportFormatEnum = /*@__PURE__*/ S.String;
 
 /** Options for Chat exports. */
@@ -904,7 +919,8 @@ export type VoiceExportOptionsExportFormatEnum =
   | "PST"
   | "ICS"
   | "XML"
-  | "JSON";
+  | "JSON"
+  | (string & {});
 export const VoiceExportOptionsExportFormatEnum = /*@__PURE__*/ S.String;
 
 /** The options for Voice exports. */
@@ -926,7 +942,8 @@ export type GeminiExportOptionsExportFormatEnum =
   | "PST"
   | "ICS"
   | "XML"
-  | "JSON";
+  | "JSON"
+  | (string & {});
 export const GeminiExportOptionsExportFormatEnum = /*@__PURE__*/ S.String;
 
 /** The options for Gemini exports. */
@@ -961,7 +978,8 @@ export type MailExportOptionsExportFormatEnum =
   | "PST"
   | "ICS"
   | "XML"
-  | "JSON";
+  | "JSON"
+  | (string & {});
 export const MailExportOptionsExportFormatEnum = /*@__PURE__*/ S.String;
 
 /** Options for Gmail exports. */
@@ -990,7 +1008,8 @@ export type ExportOptionsRegionEnum =
   | "EXPORT_REGION_UNSPECIFIED"
   | "ANY"
   | "US"
-  | "EUROPE";
+  | "EUROPE"
+  | (string & {});
 export const ExportOptionsRegionEnum = /*@__PURE__*/ S.String;
 
 export type GroupsExportOptionsExportFormatEnum =
@@ -999,7 +1018,8 @@ export type GroupsExportOptionsExportFormatEnum =
   | "PST"
   | "ICS"
   | "XML"
-  | "JSON";
+  | "JSON"
+  | (string & {});
 export const GroupsExportOptionsExportFormatEnum = /*@__PURE__*/ S.String;
 
 /** Options for Groups exports. */
@@ -1021,7 +1041,8 @@ export type CalendarExportOptionsExportFormatEnum =
   | "PST"
   | "ICS"
   | "XML"
-  | "JSON";
+  | "JSON"
+  | (string & {});
 export const CalendarExportOptionsExportFormatEnum = /*@__PURE__*/ S.String;
 
 /** The options for Calendar exports. */
@@ -1172,7 +1193,8 @@ export type HoldCorpusEnum =
   | "HANGOUTS_CHAT"
   | "VOICE"
   | "CALENDAR"
-  | "GEMINI";
+  | "GEMINI"
+  | (string & {});
 export const HoldCorpusEnum = /*@__PURE__*/ S.String;
 
 /** Options for Calendar holds. */
@@ -1231,7 +1253,8 @@ export type HeldVoiceQueryCoveredDataItemEnum =
   | "COVERED_DATA_UNSPECIFIED"
   | "TEXT_MESSAGES"
   | "VOICEMAILS"
-  | "CALL_LOGS";
+  | "CALL_LOGS"
+  | (string & {});
 export const HeldVoiceQueryCoveredDataItemEnum = /*@__PURE__*/ S.String;
 
 export type HeldVoiceQueryCoveredDataItemEnumList =
@@ -1548,7 +1571,11 @@ export const DeleteOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteOperationsRequest",
 }) as any as S.Schema<DeleteOperationsRequest>;
 
-export type GetMattersViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export type GetMattersViewEnum =
+  | "VIEW_UNSPECIFIED"
+  | "BASIC"
+  | "FULL"
+  | (string & {});
 export const GetMattersViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetMattersRequest {
@@ -1596,7 +1623,8 @@ export const GetMattersExportsRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetMattersHoldsViewEnum =
   | "HOLD_VIEW_UNSPECIFIED"
   | "BASIC_HOLD"
-  | "FULL_HOLD";
+  | "FULL_HOLD"
+  | (string & {});
 export const GetMattersHoldsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetMattersHoldsRequest {
@@ -1666,10 +1694,15 @@ export type ListMattersStateEnum =
   | "STATE_UNSPECIFIED"
   | "OPEN"
   | "CLOSED"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const ListMattersStateEnum = /*@__PURE__*/ S.String;
 
-export type ListMattersViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export type ListMattersViewEnum =
+  | "VIEW_UNSPECIFIED"
+  | "BASIC"
+  | "FULL"
+  | (string & {});
 export const ListMattersViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListMattersRequest {
@@ -1768,7 +1801,8 @@ export const ListExportsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListMattersHoldsViewEnum =
   | "HOLD_VIEW_UNSPECIFIED"
   | "BASIC_HOLD"
-  | "FULL_HOLD";
+  | "FULL_HOLD"
+  | (string & {});
 export const ListMattersHoldsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListMattersHoldsRequest {

@@ -105,7 +105,8 @@ export type ProviderOAuthConfigSystemProviderIdEnum =
   | "ROVO"
   | "NEW_RELIC"
   | "DATASTAX"
-  | "DYNATRACE";
+  | "DYNATRACE"
+  | (string & {});
 export const ProviderOAuthConfigSystemProviderIdEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -153,7 +154,8 @@ export type CustomOAuthConfigScmProviderEnum =
   | "SCM_PROVIDER_UNKNOWN"
   | "GITHUB_ENTERPRISE"
   | "GITLAB_ENTERPRISE"
-  | "BITBUCKET_DATA_CENTER";
+  | "BITBUCKET_DATA_CENTER"
+  | (string & {});
 export const CustomOAuthConfigScmProviderEnum = /*@__PURE__*/ S.String;
 
 /** ServiceDirectoryConfig represents Service Directory configuration for a connection. */
@@ -439,7 +441,8 @@ export type InstallationStateStageEnum =
   | "PENDING_CREATE_APP"
   | "PENDING_USER_OAUTH"
   | "PENDING_INSTALL_APP"
-  | "COMPLETE";
+  | "COMPLETE"
+  | (string & {});
 export const InstallationStateStageEnum = /*@__PURE__*/ S.String;
 
 /** Describes stage and necessary actions to be taken by the user to complete the installation. Used for GitHub and GitHub Enterprise based connections. */
@@ -466,7 +469,8 @@ export type GitHubConfigGithubAppEnum =
   | "DEVELOPER_CONNECT"
   | "FIREBASE"
   | "GEMINI_CODE_ASSIST"
-  | "DATAFORM";
+  | "DATAFORM"
+  | (string & {});
 export const GitHubConfigGithubAppEnum = /*@__PURE__*/ S.String;
 
 /** Represents an OAuth token of the account that authorized the Connection, and associated metadata. */
@@ -856,7 +860,8 @@ export type InsightsConfigStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
   | "COMPLETE"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const InsightsConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** Google Artifact Registry configurations. */
@@ -955,7 +960,8 @@ export const AppHubService = /*@__PURE__*/ S.suspend(() =>
 export type RuntimeConfigStateEnum =
   | "STATE_UNSPECIFIED"
   | "LINKED"
-  | "UNLINKED";
+  | "UNLINKED"
+  | (string & {});
 export const RuntimeConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** AppHubWorkload represents the App Hub Workload. */
@@ -1386,7 +1392,7 @@ export const FetchGitHubInstallationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FetchGitHubInstallationsResponse>;
 
 export type FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRefTypeEnum =
-  "REF_TYPE_UNSPECIFIED" | "TAG" | "BRANCH";
+  "REF_TYPE_UNSPECIFIED" | "TAG" | "BRANCH" | (string & {});
 export const FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRefTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1892,7 +1898,8 @@ export const GetProjectsLocationsInsightsConfigsDeploymentEventsRequest =
 export type DeploymentEventStateEnum =
   | "STATE_UNSPECIFIED"
   | "STATE_ACTIVE"
-  | "STATE_INACTIVE";
+  | "STATE_INACTIVE"
+  | (string & {});
 export const DeploymentEventStateEnum = /*@__PURE__*/ S.String;
 
 /** The ArtifactDeployment resource represents the deployment of the artifact within the InsightsConfig resource. */
@@ -2756,7 +2763,8 @@ export type StartOAuthResponseSystemProviderIdEnum =
   | "ROVO"
   | "NEW_RELIC"
   | "DATASTAX"
-  | "DYNATRACE";
+  | "DYNATRACE"
+  | (string & {});
 export const StartOAuthResponseSystemProviderIdEnum = /*@__PURE__*/ S.String;
 
 /** Message for responding to starting an OAuth flow. */

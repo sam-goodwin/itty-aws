@@ -174,7 +174,8 @@ export const BatchGetServicesRequest = /*@__PURE__*/ S.suspend(() =>
 export type GoogleApiServiceusageV1ServiceStateEnum =
   | "STATE_UNSPECIFIED"
   | "DISABLED"
-  | "ENABLED";
+  | "ENABLED"
+  | (string & {});
 export const GoogleApiServiceusageV1ServiceStateEnum = /*@__PURE__*/ S.String;
 
 /** Usage configuration rules for the service. */
@@ -336,7 +337,8 @@ export const Monitoring = /*@__PURE__*/ S.suspend(() =>
 export type MethodSyntaxEnum =
   | "SYNTAX_PROTO2"
   | "SYNTAX_PROTO3"
-  | "SYNTAX_EDITIONS";
+  | "SYNTAX_EDITIONS"
+  | (string & {});
 export const MethodSyntaxEnum = /*@__PURE__*/ S.String;
 
 /** A protocol buffer option, which can be attached to a message, field, enumeration, etc. New usages of this message as an alternative to FileOptions, MessageOptions, FieldOptions, EnumOptions, EnumValueOptions, ServiceOptions, or MethodOptions are strongly discouraged. */
@@ -398,7 +400,8 @@ export const MethodList = /*@__PURE__*/ S.Array(
 export type ApiSyntaxEnum =
   | "SYNTAX_PROTO2"
   | "SYNTAX_PROTO3"
-  | "SYNTAX_EDITIONS";
+  | "SYNTAX_EDITIONS"
+  | (string & {});
 export const ApiSyntaxEnum = /*@__PURE__*/ S.String;
 
 /** Declares an API Interface to be included in this interface. The including interface must redeclare all the methods from the included interface, but documentation and options are inherited as follows: - If after comment and whitespace stripping, the documentation string of the redeclared method is empty, it will be inherited from the original method. - Each annotation belonging to the service config (http, visibility) which is not set in the redeclared method will be inherited. - If an http annotation is inherited, the path pattern will be modified as follows. Any version prefix will be replaced by the version of the including interface plus the root path if specified. Example of a simple mixin: package google.acl.v1; service AccessControl { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v1/{resource=**}:getAcl"; } } package google.storage.v2; service Storage { // rpc GetAcl(GetAclRequest) returns (Acl); // Get a data record. rpc GetData(GetDataRequest) returns (Data) { option (google.api.http).get = "/v2/{resource=**}"; } } Example of a mixin configuration: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl The mixin construct implies that all methods in `AccessControl` are also declared with same name and request/response types in `Storage`. A documentation generator or annotation processor will see the effective `Storage.GetAcl` method after inheriting documentation and annotations as follows: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern changed from `v1` to `v2`. If the `root` field in the mixin is specified, it should be a relative path under which inherited HTTP paths are placed. Example: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl root: acls This implies the following inherited HTTP annotation: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/acls/{resource=**}:getAcl"; } ... } */
@@ -630,11 +633,16 @@ export type MonitoredResourceDescriptorLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED";
+  | "DEPRECATED"
+  | (string & {});
 export const MonitoredResourceDescriptorLaunchStageEnum =
   /*@__PURE__*/ S.String;
 
-export type LabelDescriptorValueTypeEnum = "STRING" | "BOOL" | "INT64";
+export type LabelDescriptorValueTypeEnum =
+  | "STRING"
+  | "BOOL"
+  | "INT64"
+  | (string & {});
 export const LabelDescriptorValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** A description of a label. */
@@ -914,7 +922,8 @@ export const DeleteOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type DisableServiceRequestCheckIfServiceHasUsageEnum =
   | "CHECK_IF_SERVICE_HAS_USAGE_UNSPECIFIED"
   | "SKIP"
-  | "CHECK";
+  | "CHECK"
+  | (string & {});
 export const DisableServiceRequestCheckIfServiceHasUsageEnum =
   /*@__PURE__*/ S.String;
 

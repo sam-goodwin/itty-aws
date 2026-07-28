@@ -57,7 +57,9 @@ export const WarehouseSavedQueriesActivityRetrieveRequest =
     identifier: "WarehouseSavedQueriesActivityRetrieveRequest",
   }) as any as S.Schema<WarehouseSavedQueriesActivityRetrieveRequest>;
 
-export type DataWarehouseSavedQueryOutputQueryKind = "HogQLQuery";
+export type DataWarehouseSavedQueryOutputQueryKind =
+  | "HogQLQuery"
+  | (string & {});
 export const DataWarehouseSavedQueryOutputQueryKind = /*@__PURE__*/ S.String;
 
 /** HogQL query definition as a JSON object with a "query" key containing the SQL string and a "kind" key (always "HogQLQuery"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic — the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {"kind": "HogQLQuery", "query": "SELECT\n event,\n count() AS cnt\nFROM events\nGROUP BY event\nLIMIT 100"} */
@@ -89,10 +91,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -134,7 +137,8 @@ export type SavedQuerySyncFrequencyEnum =
   | "12hour"
   | "24hour"
   | "7day"
-  | "30day";
+  | "30day"
+  | (string & {});
 export const SavedQuerySyncFrequencyEnum = /*@__PURE__*/ S.String;
 
 export type DataWarehouseSavedQueryOutputColumnsItemMap = {
@@ -158,11 +162,16 @@ export type SavedQueryStatusEnum =
   | "Modified"
   | "Completed"
   | "Failed"
-  | "Running";
+  | "Running"
+  | (string & {});
 export const SavedQueryStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `data_warehouse` - Data Warehouse * `endpoint` - Endpoint * `managed_viewset` - Managed Viewset */
-export type OriginEnum = "data_warehouse" | "endpoint" | "managed_viewset";
+export type OriginEnum =
+  | "data_warehouse"
+  | "endpoint"
+  | "managed_viewset"
+  | (string & {});
 export const OriginEnum = /*@__PURE__*/ S.String;
 
 /** Shared methods for DataWarehouseSavedQuery serializers. This mixin is intended to be used with serializers.ModelSerializer subclasses. */
@@ -228,7 +237,9 @@ export const DataWarehouseSavedQueryOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataWarehouseSavedQueryOutput",
 }) as any as S.Schema<DataWarehouseSavedQueryOutput>;
 
-export type WarehouseSavedQueriesAncestorsCreateRequestQueryKind = "HogQLQuery";
+export type WarehouseSavedQueriesAncestorsCreateRequestQueryKind =
+  | "HogQLQuery"
+  | (string & {});
 export const WarehouseSavedQueriesAncestorsCreateRequestQueryKind =
   /*@__PURE__*/ S.String;
 
@@ -298,7 +309,9 @@ export const WarehouseSavedQueriesAncestorsCreateRequest =
     identifier: "WarehouseSavedQueriesAncestorsCreateRequest",
   }) as any as S.Schema<WarehouseSavedQueriesAncestorsCreateRequest>;
 
-export type WarehouseSavedQueriesCancelCreateRequestQueryKind = "HogQLQuery";
+export type WarehouseSavedQueriesCancelCreateRequestQueryKind =
+  | "HogQLQuery"
+  | (string & {});
 export const WarehouseSavedQueriesCancelCreateRequestQueryKind =
   /*@__PURE__*/ S.String;
 
@@ -368,7 +381,9 @@ export const WarehouseSavedQueriesCancelCreateRequest = /*@__PURE__*/ S.suspend(
   identifier: "WarehouseSavedQueriesCancelCreateRequest",
 }) as any as S.Schema<WarehouseSavedQueriesCancelCreateRequest>;
 
-export type WarehouseSavedQueriesCreateRequestQueryKind = "HogQLQuery";
+export type WarehouseSavedQueriesCreateRequestQueryKind =
+  | "HogQLQuery"
+  | (string & {});
 export const WarehouseSavedQueriesCreateRequestQueryKind =
   /*@__PURE__*/ S.String;
 
@@ -457,7 +472,8 @@ export const WarehouseSavedQueriesDependenciesRetrieveRequest =
   }) as any as S.Schema<WarehouseSavedQueriesDependenciesRetrieveRequest>;
 
 export type WarehouseSavedQueriesDescendantsCreateRequestQueryKind =
-  "HogQLQuery";
+  | "HogQLQuery"
+  | (string & {});
 export const WarehouseSavedQueriesDescendantsCreateRequestQueryKind =
   /*@__PURE__*/ S.String;
 
@@ -676,7 +692,8 @@ export const PaginatedDataWarehouseSavedQueryMinimalList =
   }) as any as S.Schema<PaginatedDataWarehouseSavedQueryMinimalList>;
 
 export type WarehouseSavedQueriesMaterializeCreateRequestQueryKind =
-  "HogQLQuery";
+  | "HogQLQuery"
+  | (string & {});
 export const WarehouseSavedQueriesMaterializeCreateRequestQueryKind =
   /*@__PURE__*/ S.String;
 
@@ -746,7 +763,9 @@ export const WarehouseSavedQueriesMaterializeCreateRequest =
     identifier: "WarehouseSavedQueriesMaterializeCreateRequest",
   }) as any as S.Schema<WarehouseSavedQueriesMaterializeCreateRequest>;
 
-export type WarehouseSavedQueriesPartialUpdateRequestQueryKind = "HogQLQuery";
+export type WarehouseSavedQueriesPartialUpdateRequestQueryKind =
+  | "HogQLQuery"
+  | (string & {});
 export const WarehouseSavedQueriesPartialUpdateRequestQueryKind =
   /*@__PURE__*/ S.String;
 
@@ -817,7 +836,8 @@ export const WarehouseSavedQueriesPartialUpdateRequest =
   }) as any as S.Schema<WarehouseSavedQueriesPartialUpdateRequest>;
 
 export type WarehouseSavedQueriesResumeSchedulesCreateRequestQueryKind =
-  "HogQLQuery";
+  | "HogQLQuery"
+  | (string & {});
 export const WarehouseSavedQueriesResumeSchedulesCreateRequestQueryKind =
   /*@__PURE__*/ S.String;
 
@@ -909,7 +929,8 @@ export const WarehouseSavedQueriesRetrieveRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WarehouseSavedQueriesRetrieveRequest>;
 
 export type WarehouseSavedQueriesRevertMaterializationCreateRequestQueryKind =
-  "HogQLQuery";
+  | "HogQLQuery"
+  | (string & {});
 export const WarehouseSavedQueriesRevertMaterializationCreateRequestQueryKind =
   /*@__PURE__*/ S.String;
 
@@ -983,7 +1004,9 @@ export const WarehouseSavedQueriesRevertMaterializationCreateRequest =
     identifier: "WarehouseSavedQueriesRevertMaterializationCreateRequest",
   }) as any as S.Schema<WarehouseSavedQueriesRevertMaterializationCreateRequest>;
 
-export type WarehouseSavedQueriesRunCreateRequestQueryKind = "HogQLQuery";
+export type WarehouseSavedQueriesRunCreateRequestQueryKind =
+  | "HogQLQuery"
+  | (string & {});
 export const WarehouseSavedQueriesRunCreateRequestQueryKind =
   /*@__PURE__*/ S.String;
 
@@ -1075,7 +1098,9 @@ export const WarehouseSavedQueriesRunHistoryRetrieveRequest =
     identifier: "WarehouseSavedQueriesRunHistoryRetrieveRequest",
   }) as any as S.Schema<WarehouseSavedQueriesRunHistoryRetrieveRequest>;
 
-export type WarehouseSavedQueriesUpdateRequestQueryKind = "HogQLQuery";
+export type WarehouseSavedQueriesUpdateRequestQueryKind =
+  | "HogQLQuery"
+  | (string & {});
 export const WarehouseSavedQueriesUpdateRequestQueryKind =
   /*@__PURE__*/ S.String;
 

@@ -33,11 +33,11 @@ export const SdkHealthReportRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SdkHealthReportRetrieveRequest>;
 
 /** * `healthy` - healthy * `needs_attention` - needs_attention */
-export type OverallHealthEnum = "healthy" | "needs_attention";
+export type OverallHealthEnum = "healthy" | "needs_attention" | (string & {});
 export const OverallHealthEnum = /*@__PURE__*/ S.String;
 
 /** * `success` - success * `warning` - warning * `danger` - danger */
-export type HealthEnum = "success" | "warning" | "danger";
+export type HealthEnum = "success" | "warning" | "danger" | (string & {});
 export const HealthEnum = /*@__PURE__*/ S.String;
 
 /** * `web` - web * `posthog-ios` - posthog-ios * `posthog-android` - posthog-android * `posthog-java` - posthog-java * `posthog-server` - posthog-server * `posthog-node` - posthog-node * `posthog-python` - posthog-python * `posthog-php` - posthog-php * `posthog-ruby` - posthog-ruby * `posthog-go` - posthog-go * `posthog-flutter` - posthog-flutter * `posthog-react-native` - posthog-react-native * `posthog-kmp` - posthog-kmp * `posthog-dotnet` - posthog-dotnet * `posthog-elixir` - posthog-elixir */
@@ -56,11 +56,16 @@ export type LibEnum =
   | "posthog-react-native"
   | "posthog-kmp"
   | "posthog-dotnet"
-  | "posthog-elixir";
+  | "posthog-elixir"
+  | (string & {});
 export const LibEnum = /*@__PURE__*/ S.String;
 
 /** * `none` - none * `warning` - warning * `danger` - danger */
-export type SdkAssessmentSeverityEnum = "none" | "warning" | "danger";
+export type SdkAssessmentSeverityEnum =
+  | "none"
+  | "warning"
+  | "danger"
+  | (string & {});
 export const SdkAssessmentSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Top-level alert sentences matching the SDK Health UI's 'Time for an update!' banner — one per outdated version with significant traffic. Quote verbatim when surfacing the headline to users. */

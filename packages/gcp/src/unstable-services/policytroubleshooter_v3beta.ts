@@ -125,7 +125,8 @@ export type GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanationDenyAcc
     | "DENY_ACCESS_STATE_DENIED"
     | "DENY_ACCESS_STATE_NOT_DENIED"
     | "DENY_ACCESS_STATE_UNKNOWN_CONDITIONAL"
-    | "DENY_ACCESS_STATE_UNKNOWN_INFO";
+    | "DENY_ACCESS_STATE_UNKNOWN_INFO"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanationDenyAccessStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -134,14 +135,16 @@ export type GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResourceDenyAcc
     | "DENY_ACCESS_STATE_DENIED"
     | "DENY_ACCESS_STATE_NOT_DENIED"
     | "DENY_ACCESS_STATE_UNKNOWN_CONDITIONAL"
-    | "DENY_ACCESS_STATE_UNKNOWN_INFO";
+    | "DENY_ACCESS_STATE_UNKNOWN_INFO"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResourceDenyAccessStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicyRelevanceEnum =
     | "HEURISTIC_RELEVANCE_UNSPECIFIED"
     | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH";
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicyRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -150,7 +153,8 @@ export type GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicyDenyAcces
     | "DENY_ACCESS_STATE_DENIED"
     | "DENY_ACCESS_STATE_NOT_DENIED"
     | "DENY_ACCESS_STATE_UNKNOWN_CONDITIONAL"
-    | "DENY_ACCESS_STATE_UNKNOWN_INFO";
+    | "DENY_ACCESS_STATE_UNKNOWN_INFO"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicyDenyAccessStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -274,14 +278,16 @@ export const GoogleIamV2Policy = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatchingPermissionMatchingStateEnum =
     | "PERMISSION_PATTERN_MATCHING_STATE_UNSPECIFIED"
     | "PERMISSION_PATTERN_MATCHED"
-    | "PERMISSION_PATTERN_NOT_MATCHED";
+    | "PERMISSION_PATTERN_NOT_MATCHED"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatchingPermissionMatchingStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatchingRelevanceEnum =
     | "HEURISTIC_RELEVANCE_UNSPECIFIED"
     | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH";
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatchingRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -310,7 +316,8 @@ export const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotate
 export type GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationRelevanceEnum =
     | "HEURISTIC_RELEVANCE_UNSPECIFIED"
     | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH";
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -319,14 +326,16 @@ export type GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotated
     | "MEMBERSHIP_MATCHED"
     | "MEMBERSHIP_NOT_MATCHED"
     | "MEMBERSHIP_UNKNOWN_INFO"
-    | "MEMBERSHIP_UNKNOWN_UNSUPPORTED";
+    | "MEMBERSHIP_UNKNOWN_UNSUPPORTED"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatchingMembershipEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatchingRelevanceEnum =
     | "HEURISTIC_RELEVANCE_UNSPECIFIED"
     | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH";
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatchingRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -369,7 +378,8 @@ export type GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationDenyAcces
     | "DENY_ACCESS_STATE_DENIED"
     | "DENY_ACCESS_STATE_NOT_DENIED"
     | "DENY_ACCESS_STATE_UNKNOWN_CONDITIONAL"
-    | "DENY_ACCESS_STATE_UNKNOWN_INFO";
+    | "DENY_ACCESS_STATE_UNKNOWN_INFO"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationDenyAccessStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -588,7 +598,8 @@ export const GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicyList =
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResourceRelevanceEnum =
     | "HEURISTIC_RELEVANCE_UNSPECIFIED"
     | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH";
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResourceRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -631,7 +642,8 @@ export const GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResourceList =
 export type GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanationRelevanceEnum =
     | "HEURISTIC_RELEVANCE_UNSPECIFIED"
     | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH";
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanationRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -669,14 +681,16 @@ export type GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanationPrincipa
     | "PAB_ACCESS_STATE_ALLOWED"
     | "PAB_ACCESS_STATE_NOT_ALLOWED"
     | "PAB_ACCESS_STATE_NOT_ENFORCED"
-    | "PAB_ACCESS_STATE_UNKNOWN_INFO";
+    | "PAB_ACCESS_STATE_UNKNOWN_INFO"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanationPrincipalAccessBoundaryAccessStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanationRelevanceEnum =
     | "HEURISTIC_RELEVANCE_UNSPECIFIED"
     | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH";
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanationRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -685,7 +699,8 @@ export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicy
     | "PAB_ACCESS_STATE_ALLOWED"
     | "PAB_ACCESS_STATE_NOT_ALLOWED"
     | "PAB_ACCESS_STATE_NOT_ENFORCED"
-    | "PAB_ACCESS_STATE_UNKNOWN_INFO";
+    | "PAB_ACCESS_STATE_UNKNOWN_INFO"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicyBindingAndPolicyAccessStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -709,7 +724,8 @@ export const GoogleIamV3PrincipalAccessBoundaryPolicyRuleOperation =
 export type GoogleIamV3PrincipalAccessBoundaryPolicyRuleEffectEnum =
   | "EFFECT_UNSPECIFIED"
   | "ALLOW"
-  | "DENY";
+  | "DENY"
+  | (string & {});
 export const GoogleIamV3PrincipalAccessBoundaryPolicyRuleEffectEnum =
   /*@__PURE__*/ S.String;
 
@@ -805,7 +821,8 @@ export const GoogleIamV3PrincipalAccessBoundaryPolicy = /*@__PURE__*/ S.suspend(
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyVersionEnforcementStateEnum =
     | "PAB_POLICY_ENFORCEMENT_STATE_UNSPECIFIED"
     | "PAB_POLICY_ENFORCEMENT_STATE_ENFORCED"
-    | "PAB_POLICY_ENFORCEMENT_STATE_NOT_ENFORCED";
+    | "PAB_POLICY_ENFORCEMENT_STATE_NOT_ENFORCED"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyVersionEnforcementStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -830,21 +847,23 @@ export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyVersion =
   }) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyVersion>;
 
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleEffectEnum =
-  "EFFECT_UNSPECIFIED" | "ALLOW" | "DENY";
+  "EFFECT_UNSPECIFIED" | "ALLOW" | "DENY" | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleEffectEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleCombinedResourceRelevanceEnum =
     | "HEURISTIC_RELEVANCE_UNSPECIFIED"
     | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH";
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleCombinedResourceRelevanceEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleRelevanceEnum =
     | "HEURISTIC_RELEVANCE_UNSPECIFIED"
     | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH";
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -853,7 +872,8 @@ export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleRuleAccessSt
     | "PAB_ACCESS_STATE_ALLOWED"
     | "PAB_ACCESS_STATE_NOT_ALLOWED"
     | "PAB_ACCESS_STATE_NOT_ENFORCED"
-    | "PAB_ACCESS_STATE_UNKNOWN_INFO";
+    | "PAB_ACCESS_STATE_UNKNOWN_INFO"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleRuleAccessStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -862,14 +882,16 @@ export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedRes
     | "RESOURCE_INCLUSION_STATE_INCLUDED"
     | "RESOURCE_INCLUSION_STATE_NOT_INCLUDED"
     | "RESOURCE_INCLUSION_STATE_UNKNOWN_INFO"
-    | "RESOURCE_INCLUSION_STATE_UNKNOWN_UNSUPPORTED";
+    | "RESOURCE_INCLUSION_STATE_UNKNOWN_UNSUPPORTED"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResourceResourceInclusionStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResourceRelevanceEnum =
     | "HEURISTIC_RELEVANCE_UNSPECIFIED"
     | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH";
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResourceRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -910,7 +932,8 @@ export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleCombinedReso
     | "RESOURCE_INCLUSION_STATE_INCLUDED"
     | "RESOURCE_INCLUSION_STATE_NOT_INCLUDED"
     | "RESOURCE_INCLUSION_STATE_UNKNOWN_INFO"
-    | "RESOURCE_INCLUSION_STATE_UNKNOWN_UNSUPPORTED";
+    | "RESOURCE_INCLUSION_STATE_UNKNOWN_UNSUPPORTED"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleCombinedResourceInclusionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -970,14 +993,16 @@ export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyPolicyAcce
     | "PAB_ACCESS_STATE_ALLOWED"
     | "PAB_ACCESS_STATE_NOT_ALLOWED"
     | "PAB_ACCESS_STATE_NOT_ENFORCED"
-    | "PAB_ACCESS_STATE_UNKNOWN_INFO";
+    | "PAB_ACCESS_STATE_UNKNOWN_INFO"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyPolicyAccessStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyRelevanceEnum =
     | "HEURISTIC_RELEVANCE_UNSPECIFIED"
     | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH";
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1018,7 +1043,8 @@ export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicy =
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicyRelevanceEnum =
     | "HEURISTIC_RELEVANCE_UNSPECIFIED"
     | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH";
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicyRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1041,7 +1067,8 @@ export const GoogleIamV3PolicyBindingTarget = /*@__PURE__*/ S.suspend(() =>
 export type GoogleIamV3PolicyBindingPolicyKindEnum =
   | "POLICY_KIND_UNSPECIFIED"
   | "PRINCIPAL_ACCESS_BOUNDARY"
-  | "ACCESS";
+  | "ACCESS"
+  | (string & {});
 export const GoogleIamV3PolicyBindingPolicyKindEnum = /*@__PURE__*/ S.String;
 
 /** IAM policy binding resource. */
@@ -1093,14 +1120,16 @@ export const GoogleIamV3PolicyBinding = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBindingRelevanceEnum =
     | "HEURISTIC_RELEVANCE_UNSPECIFIED"
     | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH";
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBindingRelevanceEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBindingPolicyBindingStateEnum =
     | "POLICY_BINDING_STATE_UNSPECIFIED"
     | "POLICY_BINDING_STATE_ENFORCED"
-    | "POLICY_BINDING_STATE_NOT_ENFORCED";
+    | "POLICY_BINDING_STATE_NOT_ENFORCED"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBindingPolicyBindingStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1204,14 +1233,16 @@ export type GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyErrorRe
     | "OVERALL_ACCESS_STATE_CAN_ACCESS"
     | "OVERALL_ACCESS_STATE_CANNOT_ACCESS"
     | "OVERALL_ACCESS_STATE_UNKNOWN_INFO"
-    | "OVERALL_ACCESS_STATE_UNKNOWN_CONDITIONAL";
+    | "OVERALL_ACCESS_STATE_UNKNOWN_CONDITIONAL"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyErrorResponseOverallAccessStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicyRelevanceEnum =
     | "HEURISTIC_RELEVANCE_UNSPECIFIED"
     | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH";
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicyRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1220,14 +1251,16 @@ export type GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicyAllowAcc
     | "ALLOW_ACCESS_STATE_GRANTED"
     | "ALLOW_ACCESS_STATE_NOT_GRANTED"
     | "ALLOW_ACCESS_STATE_UNKNOWN_CONDITIONAL"
-    | "ALLOW_ACCESS_STATE_UNKNOWN_INFO";
+    | "ALLOW_ACCESS_STATE_UNKNOWN_INFO"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicyAllowAccessStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationRolePermissionRelevanceEnum =
     | "HEURISTIC_RELEVANCE_UNSPECIFIED"
     | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH";
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationRolePermissionRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1235,7 +1268,8 @@ export type GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationRoleP
     | "ROLE_PERMISSION_INCLUSION_STATE_UNSPECIFIED"
     | "ROLE_PERMISSION_INCLUDED"
     | "ROLE_PERMISSION_NOT_INCLUDED"
-    | "ROLE_PERMISSION_UNKNOWN_INFO";
+    | "ROLE_PERMISSION_UNKNOWN_INFO"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationRolePermissionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1244,14 +1278,16 @@ export type GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnot
     | "MEMBERSHIP_MATCHED"
     | "MEMBERSHIP_NOT_MATCHED"
     | "MEMBERSHIP_UNKNOWN_INFO"
-    | "MEMBERSHIP_UNKNOWN_UNSUPPORTED";
+    | "MEMBERSHIP_UNKNOWN_UNSUPPORTED"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembershipMembershipEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembershipRelevanceEnum =
     | "HEURISTIC_RELEVANCE_UNSPECIFIED"
     | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH";
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembershipRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1292,7 +1328,8 @@ export const GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnno
 export type GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationRelevanceEnum =
     | "HEURISTIC_RELEVANCE_UNSPECIFIED"
     | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH";
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1301,7 +1338,8 @@ export type GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAllow
     | "ALLOW_ACCESS_STATE_GRANTED"
     | "ALLOW_ACCESS_STATE_NOT_GRANTED"
     | "ALLOW_ACCESS_STATE_UNKNOWN_CONDITIONAL"
-    | "ALLOW_ACCESS_STATE_UNKNOWN_INFO";
+    | "ALLOW_ACCESS_STATE_UNKNOWN_INFO"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAllowAccessStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1393,7 +1431,8 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1503,7 +1542,8 @@ export const GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicyList =
 export type GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanationRelevanceEnum =
     | "HEURISTIC_RELEVANCE_UNSPECIFIED"
     | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH";
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanationRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1512,7 +1552,8 @@ export type GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanationAllowA
     | "ALLOW_ACCESS_STATE_GRANTED"
     | "ALLOW_ACCESS_STATE_NOT_GRANTED"
     | "ALLOW_ACCESS_STATE_UNKNOWN_CONDITIONAL"
-    | "ALLOW_ACCESS_STATE_UNKNOWN_INFO";
+    | "ALLOW_ACCESS_STATE_UNKNOWN_INFO"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanationAllowAccessStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1773,7 +1814,8 @@ export type GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyRespons
     | "CAN_ACCESS"
     | "CANNOT_ACCESS"
     | "UNKNOWN_INFO"
-    | "UNKNOWN_CONDITIONAL";
+    | "UNKNOWN_CONDITIONAL"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyResponseOverallAccessStateEnum =
   /*@__PURE__*/ S.String;
 

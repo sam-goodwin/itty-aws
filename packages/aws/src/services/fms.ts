@@ -128,7 +128,8 @@ export const AssociateAdminAccountResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssociateAdminAccountResponse>;
 export type ThirdPartyFirewall =
   | "PALO_ALTO_NETWORKS_CLOUD_NGFW"
-  | "FORTIGATE_CLOUD_NATIVE_FIREWALL";
+  | "FORTIGATE_CLOUD_NATIVE_FIREWALL"
+  | (string & {});
 export const ThirdPartyFirewall = /*@__PURE__*/ S.String;
 
 export interface AssociateThirdPartyFirewallRequest {
@@ -146,7 +147,8 @@ export type ThirdPartyFirewallAssociationStatus =
   | "ONBOARD_COMPLETE"
   | "OFFBOARDING"
   | "OFFBOARD_COMPLETE"
-  | "NOT_EXIST";
+  | "NOT_EXIST"
+  | (string & {});
 export const ThirdPartyFirewallAssociationStatus = /*@__PURE__*/ S.String;
 
 export interface AssociateThirdPartyFirewallResponse {
@@ -179,7 +181,8 @@ export type FailedItemReason =
   | "NOT_VALID_REGION"
   | "NOT_VALID_SERVICE"
   | "NOT_VALID_RESOURCE_TYPE"
-  | "NOT_VALID_ACCOUNT_ID";
+  | "NOT_VALID_ACCOUNT_ID"
+  | (string & {});
 export const FailedItemReason = /*@__PURE__*/ S.String;
 
 export interface FailedItem {
@@ -354,7 +357,8 @@ export type AccountRoleStatus =
   | "CREATING"
   | "PENDING_DELETION"
   | "DELETING"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const AccountRoleStatus = /*@__PURE__*/ S.String;
 
 export interface GetAdminAccountResponse {
@@ -434,7 +438,8 @@ export type SecurityServiceType =
   | "DNS_FIREWALL"
   | "THIRD_PARTY_FIREWALL"
   | "IMPORT_NETWORK_FIREWALL"
-  | "NETWORK_ACL_COMMON";
+  | "NETWORK_ACL_COMMON"
+  | (string & {});
 export const SecurityServiceType = /*@__PURE__*/ S.String;
 
 export type SecurityServiceTypeList = SecurityServiceType[];
@@ -470,7 +475,8 @@ export type OrganizationStatus =
   | "ONBOARDING"
   | "ONBOARDING_COMPLETE"
   | "OFFBOARDING"
-  | "OFFBOARDING_COMPLETE";
+  | "OFFBOARDING_COMPLETE"
+  | (string & {});
 export const OrganizationStatus = /*@__PURE__*/ S.String;
 
 export interface GetAdminScopeResponse {
@@ -591,7 +597,8 @@ export type ViolationReason =
   | "ROUTE_HAS_OUT_OF_SCOPE_ENDPOINT"
   | "FIREWALL_SUBNET_MISSING_VPCE_ENDPOINT"
   | "INVALID_NETWORK_ACL_ENTRY"
-  | "WEB_ACL_CONFIGURATION_OR_SCOPE_OF_USE";
+  | "WEB_ACL_CONFIGURATION_OR_SCOPE_OF_USE"
+  | (string & {});
 export const ViolationReason = /*@__PURE__*/ S.String;
 
 export type ResourceType = string;
@@ -623,7 +630,8 @@ export type DependentServiceName =
   | "AWSCONFIG"
   | "AWSWAF"
   | "AWSSHIELD_ADVANCED"
-  | "AWSVPC";
+  | "AWSVPC"
+  | (string & {});
 export const DependentServiceName = /*@__PURE__*/ S.String;
 
 export type DetailedInfo = string;
@@ -694,7 +702,10 @@ export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPolicyRequest>;
 export type PolicyUpdateToken = string;
 export type ManagedServiceData = string;
-export type FirewallDeploymentModel = "CENTRALIZED" | "DISTRIBUTED";
+export type FirewallDeploymentModel =
+  | "CENTRALIZED"
+  | "DISTRIBUTED"
+  | (string & {});
 export const FirewallDeploymentModel = /*@__PURE__*/ S.String;
 
 export interface NetworkFirewallPolicy {
@@ -734,7 +745,7 @@ export const NetworkAclPortRange = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkAclPortRange",
 }) as any as S.Schema<NetworkAclPortRange>;
 export type LengthBoundedNonEmptyString = string;
-export type NetworkAclRuleAction = "allow" | "deny";
+export type NetworkAclRuleAction = "allow" | "deny" | (string & {});
 export const NetworkAclRuleAction = /*@__PURE__*/ S.String;
 
 export interface NetworkAclEntry {
@@ -824,7 +835,7 @@ export const ResourceTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceTag" }) as any as S.Schema<ResourceTag>;
 export type ResourceTags = ResourceTag[];
 export const ResourceTags = /*@__PURE__*/ S.Array(ResourceTag);
-export type CustomerPolicyScopeIdType = "ACCOUNT" | "ORG_UNIT";
+export type CustomerPolicyScopeIdType = "ACCOUNT" | "ORG_UNIT" | (string & {});
 export const CustomerPolicyScopeIdType = /*@__PURE__*/ S.String;
 
 export type CustomerPolicyScopeId = string;
@@ -840,10 +851,13 @@ export const CustomerPolicyScopeMap = /*@__PURE__*/ S.Record(
 export type ResourceSetIds = string[];
 export const ResourceSetIds = /*@__PURE__*/ S.Array(S.String);
 export type ResourceDescription = string;
-export type CustomerPolicyStatus = "ACTIVE" | "OUT_OF_ADMIN_SCOPE";
+export type CustomerPolicyStatus =
+  | "ACTIVE"
+  | "OUT_OF_ADMIN_SCOPE"
+  | (string & {});
 export const CustomerPolicyStatus = /*@__PURE__*/ S.String;
 
-export type ResourceTagLogicalOperator = "AND" | "OR";
+export type ResourceTagLogicalOperator = "AND" | "OR" | (string & {});
 export const ResourceTagLogicalOperator = /*@__PURE__*/ S.String;
 
 export interface Policy {
@@ -998,7 +1012,7 @@ export const GetResourceSetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResourceSetRequest>;
 export type Name = string;
 export type Description = string;
-export type ResourceSetStatus = "ACTIVE" | "OUT_OF_ADMIN_SCOPE";
+export type ResourceSetStatus = "ACTIVE" | "OUT_OF_ADMIN_SCOPE" | (string & {});
 export const ResourceSetStatus = /*@__PURE__*/ S.String;
 
 export interface ResourceSet {
@@ -1044,7 +1058,8 @@ export const GetThirdPartyFirewallAssociationStatusRequest =
 export type MarketplaceSubscriptionOnboardingStatus =
   | "NO_SUBSCRIPTION"
   | "NOT_COMPLETE"
-  | "COMPLETE";
+  | "COMPLETE"
+  | (string & {});
 export const MarketplaceSubscriptionOnboardingStatus = /*@__PURE__*/ S.String;
 
 export interface GetThirdPartyFirewallAssociationStatusResponse {
@@ -1097,7 +1112,7 @@ export const PartialMatch = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PartialMatch" }) as any as S.Schema<PartialMatch>;
 export type PartialMatches = PartialMatch[];
 export const PartialMatches = /*@__PURE__*/ S.Array(PartialMatch);
-export type RemediationActionType = "REMOVE" | "MODIFY";
+export type RemediationActionType = "REMOVE" | "MODIFY" | (string & {});
 export const RemediationActionType = /*@__PURE__*/ S.String;
 
 export type RemediationActionDescription = string;
@@ -1268,7 +1283,7 @@ export type NetworkFirewallAction = string;
 export type NetworkFirewallActionList = string[];
 export const NetworkFirewallActionList = /*@__PURE__*/ S.Array(S.String);
 export type PriorityNumber = number;
-export type NetworkFirewallOverrideAction = "DROP_TO_ALERT";
+export type NetworkFirewallOverrideAction = "DROP_TO_ALERT" | (string & {});
 export const NetworkFirewallOverrideAction = /*@__PURE__*/ S.String;
 
 export interface NetworkFirewallStatefulRuleGroupOverride {
@@ -1297,14 +1312,15 @@ export const StatefulRuleGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StatefulRuleGroup>;
 export type StatefulRuleGroupList = StatefulRuleGroup[];
 export const StatefulRuleGroupList = /*@__PURE__*/ S.Array(StatefulRuleGroup);
-export type RuleOrder = "STRICT_ORDER" | "DEFAULT_ACTION_ORDER";
+export type RuleOrder = "STRICT_ORDER" | "DEFAULT_ACTION_ORDER" | (string & {});
 export const RuleOrder = /*@__PURE__*/ S.String;
 
 export type StreamExceptionPolicy =
   | "DROP"
   | "CONTINUE"
   | "REJECT"
-  | "FMS_IGNORE";
+  | "FMS_IGNORE"
+  | (string & {});
 export const StreamExceptionPolicy = /*@__PURE__*/ S.String;
 
 export interface StatefulEngineOptions {
@@ -1356,7 +1372,7 @@ export const NetworkFirewallPolicyModifiedViolation = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "NetworkFirewallPolicyModifiedViolation",
 }) as any as S.Schema<NetworkFirewallPolicyModifiedViolation>;
-export type DestinationType = "IPV4" | "IPV6" | "PREFIX_LIST";
+export type DestinationType = "IPV4" | "IPV6" | "PREFIX_LIST" | (string & {});
 export const DestinationType = /*@__PURE__*/ S.String;
 
 export type TargetType =
@@ -1369,7 +1385,8 @@ export type TargetType =
   | "VPC_ENDPOINT"
   | "VPC_PEERING_CONNECTION"
   | "EGRESS_ONLY_INTERNET_GATEWAY"
-  | "TRANSIT_GATEWAY";
+  | "TRANSIT_GATEWAY"
+  | (string & {});
 export const TargetType = /*@__PURE__*/ S.String;
 
 export interface Route {
@@ -1731,7 +1748,8 @@ export type IntegerObjectMinimum0 = number;
 export type EntryType =
   | "FMS_MANAGED_FIRST_ENTRY"
   | "FMS_MANAGED_LAST_ENTRY"
-  | "CUSTOM_ENTRY";
+  | "CUSTOM_ENTRY"
+  | (string & {});
 export const EntryType = /*@__PURE__*/ S.String;
 
 export interface EntryDescription {
@@ -1753,7 +1771,8 @@ export const EntriesWithConflicts = /*@__PURE__*/ S.Array(EntryDescription);
 export type EntryViolationReason =
   | "MISSING_EXPECTED_ENTRY"
   | "INCORRECT_ENTRY_ORDER"
-  | "ENTRY_CONFLICT";
+  | "ENTRY_CONFLICT"
+  | (string & {});
 export const EntryViolationReason = /*@__PURE__*/ S.String;
 
 export type EntryViolationReasons = EntryViolationReason[];
@@ -2392,7 +2411,10 @@ export const ListComplianceStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListComplianceStatusRequest",
 }) as any as S.Schema<ListComplianceStatusRequest>;
-export type PolicyComplianceStatusType = "COMPLIANT" | "NON_COMPLIANT";
+export type PolicyComplianceStatusType =
+  | "COMPLIANT"
+  | "NON_COMPLIANT"
+  | (string & {});
 export const PolicyComplianceStatusType = /*@__PURE__*/ S.String;
 
 export type ResourceCount = number;

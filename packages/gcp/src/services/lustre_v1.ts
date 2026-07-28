@@ -102,7 +102,8 @@ export type InstanceStateEnum =
   | "REPAIRING"
   | "STOPPED"
   | "UPDATING"
-  | "SUSPENDED";
+  | "SUSPENDED"
+  | (string & {});
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a scheduled maintenance event. */
@@ -124,7 +125,8 @@ export const MaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
 export type DynamicTierOptionsModeEnum =
   | "MODE_UNSPECIFIED"
   | "DISABLED"
-  | "DEFAULT_CACHE";
+  | "DEFAULT_CACHE"
+  | (string & {});
 export const DynamicTierOptionsModeEnum = /*@__PURE__*/ S.String;
 
 /** Dynamic tier options for a Managed Lustre instance. */
@@ -210,7 +212,8 @@ export type WeeklyMaintenanceWindowDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const WeeklyMaintenanceWindowDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Weekly time window in which maintenance updates may occur. Duration of the window is currently fixed at 1 hour. Time zone is UTC. */
@@ -254,7 +257,8 @@ export const MaintenancePolicy = /*@__PURE__*/ S.suspend(() =>
 export type AccessRuleSquashModeEnum =
   | "SQUASH_MODE_UNSPECIFIED"
   | "NO_SQUASH"
-  | "ROOT_SQUASH";
+  | "ROOT_SQUASH"
+  | (string & {});
 export const AccessRuleSquashModeEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -287,7 +291,8 @@ export const AccessRuleList = /*@__PURE__*/ S.Array(
 export type AccessRulesOptionsDefaultSquashModeEnum =
   | "SQUASH_MODE_UNSPECIFIED"
   | "NO_SQUASH"
-  | "ROOT_SQUASH";
+  | "ROOT_SQUASH"
+  | (string & {});
 export const AccessRulesOptionsDefaultSquashModeEnum = /*@__PURE__*/ S.String;
 
 /** IP-based access rules for the Managed Lustre instance. These options define the root user squash configuration. */
@@ -885,7 +890,8 @@ export type RescheduleRescheduleTypeEnum =
   | "RESCHEDULE_TYPE_UNSPECIFIED"
   | "IMMEDIATE"
   | "NEXT_AVAILABLE_WINDOW"
-  | "BY_TIME";
+  | "BY_TIME"
+  | (string & {});
 export const RescheduleRescheduleTypeEnum = /*@__PURE__*/ S.String;
 
 /** The desired reschedule settings. */

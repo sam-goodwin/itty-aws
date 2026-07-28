@@ -60,7 +60,11 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type AdUnitStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "ARCHIVED";
+export type AdUnitStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "ARCHIVED"
+  | (string & {});
 export const AdUnitStateEnum = /*@__PURE__*/ S.String;
 
 export type ContentAdsSettingsTypeEnum =
@@ -69,7 +73,8 @@ export type ContentAdsSettingsTypeEnum =
   | "FEED"
   | "ARTICLE"
   | "MATCHED_CONTENT"
-  | "LINK";
+  | "LINK"
+  | (string & {});
 export const ContentAdsSettingsTypeEnum = /*@__PURE__*/ S.String;
 
 /** Settings specific to content ads (AFC). */
@@ -237,7 +242,8 @@ export type GenerateAccountsReportsMetricsEnum =
   | "FUNNEL_REQUESTS"
   | "FUNNEL_IMPRESSIONS"
   | "FUNNEL_CLICKS"
-  | "FUNNEL_RPM";
+  | "FUNNEL_RPM"
+  | (string & {});
 export const GenerateAccountsReportsMetricsEnum = /*@__PURE__*/ S.String;
 
 export type GenerateAccountsReportsMetricsEnumList =
@@ -308,7 +314,8 @@ export type GenerateAccountsReportsDimensionsEnum =
   | "BROWSER_TYPE_NAME"
   | "BROWSER_TYPE_CODE"
   | "WEBVIEW_TYPE_NAME"
-  | "WEBVIEW_TYPE_CODE";
+  | "WEBVIEW_TYPE_CODE"
+  | (string & {});
 export const GenerateAccountsReportsDimensionsEnum = /*@__PURE__*/ S.String;
 
 export type GenerateAccountsReportsDimensionsEnumList =
@@ -325,13 +332,15 @@ export type GenerateAccountsReportsDateRangeEnum =
   | "MONTH_TO_DATE"
   | "YEAR_TO_DATE"
   | "LAST_7_DAYS"
-  | "LAST_30_DAYS";
+  | "LAST_30_DAYS"
+  | (string & {});
 export const GenerateAccountsReportsDateRangeEnum = /*@__PURE__*/ S.String;
 
 export type GenerateAccountsReportsReportingTimeZoneEnum =
   | "REPORTING_TIME_ZONE_UNSPECIFIED"
   | "ACCOUNT_TIME_ZONE"
-  | "GOOGLE_TIME_ZONE";
+  | "GOOGLE_TIME_ZONE"
+  | (string & {});
 export const GenerateAccountsReportsReportingTimeZoneEnum =
   /*@__PURE__*/ S.String;
 
@@ -409,7 +418,8 @@ export type HeaderTypeEnum =
   | "METRIC_RATIO"
   | "METRIC_CURRENCY"
   | "METRIC_MILLISECONDS"
-  | "METRIC_DECIMAL";
+  | "METRIC_DECIMAL"
+  | (string & {});
 export const HeaderTypeEnum = /*@__PURE__*/ S.String;
 
 /** The header information of the columns requested in the report. */
@@ -521,13 +531,15 @@ export type GenerateAccountsReportsSavedDateRangeEnum =
   | "MONTH_TO_DATE"
   | "YEAR_TO_DATE"
   | "LAST_7_DAYS"
-  | "LAST_30_DAYS";
+  | "LAST_30_DAYS"
+  | (string & {});
 export const GenerateAccountsReportsSavedDateRangeEnum = /*@__PURE__*/ S.String;
 
 export type GenerateAccountsReportsSavedReportingTimeZoneEnum =
   | "REPORTING_TIME_ZONE_UNSPECIFIED"
   | "ACCOUNT_TIME_ZONE"
-  | "GOOGLE_TIME_ZONE";
+  | "GOOGLE_TIME_ZONE"
+  | (string & {});
 export const GenerateAccountsReportsSavedReportingTimeZoneEnum =
   /*@__PURE__*/ S.String;
 
@@ -591,7 +603,8 @@ export type GenerateCsvAccountsReportsDateRangeEnum =
   | "MONTH_TO_DATE"
   | "YEAR_TO_DATE"
   | "LAST_7_DAYS"
-  | "LAST_30_DAYS";
+  | "LAST_30_DAYS"
+  | (string & {});
 export const GenerateCsvAccountsReportsDateRangeEnum = /*@__PURE__*/ S.String;
 
 export type GenerateCsvAccountsReportsMetricsEnum =
@@ -631,7 +644,8 @@ export type GenerateCsvAccountsReportsMetricsEnum =
   | "FUNNEL_REQUESTS"
   | "FUNNEL_IMPRESSIONS"
   | "FUNNEL_CLICKS"
-  | "FUNNEL_RPM";
+  | "FUNNEL_RPM"
+  | (string & {});
 export const GenerateCsvAccountsReportsMetricsEnum = /*@__PURE__*/ S.String;
 
 export type GenerateCsvAccountsReportsMetricsEnumList =
@@ -697,7 +711,8 @@ export type GenerateCsvAccountsReportsDimensionsEnum =
   | "BROWSER_TYPE_NAME"
   | "BROWSER_TYPE_CODE"
   | "WEBVIEW_TYPE_NAME"
-  | "WEBVIEW_TYPE_CODE";
+  | "WEBVIEW_TYPE_CODE"
+  | (string & {});
 export const GenerateCsvAccountsReportsDimensionsEnum = /*@__PURE__*/ S.String;
 
 export type GenerateCsvAccountsReportsDimensionsEnumList =
@@ -710,7 +725,8 @@ export const GenerateCsvAccountsReportsDimensionsEnumList =
 export type GenerateCsvAccountsReportsReportingTimeZoneEnum =
   | "REPORTING_TIME_ZONE_UNSPECIFIED"
   | "ACCOUNT_TIME_ZONE"
-  | "GOOGLE_TIME_ZONE";
+  | "GOOGLE_TIME_ZONE"
+  | (string & {});
 export const GenerateCsvAccountsReportsReportingTimeZoneEnum =
   /*@__PURE__*/ S.String;
 
@@ -821,14 +837,16 @@ export type GenerateCsvAccountsReportsSavedDateRangeEnum =
   | "MONTH_TO_DATE"
   | "YEAR_TO_DATE"
   | "LAST_7_DAYS"
-  | "LAST_30_DAYS";
+  | "LAST_30_DAYS"
+  | (string & {});
 export const GenerateCsvAccountsReportsSavedDateRangeEnum =
   /*@__PURE__*/ S.String;
 
 export type GenerateCsvAccountsReportsSavedReportingTimeZoneEnum =
   | "REPORTING_TIME_ZONE_UNSPECIFIED"
   | "ACCOUNT_TIME_ZONE"
-  | "GOOGLE_TIME_ZONE";
+  | "GOOGLE_TIME_ZONE"
+  | (string & {});
 export const GenerateCsvAccountsReportsSavedReportingTimeZoneEnum =
   /*@__PURE__*/ S.String;
 
@@ -921,7 +939,8 @@ export type AccountStateEnum =
   | "STATE_UNSPECIFIED"
   | "READY"
   | "NEEDS_ATTENTION"
-  | "CLOSED";
+  | "CLOSED"
+  | (string & {});
 export const AccountStateEnum = /*@__PURE__*/ S.String;
 
 /** Representation of an account. */
@@ -975,7 +994,8 @@ export type AdClientStateEnum =
   | "STATE_UNSPECIFIED"
   | "READY"
   | "GETTING_READY"
-  | "REQUIRES_REVIEW";
+  | "REQUIRES_REVIEW"
+  | (string & {});
 export const AdClientStateEnum = /*@__PURE__*/ S.String;
 
 /** Representation of an ad client. An ad client represents a user's subscription with a specific AdSense product. */
@@ -1093,7 +1113,8 @@ export type PolicyIssueEntityTypeEnum =
   | "ENTITY_TYPE_UNSPECIFIED"
   | "SITE"
   | "SITE_SECTION"
-  | "PAGE";
+  | "PAGE"
+  | (string & {});
 export const PolicyIssueEntityTypeEnum = /*@__PURE__*/ S.String;
 
 export type PolicyIssueActionEnum =
@@ -1102,14 +1123,16 @@ export type PolicyIssueActionEnum =
   | "AD_SERVING_RESTRICTED"
   | "AD_SERVING_DISABLED"
   | "AD_SERVED_WITH_CLICK_CONFIRMATION"
-  | "AD_PERSONALIZATION_RESTRICTED";
+  | "AD_PERSONALIZATION_RESTRICTED"
+  | (string & {});
 export const PolicyIssueActionEnum = /*@__PURE__*/ S.String;
 
 export type PolicyTopicTypeEnum =
   | "POLICY_TOPIC_TYPE_UNSPECIFIED"
   | "POLICY"
   | "ADVERTISER_PREFERENCE"
-  | "REGULATORY";
+  | "REGULATORY"
+  | (string & {});
 export const PolicyTopicTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about a particular policy topic. A policy topic represents a single class of policy issue that can impact ad serving for your site. For example, sexual content or having ads that obscure your content. A single policy issue can have multiple policy topics for a single entity. */
@@ -1201,7 +1224,8 @@ export type SiteStateEnum =
   | "REQUIRES_REVIEW"
   | "GETTING_READY"
   | "READY"
-  | "NEEDS_ATTENTION";
+  | "NEEDS_ATTENTION"
+  | (string & {});
 export const SiteStateEnum = /*@__PURE__*/ S.String;
 
 /** Representation of a Site. */
@@ -1608,7 +1632,8 @@ export type AlertSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "INFO"
   | "WARNING"
-  | "SEVERE";
+  | "SEVERE"
+  | (string & {});
 export const AlertSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Representation of an alert. */

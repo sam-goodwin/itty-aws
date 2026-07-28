@@ -145,7 +145,8 @@ export type JobCreationReasonCodeEnum =
   | "REQUESTED"
   | "LONG_RUNNING"
   | "LARGE_RESULTS"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const JobCreationReasonCodeEnum = /*@__PURE__*/ S.String;
 
 /** Reason about why a Job was created from a [`jobs.query`](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/query) method when used with `JOB_CREATION_OPTIONAL` Job creation mode. For [`jobs.insert`](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/insert) method calls it will always be `REQUESTED`. */
@@ -245,7 +246,8 @@ export const TimePartitioning = /*@__PURE__*/ S.suspend(() =>
 export type ScriptOptionsKeyResultStatementEnum =
   | "KEY_RESULT_STATEMENT_KIND_UNSPECIFIED"
   | "LAST"
-  | "FIRST_SELECT";
+  | "FIRST_SELECT"
+  | (string & {});
 export const ScriptOptionsKeyResultStatementEnum = /*@__PURE__*/ S.String;
 
 /** Options related to script execution. */
@@ -350,7 +352,8 @@ export type StandardSqlDataTypeTypeKindEnum =
   | "JSON"
   | "ARRAY"
   | "STRUCT"
-  | "RANGE";
+  | "RANGE"
+  | (string & {});
 export const StandardSqlDataTypeTypeKindEnum = /*@__PURE__*/ S.String;
 
 /** The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT>: { "typeKind": "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind": "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "DATE"} } } ] } } * RANGE: { "typeKind": "RANGE", "rangeElementType": {"typeKind": "DATE"} } */
@@ -470,7 +473,8 @@ export const Clustering = /*@__PURE__*/ S.suspend(() =>
 export type ExternalDataConfigurationObjectMetadataEnum =
   | "OBJECT_METADATA_UNSPECIFIED"
   | "DIRECTORY"
-  | "SIMPLE";
+  | "SIMPLE"
+  | (string & {});
 export const ExternalDataConfigurationObjectMetadataEnum =
   /*@__PURE__*/ S.String;
 
@@ -581,7 +585,8 @@ export const BigtableOptions = /*@__PURE__*/ S.suspend(() =>
 
 export type ParquetOptionsMapTargetTypeEnum =
   | "MAP_TARGET_TYPE_UNSPECIFIED"
-  | "ARRAY_OF_STRUCT";
+  | "ARRAY_OF_STRUCT"
+  | (string & {});
 export const ParquetOptionsMapTargetTypeEnum = /*@__PURE__*/ S.String;
 
 /** Parquet Options for load and make external tables. */
@@ -603,20 +608,23 @@ export const ParquetOptions = /*@__PURE__*/ S.suspend(() =>
 
 export type ExternalDataConfigurationFileSetSpecTypeEnum =
   | "FILE_SET_SPEC_TYPE_FILE_SYSTEM_MATCH"
-  | "FILE_SET_SPEC_TYPE_NEW_LINE_DELIMITED_MANIFEST";
+  | "FILE_SET_SPEC_TYPE_NEW_LINE_DELIMITED_MANIFEST"
+  | (string & {});
 export const ExternalDataConfigurationFileSetSpecTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type ExternalDataConfigurationJsonExtensionEnum =
   | "JSON_EXTENSION_UNSPECIFIED"
-  | "GEOJSON";
+  | "GEOJSON"
+  | (string & {});
 export const ExternalDataConfigurationJsonExtensionEnum =
   /*@__PURE__*/ S.String;
 
 export type ExternalDataConfigurationMetadataCacheModeEnum =
   | "METADATA_CACHE_MODE_UNSPECIFIED"
   | "AUTOMATIC"
-  | "MANUAL";
+  | "MANUAL"
+  | (string & {});
 export const ExternalDataConfigurationMetadataCacheModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -688,7 +696,8 @@ export const GeneratedExpressionInfo = /*@__PURE__*/ S.suspend(() =>
 export type GeneratedColumnGeneratedModeEnum =
   | "GENERATED_MODE_UNSPECIFIED"
   | "GENERATED_ALWAYS"
-  | "GENERATED_BY_DEFAULT";
+  | "GENERATED_BY_DEFAULT"
+  | (string & {});
 export const GeneratedColumnGeneratedModeEnum = /*@__PURE__*/ S.String;
 
 /** Optional. Definition of how values are generated for the field. Only valid for top-level schema fields (not nested fields). */
@@ -722,7 +731,8 @@ export const TableFieldSchemaCategories = /*@__PURE__*/ S.suspend(() =>
 export type TableFieldSchemaRoundingModeEnum =
   | "ROUNDING_MODE_UNSPECIFIED"
   | "ROUND_HALF_AWAY_FROM_ZERO"
-  | "ROUND_HALF_EVEN";
+  | "ROUND_HALF_EVEN"
+  | (string & {});
 export const TableFieldSchemaRoundingModeEnum = /*@__PURE__*/ S.String;
 
 /** A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). */
@@ -836,7 +846,10 @@ export const TableFieldSchemaList = /*@__PURE__*/ S.Array(
   TableFieldSchema,
 ) as any as S.Schema<TableFieldSchemaList>;
 
-export type ForeignTypeInfoTypeSystemEnum = "TYPE_SYSTEM_UNSPECIFIED" | "HIVE";
+export type ForeignTypeInfoTypeSystemEnum =
+  | "TYPE_SYSTEM_UNSPECIFIED"
+  | "HIVE"
+  | (string & {});
 export const ForeignTypeInfoTypeSystemEnum = /*@__PURE__*/ S.String;
 
 /** Metadata about the foreign data type definition such as the system in which the type is defined. */
@@ -946,7 +959,8 @@ export type ExternalDataConfigurationDecimalTargetTypesItemEnum =
   | "DECIMAL_TARGET_TYPE_UNSPECIFIED"
   | "NUMERIC"
   | "BIGNUMERIC"
-  | "STRING";
+  | "STRING"
+  | (string & {});
 export const ExternalDataConfigurationDecimalTargetTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1289,7 +1303,8 @@ export type JobConfigurationTableCopyOperationTypeEnum =
   | "COPY"
   | "SNAPSHOT"
   | "RESTORE"
-  | "CLONE";
+  | "CLONE"
+  | (string & {});
 export const JobConfigurationTableCopyOperationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1336,7 +1351,8 @@ export type JobConfigurationLoadDecimalTargetTypesItemEnum =
   | "DECIMAL_TARGET_TYPE_UNSPECIFIED"
   | "NUMERIC"
   | "BIGNUMERIC"
-  | "STRING";
+  | "STRING"
+  | (string & {});
 export const JobConfigurationLoadDecimalTargetTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1373,24 +1389,28 @@ export type JobConfigurationLoadColumnNameCharacterMapEnum =
   | "COLUMN_NAME_CHARACTER_MAP_UNSPECIFIED"
   | "STRICT"
   | "V1"
-  | "V2";
+  | "V2"
+  | (string & {});
 export const JobConfigurationLoadColumnNameCharacterMapEnum =
   /*@__PURE__*/ S.String;
 
 export type JobConfigurationLoadFileSetSpecTypeEnum =
   | "FILE_SET_SPEC_TYPE_FILE_SYSTEM_MATCH"
-  | "FILE_SET_SPEC_TYPE_NEW_LINE_DELIMITED_MANIFEST";
+  | "FILE_SET_SPEC_TYPE_NEW_LINE_DELIMITED_MANIFEST"
+  | (string & {});
 export const JobConfigurationLoadFileSetSpecTypeEnum = /*@__PURE__*/ S.String;
 
 export type JobConfigurationLoadJsonExtensionEnum =
   | "JSON_EXTENSION_UNSPECIFIED"
-  | "GEOJSON";
+  | "GEOJSON"
+  | (string & {});
 export const JobConfigurationLoadJsonExtensionEnum = /*@__PURE__*/ S.String;
 
 export type JobConfigurationLoadSourceColumnMatchEnum =
   | "SOURCE_COLUMN_MATCH_UNSPECIFIED"
   | "POSITION"
-  | "NAME";
+  | "NAME"
+  | (string & {});
 export const JobConfigurationLoadSourceColumnMatchEnum = /*@__PURE__*/ S.String;
 
 /** JobConfigurationLoad contains the configuration properties for loading data into a destination table. */
@@ -1666,7 +1686,8 @@ export type JobStatisticsEditionEnum =
   | "RESERVATION_EDITION_UNSPECIFIED"
   | "STANDARD"
   | "ENTERPRISE"
-  | "ENTERPRISE_PLUS";
+  | "ENTERPRISE_PLUS"
+  | (string & {});
 export const JobStatisticsEditionEnum = /*@__PURE__*/ S.String;
 
 /** Summary of the state of query execution at a given time. */
@@ -1838,7 +1859,8 @@ export type BiEngineReasonCodeEnum =
   | "UNSUPPORTED_SQL_TEXT"
   | "INPUT_TOO_LARGE"
   | "OTHER_REASON"
-  | "TABLE_EXCLUDED";
+  | "TABLE_EXCLUDED"
+  | (string & {});
 export const BiEngineReasonCodeEnum = /*@__PURE__*/ S.String;
 
 /** Reason why BI Engine didn't accelerate the query (or sub-query). */
@@ -1864,7 +1886,8 @@ export type BiEngineStatisticsBiEngineModeEnum =
   | "ACCELERATION_MODE_UNSPECIFIED"
   | "DISABLED"
   | "PARTIAL"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const BiEngineStatisticsBiEngineModeEnum = /*@__PURE__*/ S.String;
 
 export type BiEngineStatisticsAccelerationModeEnum =
@@ -1872,7 +1895,8 @@ export type BiEngineStatisticsAccelerationModeEnum =
   | "BI_ENGINE_DISABLED"
   | "PARTIAL_INPUT"
   | "FULL_INPUT"
-  | "FULL_QUERY";
+  | "FULL_QUERY"
+  | (string & {});
 export const BiEngineStatisticsAccelerationModeEnum = /*@__PURE__*/ S.String;
 
 /** Statistics for a BI Engine specific query. Populated as part of JobStatistics2 */
@@ -2094,7 +2118,8 @@ export const GenAiStats = /*@__PURE__*/ S.suspend(() =>
 export type MlStatisticsTrainingTypeEnum =
   | "TRAINING_TYPE_UNSPECIFIED"
   | "SINGLE_TRAINING"
-  | "HPARAM_TUNING";
+  | "HPARAM_TUNING"
+  | (string & {});
 export const MlStatisticsTrainingTypeEnum = /*@__PURE__*/ S.String;
 
 export type MlStatisticsModelTypeEnum =
@@ -2123,7 +2148,8 @@ export type MlStatisticsModelTypeEnum =
   | "TENSORFLOW_LITE"
   | "ONNX"
   | "TRANSFORM_ONLY"
-  | "CONTRIBUTION_ANALYSIS";
+  | "CONTRIBUTION_ANALYSIS"
+  | (string & {});
 export const MlStatisticsModelTypeEnum = /*@__PURE__*/ S.String;
 
 export type DoubleMap = { [key: string]: number | undefined };
@@ -2138,13 +2164,15 @@ export type TrainingOptionsColorSpaceEnum =
   | "HSV"
   | "YIQ"
   | "YUV"
-  | "GRAYSCALE";
+  | "GRAYSCALE"
+  | (string & {});
 export const TrainingOptionsColorSpaceEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsDartNormalizeTypeEnum =
   | "DART_NORMALIZE_TYPE_UNSPECIFIED"
   | "TREE"
-  | "FOREST";
+  | "FOREST"
+  | (string & {});
 export const TrainingOptionsDartNormalizeTypeEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsHolidayRegionEnum =
@@ -2216,7 +2244,8 @@ export type TrainingOptionsHolidayRegionEnum =
   | "US"
   | "VE"
   | "VN"
-  | "ZA";
+  | "ZA"
+  | (string & {});
 export const TrainingOptionsHolidayRegionEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsDataFrequencyEnum =
@@ -2228,13 +2257,15 @@ export type TrainingOptionsDataFrequencyEnum =
   | "WEEKLY"
   | "DAILY"
   | "HOURLY"
-  | "PER_MINUTE";
+  | "PER_MINUTE"
+  | (string & {});
 export const TrainingOptionsDataFrequencyEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsOptimizationStrategyEnum =
   | "OPTIMIZATION_STRATEGY_UNSPECIFIED"
   | "BATCH_GRADIENT_DESCENT"
-  | "NORMAL_EQUATION";
+  | "NORMAL_EQUATION"
+  | (string & {});
 export const TrainingOptionsOptimizationStrategyEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsDataSplitMethodEnum =
@@ -2243,14 +2274,16 @@ export type TrainingOptionsDataSplitMethodEnum =
   | "CUSTOM"
   | "SEQUENTIAL"
   | "NO_SPLIT"
-  | "AUTO_SPLIT";
+  | "AUTO_SPLIT"
+  | (string & {});
 export const TrainingOptionsDataSplitMethodEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsPcaSolverEnum =
   | "UNSPECIFIED"
   | "FULL"
   | "RANDOMIZED"
-  | "AUTO";
+  | "AUTO"
+  | (string & {});
 export const TrainingOptionsPcaSolverEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsTreeMethodEnum =
@@ -2258,7 +2291,8 @@ export type TrainingOptionsTreeMethodEnum =
   | "AUTO"
   | "EXACT"
   | "APPROX"
-  | "HIST";
+  | "HIST"
+  | (string & {});
 export const TrainingOptionsTreeMethodEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsHparamTuningObjectivesItemEnum =
@@ -2278,7 +2312,8 @@ export type TrainingOptionsHparamTuningObjectivesItemEnum =
   | "DAVIES_BOULDIN_INDEX"
   | "MEAN_AVERAGE_PRECISION"
   | "NORMALIZED_DISCOUNTED_CUMULATIVE_GAIN"
-  | "AVERAGE_RANK";
+  | "AVERAGE_RANK"
+  | (string & {});
 export const TrainingOptionsHparamTuningObjectivesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -2292,19 +2327,22 @@ export const TrainingOptionsHparamTuningObjectivesItemEnumList =
 export type TrainingOptionsBoosterTypeEnum =
   | "BOOSTER_TYPE_UNSPECIFIED"
   | "GBTREE"
-  | "DART";
+  | "DART"
+  | (string & {});
 export const TrainingOptionsBoosterTypeEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsLearnRateStrategyEnum =
   | "LEARN_RATE_STRATEGY_UNSPECIFIED"
   | "LINE_SEARCH"
-  | "CONSTANT";
+  | "CONSTANT"
+  | (string & {});
 export const TrainingOptionsLearnRateStrategyEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsLossTypeEnum =
   | "LOSS_TYPE_UNSPECIFIED"
   | "MEAN_SQUARED_LOSS"
-  | "MEAN_LOG_LOSS";
+  | "MEAN_LOG_LOSS"
+  | (string & {});
 export const TrainingOptionsLossTypeEnum = /*@__PURE__*/ S.String;
 
 /** Arima order, can be used for both non-seasonal and seasonal parts. */
@@ -2327,14 +2365,16 @@ export const ArimaOrder = /*@__PURE__*/ S.suspend(() =>
 export type TrainingOptionsFeedbackTypeEnum =
   | "FEEDBACK_TYPE_UNSPECIFIED"
   | "IMPLICIT"
-  | "EXPLICIT";
+  | "EXPLICIT"
+  | (string & {});
 export const TrainingOptionsFeedbackTypeEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsKmeansInitializationMethodEnum =
   | "KMEANS_INITIALIZATION_METHOD_UNSPECIFIED"
   | "RANDOM"
   | "CUSTOM"
-  | "KMEANS_PLUS_PLUS";
+  | "KMEANS_PLUS_PLUS"
+  | (string & {});
 export const TrainingOptionsKmeansInitializationMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -2342,13 +2382,15 @@ export type TrainingOptionsCategoryEncodingMethodEnum =
   | "ENCODING_METHOD_UNSPECIFIED"
   | "ONE_HOT_ENCODING"
   | "LABEL_ENCODING"
-  | "DUMMY_ENCODING";
+  | "DUMMY_ENCODING"
+  | (string & {});
 export const TrainingOptionsCategoryEncodingMethodEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsDistanceTypeEnum =
   | "DISTANCE_TYPE_UNSPECIFIED"
   | "EUCLIDEAN"
-  | "COSINE";
+  | "COSINE"
+  | (string & {});
 export const TrainingOptionsDistanceTypeEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsHolidayRegionsItemEnum =
@@ -2420,7 +2462,8 @@ export type TrainingOptionsHolidayRegionsItemEnum =
   | "US"
   | "VE"
   | "VN"
-  | "ZA";
+  | "ZA"
+  | (string & {});
 export const TrainingOptionsHolidayRegionsItemEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsHolidayRegionsItemEnumList =
@@ -2433,13 +2476,15 @@ export type TrainingOptionsReservationAffinityTypeEnum =
   | "RESERVATION_AFFINITY_TYPE_UNSPECIFIED"
   | "NO_RESERVATION"
   | "ANY_RESERVATION"
-  | "SPECIFIC_RESERVATION";
+  | "SPECIFIC_RESERVATION"
+  | (string & {});
 export const TrainingOptionsReservationAffinityTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type TrainingOptionsModelRegistryEnum =
   | "MODEL_REGISTRY_UNSPECIFIED"
-  | "VERTEX_AI";
+  | "VERTEX_AI"
+  | (string & {});
 export const TrainingOptionsModelRegistryEnum = /*@__PURE__*/ S.String;
 
 /** Options used in model training. */
@@ -2770,7 +2815,8 @@ export type HparamTuningTrialStatusEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "INFEASIBLE"
-  | "STOPPED_EARLY";
+  | "STOPPED_EARLY"
+  | (string & {});
 export const HparamTuningTrialStatusEnum = /*@__PURE__*/ S.String;
 
 /** ARIMA model fitting metrics. */
@@ -2800,7 +2846,8 @@ export type ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnum =
   | "MONTHLY"
   | "QUARTERLY"
   | "YEARLY"
-  | "HOURLY";
+  | "HOURLY"
+  | (string & {});
 export const ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -2879,7 +2926,8 @@ export type ArimaForecastingMetricsSeasonalPeriodsItemEnum =
   | "MONTHLY"
   | "QUARTERLY"
   | "YEARLY"
-  | "HOURLY";
+  | "HOURLY"
+  | (string & {});
 export const ArimaForecastingMetricsSeasonalPeriodsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -3353,7 +3401,8 @@ export type ArimaModelInfoSeasonalPeriodsItemEnum =
   | "MONTHLY"
   | "QUARTERLY"
   | "YEARLY"
-  | "HOURLY";
+  | "HOURLY"
+  | (string & {});
 export const ArimaModelInfoSeasonalPeriodsItemEnum = /*@__PURE__*/ S.String;
 
 export type ArimaModelInfoSeasonalPeriodsItemEnumList =
@@ -3413,7 +3462,8 @@ export type ArimaResultSeasonalPeriodsItemEnum =
   | "MONTHLY"
   | "QUARTERLY"
   | "YEARLY"
-  | "HOURLY";
+  | "HOURLY"
+  | (string & {});
 export const ArimaResultSeasonalPeriodsItemEnum = /*@__PURE__*/ S.String;
 
 export type ArimaResultSeasonalPeriodsItemEnumList =
@@ -3551,7 +3601,8 @@ export type SearchStatisticsIndexUsageModeEnum =
   | "INDEX_USAGE_MODE_UNSPECIFIED"
   | "UNUSED"
   | "PARTIALLY_USED"
-  | "FULLY_USED";
+  | "FULLY_USED"
+  | (string & {});
 export const SearchStatisticsIndexUsageModeEnum = /*@__PURE__*/ S.String;
 
 /** Statistics for index pruning. */
@@ -3603,7 +3654,8 @@ export type IndexUnusedReasonCodeEnum =
   | "QUERY_CACHE_HIT"
   | "STALE_INDEX"
   | "INTERNAL_ERROR"
-  | "OTHER_REASON";
+  | "OTHER_REASON"
+  | (string & {});
 export const IndexUnusedReasonCodeEnum = /*@__PURE__*/ S.String;
 
 /** Reason about why no search index was used in the search query (or sub-query). */
@@ -3862,7 +3914,8 @@ export type TableMetadataCacheUsageUnusedReasonEnum =
   | "UNUSED_REASON_UNSPECIFIED"
   | "EXCEEDED_MAX_STALENESS"
   | "METADATA_CACHING_NOT_ENABLED"
-  | "OTHER_REASON";
+  | "OTHER_REASON"
+  | (string & {});
 export const TableMetadataCacheUsageUnusedReasonEnum = /*@__PURE__*/ S.String;
 
 /** Table level detail on the usage of metadata caching. Only set for Metadata caching eligible tables referenced in the query. */
@@ -3936,7 +3989,8 @@ export const ExplainQueryStepList = /*@__PURE__*/ S.Array(
 export type ExplainQueryStageComputeModeEnum =
   | "COMPUTE_MODE_UNSPECIFIED"
   | "BIGQUERY"
-  | "BI_ENGINE";
+  | "BI_ENGINE"
+  | (string & {});
 export const ExplainQueryStageComputeModeEnum = /*@__PURE__*/ S.String;
 
 /** A single stage of query execution. */
@@ -4050,14 +4104,16 @@ export const ExplainQueryStageList = /*@__PURE__*/ S.Array(
 export type DmlStatisticsDmlModeEnum =
   | "DML_MODE_UNSPECIFIED"
   | "COARSE_GRAINED_DML"
-  | "FINE_GRAINED_DML";
+  | "FINE_GRAINED_DML"
+  | (string & {});
 export const DmlStatisticsDmlModeEnum = /*@__PURE__*/ S.String;
 
 export type DmlStatisticsFineGrainedDmlUnusedReasonEnum =
   | "FINE_GRAINED_DML_UNUSED_REASON_UNSPECIFIED"
   | "MAX_PARTITION_SIZE_EXCEEDED"
   | "TABLE_NOT_ENROLLED"
-  | "DML_IN_MULTI_STATEMENT_TRANSACTION";
+  | "DML_IN_MULTI_STATEMENT_TRANSACTION"
+  | (string & {});
 export const DmlStatisticsFineGrainedDmlUnusedReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -4090,7 +4146,8 @@ export type ObjectStorageStatsCloudProviderEnum =
   | "CLOUD_PROVIDER_UNSPECIFIED"
   | "GCP"
   | "AWS"
-  | "AZURE";
+  | "AZURE"
+  | (string & {});
 export const ObjectStorageStatsCloudProviderEnum = /*@__PURE__*/ S.String;
 
 /** Storage and caching statistics for object storage. */
@@ -4121,7 +4178,8 @@ export type VectorSearchStatisticsIndexUsageModeEnum =
   | "INDEX_USAGE_MODE_UNSPECIFIED"
   | "UNUSED"
   | "PARTIALLY_USED"
-  | "FULLY_USED";
+  | "FULLY_USED"
+  | (string & {});
 export const VectorSearchStatisticsIndexUsageModeEnum = /*@__PURE__*/ S.String;
 
 export type StoredColumnsUnusedReasonCodeEnum =
@@ -4131,7 +4189,8 @@ export type StoredColumnsUnusedReasonCodeEnum =
   | "BASE_TABLE_HAS_CLS"
   | "UNSUPPORTED_PREFILTER"
   | "INTERNAL_ERROR"
-  | "OTHER_REASON";
+  | "OTHER_REASON"
+  | (string & {});
 export const StoredColumnsUnusedReasonCodeEnum = /*@__PURE__*/ S.String;
 
 /** If the stored column was not used, explain why. */
@@ -4214,7 +4273,8 @@ export type MaterializedViewRejectedReasonEnum =
   | "TIME_ZONE"
   | "OUT_OF_TIME_TRAVEL_WINDOW"
   | "BASE_TABLE_FINE_GRAINED_SECURITY_POLICY"
-  | "BASE_TABLE_TOO_STALE";
+  | "BASE_TABLE_TOO_STALE"
+  | (string & {});
 export const MaterializedViewRejectedReasonEnum = /*@__PURE__*/ S.String;
 
 /** A materialized view considered for a query job. */
@@ -4319,7 +4379,8 @@ export const SparkStatistics = /*@__PURE__*/ S.suspend(() =>
 export type IncrementalResultStatsDisabledReasonEnum =
   | "DISABLED_REASON_UNSPECIFIED"
   | "OTHER"
-  | "UNSUPPORTED_OPERATOR";
+  | "UNSUPPORTED_OPERATOR"
+  | (string & {});
 export const IncrementalResultStatsDisabledReasonEnum = /*@__PURE__*/ S.String;
 
 /** Statistics related to Incremental Query Results. Populated as part of JobStatistics2. This feature is not yet available. */
@@ -4528,7 +4589,8 @@ export const JobStatistics4 = /*@__PURE__*/ S.suspend(() =>
 export type ScriptStatisticsEvaluationKindEnum =
   | "EVALUATION_KIND_UNSPECIFIED"
   | "STATEMENT"
-  | "EXPRESSION";
+  | "EXPRESSION"
+  | (string & {});
 export const ScriptStatisticsEvaluationKindEnum = /*@__PURE__*/ S.String;
 
 /** Represents the location of the statement/expression being evaluated. Line and column numbers are defined as follows: - Line and column numbers start with one. That is, line 1 column 1 denotes the start of the script. - When inside a stored procedure, all line/column numbers are relative to the procedure body, not the script in which the procedure was defined. - Start/end positions exclude leading/trailing comments and whitespace. The end position always ends with a ";", when present. - Multi-byte Unicode characters are treated as just one column. - If the original script (or procedure definition) contains TAB characters, a tab "snaps" the indentation forward to the nearest multiple of 8 characters, plus 1. For example, a TAB on column 1, 2, 3, 4, 5, 6 , or 8 will advance the next character to column 9. A TAB on column 9, 10, 11, 12, 13, 14, 15, or 16 will advance the next character to column 17. */
@@ -5020,7 +5082,8 @@ export type GetDatasetsDatasetViewEnum =
   | "DATASET_VIEW_UNSPECIFIED"
   | "METADATA"
   | "ACL"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetDatasetsDatasetViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetDatasetsRequest {
@@ -5073,7 +5136,8 @@ export const Expr = /*@__PURE__*/ S.suspend(() =>
 export type DatasetAccessEntryTargetTypesItemEnum =
   | "TARGET_TYPE_UNSPECIFIED"
   | "VIEWS"
-  | "ROUTINES";
+  | "ROUTINES"
+  | (string & {});
 export const DatasetAccessEntryTargetTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type DatasetAccessEntryTargetTypesItemEnumList =
@@ -5165,7 +5229,8 @@ export const DatasetTagsItemList = /*@__PURE__*/ S.Array(
 export type LinkedDatasetMetadataLinkStateEnum =
   | "LINK_STATE_UNSPECIFIED"
   | "LINKED"
-  | "UNLINKED";
+  | "UNLINKED"
+  | (string & {});
 export const LinkedDatasetMetadataLinkStateEnum = /*@__PURE__*/ S.String;
 
 /** Metadata about the Linked Dataset. */
@@ -5183,7 +5248,8 @@ export const LinkedDatasetMetadata = /*@__PURE__*/ S.suspend(() =>
 
 export type RestrictionConfigTypeEnum =
   | "RESTRICTION_TYPE_UNSPECIFIED"
-  | "RESTRICTED_DATA_EGRESS";
+  | "RESTRICTED_DATA_EGRESS"
+  | (string & {});
 export const RestrictionConfigTypeEnum = /*@__PURE__*/ S.String;
 
 export interface RestrictionConfig {
@@ -5214,7 +5280,8 @@ export const LinkedDatasetSource = /*@__PURE__*/ S.suspend(() =>
 export type DatasetStorageBillingModelEnum =
   | "STORAGE_BILLING_MODEL_UNSPECIFIED"
   | "LOGICAL"
-  | "PHYSICAL";
+  | "PHYSICAL"
+  | (string & {});
 export const DatasetStorageBillingModelEnum = /*@__PURE__*/ S.String;
 
 /** Configures the access a dataset defined in an external metadata storage. */
@@ -5252,7 +5319,8 @@ export const ExternalCatalogDatasetOptions = /*@__PURE__*/ S.suspend(() =>
 export type DatasetDefaultRoundingModeEnum =
   | "ROUNDING_MODE_UNSPECIFIED"
   | "ROUND_HALF_AWAY_FROM_ZERO"
-  | "ROUND_HALF_EVEN";
+  | "ROUND_HALF_EVEN"
+  | (string & {});
 export const DatasetDefaultRoundingModeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a BigQuery dataset. */
@@ -5407,7 +5475,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -5933,7 +6002,8 @@ export type ModelModelTypeEnum =
   | "TENSORFLOW_LITE"
   | "ONNX"
   | "TRANSFORM_ONLY"
-  | "CONTRIBUTION_ANALYSIS";
+  | "CONTRIBUTION_ANALYSIS"
+  | (string & {});
 export const ModelModelTypeEnum = /*@__PURE__*/ S.String;
 
 export type RemoteModelInfoRemoteServiceTypeEnum =
@@ -5941,7 +6011,8 @@ export type RemoteModelInfoRemoteServiceTypeEnum =
   | "CLOUD_AI_TRANSLATE_V3"
   | "CLOUD_AI_VISION_V1"
   | "CLOUD_AI_NATURAL_LANGUAGE_V1"
-  | "CLOUD_AI_SPEECH_TO_TEXT_V2";
+  | "CLOUD_AI_SPEECH_TO_TEXT_V2"
+  | (string & {});
 export const RemoteModelInfoRemoteServiceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Remote Model Info */
@@ -6046,7 +6117,8 @@ export type GetQueryResultsJobsFormatOptions_timestampOutputFormatEnum =
   | "TIMESTAMP_OUTPUT_FORMAT_UNSPECIFIED"
   | "FLOAT64"
   | "INT64"
-  | "ISO8601_STRING";
+  | "ISO8601_STRING"
+  | (string & {});
 export const GetQueryResultsJobsFormatOptions_timestampOutputFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -6202,7 +6274,8 @@ export type RoutineBuildStatusBuildStateEnum =
   | "BUILD_STATE_UNSPECIFIED"
   | "IN_PROGRESS"
   | "SUCCEEDED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const RoutineBuildStatusBuildStateEnum = /*@__PURE__*/ S.String;
 
 /** The status of a routine build. */
@@ -6236,7 +6309,8 @@ export type RoutineLanguageEnum =
   | "JAVASCRIPT"
   | "PYTHON"
   | "JAVA"
-  | "SCALA";
+  | "SCALA"
+  | (string & {});
 export const RoutineLanguageEnum = /*@__PURE__*/ S.String;
 
 export type ArgumentArgumentKindEnum =
@@ -6244,7 +6318,8 @@ export type ArgumentArgumentKindEnum =
   | "FIXED_TYPE"
   | "ANY_TYPE"
   | "FIXED_TABLE"
-  | "ANY_TABLE";
+  | "ANY_TABLE"
+  | (string & {});
 export const ArgumentArgumentKindEnum = /*@__PURE__*/ S.String;
 
 /** A table type */
@@ -6260,7 +6335,12 @@ export const StandardSqlTableType = /*@__PURE__*/ S.suspend(() =>
   identifier: "StandardSqlTableType",
 }) as any as S.Schema<StandardSqlTableType>;
 
-export type ArgumentModeEnum = "MODE_UNSPECIFIED" | "IN" | "OUT" | "INOUT";
+export type ArgumentModeEnum =
+  | "MODE_UNSPECIFIED"
+  | "IN"
+  | "OUT"
+  | "INOUT"
+  | (string & {});
 export const ArgumentModeEnum = /*@__PURE__*/ S.String;
 
 /** Input/output argument of a function or a stored procedure. */
@@ -6299,13 +6379,15 @@ export type RoutineRoutineTypeEnum =
   | "SCALAR_FUNCTION"
   | "PROCEDURE"
   | "TABLE_VALUED_FUNCTION"
-  | "AGGREGATE_FUNCTION";
+  | "AGGREGATE_FUNCTION"
+  | (string & {});
 export const RoutineRoutineTypeEnum = /*@__PURE__*/ S.String;
 
 export type RoutineDeterminismLevelEnum =
   | "DETERMINISM_LEVEL_UNSPECIFIED"
   | "DETERMINISTIC"
-  | "NOT_DETERMINISTIC";
+  | "NOT_DETERMINISTIC"
+  | (string & {});
 export const RoutineDeterminismLevelEnum = /*@__PURE__*/ S.String;
 
 /** Options for a user-defined Spark routine. */
@@ -6348,13 +6430,15 @@ export const SparkOptions = /*@__PURE__*/ S.suspend(() =>
 
 export type RoutineDataGovernanceTypeEnum =
   | "DATA_GOVERNANCE_TYPE_UNSPECIFIED"
-  | "DATA_MASKING";
+  | "DATA_MASKING"
+  | (string & {});
 export const RoutineDataGovernanceTypeEnum = /*@__PURE__*/ S.String;
 
 export type RoutineSecurityModeEnum =
   | "SECURITY_MODE_UNSPECIFIED"
   | "DEFINER"
-  | "INVOKER";
+  | "INVOKER"
+  | (string & {});
 export const RoutineSecurityModeEnum = /*@__PURE__*/ S.String;
 
 /** Options for a remote user-defined function. */
@@ -6585,7 +6669,8 @@ export type GetTablesViewEnum =
   | "TABLE_METADATA_VIEW_UNSPECIFIED"
   | "BASIC"
   | "STORAGE_STATS"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetTablesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetTablesRequest {
@@ -6639,7 +6724,8 @@ export type JoinRestrictionPolicyJoinConditionEnum =
   | "JOIN_ANY"
   | "JOIN_ALL"
   | "JOIN_NOT_REQUIRED"
-  | "JOIN_BLOCKED";
+  | "JOIN_BLOCKED"
+  | (string & {});
 export const JoinRestrictionPolicyJoinConditionEnum = /*@__PURE__*/ S.String;
 
 /** Represents privacy policy associated with "join restrictions". Join restriction gives data providers the ability to enforce joins on the 'join_allowed_columns' when data is queried from a privacy protected view. */
@@ -6897,7 +6983,8 @@ export type TableReplicationInfoReplicationStatusEnum =
   | "ACTIVE"
   | "SOURCE_DELETED"
   | "PERMISSION_DENIED"
-  | "UNSUPPORTED_CONFIGURATION";
+  | "UNSUPPORTED_CONFIGURATION"
+  | (string & {});
 export const TableReplicationInfoReplicationStatusEnum = /*@__PURE__*/ S.String;
 
 /** Replication info of a table created using `AS REPLICA` DDL like: `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv` */
@@ -6974,12 +7061,14 @@ export const PartitioningDefinition = /*@__PURE__*/ S.suspend(() =>
 
 export type BigLakeConfigurationTableFormatEnum =
   | "TABLE_FORMAT_UNSPECIFIED"
-  | "ICEBERG";
+  | "ICEBERG"
+  | (string & {});
 export const BigLakeConfigurationTableFormatEnum = /*@__PURE__*/ S.String;
 
 export type BigLakeConfigurationFileFormatEnum =
   | "FILE_FORMAT_UNSPECIFIED"
-  | "PARQUET";
+  | "PARQUET"
+  | (string & {});
 export const BigLakeConfigurationFileFormatEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for BigQuery tables for Apache Iceberg (formerly BigLake managed tables.) */
@@ -7007,13 +7096,15 @@ export const BigLakeConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type TableDefaultRoundingModeEnum =
   | "ROUNDING_MODE_UNSPECIFIED"
   | "ROUND_HALF_AWAY_FROM_ZERO"
-  | "ROUND_HALF_EVEN";
+  | "ROUND_HALF_EVEN"
+  | (string & {});
 export const TableDefaultRoundingModeEnum = /*@__PURE__*/ S.String;
 
 export type TableManagedTableTypeEnum =
   | "MANAGED_TABLE_TYPE_UNSPECIFIED"
   | "NATIVE"
-  | "BIGLAKE";
+  | "BIGLAKE"
+  | (string & {});
 export const TableManagedTableTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ModelDefinitionModelOptions {
@@ -7722,10 +7813,14 @@ export const DatasetList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DatasetList" }) as any as S.Schema<DatasetList>;
 
-export type ListJobsProjectionEnum = "full" | "minimal";
+export type ListJobsProjectionEnum = "full" | "minimal" | (string & {});
 export const ListJobsProjectionEnum = /*@__PURE__*/ S.String;
 
-export type ListJobsStateFilterEnum = "done" | "pending" | "running";
+export type ListJobsStateFilterEnum =
+  | "done"
+  | "pending"
+  | "running"
+  | (string & {});
 export const ListJobsStateFilterEnum = /*@__PURE__*/ S.String;
 
 export type ListJobsStateFilterEnumList =
@@ -8087,7 +8182,8 @@ export type ListTabledataFormatOptions_timestampOutputFormatEnum =
   | "TIMESTAMP_OUTPUT_FORMAT_UNSPECIFIED"
   | "FLOAT64"
   | "INT64"
-  | "ISO8601_STRING";
+  | "ISO8601_STRING"
+  | (string & {});
 export const ListTabledataFormatOptions_timestampOutputFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -8279,7 +8375,8 @@ export type PatchDatasetsUpdateModeEnum =
   | "UPDATE_MODE_UNSPECIFIED"
   | "UPDATE_METADATA"
   | "UPDATE_ACL"
-  | "UPDATE_FULL";
+  | "UPDATE_FULL"
+  | (string & {});
 export const PatchDatasetsUpdateModeEnum = /*@__PURE__*/ S.String;
 
 export interface PatchDatasetsRequest {
@@ -8372,14 +8469,16 @@ export const PatchTablesRequest = /*@__PURE__*/ S.suspend(() =>
 export type QueryRequestJobCreationModeEnum =
   | "JOB_CREATION_MODE_UNSPECIFIED"
   | "JOB_CREATION_REQUIRED"
-  | "JOB_CREATION_OPTIONAL";
+  | "JOB_CREATION_OPTIONAL"
+  | (string & {});
 export const QueryRequestJobCreationModeEnum = /*@__PURE__*/ S.String;
 
 export type DataFormatOptionsTimestampOutputFormatEnum =
   | "TIMESTAMP_OUTPUT_FORMAT_UNSPECIFIED"
   | "FLOAT64"
   | "INT64"
-  | "ISO8601_STRING";
+  | "ISO8601_STRING"
+  | (string & {});
 export const DataFormatOptionsTimestampOutputFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -8404,7 +8503,8 @@ export const DataFormatOptions = /*@__PURE__*/ S.suspend(() =>
 export type ArrowSerializationOptionsBufferCompressionEnum =
   | "COMPRESSION_UNSPECIFIED"
   | "LZ4_FRAME"
-  | "ZSTD";
+  | "ZSTD"
+  | (string & {});
 export const ArrowSerializationOptionsBufferCompressionEnum =
   /*@__PURE__*/ S.String;
 
@@ -8412,7 +8512,8 @@ export type ArrowSerializationOptionsPicosTimestampPrecisionEnum =
   | "PICOS_TIMESTAMP_PRECISION_UNSPECIFIED"
   | "TIMESTAMP_PRECISION_MICROS"
   | "TIMESTAMP_PRECISION_NANOS"
-  | "TIMESTAMP_PRECISION_PICOS";
+  | "TIMESTAMP_PRECISION_PICOS"
+  | (string & {});
 export const ArrowSerializationOptionsPicosTimestampPrecisionEnum =
   /*@__PURE__*/ S.String;
 
@@ -8439,7 +8540,8 @@ export const ArrowSerializationOptions = /*@__PURE__*/ S.suspend(() =>
 export type QueryRequestQueryResultsFormatEnum =
   | "QUERY_RESULTS_FORMAT_UNSPECIFIED"
   | "STRUCT_ENCODING"
-  | "ARROW";
+  | "ARROW"
+  | (string & {});
 export const QueryRequestQueryResultsFormatEnum = /*@__PURE__*/ S.String;
 
 /** Describes the format of the jobs.query request. */
@@ -8844,7 +8946,8 @@ export type UpdateDatasetsUpdateModeEnum =
   | "UPDATE_MODE_UNSPECIFIED"
   | "UPDATE_METADATA"
   | "UPDATE_ACL"
-  | "UPDATE_FULL";
+  | "UPDATE_FULL"
+  | (string & {});
 export const UpdateDatasetsUpdateModeEnum = /*@__PURE__*/ S.String;
 
 export interface UpdateDatasetsRequest {

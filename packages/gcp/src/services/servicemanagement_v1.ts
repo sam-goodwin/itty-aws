@@ -182,7 +182,8 @@ export type BatchingSettingsProtoFlowControlLimitExceededBehaviorEnum =
   | "UNSET_BEHAVIOR"
   | "THROW_EXCEPTION"
   | "BLOCK"
-  | "IGNORE";
+  | "IGNORE"
+  | (string & {});
 export const BatchingSettingsProtoFlowControlLimitExceededBehaviorEnum =
   /*@__PURE__*/ S.String;
 
@@ -292,13 +293,15 @@ export type PublishingOrganizationEnum =
   | "SHOPPING"
   | "GEO"
   | "GENERATIVE_AI"
-  | "HEALTH";
+  | "HEALTH"
+  | (string & {});
 export const PublishingOrganizationEnum = /*@__PURE__*/ S.String;
 
 export type CommonLanguageSettingsDestinationsItemEnum =
   | "CLIENT_LIBRARY_DESTINATION_UNSPECIFIED"
   | "GITHUB"
-  | "PACKAGE_MANAGER";
+  | "PACKAGE_MANAGER"
+  | (string & {});
 export const CommonLanguageSettingsDestinationsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -407,7 +410,8 @@ export type ClientLibrarySettingsLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED";
+  | "DEPRECATED"
+  | (string & {});
 export const ClientLibrarySettingsLaunchStageEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -609,7 +613,8 @@ export const MixinList = /*@__PURE__*/ S.Array(
 export type MethodSyntaxEnum =
   | "SYNTAX_PROTO2"
   | "SYNTAX_PROTO3"
-  | "SYNTAX_EDITIONS";
+  | "SYNTAX_EDITIONS"
+  | (string & {});
 export const MethodSyntaxEnum = /*@__PURE__*/ S.String;
 
 /** A protocol buffer option, which can be attached to a message, field, enumeration, etc. New usages of this message as an alternative to FileOptions, MessageOptions, FieldOptions, EnumOptions, EnumValueOptions, ServiceOptions, or MethodOptions are strongly discouraged. */
@@ -671,7 +676,8 @@ export const MethodList = /*@__PURE__*/ S.Array(
 export type ApiSyntaxEnum =
   | "SYNTAX_PROTO2"
   | "SYNTAX_PROTO3"
-  | "SYNTAX_EDITIONS";
+  | "SYNTAX_EDITIONS"
+  | (string & {});
 export const ApiSyntaxEnum = /*@__PURE__*/ S.String;
 
 /** `SourceContext` represents information about the source of a protobuf element, like the file in which it is defined. */
@@ -729,7 +735,8 @@ export const BackendRuleMap = /*@__PURE__*/ S.Record(
 export type BackendRulePathTranslationEnum =
   | "PATH_TRANSLATION_UNSPECIFIED"
   | "CONSTANT_ADDRESS"
-  | "APPEND_PATH_TO_ADDRESS";
+  | "APPEND_PATH_TO_ADDRESS"
+  | (string & {});
 export const BackendRulePathTranslationEnum = /*@__PURE__*/ S.String;
 
 /** A backend rule provides configuration for an individual API element. */
@@ -999,7 +1006,8 @@ export const Authentication = /*@__PURE__*/ S.suspend(() =>
 export type EnumSyntaxEnum =
   | "SYNTAX_PROTO2"
   | "SYNTAX_PROTO3"
-  | "SYNTAX_EDITIONS";
+  | "SYNTAX_EDITIONS"
+  | (string & {});
 export const EnumSyntaxEnum = /*@__PURE__*/ S.String;
 
 /** Enum value definition. New usages of this message as an alternative to EnumValueDescriptorProto are strongly discouraged. This message does not reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information. */
@@ -1136,7 +1144,11 @@ export const Documentation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Documentation" }) as any as S.Schema<Documentation>;
 
-export type LabelDescriptorValueTypeEnum = "STRING" | "BOOL" | "INT64";
+export type LabelDescriptorValueTypeEnum =
+  | "STRING"
+  | "BOOL"
+  | "INT64"
+  | (string & {});
 export const LabelDescriptorValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** A description of a label. */
@@ -1207,14 +1219,16 @@ export type FieldKindEnum =
   | "TYPE_SFIXED32"
   | "TYPE_SFIXED64"
   | "TYPE_SINT32"
-  | "TYPE_SINT64";
+  | "TYPE_SINT64"
+  | (string & {});
 export const FieldKindEnum = /*@__PURE__*/ S.String;
 
 export type FieldCardinalityEnum =
   | "CARDINALITY_UNKNOWN"
   | "CARDINALITY_OPTIONAL"
   | "CARDINALITY_REQUIRED"
-  | "CARDINALITY_REPEATED";
+  | "CARDINALITY_REPEATED"
+  | (string & {});
 export const FieldCardinalityEnum = /*@__PURE__*/ S.String;
 
 /** A single field of a message type. New usages of this message as an alternative to FieldDescriptorProto are strongly discouraged. This message does not reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information. */
@@ -1263,7 +1277,8 @@ export const FieldList = /*@__PURE__*/ S.Array(
 export type TypeSyntaxEnum =
   | "SYNTAX_PROTO2"
   | "SYNTAX_PROTO3"
-  | "SYNTAX_EDITIONS";
+  | "SYNTAX_EDITIONS"
+  | (string & {});
 export const TypeSyntaxEnum = /*@__PURE__*/ S.String;
 
 /** A protocol buffer message type. New usages of this message as an alternative to DescriptorProto are strongly discouraged. This message does not reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information. */
@@ -1308,14 +1323,16 @@ export type MetricDescriptorMetadataLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED";
+  | "DEPRECATED"
+  | (string & {});
 export const MetricDescriptorMetadataLaunchStageEnum = /*@__PURE__*/ S.String;
 
 export type MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum =
   | "TIME_SERIES_RESOURCE_HIERARCHY_LEVEL_UNSPECIFIED"
   | "PROJECT"
   | "ORGANIZATION"
-  | "FOLDER";
+  | "FOLDER"
+  | (string & {});
 export const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1358,7 +1375,8 @@ export type MetricDescriptorLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED";
+  | "DEPRECATED"
+  | (string & {});
 export const MetricDescriptorLaunchStageEnum = /*@__PURE__*/ S.String;
 
 export type MetricDescriptorValueTypeEnum =
@@ -1368,14 +1386,16 @@ export type MetricDescriptorValueTypeEnum =
   | "DOUBLE"
   | "STRING"
   | "DISTRIBUTION"
-  | "MONEY";
+  | "MONEY"
+  | (string & {});
 export const MetricDescriptorValueTypeEnum = /*@__PURE__*/ S.String;
 
 export type MetricDescriptorMetricKindEnum =
   | "METRIC_KIND_UNSPECIFIED"
   | "GAUGE"
   | "DELTA"
-  | "CUMULATIVE";
+  | "CUMULATIVE"
+  | (string & {});
 export const MetricDescriptorMetricKindEnum = /*@__PURE__*/ S.String;
 
 /** Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable. */
@@ -1635,7 +1655,8 @@ export type MonitoredResourceDescriptorLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED";
+  | "DEPRECATED"
+  | (string & {});
 export const MonitoredResourceDescriptorLaunchStageEnum =
   /*@__PURE__*/ S.String;
 
@@ -2089,7 +2110,8 @@ export type RolloutStatusEnum =
   | "CANCELLED"
   | "FAILED"
   | "PENDING"
-  | "FAILED_ROLLED_BACK";
+  | "FAILED_ROLLED_BACK"
+  | (string & {});
 export const RolloutStatusEnum = /*@__PURE__*/ S.String;
 
 /** A rollout resource that defines how service configuration versions are pushed to control plane systems. Typically, you create a new version of the service config, and then create a Rollout to push the service config. */
@@ -2214,7 +2236,8 @@ export type ConfigChangeChangeTypeEnum =
   | "CHANGE_TYPE_UNSPECIFIED"
   | "ADDED"
   | "REMOVED"
-  | "MODIFIED";
+  | "MODIFIED"
+  | (string & {});
 export const ConfigChangeChangeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Output generated from semantically comparing two versions of a service configuration. Includes detailed information about a field that have changed with applicable advice about potential consequences for the change, such as backwards-incompatibility. */
@@ -2261,7 +2284,7 @@ export const ChangeReportList = /*@__PURE__*/ S.Array(
   ChangeReport,
 ) as any as S.Schema<ChangeReportList>;
 
-export type DiagnosticKindEnum = "WARNING" | "ERROR";
+export type DiagnosticKindEnum = "WARNING" | "ERROR" | (string & {});
 export const DiagnosticKindEnum = /*@__PURE__*/ S.String;
 
 /** Represents a diagnostic message (error or warning) */
@@ -2308,7 +2331,7 @@ export const GenerateConfigReportResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GenerateConfigReportResponse",
 }) as any as S.Schema<GenerateConfigReportResponse>;
 
-export type GetConfigServicesViewEnum = "BASIC" | "FULL";
+export type GetConfigServicesViewEnum = "BASIC" | "FULL" | (string & {});
 export const GetConfigServicesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetConfigServicesRequest {
@@ -2386,7 +2409,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -2547,7 +2571,7 @@ export const GetServicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetServicesRequest",
 }) as any as S.Schema<GetServicesRequest>;
 
-export type GetServicesConfigsViewEnum = "BASIC" | "FULL";
+export type GetServicesConfigsViewEnum = "BASIC" | "FULL" | (string & {});
 export const GetServicesConfigsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetServicesConfigsRequest {
@@ -2855,7 +2879,8 @@ export type ConfigFileFileTypeEnum =
   | "OPEN_API_JSON"
   | "OPEN_API_YAML"
   | "FILE_DESCRIPTOR_SET_PROTO"
-  | "PROTO_FILE";
+  | "PROTO_FILE"
+  | (string & {});
 export const ConfigFileFileTypeEnum = /*@__PURE__*/ S.String;
 
 /** Generic specification of a source configuration file */

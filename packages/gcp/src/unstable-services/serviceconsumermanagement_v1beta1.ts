@@ -63,7 +63,8 @@ export class NotFound extends T.applyErrorMatchers(
 export type CreateServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum =
     | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
     | "LIMIT_DECREASE_BELOW_USAGE"
-    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
+    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
+    | (string & {});
 export const CreateServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum =
   /*@__PURE__*/ S.String;
 
@@ -258,7 +259,8 @@ export const CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesReques
 export type DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum =
     | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
     | "LIMIT_DECREASE_BELOW_USAGE"
-    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
+    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
+    | (string & {});
 export const DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum =
   /*@__PURE__*/ S.String;
 
@@ -352,7 +354,8 @@ export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetServicesConsumerQuotaMetricsViewEnum =
   | "QUOTA_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetServicesConsumerQuotaMetricsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetServicesConsumerQuotaMetricsRequest {
@@ -499,7 +502,8 @@ export const V1Beta1ConsumerQuotaMetric = /*@__PURE__*/ S.suspend(() =>
 export type GetServicesConsumerQuotaMetricsLimitsViewEnum =
   | "QUOTA_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetServicesConsumerQuotaMetricsLimitsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -548,7 +552,8 @@ export const V1Beta1OverrideInlineSource = /*@__PURE__*/ S.suspend(() =>
 export type V1Beta1ImportProducerOverridesRequestForceOnlyItemEnum =
   | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
   | "LIMIT_DECREASE_BELOW_USAGE"
-  | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
+  | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
+  | (string & {});
 export const V1Beta1ImportProducerOverridesRequestForceOnlyItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -681,7 +686,8 @@ export const ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsRequest =
 export type ListServicesConsumerQuotaMetricsViewEnum =
   | "QUOTA_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListServicesConsumerQuotaMetricsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListServicesConsumerQuotaMetricsRequest {
@@ -826,7 +832,8 @@ export const V1Beta1ListProducerQuotaPoliciesResponse = /*@__PURE__*/ S.suspend(
 export type PatchServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum =
     | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
     | "LIMIT_DECREASE_BELOW_USAGE"
-    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
+    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
+    | (string & {});
 export const PatchServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum =
   /*@__PURE__*/ S.String;
 

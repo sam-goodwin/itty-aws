@@ -63,33 +63,38 @@ export class NotFound extends T.applyErrorMatchers(
 export type AppendSpreadsheetsValuesResponseValueRenderOptionEnum =
   | "FORMATTED_VALUE"
   | "UNFORMATTED_VALUE"
-  | "FORMULA";
+  | "FORMULA"
+  | (string & {});
 export const AppendSpreadsheetsValuesResponseValueRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type AppendSpreadsheetsValuesResponseDateTimeRenderOptionEnum =
   | "SERIAL_NUMBER"
-  | "FORMATTED_STRING";
+  | "FORMATTED_STRING"
+  | (string & {});
 export const AppendSpreadsheetsValuesResponseDateTimeRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type AppendSpreadsheetsValuesInsertDataOptionEnum =
   | "OVERWRITE"
-  | "INSERT_ROWS";
+  | "INSERT_ROWS"
+  | (string & {});
 export const AppendSpreadsheetsValuesInsertDataOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type AppendSpreadsheetsValuesValueInputOptionEnum =
   | "INPUT_VALUE_OPTION_UNSPECIFIED"
   | "RAW"
-  | "USER_ENTERED";
+  | "USER_ENTERED"
+  | (string & {});
 export const AppendSpreadsheetsValuesValueInputOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type ValueRangeMajorDimensionEnum =
   | "DIMENSION_UNSPECIFIED"
   | "ROWS"
-  | "COLUMNS";
+  | "COLUMNS"
+  | (string & {});
 export const ValueRangeMajorDimensionEnum = /*@__PURE__*/ S.String;
 
 export type DocumentList = ReadonlyArray<unknown>;
@@ -216,7 +221,8 @@ export const AppendValuesResponse = /*@__PURE__*/ S.suspend(() =>
 export type DimensionRangeDimensionEnum =
   | "DIMENSION_UNSPECIFIED"
   | "ROWS"
-  | "COLUMNS";
+  | "COLUMNS"
+  | (string & {});
 export const DimensionRangeDimensionEnum = /*@__PURE__*/ S.String;
 
 /** A range along a single dimension on a sheet. All indexes are zero-based. Indexes are half open: the start index is inclusive and the end index is exclusive. Missing indexes indicate the range is unbounded on that side. */
@@ -244,7 +250,8 @@ export type DeveloperMetadataLocationLocationTypeEnum =
   | "ROW"
   | "COLUMN"
   | "SHEET"
-  | "SPREADSHEET";
+  | "SPREADSHEET"
+  | (string & {});
 export const DeveloperMetadataLocationLocationTypeEnum = /*@__PURE__*/ S.String;
 
 /** A location where metadata may be associated in a spreadsheet. */
@@ -274,19 +281,22 @@ export type DeveloperMetadataLookupLocationTypeEnum =
   | "ROW"
   | "COLUMN"
   | "SHEET"
-  | "SPREADSHEET";
+  | "SPREADSHEET"
+  | (string & {});
 export const DeveloperMetadataLookupLocationTypeEnum = /*@__PURE__*/ S.String;
 
 export type DeveloperMetadataLookupVisibilityEnum =
   | "DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED"
   | "DOCUMENT"
-  | "PROJECT";
+  | "PROJECT"
+  | (string & {});
 export const DeveloperMetadataLookupVisibilityEnum = /*@__PURE__*/ S.String;
 
 export type DeveloperMetadataLookupLocationMatchingStrategyEnum =
   | "DEVELOPER_METADATA_LOCATION_MATCHING_STRATEGY_UNSPECIFIED"
   | "EXACT_LOCATION"
-  | "INTERSECTING_LOCATION";
+  | "INTERSECTING_LOCATION"
+  | (string & {});
 export const DeveloperMetadataLookupLocationMatchingStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -478,20 +488,23 @@ export const BatchClearValuesResponse = /*@__PURE__*/ S.suspend(() =>
 export type BatchGetValuesByDataFilterRequestMajorDimensionEnum =
   | "DIMENSION_UNSPECIFIED"
   | "ROWS"
-  | "COLUMNS";
+  | "COLUMNS"
+  | (string & {});
 export const BatchGetValuesByDataFilterRequestMajorDimensionEnum =
   /*@__PURE__*/ S.String;
 
 export type BatchGetValuesByDataFilterRequestValueRenderOptionEnum =
   | "FORMATTED_VALUE"
   | "UNFORMATTED_VALUE"
-  | "FORMULA";
+  | "FORMULA"
+  | (string & {});
 export const BatchGetValuesByDataFilterRequestValueRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type BatchGetValuesByDataFilterRequestDateTimeRenderOptionEnum =
   | "SERIAL_NUMBER"
-  | "FORMATTED_STRING";
+  | "FORMATTED_STRING"
+  | (string & {});
 export const BatchGetValuesByDataFilterRequestDateTimeRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -584,21 +597,24 @@ export const BatchGetValuesByDataFilterResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type BatchGetSpreadsheetsValuesDateTimeRenderOptionEnum =
   | "SERIAL_NUMBER"
-  | "FORMATTED_STRING";
+  | "FORMATTED_STRING"
+  | (string & {});
 export const BatchGetSpreadsheetsValuesDateTimeRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type BatchGetSpreadsheetsValuesValueRenderOptionEnum =
   | "FORMATTED_VALUE"
   | "UNFORMATTED_VALUE"
-  | "FORMULA";
+  | "FORMULA"
+  | (string & {});
 export const BatchGetSpreadsheetsValuesValueRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type BatchGetSpreadsheetsValuesMajorDimensionEnum =
   | "DIMENSION_UNSPECIFIED"
   | "ROWS"
-  | "COLUMNS";
+  | "COLUMNS"
+  | (string & {});
 export const BatchGetSpreadsheetsValuesMajorDimensionEnum =
   /*@__PURE__*/ S.String;
 
@@ -662,14 +678,16 @@ export const BatchGetValuesResponse = /*@__PURE__*/ S.suspend(() =>
 export type BatchUpdateValuesByDataFilterRequestValueInputOptionEnum =
   | "INPUT_VALUE_OPTION_UNSPECIFIED"
   | "RAW"
-  | "USER_ENTERED";
+  | "USER_ENTERED"
+  | (string & {});
 export const BatchUpdateValuesByDataFilterRequestValueInputOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type DataFilterValueRangeMajorDimensionEnum =
   | "DIMENSION_UNSPECIFIED"
   | "ROWS"
-  | "COLUMNS";
+  | "COLUMNS"
+  | (string & {});
 export const DataFilterValueRangeMajorDimensionEnum = /*@__PURE__*/ S.String;
 
 /** A range of values whose location is specified by a DataFilter. */
@@ -699,12 +717,13 @@ export const DataFilterValueRangeList = /*@__PURE__*/ S.Array(
 export type BatchUpdateValuesByDataFilterRequestResponseValueRenderOptionEnum =
   | "FORMATTED_VALUE"
   | "UNFORMATTED_VALUE"
-  | "FORMULA";
+  | "FORMULA"
+  | (string & {});
 export const BatchUpdateValuesByDataFilterRequestResponseValueRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOptionEnum =
-  "SERIAL_NUMBER" | "FORMATTED_STRING";
+  "SERIAL_NUMBER" | "FORMATTED_STRING" | (string & {});
 export const BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -829,7 +848,8 @@ export type CellFormatVerticalAlignmentEnum =
   | "VERTICAL_ALIGN_UNSPECIFIED"
   | "TOP"
   | "MIDDLE"
-  | "BOTTOM";
+  | "BOTTOM"
+  | (string & {});
 export const CellFormatVerticalAlignmentEnum = /*@__PURE__*/ S.String;
 
 export type NumberFormatTypeEnum =
@@ -841,7 +861,8 @@ export type NumberFormatTypeEnum =
   | "DATE"
   | "TIME"
   | "DATE_TIME"
-  | "SCIENTIFIC";
+  | "SCIENTIFIC"
+  | (string & {});
 export const NumberFormatTypeEnum = /*@__PURE__*/ S.String;
 
 /** The number format of a cell. */
@@ -862,7 +883,8 @@ export type CellFormatHorizontalAlignmentEnum =
   | "HORIZONTAL_ALIGN_UNSPECIFIED"
   | "LEFT"
   | "CENTER"
-  | "RIGHT";
+  | "RIGHT"
+  | (string & {});
 export const CellFormatHorizontalAlignmentEnum = /*@__PURE__*/ S.String;
 
 /** Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't have information about the absolute color space that should be used to interpret the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most `1e-5`. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(''); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(''); }; // ... */
@@ -909,7 +931,8 @@ export type ColorStyleThemeColorEnum =
   | "ACCENT4"
   | "ACCENT5"
   | "ACCENT6"
-  | "LINK";
+  | "LINK"
+  | (string & {});
 export const ColorStyleThemeColorEnum = /*@__PURE__*/ S.String;
 
 /** A color value. */
@@ -931,7 +954,8 @@ export type CellFormatWrapStrategyEnum =
   | "OVERFLOW_CELL"
   | "LEGACY_WRAP"
   | "CLIP"
-  | "WRAP";
+  | "WRAP"
+  | (string & {});
 export const CellFormatWrapStrategyEnum = /*@__PURE__*/ S.String;
 
 /** An external or local reference. */
@@ -983,7 +1007,8 @@ export const TextFormat = /*@__PURE__*/ S.suspend(() =>
 export type CellFormatHyperlinkDisplayTypeEnum =
   | "HYPERLINK_DISPLAY_TYPE_UNSPECIFIED"
   | "LINKED"
-  | "PLAIN_TEXT";
+  | "PLAIN_TEXT"
+  | (string & {});
 export const CellFormatHyperlinkDisplayTypeEnum = /*@__PURE__*/ S.String;
 
 export type BorderStyleEnum =
@@ -994,7 +1019,8 @@ export type BorderStyleEnum =
   | "SOLID_MEDIUM"
   | "SOLID_THICK"
   | "NONE"
-  | "DOUBLE";
+  | "DOUBLE"
+  | (string & {});
 export const BorderStyleEnum = /*@__PURE__*/ S.String;
 
 /** A border along a cell. */
@@ -1060,7 +1086,8 @@ export const Padding = /*@__PURE__*/ S.suspend(() =>
 export type CellFormatTextDirectionEnum =
   | "TEXT_DIRECTION_UNSPECIFIED"
   | "LEFT_TO_RIGHT"
-  | "RIGHT_TO_LEFT";
+  | "RIGHT_TO_LEFT"
+  | (string & {});
 export const CellFormatTextDirectionEnum = /*@__PURE__*/ S.String;
 
 /** The format of a cell. */
@@ -1133,7 +1160,8 @@ export type ThemeColorPairColorTypeEnum =
   | "ACCENT4"
   | "ACCENT5"
   | "ACCENT6"
-  | "LINK";
+  | "LINK"
+  | (string & {});
 export const ThemeColorPairColorTypeEnum = /*@__PURE__*/ S.String;
 
 /** A pair mapping a spreadsheet theme color type to the concrete color it represents. */
@@ -1175,7 +1203,8 @@ export type SpreadsheetPropertiesAutoRecalcEnum =
   | "RECALCULATION_INTERVAL_UNSPECIFIED"
   | "ON_CHANGE"
   | "MINUTE"
-  | "HOUR";
+  | "HOUR"
+  | (string & {});
 export const SpreadsheetPropertiesAutoRecalcEnum = /*@__PURE__*/ S.String;
 
 /** Properties of a spreadsheet. */
@@ -1244,7 +1273,8 @@ export const DataSourceColumnReference = /*@__PURE__*/ S.suspend(() =>
 export type SortSpecSortOrderEnum =
   | "SORT_ORDER_UNSPECIFIED"
   | "ASCENDING"
-  | "DESCENDING";
+  | "DESCENDING"
+  | (string & {});
 export const SortSpecSortOrderEnum = /*@__PURE__*/ S.String;
 
 /** A sort order associated with a specific column or row. */
@@ -1314,7 +1344,8 @@ export type BooleanConditionTypeEnum =
   | "BOOLEAN"
   | "TEXT_NOT_EQ"
   | "DATE_NOT_EQ"
-  | "FILTER_EXPRESSION";
+  | "FILTER_EXPRESSION"
+  | (string & {});
 export const BooleanConditionTypeEnum = /*@__PURE__*/ S.String;
 
 export type ConditionValueRelativeDateEnum =
@@ -1324,7 +1355,8 @@ export type ConditionValueRelativeDateEnum =
   | "PAST_WEEK"
   | "YESTERDAY"
   | "TODAY"
-  | "TOMORROW";
+  | "TOMORROW"
+  | (string & {});
 export const ConditionValueRelativeDateEnum = /*@__PURE__*/ S.String;
 
 /** The value of the condition. */
@@ -1472,7 +1504,8 @@ export type PasteDataRequestTypeEnum =
   | "PASTE_NO_BORDERS"
   | "PASTE_FORMULA"
   | "PASTE_DATA_VALIDATION"
-  | "PASTE_CONDITIONAL_FORMATTING";
+  | "PASTE_CONDITIONAL_FORMATTING"
+  | (string & {});
 export const PasteDataRequestTypeEnum = /*@__PURE__*/ S.String;
 
 /** A coordinate in a sheet. All indexes are zero-based. */
@@ -1583,7 +1616,10 @@ export const RefreshDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RefreshDataSourceRequest",
 }) as any as S.Schema<RefreshDataSourceRequest>;
 
-export type PivotTableValueLayoutEnum = "HORIZONTAL" | "VERTICAL";
+export type PivotTableValueLayoutEnum =
+  | "HORIZONTAL"
+  | "VERTICAL"
+  | (string & {});
 export const PivotTableValueLayoutEnum = /*@__PURE__*/ S.String;
 
 export type DataExecutionStatusStateEnum =
@@ -1592,7 +1628,8 @@ export type DataExecutionStatusStateEnum =
   | "RUNNING"
   | "CANCELLING"
   | "SUCCEEDED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const DataExecutionStatusStateEnum = /*@__PURE__*/ S.String;
 
 export type DataExecutionStatusErrorCodeEnum =
@@ -1615,7 +1652,8 @@ export type DataExecutionStatusErrorCodeEnum =
   | "OBJECT_NOT_FOUND"
   | "OBJECT_IN_ERROR_STATE"
   | "OBJECT_SPEC_INVALID"
-  | "DATA_EXECUTION_CANCELLED";
+  | "DATA_EXECUTION_CANCELLED"
+  | (string & {});
 export const DataExecutionStatusErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** The data execution status. A data execution is created to sync a data source object with the latest data from a DataSource. It is usually scheduled to run at background, you can check its state to tell if an execution completes There are several scenarios where a data execution is triggered to run: * Adding a data source creates an associated data source sheet as well as a data execution to sync the data from the data source to the sheet. * Updating a data source creates a data execution to refresh the associated data source sheet similarly. * You can send refresh request to explicitly refresh one or multiple data source objects. */
@@ -1667,7 +1705,8 @@ export type ErrorValueTypeEnum =
   | "NAME"
   | "NUM"
   | "N_A"
-  | "LOADING";
+  | "LOADING"
+  | (string & {});
 export const ErrorValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** An error in a cell. */
@@ -1760,7 +1799,8 @@ export type DateTimeRuleTypeEnum =
   | "YEAR"
   | "YEAR_MONTH"
   | "YEAR_QUARTER"
-  | "YEAR_MONTH_DAY";
+  | "YEAR_MONTH_DAY"
+  | (string & {});
 export const DateTimeRuleTypeEnum = /*@__PURE__*/ S.String;
 
 /** Allows you to organize the date-time values in a source data column into buckets based on selected parts of their date or time values. For example, consider a pivot table showing sales transactions by date: +----------+--------------+ | Date | SUM of Sales | +----------+--------------+ | 1/1/2017 | $621.14 | | 2/3/2017 | $708.84 | | 5/8/2017 | $326.84 | ... +----------+--------------+ Applying a date-time group rule with a DateTimeRuleType of YEAR_MONTH results in the following pivot table. +--------------+--------------+ | Grouped Date | SUM of Sales | +--------------+--------------+ | 2017-Jan | $53,731.78 | | 2017-Feb | $83,475.32 | | 2017-Mar | $94,385.05 | ... +--------------+--------------+ */
@@ -1832,7 +1872,8 @@ export const PivotGroupValueMetadataList = /*@__PURE__*/ S.Array(
 export type PivotGroupSortOrderEnum =
   | "SORT_ORDER_UNSPECIFIED"
   | "ASCENDING"
-  | "DESCENDING";
+  | "DESCENDING"
+  | (string & {});
 export const PivotGroupSortOrderEnum = /*@__PURE__*/ S.String;
 
 /** Information about which values in a pivot group should be used for sorting. */
@@ -1941,7 +1982,8 @@ export type PivotValueCalculatedDisplayTypeEnum =
   | "PIVOT_VALUE_CALCULATED_DISPLAY_TYPE_UNSPECIFIED"
   | "PERCENT_OF_ROW_TOTAL"
   | "PERCENT_OF_COLUMN_TOTAL"
-  | "PERCENT_OF_GRAND_TOTAL";
+  | "PERCENT_OF_GRAND_TOTAL"
+  | (string & {});
 export const PivotValueCalculatedDisplayTypeEnum = /*@__PURE__*/ S.String;
 
 export type PivotValueSummarizeFunctionEnum =
@@ -1960,7 +2002,8 @@ export type PivotValueSummarizeFunctionEnum =
   | "VAR"
   | "VARP"
   | "CUSTOM"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const PivotValueSummarizeFunctionEnum = /*@__PURE__*/ S.String;
 
 /** The definition of how a value in a pivot table should be calculated. */
@@ -2082,7 +2125,8 @@ export type PersonPropertiesDisplayFormatEnum =
   | "DISPLAY_FORMAT_UNSPECIFIED"
   | "DEFAULT"
   | "LAST_NAME_COMMA_FIRST_NAME"
-  | "EMAIL";
+  | "EMAIL"
+  | (string & {});
 export const PersonPropertiesDisplayFormatEnum = /*@__PURE__*/ S.String;
 
 /** Properties specific to a linked person. */
@@ -2169,7 +2213,8 @@ export const DataSourceFormula = /*@__PURE__*/ S.suspend(() =>
 export type DataSourceTableColumnSelectionTypeEnum =
   | "DATA_SOURCE_TABLE_COLUMN_SELECTION_TYPE_UNSPECIFIED"
   | "SELECTED"
-  | "SYNC_ALL";
+  | "SYNC_ALL"
+  | (string & {});
 export const DataSourceTableColumnSelectionTypeEnum = /*@__PURE__*/ S.String;
 
 export type DataSourceColumnReferenceList =
@@ -2334,7 +2379,8 @@ export const SetDataValidationRequest = /*@__PURE__*/ S.suspend(() =>
 export type AppendDimensionRequestDimensionEnum =
   | "DIMENSION_UNSPECIFIED"
   | "ROWS"
-  | "COLUMNS";
+  | "COLUMNS"
+  | (string & {});
 export const AppendDimensionRequestDimensionEnum = /*@__PURE__*/ S.String;
 
 /** Appends rows or columns to the end of a sheet. */
@@ -2418,7 +2464,8 @@ export type SheetPropertiesSheetTypeEnum =
   | "SHEET_TYPE_UNSPECIFIED"
   | "GRID"
   | "OBJECT"
-  | "DATA_SOURCE";
+  | "DATA_SOURCE"
+  | (string & {});
 export const SheetPropertiesSheetTypeEnum = /*@__PURE__*/ S.String;
 
 /** A column in a data source. */
@@ -2569,7 +2616,8 @@ export type TextToColumnsRequestDelimiterTypeEnum =
   | "PERIOD"
   | "SPACE"
   | "CUSTOM"
-  | "AUTODETECT";
+  | "AUTODETECT"
+  | (string & {});
 export const TextToColumnsRequestDelimiterTypeEnum = /*@__PURE__*/ S.String;
 
 /** Splits a column of text into multiple columns, based on a delimiter in each cell. */
@@ -2607,7 +2655,8 @@ export type ChartDateTimeRuleTypeEnum =
   | "YEAR"
   | "YEAR_MONTH"
   | "YEAR_QUARTER"
-  | "YEAR_MONTH_DAY";
+  | "YEAR_MONTH_DAY"
+  | (string & {});
 export const ChartDateTimeRuleTypeEnum = /*@__PURE__*/ S.String;
 
 /** Allows you to organize the date-time values in a source data column into buckets based on selected parts of their date or time values. */
@@ -2681,7 +2730,8 @@ export type ChartDataAggregateTypeEnum =
   | "MAX"
   | "MEDIAN"
   | "MIN"
-  | "SUM";
+  | "SUM"
+  | (string & {});
 export const ChartDataAggregateTypeEnum = /*@__PURE__*/ S.String;
 
 /** The data included in a domain or series. */
@@ -2708,7 +2758,8 @@ export type OrgChartSpecNodeSizeEnum =
   | "ORG_CHART_LABEL_SIZE_UNSPECIFIED"
   | "SMALL"
   | "MEDIUM"
-  | "LARGE";
+  | "LARGE"
+  | (string & {});
 export const OrgChartSpecNodeSizeEnum = /*@__PURE__*/ S.String;
 
 /** An org chart. Org charts require a unique set of labels in labels and may optionally include parent_labels and tooltips. parent_labels contain, for each node, the label identifying the parent node. tooltips contain, for each node, an optional tooltip. For example, to describe an OrgChart with Alice as the CEO, Bob as the President (reporting to Alice) and Cathy as VP of Sales (also reporting to Alice), have labels contain "Alice", "Bob", "Cathy", parent_labels contain "", "Alice", "Alice" and tooltips contain "CEO", "President", "VP Sales". */
@@ -2750,7 +2801,8 @@ export type PieChartSpecLegendPositionEnum =
   | "RIGHT_LEGEND"
   | "TOP_LEGEND"
   | "NO_LEGEND"
-  | "LABELED_LEGEND";
+  | "LABELED_LEGEND"
+  | (string & {});
 export const PieChartSpecLegendPositionEnum = /*@__PURE__*/ S.String;
 
 /** A pie chart. */
@@ -2780,7 +2832,8 @@ export type TextPositionHorizontalAlignmentEnum =
   | "HORIZONTAL_ALIGN_UNSPECIFIED"
   | "LEFT"
   | "CENTER"
-  | "RIGHT";
+  | "RIGHT"
+  | (string & {});
 export const TextPositionHorizontalAlignmentEnum = /*@__PURE__*/ S.String;
 
 /** Position settings for text. */
@@ -2819,14 +2872,16 @@ export type DataLabelPlacementEnum =
   | "BELOW"
   | "INSIDE_END"
   | "INSIDE_BASE"
-  | "OUTSIDE_END";
+  | "OUTSIDE_END"
+  | (string & {});
 export const DataLabelPlacementEnum = /*@__PURE__*/ S.String;
 
 export type DataLabelTypeEnum =
   | "DATA_LABEL_TYPE_UNSPECIFIED"
   | "NONE"
   | "DATA"
-  | "CUSTOM";
+  | "CUSTOM"
+  | (string & {});
 export const DataLabelTypeEnum = /*@__PURE__*/ S.String;
 
 /** Settings for one set of data labels. Data labels are annotations that appear next to a set of data, such as the points on a line chart, and provide additional information about what the data represents, such as a text representation of the value behind that point on the graph. */
@@ -2938,7 +2993,8 @@ export type LineStyleTypeEnum =
   | "MEDIUM_DASHED"
   | "MEDIUM_DASHED_DOTTED"
   | "LONG_DASHED"
-  | "LONG_DASHED_DOTTED";
+  | "LONG_DASHED_DOTTED"
+  | (string & {});
 export const LineStyleTypeEnum = /*@__PURE__*/ S.String;
 
 /** Properties that describe the style of a line. */
@@ -2958,7 +3014,8 @@ export const LineStyle = /*@__PURE__*/ S.suspend(() =>
 export type WaterfallChartSpecStackedTypeEnum =
   | "WATERFALL_STACKED_TYPE_UNSPECIFIED"
   | "STACKED"
-  | "SEQUENTIAL";
+  | "SEQUENTIAL"
+  | (string & {});
 export const WaterfallChartSpecStackedTypeEnum = /*@__PURE__*/ S.String;
 
 /** A waterfall chart. */
@@ -3015,7 +3072,8 @@ export type BubbleChartSpecLegendPositionEnum =
   | "RIGHT_LEGEND"
   | "TOP_LEGEND"
   | "NO_LEGEND"
-  | "INSIDE_LEGEND";
+  | "INSIDE_LEGEND"
+  | (string & {});
 export const BubbleChartSpecLegendPositionEnum = /*@__PURE__*/ S.String;
 
 /** A bubble chart. */
@@ -3069,7 +3127,8 @@ export type ChartSpecHiddenDimensionStrategyEnum =
   | "SKIP_HIDDEN_ROWS_AND_COLUMNS"
   | "SKIP_HIDDEN_ROWS"
   | "SKIP_HIDDEN_COLUMNS"
-  | "SHOW_ALL";
+  | "SHOW_ALL"
+  | (string & {});
 export const ChartSpecHiddenDimensionStrategyEnum = /*@__PURE__*/ S.String;
 
 /** A histogram series containing the series color and data. */
@@ -3103,7 +3162,8 @@ export type HistogramChartSpecLegendPositionEnum =
   | "RIGHT_LEGEND"
   | "TOP_LEGEND"
   | "NO_LEGEND"
-  | "INSIDE_LEGEND";
+  | "INSIDE_LEGEND"
+  | (string & {});
 export const HistogramChartSpecLegendPositionEnum = /*@__PURE__*/ S.String;
 
 /** A histogram chart. A histogram chart groups data items into bins, displaying each bin as a column of stacked items. Histograms are used to display the distribution of a dataset. Each column of items represents a range into which those items fall. The number of bins can be chosen automatically or specified explicitly. */
@@ -3137,13 +3197,15 @@ export type BasicChartSpecLegendPositionEnum =
   | "LEFT_LEGEND"
   | "RIGHT_LEGEND"
   | "TOP_LEGEND"
-  | "NO_LEGEND";
+  | "NO_LEGEND"
+  | (string & {});
 export const BasicChartSpecLegendPositionEnum = /*@__PURE__*/ S.String;
 
 export type BasicChartSpecCompareModeEnum =
   | "BASIC_CHART_COMPARE_MODE_UNSPECIFIED"
   | "DATUM"
-  | "CATEGORY";
+  | "CATEGORY"
+  | (string & {});
 export const BasicChartSpecCompareModeEnum = /*@__PURE__*/ S.String;
 
 export type BasicChartSpecChartTypeEnum =
@@ -3154,7 +3216,8 @@ export type BasicChartSpecChartTypeEnum =
   | "COLUMN"
   | "SCATTER"
   | "COMBO"
-  | "STEPPED_AREA";
+  | "STEPPED_AREA"
+  | (string & {});
 export const BasicChartSpecChartTypeEnum = /*@__PURE__*/ S.String;
 
 export type PointStyleShapeEnum =
@@ -3166,7 +3229,8 @@ export type PointStyleShapeEnum =
   | "SQUARE"
   | "STAR"
   | "TRIANGLE"
-  | "X_MARK";
+  | "X_MARK"
+  | (string & {});
 export const PointStyleShapeEnum = /*@__PURE__*/ S.String;
 
 /** The style of a point on the chart. */
@@ -3219,14 +3283,16 @@ export type BasicChartSeriesTypeEnum =
   | "COLUMN"
   | "SCATTER"
   | "COMBO"
-  | "STEPPED_AREA";
+  | "STEPPED_AREA"
+  | (string & {});
 export const BasicChartSeriesTypeEnum = /*@__PURE__*/ S.String;
 
 export type BasicChartSeriesTargetAxisEnum =
   | "BASIC_CHART_AXIS_POSITION_UNSPECIFIED"
   | "BOTTOM_AXIS"
   | "LEFT_AXIS"
-  | "RIGHT_AXIS";
+  | "RIGHT_AXIS"
+  | (string & {});
 export const BasicChartSeriesTargetAxisEnum = /*@__PURE__*/ S.String;
 
 /** A single series of data in a chart. For example, if charting stock prices over time, multiple series may exist, one for the "Open Price", "High Price", "Low Price" and "Close Price". */
@@ -3296,14 +3362,16 @@ export type BasicChartAxisPositionEnum =
   | "BASIC_CHART_AXIS_POSITION_UNSPECIFIED"
   | "BOTTOM_AXIS"
   | "LEFT_AXIS"
-  | "RIGHT_AXIS";
+  | "RIGHT_AXIS"
+  | (string & {});
 export const BasicChartAxisPositionEnum = /*@__PURE__*/ S.String;
 
 export type ChartAxisViewWindowOptionsViewWindowModeEnum =
   | "DEFAULT_VIEW_WINDOW_MODE"
   | "VIEW_WINDOW_MODE_UNSUPPORTED"
   | "EXPLICIT"
-  | "PRETTY";
+  | "PRETTY"
+  | (string & {});
 export const ChartAxisViewWindowOptionsViewWindowModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3358,7 +3426,8 @@ export type BasicChartSpecStackedTypeEnum =
   | "BASIC_CHART_STACKED_TYPE_UNSPECIFIED"
   | "NOT_STACKED"
   | "STACKED"
-  | "PERCENT_STACKED";
+  | "PERCENT_STACKED"
+  | (string & {});
 export const BasicChartSpecStackedTypeEnum = /*@__PURE__*/ S.String;
 
 /** The specification for a basic chart. See BasicChartType for the list of charts this supports. */
@@ -3567,13 +3636,15 @@ export type ScorecardChartSpecAggregateTypeEnum =
   | "MAX"
   | "MEDIAN"
   | "MIN"
-  | "SUM";
+  | "SUM"
+  | (string & {});
 export const ScorecardChartSpecAggregateTypeEnum = /*@__PURE__*/ S.String;
 
 export type ScorecardChartSpecNumberFormatSourceEnum =
   | "CHART_NUMBER_FORMAT_SOURCE_UNDEFINED"
   | "FROM_DATA"
-  | "CUSTOM";
+  | "CUSTOM"
+  | (string & {});
 export const ScorecardChartSpecNumberFormatSourceEnum = /*@__PURE__*/ S.String;
 
 /** Formatting options for key value. */
@@ -3609,7 +3680,8 @@ export const ChartCustomNumberFormatOptions = /*@__PURE__*/ S.suspend(() =>
 export type BaselineValueFormatComparisonTypeEnum =
   | "COMPARISON_TYPE_UNDEFINED"
   | "ABSOLUTE_DIFFERENCE"
-  | "PERCENTAGE_DIFFERENCE";
+  | "PERCENTAGE_DIFFERENCE"
+  | (string & {});
 export const BaselineValueFormatComparisonTypeEnum = /*@__PURE__*/ S.String;
 
 /** Formatting options for baseline value. */
@@ -3873,7 +3945,8 @@ export type InterpolationPointTypeEnum =
   | "MAX"
   | "NUMBER"
   | "PERCENT"
-  | "PERCENTILE";
+  | "PERCENTILE"
+  | (string & {});
 export const InterpolationPointTypeEnum = /*@__PURE__*/ S.String;
 
 /** A single interpolation point on a gradient conditional format. These pin the gradient color scale according to the color, type and value chosen. */
@@ -3959,7 +4032,8 @@ export const UpdateConditionalFormatRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export type InsertRangeRequestShiftDimensionEnum =
   | "DIMENSION_UNSPECIFIED"
   | "ROWS"
-  | "COLUMNS";
+  | "COLUMNS"
+  | (string & {});
 export const InsertRangeRequestShiftDimensionEnum = /*@__PURE__*/ S.String;
 
 /** Inserts cells into a range, shifting the existing cells over or down. */
@@ -4109,7 +4183,8 @@ export const UpdateBordersRequest = /*@__PURE__*/ S.suspend(() =>
 export type SourceAndDestinationDimensionEnum =
   | "DIMENSION_UNSPECIFIED"
   | "ROWS"
-  | "COLUMNS";
+  | "COLUMNS"
+  | (string & {});
 export const SourceAndDestinationDimensionEnum = /*@__PURE__*/ S.String;
 
 /** A combination of a source range and how to extend that source. */
@@ -4187,7 +4262,8 @@ export type TableColumnPropertiesColumnTypeEnum =
   | "PEOPLE_CHIP"
   | "FINANCE_CHIP"
   | "PLACE_CHIP"
-  | "RATINGS_CHIP";
+  | "RATINGS_CHIP"
+  | (string & {});
 export const TableColumnPropertiesColumnTypeEnum = /*@__PURE__*/ S.String;
 
 /** A data validation rule for a column in a table. */
@@ -4269,7 +4345,8 @@ export const AddTableRequest = /*@__PURE__*/ S.suspend(() =>
 export type DeleteRangeRequestShiftDimensionEnum =
   | "DIMENSION_UNSPECIFIED"
   | "ROWS"
-  | "COLUMNS";
+  | "COLUMNS"
+  | (string & {});
 export const DeleteRangeRequestShiftDimensionEnum = /*@__PURE__*/ S.String;
 
 /** Deletes a range of cells, shifting other cells into the deleted area. */
@@ -4311,7 +4388,8 @@ export type CutPasteRequestPasteTypeEnum =
   | "PASTE_NO_BORDERS"
   | "PASTE_FORMULA"
   | "PASTE_DATA_VALIDATION"
-  | "PASTE_CONDITIONAL_FORMATTING";
+  | "PASTE_CONDITIONAL_FORMATTING"
+  | (string & {});
 export const CutPasteRequestPasteTypeEnum = /*@__PURE__*/ S.String;
 
 /** Moves data from the source to the destination. */
@@ -4450,7 +4528,10 @@ export const UpdateNamedRangeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateNamedRangeRequest",
 }) as any as S.Schema<UpdateNamedRangeRequest>;
 
-export type CopyPasteRequestPasteOrientationEnum = "NORMAL" | "TRANSPOSE";
+export type CopyPasteRequestPasteOrientationEnum =
+  | "NORMAL"
+  | "TRANSPOSE"
+  | (string & {});
 export const CopyPasteRequestPasteOrientationEnum = /*@__PURE__*/ S.String;
 
 export type CopyPasteRequestPasteTypeEnum =
@@ -4460,7 +4541,8 @@ export type CopyPasteRequestPasteTypeEnum =
   | "PASTE_NO_BORDERS"
   | "PASTE_FORMULA"
   | "PASTE_DATA_VALIDATION"
-  | "PASTE_CONDITIONAL_FORMATTING";
+  | "PASTE_CONDITIONAL_FORMATTING"
+  | (string & {});
 export const CopyPasteRequestPasteTypeEnum = /*@__PURE__*/ S.String;
 
 /** Copies data from the source to the destination. */
@@ -4530,7 +4612,8 @@ export const MoveDimensionRequest = /*@__PURE__*/ S.suspend(() =>
 export type DeveloperMetadataVisibilityEnum =
   | "DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED"
   | "DOCUMENT"
-  | "PROJECT";
+  | "PROJECT"
+  | (string & {});
 export const DeveloperMetadataVisibilityEnum = /*@__PURE__*/ S.String;
 
 /** Developer metadata associated with a location or object in a spreadsheet. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). Developer metadata may be used to associate arbitrary data with various parts of a spreadsheet and it will remain associated at those locations as they move around and the spreadsheet is edited. For example, if developer metadata is associated with row 5 and another row is then subsequently inserted above row 5, that original metadata is still associated with the row it was first associated with (what is now row 6). If the associated object is deleted then its metadata is deleted too. */
@@ -4848,7 +4931,8 @@ export type SlicerSpecHorizontalAlignmentEnum =
   | "HORIZONTAL_ALIGN_UNSPECIFIED"
   | "LEFT"
   | "CENTER"
-  | "RIGHT";
+  | "RIGHT"
+  | (string & {});
 export const SlicerSpecHorizontalAlignmentEnum = /*@__PURE__*/ S.String;
 
 /** The specifications of a slicer. */
@@ -5302,7 +5386,8 @@ export const DeleteDuplicatesRequest = /*@__PURE__*/ S.suspend(() =>
 export type MergeCellsRequestMergeTypeEnum =
   | "MERGE_ALL"
   | "MERGE_COLUMNS"
-  | "MERGE_ROWS";
+  | "MERGE_ROWS"
+  | (string & {});
 export const MergeCellsRequestMergeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Merges all cells in the range. */
@@ -5825,7 +5910,8 @@ export const Interval = /*@__PURE__*/ S.suspend(() =>
 
 export type DataSourceRefreshScheduleRefreshScopeEnum =
   | "DATA_SOURCE_REFRESH_SCOPE_UNSPECIFIED"
-  | "ALL_DATA_SOURCES";
+  | "ALL_DATA_SOURCES"
+  | (string & {});
 export const DataSourceRefreshScheduleRefreshScopeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -5869,7 +5955,8 @@ export type DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -6325,7 +6412,8 @@ export const AddDimensionGroupResponse = /*@__PURE__*/ S.suspend(() =>
 export type RefreshCancellationStatusStateEnum =
   | "REFRESH_CANCELLATION_STATE_UNSPECIFIED"
   | "CANCEL_SUCCEEDED"
-  | "CANCEL_FAILED";
+  | "CANCEL_FAILED"
+  | (string & {});
 export const RefreshCancellationStatusStateEnum = /*@__PURE__*/ S.String;
 
 export type RefreshCancellationStatusErrorCodeEnum =
@@ -6334,7 +6422,8 @@ export type RefreshCancellationStatusErrorCodeEnum =
   | "CANCEL_PERMISSION_DENIED"
   | "QUERY_EXECUTION_COMPLETED"
   | "CONCURRENT_CANCELLATION"
-  | "CANCEL_OTHER_ERROR";
+  | "CANCEL_OTHER_ERROR"
+  | (string & {});
 export const RefreshCancellationStatusErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** The status of a refresh cancellation. You can send a cancel request to explicitly cancel one or multiple data source object refreshes. */
@@ -6530,20 +6619,23 @@ export const BatchUpdateSpreadsheetResponse = /*@__PURE__*/ S.suspend(() =>
 export type BatchUpdateValuesRequestResponseValueRenderOptionEnum =
   | "FORMATTED_VALUE"
   | "UNFORMATTED_VALUE"
-  | "FORMULA";
+  | "FORMULA"
+  | (string & {});
 export const BatchUpdateValuesRequestResponseValueRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type BatchUpdateValuesRequestResponseDateTimeRenderOptionEnum =
   | "SERIAL_NUMBER"
-  | "FORMATTED_STRING";
+  | "FORMATTED_STRING"
+  | (string & {});
 export const BatchUpdateValuesRequestResponseDateTimeRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type BatchUpdateValuesRequestValueInputOptionEnum =
   | "INPUT_VALUE_OPTION_UNSPECIFIED"
   | "RAW"
-  | "USER_ENTERED";
+  | "USER_ENTERED"
+  | (string & {});
 export const BatchUpdateValuesRequestValueInputOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -6826,21 +6918,24 @@ export const GetSpreadsheetsDeveloperMetadataRequest = /*@__PURE__*/ S.suspend(
 
 export type GetSpreadsheetsValuesDateTimeRenderOptionEnum =
   | "SERIAL_NUMBER"
-  | "FORMATTED_STRING";
+  | "FORMATTED_STRING"
+  | (string & {});
 export const GetSpreadsheetsValuesDateTimeRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type GetSpreadsheetsValuesValueRenderOptionEnum =
   | "FORMATTED_VALUE"
   | "UNFORMATTED_VALUE"
-  | "FORMULA";
+  | "FORMULA"
+  | (string & {});
 export const GetSpreadsheetsValuesValueRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type GetSpreadsheetsValuesMajorDimensionEnum =
   | "DIMENSION_UNSPECIFIED"
   | "ROWS"
-  | "COLUMNS";
+  | "COLUMNS"
+  | (string & {});
 export const GetSpreadsheetsValuesMajorDimensionEnum = /*@__PURE__*/ S.String;
 
 export interface GetSpreadsheetsValuesRequest {
@@ -6952,20 +7047,23 @@ export const SearchDeveloperMetadataResponse = /*@__PURE__*/ S.suspend(() =>
 export type UpdateSpreadsheetsValuesValueInputOptionEnum =
   | "INPUT_VALUE_OPTION_UNSPECIFIED"
   | "RAW"
-  | "USER_ENTERED";
+  | "USER_ENTERED"
+  | (string & {});
 export const UpdateSpreadsheetsValuesValueInputOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type UpdateSpreadsheetsValuesResponseValueRenderOptionEnum =
   | "FORMATTED_VALUE"
   | "UNFORMATTED_VALUE"
-  | "FORMULA";
+  | "FORMULA"
+  | (string & {});
 export const UpdateSpreadsheetsValuesResponseValueRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type UpdateSpreadsheetsValuesResponseDateTimeRenderOptionEnum =
   | "SERIAL_NUMBER"
-  | "FORMATTED_STRING";
+  | "FORMATTED_STRING"
+  | (string & {});
 export const UpdateSpreadsheetsValuesResponseDateTimeRenderOptionEnum =
   /*@__PURE__*/ S.String;
 

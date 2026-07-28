@@ -592,7 +592,7 @@ export const NFSFileShareDefaults = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NFSFileShareDefaults",
 }) as any as S.Schema<NFSFileShareDefaults>;
-export type EncryptionType = "SseS3" | "SseKms" | "DsseKms";
+export type EncryptionType = "SseS3" | "SseKms" | "DsseKms" | (string & {});
 export const EncryptionType = /*@__PURE__*/ S.String;
 
 export type Role = string;
@@ -605,7 +605,8 @@ export type ObjectACL =
   | "authenticated-read"
   | "bucket-owner-read"
   | "bucket-owner-full-control"
-  | "aws-exec-read";
+  | "aws-exec-read"
+  | (string & {});
 export const ObjectACL = /*@__PURE__*/ S.String;
 
 export type Ipv4OrIpv6AddressCIDR = string;
@@ -690,7 +691,10 @@ export type UserListUser = string;
 export type UserList = string[];
 export const UserList = /*@__PURE__*/ S.Array(S.String);
 export type Authentication = string;
-export type CaseSensitivity = "ClientSpecified" | "CaseSensitive";
+export type CaseSensitivity =
+  | "ClientSpecified"
+  | "CaseSensitive"
+  | (string & {});
 export const CaseSensitivity = /*@__PURE__*/ S.String;
 
 export interface CreateSMBFileShareInput {
@@ -901,10 +905,14 @@ export const CreateStorediSCSIVolumeOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateStorediSCSIVolumeOutput",
 }) as any as S.Schema<CreateStorediSCSIVolumeOutput>;
 export type PoolName = string;
-export type TapeStorageClass = "DEEP_ARCHIVE" | "GLACIER";
+export type TapeStorageClass = "DEEP_ARCHIVE" | "GLACIER" | (string & {});
 export const TapeStorageClass = /*@__PURE__*/ S.String;
 
-export type RetentionLockType = "COMPLIANCE" | "GOVERNANCE" | "NONE";
+export type RetentionLockType =
+  | "COMPLIANCE"
+  | "GOVERNANCE"
+  | "NONE"
+  | (string & {});
 export const RetentionLockType = /*@__PURE__*/ S.String;
 
 export type RetentionLockTimeInDays = number;
@@ -1364,7 +1372,11 @@ export const DescribeAvailabilityMonitorTestInput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeAvailabilityMonitorTestInput",
 }) as any as S.Schema<DescribeAvailabilityMonitorTestInput>;
-export type AvailabilityMonitorTestStatus = "COMPLETE" | "FAILED" | "PENDING";
+export type AvailabilityMonitorTestStatus =
+  | "COMPLETE"
+  | "FAILED"
+  | "PENDING"
+  | (string & {});
 export const AvailabilityMonitorTestStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeAvailabilityMonitorTestOutput {
@@ -1632,11 +1644,15 @@ export type CacheReportStatus =
   | "COMPLETED"
   | "CANCELED"
   | "FAILED"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const CacheReportStatus = /*@__PURE__*/ S.String;
 
 export type ReportCompletionPercent = number;
-export type CacheReportFilterName = "UploadState" | "UploadFailureReason";
+export type CacheReportFilterName =
+  | "UploadState"
+  | "UploadFailureReason"
+  | (string & {});
 export const CacheReportFilterName = /*@__PURE__*/ S.String;
 
 export type CacheReportFilterValue = string;
@@ -1862,13 +1878,14 @@ export type HostEnvironment =
   | "EC2"
   | "KVM"
   | "OTHER"
-  | "SNOWBALL";
+  | "SNOWBALL"
+  | (string & {});
 export const HostEnvironment = /*@__PURE__*/ S.String;
 
 export type EndpointType = string;
 export type SoftwareUpdatesEndDate = string;
 export type DeprecationDate = string;
-export type GatewayCapacity = "Small" | "Medium" | "Large";
+export type GatewayCapacity = "Small" | "Medium" | "Large" | (string & {});
 export const GatewayCapacity = /*@__PURE__*/ S.String;
 
 export type SupportedGatewayCapacities = GatewayCapacity[];
@@ -1947,7 +1964,10 @@ export const DescribeMaintenanceStartTimeInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeMaintenanceStartTimeInput",
 }) as any as S.Schema<DescribeMaintenanceStartTimeInput>;
 export type DayOfMonth = number;
-export type AutomaticUpdatePolicy = "ALL_VERSIONS" | "EMERGENCY_VERSIONS_ONLY";
+export type AutomaticUpdatePolicy =
+  | "ALL_VERSIONS"
+  | "EMERGENCY_VERSIONS_ONLY"
+  | (string & {});
 export const AutomaticUpdatePolicy = /*@__PURE__*/ S.String;
 
 export interface SoftwareUpdatePreferences {
@@ -2194,14 +2214,16 @@ export type ActiveDirectoryStatus =
   | "NETWORK_ERROR"
   | "TIMEOUT"
   | "UNKNOWN_ERROR"
-  | "INSUFFICIENT_PERMISSIONS";
+  | "INSUFFICIENT_PERMISSIONS"
+  | (string & {});
 export const ActiveDirectoryStatus = /*@__PURE__*/ S.String;
 
 export type SMBSecurityStrategy =
   | "ClientSpecified"
   | "MandatorySigning"
   | "MandatoryEncryption"
-  | "MandatoryEncryptionNoAes128";
+  | "MandatoryEncryptionNoAes128"
+  | (string & {});
 export const SMBSecurityStrategy = /*@__PURE__*/ S.String;
 
 export interface SMBLocalGroups {
@@ -2985,7 +3007,7 @@ export const ListFileSharesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListFileSharesInput",
 }) as any as S.Schema<ListFileSharesInput>;
-export type FileShareType = "NFS" | "SMB";
+export type FileShareType = "NFS" | "SMB" | (string & {});
 export const FileShareType = /*@__PURE__*/ S.String;
 
 export interface FileShareInfo {
@@ -3264,7 +3286,7 @@ export const ListTapePoolsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTapePoolsInput",
 }) as any as S.Schema<ListTapePoolsInput>;
-export type PoolStatus = "ACTIVE" | "DELETED";
+export type PoolStatus = "ACTIVE" | "DELETED" | (string & {});
 export const PoolStatus = /*@__PURE__*/ S.String;
 
 export interface PoolInfo {
@@ -4464,7 +4486,8 @@ export type ErrorCode =
   | "VolumeIdInvalid"
   | "VolumeInUse"
   | "VolumeNotFound"
-  | "VolumeNotReady";
+  | "VolumeNotReady"
+  | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
 
 export type ErrorDetails = { [key: string]: string | undefined };

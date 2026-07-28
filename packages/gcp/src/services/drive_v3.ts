@@ -100,7 +100,8 @@ export const ApproveApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ApprovalFileContentChangeBehaviorEnum =
   | "FILE_CONTENT_CHANGE_BEHAVIOR_UNSPECIFIED"
   | "RESET_APPROVAL"
-  | "NO_APPROVAL_ACTION";
+  | "NO_APPROVAL_ACTION"
+  | (string & {});
 export const ApprovalFileContentChangeBehaviorEnum = /*@__PURE__*/ S.String;
 
 export type ApprovalStatusEnum =
@@ -108,7 +109,8 @@ export type ApprovalStatusEnum =
   | "IN_PROGRESS"
   | "APPROVED"
   | "CANCELLED"
-  | "DECLINED";
+  | "DECLINED"
+  | (string & {});
 export const ApprovalStatusEnum = /*@__PURE__*/ S.String;
 
 /** Information about a Drive user. */
@@ -141,7 +143,8 @@ export type ReviewerResponseResponseEnum =
   | "RESPONSE_UNSPECIFIED"
   | "NO_RESPONSE"
   | "APPROVED"
-  | "DECLINED";
+  | "DECLINED"
+  | (string & {});
 export const ReviewerResponseResponseEnum = /*@__PURE__*/ S.String;
 
 /** A response on an approval made by a specific reviewer. */
@@ -3281,7 +3284,7 @@ export const DriveList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DriveList" }) as any as S.Schema<DriveList>;
 
-export type ListFilesCorpusEnum = "domain" | "user";
+export type ListFilesCorpusEnum = "domain" | "user" | (string & {});
 export const ListFilesCorpusEnum = /*@__PURE__*/ S.String;
 
 export interface ListFilesRequest {
@@ -3807,7 +3810,8 @@ export const ReassignApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ResolveAccessProposalRequestActionEnum =
   | "ACTION_UNSPECIFIED"
   | "ACCEPT"
-  | "DENY";
+  | "DENY"
+  | (string & {});
 export const ResolveAccessProposalRequestActionEnum = /*@__PURE__*/ S.String;
 
 /** Request message for resolving an AccessProposal on a file. */
@@ -3866,7 +3870,8 @@ export const ResolveAccessproposalsResponse = /*@__PURE__*/ S.suspend(() =>
 export type StartApprovalRequestFileContentChangeBehaviorEnum =
   | "FILE_CONTENT_CHANGE_BEHAVIOR_UNSPECIFIED"
   | "RESET_APPROVAL"
-  | "NO_APPROVAL_ACTION";
+  | "NO_APPROVAL_ACTION"
+  | (string & {});
 export const StartApprovalRequestFileContentChangeBehaviorEnum =
   /*@__PURE__*/ S.String;
 

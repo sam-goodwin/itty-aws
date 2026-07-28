@@ -100,14 +100,16 @@ export type AccountTypeEnum =
   | "PERSONAL"
   | "LOCATION_GROUP"
   | "USER_GROUP"
-  | "ORGANIZATION";
+  | "ORGANIZATION"
+  | (string & {});
 export const AccountTypeEnum = /*@__PURE__*/ S.String;
 
 export type AccountVerificationStateEnum =
   | "VERIFICATION_STATE_UNSPECIFIED"
   | "VERIFIED"
   | "UNVERIFIED"
-  | "VERIFICATION_REQUESTED";
+  | "VERIFICATION_REQUESTED"
+  | (string & {});
 export const AccountVerificationStateEnum = /*@__PURE__*/ S.String;
 
 export type AccountRoleEnum =
@@ -115,14 +117,16 @@ export type AccountRoleEnum =
   | "PRIMARY_OWNER"
   | "OWNER"
   | "MANAGER"
-  | "SITE_MANAGER";
+  | "SITE_MANAGER"
+  | (string & {});
 export const AccountRoleEnum = /*@__PURE__*/ S.String;
 
 export type AccountVettedStateEnum =
   | "VETTED_STATE_UNSPECIFIED"
   | "NOT_VETTED"
   | "VETTED"
-  | "INVALID";
+  | "INVALID"
+  | (string & {});
 export const AccountVettedStateEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -193,7 +197,8 @@ export const OrganizationInfo = /*@__PURE__*/ S.suspend(() =>
 export type AccountPermissionLevelEnum =
   | "PERMISSION_LEVEL_UNSPECIFIED"
   | "OWNER_LEVEL"
-  | "MEMBER_LEVEL";
+  | "MEMBER_LEVEL"
+  | (string & {});
 export const AccountPermissionLevelEnum = /*@__PURE__*/ S.String;
 
 /** An account is a container for your location. If you are the only user who manages locations for your business, you can use your personal Google Account. To share management of locations with multiple users, [create a business account] (https://support.google.com/business/answer/6085339?ref_topic=6085325). */
@@ -257,7 +262,8 @@ export type AdminRoleEnum =
   | "PRIMARY_OWNER"
   | "OWNER"
   | "MANAGER"
-  | "SITE_MANAGER";
+  | "SITE_MANAGER"
+  | (string & {});
 export const AdminRoleEnum = /*@__PURE__*/ S.String;
 
 /** An administrator of an Account or a location. */
@@ -518,7 +524,8 @@ export type InvitationRoleEnum =
   | "PRIMARY_OWNER"
   | "OWNER"
   | "MANAGER"
-  | "SITE_MANAGER";
+  | "SITE_MANAGER"
+  | (string & {});
 export const InvitationRoleEnum = /*@__PURE__*/ S.String;
 
 /** Represents a target location for a pending invitation. */
@@ -541,7 +548,8 @@ export const TargetLocation = /*@__PURE__*/ S.suspend(() =>
 export type InvitationTargetTypeEnum =
   | "TARGET_TYPE_UNSPECIFIED"
   | "ACCOUNTS_ONLY"
-  | "LOCATIONS_ONLY";
+  | "LOCATIONS_ONLY"
+  | (string & {});
 export const InvitationTargetTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a pending invitation. */

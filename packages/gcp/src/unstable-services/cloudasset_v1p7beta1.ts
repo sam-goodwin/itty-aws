@@ -71,7 +71,8 @@ export type GoogleCloudAssetV1p7beta1ExportAssetsRequestContentTypeEnum =
   | "IAM_POLICY"
   | "ORG_POLICY"
   | "ACCESS_POLICY"
-  | "RELATIONSHIP";
+  | "RELATIONSHIP"
+  | (string & {});
 export const GoogleCloudAssetV1p7beta1ExportAssetsRequestContentTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -95,7 +96,8 @@ export const GoogleCloudAssetV1p7beta1GcsDestination = /*@__PURE__*/ S.suspend(
 export type GoogleCloudAssetV1p7beta1PartitionSpecPartitionKeyEnum =
   | "PARTITION_KEY_UNSPECIFIED"
   | "READ_TIME"
-  | "REQUEST_TIME";
+  | "REQUEST_TIME"
+  | (string & {});
 export const GoogleCloudAssetV1p7beta1PartitionSpecPartitionKeyEnum =
   /*@__PURE__*/ S.String;
 

@@ -22,7 +22,7 @@ export const LoadTestsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LoadTestsCreateOrUpdateRequestTagsMap>;
 
 /** Managed identity type to use for accessing encryption key Url. */
-export type Type = "SystemAssigned" | "UserAssigned";
+export type Type = "SystemAssigned" | "UserAssigned" | (string & {});
 export const Type = /*@__PURE__*/ S.String;
 
 /** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
@@ -78,7 +78,8 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned";
+  | "SystemAssigned,UserAssigned"
+  | (string & {});
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -155,7 +156,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -163,7 +165,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -202,7 +205,12 @@ export const LoadTestsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LoadTestsCreateOrUpdateResponseTagsMap>;
 
 /** Resources provisioning states. */
-export type ResourceState = "Succeeded" | "Failed" | "Canceled" | "Deleted";
+export type ResourceState =
+  | "Succeeded"
+  | "Failed"
+  | "Canceled"
+  | "Deleted"
+  | (string & {});
 export const ResourceState = /*@__PURE__*/ S.String;
 
 /** LoadTest resource properties. */
@@ -829,11 +837,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -880,7 +888,9 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResponse",
 }) as any as S.Schema<OperationsListResponse>;
 
-export type PlaywrightQuotasGetRequestPlaywrightQuotaName = "ExecutionMinutes";
+export type PlaywrightQuotasGetRequestPlaywrightQuotaName =
+  | "ExecutionMinutes"
+  | (string & {});
 export const PlaywrightQuotasGetRequestPlaywrightQuotaName =
   /*@__PURE__*/ S.String;
 
@@ -912,7 +922,11 @@ export const PlaywrightQuotasGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlaywrightQuotasGetRequest>;
 
 /** The free trial state. */
-export type FreeTrialState = "Active" | "Expired" | "NotApplicable";
+export type FreeTrialState =
+  | "Active"
+  | "Expired"
+  | "NotApplicable"
+  | (string & {});
 export const FreeTrialState = /*@__PURE__*/ S.String;
 
 /** Subscription-level location-based Playwright quota free trial properties. */
@@ -938,7 +952,8 @@ export type ProvisioningState =
   | "Canceled"
   | "Creating"
   | "Deleting"
-  | "Accepted";
+  | "Accepted"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Subscription-level location-based Playwright quota resource properties. */
@@ -1051,7 +1066,9 @@ export const PlaywrightQuotaListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "PlaywrightQuotaListResult",
 }) as any as S.Schema<PlaywrightQuotaListResult>;
 
-export type PlaywrightWorkspaceQuotasGetRequestQuotaName = "ExecutionMinutes";
+export type PlaywrightWorkspaceQuotasGetRequestQuotaName =
+  | "ExecutionMinutes"
+  | (string & {});
 export const PlaywrightWorkspaceQuotasGetRequestQuotaName =
   /*@__PURE__*/ S.String;
 
@@ -1254,7 +1271,8 @@ export const PlaywrightWorkspacesCheckNameAvailabilityRequest =
 /** The reason why the given name is not available. */
 export type PlaywrightWorkspacesCheckNameAvailabilityResponseReason =
   | "Invalid"
-  | "AlreadyExists";
+  | "AlreadyExists"
+  | (string & {});
 export const PlaywrightWorkspacesCheckNameAvailabilityResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -1292,14 +1310,16 @@ export const PlaywrightWorkspacesCreateOrUpdateRequestTagsMap =
 /** Controls the connection region for client workers to cloud-hosted browsers. When enabled, workers connect to browsers in the closest Azure region for lower latency. When disabled, workers connect to browsers in the Azure region where the workspace was created. */
 export type PlaywrightWorkspacePropertiesInputRegionalAffinity =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const PlaywrightWorkspacePropertiesInputRegionalAffinity =
   /*@__PURE__*/ S.String;
 
 /** Enables the workspace to use local authentication through service access tokens for operations. */
 export type PlaywrightWorkspacePropertiesInputLocalAuth =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const PlaywrightWorkspacePropertiesInputLocalAuth =
   /*@__PURE__*/ S.String;
 
@@ -1369,12 +1389,16 @@ export const PlaywrightWorkspacesCreateOrUpdateResponseTagsMap =
 /** Controls the connection region for client workers to cloud-hosted browsers. When enabled, workers connect to browsers in the closest Azure region for lower latency. When disabled, workers connect to browsers in the Azure region where the workspace was created. */
 export type PlaywrightWorkspacePropertiesRegionalAffinity =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const PlaywrightWorkspacePropertiesRegionalAffinity =
   /*@__PURE__*/ S.String;
 
 /** Enables the workspace to use local authentication through service access tokens for operations. */
-export type PlaywrightWorkspacePropertiesLocalAuth = "Enabled" | "Disabled";
+export type PlaywrightWorkspacePropertiesLocalAuth =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const PlaywrightWorkspacePropertiesLocalAuth = /*@__PURE__*/ S.String;
 
 /** Playwright workspace resource properties. */
@@ -1643,7 +1667,7 @@ export const PlaywrightWorkspacesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PlaywrightWorkspacesUpdateRequestTagsMap>;
 
 /** The enablement status of a feature. */
-export type EnablementStatus = "Enabled" | "Disabled";
+export type EnablementStatus = "Enabled" | "Disabled" | (string & {});
 export const EnablementStatus = /*@__PURE__*/ S.String;
 
 /** The updatable properties of the PlaywrightWorkspace. */
@@ -1804,7 +1828,8 @@ export type CheckQuotaAvailabilityResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const CheckQuotaAvailabilityResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1813,7 +1838,8 @@ export type CheckQuotaAvailabilityResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const CheckQuotaAvailabilityResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

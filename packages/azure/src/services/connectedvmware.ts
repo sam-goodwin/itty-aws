@@ -150,7 +150,8 @@ export type ResourceProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted"
-  | "Created";
+  | "Created"
+  | (string & {});
 export const ResourceProvisioningState = /*@__PURE__*/ S.String;
 
 /** Describes the properties of a Cluster. */
@@ -210,7 +211,8 @@ export type ClusterSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ClusterSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -218,7 +220,8 @@ export type ClusterSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ClusterSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -568,7 +571,8 @@ export type DatastoreSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const DatastoreSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -576,7 +580,8 @@ export type DatastoreSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const DatastoreSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -947,7 +952,8 @@ export type HostSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const HostSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -955,7 +961,8 @@ export type HostSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const HostSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -1190,7 +1197,8 @@ export type InventoryType =
   | "VirtualNetwork"
   | "Cluster"
   | "Datastore"
-  | "Host";
+  | "Host"
+  | (string & {});
 export const InventoryType = /*@__PURE__*/ S.String;
 
 /** Describes the properties of an Inventory Item. */
@@ -1257,7 +1265,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -1265,7 +1274,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -1718,7 +1728,8 @@ export type ResourcePoolSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ResourcePoolSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -1726,7 +1737,8 @@ export type ResourcePoolSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ResourcePoolSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -2093,7 +2105,8 @@ export type VCenterSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const VCenterSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -2101,7 +2114,8 @@ export type VCenterSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const VCenterSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -2355,7 +2369,7 @@ export const PlacementProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlacementProfile>;
 
 /** Defines the different types of VM guest operating systems. */
-export type OsType = "Windows" | "Linux" | "Other";
+export type OsType = "Windows" | "Linux" | "Other" | (string & {});
 export const OsType = /*@__PURE__*/ S.String;
 
 /** Sets first logon commands */
@@ -2461,11 +2475,12 @@ export type NICType =
   | "vmxnet"
   | "e1000"
   | "e1000e"
-  | "pcnet32";
+  | "pcnet32"
+  | (string & {});
 export const NICType = /*@__PURE__*/ S.String;
 
 /** Defines the options for power on boot. */
-export type PowerOnBootOption = "enabled" | "disabled";
+export type PowerOnBootOption = "enabled" | "disabled" | (string & {});
 export const PowerOnBootOption = /*@__PURE__*/ S.String;
 
 /** IP address allocation method. */
@@ -2475,7 +2490,8 @@ export type IPAddressAllocationMethod =
   | "static"
   | "linklayer"
   | "random"
-  | "other";
+  | "other"
+  | (string & {});
 export const IPAddressAllocationMethod = /*@__PURE__*/ S.String;
 
 /** Gets or sets the dns servers. */
@@ -2567,7 +2583,8 @@ export const NetworkProfileInput = /*@__PURE__*/ S.suspend(() =>
 export type DiskMode =
   | "persistent"
   | "independent_persistent"
-  | "independent_nonpersistent";
+  | "independent_nonpersistent"
+  | (string & {});
 export const DiskMode = /*@__PURE__*/ S.String;
 
 /** Defines the different types of disks. */
@@ -2578,7 +2595,8 @@ export type DiskType =
   | "rawvirtual"
   | "sparse"
   | "sesparse"
-  | "unknown";
+  | "unknown"
+  | (string & {});
 export const DiskType = /*@__PURE__*/ S.String;
 
 /** Virtual disk model */
@@ -2659,7 +2677,7 @@ export const SecurityProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityProfile>;
 
 /** Firmware type */
-export type FirmwareType = "bios" | "efi";
+export type FirmwareType = "bios" | "efi" | (string & {});
 export const FirmwareType = /*@__PURE__*/ S.String;
 
 /** Specifies the vCenter infrastructure specific settings for the virtual machine. */
@@ -2999,14 +3017,16 @@ export type SCSIControllerType =
   | "lsilogic"
   | "buslogic"
   | "pvscsi"
-  | "lsilogicsas";
+  | "lsilogicsas"
+  | (string & {});
 export const SCSIControllerType = /*@__PURE__*/ S.String;
 
 /** Defines the sharing mode for sharing the SCSI bus. */
 export type VirtualSCSISharing =
   | "noSharing"
   | "physicalSharing"
-  | "virtualSharing";
+  | "virtualSharing"
+  | (string & {});
 export const VirtualSCSISharing = /*@__PURE__*/ S.String;
 
 /** This data object type contains the properties of a SCSI controller device attached to a virtual machine that is reported by the controller. */
@@ -3739,7 +3759,8 @@ export type VirtualMachineTemplateSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const VirtualMachineTemplateSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -3748,7 +3769,8 @@ export type VirtualMachineTemplateSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const VirtualMachineTemplateSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -4107,7 +4129,8 @@ export type VirtualNetworkSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const VirtualNetworkSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -4115,7 +4138,8 @@ export type VirtualNetworkSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const VirtualNetworkSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -4383,7 +4407,11 @@ export const HttpProxyConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HttpProxyConfiguration>;
 
 /** Defines the different types of operations for guest agent. */
-export type ProvisioningAction = "install" | "uninstall" | "repair";
+export type ProvisioningAction =
+  | "install"
+  | "uninstall"
+  | "repair"
+  | (string & {});
 export const ProvisioningAction = /*@__PURE__*/ S.String;
 
 /** Describes the properties of a Virtual Machine Guest Agent. */

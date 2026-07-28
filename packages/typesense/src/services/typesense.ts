@@ -120,7 +120,8 @@ export type AnalyticsRuleType =
   | "popular_queries"
   | "nohits_queries"
   | "counter"
-  | "log";
+  | "log"
+  | (string & {});
 export const AnalyticsRuleType = /*@__PURE__*/ S.String;
 
 export type AnalyticsRuleCreateParamsMetaFieldsList = ReadonlyArray<string>;
@@ -1978,14 +1979,20 @@ export const HealthStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HealthStatus" }) as any as S.Schema<HealthStatus>;
 
-export type IndexAction = "create" | "update" | "upsert" | "emplace";
+export type IndexAction =
+  | "create"
+  | "update"
+  | "upsert"
+  | "emplace"
+  | (string & {});
 export const IndexAction = /*@__PURE__*/ S.String;
 
 export type DirtyValues =
   | "coerce_or_reject"
   | "coerce_or_drop"
   | "drop"
-  | "reject";
+  | "reject"
+  | (string & {});
 export const DirtyValues = /*@__PURE__*/ S.String;
 
 export interface ImportDocumentsRequestImportDocumentsParameters {
@@ -2122,7 +2129,11 @@ export const ListStemmingDictionariesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListStemmingDictionariesResponse>;
 
 /** Dictates the direction in which the words in the query must be dropped when the original words in the query do not appear in any document. Values: right_to_left (default), left_to_right, both_sides:3 A note on both_sides:3 - for queries up to 3 tokens (words) in length, this mode will drop tokens from both sides and exhaustively rank all matching results. If query length is greater than 3 words, Typesense will just fallback to default behavior of right_to_left */
-export type DropTokensMode = "right_to_left" | "left_to_right" | "both_sides:3";
+export type DropTokensMode =
+  | "right_to_left"
+  | "left_to_right"
+  | "both_sides:3"
+  | (string & {});
 export const DropTokensMode = /*@__PURE__*/ S.String;
 
 /** Parameters for the multi search API. */
@@ -3684,7 +3695,7 @@ export const CurationRuleTagsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CurationRuleTagsList>;
 
 /** Indicates whether the match on the query term should be `exact` or `contains`. If we want to match all queries that contained the word `apple`, we will use the `contains` match instead. */
-export type CurationRuleMatch = "exact" | "contains";
+export type CurationRuleMatch = "exact" | "contains" | (string & {});
 export const CurationRuleMatch = /*@__PURE__*/ S.String;
 
 export interface CurationRule {

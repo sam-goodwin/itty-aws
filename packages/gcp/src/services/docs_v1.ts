@@ -228,7 +228,7 @@ export const DeleteNamedRangeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteNamedRangeRequest",
 }) as any as S.Schema<DeleteNamedRangeRequest>;
 
-export type DimensionUnitEnum = "UNIT_UNSPECIFIED" | "PT";
+export type DimensionUnitEnum = "UNIT_UNSPECIFIED" | "PT" | (string & {});
 export const DimensionUnitEnum = /*@__PURE__*/ S.String;
 
 /** A magnitude in a single direction in the specified units. */
@@ -262,7 +262,8 @@ export const Size = /*@__PURE__*/ S.suspend(() =>
 export type DocumentFormatDocumentModeEnum =
   | "DOCUMENT_MODE_UNSPECIFIED"
   | "PAGES"
-  | "PAGELESS";
+  | "PAGELESS"
+  | (string & {});
 export const DocumentFormatDocumentModeEnum = /*@__PURE__*/ S.String;
 
 /** Represents document-level format settings. */
@@ -416,7 +417,8 @@ export const UpdateDocumentStyleRequest = /*@__PURE__*/ S.suspend(() =>
 export type InsertSectionBreakRequestSectionTypeEnum =
   | "SECTION_TYPE_UNSPECIFIED"
   | "CONTINUOUS"
-  | "NEXT_PAGE";
+  | "NEXT_PAGE"
+  | (string & {});
 export const InsertSectionBreakRequestSectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Inserts a section break at the given location. A newline character will be inserted before the section break. */
@@ -489,7 +491,8 @@ export type CreateParagraphBulletsRequestBulletPresetEnum =
   | "NUMBERED_DECIMAL_NESTED"
   | "NUMBERED_UPPERALPHA_ALPHA_ROMAN"
   | "NUMBERED_UPPERROMAN_UPPERALPHA_DECIMAL"
-  | "NUMBERED_ZERODECIMAL_ALPHA_ROMAN";
+  | "NUMBERED_ZERODECIMAL_ALPHA_ROMAN"
+  | (string & {});
 export const CreateParagraphBulletsRequestBulletPresetEnum =
   /*@__PURE__*/ S.String;
 
@@ -583,7 +586,8 @@ export type TextStyleBaselineOffsetEnum =
   | "BASELINE_OFFSET_UNSPECIFIED"
   | "NONE"
   | "SUPERSCRIPT"
-  | "SUBSCRIPT";
+  | "SUBSCRIPT"
+  | (string & {});
 export const TextStyleBaselineOffsetEnum = /*@__PURE__*/ S.String;
 
 /** Represents the styling that can be applied to text. Inherited text styles are represented as unset fields in this message. A text style's parent depends on where the text style is defined: * The TextStyle of text in a Paragraph inherits from the paragraph's corresponding named style type. * The TextStyle on a named style inherits from the normal text named style. * The TextStyle of the normal text named style inherits from the default text style in the Docs editor. * The TextStyle on a Paragraph element that's contained in a table may inherit its text style from the table style. If the text style does not inherit from a parent, unsetting fields will revert the style to a value matching the defaults in the Docs editor. */
@@ -699,7 +703,8 @@ export type DateElementPropertiesTimeFormatEnum =
   | "TIME_FORMAT_UNSPECIFIED"
   | "TIME_FORMAT_DISABLED"
   | "TIME_FORMAT_HOUR_MINUTE"
-  | "TIME_FORMAT_HOUR_MINUTE_TIMEZONE";
+  | "TIME_FORMAT_HOUR_MINUTE_TIMEZONE"
+  | (string & {});
 export const DateElementPropertiesTimeFormatEnum = /*@__PURE__*/ S.String;
 
 export type DateElementPropertiesDateFormatEnum =
@@ -708,7 +713,8 @@ export type DateElementPropertiesDateFormatEnum =
   | "DATE_FORMAT_MONTH_DAY_ABBREVIATED"
   | "DATE_FORMAT_MONTH_DAY_FULL"
   | "DATE_FORMAT_MONTH_DAY_YEAR_ABBREVIATED"
-  | "DATE_FORMAT_ISO8601";
+  | "DATE_FORMAT_ISO8601"
+  | (string & {});
 export const DateElementPropertiesDateFormatEnum = /*@__PURE__*/ S.String;
 
 /** Properties of a DateElement. */
@@ -803,7 +809,8 @@ export type TableCellBorderDashStyleEnum =
   | "DASH_STYLE_UNSPECIFIED"
   | "SOLID"
   | "DOT"
-  | "DASH";
+  | "DASH"
+  | (string & {});
 export const TableCellBorderDashStyleEnum = /*@__PURE__*/ S.String;
 
 /** A border around a table cell. Table cell borders cannot be transparent. To hide a table cell border, make its width 0. */
@@ -830,7 +837,8 @@ export type TableCellStyleContentAlignmentEnum =
   | "CONTENT_ALIGNMENT_UNSUPPORTED"
   | "TOP"
   | "MIDDLE"
-  | "BOTTOM";
+  | "BOTTOM"
+  | (string & {});
 export const TableCellStyleContentAlignmentEnum = /*@__PURE__*/ S.String;
 
 /** The style of a TableCell. Inherited table cell styles are represented as unset fields in this message. A table cell style can inherit from the table's style. */
@@ -902,19 +910,22 @@ export const UpdateTableCellStyleRequest = /*@__PURE__*/ S.suspend(() =>
 export type SectionStyleColumnSeparatorStyleEnum =
   | "COLUMN_SEPARATOR_STYLE_UNSPECIFIED"
   | "NONE"
-  | "BETWEEN_EACH_COLUMN";
+  | "BETWEEN_EACH_COLUMN"
+  | (string & {});
 export const SectionStyleColumnSeparatorStyleEnum = /*@__PURE__*/ S.String;
 
 export type SectionStyleContentDirectionEnum =
   | "CONTENT_DIRECTION_UNSPECIFIED"
   | "LEFT_TO_RIGHT"
-  | "RIGHT_TO_LEFT";
+  | "RIGHT_TO_LEFT"
+  | (string & {});
 export const SectionStyleContentDirectionEnum = /*@__PURE__*/ S.String;
 
 export type SectionStyleSectionTypeEnum =
   | "SECTION_TYPE_UNSPECIFIED"
   | "CONTINUOUS"
-  | "NEXT_PAGE";
+  | "NEXT_PAGE"
+  | (string & {});
 export const SectionStyleSectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Properties that apply to a section's column. */
@@ -1102,7 +1113,8 @@ export const InsertPersonRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateFooterRequestTypeEnum =
   | "HEADER_FOOTER_TYPE_UNSPECIFIED"
-  | "DEFAULT";
+  | "DEFAULT"
+  | (string & {});
 export const CreateFooterRequestTypeEnum = /*@__PURE__*/ S.String;
 
 /** Creates a Footer. The new footer is applied to the SectionStyle at the location of the SectionBreak if specified, otherwise it is applied to the DocumentStyle. If a footer of the specified type already exists, a 400 bad request error is returned. */
@@ -1168,7 +1180,8 @@ export const IntegerList = /*@__PURE__*/ S.Array(
 export type TableColumnPropertiesWidthTypeEnum =
   | "WIDTH_TYPE_UNSPECIFIED"
   | "EVENLY_DISTRIBUTED"
-  | "FIXED_WIDTH";
+  | "FIXED_WIDTH"
+  | (string & {});
 export const TableColumnPropertiesWidthTypeEnum = /*@__PURE__*/ S.String;
 
 /** The properties of a column in a table. */
@@ -1213,7 +1226,8 @@ export type ParagraphBorderDashStyleEnum =
   | "DASH_STYLE_UNSPECIFIED"
   | "SOLID"
   | "DOT"
-  | "DASH";
+  | "DASH"
+  | (string & {});
 export const ParagraphBorderDashStyleEnum = /*@__PURE__*/ S.String;
 
 /** A border around a paragraph. */
@@ -1241,13 +1255,15 @@ export const ParagraphBorder = /*@__PURE__*/ S.suspend(() =>
 export type ParagraphStyleSpacingModeEnum =
   | "SPACING_MODE_UNSPECIFIED"
   | "NEVER_COLLAPSE"
-  | "COLLAPSE_LISTS";
+  | "COLLAPSE_LISTS"
+  | (string & {});
 export const ParagraphStyleSpacingModeEnum = /*@__PURE__*/ S.String;
 
 export type ParagraphStyleDirectionEnum =
   | "CONTENT_DIRECTION_UNSPECIFIED"
   | "LEFT_TO_RIGHT"
-  | "RIGHT_TO_LEFT";
+  | "RIGHT_TO_LEFT"
+  | (string & {});
 export const ParagraphStyleDirectionEnum = /*@__PURE__*/ S.String;
 
 /** The shading of a paragraph. */
@@ -1271,7 +1287,8 @@ export type ParagraphStyleNamedStyleTypeEnum =
   | "HEADING_3"
   | "HEADING_4"
   | "HEADING_5"
-  | "HEADING_6";
+  | "HEADING_6"
+  | (string & {});
 export const ParagraphStyleNamedStyleTypeEnum = /*@__PURE__*/ S.String;
 
 export type ParagraphStyleAlignmentEnum =
@@ -1279,14 +1296,16 @@ export type ParagraphStyleAlignmentEnum =
   | "START"
   | "CENTER"
   | "END"
-  | "JUSTIFIED";
+  | "JUSTIFIED"
+  | (string & {});
 export const ParagraphStyleAlignmentEnum = /*@__PURE__*/ S.String;
 
 export type TabStopAlignmentEnum =
   | "TAB_STOP_ALIGNMENT_UNSPECIFIED"
   | "START"
   | "CENTER"
-  | "END";
+  | "END"
+  | (string & {});
 export const TabStopAlignmentEnum = /*@__PURE__*/ S.String;
 
 /** A tab stop within a paragraph. */
@@ -1411,7 +1430,8 @@ export type NamedStyleNamedStyleTypeEnum =
   | "HEADING_3"
   | "HEADING_4"
   | "HEADING_5"
-  | "HEADING_6";
+  | "HEADING_6"
+  | (string & {});
 export const NamedStyleNamedStyleTypeEnum = /*@__PURE__*/ S.String;
 
 /** A named style. Paragraphs in the document can inherit their TextStyle and ParagraphStyle from this named style when they have the same named style type. */
@@ -1625,7 +1645,8 @@ export const UpdateTableRowStyleRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateHeaderRequestTypeEnum =
   | "HEADER_FOOTER_TYPE_UNSPECIFIED"
-  | "DEFAULT";
+  | "DEFAULT"
+  | (string & {});
 export const CreateHeaderRequestTypeEnum = /*@__PURE__*/ S.String;
 
 /** Creates a Header. The new header is applied to the SectionStyle at the location of the SectionBreak if specified, otherwise it is applied to the DocumentStyle. If a header of the specified type already exists, a 400 bad request error is returned. */
@@ -1697,7 +1718,8 @@ export const DeleteTableColumnRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ReplaceImageRequestImageReplaceMethodEnum =
   | "IMAGE_REPLACE_METHOD_UNSPECIFIED"
-  | "CENTER_CROP";
+  | "CENTER_CROP"
+  | (string & {});
 export const ReplaceImageRequestImageReplaceMethodEnum = /*@__PURE__*/ S.String;
 
 /** Replaces an existing image with a new image. Replacing an image removes some image effects from the existing image in order to mirror the behavior of the Docs editor. */
@@ -2090,14 +2112,16 @@ export type NestingLevelGlyphTypeEnum =
   | "UPPER_ALPHA"
   | "ALPHA"
   | "UPPER_ROMAN"
-  | "ROMAN";
+  | "ROMAN"
+  | (string & {});
 export const NestingLevelGlyphTypeEnum = /*@__PURE__*/ S.String;
 
 export type NestingLevelBulletAlignmentEnum =
   | "BULLET_ALIGNMENT_UNSPECIFIED"
   | "START"
   | "CENTER"
-  | "END";
+  | "END"
+  | (string & {});
 export const NestingLevelBulletAlignmentEnum = /*@__PURE__*/ S.String;
 
 /** Contains properties describing the look and feel of a list bullet at a given level of nesting. */
@@ -2413,7 +2437,8 @@ export const HorizontalRule = /*@__PURE__*/ S.suspend(() =>
 export type AutoTextTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "PAGE_NUMBER"
-  | "PAGE_COUNT";
+  | "PAGE_COUNT"
+  | (string & {});
 export const AutoTextTypeEnum = /*@__PURE__*/ S.String;
 
 /** A ParagraphElement representing a spot in the text that's dynamically replaced with content that can change over time, like a page number. */
@@ -3442,14 +3467,18 @@ export const LinkedContentReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "LinkedContentReference",
 }) as any as S.Schema<LinkedContentReference>;
 
-export type EmbeddedObjectBorderPropertyStateEnum = "RENDERED" | "NOT_RENDERED";
+export type EmbeddedObjectBorderPropertyStateEnum =
+  | "RENDERED"
+  | "NOT_RENDERED"
+  | (string & {});
 export const EmbeddedObjectBorderPropertyStateEnum = /*@__PURE__*/ S.String;
 
 export type EmbeddedObjectBorderDashStyleEnum =
   | "DASH_STYLE_UNSPECIFIED"
   | "SOLID"
   | "DOT"
-  | "DASH";
+  | "DASH"
+  | (string & {});
 export const EmbeddedObjectBorderDashStyleEnum = /*@__PURE__*/ S.String;
 
 /** A border around an EmbeddedObject. */
@@ -3885,7 +3914,8 @@ export type PositionedObjectPositioningLayoutEnum =
   | "BREAK_RIGHT"
   | "BREAK_LEFT_RIGHT"
   | "IN_FRONT_OF_TEXT"
-  | "BEHIND_TEXT";
+  | "BEHIND_TEXT"
+  | (string & {});
 export const PositionedObjectPositioningLayoutEnum = /*@__PURE__*/ S.String;
 
 /** The positioning of a PositionedObject. The positioned object is positioned relative to the beginning of the Paragraph it's tethered to. */
@@ -3994,7 +4024,8 @@ export type NamedStyleSuggestionStateNamedStyleTypeEnum =
   | "HEADING_3"
   | "HEADING_4"
   | "HEADING_5"
-  | "HEADING_6";
+  | "HEADING_6"
+  | (string & {});
 export const NamedStyleSuggestionStateNamedStyleTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4148,7 +4179,8 @@ export type DocumentSuggestionsViewModeEnum =
   | "DEFAULT_FOR_CURRENT_ACCESS"
   | "SUGGESTIONS_INLINE"
   | "PREVIEW_SUGGESTIONS_ACCEPTED"
-  | "PREVIEW_WITHOUT_SUGGESTIONS";
+  | "PREVIEW_WITHOUT_SUGGESTIONS"
+  | (string & {});
 export const DocumentSuggestionsViewModeEnum = /*@__PURE__*/ S.String;
 
 /** A Google Docs document. */
@@ -4232,7 +4264,8 @@ export type GetDocumentsSuggestionsViewModeEnum =
   | "DEFAULT_FOR_CURRENT_ACCESS"
   | "SUGGESTIONS_INLINE"
   | "PREVIEW_SUGGESTIONS_ACCEPTED"
-  | "PREVIEW_WITHOUT_SUGGESTIONS";
+  | "PREVIEW_WITHOUT_SUGGESTIONS"
+  | (string & {});
 export const GetDocumentsSuggestionsViewModeEnum = /*@__PURE__*/ S.String;
 
 export interface GetDocumentsRequest {

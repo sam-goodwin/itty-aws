@@ -2260,7 +2260,11 @@ export const GlobalClusterMemberList = /*@__PURE__*/ S.Array(
     identifier: "GlobalClusterMember",
   }),
 );
-export type FailoverStatus = "pending" | "failing-over" | "cancelling";
+export type FailoverStatus =
+  | "pending"
+  | "failing-over"
+  | "cancelling"
+  | (string & {});
 export const FailoverStatus = /*@__PURE__*/ S.String;
 
 export interface FailoverState {
@@ -2738,7 +2742,7 @@ export const DescribeDBClusterParametersMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDBClusterParametersMessage",
 }) as any as S.Schema<DescribeDBClusterParametersMessage>;
-export type ApplyMethod = "immediate" | "pending-reboot";
+export type ApplyMethod = "immediate" | "pending-reboot" | (string & {});
 export const ApplyMethod = /*@__PURE__*/ S.String;
 
 export interface Parameter {
@@ -3392,7 +3396,8 @@ export type SourceType =
   | "db-security-group"
   | "db-snapshot"
   | "db-cluster"
-  | "db-cluster-snapshot";
+  | "db-cluster-snapshot"
+  | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
 
 export interface DescribeEventsMessage {

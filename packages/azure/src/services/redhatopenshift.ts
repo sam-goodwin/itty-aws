@@ -31,11 +31,12 @@ export type ProvisioningState =
   | "Deleting"
   | "Failed"
   | "Succeeded"
-  | "Updating";
+  | "Updating"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** FipsValidatedModules determines if FIPS is used. */
-export type FipsValidatedModules = "Disabled" | "Enabled";
+export type FipsValidatedModules = "Disabled" | "Enabled" | (string & {});
 export const FipsValidatedModules = /*@__PURE__*/ S.String;
 
 /** ClusterProfile represents a cluster profile. */
@@ -129,7 +130,10 @@ export const PlatformWorkloadIdentityProfileInput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PlatformWorkloadIdentityProfileInput>;
 
 /** The outbound routing strategy used to provide your cluster egress to the internet. */
-export type OutboundType = "Loadbalancer" | "UserDefinedRouting";
+export type OutboundType =
+  | "Loadbalancer"
+  | "UserDefinedRouting"
+  | (string & {});
 export const OutboundType = /*@__PURE__*/ S.String;
 
 /** ManagedOutboundIPs represents the desired managed outbound IPs for the cluster public load balancer. */
@@ -159,7 +163,7 @@ export const LoadBalancerProfileInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LoadBalancerProfileInput>;
 
 /** PreconfiguredNSG represents whether customers want to use their own NSG attached to the subnets */
-export type PreconfiguredNSG = "Disabled" | "Enabled";
+export type PreconfiguredNSG = "Disabled" | "Enabled" | (string & {});
 export const PreconfiguredNSG = /*@__PURE__*/ S.String;
 
 /** NetworkProfile represents a network profile. */
@@ -188,7 +192,7 @@ export const NetworkProfileInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkProfileInput>;
 
 /** EncryptionAtHost represents encryption at host state */
-export type EncryptionAtHost = "Disabled" | "Enabled";
+export type EncryptionAtHost = "Disabled" | "Enabled" | (string & {});
 export const EncryptionAtHost = /*@__PURE__*/ S.String;
 
 /** MasterProfile represents a master profile. */
@@ -249,7 +253,7 @@ export const OpenShiftClusterPropertiesInputWorkerProfilesList =
   ) as any as S.Schema<OpenShiftClusterPropertiesInputWorkerProfilesList>;
 
 /** Visibility represents visibility. */
-export type Visibility = "Private" | "Public";
+export type Visibility = "Private" | "Public" | (string & {});
 export const Visibility = /*@__PURE__*/ S.String;
 
 /** APIServerProfile represents an API server profile. */
@@ -340,7 +344,8 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned";
+  | "SystemAssigned,UserAssigned"
+  | (string & {});
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -421,7 +426,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -429,7 +435,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */

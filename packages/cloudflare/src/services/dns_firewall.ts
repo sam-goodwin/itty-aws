@@ -422,7 +422,8 @@ export type AnalyticsReportsBytimesGetRequestTimeDelta =
   | "day"
   | "hour"
   | "dekaminute"
-  | "minute";
+  | "minute"
+  | (string & {});
 export const AnalyticsReportsBytimesGetRequestTimeDelta =
   /*@__PURE__*/ S.String;
 
@@ -542,7 +543,8 @@ export type AnalyticsReportsBytimesGetResponseQueryTimeDelta =
   | "day"
   | "hour"
   | "dekaminute"
-  | "minute";
+  | "minute"
+  | (string & {});
 export const AnalyticsReportsBytimesGetResponseQueryTimeDelta =
   /*@__PURE__*/ S.String;
 

@@ -41,13 +41,15 @@ export type ListCseImgColorTypeEnum =
   | "mono"
   | "gray"
   | "color"
-  | "trans";
+  | "trans"
+  | (string & {});
 export const ListCseImgColorTypeEnum = /*@__PURE__*/ S.String;
 
 export type ListCseSiteSearchFilterEnum =
   | "siteSearchFilterUndefined"
   | "e"
-  | "i";
+  | "i"
+  | (string & {});
 export const ListCseSiteSearchFilterEnum = /*@__PURE__*/ S.String;
 
 export type ListCseImgDominantColorEnum =
@@ -63,10 +65,14 @@ export type ListCseImgDominantColorEnum =
   | "red"
   | "teal"
   | "white"
-  | "yellow";
+  | "yellow"
+  | (string & {});
 export const ListCseImgDominantColorEnum = /*@__PURE__*/ S.String;
 
-export type ListCseSearchTypeEnum = "searchTypeUndefined" | "image";
+export type ListCseSearchTypeEnum =
+  | "searchTypeUndefined"
+  | "image"
+  | (string & {});
 export const ListCseSearchTypeEnum = /*@__PURE__*/ S.String;
 
 export type ListCseSafeEnum =
@@ -74,7 +80,8 @@ export type ListCseSafeEnum =
   | "active"
   | "high"
   | "medium"
-  | "off";
+  | "off"
+  | (string & {});
 export const ListCseSafeEnum = /*@__PURE__*/ S.String;
 
 export type ListCseImgTypeEnum =
@@ -84,7 +91,8 @@ export type ListCseImgTypeEnum =
   | "lineart"
   | "stock"
   | "photo"
-  | "animated";
+  | "animated"
+  | (string & {});
 export const ListCseImgTypeEnum = /*@__PURE__*/ S.String;
 
 export type ListCseImgSizeEnum =
@@ -95,7 +103,8 @@ export type ListCseImgSizeEnum =
   | "MEDIUM"
   | "SMALL"
   | "XLARGE"
-  | "XXLARGE";
+  | "XXLARGE"
+  | (string & {});
 export const ListCseImgSizeEnum = /*@__PURE__*/ S.String;
 
 export interface ListCseRequest {
@@ -867,13 +876,15 @@ export type ListCseSiterestrictImgColorTypeEnum =
   | "mono"
   | "gray"
   | "color"
-  | "trans";
+  | "trans"
+  | (string & {});
 export const ListCseSiterestrictImgColorTypeEnum = /*@__PURE__*/ S.String;
 
 export type ListCseSiterestrictSiteSearchFilterEnum =
   | "siteSearchFilterUndefined"
   | "e"
-  | "i";
+  | "i"
+  | (string & {});
 export const ListCseSiterestrictSiteSearchFilterEnum = /*@__PURE__*/ S.String;
 
 export type ListCseSiterestrictImgDominantColorEnum =
@@ -889,10 +900,14 @@ export type ListCseSiterestrictImgDominantColorEnum =
   | "red"
   | "teal"
   | "white"
-  | "yellow";
+  | "yellow"
+  | (string & {});
 export const ListCseSiterestrictImgDominantColorEnum = /*@__PURE__*/ S.String;
 
-export type ListCseSiterestrictSearchTypeEnum = "searchTypeUndefined" | "image";
+export type ListCseSiterestrictSearchTypeEnum =
+  | "searchTypeUndefined"
+  | "image"
+  | (string & {});
 export const ListCseSiterestrictSearchTypeEnum = /*@__PURE__*/ S.String;
 
 export type ListCseSiterestrictSafeEnum =
@@ -900,7 +915,8 @@ export type ListCseSiterestrictSafeEnum =
   | "active"
   | "high"
   | "medium"
-  | "off";
+  | "off"
+  | (string & {});
 export const ListCseSiterestrictSafeEnum = /*@__PURE__*/ S.String;
 
 export type ListCseSiterestrictImgTypeEnum =
@@ -910,7 +926,8 @@ export type ListCseSiterestrictImgTypeEnum =
   | "lineart"
   | "stock"
   | "photo"
-  | "animated";
+  | "animated"
+  | (string & {});
 export const ListCseSiterestrictImgTypeEnum = /*@__PURE__*/ S.String;
 
 export type ListCseSiterestrictImgSizeEnum =
@@ -921,7 +938,8 @@ export type ListCseSiterestrictImgSizeEnum =
   | "MEDIUM"
   | "SMALL"
   | "XLARGE"
-  | "XXLARGE";
+  | "XXLARGE"
+  | (string & {});
 export const ListCseSiterestrictImgSizeEnum = /*@__PURE__*/ S.String;
 
 export interface ListCseSiterestrictRequest {

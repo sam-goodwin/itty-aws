@@ -104,7 +104,8 @@ export type ReviewActionTypeEnum =
   | "ACTION_TYPE_UNSPECIFIED"
   | "COMMENT"
   | "CHANGE_REQUESTED"
-  | "APPROVED";
+  | "APPROVED"
+  | (string & {});
 export const ReviewActionTypeEnum = /*@__PURE__*/ S.String;
 
 /** The review summary comment. */
@@ -415,13 +416,15 @@ export type InstanceStateEnum =
   | "ACTIVE"
   | "DELETING"
   | "PAUSED"
-  | "UNKNOWN";
+  | "UNKNOWN"
+  | (string & {});
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 export type InstanceStateNoteEnum =
   | "STATE_NOTE_UNSPECIFIED"
   | "PAUSED_CMEK_UNAVAILABLE"
-  | "INSTANCE_RESUMING";
+  | "INSTANCE_RESUMING"
+  | (string & {});
 export const InstanceStateNoteEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -786,7 +789,11 @@ export const PushOption = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PushOption" }) as any as S.Schema<PushOption>;
 
-export type HookEventsItemEnum = "UNSPECIFIED" | "PUSH" | "PULL_REQUEST";
+export type HookEventsItemEnum =
+  | "UNSPECIFIED"
+  | "PUSH"
+  | "PULL_REQUEST"
+  | (string & {});
 export const HookEventsItemEnum = /*@__PURE__*/ S.String;
 
 export type HookEventsItemEnumList = ReadonlyArray<HookEventsItemEnum>;
@@ -854,7 +861,11 @@ export const CreateProjectsLocationsRepositoriesHooksRequest =
     identifier: "CreateProjectsLocationsRepositoriesHooksRequest",
   }) as any as S.Schema<CreateProjectsLocationsRepositoriesHooksRequest>;
 
-export type IssueStateEnum = "STATE_UNSPECIFIED" | "OPEN" | "CLOSED";
+export type IssueStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "OPEN"
+  | "CLOSED"
+  | (string & {});
 export const IssueStateEnum = /*@__PURE__*/ S.String;
 
 /** Metadata of an Issue. */
@@ -971,7 +982,8 @@ export type PullRequestStateEnum =
   | "STATE_UNSPECIFIED"
   | "OPEN"
   | "CLOSED"
-  | "MERGED";
+  | "MERGED"
+  | (string & {});
 export const PullRequestStateEnum = /*@__PURE__*/ S.String;
 
 /** Metadata of a PullRequest. PullRequest is the request from a user to merge a branch (head) into another branch (base). */
@@ -1262,7 +1274,8 @@ export const FetchBlobResponse = /*@__PURE__*/ S.suspend(() =>
 export type FetchRefsProjectsLocationsRepositoriesTypeEnum =
   | "REF_TYPE_UNSPECIFIED"
   | "REF_TYPE_BRANCH"
-  | "REF_TYPE_TAG";
+  | "REF_TYPE_TAG"
+  | (string & {});
 export const FetchRefsProjectsLocationsRepositoriesTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1299,7 +1312,8 @@ export const FetchRefsProjectsLocationsRepositoriesRequest =
 export type RefTypeEnum =
   | "REF_TYPE_UNSPECIFIED"
   | "REF_TYPE_BRANCH"
-  | "REF_TYPE_TAG";
+  | "REF_TYPE_TAG"
+  | (string & {});
 export const RefTypeEnum = /*@__PURE__*/ S.String;
 
 /** Ref represents a git reference within a repository. */
@@ -1373,7 +1387,8 @@ export type TreeEntryTypeEnum =
   | "OBJECT_TYPE_UNSPECIFIED"
   | "TREE"
   | "BLOB"
-  | "COMMIT";
+  | "COMMIT"
+  | (string & {});
 export const TreeEntryTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents an entry within a tree structure (like a Git tree). */
@@ -1488,7 +1503,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1813,7 +1829,8 @@ export type FileDiffActionEnum =
   | "ACTION_UNSPECIFIED"
   | "ADDED"
   | "MODIFIED"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const FileDiffActionEnum = /*@__PURE__*/ S.String;
 
 /** Metadata of a FileDiff. FileDiff represents a single file diff in a pull request. */

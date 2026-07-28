@@ -30,13 +30,15 @@ export type ProvisioningState =
   | "Provisioning"
   | "Updating"
   | "Deleting"
-  | "Accepted";
+  | "Accepted"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Property which describes the state of private link on a connected cluster resource. */
 export type ConnectedClusterPropertiesInputPrivateLinkState =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ConnectedClusterPropertiesInputPrivateLinkState =
   /*@__PURE__*/ S.String;
 
@@ -44,7 +46,8 @@ export const ConnectedClusterPropertiesInputPrivateLinkState =
 export type ConnectedClusterPropertiesInputAzureHybridBenefit =
   | "True"
   | "False"
-  | "NotApplicable";
+  | "NotApplicable"
+  | (string & {});
 export const ConnectedClusterPropertiesInputAzureHybridBenefit =
   /*@__PURE__*/ S.String;
 
@@ -72,7 +75,10 @@ export const AadProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AadProfile" }) as any as S.Schema<AadProfile>;
 
 /** Indicates whether the Arc agents on the be upgraded automatically to the latest version. Defaults to Enabled. */
-export type ArcAgentProfileInputAgentAutoUpgrade = "Enabled" | "Disabled";
+export type ArcAgentProfileInputAgentAutoUpgrade =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const ArcAgentProfileInputAgentAutoUpgrade = /*@__PURE__*/ S.String;
 
 /** System extensions and its current versions installed on the cluster resource. */
@@ -296,7 +302,10 @@ export const ConnectedClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectedClusterPropertiesInput>;
 
 /** The type of identity used for the connected cluster. The type 'SystemAssigned, includes a system created identity. The type 'None' means no identity is assigned to the connected cluster. */
-export type ConnectedClusterIdentityInputType = "None" | "SystemAssigned";
+export type ConnectedClusterIdentityInputType =
+  | "None"
+  | "SystemAssigned"
+  | (string & {});
 export const ConnectedClusterIdentityInputType = /*@__PURE__*/ S.String;
 
 /** Identity for the connected cluster. */
@@ -313,7 +322,7 @@ export const ConnectedClusterIdentityInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectedClusterIdentityInput>;
 
 /** Indicates the kind of Arc connected cluster based on host infrastructure. */
-export type ConnectedClusterKind = "ProvisionedCluster";
+export type ConnectedClusterKind = "ProvisionedCluster" | (string & {});
 export const ConnectedClusterKind = /*@__PURE__*/ S.String;
 
 export interface ConnectedClusterCreateOrReplaceRequest {
@@ -362,7 +371,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -370,7 +380,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -415,11 +426,15 @@ export type ConnectivityStatus =
   | "Connected"
   | "Offline"
   | "Expired"
-  | "AgentNotInstalled";
+  | "AgentNotInstalled"
+  | (string & {});
 export const ConnectivityStatus = /*@__PURE__*/ S.String;
 
 /** Property which describes the state of private link on a connected cluster resource. */
-export type ConnectedClusterPropertiesPrivateLinkState = "Enabled" | "Disabled";
+export type ConnectedClusterPropertiesPrivateLinkState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const ConnectedClusterPropertiesPrivateLinkState =
   /*@__PURE__*/ S.String;
 
@@ -427,12 +442,16 @@ export const ConnectedClusterPropertiesPrivateLinkState =
 export type ConnectedClusterPropertiesAzureHybridBenefit =
   | "True"
   | "False"
-  | "NotApplicable";
+  | "NotApplicable"
+  | (string & {});
 export const ConnectedClusterPropertiesAzureHybridBenefit =
   /*@__PURE__*/ S.String;
 
 /** Indicates whether the Arc agents on the be upgraded automatically to the latest version. Defaults to Enabled. */
-export type ArcAgentProfileAgentAutoUpgrade = "Enabled" | "Disabled";
+export type ArcAgentProfileAgentAutoUpgrade =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const ArcAgentProfileAgentAutoUpgrade = /*@__PURE__*/ S.String;
 
 /** System extensions and its current versions installed on the cluster resource. */
@@ -638,7 +657,10 @@ export const ConnectedClusterProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectedClusterProperties>;
 
 /** The type of identity used for the connected cluster. The type 'SystemAssigned, includes a system created identity. The type 'None' means no identity is assigned to the connected cluster. */
-export type ConnectedClusterIdentityType = "None" | "SystemAssigned";
+export type ConnectedClusterIdentityType =
+  | "None"
+  | "SystemAssigned"
+  | (string & {});
 export const ConnectedClusterIdentityType = /*@__PURE__*/ S.String;
 
 /** Identity for the connected cluster. */
@@ -909,7 +931,7 @@ export const ConnectedClusterListBySubscriptionRequest =
   }) as any as S.Schema<ConnectedClusterListBySubscriptionRequest>;
 
 /** The mode of client authentication. */
-export type AuthenticationMethod = "Token" | "AAD";
+export type AuthenticationMethod = "Token" | "AAD" | (string & {});
 export const AuthenticationMethod = /*@__PURE__*/ S.String;
 
 export interface ConnectedClusterListClusterUserCredentialRequest {
@@ -1020,7 +1042,11 @@ export const ConnectedClusterUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ConnectedClusterUpdateRequestTagsMap>;
 
 /** Indicates whether Azure Hybrid Benefit is opted in */
-export type AzureHybridBenefit = "True" | "False" | "NotApplicable";
+export type AzureHybridBenefit =
+  | "True"
+  | "False"
+  | "NotApplicable"
+  | (string & {});
 export const AzureHybridBenefit = /*@__PURE__*/ S.String;
 
 /** Properties which can be patched on the connected cluster resource. */
@@ -1158,11 +1184,15 @@ export const OperationListValueItemDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationListValueItemDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationListValueItemOrigin = "user" | "system" | "user,system";
+export type OperationListValueItemOrigin =
+  | "user"
+  | "system"
+  | "user,system"
+  | (string & {});
 export const OperationListValueItemOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationListValueItemActionType = "Internal";
+export type OperationListValueItemActionType = "Internal" | (string & {});
 export const OperationListValueItemActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */

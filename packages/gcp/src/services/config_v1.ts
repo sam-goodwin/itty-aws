@@ -158,7 +158,8 @@ export type DeploymentGroupProvisioningStateEnum =
   | "FAILED_TO_PROVISION"
   | "DEPROVISIONING"
   | "DEPROVISIONED"
-  | "FAILED_TO_DEPROVISION";
+  | "FAILED_TO_DEPROVISION"
+  | (string & {});
 export const DeploymentGroupProvisioningStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -175,7 +176,8 @@ export type DeploymentGroupStateEnum =
   | "DELETING"
   | "FAILED"
   | "SUSPENDED"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const DeploymentGroupStateEnum = /*@__PURE__*/ S.String;
 
 /** A DeploymentGroup is a collection of DeploymentUnits that in a DAG-like structure. */
@@ -338,7 +340,8 @@ export const TerraformErrorList = /*@__PURE__*/ S.Array(
 
 export type ProviderConfigSourceTypeEnum =
   | "PROVIDER_SOURCE_UNSPECIFIED"
-  | "SERVICE_MAINTAINED";
+  | "SERVICE_MAINTAINED"
+  | (string & {});
 export const ProviderConfigSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** ProviderConfig contains the provider configurations. */
@@ -359,7 +362,8 @@ export type DeploymentLockStateEnum =
   | "LOCKING"
   | "UNLOCKING"
   | "LOCK_FAILED"
-  | "UNLOCK_FAILED";
+  | "UNLOCK_FAILED"
+  | (string & {});
 export const DeploymentLockStateEnum = /*@__PURE__*/ S.String;
 
 export type DeploymentStateEnum =
@@ -370,13 +374,15 @@ export type DeploymentStateEnum =
   | "DELETING"
   | "FAILED"
   | "SUSPENDED"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const DeploymentStateEnum = /*@__PURE__*/ S.String;
 
 export type DeploymentQuotaValidationEnum =
   | "QUOTA_VALIDATION_UNSPECIFIED"
   | "ENABLED"
-  | "ENFORCED";
+  | "ENFORCED"
+  | (string & {});
 export const DeploymentQuotaValidationEnum = /*@__PURE__*/ S.String;
 
 export type DeploymentErrorCodeEnum =
@@ -387,7 +393,8 @@ export type DeploymentErrorCodeEnum =
   | "DELETE_BUILD_RUN_FAILED"
   | "BUCKET_CREATION_PERMISSION_DENIED"
   | "BUCKET_CREATION_FAILED"
-  | "EXTERNAL_VALUE_SOURCE_IMPORT_FAILED";
+  | "EXTERNAL_VALUE_SOURCE_IMPORT_FAILED"
+  | (string & {});
 export const DeploymentErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** A set of files in a Git repository. */
@@ -603,7 +610,8 @@ export type PreviewErrorCodeEnum =
   | "DEPLOYMENT_LOCK_ACQUIRE_FAILED"
   | "PREVIEW_BUILD_API_FAILED"
   | "PREVIEW_BUILD_RUN_FAILED"
-  | "EXTERNAL_VALUE_SOURCE_IMPORT_FAILED";
+  | "EXTERNAL_VALUE_SOURCE_IMPORT_FAILED"
+  | (string & {});
 export const PreviewErrorCodeEnum = /*@__PURE__*/ S.String;
 
 export type PreviewStateEnum =
@@ -614,7 +622,8 @@ export type PreviewStateEnum =
   | "STALE"
   | "DELETING"
   | "FAILED"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const PreviewStateEnum = /*@__PURE__*/ S.String;
 
 /** Artifacts created by preview. */
@@ -636,7 +645,8 @@ export const PreviewArtifacts = /*@__PURE__*/ S.suspend(() =>
 export type PreviewPreviewModeEnum =
   | "PREVIEW_MODE_UNSPECIFIED"
   | "DEFAULT"
-  | "DELETE";
+  | "DELETE"
+  | (string & {});
 export const PreviewPreviewModeEnum = /*@__PURE__*/ S.String;
 
 /** A preview represents a set of actions Infra Manager would perform to move the resources towards the desired state as specified in the configuration. */
@@ -742,7 +752,8 @@ export type DeleteProjectsLocationsDeploymentGroupsDeploymentReferencePolicyEnum
     | "DEPLOYMENT_REFERENCE_POLICY_UNSPECIFIED"
     | "FAIL_IF_ANY_REFERENCES_EXIST"
     | "FAIL_IF_METADATA_REFERENCES_EXIST"
-    | "IGNORE_DEPLOYMENT_REFERENCES";
+    | "IGNORE_DEPLOYMENT_REFERENCES"
+    | (string & {});
 export const DeleteProjectsLocationsDeploymentGroupsDeploymentReferencePolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -781,7 +792,8 @@ export const DeleteProjectsLocationsDeploymentGroupsRequest =
 export type DeleteProjectsLocationsDeploymentsDeletePolicyEnum =
   | "DELETE_POLICY_UNSPECIFIED"
   | "DELETE"
-  | "ABANDON";
+  | "ABANDON"
+  | (string & {});
 export const DeleteProjectsLocationsDeploymentsDeletePolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -894,7 +906,8 @@ export const DeleteStateProjectsLocationsDeploymentsRequest =
 export type DeprovisionDeploymentGroupRequestDeletePolicyEnum =
   | "DELETE_POLICY_UNSPECIFIED"
   | "DELETE"
-  | "ABANDON";
+  | "ABANDON"
+  | (string & {});
 export const DeprovisionDeploymentGroupRequestDeletePolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -1178,7 +1191,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1424,13 +1438,15 @@ export type RevisionActionEnum =
   | "ACTION_UNSPECIFIED"
   | "CREATE"
   | "UPDATE"
-  | "DELETE";
+  | "DELETE"
+  | (string & {});
 export const RevisionActionEnum = /*@__PURE__*/ S.String;
 
 export type RevisionQuotaValidationEnum =
   | "QUOTA_VALIDATION_UNSPECIFIED"
   | "ENABLED"
-  | "ENFORCED";
+  | "ENFORCED"
+  | (string & {});
 export const RevisionQuotaValidationEnum = /*@__PURE__*/ S.String;
 
 export type RevisionErrorCodeEnum =
@@ -1439,14 +1455,16 @@ export type RevisionErrorCodeEnum =
   | "APPLY_BUILD_API_FAILED"
   | "APPLY_BUILD_RUN_FAILED"
   | "QUOTA_VALIDATION_FAILED"
-  | "EXTERNAL_VALUE_SOURCE_IMPORT_FAILED";
+  | "EXTERNAL_VALUE_SOURCE_IMPORT_FAILED"
+  | (string & {});
 export const RevisionErrorCodeEnum = /*@__PURE__*/ S.String;
 
 export type RevisionStateEnum =
   | "STATE_UNSPECIFIED"
   | "APPLYING"
   | "APPLIED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const RevisionStateEnum = /*@__PURE__*/ S.String;
 
 /** A child resource of a Deployment generated by a 'CreateDeployment' or 'UpdateDeployment' call. Each Revision contains metadata pertaining to a snapshot of a particular Deployment. */
@@ -1564,7 +1582,8 @@ export type ResourceIntentEnum =
   | "UPDATE"
   | "DELETE"
   | "RECREATE"
-  | "UNCHANGED";
+  | "UNCHANGED"
+  | (string & {});
 export const ResourceIntentEnum = /*@__PURE__*/ S.String;
 
 export type ResourceStateEnum =
@@ -1572,7 +1591,8 @@ export type ResourceStateEnum =
   | "PLANNED"
   | "IN_PROGRESS"
   | "RECONCILED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ResourceStateEnum = /*@__PURE__*/ S.String;
 
 /** Terraform info of a Resource. */
@@ -1679,7 +1699,8 @@ export type ResourceChangeIntentEnum =
   | "UPDATE"
   | "DELETE"
   | "RECREATE"
-  | "UNCHANGED";
+  | "UNCHANGED"
+  | (string & {});
 export const ResourceChangeIntentEnum = /*@__PURE__*/ S.String;
 
 /** Terraform info of a ResourceChange. */
@@ -1864,7 +1885,8 @@ export type TerraformVersionStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "DEPRECATED"
-  | "OBSOLETE";
+  | "OBSOLETE"
+  | (string & {});
 export const TerraformVersionStateEnum = /*@__PURE__*/ S.String;
 
 /** A TerraformVersion represents the support state the corresponding Terraform version. */

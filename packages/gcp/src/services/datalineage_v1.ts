@@ -231,7 +231,8 @@ export type GoogleCloudDatacatalogLineageV1OriginSourceTypeEnum =
   | "DATAPROC"
   | "VERTEX_AI"
   | "DATAFLOW"
-  | "LOOKER_CORE";
+  | "LOOKER_CORE"
+  | (string & {});
 export const GoogleCloudDatacatalogLineageV1OriginSourceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -315,7 +316,8 @@ export type GoogleCloudDatacatalogLineageV1RunStateEnum =
   | "STARTED"
   | "COMPLETED"
   | "FAILED"
-  | "ABORTED";
+  | "ABORTED"
+  | (string & {});
 export const GoogleCloudDatacatalogLineageV1RunStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -392,7 +394,8 @@ export const GoogleCloudDatacatalogLineageV1EntityReference =
 export type GoogleCloudDatacatalogLineageV1DependencyInfoDependencyTypeEnum =
   | "DEPENDENCY_TYPE_UNSPECIFIED"
   | "EXACT_COPY"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const GoogleCloudDatacatalogLineageV1DependencyInfoDependencyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -646,7 +649,8 @@ export type GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngest
     | "BIGQUERY"
     | "DATAPROC"
     | "LOOKER_CORE"
-    | "MANAGED_AIRFLOW";
+    | "MANAGED_AIRFLOW"
+    | (string & {});
 export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelectorIntegrationEnum =
   /*@__PURE__*/ S.String;
 
@@ -1244,7 +1248,7 @@ export const GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse =
   }) as any as S.Schema<GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse>;
 
 export type GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersEntitySetEnum =
-  "ENTITY_SET_UNSPECIFIED" | "ENTITIES";
+  "ENTITY_SET_UNSPECIFIED" | "ENTITIES" | (string & {});
 export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersEntitySetEnum =
   /*@__PURE__*/ S.String;
 
@@ -1265,7 +1269,7 @@ export const GoogleTypeInterval = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleTypeInterval>;
 
 export type GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersDependencyTypesItemEnum =
-  "DEPENDENCY_TYPE_UNSPECIFIED" | "EXACT_COPY" | "OTHER";
+  "DEPENDENCY_TYPE_UNSPECIFIED" | "EXACT_COPY" | "OTHER" | (string & {});
 export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersDependencyTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1361,7 +1365,7 @@ export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCri
   }) as any as S.Schema<GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria>;
 
 export type GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestDirectionEnum =
-  "SEARCH_DIRECTION_UNSPECIFIED" | "DOWNSTREAM" | "UPSTREAM";
+  "SEARCH_DIRECTION_UNSPECIFIED" | "DOWNSTREAM" | "UPSTREAM" | (string & {});
 export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestDirectionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1426,7 +1430,7 @@ export const SearchLineageStreamingProjectsLocationsRequest =
   }) as any as S.Schema<SearchLineageStreamingProjectsLocationsRequest>;
 
 export type GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfoDependencyTypeEnum =
-  "DEPENDENCY_TYPE_UNSPECIFIED" | "EXACT_COPY" | "OTHER";
+  "DEPENDENCY_TYPE_UNSPECIFIED" | "EXACT_COPY" | "OTHER" | (string & {});
 export const GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfoDependencyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1588,7 +1592,7 @@ export const SearchLinksProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchLinksProjectsLocationsRequest>;
 
 export type GoogleCloudDatacatalogLineageV1LinkDependencyInfoDependencyTypeEnum =
-  "DEPENDENCY_TYPE_UNSPECIFIED" | "EXACT_COPY" | "OTHER";
+  "DEPENDENCY_TYPE_UNSPECIFIED" | "EXACT_COPY" | "OTHER" | (string & {});
 export const GoogleCloudDatacatalogLineageV1LinkDependencyInfoDependencyTypeEnum =
   /*@__PURE__*/ S.String;
 

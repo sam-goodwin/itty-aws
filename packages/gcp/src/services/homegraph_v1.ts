@@ -138,7 +138,8 @@ export type QueryRequestDeviceViewEnum =
   | "DEVICE_VIEW_UNSPECIFIED"
   | "SMART_HOME_TRAIT_ONLY"
   | "HOME_TRAIT_ONLY"
-  | "HOME_TRAIT_AND_SMART_HOME_TRAIT";
+  | "HOME_TRAIT_AND_SMART_HOME_TRAIT"
+  | (string & {});
 export const QueryRequestDeviceViewEnum = /*@__PURE__*/ S.String;
 
 /** Request type for the [`Query`](#google.home.graph.v1.HomeGraphApiService.Query) call. */

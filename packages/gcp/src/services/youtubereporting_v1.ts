@@ -165,7 +165,8 @@ export type GdataMediaReferenceTypeEnum =
   | "DIFF_UPLOAD_REQUEST"
   | "DIFF_UPLOAD_RESPONSE"
   | "COSMO_BINARY_REFERENCE"
-  | "ARBITRARY_BYTES";
+  | "ARBITRARY_BYTES"
+  | (string & {});
 export const GdataMediaReferenceTypeEnum = /*@__PURE__*/ S.String;
 
 export type GdataCompositeMediaReferenceTypeEnum =
@@ -173,7 +174,8 @@ export type GdataCompositeMediaReferenceTypeEnum =
   | "BLOB_REF"
   | "INLINE"
   | "BIGSTORE_REF"
-  | "COSMO_BINARY_REFERENCE";
+  | "COSMO_BINARY_REFERENCE"
+  | (string & {});
 export const GdataCompositeMediaReferenceTypeEnum = /*@__PURE__*/ S.String;
 
 /** gdata */

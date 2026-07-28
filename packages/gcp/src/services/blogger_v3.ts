@@ -81,7 +81,12 @@ export const ApproveCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApproveCommentsRequest",
 }) as any as S.Schema<ApproveCommentsRequest>;
 
-export type CommentStatusEnum = "LIVE" | "EMPTIED" | "PENDING" | "SPAM";
+export type CommentStatusEnum =
+  | "LIVE"
+  | "EMPTIED"
+  | "PENDING"
+  | "SPAM"
+  | (string & {});
 export const CommentStatusEnum = /*@__PURE__*/ S.String;
 
 export interface CommentInReplyTo {
@@ -277,7 +282,8 @@ export type GetBlogsViewEnum =
   | "VIEW_TYPE_UNSPECIFIED"
   | "READER"
   | "AUTHOR"
-  | "ADMIN";
+  | "ADMIN"
+  | (string & {});
 export const GetBlogsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetBlogsRequest {
@@ -315,7 +321,12 @@ export const BlogPages = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BlogPages" }) as any as S.Schema<BlogPages>;
 
-export type PostStatusEnum = "LIVE" | "DRAFT" | "SCHEDULED" | "SOFT_TRASHED";
+export type PostStatusEnum =
+  | "LIVE"
+  | "DRAFT"
+  | "SCHEDULED"
+  | "SOFT_TRASHED"
+  | (string & {});
 export const PostStatusEnum = /*@__PURE__*/ S.String;
 
 export interface PostImagesItem {
@@ -421,7 +432,8 @@ export const PostLocation = /*@__PURE__*/ S.suspend(() =>
 export type PostReaderCommentsEnum =
   | "ALLOW"
   | "DONT_ALLOW_SHOW_EXISTING"
-  | "DONT_ALLOW_HIDE_EXISTING";
+  | "DONT_ALLOW_HIDE_EXISTING"
+  | (string & {});
 export const PostReaderCommentsEnum = /*@__PURE__*/ S.String;
 
 export interface Post {
@@ -528,7 +540,7 @@ export const BlogLocale = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BlogLocale" }) as any as S.Schema<BlogLocale>;
 
-export type BlogStatusEnum = "LIVE" | "DELETED";
+export type BlogStatusEnum = "LIVE" | "DELETED" | (string & {});
 export const BlogStatusEnum = /*@__PURE__*/ S.String;
 
 export interface Blog {
@@ -602,7 +614,8 @@ export type BlogPerUserInfoRoleEnum =
   | "VIEW_TYPE_UNSPECIFIED"
   | "READER"
   | "AUTHOR"
-  | "ADMIN";
+  | "ADMIN"
+  | (string & {});
 export const BlogPerUserInfoRoleEnum = /*@__PURE__*/ S.String;
 
 export interface BlogPerUserInfo {
@@ -652,7 +665,8 @@ export type GetByPathPostsViewEnum =
   | "VIEW_TYPE_UNSPECIFIED"
   | "READER"
   | "AUTHOR"
-  | "ADMIN";
+  | "ADMIN"
+  | (string & {});
 export const GetByPathPostsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetByPathPostsRequest {
@@ -682,7 +696,8 @@ export type GetByUrlBlogsViewEnum =
   | "VIEW_TYPE_UNSPECIFIED"
   | "READER"
   | "AUTHOR"
-  | "ADMIN";
+  | "ADMIN"
+  | (string & {});
 export const GetByUrlBlogsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetByUrlBlogsRequest {
@@ -709,7 +724,8 @@ export type GetCommentsViewEnum =
   | "VIEW_TYPE_UNSPECIFIED"
   | "READER"
   | "AUTHOR"
-  | "ADMIN";
+  | "ADMIN"
+  | (string & {});
 export const GetCommentsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetCommentsRequest {
@@ -739,7 +755,8 @@ export type GetPagesViewEnum =
   | "VIEW_TYPE_UNSPECIFIED"
   | "READER"
   | "AUTHOR"
-  | "ADMIN";
+  | "ADMIN"
+  | (string & {});
 export const GetPagesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetPagesRequest {
@@ -773,7 +790,7 @@ export const PageBlog = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PageBlog" }) as any as S.Schema<PageBlog>;
 
-export type PageStatusEnum = "LIVE" | "DRAFT" | "SOFT_TRASHED";
+export type PageStatusEnum = "LIVE" | "DRAFT" | "SOFT_TRASHED" | (string & {});
 export const PageStatusEnum = /*@__PURE__*/ S.String;
 
 export interface PageAuthorImage {
@@ -853,7 +870,7 @@ export const Page = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Page" }) as any as S.Schema<Page>;
 
-export type GetPageViewsRangeEnum = "all" | "30DAYS" | "7DAYS";
+export type GetPageViewsRangeEnum = "all" | "30DAYS" | "7DAYS" | (string & {});
 export const GetPageViewsRangeEnum = /*@__PURE__*/ S.String;
 
 export type GetPageViewsRangeEnumList = ReadonlyArray<GetPageViewsRangeEnum>;
@@ -883,7 +900,8 @@ export const GetPageViewsRequest = /*@__PURE__*/ S.suspend(() =>
 export type PageviewsCountsItemTimeRangeEnum =
   | "ALL_TIME"
   | "THIRTY_DAYS"
-  | "SEVEN_DAYS";
+  | "SEVEN_DAYS"
+  | (string & {});
 export const PageviewsCountsItemTimeRangeEnum = /*@__PURE__*/ S.String;
 
 export interface PageviewsCountsItem {
@@ -926,7 +944,8 @@ export type GetPostsViewEnum =
   | "VIEW_TYPE_UNSPECIFIED"
   | "READER"
   | "AUTHOR"
-  | "ADMIN";
+  | "ADMIN"
+  | (string & {});
 export const GetPostsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetPostsRequest {
@@ -1148,7 +1167,8 @@ export type ListByBlogCommentsStatusEnum =
   | "LIVE"
   | "EMPTIED"
   | "PENDING"
-  | "SPAM";
+  | "SPAM"
+  | (string & {});
 export const ListByBlogCommentsStatusEnum = /*@__PURE__*/ S.String;
 
 export type ListByBlogCommentsStatusEnumList =
@@ -1212,10 +1232,11 @@ export type ListByUserBlogsViewEnum =
   | "VIEW_TYPE_UNSPECIFIED"
   | "READER"
   | "AUTHOR"
-  | "ADMIN";
+  | "ADMIN"
+  | (string & {});
 export const ListByUserBlogsViewEnum = /*@__PURE__*/ S.String;
 
-export type ListByUserBlogsStatusEnum = "LIVE" | "DELETED";
+export type ListByUserBlogsStatusEnum = "LIVE" | "DELETED" | (string & {});
 export const ListByUserBlogsStatusEnum = /*@__PURE__*/ S.String;
 
 export type ListByUserBlogsStatusEnumList =
@@ -1228,7 +1249,8 @@ export type ListByUserBlogsRoleEnum =
   | "VIEW_TYPE_UNSPECIFIED"
   | "READER"
   | "AUTHOR"
-  | "ADMIN";
+  | "ADMIN"
+  | (string & {});
 export const ListByUserBlogsRoleEnum = /*@__PURE__*/ S.String;
 
 export type ListByUserBlogsRoleEnumList =
@@ -1290,14 +1312,20 @@ export const BlogList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BlogList" }) as any as S.Schema<BlogList>;
 
-export type ListCommentsStatusEnum = "LIVE" | "EMPTIED" | "PENDING" | "SPAM";
+export type ListCommentsStatusEnum =
+  | "LIVE"
+  | "EMPTIED"
+  | "PENDING"
+  | "SPAM"
+  | (string & {});
 export const ListCommentsStatusEnum = /*@__PURE__*/ S.String;
 
 export type ListCommentsViewEnum =
   | "VIEW_TYPE_UNSPECIFIED"
   | "READER"
   | "AUTHOR"
-  | "ADMIN";
+  | "ADMIN"
+  | (string & {});
 export const ListCommentsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListCommentsRequest {
@@ -1333,7 +1361,11 @@ export const ListCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCommentsRequest",
 }) as any as S.Schema<ListCommentsRequest>;
 
-export type ListPagesStatusEnum = "LIVE" | "DRAFT" | "SOFT_TRASHED";
+export type ListPagesStatusEnum =
+  | "LIVE"
+  | "DRAFT"
+  | "SOFT_TRASHED"
+  | (string & {});
 export const ListPagesStatusEnum = /*@__PURE__*/ S.String;
 
 export type ListPagesStatusEnumList = ReadonlyArray<ListPagesStatusEnum>;
@@ -1345,7 +1377,8 @@ export type ListPagesViewEnum =
   | "VIEW_TYPE_UNSPECIFIED"
   | "READER"
   | "AUTHOR"
-  | "ADMIN";
+  | "ADMIN"
+  | (string & {});
 export const ListPagesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListPagesRequest {
@@ -1403,7 +1436,8 @@ export type ListPostsStatusEnum =
   | "LIVE"
   | "DRAFT"
   | "SCHEDULED"
-  | "SOFT_TRASHED";
+  | "SOFT_TRASHED"
+  | (string & {});
 export const ListPostsStatusEnum = /*@__PURE__*/ S.String;
 
 export type ListPostsStatusEnumList = ReadonlyArray<ListPostsStatusEnum>;
@@ -1414,20 +1448,23 @@ export const ListPostsStatusEnumList = /*@__PURE__*/ S.Array(
 export type ListPostsOrderByEnum =
   | "ORDER_BY_UNSPECIFIED"
   | "PUBLISHED"
-  | "UPDATED";
+  | "UPDATED"
+  | (string & {});
 export const ListPostsOrderByEnum = /*@__PURE__*/ S.String;
 
 export type ListPostsViewEnum =
   | "VIEW_TYPE_UNSPECIFIED"
   | "READER"
   | "AUTHOR"
-  | "ADMIN";
+  | "ADMIN"
+  | (string & {});
 export const ListPostsViewEnum = /*@__PURE__*/ S.String;
 
 export type ListPostsSortOptionEnum =
   | "SORT_OPTION_UNSPECIFIED"
   | "DESCENDING"
-  | "ASCENDING";
+  | "ASCENDING"
+  | (string & {});
 export const ListPostsSortOptionEnum = /*@__PURE__*/ S.String;
 
 export interface ListPostsRequest {
@@ -1495,21 +1532,24 @@ export const PostList = /*@__PURE__*/ S.suspend(() =>
 export type ListPostUserInfosOrderByEnum =
   | "ORDER_BY_UNSPECIFIED"
   | "PUBLISHED"
-  | "UPDATED";
+  | "UPDATED"
+  | (string & {});
 export const ListPostUserInfosOrderByEnum = /*@__PURE__*/ S.String;
 
 export type ListPostUserInfosViewEnum =
   | "VIEW_TYPE_UNSPECIFIED"
   | "READER"
   | "AUTHOR"
-  | "ADMIN";
+  | "ADMIN"
+  | (string & {});
 export const ListPostUserInfosViewEnum = /*@__PURE__*/ S.String;
 
 export type ListPostUserInfosStatusEnum =
   | "LIVE"
   | "DRAFT"
   | "SCHEDULED"
-  | "SOFT_TRASHED";
+  | "SOFT_TRASHED"
+  | (string & {});
 export const ListPostUserInfosStatusEnum = /*@__PURE__*/ S.String;
 
 export type ListPostUserInfosStatusEnumList =
@@ -1759,7 +1799,8 @@ export const RevertPostsRequest = /*@__PURE__*/ S.suspend(() =>
 export type SearchPostsOrderByEnum =
   | "ORDER_BY_UNSPECIFIED"
   | "PUBLISHED"
-  | "UPDATED";
+  | "UPDATED"
+  | (string & {});
 export const SearchPostsOrderByEnum = /*@__PURE__*/ S.String;
 
 export interface SearchPostsRequest {

@@ -56,10 +56,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -317,7 +318,7 @@ export const DataCatalogMetricDefinitionMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DataCatalogMetricDefinitionMap>;
 
 /** * `user` - user * `ai_generated` - ai_generated */
-export type CreatedSourceEnum = "user" | "ai_generated";
+export type CreatedSourceEnum = "user" | "ai_generated" | (string & {});
 export const CreatedSourceEnum = /*@__PURE__*/ S.String;
 
 export interface DataCatalogMetric {
@@ -632,7 +633,8 @@ export type DataCatalogMetricsRunCreateRequestRefresh =
   | "lazy_async"
   | "force_blocking"
   | "force_async"
-  | "force_cache";
+  | "force_cache"
+  | (string & {});
 export const DataCatalogMetricsRunCreateRequestRefresh = /*@__PURE__*/ S.String;
 
 /** * `second` - second * `minute` - minute * `hour` - hour * `day` - day * `week` - week * `month` - month * `quarter` - quarter * `year` - year */
@@ -644,7 +646,8 @@ export type DataCatalogMetricRunRequestIntervalEnum =
   | "week"
   | "month"
   | "quarter"
-  | "year";
+  | "year"
+  | (string & {});
 export const DataCatalogMetricRunRequestIntervalEnum = /*@__PURE__*/ S.String;
 
 export interface DataCatalogMetricsRunCreateRequest {

@@ -122,7 +122,8 @@ export type StartSelectorType =
   | "PRODUCER_TIMESTAMP"
   | "NOW"
   | "EARLIEST"
-  | "CONTINUATION_TOKEN";
+  | "CONTINUATION_TOKEN"
+  | (string & {});
 export const StartSelectorType = /*@__PURE__*/ S.String;
 
 export type FragmentNumberString = string;

@@ -44,7 +44,7 @@ export const PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList =
   ) as any as S.Schema<PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList>;
 
 /** * `add` - add * `remove` - remove * `set` - set */
-export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
+export type BulkUpdateTagsActionEnum = "add" | "remove" | "set" | (string & {});
 export const BulkUpdateTagsActionEnum = /*@__PURE__*/ S.String;
 
 /** Tag names to add, remove, or set. */
@@ -171,7 +171,8 @@ export type PropertyDefinitionsListRequestType =
   | "event"
   | "person"
   | "group"
-  | "session";
+  | "session"
+  | (string & {});
 export const PropertyDefinitionsListRequestType = /*@__PURE__*/ S.String;
 
 export interface PropertyDefinitionsListRequest {
@@ -257,10 +258,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -298,7 +300,8 @@ export type PropertyDefinitionTypeEnum =
   | "String"
   | "Numeric"
   | "Boolean"
-  | "Duration";
+  | "Duration"
+  | (string & {});
 export const PropertyDefinitionTypeEnum = /*@__PURE__*/ S.String;
 
 export type EnterprisePropertyDefinitionPropertyType =

@@ -239,7 +239,8 @@ export const DeleteProjectsRulesetsRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetExecutableProjectsReleasesExecutableVersionEnum =
   | "RELEASE_EXECUTABLE_VERSION_UNSPECIFIED"
   | "FIREBASE_RULES_EXECUTABLE_V1"
-  | "FIREBASE_RULES_EXECUTABLE_V2";
+  | "FIREBASE_RULES_EXECUTABLE_V2"
+  | (string & {});
 export const GetExecutableProjectsReleasesExecutableVersionEnum =
   /*@__PURE__*/ S.String;
 
@@ -270,14 +271,16 @@ export const GetExecutableProjectsReleasesRequest = /*@__PURE__*/ S.suspend(
 export type GetReleaseExecutableResponseExecutableVersionEnum =
   | "RELEASE_EXECUTABLE_VERSION_UNSPECIFIED"
   | "FIREBASE_RULES_EXECUTABLE_V1"
-  | "FIREBASE_RULES_EXECUTABLE_V2";
+  | "FIREBASE_RULES_EXECUTABLE_V2"
+  | (string & {});
 export const GetReleaseExecutableResponseExecutableVersionEnum =
   /*@__PURE__*/ S.String;
 
 export type GetReleaseExecutableResponseLanguageEnum =
   | "LANGUAGE_UNSPECIFIED"
   | "FIREBASE_RULES"
-  | "EVENT_FLOW_TRIGGERS";
+  | "EVENT_FLOW_TRIGGERS"
+  | (string & {});
 export const GetReleaseExecutableResponseLanguageEnum = /*@__PURE__*/ S.String;
 
 /** The response for FirebaseRulesService.GetReleaseExecutable */
@@ -482,14 +485,16 @@ export const PatchProjectsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
 export type TestCaseExpectationEnum =
   | "EXPECTATION_UNSPECIFIED"
   | "ALLOW"
-  | "DENY";
+  | "DENY"
+  | (string & {});
 export const TestCaseExpectationEnum = /*@__PURE__*/ S.String;
 
 export type TestCaseExpressionReportLevelEnum =
   | "LEVEL_UNSPECIFIED"
   | "NONE"
   | "FULL"
-  | "VISITED";
+  | "VISITED"
+  | (string & {});
 export const TestCaseExpressionReportLevelEnum = /*@__PURE__*/ S.String;
 
 /** Possible result values from the function mock invocation. */
@@ -548,7 +553,8 @@ export const FunctionMockList = /*@__PURE__*/ S.Array(
 export type TestCasePathEncodingEnum =
   | "ENCODING_UNSPECIFIED"
   | "URL_ENCODED"
-  | "PLAIN";
+  | "PLAIN"
+  | (string & {});
 export const TestCasePathEncodingEnum = /*@__PURE__*/ S.String;
 
 /** `TestCase` messages provide the request context and an expectation as to whether the given context will be allowed or denied. Test cases may specify the `request`, `resource`, and `function_mocks` to mock a function call to a service-provided function. The `request` object represents context present at request-time. The `resource` is the value of the target resource as it appears in persistent storage before the request is executed. */
@@ -657,7 +663,8 @@ export type IssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "DEPRECATION"
   | "WARNING"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const IssueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Issues include warnings, errors, and deprecation notices. */
@@ -749,7 +756,11 @@ export const FunctionCallList = /*@__PURE__*/ S.Array(
   FunctionCall,
 ) as any as S.Schema<FunctionCallList>;
 
-export type TestResultStateEnum = "STATE_UNSPECIFIED" | "SUCCESS" | "FAILURE";
+export type TestResultStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "SUCCESS"
+  | "FAILURE"
+  | (string & {});
 export const TestResultStateEnum = /*@__PURE__*/ S.String;
 
 /** Store the position and access outcome for an expression visited in rules. */

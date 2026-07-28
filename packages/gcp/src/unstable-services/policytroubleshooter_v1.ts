@@ -117,7 +117,7 @@ export const TroubleshootIamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TroubleshootIamRequest>;
 
 export type GoogleCloudPolicytroubleshooterV1BindingExplanationRolePermissionRelevanceEnum =
-  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH";
+  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH" | (string & {});
 export const GoogleCloudPolicytroubleshooterV1BindingExplanationRolePermissionRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -126,12 +126,13 @@ export type GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembersh
     | "MEMBERSHIP_INCLUDED"
     | "MEMBERSHIP_NOT_INCLUDED"
     | "MEMBERSHIP_UNKNOWN_INFO_DENIED"
-    | "MEMBERSHIP_UNKNOWN_UNSUPPORTED";
+    | "MEMBERSHIP_UNKNOWN_UNSUPPORTED"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembershipMembershipEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembershipRelevanceEnum =
-  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH";
+  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH" | (string & {});
 export const GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembershipRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -174,14 +175,16 @@ export type GoogleCloudPolicytroubleshooterV1BindingExplanationAccessEnum =
   | "GRANTED"
   | "NOT_GRANTED"
   | "UNKNOWN_CONDITIONAL"
-  | "UNKNOWN_INFO_DENIED";
+  | "UNKNOWN_INFO_DENIED"
+  | (string & {});
 export const GoogleCloudPolicytroubleshooterV1BindingExplanationAccessEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicytroubleshooterV1BindingExplanationRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "NORMAL"
-  | "HIGH";
+  | "HIGH"
+  | (string & {});
 export const GoogleCloudPolicytroubleshooterV1BindingExplanationRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -189,7 +192,8 @@ export type GoogleCloudPolicytroubleshooterV1BindingExplanationRolePermissionEnu
     | "ROLE_PERMISSION_UNSPECIFIED"
     | "ROLE_PERMISSION_INCLUDED"
     | "ROLE_PERMISSION_NOT_INCLUDED"
-    | "ROLE_PERMISSION_UNKNOWN_INFO_DENIED";
+    | "ROLE_PERMISSION_UNKNOWN_INFO_DENIED"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterV1BindingExplanationRolePermissionEnum =
   /*@__PURE__*/ S.String;
 
@@ -295,7 +299,8 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -368,14 +373,16 @@ export type GoogleCloudPolicytroubleshooterV1ExplainedPolicyAccessEnum =
   | "GRANTED"
   | "NOT_GRANTED"
   | "UNKNOWN_CONDITIONAL"
-  | "UNKNOWN_INFO_DENIED";
+  | "UNKNOWN_INFO_DENIED"
+  | (string & {});
 export const GoogleCloudPolicytroubleshooterV1ExplainedPolicyAccessEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicytroubleshooterV1ExplainedPolicyRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "NORMAL"
-  | "HIGH";
+  | "HIGH"
+  | (string & {});
 export const GoogleCloudPolicytroubleshooterV1ExplainedPolicyRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -458,7 +465,8 @@ export type GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponseAccess
     | "GRANTED"
     | "NOT_GRANTED"
     | "UNKNOWN_CONDITIONAL"
-    | "UNKNOWN_INFO_DENIED";
+    | "UNKNOWN_INFO_DENIED"
+    | (string & {});
 export const GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponseAccessEnum =
   /*@__PURE__*/ S.String;
 

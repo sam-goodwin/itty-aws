@@ -112,7 +112,8 @@ export const DateTime = /*@__PURE__*/ S.suspend(() =>
 export type ShippingInfoShippingStatusEnum =
   | "SHIPPING_STATE_UNSPECIFIED"
   | "SHIPPED"
-  | "DELIVERED";
+  | "DELIVERED"
+  | (string & {});
 export const ShippingInfoShippingStatusEnum = /*@__PURE__*/ S.String;
 
 /** The shipping information for the order. */

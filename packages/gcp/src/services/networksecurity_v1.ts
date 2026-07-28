@@ -294,13 +294,18 @@ export const CloneItemsProjectsLocationsAddressGroupsRequest =
     identifier: "CloneItemsProjectsLocationsAddressGroupsRequest",
   }) as any as S.Schema<CloneItemsProjectsLocationsAddressGroupsRequest>;
 
-export type AddressGroupTypeEnum = "TYPE_UNSPECIFIED" | "IPV4" | "IPV6";
+export type AddressGroupTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "IPV4"
+  | "IPV6"
+  | (string & {});
 export const AddressGroupTypeEnum = /*@__PURE__*/ S.String;
 
 export type AddressGroupPurposeItemEnum =
   | "PURPOSE_UNSPECIFIED"
   | "DEFAULT"
-  | "CLOUD_ARMOR";
+  | "CLOUD_ARMOR"
+  | (string & {});
 export const AddressGroupPurposeItemEnum = /*@__PURE__*/ S.String;
 
 export type AddressGroupPurposeItemEnumList =
@@ -399,7 +404,8 @@ export type FirewallEndpointStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "INACTIVE";
+  | "INACTIVE"
+  | (string & {});
 export const FirewallEndpointStateEnum = /*@__PURE__*/ S.String;
 
 /** This is a subset of the FirewallEndpointAssociation message, containing fields to be used by the consumer. */
@@ -588,7 +594,8 @@ export type SecurityProfileTypeEnum =
   | "THREAT_PREVENTION"
   | "CUSTOM_MIRRORING"
   | "CUSTOM_INTERCEPT"
-  | "URL_FILTERING";
+  | "URL_FILTERING"
+  | (string & {});
 export const SecurityProfileTypeEnum = /*@__PURE__*/ S.String;
 
 export type ThreatOverrideTypeEnum =
@@ -597,7 +604,8 @@ export type ThreatOverrideTypeEnum =
   | "VULNERABILITY"
   | "ANTIVIRUS"
   | "SPYWARE"
-  | "DNS";
+  | "DNS"
+  | (string & {});
 export const ThreatOverrideTypeEnum = /*@__PURE__*/ S.String;
 
 export type ThreatOverrideActionEnum =
@@ -605,7 +613,8 @@ export type ThreatOverrideActionEnum =
   | "DEFAULT_ACTION"
   | "ALLOW"
   | "ALERT"
-  | "DENY";
+  | "DENY"
+  | (string & {});
 export const ThreatOverrideActionEnum = /*@__PURE__*/ S.String;
 
 /** Defines what action to take for a specific threat_id match. */
@@ -638,7 +647,8 @@ export type AntivirusOverrideProtocolEnum =
   | "IMAP"
   | "HTTP2"
   | "HTTP"
-  | "FTP";
+  | "FTP"
+  | (string & {});
 export const AntivirusOverrideProtocolEnum = /*@__PURE__*/ S.String;
 
 export type AntivirusOverrideActionEnum =
@@ -646,7 +656,8 @@ export type AntivirusOverrideActionEnum =
   | "DEFAULT_ACTION"
   | "ALLOW"
   | "ALERT"
-  | "DENY";
+  | "DENY"
+  | (string & {});
 export const AntivirusOverrideActionEnum = /*@__PURE__*/ S.String;
 
 /** Defines what action to take for antivirus threats per protocol. */
@@ -676,7 +687,8 @@ export type SeverityOverrideSeverityEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "CRITICAL";
+  | "CRITICAL"
+  | (string & {});
 export const SeverityOverrideSeverityEnum = /*@__PURE__*/ S.String;
 
 export type SeverityOverrideActionEnum =
@@ -684,7 +696,8 @@ export type SeverityOverrideActionEnum =
   | "DEFAULT_ACTION"
   | "ALLOW"
   | "ALERT"
-  | "DENY";
+  | "DENY"
+  | (string & {});
 export const SeverityOverrideActionEnum = /*@__PURE__*/ S.String;
 
 /** Defines what action to take for a specific severity match. */
@@ -730,7 +743,8 @@ export const ThreatPreventionProfile = /*@__PURE__*/ S.suspend(() =>
 export type UrlFilterFilteringActionEnum =
   | "URL_FILTERING_ACTION_UNSPECIFIED"
   | "ALLOW"
-  | "DENY";
+  | "DENY"
+  | (string & {});
 export const UrlFilterFilteringActionEnum = /*@__PURE__*/ S.String;
 
 /** A URL filter defines an action to take for some URL match. */
@@ -964,7 +978,8 @@ export const RuleList = /*@__PURE__*/ S.Array(
 export type AuthorizationPolicyActionEnum =
   | "ACTION_UNSPECIFIED"
   | "ALLOW"
-  | "DENY";
+  | "DENY"
+  | (string & {});
 export const AuthorizationPolicyActionEnum = /*@__PURE__*/ S.String;
 
 /** AuthorizationPolicy is a resource that specifies how a server should authorize incoming connections. This resource in itself does not change the configuration unless it's attached to a target https proxy or endpoint config selector resource. */
@@ -1026,7 +1041,8 @@ export const CreateProjectsLocationsAuthorizationPoliciesRequest =
 export type AuthzPolicyPolicyProfileEnum =
   | "POLICY_PROFILE_UNSPECIFIED"
   | "REQUEST_AUTHZ"
-  | "CONTENT_AUTHZ";
+  | "CONTENT_AUTHZ"
+  | (string & {});
 export const AuthzPolicyPolicyProfileEnum = /*@__PURE__*/ S.String;
 
 /** Optional. Delegates authorization decisions to Cloud IAP. Applicable only for managed load balancers. Enabling Cloud IAP at the AuthzPolicy level is not compatible with Cloud IAP settings in the BackendService. Enabling IAP in both places will result in request failure. Ensure that IAP is enabled in either the AuthzPolicy or the BackendService but not in both places. */
@@ -1154,7 +1170,8 @@ export type AuthzPolicyAuthzRulePrincipalPrincipalSelectorEnum =
   | "PRINCIPAL_SELECTOR_UNSPECIFIED"
   | "CLIENT_CERT_URI_SAN"
   | "CLIENT_CERT_DNS_NAME_SAN"
-  | "CLIENT_CERT_COMMON_NAME";
+  | "CLIENT_CERT_COMMON_NAME"
+  | (string & {});
 export const AuthzPolicyAuthzRulePrincipalPrincipalSelectorEnum =
   /*@__PURE__*/ S.String;
 
@@ -1233,7 +1250,8 @@ export const AuthzPolicyAuthzRuleStringMatchList = /*@__PURE__*/ S.Array(
 export type AuthzPolicyAuthzRuleToRequestOperationMCPBaseProtocolMethodsOptionEnum =
     | "BASE_PROTOCOL_METHODS_OPTION_UNSPECIFIED"
     | "SKIP_BASE_PROTOCOL_METHODS"
-    | "MATCH_BASE_PROTOCOL_METHODS";
+    | "MATCH_BASE_PROTOCOL_METHODS"
+    | (string & {});
 export const AuthzPolicyAuthzRuleToRequestOperationMCPBaseProtocolMethodsOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1395,7 +1413,8 @@ export type AuthzPolicyTargetLoadBalancingSchemeEnum =
   | "LOAD_BALANCING_SCHEME_UNSPECIFIED"
   | "INTERNAL_MANAGED"
   | "EXTERNAL_MANAGED"
-  | "INTERNAL_SELF_MANAGED";
+  | "INTERNAL_SELF_MANAGED"
+  | (string & {});
 export const AuthzPolicyTargetLoadBalancingSchemeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the set of targets to which this policy should be applied to. */
@@ -1418,7 +1437,8 @@ export type AuthzPolicyActionEnum =
   | "AUTHZ_ACTION_UNSPECIFIED"
   | "ALLOW"
   | "DENY"
-  | "CUSTOM";
+  | "CUSTOM"
+  | (string & {});
 export const AuthzPolicyActionEnum = /*@__PURE__*/ S.String;
 
 /** `AuthzPolicy` is a resource that allows to forward traffic to a callout backend designed to scan the traffic for security purposes. */
@@ -1493,7 +1513,8 @@ export const CreateProjectsLocationsAuthzPoliciesRequest =
 export type BackendAuthenticationConfigWellKnownRootsEnum =
   | "WELL_KNOWN_ROOTS_UNSPECIFIED"
   | "NONE"
-  | "PUBLIC_ROOTS";
+  | "PUBLIC_ROOTS"
+  | (string & {});
 export const BackendAuthenticationConfigWellKnownRootsEnum =
   /*@__PURE__*/ S.String;
 
@@ -1683,7 +1704,10 @@ export const CreateProjectsLocationsClientTlsPoliciesRequest =
     identifier: "CreateProjectsLocationsClientTlsPoliciesRequest",
   }) as any as S.Schema<CreateProjectsLocationsClientTlsPoliciesRequest>;
 
-export type DnsThreatDetectorProviderEnum = "PROVIDER_UNSPECIFIED" | "INFOBLOX";
+export type DnsThreatDetectorProviderEnum =
+  | "PROVIDER_UNSPECIFIED"
+  | "INFOBLOX"
+  | (string & {});
 export const DnsThreatDetectorProviderEnum = /*@__PURE__*/ S.String;
 
 /** A DNS threat detector sends DNS query logs to a _provider_ that then analyzes the logs to identify threat events in the DNS queries. By default, all VPC networks in your projects are included. You can exclude specific networks by supplying `excluded_networks`. */
@@ -1745,7 +1769,8 @@ export type FirewallEndpointAssociationStateEnum =
   | "ACTIVE"
   | "DELETING"
   | "INACTIVE"
-  | "ORPHAN";
+  | "ORPHAN"
+  | (string & {});
 export const FirewallEndpointAssociationStateEnum = /*@__PURE__*/ S.String;
 
 /** Message describing Association object */
@@ -1897,7 +1922,8 @@ export const CreateProjectsLocationsGatewaySecurityPoliciesRequest =
 export type GatewaySecurityPolicyRuleBasicProfileEnum =
   | "BASIC_PROFILE_UNSPECIFIED"
   | "ALLOW"
-  | "DENY";
+  | "DENY"
+  | (string & {});
 export const GatewaySecurityPolicyRuleBasicProfileEnum = /*@__PURE__*/ S.String;
 
 /** The GatewaySecurityPolicyRule resource is in a nested collection within a GatewaySecurityPolicy and represents a traffic matching condition and associated action to perform. */
@@ -1968,7 +1994,8 @@ export const CreateProjectsLocationsGatewaySecurityPoliciesRulesRequest =
 export type InterceptLocationStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "OUT_OF_SYNC";
+  | "OUT_OF_SYNC"
+  | (string & {});
 export const InterceptLocationStateEnum = /*@__PURE__*/ S.String;
 
 /** Details about intercept in a specific cloud location. */
@@ -1996,7 +2023,8 @@ export type InterceptDeploymentGroupStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "CREATING"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const InterceptDeploymentGroupStateEnum = /*@__PURE__*/ S.String;
 
 export type InterceptDeploymentGroupDeploymentStateEnum =
@@ -2005,7 +2033,8 @@ export type InterceptDeploymentGroupDeploymentStateEnum =
   | "CREATING"
   | "DELETING"
   | "OUT_OF_SYNC"
-  | "DELETE_FAILED";
+  | "DELETE_FAILED"
+  | (string & {});
 export const InterceptDeploymentGroupDeploymentStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2131,7 +2160,8 @@ export type InterceptDeploymentStateEnum =
   | "CREATING"
   | "DELETING"
   | "OUT_OF_SYNC"
-  | "DELETE_FAILED";
+  | "DELETE_FAILED"
+  | (string & {});
 export const InterceptDeploymentStateEnum = /*@__PURE__*/ S.String;
 
 /** A deployment represents a zonal intercept backend ready to accept GENEVE-encapsulated traffic, e.g. a zonal instance group fronted by an internal passthrough load balancer. Deployments are always part of a global deployment group which represents a global intercept service. */
@@ -2206,14 +2236,16 @@ export type InterceptEndpointGroupAssociationStateEnum =
   | "DELETING"
   | "CLOSED"
   | "OUT_OF_SYNC"
-  | "DELETE_FAILED";
+  | "DELETE_FAILED"
+  | (string & {});
 export const InterceptEndpointGroupAssociationStateEnum =
   /*@__PURE__*/ S.String;
 
 export type InterceptEndpointGroupAssociationLocationDetailsStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "OUT_OF_SYNC";
+  | "OUT_OF_SYNC"
+  | (string & {});
 export const InterceptEndpointGroupAssociationLocationDetailsStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2324,7 +2356,8 @@ export type InterceptEndpointGroupAssociationDetailsStateEnum =
   | "DELETING"
   | "CLOSED"
   | "OUT_OF_SYNC"
-  | "DELETE_FAILED";
+  | "DELETE_FAILED"
+  | (string & {});
 export const InterceptEndpointGroupAssociationDetailsStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2379,7 +2412,8 @@ export type InterceptEndpointGroupStateEnum =
   | "CREATING"
   | "DELETING"
   | "OUT_OF_SYNC"
-  | "DELETE_FAILED";
+  | "DELETE_FAILED"
+  | (string & {});
 export const InterceptEndpointGroupStateEnum = /*@__PURE__*/ S.String;
 
 /** An endpoint group is a consumer frontend for a deployment group (backend). In order to configure intercept for a network, consumers must create: - An association between their network and the endpoint group. - A security profile that points to the endpoint group. - A firewall rule that references the security profile (group). */
@@ -2455,7 +2489,8 @@ export const CreateProjectsLocationsInterceptEndpointGroupsRequest =
 export type MirroringLocationStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "OUT_OF_SYNC";
+  | "OUT_OF_SYNC"
+  | (string & {});
 export const MirroringLocationStateEnum = /*@__PURE__*/ S.String;
 
 /** Details about mirroring in a specific cloud location. */
@@ -2484,7 +2519,8 @@ export type MirroringDeploymentGroupStateEnum =
   | "ACTIVE"
   | "CREATING"
   | "DELETING"
-  | "CLOSED";
+  | "CLOSED"
+  | (string & {});
 export const MirroringDeploymentGroupStateEnum = /*@__PURE__*/ S.String;
 
 export type MirroringDeploymentGroupDeploymentStateEnum =
@@ -2493,7 +2529,8 @@ export type MirroringDeploymentGroupDeploymentStateEnum =
   | "CREATING"
   | "DELETING"
   | "OUT_OF_SYNC"
-  | "DELETE_FAILED";
+  | "DELETE_FAILED"
+  | (string & {});
 export const MirroringDeploymentGroupDeploymentStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2619,7 +2656,8 @@ export type MirroringDeploymentStateEnum =
   | "CREATING"
   | "DELETING"
   | "OUT_OF_SYNC"
-  | "DELETE_FAILED";
+  | "DELETE_FAILED"
+  | (string & {});
 export const MirroringDeploymentStateEnum = /*@__PURE__*/ S.String;
 
 /** A deployment represents a zonal mirroring backend ready to accept GENEVE-encapsulated replica traffic, e.g. a zonal instance group fronted by an internal passthrough load balancer. Deployments are always part of a global deployment group which represents a global mirroring service. */
@@ -2694,14 +2732,16 @@ export type MirroringEndpointGroupAssociationStateEnum =
   | "DELETING"
   | "CLOSED"
   | "OUT_OF_SYNC"
-  | "DELETE_FAILED";
+  | "DELETE_FAILED"
+  | (string & {});
 export const MirroringEndpointGroupAssociationStateEnum =
   /*@__PURE__*/ S.String;
 
 export type MirroringEndpointGroupAssociationLocationDetailsStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "OUT_OF_SYNC";
+  | "OUT_OF_SYNC"
+  | (string & {});
 export const MirroringEndpointGroupAssociationLocationDetailsStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2805,7 +2845,10 @@ export const CreateProjectsLocationsMirroringEndpointGroupAssociationsRequest =
       "CreateProjectsLocationsMirroringEndpointGroupAssociationsRequest",
   }) as any as S.Schema<CreateProjectsLocationsMirroringEndpointGroupAssociationsRequest>;
 
-export type MirroringEndpointGroupTypeEnum = "TYPE_UNSPECIFIED" | "DIRECT";
+export type MirroringEndpointGroupTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "DIRECT"
+  | (string & {});
 export const MirroringEndpointGroupTypeEnum = /*@__PURE__*/ S.String;
 
 export type MirroringEndpointGroupAssociationDetailsStateEnum =
@@ -2815,7 +2858,8 @@ export type MirroringEndpointGroupAssociationDetailsStateEnum =
   | "DELETING"
   | "CLOSED"
   | "OUT_OF_SYNC"
-  | "DELETE_FAILED";
+  | "DELETE_FAILED"
+  | (string & {});
 export const MirroringEndpointGroupAssociationDetailsStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2853,7 +2897,8 @@ export type MirroringEndpointGroupStateEnum =
   | "CREATING"
   | "DELETING"
   | "OUT_OF_SYNC"
-  | "DELETE_FAILED";
+  | "DELETE_FAILED"
+  | (string & {});
 export const MirroringEndpointGroupStateEnum = /*@__PURE__*/ S.String;
 
 /** The endpoint group's view of a connected deployment group. */
@@ -2957,7 +3002,8 @@ export type SACAttachmentStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING_PARTNER_ATTACHMENT"
   | "PARTNER_ATTACHED"
-  | "PARTNER_DETACHED";
+  | "PARTNER_DETACHED"
+  | (string & {});
 export const SACAttachmentStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Secure Access Connect (SAC) attachment resource. A Secure Access Connect attachment enables NCC Gateway to process traffic with an SSE product. */
@@ -3038,12 +3084,14 @@ export type SACRealmStateEnum =
   | "PENDING_PARTNER_ATTACHMENT"
   | "PARTNER_ATTACHED"
   | "PARTNER_DETACHED"
-  | "KEY_EXPIRED";
+  | "KEY_EXPIRED"
+  | (string & {});
 export const SACRealmStateEnum = /*@__PURE__*/ S.String;
 
 export type SACRealmSecurityServiceEnum =
   | "SECURITY_SERVICE_UNSPECIFIED"
-  | "PALO_ALTO_PRISMA_ACCESS";
+  | "PALO_ALTO_PRISMA_ACCESS"
+  | (string & {});
 export const SACRealmSecurityServiceEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Secure Access Connect (SAC) realm resource. A Secure Access Connect realm establishes a connection between your Google Cloud project and an SSE service. */
@@ -3156,7 +3204,8 @@ export const CreateProjectsLocationsSecurityProfilesRequest =
 export type MTLSPolicyClientValidationModeEnum =
   | "CLIENT_VALIDATION_MODE_UNSPECIFIED"
   | "ALLOW_INVALID_OR_MISSING_CLIENT_CERT"
-  | "REJECT_INVALID";
+  | "REJECT_INVALID"
+  | (string & {});
 export const MTLSPolicyClientValidationModeEnum = /*@__PURE__*/ S.String;
 
 /** Specification of the MTLSPolicy. */
@@ -3242,7 +3291,8 @@ export type TlsInspectionPolicyTlsFeatureProfileEnum =
   | "PROFILE_COMPATIBLE"
   | "PROFILE_MODERN"
   | "PROFILE_RESTRICTED"
-  | "PROFILE_CUSTOM";
+  | "PROFILE_CUSTOM"
+  | (string & {});
 export const TlsInspectionPolicyTlsFeatureProfileEnum = /*@__PURE__*/ S.String;
 
 export type TlsInspectionPolicyMinTlsVersionEnum =
@@ -3250,7 +3300,8 @@ export type TlsInspectionPolicyMinTlsVersionEnum =
   | "TLS_1_0"
   | "TLS_1_1"
   | "TLS_1_2"
-  | "TLS_1_3";
+  | "TLS_1_3"
+  | (string & {});
 export const TlsInspectionPolicyMinTlsVersionEnum = /*@__PURE__*/ S.String;
 
 /** The TlsInspectionPolicy resource contains references to CA pools in Certificate Authority Service and associated metadata. */
@@ -4093,7 +4144,8 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */

@@ -12,7 +12,7 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `llm` - LLM * `hog` - Hog */
-export type TaggerTypeEnum = "llm" | "hog";
+export type TaggerTypeEnum = "llm" | "hog" | (string & {});
 export const TaggerTypeEnum = /*@__PURE__*/ S.String;
 
 export interface TagDefinition {
@@ -129,7 +129,8 @@ export type LLMProviderEnum =
   | "azure_openai"
   | "together_ai"
   | "minimax"
-  | "zeabur";
+  | "zeabur"
+  | (string & {});
 export const LLMProviderEnum = /*@__PURE__*/ S.String;
 
 export interface TaggerModelConfigurationWrite {
@@ -226,10 +227,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -333,7 +335,8 @@ export type TaggersListRequestOrderByItem =
   | "-updated_at"
   | "created_at"
   | "name"
-  | "updated_at";
+  | "updated_at"
+  | (string & {});
 export const TaggersListRequestOrderByItem = /*@__PURE__*/ S.String;
 
 export type TaggersListRequestOrderByList =

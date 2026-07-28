@@ -113,7 +113,8 @@ export type AgentModeEnum =
   | "llm_analytics"
   | "sandbox"
   | "user_interview"
-  | "customer_analytics";
+  | "customer_analytics"
+  | (string & {});
 export const AgentModeEnum = /*@__PURE__*/ S.String;
 
 export interface ConversationsCreateRequest {
@@ -241,7 +242,11 @@ export const ConversationsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConversationsListRequest>;
 
 /** * `idle` - Idle * `in_progress` - In progress * `canceling` - Canceling */
-export type ConversationStatus = "idle" | "in_progress" | "canceling";
+export type ConversationStatus =
+  | "idle"
+  | "in_progress"
+  | "canceling"
+  | (string & {});
 export const ConversationStatus = /*@__PURE__*/ S.String;
 
 /** * `web_analytics` - Web analytics * `product_analytics` - Product analytics * `session_replay` - Session replay * `surveys` - Surveys * `feature_flags` - Feature flags * `experiments` - Experiments * `error_tracking` - Error tracking * `data_warehouse` - Data warehouse * `other` - Other */
@@ -254,7 +259,8 @@ export type TopicEnum =
   | "experiments"
   | "error_tracking"
   | "data_warehouse"
-  | "other";
+  | "other"
+  | (string & {});
 export const TopicEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
@@ -272,10 +278,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -312,11 +319,12 @@ export type ConversationType =
   | "assistant"
   | "tool_call"
   | "deep_research"
-  | "slack";
+  | "slack"
+  | (string & {});
 export const ConversationType = /*@__PURE__*/ S.String;
 
 /** * `acp` - ACP * `pi` - Pi */
-export type RuntimeEnum = "acp" | "pi";
+export type RuntimeEnum = "acp" | "pi" | (string & {});
 export const RuntimeEnum = /*@__PURE__*/ S.String;
 
 export type ConversationTaskJsonSchemaMap = {
@@ -488,7 +496,8 @@ export type SandboxAttachedContextItemTypeEnum =
   | "event"
   | "insight"
   | "notebook"
-  | "text";
+  | "text"
+  | (string & {});
 export const SandboxAttachedContextItemTypeEnum = /*@__PURE__*/ S.String;
 
 /** One typed attachment carried by a sandbox message. DEPRECATED PATH — do not extend. This structured `attached_context` (and its server-side wrap in `context_wrapper.py`) exists only for the legacy Max conversations bridge and is removed with it; the live path wraps context client-side (`products/posthog_ai/frontend/utils/posthogContextBlock.ts`). */
@@ -527,7 +536,8 @@ export type InitialPermissionModeEnum =
   | "acceptEdits"
   | "plan"
   | "bypassPermissions"
-  | "auto";
+  | "auto"
+  | (string & {});
 export const InitialPermissionModeEnum = /*@__PURE__*/ S.String;
 
 export interface ConversationsOpenCreateRequest {
@@ -630,7 +640,7 @@ export const ConversationMessagesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ConversationMessagesList>;
 
 /** * `langgraph` - LangGraph * `sandbox` - Sandbox */
-export type AgentRuntimeEnum = "langgraph" | "sandbox";
+export type AgentRuntimeEnum = "langgraph" | "sandbox" | (string & {});
 export const AgentRuntimeEnum = /*@__PURE__*/ S.String;
 
 export type ConversationPendingApprovalsItemMap = {

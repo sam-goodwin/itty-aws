@@ -40,11 +40,17 @@ export type Field =
   | "AlertRuleId"
   | "AlertRuleName"
   | "Description"
-  | "AlertContext";
+  | "AlertContext"
+  | (string & {});
 export const Field = /*@__PURE__*/ S.String;
 
 /** Operator for a given condition. */
-export type Operator = "Equals" | "NotEquals" | "Contains" | "DoesNotContain";
+export type Operator =
+  | "Equals"
+  | "NotEquals"
+  | "Contains"
+  | "DoesNotContain"
+  | (string & {});
 export const Operator = /*@__PURE__*/ S.String;
 
 /** List of values to match for a given condition. */
@@ -79,7 +85,7 @@ export const AlertProcessingRulePropertiesConditionsList =
   ) as any as S.Schema<AlertProcessingRulePropertiesConditionsList>;
 
 /** Specifies when the recurrence should be applied. */
-export type RecurrenceType = "Daily" | "Weekly" | "Monthly";
+export type RecurrenceType = "Daily" | "Weekly" | "Monthly" | (string & {});
 export const RecurrenceType = /*@__PURE__*/ S.String;
 
 /** Recurrence object. */
@@ -126,7 +132,10 @@ export const Schedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
 
 /** Action that should be applied. */
-export type ActionType = "AddActionGroups" | "RemoveAllActionGroups";
+export type ActionType =
+  | "AddActionGroups"
+  | "RemoveAllActionGroups"
+  | (string & {});
 export const ActionType = /*@__PURE__*/ S.String;
 
 /** Action to be applied. */
@@ -536,7 +545,8 @@ export const AlertProcessingRulesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 export type AlertsChangeStateRequestNewState =
   | "New"
   | "Acknowledged"
-  | "Closed";
+  | "Closed"
+  | (string & {});
 export const AlertsChangeStateRequestNewState = /*@__PURE__*/ S.String;
 
 export interface AlertsChangeStateRequest {
@@ -567,19 +577,29 @@ export const AlertsChangeStateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AlertsChangeStateRequest>;
 
 /** Severity of alert Sev0 being highest and Sev4 being lowest. */
-export type EssentialsSeverity = "Sev0" | "Sev1" | "Sev2" | "Sev3" | "Sev4";
+export type EssentialsSeverity =
+  | "Sev0"
+  | "Sev1"
+  | "Sev2"
+  | "Sev3"
+  | "Sev4"
+  | (string & {});
 export const EssentialsSeverity = /*@__PURE__*/ S.String;
 
 /** The type of signal the alert is based on, which could be metrics, logs or activity logs. */
-export type EssentialsSignalType = "Metric" | "Log" | "Unknown";
+export type EssentialsSignalType = "Metric" | "Log" | "Unknown" | (string & {});
 export const EssentialsSignalType = /*@__PURE__*/ S.String;
 
 /** Alert object state, which can be modified by the user. */
-export type EssentialsAlertState = "New" | "Acknowledged" | "Closed";
+export type EssentialsAlertState =
+  | "New"
+  | "Acknowledged"
+  | "Closed"
+  | (string & {});
 export const EssentialsAlertState = /*@__PURE__*/ S.String;
 
 /** Can be 'Fired' or 'Resolved', which represents whether the underlying conditions have crossed the defined alert rule thresholds. */
-export type EssentialsMonitorCondition = "Fired" | "Resolved";
+export type EssentialsMonitorCondition = "Fired" | "Resolved" | (string & {});
 export const EssentialsMonitorCondition = /*@__PURE__*/ S.String;
 
 /** Monitor service on which the rule(monitor) is set. */
@@ -598,7 +618,8 @@ export type EssentialsMonitorService =
   | "SmartDetector"
   | "VM Insights"
   | "Zabbix"
-  | "Resource Health";
+  | "Resource Health"
+  | (string & {});
 export const EssentialsMonitorService = /*@__PURE__*/ S.String;
 
 /** Action status */
@@ -727,10 +748,14 @@ export type AlertsGetAllRequestMonitorService =
   | "SmartDetector"
   | "VM Insights"
   | "Zabbix"
-  | "Resource Health";
+  | "Resource Health"
+  | (string & {});
 export const AlertsGetAllRequestMonitorService = /*@__PURE__*/ S.String;
 
-export type AlertsGetAllRequestMonitorCondition = "Fired" | "Resolved";
+export type AlertsGetAllRequestMonitorCondition =
+  | "Fired"
+  | "Resolved"
+  | (string & {});
 export const AlertsGetAllRequestMonitorCondition = /*@__PURE__*/ S.String;
 
 export type AlertsGetAllRequestSeverity =
@@ -738,10 +763,15 @@ export type AlertsGetAllRequestSeverity =
   | "Sev1"
   | "Sev2"
   | "Sev3"
-  | "Sev4";
+  | "Sev4"
+  | (string & {});
 export const AlertsGetAllRequestSeverity = /*@__PURE__*/ S.String;
 
-export type AlertsGetAllRequestAlertState = "New" | "Acknowledged" | "Closed";
+export type AlertsGetAllRequestAlertState =
+  | "New"
+  | "Acknowledged"
+  | "Closed"
+  | (string & {});
 export const AlertsGetAllRequestAlertState = /*@__PURE__*/ S.String;
 
 export type AlertsGetAllRequestSortBy =
@@ -754,13 +784,19 @@ export type AlertsGetAllRequestSortBy =
   | "targetResourceGroup"
   | "targetResourceType"
   | "startDateTime"
-  | "lastModifiedDateTime";
+  | "lastModifiedDateTime"
+  | (string & {});
 export const AlertsGetAllRequestSortBy = /*@__PURE__*/ S.String;
 
-export type AlertsGetAllRequestSortOrder = "asc" | "desc";
+export type AlertsGetAllRequestSortOrder = "asc" | "desc" | (string & {});
 export const AlertsGetAllRequestSortOrder = /*@__PURE__*/ S.String;
 
-export type AlertsGetAllRequestTimeRange = "1h" | "1d" | "7d" | "30d";
+export type AlertsGetAllRequestTimeRange =
+  | "1h"
+  | "1d"
+  | "7d"
+  | "30d"
+  | (string & {});
 export const AlertsGetAllRequestTimeRange = /*@__PURE__*/ S.String;
 
 export interface AlertsGetAllRequest {
@@ -944,7 +980,8 @@ export const AlertsGetHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 export type AlertModificationItemModificationEvent =
   | "AlertCreated"
   | "StateChange"
-  | "MonitorConditionChange";
+  | "MonitorConditionChange"
+  | (string & {});
 export const AlertModificationItemModificationEvent = /*@__PURE__*/ S.String;
 
 /** Alert modification item. */
@@ -1028,7 +1065,8 @@ export type AlertsGetSummaryRequestGroupby =
   | "monitorCondition"
   | "monitorService"
   | "signalType"
-  | "alertRule";
+  | "alertRule"
+  | (string & {});
 export const AlertsGetSummaryRequestGroupby = /*@__PURE__*/ S.String;
 
 export type AlertsGetSummaryRequestMonitorService =
@@ -1046,10 +1084,14 @@ export type AlertsGetSummaryRequestMonitorService =
   | "SmartDetector"
   | "VM Insights"
   | "Zabbix"
-  | "Resource Health";
+  | "Resource Health"
+  | (string & {});
 export const AlertsGetSummaryRequestMonitorService = /*@__PURE__*/ S.String;
 
-export type AlertsGetSummaryRequestMonitorCondition = "Fired" | "Resolved";
+export type AlertsGetSummaryRequestMonitorCondition =
+  | "Fired"
+  | "Resolved"
+  | (string & {});
 export const AlertsGetSummaryRequestMonitorCondition = /*@__PURE__*/ S.String;
 
 export type AlertsGetSummaryRequestSeverity =
@@ -1057,16 +1099,23 @@ export type AlertsGetSummaryRequestSeverity =
   | "Sev1"
   | "Sev2"
   | "Sev3"
-  | "Sev4";
+  | "Sev4"
+  | (string & {});
 export const AlertsGetSummaryRequestSeverity = /*@__PURE__*/ S.String;
 
 export type AlertsGetSummaryRequestAlertState =
   | "New"
   | "Acknowledged"
-  | "Closed";
+  | "Closed"
+  | (string & {});
 export const AlertsGetSummaryRequestAlertState = /*@__PURE__*/ S.String;
 
-export type AlertsGetSummaryRequestTimeRange = "1h" | "1d" | "7d" | "30d";
+export type AlertsGetSummaryRequestTimeRange =
+  | "1h"
+  | "1d"
+  | "7d"
+  | "30d"
+  | (string & {});
 export const AlertsGetSummaryRequestTimeRange = /*@__PURE__*/ S.String;
 
 export interface AlertsGetSummaryRequest {
@@ -1206,7 +1255,9 @@ export const AlertsGetSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AlertsGetSummaryResponse",
 }) as any as S.Schema<AlertsGetSummaryResponse>;
 
-export type AlertsMetaDataRequestIdentifier = "MonitorServiceList";
+export type AlertsMetaDataRequestIdentifier =
+  | "MonitorServiceList"
+  | (string & {});
 export const AlertsMetaDataRequestIdentifier = /*@__PURE__*/ S.String;
 
 export interface AlertsMetaDataRequest {
@@ -1229,7 +1280,9 @@ export const AlertsMetaDataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AlertsMetaDataRequest>;
 
 /** Identification of the information to be retrieved by API call */
-export type AlertsMetaDataPropertiesMetadataIdentifier = "MonitorServiceList";
+export type AlertsMetaDataPropertiesMetadataIdentifier =
+  | "MonitorServiceList"
+  | (string & {});
 export const AlertsMetaDataPropertiesMetadataIdentifier =
   /*@__PURE__*/ S.String;
 
@@ -1520,7 +1573,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -1528,7 +1582,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -1905,7 +1960,10 @@ export const SmartDetectorAlertRulesCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<SmartDetectorAlertRulesCreateOrUpdateRequestTagsMap>;
 
 /** The alert rule state. */
-export type AlertRulePropertiesInputState = "Enabled" | "Disabled";
+export type AlertRulePropertiesInputState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const AlertRulePropertiesInputState = /*@__PURE__*/ S.String;
 
 /** The alert rule severity. */
@@ -1914,7 +1972,8 @@ export type AlertRulePropertiesInputSeverity =
   | "Sev1"
   | "Sev2"
   | "Sev3"
-  | "Sev4";
+  | "Sev4"
+  | (string & {});
 export const AlertRulePropertiesInputSeverity = /*@__PURE__*/ S.String;
 
 /** The detector's parameters.' */
@@ -2062,7 +2121,7 @@ export const SmartDetectorAlertRulesCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<SmartDetectorAlertRulesCreateOrUpdateResponseTagsMap>;
 
 /** The alert rule state. */
-export type AlertRulePropertiesState = "Enabled" | "Disabled";
+export type AlertRulePropertiesState = "Enabled" | "Disabled" | (string & {});
 export const AlertRulePropertiesState = /*@__PURE__*/ S.String;
 
 /** The alert rule severity. */
@@ -2071,7 +2130,8 @@ export type AlertRulePropertiesSeverity =
   | "Sev1"
   | "Sev2"
   | "Sev3"
-  | "Sev4";
+  | "Sev4"
+  | (string & {});
 export const AlertRulePropertiesSeverity = /*@__PURE__*/ S.String;
 
 /** The detector's parameters.' */
@@ -2099,7 +2159,8 @@ export type DetectorParameterDefinitionType =
   | "Integer"
   | "Double"
   | "Boolean"
-  | "DateTime";
+  | "DateTime"
+  | (string & {});
 export const DetectorParameterDefinitionType = /*@__PURE__*/ S.String;
 
 /** The detector parameter definition. */
@@ -2449,7 +2510,10 @@ export const SmartDetectorAlertRulesPatchRequestTagsMap =
   ) as any as S.Schema<SmartDetectorAlertRulesPatchRequestTagsMap>;
 
 /** The alert rule state. */
-export type AlertRulePatchPropertiesState = "Enabled" | "Disabled";
+export type AlertRulePatchPropertiesState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const AlertRulePatchPropertiesState = /*@__PURE__*/ S.String;
 
 /** The alert rule severity. */
@@ -2458,7 +2522,8 @@ export type AlertRulePatchPropertiesSeverity =
   | "Sev1"
   | "Sev2"
   | "Sev3"
-  | "Sev4";
+  | "Sev4"
+  | (string & {});
 export const AlertRulePatchPropertiesSeverity = /*@__PURE__*/ S.String;
 
 /** The alert rule properties. */

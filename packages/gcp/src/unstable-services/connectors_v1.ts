@@ -99,7 +99,8 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
 export type EncryptionKeyTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "GOOGLE_MANAGED"
-  | "CUSTOMER_MANAGED";
+  | "CUSTOMER_MANAGED"
+  | (string & {});
 export const EncryptionKeyTypeEnum = /*@__PURE__*/ S.String;
 
 /** Encryption Key value. */
@@ -274,7 +275,8 @@ export type AuthConfigAuthTypeEnum =
   | "SSH_PUBLIC_KEY"
   | "OAUTH2_AUTH_CODE_FLOW"
   | "GOOGLE_AUTHENTICATION"
-  | "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED";
+  | "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED"
+  | (string & {});
 export const AuthConfigAuthTypeEnum = /*@__PURE__*/ S.String;
 
 /** JWT claims used for the jwt-bearer authorization grant. */
@@ -407,7 +409,8 @@ export type ConnectorsLogConfigLevelEnum =
   | "LOG_LEVEL_UNSPECIFIED"
   | "ERROR"
   | "INFO"
-  | "DEBUG";
+  | "DEBUG"
+  | (string & {});
 export const ConnectorsLogConfigLevelEnum = /*@__PURE__*/ S.String;
 
 /** Log configuration for the connection. */
@@ -429,7 +432,8 @@ export const ConnectorsLogConfig = /*@__PURE__*/ S.suspend(() =>
 export type ConnectionSubscriptionTypeEnum =
   | "SUBSCRIPTION_TYPE_UNSPECIFIED"
   | "PAY_G"
-  | "PAID";
+  | "PAID"
+  | (string & {});
 export const ConnectionSubscriptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Dead Letter configuration details provided by the user. */
@@ -448,16 +452,30 @@ export const DeadLetterConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeadLetterConfig",
 }) as any as S.Schema<DeadLetterConfig>;
 
-export type SslConfigServerCertTypeEnum = "CERT_TYPE_UNSPECIFIED" | "PEM";
+export type SslConfigServerCertTypeEnum =
+  | "CERT_TYPE_UNSPECIFIED"
+  | "PEM"
+  | (string & {});
 export const SslConfigServerCertTypeEnum = /*@__PURE__*/ S.String;
 
-export type SslConfigTrustModelEnum = "PUBLIC" | "PRIVATE" | "INSECURE";
+export type SslConfigTrustModelEnum =
+  | "PUBLIC"
+  | "PRIVATE"
+  | "INSECURE"
+  | (string & {});
 export const SslConfigTrustModelEnum = /*@__PURE__*/ S.String;
 
-export type SslConfigTypeEnum = "SSL_TYPE_UNSPECIFIED" | "TLS" | "MTLS";
+export type SslConfigTypeEnum =
+  | "SSL_TYPE_UNSPECIFIED"
+  | "TLS"
+  | "MTLS"
+  | (string & {});
 export const SslConfigTypeEnum = /*@__PURE__*/ S.String;
 
-export type SslConfigClientCertTypeEnum = "CERT_TYPE_UNSPECIFIED" | "PEM";
+export type SslConfigClientCertTypeEnum =
+  | "CERT_TYPE_UNSPECIFIED"
+  | "PEM"
+  | (string & {});
 export const SslConfigClientCertTypeEnum = /*@__PURE__*/ S.String;
 
 /** SSL Configuration of a connection */
@@ -569,7 +587,8 @@ export type ConnectionStatusStateEnum =
   | "DELETING"
   | "UPDATING"
   | "ERROR"
-  | "AUTHORIZATION_REQUIRED";
+  | "AUTHORIZATION_REQUIRED"
+  | (string & {});
 export const ConnectionStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** ConnectionStatus indicates the state of the connection. */
@@ -627,7 +646,8 @@ export const StringListValues = /*@__PURE__*/ S.suspend(() =>
 export type AdminFiltersFilterTypeEnum =
   | "FILTER_TYPE_UNSPECIFIED"
   | "INCLUSION"
-  | "EXCLUSION";
+  | "EXCLUSION"
+  | (string & {});
 export const AdminFiltersFilterTypeEnum = /*@__PURE__*/ S.String;
 
 /** * AdminFilters defines a set of filters that can be applied to a connection. These are currently used by Gemini Enterprise connections. */
@@ -675,7 +695,8 @@ export const ResourceLimits = /*@__PURE__*/ S.suspend(() =>
 export type ConnectorVersionInfraConfigDeploymentModelEnum =
   | "DEPLOYMENT_MODEL_UNSPECIFIED"
   | "GKE_MST"
-  | "CLOUD_RUN_MST";
+  | "CLOUD_RUN_MST"
+  | (string & {});
 export const ConnectorVersionInfraConfigDeploymentModelEnum =
   /*@__PURE__*/ S.String;
 
@@ -700,7 +721,8 @@ export type ConnectorVersionInfraConfigDeploymentModelMigrationStateEnum =
   | "IN_PROGRESS"
   | "COMPLETED"
   | "ROLLEDBACK"
-  | "ROLLBACK_IN_PROGRESS";
+  | "ROLLBACK_IN_PROGRESS"
+  | (string & {});
 export const ConnectorVersionInfraConfigDeploymentModelMigrationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -721,7 +743,8 @@ export const HPAConfig = /*@__PURE__*/ S.suspend(() =>
 export type ConnectorVersionInfraConfigTlsMigrationStateEnum =
   | "TLS_MIGRATION_STATE_UNSPECIFIED"
   | "TLS_MIGRATION_NOT_STARTED"
-  | "TLS_MIGRATION_COMPLETED";
+  | "TLS_MIGRATION_COMPLETED"
+  | (string & {});
 export const ConnectorVersionInfraConfigTlsMigrationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -775,7 +798,8 @@ export const ConnectorVersionInfraConfig = /*@__PURE__*/ S.suspend(() =>
 export type BillingConfigBillingCategoryEnum =
   | "BILLING_CATEGORY_UNSPECIFIED"
   | "GCP_AND_TECHNICAL_CONNECTOR"
-  | "NON_GCP_CONNECTOR";
+  | "NON_GCP_CONNECTOR"
+  | (string & {});
 export const BillingConfigBillingCategoryEnum = /*@__PURE__*/ S.String;
 
 /** Billing config for the connection. */
@@ -792,14 +816,16 @@ export const BillingConfig = /*@__PURE__*/ S.suspend(() =>
 export type ConnectionEventingEnablementTypeEnum =
   | "EVENTING_ENABLEMENT_TYPE_UNSPECIFIED"
   | "EVENTING_AND_CONNECTION"
-  | "ONLY_EVENTING";
+  | "ONLY_EVENTING"
+  | (string & {});
 export const ConnectionEventingEnablementTypeEnum = /*@__PURE__*/ S.String;
 
 export type EventingStatusStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "ERROR"
-  | "INGRESS_ENDPOINT_REQUIRED";
+  | "INGRESS_ENDPOINT_REQUIRED"
+  | (string & {});
 export const EventingStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** EventingStatus indicates the state of eventing. */
@@ -897,7 +923,8 @@ export type ConnectionConnectorVersionLaunchStageEnum =
   | "GA"
   | "DEPRECATED"
   | "TEST"
-  | "PRIVATE_PREVIEW";
+  | "PRIVATE_PREVIEW"
+  | (string & {});
 export const ConnectionConnectorVersionLaunchStageEnum = /*@__PURE__*/ S.String;
 
 /** * TrafficShapingConfig defines the configuration for shaping API traffic by specifying a quota limit and the duration over which this limit is enforced. This configuration helps to control and manage the rate at which API calls are made on the client side, preventing service overload on the backend. For example: - if the quota limit is 100 calls per 10 seconds, then the message would be: { quota_limit: 100 duration: { seconds: 10 } } - if the quota limit is 100 calls per 5 minutes, then the message would be: { quota_limit: 100 duration: { seconds: 300 } } - if the quota limit is 10000 calls per day, then the message would be: { quota_limit: 10000 duration: { seconds: 86400 } and so on. */
@@ -1118,7 +1145,8 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 export type EndUserAuthenticationEndUserAuthenticationStatusStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const EndUserAuthenticationEndUserAuthenticationStatusStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1186,7 +1214,8 @@ export const EndUserAuthenticationNotifyEndpointDestinationEndPoint =
 
 export type EndUserAuthenticationNotifyEndpointDestinationTypeEnum =
   | "TYPE_UNSPECIFIED"
-  | "ENDPOINT";
+  | "ENDPOINT"
+  | (string & {});
 export const EndUserAuthenticationNotifyEndpointDestinationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1251,7 +1280,8 @@ export type EndUserAuthenticationConfigAuthTypeEnum =
   | "SSH_PUBLIC_KEY"
   | "OAUTH2_AUTH_CODE_FLOW"
   | "GOOGLE_AUTHENTICATION"
-  | "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED";
+  | "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED"
+  | (string & {});
 export const EndUserAuthenticationConfigAuthTypeEnum = /*@__PURE__*/ S.String;
 
 /** JWT claims used for the jwt-bearer authorization grant. */
@@ -1491,7 +1521,8 @@ export const EndUserAuthenticationConfig = /*@__PURE__*/ S.suspend(() =>
 export type EndUserAuthenticationRolesItemEnum =
   | "ROLE_UNSPECIFIED"
   | "READER"
-  | "READER_DOMAIN_WIDE_ACCESSIBLE";
+  | "READER_DOMAIN_WIDE_ACCESSIBLE"
+  | (string & {});
 export const EndUserAuthenticationRolesItemEnum = /*@__PURE__*/ S.String;
 
 export type EndUserAuthenticationRolesItemEnumList =
@@ -1575,7 +1606,8 @@ export type EventSubscriptionDestinationTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "ENDPOINT"
   | "GCS"
-  | "PUBSUB";
+  | "PUBSUB"
+  | (string & {});
 export const EventSubscriptionDestinationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Header details for a given header to be added to Endpoint. */
@@ -1653,7 +1685,11 @@ export const EventSubscriptionDestination = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventSubscriptionDestination",
 }) as any as S.Schema<EventSubscriptionDestination>;
 
-export type JMSTypeEnum = "TYPE_UNSPECIFIED" | "QUEUE" | "TOPIC";
+export type JMSTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "QUEUE"
+  | "TOPIC"
+  | (string & {});
 export const JMSTypeEnum = /*@__PURE__*/ S.String;
 
 /** JMS message denotes the source of the event */
@@ -1676,7 +1712,8 @@ export type EventSubscriptionStatusStateEnum =
   | "UPDATING"
   | "ACTIVE"
   | "SUSPENDED"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const EventSubscriptionStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** EventSubscription Status denotes the status of the EventSubscription resource. */
@@ -1771,7 +1808,8 @@ export type EndpointAttachmentStateEnum =
   | "CLOSED"
   | "FROZEN"
   | "NEEDS_ATTENTION"
-  | "ACCEPTED_NOT_PROGRAMMED";
+  | "ACCEPTED_NOT_PROGRAMMED"
+  | (string & {});
 export const EndpointAttachmentStateEnum = /*@__PURE__*/ S.String;
 
 /** represents the Connector's Endpoint Attachment resource */
@@ -1840,7 +1878,8 @@ export type CustomConnectorCustomConnectorTypeEnum =
   | "CUSTOM_CONNECTOR_TYPE_UNSPECIFIED"
   | "OPEN_API"
   | "PROTO"
-  | "SDK";
+  | "SDK"
+  | (string & {});
 export const CustomConnectorCustomConnectorTypeEnum = /*@__PURE__*/ S.String;
 
 /** CustomConnector represents the custom connector defined by the customer as part of byoc. */
@@ -1980,10 +2019,14 @@ export type ConfigVariableTemplateLocationTypeEnum =
   | "HEADER"
   | "PAYLOAD"
   | "QUERY_PARAM"
-  | "PATH_PARAM";
+  | "PATH_PARAM"
+  | (string & {});
 export const ConfigVariableTemplateLocationTypeEnum = /*@__PURE__*/ S.String;
 
-export type RoleGrantPrincipalEnum = "PRINCIPAL_UNSPECIFIED" | "CONNECTOR_SA";
+export type RoleGrantPrincipalEnum =
+  | "PRINCIPAL_UNSPECIFIED"
+  | "CONNECTOR_SA"
+  | (string & {});
 export const RoleGrantPrincipalEnum = /*@__PURE__*/ S.String;
 
 export type ResourceTypeEnum =
@@ -1991,7 +2034,8 @@ export type ResourceTypeEnum =
   | "GCP_PROJECT"
   | "GCP_RESOURCE"
   | "GCP_SECRETMANAGER_SECRET"
-  | "GCP_SECRETMANAGER_SECRET_VERSION";
+  | "GCP_SECRETMANAGER_SECRET_VERSION"
+  | (string & {});
 export const ResourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Resource definition */
@@ -2031,7 +2075,8 @@ export const RoleGrant = /*@__PURE__*/ S.suspend(() =>
 export type ConfigVariableTemplateStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "DEPRECATED";
+  | "DEPRECATED"
+  | (string & {});
 export const ConfigVariableTemplateStateEnum = /*@__PURE__*/ S.String;
 
 /** MultiplSelecteOption represents the single option for a config variable. */
@@ -2136,7 +2181,8 @@ export type ConfigVariableTemplateValueTypeEnum =
   | "ENUM"
   | "AUTHORIZATION_CODE"
   | "ENCRYPTION_KEY"
-  | "MULTIPLE_SELECT";
+  | "MULTIPLE_SELECT"
+  | (string & {});
 export const ConfigVariableTemplateValueTypeEnum = /*@__PURE__*/ S.String;
 
 export type LogicalExpressionList = ReadonlyArray<LogicalExpression>;
@@ -2147,7 +2193,8 @@ export const LogicalExpressionList = /*@__PURE__*/ S.Array(
 export type FieldComparisonComparatorEnum =
   | "COMPARATOR_UNSPECIFIED"
   | "EQUALS"
-  | "NOT_EQUALS";
+  | "NOT_EQUALS"
+  | (string & {});
 export const FieldComparisonComparatorEnum = /*@__PURE__*/ S.String;
 
 /** Field that needs to be compared. */
@@ -2183,7 +2230,8 @@ export const FieldComparisonList = /*@__PURE__*/ S.Array(
 export type LogicalExpressionLogicalOperatorEnum =
   | "OPERATOR_UNSPECIFIED"
   | "AND"
-  | "OR";
+  | "OR"
+  | (string & {});
 export const LogicalExpressionLogicalOperatorEnum = /*@__PURE__*/ S.String;
 
 /** Struct for representing boolean expressions. */
@@ -2207,7 +2255,8 @@ export const LogicalExpression = /*@__PURE__*/ S.suspend(() =>
 
 export type ConfigVariableTemplateEnumSourceEnum =
   | "ENUM_SOURCE_UNSPECIFIED"
-  | "EVENT_TYPES_API";
+  | "EVENT_TYPES_API"
+  | (string & {});
 export const ConfigVariableTemplateEnumSourceEnum = /*@__PURE__*/ S.String;
 
 /** ConfigVariableTemplate provides metadata about a `ConfigVariable` that is used in a Connection. */
@@ -2278,7 +2327,8 @@ export type AuthConfigTemplateAuthTypeEnum =
   | "SSH_PUBLIC_KEY"
   | "OAUTH2_AUTH_CODE_FLOW"
   | "GOOGLE_AUTHENTICATION"
-  | "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED";
+  | "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED"
+  | (string & {});
 export const AuthConfigTemplateAuthTypeEnum = /*@__PURE__*/ S.String;
 
 /** AuthConfigTemplate defines required field over an authentication type. */
@@ -2318,7 +2368,8 @@ export type PublishStatusPublishStateEnum =
   | "PUBLISH_STATE_UNSPECIFIED"
   | "PUBLISHED"
   | "PUBLISH_IN_PROGRESS"
-  | "UNPUBLISHED";
+  | "UNPUBLISHED"
+  | (string & {});
 export const PublishStatusPublishStateEnum = /*@__PURE__*/ S.String;
 
 /** Publish status of a custom connector. */
@@ -2344,7 +2395,8 @@ export const PublishStatus = /*@__PURE__*/ S.suspend(() =>
 export type CustomConnectorVersionStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "DEPRECATED";
+  | "DEPRECATED"
+  | (string & {});
 export const CustomConnectorVersionStateEnum = /*@__PURE__*/ S.String;
 
 /** CustomConnectorVersion indicates a specific version of a connector. */
@@ -2685,7 +2737,11 @@ export const DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsRe
   }) as any as S.Schema<DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest>;
 
 export type FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsViewEnum =
-  "AUTH_SCHEMA_VIEW_UNSPECIFIED" | "BASIC" | "JSON_SCHEMA" | "EUA_SCHEMA";
+    | "AUTH_SCHEMA_VIEW_UNSPECIFIED"
+    | "BASIC"
+    | "JSON_SCHEMA"
+    | "EUA_SCHEMA"
+    | (string & {});
 export const FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -2746,7 +2802,8 @@ export type AuthSchemaAuthTypeEnum =
   | "SSH_PUBLIC_KEY"
   | "OAUTH2_AUTH_CODE_FLOW"
   | "GOOGLE_AUTHENTICATION"
-  | "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED";
+  | "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED"
+  | (string & {});
 export const AuthSchemaAuthTypeEnum = /*@__PURE__*/ S.String;
 
 /** AuthSchema defines the schema of an authentication type. */
@@ -2870,7 +2927,8 @@ export type ToolNameOperationEnum =
   | "GET"
   | "CREATE"
   | "UPDATE"
-  | "DELETE";
+  | "DELETE"
+  | (string & {});
 export const ToolNameOperationEnum = /*@__PURE__*/ S.String;
 
 /** Tool name for which the tool spec override is to be generated. */
@@ -3072,7 +3130,8 @@ export type ConnectionSchemaMetadataStateEnum =
   | "UPDATED_SCHEMA_METADATA"
   | "REFRESH_SCHEMA_METADATA_FAILED"
   | "REFRESHING_FULL_SCHEMA"
-  | "UPDATED_FULL_SCHEMA";
+  | "UPDATED_FULL_SCHEMA"
+  | (string & {});
 export const ConnectionSchemaMetadataStateEnum = /*@__PURE__*/ S.String;
 
 /** ConnectionSchemaMetadata is the singleton resource of each connection. It includes the entity and action names of runtime resources exposed by a connection backend. */
@@ -3197,7 +3256,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -3324,7 +3384,8 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsConnectionsViewEnum =
   | "CONNECTION_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetProjectsLocationsConnectionsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsConnectionsRequest {
@@ -3352,7 +3413,8 @@ export const GetProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(
 export type GetProjectsLocationsConnectionsEndUserAuthenticationsViewEnum =
   | "END_USER_AUTHENTICATION_VIEW_UNSPECIFIED"
   | "BASIC_VIEW"
-  | "FULL_VIEW";
+  | "FULL_VIEW"
+  | (string & {});
 export const GetProjectsLocationsConnectionsEndUserAuthenticationsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3404,7 +3466,8 @@ export const GetProjectsLocationsConnectionsEventSubscriptionsRequest =
 export type GetProjectsLocationsEndpointAttachmentsViewEnum =
   | "ENDPOINT_ATTACHMENT_VIEW_UNSPECIFIED"
   | "ENDPOINT_ATTACHMENT_VIEW_BASIC"
-  | "ENDPOINT_ATTACHMENT_VIEW_FULL";
+  | "ENDPOINT_ATTACHMENT_VIEW_FULL"
+  | (string & {});
 export const GetProjectsLocationsEndpointAttachmentsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3534,7 +3597,8 @@ export type ProviderLaunchStageEnum =
   | "GA"
   | "DEPRECATED"
   | "TEST"
-  | "PRIVATE_PREVIEW";
+  | "PRIVATE_PREVIEW"
+  | (string & {});
 export const ProviderLaunchStageEnum = /*@__PURE__*/ S.String;
 
 /** Provider indicates the owner who provides the connectors. */
@@ -3598,16 +3662,22 @@ export type ConnectorConnectorTypeEnum =
   | "CONNECTOR_TYPE_UNSPECIFIED"
   | "CONNECTOR_TYPE_GOOGLE"
   | "CONNECTOR_TYPE_TECHNICAL"
-  | "CONNECTOR_TYPE_THIRD_PARTY";
+  | "CONNECTOR_TYPE_THIRD_PARTY"
+  | (string & {});
 export const ConnectorConnectorTypeEnum = /*@__PURE__*/ S.String;
 
 export type EventingDetailsSubscriptionTypeEnum =
   | "SUBSCRIPTION_TYPE_UNSPECIFIED"
   | "SHARED"
-  | "USER_SPECIFIC";
+  | "USER_SPECIFIC"
+  | (string & {});
 export const EventingDetailsSubscriptionTypeEnum = /*@__PURE__*/ S.String;
 
-export type EventingDetailsTypeEnum = "TYPE_UNSPECIFIED" | "WEBHOOK" | "JMS";
+export type EventingDetailsTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "WEBHOOK"
+  | "JMS"
+  | (string & {});
 export const EventingDetailsTypeEnum = /*@__PURE__*/ S.String;
 
 export type EventingDetailsLaunchStageEnum =
@@ -3616,7 +3686,8 @@ export type EventingDetailsLaunchStageEnum =
   | "GA"
   | "DEPRECATED"
   | "TEST"
-  | "PRIVATE_PREVIEW";
+  | "PRIVATE_PREVIEW"
+  | (string & {});
 export const EventingDetailsLaunchStageEnum = /*@__PURE__*/ S.String;
 
 /** Eventing Details message. */
@@ -3684,7 +3755,8 @@ export type ConnectorLaunchStageEnum =
   | "GA"
   | "DEPRECATED"
   | "TEST"
-  | "PRIVATE_PREVIEW";
+  | "PRIVATE_PREVIEW"
+  | (string & {});
 export const ConnectorLaunchStageEnum = /*@__PURE__*/ S.String;
 
 /** Connectors indicates a specific connector type, e.x. Salesforce, SAP etc. */
@@ -3743,7 +3815,8 @@ export const Connector = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsProvidersConnectorsVersionsViewEnum =
   | "CONNECTOR_VERSION_VIEW_UNSPECIFIED"
   | "CONNECTOR_VERSION_VIEW_BASIC"
-  | "CONNECTOR_VERSION_VIEW_FULL";
+  | "CONNECTOR_VERSION_VIEW_FULL"
+  | (string & {});
 export const GetProjectsLocationsProvidersConnectorsVersionsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3775,7 +3848,8 @@ export type DestinationConfigTemplatePortFieldTypeEnum =
   | "FIELD_TYPE_UNSPECIFIED"
   | "REQUIRED"
   | "OPTIONAL"
-  | "NOT_USED";
+  | "NOT_USED"
+  | (string & {});
 export const DestinationConfigTemplatePortFieldTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3821,7 +3895,8 @@ export const DestinationConfigTemplate = /*@__PURE__*/ S.suspend(() =>
 
 export type SslConfigTemplateServerCertTypeItemEnum =
   | "CERT_TYPE_UNSPECIFIED"
-  | "PEM";
+  | "PEM"
+  | (string & {});
 export const SslConfigTemplateServerCertTypeItemEnum = /*@__PURE__*/ S.String;
 
 export type SslConfigTemplateServerCertTypeItemEnumList =
@@ -3833,7 +3908,8 @@ export const SslConfigTemplateServerCertTypeItemEnumList =
 
 export type SslConfigTemplateClientCertTypeItemEnum =
   | "CERT_TYPE_UNSPECIFIED"
-  | "PEM";
+  | "PEM"
+  | (string & {});
 export const SslConfigTemplateClientCertTypeItemEnum = /*@__PURE__*/ S.String;
 
 export type SslConfigTemplateClientCertTypeItemEnumList =
@@ -3846,7 +3922,8 @@ export const SslConfigTemplateClientCertTypeItemEnumList =
 export type SslConfigTemplateSslTypeEnum =
   | "SSL_TYPE_UNSPECIFIED"
   | "TLS"
-  | "MTLS";
+  | "MTLS"
+  | (string & {});
 export const SslConfigTemplateSslTypeEnum = /*@__PURE__*/ S.String;
 
 /** Ssl config details of a connector version */
@@ -3877,7 +3954,8 @@ export const SslConfigTemplate = /*@__PURE__*/ S.suspend(() =>
 export type EventingConfigTemplateEventListenerTypeEnum =
   | "EVENT_LISTENER_TYPE_UNSPECIFIED"
   | "WEBHOOK_LISTENER"
-  | "JMS_LISTENER";
+  | "JMS_LISTENER"
+  | (string & {});
 export const EventingConfigTemplateEventListenerTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3954,7 +4032,8 @@ export const RoleGrantList = /*@__PURE__*/ S.Array(
 export type NetworkEgressModeOverrideNetworkEgressModeEnum =
   | "NETWORK_EGRESS_MODE_UNSPECIFIED"
   | "SERVERLESS_VPC_ACCESS_CONNECTOR"
-  | "DIRECT_VPC_EGRESS";
+  | "DIRECT_VPC_EGRESS"
+  | (string & {});
 export const NetworkEgressModeOverrideNetworkEgressModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3982,7 +4061,8 @@ export const NetworkEgressModeOverride = /*@__PURE__*/ S.suspend(() =>
 export type ConnectorInfraConfigDeploymentModelEnum =
   | "DEPLOYMENT_MODEL_UNSPECIFIED"
   | "GKE_MST"
-  | "CLOUD_RUN_MST";
+  | "CLOUD_RUN_MST"
+  | (string & {});
 export const ConnectorInfraConfigDeploymentModelEnum = /*@__PURE__*/ S.String;
 
 /** This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version */
@@ -4101,7 +4181,8 @@ export type ConnectorVersionLaunchStageEnum =
   | "GA"
   | "DEPRECATED"
   | "TEST"
-  | "PRIVATE_PREVIEW";
+  | "PRIVATE_PREVIEW"
+  | (string & {});
 export const ConnectorVersionLaunchStageEnum = /*@__PURE__*/ S.String;
 
 /** Supported runtime features of a connector version. */
@@ -4130,7 +4211,8 @@ export type ConnectorVersionUnsupportedConnectionTypesItemEnum =
   | "CONNECTION_TYPE_UNSPECIFIED"
   | "CONNECTION_WITH_EVENTING"
   | "ONLY_CONNECTION"
-  | "ONLY_EVENTING";
+  | "ONLY_EVENTING"
+  | (string & {});
 export const ConnectorVersionUnsupportedConnectionTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -4144,7 +4226,8 @@ export const ConnectorVersionUnsupportedConnectionTypesItemEnumList =
 export type SourceSourceTypeEnum =
   | "SOURCE_TYPE_UNSPECIFIED"
   | "CONFIG_VARIABLE"
-  | "AUTH_CONFIG_VARIABLE";
+  | "AUTH_CONFIG_VARIABLE"
+  | (string & {});
 export const SourceSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Source to extract the backend from. */
@@ -4200,13 +4283,15 @@ export type EgressControlConfigLaunchEnvironmentEnum =
   | "LAUNCH_ENVIRONMENT_UNSPECIFIED"
   | "AUTOPUSH"
   | "STAGING"
-  | "PROD";
+  | "PROD"
+  | (string & {});
 export const EgressControlConfigLaunchEnvironmentEnum = /*@__PURE__*/ S.String;
 
 export type EgressControlConfigAccessModeEnum =
   | "ACCESS_MODE_UNSPECIFIED"
   | "RESTRICTED"
-  | "ALLOW_ALL";
+  | "ALLOW_ALL"
+  | (string & {});
 export const EgressControlConfigAccessModeEnum = /*@__PURE__*/ S.String;
 
 /** Egress control config for connector runtime. These configurations define the rules to identify which outbound domains/hosts needs to be whitelisted. It may be a static information for a particular connector version or it is derived from the configurations provided by the customer in Connection resource. */
@@ -4404,7 +4489,8 @@ export const GetRegionalSettingsProjectsLocationsRequest =
 export type EncryptionConfigEncryptionTypeEnum =
   | "ENCRYPTION_TYPE_UNSPECIFIED"
   | "GMEK"
-  | "CMEK";
+  | "CMEK"
+  | (string & {});
 export const EncryptionConfigEncryptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Regional encryption config for CMEK details. */
@@ -4426,7 +4512,8 @@ export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
 export type NetworkConfigEgressModeEnum =
   | "NETWORK_EGRESS_MODE_UNSPECIFIED"
   | "AUTO_IP"
-  | "STATIC_IP";
+  | "STATIC_IP"
+  | (string & {});
 export const NetworkConfigEgressModeEnum = /*@__PURE__*/ S.String;
 
 /** Regional Network Config. */
@@ -4494,7 +4581,8 @@ export type RuntimeConfigStateEnum =
   | "ACTIVE"
   | "CREATING"
   | "DELETING"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const RuntimeConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** RuntimeConfig is the singleton resource of each location. It includes generic resource configs consumed by control plane and runtime plane like: pub/sub topic/subscription resource name, Cloud Storage location storing schema etc. */
@@ -4575,7 +4663,7 @@ export const Settings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Settings" }) as any as S.Schema<Settings>;
 
 export type ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum =
-  "VIEW_UNSPECIFIED" | "BASIC";
+  "VIEW_UNSPECIFIED" | "BASIC" | (string & {});
 export const ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4671,7 +4759,8 @@ export type JsonSchemaJdbcTypeEnum =
   | "DATA_TYPE_SQLXML"
   | "DATA_TYPE_REF_CURSOR"
   | "DATA_TYPE_TIME_WITH_TIMEZONE"
-  | "DATA_TYPE_TIMESTAMP_WITH_TIMEZONE";
+  | "DATA_TYPE_TIMESTAMP_WITH_TIMEZONE"
+  | (string & {});
 export const JsonSchemaJdbcTypeEnum = /*@__PURE__*/ S.String;
 
 export type JsonSchemaList = ReadonlyArray<JsonSchema>;
@@ -4879,7 +4968,8 @@ export type ResultMetadataDataTypeEnum =
   | "DATA_TYPE_SQLXML"
   | "DATA_TYPE_REF_CURSOR"
   | "DATA_TYPE_TIME_WITH_TIMEZONE"
-  | "DATA_TYPE_TIMESTAMP_WITH_TIMEZONE";
+  | "DATA_TYPE_TIMESTAMP_WITH_TIMEZONE"
+  | (string & {});
 export const ResultMetadataDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** Metadata of result field. */
@@ -4958,7 +5048,8 @@ export type InputParameterDataTypeEnum =
   | "DATA_TYPE_SQLXML"
   | "DATA_TYPE_REF_CURSOR"
   | "DATA_TYPE_TIME_WITH_TIMEZONE"
-  | "DATA_TYPE_TIMESTAMP_WITH_TIMEZONE";
+  | "DATA_TYPE_TIMESTAMP_WITH_TIMEZONE"
+  | (string & {});
 export const InputParameterDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** Metadata of an input parameter. */
@@ -5094,7 +5185,7 @@ export const ListenEventResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListenEventResponse>;
 
 export type ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum =
-  "VIEW_UNSPECIFIED" | "BASIC";
+  "VIEW_UNSPECIFIED" | "BASIC" | (string & {});
 export const ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -5179,7 +5270,8 @@ export type FieldDataTypeEnum =
   | "DATA_TYPE_SQLXML"
   | "DATA_TYPE_REF_CURSOR"
   | "DATA_TYPE_TIME_WITH_TIMEZONE"
-  | "DATA_TYPE_TIMESTAMP_WITH_TIMEZONE";
+  | "DATA_TYPE_TIMESTAMP_WITH_TIMEZONE"
+  | (string & {});
 export const FieldDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** Metadata of an entity field. */
@@ -5228,7 +5320,8 @@ export type RuntimeEntitySchemaOperationsItemEnum =
   | "GET"
   | "CREATE"
   | "UPDATE"
-  | "DELETE";
+  | "DELETE"
+  | (string & {});
 export const RuntimeEntitySchemaOperationsItemEnum = /*@__PURE__*/ S.String;
 
 export type RuntimeEntitySchemaOperationsItemEnumList =
@@ -5334,7 +5427,8 @@ export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsConnectionsViewEnum =
   | "CONNECTION_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListProjectsLocationsConnectionsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsConnectionsRequest {
@@ -5601,7 +5695,8 @@ export const ListRuntimeEntitySchemasResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsEndpointAttachmentsViewEnum =
   | "ENDPOINT_ATTACHMENT_VIEW_UNSPECIFIED"
   | "ENDPOINT_ATTACHMENT_VIEW_BASIC"
-  | "ENDPOINT_ATTACHMENT_VIEW_FULL";
+  | "ENDPOINT_ATTACHMENT_VIEW_FULL"
+  | (string & {});
 export const ListProjectsLocationsEndpointAttachmentsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -5984,7 +6079,8 @@ export const ListConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsProvidersConnectorsVersionsViewEnum =
   | "CONNECTOR_VERSION_VIEW_UNSPECIFIED"
   | "CONNECTOR_VERSION_VIEW_BASIC"
-  | "CONNECTOR_VERSION_VIEW_FULL";
+  | "CONNECTOR_VERSION_VIEW_FULL"
+  | (string & {});
 export const ListProjectsLocationsProvidersConnectorsVersionsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -6711,7 +6807,8 @@ export type ValidateCustomConnectorSpecRequestSpecTypeEnum =
   | "CUSTOM_CONNECTOR_TYPE_UNSPECIFIED"
   | "OPEN_API"
   | "PROTO"
-  | "SDK";
+  | "SDK"
+  | (string & {});
 export const ValidateCustomConnectorSpecRequestSpecTypeEnum =
   /*@__PURE__*/ S.String;
 

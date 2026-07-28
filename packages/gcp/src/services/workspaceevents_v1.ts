@@ -102,7 +102,8 @@ export type TaskStatusStateEnum =
   | "TASK_STATE_CANCELLED"
   | "TASK_STATE_INPUT_REQUIRED"
   | "TASK_STATE_REJECTED"
-  | "TASK_STATE_AUTH_REQUIRED";
+  | "TASK_STATE_AUTH_REQUIRED"
+  | (string & {});
 export const TaskStatusStateEnum = /*@__PURE__*/ S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
@@ -116,7 +117,11 @@ export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-export type MessageRoleEnum = "ROLE_UNSPECIFIED" | "ROLE_USER" | "ROLE_AGENT";
+export type MessageRoleEnum =
+  | "ROLE_UNSPECIFIED"
+  | "ROLE_USER"
+  | "ROLE_AGENT"
+  | (string & {});
 export const MessageRoleEnum = /*@__PURE__*/ S.String;
 
 /** DataPart represents a structured blob. This is most commonly a JSON payload. */
@@ -317,7 +322,8 @@ export type SubscriptionStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "SUSPENDED"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const SubscriptionStateEnum = /*@__PURE__*/ S.String;
 
 export type SubscriptionSuspensionReasonEnum =
@@ -330,7 +336,8 @@ export type SubscriptionSuspensionReasonEnum =
   | "ENDPOINT_PERMISSION_DENIED"
   | "ENDPOINT_NOT_FOUND"
   | "ENDPOINT_RESOURCE_EXHAUSTED"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const SubscriptionSuspensionReasonEnum = /*@__PURE__*/ S.String;
 
 /** A subscription to receive events about a Google Workspace resource. To learn more about subscriptions, see the [Google Workspace Events API overview](https://developers.google.com/workspace/events). */

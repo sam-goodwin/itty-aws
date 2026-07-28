@@ -65,7 +65,8 @@ export type GoogleCloudPolicysimulatorV1ReplayStateEnum =
   | "PENDING"
   | "RUNNING"
   | "SUCCEEDED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const GoogleCloudPolicysimulatorV1ReplayStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -122,7 +123,8 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -200,7 +202,8 @@ export const GoogleIamV1PolicyMap = /*@__PURE__*/ S.Record(
 
 export type GoogleCloudPolicysimulatorV1ReplayConfigLogSourceEnum =
   | "LOG_SOURCE_UNSPECIFIED"
-  | "RECENT_ACCESSES";
+  | "RECENT_ACCESSES"
+  | (string & {});
 export const GoogleCloudPolicysimulatorV1ReplayConfigLogSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -375,7 +378,8 @@ export type GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewStateEnum =
   | "PREVIEW_PENDING"
   | "PREVIEW_RUNNING"
   | "PREVIEW_SUCCEEDED"
-  | "PREVIEW_FAILED";
+  | "PREVIEW_FAILED"
+  | (string & {});
 export const GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -531,7 +535,8 @@ export type GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum =
   | "UPDATE"
   | "DELETE"
   | "REMOVE_GRANT"
-  | "GOVERN_TAGS";
+  | "GOVERN_TAGS"
+  | (string & {});
 export const GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -545,7 +550,8 @@ export const GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList =
 export type GoogleCloudOrgpolicyV2CustomConstraintActionTypeEnum =
   | "ACTION_TYPE_UNSPECIFIED"
   | "ALLOW"
-  | "DENY";
+  | "DENY"
+  | (string & {});
 export const GoogleCloudOrgpolicyV2CustomConstraintActionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1125,7 +1131,8 @@ export type GoogleCloudPolicysimulatorV1ExplainedAccessAccessStateEnum =
   | "GRANTED"
   | "NOT_GRANTED"
   | "UNKNOWN_CONDITIONAL"
-  | "UNKNOWN_INFO_DENIED";
+  | "UNKNOWN_INFO_DENIED"
+  | (string & {});
 export const GoogleCloudPolicysimulatorV1ExplainedAccessAccessStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1137,7 +1144,8 @@ export const GoogleRpcStatusList = /*@__PURE__*/ S.Array(
 export type GoogleCloudPolicysimulatorV1ExplainedPolicyRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "NORMAL"
-  | "HIGH";
+  | "HIGH"
+  | (string & {});
 export const GoogleCloudPolicysimulatorV1ExplainedPolicyRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1146,19 +1154,21 @@ export type GoogleCloudPolicysimulatorV1BindingExplanationAccessEnum =
   | "GRANTED"
   | "NOT_GRANTED"
   | "UNKNOWN_CONDITIONAL"
-  | "UNKNOWN_INFO_DENIED";
+  | "UNKNOWN_INFO_DENIED"
+  | (string & {});
 export const GoogleCloudPolicysimulatorV1BindingExplanationAccessEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicysimulatorV1BindingExplanationRolePermissionRelevanceEnum =
-  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH";
+  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH" | (string & {});
 export const GoogleCloudPolicysimulatorV1BindingExplanationRolePermissionRelevanceEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicysimulatorV1BindingExplanationRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "NORMAL"
-  | "HIGH";
+  | "HIGH"
+  | (string & {});
 export const GoogleCloudPolicysimulatorV1BindingExplanationRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1166,7 +1176,8 @@ export type GoogleCloudPolicysimulatorV1BindingExplanationRolePermissionEnum =
   | "ROLE_PERMISSION_UNSPECIFIED"
   | "ROLE_PERMISSION_INCLUDED"
   | "ROLE_PERMISSION_NOT_INCLUDED"
-  | "ROLE_PERMISSION_UNKNOWN_INFO_DENIED";
+  | "ROLE_PERMISSION_UNKNOWN_INFO_DENIED"
+  | (string & {});
 export const GoogleCloudPolicysimulatorV1BindingExplanationRolePermissionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1175,12 +1186,13 @@ export type GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembershipMem
     | "MEMBERSHIP_INCLUDED"
     | "MEMBERSHIP_NOT_INCLUDED"
     | "MEMBERSHIP_UNKNOWN_INFO_DENIED"
-    | "MEMBERSHIP_UNKNOWN_UNSUPPORTED";
+    | "MEMBERSHIP_UNKNOWN_UNSUPPORTED"
+    | (string & {});
 export const GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembershipMembershipEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembershipRelevanceEnum =
-  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH";
+  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH" | (string & {});
 export const GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembershipRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1272,7 +1284,8 @@ export type GoogleCloudPolicysimulatorV1ExplainedPolicyAccessEnum =
   | "GRANTED"
   | "NOT_GRANTED"
   | "UNKNOWN_CONDITIONAL"
-  | "UNKNOWN_INFO_DENIED";
+  | "UNKNOWN_INFO_DENIED"
+  | (string & {});
 export const GoogleCloudPolicysimulatorV1ExplainedPolicyAccessEnum =
   /*@__PURE__*/ S.String;
 
@@ -1342,7 +1355,8 @@ export type GoogleCloudPolicysimulatorV1AccessStateDiffAccessChangeEnum =
   | "ACCESS_REVOKED"
   | "ACCESS_GAINED"
   | "ACCESS_MAYBE_REVOKED"
-  | "ACCESS_MAYBE_GAINED";
+  | "ACCESS_MAYBE_GAINED"
+  | (string & {});
 export const GoogleCloudPolicysimulatorV1AccessStateDiffAccessChangeEnum =
   /*@__PURE__*/ S.String;
 

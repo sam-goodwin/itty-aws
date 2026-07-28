@@ -767,13 +767,17 @@ export const generateService = (
         .filter((v: unknown): v is string => typeof v === "string");
       out.push(...enumDecl({ name, values, pure }));
     } else if (d.type === "intEnum") {
-      // Closed numeric literal union; schema stays S.Number (protocols never
+      // Open numeric literal union (documented values plus `(number & {})`
+      // for forward compatibility); schema stays S.Number (protocols never
       // validate enum membership).
       const values = Object.values(d.members ?? {})
         .map((m: any) => m.traits?.["smithy.api#enumValue"])
         .filter((v: unknown): v is number => typeof v === "number");
+      const union = values.length
+        ? `${values.join(" | ")} | (number & {})`
+        : "number";
       out.push(
-        `export type ${name} = ${values.join(" | ") || "number"};`,
+        `export type ${name} = ${union};`,
         `export const ${name} = ${pure}S.Number;\n`,
       );
     }

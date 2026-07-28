@@ -193,7 +193,8 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
 export type NodeMemcacheVersionEnum =
   | "MEMCACHE_VERSION_UNSPECIFIED"
   | "MEMCACHE_1_5"
-  | "MEMCACHE_1_6_15";
+  | "MEMCACHE_1_6_15"
+  | (string & {});
 export const NodeMemcacheVersionEnum = /*@__PURE__*/ S.String;
 
 export type NodeStateEnum =
@@ -201,7 +202,8 @@ export type NodeStateEnum =
   | "CREATING"
   | "READY"
   | "DELETING"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const NodeStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -283,7 +285,8 @@ export type WeeklyMaintenanceWindowDayEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const WeeklyMaintenanceWindowDayEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -357,7 +360,8 @@ export const GoogleCloudMemcacheV1MaintenancePolicy = /*@__PURE__*/ S.suspend(
 export type InstanceMemcacheVersionEnum =
   | "MEMCACHE_VERSION_UNSPECIFIED"
   | "MEMCACHE_1_5"
-  | "MEMCACHE_1_6_15";
+  | "MEMCACHE_1_6_15"
+  | (string & {});
 export const InstanceMemcacheVersionEnum = /*@__PURE__*/ S.String;
 
 export type InstanceStateEnum =
@@ -367,12 +371,14 @@ export type InstanceStateEnum =
   | "UPDATING"
   | "DELETING"
   | "PERFORMING_MAINTENANCE"
-  | "MEMCACHE_VERSION_UPGRADING";
+  | "MEMCACHE_VERSION_UPGRADING"
+  | (string & {});
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 export type InstanceMessageCodeEnum =
   | "CODE_UNSPECIFIED"
-  | "ZONE_DISTRIBUTION_UNBALANCED";
+  | "ZONE_DISTRIBUTION_UNBALANCED"
+  | (string & {});
 export const InstanceMessageCodeEnum = /*@__PURE__*/ S.String;
 
 export interface InstanceMessage {
@@ -864,7 +870,8 @@ export type RescheduleMaintenanceRequestRescheduleTypeEnum =
   | "RESCHEDULE_TYPE_UNSPECIFIED"
   | "IMMEDIATE"
   | "NEXT_AVAILABLE_WINDOW"
-  | "SPECIFIC_TIME";
+  | "SPECIFIC_TIME"
+  | (string & {});
 export const RescheduleMaintenanceRequestRescheduleTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1008,7 +1015,8 @@ export const UpdateParametersProjectsLocationsInstancesRequest =
 export type GoogleCloudMemcacheV1UpgradeInstanceRequestMemcacheVersionEnum =
   | "MEMCACHE_VERSION_UNSPECIFIED"
   | "MEMCACHE_1_5"
-  | "MEMCACHE_1_6_15";
+  | "MEMCACHE_1_6_15"
+  | (string & {});
 export const GoogleCloudMemcacheV1UpgradeInstanceRequestMemcacheVersionEnum =
   /*@__PURE__*/ S.String;
 

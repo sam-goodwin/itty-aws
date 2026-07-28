@@ -318,7 +318,8 @@ export type EnvironmentStateEnum =
   | "SUSPENDED"
   | "PENDING"
   | "RUNNING"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const EnvironmentStateEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;

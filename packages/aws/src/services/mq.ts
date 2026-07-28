@@ -162,7 +162,11 @@ export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedExcept
   },
   T.HttpError(401),
 ).pipe(C.withAuthError) {}
-export type AuthenticationStrategy = "SIMPLE" | "LDAP" | "CONFIG_MANAGED";
+export type AuthenticationStrategy =
+  | "SIMPLE"
+  | "LDAP"
+  | "CONFIG_MANAGED"
+  | (string & {});
 export const AuthenticationStrategy = /*@__PURE__*/ S.String;
 
 export interface ConfigurationId {
@@ -179,7 +183,8 @@ export const ConfigurationId = /*@__PURE__*/ S.suspend(() =>
 export type DeploymentMode =
   | "SINGLE_INSTANCE"
   | "ACTIVE_STANDBY_MULTI_AZ"
-  | "CLUSTER_MULTI_AZ";
+  | "CLUSTER_MULTI_AZ"
+  | (string & {});
 export const DeploymentMode = /*@__PURE__*/ S.String;
 
 export interface EncryptionOptions {
@@ -196,7 +201,7 @@ export const EncryptionOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EncryptionOptions",
 }) as any as S.Schema<EncryptionOptions>;
-export type EngineType = "ACTIVEMQ" | "RABBITMQ";
+export type EngineType = "ACTIVEMQ" | "RABBITMQ" | (string & {});
 export const EngineType = /*@__PURE__*/ S.String;
 
 export type __listOf__string = string[];
@@ -262,7 +267,8 @@ export type DayOfWeek =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const DayOfWeek = /*@__PURE__*/ S.String;
 
 export interface WeeklyStartTime {
@@ -285,7 +291,7 @@ export const WeeklyStartTime = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WeeklyStartTime",
 }) as any as S.Schema<WeeklyStartTime>;
-export type BrokerStorageType = "EBS" | "EFS";
+export type BrokerStorageType = "EBS" | "EFS" | (string & {});
 export const BrokerStorageType = /*@__PURE__*/ S.String;
 
 export type __mapOf__string = { [key: string]: string | undefined };
@@ -319,7 +325,7 @@ export const User = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 export type __listOfUser = User[];
 export const __listOfUser = /*@__PURE__*/ S.Array(User);
-export type DataReplicationMode = "NONE" | "CRDR";
+export type DataReplicationMode = "NONE" | "CRDR" | (string & {});
 export const DataReplicationMode = /*@__PURE__*/ S.String;
 
 export interface CreateBrokerRequest {
@@ -759,7 +765,8 @@ export type BrokerState =
   | "RUNNING"
   | "REBOOT_IN_PROGRESS"
   | "CRITICAL_ACTION_REQUIRED"
-  | "REPLICA";
+  | "REPLICA"
+  | (string & {});
 export const BrokerState = /*@__PURE__*/ S.String;
 
 export type __listOfConfigurationId = ConfigurationId[];
@@ -857,7 +864,7 @@ export const LogsSummary = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({ identifier: "LogsSummary" }) as any as S.Schema<LogsSummary>;
-export type ChangeType = "CREATE" | "UPDATE" | "DELETE";
+export type ChangeType = "CREATE" | "UPDATE" | "DELETE" | (string & {});
 export const ChangeType = /*@__PURE__*/ S.String;
 
 export interface UserSummary {
@@ -1359,7 +1366,8 @@ export type SharedResourceErrorCode =
   | "SETUP_INCOMPLETE"
   | "INTERNAL_ERROR"
   | "AZ_MISMATCH"
-  | "RESOURCE_CONFIGURATION_NOT_FOUND";
+  | "RESOURCE_CONFIGURATION_NOT_FOUND"
+  | (string & {});
 export const SharedResourceErrorCode = /*@__PURE__*/ S.String;
 
 export interface SharedResourceError {
@@ -1380,10 +1388,11 @@ export type SharedResourceStatus =
   | "DELETION_IN_PROGRESS"
   | "PENDING_CREATE"
   | "PENDING_DELETE"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const SharedResourceStatus = /*@__PURE__*/ S.String;
 
-export type SharedResourceType = "RESOURCE_SHARE" | "RESOURCE";
+export type SharedResourceType = "RESOURCE_SHARE" | "RESOURCE" | (string & {});
 export const SharedResourceType = /*@__PURE__*/ S.String;
 
 export interface SharedResource {
@@ -1810,7 +1819,7 @@ export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListUsersResponse",
 }) as any as S.Schema<ListUsersResponse>;
-export type PromoteMode = "SWITCHOVER" | "FAILOVER";
+export type PromoteMode = "SWITCHOVER" | "FAILOVER" | (string & {});
 export const PromoteMode = /*@__PURE__*/ S.String;
 
 export interface PromoteRequest {
@@ -2030,7 +2039,8 @@ export const UpdateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export type SanitizationWarningReason =
   | "DISALLOWED_ELEMENT_REMOVED"
   | "DISALLOWED_ATTRIBUTE_REMOVED"
-  | "INVALID_ATTRIBUTE_VALUE_REMOVED";
+  | "INVALID_ATTRIBUTE_VALUE_REMOVED"
+  | (string & {});
 export const SanitizationWarningReason = /*@__PURE__*/ S.String;
 
 export interface SanitizationWarning {

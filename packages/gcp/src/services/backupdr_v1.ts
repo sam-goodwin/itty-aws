@@ -188,7 +188,8 @@ export type BackupPlanAssociationStateEnum =
   | "ACTIVE"
   | "DELETING"
   | "INACTIVE"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const BackupPlanAssociationStateEnum = /*@__PURE__*/ S.String;
 
 export type RuleConfigInfoLastBackupStateEnum =
@@ -196,7 +197,8 @@ export type RuleConfigInfoLastBackupStateEnum =
   | "FIRST_BACKUP_PENDING"
   | "PERMISSION_DENIED"
   | "SUCCEEDED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const RuleConfigInfoLastBackupStateEnum = /*@__PURE__*/ S.String;
 
 /** Message for rules config info. */
@@ -392,7 +394,8 @@ export type StandardScheduleMonthsItemEnum =
   | "SEPTEMBER"
   | "OCTOBER"
   | "NOVEMBER"
-  | "DECEMBER";
+  | "DECEMBER"
+  | (string & {});
 export const StandardScheduleMonthsItemEnum = /*@__PURE__*/ S.String;
 
 export type StandardScheduleMonthsItemEnumList =
@@ -409,7 +412,8 @@ export type StandardScheduleDaysOfWeekItemEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const StandardScheduleDaysOfWeekItemEnum = /*@__PURE__*/ S.String;
 
 export type StandardScheduleDaysOfWeekItemEnumList =
@@ -424,7 +428,8 @@ export type WeekDayOfMonthWeekOfMonthEnum =
   | "SECOND"
   | "THIRD"
   | "FOURTH"
-  | "LAST";
+  | "LAST"
+  | (string & {});
 export const WeekDayOfMonthWeekOfMonthEnum = /*@__PURE__*/ S.String;
 
 export type WeekDayOfMonthDayOfWeekEnum =
@@ -435,7 +440,8 @@ export type WeekDayOfMonthDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const WeekDayOfMonthDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** `WeekDayOfMonth` defines the week day of the month on which the backups will run. The message combines a `WeekOfMonth` and `DayOfWeek` to produce values like `FIRST`/`MONDAY` or `LAST`/`FRIDAY`. */
@@ -458,7 +464,8 @@ export type StandardScheduleRecurrenceTypeEnum =
   | "DAILY"
   | "WEEKLY"
   | "MONTHLY"
-  | "YEARLY";
+  | "YEARLY"
+  | (string & {});
 export const StandardScheduleRecurrenceTypeEnum = /*@__PURE__*/ S.String;
 
 export type IntegerList = ReadonlyArray<number>;
@@ -546,7 +553,8 @@ export type BackupPlanStateEnum =
   | "ACTIVE"
   | "DELETING"
   | "INACTIVE"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const BackupPlanStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -652,13 +660,15 @@ export type BackupVaultAccessRestrictionEnum =
   | "WITHIN_PROJECT"
   | "WITHIN_ORGANIZATION"
   | "UNRESTRICTED"
-  | "WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA";
+  | "WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA"
+  | (string & {});
 export const BackupVaultAccessRestrictionEnum = /*@__PURE__*/ S.String;
 
 export type BackupVaultBackupRetentionInheritanceEnum =
   | "BACKUP_RETENTION_INHERITANCE_UNSPECIFIED"
   | "INHERIT_VAULT_RETENTION"
-  | "MATCH_BACKUP_EXPIRE_TIME";
+  | "MATCH_BACKUP_EXPIRE_TIME"
+  | (string & {});
 export const BackupVaultBackupRetentionInheritanceEnum = /*@__PURE__*/ S.String;
 
 export type BackupVaultStateEnum =
@@ -667,7 +677,8 @@ export type BackupVaultStateEnum =
   | "ACTIVE"
   | "DELETING"
   | "ERROR"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const BackupVaultStateEnum = /*@__PURE__*/ S.String;
 
 /** Message describing the EncryptionConfig of backup vault. This determines how data within the vault is encrypted at rest. */
@@ -780,7 +791,8 @@ export const CreateProjectsLocationsBackupVaultsRequest =
 
 export type ManagementServerTypeEnum =
   | "INSTANCE_TYPE_UNSPECIFIED"
-  | "BACKUP_RESTORE";
+  | "BACKUP_RESTORE"
+  | (string & {});
 export const ManagementServerTypeEnum = /*@__PURE__*/ S.String;
 
 export type ManagementServerStateEnum =
@@ -791,12 +803,14 @@ export type ManagementServerStateEnum =
   | "DELETING"
   | "REPAIRING"
   | "MAINTENANCE"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const ManagementServerStateEnum = /*@__PURE__*/ S.String;
 
 export type NetworkConfigPeeringModeEnum =
   | "PEERING_MODE_UNSPECIFIED"
-  | "PRIVATE_SERVICE_ACCESS";
+  | "PRIVATE_SERVICE_ACCESS"
+  | (string & {});
 export const NetworkConfigPeeringModeEnum = /*@__PURE__*/ S.String;
 
 /** Network configuration for ManagementServer instance. */
@@ -1102,7 +1116,8 @@ export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 export type EndTrialRequestEndReasonEnum =
   | "END_REASON_UNSPECIFIED"
   | "MOVE_TO_PAID"
-  | "DISCONTINUED";
+  | "DISCONTINUED"
+  | (string & {});
 export const EndTrialRequestEndReasonEnum = /*@__PURE__*/ S.String;
 
 /** Request message for ending a trial. */
@@ -1145,13 +1160,15 @@ export type TrialStateEnum =
   | "UNSUBSCRIBED"
   | "EXPIRED"
   | "ELIGIBLE"
-  | "NOT_ELIGIBLE";
+  | "NOT_ELIGIBLE"
+  | (string & {});
 export const TrialStateEnum = /*@__PURE__*/ S.String;
 
 export type TrialEndReasonEnum =
   | "END_REASON_UNSPECIFIED"
   | "MOVE_TO_PAID"
-  | "DISCONTINUED";
+  | "DISCONTINUED"
+  | (string & {});
 export const TrialEndReasonEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Trial for a project. */
@@ -1320,7 +1337,8 @@ export type BackupConfigDetailsStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "INACTIVE"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const BackupConfigDetailsStateEnum = /*@__PURE__*/ S.String;
 
 /** Point in time recovery settings of the backup configuration resource. */
@@ -1339,14 +1357,16 @@ export type BackupConfigDetailsTypeEnum =
   | "CLOUD_SQL_INSTANCE_BACKUP_CONFIG"
   | "COMPUTE_ENGINE_RESOURCE_POLICY"
   | "BACKUPDR_BACKUP_PLAN"
-  | "BACKUPDR_TEMPLATE";
+  | "BACKUPDR_TEMPLATE"
+  | (string & {});
 export const BackupConfigDetailsTypeEnum = /*@__PURE__*/ S.String;
 
 export type BackupLocationTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "ZONAL"
   | "REGIONAL"
-  | "MULTI_REGIONAL";
+  | "MULTI_REGIONAL"
+  | (string & {});
 export const BackupLocationTypeEnum = /*@__PURE__*/ S.String;
 
 /** BackupLocation represents a cloud location where a backup can be stored. */
@@ -1422,7 +1442,8 @@ export type ResourceBackupConfigTargetResourceTypeEnum =
   | "COMPUTE_ENGINE_VM"
   | "COMPUTE_ENGINE_DISK"
   | "COMPUTE_ENGINE_REGIONAL_DISK"
-  | "FILESTORE_INSTANCE";
+  | "FILESTORE_INSTANCE"
+  | (string & {});
 export const ResourceBackupConfigTargetResourceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1542,7 +1563,10 @@ export const FetchBackupPlanAssociationsForResourceTypeResponse =
   }) as any as S.Schema<FetchBackupPlanAssociationsForResourceTypeResponse>;
 
 export type FetchForResourceTypeProjectsLocationsBackupVaultsDataSourcesBackupsViewEnum =
-  "BACKUP_VIEW_UNSPECIFIED" | "BACKUP_VIEW_BASIC" | "BACKUP_VIEW_FULL";
+    | "BACKUP_VIEW_UNSPECIFIED"
+    | "BACKUP_VIEW_BASIC"
+    | "BACKUP_VIEW_FULL"
+    | (string & {});
 export const FetchForResourceTypeProjectsLocationsBackupVaultsDataSourcesBackupsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -1605,7 +1629,8 @@ export type BackupBackupTypeEnum =
   | "BACKUP_TYPE_UNSPECIFIED"
   | "SCHEDULED"
   | "ON_DEMAND"
-  | "ON_DEMAND_OPERATIONAL";
+  | "ON_DEMAND_OPERATIONAL"
+  | (string & {});
 export const BackupBackupTypeEnum = /*@__PURE__*/ S.String;
 
 /** Minimum details to identify a Google Cloud resource for a backup. */
@@ -1727,7 +1752,8 @@ export type GuestOsFeatureTypeEnum =
   | "SEV_SNP_CAPABLE"
   | "TDX_CAPABLE"
   | "IDPF"
-  | "SEV_LIVE_MIGRATABLE_V2";
+  | "SEV_LIVE_MIGRATABLE_V2"
+  | (string & {});
 export const GuestOsFeatureTypeEnum = /*@__PURE__*/ S.String;
 
 /** Feature type of the Guest OS. */
@@ -1749,7 +1775,8 @@ export const GuestOsFeatureList = /*@__PURE__*/ S.Array(
 export type DiskBackupPropertiesArchitectureEnum =
   | "ARCHITECTURE_UNSPECIFIED"
   | "X86_64"
-  | "ARM64";
+  | "ARM64"
+  | (string & {});
 export const DiskBackupPropertiesArchitectureEnum = /*@__PURE__*/ S.String;
 
 /** DiskBackupProperties represents the properties of a Disk backup. */
@@ -1819,13 +1846,15 @@ export const DiskBackupProperties = /*@__PURE__*/ S.suspend(() =>
 export type SchedulingInstanceTerminationActionEnum =
   | "INSTANCE_TERMINATION_ACTION_UNSPECIFIED"
   | "DELETE"
-  | "STOP";
+  | "STOP"
+  | (string & {});
 export const SchedulingInstanceTerminationActionEnum = /*@__PURE__*/ S.String;
 
 export type SchedulingOnHostMaintenanceEnum =
   | "ON_HOST_MAINTENANCE_UNSPECIFIED"
   | "TERMINATE"
-  | "MIGRATE";
+  | "MIGRATE"
+  | (string & {});
 export const SchedulingOnHostMaintenanceEnum = /*@__PURE__*/ S.String;
 
 /** A SchedulingDuration represents a fixed-length span of time represented as a count of seconds and fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or "month". Range is approximately 10,000 years. */
@@ -1844,7 +1873,11 @@ export const SchedulingDuration = /*@__PURE__*/ S.suspend(() =>
   identifier: "SchedulingDuration",
 }) as any as S.Schema<SchedulingDuration>;
 
-export type NodeAffinityOperatorEnum = "OPERATOR_UNSPECIFIED" | "IN" | "NOT_IN";
+export type NodeAffinityOperatorEnum =
+  | "OPERATOR_UNSPECIFIED"
+  | "IN"
+  | "NOT_IN"
+  | (string & {});
 export const NodeAffinityOperatorEnum = /*@__PURE__*/ S.String;
 
 /** Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled. */
@@ -1872,7 +1905,8 @@ export const NodeAffinityList = /*@__PURE__*/ S.Array(
 export type SchedulingProvisioningModelEnum =
   | "PROVISIONING_MODEL_UNSPECIFIED"
   | "STANDARD"
-  | "SPOT";
+  | "SPOT"
+  | (string & {});
 export const SchedulingProvisioningModelEnum = /*@__PURE__*/ S.String;
 
 /** Sets the scheduling options for an Instance. */
@@ -1982,19 +2016,22 @@ export const AcceleratorConfigList = /*@__PURE__*/ S.Array(
 export type NetworkInterfaceStackTypeEnum =
   | "STACK_TYPE_UNSPECIFIED"
   | "IPV4_ONLY"
-  | "IPV4_IPV6";
+  | "IPV4_IPV6"
+  | (string & {});
 export const NetworkInterfaceStackTypeEnum = /*@__PURE__*/ S.String;
 
 export type AccessConfigNetworkTierEnum =
   | "NETWORK_TIER_UNSPECIFIED"
   | "PREMIUM"
-  | "STANDARD";
+  | "STANDARD"
+  | (string & {});
 export const AccessConfigNetworkTierEnum = /*@__PURE__*/ S.String;
 
 export type AccessConfigTypeEnum =
   | "ACCESS_TYPE_UNSPECIFIED"
   | "ONE_TO_ONE_NAT"
-  | "DIRECT_IPV6";
+  | "DIRECT_IPV6"
+  | (string & {});
 export const AccessConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** An access configuration attached to an instance's network interface. Only one access config per instance is supported. */
@@ -2056,13 +2093,15 @@ export const AliasIpRangeList = /*@__PURE__*/ S.Array(
 export type NetworkInterfaceNicTypeEnum =
   | "NIC_TYPE_UNSPECIFIED"
   | "VIRTIO_NET"
-  | "GVNIC";
+  | "GVNIC"
+  | (string & {});
 export const NetworkInterfaceNicTypeEnum = /*@__PURE__*/ S.String;
 
 export type NetworkInterfaceIpv6AccessTypeEnum =
   | "UNSPECIFIED_IPV6_ACCESS_TYPE"
   | "INTERNAL"
-  | "EXTERNAL";
+  | "EXTERNAL"
+  | (string & {});
 export const NetworkInterfaceIpv6AccessTypeEnum = /*@__PURE__*/ S.String;
 
 /** A network interface resource attached to an instance. s */
@@ -2125,7 +2164,8 @@ export const NetworkInterfaceList = /*@__PURE__*/ S.Array(
 export type ComputeInstanceBackupPropertiesKeyRevocationActionTypeEnum =
   | "KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED"
   | "NONE"
-  | "STOP";
+  | "STOP"
+  | (string & {});
 export const ComputeInstanceBackupPropertiesKeyRevocationActionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2155,13 +2195,15 @@ export type AttachedDiskModeEnum =
   | "DISK_MODE_UNSPECIFIED"
   | "READ_WRITE"
   | "READ_ONLY"
-  | "LOCKED";
+  | "LOCKED"
+  | (string & {});
 export const AttachedDiskModeEnum = /*@__PURE__*/ S.String;
 
 export type AttachedDiskDiskTypeDeprecatedEnum =
   | "DISK_TYPE_UNSPECIFIED"
   | "SCRATCH"
-  | "PERSISTENT";
+  | "PERSISTENT"
+  | (string & {});
 export const AttachedDiskDiskTypeDeprecatedEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the parameters to initialize this disk. */
@@ -2183,7 +2225,8 @@ export const InitializeParams = /*@__PURE__*/ S.suspend(() =>
 export type AttachedDiskTypeEnum =
   | "DISK_TYPE_UNSPECIFIED"
   | "SCRATCH"
-  | "PERSISTENT";
+  | "PERSISTENT"
+  | (string & {});
 export const AttachedDiskTypeEnum = /*@__PURE__*/ S.String;
 
 export type AttachedDiskDiskInterfaceEnum =
@@ -2191,12 +2234,14 @@ export type AttachedDiskDiskInterfaceEnum =
   | "SCSI"
   | "NVME"
   | "NVDIMM"
-  | "ISCSI";
+  | "ISCSI"
+  | (string & {});
 export const AttachedDiskDiskInterfaceEnum = /*@__PURE__*/ S.String;
 
 export type AttachedDiskSavedStateEnum =
   | "DISK_SAVED_STATE_UNSPECIFIED"
-  | "PRESERVED";
+  | "PRESERVED"
+  | (string & {});
 export const AttachedDiskSavedStateEnum = /*@__PURE__*/ S.String;
 
 /** An instance-attached disk resource. */
@@ -2359,7 +2404,8 @@ export type BackupStateEnum =
   | "ACTIVE"
   | "DELETING"
   | "ERROR"
-  | "UPLOADING";
+  | "UPLOADING"
+  | (string & {});
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
 /** CloudSqlInstanceBackupProperties represents Cloud SQL Instance Backup properties. */
@@ -2415,7 +2461,8 @@ export const AlloyDbClusterBackupProperties = /*@__PURE__*/ S.suspend(() =>
 export type BackupBackupRetentionInheritanceEnum =
   | "BACKUP_RETENTION_INHERITANCE_UNSPECIFIED"
   | "INHERIT_VAULT_RETENTION"
-  | "MATCH_BACKUP_EXPIRE_TIME";
+  | "MATCH_BACKUP_EXPIRE_TIME"
+  | (string & {});
 export const BackupBackupRetentionInheritanceEnum = /*@__PURE__*/ S.String;
 
 /** Message describing a Backup object. */
@@ -2573,7 +2620,8 @@ export const FetchForResourceTypeProjectsLocationsDataSourceReferencesRequest =
 export type DataSourceReferenceDataSourceBackupConfigStateEnum =
   | "BACKUP_CONFIG_STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "PASSIVE";
+  | "PASSIVE"
+  | (string & {});
 export const DataSourceReferenceDataSourceBackupConfigStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2582,7 +2630,8 @@ export type DataSourceBackupConfigInfoLastBackupStateEnum =
   | "FIRST_BACKUP_PENDING"
   | "SUCCEEDED"
   | "FAILED"
-  | "PERMISSION_DENIED";
+  | "PERMISSION_DENIED"
+  | (string & {});
 export const DataSourceBackupConfigInfoLastBackupStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2986,7 +3035,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -3150,7 +3200,8 @@ export type BackupPlanRevisionStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "INACTIVE";
+  | "INACTIVE"
+  | (string & {});
 export const BackupPlanRevisionStateEnum = /*@__PURE__*/ S.String;
 
 /** `BackupPlanRevision` represents a snapshot of a `BackupPlan` at a point in time. */
@@ -3181,7 +3232,8 @@ export const BackupPlanRevision = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsBackupVaultsViewEnum =
   | "BACKUP_VAULT_VIEW_UNSPECIFIED"
   | "BACKUP_VAULT_VIEW_BASIC"
-  | "BACKUP_VAULT_VIEW_FULL";
+  | "BACKUP_VAULT_VIEW_FULL"
+  | (string & {});
 export const GetProjectsLocationsBackupVaultsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsBackupVaultsRequest {
@@ -3230,7 +3282,8 @@ export const GetProjectsLocationsBackupVaultsDataSourcesRequest =
 export type DataSourceConfigStateEnum =
   | "BACKUP_CONFIG_STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "PASSIVE";
+  | "PASSIVE"
+  | (string & {});
 export const DataSourceConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** BackupApplianceApplication describes a Source Resource when it is an application backed up by a BackupAppliance. */
@@ -3442,7 +3495,8 @@ export type BackupConfigInfoLastBackupStateEnum =
   | "FIRST_BACKUP_PENDING"
   | "SUCCEEDED"
   | "FAILED"
-  | "PERMISSION_DENIED";
+  | "PERMISSION_DENIED"
+  | (string & {});
 export const BackupConfigInfoLastBackupStateEnum = /*@__PURE__*/ S.String;
 
 /** GcpBackupConfig captures the Backup configuration details for Google Cloud resources. All Google Cloud resources regardless of type are protected with backup plan associations. */
@@ -3534,7 +3588,8 @@ export type DataSourceStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const DataSourceStateEnum = /*@__PURE__*/ S.String;
 
 /** Message describing a DataSource object. Datasource object used to represent Datasource details for both admin and basic view. */
@@ -3589,7 +3644,8 @@ export const DataSource = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsBackupVaultsDataSourcesBackupsViewEnum =
   | "BACKUP_VIEW_UNSPECIFIED"
   | "BACKUP_VIEW_BASIC"
-  | "BACKUP_VIEW_FULL";
+  | "BACKUP_VIEW_FULL"
+  | (string & {});
 export const GetProjectsLocationsBackupVaultsDataSourcesBackupsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3697,7 +3753,8 @@ export const GetTrialProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type CloudSqlInstanceInitializationConfigEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "ENTERPRISE"
-  | "ENTERPRISE_PLUS";
+  | "ENTERPRISE_PLUS"
+  | (string & {});
 export const CloudSqlInstanceInitializationConfigEditionEnum =
   /*@__PURE__*/ S.String;
 
@@ -4026,7 +4083,8 @@ export const ListBackupPlanRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsBackupVaultsViewEnum =
   | "BACKUP_VAULT_VIEW_UNSPECIFIED"
   | "BACKUP_VAULT_VIEW_BASIC"
-  | "BACKUP_VAULT_VIEW_FULL";
+  | "BACKUP_VAULT_VIEW_FULL"
+  | (string & {});
 export const ListProjectsLocationsBackupVaultsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsBackupVaultsRequest {
@@ -4142,7 +4200,8 @@ export const ListDataSourcesResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsBackupVaultsDataSourcesBackupsViewEnum =
   | "BACKUP_VIEW_UNSPECIFIED"
   | "BACKUP_VIEW_BASIC"
-  | "BACKUP_VIEW_FULL";
+  | "BACKUP_VIEW_FULL"
+  | (string & {});
 export const ListProjectsLocationsBackupVaultsDataSourcesBackupsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4648,13 +4707,15 @@ export const RemoveProjectsLocationsBackupVaultsDataSourcesRequest =
 export type DiskRestorePropertiesArchitectureEnum =
   | "ARCHITECTURE_UNSPECIFIED"
   | "X86_64"
-  | "ARM64";
+  | "ARM64"
+  | (string & {});
 export const DiskRestorePropertiesArchitectureEnum = /*@__PURE__*/ S.String;
 
 export type DiskRestorePropertiesAccessModeEnum =
   | "READ_WRITE_SINGLE"
   | "READ_WRITE_MANY"
-  | "READ_ONLY_MANY";
+  | "READ_ONLY_MANY"
+  | (string & {});
 export const DiskRestorePropertiesAccessModeEnum = /*@__PURE__*/ S.String;
 
 /** DiskRestoreProperties represents the properties of a Disk restore. */
@@ -4722,7 +4783,8 @@ export type AllocationAffinityConsumeReservationTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "NO_RESERVATION"
   | "ANY_RESERVATION"
-  | "SPECIFIC_RESERVATION";
+  | "SPECIFIC_RESERVATION"
+  | (string & {});
 export const AllocationAffinityConsumeReservationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4750,7 +4812,8 @@ export const AllocationAffinity = /*@__PURE__*/ S.suspend(() =>
 export type NetworkPerformanceConfigTotalEgressBandwidthTierEnum =
   | "TIER_UNSPECIFIED"
   | "DEFAULT"
-  | "TIER_1";
+  | "TIER_1"
+  | (string & {});
 export const NetworkPerformanceConfigTotalEgressBandwidthTierEnum =
   /*@__PURE__*/ S.String;
 
@@ -4794,7 +4857,8 @@ export const AdvancedMachineFeatures = /*@__PURE__*/ S.suspend(() =>
 export type ComputeInstanceRestorePropertiesKeyRevocationActionTypeEnum =
   | "KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED"
   | "NONE"
-  | "STOP";
+  | "STOP"
+  | (string & {});
 export const ComputeInstanceRestorePropertiesKeyRevocationActionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4824,7 +4888,8 @@ export type ComputeInstanceRestorePropertiesPrivateIpv6GoogleAccessEnum =
   | "INSTANCE_PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED"
   | "INHERIT_FROM_SUBNETWORK"
   | "ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE"
-  | "ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE";
+  | "ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE"
+  | (string & {});
 export const ComputeInstanceRestorePropertiesPrivateIpv6GoogleAccessEnum =
   /*@__PURE__*/ S.String;
 
@@ -5088,7 +5153,8 @@ export const SetIamPolicyProjectsLocationsManagementServersRequest =
 export type SetInternalStatusRequestBackupConfigStateEnum =
   | "BACKUP_CONFIG_STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "PASSIVE";
+  | "PASSIVE"
+  | (string & {});
 export const SetInternalStatusRequestBackupConfigStateEnum =
   /*@__PURE__*/ S.String;
 

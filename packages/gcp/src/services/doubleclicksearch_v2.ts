@@ -392,7 +392,11 @@ export const GetByCustomerIdConversionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetByCustomerIdConversionRequest",
 }) as any as S.Schema<GetByCustomerIdConversionRequest>;
 
-export type ConversionAdUserDataConsentEnum = "UNKNOWN" | "GRANTED" | "DENIED";
+export type ConversionAdUserDataConsentEnum =
+  | "UNKNOWN"
+  | "GRANTED"
+  | "DENIED"
+  | (string & {});
 export const ConversionAdUserDataConsentEnum = /*@__PURE__*/ S.String;
 
 /** A message containing the custom dimension. */

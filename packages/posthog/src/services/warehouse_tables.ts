@@ -43,7 +43,8 @@ export type TableFormatEnum =
   | "Parquet"
   | "JSONEachRow"
   | "Delta"
-  | "DeltaS3Wrapper";
+  | "DeltaS3Wrapper"
+  | (string & {});
 export const TableFormatEnum = /*@__PURE__*/ S.String;
 
 export interface CredentialInput {
@@ -112,10 +113,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -1420,7 +1422,8 @@ export type ExternalDataSourceTypeEnum =
   | "Zylo"
   | "Tally"
   | "Nuntly"
-  | "Vturb";
+  | "Vturb"
+  | (string & {});
 export const ExternalDataSourceTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SimpleExternalDataSourceSerializers {
@@ -1495,7 +1498,11 @@ export const TableOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TableOutput" }) as any as S.Schema<TableOutput>;
 
 /** * `csv` - csv * `json` - json * `parquet` - parquet */
-export type CreateTableFromUploadFileFormatEnum = "csv" | "json" | "parquet";
+export type CreateTableFromUploadFileFormatEnum =
+  | "csv"
+  | "json"
+  | "parquet"
+  | (string & {});
 export const CreateTableFromUploadFileFormatEnum = /*@__PURE__*/ S.String;
 
 export interface WarehouseTablesCreateFromUploadCreateRequest {
@@ -1838,7 +1845,8 @@ export const WarehouseTablesUpdateSchemaCreateResponse =
 export type WarehouseTablesUploadFileCreateRequestFileFormat =
   | "csv"
   | "json"
-  | "parquet";
+  | "parquet"
+  | (string & {});
 export const WarehouseTablesUploadFileCreateRequestFileFormat =
   /*@__PURE__*/ S.String;
 

@@ -146,7 +146,8 @@ export type GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationStateStateEnum
     | "COMPLETED"
     | "FAILED"
     | "CANCELLED"
-    | "UNKNOWN";
+    | "UNKNOWN"
+    | (string & {});
 export const GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationStateStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -327,7 +328,8 @@ export const GoogleCloudOsconfigV2beta__OrchestrationScope =
 export type OSPolicyModeEnum =
   | "MODE_UNSPECIFIED"
   | "VALIDATION"
-  | "ENFORCEMENT";
+  | "ENFORCEMENT"
+  | (string & {});
 export const OSPolicyModeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Goo package repository. These are added to a repo file that is managed at `C:/ProgramData/GooGet/repos/google_osconfig.repo`. */
@@ -350,7 +352,8 @@ export const OSPolicyResourceRepositoryResourceGooRepository =
 export type OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeEnum =
   | "ARCHIVE_TYPE_UNSPECIFIED"
   | "DEB"
-  | "DEB_SRC";
+  | "DEB_SRC"
+  | (string & {});
 export const OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -582,7 +585,8 @@ export const OSPolicyResourcePackageResourceAPT = /*@__PURE__*/ S.suspend(() =>
 export type OSPolicyResourcePackageResourceDesiredStateEnum =
   | "DESIRED_STATE_UNSPECIFIED"
   | "INSTALLED"
-  | "REMOVED";
+  | "REMOVED"
+  | (string & {});
 export const OSPolicyResourcePackageResourceDesiredStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -654,7 +658,8 @@ export type OSPolicyResourceExecResourceExecInterpreterEnum =
   | "INTERPRETER_UNSPECIFIED"
   | "NONE"
   | "SHELL"
-  | "POWERSHELL";
+  | "POWERSHELL"
+  | (string & {});
 export const OSPolicyResourceExecResourceExecInterpreterEnum =
   /*@__PURE__*/ S.String;
 
@@ -703,7 +708,8 @@ export type OSPolicyResourceFileResourceStateEnum =
   | "DESIRED_STATE_UNSPECIFIED"
   | "PRESENT"
   | "ABSENT"
-  | "CONTENTS_MATCH";
+  | "CONTENTS_MATCH"
+  | (string & {});
 export const OSPolicyResourceFileResourceStateEnum = /*@__PURE__*/ S.String;
 
 /** A resource that manages the state of a file. */
@@ -837,7 +843,8 @@ export type OSPolicyAssignmentRolloutStateEnum =
   | "IN_PROGRESS"
   | "CANCELLING"
   | "CANCELLED"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const OSPolicyAssignmentRolloutStateEnum = /*@__PURE__*/ S.String;
 
 /** Message representing label set. * A label is a key value pair set for a VM. * A LabelSet is a set of labels. * Labels within a LabelSet are ANDed. In other words, a LabelSet is applicable for a VM only if it matches all the labels in the LabelSet. * Example: A LabelSet with 2 labels: `env=prod` and `type=webserver` will only be applicable for those VMs with both labels present. */

@@ -84,7 +84,8 @@ export const BillingDataResourceList = /*@__PURE__*/ S.Array(
 export type UserContextPersonaEnum =
   | "PERSONA_UNSPECIFIED"
   | "FINOPS_MANAGER"
-  | "DEVELOPER";
+  | "DEVELOPER"
+  | (string & {});
 export const UserContextPersonaEnum = /*@__PURE__*/ S.String;
 
 /** Additional context for personalization (e.g., user persona, role). */
@@ -146,7 +147,8 @@ export const GenerateInsightsV1betaRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type RejectionReasonEnum =
   | "REASON_UNSPECIFIED"
-  | "EXPLICIT_OUT_OF_SCOPE";
+  | "EXPLICIT_OUT_OF_SCOPE"
+  | (string & {});
 export const RejectionReasonEnum = /*@__PURE__*/ S.String;
 
 /** Encapsulates details about why a request was rejected. */
@@ -168,7 +170,8 @@ export type SuggestedChartChartTypeEnum =
   | "BAR_CHART"
   | "UNCHARTABLE"
   | "LINE_CHART"
-  | "AREA_CHART";
+  | "AREA_CHART"
+  | (string & {});
 export const SuggestedChartChartTypeEnum = /*@__PURE__*/ S.String;
 
 /** A suggested chart for the data set, used for UI rendering. */
@@ -487,7 +490,8 @@ export type InteropLinkLinkTypeEnum =
   | "LINK_TYPE_UNSPECIFIED"
   | "COST_REPORT"
   | "BQE_QUERY"
-  | "FINOPS_HUB";
+  | "FINOPS_HUB"
+  | (string & {});
 export const InteropLinkLinkTypeEnum = /*@__PURE__*/ S.String;
 
 /** A link to interoperable tools (e.g., pre-filtered Cost Reports, BQE queries). */
@@ -516,7 +520,8 @@ export type InsightSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "INFO"
   | "WARNING"
-  | "CRITICAL";
+  | "CRITICAL"
+  | (string & {});
 export const InsightSeverityEnum = /*@__PURE__*/ S.String;
 
 /** e.g. insight: title: "Cost Increase (The Explanation)" description: "Your cost increase was driven by Vertex AI Online Prediction in us-central1..." severity: INFO */
@@ -747,7 +752,11 @@ export const GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyMultiR
   }) as any as S.Schema<GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyMultiRegional>;
 
 export type GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyTypeEnum =
-  "TYPE_UNSPECIFIED" | "TYPE_GLOBAL" | "TYPE_REGIONAL" | "TYPE_MULTI_REGIONAL";
+    | "TYPE_UNSPECIFIED"
+    | "TYPE_GLOBAL"
+    | "TYPE_REGIONAL"
+    | "TYPE_MULTI_REGIONAL"
+    | (string & {});
 export const GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -955,7 +964,8 @@ export type GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TYPE_GLOBAL"
   | "TYPE_REGIONAL"
-  | "TYPE_MULTI_REGIONAL";
+  | "TYPE_MULTI_REGIONAL"
+  | (string & {});
 export const GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1113,12 +1123,15 @@ export const GoogleCloudBillingBillingaccountpricesV1betaUnitInfo =
   }) as any as S.Schema<GoogleCloudBillingBillingaccountpricesV1betaUnitInfo>;
 
 export type GoogleCloudBillingBillingaccountpricesV1betaAggregationInfoLevelEnum =
-  "LEVEL_UNSPECIFIED" | "LEVEL_ACCOUNT" | "LEVEL_PROJECT";
+  "LEVEL_UNSPECIFIED" | "LEVEL_ACCOUNT" | "LEVEL_PROJECT" | (string & {});
 export const GoogleCloudBillingBillingaccountpricesV1betaAggregationInfoLevelEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudBillingBillingaccountpricesV1betaAggregationInfoIntervalEnum =
-  "INTERVAL_UNSPECIFIED" | "INTERVAL_MONTHLY" | "INTERVAL_DAILY";
+    | "INTERVAL_UNSPECIFIED"
+    | "INTERVAL_MONTHLY"
+    | "INTERVAL_DAILY"
+    | (string & {});
 export const GoogleCloudBillingBillingaccountpricesV1betaAggregationInfoIntervalEnum =
   /*@__PURE__*/ S.String;
 
@@ -1481,7 +1494,8 @@ export type GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TYPE_GLOBAL"
   | "TYPE_REGIONAL"
-  | "TYPE_MULTI_REGIONAL";
+  | "TYPE_MULTI_REGIONAL"
+  | (string & {});
 export const GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1643,14 +1657,16 @@ export const GoogleCloudBillingPricesV1betaRateTierList = /*@__PURE__*/ S.Array(
 export type GoogleCloudBillingPricesV1betaAggregationInfoLevelEnum =
   | "LEVEL_UNSPECIFIED"
   | "LEVEL_ACCOUNT"
-  | "LEVEL_PROJECT";
+  | "LEVEL_PROJECT"
+  | (string & {});
 export const GoogleCloudBillingPricesV1betaAggregationInfoLevelEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudBillingPricesV1betaAggregationInfoIntervalEnum =
   | "INTERVAL_UNSPECIFIED"
   | "INTERVAL_MONTHLY"
-  | "INTERVAL_DAILY";
+  | "INTERVAL_DAILY"
+  | (string & {});
 export const GoogleCloudBillingPricesV1betaAggregationInfoIntervalEnum =
   /*@__PURE__*/ S.String;
 

@@ -112,13 +112,15 @@ export type SasPortalDeviceStateEnum =
   | "DEVICE_STATE_UNSPECIFIED"
   | "RESERVED"
   | "REGISTERED"
-  | "DEREGISTERED";
+  | "DEREGISTERED"
+  | (string & {});
 export const SasPortalDeviceStateEnum = /*@__PURE__*/ S.String;
 
 export type SasPortalDeviceConfigMeasurementCapabilitiesItemEnum =
   | "MEASUREMENT_CAPABILITY_UNSPECIFIED"
   | "MEASUREMENT_CAPABILITY_RECEIVED_POWER_WITH_GRANT"
-  | "MEASUREMENT_CAPABILITY_RECEIVED_POWER_WITHOUT_GRANT";
+  | "MEASUREMENT_CAPABILITY_RECEIVED_POWER_WITHOUT_GRANT"
+  | (string & {});
 export const SasPortalDeviceConfigMeasurementCapabilitiesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -132,7 +134,8 @@ export const SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList =
 export type SasPortalDeviceConfigCategoryEnum =
   | "DEVICE_CATEGORY_UNSPECIFIED"
   | "DEVICE_CATEGORY_A"
-  | "DEVICE_CATEGORY_B";
+  | "DEVICE_CATEGORY_B"
+  | (string & {});
 export const SasPortalDeviceConfigCategoryEnum = /*@__PURE__*/ S.String;
 
 export type SasPortalDeviceAirInterfaceRadioTechnologyEnum =
@@ -145,7 +148,8 @@ export type SasPortalDeviceAirInterfaceRadioTechnologyEnum =
   | "CW"
   | "REDLINE"
   | "TARANA_WIRELESS"
-  | "FAROS";
+  | "FAROS"
+  | (string & {});
 export const SasPortalDeviceAirInterfaceRadioTechnologyEnum =
   /*@__PURE__*/ S.String;
 
@@ -168,7 +172,8 @@ export const SasPortalDeviceAirInterface = /*@__PURE__*/ S.suspend(() =>
 export type SasPortalInstallationParamsHeightTypeEnum =
   | "HEIGHT_TYPE_UNSPECIFIED"
   | "HEIGHT_TYPE_AGL"
-  | "HEIGHT_TYPE_AMSL";
+  | "HEIGHT_TYPE_AMSL"
+  | (string & {});
 export const SasPortalInstallationParamsHeightTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about the device installation parameters. */
@@ -251,7 +256,8 @@ export const SasPortalDeviceModel = /*@__PURE__*/ S.suspend(() =>
 export type SasPortalDeviceConfigStateEnum =
   | "DEVICE_CONFIG_STATE_UNSPECIFIED"
   | "DRAFT"
-  | "FINAL";
+  | "FINAL"
+  | (string & {});
 export const SasPortalDeviceConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** Information about the device configuration. */
@@ -339,13 +345,15 @@ export type SasPortalDeviceGrantStateEnum =
   | "GRANT_STATE_TERMINATED"
   | "GRANT_STATE_SUSPENDED"
   | "GRANT_STATE_AUTHORIZED"
-  | "GRANT_STATE_EXPIRED";
+  | "GRANT_STATE_EXPIRED"
+  | (string & {});
 export const SasPortalDeviceGrantStateEnum = /*@__PURE__*/ S.String;
 
 export type SasPortalDeviceGrantChannelTypeEnum =
   | "CHANNEL_TYPE_UNSPECIFIED"
   | "CHANNEL_TYPE_GAA"
-  | "CHANNEL_TYPE_PAL";
+  | "CHANNEL_TYPE_PAL"
+  | (string & {});
 export const SasPortalDeviceGrantChannelTypeEnum = /*@__PURE__*/ S.String;
 
 /** Device grant. It is an authorization provided by the Spectrum Access System to a device to transmit using specified operating parameters after a successful heartbeat by the device. */
@@ -393,7 +401,8 @@ export const SasPortalDeviceGrantList = /*@__PURE__*/ S.Array(
 export type SasPortalNrqzValidationStateEnum =
   | "STATE_UNSPECIFIED"
   | "DRAFT"
-  | "FINAL";
+  | "FINAL"
+  | (string & {});
 export const SasPortalNrqzValidationStateEnum = /*@__PURE__*/ S.String;
 
 /** Information about National Radio Quiet Zone validation. */

@@ -66,7 +66,8 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned";
+  | "SystemAssigned,UserAssigned"
+  | (string & {});
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -101,7 +102,9 @@ export const WorkbookResourceIdentityInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkbookResourceIdentityInput>;
 
 /** The kind of workbook. Only valid value is shared. */
-export type ApplicationInsightsCommonTypesWorkbookSharedTypeKind = "shared";
+export type ApplicationInsightsCommonTypesWorkbookSharedTypeKind =
+  | "shared"
+  | (string & {});
 export const ApplicationInsightsCommonTypesWorkbookSharedTypeKind =
   /*@__PURE__*/ S.String;
 
@@ -156,7 +159,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -164,7 +168,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -445,7 +450,8 @@ export type WorkbooksListByResourceGroupRequestCategory =
   | "workbook"
   | "TSG"
   | "performance"
-  | "retention";
+  | "retention"
+  | (string & {});
 export const WorkbooksListByResourceGroupRequestCategory =
   /*@__PURE__*/ S.String;
 
@@ -562,7 +568,8 @@ export type WorkbooksListBySubscriptionRequestCategory =
   | "workbook"
   | "TSG"
   | "performance"
-  | "retention";
+  | "retention"
+  | (string & {});
 export const WorkbooksListBySubscriptionRequestCategory =
   /*@__PURE__*/ S.String;
 
@@ -703,7 +710,7 @@ export const WorkbooksRevisionsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkbooksRevisionsListRequest>;
 
 /** The kind of workbook. Only valid value is shared. */
-export type WorkbookUpdateSharedTypeKind = "shared";
+export type WorkbookUpdateSharedTypeKind = "shared" | (string & {});
 export const WorkbookUpdateSharedTypeKind = /*@__PURE__*/ S.String;
 
 /** Resource tags. */

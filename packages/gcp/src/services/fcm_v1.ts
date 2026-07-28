@@ -115,7 +115,8 @@ export type AndroidNotificationProxyEnum =
   | "PROXY_UNSPECIFIED"
   | "ALLOW"
   | "DENY"
-  | "IF_PRIORITY_LOWERED";
+  | "IF_PRIORITY_LOWERED"
+  | (string & {});
 export const AndroidNotificationProxyEnum = /*@__PURE__*/ S.String;
 
 export type AndroidNotificationNotificationPriorityEnum =
@@ -124,7 +125,8 @@ export type AndroidNotificationNotificationPriorityEnum =
   | "PRIORITY_LOW"
   | "PRIORITY_DEFAULT"
   | "PRIORITY_HIGH"
-  | "PRIORITY_MAX";
+  | "PRIORITY_MAX"
+  | (string & {});
 export const AndroidNotificationNotificationPriorityEnum =
   /*@__PURE__*/ S.String;
 
@@ -169,7 +171,8 @@ export type AndroidNotificationVisibilityEnum =
   | "VISIBILITY_UNSPECIFIED"
   | "PRIVATE"
   | "PUBLIC"
-  | "SECRET";
+  | "SECRET"
+  | (string & {});
 export const AndroidNotificationVisibilityEnum = /*@__PURE__*/ S.String;
 
 /** Notification to send to android devices. */
@@ -278,7 +281,7 @@ export const AndroidFcmOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "AndroidFcmOptions",
 }) as any as S.Schema<AndroidFcmOptions>;
 
-export type AndroidConfigPriorityEnum = "NORMAL" | "HIGH";
+export type AndroidConfigPriorityEnum = "NORMAL" | "HIGH" | (string & {});
 export const AndroidConfigPriorityEnum = /*@__PURE__*/ S.String;
 
 /** Android specific options for messages sent through [FCM connection server](https://goo.gl/4GLdUl). */

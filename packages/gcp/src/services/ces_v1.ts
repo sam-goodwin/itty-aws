@@ -202,7 +202,7 @@ export const ModelSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModelSettings" }) as any as S.Schema<ModelSettings>;
 
 export type EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsSemanticSimilarityChannelEnum =
-  "SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED" | "TEXT" | "AUDIO";
+  "SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED" | "TEXT" | "AUDIO" | (string & {});
 export const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsSemanticSimilarityChannelEnum =
   /*@__PURE__*/ S.String;
 
@@ -245,7 +245,7 @@ export const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpecta
   }) as any as S.Schema<EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds>;
 
 export type EvaluationMetricsThresholdsToolMatchingSettingsExtraToolCallBehaviorEnum =
-  "EXTRA_TOOL_CALL_BEHAVIOR_UNSPECIFIED" | "FAIL" | "ALLOW";
+  "EXTRA_TOOL_CALL_BEHAVIOR_UNSPECIFIED" | "FAIL" | "ALLOW" | (string & {});
 export const EvaluationMetricsThresholdsToolMatchingSettingsExtraToolCallBehaviorEnum =
   /*@__PURE__*/ S.String;
 
@@ -294,19 +294,24 @@ export const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds =
 export type EvaluationMetricsThresholdsHallucinationMetricBehaviorEnum =
   | "HALLUCINATION_METRIC_BEHAVIOR_UNSPECIFIED"
   | "DISABLED"
-  | "ENABLED";
+  | "ENABLED"
+  | (string & {});
 export const EvaluationMetricsThresholdsHallucinationMetricBehaviorEnum =
   /*@__PURE__*/ S.String;
 
 export type EvaluationMetricsThresholdsScenarioHallucinationMetricBehaviorEnum =
-  "HALLUCINATION_METRIC_BEHAVIOR_UNSPECIFIED" | "DISABLED" | "ENABLED";
+    | "HALLUCINATION_METRIC_BEHAVIOR_UNSPECIFIED"
+    | "DISABLED"
+    | "ENABLED"
+    | (string & {});
 export const EvaluationMetricsThresholdsScenarioHallucinationMetricBehaviorEnum =
   /*@__PURE__*/ S.String;
 
 export type EvaluationMetricsThresholdsGoldenHallucinationMetricBehaviorEnum =
   | "HALLUCINATION_METRIC_BEHAVIOR_UNSPECIFIED"
   | "DISABLED"
-  | "ENABLED";
+  | "ENABLED"
+  | (string & {});
 export const EvaluationMetricsThresholdsGoldenHallucinationMetricBehaviorEnum =
   /*@__PURE__*/ S.String;
 
@@ -364,13 +369,15 @@ export type ChannelProfileChannelTypeEnum =
   | "FIVE9"
   | "CONTACT_CENTER_INTEGRATION"
   | "WHATSAPP"
-  | "INSTAGRAM";
+  | "INSTAGRAM"
+  | (string & {});
 export const ChannelProfileChannelTypeEnum = /*@__PURE__*/ S.String;
 
 export type ChannelProfilePersonaPropertyPersonaEnum =
   | "UNKNOWN"
   | "CONCISE"
-  | "CHATTY";
+  | "CHATTY"
+  | (string & {});
 export const ChannelProfilePersonaPropertyPersonaEnum = /*@__PURE__*/ S.String;
 
 /** Represents the persona property of a channel. */
@@ -441,7 +448,8 @@ export type ChannelProfileWebWidgetConfigModalityEnum =
   | "CHAT_AND_VOICE"
   | "VOICE_ONLY"
   | "CHAT_ONLY"
-  | "CHAT_VOICE_AND_VIDEO";
+  | "CHAT_VOICE_AND_VIDEO"
+  | (string & {});
 export const ChannelProfileWebWidgetConfigModalityEnum = /*@__PURE__*/ S.String;
 
 /** Security settings for the web widget. */
@@ -470,7 +478,8 @@ export const ChannelProfileWebWidgetConfigSecuritySettings =
 export type ChannelProfileWebWidgetConfigThemeEnum =
   | "THEME_UNSPECIFIED"
   | "LIGHT"
-  | "DARK";
+  | "DARK"
+  | (string & {});
 export const ChannelProfileWebWidgetConfigThemeEnum = /*@__PURE__*/ S.String;
 
 /** Message for configuration for the web widget. */
@@ -548,7 +557,8 @@ export type AmbientSoundConfigPrebuiltAmbientNoiseEnum =
   | "PREBUILT_AMBIENT_NOISE_UNSPECIFIED"
   | "RETAIL_STORE"
   | "CONVENTION_HALL"
-  | "OUTDOOR";
+  | "OUTDOOR"
+  | (string & {});
 export const AmbientSoundConfigPrebuiltAmbientNoiseEnum =
   /*@__PURE__*/ S.String;
 
@@ -634,7 +644,8 @@ export const AudioProcessingConfig = /*@__PURE__*/ S.suspend(() =>
 export type DataStoreSettingsEngineTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "ENGINE_TYPE_SEARCH"
-  | "ENGINE_TYPE_CHAT";
+  | "ENGINE_TYPE_CHAT"
+  | (string & {});
 export const DataStoreSettingsEngineTypeEnum = /*@__PURE__*/ S.String;
 
 /** An engine to which the data stores are connected. See Vertex AI Search: https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction. */
@@ -687,7 +698,8 @@ export type ErrorHandlingSettingsErrorHandlingStrategyEnum =
   | "ERROR_HANDLING_STRATEGY_UNSPECIFIED"
   | "NONE"
   | "FALLBACK_RESPONSE"
-  | "END_SESSION";
+  | "END_SESSION"
+  | (string & {});
 export const ErrorHandlingSettingsErrorHandlingStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -921,7 +933,8 @@ export type Ces_SchemaTypeEnum =
   | "NUMBER"
   | "BOOLEAN"
   | "OBJECT"
-  | "ARRAY";
+  | "ARRAY"
+  | (string & {});
 export const Ces_SchemaTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a select subset of an OpenAPI 3.0 schema object. */
@@ -1016,7 +1029,8 @@ export const AppVariableDeclarationList = /*@__PURE__*/ S.Array(
 export type AppToolExecutionModeEnum =
   | "TOOL_EXECUTION_MODE_UNSPECIFIED"
   | "PARALLEL"
-  | "SEQUENTIAL";
+  | "SEQUENTIAL"
+  | (string & {});
 export const AppToolExecutionModeEnum = /*@__PURE__*/ S.String;
 
 /** Language settings of the app. */
@@ -1269,7 +1283,8 @@ export const TransferRuleDisablePlannerTransfer = /*@__PURE__*/ S.suspend(() =>
 export type TransferRuleDirectionEnum =
   | "DIRECTION_UNSPECIFIED"
   | "PARENT_TO_CHILD"
-  | "CHILD_TO_PARENT";
+  | "CHILD_TO_PARENT"
+  | (string & {});
 export const TransferRuleDirectionEnum = /*@__PURE__*/ S.String;
 
 /** Python code block to evaluate the condition. */
@@ -1449,7 +1464,8 @@ export type ExperimentConfigVersionReleaseStateEnum =
   | "PENDING"
   | "RUNNING"
   | "DONE"
-  | "EXPIRED";
+  | "EXPIRED"
+  | (string & {});
 export const ExperimentConfigVersionReleaseStateEnum = /*@__PURE__*/ S.String;
 
 /** Traffic allocation for the version release. */
@@ -1832,7 +1848,8 @@ export type GuardrailContentFilterMatchTypeEnum =
   | "MATCH_TYPE_UNSPECIFIED"
   | "SIMPLE_STRING_MATCH"
   | "WORD_BOUNDARY_STRING_MATCH"
-  | "REGEXP_MATCH";
+  | "REGEXP_MATCH"
+  | (string & {});
 export const GuardrailContentFilterMatchTypeEnum = /*@__PURE__*/ S.String;
 
 /** Guardrail that bans certain content from being used in the conversation. */
@@ -1943,7 +1960,8 @@ export type GuardrailModelSafetySafetySettingThresholdEnum =
   | "BLOCK_MEDIUM_AND_ABOVE"
   | "BLOCK_ONLY_HIGH"
   | "BLOCK_NONE"
-  | "OFF";
+  | "OFF"
+  | (string & {});
 export const GuardrailModelSafetySafetySettingThresholdEnum =
   /*@__PURE__*/ S.String;
 
@@ -1952,7 +1970,8 @@ export type GuardrailModelSafetySafetySettingCategoryEnum =
   | "HARM_CATEGORY_HATE_SPEECH"
   | "HARM_CATEGORY_DANGEROUS_CONTENT"
   | "HARM_CATEGORY_HARASSMENT"
-  | "HARM_CATEGORY_SEXUALLY_EXPLICIT";
+  | "HARM_CATEGORY_SEXUALLY_EXPLICIT"
+  | (string & {});
 export const GuardrailModelSafetySafetySettingCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -1995,7 +2014,8 @@ export type GuardrailLlmPolicyPolicyScopeEnum =
   | "POLICY_SCOPE_UNSPECIFIED"
   | "USER_QUERY"
   | "AGENT_RESPONSE"
-  | "USER_QUERY_AND_AGENT_RESPONSE";
+  | "USER_QUERY_AND_AGENT_RESPONSE"
+  | (string & {});
 export const GuardrailLlmPolicyPolicyScopeEnum = /*@__PURE__*/ S.String;
 
 /** Guardrail that blocks the conversation if the LLM response is considered violating the policy based on the LLM classification. */
@@ -2191,7 +2211,8 @@ export const PythonFunction = /*@__PURE__*/ S.suspend(() =>
 export type WidgetToolDataMappingModeEnum =
   | "MODE_UNSPECIFIED"
   | "FIELD_MAPPING"
-  | "PYTHON_SCRIPT";
+  | "PYTHON_SCRIPT"
+  | (string & {});
 export const WidgetToolDataMappingModeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for mapping data from a source tool to the widget's input parameters. */
@@ -2232,14 +2253,16 @@ export type WidgetToolWidgetTypeEnum =
   | "ORDER_SUMMARY"
   | "APPOINTMENT_DETAILS"
   | "APPOINTMENT_SCHEDULER"
-  | "CONTACT_FORM";
+  | "CONTACT_FORM"
+  | (string & {});
 export const WidgetToolWidgetTypeEnum = /*@__PURE__*/ S.String;
 
 export type WidgetToolTextResponseConfigTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "NONE"
   | "LLM_GENERATED"
-  | "STATIC";
+  | "STATIC"
+  | (string & {});
 export const WidgetToolTextResponseConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for the text response returned with the widget. */
@@ -2293,7 +2316,8 @@ export const WidgetTool = /*@__PURE__*/ S.suspend(() =>
 export type ToolExecutionTypeEnum =
   | "EXECUTION_TYPE_UNSPECIFIED"
   | "SYNCHRONOUS"
-  | "ASYNCHRONOUS";
+  | "ASYNCHRONOUS"
+  | (string & {});
 export const ToolExecutionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a distinct capability or function that an agent can perform. */
@@ -2472,7 +2496,8 @@ export type ActionEntityOperationOperationEnum =
   | "GET"
   | "CREATE"
   | "UPDATE"
-  | "DELETE";
+  | "DELETE"
+  | (string & {});
 export const ActionEntityOperationOperationEnum = /*@__PURE__*/ S.String;
 
 /** Entity CRUD operation specification. */
@@ -2607,7 +2632,8 @@ export const ClientFunction = /*@__PURE__*/ S.suspend(() =>
 export type FileSearchToolCorpusTypeEnum =
   | "CORPUS_TYPE_UNSPECIFIED"
   | "USER_OWNED"
-  | "FULLY_MANAGED";
+  | "FULLY_MANAGED"
+  | (string & {});
 export const FileSearchToolCorpusTypeEnum = /*@__PURE__*/ S.String;
 
 /** The file search tool allows the agent to search across the files uploaded by the app/agent developer. It has presets to give relatively good quality search over the uploaded files and summarization of the retrieved results. */
@@ -2666,12 +2692,14 @@ export type McpToolStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "INACTIVE"
-  | "STALE";
+  | "STALE"
+  | (string & {});
 export const McpToolStateEnum = /*@__PURE__*/ S.String;
 
 export type OAuthConfigOauthGrantTypeEnum =
   | "OAUTH_GRANT_TYPE_UNSPECIFIED"
-  | "CLIENT_CREDENTIAL";
+  | "CLIENT_CREDENTIAL"
+  | (string & {});
 export const OAuthConfigOauthGrantTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configurations for authentication with OAuth. */
@@ -2737,7 +2765,8 @@ export const ServiceAccountAuthConfig = /*@__PURE__*/ S.suspend(() =>
 export type ApiKeyConfigRequestLocationEnum =
   | "REQUEST_LOCATION_UNSPECIFIED"
   | "HEADER"
-  | "QUERY_STRING";
+  | "QUERY_STRING"
+  | (string & {});
 export const ApiKeyConfigRequestLocationEnum = /*@__PURE__*/ S.String;
 
 /** Configurations for authentication with API key. */
@@ -2843,7 +2872,8 @@ export const AgentTool = /*@__PURE__*/ S.suspend(() =>
 export type DataStoreToolFilterParameterBehaviorEnum =
   | "FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED"
   | "ALWAYS_INCLUDE"
-  | "NEVER_INCLUDE";
+  | "NEVER_INCLUDE"
+  | (string & {});
 export const DataStoreToolFilterParameterBehaviorEnum = /*@__PURE__*/ S.String;
 
 /** The connector config for the data store connection. */
@@ -2870,13 +2900,15 @@ export type DataStoreTypeEnum =
   | "PUBLIC_WEB"
   | "UNSTRUCTURED"
   | "FAQ"
-  | "CONNECTOR";
+  | "CONNECTOR"
+  | (string & {});
 export const DataStoreTypeEnum = /*@__PURE__*/ S.String;
 
 export type DataStoreDocumentProcessingModeEnum =
   | "DOCUMENT_PROCESSING_MODE_UNSPECIFIED"
   | "DOCUMENTS"
-  | "CHUNKS";
+  | "CHUNKS"
+  | (string & {});
 export const DataStoreDocumentProcessingModeEnum = /*@__PURE__*/ S.String;
 
 /** A DataStore resource in Vertex AI Search. */
@@ -2949,7 +2981,8 @@ export const DataStoreToolEngineSource = /*@__PURE__*/ S.suspend(() =>
 export type DataStoreToolModalityConfigModalityTypeEnum =
   | "MODALITY_TYPE_UNSPECIFIED"
   | "TEXT"
-  | "AUDIO";
+  | "AUDIO"
+  | (string & {});
 export const DataStoreToolModalityConfigModalityTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3036,12 +3069,12 @@ export const DataStoreToolModalityConfigList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DataStoreToolModalityConfigList>;
 
 export type DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecAttributeTypeEnum =
-  "ATTRIBUTE_TYPE_UNSPECIFIED" | "NUMERICAL" | "FRESHNESS";
+  "ATTRIBUTE_TYPE_UNSPECIFIED" | "NUMERICAL" | "FRESHNESS" | (string & {});
 export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecAttributeTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecInterpolationTypeEnum =
-  "INTERPOLATION_TYPE_UNSPECIFIED" | "LINEAR";
+  "INTERPOLATION_TYPE_UNSPECIFIED" | "LINEAR" | (string & {});
 export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecInterpolationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3370,7 +3403,8 @@ export const ConnectorToolset = /*@__PURE__*/ S.suspend(() =>
 export type ToolsetExecutionTypeEnum =
   | "EXECUTION_TYPE_UNSPECIFIED"
   | "SYNCHRONOUS"
-  | "ASYNCHRONOUS";
+  | "ASYNCHRONOUS"
+  | (string & {});
 export const ToolsetExecutionTypeEnum = /*@__PURE__*/ S.String;
 
 /** A toolset that contains a list of tools that are defined by an OpenAPI schema. */
@@ -3696,7 +3730,8 @@ export type DeleteProjectsLocationsAppsConversationsSourceEnum =
   | "LIVE"
   | "SIMULATOR"
   | "EVAL"
-  | "AGENT_TOOL";
+  | "AGENT_TOOL"
+  | (string & {});
 export const DeleteProjectsLocationsAppsConversationsSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -3915,7 +3950,8 @@ export const MockedToolCallList = /*@__PURE__*/ S.Array(
 export type MockConfigUnmatchedToolCallBehaviorEnum =
   | "UNMATCHED_TOOL_CALL_BEHAVIOR_UNSPECIFIED"
   | "FAIL"
-  | "PASS_THROUGH";
+  | "PASS_THROUGH"
+  | (string & {});
 export const MockConfigUnmatchedToolCallBehaviorEnum = /*@__PURE__*/ S.String;
 
 /** Mock tool calls configuration for the session. */
@@ -4088,7 +4124,8 @@ export const ExecuteToolResponse = /*@__PURE__*/ S.suspend(() =>
 export type ExportAppRequestExportFormatEnum =
   | "EXPORT_FORMAT_UNSPECIFIED"
   | "JSON"
-  | "YAML";
+  | "YAML"
+  | (string & {});
 export const ExportAppRequestExportFormatEnum = /*@__PURE__*/ S.String;
 
 /** Request message for AgentService.ExportApp. */
@@ -4888,7 +4925,8 @@ export type GetProjectsLocationsAppsConversationsSourceEnum =
   | "LIVE"
   | "SIMULATOR"
   | "EVAL"
-  | "AGENT_TOOL";
+  | "AGENT_TOOL"
+  | (string & {});
 export const GetProjectsLocationsAppsConversationsSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -4921,7 +4959,8 @@ export type ConversationSourceEnum =
   | "LIVE"
   | "SIMULATOR"
   | "EVAL"
-  | "AGENT_TOOL";
+  | "AGENT_TOOL"
+  | (string & {});
 export const ConversationSourceEnum = /*@__PURE__*/ S.String;
 
 export type SpanList = ReadonlyArray<Span>;
@@ -4980,7 +5019,8 @@ export type ConversationChannelTypeEnum =
   | "CHANNEL_TYPE_UNSPECIFIED"
   | "TEXT"
   | "AUDIO"
-  | "MULTIMODAL";
+  | "MULTIMODAL"
+  | (string & {});
 export const ConversationChannelTypeEnum = /*@__PURE__*/ S.String;
 
 export type ConversationInputTypesItemEnum =
@@ -4991,7 +5031,8 @@ export type ConversationInputTypesItemEnum =
   | "INPUT_TYPE_IMAGE"
   | "INPUT_TYPE_BLOB"
   | "INPUT_TYPE_TOOL_RESPONSE"
-  | "INPUT_TYPE_VARIABLES";
+  | "INPUT_TYPE_VARIABLES"
+  | (string & {});
 export const ConversationInputTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type ConversationInputTypesItemEnumList =
@@ -5183,7 +5224,8 @@ export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 export type ImportAppRequestImportOptionsConflictResolutionStrategyEnum =
   | "CONFLICT_RESOLUTION_STRATEGY_UNSPECIFIED"
   | "REPLACE"
-  | "OVERWRITE";
+  | "OVERWRITE"
+  | (string & {});
 export const ImportAppRequestImportOptionsConflictResolutionStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -5459,7 +5501,8 @@ export type ListProjectsLocationsAppsConversationsSourceEnum =
   | "LIVE"
   | "SIMULATOR"
   | "EVAL"
-  | "AGENT_TOOL";
+  | "AGENT_TOOL"
+  | (string & {});
 export const ListProjectsLocationsAppsConversationsSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -5468,7 +5511,8 @@ export type ListProjectsLocationsAppsConversationsSourcesEnum =
   | "LIVE"
   | "SIMULATOR"
   | "EVAL"
-  | "AGENT_TOOL";
+  | "AGENT_TOOL"
+  | (string & {});
 export const ListProjectsLocationsAppsConversationsSourcesEnum =
   /*@__PURE__*/ S.String;
 
@@ -6201,7 +6245,8 @@ export type OutputAudioConfigAudioEncodingEnum =
   | "AUDIO_ENCODING_UNSPECIFIED"
   | "LINEAR16"
   | "MULAW"
-  | "ALAW";
+  | "ALAW"
+  | (string & {});
 export const OutputAudioConfigAudioEncodingEnum = /*@__PURE__*/ S.String;
 
 /** OutputAudioConfig configures how the CES agent should synthesize outgoing audio responses. */
@@ -6224,7 +6269,8 @@ export type InputAudioConfigAudioEncodingEnum =
   | "AUDIO_ENCODING_UNSPECIFIED"
   | "LINEAR16"
   | "MULAW"
-  | "ALAW";
+  | "ALAW"
+  | (string & {});
 export const InputAudioConfigAudioEncodingEnum = /*@__PURE__*/ S.String;
 
 /** InputAudioConfig configures how the CES agent should interpret the incoming audio data. */
@@ -6579,7 +6625,8 @@ export const LfA2aV1SendMessageConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type LfA2aV1MessageRoleEnum =
   | "ROLE_UNSPECIFIED"
   | "ROLE_USER"
-  | "ROLE_AGENT";
+  | "ROLE_AGENT"
+  | (string & {});
 export const LfA2aV1MessageRoleEnum = /*@__PURE__*/ S.String;
 
 /** `Part` represents a container for a section of communication content. Parts can be purely textual, some sort of file (image, video, etc) or a structured data blob (i.e. JSON). */
@@ -6736,7 +6783,8 @@ export type LfA2aV1TaskStatusStateEnum =
   | "TASK_STATE_CANCELED"
   | "TASK_STATE_INPUT_REQUIRED"
   | "TASK_STATE_REJECTED"
-  | "TASK_STATE_AUTH_REQUIRED";
+  | "TASK_STATE_AUTH_REQUIRED"
+  | (string & {});
 export const LfA2aV1TaskStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** A container for the status of a task */

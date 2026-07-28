@@ -177,11 +177,15 @@ export type ClusterStatus =
   | "DELETED"
   | "FAILED"
   | "PENDING_SETUP"
-  | "PENDING_DELETE";
+  | "PENDING_DELETE"
+  | (string & {});
 export const ClusterStatus = /*@__PURE__*/ S.String;
 
 export type ClusterCreationTime = Date;
-export type EncryptionType = "AWS_OWNED_KMS_KEY" | "CUSTOMER_MANAGED_KMS_KEY";
+export type EncryptionType =
+  | "AWS_OWNED_KMS_KEY"
+  | "CUSTOMER_MANAGED_KMS_KEY"
+  | (string & {});
 export const EncryptionType = /*@__PURE__*/ S.String;
 
 export type KmsKeyArn = string;
@@ -189,7 +193,8 @@ export type EncryptionStatus =
   | "ENABLED"
   | "UPDATING"
   | "KMS_KEY_INACCESSIBLE"
-  | "ENABLING";
+  | "ENABLING"
+  | (string & {});
 export const EncryptionStatus = /*@__PURE__*/ S.String;
 
 export interface EncryptionDetails {
@@ -246,10 +251,10 @@ export type TargetDefinition = { kinesis: KinesisTargetDefinition };
 export const TargetDefinition = /*@__PURE__*/ S.Union([
   S.Struct({ kinesis: KinesisTargetDefinition }),
 ]);
-export type StreamOrdering = "UNORDERED";
+export type StreamOrdering = "UNORDERED" | (string & {});
 export const StreamOrdering = /*@__PURE__*/ S.String;
 
-export type StreamFormat = "JSON";
+export type StreamFormat = "JSON" | (string & {});
 export const StreamFormat = /*@__PURE__*/ S.String;
 
 export interface CreateStreamInput {
@@ -289,7 +294,8 @@ export type StreamStatus =
   | "DELETING"
   | "DELETED"
   | "FAILED"
-  | "IMPAIRED";
+  | "IMPAIRED"
+  | (string & {});
 export const StreamStatus = /*@__PURE__*/ S.String;
 
 export type StreamCreationTime = Date;
@@ -538,7 +544,8 @@ export type StreamFailureErrorCode =
   | "KINESIS_KMS_ACCESS_DENIED"
   | "KINESIS_OVERSIZE_RECORD"
   | "CLUSTER_CMK_INACCESSIBLE"
-  | "INTERNAL_ERROR";
+  | "INTERNAL_ERROR"
+  | (string & {});
 export const StreamFailureErrorCode = /*@__PURE__*/ S.String;
 
 export interface StatusReason {
@@ -866,7 +873,8 @@ export type ValidationExceptionReason =
   | "cannotParse"
   | "fieldValidationFailed"
   | "deletionProtectionEnabled"
-  | "other";
+  | "other"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

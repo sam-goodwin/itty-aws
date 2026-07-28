@@ -138,7 +138,10 @@ export class TokenNotFound extends T.applyErrorMatchers(
   [{ code: 1003 }],
 ) {}
 
-export type TokensCreateRequestPoliciesItemEffect = "allow" | "deny";
+export type TokensCreateRequestPoliciesItemEffect =
+  | "allow"
+  | "deny"
+  | (string & {});
 export const TokensCreateRequestPoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensCreateRequestPoliciesItemPermissionGroupsItemMeta {
@@ -346,7 +349,10 @@ export const TokensCreateResponseCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensCreateResponseCondition",
 }) as any as S.Schema<TokensCreateResponseCondition>;
 
-export type TokensCreateResponsePoliciesItemEffect = "allow" | "deny";
+export type TokensCreateResponsePoliciesItemEffect =
+  | "allow"
+  | "deny"
+  | (string & {});
 export const TokensCreateResponsePoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensCreateResponsePoliciesItemPermissionGroupsItemMeta {
@@ -443,7 +449,11 @@ export const TokensCreateResponsePoliciesList = /*@__PURE__*/ S.Array(
   TokensCreateResponsePoliciesItem,
 ) as any as S.Schema<TokensCreateResponsePoliciesList>;
 
-export type TokensCreateResponseStatus = "active" | "disabled" | "expired";
+export type TokensCreateResponseStatus =
+  | "active"
+  | "disabled"
+  | "expired"
+  | (string & {});
 export const TokensCreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -710,7 +720,8 @@ export type InvitesGetResponseStatus =
   | "pending"
   | "accepted"
   | "rejected"
-  | "expired";
+  | "expired"
+  | (string & {});
 export const InvitesGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -799,7 +810,8 @@ export type SubscriptionsGetResultItemFrequency =
   | "weekly"
   | "monthly"
   | "quarterly"
-  | "yearly";
+  | "yearly"
+  | (string & {});
 export const SubscriptionsGetResultItemFrequency = /*@__PURE__*/ S.String;
 
 export type SubscriptionsGetResultItemRatePlanId =
@@ -812,7 +824,8 @@ export type SubscriptionsGetResultItemRatePlanId =
   | "partners_free"
   | "partners_pro"
   | "partners_business"
-  | "partners_enterprise";
+  | "partners_enterprise"
+  | (string & {});
 export const SubscriptionsGetResultItemRatePlanId = /*@__PURE__*/ S.String;
 
 export type SubscriptionsGetResultItemRatePlanSetsList = ReadonlyArray<string>;
@@ -857,7 +870,8 @@ export type SubscriptionsGetResultItemState =
   | "AwaitingPayment"
   | "Cancelled"
   | "Failed"
-  | "Expired";
+  | "Expired"
+  | (string & {});
 export const SubscriptionsGetResultItemState = /*@__PURE__*/ S.String;
 
 export interface SubscriptionsGetResultItem {
@@ -975,7 +989,10 @@ export const TokensGetResponseCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensGetResponseCondition",
 }) as any as S.Schema<TokensGetResponseCondition>;
 
-export type TokensGetResponsePoliciesItemEffect = "allow" | "deny";
+export type TokensGetResponsePoliciesItemEffect =
+  | "allow"
+  | "deny"
+  | (string & {});
 export const TokensGetResponsePoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensGetResponsePoliciesItemPermissionGroupsItemMeta {
@@ -1069,7 +1086,11 @@ export const TokensGetResponsePoliciesList = /*@__PURE__*/ S.Array(
   TokensGetResponsePoliciesItem,
 ) as any as S.Schema<TokensGetResponsePoliciesList>;
 
-export type TokensGetResponseStatus = "active" | "disabled" | "expired";
+export type TokensGetResponseStatus =
+  | "active"
+  | "disabled"
+  | "expired"
+  | (string & {});
 export const TokensGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1135,7 +1156,10 @@ export const GetResponseOrganizationsItemRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseOrganizationsItemRolesList>;
 
-export type GetResponseOrganizationsItemStatus = "member" | "invited";
+export type GetResponseOrganizationsItemStatus =
+  | "member"
+  | "invited"
+  | (string & {});
 export const GetResponseOrganizationsItemStatus = /*@__PURE__*/ S.String;
 
 export interface GetResponseOrganizationsItem {
@@ -1228,7 +1252,7 @@ export const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUserResponse",
 }) as any as S.Schema<GetUserResponse>;
 
-export type AuditLogsListRequestDirection = "desc" | "asc";
+export type AuditLogsListRequestDirection = "desc" | "asc" | (string & {});
 export const AuditLogsListRequestDirection = /*@__PURE__*/ S.String;
 
 export interface ListAuditLogsRequest {
@@ -1286,7 +1310,11 @@ export const ListAuditLogsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAuditLogsResponse",
 }) as any as S.Schema<ListAuditLogsResponse>;
 
-export type BillingHistoryListRequestOrder = "type" | "occurred_at" | "action";
+export type BillingHistoryListRequestOrder =
+  | "type"
+  | "occurred_at"
+  | "action"
+  | (string & {});
 export const BillingHistoryListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface ListBillingHistoriesRequest {
@@ -1400,7 +1428,8 @@ export type InvitesListResultItemStatus =
   | "pending"
   | "accepted"
   | "rejected"
-  | "expired";
+  | "expired"
+  | (string & {});
 export const InvitesListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface InvitesListResultItem {
@@ -1468,16 +1497,23 @@ export const ListInvitesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInvitesResponse",
 }) as any as S.Schema<ListInvitesResponse>;
 
-export type OrganizationsListRequestDirection = "asc" | "desc";
+export type OrganizationsListRequestDirection = "asc" | "desc" | (string & {});
 export const OrganizationsListRequestDirection = /*@__PURE__*/ S.String;
 
-export type OrganizationsListRequestMatch = "any" | "all";
+export type OrganizationsListRequestMatch = "any" | "all" | (string & {});
 export const OrganizationsListRequestMatch = /*@__PURE__*/ S.String;
 
-export type OrganizationsListRequestOrder = "id" | "name" | "status";
+export type OrganizationsListRequestOrder =
+  | "id"
+  | "name"
+  | "status"
+  | (string & {});
 export const OrganizationsListRequestOrder = /*@__PURE__*/ S.String;
 
-export type OrganizationsListRequestStatus = "member" | "invited";
+export type OrganizationsListRequestStatus =
+  | "member"
+  | "invited"
+  | (string & {});
 export const OrganizationsListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ListOrganizationsRequest {
@@ -1522,7 +1558,10 @@ export const OrganizationsListResultItemRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OrganizationsListResultItemRolesList>;
 
-export type OrganizationsListResultItemStatus = "member" | "invited";
+export type OrganizationsListResultItemStatus =
+  | "member"
+  | "invited"
+  | (string & {});
 export const OrganizationsListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface OrganizationsListResultItem {
@@ -1731,7 +1770,8 @@ export type TokensPermissionGroupsListResultItemCategory =
   | "email_and_messaging"
   | "cache_and_performance"
   | "account_and_billing"
-  | "other";
+  | "other"
+  | (string & {});
 export const TokensPermissionGroupsListResultItemCategory =
   /*@__PURE__*/ S.String;
 
@@ -1739,7 +1779,8 @@ export type TokensPermissionGroupsListResultItemScopesItem =
   | "com.cloudflare.api.account"
   | "com.cloudflare.api.account.zone"
   | "com.cloudflare.api.user"
-  | "com.cloudflare.edge.r2.bucket";
+  | "com.cloudflare.edge.r2.bucket"
+  | (string & {});
 export const TokensPermissionGroupsListResultItemScopesItem =
   /*@__PURE__*/ S.String;
 
@@ -1793,7 +1834,7 @@ export const ListTokenPermissionGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTokenPermissionGroupsResponse",
 }) as any as S.Schema<ListTokenPermissionGroupsResponse>;
 
-export type TokensListRequestDirection = "asc" | "desc";
+export type TokensListRequestDirection = "asc" | "desc" | (string & {});
 export const TokensListRequestDirection = /*@__PURE__*/ S.String;
 
 export interface ListTokensRequest {
@@ -1862,7 +1903,10 @@ export const TokensListResultItemCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensListResultItemCondition",
 }) as any as S.Schema<TokensListResultItemCondition>;
 
-export type TokensListResultItemPoliciesItemEffect = "allow" | "deny";
+export type TokensListResultItemPoliciesItemEffect =
+  | "allow"
+  | "deny"
+  | (string & {});
 export const TokensListResultItemPoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensListResultItemPoliciesItemPermissionGroupsItemMeta {
@@ -1959,7 +2003,11 @@ export const TokensListResultItemPoliciesList = /*@__PURE__*/ S.Array(
   TokensListResultItemPoliciesItem,
 ) as any as S.Schema<TokensListResultItemPoliciesList>;
 
-export type TokensListResultItemStatus = "active" | "disabled" | "expired";
+export type TokensListResultItemStatus =
+  | "active"
+  | "disabled"
+  | "expired"
+  | (string & {});
 export const TokensListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface TokensListResultItem {
@@ -2020,7 +2068,7 @@ export const ListTokensResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTokensResponse",
 }) as any as S.Schema<ListTokensResponse>;
 
-export type InvitesEditRequestStatus = "accepted" | "rejected";
+export type InvitesEditRequestStatus = "accepted" | "rejected" | (string & {});
 export const InvitesEditRequestStatus = /*@__PURE__*/ S.String;
 
 export interface PatchInviteRequest {
@@ -2051,7 +2099,8 @@ export type InvitesEditResponseStatus =
   | "pending"
   | "accepted"
   | "rejected"
-  | "expired";
+  | "expired"
+  | (string & {});
 export const InvitesEditResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2143,7 +2192,10 @@ export const EditResponseOrganizationsItemRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseOrganizationsItemRolesList>;
 
-export type EditResponseOrganizationsItemStatus = "member" | "invited";
+export type EditResponseOrganizationsItemStatus =
+  | "member"
+  | "invited"
+  | (string & {});
 export const EditResponseOrganizationsItemStatus = /*@__PURE__*/ S.String;
 
 export interface EditResponseOrganizationsItem {
@@ -2240,7 +2292,8 @@ export type SubscriptionsUpdateRequestFrequency =
   | "weekly"
   | "monthly"
   | "quarterly"
-  | "yearly";
+  | "yearly"
+  | (string & {});
 export const SubscriptionsUpdateRequestFrequency = /*@__PURE__*/ S.String;
 
 export type SubscriptionsUpdateRequestRatePlanId =
@@ -2253,7 +2306,8 @@ export type SubscriptionsUpdateRequestRatePlanId =
   | "partners_free"
   | "partners_pro"
   | "partners_business"
-  | "partners_enterprise";
+  | "partners_enterprise"
+  | (string & {});
 export const SubscriptionsUpdateRequestRatePlanId = /*@__PURE__*/ S.String;
 
 export type SubscriptionsUpdateRequestRatePlanSetsList = ReadonlyArray<string>;
@@ -2353,7 +2407,10 @@ export const PutTokenValueResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutTokenValueResponse",
 }) as any as S.Schema<PutTokenValueResponse>;
 
-export type TokensUpdateRequestPoliciesItemEffect = "allow" | "deny";
+export type TokensUpdateRequestPoliciesItemEffect =
+  | "allow"
+  | "deny"
+  | (string & {});
 export const TokensUpdateRequestPoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta {
@@ -2490,7 +2547,11 @@ export const TokensUpdateRequestCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensUpdateRequestCondition",
 }) as any as S.Schema<TokensUpdateRequestCondition>;
 
-export type TokensUpdateRequestStatus = "active" | "disabled" | "expired";
+export type TokensUpdateRequestStatus =
+  | "active"
+  | "disabled"
+  | "expired"
+  | (string & {});
 export const TokensUpdateRequestStatus = /*@__PURE__*/ S.String;
 
 export interface UpdateTokenRequest {
@@ -2570,7 +2631,10 @@ export const TokensUpdateResponseCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensUpdateResponseCondition",
 }) as any as S.Schema<TokensUpdateResponseCondition>;
 
-export type TokensUpdateResponsePoliciesItemEffect = "allow" | "deny";
+export type TokensUpdateResponsePoliciesItemEffect =
+  | "allow"
+  | "deny"
+  | (string & {});
 export const TokensUpdateResponsePoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensUpdateResponsePoliciesItemPermissionGroupsItemMeta {
@@ -2667,7 +2731,11 @@ export const TokensUpdateResponsePoliciesList = /*@__PURE__*/ S.Array(
   TokensUpdateResponsePoliciesItem,
 ) as any as S.Schema<TokensUpdateResponsePoliciesList>;
 
-export type TokensUpdateResponseStatus = "active" | "disabled" | "expired";
+export type TokensUpdateResponseStatus =
+  | "active"
+  | "disabled"
+  | "expired"
+  | (string & {});
 export const TokensUpdateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2718,7 +2786,11 @@ export const VerifyTokenRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "VerifyTokenRequest",
 }) as any as S.Schema<VerifyTokenRequest>;
 
-export type TokensVerifyResponseStatus = "active" | "disabled" | "expired";
+export type TokensVerifyResponseStatus =
+  | "active"
+  | "disabled"
+  | "expired"
+  | (string & {});
 export const TokensVerifyResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

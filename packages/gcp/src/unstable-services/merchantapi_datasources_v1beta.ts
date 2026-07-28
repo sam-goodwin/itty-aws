@@ -95,7 +95,8 @@ export type FileInputFileInputTypeEnum =
   | "FILE_INPUT_TYPE_UNSPECIFIED"
   | "UPLOAD"
   | "FETCH"
-  | "GOOGLE_SHEETS";
+  | "GOOGLE_SHEETS"
+  | (string & {});
 export const FileInputFileInputTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -126,14 +127,16 @@ export type FetchSettingsDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const FetchSettingsDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 export type FetchSettingsFrequencyEnum =
   | "FREQUENCY_UNSPECIFIED"
   | "FREQUENCY_DAILY"
   | "FREQUENCY_WEEKLY"
-  | "FREQUENCY_MONTHLY";
+  | "FREQUENCY_MONTHLY"
+  | (string & {});
 export const FetchSettingsFrequencyEnum = /*@__PURE__*/ S.String;
 
 /** Fetch details to deliver the data source. */
@@ -244,7 +247,8 @@ export type DataSourceInputEnum =
   | "API"
   | "FILE"
   | "UI"
-  | "AUTOFEED";
+  | "AUTOFEED"
+  | (string & {});
 export const DataSourceInputEnum = /*@__PURE__*/ S.String;
 
 /** The merchant review data source. */
@@ -273,10 +277,15 @@ export type DestinationDestinationEnum =
   | "FREE_VEHICLE_LISTINGS"
   | "VEHICLE_ADS"
   | "CLOUD_RETAIL"
-  | "LOCAL_CLOUD_RETAIL";
+  | "LOCAL_CLOUD_RETAIL"
+  | (string & {});
 export const DestinationDestinationEnum = /*@__PURE__*/ S.String;
 
-export type DestinationStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED";
+export type DestinationStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ENABLED"
+  | "DISABLED"
+  | (string & {});
 export const DestinationStateEnum = /*@__PURE__*/ S.String;
 
 /** Destinations also known as [Marketing methods](https://support.google.com/merchants/answer/15130232) selections. */
@@ -302,7 +311,8 @@ export type PrimaryProductDataSourceChannelEnum =
   | "CHANNEL_UNSPECIFIED"
   | "ONLINE_PRODUCTS"
   | "LOCAL_PRODUCTS"
-  | "PRODUCTS";
+  | "PRODUCTS"
+  | (string & {});
 export const PrimaryProductDataSourceChannelEnum = /*@__PURE__*/ S.String;
 
 /** Default rule management of the data source. */
@@ -515,7 +525,11 @@ export const GetAccountsDataSourcesFileUploadsRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetAccountsDataSourcesFileUploadsRequest",
 }) as any as S.Schema<GetAccountsDataSourcesFileUploadsRequest>;
 
-export type IssueSeverityEnum = "SEVERITY_UNSPECIFIED" | "WARNING" | "ERROR";
+export type IssueSeverityEnum =
+  | "SEVERITY_UNSPECIFIED"
+  | "WARNING"
+  | "ERROR"
+  | (string & {});
 export const IssueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** An error occurring in the data source, like "invalid price". */
@@ -553,7 +567,8 @@ export type FileUploadProcessingStateEnum =
   | "PROCESSING_STATE_UNSPECIFIED"
   | "FAILED"
   | "IN_PROGRESS"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const FileUploadProcessingStateEnum = /*@__PURE__*/ S.String;
 
 /** The file upload of a specific data source, that is, the result of the retrieval of the data source at a certain timestamp computed asynchronously when the data source processing is finished. Only applicable to file data sources. */

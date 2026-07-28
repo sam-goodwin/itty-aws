@@ -69,7 +69,8 @@ export type ComputeFoldersContactsNotificationCategoriesEnum =
   | "BILLING"
   | "LEGAL"
   | "PRODUCT_UPDATES"
-  | "TECHNICAL_INCIDENTS";
+  | "TECHNICAL_INCIDENTS"
+  | (string & {});
 export const ComputeFoldersContactsNotificationCategoriesEnum =
   /*@__PURE__*/ S.String;
 
@@ -118,7 +119,8 @@ export type GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptio
     | "BILLING"
     | "LEGAL"
     | "PRODUCT_UPDATES"
-    | "TECHNICAL_INCIDENTS";
+    | "TECHNICAL_INCIDENTS"
+    | (string & {});
 export const GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -132,7 +134,8 @@ export const GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscripti
 export type GoogleCloudEssentialcontactsV1ContactValidationStateEnum =
   | "VALIDATION_STATE_UNSPECIFIED"
   | "VALID"
-  | "INVALID";
+  | "INVALID"
+  | (string & {});
 export const GoogleCloudEssentialcontactsV1ContactValidationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -201,7 +204,8 @@ export type ComputeOrganizationsContactsNotificationCategoriesEnum =
   | "BILLING"
   | "LEGAL"
   | "PRODUCT_UPDATES"
-  | "TECHNICAL_INCIDENTS";
+  | "TECHNICAL_INCIDENTS"
+  | (string & {});
 export const ComputeOrganizationsContactsNotificationCategoriesEnum =
   /*@__PURE__*/ S.String;
 
@@ -252,7 +256,8 @@ export type ComputeProjectsContactsNotificationCategoriesEnum =
   | "BILLING"
   | "LEGAL"
   | "PRODUCT_UPDATES"
-  | "TECHNICAL_INCIDENTS";
+  | "TECHNICAL_INCIDENTS"
+  | (string & {});
 export const ComputeProjectsContactsNotificationCategoriesEnum =
   /*@__PURE__*/ S.String;
 
@@ -646,7 +651,8 @@ export type GoogleCloudEssentialcontactsV1SendTestMessageRequestNotificationCate
     | "BILLING"
     | "LEGAL"
     | "PRODUCT_UPDATES"
-    | "TECHNICAL_INCIDENTS";
+    | "TECHNICAL_INCIDENTS"
+    | (string & {});
 export const GoogleCloudEssentialcontactsV1SendTestMessageRequestNotificationCategoryEnum =
   /*@__PURE__*/ S.String;
 

@@ -95,7 +95,8 @@ export type CasePriorityEnum =
   | "P1"
   | "P2"
   | "P3"
-  | "P4";
+  | "P4"
+  | (string & {});
 export const CasePriorityEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -125,7 +126,8 @@ export type CaseStateEnum =
   | "IN_PROGRESS_GOOGLE_SUPPORT"
   | "ACTION_REQUIRED"
   | "SOLUTION_PROVIDED"
-  | "CLOSED";
+  | "CLOSED"
+  | (string & {});
 export const CaseStateEnum = /*@__PURE__*/ S.String;
 
 /** An Actor represents an entity that performed an action. For example, an actor could be a user who posted a comment on a support case, a user who uploaded an attachment, or a service account that created a support case. */
@@ -270,14 +272,16 @@ export type SupportEventSubscriptionStateEnum =
   | "STATE_UNSPECIFIED"
   | "WORKING"
   | "FAILING"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const SupportEventSubscriptionStateEnum = /*@__PURE__*/ S.String;
 
 export type SupportEventSubscriptionFailureReasonEnum =
   | "FAILURE_REASON_UNSPECIFIED"
   | "PERMISSION_DENIED"
   | "TOPIC_NOT_FOUND"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const SupportEventSubscriptionFailureReasonEnum = /*@__PURE__*/ S.String;
 
 /** A support event subscription. */
@@ -378,7 +382,8 @@ export type CompositeMediaReferenceTypeEnum =
   | "BLOB_REF"
   | "INLINE"
   | "BIGSTORE_REF"
-  | "COSMO_BINARY_REFERENCE";
+  | "COSMO_BINARY_REFERENCE"
+  | (string & {});
 export const CompositeMediaReferenceTypeEnum = /*@__PURE__*/ S.String;
 
 /** # gdata.* are outside protos with mising documentation */
@@ -593,7 +598,8 @@ export type MediaReferenceTypeEnum =
   | "DIFF_UPLOAD_REQUEST"
   | "DIFF_UPLOAD_RESPONSE"
   | "COSMO_BINARY_REFERENCE"
-  | "ARBITRARY_BYTES";
+  | "ARBITRARY_BYTES"
+  | (string & {});
 export const MediaReferenceTypeEnum = /*@__PURE__*/ S.String;
 
 /** # gdata.* are outside protos with mising documentation */
@@ -730,7 +736,8 @@ export type EscalationReasonEnum =
   | "REASON_UNSPECIFIED"
   | "RESOLUTION_TIME"
   | "TECHNICAL_EXPERTISE"
-  | "BUSINESS_IMPACT";
+  | "BUSINESS_IMPACT"
+  | (string & {});
 export const EscalationReasonEnum = /*@__PURE__*/ S.String;
 
 /** An escalation of a support case. */

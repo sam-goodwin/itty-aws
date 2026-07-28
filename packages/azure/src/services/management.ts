@@ -14,7 +14,8 @@ export type { AzureOpError, AzureOpContext };
 
 /** fully qualified resource type which includes provider namespace */
 export type CheckNameAvailabilityRequestType =
-  "Microsoft.Management/managementGroups";
+  | "Microsoft.Management/managementGroups"
+  | (string & {});
 export const CheckNameAvailabilityRequestType = /*@__PURE__*/ S.String;
 
 export interface CheckNameAvailabilityRequest {
@@ -40,7 +41,7 @@ export const CheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckNameAvailabilityRequest>;
 
 /** Required if nameAvailable == false. Invalid indicates the name provided does not match the resource provider's naming requirements (incorrect length, unsupported characters, etc.) AlreadyExists indicates that the name is already in use and is therefore unavailable. */
-export type Reason = "Invalid" | "AlreadyExists";
+export type Reason = "Invalid" | "AlreadyExists" | (string & {});
 export const Reason = /*@__PURE__*/ S.String;
 
 /** Describes the result of the request to check management group name availability. */
@@ -67,14 +68,16 @@ export type EntitiesListRequestSearch =
   | "AllowedChildren"
   | "ParentAndFirstLevelChildren"
   | "ParentOnly"
-  | "ChildrenOnly";
+  | "ChildrenOnly"
+  | (string & {});
 export const EntitiesListRequestSearch = /*@__PURE__*/ S.String;
 
 export type EntitiesListRequestView =
   | "FullHierarchy"
   | "GroupsOnly"
   | "SubscriptionsOnly"
-  | "Audit";
+  | "Audit"
+  | (string & {});
 export const EntitiesListRequestView = /*@__PURE__*/ S.String;
 
 export interface EntitiesListRequest {
@@ -131,7 +134,12 @@ export const EntityParentGroupInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EntityParentGroupInfo>;
 
 /** The users specific permissions to this item. */
-export type Permissions = "noaccess" | "view" | "edit" | "delete";
+export type Permissions =
+  | "noaccess"
+  | "view"
+  | "edit"
+  | "delete"
+  | (string & {});
 export const Permissions = /*@__PURE__*/ S.String;
 
 /** The parent display name chain from the root group to the immediate parent */
@@ -281,7 +289,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -289,7 +298,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -706,7 +716,8 @@ export const ManagementGroupDetails = /*@__PURE__*/ S.suspend(() =>
 /** The type of child resource. */
 export type ManagementGroupChildType =
   | "Microsoft.Management/managementGroups"
-  | "/subscriptions";
+  | "/subscriptions"
+  | (string & {});
 export const ManagementGroupChildType = /*@__PURE__*/ S.String;
 
 /** The list of children. */
@@ -824,7 +835,8 @@ export const ManagementGroupsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 export type ManagementGroupsGetRequestExpand =
   | "children"
   | "path"
-  | "ancestors";
+  | "ancestors"
+  | (string & {});
 export const ManagementGroupsGetRequestExpand = /*@__PURE__*/ S.String;
 
 export interface ManagementGroupsGetRequest {
@@ -1366,11 +1378,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -1438,7 +1450,8 @@ export type Status =
   | "Started"
   | "Failed"
   | "Cancelled"
-  | "Completed";
+  | "Completed"
+  | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 
 /** The tenant backfill status */

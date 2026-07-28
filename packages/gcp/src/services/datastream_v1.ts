@@ -929,7 +929,8 @@ export type PrivateConnectionStateEnum =
   | "CREATED"
   | "FAILED"
   | "DELETING"
-  | "FAILED_TO_DELETE";
+  | "FAILED_TO_DELETE"
+  | (string & {});
 export const PrivateConnectionStateEnum = /*@__PURE__*/ S.String;
 
 /** The VPC Peering configuration is used to create VPC peering between Datastream and the consumer's VPC. */
@@ -1129,7 +1130,8 @@ export type StreamStateEnum =
   | "FAILED"
   | "FAILED_PERMANENTLY"
   | "STARTING"
-  | "DRAINING";
+  | "DRAINING"
+  | (string & {});
 export const StreamStateEnum = /*@__PURE__*/ S.String;
 
 /** PostgreSQL Column. */
@@ -1928,7 +1930,8 @@ export type SpannerSourceConfigSpannerRpcPriorityEnum =
   | "SPANNER_RPC_PRIORITY_UNSPECIFIED"
   | "LOW"
   | "MEDIUM"
-  | "HIGH";
+  | "HIGH"
+  | (string & {});
 export const SpannerSourceConfigSpannerRpcPriorityEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for syncing data from a Spanner source. */
@@ -1993,7 +1996,8 @@ export const PostgresqlSourceConfig = /*@__PURE__*/ S.suspend(() =>
 export type MongodbSourceConfigJsonModeEnum =
   | "MONGODB_JSON_MODE_UNSPECIFIED"
   | "STRICT"
-  | "CANONICAL";
+  | "CANONICAL"
+  | (string & {});
 export const MongodbSourceConfigJsonModeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for syncing data from a MongoDB source. */
@@ -2194,13 +2198,15 @@ export const AvroFileFormat = /*@__PURE__*/ S.suspend(() =>
 export type JsonFileFormatSchemaFileFormatEnum =
   | "SCHEMA_FILE_FORMAT_UNSPECIFIED"
   | "NO_SCHEMA_FILE"
-  | "AVRO_SCHEMA_FILE";
+  | "AVRO_SCHEMA_FILE"
+  | (string & {});
 export const JsonFileFormatSchemaFileFormatEnum = /*@__PURE__*/ S.String;
 
 export type JsonFileFormatCompressionEnum =
   | "JSON_COMPRESSION_UNSPECIFIED"
   | "NO_COMPRESSION"
-  | "GZIP";
+  | "GZIP"
+  | (string & {});
 export const JsonFileFormatCompressionEnum = /*@__PURE__*/ S.String;
 
 /** JSON file format configuration. */
@@ -2255,10 +2261,16 @@ export const SingleTargetDataset = /*@__PURE__*/ S.suspend(() =>
   identifier: "SingleTargetDataset",
 }) as any as S.Schema<SingleTargetDataset>;
 
-export type BlmtConfigTableFormatEnum = "TABLE_FORMAT_UNSPECIFIED" | "ICEBERG";
+export type BlmtConfigTableFormatEnum =
+  | "TABLE_FORMAT_UNSPECIFIED"
+  | "ICEBERG"
+  | (string & {});
 export const BlmtConfigTableFormatEnum = /*@__PURE__*/ S.String;
 
-export type BlmtConfigFileFormatEnum = "FILE_FORMAT_UNSPECIFIED" | "PARQUET";
+export type BlmtConfigFileFormatEnum =
+  | "FILE_FORMAT_UNSPECIFIED"
+  | "PARQUET"
+  | (string & {});
 export const BlmtConfigFileFormatEnum = /*@__PURE__*/ S.String;
 
 /** The configuration for BLMT. */
@@ -2431,7 +2443,8 @@ export type TimeUnitPartitionPartitioningTimeGranularityEnum =
   | "PARTITIONING_TIME_GRANULARITY_HOUR"
   | "PARTITIONING_TIME_GRANULARITY_DAY"
   | "PARTITIONING_TIME_GRANULARITY_MONTH"
-  | "PARTITIONING_TIME_GRANULARITY_YEAR";
+  | "PARTITIONING_TIME_GRANULARITY_YEAR"
+  | (string & {});
 export const TimeUnitPartitionPartitioningTimeGranularityEnum =
   /*@__PURE__*/ S.String;
 
@@ -2458,7 +2471,8 @@ export type IngestionTimePartitionPartitioningTimeGranularityEnum =
   | "PARTITIONING_TIME_GRANULARITY_HOUR"
   | "PARTITIONING_TIME_GRANULARITY_DAY"
   | "PARTITIONING_TIME_GRANULARITY_MONTH"
-  | "PARTITIONING_TIME_GRANULARITY_YEAR";
+  | "PARTITIONING_TIME_GRANULARITY_YEAR"
+  | (string & {});
 export const IngestionTimePartitionPartitioningTimeGranularityEnum =
   /*@__PURE__*/ S.String;
 
@@ -3206,13 +3220,15 @@ export type BackfillJobStateEnum =
   | "STOPPED"
   | "FAILED"
   | "COMPLETED"
-  | "UNSUPPORTED";
+  | "UNSUPPORTED"
+  | (string & {});
 export const BackfillJobStateEnum = /*@__PURE__*/ S.String;
 
 export type BackfillJobTriggerEnum =
   | "TRIGGER_UNSPECIFIED"
   | "AUTOMATIC"
-  | "MANUAL";
+  | "MANUAL"
+  | (string & {});
 export const BackfillJobTriggerEnum = /*@__PURE__*/ S.String;
 
 /** Represents a backfill job on a specific stream object. */

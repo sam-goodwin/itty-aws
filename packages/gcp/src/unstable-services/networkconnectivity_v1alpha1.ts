@@ -109,7 +109,8 @@ export type HubStateEnum =
   | "ACTIVE"
   | "DELETING"
   | "UPDATING"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const HubStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -236,7 +237,8 @@ export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
 export type InternalRangeOverlapsItemEnum =
   | "OVERLAP_UNSPECIFIED"
   | "OVERLAP_ROUTE_RANGE"
-  | "OVERLAP_EXISTING_SUBNET_RANGE";
+  | "OVERLAP_EXISTING_SUBNET_RANGE"
+  | (string & {});
 export const InternalRangeOverlapsItemEnum = /*@__PURE__*/ S.String;
 
 export type InternalRangeOverlapsItemEnumList =
@@ -250,7 +252,8 @@ export type AllocationOptionsAllocationStrategyEnum =
   | "RANDOM"
   | "FIRST_AVAILABLE"
   | "RANDOM_FIRST_N_AVAILABLE"
-  | "FIRST_SMALLEST_FITTING";
+  | "FIRST_SMALLEST_FITTING"
+  | (string & {});
 export const AllocationOptionsAllocationStrategyEnum = /*@__PURE__*/ S.String;
 
 /** Range auto-allocation options, to be optionally used when CIDR block is not explicitly set. */
@@ -287,14 +290,16 @@ export type InternalRangePeeringEnum =
   | "PEERING_UNSPECIFIED"
   | "FOR_SELF"
   | "FOR_PEER"
-  | "NOT_SHARED";
+  | "NOT_SHARED"
+  | (string & {});
 export const InternalRangePeeringEnum = /*@__PURE__*/ S.String;
 
 export type InternalRangeUsageEnum =
   | "USAGE_UNSPECIFIED"
   | "FOR_VPC"
   | "EXTERNAL_TO_VPC"
-  | "FOR_MIGRATION";
+  | "FOR_MIGRATION"
+  | (string & {});
 export const InternalRangeUsageEnum = /*@__PURE__*/ S.String;
 
 export type InternalRangeRangeStatusEnum =
@@ -302,7 +307,8 @@ export type InternalRangeRangeStatusEnum =
   | "ACTIVE"
   | "OBSOLETE"
   | "CREATING"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const InternalRangeRangeStatusEnum = /*@__PURE__*/ S.String;
 
 /** The internal range resource for IPAM operations within a VPC network. Used to represent a private address range along with behavioral characteristics of that range (its usage and peering behavior). Networking resources can link to this range if they are created as belonging to it. */
@@ -401,7 +407,8 @@ export type SpokeStateEnum =
   | "ACTIVE"
   | "DELETING"
   | "UPDATING"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const SpokeStateEnum = /*@__PURE__*/ S.String;
 
 /** RouterAppliance represents a Router appliance which is specified by a VM URI and a NIC address. */
@@ -608,7 +615,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */

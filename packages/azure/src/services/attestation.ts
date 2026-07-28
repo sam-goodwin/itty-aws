@@ -24,7 +24,8 @@ export const AttestationProvidersCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 /** Controls whether traffic from the public network is allowed to access the Attestation Provider APIs. */
 export type AttestationServiceCreationSpecificParamsPublicNetworkAccess =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const AttestationServiceCreationSpecificParamsPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -110,7 +111,7 @@ export const JsonWebKeySet = /*@__PURE__*/ S.suspend(() =>
 
 /** The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs. */
 export type AttestationServiceCreationSpecificParamsTpmAttestationAuthentication =
-  "Enabled" | "Disabled";
+  "Enabled" | "Disabled" | (string & {});
 export const AttestationServiceCreationSpecificParamsTpmAttestationAuthentication =
   /*@__PURE__*/ S.String;
 
@@ -177,7 +178,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -185,7 +187,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -224,11 +227,18 @@ export const AttestationProvidersCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AttestationProvidersCreateResponseTagsMap>;
 
 /** Status of attestation service. */
-export type AttestationServiceStatus = "Ready" | "NotReady" | "Error";
+export type AttestationServiceStatus =
+  | "Ready"
+  | "NotReady"
+  | "Error"
+  | (string & {});
 export const AttestationServiceStatus = /*@__PURE__*/ S.String;
 
 /** Controls whether traffic from the public network is allowed to access the Attestation Provider APIs. */
-export type StatusResultPublicNetworkAccess = "Enabled" | "Disabled";
+export type StatusResultPublicNetworkAccess =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const StatusResultPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** The Private Endpoint resource. */
@@ -248,7 +258,8 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected";
+  | "Rejected"
+  | (string & {});
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -275,7 +286,8 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -332,7 +344,10 @@ export const StatusResultPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<StatusResultPrivateEndpointConnectionsList>;
 
 /** The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs. */
-export type StatusResultTpmAttestationAuthentication = "Enabled" | "Disabled";
+export type StatusResultTpmAttestationAuthentication =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const StatusResultTpmAttestationAuthentication = /*@__PURE__*/ S.String;
 
 /** Status of attestation service. */
@@ -579,7 +594,8 @@ export type AttestationProviderListResultSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const AttestationProviderListResultSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -588,7 +604,8 @@ export type AttestationProviderListResultSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const AttestationProviderListResultSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -741,14 +758,16 @@ export const AttestationProvidersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 /** Controls whether traffic from the public network is allowed to access the Attestation Provider APIs. */
 export type AttestationServicePatchSpecificParamsPublicNetworkAccess =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const AttestationServicePatchSpecificParamsPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
 /** The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs. */
 export type AttestationServicePatchSpecificParamsTpmAttestationAuthentication =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const AttestationServicePatchSpecificParamsTpmAttestationAuthentication =
   /*@__PURE__*/ S.String;
 
@@ -862,7 +881,8 @@ export type OperationListSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const OperationListSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -870,7 +890,8 @@ export type OperationListSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const OperationListSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */

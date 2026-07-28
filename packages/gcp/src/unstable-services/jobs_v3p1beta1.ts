@@ -103,7 +103,8 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
 export type CompleteProjectsScopeEnum =
   | "COMPLETION_SCOPE_UNSPECIFIED"
   | "TENANT"
-  | "PUBLIC";
+  | "PUBLIC"
+  | (string & {});
 export const CompleteProjectsScopeEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -115,7 +116,8 @@ export type CompleteProjectsTypeEnum =
   | "COMPLETION_TYPE_UNSPECIFIED"
   | "JOB_TITLE"
   | "COMPANY_NAME"
-  | "COMBINED";
+  | "COMBINED"
+  | (string & {});
 export const CompleteProjectsTypeEnum = /*@__PURE__*/ S.String;
 
 export interface CompleteProjectsRequest {
@@ -161,7 +163,8 @@ export type CompletionResultTypeEnum =
   | "COMPLETION_TYPE_UNSPECIFIED"
   | "JOB_TITLE"
   | "COMPANY_NAME"
-  | "COMBINED";
+  | "COMBINED"
+  | (string & {});
 export const CompletionResultTypeEnum = /*@__PURE__*/ S.String;
 
 /** Output only. Resource that represents completion results. */
@@ -234,7 +237,8 @@ export type JobEventTypeEnum =
   | "HIRED"
   | "SENT_CV"
   | "INTERVIEW_GRANTED"
-  | "NOT_INTERESTED";
+  | "NOT_INTERESTED"
+  | (string & {});
 export const JobEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** An event issued when a job seeker interacts with the application that implements Cloud Talent Solution. */
@@ -369,7 +373,8 @@ export type LocationLocationTypeEnum =
   | "SUB_LOCALITY_1"
   | "SUB_LOCALITY_2"
   | "NEIGHBORHOOD"
-  | "STREET_ADDRESS";
+  | "STREET_ADDRESS"
+  | (string & {});
 export const LocationLocationTypeEnum = /*@__PURE__*/ S.String;
 
 /** An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. */
@@ -427,7 +432,8 @@ export type CompanySizeEnum =
   | "MEDIUM"
   | "BIG"
   | "BIGGER"
-  | "GIANT";
+  | "GIANT"
+  | (string & {});
 export const CompanySizeEnum = /*@__PURE__*/ S.String;
 
 /** A Company resource represents a company in the service. A company is the entity that owns job postings, that is, the hiring entity responsible for employing applicants for the job position. */
@@ -523,7 +529,8 @@ export type JobJobBenefitsItemEnum =
   | "RETIREMENT_PLAN"
   | "SICK_DAYS"
   | "VACATION"
-  | "VISION";
+  | "VISION"
+  | (string & {});
 export const JobJobBenefitsItemEnum = /*@__PURE__*/ S.String;
 
 export type JobJobBenefitsItemEnumList = ReadonlyArray<JobJobBenefitsItemEnum>;
@@ -537,21 +544,24 @@ export type JobJobLevelEnum =
   | "EXPERIENCED"
   | "MANAGER"
   | "DIRECTOR"
-  | "EXECUTIVE";
+  | "EXECUTIVE"
+  | (string & {});
 export const JobJobLevelEnum = /*@__PURE__*/ S.String;
 
 export type JobPostingRegionEnum =
   | "POSTING_REGION_UNSPECIFIED"
   | "ADMINISTRATIVE_AREA"
   | "NATION"
-  | "TELECOMMUTE";
+  | "TELECOMMUTE"
+  | (string & {});
 export const JobPostingRegionEnum = /*@__PURE__*/ S.String;
 
 export type JobVisibilityEnum =
   | "VISIBILITY_UNSPECIFIED"
   | "ACCOUNT_ONLY"
   | "SHARED_WITH_GOOGLE"
-  | "SHARED_WITH_PUBLIC";
+  | "SHARED_WITH_PUBLIC"
+  | (string & {});
 export const JobVisibilityEnum = /*@__PURE__*/ S.String;
 
 /** Represents an amount of money with its currency type. */
@@ -596,7 +606,8 @@ export type CompensationEntryTypeEnum =
   | "PROFIT_SHARING"
   | "COMMISSIONS"
   | "TIPS"
-  | "OTHER_COMPENSATION_TYPE";
+  | "OTHER_COMPENSATION_TYPE"
+  | (string & {});
 export const CompensationEntryTypeEnum = /*@__PURE__*/ S.String;
 
 export type CompensationEntryUnitEnum =
@@ -607,7 +618,8 @@ export type CompensationEntryUnitEnum =
   | "MONTHLY"
   | "YEARLY"
   | "ONE_TIME"
-  | "OTHER_COMPENSATION_UNIT";
+  | "OTHER_COMPENSATION_UNIT"
+  | (string & {});
 export const CompensationEntryUnitEnum = /*@__PURE__*/ S.String;
 
 /** A compensation entry that represents one component of compensation, such as base pay, bonus, or other compensation type. Annualization: One compensation entry can be annualized if - it contains valid amount or range. - and its expected_units_per_year is set or can be derived. Its annualized range is determined as (amount or range) times expected_units_per_year. */
@@ -671,7 +683,8 @@ export type JobDegreeTypesItemEnum =
   | "ASSOCIATES_OR_EQUIVALENT"
   | "BACHELORS_OR_EQUIVALENT"
   | "MASTERS_OR_EQUIVALENT"
-  | "DOCTORAL_OR_EQUIVALENT";
+  | "DOCTORAL_OR_EQUIVALENT"
+  | (string & {});
 export const JobDegreeTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type JobDegreeTypesItemEnumList = ReadonlyArray<JobDegreeTypesItemEnum>;
@@ -715,7 +728,8 @@ export type JobDerivedInfoJobCategoriesItemEnum =
   | "SCIENCE_AND_ENGINEERING"
   | "SOCIAL_SERVICES_AND_NON_PROFIT"
   | "SPORTS_FITNESS_AND_RECREATION"
-  | "TRANSPORTATION_AND_LOGISTICS";
+  | "TRANSPORTATION_AND_LOGISTICS"
+  | (string & {});
 export const JobDerivedInfoJobCategoriesItemEnum = /*@__PURE__*/ S.String;
 
 export type JobDerivedInfoJobCategoriesItemEnumList =
@@ -768,7 +782,8 @@ export type JobEmploymentTypesItemEnum =
   | "VOLUNTEER"
   | "PER_DIEM"
   | "FLY_IN_FLY_OUT"
-  | "OTHER_EMPLOYMENT_TYPE";
+  | "OTHER_EMPLOYMENT_TYPE"
+  | (string & {});
 export const JobEmploymentTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type JobEmploymentTypesItemEnumList =
@@ -780,7 +795,8 @@ export const JobEmploymentTypesItemEnumList = /*@__PURE__*/ S.Array(
 export type ProcessingOptionsHtmlSanitizationEnum =
   | "HTML_SANITIZATION_UNSPECIFIED"
   | "HTML_SANITIZATION_DISABLED"
-  | "SIMPLE_FORMATTING_ONLY";
+  | "SIMPLE_FORMATTING_ONLY"
+  | (string & {});
 export const ProcessingOptionsHtmlSanitizationEnum = /*@__PURE__*/ S.String;
 
 /** Input only. Options for job processing. */
@@ -1153,7 +1169,8 @@ export type ListProjectsJobsJobViewEnum =
   | "JOB_VIEW_ID_ONLY"
   | "JOB_VIEW_MINIMAL"
   | "JOB_VIEW_SMALL"
-  | "JOB_VIEW_FULL";
+  | "JOB_VIEW_FULL"
+  | (string & {});
 export const ListProjectsJobsJobViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsJobsRequest {
@@ -1305,7 +1322,8 @@ export type CustomRankingInfoImportanceLevelEnum =
   | "MILD"
   | "MEDIUM"
   | "HIGH"
-  | "EXTREME";
+  | "EXTREME"
+  | (string & {});
 export const CustomRankingInfoImportanceLevelEnum = /*@__PURE__*/ S.String;
 
 /** Input only. Custom ranking information for SearchJobsRequest. */
@@ -1327,7 +1345,8 @@ export const CustomRankingInfo = /*@__PURE__*/ S.suspend(() =>
 export type SearchJobsRequestSearchModeEnum =
   | "SEARCH_MODE_UNSPECIFIED"
   | "JOB_SEARCH"
-  | "FEATURED_JOB_SEARCH";
+  | "FEATURED_JOB_SEARCH"
+  | (string & {});
 export const SearchJobsRequestSearchModeEnum = /*@__PURE__*/ S.String;
 
 export type SearchJobsRequestJobViewEnum =
@@ -1335,7 +1354,8 @@ export type SearchJobsRequestJobViewEnum =
   | "JOB_VIEW_ID_ONLY"
   | "JOB_VIEW_MINIMAL"
   | "JOB_VIEW_SMALL"
-  | "JOB_VIEW_FULL";
+  | "JOB_VIEW_FULL"
+  | (string & {});
 export const SearchJobsRequestJobViewEnum = /*@__PURE__*/ S.String;
 
 export type DoubleList = ReadonlyArray<number>;
@@ -1388,7 +1408,8 @@ export type CompensationHistogramRequestTypeEnum =
   | "COMPENSATION_HISTOGRAM_REQUEST_TYPE_UNSPECIFIED"
   | "BASE"
   | "ANNUALIZED_BASE"
-  | "ANNUALIZED_TOTAL";
+  | "ANNUALIZED_TOTAL"
+  | (string & {});
 export const CompensationHistogramRequestTypeEnum = /*@__PURE__*/ S.String;
 
 /** Input only. Compensation based histogram request. */
@@ -1430,7 +1451,8 @@ export type HistogramFacetsSimpleHistogramFacetsItemEnum =
   | "CITY_COORDINATE"
   | "ADMIN_1_COUNTRY"
   | "COMPANY_DISPLAY_NAME"
-  | "BASE_COMPENSATION_UNIT";
+  | "BASE_COMPENSATION_UNIT"
+  | (string & {});
 export const HistogramFacetsSimpleHistogramFacetsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1467,14 +1489,16 @@ export const HistogramFacets = /*@__PURE__*/ S.suspend(() =>
 export type SearchJobsRequestDiversificationLevelEnum =
   | "DIVERSIFICATION_LEVEL_UNSPECIFIED"
   | "DISABLED"
-  | "SIMPLE";
+  | "SIMPLE"
+  | (string & {});
 export const SearchJobsRequestDiversificationLevelEnum = /*@__PURE__*/ S.String;
 
 export type LocationFilterTelecommutePreferenceEnum =
   | "TELECOMMUTE_PREFERENCE_UNSPECIFIED"
   | "TELECOMMUTE_EXCLUDED"
   | "TELECOMMUTE_ALLOWED"
-  | "TELECOMMUTE_JOBS_EXCLUDED";
+  | "TELECOMMUTE_JOBS_EXCLUDED"
+  | (string & {});
 export const LocationFilterTelecommutePreferenceEnum = /*@__PURE__*/ S.String;
 
 /** Input only. Geographic region of the search. */
@@ -1516,7 +1540,8 @@ export type JobQueryEmploymentTypesItemEnum =
   | "VOLUNTEER"
   | "PER_DIEM"
   | "FLY_IN_FLY_OUT"
-  | "OTHER_EMPLOYMENT_TYPE";
+  | "OTHER_EMPLOYMENT_TYPE"
+  | (string & {});
 export const JobQueryEmploymentTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type JobQueryEmploymentTypesItemEnumList =
@@ -1570,7 +1595,8 @@ export type JobQueryJobCategoriesItemEnum =
   | "SCIENCE_AND_ENGINEERING"
   | "SOCIAL_SERVICES_AND_NON_PROFIT"
   | "SPORTS_FITNESS_AND_RECREATION"
-  | "TRANSPORTATION_AND_LOGISTICS";
+  | "TRANSPORTATION_AND_LOGISTICS"
+  | (string & {});
 export const JobQueryJobCategoriesItemEnum = /*@__PURE__*/ S.String;
 
 export type JobQueryJobCategoriesItemEnumList =
@@ -1584,7 +1610,8 @@ export type CommuteFilterCommuteMethodEnum =
   | "DRIVING"
   | "TRANSIT"
   | "WALKING"
-  | "CYCLING";
+  | "CYCLING"
+  | (string & {});
 export const CommuteFilterCommuteMethodEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -1610,7 +1637,8 @@ export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
 export type CommuteFilterRoadTrafficEnum =
   | "ROAD_TRAFFIC_UNSPECIFIED"
   | "TRAFFIC_FREE"
-  | "BUSY_HOUR";
+  | "BUSY_HOUR"
+  | (string & {});
 export const CommuteFilterRoadTrafficEnum = /*@__PURE__*/ S.String;
 
 /** Input only. Parameters needed for commute search. */
@@ -1644,7 +1672,8 @@ export type CompensationFilterTypeEnum =
   | "UNIT_ONLY"
   | "UNIT_AND_AMOUNT"
   | "ANNUALIZED_BASE_AMOUNT"
-  | "ANNUALIZED_TOTAL_AMOUNT";
+  | "ANNUALIZED_TOTAL_AMOUNT"
+  | (string & {});
 export const CompensationFilterTypeEnum = /*@__PURE__*/ S.String;
 
 export type CompensationFilterUnitsItemEnum =
@@ -1655,7 +1684,8 @@ export type CompensationFilterUnitsItemEnum =
   | "MONTHLY"
   | "YEARLY"
   | "ONE_TIME"
-  | "OTHER_COMPENSATION_UNIT";
+  | "OTHER_COMPENSATION_UNIT"
+  | (string & {});
 export const CompensationFilterUnitsItemEnum = /*@__PURE__*/ S.String;
 
 export type CompensationFilterUnitsItemEnumList =
@@ -1743,7 +1773,8 @@ export type DeviceInfoDeviceTypeEnum =
   | "ANDROID"
   | "IOS"
   | "BOT"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const DeviceInfoDeviceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Device information collected from the job seeker, candidate, or other entity conducting the job search. Providing this information improves the quality of the search results across devices. */
@@ -1883,7 +1914,8 @@ export type CompensationHistogramResultTypeEnum =
   | "COMPENSATION_HISTOGRAM_REQUEST_TYPE_UNSPECIFIED"
   | "BASE"
   | "ANNUALIZED_BASE"
-  | "ANNUALIZED_TOTAL";
+  | "ANNUALIZED_TOTAL"
+  | (string & {});
 export const CompensationHistogramResultTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents starting and ending value of a range in double. */
@@ -1985,7 +2017,8 @@ export type HistogramResultSearchTypeEnum =
   | "CITY_COORDINATE"
   | "ADMIN_1_COUNTRY"
   | "COMPANY_DISPLAY_NAME"
-  | "BASE_COMPENSATION_UNIT";
+  | "BASE_COMPENSATION_UNIT"
+  | (string & {});
 export const HistogramResultSearchTypeEnum = /*@__PURE__*/ S.String;
 
 /** Output only. Result of a histogram call. The response contains the histogram map for the search type specified by HistogramResult.field. The response is a map of each filter value to the corresponding count of jobs for that filter. */

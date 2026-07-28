@@ -35,7 +35,8 @@ export const ScansBulkCreateRequestBodyItemCustomHeadersMap =
 export type ScansBulkCreateRequestBodyItemScreenshotsResolutionsItem =
   | "desktop"
   | "mobile"
-  | "tablet";
+  | "tablet"
+  | (string & {});
 export const ScansBulkCreateRequestBodyItemScreenshotsResolutionsItem =
   /*@__PURE__*/ S.String;
 
@@ -46,7 +47,10 @@ export const ScansBulkCreateRequestBodyItemScreenshotsResolutionsList =
     ScansBulkCreateRequestBodyItemScreenshotsResolutionsItem,
   ) as any as S.Schema<ScansBulkCreateRequestBodyItemScreenshotsResolutionsList>;
 
-export type ScansBulkCreateRequestBodyItemVisibility = "Public" | "Unlisted";
+export type ScansBulkCreateRequestBodyItemVisibility =
+  | "Public"
+  | "Unlisted"
+  | (string & {});
 export const ScansBulkCreateRequestBodyItemVisibility = /*@__PURE__*/ S.String;
 
 export interface ScansBulkCreateRequestBodyItem {
@@ -309,7 +313,8 @@ export type ScansCreateRequestCountry =
   | "VN"
   | "YE"
   | "ZM"
-  | "ZW";
+  | "ZW"
+  | (string & {});
 export const ScansCreateRequestCountry = /*@__PURE__*/ S.String;
 
 export type ScansCreateRequestCustomHeadersMap = {
@@ -323,7 +328,8 @@ export const ScansCreateRequestCustomHeadersMap = /*@__PURE__*/ S.Record(
 export type ScansCreateRequestScreenshotsResolutionsItem =
   | "desktop"
   | "mobile"
-  | "tablet";
+  | "tablet"
+  | (string & {});
 export const ScansCreateRequestScreenshotsResolutionsItem =
   /*@__PURE__*/ S.String;
 
@@ -334,7 +340,10 @@ export const ScansCreateRequestScreenshotsResolutionsList =
     ScansCreateRequestScreenshotsResolutionsItem,
   ) as any as S.Schema<ScansCreateRequestScreenshotsResolutionsList>;
 
-export type ScansCreateRequestVisibility = "Public" | "Unlisted";
+export type ScansCreateRequestVisibility =
+  | "Public"
+  | "Unlisted"
+  | (string & {});
 export const ScansCreateRequestVisibility = /*@__PURE__*/ S.String;
 
 export interface CreateScanRequest {
@@ -5057,7 +5066,11 @@ export const ListScansResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListScansResponse",
 }) as any as S.Schema<ListScansResponse>;
 
-export type ScansScreenshotRequestResolution = "desktop" | "mobile" | "tablet";
+export type ScansScreenshotRequestResolution =
+  | "desktop"
+  | "mobile"
+  | "tablet"
+  | (string & {});
 export const ScansScreenshotRequestResolution = /*@__PURE__*/ S.String;
 
 export interface ScreenshotScanRequest {

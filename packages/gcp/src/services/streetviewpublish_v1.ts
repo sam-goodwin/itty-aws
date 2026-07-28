@@ -142,7 +142,10 @@ export const BatchDeletePhotosResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchDeletePhotosResponse",
 }) as any as S.Schema<BatchDeletePhotosResponse>;
 
-export type BatchGetPhotosViewEnum = "BASIC" | "INCLUDE_DOWNLOAD_URL";
+export type BatchGetPhotosViewEnum =
+  | "BASIC"
+  | "INCLUDE_DOWNLOAD_URL"
+  | (string & {});
 export const BatchGetPhotosViewEnum = /*@__PURE__*/ S.String;
 
 export interface BatchGetPhotosRequest {
@@ -183,7 +186,8 @@ export const UploadRef = /*@__PURE__*/ S.suspend(() =>
 export type PhotoMapsPublishStatusEnum =
   | "UNSPECIFIED_MAPS_PUBLISH_STATUS"
   | "PUBLISHED"
-  | "REJECTED_UNKNOWN";
+  | "REJECTED_UNKNOWN"
+  | (string & {});
 export const PhotoMapsPublishStatusEnum = /*@__PURE__*/ S.String;
 
 /** Place metadata for an entity. */
@@ -303,7 +307,8 @@ export type PhotoTransferStatusEnum =
   | "REJECTED"
   | "EXPIRED"
   | "CANCELLED"
-  | "RECEIVED_VIA_TRANSFER";
+  | "RECEIVED_VIA_TRANSFER"
+  | (string & {});
 export const PhotoTransferStatusEnum = /*@__PURE__*/ S.String;
 
 /** Photo is used to store 360 photos along with photo metadata. */
@@ -471,7 +476,8 @@ export const CreatePhotoRequest = /*@__PURE__*/ S.suspend(() =>
 export type CreatePhotoSequenceInputTypeEnum =
   | "INPUT_TYPE_UNSPECIFIED"
   | "VIDEO"
-  | "XDM";
+  | "XDM"
+  | (string & {});
 export const CreatePhotoSequenceInputTypeEnum = /*@__PURE__*/ S.String;
 
 /** A Generic 3d measurement sample. */
@@ -540,12 +546,14 @@ export type PhotoSequenceProcessingStateEnum =
   | "PENDING"
   | "PROCESSING"
   | "PROCESSED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const PhotoSequenceProcessingStateEnum = /*@__PURE__*/ S.String;
 
 export type PhotoSequenceGpsSourceEnum =
   | "PHOTO_SEQUENCE"
-  | "CAMERA_MOTION_METADATA_TRACK";
+  | "CAMERA_MOTION_METADATA_TRACK"
+  | (string & {});
 export const PhotoSequenceGpsSourceEnum = /*@__PURE__*/ S.String;
 
 export type PhotoSequenceFailureReasonEnum =
@@ -573,7 +581,8 @@ export type PhotoSequenceFailureReasonEnum =
   | "INSUFFICIENT_VIDEO_FRAMES"
   | "INSUFFICIENT_MOVEMENT"
   | "MAST_DOWN"
-  | "CAMERA_COVERED";
+  | "CAMERA_COVERED"
+  | (string & {});
 export const PhotoSequenceFailureReasonEnum = /*@__PURE__*/ S.String;
 
 /** Details related to ProcessingFailureReason#INSUFFICIENT_GPS. */
@@ -825,7 +834,7 @@ export const DeletePhotoSequenceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletePhotoSequenceRequest",
 }) as any as S.Schema<DeletePhotoSequenceRequest>;
 
-export type GetPhotoViewEnum = "BASIC" | "INCLUDE_DOWNLOAD_URL";
+export type GetPhotoViewEnum = "BASIC" | "INCLUDE_DOWNLOAD_URL" | (string & {});
 export const GetPhotoViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetPhotoRequest {
@@ -852,7 +861,10 @@ export const GetPhotoRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPhotoRequest",
 }) as any as S.Schema<GetPhotoRequest>;
 
-export type GetPhotoSequenceViewEnum = "BASIC" | "INCLUDE_DOWNLOAD_URL";
+export type GetPhotoSequenceViewEnum =
+  | "BASIC"
+  | "INCLUDE_DOWNLOAD_URL"
+  | (string & {});
 export const GetPhotoSequenceViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetPhotoSequenceRequest {
@@ -879,7 +891,10 @@ export const GetPhotoSequenceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPhotoSequenceRequest",
 }) as any as S.Schema<GetPhotoSequenceRequest>;
 
-export type ListPhotosViewEnum = "BASIC" | "INCLUDE_DOWNLOAD_URL";
+export type ListPhotosViewEnum =
+  | "BASIC"
+  | "INCLUDE_DOWNLOAD_URL"
+  | (string & {});
 export const ListPhotosViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListPhotosRequest {

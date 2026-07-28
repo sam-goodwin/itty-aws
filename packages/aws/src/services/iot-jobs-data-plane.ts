@@ -179,7 +179,8 @@ export type JobExecutionStatus =
   | "TIMED_OUT"
   | "REJECTED"
   | "REMOVED"
-  | "CANCELED";
+  | "CANCELED"
+  | (string & {});
 export const JobExecutionStatus = /*@__PURE__*/ S.String;
 
 export type DetailsKey = string;

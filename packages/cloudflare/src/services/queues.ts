@@ -293,7 +293,8 @@ export const AckMessageResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AckMessageResponse>;
 
 export type MessagesBulkPushRequestMessagesItemMqQueueMessageTextContentType =
-  "text";
+  | "text"
+  | (string & {});
 export const MessagesBulkPushRequestMessagesItemMqQueueMessageTextContentType =
   /*@__PURE__*/ S.String;
 
@@ -319,7 +320,8 @@ export const MessagesBulkPushRequestMessagesItemMqQueueMessageText =
   }) as any as S.Schema<MessagesBulkPushRequestMessagesItemMqQueueMessageText>;
 
 export type MessagesBulkPushRequestMessagesItemMqQueueMessageJsonContentType =
-  "json";
+  | "json"
+  | (string & {});
 export const MessagesBulkPushRequestMessagesItemMqQueueMessageJsonContentType =
   /*@__PURE__*/ S.String;
 
@@ -433,7 +435,7 @@ export const BulkPushMessagesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkPushMessagesResponse",
 }) as any as S.Schema<BulkPushMessagesResponse>;
 
-export type ConsumersCreateRequestType = "worker" | "http_pull";
+export type ConsumersCreateRequestType = "worker" | "http_pull" | (string & {});
 export const ConsumersCreateRequestType = /*@__PURE__*/ S.String;
 
 export interface ConsumersCreateRequestSettingsWorker {
@@ -557,7 +559,7 @@ export const ConsumersCreateResultWorkerSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConsumersCreateResultWorkerSettings",
 }) as any as S.Schema<ConsumersCreateResultWorkerSettings>;
 
-export type ConsumersCreateResultWorkerType = "worker";
+export type ConsumersCreateResultWorkerType = "worker" | (string & {});
 export const ConsumersCreateResultWorkerType = /*@__PURE__*/ S.String;
 
 export interface ConsumersCreateResultWorker {
@@ -610,7 +612,7 @@ export const ConsumersCreateResultHTTPPullSettings = /*@__PURE__*/ S.suspend(
   identifier: "ConsumersCreateResultHTTPPullSettings",
 }) as any as S.Schema<ConsumersCreateResultHTTPPullSettings>;
 
-export type ConsumersCreateResultHTTPPullType = "http_pull";
+export type ConsumersCreateResultHTTPPullType = "http_pull" | (string & {});
 export const ConsumersCreateResultHTTPPullType = /*@__PURE__*/ S.String;
 
 export interface ConsumersCreateResultHTTPPull {
@@ -715,7 +717,7 @@ export const CreateResponseConsumersItemWorkerSettings =
     identifier: "CreateResponseConsumersItemWorkerSettings",
   }) as any as S.Schema<CreateResponseConsumersItemWorkerSettings>;
 
-export type CreateResponseConsumersItemWorkerType = "worker";
+export type CreateResponseConsumersItemWorkerType = "worker" | (string & {});
 export const CreateResponseConsumersItemWorkerType = /*@__PURE__*/ S.String;
 
 export interface CreateResponseConsumersItemWorker {
@@ -768,7 +770,9 @@ export const CreateResponseConsumersItemHTTPPullSettings =
     identifier: "CreateResponseConsumersItemHTTPPullSettings",
   }) as any as S.Schema<CreateResponseConsumersItemHTTPPullSettings>;
 
-export type CreateResponseConsumersItemHTTPPullType = "http_pull";
+export type CreateResponseConsumersItemHTTPPullType =
+  | "http_pull"
+  | (string & {});
 export const CreateResponseConsumersItemHTTPPullType = /*@__PURE__*/ S.String;
 
 export interface CreateResponseConsumersItemHTTPPull {
@@ -825,7 +829,9 @@ export const CreateResponseConsumersList = /*@__PURE__*/ S.Array(
   CreateResponseConsumersItem,
 ) as any as S.Schema<CreateResponseConsumersList>;
 
-export type CreateResponseProducersItemMqWorkerProducerType = "worker";
+export type CreateResponseProducersItemMqWorkerProducerType =
+  | "worker"
+  | (string & {});
 export const CreateResponseProducersItemMqWorkerProducerType =
   /*@__PURE__*/ S.String;
 
@@ -843,7 +849,9 @@ export const CreateResponseProducersItemMqWorkerProducer =
     identifier: "CreateResponseProducersItemMqWorkerProducer",
   }) as any as S.Schema<CreateResponseProducersItemMqWorkerProducer>;
 
-export type CreateResponseProducersItemMqR2ProducerType = "r2_bucket";
+export type CreateResponseProducersItemMqR2ProducerType =
+  | "r2_bucket"
+  | (string & {});
 export const CreateResponseProducersItemMqR2ProducerType =
   /*@__PURE__*/ S.String;
 
@@ -929,7 +937,9 @@ export const CreateQueueResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateQueueResponse",
 }) as any as S.Schema<CreateQueueResponse>;
 
-export type SubscriptionsCreateRequestDestinationType = "queues.queue";
+export type SubscriptionsCreateRequestDestinationType =
+  | "queues.queue"
+  | (string & {});
 export const SubscriptionsCreateRequestDestinationType = /*@__PURE__*/ S.String;
 
 export interface SubscriptionsCreateRequestDestination {
@@ -953,7 +963,9 @@ export const SubscriptionsCreateRequestEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsCreateRequestEventsList>;
 
-export type SubscriptionsCreateRequestSourceMqEventSourceImagesType = "images";
+export type SubscriptionsCreateRequestSourceMqEventSourceImagesType =
+  | "images"
+  | (string & {});
 export const SubscriptionsCreateRequestSourceMqEventSourceImagesType =
   /*@__PURE__*/ S.String;
 
@@ -970,7 +982,9 @@ export const SubscriptionsCreateRequestSourceMqEventSourceImages =
     identifier: "SubscriptionsCreateRequestSourceMqEventSourceImages",
   }) as any as S.Schema<SubscriptionsCreateRequestSourceMqEventSourceImages>;
 
-export type SubscriptionsCreateRequestSourceMqEventSourceKVType = "kv";
+export type SubscriptionsCreateRequestSourceMqEventSourceKVType =
+  | "kv"
+  | (string & {});
 export const SubscriptionsCreateRequestSourceMqEventSourceKVType =
   /*@__PURE__*/ S.String;
 
@@ -987,7 +1001,9 @@ export const SubscriptionsCreateRequestSourceMqEventSourceKV =
     identifier: "SubscriptionsCreateRequestSourceMqEventSourceKV",
   }) as any as S.Schema<SubscriptionsCreateRequestSourceMqEventSourceKV>;
 
-export type SubscriptionsCreateRequestSourceMqEventSourceR2Type = "r2";
+export type SubscriptionsCreateRequestSourceMqEventSourceR2Type =
+  | "r2"
+  | (string & {});
 export const SubscriptionsCreateRequestSourceMqEventSourceR2Type =
   /*@__PURE__*/ S.String;
 
@@ -1005,7 +1021,8 @@ export const SubscriptionsCreateRequestSourceMqEventSourceR2 =
   }) as any as S.Schema<SubscriptionsCreateRequestSourceMqEventSourceR2>;
 
 export type SubscriptionsCreateRequestSourceMqEventSourceSuperSlurperType =
-  "superSlurper";
+  | "superSlurper"
+  | (string & {});
 export const SubscriptionsCreateRequestSourceMqEventSourceSuperSlurperType =
   /*@__PURE__*/ S.String;
 
@@ -1025,7 +1042,8 @@ export const SubscriptionsCreateRequestSourceMqEventSourceSuperSlurper =
   }) as any as S.Schema<SubscriptionsCreateRequestSourceMqEventSourceSuperSlurper>;
 
 export type SubscriptionsCreateRequestSourceMqEventSourceVectorizeType =
-  "vectorize";
+  | "vectorize"
+  | (string & {});
 export const SubscriptionsCreateRequestSourceMqEventSourceVectorizeType =
   /*@__PURE__*/ S.String;
 
@@ -1045,7 +1063,8 @@ export const SubscriptionsCreateRequestSourceMqEventSourceVectorize =
   }) as any as S.Schema<SubscriptionsCreateRequestSourceMqEventSourceVectorize>;
 
 export type SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModelType =
-  "workersAi.model";
+  | "workersAi.model"
+  | (string & {});
 export const SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModelType =
   /*@__PURE__*/ S.String;
 
@@ -1068,7 +1087,7 @@ export const SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModel =
   }) as any as S.Schema<SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModel>;
 
 export type SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorkerType =
-  "workersBuilds.worker";
+  "workersBuilds.worker" | (string & {});
 export const SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorkerType =
   /*@__PURE__*/ S.String;
 
@@ -1092,7 +1111,7 @@ export const SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorker =
   }) as any as S.Schema<SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorker>;
 
 export type SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflowType =
-  "workflows.workflow";
+  "workflows.workflow" | (string & {});
 export const SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflowType =
   /*@__PURE__*/ S.String;
 
@@ -1172,7 +1191,9 @@ export const CreateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSubscriptionRequest",
 }) as any as S.Schema<CreateSubscriptionRequest>;
 
-export type SubscriptionsCreateResponseDestinationType = "queues.queue";
+export type SubscriptionsCreateResponseDestinationType =
+  | "queues.queue"
+  | (string & {});
 export const SubscriptionsCreateResponseDestinationType =
   /*@__PURE__*/ S.String;
 
@@ -1197,7 +1218,9 @@ export const SubscriptionsCreateResponseEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsCreateResponseEventsList>;
 
-export type SubscriptionsCreateResponseSourceMqEventSourceImagesType = "images";
+export type SubscriptionsCreateResponseSourceMqEventSourceImagesType =
+  | "images"
+  | (string & {});
 export const SubscriptionsCreateResponseSourceMqEventSourceImagesType =
   /*@__PURE__*/ S.String;
 
@@ -1216,7 +1239,9 @@ export const SubscriptionsCreateResponseSourceMqEventSourceImages =
     identifier: "SubscriptionsCreateResponseSourceMqEventSourceImages",
   }) as any as S.Schema<SubscriptionsCreateResponseSourceMqEventSourceImages>;
 
-export type SubscriptionsCreateResponseSourceMqEventSourceKVType = "kv";
+export type SubscriptionsCreateResponseSourceMqEventSourceKVType =
+  | "kv"
+  | (string & {});
 export const SubscriptionsCreateResponseSourceMqEventSourceKVType =
   /*@__PURE__*/ S.String;
 
@@ -1233,7 +1258,9 @@ export const SubscriptionsCreateResponseSourceMqEventSourceKV =
     identifier: "SubscriptionsCreateResponseSourceMqEventSourceKV",
   }) as any as S.Schema<SubscriptionsCreateResponseSourceMqEventSourceKV>;
 
-export type SubscriptionsCreateResponseSourceMqEventSourceR2Type = "r2";
+export type SubscriptionsCreateResponseSourceMqEventSourceR2Type =
+  | "r2"
+  | (string & {});
 export const SubscriptionsCreateResponseSourceMqEventSourceR2Type =
   /*@__PURE__*/ S.String;
 
@@ -1251,7 +1278,8 @@ export const SubscriptionsCreateResponseSourceMqEventSourceR2 =
   }) as any as S.Schema<SubscriptionsCreateResponseSourceMqEventSourceR2>;
 
 export type SubscriptionsCreateResponseSourceMqEventSourceSuperSlurperType =
-  "superSlurper";
+  | "superSlurper"
+  | (string & {});
 export const SubscriptionsCreateResponseSourceMqEventSourceSuperSlurperType =
   /*@__PURE__*/ S.String;
 
@@ -1271,7 +1299,8 @@ export const SubscriptionsCreateResponseSourceMqEventSourceSuperSlurper =
   }) as any as S.Schema<SubscriptionsCreateResponseSourceMqEventSourceSuperSlurper>;
 
 export type SubscriptionsCreateResponseSourceMqEventSourceVectorizeType =
-  "vectorize";
+  | "vectorize"
+  | (string & {});
 export const SubscriptionsCreateResponseSourceMqEventSourceVectorizeType =
   /*@__PURE__*/ S.String;
 
@@ -1291,7 +1320,8 @@ export const SubscriptionsCreateResponseSourceMqEventSourceVectorize =
   }) as any as S.Schema<SubscriptionsCreateResponseSourceMqEventSourceVectorize>;
 
 export type SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModelType =
-  "workersAi.model";
+  | "workersAi.model"
+  | (string & {});
 export const SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModelType =
   /*@__PURE__*/ S.String;
 
@@ -1314,7 +1344,7 @@ export const SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModel =
   }) as any as S.Schema<SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModel>;
 
 export type SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorkerType =
-  "workersBuilds.worker";
+  "workersBuilds.worker" | (string & {});
 export const SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorkerType =
   /*@__PURE__*/ S.String;
 
@@ -1338,7 +1368,7 @@ export const SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorker =
   }) as any as S.Schema<SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorker>;
 
 export type SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflowType =
-  "workflows.workflow";
+  "workflows.workflow" | (string & {});
 export const SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflowType =
   /*@__PURE__*/ S.String;
 
@@ -1503,7 +1533,9 @@ export const DeleteSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSubscriptionRequest",
 }) as any as S.Schema<DeleteSubscriptionRequest>;
 
-export type SubscriptionsDeleteResponseDestinationType = "queues.queue";
+export type SubscriptionsDeleteResponseDestinationType =
+  | "queues.queue"
+  | (string & {});
 export const SubscriptionsDeleteResponseDestinationType =
   /*@__PURE__*/ S.String;
 
@@ -1528,7 +1560,9 @@ export const SubscriptionsDeleteResponseEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsDeleteResponseEventsList>;
 
-export type SubscriptionsDeleteResponseSourceMqEventSourceImagesType = "images";
+export type SubscriptionsDeleteResponseSourceMqEventSourceImagesType =
+  | "images"
+  | (string & {});
 export const SubscriptionsDeleteResponseSourceMqEventSourceImagesType =
   /*@__PURE__*/ S.String;
 
@@ -1547,7 +1581,9 @@ export const SubscriptionsDeleteResponseSourceMqEventSourceImages =
     identifier: "SubscriptionsDeleteResponseSourceMqEventSourceImages",
   }) as any as S.Schema<SubscriptionsDeleteResponseSourceMqEventSourceImages>;
 
-export type SubscriptionsDeleteResponseSourceMqEventSourceKVType = "kv";
+export type SubscriptionsDeleteResponseSourceMqEventSourceKVType =
+  | "kv"
+  | (string & {});
 export const SubscriptionsDeleteResponseSourceMqEventSourceKVType =
   /*@__PURE__*/ S.String;
 
@@ -1564,7 +1600,9 @@ export const SubscriptionsDeleteResponseSourceMqEventSourceKV =
     identifier: "SubscriptionsDeleteResponseSourceMqEventSourceKV",
   }) as any as S.Schema<SubscriptionsDeleteResponseSourceMqEventSourceKV>;
 
-export type SubscriptionsDeleteResponseSourceMqEventSourceR2Type = "r2";
+export type SubscriptionsDeleteResponseSourceMqEventSourceR2Type =
+  | "r2"
+  | (string & {});
 export const SubscriptionsDeleteResponseSourceMqEventSourceR2Type =
   /*@__PURE__*/ S.String;
 
@@ -1582,7 +1620,8 @@ export const SubscriptionsDeleteResponseSourceMqEventSourceR2 =
   }) as any as S.Schema<SubscriptionsDeleteResponseSourceMqEventSourceR2>;
 
 export type SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurperType =
-  "superSlurper";
+  | "superSlurper"
+  | (string & {});
 export const SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurperType =
   /*@__PURE__*/ S.String;
 
@@ -1602,7 +1641,8 @@ export const SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurper =
   }) as any as S.Schema<SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurper>;
 
 export type SubscriptionsDeleteResponseSourceMqEventSourceVectorizeType =
-  "vectorize";
+  | "vectorize"
+  | (string & {});
 export const SubscriptionsDeleteResponseSourceMqEventSourceVectorizeType =
   /*@__PURE__*/ S.String;
 
@@ -1622,7 +1662,8 @@ export const SubscriptionsDeleteResponseSourceMqEventSourceVectorize =
   }) as any as S.Schema<SubscriptionsDeleteResponseSourceMqEventSourceVectorize>;
 
 export type SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModelType =
-  "workersAi.model";
+  | "workersAi.model"
+  | (string & {});
 export const SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModelType =
   /*@__PURE__*/ S.String;
 
@@ -1645,7 +1686,7 @@ export const SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModel =
   }) as any as S.Schema<SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModel>;
 
 export type SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorkerType =
-  "workersBuilds.worker";
+  "workersBuilds.worker" | (string & {});
 export const SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorkerType =
   /*@__PURE__*/ S.String;
 
@@ -1669,7 +1710,7 @@ export const SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorker =
   }) as any as S.Schema<SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorker>;
 
 export type SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflowType =
-  "workflows.workflow";
+  "workflows.workflow" | (string & {});
 export const SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflowType =
   /*@__PURE__*/ S.String;
 
@@ -1798,7 +1839,7 @@ export const ConsumersGetResultWorkerSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConsumersGetResultWorkerSettings",
 }) as any as S.Schema<ConsumersGetResultWorkerSettings>;
 
-export type ConsumersGetResultWorkerType = "worker";
+export type ConsumersGetResultWorkerType = "worker" | (string & {});
 export const ConsumersGetResultWorkerType = /*@__PURE__*/ S.String;
 
 export interface ConsumersGetResultWorker {
@@ -1850,7 +1891,7 @@ export const ConsumersGetResultHTTPPullSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConsumersGetResultHTTPPullSettings",
 }) as any as S.Schema<ConsumersGetResultHTTPPullSettings>;
 
-export type ConsumersGetResultHTTPPullType = "http_pull";
+export type ConsumersGetResultHTTPPullType = "http_pull" | (string & {});
 export const ConsumersGetResultHTTPPullType = /*@__PURE__*/ S.String;
 
 export interface ConsumersGetResultHTTPPull {
@@ -2000,7 +2041,7 @@ export const GetResponseConsumersItemWorkerSettings = /*@__PURE__*/ S.suspend(
   identifier: "GetResponseConsumersItemWorkerSettings",
 }) as any as S.Schema<GetResponseConsumersItemWorkerSettings>;
 
-export type GetResponseConsumersItemWorkerType = "worker";
+export type GetResponseConsumersItemWorkerType = "worker" | (string & {});
 export const GetResponseConsumersItemWorkerType = /*@__PURE__*/ S.String;
 
 export interface GetResponseConsumersItemWorker {
@@ -2053,7 +2094,7 @@ export const GetResponseConsumersItemHTTPPullSettings = /*@__PURE__*/ S.suspend(
   identifier: "GetResponseConsumersItemHTTPPullSettings",
 }) as any as S.Schema<GetResponseConsumersItemHTTPPullSettings>;
 
-export type GetResponseConsumersItemHTTPPullType = "http_pull";
+export type GetResponseConsumersItemHTTPPullType = "http_pull" | (string & {});
 export const GetResponseConsumersItemHTTPPullType = /*@__PURE__*/ S.String;
 
 export interface GetResponseConsumersItemHTTPPull {
@@ -2109,7 +2150,9 @@ export const GetResponseConsumersList = /*@__PURE__*/ S.Array(
   GetResponseConsumersItem,
 ) as any as S.Schema<GetResponseConsumersList>;
 
-export type GetResponseProducersItemMqWorkerProducerType = "worker";
+export type GetResponseProducersItemMqWorkerProducerType =
+  | "worker"
+  | (string & {});
 export const GetResponseProducersItemMqWorkerProducerType =
   /*@__PURE__*/ S.String;
 
@@ -2127,7 +2170,9 @@ export const GetResponseProducersItemMqWorkerProducer = /*@__PURE__*/ S.suspend(
   identifier: "GetResponseProducersItemMqWorkerProducer",
 }) as any as S.Schema<GetResponseProducersItemMqWorkerProducer>;
 
-export type GetResponseProducersItemMqR2ProducerType = "r2_bucket";
+export type GetResponseProducersItemMqR2ProducerType =
+  | "r2_bucket"
+  | (string & {});
 export const GetResponseProducersItemMqR2ProducerType = /*@__PURE__*/ S.String;
 
 export interface GetResponseProducersItemMqR2Producer {
@@ -2234,7 +2279,9 @@ export const GetSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSubscriptionRequest",
 }) as any as S.Schema<GetSubscriptionRequest>;
 
-export type SubscriptionsGetResponseDestinationType = "queues.queue";
+export type SubscriptionsGetResponseDestinationType =
+  | "queues.queue"
+  | (string & {});
 export const SubscriptionsGetResponseDestinationType = /*@__PURE__*/ S.String;
 
 export interface SubscriptionsGetResponseDestination {
@@ -2257,7 +2304,9 @@ export const SubscriptionsGetResponseEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsGetResponseEventsList>;
 
-export type SubscriptionsGetResponseSourceMqEventSourceImagesType = "images";
+export type SubscriptionsGetResponseSourceMqEventSourceImagesType =
+  | "images"
+  | (string & {});
 export const SubscriptionsGetResponseSourceMqEventSourceImagesType =
   /*@__PURE__*/ S.String;
 
@@ -2274,7 +2323,9 @@ export const SubscriptionsGetResponseSourceMqEventSourceImages =
     identifier: "SubscriptionsGetResponseSourceMqEventSourceImages",
   }) as any as S.Schema<SubscriptionsGetResponseSourceMqEventSourceImages>;
 
-export type SubscriptionsGetResponseSourceMqEventSourceKVType = "kv";
+export type SubscriptionsGetResponseSourceMqEventSourceKVType =
+  | "kv"
+  | (string & {});
 export const SubscriptionsGetResponseSourceMqEventSourceKVType =
   /*@__PURE__*/ S.String;
 
@@ -2291,7 +2342,9 @@ export const SubscriptionsGetResponseSourceMqEventSourceKV =
     identifier: "SubscriptionsGetResponseSourceMqEventSourceKV",
   }) as any as S.Schema<SubscriptionsGetResponseSourceMqEventSourceKV>;
 
-export type SubscriptionsGetResponseSourceMqEventSourceR2Type = "r2";
+export type SubscriptionsGetResponseSourceMqEventSourceR2Type =
+  | "r2"
+  | (string & {});
 export const SubscriptionsGetResponseSourceMqEventSourceR2Type =
   /*@__PURE__*/ S.String;
 
@@ -2309,7 +2362,8 @@ export const SubscriptionsGetResponseSourceMqEventSourceR2 =
   }) as any as S.Schema<SubscriptionsGetResponseSourceMqEventSourceR2>;
 
 export type SubscriptionsGetResponseSourceMqEventSourceSuperSlurperType =
-  "superSlurper";
+  | "superSlurper"
+  | (string & {});
 export const SubscriptionsGetResponseSourceMqEventSourceSuperSlurperType =
   /*@__PURE__*/ S.String;
 
@@ -2329,7 +2383,8 @@ export const SubscriptionsGetResponseSourceMqEventSourceSuperSlurper =
   }) as any as S.Schema<SubscriptionsGetResponseSourceMqEventSourceSuperSlurper>;
 
 export type SubscriptionsGetResponseSourceMqEventSourceVectorizeType =
-  "vectorize";
+  | "vectorize"
+  | (string & {});
 export const SubscriptionsGetResponseSourceMqEventSourceVectorizeType =
   /*@__PURE__*/ S.String;
 
@@ -2349,7 +2404,8 @@ export const SubscriptionsGetResponseSourceMqEventSourceVectorize =
   }) as any as S.Schema<SubscriptionsGetResponseSourceMqEventSourceVectorize>;
 
 export type SubscriptionsGetResponseSourceMqEventSourceWorkersAIModelType =
-  "workersAi.model";
+  | "workersAi.model"
+  | (string & {});
 export const SubscriptionsGetResponseSourceMqEventSourceWorkersAIModelType =
   /*@__PURE__*/ S.String;
 
@@ -2372,7 +2428,7 @@ export const SubscriptionsGetResponseSourceMqEventSourceWorkersAIModel =
   }) as any as S.Schema<SubscriptionsGetResponseSourceMqEventSourceWorkersAIModel>;
 
 export type SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorkerType =
-  "workersBuilds.worker";
+  "workersBuilds.worker" | (string & {});
 export const SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorkerType =
   /*@__PURE__*/ S.String;
 
@@ -2396,7 +2452,8 @@ export const SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorker =
   }) as any as S.Schema<SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorker>;
 
 export type SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflowType =
-  "workflows.workflow";
+  | "workflows.workflow"
+  | (string & {});
 export const SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflowType =
   /*@__PURE__*/ S.String;
 
@@ -2522,7 +2579,7 @@ export const ConsumersListResultItemWorkerSettings = /*@__PURE__*/ S.suspend(
   identifier: "ConsumersListResultItemWorkerSettings",
 }) as any as S.Schema<ConsumersListResultItemWorkerSettings>;
 
-export type ConsumersListResultItemWorkerType = "worker";
+export type ConsumersListResultItemWorkerType = "worker" | (string & {});
 export const ConsumersListResultItemWorkerType = /*@__PURE__*/ S.String;
 
 export interface ConsumersListResultItemWorker {
@@ -2575,7 +2632,7 @@ export const ConsumersListResultItemHTTPPullSettings = /*@__PURE__*/ S.suspend(
   identifier: "ConsumersListResultItemHTTPPullSettings",
 }) as any as S.Schema<ConsumersListResultItemHTTPPullSettings>;
 
-export type ConsumersListResultItemHTTPPullType = "http_pull";
+export type ConsumersListResultItemHTTPPullType = "http_pull" | (string & {});
 export const ConsumersListResultItemHTTPPullType = /*@__PURE__*/ S.String;
 
 export interface ConsumersListResultItemHTTPPull {
@@ -2691,7 +2748,7 @@ export const ListResultItemConsumersItemWorkerSettings =
     identifier: "ListResultItemConsumersItemWorkerSettings",
   }) as any as S.Schema<ListResultItemConsumersItemWorkerSettings>;
 
-export type ListResultItemConsumersItemWorkerType = "worker";
+export type ListResultItemConsumersItemWorkerType = "worker" | (string & {});
 export const ListResultItemConsumersItemWorkerType = /*@__PURE__*/ S.String;
 
 export interface ListResultItemConsumersItemWorker {
@@ -2744,7 +2801,9 @@ export const ListResultItemConsumersItemHTTPPullSettings =
     identifier: "ListResultItemConsumersItemHTTPPullSettings",
   }) as any as S.Schema<ListResultItemConsumersItemHTTPPullSettings>;
 
-export type ListResultItemConsumersItemHTTPPullType = "http_pull";
+export type ListResultItemConsumersItemHTTPPullType =
+  | "http_pull"
+  | (string & {});
 export const ListResultItemConsumersItemHTTPPullType = /*@__PURE__*/ S.String;
 
 export interface ListResultItemConsumersItemHTTPPull {
@@ -2801,7 +2860,9 @@ export const ListResultItemConsumersList = /*@__PURE__*/ S.Array(
   ListResultItemConsumersItem,
 ) as any as S.Schema<ListResultItemConsumersList>;
 
-export type ListResultItemProducersItemMqWorkerProducerType = "worker";
+export type ListResultItemProducersItemMqWorkerProducerType =
+  | "worker"
+  | (string & {});
 export const ListResultItemProducersItemMqWorkerProducerType =
   /*@__PURE__*/ S.String;
 
@@ -2819,7 +2880,9 @@ export const ListResultItemProducersItemMqWorkerProducer =
     identifier: "ListResultItemProducersItemMqWorkerProducer",
   }) as any as S.Schema<ListResultItemProducersItemMqWorkerProducer>;
 
-export type ListResultItemProducersItemMqR2ProducerType = "r2_bucket";
+export type ListResultItemProducersItemMqR2ProducerType =
+  | "r2_bucket"
+  | (string & {});
 export const ListResultItemProducersItemMqR2ProducerType =
   /*@__PURE__*/ S.String;
 
@@ -2922,14 +2985,15 @@ export const ListQueuesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListQueuesResponse",
 }) as any as S.Schema<ListQueuesResponse>;
 
-export type SubscriptionsListRequestDirection = "asc" | "desc";
+export type SubscriptionsListRequestDirection = "asc" | "desc" | (string & {});
 export const SubscriptionsListRequestDirection = /*@__PURE__*/ S.String;
 
 export type SubscriptionsListRequestOrder =
   | "created_at"
   | "name"
   | "enabled"
-  | "source";
+  | "source"
+  | (string & {});
 export const SubscriptionsListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface ListSubscriptionsRequest {
@@ -2964,7 +3028,9 @@ export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSubscriptionsRequest",
 }) as any as S.Schema<ListSubscriptionsRequest>;
 
-export type SubscriptionsListResultItemDestinationType = "queues.queue";
+export type SubscriptionsListResultItemDestinationType =
+  | "queues.queue"
+  | (string & {});
 export const SubscriptionsListResultItemDestinationType =
   /*@__PURE__*/ S.String;
 
@@ -2989,7 +3055,9 @@ export const SubscriptionsListResultItemEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsListResultItemEventsList>;
 
-export type SubscriptionsListResultItemSourceMqEventSourceImagesType = "images";
+export type SubscriptionsListResultItemSourceMqEventSourceImagesType =
+  | "images"
+  | (string & {});
 export const SubscriptionsListResultItemSourceMqEventSourceImagesType =
   /*@__PURE__*/ S.String;
 
@@ -3008,7 +3076,9 @@ export const SubscriptionsListResultItemSourceMqEventSourceImages =
     identifier: "SubscriptionsListResultItemSourceMqEventSourceImages",
   }) as any as S.Schema<SubscriptionsListResultItemSourceMqEventSourceImages>;
 
-export type SubscriptionsListResultItemSourceMqEventSourceKVType = "kv";
+export type SubscriptionsListResultItemSourceMqEventSourceKVType =
+  | "kv"
+  | (string & {});
 export const SubscriptionsListResultItemSourceMqEventSourceKVType =
   /*@__PURE__*/ S.String;
 
@@ -3025,7 +3095,9 @@ export const SubscriptionsListResultItemSourceMqEventSourceKV =
     identifier: "SubscriptionsListResultItemSourceMqEventSourceKV",
   }) as any as S.Schema<SubscriptionsListResultItemSourceMqEventSourceKV>;
 
-export type SubscriptionsListResultItemSourceMqEventSourceR2Type = "r2";
+export type SubscriptionsListResultItemSourceMqEventSourceR2Type =
+  | "r2"
+  | (string & {});
 export const SubscriptionsListResultItemSourceMqEventSourceR2Type =
   /*@__PURE__*/ S.String;
 
@@ -3043,7 +3115,8 @@ export const SubscriptionsListResultItemSourceMqEventSourceR2 =
   }) as any as S.Schema<SubscriptionsListResultItemSourceMqEventSourceR2>;
 
 export type SubscriptionsListResultItemSourceMqEventSourceSuperSlurperType =
-  "superSlurper";
+  | "superSlurper"
+  | (string & {});
 export const SubscriptionsListResultItemSourceMqEventSourceSuperSlurperType =
   /*@__PURE__*/ S.String;
 
@@ -3063,7 +3136,8 @@ export const SubscriptionsListResultItemSourceMqEventSourceSuperSlurper =
   }) as any as S.Schema<SubscriptionsListResultItemSourceMqEventSourceSuperSlurper>;
 
 export type SubscriptionsListResultItemSourceMqEventSourceVectorizeType =
-  "vectorize";
+  | "vectorize"
+  | (string & {});
 export const SubscriptionsListResultItemSourceMqEventSourceVectorizeType =
   /*@__PURE__*/ S.String;
 
@@ -3083,7 +3157,8 @@ export const SubscriptionsListResultItemSourceMqEventSourceVectorize =
   }) as any as S.Schema<SubscriptionsListResultItemSourceMqEventSourceVectorize>;
 
 export type SubscriptionsListResultItemSourceMqEventSourceWorkersAIModelType =
-  "workersAi.model";
+  | "workersAi.model"
+  | (string & {});
 export const SubscriptionsListResultItemSourceMqEventSourceWorkersAIModelType =
   /*@__PURE__*/ S.String;
 
@@ -3106,7 +3181,7 @@ export const SubscriptionsListResultItemSourceMqEventSourceWorkersAIModel =
   }) as any as S.Schema<SubscriptionsListResultItemSourceMqEventSourceWorkersAIModel>;
 
 export type SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorkerType =
-  "workersBuilds.worker";
+  "workersBuilds.worker" | (string & {});
 export const SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorkerType =
   /*@__PURE__*/ S.String;
 
@@ -3130,7 +3205,7 @@ export const SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorker =
   }) as any as S.Schema<SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorker>;
 
 export type SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflowType =
-  "workflows.workflow";
+  "workflows.workflow" | (string & {});
 export const SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflowType =
   /*@__PURE__*/ S.String;
 
@@ -3301,7 +3376,7 @@ export const EditResponseConsumersItemWorkerSettings = /*@__PURE__*/ S.suspend(
   identifier: "EditResponseConsumersItemWorkerSettings",
 }) as any as S.Schema<EditResponseConsumersItemWorkerSettings>;
 
-export type EditResponseConsumersItemWorkerType = "worker";
+export type EditResponseConsumersItemWorkerType = "worker" | (string & {});
 export const EditResponseConsumersItemWorkerType = /*@__PURE__*/ S.String;
 
 export interface EditResponseConsumersItemWorker {
@@ -3354,7 +3429,7 @@ export const EditResponseConsumersItemHTTPPullSettings =
     identifier: "EditResponseConsumersItemHTTPPullSettings",
   }) as any as S.Schema<EditResponseConsumersItemHTTPPullSettings>;
 
-export type EditResponseConsumersItemHTTPPullType = "http_pull";
+export type EditResponseConsumersItemHTTPPullType = "http_pull" | (string & {});
 export const EditResponseConsumersItemHTTPPullType = /*@__PURE__*/ S.String;
 
 export interface EditResponseConsumersItemHTTPPull {
@@ -3411,7 +3486,9 @@ export const EditResponseConsumersList = /*@__PURE__*/ S.Array(
   EditResponseConsumersItem,
 ) as any as S.Schema<EditResponseConsumersList>;
 
-export type EditResponseProducersItemMqWorkerProducerType = "worker";
+export type EditResponseProducersItemMqWorkerProducerType =
+  | "worker"
+  | (string & {});
 export const EditResponseProducersItemMqWorkerProducerType =
   /*@__PURE__*/ S.String;
 
@@ -3429,7 +3506,9 @@ export const EditResponseProducersItemMqWorkerProducer =
     identifier: "EditResponseProducersItemMqWorkerProducer",
   }) as any as S.Schema<EditResponseProducersItemMqWorkerProducer>;
 
-export type EditResponseProducersItemMqR2ProducerType = "r2_bucket";
+export type EditResponseProducersItemMqR2ProducerType =
+  | "r2_bucket"
+  | (string & {});
 export const EditResponseProducersItemMqR2ProducerType = /*@__PURE__*/ S.String;
 
 export interface EditResponseProducersItemMqR2Producer {
@@ -3514,7 +3593,9 @@ export const PatchQueueResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchQueueResponse",
 }) as any as S.Schema<PatchQueueResponse>;
 
-export type SubscriptionsUpdateRequestDestinationType = "queues.queue";
+export type SubscriptionsUpdateRequestDestinationType =
+  | "queues.queue"
+  | (string & {});
 export const SubscriptionsUpdateRequestDestinationType = /*@__PURE__*/ S.String;
 
 export interface SubscriptionsUpdateRequestDestination {
@@ -3573,7 +3654,9 @@ export const PatchSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchSubscriptionRequest",
 }) as any as S.Schema<PatchSubscriptionRequest>;
 
-export type SubscriptionsUpdateResponseDestinationType = "queues.queue";
+export type SubscriptionsUpdateResponseDestinationType =
+  | "queues.queue"
+  | (string & {});
 export const SubscriptionsUpdateResponseDestinationType =
   /*@__PURE__*/ S.String;
 
@@ -3598,7 +3681,9 @@ export const SubscriptionsUpdateResponseEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsUpdateResponseEventsList>;
 
-export type SubscriptionsUpdateResponseSourceMqEventSourceImagesType = "images";
+export type SubscriptionsUpdateResponseSourceMqEventSourceImagesType =
+  | "images"
+  | (string & {});
 export const SubscriptionsUpdateResponseSourceMqEventSourceImagesType =
   /*@__PURE__*/ S.String;
 
@@ -3617,7 +3702,9 @@ export const SubscriptionsUpdateResponseSourceMqEventSourceImages =
     identifier: "SubscriptionsUpdateResponseSourceMqEventSourceImages",
   }) as any as S.Schema<SubscriptionsUpdateResponseSourceMqEventSourceImages>;
 
-export type SubscriptionsUpdateResponseSourceMqEventSourceKVType = "kv";
+export type SubscriptionsUpdateResponseSourceMqEventSourceKVType =
+  | "kv"
+  | (string & {});
 export const SubscriptionsUpdateResponseSourceMqEventSourceKVType =
   /*@__PURE__*/ S.String;
 
@@ -3634,7 +3721,9 @@ export const SubscriptionsUpdateResponseSourceMqEventSourceKV =
     identifier: "SubscriptionsUpdateResponseSourceMqEventSourceKV",
   }) as any as S.Schema<SubscriptionsUpdateResponseSourceMqEventSourceKV>;
 
-export type SubscriptionsUpdateResponseSourceMqEventSourceR2Type = "r2";
+export type SubscriptionsUpdateResponseSourceMqEventSourceR2Type =
+  | "r2"
+  | (string & {});
 export const SubscriptionsUpdateResponseSourceMqEventSourceR2Type =
   /*@__PURE__*/ S.String;
 
@@ -3652,7 +3741,8 @@ export const SubscriptionsUpdateResponseSourceMqEventSourceR2 =
   }) as any as S.Schema<SubscriptionsUpdateResponseSourceMqEventSourceR2>;
 
 export type SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurperType =
-  "superSlurper";
+  | "superSlurper"
+  | (string & {});
 export const SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurperType =
   /*@__PURE__*/ S.String;
 
@@ -3672,7 +3762,8 @@ export const SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurper =
   }) as any as S.Schema<SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurper>;
 
 export type SubscriptionsUpdateResponseSourceMqEventSourceVectorizeType =
-  "vectorize";
+  | "vectorize"
+  | (string & {});
 export const SubscriptionsUpdateResponseSourceMqEventSourceVectorizeType =
   /*@__PURE__*/ S.String;
 
@@ -3692,7 +3783,8 @@ export const SubscriptionsUpdateResponseSourceMqEventSourceVectorize =
   }) as any as S.Schema<SubscriptionsUpdateResponseSourceMqEventSourceVectorize>;
 
 export type SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModelType =
-  "workersAi.model";
+  | "workersAi.model"
+  | (string & {});
 export const SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModelType =
   /*@__PURE__*/ S.String;
 
@@ -3715,7 +3807,7 @@ export const SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModel =
   }) as any as S.Schema<SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModel>;
 
 export type SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorkerType =
-  "workersBuilds.worker";
+  "workersBuilds.worker" | (string & {});
 export const SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorkerType =
   /*@__PURE__*/ S.String;
 
@@ -3739,7 +3831,7 @@ export const SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorker =
   }) as any as S.Schema<SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorker>;
 
 export type SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflowType =
-  "workflows.workflow";
+  "workflows.workflow" | (string & {});
 export const SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflowType =
   /*@__PURE__*/ S.String;
 
@@ -3928,7 +4020,7 @@ export const PullMessageResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PullMessageResponse",
 }) as any as S.Schema<PullMessageResponse>;
 
-export type MessagesPushRequestContentType = "text" | "json";
+export type MessagesPushRequestContentType = "text" | "json" | (string & {});
 export const MessagesPushRequestContentType = /*@__PURE__*/ S.String;
 
 export interface PushMessageRequest {
@@ -4060,7 +4152,9 @@ export const PurgeStartResponseConsumersItemWorkerSettings =
     identifier: "PurgeStartResponseConsumersItemWorkerSettings",
   }) as any as S.Schema<PurgeStartResponseConsumersItemWorkerSettings>;
 
-export type PurgeStartResponseConsumersItemWorkerType = "worker";
+export type PurgeStartResponseConsumersItemWorkerType =
+  | "worker"
+  | (string & {});
 export const PurgeStartResponseConsumersItemWorkerType = /*@__PURE__*/ S.String;
 
 export interface PurgeStartResponseConsumersItemWorker {
@@ -4114,7 +4208,9 @@ export const PurgeStartResponseConsumersItemHTTPPullSettings =
     identifier: "PurgeStartResponseConsumersItemHTTPPullSettings",
   }) as any as S.Schema<PurgeStartResponseConsumersItemHTTPPullSettings>;
 
-export type PurgeStartResponseConsumersItemHTTPPullType = "http_pull";
+export type PurgeStartResponseConsumersItemHTTPPullType =
+  | "http_pull"
+  | (string & {});
 export const PurgeStartResponseConsumersItemHTTPPullType =
   /*@__PURE__*/ S.String;
 
@@ -4173,7 +4269,9 @@ export const PurgeStartResponseConsumersList = /*@__PURE__*/ S.Array(
   PurgeStartResponseConsumersItem,
 ) as any as S.Schema<PurgeStartResponseConsumersList>;
 
-export type PurgeStartResponseProducersItemMqWorkerProducerType = "worker";
+export type PurgeStartResponseProducersItemMqWorkerProducerType =
+  | "worker"
+  | (string & {});
 export const PurgeStartResponseProducersItemMqWorkerProducerType =
   /*@__PURE__*/ S.String;
 
@@ -4191,7 +4289,9 @@ export const PurgeStartResponseProducersItemMqWorkerProducer =
     identifier: "PurgeStartResponseProducersItemMqWorkerProducer",
   }) as any as S.Schema<PurgeStartResponseProducersItemMqWorkerProducer>;
 
-export type PurgeStartResponseProducersItemMqR2ProducerType = "r2_bucket";
+export type PurgeStartResponseProducersItemMqR2ProducerType =
+  | "r2_bucket"
+  | (string & {});
 export const PurgeStartResponseProducersItemMqR2ProducerType =
   /*@__PURE__*/ S.String;
 
@@ -4316,7 +4416,7 @@ export const StatusPurgeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StatusPurgeResponse",
 }) as any as S.Schema<StatusPurgeResponse>;
 
-export type ConsumersUpdateRequestType = "worker" | "http_pull";
+export type ConsumersUpdateRequestType = "worker" | "http_pull" | (string & {});
 export const ConsumersUpdateRequestType = /*@__PURE__*/ S.String;
 
 export interface ConsumersUpdateRequestSettingsWorker {
@@ -4443,7 +4543,7 @@ export const ConsumersUpdateResultWorkerSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConsumersUpdateResultWorkerSettings",
 }) as any as S.Schema<ConsumersUpdateResultWorkerSettings>;
 
-export type ConsumersUpdateResultWorkerType = "worker";
+export type ConsumersUpdateResultWorkerType = "worker" | (string & {});
 export const ConsumersUpdateResultWorkerType = /*@__PURE__*/ S.String;
 
 export interface ConsumersUpdateResultWorker {
@@ -4496,7 +4596,7 @@ export const ConsumersUpdateResultHTTPPullSettings = /*@__PURE__*/ S.suspend(
   identifier: "ConsumersUpdateResultHTTPPullSettings",
 }) as any as S.Schema<ConsumersUpdateResultHTTPPullSettings>;
 
-export type ConsumersUpdateResultHTTPPullType = "http_pull";
+export type ConsumersUpdateResultHTTPPullType = "http_pull" | (string & {});
 export const ConsumersUpdateResultHTTPPullType = /*@__PURE__*/ S.String;
 
 export interface ConsumersUpdateResultHTTPPull {
@@ -4626,7 +4726,7 @@ export const UpdateResponseConsumersItemWorkerSettings =
     identifier: "UpdateResponseConsumersItemWorkerSettings",
   }) as any as S.Schema<UpdateResponseConsumersItemWorkerSettings>;
 
-export type UpdateResponseConsumersItemWorkerType = "worker";
+export type UpdateResponseConsumersItemWorkerType = "worker" | (string & {});
 export const UpdateResponseConsumersItemWorkerType = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseConsumersItemWorker {
@@ -4679,7 +4779,9 @@ export const UpdateResponseConsumersItemHTTPPullSettings =
     identifier: "UpdateResponseConsumersItemHTTPPullSettings",
   }) as any as S.Schema<UpdateResponseConsumersItemHTTPPullSettings>;
 
-export type UpdateResponseConsumersItemHTTPPullType = "http_pull";
+export type UpdateResponseConsumersItemHTTPPullType =
+  | "http_pull"
+  | (string & {});
 export const UpdateResponseConsumersItemHTTPPullType = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseConsumersItemHTTPPull {
@@ -4736,7 +4838,9 @@ export const UpdateResponseConsumersList = /*@__PURE__*/ S.Array(
   UpdateResponseConsumersItem,
 ) as any as S.Schema<UpdateResponseConsumersList>;
 
-export type UpdateResponseProducersItemMqWorkerProducerType = "worker";
+export type UpdateResponseProducersItemMqWorkerProducerType =
+  | "worker"
+  | (string & {});
 export const UpdateResponseProducersItemMqWorkerProducerType =
   /*@__PURE__*/ S.String;
 
@@ -4754,7 +4858,9 @@ export const UpdateResponseProducersItemMqWorkerProducer =
     identifier: "UpdateResponseProducersItemMqWorkerProducer",
   }) as any as S.Schema<UpdateResponseProducersItemMqWorkerProducer>;
 
-export type UpdateResponseProducersItemMqR2ProducerType = "r2_bucket";
+export type UpdateResponseProducersItemMqR2ProducerType =
+  | "r2_bucket"
+  | (string & {});
 export const UpdateResponseProducersItemMqR2ProducerType =
   /*@__PURE__*/ S.String;
 

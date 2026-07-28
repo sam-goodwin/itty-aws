@@ -171,7 +171,12 @@ export const BatchGetUserAccessTasksRequest = /*@__PURE__*/ S.suspend(() =>
 export type String255 = string;
 export type TenantIdentifier = string;
 export type String2048 = string;
-export type ResultStatus = "IN_PROGRESS" | "COMPLETED" | "FAILED" | "EXPIRED";
+export type ResultStatus =
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | "EXPIRED"
+  | (string & {});
 export const ResultStatus = /*@__PURE__*/ S.String;
 
 export type Email = string | redacted.Redacted<string>;
@@ -277,7 +282,8 @@ export type AppAuthorizationStatus =
   | "PendingConnect"
   | "Connected"
   | "ConnectionValidationFailed"
-  | "TokenAutoRotationFailed";
+  | "TokenAutoRotationFailed"
+  | (string & {});
 export const AppAuthorizationStatus = /*@__PURE__*/ S.String;
 
 export interface AppAuthorizationSummary {
@@ -332,7 +338,7 @@ export const Credential = /*@__PURE__*/ S.Union([
   S.Struct({ oauth2Credential: Oauth2Credential }),
   S.Struct({ apiKeyCredential: ApiKeyCredential }),
 ]);
-export type AuthType = "oauth2" | "apiKey";
+export type AuthType = "oauth2" | "apiKey" | (string & {});
 export const AuthType = /*@__PURE__*/ S.String;
 
 export type TagKey = string;
@@ -380,7 +386,7 @@ export const CreateAppAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAppAuthorizationRequest",
 }) as any as S.Schema<CreateAppAuthorizationRequest>;
-export type Persona = "admin" | "endUser";
+export type Persona = "admin" | "endUser" | (string & {});
 export const Persona = /*@__PURE__*/ S.String;
 
 export interface AppAuthorization {
@@ -457,7 +463,7 @@ export const CreateAppBundleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAppBundleResponse",
 }) as any as S.Schema<CreateAppBundleResponse>;
-export type IngestionType = "auditLog";
+export type IngestionType = "auditLog" | (string & {});
 export const IngestionType = /*@__PURE__*/ S.String;
 
 export interface CreateIngestionRequest {
@@ -492,7 +498,7 @@ export const CreateIngestionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIngestionRequest",
 }) as any as S.Schema<CreateIngestionRequest>;
-export type IngestionState = "enabled" | "disabled";
+export type IngestionState = "enabled" | "disabled" | (string & {});
 export const IngestionState = /*@__PURE__*/ S.String;
 
 export interface Ingestion {
@@ -525,10 +531,10 @@ export const CreateIngestionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIngestionResponse",
 }) as any as S.Schema<CreateIngestionResponse>;
-export type Schema = "ocsf" | "raw";
+export type Schema = "ocsf" | "raw" | (string & {});
 export const Schema = /*@__PURE__*/ S.String;
 
-export type Format = "json" | "parquet";
+export type Format = "json" | "parquet" | (string & {});
 export const Format = /*@__PURE__*/ S.String;
 
 export interface AuditLogProcessingConfiguration {
@@ -615,7 +621,7 @@ export const CreateIngestionDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIngestionDestinationRequest",
 }) as any as S.Schema<CreateIngestionDestinationRequest>;
-export type IngestionDestinationStatus = "Active" | "Failed";
+export type IngestionDestinationStatus = "Active" | "Failed" | (string & {});
 export const IngestionDestinationStatus = /*@__PURE__*/ S.String;
 
 export interface IngestionDestination {
@@ -1360,7 +1366,8 @@ export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
   | "fieldValidationFailed"
-  | "other";
+  | "other"
+  | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

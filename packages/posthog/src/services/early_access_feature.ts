@@ -42,7 +42,8 @@ export type StageEnum =
   | "alpha"
   | "beta"
   | "general-availability"
-  | "archived";
+  | "archived"
+  | (string & {});
 export const StageEnum = /*@__PURE__*/ S.String;
 
 export interface EarlyAccessFeatureCreateRequest {
@@ -92,10 +93,10 @@ export const MinimalFeatureFlagFiltersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MinimalFeatureFlagFiltersMap>;
 
 /** * `server` - Server * `client` - Client * `all` - All */
-export type EvaluationRuntimeEnum = "server" | "client" | "all";
+export type EvaluationRuntimeEnum = "server" | "client" | "all" | (string & {});
 export const EvaluationRuntimeEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
@@ -106,7 +107,10 @@ export const MinimalFeatureFlagEvaluationRuntime =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MinimalFeatureFlagEvaluationRuntime>;
 
 /** * `distinct_id` - User ID (default) * `device_id` - Device ID */
-export type BucketingIdentifierEnum = "distinct_id" | "device_id";
+export type BucketingIdentifierEnum =
+  | "distinct_id"
+  | "device_id"
+  | (string & {});
 export const BucketingIdentifierEnum = /*@__PURE__*/ S.String;
 
 /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */

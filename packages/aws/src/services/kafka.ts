@@ -343,7 +343,7 @@ export const BatchDisassociateScramSecretResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "BatchDisassociateScramSecretResponse",
 }) as any as S.Schema<BatchDisassociateScramSecretResponse>;
-export type BrokerAZDistribution = "DEFAULT";
+export type BrokerAZDistribution = "DEFAULT" | (string & {});
 export const BrokerAZDistribution = /*@__PURE__*/ S.String;
 
 export type __stringMin5Max32 = string;
@@ -455,7 +455,7 @@ export const VpcConnectivity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VpcConnectivity",
 }) as any as S.Schema<VpcConnectivity>;
-export type NetworkType = "IPV4" | "DUAL";
+export type NetworkType = "IPV4" | "DUAL" | (string & {});
 export const NetworkType = /*@__PURE__*/ S.String;
 
 export interface ConnectivityInfo {
@@ -510,7 +510,7 @@ export const BrokerNodeGroupInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BrokerNodeGroupInfo",
 }) as any as S.Schema<BrokerNodeGroupInfo>;
-export type RebalancingStatus = "PAUSED" | "ACTIVE";
+export type RebalancingStatus = "PAUSED" | "ACTIVE" | (string & {});
 export const RebalancingStatus = /*@__PURE__*/ S.String;
 
 export interface Rebalancing {
@@ -613,7 +613,11 @@ export const EncryptionAtRest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EncryptionAtRest",
 }) as any as S.Schema<EncryptionAtRest>;
-export type ClientBroker = "TLS" | "TLS_PLAINTEXT" | "PLAINTEXT";
+export type ClientBroker =
+  | "TLS"
+  | "TLS_PLAINTEXT"
+  | "PLAINTEXT"
+  | (string & {});
 export const ClientBroker = /*@__PURE__*/ S.String;
 
 export interface EncryptionInTransit {
@@ -649,7 +653,8 @@ export type EnhancedMonitoring =
   | "DEFAULT"
   | "PER_BROKER"
   | "PER_TOPIC_PER_BROKER"
-  | "PER_TOPIC_PER_PARTITION";
+  | "PER_TOPIC_PER_PARTITION"
+  | (string & {});
 export const EnhancedMonitoring = /*@__PURE__*/ S.String;
 
 export interface JmxExporterInfo {
@@ -763,7 +768,7 @@ export const __mapOf__string = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export type StorageMode = "LOCAL" | "TIERED";
+export type StorageMode = "LOCAL" | "TIERED" | (string & {});
 export const StorageMode = /*@__PURE__*/ S.String;
 
 export interface CreateClusterRequest {
@@ -835,7 +840,8 @@ export type ClusterState =
   | "HEALING"
   | "MAINTENANCE"
   | "REBOOTING_BROKER"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const ClusterState = /*@__PURE__*/ S.String;
 
 export interface CreateClusterResponse {
@@ -986,7 +992,7 @@ export const CreateClusterV2Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateClusterV2Request",
 }) as any as S.Schema<CreateClusterV2Request>;
-export type ClusterType = "PROVISIONED" | "SERVERLESS";
+export type ClusterType = "PROVISIONED" | "SERVERLESS" | (string & {});
 export const ClusterType = /*@__PURE__*/ S.String;
 
 export interface CreateClusterV2Response {
@@ -1070,7 +1076,11 @@ export const ConfigurationRevision = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConfigurationRevision",
 }) as any as S.Schema<ConfigurationRevision>;
-export type ConfigurationState = "ACTIVE" | "DELETING" | "DELETE_FAILED";
+export type ConfigurationState =
+  | "ACTIVE"
+  | "DELETING"
+  | "DELETE_FAILED"
+  | (string & {});
 export const ConfigurationState = /*@__PURE__*/ S.String;
 
 export interface CreateConfigurationResponse {
@@ -1149,7 +1159,10 @@ export const KafkaClusterClientVpcConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KafkaClusterClientVpcConfig",
 }) as any as S.Schema<KafkaClusterClientVpcConfig>;
-export type KafkaClusterSaslScramMechanism = "SHA256" | "SHA512";
+export type KafkaClusterSaslScramMechanism =
+  | "SHA256"
+  | "SHA512"
+  | (string & {});
 export const KafkaClusterSaslScramMechanism = /*@__PURE__*/ S.String;
 
 export interface KafkaClusterSaslScramAuthentication {
@@ -1186,7 +1199,7 @@ export const KafkaClusterClientAuthentication = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KafkaClusterClientAuthentication",
 }) as any as S.Schema<KafkaClusterClientAuthentication>;
-export type KafkaClusterEncryptionInTransitType = "TLS";
+export type KafkaClusterEncryptionInTransitType = "TLS" | (string & {});
 export const KafkaClusterEncryptionInTransitType = /*@__PURE__*/ S.String;
 
 export interface KafkaClusterEncryptionInTransit {
@@ -1235,7 +1248,7 @@ export const __listOfKafkaCluster = /*@__PURE__*/ S.Array(KafkaCluster);
 export type __stringMax256 = string;
 export type __listOf__stringMax256 = string[];
 export const __listOf__stringMax256 = /*@__PURE__*/ S.Array(S.String);
-export type ConsumerGroupOffsetSyncMode = "LEGACY" | "ENHANCED";
+export type ConsumerGroupOffsetSyncMode = "LEGACY" | "ENHANCED" | (string & {});
 export const ConsumerGroupOffsetSyncMode = /*@__PURE__*/ S.String;
 
 export interface ConsumerGroupReplication {
@@ -1264,10 +1277,19 @@ export const ConsumerGroupReplication = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConsumerGroupReplication",
 }) as any as S.Schema<ConsumerGroupReplication>;
-export type TargetCompressionType = "NONE" | "GZIP" | "SNAPPY" | "LZ4" | "ZSTD";
+export type TargetCompressionType =
+  | "NONE"
+  | "GZIP"
+  | "SNAPPY"
+  | "LZ4"
+  | "ZSTD"
+  | (string & {});
 export const TargetCompressionType = /*@__PURE__*/ S.String;
 
-export type ReplicationStartingPositionType = "LATEST" | "EARLIEST";
+export type ReplicationStartingPositionType =
+  | "LATEST"
+  | "EARLIEST"
+  | (string & {});
 export const ReplicationStartingPositionType = /*@__PURE__*/ S.String;
 
 export interface ReplicationStartingPosition {
@@ -1282,7 +1304,8 @@ export const ReplicationStartingPosition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationStartingPosition>;
 export type ReplicationTopicNameConfigurationType =
   | "PREFIXED_WITH_SOURCE_CLUSTER_ALIAS"
-  | "IDENTICAL";
+  | "IDENTICAL"
+  | (string & {});
 export const ReplicationTopicNameConfigurationType = /*@__PURE__*/ S.String;
 
 export interface ReplicationTopicNameConfiguration {
@@ -1481,7 +1504,8 @@ export type ReplicatorState =
   | "CREATING"
   | "UPDATING"
   | "DELETING"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ReplicatorState = /*@__PURE__*/ S.String;
 
 export interface CreateReplicatorResponse {
@@ -1541,7 +1565,12 @@ export const CreateTopicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTopicRequest",
 }) as any as S.Schema<CreateTopicRequest>;
-export type TopicState = "CREATING" | "UPDATING" | "DELETING" | "ACTIVE";
+export type TopicState =
+  | "CREATING"
+  | "UPDATING"
+  | "DELETING"
+  | "ACTIVE"
+  | (string & {});
 export const TopicState = /*@__PURE__*/ S.String;
 
 export interface CreateTopicResponse {
@@ -1612,7 +1641,8 @@ export type VpcConnectionState =
   | "DELETING"
   | "FAILED"
   | "REJECTED"
-  | "REJECTING";
+  | "REJECTING"
+  | (string & {});
 export const VpcConnectionState = /*@__PURE__*/ S.String;
 
 export interface CreateVpcConnectionResponse {
@@ -1938,7 +1968,8 @@ export const StateInfo = /*@__PURE__*/ S.suspend(() =>
 export type CustomerActionStatus =
   | "CRITICAL_ACTION_REQUIRED"
   | "ACTION_RECOMMENDED"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const CustomerActionStatus = /*@__PURE__*/ S.String;
 
 export interface ClusterInfo {
@@ -2208,7 +2239,7 @@ export const MutableClusterInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MutableClusterInfo",
 }) as any as S.Schema<MutableClusterInfo>;
-export type UserIdentityType = "AWSACCOUNT" | "AWSSERVICE";
+export type UserIdentityType = "AWSACCOUNT" | "AWSSERVICE" | (string & {});
 export const UserIdentityType = /*@__PURE__*/ S.String;
 
 export interface UserIdentity {
@@ -3868,7 +3899,7 @@ export const ListKafkaVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListKafkaVersionsRequest",
 }) as any as S.Schema<ListKafkaVersionsRequest>;
-export type KafkaVersionStatus = "ACTIVE" | "DEPRECATED";
+export type KafkaVersionStatus = "ACTIVE" | "DEPRECATED" | (string & {});
 export const KafkaVersionStatus = /*@__PURE__*/ S.String;
 
 export interface KafkaVersion {
@@ -3957,7 +3988,7 @@ export const ControllerNodeInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ControllerNodeInfo",
 }) as any as S.Schema<ControllerNodeInfo>;
-export type NodeType = "BROKER";
+export type NodeType = "BROKER" | (string & {});
 export const NodeType = /*@__PURE__*/ S.String;
 
 export interface ZookeeperNodeInfo {

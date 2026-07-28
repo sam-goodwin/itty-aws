@@ -27,7 +27,8 @@ export type ResourceIdentityInputType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned, UserAssigned";
+  | "SystemAssigned, UserAssigned"
+  | (string & {});
 export const ResourceIdentityInputType = /*@__PURE__*/ S.String;
 
 /** A resource identity that is managed by the user of the service. */
@@ -98,21 +99,24 @@ export const EncryptionProperties = /*@__PURE__*/ S.suspend(() =>
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type ConfigurationStorePropertiesInputPublicNetworkAccess =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ConfigurationStorePropertiesInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
 /** The data plane proxy authentication mode. This property manages the authentication mode of request to the data plane resources. */
 export type DataPlaneProxyPropertiesAuthenticationMode =
   | "Local"
-  | "Pass-through";
+  | "Pass-through"
+  | (string & {});
 export const DataPlaneProxyPropertiesAuthenticationMode =
   /*@__PURE__*/ S.String;
 
 /** The data plane proxy private link delegation. This property manages if a request from delegated Azure Resource Manager (ARM) private link is allowed when the data plane resource requires private link. */
 export type DataPlaneProxyPropertiesPrivateLinkDelegation =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const DataPlaneProxyPropertiesPrivateLinkDelegation =
   /*@__PURE__*/ S.String;
 
@@ -135,7 +139,10 @@ export const DataPlaneProxyProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataPlaneProxyProperties>;
 
 /** Indicates whether the configuration store need to be recovered. */
-export type ConfigurationStorePropertiesInputCreateMode = "Recover" | "Default";
+export type ConfigurationStorePropertiesInputCreateMode =
+  | "Recover"
+  | "Default"
+  | (string & {});
 export const ConfigurationStorePropertiesInputCreateMode =
   /*@__PURE__*/ S.String;
 
@@ -240,7 +247,8 @@ export type ResourceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned, UserAssigned";
+  | "SystemAssigned, UserAssigned"
+  | (string & {});
 export const ResourceIdentityType = /*@__PURE__*/ S.String;
 
 /** A resource identity that is managed by the user of the service. */
@@ -297,7 +305,8 @@ export type ConfigurationStorePropertiesProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const ConfigurationStorePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -308,7 +317,8 @@ export type PrivateEndpointConnectionPropertiesProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const PrivateEndpointConnectionPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -330,13 +340,15 @@ export type PrivateLinkServiceConnectionStateStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
-  | "Disconnected";
+  | "Disconnected"
+  | (string & {});
 export const PrivateLinkServiceConnectionStateStatus = /*@__PURE__*/ S.String;
 
 /** Any action that is required beyond basic workflow (approve/ reject/ disconnect) */
 export type PrivateLinkServiceConnectionStateActionsRequired =
   | "None"
-  | "Recreate";
+  | "Recreate"
+  | (string & {});
 export const PrivateLinkServiceConnectionStateActionsRequired =
   /*@__PURE__*/ S.String;
 
@@ -415,12 +427,16 @@ export const ConfigurationStorePropertiesPrivateEndpointConnectionsList =
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type ConfigurationStorePropertiesPublicNetworkAccess =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ConfigurationStorePropertiesPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
 /** Indicates whether the configuration store need to be recovered. */
-export type ConfigurationStorePropertiesCreateMode = "Recover" | "Default";
+export type ConfigurationStorePropertiesCreateMode =
+  | "Recover"
+  | "Default"
+  | (string & {});
 export const ConfigurationStorePropertiesCreateMode = /*@__PURE__*/ S.String;
 
 /** The properties of a configuration store. */
@@ -480,7 +496,8 @@ export type ConfigurationStoresCreateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ConfigurationStoresCreateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -489,7 +506,8 @@ export type ConfigurationStoresCreateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ConfigurationStoresCreateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -633,7 +651,8 @@ export type ConfigurationStoresGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ConfigurationStoresGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -642,7 +661,8 @@ export type ConfigurationStoresGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ConfigurationStoresGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -835,7 +855,8 @@ export type ConfigurationStoreSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ConfigurationStoreSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -843,7 +864,8 @@ export type ConfigurationStoreSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ConfigurationStoreSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1148,7 +1170,8 @@ export const ConfigurationStoresRegenerateKeyRequest = /*@__PURE__*/ S.suspend(
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type ConfigurationStorePropertiesUpdateParametersPublicNetworkAccess =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const ConfigurationStorePropertiesUpdateParametersPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -1243,7 +1266,8 @@ export type ConfigurationStoresUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ConfigurationStoresUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1252,7 +1276,8 @@ export type ConfigurationStoresUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ConfigurationStoresUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1510,7 +1535,8 @@ export const KeyValuesGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource type to check for name availability. */
 export type OperationsCheckNameAvailabilityRequestType =
-  "Microsoft.AppConfiguration/configurationStores";
+  | "Microsoft.AppConfiguration/configurationStores"
+  | (string & {});
 export const OperationsCheckNameAvailabilityRequestType =
   /*@__PURE__*/ S.String;
 
@@ -1774,7 +1800,8 @@ export const OperationDefinitionListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource type to check for name availability. */
 export type OperationsRegionalCheckNameAvailabilityRequestType =
-  "Microsoft.AppConfiguration/configurationStores";
+  | "Microsoft.AppConfiguration/configurationStores"
+  | (string & {});
 export const OperationsRegionalCheckNameAvailabilityRequestType =
   /*@__PURE__*/ S.String;
 
@@ -1812,7 +1839,8 @@ export type PrivateLinkServiceConnectionStateInputStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
-  | "Disconnected";
+  | "Disconnected"
+  | (string & {});
 export const PrivateLinkServiceConnectionStateInputStatus =
   /*@__PURE__*/ S.String;
 
@@ -2193,7 +2221,8 @@ export type ReplicaSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ReplicaSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -2201,7 +2230,8 @@ export type ReplicaSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ReplicaSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -2238,7 +2268,8 @@ export type ReplicaPropertiesProvisioningState =
   | "Succeeded"
   | "Deleting"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const ReplicaPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** All replica properties. */
@@ -2418,7 +2449,10 @@ export const SnapshotPropertiesInputFiltersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SnapshotPropertiesInputFiltersList>;
 
 /** The composition type describes how the key-values within the snapshot are composed. The 'key' composition type ensures there are no two key-values containing the same key. The 'key_label' composition type ensures there are no two key-values containing the same key and label. */
-export type SnapshotPropertiesInputCompositionType = "Key" | "Key_Label";
+export type SnapshotPropertiesInputCompositionType =
+  | "Key"
+  | "Key_Label"
+  | (string & {});
 export const SnapshotPropertiesInputCompositionType = /*@__PURE__*/ S.String;
 
 /** The tags of the snapshot. NOTE: These are data plane tags, not Azure Resource Manager (ARM) tags. */
@@ -2490,7 +2524,8 @@ export type SnapshotPropertiesProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const SnapshotPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The current status of the snapshot. */
@@ -2498,7 +2533,8 @@ export type SnapshotPropertiesStatus =
   | "Provisioning"
   | "Ready"
   | "Archived"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const SnapshotPropertiesStatus = /*@__PURE__*/ S.String;
 
 /** A list of filters used to filter the key-values included in the snapshot. */
@@ -2508,7 +2544,10 @@ export const SnapshotPropertiesFiltersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SnapshotPropertiesFiltersList>;
 
 /** The composition type describes how the key-values within the snapshot are composed. The 'key' composition type ensures there are no two key-values containing the same key. The 'key_label' composition type ensures there are no two key-values containing the same key and label. */
-export type SnapshotPropertiesCompositionType = "Key" | "Key_Label";
+export type SnapshotPropertiesCompositionType =
+  | "Key"
+  | "Key_Label"
+  | (string & {});
 export const SnapshotPropertiesCompositionType = /*@__PURE__*/ S.String;
 
 /** The tags of the snapshot. NOTE: These are data plane tags, not Azure Resource Manager (ARM) tags. */

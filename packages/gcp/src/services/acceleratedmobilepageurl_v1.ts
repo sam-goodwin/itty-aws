@@ -67,7 +67,8 @@ export const StringList = /*@__PURE__*/ S.Array(
 
 export type BatchGetAmpUrlsRequestLookupStrategyEnum =
   | "FETCH_LIVE_DOC"
-  | "IN_INDEX_DOC";
+  | "IN_INDEX_DOC"
+  | (string & {});
 export const BatchGetAmpUrlsRequestLookupStrategyEnum = /*@__PURE__*/ S.String;
 
 /** AMP URL request for a batch of URLs. */
@@ -110,7 +111,8 @@ export type AmpUrlErrorErrorCodeEnum =
   | "NO_AMP_URL"
   | "APPLICATION_ERROR"
   | "URL_IS_VALID_AMP"
-  | "URL_IS_INVALID_AMP";
+  | "URL_IS_INVALID_AMP"
+  | (string & {});
 export const AmpUrlErrorErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** AMP URL Error resource for a requested URL that couldn't be found. */

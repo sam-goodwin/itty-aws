@@ -92,7 +92,8 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -286,7 +287,8 @@ export type GoogleCloudDocumentaiV1DocumentProvenanceTypeEnum =
   | "REPLACE"
   | "EVAL_REQUESTED"
   | "EVAL_APPROVED"
-  | "EVAL_SKIPPED";
+  | "EVAL_SKIPPED"
+  | (string & {});
 export const GoogleCloudDocumentaiV1DocumentProvenanceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -515,7 +517,8 @@ export type GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypeEnum =
   | "TOKEN"
   | "VISUAL_ELEMENT"
   | "TABLE"
-  | "FORM_FIELD";
+  | "FORM_FIELD"
+  | (string & {});
 export const GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -715,7 +718,8 @@ export type GoogleCloudDocumentaiV1DocumentPageLayoutOrientationEnum =
   | "PAGE_UP"
   | "PAGE_RIGHT"
   | "PAGE_DOWN"
-  | "PAGE_LEFT";
+  | "PAGE_LEFT"
+  | (string & {});
 export const GoogleCloudDocumentaiV1DocumentPageLayoutOrientationEnum =
   /*@__PURE__*/ S.String;
 
@@ -875,7 +879,8 @@ export type GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "SPACE"
   | "WIDE_SPACE"
-  | "HYPHEN";
+  | "HYPHEN"
+  | (string & {});
 export const GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2294,7 +2299,8 @@ export type GoogleCloudContentwarehouseV1DocumentContentCategoryEnum =
   | "CONTENT_CATEGORY_UNSPECIFIED"
   | "CONTENT_CATEGORY_IMAGE"
   | "CONTENT_CATEGORY_AUDIO"
-  | "CONTENT_CATEGORY_VIDEO";
+  | "CONTENT_CATEGORY_VIDEO"
+  | (string & {});
 export const GoogleCloudContentwarehouseV1DocumentContentCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -2305,7 +2311,8 @@ export type GoogleCloudContentwarehouseV1DocumentRawDocumentFileTypeEnum =
   | "RAW_DOCUMENT_FILE_TYPE_XLSX"
   | "RAW_DOCUMENT_FILE_TYPE_PPTX"
   | "RAW_DOCUMENT_FILE_TYPE_TEXT"
-  | "RAW_DOCUMENT_FILE_TYPE_TIFF";
+  | "RAW_DOCUMENT_FILE_TYPE_TIFF"
+  | (string & {});
 export const GoogleCloudContentwarehouseV1DocumentRawDocumentFileTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2489,7 +2496,8 @@ export type GoogleCloudContentwarehouseV1RuleTriggerTypeEnum =
   | "ON_CREATE"
   | "ON_UPDATE"
   | "ON_CREATE_LINK"
-  | "ON_DELETE_LINK";
+  | "ON_DELETE_LINK"
+  | (string & {});
 export const GoogleCloudContentwarehouseV1RuleTriggerTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2525,7 +2533,8 @@ export type GoogleCloudContentwarehouseV1AccessControlActionOperationTypeEnum =
   | "UNKNOWN"
   | "ADD_POLICY_BINDING"
   | "REMOVE_POLICY_BINDING"
-  | "REPLACE_POLICY_BINDING";
+  | "REPLACE_POLICY_BINDING"
+  | (string & {});
 export const GoogleCloudContentwarehouseV1AccessControlActionOperationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2736,7 +2745,8 @@ export type GoogleCloudContentwarehouseV1ActionOutputActionStateEnum =
   | "ACTION_SUCCEEDED"
   | "ACTION_FAILED"
   | "ACTION_TIMED_OUT"
-  | "ACTION_PENDING";
+  | "ACTION_PENDING"
+  | (string & {});
 export const GoogleCloudContentwarehouseV1ActionOutputActionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2929,7 +2939,8 @@ export type GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceEn
     | "HIGH"
     | "MEDIUM"
     | "LOW"
-    | "LOWEST";
+    | "LOWEST"
+    | (string & {});
 export const GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -3112,7 +3123,8 @@ export const CreateProjectsLocationsDocumentSchemasRequest =
 export type GoogleCloudContentwarehouseV1DocumentLinkStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "SOFT_DELETED";
+  | "SOFT_DELETED"
+  | (string & {});
 export const GoogleCloudContentwarehouseV1DocumentLinkStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -3750,14 +3762,16 @@ export type GoogleCloudContentwarehouseV1ProjectStatusAccessControlModeEnum =
   | "ACL_MODE_UNKNOWN"
   | "ACL_MODE_UNIVERSAL_ACCESS"
   | "ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_BYOID"
-  | "ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI";
+  | "ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI"
+  | (string & {});
 export const GoogleCloudContentwarehouseV1ProjectStatusAccessControlModeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudContentwarehouseV1ProjectStatusDatabaseTypeEnum =
   | "DB_UNKNOWN"
   | "DB_INFRA_SPANNER"
-  | "DB_CLOUD_SQL_POSTGRES";
+  | "DB_CLOUD_SQL_POSTGRES"
+  | (string & {});
 export const GoogleCloudContentwarehouseV1ProjectStatusDatabaseTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3769,7 +3783,8 @@ export type GoogleCloudContentwarehouseV1ProjectStatusStateEnum =
   | "PROJECT_STATE_DELETING"
   | "PROJECT_STATE_DELETING_FAILED"
   | "PROJECT_STATE_DELETED"
-  | "PROJECT_STATE_NOT_FOUND";
+  | "PROJECT_STATE_NOT_FOUND"
+  | (string & {});
 export const GoogleCloudContentwarehouseV1ProjectStatusStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -3807,7 +3822,7 @@ export const GoogleCloudContentwarehouseV1ProjectStatus =
   }) as any as S.Schema<GoogleCloudContentwarehouseV1ProjectStatus>;
 
 export type GoogleCloudContentwarehouseV1InitializeProjectRequestDatabaseTypeEnum =
-  "DB_UNKNOWN" | "DB_INFRA_SPANNER" | "DB_CLOUD_SQL_POSTGRES";
+  "DB_UNKNOWN" | "DB_INFRA_SPANNER" | "DB_CLOUD_SQL_POSTGRES" | (string & {});
 export const GoogleCloudContentwarehouseV1InitializeProjectRequestDatabaseTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3815,7 +3830,8 @@ export type GoogleCloudContentwarehouseV1InitializeProjectRequestDocumentCreator
     | "DOCUMENT_CREATOR_DEFAULT_ROLE_UNSPECIFIED"
     | "DOCUMENT_ADMIN"
     | "DOCUMENT_EDITOR"
-    | "DOCUMENT_VIEWER";
+    | "DOCUMENT_VIEWER"
+    | (string & {});
 export const GoogleCloudContentwarehouseV1InitializeProjectRequestDocumentCreatorDefaultRoleEnum =
   /*@__PURE__*/ S.String;
 
@@ -3823,7 +3839,8 @@ export type GoogleCloudContentwarehouseV1InitializeProjectRequestAccessControlMo
     | "ACL_MODE_UNKNOWN"
     | "ACL_MODE_UNIVERSAL_ACCESS"
     | "ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_BYOID"
-    | "ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI";
+    | "ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI"
+    | (string & {});
 export const GoogleCloudContentwarehouseV1InitializeProjectRequestAccessControlModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4222,7 +4239,8 @@ export type GoogleCloudContentwarehouseV1UpdateOptionsUpdateTypeEnum =
   | "UPDATE_TYPE_INSERT_PROPERTIES_BY_NAMES"
   | "UPDATE_TYPE_REPLACE_PROPERTIES_BY_NAMES"
   | "UPDATE_TYPE_DELETE_PROPERTIES_BY_NAMES"
-  | "UPDATE_TYPE_MERGE_AND_REPLACE_OR_INSERT_PROPERTIES_BY_NAMES";
+  | "UPDATE_TYPE_MERGE_AND_REPLACE_OR_INSERT_PROPERTIES_BY_NAMES"
+  | (string & {});
 export const GoogleCloudContentwarehouseV1UpdateOptionsUpdateTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4665,7 +4683,7 @@ export const RunPipelineProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RunPipelineProjectsLocationsRequest>;
 
 export type GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilterYAxisEnum =
-  "HISTOGRAM_YAXIS_DOCUMENT" | "HISTOGRAM_YAXIS_PROPERTY";
+  "HISTOGRAM_YAXIS_DOCUMENT" | "HISTOGRAM_YAXIS_PROPERTY" | (string & {});
 export const GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilterYAxisEnum =
   /*@__PURE__*/ S.String;
 
@@ -4787,7 +4805,8 @@ export type GoogleCloudContentwarehouseV1FileTypeFilterFileTypeEnum =
   | "ALL"
   | "FOLDER"
   | "DOCUMENT"
-  | "ROOT_FOLDER";
+  | "ROOT_FOLDER"
+  | (string & {});
 export const GoogleCloudContentwarehouseV1FileTypeFilterFileTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4811,7 +4830,8 @@ export type GoogleCloudContentwarehouseV1TimeFilterTimeFieldEnum =
   | "TIME_FIELD_UNSPECIFIED"
   | "CREATE_TIME"
   | "UPDATE_TIME"
-  | "DISPOSITION_TIME";
+  | "DISPOSITION_TIME"
+  | (string & {});
 export const GoogleCloudContentwarehouseV1TimeFilterTimeFieldEnum =
   /*@__PURE__*/ S.String;
 
@@ -4907,7 +4927,10 @@ export const GoogleCloudContentwarehouseV1DocumentQuery =
   }) as any as S.Schema<GoogleCloudContentwarehouseV1DocumentQuery>;
 
 export type GoogleCloudContentwarehouseV1SearchDocumentsRequestTotalResultSizeEnum =
-  "TOTAL_RESULT_SIZE_UNSPECIFIED" | "ESTIMATED_SIZE" | "ACTUAL_SIZE";
+    | "TOTAL_RESULT_SIZE_UNSPECIFIED"
+    | "ESTIMATED_SIZE"
+    | "ACTUAL_SIZE"
+    | (string & {});
 export const GoogleCloudContentwarehouseV1SearchDocumentsRequestTotalResultSizeEnum =
   /*@__PURE__*/ S.String;
 

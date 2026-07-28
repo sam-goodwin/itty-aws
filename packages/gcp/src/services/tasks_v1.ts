@@ -206,7 +206,8 @@ export type AssignmentInfoSurfaceTypeEnum =
   | "CONTEXT_TYPE_UNSPECIFIED"
   | "GMAIL"
   | "DOCUMENT"
-  | "SPACE";
+  | "SPACE"
+  | (string & {});
 export const AssignmentInfoSurfaceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about the Drive resource where a task was assigned from (the document, sheet, etc.). */

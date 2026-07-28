@@ -169,7 +169,7 @@ export class UnsupportedLanguagePairException extends S.TaggedErrorClass<Unsuppo
 export type ResourceName = string;
 export type Description = string;
 export type S3Uri = string;
-export type ParallelDataFormat = "TSV" | "CSV" | "TMX";
+export type ParallelDataFormat = "TSV" | "CSV" | "TMX" | (string & {});
 export const ParallelDataFormat = /*@__PURE__*/ S.String;
 
 export interface ParallelDataConfig {
@@ -184,7 +184,7 @@ export const ParallelDataConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ParallelDataConfig",
 }) as any as S.Schema<ParallelDataConfig>;
-export type EncryptionKeyType = "KMS";
+export type EncryptionKeyType = "KMS" | (string & {});
 export const EncryptionKeyType = /*@__PURE__*/ S.String;
 
 export type EncryptionKeyID = string;
@@ -234,7 +234,8 @@ export type ParallelDataStatus =
   | "UPDATING"
   | "ACTIVE"
   | "DELETING"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ParallelDataStatus = /*@__PURE__*/ S.String;
 
 export interface CreateParallelDataResponse {
@@ -306,7 +307,8 @@ export type JobStatus =
   | "COMPLETED_WITH_ERROR"
   | "FAILED"
   | "STOP_REQUESTED"
-  | "STOPPED";
+  | "STOPPED"
+  | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
 
 export interface JobDetails {
@@ -347,13 +349,13 @@ export const OutputDataConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "OutputDataConfig",
 }) as any as S.Schema<OutputDataConfig>;
 export type IamRoleArn = string;
-export type Formality = "FORMAL" | "INFORMAL";
+export type Formality = "FORMAL" | "INFORMAL" | (string & {});
 export const Formality = /*@__PURE__*/ S.String;
 
-export type Profanity = "MASK";
+export type Profanity = "MASK" | (string & {});
 export const Profanity = /*@__PURE__*/ S.String;
 
-export type Brevity = "ON";
+export type Brevity = "ON" | (string & {});
 export const Brevity = /*@__PURE__*/ S.String;
 
 export interface TranslationSettings {
@@ -502,7 +504,7 @@ export const GetParallelDataResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetParallelDataResponse",
 }) as any as S.Schema<GetParallelDataResponse>;
-export type TerminologyDataFormat = "CSV" | "TMX" | "TSV";
+export type TerminologyDataFormat = "CSV" | "TMX" | "TSV" | (string & {});
 export const TerminologyDataFormat = /*@__PURE__*/ S.String;
 
 export interface GetTerminologyRequest {
@@ -520,7 +522,7 @@ export const GetTerminologyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTerminologyRequest",
 }) as any as S.Schema<GetTerminologyRequest>;
 export type TerminologyArn = string;
-export type Directionality = "UNI" | "MULTI";
+export type Directionality = "UNI" | "MULTI" | (string & {});
 export const Directionality = /*@__PURE__*/ S.String;
 
 export interface TerminologyProperties {
@@ -582,7 +584,7 @@ export const GetTerminologyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTerminologyResponse",
 }) as any as S.Schema<GetTerminologyResponse>;
-export type MergeStrategy = "OVERWRITE";
+export type MergeStrategy = "OVERWRITE" | (string & {});
 export const MergeStrategy = /*@__PURE__*/ S.String;
 
 export type TerminologyFile = Uint8Array | redacted.Redacted<Uint8Array>;
@@ -644,7 +646,8 @@ export type DisplayLanguageCode =
   | "ko"
   | "pt"
   | "zh"
-  | "zh-TW";
+  | "zh-TW"
+  | (string & {});
 export const DisplayLanguageCode = /*@__PURE__*/ S.String;
 
 export type NextToken = string;

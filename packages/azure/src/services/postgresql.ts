@@ -14,7 +14,12 @@ import * as Retry from "../retry.ts";
 export type { AzureOpError, AzureOpContext };
 
 /** Type of Microsoft Entra principal to which the server administrator is associated. */
-export type PrincipalType = "Unknown" | "User" | "Group" | "ServicePrincipal";
+export type PrincipalType =
+  | "Unknown"
+  | "User"
+  | "Group"
+  | "ServicePrincipal"
+  | (string & {});
 export const PrincipalType = /*@__PURE__*/ S.String;
 
 /** Properties of a server administrator associated to a Microsoft Entra principal. */
@@ -144,7 +149,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -152,7 +158,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -304,7 +311,8 @@ export const AdministratorMicrosoftEntraList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdministratorMicrosoftEntraList>;
 
 export type AdvancedThreatProtectionSettingsGetRequestThreatProtectionName =
-  "Default";
+  | "Default"
+  | (string & {});
 export const AdvancedThreatProtectionSettingsGetRequestThreatProtectionName =
   /*@__PURE__*/ S.String;
 
@@ -341,7 +349,7 @@ export const AdvancedThreatProtectionSettingsGetRequest =
   }) as any as S.Schema<AdvancedThreatProtectionSettingsGetRequest>;
 
 /** Specifies the state of the advanced threat protection, whether it is enabled, disabled, or a state has not been applied yet on the server. */
-export type ThreatProtectionState = "Enabled" | "Disabled";
+export type ThreatProtectionState = "Enabled" | "Disabled" | (string & {});
 export const ThreatProtectionState = /*@__PURE__*/ S.String;
 
 /** Properties of advanced threat protection state for a server. */
@@ -563,7 +571,7 @@ export const BackupsAutomaticAndOnDemandGetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BackupsAutomaticAndOnDemandGetRequest>;
 
 /** Type of backup. */
-export type BackupType = "Full" | "Customer On-Demand";
+export type BackupType = "Full" | "Customer On-Demand" | (string & {});
 export const BackupType = /*@__PURE__*/ S.String;
 
 /** Properties of a backup. */
@@ -781,7 +789,12 @@ export const BackupsLongTermRetentionGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackupsLongTermRetentionGetRequest>;
 
 /** Service-set extensible enumeration indicating the status of operation. */
-export type ExecutionStatus = "Running" | "Cancelled" | "Failed" | "Succeeded";
+export type ExecutionStatus =
+  | "Running"
+  | "Cancelled"
+  | "Failed"
+  | "Succeeded"
+  | (string & {});
 export const ExecutionStatus = /*@__PURE__*/ S.String;
 
 /** Response for the backup request. */
@@ -1010,7 +1023,12 @@ export const CapabilitiesByLocationListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CapabilitiesByLocationListRequest>;
 
 /** Status of the capability. */
-export type CapabilityStatus = "Visible" | "Available" | "Default" | "Disabled";
+export type CapabilityStatus =
+  | "Visible"
+  | "Available"
+  | "Default"
+  | "Disabled"
+  | (string & {});
 export const CapabilityStatus = /*@__PURE__*/ S.String;
 
 /** Capability of a storage tier. */
@@ -1132,7 +1150,10 @@ export const ServerSkuCapabilitySupportedZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ServerSkuCapabilitySupportedZonesList>;
 
 /** Mode of high availability supported for this compute. */
-export type HighAvailabilityMode2 = "ZoneRedundant" | "SameZone";
+export type HighAvailabilityMode2 =
+  | "ZoneRedundant"
+  | "SameZone"
+  | (string & {});
 export const HighAvailabilityMode2 = /*@__PURE__*/ S.String;
 
 /** Modes of high availability supported for this compute. */
@@ -1143,7 +1164,7 @@ export const ServerSkuCapabilitySupportedHaModeList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ServerSkuCapabilitySupportedHaModeList>;
 
 /** Status of the feature. Indicates if the feature is enabled or not. */
-export type FeatureStatus = "Enabled" | "Disabled";
+export type FeatureStatus = "Enabled" | "Disabled" | (string & {});
 export const FeatureStatus = /*@__PURE__*/ S.String;
 
 /** Features supported. */
@@ -1313,7 +1334,7 @@ export const CapabilitySupportedFeaturesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CapabilitySupportedFeaturesList>;
 
 /** Indicates if fast provisioning is supported. 'Enabled' means fast provisioning is supported. 'Disabled' stands for fast provisioning is not supported. Will be deprecated in the future. Look to Supported Features for 'FastProvisioning'. */
-export type FastProvisioningSupport = "Enabled" | "Disabled";
+export type FastProvisioningSupport = "Enabled" | "Disabled" | (string & {});
 export const FastProvisioningSupport = /*@__PURE__*/ S.String;
 
 /** Capability of a fast provisioning compute tier. */
@@ -1356,29 +1377,35 @@ export const CapabilitySupportedFastProvisioningEditionsList =
   ) as any as S.Schema<CapabilitySupportedFastProvisioningEditionsList>;
 
 /** Indicates if geographically redundant backups are supported in this location. Will be deprecated in the future. Look to Supported Features for 'GeoBackup'. */
-export type GeographicallyRedundantBackupSupport = "Enabled" | "Disabled";
+export type GeographicallyRedundantBackupSupport =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const GeographicallyRedundantBackupSupport = /*@__PURE__*/ S.String;
 
 /** Indicates if high availability with zone redundancy is supported in this location. Will be deprecated in the future. Look to Supported Features for 'ZoneRedundantHa'. */
-export type ZoneRedundantHighAvailabilitySupport = "Enabled" | "Disabled";
+export type ZoneRedundantHighAvailabilitySupport =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const ZoneRedundantHighAvailabilitySupport = /*@__PURE__*/ S.String;
 
 /** Indicates if high availability with zone redundancy is supported in conjunction with geographically redundant backups in this location. Will be deprecated in the future. Look to Supported Features for 'ZoneRedundantHaAndGeoBackup'. */
 export type ZoneRedundantHighAvailabilityAndGeographicallyRedundantBackupSupport =
-  "Enabled" | "Disabled";
+  "Enabled" | "Disabled" | (string & {});
 export const ZoneRedundantHighAvailabilityAndGeographicallyRedundantBackupSupport =
   /*@__PURE__*/ S.String;
 
 /** Indicates if storage autogrow is supported in this location. Will be deprecated in the future. Look to Supported Features for 'StorageAutoGrowth'. */
-export type StorageAutoGrowthSupport = "Enabled" | "Disabled";
+export type StorageAutoGrowthSupport = "Enabled" | "Disabled" | (string & {});
 export const StorageAutoGrowthSupport = /*@__PURE__*/ S.String;
 
 /** Indicates if resizing the storage, without interrupting the operation of the database engine, is supported in this location for the given subscription. Will be deprecated in the future. Look to Supported Features for 'OnlineResize'. */
-export type OnlineStorageResizeSupport = "Enabled" | "Disabled";
+export type OnlineStorageResizeSupport = "Enabled" | "Disabled" | (string & {});
 export const OnlineStorageResizeSupport = /*@__PURE__*/ S.String;
 
 /** Indicates if this location is restricted. Will be deprecated in the future. Look to Supported Features for 'Restricted'. */
-export type LocationRestricted = "Enabled" | "Disabled";
+export type LocationRestricted = "Enabled" | "Disabled" | (string & {});
 export const LocationRestricted = /*@__PURE__*/ S.String;
 
 /** Capability for the Azure Database for PostgreSQL flexible server. */
@@ -1610,7 +1637,8 @@ export type ConfigurationDataType =
   | "Integer"
   | "Enumeration"
   | "String"
-  | "Set";
+  | "Set"
+  | (string & {});
 export const ConfigurationDataType = /*@__PURE__*/ S.String;
 
 /** Properties of a configuration (also known as server parameter). */
@@ -2307,7 +2335,8 @@ export type MigrationState =
   | "Failed"
   | "Succeeded"
   | "ValidationFailed"
-  | "CleaningUp";
+  | "CleaningUp"
+  | (string & {});
 export const MigrationState = /*@__PURE__*/ S.String;
 
 /** Substate of migration. */
@@ -2323,7 +2352,8 @@ export type MigrationSubstate =
   | "CompletingMigration"
   | "Completed"
   | "CancelingRequestedDBMigrations"
-  | "ValidationInProgress";
+  | "ValidationInProgress"
+  | (string & {});
 export const MigrationSubstate = /*@__PURE__*/ S.String;
 
 /** Migration state of a database. */
@@ -2333,7 +2363,8 @@ export type MigrationDatabaseState =
   | "Failed"
   | "Canceled"
   | "Succeeded"
-  | "Canceling";
+  | "Canceling"
+  | (string & {});
 export const MigrationDatabaseState = /*@__PURE__*/ S.String;
 
 /** Migration state of a database. */
@@ -2403,7 +2434,11 @@ export const MigrationSubstateDetailsDbDetailsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MigrationSubstateDetailsDbDetailsMap>;
 
 /** Validation state for migration. */
-export type ValidationState = "Failed" | "Succeeded" | "Warning";
+export type ValidationState =
+  | "Failed"
+  | "Succeeded"
+  | "Warning"
+  | (string & {});
 export const ValidationState = /*@__PURE__*/ S.String;
 
 /** Validation message object. */
@@ -2559,11 +2594,15 @@ export const MigrationStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MigrationStatus>;
 
 /** Mode used to perform the migration. */
-export type MigrationMode = "Offline" | "Online";
+export type MigrationMode = "Offline" | "Online" | (string & {});
 export const MigrationMode = /*@__PURE__*/ S.String;
 
 /** Supported option for a migration. */
-export type MigrationOption = "Validate" | "Migrate" | "ValidateAndMigrate";
+export type MigrationOption =
+  | "Validate"
+  | "Migrate"
+  | "ValidateAndMigrate"
+  | (string & {});
 export const MigrationOption = /*@__PURE__*/ S.String;
 
 /** Source server type used for the migration. */
@@ -2591,15 +2630,25 @@ export type SourceType =
   | "ApsaraDB_RDS"
   | "Digital_Ocean_Droplets"
   | "Digital_Ocean_PostgreSQL"
-  | "Supabase_PostgreSQL";
+  | "Supabase_PostgreSQL"
+  | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
 
 /** SSL mode used by a migration. Default SSL mode for 'PostgreSQLSingleServer' is 'VerifyFull'. Default SSL mode for other source types is 'Prefer'. */
-export type SslMode = "Prefer" | "Require" | "VerifyCA" | "VerifyFull";
+export type SslMode =
+  | "Prefer"
+  | "Require"
+  | "VerifyCA"
+  | "VerifyFull"
+  | (string & {});
 export const SslMode = /*@__PURE__*/ S.String;
 
 /** Tier of the compute assigned to a server. */
-export type SkuTier = "Burstable" | "GeneralPurpose" | "MemoryOptimized";
+export type SkuTier =
+  | "Burstable"
+  | "GeneralPurpose"
+  | "MemoryOptimized"
+  | (string & {});
 export const SkuTier = /*@__PURE__*/ S.String;
 
 /** Compute information of a server. */
@@ -2680,23 +2729,23 @@ export const MigrationPropertiesDbsToMigrateList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MigrationPropertiesDbsToMigrateList>;
 
 /** Indicates whether to setup logical replication on source server, if needed. */
-export type LogicalReplicationOnSourceServer = "True" | "False";
+export type LogicalReplicationOnSourceServer = "True" | "False" | (string & {});
 export const LogicalReplicationOnSourceServer = /*@__PURE__*/ S.String;
 
 /** Indicates if databases on the target server can be overwritten when already present. */
-export type OverwriteDatabasesOnTargetServer = "True" | "False";
+export type OverwriteDatabasesOnTargetServer = "True" | "False" | (string & {});
 export const OverwriteDatabasesOnTargetServer = /*@__PURE__*/ S.String;
 
 /** Indicates if roles and permissions must be migrated. */
-export type MigrateRolesAndPermissions = "True" | "False";
+export type MigrateRolesAndPermissions = "True" | "False" | (string & {});
 export const MigrateRolesAndPermissions = /*@__PURE__*/ S.String;
 
 /** Indicates if data migration must start right away. */
-export type StartDataMigration = "True" | "False";
+export type StartDataMigration = "True" | "False" | (string & {});
 export const StartDataMigration = /*@__PURE__*/ S.String;
 
 /** Indicates if cutover must be triggered for the entire migration. */
-export type TriggerCutover = "True" | "False";
+export type TriggerCutover = "True" | "False" | (string & {});
 export const TriggerCutover = /*@__PURE__*/ S.String;
 
 /** When you want to trigger cutover for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array. */
@@ -2708,7 +2757,7 @@ export const MigrationPropertiesDbsToTriggerCutoverOnList =
   ) as any as S.Schema<MigrationPropertiesDbsToTriggerCutoverOnList>;
 
 /** Indicates if cancel must be triggered for the entire migration. */
-export type Cancel = "True" | "False";
+export type Cancel = "True" | "False" | (string & {});
 export const Cancel = /*@__PURE__*/ S.String;
 
 /** When you want to trigger cancel for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array. */
@@ -2873,7 +2922,10 @@ export const MigrationsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MigrationsCheckNameAvailabilityRequest>;
 
 /** Migration name availability reason. */
-export type MigrationNameAvailabilityReason = "Invalid" | "AlreadyExists";
+export type MigrationNameAvailabilityReason =
+  | "Invalid"
+  | "AlreadyExists"
+  | (string & {});
 export const MigrationNameAvailabilityReason = /*@__PURE__*/ S.String;
 
 /** Availability of a migration name. */
@@ -3153,7 +3205,8 @@ export const MigrationsGetResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type MigrationsListByTargetServerRequestMigrationListFilter =
   | "Active"
-  | "All";
+  | "All"
+  | (string & {});
 export const MigrationsListByTargetServerRequestMigrationListFilter =
   /*@__PURE__*/ S.String;
 
@@ -3473,7 +3526,8 @@ export const NameAvailabilityCheckGloballyRequest = /*@__PURE__*/ S.suspend(
 /** The reason why the given name is not available. */
 export type NameAvailabilityCheckGloballyResponseReason =
   | "Invalid"
-  | "AlreadyExists";
+  | "AlreadyExists"
+  | (string & {});
 export const NameAvailabilityCheckGloballyResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -3534,7 +3588,8 @@ export const NameAvailabilityCheckWithLocationRequest = /*@__PURE__*/ S.suspend(
 /** The reason why the given name is not available. */
 export type NameAvailabilityCheckWithLocationResponseReason =
   | "Invalid"
-  | "AlreadyExists";
+  | "AlreadyExists"
+  | (string & {});
 export const NameAvailabilityCheckWithLocationResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -3600,7 +3655,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** Intended executor of the operation. */
-export type OperationOrigin = "NotSpecified" | "user" | "system";
+export type OperationOrigin =
+  | "NotSpecified"
+  | "user"
+  | "system"
+  | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Supported aggregation types for the metric. */
@@ -3876,7 +3935,8 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected";
+  | "Rejected"
+  | (string & {});
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -3903,7 +3963,8 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -4418,7 +4479,8 @@ export type PostgresMajorVersion =
   | "14"
   | "13"
   | "12"
-  | "11";
+  | "11"
+  | (string & {});
 export const PostgresMajorVersion = /*@__PURE__*/ S.String;
 
 /** State of a server. */
@@ -4432,11 +4494,12 @@ export type ServerState =
   | "Updating"
   | "Restarting"
   | "Inaccessible"
-  | "Provisioning";
+  | "Provisioning"
+  | (string & {});
 export const ServerState = /*@__PURE__*/ S.String;
 
 /** Indicates if the server is configured to automatically grow storage size when available space is nearing zero and conditions allow for automatic growing storage size. */
-export type StorageAutoGrow = "Enabled" | "Disabled";
+export type StorageAutoGrow = "Enabled" | "Disabled" | (string & {});
 export const StorageAutoGrow = /*@__PURE__*/ S.String;
 
 /** Storage tier of a server. */
@@ -4454,11 +4517,16 @@ export type AzureManagedDiskPerformanceTier =
   | "P50"
   | "P60"
   | "P70"
-  | "P80";
+  | "P80"
+  | (string & {});
 export const AzureManagedDiskPerformanceTier = /*@__PURE__*/ S.String;
 
 /** Type of storage assigned to a server. If not specified, it defaults to Premium_LRS. */
-export type StorageType = "Premium_LRS" | "PremiumV2_LRS" | "UltraSSD_LRS";
+export type StorageType =
+  | "Premium_LRS"
+  | "PremiumV2_LRS"
+  | "UltraSSD_LRS"
+  | (string & {});
 export const StorageType = /*@__PURE__*/ S.String;
 
 /** Storage properties of a server. */
@@ -4488,11 +4556,11 @@ export const Storage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Storage" }) as any as S.Schema<Storage>;
 
 /** Indicates if the server supports Microsoft Entra authentication. */
-export type MicrosoftEntraAuth = "Enabled" | "Disabled";
+export type MicrosoftEntraAuth = "Enabled" | "Disabled" | (string & {});
 export const MicrosoftEntraAuth = /*@__PURE__*/ S.String;
 
 /** Indicates if the server supports password based authentication. */
-export type AuthConfigPasswordAuth = "Enabled" | "Disabled";
+export type AuthConfigPasswordAuth = "Enabled" | "Disabled" | (string & {});
 export const AuthConfigPasswordAuth = /*@__PURE__*/ S.String;
 
 /** Authentication configuration properties of a server. */
@@ -4513,11 +4581,14 @@ export const AuthConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuthConfig" }) as any as S.Schema<AuthConfig>;
 
 /** Data encryption type used by a server. */
-export type DataEncryptionType = "SystemManaged" | "AzureKeyVault";
+export type DataEncryptionType =
+  | "SystemManaged"
+  | "AzureKeyVault"
+  | (string & {});
 export const DataEncryptionType = /*@__PURE__*/ S.String;
 
 /** Status of key used by a server configured with data encryption based on customer managed key, to encrypt the primary storage associated to the server. */
-export type EncryptionKeyStatus = "Valid" | "Invalid";
+export type EncryptionKeyStatus = "Valid" | "Invalid" | (string & {});
 export const EncryptionKeyStatus = /*@__PURE__*/ S.String;
 
 /** Data encryption properties of a server. */
@@ -4550,7 +4621,7 @@ export const DataEncryption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataEncryption" }) as any as S.Schema<DataEncryption>;
 
 /** Indicates if the server is configured to create geographically redundant backups. */
-export type BackupGeoRedundantBackup = "Enabled" | "Disabled";
+export type BackupGeoRedundantBackup = "Enabled" | "Disabled" | (string & {});
 export const BackupGeoRedundantBackup = /*@__PURE__*/ S.String;
 
 /** Backup properties of a server. */
@@ -4571,7 +4642,10 @@ export const Backup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Backup" }) as any as S.Schema<Backup>;
 
 /** Indicates if public network access is enabled or not. */
-export type ServerPublicNetworkAccessState = "Enabled" | "Disabled";
+export type ServerPublicNetworkAccessState =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const ServerPublicNetworkAccessState = /*@__PURE__*/ S.String;
 
 /** Network properties of a server. */
@@ -4592,7 +4666,11 @@ export const Network = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Network" }) as any as S.Schema<Network>;
 
 /** High availability mode for a server. */
-export type HighAvailabilityMode = "Disabled" | "ZoneRedundant" | "SameZone";
+export type HighAvailabilityMode =
+  | "Disabled"
+  | "ZoneRedundant"
+  | "SameZone"
+  | (string & {});
 export const HighAvailabilityMode = /*@__PURE__*/ S.String;
 
 /** Possible states of the standby server created when high availability is set to SameZone or ZoneRedundant. */
@@ -4604,7 +4682,8 @@ export type HighAvailabilityState =
   | "Healthy"
   | "RemovingStandby"
   | "RecreatingStandby"
-  | "ComputeUpdatingByFailover";
+  | "ComputeUpdatingByFailover"
+  | (string & {});
 export const HighAvailabilityState = /*@__PURE__*/ S.String;
 
 /** High availability properties of a server. */
@@ -4653,7 +4732,8 @@ export type ReplicationRole =
   | "None"
   | "Primary"
   | "AsyncReplica"
-  | "GeoAsyncReplica";
+  | "GeoAsyncReplica"
+  | (string & {});
 export const ReplicationRole = /*@__PURE__*/ S.String;
 
 /** Indicates the replication state of a read replica. This property is returned only when the target server is a read replica. */
@@ -4663,15 +4743,19 @@ export type ReplicationState =
   | "Provisioning"
   | "Updating"
   | "Broken"
-  | "Reconfiguring";
+  | "Reconfiguring"
+  | (string & {});
 export const ReplicationState = /*@__PURE__*/ S.String;
 
 /** Type of operation to apply on the read replica. This property is write only. */
-export type ReadReplicaPromoteMode = "Standalone" | "Switchover";
+export type ReadReplicaPromoteMode =
+  | "Standalone"
+  | "Switchover"
+  | (string & {});
 export const ReadReplicaPromoteMode = /*@__PURE__*/ S.String;
 
 /** Data synchronization option to use when processing the operation specified in the promoteMode property. This property is write only. */
-export type ReadReplicaPromoteOption = "Planned" | "Forced";
+export type ReadReplicaPromoteOption = "Planned" | "Forced" | (string & {});
 export const ReadReplicaPromoteOption = /*@__PURE__*/ S.String;
 
 /** Replica properties of a server. */
@@ -4705,7 +4789,8 @@ export type CreateMode =
   | "PointInTimeRestore"
   | "GeoRestore"
   | "Replica"
-  | "ReviveDropped";
+  | "ReviveDropped"
+  | (string & {});
 export const CreateMode = /*@__PURE__*/ S.String;
 
 /** The private endpoint connection resource. */
@@ -4877,7 +4962,8 @@ export type IdentityType =
   | "None"
   | "UserAssigned"
   | "SystemAssigned"
-  | "SystemAssigned,UserAssigned";
+  | "SystemAssigned,UserAssigned"
+  | (string & {});
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** Identities associated with a server. */
@@ -4969,7 +5055,10 @@ export const ServersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ServersCreateOrUpdateRequestTagsMap>;
 
 /** Indicates if the server is configured to create geographically redundant backups. */
-export type BackupInputGeoRedundantBackup = "Enabled" | "Disabled";
+export type BackupInputGeoRedundantBackup =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const BackupInputGeoRedundantBackup = /*@__PURE__*/ S.String;
 
 /** Backup properties of a server. */
@@ -5288,7 +5377,8 @@ export type FailoverMode =
   | "PlannedFailover"
   | "ForcedFailover"
   | "PlannedSwitchover"
-  | "ForcedSwitchover";
+  | "ForcedSwitchover"
+  | (string & {});
 export const FailoverMode = /*@__PURE__*/ S.String;
 
 export interface ServersRestartRequest {
@@ -5424,7 +5514,8 @@ export const BackupForPatchInput = /*@__PURE__*/ S.suspend(() =>
 export type PostgreSqlFlexibleServerHighAvailabilityMode =
   | "Disabled"
   | "ZoneRedundant"
-  | "SameZone";
+  | "SameZone"
+  | (string & {});
 export const PostgreSqlFlexibleServerHighAvailabilityMode =
   /*@__PURE__*/ S.String;
 
@@ -5467,7 +5558,7 @@ export const MaintenanceWindowForPatch = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MaintenanceWindowForPatch>;
 
 /** Indicates if the server supports password based authentication. */
-export type PasswordBasedAuth = "Enabled" | "Disabled";
+export type PasswordBasedAuth = "Enabled" | "Disabled" | (string & {});
 export const PasswordBasedAuth = /*@__PURE__*/ S.String;
 
 /** Authentication configuration properties of a server. */
@@ -5490,7 +5581,7 @@ export const AuthConfigForPatch = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthConfigForPatch>;
 
 /** Update mode of an existing server. */
-export type CreateModeForPatch = "Default" | "Update";
+export type CreateModeForPatch = "Default" | "Update" | (string & {});
 export const CreateModeForPatch = /*@__PURE__*/ S.String;
 
 /** Properties of a server. */
@@ -5597,7 +5688,7 @@ export const ServersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServersUpdateResponse>;
 
 export type ServerThreatProtectionSettingsCreateOrUpdateRequestThreatProtectionName =
-  "Default";
+  "Default" | (string & {});
 export const ServerThreatProtectionSettingsCreateOrUpdateRequestThreatProtectionName =
   /*@__PURE__*/ S.String;
 
@@ -5656,7 +5747,10 @@ export const ServerThreatProtectionSettingsCreateOrUpdateResponse =
     identifier: "ServerThreatProtectionSettingsCreateOrUpdateResponse",
   }) as any as S.Schema<ServerThreatProtectionSettingsCreateOrUpdateResponse>;
 
-export type TuningOptionsGetRequestTuningOption = "index" | "table";
+export type TuningOptionsGetRequestTuningOption =
+  | "index"
+  | "table"
+  | (string & {});
 export const TuningOptionsGetRequestTuningOption = /*@__PURE__*/ S.String;
 
 export interface TuningOptionsGetRequest {
@@ -5796,7 +5890,8 @@ export const TuningOptionsList = /*@__PURE__*/ S.suspend(() =>
 
 export type TuningOptionsListRecommendationsRequestTuningOption =
   | "index"
-  | "table";
+  | "table"
+  | (string & {});
 export const TuningOptionsListRecommendationsRequestTuningOption =
   /*@__PURE__*/ S.String;
 
@@ -5804,7 +5899,8 @@ export type TuningOptionsListRecommendationsRequestRecommendationType =
   | "CreateIndex"
   | "DropIndex"
   | "ReIndex"
-  | "AnalyzeTable";
+  | "AnalyzeTable"
+  | (string & {});
 export const TuningOptionsListRecommendationsRequestRecommendationType =
   /*@__PURE__*/ S.String;
 
@@ -5859,7 +5955,8 @@ export type RecommendationTypeEnum =
   | "CreateIndex"
   | "DropIndex"
   | "ReIndex"
-  | "AnalyzeTable";
+  | "AnalyzeTable"
+  | (string & {});
 export const RecommendationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Implementation details for the recommended action. */
@@ -6076,7 +6173,7 @@ export const ObjectRecommendationList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ObjectRecommendationList>;
 
 /** Type of endpoint for the virtual endpoints. */
-export type VirtualEndpointType = "ReadWrite";
+export type VirtualEndpointType = "ReadWrite" | (string & {});
 export const VirtualEndpointType = /*@__PURE__*/ S.String;
 
 /** List of servers that one of the virtual endpoints can refer to. */

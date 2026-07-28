@@ -255,7 +255,8 @@ export type GrantStatus =
   | "DELETED"
   | "PENDING_DELETE"
   | "DISABLED"
-  | "WORKFLOW_COMPLETED";
+  | "WORKFLOW_COMPLETED"
+  | (string & {});
 export const GrantStatus = /*@__PURE__*/ S.String;
 
 export interface AcceptGrantResponse {
@@ -327,7 +328,8 @@ export type EntitlementDataUnit =
   | "Megabits/Second"
   | "Gigabits/Second"
   | "Terabits/Second"
-  | "Count/Second";
+  | "Count/Second"
+  | (string & {});
 export const EntitlementDataUnit = /*@__PURE__*/ S.String;
 
 export interface EntitlementData {
@@ -346,7 +348,7 @@ export const EntitlementData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EntitlementData>;
 export type EntitlementDataList = EntitlementData[];
 export const EntitlementDataList = /*@__PURE__*/ S.Array(EntitlementData);
-export type DigitalSignatureMethod = "JWT_PS384";
+export type DigitalSignatureMethod = "JWT_PS384" | (string & {});
 export const DigitalSignatureMethod = /*@__PURE__*/ S.String;
 
 export interface Metadata {
@@ -415,7 +417,7 @@ export const CheckoutBorrowLicenseResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CheckoutBorrowLicenseResponse",
 }) as any as S.Schema<CheckoutBorrowLicenseResponse>;
-export type CheckoutType = "PROVISIONAL" | "PERPETUAL";
+export type CheckoutType = "PROVISIONAL" | "PERPETUAL" | (string & {});
 export const CheckoutType = /*@__PURE__*/ S.String;
 
 export interface CheckoutLicenseRequest {
@@ -483,7 +485,8 @@ export type AllowedOperation =
   | "CheckInLicense"
   | "ExtendConsumptionLicense"
   | "ListPurchasedLicenses"
-  | "CreateToken";
+  | "CreateToken"
+  | (string & {});
 export const AllowedOperation = /*@__PURE__*/ S.String;
 
 export type AllowedOperationList = AllowedOperation[];
@@ -546,7 +549,8 @@ export const CreateGrantResponse = /*@__PURE__*/ S.suspend(() =>
 export type StatusReasonMessage = string;
 export type ActivationOverrideBehavior =
   | "DISTRIBUTED_GRANTS_ONLY"
-  | "ALL_GRANTS_PERMITTED_BY_ISSUER";
+  | "ALL_GRANTS_PERMITTED_BY_ISSUER"
+  | (string & {});
 export const ActivationOverrideBehavior = /*@__PURE__*/ S.String;
 
 export interface Options {
@@ -647,7 +651,8 @@ export type EntitlementUnit =
   | "Megabits/Second"
   | "Gigabits/Second"
   | "Terabits/Second"
-  | "Count/Second";
+  | "Count/Second"
+  | (string & {});
 export const EntitlementUnit = /*@__PURE__*/ S.String;
 
 export interface Entitlement {
@@ -670,7 +675,7 @@ export const Entitlement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Entitlement" }) as any as S.Schema<Entitlement>;
 export type EntitlementList = Entitlement[];
 export const EntitlementList = /*@__PURE__*/ S.Array(Entitlement);
-export type RenewType = "None" | "Weekly" | "Monthly";
+export type RenewType = "None" | "Weekly" | "Monthly" | (string & {});
 export const RenewType = /*@__PURE__*/ S.String;
 
 export type BoxInteger = number;
@@ -754,7 +759,8 @@ export type LicenseStatus =
   | "SUSPENDED"
   | "EXPIRED"
   | "PENDING_DELETE"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const LicenseStatus = /*@__PURE__*/ S.String;
 
 export interface CreateLicenseResponse {
@@ -1002,7 +1008,12 @@ export const CreateLicenseAssetRulesetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLicenseAssetRulesetResponse",
 }) as any as S.Schema<CreateLicenseAssetRulesetResponse>;
-export type LicenseCountingType = "vCPU" | "Instance" | "Core" | "Socket";
+export type LicenseCountingType =
+  | "vCPU"
+  | "Instance"
+  | "Core"
+  | "Socket"
+  | (string & {});
 export const LicenseCountingType = /*@__PURE__*/ S.String;
 
 export type BoxLong = number;
@@ -1086,7 +1097,7 @@ export const CreateLicenseConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateLicenseConfigurationResponse>;
 export type UsageOperation = string;
 export type ProductCodeId = string;
-export type ProductCodeType = "marketplace";
+export type ProductCodeType = "marketplace" | (string & {});
 export const ProductCodeType = /*@__PURE__*/ S.String;
 
 export interface ProductCodeListItem {
@@ -1151,7 +1162,8 @@ export type ReportGeneratorName = string;
 export type ReportType =
   | "LicenseConfigurationSummaryReport"
   | "LicenseConfigurationUsageReport"
-  | "LicenseAssetGroupUsageReport";
+  | "LicenseAssetGroupUsageReport"
+  | (string & {});
 export const ReportType = /*@__PURE__*/ S.String;
 
 export type ReportTypeList = ReportType[];
@@ -1174,7 +1186,12 @@ export const ReportContext = /*@__PURE__*/ S.suspend(() =>
     reportEndDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
   }),
 ).annotate({ identifier: "ReportContext" }) as any as S.Schema<ReportContext>;
-export type ReportFrequencyType = "DAY" | "WEEK" | "MONTH" | "ONE_TIME";
+export type ReportFrequencyType =
+  | "DAY"
+  | "WEEK"
+  | "MONTH"
+  | "ONE_TIME"
+  | (string & {});
 export const ReportFrequencyType = /*@__PURE__*/ S.String;
 
 export interface ReportFrequency {
@@ -1320,7 +1337,7 @@ export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTokenRequest",
 }) as any as S.Schema<CreateTokenRequest>;
-export type TokenType = "REFRESH_TOKEN";
+export type TokenType = "REFRESH_TOKEN" | (string & {});
 export const TokenType = /*@__PURE__*/ S.String;
 
 export type TokenString = string;
@@ -1395,7 +1412,10 @@ export const DeleteLicenseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteLicenseRequest",
 }) as any as S.Schema<DeleteLicenseRequest>;
-export type LicenseDeletionStatus = "PENDING_DELETE" | "DELETED";
+export type LicenseDeletionStatus =
+  | "PENDING_DELETE"
+  | "DELETED"
+  | (string & {});
 export const LicenseDeletionStatus = /*@__PURE__*/ S.String;
 
 export interface DeleteLicenseResponse {
@@ -1428,7 +1448,11 @@ export const DeleteLicenseAssetGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteLicenseAssetGroupRequest",
 }) as any as S.Schema<DeleteLicenseAssetGroupRequest>;
-export type LicenseAssetGroupStatus = "ACTIVE" | "DISABLED" | "DELETED";
+export type LicenseAssetGroupStatus =
+  | "ACTIVE"
+  | "DISABLED"
+  | "DELETED"
+  | (string & {});
 export const LicenseAssetGroupStatus = /*@__PURE__*/ S.String;
 
 export interface DeleteLicenseAssetGroupResponse {
@@ -1852,7 +1876,8 @@ export type ResourceType =
   | "EC2_HOST"
   | "EC2_AMI"
   | "RDS"
-  | "SYSTEMS_MANAGER_MANAGED_INSTANCE";
+  | "SYSTEMS_MANAGER_MANAGED_INSTANCE"
+  | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export interface ConsumedLicenseSummary {
@@ -1962,7 +1987,8 @@ export const GetLicenseConversionTaskRequest = /*@__PURE__*/ S.suspend(() =>
 export type LicenseConversionTaskStatus =
   | "IN_PROGRESS"
   | "SUCCEEDED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const LicenseConversionTaskStatus = /*@__PURE__*/ S.String;
 
 export interface GetLicenseConversionTaskResponse {
@@ -2992,7 +3018,8 @@ export type ReceivedStatus =
   | "FAILED_WORKFLOW"
   | "DELETED"
   | "DISABLED"
-  | "WORKFLOW_COMPLETED";
+  | "WORKFLOW_COMPLETED"
+  | (string & {});
 export const ReceivedStatus = /*@__PURE__*/ S.String;
 
 export interface ReceivedMetadata {
@@ -3101,7 +3128,8 @@ export type InventoryFilterCondition =
   | "EQUALS"
   | "NOT_EQUALS"
   | "BEGINS_WITH"
-  | "CONTAINS";
+  | "CONTAINS"
+  | (string & {});
 export const InventoryFilterCondition = /*@__PURE__*/ S.String;
 
 export interface InventoryFilter {
@@ -3507,7 +3535,10 @@ export const UpdateLicenseAssetRulesetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateLicenseAssetRulesetResponse",
 }) as any as S.Schema<UpdateLicenseAssetRulesetResponse>;
-export type LicenseConfigurationStatus = "AVAILABLE" | "DISABLED";
+export type LicenseConfigurationStatus =
+  | "AVAILABLE"
+  | "DISABLED"
+  | (string & {});
 export const LicenseConfigurationStatus = /*@__PURE__*/ S.String;
 
 export interface UpdateLicenseConfigurationRequest {

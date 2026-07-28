@@ -62,7 +62,8 @@ export class NotFound extends T.applyErrorMatchers(
 
 export type GoogleCloudIdentitytoolkitV1SignUpRequestRecaptchaVersionEnum =
   | "RECAPTCHA_VERSION_UNSPECIFIED"
-  | "RECAPTCHA_ENTERPRISE";
+  | "RECAPTCHA_ENTERPRISE"
+  | (string & {});
 export const GoogleCloudIdentitytoolkitV1SignUpRequestRecaptchaVersionEnum =
   /*@__PURE__*/ S.String;
 
@@ -92,7 +93,8 @@ export type GoogleCloudIdentitytoolkitV1SignUpRequestClientTypeEnum =
   | "CLIENT_TYPE_UNSPECIFIED"
   | "CLIENT_TYPE_WEB"
   | "CLIENT_TYPE_ANDROID"
-  | "CLIENT_TYPE_IOS";
+  | "CLIENT_TYPE_IOS"
+  | (string & {});
 export const GoogleCloudIdentitytoolkitV1SignUpRequestClientTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -447,14 +449,16 @@ export type GoogleCloudIdentitytoolkitV1Argon2ParametersHashTypeEnum =
   | "HASH_TYPE_UNSPECIFIED"
   | "ARGON2_D"
   | "ARGON2_ID"
-  | "ARGON2_I";
+  | "ARGON2_I"
+  | (string & {});
 export const GoogleCloudIdentitytoolkitV1Argon2ParametersHashTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudIdentitytoolkitV1Argon2ParametersVersionEnum =
   | "VERSION_UNSPECIFIED"
   | "VERSION_10"
-  | "VERSION_13";
+  | "VERSION_13"
+  | (string & {});
 export const GoogleCloudIdentitytoolkitV1Argon2ParametersVersionEnum =
   /*@__PURE__*/ S.String;
 
@@ -495,7 +499,10 @@ export const GoogleCloudIdentitytoolkitV1Argon2Parameters =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitV1Argon2Parameters>;
 
 export type GoogleCloudIdentitytoolkitV1UploadAccountRequestPasswordHashOrderEnum =
-  "UNSPECIFIED_ORDER" | "SALT_AND_PASSWORD" | "PASSWORD_AND_SALT";
+    | "UNSPECIFIED_ORDER"
+    | "SALT_AND_PASSWORD"
+    | "PASSWORD_AND_SALT"
+    | (string & {});
 export const GoogleCloudIdentitytoolkitV1UploadAccountRequestPasswordHashOrderEnum =
   /*@__PURE__*/ S.String;
 
@@ -1192,7 +1199,8 @@ export const GetProjectsV1Request = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudIdentitytoolkitV1EmailTemplateFormatEnum =
   | "EMAIL_BODY_FORMAT_UNSPECIFIED"
   | "PLAINTEXT"
-  | "HTML";
+  | "HTML"
+  | (string & {});
 export const GoogleCloudIdentitytoolkitV1EmailTemplateFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -1249,7 +1257,8 @@ export type GoogleCloudIdentitytoolkitV1IdpConfigProviderEnum =
   | "GITHUB"
   | "GOOGLE_PLAY_GAMES"
   | "LINKEDIN"
-  | "IOS_GAME_CENTER";
+  | "IOS_GAME_CENTER"
+  | (string & {});
 export const GoogleCloudIdentitytoolkitV1IdpConfigProviderEnum =
   /*@__PURE__*/ S.String;
 
@@ -1691,7 +1700,8 @@ export type GoogleCloudIdentitytoolkitV1QueryUserInfoRequestSortByEnum =
   | "NAME"
   | "CREATED_AT"
   | "LAST_LOGIN_AT"
-  | "USER_EMAIL";
+  | "USER_EMAIL"
+  | (string & {});
 export const GoogleCloudIdentitytoolkitV1QueryUserInfoRequestSortByEnum =
   /*@__PURE__*/ S.String;
 
@@ -1725,7 +1735,8 @@ export const GoogleCloudIdentitytoolkitV1SqlExpressionList =
 export type GoogleCloudIdentitytoolkitV1QueryUserInfoRequestOrderEnum =
   | "ORDER_UNSPECIFIED"
   | "ASC"
-  | "DESC";
+  | "DESC"
+  | (string & {});
 export const GoogleCloudIdentitytoolkitV1QueryUserInfoRequestOrderEnum =
   /*@__PURE__*/ S.String;
 
@@ -1906,7 +1917,8 @@ export type GoogleCloudIdentitytoolkitV1ResetPasswordResponseRequestTypeEnum =
   | "RECOVER_EMAIL"
   | "EMAIL_SIGNIN"
   | "VERIFY_AND_CHANGE_EMAIL"
-  | "REVERT_SECOND_FACTOR_ADDITION";
+  | "REVERT_SECOND_FACTOR_ADDITION"
+  | (string & {});
 export const GoogleCloudIdentitytoolkitV1ResetPasswordResponseRequestTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1936,7 +1948,8 @@ export const GoogleCloudIdentitytoolkitV1ResetPasswordResponse =
 
 export type GoogleCloudIdentitytoolkitV1GetOobCodeRequestRecaptchaVersionEnum =
   | "RECAPTCHA_VERSION_UNSPECIFIED"
-  | "RECAPTCHA_ENTERPRISE";
+  | "RECAPTCHA_ENTERPRISE"
+  | (string & {});
 export const GoogleCloudIdentitytoolkitV1GetOobCodeRequestRecaptchaVersionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1944,7 +1957,8 @@ export type GoogleCloudIdentitytoolkitV1GetOobCodeRequestClientTypeEnum =
   | "CLIENT_TYPE_UNSPECIFIED"
   | "CLIENT_TYPE_WEB"
   | "CLIENT_TYPE_ANDROID"
-  | "CLIENT_TYPE_IOS";
+  | "CLIENT_TYPE_IOS"
+  | (string & {});
 export const GoogleCloudIdentitytoolkitV1GetOobCodeRequestClientTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1957,7 +1971,8 @@ export type GoogleCloudIdentitytoolkitV1GetOobCodeRequestRequestTypeEnum =
   | "RECOVER_EMAIL"
   | "EMAIL_SIGNIN"
   | "VERIFY_AND_CHANGE_EMAIL"
-  | "REVERT_SECOND_FACTOR_ADDITION";
+  | "REVERT_SECOND_FACTOR_ADDITION"
+  | (string & {});
 export const GoogleCloudIdentitytoolkitV1GetOobCodeRequestRequestTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2133,7 +2148,7 @@ export const SendOobCodeProjectsTenantsAccountsRequest =
   }) as any as S.Schema<SendOobCodeProjectsTenantsAccountsRequest>;
 
 export type GoogleCloudIdentitytoolkitV1SendVerificationCodeRequestRecaptchaVersionEnum =
-  "RECAPTCHA_VERSION_UNSPECIFIED" | "RECAPTCHA_ENTERPRISE";
+  "RECAPTCHA_VERSION_UNSPECIFIED" | "RECAPTCHA_ENTERPRISE" | (string & {});
 export const GoogleCloudIdentitytoolkitV1SendVerificationCodeRequestRecaptchaVersionEnum =
   /*@__PURE__*/ S.String;
 
@@ -2141,7 +2156,8 @@ export type GoogleCloudIdentitytoolkitV1SendVerificationCodeRequestClientTypeEnu
     | "CLIENT_TYPE_UNSPECIFIED"
     | "CLIENT_TYPE_WEB"
     | "CLIENT_TYPE_ANDROID"
-    | "CLIENT_TYPE_IOS";
+    | "CLIENT_TYPE_IOS"
+    | (string & {});
 export const GoogleCloudIdentitytoolkitV1SendVerificationCodeRequestClientTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2688,7 +2704,7 @@ export const GoogleCloudIdentitytoolkitV1SignInWithIdpResponse =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitV1SignInWithIdpResponse>;
 
 export type GoogleCloudIdentitytoolkitV1SignInWithPasswordRequestRecaptchaVersionEnum =
-  "RECAPTCHA_VERSION_UNSPECIFIED" | "RECAPTCHA_ENTERPRISE";
+  "RECAPTCHA_VERSION_UNSPECIFIED" | "RECAPTCHA_ENTERPRISE" | (string & {});
 export const GoogleCloudIdentitytoolkitV1SignInWithPasswordRequestRecaptchaVersionEnum =
   /*@__PURE__*/ S.String;
 
@@ -2696,7 +2712,8 @@ export type GoogleCloudIdentitytoolkitV1SignInWithPasswordRequestClientTypeEnum 
     | "CLIENT_TYPE_UNSPECIFIED"
     | "CLIENT_TYPE_WEB"
     | "CLIENT_TYPE_ANDROID"
-    | "CLIENT_TYPE_IOS";
+    | "CLIENT_TYPE_IOS"
+    | (string & {});
 export const GoogleCloudIdentitytoolkitV1SignInWithPasswordRequestClientTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2773,7 +2790,8 @@ export type GoogleCloudIdentitytoolkitV1UserNotificationNotificationCodeEnum =
   | "MISSING_NUMERIC_CHARACTER"
   | "MISSING_NON_ALPHANUMERIC_CHARACTER"
   | "MINIMUM_PASSWORD_LENGTH"
-  | "MAXIMUM_PASSWORD_LENGTH";
+  | "MAXIMUM_PASSWORD_LENGTH"
+  | (string & {});
 export const GoogleCloudIdentitytoolkitV1UserNotificationNotificationCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2860,7 +2878,12 @@ export const GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse>;
 
 export type GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequestOperationEnum =
-  "VERIFY_OP_UNSPECIFIED" | "SIGN_UP_OR_IN" | "REAUTH" | "UPDATE" | "LINK";
+    | "VERIFY_OP_UNSPECIFIED"
+    | "SIGN_UP_OR_IN"
+    | "REAUTH"
+    | "UPDATE"
+    | "LINK"
+    | (string & {});
 export const GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequestOperationEnum =
   /*@__PURE__*/ S.String;
 
@@ -2991,7 +3014,8 @@ export type GoogleCloudIdentitytoolkitV1SetAccountInfoRequestDeleteAttributeItem
     | "PROVIDER"
     | "PHOTO_URL"
     | "PASSWORD"
-    | "RAW_USER_INFO";
+    | "RAW_USER_INFO"
+    | (string & {});
 export const GoogleCloudIdentitytoolkitV1SetAccountInfoRequestDeleteAttributeItemEnum =
   /*@__PURE__*/ S.String;
 

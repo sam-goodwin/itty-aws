@@ -51,7 +51,10 @@ export const AdminKeyResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AdminKeyResult" }) as any as S.Schema<AdminKeyResult>;
 
-export type AdminKeysRegenerateRequestKeyKind = "primary" | "secondary";
+export type AdminKeysRegenerateRequestKeyKind =
+  | "primary"
+  | "secondary"
+  | (string & {});
 export const AdminKeysRegenerateRequestKeyKind = /*@__PURE__*/ S.String;
 
 export interface AdminKeysRegenerateRequest {
@@ -116,7 +119,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -124,7 +128,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -161,7 +166,8 @@ export type NetworkSecurityPerimeterConfigurationProvisioningState =
   | "Deleting"
   | "Accepted"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const NetworkSecurityPerimeterConfigurationProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -170,11 +176,15 @@ export type ProvisioningIssuePropertiesIssueType =
   | "Unknown"
   | "ConfigurationPropagationFailure"
   | "MissingPerimeterConfiguration"
-  | "MissingIdentityConfiguration";
+  | "MissingIdentityConfiguration"
+  | (string & {});
 export const ProvisioningIssuePropertiesIssueType = /*@__PURE__*/ S.String;
 
 /** Severity of the issue. */
-export type ProvisioningIssuePropertiesSeverity = "Warning" | "Error";
+export type ProvisioningIssuePropertiesSeverity =
+  | "Warning"
+  | "Error"
+  | (string & {});
 export const ProvisioningIssuePropertiesSeverity = /*@__PURE__*/ S.String;
 
 /** Fully qualified resource IDs of suggested resources that can be associated to the network security perimeter (NSP) to remediate the issue. */
@@ -186,7 +196,7 @@ export const ProvisioningIssuePropertiesSuggestedResourceIdsList =
   ) as any as S.Schema<ProvisioningIssuePropertiesSuggestedResourceIdsList>;
 
 /** Direction of Access Rule */
-export type AccessRuleDirection = "Inbound" | "Outbound";
+export type AccessRuleDirection = "Inbound" | "Outbound" | (string & {});
 export const AccessRuleDirection = /*@__PURE__*/ S.String;
 
 /** Address prefixes in the CIDR format for inbound rules */
@@ -371,7 +381,11 @@ export const NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesLi
   ) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList>;
 
 /** Access mode of the resource association */
-export type ResourceAssociationAccessMode = "Enforced" | "Learning" | "Audit";
+export type ResourceAssociationAccessMode =
+  | "Enforced"
+  | "Learning"
+  | "Audit"
+  | (string & {});
 export const ResourceAssociationAccessMode = /*@__PURE__*/ S.String;
 
 /** Information about resource association */
@@ -631,11 +645,12 @@ export const OperationListResultValueItemDisplay = /*@__PURE__*/ S.suspend(() =>
 export type OperationListResultValueItemOrigin =
   | "user"
   | "system"
-  | "user,system";
+  | "user,system"
+  | (string & {});
 export const OperationListResultValueItemOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationListResultValueItemActionType = "Internal";
+export type OperationListResultValueItemActionType = "Internal" | (string & {});
 export const OperationListResultValueItemActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -734,7 +749,8 @@ export type PrivateLinkServiceConnectionStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
-  | "Disconnected";
+  | "Disconnected"
+  | (string & {});
 export const PrivateLinkServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** Describes the current state of an existing Azure Private Link service connection to the private endpoint. */
@@ -765,7 +781,8 @@ export type PrivateLinkServiceConnectionProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Incomplete"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const PrivateLinkServiceConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1295,7 +1312,9 @@ export const ListQueryKeysResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListQueryKeysResult>;
 
 /** The type of the resource whose name is to be validated. This value must always be 'searchServices'. */
-export type ServicesCheckNameAvailabilityRequestType = "searchServices";
+export type ServicesCheckNameAvailabilityRequestType =
+  | "searchServices"
+  | (string & {});
 export const ServicesCheckNameAvailabilityRequestType = /*@__PURE__*/ S.String;
 
 export interface ServicesCheckNameAvailabilityRequest {
@@ -1325,7 +1344,7 @@ export const ServicesCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ServicesCheckNameAvailabilityRequest>;
 
 /** The reason why the name is not available. 'Invalid' indicates the name provided does not match the naming requirements (incorrect length, unsupported characters, etc.). 'AlreadyExists' indicates that the name is already in use and is therefore unavailable. */
-export type UnavailableNameReason = "Invalid" | "AlreadyExists";
+export type UnavailableNameReason = "Invalid" | "AlreadyExists" | (string & {});
 export const UnavailableNameReason = /*@__PURE__*/ S.String;
 
 /** Output of check name availability API. */
@@ -1357,18 +1376,22 @@ export const ServicesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ServicesCreateOrUpdateRequestTagsMap>;
 
 /** Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'Default' or 'HighDensity'. For all other SKUs, this value must be 'Default'. */
-export type SearchServicePropertiesInputHostingMode = "Default" | "HighDensity";
+export type SearchServicePropertiesInputHostingMode =
+  | "Default"
+  | "HighDensity"
+  | (string & {});
 export const SearchServicePropertiesInputHostingMode = /*@__PURE__*/ S.String;
 
 /** Configure this property to support the search service using either the Default Compute or Azure Confidential Compute. */
-export type ComputeType = "Default" | "Confidential";
+export type ComputeType = "Default" | "Confidential" | (string & {});
 export const ComputeType = /*@__PURE__*/ S.String;
 
 /** This value can be set to 'Enabled' to avoid breaking changes on existing customer resources and templates. If set to 'Disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method. */
 export type SearchServicePropertiesInputPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter";
+  | "SecuredByPerimeter"
+  | (string & {});
 export const SearchServicePropertiesInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -1390,7 +1413,7 @@ export const NetworkRuleSetIpRulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<NetworkRuleSetIpRulesList>;
 
 /** Possible origins of inbound traffic that can bypass the rules defined in the 'ipRules' section. */
-export type SearchBypass = "None" | "AzureServices";
+export type SearchBypass = "None" | "AzureServices" | (string & {});
 export const SearchBypass = /*@__PURE__*/ S.String;
 
 /** Network specific rules that determine how the Azure AI Search service may be reached. */
@@ -1408,7 +1431,7 @@ export const NetworkRuleSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkRuleSet" }) as any as S.Schema<NetworkRuleSet>;
 
 /** A specific data exfiltration scenario that is disabled for the service. */
-export type SearchDataExfiltrationProtection = "BlockAll";
+export type SearchDataExfiltrationProtection = "BlockAll" | (string & {});
 export const SearchDataExfiltrationProtection = /*@__PURE__*/ S.String;
 
 /** A list of data exfiltration scenarios that are explicitly disallowed for the search service. Currently, the only supported value is 'All' to disable all possible data export scenarios with more fine grained controls planned for the future. */
@@ -1420,11 +1443,18 @@ export const SearchServicePropertiesInputDataExfiltrationProtectionsList =
   ) as any as S.Schema<SearchServicePropertiesInputDataExfiltrationProtectionsList>;
 
 /** Describes how a search service should enforce compliance if it finds objects that aren't encrypted with the customer-managed key. */
-export type SearchEncryptionWithCmk = "Disabled" | "Enabled" | "Unspecified";
+export type SearchEncryptionWithCmk =
+  | "Disabled"
+  | "Enabled"
+  | "Unspecified"
+  | (string & {});
 export const SearchEncryptionWithCmk = /*@__PURE__*/ S.String;
 
 /** Returns the status of search service compliance with respect to non-CMK-encrypted objects. If a service has more than one unencrypted object, and enforcement is enabled, the service is marked as noncompliant. */
-export type SearchEncryptionComplianceStatus = "Compliant" | "NonCompliant";
+export type SearchEncryptionComplianceStatus =
+  | "Compliant"
+  | "NonCompliant"
+  | (string & {});
 export const SearchEncryptionComplianceStatus = /*@__PURE__*/ S.String;
 
 /** Describes a policy that determines how resources within the search service are to be encrypted with customer managed keys. */
@@ -1444,7 +1474,10 @@ export const EncryptionWithCmk = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionWithCmk>;
 
 /** Describes what response the data plane API of a search service would send for requests that failed authentication. */
-export type AadAuthFailureMode = "http403" | "http401WithBearerChallenge";
+export type AadAuthFailureMode =
+  | "http403"
+  | "http401WithBearerChallenge"
+  | (string & {});
 export const AadAuthFailureMode = /*@__PURE__*/ S.String;
 
 /** Indicates that either the API key or an access token from a Microsoft Entra ID tenant can be used for authentication. */
@@ -1477,11 +1510,15 @@ export const DataPlaneAuthOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataPlaneAuthOptions>;
 
 /** Specifies the availability and billing plan for semantic search on the Azure AI Search service. This configuration is only available for certain pricing tiers in certain regions. */
-export type SearchSemanticSearch = "disabled" | "free" | "standard";
+export type SearchSemanticSearch =
+  | "disabled"
+  | "free"
+  | "standard"
+  | (string & {});
 export const SearchSemanticSearch = /*@__PURE__*/ S.String;
 
 /** Indicates if the dedicated search service has an upgrade available. */
-export type UpgradeAvailable = "notAvailable" | "available";
+export type UpgradeAvailable = "notAvailable" | "available" | (string & {});
 export const UpgradeAvailable = /*@__PURE__*/ S.String;
 
 /** Properties of the search service. */
@@ -1545,7 +1582,8 @@ export type SkuName =
   | "standard2"
   | "standard3"
   | "storage_optimized_l1"
-  | "storage_optimized_l2";
+  | "storage_optimized_l2"
+  | (string & {});
 export const SkuName = /*@__PURE__*/ S.String;
 
 /** Defines the SKU of a search service, which determines billing rate and capacity limits. */
@@ -1564,7 +1602,8 @@ export type IdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned, UserAssigned";
+  | "SystemAssigned, UserAssigned"
+  | (string & {});
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -1648,14 +1687,18 @@ export const ServicesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ServicesCreateOrUpdateResponseTagsMap>;
 
 /** Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'Default' or 'HighDensity'. For all other SKUs, this value must be 'Default'. */
-export type SearchServicePropertiesHostingMode = "Default" | "HighDensity";
+export type SearchServicePropertiesHostingMode =
+  | "Default"
+  | "HighDensity"
+  | (string & {});
 export const SearchServicePropertiesHostingMode = /*@__PURE__*/ S.String;
 
 /** This value can be set to 'Enabled' to avoid breaking changes on existing customer resources and templates. If set to 'Disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method. */
 export type SearchServicePropertiesPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter";
+  | "SecuredByPerimeter"
+  | (string & {});
 export const SearchServicePropertiesPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -1667,11 +1710,16 @@ export type SearchServiceStatus =
   | "degraded"
   | "disabled"
   | "error"
-  | "stopped";
+  | "stopped"
+  | (string & {});
 export const SearchServiceStatus = /*@__PURE__*/ S.String;
 
 /** The state of the last provisioning operation performed on the search service. Provisioning is an intermediate state that occurs while service capacity is being established. After capacity is set up, provisioningState changes to either 'Succeeded' or 'Failed'. Client applications can poll provisioning status (the recommended polling interval is from 30 seconds to one minute) by using the Get Search Service operation to see when an operation is completed. If you are using the free service, this value tends to come back as 'Succeeded' directly in the call to Create search service. This is because the free service uses capacity that is already set up. */
-export type ProvisioningState = "succeeded" | "provisioning" | "failed";
+export type ProvisioningState =
+  | "succeeded"
+  | "provisioning"
+  | "failed"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** A list of data exfiltration scenarios that are explicitly disallowed for the search service. Currently, the only supported value is 'All' to disable all possible data export scenarios with more fine grained controls planned for the future. */
@@ -1695,7 +1743,8 @@ export type SharedPrivateLinkResourceStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
-  | "Disconnected";
+  | "Disconnected"
+  | (string & {});
 export const SharedPrivateLinkResourceStatus = /*@__PURE__*/ S.String;
 
 /** The provisioning state of the shared private link resource. Valid values are Updating, Deleting, Failed, Succeeded or Incomplete. */
@@ -1704,7 +1753,8 @@ export type SharedPrivateLinkResourceProvisioningState =
   | "Deleting"
   | "Failed"
   | "Succeeded"
-  | "Incomplete";
+  | "Incomplete"
+  | (string & {});
 export const SharedPrivateLinkResourceProvisioningState =
   /*@__PURE__*/ S.String;
 

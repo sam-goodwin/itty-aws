@@ -24,7 +24,8 @@ export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected";
+  | "Rejected"
+  | (string & {});
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -100,7 +101,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -108,7 +110,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -163,7 +166,8 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -597,7 +601,8 @@ export const PrivateLinksCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 /** This determines if traffic is allowed over public network. By default it is disabled. */
 export type PrivateLinkPropertiesInputPublicNetworkAccess =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const PrivateLinkPropertiesInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -667,7 +672,8 @@ export type CommonProvisioningState =
   | "Deleting"
   | "Failed"
   | "Canceled"
-  | "InProgress";
+  | "InProgress"
+  | (string & {});
 export const CommonProvisioningState = /*@__PURE__*/ S.String;
 
 /** The private endpoint connection resource. */
@@ -713,7 +719,10 @@ export const PrivateLinkPropertiesPrivateLinkResourcesList =
   ) as any as S.Schema<PrivateLinkPropertiesPrivateLinkResourcesList>;
 
 /** This determines if traffic is allowed over public network. By default it is disabled. */
-export type PrivateLinkPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
+export type PrivateLinkPropertiesPublicNetworkAccess =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const PrivateLinkPropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** Properties of a private link resource. These properties control the behavior and configuration of private endpoint connectivity to Defender services. */

@@ -15,7 +15,8 @@ export type { AzureOpError, AzureOpContext };
 
 /** The resource type. Note: This should not be set by the user, as the constant value is Microsoft.DataLakeAnalytics/accounts */
 export type AccountsCheckNameAvailabilityRequestType =
-  "Microsoft.DataLakeAnalytics/accounts";
+  | "Microsoft.DataLakeAnalytics/accounts"
+  | (string & {});
 export const AccountsCheckNameAvailabilityRequestType = /*@__PURE__*/ S.String;
 
 export interface AccountsCheckNameAvailabilityRequest {
@@ -158,7 +159,8 @@ export const CreateDataLakeAnalyticsAccountPropertiesStorageAccountsList =
 export type CreateOrUpdateComputePolicyPropertiesObjectType =
   | "User"
   | "Group"
-  | "ServicePrincipal";
+  | "ServicePrincipal"
+  | (string & {});
 export const CreateOrUpdateComputePolicyPropertiesObjectType =
   /*@__PURE__*/ S.String;
 
@@ -255,14 +257,16 @@ export const CreateDataLakeAnalyticsAccountPropertiesFirewallRulesList =
 /** The current state of the IP address firewall for this account. */
 export type CreateDataLakeAnalyticsAccountPropertiesFirewallState =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const CreateDataLakeAnalyticsAccountPropertiesFirewallState =
   /*@__PURE__*/ S.String;
 
 /** The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced. */
 export type CreateDataLakeAnalyticsAccountPropertiesFirewallAllowAzureIps =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const CreateDataLakeAnalyticsAccountPropertiesFirewallAllowAzureIps =
   /*@__PURE__*/ S.String;
 
@@ -276,7 +280,8 @@ export type CreateDataLakeAnalyticsAccountPropertiesNewTier =
   | "Commitment_10000AUHours"
   | "Commitment_50000AUHours"
   | "Commitment_100000AUHours"
-  | "Commitment_500000AUHours";
+  | "Commitment_500000AUHours"
+  | (string & {});
 export const CreateDataLakeAnalyticsAccountPropertiesNewTier =
   /*@__PURE__*/ S.String;
 
@@ -395,12 +400,16 @@ export type DataLakeAnalyticsAccountPropertiesProvisioningState =
   | "Deleting"
   | "Deleted"
   | "Undeleting"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const DataLakeAnalyticsAccountPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** The state of the Data Lake Analytics account. */
-export type DataLakeAnalyticsAccountPropertiesState = "Active" | "Suspended";
+export type DataLakeAnalyticsAccountPropertiesState =
+  | "Active"
+  | "Suspended"
+  | (string & {});
 export const DataLakeAnalyticsAccountPropertiesState = /*@__PURE__*/ S.String;
 
 /** The Data Lake Store account properties. */
@@ -502,7 +511,8 @@ export const DataLakeAnalyticsAccountPropertiesStorageAccountsList =
 export type ComputePolicyPropertiesObjectType =
   | "User"
   | "Group"
-  | "ServicePrincipal";
+  | "ServicePrincipal"
+  | (string & {});
 export const ComputePolicyPropertiesObjectType = /*@__PURE__*/ S.String;
 
 /** The compute policy properties. */
@@ -559,7 +569,8 @@ export const DataLakeAnalyticsAccountPropertiesComputePoliciesList =
 export type NestedResourceProvisioningState =
   | "Succeeded"
   | "Canceled"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const NestedResourceProvisioningState = /*@__PURE__*/ S.String;
 
 /** The HiveMetastore properties. */
@@ -623,7 +634,8 @@ export const DataLakeAnalyticsAccountPropertiesHiveMetastoresList =
 export type VirtualNetworkRuleState =
   | "Active"
   | "NetworkSourceDeleted"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const VirtualNetworkRuleState = /*@__PURE__*/ S.String;
 
 /** The VirtualNetwork Rule properties. */
@@ -719,14 +731,16 @@ export const DataLakeAnalyticsAccountPropertiesFirewallRulesList =
 /** The current state of the IP address firewall for this account. */
 export type DataLakeAnalyticsAccountPropertiesFirewallState =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const DataLakeAnalyticsAccountPropertiesFirewallState =
   /*@__PURE__*/ S.String;
 
 /** The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced. */
 export type DataLakeAnalyticsAccountPropertiesFirewallAllowAzureIps =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const DataLakeAnalyticsAccountPropertiesFirewallAllowAzureIps =
   /*@__PURE__*/ S.String;
 
@@ -740,7 +754,8 @@ export type DataLakeAnalyticsAccountPropertiesNewTier =
   | "Commitment_10000AUHours"
   | "Commitment_50000AUHours"
   | "Commitment_100000AUHours"
-  | "Commitment_500000AUHours";
+  | "Commitment_500000AUHours"
+  | (string & {});
 export const DataLakeAnalyticsAccountPropertiesNewTier = /*@__PURE__*/ S.String;
 
 /** The commitment tier in use for the current month. */
@@ -753,7 +768,8 @@ export type DataLakeAnalyticsAccountPropertiesCurrentTier =
   | "Commitment_10000AUHours"
   | "Commitment_50000AUHours"
   | "Commitment_100000AUHours"
-  | "Commitment_500000AUHours";
+  | "Commitment_500000AUHours"
+  | (string & {});
 export const DataLakeAnalyticsAccountPropertiesCurrentTier =
   /*@__PURE__*/ S.String;
 
@@ -761,7 +777,8 @@ export const DataLakeAnalyticsAccountPropertiesCurrentTier =
 export type DataLakeAnalyticsAccountPropertiesDebugDataAccessLevel =
   | "All"
   | "Customer"
-  | "None";
+  | "None"
+  | (string & {});
 export const DataLakeAnalyticsAccountPropertiesDebugDataAccessLevel =
   /*@__PURE__*/ S.String;
 
@@ -1058,14 +1075,16 @@ export type DataLakeAnalyticsAccountPropertiesBasicProvisioningState =
   | "Deleting"
   | "Deleted"
   | "Undeleting"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const DataLakeAnalyticsAccountPropertiesBasicProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** The state of the Data Lake Analytics account. */
 export type DataLakeAnalyticsAccountPropertiesBasicState =
   | "Active"
-  | "Suspended";
+  | "Suspended"
+  | (string & {});
 export const DataLakeAnalyticsAccountPropertiesBasicState =
   /*@__PURE__*/ S.String;
 
@@ -1287,7 +1306,8 @@ export const UpdateDataLakeAnalyticsAccountPropertiesStorageAccountsList =
 export type UpdateComputePolicyPropertiesObjectType =
   | "User"
   | "Group"
-  | "ServicePrincipal";
+  | "ServicePrincipal"
+  | (string & {});
 export const UpdateComputePolicyPropertiesObjectType = /*@__PURE__*/ S.String;
 
 /** The compute policy properties to use when updating a compute policy. */
@@ -1381,14 +1401,16 @@ export const UpdateDataLakeAnalyticsAccountPropertiesFirewallRulesList =
 /** The current state of the IP address firewall for this account. Disabling the firewall does not remove existing rules, they will just be ignored until the firewall is re-enabled. */
 export type UpdateDataLakeAnalyticsAccountPropertiesFirewallState =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const UpdateDataLakeAnalyticsAccountPropertiesFirewallState =
   /*@__PURE__*/ S.String;
 
 /** The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced. */
 export type UpdateDataLakeAnalyticsAccountPropertiesFirewallAllowAzureIps =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const UpdateDataLakeAnalyticsAccountPropertiesFirewallAllowAzureIps =
   /*@__PURE__*/ S.String;
 
@@ -1402,7 +1424,8 @@ export type UpdateDataLakeAnalyticsAccountPropertiesNewTier =
   | "Commitment_10000AUHours"
   | "Commitment_50000AUHours"
   | "Commitment_100000AUHours"
-  | "Commitment_500000AUHours";
+  | "Commitment_500000AUHours"
+  | (string & {});
 export const UpdateDataLakeAnalyticsAccountPropertiesNewTier =
   /*@__PURE__*/ S.String;
 
@@ -2223,7 +2246,8 @@ export type CapabilityInformationState =
   | "Suspended"
   | "Deleted"
   | "Unregistered"
-  | "Warned";
+  | "Warned"
+  | (string & {});
 export const CapabilityInformationState = /*@__PURE__*/ S.String;
 
 /** Subscription-level properties and limits for Data Lake Analytics. */
@@ -2406,7 +2430,7 @@ export const OperationMetaPropertyInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationMetaPropertyInfo>;
 
 /** The intended executor of the operation. */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** An available operation for Data Lake Analytics. */

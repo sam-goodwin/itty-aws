@@ -13,7 +13,7 @@ import * as Retry from "../retry.ts";
 export type { AzureOpError, AzureOpContext };
 
 /** The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0. */
-export type TimeMinute = 0 | 30;
+export type TimeMinute = 0 | 30 | (number & {});
 export const TimeMinute = /*@__PURE__*/ S.Number;
 
 /** The time of day. */
@@ -38,7 +38,8 @@ export type DayOfWeek =
   | "Thursday"
   | "Friday"
   | "Saturday"
-  | "Sunday";
+  | "Sunday"
+  | (string & {});
 export const DayOfWeek = /*@__PURE__*/ S.String;
 
 /** The set of days of week for the schedule recurrence. A day must not be specified more than once in a recurrence. */
@@ -145,7 +146,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -153,7 +155,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -189,7 +192,8 @@ export type AgentStatus =
   | "Online"
   | "Executing"
   | "RequiresAttention"
-  | "Unregistering";
+  | "Unregistering"
+  | (string & {});
 export const AgentStatus = /*@__PURE__*/ S.String;
 
 export interface AgentPropertiesErrorDetails {
@@ -212,7 +216,8 @@ export type ProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed"
-  | "Deleting";
+  | "Deleting"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 export interface AgentProperties {
@@ -571,7 +576,8 @@ export type ConnectionStatus =
   | "Rejected"
   | "Disconnected"
   | "Pending"
-  | "Stale";
+  | "Stale"
+  | (string & {});
 export const ConnectionStatus = /*@__PURE__*/ S.String;
 
 /** List of job definitions associated with this connection. */
@@ -798,11 +804,12 @@ export type EndpointType =
   | "SmbMount"
   | "AzureMultiCloudConnector"
   | "AzureStorageNfsFileShare"
-  | "S3WithHMAC";
+  | "S3WithHMAC"
+  | (string & {});
 export const EndpointType = /*@__PURE__*/ S.String;
 
 /** The type of the endpoint source/target. */
-export type EndpointKind = "Source" | "Target";
+export type EndpointKind = "Source" | "Target" | (string & {});
 export const EndpointKind = /*@__PURE__*/ S.String;
 
 /** The resource specific properties for the Storage Mover resource. */
@@ -829,7 +836,8 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned";
+  | "SystemAssigned,UserAssigned"
+  | (string & {});
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -1309,11 +1317,12 @@ export const EndpointsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 export type JobDefinitionPropertiesInputJobType =
   | "OnPremToCloud"
   | "CloudToCloud"
-  | "OnPremToCloudAgentLess";
+  | "OnPremToCloudAgentLess"
+  | (string & {});
 export const JobDefinitionPropertiesInputJobType = /*@__PURE__*/ S.String;
 
 /** Strategy to use for copy. */
-export type CopyMode = "Additive" | "Mirror";
+export type CopyMode = "Additive" | "Mirror" | (string & {});
 export const CopyMode = /*@__PURE__*/ S.String;
 
 /** The list of cloud endpoints to migrate. */
@@ -1337,11 +1346,12 @@ export type Frequency =
   | "Daily"
   | "Onetime"
   | "None"
-  | "Hourly";
+  | "Hourly"
+  | (string & {});
 export const Frequency = /*@__PURE__*/ S.String;
 
 /** The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0. */
-export type SchedulerTimeMinute = 0 | 30;
+export type SchedulerTimeMinute = 0 | 30 | (number & {});
 export const SchedulerTimeMinute = /*@__PURE__*/ S.Number;
 
 /** The time of day. */
@@ -1409,7 +1419,8 @@ export const ScheduleInfo = /*@__PURE__*/ S.suspend(() =>
 export type JobDefinitionPropertiesInputDataIntegrityValidation =
   | "SaveVerifyFileMD5"
   | "SaveFileMD5"
-  | "None";
+  | "None"
+  | (string & {});
 export const JobDefinitionPropertiesInputDataIntegrityValidation =
   /*@__PURE__*/ S.String;
 
@@ -1517,7 +1528,8 @@ export const JobDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 export type JobDefinitionPropertiesJobType =
   | "OnPremToCloud"
   | "CloudToCloud"
-  | "OnPremToCloudAgentLess";
+  | "OnPremToCloudAgentLess"
+  | (string & {});
 export const JobDefinitionPropertiesJobType = /*@__PURE__*/ S.String;
 
 /** The current status of the Job Run in a non-terminal state, if exists. */
@@ -1530,7 +1542,8 @@ export type JobRunStatus =
   | "Canceled"
   | "Failed"
   | "Succeeded"
-  | "PausedByBandwidthManagement";
+  | "PausedByBandwidthManagement"
+  | (string & {});
 export const JobRunStatus = /*@__PURE__*/ S.String;
 
 /** The properties of the cloud source endpoint to migrate. */
@@ -1640,7 +1653,8 @@ export const JobDefinitionPropertiesConnectionsList = /*@__PURE__*/ S.Array(
 export type JobDefinitionPropertiesDataIntegrityValidation =
   | "SaveVerifyFileMD5"
   | "SaveFileMD5"
-  | "None";
+  | "None"
+  | (string & {});
 export const JobDefinitionPropertiesDataIntegrityValidation =
   /*@__PURE__*/ S.String;
 
@@ -2040,7 +2054,8 @@ export const JobDefinitionUpdatePropertiesConnectionsList =
 export type DataIntegrityValidation =
   | "SaveVerifyFileMD5"
   | "SaveFileMD5"
-  | "None";
+  | "None"
+  | (string & {});
 export const DataIntegrityValidation = /*@__PURE__*/ S.String;
 
 /** Job definition properties. */
@@ -2170,11 +2185,18 @@ export const JobRunsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobRunsGetRequest>;
 
 /** The status of Agent's scanning of source. */
-export type JobRunScanStatus = "NotStarted" | "Scanning" | "Completed";
+export type JobRunScanStatus =
+  | "NotStarted"
+  | "Scanning"
+  | "Completed"
+  | (string & {});
 export const JobRunScanStatus = /*@__PURE__*/ S.String;
 
 /** Trigger type for the job run. Default is manual. */
-export type JobRunPropertiesTriggerType = "Manual" | "Scheduled";
+export type JobRunPropertiesTriggerType =
+  | "Manual"
+  | "Scheduled"
+  | (string & {});
 export const JobRunPropertiesTriggerType = /*@__PURE__*/ S.String;
 
 /** Error type */
@@ -2455,11 +2477,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */

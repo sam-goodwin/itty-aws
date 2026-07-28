@@ -13,7 +13,7 @@ import * as Retry from "../retry.ts";
 export type { AzureOpError, AzureOpContext };
 
 /** Supported permission types. */
-export type PermissionTypes = "Read" | "Write" | "Manage";
+export type PermissionTypes = "Read" | "Write" | "Manage" | (string & {});
 export const PermissionTypes = /*@__PURE__*/ S.String;
 
 /** The permissions associated with the policy. */
@@ -305,7 +305,8 @@ export type ConnectorType =
   | "AzureBlob"
   | "Salesforce"
   | "ExchangeOnline"
-  | "Outbound";
+  | "Outbound"
+  | (string & {});
 export const ConnectorType = /*@__PURE__*/ S.String;
 
 /** Defines which entity type the file should map to. */
@@ -313,14 +314,16 @@ export type ConnectorMappingInputEntityType =
   | "None"
   | "Profile"
   | "Interaction"
-  | "Relationship";
+  | "Relationship"
+  | (string & {});
 export const ConnectorMappingInputEntityType = /*@__PURE__*/ S.String;
 
 /** The type of error management to use for the mapping. */
 export type ConnectorMappingErrorManagementErrorManagementType =
   | "RejectAndContinue"
   | "StopImport"
-  | "RejectUntilLimit";
+  | "RejectUntilLimit"
+  | (string & {});
 export const ConnectorMappingErrorManagementErrorManagementType =
   /*@__PURE__*/ S.String;
 
@@ -341,7 +344,7 @@ export const ConnectorMappingErrorManagement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectorMappingErrorManagement>;
 
 /** The type mapping format. */
-export type ConnectorMappingFormatFormatType = "TextFormat";
+export type ConnectorMappingFormatFormatType = "TextFormat" | (string & {});
 export const ConnectorMappingFormatFormatType = /*@__PURE__*/ S.String;
 
 /** Connector mapping property format. */
@@ -378,7 +381,8 @@ export type ConnectorMappingAvailabilityFrequency =
   | "Hour"
   | "Day"
   | "Week"
-  | "Month";
+  | "Month"
+  | (string & {});
 export const ConnectorMappingAvailabilityFrequency = /*@__PURE__*/ S.String;
 
 /** Connector mapping property availability. */
@@ -430,7 +434,8 @@ export const ConnectorMappingPropertiesStructureList = /*@__PURE__*/ S.Array(
 export type ConnectorMappingCompleteOperationCompletionOperationType =
   | "DoNothing"
   | "DeleteFile"
-  | "MoveFile";
+  | "MoveFile"
+  | (string & {});
 export const ConnectorMappingCompleteOperationCompletionOperationType =
   /*@__PURE__*/ S.String;
 
@@ -553,7 +558,8 @@ export type ConnectorMappingEntityType =
   | "None"
   | "Profile"
   | "Interaction"
-  | "Relationship";
+  | "Relationship"
+  | (string & {});
 export const ConnectorMappingEntityType = /*@__PURE__*/ S.String;
 
 /** State of connector mapping. */
@@ -564,7 +570,8 @@ export type ConnectorMappingState =
   | "Ready"
   | "Running"
   | "Stopped"
-  | "Expiring";
+  | "Expiring"
+  | (string & {});
 export const ConnectorMappingState = /*@__PURE__*/ S.String;
 
 /** The connector mapping definition. */
@@ -886,7 +893,8 @@ export type ConnectorState =
   | "Ready"
   | "Expiring"
   | "Deleting"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const ConnectorState = /*@__PURE__*/ S.String;
 
 /** Properties of connector. */
@@ -1644,7 +1652,8 @@ export type InteractionTypeDefinitionInputEntityType =
   | "None"
   | "Profile"
   | "Interaction"
-  | "Relationship";
+  | "Relationship"
+  | (string & {});
 export const InteractionTypeDefinitionInputEntityType = /*@__PURE__*/ S.String;
 
 /** Localized names of the enum member. */
@@ -1995,7 +2004,8 @@ export type InteractionTypeDefinitionEntityType =
   | "None"
   | "Profile"
   | "Interaction"
-  | "Relationship";
+  | "Relationship"
+  | (string & {});
 export const InteractionTypeDefinitionEntityType = /*@__PURE__*/ S.String;
 
 /** Describes valid values for an enum property. */
@@ -2009,11 +2019,12 @@ export const PropertyDefinitionEnumValidValuesList = /*@__PURE__*/ S.Array(
 export type DataSourceDataSourceType =
   | "Connector"
   | "LinkInteraction"
-  | "SystemDefault";
+  | "SystemDefault"
+  | (string & {});
 export const DataSourceDataSourceType = /*@__PURE__*/ S.String;
 
 /** The data source status. */
-export type DataSourceStatus = "None" | "Active" | "Deleted";
+export type DataSourceStatus = "None" | "Active" | "Deleted" | (string & {});
 export const DataSourceStatus = /*@__PURE__*/ S.String;
 
 /** Data Source is a way for us to know the source of instances. A single type can have data coming in from multiple places. In activities we use this to determine precedence rules. */
@@ -2136,7 +2147,8 @@ export type ProvisioningState =
   | "Expiring"
   | "Deleting"
   | "HumanIntervention"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The id property names. Properties which uniquely identify an interaction instance. */
@@ -2512,7 +2524,8 @@ export type KpiDefinitionInputEntityType =
   | "None"
   | "Profile"
   | "Interaction"
-  | "Relationship";
+  | "Relationship"
+  | (string & {});
 export const KpiDefinitionInputEntityType = /*@__PURE__*/ S.String;
 
 /** Localized display name for the KPI. */
@@ -2539,7 +2552,8 @@ export type KpiDefinitionInputCalculationWindow =
   | "Hour"
   | "Day"
   | "Week"
-  | "Month";
+  | "Month"
+  | (string & {});
 export const KpiDefinitionInputCalculationWindow = /*@__PURE__*/ S.String;
 
 /** The computation function for the KPI. */
@@ -2551,7 +2565,8 @@ export type KpiDefinitionInputFunction =
   | "Last"
   | "Count"
   | "None"
-  | "CountDistinct";
+  | "CountDistinct"
+  | (string & {});
 export const KpiDefinitionInputFunction = /*@__PURE__*/ S.String;
 
 /** the group by properties for the KPI. */
@@ -2704,7 +2719,8 @@ export type KpiDefinitionEntityType =
   | "None"
   | "Profile"
   | "Interaction"
-  | "Relationship";
+  | "Relationship"
+  | (string & {});
 export const KpiDefinitionEntityType = /*@__PURE__*/ S.String;
 
 /** Localized display name for the KPI. */
@@ -2727,7 +2743,8 @@ export type KpiDefinitionCalculationWindow =
   | "Hour"
   | "Day"
   | "Week"
-  | "Month";
+  | "Month"
+  | (string & {});
 export const KpiDefinitionCalculationWindow = /*@__PURE__*/ S.String;
 
 /** The computation function for the KPI. */
@@ -2739,7 +2756,8 @@ export type KpiDefinitionFunction =
   | "Last"
   | "Count"
   | "None"
-  | "CountDistinct";
+  | "CountDistinct"
+  | (string & {});
 export const KpiDefinitionFunction = /*@__PURE__*/ S.String;
 
 /** the group by properties for the KPI. */
@@ -3088,7 +3106,8 @@ export type LinkDefinitionInputSourceEntityType =
   | "None"
   | "Profile"
   | "Interaction"
-  | "Relationship";
+  | "Relationship"
+  | (string & {});
 export const LinkDefinitionInputSourceEntityType = /*@__PURE__*/ S.String;
 
 /** Type of target entity. */
@@ -3096,7 +3115,8 @@ export type LinkDefinitionInputTargetEntityType =
   | "None"
   | "Profile"
   | "Interaction"
-  | "Relationship";
+  | "Relationship"
+  | (string & {});
 export const LinkDefinitionInputTargetEntityType = /*@__PURE__*/ S.String;
 
 /** Localized display name for the Link. */
@@ -3118,7 +3138,10 @@ export const LinkDefinitionInputDescriptionMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LinkDefinitionInputDescriptionMap>;
 
 /** Link type. */
-export type TypePropertiesMappingLinkType = "UpdateAlways" | "CopyIfNull";
+export type TypePropertiesMappingLinkType =
+  | "UpdateAlways"
+  | "CopyIfNull"
+  | (string & {});
 export const TypePropertiesMappingLinkType = /*@__PURE__*/ S.String;
 
 /** Metadata for a Link's property mapping. */
@@ -3156,7 +3179,10 @@ export const LinkDefinitionInputParticipantPropertyReferencesList =
   ) as any as S.Schema<LinkDefinitionInputParticipantPropertyReferencesList>;
 
 /** Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only. */
-export type LinkDefinitionInputOperationType = "Upsert" | "Delete";
+export type LinkDefinitionInputOperationType =
+  | "Upsert"
+  | "Delete"
+  | (string & {});
 export const LinkDefinitionInputOperationType = /*@__PURE__*/ S.String;
 
 /** The definition of Link. */
@@ -3235,7 +3261,8 @@ export type LinkDefinitionSourceEntityType =
   | "None"
   | "Profile"
   | "Interaction"
-  | "Relationship";
+  | "Relationship"
+  | (string & {});
 export const LinkDefinitionSourceEntityType = /*@__PURE__*/ S.String;
 
 /** Type of target entity. */
@@ -3243,7 +3270,8 @@ export type LinkDefinitionTargetEntityType =
   | "None"
   | "Profile"
   | "Interaction"
-  | "Relationship";
+  | "Relationship"
+  | (string & {});
 export const LinkDefinitionTargetEntityType = /*@__PURE__*/ S.String;
 
 /** Localized display name for the Link. */
@@ -3279,7 +3307,7 @@ export const LinkDefinitionParticipantPropertyReferencesList =
   ) as any as S.Schema<LinkDefinitionParticipantPropertyReferencesList>;
 
 /** Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only. */
-export type LinkDefinitionOperationType = "Upsert" | "Delete";
+export type LinkDefinitionOperationType = "Upsert" | "Delete" | (string & {});
 export const LinkDefinitionOperationType = /*@__PURE__*/ S.String;
 
 /** The definition of Link. */
@@ -4072,7 +4100,8 @@ export type PredictionModelStatusStatus =
   | "Active"
   | "Deleted"
   | "HumanIntervention"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const PredictionModelStatusStatus = /*@__PURE__*/ S.String;
 
 /** The prediction model status. */
@@ -4207,7 +4236,8 @@ export type CanonicalProfileDefinitionPropertiesItemType =
   | "Numeric"
   | "Categorical"
   | "DerivedCategorical"
-  | "DerivedNumeric";
+  | "DerivedNumeric"
+  | (string & {});
 export const CanonicalProfileDefinitionPropertiesItemType =
   /*@__PURE__*/ S.String;
 
@@ -4383,7 +4413,8 @@ export type PredictionsModelStatusRequestStatus =
   | "Active"
   | "Deleted"
   | "HumanIntervention"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const PredictionsModelStatusRequestStatus = /*@__PURE__*/ S.String;
 
 export interface PredictionsModelStatusRequest {
@@ -4484,7 +4515,8 @@ export type ProfileTypeDefinitionInputEntityType =
   | "None"
   | "Profile"
   | "Interaction"
-  | "Relationship";
+  | "Relationship"
+  | (string & {});
 export const ProfileTypeDefinitionInputEntityType = /*@__PURE__*/ S.String;
 
 /** The properties of the Profile. */
@@ -4683,7 +4715,8 @@ export type ProfileTypeDefinitionEntityType =
   | "None"
   | "Profile"
   | "Interaction"
-  | "Relationship";
+  | "Relationship"
+  | (string & {});
 export const ProfileTypeDefinitionEntityType = /*@__PURE__*/ S.String;
 
 /** The properties of the Profile. */
@@ -5009,7 +5042,8 @@ export const RelationshipLinkDefinitionInputDescriptionMap =
 /** Link type. */
 export type RelationshipLinkFieldMappingLinkType =
   | "UpdateAlways"
-  | "CopyIfNull";
+  | "CopyIfNull"
+  | (string & {});
 export const RelationshipLinkFieldMappingLinkType = /*@__PURE__*/ S.String;
 
 /** The fields mapping for Relationships. */
@@ -5382,7 +5416,8 @@ export const RelationshipLinkListResult = /*@__PURE__*/ S.suspend(() =>
 export type RelationshipDefinitionInputCardinality =
   | "OneToOne"
   | "OneToMany"
-  | "ManyToMany";
+  | "ManyToMany"
+  | (string & {});
 export const RelationshipDefinitionInputCardinality = /*@__PURE__*/ S.String;
 
 /** Localized display name for the Relationship. */
@@ -5522,7 +5557,8 @@ export const RelationshipsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 export type RelationshipDefinitionCardinality =
   | "OneToOne"
   | "OneToMany"
-  | "ManyToMany";
+  | "ManyToMany"
+  | (string & {});
 export const RelationshipDefinitionCardinality = /*@__PURE__*/ S.String;
 
 /** Localized display name for the Relationship. */
@@ -5800,7 +5836,8 @@ export type RoleAssignmentInputRole =
   | "ManageAdmin"
   | "ManageReader"
   | "DataAdmin"
-  | "DataReader";
+  | "DataReader"
+  | (string & {});
 export const RoleAssignmentInputRole = /*@__PURE__*/ S.String;
 
 /** Other metadata for the principal. */
@@ -5983,7 +6020,8 @@ export type RoleAssignmentRole =
   | "ManageAdmin"
   | "ManageReader"
   | "DataAdmin"
-  | "DataReader";
+  | "DataReader"
+  | (string & {});
 export const RoleAssignmentRole = /*@__PURE__*/ S.String;
 
 /** The principals being assigned to. */

@@ -14,7 +14,7 @@ import * as Retry from "../retry.ts";
 export type { AzureOpError, AzureOpContext };
 
 /** Addon type. */
-export type AddonType = "IotEdge" | "ArcForKubernetes";
+export type AddonType = "IotEdge" | "ArcForKubernetes" | (string & {});
 export const AddonType = /*@__PURE__*/ S.String;
 
 export interface AddonsCreateOrUpdateRequest {
@@ -56,7 +56,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -64,7 +65,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -310,7 +312,11 @@ export const AlertsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AlertsGetRequest>;
 
 /** Severity of the alert. */
-export type AlertSeverity = "Informational" | "Warning" | "Critical";
+export type AlertSeverity =
+  | "Informational"
+  | "Warning"
+  | "Critical"
+  | (string & {});
 export const AlertSeverity = /*@__PURE__*/ S.String;
 
 /** Error details for the alert. */
@@ -514,11 +520,12 @@ export type SkuName =
   | "EP2_64_Mx1_W"
   | "EP2_128_GPU1_Mx1_W"
   | "EP2_256_GPU2_Mx1"
-  | "EdgeMR_TCP";
+  | "EdgeMR_TCP"
+  | (string & {});
 export const SkuName = /*@__PURE__*/ S.String;
 
 /** The Sku tier. */
-export type SkuTier = "Standard";
+export type SkuTier = "Standard" | (string & {});
 export const SkuTier = /*@__PURE__*/ S.String;
 
 /** Availability of the Sku for the region. */
@@ -594,18 +601,22 @@ export const DataBoxEdgeSkuCostsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DataBoxEdgeSkuCostsList>;
 
 /** Sku can be signed up by customer or not. */
-export type SkuSignupOption = "None" | "Available";
+export type SkuSignupOption = "None" | "Available" | (string & {});
 export const SkuSignupOption = /*@__PURE__*/ S.String;
 
 /** Availability of the Sku as preview/stable. */
-export type SkuVersion = "Stable" | "Preview";
+export type SkuVersion = "Stable" | "Preview" | (string & {});
 export const SkuVersion = /*@__PURE__*/ S.String;
 
 /** Links to the next set of results */
-export type SkuAvailability = "Available" | "Unavailable";
+export type SkuAvailability = "Available" | "Unavailable" | (string & {});
 export const SkuAvailability = /*@__PURE__*/ S.String;
 
-export type ShipmentType = "NotApplicable" | "ShippedToCustomer" | "SelfPickup";
+export type ShipmentType =
+  | "NotApplicable"
+  | "ShippedToCustomer"
+  | "SelfPickup"
+  | (string & {});
 export const ShipmentType = /*@__PURE__*/ S.String;
 
 /** List of Shipment Types supported by this SKU */
@@ -716,7 +727,8 @@ export type DayOfWeek =
   | "Wednesday"
   | "Thursday"
   | "Friday"
-  | "Saturday";
+  | "Saturday"
+  | (string & {});
 export const DayOfWeek = /*@__PURE__*/ S.String;
 
 /** The days of the week when this schedule is applicable. */
@@ -965,7 +977,11 @@ export const BandwidthSchedulesList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BandwidthSchedulesList>;
 
 /** Storage format used for the file represented by the share. */
-export type AzureContainerDataFormat = "BlockBlob" | "PageBlob" | "AzureFile";
+export type AzureContainerDataFormat =
+  | "BlockBlob"
+  | "PageBlob"
+  | "AzureFile"
+  | (string & {});
 export const AzureContainerDataFormat = /*@__PURE__*/ S.String;
 
 /** The container properties. */
@@ -1021,7 +1037,8 @@ export type ContainerStatus =
   | "Offline"
   | "Unknown"
   | "Updating"
-  | "NeedsAttention";
+  | "NeedsAttention"
+  | (string & {});
 export const ContainerStatus = /*@__PURE__*/ S.String;
 
 /** Fields for tracking refresh job on the share or container. */
@@ -1700,7 +1717,10 @@ export const DevicesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DevicesCreateOrUpdateRequestTagsMap>;
 
 /** DataResidencyType enum */
-export type DataResidencyType = "GeoZoneReplication" | "ZoneReplication";
+export type DataResidencyType =
+  | "GeoZoneReplication"
+  | "ZoneReplication"
+  | (string & {});
 export const DataResidencyType = /*@__PURE__*/ S.String;
 
 /** Wraps data-residency related information for edge-resource and this should be used with ARM layer. */
@@ -1742,7 +1762,11 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
 /** Identity type */
-export type MsiIdentityType = "None" | "SystemAssigned" | "UserAssigned";
+export type MsiIdentityType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | (string & {});
 export const MsiIdentityType = /*@__PURE__*/ S.String;
 
 /** Msi identity details of the resource */
@@ -1815,7 +1839,8 @@ export type DataBoxEdgeDevicePropertiesSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const DataBoxEdgeDevicePropertiesSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1824,7 +1849,8 @@ export type DataBoxEdgeDevicePropertiesSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const DataBoxEdgeDevicePropertiesSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1869,11 +1895,12 @@ export type DataBoxEdgeDeviceStatus =
   | "NeedsAttention"
   | "Disconnected"
   | "PartiallyDisconnected"
-  | "Maintenance";
+  | "Maintenance"
+  | (string & {});
 export const DataBoxEdgeDeviceStatus = /*@__PURE__*/ S.String;
 
 /** The type of the Data Box Edge/Gateway device. */
-export type DeviceType = "DataBoxEdgeDevice";
+export type DeviceType = "DataBoxEdgeDevice" | (string & {});
 export const DeviceType = /*@__PURE__*/ S.String;
 
 export type RoleTypes =
@@ -1883,7 +1910,8 @@ export type RoleTypes =
   | "Cognitive"
   | "MEC"
   | "CloudEdgeManagement"
-  | "Kubernetes";
+  | "Kubernetes"
+  | (string & {});
 export const RoleTypes = /*@__PURE__*/ S.String;
 
 /** Type of compute roles configured. */
@@ -1898,7 +1926,8 @@ export const DataBoxEdgeDevicePropertiesConfiguredRoleTypesList =
 export type ResourceMoveStatus =
   | "None"
   | "ResourceMoveInProgress"
-  | "ResourceMoveFailed";
+  | "ResourceMoveFailed"
+  | (string & {});
 export const ResourceMoveStatus = /*@__PURE__*/ S.String;
 
 /** Fields for tracking resource move */
@@ -1922,7 +1951,8 @@ export type SubscriptionState =
   | "Warned"
   | "Suspended"
   | "Deleted"
-  | "Unregistered";
+  | "Unregistered"
+  | (string & {});
 export const SubscriptionState = /*@__PURE__*/ S.String;
 
 export interface SubscriptionRegisteredFeatures {
@@ -2094,7 +2124,8 @@ export type DataBoxEdgeDeviceKind =
   | "AzureDataBoxGateway"
   | "AzureStackEdge"
   | "AzureStackHub"
-  | "AzureModularDataCentre";
+  | "AzureModularDataCentre"
+  | (string & {});
 export const DataBoxEdgeDeviceKind = /*@__PURE__*/ S.String;
 
 export interface DevicesCreateOrUpdateResponse {
@@ -2140,7 +2171,11 @@ export const DevicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DevicesCreateOrUpdateResponse>;
 
 /** The algorithm used to encrypt "Value". */
-export type EncryptionAlgorithm = "None" | "AES256" | "RSAES_PKCS1_v_1_5";
+export type EncryptionAlgorithm =
+  | "None"
+  | "AES256"
+  | "RSAES_PKCS1_v_1_5"
+  | (string & {});
 export const EncryptionAlgorithm = /*@__PURE__*/ S.String;
 
 /** Represent the secrets intended for encryption with asymmetric key pair. */
@@ -2425,7 +2460,8 @@ export type KeyVaultSyncStatus =
   | "KeyVaultNotConfigured"
   | "KeyVaultSyncPending"
   | "KeyVaultSyncing"
-  | "KeyVaultNotSynced";
+  | "KeyVaultNotSynced"
+  | (string & {});
 export const KeyVaultSyncStatus = /*@__PURE__*/ S.String;
 
 /** Holds device secret either as a KeyVault reference or as an encrypted value. */
@@ -2453,7 +2489,7 @@ export const DataBoxEdgeDeviceExtendedInfoPropertiesDeviceSecretsMap =
   ) as any as S.Schema<DataBoxEdgeDeviceExtendedInfoPropertiesDeviceSecretsMap>;
 
 /** Cluster Witness Type */
-export type ClusterWitnessType = "None" | "Cloud" | "FileShare";
+export type ClusterWitnessType = "None" | "Cloud" | "FileShare" | (string & {});
 export const ClusterWitnessType = /*@__PURE__*/ S.String;
 
 /** The properties of the Data Box Edge/Gateway device extended info. */
@@ -2519,7 +2555,8 @@ export type DevicesGetExtendedInformationResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const DevicesGetExtendedInformationResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2528,7 +2565,8 @@ export type DevicesGetExtendedInformationResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const DevicesGetExtendedInformationResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2616,7 +2654,7 @@ export const DevicesGetNetworkSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DevicesGetNetworkSettingsRequest>;
 
 /** The network group. */
-export type NetworkGroup = "None" | "NonRDMA" | "RDMA";
+export type NetworkGroup = "None" | "NonRDMA" | "RDMA" | (string & {});
 export const NetworkGroup = /*@__PURE__*/ S.String;
 
 /** The network adapter position. */
@@ -2636,15 +2674,15 @@ export const NetworkAdapterPosition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkAdapterPosition>;
 
 /** Value indicating whether this adapter is valid. */
-export type NetworkAdapterStatus = "Inactive" | "Active";
+export type NetworkAdapterStatus = "Inactive" | "Active" | (string & {});
 export const NetworkAdapterStatus = /*@__PURE__*/ S.String;
 
 /** Value indicating whether this adapter is RDMA capable. */
-export type NetworkAdapterRDMAStatus = "Incapable" | "Capable";
+export type NetworkAdapterRDMAStatus = "Incapable" | "Capable" | (string & {});
 export const NetworkAdapterRDMAStatus = /*@__PURE__*/ S.String;
 
 /** Value indicating whether this adapter has DHCP enabled. */
-export type NetworkAdapterDHCPStatus = "Disabled" | "Enabled";
+export type NetworkAdapterDHCPStatus = "Disabled" | "Enabled" | (string & {});
 export const NetworkAdapterDHCPStatus = /*@__PURE__*/ S.String;
 
 /** Details related to the IPv4 address configuration. */
@@ -2818,18 +2856,25 @@ export type JobStatus =
   | "Failed"
   | "Canceled"
   | "Paused"
-  | "Scheduled";
+  | "Scheduled"
+  | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
 
 /** Indicates if updates are available and at least one of the updates needs a reboot. */
 export type InstallRebootBehavior =
   | "NeverReboots"
   | "RequiresReboot"
-  | "RequestReboot";
+  | "RequestReboot"
+  | (string & {});
 export const InstallRebootBehavior = /*@__PURE__*/ S.String;
 
 /** The current update operation. */
-export type UpdateOperation = "None" | "Scan" | "Download" | "Install";
+export type UpdateOperation =
+  | "None"
+  | "Scan"
+  | "Download"
+  | "Install"
+  | (string & {});
 export const UpdateOperation = /*@__PURE__*/ S.String;
 
 /** The list of updates available for install. */
@@ -2839,14 +2884,15 @@ export const UpdateSummaryPropertiesUpdateTitlesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateSummaryPropertiesUpdateTitlesList>;
 
 /** Type of the Update */
-export type UpdateType = "Software" | "Kubernetes" | "Firmware";
+export type UpdateType = "Software" | "Kubernetes" | "Firmware" | (string & {});
 export const UpdateType = /*@__PURE__*/ S.String;
 
 /** Impact of Installing an updateType */
 export type InstallationImpact =
   | "None"
   | "DeviceRebooted"
-  | "KubernetesWorkloadsDown";
+  | "KubernetesWorkloadsDown"
+  | (string & {});
 export const InstallationImpact = /*@__PURE__*/ S.String;
 
 /** Status of the update. */
@@ -2855,7 +2901,8 @@ export type UpdateStatus =
   | "DownloadStarted"
   | "DownloadCompleted"
   | "InstallStarted"
-  | "InstallCompleted";
+  | "InstallCompleted"
+  | (string & {});
 export const UpdateStatus = /*@__PURE__*/ S.String;
 
 /** Update Specific attributes */
@@ -3368,13 +3415,14 @@ export type DevicesUpdateExtendedInformationResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const DevicesUpdateExtendedInformationResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type DevicesUpdateExtendedInformationResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
 export const DevicesUpdateExtendedInformationResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -3439,7 +3487,10 @@ export const DevicesUpdateExtendedInformationResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DevicesUpdateExtendedInformationResponse>;
 
 /** The authentication type. */
-export type AuthenticationType = "Invalid" | "AzureActiveDirectory";
+export type AuthenticationType =
+  | "Invalid"
+  | "AzureActiveDirectory"
+  | (string & {});
 export const AuthenticationType = /*@__PURE__*/ S.String;
 
 /** Raw Certificate Data. */
@@ -3548,7 +3599,10 @@ export const DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsReques
   }) as any as S.Schema<DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsRequest>;
 
 /** Proactive diagnostic collection consent flag */
-export type ProactiveDiagnosticsConsent = "Enabled" | "Disabled";
+export type ProactiveDiagnosticsConsent =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const ProactiveDiagnosticsConsent = /*@__PURE__*/ S.String;
 
 /** The properties of proactive log collection settings. */
@@ -3622,11 +3676,17 @@ export type RemoteApplicationType =
   | "Powershell"
   | "WAC"
   | "LocalUI"
-  | "AllApplications";
+  | "AllApplications"
+  | (string & {});
 export const RemoteApplicationType = /*@__PURE__*/ S.String;
 
 /** Access level allowed for this remote application type */
-export type AccessLevel = "None" | "ReadOnly" | "ReadWrite" | "FullAccess";
+export type AccessLevel =
+  | "None"
+  | "ReadOnly"
+  | "ReadWrite"
+  | "FullAccess"
+  | (string & {});
 export const AccessLevel = /*@__PURE__*/ S.String;
 
 /** RemoteApplicationType for which remote support settings is being modified */
@@ -3845,7 +3905,8 @@ export type JobType =
   | "RefreshContainer"
   | "Backup"
   | "Restore"
-  | "TriggerSupportPackage";
+  | "TriggerSupportPackage"
+  | (string & {});
 export const JobType = /*@__PURE__*/ S.String;
 
 /** Current stage of the update operation. */
@@ -3866,7 +3927,8 @@ export type UpdateOperationStage =
   | "Failure"
   | "RescanStarted"
   | "RescanComplete"
-  | "RescanFailed";
+  | "RescanFailed"
+  | (string & {});
 export const UpdateOperationStage = /*@__PURE__*/ S.String;
 
 /** The download phase. */
@@ -3874,7 +3936,8 @@ export type DownloadPhase =
   | "Unknown"
   | "Initializing"
   | "Downloading"
-  | "Verifying";
+  | "Verifying"
+  | (string & {});
 export const DownloadPhase = /*@__PURE__*/ S.String;
 
 /** Details about the download progress of update. */
@@ -4414,7 +4477,8 @@ export type NodeStatus =
   | "Up"
   | "Down"
   | "Rebooting"
-  | "ShuttingDown";
+  | "ShuttingDown"
+  | (string & {});
 export const NodeStatus = /*@__PURE__*/ S.String;
 
 /** This class represents the nodes in a highly available cluster */
@@ -4531,7 +4595,8 @@ export type MetricUnit =
   | "Milliseconds"
   | "Bytes"
   | "BytesPerSecond"
-  | "CountPerSecond";
+  | "CountPerSecond"
+  | (string & {});
 export const MetricUnit = /*@__PURE__*/ S.String;
 
 /** Metric aggregation type. */
@@ -4542,7 +4607,8 @@ export type MetricAggregationType =
   | "Minimum"
   | "Maximum"
   | "Total"
-  | "Count";
+  | "Count"
+  | (string & {});
 export const MetricAggregationType = /*@__PURE__*/ S.String;
 
 /** Metric Dimension v1. */
@@ -4572,7 +4638,7 @@ export const MetricSpecificationV1DimensionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MetricSpecificationV1DimensionsList>;
 
 /** Metric category. */
-export type MetricCategory = "Capacity" | "Transaction";
+export type MetricCategory = "Capacity" | "Transaction" | (string & {});
 export const MetricCategory = /*@__PURE__*/ S.String;
 
 export type TimeGrain =
@@ -4583,7 +4649,8 @@ export type TimeGrain =
   | "PT1H"
   | "PT6H"
   | "PT12H"
-  | "PT1D";
+  | "PT1D"
+  | (string & {});
 export const TimeGrain = /*@__PURE__*/ S.String;
 
 /** Support granularity of metrics. */
@@ -4913,7 +4980,8 @@ export type OrderState =
   | "CollectedAtMicrosoft"
   | "AwaitingPickup"
   | "PickupCompleted"
-  | "AwaitingDrop";
+  | "AwaitingDrop"
+  | (string & {});
 export const OrderState = /*@__PURE__*/ S.String;
 
 /** Tracking courier information. */
@@ -5472,11 +5540,12 @@ export type ShareStatus =
   | "Unknown"
   | "OK"
   | "Updating"
-  | "NeedsAttention";
+  | "NeedsAttention"
+  | (string & {});
 export const ShareStatus = /*@__PURE__*/ S.String;
 
 /** Current monitoring status of the share. */
-export type MonitoringStatus = "Enabled" | "Disabled";
+export type MonitoringStatus = "Enabled" | "Disabled" | (string & {});
 export const MonitoringStatus = /*@__PURE__*/ S.String;
 
 /** Azure container mapping of the endpoint. */
@@ -5499,11 +5568,11 @@ export const AzureContainerInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureContainerInfo>;
 
 /** Access protocol to be used by the share. */
-export type ShareAccessProtocol = "SMB" | "NFS";
+export type ShareAccessProtocol = "SMB" | "NFS" | (string & {});
 export const ShareAccessProtocol = /*@__PURE__*/ S.String;
 
 /** Type of access to be allowed on the share for this user. */
-export type ShareAccessType = "Change" | "Read" | "Custom";
+export type ShareAccessType = "Change" | "Read" | "Custom" | (string & {});
 export const ShareAccessType = /*@__PURE__*/ S.String;
 
 /** The mapping between a particular user and the access type on the SMB share. */
@@ -5530,7 +5599,11 @@ export const SharePropertiesInputUserAccessRightsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SharePropertiesInputUserAccessRightsList>;
 
 /** Type of access to be allowed for the client. */
-export type ClientPermissionType = "NoAccess" | "ReadOnly" | "ReadWrite";
+export type ClientPermissionType =
+  | "NoAccess"
+  | "ReadOnly"
+  | "ReadWrite"
+  | (string & {});
 export const ClientPermissionType = /*@__PURE__*/ S.String;
 
 /** The mapping between a particular client IP and the type of access client has on the NFS share. */
@@ -5557,7 +5630,7 @@ export const SharePropertiesInputClientAccessRightsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SharePropertiesInputClientAccessRightsList>;
 
 /** Data policy of the share. */
-export type DataPolicy = "Cloud" | "Local";
+export type DataPolicy = "Cloud" | "Local" | (string & {});
 export const DataPolicy = /*@__PURE__*/ S.String;
 
 /** The share properties. */
@@ -5643,7 +5716,7 @@ export const SharePropertiesClientAccessRightsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SharePropertiesClientAccessRightsList>;
 
 /** Mounting type. */
-export type MountType = "Volume" | "HostPath";
+export type MountType = "Volume" | "HostPath" | (string & {});
 export const MountType = /*@__PURE__*/ S.String;
 
 /** The share mount point. */
@@ -5931,11 +6004,14 @@ export const SharesRefreshResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SharesRefreshResponse>;
 
 /** Signifies whether SSL needs to be enabled or not. */
-export type SSLStatus = "Enabled" | "Disabled";
+export type SSLStatus = "Enabled" | "Disabled" | (string & {});
 export const SSLStatus = /*@__PURE__*/ S.String;
 
 /** Type of storage accessed on the storage account. */
-export type AccountType = "GeneralPurposeStorage" | "BlobStorage";
+export type AccountType =
+  | "GeneralPurposeStorage"
+  | "BlobStorage"
+  | (string & {});
 export const AccountType = /*@__PURE__*/ S.String;
 
 /** The storage account credential properties. */
@@ -6198,7 +6274,8 @@ export type StorageAccountStatus =
   | "Offline"
   | "Unknown"
   | "Updating"
-  | "NeedsAttention";
+  | "NeedsAttention"
+  | (string & {});
 export const StorageAccountStatus = /*@__PURE__*/ S.String;
 
 /** The storage account properties. */
@@ -6521,7 +6598,10 @@ export const SupportPackagesTriggerSupportPackageResponse =
   }) as any as S.Schema<SupportPackagesTriggerSupportPackageResponse>;
 
 /** Trigger Kind. */
-export type TriggerEventType = "FileEvent" | "PeriodicTimerEvent";
+export type TriggerEventType =
+  | "FileEvent"
+  | "PeriodicTimerEvent"
+  | (string & {});
 export const TriggerEventType = /*@__PURE__*/ S.String;
 
 export interface TriggersCreateOrUpdateRequest {
@@ -6739,7 +6819,7 @@ export const TriggerList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TriggerList" }) as any as S.Schema<TriggerList>;
 
 /** Type of the user. */
-export type UserType = "Share" | "LocalManagement" | "ARM";
+export type UserType = "Share" | "LocalManagement" | "ARM" | (string & {});
 export const UserType = /*@__PURE__*/ S.String;
 
 /** The user properties. */

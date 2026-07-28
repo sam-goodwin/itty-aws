@@ -134,14 +134,16 @@ export type PublicationOnboardingStateEnum =
   | "ONBOARDING_STATE_UNSPECIFIED"
   | "ACTION_REQUIRED"
   | "PENDING_VERIFICATION"
-  | "COMPLETE";
+  | "COMPLETE"
+  | (string & {});
 export const PublicationOnboardingStateEnum = /*@__PURE__*/ S.String;
 
 export type PublicationPaymentOptionEnum =
   | "PAYMENT_OPTION_UNSPECIFIED"
   | "NONE"
   | "SUBSCRIPTIONS"
-  | "CONTRIBUTIONS";
+  | "CONTRIBUTIONS"
+  | (string & {});
 export const PublicationPaymentOptionEnum = /*@__PURE__*/ S.String;
 
 /** Details about the acceptance of the Terms of Service (TOS). */
@@ -185,7 +187,8 @@ export type ContentPolicyStatusStateEnum =
   | "VIOLATION_ACTIVE"
   | "ORGANIZATION_VIOLATION_GRACE_PERIOD"
   | "ORGANIZATION_VIOLATION_ACTIVE"
-  | "ORGANIZATION_VIOLATION_ACTIVE_IMMEDIATE";
+  | "ORGANIZATION_VIOLATION_ACTIVE_IMMEDIATE"
+  | (string & {});
 export const ContentPolicyStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** The content policy status of the publication, indicating any violations. */
@@ -290,10 +293,17 @@ export const CreateOrganizationsPublicationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateOrganizationsPublicationsRequest",
 }) as any as S.Schema<CreateOrganizationsPublicationsRequest>;
 
-export type CtaTypeEnum = "TYPE_UNSPECIFIED" | "NEWSLETTER_SIGNUP";
+export type CtaTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "NEWSLETTER_SIGNUP"
+  | (string & {});
 export const CtaTypeEnum = /*@__PURE__*/ S.String;
 
-export type CtaStateEnum = "STATE_UNSPECIFIED" | "DRAFT" | "ACTIVE";
+export type CtaStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "DRAFT"
+  | "ACTIVE"
+  | (string & {});
 export const CtaStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for newsletter signup calls-to-action (CTAs). */

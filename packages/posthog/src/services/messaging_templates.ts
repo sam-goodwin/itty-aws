@@ -12,7 +12,7 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `liquid` - liquid */
-export type MessageTemplateContentTemplatingEnum = "liquid";
+export type MessageTemplateContentTemplatingEnum = "liquid" | (string & {});
 export const MessageTemplateContentTemplatingEnum = /*@__PURE__*/ S.String;
 
 /** Rows of {id, cells, columns[{id, contents[{id, type, values}], values}], values}. */
@@ -156,10 +156,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -236,7 +237,8 @@ export type EmailTemplateDesignOperationEnum =
   | "remove_content"
   | "move_content"
   | "add_row"
-  | "remove_row";
+  | "remove_row"
+  | (string & {});
 export const EmailTemplateDesignOperationEnum = /*@__PURE__*/ S.String;
 
 export interface DesignOperation {

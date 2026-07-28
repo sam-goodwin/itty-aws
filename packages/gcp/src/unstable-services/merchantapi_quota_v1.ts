@@ -57,7 +57,8 @@ export const GetAccountsLimitsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ProductLimitScopeEnum =
   | "SCOPE_UNSPECIFIED"
   | "ADS_NON_EEA"
-  | "ADS_EEA";
+  | "ADS_EEA"
+  | (string & {});
 export const ProductLimitScopeEnum = /*@__PURE__*/ S.String;
 
 /** The limit for products. */

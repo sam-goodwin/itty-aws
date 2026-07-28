@@ -11,13 +11,17 @@ import * as Retry from "../retry.ts";
 
 export type { PosthogOpError, PosthogOpContext };
 
-export type IngestionWarningsV2ListRequestOrderBy = "count" | "last_seen";
+export type IngestionWarningsV2ListRequestOrderBy =
+  | "count"
+  | "last_seen"
+  | (string & {});
 export const IngestionWarningsV2ListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export type IngestionWarningsV2ListRequestSeverity =
   | "info"
   | "warning"
-  | "error";
+  | "error"
+  | (string & {});
 export const IngestionWarningsV2ListRequestSeverity = /*@__PURE__*/ S.String;
 
 export interface IngestionWarningsV2ListRequest {

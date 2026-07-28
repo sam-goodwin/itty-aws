@@ -209,7 +209,8 @@ export type ContentCreateRequestAllowResourceTypesItem =
   | "ping"
   | "cspviolationreport"
   | "preflight"
-  | "other";
+  | "other"
+  | (string & {});
 export const ContentCreateRequestAllowResourceTypesItem =
   /*@__PURE__*/ S.String;
 
@@ -232,16 +233,25 @@ export const ContentCreateRequestAuthenticate = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContentCreateRequestAuthenticate",
 }) as any as S.Schema<ContentCreateRequestAuthenticate>;
 
-export type ContentCreateRequestCookiesItemPriority = "Low" | "Medium" | "High";
+export type ContentCreateRequestCookiesItemPriority =
+  | "Low"
+  | "Medium"
+  | "High"
+  | (string & {});
 export const ContentCreateRequestCookiesItemPriority = /*@__PURE__*/ S.String;
 
-export type ContentCreateRequestCookiesItemSameSite = "Strict" | "Lax" | "None";
+export type ContentCreateRequestCookiesItemSameSite =
+  | "Strict"
+  | "Lax"
+  | "None"
+  | (string & {});
 export const ContentCreateRequestCookiesItemSameSite = /*@__PURE__*/ S.String;
 
 export type ContentCreateRequestCookiesItemSourceScheme =
   | "Unset"
   | "NonSecure"
-  | "Secure";
+  | "Secure"
+  | (string & {});
 export const ContentCreateRequestCookiesItemSourceScheme =
   /*@__PURE__*/ S.String;
 
@@ -293,7 +303,8 @@ export type ContentCreateRequestGotoOptionsWaitUntilCase0 =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
-  | "networkidle2";
+  | "networkidle2"
+  | (string & {});
 export const ContentCreateRequestGotoOptionsWaitUntilCase0 =
   /*@__PURE__*/ S.String;
 
@@ -301,7 +312,8 @@ export type ContentCreateRequestGotoOptionsWaitUntilCase1Item =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
-  | "networkidle2";
+  | "networkidle2"
+  | (string & {});
 export const ContentCreateRequestGotoOptionsWaitUntilCase1Item =
   /*@__PURE__*/ S.String;
 
@@ -360,7 +372,8 @@ export type ContentCreateRequestRejectResourceTypesItem =
   | "ping"
   | "cspviolationreport"
   | "preflight"
-  | "other";
+  | "other"
+  | (string & {});
 export const ContentCreateRequestRejectResourceTypesItem =
   /*@__PURE__*/ S.String;
 
@@ -575,7 +588,8 @@ export type CrawlCreateRequestAllowResourceTypesItem =
   | "ping"
   | "cspviolationreport"
   | "preflight"
-  | "other";
+  | "other"
+  | (string & {});
 export const CrawlCreateRequestAllowResourceTypesItem = /*@__PURE__*/ S.String;
 
 export type CrawlCreateRequestAllowResourceTypesList =
@@ -597,16 +611,25 @@ export const CrawlCreateRequestAuthenticate = /*@__PURE__*/ S.suspend(() =>
   identifier: "CrawlCreateRequestAuthenticate",
 }) as any as S.Schema<CrawlCreateRequestAuthenticate>;
 
-export type CrawlCreateRequestCookiesItemPriority = "Low" | "Medium" | "High";
+export type CrawlCreateRequestCookiesItemPriority =
+  | "Low"
+  | "Medium"
+  | "High"
+  | (string & {});
 export const CrawlCreateRequestCookiesItemPriority = /*@__PURE__*/ S.String;
 
-export type CrawlCreateRequestCookiesItemSameSite = "Strict" | "Lax" | "None";
+export type CrawlCreateRequestCookiesItemSameSite =
+  | "Strict"
+  | "Lax"
+  | "None"
+  | (string & {});
 export const CrawlCreateRequestCookiesItemSameSite = /*@__PURE__*/ S.String;
 
 export type CrawlCreateRequestCookiesItemSourceScheme =
   | "Unset"
   | "NonSecure"
-  | "Secure";
+  | "Secure"
+  | (string & {});
 export const CrawlCreateRequestCookiesItemSourceScheme = /*@__PURE__*/ S.String;
 
 export interface CrawlCreateRequestCookiesItem {
@@ -656,7 +679,8 @@ export const CrawlCreateRequestCookiesList = /*@__PURE__*/ S.Array(
 export type CrawlCreateRequestCrawlPurposesItem =
   | "search"
   | "ai-input"
-  | "ai-train";
+  | "ai-train"
+  | (string & {});
 export const CrawlCreateRequestCrawlPurposesItem = /*@__PURE__*/ S.String;
 
 export type CrawlCreateRequestCrawlPurposesList =
@@ -665,7 +689,11 @@ export const CrawlCreateRequestCrawlPurposesList = /*@__PURE__*/ S.Array(
   CrawlCreateRequestCrawlPurposesItem,
 ) as any as S.Schema<CrawlCreateRequestCrawlPurposesList>;
 
-export type CrawlCreateRequestFormatsItem = "html" | "markdown" | "json";
+export type CrawlCreateRequestFormatsItem =
+  | "html"
+  | "markdown"
+  | "json"
+  | (string & {});
 export const CrawlCreateRequestFormatsItem = /*@__PURE__*/ S.String;
 
 export type CrawlCreateRequestFormatsList =
@@ -678,7 +706,8 @@ export type CrawlCreateRequestGotoOptionsWaitUntilCase0 =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
-  | "networkidle2";
+  | "networkidle2"
+  | (string & {});
 export const CrawlCreateRequestGotoOptionsWaitUntilCase0 =
   /*@__PURE__*/ S.String;
 
@@ -686,7 +715,8 @@ export type CrawlCreateRequestGotoOptionsWaitUntilCase1Item =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
-  | "networkidle2";
+  | "networkidle2"
+  | (string & {});
 export const CrawlCreateRequestGotoOptionsWaitUntilCase1Item =
   /*@__PURE__*/ S.String;
 
@@ -837,7 +867,8 @@ export type CrawlCreateRequestRejectResourceTypesItem =
   | "ping"
   | "cspviolationreport"
   | "preflight"
-  | "other";
+  | "other"
+  | (string & {});
 export const CrawlCreateRequestRejectResourceTypesItem = /*@__PURE__*/ S.String;
 
 export type CrawlCreateRequestRejectResourceTypesList =
@@ -854,7 +885,11 @@ export const CrawlCreateRequestSetExtraHTTPHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<CrawlCreateRequestSetExtraHTTPHeadersMap>;
 
-export type CrawlCreateRequestSource = "sitemaps" | "links" | "all";
+export type CrawlCreateRequestSource =
+  | "sitemaps"
+  | "links"
+  | "all"
+  | (string & {});
 export const CrawlCreateRequestSource = /*@__PURE__*/ S.String;
 
 export interface CrawlCreateRequestViewport {
@@ -1182,7 +1217,8 @@ export type JsonCreateRequestAllowResourceTypesItem =
   | "ping"
   | "cspviolationreport"
   | "preflight"
-  | "other";
+  | "other"
+  | (string & {});
 export const JsonCreateRequestAllowResourceTypesItem = /*@__PURE__*/ S.String;
 
 export type JsonCreateRequestAllowResourceTypesList =
@@ -1204,16 +1240,25 @@ export const JsonCreateRequestAuthenticate = /*@__PURE__*/ S.suspend(() =>
   identifier: "JsonCreateRequestAuthenticate",
 }) as any as S.Schema<JsonCreateRequestAuthenticate>;
 
-export type JsonCreateRequestCookiesItemPriority = "Low" | "Medium" | "High";
+export type JsonCreateRequestCookiesItemPriority =
+  | "Low"
+  | "Medium"
+  | "High"
+  | (string & {});
 export const JsonCreateRequestCookiesItemPriority = /*@__PURE__*/ S.String;
 
-export type JsonCreateRequestCookiesItemSameSite = "Strict" | "Lax" | "None";
+export type JsonCreateRequestCookiesItemSameSite =
+  | "Strict"
+  | "Lax"
+  | "None"
+  | (string & {});
 export const JsonCreateRequestCookiesItemSameSite = /*@__PURE__*/ S.String;
 
 export type JsonCreateRequestCookiesItemSourceScheme =
   | "Unset"
   | "NonSecure"
-  | "Secure";
+  | "Secure"
+  | (string & {});
 export const JsonCreateRequestCookiesItemSourceScheme = /*@__PURE__*/ S.String;
 
 export interface JsonCreateRequestCookiesItem {
@@ -1285,7 +1330,8 @@ export type JsonCreateRequestGotoOptionsWaitUntilCase0 =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
-  | "networkidle2";
+  | "networkidle2"
+  | (string & {});
 export const JsonCreateRequestGotoOptionsWaitUntilCase0 =
   /*@__PURE__*/ S.String;
 
@@ -1293,7 +1339,8 @@ export type JsonCreateRequestGotoOptionsWaitUntilCase1Item =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
-  | "networkidle2";
+  | "networkidle2"
+  | (string & {});
 export const JsonCreateRequestGotoOptionsWaitUntilCase1Item =
   /*@__PURE__*/ S.String;
 
@@ -1350,7 +1397,8 @@ export type JsonCreateRequestRejectResourceTypesItem =
   | "ping"
   | "cspviolationreport"
   | "preflight"
-  | "other";
+  | "other"
+  | (string & {});
 export const JsonCreateRequestRejectResourceTypesItem = /*@__PURE__*/ S.String;
 
 export type JsonCreateRequestRejectResourceTypesList =
@@ -1587,7 +1635,8 @@ export type LinksCreateRequestAllowResourceTypesItem =
   | "ping"
   | "cspviolationreport"
   | "preflight"
-  | "other";
+  | "other"
+  | (string & {});
 export const LinksCreateRequestAllowResourceTypesItem = /*@__PURE__*/ S.String;
 
 export type LinksCreateRequestAllowResourceTypesList =
@@ -1609,16 +1658,25 @@ export const LinksCreateRequestAuthenticate = /*@__PURE__*/ S.suspend(() =>
   identifier: "LinksCreateRequestAuthenticate",
 }) as any as S.Schema<LinksCreateRequestAuthenticate>;
 
-export type LinksCreateRequestCookiesItemPriority = "Low" | "Medium" | "High";
+export type LinksCreateRequestCookiesItemPriority =
+  | "Low"
+  | "Medium"
+  | "High"
+  | (string & {});
 export const LinksCreateRequestCookiesItemPriority = /*@__PURE__*/ S.String;
 
-export type LinksCreateRequestCookiesItemSameSite = "Strict" | "Lax" | "None";
+export type LinksCreateRequestCookiesItemSameSite =
+  | "Strict"
+  | "Lax"
+  | "None"
+  | (string & {});
 export const LinksCreateRequestCookiesItemSameSite = /*@__PURE__*/ S.String;
 
 export type LinksCreateRequestCookiesItemSourceScheme =
   | "Unset"
   | "NonSecure"
-  | "Secure";
+  | "Secure"
+  | (string & {});
 export const LinksCreateRequestCookiesItemSourceScheme = /*@__PURE__*/ S.String;
 
 export interface LinksCreateRequestCookiesItem {
@@ -1669,7 +1727,8 @@ export type LinksCreateRequestGotoOptionsWaitUntilCase0 =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
-  | "networkidle2";
+  | "networkidle2"
+  | (string & {});
 export const LinksCreateRequestGotoOptionsWaitUntilCase0 =
   /*@__PURE__*/ S.String;
 
@@ -1677,7 +1736,8 @@ export type LinksCreateRequestGotoOptionsWaitUntilCase1Item =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
-  | "networkidle2";
+  | "networkidle2"
+  | (string & {});
 export const LinksCreateRequestGotoOptionsWaitUntilCase1Item =
   /*@__PURE__*/ S.String;
 
@@ -1734,7 +1794,8 @@ export type LinksCreateRequestRejectResourceTypesItem =
   | "ping"
   | "cspviolationreport"
   | "preflight"
-  | "other";
+  | "other"
+  | (string & {});
 export const LinksCreateRequestRejectResourceTypesItem = /*@__PURE__*/ S.String;
 
 export type LinksCreateRequestRejectResourceTypesList =
@@ -1955,7 +2016,8 @@ export type MarkdownCreateRequestAllowResourceTypesItem =
   | "ping"
   | "cspviolationreport"
   | "preflight"
-  | "other";
+  | "other"
+  | (string & {});
 export const MarkdownCreateRequestAllowResourceTypesItem =
   /*@__PURE__*/ S.String;
 
@@ -1982,19 +2044,22 @@ export const MarkdownCreateRequestAuthenticate = /*@__PURE__*/ S.suspend(() =>
 export type MarkdownCreateRequestCookiesItemPriority =
   | "Low"
   | "Medium"
-  | "High";
+  | "High"
+  | (string & {});
 export const MarkdownCreateRequestCookiesItemPriority = /*@__PURE__*/ S.String;
 
 export type MarkdownCreateRequestCookiesItemSameSite =
   | "Strict"
   | "Lax"
-  | "None";
+  | "None"
+  | (string & {});
 export const MarkdownCreateRequestCookiesItemSameSite = /*@__PURE__*/ S.String;
 
 export type MarkdownCreateRequestCookiesItemSourceScheme =
   | "Unset"
   | "NonSecure"
-  | "Secure";
+  | "Secure"
+  | (string & {});
 export const MarkdownCreateRequestCookiesItemSourceScheme =
   /*@__PURE__*/ S.String;
 
@@ -2046,7 +2111,8 @@ export type MarkdownCreateRequestGotoOptionsWaitUntilCase0 =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
-  | "networkidle2";
+  | "networkidle2"
+  | (string & {});
 export const MarkdownCreateRequestGotoOptionsWaitUntilCase0 =
   /*@__PURE__*/ S.String;
 
@@ -2054,7 +2120,8 @@ export type MarkdownCreateRequestGotoOptionsWaitUntilCase1Item =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
-  | "networkidle2";
+  | "networkidle2"
+  | (string & {});
 export const MarkdownCreateRequestGotoOptionsWaitUntilCase1Item =
   /*@__PURE__*/ S.String;
 
@@ -2113,7 +2180,8 @@ export type MarkdownCreateRequestRejectResourceTypesItem =
   | "ping"
   | "cspviolationreport"
   | "preflight"
-  | "other";
+  | "other"
+  | (string & {});
 export const MarkdownCreateRequestRejectResourceTypesItem =
   /*@__PURE__*/ S.String;
 
@@ -2331,7 +2399,8 @@ export type PdfCreateRequestAllowResourceTypesItem =
   | "ping"
   | "cspviolationreport"
   | "preflight"
-  | "other";
+  | "other"
+  | (string & {});
 export const PdfCreateRequestAllowResourceTypesItem = /*@__PURE__*/ S.String;
 
 export type PdfCreateRequestAllowResourceTypesList =
@@ -2353,16 +2422,25 @@ export const PdfCreateRequestAuthenticate = /*@__PURE__*/ S.suspend(() =>
   identifier: "PdfCreateRequestAuthenticate",
 }) as any as S.Schema<PdfCreateRequestAuthenticate>;
 
-export type PdfCreateRequestCookiesItemPriority = "Low" | "Medium" | "High";
+export type PdfCreateRequestCookiesItemPriority =
+  | "Low"
+  | "Medium"
+  | "High"
+  | (string & {});
 export const PdfCreateRequestCookiesItemPriority = /*@__PURE__*/ S.String;
 
-export type PdfCreateRequestCookiesItemSameSite = "Strict" | "Lax" | "None";
+export type PdfCreateRequestCookiesItemSameSite =
+  | "Strict"
+  | "Lax"
+  | "None"
+  | (string & {});
 export const PdfCreateRequestCookiesItemSameSite = /*@__PURE__*/ S.String;
 
 export type PdfCreateRequestCookiesItemSourceScheme =
   | "Unset"
   | "NonSecure"
-  | "Secure";
+  | "Secure"
+  | (string & {});
 export const PdfCreateRequestCookiesItemSourceScheme = /*@__PURE__*/ S.String;
 
 export interface PdfCreateRequestCookiesItem {
@@ -2413,14 +2491,16 @@ export type PdfCreateRequestGotoOptionsWaitUntilCase0 =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
-  | "networkidle2";
+  | "networkidle2"
+  | (string & {});
 export const PdfCreateRequestGotoOptionsWaitUntilCase0 = /*@__PURE__*/ S.String;
 
 export type PdfCreateRequestGotoOptionsWaitUntilCase1Item =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
-  | "networkidle2";
+  | "networkidle2"
+  | (string & {});
 export const PdfCreateRequestGotoOptionsWaitUntilCase1Item =
   /*@__PURE__*/ S.String;
 
@@ -2465,7 +2545,8 @@ export type PdfCreateRequestPdfOptionsFormat =
   | "a3"
   | "a4"
   | "a5"
-  | "a6";
+  | "a6"
+  | (string & {});
 export const PdfCreateRequestPdfOptionsFormat = /*@__PURE__*/ S.String;
 
 export type PdfCreateRequestPdfOptionsHeight = string | number;
@@ -2592,7 +2673,8 @@ export type PdfCreateRequestRejectResourceTypesItem =
   | "ping"
   | "cspviolationreport"
   | "preflight"
-  | "other";
+  | "other"
+  | (string & {});
 export const PdfCreateRequestRejectResourceTypesItem = /*@__PURE__*/ S.String;
 
 export type PdfCreateRequestRejectResourceTypesList =
@@ -2818,7 +2900,8 @@ export type ScrapeCreateRequestAllowResourceTypesItem =
   | "ping"
   | "cspviolationreport"
   | "preflight"
-  | "other";
+  | "other"
+  | (string & {});
 export const ScrapeCreateRequestAllowResourceTypesItem = /*@__PURE__*/ S.String;
 
 export type ScrapeCreateRequestAllowResourceTypesList =
@@ -2840,16 +2923,25 @@ export const ScrapeCreateRequestAuthenticate = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScrapeCreateRequestAuthenticate",
 }) as any as S.Schema<ScrapeCreateRequestAuthenticate>;
 
-export type ScrapeCreateRequestCookiesItemPriority = "Low" | "Medium" | "High";
+export type ScrapeCreateRequestCookiesItemPriority =
+  | "Low"
+  | "Medium"
+  | "High"
+  | (string & {});
 export const ScrapeCreateRequestCookiesItemPriority = /*@__PURE__*/ S.String;
 
-export type ScrapeCreateRequestCookiesItemSameSite = "Strict" | "Lax" | "None";
+export type ScrapeCreateRequestCookiesItemSameSite =
+  | "Strict"
+  | "Lax"
+  | "None"
+  | (string & {});
 export const ScrapeCreateRequestCookiesItemSameSite = /*@__PURE__*/ S.String;
 
 export type ScrapeCreateRequestCookiesItemSourceScheme =
   | "Unset"
   | "NonSecure"
-  | "Secure";
+  | "Secure"
+  | (string & {});
 export const ScrapeCreateRequestCookiesItemSourceScheme =
   /*@__PURE__*/ S.String;
 
@@ -2901,7 +2993,8 @@ export type ScrapeCreateRequestGotoOptionsWaitUntilCase0 =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
-  | "networkidle2";
+  | "networkidle2"
+  | (string & {});
 export const ScrapeCreateRequestGotoOptionsWaitUntilCase0 =
   /*@__PURE__*/ S.String;
 
@@ -2909,7 +3002,8 @@ export type ScrapeCreateRequestGotoOptionsWaitUntilCase1Item =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
-  | "networkidle2";
+  | "networkidle2"
+  | (string & {});
 export const ScrapeCreateRequestGotoOptionsWaitUntilCase1Item =
   /*@__PURE__*/ S.String;
 
@@ -2967,7 +3061,8 @@ export type ScrapeCreateRequestRejectResourceTypesItem =
   | "ping"
   | "cspviolationreport"
   | "preflight"
-  | "other";
+  | "other"
+  | (string & {});
 export const ScrapeCreateRequestRejectResourceTypesItem =
   /*@__PURE__*/ S.String;
 
@@ -3253,7 +3348,8 @@ export type ScreenshotCreateRequestAllowResourceTypesItem =
   | "ping"
   | "cspviolationreport"
   | "preflight"
-  | "other";
+  | "other"
+  | (string & {});
 export const ScreenshotCreateRequestAllowResourceTypesItem =
   /*@__PURE__*/ S.String;
 
@@ -3280,21 +3376,24 @@ export const ScreenshotCreateRequestAuthenticate = /*@__PURE__*/ S.suspend(() =>
 export type ScreenshotCreateRequestCookiesItemPriority =
   | "Low"
   | "Medium"
-  | "High";
+  | "High"
+  | (string & {});
 export const ScreenshotCreateRequestCookiesItemPriority =
   /*@__PURE__*/ S.String;
 
 export type ScreenshotCreateRequestCookiesItemSameSite =
   | "Strict"
   | "Lax"
-  | "None";
+  | "None"
+  | (string & {});
 export const ScreenshotCreateRequestCookiesItemSameSite =
   /*@__PURE__*/ S.String;
 
 export type ScreenshotCreateRequestCookiesItemSourceScheme =
   | "Unset"
   | "NonSecure"
-  | "Secure";
+  | "Secure"
+  | (string & {});
 export const ScreenshotCreateRequestCookiesItemSourceScheme =
   /*@__PURE__*/ S.String;
 
@@ -3346,7 +3445,8 @@ export type ScreenshotCreateRequestGotoOptionsWaitUntilCase0 =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
-  | "networkidle2";
+  | "networkidle2"
+  | (string & {});
 export const ScreenshotCreateRequestGotoOptionsWaitUntilCase0 =
   /*@__PURE__*/ S.String;
 
@@ -3354,7 +3454,8 @@ export type ScreenshotCreateRequestGotoOptionsWaitUntilCase1Item =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
-  | "networkidle2";
+  | "networkidle2"
+  | (string & {});
 export const ScreenshotCreateRequestGotoOptionsWaitUntilCase1Item =
   /*@__PURE__*/ S.String;
 
@@ -3413,7 +3514,8 @@ export type ScreenshotCreateRequestRejectResourceTypesItem =
   | "ping"
   | "cspviolationreport"
   | "preflight"
-  | "other";
+  | "other"
+  | (string & {});
 export const ScreenshotCreateRequestRejectResourceTypesItem =
   /*@__PURE__*/ S.String;
 
@@ -3446,14 +3548,16 @@ export const ScreenshotCreateRequestScreenshotOptionsClip =
 
 export type ScreenshotCreateRequestScreenshotOptionsEncoding =
   | "binary"
-  | "base64";
+  | "base64"
+  | (string & {});
 export const ScreenshotCreateRequestScreenshotOptionsEncoding =
   /*@__PURE__*/ S.String;
 
 export type ScreenshotCreateRequestScreenshotOptionsType =
   | "png"
   | "jpeg"
-  | "webp";
+  | "webp"
+  | (string & {});
 export const ScreenshotCreateRequestScreenshotOptionsType =
   /*@__PURE__*/ S.String;
 
@@ -3705,7 +3809,8 @@ export type SnapshotCreateRequestAllowResourceTypesItem =
   | "ping"
   | "cspviolationreport"
   | "preflight"
-  | "other";
+  | "other"
+  | (string & {});
 export const SnapshotCreateRequestAllowResourceTypesItem =
   /*@__PURE__*/ S.String;
 
@@ -3732,19 +3837,22 @@ export const SnapshotCreateRequestAuthenticate = /*@__PURE__*/ S.suspend(() =>
 export type SnapshotCreateRequestCookiesItemPriority =
   | "Low"
   | "Medium"
-  | "High";
+  | "High"
+  | (string & {});
 export const SnapshotCreateRequestCookiesItemPriority = /*@__PURE__*/ S.String;
 
 export type SnapshotCreateRequestCookiesItemSameSite =
   | "Strict"
   | "Lax"
-  | "None";
+  | "None"
+  | (string & {});
 export const SnapshotCreateRequestCookiesItemSameSite = /*@__PURE__*/ S.String;
 
 export type SnapshotCreateRequestCookiesItemSourceScheme =
   | "Unset"
   | "NonSecure"
-  | "Secure";
+  | "Secure"
+  | (string & {});
 export const SnapshotCreateRequestCookiesItemSourceScheme =
   /*@__PURE__*/ S.String;
 
@@ -3796,7 +3904,8 @@ export type SnapshotCreateRequestFormatsItem =
   | "content"
   | "screenshot"
   | "markdown"
-  | "accessibilityTree";
+  | "accessibilityTree"
+  | (string & {});
 export const SnapshotCreateRequestFormatsItem = /*@__PURE__*/ S.String;
 
 export type SnapshotCreateRequestFormatsList =
@@ -3809,7 +3918,8 @@ export type SnapshotCreateRequestGotoOptionsWaitUntilCase0 =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
-  | "networkidle2";
+  | "networkidle2"
+  | (string & {});
 export const SnapshotCreateRequestGotoOptionsWaitUntilCase0 =
   /*@__PURE__*/ S.String;
 
@@ -3817,7 +3927,8 @@ export type SnapshotCreateRequestGotoOptionsWaitUntilCase1Item =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
-  | "networkidle2";
+  | "networkidle2"
+  | (string & {});
 export const SnapshotCreateRequestGotoOptionsWaitUntilCase1Item =
   /*@__PURE__*/ S.String;
 
@@ -3876,7 +3987,8 @@ export type SnapshotCreateRequestRejectResourceTypesItem =
   | "ping"
   | "cspviolationreport"
   | "preflight"
-  | "other";
+  | "other"
+  | (string & {});
 export const SnapshotCreateRequestRejectResourceTypesItem =
   /*@__PURE__*/ S.String;
 
@@ -3910,7 +4022,8 @@ export const SnapshotCreateRequestScreenshotOptionsClip =
 export type SnapshotCreateRequestScreenshotOptionsType =
   | "png"
   | "jpeg"
-  | "webp";
+  | "webp"
+  | (string & {});
 export const SnapshotCreateRequestScreenshotOptionsType =
   /*@__PURE__*/ S.String;
 
@@ -4079,7 +4192,9 @@ export const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSnapshotRequest",
 }) as any as S.Schema<CreateSnapshotRequest>;
 
-export type SnapshotCreateResponseAccessibilityTreeChecked = "mixed";
+export type SnapshotCreateResponseAccessibilityTreeChecked =
+  | "mixed"
+  | (string & {});
 export const SnapshotCreateResponseAccessibilityTreeChecked =
   /*@__PURE__*/ S.String;
 
@@ -4096,7 +4211,9 @@ export const SnapshotCreateResponseAccessibilityTreeChildrenList =
     S.Unknown,
   ) as any as S.Schema<SnapshotCreateResponseAccessibilityTreeChildrenList>;
 
-export type SnapshotCreateResponseAccessibilityTreePressed = "mixed";
+export type SnapshotCreateResponseAccessibilityTreePressed =
+  | "mixed"
+  | (string & {});
 export const SnapshotCreateResponseAccessibilityTreePressed =
   /*@__PURE__*/ S.String;
 
@@ -4256,7 +4373,10 @@ export const DeleteDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDevtoolBrowserRequest",
 }) as any as S.Schema<DeleteDevtoolBrowserRequest>;
 
-export type DevtoolsBrowserDeleteResponseStatus = "closing" | "closed";
+export type DevtoolsBrowserDeleteResponseStatus =
+  | "closing"
+  | "closed"
+  | (string & {});
 export const DevtoolsBrowserDeleteResponseStatus = /*@__PURE__*/ S.String;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
@@ -4277,7 +4397,8 @@ export type CrawlGetRequestStatus =
   | "completed"
   | "disallowed"
   | "skipped"
-  | "cancelled";
+  | "cancelled"
+  | (string & {});
 export const CrawlGetRequestStatus = /*@__PURE__*/ S.String;
 
 export interface GetCrawlRequest {
@@ -4339,7 +4460,8 @@ export type CrawlGetResponseRecordsItemStatus =
   | "completed"
   | "disallowed"
   | "skipped"
-  | "cancelled";
+  | "cancelled"
+  | (string & {});
 export const CrawlGetResponseRecordsItemStatus = /*@__PURE__*/ S.String;
 
 export type CrawlGetResponseRecordsItemJsonMap = {

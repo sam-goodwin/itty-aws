@@ -41,13 +41,15 @@ export type FindClosestBuildingInsightsRequiredQualityEnum =
   | "HIGH"
   | "MEDIUM"
   | "LOW"
-  | "BASE";
+  | "BASE"
+  | (string & {});
 export const FindClosestBuildingInsightsRequiredQualityEnum =
   /*@__PURE__*/ S.String;
 
 export type FindClosestBuildingInsightsAdditionalInsightsEnum =
   | "ADDITIONAL_INSIGHTS_UNSPECIFIED"
-  | "DETECTED_ARRAYS";
+  | "DETECTED_ARRAYS"
+  | (string & {});
 export const FindClosestBuildingInsightsAdditionalInsightsEnum =
   /*@__PURE__*/ S.String;
 
@@ -60,7 +62,8 @@ export const FindClosestBuildingInsightsAdditionalInsightsEnumList =
 
 export type FindClosestBuildingInsightsExperimentsEnum =
   | "EXPERIMENT_UNSPECIFIED"
-  | "EXPANDED_COVERAGE";
+  | "EXPANDED_COVERAGE"
+  | (string & {});
 export const FindClosestBuildingInsightsExperimentsEnum =
   /*@__PURE__*/ S.String;
 
@@ -131,7 +134,8 @@ export type BuildingInsightsDetectedArraysDetectionStatusEnum =
   | "DETECTION_STATUS_UNSPECIFIED"
   | "DETECTION_STATUS_DATA_UNAVAILABLE"
   | "DETECTION_STATUS_ARRAYS_DETECTED"
-  | "DETECTION_STATUS_NO_ARRAYS_DETECTED";
+  | "DETECTION_STATUS_NO_ARRAYS_DETECTED"
+  | (string & {});
 export const BuildingInsightsDetectedArraysDetectionStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -186,7 +190,8 @@ export type BuildingInsightsImageryQualityEnum =
   | "HIGH"
   | "MEDIUM"
   | "LOW"
-  | "BASE";
+  | "BASE"
+  | (string & {});
 export const BuildingInsightsImageryQualityEnum = /*@__PURE__*/ S.String;
 
 /** Represents an amount of money with its currency type. */
@@ -383,7 +388,8 @@ export const FinancialAnalysisList = /*@__PURE__*/ S.Array(
 export type SolarPanelOrientationEnum =
   | "SOLAR_PANEL_ORIENTATION_UNSPECIFIED"
   | "LANDSCAPE"
-  | "PORTRAIT";
+  | "PORTRAIT"
+  | (string & {});
 export const SolarPanelOrientationEnum = /*@__PURE__*/ S.String;
 
 /** SolarPanel describes the position, orientation, and production of a single solar panel. See the panel_height_meters, panel_width_meters, and panel_capacity_watts fields in SolarPotential for information on the parameters of the panel. */
@@ -621,7 +627,8 @@ export const BuildingInsights = /*@__PURE__*/ S.suspend(() =>
 
 export type GetDataLayersExperimentsEnum =
   | "EXPERIMENT_UNSPECIFIED"
-  | "EXPANDED_COVERAGE";
+  | "EXPANDED_COVERAGE"
+  | (string & {});
 export const GetDataLayersExperimentsEnum = /*@__PURE__*/ S.String;
 
 export type GetDataLayersExperimentsEnumList =
@@ -635,7 +642,8 @@ export type GetDataLayersRequiredQualityEnum =
   | "HIGH"
   | "MEDIUM"
   | "LOW"
-  | "BASE";
+  | "BASE"
+  | (string & {});
 export const GetDataLayersRequiredQualityEnum = /*@__PURE__*/ S.String;
 
 export type GetDataLayersViewEnum =
@@ -644,7 +652,8 @@ export type GetDataLayersViewEnum =
   | "IMAGERY_LAYERS"
   | "IMAGERY_AND_ANNUAL_FLUX_LAYERS"
   | "IMAGERY_AND_ALL_FLUX_LAYERS"
-  | "FULL_LAYERS";
+  | "FULL_LAYERS"
+  | (string & {});
 export const GetDataLayersViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetDataLayersRequest {
@@ -693,7 +702,8 @@ export type DataLayersImageryQualityEnum =
   | "HIGH"
   | "MEDIUM"
   | "LOW"
-  | "BASE";
+  | "BASE"
+  | (string & {});
 export const DataLayersImageryQualityEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;

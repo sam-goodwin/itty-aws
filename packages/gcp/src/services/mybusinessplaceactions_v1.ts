@@ -63,7 +63,8 @@ export class NotFound extends T.applyErrorMatchers(
 export type PlaceActionLinkProviderTypeEnum =
   | "PROVIDER_TYPE_UNSPECIFIED"
   | "MERCHANT"
-  | "AGGREGATOR_3P";
+  | "AGGREGATOR_3P"
+  | (string & {});
 export const PlaceActionLinkProviderTypeEnum = /*@__PURE__*/ S.String;
 
 export type PlaceActionLinkPlaceActionTypeEnum =
@@ -75,7 +76,8 @@ export type PlaceActionLinkPlaceActionTypeEnum =
   | "FOOD_DELIVERY"
   | "FOOD_TAKEOUT"
   | "SHOP_ONLINE"
-  | "SOLOPRENEUR_APPOINTMENT";
+  | "SOLOPRENEUR_APPOINTMENT"
+  | (string & {});
 export const PlaceActionLinkPlaceActionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a place action link and its attributes. */
@@ -262,7 +264,8 @@ export type PlaceActionTypeMetadataPlaceActionTypeEnum =
   | "FOOD_DELIVERY"
   | "FOOD_TAKEOUT"
   | "SHOP_ONLINE"
-  | "SOLOPRENEUR_APPOINTMENT";
+  | "SOLOPRENEUR_APPOINTMENT"
+  | (string & {});
 export const PlaceActionTypeMetadataPlaceActionTypeEnum =
   /*@__PURE__*/ S.String;
 

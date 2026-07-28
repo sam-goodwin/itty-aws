@@ -88,7 +88,11 @@ export const User = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
-export type PermissionRoleEnum = "ROLE_UNSPECIFIED" | "OWNER" | "WRITER";
+export type PermissionRoleEnum =
+  | "ROLE_UNSPECIFIED"
+  | "OWNER"
+  | "WRITER"
+  | (string & {});
 export const PermissionRoleEnum = /*@__PURE__*/ S.String;
 
 /** A single permission on the note. Associates a `member` with a `role`. */

@@ -488,7 +488,10 @@ export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncl
   }) as any as S.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll>;
 
 export type GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResourceTypeEnum =
-  "RESOURCE_TYPE_UNSPECIFIED" | "API_PROXY" | "API_HUB_DEPLOYMENT";
+    | "RESOURCE_TYPE_UNSPECIFIED"
+    | "API_PROXY"
+    | "API_HUB_DEPLOYMENT"
+    | (string & {});
 export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResourceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -622,7 +625,7 @@ export const BatchComputeOrganizationsSecurityAssessmentResultsRequest =
   }) as any as S.Schema<BatchComputeOrganizationsSecurityAssessmentResultsRequest>;
 
 export type GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationWeightEnum =
-  "WEIGHT_UNSPECIFIED" | "MINOR" | "MODERATE" | "MAJOR";
+  "WEIGHT_UNSPECIFIED" | "MINOR" | "MODERATE" | "MAJOR" | (string & {});
 export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationWeightEnum =
   /*@__PURE__*/ S.String;
 
@@ -672,7 +675,7 @@ export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentR
   ) as any as S.Schema<GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationList>;
 
 export type GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationVerdictEnum =
-  "VERDICT_UNSPECIFIED" | "PASS" | "FAIL" | "NOT_APPLICABLE";
+  "VERDICT_UNSPECIFIED" | "PASS" | "FAIL" | "NOT_APPLICABLE" | (string & {});
 export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationVerdictEnum =
   /*@__PURE__*/ S.String;
 
@@ -728,7 +731,12 @@ export const IntegerMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<IntegerMap>;
 
 export type GoogleCloudApigeeV1SecurityAssessmentResultScoringResultSeverityEnum =
-  "SEVERITY_UNSPECIFIED" | "LOW" | "MEDIUM" | "HIGH" | "MINIMAL";
+    | "SEVERITY_UNSPECIFIED"
+    | "LOW"
+    | "MEDIUM"
+    | "HIGH"
+    | "MINIMAL"
+    | (string & {});
 export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResultSeverityEnum =
   /*@__PURE__*/ S.String;
 
@@ -764,7 +772,8 @@ export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResult =
 export type GoogleCloudApigeeV1SecurityAssessmentResultResourceTypeEnum =
   | "RESOURCE_TYPE_UNSPECIFIED"
   | "API_PROXY"
-  | "API_HUB_DEPLOYMENT";
+  | "API_HUB_DEPLOYMENT"
+  | (string & {});
 export const GoogleCloudApigeeV1SecurityAssessmentResultResourceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -773,7 +782,8 @@ export type GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubGatewayType
     | "APIGEE_X"
     | "APIGEE_HYBRID"
     | "APIGEE_EDGE"
-    | "APIGEE_OPDK";
+    | "APIGEE_OPDK"
+    | (string & {});
 export const GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubGatewayTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -782,7 +792,8 @@ export type GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentD
     | "APIGEE_X"
     | "APIGEE_HYBRID"
     | "APIGEE_EDGE"
-    | "APIGEE_OPDK";
+    | "APIGEE_OPDK"
+    | (string & {});
 export const GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetailsGatewayTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -906,14 +917,16 @@ export type GoogleCloudApigeeV1SecurityIncidentRiskLevelEnum =
   | "RISK_LEVEL_UNSPECIFIED"
   | "LOW"
   | "MODERATE"
-  | "SEVERE";
+  | "SEVERE"
+  | (string & {});
 export const GoogleCloudApigeeV1SecurityIncidentRiskLevelEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudApigeeV1SecurityIncidentObservabilityEnum =
   | "OBSERVABILITY_UNSPECIFIED"
   | "ACTIVE"
-  | "ARCHIVED";
+  | "ARCHIVED"
+  | (string & {});
 export const GoogleCloudApigeeV1SecurityIncidentObservabilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -1318,14 +1331,16 @@ export const GoogleCloudApigeeV1Properties = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudApigeeV1OrganizationSubscriptionPlanEnum =
   | "SUBSCRIPTION_PLAN_UNSPECIFIED"
   | "SUBSCRIPTION_2021"
-  | "SUBSCRIPTION_2024";
+  | "SUBSCRIPTION_2024"
+  | (string & {});
 export const GoogleCloudApigeeV1OrganizationSubscriptionPlanEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudApigeeV1OrganizationSubscriptionTypeEnum =
   | "SUBSCRIPTION_TYPE_UNSPECIFIED"
   | "PAID"
-  | "TRIAL";
+  | "TRIAL"
+  | (string & {});
 export const GoogleCloudApigeeV1OrganizationSubscriptionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1333,13 +1348,15 @@ export type GoogleCloudApigeeV1OrganizationTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TYPE_TRIAL"
   | "TYPE_PAID"
-  | "TYPE_INTERNAL";
+  | "TYPE_INTERNAL"
+  | (string & {});
 export const GoogleCloudApigeeV1OrganizationTypeEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudApigeeV1OrganizationRuntimeTypeEnum =
   | "RUNTIME_TYPE_UNSPECIFIED"
   | "CLOUD"
-  | "HYBRID";
+  | "HYBRID"
+  | (string & {});
 export const GoogleCloudApigeeV1OrganizationRuntimeTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1347,7 +1364,8 @@ export type GoogleCloudApigeeV1OrganizationBillingTypeEnum =
   | "BILLING_TYPE_UNSPECIFIED"
   | "SUBSCRIPTION"
   | "EVALUATION"
-  | "PAYG";
+  | "PAYG"
+  | (string & {});
 export const GoogleCloudApigeeV1OrganizationBillingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1356,7 +1374,8 @@ export type GoogleCloudApigeeV1OrganizationStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const GoogleCloudApigeeV1OrganizationStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for the Advanced API Ops add-on. */
@@ -1395,7 +1414,8 @@ export type GoogleCloudApigeeV1AnalyticsConfigStateEnum =
   | "ENABLING"
   | "ENABLED"
   | "DISABLING"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const GoogleCloudApigeeV1AnalyticsConfigStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1729,7 +1749,8 @@ export type GoogleCloudApigeeV1ApimServiceExtensionExtensionSupportedEventsItemE
     | "RESPONSE_HEADERS"
     | "RESPONSE_BODY"
     | "REQUEST_TRAILERS"
-    | "RESPONSE_TRAILERS";
+    | "RESPONSE_TRAILERS"
+    | (string & {});
 export const GoogleCloudApigeeV1ApimServiceExtensionExtensionSupportedEventsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1780,7 +1801,8 @@ export type GoogleCloudApigeeV1ApimServiceExtensionStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const GoogleCloudApigeeV1ApimServiceExtensionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2146,7 +2168,8 @@ export type GoogleCloudApigeeV1ApiProductQuotaCounterScopeEnum =
   | "QUOTA_COUNTER_SCOPE_UNSPECIFIED"
   | "PROXY"
   | "OPERATION"
-  | "PRODUCT";
+  | "PRODUCT"
+  | (string & {});
 export const GoogleCloudApigeeV1ApiProductQuotaCounterScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2349,7 +2372,8 @@ export const GoogleCloudApigeeV1RevenueShareRangeList = /*@__PURE__*/ S.Array(
 export type GoogleCloudApigeeV1RatePlanBillingPeriodEnum =
   | "BILLING_PERIOD_UNSPECIFIED"
   | "WEEKLY"
-  | "MONTHLY";
+  | "MONTHLY"
+  | (string & {});
 export const GoogleCloudApigeeV1RatePlanBillingPeriodEnum =
   /*@__PURE__*/ S.String;
 
@@ -2381,7 +2405,8 @@ export const GoogleCloudApigeeV1RateRangeList = /*@__PURE__*/ S.Array(
 export type GoogleCloudApigeeV1RatePlanStateEnum =
   | "STATE_UNSPECIFIED"
   | "DRAFT"
-  | "PUBLISHED";
+  | "PUBLISHED"
+  | (string & {});
 export const GoogleCloudApigeeV1RatePlanStateEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudApigeeV1RatePlanConsumptionPricingTypeEnum =
@@ -2389,21 +2414,24 @@ export type GoogleCloudApigeeV1RatePlanConsumptionPricingTypeEnum =
   | "FIXED_PER_UNIT"
   | "BANDED"
   | "TIERED"
-  | "STAIRSTEP";
+  | "STAIRSTEP"
+  | (string & {});
 export const GoogleCloudApigeeV1RatePlanConsumptionPricingTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudApigeeV1RatePlanRevenueShareTypeEnum =
   | "REVENUE_SHARE_TYPE_UNSPECIFIED"
   | "FIXED"
-  | "VOLUME_BANDED";
+  | "VOLUME_BANDED"
+  | (string & {});
 export const GoogleCloudApigeeV1RatePlanRevenueShareTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudApigeeV1RatePlanPaymentFundingModelEnum =
   | "PAYMENT_FUNDING_MODEL_UNSPECIFIED"
   | "PREPAID"
-  | "POSTPAID";
+  | "POSTPAID"
+  | (string & {});
 export const GoogleCloudApigeeV1RatePlanPaymentFundingModelEnum =
   /*@__PURE__*/ S.String;
 
@@ -3112,7 +3140,8 @@ export type GoogleCloudApigeeV1DataCollectorTypeEnum =
   | "FLOAT"
   | "STRING"
   | "BOOLEAN"
-  | "DATETIME";
+  | "DATETIME"
+  | (string & {});
 export const GoogleCloudApigeeV1DataCollectorTypeEnum = /*@__PURE__*/ S.String;
 
 /** Data collector configuration. */
@@ -3451,7 +3480,8 @@ export type GoogleCloudApigeeV1DnsZoneStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const GoogleCloudApigeeV1DnsZoneStateEnum = /*@__PURE__*/ S.String;
 
 /** Fields for DNS PEERING zone. */
@@ -3531,7 +3561,8 @@ export type GoogleCloudApigeeV1EndpointAttachmentStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const GoogleCloudApigeeV1EndpointAttachmentStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -3544,7 +3575,8 @@ export type GoogleCloudApigeeV1EndpointAttachmentConnectionStateEnum =
   | "CLOSED"
   | "FROZEN"
   | "NEEDS_ATTENTION"
-  | "ACCEPTED_LIMITED_CAPACITY";
+  | "ACCEPTED_LIMITED_CAPACITY"
+  | (string & {});
 export const GoogleCloudApigeeV1EndpointAttachmentConnectionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -3611,7 +3643,8 @@ export type GoogleCloudApigeeV1EnvironmentGroupStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const GoogleCloudApigeeV1EnvironmentGroupStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -3734,20 +3767,23 @@ export type GoogleCloudApigeeV1EnvironmentTypeEnum =
   | "ENVIRONMENT_TYPE_UNSPECIFIED"
   | "BASE"
   | "INTERMEDIATE"
-  | "COMPREHENSIVE";
+  | "COMPREHENSIVE"
+  | (string & {});
 export const GoogleCloudApigeeV1EnvironmentTypeEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudApigeeV1EnvironmentDeploymentTypeEnum =
   | "DEPLOYMENT_TYPE_UNSPECIFIED"
   | "PROXY"
-  | "ARCHIVE";
+  | "ARCHIVE"
+  | (string & {});
 export const GoogleCloudApigeeV1EnvironmentDeploymentTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudApigeeV1EnvironmentApiProxyTypeEnum =
   | "API_PROXY_TYPE_UNSPECIFIED"
   | "PROGRAMMABLE"
-  | "CONFIGURABLE";
+  | "CONFIGURABLE"
+  | (string & {});
 export const GoogleCloudApigeeV1EnvironmentApiProxyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3790,7 +3826,8 @@ export type GoogleCloudApigeeV1EnvironmentStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const GoogleCloudApigeeV1EnvironmentStateEnum = /*@__PURE__*/ S.String;
 
 export interface GoogleCloudApigeeV1Environment {
@@ -4224,7 +4261,8 @@ export const GoogleCloudApigeeV1Certificate = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudApigeeV1AliasTypeEnum =
   | "ALIAS_TYPE_UNSPECIFIED"
   | "CERT"
-  | "KEY_CERT";
+  | "KEY_CERT"
+  | (string & {});
 export const GoogleCloudApigeeV1AliasTypeEnum = /*@__PURE__*/ S.String;
 
 /** Reference to a certificate or key/certificate pair. */
@@ -4588,7 +4626,8 @@ export const GoogleCloudApigeeV1SecurityActionFlag = /*@__PURE__*/ S.suspend(
 export type GoogleCloudApigeeV1SecurityActionStateEnum =
   | "STATE_UNSPECIFIED"
   | "ENABLED"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const GoogleCloudApigeeV1SecurityActionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -4933,7 +4972,8 @@ export type GoogleCloudApigeeV1TargetServerProtocolEnum =
   | "HTTP2"
   | "GRPC_TARGET"
   | "GRPC"
-  | "EXTERNAL_CALLOUT";
+  | "EXTERNAL_CALLOUT"
+  | (string & {});
 export const GoogleCloudApigeeV1TargetServerProtocolEnum =
   /*@__PURE__*/ S.String;
 
@@ -5052,7 +5092,8 @@ export const CreateOrganizationsEnvironmentsTargetserversRequest =
 export type GoogleCloudApigeeV1TraceSamplingConfigSamplerEnum =
   | "SAMPLER_UNSPECIFIED"
   | "OFF"
-  | "PROBABILITY";
+  | "PROBABILITY"
+  | (string & {});
 export const GoogleCloudApigeeV1TraceSamplingConfigSamplerEnum =
   /*@__PURE__*/ S.String;
 
@@ -5168,7 +5209,8 @@ export type GoogleCloudApigeeV1InstanceStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const GoogleCloudApigeeV1InstanceStateEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudApigeeV1InstancePeeringCidrRangeEnum =
@@ -5179,7 +5221,8 @@ export type GoogleCloudApigeeV1InstancePeeringCidrRangeEnum =
   | "SLASH_19"
   | "SLASH_20"
   | "SLASH_22"
-  | "SLASH_23";
+  | "SLASH_23"
+  | (string & {});
 export const GoogleCloudApigeeV1InstancePeeringCidrRangeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5191,7 +5234,8 @@ export type GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindowDayEnum =
     | "THURSDAY"
     | "FRIDAY"
     | "SATURDAY"
-    | "SUNDAY";
+    | "SUNDAY"
+    | (string & {});
 export const GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindowDayEnum =
   /*@__PURE__*/ S.String;
 
@@ -5246,7 +5290,8 @@ export const GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindowList =
 export type GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceChannelEnum =
   | "MAINTENANCE_CHANNEL_UNSPECIFIED"
   | "WEEK1"
-  | "WEEK2";
+  | "WEEK2"
+  | (string & {});
 export const GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceChannelEnum =
   /*@__PURE__*/ S.String;
 
@@ -5441,7 +5486,8 @@ export const CreateOrganizationsInstancesAttachmentsRequest =
 export type GoogleCloudApigeeV1CanaryEvaluationStateEnum =
   | "STATE_UNSPECIFIED"
   | "RUNNING"
-  | "SUCCEEDED";
+  | "SUCCEEDED"
+  | (string & {});
 export const GoogleCloudApigeeV1CanaryEvaluationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -5469,7 +5515,8 @@ export type GoogleCloudApigeeV1CanaryEvaluationVerdictEnum =
   | "VERDICT_UNSPECIFIED"
   | "NONE"
   | "FAIL"
-  | "PASS";
+  | "PASS"
+  | (string & {});
 export const GoogleCloudApigeeV1CanaryEvaluationVerdictEnum =
   /*@__PURE__*/ S.String;
 
@@ -5537,7 +5584,8 @@ export type GoogleCloudApigeeV1NatAddressStateEnum =
   | "CREATING"
   | "RESERVED"
   | "ACTIVE"
-  | "DELETING";
+  | "DELETING"
+  | (string & {});
 export const GoogleCloudApigeeV1NatAddressStateEnum = /*@__PURE__*/ S.String;
 
 /** Apigee NAT(network address translation) address. A NAT address is a static external IP address used for Internet egress traffic. */
@@ -5768,7 +5816,8 @@ export const CreateOrganizationsReportsRequest = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudApigeeV1SecurityFeedbackFeedbackContextAttributeEnum =
   | "ATTRIBUTE_UNSPECIFIED"
   | "ATTRIBUTE_ENVIRONMENTS"
-  | "ATTRIBUTE_IP_ADDRESS_RANGES";
+  | "ATTRIBUTE_IP_ADDRESS_RANGES"
+  | (string & {});
 export const GoogleCloudApigeeV1SecurityFeedbackFeedbackContextAttributeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5804,13 +5853,15 @@ export type GoogleCloudApigeeV1SecurityFeedbackReasonEnum =
   | "NON_RISK_CLIENT"
   | "NAT"
   | "PENETRATION_TEST"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const GoogleCloudApigeeV1SecurityFeedbackReasonEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudApigeeV1SecurityFeedbackFeedbackTypeEnum =
   | "FEEDBACK_TYPE_UNSPECIFIED"
-  | "EXCLUDED_DETECTION";
+  | "EXCLUDED_DETECTION"
+  | (string & {});
 export const GoogleCloudApigeeV1SecurityFeedbackFeedbackTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5878,7 +5929,7 @@ export const CreateOrganizationsSecurityFeedbackRequest =
   }) as any as S.Schema<CreateOrganizationsSecurityFeedbackRequest>;
 
 export type GoogleCloudApigeeV1SecurityMonitoringConditionRiskAssessmentTypeEnum =
-  "RISK_ASSESSMENT_TYPE_UNSPECIFIED" | "APIGEE" | "API_HUB";
+  "RISK_ASSESSMENT_TYPE_UNSPECIFIED" | "APIGEE" | "API_HUB" | (string & {});
 export const GoogleCloudApigeeV1SecurityMonitoringConditionRiskAssessmentTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6227,12 +6278,13 @@ export const CreateOrganizationsSecurityProfilesEnvironmentsRequest =
 export type GoogleCloudApigeeV1SecurityProfileV2RiskAssessmentTypeEnum =
   | "RISK_ASSESSMENT_TYPE_UNSPECIFIED"
   | "APIGEE"
-  | "API_HUB";
+  | "API_HUB"
+  | (string & {});
 export const GoogleCloudApigeeV1SecurityProfileV2RiskAssessmentTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigWeightEnum =
-  "WEIGHT_UNSPECIFIED" | "MINOR" | "MODERATE" | "MAJOR";
+  "WEIGHT_UNSPECIFIED" | "MINOR" | "MODERATE" | "MAJOR" | (string & {});
 export const GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigWeightEnum =
   /*@__PURE__*/ S.String;
 
@@ -6241,7 +6293,8 @@ export type GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGat
     | "APIGEE_X"
     | "APIGEE_HYBRID"
     | "APIGEE_EDGE"
-    | "APIGEE_OPDK";
+    | "APIGEE_OPDK"
+    | (string & {});
 export const GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArrayGatewayTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -6801,7 +6854,8 @@ export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteOrganizationsRetentionEnum =
   | "DELETION_RETENTION_UNSPECIFIED"
-  | "MINIMUM";
+  | "MINIMUM"
+  | (string & {});
 export const DeleteOrganizationsRetentionEnum = /*@__PURE__*/ S.String;
 
 export interface DeleteOrganizationsRequest {
@@ -6960,7 +7014,8 @@ export const GoogleCloudApigeeV1EntityMetadata = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudApigeeV1ApiProxyApiProxyTypeEnum =
   | "API_PROXY_TYPE_UNSPECIFIED"
   | "PROGRAMMABLE"
-  | "CONFIGURABLE";
+  | "CONFIGURABLE"
+  | (string & {});
 export const GoogleCloudApigeeV1ApiProxyApiProxyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7716,7 +7771,7 @@ export const DeleteOrganizationsSecurityFeedbackRequest =
   }) as any as S.Schema<DeleteOrganizationsSecurityFeedbackRequest>;
 
 export type DeleteOrganizationsSecurityMonitoringConditionsRiskAssessmentTypeEnum =
-  "RISK_ASSESSMENT_TYPE_UNSPECIFIED" | "APIGEE" | "API_HUB";
+  "RISK_ASSESSMENT_TYPE_UNSPECIFIED" | "APIGEE" | "API_HUB" | (string & {});
 export const DeleteOrganizationsSecurityMonitoringConditionsRiskAssessmentTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7787,7 +7842,8 @@ export const DeleteOrganizationsSecurityProfilesEnvironmentsRequest =
 export type DeleteOrganizationsSecurityProfilesV2RiskAssessmentTypeEnum =
   | "RISK_ASSESSMENT_TYPE_UNSPECIFIED"
   | "APIGEE"
-  | "API_HUB";
+  | "API_HUB"
+  | (string & {});
 export const DeleteOrganizationsSecurityProfilesV2RiskAssessmentTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7992,7 +8048,8 @@ export const DeployOrganizationsEnvironmentsApisRevisionsRequest =
 export type GoogleCloudApigeeV1DeploymentProxyDeploymentTypeEnum =
   | "PROXY_DEPLOYMENT_TYPE_UNSPECIFIED"
   | "STANDARD"
-  | "EXTENSIBLE";
+  | "EXTENSIBLE"
+  | (string & {});
 export const GoogleCloudApigeeV1DeploymentProxyDeploymentTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -8099,7 +8156,8 @@ export type GoogleCloudApigeeV1DeploymentStateEnum =
   | "RUNTIME_STATE_UNSPECIFIED"
   | "READY"
   | "PROGRESSING"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const GoogleCloudApigeeV1DeploymentStateEnum = /*@__PURE__*/ S.String;
 
 /** Revisions deployed in the MPs. */
@@ -8907,7 +8965,8 @@ export type GoogleCloudApigeeV1TargetServerConfigProtocolEnum =
   | "HTTP2"
   | "GRPC_TARGET"
   | "GRPC"
-  | "EXTERNAL_CALLOUT";
+  | "EXTERNAL_CALLOUT"
+  | (string & {});
 export const GoogleCloudApigeeV1TargetServerConfigProtocolEnum =
   /*@__PURE__*/ S.String;
 
@@ -9163,7 +9222,8 @@ export const GoogleCloudApigeeV1DeploymentConfigList = /*@__PURE__*/ S.Array(
 export type GoogleCloudApigeeV1DeploymentGroupConfigDeploymentGroupTypeEnum =
   | "DEPLOYMENT_GROUP_TYPE_UNSPECIFIED"
   | "STANDARD"
-  | "EXTENSIBLE";
+  | "EXTENSIBLE"
+  | (string & {});
 export const GoogleCloudApigeeV1DeploymentGroupConfigDeploymentGroupTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -9205,7 +9265,8 @@ export type GoogleCloudApigeeV1DataCollectorConfigTypeEnum =
   | "FLOAT"
   | "STRING"
   | "BOOLEAN"
-  | "DATETIME";
+  | "DATETIME"
+  | (string & {});
 export const GoogleCloudApigeeV1DataCollectorConfigTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -9235,7 +9296,8 @@ export const GoogleCloudApigeeV1DataCollectorConfigList = /*@__PURE__*/ S.Array(
 export type GoogleCloudApigeeV1AliasRevisionConfigTypeEnum =
   | "ALIAS_TYPE_UNSPECIFIED"
   | "CERT"
-  | "KEY_CERT";
+  | "KEY_CERT"
+  | (string & {});
 export const GoogleCloudApigeeV1AliasRevisionConfigTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -9342,7 +9404,8 @@ export const GoogleCloudApigeeV1ReferenceConfigList = /*@__PURE__*/ S.Array(
 export type GoogleCloudApigeeV1RuntimeTraceSamplingConfigSamplerEnum =
   | "SAMPLER_UNSPECIFIED"
   | "OFF"
-  | "PROBABILITY";
+  | "PROBABILITY"
+  | (string & {});
 export const GoogleCloudApigeeV1RuntimeTraceSamplingConfigSamplerEnum =
   /*@__PURE__*/ S.String;
 
@@ -9368,7 +9431,8 @@ export const GoogleCloudApigeeV1RuntimeTraceSamplingConfig =
 export type GoogleCloudApigeeV1RuntimeTraceConfigTraceProtocolEnum =
   | "TRACE_PROTOCOL_UNSPECIFIED"
   | "OPEN_CENSUS"
-  | "OTLP";
+  | "OTLP"
+  | (string & {});
 export const GoogleCloudApigeeV1RuntimeTraceConfigTraceProtocolEnum =
   /*@__PURE__*/ S.String;
 
@@ -9377,21 +9441,24 @@ export type GoogleCloudApigeeV1RuntimeTraceConfigExporterEnum =
   | "JAEGER"
   | "CLOUD_TRACE"
   | "OPEN_TELEMETRY_COLLECTOR"
-  | "OPEN_TELEMETRY_CLOUD_TRACE";
+  | "OPEN_TELEMETRY_CLOUD_TRACE"
+  | (string & {});
 export const GoogleCloudApigeeV1RuntimeTraceConfigExporterEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudApigeeV1RuntimeTraceConfigOverrideTraceProtocolEnum =
   | "TRACE_PROTOCOL_UNSPECIFIED"
   | "OPEN_CENSUS"
-  | "OTLP";
+  | "OTLP"
+  | (string & {});
 export const GoogleCloudApigeeV1RuntimeTraceConfigOverrideTraceProtocolEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudApigeeV1RuntimeTraceConfigOverrideSpanSemanticsEnum =
   | "SPAN_SEMANTICS_UNSPECIFIED"
   | "LEGACY"
-  | "OTEL";
+  | "OTEL"
+  | (string & {});
 export const GoogleCloudApigeeV1RuntimeTraceConfigOverrideSpanSemanticsEnum =
   /*@__PURE__*/ S.String;
 
@@ -9447,7 +9514,8 @@ export const GoogleCloudApigeeV1RuntimeTraceConfigOverrideList =
 export type GoogleCloudApigeeV1RuntimeTraceConfigSpanSemanticsEnum =
   | "SPAN_SEMANTICS_UNSPECIFIED"
   | "LEGACY"
-  | "OTEL";
+  | "OTEL"
+  | (string & {});
 export const GoogleCloudApigeeV1RuntimeTraceConfigSpanSemanticsEnum =
   /*@__PURE__*/ S.String;
 
@@ -9585,7 +9653,8 @@ export const GoogleCloudApigeeV1EnvironmentConfig = /*@__PURE__*/ S.suspend(
 export type GetDeployedIngressConfigOrganizationsViewEnum =
   | "INGRESS_CONFIG_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetDeployedIngressConfigOrganizationsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -9743,7 +9812,8 @@ export const GoogleCloudApigeeV1IngressConfig = /*@__PURE__*/ S.suspend(() =>
 export type GetDeployedIngressConfigOrganizationsEnvgroupsViewEnum =
   | "INGRESS_CONFIG_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetDeployedIngressConfigOrganizationsEnvgroupsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -9863,7 +9933,8 @@ export const GoogleCloudApigeeV1AsyncApiDocumentation = /*@__PURE__*/ S.suspend(
 export type GoogleCloudApigeeV1OASDocumentationFormatEnum =
   | "FORMAT_UNSPECIFIED"
   | "YAML"
-  | "JSON";
+  | "JSON"
+  | (string & {});
 export const GoogleCloudApigeeV1OASDocumentationFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -10018,7 +10089,8 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -10152,7 +10224,8 @@ export const GetMonetizationConfigOrganizationsAppgroupsRequest =
 export type GoogleCloudApigeeV1AppGroupMonetizationConfigBillingTypeEnum =
   | "BILLING_TYPE_UNSPECIFIED"
   | "PREPAID"
-  | "POSTPAID";
+  | "POSTPAID"
+  | (string & {});
 export const GoogleCloudApigeeV1AppGroupMonetizationConfigBillingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -10194,7 +10267,8 @@ export const GetMonetizationConfigOrganizationsDevelopersRequest =
 export type GoogleCloudApigeeV1DeveloperMonetizationConfigBillingTypeEnum =
   | "BILLING_TYPE_UNSPECIFIED"
   | "PREPAID"
-  | "POSTPAID";
+  | "POSTPAID"
+  | (string & {});
 export const GoogleCloudApigeeV1DeveloperMonetizationConfigBillingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -11921,7 +11995,7 @@ export const GetOrganizationsSecurityFeedbackRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetOrganizationsSecurityFeedbackRequest>;
 
 export type GetOrganizationsSecurityMonitoringConditionsRiskAssessmentTypeEnum =
-  "RISK_ASSESSMENT_TYPE_UNSPECIFIED" | "APIGEE" | "API_HUB";
+  "RISK_ASSESSMENT_TYPE_UNSPECIFIED" | "APIGEE" | "API_HUB" | (string & {});
 export const GetOrganizationsSecurityMonitoringConditionsRiskAssessmentTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -11973,7 +12047,8 @@ export const GetOrganizationsSecurityProfilesRequest = /*@__PURE__*/ S.suspend(
 export type GetOrganizationsSecurityProfilesV2RiskAssessmentTypeEnum =
   | "RISK_ASSESSMENT_TYPE_UNSPECIFIED"
   | "APIGEE"
-  | "API_HUB";
+  | "API_HUB"
+  | (string & {});
 export const GetOrganizationsSecurityProfilesV2RiskAssessmentTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -12656,7 +12731,8 @@ export const GetTraceConfigOrganizationsEnvironmentsRequest =
 export type GoogleCloudApigeeV1TraceConfigSpanSemanticsEnum =
   | "SPAN_SEMANTICS_UNSPECIFIED"
   | "LEGACY"
-  | "OTEL";
+  | "OTEL"
+  | (string & {});
 export const GoogleCloudApigeeV1TraceConfigSpanSemanticsEnum =
   /*@__PURE__*/ S.String;
 
@@ -12665,14 +12741,16 @@ export type GoogleCloudApigeeV1TraceConfigExporterEnum =
   | "JAEGER"
   | "CLOUD_TRACE"
   | "OPEN_TELEMETRY_COLLECTOR"
-  | "OPEN_TELEMETRY_CLOUD_TRACE";
+  | "OPEN_TELEMETRY_CLOUD_TRACE"
+  | (string & {});
 export const GoogleCloudApigeeV1TraceConfigExporterEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudApigeeV1TraceConfigTraceProtocolEnum =
   | "TRACE_PROTOCOL_UNSPECIFIED"
   | "OPEN_CENSUS"
-  | "OTLP";
+  | "OTLP"
+  | (string & {});
 export const GoogleCloudApigeeV1TraceConfigTraceProtocolEnum =
   /*@__PURE__*/ S.String;
 
@@ -13002,7 +13080,8 @@ export const ListOrganizationsApiproductsAttributesRequest =
 export type ListOrganizationsApiproductsRateplansStateEnum =
   | "STATE_UNSPECIFIED"
   | "DRAFT"
-  | "PUBLISHED";
+  | "PUBLISHED"
+  | (string & {});
 export const ListOrganizationsApiproductsRateplansStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -14893,7 +14972,7 @@ export const GoogleCloudApigeeV1ListSecurityFeedbackResponse =
   }) as any as S.Schema<GoogleCloudApigeeV1ListSecurityFeedbackResponse>;
 
 export type ListOrganizationsSecurityMonitoringConditionsRiskAssessmentTypeEnum =
-  "RISK_ASSESSMENT_TYPE_UNSPECIFIED" | "APIGEE" | "API_HUB";
+  "RISK_ASSESSMENT_TYPE_UNSPECIFIED" | "APIGEE" | "API_HUB" | (string & {});
 export const ListOrganizationsSecurityMonitoringConditionsRiskAssessmentTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -15009,7 +15088,8 @@ export const GoogleCloudApigeeV1ListSecurityProfilesResponse =
 export type ListOrganizationsSecurityProfilesV2RiskAssessmentTypeEnum =
   | "RISK_ASSESSMENT_TYPE_UNSPECIFIED"
   | "APIGEE"
-  | "API_HUB";
+  | "API_HUB"
+  | (string & {});
 export const ListOrganizationsSecurityProfilesV2RiskAssessmentTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -15914,14 +15994,16 @@ export type GoogleCloudApigeeV1MetricAggregationAggregationEnum =
   | "SUM"
   | "MIN"
   | "MAX"
-  | "COUNT_DISTINCT";
+  | "COUNT_DISTINCT"
+  | (string & {});
 export const GoogleCloudApigeeV1MetricAggregationAggregationEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudApigeeV1MetricAggregationOrderEnum =
   | "ORDER_UNSPECIFIED"
   | "ASCENDING"
-  | "DESCENDING";
+  | "DESCENDING"
+  | (string & {});
 export const GoogleCloudApigeeV1MetricAggregationOrderEnum =
   /*@__PURE__*/ S.String;
 
@@ -16035,7 +16117,8 @@ export const GoogleCloudApigeeV1QueryTabularStatsResponse =
 export type GoogleCloudApigeeV1QueryTimeSeriesStatsRequestTimestampOrderEnum =
   | "ORDER_UNSPECIFIED"
   | "ASCENDING"
-  | "DESCENDING";
+  | "DESCENDING"
+  | (string & {});
 export const GoogleCloudApigeeV1QueryTimeSeriesStatsRequestTimestampOrderEnum =
   /*@__PURE__*/ S.String;
 
@@ -16044,7 +16127,8 @@ export type GoogleCloudApigeeV1QueryTimeSeriesStatsRequestWindowSizeEnum =
   | "MINUTE"
   | "HOUR"
   | "DAY"
-  | "MONTH";
+  | "MONTH"
+  | (string & {});
 export const GoogleCloudApigeeV1QueryTimeSeriesStatsRequestWindowSizeEnum =
   /*@__PURE__*/ S.String;
 
@@ -16197,7 +16281,8 @@ export type GoogleCloudApigeeV1UpdateErrorCodeEnum =
   | "UNIMPLEMENTED"
   | "INTERNAL"
   | "UNAVAILABLE"
-  | "DATA_LOSS";
+  | "DATA_LOSS"
+  | (string & {});
 export const GoogleCloudApigeeV1UpdateErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** Details on why a resource update failed in the runtime. */

@@ -454,7 +454,8 @@ export type InstallationStateStageEnum =
   | "PENDING_CREATE_APP"
   | "PENDING_USER_OAUTH"
   | "PENDING_INSTALL_APP"
-  | "COMPLETE";
+  | "COMPLETE"
+  | (string & {});
 export const InstallationStateStageEnum = /*@__PURE__*/ S.String;
 
 /** Describes stage and necessary actions to be taken by the user to complete the installation. Used for GitHub and GitHub Enterprise based connections. */
@@ -705,7 +706,8 @@ export const DeleteProjectsLocationsConnectionsRepositoriesRequest =
 export type FetchGitRefsProjectsLocationsConnectionsRepositoriesRefTypeEnum =
   | "REF_TYPE_UNSPECIFIED"
   | "TAG"
-  | "BRANCH";
+  | "BRANCH"
+  | (string & {});
 export const FetchGitRefsProjectsLocationsConnectionsRepositoriesRefTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -876,7 +878,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */

@@ -144,7 +144,8 @@ export type ErrorGroupResolutionStatusEnum =
   | "OPEN"
   | "ACKNOWLEDGED"
   | "RESOLVED"
-  | "MUTED";
+  | "MUTED"
+  | (string & {});
 export const ErrorGroupResolutionStatusEnum = /*@__PURE__*/ S.String;
 
 /** Description of a group of similar error events. */
@@ -191,7 +192,8 @@ export type ListProjectsEventsTimeRange_periodEnum =
   | "PERIOD_6_HOURS"
   | "PERIOD_1_DAY"
   | "PERIOD_1_WEEK"
-  | "PERIOD_30_DAYS";
+  | "PERIOD_30_DAYS"
+  | (string & {});
 export const ListProjectsEventsTimeRange_periodEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsEventsRequest {
@@ -387,7 +389,8 @@ export type ListProjectsGroupStatsOrderEnum =
   | "COUNT_DESC"
   | "LAST_SEEN_DESC"
   | "CREATED_DESC"
-  | "AFFECTED_USERS_DESC";
+  | "AFFECTED_USERS_DESC"
+  | (string & {});
 export const ListProjectsGroupStatsOrderEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -398,7 +401,8 @@ export const StringList = /*@__PURE__*/ S.Array(
 export type ListProjectsGroupStatsAlignmentEnum =
   | "ERROR_COUNT_ALIGNMENT_UNSPECIFIED"
   | "ALIGNMENT_EQUAL_ROUNDED"
-  | "ALIGNMENT_EQUAL_AT_END";
+  | "ALIGNMENT_EQUAL_AT_END"
+  | (string & {});
 export const ListProjectsGroupStatsAlignmentEnum = /*@__PURE__*/ S.String;
 
 export type ListProjectsGroupStatsTimeRange_periodEnum =
@@ -407,7 +411,8 @@ export type ListProjectsGroupStatsTimeRange_periodEnum =
   | "PERIOD_6_HOURS"
   | "PERIOD_1_DAY"
   | "PERIOD_1_WEEK"
-  | "PERIOD_30_DAYS";
+  | "PERIOD_30_DAYS"
+  | (string & {});
 export const ListProjectsGroupStatsTimeRange_periodEnum =
   /*@__PURE__*/ S.String;
 
@@ -558,7 +563,8 @@ export type ListProjectsLocationsEventsTimeRange_periodEnum =
   | "PERIOD_6_HOURS"
   | "PERIOD_1_DAY"
   | "PERIOD_1_WEEK"
-  | "PERIOD_30_DAYS";
+  | "PERIOD_30_DAYS"
+  | (string & {});
 export const ListProjectsLocationsEventsTimeRange_periodEnum =
   /*@__PURE__*/ S.String;
 
@@ -608,7 +614,8 @@ export type ListProjectsLocationsGroupStatsOrderEnum =
   | "COUNT_DESC"
   | "LAST_SEEN_DESC"
   | "CREATED_DESC"
-  | "AFFECTED_USERS_DESC";
+  | "AFFECTED_USERS_DESC"
+  | (string & {});
 export const ListProjectsLocationsGroupStatsOrderEnum = /*@__PURE__*/ S.String;
 
 export type ListProjectsLocationsGroupStatsTimeRange_periodEnum =
@@ -617,14 +624,16 @@ export type ListProjectsLocationsGroupStatsTimeRange_periodEnum =
   | "PERIOD_6_HOURS"
   | "PERIOD_1_DAY"
   | "PERIOD_1_WEEK"
-  | "PERIOD_30_DAYS";
+  | "PERIOD_30_DAYS"
+  | (string & {});
 export const ListProjectsLocationsGroupStatsTimeRange_periodEnum =
   /*@__PURE__*/ S.String;
 
 export type ListProjectsLocationsGroupStatsAlignmentEnum =
   | "ERROR_COUNT_ALIGNMENT_UNSPECIFIED"
   | "ALIGNMENT_EQUAL_ROUNDED"
-  | "ALIGNMENT_EQUAL_AT_END";
+  | "ALIGNMENT_EQUAL_AT_END"
+  | (string & {});
 export const ListProjectsLocationsGroupStatsAlignmentEnum =
   /*@__PURE__*/ S.String;
 

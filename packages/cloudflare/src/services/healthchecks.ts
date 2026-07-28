@@ -71,7 +71,8 @@ export type CreateRequestCheckRegionsItem =
   | "IN"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS";
+  | "ALL_REGIONS"
+  | (string & {});
 export const CreateRequestCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type CreateRequestCheckRegionsList =
@@ -98,7 +99,7 @@ export const CreateRequestHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
   CreateRequestHttpConfigHeaderValueList,
 ) as any as S.Schema<CreateRequestHttpConfigHeaderMap>;
 
-export type CreateRequestHttpConfigMethod = "GET" | "HEAD";
+export type CreateRequestHttpConfigMethod = "GET" | "HEAD" | (string & {});
 export const CreateRequestHttpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface CreateRequestHttpConfig {
@@ -136,7 +137,9 @@ export const CreateRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestHttpConfig",
 }) as any as S.Schema<CreateRequestHttpConfig>;
 
-export type CreateRequestTcpConfigMethod = "connection_established";
+export type CreateRequestTcpConfigMethod =
+  | "connection_established"
+  | (string & {});
 export const CreateRequestTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface CreateRequestTcpConfig {
@@ -231,7 +234,8 @@ export type CreateResponseCheckRegionsItem =
   | "IN"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS";
+  | "ALL_REGIONS"
+  | (string & {});
 export const CreateResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type CreateResponseCheckRegionsList =
@@ -258,7 +262,7 @@ export const CreateResponseHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
   CreateResponseHttpConfigHeaderValueList,
 ) as any as S.Schema<CreateResponseHttpConfigHeaderMap>;
 
-export type CreateResponseHttpConfigMethod = "GET" | "HEAD";
+export type CreateResponseHttpConfigMethod = "GET" | "HEAD" | (string & {});
 export const CreateResponseHttpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface CreateResponseHttpConfig {
@@ -300,10 +304,13 @@ export type CreateResponseStatus =
   | "unknown"
   | "healthy"
   | "unhealthy"
-  | "suspended";
+  | "suspended"
+  | (string & {});
 export const CreateResponseStatus = /*@__PURE__*/ S.String;
 
-export type CreateResponseTcpConfigMethod = "connection_established";
+export type CreateResponseTcpConfigMethod =
+  | "connection_established"
+  | (string & {});
 export const CreateResponseTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface CreateResponseTcpConfig {
@@ -403,7 +410,8 @@ export type PreviewsCreateRequestCheckRegionsItem =
   | "IN"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS";
+  | "ALL_REGIONS"
+  | (string & {});
 export const PreviewsCreateRequestCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PreviewsCreateRequestCheckRegionsList =
@@ -434,7 +442,10 @@ export const PreviewsCreateRequestHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
   PreviewsCreateRequestHttpConfigHeaderValueList,
 ) as any as S.Schema<PreviewsCreateRequestHttpConfigHeaderMap>;
 
-export type PreviewsCreateRequestHttpConfigMethod = "GET" | "HEAD";
+export type PreviewsCreateRequestHttpConfigMethod =
+  | "GET"
+  | "HEAD"
+  | (string & {});
 export const PreviewsCreateRequestHttpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface PreviewsCreateRequestHttpConfig {
@@ -474,7 +485,9 @@ export const PreviewsCreateRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "PreviewsCreateRequestHttpConfig",
 }) as any as S.Schema<PreviewsCreateRequestHttpConfig>;
 
-export type PreviewsCreateRequestTcpConfigMethod = "connection_established";
+export type PreviewsCreateRequestTcpConfigMethod =
+  | "connection_established"
+  | (string & {});
 export const PreviewsCreateRequestTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface PreviewsCreateRequestTcpConfig {
@@ -573,7 +586,8 @@ export type PreviewsCreateResponseCheckRegionsItem =
   | "IN"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS";
+  | "ALL_REGIONS"
+  | (string & {});
 export const PreviewsCreateResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PreviewsCreateResponseCheckRegionsList =
@@ -604,7 +618,10 @@ export const PreviewsCreateResponseHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
   PreviewsCreateResponseHttpConfigHeaderValueList,
 ) as any as S.Schema<PreviewsCreateResponseHttpConfigHeaderMap>;
 
-export type PreviewsCreateResponseHttpConfigMethod = "GET" | "HEAD";
+export type PreviewsCreateResponseHttpConfigMethod =
+  | "GET"
+  | "HEAD"
+  | (string & {});
 export const PreviewsCreateResponseHttpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface PreviewsCreateResponseHttpConfig {
@@ -648,10 +665,13 @@ export type PreviewsCreateResponseStatus =
   | "unknown"
   | "healthy"
   | "unhealthy"
-  | "suspended";
+  | "suspended"
+  | (string & {});
 export const PreviewsCreateResponseStatus = /*@__PURE__*/ S.String;
 
-export type PreviewsCreateResponseTcpConfigMethod = "connection_established";
+export type PreviewsCreateResponseTcpConfigMethod =
+  | "connection_established"
+  | (string & {});
 export const PreviewsCreateResponseTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface PreviewsCreateResponseTcpConfig {
@@ -848,7 +868,8 @@ export type GetResponseCheckRegionsItem =
   | "IN"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS";
+  | "ALL_REGIONS"
+  | (string & {});
 export const GetResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type GetResponseCheckRegionsList =
@@ -875,7 +896,7 @@ export const GetResponseHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
   GetResponseHttpConfigHeaderValueList,
 ) as any as S.Schema<GetResponseHttpConfigHeaderMap>;
 
-export type GetResponseHttpConfigMethod = "GET" | "HEAD";
+export type GetResponseHttpConfigMethod = "GET" | "HEAD" | (string & {});
 export const GetResponseHttpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface GetResponseHttpConfig {
@@ -917,10 +938,13 @@ export type GetResponseStatus =
   | "unknown"
   | "healthy"
   | "unhealthy"
-  | "suspended";
+  | "suspended"
+  | (string & {});
 export const GetResponseStatus = /*@__PURE__*/ S.String;
 
-export type GetResponseTcpConfigMethod = "connection_established";
+export type GetResponseTcpConfigMethod =
+  | "connection_established"
+  | (string & {});
 export const GetResponseTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface GetResponseTcpConfig {
@@ -1041,7 +1065,8 @@ export type PreviewsGetResponseCheckRegionsItem =
   | "IN"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS";
+  | "ALL_REGIONS"
+  | (string & {});
 export const PreviewsGetResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PreviewsGetResponseCheckRegionsList =
@@ -1072,7 +1097,10 @@ export const PreviewsGetResponseHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
   PreviewsGetResponseHttpConfigHeaderValueList,
 ) as any as S.Schema<PreviewsGetResponseHttpConfigHeaderMap>;
 
-export type PreviewsGetResponseHttpConfigMethod = "GET" | "HEAD";
+export type PreviewsGetResponseHttpConfigMethod =
+  | "GET"
+  | "HEAD"
+  | (string & {});
 export const PreviewsGetResponseHttpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface PreviewsGetResponseHttpConfig {
@@ -1116,10 +1144,13 @@ export type PreviewsGetResponseStatus =
   | "unknown"
   | "healthy"
   | "unhealthy"
-  | "suspended";
+  | "suspended"
+  | (string & {});
 export const PreviewsGetResponseStatus = /*@__PURE__*/ S.String;
 
-export type PreviewsGetResponseTcpConfigMethod = "connection_established";
+export type PreviewsGetResponseTcpConfigMethod =
+  | "connection_established"
+  | (string & {});
 export const PreviewsGetResponseTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface PreviewsGetResponseTcpConfig {
@@ -1247,7 +1278,8 @@ export type ListResultItemCheckRegionsItem =
   | "IN"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS";
+  | "ALL_REGIONS"
+  | (string & {});
 export const ListResultItemCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type ListResultItemCheckRegionsList =
@@ -1274,7 +1306,7 @@ export const ListResultItemHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
   ListResultItemHttpConfigHeaderValueList,
 ) as any as S.Schema<ListResultItemHttpConfigHeaderMap>;
 
-export type ListResultItemHttpConfigMethod = "GET" | "HEAD";
+export type ListResultItemHttpConfigMethod = "GET" | "HEAD" | (string & {});
 export const ListResultItemHttpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface ListResultItemHttpConfig {
@@ -1316,10 +1348,13 @@ export type ListResultItemStatus =
   | "unknown"
   | "healthy"
   | "unhealthy"
-  | "suspended";
+  | "suspended"
+  | (string & {});
 export const ListResultItemStatus = /*@__PURE__*/ S.String;
 
-export type ListResultItemTcpConfigMethod = "connection_established";
+export type ListResultItemTcpConfigMethod =
+  | "connection_established"
+  | (string & {});
 export const ListResultItemTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface ListResultItemTcpConfig {
@@ -1436,7 +1471,8 @@ export type EditRequestCheckRegionsItem =
   | "IN"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS";
+  | "ALL_REGIONS"
+  | (string & {});
 export const EditRequestCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type EditRequestCheckRegionsList =
@@ -1463,7 +1499,7 @@ export const EditRequestHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
   EditRequestHttpConfigHeaderValueList,
 ) as any as S.Schema<EditRequestHttpConfigHeaderMap>;
 
-export type EditRequestHttpConfigMethod = "GET" | "HEAD";
+export type EditRequestHttpConfigMethod = "GET" | "HEAD" | (string & {});
 export const EditRequestHttpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface EditRequestHttpConfig {
@@ -1501,7 +1537,9 @@ export const EditRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestHttpConfig",
 }) as any as S.Schema<EditRequestHttpConfig>;
 
-export type EditRequestTcpConfigMethod = "connection_established";
+export type EditRequestTcpConfigMethod =
+  | "connection_established"
+  | (string & {});
 export const EditRequestTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface EditRequestTcpConfig {
@@ -1599,7 +1637,8 @@ export type EditResponseCheckRegionsItem =
   | "IN"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS";
+  | "ALL_REGIONS"
+  | (string & {});
 export const EditResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type EditResponseCheckRegionsList =
@@ -1626,7 +1665,7 @@ export const EditResponseHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
   EditResponseHttpConfigHeaderValueList,
 ) as any as S.Schema<EditResponseHttpConfigHeaderMap>;
 
-export type EditResponseHttpConfigMethod = "GET" | "HEAD";
+export type EditResponseHttpConfigMethod = "GET" | "HEAD" | (string & {});
 export const EditResponseHttpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface EditResponseHttpConfig {
@@ -1668,10 +1707,13 @@ export type EditResponseStatus =
   | "unknown"
   | "healthy"
   | "unhealthy"
-  | "suspended";
+  | "suspended"
+  | (string & {});
 export const EditResponseStatus = /*@__PURE__*/ S.String;
 
-export type EditResponseTcpConfigMethod = "connection_established";
+export type EditResponseTcpConfigMethod =
+  | "connection_established"
+  | (string & {});
 export const EditResponseTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface EditResponseTcpConfig {
@@ -1769,7 +1811,8 @@ export type UpdateRequestCheckRegionsItem =
   | "IN"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS";
+  | "ALL_REGIONS"
+  | (string & {});
 export const UpdateRequestCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type UpdateRequestCheckRegionsList =
@@ -1796,7 +1839,7 @@ export const UpdateRequestHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
   UpdateRequestHttpConfigHeaderValueList,
 ) as any as S.Schema<UpdateRequestHttpConfigHeaderMap>;
 
-export type UpdateRequestHttpConfigMethod = "GET" | "HEAD";
+export type UpdateRequestHttpConfigMethod = "GET" | "HEAD" | (string & {});
 export const UpdateRequestHttpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestHttpConfig {
@@ -1834,7 +1877,9 @@ export const UpdateRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestHttpConfig",
 }) as any as S.Schema<UpdateRequestHttpConfig>;
 
-export type UpdateRequestTcpConfigMethod = "connection_established";
+export type UpdateRequestTcpConfigMethod =
+  | "connection_established"
+  | (string & {});
 export const UpdateRequestTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestTcpConfig {
@@ -1932,7 +1977,8 @@ export type UpdateResponseCheckRegionsItem =
   | "IN"
   | "SEAS"
   | "NEAS"
-  | "ALL_REGIONS";
+  | "ALL_REGIONS"
+  | (string & {});
 export const UpdateResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type UpdateResponseCheckRegionsList =
@@ -1959,7 +2005,7 @@ export const UpdateResponseHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
   UpdateResponseHttpConfigHeaderValueList,
 ) as any as S.Schema<UpdateResponseHttpConfigHeaderMap>;
 
-export type UpdateResponseHttpConfigMethod = "GET" | "HEAD";
+export type UpdateResponseHttpConfigMethod = "GET" | "HEAD" | (string & {});
 export const UpdateResponseHttpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseHttpConfig {
@@ -2001,10 +2047,13 @@ export type UpdateResponseStatus =
   | "unknown"
   | "healthy"
   | "unhealthy"
-  | "suspended";
+  | "suspended"
+  | (string & {});
 export const UpdateResponseStatus = /*@__PURE__*/ S.String;
 
-export type UpdateResponseTcpConfigMethod = "connection_established";
+export type UpdateResponseTcpConfigMethod =
+  | "connection_established"
+  | (string & {});
 export const UpdateResponseTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseTcpConfig {

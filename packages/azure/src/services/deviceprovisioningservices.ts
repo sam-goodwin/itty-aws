@@ -96,7 +96,8 @@ export type CertificateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const CertificateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -105,7 +106,8 @@ export type CertificateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const CertificateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -169,7 +171,8 @@ export const CertificateResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type DpsCertificateDeleteRequestCertificatePurpose =
   | "clientAuthentication"
-  | "serverAuthentication";
+  | "serverAuthentication"
+  | (string & {});
 export const DpsCertificateDeleteRequestCertificatePurpose =
   /*@__PURE__*/ S.String;
 
@@ -248,7 +251,8 @@ export const DpsCertificateDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type DpsCertificateGenerateVerificationCodeRequestCertificatePurpose =
   | "clientAuthentication"
-  | "serverAuthentication";
+  | "serverAuthentication"
+  | (string & {});
 export const DpsCertificateGenerateVerificationCodeRequestCertificatePurpose =
   /*@__PURE__*/ S.String;
 
@@ -453,7 +457,8 @@ export const CertificateListDescription = /*@__PURE__*/ S.suspend(() =>
 
 export type DpsCertificateVerifyCertificateRequestCertificatePurpose =
   | "clientAuthentication"
-  | "serverAuthentication";
+  | "serverAuthentication"
+  | (string & {});
 export const DpsCertificateVerifyCertificateRequestCertificatePurpose =
   /*@__PURE__*/ S.String;
 
@@ -553,7 +558,10 @@ export const IotDpsResourceCheckProvisioningServiceNameAvailabilityRequest =
   }) as any as S.Schema<IotDpsResourceCheckProvisioningServiceNameAvailabilityRequest>;
 
 /** specifies the reason a name is unavailable */
-export type NameAvailabilityInfoReason = "Invalid" | "AlreadyExists";
+export type NameAvailabilityInfoReason =
+  | "Invalid"
+  | "AlreadyExists"
+  | (string & {});
 export const NameAvailabilityInfoReason = /*@__PURE__*/ S.String;
 
 /** Description of name availability. */
@@ -598,22 +606,28 @@ export type IotDpsPropertiesDescriptionInputState =
   | "Suspended"
   | "Resuming"
   | "FailingOver"
-  | "FailoverFailed";
+  | "FailoverFailed"
+  | (string & {});
 export const IotDpsPropertiesDescriptionInputState = /*@__PURE__*/ S.String;
 
 /** Whether requests from Public Network are allowed */
 export type IotDpsPropertiesDescriptionInputPublicNetworkAccess =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const IotDpsPropertiesDescriptionInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
 /** The desired action for requests captured by this rule. */
-export type IpFilterRuleAction = "Accept" | "Reject";
+export type IpFilterRuleAction = "Accept" | "Reject" | (string & {});
 export const IpFilterRuleAction = /*@__PURE__*/ S.String;
 
 /** Target for requests captured by this rule. */
-export type IpFilterRuleTarget = "all" | "serviceApi" | "deviceApi";
+export type IpFilterRuleTarget =
+  | "all"
+  | "serviceApi"
+  | "deviceApi"
+  | (string & {});
 export const IpFilterRuleTarget = /*@__PURE__*/ S.String;
 
 /** The IP filter rules for a provisioning Service. */
@@ -657,7 +671,8 @@ export type PrivateLinkServiceConnectionStateStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
-  | "Disconnected";
+  | "Disconnected"
+  | (string & {});
 export const PrivateLinkServiceConnectionStateStatus = /*@__PURE__*/ S.String;
 
 /** The current state of a private endpoint connection */
@@ -751,7 +766,8 @@ export const IotDpsPropertiesDescriptionInputIotHubsList =
 export type IotDpsPropertiesDescriptionInputAllocationPolicy =
   | "Hashed"
   | "GeoLatency"
-  | "Static";
+  | "Static"
+  | (string & {});
 export const IotDpsPropertiesDescriptionInputAllocationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -762,7 +778,8 @@ export type SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionRights 
     | "EnrollmentWrite"
     | "DeviceConnect"
     | "RegistrationStatusRead"
-    | "RegistrationStatusWrite";
+    | "RegistrationStatusWrite"
+    | (string & {});
 export const SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionRights =
   /*@__PURE__*/ S.String;
 
@@ -849,7 +866,7 @@ export const IotDpsPropertiesDescriptionInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IotDpsPropertiesDescriptionInput>;
 
 /** Sku name. */
-export type IotDpsSkuInfoInputName = "S1";
+export type IotDpsSkuInfoInputName = "S1" | (string & {});
 export const IotDpsSkuInfoInputName = /*@__PURE__*/ S.String;
 
 /** List of possible provisioning service SKUs. */
@@ -937,13 +954,15 @@ export type IotDpsPropertiesDescriptionState =
   | "Suspended"
   | "Resuming"
   | "FailingOver"
-  | "FailoverFailed";
+  | "FailoverFailed"
+  | (string & {});
 export const IotDpsPropertiesDescriptionState = /*@__PURE__*/ S.String;
 
 /** Whether requests from Public Network are allowed */
 export type IotDpsPropertiesDescriptionPublicNetworkAccess =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const IotDpsPropertiesDescriptionPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -989,7 +1008,8 @@ export type PrivateEndpointConnectionSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const PrivateEndpointConnectionSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -998,7 +1018,8 @@ export type PrivateEndpointConnectionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const PrivateEndpointConnectionSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1101,7 +1122,8 @@ export const IotDpsPropertiesDescriptionIotHubsList = /*@__PURE__*/ S.Array(
 export type IotDpsPropertiesDescriptionAllocationPolicy =
   | "Hashed"
   | "GeoLatency"
-  | "Static";
+  | "Static"
+  | (string & {});
 export const IotDpsPropertiesDescriptionAllocationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -1169,7 +1191,7 @@ export const IotDpsPropertiesDescription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IotDpsPropertiesDescription>;
 
 /** Sku name. */
-export type IotDpsSkuInfoName = "S1";
+export type IotDpsSkuInfoName = "S1" | (string & {});
 export const IotDpsSkuInfoName = /*@__PURE__*/ S.String;
 
 /** List of possible provisioning service SKUs. */
@@ -1194,7 +1216,8 @@ export type IotDpsResourceCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const IotDpsResourceCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1203,7 +1226,8 @@ export type IotDpsResourceCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const IotDpsResourceCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1415,7 +1439,8 @@ export type IotDpsResourceGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const IotDpsResourceGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1424,7 +1449,8 @@ export type IotDpsResourceGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const IotDpsResourceGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1721,7 +1747,8 @@ export type ProvisioningServiceDescriptionSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ProvisioningServiceDescriptionSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1730,7 +1757,8 @@ export type ProvisioningServiceDescriptionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const ProvisioningServiceDescriptionSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2049,7 +2077,7 @@ export const IotDpsResourceListValidSkusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IotDpsResourceListValidSkusRequest>;
 
 /** Sku name. */
-export type IotDpsSkuDefinitionName = "S1";
+export type IotDpsSkuDefinitionName = "S1" | (string & {});
 export const IotDpsSkuDefinitionName = /*@__PURE__*/ S.String;
 
 /** Available SKUs of tier and units. */
@@ -2139,7 +2167,8 @@ export type IotDpsResourceUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const IotDpsResourceUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2148,7 +2177,8 @@ export type IotDpsResourceUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const IotDpsResourceUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

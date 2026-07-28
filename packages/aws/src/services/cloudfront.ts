@@ -1165,10 +1165,19 @@ export const S3OriginConfig = /*@__PURE__*/ S.suspend(() =>
     OriginReadTimeout: S.optional(S.Number),
   }),
 ).annotate({ identifier: "S3OriginConfig" }) as any as S.Schema<S3OriginConfig>;
-export type OriginProtocolPolicy = "http-only" | "match-viewer" | "https-only";
+export type OriginProtocolPolicy =
+  | "http-only"
+  | "match-viewer"
+  | "https-only"
+  | (string & {});
 export const OriginProtocolPolicy = /*@__PURE__*/ S.String;
 
-export type SslProtocol = "SSLv3" | "TLSv1" | "TLSv1.1" | "TLSv1.2";
+export type SslProtocol =
+  | "SSLv3"
+  | "TLSv1"
+  | "TLSv1.1"
+  | "TLSv1.2"
+  | (string & {});
 export const SslProtocol = /*@__PURE__*/ S.String;
 
 export type SslProtocolsList = SslProtocol[];
@@ -1184,7 +1193,7 @@ export const OriginSslProtocols = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OriginSslProtocols",
 }) as any as S.Schema<OriginSslProtocols>;
-export type IpAddressType = "ipv4" | "ipv6" | "dualstack";
+export type IpAddressType = "ipv4" | "ipv6" | "dualstack" | (string & {});
 export const IpAddressType = /*@__PURE__*/ S.String;
 
 export interface OriginMtlsConfig {
@@ -1326,7 +1335,10 @@ export const OriginGroupMembers = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OriginGroupMembers",
 }) as any as S.Schema<OriginGroupMembers>;
-export type OriginGroupSelectionCriteria = "default" | "media-quality-based";
+export type OriginGroupSelectionCriteria =
+  | "default"
+  | "media-quality-based"
+  | (string & {});
 export const OriginGroupSelectionCriteria = /*@__PURE__*/ S.String;
 
 export interface OriginGroup {
@@ -1393,7 +1405,8 @@ export const TrustedKeyGroups = /*@__PURE__*/ S.suspend(() =>
 export type ViewerProtocolPolicy =
   | "allow-all"
   | "https-only"
-  | "redirect-to-https";
+  | "redirect-to-https"
+  | (string & {});
 export const ViewerProtocolPolicy = /*@__PURE__*/ S.String;
 
 export type Method =
@@ -1403,7 +1416,8 @@ export type Method =
   | "PUT"
   | "PATCH"
   | "OPTIONS"
-  | "DELETE";
+  | "DELETE"
+  | (string & {});
 export const Method = /*@__PURE__*/ S.String;
 
 export type MethodsList = Method[];
@@ -1434,7 +1448,8 @@ export type EventType =
   | "viewer-request"
   | "viewer-response"
   | "origin-request"
-  | "origin-response";
+  | "origin-response"
+  | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
 
 export interface LambdaFunctionAssociation {
@@ -1500,7 +1515,7 @@ export interface GrpcConfig {
 export const GrpcConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Enabled: S.Boolean }),
 ).annotate({ identifier: "GrpcConfig" }) as any as S.Schema<GrpcConfig>;
-export type ItemSelection = "none" | "whitelist" | "all";
+export type ItemSelection = "none" | "whitelist" | "all" | (string & {});
 export const ItemSelection = /*@__PURE__*/ S.String;
 
 export type CookieNameList = string[];
@@ -1721,11 +1736,12 @@ export type PriceClass =
   | "PriceClass_100"
   | "PriceClass_200"
   | "PriceClass_All"
-  | "None";
+  | "None"
+  | (string & {});
 export const PriceClass = /*@__PURE__*/ S.String;
 
 export type ServerCertificateId = string;
-export type SSLSupportMethod = "sni-only" | "vip" | "static-ip";
+export type SSLSupportMethod = "sni-only" | "vip" | "static-ip" | (string & {});
 export const SSLSupportMethod = /*@__PURE__*/ S.String;
 
 export type MinimumProtocolVersion =
@@ -1737,10 +1753,11 @@ export type MinimumProtocolVersion =
   | "TLSv1.2_2019"
   | "TLSv1.2_2021"
   | "TLSv1.3_2025"
-  | "TLSv1.2_2025";
+  | "TLSv1.2_2025"
+  | (string & {});
 export const MinimumProtocolVersion = /*@__PURE__*/ S.String;
 
-export type CertificateSource = "cloudfront" | "iam" | "acm";
+export type CertificateSource = "cloudfront" | "iam" | "acm" | (string & {});
 export const CertificateSource = /*@__PURE__*/ S.String;
 
 export interface ViewerCertificate {
@@ -1765,7 +1782,11 @@ export const ViewerCertificate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ViewerCertificate",
 }) as any as S.Schema<ViewerCertificate>;
-export type GeoRestrictionType = "blacklist" | "whitelist" | "none";
+export type GeoRestrictionType =
+  | "blacklist"
+  | "whitelist"
+  | "none"
+  | (string & {});
 export const GeoRestrictionType = /*@__PURE__*/ S.String;
 
 export type LocationList = string[];
@@ -1798,7 +1819,8 @@ export type HttpVersion =
   | "HTTP1.1"
   | "HTTP2"
   | "HTTP3"
-  | "HTTP2AND3";
+  | "HTTP2AND3"
+  | (string & {});
 export const HttpVersion = /*@__PURE__*/ S.String;
 
 export type ParameterName = string;
@@ -1842,10 +1864,14 @@ export interface TenantConfig {
 export const TenantConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ParameterDefinitions: S.optional(ParameterDefinitions) }),
 ).annotate({ identifier: "TenantConfig" }) as any as S.Schema<TenantConfig>;
-export type ConnectionMode = "direct" | "tenant-only";
+export type ConnectionMode = "direct" | "tenant-only" | (string & {});
 export const ConnectionMode = /*@__PURE__*/ S.String;
 
-export type ViewerMtlsMode = "required" | "optional" | "passthrough";
+export type ViewerMtlsMode =
+  | "required"
+  | "optional"
+  | "passthrough"
+  | (string & {});
 export const ViewerMtlsMode = /*@__PURE__*/ S.String;
 
 export interface TrustStoreConfig {
@@ -1947,7 +1973,11 @@ export const DistributionConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DistributionConfig",
 }) as any as S.Schema<DistributionConfig>;
-export type ICPRecordalStatus = "APPROVED" | "SUSPENDED" | "PENDING";
+export type ICPRecordalStatus =
+  | "APPROVED"
+  | "SUSPENDED"
+  | "PENDING"
+  | (string & {});
 export const ICPRecordalStatus = /*@__PURE__*/ S.String;
 
 export interface AliasICPRecordal {
@@ -2042,7 +2072,8 @@ export type IpamCidrStatus =
   | "advertising"
   | "withdrawn"
   | "failed-withdraw"
-  | "withdrawing";
+  | "withdrawing"
+  | (string & {});
 export const IpamCidrStatus = /*@__PURE__*/ S.String;
 
 export interface IpamCidrConfig {
@@ -2142,7 +2173,7 @@ export const CreateAnycastIpListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAnycastIpListResult",
 }) as any as S.Schema<CreateAnycastIpListResult>;
-export type CachePolicyHeaderBehavior = "none" | "whitelist";
+export type CachePolicyHeaderBehavior = "none" | "whitelist" | (string & {});
 export const CachePolicyHeaderBehavior = /*@__PURE__*/ S.String;
 
 export interface CachePolicyHeadersConfig {
@@ -2161,7 +2192,8 @@ export type CachePolicyCookieBehavior =
   | "none"
   | "whitelist"
   | "allExcept"
-  | "all";
+  | "all"
+  | (string & {});
 export const CachePolicyCookieBehavior = /*@__PURE__*/ S.String;
 
 export interface CachePolicyCookiesConfig {
@@ -2180,7 +2212,8 @@ export type CachePolicyQueryStringBehavior =
   | "none"
   | "whitelist"
   | "allExcept"
-  | "all";
+  | "all"
+  | (string & {});
 export const CachePolicyQueryStringBehavior = /*@__PURE__*/ S.String;
 
 export type QueryStringNamesList = string[];
@@ -2371,7 +2404,10 @@ export const CreateCloudFrontOriginAccessIdentityResult =
     identifier: "CreateCloudFrontOriginAccessIdentityResult",
   }) as any as S.Schema<CreateCloudFrontOriginAccessIdentityResult>;
 export type FunctionName = string;
-export type FunctionRuntime = "cloudfront-js-1.0" | "cloudfront-js-2.0";
+export type FunctionRuntime =
+  | "cloudfront-js-1.0"
+  | "cloudfront-js-2.0"
+  | (string & {});
 export const FunctionRuntime = /*@__PURE__*/ S.String;
 
 export type KeyValueStoreARN = string;
@@ -2440,7 +2476,7 @@ export const CreateConnectionFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConnectionFunctionRequest",
 }) as any as S.Schema<CreateConnectionFunctionRequest>;
-export type FunctionStage = "DEVELOPMENT" | "LIVE";
+export type FunctionStage = "DEVELOPMENT" | "LIVE" | (string & {});
 export const FunctionStage = /*@__PURE__*/ S.String;
 
 export interface ConnectionFunctionSummary {
@@ -2604,7 +2640,10 @@ export const ContinuousDeploymentSingleHeaderConfig = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ContinuousDeploymentSingleHeaderConfig",
 }) as any as S.Schema<ContinuousDeploymentSingleHeaderConfig>;
-export type ContinuousDeploymentPolicyType = "SingleWeight" | "SingleHeader";
+export type ContinuousDeploymentPolicyType =
+  | "SingleWeight"
+  | "SingleHeader"
+  | (string & {});
 export const ContinuousDeploymentPolicyType = /*@__PURE__*/ S.String;
 
 export interface TrafficConfig {
@@ -2738,7 +2777,7 @@ export const DomainItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DomainItem" }) as any as S.Schema<DomainItem>;
 export type DomainList = DomainItem[];
 export const DomainList = /*@__PURE__*/ S.Array(DomainItem);
-export type CustomizationActionType = "override" | "disable";
+export type CustomizationActionType = "override" | "disable" | (string & {});
 export const CustomizationActionType = /*@__PURE__*/ S.String;
 
 export interface WebAclCustomization {
@@ -2789,10 +2828,13 @@ export const Parameter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Parameter" }) as any as S.Schema<Parameter>;
 export type Parameters = Parameter[];
 export const Parameters = /*@__PURE__*/ S.Array(Parameter);
-export type ValidationTokenHost = "cloudfront" | "self-hosted";
+export type ValidationTokenHost = "cloudfront" | "self-hosted" | (string & {});
 export const ValidationTokenHost = /*@__PURE__*/ S.String;
 
-export type CertificateTransparencyLoggingPreference = "enabled" | "disabled";
+export type CertificateTransparencyLoggingPreference =
+  | "enabled"
+  | "disabled"
+  | (string & {});
 export const CertificateTransparencyLoggingPreference = /*@__PURE__*/ S.String;
 
 export interface ManagedCertificateRequest {
@@ -2847,7 +2889,7 @@ export const CreateDistributionTenantRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDistributionTenantRequest",
 }) as any as S.Schema<CreateDistributionTenantRequest>;
-export type DomainStatus = "active" | "inactive";
+export type DomainStatus = "active" | "inactive" | (string & {});
 export const DomainStatus = /*@__PURE__*/ S.String;
 
 export interface DomainResult {
@@ -2991,7 +3033,7 @@ export const QueryArgProfileConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "QueryArgProfileConfig",
 }) as any as S.Schema<QueryArgProfileConfig>;
-export type Format = "URLEncoded";
+export type Format = "URLEncoded" | (string & {});
 export const Format = /*@__PURE__*/ S.String;
 
 export interface ContentTypeProfile {
@@ -3481,7 +3523,7 @@ export const CreateKeyGroupResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateKeyGroupResult>;
 export type KeyValueStoreName = string;
 export type KeyValueStoreComment = string;
-export type ImportSourceType = "S3";
+export type ImportSourceType = "S3" | (string & {});
 export const ImportSourceType = /*@__PURE__*/ S.String;
 
 export interface ImportSource {
@@ -3551,7 +3593,10 @@ export const CreateKeyValueStoreResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateKeyValueStoreResult",
 }) as any as S.Schema<CreateKeyValueStoreResult>;
-export type RealtimeMetricsSubscriptionStatus = "Enabled" | "Disabled";
+export type RealtimeMetricsSubscriptionStatus =
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const RealtimeMetricsSubscriptionStatus = /*@__PURE__*/ S.String;
 
 export interface RealtimeMetricsSubscriptionConfig {
@@ -3616,20 +3661,22 @@ export const CreateMonitoringSubscriptionResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMonitoringSubscriptionResult",
 }) as any as S.Schema<CreateMonitoringSubscriptionResult>;
-export type OriginAccessControlSigningProtocols = "sigv4";
+export type OriginAccessControlSigningProtocols = "sigv4" | (string & {});
 export const OriginAccessControlSigningProtocols = /*@__PURE__*/ S.String;
 
 export type OriginAccessControlSigningBehaviors =
   | "never"
   | "always"
-  | "no-override";
+  | "no-override"
+  | (string & {});
 export const OriginAccessControlSigningBehaviors = /*@__PURE__*/ S.String;
 
 export type OriginAccessControlOriginTypes =
   | "s3"
   | "mediastore"
   | "mediapackagev2"
-  | "lambda";
+  | "lambda"
+  | (string & {});
 export const OriginAccessControlOriginTypes = /*@__PURE__*/ S.String;
 
 export interface OriginAccessControlConfig {
@@ -3706,7 +3753,8 @@ export type OriginRequestPolicyHeaderBehavior =
   | "whitelist"
   | "allViewer"
   | "allViewerAndWhitelistCloudFront"
-  | "allExcept";
+  | "allExcept"
+  | (string & {});
 export const OriginRequestPolicyHeaderBehavior = /*@__PURE__*/ S.String;
 
 export interface OriginRequestPolicyHeadersConfig {
@@ -3725,7 +3773,8 @@ export type OriginRequestPolicyCookieBehavior =
   | "none"
   | "whitelist"
   | "all"
-  | "allExcept";
+  | "allExcept"
+  | (string & {});
 export const OriginRequestPolicyCookieBehavior = /*@__PURE__*/ S.String;
 
 export interface OriginRequestPolicyCookiesConfig {
@@ -3744,7 +3793,8 @@ export type OriginRequestPolicyQueryStringBehavior =
   | "none"
   | "whitelist"
   | "all"
-  | "allExcept";
+  | "allExcept"
+  | (string & {});
 export const OriginRequestPolicyQueryStringBehavior = /*@__PURE__*/ S.String;
 
 export interface OriginRequestPolicyQueryStringsConfig {
@@ -4011,7 +4061,8 @@ export type ResponseHeadersPolicyAccessControlAllowMethodsValues =
   | "DELETE"
   | "PATCH"
   | "HEAD"
-  | "ALL";
+  | "ALL"
+  | (string & {});
 export const ResponseHeadersPolicyAccessControlAllowMethodsValues =
   /*@__PURE__*/ S.String;
 
@@ -4089,7 +4140,7 @@ export const ResponseHeadersPolicyXSSProtection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResponseHeadersPolicyXSSProtection",
 }) as any as S.Schema<ResponseHeadersPolicyXSSProtection>;
-export type FrameOptionsList = "DENY" | "SAMEORIGIN";
+export type FrameOptionsList = "DENY" | "SAMEORIGIN" | (string & {});
 export const FrameOptionsList = /*@__PURE__*/ S.String;
 
 export interface ResponseHeadersPolicyFrameOptions {
@@ -4109,7 +4160,8 @@ export type ReferrerPolicyList =
   | "same-origin"
   | "strict-origin"
   | "strict-origin-when-cross-origin"
-  | "unsafe-url";
+  | "unsafe-url"
+  | (string & {});
 export const ReferrerPolicyList = /*@__PURE__*/ S.String;
 
 export interface ResponseHeadersPolicyReferrerPolicy {
@@ -4536,7 +4588,7 @@ export const CreateTrustStoreRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTrustStoreRequest",
 }) as any as S.Schema<CreateTrustStoreRequest>;
-export type TrustStoreStatus = "pending" | "active" | "failed";
+export type TrustStoreStatus = "pending" | "active" | "failed" | (string & {});
 export const TrustStoreStatus = /*@__PURE__*/ S.String;
 
 export interface TrustStore {
@@ -6347,7 +6399,8 @@ export type ManagedCertificateStatus =
   | "expired"
   | "validation-timed-out"
   | "revoked"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const ManagedCertificateStatus = /*@__PURE__*/ S.String;
 
 export interface ValidationTokenDetail {
@@ -6977,7 +7030,7 @@ export const ListAnycastIpListsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAnycastIpListsResult",
 }) as any as S.Schema<ListAnycastIpListsResult>;
-export type CachePolicyType = "managed" | "custom";
+export type CachePolicyType = "managed" | "custom" | (string & {});
 export const CachePolicyType = /*@__PURE__*/ S.String;
 
 export interface ListCachePoliciesRequest {
@@ -8233,7 +8286,10 @@ export const ListDomainConflictsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDomainConflictsRequest",
 }) as any as S.Schema<ListDomainConflictsRequest>;
-export type DistributionResourceType = "distribution" | "distribution-tenant";
+export type DistributionResourceType =
+  | "distribution"
+  | "distribution-tenant"
+  | (string & {});
 export const DistributionResourceType = /*@__PURE__*/ S.String;
 
 export interface DomainConflict {
@@ -8798,7 +8854,7 @@ export const ListOriginAccessControlsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListOriginAccessControlsResult",
 }) as any as S.Schema<ListOriginAccessControlsResult>;
-export type OriginRequestPolicyType = "managed" | "custom";
+export type OriginRequestPolicyType = "managed" | "custom" | (string & {});
 export const OriginRequestPolicyType = /*@__PURE__*/ S.String;
 
 export interface ListOriginRequestPoliciesRequest {
@@ -8997,7 +9053,7 @@ export const ListRealtimeLogConfigsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRealtimeLogConfigsResult",
 }) as any as S.Schema<ListRealtimeLogConfigsResult>;
-export type ResponseHeadersPolicyType = "managed" | "custom";
+export type ResponseHeadersPolicyType = "managed" | "custom" | (string & {});
 export const ResponseHeadersPolicyType = /*@__PURE__*/ S.String;
 
 export interface ListResponseHeadersPoliciesRequest {
@@ -10617,7 +10673,8 @@ export const VerifyDnsConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export type DnsConfigurationStatus =
   | "valid-configuration"
   | "invalid-configuration"
-  | "unknown-configuration";
+  | "unknown-configuration"
+  | (string & {});
 export const DnsConfigurationStatus = /*@__PURE__*/ S.String;
 
 export interface DnsConfiguration {

@@ -12,7 +12,11 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `disabled` - Disabled * `dry_run` - Dry Run * `live` - Live */
-export type EventFilterConfigModeEnum = "disabled" | "dry_run" | "live";
+export type EventFilterConfigModeEnum =
+  | "disabled"
+  | "dry_run"
+  | "live"
+  | (string & {});
 export const EventFilterConfigModeEnum = /*@__PURE__*/ S.String;
 
 export interface EventFilterCreateRequest {

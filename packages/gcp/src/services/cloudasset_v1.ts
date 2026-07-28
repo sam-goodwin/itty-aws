@@ -187,7 +187,8 @@ export const GoogleCloudAssetV1GcsDestination = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleCloudAssetV1BigQueryDestinationPartitionKeyEnum =
   | "PARTITION_KEY_UNSPECIFIED"
-  | "REQUEST_TIME";
+  | "REQUEST_TIME"
+  | (string & {});
 export const GoogleCloudAssetV1BigQueryDestinationPartitionKeyEnum =
   /*@__PURE__*/ S.String;
 
@@ -416,7 +417,8 @@ export type IamPolicyAnalysisStateCodeEnum =
   | "UNIMPLEMENTED"
   | "INTERNAL"
   | "UNAVAILABLE"
-  | "DATA_LOSS";
+  | "DATA_LOSS"
+  | (string & {});
 export const IamPolicyAnalysisStateCodeEnum = /*@__PURE__*/ S.String;
 
 /** Represents the detailed state of an entity under analysis, such as a resource, an identity or an access. */
@@ -464,7 +466,8 @@ export type ConditionEvaluationEvaluationValueEnum =
   | "EVALUATION_VALUE_UNSPECIFIED"
   | "TRUE"
   | "FALSE"
-  | "CONDITIONAL";
+  | "CONDITIONAL"
+  | (string & {});
 export const ConditionEvaluationEvaluationValueEnum = /*@__PURE__*/ S.String;
 
 /** The condition evaluation. */
@@ -711,7 +714,8 @@ export const AnalyzeIamPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 export type AnalyzeMoveV1ViewEnum =
   | "ANALYSIS_VIEW_UNSPECIFIED"
   | "FULL"
-  | "BASIC";
+  | "BASIC"
+  | (string & {});
 export const AnalyzeMoveV1ViewEnum = /*@__PURE__*/ S.String;
 
 export interface AnalyzeMoveV1Request {
@@ -841,7 +845,8 @@ export type GoogleCloudAssetV1CustomConstraintMethodTypesItemEnum =
   | "UPDATE"
   | "DELETE"
   | "REMOVE_GRANT"
-  | "GOVERN_TAGS";
+  | "GOVERN_TAGS"
+  | (string & {});
 export const GoogleCloudAssetV1CustomConstraintMethodTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -855,7 +860,8 @@ export const GoogleCloudAssetV1CustomConstraintMethodTypesItemEnumList =
 export type GoogleCloudAssetV1CustomConstraintActionTypeEnum =
   | "ACTION_TYPE_UNSPECIFIED"
   | "ALLOW"
-  | "DENY";
+  | "DENY"
+  | (string & {});
 export const GoogleCloudAssetV1CustomConstraintActionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -911,7 +917,8 @@ export const GoogleCloudAssetV1ListConstraint = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudAssetV1ConstraintConstraintDefaultEnum =
   | "CONSTRAINT_DEFAULT_UNSPECIFIED"
   | "ALLOW"
-  | "DENY";
+  | "DENY"
+  | (string & {});
 export const GoogleCloudAssetV1ConstraintConstraintDefaultEnum =
   /*@__PURE__*/ S.String;
 
@@ -1209,7 +1216,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1460,7 +1468,8 @@ export type BatchGetAssetsHistoryV1ContentTypeEnum =
   | "ORG_POLICY"
   | "ACCESS_POLICY"
   | "OS_INVENTORY"
-  | "RELATIONSHIP";
+  | "RELATIONSHIP"
+  | (string & {});
 export const BatchGetAssetsHistoryV1ContentTypeEnum = /*@__PURE__*/ S.String;
 
 export interface BatchGetAssetsHistoryV1Request {
@@ -1628,7 +1637,8 @@ export const GoogleIdentityAccesscontextmanagerV1ServicePatternList =
 
 export type GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum =
     | "SERVICE_PATTERNS_ENFORCEMENT_SCOPE_UNSPECIFIED"
-    | "GOOGLE_APIS_VIA_PRIVATE_PATH";
+    | "GOOGLE_APIS_VIA_PRIVATE_PATH"
+    | (string & {});
 export const GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1786,7 +1796,8 @@ export type GoogleIdentityAccesscontextmanagerV1IngressFromIdentityTypeEnum =
   | "IDENTITY_TYPE_UNSPECIFIED"
   | "ANY_IDENTITY"
   | "ANY_USER_ACCOUNT"
-  | "ANY_SERVICE_ACCOUNT";
+  | "ANY_SERVICE_ACCOUNT"
+  | (string & {});
 export const GoogleIdentityAccesscontextmanagerV1IngressFromIdentityTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1845,7 +1856,8 @@ export type GoogleIdentityAccesscontextmanagerV1EgressFromIdentityTypeEnum =
   | "IDENTITY_TYPE_UNSPECIFIED"
   | "ANY_IDENTITY"
   | "ANY_USER_ACCOUNT"
-  | "ANY_SERVICE_ACCOUNT";
+  | "ANY_SERVICE_ACCOUNT"
+  | (string & {});
 export const GoogleIdentityAccesscontextmanagerV1EgressFromIdentityTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1881,7 +1893,8 @@ export const GoogleIdentityAccesscontextmanagerV1EgressSourceList =
 export type GoogleIdentityAccesscontextmanagerV1EgressFromSourceRestrictionEnum =
     | "SOURCE_RESTRICTION_UNSPECIFIED"
     | "SOURCE_RESTRICTION_ENABLED"
-    | "SOURCE_RESTRICTION_DISABLED";
+    | "SOURCE_RESTRICTION_DISABLED"
+    | (string & {});
 export const GoogleIdentityAccesscontextmanagerV1EgressFromSourceRestrictionEnum =
   /*@__PURE__*/ S.String;
 
@@ -2000,7 +2013,7 @@ export const GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig>;
 
 export type GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterTypeEnum =
-  "PERIMETER_TYPE_REGULAR" | "PERIMETER_TYPE_BRIDGE";
+  "PERIMETER_TYPE_REGULAR" | "PERIMETER_TYPE_BRIDGE" | (string & {});
 export const GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2047,7 +2060,8 @@ export const GoogleIdentityAccesscontextmanagerV1ServicePerimeter =
 
 export type AssetExceptionExceptionTypeEnum =
   | "EXCEPTION_TYPE_UNSPECIFIED"
-  | "TRUNCATION";
+  | "TRUNCATION"
+  | (string & {});
 export const AssetExceptionExceptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** An exception of an asset. */
@@ -2135,7 +2149,8 @@ export const GoogleCloudOrgpolicyV1RestoreDefault = /*@__PURE__*/ S.suspend(
 export type GoogleCloudOrgpolicyV1ListPolicyAllValuesEnum =
   | "ALL_VALUES_UNSPECIFIED"
   | "ALLOW"
-  | "DENY";
+  | "DENY"
+  | (string & {});
 export const GoogleCloudOrgpolicyV1ListPolicyAllValuesEnum =
   /*@__PURE__*/ S.String;
 
@@ -2229,12 +2244,12 @@ export const GoogleIdentityAccesscontextmanagerV1CustomLevel =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1CustomLevel>;
 
 export type GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunctionEnum =
-  "AND" | "OR";
+  "AND" | "OR" | (string & {});
 export const GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunctionEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnum =
-  "MANAGEMENT_UNSPECIFIED" | "NONE" | "BASIC" | "COMPLETE";
+  "MANAGEMENT_UNSPECIFIED" | "NONE" | "BASIC" | "COMPLETE" | (string & {});
 export const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -2249,7 +2264,8 @@ export type GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionSta
     | "ENCRYPTION_UNSPECIFIED"
     | "ENCRYPTION_UNSUPPORTED"
     | "UNENCRYPTED"
-    | "ENCRYPTED";
+    | "ENCRYPTED"
+    | (string & {});
 export const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -2267,7 +2283,8 @@ export type GoogleIdentityAccesscontextmanagerV1OsConstraintOsTypeEnum =
   | "DESKTOP_LINUX"
   | "DESKTOP_CHROME_OS"
   | "ANDROID"
-  | "IOS";
+  | "IOS"
+  | (string & {});
 export const GoogleIdentityAccesscontextmanagerV1OsConstraintOsTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2498,7 +2515,8 @@ export const OsInfo = /*@__PURE__*/ S.suspend(() =>
 export type ItemTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "INSTALLED_PACKAGE"
-  | "AVAILABLE_PACKAGE";
+  | "AVAILABLE_PACKAGE"
+  | (string & {});
 export const ItemTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information related to the a standard versioned package. This includes package info for APT, Yum, Zypper, and Googet package managers. */
@@ -2701,7 +2719,10 @@ export const SoftwarePackage = /*@__PURE__*/ S.suspend(() =>
   identifier: "SoftwarePackage",
 }) as any as S.Schema<SoftwarePackage>;
 
-export type ItemOriginTypeEnum = "ORIGIN_TYPE_UNSPECIFIED" | "INVENTORY_REPORT";
+export type ItemOriginTypeEnum =
+  | "ORIGIN_TYPE_UNSPECIFIED"
+  | "INVENTORY_REPORT"
+  | (string & {});
 export const ItemOriginTypeEnum = /*@__PURE__*/ S.String;
 
 /** A single piece of inventory on a VM. */
@@ -2830,7 +2851,8 @@ export type TemporalAssetPriorAssetStateEnum =
   | "PRESENT"
   | "INVALID"
   | "DOES_NOT_EXIST"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const TemporalAssetPriorAssetStateEnum = /*@__PURE__*/ S.String;
 
 /** An asset in Google Cloud and its temporal metadata, including the time window when it was observed and its status during that window. */
@@ -2956,7 +2978,8 @@ export type FeedContentTypeEnum =
   | "ORG_POLICY"
   | "ACCESS_POLICY"
   | "OS_INVENTORY"
-  | "RELATIONSHIP";
+  | "RELATIONSHIP"
+  | (string & {});
 export const FeedContentTypeEnum = /*@__PURE__*/ S.String;
 
 /** A Pub/Sub destination. */
@@ -3173,7 +3196,8 @@ export type ExportAssetsRequestContentTypeEnum =
   | "ORG_POLICY"
   | "ACCESS_POLICY"
   | "OS_INVENTORY"
-  | "RELATIONSHIP";
+  | "RELATIONSHIP"
+  | (string & {});
 export const ExportAssetsRequestContentTypeEnum = /*@__PURE__*/ S.String;
 
 /** A Cloud Storage location. */
@@ -3193,7 +3217,8 @@ export const GcsDestination = /*@__PURE__*/ S.suspend(() =>
 export type PartitionSpecPartitionKeyEnum =
   | "PARTITION_KEY_UNSPECIFIED"
   | "READ_TIME"
-  | "REQUEST_TIME";
+  | "REQUEST_TIME"
+  | (string & {});
 export const PartitionSpecPartitionKeyEnum = /*@__PURE__*/ S.String;
 
 /** Specifications of BigQuery partitioned table as export destination. */
@@ -3353,7 +3378,8 @@ export type ListAssetsContentTypeEnum =
   | "ORG_POLICY"
   | "ACCESS_POLICY"
   | "OS_INVENTORY"
-  | "RELATIONSHIP";
+  | "RELATIONSHIP"
+  | (string & {});
 export const ListAssetsContentTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ListAssetsRequest {

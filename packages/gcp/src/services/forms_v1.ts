@@ -103,7 +103,8 @@ export type MediaPropertiesAlignmentEnum =
   | "ALIGNMENT_UNSPECIFIED"
   | "LEFT"
   | "RIGHT"
-  | "CENTER";
+  | "CENTER"
+  | (string & {});
 export const MediaPropertiesAlignmentEnum = /*@__PURE__*/ S.String;
 
 /** Properties of the media. */
@@ -157,14 +158,16 @@ export type ChoiceQuestionTypeEnum =
   | "CHOICE_TYPE_UNSPECIFIED"
   | "RADIO"
   | "CHECKBOX"
-  | "DROP_DOWN";
+  | "DROP_DOWN"
+  | (string & {});
 export const ChoiceQuestionTypeEnum = /*@__PURE__*/ S.String;
 
 export type OptionGoToActionEnum =
   | "GO_TO_ACTION_UNSPECIFIED"
   | "NEXT_SECTION"
   | "RESTART_FORM"
-  | "SUBMIT_FORM";
+  | "SUBMIT_FORM"
+  | (string & {});
 export const OptionGoToActionEnum = /*@__PURE__*/ S.String;
 
 /** An option for a Choice question. */
@@ -255,7 +258,8 @@ export type FileUploadQuestionTypesItemEnum =
   | "PDF"
   | "IMAGE"
   | "VIDEO"
-  | "AUDIO";
+  | "AUDIO"
+  | (string & {});
 export const FileUploadQuestionTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type FileUploadQuestionTypesItemEnumList =
@@ -401,7 +405,8 @@ export type RatingQuestionIconTypeEnum =
   | "RATING_ICON_TYPE_UNSPECIFIED"
   | "STAR"
   | "HEART"
-  | "THUMB_UP";
+  | "THUMB_UP"
+  | (string & {});
 export const RatingQuestionIconTypeEnum = /*@__PURE__*/ S.String;
 
 /** A rating question. The user has a range of icons to choose from. */
@@ -685,7 +690,8 @@ export type FormSettingsEmailCollectionTypeEnum =
   | "EMAIL_COLLECTION_TYPE_UNSPECIFIED"
   | "DO_NOT_COLLECT"
   | "VERIFIED"
-  | "RESPONDER_INPUT";
+  | "RESPONDER_INPUT"
+  | (string & {});
 export const FormSettingsEmailCollectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** A form's settings. */
@@ -990,17 +996,23 @@ export const WatchTarget = /*@__PURE__*/ S.suspend(() =>
 export type WatchEventTypeEnum =
   | "EVENT_TYPE_UNSPECIFIED"
   | "SCHEMA"
-  | "RESPONSES";
+  | "RESPONSES"
+  | (string & {});
 export const WatchEventTypeEnum = /*@__PURE__*/ S.String;
 
 export type WatchErrorTypeEnum =
   | "ERROR_TYPE_UNSPECIFIED"
   | "PROJECT_NOT_AUTHORIZED"
   | "NO_USER_ACCESS"
-  | "OTHER_ERRORS";
+  | "OTHER_ERRORS"
+  | (string & {});
 export const WatchErrorTypeEnum = /*@__PURE__*/ S.String;
 
-export type WatchStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "SUSPENDED";
+export type WatchStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "SUSPENDED"
+  | (string & {});
 export const WatchStateEnum = /*@__PURE__*/ S.String;
 
 /** A watch for events for a form. When the designated event happens, a notification will be published to the specified target. The notification's attributes will include a `formId` key that has the ID of the watched form and an `eventType` key that has the string of the type. Messages are sent with at-least-once delivery and are only dropped in extraordinary circumstances. Typically all notifications should be reliably delivered within a few seconds; however, in some situations notifications may be delayed. A watch expires seven days after it is created unless it is renewed with watches.renew */

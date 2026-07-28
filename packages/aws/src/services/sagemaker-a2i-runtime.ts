@@ -161,7 +161,8 @@ export type HumanLoopStatus =
   | "Failed"
   | "Completed"
   | "Stopped"
-  | "Stopping";
+  | "Stopping"
+  | (string & {});
 export const HumanLoopStatus = /*@__PURE__*/ S.String;
 
 export type HumanLoopArn = string;
@@ -200,7 +201,7 @@ export const DescribeHumanLoopResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeHumanLoopResponse",
 }) as any as S.Schema<DescribeHumanLoopResponse>;
-export type SortOrder = "Ascending" | "Descending";
+export type SortOrder = "Ascending" | "Descending" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
 
 export type NextToken = string;
@@ -284,7 +285,8 @@ export const HumanLoopInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HumanLoopInput" }) as any as S.Schema<HumanLoopInput>;
 export type ContentClassifier =
   | "FreeOfPersonallyIdentifiableInformation"
-  | "FreeOfAdultContent";
+  | "FreeOfAdultContent"
+  | (string & {});
 export const ContentClassifier = /*@__PURE__*/ S.String;
 
 export type ContentClassifiers = ContentClassifier[];

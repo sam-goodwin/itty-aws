@@ -226,7 +226,7 @@ export const LanguagesListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "LanguagesListResponse",
 }) as any as S.Schema<LanguagesListResponse>;
 
-export type ListTranslationsFormatEnum = "html" | "text";
+export type ListTranslationsFormatEnum = "html" | "text" | (string & {});
 export const ListTranslationsFormatEnum = /*@__PURE__*/ S.String;
 
 export interface ListTranslationsRequest {

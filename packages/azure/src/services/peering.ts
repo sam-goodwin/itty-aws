@@ -39,7 +39,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -47,7 +48,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -178,7 +180,8 @@ export const CheckServiceProviderAvailabilityRequest = /*@__PURE__*/ S.suspend(
 /** Response for checking service provider availability */
 export type CheckServiceProviderAvailabilityResponse =
   | "Available"
-  | "Unavailable";
+  | "Unavailable"
+  | (string & {});
 export const CheckServiceProviderAvailabilityResponse = /*@__PURE__*/ S.String;
 
 export type CheckServiceProviderAvailabilityResponse2 =
@@ -257,7 +260,8 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The properties that define a Connection Monitor Test. */
@@ -477,7 +481,10 @@ export const ConnectionMonitorTestListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectionMonitorTestListResult",
 }) as any as S.Schema<ConnectionMonitorTestListResult>;
 
-export type LegacyPeeringsListRequestKind = "Direct" | "Exchange";
+export type LegacyPeeringsListRequestKind =
+  | "Direct"
+  | "Exchange"
+  | (string & {});
 export const LegacyPeeringsListRequestKind = /*@__PURE__*/ S.String;
 
 export type LegacyPeeringsListRequestDirectPeeringType =
@@ -489,7 +496,8 @@ export type LegacyPeeringsListRequestDirectPeeringType =
   | "IxRs"
   | "Voice"
   | "EdgeZoneForOperators"
-  | "PeerProp";
+  | "PeerProp"
+  | (string & {});
 export const LegacyPeeringsListRequestDirectPeeringType =
   /*@__PURE__*/ S.String;
 
@@ -534,7 +542,7 @@ export const PeeringTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PeeringTagsMap>;
 
 /** The field indicating if Microsoft provides session ip addresses. */
-export type SessionAddressProvider = "Microsoft" | "Peer";
+export type SessionAddressProvider = "Microsoft" | "Peer" | (string & {});
 export const SessionAddressProvider = /*@__PURE__*/ S.String;
 
 /** The state of the connection. */
@@ -549,7 +557,8 @@ export type ConnectionState =
   | "Active"
   | "TypeChangeRequested"
   | "TypeChangeInProgress"
-  | "ExternalBlocker";
+  | "ExternalBlocker"
+  | (string & {});
 export const ConnectionState = /*@__PURE__*/ S.String;
 
 /** The state of the IPv4 session. */
@@ -564,7 +573,8 @@ export type SessionStateV4 =
   | "Established"
   | "PendingAdd"
   | "PendingUpdate"
-  | "PendingRemove";
+  | "PendingRemove"
+  | (string & {});
 export const SessionStateV4 = /*@__PURE__*/ S.String;
 
 /** The state of the IPv6 session. */
@@ -579,7 +589,8 @@ export type SessionStateV6 =
   | "Established"
   | "PendingAdd"
   | "PendingUpdate"
-  | "PendingRemove";
+  | "PendingRemove"
+  | (string & {});
 export const SessionStateV6 = /*@__PURE__*/ S.String;
 
 /** The properties that define a BGP session. */
@@ -691,7 +702,8 @@ export type DirectPeeringType =
   | "IxRs"
   | "Voice"
   | "EdgeZoneForOperators"
-  | "PeerProp";
+  | "PeerProp"
+  | (string & {});
 export const DirectPeeringType = /*@__PURE__*/ S.String;
 
 /** The properties that define a direct peering. */
@@ -765,7 +777,7 @@ export const PeeringPropertiesExchange = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PeeringPropertiesExchange>;
 
 /** The protocol of the traffic that will be sent for the connectivity probe. */
-export type Protocol = "None" | "ICMP" | "TCP";
+export type Protocol = "None" | "ICMP" | "TCP" | (string & {});
 export const Protocol = /*@__PURE__*/ S.String;
 
 /** Set to contain the prefixes that agents in Azure will send traffic from. For peers to allow into their network the connectivity probe traffic can reach their endpoint for the connectivity probe. */
@@ -829,15 +841,15 @@ export const PeeringProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PeeringProperties>;
 
 /** The tier of the peering SKU. */
-export type Tier = "Basic" | "Premium";
+export type Tier = "Basic" | "Premium" | (string & {});
 export const Tier = /*@__PURE__*/ S.String;
 
 /** The family of the peering SKU. */
-export type Family = "Direct" | "Exchange";
+export type Family = "Direct" | "Exchange" | (string & {});
 export const Family = /*@__PURE__*/ S.String;
 
 /** The size of the peering SKU. */
-export type Size = "Free" | "Metered" | "Unlimited";
+export type Size = "Free" | "Metered" | "Unlimited" | (string & {});
 export const Size = /*@__PURE__*/ S.String;
 
 /** The SKU that defines the tier and kind of the peering. */
@@ -861,7 +873,7 @@ export const PeeringSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PeeringSku" }) as any as S.Schema<PeeringSku>;
 
 /** The kind of the peering. */
-export type Kind = "Direct" | "Exchange";
+export type Kind = "Direct" | "Exchange" | (string & {});
 export const Kind = /*@__PURE__*/ S.String;
 
 /** Peering is a logical representation of a set of connections to the Microsoft Cloud Edge at a location. */
@@ -924,10 +936,14 @@ export const PeeringListResult = /*@__PURE__*/ S.suspend(() =>
 export type LookingGlassInvokeRequestCommand =
   | "Traceroute"
   | "Ping"
-  | "BgpRoute";
+  | "BgpRoute"
+  | (string & {});
 export const LookingGlassInvokeRequestCommand = /*@__PURE__*/ S.String;
 
-export type LookingGlassInvokeRequestSourceType = "EdgeSite" | "AzureRegion";
+export type LookingGlassInvokeRequestSourceType =
+  | "EdgeSite"
+  | "AzureRegion"
+  | (string & {});
 export const LookingGlassInvokeRequestSourceType = /*@__PURE__*/ S.String;
 
 export interface LookingGlassInvokeRequest {
@@ -962,7 +978,7 @@ export const LookingGlassInvokeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LookingGlassInvokeRequest>;
 
 /** Invoked command */
-export type Command = "Traceroute" | "Ping" | "BgpRoute";
+export type Command = "Traceroute" | "Ping" | "BgpRoute" | (string & {});
 export const Command = /*@__PURE__*/ S.String;
 
 /** Looking glass output model */
@@ -1165,7 +1181,8 @@ export type Role =
   | "Technical"
   | "Service"
   | "Escalation"
-  | "Other";
+  | "Other"
+  | (string & {});
 export const Role = /*@__PURE__*/ S.String;
 
 /** The contact detail class. */
@@ -1245,7 +1262,12 @@ export const PeerAsnPropertiesPeerContactDetailList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PeerAsnPropertiesPeerContactDetailList>;
 
 /** The validation state of the ASN associated with the peer. */
-export type ValidationState = "None" | "Pending" | "Approved" | "Failed";
+export type ValidationState =
+  | "None"
+  | "Pending"
+  | "Approved"
+  | "Failed"
+  | (string & {});
 export const ValidationState = /*@__PURE__*/ S.String;
 
 /** The properties that define a peer's ASN. */
@@ -1436,7 +1458,10 @@ export const PeerAsnListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "PeerAsnListResult",
 }) as any as S.Schema<PeerAsnListResult>;
 
-export type PeeringLocationsListRequestKind = "Direct" | "Exchange";
+export type PeeringLocationsListRequestKind =
+  | "Direct"
+  | "Exchange"
+  | (string & {});
 export const PeeringLocationsListRequestKind = /*@__PURE__*/ S.String;
 
 export type PeeringLocationsListRequestDirectPeeringType =
@@ -1448,7 +1473,8 @@ export type PeeringLocationsListRequestDirectPeeringType =
   | "IxRs"
   | "Voice"
   | "EdgeZoneForOperators"
-  | "PeerProp";
+  | "PeerProp"
+  | (string & {});
 export const PeeringLocationsListRequestDirectPeeringType =
   /*@__PURE__*/ S.String;
 
@@ -2959,11 +2985,16 @@ export type PrefixValidationState =
   | "Failed"
   | "Pending"
   | "Warning"
-  | "Unknown";
+  | "Unknown"
+  | (string & {});
 export const PrefixValidationState = /*@__PURE__*/ S.String;
 
 /** The prefix learned type */
-export type LearnedType = "None" | "ViaServiceProvider" | "ViaSession";
+export type LearnedType =
+  | "None"
+  | "ViaServiceProvider"
+  | "ViaSession"
+  | (string & {});
 export const LearnedType = /*@__PURE__*/ S.String;
 
 /** The details of the event associated with a prefix. */

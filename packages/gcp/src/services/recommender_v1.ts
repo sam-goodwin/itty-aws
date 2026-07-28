@@ -83,7 +83,8 @@ export type GoogleCloudRecommenderV1InsightStateInfoStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "ACCEPTED"
-  | "DISMISSED";
+  | "DISMISSED"
+  | (string & {});
 export const GoogleCloudRecommenderV1InsightStateInfoStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -136,7 +137,8 @@ export type GoogleCloudRecommenderV1InsightSeverityEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "CRITICAL";
+  | "CRITICAL"
+  | (string & {});
 export const GoogleCloudRecommenderV1InsightSeverityEnum =
   /*@__PURE__*/ S.String;
 
@@ -152,7 +154,8 @@ export type GoogleCloudRecommenderV1InsightCategoryEnum =
   | "PERFORMANCE"
   | "MANAGEABILITY"
   | "SUSTAINABILITY"
-  | "RELIABILITY";
+  | "RELIABILITY"
+  | (string & {});
 export const GoogleCloudRecommenderV1InsightCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -235,7 +238,8 @@ export type GoogleCloudRecommenderV1RecommendationStateInfoStateEnum =
   | "CLAIMED"
   | "SUCCEEDED"
   | "FAILED"
-  | "DISMISSED";
+  | "DISMISSED"
+  | (string & {});
 export const GoogleCloudRecommenderV1RecommendationStateInfoStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -368,7 +372,8 @@ export type GoogleCloudRecommenderV1RecommendationPriorityEnum =
   | "P4"
   | "P3"
   | "P2"
-  | "P1";
+  | "P1"
+  | (string & {});
 export const GoogleCloudRecommenderV1RecommendationPriorityEnum =
   /*@__PURE__*/ S.String;
 
@@ -418,7 +423,8 @@ export type GoogleCloudRecommenderV1ImpactCategoryEnum =
   | "PERFORMANCE"
   | "MANAGEABILITY"
   | "SUSTAINABILITY"
-  | "RELIABILITY";
+  | "RELIABILITY"
+  | (string & {});
 export const GoogleCloudRecommenderV1ImpactCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -443,7 +449,8 @@ export type GoogleCloudRecommenderV1ReliabilityProjectionRisksItemEnum =
   | "RISK_TYPE_UNSPECIFIED"
   | "SERVICE_DISRUPTION"
   | "DATA_LOSS"
-  | "ACCESS_DENY";
+  | "ACCESS_DENY"
+  | (string & {});
 export const GoogleCloudRecommenderV1ReliabilityProjectionRisksItemEnum =
   /*@__PURE__*/ S.String;
 

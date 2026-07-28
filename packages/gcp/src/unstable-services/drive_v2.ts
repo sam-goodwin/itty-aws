@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type CopyFilesVisibilityEnum = "DEFAULT" | "PRIVATE";
+export type CopyFilesVisibilityEnum = "DEFAULT" | "PRIVATE" | (string & {});
 export const CopyFilesVisibilityEnum = /*@__PURE__*/ S.String;
 
 export interface FileShortcutDetails {
@@ -2565,7 +2565,7 @@ export const GetDrivesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDrivesRequest",
 }) as any as S.Schema<GetDrivesRequest>;
 
-export type GetFilesProjectionEnum = "BASIC" | "FULL";
+export type GetFilesProjectionEnum = "BASIC" | "FULL" | (string & {});
 export const GetFilesProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface GetFilesRequest {
@@ -2978,7 +2978,7 @@ export const InsertDrivesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsertDrivesRequest",
 }) as any as S.Schema<InsertDrivesRequest>;
 
-export type InsertFilesVisibilityEnum = "DEFAULT" | "PRIVATE";
+export type InsertFilesVisibilityEnum = "DEFAULT" | "PRIVATE" | (string & {});
 export const InsertFilesVisibilityEnum = /*@__PURE__*/ S.String;
 
 export interface InsertFilesRequest {
@@ -3494,10 +3494,10 @@ export const DriveList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DriveList" }) as any as S.Schema<DriveList>;
 
-export type ListFilesCorpusEnum = "DEFAULT" | "DOMAIN";
+export type ListFilesCorpusEnum = "DEFAULT" | "DOMAIN" | (string & {});
 export const ListFilesCorpusEnum = /*@__PURE__*/ S.String;
 
-export type ListFilesProjectionEnum = "BASIC" | "FULL";
+export type ListFilesProjectionEnum = "BASIC" | "FULL" | (string & {});
 export const ListFilesProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface ListFilesRequest {
@@ -4078,7 +4078,8 @@ export type PatchFilesModifiedDateBehaviorEnum =
   | "fromBodyOrNow"
   | "noChange"
   | "now"
-  | "nowIfNeeded";
+  | "nowIfNeeded"
+  | (string & {});
 export const PatchFilesModifiedDateBehaviorEnum = /*@__PURE__*/ S.String;
 
 export interface PatchFilesRequest {
@@ -4503,7 +4504,8 @@ export type UpdateFilesModifiedDateBehaviorEnum =
   | "fromBodyOrNow"
   | "noChange"
   | "now"
-  | "nowIfNeeded";
+  | "nowIfNeeded"
+  | (string & {});
 export const UpdateFilesModifiedDateBehaviorEnum = /*@__PURE__*/ S.String;
 
 export interface UpdateFilesRequest {
@@ -4790,7 +4792,7 @@ export const WatchChangesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WatchChangesRequest",
 }) as any as S.Schema<WatchChangesRequest>;
 
-export type WatchFilesProjectionEnum = "BASIC" | "FULL";
+export type WatchFilesProjectionEnum = "BASIC" | "FULL" | (string & {});
 export const WatchFilesProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface WatchFilesRequest {

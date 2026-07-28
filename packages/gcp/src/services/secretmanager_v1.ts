@@ -241,7 +241,8 @@ export type SecretVersionStateEnum =
   | "STATE_UNSPECIFIED"
   | "ENABLED"
   | "DISABLED"
-  | "DESTROYED";
+  | "DESTROYED"
+  | (string & {});
 export const SecretVersionStateEnum = /*@__PURE__*/ S.String;
 
 /** A secret version resource in the Secret Manager API. */
@@ -405,7 +406,8 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
 export type ManagedRotationStatusStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "INACTIVE";
+  | "INACTIVE"
+  | (string & {});
 export const ManagedRotationStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents the status of a managed rotation. This is applicable only to Typed Secrets. It indicates whether the rotation is active and any errors that may have occurred during the asynchronous managed rotation. */
@@ -463,7 +465,8 @@ export type SecretSecretTypeEnum =
   | "ACCESS_KEY"
   | "CERTIFICATE"
   | "OTHER_DB_CREDENTIALS"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const SecretSecretTypeEnum = /*@__PURE__*/ S.String;
 
 /** Output-only policy member strings of a Google Cloud resource's built-in identity. */
@@ -956,7 +959,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */

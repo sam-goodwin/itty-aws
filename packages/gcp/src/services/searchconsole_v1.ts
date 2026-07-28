@@ -166,7 +166,8 @@ export type WmxSitemapTypeEnum =
   | "RSS_FEED"
   | "ATOM_FEED"
   | "PATTERN_SITEMAP"
-  | "OCEANFRONT";
+  | "OCEANFRONT"
+  | (string & {});
 export const WmxSitemapTypeEnum = /*@__PURE__*/ S.String;
 
 export type WmxSitemapContentTypeEnum =
@@ -178,7 +179,8 @@ export type WmxSitemapContentTypeEnum =
   | "ANDROID_APP"
   | "PATTERN"
   | "IOS_APP"
-  | "DATA_FEED_ELEMENT";
+  | "DATA_FEED_ELEMENT"
+  | (string & {});
 export const WmxSitemapContentTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about the various content types in the sitemap. */
@@ -263,7 +265,8 @@ export type WmxSitePermissionLevelEnum =
   | "SITE_OWNER"
   | "SITE_FULL_USER"
   | "SITE_RESTRICTED_USER"
-  | "SITE_UNVERIFIED_USER";
+  | "SITE_UNVERIFIED_USER"
+  | (string & {});
 export const WmxSitePermissionLevelEnum = /*@__PURE__*/ S.String;
 
 /** Contains permission level information about a Search Console site. For more information, see [Permissions in Search Console](https://support.google.com/webmasters/answer/2451999). */
@@ -320,17 +323,23 @@ export const InspectUrlInspectionIndexRequest = /*@__PURE__*/ S.suspend(() =>
 export type AmpInspectionResultRobotsTxtStateEnum =
   | "ROBOTS_TXT_STATE_UNSPECIFIED"
   | "ALLOWED"
-  | "DISALLOWED";
+  | "DISALLOWED"
+  | (string & {});
 export const AmpInspectionResultRobotsTxtStateEnum = /*@__PURE__*/ S.String;
 
 export type AmpInspectionResultIndexingStateEnum =
   | "AMP_INDEXING_STATE_UNSPECIFIED"
   | "AMP_INDEXING_ALLOWED"
   | "BLOCKED_DUE_TO_NOINDEX"
-  | "BLOCKED_DUE_TO_EXPIRED_UNAVAILABLE_AFTER";
+  | "BLOCKED_DUE_TO_EXPIRED_UNAVAILABLE_AFTER"
+  | (string & {});
 export const AmpInspectionResultIndexingStateEnum = /*@__PURE__*/ S.String;
 
-export type AmpIssueSeverityEnum = "SEVERITY_UNSPECIFIED" | "WARNING" | "ERROR";
+export type AmpIssueSeverityEnum =
+  | "SEVERITY_UNSPECIFIED"
+  | "WARNING"
+  | "ERROR"
+  | (string & {});
 export const AmpIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** AMP issue. */
@@ -357,7 +366,8 @@ export type AmpInspectionResultVerdictEnum =
   | "PASS"
   | "PARTIAL"
   | "FAIL"
-  | "NEUTRAL";
+  | "NEUTRAL"
+  | (string & {});
 export const AmpInspectionResultVerdictEnum = /*@__PURE__*/ S.String;
 
 export type AmpInspectionResultPageFetchStateEnum =
@@ -372,7 +382,8 @@ export type AmpInspectionResultPageFetchStateEnum =
   | "ACCESS_FORBIDDEN"
   | "BLOCKED_4XX"
   | "INTERNAL_CRAWL_ERROR"
-  | "INVALID_URL";
+  | "INVALID_URL"
+  | (string & {});
 export const AmpInspectionResultPageFetchStateEnum = /*@__PURE__*/ S.String;
 
 export type AmpInspectionResultAmpIndexStatusVerdictEnum =
@@ -380,7 +391,8 @@ export type AmpInspectionResultAmpIndexStatusVerdictEnum =
   | "PASS"
   | "PARTIAL"
   | "FAIL"
-  | "NEUTRAL";
+  | "NEUTRAL"
+  | (string & {});
 export const AmpInspectionResultAmpIndexStatusVerdictEnum =
   /*@__PURE__*/ S.String;
 
@@ -425,14 +437,16 @@ export type MobileUsabilityInspectionResultVerdictEnum =
   | "PASS"
   | "PARTIAL"
   | "FAIL"
-  | "NEUTRAL";
+  | "NEUTRAL"
+  | (string & {});
 export const MobileUsabilityInspectionResultVerdictEnum =
   /*@__PURE__*/ S.String;
 
 export type MobileUsabilityIssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "WARNING"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const MobileUsabilityIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 export type MobileUsabilityIssueIssueTypeEnum =
@@ -442,7 +456,8 @@ export type MobileUsabilityIssueIssueTypeEnum =
   | "FIXED_WIDTH_VIEWPORT"
   | "SIZE_CONTENT_TO_VIEWPORT"
   | "USE_LEGIBLE_FONT_SIZES"
-  | "TAP_TARGETS_TOO_CLOSE";
+  | "TAP_TARGETS_TOO_CLOSE"
+  | (string & {});
 export const MobileUsabilityIssueIssueTypeEnum = /*@__PURE__*/ S.String;
 
 /** Mobile-usability issue. */
@@ -490,13 +505,15 @@ export type RichResultsInspectionResultVerdictEnum =
   | "PASS"
   | "PARTIAL"
   | "FAIL"
-  | "NEUTRAL";
+  | "NEUTRAL"
+  | (string & {});
 export const RichResultsInspectionResultVerdictEnum = /*@__PURE__*/ S.String;
 
 export type RichResultsIssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "WARNING"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const RichResultsIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Severity and status of a single issue affecting a single rich result instance on a page. */
@@ -591,7 +608,8 @@ export type IndexStatusInspectionResultPageFetchStateEnum =
   | "ACCESS_FORBIDDEN"
   | "BLOCKED_4XX"
   | "INTERNAL_CRAWL_ERROR"
-  | "INVALID_URL";
+  | "INVALID_URL"
+  | (string & {});
 export const IndexStatusInspectionResultPageFetchStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -600,14 +618,16 @@ export type IndexStatusInspectionResultIndexingStateEnum =
   | "INDEXING_ALLOWED"
   | "BLOCKED_BY_META_TAG"
   | "BLOCKED_BY_HTTP_HEADER"
-  | "BLOCKED_BY_ROBOTS_TXT";
+  | "BLOCKED_BY_ROBOTS_TXT"
+  | (string & {});
 export const IndexStatusInspectionResultIndexingStateEnum =
   /*@__PURE__*/ S.String;
 
 export type IndexStatusInspectionResultRobotsTxtStateEnum =
   | "ROBOTS_TXT_STATE_UNSPECIFIED"
   | "ALLOWED"
-  | "DISALLOWED";
+  | "DISALLOWED"
+  | (string & {});
 export const IndexStatusInspectionResultRobotsTxtStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -616,13 +636,15 @@ export type IndexStatusInspectionResultVerdictEnum =
   | "PASS"
   | "PARTIAL"
   | "FAIL"
-  | "NEUTRAL";
+  | "NEUTRAL"
+  | (string & {});
 export const IndexStatusInspectionResultVerdictEnum = /*@__PURE__*/ S.String;
 
 export type IndexStatusInspectionResultCrawledAsEnum =
   | "CRAWLING_USER_AGENT_UNSPECIFIED"
   | "DESKTOP"
-  | "MOBILE";
+  | "MOBILE"
+  | (string & {});
 export const IndexStatusInspectionResultCrawledAsEnum = /*@__PURE__*/ S.String;
 
 /** Results of index status inspection for either the live page or the version in Google's index, depending on whether you requested a live inspection or not. For more information, see the [Index coverage report documentation](https://support.google.com/webmasters/answer/7440203). */
@@ -776,7 +798,7 @@ export const SitesListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesListResponse",
 }) as any as S.Schema<SitesListResponse>;
 
-export type ApiDimensionFilterGroupGroupTypeEnum = "AND";
+export type ApiDimensionFilterGroupGroupTypeEnum = "AND" | (string & {});
 export const ApiDimensionFilterGroupGroupTypeEnum = /*@__PURE__*/ S.String;
 
 export type ApiDimensionFilterDimensionEnum =
@@ -784,7 +806,8 @@ export type ApiDimensionFilterDimensionEnum =
   | "PAGE"
   | "COUNTRY"
   | "DEVICE"
-  | "SEARCH_APPEARANCE";
+  | "SEARCH_APPEARANCE"
+  | (string & {});
 export const ApiDimensionFilterDimensionEnum = /*@__PURE__*/ S.String;
 
 export type ApiDimensionFilterOperatorEnum =
@@ -793,7 +816,8 @@ export type ApiDimensionFilterOperatorEnum =
   | "CONTAINS"
   | "NOT_CONTAINS"
   | "INCLUDING_REGEX"
-  | "EXCLUDING_REGEX";
+  | "EXCLUDING_REGEX"
+  | (string & {});
 export const ApiDimensionFilterOperatorEnum = /*@__PURE__*/ S.String;
 
 /** A filter test to be applied to each row in the data set, where a match can return the row. Filters are string comparisons, and values and dimension names are not case-sensitive. Individual filters are either AND'ed or OR'ed within their parent filter group, according to the group's group type. You do not need to group by a specified dimension to filter against it. */
@@ -843,7 +867,8 @@ export type SearchAnalyticsQueryRequestTypeEnum =
   | "VIDEO"
   | "NEWS"
   | "DISCOVER"
-  | "GOOGLE_NEWS";
+  | "GOOGLE_NEWS"
+  | (string & {});
 export const SearchAnalyticsQueryRequestTypeEnum = /*@__PURE__*/ S.String;
 
 export type SearchAnalyticsQueryRequestSearchTypeEnum =
@@ -852,14 +877,16 @@ export type SearchAnalyticsQueryRequestSearchTypeEnum =
   | "VIDEO"
   | "NEWS"
   | "DISCOVER"
-  | "GOOGLE_NEWS";
+  | "GOOGLE_NEWS"
+  | (string & {});
 export const SearchAnalyticsQueryRequestSearchTypeEnum = /*@__PURE__*/ S.String;
 
 export type SearchAnalyticsQueryRequestAggregationTypeEnum =
   | "AUTO"
   | "BY_PROPERTY"
   | "BY_PAGE"
-  | "BY_NEWS_SHOWCASE_PANEL";
+  | "BY_NEWS_SHOWCASE_PANEL"
+  | (string & {});
 export const SearchAnalyticsQueryRequestAggregationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -867,7 +894,8 @@ export type SearchAnalyticsQueryRequestDataStateEnum =
   | "DATA_STATE_UNSPECIFIED"
   | "FINAL"
   | "ALL"
-  | "HOURLY_ALL";
+  | "HOURLY_ALL"
+  | (string & {});
 export const SearchAnalyticsQueryRequestDataStateEnum = /*@__PURE__*/ S.String;
 
 export type SearchAnalyticsQueryRequestDimensionsItemEnum =
@@ -877,7 +905,8 @@ export type SearchAnalyticsQueryRequestDimensionsItemEnum =
   | "COUNTRY"
   | "DEVICE"
   | "SEARCH_APPEARANCE"
-  | "HOUR";
+  | "HOUR"
+  | (string & {});
 export const SearchAnalyticsQueryRequestDimensionsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -952,7 +981,8 @@ export type SearchAnalyticsQueryResponseResponseAggregationTypeEnum =
   | "AUTO"
   | "BY_PROPERTY"
   | "BY_PAGE"
-  | "BY_NEWS_SHOWCASE_PANEL";
+  | "BY_NEWS_SHOWCASE_PANEL"
+  | (string & {});
 export const SearchAnalyticsQueryResponseResponseAggregationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1052,7 +1082,8 @@ export type TestStatusStatusEnum =
   | "TEST_STATUS_UNSPECIFIED"
   | "COMPLETE"
   | "INTERNAL_ERROR"
-  | "PAGE_UNREACHABLE";
+  | "PAGE_UNREACHABLE"
+  | (string & {});
 export const TestStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** Final state of the test, including error details if necessary. */
@@ -1115,7 +1146,8 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
 export type RunMobileFriendlyTestResponseMobileFriendlinessEnum =
   | "MOBILE_FRIENDLY_TEST_RESULT_UNSPECIFIED"
   | "MOBILE_FRIENDLY"
-  | "NOT_MOBILE_FRIENDLY";
+  | "NOT_MOBILE_FRIENDLY"
+  | (string & {});
 export const RunMobileFriendlyTestResponseMobileFriendlinessEnum =
   /*@__PURE__*/ S.String;
 
@@ -1126,7 +1158,8 @@ export type MobileFriendlyIssueRuleEnum =
   | "FIXED_WIDTH_VIEWPORT"
   | "SIZE_CONTENT_TO_VIEWPORT"
   | "USE_LEGIBLE_FONT_SIZES"
-  | "TAP_TARGETS_TOO_CLOSE";
+  | "TAP_TARGETS_TOO_CLOSE"
+  | (string & {});
 export const MobileFriendlyIssueRuleEnum = /*@__PURE__*/ S.String;
 
 /** Mobile-friendly issue. */

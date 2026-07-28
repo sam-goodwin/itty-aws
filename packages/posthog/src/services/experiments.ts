@@ -68,10 +68,10 @@ export const MinimalFeatureFlagFiltersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MinimalFeatureFlagFiltersMap>;
 
 /** * `server` - Server * `client` - Client * `all` - All */
-export type EvaluationRuntimeEnum = "server" | "client" | "all";
+export type EvaluationRuntimeEnum = "server" | "client" | "all" | (string & {});
 export const EvaluationRuntimeEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
@@ -82,7 +82,10 @@ export const MinimalFeatureFlagEvaluationRuntime =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MinimalFeatureFlagEvaluationRuntime>;
 
 /** * `distinct_id` - User ID (default) * `device_id` - Device ID */
-export type BucketingIdentifierEnum = "distinct_id" | "device_id";
+export type BucketingIdentifierEnum =
+  | "distinct_id"
+  | "device_id"
+  | (string & {});
 export const BucketingIdentifierEnum = /*@__PURE__*/ S.String;
 
 /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
@@ -137,7 +140,11 @@ export const MinimalFeatureFlag = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MinimalFeatureFlag>;
 
 /** * `cohort` - cohort * `person` - person * `group` - group */
-export type PropertyGroupTypeEnum = "cohort" | "person" | "group";
+export type PropertyGroupTypeEnum =
+  | "cohort"
+  | "person"
+  | "group"
+  | (string & {});
 export const PropertyGroupTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
@@ -151,7 +158,8 @@ export type FeatureFlagFilterPropertyGenericSchemaOperatorEnum =
   | "gt"
   | "gte"
   | "lt"
-  | "lte";
+  | "lte"
+  | (string & {});
 export const FeatureFlagFilterPropertyGenericSchemaOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -184,7 +192,7 @@ export const FeatureFlagFilterPropertyGenericSchema = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FeatureFlagFilterPropertyGenericSchema>;
 
 /** * `is_set` - is_set * `is_not_set` - is_not_set */
-export type ExistenceOperatorEnum = "is_set" | "is_not_set";
+export type ExistenceOperatorEnum = "is_set" | "is_not_set" | (string & {});
 export const ExistenceOperatorEnum = /*@__PURE__*/ S.String;
 
 export interface FeatureFlagFilterPropertyExistsSchema {
@@ -219,7 +227,8 @@ export const FeatureFlagFilterPropertyExistsSchema = /*@__PURE__*/ S.suspend(
 export type DateOperatorEnum =
   | "is_date_exact"
   | "is_date_before"
-  | "is_date_after";
+  | "is_date_after"
+  | (string & {});
 export const DateOperatorEnum = /*@__PURE__*/ S.String;
 
 export interface FeatureFlagFilterPropertyDateSchema {
@@ -259,7 +268,8 @@ export type FeatureFlagFilterPropertySemverSchemaOperatorEnum =
   | "semver_neq"
   | "semver_tilde"
   | "semver_caret"
-  | "semver_wildcard";
+  | "semver_wildcard"
+  | (string & {});
 export const FeatureFlagFilterPropertySemverSchemaOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -294,7 +304,8 @@ export const FeatureFlagFilterPropertySemverSchema = /*@__PURE__*/ S.suspend(
 /** * `icontains_multi` - icontains_multi * `not_icontains_multi` - not_icontains_multi */
 export type FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum =
   | "icontains_multi"
-  | "not_icontains_multi";
+  | "not_icontains_multi"
+  | (string & {});
 export const FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -337,14 +348,17 @@ export const FeatureFlagFilterPropertyMultiContainsSchema =
   }) as any as S.Schema<FeatureFlagFilterPropertyMultiContainsSchema>;
 
 /** * `cohort` - cohort */
-export type FeatureFlagFilterPropertyCohortInSchemaTypeEnum = "cohort";
+export type FeatureFlagFilterPropertyCohortInSchemaTypeEnum =
+  | "cohort"
+  | (string & {});
 export const FeatureFlagFilterPropertyCohortInSchemaTypeEnum =
   /*@__PURE__*/ S.String;
 
 /** * `in` - in * `not_in` - not_in */
 export type FeatureFlagFilterPropertyCohortInSchemaOperatorEnum =
   | "in"
-  | "not_in";
+  | "not_in"
+  | (string & {});
 export const FeatureFlagFilterPropertyCohortInSchemaOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -377,13 +391,16 @@ export const FeatureFlagFilterPropertyCohortInSchema = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FeatureFlagFilterPropertyCohortInSchema>;
 
 /** * `flag` - flag */
-export type FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum = "flag";
+export type FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum =
+  | "flag"
+  | (string & {});
 export const FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum =
   /*@__PURE__*/ S.String;
 
 /** * `flag_evaluates_to` - flag_evaluates_to */
 export type FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum =
-  "flag_evaluates_to";
+  | "flag_evaluates_to"
+  | (string & {});
 export const FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -479,7 +496,8 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -564,10 +582,14 @@ export const ExperimentParameters = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentParameters",
 }) as any as S.Schema<ExperimentParameters>;
 
-export type ConversionRateInputType = "manual" | "automatic";
+export type ConversionRateInputType = "manual" | "automatic" | (string & {});
 export const ConversionRateInputType = /*@__PURE__*/ S.String;
 
-export type ManualMetricType = "funnel" | "mean_count" | "mean_sum_or_avg";
+export type ManualMetricType =
+  | "funnel"
+  | "mean_count"
+  | "mean_sum_or_avg"
+  | (string & {});
 export const ManualMetricType = /*@__PURE__*/ S.String;
 
 export interface ExperimentExposureEstimateConfig {
@@ -656,10 +678,13 @@ export const ExperimentOutputSavedMetricsIdsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ExperimentOutputSavedMetricsIdsList>;
 
 /** * `web` - web * `product` - product */
-export type ExperimentTypeEnum = "web" | "product";
+export type ExperimentTypeEnum = "web" | "product" | (string & {});
 export const ExperimentTypeEnum = /*@__PURE__*/ S.String;
 
-export type Kind1 = "ExperimentEventExposureConfig" | "ActionsNode";
+export type Kind1 =
+  | "ExperimentEventExposureConfig"
+  | "ActionsNode"
+  | (string & {});
 export const Kind1 = /*@__PURE__*/ S.String;
 
 export type PropertyOperator =
@@ -696,7 +721,8 @@ export type PropertyOperator =
   | "semver_caret"
   | "semver_wildcard"
   | "icontains_multi"
-  | "not_icontains_multi";
+  | "not_icontains_multi"
+  | (string & {});
 export const PropertyOperator = /*@__PURE__*/ S.String;
 
 export type EventPropertyFilterValueCase0Item = string | number | boolean;
@@ -816,7 +842,7 @@ export const PersonMetadataPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonMetadataPropertyFilter",
 }) as any as S.Schema<PersonMetadataPropertyFilter>;
 
-export type Key10 = "tag_name" | "text" | "href" | "selector";
+export type Key10 = "tag_name" | "text" | "href" | "selector" | (string & {});
 export const Key10 = /*@__PURE__*/ S.String;
 
 export type ElementPropertyFilterValueCase0Item = string | number | boolean;
@@ -954,7 +980,11 @@ export const CohortPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "CohortPropertyFilter",
 }) as any as S.Schema<CohortPropertyFilter>;
 
-export type DurationType = "duration" | "active_seconds" | "inactive_seconds";
+export type DurationType =
+  | "duration"
+  | "active_seconds"
+  | "inactive_seconds"
+  | (string & {});
 export const DurationType = /*@__PURE__*/ S.String;
 
 export type RecordingPropertyFilterKey = DurationType | string;
@@ -1317,7 +1347,8 @@ export const ErrorTrackingIssueFilter = /*@__PURE__*/ S.suspend(() =>
 export type LogPropertyFilterType =
   | "log"
   | "log_attribute"
-  | "log_resource_attribute";
+  | "log_resource_attribute"
+  | (string & {});
 export const LogPropertyFilterType = /*@__PURE__*/ S.String;
 
 export type LogPropertyFilterValueCase0Item = string | number | boolean;
@@ -1397,7 +1428,8 @@ export const MetricPropertyFilter = /*@__PURE__*/ S.suspend(() =>
 export type SpanPropertyFilterType =
   | "span"
   | "span_attribute"
-  | "span_resource_attribute";
+  | "span_resource_attribute"
+  | (string & {});
 export const SpanPropertyFilterType = /*@__PURE__*/ S.String;
 
 export type SpanPropertyFilterValueCase0Item = string | number | boolean;
@@ -1615,7 +1647,7 @@ export const ExperimentApiExposureConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentApiExposureConfig",
 }) as any as S.Schema<ExperimentApiExposureConfig>;
 
-export type MultipleVariantHandling = "exclude" | "first_seen";
+export type MultipleVariantHandling = "exclude" | "first_seen" | (string & {});
 export const MultipleVariantHandling = /*@__PURE__*/ S.String;
 
 export interface ExperimentApiExposureCriteria {
@@ -1634,7 +1666,7 @@ export const ExperimentApiExposureCriteria = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentApiExposureCriteria",
 }) as any as S.Schema<ExperimentApiExposureCriteria>;
 
-export type Kind = "EventsNode" | "ActionsNode";
+export type Kind = "EventsNode" | "ActionsNode" | (string & {});
 export const Kind = /*@__PURE__*/ S.String;
 
 export type ExperimentMetricMathType =
@@ -1646,10 +1678,11 @@ export type ExperimentMetricMathType =
   | "avg"
   | "dau"
   | "unique_group"
-  | "hogql";
+  | "hogql"
+  | (string & {});
 export const ExperimentMetricMathType = /*@__PURE__*/ S.String;
 
-export type MathGroupTypeIndex = 0 | 1 | 2 | 3 | 4;
+export type MathGroupTypeIndex = 0 | 1 | 2 | 3 | 4 | (number & {});
 export const MathGroupTypeIndex = /*@__PURE__*/ S.Number;
 
 export type ExperimentApiEventSourcePropertiesList =
@@ -1707,10 +1740,15 @@ export const ExperimentMetricOutlierHandling = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentMetricOutlierHandling",
 }) as any as S.Schema<ExperimentMetricOutlierHandling>;
 
-export type ExperimentMetricGoal = "increase" | "decrease";
+export type ExperimentMetricGoal = "increase" | "decrease" | (string & {});
 export const ExperimentMetricGoal = /*@__PURE__*/ S.String;
 
-export type ExperimentMetricType = "funnel" | "mean" | "ratio" | "retention";
+export type ExperimentMetricType =
+  | "funnel"
+  | "mean"
+  | "ratio"
+  | "retention"
+  | (string & {});
 export const ExperimentMetricType = /*@__PURE__*/ S.String;
 
 export type FunnelConversionWindowTimeUnit =
@@ -1719,7 +1757,8 @@ export type FunnelConversionWindowTimeUnit =
   | "hour"
   | "day"
   | "week"
-  | "month";
+  | "month"
+  | (string & {});
 export const FunnelConversionWindowTimeUnit = /*@__PURE__*/ S.String;
 
 export type ExperimentApiMetricSeriesList =
@@ -1728,7 +1767,7 @@ export const ExperimentApiMetricSeriesList = /*@__PURE__*/ S.Array(
   ExperimentApiEventSource,
 ) as any as S.Schema<ExperimentApiMetricSeriesList>;
 
-export type StartHandling = "first_seen" | "last_seen";
+export type StartHandling = "first_seen" | "last_seen" | (string & {});
 export const StartHandling = /*@__PURE__*/ S.String;
 
 export interface ExperimentApiMetric {
@@ -1816,7 +1855,8 @@ export type ConclusionEnum =
   | "lost"
   | "inconclusive"
   | "stopped_early"
-  | "invalid";
+  | "invalid"
+  | (string & {});
 export const ConclusionEnum = /*@__PURE__*/ S.String;
 
 export type ExperimentStatusEnum =
@@ -1824,7 +1864,8 @@ export type ExperimentStatusEnum =
   | "running"
   | "paused"
   | "exposure_frozen"
-  | "stopped";
+  | "stopped"
+  | (string & {});
 export const ExperimentStatusEnum = /*@__PURE__*/ S.String;
 
 /** Full experiment representation for the detail, create, and update endpoints. Extends the shared read-side fields in ``ExperimentBaseSerializer`` with the metric definitions (``metrics``/``metrics_secondary``/``saved_metrics``) and the write-side fields, and refreshes stale action names while serializing. The list endpoint uses the leaner ``ExperimentBasicSerializer`` instead. */
@@ -1945,7 +1986,8 @@ export type MetricTypeEnum =
   | "mean_count"
   | "mean_sum_or_avg"
   | "ratio"
-  | "retention";
+  | "retention"
+  | (string & {});
 export const MetricTypeEnum = /*@__PURE__*/ S.String;
 
 /** Per-step counts for funnel metrics; the last entry is the final-step count. */
@@ -2445,7 +2487,11 @@ export const ExperimentsCreateFromPromptCreateRequestVersionsList =
   ) as any as S.Schema<ExperimentsCreateFromPromptCreateRequestVersionsList>;
 
 /** * `cost` - cost * `latency` - latency * `eval_pass_rate` - eval_pass_rate */
-export type TemplatesEnum = "cost" | "latency" | "eval_pass_rate";
+export type TemplatesEnum =
+  | "cost"
+  | "latency"
+  | "eval_pass_rate"
+  | (string & {});
 export const TemplatesEnum = /*@__PURE__*/ S.String;
 
 /** One or more metric templates to attach as primary metrics. Each template becomes one metric on the experiment. Allowed values: cost, latency, eval_pass_rate. */
@@ -2703,7 +2749,8 @@ export type RunStatusEnum =
   | "in_progress"
   | "completed"
   | "failed"
-  | "cancelled";
+  | "cancelled"
+  | (string & {});
 export const RunStatusEnum = /*@__PURE__*/ S.String;
 
 export interface ExperimentFlagCleanupTask {
@@ -2780,7 +2827,8 @@ export type ExperimentsListRequestStatus =
   | "exposure_frozen"
   | "paused"
   | "running"
-  | "stopped";
+  | "stopped"
+  | (string & {});
 export const ExperimentsListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ExperimentsListRequest {
@@ -2942,7 +2990,8 @@ export type TriggerEnum =
   | "config_change"
   | "experiment_launch"
   | "experiment_stop"
-  | "experiment_update";
+  | "experiment_update"
+  | (string & {});
 export const TriggerEnum = /*@__PURE__*/ S.String;
 
 export interface ExperimentsMetricsRecalculationCreateRequest {
@@ -2975,7 +3024,8 @@ export type MetricsRecalculationStatusEnum =
   | "pending"
   | "in_progress"
   | "completed"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const MetricsRecalculationStatusEnum = /*@__PURE__*/ S.String;
 
 /** Pointer to a recalculation run that is still executing, surfaced alongside the latest terminal results. */
@@ -2995,14 +3045,18 @@ export const ActiveRecalculationRun = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActiveRecalculationRun>;
 
 /** * `recalculation` - recalculation * `timeseries_fallback` - timeseries_fallback */
-export type ResultSourceEnum = "recalculation" | "timeseries_fallback";
+export type ResultSourceEnum =
+  | "recalculation"
+  | "timeseries_fallback"
+  | (string & {});
 export const ResultSourceEnum = /*@__PURE__*/ S.String;
 
 /** * `pending` - pending * `completed` - completed * `failed` - failed */
 export type MetricRecalculationResultStatusEnum =
   | "pending"
   | "completed"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const MetricRecalculationResultStatusEnum = /*@__PURE__*/ S.String;
 
 /** One metric's recalculated result row, read back from ExperimentMetricResult. */

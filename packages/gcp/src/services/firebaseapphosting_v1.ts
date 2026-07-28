@@ -99,7 +99,8 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
 export type BackendServingLocalityEnum =
   | "SERVING_LOCALITY_UNSPECIFIED"
   | "REGIONAL_STRICT"
-  | "GLOBAL_ACCESS";
+  | "GLOBAL_ACCESS"
+  | (string & {});
 export const BackendServingLocalityEnum = /*@__PURE__*/ S.String;
 
 /** A managed Cloud Run [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service). */
@@ -425,7 +426,8 @@ export const BuildSource = /*@__PURE__*/ S.suspend(() =>
 export type Firebaseapphosting_ErrorErrorSourceEnum =
   | "ERROR_SOURCE_UNSPECIFIED"
   | "CLOUD_BUILD"
-  | "CLOUD_RUN";
+  | "CLOUD_RUN"
+  | (string & {});
 export const Firebaseapphosting_ErrorErrorSourceEnum = /*@__PURE__*/ S.String;
 
 /** The container for the rpc status and source for any errors found during the build process. */
@@ -456,7 +458,8 @@ export const Firebaseapphosting_ErrorList = /*@__PURE__*/ S.Array(
 export type EnvironmentVariableAvailabilityItemEnum =
   | "AVAILABILITY_UNSPECIFIED"
   | "BUILD"
-  | "RUNTIME";
+  | "RUNTIME"
+  | (string & {});
 export const EnvironmentVariableAvailabilityItemEnum = /*@__PURE__*/ S.String;
 
 export type EnvironmentVariableAvailabilityItemEnumList =
@@ -471,7 +474,8 @@ export type EnvironmentVariableOriginEnum =
   | "BACKEND_OVERRIDES"
   | "BUILD_CONFIG"
   | "APPHOSTING_YAML"
-  | "FIREBASE_SYSTEM";
+  | "FIREBASE_SYSTEM"
+  | (string & {});
 export const EnvironmentVariableOriginEnum = /*@__PURE__*/ S.String;
 
 /** Environment variables for this build. */
@@ -555,7 +559,8 @@ export type BuildStateEnum =
   | "READY"
   | "FAILED"
   | "SKIPPED"
-  | "EXPIRED";
+  | "EXPIRED"
+  | (string & {});
 export const BuildStateEnum = /*@__PURE__*/ S.String;
 
 /** A single build for a backend, at a specific point codebase reference tag and point in time. Encapsulates several resources, including an Artifact Registry container image, a Cloud Build invocation that built the image, and the Cloud Run revision that uses that image. */
@@ -655,7 +660,8 @@ export type CustomDomainStatusCertStateEnum =
   | "CERT_PROPAGATING"
   | "CERT_ACTIVE"
   | "CERT_EXPIRING_SOON"
-  | "CERT_EXPIRED";
+  | "CERT_EXPIRED"
+  | (string & {});
 export const CustomDomainStatusCertStateEnum = /*@__PURE__*/ S.String;
 
 export type CustomDomainStatusHostStateEnum =
@@ -665,14 +671,16 @@ export type CustomDomainStatusHostStateEnum =
   | "HOST_NON_FAH"
   | "HOST_CONFLICT"
   | "HOST_WRONG_SHARD"
-  | "HOST_ACTIVE";
+  | "HOST_ACTIVE"
+  | (string & {});
 export const CustomDomainStatusHostStateEnum = /*@__PURE__*/ S.String;
 
 export type DnsRecordRelevantStateItemEnum =
   | "CUSTOM_DOMAIN_STATE_UNSPECIFIED"
   | "HOST_STATE"
   | "OWNERSHIP_STATE"
-  | "CERT_STATE";
+  | "CERT_STATE"
+  | (string & {});
 export const DnsRecordRelevantStateItemEnum = /*@__PURE__*/ S.String;
 
 export type DnsRecordRelevantStateItemEnumList =
@@ -681,7 +689,11 @@ export const DnsRecordRelevantStateItemEnumList = /*@__PURE__*/ S.Array(
   DnsRecordRelevantStateItemEnum,
 ) as any as S.Schema<DnsRecordRelevantStateItemEnumList>;
 
-export type DnsRecordRequiredActionEnum = "NONE" | "ADD" | "REMOVE";
+export type DnsRecordRequiredActionEnum =
+  | "NONE"
+  | "ADD"
+  | "REMOVE"
+  | (string & {});
 export const DnsRecordRequiredActionEnum = /*@__PURE__*/ S.String;
 
 export type DnsRecordTypeEnum =
@@ -690,7 +702,8 @@ export type DnsRecordTypeEnum =
   | "CNAME"
   | "TXT"
   | "AAAA"
-  | "CAA";
+  | "CAA"
+  | (string & {});
 export const DnsRecordTypeEnum = /*@__PURE__*/ S.String;
 
 /** A representation of a DNS records for a domain. DNS records are resource records that define how systems and services should behave when handling requests for a domain. For example, when you add `A` records to your domain's DNS records, you're informing other systems (such as your users' web browsers) to contact those IPv4 addresses to retrieve resources relevant to your domain (such as your App Hosting files). */
@@ -775,7 +788,8 @@ export type CustomDomainStatusOwnershipStateEnum =
   | "OWNERSHIP_MISMATCH"
   | "OWNERSHIP_CONFLICT"
   | "OWNERSHIP_PENDING"
-  | "OWNERSHIP_ACTIVE";
+  | "OWNERSHIP_ACTIVE"
+  | (string & {});
 export const CustomDomainStatusOwnershipStateEnum = /*@__PURE__*/ S.String;
 
 export type StatusList = ReadonlyArray<Status>;
@@ -835,7 +849,11 @@ export const ServingBehavior = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServingBehavior",
 }) as any as S.Schema<ServingBehavior>;
 
-export type DomainTypeEnum = "TYPE_UNSPECIFIED" | "DEFAULT" | "CUSTOM";
+export type DomainTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "DEFAULT"
+  | "CUSTOM"
+  | (string & {});
 export const DomainTypeEnum = /*@__PURE__*/ S.String;
 
 /** A domain name that is associated with a backend. */
@@ -928,7 +946,8 @@ export type RolloutStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "CANCELLED"
-  | "SKIPPED";
+  | "SKIPPED"
+  | (string & {});
 export const RolloutStateEnum = /*@__PURE__*/ S.String;
 
 /** A single rollout of a build for a backend. */
@@ -1284,7 +1303,8 @@ export type PathTypeEnum =
   | "PATTERN_TYPE_UNSPECIFIED"
   | "RE2"
   | "GLOB"
-  | "PREFIX";
+  | "PREFIX"
+  | (string & {});
 export const PathTypeEnum = /*@__PURE__*/ S.String;
 
 /** A file path pattern to match against. */

@@ -66,7 +66,8 @@ export type DelegatedControllerPropertiesProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Provisioning";
+  | "Provisioning"
+  | (string & {});
 export const DelegatedControllerPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -466,7 +467,8 @@ export type DelegatedSubnetPropertiesProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Provisioning";
+  | "Provisioning"
+  | (string & {});
 export const DelegatedSubnetPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -874,11 +876,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
+export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
+export type OperationActionType = "Internal" | (string & {});
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -926,12 +928,17 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsListResponse>;
 
 /** The kind of workbook. Choices are user and shared. */
-export type OrchestratorInstanceServiceCreateRequestKind = "Kubernetes";
+export type OrchestratorInstanceServiceCreateRequestKind =
+  | "Kubernetes"
+  | (string & {});
 export const OrchestratorInstanceServiceCreateRequestKind =
   /*@__PURE__*/ S.String;
 
 /** The type of identity used for orchestrator cluster. Type 'SystemAssigned' will use an implicitly created identity orchestrator clusters */
-export type OrchestratorIdentityInputType = "SystemAssigned" | "None";
+export type OrchestratorIdentityInputType =
+  | "SystemAssigned"
+  | "None"
+  | (string & {});
 export const OrchestratorIdentityInputType = /*@__PURE__*/ S.String;
 
 export interface OrchestratorIdentityInput {
@@ -1040,12 +1047,17 @@ export const OrchestratorInstanceServiceCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OrchestratorInstanceServiceCreateRequest>;
 
 /** The kind of workbook. Choices are user and shared. */
-export type OrchestratorInstanceServiceCreateResponseKind = "Kubernetes";
+export type OrchestratorInstanceServiceCreateResponseKind =
+  | "Kubernetes"
+  | (string & {});
 export const OrchestratorInstanceServiceCreateResponseKind =
   /*@__PURE__*/ S.String;
 
 /** The type of identity used for orchestrator cluster. Type 'SystemAssigned' will use an implicitly created identity orchestrator clusters */
-export type OrchestratorIdentityType = "SystemAssigned" | "None";
+export type OrchestratorIdentityType =
+  | "SystemAssigned"
+  | "None"
+  | (string & {});
 export const OrchestratorIdentityType = /*@__PURE__*/ S.String;
 
 export interface OrchestratorIdentity {
@@ -1081,7 +1093,8 @@ export type OrchestratorResourcePropertiesProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Provisioning";
+  | "Provisioning"
+  | (string & {});
 export const OrchestratorResourcePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1231,7 +1244,9 @@ export const OrchestratorInstanceServiceGetDetailsRequest =
   }) as any as S.Schema<OrchestratorInstanceServiceGetDetailsRequest>;
 
 /** The kind of workbook. Choices are user and shared. */
-export type OrchestratorInstanceServiceGetDetailsResponseKind = "Kubernetes";
+export type OrchestratorInstanceServiceGetDetailsResponseKind =
+  | "Kubernetes"
+  | (string & {});
 export const OrchestratorInstanceServiceGetDetailsResponseKind =
   /*@__PURE__*/ S.String;
 
@@ -1303,7 +1318,7 @@ export const OrchestratorInstanceServiceListByResourceGroupRequest =
   }) as any as S.Schema<OrchestratorInstanceServiceListByResourceGroupRequest>;
 
 /** The kind of workbook. Choices are user and shared. */
-export type OrchestratorKind = "Kubernetes";
+export type OrchestratorKind = "Kubernetes" | (string & {});
 export const OrchestratorKind = /*@__PURE__*/ S.String;
 
 /** The resource tags. */
@@ -1425,7 +1440,9 @@ export const OrchestratorInstanceServicePatchRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OrchestratorInstanceServicePatchRequest>;
 
 /** The kind of workbook. Choices are user and shared. */
-export type OrchestratorInstanceServicePatchResponseKind = "Kubernetes";
+export type OrchestratorInstanceServicePatchResponseKind =
+  | "Kubernetes"
+  | (string & {});
 export const OrchestratorInstanceServicePatchResponseKind =
   /*@__PURE__*/ S.String;
 

@@ -719,7 +719,8 @@ export const CancelPropertiesDisplayVideo360AdvertiserLinkProposalsRequest =
 export type GoogleAnalyticsAdminV1alphaLinkProposalStatusDetailsLinkProposalInitiatingProductEnum =
     | "LINK_PROPOSAL_INITIATING_PRODUCT_UNSPECIFIED"
     | "GOOGLE_ANALYTICS"
-    | "LINKED_PRODUCT";
+    | "LINKED_PRODUCT"
+    | (string & {});
 export const GoogleAnalyticsAdminV1alphaLinkProposalStatusDetailsLinkProposalInitiatingProductEnum =
   /*@__PURE__*/ S.String;
 
@@ -730,7 +731,8 @@ export type GoogleAnalyticsAdminV1alphaLinkProposalStatusDetailsLinkProposalStat
     | "WITHDRAWN"
     | "DECLINED"
     | "EXPIRED"
-    | "OBSOLETE";
+    | "OBSOLETE"
+    | (string & {});
 export const GoogleAnalyticsAdminV1alphaLinkProposalStatusDetailsLinkProposalStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -823,7 +825,8 @@ export type GoogleAnalyticsAdminV1alphaPropertyPropertyTypeEnum =
   | "PROPERTY_TYPE_UNSPECIFIED"
   | "PROPERTY_TYPE_ORDINARY"
   | "PROPERTY_TYPE_SUBPROPERTY"
-  | "PROPERTY_TYPE_ROLLUP";
+  | "PROPERTY_TYPE_ROLLUP"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaPropertyPropertyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -854,14 +857,16 @@ export type GoogleAnalyticsAdminV1alphaPropertyIndustryCategoryEnum =
   | "SCIENCE"
   | "SPORTS"
   | "JOBS_AND_EDUCATION"
-  | "SHOPPING";
+  | "SHOPPING"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaPropertyIndustryCategoryEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAnalyticsAdminV1alphaPropertyServiceLevelEnum =
   | "SERVICE_LEVEL_UNSPECIFIED"
   | "GOOGLE_ANALYTICS_STANDARD"
-  | "GOOGLE_ANALYTICS_360";
+  | "GOOGLE_ANALYTICS_360"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaPropertyServiceLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -1003,7 +1008,8 @@ export const CreatePropertiesAdSenseLinksRequest = /*@__PURE__*/ S.suspend(() =>
 export type GoogleAnalyticsAdminV1alphaAudienceEventTriggerLogConditionEnum =
   | "LOG_CONDITION_UNSPECIFIED"
   | "AUDIENCE_JOINED"
-  | "AUDIENCE_MEMBERSHIP_RENEWED";
+  | "AUDIENCE_MEMBERSHIP_RENEWED"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaAudienceEventTriggerLogConditionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1029,7 +1035,8 @@ export const GoogleAnalyticsAdminV1alphaAudienceEventTrigger =
 export type GoogleAnalyticsAdminV1alphaAudienceExclusionDurationModeEnum =
   | "AUDIENCE_EXCLUSION_DURATION_MODE_UNSPECIFIED"
   | "EXCLUDE_TEMPORARILY"
-  | "EXCLUDE_PERMANENTLY";
+  | "EXCLUDE_PERMANENTLY"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaAudienceExclusionDurationModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1037,7 +1044,8 @@ export type GoogleAnalyticsAdminV1alphaAudienceSequenceFilterScopeEnum =
   | "AUDIENCE_FILTER_SCOPE_UNSPECIFIED"
   | "AUDIENCE_FILTER_SCOPE_WITHIN_SAME_EVENT"
   | "AUDIENCE_FILTER_SCOPE_WITHIN_SAME_SESSION"
-  | "AUDIENCE_FILTER_SCOPE_ACROSS_ALL_SESSIONS";
+  | "AUDIENCE_FILTER_SCOPE_ACROSS_ALL_SESSIONS"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilterScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1061,7 +1069,11 @@ export const GoogleAnalyticsAdminV1alphaAudienceEventFilter =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAudienceEventFilter>;
 
 export type GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilterOperationEnum =
-  "OPERATION_UNSPECIFIED" | "EQUAL" | "LESS_THAN" | "GREATER_THAN";
+    | "OPERATION_UNSPECIFIED"
+    | "EQUAL"
+    | "LESS_THAN"
+    | "GREATER_THAN"
+    | (string & {});
 export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilterOperationEnum =
   /*@__PURE__*/ S.String;
 
@@ -1111,7 +1123,8 @@ export type GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilt
     | "BEGINS_WITH"
     | "ENDS_WITH"
     | "CONTAINS"
-    | "FULL_REGEXP";
+    | "FULL_REGEXP"
+    | (string & {});
 export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilterMatchTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1279,7 +1292,8 @@ export type GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceSte
     | "AUDIENCE_FILTER_SCOPE_UNSPECIFIED"
     | "AUDIENCE_FILTER_SCOPE_WITHIN_SAME_EVENT"
     | "AUDIENCE_FILTER_SCOPE_WITHIN_SAME_SESSION"
-    | "AUDIENCE_FILTER_SCOPE_ACROSS_ALL_SESSIONS";
+    | "AUDIENCE_FILTER_SCOPE_ACROSS_ALL_SESSIONS"
+    | (string & {});
 export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStepScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1345,7 +1359,8 @@ export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilter =
 export type GoogleAnalyticsAdminV1alphaAudienceFilterClauseClauseTypeEnum =
   | "AUDIENCE_CLAUSE_TYPE_UNSPECIFIED"
   | "INCLUDE"
-  | "EXCLUDE";
+  | "EXCLUDE"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaAudienceFilterClauseClauseTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1353,7 +1368,8 @@ export type GoogleAnalyticsAdminV1alphaAudienceSimpleFilterScopeEnum =
   | "AUDIENCE_FILTER_SCOPE_UNSPECIFIED"
   | "AUDIENCE_FILTER_SCOPE_WITHIN_SAME_EVENT"
   | "AUDIENCE_FILTER_SCOPE_WITHIN_SAME_SESSION"
-  | "AUDIENCE_FILTER_SCOPE_ACROSS_ALL_SESSIONS";
+  | "AUDIENCE_FILTER_SCOPE_ACROSS_ALL_SESSIONS"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaAudienceSimpleFilterScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1547,12 +1563,16 @@ export type GoogleAnalyticsAdminV1alphaCalculatedMetricMetricUnitEnum =
   | "MILLISECONDS"
   | "SECONDS"
   | "MINUTES"
-  | "HOURS";
+  | "HOURS"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaCalculatedMetricMetricUnitEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnum =
-  "RESTRICTED_METRIC_TYPE_UNSPECIFIED" | "COST_DATA" | "REVENUE_DATA";
+    | "RESTRICTED_METRIC_TYPE_UNSPECIFIED"
+    | "COST_DATA"
+    | "REVENUE_DATA"
+    | (string & {});
 export const GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1673,7 +1693,8 @@ export type GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilterMatchTypeEn
     | "ENDS_WITH"
     | "CONTAINS"
     | "FULL_REGEXP"
-    | "PARTIAL_REGEXP";
+    | "PARTIAL_REGEXP"
+    | (string & {});
 export const GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilterMatchTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1831,7 +1852,8 @@ export const CreatePropertiesChannelGroupsRequest = /*@__PURE__*/ S.suspend(
 export type GoogleAnalyticsAdminV1alphaConversionEventCountingMethodEnum =
   | "CONVERSION_COUNTING_METHOD_UNSPECIFIED"
   | "ONCE_PER_EVENT"
-  | "ONCE_PER_SESSION";
+  | "ONCE_PER_SESSION"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaConversionEventCountingMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -1917,7 +1939,8 @@ export type GoogleAnalyticsAdminV1alphaCustomDimensionScopeEnum =
   | "DIMENSION_SCOPE_UNSPECIFIED"
   | "EVENT"
   | "USER"
-  | "ITEM";
+  | "ITEM"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaCustomDimensionScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1976,7 +1999,8 @@ export const CreatePropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(
 
 export type GoogleAnalyticsAdminV1alphaCustomMetricScopeEnum =
   | "METRIC_SCOPE_UNSPECIFIED"
-  | "EVENT";
+  | "EVENT"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaCustomMetricScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1991,12 +2015,16 @@ export type GoogleAnalyticsAdminV1alphaCustomMetricMeasurementUnitEnum =
   | "MILLISECONDS"
   | "SECONDS"
   | "MINUTES"
-  | "HOURS";
+  | "HOURS"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaCustomMetricMeasurementUnitEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnum =
-  "RESTRICTED_METRIC_TYPE_UNSPECIFIED" | "COST_DATA" | "REVENUE_DATA";
+    | "RESTRICTED_METRIC_TYPE_UNSPECIFIED"
+    | "COST_DATA"
+    | "REVENUE_DATA"
+    | (string & {});
 export const GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -2088,7 +2116,8 @@ export type GoogleAnalyticsAdminV1alphaDataStreamTypeEnum =
   | "DATA_STREAM_TYPE_UNSPECIFIED"
   | "WEB_DATA_STREAM"
   | "ANDROID_APP_DATA_STREAM"
-  | "IOS_APP_DATA_STREAM";
+  | "IOS_APP_DATA_STREAM"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaDataStreamTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2206,7 +2235,8 @@ export type GoogleAnalyticsAdminV1alphaMatchingConditionComparisonTypeEnum =
   | "LESS_THAN"
   | "LESS_THAN_OR_EQUAL"
   | "REGULAR_EXPRESSION"
-  | "REGULAR_EXPRESSION_CASE_INSENSITIVE";
+  | "REGULAR_EXPRESSION_CASE_INSENSITIVE"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaMatchingConditionComparisonTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2422,7 +2452,8 @@ export type GoogleAnalyticsAdminV1alphaConversionValuesCoarseValueEnum =
   | "COARSE_VALUE_UNSPECIFIED"
   | "COARSE_VALUE_LOW"
   | "COARSE_VALUE_MEDIUM"
-  | "COARSE_VALUE_HIGH";
+  | "COARSE_VALUE_HIGH"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaConversionValuesCoarseValueEnum =
   /*@__PURE__*/ S.String;
 
@@ -2621,7 +2652,7 @@ export const CreatePropertiesDisplayVideo360AdvertiserLinksRequest =
   }) as any as S.Schema<CreatePropertiesDisplayVideo360AdvertiserLinksRequest>;
 
 export type GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilterMatchTypeEnum =
-  "MATCH_TYPE_UNSPECIFIED" | "EXACT" | "CONTAINS";
+  "MATCH_TYPE_UNSPECIFIED" | "EXACT" | "CONTAINS" | (string & {});
 export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilterMatchTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2914,7 +2945,8 @@ export const GoogleAnalyticsAdminV1alphaKeyEventDefaultValue =
 export type GoogleAnalyticsAdminV1alphaKeyEventCountingMethodEnum =
   | "COUNTING_METHOD_UNSPECIFIED"
   | "ONCE_PER_EVENT"
-  | "ONCE_PER_SESSION";
+  | "ONCE_PER_SESSION"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaKeyEventCountingMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -2980,7 +3012,8 @@ export type GoogleAnalyticsAdminV1alphaReportingDataAnnotationColorEnum =
   | "GREEN"
   | "RED"
   | "CYAN"
-  | "ORANGE";
+  | "ORANGE"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaReportingDataAnnotationColorEnum =
   /*@__PURE__*/ S.String;
 
@@ -3176,7 +3209,7 @@ export const CreatePropertiesSearchAds360LinksRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreatePropertiesSearchAds360LinksRequest>;
 
 export type GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClauseFilterClauseTypeEnum =
-  "FILTER_CLAUSE_TYPE_UNSPECIFIED" | "INCLUDE" | "EXCLUDE";
+  "FILTER_CLAUSE_TYPE_UNSPECIFIED" | "INCLUDE" | "EXCLUDE" | (string & {});
 export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClauseFilterClauseTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3213,7 +3246,8 @@ export type GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilt
     | "ENDS_WITH"
     | "CONTAINS"
     | "FULL_REGEXP"
-    | "PARTIAL_REGEXP";
+    | "PARTIAL_REGEXP"
+    | (string & {});
 export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilterMatchTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3968,7 +4002,8 @@ export const GetAttributionSettingsPropertiesRequest = /*@__PURE__*/ S.suspend(
 export type GoogleAnalyticsAdminV1alphaAttributionSettingsAcquisitionConversionEventLookbackWindowEnum =
     | "ACQUISITION_CONVERSION_EVENT_LOOKBACK_WINDOW_UNSPECIFIED"
     | "ACQUISITION_CONVERSION_EVENT_LOOKBACK_WINDOW_7_DAYS"
-    | "ACQUISITION_CONVERSION_EVENT_LOOKBACK_WINDOW_30_DAYS";
+    | "ACQUISITION_CONVERSION_EVENT_LOOKBACK_WINDOW_30_DAYS"
+    | (string & {});
 export const GoogleAnalyticsAdminV1alphaAttributionSettingsAcquisitionConversionEventLookbackWindowEnum =
   /*@__PURE__*/ S.String;
 
@@ -3976,7 +4011,8 @@ export type GoogleAnalyticsAdminV1alphaAttributionSettingsReportingAttributionMo
     | "REPORTING_ATTRIBUTION_MODEL_UNSPECIFIED"
     | "PAID_AND_ORGANIC_CHANNELS_DATA_DRIVEN"
     | "PAID_AND_ORGANIC_CHANNELS_LAST_CLICK"
-    | "GOOGLE_PAID_CHANNELS_LAST_CLICK";
+    | "GOOGLE_PAID_CHANNELS_LAST_CLICK"
+    | (string & {});
 export const GoogleAnalyticsAdminV1alphaAttributionSettingsReportingAttributionModelEnum =
   /*@__PURE__*/ S.String;
 
@@ -3984,7 +4020,8 @@ export type GoogleAnalyticsAdminV1alphaAttributionSettingsAdsWebConversionDataEx
     | "ADS_WEB_CONVERSION_DATA_EXPORT_SCOPE_UNSPECIFIED"
     | "NOT_SELECTED_YET"
     | "PAID_AND_ORGANIC_CHANNELS"
-    | "GOOGLE_PAID_CHANNELS";
+    | "GOOGLE_PAID_CHANNELS"
+    | (string & {});
 export const GoogleAnalyticsAdminV1alphaAttributionSettingsAdsWebConversionDataExportScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3992,7 +4029,8 @@ export type GoogleAnalyticsAdminV1alphaAttributionSettingsOtherConversionEventLo
     | "OTHER_CONVERSION_EVENT_LOOKBACK_WINDOW_UNSPECIFIED"
     | "OTHER_CONVERSION_EVENT_LOOKBACK_WINDOW_30_DAYS"
     | "OTHER_CONVERSION_EVENT_LOOKBACK_WINDOW_60_DAYS"
-    | "OTHER_CONVERSION_EVENT_LOOKBACK_WINDOW_90_DAYS";
+    | "OTHER_CONVERSION_EVENT_LOOKBACK_WINDOW_90_DAYS"
+    | (string & {});
 export const GoogleAnalyticsAdminV1alphaAttributionSettingsOtherConversionEventLookbackWindowEnum =
   /*@__PURE__*/ S.String;
 
@@ -4097,7 +4135,8 @@ export type GoogleAnalyticsAdminV1alphaDataRetentionSettingsEventDataRetentionEn
     | "FOURTEEN_MONTHS"
     | "TWENTY_SIX_MONTHS"
     | "THIRTY_EIGHT_MONTHS"
-    | "FIFTY_MONTHS";
+    | "FIFTY_MONTHS"
+    | (string & {});
 export const GoogleAnalyticsAdminV1alphaDataRetentionSettingsEventDataRetentionEnum =
   /*@__PURE__*/ S.String;
 
@@ -4107,7 +4146,8 @@ export type GoogleAnalyticsAdminV1alphaDataRetentionSettingsUserDataRetentionEnu
     | "FOURTEEN_MONTHS"
     | "TWENTY_SIX_MONTHS"
     | "THIRTY_EIGHT_MONTHS"
-    | "FIFTY_MONTHS";
+    | "FIFTY_MONTHS"
+    | (string & {});
 export const GoogleAnalyticsAdminV1alphaDataRetentionSettingsUserDataRetentionEnum =
   /*@__PURE__*/ S.String;
 
@@ -4307,14 +4347,16 @@ export const GetGoogleSignalsSettingsPropertiesRequest =
 export type GoogleAnalyticsAdminV1alphaGoogleSignalsSettingsStateEnum =
   | "GOOGLE_SIGNALS_STATE_UNSPECIFIED"
   | "GOOGLE_SIGNALS_ENABLED"
-  | "GOOGLE_SIGNALS_DISABLED";
+  | "GOOGLE_SIGNALS_DISABLED"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaGoogleSignalsSettingsStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAnalyticsAdminV1alphaGoogleSignalsSettingsConsentEnum =
   | "GOOGLE_SIGNALS_CONSENT_UNSPECIFIED"
   | "GOOGLE_SIGNALS_CONSENT_CONSENTED"
-  | "GOOGLE_SIGNALS_CONSENT_NOT_CONSENTED";
+  | "GOOGLE_SIGNALS_CONSENT_NOT_CONSENTED"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaGoogleSignalsSettingsConsentEnum =
   /*@__PURE__*/ S.String;
 
@@ -4791,7 +4833,7 @@ export const GetPropertiesSubpropertySyncConfigsRequest =
   }) as any as S.Schema<GetPropertiesSubpropertySyncConfigsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaSubpropertySyncConfigCustomDimensionAndMetricSyncModeEnum =
-  "SYNCHRONIZATION_MODE_UNSPECIFIED" | "NONE" | "ALL";
+  "SYNCHRONIZATION_MODE_UNSPECIFIED" | "NONE" | "ALL" | (string & {});
 export const GoogleAnalyticsAdminV1alphaSubpropertySyncConfigCustomDimensionAndMetricSyncModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4840,7 +4882,8 @@ export type GoogleAnalyticsAdminV1alphaReportingIdentitySettingsReportingIdentit
     | "IDENTITY_BLENDING_STRATEGY_UNSPECIFIED"
     | "BLENDED"
     | "OBSERVED"
-    | "DEVICE_BASED";
+    | "DEVICE_BASED"
+    | (string & {});
 export const GoogleAnalyticsAdminV1alphaReportingIdentitySettingsReportingIdentityEnum =
   /*@__PURE__*/ S.String;
 
@@ -5015,7 +5058,8 @@ export type GoogleAnalyticsAdminV1alphaPropertySummaryPropertyTypeEnum =
   | "PROPERTY_TYPE_UNSPECIFIED"
   | "PROPERTY_TYPE_ORDINARY"
   | "PROPERTY_TYPE_SUBPROPERTY"
-  | "PROPERTY_TYPE_ROLLUP";
+  | "PROPERTY_TYPE_ROLLUP"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaPropertySummaryPropertyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7057,7 +7101,7 @@ export const GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse>;
 
 export type GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequestCustomDimensionAndMetricSynchronizationModeEnum =
-  "SYNCHRONIZATION_MODE_UNSPECIFIED" | "NONE" | "ALL";
+  "SYNCHRONIZATION_MODE_UNSPECIFIED" | "NONE" | "ALL" | (string & {});
 export const GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequestCustomDimensionAndMetricSynchronizationModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7235,7 +7279,8 @@ export type GoogleAnalyticsAdminV1alphaAccessStringFilterMatchTypeEnum =
   | "ENDS_WITH"
   | "CONTAINS"
   | "FULL_REGEXP"
-  | "PARTIAL_REGEXP";
+  | "PARTIAL_REGEXP"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaAccessStringFilterMatchTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7301,7 +7346,8 @@ export type GoogleAnalyticsAdminV1alphaAccessNumericFilterOperationEnum =
   | "LESS_THAN"
   | "LESS_THAN_OR_EQUAL"
   | "GREATER_THAN"
-  | "GREATER_THAN_OR_EQUAL";
+  | "GREATER_THAN_OR_EQUAL"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaAccessNumericFilterOperationEnum =
   /*@__PURE__*/ S.String;
 
@@ -7397,7 +7443,8 @@ export type GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderByOrderTypeEnu
     | "ORDER_TYPE_UNSPECIFIED"
     | "ALPHANUMERIC"
     | "CASE_INSENSITIVE_ALPHANUMERIC"
-    | "NUMERIC";
+    | "NUMERIC"
+    | (string & {});
 export const GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderByOrderTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7812,7 +7859,8 @@ export type GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceT
     | "REPORTING_DATA_ANNOTATION"
     | "SUBPROPERTY_SYNC_CONFIG"
     | "REPORTING_IDENTITY_SETTINGS"
-    | "USER_PROVIDED_DATA_SETTINGS";
+    | "USER_PROVIDED_DATA_SETTINGS"
+    | (string & {});
 export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceTypeItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -7824,7 +7872,7 @@ export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResource
   ) as any as S.Schema<GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceTypeItemEnumList>;
 
 export type GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnum =
-  "ACTION_TYPE_UNSPECIFIED" | "CREATED" | "UPDATED" | "DELETED";
+  "ACTION_TYPE_UNSPECIFIED" | "CREATED" | "UPDATED" | "DELETED" | (string & {});
 export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -7904,7 +7952,8 @@ export type GoogleAnalyticsAdminV1alphaChangeHistoryChangeActionEnum =
   | "ACTION_TYPE_UNSPECIFIED"
   | "CREATED"
   | "UPDATED"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaChangeHistoryChangeActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -8076,7 +8125,8 @@ export type GoogleAnalyticsAdminV1alphaChangeHistoryEventActorTypeEnum =
   | "ACTOR_TYPE_UNSPECIFIED"
   | "USER"
   | "SYSTEM"
-  | "SUPPORT";
+  | "SUPPORT"
+  | (string & {});
 export const GoogleAnalyticsAdminV1alphaChangeHistoryEventActorTypeEnum =
   /*@__PURE__*/ S.String;
 

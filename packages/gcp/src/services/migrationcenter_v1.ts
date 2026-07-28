@@ -473,7 +473,8 @@ export type DatabaseObjectsCategoryEnum =
   | "CONSTRAINTS"
   | "VIEWS"
   | "SOURCE_CODE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const DatabaseObjectsCategoryEnum = /*@__PURE__*/ S.String;
 
 /** Details of a group of database objects. */
@@ -509,7 +510,8 @@ export type MySqlStorageEngineDetailsEngineEnum =
   | "MERGE"
   | "FEDERATED"
   | "EXAMPLE"
-  | "OTHER";
+  | "OTHER"
+  | (string & {});
 export const MySqlStorageEngineDetailsEngineEnum = /*@__PURE__*/ S.String;
 
 /** Mysql storage engine tables. */
@@ -682,7 +684,8 @@ export type DatabaseInstanceRoleEnum =
   | "ROLE_UNSPECIFIED"
   | "PRIMARY"
   | "SECONDARY"
-  | "ARBITER";
+  | "ARBITER"
+  | (string & {});
 export const DatabaseInstanceRoleEnum = /*@__PURE__*/ S.String;
 
 /** Network details of a database instance. */
@@ -968,7 +971,8 @@ export type SqlServerTraceFlagScopeEnum =
   | "SCOPE_UNSPECIFIED"
   | "OFF"
   | "GLOBAL"
-  | "SESSION";
+  | "SESSION"
+  | (string & {});
 export const SqlServerTraceFlagScopeEnum = /*@__PURE__*/ S.String;
 
 /** SQL Server trace flag details. */
@@ -1078,7 +1082,8 @@ export const DatabaseDeploymentDetails = /*@__PURE__*/ S.suspend(() =>
 export type NetworkAddressAssignmentEnum =
   | "ADDRESS_ASSIGNMENT_UNSPECIFIED"
   | "ADDRESS_ASSIGNMENT_STATIC"
-  | "ADDRESS_ASSIGNMENT_DHCP";
+  | "ADDRESS_ASSIGNMENT_DHCP"
+  | (string & {});
 export const NetworkAddressAssignmentEnum = /*@__PURE__*/ S.String;
 
 /** Details of network address. */
@@ -1191,7 +1196,8 @@ export type MachineDetailsPowerStateEnum =
   | "SUSPENDING"
   | "SUSPENDED"
   | "DELETING"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const MachineDetailsPowerStateEnum = /*@__PURE__*/ S.String;
 
 /** Disk Partition details. */
@@ -1249,14 +1255,16 @@ export type DiskEntryInterfaceTypeEnum =
   | "SCSI"
   | "NVME"
   | "FC"
-  | "ISCSI";
+  | "ISCSI"
+  | (string & {});
 export const DiskEntryInterfaceTypeEnum = /*@__PURE__*/ S.String;
 
 export type VmwareDiskConfigVmdkModeEnum =
   | "VMDK_MODE_UNSPECIFIED"
   | "DEPENDENT"
   | "INDEPENDENT_PERSISTENT"
-  | "INDEPENDENT_NONPERSISTENT";
+  | "INDEPENDENT_NONPERSISTENT"
+  | (string & {});
 export const VmwareDiskConfigVmdkModeEnum = /*@__PURE__*/ S.String;
 
 export type VmwareDiskConfigBackingTypeEnum =
@@ -1268,13 +1276,15 @@ export type VmwareDiskConfigBackingTypeEnum =
   | "BACKING_TYPE_RDM_V2"
   | "BACKING_TYPE_SESPARSE"
   | "BACKING_TYPE_SESPARSE_V1"
-  | "BACKING_TYPE_SESPARSE_V2";
+  | "BACKING_TYPE_SESPARSE_V2"
+  | (string & {});
 export const VmwareDiskConfigBackingTypeEnum = /*@__PURE__*/ S.String;
 
 export type VmwareDiskConfigRdmCompatibilityEnum =
   | "RDM_COMPATIBILITY_UNSPECIFIED"
   | "PHYSICAL_COMPATIBILITY"
-  | "VIRTUAL_COMPATIBILITY";
+  | "VIRTUAL_COMPATIBILITY"
+  | (string & {});
 export const VmwareDiskConfigRdmCompatibilityEnum = /*@__PURE__*/ S.String;
 
 /** VMware disk config details. */
@@ -1369,14 +1379,16 @@ export const MachineDiskDetails = /*@__PURE__*/ S.suspend(() =>
 export type MachineArchitectureDetailsFirmwareTypeEnum =
   | "FIRMWARE_TYPE_UNSPECIFIED"
   | "BIOS"
-  | "EFI";
+  | "EFI"
+  | (string & {});
 export const MachineArchitectureDetailsFirmwareTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type MachineArchitectureDetailsHyperthreadingEnum =
   | "CPU_HYPER_THREADING_UNSPECIFIED"
   | "DISABLED"
-  | "ENABLED";
+  | "ENABLED"
+  | (string & {});
 export const MachineArchitectureDetailsHyperthreadingEnum =
   /*@__PURE__*/ S.String;
 
@@ -1466,7 +1478,8 @@ export type RunningServiceStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "PAUSED"
-  | "STOPPED";
+  | "STOPPED"
+  | (string & {});
 export const RunningServiceStateEnum = /*@__PURE__*/ S.String;
 
 export type RunningServiceStartModeEnum =
@@ -1475,7 +1488,8 @@ export type RunningServiceStartModeEnum =
   | "SYSTEM"
   | "AUTO"
   | "MANUAL"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const RunningServiceStartModeEnum = /*@__PURE__*/ S.String;
 
 /** Guest OS running service details. */
@@ -1654,7 +1668,8 @@ export type NetworkConnectionStateEnum =
   | "OPEN"
   | "LISTEN"
   | "CLOSING"
-  | "CLOSED";
+  | "CLOSED"
+  | (string & {});
 export const NetworkConnectionStateEnum = /*@__PURE__*/ S.String;
 
 export interface NetworkConnection {
@@ -1762,14 +1777,16 @@ export type GuestOsDetailsFamilyEnum =
   | "OS_FAMILY_UNKNOWN"
   | "OS_FAMILY_WINDOWS"
   | "OS_FAMILY_LINUX"
-  | "OS_FAMILY_UNIX";
+  | "OS_FAMILY_UNIX"
+  | (string & {});
 export const GuestOsDetailsFamilyEnum = /*@__PURE__*/ S.String;
 
 export type GuestConfigDetailsSelinuxModeEnum =
   | "SE_LINUX_MODE_UNSPECIFIED"
   | "SE_LINUX_MODE_DISABLED"
   | "SE_LINUX_MODE_PERMISSIVE"
-  | "SE_LINUX_MODE_ENFORCING";
+  | "SE_LINUX_MODE_ENFORCING"
+  | (string & {});
 export const GuestConfigDetailsSelinuxModeEnum = /*@__PURE__*/ S.String;
 
 /** Single /etc/hosts entry. */
@@ -1944,7 +1961,8 @@ export const DiskPartitionDetails = /*@__PURE__*/ S.suspend(() =>
 export type GenericPlatformDetailsHyperthreadingEnum =
   | "HYPERTHREADING_STATUS_UNSPECIFIED"
   | "HYPERTHREADING_STATUS_DISABLED"
-  | "HYPERTHREADING_STATUS_ENABLED";
+  | "HYPERTHREADING_STATUS_ENABLED"
+  | (string & {});
 export const GenericPlatformDetailsHyperthreadingEnum = /*@__PURE__*/ S.String;
 
 /** Generic platform details. */
@@ -1966,7 +1984,8 @@ export const GenericPlatformDetails = /*@__PURE__*/ S.suspend(() =>
 export type VmwarePlatformDetailsEsxHyperthreadingEnum =
   | "HYPERTHREADING_STATUS_UNSPECIFIED"
   | "HYPERTHREADING_STATUS_DISABLED"
-  | "HYPERTHREADING_STATUS_ENABLED";
+  | "HYPERTHREADING_STATUS_ENABLED"
+  | (string & {});
 export const VmwarePlatformDetailsEsxHyperthreadingEnum =
   /*@__PURE__*/ S.String;
 
@@ -2004,7 +2023,8 @@ export const VmwarePlatformDetails = /*@__PURE__*/ S.suspend(() =>
 export type AzureVmPlatformDetailsHyperthreadingEnum =
   | "HYPERTHREADING_STATUS_UNSPECIFIED"
   | "HYPERTHREADING_STATUS_DISABLED"
-  | "HYPERTHREADING_STATUS_ENABLED";
+  | "HYPERTHREADING_STATUS_ENABLED"
+  | (string & {});
 export const AzureVmPlatformDetailsHyperthreadingEnum = /*@__PURE__*/ S.String;
 
 /** Azure VM specific details. */
@@ -2032,7 +2052,8 @@ export const AzureVmPlatformDetails = /*@__PURE__*/ S.suspend(() =>
 export type AwsEc2PlatformDetailsHyperthreadingEnum =
   | "HYPERTHREADING_STATUS_UNSPECIFIED"
   | "HYPERTHREADING_STATUS_DISABLED"
-  | "HYPERTHREADING_STATUS_ENABLED";
+  | "HYPERTHREADING_STATUS_ENABLED"
+  | (string & {});
 export const AwsEc2PlatformDetailsHyperthreadingEnum = /*@__PURE__*/ S.String;
 
 /** AWS EC2 specific details. */
@@ -2057,7 +2078,8 @@ export const AwsEc2PlatformDetails = /*@__PURE__*/ S.suspend(() =>
 export type PhysicalPlatformDetailsHyperthreadingEnum =
   | "HYPERTHREADING_STATUS_UNSPECIFIED"
   | "HYPERTHREADING_STATUS_DISABLED"
-  | "HYPERTHREADING_STATUS_ENABLED";
+  | "HYPERTHREADING_STATUS_ENABLED"
+  | (string & {});
 export const PhysicalPlatformDetailsHyperthreadingEnum = /*@__PURE__*/ S.String;
 
 /** Platform specific details for Physical Machines. */
@@ -2279,7 +2301,8 @@ export type ComputeStorageDescriptorTypeEnum =
   | "PERSISTENT_DISK_TYPE_UNSPECIFIED"
   | "PERSISTENT_DISK_TYPE_STANDARD"
   | "PERSISTENT_DISK_TYPE_BALANCED"
-  | "PERSISTENT_DISK_TYPE_SSD";
+  | "PERSISTENT_DISK_TYPE_SSD"
+  | (string & {});
 export const ComputeStorageDescriptorTypeEnum = /*@__PURE__*/ S.String;
 
 /** Compute Engine storage option descriptor. */
@@ -2349,7 +2372,8 @@ export type FitDescriptorFitLevelEnum =
   | "FIT_LEVEL_UNSPECIFIED"
   | "FIT"
   | "NO_FIT"
-  | "REQUIRES_EFFORT";
+  | "REQUIRES_EFFORT"
+  | (string & {});
 export const FitDescriptorFitLevelEnum = /*@__PURE__*/ S.String;
 
 /** Describes the fit level of an asset for migration to a specific target. */
@@ -2760,7 +2784,8 @@ export const AssetsExportJobInventory = /*@__PURE__*/ S.suspend(() =>
 export type SignedUriDestinationFileFormatEnum =
   | "FILE_FORMAT_UNSPECIFIED"
   | "CSV"
-  | "XLSX";
+  | "XLSX"
+  | (string & {});
 export const SignedUriDestinationFileFormatEnum = /*@__PURE__*/ S.String;
 
 /** Signed URI destination configuration. */
@@ -2878,7 +2903,8 @@ export type DiscoveryClientStateEnum =
   | "ACTIVE"
   | "OFFLINE"
   | "DEGRADED"
-  | "EXPIRED";
+  | "EXPIRED"
+  | (string & {});
 export const DiscoveryClientStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents an installed Migration Center Discovery Client instance. */
@@ -3051,7 +3077,8 @@ export type ImportErrorSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
-  | "INFO";
+  | "INFO"
+  | (string & {});
 export const ImportErrorSeverityEnum = /*@__PURE__*/ S.String;
 
 /** A resource that reports the errors encountered while processing an import job. */
@@ -3196,7 +3223,8 @@ export type ImportJobStateEnum =
   | "IMPORT_JOB_STATE_FAILED"
   | "IMPORT_JOB_STATE_VALIDATING"
   | "IMPORT_JOB_STATE_FAILED_VALIDATION"
-  | "IMPORT_JOB_STATE_READY";
+  | "IMPORT_JOB_STATE_READY"
+  | (string & {});
 export const ImportJobStateEnum = /*@__PURE__*/ S.String;
 
 /** A resource that represents the background job that imports asset frames. */
@@ -3268,7 +3296,8 @@ export const CreateProjectsLocationsImportJobsRequest = /*@__PURE__*/ S.suspend(
 export type ImportDataFileStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
-  | "ACTIVE";
+  | "ACTIVE"
+  | (string & {});
 export const ImportDataFileStateEnum = /*@__PURE__*/ S.String;
 
 /** A resource that contains a URI to which a data file can be uploaded. */
@@ -3295,7 +3324,8 @@ export type ImportDataFileFormatEnum =
   | "IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV"
   | "IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV"
   | "IMPORT_JOB_FORMAT_STRATOZONE_CSV"
-  | "IMPORT_JOB_FORMAT_DATABASE_ZIP";
+  | "IMPORT_JOB_FORMAT_DATABASE_ZIP"
+  | (string & {});
 export const ImportDataFileFormatEnum = /*@__PURE__*/ S.String;
 
 /** A resource that represents a payload file in an import job. */
@@ -3356,14 +3386,16 @@ export type ComputeEnginePreferencesPersistentDiskTypeEnum =
   | "PERSISTENT_DISK_TYPE_UNSPECIFIED"
   | "PERSISTENT_DISK_TYPE_STANDARD"
   | "PERSISTENT_DISK_TYPE_BALANCED"
-  | "PERSISTENT_DISK_TYPE_SSD";
+  | "PERSISTENT_DISK_TYPE_SSD"
+  | (string & {});
 export const ComputeEnginePreferencesPersistentDiskTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type ComputeEnginePreferencesLicenseTypeEnum =
   | "LICENSE_TYPE_UNSPECIFIED"
   | "LICENSE_TYPE_DEFAULT"
-  | "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE";
+  | "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE"
+  | (string & {});
 export const ComputeEnginePreferencesLicenseTypeEnum = /*@__PURE__*/ S.String;
 
 /** A machine series, for a target product (e.g. Compute Engine, Google Cloud VMware Engine). */
@@ -3422,7 +3454,8 @@ export type VmwareEnginePreferencesCommitmentPlanEnum =
   | "COMMITMENT_1_YEAR_MONTHLY_PAYMENTS"
   | "COMMITMENT_3_YEAR_MONTHLY_PAYMENTS"
   | "COMMITMENT_1_YEAR_UPFRONT_PAYMENT"
-  | "COMMITMENT_3_YEAR_UPFRONT_PAYMENT";
+  | "COMMITMENT_3_YEAR_UPFRONT_PAYMENT"
+  | (string & {});
 export const VmwareEnginePreferencesCommitmentPlanEnum = /*@__PURE__*/ S.String;
 
 /** The user preferences relating to Google Cloud VMware Engine target platform. */
@@ -3451,7 +3484,8 @@ export type VirtualMachinePreferencesCommitmentPlanEnum =
   | "COMMITMENT_PLAN_UNSPECIFIED"
   | "COMMITMENT_PLAN_NONE"
   | "COMMITMENT_PLAN_ONE_YEAR"
-  | "COMMITMENT_PLAN_THREE_YEARS";
+  | "COMMITMENT_PLAN_THREE_YEARS"
+  | (string & {});
 export const VirtualMachinePreferencesCommitmentPlanEnum =
   /*@__PURE__*/ S.String;
 
@@ -3459,7 +3493,8 @@ export type VirtualMachinePreferencesTargetProductEnum =
   | "COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED"
   | "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE"
   | "COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE"
-  | "COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY";
+  | "COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY"
+  | (string & {});
 export const VirtualMachinePreferencesTargetProductEnum =
   /*@__PURE__*/ S.String;
 
@@ -3480,7 +3515,8 @@ export type VirtualMachinePreferencesSizingOptimizationStrategyEnum =
   | "SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED"
   | "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE"
   | "SIZING_OPTIMIZATION_STRATEGY_MODERATE"
-  | "SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE";
+  | "SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE"
+  | (string & {});
 export const VirtualMachinePreferencesSizingOptimizationStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -3488,7 +3524,8 @@ export type SoleTenancyPreferencesCommitmentPlanEnum =
   | "COMMITMENT_PLAN_UNSPECIFIED"
   | "ON_DEMAND"
   | "COMMITMENT_1_YEAR"
-  | "COMMITMENT_3_YEAR";
+  | "COMMITMENT_3_YEAR"
+  | (string & {});
 export const SoleTenancyPreferencesCommitmentPlanEnum = /*@__PURE__*/ S.String;
 
 /** A Sole Tenant node type. */
@@ -3513,7 +3550,8 @@ export type SoleTenancyPreferencesHostMaintenancePolicyEnum =
   | "HOST_MAINTENANCE_POLICY_UNSPECIFIED"
   | "HOST_MAINTENANCE_POLICY_DEFAULT"
   | "HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE"
-  | "HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP";
+  | "HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP"
+  | (string & {});
 export const SoleTenancyPreferencesHostMaintenancePolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -3964,7 +4002,8 @@ export type ReportSummaryComputeEngineFindingAllocatedDiskTypesItemEnum =
   | "PERSISTENT_DISK_TYPE_UNSPECIFIED"
   | "PERSISTENT_DISK_TYPE_STANDARD"
   | "PERSISTENT_DISK_TYPE_BALANCED"
-  | "PERSISTENT_DISK_TYPE_SSD";
+  | "PERSISTENT_DISK_TYPE_SSD"
+  | (string & {});
 export const ReportSummaryComputeEngineFindingAllocatedDiskTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -4124,14 +4163,18 @@ export const ReportSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReportSummary" }) as any as S.Schema<ReportSummary>;
 
-export type ReportTypeEnum = "TYPE_UNSPECIFIED" | "TOTAL_COST_OF_OWNERSHIP";
+export type ReportTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "TOTAL_COST_OF_OWNERSHIP"
+  | (string & {});
 export const ReportTypeEnum = /*@__PURE__*/ S.String;
 
 export type ReportStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
   | "SUCCEEDED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ReportStateEnum = /*@__PURE__*/ S.String;
 
 /** Report represents a point-in-time rendering of the ReportConfig results. */
@@ -4198,7 +4241,8 @@ export type SourceStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "DELETING"
-  | "INVALID";
+  | "INVALID"
+  | (string & {});
 export const SourceStateEnum = /*@__PURE__*/ S.String;
 
 export type SourceTypeEnum =
@@ -4207,7 +4251,8 @@ export type SourceTypeEnum =
   | "SOURCE_TYPE_GUEST_OS_SCAN"
   | "SOURCE_TYPE_INVENTORY_SCAN"
   | "SOURCE_TYPE_CUSTOM"
-  | "SOURCE_TYPE_DISCOVERY_CLIENT";
+  | "SOURCE_TYPE_DISCOVERY_CLIENT"
+  | (string & {});
 export const SourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Source represents an object from which asset information is streamed to Migration Center. */
@@ -4568,7 +4613,8 @@ export type GetProjectsLocationsAssetsViewEnum =
   | "ASSET_VIEW_FULL"
   | "ASSET_VIEW_STANDARD"
   | "ASSET_VIEW_UI"
-  | "ASSET_VIEW_LABELS";
+  | "ASSET_VIEW_LABELS"
+  | (string & {});
 export const GetProjectsLocationsAssetsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsAssetsRequest {
@@ -4651,7 +4697,8 @@ export const GetProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsImportJobsViewEnum =
   | "IMPORT_JOB_VIEW_UNSPECIFIED"
   | "IMPORT_JOB_VIEW_BASIC"
-  | "IMPORT_JOB_VIEW_FULL";
+  | "IMPORT_JOB_VIEW_FULL"
+  | (string & {});
 export const GetProjectsLocationsImportJobsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsImportJobsRequest {
@@ -4755,7 +4802,8 @@ export const GetProjectsLocationsRelationsRequest = /*@__PURE__*/ S.suspend(
 export type RelationTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "LOGICAL_DATABASE"
-  | "DATABASE_DEPLOYMENT_HOSTING_SERVER";
+  | "DATABASE_DEPLOYMENT_HOSTING_SERVER"
+  | (string & {});
 export const RelationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message representing a relation between 2 resource. */
@@ -4804,7 +4852,8 @@ export type GetProjectsLocationsReportConfigsReportsViewEnum =
   | "REPORT_VIEW_UNSPECIFIED"
   | "REPORT_VIEW_BASIC"
   | "REPORT_VIEW_FULL"
-  | "REPORT_VIEW_STANDARD";
+  | "REPORT_VIEW_STANDARD"
+  | (string & {});
 export const GetProjectsLocationsReportConfigsReportsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4853,7 +4902,8 @@ export const GetProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsSourcesErrorFramesViewEnum =
   | "ERROR_FRAME_VIEW_UNSPECIFIED"
   | "ERROR_FRAME_VIEW_BASIC"
-  | "ERROR_FRAME_VIEW_FULL";
+  | "ERROR_FRAME_VIEW_FULL"
+  | (string & {});
 export const GetProjectsLocationsSourcesErrorFramesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4908,7 +4958,8 @@ export type AssetFrameCollectionTypeEnum =
   | "SOURCE_TYPE_GUEST_OS_SCAN"
   | "SOURCE_TYPE_INVENTORY_SCAN"
   | "SOURCE_TYPE_CUSTOM"
-  | "SOURCE_TYPE_DISCOVERY_CLIENT";
+  | "SOURCE_TYPE_DISCOVERY_CLIENT"
+  | (string & {});
 export const AssetFrameCollectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** CPU usage sample. */
@@ -5147,7 +5198,8 @@ export type ListProjectsLocationsAssetsViewEnum =
   | "ASSET_VIEW_FULL"
   | "ASSET_VIEW_STANDARD"
   | "ASSET_VIEW_UI"
-  | "ASSET_VIEW_LABELS";
+  | "ASSET_VIEW_LABELS"
+  | (string & {});
 export const ListProjectsLocationsAssetsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsAssetsRequest {
@@ -5363,7 +5415,8 @@ export const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsImportJobsViewEnum =
   | "IMPORT_JOB_VIEW_UNSPECIFIED"
   | "IMPORT_JOB_VIEW_BASIC"
-  | "IMPORT_JOB_VIEW_FULL";
+  | "IMPORT_JOB_VIEW_FULL"
+  | (string & {});
 export const ListProjectsLocationsImportJobsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsImportJobsRequest {
@@ -5697,7 +5750,8 @@ export type ListProjectsLocationsReportConfigsReportsViewEnum =
   | "REPORT_VIEW_UNSPECIFIED"
   | "REPORT_VIEW_BASIC"
   | "REPORT_VIEW_FULL"
-  | "REPORT_VIEW_STANDARD";
+  | "REPORT_VIEW_STANDARD"
+  | (string & {});
 export const ListProjectsLocationsReportConfigsReportsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -5818,7 +5872,8 @@ export const ListSourcesResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsSourcesErrorFramesViewEnum =
   | "ERROR_FRAME_VIEW_UNSPECIFIED"
   | "ERROR_FRAME_VIEW_BASIC"
-  | "ERROR_FRAME_VIEW_FULL";
+  | "ERROR_FRAME_VIEW_FULL"
+  | (string & {});
 export const ListProjectsLocationsSourcesErrorFramesViewEnum =
   /*@__PURE__*/ S.String;
 

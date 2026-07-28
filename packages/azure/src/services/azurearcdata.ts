@@ -34,7 +34,8 @@ export const ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInf
 /** The service account provisioning mode for this Active Directory connector. */
 export type ActiveDirectoryConnectorDomainDetailsServiceAccountProvisioning =
   | "automatic"
-  | "manual";
+  | "manual"
+  | (string & {});
 export const ActiveDirectoryConnectorDomainDetailsServiceAccountProvisioning =
   /*@__PURE__*/ S.String;
 
@@ -229,7 +230,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -237,7 +239,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -566,7 +569,7 @@ export const DataControllersGetDataControllerResponseTagsMap =
   ) as any as S.Schema<DataControllersGetDataControllerResponseTagsMap>;
 
 /** The type of extendedLocation. */
-export type ExtendedLocationType = "CustomLocation";
+export type ExtendedLocationType = "CustomLocation" | (string & {});
 export const ExtendedLocationType = /*@__PURE__*/ S.String;
 
 /** The complex type of the extended location. */
@@ -593,7 +596,8 @@ export type DataControllerPropertiesInfrastructure =
   | "aws"
   | "alibaba"
   | "onpremises"
-  | "other";
+  | "other"
+  | (string & {});
 export const DataControllerPropertiesInfrastructure = /*@__PURE__*/ S.String;
 
 /** Properties from the Kubernetes data controller */
@@ -977,7 +981,8 @@ export type DataControllerPropertiesInputInfrastructure =
   | "aws"
   | "alibaba"
   | "onpremises"
-  | "other";
+  | "other"
+  | (string & {});
 export const DataControllerPropertiesInputInfrastructure =
   /*@__PURE__*/ S.String;
 
@@ -1307,7 +1312,7 @@ export const DataControllersPutDataControllerResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DataControllersPutDataControllerResponse>;
 
 /** The partner sync mode of the SQL managed instance. */
-export type FailoverGroupSpecPartnerSyncMode = "async" | "sync";
+export type FailoverGroupSpecPartnerSyncMode = "async" | "sync" | (string & {});
 export const FailoverGroupSpecPartnerSyncMode = /*@__PURE__*/ S.String;
 
 /** The role of the SQL managed instance in this failover group. */
@@ -1315,7 +1320,8 @@ export type FailoverGroupSpecRole =
   | "primary"
   | "secondary"
   | "force-primary-allow-data-loss"
-  | "force-secondary";
+  | "force-secondary"
+  | (string & {});
 export const FailoverGroupSpecRole = /*@__PURE__*/ S.String;
 
 /** The specifications of the failover group resource. */
@@ -1404,7 +1410,8 @@ export type FailoverGroupPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled"
-  | "Accepted";
+  | "Accepted"
+  | (string & {});
 export const FailoverGroupPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The properties of a failover group resource. */
@@ -1649,7 +1656,7 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation. */
-export type OperationOrigin = "user" | "system";
+export type OperationOrigin = "user" | "system" | (string & {});
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Additional descriptions for the operation. */
@@ -1774,7 +1781,7 @@ export const PostgresInstancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostgresInstancePropertiesInput>;
 
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier. */
-export type PostgresInstanceSkuTier = "Hyperscale";
+export type PostgresInstanceSkuTier = "Hyperscale" | (string & {});
 export const PostgresInstanceSkuTier = /*@__PURE__*/ S.String;
 
 /** The resource model definition representing SKU for Azure Database for PostgresSQL - Azure Arc */
@@ -2576,7 +2583,8 @@ export const ActiveDirectoryInformation = /*@__PURE__*/ S.suspend(() =>
 export type SqlManagedInstancePropertiesInputLicenseType =
   | "BasePrice"
   | "LicenseIncluded"
-  | "DisasterRecovery";
+  | "DisasterRecovery"
+  | (string & {});
 export const SqlManagedInstancePropertiesInputLicenseType =
   /*@__PURE__*/ S.String;
 
@@ -2643,11 +2651,14 @@ export const SqlManagedInstancesCreateRequestExtendedLocation =
   }) as any as S.Schema<SqlManagedInstancesCreateRequestExtendedLocation>;
 
 /** The name of the SKU. */
-export type SqlManagedInstanceSkuName = "vCore";
+export type SqlManagedInstanceSkuName = "vCore" | (string & {});
 export const SqlManagedInstanceSkuName = /*@__PURE__*/ S.String;
 
 /** The pricing tier for the instance. */
-export type SqlManagedInstanceSkuTier = "GeneralPurpose" | "BusinessCritical";
+export type SqlManagedInstanceSkuTier =
+  | "GeneralPurpose"
+  | "BusinessCritical"
+  | (string & {});
 export const SqlManagedInstanceSkuTier = /*@__PURE__*/ S.String;
 
 /** The resource model definition representing SKU for Azure Managed Instance - Azure Arc */
@@ -2750,7 +2761,8 @@ export const SqlManagedInstancePropertiesBasicLoginInformation =
 export type SqlManagedInstancePropertiesLicenseType =
   | "BasePrice"
   | "LicenseIncluded"
-  | "DisasterRecovery";
+  | "DisasterRecovery"
+  | (string & {});
 export const SqlManagedInstancePropertiesLicenseType = /*@__PURE__*/ S.String;
 
 /** Properties of sqlManagedInstance. */
@@ -3284,7 +3296,8 @@ export type AvailabilityGroupInfoReplicationPartnerType =
   | "SQLServer"
   | "AzureSQLVM"
   | "AzureSQLManagedInstance"
-  | "Unknown";
+  | "Unknown"
+  | (string & {});
 export const AvailabilityGroupInfoReplicationPartnerType =
   /*@__PURE__*/ S.String;
 
@@ -3420,14 +3433,16 @@ export type AvailabilityGroupConfigureEndpointAuthenticationMode =
   | "Windows_Negotiate_Certificate"
   | "Certificate_Windows_NTLM"
   | "Certificate_Windows_Kerberos"
-  | "Certificate_Windows_Negotiate";
+  | "Certificate_Windows_Negotiate"
+  | (string & {});
 export const AvailabilityGroupConfigureEndpointAuthenticationMode =
   /*@__PURE__*/ S.String;
 
 /** Property that determines whether a given availability replica can run in synchronous-commit mode */
 export type AvailabilityGroupConfigureAvailabilityMode =
   | "SYNCHRONOUS_COMMIT"
-  | "ASYNCHRONOUS_COMMIT";
+  | "ASYNCHRONOUS_COMMIT"
+  | (string & {});
 export const AvailabilityGroupConfigureAvailabilityMode =
   /*@__PURE__*/ S.String;
 
@@ -3436,13 +3451,15 @@ export type AvailabilityGroupConfigureFailoverMode =
   | "AUTOMATIC"
   | "MANUAL"
   | "EXTERNAL"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const AvailabilityGroupConfigureFailoverMode = /*@__PURE__*/ S.String;
 
 /** Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections) */
 export type AvailabilityGroupConfigurePrimaryAllowConnections =
   | "ALL"
-  | "READ_WRITE";
+  | "READ_WRITE"
+  | (string & {});
 export const AvailabilityGroupConfigurePrimaryAllowConnections =
   /*@__PURE__*/ S.String;
 
@@ -3450,12 +3467,16 @@ export const AvailabilityGroupConfigurePrimaryAllowConnections =
 export type AvailabilityGroupConfigureSecondaryAllowConnections =
   | "NO"
   | "ALL"
-  | "READ_ONLY";
+  | "READ_ONLY"
+  | (string & {});
 export const AvailabilityGroupConfigureSecondaryAllowConnections =
   /*@__PURE__*/ S.String;
 
 /** Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica. */
-export type AvailabilityGroupConfigureSeedingMode = "AUTOMATIC" | "MANUAL";
+export type AvailabilityGroupConfigureSeedingMode =
+  | "AUTOMATIC"
+  | "MANUAL"
+  | (string & {});
 export const AvailabilityGroupConfigureSeedingMode = /*@__PURE__*/ S.String;
 
 /** The specifications of the availability group replica configuration */
@@ -3820,14 +3841,16 @@ export type AvailabilityGroupConfigureInputEndpointAuthenticationMode =
   | "Windows_Negotiate_Certificate"
   | "Certificate_Windows_NTLM"
   | "Certificate_Windows_Kerberos"
-  | "Certificate_Windows_Negotiate";
+  | "Certificate_Windows_Negotiate"
+  | (string & {});
 export const AvailabilityGroupConfigureInputEndpointAuthenticationMode =
   /*@__PURE__*/ S.String;
 
 /** Property that determines whether a given availability replica can run in synchronous-commit mode */
 export type AvailabilityGroupConfigureInputAvailabilityMode =
   | "SYNCHRONOUS_COMMIT"
-  | "ASYNCHRONOUS_COMMIT";
+  | "ASYNCHRONOUS_COMMIT"
+  | (string & {});
 export const AvailabilityGroupConfigureInputAvailabilityMode =
   /*@__PURE__*/ S.String;
 
@@ -3836,14 +3859,16 @@ export type AvailabilityGroupConfigureInputFailoverMode =
   | "AUTOMATIC"
   | "MANUAL"
   | "EXTERNAL"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const AvailabilityGroupConfigureInputFailoverMode =
   /*@__PURE__*/ S.String;
 
 /** Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections) */
 export type AvailabilityGroupConfigureInputPrimaryAllowConnections =
   | "ALL"
-  | "READ_WRITE";
+  | "READ_WRITE"
+  | (string & {});
 export const AvailabilityGroupConfigureInputPrimaryAllowConnections =
   /*@__PURE__*/ S.String;
 
@@ -3851,12 +3876,16 @@ export const AvailabilityGroupConfigureInputPrimaryAllowConnections =
 export type AvailabilityGroupConfigureInputSecondaryAllowConnections =
   | "NO"
   | "ALL"
-  | "READ_ONLY";
+  | "READ_ONLY"
+  | (string & {});
 export const AvailabilityGroupConfigureInputSecondaryAllowConnections =
   /*@__PURE__*/ S.String;
 
 /** Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica. */
-export type AvailabilityGroupConfigureInputSeedingMode = "AUTOMATIC" | "MANUAL";
+export type AvailabilityGroupConfigureInputSeedingMode =
+  | "AUTOMATIC"
+  | "MANUAL"
+  | (string & {});
 export const AvailabilityGroupConfigureInputSeedingMode =
   /*@__PURE__*/ S.String;
 
@@ -4127,14 +4156,16 @@ export type AvailabilityGroupCreateUpdateReplicaConfigurationEndpointAuthenticat
     | "Windows_Negotiate_Certificate"
     | "Certificate_Windows_NTLM"
     | "Certificate_Windows_Kerberos"
-    | "Certificate_Windows_Negotiate";
+    | "Certificate_Windows_Negotiate"
+    | (string & {});
 export const AvailabilityGroupCreateUpdateReplicaConfigurationEndpointAuthenticationMode =
   /*@__PURE__*/ S.String;
 
 /** Property that determines whether a given availability replica can run in synchronous-commit mode */
 export type AvailabilityGroupCreateUpdateReplicaConfigurationAvailabilityMode =
   | "SYNCHRONOUS_COMMIT"
-  | "ASYNCHRONOUS_COMMIT";
+  | "ASYNCHRONOUS_COMMIT"
+  | (string & {});
 export const AvailabilityGroupCreateUpdateReplicaConfigurationAvailabilityMode =
   /*@__PURE__*/ S.String;
 
@@ -4143,26 +4174,28 @@ export type AvailabilityGroupCreateUpdateReplicaConfigurationFailoverMode =
   | "AUTOMATIC"
   | "MANUAL"
   | "EXTERNAL"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const AvailabilityGroupCreateUpdateReplicaConfigurationFailoverMode =
   /*@__PURE__*/ S.String;
 
 /** Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica. */
 export type AvailabilityGroupCreateUpdateReplicaConfigurationSeedingMode =
   | "AUTOMATIC"
-  | "MANUAL";
+  | "MANUAL"
+  | (string & {});
 export const AvailabilityGroupCreateUpdateReplicaConfigurationSeedingMode =
   /*@__PURE__*/ S.String;
 
 /** Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections. */
 export type AvailabilityGroupCreateUpdateReplicaConfigurationSecondaryRoleAllowConnections =
-  "NO" | "ALL" | "READ_ONLY";
+  "NO" | "ALL" | "READ_ONLY" | (string & {});
 export const AvailabilityGroupCreateUpdateReplicaConfigurationSecondaryRoleAllowConnections =
   /*@__PURE__*/ S.String;
 
 /** Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections) */
 export type AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleAllowConnections =
-  "ALL" | "READ_WRITE";
+  "ALL" | "READ_WRITE" | (string & {});
 export const AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleAllowConnections =
   /*@__PURE__*/ S.String;
 
@@ -4262,31 +4295,31 @@ export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDatabasesL
 
 /** Preferred replica for running automated backups. */
 export type SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestAutomatedBackupPreference =
-  "PRIMARY" | "SECONDARY_ONLY" | "SECONDARY" | "NONE";
+  "PRIMARY" | "SECONDARY_ONLY" | "SECONDARY" | "NONE" | (string & {});
 export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestAutomatedBackupPreference =
   /*@__PURE__*/ S.String;
 
 /** User-defined failure condition level under which an automatic failover must be triggered. */
 export type SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestFailureConditionLevel =
-  1 | 2 | 3 | 4 | 5;
+  1 | 2 | 3 | 4 | 5 | (number & {});
 export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestFailureConditionLevel =
   /*@__PURE__*/ S.Number;
 
 /** Specifies whether the availability group supports failover for database health conditions. */
 export type SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDbFailover =
-  "ON" | "OFF";
+  "ON" | "OFF" | (string & {});
 export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDbFailover =
   /*@__PURE__*/ S.String;
 
 /** Specifies whether DTC support has been enabled for this availability group. */
 export type SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDtcSupport =
-  "PER_DB" | "NONE";
+  "PER_DB" | "NONE" | (string & {});
 export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDtcSupport =
   /*@__PURE__*/ S.String;
 
 /** Set to WSFC when availability group is on a failover cluster instance on a Windows Server failover cluster. Set to NONE when availability group not using WSFC for cluster coordination. */
 export type SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestClusterType =
-  "WSFC" | "NONE";
+  "WSFC" | "NONE" | (string & {});
 export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestClusterType =
   /*@__PURE__*/ S.String;
 
@@ -4407,19 +4440,19 @@ export const SqlServerAvailabilityGroupsCreateAvailabilityGroupResponse =
 
 /** The availability mode of the availability group. */
 export type DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationAvailabilityMode =
-  "SYNCHRONOUS_COMMIT" | "ASYNCHRONOUS_COMMIT";
+  "SYNCHRONOUS_COMMIT" | "ASYNCHRONOUS_COMMIT" | (string & {});
 export const DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationAvailabilityMode =
   /*@__PURE__*/ S.String;
 
 /** The failover mode of the availability group. */
 export type DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationFailoverMode =
-  "AUTOMATIC" | "MANUAL" | "EXTERNAL" | "NONE";
+  "AUTOMATIC" | "MANUAL" | "EXTERNAL" | "NONE" | (string & {});
 export const DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationFailoverMode =
   /*@__PURE__*/ S.String;
 
 /** The seeding mode of the availability group. */
 export type DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationSeedingMode =
-  "AUTOMATIC" | "MANUAL";
+  "AUTOMATIC" | "MANUAL" | (string & {});
 export const DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationSeedingMode =
   /*@__PURE__*/ S.String;
 
@@ -4577,7 +4610,7 @@ export const AvailabilityGroupCreateUpdateConfigurationDatabasesList =
 
 /** Preferred replica for running automated backups. */
 export type AvailabilityGroupCreateUpdateConfigurationAutomatedBackupPreference =
-  "PRIMARY" | "SECONDARY_ONLY" | "SECONDARY" | "NONE";
+  "PRIMARY" | "SECONDARY_ONLY" | "SECONDARY" | "NONE" | (string & {});
 export const AvailabilityGroupCreateUpdateConfigurationAutomatedBackupPreference =
   /*@__PURE__*/ S.String;
 
@@ -4587,26 +4620,32 @@ export type AvailabilityGroupCreateUpdateConfigurationFailureConditionLevel =
   | 2
   | 3
   | 4
-  | 5;
+  | 5
+  | (number & {});
 export const AvailabilityGroupCreateUpdateConfigurationFailureConditionLevel =
   /*@__PURE__*/ S.Number;
 
 /** Specifies whether the availability group supports failover for database health conditions. */
-export type AvailabilityGroupCreateUpdateConfigurationDbFailover = "ON" | "OFF";
+export type AvailabilityGroupCreateUpdateConfigurationDbFailover =
+  | "ON"
+  | "OFF"
+  | (string & {});
 export const AvailabilityGroupCreateUpdateConfigurationDbFailover =
   /*@__PURE__*/ S.String;
 
 /** Specifies whether DTC support has been enabled for this availability group. */
 export type AvailabilityGroupCreateUpdateConfigurationDtcSupport =
   | "PER_DB"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const AvailabilityGroupCreateUpdateConfigurationDtcSupport =
   /*@__PURE__*/ S.String;
 
 /** Set to WSFC when availability group is on a failover cluster instance on a Windows Server failover cluster. Set to NONE when availability group not using WSFC for cluster coordination. */
 export type AvailabilityGroupCreateUpdateConfigurationClusterType =
   | "WSFC"
-  | "NONE";
+  | "NONE"
+  | (string & {});
 export const AvailabilityGroupCreateUpdateConfigurationClusterType =
   /*@__PURE__*/ S.String;
 
@@ -5494,7 +5533,8 @@ export type SqlServerDatabaseResourcePropertiesInputState =
   | "Emergency"
   | "Offline"
   | "Copying"
-  | "OfflineSecondary";
+  | "OfflineSecondary"
+  | (string & {});
 export const SqlServerDatabaseResourcePropertiesInputState =
   /*@__PURE__*/ S.String;
 
@@ -5502,7 +5542,8 @@ export const SqlServerDatabaseResourcePropertiesInputState =
 export type SqlServerDatabaseResourcePropertiesInputRecoveryMode =
   | "Full"
   | "Bulk-logged"
-  | "Simple";
+  | "Simple"
+  | (string & {});
 export const SqlServerDatabaseResourcePropertiesInputRecoveryMode =
   /*@__PURE__*/ S.String;
 
@@ -5556,7 +5597,7 @@ export const SqlServerDatabaseResourcePropertiesInputBackupInformation =
   }) as any as S.Schema<SqlServerDatabaseResourcePropertiesInputBackupInformation>;
 
 /** The differential backup interval in hours. */
-export type BackupPolicyDifferentialBackupHours = 12 | 24;
+export type BackupPolicyDifferentialBackupHours = 12 | 24 | (number & {});
 export const BackupPolicyDifferentialBackupHours = /*@__PURE__*/ S.Number;
 
 /** The backup profile for the SQL server. */
@@ -5582,7 +5623,8 @@ export const BackupPolicy = /*@__PURE__*/ S.suspend(() =>
 /** Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified. */
 export type SqlServerDatabaseResourcePropertiesInputCreateMode =
   | "Default"
-  | "PointInTimeRestore";
+  | "PointInTimeRestore"
+  | (string & {});
 export const SqlServerDatabaseResourcePropertiesInputCreateMode =
   /*@__PURE__*/ S.String;
 
@@ -5731,14 +5773,16 @@ export type SqlServerDatabaseResourcePropertiesState =
   | "Emergency"
   | "Offline"
   | "Copying"
-  | "OfflineSecondary";
+  | "OfflineSecondary"
+  | (string & {});
 export const SqlServerDatabaseResourcePropertiesState = /*@__PURE__*/ S.String;
 
 /** Status of the database. */
 export type SqlServerDatabaseResourcePropertiesRecoveryMode =
   | "Full"
   | "Bulk-logged"
-  | "Simple";
+  | "Simple"
+  | (string & {});
 export const SqlServerDatabaseResourcePropertiesRecoveryMode =
   /*@__PURE__*/ S.String;
 
@@ -5794,7 +5838,8 @@ export const SqlServerDatabaseResourcePropertiesBackupInformation =
 /** Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified. */
 export type SqlServerDatabaseResourcePropertiesCreateMode =
   | "Default"
-  | "PointInTimeRestore";
+  | "PointInTimeRestore"
+  | (string & {});
 export const SqlServerDatabaseResourcePropertiesCreateMode =
   /*@__PURE__*/ S.String;
 
@@ -5826,7 +5871,8 @@ export type SkuRecommendationSummaryRecommendationStatus =
   | "NotReady"
   | "Ready"
   | "ReadyWithConditions"
-  | "Unknown";
+  | "Unknown"
+  | (string & {});
 export const SkuRecommendationSummaryRecommendationStatus =
   /*@__PURE__*/ S.String;
 
@@ -6444,21 +6490,25 @@ export const SqlServerEsuLicensesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SqlServerEsuLicensesCreateRequestTagsMap>;
 
 /** SQL Server ESU license type. */
-export type SqlServerEsuLicensePropertiesInputBillingPlan = "PAYG";
+export type SqlServerEsuLicensePropertiesInputBillingPlan =
+  | "PAYG"
+  | (string & {});
 export const SqlServerEsuLicensePropertiesInputBillingPlan =
   /*@__PURE__*/ S.String;
 
 /** The SQL Server version the license covers. */
 export type SqlServerEsuLicensePropertiesInputVersion =
   | "SQL Server 2012"
-  | "SQL Server 2014";
+  | "SQL Server 2014"
+  | (string & {});
 export const SqlServerEsuLicensePropertiesInputVersion = /*@__PURE__*/ S.String;
 
 /** The activation state of the license. */
 export type SqlServerEsuLicensePropertiesInputActivationState =
   | "Inactive"
   | "Active"
-  | "Terminated";
+  | "Terminated"
+  | (string & {});
 export const SqlServerEsuLicensePropertiesInputActivationState =
   /*@__PURE__*/ S.String;
 
@@ -6466,7 +6516,8 @@ export const SqlServerEsuLicensePropertiesInputActivationState =
 export type SqlServerEsuLicensePropertiesInputScopeType =
   | "Tenant"
   | "Subscription"
-  | "ResourceGroup";
+  | "ResourceGroup"
+  | (string & {});
 export const SqlServerEsuLicensePropertiesInputScopeType =
   /*@__PURE__*/ S.String;
 
@@ -6539,20 +6590,22 @@ export const SqlServerEsuLicensesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SqlServerEsuLicensesCreateResponseTagsMap>;
 
 /** SQL Server ESU license type. */
-export type SqlServerEsuLicensePropertiesBillingPlan = "PAYG";
+export type SqlServerEsuLicensePropertiesBillingPlan = "PAYG" | (string & {});
 export const SqlServerEsuLicensePropertiesBillingPlan = /*@__PURE__*/ S.String;
 
 /** The SQL Server version the license covers. */
 export type SqlServerEsuLicensePropertiesVersion =
   | "SQL Server 2012"
-  | "SQL Server 2014";
+  | "SQL Server 2014"
+  | (string & {});
 export const SqlServerEsuLicensePropertiesVersion = /*@__PURE__*/ S.String;
 
 /** The activation state of the license. */
 export type SqlServerEsuLicensePropertiesActivationState =
   | "Inactive"
   | "Active"
-  | "Terminated";
+  | "Terminated"
+  | (string & {});
 export const SqlServerEsuLicensePropertiesActivationState =
   /*@__PURE__*/ S.String;
 
@@ -6560,7 +6613,8 @@ export const SqlServerEsuLicensePropertiesActivationState =
 export type SqlServerEsuLicensePropertiesScopeType =
   | "Tenant"
   | "Subscription"
-  | "ResourceGroup";
+  | "ResourceGroup"
+  | (string & {});
 export const SqlServerEsuLicensePropertiesScopeType = /*@__PURE__*/ S.String;
 
 /** Properties of SQL Server ESU license. */
@@ -6839,14 +6893,17 @@ export const SqlServerEsuLicensesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SqlServerEsuLicensesUpdateRequestTagsMap>;
 
 /** SQL Server ESU license type. */
-export type SqlServerEsuLicenseUpdatePropertiesInputBillingPlan = "PAYG";
+export type SqlServerEsuLicenseUpdatePropertiesInputBillingPlan =
+  | "PAYG"
+  | (string & {});
 export const SqlServerEsuLicenseUpdatePropertiesInputBillingPlan =
   /*@__PURE__*/ S.String;
 
 /** The SQL Server version the license covers. */
 export type SqlServerEsuLicenseUpdatePropertiesInputVersion =
   | "SQL Server 2012"
-  | "SQL Server 2014";
+  | "SQL Server 2014"
+  | (string & {});
 export const SqlServerEsuLicenseUpdatePropertiesInputVersion =
   /*@__PURE__*/ S.String;
 
@@ -6854,7 +6911,8 @@ export const SqlServerEsuLicenseUpdatePropertiesInputVersion =
 export type SqlServerEsuLicenseUpdatePropertiesInputActivationState =
   | "Inactive"
   | "Active"
-  | "Terminated";
+  | "Terminated"
+  | (string & {});
 export const SqlServerEsuLicenseUpdatePropertiesInputActivationState =
   /*@__PURE__*/ S.String;
 
@@ -6862,7 +6920,8 @@ export const SqlServerEsuLicenseUpdatePropertiesInputActivationState =
 export type SqlServerEsuLicenseUpdatePropertiesInputScopeType =
   | "Tenant"
   | "Subscription"
-  | "ResourceGroup";
+  | "ResourceGroup"
+  | (string & {});
 export const SqlServerEsuLicenseUpdatePropertiesInputScopeType =
   /*@__PURE__*/ S.String;
 
@@ -6984,7 +7043,8 @@ export type SqlServerInstancePropertiesInputVersion =
   | "SQL Server 2017"
   | "SQL Server 2019"
   | "SQL Server 2022"
-  | "SQL Server 2025";
+  | "SQL Server 2025"
+  | (string & {});
 export const SqlServerInstancePropertiesInputVersion = /*@__PURE__*/ S.String;
 
 /** SQL Server edition. */
@@ -6996,7 +7056,8 @@ export type SqlServerInstancePropertiesInputEdition =
   | "Developer"
   | "Express"
   | "Business Intelligence"
-  | "Standard Developer";
+  | "Standard Developer"
+  | (string & {});
 export const SqlServerInstancePropertiesInputEdition = /*@__PURE__*/ S.String;
 
 /** Type of host for Azure Arc SQL Server */
@@ -7013,7 +7074,8 @@ export type SqlServerInstancePropertiesInputHostType =
   | "Physical Server"
   | "AWS Virtual Machine"
   | "GCP Virtual Machine"
-  | "Other";
+  | "Other"
+  | (string & {});
 export const SqlServerInstancePropertiesInputHostType = /*@__PURE__*/ S.String;
 
 /** The encryption algorithm(s) used by the endpoint. */
@@ -7026,7 +7088,8 @@ export type DBMEndpointInputEncryptionAlgorithm =
   | "RC4, AES"
   | "AES, RC4"
   | "NONE, RC4, AES"
-  | "NONE, AES, RC4";
+  | "NONE, AES, RC4"
+  | (string & {});
 export const DBMEndpointInputEncryptionAlgorithm = /*@__PURE__*/ S.String;
 
 /** The endpoint connection authentication type(s). */
@@ -7040,7 +7103,8 @@ export type DBMEndpointInputConnectionAuth =
   | "Windows_Negotiate_Certificate"
   | "Certificate_Windows_NTLM"
   | "Certificate_Windows_Kerberos"
-  | "Certificate_Windows_Negotiate";
+  | "Certificate_Windows_Negotiate"
+  | (string & {});
 export const DBMEndpointInputConnectionAuth = /*@__PURE__*/ S.String;
 
 /** Database mirroring endpoint related properties. */
@@ -7225,17 +7289,28 @@ export const ClientConnection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClientConnection>;
 
 /** Indicates if the resource represents a SQL Server engine or a SQL Server component service installed on the host. */
-export type ServiceType = "Engine" | "SSRS" | "SSAS" | "SSIS" | "PBIRS";
+export type ServiceType =
+  | "Engine"
+  | "SSRS"
+  | "SSAS"
+  | "SSIS"
+  | "PBIRS"
+  | (string & {});
 export const ServiceType = /*@__PURE__*/ S.String;
 
 /** Mode of authentication in SqlServer. */
-export type AuthenticationMode = "Mixed" | "Windows" | "Undefined";
+export type AuthenticationMode =
+  | "Mixed"
+  | "Windows"
+  | "Undefined"
+  | (string & {});
 export const AuthenticationMode = /*@__PURE__*/ S.String;
 
 /** The method used for Entra authentication */
 export type AuthenticationSqlServerEntraIdentityItemIdentityType =
   | "SystemAssignedManagedIdentity"
-  | "UserAssignedManagedIdentity";
+  | "UserAssignedManagedIdentity"
+  | (string & {});
 export const AuthenticationSqlServerEntraIdentityItemIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -7388,7 +7463,8 @@ export type SqlServerInstancePropertiesVersion =
   | "SQL Server 2017"
   | "SQL Server 2019"
   | "SQL Server 2022"
-  | "SQL Server 2025";
+  | "SQL Server 2025"
+  | (string & {});
 export const SqlServerInstancePropertiesVersion = /*@__PURE__*/ S.String;
 
 /** SQL Server edition. */
@@ -7400,7 +7476,8 @@ export type SqlServerInstancePropertiesEdition =
   | "Developer"
   | "Express"
   | "Business Intelligence"
-  | "Standard Developer";
+  | "Standard Developer"
+  | (string & {});
 export const SqlServerInstancePropertiesEdition = /*@__PURE__*/ S.String;
 
 /** The cloud connectivity status. */
@@ -7408,7 +7485,8 @@ export type SqlServerInstancePropertiesStatus =
   | "Connected"
   | "Disconnected"
   | "Registered"
-  | "Unknown";
+  | "Unknown"
+  | (string & {});
 export const SqlServerInstancePropertiesStatus = /*@__PURE__*/ S.String;
 
 /** An array of integers, where each value represents the enabled trace flags in SQL Server. */
@@ -7426,14 +7504,16 @@ export type SqlServerInstancePropertiesLicenseType =
   | "LicenseOnly"
   | "PAYG"
   | "Paid"
-  | "FabricCapacity";
+  | "FabricCapacity"
+  | (string & {});
 export const SqlServerInstancePropertiesLicenseType = /*@__PURE__*/ S.String;
 
 /** Status of Azure Defender. */
 export type SqlServerInstancePropertiesAzureDefenderStatus =
   | "Protected"
   | "Unprotected"
-  | "Unknown";
+  | "Unknown"
+  | (string & {});
 export const SqlServerInstancePropertiesAzureDefenderStatus =
   /*@__PURE__*/ S.String;
 
@@ -7451,7 +7531,8 @@ export type SqlServerInstancePropertiesHostType =
   | "Physical Server"
   | "AWS Virtual Machine"
   | "GCP Virtual Machine"
-  | "Other";
+  | "Other"
+  | (string & {});
 export const SqlServerInstancePropertiesHostType = /*@__PURE__*/ S.String;
 
 /** The role of the SQL Server, based on availability. */
@@ -7459,11 +7540,17 @@ export type SqlServerInstancePropertiesAlwaysOnRole =
   | "None"
   | "FailoverClusterInstance"
   | "FailoverClusterNode"
-  | "AvailabilityGroupReplica";
+  | "AvailabilityGroupReplica"
+  | (string & {});
 export const SqlServerInstancePropertiesAlwaysOnRole = /*@__PURE__*/ S.String;
 
 /** Mirroring Role */
-export type DBMEndpointRole = "NONE" | "PARTNER" | "WITNESS" | "ALL";
+export type DBMEndpointRole =
+  | "NONE"
+  | "PARTNER"
+  | "WITNESS"
+  | "ALL"
+  | (string & {});
 export const DBMEndpointRole = /*@__PURE__*/ S.String;
 
 /** The encryption algorithm(s) used by the endpoint. */
@@ -7476,7 +7563,8 @@ export type DBMEndpointEncryptionAlgorithm =
   | "RC4, AES"
   | "AES, RC4"
   | "NONE, RC4, AES"
-  | "NONE, AES, RC4";
+  | "NONE, AES, RC4"
+  | (string & {});
 export const DBMEndpointEncryptionAlgorithm = /*@__PURE__*/ S.String;
 
 /** The endpoint connection authentication type(s). */
@@ -7490,7 +7578,8 @@ export type DBMEndpointConnectionAuth =
   | "Windows_Negotiate_Certificate"
   | "Certificate_Windows_NTLM"
   | "Certificate_Windows_Kerberos"
-  | "Certificate_Windows_Negotiate";
+  | "Certificate_Windows_Negotiate"
+  | (string & {});
 export const DBMEndpointConnectionAuth = /*@__PURE__*/ S.String;
 
 /** Database mirroring endpoint related properties. */
@@ -7643,7 +7732,8 @@ export type SkuRecommendationResultsAzureSqlDatabaseRecommendationStatus =
   | "NotReady"
   | "Ready"
   | "ReadyWithConditions"
-  | "Unknown";
+  | "Unknown"
+  | (string & {});
 export const SkuRecommendationResultsAzureSqlDatabaseRecommendationStatus =
   /*@__PURE__*/ S.String;
 
@@ -7773,7 +7863,7 @@ export const SkuRecommendationResultsAzureSqlDatabase = /*@__PURE__*/ S.suspend(
 
 /** The target recommendation Status for this database. */
 export type SkuRecommendationResultsAzureSqlManagedInstanceRecommendationStatus =
-  "NotReady" | "Ready" | "ReadyWithConditions" | "Unknown";
+  "NotReady" | "Ready" | "ReadyWithConditions" | "Unknown" | (string & {});
 export const SkuRecommendationResultsAzureSqlManagedInstanceRecommendationStatus =
   /*@__PURE__*/ S.String;
 
@@ -7906,7 +7996,7 @@ export const SkuRecommendationResultsAzureSqlManagedInstance =
 
 /** The target recommendation Status for this database. */
 export type SkuRecommendationResultsAzureSqlVirtualMachineRecommendationStatus =
-  "NotReady" | "Ready" | "ReadyWithConditions" | "Unknown";
+  "NotReady" | "Ready" | "ReadyWithConditions" | "Unknown" | (string & {});
 export const SkuRecommendationResultsAzureSqlVirtualMachineRecommendationStatus =
   /*@__PURE__*/ S.String;
 
@@ -8504,14 +8594,16 @@ export const SqlServerInstancesGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type AvailabilityGroupTypeFilter =
   | "CONTAINED"
   | "DISTRIBUTED"
-  | "DEFAULT";
+  | "DEFAULT"
+  | (string & {});
 export const AvailabilityGroupTypeFilter = /*@__PURE__*/ S.String;
 
 export type ReplicationPartnerType =
   | "SQLServer"
   | "AzureSQLVM"
   | "AzureSQLManagedInstance"
-  | "Unknown";
+  | "Unknown"
+  | (string & {});
 export const ReplicationPartnerType = /*@__PURE__*/ S.String;
 
 export interface SqlServerInstancesGetAllAvailabilityGroupsRequest {
@@ -8547,7 +8639,8 @@ export const SqlServerInstancesGetAllAvailabilityGroupsRequest =
 /** The report type that needs to be fetched. If not specified, the default is AssessmentSummary. */
 export type SqlServerInstancesGetBestPracticesAssessmentRequestReportType =
   | "AssessmentDataPoint"
-  | "AssessmentSummary";
+  | "AssessmentSummary"
+  | (string & {});
 export const SqlServerInstancesGetBestPracticesAssessmentRequestReportType =
   /*@__PURE__*/ S.String;
 
@@ -8597,7 +8690,8 @@ export type SqlServerInstanceBpaColumnType =
   | "double"
   | "string"
   | "guid"
-  | "timespan";
+  | "timespan"
+  | (string & {});
 export const SqlServerInstanceBpaColumnType = /*@__PURE__*/ S.String;
 
 /** The SQL best practices assessment result column. */
@@ -8694,7 +8788,8 @@ export type SqlServerInstanceJobStatusJobStatus =
   | "NotStarted"
   | "InProgress"
   | "Succeeded"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const SqlServerInstanceJobStatusJobStatus = /*@__PURE__*/ S.String;
 
 /** The state of the background job. */
@@ -8704,11 +8799,12 @@ export type BackgroundJobState =
   | "Deleted"
   | "Completed"
   | "Faulted"
-  | "Suspended";
+  | "Suspended"
+  | (string & {});
 export const BackgroundJobState = /*@__PURE__*/ S.String;
 
 /** The execution state of the background job. */
-export type BackgroundJobExecutionState = "Waiting" | "Running";
+export type BackgroundJobExecutionState = "Waiting" | "Running" | (string & {});
 export const BackgroundJobExecutionState = /*@__PURE__*/ S.String;
 
 /** The last execution status of the background job. */
@@ -8718,7 +8814,8 @@ export type BackgroundJobLastExecutionStatus =
   | "Failed"
   | "Faulted"
   | "Postponed"
-  | "Rescheduled";
+  | "Rescheduled"
+  | (string & {});
 export const BackgroundJobLastExecutionStatus = /*@__PURE__*/ S.String;
 
 /** The background job details. */
@@ -8753,7 +8850,8 @@ export type SequencerActionState =
   | "WaitingPredecessors"
   | "ExecutingAction"
   | "CreatingSuccessors"
-  | "Completed";
+  | "Completed"
+  | (string & {});
 export const SequencerActionState = /*@__PURE__*/ S.String;
 
 /** The result of the sequencer action. */
@@ -8762,7 +8860,8 @@ export type SequencerActionResult =
   | "Succeeded"
   | "Failed"
   | "TimedOut"
-  | "Skipped";
+  | "Skipped"
+  | (string & {});
 export const SequencerActionResult = /*@__PURE__*/ S.String;
 
 /** The sequencer action details. */
@@ -8851,7 +8950,8 @@ export type SqlServerInstancesGetTelemetryRequestAggregationType =
   | "Minimum"
   | "Maximum"
   | "Sum"
-  | "Count";
+  | "Count"
+  | (string & {});
 export const SqlServerInstancesGetTelemetryRequestAggregationType =
   /*@__PURE__*/ S.String;
 
@@ -8920,7 +9020,8 @@ export type SqlServerInstanceTelemetryColumnType =
   | "double"
   | "string"
   | "guid"
-  | "timespan";
+  | "timespan"
+  | (string & {});
 export const SqlServerInstanceTelemetryColumnType = /*@__PURE__*/ S.String;
 
 /** The telemetry column for the SQL Server instance. */
@@ -9270,7 +9371,8 @@ export type SqlServerInstancesRunBestPracticesAssessmentResponseJobStatus =
   | "NotStarted"
   | "InProgress"
   | "Succeeded"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const SqlServerInstancesRunBestPracticesAssessmentResponseJobStatus =
   /*@__PURE__*/ S.String;
 
@@ -9316,7 +9418,7 @@ export const SqlServerInstancesRunBestPracticesAssessmentResponse =
 
 /** The role of managed instance in a distributed availability group, can be Primary or Secondary. */
 export type SqlServerInstancesRunManagedInstanceLinkAssessmentRequestAzureManagedInstanceRole =
-  "Primary" | "Secondary";
+  "Primary" | "Secondary" | (string & {});
 export const SqlServerInstancesRunManagedInstanceLinkAssessmentRequestAzureManagedInstanceRole =
   /*@__PURE__*/ S.String;
 
@@ -9339,7 +9441,8 @@ export type MiLinkAssessmentCategory =
   | "BoxToMiNetworkConnectivity"
   | "MiToBoxNetworkConnectivity"
   | "SqlInstanceAg"
-  | "DagCrossValidation";
+  | "DagCrossValidation"
+  | (string & {});
 export const MiLinkAssessmentCategory = /*@__PURE__*/ S.String;
 
 /** An array of strings, where each value represents the category of the assessment to be run. If this field is not provided, all assessment categories will be run. */
@@ -9406,7 +9509,8 @@ export const SqlServerInstancesRunManagedInstanceLinkAssessmentRequest =
 export type SqlServerInstanceManagedInstanceLinkAssessmentStatus =
   | "Success"
   | "Warning"
-  | "Failure";
+  | "Failure"
+  | (string & {});
 export const SqlServerInstanceManagedInstanceLinkAssessmentStatus =
   /*@__PURE__*/ S.String;
 
@@ -9502,7 +9606,8 @@ export type SqlServerInstancesRunMigrationAssessmentResponseJobStatus =
   | "NotStarted"
   | "InProgress"
   | "Succeeded"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const SqlServerInstancesRunMigrationAssessmentResponseJobStatus =
   /*@__PURE__*/ S.String;
 
@@ -9564,7 +9669,8 @@ export type SqlServerInstanceUpdatePropertiesInputVersion =
   | "SQL Server 2017"
   | "SQL Server 2019"
   | "SQL Server 2022"
-  | "SQL Server 2025";
+  | "SQL Server 2025"
+  | (string & {});
 export const SqlServerInstanceUpdatePropertiesInputVersion =
   /*@__PURE__*/ S.String;
 
@@ -9577,7 +9683,8 @@ export type SqlServerInstanceUpdatePropertiesInputEdition =
   | "Developer"
   | "Express"
   | "Business Intelligence"
-  | "Standard Developer";
+  | "Standard Developer"
+  | (string & {});
 export const SqlServerInstanceUpdatePropertiesInputEdition =
   /*@__PURE__*/ S.String;
 
@@ -9595,7 +9702,8 @@ export type SqlServerInstanceUpdatePropertiesInputHostType =
   | "Physical Server"
   | "AWS Virtual Machine"
   | "GCP Virtual Machine"
-  | "Other";
+  | "Other"
+  | (string & {});
 export const SqlServerInstanceUpdatePropertiesInputHostType =
   /*@__PURE__*/ S.String;
 
@@ -9744,19 +9852,25 @@ export const SqlServerLicensesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SqlServerLicensesCreateRequestTagsMap>;
 
 /** SQL Server license type. */
-export type SqlServerLicensePropertiesInputBillingPlan = "PAYG" | "Paid";
+export type SqlServerLicensePropertiesInputBillingPlan =
+  | "PAYG"
+  | "Paid"
+  | (string & {});
 export const SqlServerLicensePropertiesInputBillingPlan =
   /*@__PURE__*/ S.String;
 
 /** This property represents the choice between SQL Server Core and ESU licenses. */
-export type SqlServerLicensePropertiesInputLicenseCategory = "Core";
+export type SqlServerLicensePropertiesInputLicenseCategory =
+  | "Core"
+  | (string & {});
 export const SqlServerLicensePropertiesInputLicenseCategory =
   /*@__PURE__*/ S.String;
 
 /** The activation state of the license. */
 export type SqlServerLicensePropertiesInputActivationState =
   | "Activated"
-  | "Deactivated";
+  | "Deactivated"
+  | (string & {});
 export const SqlServerLicensePropertiesInputActivationState =
   /*@__PURE__*/ S.String;
 
@@ -9764,7 +9878,8 @@ export const SqlServerLicensePropertiesInputActivationState =
 export type SqlServerLicensePropertiesInputScopeType =
   | "Tenant"
   | "Subscription"
-  | "ResourceGroup";
+  | "ResourceGroup"
+  | (string & {});
 export const SqlServerLicensePropertiesInputScopeType = /*@__PURE__*/ S.String;
 
 /** Properties of SQL Server License. */
@@ -9836,24 +9951,29 @@ export const SqlServerLicensesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SqlServerLicensesCreateResponseTagsMap>;
 
 /** SQL Server license type. */
-export type SqlServerLicensePropertiesBillingPlan = "PAYG" | "Paid";
+export type SqlServerLicensePropertiesBillingPlan =
+  | "PAYG"
+  | "Paid"
+  | (string & {});
 export const SqlServerLicensePropertiesBillingPlan = /*@__PURE__*/ S.String;
 
 /** This property represents the choice between SQL Server Core and ESU licenses. */
-export type SqlServerLicensePropertiesLicenseCategory = "Core";
+export type SqlServerLicensePropertiesLicenseCategory = "Core" | (string & {});
 export const SqlServerLicensePropertiesLicenseCategory = /*@__PURE__*/ S.String;
 
 /** The activation state of the license. */
 export type SqlServerLicensePropertiesActivationState =
   | "Activated"
-  | "Deactivated";
+  | "Deactivated"
+  | (string & {});
 export const SqlServerLicensePropertiesActivationState = /*@__PURE__*/ S.String;
 
 /** The Azure scope to which the license will apply. */
 export type SqlServerLicensePropertiesScopeType =
   | "Tenant"
   | "Subscription"
-  | "ResourceGroup";
+  | "ResourceGroup"
+  | (string & {});
 export const SqlServerLicensePropertiesScopeType = /*@__PURE__*/ S.String;
 
 /** Properties of SQL Server License. */
@@ -10152,19 +10272,25 @@ export const SqlServerLicensesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SqlServerLicensesUpdateRequestTagsMap>;
 
 /** SQL Server license type. */
-export type SqlServerLicenseUpdatePropertiesInputBillingPlan = "PAYG" | "Paid";
+export type SqlServerLicenseUpdatePropertiesInputBillingPlan =
+  | "PAYG"
+  | "Paid"
+  | (string & {});
 export const SqlServerLicenseUpdatePropertiesInputBillingPlan =
   /*@__PURE__*/ S.String;
 
 /** This property represents the choice between SQL Server Core and ESU licenses. */
-export type SqlServerLicenseUpdatePropertiesInputLicenseCategory = "Core";
+export type SqlServerLicenseUpdatePropertiesInputLicenseCategory =
+  | "Core"
+  | (string & {});
 export const SqlServerLicenseUpdatePropertiesInputLicenseCategory =
   /*@__PURE__*/ S.String;
 
 /** The activation state of the license. */
 export type SqlServerLicenseUpdatePropertiesInputActivationState =
   | "Activated"
-  | "Deactivated";
+  | "Deactivated"
+  | (string & {});
 export const SqlServerLicenseUpdatePropertiesInputActivationState =
   /*@__PURE__*/ S.String;
 
@@ -10172,7 +10298,8 @@ export const SqlServerLicenseUpdatePropertiesInputActivationState =
 export type SqlServerLicenseUpdatePropertiesInputScopeType =
   | "Tenant"
   | "Subscription"
-  | "ResourceGroup";
+  | "ResourceGroup"
+  | (string & {});
 export const SqlServerLicenseUpdatePropertiesInputScopeType =
   /*@__PURE__*/ S.String;
 

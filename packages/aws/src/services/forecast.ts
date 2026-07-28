@@ -187,7 +187,8 @@ export type OptimizationMetric =
   | "RMSE"
   | "AverageWeightedQuantileLoss"
   | "MASE"
-  | "MAPE";
+  | "MAPE"
+  | (string & {});
 export const OptimizationMetric = /*@__PURE__*/ S.String;
 
 export type TagKey = string | redacted.Redacted<string>;
@@ -219,7 +220,8 @@ export type Month =
   | "SEPTEMBER"
   | "OCTOBER"
   | "NOVEMBER"
-  | "DECEMBER";
+  | "DECEMBER"
+  | (string & {});
 export const Month = /*@__PURE__*/ S.String;
 
 export type DayOfMonth = number;
@@ -230,7 +232,8 @@ export type DayOfWeek =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY";
+  | "SUNDAY"
+  | (string & {});
 export const DayOfWeek = /*@__PURE__*/ S.String;
 
 export type Hour = number;
@@ -301,13 +304,15 @@ export type Domain =
   | "EC2_CAPACITY"
   | "WORK_FORCE"
   | "WEB_TRAFFIC"
-  | "METRICS";
+  | "METRICS"
+  | (string & {});
 export const Domain = /*@__PURE__*/ S.String;
 
 export type DatasetType =
   | "TARGET_TIME_SERIES"
   | "RELATED_TIME_SERIES"
-  | "ITEM_METADATA";
+  | "ITEM_METADATA"
+  | (string & {});
 export const DatasetType = /*@__PURE__*/ S.String;
 
 export type AttributeType =
@@ -315,7 +320,8 @@ export type AttributeType =
   | "integer"
   | "float"
   | "timestamp"
-  | "geolocation";
+  | "geolocation"
+  | (string & {});
 export const AttributeType = /*@__PURE__*/ S.String;
 
 export interface SchemaAttribute {
@@ -422,7 +428,7 @@ export type TimeZone = string;
 export type UseGeolocationForTimeZone = boolean;
 export type GeolocationFormat = string;
 export type Format = string;
-export type ImportMode = "FULL" | "INCREMENTAL";
+export type ImportMode = "FULL" | "INCREMENTAL" | (string & {});
 export const ImportMode = /*@__PURE__*/ S.String;
 
 export interface CreateDatasetImportJobRequest {
@@ -463,10 +469,10 @@ export const CreateDatasetImportJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDatasetImportJobResponse",
 }) as any as S.Schema<CreateDatasetImportJobResponse>;
-export type TimeSeriesGranularity = "ALL" | "SPECIFIC";
+export type TimeSeriesGranularity = "ALL" | "SPECIFIC" | (string & {});
 export const TimeSeriesGranularity = /*@__PURE__*/ S.String;
 
-export type TimePointGranularity = "ALL" | "SPECIFIC";
+export type TimePointGranularity = "ALL" | "SPECIFIC" | (string & {});
 export const TimePointGranularity = /*@__PURE__*/ S.String;
 
 export interface ExplainabilityConfig {
@@ -656,7 +662,10 @@ export const CreateMonitorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMonitorResponse",
 }) as any as S.Schema<CreateMonitorResponse>;
-export type AutoMLOverrideStrategy = "LatencyOptimized" | "AccuracyOptimized";
+export type AutoMLOverrideStrategy =
+  | "LatencyOptimized"
+  | "AccuracyOptimized"
+  | (string & {});
 export const AutoMLOverrideStrategy = /*@__PURE__*/ S.String;
 
 export type ParameterKey = string;
@@ -695,7 +704,8 @@ export type ScalingType =
   | "Auto"
   | "Linear"
   | "Logarithmic"
-  | "ReverseLogarithmic";
+  | "ReverseLogarithmic"
+  | (string & {});
 export const ScalingType = /*@__PURE__*/ S.String;
 
 export interface ContinuousParameterRange {
@@ -784,7 +794,7 @@ export const InputDataConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InputDataConfig",
 }) as any as S.Schema<InputDataConfig>;
-export type FeaturizationMethodName = "filling";
+export type FeaturizationMethodName = "filling" | (string & {});
 export const FeaturizationMethodName = /*@__PURE__*/ S.String;
 
 export type FeaturizationMethodParameters = {
@@ -937,7 +947,12 @@ export const CreateWhatIfAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateWhatIfAnalysisResponse",
 }) as any as S.Schema<CreateWhatIfAnalysisResponse>;
-export type Operation = "ADD" | "SUBTRACT" | "MULTIPLY" | "DIVIDE";
+export type Operation =
+  | "ADD"
+  | "SUBTRACT"
+  | "MULTIPLY"
+  | "DIVIDE"
+  | (string & {});
 export const Operation = /*@__PURE__*/ S.String;
 
 export interface Action {
@@ -949,7 +964,12 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AttributeName: S.String, Operation: Operation, Value: S.Number }),
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
 export type AttributeValue = string;
-export type Condition = "EQUALS" | "NOT_EQUALS" | "LESS_THAN" | "GREATER_THAN";
+export type Condition =
+  | "EQUALS"
+  | "NOT_EQUALS"
+  | "LESS_THAN"
+  | "GREATER_THAN"
+  | (string & {});
 export const Condition = /*@__PURE__*/ S.String;
 
 export interface TimeSeriesCondition {
@@ -1296,7 +1316,7 @@ export const DescribeAutoPredictorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAutoPredictorRequest",
 }) as any as S.Schema<DescribeAutoPredictorRequest>;
-export type State = "Active" | "Deleted";
+export type State = "Active" | "Deleted" | (string & {});
 export const State = /*@__PURE__*/ S.String;
 
 export interface ReferencePredictorSummary {
@@ -2061,7 +2081,7 @@ export const GetAccuracyMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccuracyMetricsRequest",
 }) as any as S.Schema<GetAccuracyMetricsRequest>;
-export type EvaluationType = "SUMMARY" | "COMPUTED";
+export type EvaluationType = "SUMMARY" | "COMPUTED" | (string & {});
 export const EvaluationType = /*@__PURE__*/ S.String;
 
 export interface WeightedQuantileLoss {
@@ -2207,7 +2227,7 @@ export const ListDatasetGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDatasetGroupsResponse",
 }) as any as S.Schema<ListDatasetGroupsResponse>;
-export type FilterConditionString = "IS" | "IS_NOT";
+export type FilterConditionString = "IS" | "IS_NOT" | (string & {});
 export const FilterConditionString = /*@__PURE__*/ S.String;
 
 export interface Filter {

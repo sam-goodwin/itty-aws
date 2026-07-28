@@ -60,7 +60,10 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StateErrorTypeEnum = "TYPE_UNSPECIFIED" | "KMS_ERROR";
+export type StateErrorTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "KMS_ERROR"
+  | (string & {});
 export const StateErrorTypeEnum = /*@__PURE__*/ S.String;
 
 /** Describes an error related to the current state of the workflow. */
@@ -86,7 +89,8 @@ export const StringMap = /*@__PURE__*/ S.Record(
 export type WorkflowExecutionHistoryLevelEnum =
   | "EXECUTION_HISTORY_LEVEL_UNSPECIFIED"
   | "EXECUTION_HISTORY_BASIC"
-  | "EXECUTION_HISTORY_DETAILED";
+  | "EXECUTION_HISTORY_DETAILED"
+  | (string & {});
 export const WorkflowExecutionHistoryLevelEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -98,10 +102,15 @@ export type WorkflowCallLogLevelEnum =
   | "CALL_LOG_LEVEL_UNSPECIFIED"
   | "LOG_ALL_CALLS"
   | "LOG_ERRORS_ONLY"
-  | "LOG_NONE";
+  | "LOG_NONE"
+  | (string & {});
 export const WorkflowCallLogLevelEnum = /*@__PURE__*/ S.String;
 
-export type WorkflowStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "UNAVAILABLE";
+export type WorkflowStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "UNAVAILABLE"
+  | (string & {});
 export const WorkflowStateEnum = /*@__PURE__*/ S.String;
 
 /** Workflow program to be executed by Workflows. */

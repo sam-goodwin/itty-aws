@@ -133,14 +133,16 @@ export const GetAchievementConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type AchievementConfigurationAchievementTypeEnum =
   | "ACHIEVEMENT_TYPE_UNSPECIFIED"
   | "STANDARD"
-  | "INCREMENTAL";
+  | "INCREMENTAL"
+  | (string & {});
 export const AchievementConfigurationAchievementTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type AchievementConfigurationInitialStateEnum =
   | "INITIAL_STATE_UNSPECIFIED"
   | "HIDDEN"
-  | "REVEALED";
+  | "REVEALED"
+  | (string & {});
 export const AchievementConfigurationInitialStateEnum = /*@__PURE__*/ S.String;
 
 /** A localized string resource. */
@@ -295,7 +297,8 @@ export type GamesNumberFormatConfigurationNumberFormatTypeEnum =
   | "NUMBER_FORMAT_TYPE_UNSPECIFIED"
   | "NUMERIC"
   | "TIME_DURATION"
-  | "CURRENCY";
+  | "CURRENCY"
+  | (string & {});
 export const GamesNumberFormatConfigurationNumberFormatTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -351,7 +354,8 @@ export const LeaderboardConfigurationDetail = /*@__PURE__*/ S.suspend(() =>
 export type LeaderboardConfigurationScoreOrderEnum =
   | "SCORE_ORDER_UNSPECIFIED"
   | "LARGER_IS_BETTER"
-  | "SMALLER_IS_BETTER";
+  | "SMALLER_IS_BETTER"
+  | (string & {});
 export const LeaderboardConfigurationScoreOrderEnum = /*@__PURE__*/ S.String;
 
 /** An leaderboard configuration resource. */

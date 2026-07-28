@@ -92,10 +92,11 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other";
+  | "other"
+  | (string & {});
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "";
+export type BlankEnum = "" | (string & {});
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -379,7 +380,8 @@ export type AccountsNotebooksListRequestOrdering =
   | "-created_at"
   | "-created_by"
   | "created_at"
-  | "created_by";
+  | "created_by"
+  | (string & {});
 export const AccountsNotebooksListRequestOrdering = /*@__PURE__*/ S.String;
 
 export interface AccountsNotebooksListRequest {

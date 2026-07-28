@@ -15,7 +15,8 @@ export type { AzureOpError, AzureOpContext };
 
 /** The type of resource, Microsoft.VideoIndexer/accounts */
 export type AccountsCheckNameAvailabilityRequestType =
-  "Microsoft.VideoIndexer/accounts";
+  | "Microsoft.VideoIndexer/accounts"
+  | (string & {});
 export const AccountsCheckNameAvailabilityRequestType = /*@__PURE__*/ S.String;
 
 export interface AccountsCheckNameAvailabilityRequest {
@@ -45,7 +46,7 @@ export const AccountsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AccountsCheckNameAvailabilityRequest>;
 
 /** Gets the reason that a Video Indexer account name could not be used. The Reason element is only returned if NameAvailable is false. */
-export type CheckNameAvailabilityResultReason = "AlreadyExists";
+export type CheckNameAvailabilityResultReason = "AlreadyExists" | (string & {});
 export const CheckNameAvailabilityResultReason = /*@__PURE__*/ S.String;
 
 /** The CheckNameAvailability operation response. */
@@ -111,7 +112,8 @@ export const OpenAiServicesForPutRequest = /*@__PURE__*/ S.suspend(() =>
 /** Whether or not public network access is allowed for the account. */
 export type AccountPropertiesForPutRequestInputPublicNetworkAccess =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const AccountPropertiesForPutRequestInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -127,7 +129,8 @@ export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected";
+  | "Rejected"
+  | (string & {});
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -223,7 +226,8 @@ export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned";
+  | "SystemAssigned,UserAssigned"
+  | (string & {});
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -300,7 +304,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -308,7 +313,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -349,7 +355,8 @@ export const AccountsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 /** Whether or not public network access is allowed for the account. */
 export type AccountPropertiesForPutRequestPublicNetworkAccess =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const AccountPropertiesForPutRequestPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -379,7 +386,8 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -446,7 +454,8 @@ export type AccountPropertiesForPutRequestProvisioningState =
   | "Canceled"
   | "Accepted"
   | "Provisioning"
-  | "Deleting";
+  | "Deleting"
+  | (string & {});
 export const AccountPropertiesForPutRequestProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -853,7 +862,8 @@ export const OpenAiServicesForPatchRequest = /*@__PURE__*/ S.suspend(() =>
 /** Whether or not public network access is allowed for the account. */
 export type AccountPropertiesForPatchRequestInputPublicNetworkAccess =
   | "Enabled"
-  | "Disabled";
+  | "Disabled"
+  | (string & {});
 export const AccountPropertiesForPatchRequestInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -1018,11 +1028,18 @@ export const AccountsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountsUpdateResponse>;
 
 /** The requested permission */
-export type GenerateAccessTokenRequestPermissionType = "Contributor" | "Reader";
+export type GenerateAccessTokenRequestPermissionType =
+  | "Contributor"
+  | "Reader"
+  | (string & {});
 export const GenerateAccessTokenRequestPermissionType = /*@__PURE__*/ S.String;
 
 /** The requested media type */
-export type GenerateAccessTokenRequestScope = "Video" | "Account" | "Project";
+export type GenerateAccessTokenRequestScope =
+  | "Video"
+  | "Account"
+  | "Project"
+  | (string & {});
 export const GenerateAccessTokenRequestScope = /*@__PURE__*/ S.String;
 
 export interface GenerateAccessTokenRequest {
@@ -1076,7 +1093,8 @@ export const AccessToken = /*@__PURE__*/ S.suspend(() =>
 /** The requested permission */
 export type GenerateExtensionAccessTokenRequestPermissionType =
   | "Contributor"
-  | "Reader";
+  | "Reader"
+  | (string & {});
 export const GenerateExtensionAccessTokenRequestPermissionType =
   /*@__PURE__*/ S.String;
 
@@ -1084,7 +1102,8 @@ export const GenerateExtensionAccessTokenRequestPermissionType =
 export type GenerateExtensionAccessTokenRequestScope =
   | "Video"
   | "Account"
-  | "Project";
+  | "Project"
+  | (string & {});
 export const GenerateExtensionAccessTokenRequestScope = /*@__PURE__*/ S.String;
 
 export interface GenerateExtensionAccessTokenRequest {
@@ -1131,7 +1150,8 @@ export const GenerateExtensionAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
 export type GenerateExtensionRestrictedViewerAccessTokenRequestScope =
   | "Video"
   | "Account"
-  | "Project";
+  | "Project"
+  | (string & {});
 export const GenerateExtensionRestrictedViewerAccessTokenRequestScope =
   /*@__PURE__*/ S.String;
 
@@ -1177,7 +1197,8 @@ export const GenerateExtensionRestrictedViewerAccessTokenRequest =
 export type GenerateRestrictedViewerAccessTokenRequestScope =
   | "Video"
   | "Account"
-  | "Project";
+  | "Project"
+  | (string & {});
 export const GenerateRestrictedViewerAccessTokenRequestScope =
   /*@__PURE__*/ S.String;
 

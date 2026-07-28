@@ -124,10 +124,17 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
 ).pipe(C.withBadRequestError) {}
 export type GatewayId = string;
 export type LinkId = string;
-export type ResponderErrorMaskingAction = "NO_BID" | "PASSTHROUGH";
+export type ResponderErrorMaskingAction =
+  | "NO_BID"
+  | "PASSTHROUGH"
+  | (string & {});
 export const ResponderErrorMaskingAction = /*@__PURE__*/ S.String;
 
-export type ResponderErrorMaskingLoggingType = "NONE" | "METRIC" | "RESPONSE";
+export type ResponderErrorMaskingLoggingType =
+  | "NONE"
+  | "METRIC"
+  | "RESPONSE"
+  | (string & {});
 export const ResponderErrorMaskingLoggingType = /*@__PURE__*/ S.String;
 
 export type ResponderErrorMaskingLoggingTypes =
@@ -235,10 +242,11 @@ export type LinkStatus =
   | "PENDING_UPDATE"
   | "PENDING_ISOLATION"
   | "ISOLATED"
-  | "PENDING_RESTORATION";
+  | "PENDING_RESTORATION"
+  | (string & {});
 export const LinkStatus = /*@__PURE__*/ S.String;
 
-export type LinkDirection = "RESPONSE" | "REQUEST";
+export type LinkDirection = "RESPONSE" | "REQUEST" | (string & {});
 export const LinkDirection = /*@__PURE__*/ S.String;
 
 export type Version = string;
@@ -259,7 +267,7 @@ export const NoBidModuleParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NoBidModuleParameters",
 }) as any as S.Schema<NoBidModuleParameters>;
-export type FilterType = "INCLUDE" | "EXCLUDE";
+export type FilterType = "INCLUDE" | "EXCLUDE" | (string & {});
 export const FilterType = /*@__PURE__*/ S.String;
 
 export type ValueList = string[];
@@ -373,7 +381,8 @@ export type ConnectivityType =
   | "DEFAULT"
   | "PUBLIC_INGRESS"
   | "PUBLIC_EGRESS"
-  | "EXTERNAL_INBOUND";
+  | "EXTERNAL_INBOUND"
+  | (string & {});
 export const ConnectivityType = /*@__PURE__*/ S.String;
 
 export interface AcceptLinkResponse {
@@ -440,7 +449,8 @@ export type CertificateAssociationStatus =
   | "ASSOCIATED"
   | "PENDING_DISASSOCIATION"
   | "DISASSOCIATED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const CertificateAssociationStatus = /*@__PURE__*/ S.String;
 
 export interface AssociateCertificateResponse {
@@ -643,7 +653,8 @@ export type RuleStatus =
   | "UPDATE_IN_PROGRESS"
   | "DELETION_IN_PROGRESS"
   | "DELETED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const RuleStatus = /*@__PURE__*/ S.String;
 
 export interface CreateLinkRoutingRuleResponse {
@@ -748,7 +759,8 @@ export type RequesterGatewayStatus =
   | "PENDING_UPDATE"
   | "ISOLATED"
   | "PENDING_ISOLATION"
-  | "PENDING_RESTORATION";
+  | "PENDING_RESTORATION"
+  | (string & {});
 export const RequesterGatewayStatus = /*@__PURE__*/ S.String;
 
 export interface CreateRequesterGatewayResponse {
@@ -765,7 +777,7 @@ export const CreateRequesterGatewayResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRequesterGatewayResponse",
 }) as any as S.Schema<CreateRequesterGatewayResponse>;
-export type Protocol = "HTTP" | "HTTPS";
+export type Protocol = "HTTP" | "HTTPS" | (string & {});
 export const Protocol = /*@__PURE__*/ S.String;
 
 export type ProtocolList = Protocol[];
@@ -866,7 +878,7 @@ export const ManagedEndpointConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ autoScalingGroups: AutoScalingGroupsConfiguration }),
   S.Struct({ eksEndpoints: EksEndpointsConfiguration }),
 ]);
-export type GatewayType = "EXTERNAL" | "INTERNAL";
+export type GatewayType = "EXTERNAL" | "INTERNAL" | (string & {});
 export const GatewayType = /*@__PURE__*/ S.String;
 
 export interface CreateResponderGatewayRequest {
@@ -921,7 +933,8 @@ export type ResponderGatewayStatus =
   | "PENDING_UPDATE"
   | "ISOLATED"
   | "PENDING_ISOLATION"
-  | "PENDING_RESTORATION";
+  | "PENDING_RESTORATION"
+  | (string & {});
 export const ResponderGatewayStatus = /*@__PURE__*/ S.String;
 
 export interface CreateResponderGatewayResponse {

@@ -427,7 +427,9 @@ export const StartDeviceAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartDeviceAuthorizationResponse",
 }) as any as S.Schema<StartDeviceAuthorizationResponse>;
-export type AccessDeniedExceptionReason = "KMS_AccessDeniedException";
+export type AccessDeniedExceptionReason =
+  | "KMS_AccessDeniedException"
+  | (string & {});
 export const AccessDeniedExceptionReason = /*@__PURE__*/ S.String;
 
 export type ErrorDescription = string;
@@ -435,7 +437,8 @@ export type InvalidRequestExceptionReason =
   | "KMS_NotFoundException"
   | "KMS_InvalidKeyUsageException"
   | "KMS_InvalidStateException"
-  | "KMS_DisabledException";
+  | "KMS_DisabledException"
+  | (string & {});
 export const InvalidRequestExceptionReason = /*@__PURE__*/ S.String;
 
 export type Location = string;

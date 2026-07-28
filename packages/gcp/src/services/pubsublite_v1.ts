@@ -373,7 +373,8 @@ export type ExportConfigCurrentStateEnum =
   | "ACTIVE"
   | "PAUSED"
   | "PERMISSION_DENIED"
-  | "NOT_FOUND";
+  | "NOT_FOUND"
+  | (string & {});
 export const ExportConfigCurrentStateEnum = /*@__PURE__*/ S.String;
 
 export type ExportConfigDesiredStateEnum =
@@ -381,7 +382,8 @@ export type ExportConfigDesiredStateEnum =
   | "ACTIVE"
   | "PAUSED"
   | "PERMISSION_DENIED"
-  | "NOT_FOUND";
+  | "NOT_FOUND"
+  | (string & {});
 export const ExportConfigDesiredStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for exporting to a Pub/Sub topic. */
@@ -418,7 +420,8 @@ export const ExportConfig = /*@__PURE__*/ S.suspend(() =>
 export type DeliveryConfigDeliveryRequirementEnum =
   | "DELIVERY_REQUIREMENT_UNSPECIFIED"
   | "DELIVER_IMMEDIATELY"
-  | "DELIVER_AFTER_STORED";
+  | "DELIVER_AFTER_STORED"
+  | (string & {});
 export const DeliveryConfigDeliveryRequirementEnum = /*@__PURE__*/ S.String;
 
 /** The settings for a subscription's message delivery. */
@@ -1242,7 +1245,8 @@ export const PatchAdminProjectsLocationsTopicsRequest = /*@__PURE__*/ S.suspend(
 export type SeekSubscriptionRequestNamedTargetEnum =
   | "NAMED_TARGET_UNSPECIFIED"
   | "TAIL"
-  | "HEAD";
+  | "HEAD"
+  | (string & {});
 export const SeekSubscriptionRequestNamedTargetEnum = /*@__PURE__*/ S.String;
 
 /** Request for SeekSubscription. */

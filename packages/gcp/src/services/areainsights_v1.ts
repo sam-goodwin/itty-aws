@@ -63,7 +63,8 @@ export class NotFound extends T.applyErrorMatchers(
 export type ComputeInsightsRequestInsightsItemEnum =
   | "INSIGHT_UNSPECIFIED"
   | "INSIGHT_COUNT"
-  | "INSIGHT_PLACES";
+  | "INSIGHT_PLACES"
+  | (string & {});
 export const ComputeInsightsRequestInsightsItemEnum = /*@__PURE__*/ S.String;
 
 export type ComputeInsightsRequestInsightsItemEnumList =
@@ -90,7 +91,8 @@ export type FilterOperatingStatusItemEnum =
   | "OPERATING_STATUS_UNSPECIFIED"
   | "OPERATING_STATUS_OPERATIONAL"
   | "OPERATING_STATUS_PERMANENTLY_CLOSED"
-  | "OPERATING_STATUS_TEMPORARILY_CLOSED";
+  | "OPERATING_STATUS_TEMPORARILY_CLOSED"
+  | (string & {});
 export const FilterOperatingStatusItemEnum = /*@__PURE__*/ S.String;
 
 export type FilterOperatingStatusItemEnumList =
@@ -105,7 +107,8 @@ export type FilterPriceLevelsItemEnum =
   | "PRICE_LEVEL_INEXPENSIVE"
   | "PRICE_LEVEL_MODERATE"
   | "PRICE_LEVEL_EXPENSIVE"
-  | "PRICE_LEVEL_VERY_EXPENSIVE";
+  | "PRICE_LEVEL_VERY_EXPENSIVE"
+  | (string & {});
 export const FilterPriceLevelsItemEnum = /*@__PURE__*/ S.String;
 
 export type FilterPriceLevelsItemEnumList =

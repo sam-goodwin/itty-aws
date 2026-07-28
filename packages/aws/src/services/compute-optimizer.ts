@@ -140,10 +140,15 @@ export type ResourceType =
   | "License"
   | "RdsDBInstance"
   | "AuroraDBClusterStorage"
-  | "Idle";
+  | "Idle"
+  | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
 
-export type ScopeName = "Organization" | "AccountId" | "ResourceArn";
+export type ScopeName =
+  | "Organization"
+  | "AccountId"
+  | "ResourceArn"
+  | (string & {});
 export const ScopeName = /*@__PURE__*/ S.String;
 
 export type ScopeValue = string;
@@ -160,7 +165,8 @@ export type RecommendationPreferenceName =
   | "ExternalMetricsPreference"
   | "LookBackPeriodPreference"
   | "PreferredResources"
-  | "UtilizationPreferences";
+  | "UtilizationPreferences"
+  | (string & {});
 export const RecommendationPreferenceName = /*@__PURE__*/ S.String;
 
 export type RecommendationPreferenceNames = RecommendationPreferenceName[];
@@ -193,7 +199,7 @@ export const DeleteRecommendationPreferencesResponse = /*@__PURE__*/ S.suspend(
 export type JobId = string;
 export type JobIds = string[];
 export const JobIds = /*@__PURE__*/ S.Array(S.String);
-export type JobFilterName = "ResourceType" | "JobStatus";
+export type JobFilterName = "ResourceType" | "JobStatus" | (string & {});
 export const JobFilterName = /*@__PURE__*/ S.String;
 
 export type FilterValue = string;
@@ -255,7 +261,12 @@ export const ExportDestination = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExportDestination",
 }) as any as S.Schema<ExportDestination>;
-export type JobStatus = "Queued" | "InProgress" | "Complete" | "Failed";
+export type JobStatus =
+  | "Queued"
+  | "InProgress"
+  | "Complete"
+  | "Failed"
+  | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
 
 export type CreationTimestamp = Date;
@@ -311,7 +322,8 @@ export type FilterName =
   | "Finding"
   | "FindingReasonCodes"
   | "RecommendationSourceType"
-  | "InferredWorkloadTypes";
+  | "InferredWorkloadTypes"
+  | (string & {});
 export const FilterName = /*@__PURE__*/ S.String;
 
 export interface Filter {
@@ -396,7 +408,8 @@ export type ExportableAutoScalingGroupField =
   | "EffectiveRecommendationPreferencesSavingsEstimationMode"
   | "RecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"
   | "RecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"
-  | "RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts";
+  | "RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"
+  | (string & {});
 export const ExportableAutoScalingGroupField = /*@__PURE__*/ S.String;
 
 export type ExportableAutoScalingGroupFields =
@@ -414,11 +427,11 @@ export const S3DestinationConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3DestinationConfig",
 }) as any as S.Schema<S3DestinationConfig>;
-export type FileFormat = "Csv";
+export type FileFormat = "Csv" | (string & {});
 export const FileFormat = /*@__PURE__*/ S.String;
 
 export type IncludeMemberAccounts = boolean;
-export type CpuVendorArchitecture = "AWS_ARM64" | "CURRENT";
+export type CpuVendorArchitecture = "AWS_ARM64" | "CURRENT" | (string & {});
 export const CpuVendorArchitecture = /*@__PURE__*/ S.String;
 
 export type CpuVendorArchitectures = CpuVendorArchitecture[];
@@ -471,7 +484,7 @@ export const ExportAutoScalingGroupRecommendationsResponse =
   ).annotate({
     identifier: "ExportAutoScalingGroupRecommendationsResponse",
   }) as any as S.Schema<ExportAutoScalingGroupRecommendationsResponse>;
-export type EBSFilterName = "Finding";
+export type EBSFilterName = "Finding" | (string & {});
 export const EBSFilterName = /*@__PURE__*/ S.String;
 
 export interface EBSFilter {
@@ -524,7 +537,8 @@ export type ExportableVolumeField =
   | "RecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"
   | "RecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"
   | "RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"
-  | "EffectiveRecommendationPreferencesLookBackPeriod";
+  | "EffectiveRecommendationPreferencesLookBackPeriod"
+  | (string & {});
 export const ExportableVolumeField = /*@__PURE__*/ S.String;
 
 export type ExportableVolumeFields = ExportableVolumeField[];
@@ -638,7 +652,8 @@ export type ExportableInstanceField =
   | "EffectiveRecommendationPreferencesSavingsEstimationMode"
   | "RecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"
   | "RecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"
-  | "RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts";
+  | "RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"
+  | (string & {});
 export const ExportableInstanceField = /*@__PURE__*/ S.String;
 
 export type ExportableInstanceFields = ExportableInstanceField[];
@@ -685,7 +700,8 @@ export const ExportEC2InstanceRecommendationsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ExportEC2InstanceRecommendationsResponse>;
 export type ECSServiceRecommendationFilterName =
   | "Finding"
-  | "FindingReasonCode";
+  | "FindingReasonCode"
+  | (string & {});
 export const ECSServiceRecommendationFilterName = /*@__PURE__*/ S.String;
 
 export interface ECSServiceRecommendationFilter {
@@ -733,7 +749,8 @@ export type ExportableECSServiceField =
   | "RecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"
   | "RecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"
   | "RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"
-  | "EffectiveRecommendationPreferencesLookBackPeriod";
+  | "EffectiveRecommendationPreferencesLookBackPeriod"
+  | (string & {});
 export const ExportableECSServiceField = /*@__PURE__*/ S.String;
 
 export type ExportableECSServiceFields = ExportableECSServiceField[];
@@ -776,7 +793,10 @@ export const ExportECSServiceRecommendationsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ExportECSServiceRecommendationsResponse",
 }) as any as S.Schema<ExportECSServiceRecommendationsResponse>;
-export type IdleRecommendationFilterName = "Finding" | "ResourceType";
+export type IdleRecommendationFilterName =
+  | "Finding"
+  | "ResourceType"
+  | (string & {});
 export const IdleRecommendationFilterName = /*@__PURE__*/ S.String;
 
 export interface IdleRecommendationFilter {
@@ -834,7 +854,8 @@ export type ExportableIdleField =
   | "UtilizationMetricsDatabaseConnectionsSum"
   | "Finding"
   | "FindingDescription"
-  | "Tags";
+  | "Tags"
+  | (string & {});
 export const ExportableIdleField = /*@__PURE__*/ S.String;
 
 export type ExportableIdleFields = ExportableIdleField[];
@@ -875,7 +896,8 @@ export const ExportIdleRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportIdleRecommendationsResponse>;
 export type LambdaFunctionRecommendationFilterName =
   | "Finding"
-  | "FindingReasonCode";
+  | "FindingReasonCode"
+  | (string & {});
 export const LambdaFunctionRecommendationFilterName = /*@__PURE__*/ S.String;
 
 export interface LambdaFunctionRecommendationFilter {
@@ -926,7 +948,8 @@ export type ExportableLambdaFunctionField =
   | "EffectiveRecommendationPreferencesSavingsEstimationMode"
   | "RecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"
   | "RecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"
-  | "RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts";
+  | "RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"
+  | (string & {});
 export const ExportableLambdaFunctionField = /*@__PURE__*/ S.String;
 
 export type ExportableLambdaFunctionFields = ExportableLambdaFunctionField[];
@@ -972,7 +995,8 @@ export const ExportLambdaFunctionRecommendationsResponse =
 export type LicenseRecommendationFilterName =
   | "Finding"
   | "FindingReasonCode"
-  | "LicenseName";
+  | "LicenseName"
+  | (string & {});
 export const LicenseRecommendationFilterName = /*@__PURE__*/ S.String;
 
 export interface LicenseRecommendationFilter {
@@ -1012,7 +1036,8 @@ export type ExportableLicenseField =
   | "RecommendationOptionsSavingsOpportunityPercentage"
   | "RecommendationOptionsEstimatedMonthlySavingsCurrency"
   | "RecommendationOptionsEstimatedMonthlySavingsValue"
-  | "Tags";
+  | "Tags"
+  | (string & {});
 export const ExportableLicenseField = /*@__PURE__*/ S.String;
 
 export type ExportableLicenseFields = ExportableLicenseField[];
@@ -1059,7 +1084,8 @@ export type RDSDBRecommendationFilterName =
   | "InstanceFindingReasonCode"
   | "StorageFinding"
   | "StorageFindingReasonCode"
-  | "Idle";
+  | "Idle"
+  | (string & {});
 export const RDSDBRecommendationFilterName = /*@__PURE__*/ S.String;
 
 export interface RDSDBRecommendationFilter {
@@ -1160,7 +1186,8 @@ export type ExportableRDSDBField =
   | "LastRefreshTimestamp"
   | "Tags"
   | "DBClusterIdentifier"
-  | "PromotionTier";
+  | "PromotionTier"
+  | (string & {});
 export const ExportableRDSDBField = /*@__PURE__*/ S.String;
 
 export type ExportableRDSDBFields = ExportableRDSDBField[];
@@ -1235,7 +1262,8 @@ export type Finding =
   | "Underprovisioned"
   | "Overprovisioned"
   | "Optimized"
-  | "NotOptimized";
+  | "NotOptimized"
+  | (string & {});
 export const Finding = /*@__PURE__*/ S.String;
 
 export type MetricName =
@@ -1254,10 +1282,11 @@ export type MetricName =
   | "NETWORK_PACKETS_IN_PER_SECOND"
   | "NETWORK_PACKETS_OUT_PER_SECOND"
   | "GPU_PERCENTAGE"
-  | "GPU_MEMORY_PERCENTAGE";
+  | "GPU_MEMORY_PERCENTAGE"
+  | (string & {});
 export const MetricName = /*@__PURE__*/ S.String;
 
-export type MetricStatistic = "Maximum" | "Average";
+export type MetricStatistic = "Maximum" | "Average" | (string & {});
 export const MetricStatistic = /*@__PURE__*/ S.String;
 
 export type MetricValue = number;
@@ -1282,11 +1311,14 @@ export type DesiredCapacity = number;
 export type MinSize = number;
 export type MaxSize = number;
 export type NullableInstanceType = string;
-export type AllocationStrategy = "Prioritized" | "LowestPrice";
+export type AllocationStrategy = "Prioritized" | "LowestPrice" | (string & {});
 export const AllocationStrategy = /*@__PURE__*/ S.String;
 
 export type NullableEstimatedInstanceHourReductionPercentage = number;
-export type AsgType = "SingleInstanceType" | "MixedInstanceTypes";
+export type AsgType =
+  | "SingleInstanceType"
+  | "MixedInstanceTypes"
+  | (string & {});
 export const AsgType = /*@__PURE__*/ S.String;
 
 export type MixedInstanceType = string;
@@ -1342,7 +1374,7 @@ export const ProjectedUtilizationMetrics =
 export type PerformanceRisk = number;
 export type Rank = number;
 export type SavingsOpportunityPercentage = number;
-export type Currency = "USD" | "CNY";
+export type Currency = "USD" | "CNY" | (string & {});
 export const Currency = /*@__PURE__*/ S.String;
 
 export type Value = number;
@@ -1392,7 +1424,12 @@ export const AutoScalingGroupSavingsOpportunityAfterDiscounts =
   ).annotate({
     identifier: "AutoScalingGroupSavingsOpportunityAfterDiscounts",
   }) as any as S.Schema<AutoScalingGroupSavingsOpportunityAfterDiscounts>;
-export type MigrationEffort = "VeryLow" | "Low" | "Medium" | "High";
+export type MigrationEffort =
+  | "VeryLow"
+  | "Low"
+  | "Medium"
+  | "High"
+  | (string & {});
 export const MigrationEffort = /*@__PURE__*/ S.String;
 
 export interface AutoScalingGroupRecommendationOption {
@@ -1428,20 +1465,32 @@ export const AutoScalingGroupRecommendationOptions = /*@__PURE__*/ S.Array(
   AutoScalingGroupRecommendationOption,
 );
 export type LastRefreshTimestamp = Date;
-export type CurrentPerformanceRisk = "VeryLow" | "Low" | "Medium" | "High";
+export type CurrentPerformanceRisk =
+  | "VeryLow"
+  | "Low"
+  | "Medium"
+  | "High"
+  | (string & {});
 export const CurrentPerformanceRisk = /*@__PURE__*/ S.String;
 
-export type EnhancedInfrastructureMetrics = "Active" | "Inactive";
+export type EnhancedInfrastructureMetrics =
+  | "Active"
+  | "Inactive"
+  | (string & {});
 export const EnhancedInfrastructureMetrics = /*@__PURE__*/ S.String;
 
-export type InferredWorkloadTypesPreference = "Active" | "Inactive";
+export type InferredWorkloadTypesPreference =
+  | "Active"
+  | "Inactive"
+  | (string & {});
 export const InferredWorkloadTypesPreference = /*@__PURE__*/ S.String;
 
 export type ExternalMetricsSource =
   | "Datadog"
   | "Dynatrace"
   | "NewRelic"
-  | "Instana";
+  | "Instana"
+  | (string & {});
 export const ExternalMetricsSource = /*@__PURE__*/ S.String;
 
 export interface ExternalMetricsPreference {
@@ -1452,20 +1501,32 @@ export const ExternalMetricsPreference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExternalMetricsPreference",
 }) as any as S.Schema<ExternalMetricsPreference>;
-export type LookBackPeriodPreference = "DAYS_14" | "DAYS_32" | "DAYS_93";
+export type LookBackPeriodPreference =
+  | "DAYS_14"
+  | "DAYS_32"
+  | "DAYS_93"
+  | (string & {});
 export const LookBackPeriodPreference = /*@__PURE__*/ S.String;
 
-export type CustomizableMetricName = "CpuUtilization" | "MemoryUtilization";
+export type CustomizableMetricName =
+  | "CpuUtilization"
+  | "MemoryUtilization"
+  | (string & {});
 export const CustomizableMetricName = /*@__PURE__*/ S.String;
 
-export type CustomizableMetricThreshold = "P90" | "P95" | "P99_5";
+export type CustomizableMetricThreshold =
+  | "P90"
+  | "P95"
+  | "P99_5"
+  | (string & {});
 export const CustomizableMetricThreshold = /*@__PURE__*/ S.String;
 
 export type CustomizableMetricHeadroom =
   | "PERCENT_30"
   | "PERCENT_20"
   | "PERCENT_10"
-  | "PERCENT_0";
+  | "PERCENT_0"
+  | (string & {});
 export const CustomizableMetricHeadroom = /*@__PURE__*/ S.String;
 
 export interface CustomizableMetricParameters {
@@ -1496,7 +1557,7 @@ export type UtilizationPreferences = UtilizationPreference[];
 export const UtilizationPreferences = /*@__PURE__*/ S.Array(
   UtilizationPreference,
 );
-export type PreferredResourceName = "Ec2InstanceTypes";
+export type PreferredResourceName = "Ec2InstanceTypes" | (string & {});
 export const PreferredResourceName = /*@__PURE__*/ S.String;
 
 export type PreferredResourceValue = string;
@@ -1525,7 +1586,8 @@ export const EffectivePreferredResources = /*@__PURE__*/ S.Array(
 export type InstanceSavingsEstimationModeSource =
   | "PublicPricing"
   | "CostExplorerRightsizing"
-  | "CostOptimizationHub";
+  | "CostOptimizationHub"
+  | (string & {});
 export const InstanceSavingsEstimationModeSource = /*@__PURE__*/ S.String;
 
 export interface InstanceSavingsEstimationMode {
@@ -1569,7 +1631,8 @@ export type InferredWorkloadType =
   | "PostgreSql"
   | "Redis"
   | "Kafka"
-  | "SQLServer";
+  | "SQLServer"
+  | (string & {});
 export const InferredWorkloadType = /*@__PURE__*/ S.String;
 
 export type InferredWorkloadTypes = InferredWorkloadType[];
@@ -1707,7 +1770,7 @@ export const VolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VolumeConfiguration",
 }) as any as S.Schema<VolumeConfiguration>;
-export type EBSFinding = "Optimized" | "NotOptimized";
+export type EBSFinding = "Optimized" | "NotOptimized" | (string & {});
 export const EBSFinding = /*@__PURE__*/ S.String;
 
 export type EBSMetricName =
@@ -1716,7 +1779,8 @@ export type EBSMetricName =
   | "VolumeReadBytesPerSecond"
   | "VolumeWriteBytesPerSecond"
   | "VolumeIOPSExceeded"
-  | "VolumeThroughputExceeded";
+  | "VolumeThroughputExceeded"
+  | (string & {});
 export const EBSMetricName = /*@__PURE__*/ S.String;
 
 export interface EBSUtilizationMetric {
@@ -1784,7 +1848,8 @@ export const VolumeRecommendationOptions = /*@__PURE__*/ S.Array(
 export type EBSSavingsEstimationModeSource =
   | "PublicPricing"
   | "CostExplorerRightsizing"
-  | "CostOptimizationHub";
+  | "CostOptimizationHub"
+  | (string & {});
 export const EBSSavingsEstimationModeSource = /*@__PURE__*/ S.String;
 
 export interface EBSSavingsEstimationMode {
@@ -1918,7 +1983,8 @@ export type InstanceRecommendationFindingReasonCode =
   | "GPUUnderprovisioned"
   | "GPUOverprovisioned"
   | "GPUMemoryUnderprovisioned"
-  | "GPUMemoryOverprovisioned";
+  | "GPUMemoryOverprovisioned"
+  | (string & {});
 export const InstanceRecommendationFindingReasonCode = /*@__PURE__*/ S.String;
 
 export type InstanceRecommendationFindingReasonCodes =
@@ -1933,7 +1999,8 @@ export type PlatformDifference =
   | "StorageInterface"
   | "InstanceStoreAvailability"
   | "VirtualizationType"
-  | "Architecture";
+  | "Architecture"
+  | (string & {});
 export const PlatformDifference = /*@__PURE__*/ S.String;
 
 export type PlatformDifferences = PlatformDifference[];
@@ -2009,7 +2076,8 @@ export type RecommendationSourceType =
   | "MemoryDBCluster"
   | "DocumentDBCluster"
   | "WorkSpaces"
-  | "SageMakerEndpoint";
+  | "SageMakerEndpoint"
+  | (string & {});
 export const RecommendationSourceType = /*@__PURE__*/ S.String;
 
 export interface RecommendationSource {
@@ -2033,7 +2101,8 @@ export type InstanceState =
   | "shutting-down"
   | "terminated"
   | "stopping"
-  | "stopped";
+  | "stopped"
+  | (string & {});
 export const InstanceState = /*@__PURE__*/ S.String;
 
 export type ExternalMetricStatusCode =
@@ -2046,7 +2115,8 @@ export type ExternalMetricStatusCode =
   | "INSUFFICIENT_DATADOG_METRICS"
   | "INSUFFICIENT_DYNATRACE_METRICS"
   | "INSUFFICIENT_NEWRELIC_METRICS"
-  | "INSUFFICIENT_INSTANA_METRICS";
+  | "INSUFFICIENT_INSTANA_METRICS"
+  | (string & {});
 export const ExternalMetricStatusCode = /*@__PURE__*/ S.String;
 
 export type ExternalMetricStatusReason = string;
@@ -2062,7 +2132,7 @@ export const ExternalMetricStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExternalMetricStatus",
 }) as any as S.Schema<ExternalMetricStatus>;
-export type InstanceIdle = "True" | "False";
+export type InstanceIdle = "True" | "False" | (string & {});
 export const InstanceIdle = /*@__PURE__*/ S.String;
 
 export interface InstanceRecommendation {
@@ -2237,7 +2307,7 @@ export const GetECSServiceRecommendationProjectedMetricsRequest =
   }) as any as S.Schema<GetECSServiceRecommendationProjectedMetricsRequest>;
 export type CpuSize = number;
 export type MemorySize = number;
-export type ECSServiceMetricName = "Cpu" | "Memory";
+export type ECSServiceMetricName = "Cpu" | "Memory" | (string & {});
 export const ECSServiceMetricName = /*@__PURE__*/ S.String;
 
 export interface ECSServiceProjectedMetric {
@@ -2350,7 +2420,8 @@ export const ContainerConfigurations = /*@__PURE__*/ S.Array(
 );
 export type AutoScalingConfiguration =
   | "TargetTrackingScalingCpu"
-  | "TargetTrackingScalingMemory";
+  | "TargetTrackingScalingMemory"
+  | (string & {});
 export const AutoScalingConfiguration = /*@__PURE__*/ S.String;
 
 export type TaskDefinitionArn = string;
@@ -2372,7 +2443,7 @@ export const ServiceConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ServiceConfiguration",
 }) as any as S.Schema<ServiceConfiguration>;
-export type ECSServiceMetricStatistic = "Maximum" | "Average";
+export type ECSServiceMetricStatistic = "Maximum" | "Average" | (string & {});
 export const ECSServiceMetricStatistic = /*@__PURE__*/ S.String;
 
 export interface ECSServiceUtilizationMetric {
@@ -2393,20 +2464,22 @@ export type ECSServiceUtilizationMetrics = ECSServiceUtilizationMetric[];
 export const ECSServiceUtilizationMetrics = /*@__PURE__*/ S.Array(
   ECSServiceUtilizationMetric,
 );
-export type ECSServiceLaunchType = "EC2" | "Fargate";
+export type ECSServiceLaunchType = "EC2" | "Fargate" | (string & {});
 export const ECSServiceLaunchType = /*@__PURE__*/ S.String;
 
 export type ECSServiceRecommendationFinding =
   | "Optimized"
   | "Underprovisioned"
-  | "Overprovisioned";
+  | "Overprovisioned"
+  | (string & {});
 export const ECSServiceRecommendationFinding = /*@__PURE__*/ S.String;
 
 export type ECSServiceRecommendationFindingReasonCode =
   | "MemoryOverprovisioned"
   | "MemoryUnderprovisioned"
   | "CPUOverprovisioned"
-  | "CPUUnderprovisioned";
+  | "CPUUnderprovisioned"
+  | (string & {});
 export const ECSServiceRecommendationFindingReasonCode = /*@__PURE__*/ S.String;
 
 export type ECSServiceRecommendationFindingReasonCodes =
@@ -2508,7 +2581,8 @@ export const ECSServiceRecommendationOptions = /*@__PURE__*/ S.Array(
 export type ECSSavingsEstimationModeSource =
   | "PublicPricing"
   | "CostExplorerRightsizing"
-  | "CostOptimizationHub";
+  | "CostOptimizationHub"
+  | (string & {});
 export const ECSSavingsEstimationModeSource = /*@__PURE__*/ S.String;
 
 export interface ECSSavingsEstimationMode {
@@ -2628,7 +2702,12 @@ export const GetEnrollmentStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEnrollmentStatusRequest",
 }) as any as S.Schema<GetEnrollmentStatusRequest>;
-export type Status = "Active" | "Inactive" | "Pending" | "Failed";
+export type Status =
+  | "Active"
+  | "Inactive"
+  | "Pending"
+  | "Failed"
+  | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 
 export type StatusReason = string;
@@ -2654,7 +2733,7 @@ export const GetEnrollmentStatusResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEnrollmentStatusResponse",
 }) as any as S.Schema<GetEnrollmentStatusResponse>;
-export type EnrollmentFilterName = "Status";
+export type EnrollmentFilterName = "Status" | (string & {});
 export const EnrollmentFilterName = /*@__PURE__*/ S.String;
 
 export interface EnrollmentFilter {
@@ -2726,10 +2805,13 @@ export const GetEnrollmentStatusesForOrganizationResponse =
 export type ResourceArns = string[];
 export const ResourceArns = /*@__PURE__*/ S.Array(S.String);
 export type IdleMaxResults = number;
-export type Dimension = "SavingsValue" | "SavingsValueAfterDiscount";
+export type Dimension =
+  | "SavingsValue"
+  | "SavingsValueAfterDiscount"
+  | (string & {});
 export const Dimension = /*@__PURE__*/ S.String;
 
-export type Order = "Asc" | "Desc";
+export type Order = "Asc" | "Desc" | (string & {});
 export const Order = /*@__PURE__*/ S.String;
 
 export interface OrderBy {
@@ -2774,10 +2856,11 @@ export type IdleRecommendationResourceType =
   | "MemoryDBCluster"
   | "DocumentDBCluster"
   | "WorkSpaces"
-  | "SageMakerEndpoint";
+  | "SageMakerEndpoint"
+  | (string & {});
 export const IdleRecommendationResourceType = /*@__PURE__*/ S.String;
 
-export type IdleFinding = "Idle" | "Unattached" | "Unused";
+export type IdleFinding = "Idle" | "Unattached" | "Unused" | (string & {});
 export const IdleFinding = /*@__PURE__*/ S.String;
 
 export type IdleFindingDescription = string;
@@ -2843,7 +2926,8 @@ export type IdleMetricName =
   | "GetTypeCmds"
   | "SetTypeCmds"
   | "ElastiCacheProcessingUnits"
-  | "CurrConnections";
+  | "CurrConnections"
+  | (string & {});
 export const IdleMetricName = /*@__PURE__*/ S.String;
 
 export type IdleDimensionKey = string;
@@ -2980,10 +3064,13 @@ export const GetLambdaFunctionRecommendationsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetLambdaFunctionRecommendationsRequest>;
 export type FunctionVersion = string;
 export type NumberOfInvocations = number;
-export type LambdaFunctionMetricName = "Duration" | "Memory";
+export type LambdaFunctionMetricName = "Duration" | "Memory" | (string & {});
 export const LambdaFunctionMetricName = /*@__PURE__*/ S.String;
 
-export type LambdaFunctionMetricStatistic = "Maximum" | "Average";
+export type LambdaFunctionMetricStatistic =
+  | "Maximum"
+  | "Average"
+  | (string & {});
 export const LambdaFunctionMetricStatistic = /*@__PURE__*/ S.String;
 
 export interface LambdaFunctionUtilizationMetric {
@@ -3008,14 +3095,16 @@ export const LambdaFunctionUtilizationMetrics = /*@__PURE__*/ S.Array(
 export type LambdaFunctionRecommendationFinding =
   | "Optimized"
   | "NotOptimized"
-  | "Unavailable";
+  | "Unavailable"
+  | (string & {});
 export const LambdaFunctionRecommendationFinding = /*@__PURE__*/ S.String;
 
 export type LambdaFunctionRecommendationFindingReasonCode =
   | "MemoryOverprovisioned"
   | "MemoryUnderprovisioned"
   | "InsufficientData"
-  | "Inconclusive";
+  | "Inconclusive"
+  | (string & {});
 export const LambdaFunctionRecommendationFindingReasonCode =
   /*@__PURE__*/ S.String;
 
@@ -3023,13 +3112,14 @@ export type LambdaFunctionRecommendationFindingReasonCodes =
   LambdaFunctionRecommendationFindingReasonCode[];
 export const LambdaFunctionRecommendationFindingReasonCodes =
   /*@__PURE__*/ S.Array(LambdaFunctionRecommendationFindingReasonCode);
-export type LambdaFunctionMemoryMetricName = "Duration";
+export type LambdaFunctionMemoryMetricName = "Duration" | (string & {});
 export const LambdaFunctionMemoryMetricName = /*@__PURE__*/ S.String;
 
 export type LambdaFunctionMemoryMetricStatistic =
   | "LowerBound"
   | "UpperBound"
-  | "Expected";
+  | "Expected"
+  | (string & {});
 export const LambdaFunctionMemoryMetricStatistic = /*@__PURE__*/ S.String;
 
 export interface LambdaFunctionMemoryProjectedMetric {
@@ -3104,7 +3194,8 @@ export const LambdaFunctionMemoryRecommendationOptions = /*@__PURE__*/ S.Array(
 export type LambdaSavingsEstimationModeSource =
   | "PublicPricing"
   | "CostExplorerRightsizing"
-  | "CostOptimizationHub";
+  | "CostOptimizationHub"
+  | (string & {});
 export const LambdaSavingsEstimationModeSource = /*@__PURE__*/ S.String;
 
 export interface LambdaSavingsEstimationMode {
@@ -3213,17 +3304,23 @@ export type LicenseEdition =
   | "Enterprise"
   | "Standard"
   | "Free"
-  | "NoLicenseEditionFound";
+  | "NoLicenseEditionFound"
+  | (string & {});
 export const LicenseEdition = /*@__PURE__*/ S.String;
 
-export type LicenseName = "SQLServer";
+export type LicenseName = "SQLServer" | (string & {});
 export const LicenseName = /*@__PURE__*/ S.String;
 
-export type LicenseModel = "LicenseIncluded" | "BringYourOwnLicense";
+export type LicenseModel =
+  | "LicenseIncluded"
+  | "BringYourOwnLicense"
+  | (string & {});
 export const LicenseModel = /*@__PURE__*/ S.String;
 
 export type LicenseVersion = string;
-export type MetricSourceProvider = "CloudWatchApplicationInsights";
+export type MetricSourceProvider =
+  | "CloudWatchApplicationInsights"
+  | (string & {});
 export const MetricSourceProvider = /*@__PURE__*/ S.String;
 
 export type MetricProviderArn = string;
@@ -3266,14 +3363,16 @@ export const LicenseConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type LicenseFinding =
   | "InsufficientMetrics"
   | "Optimized"
-  | "NotOptimized";
+  | "NotOptimized"
+  | (string & {});
 export const LicenseFinding = /*@__PURE__*/ S.String;
 
 export type LicenseFindingReasonCode =
   | "InvalidCloudWatchApplicationInsightsSetup"
   | "CloudWatchApplicationInsightsError"
   | "LicenseOverprovisioned"
-  | "Optimized";
+  | "Optimized"
+  | (string & {});
 export const LicenseFindingReasonCode = /*@__PURE__*/ S.String;
 
 export type LicenseFindingReasonCodes = LicenseFindingReasonCode[];
@@ -3393,7 +3492,8 @@ export type RDSDBMetricName =
   | "WriteIOPSEphemeralStorage"
   | "VolumeReadIOPs"
   | "VolumeBytesUsed"
-  | "VolumeWriteIOPs";
+  | "VolumeWriteIOPs"
+  | (string & {});
 export const RDSDBMetricName = /*@__PURE__*/ S.String;
 
 export interface RDSDatabaseProjectedMetric {
@@ -3497,20 +3597,22 @@ export const DBStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "DBStorageConfiguration",
 }) as any as S.Schema<DBStorageConfiguration>;
 export type DBClusterIdentifier = string;
-export type Idle = "True" | "False";
+export type Idle = "True" | "False" | (string & {});
 export const Idle = /*@__PURE__*/ S.String;
 
 export type RDSInstanceFinding =
   | "Optimized"
   | "Underprovisioned"
-  | "Overprovisioned";
+  | "Overprovisioned"
+  | (string & {});
 export const RDSInstanceFinding = /*@__PURE__*/ S.String;
 
 export type RDSStorageFinding =
   | "Optimized"
   | "Underprovisioned"
   | "Overprovisioned"
-  | "NotOptimized";
+  | "NotOptimized"
+  | (string & {});
 export const RDSStorageFinding = /*@__PURE__*/ S.String;
 
 export type RDSInstanceFindingReasonCode =
@@ -3527,7 +3629,8 @@ export type RDSInstanceFindingReasonCode =
   | "DBClusterWriterUnderprovisioned"
   | "MemoryUnderprovisioned"
   | "InstanceStorageReadIOPSUnderprovisioned"
-  | "InstanceStorageWriteIOPSUnderprovisioned";
+  | "InstanceStorageWriteIOPSUnderprovisioned"
+  | (string & {});
 export const RDSInstanceFindingReasonCode = /*@__PURE__*/ S.String;
 
 export type RDSInstanceFindingReasonCodes = RDSInstanceFindingReasonCode[];
@@ -3538,14 +3641,16 @@ export type RDSCurrentInstancePerformanceRisk =
   | "VeryLow"
   | "Low"
   | "Medium"
-  | "High";
+  | "High"
+  | (string & {});
 export const RDSCurrentInstancePerformanceRisk = /*@__PURE__*/ S.String;
 
 export type RDSEstimatedMonthlyVolumeIOPsCostVariation =
   | "None"
   | "Low"
   | "Medium"
-  | "High";
+  | "High"
+  | (string & {});
 export const RDSEstimatedMonthlyVolumeIOPsCostVariation =
   /*@__PURE__*/ S.String;
 
@@ -3556,7 +3661,8 @@ export type RDSStorageFindingReasonCode =
   | "EBSVolumeThroughputOverprovisioned"
   | "NewGenerationStorageTypeAvailable"
   | "DBClusterStorageOptionAvailable"
-  | "DBClusterStorageSavingsAvailable";
+  | "DBClusterStorageSavingsAvailable"
+  | (string & {});
 export const RDSStorageFindingReasonCode = /*@__PURE__*/ S.String;
 
 export type RDSStorageFindingReasonCodes = RDSStorageFindingReasonCode[];
@@ -3564,7 +3670,11 @@ export const RDSStorageFindingReasonCodes = /*@__PURE__*/ S.Array(
   RDSStorageFindingReasonCode,
 );
 export type DBInstanceClass = string;
-export type RDSDBMetricStatistic = "Maximum" | "Minimum" | "Average";
+export type RDSDBMetricStatistic =
+  | "Maximum"
+  | "Minimum"
+  | "Average"
+  | (string & {});
 export const RDSDBMetricStatistic = /*@__PURE__*/ S.String;
 
 export interface RDSDBUtilizationMetric {
@@ -3690,7 +3800,8 @@ export const RDSDBUtilizationMetrics = /*@__PURE__*/ S.Array(
 export type RDSSavingsEstimationModeSource =
   | "PublicPricing"
   | "CostExplorerRightsizing"
-  | "CostOptimizationHub";
+  | "CostOptimizationHub"
+  | (string & {});
 export const RDSSavingsEstimationModeSource = /*@__PURE__*/ S.String;
 
 export interface RDSSavingsEstimationMode {
@@ -3815,7 +3926,10 @@ export const GetRecommendationPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRecommendationPreferencesRequest",
 }) as any as S.Schema<GetRecommendationPreferencesRequest>;
-export type SavingsEstimationMode = "AfterDiscounts" | "BeforeDiscounts";
+export type SavingsEstimationMode =
+  | "AfterDiscounts"
+  | "BeforeDiscounts"
+  | (string & {});
 export const SavingsEstimationMode = /*@__PURE__*/ S.String;
 
 export interface RecommendationPreferencesDetail {
@@ -3883,7 +3997,8 @@ export const GetRecommendationSummariesRequest = /*@__PURE__*/ S.suspend(() =>
 export type SummaryValue = number;
 export type FindingReasonCode =
   | "MemoryOverprovisioned"
-  | "MemoryUnderprovisioned";
+  | "MemoryUnderprovisioned"
+  | (string & {});
 export const FindingReasonCode = /*@__PURE__*/ S.String;
 
 export interface ReasonCodeSummary {

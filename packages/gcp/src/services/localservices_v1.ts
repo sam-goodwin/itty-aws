@@ -249,7 +249,11 @@ export const GoogleAdsHomeservicesLocalservicesV1MessageLead =
   }) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1MessageLead>;
 
 export type GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportLeadTypeEnum =
-  "LEAD_TYPE_UNSPECIFIED" | "MESSAGE" | "PHONE_CALL" | "BOOKING";
+    | "LEAD_TYPE_UNSPECIFIED"
+    | "MESSAGE"
+    | "PHONE_CALL"
+    | "BOOKING"
+    | (string & {});
 export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportLeadTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -270,7 +274,7 @@ export const GoogleTypeTimeZone = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleTypeTimeZone>;
 
 export type GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportChargeStatusEnum =
-  "CHARGE_STATUS_UNSPECIFIED" | "CHARGED" | "NOT_CHARGED";
+  "CHARGE_STATUS_UNSPECIFIED" | "CHARGED" | "NOT_CHARGED" | (string & {});
 export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportChargeStatusEnum =
   /*@__PURE__*/ S.String;
 

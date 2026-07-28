@@ -47,14 +47,16 @@ export type ListWebfontsSortEnum =
   | "DATE"
   | "POPULARITY"
   | "STYLE"
-  | "TRENDING";
+  | "TRENDING"
+  | (string & {});
 export const ListWebfontsSortEnum = /*@__PURE__*/ S.String;
 
 export type ListWebfontsCapabilityEnum =
   | "CAPABILITY_UNSPECIFIED"
   | "WOFF2"
   | "VF"
-  | "FAMILY_TAGS";
+  | "FAMILY_TAGS"
+  | (string & {});
 export const ListWebfontsCapabilityEnum = /*@__PURE__*/ S.String;
 
 export type ListWebfontsCapabilityEnumList =

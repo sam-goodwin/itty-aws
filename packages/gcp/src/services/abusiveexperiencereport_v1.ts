@@ -59,13 +59,15 @@ export type SiteSummaryResponseFilterStatusEnum =
   | "ON"
   | "OFF"
   | "PAUSED"
-  | "PENDING";
+  | "PENDING"
+  | (string & {});
 export const SiteSummaryResponseFilterStatusEnum = /*@__PURE__*/ S.String;
 
 export type SiteSummaryResponseAbusiveStatusEnum =
   | "UNKNOWN"
   | "PASSING"
-  | "FAILING";
+  | "FAILING"
+  | (string & {});
 export const SiteSummaryResponseAbusiveStatusEnum = /*@__PURE__*/ S.String;
 
 /** Response message for GetSiteSummary. */

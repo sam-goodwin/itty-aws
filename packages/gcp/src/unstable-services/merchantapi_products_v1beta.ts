@@ -165,7 +165,8 @@ export const AutomatedDiscounts = /*@__PURE__*/ S.suspend(() =>
 export type ProductChannelEnum =
   | "CHANNEL_ENUM_UNSPECIFIED"
   | "ONLINE"
-  | "LOCAL";
+  | "LOCAL"
+  | (string & {});
 export const ProductChannelEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -177,7 +178,8 @@ export type ItemLevelIssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "NOT_IMPACTED"
   | "DEMOTED"
-  | "DISAPPROVED";
+  | "DISAPPROVED"
+  | (string & {});
 export const ItemLevelIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 export type ItemLevelIssueReportingContextEnum =
@@ -200,7 +202,8 @@ export type ItemLevelIssueReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT";
+  | "YOUTUBE_CHECKOUT"
+  | (string & {});
 export const ItemLevelIssueReportingContextEnum = /*@__PURE__*/ S.String;
 
 /** The ItemLevelIssue of the product status. */
@@ -263,7 +266,8 @@ export type DestinationStatusReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT";
+  | "YOUTUBE_CHECKOUT"
+  | (string & {});
 export const DestinationStatusReportingContextEnum = /*@__PURE__*/ S.String;
 
 /** The destination status of the product status. Equivalent to `StatusPerReportingContext` in Reports API. */
@@ -397,7 +401,8 @@ export const FreeShippingThresholdList = /*@__PURE__*/ S.Array(
 export type ProductSustainabilityIncentiveTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "EV_TAX_CREDIT"
-  | "EV_PRICE_DISCOUNT";
+  | "EV_PRICE_DISCOUNT"
+  | (string & {});
 export const ProductSustainabilityIncentiveTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information regarding sustainability-related incentive programs such as rebates or tax relief. */
@@ -706,7 +711,8 @@ export type SubscriptionCostPeriodEnum =
   | "SUBSCRIPTION_PERIOD_UNSPECIFIED"
   | "MONTH"
   | "YEAR"
-  | "WEEK";
+  | "WEEK"
+  | (string & {});
 export const SubscriptionCostPeriodEnum = /*@__PURE__*/ S.String;
 
 /** The SubscriptionCost of the product. */
@@ -1127,7 +1133,8 @@ export const Product = /*@__PURE__*/ S.suspend(() =>
 export type ProductInputChannelEnum =
   | "CHANNEL_ENUM_UNSPECIFIED"
   | "ONLINE"
-  | "LOCAL";
+  | "LOCAL"
+  | (string & {});
 export const ProductInputChannelEnum = /*@__PURE__*/ S.String;
 
 /** This resource represents input data you submit for a product, not the processed product that you see in Merchant Center, in Shopping ads, or across Google surfaces. Product inputs, rules and supplemental data source data are combined to create the processed Product. For more information, see [Manage products](/merchant/api/guides/products/overview). Required product input attributes to pass data validation checks are primarily defined in the [Products Data Specification](https://support.google.com/merchants/answer/188494). The following attributes are required: feedLabel, contentLanguage and offerId. After inserting, updating, or deleting a product input, it may take several minutes before the processed product can be retrieved. All fields in the product input and its sub-messages match the English name of their corresponding attribute in the [Products Data Specification](https://support.google.com/merchants/answer/188494) with [some exceptions](https://support.google.com/merchants/answer/7052112). The following reference documentation lists the field names in the **camelCase** casing style while the Products Data Specification lists the names in the **snake_case** casing style. */

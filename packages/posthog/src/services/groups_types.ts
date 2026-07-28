@@ -165,11 +165,14 @@ export const GroupsTypesListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupsTypesListResponse>;
 
 /** * `numeric` - numeric * `currency` - currency */
-export type GroupUsageMetricFormatEnum = "numeric" | "currency";
+export type GroupUsageMetricFormatEnum = "numeric" | "currency" | (string & {});
 export const GroupUsageMetricFormatEnum = /*@__PURE__*/ S.String;
 
 /** * `number` - number * `sparkline` - sparkline */
-export type GroupUsageMetricDisplayEnum = "number" | "sparkline";
+export type GroupUsageMetricDisplayEnum =
+  | "number"
+  | "sparkline"
+  | (string & {});
 export const GroupUsageMetricDisplayEnum = /*@__PURE__*/ S.String;
 
 /** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported. */
@@ -182,7 +185,7 @@ export const GroupsTypesMetricsCreateRequestFiltersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<GroupsTypesMetricsCreateRequestFiltersMap>;
 
 /** * `count` - count * `sum` - sum */
-export type MathEnum = "count" | "sum";
+export type MathEnum = "count" | "sum" | (string & {});
 export const MathEnum = /*@__PURE__*/ S.String;
 
 export interface GroupsTypesMetricsCreateRequest {

@@ -105,7 +105,8 @@ export const StringMap = /*@__PURE__*/ S.Record(
 export type AnnotationTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TYPE_LEGACY_EXPORT_CONSENT"
-  | "TYPE_QWIKLAB";
+  | "TYPE_QWIKLAB"
+  | (string & {});
 export const AnnotationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message describing an Annotation */
@@ -216,7 +217,8 @@ export type CollectorStateEnum =
   | "STATE_PAUSED"
   | "STATE_DELETING"
   | "STATE_DECOMMISSIONED"
-  | "STATE_ERROR";
+  | "STATE_ERROR"
+  | (string & {});
 export const CollectorStateEnum = /*@__PURE__*/ S.String;
 
 /** Message describing a MC Source of type VSphere Scan. */

@@ -64,7 +64,8 @@ export type GoogleCloudBillingBudgetsV1FilterCreditTypesTreatmentEnum =
   | "CREDIT_TYPES_TREATMENT_UNSPECIFIED"
   | "INCLUDE_ALL_CREDITS"
   | "EXCLUDE_ALL_CREDITS"
-  | "INCLUDE_SPECIFIED_CREDITS";
+  | "INCLUDE_SPECIFIED_CREDITS"
+  | (string & {});
 export const GoogleCloudBillingBudgetsV1FilterCreditTypesTreatmentEnum =
   /*@__PURE__*/ S.String;
 
@@ -77,7 +78,8 @@ export type GoogleCloudBillingBudgetsV1FilterCalendarPeriodEnum =
   | "CALENDAR_PERIOD_UNSPECIFIED"
   | "MONTH"
   | "QUARTER"
-  | "YEAR";
+  | "YEAR"
+  | (string & {});
 export const GoogleCloudBillingBudgetsV1FilterCalendarPeriodEnum =
   /*@__PURE__*/ S.String;
 
@@ -239,7 +241,8 @@ export const GoogleCloudBillingBudgetsV1BudgetAmount = /*@__PURE__*/ S.suspend(
 export type GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasisEnum =
   | "BASIS_UNSPECIFIED"
   | "CURRENT_SPEND"
-  | "FORECASTED_SPEND";
+  | "FORECASTED_SPEND"
+  | (string & {});
 export const GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasisEnum =
   /*@__PURE__*/ S.String;
 
@@ -272,7 +275,8 @@ export const GoogleCloudBillingBudgetsV1ThresholdRuleList =
 export type GoogleCloudBillingBudgetsV1BudgetOwnershipScopeEnum =
   | "OWNERSHIP_SCOPE_UNSPECIFIED"
   | "ALL_USERS"
-  | "BILLING_ACCOUNT";
+  | "BILLING_ACCOUNT"
+  | (string & {});
 export const GoogleCloudBillingBudgetsV1BudgetOwnershipScopeEnum =
   /*@__PURE__*/ S.String;
 

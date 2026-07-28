@@ -172,7 +172,8 @@ export type GoogleCloudMlV1__TrialStateEnum =
   | "REQUESTED"
   | "ACTIVE"
   | "COMPLETED"
-  | "STOPPING";
+  | "STOPPING"
+  | (string & {});
 export const GoogleCloudMlV1__TrialStateEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudMlV1__MeasurementList =
@@ -458,7 +459,8 @@ export type GoogleCloudMlV1__PredictionInputOutputDataFormatEnum =
   | "TEXT"
   | "TF_RECORD"
   | "TF_RECORD_GZIP"
-  | "CSV";
+  | "CSV"
+  | (string & {});
 export const GoogleCloudMlV1__PredictionInputOutputDataFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -468,7 +470,8 @@ export type GoogleCloudMlV1__PredictionInputDataFormatEnum =
   | "TEXT"
   | "TF_RECORD"
   | "TF_RECORD_GZIP"
-  | "CSV";
+  | "CSV"
+  | (string & {});
 export const GoogleCloudMlV1__PredictionInputDataFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -581,7 +584,8 @@ export type GoogleCloudMlV1__HyperparameterOutputStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "CANCELLING"
-  | "CANCELLED";
+  | "CANCELLED"
+  | (string & {});
 export const GoogleCloudMlV1__HyperparameterOutputStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -694,7 +698,8 @@ export const GoogleCloudMlV1__Scheduling = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudMlV1__HyperparameterSpecAlgorithmEnum =
   | "ALGORITHM_UNSPECIFIED"
   | "GRID_SEARCH"
-  | "RANDOM_SEARCH";
+  | "RANDOM_SEARCH"
+  | (string & {});
 export const GoogleCloudMlV1__HyperparameterSpecAlgorithmEnum =
   /*@__PURE__*/ S.String;
 
@@ -702,7 +707,8 @@ export type GoogleCloudMlV1__ParameterSpecScaleTypeEnum =
   | "NONE"
   | "UNIT_LINEAR_SCALE"
   | "UNIT_LOG_SCALE"
-  | "UNIT_REVERSE_LOG_SCALE";
+  | "UNIT_REVERSE_LOG_SCALE"
+  | (string & {});
 export const GoogleCloudMlV1__ParameterSpecScaleTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -716,7 +722,8 @@ export type GoogleCloudMlV1__ParameterSpecTypeEnum =
   | "DOUBLE"
   | "INTEGER"
   | "CATEGORICAL"
-  | "DISCRETE";
+  | "DISCRETE"
+  | (string & {});
 export const GoogleCloudMlV1__ParameterSpecTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a single hyperparameter to optimize. */
@@ -759,7 +766,8 @@ export const GoogleCloudMlV1__ParameterSpecList = /*@__PURE__*/ S.Array(
 export type GoogleCloudMlV1__HyperparameterSpecGoalEnum =
   | "GOAL_TYPE_UNSPECIFIED"
   | "MAXIMIZE"
-  | "MINIMIZE";
+  | "MINIMIZE"
+  | (string & {});
 export const GoogleCloudMlV1__HyperparameterSpecGoalEnum =
   /*@__PURE__*/ S.String;
 
@@ -828,7 +836,8 @@ export type GoogleCloudMlV1__AcceleratorConfigTypeEnum =
   | "TPU_V3"
   | "TPU_V2_POD"
   | "TPU_V3_POD"
-  | "TPU_V4_POD";
+  | "TPU_V4_POD"
+  | (string & {});
 export const GoogleCloudMlV1__AcceleratorConfigTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -895,7 +904,8 @@ export type GoogleCloudMlV1__TrainingInputScaleTierEnum =
   | "PREMIUM_1"
   | "BASIC_GPU"
   | "BASIC_TPU"
-  | "CUSTOM";
+  | "CUSTOM"
+  | (string & {});
 export const GoogleCloudMlV1__TrainingInputScaleTierEnum =
   /*@__PURE__*/ S.String;
 
@@ -995,7 +1005,8 @@ export type GoogleCloudMlV1__JobStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "CANCELLING"
-  | "CANCELLED";
+  | "CANCELLED"
+  | (string & {});
 export const GoogleCloudMlV1__JobStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a training or prediction job. */
@@ -1072,7 +1083,8 @@ export type GoogleCloudMlV1__StudyStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "INACTIVE"
-  | "COMPLETED";
+  | "COMPLETED"
+  | (string & {});
 export const GoogleCloudMlV1__StudyStateEnum = /*@__PURE__*/ S.String;
 
 /** The median automated stopping rule stops a pending trial if the trial's best objective_value is strictly below the median 'performance' of all completed trials reported up to the trial's last measurement. Currently, 'performance' refers to the running average of the objective values reported by the trial in each measurement. */
@@ -1128,7 +1140,8 @@ export type GoogleCloudMlV1_StudyConfig_ParameterSpecTypeEnum =
   | "DOUBLE"
   | "INTEGER"
   | "CATEGORICAL"
-  | "DISCRETE";
+  | "DISCRETE"
+  | (string & {});
 export const GoogleCloudMlV1_StudyConfig_ParameterSpecTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1136,7 +1149,8 @@ export type GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypeEnum =
   | "SCALE_TYPE_UNSPECIFIED"
   | "UNIT_LINEAR_SCALE"
   | "UNIT_LOG_SCALE"
-  | "UNIT_REVERSE_LOG_SCALE";
+  | "UNIT_REVERSE_LOG_SCALE"
+  | (string & {});
 export const GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1313,13 +1327,15 @@ export type GoogleCloudMlV1__StudyConfigAlgorithmEnum =
   | "ALGORITHM_UNSPECIFIED"
   | "GAUSSIAN_PROCESS_BANDIT"
   | "GRID_SEARCH"
-  | "RANDOM_SEARCH";
+  | "RANDOM_SEARCH"
+  | (string & {});
 export const GoogleCloudMlV1__StudyConfigAlgorithmEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudMlV1_StudyConfig_MetricSpecGoalEnum =
   | "GOAL_TYPE_UNSPECIFIED"
   | "MAXIMIZE"
-  | "MINIMIZE";
+  | "MINIMIZE"
+  | (string & {});
 export const GoogleCloudMlV1_StudyConfig_MetricSpecGoalEnum =
   /*@__PURE__*/ S.String;
 
@@ -1445,7 +1461,8 @@ export const CreateProjectsLocationsStudiesTrialsRequest =
 export type GoogleCloudMlV1__MetricSpecNameEnum =
   | "METRIC_NAME_UNSPECIFIED"
   | "CPU_USAGE"
-  | "GPU_DUTY_CYCLE";
+  | "GPU_DUTY_CYCLE"
+  | (string & {});
 export const GoogleCloudMlV1__MetricSpecNameEnum = /*@__PURE__*/ S.String;
 
 /** MetricSpec contains the specifications to use to calculate the desired nodes count when autoscaling is enabled. */
@@ -1576,7 +1593,8 @@ export type GoogleCloudMlV1__VersionStateEnum =
   | "CREATING"
   | "FAILED"
   | "DELETING"
-  | "UPDATING";
+  | "UPDATING"
+  | (string & {});
 export const GoogleCloudMlV1__VersionStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents an environment variable to be made available in a container. This message is a subset of the [Kubernetes EnvVar v1 core specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#envvar-v1-core). */
@@ -1649,7 +1667,8 @@ export type GoogleCloudMlV1__VersionFrameworkEnum =
   | "FRAMEWORK_UNSPECIFIED"
   | "TENSORFLOW"
   | "SCIKIT_LEARN"
-  | "XGBOOST";
+  | "XGBOOST"
+  | (string & {});
 export const GoogleCloudMlV1__VersionFrameworkEnum = /*@__PURE__*/ S.String;
 
 /** Options for manually scaling a model. */
@@ -2045,7 +2064,8 @@ export type GoogleIamV1__AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const GoogleIamV1__AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -2221,7 +2241,8 @@ export type GoogleCloudMlV1__CapabilityTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TRAINING"
   | "BATCH_PREDICTION"
-  | "ONLINE_PREDICTION";
+  | "ONLINE_PREDICTION"
+  | (string & {});
 export const GoogleCloudMlV1__CapabilityTypeEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnum =
@@ -2236,7 +2257,8 @@ export type GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnum =
   | "TPU_V3"
   | "TPU_V2_POD"
   | "TPU_V3_POD"
-  | "TPU_V4_POD";
+  | "TPU_V4_POD"
+  | (string & {});
 export const GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnum =
   /*@__PURE__*/ S.String;
 

@@ -268,7 +268,8 @@ export type AccountsListRequestOrdering =
   | "-updated_at"
   | "created_at"
   | "name"
-  | "updated_at";
+  | "updated_at"
+  | (string & {});
 export const AccountsListRequestOrdering = /*@__PURE__*/ S.String;
 
 export interface AccountsListRequest {

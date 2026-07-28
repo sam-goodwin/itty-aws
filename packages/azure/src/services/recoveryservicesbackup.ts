@@ -51,7 +51,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -59,7 +60,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -98,14 +100,16 @@ export type BackupManagementType =
   | "AzureSql"
   | "AzureStorage"
   | "AzureWorkload"
-  | "DefaultBackup";
+  | "DefaultBackup"
+  | (string & {});
 export const BackupManagementType = /*@__PURE__*/ S.String;
 
 /** Type of the backup engine. */
 export type BackupEngineType =
   | "Invalid"
   | "DpmBackupEngine"
-  | "AzureBackupServerEngine";
+  | "AzureBackupServerEngine"
+  | (string & {});
 export const BackupEngineType = /*@__PURE__*/ S.String;
 
 /** Additional information on backup engine. */
@@ -521,7 +525,8 @@ export type OperationStatusValues =
   | "InProgress"
   | "Succeeded"
   | "Failed"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const OperationStatusValues = /*@__PURE__*/ S.String;
 
 /** Error information associated with operation status call. */
@@ -752,7 +757,8 @@ export type ProtectionStatus =
   | "NotProtected"
   | "Protecting"
   | "Protected"
-  | "ProtectionFailed";
+  | "ProtectionFailed"
+  | (string & {});
 export const ProtectionStatus = /*@__PURE__*/ S.String;
 
 /** Base class for backup item. Workload-specific backup items are derived from this class. */
@@ -885,11 +891,12 @@ export type DataSourceType =
   | "AzureFileShare"
   | "SAPHanaDatabase"
   | "SAPAseDatabase"
-  | "SAPHanaDBInstance";
+  | "SAPHanaDBInstance"
+  | (string & {});
 export const DataSourceType = /*@__PURE__*/ S.String;
 
 /** Create mode to indicate recovery of existing soft deleted data source or creation of new data source. */
-export type CreateMode = "Invalid" | "Default" | "Recover";
+export type CreateMode = "Invalid" | "Default" | "Recover" | (string & {});
 export const CreateMode = /*@__PURE__*/ S.String;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
@@ -1080,7 +1087,8 @@ export type ProtectableContainerType =
   | "GenericContainer"
   | "Microsoft.ClassicCompute/virtualMachines"
   | "Microsoft.Compute/virtualMachines"
-  | "AzureWorkloadContainer";
+  | "AzureWorkloadContainer"
+  | (string & {});
 export const ProtectableContainerType = /*@__PURE__*/ S.String;
 
 /** Base class for container with backup items. Containers with specific workloads are derived from this class. */
@@ -1216,7 +1224,8 @@ export type ProtectionIntentItemType =
   | "RecoveryServiceVaultItem"
   | "AzureWorkloadContainerAutoProtectionIntent"
   | "AzureWorkloadAutoProtectionIntent"
-  | "AzureWorkloadSQLAutoProtectionIntent";
+  | "AzureWorkloadSQLAutoProtectionIntent"
+  | (string & {});
 export const ProtectionIntentItemType = /*@__PURE__*/ S.String;
 
 /** Base class for backup ProtectionIntent. */
@@ -1343,7 +1352,8 @@ export const BackupResourceEncryptionConfigsGetRequest =
 export type EncryptionAtRestType =
   | "Invalid"
   | "MicrosoftManaged"
-  | "CustomerManaged";
+  | "CustomerManaged"
+  | (string & {});
 export const EncryptionAtRestType = /*@__PURE__*/ S.String;
 
 export type LastUpdateStatus =
@@ -1354,10 +1364,15 @@ export type LastUpdateStatus =
   | "Failed"
   | "Succeeded"
   | "Initialized"
-  | "FirstInitialization";
+  | "FirstInitialization"
+  | (string & {});
 export const LastUpdateStatus = /*@__PURE__*/ S.String;
 
-export type InfrastructureEncryptionState = "Invalid" | "Disabled" | "Enabled";
+export type InfrastructureEncryptionState =
+  | "Invalid"
+  | "Disabled"
+  | "Enabled"
+  | (string & {});
 export const InfrastructureEncryptionState = /*@__PURE__*/ S.String;
 
 export interface BackupResourceEncryptionConfigExtended {
@@ -1541,19 +1556,24 @@ export type StorageType =
   | "GeoRedundant"
   | "LocallyRedundant"
   | "ZoneRedundant"
-  | "ReadAccessGeoZoneRedundant";
+  | "ReadAccessGeoZoneRedundant"
+  | (string & {});
 export const StorageType = /*@__PURE__*/ S.String;
 
 /** Locked or Unlocked. Once a machine is registered against a resource, the storageTypeState is always Locked. */
-export type StorageTypeState = "Invalid" | "Locked" | "Unlocked";
+export type StorageTypeState =
+  | "Invalid"
+  | "Locked"
+  | "Unlocked"
+  | (string & {});
 export const StorageTypeState = /*@__PURE__*/ S.String;
 
 /** Vault Dedup state */
-export type DedupState = "Invalid" | "Enabled" | "Disabled";
+export type DedupState = "Invalid" | "Enabled" | "Disabled" | (string & {});
 export const DedupState = /*@__PURE__*/ S.String;
 
 /** Vault x-cool state */
-export type XcoolState = "Invalid" | "Enabled" | "Disabled";
+export type XcoolState = "Invalid" | "Enabled" | "Disabled" | (string & {});
 export const XcoolState = /*@__PURE__*/ S.String;
 
 /** The resource storage details. */
@@ -1801,7 +1821,11 @@ export const BackupResourceVaultConfigsGetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BackupResourceVaultConfigsGetRequest>;
 
 /** Enabled or Disabled. */
-export type EnhancedSecurityState = "Invalid" | "Enabled" | "Disabled";
+export type EnhancedSecurityState =
+  | "Invalid"
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const EnhancedSecurityState = /*@__PURE__*/ S.String;
 
 /** Soft Delete feature state */
@@ -1809,7 +1833,8 @@ export type SoftDeleteFeatureState =
   | "Invalid"
   | "Enabled"
   | "Disabled"
-  | "AlwaysON";
+  | "AlwaysON"
+  | (string & {});
 export const SoftDeleteFeatureState = /*@__PURE__*/ S.String;
 
 /** ResourceGuard Operation Requests */
@@ -2116,11 +2141,14 @@ export const BackupStatusGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackupStatusGetRequest>;
 
 /** Specifies the fabric name - Azure or AD */
-export type FabricName = "Invalid" | "Azure";
+export type FabricName = "Invalid" | "Azure" | (string & {});
 export const FabricName = /*@__PURE__*/ S.String;
 
 /** Whether storage account lock is to be acquired for this container or not. */
-export type AcquireStorageAccountLock = "Acquire" | "NotAcquire";
+export type AcquireStorageAccountLock =
+  | "Acquire"
+  | "NotAcquire"
+  | (string & {});
 export const AcquireStorageAccountLock = /*@__PURE__*/ S.String;
 
 /** BackupStatus response. */
@@ -2277,7 +2305,8 @@ export type UsagesUnit =
   | "Seconds"
   | "Percent"
   | "CountPerSecond"
-  | "BytesPerSecond";
+  | "BytesPerSecond"
+  | (string & {});
 export const UsagesUnit = /*@__PURE__*/ S.String;
 
 /** The name of usage. */
@@ -2468,7 +2497,7 @@ export const BackupWorkloadItemsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackupWorkloadItemsListResponse>;
 
 /** DataMove Level */
-export type DataMoveLevel = "Invalid" | "Vault" | "Container";
+export type DataMoveLevel = "Invalid" | "Vault" | "Container" | (string & {});
 export const DataMoveLevel = /*@__PURE__*/ S.String;
 
 /** Source Container ArmIds This needs to be populated only if DataMoveLevel is set to container */
@@ -2761,7 +2790,8 @@ export type HttpStatusCode =
   | "BadGateway"
   | "ServiceUnavailable"
   | "GatewayTimeout"
-  | "HttpVersionNotSupported";
+  | "HttpVersionNotSupported"
+  | (string & {});
 export const HttpStatusCode = /*@__PURE__*/ S.String;
 
 export type ExportJobsOperationResultsGetResponseHeadersValueList =
@@ -2846,7 +2876,8 @@ export type SupportStatus =
   | "Supported"
   | "DefaultOFF"
   | "DefaultON"
-  | "NotSupported";
+  | "NotSupported"
+  | (string & {});
 export const SupportStatus = /*@__PURE__*/ S.String;
 
 /** Response for feature support requests for Azure IaasVm */
@@ -2868,7 +2899,8 @@ export type RecoveryPointTierType =
   | "Invalid"
   | "InstantRP"
   | "HardenedRP"
-  | "ArchivedRP";
+  | "ArchivedRP"
+  | (string & {});
 export const RecoveryPointTierType = /*@__PURE__*/ S.String;
 
 export interface FetchTieringCostPostRequest {
@@ -3630,7 +3662,12 @@ export const PrivateEndpointConnectionGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateEndpointConnectionGetRequest>;
 
 /** Gets or sets provisioning state of the private endpoint connection */
-export type ProvisioningState = "Succeeded" | "Deleting" | "Failed" | "Pending";
+export type ProvisioningState =
+  | "Succeeded"
+  | "Deleting"
+  | "Failed"
+  | "Pending"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The Private Endpoint network resource that is linked to the Private Endpoint connection */
@@ -3650,7 +3687,8 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 export type VaultSubResourceType =
   | "AzureBackup"
   | "AzureBackup_secondary"
-  | "AzureSiteRecovery";
+  | "AzureSiteRecovery"
+  | (string & {});
 export const VaultSubResourceType = /*@__PURE__*/ S.String;
 
 /** Group Ids for the Private Endpoint */
@@ -3665,7 +3703,8 @@ export type PrivateEndpointConnectionStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
-  | "Disconnected";
+  | "Disconnected"
+  | (string & {});
 export const PrivateEndpointConnectionStatus = /*@__PURE__*/ S.String;
 
 /** Private Link Service Connection State */
@@ -5058,7 +5097,11 @@ export const ProtectionIntentValidateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProtectionIntentValidateRequest>;
 
 /** Validation Status */
-export type ValidationStatus = "Invalid" | "Succeeded" | "Failed";
+export type ValidationStatus =
+  | "Invalid"
+  | "Succeeded"
+  | "Failed"
+  | (string & {});
 export const ValidationStatus = /*@__PURE__*/ S.String;
 
 /** Response contract for enable backup validation request */

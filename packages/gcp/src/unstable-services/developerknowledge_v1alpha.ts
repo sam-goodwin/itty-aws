@@ -133,7 +133,8 @@ export type DocumentViewEnum =
   | "DOCUMENT_VIEW_UNSPECIFIED"
   | "DOCUMENT_VIEW_BASIC"
   | "DOCUMENT_VIEW_FULL"
-  | "DOCUMENT_VIEW_CONTENT";
+  | "DOCUMENT_VIEW_CONTENT"
+  | (string & {});
 export const DocumentViewEnum = /*@__PURE__*/ S.String;
 
 /** A Document represents a piece of content from the Developer Knowledge corpus. */
@@ -261,7 +262,8 @@ export type BatchGetDocumentsViewEnum =
   | "DOCUMENT_VIEW_UNSPECIFIED"
   | "DOCUMENT_VIEW_BASIC"
   | "DOCUMENT_VIEW_FULL"
-  | "DOCUMENT_VIEW_CONTENT";
+  | "DOCUMENT_VIEW_CONTENT"
+  | (string & {});
 export const BatchGetDocumentsViewEnum = /*@__PURE__*/ S.String;
 
 export interface BatchGetDocumentsRequest {
@@ -307,7 +309,8 @@ export type GetDocumentsViewEnum =
   | "DOCUMENT_VIEW_UNSPECIFIED"
   | "DOCUMENT_VIEW_BASIC"
   | "DOCUMENT_VIEW_FULL"
-  | "DOCUMENT_VIEW_CONTENT";
+  | "DOCUMENT_VIEW_CONTENT"
+  | (string & {});
 export const GetDocumentsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetDocumentsRequest {

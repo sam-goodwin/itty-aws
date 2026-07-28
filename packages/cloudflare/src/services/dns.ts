@@ -263,7 +263,9 @@ export const RecordsBatchRequestPatchesItemNSRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPatchesItemNSRecord",
 }) as any as S.Schema<RecordsBatchRequestPatchesItemNSRecord>;
 
-export type RecordsBatchRequestPatchesItemOpenpgpkeyRecordType = "OPENPGPKEY";
+export type RecordsBatchRequestPatchesItemOpenpgpkeyRecordType =
+  | "OPENPGPKEY"
+  | (string & {});
 export const RecordsBatchRequestPatchesItemOpenpgpkeyRecordType =
   /*@__PURE__*/ S.String;
 
@@ -588,7 +590,7 @@ export const RecordsBatchRequestPatchesList = /*@__PURE__*/ S.Array(
   RecordsBatchRequestPatchesItem,
 ) as any as S.Schema<RecordsBatchRequestPatchesList>;
 
-export type RecordsBatchRequestPostsItemARecordType = "A";
+export type RecordsBatchRequestPostsItemARecordType = "A" | (string & {});
 export const RecordsBatchRequestPostsItemARecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsBatchRequestPostsItemARecordSettings {
@@ -650,7 +652,7 @@ export const RecordsBatchRequestPostsItemARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsBatchRequestPostsItemARecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemARecord>;
 
-export type RecordsBatchRequestPostsItemAAAARecordType = "AAAA";
+export type RecordsBatchRequestPostsItemAAAARecordType = "AAAA" | (string & {});
 export const RecordsBatchRequestPostsItemAAAARecordType =
   /*@__PURE__*/ S.String;
 
@@ -714,7 +716,9 @@ export const RecordsBatchRequestPostsItemAAAARecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemAAAARecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemAAAARecord>;
 
-export type RecordsBatchRequestPostsItemCNAMERecordType = "CNAME";
+export type RecordsBatchRequestPostsItemCNAMERecordType =
+  | "CNAME"
+  | (string & {});
 export const RecordsBatchRequestPostsItemCNAMERecordType =
   /*@__PURE__*/ S.String;
 
@@ -778,7 +782,7 @@ export const RecordsBatchRequestPostsItemCNAMERecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemCNAMERecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemCNAMERecord>;
 
-export type RecordsBatchRequestPostsItemMXRecordType = "MX";
+export type RecordsBatchRequestPostsItemMXRecordType = "MX" | (string & {});
 export const RecordsBatchRequestPostsItemMXRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsBatchRequestPostsItemMXRecordSettings {
@@ -841,7 +845,7 @@ export const RecordsBatchRequestPostsItemMXRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemMXRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemMXRecord>;
 
-export type RecordsBatchRequestPostsItemNSRecordType = "NS";
+export type RecordsBatchRequestPostsItemNSRecordType = "NS" | (string & {});
 export const RecordsBatchRequestPostsItemNSRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsBatchRequestPostsItemNSRecordSettings {
@@ -902,7 +906,8 @@ export const RecordsBatchRequestPostsItemNSRecord = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecordsBatchRequestPostsItemNSRecord>;
 
 export type RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordType =
-  "OPENPGPKEY";
+  | "OPENPGPKEY"
+  | (string & {});
 export const RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordType =
   /*@__PURE__*/ S.String;
 
@@ -968,7 +973,7 @@ export const RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecord =
     identifier: "RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecord",
   }) as any as S.Schema<RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecord>;
 
-export type RecordsBatchRequestPostsItemPTRRecordType = "PTR";
+export type RecordsBatchRequestPostsItemPTRRecordType = "PTR" | (string & {});
 export const RecordsBatchRequestPostsItemPTRRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsBatchRequestPostsItemPTRRecordSettings {
@@ -1028,7 +1033,7 @@ export const RecordsBatchRequestPostsItemPTRRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemPTRRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemPTRRecord>;
 
-export type RecordsBatchRequestPostsItemTXTRecordType = "TXT";
+export type RecordsBatchRequestPostsItemTXTRecordType = "TXT" | (string & {});
 export const RecordsBatchRequestPostsItemTXTRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsBatchRequestPostsItemTXTRecordSettings {
@@ -1088,7 +1093,7 @@ export const RecordsBatchRequestPostsItemTXTRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemTXTRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemTXTRecord>;
 
-export type RecordsBatchRequestPostsItemCAARecordType = "CAA";
+export type RecordsBatchRequestPostsItemCAARecordType = "CAA" | (string & {});
 export const RecordsBatchRequestPostsItemCAARecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsBatchRequestPostsItemCAARecordData {
@@ -1170,7 +1175,7 @@ export const RecordsBatchRequestPostsItemCAARecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemCAARecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemCAARecord>;
 
-export type RecordsBatchRequestPostsItemCERTRecordType = "CERT";
+export type RecordsBatchRequestPostsItemCERTRecordType = "CERT" | (string & {});
 export const RecordsBatchRequestPostsItemCERTRecordType =
   /*@__PURE__*/ S.String;
 
@@ -1256,7 +1261,9 @@ export const RecordsBatchRequestPostsItemCERTRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemCERTRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemCERTRecord>;
 
-export type RecordsBatchRequestPostsItemDNSKEYRecordType = "DNSKEY";
+export type RecordsBatchRequestPostsItemDNSKEYRecordType =
+  | "DNSKEY"
+  | (string & {});
 export const RecordsBatchRequestPostsItemDNSKEYRecordType =
   /*@__PURE__*/ S.String;
 
@@ -1342,7 +1349,7 @@ export const RecordsBatchRequestPostsItemDNSKEYRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemDNSKEYRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemDNSKEYRecord>;
 
-export type RecordsBatchRequestPostsItemDSRecordType = "DS";
+export type RecordsBatchRequestPostsItemDSRecordType = "DS" | (string & {});
 export const RecordsBatchRequestPostsItemDSRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsBatchRequestPostsItemDSRecordData {
@@ -1427,7 +1434,9 @@ export const RecordsBatchRequestPostsItemDSRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemDSRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemDSRecord>;
 
-export type RecordsBatchRequestPostsItemHTTPSRecordType = "HTTPS";
+export type RecordsBatchRequestPostsItemHTTPSRecordType =
+  | "HTTPS"
+  | (string & {});
 export const RecordsBatchRequestPostsItemHTTPSRecordType =
   /*@__PURE__*/ S.String;
 
@@ -1510,14 +1519,20 @@ export const RecordsBatchRequestPostsItemHTTPSRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemHTTPSRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemHTTPSRecord>;
 
-export type RecordsBatchRequestPostsItemLOCRecordType = "LOC";
+export type RecordsBatchRequestPostsItemLOCRecordType = "LOC" | (string & {});
 export const RecordsBatchRequestPostsItemLOCRecordType = /*@__PURE__*/ S.String;
 
-export type RecordsBatchRequestPostsItemLOCRecordDataLatDirection = "N" | "S";
+export type RecordsBatchRequestPostsItemLOCRecordDataLatDirection =
+  | "N"
+  | "S"
+  | (string & {});
 export const RecordsBatchRequestPostsItemLOCRecordDataLatDirection =
   /*@__PURE__*/ S.String;
 
-export type RecordsBatchRequestPostsItemLOCRecordDataLongDirection = "E" | "W";
+export type RecordsBatchRequestPostsItemLOCRecordDataLongDirection =
+  | "E"
+  | "W"
+  | (string & {});
 export const RecordsBatchRequestPostsItemLOCRecordDataLongDirection =
   /*@__PURE__*/ S.String;
 
@@ -1635,7 +1650,9 @@ export const RecordsBatchRequestPostsItemLOCRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemLOCRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemLOCRecord>;
 
-export type RecordsBatchRequestPostsItemNAPTRRecordType = "NAPTR";
+export type RecordsBatchRequestPostsItemNAPTRRecordType =
+  | "NAPTR"
+  | (string & {});
 export const RecordsBatchRequestPostsItemNAPTRRecordType =
   /*@__PURE__*/ S.String;
 
@@ -1727,7 +1744,9 @@ export const RecordsBatchRequestPostsItemNAPTRRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemNAPTRRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemNAPTRRecord>;
 
-export type RecordsBatchRequestPostsItemSMIMEARecordType = "SMIMEA";
+export type RecordsBatchRequestPostsItemSMIMEARecordType =
+  | "SMIMEA"
+  | (string & {});
 export const RecordsBatchRequestPostsItemSMIMEARecordType =
   /*@__PURE__*/ S.String;
 
@@ -1813,7 +1832,7 @@ export const RecordsBatchRequestPostsItemSMIMEARecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemSMIMEARecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemSMIMEARecord>;
 
-export type RecordsBatchRequestPostsItemSRVRecordType = "SRV";
+export type RecordsBatchRequestPostsItemSRVRecordType = "SRV" | (string & {});
 export const RecordsBatchRequestPostsItemSRVRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsBatchRequestPostsItemSRVRecordData {
@@ -1898,7 +1917,9 @@ export const RecordsBatchRequestPostsItemSRVRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemSRVRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemSRVRecord>;
 
-export type RecordsBatchRequestPostsItemSSHFPRecordType = "SSHFP";
+export type RecordsBatchRequestPostsItemSSHFPRecordType =
+  | "SSHFP"
+  | (string & {});
 export const RecordsBatchRequestPostsItemSSHFPRecordType =
   /*@__PURE__*/ S.String;
 
@@ -1981,7 +2002,7 @@ export const RecordsBatchRequestPostsItemSSHFPRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemSSHFPRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemSSHFPRecord>;
 
-export type RecordsBatchRequestPostsItemSVCBRecordType = "SVCB";
+export type RecordsBatchRequestPostsItemSVCBRecordType = "SVCB" | (string & {});
 export const RecordsBatchRequestPostsItemSVCBRecordType =
   /*@__PURE__*/ S.String;
 
@@ -2064,7 +2085,7 @@ export const RecordsBatchRequestPostsItemSVCBRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemSVCBRecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemSVCBRecord>;
 
-export type RecordsBatchRequestPostsItemTLSARecordType = "TLSA";
+export type RecordsBatchRequestPostsItemTLSARecordType = "TLSA" | (string & {});
 export const RecordsBatchRequestPostsItemTLSARecordType =
   /*@__PURE__*/ S.String;
 
@@ -2150,7 +2171,7 @@ export const RecordsBatchRequestPostsItemTLSARecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemTLSARecord",
 }) as any as S.Schema<RecordsBatchRequestPostsItemTLSARecord>;
 
-export type RecordsBatchRequestPostsItemURIRecordType = "URI";
+export type RecordsBatchRequestPostsItemURIRecordType = "URI" | (string & {});
 export const RecordsBatchRequestPostsItemURIRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsBatchRequestPostsItemURIRecordData {
@@ -2554,7 +2575,9 @@ export const RecordsBatchRequestPutsItemNSRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsBatchRequestPutsItemNSRecord",
 }) as any as S.Schema<RecordsBatchRequestPutsItemNSRecord>;
 
-export type RecordsBatchRequestPutsItemOpenpgpkeyRecordType = "OPENPGPKEY";
+export type RecordsBatchRequestPutsItemOpenpgpkeyRecordType =
+  | "OPENPGPKEY"
+  | (string & {});
 export const RecordsBatchRequestPutsItemOpenpgpkeyRecordType =
   /*@__PURE__*/ S.String;
 
@@ -3307,7 +3330,9 @@ export const RecordsBatchResponseDeletesItemOpenpgpkeyRecordTagsList =
     S.Unknown,
   ) as any as S.Schema<RecordsBatchResponseDeletesItemOpenpgpkeyRecordTagsList>;
 
-export type RecordsBatchResponseDeletesItemOpenpgpkeyRecordType = "OPENPGPKEY";
+export type RecordsBatchResponseDeletesItemOpenpgpkeyRecordType =
+  | "OPENPGPKEY"
+  | (string & {});
 export const RecordsBatchResponseDeletesItemOpenpgpkeyRecordType =
   /*@__PURE__*/ S.String;
 
@@ -5317,7 +5342,8 @@ export type RecordsCreateRequestType =
   | "SSHFP"
   | "SVCB"
   | "TLSA"
-  | "URI";
+  | "URI"
+  | (string & {});
 export const RecordsCreateRequestType = /*@__PURE__*/ S.String;
 
 export interface RecordsCreateRequestSettingsARecord {
@@ -5469,11 +5495,17 @@ export const RecordsCreateRequestDataHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateRequestDataHTTPSRecord",
 }) as any as S.Schema<RecordsCreateRequestDataHTTPSRecord>;
 
-export type RecordsCreateRequestDataLOCRecordLatDirection = "N" | "S";
+export type RecordsCreateRequestDataLOCRecordLatDirection =
+  | "N"
+  | "S"
+  | (string & {});
 export const RecordsCreateRequestDataLOCRecordLatDirection =
   /*@__PURE__*/ S.String;
 
-export type RecordsCreateRequestDataLOCRecordLongDirection = "E" | "W";
+export type RecordsCreateRequestDataLOCRecordLongDirection =
+  | "E"
+  | "W"
+  | (string & {});
 export const RecordsCreateRequestDataLOCRecordLongDirection =
   /*@__PURE__*/ S.String;
 
@@ -6104,7 +6136,9 @@ export const RecordsCreateResultOpenpgpkeyRecordTagsList =
     S.Unknown,
   ) as any as S.Schema<RecordsCreateResultOpenpgpkeyRecordTagsList>;
 
-export type RecordsCreateResultOpenpgpkeyRecordType = "OPENPGPKEY";
+export type RecordsCreateResultOpenpgpkeyRecordType =
+  | "OPENPGPKEY"
+  | (string & {});
 export const RecordsCreateResultOpenpgpkeyRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsCreateResultOpenpgpkeyRecord {
@@ -8251,7 +8285,8 @@ export type AnalyticsReportsBytimesGetRequestTimeDelta =
   | "day"
   | "hour"
   | "dekaminute"
-  | "minute";
+  | "minute"
+  | (string & {});
 export const AnalyticsReportsBytimesGetRequestTimeDelta =
   /*@__PURE__*/ S.String;
 
@@ -8368,7 +8403,8 @@ export type AnalyticsReportsBytimesGetResponseQueryTimeDelta =
   | "day"
   | "hour"
   | "dekaminute"
-  | "minute";
+  | "minute"
+  | (string & {});
 export const AnalyticsReportsBytimesGetResponseQueryTimeDelta =
   /*@__PURE__*/ S.String;
 
@@ -8483,7 +8519,8 @@ export type DnssecGetResponseStatus =
   | "pending"
   | "disabled"
   | "pending-disabled"
-  | "error";
+  | "error"
+  | (string & {});
 export const DnssecGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -8928,7 +8965,7 @@ export const RecordsGetResultOpenpgpkeyRecordTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<RecordsGetResultOpenpgpkeyRecordTagsList>;
 
-export type RecordsGetResultOpenpgpkeyRecordType = "OPENPGPKEY";
+export type RecordsGetResultOpenpgpkeyRecordType = "OPENPGPKEY" | (string & {});
 export const RecordsGetResultOpenpgpkeyRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsGetResultOpenpgpkeyRecord {
@@ -10179,7 +10216,8 @@ export type SettingsAccountGetResponseZoneDefaultsNameserversType =
   | "cloudflare.standard"
   | "cloudflare.standard.random"
   | "custom.account"
-  | "custom.tenant";
+  | "custom.tenant"
+  | (string & {});
 export const SettingsAccountGetResponseZoneDefaultsNameserversType =
   /*@__PURE__*/ S.String;
 
@@ -10230,7 +10268,8 @@ export const SettingsAccountGetResponseZoneDefaultsSoa =
 export type SettingsAccountGetResponseZoneDefaultsZoneMode =
   | "standard"
   | "cdn_only"
-  | "dns_only";
+  | "dns_only"
+  | (string & {});
 export const SettingsAccountGetResponseZoneDefaultsZoneMode =
   /*@__PURE__*/ S.String;
 
@@ -10381,7 +10420,8 @@ export type SettingsZoneGetResponseNameserversType =
   | "cloudflare.standard"
   | "custom.account"
   | "custom.tenant"
-  | "custom.zone";
+  | "custom.zone"
+  | (string & {});
 export const SettingsZoneGetResponseNameserversType = /*@__PURE__*/ S.String;
 
 export interface SettingsZoneGetResponseNameservers {
@@ -10432,7 +10472,8 @@ export const SettingsZoneGetResponseSoa = /*@__PURE__*/ S.suspend(() =>
 export type SettingsZoneGetResponseZoneMode =
   | "standard"
   | "cdn_only"
-  | "dns_only";
+  | "dns_only"
+  | (string & {});
 export const SettingsZoneGetResponseZoneMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -10865,7 +10906,7 @@ export const ImportRecordResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImportRecordResponse",
 }) as any as S.Schema<ImportRecordResponse>;
 
-export type RecordsListRequestMatch = "any" | "all";
+export type RecordsListRequestMatch = "any" | "all" | (string & {});
 export const RecordsListRequestMatch = /*@__PURE__*/ S.String;
 
 export type RecordsListRequestOrder =
@@ -10873,10 +10914,11 @@ export type RecordsListRequestOrder =
   | "name"
   | "content"
   | "ttl"
-  | "proxied";
+  | "proxied"
+  | (string & {});
 export const RecordsListRequestOrder = /*@__PURE__*/ S.String;
 
-export type RecordsListRequestTagMatch = "any" | "all";
+export type RecordsListRequestTagMatch = "any" | "all" | (string & {});
 export const RecordsListRequestTagMatch = /*@__PURE__*/ S.String;
 
 export type RecordsListRequestType =
@@ -10900,7 +10942,8 @@ export type RecordsListRequestType =
   | "SVCB"
   | "TLSA"
   | "TXT"
-  | "URI";
+  | "URI"
+  | (string & {});
 export const RecordsListRequestType = /*@__PURE__*/ S.String;
 
 export interface ListRecordsRequest {
@@ -11396,7 +11439,9 @@ export const RecordsListResultItemOpenpgpkeyRecordTagsList =
     S.Unknown,
   ) as any as S.Schema<RecordsListResultItemOpenpgpkeyRecordTagsList>;
 
-export type RecordsListResultItemOpenpgpkeyRecordType = "OPENPGPKEY";
+export type RecordsListResultItemOpenpgpkeyRecordType =
+  | "OPENPGPKEY"
+  | (string & {});
 export const RecordsListResultItemOpenpgpkeyRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsListResultItemOpenpgpkeyRecord {
@@ -12665,16 +12710,23 @@ export const ListRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRecordsResponse",
 }) as any as S.Schema<ListRecordsResponse>;
 
-export type SettingsAccountViewsListRequestDirection = "asc" | "desc";
+export type SettingsAccountViewsListRequestDirection =
+  | "asc"
+  | "desc"
+  | (string & {});
 export const SettingsAccountViewsListRequestDirection = /*@__PURE__*/ S.String;
 
-export type SettingsAccountViewsListRequestMatch = "any" | "all";
+export type SettingsAccountViewsListRequestMatch =
+  | "any"
+  | "all"
+  | (string & {});
 export const SettingsAccountViewsListRequestMatch = /*@__PURE__*/ S.String;
 
 export type SettingsAccountViewsListRequestOrder =
   | "name"
   | "created_on"
-  | "modified_on";
+  | "modified_on"
+  | (string & {});
 export const SettingsAccountViewsListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface ListSettingAccountViewsRequest {
@@ -12966,7 +13018,7 @@ export const ListZoneTransferTsigsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListZoneTransferTsigsResponse",
 }) as any as S.Schema<ListZoneTransferTsigsResponse>;
 
-export type DnssecEditRequestStatus = "active" | "disabled";
+export type DnssecEditRequestStatus = "active" | "disabled" | (string & {});
 export const DnssecEditRequestStatus = /*@__PURE__*/ S.String;
 
 export interface PatchDnssecRequest {
@@ -13004,7 +13056,8 @@ export type DnssecEditResponseStatus =
   | "pending"
   | "disabled"
   | "pending-disabled"
-  | "error";
+  | "error"
+  | (string & {});
 export const DnssecEditResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -13082,7 +13135,8 @@ export type RecordsEditRequestType =
   | "SSHFP"
   | "SVCB"
   | "TLSA"
-  | "URI";
+  | "URI"
+  | (string & {});
 export const RecordsEditRequestType = /*@__PURE__*/ S.String;
 
 export interface RecordsEditRequestSettingsARecord {
@@ -13233,11 +13287,17 @@ export const RecordsEditRequestDataHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditRequestDataHTTPSRecord",
 }) as any as S.Schema<RecordsEditRequestDataHTTPSRecord>;
 
-export type RecordsEditRequestDataLOCRecordLatDirection = "N" | "S";
+export type RecordsEditRequestDataLOCRecordLatDirection =
+  | "N"
+  | "S"
+  | (string & {});
 export const RecordsEditRequestDataLOCRecordLatDirection =
   /*@__PURE__*/ S.String;
 
-export type RecordsEditRequestDataLOCRecordLongDirection = "E" | "W";
+export type RecordsEditRequestDataLOCRecordLongDirection =
+  | "E"
+  | "W"
+  | (string & {});
 export const RecordsEditRequestDataLOCRecordLongDirection =
   /*@__PURE__*/ S.String;
 
@@ -13860,7 +13920,9 @@ export const RecordsEditResultOpenpgpkeyRecordTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<RecordsEditResultOpenpgpkeyRecordTagsList>;
 
-export type RecordsEditResultOpenpgpkeyRecordType = "OPENPGPKEY";
+export type RecordsEditResultOpenpgpkeyRecordType =
+  | "OPENPGPKEY"
+  | (string & {});
 export const RecordsEditResultOpenpgpkeyRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsEditResultOpenpgpkeyRecord {
@@ -15104,7 +15166,8 @@ export type SettingsAccountEditRequestZoneDefaultsNameserversType =
   | "cloudflare.standard"
   | "cloudflare.standard.random"
   | "custom.account"
-  | "custom.tenant";
+  | "custom.tenant"
+  | (string & {});
 export const SettingsAccountEditRequestZoneDefaultsNameserversType =
   /*@__PURE__*/ S.String;
 
@@ -15155,7 +15218,8 @@ export const SettingsAccountEditRequestZoneDefaultsSoa =
 export type SettingsAccountEditRequestZoneDefaultsZoneMode =
   | "standard"
   | "cdn_only"
-  | "dns_only";
+  | "dns_only"
+  | (string & {});
 export const SettingsAccountEditRequestZoneDefaultsZoneMode =
   /*@__PURE__*/ S.String;
 
@@ -15254,7 +15318,8 @@ export type SettingsAccountEditResponseZoneDefaultsNameserversType =
   | "cloudflare.standard"
   | "cloudflare.standard.random"
   | "custom.account"
-  | "custom.tenant";
+  | "custom.tenant"
+  | (string & {});
 export const SettingsAccountEditResponseZoneDefaultsNameserversType =
   /*@__PURE__*/ S.String;
 
@@ -15305,7 +15370,8 @@ export const SettingsAccountEditResponseZoneDefaultsSoa =
 export type SettingsAccountEditResponseZoneDefaultsZoneMode =
   | "standard"
   | "cdn_only"
-  | "dns_only";
+  | "dns_only"
+  | (string & {});
 export const SettingsAccountEditResponseZoneDefaultsZoneMode =
   /*@__PURE__*/ S.String;
 
@@ -15447,7 +15513,8 @@ export type SettingsZoneEditRequestNameserversType =
   | "cloudflare.standard"
   | "custom.account"
   | "custom.tenant"
-  | "custom.zone";
+  | "custom.zone"
+  | (string & {});
 export const SettingsZoneEditRequestNameserversType = /*@__PURE__*/ S.String;
 
 export interface SettingsZoneEditRequestNameservers {
@@ -15498,7 +15565,8 @@ export const SettingsZoneEditRequestSoa = /*@__PURE__*/ S.suspend(() =>
 export type SettingsZoneEditRequestZoneMode =
   | "standard"
   | "cdn_only"
-  | "dns_only";
+  | "dns_only"
+  | (string & {});
 export const SettingsZoneEditRequestZoneMode = /*@__PURE__*/ S.String;
 
 export interface PatchSettingZoneRequest {
@@ -15570,7 +15638,8 @@ export type SettingsZoneEditResponseNameserversType =
   | "cloudflare.standard"
   | "custom.account"
   | "custom.tenant"
-  | "custom.zone";
+  | "custom.zone"
+  | (string & {});
 export const SettingsZoneEditResponseNameserversType = /*@__PURE__*/ S.String;
 
 export interface SettingsZoneEditResponseNameservers {
@@ -15621,7 +15690,8 @@ export const SettingsZoneEditResponseSoa = /*@__PURE__*/ S.suspend(() =>
 export type SettingsZoneEditResponseZoneMode =
   | "standard"
   | "cdn_only"
-  | "dns_only";
+  | "dns_only"
+  | (string & {});
 export const SettingsZoneEditResponseZoneMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -16069,7 +16139,9 @@ export const RecordsScanListResultItemOpenpgpkeyRecordTagsList =
     S.Unknown,
   ) as any as S.Schema<RecordsScanListResultItemOpenpgpkeyRecordTagsList>;
 
-export type RecordsScanListResultItemOpenpgpkeyRecordType = "OPENPGPKEY";
+export type RecordsScanListResultItemOpenpgpkeyRecordType =
+  | "OPENPGPKEY"
+  | (string & {});
 export const RecordsScanListResultItemOpenpgpkeyRecordType =
   /*@__PURE__*/ S.String;
 
@@ -17403,7 +17475,9 @@ export const ScanRecordResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScanRecordResponse",
 }) as any as S.Schema<ScanRecordResponse>;
 
-export type RecordsScanReviewRequestAcceptsItemARecordType = "A";
+export type RecordsScanReviewRequestAcceptsItemARecordType =
+  | "A"
+  | (string & {});
 export const RecordsScanReviewRequestAcceptsItemARecordType =
   /*@__PURE__*/ S.String;
 
@@ -17467,7 +17541,9 @@ export const RecordsScanReviewRequestAcceptsItemARecord =
     identifier: "RecordsScanReviewRequestAcceptsItemARecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemARecord>;
 
-export type RecordsScanReviewRequestAcceptsItemAAAARecordType = "AAAA";
+export type RecordsScanReviewRequestAcceptsItemAAAARecordType =
+  | "AAAA"
+  | (string & {});
 export const RecordsScanReviewRequestAcceptsItemAAAARecordType =
   /*@__PURE__*/ S.String;
 
@@ -17533,7 +17609,9 @@ export const RecordsScanReviewRequestAcceptsItemAAAARecord =
     identifier: "RecordsScanReviewRequestAcceptsItemAAAARecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemAAAARecord>;
 
-export type RecordsScanReviewRequestAcceptsItemCNAMERecordType = "CNAME";
+export type RecordsScanReviewRequestAcceptsItemCNAMERecordType =
+  | "CNAME"
+  | (string & {});
 export const RecordsScanReviewRequestAcceptsItemCNAMERecordType =
   /*@__PURE__*/ S.String;
 
@@ -17599,7 +17677,9 @@ export const RecordsScanReviewRequestAcceptsItemCNAMERecord =
     identifier: "RecordsScanReviewRequestAcceptsItemCNAMERecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemCNAMERecord>;
 
-export type RecordsScanReviewRequestAcceptsItemMXRecordType = "MX";
+export type RecordsScanReviewRequestAcceptsItemMXRecordType =
+  | "MX"
+  | (string & {});
 export const RecordsScanReviewRequestAcceptsItemMXRecordType =
   /*@__PURE__*/ S.String;
 
@@ -17663,7 +17743,9 @@ export const RecordsScanReviewRequestAcceptsItemMXRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemMXRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemMXRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemNSRecordType = "NS";
+export type RecordsScanReviewRequestAcceptsItemNSRecordType =
+  | "NS"
+  | (string & {});
 export const RecordsScanReviewRequestAcceptsItemNSRecordType =
   /*@__PURE__*/ S.String;
 
@@ -17725,7 +17807,8 @@ export const RecordsScanReviewRequestAcceptsItemNSRecord =
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemNSRecord>;
 
 export type RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordType =
-  "OPENPGPKEY";
+  | "OPENPGPKEY"
+  | (string & {});
 export const RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordType =
   /*@__PURE__*/ S.String;
 
@@ -17791,7 +17874,9 @@ export const RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemPTRRecordType = "PTR";
+export type RecordsScanReviewRequestAcceptsItemPTRRecordType =
+  | "PTR"
+  | (string & {});
 export const RecordsScanReviewRequestAcceptsItemPTRRecordType =
   /*@__PURE__*/ S.String;
 
@@ -17854,7 +17939,9 @@ export const RecordsScanReviewRequestAcceptsItemPTRRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemPTRRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemPTRRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemTXTRecordType = "TXT";
+export type RecordsScanReviewRequestAcceptsItemTXTRecordType =
+  | "TXT"
+  | (string & {});
 export const RecordsScanReviewRequestAcceptsItemTXTRecordType =
   /*@__PURE__*/ S.String;
 
@@ -17917,7 +18004,9 @@ export const RecordsScanReviewRequestAcceptsItemTXTRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemTXTRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemTXTRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemCAARecordType = "CAA";
+export type RecordsScanReviewRequestAcceptsItemCAARecordType =
+  | "CAA"
+  | (string & {});
 export const RecordsScanReviewRequestAcceptsItemCAARecordType =
   /*@__PURE__*/ S.String;
 
@@ -18002,7 +18091,9 @@ export const RecordsScanReviewRequestAcceptsItemCAARecord =
     identifier: "RecordsScanReviewRequestAcceptsItemCAARecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemCAARecord>;
 
-export type RecordsScanReviewRequestAcceptsItemCERTRecordType = "CERT";
+export type RecordsScanReviewRequestAcceptsItemCERTRecordType =
+  | "CERT"
+  | (string & {});
 export const RecordsScanReviewRequestAcceptsItemCERTRecordType =
   /*@__PURE__*/ S.String;
 
@@ -18090,7 +18181,9 @@ export const RecordsScanReviewRequestAcceptsItemCERTRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemCERTRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemCERTRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemDNSKEYRecordType = "DNSKEY";
+export type RecordsScanReviewRequestAcceptsItemDNSKEYRecordType =
+  | "DNSKEY"
+  | (string & {});
 export const RecordsScanReviewRequestAcceptsItemDNSKEYRecordType =
   /*@__PURE__*/ S.String;
 
@@ -18178,7 +18271,9 @@ export const RecordsScanReviewRequestAcceptsItemDNSKEYRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemDNSKEYRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemDNSKEYRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemDSRecordType = "DS";
+export type RecordsScanReviewRequestAcceptsItemDSRecordType =
+  | "DS"
+  | (string & {});
 export const RecordsScanReviewRequestAcceptsItemDSRecordType =
   /*@__PURE__*/ S.String;
 
@@ -18264,7 +18359,9 @@ export const RecordsScanReviewRequestAcceptsItemDSRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemDSRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemDSRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemHTTPSRecordType = "HTTPS";
+export type RecordsScanReviewRequestAcceptsItemHTTPSRecordType =
+  | "HTTPS"
+  | (string & {});
 export const RecordsScanReviewRequestAcceptsItemHTTPSRecordType =
   /*@__PURE__*/ S.String;
 
@@ -18349,19 +18446,23 @@ export const RecordsScanReviewRequestAcceptsItemHTTPSRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemHTTPSRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemHTTPSRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemLOCRecordType = "LOC";
+export type RecordsScanReviewRequestAcceptsItemLOCRecordType =
+  | "LOC"
+  | (string & {});
 export const RecordsScanReviewRequestAcceptsItemLOCRecordType =
   /*@__PURE__*/ S.String;
 
 export type RecordsScanReviewRequestAcceptsItemLOCRecordDataLatDirection =
   | "N"
-  | "S";
+  | "S"
+  | (string & {});
 export const RecordsScanReviewRequestAcceptsItemLOCRecordDataLatDirection =
   /*@__PURE__*/ S.String;
 
 export type RecordsScanReviewRequestAcceptsItemLOCRecordDataLongDirection =
   | "E"
-  | "W";
+  | "W"
+  | (string & {});
 export const RecordsScanReviewRequestAcceptsItemLOCRecordDataLongDirection =
   /*@__PURE__*/ S.String;
 
@@ -18481,7 +18582,9 @@ export const RecordsScanReviewRequestAcceptsItemLOCRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemLOCRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemLOCRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemNAPTRRecordType = "NAPTR";
+export type RecordsScanReviewRequestAcceptsItemNAPTRRecordType =
+  | "NAPTR"
+  | (string & {});
 export const RecordsScanReviewRequestAcceptsItemNAPTRRecordType =
   /*@__PURE__*/ S.String;
 
@@ -18575,7 +18678,9 @@ export const RecordsScanReviewRequestAcceptsItemNAPTRRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemNAPTRRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemNAPTRRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemSMIMEARecordType = "SMIMEA";
+export type RecordsScanReviewRequestAcceptsItemSMIMEARecordType =
+  | "SMIMEA"
+  | (string & {});
 export const RecordsScanReviewRequestAcceptsItemSMIMEARecordType =
   /*@__PURE__*/ S.String;
 
@@ -18663,7 +18768,9 @@ export const RecordsScanReviewRequestAcceptsItemSMIMEARecord =
     identifier: "RecordsScanReviewRequestAcceptsItemSMIMEARecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemSMIMEARecord>;
 
-export type RecordsScanReviewRequestAcceptsItemSRVRecordType = "SRV";
+export type RecordsScanReviewRequestAcceptsItemSRVRecordType =
+  | "SRV"
+  | (string & {});
 export const RecordsScanReviewRequestAcceptsItemSRVRecordType =
   /*@__PURE__*/ S.String;
 
@@ -18751,7 +18858,9 @@ export const RecordsScanReviewRequestAcceptsItemSRVRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemSRVRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemSRVRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemSSHFPRecordType = "SSHFP";
+export type RecordsScanReviewRequestAcceptsItemSSHFPRecordType =
+  | "SSHFP"
+  | (string & {});
 export const RecordsScanReviewRequestAcceptsItemSSHFPRecordType =
   /*@__PURE__*/ S.String;
 
@@ -18836,7 +18945,9 @@ export const RecordsScanReviewRequestAcceptsItemSSHFPRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemSSHFPRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemSSHFPRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemSVCBRecordType = "SVCB";
+export type RecordsScanReviewRequestAcceptsItemSVCBRecordType =
+  | "SVCB"
+  | (string & {});
 export const RecordsScanReviewRequestAcceptsItemSVCBRecordType =
   /*@__PURE__*/ S.String;
 
@@ -18921,7 +19032,9 @@ export const RecordsScanReviewRequestAcceptsItemSVCBRecord =
     identifier: "RecordsScanReviewRequestAcceptsItemSVCBRecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemSVCBRecord>;
 
-export type RecordsScanReviewRequestAcceptsItemTLSARecordType = "TLSA";
+export type RecordsScanReviewRequestAcceptsItemTLSARecordType =
+  | "TLSA"
+  | (string & {});
 export const RecordsScanReviewRequestAcceptsItemTLSARecordType =
   /*@__PURE__*/ S.String;
 
@@ -19009,7 +19122,9 @@ export const RecordsScanReviewRequestAcceptsItemTLSARecord =
     identifier: "RecordsScanReviewRequestAcceptsItemTLSARecord",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemTLSARecord>;
 
-export type RecordsScanReviewRequestAcceptsItemURIRecordType = "URI";
+export type RecordsScanReviewRequestAcceptsItemURIRecordType =
+  | "URI"
+  | (string & {});
 export const RecordsScanReviewRequestAcceptsItemURIRecordType =
   /*@__PURE__*/ S.String;
 
@@ -19795,7 +19910,8 @@ export const RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordTagsList =
   ) as any as S.Schema<RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordTagsList>;
 
 export type RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordType =
-  "OPENPGPKEY";
+  | "OPENPGPKEY"
+  | (string & {});
 export const RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordType =
   /*@__PURE__*/ S.String;
 
@@ -21174,7 +21290,8 @@ export type RecordsUpdateRequestType =
   | "SSHFP"
   | "SVCB"
   | "TLSA"
-  | "URI";
+  | "URI"
+  | (string & {});
 export const RecordsUpdateRequestType = /*@__PURE__*/ S.String;
 
 export interface RecordsUpdateRequestSettingsARecord {
@@ -21326,11 +21443,17 @@ export const RecordsUpdateRequestDataHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateRequestDataHTTPSRecord",
 }) as any as S.Schema<RecordsUpdateRequestDataHTTPSRecord>;
 
-export type RecordsUpdateRequestDataLOCRecordLatDirection = "N" | "S";
+export type RecordsUpdateRequestDataLOCRecordLatDirection =
+  | "N"
+  | "S"
+  | (string & {});
 export const RecordsUpdateRequestDataLOCRecordLatDirection =
   /*@__PURE__*/ S.String;
 
-export type RecordsUpdateRequestDataLOCRecordLongDirection = "E" | "W";
+export type RecordsUpdateRequestDataLOCRecordLongDirection =
+  | "E"
+  | "W"
+  | (string & {});
 export const RecordsUpdateRequestDataLOCRecordLongDirection =
   /*@__PURE__*/ S.String;
 
@@ -21964,7 +22087,9 @@ export const RecordsUpdateResultOpenpgpkeyRecordTagsList =
     S.Unknown,
   ) as any as S.Schema<RecordsUpdateResultOpenpgpkeyRecordTagsList>;
 
-export type RecordsUpdateResultOpenpgpkeyRecordType = "OPENPGPKEY";
+export type RecordsUpdateResultOpenpgpkeyRecordType =
+  | "OPENPGPKEY"
+  | (string & {});
 export const RecordsUpdateResultOpenpgpkeyRecordType = /*@__PURE__*/ S.String;
 
 export interface RecordsUpdateResultOpenpgpkeyRecord {

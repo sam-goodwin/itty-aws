@@ -138,7 +138,8 @@ export const BeginVerificationSsoResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type OauthClientsCreateRequestGrantTypesItem =
   | "authorization_code"
-  | "refresh_token";
+  | "refresh_token"
+  | (string & {});
 export const OauthClientsCreateRequestGrantTypesItem = /*@__PURE__*/ S.String;
 
 export type OauthClientsCreateRequestGrantTypesList =
@@ -155,7 +156,8 @@ export const OauthClientsCreateRequestRedirectUrisList = /*@__PURE__*/ S.Array(
 export type OauthClientsCreateRequestResponseTypesItem =
   | "token"
   | "id_token"
-  | "code";
+  | "code"
+  | (string & {});
 export const OauthClientsCreateRequestResponseTypesItem =
   /*@__PURE__*/ S.String;
 
@@ -173,7 +175,8 @@ export const OauthClientsCreateRequestScopesList = /*@__PURE__*/ S.Array(
 export type OauthClientsCreateRequestTokenEndpointAuthMethod =
   | "none"
   | "client_secret_basic"
-  | "client_secret_post";
+  | "client_secret_post"
+  | (string & {});
 export const OauthClientsCreateRequestTokenEndpointAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -264,7 +267,10 @@ export const CreateOauthClientRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateOauthClientRequest",
 }) as any as S.Schema<CreateOauthClientRequest>;
 
-export type OauthClientsCreateResponseVisibility = "public" | "private";
+export type OauthClientsCreateResponseVisibility =
+  | "public"
+  | "private"
+  | (string & {});
 export const OauthClientsCreateResponseVisibility = /*@__PURE__*/ S.String;
 
 export type OauthClientsCreateResponseAllowedCorsOriginsList =
@@ -278,7 +284,8 @@ export type OauthClientsCreateResponseClientUriVerificationStatus =
   | "pending"
   | "in_progress"
   | "verified"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const OauthClientsCreateResponseClientUriVerificationStatus =
   /*@__PURE__*/ S.String;
 
@@ -300,7 +307,8 @@ export const OauthClientsCreateResponseClientUriVerification =
 
 export type OauthClientsCreateResponseGrantTypesItem =
   | "authorization_code"
-  | "refresh_token";
+  | "refresh_token"
+  | (string & {});
 export const OauthClientsCreateResponseGrantTypesItem = /*@__PURE__*/ S.String;
 
 export type OauthClientsCreateResponseGrantTypesList =
@@ -324,7 +332,8 @@ export const OauthClientsCreateResponseRedirectUrisList = /*@__PURE__*/ S.Array(
 export type OauthClientsCreateResponseResponseTypesItem =
   | "token"
   | "id_token"
-  | "code";
+  | "code"
+  | (string & {});
 export const OauthClientsCreateResponseResponseTypesItem =
   /*@__PURE__*/ S.String;
 
@@ -343,7 +352,8 @@ export const OauthClientsCreateResponseScopesList = /*@__PURE__*/ S.Array(
 export type OauthClientsCreateResponseTokenEndpointAuthMethod =
   | "none"
   | "client_secret_basic"
-  | "client_secret_post";
+  | "client_secret_post"
+  | (string & {});
 export const OauthClientsCreateResponseTokenEndpointAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -614,7 +624,8 @@ export type SsoCreateResponseVerificationStatus =
   | "awaiting"
   | "pending"
   | "failed"
-  | "verified";
+  | "verified"
+  | (string & {});
 export const SsoCreateResponseVerificationStatus = /*@__PURE__*/ S.String;
 
 export interface SsoCreateResponseVerification {
@@ -662,7 +673,10 @@ export const CreateSsoResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSsoResponse",
 }) as any as S.Schema<CreateSsoResponse>;
 
-export type UserGroupsCreateRequestPoliciesItemAccess = "allow" | "deny";
+export type UserGroupsCreateRequestPoliciesItemAccess =
+  | "allow"
+  | "deny"
+  | (string & {});
 export const UserGroupsCreateRequestPoliciesItemAccess = /*@__PURE__*/ S.String;
 
 export interface UserGroupsCreateRequestPoliciesItemPermissionGroupsItem {
@@ -760,7 +774,10 @@ export const CreateUserGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateUserGroupRequest",
 }) as any as S.Schema<CreateUserGroupRequest>;
 
-export type UserGroupsCreateResponsePoliciesItemAccess = "allow" | "deny";
+export type UserGroupsCreateResponsePoliciesItemAccess =
+  | "allow"
+  | "deny"
+  | (string & {});
 export const UserGroupsCreateResponsePoliciesItemAccess =
   /*@__PURE__*/ S.String;
 
@@ -1002,7 +1019,10 @@ export const CreateUserGroupMemberRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateUserGroupMemberRequest",
 }) as any as S.Schema<CreateUserGroupMemberRequest>;
 
-export type UserGroupsMembersCreateResultItemStatus = "accepted" | "pending";
+export type UserGroupsMembersCreateResultItemStatus =
+  | "accepted"
+  | "pending"
+  | (string & {});
 export const UserGroupsMembersCreateResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface UserGroupsMembersCreateResultItem {
@@ -1252,7 +1272,10 @@ export const DeleteUserGroupMemberRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteUserGroupMemberRequest",
 }) as any as S.Schema<DeleteUserGroupMemberRequest>;
 
-export type UserGroupsMembersDeleteResponseStatus = "accepted" | "pending";
+export type UserGroupsMembersDeleteResponseStatus =
+  | "accepted"
+  | "pending"
+  | (string & {});
 export const UserGroupsMembersDeleteResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1297,7 +1320,10 @@ export const GetOauthClientRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetOauthClientRequest",
 }) as any as S.Schema<GetOauthClientRequest>;
 
-export type OauthClientsGetResponseVisibility = "public" | "private";
+export type OauthClientsGetResponseVisibility =
+  | "public"
+  | "private"
+  | (string & {});
 export const OauthClientsGetResponseVisibility = /*@__PURE__*/ S.String;
 
 export type OauthClientsGetResponseAllowedCorsOriginsList =
@@ -1311,7 +1337,8 @@ export type OauthClientsGetResponseClientUriVerificationStatus =
   | "pending"
   | "in_progress"
   | "verified"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const OauthClientsGetResponseClientUriVerificationStatus =
   /*@__PURE__*/ S.String;
 
@@ -1333,7 +1360,8 @@ export const OauthClientsGetResponseClientUriVerification =
 
 export type OauthClientsGetResponseGrantTypesItem =
   | "authorization_code"
-  | "refresh_token";
+  | "refresh_token"
+  | (string & {});
 export const OauthClientsGetResponseGrantTypesItem = /*@__PURE__*/ S.String;
 
 export type OauthClientsGetResponseGrantTypesList =
@@ -1357,7 +1385,8 @@ export const OauthClientsGetResponseRedirectUrisList = /*@__PURE__*/ S.Array(
 export type OauthClientsGetResponseResponseTypesItem =
   | "token"
   | "id_token"
-  | "code";
+  | "code"
+  | (string & {});
 export const OauthClientsGetResponseResponseTypesItem = /*@__PURE__*/ S.String;
 
 export type OauthClientsGetResponseResponseTypesList =
@@ -1374,7 +1403,8 @@ export const OauthClientsGetResponseScopesList = /*@__PURE__*/ S.Array(
 export type OauthClientsGetResponseTokenEndpointAuthMethod =
   | "none"
   | "client_secret_basic"
-  | "client_secret_post";
+  | "client_secret_post"
+  | (string & {});
 export const OauthClientsGetResponseTokenEndpointAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -1646,7 +1676,8 @@ export type SsoGetResponseVerificationStatus =
   | "awaiting"
   | "pending"
   | "failed"
-  | "verified";
+  | "verified"
+  | (string & {});
 export const SsoGetResponseVerificationStatus = /*@__PURE__*/ S.String;
 
 export interface SsoGetResponseVerification {
@@ -1715,7 +1746,10 @@ export const GetUserGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUserGroupRequest",
 }) as any as S.Schema<GetUserGroupRequest>;
 
-export type UserGroupsGetResponsePoliciesItemAccess = "allow" | "deny";
+export type UserGroupsGetResponsePoliciesItemAccess =
+  | "allow"
+  | "deny"
+  | (string & {});
 export const UserGroupsGetResponsePoliciesItemAccess = /*@__PURE__*/ S.String;
 
 export interface UserGroupsGetResponsePoliciesItemPermissionGroupsItemMeta {
@@ -1934,7 +1968,10 @@ export const GetUserGroupMemberRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUserGroupMemberRequest",
 }) as any as S.Schema<GetUserGroupMemberRequest>;
 
-export type UserGroupsMembersGetResponseStatus = "accepted" | "pending";
+export type UserGroupsMembersGetResponseStatus =
+  | "accepted"
+  | "pending"
+  | (string & {});
 export const UserGroupsMembersGetResponseStatus = /*@__PURE__*/ S.String;
 
 export interface UserGroupsMembersGetResponseUser {
@@ -2003,7 +2040,10 @@ export const ListOauthClientsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOauthClientsRequest",
 }) as any as S.Schema<ListOauthClientsRequest>;
 
-export type OauthClientsListResultItemVisibility = "public" | "private";
+export type OauthClientsListResultItemVisibility =
+  | "public"
+  | "private"
+  | (string & {});
 export const OauthClientsListResultItemVisibility = /*@__PURE__*/ S.String;
 
 export type OauthClientsListResultItemAllowedCorsOriginsList =
@@ -2017,7 +2057,8 @@ export type OauthClientsListResultItemClientUriVerificationStatus =
   | "pending"
   | "in_progress"
   | "verified"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const OauthClientsListResultItemClientUriVerificationStatus =
   /*@__PURE__*/ S.String;
 
@@ -2039,7 +2080,8 @@ export const OauthClientsListResultItemClientUriVerification =
 
 export type OauthClientsListResultItemGrantTypesItem =
   | "authorization_code"
-  | "refresh_token";
+  | "refresh_token"
+  | (string & {});
 export const OauthClientsListResultItemGrantTypesItem = /*@__PURE__*/ S.String;
 
 export type OauthClientsListResultItemGrantTypesList =
@@ -2063,7 +2105,8 @@ export const OauthClientsListResultItemRedirectUrisList = /*@__PURE__*/ S.Array(
 export type OauthClientsListResultItemResponseTypesItem =
   | "token"
   | "id_token"
-  | "code";
+  | "code"
+  | (string & {});
 export const OauthClientsListResultItemResponseTypesItem =
   /*@__PURE__*/ S.String;
 
@@ -2082,7 +2125,8 @@ export const OauthClientsListResultItemScopesList = /*@__PURE__*/ S.Array(
 export type OauthClientsListResultItemTokenEndpointAuthMethod =
   | "none"
   | "client_secret_basic"
-  | "client_secret_post";
+  | "client_secret_post"
+  | (string & {});
 export const OauthClientsListResultItemTokenEndpointAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -2487,7 +2531,8 @@ export type SsoListResultItemVerificationStatus =
   | "awaiting"
   | "pending"
   | "failed"
-  | "verified";
+  | "verified"
+  | (string & {});
 export const SsoListResultItemVerificationStatus = /*@__PURE__*/ S.String;
 
 export interface SsoListResultItemVerification {
@@ -2554,7 +2599,10 @@ export const ListSsosResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSsosResponse",
 }) as any as S.Schema<ListSsosResponse>;
 
-export type UserGroupsMembersListRequestDirection = "asc" | "desc";
+export type UserGroupsMembersListRequestDirection =
+  | "asc"
+  | "desc"
+  | (string & {});
 export const UserGroupsMembersListRequestDirection = /*@__PURE__*/ S.String;
 
 export interface ListUserGroupMembersRequest {
@@ -2594,7 +2642,10 @@ export const ListUserGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUserGroupMembersRequest",
 }) as any as S.Schema<ListUserGroupMembersRequest>;
 
-export type UserGroupsMembersListResultItemStatus = "accepted" | "pending";
+export type UserGroupsMembersListResultItemStatus =
+  | "accepted"
+  | "pending"
+  | (string & {});
 export const UserGroupsMembersListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface UserGroupsMembersListResultItem {
@@ -2636,7 +2687,7 @@ export const ListUserGroupMembersResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUserGroupMembersResponse",
 }) as any as S.Schema<ListUserGroupMembersResponse>;
 
-export type UserGroupsListRequestDirection = "asc" | "desc";
+export type UserGroupsListRequestDirection = "asc" | "desc" | (string & {});
 export const UserGroupsListRequestDirection = /*@__PURE__*/ S.String;
 
 export interface ListUserGroupsRequest {
@@ -2677,7 +2728,10 @@ export const ListUserGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUserGroupsRequest",
 }) as any as S.Schema<ListUserGroupsRequest>;
 
-export type UserGroupsListResultItemPoliciesItemAccess = "allow" | "deny";
+export type UserGroupsListResultItemPoliciesItemAccess =
+  | "allow"
+  | "deny"
+  | (string & {});
 export const UserGroupsListResultItemPoliciesItemAccess =
   /*@__PURE__*/ S.String;
 
@@ -2903,7 +2957,8 @@ export const OauthClientsUpdateRequestAllowedCorsOriginsList =
 
 export type OauthClientsUpdateRequestGrantTypesItem =
   | "authorization_code"
-  | "refresh_token";
+  | "refresh_token"
+  | (string & {});
 export const OauthClientsUpdateRequestGrantTypesItem = /*@__PURE__*/ S.String;
 
 export type OauthClientsUpdateRequestGrantTypesList =
@@ -2927,7 +2982,8 @@ export const OauthClientsUpdateRequestRedirectUrisList = /*@__PURE__*/ S.Array(
 export type OauthClientsUpdateRequestResponseTypesItem =
   | "token"
   | "id_token"
-  | "code";
+  | "code"
+  | (string & {});
 export const OauthClientsUpdateRequestResponseTypesItem =
   /*@__PURE__*/ S.String;
 
@@ -2945,11 +3001,12 @@ export const OauthClientsUpdateRequestScopesList = /*@__PURE__*/ S.Array(
 export type OauthClientsUpdateRequestTokenEndpointAuthMethod =
   | "none"
   | "client_secret_basic"
-  | "client_secret_post";
+  | "client_secret_post"
+  | (string & {});
 export const OauthClientsUpdateRequestTokenEndpointAuthMethod =
   /*@__PURE__*/ S.String;
 
-export type OauthClientsUpdateRequestVisibility = "public";
+export type OauthClientsUpdateRequestVisibility = "public" | (string & {});
 export const OauthClientsUpdateRequestVisibility = /*@__PURE__*/ S.String;
 
 export interface PatchOauthClientRequest {
@@ -3032,7 +3089,10 @@ export const PatchOauthClientRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchOauthClientRequest",
 }) as any as S.Schema<PatchOauthClientRequest>;
 
-export type OauthClientsUpdateResponseVisibility = "public" | "private";
+export type OauthClientsUpdateResponseVisibility =
+  | "public"
+  | "private"
+  | (string & {});
 export const OauthClientsUpdateResponseVisibility = /*@__PURE__*/ S.String;
 
 export type OauthClientsUpdateResponseAllowedCorsOriginsList =
@@ -3046,7 +3106,8 @@ export type OauthClientsUpdateResponseClientUriVerificationStatus =
   | "pending"
   | "in_progress"
   | "verified"
-  | "failed";
+  | "failed"
+  | (string & {});
 export const OauthClientsUpdateResponseClientUriVerificationStatus =
   /*@__PURE__*/ S.String;
 
@@ -3068,7 +3129,8 @@ export const OauthClientsUpdateResponseClientUriVerification =
 
 export type OauthClientsUpdateResponseGrantTypesItem =
   | "authorization_code"
-  | "refresh_token";
+  | "refresh_token"
+  | (string & {});
 export const OauthClientsUpdateResponseGrantTypesItem = /*@__PURE__*/ S.String;
 
 export type OauthClientsUpdateResponseGrantTypesList =
@@ -3092,7 +3154,8 @@ export const OauthClientsUpdateResponseRedirectUrisList = /*@__PURE__*/ S.Array(
 export type OauthClientsUpdateResponseResponseTypesItem =
   | "token"
   | "id_token"
-  | "code";
+  | "code"
+  | (string & {});
 export const OauthClientsUpdateResponseResponseTypesItem =
   /*@__PURE__*/ S.String;
 
@@ -3111,7 +3174,8 @@ export const OauthClientsUpdateResponseScopesList = /*@__PURE__*/ S.Array(
 export type OauthClientsUpdateResponseTokenEndpointAuthMethod =
   | "none"
   | "client_secret_basic"
-  | "client_secret_post";
+  | "client_secret_post"
+  | (string & {});
 export const OauthClientsUpdateResponseTokenEndpointAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -3241,7 +3305,8 @@ export type SsoUpdateResponseVerificationStatus =
   | "awaiting"
   | "pending"
   | "failed"
-  | "verified";
+  | "verified"
+  | (string & {});
 export const SsoUpdateResponseVerificationStatus = /*@__PURE__*/ S.String;
 
 export interface SsoUpdateResponseVerification {
@@ -3466,7 +3531,10 @@ export const UpdateResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResourceGroupResponse",
 }) as any as S.Schema<UpdateResourceGroupResponse>;
 
-export type UserGroupsUpdateRequestPoliciesItemAccess = "allow" | "deny";
+export type UserGroupsUpdateRequestPoliciesItemAccess =
+  | "allow"
+  | "deny"
+  | (string & {});
 export const UserGroupsUpdateRequestPoliciesItemAccess = /*@__PURE__*/ S.String;
 
 export interface UserGroupsUpdateRequestPoliciesItemPermissionGroupsItem {
@@ -3570,7 +3638,10 @@ export const UpdateUserGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateUserGroupRequest",
 }) as any as S.Schema<UpdateUserGroupRequest>;
 
-export type UserGroupsUpdateResponsePoliciesItemAccess = "allow" | "deny";
+export type UserGroupsUpdateResponsePoliciesItemAccess =
+  | "allow"
+  | "deny"
+  | (string & {});
 export const UserGroupsUpdateResponsePoliciesItemAccess =
   /*@__PURE__*/ S.String;
 
@@ -3813,7 +3884,10 @@ export const UpdateUserGroupMemberRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateUserGroupMemberRequest",
 }) as any as S.Schema<UpdateUserGroupMemberRequest>;
 
-export type UserGroupsMembersUpdateResultItemStatus = "accepted" | "pending";
+export type UserGroupsMembersUpdateResultItemStatus =
+  | "accepted"
+  | "pending"
+  | (string & {});
 export const UserGroupsMembersUpdateResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface UserGroupsMembersUpdateResultItem {

@@ -165,7 +165,8 @@ export type ConfiguredInsightOrganizationsLocationsInsightsAggregationEnum =
   | "DAILY"
   | "WEEKLY"
   | "MONTHLY"
-  | "CUSTOM_DATE_RANGE";
+  | "CUSTOM_DATE_RANGE"
+  | (string & {});
 export const ConfiguredInsightOrganizationsLocationsInsightsAggregationEnum =
   /*@__PURE__*/ S.String;
 
@@ -301,7 +302,8 @@ export type GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfigAggrega
     | "DAILY"
     | "WEEKLY"
     | "MONTHLY"
-    | "CUSTOM_DATE_RANGE";
+    | "CUSTOM_DATE_RANGE"
+    | (string & {});
 export const GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfigAggregationEnum =
   /*@__PURE__*/ S.String;
 
@@ -367,7 +369,8 @@ export type ConfiguredInsightProjectsLocationsInsightsAggregationEnum =
   | "DAILY"
   | "WEEKLY"
   | "MONTHLY"
-  | "CUSTOM_DATE_RANGE";
+  | "CUSTOM_DATE_RANGE"
+  | (string & {});
 export const ConfiguredInsightProjectsLocationsInsightsAggregationEnum =
   /*@__PURE__*/ S.String;
 
@@ -422,22 +425,26 @@ export const ConfiguredInsightProjectsLocationsInsightsRequest =
   }) as any as S.Schema<ConfiguredInsightProjectsLocationsInsightsRequest>;
 
 export type GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscriptionStateEnum =
-  "STATE_UNSPECIFIED" | "ACTIVE" | "INACTIVE" | "COMPLETED";
+  "STATE_UNSPECIFIED" | "ACTIVE" | "INACTIVE" | "COMPLETED" | (string & {});
 export const GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscriptionStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscriptionSkuEnum =
-  "SKU_UNSPECIFIED" | "BCE_STANDARD_SKU";
+  "SKU_UNSPECIFIED" | "BCE_STANDARD_SKU" | (string & {});
 export const GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscriptionSkuEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscriptionSubscriberTypeEnum =
-  "SUBSCRIBER_TYPE_UNSPECIFIED" | "ONLINE" | "OFFLINE" | "CEP_TRIAL";
+    | "SUBSCRIBER_TYPE_UNSPECIFIED"
+    | "ONLINE"
+    | "OFFLINE"
+    | "CEP_TRIAL"
+    | (string & {});
 export const GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscriptionSubscriberTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscriptionTypeEnum =
-  "TYPE_UNSPECIFIED" | "TRIAL" | "PAID" | "ALLOWLIST";
+  "TYPE_UNSPECIFIED" | "TRIAL" | "PAID" | "ALLOWLIST" | (string & {});
 export const GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscriptionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -535,18 +542,20 @@ export type GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionStateEnum =
   | "CREATED"
   | "UPDATING"
   | "DELETING"
-  | "DOWN";
+  | "DOWN"
+  | (string & {});
 export const GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionTypeEnum =
   | "TYPE_UNSPECIFIED"
-  | "TCP_PROXY";
+  | "TCP_PROXY"
+  | (string & {});
 export const GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeEnum =
-  "TYPE_UNSPECIFIED" | "GCP_REGIONAL_MIG";
+  "TYPE_UNSPECIFIED" | "GCP_REGIONAL_MIG" | (string & {});
 export const GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -751,7 +760,8 @@ export type GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorStateEnum =
   | "CREATED"
   | "UPDATING"
   | "DELETING"
-  | "DOWN";
+  | "DOWN"
+  | (string & {});
 export const GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -792,7 +802,8 @@ export type GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusEnum =
   | "HEALTHY"
   | "UNHEALTHY"
   | "UNRESPONSIVE"
-  | "DEGRADED";
+  | "DEGRADED"
+  | (string & {});
 export const GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -935,10 +946,14 @@ export const AllocatedConnectionList = /*@__PURE__*/ S.Array(
 
 export type AppGatewayHostTypeEnum =
   | "HOST_TYPE_UNSPECIFIED"
-  | "GCP_REGIONAL_MIG";
+  | "GCP_REGIONAL_MIG"
+  | (string & {});
 export const AppGatewayHostTypeEnum = /*@__PURE__*/ S.String;
 
-export type AppGatewayTypeEnum = "TYPE_UNSPECIFIED" | "TCP_PROXY";
+export type AppGatewayTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "TCP_PROXY"
+  | (string & {});
 export const AppGatewayTypeEnum = /*@__PURE__*/ S.String;
 
 export type AppGatewayStateEnum =
@@ -947,7 +962,8 @@ export type AppGatewayStateEnum =
   | "CREATED"
   | "UPDATING"
   | "DELETING"
-  | "DOWN";
+  | "DOWN"
+  | (string & {});
 export const AppGatewayStateEnum = /*@__PURE__*/ S.String;
 
 /** A BeyondCorp AppGateway resource represents a BeyondCorp protected AppGateway to a remote application. It creates all the necessary GCP components needed for creating a BeyondCorp protected AppGateway. Multiple connectors can be authorised for a single AppGateway. */
@@ -1050,10 +1066,14 @@ export type ConnectionStateEnum =
   | "CREATED"
   | "UPDATING"
   | "DELETING"
-  | "DOWN";
+  | "DOWN"
+  | (string & {});
 export const ConnectionStateEnum = /*@__PURE__*/ S.String;
 
-export type GatewayTypeEnum = "TYPE_UNSPECIFIED" | "GCP_REGIONAL_MIG";
+export type GatewayTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "GCP_REGIONAL_MIG"
+  | (string & {});
 export const GatewayTypeEnum = /*@__PURE__*/ S.String;
 
 /** Gateway represents a user facing component that serves as an entrance to enable connectivity. */
@@ -1073,7 +1093,10 @@ export const Gateway = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Gateway" }) as any as S.Schema<Gateway>;
 
-export type ConnectionTypeEnum = "TYPE_UNSPECIFIED" | "TCP_PROXY";
+export type ConnectionTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "TCP_PROXY"
+  | (string & {});
 export const ConnectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** A BeyondCorp Connection resource represents a BeyondCorp protected connection to a remote application. It creates all the necessary GCP components needed for creating a BeyondCorp protected connection. Multiple connectors can be authorised for a single Connection. */
@@ -1153,7 +1176,8 @@ export type ResourceInfoStatusEnum =
   | "HEALTHY"
   | "UNHEALTHY"
   | "UNRESPONSIVE"
-  | "DEGRADED";
+  | "DEGRADED"
+  | (string & {});
 export const ResourceInfoStatusEnum = /*@__PURE__*/ S.String;
 
 export type ResourceInfoList = ReadonlyArray<ResourceInfo>;
@@ -1190,7 +1214,8 @@ export type ConnectorStateEnum =
   | "CREATED"
   | "UPDATING"
   | "DELETING"
-  | "DOWN";
+  | "DOWN"
+  | (string & {});
 export const ConnectorStateEnum = /*@__PURE__*/ S.String;
 
 /** ServiceAccount represents a GCP service account. */
@@ -1289,12 +1314,12 @@ export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaLoggingConfig =
   }) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaLoggingConfig>;
 
 export type GoogleCloudBeyondcorpSecuritygatewaysV1alphaProxyProtocolConfigGatewayIdentityEnum =
-  "GATEWAY_IDENTITY_UNSPECIFIED" | "RESOURCE_NAME";
+  "GATEWAY_IDENTITY_UNSPECIFIED" | "RESOURCE_NAME" | (string & {});
 export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaProxyProtocolConfigGatewayIdentityEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedUserInfoOutputTypeEnum =
-  "OUTPUT_TYPE_UNSPECIFIED" | "PROTOBUF" | "JSON" | "NONE";
+  "OUTPUT_TYPE_UNSPECIFIED" | "PROTOBUF" | "JSON" | "NONE" | (string & {});
 export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedUserInfoOutputTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1316,7 +1341,7 @@ export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelega
   }) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedUserInfo>;
 
 export type GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedGroupInfoOutputTypeEnum =
-  "OUTPUT_TYPE_UNSPECIFIED" | "PROTOBUF" | "JSON" | "NONE";
+  "OUTPUT_TYPE_UNSPECIFIED" | "PROTOBUF" | "JSON" | "NONE" | (string & {});
 export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedGroupInfoOutputTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1338,12 +1363,12 @@ export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelega
   }) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedGroupInfo>;
 
 export type GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersOutputTypeEnum =
-  "OUTPUT_TYPE_UNSPECIFIED" | "PROTOBUF" | "JSON" | "NONE";
+  "OUTPUT_TYPE_UNSPECIFIED" | "PROTOBUF" | "JSON" | "NONE" | (string & {});
 export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersOutputTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDeviceInfoOutputTypeEnum =
-  "OUTPUT_TYPE_UNSPECIFIED" | "PROTOBUF" | "JSON" | "NONE";
+  "OUTPUT_TYPE_UNSPECIFIED" | "PROTOBUF" | "JSON" | "NONE" | (string & {});
 export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDeviceInfoOutputTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1433,7 +1458,8 @@ export type GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayStateEnum
     | "DELETING"
     | "RUNNING"
     | "DOWN"
-    | "ERROR";
+    | "ERROR"
+    | (string & {});
 export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1611,7 +1637,8 @@ export const CreateProjectsLocationsSecurityGatewaysRequest =
 export type GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationSchemaEnum =
   | "SCHEMA_UNSPECIFIED"
   | "PROXY_GATEWAY"
-  | "API_GATEWAY";
+  | "API_GATEWAY"
+  | (string & {});
 export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationSchemaEnum =
   /*@__PURE__*/ S.String;
 
@@ -2106,7 +2133,8 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -2354,7 +2382,8 @@ export const GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest =
 export type GetOrganizationsLocationsInsightsViewEnum =
   | "INSIGHT_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetOrganizationsLocationsInsightsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetOrganizationsLocationsInsightsRequest {
@@ -2424,7 +2453,8 @@ export type GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadataAggre
     | "DAILY"
     | "WEEKLY"
     | "MONTHLY"
-    | "CUSTOM_DATE_RANGE";
+    | "CUSTOM_DATE_RANGE"
+    | (string & {});
 export const GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadataAggregationsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -2678,7 +2708,8 @@ export const GetProjectsLocationsConnectorsRequest = /*@__PURE__*/ S.suspend(
 export type GetProjectsLocationsInsightsViewEnum =
   | "INSIGHT_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const GetProjectsLocationsInsightsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsInsightsRequest {
@@ -2765,14 +2796,16 @@ export type ListOrganizationsLocationsInsightsAggregationEnum =
   | "DAILY"
   | "WEEKLY"
   | "MONTHLY"
-  | "CUSTOM_DATE_RANGE";
+  | "CUSTOM_DATE_RANGE"
+  | (string & {});
 export const ListOrganizationsLocationsInsightsAggregationEnum =
   /*@__PURE__*/ S.String;
 
 export type ListOrganizationsLocationsInsightsViewEnum =
   | "INSIGHT_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListOrganizationsLocationsInsightsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3302,7 +3335,8 @@ export const ListConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsInsightsViewEnum =
   | "INSIGHT_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL";
+  | "FULL"
+  | (string & {});
 export const ListProjectsLocationsInsightsViewEnum = /*@__PURE__*/ S.String;
 
 export type ListProjectsLocationsInsightsAggregationEnum =
@@ -3311,7 +3345,8 @@ export type ListProjectsLocationsInsightsAggregationEnum =
   | "DAILY"
   | "WEEKLY"
   | "MONTHLY"
-  | "CUSTOM_DATE_RANGE";
+  | "CUSTOM_DATE_RANGE"
+  | (string & {});
 export const ListProjectsLocationsInsightsAggregationEnum =
   /*@__PURE__*/ S.String;
 

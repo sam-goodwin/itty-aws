@@ -88,7 +88,8 @@ export class PolicyQuotaExceeded extends T.applyErrorMatchers(
 export type PoliciesCreateRequestAction =
   | "allow"
   | "log"
-  | "add_reporting_directives";
+  | "add_reporting_directives"
+  | (string & {});
 export const PoliciesCreateRequestAction = /*@__PURE__*/ S.String;
 
 export interface CreatePolicyRequest {
@@ -129,7 +130,8 @@ export const CreatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export type PoliciesCreateResponseAction =
   | "allow"
   | "log"
-  | "add_reporting_directives";
+  | "add_reporting_directives"
+  | (string & {});
 export const PoliciesCreateResponseAction = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -306,7 +308,7 @@ export const GetCookyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCookyRequest",
 }) as any as S.Schema<GetCookyRequest>;
 
-export type CookiesGetResponseType = "first_party" | "unknown";
+export type CookiesGetResponseType = "first_party" | "unknown" | (string & {});
 export const CookiesGetResponseType = /*@__PURE__*/ S.String;
 
 export type CookiesGetResponsePageUrlsList = ReadonlyArray<string>;
@@ -314,7 +316,11 @@ export const CookiesGetResponsePageUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CookiesGetResponsePageUrlsList>;
 
-export type CookiesGetResponseSameSiteAttribute = "lax" | "strict" | "none";
+export type CookiesGetResponseSameSiteAttribute =
+  | "lax"
+  | "strict"
+  | "none"
+  | (string & {});
 export const CookiesGetResponseSameSiteAttribute = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -428,7 +434,8 @@ export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export type PoliciesGetResponseAction =
   | "allow"
   | "log"
-  | "add_reporting_directives";
+  | "add_reporting_directives"
+  | (string & {});
 export const PoliciesGetResponseAction = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -617,13 +624,16 @@ export const GetScriptResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetScriptResponse",
 }) as any as S.Schema<GetScriptResponse>;
 
-export type ConnectionsListRequestDirection = "asc" | "desc";
+export type ConnectionsListRequestDirection = "asc" | "desc" | (string & {});
 export const ConnectionsListRequestDirection = /*@__PURE__*/ S.String;
 
-export type ConnectionsListRequestExport = "csv";
+export type ConnectionsListRequestExport = "csv" | (string & {});
 export const ConnectionsListRequestExport = /*@__PURE__*/ S.String;
 
-export type ConnectionsListRequestOrderBy = "first_seen_at" | "last_seen_at";
+export type ConnectionsListRequestOrderBy =
+  | "first_seen_at"
+  | "last_seen_at"
+  | (string & {});
 export const ConnectionsListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface ListConnectionsRequest {
@@ -776,19 +786,26 @@ export const ListConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListConnectionsResponse",
 }) as any as S.Schema<ListConnectionsResponse>;
 
-export type CookiesListRequestDirection = "asc" | "desc";
+export type CookiesListRequestDirection = "asc" | "desc" | (string & {});
 export const CookiesListRequestDirection = /*@__PURE__*/ S.String;
 
-export type CookiesListRequestExport = "csv";
+export type CookiesListRequestExport = "csv" | (string & {});
 export const CookiesListRequestExport = /*@__PURE__*/ S.String;
 
-export type CookiesListRequestOrderBy = "first_seen_at" | "last_seen_at";
+export type CookiesListRequestOrderBy =
+  | "first_seen_at"
+  | "last_seen_at"
+  | (string & {});
 export const CookiesListRequestOrderBy = /*@__PURE__*/ S.String;
 
-export type CookiesListRequestSameSite = "lax" | "strict" | "none";
+export type CookiesListRequestSameSite =
+  | "lax"
+  | "strict"
+  | "none"
+  | (string & {});
 export const CookiesListRequestSameSite = /*@__PURE__*/ S.String;
 
-export type CookiesListRequestType = "first_party" | "unknown";
+export type CookiesListRequestType = "first_party" | "unknown" | (string & {});
 export const CookiesListRequestType = /*@__PURE__*/ S.String;
 
 export interface ListCookiesRequest {
@@ -853,7 +870,10 @@ export const ListCookiesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCookiesRequest",
 }) as any as S.Schema<ListCookiesRequest>;
 
-export type CookiesListResultItemType = "first_party" | "unknown";
+export type CookiesListResultItemType =
+  | "first_party"
+  | "unknown"
+  | (string & {});
 export const CookiesListResultItemType = /*@__PURE__*/ S.String;
 
 export type CookiesListResultItemPageUrlsList = ReadonlyArray<string>;
@@ -861,7 +881,11 @@ export const CookiesListResultItemPageUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CookiesListResultItemPageUrlsList>;
 
-export type CookiesListResultItemSameSiteAttribute = "lax" | "strict" | "none";
+export type CookiesListResultItemSameSiteAttribute =
+  | "lax"
+  | "strict"
+  | "none"
+  | (string & {});
 export const CookiesListResultItemSameSiteAttribute = /*@__PURE__*/ S.String;
 
 export interface CookiesListResultItem {
@@ -953,7 +977,8 @@ export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 export type PoliciesListResultItemAction =
   | "allow"
   | "log"
-  | "add_reporting_directives";
+  | "add_reporting_directives"
+  | (string & {});
 export const PoliciesListResultItemAction = /*@__PURE__*/ S.String;
 
 export interface PoliciesListResultItem {
@@ -1003,13 +1028,16 @@ export const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPoliciesResponse",
 }) as any as S.Schema<ListPoliciesResponse>;
 
-export type ScriptsListRequestDirection = "asc" | "desc";
+export type ScriptsListRequestDirection = "asc" | "desc" | (string & {});
 export const ScriptsListRequestDirection = /*@__PURE__*/ S.String;
 
-export type ScriptsListRequestExport = "csv";
+export type ScriptsListRequestExport = "csv" | (string & {});
 export const ScriptsListRequestExport = /*@__PURE__*/ S.String;
 
-export type ScriptsListRequestOrderBy = "first_seen_at" | "last_seen_at";
+export type ScriptsListRequestOrderBy =
+  | "first_seen_at"
+  | "last_seen_at"
+  | (string & {});
 export const ScriptsListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface ListScriptsRequest {
@@ -1244,7 +1272,8 @@ export const PutPageShieldResponse = /*@__PURE__*/ S.suspend(() =>
 export type PoliciesUpdateRequestAction =
   | "allow"
   | "log"
-  | "add_reporting_directives";
+  | "add_reporting_directives"
+  | (string & {});
 export const PoliciesUpdateRequestAction = /*@__PURE__*/ S.String;
 
 export interface UpdatePolicyRequest {
@@ -1288,7 +1317,8 @@ export const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export type PoliciesUpdateResponseAction =
   | "allow"
   | "log"
-  | "add_reporting_directives";
+  | "add_reporting_directives"
+  | (string & {});
 export const PoliciesUpdateResponseAction = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

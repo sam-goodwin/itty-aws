@@ -263,7 +263,8 @@ export type ComposeObjectsDestinationPredefinedAclEnum =
   | "bucketOwnerRead"
   | "private"
   | "projectPrivate"
-  | "publicRead";
+  | "publicRead"
+  | (string & {});
 export const ComposeObjectsDestinationPredefinedAclEnum =
   /*@__PURE__*/ S.String;
 
@@ -657,10 +658,11 @@ export type CopyObjectsDestinationPredefinedAclEnum =
   | "bucketOwnerRead"
   | "private"
   | "projectPrivate"
-  | "publicRead";
+  | "publicRead"
+  | (string & {});
 export const CopyObjectsDestinationPredefinedAclEnum = /*@__PURE__*/ S.String;
 
-export type CopyObjectsProjectionEnum = "full" | "noAcl";
+export type CopyObjectsProjectionEnum = "full" | "noAcl" | (string & {});
 export const CopyObjectsProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface CopyObjectsRequest {
@@ -1325,7 +1327,7 @@ export const BucketAccessControl = /*@__PURE__*/ S.suspend(() =>
   identifier: "BucketAccessControl",
 }) as any as S.Schema<BucketAccessControl>;
 
-export type GetBucketsProjectionEnum = "full" | "noAcl";
+export type GetBucketsProjectionEnum = "full" | "noAcl" | (string & {});
 export const GetBucketsProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface GetBucketsRequest {
@@ -1416,7 +1418,7 @@ export const BucketCustomPlacementConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BucketCustomPlacementConfig>;
 
 export type BucketEncryptionGoogleManagedEncryptionEnforcementConfigRestrictionModeEnum =
-  "NotRestricted" | "FullyRestricted";
+  "NotRestricted" | "FullyRestricted" | (string & {});
 export const BucketEncryptionGoogleManagedEncryptionEnforcementConfigRestrictionModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1439,7 +1441,7 @@ export const BucketEncryptionGoogleManagedEncryptionEnforcementConfig =
   }) as any as S.Schema<BucketEncryptionGoogleManagedEncryptionEnforcementConfig>;
 
 export type BucketEncryptionCustomerManagedEncryptionEnforcementConfigRestrictionModeEnum =
-  "NotRestricted" | "FullyRestricted";
+  "NotRestricted" | "FullyRestricted" | (string & {});
 export const BucketEncryptionCustomerManagedEncryptionEnforcementConfigRestrictionModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1462,7 +1464,7 @@ export const BucketEncryptionCustomerManagedEncryptionEnforcementConfig =
   }) as any as S.Schema<BucketEncryptionCustomerManagedEncryptionEnforcementConfig>;
 
 export type BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigRestrictionModeEnum =
-  "NotRestricted" | "FullyRestricted";
+  "NotRestricted" | "FullyRestricted" | (string & {});
 export const BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigRestrictionModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2359,7 +2361,7 @@ export const GetObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetObjectAccessControlsRequest",
 }) as any as S.Schema<GetObjectAccessControlsRequest>;
 
-export type GetObjectsProjectionEnum = "full" | "noAcl";
+export type GetObjectsProjectionEnum = "full" | "noAcl" | (string & {});
 export const GetObjectsProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface GetObjectsRequest {
@@ -2615,7 +2617,8 @@ export type InsertBucketsPredefinedAclEnum =
   | "private"
   | "projectPrivate"
   | "publicRead"
-  | "publicReadWrite";
+  | "publicReadWrite"
+  | (string & {});
 export const InsertBucketsPredefinedAclEnum = /*@__PURE__*/ S.String;
 
 export type InsertBucketsPredefinedDefaultObjectAclEnum =
@@ -2624,11 +2627,12 @@ export type InsertBucketsPredefinedDefaultObjectAclEnum =
   | "bucketOwnerRead"
   | "private"
   | "projectPrivate"
-  | "publicRead";
+  | "publicRead"
+  | (string & {});
 export const InsertBucketsPredefinedDefaultObjectAclEnum =
   /*@__PURE__*/ S.String;
 
-export type InsertBucketsProjectionEnum = "full" | "noAcl";
+export type InsertBucketsProjectionEnum = "full" | "noAcl" | (string & {});
 export const InsertBucketsProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface InsertBucketsRequest {
@@ -2799,10 +2803,11 @@ export type InsertObjectsPredefinedAclEnum =
   | "bucketOwnerRead"
   | "private"
   | "projectPrivate"
-  | "publicRead";
+  | "publicRead"
+  | (string & {});
 export const InsertObjectsPredefinedAclEnum = /*@__PURE__*/ S.String;
 
-export type InsertObjectsProjectionEnum = "full" | "noAcl";
+export type InsertObjectsProjectionEnum = "full" | "noAcl" | (string & {});
 export const InsertObjectsProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface InsertObjectsRequest {
@@ -2939,7 +2944,7 @@ export const BucketAccessControls = /*@__PURE__*/ S.suspend(() =>
   identifier: "BucketAccessControls",
 }) as any as S.Schema<BucketAccessControls>;
 
-export type ListBucketsProjectionEnum = "full" | "noAcl";
+export type ListBucketsProjectionEnum = "full" | "noAcl" | (string & {});
 export const ListBucketsProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface ListBucketsRequest {
@@ -3224,7 +3229,7 @@ export const ListObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListObjectAccessControlsRequest",
 }) as any as S.Schema<ListObjectAccessControlsRequest>;
 
-export type ListObjectsProjectionEnum = "full" | "noAcl";
+export type ListObjectsProjectionEnum = "full" | "noAcl" | (string & {});
 export const ListObjectsProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface ListObjectsRequest {
@@ -3446,7 +3451,7 @@ export const LockRetentionPolicyBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LockRetentionPolicyBucketsRequest",
 }) as any as S.Schema<LockRetentionPolicyBucketsRequest>;
 
-export type MoveObjectsProjectionEnum = "full" | "noAcl";
+export type MoveObjectsProjectionEnum = "full" | "noAcl" | (string & {});
 export const MoveObjectsProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface MoveObjectsRequest {
@@ -3535,7 +3540,8 @@ export type PatchBucketsPredefinedAclEnum =
   | "private"
   | "projectPrivate"
   | "publicRead"
-  | "publicReadWrite";
+  | "publicReadWrite"
+  | (string & {});
 export const PatchBucketsPredefinedAclEnum = /*@__PURE__*/ S.String;
 
 export type PatchBucketsPredefinedDefaultObjectAclEnum =
@@ -3544,11 +3550,12 @@ export type PatchBucketsPredefinedDefaultObjectAclEnum =
   | "bucketOwnerRead"
   | "private"
   | "projectPrivate"
-  | "publicRead";
+  | "publicRead"
+  | (string & {});
 export const PatchBucketsPredefinedDefaultObjectAclEnum =
   /*@__PURE__*/ S.String;
 
-export type PatchBucketsProjectionEnum = "full" | "noAcl";
+export type PatchBucketsProjectionEnum = "full" | "noAcl" | (string & {});
 export const PatchBucketsProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface PatchBucketsRequest {
@@ -3659,10 +3666,11 @@ export type PatchObjectsPredefinedAclEnum =
   | "bucketOwnerRead"
   | "private"
   | "projectPrivate"
-  | "publicRead";
+  | "publicRead"
+  | (string & {});
 export const PatchObjectsPredefinedAclEnum = /*@__PURE__*/ S.String;
 
-export type PatchObjectsProjectionEnum = "full" | "noAcl";
+export type PatchObjectsProjectionEnum = "full" | "noAcl" | (string & {});
 export const PatchObjectsProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface PatchObjectsRequest {
@@ -3825,7 +3833,7 @@ export const RenameFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RenameFoldersRequest",
 }) as any as S.Schema<RenameFoldersRequest>;
 
-export type RestoreBucketsProjectionEnum = "full" | "noAcl";
+export type RestoreBucketsProjectionEnum = "full" | "noAcl" | (string & {});
 export const RestoreBucketsProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface RestoreBucketsRequest {
@@ -3855,7 +3863,7 @@ export const RestoreBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RestoreBucketsRequest",
 }) as any as S.Schema<RestoreBucketsRequest>;
 
-export type RestoreObjectsProjectionEnum = "full" | "noAcl";
+export type RestoreObjectsProjectionEnum = "full" | "noAcl" | (string & {});
 export const RestoreObjectsProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface RestoreObjectsRequest {
@@ -3933,11 +3941,12 @@ export type RewriteObjectsDestinationPredefinedAclEnum =
   | "bucketOwnerRead"
   | "private"
   | "projectPrivate"
-  | "publicRead";
+  | "publicRead"
+  | (string & {});
 export const RewriteObjectsDestinationPredefinedAclEnum =
   /*@__PURE__*/ S.String;
 
-export type RewriteObjectsProjectionEnum = "full" | "noAcl";
+export type RewriteObjectsProjectionEnum = "full" | "noAcl" | (string & {});
 export const RewriteObjectsProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface RewriteObjectsRequest {
@@ -4346,7 +4355,8 @@ export type UpdateBucketsPredefinedAclEnum =
   | "private"
   | "projectPrivate"
   | "publicRead"
-  | "publicReadWrite";
+  | "publicReadWrite"
+  | (string & {});
 export const UpdateBucketsPredefinedAclEnum = /*@__PURE__*/ S.String;
 
 export type UpdateBucketsPredefinedDefaultObjectAclEnum =
@@ -4355,11 +4365,12 @@ export type UpdateBucketsPredefinedDefaultObjectAclEnum =
   | "bucketOwnerRead"
   | "private"
   | "projectPrivate"
-  | "publicRead";
+  | "publicRead"
+  | (string & {});
 export const UpdateBucketsPredefinedDefaultObjectAclEnum =
   /*@__PURE__*/ S.String;
 
-export type UpdateBucketsProjectionEnum = "full" | "noAcl";
+export type UpdateBucketsProjectionEnum = "full" | "noAcl" | (string & {});
 export const UpdateBucketsProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface UpdateBucketsRequest {
@@ -4470,10 +4481,11 @@ export type UpdateObjectsPredefinedAclEnum =
   | "bucketOwnerRead"
   | "private"
   | "projectPrivate"
-  | "publicRead";
+  | "publicRead"
+  | (string & {});
 export const UpdateObjectsPredefinedAclEnum = /*@__PURE__*/ S.String;
 
-export type UpdateObjectsProjectionEnum = "full" | "noAcl";
+export type UpdateObjectsProjectionEnum = "full" | "noAcl" | (string & {});
 export const UpdateObjectsProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface UpdateObjectsRequest {

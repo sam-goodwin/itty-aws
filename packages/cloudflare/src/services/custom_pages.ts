@@ -297,7 +297,8 @@ export type GetForAccountRequestIdentifier =
   | "ratelimit_block"
   | "under_attack"
   | "waf_block"
-  | "waf_challenge";
+  | "waf_challenge"
+  | (string & {});
 export const GetForAccountRequestIdentifier = /*@__PURE__*/ S.String;
 
 export interface GetCustomPageForAccountRequest {
@@ -328,7 +329,10 @@ export const GetForAccountResponseRequiredTokensList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetForAccountResponseRequiredTokensList>;
 
-export type GetForAccountResponseState = "default" | "customized";
+export type GetForAccountResponseState =
+  | "default"
+  | "customized"
+  | (string & {});
 export const GetForAccountResponseState = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -371,7 +375,8 @@ export type GetForZoneRequestIdentifier =
   | "ratelimit_block"
   | "under_attack"
   | "waf_block"
-  | "waf_challenge";
+  | "waf_challenge"
+  | (string & {});
 export const GetForZoneRequestIdentifier = /*@__PURE__*/ S.String;
 
 export interface GetCustomPageForZoneRequest {
@@ -402,7 +407,7 @@ export const GetForZoneResponseRequiredTokensList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetForZoneResponseRequiredTokensList>;
 
-export type GetForZoneResponseState = "default" | "customized";
+export type GetForZoneResponseState = "default" | "customized" | (string & {});
 export const GetForZoneResponseState = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -596,7 +601,10 @@ export const ListForAccountResultItemRequiredTokensList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListForAccountResultItemRequiredTokensList>;
 
-export type ListForAccountResultItemState = "default" | "customized";
+export type ListForAccountResultItemState =
+  | "default"
+  | "customized"
+  | (string & {});
 export const ListForAccountResultItemState = /*@__PURE__*/ S.String;
 
 export interface ListForAccountResultItem {
@@ -675,7 +683,10 @@ export const ListForZoneResultItemRequiredTokensList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListForZoneResultItemRequiredTokensList>;
 
-export type ListForZoneResultItemState = "default" | "customized";
+export type ListForZoneResultItemState =
+  | "default"
+  | "customized"
+  | (string & {});
 export const ListForZoneResultItemState = /*@__PURE__*/ S.String;
 
 export interface ListForZoneResultItem {
@@ -737,10 +748,14 @@ export type UpdateForAccountRequestIdentifier =
   | "ratelimit_block"
   | "under_attack"
   | "waf_block"
-  | "waf_challenge";
+  | "waf_challenge"
+  | (string & {});
 export const UpdateForAccountRequestIdentifier = /*@__PURE__*/ S.String;
 
-export type UpdateForAccountRequestState = "default" | "customized";
+export type UpdateForAccountRequestState =
+  | "default"
+  | "customized"
+  | (string & {});
 export const UpdateForAccountRequestState = /*@__PURE__*/ S.String;
 
 export interface PutCustomPageForAccountRequest {
@@ -777,7 +792,10 @@ export const UpdateForAccountResponseRequiredTokensList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateForAccountResponseRequiredTokensList>;
 
-export type UpdateForAccountResponseState = "default" | "customized";
+export type UpdateForAccountResponseState =
+  | "default"
+  | "customized"
+  | (string & {});
 export const UpdateForAccountResponseState = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -822,10 +840,14 @@ export type UpdateForZoneRequestIdentifier =
   | "ratelimit_block"
   | "under_attack"
   | "waf_block"
-  | "waf_challenge";
+  | "waf_challenge"
+  | (string & {});
 export const UpdateForZoneRequestIdentifier = /*@__PURE__*/ S.String;
 
-export type UpdateForZoneRequestState = "default" | "customized";
+export type UpdateForZoneRequestState =
+  | "default"
+  | "customized"
+  | (string & {});
 export const UpdateForZoneRequestState = /*@__PURE__*/ S.String;
 
 export interface PutCustomPageForZoneRequest {
@@ -862,7 +884,10 @@ export const UpdateForZoneResponseRequiredTokensList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateForZoneResponseRequiredTokensList>;
 
-export type UpdateForZoneResponseState = "default" | "customized";
+export type UpdateForZoneResponseState =
+  | "default"
+  | "customized"
+  | (string & {});
 export const UpdateForZoneResponseState = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

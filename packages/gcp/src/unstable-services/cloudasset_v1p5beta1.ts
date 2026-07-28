@@ -46,7 +46,8 @@ export type ListAssetsContentTypeEnum =
   | "RESOURCE"
   | "IAM_POLICY"
   | "ORG_POLICY"
-  | "ACCESS_POLICY";
+  | "ACCESS_POLICY"
+  | (string & {});
 export const ListAssetsContentTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ListAssetsRequest {
@@ -160,7 +161,8 @@ export type GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionSta
     | "ENCRYPTION_UNSPECIFIED"
     | "ENCRYPTION_UNSUPPORTED"
     | "UNENCRYPTED"
-    | "ENCRYPTED";
+    | "ENCRYPTED"
+    | (string & {});
 export const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -172,7 +174,7 @@ export const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionSt
   ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnumList>;
 
 export type GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnum =
-  "MANAGEMENT_UNSPECIFIED" | "NONE" | "BASIC" | "COMPLETE";
+  "MANAGEMENT_UNSPECIFIED" | "NONE" | "BASIC" | "COMPLETE" | (string & {});
 export const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -190,7 +192,8 @@ export type GoogleIdentityAccesscontextmanagerV1OsConstraintOsTypeEnum =
   | "DESKTOP_LINUX"
   | "DESKTOP_CHROME_OS"
   | "ANDROID"
-  | "IOS";
+  | "IOS"
+  | (string & {});
 export const GoogleIdentityAccesscontextmanagerV1OsConstraintOsTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -302,7 +305,7 @@ export const GoogleIdentityAccesscontextmanagerV1ConditionList =
   ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1ConditionList>;
 
 export type GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunctionEnum =
-  "AND" | "OR";
+  "AND" | "OR" | (string & {});
 export const GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunctionEnum =
   /*@__PURE__*/ S.String;
 
@@ -354,7 +357,8 @@ export const GoogleIdentityAccesscontextmanagerV1AccessLevel =
 export type GoogleIdentityAccesscontextmanagerV1EgressFromSourceRestrictionEnum =
     | "SOURCE_RESTRICTION_UNSPECIFIED"
     | "SOURCE_RESTRICTION_ENABLED"
-    | "SOURCE_RESTRICTION_DISABLED";
+    | "SOURCE_RESTRICTION_DISABLED"
+    | (string & {});
 export const GoogleIdentityAccesscontextmanagerV1EgressFromSourceRestrictionEnum =
   /*@__PURE__*/ S.String;
 
@@ -362,7 +366,8 @@ export type GoogleIdentityAccesscontextmanagerV1EgressFromIdentityTypeEnum =
   | "IDENTITY_TYPE_UNSPECIFIED"
   | "ANY_IDENTITY"
   | "ANY_USER_ACCOUNT"
-  | "ANY_SERVICE_ACCOUNT";
+  | "ANY_SERVICE_ACCOUNT"
+  | (string & {});
 export const GoogleIdentityAccesscontextmanagerV1EgressFromIdentityTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -541,7 +546,8 @@ export const GoogleIdentityAccesscontextmanagerV1EgressPolicyList =
 
 export type GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum =
     | "SERVICE_PATTERNS_ENFORCEMENT_SCOPE_UNSPECIFIED"
-    | "GOOGLE_APIS_VIA_PRIVATE_PATH";
+    | "GOOGLE_APIS_VIA_PRIVATE_PATH"
+    | (string & {});
 export const GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -679,7 +685,8 @@ export type GoogleIdentityAccesscontextmanagerV1IngressFromIdentityTypeEnum =
   | "IDENTITY_TYPE_UNSPECIFIED"
   | "ANY_IDENTITY"
   | "ANY_USER_ACCOUNT"
-  | "ANY_SERVICE_ACCOUNT";
+  | "ANY_SERVICE_ACCOUNT"
+  | (string & {});
 export const GoogleIdentityAccesscontextmanagerV1IngressFromIdentityTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -792,7 +799,7 @@ export const GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig>;
 
 export type GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterTypeEnum =
-  "PERIMETER_TYPE_REGULAR" | "PERIMETER_TYPE_BRIDGE";
+  "PERIMETER_TYPE_REGULAR" | "PERIMETER_TYPE_BRIDGE" | (string & {});
 export const GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -863,7 +870,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -940,7 +948,8 @@ export const GoogleCloudOrgpolicyV1BooleanPolicy = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudOrgpolicyV1ListPolicyAllValuesEnum =
   | "ALL_VALUES_UNSPECIFIED"
   | "ALLOW"
-  | "DENY";
+  | "DENY"
+  | (string & {});
 export const GoogleCloudOrgpolicyV1ListPolicyAllValuesEnum =
   /*@__PURE__*/ S.String;
 

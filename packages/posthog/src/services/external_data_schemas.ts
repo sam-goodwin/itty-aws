@@ -127,7 +127,8 @@ export type SyncTypeEnum =
   | "append"
   | "webhook"
   | "cdc"
-  | "xmin";
+  | "xmin"
+  | (string & {});
 export const SyncTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `integer` - integer * `numeric` - numeric * `datetime` - datetime * `date` - date * `timestamp` - timestamp * `objectid` - objectid * `xid` - xid */
@@ -138,7 +139,8 @@ export type IncrementalFieldTypeEnum =
   | "date"
   | "timestamp"
   | "objectid"
-  | "xid";
+  | "xid"
+  | (string & {});
 export const IncrementalFieldTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `never` - never * `1min` - 1min * `5min` - 5min * `15min` - 15min * `30min` - 30min * `1hour` - 1hour * `6hour` - 6hour * `12hour` - 12hour * `24hour` - 24hour * `7day` - 7day * `30day` - 30day */
@@ -153,7 +155,8 @@ export type SyncFrequencyEnum =
   | "12hour"
   | "24hour"
   | "7day"
-  | "30day";
+  | "30day"
+  | (string & {});
 export const SyncFrequencyEnum = /*@__PURE__*/ S.String;
 
 /** Column names for primary key deduplication. */
@@ -165,7 +168,11 @@ export const ExternalDataSchemasIncrementalFieldsCreateRequestPrimaryKeyColumnsL
   ) as any as S.Schema<ExternalDataSchemasIncrementalFieldsCreateRequestPrimaryKeyColumnsList>;
 
 /** * `consolidated` - consolidated * `cdc_only` - cdc_only * `both` - both */
-export type CdcTableModeEnum = "consolidated" | "cdc_only" | "both";
+export type CdcTableModeEnum =
+  | "consolidated"
+  | "cdc_only"
+  | "both"
+  | (string & {});
 export const CdcTableModeEnum = /*@__PURE__*/ S.String;
 
 /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */

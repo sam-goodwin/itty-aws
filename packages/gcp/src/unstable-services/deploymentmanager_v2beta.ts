@@ -96,7 +96,11 @@ export const CancelPreviewDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelPreviewDeploymentsRequest",
 }) as any as S.Schema<CancelPreviewDeploymentsRequest>;
 
-export type OperationStatusEnum = "PENDING" | "RUNNING" | "DONE";
+export type OperationStatusEnum =
+  | "PENDING"
+  | "RUNNING"
+  | "DONE"
+  | (string & {});
 export const OperationStatusEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
@@ -143,7 +147,8 @@ export const ErrorInfo = /*@__PURE__*/ S.suspend(() =>
 
 export type QuotaExceededInfoRolloutStatusEnum =
   | "ROLLOUT_STATUS_UNSPECIFIED"
-  | "IN_PROGRESS";
+  | "IN_PROGRESS"
+  | (string & {});
 export const QuotaExceededInfoRolloutStatusEnum = /*@__PURE__*/ S.String;
 
 /** Additional details for quota exceeded error for resource quota. */
@@ -328,7 +333,8 @@ export type OperationWarningsItemCodeEnum =
   | "RESERVED_ENTRY_139"
   | "RESERVED_ENTRY_141"
   | "RESERVED_ENTRY_142"
-  | "RESERVED_ENTRY_143";
+  | "RESERVED_ENTRY_143"
+  | (string & {});
 export const OperationWarningsItemCodeEnum = /*@__PURE__*/ S.String;
 
 export interface OperationWarningsItemDataItem {
@@ -381,7 +387,8 @@ export type SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoSt
     | "PROPAGATED"
     | "ABANDONED"
     | "FAILED"
-    | "DONE";
+    | "DONE"
+    | (string & {});
 export const SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -466,7 +473,8 @@ export type BulkInsertOperationStatusStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "CREATING"
   | "ROLLING_BACK"
-  | "DONE";
+  | "DONE"
+  | (string & {});
 export const BulkInsertOperationStatusStatusEnum = /*@__PURE__*/ S.String;
 
 export interface BulkInsertOperationStatus {
@@ -696,7 +704,10 @@ export const DeleteCompositeTypesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteCompositeTypesRequest",
 }) as any as S.Schema<DeleteCompositeTypesRequest>;
 
-export type DeleteDeploymentsDeletePolicyEnum = "DELETE" | "ABANDON";
+export type DeleteDeploymentsDeletePolicyEnum =
+  | "DELETE"
+  | "ABANDON"
+  | (string & {});
 export const DeleteDeploymentsDeletePolicyEnum = /*@__PURE__*/ S.String;
 
 export interface DeleteDeploymentsRequest {
@@ -775,7 +786,8 @@ export type CompositeTypeStatusEnum =
   | "UNKNOWN_STATUS"
   | "DEPRECATED"
   | "EXPERIMENTAL"
-  | "SUPPORTED";
+  | "SUPPORTED"
+  | (string & {});
 export const CompositeTypeStatusEnum = /*@__PURE__*/ S.String;
 
 /** Label object for CompositeTypes */
@@ -821,7 +833,8 @@ export const ImportFileList = /*@__PURE__*/ S.Array(
 export type TemplateContentsInterpreterEnum =
   | "UNKNOWN_INTERPRETER"
   | "PYTHON"
-  | "JINJA";
+  | "JINJA"
+  | (string & {});
 export const TemplateContentsInterpreterEnum = /*@__PURE__*/ S.String;
 
 /** Files that make up the template contents of a template type. */
@@ -1105,7 +1118,8 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ";
+  | "DATA_READ"
+  | (string & {});
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1400,7 +1414,8 @@ export type ResourceUpdateWarningsItemCodeEnum =
   | "RESERVED_ENTRY_139"
   | "RESERVED_ENTRY_141"
   | "RESERVED_ENTRY_142"
-  | "RESERVED_ENTRY_143";
+  | "RESERVED_ENTRY_143"
+  | (string & {});
 export const ResourceUpdateWarningsItemCodeEnum = /*@__PURE__*/ S.String;
 
 export interface ResourceUpdateWarningsItemDataItem {
@@ -1453,7 +1468,8 @@ export type ResourceUpdateStateEnum =
   | "IN_PROGRESS"
   | "IN_PREVIEW"
   | "FAILED"
-  | "ABORTED";
+  | "ABORTED"
+  | (string & {});
 export const ResourceUpdateStateEnum = /*@__PURE__*/ S.String;
 
 export type ResourceUpdateIntentEnum =
@@ -1462,7 +1478,8 @@ export type ResourceUpdateIntentEnum =
   | "ACQUIRE"
   | "UPDATE"
   | "ABANDON"
-  | "CREATE";
+  | "CREATE"
+  | (string & {});
 export const ResourceUpdateIntentEnum = /*@__PURE__*/ S.String;
 
 export interface ResourceUpdate {
@@ -1537,7 +1554,8 @@ export type ResourceWarningsItemCodeEnum =
   | "RESERVED_ENTRY_139"
   | "RESERVED_ENTRY_141"
   | "RESERVED_ENTRY_142"
-  | "RESERVED_ENTRY_143";
+  | "RESERVED_ENTRY_143"
+  | (string & {});
 export const ResourceWarningsItemCodeEnum = /*@__PURE__*/ S.String;
 
 export interface ResourceWarningsItemDataItem {
@@ -1715,7 +1733,8 @@ export type InputMappingLocationEnum =
   | "PATH"
   | "QUERY"
   | "BODY"
-  | "HEADER";
+  | "HEADER"
+  | (string & {});
 export const InputMappingLocationEnum = /*@__PURE__*/ S.String;
 
 /** InputMapping creates a 'virtual' property that will be injected into the properties before sending the request to the underlying API. */
@@ -1749,14 +1768,16 @@ export type ValidationOptionsUndeclaredPropertiesEnum =
   | "IGNORE"
   | "INCLUDE_WITH_WARNINGS"
   | "IGNORE_WITH_WARNINGS"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const ValidationOptionsUndeclaredPropertiesEnum = /*@__PURE__*/ S.String;
 
 export type ValidationOptionsSchemaValidationEnum =
   | "UNKNOWN"
   | "IGNORE"
   | "IGNORE_WITH_WARNINGS"
-  | "FAIL";
+  | "FAIL"
+  | (string & {});
 export const ValidationOptionsSchemaValidationEnum = /*@__PURE__*/ S.String;
 
 /** Options for how to validate and process properties on a resource. */
@@ -1779,7 +1800,8 @@ export type DiagnosticLevelEnum =
   | "UNKNOWN"
   | "INFORMATION"
   | "WARNING"
-  | "ERROR";
+  | "ERROR"
+  | (string & {});
 export const DiagnosticLevelEnum = /*@__PURE__*/ S.String;
 
 export interface Diagnostic {
@@ -2022,7 +2044,8 @@ export const InsertCompositeTypesRequest = /*@__PURE__*/ S.suspend(() =>
 export type InsertDeploymentsCreatePolicyEnum =
   | "CREATE_OR_ACQUIRE"
   | "ACQUIRE"
-  | "CREATE";
+  | "CREATE"
+  | (string & {});
 export const InsertDeploymentsCreatePolicyEnum = /*@__PURE__*/ S.String;
 
 export interface InsertDeploymentsRequest {
@@ -2592,10 +2615,14 @@ export const PatchCompositeTypesRequest = /*@__PURE__*/ S.suspend(() =>
 export type PatchDeploymentsCreatePolicyEnum =
   | "CREATE_OR_ACQUIRE"
   | "ACQUIRE"
-  | "CREATE";
+  | "CREATE"
+  | (string & {});
 export const PatchDeploymentsCreatePolicyEnum = /*@__PURE__*/ S.String;
 
-export type PatchDeploymentsDeletePolicyEnum = "DELETE" | "ABANDON";
+export type PatchDeploymentsDeletePolicyEnum =
+  | "DELETE"
+  | "ABANDON"
+  | (string & {});
 export const PatchDeploymentsDeletePolicyEnum = /*@__PURE__*/ S.String;
 
 export interface PatchDeploymentsRequest {
@@ -2820,10 +2847,14 @@ export const UpdateCompositeTypesRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateDeploymentsCreatePolicyEnum =
   | "CREATE_OR_ACQUIRE"
   | "ACQUIRE"
-  | "CREATE";
+  | "CREATE"
+  | (string & {});
 export const UpdateDeploymentsCreatePolicyEnum = /*@__PURE__*/ S.String;
 
-export type UpdateDeploymentsDeletePolicyEnum = "DELETE" | "ABANDON";
+export type UpdateDeploymentsDeletePolicyEnum =
+  | "DELETE"
+  | "ABANDON"
+  | (string & {});
 export const UpdateDeploymentsDeletePolicyEnum = /*@__PURE__*/ S.String;
 
 export interface UpdateDeploymentsRequest {

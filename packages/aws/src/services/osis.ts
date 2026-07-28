@@ -171,7 +171,7 @@ export const VpcAttachmentOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VpcAttachmentOptions",
 }) as any as S.Schema<VpcAttachmentOptions>;
-export type VpcEndpointManagement = "CUSTOMER" | "SERVICE";
+export type VpcEndpointManagement = "CUSTOMER" | "SERVICE" | (string & {});
 export const VpcEndpointManagement = /*@__PURE__*/ S.String;
 
 export interface VpcOptions {
@@ -263,7 +263,8 @@ export type PipelineStatus =
   | "STARTING"
   | "START_FAILED"
   | "STOPPING"
-  | "STOPPED";
+  | "STOPPED"
+  | (string & {});
 export const PipelineStatus = /*@__PURE__*/ S.String;
 
 export interface PipelineStatusReason {
@@ -290,7 +291,7 @@ export const VpcEndpoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VpcEndpoint" }) as any as S.Schema<VpcEndpoint>;
 export type VpcEndpointsList = VpcEndpoint[];
 export const VpcEndpointsList = /*@__PURE__*/ S.Array(VpcEndpoint);
-export type VpcEndpointServiceName = "OPENSEARCH_SERVERLESS";
+export type VpcEndpointServiceName = "OPENSEARCH_SERVERLESS" | (string & {});
 export const VpcEndpointServiceName = /*@__PURE__*/ S.String;
 
 export interface ServiceVpcEndpoint {
@@ -420,7 +421,8 @@ export type PipelineEndpointStatus =
   | "CREATE_FAILED"
   | "DELETING"
   | "REVOKING"
-  | "REVOKED";
+  | "REVOKED"
+  | (string & {});
 export const PipelineEndpointStatus = /*@__PURE__*/ S.String;
 
 export interface CreatePipelineEndpointResponse {
@@ -632,14 +634,16 @@ export type ChangeProgressStatuses =
   | "PENDING"
   | "IN_PROGRESS"
   | "COMPLETED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ChangeProgressStatuses = /*@__PURE__*/ S.String;
 
 export type ChangeProgressStageStatuses =
   | "PENDING"
   | "IN_PROGRESS"
   | "COMPLETED"
-  | "FAILED";
+  | "FAILED"
+  | (string & {});
 export const ChangeProgressStageStatuses = /*@__PURE__*/ S.String;
 
 export interface ChangeProgressStage {

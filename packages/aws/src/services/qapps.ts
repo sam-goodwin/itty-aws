@@ -368,7 +368,7 @@ export const CreateLibraryItemOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateLibraryItemOutput",
 }) as any as S.Schema<CreateLibraryItemOutput>;
 export type Filename = string;
-export type DocumentScope = "APPLICATION" | "SESSION";
+export type DocumentScope = "APPLICATION" | "SESSION" | (string & {});
 export const DocumentScope = /*@__PURE__*/ S.String;
 
 export interface CreatePresignedUrlInput {
@@ -432,7 +432,8 @@ export type CardType =
   | "q-query"
   | "file-upload"
   | "q-plugin"
-  | "form-input";
+  | "form-input"
+  | (string & {});
 export const CardType = /*@__PURE__*/ S.String;
 
 export type Placeholder = string;
@@ -456,7 +457,7 @@ export const TextInputCardInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "TextInputCardInput",
 }) as any as S.Schema<TextInputCardInput>;
 export type Prompt = string;
-export type CardOutputSource = "approved-sources" | "llm";
+export type CardOutputSource = "approved-sources" | "llm" | (string & {});
 export const CardOutputSource = /*@__PURE__*/ S.String;
 
 export type AttributeFilters = AttributeFilter[];
@@ -621,7 +622,7 @@ export const FormInputCardMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FormInputCardMetadata",
 }) as any as S.Schema<FormInputCardMetadata>;
-export type InputCardComputeMode = "append" | "replace";
+export type InputCardComputeMode = "append" | "replace" | (string & {});
 export const InputCardComputeMode = /*@__PURE__*/ S.String;
 
 export interface FormInputCardInput {
@@ -730,14 +731,15 @@ export const CreateQAppInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateQAppInput",
 }) as any as S.Schema<CreateQAppInput>;
 export type AppArn = string;
-export type AppStatus = "PUBLISHED" | "DRAFT" | "DELETED";
+export type AppStatus = "PUBLISHED" | "DRAFT" | "DELETED" | (string & {});
 export const AppStatus = /*@__PURE__*/ S.String;
 
 export type AppRequiredCapability =
   | "FileUpload"
   | "CreatorMode"
   | "RetrievalMode"
-  | "PluginMode";
+  | "PluginMode"
+  | (string & {});
 export const AppRequiredCapability = /*@__PURE__*/ S.String;
 
 export type AppRequiredCapabilities = AppRequiredCapability[];
@@ -851,10 +853,10 @@ export const DescribeQAppPermissionsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeQAppPermissionsInput",
 }) as any as S.Schema<DescribeQAppPermissionsInput>;
-export type Action = "read" | "write";
+export type Action = "read" | "write" | (string & {});
 export const Action = /*@__PURE__*/ S.String;
 
-export type UserType = "owner" | "user";
+export type UserType = "owner" | "user" | (string & {});
 export const UserType = /*@__PURE__*/ S.String;
 
 export interface PrincipalOutput {
@@ -1141,7 +1143,8 @@ export type PluginType =
   | "SALESFORCE_CRM"
   | "SERVICENOW_NOW_PLATFORM"
   | "SMARTSHEET"
-  | "ZENDESK_SUITE";
+  | "ZENDESK_SUITE"
+  | (string & {});
 export const PluginType = /*@__PURE__*/ S.String;
 
 export interface QPluginCard {
@@ -1315,7 +1318,12 @@ export const GetQAppSessionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetQAppSessionInput",
 }) as any as S.Schema<GetQAppSessionInput>;
 export type SessionName = string;
-export type ExecutionStatus = "IN_PROGRESS" | "WAITING" | "COMPLETED" | "ERROR";
+export type ExecutionStatus =
+  | "IN_PROGRESS"
+  | "WAITING"
+  | "COMPLETED"
+  | "ERROR"
+  | (string & {});
 export const ExecutionStatus = /*@__PURE__*/ S.String;
 
 export interface Submission {
@@ -1724,7 +1732,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
-export type Sender = "USER" | "SYSTEM";
+export type Sender = "USER" | "SYSTEM" | (string & {});
 export const Sender = /*@__PURE__*/ S.String;
 
 export interface ConversationMessage {
@@ -1789,7 +1797,7 @@ export const PredictQAppOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PredictQAppOutput",
 }) as any as S.Schema<PredictQAppOutput>;
-export type SubmissionMutationKind = "edit" | "delete" | "add";
+export type SubmissionMutationKind = "edit" | "delete" | "add" | (string & {});
 export const SubmissionMutationKind = /*@__PURE__*/ S.String;
 
 export interface SubmissionMutation {
@@ -1936,7 +1944,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-export type LibraryItemStatus = "PUBLISHED" | "DISABLED";
+export type LibraryItemStatus = "PUBLISHED" | "DISABLED" | (string & {});
 export const LibraryItemStatus = /*@__PURE__*/ S.String;
 
 export interface UpdateLibraryItemInput {

@@ -14,7 +14,7 @@ import * as Retry from "../retry.ts";
 export type { AzureOpError, AzureOpContext };
 
 export type AdvancedPlatformMetricsCreateOrUpdateRequestAdvancedPlatformMetricsRuleType =
-  "ContainerLevelCapacityMetrics";
+  "ContainerLevelCapacityMetrics" | (string & {});
 export const AdvancedPlatformMetricsCreateOrUpdateRequestAdvancedPlatformMetricsRuleType =
   /*@__PURE__*/ S.String;
 
@@ -22,7 +22,8 @@ export const AdvancedPlatformMetricsCreateOrUpdateRequestAdvancedPlatformMetrics
 export type AdvancedPlatformMetricsFilterType =
   | "AllContainersFilter"
   | "ContainerPrefixFilter"
-  | "ContainerListFilter";
+  | "ContainerListFilter"
+  | (string & {});
 export const AdvancedPlatformMetricsFilterType = /*@__PURE__*/ S.String;
 
 /** The values for the filter applied to the rule. If filter type is AllContainersFilter, filter values should be empty. If filter type is ContainerPrefixFilter, filter values should contain a list of container prefixes. If filter type is ContainerListFilter, filter values should contain a list of container names. */
@@ -106,7 +107,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -114,7 +116,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -144,11 +147,16 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 /** The type of the advanced platform metrics rule. */
-export type AdvancedPlatformMetricsRuleType = "ContainerLevelCapacityMetrics";
+export type AdvancedPlatformMetricsRuleType =
+  | "ContainerLevelCapacityMetrics"
+  | (string & {});
 export const AdvancedPlatformMetricsRuleType = /*@__PURE__*/ S.String;
 
 /** The metrics emitted by the advanced platform metrics rule. */
-export type MetricsEmitted = "ContainerBlobCount" | "ContainerUsedSize";
+export type MetricsEmitted =
+  | "ContainerBlobCount"
+  | "ContainerUsedSize"
+  | (string & {});
 export const MetricsEmitted = /*@__PURE__*/ S.String;
 
 /** The metrics emitted by the rule. Metrics are mapped according to the rule type from RuleTypeProperty. Rule type to metrics mapping: ContainerLevelCapacityMetrics => {ContainerUsedSize, ContainerBlobCount}. */
@@ -213,7 +221,7 @@ export const AdvancedPlatformMetricsCreateOrUpdateResponse =
   }) as any as S.Schema<AdvancedPlatformMetricsCreateOrUpdateResponse>;
 
 export type AdvancedPlatformMetricsDeleteRequestAdvancedPlatformMetricsRuleType =
-  "ContainerLevelCapacityMetrics";
+  "ContainerLevelCapacityMetrics" | (string & {});
 export const AdvancedPlatformMetricsDeleteRequestAdvancedPlatformMetricsRuleType =
   /*@__PURE__*/ S.String;
 
@@ -257,7 +265,8 @@ export const AdvancedPlatformMetricsDeleteResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AdvancedPlatformMetricsDeleteResponse>;
 
 export type AdvancedPlatformMetricsGetRequestAdvancedPlatformMetricsRuleType =
-  "ContainerLevelCapacityMetrics";
+  | "ContainerLevelCapacityMetrics"
+  | (string & {});
 export const AdvancedPlatformMetricsGetRequestAdvancedPlatformMetricsRuleType =
   /*@__PURE__*/ S.String;
 
@@ -456,7 +465,7 @@ export const LegalHold = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LegalHold" }) as any as S.Schema<LegalHold>;
 
 /** Specifies whether data in the container may be accessed publicly and the level of access. */
-export type PublicAccess = "Container" | "Blob" | "None";
+export type PublicAccess = "Container" | "Blob" | "None" | (string & {});
 export const PublicAccess = /*@__PURE__*/ S.String;
 
 /** A name-value pair to associate with the container as metadata. */
@@ -546,7 +555,7 @@ export const BlobContainersCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BlobContainersCreateRequest>;
 
 /** The lease status of the container. */
-export type LeaseStatus = "Locked" | "Unlocked";
+export type LeaseStatus = "Locked" | "Unlocked" | (string & {});
 export const LeaseStatus = /*@__PURE__*/ S.String;
 
 /** Lease state of the container. */
@@ -555,11 +564,12 @@ export type LeaseState =
   | "Leased"
   | "Expired"
   | "Breaking"
-  | "Broken";
+  | "Broken"
+  | (string & {});
 export const LeaseState = /*@__PURE__*/ S.String;
 
 /** Specifies whether the lease on a container is of infinite or fixed duration, only when the container is leased. */
-export type LeaseDuration = "Infinite" | "Fixed";
+export type LeaseDuration = "Infinite" | "Fixed" | (string & {});
 export const LeaseDuration = /*@__PURE__*/ S.String;
 
 /** A name-value pair to associate with the container as metadata. */
@@ -572,7 +582,7 @@ export const ContainerPropertiesMetadataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ContainerPropertiesMetadataMap>;
 
 /** The ImmutabilityPolicy state of a blob container, possible values include: Locked and Unlocked. */
-export type ImmutabilityPolicyState = "Locked" | "Unlocked";
+export type ImmutabilityPolicyState = "Locked" | "Unlocked" | (string & {});
 export const ImmutabilityPolicyState = /*@__PURE__*/ S.String;
 
 /** The properties of an ImmutabilityPolicy of a blob container. */
@@ -598,7 +608,11 @@ export const ImmutabilityPolicyProperty = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImmutabilityPolicyProperty>;
 
 /** The ImmutabilityPolicy update type of a blob container, possible values include: put, lock and extend. */
-export type ImmutabilityPolicyUpdateType = "put" | "lock" | "extend";
+export type ImmutabilityPolicyUpdateType =
+  | "put"
+  | "lock"
+  | "extend"
+  | (string & {});
 export const ImmutabilityPolicyUpdateType = /*@__PURE__*/ S.String;
 
 /** An update history of the ImmutabilityPolicy of a blob container. */
@@ -727,7 +741,7 @@ export const LegalHoldProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LegalHoldProperties>;
 
 /** This property denotes the container level immutability to object level immutability migration state. */
-export type MigrationState = "InProgress" | "Completed";
+export type MigrationState = "InProgress" | "Completed" | (string & {});
 export const MigrationState = /*@__PURE__*/ S.String;
 
 /** Object level immutability properties of the container. */
@@ -1173,7 +1187,8 @@ export type LeaseContainerRequestAction =
   | "Renew"
   | "Change"
   | "Release"
-  | "Break";
+  | "Break"
+  | (string & {});
 export const LeaseContainerRequestAction = /*@__PURE__*/ S.String;
 
 export interface BlobContainersLeaseRequest {
@@ -1235,7 +1250,7 @@ export const LeaseContainerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "LeaseContainerResponse",
 }) as any as S.Schema<LeaseContainerResponse>;
 
-export type BlobContainersListRequestInclude = "deleted";
+export type BlobContainersListRequestInclude = "deleted" | (string & {});
 export const BlobContainersListRequestInclude = /*@__PURE__*/ S.String;
 
 export interface BlobContainersListRequest {
@@ -1516,12 +1531,13 @@ export const BlobContainersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BlobContainersUpdateResponse>;
 
 export type BlobInventoryPoliciesCreateOrUpdateRequestBlobInventoryPolicyName =
-  "default";
+  | "default"
+  | (string & {});
 export const BlobInventoryPoliciesCreateOrUpdateRequestBlobInventoryPolicyName =
   /*@__PURE__*/ S.String;
 
 /** The valid value is Inventory */
-export type InventoryRuleType = "Inventory";
+export type InventoryRuleType = "Inventory" | (string & {});
 export const InventoryRuleType = /*@__PURE__*/ S.String;
 
 /** An array of strings with maximum 10 blob prefixes to be included in the inventory. */
@@ -1587,15 +1603,15 @@ export const BlobInventoryPolicyFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BlobInventoryPolicyFilter>;
 
 /** This is a required field, it specifies the format for the inventory files. */
-export type Format = "Csv" | "Parquet";
+export type Format = "Csv" | "Parquet" | (string & {});
 export const Format = /*@__PURE__*/ S.String;
 
 /** This is a required field. This field is used to schedule an inventory formation. */
-export type Schedule = "Daily" | "Weekly";
+export type Schedule = "Daily" | "Weekly" | (string & {});
 export const Schedule = /*@__PURE__*/ S.String;
 
 /** This is a required field. This field specifies the scope of the inventory created either at the blob or container level. */
-export type ObjectType = "Blob" | "Container";
+export type ObjectType = "Blob" | "Container" | (string & {});
 export const ObjectType = /*@__PURE__*/ S.String;
 
 /** This is a required field. This field specifies the fields and properties of the object to be included in the inventory. The Schema field value 'Name' is always required. The valid values for this field for the 'Blob' definition.objectType include 'Name, Creation-Time, Last-Modified, Content-Length, Content-MD5, BlobType, AccessTier, AccessTierChangeTime, AccessTierInferred, Tags, Expiry-Time, hdi_isfolder, Owner, Group, Permissions, Acl, Snapshot, VersionId, IsCurrentVersion, Metadata, LastAccessTime, Tags, Etag, ContentType, ContentEncoding, ContentLanguage, ContentCRC64, CacheControl, ContentDisposition, LeaseStatus, LeaseState, LeaseDuration, ServerEncrypted, Deleted, DeletionId, DeletedTime, RemainingRetentionDays, ImmutabilityPolicyUntilDate, ImmutabilityPolicyMode, LegalHold, CopyId, CopyStatus, CopySource, CopyProgress, CopyCompletionTime, CopyStatusDescription, CustomerProvidedKeySha256, RehydratePriority, ArchiveStatus, XmsBlobSequenceNumber, EncryptionScope, IncrementalCopy, TagCount'. For Blob object type schema field value 'DeletedTime' is applicable only for Hns enabled accounts. The valid values for 'Container' definition.objectType include 'Name, Last-Modified, Metadata, LeaseStatus, LeaseState, LeaseDuration, PublicAccess, HasImmutabilityPolicy, HasLegalHold, Etag, DefaultEncryptionScope, DenyEncryptionScopeOverride, ImmutableStorageWithVersioningEnabled, Deleted, Version, DeletedTime, RemainingRetentionDays'. Schema field values 'Expiry-Time, hdi_isfolder, Owner, Group, Permissions, Acl, DeletionId' are valid only for Hns enabled accounts.Schema field values 'Tags, TagCount' are only valid for Non-Hns accounts. */
@@ -1798,7 +1814,8 @@ export const BlobInventoryPoliciesCreateOrUpdateResponse =
   }) as any as S.Schema<BlobInventoryPoliciesCreateOrUpdateResponse>;
 
 export type BlobInventoryPoliciesDeleteRequestBlobInventoryPolicyName =
-  "default";
+  | "default"
+  | (string & {});
 export const BlobInventoryPoliciesDeleteRequestBlobInventoryPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -1838,7 +1855,9 @@ export const BlobInventoryPoliciesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BlobInventoryPoliciesDeleteResponse",
 }) as any as S.Schema<BlobInventoryPoliciesDeleteResponse>;
 
-export type BlobInventoryPoliciesGetRequestBlobInventoryPolicyName = "default";
+export type BlobInventoryPoliciesGetRequestBlobInventoryPolicyName =
+  | "default"
+  | (string & {});
 export const BlobInventoryPoliciesGetRequestBlobInventoryPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -2009,7 +2028,8 @@ export type AllowedMethods =
   | "PUT"
   | "PATCH"
   | "CONNECT"
-  | "TRACE";
+  | "TRACE"
+  | (string & {});
 export const AllowedMethods = /*@__PURE__*/ S.String;
 
 /** Required if CorsRule element is present. A list of HTTP methods that are allowed to be executed by the origin. */
@@ -2146,7 +2166,7 @@ export const RestorePolicyProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestorePolicyProperties>;
 
 /** Name of the policy. The valid value is AccessTimeTracking. This field is currently read only */
-export type Name = "AccessTimeTracking";
+export type Name = "AccessTimeTracking" | (string & {});
 export const Name = /*@__PURE__*/ S.String;
 
 /** An array of predefined supported blob types. Only blockBlob is the supported value. This field is currently read only */
@@ -2232,11 +2252,12 @@ export type SkuName =
   | "StandardV2_ZRS"
   | "StandardV2_GZRS"
   | "PremiumV2_LRS"
-  | "PremiumV2_ZRS";
+  | "PremiumV2_ZRS"
+  | (string & {});
 export const SkuName = /*@__PURE__*/ S.String;
 
 /** The SKU tier. This is based on the SKU name. */
-export type SkuTier = "Standard" | "Premium";
+export type SkuTier = "Standard" | "Premium" | (string & {});
 export const SkuTier = /*@__PURE__*/ S.String;
 
 /** The SKU of the storage account. */
@@ -2478,15 +2499,18 @@ export const ConnectorsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ConnectorsCreateRequestTagsMap>;
 
 /** State - Active or Inactive. Whether or not the Storage Connector should start as active (default: Active) (While set to false on the Storage Connector, all data plane requests using this Storage Connector fail, and this Storage Connector is not billed if it would be otherwise. */
-export type StorageConnectorPropertiesInputState = "Active" | "Inactive";
+export type StorageConnectorPropertiesInputState =
+  | "Active"
+  | "Inactive"
+  | (string & {});
 export const StorageConnectorPropertiesInputState = /*@__PURE__*/ S.String;
 
 /** The type of the backing data source for storage connector */
-export type StorageConnectorDataSourceType = "Azure_DataShare";
+export type StorageConnectorDataSourceType = "Azure_DataShare" | (string & {});
 export const StorageConnectorDataSourceType = /*@__PURE__*/ S.String;
 
 /** The type of the backing data source for storage connector */
-export type StorageConnectorSourceType = "DataShare";
+export type StorageConnectorSourceType = "DataShare" | (string & {});
 export const StorageConnectorSourceType = /*@__PURE__*/ S.String;
 
 /** The storage connector backing data source information */
@@ -2574,7 +2598,10 @@ export const ConnectorsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ConnectorsCreateResponseTagsMap>;
 
 /** State - Active or Inactive. Whether or not the Storage Connector should start as active (default: Active) (While set to false on the Storage Connector, all data plane requests using this Storage Connector fail, and this Storage Connector is not billed if it would be otherwise. */
-export type StorageConnectorPropertiesState = "Active" | "Inactive";
+export type StorageConnectorPropertiesState =
+  | "Active"
+  | "Inactive"
+  | (string & {});
 export const StorageConnectorPropertiesState = /*@__PURE__*/ S.String;
 
 /** Provisioning state of the resource at the time the operation was called. */
@@ -2584,7 +2611,8 @@ export type NativeDataSharingProvisioningState =
   | "Succeeded"
   | "Deleting"
   | "Canceled"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const NativeDataSharingProvisioningState = /*@__PURE__*/ S.String;
 
 /** The storage connector properties */
@@ -2898,7 +2926,10 @@ export const ConnectorsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ConnectorsUpdateRequestTagsMap>;
 
 /** State - Active or Inactive. Whether or not the Storage Connector should start as active (default: Active) (While set to false on the Storage Connector, all data plane requests using this Storage Connector fail, and this Storage Connector is not billed if it would be otherwise. */
-export type StorageConnectorPropertiesUpdateState = "Active" | "Inactive";
+export type StorageConnectorPropertiesUpdateState =
+  | "Active"
+  | "Inactive"
+  | (string & {});
 export const StorageConnectorPropertiesUpdateState = /*@__PURE__*/ S.String;
 
 /** The storage connector backing data source information */
@@ -3019,7 +3050,10 @@ export const DataSharesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DataSharesCreateRequestTagsMap>;
 
 /** The permissions supported in access policies for storage data share */
-export type StorageDataShareAccessPolicyPermission = "None" | "Read";
+export type StorageDataShareAccessPolicyPermission =
+  | "None"
+  | "Read"
+  | (string & {});
 export const StorageDataShareAccessPolicyPermission = /*@__PURE__*/ S.String;
 
 /** Policy that specify the permission allowed to a managed identity */
@@ -3681,11 +3715,14 @@ export const EncryptionScopesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionScopesGetRequest>;
 
 /** The provider for the encryption scope. Possible values (case-insensitive): Microsoft.Storage, Microsoft.KeyVault. */
-export type EncryptionScopeSource = "Microsoft.Storage" | "Microsoft.KeyVault";
+export type EncryptionScopeSource =
+  | "Microsoft.Storage"
+  | "Microsoft.KeyVault"
+  | (string & {});
 export const EncryptionScopeSource = /*@__PURE__*/ S.String;
 
 /** The state of the encryption scope. Possible values (case-insensitive): Enabled, Disabled. */
-export type EncryptionScopeState = "Enabled" | "Disabled";
+export type EncryptionScopeState = "Enabled" | "Disabled" | (string & {});
 export const EncryptionScopeState = /*@__PURE__*/ S.String;
 
 /** The key vault properties for the encryption scope. This is a required field if encryption scope 'source' attribute is set to 'Microsoft.KeyVault'. */
@@ -3759,7 +3796,11 @@ export const EncryptionScopesGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EncryptionScopesGetResponse",
 }) as any as S.Schema<EncryptionScopesGetResponse>;
 
-export type EncryptionScopesListRequestInclude = "All" | "Enabled" | "Disabled";
+export type EncryptionScopesListRequestInclude =
+  | "All"
+  | "Enabled"
+  | "Disabled"
+  | (string & {});
 export const EncryptionScopesListRequestInclude = /*@__PURE__*/ S.String;
 
 export interface EncryptionScopesListRequest {
@@ -4560,11 +4601,15 @@ export const FileSharePropertiesInputMetadataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FileSharePropertiesInputMetadataMap>;
 
 /** The authentication protocol that is used for the file share. Can only be specified when creating a share. */
-export type EnabledProtocols = "SMB" | "NFS";
+export type EnabledProtocols = "SMB" | "NFS" | (string & {});
 export const EnabledProtocols = /*@__PURE__*/ S.String;
 
 /** The property is for NFS share only. The default is NoRootSquash. */
-export type RootSquashType = "NoRootSquash" | "RootSquash" | "AllSquash";
+export type RootSquashType =
+  | "NoRootSquash"
+  | "RootSquash"
+  | "AllSquash"
+  | (string & {});
 export const RootSquashType = /*@__PURE__*/ S.String;
 
 /** Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. */
@@ -4572,7 +4617,8 @@ export type ShareAccessTier =
   | "TransactionOptimized"
   | "Hot"
   | "Cool"
-  | "Premium";
+  | "Premium"
+  | (string & {});
 export const ShareAccessTier = /*@__PURE__*/ S.String;
 
 export interface AccessPolicy {
@@ -4940,7 +4986,8 @@ export type LeaseShareAction =
   | "Renew"
   | "Change"
   | "Release"
-  | "Break";
+  | "Break"
+  | (string & {});
 export const LeaseShareAction = /*@__PURE__*/ S.String;
 
 export interface FileSharesLeaseRequest {
@@ -5484,7 +5531,7 @@ export const LocalUsersGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "LocalUsersGetResponse",
 }) as any as S.Schema<LocalUsersGetResponse>;
 
-export type LocalUsersListRequestInclude = "nfsv3";
+export type LocalUsersListRequestInclude = "nfsv3" | (string & {});
 export const LocalUsersListRequestInclude = /*@__PURE__*/ S.String;
 
 export interface LocalUsersListRequest {
@@ -5656,12 +5703,13 @@ export const LocalUserRegeneratePasswordResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocalUserRegeneratePasswordResult>;
 
 export type ManagementPoliciesCreateOrUpdateRequestManagementPolicyName =
-  "default";
+  | "default"
+  | (string & {});
 export const ManagementPoliciesCreateOrUpdateRequestManagementPolicyName =
   /*@__PURE__*/ S.String;
 
 /** The valid value is Lifecycle */
-export type RuleType = "Lifecycle";
+export type RuleType = "Lifecycle" | (string & {});
 export const RuleType = /*@__PURE__*/ S.String;
 
 /** Object to define the base blob action conditions. Properties daysAfterModificationGreaterThan, daysAfterLastAccessTimeGreaterThan and daysAfterCreationGreaterThan are mutually exclusive. The daysAfterLastTierChangeGreaterThan property is only applicable for tierToArchive actions which requires daysAfterModificationGreaterThan to be set, also it cannot be used in conjunction with daysAfterLastAccessTimeGreaterThan or daysAfterCreationGreaterThan. */
@@ -6000,7 +6048,9 @@ export const ManagementPoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "ManagementPoliciesCreateOrUpdateResponse",
 }) as any as S.Schema<ManagementPoliciesCreateOrUpdateResponse>;
 
-export type ManagementPoliciesDeleteRequestManagementPolicyName = "default";
+export type ManagementPoliciesDeleteRequestManagementPolicyName =
+  | "default"
+  | (string & {});
 export const ManagementPoliciesDeleteRequestManagementPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -6040,7 +6090,9 @@ export const ManagementPoliciesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagementPoliciesDeleteResponse",
 }) as any as S.Schema<ManagementPoliciesDeleteResponse>;
 
-export type ManagementPoliciesGetRequestManagementPolicyName = "default";
+export type ManagementPoliciesGetRequestManagementPolicyName =
+  | "default"
+  | (string & {});
 export const ManagementPoliciesGetRequestManagementPolicyName =
   /*@__PURE__*/ S.String;
 
@@ -6133,16 +6185,20 @@ export type NetworkSecurityPerimeterConfigurationProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Deleting"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const NetworkSecurityPerimeterConfigurationProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** Type of issue */
-export type IssueType = "Unknown" | "ConfigurationPropagationFailure";
+export type IssueType =
+  | "Unknown"
+  | "ConfigurationPropagationFailure"
+  | (string & {});
 export const IssueType = /*@__PURE__*/ S.String;
 
 /** Severity of the issue. */
-export type Severity = "Warning" | "Error";
+export type Severity = "Warning" | "Error" | (string & {});
 export const Severity = /*@__PURE__*/ S.String;
 
 /** Properties of provisioning issue */
@@ -6208,7 +6264,11 @@ export const NetworkSecurityPerimeter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkSecurityPerimeter>;
 
 /** Access Mode of the resource association */
-export type ResourceAssociationAccessMode = "Enforced" | "Learning" | "Audit";
+export type ResourceAssociationAccessMode =
+  | "Enforced"
+  | "Learning"
+  | "Audit"
+  | (string & {});
 export const ResourceAssociationAccessMode = /*@__PURE__*/ S.String;
 
 /** Information about resource association */
@@ -6230,7 +6290,7 @@ export const NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation 
   }) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation>;
 
 /** Direction of Access Rule */
-export type NspAccessRuleDirection = "Inbound" | "Outbound";
+export type NspAccessRuleDirection = "Inbound" | "Outbound" | (string & {});
 export const NspAccessRuleDirection = /*@__PURE__*/ S.String;
 
 /** Address prefixes in the CIDR format for inbound rules */
@@ -7181,7 +7241,8 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected";
+  | "Rejected"
+  | (string & {});
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -7208,7 +7269,8 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -8069,7 +8131,8 @@ export type Kind =
   | "StorageV2"
   | "BlobStorage"
   | "FileStorage"
-  | "BlockBlobStorage";
+  | "BlockBlobStorage"
+  | (string & {});
 export const Kind = /*@__PURE__*/ S.String;
 
 /** The set of locations that the SKU is available. This will be supported and registered Azure Geo Regions (e.g. West US, East US, Southeast Asia, etc.). */
@@ -8132,7 +8195,10 @@ export const RestrictionValuesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RestrictionValuesList>;
 
 /** The reason for the restriction. As of now this can be "QuotaId" or "NotAvailableForSubscription". Quota Id is set when the SKU has requiredQuotas parameter as the subscription does not belong to that quota. The "NotAvailableForSubscription" is related to capacity at DC. */
-export type ReasonCode = "QuotaId" | "NotAvailableForSubscription";
+export type ReasonCode =
+  | "QuotaId"
+  | "NotAvailableForSubscription"
+  | (string & {});
 export const ReasonCode = /*@__PURE__*/ S.String;
 
 /** The restriction because of which SKU cannot be used. */
@@ -8244,7 +8310,8 @@ export const StorageAccountsAbortHierarchicalNamespaceMigrationResponse =
 
 /** The type of resource, Microsoft.Storage/storageAccounts */
 export type StorageAccountsCheckNameAvailabilityRequestType =
-  "Microsoft.Storage/storageAccounts";
+  | "Microsoft.Storage/storageAccounts"
+  | (string & {});
 export const StorageAccountsCheckNameAvailabilityRequestType =
   /*@__PURE__*/ S.String;
 
@@ -8275,7 +8342,7 @@ export const StorageAccountsCheckNameAvailabilityRequest =
   }) as any as S.Schema<StorageAccountsCheckNameAvailabilityRequest>;
 
 /** Gets the reason that a storage account name could not be used. The Reason element is only returned if NameAvailable is false. */
-export type Reason = "AccountNameInvalid" | "AlreadyExists";
+export type Reason = "AccountNameInvalid" | "AlreadyExists" | (string & {});
 export const Reason = /*@__PURE__*/ S.String;
 
 /** The CheckNameAvailability operation response. */
@@ -8298,7 +8365,7 @@ export const CheckNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckNameAvailabilityResult>;
 
 /** The type of extendedLocation. */
-export type ExtendedLocationTypes = "EdgeZone";
+export type ExtendedLocationTypes = "EdgeZone" | (string & {});
 export const ExtendedLocationTypes = /*@__PURE__*/ S.String;
 
 /** The complex type of the extended location. */
@@ -8324,7 +8391,7 @@ export const StorageAccountsCreateRequestZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<StorageAccountsCreateRequestZonesList>;
 
 /** The availability zone pinning policy for the storage account. */
-export type ZonePlacementPolicy = "Any" | "None";
+export type ZonePlacementPolicy = "Any" | "None" | (string & {});
 export const ZonePlacementPolicy = /*@__PURE__*/ S.String;
 
 /** The complex type of the zonal placement details. */
@@ -8352,7 +8419,8 @@ export type IdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned";
+  | "SystemAssigned,UserAssigned"
+  | (string & {});
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** UserAssignedIdentity for the resource. */
@@ -8387,15 +8455,19 @@ export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IdentityInput" }) as any as S.Schema<IdentityInput>;
 
 /** Restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet. */
-export type AllowedCopyScope = "PrivateLink" | "AAD" | "All";
+export type AllowedCopyScope = "PrivateLink" | "AAD" | "All" | (string & {});
 export const AllowedCopyScope = /*@__PURE__*/ S.String;
 
 /** Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account. Value is optional but if passed in, must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'. */
-export type PublicNetworkAccess = "Enabled" | "Disabled" | "SecuredByPerimeter";
+export type PublicNetworkAccess =
+  | "Enabled"
+  | "Disabled"
+  | "SecuredByPerimeter"
+  | (string & {});
 export const PublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log' action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that do not adhere to the sas policy expiration period. */
-export type SasPolicyExpirationAction = "Log" | "Block";
+export type SasPolicyExpirationAction = "Log" | "Block" | (string & {});
 export const SasPolicyExpirationAction = /*@__PURE__*/ S.String;
 
 /** SasPolicy assigned to the storage account. */
@@ -8438,7 +8510,7 @@ export const CustomDomain = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomDomain" }) as any as S.Schema<CustomDomain>;
 
 /** Encryption key type to be used for the encryption service. 'Account' key type implies that an account-scoped encryption key will be used. 'Service' key type implies that a default service key is used. */
-export type KeyType = "Service" | "Account";
+export type KeyType = "Service" | "Account" | (string & {});
 export const KeyType = /*@__PURE__*/ S.String;
 
 /** A service that allows server-side encryption to be used. */
@@ -8482,7 +8554,8 @@ export const EncryptionServicesInput = /*@__PURE__*/ S.suspend(() =>
 /** The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Storage, Microsoft.Keyvault */
 export type EncryptionInputKeySource =
   | "Microsoft.Storage"
-  | "Microsoft.Keyvault";
+  | "Microsoft.Keyvault"
+  | (string & {});
 export const EncryptionInputKeySource = /*@__PURE__*/ S.String;
 
 /** Properties of key vault. */
@@ -8550,7 +8623,8 @@ export type NetworkRuleSetInputBypass =
   | "None"
   | "Logging"
   | "Metrics"
-  | "AzureServices";
+  | "AzureServices"
+  | (string & {});
 export const NetworkRuleSetInputBypass = /*@__PURE__*/ S.String;
 
 /** Resource Access Rule. */
@@ -8577,7 +8651,7 @@ export const NetworkRuleSetInputResourceAccessRulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<NetworkRuleSetInputResourceAccessRulesList>;
 
 /** The action of virtual network rule. */
-export type VirtualNetworkRuleInputAction = "Allow";
+export type VirtualNetworkRuleInputAction = "Allow" | (string & {});
 export const VirtualNetworkRuleInputAction = /*@__PURE__*/ S.String;
 
 /** Virtual Network rule. */
@@ -8604,7 +8678,7 @@ export const NetworkRuleSetInputVirtualNetworkRulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<NetworkRuleSetInputVirtualNetworkRulesList>;
 
 /** The action of IP ACL rule. */
-export type IPRuleAction = "Allow";
+export type IPRuleAction = "Allow" | (string & {});
 export const IPRuleAction = /*@__PURE__*/ S.String;
 
 /** IP rule with specific IP or IP range in CIDR format. */
@@ -8634,7 +8708,7 @@ export const NetworkRuleSetInputIpv6RulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<NetworkRuleSetInputIpv6RulesList>;
 
 /** Specifies the default action of allow or deny when no other rules match. */
-export type NetworkRuleSetInputDefaultAction = "Allow" | "Deny";
+export type NetworkRuleSetInputDefaultAction = "Allow" | "Deny" | (string & {});
 export const NetworkRuleSetInputDefaultAction = /*@__PURE__*/ S.String;
 
 /** Network rule set */
@@ -8666,15 +8740,26 @@ export const NetworkRuleSetInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkRuleSetInput>;
 
 /** The default access tier for block blobs in the storage account. Required for storage accounts where kind = BlobStorage. See more details in: https://learn.microsoft.com/azure/storage/blobs/access-tiers-overview. */
-export type AccessTier = "Hot" | "Cool" | "Premium" | "Cold" | "Smart";
+export type AccessTier =
+  | "Hot"
+  | "Cool"
+  | "Premium"
+  | "Cold"
+  | "Smart"
+  | (string & {});
 export const AccessTier = /*@__PURE__*/ S.String;
 
 /** Indicates the directory service used. Note that this enum may be extended in the future. */
-export type DirectoryServiceOptions = "None" | "AADDS" | "AD" | "AADKERB";
+export type DirectoryServiceOptions =
+  | "None"
+  | "AADDS"
+  | "AD"
+  | "AADKERB"
+  | (string & {});
 export const DirectoryServiceOptions = /*@__PURE__*/ S.String;
 
 /** Specifies the Active Directory account type for Azure Storage. If directoryServiceOptions is set to AD (AD DS authentication), this property is optional. If provided, samAccountName should also be provided. For directoryServiceOptions AADDS (Entra DS authentication) or AADKERB (Entra authentication), this property can be omitted. */
-export type AccountType = "User" | "Computer";
+export type AccountType = "User" | "Computer" | (string & {});
 export const AccountType = /*@__PURE__*/ S.String;
 
 /** Settings properties for Active Directory (AD). */
@@ -8716,7 +8801,8 @@ export type DefaultSharePermission =
   | "None"
   | "StorageFileDataSmbShareReader"
   | "StorageFileDataSmbShareContributor"
-  | "StorageFileDataSmbShareElevatedContributor";
+  | "StorageFileDataSmbShareElevatedContributor"
+  | (string & {});
 export const DefaultSharePermission = /*@__PURE__*/ S.String;
 
 /** Setting property for Managed Identity access over SMB using OAuth */
@@ -8756,11 +8842,14 @@ export const AzureFilesIdentityBasedAuthentication = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AzureFilesIdentityBasedAuthentication>;
 
 /** Allow large file shares if sets to Enabled. It cannot be disabled once it is enabled. */
-export type LargeFileSharesState = "Disabled" | "Enabled";
+export type LargeFileSharesState = "Disabled" | "Enabled" | (string & {});
 export const LargeFileSharesState = /*@__PURE__*/ S.String;
 
 /** Routing Choice defines the kind of network routing opted by the user. */
-export type RoutingChoice = "MicrosoftRouting" | "InternetRouting";
+export type RoutingChoice =
+  | "MicrosoftRouting"
+  | "InternetRouting"
+  | (string & {});
 export const RoutingChoice = /*@__PURE__*/ S.String;
 
 /** Routing preference defines the type of network, either microsoft or internet routing to be used to deliver the user data, the default option is microsoft routing */
@@ -8796,11 +8885,20 @@ export const DualStackEndpointPreference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DualStackEndpointPreference>;
 
 /** Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property. Minimum TLS version 1.3 version is not supported. */
-export type MinimumTlsVersion = "TLS1_0" | "TLS1_1" | "TLS1_2" | "TLS1_3";
+export type MinimumTlsVersion =
+  | "TLS1_0"
+  | "TLS1_1"
+  | "TLS1_2"
+  | "TLS1_3"
+  | (string & {});
 export const MinimumTlsVersion = /*@__PURE__*/ S.String;
 
 /** The ImmutabilityPolicy state defines the mode of the policy. Disabled state disables the policy, Unlocked state allows increase and decrease of immutability retention time and also allows toggling allowProtectedAppendWrites property, Locked state only allows the increase of the immutability retention time. A policy can only be created in a Disabled or Unlocked state and can be toggled between the two states. Only a policy in an Unlocked state can transition to a Locked state which cannot be reverted. */
-export type AccountImmutabilityPolicyState = "Unlocked" | "Locked" | "Disabled";
+export type AccountImmutabilityPolicyState =
+  | "Unlocked"
+  | "Locked"
+  | "Disabled"
+  | (string & {});
 export const AccountImmutabilityPolicyState = /*@__PURE__*/ S.String;
 
 /** This defines account-level immutability policy properties. */
@@ -8839,7 +8937,7 @@ export const ImmutableStorageAccount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImmutableStorageAccount>;
 
 /** Allows you to specify the type of endpoint. Set this to AzureDNSZone to create a large number of accounts in a single subscription, which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier. */
-export type DnsEndpointType = "Standard" | "AzureDnsZone";
+export type DnsEndpointType = "Standard" | "AzureDnsZone" | (string & {});
 export const DnsEndpointType = /*@__PURE__*/ S.String;
 
 /** Geo Priority Replication enablement status for the storage account. */
@@ -9074,7 +9172,11 @@ export const StorageAccountsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StorageAccountsCreateResponseTagsMap>;
 
 /** Gets the status of the storage account at the time the operation was called. */
-export type ProvisioningState = "Creating" | "ResolvingDNS" | "Succeeded";
+export type ProvisioningState =
+  | "Creating"
+  | "ResolvingDNS"
+  | "Succeeded"
+  | (string & {});
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The URIs that are used to perform a retrieval of a public blob, queue, table, web or dfs object via a microsoft routing endpoint. */
@@ -9197,7 +9299,7 @@ export const Endpoints = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Endpoints" }) as any as S.Schema<Endpoints>;
 
 /** Gets the status indicating whether the primary location of the storage account is available or unavailable. */
-export type AccountStatus = "available" | "unavailable";
+export type AccountStatus = "available" | "unavailable" | (string & {});
 export const AccountStatus = /*@__PURE__*/ S.String;
 
 /** Storage account keys creation time. */
@@ -9256,7 +9358,10 @@ export const EncryptionServices = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionServices>;
 
 /** The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Storage, Microsoft.Keyvault */
-export type EncryptionKeySource = "Microsoft.Storage" | "Microsoft.Keyvault";
+export type EncryptionKeySource =
+  | "Microsoft.Storage"
+  | "Microsoft.Keyvault"
+  | (string & {});
 export const EncryptionKeySource = /*@__PURE__*/ S.String;
 
 /** Properties of key vault. */
@@ -9315,7 +9420,8 @@ export type NetworkRuleSetBypass =
   | "None"
   | "Logging"
   | "Metrics"
-  | "AzureServices";
+  | "AzureServices"
+  | (string & {});
 export const NetworkRuleSetBypass = /*@__PURE__*/ S.String;
 
 /** Sets the resource access rules */
@@ -9326,7 +9432,7 @@ export const NetworkRuleSetResourceAccessRulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<NetworkRuleSetResourceAccessRulesList>;
 
 /** The action of virtual network rule. */
-export type VirtualNetworkRuleAction = "Allow";
+export type VirtualNetworkRuleAction = "Allow" | (string & {});
 export const VirtualNetworkRuleAction = /*@__PURE__*/ S.String;
 
 /** Gets the state of virtual network rule. */
@@ -9335,7 +9441,8 @@ export type State =
   | "Deprovisioning"
   | "Succeeded"
   | "Failed"
-  | "NetworkSourceDeleted";
+  | "NetworkSourceDeleted"
+  | (string & {});
 export const State = /*@__PURE__*/ S.String;
 
 /** Virtual Network rule. */
@@ -9377,7 +9484,7 @@ export const NetworkRuleSetIpv6RulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<NetworkRuleSetIpv6RulesList>;
 
 /** Specifies the default action of allow or deny when no other rules match. */
-export type NetworkRuleSetDefaultAction = "Allow" | "Deny";
+export type NetworkRuleSetDefaultAction = "Allow" | "Deny" | (string & {});
 export const NetworkRuleSetDefaultAction = /*@__PURE__*/ S.String;
 
 /** Network rule set */
@@ -9407,11 +9514,18 @@ export const NetworkRuleSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkRuleSet" }) as any as S.Schema<NetworkRuleSet>;
 
 /** The status of the secondary location. Possible values are: - Live: Indicates that the secondary location is active and operational. - Bootstrap: Indicates initial synchronization from the primary location to the secondary location is in progress.This typically occurs when replication is first enabled. - Unavailable: Indicates that the secondary location is temporarily unavailable. */
-export type GeoReplicationStatus = "Live" | "Bootstrap" | "Unavailable";
+export type GeoReplicationStatus =
+  | "Live"
+  | "Bootstrap"
+  | "Unavailable"
+  | (string & {});
 export const GeoReplicationStatus = /*@__PURE__*/ S.String;
 
 /** The redundancy type of the account after an account failover is performed. */
-export type PostFailoverRedundancy = "Standard_LRS" | "Standard_ZRS";
+export type PostFailoverRedundancy =
+  | "Standard_LRS"
+  | "Standard_ZRS"
+  | (string & {});
 export const PostFailoverRedundancy = /*@__PURE__*/ S.String;
 
 /** The redundancy type of the account after a planned account failover is performed. */
@@ -9419,7 +9533,8 @@ export type PostPlannedFailoverRedundancy =
   | "Standard_GRS"
   | "Standard_GZRS"
   | "Standard_RAGRS"
-  | "Standard_RAGZRS";
+  | "Standard_RAGZRS"
+  | (string & {});
 export const PostPlannedFailoverRedundancy = /*@__PURE__*/ S.String;
 
 /** Statistics related to replication for storage account's Blob, Table, Queue and File services. It is only available when geo-redundant replication is enabled for the storage account. */
@@ -9459,7 +9574,11 @@ export const StorageAccountPropertiesPrivateEndpointConnectionsList =
   ) as any as S.Schema<StorageAccountPropertiesPrivateEndpointConnectionsList>;
 
 /** The status of blob restore progress. Possible values are: - InProgress: Indicates that blob restore is ongoing. - Complete: Indicates that blob restore has been completed successfully. - Failed: Indicates that blob restore is failed. */
-export type BlobRestoreProgressStatus = "InProgress" | "Complete" | "Failed";
+export type BlobRestoreProgressStatus =
+  | "InProgress"
+  | "Complete"
+  | "Failed"
+  | (string & {});
 export const BlobRestoreProgressStatus = /*@__PURE__*/ S.String;
 
 /** Blob range */
@@ -9524,7 +9643,11 @@ export const BlobRestoreStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BlobRestoreStatus>;
 
 /** This property indicates the current sku conversion status. */
-export type SkuConversionStatus = "InProgress" | "Succeeded" | "Failed";
+export type SkuConversionStatus =
+  | "InProgress"
+  | "Succeeded"
+  | "Failed"
+  | (string & {});
 export const SkuConversionStatus = /*@__PURE__*/ S.String;
 
 /** This defines the sku conversion status object for asynchronous sku conversions. */
@@ -9884,7 +10007,9 @@ export const StorageAccountsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StorageAccountsDeleteResponse",
 }) as any as S.Schema<StorageAccountsDeleteResponse>;
 
-export type StorageAccountsFailoverRequestFailoverType = "Planned";
+export type StorageAccountsFailoverRequestFailoverType =
+  | "Planned"
+  | (string & {});
 export const StorageAccountsFailoverRequestFailoverType =
   /*@__PURE__*/ S.String;
 
@@ -9926,7 +10051,8 @@ export const StorageAccountsFailoverResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageAccountsFailoverResponse>;
 
 export type StorageAccountsGetCustomerInitiatedMigrationRequestMigrationName =
-  "default";
+  | "default"
+  | (string & {});
 export const StorageAccountsGetCustomerInitiatedMigrationRequestMigrationName =
   /*@__PURE__*/ S.String;
 
@@ -9968,7 +10094,8 @@ export type MigrationStatus =
   | "SubmittedForConversion"
   | "InProgress"
   | "Complete"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const MigrationStatus = /*@__PURE__*/ S.String;
 
 /** The properties of a storage account's ongoing or enqueued migration. */
@@ -10020,7 +10147,8 @@ export const StorageAccountsGetCustomerInitiatedMigrationResponse =
 
 export type StorageAccountsGetPropertiesRequestExpand =
   | "geoReplicationStats"
-  | "blobRestoreStatus";
+  | "blobRestoreStatus"
+  | (string & {});
 export const StorageAccountsGetPropertiesRequestExpand = /*@__PURE__*/ S.String;
 
 export interface StorageAccountsGetPropertiesRequest {
@@ -10257,19 +10385,28 @@ export const StorageAccountListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageAccountListResult>;
 
 /** The signed services accessible with the account SAS. Possible values include: Blob (b), Queue (q), Table (t), File (f). */
-export type Services = "b" | "q" | "t" | "f";
+export type Services = "b" | "q" | "t" | "f" | (string & {});
 export const Services = /*@__PURE__*/ S.String;
 
 /** The signed resource types that are accessible with the account SAS. Service (s): Access to service-level APIs; Container (c): Access to container-level APIs; Object (o): Access to object-level APIs for blobs, queue messages, table entities, and files. */
-export type SignedResourceTypes = "s" | "c" | "o";
+export type SignedResourceTypes = "s" | "c" | "o" | (string & {});
 export const SignedResourceTypes = /*@__PURE__*/ S.String;
 
 /** The signed permissions for the account SAS. Possible values include: Read (r), Write (w), Delete (d), List (l), Add (a), Create (c), Update (u) and Process (p). */
-export type Permissions = "r" | "d" | "w" | "l" | "a" | "c" | "u" | "p";
+export type Permissions =
+  | "r"
+  | "d"
+  | "w"
+  | "l"
+  | "a"
+  | "c"
+  | "u"
+  | "p"
+  | (string & {});
 export const Permissions = /*@__PURE__*/ S.String;
 
 /** The protocol permitted for a request made with the account SAS. */
-export type HttpProtocol = "https,http" | "https";
+export type HttpProtocol = "https,http" | "https" | (string & {});
 export const HttpProtocol = /*@__PURE__*/ S.String;
 
 export interface StorageAccountsListAccountSASRequest {
@@ -10358,7 +10495,7 @@ export const StorageAccountsListByResourceGroupRequest =
     identifier: "StorageAccountsListByResourceGroupRequest",
   }) as any as S.Schema<StorageAccountsListByResourceGroupRequest>;
 
-export type StorageAccountsListKeysRequestExpand = "kerb";
+export type StorageAccountsListKeysRequestExpand = "kerb" | (string & {});
 export const StorageAccountsListKeysRequestExpand = /*@__PURE__*/ S.String;
 
 export interface StorageAccountsListKeysRequest {
@@ -10392,7 +10529,7 @@ export const StorageAccountsListKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageAccountsListKeysRequest>;
 
 /** Permissions for the key -- read-only or full permissions. */
-export type KeyPermission = "Read" | "Full";
+export type KeyPermission = "Read" | "Full" | (string & {});
 export const KeyPermission = /*@__PURE__*/ S.String;
 
 /** An access key for the storage account. */
@@ -10438,7 +10575,7 @@ export const StorageAccountListKeysResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageAccountListKeysResult>;
 
 /** The signed services accessible with the service SAS. Possible values include: Blob (b), Container (c), File (f), Share (s). */
-export type SignedResource = "b" | "c" | "f" | "s";
+export type SignedResource = "b" | "c" | "f" | "s" | (string & {});
 export const SignedResource = /*@__PURE__*/ S.String;
 
 export interface StorageAccountsListServiceSASRequest {
@@ -10889,11 +11026,11 @@ export const StorageTaskAssignmentInstancesReportListRequest =
   }) as any as S.Schema<StorageTaskAssignmentInstancesReportListRequest>;
 
 /** Represents the status of the execution. */
-export type RunStatusEnum = "InProgress" | "Finished";
+export type RunStatusEnum = "InProgress" | "Finished" | (string & {});
 export const RunStatusEnum = /*@__PURE__*/ S.String;
 
 /** Represents the overall result of the execution for the run instance */
-export type RunResult = "Succeeded" | "Failed";
+export type RunResult = "Succeeded" | "Failed" | (string & {});
 export const RunResult = /*@__PURE__*/ S.String;
 
 /** Storage task execution report for a run instance. */
@@ -11025,11 +11162,11 @@ export const ExecutionTarget = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExecutionTarget>;
 
 /** The trigger type of the storage task assignment execution */
-export type TriggerType = "RunOnce" | "OnSchedule" | "MockRun";
+export type TriggerType = "RunOnce" | "OnSchedule" | "MockRun" | (string & {});
 export const TriggerType = /*@__PURE__*/ S.String;
 
 /** Run interval unit of task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce' */
-export type IntervalUnit = "Days";
+export type IntervalUnit = "Days" | (string & {});
 export const IntervalUnit = /*@__PURE__*/ S.String;
 
 /** The trigger parameters update for the storage task assignment execution */
@@ -11180,7 +11317,8 @@ export type StorageTaskAssignmentProvisioningState =
   | "Succeeded"
   | "Deleting"
   | "Canceled"
-  | "Failed";
+  | "Failed"
+  | (string & {});
 export const StorageTaskAssignmentProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of the storage task assignment. */
@@ -12180,7 +12318,8 @@ export type UsageUnit =
   | "Seconds"
   | "Percent"
   | "CountsPerSecond"
-  | "BytesPerSecond";
+  | "BytesPerSecond"
+  | (string & {});
 export const UsageUnit = /*@__PURE__*/ S.String;
 
 /** The usage names that can be used; currently limited to StorageAccount. */

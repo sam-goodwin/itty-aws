@@ -101,7 +101,8 @@ export const CreateProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 export type VariableStateEnum =
   | "VARIABLE_STATE_UNSPECIFIED"
   | "UPDATED"
-  | "DELETED";
+  | "DELETED"
+  | (string & {});
 export const VariableStateEnum = /*@__PURE__*/ S.String;
 
 /** Describes a single variable within a RuntimeConfig resource. The name denotes the hierarchical variable name. For example, `ports/serving_port` is a valid variable name. The variable value is an opaque string and only leaf variables can have values (that is, variables that do not have any child variables). */

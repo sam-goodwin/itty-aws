@@ -98,7 +98,8 @@ export type GoogleSecuritySafebrowsingV4ThreatHitThreatTypeEnum =
   | "SUSPICIOUS"
   | "TRICK_TO_BILL"
   | "HIGH_CONFIDENCE_ALLOWLIST"
-  | "ACCURACY_TIPS";
+  | "ACCURACY_TIPS"
+  | (string & {});
 export const GoogleSecuritySafebrowsingV4ThreatHitThreatTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -111,7 +112,8 @@ export type GoogleSecuritySafebrowsingV4ThreatHitPlatformTypeEnum =
   | "IOS"
   | "ANY_PLATFORM"
   | "ALL_PLATFORMS"
-  | "CHROME";
+  | "CHROME"
+  | (string & {});
 export const GoogleSecuritySafebrowsingV4ThreatHitPlatformTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -120,7 +122,8 @@ export type GoogleSecuritySafebrowsingV4ThreatHitThreatSourceTypeEnum =
   | "MATCHING_URL"
   | "TAB_URL"
   | "TAB_REDIRECT"
-  | "TAB_RESOURCE";
+  | "TAB_RESOURCE"
+  | (string & {});
 export const GoogleSecuritySafebrowsingV4ThreatHitThreatSourceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -268,12 +271,13 @@ export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateR
     | "SUSPICIOUS"
     | "TRICK_TO_BILL"
     | "HIGH_CONFIDENCE_ALLOWLIST"
-    | "ACCURACY_TIPS";
+    | "ACCURACY_TIPS"
+    | (string & {});
 export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItemEnum =
-  "COMPRESSION_TYPE_UNSPECIFIED" | "RAW" | "RICE";
+  "COMPRESSION_TYPE_UNSPECIFIED" | "RAW" | "RICE" | (string & {});
 export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -325,7 +329,8 @@ export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateR
     | "IOS"
     | "ANY_PLATFORM"
     | "ALL_PLATFORMS"
-    | "CHROME";
+    | "CHROME"
+    | (string & {});
 export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -336,7 +341,8 @@ export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateR
     | "IP_RANGE"
     | "CHROME_EXTENSION"
     | "FILENAME"
-    | "CERT";
+    | "CERT"
+    | (string & {});
 export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -426,7 +432,8 @@ export const FetchThreatListUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
 export type GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionTypeEnum =
   | "COMPRESSION_TYPE_UNSPECIFIED"
   | "RAW"
-  | "RICE";
+  | "RICE"
+  | (string & {});
 export const GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -525,7 +532,10 @@ export const GoogleSecuritySafebrowsingV4ThreatEntrySetList =
   ) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatEntrySetList>;
 
 export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseTypeEnum =
-  "RESPONSE_TYPE_UNSPECIFIED" | "PARTIAL_UPDATE" | "FULL_UPDATE";
+    | "RESPONSE_TYPE_UNSPECIFIED"
+    | "PARTIAL_UPDATE"
+    | "FULL_UPDATE"
+    | (string & {});
 export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -536,7 +546,8 @@ export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdate
     | "IP_RANGE"
     | "CHROME_EXTENSION"
     | "FILENAME"
-    | "CERT";
+    | "CERT"
+    | (string & {});
 export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -549,7 +560,8 @@ export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdate
     | "IOS"
     | "ANY_PLATFORM"
     | "ALL_PLATFORMS"
-    | "CHROME";
+    | "CHROME"
+    | (string & {});
 export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -585,7 +597,8 @@ export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdate
     | "SUSPICIOUS"
     | "TRICK_TO_BILL"
     | "HIGH_CONFIDENCE_ALLOWLIST"
-    | "ACCURACY_TIPS";
+    | "ACCURACY_TIPS"
+    | (string & {});
 export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -676,7 +689,8 @@ export type GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItemEnum =
   | "SUSPICIOUS"
   | "TRICK_TO_BILL"
   | "HIGH_CONFIDENCE_ALLOWLIST"
-  | "ACCURACY_TIPS";
+  | "ACCURACY_TIPS"
+  | (string & {});
 export const GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -696,7 +710,8 @@ export type GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnum =
   | "IOS"
   | "ANY_PLATFORM"
   | "ALL_PLATFORMS"
-  | "CHROME";
+  | "CHROME"
+  | (string & {});
 export const GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -714,7 +729,8 @@ export type GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnum =
   | "IP_RANGE"
   | "CHROME_EXTENSION"
   | "FILENAME"
-  | "CERT";
+  | "CERT"
+  | (string & {});
 export const GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -827,7 +843,8 @@ export type GoogleSecuritySafebrowsingV4ThreatMatchThreatTypeEnum =
   | "SUSPICIOUS"
   | "TRICK_TO_BILL"
   | "HIGH_CONFIDENCE_ALLOWLIST"
-  | "ACCURACY_TIPS";
+  | "ACCURACY_TIPS"
+  | (string & {});
 export const GoogleSecuritySafebrowsingV4ThreatMatchThreatTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -880,7 +897,8 @@ export type GoogleSecuritySafebrowsingV4ThreatMatchPlatformTypeEnum =
   | "IOS"
   | "ANY_PLATFORM"
   | "ALL_PLATFORMS"
-  | "CHROME";
+  | "CHROME"
+  | (string & {});
 export const GoogleSecuritySafebrowsingV4ThreatMatchPlatformTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -891,7 +909,8 @@ export type GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryTypeEnum =
   | "IP_RANGE"
   | "CHROME_EXTENSION"
   | "FILENAME"
-  | "CERT";
+  | "CERT"
+  | (string & {});
 export const GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1087,7 +1106,8 @@ export type GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatTypeEnum =
   | "SUSPICIOUS"
   | "TRICK_TO_BILL"
   | "HIGH_CONFIDENCE_ALLOWLIST"
-  | "ACCURACY_TIPS";
+  | "ACCURACY_TIPS"
+  | (string & {});
 export const GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1100,7 +1120,8 @@ export type GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformTypeEnum =
   | "IOS"
   | "ANY_PLATFORM"
   | "ALL_PLATFORMS"
-  | "CHROME";
+  | "CHROME"
+  | (string & {});
 export const GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1111,7 +1132,8 @@ export type GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryTypeEnum 
     | "IP_RANGE"
     | "CHROME_EXTENSION"
     | "FILENAME"
-    | "CERT";
+    | "CERT"
+    | (string & {});
 export const GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryTypeEnum =
   /*@__PURE__*/ S.String;
 

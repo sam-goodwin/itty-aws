@@ -148,7 +148,8 @@ export type FeatureTypeEnum =
   | "CROP_HINTS"
   | "WEB_DETECTION"
   | "PRODUCT_SEARCH"
-  | "OBJECT_LOCALIZATION";
+  | "OBJECT_LOCALIZATION"
+  | (string & {});
 export const FeatureTypeEnum = /*@__PURE__*/ S.String;
 
 /** The type of Google Cloud Vision API detection to perform, and the maximum number of results to return for that type. Multiple `Feature` objects can be specified in the `features` list. */
@@ -630,7 +631,8 @@ export type FaceAnnotationSorrowLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const FaceAnnotationSorrowLikelihoodEnum = /*@__PURE__*/ S.String;
 
 export type FaceAnnotationJoyLikelihoodEnum =
@@ -639,7 +641,8 @@ export type FaceAnnotationJoyLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const FaceAnnotationJoyLikelihoodEnum = /*@__PURE__*/ S.String;
 
 export type FaceAnnotationHeadwearLikelihoodEnum =
@@ -648,7 +651,8 @@ export type FaceAnnotationHeadwearLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const FaceAnnotationHeadwearLikelihoodEnum = /*@__PURE__*/ S.String;
 
 export type FaceAnnotationAngerLikelihoodEnum =
@@ -657,7 +661,8 @@ export type FaceAnnotationAngerLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const FaceAnnotationAngerLikelihoodEnum = /*@__PURE__*/ S.String;
 
 export type FaceAnnotationUnderExposedLikelihoodEnum =
@@ -666,7 +671,8 @@ export type FaceAnnotationUnderExposedLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const FaceAnnotationUnderExposedLikelihoodEnum = /*@__PURE__*/ S.String;
 
 export type FaceAnnotationSurpriseLikelihoodEnum =
@@ -675,7 +681,8 @@ export type FaceAnnotationSurpriseLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const FaceAnnotationSurpriseLikelihoodEnum = /*@__PURE__*/ S.String;
 
 export type FaceAnnotationBlurredLikelihoodEnum =
@@ -684,7 +691,8 @@ export type FaceAnnotationBlurredLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const FaceAnnotationBlurredLikelihoodEnum = /*@__PURE__*/ S.String;
 
 export type LandmarkTypeEnum =
@@ -724,7 +732,8 @@ export type LandmarkTypeEnum =
   | "CHIN_LEFT_GONION"
   | "CHIN_RIGHT_GONION"
   | "LEFT_CHEEK_CENTER"
-  | "RIGHT_CHEEK_CENTER";
+  | "RIGHT_CHEEK_CENTER"
+  | (string & {});
 export const LandmarkTypeEnum = /*@__PURE__*/ S.String;
 
 /** A 3D position in the image, used primarily for Face detection landmarks. A valid Position must have both x and y coordinates. The position coordinates are in the same scale as the original image. */
@@ -1075,7 +1084,8 @@ export type DetectedBreakTypeEnum =
   | "SURE_SPACE"
   | "EOL_SURE_SPACE"
   | "HYPHEN"
-  | "LINE_BREAK";
+  | "LINE_BREAK"
+  | (string & {});
 export const DetectedBreakTypeEnum = /*@__PURE__*/ S.String;
 
 /** Detected start or end of a structural component. */
@@ -1187,7 +1197,8 @@ export type BlockBlockTypeEnum =
   | "TABLE"
   | "PICTURE"
   | "RULER"
-  | "BARCODE";
+  | "BARCODE"
+  | (string & {});
 export const BlockBlockTypeEnum = /*@__PURE__*/ S.String;
 
 /** Logical element on the page. */
@@ -1266,7 +1277,8 @@ export type SafeSearchAnnotationAdultEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const SafeSearchAnnotationAdultEnum = /*@__PURE__*/ S.String;
 
 export type SafeSearchAnnotationRacyEnum =
@@ -1275,7 +1287,8 @@ export type SafeSearchAnnotationRacyEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const SafeSearchAnnotationRacyEnum = /*@__PURE__*/ S.String;
 
 export type SafeSearchAnnotationSpoofEnum =
@@ -1284,7 +1297,8 @@ export type SafeSearchAnnotationSpoofEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const SafeSearchAnnotationSpoofEnum = /*@__PURE__*/ S.String;
 
 export type SafeSearchAnnotationMedicalEnum =
@@ -1293,7 +1307,8 @@ export type SafeSearchAnnotationMedicalEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const SafeSearchAnnotationMedicalEnum = /*@__PURE__*/ S.String;
 
 export type SafeSearchAnnotationViolenceEnum =
@@ -1302,7 +1317,8 @@ export type SafeSearchAnnotationViolenceEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY";
+  | "VERY_LIKELY"
+  | (string & {});
 export const SafeSearchAnnotationViolenceEnum = /*@__PURE__*/ S.String;
 
 /** Set of features pertaining to the image, computed by computer vision methods over safe-search verticals (for example, adult, spoof, medical, violence). */

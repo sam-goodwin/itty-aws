@@ -45,7 +45,8 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -53,7 +54,8 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key";
+  | "Key"
+  | (string & {});
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -91,7 +93,8 @@ export type RequestState =
   | "Escalated"
   | "Failed"
   | "InProgress"
-  | "Canceled";
+  | "Canceled"
+  | (string & {});
 export const RequestState = /*@__PURE__*/ S.String;
 
 /** Name of the resource provided by the resource provider. This property is already included in the request URI, so it is a readonly property returned in the response. */
@@ -541,7 +544,11 @@ export const GroupQuotaLimitsRequestUpdateResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GroupQuotaLimitsRequestUpdateResponse>;
 
 /** Enforcement status. */
-export type EnforcementState = "Enabled" | "Disabled" | "NotAvailable";
+export type EnforcementState =
+  | "Enabled"
+  | "Disabled"
+  | "NotAvailable"
+  | (string & {});
 export const EnforcementState = /*@__PURE__*/ S.String;
 
 export interface GroupQuotasEnforcementStatusPropertiesInput {
@@ -781,7 +788,7 @@ export const GroupQuotasCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupQuotasCreateOrUpdateRequest>;
 
 /** Type of the group. */
-export type GroupType = "AllocationGroup" | "EnforcedGroup";
+export type GroupType = "AllocationGroup" | "EnforcedGroup" | (string & {});
 export const GroupType = /*@__PURE__*/ S.String;
 
 /** Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified. */
@@ -1995,7 +2002,7 @@ export const ResourceUsageList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceUsageList>;
 
 /** The limit object type. */
-export type LimitType = "LimitValue";
+export type LimitType = "LimitValue" | (string & {});
 export const LimitType = /*@__PURE__*/ S.String;
 
 /** LimitJson abstract class. */
@@ -2348,7 +2355,8 @@ export type QuotaRequestState =
   | "Invalid"
   | "Succeeded"
   | "Failed"
-  | "InProgress";
+  | "InProgress"
+  | (string & {});
 export const QuotaRequestState = /*@__PURE__*/ S.String;
 
 /** Error details. */
@@ -2599,7 +2607,7 @@ export const UsagesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsagesGetRequest>;
 
 /** The quota or usages limit types. */
-export type UsagesTypes = "Individual" | "Combined";
+export type UsagesTypes = "Individual" | "Combined" | (string & {});
 export const UsagesTypes = /*@__PURE__*/ S.String;
 
 /** The resource usages value. */

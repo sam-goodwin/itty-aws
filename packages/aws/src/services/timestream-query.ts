@@ -209,7 +209,7 @@ export const NotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotificationConfiguration>;
 export type ResourceName = string;
 export type SchemaName = string;
-export type DimensionValueType = "VARCHAR";
+export type DimensionValueType = "VARCHAR" | (string & {});
 export const DimensionValueType = /*@__PURE__*/ S.String;
 
 export interface DimensionMapping {
@@ -228,7 +228,8 @@ export type ScalarMeasureValueType =
   | "BOOLEAN"
   | "DOUBLE"
   | "VARCHAR"
-  | "TIMESTAMP";
+  | "TIMESTAMP"
+  | (string & {});
 export const ScalarMeasureValueType = /*@__PURE__*/ S.String;
 
 export interface MultiMeasureAttributeMapping {
@@ -266,7 +267,8 @@ export type MeasureValueType =
   | "BOOLEAN"
   | "DOUBLE"
   | "VARCHAR"
-  | "MULTI";
+  | "MULTI"
+  | (string & {});
 export const MeasureValueType = /*@__PURE__*/ S.String;
 
 export interface MixedMeasureMapping {
@@ -335,7 +337,7 @@ export const TagList = /*@__PURE__*/ S.Array(Tag);
 export type StringValue2048 = string;
 export type S3BucketName = string;
 export type S3ObjectKeyPrefix = string;
-export type S3EncryptionOption = "SSE_S3" | "SSE_KMS";
+export type S3EncryptionOption = "SSE_S3" | "SSE_KMS" | (string & {});
 export const S3EncryptionOption = /*@__PURE__*/ S.String;
 
 export interface S3Configuration {
@@ -423,10 +425,13 @@ export const DescribeAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeAccountSettingsRequest",
 }) as any as S.Schema<DescribeAccountSettingsRequest>;
 export type MaxQueryCapacity = number;
-export type QueryPricingModel = "BYTES_SCANNED" | "COMPUTE_UNITS";
+export type QueryPricingModel =
+  | "BYTES_SCANNED"
+  | "COMPUTE_UNITS"
+  | (string & {});
 export const QueryPricingModel = /*@__PURE__*/ S.String;
 
-export type ComputeMode = "ON_DEMAND" | "PROVISIONED";
+export type ComputeMode = "ON_DEMAND" | "PROVISIONED" | (string & {});
 export const ComputeMode = /*@__PURE__*/ S.String;
 
 export type QueryTCU = number;
@@ -443,7 +448,11 @@ export const AccountSettingsNotificationConfiguration = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AccountSettingsNotificationConfiguration",
 }) as any as S.Schema<AccountSettingsNotificationConfiguration>;
-export type LastUpdateStatus = "PENDING" | "FAILED" | "SUCCEEDED";
+export type LastUpdateStatus =
+  | "PENDING"
+  | "FAILED"
+  | "SUCCEEDED"
+  | (string & {});
 export const LastUpdateStatus = /*@__PURE__*/ S.String;
 
 export interface LastUpdate {
@@ -535,14 +544,15 @@ export const DescribeScheduledQueryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeScheduledQueryRequest",
 }) as any as S.Schema<DescribeScheduledQueryRequest>;
-export type ScheduledQueryState = "ENABLED" | "DISABLED";
+export type ScheduledQueryState = "ENABLED" | "DISABLED" | (string & {});
 export const ScheduledQueryState = /*@__PURE__*/ S.String;
 
 export type ScheduledQueryRunStatus =
   | "AUTO_TRIGGER_SUCCESS"
   | "AUTO_TRIGGER_FAILURE"
   | "MANUAL_TRIGGER_SUCCESS"
-  | "MANUAL_TRIGGER_FAILURE";
+  | "MANUAL_TRIGGER_FAILURE"
+  | (string & {});
 export const ScheduledQueryRunStatus = /*@__PURE__*/ S.String;
 
 export interface ExecutionStats {
@@ -723,7 +733,8 @@ export const DescribeScheduledQueryResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeScheduledQueryResponse>;
 export type ScheduledQueryInsightsMode =
   | "ENABLED_WITH_RATE_CONTROL"
-  | "DISABLED";
+  | "DISABLED"
+  | (string & {});
 export const ScheduledQueryInsightsMode = /*@__PURE__*/ S.String;
 
 export interface ScheduledQueryInsights {
@@ -888,7 +899,8 @@ export type ScalarType =
   | "INTERVAL_DAY_TO_SECOND"
   | "INTERVAL_YEAR_TO_MONTH"
   | "UNKNOWN"
-  | "INTEGER";
+  | "INTEGER"
+  | (string & {});
 export const ScalarType = /*@__PURE__*/ S.String;
 
 export interface ColumnInfo {
@@ -981,7 +993,10 @@ export const PrepareQueryResponse = /*@__PURE__*/ S.suspend(() =>
 export type ClientRequestToken = string | redacted.Redacted<string>;
 export type PaginationToken = string;
 export type MaxQueryResults = number;
-export type QueryInsightsMode = "ENABLED_WITH_RATE_CONTROL" | "DISABLED";
+export type QueryInsightsMode =
+  | "ENABLED_WITH_RATE_CONTROL"
+  | "DISABLED"
+  | (string & {});
 export const QueryInsightsMode = /*@__PURE__*/ S.String;
 
 export interface QueryInsights {
