@@ -469,8 +469,6 @@ export const MembersCreateRequestPoliciesItemResourceGroupsList =
   ) as any as S.Schema<MembersCreateRequestPoliciesItemResourceGroupsList>;
 
 export interface MembersCreateRequestPoliciesItem {
-  /** Policy identifier. */
-  id: string;
   /** Allow or deny operations against the resources. */
   access: MembersCreateRequestPoliciesItemAccess;
   /** A set of permission groups that are specified to the policy. */
@@ -480,7 +478,6 @@ export interface MembersCreateRequestPoliciesItem {
 }
 export const MembersCreateRequestPoliciesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.String,
     access: MembersCreateRequestPoliciesItemAccess,
     permissionGroups: MembersCreateRequestPoliciesItemPermissionGroupsList.pipe(
       T.Body("permission_groups"),
@@ -4044,7 +4041,7 @@ export interface UpdateAccountRequest {
   id: string;
   /** Account name */
   name: string;
-  type: UpdateRequestType;
+  type?: UpdateRequestType;
   /** Parent container details */
   managedBy?: UpdateRequestManagedBy;
   /** Account settings */
@@ -4055,7 +4052,7 @@ export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String,
     name: S.String,
-    type: UpdateRequestType,
+    type: S.optional(UpdateRequestType),
     managedBy: S.optional(UpdateRequestManagedBy.pipe(T.Body("managed_by"))),
     settings: S.optional(UpdateRequestSettings),
   })
@@ -4191,17 +4188,17 @@ export interface MembersUpdateRequestRolesItem {
   /** Role identifier tag. */
   id: string;
   /** Description of role's permissions. */
-  description: string;
+  description?: string;
   /** Role name. */
-  name: string;
-  permissions: MembersUpdateRequestRolesItemPermissions;
+  name?: string;
+  permissions?: MembersUpdateRequestRolesItemPermissions;
 }
 export const MembersUpdateRequestRolesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    description: S.String,
-    name: S.String,
-    permissions: MembersUpdateRequestRolesItemPermissions,
+    description: S.optional(S.String),
+    name: S.optional(S.String),
+    permissions: S.optional(MembersUpdateRequestRolesItemPermissions),
   }),
 ).annotate({
   identifier: "MembersUpdateRequestRolesItem",
@@ -4290,7 +4287,7 @@ export const MembersUpdateRequestPoliciesItemResourceGroupsList =
 
 export interface MembersUpdateRequestPoliciesItem {
   /** Policy identifier. */
-  id: string;
+  id?: string;
   /** Allow or deny operations against the resources. */
   access: MembersUpdateRequestPoliciesItemAccess;
   /** A set of permission groups that are specified to the policy. */
@@ -4300,7 +4297,7 @@ export interface MembersUpdateRequestPoliciesItem {
 }
 export const MembersUpdateRequestPoliciesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.String,
+    id: S.optional(S.String),
     access: MembersUpdateRequestPoliciesItemAccess,
     permissionGroups: MembersUpdateRequestPoliciesItemPermissionGroupsList.pipe(
       T.Body("permission_groups"),

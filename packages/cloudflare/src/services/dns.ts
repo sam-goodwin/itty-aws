@@ -11094,6 +11094,9 @@ export const RecordsListResultItemARecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemARecordMeta",
 }) as any as S.Schema<RecordsListResultItemARecordMeta>;
 
+export type RecordsListResultItemARecordType = "A" | (string & {});
+export const RecordsListResultItemARecordType = /*@__PURE__*/ S.String;
+
 export interface RecordsListResultItemARecord {
   /** Identifier. */
   id: string;
@@ -11109,6 +11112,10 @@ export interface RecordsListResultItemARecord {
   commentModifiedOn?: string;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Record type. */
+  type: RecordsListResultItemARecordType;
 }
 export const RecordsListResultItemARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11119,6 +11126,8 @@ export const RecordsListResultItemARecord = /*@__PURE__*/ S.suspend(() =>
     proxiable: S.Boolean,
     commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
     tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    name: S.String,
+    type: RecordsListResultItemARecordType,
   }),
 ).annotate({
   identifier: "RecordsListResultItemARecord",
@@ -11158,6 +11167,9 @@ export const RecordsListResultItemAAAARecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemAAAARecordMeta",
 }) as any as S.Schema<RecordsListResultItemAAAARecordMeta>;
 
+export type RecordsListResultItemAAAARecordType = "AAAA" | (string & {});
+export const RecordsListResultItemAAAARecordType = /*@__PURE__*/ S.String;
+
 export interface RecordsListResultItemAAAARecord {
   /** Identifier. */
   id: string;
@@ -11173,6 +11185,10 @@ export interface RecordsListResultItemAAAARecord {
   commentModifiedOn?: string;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Record type. */
+  type: RecordsListResultItemAAAARecordType;
 }
 export const RecordsListResultItemAAAARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11183,6 +11199,8 @@ export const RecordsListResultItemAAAARecord = /*@__PURE__*/ S.suspend(() =>
     proxiable: S.Boolean,
     commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
     tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    name: S.String,
+    type: RecordsListResultItemAAAARecordType,
   }),
 ).annotate({
   identifier: "RecordsListResultItemAAAARecord",
@@ -11223,6 +11241,9 @@ export const RecordsListResultItemCNAMERecordMeta = /*@__PURE__*/ S.suspend(
   identifier: "RecordsListResultItemCNAMERecordMeta",
 }) as any as S.Schema<RecordsListResultItemCNAMERecordMeta>;
 
+export type RecordsListResultItemCNAMERecordType = "CNAME" | (string & {});
+export const RecordsListResultItemCNAMERecordType = /*@__PURE__*/ S.String;
+
 export interface RecordsListResultItemCNAMERecord {
   /** Identifier. */
   id: string;
@@ -11238,6 +11259,10 @@ export interface RecordsListResultItemCNAMERecord {
   commentModifiedOn?: string;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Record type. */
+  type: RecordsListResultItemCNAMERecordType;
 }
 export const RecordsListResultItemCNAMERecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11248,6 +11273,8 @@ export const RecordsListResultItemCNAMERecord = /*@__PURE__*/ S.suspend(() =>
     proxiable: S.Boolean,
     commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
     tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    name: S.String,
+    type: RecordsListResultItemCNAMERecordType,
   }),
 ).annotate({
   identifier: "RecordsListResultItemCNAMERecord",
@@ -11287,6 +11314,9 @@ export const RecordsListResultItemMXRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemMXRecordMeta",
 }) as any as S.Schema<RecordsListResultItemMXRecordMeta>;
 
+export type RecordsListResultItemMXRecordType = "MX" | (string & {});
+export const RecordsListResultItemMXRecordType = /*@__PURE__*/ S.String;
+
 export interface RecordsListResultItemMXRecord {
   /** Identifier. */
   id: string;
@@ -11302,6 +11332,10 @@ export interface RecordsListResultItemMXRecord {
   commentModifiedOn?: string;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Record type. */
+  type: RecordsListResultItemMXRecordType;
 }
 export const RecordsListResultItemMXRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11312,6 +11346,8 @@ export const RecordsListResultItemMXRecord = /*@__PURE__*/ S.suspend(() =>
     proxiable: S.Boolean,
     commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
     tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    name: S.String,
+    type: RecordsListResultItemMXRecordType,
   }),
 ).annotate({
   identifier: "RecordsListResultItemMXRecord",
@@ -11351,6 +11387,9 @@ export const RecordsListResultItemNSRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemNSRecordMeta",
 }) as any as S.Schema<RecordsListResultItemNSRecordMeta>;
 
+export type RecordsListResultItemNSRecordType = "NS" | (string & {});
+export const RecordsListResultItemNSRecordType = /*@__PURE__*/ S.String;
+
 export interface RecordsListResultItemNSRecord {
   /** Identifier. */
   id: string;
@@ -11366,6 +11405,10 @@ export interface RecordsListResultItemNSRecord {
   commentModifiedOn?: string;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Record type. */
+  type: RecordsListResultItemNSRecordType;
 }
 export const RecordsListResultItemNSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11376,6 +11419,8 @@ export const RecordsListResultItemNSRecord = /*@__PURE__*/ S.suspend(() =>
     proxiable: S.Boolean,
     commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
     tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    name: S.String,
+    type: RecordsListResultItemNSRecordType,
   }),
 ).annotate({
   identifier: "RecordsListResultItemNSRecord",
@@ -11535,6 +11580,9 @@ export const RecordsListResultItemPTRRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemPTRRecordMeta",
 }) as any as S.Schema<RecordsListResultItemPTRRecordMeta>;
 
+export type RecordsListResultItemPTRRecordType = "PTR" | (string & {});
+export const RecordsListResultItemPTRRecordType = /*@__PURE__*/ S.String;
+
 export interface RecordsListResultItemPTRRecord {
   /** Identifier. */
   id: string;
@@ -11550,6 +11598,10 @@ export interface RecordsListResultItemPTRRecord {
   commentModifiedOn?: string;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Record type. */
+  type: RecordsListResultItemPTRRecordType;
 }
 export const RecordsListResultItemPTRRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11560,6 +11612,8 @@ export const RecordsListResultItemPTRRecord = /*@__PURE__*/ S.suspend(() =>
     proxiable: S.Boolean,
     commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
     tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    name: S.String,
+    type: RecordsListResultItemPTRRecordType,
   }),
 ).annotate({
   identifier: "RecordsListResultItemPTRRecord",
@@ -11599,6 +11653,9 @@ export const RecordsListResultItemTXTRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemTXTRecordMeta",
 }) as any as S.Schema<RecordsListResultItemTXTRecordMeta>;
 
+export type RecordsListResultItemTXTRecordType = "TXT" | (string & {});
+export const RecordsListResultItemTXTRecordType = /*@__PURE__*/ S.String;
+
 export interface RecordsListResultItemTXTRecord {
   /** Identifier. */
   id: string;
@@ -11614,6 +11671,10 @@ export interface RecordsListResultItemTXTRecord {
   commentModifiedOn?: string;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Record type. */
+  type: RecordsListResultItemTXTRecordType;
 }
 export const RecordsListResultItemTXTRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11624,6 +11685,8 @@ export const RecordsListResultItemTXTRecord = /*@__PURE__*/ S.suspend(() =>
     proxiable: S.Boolean,
     commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
     tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    name: S.String,
+    type: RecordsListResultItemTXTRecordType,
   }),
 ).annotate({
   identifier: "RecordsListResultItemTXTRecord",
@@ -11663,6 +11726,9 @@ export const RecordsListResultItemCAARecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemCAARecordMeta",
 }) as any as S.Schema<RecordsListResultItemCAARecordMeta>;
 
+export type RecordsListResultItemCAARecordType = "CAA" | (string & {});
+export const RecordsListResultItemCAARecordType = /*@__PURE__*/ S.String;
+
 export interface RecordsListResultItemCAARecord {
   /** Identifier. */
   id: string;
@@ -11678,6 +11744,10 @@ export interface RecordsListResultItemCAARecord {
   commentModifiedOn?: string;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Record type. */
+  type: RecordsListResultItemCAARecordType;
 }
 export const RecordsListResultItemCAARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11688,6 +11758,8 @@ export const RecordsListResultItemCAARecord = /*@__PURE__*/ S.suspend(() =>
     proxiable: S.Boolean,
     commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
     tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    name: S.String,
+    type: RecordsListResultItemCAARecordType,
   }),
 ).annotate({
   identifier: "RecordsListResultItemCAARecord",
@@ -11727,6 +11799,9 @@ export const RecordsListResultItemCERTRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemCERTRecordMeta",
 }) as any as S.Schema<RecordsListResultItemCERTRecordMeta>;
 
+export type RecordsListResultItemCERTRecordType = "CERT" | (string & {});
+export const RecordsListResultItemCERTRecordType = /*@__PURE__*/ S.String;
+
 export interface RecordsListResultItemCERTRecord {
   /** Identifier. */
   id: string;
@@ -11742,6 +11817,10 @@ export interface RecordsListResultItemCERTRecord {
   commentModifiedOn?: string;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Record type. */
+  type: RecordsListResultItemCERTRecordType;
 }
 export const RecordsListResultItemCERTRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11752,6 +11831,8 @@ export const RecordsListResultItemCERTRecord = /*@__PURE__*/ S.suspend(() =>
     proxiable: S.Boolean,
     commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
     tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    name: S.String,
+    type: RecordsListResultItemCERTRecordType,
   }),
 ).annotate({
   identifier: "RecordsListResultItemCERTRecord",
@@ -11792,6 +11873,9 @@ export const RecordsListResultItemDNSKEYRecordMeta = /*@__PURE__*/ S.suspend(
   identifier: "RecordsListResultItemDNSKEYRecordMeta",
 }) as any as S.Schema<RecordsListResultItemDNSKEYRecordMeta>;
 
+export type RecordsListResultItemDNSKEYRecordType = "DNSKEY" | (string & {});
+export const RecordsListResultItemDNSKEYRecordType = /*@__PURE__*/ S.String;
+
 export interface RecordsListResultItemDNSKEYRecord {
   /** Identifier. */
   id: string;
@@ -11807,6 +11891,10 @@ export interface RecordsListResultItemDNSKEYRecord {
   commentModifiedOn?: string;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Record type. */
+  type: RecordsListResultItemDNSKEYRecordType;
 }
 export const RecordsListResultItemDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11817,6 +11905,8 @@ export const RecordsListResultItemDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
     proxiable: S.Boolean,
     commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
     tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    name: S.String,
+    type: RecordsListResultItemDNSKEYRecordType,
   }),
 ).annotate({
   identifier: "RecordsListResultItemDNSKEYRecord",
@@ -11856,6 +11946,9 @@ export const RecordsListResultItemDSRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemDSRecordMeta",
 }) as any as S.Schema<RecordsListResultItemDSRecordMeta>;
 
+export type RecordsListResultItemDSRecordType = "DS" | (string & {});
+export const RecordsListResultItemDSRecordType = /*@__PURE__*/ S.String;
+
 export interface RecordsListResultItemDSRecord {
   /** Identifier. */
   id: string;
@@ -11871,6 +11964,10 @@ export interface RecordsListResultItemDSRecord {
   commentModifiedOn?: string;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Record type. */
+  type: RecordsListResultItemDSRecordType;
 }
 export const RecordsListResultItemDSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11881,6 +11978,8 @@ export const RecordsListResultItemDSRecord = /*@__PURE__*/ S.suspend(() =>
     proxiable: S.Boolean,
     commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
     tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    name: S.String,
+    type: RecordsListResultItemDSRecordType,
   }),
 ).annotate({
   identifier: "RecordsListResultItemDSRecord",
@@ -11921,6 +12020,9 @@ export const RecordsListResultItemHTTPSRecordMeta = /*@__PURE__*/ S.suspend(
   identifier: "RecordsListResultItemHTTPSRecordMeta",
 }) as any as S.Schema<RecordsListResultItemHTTPSRecordMeta>;
 
+export type RecordsListResultItemHTTPSRecordType = "HTTPS" | (string & {});
+export const RecordsListResultItemHTTPSRecordType = /*@__PURE__*/ S.String;
+
 export interface RecordsListResultItemHTTPSRecord {
   /** Identifier. */
   id: string;
@@ -11936,6 +12038,10 @@ export interface RecordsListResultItemHTTPSRecord {
   commentModifiedOn?: string;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Record type. */
+  type: RecordsListResultItemHTTPSRecordType;
 }
 export const RecordsListResultItemHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11946,6 +12052,8 @@ export const RecordsListResultItemHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
     proxiable: S.Boolean,
     commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
     tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    name: S.String,
+    type: RecordsListResultItemHTTPSRecordType,
   }),
 ).annotate({
   identifier: "RecordsListResultItemHTTPSRecord",
@@ -11985,6 +12093,9 @@ export const RecordsListResultItemLOCRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemLOCRecordMeta",
 }) as any as S.Schema<RecordsListResultItemLOCRecordMeta>;
 
+export type RecordsListResultItemLOCRecordType = "LOC" | (string & {});
+export const RecordsListResultItemLOCRecordType = /*@__PURE__*/ S.String;
+
 export interface RecordsListResultItemLOCRecord {
   /** Identifier. */
   id: string;
@@ -12000,6 +12111,10 @@ export interface RecordsListResultItemLOCRecord {
   commentModifiedOn?: string;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Record type. */
+  type: RecordsListResultItemLOCRecordType;
 }
 export const RecordsListResultItemLOCRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12010,6 +12125,8 @@ export const RecordsListResultItemLOCRecord = /*@__PURE__*/ S.suspend(() =>
     proxiable: S.Boolean,
     commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
     tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    name: S.String,
+    type: RecordsListResultItemLOCRecordType,
   }),
 ).annotate({
   identifier: "RecordsListResultItemLOCRecord",
@@ -12050,6 +12167,9 @@ export const RecordsListResultItemNAPTRRecordMeta = /*@__PURE__*/ S.suspend(
   identifier: "RecordsListResultItemNAPTRRecordMeta",
 }) as any as S.Schema<RecordsListResultItemNAPTRRecordMeta>;
 
+export type RecordsListResultItemNAPTRRecordType = "NAPTR" | (string & {});
+export const RecordsListResultItemNAPTRRecordType = /*@__PURE__*/ S.String;
+
 export interface RecordsListResultItemNAPTRRecord {
   /** Identifier. */
   id: string;
@@ -12065,6 +12185,10 @@ export interface RecordsListResultItemNAPTRRecord {
   commentModifiedOn?: string;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Record type. */
+  type: RecordsListResultItemNAPTRRecordType;
 }
 export const RecordsListResultItemNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12075,6 +12199,8 @@ export const RecordsListResultItemNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
     proxiable: S.Boolean,
     commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
     tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    name: S.String,
+    type: RecordsListResultItemNAPTRRecordType,
   }),
 ).annotate({
   identifier: "RecordsListResultItemNAPTRRecord",
@@ -12115,6 +12241,9 @@ export const RecordsListResultItemSMIMEARecordMeta = /*@__PURE__*/ S.suspend(
   identifier: "RecordsListResultItemSMIMEARecordMeta",
 }) as any as S.Schema<RecordsListResultItemSMIMEARecordMeta>;
 
+export type RecordsListResultItemSMIMEARecordType = "SMIMEA" | (string & {});
+export const RecordsListResultItemSMIMEARecordType = /*@__PURE__*/ S.String;
+
 export interface RecordsListResultItemSMIMEARecord {
   /** Identifier. */
   id: string;
@@ -12130,6 +12259,10 @@ export interface RecordsListResultItemSMIMEARecord {
   commentModifiedOn?: string;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Record type. */
+  type: RecordsListResultItemSMIMEARecordType;
 }
 export const RecordsListResultItemSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12140,6 +12273,8 @@ export const RecordsListResultItemSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
     proxiable: S.Boolean,
     commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
     tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    name: S.String,
+    type: RecordsListResultItemSMIMEARecordType,
   }),
 ).annotate({
   identifier: "RecordsListResultItemSMIMEARecord",
@@ -12179,6 +12314,9 @@ export const RecordsListResultItemSRVRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemSRVRecordMeta",
 }) as any as S.Schema<RecordsListResultItemSRVRecordMeta>;
 
+export type RecordsListResultItemSRVRecordType = "SRV" | (string & {});
+export const RecordsListResultItemSRVRecordType = /*@__PURE__*/ S.String;
+
 export interface RecordsListResultItemSRVRecord {
   /** Identifier. */
   id: string;
@@ -12194,6 +12332,10 @@ export interface RecordsListResultItemSRVRecord {
   commentModifiedOn?: string;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Record type. */
+  type: RecordsListResultItemSRVRecordType;
 }
 export const RecordsListResultItemSRVRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12204,6 +12346,8 @@ export const RecordsListResultItemSRVRecord = /*@__PURE__*/ S.suspend(() =>
     proxiable: S.Boolean,
     commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
     tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    name: S.String,
+    type: RecordsListResultItemSRVRecordType,
   }),
 ).annotate({
   identifier: "RecordsListResultItemSRVRecord",
@@ -12244,6 +12388,9 @@ export const RecordsListResultItemSSHFPRecordMeta = /*@__PURE__*/ S.suspend(
   identifier: "RecordsListResultItemSSHFPRecordMeta",
 }) as any as S.Schema<RecordsListResultItemSSHFPRecordMeta>;
 
+export type RecordsListResultItemSSHFPRecordType = "SSHFP" | (string & {});
+export const RecordsListResultItemSSHFPRecordType = /*@__PURE__*/ S.String;
+
 export interface RecordsListResultItemSSHFPRecord {
   /** Identifier. */
   id: string;
@@ -12259,6 +12406,10 @@ export interface RecordsListResultItemSSHFPRecord {
   commentModifiedOn?: string;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Record type. */
+  type: RecordsListResultItemSSHFPRecordType;
 }
 export const RecordsListResultItemSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12269,6 +12420,8 @@ export const RecordsListResultItemSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
     proxiable: S.Boolean,
     commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
     tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    name: S.String,
+    type: RecordsListResultItemSSHFPRecordType,
   }),
 ).annotate({
   identifier: "RecordsListResultItemSSHFPRecord",
@@ -12308,6 +12461,9 @@ export const RecordsListResultItemSVCBRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemSVCBRecordMeta",
 }) as any as S.Schema<RecordsListResultItemSVCBRecordMeta>;
 
+export type RecordsListResultItemSVCBRecordType = "SVCB" | (string & {});
+export const RecordsListResultItemSVCBRecordType = /*@__PURE__*/ S.String;
+
 export interface RecordsListResultItemSVCBRecord {
   /** Identifier. */
   id: string;
@@ -12323,6 +12479,10 @@ export interface RecordsListResultItemSVCBRecord {
   commentModifiedOn?: string;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Record type. */
+  type: RecordsListResultItemSVCBRecordType;
 }
 export const RecordsListResultItemSVCBRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12333,6 +12493,8 @@ export const RecordsListResultItemSVCBRecord = /*@__PURE__*/ S.suspend(() =>
     proxiable: S.Boolean,
     commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
     tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    name: S.String,
+    type: RecordsListResultItemSVCBRecordType,
   }),
 ).annotate({
   identifier: "RecordsListResultItemSVCBRecord",
@@ -12372,6 +12534,9 @@ export const RecordsListResultItemTLSARecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemTLSARecordMeta",
 }) as any as S.Schema<RecordsListResultItemTLSARecordMeta>;
 
+export type RecordsListResultItemTLSARecordType = "TLSA" | (string & {});
+export const RecordsListResultItemTLSARecordType = /*@__PURE__*/ S.String;
+
 export interface RecordsListResultItemTLSARecord {
   /** Identifier. */
   id: string;
@@ -12387,6 +12552,10 @@ export interface RecordsListResultItemTLSARecord {
   commentModifiedOn?: string;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Record type. */
+  type: RecordsListResultItemTLSARecordType;
 }
 export const RecordsListResultItemTLSARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12397,6 +12566,8 @@ export const RecordsListResultItemTLSARecord = /*@__PURE__*/ S.suspend(() =>
     proxiable: S.Boolean,
     commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
     tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    name: S.String,
+    type: RecordsListResultItemTLSARecordType,
   }),
 ).annotate({
   identifier: "RecordsListResultItemTLSARecord",
@@ -12436,6 +12607,9 @@ export const RecordsListResultItemURIRecordMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemURIRecordMeta",
 }) as any as S.Schema<RecordsListResultItemURIRecordMeta>;
 
+export type RecordsListResultItemURIRecordType = "URI" | (string & {});
+export const RecordsListResultItemURIRecordType = /*@__PURE__*/ S.String;
+
 export interface RecordsListResultItemURIRecord {
   /** Identifier. */
   id: string;
@@ -12451,6 +12625,10 @@ export interface RecordsListResultItemURIRecord {
   commentModifiedOn?: string;
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Record type. */
+  type: RecordsListResultItemURIRecordType;
 }
 export const RecordsListResultItemURIRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12461,6 +12639,8 @@ export const RecordsListResultItemURIRecord = /*@__PURE__*/ S.suspend(() =>
     proxiable: S.Boolean,
     commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
     tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    name: S.String,
+    type: RecordsListResultItemURIRecordType,
   }),
 ).annotate({
   identifier: "RecordsListResultItemURIRecord",
@@ -12498,6 +12678,8 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
     ],
     [
       "id",
@@ -12507,6 +12689,8 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
     ],
     [
       "id",
@@ -12516,6 +12700,8 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
     ],
     [
       "id",
@@ -12525,6 +12711,8 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
     ],
     [
       "id",
@@ -12534,6 +12722,8 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
     ],
     [
       "id",
@@ -12560,6 +12750,8 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
     ],
     [
       "id",
@@ -12569,6 +12761,8 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
     ],
     [
       "id",
@@ -12578,6 +12772,8 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
     ],
     [
       "id",
@@ -12587,6 +12783,8 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
     ],
     [
       "id",
@@ -12596,6 +12794,8 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
     ],
     [
       "id",
@@ -12605,6 +12805,8 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
     ],
     [
       "id",
@@ -12614,6 +12816,8 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
     ],
     [
       "id",
@@ -12623,6 +12827,8 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
     ],
     [
       "id",
@@ -12632,6 +12838,8 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
     ],
     [
       "id",
@@ -12641,6 +12849,8 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
     ],
     [
       "id",
@@ -12650,6 +12860,8 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
     ],
     [
       "id",
@@ -12659,6 +12871,8 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
     ],
     [
       "id",
@@ -12668,6 +12882,8 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
     ],
     [
       "id",
@@ -12677,6 +12893,8 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
     ],
     [
       "id",
@@ -12686,6 +12904,8 @@ export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "proxiable",
       "commentModifiedOn",
       "tagsModifiedOn",
+      "name",
+      "type",
     ],
   ]),
 );

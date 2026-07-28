@@ -197,6 +197,14 @@ export class ProviderConfigAlreadyExists extends T.applyErrorMatchers(
   [{ code: 7001, message: { includes: "already exists" } }],
 ) {}
 
+export class ProviderConfigNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<ProviderConfigNotFound>()("ProviderConfigNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 7002 }],
+) {}
+
 export class ProviderConfigSecretNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<ProviderConfigSecretNotFound>()(
     "ProviderConfigSecretNotFound",
@@ -257,10 +265,10 @@ export interface CreateAiGatewayRequest {
   /** gateway id */
   id: string;
   cacheInvalidateOnUpdate: boolean;
-  cacheTtl: number;
+  cacheTtl: number | null;
   collectLogs: boolean;
-  rateLimitingInterval: number;
-  rateLimitingLimit: number;
+  rateLimitingInterval: number | null;
+  rateLimitingLimit: number | null;
   authentication?: boolean;
   logManagement?: number;
   logManagementStrategy?: CreateRequestLogManagementStrategy;
@@ -284,10 +292,12 @@ export const CreateAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
     cacheInvalidateOnUpdate: S.Boolean.pipe(
       T.Body("cache_invalidate_on_update"),
     ),
-    cacheTtl: S.Number.pipe(T.Body("cache_ttl")),
+    cacheTtl: S.NullOr(S.Number).pipe(T.Body("cache_ttl")),
     collectLogs: S.Boolean.pipe(T.Body("collect_logs")),
-    rateLimitingInterval: S.Number.pipe(T.Body("rate_limiting_interval")),
-    rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
+    rateLimitingInterval: S.NullOr(S.Number).pipe(
+      T.Body("rate_limiting_interval"),
+    ),
+    rateLimitingLimit: S.NullOr(S.Number).pipe(T.Body("rate_limiting_limit")),
     authentication: S.optional(S.Boolean),
     logManagement: S.optional(S.Number.pipe(T.Body("log_management"))),
     logManagementStrategy: S.optional(
@@ -11446,10 +11456,10 @@ export interface UpdateAiGatewayRequest {
   /** gateway id */
   id: string;
   cacheInvalidateOnUpdate: boolean;
-  cacheTtl: number;
+  cacheTtl: number | null;
   collectLogs: boolean;
-  rateLimitingInterval: number;
-  rateLimitingLimit: number;
+  rateLimitingInterval: number | null;
+  rateLimitingLimit: number | null;
   authentication?: boolean;
   dlp?: UpdateRequestDlp;
   guardrails?: UpdateRequestGuardrails;
@@ -11479,10 +11489,12 @@ export const UpdateAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
     cacheInvalidateOnUpdate: S.Boolean.pipe(
       T.Body("cache_invalidate_on_update"),
     ),
-    cacheTtl: S.Number.pipe(T.Body("cache_ttl")),
+    cacheTtl: S.NullOr(S.Number).pipe(T.Body("cache_ttl")),
     collectLogs: S.Boolean.pipe(T.Body("collect_logs")),
-    rateLimitingInterval: S.Number.pipe(T.Body("rate_limiting_interval")),
-    rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
+    rateLimitingInterval: S.NullOr(S.Number).pipe(
+      T.Body("rate_limiting_interval"),
+    ),
+    rateLimitingLimit: S.NullOr(S.Number).pipe(T.Body("rate_limiting_limit")),
     authentication: S.optional(S.Boolean),
     dlp: S.optional(UpdateRequestDlp),
     guardrails: S.optional(UpdateRequestGuardrails),
@@ -12789,7 +12801,9 @@ export const deleteLog: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProviderConfigError = CloudflareOpError;
+export type DeleteProviderConfigError =
+  | ProviderConfigNotFound
+  | CloudflareOpError;
 export const deleteProviderConfig: API.OperationMethod<
   DeleteProviderConfigRequest,
   DeleteProviderConfigResponse,
@@ -12798,7 +12812,7 @@ export const deleteProviderConfig: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteProviderConfigRequest,
   output: DeleteProviderConfigResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [ProviderConfigNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));

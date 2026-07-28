@@ -59,9 +59,9 @@ export class Forbidden extends T.applyErrorMatchers(
   [{ status: 403 }],
 ) {}
 
-export type CreateRequestUpstreamIpsList = ReadonlyArray<unknown>;
+export type CreateRequestUpstreamIpsList = ReadonlyArray<string>;
 export const CreateRequestUpstreamIpsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<CreateRequestUpstreamIpsList>;
 
 export interface CreateRequestAttackMitigation {
@@ -141,14 +141,14 @@ export const CreateDnsFirewallRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDnsFirewallRequest",
 }) as any as S.Schema<CreateDnsFirewallRequest>;
 
-export type CreateResponseDnsFirewallIpsList = ReadonlyArray<unknown>;
+export type CreateResponseDnsFirewallIpsList = ReadonlyArray<string>;
 export const CreateResponseDnsFirewallIpsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<CreateResponseDnsFirewallIpsList>;
 
-export type CreateResponseUpstreamIpsList = ReadonlyArray<unknown>;
+export type CreateResponseUpstreamIpsList = ReadonlyArray<string>;
 export const CreateResponseUpstreamIpsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<CreateResponseUpstreamIpsList>;
 
 export interface CreateResponseAttackMitigation {
@@ -663,14 +663,14 @@ export const GetDnsFirewallRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDnsFirewallRequest",
 }) as any as S.Schema<GetDnsFirewallRequest>;
 
-export type GetResponseDnsFirewallIpsList = ReadonlyArray<unknown>;
+export type GetResponseDnsFirewallIpsList = ReadonlyArray<string>;
 export const GetResponseDnsFirewallIpsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<GetResponseDnsFirewallIpsList>;
 
-export type GetResponseUpstreamIpsList = ReadonlyArray<unknown>;
+export type GetResponseUpstreamIpsList = ReadonlyArray<string>;
 export const GetResponseUpstreamIpsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<GetResponseUpstreamIpsList>;
 
 export interface GetResponseAttackMitigation {
@@ -809,14 +809,14 @@ export const ListDnsFirewallsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDnsFirewallsRequest",
 }) as any as S.Schema<ListDnsFirewallsRequest>;
 
-export type ListResultItemDnsFirewallIpsList = ReadonlyArray<unknown>;
+export type ListResultItemDnsFirewallIpsList = ReadonlyArray<string>;
 export const ListResultItemDnsFirewallIpsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<ListResultItemDnsFirewallIpsList>;
 
-export type ListResultItemUpstreamIpsList = ReadonlyArray<unknown>;
+export type ListResultItemUpstreamIpsList = ReadonlyArray<string>;
 export const ListResultItemUpstreamIpsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<ListResultItemUpstreamIpsList>;
 
 export interface ListResultItemAttackMitigation {
@@ -921,9 +921,9 @@ export const EditRequestAttackMitigation = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestAttackMitigation",
 }) as any as S.Schema<EditRequestAttackMitigation>;
 
-export type EditRequestUpstreamIpsList = ReadonlyArray<unknown>;
+export type EditRequestUpstreamIpsList = ReadonlyArray<string>;
 export const EditRequestUpstreamIpsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<EditRequestUpstreamIpsList>;
 
 export interface PatchDnsFirewallRequest {
@@ -986,14 +986,14 @@ export const PatchDnsFirewallRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchDnsFirewallRequest",
 }) as any as S.Schema<PatchDnsFirewallRequest>;
 
-export type EditResponseDnsFirewallIpsList = ReadonlyArray<unknown>;
+export type EditResponseDnsFirewallIpsList = ReadonlyArray<string>;
 export const EditResponseDnsFirewallIpsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<EditResponseDnsFirewallIpsList>;
 
-export type EditResponseUpstreamIpsList = ReadonlyArray<unknown>;
+export type EditResponseUpstreamIpsList = ReadonlyArray<string>;
 export const EditResponseUpstreamIpsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<EditResponseUpstreamIpsList>;
 
 export interface EditResponseAttackMitigation {

@@ -54425,11 +54425,25 @@ export interface CreateAccessBookmarkRequest {
   accountId: string;
   /** UUID. */
   bookmarkId: string;
+  /** Displays the application in the App Launcher. */
+  appLauncherVisible?: boolean;
+  /** The domain of the Bookmark application. */
+  domain?: string;
+  /** The image URL for the logo shown in the App Launcher dashboard. */
+  logoUrl?: string;
+  /** The name of the Bookmark application. */
+  name?: string;
 }
 export const CreateAccessBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bookmarkId: S.String.pipe(T.Label("bookmark_id")),
+    appLauncherVisible: S.optional(
+      S.Boolean.pipe(T.Body("app_launcher_visible")),
+    ),
+    domain: S.optional(S.String),
+    logoUrl: S.optional(S.String.pipe(T.Body("logo_url"))),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -54471,10 +54485,10 @@ export const CreateAccessBookmarkResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAccessBookmarkResponse>;
 
 export type AccessCertificatesCreateForAccountRequestAssociatedHostnamesList =
-  ReadonlyArray<unknown>;
+  ReadonlyArray<string>;
 export const AccessCertificatesCreateForAccountRequestAssociatedHostnamesList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<AccessCertificatesCreateForAccountRequestAssociatedHostnamesList>;
 
 export interface CreateAccessCertificateForAccountRequest {
@@ -54512,10 +54526,10 @@ export const CreateAccessCertificateForAccountRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateAccessCertificateForAccountRequest>;
 
 export type AccessCertificatesCreateForAccountResponseAssociatedHostnamesList =
-  ReadonlyArray<unknown>;
+  ReadonlyArray<string>;
 export const AccessCertificatesCreateForAccountResponseAssociatedHostnamesList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<AccessCertificatesCreateForAccountResponseAssociatedHostnamesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -54548,10 +54562,10 @@ export const CreateAccessCertificateForAccountResponse =
   }) as any as S.Schema<CreateAccessCertificateForAccountResponse>;
 
 export type AccessCertificatesCreateForZoneRequestAssociatedHostnamesList =
-  ReadonlyArray<unknown>;
+  ReadonlyArray<string>;
 export const AccessCertificatesCreateForZoneRequestAssociatedHostnamesList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<AccessCertificatesCreateForZoneRequestAssociatedHostnamesList>;
 
 export interface CreateAccessCertificateForZoneRequest {
@@ -54589,10 +54603,10 @@ export const CreateAccessCertificateForZoneRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateAccessCertificateForZoneRequest>;
 
 export type AccessCertificatesCreateForZoneResponseAssociatedHostnamesList =
-  ReadonlyArray<unknown>;
+  ReadonlyArray<string>;
 export const AccessCertificatesCreateForZoneResponseAssociatedHostnamesList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<AccessCertificatesCreateForZoneResponseAssociatedHostnamesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -57076,247 +57090,6 @@ export const AccessGroupsCreateForAccountResponseIncludeList =
     AccessGroupsCreateForAccountResponseIncludeItem,
   ) as any as S.Schema<AccessGroupsCreateForAccountResponseIncludeList>;
 
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemGroupRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsCreateForAccountResponseIsDefaultItemGroupRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemGroupRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemAnyValidServiceTokenRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemAnyValidServiceTokenRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForAccountResponseIsDefaultItemAnyValidServiceTokenRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemAnyValidServiceTokenRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemAccessAuthContextRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemAccessAuthContextRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForAccountResponseIsDefaultItemAccessAuthContextRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemAccessAuthContextRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemAuthenticationMethodRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemAuthenticationMethodRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForAccountResponseIsDefaultItemAuthenticationMethodRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemAuthenticationMethodRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemAzureGroupRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemAzureGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForAccountResponseIsDefaultItemAzureGroupRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemAzureGroupRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemCertificateRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemCertificateRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForAccountResponseIsDefaultItemCertificateRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemCertificateRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemAccessCommonNameRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemAccessCommonNameRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForAccountResponseIsDefaultItemAccessCommonNameRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemAccessCommonNameRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemCountryRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemCountryRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsCreateForAccountResponseIsDefaultItemCountryRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemCountryRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemAccessDevicePostureRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemAccessDevicePostureRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForAccountResponseIsDefaultItemAccessDevicePostureRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemAccessDevicePostureRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemDomainRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemDomainRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsCreateForAccountResponseIsDefaultItemDomainRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemDomainRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemEmailListRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemEmailListRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForAccountResponseIsDefaultItemEmailListRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemEmailListRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemEmailRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemEmailRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsCreateForAccountResponseIsDefaultItemEmailRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemEmailRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemEveryoneRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemEveryoneRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsCreateForAccountResponseIsDefaultItemEveryoneRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemEveryoneRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemExternalEvaluationRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemExternalEvaluationRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForAccountResponseIsDefaultItemExternalEvaluationRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemExternalEvaluationRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemGitHubOrganizationRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemGitHubOrganizationRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForAccountResponseIsDefaultItemGitHubOrganizationRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemGitHubOrganizationRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemGSuiteGroupRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemGSuiteGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForAccountResponseIsDefaultItemGSuiteGroupRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemGSuiteGroupRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemAccessLoginMethodRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemAccessLoginMethodRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForAccountResponseIsDefaultItemAccessLoginMethodRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemAccessLoginMethodRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemIPListRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemIPListRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsCreateForAccountResponseIsDefaultItemIPListRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemIPListRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemIPRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemIPRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsCreateForAccountResponseIsDefaultItemIPRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemIPRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemOktaGroupRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemOktaGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForAccountResponseIsDefaultItemOktaGroupRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemOktaGroupRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemSAMLGroupRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemSAMLGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForAccountResponseIsDefaultItemSAMLGroupRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemSAMLGroupRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemAccessOIDCClaimRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemAccessOIDCClaimRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForAccountResponseIsDefaultItemAccessOIDCClaimRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemAccessOIDCClaimRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemServiceTokenRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemServiceTokenRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForAccountResponseIsDefaultItemServiceTokenRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemServiceTokenRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemAccessLinkedAppTokenRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemAccessLinkedAppTokenRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForAccountResponseIsDefaultItemAccessLinkedAppTokenRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemAccessLinkedAppTokenRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemAccessUserRiskScoreRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemAccessUserRiskScoreRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForAccountResponseIsDefaultItemAccessUserRiskScoreRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemAccessUserRiskScoreRule>;
-
-export interface AccessGroupsCreateForAccountResponseIsDefaultItemAccessCloudflareAccountMemberRule {}
-export const AccessGroupsCreateForAccountResponseIsDefaultItemAccessCloudflareAccountMemberRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForAccountResponseIsDefaultItemAccessCloudflareAccountMemberRule",
-  }) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultItemAccessCloudflareAccountMemberRule>;
-
-export type AccessGroupsCreateForAccountResponseIsDefaultItem =
-  | AccessGroupsCreateForAccountResponseIsDefaultItemGroupRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemAnyValidServiceTokenRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemAccessAuthContextRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemAuthenticationMethodRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemAzureGroupRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemCertificateRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemAccessCommonNameRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemCountryRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemAccessDevicePostureRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemDomainRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemEmailListRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemEmailRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemEveryoneRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemExternalEvaluationRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemGitHubOrganizationRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemGSuiteGroupRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemAccessLoginMethodRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemIPListRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemIPRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemOktaGroupRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemSAMLGroupRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemAccessOIDCClaimRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemServiceTokenRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemAccessLinkedAppTokenRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemAccessUserRiskScoreRule
-  | AccessGroupsCreateForAccountResponseIsDefaultItemAccessCloudflareAccountMemberRule;
-export const AccessGroupsCreateForAccountResponseIsDefaultItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-    ]),
-  );
-
-export type AccessGroupsCreateForAccountResponseIsDefaultList =
-  ReadonlyArray<AccessGroupsCreateForAccountResponseIsDefaultItem>;
-export const AccessGroupsCreateForAccountResponseIsDefaultList =
-  /*@__PURE__*/ S.Array(
-    AccessGroupsCreateForAccountResponseIsDefaultItem,
-  ) as any as S.Schema<AccessGroupsCreateForAccountResponseIsDefaultList>;
-
 export interface AccessGroupsCreateForAccountResponseRequireItemGroupRule {}
 export const AccessGroupsCreateForAccountResponseRequireItemGroupRule =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
@@ -57562,8 +57335,8 @@ export interface CreateAccessGroupForAccountResponse {
   exclude?: AccessGroupsCreateForAccountResponseExcludeList;
   /** Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules. */
   include?: AccessGroupsCreateForAccountResponseIncludeList;
-  /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
-  isDefault?: AccessGroupsCreateForAccountResponseIsDefaultList;
+  /** Whether this is the default group */
+  isDefault?: boolean;
   /** The name of the Access group. */
   name?: string;
   /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
@@ -57574,11 +57347,7 @@ export const CreateAccessGroupForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     exclude: S.optional(AccessGroupsCreateForAccountResponseExcludeList),
     include: S.optional(AccessGroupsCreateForAccountResponseIncludeList),
-    isDefault: S.optional(
-      AccessGroupsCreateForAccountResponseIsDefaultList.pipe(
-        T.Body("is_default"),
-      ),
-    ),
+    isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
     name: S.optional(S.String),
     require: S.optional(AccessGroupsCreateForAccountResponseRequireList),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -59922,241 +59691,6 @@ export const AccessGroupsCreateForZoneResponseIncludeList =
     AccessGroupsCreateForZoneResponseIncludeItem,
   ) as any as S.Schema<AccessGroupsCreateForZoneResponseIncludeList>;
 
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemGroupRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsCreateForZoneResponseIsDefaultItemGroupRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemGroupRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemAnyValidServiceTokenRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemAnyValidServiceTokenRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForZoneResponseIsDefaultItemAnyValidServiceTokenRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemAnyValidServiceTokenRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemAccessAuthContextRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemAccessAuthContextRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForZoneResponseIsDefaultItemAccessAuthContextRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemAccessAuthContextRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemAuthenticationMethodRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemAuthenticationMethodRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForZoneResponseIsDefaultItemAuthenticationMethodRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemAuthenticationMethodRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemAzureGroupRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemAzureGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsCreateForZoneResponseIsDefaultItemAzureGroupRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemAzureGroupRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemCertificateRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemCertificateRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsCreateForZoneResponseIsDefaultItemCertificateRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemCertificateRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemAccessCommonNameRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemAccessCommonNameRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForZoneResponseIsDefaultItemAccessCommonNameRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemAccessCommonNameRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemCountryRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemCountryRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsCreateForZoneResponseIsDefaultItemCountryRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemCountryRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemAccessDevicePostureRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemAccessDevicePostureRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForZoneResponseIsDefaultItemAccessDevicePostureRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemAccessDevicePostureRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemDomainRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemDomainRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsCreateForZoneResponseIsDefaultItemDomainRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemDomainRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemEmailListRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemEmailListRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsCreateForZoneResponseIsDefaultItemEmailListRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemEmailListRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemEmailRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemEmailRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsCreateForZoneResponseIsDefaultItemEmailRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemEmailRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemEveryoneRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemEveryoneRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsCreateForZoneResponseIsDefaultItemEveryoneRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemEveryoneRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemExternalEvaluationRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemExternalEvaluationRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForZoneResponseIsDefaultItemExternalEvaluationRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemExternalEvaluationRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemGitHubOrganizationRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemGitHubOrganizationRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForZoneResponseIsDefaultItemGitHubOrganizationRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemGitHubOrganizationRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemGSuiteGroupRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemGSuiteGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsCreateForZoneResponseIsDefaultItemGSuiteGroupRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemGSuiteGroupRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemAccessLoginMethodRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemAccessLoginMethodRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForZoneResponseIsDefaultItemAccessLoginMethodRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemAccessLoginMethodRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemIPListRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemIPListRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsCreateForZoneResponseIsDefaultItemIPListRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemIPListRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemIPRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemIPRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsCreateForZoneResponseIsDefaultItemIPRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemIPRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemOktaGroupRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemOktaGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsCreateForZoneResponseIsDefaultItemOktaGroupRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemOktaGroupRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemSAMLGroupRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemSAMLGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsCreateForZoneResponseIsDefaultItemSAMLGroupRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemSAMLGroupRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemAccessOIDCClaimRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemAccessOIDCClaimRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForZoneResponseIsDefaultItemAccessOIDCClaimRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemAccessOIDCClaimRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemServiceTokenRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemServiceTokenRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForZoneResponseIsDefaultItemServiceTokenRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemServiceTokenRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemAccessLinkedAppTokenRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemAccessLinkedAppTokenRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForZoneResponseIsDefaultItemAccessLinkedAppTokenRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemAccessLinkedAppTokenRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemAccessUserRiskScoreRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemAccessUserRiskScoreRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForZoneResponseIsDefaultItemAccessUserRiskScoreRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemAccessUserRiskScoreRule>;
-
-export interface AccessGroupsCreateForZoneResponseIsDefaultItemAccessCloudflareAccountMemberRule {}
-export const AccessGroupsCreateForZoneResponseIsDefaultItemAccessCloudflareAccountMemberRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsCreateForZoneResponseIsDefaultItemAccessCloudflareAccountMemberRule",
-  }) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultItemAccessCloudflareAccountMemberRule>;
-
-export type AccessGroupsCreateForZoneResponseIsDefaultItem =
-  | AccessGroupsCreateForZoneResponseIsDefaultItemGroupRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemAnyValidServiceTokenRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemAccessAuthContextRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemAuthenticationMethodRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemAzureGroupRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemCertificateRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemAccessCommonNameRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemCountryRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemAccessDevicePostureRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemDomainRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemEmailListRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemEmailRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemEveryoneRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemExternalEvaluationRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemGitHubOrganizationRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemGSuiteGroupRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemAccessLoginMethodRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemIPListRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemIPRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemOktaGroupRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemSAMLGroupRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemAccessOIDCClaimRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemServiceTokenRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemAccessLinkedAppTokenRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemAccessUserRiskScoreRule
-  | AccessGroupsCreateForZoneResponseIsDefaultItemAccessCloudflareAccountMemberRule;
-export const AccessGroupsCreateForZoneResponseIsDefaultItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-    ]),
-  );
-
-export type AccessGroupsCreateForZoneResponseIsDefaultList =
-  ReadonlyArray<AccessGroupsCreateForZoneResponseIsDefaultItem>;
-export const AccessGroupsCreateForZoneResponseIsDefaultList =
-  /*@__PURE__*/ S.Array(
-    AccessGroupsCreateForZoneResponseIsDefaultItem,
-  ) as any as S.Schema<AccessGroupsCreateForZoneResponseIsDefaultList>;
-
 export interface AccessGroupsCreateForZoneResponseRequireItemGroupRule {}
 export const AccessGroupsCreateForZoneResponseRequireItemGroupRule =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
@@ -60399,8 +59933,8 @@ export interface CreateAccessGroupForZoneResponse {
   exclude?: AccessGroupsCreateForZoneResponseExcludeList;
   /** Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules. */
   include?: AccessGroupsCreateForZoneResponseIncludeList;
-  /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
-  isDefault?: AccessGroupsCreateForZoneResponseIsDefaultList;
+  /** Whether this is the default group */
+  isDefault?: boolean;
   /** The name of the Access group. */
   name?: string;
   /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
@@ -60411,9 +59945,7 @@ export const CreateAccessGroupForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     exclude: S.optional(AccessGroupsCreateForZoneResponseExcludeList),
     include: S.optional(AccessGroupsCreateForZoneResponseIncludeList),
-    isDefault: S.optional(
-      AccessGroupsCreateForZoneResponseIsDefaultList.pipe(T.Body("is_default")),
-    ),
+    isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
     name: S.optional(S.String),
     require: S.optional(AccessGroupsCreateForZoneResponseRequireList),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -69128,7 +68660,7 @@ export interface CreateDlpProfileCustomRequest {
   /** Data tag IDs to associate with the profile. */
   dataTags?: DlpProfilesCustomCreateRequestDataTagsList;
   /** The description of the profile. */
-  description?: string;
+  description?: string | null;
   entries?: DlpProfilesCustomCreateRequestEntriesList;
   ocrEnabled?: boolean;
   /** Sensitivity levels to associate with the profile. */
@@ -69158,7 +68690,7 @@ export const CreateDlpProfileCustomRequest = /*@__PURE__*/ S.suspend(() =>
     dataTags: S.optional(
       DlpProfilesCustomCreateRequestDataTagsList.pipe(T.Body("data_tags")),
     ),
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
     entries: S.optional(DlpProfilesCustomCreateRequestEntriesList),
     ocrEnabled: S.optional(S.Boolean.pipe(T.Body("ocr_enabled"))),
     sensitivityLevels: S.optional(
@@ -70073,7 +69605,7 @@ export interface DlpProfilesCustomCreateResultCustomProfile {
   /** Data tags associated with this profile. */
   dataTags?: DlpProfilesCustomCreateResultCustomProfileDataTagsList;
   /** The description of the profile. */
-  description?: string;
+  description?: string | null;
   entries?: DlpProfilesCustomCreateResultCustomProfileEntriesList;
   /** Sensitivity levels associated with this profile. */
   sensitivityLevels?: DlpProfilesCustomCreateResultCustomProfileSensitivityLevelsList;
@@ -70112,7 +69644,7 @@ export const DlpProfilesCustomCreateResultCustomProfile =
           T.Body("data_tags"),
         ),
       ),
-      description: S.optional(S.String),
+      description: S.optional(S.NullOr(S.String)),
       entries: S.optional(
         DlpProfilesCustomCreateResultCustomProfileEntriesList,
       ),
@@ -71351,7 +70883,7 @@ export interface DlpProfilesCustomCreateResultIntegrationProfile {
   type: DlpProfilesCustomCreateResultIntegrationProfileType;
   updatedAt: string;
   /** The description of the profile. */
-  description?: string;
+  description?: string | null;
 }
 export const DlpProfilesCustomCreateResultIntegrationProfile =
   /*@__PURE__*/ S.suspend(() =>
@@ -71366,7 +70898,7 @@ export const DlpProfilesCustomCreateResultIntegrationProfile =
         ),
       type: DlpProfilesCustomCreateResultIntegrationProfileType,
       updatedAt: S.String.pipe(T.Body("updated_at")),
-      description: S.optional(S.String),
+      description: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "DlpProfilesCustomCreateResultIntegrationProfile",
@@ -72379,18 +71911,26 @@ export type GatewayProxyEndpointsCreateRequestKind =
   | (string & {});
 export const GatewayProxyEndpointsCreateRequestKind = /*@__PURE__*/ S.String;
 
+export type CreateGatewayProxyEndpointRequestIpsList = ReadonlyArray<string>;
+export const CreateGatewayProxyEndpointRequestIpsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateGatewayProxyEndpointRequestIpsList>;
+
 export interface CreateGatewayProxyEndpointRequest {
   accountId: string;
   /** Specify the name of the proxy endpoint. */
   name: string;
   /** The proxy endpoint kind */
   kind?: GatewayProxyEndpointsCreateRequestKind;
+  /** Specify the list of CIDRs to restrict ingress connections. Required when creating an ip-kind proxy endpoint. */
+  ips?: CreateGatewayProxyEndpointRequestIpsList;
 }
 export const CreateGatewayProxyEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
     kind: S.optional(GatewayProxyEndpointsCreateRequestKind),
+    ips: S.optional(CreateGatewayProxyEndpointRequestIpsList),
   })
     .pipe(
       T.Http({
@@ -130892,10 +130432,10 @@ export const GetAccessCertificateForAccountRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetAccessCertificateForAccountRequest>;
 
 export type AccessCertificatesGetForAccountResponseAssociatedHostnamesList =
-  ReadonlyArray<unknown>;
+  ReadonlyArray<string>;
 export const AccessCertificatesGetForAccountResponseAssociatedHostnamesList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<AccessCertificatesGetForAccountResponseAssociatedHostnamesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -130951,10 +130491,10 @@ export const GetAccessCertificateForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAccessCertificateForZoneRequest>;
 
 export type AccessCertificatesGetForZoneResponseAssociatedHostnamesList =
-  ReadonlyArray<unknown>;
+  ReadonlyArray<string>;
 export const AccessCertificatesGetForZoneResponseAssociatedHostnamesList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<AccessCertificatesGetForZoneResponseAssociatedHostnamesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -132227,241 +131767,6 @@ export const AccessGroupsGetForAccountResponseIncludeList =
     AccessGroupsGetForAccountResponseIncludeItem,
   ) as any as S.Schema<AccessGroupsGetForAccountResponseIncludeList>;
 
-export interface AccessGroupsGetForAccountResponseIsDefaultItemGroupRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForAccountResponseIsDefaultItemGroupRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemGroupRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemAnyValidServiceTokenRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemAnyValidServiceTokenRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForAccountResponseIsDefaultItemAnyValidServiceTokenRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemAnyValidServiceTokenRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemAccessAuthContextRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemAccessAuthContextRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForAccountResponseIsDefaultItemAccessAuthContextRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemAccessAuthContextRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemAuthenticationMethodRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemAuthenticationMethodRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForAccountResponseIsDefaultItemAuthenticationMethodRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemAuthenticationMethodRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemAzureGroupRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemAzureGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForAccountResponseIsDefaultItemAzureGroupRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemAzureGroupRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemCertificateRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemCertificateRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForAccountResponseIsDefaultItemCertificateRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemCertificateRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemAccessCommonNameRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemAccessCommonNameRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForAccountResponseIsDefaultItemAccessCommonNameRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemAccessCommonNameRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemCountryRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemCountryRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForAccountResponseIsDefaultItemCountryRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemCountryRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemAccessDevicePostureRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemAccessDevicePostureRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForAccountResponseIsDefaultItemAccessDevicePostureRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemAccessDevicePostureRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemDomainRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemDomainRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForAccountResponseIsDefaultItemDomainRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemDomainRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemEmailListRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemEmailListRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForAccountResponseIsDefaultItemEmailListRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemEmailListRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemEmailRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemEmailRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForAccountResponseIsDefaultItemEmailRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemEmailRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemEveryoneRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemEveryoneRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForAccountResponseIsDefaultItemEveryoneRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemEveryoneRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemExternalEvaluationRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemExternalEvaluationRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForAccountResponseIsDefaultItemExternalEvaluationRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemExternalEvaluationRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemGitHubOrganizationRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemGitHubOrganizationRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForAccountResponseIsDefaultItemGitHubOrganizationRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemGitHubOrganizationRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemGSuiteGroupRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemGSuiteGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForAccountResponseIsDefaultItemGSuiteGroupRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemGSuiteGroupRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemAccessLoginMethodRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemAccessLoginMethodRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForAccountResponseIsDefaultItemAccessLoginMethodRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemAccessLoginMethodRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemIPListRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemIPListRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForAccountResponseIsDefaultItemIPListRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemIPListRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemIPRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemIPRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForAccountResponseIsDefaultItemIPRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemIPRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemOktaGroupRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemOktaGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForAccountResponseIsDefaultItemOktaGroupRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemOktaGroupRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemSAMLGroupRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemSAMLGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForAccountResponseIsDefaultItemSAMLGroupRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemSAMLGroupRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemAccessOIDCClaimRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemAccessOIDCClaimRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForAccountResponseIsDefaultItemAccessOIDCClaimRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemAccessOIDCClaimRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemServiceTokenRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemServiceTokenRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForAccountResponseIsDefaultItemServiceTokenRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemServiceTokenRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemAccessLinkedAppTokenRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemAccessLinkedAppTokenRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForAccountResponseIsDefaultItemAccessLinkedAppTokenRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemAccessLinkedAppTokenRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemAccessUserRiskScoreRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemAccessUserRiskScoreRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForAccountResponseIsDefaultItemAccessUserRiskScoreRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemAccessUserRiskScoreRule>;
-
-export interface AccessGroupsGetForAccountResponseIsDefaultItemAccessCloudflareAccountMemberRule {}
-export const AccessGroupsGetForAccountResponseIsDefaultItemAccessCloudflareAccountMemberRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForAccountResponseIsDefaultItemAccessCloudflareAccountMemberRule",
-  }) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultItemAccessCloudflareAccountMemberRule>;
-
-export type AccessGroupsGetForAccountResponseIsDefaultItem =
-  | AccessGroupsGetForAccountResponseIsDefaultItemGroupRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemAnyValidServiceTokenRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemAccessAuthContextRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemAuthenticationMethodRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemAzureGroupRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemCertificateRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemAccessCommonNameRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemCountryRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemAccessDevicePostureRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemDomainRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemEmailListRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemEmailRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemEveryoneRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemExternalEvaluationRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemGitHubOrganizationRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemGSuiteGroupRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemAccessLoginMethodRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemIPListRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemIPRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemOktaGroupRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemSAMLGroupRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemAccessOIDCClaimRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemServiceTokenRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemAccessLinkedAppTokenRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemAccessUserRiskScoreRule
-  | AccessGroupsGetForAccountResponseIsDefaultItemAccessCloudflareAccountMemberRule;
-export const AccessGroupsGetForAccountResponseIsDefaultItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-    ]),
-  );
-
-export type AccessGroupsGetForAccountResponseIsDefaultList =
-  ReadonlyArray<AccessGroupsGetForAccountResponseIsDefaultItem>;
-export const AccessGroupsGetForAccountResponseIsDefaultList =
-  /*@__PURE__*/ S.Array(
-    AccessGroupsGetForAccountResponseIsDefaultItem,
-  ) as any as S.Schema<AccessGroupsGetForAccountResponseIsDefaultList>;
-
 export interface AccessGroupsGetForAccountResponseRequireItemGroupRule {}
 export const AccessGroupsGetForAccountResponseRequireItemGroupRule =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
@@ -132704,8 +132009,8 @@ export interface GetAccessGroupForAccountResponse {
   exclude?: AccessGroupsGetForAccountResponseExcludeList;
   /** Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules. */
   include?: AccessGroupsGetForAccountResponseIncludeList;
-  /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
-  isDefault?: AccessGroupsGetForAccountResponseIsDefaultList;
+  /** Whether this is the default group */
+  isDefault?: boolean;
   /** The name of the Access group. */
   name?: string;
   /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
@@ -132716,9 +132021,7 @@ export const GetAccessGroupForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     exclude: S.optional(AccessGroupsGetForAccountResponseExcludeList),
     include: S.optional(AccessGroupsGetForAccountResponseIncludeList),
-    isDefault: S.optional(
-      AccessGroupsGetForAccountResponseIsDefaultList.pipe(T.Body("is_default")),
-    ),
+    isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
     name: S.optional(S.String),
     require: S.optional(AccessGroupsGetForAccountResponseRequireList),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -133776,240 +133079,6 @@ export const AccessGroupsGetForZoneResponseIncludeList = /*@__PURE__*/ S.Array(
   AccessGroupsGetForZoneResponseIncludeItem,
 ) as any as S.Schema<AccessGroupsGetForZoneResponseIncludeList>;
 
-export interface AccessGroupsGetForZoneResponseIsDefaultItemGroupRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForZoneResponseIsDefaultItemGroupRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemGroupRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemAnyValidServiceTokenRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemAnyValidServiceTokenRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForZoneResponseIsDefaultItemAnyValidServiceTokenRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemAnyValidServiceTokenRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemAccessAuthContextRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemAccessAuthContextRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForZoneResponseIsDefaultItemAccessAuthContextRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemAccessAuthContextRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemAuthenticationMethodRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemAuthenticationMethodRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForZoneResponseIsDefaultItemAuthenticationMethodRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemAuthenticationMethodRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemAzureGroupRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemAzureGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForZoneResponseIsDefaultItemAzureGroupRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemAzureGroupRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemCertificateRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemCertificateRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForZoneResponseIsDefaultItemCertificateRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemCertificateRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemAccessCommonNameRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemAccessCommonNameRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForZoneResponseIsDefaultItemAccessCommonNameRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemAccessCommonNameRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemCountryRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemCountryRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForZoneResponseIsDefaultItemCountryRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemCountryRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemAccessDevicePostureRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemAccessDevicePostureRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForZoneResponseIsDefaultItemAccessDevicePostureRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemAccessDevicePostureRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemDomainRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemDomainRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForZoneResponseIsDefaultItemDomainRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemDomainRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemEmailListRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemEmailListRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForZoneResponseIsDefaultItemEmailListRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemEmailListRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemEmailRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemEmailRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForZoneResponseIsDefaultItemEmailRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemEmailRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemEveryoneRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemEveryoneRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForZoneResponseIsDefaultItemEveryoneRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemEveryoneRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemExternalEvaluationRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemExternalEvaluationRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForZoneResponseIsDefaultItemExternalEvaluationRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemExternalEvaluationRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemGitHubOrganizationRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemGitHubOrganizationRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForZoneResponseIsDefaultItemGitHubOrganizationRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemGitHubOrganizationRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemGSuiteGroupRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemGSuiteGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForZoneResponseIsDefaultItemGSuiteGroupRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemGSuiteGroupRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemAccessLoginMethodRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemAccessLoginMethodRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForZoneResponseIsDefaultItemAccessLoginMethodRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemAccessLoginMethodRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemIPListRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemIPListRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForZoneResponseIsDefaultItemIPListRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemIPListRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemIPRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemIPRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForZoneResponseIsDefaultItemIPRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemIPRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemOktaGroupRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemOktaGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForZoneResponseIsDefaultItemOktaGroupRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemOktaGroupRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemSAMLGroupRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemSAMLGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForZoneResponseIsDefaultItemSAMLGroupRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemSAMLGroupRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemAccessOIDCClaimRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemAccessOIDCClaimRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForZoneResponseIsDefaultItemAccessOIDCClaimRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemAccessOIDCClaimRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemServiceTokenRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemServiceTokenRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsGetForZoneResponseIsDefaultItemServiceTokenRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemServiceTokenRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemAccessLinkedAppTokenRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemAccessLinkedAppTokenRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForZoneResponseIsDefaultItemAccessLinkedAppTokenRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemAccessLinkedAppTokenRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemAccessUserRiskScoreRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemAccessUserRiskScoreRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForZoneResponseIsDefaultItemAccessUserRiskScoreRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemAccessUserRiskScoreRule>;
-
-export interface AccessGroupsGetForZoneResponseIsDefaultItemAccessCloudflareAccountMemberRule {}
-export const AccessGroupsGetForZoneResponseIsDefaultItemAccessCloudflareAccountMemberRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsGetForZoneResponseIsDefaultItemAccessCloudflareAccountMemberRule",
-  }) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultItemAccessCloudflareAccountMemberRule>;
-
-export type AccessGroupsGetForZoneResponseIsDefaultItem =
-  | AccessGroupsGetForZoneResponseIsDefaultItemGroupRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemAnyValidServiceTokenRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemAccessAuthContextRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemAuthenticationMethodRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemAzureGroupRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemCertificateRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemAccessCommonNameRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemCountryRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemAccessDevicePostureRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemDomainRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemEmailListRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemEmailRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemEveryoneRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemExternalEvaluationRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemGitHubOrganizationRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemGSuiteGroupRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemAccessLoginMethodRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemIPListRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemIPRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemOktaGroupRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemSAMLGroupRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemAccessOIDCClaimRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemServiceTokenRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemAccessLinkedAppTokenRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemAccessUserRiskScoreRule
-  | AccessGroupsGetForZoneResponseIsDefaultItemAccessCloudflareAccountMemberRule;
-export const AccessGroupsGetForZoneResponseIsDefaultItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-    ]),
-  );
-
-export type AccessGroupsGetForZoneResponseIsDefaultList =
-  ReadonlyArray<AccessGroupsGetForZoneResponseIsDefaultItem>;
-export const AccessGroupsGetForZoneResponseIsDefaultList =
-  /*@__PURE__*/ S.Array(
-    AccessGroupsGetForZoneResponseIsDefaultItem,
-  ) as any as S.Schema<AccessGroupsGetForZoneResponseIsDefaultList>;
-
 export interface AccessGroupsGetForZoneResponseRequireItemGroupRule {}
 export const AccessGroupsGetForZoneResponseRequireItemGroupRule =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
@@ -134249,8 +133318,8 @@ export interface GetAccessGroupForZoneResponse {
   exclude?: AccessGroupsGetForZoneResponseExcludeList;
   /** Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules. */
   include?: AccessGroupsGetForZoneResponseIncludeList;
-  /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
-  isDefault?: AccessGroupsGetForZoneResponseIsDefaultList;
+  /** Whether this is the default group */
+  isDefault?: boolean;
   /** The name of the Access group. */
   name?: string;
   /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
@@ -134261,9 +133330,7 @@ export const GetAccessGroupForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     exclude: S.optional(AccessGroupsGetForZoneResponseExcludeList),
     include: S.optional(AccessGroupsGetForZoneResponseIncludeList),
-    isDefault: S.optional(
-      AccessGroupsGetForZoneResponseIsDefaultList.pipe(T.Body("is_default")),
-    ),
+    isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
     name: S.optional(S.String),
     require: S.optional(AccessGroupsGetForZoneResponseRequireList),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -144170,7 +143237,7 @@ export interface DlpProfilesGetResultCustomProfile {
   /** Data tags associated with this profile. */
   dataTags?: DlpProfilesGetResultCustomProfileDataTagsList;
   /** The description of the profile. */
-  description?: string;
+  description?: string | null;
   entries?: DlpProfilesGetResultCustomProfileEntriesList;
   /** Sensitivity levels associated with this profile. */
   sensitivityLevels?: DlpProfilesGetResultCustomProfileSensitivityLevelsList;
@@ -144204,7 +143271,7 @@ export const DlpProfilesGetResultCustomProfile = /*@__PURE__*/ S.suspend(() =>
     dataTags: S.optional(
       DlpProfilesGetResultCustomProfileDataTagsList.pipe(T.Body("data_tags")),
     ),
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
     entries: S.optional(DlpProfilesGetResultCustomProfileEntriesList),
     sensitivityLevels: S.optional(
       DlpProfilesGetResultCustomProfileSensitivityLevelsList.pipe(
@@ -145437,7 +144504,7 @@ export interface DlpProfilesGetResultIntegrationProfile {
   type: DlpProfilesGetResultIntegrationProfileType;
   updatedAt: string;
   /** The description of the profile. */
-  description?: string;
+  description?: string | null;
 }
 export const DlpProfilesGetResultIntegrationProfile = /*@__PURE__*/ S.suspend(
   () =>
@@ -145452,7 +144519,7 @@ export const DlpProfilesGetResultIntegrationProfile = /*@__PURE__*/ S.suspend(
         ),
       type: DlpProfilesGetResultIntegrationProfileType,
       updatedAt: S.String.pipe(T.Body("updated_at")),
-      description: S.optional(S.String),
+      description: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "DlpProfilesGetResultIntegrationProfile",
@@ -146422,7 +145489,7 @@ export interface DlpProfilesCustomGetResultCustomProfile {
   /** Data tags associated with this profile. */
   dataTags?: DlpProfilesCustomGetResultCustomProfileDataTagsList;
   /** The description of the profile. */
-  description?: string;
+  description?: string | null;
   entries?: DlpProfilesCustomGetResultCustomProfileEntriesList;
   /** Sensitivity levels associated with this profile. */
   sensitivityLevels?: DlpProfilesCustomGetResultCustomProfileSensitivityLevelsList;
@@ -146461,7 +145528,7 @@ export const DlpProfilesCustomGetResultCustomProfile = /*@__PURE__*/ S.suspend(
           T.Body("data_tags"),
         ),
       ),
-      description: S.optional(S.String),
+      description: S.optional(S.NullOr(S.String)),
       entries: S.optional(DlpProfilesCustomGetResultCustomProfileEntriesList),
       sensitivityLevels: S.optional(
         DlpProfilesCustomGetResultCustomProfileSensitivityLevelsList.pipe(
@@ -147698,7 +146765,7 @@ export interface DlpProfilesCustomGetResultIntegrationProfile {
   type: DlpProfilesCustomGetResultIntegrationProfileType;
   updatedAt: string;
   /** The description of the profile. */
-  description?: string;
+  description?: string | null;
 }
 export const DlpProfilesCustomGetResultIntegrationProfile =
   /*@__PURE__*/ S.suspend(() =>
@@ -147713,7 +146780,7 @@ export const DlpProfilesCustomGetResultIntegrationProfile =
         ),
       type: DlpProfilesCustomGetResultIntegrationProfileType,
       updatedAt: S.String.pipe(T.Body("updated_at")),
-      description: S.optional(S.String),
+      description: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "DlpProfilesCustomGetResultIntegrationProfile",
@@ -199766,10 +198833,10 @@ export const ListAccessCertificatesForAccountRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListAccessCertificatesForAccountRequest>;
 
 export type AccessCertificatesListForAccountResultItemAssociatedHostnamesList =
-  ReadonlyArray<unknown>;
+  ReadonlyArray<string>;
 export const AccessCertificatesListForAccountResultItemAssociatedHostnamesList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<AccessCertificatesListForAccountResultItemAssociatedHostnamesList>;
 
 export interface AccessCertificatesListForAccountResultItem {
@@ -199852,10 +198919,10 @@ export const ListAccessCertificatesForZoneRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListAccessCertificatesForZoneRequest>;
 
 export type AccessCertificatesListForZoneResultItemAssociatedHostnamesList =
-  ReadonlyArray<unknown>;
+  ReadonlyArray<string>;
 export const AccessCertificatesListForZoneResultItemAssociatedHostnamesList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<AccessCertificatesListForZoneResultItemAssociatedHostnamesList>;
 
 export interface AccessCertificatesListForZoneResultItem {
@@ -201112,247 +200179,6 @@ export const AccessGroupsListForAccountResultItemIncludeList =
     AccessGroupsListForAccountResultItemIncludeItem,
   ) as any as S.Schema<AccessGroupsListForAccountResultItemIncludeList>;
 
-export interface AccessGroupsListForAccountResultItemIsDefaultItemGroupRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsListForAccountResultItemIsDefaultItemGroupRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemGroupRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemAnyValidServiceTokenRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemAnyValidServiceTokenRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForAccountResultItemIsDefaultItemAnyValidServiceTokenRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemAnyValidServiceTokenRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemAccessAuthContextRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemAccessAuthContextRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForAccountResultItemIsDefaultItemAccessAuthContextRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemAccessAuthContextRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemAuthenticationMethodRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemAuthenticationMethodRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForAccountResultItemIsDefaultItemAuthenticationMethodRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemAuthenticationMethodRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemAzureGroupRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemAzureGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForAccountResultItemIsDefaultItemAzureGroupRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemAzureGroupRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemCertificateRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemCertificateRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForAccountResultItemIsDefaultItemCertificateRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemCertificateRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemAccessCommonNameRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemAccessCommonNameRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForAccountResultItemIsDefaultItemAccessCommonNameRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemAccessCommonNameRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemCountryRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemCountryRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsListForAccountResultItemIsDefaultItemCountryRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemCountryRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemAccessDevicePostureRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemAccessDevicePostureRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForAccountResultItemIsDefaultItemAccessDevicePostureRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemAccessDevicePostureRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemDomainRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemDomainRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsListForAccountResultItemIsDefaultItemDomainRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemDomainRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemEmailListRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemEmailListRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForAccountResultItemIsDefaultItemEmailListRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemEmailListRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemEmailRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemEmailRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsListForAccountResultItemIsDefaultItemEmailRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemEmailRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemEveryoneRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemEveryoneRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsListForAccountResultItemIsDefaultItemEveryoneRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemEveryoneRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemExternalEvaluationRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemExternalEvaluationRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForAccountResultItemIsDefaultItemExternalEvaluationRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemExternalEvaluationRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemGitHubOrganizationRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemGitHubOrganizationRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForAccountResultItemIsDefaultItemGitHubOrganizationRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemGitHubOrganizationRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemGSuiteGroupRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemGSuiteGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForAccountResultItemIsDefaultItemGSuiteGroupRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemGSuiteGroupRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemAccessLoginMethodRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemAccessLoginMethodRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForAccountResultItemIsDefaultItemAccessLoginMethodRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemAccessLoginMethodRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemIPListRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemIPListRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsListForAccountResultItemIsDefaultItemIPListRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemIPListRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemIPRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemIPRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsListForAccountResultItemIsDefaultItemIPRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemIPRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemOktaGroupRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemOktaGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForAccountResultItemIsDefaultItemOktaGroupRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemOktaGroupRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemSAMLGroupRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemSAMLGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForAccountResultItemIsDefaultItemSAMLGroupRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemSAMLGroupRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemAccessOIDCClaimRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemAccessOIDCClaimRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForAccountResultItemIsDefaultItemAccessOIDCClaimRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemAccessOIDCClaimRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemServiceTokenRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemServiceTokenRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForAccountResultItemIsDefaultItemServiceTokenRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemServiceTokenRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemAccessLinkedAppTokenRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemAccessLinkedAppTokenRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForAccountResultItemIsDefaultItemAccessLinkedAppTokenRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemAccessLinkedAppTokenRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemAccessUserRiskScoreRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemAccessUserRiskScoreRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForAccountResultItemIsDefaultItemAccessUserRiskScoreRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemAccessUserRiskScoreRule>;
-
-export interface AccessGroupsListForAccountResultItemIsDefaultItemAccessCloudflareAccountMemberRule {}
-export const AccessGroupsListForAccountResultItemIsDefaultItemAccessCloudflareAccountMemberRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForAccountResultItemIsDefaultItemAccessCloudflareAccountMemberRule",
-  }) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultItemAccessCloudflareAccountMemberRule>;
-
-export type AccessGroupsListForAccountResultItemIsDefaultItem =
-  | AccessGroupsListForAccountResultItemIsDefaultItemGroupRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemAnyValidServiceTokenRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemAccessAuthContextRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemAuthenticationMethodRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemAzureGroupRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemCertificateRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemAccessCommonNameRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemCountryRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemAccessDevicePostureRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemDomainRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemEmailListRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemEmailRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemEveryoneRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemExternalEvaluationRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemGitHubOrganizationRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemGSuiteGroupRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemAccessLoginMethodRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemIPListRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemIPRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemOktaGroupRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemSAMLGroupRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemAccessOIDCClaimRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemServiceTokenRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemAccessLinkedAppTokenRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemAccessUserRiskScoreRule
-  | AccessGroupsListForAccountResultItemIsDefaultItemAccessCloudflareAccountMemberRule;
-export const AccessGroupsListForAccountResultItemIsDefaultItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-    ]),
-  );
-
-export type AccessGroupsListForAccountResultItemIsDefaultList =
-  ReadonlyArray<AccessGroupsListForAccountResultItemIsDefaultItem>;
-export const AccessGroupsListForAccountResultItemIsDefaultList =
-  /*@__PURE__*/ S.Array(
-    AccessGroupsListForAccountResultItemIsDefaultItem,
-  ) as any as S.Schema<AccessGroupsListForAccountResultItemIsDefaultList>;
-
 export interface AccessGroupsListForAccountResultItemRequireItemGroupRule {}
 export const AccessGroupsListForAccountResultItemRequireItemGroupRule =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
@@ -201597,8 +200423,8 @@ export interface AccessGroupsListForAccountResultItem {
   exclude?: AccessGroupsListForAccountResultItemExcludeList;
   /** Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules. */
   include?: AccessGroupsListForAccountResultItemIncludeList;
-  /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
-  isDefault?: AccessGroupsListForAccountResultItemIsDefaultList;
+  /** Whether this is the default group */
+  isDefault?: boolean;
   /** The name of the Access group. */
   name?: string;
   /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
@@ -201610,11 +200436,7 @@ export const AccessGroupsListForAccountResultItem = /*@__PURE__*/ S.suspend(
       id: S.optional(S.String),
       exclude: S.optional(AccessGroupsListForAccountResultItemExcludeList),
       include: S.optional(AccessGroupsListForAccountResultItemIncludeList),
-      isDefault: S.optional(
-        AccessGroupsListForAccountResultItemIsDefaultList.pipe(
-          T.Body("is_default"),
-        ),
-      ),
+      isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
       name: S.optional(S.String),
       require: S.optional(AccessGroupsListForAccountResultItemRequireList),
     }),
@@ -202709,241 +201531,6 @@ export const AccessGroupsListForZoneResultItemIncludeList =
     AccessGroupsListForZoneResultItemIncludeItem,
   ) as any as S.Schema<AccessGroupsListForZoneResultItemIncludeList>;
 
-export interface AccessGroupsListForZoneResultItemIsDefaultItemGroupRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsListForZoneResultItemIsDefaultItemGroupRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemGroupRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemAnyValidServiceTokenRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemAnyValidServiceTokenRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForZoneResultItemIsDefaultItemAnyValidServiceTokenRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemAnyValidServiceTokenRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemAccessAuthContextRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemAccessAuthContextRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForZoneResultItemIsDefaultItemAccessAuthContextRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemAccessAuthContextRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemAuthenticationMethodRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemAuthenticationMethodRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForZoneResultItemIsDefaultItemAuthenticationMethodRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemAuthenticationMethodRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemAzureGroupRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemAzureGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsListForZoneResultItemIsDefaultItemAzureGroupRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemAzureGroupRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemCertificateRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemCertificateRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsListForZoneResultItemIsDefaultItemCertificateRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemCertificateRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemAccessCommonNameRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemAccessCommonNameRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForZoneResultItemIsDefaultItemAccessCommonNameRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemAccessCommonNameRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemCountryRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemCountryRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsListForZoneResultItemIsDefaultItemCountryRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemCountryRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemAccessDevicePostureRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemAccessDevicePostureRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForZoneResultItemIsDefaultItemAccessDevicePostureRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemAccessDevicePostureRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemDomainRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemDomainRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsListForZoneResultItemIsDefaultItemDomainRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemDomainRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemEmailListRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemEmailListRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsListForZoneResultItemIsDefaultItemEmailListRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemEmailListRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemEmailRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemEmailRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsListForZoneResultItemIsDefaultItemEmailRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemEmailRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemEveryoneRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemEveryoneRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsListForZoneResultItemIsDefaultItemEveryoneRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemEveryoneRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemExternalEvaluationRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemExternalEvaluationRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForZoneResultItemIsDefaultItemExternalEvaluationRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemExternalEvaluationRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemGitHubOrganizationRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemGitHubOrganizationRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForZoneResultItemIsDefaultItemGitHubOrganizationRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemGitHubOrganizationRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemGSuiteGroupRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemGSuiteGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsListForZoneResultItemIsDefaultItemGSuiteGroupRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemGSuiteGroupRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemAccessLoginMethodRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemAccessLoginMethodRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForZoneResultItemIsDefaultItemAccessLoginMethodRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemAccessLoginMethodRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemIPListRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemIPListRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsListForZoneResultItemIsDefaultItemIPListRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemIPListRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemIPRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemIPRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsListForZoneResultItemIsDefaultItemIPRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemIPRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemOktaGroupRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemOktaGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsListForZoneResultItemIsDefaultItemOktaGroupRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemOktaGroupRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemSAMLGroupRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemSAMLGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsListForZoneResultItemIsDefaultItemSAMLGroupRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemSAMLGroupRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemAccessOIDCClaimRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemAccessOIDCClaimRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForZoneResultItemIsDefaultItemAccessOIDCClaimRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemAccessOIDCClaimRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemServiceTokenRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemServiceTokenRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForZoneResultItemIsDefaultItemServiceTokenRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemServiceTokenRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemAccessLinkedAppTokenRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemAccessLinkedAppTokenRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForZoneResultItemIsDefaultItemAccessLinkedAppTokenRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemAccessLinkedAppTokenRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemAccessUserRiskScoreRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemAccessUserRiskScoreRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForZoneResultItemIsDefaultItemAccessUserRiskScoreRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemAccessUserRiskScoreRule>;
-
-export interface AccessGroupsListForZoneResultItemIsDefaultItemAccessCloudflareAccountMemberRule {}
-export const AccessGroupsListForZoneResultItemIsDefaultItemAccessCloudflareAccountMemberRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsListForZoneResultItemIsDefaultItemAccessCloudflareAccountMemberRule",
-  }) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultItemAccessCloudflareAccountMemberRule>;
-
-export type AccessGroupsListForZoneResultItemIsDefaultItem =
-  | AccessGroupsListForZoneResultItemIsDefaultItemGroupRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemAnyValidServiceTokenRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemAccessAuthContextRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemAuthenticationMethodRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemAzureGroupRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemCertificateRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemAccessCommonNameRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemCountryRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemAccessDevicePostureRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemDomainRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemEmailListRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemEmailRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemEveryoneRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemExternalEvaluationRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemGitHubOrganizationRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemGSuiteGroupRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemAccessLoginMethodRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemIPListRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemIPRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemOktaGroupRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemSAMLGroupRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemAccessOIDCClaimRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemServiceTokenRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemAccessLinkedAppTokenRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemAccessUserRiskScoreRule
-  | AccessGroupsListForZoneResultItemIsDefaultItemAccessCloudflareAccountMemberRule;
-export const AccessGroupsListForZoneResultItemIsDefaultItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-    ]),
-  );
-
-export type AccessGroupsListForZoneResultItemIsDefaultList =
-  ReadonlyArray<AccessGroupsListForZoneResultItemIsDefaultItem>;
-export const AccessGroupsListForZoneResultItemIsDefaultList =
-  /*@__PURE__*/ S.Array(
-    AccessGroupsListForZoneResultItemIsDefaultItem,
-  ) as any as S.Schema<AccessGroupsListForZoneResultItemIsDefaultList>;
-
 export interface AccessGroupsListForZoneResultItemRequireItemGroupRule {}
 export const AccessGroupsListForZoneResultItemRequireItemGroupRule =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
@@ -203185,8 +201772,8 @@ export interface AccessGroupsListForZoneResultItem {
   exclude?: AccessGroupsListForZoneResultItemExcludeList;
   /** Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules. */
   include?: AccessGroupsListForZoneResultItemIncludeList;
-  /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
-  isDefault?: AccessGroupsListForZoneResultItemIsDefaultList;
+  /** Whether this is the default group */
+  isDefault?: boolean;
   /** The name of the Access group. */
   name?: string;
   /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
@@ -203197,9 +201784,7 @@ export const AccessGroupsListForZoneResultItem = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     exclude: S.optional(AccessGroupsListForZoneResultItemExcludeList),
     include: S.optional(AccessGroupsListForZoneResultItemIncludeList),
-    isDefault: S.optional(
-      AccessGroupsListForZoneResultItemIsDefaultList.pipe(T.Body("is_default")),
-    ),
+    isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
     name: S.optional(S.String),
     require: S.optional(AccessGroupsListForZoneResultItemRequireList),
   }),
@@ -212676,7 +211261,7 @@ export interface DlpProfilesListResultItemCustomProfile {
   /** Data tags associated with this profile. */
   dataTags?: DlpProfilesListResultItemCustomProfileDataTagsList;
   /** The description of the profile. */
-  description?: string;
+  description?: string | null;
   entries?: DlpProfilesListResultItemCustomProfileEntriesList;
   /** Sensitivity levels associated with this profile. */
   sensitivityLevels?: DlpProfilesListResultItemCustomProfileSensitivityLevelsList;
@@ -212715,7 +211300,7 @@ export const DlpProfilesListResultItemCustomProfile = /*@__PURE__*/ S.suspend(
           T.Body("data_tags"),
         ),
       ),
-      description: S.optional(S.String),
+      description: S.optional(S.NullOr(S.String)),
       entries: S.optional(DlpProfilesListResultItemCustomProfileEntriesList),
       sensitivityLevels: S.optional(
         DlpProfilesListResultItemCustomProfileSensitivityLevelsList.pipe(
@@ -213952,7 +212537,7 @@ export interface DlpProfilesListResultItemIntegrationProfile {
   type: DlpProfilesListResultItemIntegrationProfileType;
   updatedAt: string;
   /** The description of the profile. */
-  description?: string;
+  description?: string | null;
 }
 export const DlpProfilesListResultItemIntegrationProfile =
   /*@__PURE__*/ S.suspend(() =>
@@ -213967,7 +212552,7 @@ export const DlpProfilesListResultItemIntegrationProfile =
         ),
       type: DlpProfilesListResultItemIntegrationProfileType,
       updatedAt: S.String.pipe(T.Body("updated_at")),
-      description: S.optional(S.String),
+      description: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "DlpProfilesListResultItemIntegrationProfile",
@@ -283907,11 +282492,25 @@ export interface UpdateAccessBookmarkRequest {
   accountId: string;
   /** UUID. */
   bookmarkId: string;
+  /** Displays the application in the App Launcher. */
+  appLauncherVisible?: boolean;
+  /** The domain of the Bookmark application. */
+  domain?: string;
+  /** The image URL for the logo shown in the App Launcher dashboard. */
+  logoUrl?: string;
+  /** The name of the Bookmark application. */
+  name?: string;
 }
 export const UpdateAccessBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bookmarkId: S.String.pipe(T.Label("bookmark_id")),
+    appLauncherVisible: S.optional(
+      S.Boolean.pipe(T.Body("app_launcher_visible")),
+    ),
+    domain: S.optional(S.String),
+    logoUrl: S.optional(S.String.pipe(T.Body("logo_url"))),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -283953,10 +282552,10 @@ export const UpdateAccessBookmarkResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateAccessBookmarkResponse>;
 
 export type AccessCertificatesUpdateForAccountRequestAssociatedHostnamesList =
-  ReadonlyArray<unknown>;
+  ReadonlyArray<string>;
 export const AccessCertificatesUpdateForAccountRequestAssociatedHostnamesList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<AccessCertificatesUpdateForAccountRequestAssociatedHostnamesList>;
 
 export interface UpdateAccessCertificateForAccountRequest {
@@ -283993,10 +282592,10 @@ export const UpdateAccessCertificateForAccountRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateAccessCertificateForAccountRequest>;
 
 export type AccessCertificatesUpdateForAccountResponseAssociatedHostnamesList =
-  ReadonlyArray<unknown>;
+  ReadonlyArray<string>;
 export const AccessCertificatesUpdateForAccountResponseAssociatedHostnamesList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<AccessCertificatesUpdateForAccountResponseAssociatedHostnamesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -284029,10 +282628,10 @@ export const UpdateAccessCertificateForAccountResponse =
   }) as any as S.Schema<UpdateAccessCertificateForAccountResponse>;
 
 export type AccessCertificatesUpdateForZoneRequestAssociatedHostnamesList =
-  ReadonlyArray<unknown>;
+  ReadonlyArray<string>;
 export const AccessCertificatesUpdateForZoneRequestAssociatedHostnamesList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<AccessCertificatesUpdateForZoneRequestAssociatedHostnamesList>;
 
 export interface UpdateAccessCertificateForZoneRequest {
@@ -284069,10 +282668,10 @@ export const UpdateAccessCertificateForZoneRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateAccessCertificateForZoneRequest>;
 
 export type AccessCertificatesUpdateForZoneResponseAssociatedHostnamesList =
-  ReadonlyArray<unknown>;
+  ReadonlyArray<string>;
 export const AccessCertificatesUpdateForZoneResponseAssociatedHostnamesList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<AccessCertificatesUpdateForZoneResponseAssociatedHostnamesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -286526,247 +285125,6 @@ export const AccessGroupsUpdateForAccountResponseIncludeList =
     AccessGroupsUpdateForAccountResponseIncludeItem,
   ) as any as S.Schema<AccessGroupsUpdateForAccountResponseIncludeList>;
 
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemGroupRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsUpdateForAccountResponseIsDefaultItemGroupRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemGroupRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemAnyValidServiceTokenRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemAnyValidServiceTokenRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForAccountResponseIsDefaultItemAnyValidServiceTokenRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemAnyValidServiceTokenRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemAccessAuthContextRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemAccessAuthContextRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForAccountResponseIsDefaultItemAccessAuthContextRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemAccessAuthContextRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemAuthenticationMethodRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemAuthenticationMethodRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForAccountResponseIsDefaultItemAuthenticationMethodRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemAuthenticationMethodRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemAzureGroupRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemAzureGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForAccountResponseIsDefaultItemAzureGroupRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemAzureGroupRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemCertificateRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemCertificateRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForAccountResponseIsDefaultItemCertificateRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemCertificateRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemAccessCommonNameRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemAccessCommonNameRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForAccountResponseIsDefaultItemAccessCommonNameRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemAccessCommonNameRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemCountryRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemCountryRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsUpdateForAccountResponseIsDefaultItemCountryRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemCountryRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemAccessDevicePostureRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemAccessDevicePostureRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForAccountResponseIsDefaultItemAccessDevicePostureRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemAccessDevicePostureRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemDomainRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemDomainRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsUpdateForAccountResponseIsDefaultItemDomainRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemDomainRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemEmailListRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemEmailListRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForAccountResponseIsDefaultItemEmailListRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemEmailListRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemEmailRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemEmailRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsUpdateForAccountResponseIsDefaultItemEmailRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemEmailRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemEveryoneRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemEveryoneRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsUpdateForAccountResponseIsDefaultItemEveryoneRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemEveryoneRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemExternalEvaluationRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemExternalEvaluationRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForAccountResponseIsDefaultItemExternalEvaluationRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemExternalEvaluationRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemGitHubOrganizationRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemGitHubOrganizationRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForAccountResponseIsDefaultItemGitHubOrganizationRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemGitHubOrganizationRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemGSuiteGroupRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemGSuiteGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForAccountResponseIsDefaultItemGSuiteGroupRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemGSuiteGroupRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemAccessLoginMethodRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemAccessLoginMethodRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForAccountResponseIsDefaultItemAccessLoginMethodRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemAccessLoginMethodRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemIPListRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemIPListRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsUpdateForAccountResponseIsDefaultItemIPListRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemIPListRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemIPRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemIPRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsUpdateForAccountResponseIsDefaultItemIPRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemIPRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemOktaGroupRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemOktaGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForAccountResponseIsDefaultItemOktaGroupRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemOktaGroupRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemSAMLGroupRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemSAMLGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForAccountResponseIsDefaultItemSAMLGroupRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemSAMLGroupRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemAccessOIDCClaimRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemAccessOIDCClaimRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForAccountResponseIsDefaultItemAccessOIDCClaimRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemAccessOIDCClaimRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemServiceTokenRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemServiceTokenRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForAccountResponseIsDefaultItemServiceTokenRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemServiceTokenRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemAccessLinkedAppTokenRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemAccessLinkedAppTokenRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForAccountResponseIsDefaultItemAccessLinkedAppTokenRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemAccessLinkedAppTokenRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemAccessUserRiskScoreRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemAccessUserRiskScoreRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForAccountResponseIsDefaultItemAccessUserRiskScoreRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemAccessUserRiskScoreRule>;
-
-export interface AccessGroupsUpdateForAccountResponseIsDefaultItemAccessCloudflareAccountMemberRule {}
-export const AccessGroupsUpdateForAccountResponseIsDefaultItemAccessCloudflareAccountMemberRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForAccountResponseIsDefaultItemAccessCloudflareAccountMemberRule",
-  }) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultItemAccessCloudflareAccountMemberRule>;
-
-export type AccessGroupsUpdateForAccountResponseIsDefaultItem =
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemGroupRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemAnyValidServiceTokenRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemAccessAuthContextRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemAuthenticationMethodRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemAzureGroupRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemCertificateRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemAccessCommonNameRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemCountryRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemAccessDevicePostureRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemDomainRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemEmailListRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemEmailRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemEveryoneRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemExternalEvaluationRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemGitHubOrganizationRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemGSuiteGroupRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemAccessLoginMethodRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemIPListRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemIPRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemOktaGroupRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemSAMLGroupRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemAccessOIDCClaimRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemServiceTokenRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemAccessLinkedAppTokenRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemAccessUserRiskScoreRule
-  | AccessGroupsUpdateForAccountResponseIsDefaultItemAccessCloudflareAccountMemberRule;
-export const AccessGroupsUpdateForAccountResponseIsDefaultItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-    ]),
-  );
-
-export type AccessGroupsUpdateForAccountResponseIsDefaultList =
-  ReadonlyArray<AccessGroupsUpdateForAccountResponseIsDefaultItem>;
-export const AccessGroupsUpdateForAccountResponseIsDefaultList =
-  /*@__PURE__*/ S.Array(
-    AccessGroupsUpdateForAccountResponseIsDefaultItem,
-  ) as any as S.Schema<AccessGroupsUpdateForAccountResponseIsDefaultList>;
-
 export interface AccessGroupsUpdateForAccountResponseRequireItemGroupRule {}
 export const AccessGroupsUpdateForAccountResponseRequireItemGroupRule =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
@@ -287012,8 +285370,8 @@ export interface UpdateAccessGroupForAccountResponse {
   exclude?: AccessGroupsUpdateForAccountResponseExcludeList;
   /** Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules. */
   include?: AccessGroupsUpdateForAccountResponseIncludeList;
-  /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
-  isDefault?: AccessGroupsUpdateForAccountResponseIsDefaultList;
+  /** Whether this is the default group */
+  isDefault?: boolean;
   /** The name of the Access group. */
   name?: string;
   /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
@@ -287024,11 +285382,7 @@ export const UpdateAccessGroupForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     exclude: S.optional(AccessGroupsUpdateForAccountResponseExcludeList),
     include: S.optional(AccessGroupsUpdateForAccountResponseIncludeList),
-    isDefault: S.optional(
-      AccessGroupsUpdateForAccountResponseIsDefaultList.pipe(
-        T.Body("is_default"),
-      ),
-    ),
+    isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
     name: S.optional(S.String),
     require: S.optional(AccessGroupsUpdateForAccountResponseRequireList),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -289375,241 +287729,6 @@ export const AccessGroupsUpdateForZoneResponseIncludeList =
     AccessGroupsUpdateForZoneResponseIncludeItem,
   ) as any as S.Schema<AccessGroupsUpdateForZoneResponseIncludeList>;
 
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemGroupRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsUpdateForZoneResponseIsDefaultItemGroupRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemGroupRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemAnyValidServiceTokenRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemAnyValidServiceTokenRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForZoneResponseIsDefaultItemAnyValidServiceTokenRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemAnyValidServiceTokenRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemAccessAuthContextRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemAccessAuthContextRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForZoneResponseIsDefaultItemAccessAuthContextRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemAccessAuthContextRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemAuthenticationMethodRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemAuthenticationMethodRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForZoneResponseIsDefaultItemAuthenticationMethodRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemAuthenticationMethodRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemAzureGroupRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemAzureGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsUpdateForZoneResponseIsDefaultItemAzureGroupRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemAzureGroupRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemCertificateRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemCertificateRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsUpdateForZoneResponseIsDefaultItemCertificateRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemCertificateRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemAccessCommonNameRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemAccessCommonNameRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForZoneResponseIsDefaultItemAccessCommonNameRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemAccessCommonNameRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemCountryRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemCountryRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsUpdateForZoneResponseIsDefaultItemCountryRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemCountryRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemAccessDevicePostureRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemAccessDevicePostureRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForZoneResponseIsDefaultItemAccessDevicePostureRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemAccessDevicePostureRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemDomainRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemDomainRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsUpdateForZoneResponseIsDefaultItemDomainRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemDomainRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemEmailListRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemEmailListRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsUpdateForZoneResponseIsDefaultItemEmailListRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemEmailListRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemEmailRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemEmailRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsUpdateForZoneResponseIsDefaultItemEmailRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemEmailRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemEveryoneRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemEveryoneRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsUpdateForZoneResponseIsDefaultItemEveryoneRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemEveryoneRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemExternalEvaluationRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemExternalEvaluationRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForZoneResponseIsDefaultItemExternalEvaluationRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemExternalEvaluationRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemGitHubOrganizationRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemGitHubOrganizationRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForZoneResponseIsDefaultItemGitHubOrganizationRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemGitHubOrganizationRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemGSuiteGroupRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemGSuiteGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsUpdateForZoneResponseIsDefaultItemGSuiteGroupRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemGSuiteGroupRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemAccessLoginMethodRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemAccessLoginMethodRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForZoneResponseIsDefaultItemAccessLoginMethodRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemAccessLoginMethodRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemIPListRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemIPListRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsUpdateForZoneResponseIsDefaultItemIPListRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemIPListRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemIPRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemIPRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsUpdateForZoneResponseIsDefaultItemIPRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemIPRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemOktaGroupRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemOktaGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsUpdateForZoneResponseIsDefaultItemOktaGroupRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemOktaGroupRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemSAMLGroupRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemSAMLGroupRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AccessGroupsUpdateForZoneResponseIsDefaultItemSAMLGroupRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemSAMLGroupRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemAccessOIDCClaimRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemAccessOIDCClaimRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForZoneResponseIsDefaultItemAccessOIDCClaimRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemAccessOIDCClaimRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemServiceTokenRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemServiceTokenRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForZoneResponseIsDefaultItemServiceTokenRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemServiceTokenRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemAccessLinkedAppTokenRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemAccessLinkedAppTokenRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForZoneResponseIsDefaultItemAccessLinkedAppTokenRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemAccessLinkedAppTokenRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemAccessUserRiskScoreRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemAccessUserRiskScoreRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForZoneResponseIsDefaultItemAccessUserRiskScoreRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemAccessUserRiskScoreRule>;
-
-export interface AccessGroupsUpdateForZoneResponseIsDefaultItemAccessCloudflareAccountMemberRule {}
-export const AccessGroupsUpdateForZoneResponseIsDefaultItemAccessCloudflareAccountMemberRule =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AccessGroupsUpdateForZoneResponseIsDefaultItemAccessCloudflareAccountMemberRule",
-  }) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultItemAccessCloudflareAccountMemberRule>;
-
-export type AccessGroupsUpdateForZoneResponseIsDefaultItem =
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemGroupRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemAnyValidServiceTokenRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemAccessAuthContextRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemAuthenticationMethodRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemAzureGroupRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemCertificateRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemAccessCommonNameRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemCountryRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemAccessDevicePostureRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemDomainRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemEmailListRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemEmailRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemEveryoneRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemExternalEvaluationRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemGitHubOrganizationRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemGSuiteGroupRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemAccessLoginMethodRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemIPListRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemIPRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemOktaGroupRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemSAMLGroupRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemAccessOIDCClaimRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemServiceTokenRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemAccessLinkedAppTokenRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemAccessUserRiskScoreRule
-  | AccessGroupsUpdateForZoneResponseIsDefaultItemAccessCloudflareAccountMemberRule;
-export const AccessGroupsUpdateForZoneResponseIsDefaultItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-    ]),
-  );
-
-export type AccessGroupsUpdateForZoneResponseIsDefaultList =
-  ReadonlyArray<AccessGroupsUpdateForZoneResponseIsDefaultItem>;
-export const AccessGroupsUpdateForZoneResponseIsDefaultList =
-  /*@__PURE__*/ S.Array(
-    AccessGroupsUpdateForZoneResponseIsDefaultItem,
-  ) as any as S.Schema<AccessGroupsUpdateForZoneResponseIsDefaultList>;
-
 export interface AccessGroupsUpdateForZoneResponseRequireItemGroupRule {}
 export const AccessGroupsUpdateForZoneResponseRequireItemGroupRule =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
@@ -289852,8 +287971,8 @@ export interface UpdateAccessGroupForZoneResponse {
   exclude?: AccessGroupsUpdateForZoneResponseExcludeList;
   /** Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules. */
   include?: AccessGroupsUpdateForZoneResponseIncludeList;
-  /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
-  isDefault?: AccessGroupsUpdateForZoneResponseIsDefaultList;
+  /** Whether this is the default group */
+  isDefault?: boolean;
   /** The name of the Access group. */
   name?: string;
   /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
@@ -289864,9 +287983,7 @@ export const UpdateAccessGroupForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     exclude: S.optional(AccessGroupsUpdateForZoneResponseExcludeList),
     include: S.optional(AccessGroupsUpdateForZoneResponseIncludeList),
-    isDefault: S.optional(
-      AccessGroupsUpdateForZoneResponseIsDefaultList.pipe(T.Body("is_default")),
-    ),
+    isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
     name: S.optional(S.String),
     require: S.optional(AccessGroupsUpdateForZoneResponseRequireList),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -296908,7 +295025,7 @@ export interface UpdateDlpProfileCustomRequest {
   /** Data tag IDs to associate with the profile. If omitted, existing associations are unchanged. */
   dataTags?: DlpProfilesCustomUpdateRequestDataTagsList;
   /** The description of the profile. */
-  description?: string;
+  description?: string | null;
   /** Custom entries from this profile. */
   entries?: DlpProfilesCustomUpdateRequestEntriesList;
   ocrEnabled?: boolean;
@@ -296940,7 +295057,7 @@ export const UpdateDlpProfileCustomRequest = /*@__PURE__*/ S.suspend(() =>
     dataTags: S.optional(
       DlpProfilesCustomUpdateRequestDataTagsList.pipe(T.Body("data_tags")),
     ),
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
     entries: S.optional(DlpProfilesCustomUpdateRequestEntriesList),
     ocrEnabled: S.optional(S.Boolean.pipe(T.Body("ocr_enabled"))),
     sensitivityLevels: S.optional(
@@ -297855,7 +295972,7 @@ export interface DlpProfilesCustomUpdateResultCustomProfile {
   /** Data tags associated with this profile. */
   dataTags?: DlpProfilesCustomUpdateResultCustomProfileDataTagsList;
   /** The description of the profile. */
-  description?: string;
+  description?: string | null;
   entries?: DlpProfilesCustomUpdateResultCustomProfileEntriesList;
   /** Sensitivity levels associated with this profile. */
   sensitivityLevels?: DlpProfilesCustomUpdateResultCustomProfileSensitivityLevelsList;
@@ -297894,7 +296011,7 @@ export const DlpProfilesCustomUpdateResultCustomProfile =
           T.Body("data_tags"),
         ),
       ),
-      description: S.optional(S.String),
+      description: S.optional(S.NullOr(S.String)),
       entries: S.optional(
         DlpProfilesCustomUpdateResultCustomProfileEntriesList,
       ),
@@ -299133,7 +297250,7 @@ export interface DlpProfilesCustomUpdateResultIntegrationProfile {
   type: DlpProfilesCustomUpdateResultIntegrationProfileType;
   updatedAt: string;
   /** The description of the profile. */
-  description?: string;
+  description?: string | null;
 }
 export const DlpProfilesCustomUpdateResultIntegrationProfile =
   /*@__PURE__*/ S.suspend(() =>
@@ -299148,7 +297265,7 @@ export const DlpProfilesCustomUpdateResultIntegrationProfile =
         ),
       type: DlpProfilesCustomUpdateResultIntegrationProfileType,
       updatedAt: S.String.pipe(T.Body("updated_at")),
-      description: S.optional(S.String),
+      description: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "DlpProfilesCustomUpdateResultIntegrationProfile",
@@ -310519,7 +308636,7 @@ export const deleteDlpEmailRule: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteDlpEntryError = CloudflareOpError;
+export type DeleteDlpEntryError = DlpEntryNotFound | CloudflareOpError;
 /** Deletes a DLP custom entry. */
 export const deleteDlpEntry: API.OperationMethod<
   DeleteDlpEntryRequest,
@@ -310529,7 +308646,7 @@ export const deleteDlpEntry: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDlpEntryRequest,
   output: DeleteDlpEntryResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [DlpEntryNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -312176,7 +310293,7 @@ export const getDlpEmailRule: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetDlpEntryError = CloudflareOpError;
+export type GetDlpEntryError = DlpEntryNotFound | CloudflareOpError;
 /** Fetches a DLP entry by ID. */
 export const getDlpEntry: API.OperationMethod<
   GetDlpEntryRequest,
@@ -312186,7 +310303,7 @@ export const getDlpEntry: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDlpEntryRequest,
   output: GetDlpEntryResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [DlpEntryNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));

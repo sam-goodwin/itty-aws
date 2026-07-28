@@ -1,5 +1,5 @@
 {
-  "description": "Hand-authored: the gateway-scoped provider_configs DELETE is not in the API docs (they document the newer account-level custom-providers API instead). Route transcribed from the distilled SDK.",
+  "description": "Hand-authored: the gateway-scoped provider_configs DELETE is not in the API docs (they document the newer account-level custom-providers API instead). Route and the typed 7002 ProviderConfigNotFound error transcribed from the distilled SDK.",
   "patches": [
     {
       "op": "add",
@@ -72,6 +72,38 @@
           }
         }
       }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.ai_gateway#ProviderConfigNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7002
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.ai_gateway#DeleteProviderConfig/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.ai_gateway#ProviderConfigNotFound"
+        }
+      ]
     }
   ]
 }
