@@ -14,6 +14,7 @@
     { "path": "./packages/mongodb-atlas/tsconfig.json" },
     { "path": "./packages/neon/tsconfig.json" },
     { "path": "./packages/planetscale/tsconfig.json" },
+    { "path": "./packages/polar/tsconfig.json" },
     { "path": "./packages/posthog/tsconfig.json" },
     { "path": "./packages/prisma-postgres/tsconfig.json" },
     { "path": "./packages/stripe/tsconfig.json" },

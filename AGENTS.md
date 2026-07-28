@@ -16,6 +16,7 @@ distilled/
 │   ├── mongodb-atlas/    # @distilled.cloud/mongodb-atlas — MongoDB Atlas SDK from OpenAPI spec
 │   ├── neon/             # @distilled.cloud/neon — Neon SDK from OpenAPI spec
 │   ├── planetscale/      # @distilled.cloud/planetscale — PlanetScale SDK from OpenAPI spec
+│   ├── polar/            # @distilled.cloud/polar — Polar billing SDK from OpenAPI spec
 │   ├── prisma-postgres/  # @distilled.cloud/prisma-postgres — Prisma Postgres SDK from OpenAPI spec
 │   ├── stripe/           # @distilled.cloud/stripe — Stripe SDK from OpenAPI spec
 │   ├── supabase/         # @distilled.cloud/supabase — Supabase SDK from OpenAPI spec

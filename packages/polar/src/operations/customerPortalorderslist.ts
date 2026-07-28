@@ -1,0 +1,945 @@
+import * as Schema from "effect/Schema";
+import { API } from "../client.ts";
+import * as T from "../traits.ts";
+
+// Input Schema
+export interface CustomerPortalorderslistInput {
+  product_id?: string | ReadonlyArray<string> | null;
+  product_billing_type?:
+    | "one_time"
+    | "recurring"
+    | ReadonlyArray<"one_time" | "recurring">
+    | null;
+  subscription_id?: string | ReadonlyArray<string> | null;
+  query?: string | null;
+  page?: number;
+  limit?: number;
+  sorting?: ReadonlyArray<
+    | "created_at"
+    | "-created_at"
+    | "amount"
+    | "-amount"
+    | "net_amount"
+    | "-net_amount"
+    | "product"
+    | "-product"
+    | "subscription"
+    | "-subscription"
+  > | null;
+}
+export const CustomerPortalorderslistInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    product_id: Schema.optional(
+      Schema.NullOr(Schema.Union([Schema.String, Schema.Array(Schema.String)])),
+    ),
+    product_billing_type: Schema.optional(
+      Schema.NullOr(
+        Schema.Union([
+          Schema.Literals(["one_time", "recurring"]),
+          Schema.Array(Schema.Literals(["one_time", "recurring"])),
+        ]),
+      ),
+    ),
+    subscription_id: Schema.optional(
+      Schema.NullOr(Schema.Union([Schema.String, Schema.Array(Schema.String)])),
+    ),
+    query: Schema.optional(Schema.NullOr(Schema.String)),
+    page: Schema.optional(Schema.Number),
+    limit: Schema.optional(Schema.Number),
+    sorting: Schema.optional(
+      Schema.NullOr(
+        Schema.Array(
+          Schema.Literals([
+            "created_at",
+            "-created_at",
+            "amount",
+            "-amount",
+            "net_amount",
+            "-net_amount",
+            "product",
+            "-product",
+            "subscription",
+            "-subscription",
+          ]),
+        ),
+      ),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/customer-portal/orders/" }),
+  ) as unknown as Schema.Codec<CustomerPortalorderslistInput>;
+
+// Output Schema
+export interface CustomerPortalorderslistOutput {
+  items: ReadonlyArray<{
+    id: string;
+    created_at: string;
+    modified_at: string | null;
+    status:
+      | "draft"
+      | "pending"
+      | "paid"
+      | "refunded"
+      | "partially_refunded"
+      | "void";
+    paid: boolean;
+    subtotal_amount: number;
+    discount_amount: number;
+    net_amount: number;
+    tax_amount: number;
+    total_amount: number;
+    applied_balance_amount: number;
+    due_amount: number;
+    refunded_amount: number;
+    refunded_tax_amount: number;
+    currency: string;
+    billing_reason:
+      | "purchase"
+      | "subscription_create"
+      | "subscription_cycle"
+      | "subscription_update";
+    billing_name: string | null;
+    billing_address: {
+      line1?: string | null;
+      line2?: string | null;
+      postal_code?: string | null;
+      city?: string | null;
+      state?: string | null;
+      country:
+        | "AD"
+        | "AE"
+        | "AF"
+        | "AG"
+        | "AI"
+        | "AL"
+        | "AM"
+        | "AO"
+        | "AQ"
+        | "AR"
+        | "AS"
+        | "AT"
+        | "AU"
+        | "AW"
+        | "AX"
+        | "AZ"
+        | "BA"
+        | "BB"
+        | "BD"
+        | "BE"
+        | "BF"
+        | "BG"
+        | "BH"
+        | "BI"
+        | "BJ"
+        | "BL"
+        | "BM"
+        | "BN"
+        | "BO"
+        | "BQ"
+        | "BR"
+        | "BS"
+        | "BT"
+        | "BV"
+        | "BW"
+        | "BY"
+        | "BZ"
+        | "CA"
+        | "CC"
+        | "CD"
+        | "CF"
+        | "CG"
+        | "CH"
+        | "CI"
+        | "CK"
+        | "CL"
+        | "CM"
+        | "CN"
+        | "CO"
+        | "CR"
+        | "CU"
+        | "CV"
+        | "CW"
+        | "CX"
+        | "CY"
+        | "CZ"
+        | "DE"
+        | "DJ"
+        | "DK"
+        | "DM"
+        | "DO"
+        | "DZ"
+        | "EC"
+        | "EE"
+        | "EG"
+        | "EH"
+        | "ER"
+        | "ES"
+        | "ET"
+        | "FI"
+        | "FJ"
+        | "FK"
+        | "FM"
+        | "FO"
+        | "FR"
+        | "GA"
+        | "GB"
+        | "GD"
+        | "GE"
+        | "GF"
+        | "GG"
+        | "GH"
+        | "GI"
+        | "GL"
+        | "GM"
+        | "GN"
+        | "GP"
+        | "GQ"
+        | "GR"
+        | "GS"
+        | "GT"
+        | "GU"
+        | "GW"
+        | "GY"
+        | "HK"
+        | "HM"
+        | "HN"
+        | "HR"
+        | "HT"
+        | "HU"
+        | "ID"
+        | "IE"
+        | "IL"
+        | "IM"
+        | "IN"
+        | "IO"
+        | "IQ"
+        | "IR"
+        | "IS"
+        | "IT"
+        | "JE"
+        | "JM"
+        | "JO"
+        | "JP"
+        | "KE"
+        | "KG"
+        | "KH"
+        | "KI"
+        | "KM"
+        | "KN"
+        | "KP"
+        | "KR"
+        | "KW"
+        | "KY"
+        | "KZ"
+        | "LA"
+        | "LB"
+        | "LC"
+        | "LI"
+        | "LK"
+        | "LR"
+        | "LS"
+        | "LT"
+        | "LU"
+        | "LV"
+        | "LY"
+        | "MA"
+        | "MC"
+        | "MD"
+        | "ME"
+        | "MF"
+        | "MG"
+        | "MH"
+        | "MK"
+        | "ML"
+        | "MM"
+        | "MN"
+        | "MO"
+        | "MP"
+        | "MQ"
+        | "MR"
+        | "MS"
+        | "MT"
+        | "MU"
+        | "MV"
+        | "MW"
+        | "MX"
+        | "MY"
+        | "MZ"
+        | "NA"
+        | "NC"
+        | "NE"
+        | "NF"
+        | "NG"
+        | "NI"
+        | "NL"
+        | "NO"
+        | "NP"
+        | "NR"
+        | "NU"
+        | "NZ"
+        | "OM"
+        | "PA"
+        | "PE"
+        | "PF"
+        | "PG"
+        | "PH"
+        | "PK"
+        | "PL"
+        | "PM"
+        | "PN"
+        | "PR"
+        | "PS"
+        | "PT"
+        | "PW"
+        | "PY"
+        | "QA"
+        | "RE"
+        | "RO"
+        | "RS"
+        | "RU"
+        | "RW"
+        | "SA"
+        | "SB"
+        | "SC"
+        | "SD"
+        | "SE"
+        | "SG"
+        | "SH"
+        | "SI"
+        | "SJ"
+        | "SK"
+        | "SL"
+        | "SM"
+        | "SN"
+        | "SO"
+        | "SR"
+        | "SS"
+        | "ST"
+        | "SV"
+        | "SX"
+        | "SY"
+        | "SZ"
+        | "TC"
+        | "TD"
+        | "TF"
+        | "TG"
+        | "TH"
+        | "TJ"
+        | "TK"
+        | "TL"
+        | "TM"
+        | "TN"
+        | "TO"
+        | "TR"
+        | "TT"
+        | "TV"
+        | "TW"
+        | "TZ"
+        | "UA"
+        | "UG"
+        | "UM"
+        | "US"
+        | "UY"
+        | "UZ"
+        | "VA"
+        | "VC"
+        | "VE"
+        | "VG"
+        | "VI"
+        | "VN"
+        | "VU"
+        | "WF"
+        | "WS"
+        | "YE"
+        | "YT"
+        | "ZA"
+        | "ZM"
+        | "ZW";
+    } | null;
+    invoice_number: string | null;
+    is_invoice_generated: boolean;
+    receipt_number: string | null;
+    seats?: number | null;
+    customer_id: string;
+    product_id: string | null;
+    discount_id: string | null;
+    subscription_id: string | null;
+    checkout_id: string | null;
+    next_payment_attempt_at?: string | null;
+    product: unknown;
+    subscription: {
+      created_at: string;
+      modified_at: string | null;
+      id: string;
+      amount: number;
+      currency: string;
+      recurring_interval: "day" | "week" | "month" | "year";
+      recurring_interval_count: number;
+      status:
+        | "incomplete"
+        | "incomplete_expired"
+        | "trialing"
+        | "active"
+        | "past_due"
+        | "canceled"
+        | "unpaid"
+        | "paused";
+      current_period_start: string;
+      current_period_end: string;
+      current_meter_period_start: string | null;
+      current_meter_period_end: string | null;
+      trial_start: string | null;
+      trial_end: string | null;
+      cancel_at_period_end: boolean;
+      canceled_at: string | null;
+      started_at: string | null;
+      ends_at: string | null;
+      ended_at: string | null;
+      past_due_at?: string | null;
+      pause_at_period_end: boolean;
+      paused_at: string | null;
+      resumes_at: string | null;
+      customer_id: string;
+      product_id: string;
+      discount_id: string | null;
+      checkout_id: string | null;
+      seats?: number | null;
+      customer_cancellation_reason:
+        | "customer_service"
+        | "low_quality"
+        | "missing_features"
+        | "switched_service"
+        | "too_complex"
+        | "too_expensive"
+        | "unused"
+        | "other"
+        | null;
+      customer_cancellation_comment: string | null;
+    } | null;
+    items: ReadonlyArray<{
+      created_at: string;
+      modified_at: string | null;
+      id: string;
+      label: string;
+      amount: number;
+      tax_amount: number;
+      proration: boolean;
+      product_price_id: string | null;
+    }>;
+    description: string;
+    refundable_amount: number;
+    refundable_tax_amount: number;
+  }>;
+  pagination: { total_count: number; max_page: number };
+}
+export const CustomerPortalorderslistOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    items: Schema.Array(
+      Schema.Struct({
+        id: Schema.String,
+        created_at: Schema.String,
+        modified_at: Schema.NullOr(Schema.String),
+        status: Schema.Literals([
+          "draft",
+          "pending",
+          "paid",
+          "refunded",
+          "partially_refunded",
+          "void",
+        ]),
+        paid: Schema.Boolean,
+        subtotal_amount: Schema.Number,
+        discount_amount: Schema.Number,
+        net_amount: Schema.Number,
+        tax_amount: Schema.Number,
+        total_amount: Schema.Number,
+        applied_balance_amount: Schema.Number,
+        due_amount: Schema.Number,
+        refunded_amount: Schema.Number,
+        refunded_tax_amount: Schema.Number,
+        currency: Schema.String,
+        billing_reason: Schema.Literals([
+          "purchase",
+          "subscription_create",
+          "subscription_cycle",
+          "subscription_update",
+        ]),
+        billing_name: Schema.NullOr(Schema.String),
+        billing_address: Schema.NullOr(
+          Schema.Struct({
+            line1: Schema.optional(Schema.NullOr(Schema.String)),
+            line2: Schema.optional(Schema.NullOr(Schema.String)),
+            postal_code: Schema.optional(Schema.NullOr(Schema.String)),
+            city: Schema.optional(Schema.NullOr(Schema.String)),
+            state: Schema.optional(Schema.NullOr(Schema.String)),
+            country: Schema.Literals([
+              "AD",
+              "AE",
+              "AF",
+              "AG",
+              "AI",
+              "AL",
+              "AM",
+              "AO",
+              "AQ",
+              "AR",
+              "AS",
+              "AT",
+              "AU",
+              "AW",
+              "AX",
+              "AZ",
+              "BA",
+              "BB",
+              "BD",
+              "BE",
+              "BF",
+              "BG",
+              "BH",
+              "BI",
+              "BJ",
+              "BL",
+              "BM",
+              "BN",
+              "BO",
+              "BQ",
+              "BR",
+              "BS",
+              "BT",
+              "BV",
+              "BW",
+              "BY",
+              "BZ",
+              "CA",
+              "CC",
+              "CD",
+              "CF",
+              "CG",
+              "CH",
+              "CI",
+              "CK",
+              "CL",
+              "CM",
+              "CN",
+              "CO",
+              "CR",
+              "CU",
+              "CV",
+              "CW",
+              "CX",
+              "CY",
+              "CZ",
+              "DE",
+              "DJ",
+              "DK",
+              "DM",
+              "DO",
+              "DZ",
+              "EC",
+              "EE",
+              "EG",
+              "EH",
+              "ER",
+              "ES",
+              "ET",
+              "FI",
+              "FJ",
+              "FK",
+              "FM",
+              "FO",
+              "FR",
+              "GA",
+              "GB",
+              "GD",
+              "GE",
+              "GF",
+              "GG",
+              "GH",
+              "GI",
+              "GL",
+              "GM",
+              "GN",
+              "GP",
+              "GQ",
+              "GR",
+              "GS",
+              "GT",
+              "GU",
+              "GW",
+              "GY",
+              "HK",
+              "HM",
+              "HN",
+              "HR",
+              "HT",
+              "HU",
+              "ID",
+              "IE",
+              "IL",
+              "IM",
+              "IN",
+              "IO",
+              "IQ",
+              "IR",
+              "IS",
+              "IT",
+              "JE",
+              "JM",
+              "JO",
+              "JP",
+              "KE",
+              "KG",
+              "KH",
+              "KI",
+              "KM",
+              "KN",
+              "KP",
+              "KR",
+              "KW",
+              "KY",
+              "KZ",
+              "LA",
+              "LB",
+              "LC",
+              "LI",
+              "LK",
+              "LR",
+              "LS",
+              "LT",
+              "LU",
+              "LV",
+              "LY",
+              "MA",
+              "MC",
+              "MD",
+              "ME",
+              "MF",
+              "MG",
+              "MH",
+              "MK",
+              "ML",
+              "MM",
+              "MN",
+              "MO",
+              "MP",
+              "MQ",
+              "MR",
+              "MS",
+              "MT",
+              "MU",
+              "MV",
+              "MW",
+              "MX",
+              "MY",
+              "MZ",
+              "NA",
+              "NC",
+              "NE",
+              "NF",
+              "NG",
+              "NI",
+              "NL",
+              "NO",
+              "NP",
+              "NR",
+              "NU",
+              "NZ",
+              "OM",
+              "PA",
+              "PE",
+              "PF",
+              "PG",
+              "PH",
+              "PK",
+              "PL",
+              "PM",
+              "PN",
+              "PR",
+              "PS",
+              "PT",
+              "PW",
+              "PY",
+              "QA",
+              "RE",
+              "RO",
+              "RS",
+              "RU",
+              "RW",
+              "SA",
+              "SB",
+              "SC",
+              "SD",
+              "SE",
+              "SG",
+              "SH",
+              "SI",
+              "SJ",
+              "SK",
+              "SL",
+              "SM",
+              "SN",
+              "SO",
+              "SR",
+              "SS",
+              "ST",
+              "SV",
+              "SX",
+              "SY",
+              "SZ",
+              "TC",
+              "TD",
+              "TF",
+              "TG",
+              "TH",
+              "TJ",
+              "TK",
+              "TL",
+              "TM",
+              "TN",
+              "TO",
+              "TR",
+              "TT",
+              "TV",
+              "TW",
+              "TZ",
+              "UA",
+              "UG",
+              "UM",
+              "US",
+              "UY",
+              "UZ",
+              "VA",
+              "VC",
+              "VE",
+              "VG",
+              "VI",
+              "VN",
+              "VU",
+              "WF",
+              "WS",
+              "YE",
+              "YT",
+              "ZA",
+              "ZM",
+              "ZW",
+            ]),
+          }),
+        ),
+        invoice_number: Schema.NullOr(Schema.String),
+        is_invoice_generated: Schema.Boolean,
+        receipt_number: Schema.NullOr(Schema.String),
+        seats: Schema.optional(Schema.NullOr(Schema.Number)),
+        customer_id: Schema.String,
+        product_id: Schema.NullOr(Schema.String),
+        discount_id: Schema.NullOr(Schema.String),
+        subscription_id: Schema.NullOr(Schema.String),
+        checkout_id: Schema.NullOr(Schema.String),
+        next_payment_attempt_at: Schema.optional(Schema.NullOr(Schema.String)),
+        product: Schema.NullOr(
+          Schema.Struct({
+            id: Schema.String,
+            created_at: Schema.String,
+            modified_at: Schema.NullOr(Schema.String),
+            trial_interval: Schema.NullOr(
+              Schema.Literals(["day", "week", "month", "year"]),
+            ),
+            trial_interval_count: Schema.NullOr(Schema.Number),
+            name: Schema.String,
+            description: Schema.NullOr(Schema.String),
+            visibility: Schema.Literals(["draft", "private", "public"]),
+            recurring_interval: Schema.NullOr(
+              Schema.Literals(["day", "week", "month", "year"]),
+            ),
+            recurring_interval_count: Schema.NullOr(Schema.Number),
+            meter_interval: Schema.NullOr(
+              Schema.Literals(["day", "week", "month", "year"]),
+            ),
+            meter_interval_count: Schema.NullOr(Schema.Number),
+            is_recurring: Schema.Boolean,
+            is_archived: Schema.Boolean,
+            organization_id: Schema.String,
+            prices: Schema.Array(Schema.Unknown),
+            benefits: Schema.Array(
+              Schema.Struct({
+                id: Schema.String,
+                created_at: Schema.String,
+                modified_at: Schema.NullOr(Schema.String),
+                type: Schema.Literals([
+                  "custom",
+                  "discord",
+                  "github_repository",
+                  "downloadables",
+                  "license_keys",
+                  "meter_credit",
+                  "feature_flag",
+                  "slack_shared_channel",
+                ]),
+                description: Schema.String,
+                selectable: Schema.Boolean,
+                deletable: Schema.Boolean,
+                is_deleted: Schema.Boolean,
+                organization_id: Schema.String,
+              }),
+            ),
+            medias: Schema.Array(
+              Schema.Struct({
+                id: Schema.String,
+                organization_id: Schema.String,
+                name: Schema.String,
+                path: Schema.String,
+                mime_type: Schema.String,
+                size: Schema.Number,
+                storage_version: Schema.NullOr(Schema.String),
+                checksum_etag: Schema.NullOr(Schema.String),
+                checksum_sha256_base64: Schema.NullOr(Schema.String),
+                checksum_sha256_hex: Schema.NullOr(Schema.String),
+                last_modified_at: Schema.NullOr(Schema.String),
+                version: Schema.NullOr(Schema.String),
+                service: Schema.String,
+                is_uploaded: Schema.Boolean,
+                created_at: Schema.String,
+                size_readable: Schema.String,
+                public_url: Schema.String,
+              }),
+            ),
+            organization: Schema.Struct({
+              created_at: Schema.String,
+              modified_at: Schema.NullOr(Schema.String),
+              id: Schema.String,
+              name: Schema.String,
+              slug: Schema.String,
+              avatar_url: Schema.NullOr(Schema.String),
+              proration_behavior: Schema.Literals([
+                "invoice",
+                "prorate",
+                "next_period",
+                "reset",
+              ]),
+              allow_customer_updates: Schema.Boolean,
+              customer_portal_settings: Schema.Struct({
+                usage: Schema.Struct({
+                  show: Schema.Boolean,
+                }),
+                subscription: Schema.Struct({
+                  update_seats: Schema.Boolean,
+                  update_plan: Schema.Boolean,
+                  pause: Schema.optional(Schema.Boolean),
+                }),
+                customer: Schema.optional(
+                  Schema.Struct({
+                    allow_email_change: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+              }),
+              organization_features: Schema.optional(
+                Schema.Struct({
+                  member_model_enabled: Schema.optional(Schema.Boolean),
+                  checkout_localization_enabled: Schema.optional(
+                    Schema.Boolean,
+                  ),
+                }),
+              ),
+            }),
+          }),
+        ),
+        subscription: Schema.NullOr(
+          Schema.Struct({
+            created_at: Schema.String,
+            modified_at: Schema.NullOr(Schema.String),
+            id: Schema.String,
+            amount: Schema.Number,
+            currency: Schema.String,
+            recurring_interval: Schema.Literals([
+              "day",
+              "week",
+              "month",
+              "year",
+            ]),
+            recurring_interval_count: Schema.Number,
+            status: Schema.Literals([
+              "incomplete",
+              "incomplete_expired",
+              "trialing",
+              "active",
+              "past_due",
+              "canceled",
+              "unpaid",
+              "paused",
+            ]),
+            current_period_start: Schema.String,
+            current_period_end: Schema.String,
+            current_meter_period_start: Schema.NullOr(Schema.String),
+            current_meter_period_end: Schema.NullOr(Schema.String),
+            trial_start: Schema.NullOr(Schema.String),
+            trial_end: Schema.NullOr(Schema.String),
+            cancel_at_period_end: Schema.Boolean,
+            canceled_at: Schema.NullOr(Schema.String),
+            started_at: Schema.NullOr(Schema.String),
+            ends_at: Schema.NullOr(Schema.String),
+            ended_at: Schema.NullOr(Schema.String),
+            past_due_at: Schema.optional(Schema.NullOr(Schema.String)),
+            pause_at_period_end: Schema.Boolean,
+            paused_at: Schema.NullOr(Schema.String),
+            resumes_at: Schema.NullOr(Schema.String),
+            customer_id: Schema.String,
+            product_id: Schema.String,
+            discount_id: Schema.NullOr(Schema.String),
+            checkout_id: Schema.NullOr(Schema.String),
+            seats: Schema.optional(Schema.NullOr(Schema.Number)),
+            customer_cancellation_reason: Schema.NullOr(
+              Schema.Literals([
+                "customer_service",
+                "low_quality",
+                "missing_features",
+                "switched_service",
+                "too_complex",
+                "too_expensive",
+                "unused",
+                "other",
+              ]),
+            ),
+            customer_cancellation_comment: Schema.NullOr(Schema.String),
+          }),
+        ),
+        items: Schema.Array(
+          Schema.Struct({
+            created_at: Schema.String,
+            modified_at: Schema.NullOr(Schema.String),
+            id: Schema.String,
+            label: Schema.String,
+            amount: Schema.Number,
+            tax_amount: Schema.Number,
+            proration: Schema.Boolean,
+            product_price_id: Schema.NullOr(Schema.String),
+          }),
+        ),
+        description: Schema.String,
+        refundable_amount: Schema.Number,
+        refundable_tax_amount: Schema.Number,
+      }),
+    ),
+    pagination: Schema.Struct({
+      total_count: Schema.Number,
+      max_page: Schema.Number,
+    }),
+  }) as unknown as Schema.Codec<CustomerPortalorderslistOutput>;
+
+// The operation
+/**
+ * List Orders
+ *
+ * List orders of the authenticated customer.
+ *
+ * @param product_id - Filter by product ID.
+ * @param product_billing_type - Filter by product billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
+ * @param subscription_id - Filter by subscription ID.
+ * @param query - Search by product or organization name.
+ * @param page - Page number, defaults to 1.
+ * @param limit - Size of a page, defaults to 10. Maximum is 100.
+ * @param sorting - Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
+ */
+export const customerPortalorderslist = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: CustomerPortalorderslistInput,
+    outputSchema: CustomerPortalorderslistOutput,
+  }),
+);
